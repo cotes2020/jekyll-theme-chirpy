@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
   A blog about tech, minecraft and bad coding
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://squawkykaka.com"
+url: "https://squawkykaka.pages.dev"
 
 github:
   username: Squawkykaka # change to your github username
@@ -44,13 +44,13 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: G-N3P4Y45KQ6 # fill in to your verification string
+google_site_verification: # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: G-N3P4Y45KQ6 # fill in your Google Analytics ID
+  id: # fill in your Google Analytics ID
 
 # Prefer color scheme setting.
 #
@@ -70,7 +70,7 @@ theme_mode: #[light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://lh3.googleusercontent.com/a/AAcHTtc0qJ-n3NnBcM3_es-H3Mc1LmeirREQAwWVA5WLVeuO08M=s96-c-rg-br100"
+img_cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/avatar.jpg"
