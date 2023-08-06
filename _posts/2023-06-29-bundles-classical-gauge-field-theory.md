@@ -2,7 +2,7 @@
 title: "Bundles in Classical Gauge Field Theory (Slides, In Progress)"
 description: "Slides from my talk on constructing bundles in classical gauge field theory"
 categories: [classical field theory]
-tags: [bundles, gauge invariance]
+tags: [bundles, gauge invariance, slides]
 toc: false
 iframe: 
     asset: true

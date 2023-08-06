@@ -2,7 +2,7 @@
 title: "Applying the Klein-Gordon Theory to Gravitation (Slides)"
 description: "Slides from my talk on constructing Newtonian gravitation as a classical field theory :)"
 categories: [classical field theory]
-tags: [gravitation, Klein-Gordon theory, energy-momentum tensor, gauge invariance]
+tags: [gravitation, Klein-Gordon theory, energy-momentum tensor, gauge invariance, slides]
 toc: false
 iframe: 
     asset: true
