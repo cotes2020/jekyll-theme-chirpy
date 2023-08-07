@@ -10,10 +10,11 @@
 
   /* Common color */
   --text-color: rgb(175, 176, 177);
-  --text-muted-color: rgb(107, 116, 124);
+  --text-muted-color: rgb(125, 136, 146);
   --heading-color: #cccccc;
+  --label-color: #a4a4c2;
   --blockquote-border-color: rgb(66, 66, 66);
-  --blockquote-text-color: rgb(117, 117, 117);
+  --blockquote-text-color: #868686;
   --link-color: rgb(138, 180, 248);
   --link-underline-color: rgb(82, 108, 150);
   --button-bg: rgb(39, 40, 43);
@@ -22,7 +23,6 @@
   --btn-backtotop-border-color: var(--btn-border-color);
   --btn-box-shadow: var(--main-bg);
   --card-header-bg: rgb(48, 48, 48);
-  --label-color: rgb(108, 117, 125);
   --checkbox-color: rgb(118, 120, 121);
   --checkbox-checked-color: var(--link-color);
   --img-bg: radial-gradient(circle, rgb(22, 22, 24) 0%, rgb(32, 32, 32) 100%);
@@ -34,6 +34,8 @@
   );
 
   /* Sidebar */
+  --site-title-color: #717070;
+  --site-subtitle-color: #6d6c6b;
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
   --sidebar-muted-color: #6d6c6b;
   --sidebar-active-color: rgb(255, 255, 255, 0.95);
@@ -58,7 +60,6 @@
 
   /* Posts */
   --toc-highlight: rgb(116, 178, 243);
-  --tag-bg: rgb(41, 40, 40);
   --tag-hover: rgb(43, 56, 62);
   --tb-odd-bg: rgba(42, 47, 53, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
@@ -66,7 +67,6 @@
   --footnote-target-bg: rgb(63, 81, 181);
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
-  --relate-post-date: var(--text-muted-color);
   --card-bg: #1e1e1e;
   --card-hovor-bg: #464d51;
   --card-shadow: rgb(21, 21, 21, 0.72) 0 6px 18px 0,
