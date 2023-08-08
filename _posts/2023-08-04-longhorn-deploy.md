@@ -140,6 +140,6 @@ EOF
 
 Reference Links:
 
-🔖 [longhorn](https://longhorn.io/)
+- [longhorn](https://longhorn.io/)
 
-🔖 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
