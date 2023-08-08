@@ -14,8 +14,6 @@ Download [PWNED: 1](https://www.vulnhub.com/entry/pwned-1,507/){:target="\_blank
 
 ## Scanning
 
-Scan ip với `arp-scan` thu được:
-
 ![scan ip](/posts/pwned-1/scan-ip.png)
 
 Tiến hành scan tất cả ports
