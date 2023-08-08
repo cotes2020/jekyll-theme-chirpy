@@ -10,7 +10,7 @@ image:
 
 Kubernetes dashboard is a web-based user interface. You can use Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources.
 
-### ⛩️ Deploying the Dashboard UI
+### Deploying the Dashboard UI
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
@@ -124,7 +124,7 @@ kubectl get secret dashboard-token -n kubernetes-dashboard -o jsonpath={".data.t
 
 Reference Links:
 
-⭐ [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+- [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
-⭐ [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 

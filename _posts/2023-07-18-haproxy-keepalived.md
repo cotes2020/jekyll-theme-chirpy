@@ -161,7 +161,7 @@ systemctl status keepalived
 
 ### Reference Links:
 
-⭐ [Keepalived](https://keepalived.readthedocs.io/en/latest/introduction.html)
+- [Keepalived](https://keepalived.readthedocs.io/en/latest/introduction.html)
 
-⭐ [Haproxy](https://www.haproxy.org/?ref=linuxhandbook.com)
+- [Haproxy](https://www.haproxy.org/?ref=linuxhandbook.com)
 

@@ -64,6 +64,6 @@ kubectl expose pod webapp --port=80 --type=LoadBalancer
 ```
 ### Reference Links:
 
-⭐ [MetalLb Official Website](https://metallb.org/installation/)
+- [MetalLb Official Website](https://metallb.org/installation/)
 
-⭐ [Configure MetalLB](https://metallb.org/configuration/)
+- [Configure MetalLB](https://metallb.org/configuration/)
