@@ -147,7 +147,7 @@ The password for the next level is stored in a file somewhere under the inhere d
 
 ### Solution
 
-I make use of `find` command. Learn more `find` command [here](http://https://man7.org/linux/man-pages/man1/find.1.html "here")
+I make use of `find` command. Learn more `find` command [here](http://https://man7.org/linux/man-pages/man1/find.1.html "here"){:target="\_blank"}
 
 ```
 bandit5@bandit:~/inhere$ find . ! -executable -size 1033c -exec file {} + | grep ASCII
@@ -258,7 +258,7 @@ Read file `data.txt`, then I get a base64 encoded data. I solved it by using `ba
 base64 [option]… [file]
 ```
 
-Read more about base64 in [RFC4648](https://www.rfc-editor.org/rfc/rfc4648 "rfc4648")
+Read more about base64 in [RFC4648](https://www.rfc-editor.org/rfc/rfc4648 "rfc4648"){:target="\_blank"}
 
 ```
 bandit10@bandit:~$ base64 --decode data.txt
@@ -517,8 +517,8 @@ Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof an
 
 Helpful Reading Material
 
-- [Secure Socket Layer/Transport Layer Security on Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0,_2.0,_and_3.0/)
-- [OpenSSL Cookbook - Testing with OpenSSL](https://www.feistyduck.com/library/openssl-cookbook/online/)
+- [Secure Socket Layer/Transport Layer Security on Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0,_2.0,_and_3.0/){:target="\_blank"}
+- [OpenSSL Cookbook - Testing with OpenSSL](https://www.feistyduck.com/library/openssl-cookbook/online/){:target="\_blank"}
 
 ### Solution
 

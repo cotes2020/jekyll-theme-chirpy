@@ -9,7 +9,7 @@ tags:
   - hacking
 ---
 
-Download [THE PLANETS: EARTH](https://www.vulnhub.com/entry/the-planets-earth,755/)
+Download [THE PLANETS: EARTH](https://www.vulnhub.com/entry/the-planets-earth,755/){:target="\_blank"}
 
 **Level**: Easy
 
@@ -139,7 +139,7 @@ Chạy thử và bị failed
 
 Để phân tích được rõ ràng hơn, ta sẽ sử dụng `ltrace`.
 
-Nhưng trước tiên phải truyền file `reset_root` về máy local để phân tích. Searching 1 lúc thấy `netcat` có thể làm được điều này. Đọc thêm [tại đây](https://nakkaya.com/2009/04/15/using-netcat-for-file-transfers/)
+Nhưng trước tiên phải truyền file `reset_root` về máy local để phân tích. Searching 1 lúc thấy `netcat` có thể làm được điều này. Đọc thêm [tại đây](https://nakkaya.com/2009/04/15/using-netcat-for-file-transfers/){:target="\_blank"}
 
 Tại máy local
 

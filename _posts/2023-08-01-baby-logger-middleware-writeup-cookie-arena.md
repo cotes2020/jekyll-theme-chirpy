@@ -9,7 +9,7 @@ tags:
   - SQL Injection
 ---
 
-Link Challenge: [https://battle.cookiearena.org/challenges/web/baby-logger-middleware](https://battle.cookiearena.org/challenges/web/baby-logger-middleware)
+Link Challenge: [https://battle.cookiearena.org/challenges/web/baby-logger-middleware](https://battle.cookiearena.org/challenges/web/baby-logger-middleware){:target="\_blank"}.
 
 ![access log page](/posts/BabyLoggerMiddleware/access-log.PNG)
 

@@ -10,7 +10,7 @@ tags:
 published: true
 ---
 
-Link Challenge: [https://battle.cookiearena.org/challenges/web/logger-middleware](https://battle.cookiearena.org/challenges/web/logger-middleware)
+Link Challenge: [https://battle.cookiearena.org/challenges/web/logger-middleware](https://battle.cookiearena.org/challenges/web/logger-middleware){:target="\_blank"}.
 
 ![access log page](/posts/logger-middleware-cookiearena/access-log.PNG)
 

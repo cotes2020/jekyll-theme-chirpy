@@ -10,7 +10,7 @@ render_with_liquid: false
 date: "2023-07-22 20:25:45"
 ---
 
-Download [THE PLANETS: MERCURY](https://www.vulnhub.com/entry/the-planets-mercury,544/)
+Download [THE PLANETS: MERCURY](https://www.vulnhub.com/entry/the-planets-mercury,544/){:target="\_blank"}
 
 **Level**: Easy
 
@@ -48,13 +48,11 @@ Phát hiện được có tồn tại một folder `mercuryfacts/`. Truy cập n
 
 ![sql error](/posts/mercury-walkthrough/sql-error.PNG)
 
-Không còn nghi ngờ gì nữa, site này dính lỗi SQLi và trang debug hiển thị lỗi sql, cho thấy rằng payload của ta được chấp nhận để truy vấn vào database . Mở Burp và tiến hành khai thác
+Không còn nghi ngờ gì nữa, site này dính SQLi và trang debug hiển thị lỗi sql, cho thấy rằng payload của ta được chấp nhận để truy vấn vào database. Hơn thế nữa, dựa vào syntax error xác định được Union-based SQLi. Mở Burp và tiến hành khai thác.
 <br>
 
 ## Exploitation
 
-Cá nhân mình thì mình thích dùng tools cho lẹ (cụ thể là [sqlmap](/posts/sqlmap/)), nhưng để hiểu rõ thì trong bài viết này mình sẽ tự viết payload.
-<br>
 Thử câu truy vấn "thần thánh" `or 1=1` để bắt đầu khai thác:
 
 ```plaintext

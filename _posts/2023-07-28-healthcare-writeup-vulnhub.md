@@ -10,7 +10,7 @@ tags:
 pin: true
 ---
 
-Download [Healthcare VulnHub](https://www.vulnhub.com/entry/healthcare-1,522/).
+Download [Healthcare VulnHub](https://www.vulnhub.com/entry/healthcare-1,522/){:target="\_blank"}.
 
 ## Enumeration
 
@@ -29,7 +29,7 @@ _Openemr login page_
 
 ## Exploitation
 
-Đã biết ứng dụng đang chạy Openemr - một phần mềm mã nguồn mở, quản lý hành nghề y tế gì đó. Đặc biệt hơn, Openemr v4.1.0 chứa lỗ hổng unauthenticated blind SQL injection, có mã [CVE-2012-2115](https://www.cvedetails.com/cve/CVE-2012-2115/). Sau khi nhấn login, thông tin sẽ được xác thực qua `validateUser.php`. Nếu user tồn tại thì truy vấn sẽ luôn trả về ít nhất 1 hàng. Đồng nghĩa với việc ta có thể chèn payload SQL injection tại đây và thực hiện `Blind SQL Injection`.
+Đã biết ứng dụng đang chạy Openemr - một phần mềm mã nguồn mở, quản lý hành nghề y tế gì đó. Đặc biệt hơn, Openemr v4.1.0 chứa lỗ hổng unauthenticated blind SQL injection, có mã [CVE-2012-2115](https://www.cvedetails.com/cve/CVE-2012-2115/){:target="\_blank"}. Sau khi nhấn login, thông tin sẽ được xác thực qua `validateUser.php`. Nếu user tồn tại thì truy vấn sẽ luôn trả về ít nhất 1 hàng. Đồng nghĩa với việc ta có thể chèn payload SQL injection tại đây và thực hiện `Blind SQL Injection`.
 
 Dùng `sqlmap` để khai thác:
 
@@ -65,7 +65,7 @@ _Giao diện sau khi login Openemr_
 
 ## Remote Code Execution
 
-Sau khi đã đặt chân vào trang quản trị của Openemr v4.1.0, chúng ta có thể khai thác vuln mới có mã [CVE-2011-5161](https://www.cvedetails.com/cve/CVE-2011-5161/), cho phép người dùng upload file bất kì và không có bất cứ validation nào. Điều này giúp chúng ta dễ dàng upload và chạy reverse shell.
+Sau khi đã đặt chân vào trang quản trị của Openemr v4.1.0, chúng ta có thể khai thác vuln mới có mã [CVE-2011-5161](https://www.cvedetails.com/cve/CVE-2011-5161/){:target="\_blank"}, cho phép người dùng upload file bất kì và không có bất cứ validation nào. Điều này giúp chúng ta dễ dàng upload và chạy reverse shell.
 
 Tìm thủ công nơi có thể upload file, khả năng nhất là nơi update thông tin của bệnh nhân/khách hàng. Tiến hành truy cập đến `Patient/Client`>`New/Search`.
 
