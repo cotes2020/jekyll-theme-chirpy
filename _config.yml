@@ -66,14 +66,16 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: dark# [light|dark]
+theme_mode: dark 
+
+# [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://chirpy-img.netlify.app"
+img_cdn: "https://github.com/joseoyeon/joseoyeon.github.io"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/assets/img/favicons/android-chrome-512x512.png"
