@@ -47,26 +47,21 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
-
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
+google_site_verification: google_meta_tag_verification # change to your verification string
+# --------------------------
 
 google_analytics:
-  id: # fill in your Google Analytics ID
-
-# Prefer color scheme setting.
-#
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
-#
+  id: 'G-4WFK014JF5'              # fill in your Google Analytics ID
+  # Google Analytics pageviews report settings
+  pv:
+    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
+    cache_path:       # the local PV cache data, friendly to visitors from GFW region
 # Available options:
 #
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: [dark]
+theme_mode: dark # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -76,7 +71,8 @@ theme_mode: [dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://github.com/joseoyeon/joseoyeon.github.io/blob/master/assets/img/favicons/android-chrome-192x192.png"
+avatar: '/assets/img/favicons/android-chrome-512x512.png'
+
 
 # boolean type, the global switch for TOC in posts.
 toc: true
