@@ -52,10 +52,10 @@ h1 + .post-meta {
   }
 
   em {
-    @extend %text-color;
+    color: var(--text-color);
 
     a {
-      @extend %text-color;
+      color: inherit;
     }
   }
 }
@@ -73,7 +73,7 @@ h1 + .post-meta {
     line-height: 1.2rem;
 
     > a {
-      color: var(--text-color);
+      @extend %text-highlight;
 
       &:hover {
         @extend %link-hover;
@@ -99,15 +99,18 @@ h1 + .post-meta {
     .share-icons {
       font-size: 1.2rem;
 
-      > i {
-        position: relative;
-        bottom: 1px;
-
-        @extend %cursor-pointer;
-
-        &:hover {
+      > *:hover {
+        i {
           @extend %btn-share-hovor;
         }
+      }
+
+      button {
+        position: relative;
+        bottom: 2px;
+        padding: 0;
+
+        @extend %cursor-pointer;
       }
 
       a {
@@ -117,10 +120,6 @@ h1 + .post-meta {
 
         &:hover {
           text-decoration: none;
-
-          > i {
-            @extend %btn-share-hovor;
-          }
         }
       }
 
@@ -157,8 +156,6 @@ h1 + .post-meta {
   line-height: 2rem;
 
   .post-tag {
-    background: var(--tag-bg);
-
     &:hover {
       @extend %link-hover;
       @extend %tag-hover;
@@ -334,7 +331,7 @@ h1 + .post-meta {
   em {
     @extend %normal-font-style;
 
-    color: var(--relate-post-date);
+    color: var(--text-muted-color);
   }
 
   p {
