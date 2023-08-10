@@ -64,6 +64,10 @@ Update the variables of `_config.yml`{: .filepath} as needed. Some of them are t
 - `timezone`
 - `lang`
 
+### Social Contact Options
+
+Social contact options are displayed at the bottom of the sidebar. You can turn on/off the specified contacts in file `_data/contact.yml`{: .filepath }.
+
 ### Customizing Stylesheet
 
 If you need to customize the stylesheet, copy the theme's `assets/css/style.scss`{: .filepath} to the same path on your Jekyll site, and then add the custom style at the end of it.
