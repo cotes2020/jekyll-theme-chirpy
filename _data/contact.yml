@@ -1,15 +1,8 @@
 #  The contact options.
-- type: mathstodon
+- 
+  type: mathstodon
   icon: 'fab fa-mastodon'
   url: 'https://mathstodon.xyz/@Booodaness'
--
-  type: discord
-  icon: 'fab fa-discord'
-  url: 'https://booodaness.github.io/psi-phi/'
--
-  type: quora
-  icon: 'fab fa-quora'
-  url: 'https://www.quora.com/profile/Siddhartha-Bhattacharjee-45'
 -
   type: reddit
   icon: 'fab fa-reddit'
@@ -22,9 +15,9 @@
   icon: 'fab fa-orcid'
   url: https://orcid.org/0000-0001-9510-2066
 -
-  type: online-sequencer
-  icon: 'fas fa-music'
-  url: 'https://onlinesequencer.net/members/42571'
+  type: zotero
+  icon: 'fas fa-book'
+  url: https://www.zotero.org/booodaness
 -
   type: email
   icon: 'fas fa-envelope'
