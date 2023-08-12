@@ -7,7 +7,7 @@ categories:
 tags:
   - middleware
   - SQL Injection
-published: true
+published: false
 ---
 
 Link Challenge: [https://battle.cookiearena.org/challenges/web/logger-middleware](https://battle.cookiearena.org/challenges/web/logger-middleware){:target="\_blank"}.

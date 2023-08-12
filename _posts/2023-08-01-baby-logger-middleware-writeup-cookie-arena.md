@@ -7,6 +7,7 @@ categories:
 tags:
   - middleware
   - SQL Injection
+published: false
 ---
 
 Link Challenge: [https://battle.cookiearena.org/challenges/web/baby-logger-middleware](https://battle.cookiearena.org/challenges/web/baby-logger-middleware){:target="\_blank"}.
