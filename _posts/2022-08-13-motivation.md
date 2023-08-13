@@ -1,4 +1,11 @@
-# Motivation
+---
+layout: post
+title:  Motivation
+date:   2023-08-13 15:47:29
+description: My thought on situations, people and motivation.
+tags: opinion conscience
+categories: personal
+---
 
 It's a big and small word at the same time. For some people it works and for some it doesn't. I myself was a firm believer that motivaational words/speech doesn't work. This is true even today, it's just another realization has struck in past month. Now, I believe motivational words only work on the people who wants and are willing to work on themselves. On some people it doesn't work at all like me, but, for some people it changes their life.  
 
