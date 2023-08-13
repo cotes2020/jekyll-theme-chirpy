@@ -22,7 +22,7 @@ I have categorized people in two categories but I agree that there might be some
 
 ## Spectrum
 Based on the above categorizations we will see people existing on this plane.
-![Motivation Plane](assets/posts/motivation-plane.png)
+![Motivation Plane](/assets/posts/motivation-plane.png)
 
 
 Whereever we are on this plane we need to understand ourselves and seek personal and professional help from people who we know have a best interest at heart. If we are able to understand where we are, then, we can work understanding why we are where we are, and then we should work on finding ways in ways the problem can be solved. We need to think of multiple way because we don't what might work and work on the problem with persistence and hope.
