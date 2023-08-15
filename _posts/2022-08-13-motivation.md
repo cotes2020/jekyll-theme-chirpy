@@ -28,7 +28,7 @@ I have categorized people in two categories but I agree that there might be some
 > **Note:** People cannot be categorized into just either of the category wholly. It depends on the specifics of the situation, time and where they are. So, just understanding it itself is liberating as people (even rational) keep on jumping from one quadrant to another.
 
 ## Spectrum
-Based on the above categorizations we will see people existing on this plane.
+Based on the above categorizations we will see people existing on this plane. The curve on the plane is irrelevant for now. I want to understand the relationship among these quadrants and then will update it to make it more meaningful.
 ![Motivation Plane](/assets/posts/motivation-plane.png)
 
 
