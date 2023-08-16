@@ -2,6 +2,10 @@ name: "Build and Deploy"
 on:
   push:
     branches:
+<<<<<<< HEAD
+=======
+      - main
+>>>>>>> 6ff85217e8f8b00053dca100505b0afc7deefb14
       - master
     paths-ignore:
       - .gitignore
