@@ -18,7 +18,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 구름의 개발일지  # the main title
+title: 구름의 개발일지 # the main title
 
 tagline: ᴏɴʟʏ ɪ ᴄᴀɴ ᴄʜᴀɴɢᴇ ᴍᴇ ʟɪғᴇ, ɴᴏ ᴏɴᴇ ᴄᴀɴ ᴅᴏ ɪᴛ ғᴏʀ ᴍᴇ. # it will display as the sub-title
 
@@ -37,7 +37,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: languor98
+  name: lanuor98
   email: kyeoung1218@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -76,7 +76,7 @@ theme_mode: # [light|dark]
 img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/profile.jpg"
+avatar: "https://ko.gravatar.com/userimage/238778842/66414bc67c5585f585c391f4601b9825.jpeg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
