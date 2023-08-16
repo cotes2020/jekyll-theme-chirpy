@@ -51,8 +51,7 @@ To explore usage, development, and upgrade guide of the project, please refer to
 
 ## Contributing
 
-Reporting bugs and helping to improve source code or documentation is always welcome.
-For more information, see the "[Contributing Guidelines][contribute-guide]".
+Contributions (Issues/PRs/Discussions) are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. For details, see the "[Contributing Guidelines][contribute-guide]".
 
 ## Credits
 
