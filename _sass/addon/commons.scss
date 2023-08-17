@@ -2,7 +2,7 @@
   The common styles
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 html {
   @media (prefers-color-scheme: light) {
@@ -37,7 +37,7 @@ body {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'Gowun Dodum';
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* --- Typography --- */

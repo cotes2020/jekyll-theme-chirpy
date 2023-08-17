@@ -23,7 +23,7 @@ title: 이것저것 블로그 # the main title
 tagline: 저희 블로그 정상영업합니다. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  이것저것
+  꾸준히 길게 하고싶다
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://littley-y.github.io"
