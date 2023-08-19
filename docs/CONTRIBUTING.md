@@ -84,8 +84,8 @@ When development is complete, create a [Conventional Commit][cc] with Git.
 
 ## Helpful Resources
 
-- [Code of conduct](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/CODE_OF_CONDUCT.md)
-- [Security policy](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/SECURITY.md)
+- [Code of conduct](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CODE_OF_CONDUCT.md)
+- [Security policy](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/SECURITY.md)
 
 [latest-ver]: https://github.com/cotes2020/jekyll-theme-chirpy/releases/latest
 [wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki

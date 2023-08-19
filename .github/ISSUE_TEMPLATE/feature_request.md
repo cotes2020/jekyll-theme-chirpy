@@ -4,8 +4,7 @@ about: Suggest an idea for this project
 labels: enhancement
 ---
 
-> **Tips**: Remember, contributions to this repository should follow the
-[contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/CONTRIBUTING.md).
+> **Tips**: Remember, contributions to this repository should follow the [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
 
 ## Is your feature request related to a problem? Please describe
 

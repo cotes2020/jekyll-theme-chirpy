@@ -3,7 +3,7 @@ name: Bug Report
 about: Create a report to help us improve
 ---
 
-> **Tips**: Remember, contributions to this repository should follow the [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/CONTRIBUTING.md).
+> **Tips**: Remember, contributions to this repository should follow the [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
 
 ## Describe the bug
 
