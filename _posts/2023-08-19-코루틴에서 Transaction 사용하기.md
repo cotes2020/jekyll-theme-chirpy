@@ -2,7 +2,7 @@
 title: 코루틴에서 Transaction 사용하기
 authors: jongin_kim
 date: 2023-08-19 01:48:00 +0900
-categories: [데이터베이스]
+categories: [spring]
 tags: [kotlin ,spring, transaction]
 ---
 # 코루틴에서 Transaction 사용하기
