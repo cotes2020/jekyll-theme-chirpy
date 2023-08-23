@@ -26,26 +26,25 @@ description: >- # used by seo meta and the atom feed
   
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://github.com/Sarfraz-droid/upc-interview-experiences"
 
-# github:
-#   username: github_username # change to your github username
+github: 
+  username: Sarfraz-droid/upc-interview-experiences # change to your github username
 
 # twitter:
 #   username: twitter_username # change to your twitter username
 
-# social:
-#   # Change to your full name.
-#   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-#   name: your_full_name
-#   email: example@domain.com # change to your email address
-#   links:
-#     # The first element serves as the copyright owner's link
-#     - https://twitter.com/username # change to your twitter homepage
-#     - https://github.com/username # change to your github homepage
-#     # Uncomment below to add more social links
-#     # - https://www.facebook.com/username
-#     # - https://www.linkedin.com/in/username
+social:
+  # Change to your full name.
+  # It will be displayed as the default author of the posts and the copyright owner in the Footer
+  name: Mohammad Sarfraz Alam
+  email: placements@jmi.ac.in # change to your email address
+  links:
+    # The first element serves as the copyright owner's link
+    - https://github.com/Sarfraz-droid/upc-interview-experiences # change to your github homepage
+    # Uncomment below to add more social links
+    # - https://www.facebook.com/username
+    # - https://www.linkedin.com/in/username
 
 # google_site_verification: # fill in to your verification string
 
@@ -92,8 +91,8 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
+    repo: Sarfraz-droid/upc-interview-experiences
+    repo_id: upc-interview-experiences
     category:
     category_id:
     mapping: # optional, default to 'pathname'
