@@ -27,7 +27,7 @@ In the case of a body accelerating by virtue of changing mass, there are two dis
 
 - The part of the body thrust out from the main part. The mass of this evolves with proper time as $$m \left( 0 \right) - m \left( \tau \right)$$ assuming, without loss of generality, that the main body starts losing mass at $$\tau = 0$$.
 
-Let the 4-velocity of the first part in the frame of an observer tracking the body be labelled as $$U^\mu \left( \tau \right)$$. Let the corresponding 3-speed be $$u \left( \tau \right) = u_i \left( \tau \right) u^i \left( \tau \right)$$ such that $$U^i \left( \tau \right) = \gamma \left( u_i \left( \tau \right) u^i \left( \tau \right) \left( \tau \right) \right) u^i \left( \tau \right)$$. Similarly, let the 4-velocity and linked 3-speed of the ejection being thrust behind be denoted as $$V^\mu \left( \tau \right)$$ and $$v \left( \tau \right)$$, respectively.
+Let the 4-velocity of the first part in the frame of an observer tracking the body be labelled as $$U^\mu \left( \tau \right)$$. Let the corresponding 3-speed be $$u \left( \tau \right) = u_i \left( \tau \right) u^i \left( \tau \right)$$ such that $$U^i \left( \tau \right) = \gamma \left( u_i \left( \tau \right) u^i \left( \tau \right) \right) u^i \left( \tau \right)$$. Similarly, let the 4-velocity and linked 3-speed of the ejection being thrust behind be denoted as $$V^\mu \left( \tau \right)$$ and $$v \left( \tau \right)$$, respectively.
 
 Last but not the least, without loss of generality, let the initial 4-velocity of the body be zero.
 
