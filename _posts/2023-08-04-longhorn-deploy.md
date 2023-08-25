@@ -66,9 +66,7 @@ helm repo update
 Retrieve the package from longhorn repository, and download it locally:
 
 ```sh
-helm pull longhorn/longhorn
-
-tar -zxvf longhorn-1.5.1.tgz
+helm fetch longhorn/longhorn --untar
 ```
 
 Install Longhorn in the longhorn namespace:
@@ -79,14 +77,14 @@ helm install longhorn longhorn/longhorn --values /tmp/longhorn/values.yaml -n lo
 
 To confirm that the deployment succeeded, run:
 ```sh
-kubectl -n longhorn-system get pod
+kubectl -n longhorn get pod
 ```
 
 ### Accessing the Longhorn UI:
 
 Get the Longhorn’s external service IP:
 ```sh
-kubectl -n longhorn-system get svc
+kubectl -n longhorn get svc
 ```
 Use `CLUSTER-IP` of the `longhorn-frontend` to access the Longhorn UI using port forward:
 

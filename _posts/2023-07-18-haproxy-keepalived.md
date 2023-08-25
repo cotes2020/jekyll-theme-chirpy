@@ -5,7 +5,7 @@ date: 2023-07-18 21:19:00 +0800
 categories: loadbalancer
 tags: haproxy
 image:
-  path: /assets/img/headers/haproxy.jpg
+  path: /assets/img/headers/HAProxy.png
 ---
 
 ### Prerequisites:

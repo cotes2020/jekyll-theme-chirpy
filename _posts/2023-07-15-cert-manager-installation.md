@@ -51,6 +51,7 @@ Import the CA certificate in the `trusted Root Ca store` of your clients
 ### Create cluster issuer object
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -58,6 +59,7 @@ metadata:
 spec:
   ca:
     secretName: dev-ca-key-pair
+EOF
 ```
 
 ### Create a secret that will be used for signing in *cert-manager* name space
@@ -89,6 +91,7 @@ A `Certificate` resource specifies fields that are used to generate certificat
 This should be created in the same namespace where your *application* is installed
 
 ```yml
+cat <<EOF | kubectl apply -f -
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -101,11 +104,13 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - nginx.mkbn.tech
+EOF
 ```
 
 This will create the certificate object in *nginx* ns , along with secret call *nginx-tls-secret* which can be used in our nginx-ingress config
 
 ```yml
+cat <<EOF | kubectl apply -f -
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -131,6 +136,7 @@ spec:
   - hosts:
     - nginx.mkbn-tech
     secretName: nginx-tls-secret
+EOF
 ```
 
 ### Reference Links:
