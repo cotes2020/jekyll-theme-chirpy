@@ -31,9 +31,6 @@ dayjs:
     relativeTime: /assets/lib/dayjs/plugin/relativeTime.min.js
     localizedFormat: /assets/lib/dayjs/plugin/localizedFormat.min.js
 
-countup:
-  js: /assets/lib/countup.js/countUp.min.js
-
 magnific-popup:
   css: /assets/lib/magnific-popup/magnific-popup.css
   js: /assets/lib/magnific-popup/jquery.magnific-popup.min.js

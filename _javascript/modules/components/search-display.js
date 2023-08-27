@@ -4,7 +4,7 @@
 const $btnSbTrigger = $('#sidebar-trigger');
 const $btnSearchTrigger = $('#search-trigger');
 const $btnCancel = $('#search-cancel');
-const $main = $('#main');
+const $content = $('#main>.row');
 const $topbarTitle = $('#topbar-title');
 const $searchWrapper = $('#search-wrapper');
 const $resultWrapper = $('#search-result-wrapper');
@@ -58,7 +58,7 @@ class ResultSwitch {
       // the block method must be called before $(#main) unloaded.
       ScrollBlocker.on();
       $resultWrapper.removeClass(C_UNLOADED);
-      $main.addClass(C_UNLOADED);
+      $content.addClass(C_UNLOADED);
       ScrollBlocker.resultVisible = true;
     }
   }
@@ -70,7 +70,7 @@ class ResultSwitch {
         $hints.removeClass(C_UNLOADED);
       }
       $resultWrapper.addClass(C_UNLOADED);
-      $main.removeClass(C_UNLOADED);
+      $content.removeClass(C_UNLOADED);
 
       // now the release method must be called after $(#main) display
       ScrollBlocker.off();
