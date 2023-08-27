@@ -1,36 +1,34 @@
 <!-- The Footer -->
 
 <footer>
-  <div class="container pl-lg-4 pr-lg-4">
-    <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
-      <div class="footer-left">
-        <p class="mb-0">
-          © {{ 'now' | date: "%Y" }}
-          <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-          {% if site.data.locales[site.lang].copyright.brief %}
-          <span data-toggle="tooltip" data-placement="top"
-            title="{{ site.data.locales[site.lang].copyright.verbose }}">{{ site.data.locales[site.lang].copyright.brief }}</span>
-          {% endif %}
-        </p>
-      </div>
-
-      <div class="footer-right">
-        <p class="mb-0">
-
-          {%- capture _platform -%}
+  <div class="container px-lg-4">
+    <div class="d-flex justify-content-center align-items-center text-muted mx-md-3">
+      <p>
+        {%- capture _platform -%}
           <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-          {%- endcapture -%}
+        {%- endcapture -%}
 
-          {%- capture _theme -%}
+        {%- capture _theme -%}
           <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
-          {%- endcapture -%}
+        {%- endcapture -%}
 
-          {{ site.data.locales[site.lang].meta
-            | default: 'Using the :PLATFORM theme :THEME.'
-            | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
-          }}
-        </p>
-      </div>
+        {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
+      </p>
+
+      <p>
+        {{- '©' }}
+        {{ 'now' | date: '%Y' }}
+        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+        {% if site.data.locales[include.lang].copyright.brief %}
+          <span
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="{{ site.data.locales[include.lang].copyright.verbose }}"
+          >
+            {{- site.data.locales[include.lang].copyright.brief -}}
+          </span>
+        {% endif %}
+      </p>
     </div>
   </div>
 </footer>
