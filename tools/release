@@ -48,7 +48,7 @@ help() {
   echo
   echo "Usage:"
   echo
-  echo "   bash ./tools/release.sh [options]"
+  echo "   bash ./tools/release [options]"
   echo
   echo "Options:"
   echo "     -k, --skip-versioning    Skip the step of generating the version number."
@@ -164,15 +164,14 @@ build_gem() {
 release() {
   _version="$1" # X.Y.Z
 
+  git checkout "$PROD_BRANCH"
+  git merge --no-ff --no-edit "$working_branch"
+
   # Create a new tag on working branch
   echo -e "Create tag v$_version\n"
   git tag "v$_version"
 
-  git checkout "$PROD_BRANCH"
-  git merge --no-ff --no-edit "$working_branch"
-
-  # merge from patch branch to the staging branch
-  # NOTE: This may break due to merge conflicts, so it may need to be resolved manually.
+  # Merge from patch branch to the staging branch
   if [[ $working_branch == hotfix/* ]]; then
     git checkout "$STAGING_BRANCH"
     git merge --no-ff --no-edit "$working_branch"
@@ -194,6 +193,8 @@ main() {
 
   # Change heading of Patch version to level 2 (a bug from `standard-version`)
   sed -i "s/^### \[/## \[/g" CHANGELOG.md
+  # Replace multiple empty lines with a single empty line
+  sed -i "/^$/N;/^\n$/D" CHANGELOG.md
 
   _version="$(grep '"version":' "$NODE_CONFIG" | sed 's/.*: "//;s/".*//')"
 
