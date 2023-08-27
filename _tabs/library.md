@@ -17,7 +17,8 @@ List of Books I have read, and I plan to read.
 
 ## Fiction
 
-1. [Current] Trash of the Count Family 
+1. [Intermittent reading] The marriage of an esteemed supreme healer, a noble ruler (female prot)
+1. [Discontinued] Trash of the Count Family (boring after a few hundred chapters)  (different then typical plot)
 1. Farseer Trilogy - Robin Hobb
     1. Assassin's Apprentice
     1. Royal Assassin
