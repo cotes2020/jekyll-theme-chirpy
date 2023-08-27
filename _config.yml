@@ -18,9 +18,9 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Srivatsa # the main title
+title: Srivatsa's view # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Que Sera, Sera, but never stop disrupting # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Srivatsa RJ personal website
