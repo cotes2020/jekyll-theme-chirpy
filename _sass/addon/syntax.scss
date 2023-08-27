@@ -63,6 +63,7 @@ html {
     font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
+    color: var(--code-snippets-color);
   }
 
   table {
