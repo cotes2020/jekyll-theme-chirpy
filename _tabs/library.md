@@ -28,9 +28,9 @@ List of Books I have read, and I plan to read.
 1. Primordian Throne of Blood
 
 ## Non-Fiction
-
-1. [TODO] The Psychology of Money - Morgan Housel
+1. [In Progress] Thinking Fast and slow - Daniel Kahneman
 1. [TODO] Eat That Frog - Brian Tracy
+1. The Psychology of Money - Morgan Housel
 1. The lean startup - Eric Reis
 1. Masters of Scale - Deron Triff, June Cohen, and Reid Hoffmans
 1. Zero To One - Peter Theil
