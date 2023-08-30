@@ -23,13 +23,13 @@ title: Chirpy # the main title
 tagline: A text-focused Jekyll theme # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  A minimal, responsive and feature-rich Jekyll theme for technical writing. Hope this works.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ""
 
 github:
-  username: github_username # change to your github username
+  username: SamNelsonData # change to your github username
 
 twitter:
   username: twitter_username # change to your twitter username
@@ -37,8 +37,8 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Sam Nelson
+  email: samnelson@berkeley.edu # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username # change to your twitter homepage
@@ -73,10 +73,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://chirpy-img.netlify.app"
+img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar:
 
 # boolean type, the global switch for TOC in posts.
 toc: true
