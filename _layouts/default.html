@@ -22,13 +22,13 @@ layout: compress
   <body>
     {% include sidebar.html lang=lang %}
 
-    <div id="main-wrapper" class="d-flex justify-content-center">
+    <main id="main-wrapper" class="d-flex justify-content-center">
       <div id="main" class="container px-xxl-5">
         {% include topbar.html lang=lang %}
         {{ content }}
         {% include_cached search-results.html lang=lang %}
       </div>
-    </div>
+    </main>
 
     {% include_cached footer.html lang=lang %}
 

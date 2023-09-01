@@ -13,7 +13,7 @@ tail_includes:
 
 <h1 data-toc-skip>{{ page.title }}</h1>
 
-<div class="post-meta text-muted">
+<article class="post-meta text-muted">
     <!-- published date -->
     <span>
       {{ site.data.locales[lang].post.posted }}
@@ -77,13 +77,13 @@ tail_includes:
 
   </div> <!-- .d-flex -->
 
-</div> <!-- .post-meta -->
+</article> <!-- .post-meta -->
 
-<div class="post-content">
+<article class="post-content">
   {{ content }}
-</div>
+</article>
 
-<div class="post-tail-wrapper text-muted">
+<article class="post-tail-wrapper text-muted">
 
   <!-- categories -->
   {% if page.categories.size > 0 %}
@@ -130,4 +130,4 @@ tail_includes:
 
   </div><!-- .post-tail-bottom -->
 
-</div><!-- div.post-tail-wrapper -->
+</article><!-- div.post-tail-wrapper -->
