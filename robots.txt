@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: 
 
 Sitemap: https://littley-y.github.io/sitemap.xml
