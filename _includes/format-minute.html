@@ -1,0 +1,7 @@
+
+<!--
+  Minute formatter: 185 minutes -> 3:05
+-->
+
+
+<em>{{ include.minutes | divided_by: 60 }}:{{ include.minutes | modulo: 60 | prepend: "00" | slice: -2, 2 }}</em>

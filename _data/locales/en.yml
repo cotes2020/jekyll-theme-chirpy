@@ -62,6 +62,7 @@ post:
     prompt: read
   relate_posts: Further Reading
   share: Share
+  time_spent_on_task: Time spent
   button:
     next: Newer
     previous: Older

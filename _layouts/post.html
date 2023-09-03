@@ -97,6 +97,12 @@ tail_includes:
         {% endfor %}
       </div>
     {% endif %}
+    {% if page.minutes %}
+    <span>
+      {{ site.data.locales[lang].post.time_spent_on_task }}
+      {% include format-minute.html minutes=page.minutes %}
+    </span>
+    {% endif %}
 
     <!-- tags -->
     {% if page.tags.size > 0 %}
