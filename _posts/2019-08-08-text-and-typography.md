@@ -23,7 +23,7 @@ This post is to show Markdown syntax rendering on [**Chirpy**](https://github.co
 
 <h3 data-toc-skip>H3 - heading</h3>
 
-<h4>H4 - heading</h4>
+<h4 data-toc-skip>H4 - heading</h4>
 
 ## Paragraph
 
