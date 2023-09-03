@@ -3,5 +3,16 @@
   Minute formatter: 185 minutes -> 3:05
 -->
 
+{% assign wrap_elem = include.wrap | default: 'em' %}
+{% assign round_to_hour = include.round_to_hour | default: false %}
 
-<em>{{ include.minutes | divided_by: 60 }}:{{ include.minutes | modulo: 60 | prepend: "00" | slice: -2, 2 }}</em>
+<{{ wrap_elem }}
+  class="{% if include.class %}{{ include.class }}{% endif %}"
+>
+  {% if round_to_hour != true %}
+    {{ include.minutes | divided_by: 60 }}:{{ include.minutes | modulo: 60 | prepend: "00" | slice: -2, 2 }}
+  {% else %}
+    {{ include.minutes | divided_by: 60 }}
+  {% endif %}
+</{{ wrap_elem }}>
+

@@ -11,13 +11,23 @@ layout: page
     {{ page.title }}
     <span class="lead text-muted ps-2">{{ page.posts | size }}</span>
   </h1>
+  {% assign total_time = 0 %}
+  {% for post in page.posts %}
+    {% assign total = total | plus: post.minutes %}
+  {% endfor %}
 
-  <ul class="content ps-0">
+  <h4>Time logged: {% include format-minute.html minutes=total wrap='span' class='text-muted' %} </h4>
+  <ul class="post-content ps-0">
+    <li class="d-flex justify-content-between px-md-3">
+      Entry
+      <span class="dash flex-grow-1"></span>
+      <span class='text-muted small'>Time spent</span>
+      </li>
     {% for post in page.posts %}
       <li class="d-flex justify-content-between px-md-3">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         <span class="dash flex-grow-1"></span>
-        {% include datetime.html date=post.date class='text-muted small text-nowrap' lang=lang %}
+        {% include format-minute.html minutes=post.minutes wrap='span' class='text-muted small' %}
       </li>
     {% endfor %}
   </ul>
