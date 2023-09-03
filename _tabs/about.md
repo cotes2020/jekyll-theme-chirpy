@@ -9,3 +9,4 @@ I am a software engineer by trade. I enjoy flying and currently hold PPL and IFR
 I currently live in the Bay area, and I am builiding [Sling Tsi](https://www.airplanefactory.com/aircraft/sling-tsi/). This is my blog to track the build progress!
 
 And you can also visit my [youtube channel](https://youtube.com/@fanlikesfly?si=js8FdJK355CfoLQp) for my flight video logs.
+
