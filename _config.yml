@@ -18,7 +18,6 @@ timezone: America/Los_Angeles
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Build a Sling (Tsi) # the main title
 title: Build a Sling # the main title
 
 tagline: Fan's build log for Sling Tsi # it will display as the sub-title
