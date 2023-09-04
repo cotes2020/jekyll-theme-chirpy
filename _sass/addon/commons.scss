@@ -696,6 +696,7 @@ $btn-mb: 0.5rem;
   width: $sidebar-width;
   z-index: 99;
   background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -835,6 +836,7 @@ $btn-mb: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
 
       &:hover {
         background-color: var(--sidebar-hover-bg);
@@ -868,7 +870,7 @@ $btn-mb: 0.5rem;
       @extend %no-cursor;
       @include ml-mr(calc(($btn-gap - $btn-border-width) / 2));
 
-      background-color: var(--sidebar-muted-color);
+      background-color: var(--sidebar-btn-color);
       content: '';
       width: $btn-border-width;
       height: $btn-border-width;
