@@ -77,10 +77,10 @@ check_env() {
   _check_init
 }
 
-checkout_latest_release() {
-  hash=$(git log --grep="chore(release):" -1 --pretty="%H")
-  git reset --hard "$hash"
-}
+# checkout_latest_release() {
+#   hash=$(git log --grep="chore(release):" -1 --pretty="%H")
+#   git reset --hard "$hash"
+# }
 
 init_files() {
   if $_no_gh; then
@@ -106,17 +106,17 @@ init_files() {
   _sedi "/^assets.*\/dist/d" .gitignore
 }
 
-commit() {
-  git add -A
-  git commit -m "chore: initialize the environment" -q
-  echo -e "\n[INFO] Initialization successful!\n"
-}
+# commit() {
+#   git add -A
+#   git commit -m "chore: initialize the environment" -q
+#   echo -e "\n[INFO] Initialization successful!\n"
+# }
 
 main() {
   check_env
-  checkout_latest_release
+  # checkout_latest_release
   init_files
-  commit
+  # commit
 }
 
 while (($#)); do
