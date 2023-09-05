@@ -908,8 +908,7 @@ $btn-mb: 0.5rem;
 }
 
 #topbar {
-  /* icons */
-  i {
+  button i {
     color: #999999;
   }
 
@@ -938,11 +937,11 @@ $btn-mb: 0.5rem;
   display: none;
 }
 
-#search-wrapper {
+search {
   display: flex;
   width: 100%;
   border-radius: 1rem;
-  border: 1px solid var(--search-wrapper-border-color);
+  border: 1px solid var(--search-border-color);
   background: var(--main-bg);
   padding: 0 0.5rem;
 
@@ -956,7 +955,6 @@ $btn-mb: 0.5rem;
 /* 'Cancel' link */
 #search-cancel {
   color: var(--link-color);
-  margin-left: 0.75rem;
   display: none;
   white-space: nowrap;
 
@@ -1293,7 +1291,7 @@ $btn-mb: 0.5rem;
   }
 
   #breadcrumb,
-  #search-wrapper {
+  search {
     display: none;
   }
 
@@ -1352,7 +1350,7 @@ $btn-mb: 0.5rem;
     display: none;
   }
 
-  #search-wrapper {
+  search {
     max-width: $search-max-width;
   }
 
@@ -1419,7 +1417,7 @@ $btn-mb: 0.5rem;
 /* --- desktop mode, both sidebar and panel are visible --- */
 
 @media all and (min-width: 1200px) {
-  #search-wrapper {
+  search {
     margin-right: 4rem;
   }
 
@@ -1466,7 +1464,7 @@ $btn-mb: 0.5rem;
     left: $sidebar-width-large;
   }
 
-  #search-wrapper {
+  search {
     margin-right: calc(
       #{$main-content-max-width} * 0.25 - #{$search-max-width} - 0.75rem
     );

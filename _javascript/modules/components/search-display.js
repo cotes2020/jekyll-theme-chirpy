@@ -6,7 +6,7 @@ const $btnSearchTrigger = $('#search-trigger');
 const $btnCancel = $('#search-cancel');
 const $content = $('#main-wrapper>.container>.row');
 const $topbarTitle = $('#topbar-title');
-const $searchWrapper = $('#search-wrapper');
+const $search = $('search');
 const $resultWrapper = $('#search-result-wrapper');
 const $results = $('#search-results');
 const $input = $('#search-input');
@@ -39,13 +39,13 @@ class MobileSearchBar {
     $btnSbTrigger.addClass(C_UNLOADED);
     $topbarTitle.addClass(C_UNLOADED);
     $btnSearchTrigger.addClass(C_UNLOADED);
-    $searchWrapper.addClass(C_FLEX);
+    $search.addClass(C_FLEX);
     $btnCancel.addClass(C_LOADED);
   }
 
   static off() {
     $btnCancel.removeClass(C_LOADED);
-    $searchWrapper.removeClass(C_FLEX);
+    $search.removeClass(C_FLEX);
     $btnSbTrigger.removeClass(C_UNLOADED);
     $topbarTitle.removeClass(C_UNLOADED);
     $btnSearchTrigger.removeClass(C_UNLOADED);
@@ -98,11 +98,11 @@ export function displaySearch() {
   });
 
   $input.on('focus', function () {
-    $searchWrapper.addClass(C_FOCUS);
+    $search.addClass(C_FOCUS);
   });
 
   $input.on('focusout', function () {
-    $searchWrapper.removeClass(C_FOCUS);
+    $search.removeClass(C_FOCUS);
   });
 
   $input.on('input', () => {
