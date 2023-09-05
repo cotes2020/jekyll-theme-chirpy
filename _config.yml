@@ -41,8 +41,8 @@ social:
   email: cabistee69@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/cabiste69 # change to your twitter homepage
     - https://github.com/cabiste69 # change to your github homepage
+    - https://twitter.com/cabiste69 # change to your twitter homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/cabiste
@@ -131,6 +131,8 @@ collections:
   tabs:
     output: true
     sort_by: order
+  projects:
+    output: true
 
 defaults:
   - scope:
