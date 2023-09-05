@@ -17,10 +17,10 @@
   --blockquote-text-color: #868686;
   --link-color: rgb(138, 180, 248);
   --link-underline-color: rgb(82, 108, 150);
-  --button-bg: rgb(39, 40, 43);
-  --btn-border-color: rgb(63, 65, 68);
+  --button-bg: #1e1e1e;
+  --btn-border-color: #2e2f31;
   --btn-backtotop-color: var(--text-color);
-  --btn-backtotop-border-color: var(--btn-border-color);
+  --btn-backtotop-border-color: #212122;
   --btn-box-shadow: var(--main-bg);
   --card-header-bg: #292929;
   --checkbox-color: rgb(118, 120, 121);
@@ -55,9 +55,7 @@
   /* Home page */
   --post-list-text-color: rgb(175, 176, 177);
   --btn-patinator-text-color: var(--text-color);
-  --btn-paginator-hover-color: rgb(64, 65, 66);
-  --btn-paginator-border-color: var(--btn-border-color);
-  --btn-text-color: var(--text-color);
+  --btn-paginator-hover-color: #2e2e2e;
 
   /* Posts */
   --toc-highlight: rgb(116, 178, 243);

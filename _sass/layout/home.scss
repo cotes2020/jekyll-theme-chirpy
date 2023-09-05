@@ -89,8 +89,9 @@
 } /* #post-list */
 
 .pagination {
-  color: var(--btn-patinator-text-color);
+  color: var(--text-color);
   font-family: Lato, sans-serif;
+  justify-content: space-evenly;
 
   a:hover {
     text-decoration: none;
@@ -98,26 +99,27 @@
 
   .page-item {
     .page-link {
-      color: inherit;
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0;
+      color: var(--btn-patinator-text-color);
+      padding: 0 0.6rem;
       display: -webkit-box;
       -webkit-box-pack: center;
       -webkit-box-align: center;
-      border-radius: 50%;
-      border: 1px solid var(--btn-paginator-border-color);
-      background-color: var(--button-bg);
-
-      &:hover {
-        background-color: var(--btn-paginator-hover-color);
-      }
+      border-radius: 0.5rem;
+      border: 0;
+      background-color: inherit;
     }
 
     &.active {
       .page-link {
         background-color: var(--btn-paginator-hover-color);
-        color: var(--btn-text-color);
+      }
+    }
+
+    &:not(.active) {
+      .page-link {
+        &:hover {
+          box-shadow: inset var(--btn-border-color) 0 0 0 1px;
+        }
       }
     }
 
@@ -126,14 +128,7 @@
 
       .page-link {
         color: rgba(108, 117, 125, 0.57);
-        border-color: var(--btn-paginator-border-color);
-        background-color: var(--button-bg);
       }
-    }
-
-    &:first-child .page-link,
-    &:last-child .page-link {
-      border-radius: 50%;
     }
   } /* .page-item */
 } /* .pagination */
@@ -175,8 +170,6 @@
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
   .pagination {
-    justify-content: space-evenly;
-
     .page-item {
       &:not(:first-child):not(:last-child) {
         display: none;
@@ -193,15 +186,11 @@
 
   .pagination {
     font-size: 0.85rem;
+    justify-content: center;
 
     .page-item {
       &:not(:last-child) {
         margin-right: 0.7rem;
-      }
-
-      .page-link {
-        width: 2rem;
-        height: 2rem;
       }
     }
 
