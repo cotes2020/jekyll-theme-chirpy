@@ -23,21 +23,23 @@ layout: compress
     {% include sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
-      <div id="main" class="container px-xxl-5">
+      <div class="container px-xxl-5">
         {% include topbar.html lang=lang %}
         {{ content }}
         {% include_cached search-results.html lang=lang %}
       </div>
+
+      <aside>
+        <button id="back-to-top" aria-label="Scroll to Top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
     </div>
 
     <div id="mask"></div>
 
-    <button id="back-to-top" aria-label="back-to-top" class="btn btn-lg btn-box-shadow">
-      <i class="fas fa-angle-up"></i>
-    </button>
-
     {% if site.pwa.enabled %}
-      <div
+      <section
         id="notification"
         class="toast"
         role="alert"
@@ -46,22 +48,24 @@ layout: compress
         data-bs-animation="true"
         data-bs-autohide="false"
       >
-        <div class="toast-header">
+        <header class="toast-header">
           <button
             type="button"
             class="btn-close ms-auto"
             data-bs-dismiss="toast"
             aria-label="Close"
           ></button>
-        </div>
+        </header>
         <div class="toast-body text-center pt-0">
           <p class="px-2 mb-3">{{ site.data.locales[lang].notification.update_found }}</p>
           <button type="button" class="btn btn-primary" aria-label="Update">
             {{ site.data.locales[lang].notification.update }}
           </button>
         </div>
-      </div>
+      </section>
     {% endif %}
+
+    <!-- JavaScripts -->
 
     {% include js-selector.html %}
 
