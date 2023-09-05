@@ -4,7 +4,7 @@
 
 <!--
   In order to allow a wide table to scroll horizontally,
-  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+  we wrap the markdown table with `<div class="table-wrapper">` and `</div>`
 -->
 
 {% if _content contains '<table' %}
@@ -134,31 +134,17 @@
     {% endif %}
 
     <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    {% assign _left = _left | replace: 'src=', 'data-src=' %}
+    {% assign _left = _left %}
     {% if _left contains 'class=' %}
       {% assign _left = _left | replace: 'class="', 'class="lazyload '%}
     {% else %}
       {% assign _left = _left | append: ' class="lazyload"' %}
     {% endif %}
 
-    <!-- add image placeholder -->
-    {% if _lqip %}
-      {% assign _left = _left | replace: ' lqip=', ' data-lqip="true" src=' %}
-    {% else %}
-      {% if _width and _height %}
-        <!-- add SVG placehoder -->
-        {%- capture _svg -%}
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width  }} {{ _height }}'%3E%3C/svg%3E"
-        {%- endcapture -%}
-        {% assign _left =  _svg | append: ' ' | append: _left %}
-        {% assign _class = _class | append: ' shimmer' %}
-      {% endif %}
-    {% endif %}
-
     <!-- Bypass the HTML-proofer test -->
     {% assign _left = _left | append: ' data-proofer-ignore' %}
 
-    {% if page.layout == 'home' %}
+    {% if page.layout == 'home' or page.layout == 'projects'%}
       <!-- create the image wrapper -->
       {%- capture _wrapper_start -%}
         <div class="preview-img {{ _class | strip }}">

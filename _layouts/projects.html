@@ -12,7 +12,6 @@ refactor: true
 
 <!-- Get pinned projects -->
 
-{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
 {% assign pinned_num = pinned.size | minus: offset %}
 
 {% if pinned_num > 0 %}
@@ -31,7 +30,7 @@ refactor: true
   {% assign default_beg = 0 %}
 {% endif %}
 
-{% assign default_num = paginator.projects | size | minus: pinned_num %}
+{% assign default_num = site.projects | size | minus: pinned_num %}
 {% assign default_end = default_beg | plus: default_num | minus: 1 %}
 
 {% if default_num > 0 %}
@@ -39,8 +38,9 @@ refactor: true
     {% assign projects = projects | push: default[i] %}
   {% endfor %}
 {% endif %}
+
 <div id="post-list">
-  {% for post in site.projects %}
+  {% for post in projects %}
     <a href="{{ post.url | relative_url }}" class="card-wrapper">
       <div class="card post-preview flex-md-row-reverse">
         {% if post.image %}
@@ -103,7 +103,3 @@ refactor: true
   {% endfor %}
 </div>
 <!-- #post-list -->
-
-{% if paginator.total_pages > 1 %}
-  {% include post-paginator.html %}
-{% endif %}
