@@ -2,12 +2,14 @@
 
 - type: github
   icon: "fab fa-github"
+  url : "https://github.com/LampSeeker"
 
 - type: twitter
   icon: "fab fa-twitter"
 
 - type: email
   icon: "fas fa-envelope"
+  url : "rampseeker@gmail.com"
   noblank: true # open link in current tab
 
 - type: rss
