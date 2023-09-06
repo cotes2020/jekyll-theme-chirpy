@@ -216,7 +216,7 @@ i {
     position: sticky;
   }
 
-  > div {
+  > section {
     padding-left: 1rem;
     border-left: 1px solid var(--main-border-color);
 
@@ -233,6 +233,9 @@ i {
 #panel-wrapper {
   /* the headings */
   .panel-heading {
+    font-family: inherit;
+    line-height: inherit;
+
     @include label(inherit);
   }
 

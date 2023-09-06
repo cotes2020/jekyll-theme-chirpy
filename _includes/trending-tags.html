@@ -34,13 +34,13 @@
 {% endfor %}
 
 {% if trending_tags.size > 0 %}
-  <div id="access-tags">
-    <div class="panel-heading">{{- site.data.locales[include.lang].panel.trending_tags -}}</div>
+  <section>
+    <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.trending_tags -}}</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
       {% for tag_name in trending_tags %}
         {% assign url = tag_name | slugify | url_encode | prepend: '/tags/' | append: '/' %}
         <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ tag_name }}</a>
       {% endfor %}
     </div>
-  </div>
+  </section>
 {% endif %}
