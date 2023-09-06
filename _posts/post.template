@@ -1,0 +1,13 @@
+---
+title: 
+author: 
+date: 2023-12-32 14:00:00 +0400
+categories: [template, Demo]
+tags: [markdown]
+pin: true
+math: true
+mermaid: true
+image:
+  path: /assets/img/posts/*
+  alt: describe the image.
+---
