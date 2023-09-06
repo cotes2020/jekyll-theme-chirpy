@@ -150,7 +150,7 @@ div[class^='language-'] {
   box-shadow: var(--language-border-color) 0 0 0 1px;
 
   .post-content > & {
-    @include ml-mr(-1.25rem);
+    @include ml-mr(-1rem);
 
     border-radius: 0;
   }

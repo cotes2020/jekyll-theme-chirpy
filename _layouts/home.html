@@ -40,7 +40,7 @@ refactor: true
   {% endfor %}
 {% endif %}
 
-<div id="post-list">
+<div id="post-list" class="pe-xl-2">
   {% for post in posts %}
     <a href="{{ post.url | relative_url }}" class="card-wrapper">
       <div class="card post-preview flex-md-row-reverse">
