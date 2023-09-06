@@ -18,23 +18,23 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Ajie's Bolg # the main title
+title: Jay's Bolg # the main title
 
 tagline: 无限进步! # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  我要开发一个自己使用的编程语言
+  我要开发一个自己使用的编程语
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://jakezhou0.github.io"
+url: "https://JayChou404.github.io"
 
 github:
-  username: JakeZhou0 # change to your github username
+  username: JayChou404 # change to your github username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 周杰
+  name: JayChou
   email: ajieoooo@hotmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
