@@ -69,9 +69,9 @@
 {% endfor %}
 
 {% if relate_posts.size > 0 %}
-  <aside id="related-posts" class="mb-2 mb-sm-4">
-    <h3 class="pt-2 mb-4">
-      {{ site.data.locales[include.lang].post.relate_posts }}
+  <aside id="related-posts">
+    <h3 class="mb-4">
+      {{- site.data.locales[include.lang].post.relate_posts -}}
     </h3>
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       {% for post in relate_posts %}

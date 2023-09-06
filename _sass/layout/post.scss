@@ -47,7 +47,7 @@
 }
 
 h1 + .post-meta {
-  span + span::before {
+  > span + span::before {
     @include dot;
   }
 
@@ -165,9 +165,6 @@ h1 + .post-meta {
 }
 
 .post-navigation {
-  padding-top: 3rem;
-  padding-bottom: 4rem;
-
   .btn {
     @extend %btn-post-nav;
 
@@ -353,8 +350,12 @@ h1 + .post-meta {
 #tail-wrapper {
   min-height: 2rem;
 
-  > div:last-of-type {
-    margin-bottom: 2rem;
+  > *:not(:last-child) {
+    margin-top: 3rem;
+  }
+
+  > *:nth-last-child(2) {
+    margin-bottom: 3rem;
   }
 
   /* stylelint-disable-next-line selector-id-pattern */

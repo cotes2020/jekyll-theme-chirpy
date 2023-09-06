@@ -1205,8 +1205,6 @@ search {
 
 @media all and (max-width: 576px) {
   main {
-    min-height: calc(100vh - $topbar-height - $footer-height-large);
-
     .post-content {
       > blockquote[class^='prompt-'] {
         @include ml-mr(-1rem);
@@ -1248,6 +1246,10 @@ search {
     } @else {
       transition: $basic;
     }
+  }
+
+  main {
+    min-height: calc(100vh - $topbar-height - $footer-height-large);
   }
 
   footer {
