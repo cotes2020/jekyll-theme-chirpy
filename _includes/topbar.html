@@ -30,7 +30,10 @@
 
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>
-              <a href="{{ item | relative_url }}">
+              {% assign cap_item = item | capitalize %}
+              <!-- href="{{ item | relative_url }}"  -->
+              <a >
+
                 {{ site.data.locales[include.lang].tabs[item] | default: page.title }}
               </a>
             </span>
