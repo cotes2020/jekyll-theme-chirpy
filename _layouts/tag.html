@@ -11,7 +11,7 @@ layout: page
     {{ page.title }}
     <span class="lead text-muted ps-2">{{ page.posts | size }}</span>
   </h1>
-  <ul class="post-content ps-0">
+  <ul class="content ps-0">
     {% for post in page.posts %}
       <li class="d-flex justify-content-between px-md-3">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>

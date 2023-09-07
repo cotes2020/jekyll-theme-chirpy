@@ -225,7 +225,7 @@ i {
     }
   }
 
-  .post-content {
+  .content {
     font-size: 0.9rem;
   }
 }
@@ -411,7 +411,7 @@ main {
   }
 }
 
-.post-content {
+.content {
   font-size: 1.08rem;
   margin-top: 2rem;
   overflow-wrap: break-word;
@@ -493,7 +493,7 @@ main {
   ::marker {
     color: var(--text-muted-color);
   }
-} /* .post-content */
+} /* .content */
 
 .tag:hover {
   @extend %tag-hover;
@@ -909,7 +909,7 @@ $btn-mb: 0.5rem;
   width: 100%;
   overflow: auto;
 
-  .post-content {
+  .content {
     margin-top: 2rem;
   }
 }
@@ -1205,7 +1205,7 @@ search {
 
 @media all and (max-width: 576px) {
   main {
-    .post-content {
+    .content {
       > blockquote[class^='prompt-'] {
         @include ml-mr(-1rem);
 
@@ -1315,7 +1315,7 @@ search {
     display: block;
   }
 
-  #search-result-wrapper .post-content {
+  #search-result-wrapper .content {
     letter-spacing: 0;
   }
 
@@ -1326,7 +1326,7 @@ search {
   h1.dynamic-title {
     display: none;
 
-    ~ .post-content {
+    ~ .content {
       margin-top: 2.5rem;
     }
   }
@@ -1368,7 +1368,7 @@ search {
     }
   }
 
-  div.post-content .table-wrapper > table {
+  div.content .table-wrapper > table {
     min-width: 70%;
   }
 
@@ -1445,7 +1445,7 @@ search {
     }
   }
 
-  .post-content {
+  .content {
     font-size: 1.03rem;
   }
 }

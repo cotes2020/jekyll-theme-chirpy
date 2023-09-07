@@ -395,7 +395,7 @@ h1 + .post-meta {
 }
 
 @media all and (max-width: 768px) {
-  .post-content > p > img {
+  .content > p > img {
     max-width: calc(100% + 1rem);
   }
 }

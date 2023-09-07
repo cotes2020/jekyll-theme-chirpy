@@ -51,7 +51,7 @@
         color: var(--text-muted-color) !important;
       }
 
-      .card-text.post-content {
+      .card-text.content {
         @extend %muted;
 
         p {
