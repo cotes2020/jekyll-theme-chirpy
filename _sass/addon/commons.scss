@@ -175,16 +175,10 @@ kbd {
 footer {
   font-size: 0.8rem;
   background-color: var(--main-bg);
+  height: $footer-height;
+  border-top: 1px solid var(--main-border-color);
 
   @extend %text-color;
-
-  div.d-flex {
-    height: $footer-height;
-    line-height: 1.2rem;
-    padding-bottom: 1rem;
-    border-top: 1px solid var(--main-border-color);
-    flex-wrap: wrap;
-  }
 
   a {
     @extend %text-highlight;
@@ -195,7 +189,7 @@ footer {
   }
 
   p {
-    width: 100%;
+    line-height: 1.75;
     text-align: center;
     margin-bottom: 0;
   }
@@ -604,7 +598,7 @@ i {
 }
 
 .btn-box-shadow {
-  box-shadow: 0 0 8px 0 var(--btn-box-shadow) !important;
+  box-shadow: var(--card-shadow);
 }
 
 /* overwrite bootstrap muted */
@@ -696,6 +690,7 @@ $btn-mb: 0.5rem;
   width: $sidebar-width;
   z-index: 99;
   background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -835,6 +830,7 @@ $btn-mb: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
 
       &:hover {
         background-color: var(--sidebar-hover-bg);
@@ -868,7 +864,7 @@ $btn-mb: 0.5rem;
       @extend %no-cursor;
       @include ml-mr(calc(($btn-gap - $btn-border-width) / 2));
 
-      background-color: var(--sidebar-muted-color);
+      background-color: var(--sidebar-btn-color);
       content: '';
       width: $btn-border-width;
       height: $btn-border-width;
@@ -1079,6 +1075,7 @@ $btn-mb: 0.5rem;
 
 #core-wrapper {
   line-height: 1.75;
+  min-height: calc(100vh - $topbar-height - $footer-height);
 
   .categories,
   #tags,
@@ -1106,7 +1103,6 @@ $btn-mb: 0.5rem;
 
 #main-wrapper {
   position: relative;
-  min-height: calc(100vh - $footer-height-mobile);
 
   @include pl-pr(0);
 }
@@ -1120,19 +1116,17 @@ $btn-mb: 0.5rem;
 /* --- button back-to-top --- */
 
 #back-to-top {
-  $size: 3rem;
-
   display: none;
   z-index: 1;
   cursor: pointer;
   position: fixed;
   right: 1rem;
-  bottom: 2rem;
+  bottom: calc($footer-height-large - $back2top-size / 2);
   background: var(--button-bg);
   color: var(--btn-backtotop-color);
   padding: 0;
-  width: $size;
-  height: $size;
+  width: $back2top-size;
+  height: $back2top-size;
   border-radius: 50%;
   border: 1px solid var(--btn-backtotop-border-color);
   transition: transform 0.2s ease-out;
@@ -1144,7 +1138,7 @@ $btn-mb: 0.5rem;
   }
 
   i {
-    line-height: $size;
+    line-height: $back2top-size;
     position: relative;
     bottom: 2px;
   }
@@ -1210,14 +1204,12 @@ $btn-mb: 0.5rem;
 */
 
 @media all and (max-width: 576px) {
-  #main-wrapper {
-    min-height: calc(100vh - #{$footer-height-mobile});
-  }
-
   #core-wrapper {
+    min-height: calc(100vh - $topbar-height - $footer-height-large);
+
     .post-content {
       > blockquote[class^='prompt-'] {
-        @include ml-mr(-1.25rem);
+        @include ml-mr(-1rem);
 
         border-radius: 0;
         max-width: none;
@@ -1258,21 +1250,11 @@ $btn-mb: 0.5rem;
     }
   }
 
-  html,
-  body {
-    overflow-x: hidden;
-  }
-
   footer {
     @include slide;
 
-    height: $footer-height-mobile;
-
-    div.d-flex {
-      padding: 1.5rem 0;
-      line-height: 1.65;
-      flex-wrap: wrap;
-    }
+    height: $footer-height-large;
+    padding: 1.5rem 0;
   }
 
   [#{$sidebar-display}] {
@@ -1280,8 +1262,7 @@ $btn-mb: 0.5rem;
       transform: translateX(0);
     }
 
-    #main-wrapper,
-    footer {
+    #main-wrapper {
       transform: translateX(#{$sidebar-width});
     }
 
@@ -1302,8 +1283,7 @@ $btn-mb: 0.5rem;
   }
 
   #topbar,
-  #main,
-  footer > .container {
+  #main {
     max-width: 100%;
   }
 
@@ -1350,13 +1330,6 @@ $btn-mb: 0.5rem;
   }
 } /* max-width: 849px */
 
-/* Phone & Pad */
-@media all and (min-width: 577px) and (max-width: 1199px) {
-  footer .d-flex > div {
-    width: 312px;
-  }
-}
-
 /* Sidebar is visible */
 @media all and (min-width: 850px) {
   /* Solved jumping scrollbar */
@@ -1364,26 +1337,8 @@ $btn-mb: 0.5rem;
     overflow-y: scroll;
   }
 
-  #main-wrapper,
-  footer {
-    margin-left: $sidebar-width;
-  }
-
   #main-wrapper {
-    min-height: calc(100vh - $footer-height);
-  }
-
-  footer {
-    p {
-      width: auto;
-      &:last-child {
-        &::before {
-          content: '-';
-          margin: 0 0.75rem;
-          opacity: 0.8;
-        }
-      }
-    }
+    margin-left: $sidebar-width;
   }
 
   #sidebar {
@@ -1417,8 +1372,8 @@ $btn-mb: 0.5rem;
 
   /* button 'back-to-Top' position */
   #back-to-top {
-    bottom: 5.5rem;
     right: 5%;
+    bottom: calc($footer-height - $back2top-size / 2);
   }
 
   #topbar-title {
@@ -1463,10 +1418,6 @@ $btn-mb: 0.5rem;
 /* --- desktop mode, both sidebar and panel are visible --- */
 
 @media all and (min-width: 1200px) {
-  #back-to-top {
-    bottom: 6.5rem;
-  }
-
   #search-wrapper {
     margin-right: 4rem;
   }
@@ -1495,12 +1446,6 @@ $btn-mb: 0.5rem;
   .post-content {
     font-size: 1.03rem;
   }
-
-  footer {
-    div.d-felx {
-      width: 85%;
-    }
-  }
 }
 
 @media all and (min-width: 1400px) {
@@ -1512,8 +1457,7 @@ $btn-mb: 0.5rem;
 @media all and (min-width: 1650px) {
   $icon-gap: 1rem;
 
-  #main-wrapper,
-  footer {
+  #main-wrapper {
     margin-left: $sidebar-width-large;
   }
 
@@ -1527,8 +1471,7 @@ $btn-mb: 0.5rem;
     );
   }
 
-  #main,
-  footer > .container {
+  #main {
     max-width: $main-content-max-width;
     padding-left: 1.75rem !important;
     padding-right: 1.75rem !important;
