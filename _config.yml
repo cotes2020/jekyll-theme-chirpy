@@ -1,7 +1,7 @@
 # The Site Configuration
 
 # Import the theme
-theme: jekyll-theme-chirpy
+theme: MKT
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
@@ -10,7 +10,7 @@ baseurl: ""
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: cn
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Shanghai
@@ -18,7 +18,7 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: MKT # the main title
 
 tagline: A text-focused Jekyll theme # it will display as the sub-title
 
@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "点击链接加入群聊【安卓Android 内核搞机社区-MKT】：http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=JjAkqOkw3GafeGuZbIpSRUlnuAsg4Cm_&authKey=KpQ%2Byh2sUhJE1fxy%2FTn1vMHlHsfA%2BcPyB01Zy8tvPlcbaYzYUbgW6omsKoJkJrni&noverify=0&group_code=860421367"
 
 github:
   username: github_username # change to your github username
