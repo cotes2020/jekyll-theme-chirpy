@@ -1,7 +1,7 @@
 # The Site Configuration
 
 # Import the theme
-theme: MKT
+theme: jekyl1-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "点击链接加入群聊【安卓Android 内核搞机社区-MKT】：http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=JjAkqOkw3GafeGuZbIpSRUlnuAsg4Cm_&authKey=KpQ%2Byh2sUhJE1fxy%2FTn1vMHlHsfA%2BcPyB01Zy8tvPlcbaYzYUbgW6omsKoJkJrni&noverify=0&group_code=860421367"
+url: ""
 
 github:
   username: github_username # change to your github username
