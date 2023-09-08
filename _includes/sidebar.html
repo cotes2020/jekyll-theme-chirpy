@@ -1,7 +1,7 @@
 <!-- The Side Bar -->
 
-<header id="sidebar" class="d-flex flex-column align-items-end">
-  <div class="profile-wrapper">
+<aside id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {% if site.avatar != empty and site.avatar %}
         {% capture avatar_url %}
@@ -20,10 +20,8 @@
     <h1 class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </h1>
-    <aside>
-      <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
-    </aside>
-  </div>
+    <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+  </header>
   <!-- .profile-wrapper -->
 
   <nav class="flex-column flex-grow-1 w-100 ps-0">
@@ -105,5 +103,5 @@
     </address>
   </div>
   <!-- .sidebar-bottom -->
-</header>
+</aside>
 <!-- #sidebar -->
