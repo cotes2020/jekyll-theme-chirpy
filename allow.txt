@@ -67,3 +67,5 @@ suround
 unter
 versio
 pullrequest
+trough
+reoccurrence
