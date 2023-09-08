@@ -1,6 +1,5 @@
 ---
-layout: page
-refactor: true
+layout: default
 ---
 
 {% include lang.html %}
@@ -40,10 +39,10 @@ refactor: true
   {% endfor %}
 {% endif %}
 
-<div id="post-list" class="pe-xl-2">
+{% capture content %}
   {% for post in posts %}
-    <a href="{{ post.url | relative_url }}" class="card-wrapper">
-      <div class="card post-preview flex-md-row-reverse">
+    <article class="card-wrapper">
+      <a href="{{ post.url | relative_url }}" class="card post-preview flex-md-row-reverse">
         {% if post.image %}
           {% if post.image.lqip %}
             {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
@@ -60,11 +59,9 @@ refactor: true
         {% endif %}
 
         <div class="card-body d-flex flex-column">
-          <h1 class="card-title my-2 mt-md-0">
-            {{ post.title }}
-          </h1>
+          <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
 
-          <div class="card-text post-content mt-0 mb-2">
+          <div class="card-text content mt-0 mb-2">
             <p>
               {% include no-linenos.html content=post.content %}
               {{ content | markdownify | strip_html | truncate: 200 | escape }}
@@ -99,9 +96,13 @@ refactor: true
           <!-- .post-meta -->
         </div>
         <!-- .card-body -->
-      </div>
-    </a>
+      </a>
+    </article>
   {% endfor %}
+{% endcapture %}
+
+<div id="post-list" class="flex-grow-1 pe-xl-2">
+  {% include refactor-content.html content=content lang=lang %}
 </div>
 <!-- #post-list -->
 

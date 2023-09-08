@@ -149,7 +149,7 @@ div[class^='language-'] {
 
   box-shadow: var(--language-border-color) 0 0 0 1px;
 
-  .post-content > & {
+  .content > & {
     @include ml-mr(-1rem);
 
     border-radius: 0;
@@ -258,7 +258,7 @@ div {
 
 @media all and (min-width: 576px) {
   div[class^='language-'] {
-    .post-content > & {
+    .content > & {
       @include ml-mr(0);
 
       border-radius: $base-radius;

@@ -47,13 +47,16 @@
 }
 
 h1 + .post-meta {
-  span + span::before {
+  > span + span::before {
     @include dot;
   }
 
-  em {
+  em,
+  time {
     color: var(--text-color);
+  }
 
+  em {
     a {
       color: inherit;
     }
@@ -165,9 +168,6 @@ h1 + .post-meta {
 }
 
 .post-navigation {
-  padding-top: 3rem;
-  padding-bottom: 4rem;
-
   .btn {
     @extend %btn-post-nav;
 
@@ -198,7 +198,7 @@ h1 + .post-meta {
       color: var(--text-muted-color);
       font-size: 0.65rem;
       text-transform: uppercase;
-      content: attr(prompt);
+      content: attr(aria-label);
     }
 
     &:first-child {
@@ -326,7 +326,7 @@ h1 + .post-meta {
     @include label(1.1rem, 600);
   }
 
-  em {
+  time {
     @extend %normal-font-style;
 
     color: var(--text-muted-color);
@@ -353,8 +353,12 @@ h1 + .post-meta {
 #tail-wrapper {
   min-height: 2rem;
 
-  > div:last-of-type {
-    margin-bottom: 2rem;
+  > *:not(:last-child) {
+    margin-top: 3rem;
+  }
+
+  > *:nth-last-child(2) {
+    margin-bottom: 3rem;
   }
 
   /* stylelint-disable-next-line selector-id-pattern */
@@ -391,7 +395,7 @@ h1 + .post-meta {
 }
 
 @media all and (max-width: 768px) {
-  .post-content > p > img {
+  .content > p > img {
     max-width: calc(100% + 1rem);
   }
 }

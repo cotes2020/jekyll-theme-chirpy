@@ -69,17 +69,17 @@
 {% endfor %}
 
 {% if relate_posts.size > 0 %}
-  <div id="related-posts" class="mb-2 mb-sm-4">
-    <h3 class="pt-2 mb-4" data-toc-skip>
-      {{ site.data.locales[include.lang].post.relate_posts }}
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">
+      {{- site.data.locales[include.lang].post.relate_posts -}}
     </h3>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       {% for post in relate_posts %}
-        <div class="col">
-          <a href="{{ post.url | relative_url }}" class="card post-preview h-100">
+        <article class="col">
+          <a href="{{ post.url | relative_url }}" class="post-preview card h-100">
             <div class="card-body">
               {% include datetime.html date=post.date class="small" lang=include.lang %}
-              <h4 class="pt-0 my-2" data-toc-skip>{{ post.title }}</h4>
+              <h4 class="pt-0 my-2">{{ post.title }}</h4>
               <div class="text-muted small">
                 <p>
                   {% include no-linenos.html content=post.content %}
@@ -88,10 +88,9 @@
               </div>
             </div>
           </a>
-        </div>
+        </article>
       {% endfor %}
-    </div>
-    <!-- .card-deck -->
-  </div>
+    </nav>
+  </aside>
   <!-- #related-posts -->
 {% endif %}
