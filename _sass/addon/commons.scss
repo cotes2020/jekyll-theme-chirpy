@@ -1048,7 +1048,7 @@ search {
     line-height: 2.5rem;
   }
 
-  > div {
+  > article {
     width: 100%;
 
     &:not(:last-child) {
@@ -1428,8 +1428,8 @@ search {
     transition: all 0.3s ease-in-out;
   }
 
-  #search-results > div {
-    width: 46%;
+  #search-results > article {
+    width: 45%;
 
     &:nth-child(odd) {
       margin-right: 1.5rem;
