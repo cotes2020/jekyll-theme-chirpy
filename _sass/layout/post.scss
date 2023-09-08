@@ -198,7 +198,7 @@ h1 + .post-meta {
       color: var(--text-muted-color);
       font-size: 0.65rem;
       text-transform: uppercase;
-      content: attr(prompt);
+      content: attr(aria-label);
     }
 
     &:first-child {

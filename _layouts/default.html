@@ -31,12 +31,15 @@ layout: compress
         {% include topbar.html lang=lang %}
 
         <div class="row">
-          <main class="col-12 col-lg-11 col-xl-9 px-md-4{% unless has_tail %} pb-5{% endunless %}">
+          <main
+            aria-label="Main Content"
+            class="col-12 col-lg-11 col-xl-9 px-md-4{% unless has_tail %} pb-5{% endunless %}"
+          >
             {{ content }}
           </main>
 
           <!-- panel -->
-          <aside id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
             <div class="access">
               {% include_cached update-list.html lang=lang %}
               {% include_cached trending-tags.html lang=lang %}
@@ -66,8 +69,8 @@ layout: compress
         {% include_cached search-results.html lang=lang %}
       </div>
 
-      <aside>
-        <button id="back-to-top" aria-label="Scroll to Top" type="button" class="btn btn-lg btn-box-shadow">
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
           <i class="fas fa-angle-up"></i>
         </button>
       </aside>

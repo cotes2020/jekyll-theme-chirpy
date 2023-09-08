@@ -1,11 +1,11 @@
 <!-- The Top Bar -->
 
-<header id="topbar-wrapper">
+<header id="topbar-wrapper" aria-label="Top Bar">
   <div
     id="topbar"
     class="d-flex align-items-center justify-content-between px-lg-3 h-100"
   >
-    <nav id="breadcrumb">
+    <nav id="breadcrumb" aria-label="Breadcrumb">
       {% assign paths = page.url | split: '/' %}
 
       {% if paths.size == 0 or page.layout == 'home' %}
