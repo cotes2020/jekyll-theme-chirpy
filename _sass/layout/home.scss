@@ -44,6 +44,7 @@
       .card-title {
         @extend %text-clip;
 
+        color: var(--heading-color) !important;
         font-size: 1.25rem;
       }
 

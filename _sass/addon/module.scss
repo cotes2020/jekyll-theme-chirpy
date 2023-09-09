@@ -149,7 +149,11 @@
   padding-right: $val;
 }
 
-@mixin input-placeholder {
+@mixin placeholder {
+  color: var(--text-muted-color) !important;
+}
+
+@mixin placeholder-focus {
   opacity: 0.6;
 }
 
