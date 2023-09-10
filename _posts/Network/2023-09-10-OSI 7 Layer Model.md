@@ -26,4 +26,4 @@ OSI 7 Layer Model은 컴퓨터 네트워크와 통신 시스템에서 사용되�
 - 반대로 하위 계층(Physical)에서 상위 계층(Application)으로 데이터가 전달될 때는 각 계층에 해당하는 헤더가 하나씩 사용됩니다.
     **(Depackaging, Decapsulation)**
 
-
+Written with [KKam.\_\.Ji](https://www.instagram.com/kkam._.ji/)
