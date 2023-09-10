@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.2.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.2.0...v6.2.1) (2023-09-10)
+
+### Bug Fixes
+
+* **pwa:** installation failure caused by outdated cache entries ([4da7406](https://github.com/cotes2020/jekyll-theme-chirpy/commit/4da7406dfea112a4a2b1db5615ecf2672be6694f))
+
 ## [6.2.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.1.0...v6.2.0) (2023-09-10)
 
 ### Features
