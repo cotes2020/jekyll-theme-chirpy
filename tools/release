@@ -31,7 +31,6 @@ JS_DIST="assets/js/dist"
 BACKUP_PATH="$(mktemp -d)"
 
 FILES=(
-  "_sass/jekyll-theme-chirpy.scss"
   "$GEM_SPEC"
   "$NODE_CONFIG"
 )
@@ -104,31 +103,9 @@ check() {
   _check_node_packages
 }
 
-_bump_files() {
-  for i in "${!FILES[@]}"; do
-    if [[ ${FILES[$i]} == "$NODE_CONFIG" ]]; then
-      continue
-    fi
-
-    sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
-  done
-}
-
-_bump_gemspec() {
-  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$1/" "$GEM_SPEC"
-}
-
-# 1. Bump latest version number to the following files:
-#
-#   - _sass/jekyll-theme-chirpy.scss
-#   - _javascript/copyright
-#   - assets/js/dist/*.js (will be built by gulp later)
-#   - jekyll-theme-chirpy.gemspec
-#
-# 2. Create a commit to save the changes.
+## Bump latest version number and create a commit to save the changes
 bump() {
-  _bump_files "$1"
-  _bump_gemspec "$1"
+  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$1/" "$GEM_SPEC"
 
   if [[ $opt_pre = false && -n $(git status . -s) ]]; then
     git add .
