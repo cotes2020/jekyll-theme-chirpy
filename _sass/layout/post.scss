@@ -102,9 +102,13 @@ h1 + .post-meta {
     .share-icons {
       font-size: 1.2rem;
 
-      > *:hover {
-        i {
-          @extend %btn-share-hovor;
+      > * {
+        margin-left: 0.25rem;
+
+        &:hover {
+          i {
+            @extend %btn-share-hovor;
+          }
         }
       }
 
@@ -116,36 +120,28 @@ h1 + .post-meta {
         @extend %cursor-pointer;
       }
 
-      a {
-        &:not(:last-child) {
-          margin-right: 0.25rem;
-        }
-
-        &:hover {
-          text-decoration: none;
-        }
+      a :hover {
+        text-decoration: none;
       }
 
-      .fab {
-        &.fa-twitter {
-          @include btn-sharing-color(rgba(29, 161, 242, 1));
-        }
+      .fa-square-x-twitter {
+        @include btn-sharing-color(black);
+      }
 
-        &.fa-facebook-square {
-          @include btn-sharing-color(rgb(66, 95, 156));
-        }
+      .fa-facebook-square {
+        @include btn-sharing-color(rgb(66, 95, 156));
+      }
 
-        &.fa-telegram {
-          @include btn-sharing-color(rgb(39, 159, 217));
-        }
+      .fa-telegram {
+        @include btn-sharing-color(rgb(39, 159, 217));
+      }
 
-        &.fa-linkedin {
-          @include btn-sharing-color(rgb(0, 119, 181));
-        }
+      .fa-linkedin {
+        @include btn-sharing-color(rgb(0, 119, 181));
+      }
 
-        &.fa-weibo {
-          @include btn-sharing-color(rgb(229, 20, 43));
-        }
+      .fa-weibo {
+        @include btn-sharing-color(rgb(229, 20, 43));
       }
     } /* .share-icons */
 
