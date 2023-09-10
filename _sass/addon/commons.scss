@@ -830,8 +830,8 @@ $btn-mb: 0.5rem;
   }
 
   .sidebar-bottom {
-    @include pl-pr(2rem);
-
+    padding-left: 2rem;
+    padding-right: 1rem;
     margin-bottom: 1.5rem;
 
     %button {
