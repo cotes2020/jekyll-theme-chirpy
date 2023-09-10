@@ -1,7 +1,7 @@
 <!-- The Side Bar -->
 
-<div id="sidebar" class="d-flex flex-column align-items-end">
-  <div class="profile-wrapper">
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {% if site.avatar != empty and site.avatar %}
         {% capture avatar_url %}
@@ -17,39 +17,40 @@
       {% endif %}
     </a>
 
-    <div class="site-title">
+    <h1 class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </div>
-    <div class="site-subtitle fst-italic">{{ site.tagline }}</div>
-  </div>
+    </h1>
+    <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+  </header>
   <!-- .profile-wrapper -->
 
-  <ul class="nav flex-column flex-grow-1 w-100 ps-0">
-    <!-- home -->
-    <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
-      <a href="{{ '/' | relative_url }}" class="nav-link">
-        <i class="fa-fw fas fa-home"></i>
-        <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
-      </a>
-    </li>
-    <!-- the real tabs -->
-    {% for tab in site.tabs %}
-      <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-        <a href="{{ tab.url | relative_url }}" class="nav-link">
-          <i class="fa-fw {{ tab.icon }}"></i>
-          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-
-          <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-      <!-- .nav-item -->
-    {% endfor %}
-  </ul>
-  <!-- ul.nav.flex-column -->
+      <!-- the real tabs -->
+      {% for tab in site.tabs %}
+        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+          <a href="{{ tab.url | relative_url }}" class="nav-link">
+            <i class="fa-fw {{ tab.icon }}"></i>
+            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+
+            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      {% endfor %}
+    </ul>
+  </nav>
 
   <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
     {% unless site.theme_mode %}
-      <button class="mode-toggle btn" aria-label="Switch Mode">
+      <button type="button" class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
 
@@ -58,47 +59,49 @@
       {% endif %}
     {% endunless %}
 
-    {% for entry in site.data.contact %}
-      {% case entry.type %}
-        {% when 'github', 'twitter' %}
-          {%- capture url -%}
+    <address class="d-flex mb-0">
+      {% for entry in site.data.contact %}
+        {% case entry.type %}
+          {% when 'github', 'twitter' %}
+            {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
-        {% when 'email' %}
-          {% assign email = site.social.email | split: '@' %}
-          {%- capture url -%}
+          {% when 'email' %}
+            {% assign email = site.social.email | split: '@' %}
+            {%- capture url -%}
             javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
           {%- endcapture -%}
-        {% when 'rss' %}
-          {% assign url = '/feed.xml' | relative_url %}
-        {% else %}
-          {% assign url = entry.url %}
-      {% endcase %}
+          {% when 'rss' %}
+            {% assign url = '/feed.xml' | relative_url %}
+          {% else %}
+            {% assign url = entry.url %}
+        {% endcase %}
 
-      {% if url %}
-        <a
-          href="{{ url }}"
-          aria-label="{{ entry.type }}"
-          {% assign link_types = '' %}
+        {% if url %}
+          <a
+            href="{{ url }}"
+            aria-label="{{ entry.type }}"
+            {% assign link_types = '' %}
 
-          {% unless entry.noblank %}
-            target="_blank"
-            {% assign link_types = 'noopener noreferrer' %}
-          {% endunless %}
+            {% unless entry.noblank %}
+              target="_blank"
+              {% assign link_types = 'noopener noreferrer' %}
+            {% endunless %}
 
-          {% if entry.type == 'mastodon' %}
-            {% assign link_types = link_types | append: ' me' | strip %}
-          {% endif %}
+            {% if entry.type == 'mastodon' %}
+              {% assign link_types = link_types | append: ' me' | strip %}
+            {% endif %}
 
-          {% unless link_types == empty %}
-            rel="{{ link_types }}"
-          {% endunless %}
-        >
-          <i class="{{ entry.icon }}"></i>
-        </a>
-      {% endif %}
-    {% endfor %}
+            {% unless link_types == empty %}
+              rel="{{ link_types }}"
+            {% endunless %}
+          >
+            <i class="{{ entry.icon }}"></i>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </address>
   </div>
   <!-- .sidebar-bottom -->
-</div>
+</aside>
 <!-- #sidebar -->

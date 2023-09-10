@@ -1,11 +1,11 @@
 <!-- The Top Bar -->
 
-<div id="topbar-wrapper">
+<header id="topbar-wrapper" aria-label="Top Bar">
   <div
     id="topbar"
-    class="container d-flex align-items-center justify-content-between h-100"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
   >
-    <span id="breadcrumb">
+    <nav id="breadcrumb" aria-label="Breadcrumb">
       {% assign paths = page.url | split: '/' %}
 
       {% if paths.size == 0 or page.layout == 'home' %}
@@ -37,10 +37,12 @@
           {% endif %}
         {% endfor %}
       {% endif %}
-    </span>
+    </nav>
     <!-- endof #breadcrumb -->
 
-    <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
+    <button type="button" id="sidebar-trigger" class="btn btn-link">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
 
     <div id="topbar-title">
       {% if page.layout == 'home' %}
@@ -53,8 +55,11 @@
       {% endif %}
     </div>
 
-    <i id="search-trigger" class="fas fa-search fa-fw"></i>
-    <span id="search-wrapper" class="align-items-center">
+    <button type="button" id="search-trigger" class="btn btn-link">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+
+    <search class="align-items-center ms-3 ms-lg-0">
       <i class="fas fa-search fa-fw"></i>
       <input
         class="form-control"
@@ -64,7 +69,9 @@
         autocomplete="off"
         placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
       >
-    </span>
-    <span id="search-cancel">{{ site.data.locales[include.lang].search.cancel }}</span>
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">
+      {{- site.data.locales[include.lang].search.cancel -}}
+    </button>
   </div>
-</div>
+</header>

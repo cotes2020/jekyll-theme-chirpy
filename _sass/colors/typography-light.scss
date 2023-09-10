@@ -10,11 +10,12 @@
 
   /* Common color */
   --text-color: #34343c;
-  --text-muted-color: #8e8e8e;
-  --heading-color: black;
+  --text-muted-color: #757575;
+  --heading-color: #2a2a2a;
+  --label-color: #585858;
   --blockquote-border-color: #eeeeee;
-  --blockquote-text-color: #9a9a9a;
-  --link-color: #0153ab;
+  --blockquote-text-color: #757575;
+  --link-color: #0056b2;
   --link-underline-color: #dee2e6;
   --button-bg: #ffffff;
   --btn-border-color: #e9ecef;
@@ -36,8 +37,11 @@
   );
 
   /* Sidebar */
+  --site-title-color: rgb(113, 113, 113);
+  --site-subtitle-color: #717171;
   --sidebar-bg: #f6f8fa;
-  --sidebar-muted-color: #a2a19f;
+  --sidebar-border-color: #efefef;
+  --sidebar-muted-color: #545454;
   --sidebar-active-color: #1d1d1d;
   --sidebar-hover-bg: rgb(223, 233, 241, 0.64);
   --sidebar-btn-bg: white;
@@ -47,8 +51,7 @@
   /* Topbar */
   --topbar-bg: rgb(255, 255, 255, 0.7);
   --topbar-text-color: rgb(78, 78, 78);
-  --search-wrapper-border-color: rgb(240, 240, 240);
-  --search-tag-bg: #f8f9fa;
+  --search-border-color: rgb(240, 240, 240);
   --search-icon-color: #c2c6cc;
   --input-focus-border-color: #b8b8b8;
 
@@ -56,23 +59,15 @@
   --post-list-text-color: dimgray;
   --btn-patinator-text-color: #555555;
   --btn-paginator-hover-color: var(--sidebar-bg);
-  --btn-paginator-border-color: var(--sidebar-bg);
-  --btn-text-color: #676666;
 
   /* Posts */
-  --toc-highlight: #563d7c;
+  --toc-highlight: #0550ae;
   --btn-share-hover-color: var(--link-color);
   --card-bg: white;
   --card-hovor-bg: #e2e2e2;
   --card-shadow: rgb(104, 104, 104, 0.05) 0 2px 6px 0,
     rgba(211, 209, 209, 0.15) 0 0 0 1px;
-  --label-color: #616161;
-  --relate-post-date: rgba(30, 55, 70, 0.4);
   --footnote-target-bg: lightcyan;
-  --tag-bg: rgba(0, 0, 0, 0.075);
-  --tag-border: #dee2e6;
-  --tag-shadow: var(--btn-border-color);
-  --tag-hover: rgb(222, 226, 230);
   --tb-odd-bg: #fbfcfd;
   --tb-border-color: #eaeaea;
   --dash-color: silver;
@@ -88,6 +83,12 @@
   --prompt-warning-icon-color: #ef9c03;
   --prompt-danger-bg: rgb(248, 215, 218, 0.56);
   --prompt-danger-icon-color: #df3c30;
+
+  /* Tags */
+  --tag-border: #dee2e6;
+  --tag-shadow: var(--btn-border-color);
+  --tag-hover: rgb(222, 226, 230);
+  --search-tag-bg: #f8f9fa;
 
   [class^='prompt-'] {
     --link-underline-color: rgb(219, 216, 216);

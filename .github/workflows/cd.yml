@@ -1,7 +1,10 @@
 name: CD
 on:
   push:
-    branches: [production, docs]
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+    branches:
+      - docs
 
 jobs:
   launch:

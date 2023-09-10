@@ -1,7 +1,4 @@
-<!--
-  Recommend the other 3 posts according to the tags and categories of the current post,
-  if the number is not enough, use the other latest posts to supplement.
--->
+<!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
 
 <!-- The total size of related posts -->
 {% assign TOTAL_SIZE = 3 %}
@@ -14,11 +11,21 @@
 
 {% assign SEPARATOR = ':' %}
 
+{% assign match_posts = '' | split: '' %}
+
+{% for category in page.categories %}
+  {% assign match_posts = match_posts | push: site.categories[category] | uniq %}
+{% endfor %}
+
+{% for tag in page.tags %}
+  {% assign match_posts = match_posts | push: site.tags[tag] | uniq %}
+{% endfor %}
+
+{% assign last_index = match_posts.size | minus: 1 %}
 {% assign score_list = '' | split: '' %}
-{% assign last_index = site.posts.size | minus: 1 %}
 
 {% for i in (0..last_index) %}
-  {% assign post = site.posts[i] %}
+  {% assign post = match_posts[i] %}
 
   {% if post.url == page.url %}
     {% continue %}
@@ -54,39 +61,25 @@
   {% endfor %}
 {% endif %}
 
-<!-- Fill with the other newlest posts -->
-{% assign less = TOTAL_SIZE | minus: index_list.size %}
+{% assign relate_posts = '' | split: '' %}
 
-{% if less > 0 %}
-  {% for i in (0..last_index) %}
-    {% assign post = site.posts[i] %}
-    {% if post.url != page.url %}
-      {% capture cur_index %}{{ i }}{% endcapture %}
-      {% unless index_list contains cur_index %}
-        {% assign index_list = index_list | push: cur_index %}
-        {% assign less = less | minus: 1 %}
-        {% if less <= 0 %}
-          {% break %}
-        {% endif %}
-      {% endunless %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
+{% for index in index_list %}
+  {% assign i = index | to_integer %}
+  {% assign relate_posts = relate_posts | push: match_posts[i] %}
+{% endfor %}
 
-{% if index_list.size > 0 %}
-  <div id="related-posts" class="mb-2 mb-sm-4">
-    <h3 class="pt-2 mb-4 ms-1" data-toc-skip>
-      {{ site.data.locales[include.lang].post.relate_posts }}
+{% if relate_posts.size > 0 %}
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">
+      {{- site.data.locales[include.lang].post.relate_posts -}}
     </h3>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
-      {% for entry in index_list %}
-        {% assign index = entry | plus: 0 %}
-        {% assign post = site.posts[index] %}
-        <div class="col">
-          <a href="{{ post.url | relative_url }}" class="card post-preview h-100">
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      {% for post in relate_posts %}
+        <article class="col">
+          <a href="{{ post.url | relative_url }}" class="post-preview card h-100">
             <div class="card-body">
               {% include datetime.html date=post.date class="small" lang=include.lang %}
-              <h4 class="pt-0 my-2" data-toc-skip>{{ post.title }}</h4>
+              <h4 class="pt-0 my-2">{{ post.title }}</h4>
               <div class="text-muted small">
                 <p>
                   {% include no-linenos.html content=post.content %}
@@ -95,10 +88,9 @@
               </div>
             </div>
           </a>
-        </div>
+        </article>
       {% endfor %}
-    </div>
-    <!-- .card-deck -->
-  </div>
+    </nav>
+  </aside>
   <!-- #related-posts -->
 {% endif %}
