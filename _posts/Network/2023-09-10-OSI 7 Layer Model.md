@@ -1,6 +1,6 @@
 ---
 title: OSI 7 Layer Model
-date: 2023-09-11 23:45:55 +0900
+date: 2023-09-10 23:45:55 +0900
 author: kkankkandev
 categories: [Network]
 tags: [osi 7 layer, Network, cloud, osi, ip, udp, tcp, osi, router, switch]     # TAG names should always be lowercase
