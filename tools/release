@@ -112,8 +112,6 @@ _bump_files() {
 
     sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
   done
-
-  npm run build
 }
 
 _bump_gemspec() {
@@ -138,26 +136,22 @@ bump() {
   fi
 }
 
-## Remove unnecessary theme settings
-cleanup_config() {
-  cp _config.yml _config.yml.bak
-  sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
-}
-
-resume_config() {
-  mv _config.yml.bak _config.yml
-}
-
-# build a gem package
+## Build a gem package
 build_gem() {
   echo -e "Build the gem package for v$_version\n"
-  cleanup_config
+
+  # Remove unnecessary theme settings
+  sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
   rm -f ./*.gem
+
+  npm run build
   git add "$JS_DIST" -f # add JS dist to gem
   gem build "$GEM_SPEC"
   cp "$JS_DIST"/* "$BACKUP_PATH"
-  git restore --staged "$JS_DIST" # resume the git status
-  resume_config
+
+  # Resume the settings
+  git reset
+  git checkout .
 }
 
 # Update the git branch graph, tag, and then build the gem package.
