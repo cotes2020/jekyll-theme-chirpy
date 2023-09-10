@@ -10,7 +10,7 @@ baseurl: ""
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: ko-KR
+lang: ko-kr
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Seoul
@@ -20,11 +20,11 @@ timezone: Asia/Seoul
 
 title: KKanKKandev # the main title
 
-tagline: Web & Cloud # it will display as the sub-title
+tagline: Cloud & Backend # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
 
-  Cloud & Web 공부 기록용 사이트
+  Cloud & Backend 공부 기록용 사이트
 
 # A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
@@ -34,8 +34,8 @@ url: "https://war-oxi.github.io"
 github:
   username: War-Oxi # change to your github username
 
-twitter:
-  username: twitter_username # change to your twitter username
+# twitter:
+#   username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
