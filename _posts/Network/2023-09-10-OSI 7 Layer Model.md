@@ -9,6 +9,21 @@ comments: true
 
 OSI 7 Layer Model은 컴퓨터 네트워크와 통신 시스템에서 사용되는 표준화된 계층 모델로, 네트워크 프로토콜과 통신을 이해하고 설명하기 위한 틀을 제공합니다.
      
+
+<br>
+
+
+
+
+
+
+
+<center>
+  <img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/8a292419-4007-4eaf-b081-e631f6acb0f1" alt=""/>
+  
+  <p align="center"> [그림 1] OSI 7계층 </p>
+</center>
+
 # OSI 각 계층 별 역할과 주요 프로토콜, 기능, 장비
 
 ![image](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/68aefb99-690e-4a33-ab42-f7e6dbf6053a)
@@ -28,4 +43,6 @@ OSI 7 Layer Model은 컴퓨터 네트워크와 통신 시스템에서 사용되�
 - 반대로 하위 계층(Physical)에서 상위 계층(Application)으로 데이터가 전달될 때는 각 계층에 해당하는 헤더가 하나씩 사용됩니다.  
 **(Depackaging, Decapsulation)**
 
+
+<strong>궁금하신점이나 추가해야할 부분은 댓글이나 아래의 링크를 통해 문의해주세요.</strong>   
 Written with [KKam.\_\.Ji](https://www.instagram.com/kkam._.ji/)
