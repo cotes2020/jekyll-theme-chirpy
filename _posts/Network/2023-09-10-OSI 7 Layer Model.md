@@ -21,16 +21,9 @@ OSI 7 Layer Model은 컴퓨터 네트워크와 통신 시스템에서 사용되�
 | L2 DataLink | 직접 연결된 노드 간 데이터 전송 <br> (MAC 주소 기반) <br> (Frame 단위) | Ethernet, Wi-Fi, PPP, ATM, HDLC | 맥 주소를 통해 프레임단위로 통신 <br> (에러검출, 재전송, 흐름제어) | 브리지, Switch, Ethernet |
 | L1 Physical | 데이터를 전기 신호, 광 신호 또는 무선 신호로 변환하여 전송 <br> [Bit 단위] | 100Base-TX, V.35| 데이터를 전기적인 신호로 변환 후 주고받는 기능 | 케이블, 리피터, 허브 |
 
-- 상위 계층(Application)에서 하위 계층(Physical) 계층으로 내려올 때 Header가 계속해서 추가된다. 
+- 상위 계층(Application)에서 하위 계층(Physical) 계층으로 내려올 때 Header가 계속해서 추가됩니다.
     **(Packaging, Encapsulation)**
-- 반대로 하위 계층(Physical)에서 상위 계층(Application)으로 데이터가 전달될 때는 각 계층에 해당하는 헤더가 하나씩 사용된다.
+- 반대로 하위 계층(Physical)에서 상위 계층(Application)으로 데이터가 전달될 때는 각 계층에 해당하는 헤더가 하나씩 사용됩니다.
     **(Depackaging, Decapsulation)**
 
-# 통신을 위해 필요한 두 가지
-
-통신을 위해서는 MAC 주소와 IP 주소에 대한 정보가 필요하다
-- IP 주소 
-  - (논리적 주소 [논리적 위치 식별])
-- MAC 주소 
-  - (물리적 주소[Hardware 식별])
 
