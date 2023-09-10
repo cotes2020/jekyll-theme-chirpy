@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.2.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.1.0...v6.2.0) (2023-09-10)
+
+### Features
+
+* **layout:** center the footer ([41b8f9f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/41b8f9f519e5f5f69e9a123b38b06bade2271a82))
+* **posts:** render heading 4 in TOC ([#1023](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1023)) ([229c2a2](https://github.com/cotes2020/jekyll-theme-chirpy/commit/229c2a2e2b109fc2eca85be548f1dd97234e44c4))
+* **ui:** redesign the pagination button on home page ([62bcd60](https://github.com/cotes2020/jekyll-theme-chirpy/commit/62bcd601fcadc602c81672b1d4b937231396c3c0))
+* **ui:** update the twitter icon ([#1221](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1221)) ([aff7566](https://github.com/cotes2020/jekyll-theme-chirpy/commit/aff75667749769644f990d3dc9b0720c7d96d14d))
+
+### Improvements
+
+* **core:** speed up the Jekyll build times ([#1163](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1163)) ([0d4103d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0d4103d47bc9cff93918bb09a2957737cc3c9fe0))
+* refactor using semantic HTML ([#1207](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1207)) ([505e314](https://github.com/cotes2020/jekyll-theme-chirpy/commit/505e314a3142c332e39365fbe2dac23df1bf0abe)), closes [#1196](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1196)
+* **ui:** improve code snippet design ([4f86b04](https://github.com/cotes2020/jekyll-theme-chirpy/commit/4f86b04a8487ebbf4a6d0d70b0c3ece79e9269f3))
+* **ui:** improve web accessibility ([#447](https://github.com/cotes2020/jekyll-theme-chirpy/issues/447)) ([37c9764](https://github.com/cotes2020/jekyll-theme-chirpy/commit/37c976499ead51c1d88e8e8213366240a72adebc))
+
 ## [6.1.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.0.0...v6.1.0) (2023-07-02)
 
 ### Features
