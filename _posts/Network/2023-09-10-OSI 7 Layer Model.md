@@ -19,12 +19,12 @@ OSI 7 Layer Model은 컴퓨터 네트워크와 통신 시스템에서 사용되�
 
 
 <center>
-  <img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/8a292419-4007-4eaf-b081-e631f6acb0f1" alt=""/>
+  <img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/2d2cbf9b-ce45-4102-bbc7-96faa519384a" alt=""/>
   
   <p align="center"> [그림 1] OSI 7계층 </p>
 </center>
 
-# OSI 각 계층 별 역할과 주요 프로토콜, 기능, 장비
+## OSI 각 계층 별 역할과 주요 프로토콜, 기능, 장비
 
 ![image](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/68aefb99-690e-4a33-ab42-f7e6dbf6053a)
 

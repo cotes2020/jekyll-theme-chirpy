@@ -14,19 +14,19 @@ pin: true
 > alias라는 기능을 사용해서 다른 명령어 조합도 간단하게 입력할 수 있습니다
 
 
-# git add commit push 한번에 하는 방법
+## git add commit push 한번에 하는 방법
 > ## **Terminal에 아래의 명령어 입력.**
 
 ```
 git config --global alias.cmp '!f() { git add -A && git commit -m "$@" && git push; }; f'
 ```
 
-# 사용법
+## 사용법
 ```
 git cmp "Message(커밋 메시지)"
 ```
 
-# 동작 원리 (git alias)
+## 동작 원리 (git alias)
 > **cmp라는 alias를 전역 설정 --global에 추가한다**
 > 
 > **f() 셸 함수의 중 괄호 안에 git add, git commit, git push를 한번에 할 수 있게 구현 되어 있다.**

@@ -13,11 +13,11 @@ comments: true
 >
 > **간단하게 .gitignore파일을 설정 할 수 있는 방법을 찾다가 제가 찾은 방법을 공유합니다.**
     
-# 1. [.gitignore] 파일이란?
+## 1. [.gitignore] 파일이란?
 >  **Git 저장소에서 추적하지 않을 파일 또는 디렉토리를 지정하는 데 사용되는 설정 파일**
 
 
-# 2. [.gitignore] 파일 규칙 [# => 주석]
+## 2. [.gitignore] 파일 규칙 [# => 주석]
 
 ```
 # 특정 파일 무시
@@ -36,7 +36,7 @@ comments: true
 특정패턴*
 ```
 
-# 3. [gitignore.io] 홈페이지 사용법
+## 3. [gitignore.io] 홈페이지 사용법
 > 1.[gitignore.io](https://gitignore.io) 홈페이지에 들어간다.
 
 ![image](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/10da090c-58f9-4cba-a431-7449611702e5)
