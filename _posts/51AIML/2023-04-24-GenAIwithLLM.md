@@ -19,6 +19,7 @@ tags: [AIML]
     - [Multivariate Time Series Forecasting](#multivariate-time-series-forecasting)
     - [Generative AI Transformers for Time Series Forecasting](#generative-ai-transformers-for-time-series-forecasting)
     - [Falcon-Chat demo](#falcon-chat-demo)
+    - [TAPEX](#tapex)
   - [Juptyper](#juptyper)
 
 ---
@@ -182,6 +183,20 @@ model = AutoModel.from_pretrained("username/repo_name")
 ### Falcon-Chat demo
 
 > [Falcon-Chat demo](https://huggingface.co/spaces/HuggingFaceH4/falcon-chat)
+
+Chat with Falcon-40B-Instruct, brainstorm ideas, discuss your holiday plans, and more!
+- ✨ This demo is powered by Falcon-40B, finetuned on the Baize dataset, and running with Text Generation Inference. Falcon-40B is a state-of-the-art `large language model` built by the Technology Innovation Institute in Abu Dhabi. It is trained on 1 trillion tokens (including RefinedWeb) and available under the Apache 2.0 license. It currently holds the 🥇 1st place on the 🤗 Open LLM leaderboard. This demo is made available by the HuggingFace H4 team.
+- 🧪 This is only a first experimental preview: the H4 team intends to provide increasingly capable versions of Falcon Chat in the future, based on improved datasets and RLHF/RLAIF.
+- 👀 Learn more about Falcon LLM: `falconllm.tii.ae`
+- ➡️️ Intended Use: this demo is intended to showcase an early finetuning of Falcon-40B, to illustrate the impact (and limitations) of finetuning on a dataset of conversations and instructions. We encourage the community to further build upon the base model, and to create even better instruct/chat versions!
+- ⚠️ Limitations: the model can and will produce factually incorrect information, hallucinating facts and actions. As it has not undergone any advanced tuning/alignment, it can produce problematic outputs, especially if prompted to do so. Finally, this demo is limited to a session length of about 1,000 words.
+
+
+### TAPEX
+
+> [Table Pre-training via Execution](https://huggingface.co/microsoft/tapex-large)
+
+Give a table of data and then query
 
 
 
