@@ -22,8 +22,7 @@ title: imageless thought # the main title
 
 tagline: innovate · build · repeat # it will display as the sub-title
 
-description: >- # used by seo meta and the atom feed
-Innovation-focused technology site.
+description: Innovation-focused technology site.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "http://127.0.0.1:4000/"
@@ -131,8 +130,15 @@ collections:
   tabs:
     output: true
     sort_by: order
-
+  docs:
+    output: true
+    permalink: /:collection/:path/
 defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "page"      
   - scope:
       path: "" # An empty string here means all files in the project
       type: posts
@@ -154,7 +160,7 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path: assets/img/favicons
+      path: /assets/images/favicons/
     values:
       swcache: true
   - scope:

@@ -1,3 +1,10 @@
+---
+title: Contributing Guidelines
+author: mbaggett
+date: 2023-09-11
+categories: [Docs]
+tags: [Docs]
+---
 # Contributing Guidelines
 
 :tada: _First of all, thank you for considering contributing to this project!_ :tada:
