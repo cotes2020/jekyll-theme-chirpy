@@ -12,6 +12,7 @@ image:
   - [Cloud Security Posture Mgmt (CSPM)](#cloud-security-posture-mgmt-cspm)
   - [Cloud Detection and Response (CDR)](#cloud-detection-and-response-cdr)
   - [Cloud Workload Protection Platform (CWPP)](#cloud-workload-protection-platform-cwpp)
+- [Cloud Policy](#cloud-policy)
 
 ---
 
@@ -144,8 +145,17 @@ CSPM 解决方案的一些关键特性包括：
 
 ![Screenshot 2023-06-27 at 11.53.11](/assets/img/Screenshot%202023-06-27%20at%2011.53.11.png)
 
+---
 
+# Cloud Policy
 
+- [CFSec](https://aquasecurity.github.io/cfsec/v0.3.2/checks/ecs/enable-in-transit-encryption/)
+
+- [BridgeCrew](https://docs.bridgecrew.io/docs/bc_aws_general_39)
+
+- [Snyk Vulnerability DB](https://security.snyk.io/rules/cloud/aws/elasticsearch)
+
+- [Tenable Cloud Security Policies](https://www.tenable.com/policies/cloud-security/search?q=OpenSearch&sort=&page=1)
 
 
 

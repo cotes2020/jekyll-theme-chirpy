@@ -1,8 +1,8 @@
 ---
 title: AWS - Security - Amazon CloudWatch (AWS cloud resources)
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, SecurityControl]
-tags: [AWS, SecurityControl]
+categories: [01AWS, Security]
+tags: [AWS, Security]
 toc: true
 image:
 ---
@@ -28,7 +28,7 @@ image:
    - create IAM policy, gives only certain users permission to use the `GetMetricStatistics` operation.
    - They could then use the operation to retrieve data about your cloud resources.
 
-3. Permisson:
+3. Permission:
    - can't use IAM to control access to CloudWatch data for specific resources.
    - For example,
      - you can't give a user access to CloudWatchdata for only a specific set of instances or a specific load balancer.
@@ -186,7 +186,7 @@ image:
    - a sequence of <font color=blue> log events with the same source </font>
 
 3. log event
-   - a timmestamp and a raw message
+   - a timestamp and a raw message
 
 4. metric filter
    - metric filter pattern matches text in all log events in all log streams of whichever log group it's created on, creating a metric

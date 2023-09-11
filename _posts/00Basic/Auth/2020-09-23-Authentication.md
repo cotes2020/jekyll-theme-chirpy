@@ -34,6 +34,7 @@ toc: true
     - [token and password](#token-and-password)
   - [token based authentication strategies](#token-based-authentication-strategies)
     - [JWT, JSON web tokens](#jwt-json-web-tokens)
+    - [SAML](#saml)
     - [OAuth - Open Authorization 开放授权](#oauth---open-authorization-开放授权)
       - [OAuth 2.0 术语表](#oauth-20-术语表)
       - [Scope 授权范围](#scope-授权范围)
@@ -716,8 +717,11 @@ token and password 的作用是一样的，都可以进入系统，但是有三�
 ## token based authentication strategies
 
 emaple of token based authentication strategies
+
 - SWT, simple web tokenss
+
 - JWT, JSON web tokens
+
 - SAML, security assertions markup language
 
 - **OAuth**, open authorization
@@ -736,14 +740,9 @@ emaple of token based authentication strategies
   - 典型场景为企业内部Web系统集成单点登录，典型的有CAS。
 
 
-
-
-
 <font color=red> OAuth 解决了代理授权的问题，但是它没有提供一个认证用户身份的标准方法 </font>
 - OAuth 2.0 用于**授权**
 - OpenID Connect 用于**认证**
-
-
 
 
 
@@ -810,9 +809,57 @@ The cons:
 
 ---
 
+### SAML
+
+> SAML
+> Security Assertion 断言 Markup Language
+
+![Saml-Authentication-Final](/assets/img/Saml-Authentication-Final.png)
+
+![Pasted Graphic](/assets/img/Pasted%20Graphic.png)
+
+- Security Assertion Markup Language (SAML)
+
+- This `single sign-on (SSO) login standard` has significant advantages over logging in using a username/password, to use this information to log users in to other applications, such as web-based applications, one way of doing this is by using **SAML**.
+
+- a standard for logging users into applications based on their sessions in another context.
+
+- an open standard that defines a XML-based framework for `exchanging authentication and authorization information` between an `identity provider (IdP)` and a `service provider (SP)`, to enable web-based single sign-on (SSO) and identity federation.
+
+- An XML-based markup language, much like HTML.
+  - HTML: defining web page elements
+  - SAML: It uses tags, defines security authorization.
+  - used to exchange authentication and authorization information between identity providers and service providers.
+
+- SAML commly used for
+  - federated identity management across mulyiple organizations.
+  - federation / web browser single sign-on implementations.
+  - Allows an application to securely authenticate a user by receiving credentials from a web domain.
+  - (TACACS+, RADIUS, Kerberos cannot do this)!!!
+
+
+![Pasted Graphic 1](/assets/img/Pasted%20Graphic%201.jpg)
 
 
 
+- An SSO solution used for web-based application.
+
+- Example:
+
+- A secure web portal accessible to user by username and password, use SAML to support authentication.
+  - `Portal`: service provider, request an authentication assertion
+  - `back-end networks`: function as an identity provider and issue an authentication assertion
+
+- SAML在单点登录中大有用处：
+	- 在SAML协议中，一旦用户身份被主网站（身份鉴别服务器，Identity Provider，IDP）认证过后，该用户再去访问其他在主站注册过的应用（服务提供者，Service Providers，SP）时，都可以直接登录，而不用再输入身份和口令。
+
+
+- 用户登录SP，SP向IDP发起请求来确认用户身份为例子
+	- 比如SP是Google的Apps，IDP是一所大学的身份服务器，Alice是该大学的一名学生。
+
+![3297585-50f9c9530cef962d](/assets/img/3297585-50f9c9530cef962d.png)
+
+---
 
 ### OAuth - Open Authorization 开放授权
 
