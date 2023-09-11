@@ -191,12 +191,18 @@ Chat with Falcon-40B-Instruct, brainstorm ideas, discuss your holiday plans, and
 - ➡️️ Intended Use: this demo is intended to showcase an early finetuning of Falcon-40B, to illustrate the impact (and limitations) of finetuning on a dataset of conversations and instructions. We encourage the community to further build upon the base model, and to create even better instruct/chat versions!
 - ⚠️ Limitations: the model can and will produce factually incorrect information, hallucinating facts and actions. As it has not undergone any advanced tuning/alignment, it can produce problematic outputs, especially if prompted to do so. Finally, this demo is limited to a session length of about 1,000 words.
 
+---
 
 ### TAPEX
 
 > [Table Pre-training via Execution](https://huggingface.co/microsoft/tapex-large)
 
 Give a table of data and then query
+
+- 0 shot question (answer right away)
+- fine tune: https://github.com/SibilTaram/tapax_transformers/tree/add_tapex_bis/examples
+- demo: https://huggingface.co/microsoft/tapex-base
+
 
 
 
