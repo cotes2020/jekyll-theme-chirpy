@@ -1,0 +1,45 @@
+Date,Apt,Floor_plan,Beds/Baths,Rent,Deposit,Sq.Ft,Limited_Time_Offer,Available
+20230901,talisman,A12 (1x1),1 Bed 1 Bath,ContactUs,$300,482 - 495 sq.ft.,None,N/A
+20230901,talisman,A7 (1x1),1 Bed 1 Bath,ContactUs,$300,547 - 569 sq.ft.,None,N/A
+20230901,talisman,A10 (1x1),1 Bed 1 Bath,ContactUs,$300,578 - 665 sq.ft.,None,N/A
+20230901,talisman,A1 (1x1),1 Bed 1 Bath,"$1,961",$300,604 - 671 sq.ft.,None,N/A
+20230901,talisman,A11 (1x1),1 Bed 1 Bath,ContactUs,$300,605 - 651 sq.ft.,None,N/A
+20230901,talisman,A3 (1x1),1 Bed 1 Bath,"$2,041",$300,609 - 642 sq.ft.,None,N/A
+20230901,talisman,A2 (1x1),1 Bed 1 Bath,"$2,011",$300,617 - 715 sq.ft.,None,N/A
+20230901,talisman,A8 (1x1),1 Bed 1 Bath,ContactUs,$300,631 sq.ft.,None,N/A
+20230901,talisman,A6 (1x1),1 Bed 1 Bath,ContactUs,$300,650 sq.ft.,None,N/A
+20230901,talisman,A9 (1x1),1 Bed 1 Bath,ContactUs,$300,663 sq.ft.,None,N/A
+20230901,talisman,B5 (1x1),1 Bed 1 Bath,"$2,250",$300,674 - 775 sq.ft.,None,N/A
+20230901,talisman,B2 (1x1),1 Bed 1 Bath,"$2,320",$300,706 - 739 sq.ft.,None,N/A
+20230901,talisman,A4 (1x1),1 Bed 1 Bath,ContactUs,$300,713 - 716 sq.ft.,None,N/A
+20230901,talisman,A5 (1x1),1 Bed 1 Bath,ContactUs,$300,734 - 739 sq.ft.,None,N/A
+20230901,talisman,AL1 (1x1),1 Bed 1 Bath,"$2,531",$300,745 - 828 sq.ft.,None,N/A
+20230901,talisman,B4 (1x1),1 Bed 1 Bath,ContactUs,$300,774 sq.ft.,None,N/A
+20230901,talisman,B1 (1x1),1 Bed 1 Bath,ContactUs,$300,782 sq.ft.,None,N/A
+20230901,talisman,AL2 (1x1),1 Bed 1 Bath,ContactUs,$300,785 - 852 sq.ft.,None,N/A
+20230901,talisman,AL3 (1x1),1 Bed 1 Bath,ContactUs,$300,798 - 800 sq.ft.,None,N/A
+20230901,talisman,B3 (1x1),1 Bed 1 Bath,ContactUs,$300,834 sq.ft.,None,N/A
+20230901,talisman,AL4 (1x1),1 Bed 1 Bath,ContactUs,$300,863 sq.ft.,None,N/A
+20230901,talisman,BL5 (1x1),1 Bed 1 Bath,ContactUs,$300,906 - 930 sq.ft.,None,N/A
+20230901,talisman,AL5 (1x1),1 Bed 1 Bath,ContactUs,$300,944 sq.ft.,None,N/A
+20230901,talisman,BL2 (2x2),2 Bed 2 Bath,ContactUs,$300,883 - 888 sq.ft.,None,N/A
+20230901,talisman,C2 (2x2),2 Bed 2 Bath,ContactUs,$300,1088 - 1243 sq.ft.,None,N/A
+20230901,talisman,CL6 (2x2),2 Bed 2 Bath,"$2,901",$300,890 - 945 sq.ft.,None,N/A
+20230901,talisman,C9 (2x2),2 Bed 2 Bath,ContactUs,$300,923 sq.ft.,None,N/A
+20230901,talisman,C5 (2x2),2 Bed 2 Bath,"$2,912",$300,934 - 984 sq.ft.,None,N/A
+20230901,talisman,C3 (2x2),2 Bed 2 Bath,ContactUs,$300,1010 - 1103 sq.ft.,None,N/A
+20230901,talisman,C1 (2x2),2 Bed 2 Bath,"$3,288",$300,1029 - 1294 sq.ft.,None,N/A
+20230901,talisman,C10 (2x2),2 Bed 2 Bath,ContactUs,$300,1073 - 1207 sq.ft.,None,N/A
+20230901,talisman,C7 (2x2),2 Bed 2 Bath,ContactUs,$300,1074 - 1131 sq.ft.,None,N/A
+20230901,talisman,CL5 (2x2),2 Bed 2 Bath,"$3,161",$300,1140 - 1185 sq.ft.,None,N/A
+20230901,talisman,C8 (2x2),2 Bed 2 Bath,ContactUs,$300,1155 sq.ft.,None,N/A
+20230901,talisman,C11 (2x2),2 Bed 2 Bath,ContactUs,$300,1161 sq.ft.,None,N/A
+20230901,talisman,C6 (2x2),2 Bed 2 Bath,ContactUs,$300,1170 sq.ft.,None,N/A
+20230901,talisman,CL3 (2x2),2 Bed 2 Bath,ContactUs,$300,1228 - 1296 sq.ft.,None,N/A
+20230901,talisman,CL1 (2x2),2 Bed 2 Bath,ContactUs,$300,1265 - 1297 sq.ft.,None,N/A
+20230901,talisman,CL8 (2x2),2 Bed 2 Bath,ContactUs,$300,1360 sq.ft.,None,N/A
+20230901,talisman,CL11 (2x2),2 Bed 2 Bath,ContactUs,$300,1422 sq.ft.,None,N/A
+20230901,talisman,D1 (3x2),3 Bed 2 Bath,"$3,422",$300,1241 - 1362 sq.ft.,None,N/A
+20230901,talisman,CL7 (2x2),2 Bed 2 Bath,ContactUs,$300,1362 sq.ft.,None,N/A
+20230901,talisman,DL2 (3x2),3 Bed 2 Bath,ContactUs,$300,1428 sq.ft.,None,N/A
+20230901,talisman,DL1 (3x2),3 Bed 2 Bath,ContactUs,$300,1521 sq.ft.,None,N/A
