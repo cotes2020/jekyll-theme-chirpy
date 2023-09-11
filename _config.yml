@@ -134,6 +134,9 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path/
+  pages:
+    output: true
+
 defaults:
   - scope:
       path: ""
@@ -159,7 +162,11 @@ defaults:
       type: tabs # see `site.collections`
     values:
       layout: page
-      permalink: /:title/
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
   - scope:
       path: /assets/images/favicons/
     values:
