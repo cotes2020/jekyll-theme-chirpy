@@ -1,8 +1,8 @@
 ---
 title: ML - 1st - Intro to Machine Learning
 date: 2021-08-11 11:11:11 -0400
-categories: [00CodeNote, MLNote]
-tags: [ML]
+categories: [51AIML]
+tags: [AIML]
 toc: true
 ---
 
@@ -15,9 +15,6 @@ toc: true
   - [Underfitting and Overfitting](#underfitting-and-overfitting)
   - [Random Forests -`RandomForestRegressor`](#random-forests--randomforestregressor)
   - [example](#example)
-
-- ref:
-  - https://www.kaggle.com/lgraceye/exercise-explore-your-data/edit
 
 
 ---
