@@ -15,6 +15,10 @@ tags: [AIML]
   - [Attention is all you need](#attention-is-all-you-need)
   - [subject thoery](#subject-thoery)
   - [Hugging Face](#hugging-face)
+    - [Generative AI Time Series Forecasting](#generative-ai-time-series-forecasting)
+    - [Multivariate Time Series Forecasting](#multivariate-time-series-forecasting)
+    - [Generative AI Transformers for Time Series Forecasting](#generative-ai-transformers-for-time-series-forecasting)
+    - [Falcon-Chat demo](#falcon-chat-demo)
   - [Juptyper](#juptyper)
 
 ---
@@ -121,9 +125,6 @@ tensors
 > like github repo
 
 - search for an AI model
-- Example 1: Generative AI Time Series Forecasting - https://huggingface.co/blog/time-series-transformers
-- Example 2: Multivariate Time Series Forecasting - https://huggingface.co/blog/informer
-- Example 3: Generative AI Transformers for Time Series Forecasting - https://huggingface.co/blog/autoformer
 
 
 ```bash
@@ -156,6 +157,33 @@ git push
 tokenizer = AutoTokenizer.from_pretrained("username/repo_name")
 model = AutoModel.from_pretrained("username/repo_name")
 ```
+
+
+### Generative AI Time Series Forecasting
+
+> [Generative AI Time Series Forecasting](https://huggingface.co/blog/time-series-transformers)
+
+
+
+### Multivariate Time Series Forecasting
+
+> [Multivariate Time Series Forecasting](https://huggingface.co/blog/informer)
+
+
+
+### Generative AI Transformers for Time Series Forecasting
+
+> [Generative AI Transformers for Time Series Forecasting](https://huggingface.co/blog/autoformer)
+
+
+---
+
+
+### Falcon-Chat demo
+
+> [Falcon-Chat demo](https://huggingface.co/spaces/HuggingFaceH4/falcon-chat)
+
+
 
 
 
