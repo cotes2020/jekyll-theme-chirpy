@@ -730,12 +730,14 @@ $btn-mb: 0.5rem;
     width: 7rem;
     height: 7rem;
     overflow: hidden;
+
     box-shadow: var(--avatar-border-color) 0 0 0 2px;
     transform: translateZ(0); /* fixed the zoom in Safari */
-
+      margin-left: auto!important; margin-right: auto!important;
     img {
       transition: transform 0.5s;
-
+      padding: .35rem!important;
+      background: white;
       &:hover {
         transform: scale(1.2);
       }
@@ -745,9 +747,11 @@ $btn-mb: 0.5rem;
   .profile-wrapper {
     @include mt-mb(2.5rem);
     @extend %clickable-transition;
-
+    margin-left: auto!important;
+    margin-right: auto!important;
+        /*
     padding-left: 2.5rem;
-    padding-right: 1.25rem;
+    padding-right: 1.25rem; */
     width: 100%;
   }
 
@@ -757,21 +761,25 @@ $btn-mb: 0.5rem;
     font-size: 1.75rem;
     line-height: 1.2;
     letter-spacing: 0.25px;
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin: 2rem auto 0.5rem auto;
+    width: 100%;
+    text-align: center;
 
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
 
       color: var(--site-title-color);
+      margin-left: auto!important; margin-right: auto!important;
     }
   }
 
   .site-subtitle {
     font-size: 95%;
     color: var(--site-subtitle-color);
-    margin-top: 0.25rem;
+    margin: .25rem auto 3rem auto!important;
+    width: 100%;
+    text-align: center;
     word-spacing: 1px;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -830,9 +838,10 @@ $btn-mb: 0.5rem;
   }
 
   .sidebar-bottom {
-    padding-left: 2rem;
-    padding-right: 1rem;
-    margin-bottom: 1.5rem;
+
+    margin: 0 auto 1.5rem auto!important;
+    width: 100%;
+    justify-content: center!important;
 
     %button {
       width: 1.75rem;
@@ -879,7 +888,7 @@ $btn-mb: 0.5rem;
       @extend %no-cursor;
       @include ml-mr(calc(($btn-gap - $btn-border-width) / 2));
 
-      background-color: var(--sidebar-btn-color);
+      background-color: white;
       content: '';
       width: $btn-border-width;
       height: $btn-border-width;
@@ -1367,7 +1376,7 @@ search {
 
   #sidebar {
     .profile-wrapper {
-      margin-top: 3rem;
+      margin-top: 3rem auto 0 auto;
     }
   }
 
@@ -1518,9 +1527,8 @@ search {
     $icon-gap: 1rem; // for the bottom icons
 
     .profile-wrapper {
-      margin-top: 3.5rem;
-      margin-bottom: 2.5rem;
-      padding-left: 3.5rem;
+      margin: 3.5rem auto 0 auto;
+    
     }
 
     ul {
@@ -1530,7 +1538,6 @@ search {
     }
 
     .sidebar-bottom {
-      padding-left: 2.75rem;
       margin-bottom: 1.75rem;
 
       a:not(:last-child) {

@@ -1,5 +1,4 @@
 <!-- The Side Bar -->
-
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
@@ -50,18 +49,22 @@
 
   <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
     {% unless site.theme_mode %}
-      <button type="button" class="mode-toggle btn" aria-label="Switch Mode">
+    <button type="button" class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
-
       {% if site.data.contact.size > 0 %}
-        <span class="icon-border"></span>
+      <span>&nbsp;&nbsp;</span><span class="icon-border"></span><span>&nbsp;&nbsp;</span>
+
       {% endif %}
-    {% endunless %}
+<!--     <a href="https://www.linkedin.com/in/baggett.michael" target="_blank">
+        <i class="fab fa-linkedin"></i> -->
+      </a>
+
+      {% endunless %}
 
     {% for entry in site.data.contact %}
       {% case entry.type %}
-        {% when 'github', 'twitter' %}
+        {% when 'github' %}
           {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
