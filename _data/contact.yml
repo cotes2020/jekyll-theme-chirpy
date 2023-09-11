@@ -3,9 +3,6 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
-
 - type: linkedin
   icon: "fa-brands fa-linkedin"
   url:  'https://www.linkedin.com/in/baggettmichael/'
@@ -30,3 +27,6 @@
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+
+# - type: twitter
+#  icon: "fa-brands fa-x-twitter"
