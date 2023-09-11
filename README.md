@@ -39,6 +39,7 @@
   - Disqus / Utterances / Giscus Comments
   - Built-in Search
   - Atom Feeds
+  - PWA
   - Google Analytics
   - SEO & Performance Optimization
 
