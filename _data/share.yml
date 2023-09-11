@@ -3,7 +3,7 @@
 
 platforms:
   - type: Twitter
-    icon: "fab fa-twitter"
+    icon: "fa-brands fa-square-x-twitter"
     link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
 
   - type: Facebook
