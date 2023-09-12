@@ -5,15 +5,15 @@ categories: iOS
 tags: SDK
 ---
 
-# 静态库和动态库的存在形式和区别
+## 静态库和动态库的存在形式和区别
 
-## 静态库
+### 静态库
 
 * `.a` 和 `.framework`
 * 会被完整地复制到每个调用它的程序中，被多个程序使用就有多份冗余拷贝
 
 
-## 动态库
+### 动态库
 
 * `.tbd`（这是从 Xcode 7 开始的后缀名，Xcode 7 之前是 `.dylib` ） 和 `.framework`
 * 在程序运行时由系统动态加载到内存中，系统只加载一份，多个程序共用，节省内存
@@ -21,18 +21,18 @@ tags: SDK
 
 <br>
 
-# CPU 架构介绍
+## CPU 架构介绍
 
 * CPU 执行计算任务时都需要遵从一定的规范，程序在被执行前都需要先翻译为 CPU 可以理解的语言。这种规范或语言就是`指令集架构（ISA，Instruction Set Architecture）`。
 * 目前市面上的 CPU 分类主要分有`两大阵营`，一个是 `Intel、AMD 为首的复杂指令集 CPU`；另一个是`以 IBM、ARM 为首的精简指令集 CPU`。
 * `Intel、AMD 的 CPU 是 x86 架构`的；而 `IBM 公司的 CPU 是 PowerPC 架构`；`ARM、苹果 公司是 ARM 架构`。x86、ARM v8、MIPS 都是指令集的代号。
 
-## arm 处理器
+### arm 处理器
 arm处理器，因为其低功耗和小尺寸而闻名，几乎所有的手机处理器都基于arm，其在嵌入式系统中的应用非常广泛，它的性能在同等功耗产品中也很出色。
 
 <br>
 
-## iPhone 、iPad 指令集架构
+### iPhone 、iPad 指令集架构
 
 苹果A7处理器（A系列的第一代64位处理器）支持两个不同的指令集：32位ARM指令集（armv6｜armv7｜armv7s）和64位ARM指令集（arm64），i386｜x86_64 是PC处理器的指令集，i386是针对intel通用微处理器32架构的。x86_64是针对x86架构的64位处理器。当使用iOS模拟器的时候会用到 i386｜x86_64，iOS模拟器没有arm指令集，因为模拟器运行在Mac电脑上，使用的是Mac的CPU指令集（在苹果的 M 系列电脑端的 arm 处理器出来后，模拟器使用的指令集也是 arm ？还未查询验证）。
 
@@ -57,21 +57,21 @@ armv7 ：3GS ~ 4S `（静态库只要支持了armv7，就可以跑在armv7s的�
 
 <br>
 
-# Xcode 中设置
+## Xcode 中设置
 
-## 设置架构
+### 设置架构
 
 主要有以下三个：`Architectures`、`Build Active Architecture Only`、`Excluded Architectures`
 
 <br>
 
-### Architectures
+#### Architectures
 
 * 控制编译器生成的二进制文件所支持的 CPU 架构。通常用默认的`Standard Architectures(arm64)`通用架构即可。
 
 <br>
 
-### Build Active Architecture Only
+#### Build Active Architecture Only
 
 * 控制编译器是否只编译当前活动的 CPU 架构。如果开启该选项，编译器只会编译当前选中的 CPU 架构，可以加快编译速度，但是生成的二进制文件只能在当前架构的设备上运行。如果关闭该选项，则编译器会同时编译所有支持的 CPU 架构，生成通用的二进制文件。
 * `建议把 Release 模式都设置为 NO`。
@@ -79,7 +79,7 @@ armv7 ：3GS ~ 4S `（静态库只要支持了armv7，就可以跑在armv7s的�
 
 <br>
 
-### Excluded Architectures
+#### Excluded Architectures
 
 * 用于排除某些不需要支持的 CPU 架构。如果某些架构不需要被支持，可以在这个选项中将其排除，编译器会忽略这些架构，不会为其生成二进制文件。
 * `一般不用设置`。
@@ -87,7 +87,7 @@ armv7 ：3GS ~ 4S `（静态库只要支持了armv7，就可以跑在armv7s的�
 
 <br>
 
-## 设置 Other linker flags 参数
+### 设置 Other linker flags 参数
 
 `当静态库使用了 Category 时，需要把 Other linker flags 参数设置为` `－ObjC`，否则会报错
 
@@ -101,17 +101,17 @@ armv7 ：3GS ~ 4S `（静态库只要支持了armv7，就可以跑在armv7s的�
 
 <br>
 
-# 以下用 Xcode 14.3.1 演示打包静态库
+## 以下用 Xcode 14.3.1 演示打包静态库
 
 <br>
 
-## 创建 .a 静态库
+### 创建 .a 静态库
 
 `command + shift + N` -> `iOS` -> `Framework & Library` -> `Static Library`
 
 <br>
 
-### 写完代码后
+#### 写完代码后
 
 1. 公开头文件
     * 点击 `TARGETS` 下的项目 -> `Build Phases` -> `Copy Files`，添加需要公开的头文件
@@ -140,13 +140,13 @@ armv7 ：3GS ~ 4S `（静态库只要支持了armv7，就可以跑在armv7s的�
 
 <br>
 
-## 创建 .framework 静态库
+### 创建 .framework 静态库
 
 `command + shift + N` -> `iOS` -> `Framework & Library` -> `Framework`
 
 <br>
 
-### 写完代码后
+#### 写完代码后
 
 1. 公开头文件
     * 选择 `TARGETS` 下的静态库项目 - `Build Phases` - `Headers`，把需要公开的头文件从 `Project` 拖入 `Public` 中
@@ -173,35 +173,35 @@ armv7 ：3GS ~ 4S `（静态库只要支持了armv7，就可以跑在armv7s的�
 
 <br>
 
-## 把 .framework 静态库变成 .a 库
+### 把 .framework 静态库变成 .a 库
 
 xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx 无后缀的文件，直接改名成 other.a，选择添加该扩展名到文件末尾，再把 Headers 文件夹中的文件拷贝出来，头文件和 .a 库文件一起使用即可。
 
 
 <br>
 
-## 查看静态库所支持的指令集
+### 查看静态库所支持的指令集
 
 * `lipo -info xxxx.a`  
 * `lipo -info xxxx.framework/xxxx`
 
 <br>
 
-## 合并真机和模拟器版本的静态库
-### 合并.a
+### 合并真机和模拟器版本的静态库
+#### 合并.a
 
 * `lipo -create Debug-iphoneos/xxxx.a Debug-iphonesimulator/xxxx.a -output xxxx.a`
 
 <br>
 
-### 合并.framework
+#### 合并.framework
 
 * `lipo -create ../xxxx.framework/xxxx ../xxxx.framework/xxxx -output ../xxxx`
 * 合并后用生成的 xxxx 文件替换模拟器或者真机的 xxxx.framework 内的同名文件，这样库就能在真机和模拟器上跑
 
 <br>
 
-### framework合并脚本：
+#### framework合并脚本：
 
 1. 在 `TARGETS` -> `Build Phases` 中点 `+` 加号，选择 `New Run Script Phase`，会添加一项 `Run Script`
 2. 将下面的脚本代码粘贴至提示 `Type a script or drag...`输入框内
@@ -229,7 +229,7 @@ xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx �
 
 <br>
 
-### 合并好坏：
+#### 合并好坏：
 
 * 好：开发过程中更方便，真机和模拟器上都能运行调试
 * 坏：合并后静态库大小会变大，因此很多第三方的静态库是区分调试和发布版本的
@@ -240,16 +240,16 @@ xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx �
 
 
 
-# 静态库结合库源码调试
+## 静态库结合库源码调试
 
 静态库制作完成后，如果使用的人调用报错，为了方便调试，有两种方法：
 
-## 方法一：
+### 方法一：
 打包静态库时，设置 `Build Settings` -> `Generate Debug Symbols`，选择 `Debug` 或者 `Release` 为 `Yes`，这样打出来的静态库，调用库方法崩溃时，会定位到崩溃方法的源码处。
 
 <br>
 
-## 方法二：
+### 方法二：
 把调用静态库的工程和库源码工程相关联
 
 1. 先运行静态库源码工程，生成静态库 xxx.a 或 xxx.framework 文件
@@ -266,7 +266,7 @@ xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx �
 
 <br>
 
-# 小结
+## 小结
 `打包静态库时，.a 静态库可以被打包进依赖它的静态库中`；`.framework 静态库无法被打包进依赖它的静态库中`，`使用时需要把依赖的 .framework 库一起拷贝到新工程中使用。`
 
 <br>
@@ -278,7 +278,3 @@ xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx �
 * [SDK系列-FrameWork的制作(1)](https://www.jianshu.com/p/7a88c39f048a)
 * [SDK系列-FrameWork制作(2)](https://www.jianshu.com/p/115ba9be4da1)
 * [处理器架构介绍](https://marlous.github.io/2019/03/01/处理器、处理器架构与指令集关系/)
-
-<br>
-<br>
-<br>
