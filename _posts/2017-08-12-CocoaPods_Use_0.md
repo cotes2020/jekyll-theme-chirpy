@@ -1,8 +1,8 @@
 ---
 title: CocoaPods 的使用
 date: 2017-08-12 22:00:13
-categories: iOS
-tags: CocoaPods
+categories: [iOS]
+tags: [CocoaPods]
 ---
 
 * [Podfile 文件格式](https://guides.cocoapods.org/using/the-podfile.html) 

@@ -1,8 +1,8 @@
 ---
 title: 算法
 date: 2017-07-18 16:03:07
-categories: iOS 
-tags: 算法
+categories: [iOS]
+tags: [算法]
 ---
 
 * [10大基础实用算法及其讲解](https://blog.csdn.net/zhangguofu2/article/details/31810179)

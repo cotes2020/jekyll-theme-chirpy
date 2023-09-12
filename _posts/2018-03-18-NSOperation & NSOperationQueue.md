@@ -1,8 +1,8 @@
 ---
 title: 多线程：NSOperation、NSOperationQueue
 date: 2018-03-18 16:47:26
-categories: iOS
-tags: 多线程
+categories: [iOS]
+tags: [多线程]
 ---
 
 ## NSOperation、NSOperationQueue 是一套多线程解决方案，通常是配合使用

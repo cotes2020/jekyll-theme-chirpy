@@ -1,8 +1,8 @@
 ---
 title: 关于 UITextField 和 键盘 的通知、代理调用顺序
 date: 2017-08-05 10:36:54
-categories: iOS
-tags: UI
+categories: [iOS]
+tags: [UI]
 ---
 
 ## 从点击UITextField到键盘弹出完成，调用代理方法或发通知的顺序

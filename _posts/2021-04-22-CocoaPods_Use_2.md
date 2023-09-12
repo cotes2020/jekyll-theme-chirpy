@@ -1,8 +1,8 @@
 ---
 title: CocoaPods 使用：创建公有 pod 库
 date: 2021-04-22 20:56:40
-categories: iOS
-tags: CocoaPods
+categories: [iOS]
+tags: [CocoaPods]
 ---
 
 ## 准备工作

@@ -1,8 +1,8 @@
 ---
 title: 如何下载 App Store 上旧版软件的 ipa 包
 date: 2023-03-14 11:03:25
-categories: iOS
-tags: 零散
+categories: [iOS]
+tags: [零散]
 ---
 
 ## 前言

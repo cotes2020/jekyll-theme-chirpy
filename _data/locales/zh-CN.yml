@@ -74,8 +74,8 @@ post:
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: "%Y/%m/%d"
-    dayjs: "YYYY/MM/DD"
+    strftime: "%Y-%m-%d"
+    dayjs: "YYYY-MM-DD"
 
 # categories page
 categories:

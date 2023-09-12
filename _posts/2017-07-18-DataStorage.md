@@ -1,8 +1,8 @@
 ---
 title: 数据存储
 date: 2017-07-18 16:04:52
-categories: iOS 
-tags: 数据存储
+categories: [iOS]
+tags: [数据存储]
 ---
 
 ## 数据存储方式

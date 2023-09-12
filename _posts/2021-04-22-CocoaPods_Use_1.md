@@ -1,8 +1,8 @@
 ---
 title: CocoaPods 使用：创建本地 pod 库
 date: 2021-04-22 17:06:49
-categories: iOS
-tags: CocoaPods
+categories: [iOS]
+tags: [CocoaPods]
 ---
 
 ## 使用 CocoaPods 管理代码的必要性

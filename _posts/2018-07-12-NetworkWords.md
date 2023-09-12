@@ -1,8 +1,8 @@
 ---
 title: 网络相关名词介绍
 date: 2018-07-12 18:54:25
-categories: iOS 
-tags: 网络
+categories: [iOS]
+tags: [网络]
 ---
 
 ## TCP/IP

@@ -1,7 +1,7 @@
 ---
 title: 彩墨
 date: 2017-07-13 11:02:45
-categories: Others
+categories: [Others]
 ---
 
 * [19种私藏彩墨种草，你看上了谁？](https://zhongce.sina.com.cn/article/view/4496/?pos=18)

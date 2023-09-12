@@ -1,8 +1,8 @@
 ---
 title: 音视频
 date: 2017-07-18 16:16:20
-categories: iOS 
-tags: 音视频
+categories: [iOS]
+tags: [音视频]
 ---
 
 ## AVPlayer

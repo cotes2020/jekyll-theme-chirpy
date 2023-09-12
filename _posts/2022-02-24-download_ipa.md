@@ -1,8 +1,8 @@
 ---
 title: 获取已上架的最新版 ipa 安装包的方式
 date: 2022-02-24 09:12:52
-categories: iOS
-tags: 零散
+categories: [iOS]
+tags: [零散]
 ---
 
 # 本文系转载，[原文地址](https://blog.csdn.net/lwb102063/article/details/110739441)

@@ -1,8 +1,8 @@
 ---
 title: 多线程概述
 date: 2017-07-18 16:03:25
-categories: iOS
-tags: 多线程
+categories: [iOS]
+tags: [多线程]
 ---
 
 ## 一堆博客

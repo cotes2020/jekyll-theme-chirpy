@@ -1,8 +1,8 @@
 ---
 title: 线程安全中的各种锁
 date: 2018-03-28 17:50:49
-categories: iOS
-tags: 多线程
+categories: [iOS]
+tags: [多线程]
 ---
 
 * [起底多线程同步锁(iOS)](https://blog.51cto.com/u_16124099/6326657)

@@ -1,8 +1,8 @@
 ---
 title: CocoaPods 使用：创建私有 pod 库
 date: 2021-04-28 11:29:09
-categories: iOS
-tags: CocoaPods
+categories: [iOS]
+tags: [CocoaPods]
 ---
 
 ## 使用场景

@@ -1,8 +1,8 @@
 ---
 title: iOS 静态库制作、静态库的源码调试
 date: 2023-08-02 17:03:25
-categories: iOS
-tags: SDK
+categories: [iOS]
+tags: [SDK]
 ---
 
 ## 静态库和动态库的存在形式和区别

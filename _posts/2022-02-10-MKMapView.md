@@ -1,8 +1,8 @@
 ---
 title: 在 MKMapView 原生地图上显示当前位置的朝向（设备的朝向）
 date: 2022-02-10 16:39:12
-categories: iOS
-tags: MapKit
+categories: [iOS]
+tags: [MapKit]
 ---
 
 想在 MKMapView 地图上显示用户位置指向角，苹果官方并没有把 MKModernUserLocationView 暴露给开发者使用，所以只能自己添加朝向的箭头图片。

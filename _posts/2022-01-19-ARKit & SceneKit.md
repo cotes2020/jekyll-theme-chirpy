@@ -1,8 +1,8 @@
 ---
 title: ARKit 和 SceneKit 的简单使用
 date: 2022-01-19 10:17:02
-categories: iOS
-tags: AR 相关
+categories: [iOS]
+tags: [AR 相关]
 ---
 
 ## 常用类的解释

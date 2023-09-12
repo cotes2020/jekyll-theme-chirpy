@@ -1,8 +1,8 @@
 ---
 title: 数据同步、迁移
 date: 2018-07-18 11:32:59
-categories: iOS 
-tags: 数据存储
+categories: [iOS]
+tags: [数据存储]
 ---
 
 ## 要求

@@ -1,8 +1,8 @@
 ---
 title: WKWebView 的简单使用
 date: 2018-01-15 16:03:25
-categories: iOS
-tags: UI
+categories: [iOS]
+tags: [UI]
 ---
 
 ## 开发中一般只使用以下 4 个方法：

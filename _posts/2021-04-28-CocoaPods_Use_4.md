@@ -1,8 +1,8 @@
 ---
 title: CocoaPods 使用：podspec 文件参数详解
 date: 2021-04-28 17:31:17
-categories: iOS
-tags: CocoaPods
+categories: [iOS]
+tags: [CocoaPods]
 ---
 
 > 【[转自这里](https://www.jianshu.com/p/5d24c03f24d3)】【[另](https://www.jianshu.com/p/6e0988a01db9)】
