@@ -5,23 +5,21 @@ categories: iOS
 tags: 多线程
 ---
 
-<br>
-
-#### 一堆博客
-[起底多线程同步锁(iOS)](https://blog.51cto.com/u_16124099/6326657)
-[看一眼，你就会用GCD](https://www.jianshu.com/p/a28c5bbd5b4a?nomobile=yes)
-[iOS多线程：『GCD』详尽总结](https://www.jianshu.com/p/2d57c72016c6)
-[GCD高级用法](https://www.jianshu.com/p/805dd3c16869)
+## 一堆博客
+* [起底多线程同步锁(iOS)](https://blog.51cto.com/u_16124099/6326657)
+* [看一眼，你就会用GCD](https://www.jianshu.com/p/a28c5bbd5b4a?nomobile=yes)
+* [iOS多线程：『GCD』详尽总结](https://www.jianshu.com/p/2d57c72016c6)
+* [GCD高级用法](https://www.jianshu.com/p/805dd3c16869)
 
 <br>
 
-#### 进程和线程
+## 进程和线程
 * 进程：在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。
 * 线程：是程序执行的最小单元，在多线程系统中，通常是在一个进程中包括多个线程。
 
 <br>
 
-####  四种多线程技术:
+##  四种多线程技术:
 1. pthread ：是一套 C 语言的 API，跨平台（Unix / Linux / Windows），很少用
 2. NSThread ：OC 语言实现的 API，需要开发者手动管理线程生命周期
 3. GCD（Grand Central Dispatch）：是一套 C 语言的 API，由系统管理线程生命周期
@@ -32,7 +30,7 @@ tags: 多线程
 
 <br>
 
-#### 队列：
+## 队列：
 * 串行和并行针对的是队列；同步和异步针对的是线程。
 * 主队列：是一个串行队列
 * 全局队列：是一个并行队列
@@ -80,7 +78,7 @@ dispatch_release(q);
 
 
 
-#### GCD 公开的有5个不同的队列：
+## GCD 公开的有5个不同的队列：
 一个运行在主线程中的主队列，3 个不同优先级的后台队列，以及一个优先级更低的后台队列（用于 I/O）
 
 
@@ -103,7 +101,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
 <br>
 
-#### 单例的实现步骤:
+## 单例的实现步骤:
 * 重写`allocWithZone`方法，`allocWithZone`方法是对象分配内存空间时，最终会调用的方法，重写该方法，保证只会分配一个内存空间
 * 提供`sharedXXX`类方法，便于其他类访问
 
@@ -124,7 +122,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 <br>
 
 
-# 关于多线程死锁
+## 关于多线程死锁
 
 
 ``` objc
@@ -200,13 +198,7 @@ dispatch_sync(queue, ^{
 
 <br>
 
-#### 自动释放池的工作原理
+## 自动释放池的工作原理
 1. 标记为`autorelease`的对象在出了作用域范围后，会被添加到最近一次创建的自动释放池中
 2. 当自动释放池被销毁或耗尽时，会向自动释放池中的所有对象发送`release`消息
 3. 每个线程都需要有`@autoreleasepool`，否则可能会出现内存泄漏，使用`NSThread`多线程技术，不会为后台线程创建自动释放池
-
-
-<br>
-<br>
-<br>
-

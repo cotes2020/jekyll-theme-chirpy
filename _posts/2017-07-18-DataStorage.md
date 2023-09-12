@@ -5,7 +5,7 @@ categories: iOS
 tags: 数据存储
 ---
 
-# 几种数据存储方式
+## 数据存储方式
 * plist 属性列表
 * NSKeyedArchiver
 * Keychain（保存帐号、凭证等少量数据）
@@ -13,9 +13,9 @@ tags: 数据存储
 * SQLite 3
 
 <br>
-<br>
 
-## plist 属性列表
+### plist 属性列表
+
 ``` objc
 // 把 key 和 value 存入 /Library/Preferences/xxxxx.plist 属性列表文件中，xxxxx 是 bundle id 
 [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:@"age"];
@@ -54,9 +54,8 @@ NSInteger age = [[NSUserDefaults standardUserDefaults] integerForKey:@"age"];
 ```
 
 <br>
-<br>
 
-## NSKeyedArchiver
+### NSKeyedArchiver
 
 ``` objc
 // 归档（待归档的类需要实现 NSCoding 协议的两个方法，否则运行会报错）
@@ -67,24 +66,19 @@ NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.person];
 Person *p = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 ```
 
-
-
 <br>
 
-## Keychain
+### Keychain
 * 相当于是一个系统自带的数据库，可存储帐号密码等小量的数据（增、删、改、查）
 * 存储在 Keychain 中的数据，在删除 APP 后数据还存在设备中，下次安装 APP 还能获取之前存的数据
 * 可以将数据归档为 NSData 后存入 Keychain ；取出 NSData 后解档
 * 可以使用第三方库 [SAMKeychain](https://github.com/soffes/SAMKeychain)
 
-
-<br>
 <br>
 
-## Core Data
+### Core Data
 * 可以使用第三方库 [MagicalRecord](https://github.com/magicalpanda/MagicalRecord)
 * [Core Data入门](https://www.cnblogs.com/mjios/archive/2013/02/26/2932999.html)
-
 
 
 ``` objc
@@ -231,21 +225,8 @@ person.book = book;
 ![coredata](/assets/img/coredata.png)
 
 
-
-
-<br>
 <br>
 
-## SQLite 3
+### SQLite 3
 * [SQLite 教程](https://www.runoob.com/sqlite/sqlite-tutorial.html)
 * 可以使用第三方库 [fmdb](https://github.com/ccgus/fmdb)
-
-```
-// C 语言
-
-```
-
-
-<br>
-<br>
-<br>

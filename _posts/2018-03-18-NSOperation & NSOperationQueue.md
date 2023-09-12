@@ -5,24 +5,19 @@ categories: iOS
 tags: 多线程
 ---
 
-<br>
-
-#### NSOperation、NSOperationQueue 是一套多线程解决方案，通常是配合使用
+## NSOperation、NSOperationQueue 是一套多线程解决方案，通常是配合使用
 
 <br>
-<br>
 
-#### 特点
+## 特点
 1. 底层是基于 GCD 的封装，OC 语言实现，面向对象，现在 Swift 也支持
 2. 可获取和设置操作的各种状态，其内部是通过 KVO 来实现
 3. 可设置队列的最大并发数
 4. 各操作间可设置依赖关系
 
-
-<br>
 <br>
 
-#### 用 NSOperation、NSOperationQueue 实现多线程的使用步骤
+## 用 NSOperation、NSOperationQueue 实现多线程的使用步骤
 1. 创建操作：先将需要执行的操作封装到一个 NSOperation 对象中。
 2. 创建队列：创建 NSOperationQueue 对象。
 3. 将操作加入到队列中：将 NSOperation 对象添加到 NSOperationQueue 对象中。
@@ -30,9 +25,8 @@ tags: 多线程
 这样 NSOperationQueue 中的 NSOperation 就会自动在多个线程执行，不用调用 start 方法。
 
 <br>
-<br>
 
-#### 基本使用
+## 基本使用
 NSOperation 是个抽象类，开发中只使用它的子类来封装操作。
 
 1. 使用子类 NSInvocationOperation
@@ -40,9 +34,8 @@ NSOperation 是个抽象类，开发中只使用它的子类来封装操作。
 3. 自定义继承自 NSOperation 的子类
 
 <br>
-<br>
 
-#### 使用子类 NSInvocationOperation
+## 使用子类 NSInvocationOperation
 
 ``` objc
 - (void)useInvocationOperation {
@@ -66,9 +59,8 @@ NSOperation 是个抽象类，开发中只使用它的子类来封装操作。
 ```
 
 <br>
-<br>
 
-#### 使用子类 NSBlockOperation
+## 使用子类 NSBlockOperation
 ``` objc
 - (void)useBlockOperation {
 
@@ -105,16 +97,15 @@ NSOperation 是个抽象类，开发中只使用它的子类来封装操作。
 
 
 <br>
-<br>
 
-#### 使用自定义继承自 NSOperation 的子类
+## 使用自定义继承自 NSOperation 的子类
 自定义的子类需要重写 main 方法。我们不需要管理操作的状态属性 isExecuting 和 isFinished。当 main 方法执行完返回，这个操作就结束了。
 
 
 <br>
 <br>
 
-#### 队列的使用
+## 队列的使用
 
 ``` objc
 // 主队列- 添加到主队列中的操作，都会放到主线程中执行。
@@ -182,7 +173,8 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 <br>
 
-`注意：`
+> 注意
+{: .prompt-danger }
 
 * **NSOperationQueue 中的操作是异步执行，当 maxConcurrentOperationCount 等于 1 时是异步串行；大于 1 时是异步并行。**
 * **这里 maxConcurrentOperationCount 控制的不是并发线程的数量，而是一个队列中同时能并发执行的最大操作数。**
@@ -217,18 +209,16 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 
 <br>
-<br>
 
-#### NSOperation、NSOperationQueue 线程同步和线程安全
+## NSOperation、NSOperationQueue 线程同步和线程安全
 线程同步：可理解为线程 A 执行到某个地方时要依靠线程 B 的某个结果，于是停下来等 B 执行完，再基于 B 的执行结果继续操作。
 
 线程安全：若有多个线程同时执行某段代码（更改变量），一般都需要考虑线程同步，否则可能影响线程安全。
 
 
 <br>
-<br>
 
-#### NSOperation 常用属性和方法
+## NSOperation 常用属性和方法
 
 ``` objc
 // 取消操作，实质是标记 isCancelled 状态。
@@ -264,9 +254,8 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 
 <br>
-<br>
 
-#### NSOperationQueue 常用属性和方法
+## NSOperationQueue 常用属性和方法
 
 ``` objc
 // 可以取消队列的所有未执行操作，正在执行的操作不会被取消
@@ -302,12 +291,8 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 <br>
 
-`注意：`
+> 注意
+{: .prompt-danger }
 
 * **这里的暂停和取消（包括操作的取消和队列的取消）并不代表可以将当前的操作立即取消，而是当当前的操作执行完毕之后不再执行新的操作。**
 * **暂停和取消的区别就在于：暂停之后可以恢复继续执行；而取消操作之后不行。**
-
-
-<br>
-<br>
-<br>

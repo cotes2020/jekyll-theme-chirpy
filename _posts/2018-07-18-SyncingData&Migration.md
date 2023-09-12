@@ -5,9 +5,7 @@ categories: iOS
 tags: 数据存储
 ---
 
-<br>
-
-# 要求
+## 要求
 * 无论有没有网络连接，每一台设备都能够访问完整的数据集。
 * 网络可能连接不稳定，数据同步时发起的请求数量要尽可能少。
 * 数据更改必须基于最新的数据，任何人都不应该在不知晓其他人修改的情况下覆盖那些改动。
@@ -24,17 +22,17 @@ tags: 数据存储
 <br>
 <br>
 
-# 数据迁移
+## 数据迁移
 
 <br>
 
-#### 添加数据前尽量考虑完全
+## 添加数据前尽量考虑完全
 在处理任何数据持久性问题时最重要的事情之一就是先仔细思考你的模型，在最开始创建模型的时候尽量考虑完全。添加空属性或者空实体也比以后进行迁移时候创建好的多，因为迁移很容易出现错误，而未使用的数据就不会了。
 
 
 <br>
 
-#### 轻量迁移相对于自定义迁移来说非常快速。能够处理简单的，系统能推断出来的迁移方式，比如：
+## 轻量迁移相对于自定义迁移来说非常快速。能够处理简单的，系统能推断出来的迁移方式，比如：
 
 * 删除实体、属性 或者 关系。
 * 使用 renamingIdentifier 重新命名实体、属性 或者关系。
@@ -64,7 +62,7 @@ NSError *error = nil;
 ```
 <br>
 
-#### 复杂的迁移
+## 复杂的迁移
 * 手动创建 Mapping Model 适用于更加复杂的数据迁移
 
 <br>
@@ -77,7 +75,3 @@ NSError *error = nil;
 * [iCloud 和 Core Data](https://objccn.io/issue-10-2/)
 * [Design for Core Data in iCloud](https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/DesignForCoreDataIniCloud.html)
 * [Core Data Model Versioning and Data Migration Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreDataVersioning/Articles/vmLightweightMigration.html)
-
-<br>
-<br>
-<br>

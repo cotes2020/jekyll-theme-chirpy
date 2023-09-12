@@ -5,17 +5,15 @@ categories: iOS
 tags: SDK
 ---
 
-<br>
-
 # 静态库和动态库的存在形式和区别
 
-## 静态库：
+## 静态库
 
 * `.a` 和 `.framework`
 * 会被完整地复制到每个调用它的程序中，被多个程序使用就有多份冗余拷贝
 
 
-## 动态库：
+## 动态库
 
 * `.tbd`（这是从 Xcode 7 开始的后缀名，Xcode 7 之前是 `.dylib` ） 和 `.framework`
 * 在程序运行时由系统动态加载到内存中，系统只加载一份，多个程序共用，节省内存
@@ -274,6 +272,7 @@ xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx �
 <br>
 
 >  本文由以下几篇文章抄抄改改而来
+{: .prompt-info }
 
 * [SDK系列-iOS FrameWork制作概述](https://www.jianshu.com/p/e263aec947ff)
 * [SDK系列-FrameWork的制作(1)](https://www.jianshu.com/p/7a88c39f048a)

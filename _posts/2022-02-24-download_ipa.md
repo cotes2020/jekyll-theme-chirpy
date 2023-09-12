@@ -5,18 +5,16 @@ categories: iOS
 tags: 零散
 ---
 
-<br>
+# 本文系转载，[原文地址](https://blog.csdn.net/lwb102063/article/details/110739441)
 
-#### 本文系转载，[原文地址](https://blog.csdn.net/lwb102063/article/details/110739441)
-
-# 获取IPA包的的方式
+## 获取IPA包的的方式
 
 * 一、使用 `Apple Configurator 2`
 * 二、使用 `爱思助手`
 
 <br>
 
-#### 一、利用 Apple Configurator 2 获取 IPA 包
+### 一、利用 Apple Configurator 2 获取 IPA 包
 
 之前我们可以借助PP助手来获取越狱或者非越狱后的IPA安装包，但现在PP助手已经凉凉了，不过我们还是有其他的方式可以获取到IPA包的---`Apple Configurator 2`；这款应用我们可以直接在Apple Store上进行下载，https://apps.apple.com/cn/app/apple-configurator-2/id1037126344?mt=12，下面说一下如何获取官方的IPA包：
 
@@ -78,9 +76,3 @@ tags: 零散
 <br>
 
 选择应用后点击安装，在上图的右上角，我们可以查看进度，安装完后，我们可以打开目录，里面就会看到下载下来的 ipa 包了
-
-
-<br>
-<br>
-<br>
-

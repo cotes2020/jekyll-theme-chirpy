@@ -188,9 +188,3 @@ childNode.geometry = text;
 
 ## 注意
 根据会话配置，ARKit 会自动将特殊的锚点添加到会话中，例如：World-tracking 会话可以添加 `ARPlaneAnchor`、`ARObjectAnchor` 和 `ARImageAnchor` 对象，如果您启用相应的功能；面部跟踪会话添加 `ARFaceAnchor` 对象。
-
-<br>
-<br>
-<br>
-
-

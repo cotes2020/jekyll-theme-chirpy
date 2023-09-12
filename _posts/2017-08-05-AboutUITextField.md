@@ -5,8 +5,7 @@ categories: iOS
 tags: UI
 ---
 
-
-### 从点击UITextField到键盘弹出完成，调用代理方法或发通知的顺序
+## 从点击UITextField到键盘弹出完成，调用代理方法或发通知的顺序
 ```
 1. textFieldShouldBeginEditing:                （调代理）
 2. textFieldDidBeginEditing:                   （调代理）
@@ -18,7 +17,7 @@ tags: UI
 ```
 
 
-### 在UITextField中编辑（输入或者删除）文字时，调用代理方法或发通知的顺序
+## 在UITextField中编辑（输入或者删除）文字时，调用代理方法或发通知的顺序
 ```
 // 在此方法中取得的文本框文字是输入或删除之前的
 1. textField:shouldChangeCharactersInRange:replacementString:  （调代理）
@@ -28,7 +27,7 @@ tags: UI
 
 ```
 
-### 在UITextField结束编辑时，调用代理方法或发通知的顺序
+## 在UITextField结束编辑时，调用代理方法或发通知的顺序
 ```
 1. textFieldShouldEndEditing:              （调代理）
 2. UIKeyboardWillChangeFrameNotification   （发通知）
@@ -38,8 +37,3 @@ tags: UI
 6. UIKeyboardDidHideNotification           （发通知）
 
 ```
-
-<br>
-<br>
-<br>
-

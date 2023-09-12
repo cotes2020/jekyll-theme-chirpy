@@ -5,9 +5,7 @@ categories: iOS
 tags: 零散
 ---
 
-<br>
-
-#### NSMutableAttributedString 的使用
+## NSMutableAttributedString 的使用
 * 唯一蛋疼的是无法实现监听文本中链接、话题等的点击事件
 * 如果要实现监听链接、话题等的点击事件，可以使用 [YYText](https://github.com/ibireme/YYText) 框架，或直接使用 [YYKit](https://github.com/ibireme/YYKit)
 
@@ -90,8 +88,3 @@ tags: 零散
 }
 
 ```
-
-<br>
-<br>
-<br>
-

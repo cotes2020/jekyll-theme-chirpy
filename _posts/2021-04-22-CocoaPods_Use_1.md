@@ -5,8 +5,6 @@ categories: iOS
 tags: CocoaPods
 ---
 
-<br>
-
 ## 使用 CocoaPods 管理代码的必要性
 项目到了一定规模, 代码组织和结构显得尤为重要。
 
@@ -114,5 +112,3 @@ pod install
 
 Xcode 打开工程
 ![cocoapods_use_5](/assets/img/cocoapods_use_5.jpg)
-
-

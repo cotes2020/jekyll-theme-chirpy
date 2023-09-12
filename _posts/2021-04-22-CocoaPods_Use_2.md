@@ -5,8 +5,6 @@ categories: iOS
 tags: CocoaPods
 ---
 
-<br>
-
 ## 准备工作
 在创建公开的 pod 库之前，请确保已经有了 `github` 账号。此篇文章介绍如何将代码开源并放到 pod 库中，供别人使用，这种方式属于打造公共（Public repo）仓库，任何人都可以搜索到你的库并使用。
 
@@ -140,6 +138,3 @@ Are you sure you want to delete this Pod version?
 git tag -d 0.0.1 // 先删除本地 tag
 git push origin --delete tag 0.0.1  // 再删除远程 tag，然后重新打 tag
 ```
-<br>
-<br>
-<br>

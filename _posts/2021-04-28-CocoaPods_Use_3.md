@@ -5,8 +5,6 @@ categories: iOS
 tags: CocoaPods
 ---
 
-<br>
-
 ## 使用场景
 
 有些项目或公司内，不希望把一些核心的公用代码开源，但是这些代码基本很稳定很成熟，可以做成组件给到其他人或者组内使用。就可以使用 Cocoapods 来创建自己的私有仓库，让大家共享代码，也是组件化的一种方案。
@@ -195,7 +193,3 @@ target 'ABCDKit_Example' do
   pod 'MJRefresh'
 end
 ```
-
-<br>
-<br>
-<br>

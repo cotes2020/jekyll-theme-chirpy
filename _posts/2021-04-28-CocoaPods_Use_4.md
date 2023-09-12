@@ -5,19 +5,17 @@ categories: iOS
 tags: CocoaPods
 ---
 
-<br>
-
 > 【[转自这里](https://www.jianshu.com/p/5d24c03f24d3)】【[另](https://www.jianshu.com/p/6e0988a01db9)】
 
 <br>
 
-# 一、podspec 文件讲解
+## 一、podspec 文件讲解
 
 podspec 是一个描述 pod 库版本文件，一个标准的 .podspec 文件可以通过 `pod spec create xxx` 命令生成，生成的文件名为 `xxx.podspec`
 
 <br>
 
-## 简单示例：
+### 简单示例：
  
 ```
 Pod::Spec.new do |spec|
@@ -35,7 +33,7 @@ Pod::Spec.new do |spec|
 
 <br>
 
-## 详细示例：
+### 详细示例：
 ```
  Pod::Spec.new do |spec|
      spec.name          = 'Reachability'
@@ -61,7 +59,7 @@ Pod::Spec.new do |spec|
 
 <br>
 
-# 二、描述库的特定版本信息
+## 二、描述库的特定版本信息
 ```
 Pod::Spec.new do |spec|
     //库名称
@@ -157,7 +155,7 @@ Pod::Spec.new do |spec|
 
 <br>
 
-# 三、配置 pod库 工程环境变量
+## 三、配置 pod库 工程环境变量
 
 1. dependency： 私有库依赖的三方库
 
@@ -224,7 +222,7 @@ spec.prefix_header_contents  =  '#import <UIKit / UIKit.h>' , '#import <Foundati
 
 <br>
 
-# 四、文件操作：podspec 文件必须在根仓库文件中。文件路径也是相对于根仓库位置的
+## 四、文件操作：podspec 文件必须在根仓库文件中。文件路径也是相对于根仓库位置的
 
 模式1：*（检测文件名）
 * 匹配所有文件
@@ -290,7 +288,7 @@ spec.exclude_files = 'Classes/**/unused.{h,m}'
  
  <br>
  
-# 五、Subspecs 私有库模块
+## 五、Subspecs 私有库模块
 
 subspec：
 
@@ -319,8 +317,3 @@ Pod::Spec.new do |s|
     
 end
 ```
-
-
-<br>
-<br>
-<br>

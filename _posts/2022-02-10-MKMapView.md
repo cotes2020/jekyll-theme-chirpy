@@ -5,12 +5,10 @@ categories: iOS
 tags: MapKit
 ---
 
-<br>
-
 想在 MKMapView 地图上显示用户位置指向角，苹果官方并没有把 MKModernUserLocationView 暴露给开发者使用，所以只能自己添加朝向的箭头图片。
 
 
-# 实现
+## 实现
 
 .h文件
 
@@ -96,7 +94,7 @@ tags: MapKit
 
 <br>
 
-# 使用
+## 使用
 
 在地图初始化时会掉用这个代理方法，可以判断是否是私有对象 `MKModernUserLocationView`，来添加自定义的控件在上面
 
@@ -130,7 +128,3 @@ tags: MapKit
 // 在跟随模式下记得隐藏，其他模式下显示
 _userHeadingView.hidden = YES;
 ``` 
-
-<br>
-<br>
-<br>

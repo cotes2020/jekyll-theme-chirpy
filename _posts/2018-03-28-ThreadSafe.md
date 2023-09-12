@@ -12,12 +12,14 @@ tags: 多线程
 
 <br>
 
-`除非开发者能保证访问锁的线程全部都处于同一优先级，否则 iOS 系统中所有类型的自旋锁都别再用。`
+> 注意
+{: .prompt-danger }
+除非开发者能保证访问锁的线程全部都处于同一优先级，否则 iOS 系统中所有类型的自旋锁都别再用。
 
 <br>
 
 ## iOS 加锁的几种方式
-#### 1、synchronized
+### 1、synchronized
 ``` objc
 // 性能最差，敲以下代码时 Xcode 没有提示，是否可以理解为 Apple 不建议使用这种加锁方式 ？
 @synchronized (对象，一般用self) {
@@ -27,7 +29,7 @@ tags: 多线程
 
 <br>
 
-#### 2、NSLock
+### 2、NSLock
 ``` objc
 [self.lock lock];
     // ......
@@ -36,7 +38,7 @@ tags: 多线程
 
 <br>
 
-#### 3、NSCondition
+### 3、NSCondition
 ```  objc
 // NSCondition 实现了`NSLocking`协议，同样具有锁的功能，与`NSLock`一样可以加锁、解锁
 
@@ -160,7 +162,7 @@ NS_CLASS_AVAILABLE(10_5, 2_0)
 
 <br>
 
-#### 4、NSConditionLock
+### 4、NSConditionLock
 ``` objc
 // NSConditionLock 条件锁
 // 其中的 condition 参数，可以理解为一个条件标识，只有传入的 condition 和锁的标识相同才会加锁成功，否则阻塞线程。
@@ -203,7 +205,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
 <br>
 
-#### 5、NSRecursiveLock 递归锁
+### 5、NSRecursiveLock 递归锁
 **递归锁可以被同一个线程多次获取而不会导致死锁。但是所有其他线程都无法访问由锁保护的代码。**
 
 ``` objc
@@ -233,7 +235,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
 <br>
 
-#### 6、pthread_mutex 互斥锁
+### 6、pthread_mutex 互斥锁
 
 ``` objc
 // ==================================================================
@@ -306,7 +308,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
 <br>
 
-#### 7、信号量机制
+### 7、信号量机制
 ``` objc
 // 信号量机制
 // 初始化信号量，值要 >= 0，如果 < 0，则返回 NULL
@@ -341,7 +343,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
 <br>
 
-#### 8、pthread_rwlock_t 读写锁
+### 8、pthread_rwlock_t 读写锁
 
 ``` objc
 - (void)useRWLock
@@ -405,7 +407,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
 <br>
 
-#### 8、os_unfair_lock 苹果官方建议的用来替代 OSSpinLock 的锁
+### 8、os_unfair_lock 苹果官方建议的用来替代 OSSpinLock 的锁
 
 ``` objc
 // 创建锁，并初始化
@@ -421,7 +423,7 @@ os_unfair_lock_unlock(unfairLock);
 
 <br>
 
-#### 9、OSSpinLock 自旋锁（性能最好，但某些场景会有问题，已经被苹果废弃）
+### 9、OSSpinLock 自旋锁（性能最好，但某些场景会有问题，已经被苹果废弃）
 * **自旋锁的特点是当有其他线程加锁后，当前线程会循环等待，并不会进入睡眠，所以性能最好。**
 * **若几个线程的优先级不同，则可能出现[优先级翻转](https://baike.baidu.com/item/%E4%BC%98%E5%85%88%E7%BA%A7%E7%BF%BB%E8%BD%AC/4945202?fr=aladdin)的问题。所以 OSSpinLock 已经被苹果废弃。**
 * **除非开发者能保证访问锁的线程优先级都相同，否则 iOS 系统中所有类型的自旋锁都别再用。**
@@ -454,7 +456,3 @@ os_unfair_lock_unlock(unfairLock);
     }
 }
 ```
-
-<br>
-<br>
-<br>

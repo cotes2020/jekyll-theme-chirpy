@@ -5,11 +5,7 @@ categories: iOS
 tags: UI
 ---
 
-
-<br>
-
-#### 开发中一般只使用以下 4 个方法：
-
+## 开发中一般只使用以下 4 个方法：
 
 ``` objc
 // 决定是否发送请求 (类似 UIWebView 的 webView:shouldStartLoadWithRequest:navigationType:)
@@ -25,10 +21,9 @@ webView:didFinishNavigation:
 webView:didFailProvisionalNavigation:withError:
 ```
 
-
 <br>
 
-#### WKNavigationDelegate 代理方法：
+## WKNavigationDelegate 代理方法：
 ``` objc
 // 决定是否发送请求 (类似 UIWebView 的 webView:shouldStartLoadWithRequest:navigationType:)
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
@@ -86,12 +81,3 @@ webView:didFailProvisionalNavigation:withError:
     NSLog(@"webViewWebContentProcessDidTerminate");
 }
 ```
-
-
-
-
-<br>
-<br>
-<br>
-
-<br>

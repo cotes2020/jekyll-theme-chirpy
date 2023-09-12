@@ -5,8 +5,6 @@ categories: iOS
 tags: 网络
 ---
 
-<br>
-
 ## TCP/IP
 互联网协议族，人们通常用 `TCP/IP` 来泛指整个互联网协议族，而不是单指这两种协议。[中文](https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F) / [英文](https://en.wikipedia.org/wiki/Internet_protocol_suite)
 
@@ -63,8 +61,3 @@ URI（Uniform Resource Identifier，统一资源标识符）URI的最常见的�
 
 ## URL
 URL (Uniform Resource Locator，统一资源定位符)。 [中文](https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6) / [英文](https://en.wikipedia.org/wiki/URL)
-
-
-<br>
-<br>
-<br>

@@ -5,16 +5,5 @@ categories: iOS
 tags: UI
 ---
 
-
-<br>
-
-#### iOS 横竖屏切换 [原文地址](https://juejin.cn/post/7147133013619376164)
-
-
-
-
-<br>
-<br>
-<br>
-
+## iOS 横竖屏切换 [原文地址](https://juejin.cn/post/7147133013619376164)
 
