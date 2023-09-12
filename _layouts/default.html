@@ -62,10 +62,14 @@ layout: compress
               {% endfor %}
             {% endif %}
 
-            {% include_cached footer.html lang=lang %}
+            
           </div>
         </div>
 
+        <div style="margin-top: 30px;">
+          {% include_cached footer.html lang=lang %}
+        </div>
+        
         {% include_cached search-results.html lang=lang %}
       </div>
 

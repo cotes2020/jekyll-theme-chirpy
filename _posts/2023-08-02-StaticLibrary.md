@@ -271,13 +271,14 @@ xxx.framework 只是个文件夹，进入 xxx.framework，找到同名的 xxx �
 # 小结
 `打包静态库时，.a 静态库可以被打包进依赖它的静态库中`；`.framework 静态库无法被打包进依赖它的静态库中`，`使用时需要把依赖的 .framework 库一起拷贝到新工程中使用。`
 
+<br>
 
 >  本文由以下几篇文章抄抄改改而来
 
-[SDK系列-iOS FrameWork制作概述](https://www.jianshu.com/p/e263aec947ff)
-[SDK系列-FrameWork的制作(1)](https://www.jianshu.com/p/7a88c39f048a)
-[SDK系列-FrameWork制作(2)](https://www.jianshu.com/p/115ba9be4da1)
-[处理器架构介绍](https://marlous.github.io/2019/03/01/处理器、处理器架构与指令集关系/)
+* [SDK系列-iOS FrameWork制作概述](https://www.jianshu.com/p/e263aec947ff)
+* [SDK系列-FrameWork的制作(1)](https://www.jianshu.com/p/7a88c39f048a)
+* [SDK系列-FrameWork制作(2)](https://www.jianshu.com/p/115ba9be4da1)
+* [处理器架构介绍](https://marlous.github.io/2019/03/01/处理器、处理器架构与指令集关系/)
 
 <br>
 <br>

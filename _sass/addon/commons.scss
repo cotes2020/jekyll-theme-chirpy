@@ -1397,7 +1397,7 @@ search {
   /* button 'back-to-Top' position */
   #back-to-top {
     right: 5%;
-    bottom: calc($footer-height - $back2top-size / 2);
+    bottom: calc($footer-height - $back2top-size / 2 + 40px);
   }
 
   #topbar-title {
