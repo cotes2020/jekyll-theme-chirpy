@@ -3,7 +3,7 @@ title: NAT (Network Address Translation) [개념, 설정 법]
 date: 2023-09-12 19:05:24 +0900
 author: kkankkandev
 categories: [Network]
-tags: [network, nat, pat, dnat, router, ip, cisco]     # TAG names should always be lowercase
+tags: [network, nat, pat, dnat, router, ip, cisco, packet tracer, ospf]     # TAG names should always be lowercase
 comments: true
 ---
 
