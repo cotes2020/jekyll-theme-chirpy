@@ -1,9 +1,12 @@
 ---
-layout: page2
+layout: pagealt
 refactor: true
 panel_includes:
   - toc
 tail_includes:
+  - related-posts
+  - post-nav
+  - comments
 ---
 
 {% include lang.html %}
@@ -14,14 +17,14 @@ tail_includes:
   <div class="post-meta text-muted">
     <!-- published date -->
     <span>
-      {{ site.data.locales[lang].doc.posted }}
+      {{ site.data.locales[lang].post.posted }}
       {% include datetime.html date=page.date tooltip=true lang=lang %}
     </span>
 
     <!-- lastmod date -->
     {% if page.last_modified_at and page.last_modified_at != page.date %}
       <span>
-        {{ site.data.locales[lang].doc.updated }}
+        {{ site.data.locales[lang].post.updated }}
         {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
       </span>
     {% endif %}
@@ -54,7 +57,7 @@ tail_includes:
           {% assign authors = page.authors %}
         {% endif %}
 
-        {{ site.data.locales[lang].doc.written_by }}
+        {{ site.data.locales[lang].post.written_by }}
 
         <em>
           {% if authors %}
@@ -81,8 +84,7 @@ tail_includes:
 </div>
 
 <div class="post-tail-wrapper text-muted">
- 
-  <!-- categories 
+  <!-- categories -->
   {% if page.categories.size > 0 %}
     <div class="post-meta mb-3">
       <i class="far fa-folder-open fa-fw me-1"></i>
@@ -93,6 +95,7 @@ tail_includes:
     </div>
   {% endif %}
 
+  <!-- tags -->
   {% if page.tags.size > 0 %}
     <div class="post-tags">
       <i class="fa fa-tags fa-fw me-1"></i>
@@ -106,7 +109,6 @@ tail_includes:
       {% endfor %}
     </div>
   {% endif %}
-  -->
 
   <div
     class="

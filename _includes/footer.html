@@ -24,7 +24,8 @@
     {%- endcapture -%}
 
     {%- capture _theme -%}
-      <span><a href="https://github.com/cotes2020/jekyll-theme-chirpy" style="color: #C5E1A5" target="_blank" rel="noopener">Chirpy</a></span><span> | <a style="color: #85C1E9 " href="/docs/" target="_blank" rel="noopener">[DOCS]</a></span>
+      <a href="https://github.com/cotes2020/jekyll-theme-chirpy" style="color: #C5E1A5" target="_blank" rel="noopener">Chirpy</a>
+      <!-- <span> | <a style="color: #85C1E9 " href="/index-docs.html" target="_blank" rel="noopener">[DOCS]</a></span> -->
     {%- endcapture -%}
 
     {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}

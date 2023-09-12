@@ -5,8 +5,6 @@ date: 2023-09-11
 categories: [Docs]
 tags: [Docs]
 ---
-# Contributor Covenant Code of Conduct
-
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as

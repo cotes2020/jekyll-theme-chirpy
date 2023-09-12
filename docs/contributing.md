@@ -1,12 +1,10 @@
 ---
 title: Contributing Guidelines
-author: mbaggett
+author: cotes
 date: 2023-09-11
 categories: [Docs]
 tags: [Docs]
 ---
-# Contributing Guidelines
-
 :tada: _First of all, thank you for considering contributing to this project!_ :tada:
 
 There are many ways to contribute, from writing tutorials or blog posts, improving the documentation, submitting bug
