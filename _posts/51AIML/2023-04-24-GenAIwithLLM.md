@@ -206,8 +206,6 @@ Give a table of data and then query
 
 
 
-
-
 ---
 
 ## Juptyper
@@ -251,6 +249,12 @@ Give a table of data and then query
 
 !pip uninstall -y nvidia_cublas_cu11
 ```
+
+
+
+
+
+
 
 
 .
