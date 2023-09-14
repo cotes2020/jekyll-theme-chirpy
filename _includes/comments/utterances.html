@@ -8,16 +8,17 @@
 ></script>
 
 <script type="text/javascript">
-  $(function () {
+  (function () {
     const origin = 'https://utteranc.es';
     const iframe = 'iframe.utterances-frame';
     const lightTheme = 'github-light';
     const darkTheme = 'github-dark';
     let initTheme = lightTheme;
+    const html = document.documentElement;
 
     if (
-      $('html[data-mode=dark]').length > 0 ||
-      ($('html[data-mode]').length == 0 && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       initTheme = darkTheme;
     }
@@ -45,5 +46,5 @@
       const utterances = document.querySelector(iframe).contentWindow;
       utterances.postMessage(message, origin);
     });
-  });
+  })();
 </script>
