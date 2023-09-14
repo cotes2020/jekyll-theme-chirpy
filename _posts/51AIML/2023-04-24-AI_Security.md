@@ -10,7 +10,13 @@ tags: [AIML]
 # AIML - Security
 
 - [AIML - Security](#aiml---security)
-  - [OWAPS Top10 for LLM](#owaps-top10-for-llm)
+  - [overall](#overall)
+    - [AI Security](#ai-security)
+    - [AI pipeline risk](#ai-pipeline-risk)
+    - [AI Observability 可观察性](#ai-observability-可观察性)
+  - [LLMs Security](#llms-security)
+    - [Protection solution](#protection-solution)
+      - [Large Language Model (LLM) Monitoring](#large-language-model-llm-monitoring)
   - [Vendor - Data Security and AI Language Models](#vendor---data-security-and-ai-language-models)
     - [controls](#controls)
     - [Security Practices Review](#security-practices-review)
@@ -29,13 +35,190 @@ tags: [AIML]
 
 ref:
 - [OWAPS Top10 for LLM v1](https://owasp.org/www-project-top-10-for-large-language-model-applications/assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf)
+- https://www.freecodecamp.org/news/large-language-models-and-cybersecurity/
+- https://www.experts-exchange.com/articles/38220/Ensuring-the-Security-of-Large-Language-Models-Strategies-and-Best-Practices.html
+- https://docs.whylabs.ai/docs/integrations-llm-whylogs-container
+
+
 
 
 ---
 
-## OWAPS Top10 for LLM
+## overall
+
+---
+
+
+### AI Security
+
+- Artificial Intelligence is very good at finding vulnerabilities, and with the help of humans, it can exploit them even better.
+
+- In computing, debuggers use AI software to look for bugs in source code, autocompletion, autocorrection, and handwriting software. AI can also find vulnerabilities in systems of finance, law, and even politics. AI is used to look for loopholes in contracts, datasets about people, and improve literature gaps.
+
+This brings about two problems:
+
+- AI can be **created to hack** a system.
+
+  - it can be good or bad depending on how people use it.
+  - A cybercriminal may create an advanced chatbot to obtain information from a wide range of people across vast platforms and perhaps even languages.
+  - companies can use AI to look for the vulnerabilities they have and patch them up so an attacker cannot exploit them.
+
+
+- AI might **unintentionally hack** the system.
+
+  - Computers have a very different logic from humans. This means that almost all the time, they accept data, process it, and produce output in a completely different manner in contrast to humans.
+  - Take an example of the classic game of chess:
+  - Chess is an abstract strategy game that is played on a board with 64 squares arranged in an 8-by-8 grid. At the start, each player controls sixteen pieces. The aim is to checkmate the opponent's king with the condition that the king is in check and there is no escape.
+  - A human and a classic chess engine look at this game in two very different ways. A human may play the value game (measuring winning by the value and number of pieces on the board), whereas a computer looks at a finite number of possibilities that can occur with each move the opponent makes via a search algorithm.
+  - By having this limited ability to see into the future, the computer has the advantage almost every time to win the game. This is a very preliminary example and quite basic to the other systems that can be ‘hacked’ by Artificial intelligence.
+
+- humans are programmed by implicit and explicit knowledge. Computers are programmed by a set of instructions and logic that never change unless told to. Therefore, computers and humans will have different approaches, solutions, and hacks for the same problem.
+
+- But systems are built around humans and not computers. So, when the chips are down, computers can do a lot more vulnerability finding and exploitation to many more systems, both virtual and physical.
+
+
+### AI pipeline risk
+
+
+- AI's potential is limitless, but data security is paramount.
+- as AI evolves, developers and researchers who rely on data sharing must prioritize securing sensitive information.
+
+Breakdown of security risks in the AI pipeline:
+
+![F6T3t15XMAAK23x](/assets/img/post/F6T3t15XMAAK23x.jpeg)
+
+---
+
+
+### AI Observability 可观察性
+
+observability platform
+- to control the behavior of ML & data applications.
+
+- `Monitor and observe model performance` for predictive ML models, supporting delayed ground truth and custom performance metrics
+
+- `Monitor and observe data quality` in ML model inputs, Feature Stores, batch and streaming pipelines
+
+- Detect and root cause common ML issues such as drift, data quality, model performance degradation, and model bias
+
+- Explain the cause of model performance degradation using tracing and feature importance
+
+- Detect and root cause common LLM issues such as `toxicity, PII leakage, malicious activity, and indications of hallucinations`
+
+
+
+---
+
+
+## LLMs Security
+
 
 link:
+
+
+### Protection solution
+
+Protection for open source and proprietary models
+
+- Protect the LLM user experience against the key LLM vulnerability types.
+- Deploy inline guardrail with customizable metrics, thresholds, and actions.
+- The solution is applicable to internal and external LLM applications of any scale.
+- Whether you are integrating with a public API or running a proprietary model, use the WhyLabs proxy to ensure guardrails and logging of each prompt/response pair.
+- WhyLabs integrates with LangChain, HuggingFace, MosaicML, OpenAI, Falcon, Anthropic, and more.
+
+![intro_whylabs_in_lifecycle-f4aa7c42ef8d9c1c056c9638c549be3d](https://i.imgur.com/vSAwih1.png)
+
+
+#### Large Language Model (LLM) Monitoring
+
+> Productionizing language models and LLMs, comes with a range of risks due to the infinite amount of input combinations, which can elicit an infinite amount of outputs.
+
+
+**Text Quality**
+- metric
+  - readability score
+  - complexity and grade scores (syllable count, word count, and character count)
+
+- Text quality metrics can provide important insights into the quality and appropriateness of generated responses.
+
+  - Assessing text complexity and grade level
+    - assists in tailoring the generated content to the target audience.
+    - By considering factors such as sentence structure, vocabulary choice, and domain-specific requirements, we can ensure that the LLM produces responses that align with the intended reading level and professional context.
+    - incorporating metrics such as syllable count, word count, and character count allows us to closely monitor the length and composition of the generated text.
+    - By setting appropriate limits and guidelines, we can ensure that the responses remain concise, focused, and easily digestible for users.
+
+    - In **langkit**, we can compute text quality metrics through the textstat module, which uses the textstat library to compute several different text quality metrics.
+
+- By monitoring these metrics, we can `ensure that the Language Model (LLM) outputs are clear, concise, and suitable for the intended audience`.
+
+
+
+
+**Text Relevance 相关**
+- metric
+  - Similarity scores between prompt/responses
+  - Similarity scores against user-defined themes
+
+- Text relevance plays a crucial role in the monitoring of Language Models (LLMs) by providing an `objective measure of the similarity between different texts`.
+
+
+- It serves multiple use cases, including:
+
+  - assessing the quality and appropriateness of LLM outputs and providing guardrails to ensure the generation of safe and desired responses.
+
+  - computing similarity scores between embeddings generated from prompts and responses, enabling the evaluation of the relevance between them.
+    - This helps identify potential issues such as irrelevant or off-topic responses 偏离主题的回答, ensuring that LLM outputs align closely with the intended context.
+    - In **langkit**, we can compute similarity scores between prompt and response pairs using the [input_output]() module.
+
+  - calculating the similarity of prompts and responses against certain topics or known examples, such as jailbreaks or controversial subjects.
+    - By comparing the embeddings to these predefined themes, we can establish guardrails to detect potential dangerous or unwanted responses. The similarity scores serve as signals, alerting us to content that may require closer scrutiny or mitigation.
+    - In **langkit**, this can be done through the [themes]() module.
+
+- By leveraging text relevance as a monitoring metric for LLMs, we can `evaluate the quality of generated responses` + `establish guardrails to minimize the risk of generating inappropriate or harmful content`.
+- This approach enhances the performance, safety, and reliability of LLMs in various applications, providing a valuable tool for responsible AI development.
+
+
+
+
+**Security and Privacy**
+
+- metric
+  - patterns - count of strings matching a user-defined regex pattern group
+  - jailbreaks - similarity scores with respect to known jailbreak attempts
+  - prompt injection - similarity scores with respect to known prompt injection attacks
+  - refusals - similarity scores with respect to known LLM refusal of service responses
+
+- Monitoring for security and privacy in Language Model (LLM) applications helps `ensuring the protection of user data and preventing malicious activities`.
+
+- Several approaches can be employed to strengthen the security and privacy measures within LLM systems.
+
+  - `measure text similarity between prompts and responses against known examples of jailbreak attempts, prompt injections, and LLM refusals of service`. By comparing the embeddings generated from the text, potential security vulnerabilities and unauthorized access attempts can be identified.
+    - This helps in mitigating risks and contributes to the LLM operation within secure boundaries.
+    - In **langkit**, text similarity calculation between prompts/responses and known examples of jailbreak attempts, prompt injections, and LLM refusals of service can be done through the [themes](https://github.com/whylabs/langkit/blob/main/langkit/docs/modules.md#themes) module.
+
+  - Having a prompt injection classifier in place further enhances the security of LLM applications. By detecting and preventing prompt injection attacks, where malicious code or unintended instructions are injected into the prompt, the system can maintain its integrity and protect against unauthorized actions or data leaks.
+    - In **langkit**, prompt injection detection metrics can be computed through the [injections](https://github.com/whylabs/langkit/blob/main/langkit/docs/modules.md#injections) module.
+
+  - `checking prompts and responses against regex patterns designed to detect sensitive information`. These patterns can help identify and flag data such as credit card numbers, telephone numbers, or other types of personally identifiable information (PII). In langkit, regex pattern matching against pattern groups can be done through the regexes module.
+
+
+
+**Sentiment and Toxicity**
+- metric
+  - sentiment analysis
+  - toxicity analysis
+
+- The use of sentiment analysis for monitoring Language Model (LLM) applications can `provide valuable insights into the appropriateness and user engagement of generated responses`.
+- By employing sentiment and toxicity classifiers, we can assess the sentiment and detect potentially harmful or inappropriate content within LLM outputs.
+
+- Monitoring sentiment allows us to
+  - gauge the overall tone and emotional impact of the responses. By analyzing sentiment scores, we can ensure that the LLM is consistently generating appropriate and contextually relevant responses. For instance, in customer service applications, maintaining a positive sentiment ensures a satisfactory user experience.
+
+  - provides an important measure of the presence of offensive, disrespectful, or harmful language in LLM outputs. By monitoring toxicity scores, we can identify potentially inappropriate content and take necessary actions to mitigate any negative impact.
+
+  - identify potential biases or controversial opinions present in the responses, helping to address concerns related to fairness, inclusivity, and ethical considerations.
+
+
 
 ---
 
