@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include lang.html %}
+
 {% capture _content %}
   {% if layout.refactor or page.layout == 'page' %}
     {% include refactor-content.html content=content lang=lang %}
