@@ -372,7 +372,6 @@ i {
 
 main {
   line-height: 1.75;
-  min-height: calc(100vh - $topbar-height - $footer-height);
 
   h1 {
     margin-top: 2rem;
@@ -1127,6 +1126,10 @@ search {
   position: relative;
 
   @include pl-pr(0);
+
+  > .container {
+    min-height: 100vh;
+  }
 }
 
 #topbar-wrapper.row,
@@ -1278,10 +1281,6 @@ search {
     } @else {
       transition: $basic;
     }
-  }
-
-  main {
-    min-height: calc(100vh - $topbar-height - $footer-height-large);
   }
 
   footer {

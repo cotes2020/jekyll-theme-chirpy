@@ -27,10 +27,10 @@ layout: compress
     {% include sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
-      <div class="container px-xxl-5">
+      <div class="container d-flex flex-column px-xxl-5">
         {% include topbar.html lang=lang %}
 
-        <div class="row">
+        <div class="row flex-grow-1">
           <main
             aria-label="Main Content"
             class="col-12 col-lg-11 col-xl-9 px-md-4{% unless has_tail %} pb-5{% endunless %}"
