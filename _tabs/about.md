@@ -1,10 +1,11 @@
 ---
+title: 个人介绍
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
 ---
 
-![博主的头像](../assets/img/logo.jpg)
+![博主的头像](../assets/img/personage.jpg)
 _博主的头像_
 
 ### 关于我
