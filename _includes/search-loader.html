@@ -4,14 +4,16 @@
 -->
 
 {% capture result_elem %}
-<div class="px-1 px-sm-2 px-lg-4 px-xl-0">
-  <a href="{url}">{title}</a>
-  <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">
-    {categories}
-    {tags}
-  </div>
-  <p>{snippet}</p>
-</div>
+  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">
+    <header>
+      <h2><a href="{url}">{title}</a></h2>
+      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">
+        {categories}
+        {tags}
+      </div>
+    </header>
+    <p>{snippet}</p>
+  </article>
 {% endcapture %}
 
 {% capture not_found %}<p class="mt-5">{{ site.data.locales[include.lang].search.no_results }}</p>{% endcapture %}

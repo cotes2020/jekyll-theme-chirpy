@@ -15,6 +15,10 @@ layout: compress
   {% endif %}
 {% endcapture %}
 
+{% if layout.tail_includes %}
+  {% assign has_tail = true %}
+{% endif %}
+
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
@@ -23,47 +27,62 @@ layout: compress
     {% include sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
-      <div id="main" class="container px-xxl-5">
+      <div class="container px-xxl-5">
         {% include topbar.html lang=lang %}
-        {{ content }}
+
+        <div class="row">
+          <main
+            aria-label="Main Content"
+            class="col-12 col-lg-11 col-xl-9 px-md-4{% unless has_tail %} pb-5{% endunless %}"
+          >
+            {{ content }}
+          </main>
+
+          <!-- panel -->
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+            <div class="access">
+              {% include_cached update-list.html lang=lang %}
+              {% include_cached trending-tags.html lang=lang %}
+            </div>
+
+            {% for _include in layout.panel_includes %}
+              {% assign _include_path = _include | append: '.html' %}
+              {% include {{ _include_path }} lang=lang %}
+            {% endfor %}
+          </aside>
+        </div>
+
+        <div class="row">
+          <!-- tail -->
+          <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            {% if has_tail %}
+              {% for _include in layout.tail_includes %}
+                {% assign _include_path = _include | append: '.html' %}
+                {% include {{ _include_path }} lang=lang %}
+              {% endfor %}
+            {% endif %}
+
+            {% include_cached footer.html lang=lang %}
+          </div>
+        </div>
+
         {% include_cached search-results.html lang=lang %}
       </div>
-    </div>
 
-    {% include_cached footer.html lang=lang %}
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
+    </div>
 
     <div id="mask"></div>
 
-    <button id="back-to-top" aria-label="back-to-top" class="btn btn-lg btn-box-shadow">
-      <i class="fas fa-angle-up"></i>
-    </button>
-
     {% if site.pwa.enabled %}
-      <div
-        id="notification"
-        class="toast"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-        data-bs-animation="true"
-        data-bs-autohide="false"
-      >
-        <div class="toast-header">
-          <button
-            type="button"
-            class="btn-close ms-auto"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body text-center pt-0">
-          <p class="px-2 mb-3">{{ site.data.locales[lang].notification.update_found }}</p>
-          <button type="button" class="btn btn-primary" aria-label="Update">
-            {{ site.data.locales[lang].notification.update }}
-          </button>
-        </div>
-      </div>
+      {% include_cached notification.html lang=lang %}
     {% endif %}
+
+    <!-- JavaScripts -->
 
     {% include js-selector.html %}
 
