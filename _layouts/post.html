@@ -14,7 +14,6 @@ tail_includes:
 <header>
   <h1 data-toc-skip>{{ page.title }}</h1>
 
-<<<<<<< HEAD
 <div class="post-tail-wrapper text-muted" style="margin-top: 33px;">
 
   <!-- categories -->
@@ -42,9 +41,6 @@ tail_includes:
 </div> <!-- ./div post-tail-wrapper text-muted -->
 
 <div class="post-meta text-muted" style="margin-top : 33px;">
-=======
-  <div class="post-meta text-muted">
->>>>>>> upstream/master
     <!-- published date -->
     <span>
       {{ site.data.locales[lang].post.posted }}
@@ -78,7 +74,6 @@ tail_includes:
       </div>
     {% endif %}
 
-<<<<<<< HEAD
   <div class="d-flex justify-content-between">
     <!-- author(s)
     <span>
@@ -87,20 +82,9 @@ tail_includes:
       {% elsif page.authors %}
         {% assign authors = page.authors %}
       {% endif %}
-=======
-    <div class="d-flex justify-content-between">
-      <!-- author(s) -->
-      <span>
-        {% if page.author %}
-          {% assign authors = page.author %}
-        {% elsif page.authors %}
-          {% assign authors = page.authors %}
-        {% endif %}
->>>>>>> upstream/master
 
         {{ site.data.locales[lang].post.written_by }}
 
-<<<<<<< HEAD
       <em>
       {% if authors %}
         {% for author in authors %}
@@ -121,29 +105,6 @@ tail_includes:
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-=======
-        <em>
-          {% if authors %}
-            {% for author in authors %}
-              <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
-              {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
-            {% endfor %}
-          {% else %}
-            <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
-          {% endif %}
-        </em>
-      </span>
-
-      <!-- read time -->
-      {% include read-time.html content=content prompt=true lang=lang %}
-    </div>
-    <!-- .d-flex -->
-  </div>
-  <!-- .post-meta -->
-</header>
-
-<div class="content">
->>>>>>> upstream/master
   {{ content }}
 </div>
 

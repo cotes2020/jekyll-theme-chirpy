@@ -3,13 +3,8 @@
 - type: github
   icon: "fab fa-github"
 
-<<<<<<< HEAD
 #- type: twitter
 #  icon: "fab fa-twitter"
-=======
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
->>>>>>> upstream/master
 
 - type: email
   icon: "fas fa-envelope"
