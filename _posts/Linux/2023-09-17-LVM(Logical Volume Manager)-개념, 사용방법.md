@@ -5,11 +5,13 @@ author: kkankkandev
 categories: [Linux]
 tags: [centos, linux, lvm, storage]     # TAG names should always be lowercase
 comments: true
+image:
+  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/0ec52fc0-1d5d-4d77-b8c2-4e78aa9f80ad
 ---
 
 ## 1. LVM(Logical Volume Manager)의 개념
 
-LVM이란 리눅스와 유닉스 기반 운영체제에서 Logical Volume을 효율적이고 유연하게 관리하기 위한 커널의 한 부분이자 프로그램입니다. LVM은 물리적인 디스크를 논리적인 볼륨으로 추상화하여 유연하게 디스크 공간을 활용할 수 있게 해줍니다.
+LVM이란 리눅스와 유닉스 기반 운영체제에서 Logical Volume을 효율적이고 유연하게 관리하기 위한 커널의 한 부분이자 프로그램입니다. LVM은 물리적인 디스크를 논리적인 볼륨으로 추상화하여 유연하게 디스크 공간을 활용할 수 있게 해줍니다.  
 
 -> **LV2를 사용 중 디스크 용량이 더 필요하다면?? => 디스크를 추가 장착 후 VG에 추가 후 LV2에 볼륨 사이즈를 추가로 할당가능!**
 

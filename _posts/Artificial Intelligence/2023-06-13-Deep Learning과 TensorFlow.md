@@ -5,8 +5,9 @@ author: kkankkandev
 categories: [AI, Deep Learning]
 comments: true
 tags: [TensorFlow, Deep Learning]     # TAG names should always be lowercase
-# image:
-#   path: https://github.com/War-Oxi/Oxi/assets/72260110/3af8c7c9-cc3a-4fed-84d5-c736bad8ba53
+image:
+  path: https://github.com/War-Oxi/Oxi/assets/72260110/110eebe0-5912-46b5-8b9e-631db9c8e05e
+
 ---
 
 ## Chapter 5. 딥러닝과 텐서플로

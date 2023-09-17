@@ -5,6 +5,8 @@ author: kkankkandev
 categories: [Network]
 tags: [network, gateway, default gateway, centos, flooding, routing, route]     # TAG names should always be lowercase
 comments: true
+# image:
+#   path:
 ---
 
 Gateway란 Local Network에서 다른 Network로 이동하기 위해 반드시 거쳐야 하는 지점을 말합니다. 

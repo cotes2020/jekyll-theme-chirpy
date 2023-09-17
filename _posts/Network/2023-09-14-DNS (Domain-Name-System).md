@@ -5,6 +5,8 @@ author: kkankkandev
 categories: [Network]
 tags: [network, dns, dnat, router, ip]     # TAG names should always be lowercase
 comments: true
+image:
+  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/21874f24-e2e1-4c62-aa82-4f21cccf1eec
 ---
 
 DNS(Domain Name System)은 IP 주소 및 기타 데이터를 저장하고 이름별로 쿼리할 수 있게 해주는 계층형 분산 시스템입니다

@@ -5,6 +5,8 @@ author: kkankkandev
 categories: [Git & Github]
 tags: [git add, git commit, git push, git, github, linux, alias, gitignore, .gitignore, gitignore.io]     # TAG names should always be lowercase
 comments: true
+image:
+  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/10da090c-58f9-4cba-a431-7449611702e5
 ---
 
 > **git을 사용해 프로젝트 폴더나, 알고리즘 파일을 업로드 해야 할 때 업로드될 필요가 없는 파일까지 같이 업로드 되는 경우가 있습니다.**

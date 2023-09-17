@@ -6,6 +6,7 @@ categories: [Git & Github]
 tags: [git add, git commit, git push, git, github, linux, alias, git alias]     # TAG names should always be lowercase
 comments: true
 pin: true
+
 ---
 
 > git을 사용하여 github에 코드를 올리는 작업을 하던 도중 ```git add```, ```git commit```, ```git push``` 총 3가지 명령어를 계속 입력하는데 번거로움이 있었습니다. 
