@@ -6,7 +6,8 @@ categories: [Git & Github]
 tags: [git add, git commit, git push, git, github, linux, alias, git alias]     # TAG names should always be lowercase
 comments: true
 pin: true
-
+image: 
+    path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/cde5ec41-414b-4c1f-976c-7f7935c6e528
 ---
 
 > git을 사용하여 github에 코드를 올리는 작업을 하던 도중 ```git add```, ```git commit```, ```git push``` 총 3가지 명령어를 계속 입력하는데 번거로움이 있었습니다. 
