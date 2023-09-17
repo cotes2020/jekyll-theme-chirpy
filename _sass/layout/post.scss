@@ -346,21 +346,13 @@ h1 + .post-meta {
   }
 }
 
-#tail-wrapper {
-  min-height: 2rem;
+/* stylelint-disable-next-line selector-id-pattern */
+#disqus_thread {
+  min-height: 8.5rem;
+}
 
-  > *:not(:last-child) {
-    margin-top: 3rem;
-  }
-
-  > *:nth-last-child(2) {
-    margin-bottom: 3rem;
-  }
-
-  /* stylelint-disable-next-line selector-id-pattern */
-  #disqus_thread {
-    min-height: 8.5rem;
-  }
+.utterances {
+  max-width: 100%;
 }
 
 %btn-share-hovor {

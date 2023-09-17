@@ -1121,7 +1121,7 @@ search {
   }
 }
 
-/* --- main wrapper --- */
+/* --- basic wrappers --- */
 
 #main-wrapper {
   position: relative;
@@ -1133,6 +1133,16 @@ search {
 #main-wrapper > .container > .row,
 #search-result-wrapper > .row {
   @include ml-mr(0);
+}
+
+#tail-wrapper {
+  > :not(script) {
+    margin-top: 3rem;
+  }
+
+  > :only-child {
+    margin-top: 0;
+  }
 }
 
 /* --- button back-to-top --- */
