@@ -1,6 +1,6 @@
 ---
 title: DNS (Domain Name System) [개념, 설정 법]
-date: 2023-09-13 20:45:34 +0900
+date: 2023-09-14 20:45:34 +0900
 author: kkankkandev
 categories: [Network]
 tags: [network, dns, dnat, router, ip]     # TAG names should always be lowercase

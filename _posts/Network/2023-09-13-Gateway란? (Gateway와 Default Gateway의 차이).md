@@ -1,6 +1,6 @@
 ---
 title: Gateway에 대한 개념과 이해 
-date: 2023-09-14 20:34:51 +0900
+date: 2023-09-13 20:34:51 +0900
 author: kkankkandev
 categories: [Network]
 tags: [network, gateway, default gateway, centos, flooding, routing, route]     # TAG names should always be lowercase
@@ -9,7 +9,7 @@ comments: true
 
 Gateway란 Local Network에서 다른 Network로 이동하기 위해 반드시 거쳐야 하는 지점을 말합니다. 
 
-## 2. Gateway의 개념
+## 1. Gateway의 개념
 Gateway는 OSI 모델의 3계층에서 작동하며, IP 패킷의 헤더 정보를 확인하여 목적지 IP주소가 자신의 네트워크에 속하는지 여부를 판단합니다. 목적지 IP 주소가 자신의 네트워크에 속하는 경우 Gateway는 패킷을 목적지 호스트로 직접 전달하고. 목적지 IP 주소가 자신의 네트워크에 속하지 않는 경우 Gateway는 패킷을 다른 네트워크로 전달합니다.
   
   
