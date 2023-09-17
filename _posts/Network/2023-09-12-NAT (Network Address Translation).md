@@ -5,7 +5,8 @@ author: kkankkandev
 categories: [Network]
 tags: [network, nat, pat, dnat, router, ip, cisco, packet tracer, ospf]     # TAG names should always be lowercase
 comments: true
-image: path:https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/c769758b-c9a9-40aa-ae94-644be8b50c09
+image: 
+   path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/c769758b-c9a9-40aa-ae94-644be8b50c09
 ---
 
 NAT란 IP Packet에 있는 출발지 및 목적지의 IP 주소와 TCP/UDP 포트 숫자 등을 바꿔가면서 네트워크 트래픽을 주고 받을 수 있게하는 기술입니다.
