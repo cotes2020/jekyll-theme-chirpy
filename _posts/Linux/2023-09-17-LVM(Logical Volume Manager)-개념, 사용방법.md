@@ -213,7 +213,7 @@ lvremove {lv_name}
 lvextend -L {+Size} {lv_path}
 
 ## LV 크기를 {-Size}만큼 축소
-lvreduce -L {Size} {lv_path}
+lvreduce -L {-Size} {lv_path}
 
 # 파일 시스템 및 포맷, 사이즈 재 할당 명령어
 
