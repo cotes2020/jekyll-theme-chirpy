@@ -32,7 +32,7 @@ description: >-                        # used by seo meta and the atom feed
 url: 'https://dokoding.github.io/'
 
 github:
-  username: 도코딩             # change to your github username
+  username: dokoding             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
