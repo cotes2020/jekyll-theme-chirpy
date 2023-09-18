@@ -40,7 +40,7 @@ copyright:
     Salvo que se indique explícitamente, las entradas de este blog están licenciadas
     bajo la Creative Commons Attribution 4.0 International (CC BY 4.0) License por el autor.
 
-meta: Hecho con :PLATFORM usando el tema :THEME
+meta: Hecho con :PLATFORM usando el tema :THEME.
 
 not_found:
   statment: Lo sentimos, hemos perdido esa URL o apunta a algo que no existe.
@@ -59,7 +59,7 @@ post:
   pageview_measure: visitas
   read_time:
     unit: min
-    prompt: " de lectura"
+    prompt: ' de lectura'
   relate_posts: Lecturas adicionales
   share: Compartir
   button:
@@ -70,6 +70,8 @@ post:
     share_link:
       title: Copiar enlace
       succeed: ¡Enlace copiado!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Fijado
 
 # categories page
 categories:

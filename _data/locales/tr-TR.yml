@@ -23,7 +23,7 @@ search:
   no_results: Hop! Öyle bir şey bulamadım.
 
 panel:
-  lastmod: Son Güncellenenler
+  lastmod: Yeni Güncellendi
   trending_tags: Yükselen Etiketler
   toc: İçindekiler
 
@@ -38,9 +38,9 @@ copyright:
   brief: Bazı hakları saklıdır.
   verbose: >-
     Aksi belirtilmediği sürece, bu sitedeki gönderiler Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) Lisansı altındadır.
-    Kısaca sayfa linkini vererek değiştirebilir / paylaşabilirsiniz.
+    Kısaca sayfa linkini de vererek paylaşabilir veya düzenleyip paylaşabilirsin.
 
-meta: :PLATFORM ve :THEME teması
+meta: :PLATFORM ve :THEME teması.
 
 not_found:
   statment: Üzgünüz, bu linki yanlış yerleştirdik veya var olmayan bir şeye işaret ediyor.
@@ -53,8 +53,8 @@ notification:
 
 post:
   written_by: Yazan
-  posted: Gönderim
-  updated: Güncelleme
+  posted: Gönderilme Tarihi
+  updated: Güncellenme Tarihi
   words: sözcük
   pageview_measure: görüntülenme
   read_time:
@@ -70,6 +70,8 @@ post:
     share_link:
       title: Linki kopyala
       succeed: Link kopyalandı.
+  # pinned prompt of posts list on homepage
+  pin_prompt: Sabitlendi
 
 # categories page
 categories:

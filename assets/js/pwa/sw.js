@@ -28,19 +28,19 @@ function isExcluded(url) {
   return false;
 }
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(cacheName).then((cache) => {
+    caches.open(cacheName).then(cache => {
       return cache.addAll(resource);
     })
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((keyList) => {
+    caches.keys().then(keyList => {
       return Promise.all(
-        keyList.map((key) => {
+        keyList.map(key => {
           if (key !== cacheName) {
             return caches.delete(key);
           }
@@ -56,28 +56,28 @@ self.addEventListener('message', (event) => {
   }
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
+    caches.match(event.request).then(response => {
       if (response) {
         return response;
       }
 
-      return fetch(event.request).then((response) => {
+      return fetch(event.request).then(response => {
         const url = event.request.url;
 
-        if (
-          event.request.method !== 'GET' ||
-          !verifyDomain(url) ||
-          isExcluded(url)
-        ) {
+        if (event.request.method !== 'GET' ||
+              !verifyDomain(url) ||
+              isExcluded(url)) {
           return response;
         }
 
-        /* see: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests> */
+        /*
+          see: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
+        */
         let responseToCache = response.clone();
 
-        caches.open(cacheName).then((cache) => {
+        caches.open(cacheName).then(cache => {
           /* console.log('[sw] Caching new resource: ' + event.request.url); */
           cache.put(event.request, responseToCache);
         });

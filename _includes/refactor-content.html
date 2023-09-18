@@ -1,4 +1,6 @@
-<!-- Refactor the HTML structure -->
+<!--
+  Refactor the HTML structure.
+-->
 
 {% assign _content = include.content %}
 
@@ -29,41 +31,21 @@
   %}
 {% endif %}
 
-<!-- Change the icon of checkbox -->
-{% if _content contains '<input type="checkbox"' %}
+<!-- Add attribute 'hide-bullet' to the checkbox list -->
+
+{% if _content contains '<li class="task-list-item"><' %}
   {% assign _content = _content
-    | replace:
-        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />',
-        '<i class="fas fa-check-circle fa-fw checked"></i>'
-    | replace:
-        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />',
-        '<i class="far fa-circle fa-fw"></i>'
+    | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
   %}
 {% endif %}
 
 <!-- images -->
+
 {% assign IMG_TAG = '<img ' %}
 
 {% if _content contains IMG_TAG %}
   {% assign _img_content = nil %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
-
-  <!-- CDN URL -->
-  {% if site.img_cdn %}
-    {% if site.img_cdn contains '//' %}
-      {% assign _path_prefix = site.img_cdn %}
-    {% else %}
-      {% assign _path_prefix = site.img_cdn | relative_url %}
-    {% endif %}
-  {% else %}
-    {% assign _path_prefix = site.baseurl %}
-  {% endif %}
-
-  <!-- Add image path -->
-  {% if page.img_path %}
-    {% assign _path = page.img_path | append: '/' | replace: '//', '/' %}
-    {% assign _path_prefix = _path_prefix | append: _path %}
-  {% endif %}
 
   {% for _img_snippet in _img_snippets %}
     {% if forloop.first %}
@@ -71,29 +53,25 @@
       {% continue %}
     {% endif %}
 
+    {% assign _width = nil %}
+    {% assign _height = nil %}
+    {% assign _src = nil %}
+
     {% assign _left = _img_snippet | split: '>' | first %}
     {% assign _right = _img_snippet | remove: _left %}
 
-    {% unless _left contains 'src=' %}
-      {% continue %}
-    {% endunless %}
-
-    {% assign _left = _left | remove: ' /' | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
-    {% assign _attrs = _left | split: '" ' %}
-
-    {% assign _width = nil %}
-    {% assign _height = nil %}
-    {% assign _lqip = nil %}
-    {% assign _class = nil %}
+    {% assign _left = _left | remove: ' /' %}
+    {% assign _left = _left | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% assign _attrs = _left | split: ' ' %}
 
     {% for _attr in _attrs %}
-      {% unless _attr contains '=' %}
+      {% assign _pair = _attr | split: '=' %}
+      {% if _pair.size < 2 %}
         {% continue %}
-      {% endunless %}
+      {% endif %}
 
-      {% assign _pair = _attr | split: '="' %}
       {% capture _key %}{{ _pair | first }}{% endcapture %}
-      {% capture _value %}{{ _pair | last | remove: '"' }}{% endcapture %}
+      {% capture _value %}{{ _pair | last | replace: '"', '' }}{% endcapture %}
 
       {% case _key %}
         {% when 'width' %}
@@ -102,99 +80,68 @@
           {% assign _height = _value %}
         {% when 'src' %}
           {% assign _src = _value %}
-        {% when 'lqip' %}
-          {% assign _lqip = _value %}
-        {% when 'class' %}
-          {% assign _class = _value %}
       {% endcase %}
+
+      {% if _width and _height and _src %}
+        {% break %}
+      {% endif %}
     {% endfor %}
 
-    <!-- take out classes -->
-    {% if _class %}
-      {% capture _old_class %}class="{{ _class }}"{% endcapture %}
-      {% assign _left = _left | remove: _old_class %}
-    {% endif %}
+    {% if _src %}
+      {% unless _src contains '://' %}
 
-    {% assign _final_src = nil %}
+        <!-- Add CDN URL -->
+        {% if site.img_cdn %}
+          {% if site.img_cdn contains '//' %}
+            {% assign _src_prefix = site.img_cdn %}
+          {% else %}
+            {% assign _src_prefix = site.img_cdn | relative_url %}
+          {% endif %}
+        {% else %}
+          {% assign _src_prefix = site.baseurl %}
+        {% endif %}
 
-    {% unless _src contains '//' %}
-      {% assign _final_src = _path_prefix | append: _src %}
-      {% capture _src_from %}"{{ _src }}"{% endcapture %}
-      {% capture _src_to %}"{{ _final_src }}"{% endcapture %}
-      {% assign _left = _left | replace: _src_from, _src_to %}
-    {% endunless %}
+        <!-- Add image path -->
+        {% if page.img_path %}
+          {% assign _path = page.img_path %}
+          {% assign last_char = _path | slice: -1 %}
 
-    {% if _lqip %}
-      {% unless _lqip contains ':' %}
-        {% assign _final_lqip = _path_prefix | append: _lqip %}
-        {% capture _lqip_from %}"{{ _lqip }}"{% endcapture %}
-        {% capture _lqip_to %}"{{ _final_lqip }}"{% endcapture %}
-        {% assign _left = _left | replace: _lqip_from, _lqip_to %}
+          {% unless last_char == '/' %}
+            {% assign _path = _path | append: '/' %}
+          {% endunless %}
+
+          {% assign _src_prefix = _src_prefix | append: _path %}
+        {% endif %}
+
+        {% assign _final_src = _src_prefix | append: _src %}
+        {% assign _left = _left | replace: _src, _final_src %}
+
       {% endunless %}
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      {% assign _left = _left | replace: 'src=', 'data-src=' %}
+
     {% endif %}
 
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    {% assign _left = _left | replace: 'src=', 'data-src=' %}
-    {% if _left contains 'class=' %}
-      {% assign _left = _left | replace: 'class="', 'class="lazyload '%}
-    {% else %}
-      {% assign _left = _left | append: ' class="lazyload"' %}
-    {% endif %}
+    <!-- Add SVG placehoder to prevent layout reflow -->
 
-    <!-- add image placeholder -->
-    {% if _lqip %}
-      {% assign _left = _left | replace: ' lqip=', ' data-lqip="true" src=' %}
-    {% else %}
-      {% if _width and _height %}
-        <!-- add SVG placehoder -->
-        {%- capture _svg -%}
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width  }} {{ _height }}'%3E%3C/svg%3E"
-        {%- endcapture -%}
-        {% assign _left =  _svg | append: ' ' | append: _left %}
-        {% assign _class = _class | append: ' shimmer' %}
-      {% endif %}
+    {% if _width and _height %}
+      {%- capture _svg -%}
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width }} {{ _height }}'%3E%3C/svg%3E"
+      {%- endcapture -%}
+
+      {% assign _left =  _svg | append: ' ' | append: _left %}
     {% endif %}
 
     <!-- Bypass the HTML-proofer test -->
     {% assign _left = _left | append: ' data-proofer-ignore' %}
 
-    {% if page.layout == 'home' %}
-      <!-- create the image wrapper -->
-      {%- capture _wrapper_start -%}
-        <div class="preview-img {{ _class | strip }}">
-      {%- endcapture -%}
-      {% assign _img_content = _img_content | append: _wrapper_start %}
-      {% assign _right = _right | prepend: '></div' %}
-
-    {% else %}
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      {% assign _parent = _right | slice: 1, 4 %}
-
-      {% if _parent == '</a>' %}
-        <!-- add class to exist <a> tag -->
-        {% assign _size = _img_content | size | minus: 1 %}
-        {% capture _class %}
-          class="img-link{% unless _lqip %} shimmer{% endunless %}"
-        {% endcapture %}
-        {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>'  %}
-      {% else %}
-        <!-- create the image wrapper -->
-        {%- capture _wrapper_start -%}
-          <a href="{{ _final_src | default: _src  }}" class="popup img-link {{ _class }}">
-        {%- endcapture -%}
-        {% assign _img_content = _img_content | append: _wrapper_start %}
-        {% assign _right = _right | prepend: '></a' %}
-      {% endif %}
-    {% endif %}
-
-    <!-- combine -->
-    {% assign _img_content = _img_content | append: debug | append: IMG_TAG | append: _left | append: _right %}
+    {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
 
   {% endfor %}
 
-  {% if _img_content %}
-    {% assign _content = _img_content %}
-  {% endif %}
+  {% assign _content = _img_content %}
 
 {% endif %}
 
@@ -215,11 +162,11 @@
 
       {% if _left contains 'file="' %}
         {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
-        {% assign _label_icon = 'far fa-file-code fa-fw' %}
+        {% assign _label_icon = 'far fa-file-code' %}
       {% else %}
         {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
         {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
-        {% assign _label_icon = 'fas fa-code fa-fw small' %}
+        {% assign _label_icon = 'fas fa-code small' %}
       {% endif %}
 
       {% capture _label %}
@@ -230,7 +177,7 @@
           | append: '<div class="code-header">'
           | append: _label
           | append: '<button aria-label="copy" data-title-succeed="'
-          | append: site.data.locales[include.lang].post.button.copy_code.succeed
+          | append: site.data.locales[lang].post.button.copy_code.succeed
           | append: '"><i class="far fa-clipboard"></i></button></div>'
           | append: '<div class="highlight"><code>'
       %}
@@ -267,7 +214,7 @@
 
       {% assign left = snippet | split: mark_end | first %}
       {% assign right = snippet | slice: left.size, snippet.size %}
-      {% assign left = left | replace_first: '">', '"><span class="me-2">' | append: '</span>' %}
+      {% assign left = left | replace: '">', '"><span class="mr-2">' | append: '</span>' %}
 
       {% assign _new_content = _new_content | append: mark_start
           | append: left | append: anchor | append: right
@@ -282,5 +229,54 @@
 
 {% assign _content = _heading_content %}
 
+<!-- Wrap prompt element of blockquote with the <div> tag -->
+
+{% assign blockquote_start = '<blockquote class=' %}
+{% assign blockquote_end = '</blockquote>' %}
+{% assign cls_prefix = 'prompt-' %}
+
+{% if _content contains blockquote_start %}
+
+  {% assign _prompt_content = nil %}
+  {% assign _prompt_snippets = _content | split: blockquote_start %}
+
+  {% for _snippet in _prompt_snippets %}
+
+    {% if forloop.first %}
+      {% assign _prompt_content =  _snippet %}
+      {% continue %}
+    {% endif %}
+
+    {% assign left = _snippet | split: blockquote_end | first %}
+    {% assign right = _snippet | slice: left.size, _snippet.size %}
+
+    {% assign cls_str = left | split: '>' | first %}
+    {% assign cls_array = cls_str | remove: '"' | split: ' ' %}
+    {% assign is_prompt = false %}
+
+    {% for cls in cls_array %}
+      {% if cls contains cls_prefix %}
+        {% assign is_prompt = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% unless is_prompt %}
+      {% assign _prompt_content = _prompt_content | append: blockquote_start | append: _snippet %}
+      {% continue %}
+    {% endunless %}
+
+    {% assign left = left | slice: cls_str.size, left.size %}
+    {% assign left = cls_str | append: '><div' | append: left | append: '</div>' %}
+
+    {% assign _prompt_content = _prompt_content | append: blockquote_start | append: left | append: right %}
+
+  {% endfor %}
+
+  {% assign _content = _prompt_content %}
+
+{% endif %}
+
 <!-- return -->
+
 {{ _content }}
