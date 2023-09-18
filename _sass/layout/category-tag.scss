@@ -13,30 +13,31 @@
     line-height: 1.5rem;
     padding: 0.6rem 0;
 
-    /* dot */
-    &::before {
-      background: #999999;
+    &::before { // dot
+      background: #999;
       width: 5px;
       height: 5px;
       border-radius: 50%;
       display: block;
-      content: '';
+      content: "";
       position: relative;
       top: 0.6rem;
       margin-right: 0.5rem;
     }
 
-    /* post's title */
-    > a {
+    > a { /* post's title */
       @extend %no-bottom-border;
 
       font-size: 1.1rem;
     }
+
+    > span:last-child {
+      white-space: nowrap;
+    } /* post's date */
   }
 }
 
-/* tag icon */
-#page-tag h1 > i {
+#page-tag h1 > i { // tag icon
   font-size: 1.2rem;
 }
 
@@ -50,7 +51,7 @@
   a:hover {
     @extend %link-hover;
 
-    margin-bottom: -1px; /* Avoid jumping */
+    margin-bottom: -1px; // Avoid jumping
   }
 }
 

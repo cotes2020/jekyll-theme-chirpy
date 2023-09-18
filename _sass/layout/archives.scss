@@ -2,136 +2,139 @@
   Style for Archives
 */
 
+%date-timeline {
+  content: "";
+  width: 4px;
+  left: 75px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  background-color: var(--timeline-color);
+}
+
 #archives {
   letter-spacing: 0.03rem;
 
-  $timeline-width: 4px;
-
-  %timeline {
-    content: '';
-    width: $timeline-width;
-    position: relative;
-    float: left;
-    background-color: var(--timeline-color);
-  }
-
-  .year {
-    height: 3.5rem;
+  span.lead {
     font-size: 1.5rem;
     position: relative;
-    left: 2px;
-    margin-left: -$timeline-width;
+    left: 8px;
 
-    &::before {
-      @extend %timeline;
-
-      height: 72px;
-      left: 79px;
-      bottom: 16px;
-    }
-
-    &:first-child::before {
-      @extend %timeline;
-
-      height: 32px;
-      top: 24px;
-    }
-
-    /* Year dot */
-    &::after {
-      content: '';
-      display: inline-block;
+    &::after { /* Year dot */
+      content: "";
+      display: block;
       position: relative;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
       border-radius: 50%;
       width: 12px;
       height: 12px;
-      left: 21.5px;
+      top: -26px;
+      left: 63px;
       border: 3px solid;
       background-color: var(--timeline-year-dot-color);
       border-color: var(--timeline-node-bg);
       box-shadow: 0 0 2px 0 #c2c6cc;
       z-index: 1;
     }
-  }
+
+    &:not(:first-child) {
+      position: relative;
+      left: 4px;
+
+      &::after {
+        left: 67px;
+      }
+    }
+
+  } // #archives span.lead
 
   ul {
     li {
       font-size: 1.1rem;
       line-height: 3rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+      div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        a {
+          /* post title in Archvies */
+          margin-left: 2.5rem;
+          position: relative;
+          top: 0.1rem;
+        }
+      }
 
       &:nth-child(odd) {
-        background-color: var(--main-bg, #ffffff);
-        background-image: linear-gradient(
-          to left,
-          #ffffff,
-          #fbfbfb,
-          #fbfbfb,
-          #fbfbfb,
-          #ffffff
-        );
+        background-color: var(--main-wrapper-bg, #fff);
+        background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
       }
 
-      &::before {
-        @extend %timeline;
+      &::after {
+        @extend %date-timeline;
 
-        top: 0;
-        left: 77px;
-        height: 3.1rem;
+        height: 2.8rem;
+        top: -1.3rem;
+      }
+
+      &:first-child::before {
+        @extend %date-timeline;
+
+        height: 3.06rem;
+        top: -1.61rem;
       }
     }
 
-    &:last-child li:last-child::before {
-      height: 1.5rem;
+    &:not(:last-child) > li:last-child::after {
+      height: 3.4rem;
     }
-  } /* #archives ul */
+
+    &:last-child > li:last-child::after {
+      display: none;
+    }
+  } // #archives ul
 
   .date {
     white-space: nowrap;
     display: inline-block;
-    position: relative;
-    right: 0.5rem;
 
     &.month {
       width: 1.4rem;
       text-align: center;
+
+      ~ a::before {
+        /* A dot for Month and Day */
+        content: "";
+        display: inline-block;
+        position: relative;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        float: left;
+        top: 1.35rem;
+        left: 69px;
+        background-color: var(--timeline-node-bg);
+        box-shadow: 0 0 3px 0 #c2c6cc;
+        z-index: 1;
+      }
     }
 
     &.day {
       font-size: 85%;
-      font-family: Lato, sans-serif;
-    }
-  }
-
-  a {
-    /* post title in Archvies */
-    margin-left: 2.5rem;
-    position: relative;
-    top: 0.1rem;
-
-    &:hover {
-      border-bottom: none;
-    }
-
-    &::before {
-      /* the dot before post title */
-      content: '';
-      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      margin-right: -2px;
+      width: 1.2rem;
       position: relative;
-      border-radius: 50%;
-      width: 8px;
-      height: 8px;
-      float: left;
-      top: 1.35rem;
-      left: 71px;
-      background-color: var(--timeline-node-bg);
-      box-shadow: 0 0 3px 0 #c2c6cc;
-      z-index: 1;
+      left: -0.15rem;
     }
-  }
-} /* #archives */
+  } // #archives .date
+
+} // #archives
 
 @media all and (max-width: 576px) {
   #archives {
