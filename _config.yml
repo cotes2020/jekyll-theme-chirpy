@@ -21,18 +21,18 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: ITability                          # the main title
+title: 도코딩블로그                          # the main title
 
-tagline: 있어보이는 건 따라해보기   # it will display as the sub-title
+tagline: 저항없는 코딩생활   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  itability, IT, 빅데이터분석기사, 정보처리기사, ADsP, DAsP, SQLD
+  자바스크립트, 타입스크립트, 리액트, 넥스트, 서버리스
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://tired-o.github.io'
+url: 'https://dokoding.github.io/'
 
 github:
-  username: tired-o             # change to your github username
+  username: 도코딩             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -40,26 +40,25 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: tiredo
-  email: logdump@kakao.com             # change to your email address
+  name: 
+  email:             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     #- https://twitter.com/username      # change to your twitter homepage
     #- https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/kiyun-kim-a94861113
 
-google_site_verification: 75aNFbstwtv23YRq6fvtJ1D2ldntI0o1aWT1pXCCKQE              # fill in to your verification string
+google_site_verification:               # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: G-188507JLC4                # fill in your Google Analytics ID
+  id:                 # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
-    proxy_endpoint: 	'https://github-blog-355307.du.r.appspot.com/query?id=ahR2fmdpdGh1Yi1ibG9nLTM1NTMwN3IVCxIIQXBpUXVlcnkYgICA6NeHgQoM'  # fill in the Google Analytics superProxy endpoint of Google App Engine
+    proxy_endpoint: 	# fill in the Google Analytics superProxy endpoint of Google App Engine
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
 
 # Prefer color scheme setting.
