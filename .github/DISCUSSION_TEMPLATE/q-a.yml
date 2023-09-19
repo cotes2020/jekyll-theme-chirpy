@@ -16,7 +16,6 @@ body:
       options:
         - Generated from `chirpy-starter`
         - Built from `jekyll-theme-chirpy`
-
     validations:
       required: true
 

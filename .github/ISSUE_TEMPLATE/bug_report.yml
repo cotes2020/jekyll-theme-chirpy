@@ -11,6 +11,16 @@ body:
             [Contributing Guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
           required: true
 
+  - type: dropdown
+    id: download
+    attributes:
+      label: How did you create the site?
+      options:
+        - Generated from `chirpy-starter`
+        - Built from `jekyll-theme-chirpy`
+    validations:
+      required: true
+
   - type: textarea
     attributes:
       label: Describe the bug
