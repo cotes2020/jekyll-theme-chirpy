@@ -20,7 +20,7 @@ LVM이란 리눅스와 유닉스 기반 운영체제에서 Logical Volume을 효
 
 ## 2. LVM의 구성요소
 
-LVM은 PV, PE, VG의 총 5가지로 구성됩니다.
+LVM은 PV, PE, VG, LV, LE의 총 5가지로 구성됩니다.
 
 ### 2.1. PV(Physical Volume)
 
