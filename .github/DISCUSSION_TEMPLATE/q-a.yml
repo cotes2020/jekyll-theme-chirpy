@@ -5,8 +5,8 @@ body:
       description: Following the guidelines can make you more likely to get responses.
       options:
         - label: >-
-            I'm willing to follow the
-            [Contributing Guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
+            I have read and accepted the
+            [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
           required: true
 
   - type: dropdown
