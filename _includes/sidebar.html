@@ -2,7 +2,7 @@
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
+    <!-- <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {% if site.avatar != empty and site.avatar %}
         {% capture avatar_url %}
             {% if site.avatar contains '://' %}
@@ -15,7 +15,7 @@
           {% endcapture %}
         <img src="{{ avatar_url | strip }}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
       {% endif %}
-    </a>
+    </a> -->
 
     <h1 class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
@@ -33,8 +33,109 @@
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-      <!-- the real tabs -->
-      {% for tab in site.tabs %}
+      <!-- categories -->
+      <li class="nav-item{% if page.layout == 'categories' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/categories' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-stream"></i>
+          <span>{{ site.data.locales[include.lang].tabs.categories | upcase }}</span>
+        </a>
+      </li>
+
+      {% include lang.html %}
+
+      {% assign HEAD_PREFIX = 'h_' %}
+      {% assign LIST_PREFIX = 'l_' %}
+      
+      {% assign group_index = 0 %}
+      
+      {% assign sort_categories = site.categories | sort %}
+      
+      {% for category in sort_categories %}
+        {% assign category_name = category | first %}
+        {% assign posts_of_category = category | last %}
+        {% assign first_post = posts_of_category | first %}
+      
+        {% if category_name == first_post.categories[0] %}
+          {% assign sub_categories = '' | split: '' %}
+      
+          {% for post in posts_of_category %}
+            {% assign second_category = post.categories[1] %}
+            {% if second_category %}
+              {% unless sub_categories contains second_category %}
+                {% assign sub_categories = sub_categories | push: second_category %}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+      
+          {% assign sub_categories = sub_categories | sort %}
+          {% assign sub_categories_size = sub_categories | size %}
+      
+          <li class="nav-item">
+            <!-- top-category -->
+            <div
+              id="{{ HEAD_PREFIX }}{{ group_index }}"
+              class="category-head d-flex justify-content-between hide-border-bottom"
+            >
+              <span class="ms-3">
+                <i class="far fa-folder{% if sub_categories_size > 0 %}-open{% endif %} fa-fw"></i>
+      
+                {% capture _category_url %}/categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
+                <a href="{{ _category_url | relative_url }}" class="mx-2">{{ category_name }}</a>
+      
+                <!-- content count -->
+                {% assign top_posts_size = site.categories[category_name] | size %}
+                <span class="text-muted small font-weight-light">
+                  {{ top_posts_size }}
+                </span>
+              </span>
+            </div>
+            <!-- .card-header -->
+      
+            <!-- Sub-categories -->
+            {% if sub_categories_size > 0 %}
+              <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
+                <ul class="category-sub">
+                  {% for sub_category in sub_categories %}
+                    <li class="category-list">
+                      {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
+                      <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
+      
+                      {% assign posts_size = site.categories[sub_category] | size %}
+                      <span class="text-muted small font-weight-light">
+                        {{ posts_size }}
+
+                      </span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </li>
+          <!-- .card -->
+      
+          {% assign group_index = group_index | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+
+      <!-- tags -->
+      <li class="nav-item{% if page.layout == 'tags' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/tags' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-tags"></i>
+          <span>{{ site.data.locales[include.lang].tabs.tags | upcase }}</span>
+        </a>
+      </li>
+      <!-- archives -->
+      <li class="nav-item{% if page.layout == 'archives' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/archives' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-archive"></i>
+          <span>{{ site.data.locales[include.lang].tabs.archives | upcase }}</span>
+        </a>
+      </li>
+
+
+      </li>
+      <!-- {% for tab in site.tabs %}
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
           <a href="{{ tab.url | relative_url }}" class="nav-link">
             <i class="fa-fw {{ tab.icon }}"></i>
@@ -43,8 +144,7 @@
             <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
           </a>
         </li>
-        <!-- .nav-item -->
-      {% endfor %}
+      {% endfor %} -->
     </ul>
   </nav>
 

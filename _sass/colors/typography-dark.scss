@@ -111,22 +111,23 @@
   .categories.card,
   .list-group-item {
     background-color: var(--card-bg);
+    border: 0px;
   }
 
   .categories {
-    .card-header {
-      background-color: var(--card-header-bg);
-    }
+    // .card-header {
+    //   background-color: var(--card-header-bg);
+    // }
 
     .list-group-item {
       border-left: none;
       border-right: none;
-      padding-left: 2rem;
-      border-color: var(--categories-border);
-
-      &:last-child {
-        border-bottom-color: var(--card-bg);
-      }
+      // padding-left: 2rem;
+      // border-color: var(--categories-border);
+      border: 0px;
+      // &:last-child {
+      //   border-bottom-color: var(--card-bg);
+      // }
     }
   }
 
