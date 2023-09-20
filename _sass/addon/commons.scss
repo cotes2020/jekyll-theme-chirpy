@@ -273,6 +273,8 @@ i {
       margin-bottom: 0.3rem;
     }
 
+    @extend %sup-fn-target;
+
     > p {
       margin-left: 0.25em;
       margin-top: 0;
@@ -287,8 +289,11 @@ i {
     @include pl-pr(2px);
 
     border-bottom-style: none !important;
-    transition: background-color 1.5s ease-in-out;
   }
+}
+
+sup {
+  @extend %sup-fn-target;
 }
 
 .reversefootnote {
@@ -372,7 +377,6 @@ i {
 
 main {
   line-height: 1.75;
-  min-height: calc(100vh - $topbar-height - $footer-height);
 
   h1 {
     margin-top: 2rem;
@@ -1121,18 +1125,32 @@ search {
   }
 }
 
-/* --- main wrapper --- */
+/* --- basic wrappers --- */
 
 #main-wrapper {
   position: relative;
 
   @include pl-pr(0);
+
+  > .container {
+    min-height: 100vh;
+  }
 }
 
 #topbar-wrapper.row,
 #main-wrapper > .container > .row,
 #search-result-wrapper > .row {
   @include ml-mr(0);
+}
+
+#tail-wrapper {
+  > :not(script) {
+    margin-top: 3rem;
+  }
+
+  > :only-child {
+    margin-top: 0;
+  }
 }
 
 /* --- button back-to-top --- */
@@ -1268,10 +1286,6 @@ search {
     } @else {
       transition: $basic;
     }
-  }
-
-  main {
-    min-height: calc(100vh - $topbar-height - $footer-height-large);
   }
 
   footer {
