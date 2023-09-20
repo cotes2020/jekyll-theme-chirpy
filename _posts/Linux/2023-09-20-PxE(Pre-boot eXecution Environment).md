@@ -99,7 +99,7 @@ CentOS는 Network설정에 NetworkManager와 /etc/sysconfig/network-script/ifcfg
 
 <p align="center"> 
 	<figure > 
-		<img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/bfd3195d-71c0-444e-a070-05deba6bda59"> 
+		<img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/bfd3195d-71c0-444e-a070-05deba6bda59"/> 
 </figcaption>
 	</figure>
 </p>
