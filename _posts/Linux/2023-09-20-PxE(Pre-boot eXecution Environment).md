@@ -24,10 +24,14 @@ image:
 ### 2.1 DHCP Server
 
 	1. IP가 없는 Baremetal Client와 통신을 위해 사용됩니다
+
+
 ### 2.2 TFTP Server
 
 	1. OS설치에 필요한 절차가 담긴 설정 파일 전송을 위해사용
 	2. UDP 기반 통신 (부트 로딩)에 사용
+
+
 ### 2.3 FTP Server
 
 	1. 실제 iso파일을 전송할 때 사용
