@@ -693,7 +693,6 @@ mjx-container {
 /* --- sidebar layout --- */
 
 $sidebar-display: 'sidebar-display';
-$btn-gap: 0.8rem; // for the bottom icons
 $btn-border-width: 3px;
 $btn-mb: 0.5rem;
 
@@ -862,7 +861,7 @@ $btn-mb: 0.5rem;
       @extend %clickable-transition;
 
       &:not(:last-child) {
-        margin-right: $btn-gap;
+        margin-right: $sb-btn-gap;
       }
     }
 
@@ -881,7 +880,7 @@ $btn-mb: 0.5rem;
 
     .icon-border {
       @extend %no-cursor;
-      @include ml-mr(calc(($btn-gap - $btn-border-width) / 2));
+      @include ml-mr(calc(($sb-btn-gap - $btn-border-width) / 2));
 
       background-color: var(--sidebar-btn-color);
       content: '';
@@ -1301,7 +1300,7 @@ search {
     }
 
     #main-wrapper {
-      transform: translateX(#{$sidebar-width});
+      transform: translateX($sidebar-width);
     }
 
     #back-to-top {
@@ -1312,8 +1311,8 @@ search {
   #sidebar {
     @include slide;
 
-    transform: translateX(-#{$sidebar-width}); /* hide */
-    -webkit-transform: translateX(-#{$sidebar-width});
+    transform: translateX(-$sidebar-width); /* hide */
+    -webkit-transform: translateX(-$sidebar-width);
   }
 
   #main-wrapper {
@@ -1488,7 +1487,7 @@ search {
 
 @media all and (min-width: 1400px) {
   #back-to-top {
-    right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
+    right: calc((100vw - $sidebar-width - 1140px) / 2 + 3rem);
   }
 }
 
@@ -1505,7 +1504,7 @@ search {
 
   search {
     margin-right: calc(
-      #{$main-content-max-width} * 0.25 - #{$search-max-width} - 0.75rem
+      $main-content-max-width / 4 - $search-max-width - 0.75rem
     );
   }
 
@@ -1522,14 +1521,12 @@ search {
 
   #back-to-top {
     right: calc(
-      (100vw - #{$sidebar-width-large} - #{$main-content-max-width}) / 2 + 2rem
+      (100vw - $sidebar-width-large - $main-content-max-width) / 2 + 2rem
     );
   }
 
   #sidebar {
     width: $sidebar-width-large;
-
-    $icon-gap: 1rem; // for the bottom icons
 
     .profile-wrapper {
       margin-top: 3.5rem;
@@ -1548,11 +1545,11 @@ search {
       margin-bottom: 1.75rem;
 
       a:not(:last-child) {
-        margin-right: $icon-gap;
+        margin-right: $sb-btn-gap-lg;
       }
 
       .icon-border {
-        @include ml-mr(calc(($icon-gap - $btn-border-width) / 2));
+        @include ml-mr(calc(($sb-btn-gap-lg - $btn-border-width) / 2));
       }
     }
   }
