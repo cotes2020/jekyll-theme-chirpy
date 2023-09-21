@@ -72,7 +72,7 @@ DNS(Domain Name System)은 IP 주소 및 기타 데이터를 저장하고 이름
 > 서버 목록이 담긴 안내파일 생성
 > 영문 주소 => IP 주소 매칭 목록 추가
 
-   ```vi /etc/named/{안내 파일 명}```
+   ```vi /var/named/{안내 파일 명}```
    ![image](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/a27b06d0-f00d-41bc-848e-49ff7edb1d1c)
 
 ### 2.5 설정 확인
