@@ -88,15 +88,6 @@ You may want to preview the site contents before publishing, so just run it by:
 $ bundle exec jekyll s
 ```
 
-Or run the site on Docker with the following command:
-
-```console
-$ docker run -it --rm \
-    --volume="$PWD:/srv/jekyll" \
-    -p 4000:4000 jekyll/jekyll \
-    jekyll serve
-```
-
 After a few seconds, the local service will be published at _<http://127.0.0.1:4000>_.
 
 ## Deployment
@@ -134,16 +125,6 @@ Go to the root of the source project, and build your site as follows:
 
 ```console
 $ JEKYLL_ENV=production bundle exec jekyll b
-```
-
-Or build the site on Docker:
-
-```console
-$ docker run -it --rm \
-    --env JEKYLL_ENV=production \
-    --volume="$PWD:/srv/jekyll" \
-    jekyll/jekyll \
-    jekyll build
 ```
 
 Unless you specified the output path, the generated site files will be placed in folder `_site`{: .filepath} of the project's root directory. Now you should upload those files to the target server.
