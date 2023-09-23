@@ -3,14 +3,6 @@
 # Finances Blog
 </div>
 
-## Documentation
-
-To explore usage, development, and upgrade guide of the project, please refer to the [**Wiki**][wiki].
-
-## Contributing
-
-Contributions (Issues/PRs/Discussions) are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. For details, see the "[Contributing Guidelines][contribute-guide]".
-
 ## Credits
 
 This theme is mainly built with [Jekyll][jekyllrb] ecosystem,
