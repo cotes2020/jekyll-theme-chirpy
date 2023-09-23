@@ -1,6 +1,7 @@
 <div align="center">
 
 # Finances Blog
+</div>
 
 ## Documentation
 
