@@ -58,7 +58,7 @@ post:
   pageview_measure: Aufrufe
   read_time:
     unit: Minuten
-    prompt: lesen
+    prompt: Lesezeit
   relate_posts: Weiterlesen
   share: Teilen
   button:
@@ -69,6 +69,16 @@ post:
     share_link:
       title: Link kopieren
       succeed: Link erfolgreich kopiert!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%d.%m.%Y"
+    dayjs: "D.M.YYYY"
+  archives:
+    strftime: "%l"
+    dayjs: "M"
 
 # categories page
 categories:
