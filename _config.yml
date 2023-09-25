@@ -18,12 +18,9 @@ timezone: Europe/Amsterdam
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Prateek Bhustali # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
-
-description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+tagline: Learning how to throw a computer at a problem. # it will display as the sub-title
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://omniscientoctopus.github.io'"
@@ -37,8 +34,8 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Prateek Bhustali
+  email: pbhustali@tudelft.nl # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://github.com/omniscientoctopus # change to your github homepage
@@ -73,10 +70,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://chirpy-img.netlify.app"
+# img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar: "assets/img/profile.png"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
