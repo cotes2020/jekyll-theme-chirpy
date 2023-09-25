@@ -25,6 +25,9 @@ EXE 형식의 PE 파일에서 Base Relocation Table 항목은 실행에 큰 영�
 reloc 섹션은 보통 마지막에 위치하므로 제거하기 어렵지 않다.
 
 과정은 다음과 같다.
+: <a href="https://maple19out.tistory.com/26" target="_blank">maple19out.tistory.com/26</a>
+
+<br>
 
 + ```.reloc``` 섹션 헤더 정리
 + ```.reloc``` 섹션 제거
