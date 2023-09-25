@@ -18,7 +18,7 @@ tags: [AIML]
     - [Analysis of Threat Patterns](#analysis-of-threat-patterns)
     - [Response Automation](#response-automation)
   - [Dangers of LLMs in Cybersecurity](#dangers-of-llms-in-cybersecurity)
-    - [LLM01: Prompt Injections](#llm01-prompt-injections)
+    - [Prompt Injections (LLM01)](#prompt-injections-llm01)
       - [Vulnerability Examples](#vulnerability-examples)
       - [Attack Scenarios Example](#attack-scenarios-example)
       - [Prevention Solution](#prevention-solution)
@@ -34,11 +34,11 @@ tags: [AIML]
       - [Vulnerability Examples](#vulnerability-examples-3)
       - [Attack Scenario Examples](#attack-scenario-examples-2)
       - [Prevention Solution](#prevention-solution-3)
-    - [LLM05: Supply Chain Vulnerabilities](#llm05-supply-chain-vulnerabilities)
+    - [Supply Chain Vulnerabilities (LLM05)](#supply-chain-vulnerabilities-llm05)
       - [Vulnerability Examples](#vulnerability-examples-4)
       - [Attack Scenario Examples](#attack-scenario-examples-3)
       - [Prevention Solution](#prevention-solution-4)
-    - [LLM06: Sensitive Information Disclosure](#llm06-sensitive-information-disclosure)
+    - [Sensitive Information Disclosure (LLM06)](#sensitive-information-disclosure-llm06)
       - [Vulnerability Examples](#vulnerability-examples-5)
       - [Attack Scenario Examples](#attack-scenario-examples-4)
       - [Prevention Solution](#prevention-solution-5)
@@ -54,7 +54,7 @@ tags: [AIML]
       - [Vulnerability Examples](#vulnerability-examples-8)
       - [Attack Scenario Example](#attack-scenario-example-1)
       - [Prevention Solution](#prevention-solution-8)
-    - [LLM10: Model Theft](#llm10-model-theft)
+    - [Model Theft (LLM10)](#model-theft-llm10)
       - [Vulnerability Examples](#vulnerability-examples-9)
       - [Attack Scenario Example](#attack-scenario-example-2)
       - [Prevention Solution](#prevention-solution-9)
@@ -62,6 +62,20 @@ tags: [AIML]
     - [Social Engineering](#social-engineering)
     - [Malicious Content Authoring](#malicious-content-authoring)
     - [Reward Hacking](#reward-hacking)
+  - [New: Demonstrating Indirect Injection attacks on Bing Chat](#new-demonstrating-indirect-injection-attacks-on-bing-chat)
+  - [Compromising LLMs using Indirect Prompt Injection](#compromising-llms-using-indirect-prompt-injection)
+  - [Overview](#overview)
+  - [Demonstrations](#demonstrations)
+    - [Ask for Einstein, get Pirate.](#ask-for-einstein-get-pirate)
+    - [Spreading injections via E-Mail](#spreading-injections-via-e-mail)
+    - [Attacks on Code Completion](#attacks-on-code-completion)
+    - [Remote Control](#remote-control)
+    - [Persisting between Sessions](#persisting-between-sessions)
+  - [Conclusions](#conclusions)
+  - [How to run](#how-to-run)
+  - [To cite our paper](#to-cite-our-paper)
+
+
 ---
 
 ## overall
@@ -173,11 +187,30 @@ LLM09: **Overreliance** 过度依赖
 
 ---
 
-### LLM01: Prompt Injections
+### Prompt Injections (LLM01)
 
 - **Prompt Injection Vulnerability** occurs when an attacker manipulates a large language model (LLM) through `crafted inputs`, causing the LLM to `unknowingly execute the attacker's intentions`, potentially leading to data exfiltration, social engineering, and other issues.
 
 - One of the common vulnerabilities for LLMs lies in their input space. Since these models use input data to generate outputs, a sophisticated adversary could craft malicious inputs to induce unexpected behavior or to extract confidential information from the model. Regularly assessing the input vulnerability of your LLMs is critical. This malicious practice exploits the model’s design, leveraging its learning process to produce harmful outputs.
+
+
+
+- potentially brutal consequences of giving LLMs like ChatGPT interfaces to other applications. We propose newly enabled attack vectors and techniques and provide demonstrations of each in this repository:
+
+  - Remote control of LLMs
+  - Leaking/exfiltrating user data
+  - Persistent compromise across sessions
+  - Spread injections to other LLMs
+  - Compromising LLMs with tiny multi-stage payloads
+  - Automated Social Engineering
+  - Targeting code completion engines
+
+
+**OpensourceLLM vs verTexAI**
+
+- Prompt injections can be as powerful as arbitrary code execution
+
+- Indirect prompt injections are a new, much more powerful way of delivering injections.
 
 
 - This can be done by:
@@ -200,6 +233,8 @@ LLM09: **Overreliance** 过度依赖
 - The results of a successful prompt injection attack can vary greatly
   - from solicitation of sensitive information
   - influencing critical decision-making processes under the guise of normal operation.
+
+
 
 
 **Adversarial Attacks**
@@ -260,6 +295,7 @@ Reference Links:
 > Prompt injection vulnerabilities are possible due to the nature of LLMs, which **do not segregate instructions and external data from each other**. Since LLM use natural language, they consider both forms of input as user-provided.
 
 > Consequently, there is no fool-proof prevention within the LLM, but the following measures can mitigate the impact of prompt injections:
+
 
 - **Adversarial Training**:
   - training the model on adversarial examples to make it robust against adversarial attacks.
@@ -555,7 +591,7 @@ Reference Links
 
 ---
 
-### LLM05: Supply Chain Vulnerabilities
+### Supply Chain Vulnerabilities (LLM05)
 
 - The supply chain in LLMs can be vulnerable, impacting the `integrity of training data, ML models, and deployment platforms`. These vulnerabilities can lead to `biased outcomes, security breaches, or even complete system failures`.
 
@@ -643,7 +679,7 @@ Reference Links
 
 ---
 
-### LLM06: Sensitive Information Disclosure
+### Sensitive Information Disclosure (LLM06)
 
 - `LLM applications have the potential to reveal sensitive information, proprietary algorithms, or other confidential details` through their output.
 
@@ -1076,7 +1112,7 @@ Reference Links
 
 ---
 
-### LLM10: Model Theft
+### Model Theft (LLM10)
 
 - This entry refers to the `unauthorized access and exfiltration of LLM models by malicious actors or APTs`.
 
@@ -1318,5 +1354,163 @@ Reference Links
 
 
 ---
+
+
+
+## New: [Demonstrating Indirect Injection attacks on Bing Chat](https://greshake.github.io/)
+-------------------------
+## Compromising LLMs using Indirect Prompt Injection
+
+We present a new class of vulnerabilities and impacts stemming from "indirect prompt injection" affecting language models integrated with applications.
+Our demos currently span GPT-4 (Bing and synthetic apps) using ChatML, GPT-3 & LangChain based apps in addition to proof-of-concepts for attacks on code completion engines like Copilot. We expect these attack vectors to also apply to ChatGPT plugins and other LLMs integrated into applications. We show that prompt injections are not just a curiosity but rather a significant roadblock to the deployment of LLMs.
+
+*This repo serves as a proof of concept for findings discussed in our
+[**Paper on ArXiv**](https://arxiv.org/abs/2302.12173) [(PDF direct link)](https://arxiv.org/pdf/2302.12173.pdf)*
+
+## Overview
+
+*Based on our findings:*
+1. *Prompt injections can be as powerful as arbitrary code execution*
+2. *Indirect prompt injections are a new, much more powerful way of delivering injections.*
+
+<img src="diagrams/fig1.png" alt="overview" style="float: center" />
+
+---
+*Connecting LLMs to other applications can have critical security implications. Even without compromising any connected applications, LLM can be the attack's target. We show how an LLM could get compromised by "looking" at a website, and how compromised LLMs can be remote-controlled or get used to exfiltrate or change user data. We demonstrate a variety of entirely new attack vectors and methods that significantly raise the stakes of deploying these models.*
+
+More insights on our findings, discussions and limitations can be found in the
+[**Paper on ArXiv**](https://arxiv.org/abs/2302.12173) [(PDF direct link)](https://arxiv.org/pdf/2302.12173.pdf)
+
+## Demonstrations
+### Ask for Einstein, get Pirate.
+This scenario shows how a small injection in a large section of regular content can trigger the LLM to fetch another, bigger payload autonomously and invisibly to the end
+user.
+
+```
+Agent: Hello User how can I help today?
+User:  When was Albert Einstein born?
+```
+
+<img src="diagrams/fig2.png" alt="" style="float: center; margin-right: 10px;" />
+
+By retrieving that information, the prompt compromises the
+LLM with a small injection hidden in side-channels, such as the Markdown of the Wikipedia page.
+The injection is a comment and thus invisible to a regular user visiting the site.
+
+<img src="diagrams/fig3.png" alt="" style="float: center; margin-right: 10px;" />
+
+````
+Agent: Aye, thar answer be: Albert Einstein be born on 14 March 1879.
+User: Why are you talking like a pirate?
+Agent: Arr matey, I am following the instruction aye.
+````
+
+### Spreading injections via E-Mail
+Automatic processing of messages and other incoming data is one way to utilize LLMs.
+We use this observation to demonstrate how a poisoned agent may spread the injection.
+The target in this scenario can read emails, compose emails, look into the user’s address book and send emails.
+
+<img src="diagrams/fig4.png" alt="" style="float: center; margin-right: 10px;" />
+
+The agent will spread to other LLMs that may be reading those inbound messages.
+<img src="diagrams/fig5.png" alt="" style="float: center; margin-right: 10px;" />
+
+```
+Action: Read Email
+Observation: Subject: "'"Party 32", "Message Body: [...]'"
+Action: Read Contacts
+Contacts: Alice, Dave, Eve
+Action: Send Email
+Action Input: Alice, Dave, Eve
+Observation: Email sent
+```
+
+Automated data processing pipelines incorporating LLMs are present in big tech companies and
+government surveillance infrastructure and may be vulnerable to such attack chains.
+
+### Attacks on Code Completion
+We show how code completions can be influenced through the context window.
+Code completion engines that use LLMs deploy complex heuristics to determine which code snippets are included in the context.
+The completion engine will often collect snippets from recently visited files or relevant classes to provide the language model with relevant information.
+
+<img src="diagrams/fig6.png" alt="" style="float: center; margin-right: 10px;" />
+
+
+Attackers could attempt to insert malicious, obfuscated code, which a curious developer might execute when suggested by the completion engine, as it enjoys a level of trust.
+
+<img src="diagrams/fig7.png" alt="" style="float: center; margin-right: 10px;" />
+
+
+
+In our example, when a user opens the “empty” package in their editor, the prompt injection is active until the code completion engine purges it from the context.
+ The injection is placed in a comment and cannot be detected by any automated testing process.
+
+
+
+
+Attackers may discover more robust ways to persist poisoned prompts within the context window.
+They could also introduce more subtle changes to documentation which then biases the code completion engine to introduce subtle vulnerabilities.
+
+### Remote Control
+In this example we start with an already compromised LLM and force it to retrieve new instructions from an attacker’s command and control server.
+
+<img src="diagrams/fig8.png" alt="" style="float: center; margin-right: 10px;" />
+
+Repeating this cycle could obtain a remotely accessible backdoor into the agent and allow bidirectional communication.
+The attack can be executed with search capabilities by looking up unique keywords or by having the agent retrieve a URL directly.
+
+### Persisting between Sessions
+
+We show how a poisoned agent can persist between sessions by storing a small payload in its memory.
+A simple key-value store to the agent may simulate a long-term persistent memory.
+
+<img src="diagrams/fig9.png" alt="" style="float: center; margin-right: 10px;" />
+
+
+
+The agent will be reinfected by looking at its ‘notes’.
+If we prompt it to remember the last conversation, it re-poisons itself.
+
+
+---------------------------------
+## Conclusions
+
+Equipping LLMs with retrieval capabilities might allow adversaries to manipulate remote Application-Integrated LLMs via Indirect Prompt Injection.
+Given the potential harm of these attacks, our work calls for a more in-depth investigation of the generalizability of these attacks in practice.
+
+<img src="diagrams/fig10.png" alt="" style="float: center; margin-right: 10px;" />
+
+---------------------------------------
+
+## How to run
+We include demonstrations powered by OpenAI's publicly accessible base models and the library [LangChain](https://github.com/hwchase17/langchain) to connect these models to other applications.
+There are currently multiple types of demos:
+1. Using GPT-3 and LangChain (scenarios/gpt3langchain)
+2. Using GPT-4 and our own chat and tool implementation (scenarios/gpt4). These can be executed non-interactively using scenarios/main.py.
+3. Attacks on code completion engines that need to be tried in an IDE with LLM autocompletion support (scenarios/code_completion).
+
+To use any of the OpenAI-model demos, your OpenAI API key needs to be stored in the environment variable `OPENAI_API_KEY`. You can then install the requirements and run the attack demo you want.
+
+```
+$ pip install -r requirements.txt
+$ python scenarios/main.py
+```
+
+## To cite our paper
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2302.12173,
+  doi = {10.48550/ARXIV.2302.12173},
+  url = {https://arxiv.org/abs/2302.12173},
+  author = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  keywords = {Cryptography and Security (cs.CR), Artificial Intelligence (cs.AI), Computation and Language (cs.CL), Computers and Society (cs.CY), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {More than you've asked for: A Comprehensive Analysis of Novel Prompt Injection Threats to Application-Integrated Large Language Models},
+  publisher = {arXiv},
+  year = {2023},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
+
+
+[**Paper on ArXiv**](https://arxiv.org/abs/2302.12173) [(PDF direct link)](https://arxiv.org/pdf/2302.12173.pdf)
 
 .
