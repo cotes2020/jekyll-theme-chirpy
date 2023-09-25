@@ -127,6 +127,16 @@
   font-weight: 600;
 }
 
+%sup-fn-target {
+  &:target {
+    background-color: var(--footnote-target-bg);
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    transition: background-color 1.75s ease-in-out;
+  }
+}
+
 /* ---------- scss mixin --------- */
 
 @mixin mt-mb($value) {
