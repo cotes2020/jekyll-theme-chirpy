@@ -20,7 +20,7 @@ timezone: Asia/Seoul
 
 title: frnd_blog # the main title
 
-tagline: frnd_subtitle_with_Jekyll_theme # it will display as the sub-title
+tagline: please scoot over, You're on my dress... #frnd_subtitle_with_Jekyll_theme # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
