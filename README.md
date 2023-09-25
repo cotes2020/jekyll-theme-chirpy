@@ -1,1 +1,1 @@
-This is my personal webpage.
+This is the repository of my personal website. Built using the [Chirpy Jekyll theme](https://github.com/cotes2020/jekyll-theme-chirpy) developed by [Cotes Chung](https://github.com/cotes2020).
