@@ -84,7 +84,7 @@ Alignment**
     using `RLHF` methods. Practical examples and exercises will be provided to help you
     apply these techniques to your own research questions and datasets.
 
- - **4:00 PM - 6 PM: Coding Challange and Awards Ceremony🏆**
+ - **4:00 PM - 6 PM: Coding Challenge and Awards Ceremony🏆**
 
     + In this practical part of our programme, you'll join forces with your peers to form a set of teams, pitted against a demanding research problem. Each team will try to solve the challenge aided by the skills you have learned during the workshop. Success in this competition isn't simply about finding the correct solution or achieving the best score; it's about pushing boundaries, thinking outside the box, and showcasing ingenious problem-solving skills! Exciting prizes await the teams that demonstrate exceptional creativity, innovation, and deliver the most effective solutions. This coding challenge will serve as a great platform to test your skills, solidify your networks, cooperate with peers, and dive deep into the thrilling world of language models!  
 
