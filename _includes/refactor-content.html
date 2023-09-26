@@ -30,6 +30,7 @@
 {% endif %}
 
 <!-- Change the icon of checkbox -->
+
 {% if _content contains '<input type="checkbox"' %}
   {% assign _content = _content
     | replace: '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />',
@@ -39,7 +40,8 @@
   %}
 {% endif %}
 
-<!-- images -->
+<!-- Handle images -->
+
 {% assign IMG_TAG = '<img ' %}
 
 {% if _content contains IMG_TAG %}
@@ -79,8 +81,6 @@
     {% assign _left = _left | remove: ' /' | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
     {% assign _attrs = _left | split: '" ' %}
 
-    {% assign _width = null %}
-    {% assign _height = null %}
     {% assign _lqip = null %}
     {% assign _class = null %}
 
@@ -94,10 +94,6 @@
       {% capture _value %}{{ _pair | last | remove: '"' }}{% endcapture %}
 
       {% case _key %}
-        {% when 'width' %}
-          {% assign _width = _value %}
-        {% when 'height' %}
-          {% assign _height = _value %}
         {% when 'src' %}
           {% assign _src = _value %}
         {% when 'lqip' %}
@@ -114,47 +110,33 @@
     {% endif %}
 
     {% assign _final_src = null %}
+    {% assign _lazyload = true %}
 
     {% unless _src contains '//' %}
       {% assign _final_src = _path_prefix | append: _src %}
-      {% capture _src_from %}"{{ _src }}"{% endcapture %}
-      {% capture _src_to %}"{{ _final_src }}"{% endcapture %}
-      {% assign _left = _left | replace: _src_from, _src_to %}
+      {% assign _src_alt = 'src="' | append: _path_prefix %}
+      {% assign _left = _left | replace: 'src="', _src_alt %}
     {% endunless %}
 
     {% if _lqip %}
-      {% unless _lqip contains ':' %}
-        {% assign _final_lqip = _path_prefix | append: _lqip %}
-        {% capture _lqip_from %}"{{ _lqip }}"{% endcapture %}
-        {% capture _lqip_to %}"{{ _final_lqip }}"{% endcapture %}
-        {% assign _left = _left | replace: _lqip_from, _lqip_to %}
-      {% endunless %}
-    {% endif %}
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    {% assign _left = _left | replace: 'src=', 'data-src=' %}
-    {% if _left contains 'class=' %}
-      {% assign _left = _left | replace: 'class="', 'class="lazyload ' %}
-    {% else %}
-      {% assign _left = _left | append: ' class="lazyload"' %}
-    {% endif %}
-
-    <!-- add image placeholder -->
-    {% if _lqip %}
-      {% assign _left = _left | replace: ' lqip=', ' data-lqip="true" src=' %}
-    {% else %}
-      {% if _width and _height %}
-        <!-- add SVG placehoder -->
-        {%- capture _svg -%}
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width  }} {{ _height }}'%3E%3C/svg%3E"
-        {%- endcapture -%}
-        {% assign _left = _svg | append: ' ' | append: _left %}
-        {% assign _class = _class | append: ' shimmer' %}
+      {% if _lqip contains ':' %}
+        {% assign _lazyload = false %}
+      {% else %}
+        {% assign _lqip_alt = 'lqip="' | append: _path_prefix %}
+        {% assign _left = _left | replace: 'lqip="', _lqip_alt %}
       {% endif %}
+
+      <!-- add image placeholder -->
+      {% assign _left = _left | replace: 'src=', 'data-src=' | replace: ' lqip=', ' data-lqip="true" src=' %}
+
+    {% else %}
+      {% assign _class = _class | append: ' shimmer' %}
     {% endif %}
 
-    <!-- Bypass the HTML-proofer test -->
-    {% assign _left = _left | append: ' data-proofer-ignore' %}
+    <!-- lazy-load images -->
+    {% if _lazyload %}
+      {% assign _left = _left | append: ' loading="lazy"' %}
+    {% endif %}
 
     {% if page.layout == 'home' %}
       <!-- create the image wrapper -->
@@ -174,6 +156,7 @@
           class="img-link{% unless _lqip %} shimmer{% endunless %}"
         {% endcapture %}
         {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>' %}
+
       {% else %}
         <!-- create the image wrapper -->
         {% assign _wrapper_start = _final_src
@@ -185,12 +168,12 @@
         %}
 
         {% assign _img_content = _img_content | append: _wrapper_start %}
-        {% assign _right = _right | prepend: '></a' %}
+        {% assign _right = '></a' | append: _right %}
       {% endif %}
     {% endif %}
 
     <!-- combine -->
-    {% assign _img_content = _img_content | append: debug | append: IMG_TAG | append: _left | append: _right %}
+    {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
   {% endfor %}
 
   {% if _img_content %}

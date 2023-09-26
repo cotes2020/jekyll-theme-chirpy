@@ -71,54 +71,13 @@ a {
 img {
   max-width: 100%;
   height: auto;
-  transition: all 0.35s ease-in-out;
+  transition: all 0.7s ease-in-out;
 
-  &[data-src] {
-    &[data-lqip='true'] {
-      &.lazyload,
-      &.lazyloading {
-        -webkit-filter: blur(20px);
-        filter: blur(20px);
-      }
-    }
+  &[data-lqip='true'] {
+    $blur: 20px;
 
-    &:not([data-lqip='true']) {
-      &.lazyload,
-      &.lazyloading {
-        background: var(--img-bg);
-      }
-
-      &.lazyloaded {
-        -webkit-animation: fade-in 0.35s ease-in;
-        animation: fade-in 0.35s ease-in;
-      }
-    }
-
-    &.shadow {
-      -webkit-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-      box-shadow: none !important; /* cover the Bootstrap 4.6.1 styles */
-    }
-
-    @extend %img-caption;
-  }
-
-  @-webkit-keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    -webkit-filter: blur($blur);
+    filter: blur($blur);
   }
 }
 
@@ -349,6 +308,29 @@ sup {
 
 /* --- post --- */
 
+.preview-img {
+  aspect-ratio: 40 / 21;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @extend %rounded;
+
+  &:not(.no-bg) {
+    img {
+      background: var(--img-bg);
+    }
+  }
+
+  img {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+
+    @extend %rounded;
+  }
+}
+
 .post-preview {
   @extend %rounded;
 
@@ -384,7 +366,6 @@ main {
   }
 
   p {
-    > img[data-src],
     > a.popup {
       &:not(.normal):not(.left):not(.right) {
         @include align-center;
@@ -538,8 +519,8 @@ main {
     background: var(--shimmer-bg);
     height: 100%;
     width: 100%;
-    -webkit-animation: shimmer 1s infinite;
-    animation: shimmer 1s infinite;
+    -webkit-animation: shimmer 1.3s infinite;
+    animation: shimmer 1.3s infinite;
   }
 
   @-webkit-keyframes shimmer {

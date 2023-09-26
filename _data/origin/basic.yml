@@ -35,8 +35,9 @@ magnific-popup:
   css: /assets/lib/magnific-popup/magnific-popup.css
   js: /assets/lib/magnific-popup/jquery.magnific-popup.min.js
 
-lazysizes:
-  js: /assets/lib/lazysizes/lazysizes.min.js
+lazy-polyfill:
+  css: /assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.min.css
+  js: /assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.umd.min.js
 
 clipboard:
   js: /assets/lib/clipboard/clipboard.min.js
