@@ -148,7 +148,7 @@ Cuối cùng, thực thi script `check_syslog.sh` dưới chế độ _preserved
 sudo --preserve-env=PATH /usr/bin/check_syslog.sh
 ```
 
-bÙm..
+bÙm...
 
 ```shell
 root@cmclabs1:/home/linuxmaster# cd /root
