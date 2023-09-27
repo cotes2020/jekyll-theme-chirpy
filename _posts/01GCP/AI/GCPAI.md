@@ -527,11 +527,11 @@ CREATE OR REPLACE TABLE 'bracketology.predictions' AS (
 For supervised models
 
 1. **label**:
-   1. need a field in the training data set titled label or specify which field or fields the labels are using as the input label columns in the model options
+   1. need a field in the training data set titled label or specify which field or fields the labels are using as the `input label columns` in the model options
 
 2. **features**:
-   1. the data columns that are part of the select statement after the create model statement after a model is trained
-   2. use the ml.feature info command to get statistics and metrics about the column for additional analysis
+   1. the data columns that are part of the select statement after the create model statement
+   2. after a model is trained use the `ml.feature_info`` command to get statistics and metrics about the column for additional analysis
 
    ```SQL
    SELECT *
@@ -545,8 +545,16 @@ For supervised models
 
 4. **model type**
    1. creating a new model is as easy as writing create model choosing a type and passing in a training data set again
-   2. if you're predicting on a numeric field such as next year's sales, consider `linear regression` for forecasting
-   3. if it's a discrete class like high medium low or spam or not spam, consider using `logistic regression` for classification
+   4. `Forecasting`
+      1. linear_reg
+      2. Numeric value (typically an integer or floating point)
+      3. Forecast sales figures for next year given historical sales data.
+      4. if you're predicting on a numeric field such as next year's sales, consider `linear regression` for forecasting
+   5. `Classification`
+      1. logistic_reg
+      2. 0 or 1 for binary classification
+      3. Classify an email as spam or not spam given the context.
+      4. if it's a discrete class like high medium low or spam or not spam, consider using `logistic regression` for classification
 
 
     ```SQL
@@ -594,6 +602,149 @@ For supervised models
 #### example
 
 ![Screenshot 2023-09-27 at 12.14.32](/assets/img/post/Screenshot%202023-09-27%20at%2012.14.32.png)
+
+Task 1. Explore ecommerce data
+
+```bash
+# open the data-to-insights project in a new browser tab to bring this project into your BigQuery projects panel.
+https://console.cloud.google.com/bigquery?p=data-to-insights&d=ecommerce&t=web_analytics&page=table
+
+
+# Question: Out of the total visitors who visited our website, what % made a purchase?
+#standardSQL
+WITH visitors AS(
+  SELECT
+  COUNT(DISTINCT fullVisitorId) AS total_visitors
+  FROM `data-to-insights.ecommerce.web_analytics`
+),
+purchasers AS(
+  SELECT
+  COUNT(DISTINCT fullVisitorId) AS total_purchasers
+  FROM `data-to-insights.ecommerce.web_analytics`
+  WHERE totals.transactions IS NOT NULL
+)
+SELECT
+  total_visitors,
+  total_purchasers,
+  total_purchasers/total_visitors AS conversion_rate
+FROM visitors, purchasers
+
+
+# Question: What are the top 5 selling products?
+SELECT
+  p.v2ProductName,
+  p.v2ProductCategory,
+  SUM(p.productQuantity) AS units_sold,
+  ROUND(SUM(p.localProductRevenue/1000000),2) AS revenue
+FROM `data-to-insights.ecommerce.web_analytics`,
+UNNEST(hits) AS h,
+UNNEST(h.product) AS p
+GROUP BY 1, 2
+ORDER BY revenue DESC
+LIMIT 5;
+
+
+# Question: How many visitors bought on subsequent visits to the website?
+# visitors who bought on a return visit (could have bought on first as well
+WITH all_visitor_stats AS (
+  SELECT
+    fullvisitorid, # 741,721 unique visitors
+    IF(COUNTIF(totals.transactions > 0 AND totals.newVisits IS NULL) > 0, 1, 0) AS will_buy_on_return_visit
+  FROM `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid
+)
+SELECT
+  COUNT(DISTINCT fullvisitorid) AS total_visitors,
+  will_buy_on_return_visit
+FROM all_visitor_stats
+GROUP BY will_buy_on_return_visit
+```
+
+
+Task 2. Select features and create your training dataset
+
+```sql
+SELECT * EXCEPT(fullVisitorId)
+FROM
+  # features
+  (
+    SELECT
+      fullVisitorId,
+      IFNULL(totals.bounces, 0) AS bounces,
+      IFNULL(totals.timeOnSite, 0) AS time_on_site
+    FROM `data-to-insights.ecommerce.web_analytics`
+    WHERE totals.newVisits = 1
+  )
+  JOIN
+  (
+    SELECT
+      fullvisitorid,
+      IF(COUNTIF(totals.transactions > 0 AND totals.newVisits IS NULL) > 0, 1, 0) AS will_buy_on_return_visit
+    FROM `data-to-insights.ecommerce.web_analytics`
+    GROUP BY fullvisitorid
+  )
+  USING (fullVisitorId)
+ORDER BY time_on_site DESC
+LIMIT 10;
+-- The features are bounces and time_on_site.
+-- The label is will_buy_on_return_visit.
+-- Discussion: will_buy_on_return_visit is not known after the first visit. Again, you're predicting for a subset of users who returned to your website and purchased. Since you don't know the future at prediction time, you cannot say with certainty whether a new visitor comes back and purchases. The value of building a ML model is to get the probability of future purchase based on the data gleaned about their first session.
+```
+
+
+Task 3. Create a BigQuery dataset to store models
+- Dataset ID, type ecommerce.
+
+
+Task 4. Select a BigQuery ML model type and specify options
+
+```sql
+-- create a model and specify model options:
+CREATE OR REPLACE MODEL `ecommerce.classification_model`
+OPTIONS
+(
+  model_type='logistic_reg',
+  labels = ['will_buy_on_return_visit']
+)
+AS
+# standardSQL
+SELECT * EXCEPT(fullVisitorId)
+FROM
+  # features
+  (
+    SELECT
+      fullVisitorId,
+      IFNULL(totals.bounces, 0) AS bounces,
+      IFNULL(totals.timeOnSite, 0) AS time_on_site
+    FROM `data-to-insights.ecommerce.web_analytics`
+    WHERE
+      totals.newVisits = 1
+      AND
+      date BETWEEN '20160801' AND '20170430'
+  ) # train on first 9 months
+  JOIN
+  (
+    SELECT
+      fullvisitorid,
+      IF(COUNTIF(totals.transactions > 0 AND totals.newVisits IS NULL) > 0, 1, 0) AS will_buy_on_return_visit
+    FROM `data-to-insights.ecommerce.web_analytics`
+    GROUP BY fullvisitorid
+  )
+  USING (fullVisitorId)
+;
+```
+
+Task 5. Evaluate classification model performance
+Task 6. Improve model performance with feature engineering
+Task 7. Predict which new visitors will come back and purchase
+
+
+
+
+
+
+
+
 
 
 。
