@@ -6,7 +6,7 @@ permalink: '/sw.js'
 
 self.importScripts('{{ "/assets/js/data/swcache.js" | relative_url }}');
 
-const cacheName = 'chirpy-{{ "now" | date: "%Y%m%d.%H%M%S" }}';
+const cacheName = 'chirpy-{{ "now" | date: "%s" }}';
 
 function verifyDomain(url) {
   for (const domain of allowedDomains) {
