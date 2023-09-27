@@ -9,7 +9,7 @@ tags: [AIML]
 
 - [GCP AI](#gcp-ai)
   - [overall](#overall)
-  - [Big Data and Machine Learning on Google Cloud](#big-data-and-machine-learning-on-google-cloud)
+  - [Big Data and Machine Learning on GCP](#big-data-and-machine-learning-on-gcp)
     - [user example](#user-example)
   - [Data Engineering for Streaming Data](#data-engineering-for-streaming-data)
     - [Processing](#processing)
@@ -19,6 +19,9 @@ tags: [AIML]
       - [Looker](#looker)
       - [Looker studio](#looker-studio)
   - [Big Data with BigQuery](#big-data-with-bigquery)
+    - [Storage and analytics](#storage-and-analytics)
+      - [manages the storage and metadata for datasets](#manages-the-storage-and-metadata-for-datasets)
+      - [analyzing data](#analyzing-data)
 
 ref:
 - [coursera - gcp-big-data-ml-fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals)
@@ -66,7 +69,7 @@ ref:
 ---
 
 
-## Big Data and Machine Learning on Google Cloud
+## Big Data and Machine Learning on GCP
 
 ![Screenshot 2023-09-24 at 23.37.53](/assets/img/post/Screenshot%202023-09-24%20at%2023.37.53.png)
 
@@ -218,7 +221,7 @@ Looker output
   - Looker Studio is integrated into Google Analytics to help visualize, in this case, a summary of a marketing website.
     - This dashboard visualizes the total number of visitors through a map, compares month-over-month trends, and even displays visitor distribution by age.
 
-  - Another Looker Studio integration is the Google Cloud billing dashboard.
+  - Another Looker Studio integration is the GCP billing dashboard.
 
 - 3 steps needed to create a Looker Studio dashboard.
   - choose a template. You can start with either a pre-built template or a blank report.
@@ -258,11 +261,12 @@ key features of BigQuery.
 
 - `Data in BigQuery is encrypted at rest by default` without any action required from a customer. By encryption at rest, we mean encryption used to protect data that is stored on a disk, including solid-state drives, or backup media.
 
-- `built-in machine learning features` to write ML models directly in BigQuery using SQL. Also, if you decide to use other professional tools—such as Vertex AI from Google Cloud—to train the ML models, you can export datasets from BigQuery directly into Vertex AI for a seamless integration across the data-to-AI lifecycle.
+- `built-in machine learning features` to write ML models directly in BigQuery using SQL. Also, if you decide to use other professional tools—such as Vertex AI from GCP—to train the ML models, you can export datasets from BigQuery directly into Vertex AI for a seamless integration across the data-to-AI lifecycle.
 
-Data warehouse solution architecture
+
+**Data warehouse** solution architecture
+- 4 challenges of big data, in modern organizations the data can be in `any format (variety), any size (volume), any speed (velocity), and possibly inaccurate (veracity)`.
 - The input data can be either real-time or batch data.
-  - 4 challenges of big data, in modern organizations the data can be in any format (variety), any size (volume), any speed (velocity), and possibly inaccurate (veracity).
   - If it's `streaming data`, which can be either structured or unstructured, high speed, and large volume, Pub/Sub is needed to digest the data.
   - If it’s `batch data`, it can be directly uploaded to Cloud Storage.
 
@@ -278,3 +282,71 @@ Data warehouse solution architecture
 ![Screenshot 2023-09-25 at 01.21.28](/assets/img/post/Screenshot%202023-09-25%20at%2001.21.28.png)
 
 - BigQuery is like a common staging area for data analytics workloads. When the data is there, business analysts, BI developers, data scientists, and machine learning engineers can be granted access to the data for their own insights.
+
+---
+
+### Storage and analytics
+
+BigQuery provides two services in one.
+- It's both a `fully-managed storage facility to load and store datasets` and also a `fast SQL-based analytical engine`.
+
+- The two services are connected by Google's high-speed internal network. It's the super-fast network that allows BigQuery to scale both storage and compute independently based on demand.
+
+![Screenshot 2023-09-27 at 00.07.58](/assets/img/post/Screenshot%202023-09-27%20at%2000.07.58.png)
+
+![Screenshot 2023-09-27 at 00.04.37](/assets/img/post/Screenshot%202023-09-27%20at%2000.04.37.png)
+
+#### manages the storage and metadata for datasets
+
+
+- BigQuery can `ingest` datasets from various sources including internal data (data saved directly in BigQuery), external data, multi-Cloud data, and public data-sets.
+
+![Screenshot 2023-09-27 at 00.05.08](/assets/img/post/Screenshot%202023-09-27%20at%2000.05.08.png)
+
+- After the data is stored in BigQuery, it's `fully managed and is automatically replicated, backed up, and set to auto-scale`.
+
+- BigQuery offers the option to `query` external data sources, like data stored in other GCP storage services (Cloud storage) or GCP database services (Spanner or Cloud SQL), and bypass BigQuery managed Storage.
+  - a raw CSV file in Cloud storage or Google sheet can be used to write a query without being ingested by BigQuery first.
+  - **inconsistency** might result from saving and processing data separately, consider using **DataFlow** to build a streaming data pipeline into BigQuery.
+
+![Screenshot 2023-09-27 at 00.05.29](/assets/img/post/Screenshot%202023-09-27%20at%2000.05.29_s93ryq1cz.png)
+
+
+- In addition to internal or native and external data sources, BigQuery can also ingest data from multi-Cloud data, which is data stored in multiple Cloud services, such as AWS or Azure, or a public data set.
+- If you don't have any data of your own, you can analyze any of the datasets available in the public data set marketplace.
+
+![Screenshot 2023-09-27 at 00.06.43](/assets/img/post/Screenshot%202023-09-27%20at%2000.06.43.png)
+
+
+- There are **3 basic patterns to load data into BigQuery**.
+
+  - `batch load`: source data is loaded into a BigQuery table in a single batch operation.
+    - one-time operation or automated to occur on a schedule.
+    - A batch load operation can create a new table or open data into an existing table.
+
+  - `streaming`: smaller batches of data are streamed continuously so that the data is available for querying in near real-time.
+
+  - `generated data`: where SQL statements are used to insert rows into an existing table or to write the results of a query to a table.
+
+![Screenshot 2023-09-27 at 00.07.26](/assets/img/post/Screenshot%202023-09-27%20at%2000.07.26.png)
+
+#### analyzing data
+
+- optimized for running analytical queries over large datasets. It can perform queries on terabytes of data in seconds and petabytes in minutes.
+- analyze large datasets efficiently and get insights in near real-time.
+
+![Screenshot 2023-09-27 at 00.08.17](/assets/img/post/Screenshot%202023-09-27%20at%2000.08.17.png)
+
+- analytics features
+
+  - supports **ad hoc analysis** using `standard SQL, the BigQuery SQL dialect`, **geospatial analytics** using geography data types in `standard SQL geography functions`.
+
+  - supports building **machine learning models** using `BigQuery ML` and building rich **interactive business intelligence dashboards** using `BigQuery BI Engine`.
+
+- queries
+
+  - By default, it runs `interactive queries`, which means that the queries are executed as needed.
+
+  - offers `batch queries` where each query is queued on your behalf and the query starts when idle resources are available.
+
+![Screenshot 2023-09-27 at 00.08.58](/assets/img/post/Screenshot%202023-09-27%20at%2000.08.58.png)
