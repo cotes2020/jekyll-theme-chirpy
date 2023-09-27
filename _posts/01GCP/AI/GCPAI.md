@@ -22,6 +22,7 @@ tags: [AIML]
     - [Storage and analytics](#storage-and-analytics)
       - [manages the storage and metadata for datasets](#manages-the-storage-and-metadata-for-datasets)
       - [analyzing data](#analyzing-data)
+    - [BigQuery ML](#bigquery-ml)
 
 ref:
 - [coursera - gcp-big-data-ml-fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals)
@@ -313,7 +314,7 @@ BigQuery provides two services in one.
 
 
 - In addition to internal or native and external data sources, BigQuery can also ingest data from multi-Cloud data, which is data stored in multiple Cloud services, such as AWS or Azure, or a public data set.
-- If you don't have any data of your own, you can analyze any of the datasets available in the public data set marketplace.
+- If you don't have any data of the own, you can analyze any of the datasets available in the public data set marketplace.
 
 ![Screenshot 2023-09-27 at 00.06.43](/assets/img/post/Screenshot%202023-09-27%20at%2000.06.43.png)
 
@@ -347,6 +348,63 @@ BigQuery provides two services in one.
 
   - By default, it runs `interactive queries`, which means that the queries are executed as needed.
 
-  - offers `batch queries` where each query is queued on your behalf and the query starts when idle resources are available.
+  - offers `batch queries` where each query is queued on the behalf and the query starts when idle resources are available.
 
 ![Screenshot 2023-09-27 at 00.08.58](/assets/img/post/Screenshot%202023-09-27%20at%2000.08.58.png)
+
+---
+
+### BigQuery ML
+
+- BigQuery started out solely as a data warehouse, over time it has evolved to provide features that support the data to AI lifecycle.
+
+- building and training them can be very time intensive.
+  - first `export` data from the data store into an IDE, Integrated Development Environment, such as Jupyter Notebook or Google Colab.
+  - And then `transform` the data and perform the feature engineering steps before feed it into a training model.
+  - Then `build` the model in Tensorflow or similar library and train it locally on a computer or on a virtual machine.
+  - To improve the model performance, you also need to go back and forth to get more data and create new features. This process will need to be repeated, but it's so time intensive that you'll probably stop after a few iterations.
+
+![Screenshot 2023-09-27 at 00.31.55](/assets/img/post/Screenshot%202023-09-27%20at%2000.31.55.png)
+
+- Now you can create and execute machine learning models on the structured data sets in BigQuery in just a few minutes using SQL queries.
+- 2 steps
+  - create a model with a SQL statement. Here we can use the numbikes.model data set as an example.
+  - write a SQL prediction query and invoke ml.PREDICT
+  - you now have a model and can view the results.
+
+  - Additional steps might include activities like evaluating the model, but if you know basic SQL you can now implement ml, that's pretty cool.
+
+![Screenshot 2023-09-27 at 00.32.24](/assets/img/post/Screenshot%202023-09-27%20at%2000.32.24.png)
+
+![Screenshot 2023-09-27 at 00.32.31](/assets/img/post/Screenshot%202023-09-27%20at%2000.32.31.png)
+
+- BigQuery ML was designed to be simple, like building a model in two steps. That simplicity extends to defining the machine learning hyperparameters, which let you tune the model to achieve the best training result.
+  - `Hyperparameters` are the settings apply to a model before the training starts, like a learning rate. With BigQuery ML, you can either manually control the hyperparameters. Or add it to BigQuery starting with a default hyperparameter setting and then automatic tuning.
+
+- When using a structured dataset in BigQuery ML, you need to choose the appropriate **model type**.
+  - Choosing which type of ML model depends on the business goal and the datasets.
+
+  - BigQuery support `supervised and unsupervised models`.
+
+  - **Supervised models** are task driven and identify a goal.
+    - if the goal is to classify data like whether an email is spam, use logistic regression.
+    - If the goal is to predict a number like shoe sales for the next three months, use linear regression
+
+  - **unsupervised models** are data driven and identify a pattern.
+
+    - if the goal is to identify patterns or clusters and then determine the best way to group them. Like grouping random photos of flowers into categories, you should use cluster analysis.
+
+![Screenshot 2023-09-27 at 00.34.18](/assets/img/post/Screenshot%202023-09-27%20at%2000.34.18.png)
+
+- decide on the best **model**.
+  - Categories include classification and regression models. There are also other model options to choose from along with ML Ops.
+  - Logistic regression is an example of a classification model,
+  - linear regression is an example of a regression model.
+  - We recommend that you start with these options and use the results to benchmark.
+  - To compare against more complex models such as DNN, Deep Neural Networks, which may take more time in computing resources to train and deploy.
+
+![Screenshot 2023-09-27 at 00.34.47](/assets/img/post/Screenshot%202023-09-27%20at%2000.34.47.png)
+- BigQuery ML supports features to deploy, monitor and manage the ML production called ML Ops (machine learning operations).
+  - Ops include importing Tensorflow models for batch prediction, exporting models from BigQuery ML for online prediction. And hyperparameter tuning using Cloud AI Vizier.
+
+![Screenshot 2023-09-27 at 00.35.12](/assets/img/post/Screenshot%202023-09-27%20at%2000.35.12.png)
