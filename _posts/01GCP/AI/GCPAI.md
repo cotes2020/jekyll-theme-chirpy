@@ -408,3 +408,5 @@ BigQuery provides two services in one.
   - Ops include importing Tensorflow models for batch prediction, exporting models from BigQuery ML for online prediction. And hyperparameter tuning using Cloud AI Vizier.
 
 ![Screenshot 2023-09-27 at 00.35.12](/assets/img/post/Screenshot%202023-09-27%20at%2000.35.12.png)
+
+![Screenshot 2023-09-27 at 00.41.26](/assets/img/post/Screenshot%202023-09-27%20at%2000.41.26.png)
