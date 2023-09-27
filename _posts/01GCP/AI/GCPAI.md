@@ -24,6 +24,8 @@ tags: [AIML]
       - [analyzing data](#analyzing-data)
     - [BigQuery ML](#bigquery-ml)
       - [Phases of ML project](#phases-of-ml-project)
+      - [BigQuery ML command](#bigquery-ml-command)
+      - [example](#example)
 
 ref:
 - [coursera - gcp-big-data-ml-fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals)
@@ -451,9 +453,147 @@ key phases of a machine learning project.
 ![Screenshot 2023-09-27 at 11.45.16](/assets/img/post/Screenshot%202023-09-27%20at%2011.45.16.png)
 
 
+---
+
+#### BigQuery ML command
+
+
+1. CREATE OR REPLACE MODE
+
+```SQL
+CREATE OR REPLACE MODEL 'mydataset.mymodel'
+-- create a model
+-- or overwrite an existing model
+
+OPTIONS (
+
+  model_type = 'linear_reg',
+  -- only one required
+
+  input_label_cols= 'sales',
+  is_init_learn_rate= .15,
+  l1_reg= 1,
+  max_iterations= 5
+) AS
+
+```
+
+
+2. inspect what the model learned
+   - the output of ml.weights is a numerical value, each feature has a weight from -1 to 1.
+   - the value indicates how important the feature is for predicting the result or label
+   - if the number is closer to 0, the feature isn't important for the prediction
+   - if the number is closer to -1/1, the feature is more important for predicting the result
+
+```SQL
+SELECT
+  category, weight
+FROM
+  UNNEST(
+    (
+      SELECT category.weights
+      FROM ML..WEIGHT(MODEL 'bracketology.ncaa.model')
+      WHERE processed_input = 'seed'
+    )
+  )
+LIKE 'school_ncaa'
+ORDER BY weight DESC
+```
+
+
+3. evaluate the model's performance
+
+```SQL
+SELECT *
+FROM ML.EVALUATE(MODEL 'bracketology.ncaa.model')
+```
+
+
+4. make batch predictions
+
+```SQL
+CREATE OR REPLACE TABLE 'bracketology.predictions' AS (
+
+  SELECT * FROM ML.PREDICT(MODEL 'bracketology.ncaa.model'),
+
+  -- prediction for 2018 tournament games (2017 season)
+  (
+    SELECT * FROM 'data.ncaa.2018_tournament_results'
+  )
+)
+```
+
+
+For supervised models
+
+1. **label**:
+   1. need a field in the training data set titled label or specify which field or fields the labels are using as the input label columns in the model options
+
+2. **features**:
+   1. the data columns that are part of the select statement after the create model statement after a model is trained
+   2. use the ml.feature info command to get statistics and metrics about the column for additional analysis
+
+   ```SQL
+   SELECT *
+   FROM ML.FEATURE_INFO(MODE 'mydataset.mymodel')
+   ```
+
+
+3. **model object**:
+   1. an object created in bigquery that resides in the bigquery data set you train many different models which will all be objects stored under the bigquery data set much like the tables and views
+   2. model objects can display information for when it was last updated or how many training runs it completed
+
+4. **model type**
+   1. creating a new model is as easy as writing create model choosing a type and passing in a training data set again
+   2. if you're predicting on a numeric field such as next year's sales, consider `linear regression` for forecasting
+   3. if it's a discrete class like high medium low or spam or not spam, consider using `logistic regression` for classification
+
+
+    ```SQL
+    CREATE OR REPLACE MODEL 'dataset.name'n
+    OPTIONS (
+      model_type = 'linear_reg'
+    ) AS <training dataset>
+    ```
 
 
 
+5. **training process**
+   1. while the model is running and even after it's complete you can view training progress with ml.training info as mentioned earlier
+
+   ```SQL
+   SELECT *
+   FROM ML.TRAINING_INFO(MODE 'mydataset.mymodel')
+   ```
+
+6. **inspect weights**
+   1. inspect weights to see what the model learned about the importance of each feature as it relates to the label you're predicting
+   2. the importance is indicated by the weight of each feature
+
+   ```SQL
+   SELECT *
+   FROM ML.WEIGHT(MODE 'mydataset.mymodel', (<query>))
+   ```
+
+7. **evaluation**
+   1. see how well the model performed against its evaluation data set by using ml.evaluate
+
+   ```SQL
+   SELECT *
+   FROM ML.EVALUATE(MODE 'mydataset.mymodel')
+   ```
+
+8. **predictions**
+   1. predictions is as simple as writing ml.predict and referencing the model name and prediction data set
+
+   ```SQL
+   SELECT *
+   FROM ML.PREDICT(MODE 'mydataset.mymodel', (<query>))
+   ```
+
+#### example
+
+![Screenshot 2023-09-27 at 12.14.32](/assets/img/post/Screenshot%202023-09-27%20at%2012.14.32.png)
 
 
 。
