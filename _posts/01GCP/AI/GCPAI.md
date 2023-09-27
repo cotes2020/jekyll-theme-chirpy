@@ -23,6 +23,7 @@ tags: [AIML]
       - [manages the storage and metadata for datasets](#manages-the-storage-and-metadata-for-datasets)
       - [analyzing data](#analyzing-data)
     - [BigQuery ML](#bigquery-ml)
+      - [Phases of ML project](#phases-of-ml-project)
 
 ref:
 - [coursera - gcp-big-data-ml-fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals)
@@ -410,3 +411,49 @@ BigQuery provides two services in one.
 ![Screenshot 2023-09-27 at 00.35.12](/assets/img/post/Screenshot%202023-09-27%20at%2000.35.12.png)
 
 ![Screenshot 2023-09-27 at 00.41.26](/assets/img/post/Screenshot%202023-09-27%20at%2000.41.26.png)
+
+---
+
+#### Phases of ML project
+
+
+key phases of a machine learning project.
+
+
+1. extract, transform and load data into BigQuery if it isn't there already.
+   1. using Google products, look out for easy connectors to get the data into BigQuery before you build the own pipeline.
+   2. You can enrich the existing data warehouse with other data sources by using ·.
+
+![Screenshot 2023-09-27 at 11.44.09](/assets/img/post/Screenshot%202023-09-27%20at%2011.44.09.png)
+
+2. select and preprocessed features.
+   1. use SQL to `create the training dataset for the model` to learn from.
+   2. BigQuery ML does some of the preprocessing, like one-hot encoding of the categorical variables.
+      1. One-hot encoding converts the categorical data into numeric data that is required by a training model.
+
+![Screenshot 2023-09-27 at 11.44.30](/assets/img/post/Screenshot%202023-09-27%20at%2011.44.30.png)
+
+3. create and train the model inside BigQuery.
+   1. using the create model command, give it a name, specify the model type and pass it in a sequel query with the training dataset, from there you can run the query.
+
+![Screenshot 2023-09-27 at 11.44.45](/assets/img/post/Screenshot%202023-09-27%20at%2011.44.45.png)
+
+4. evaluate the performance of the trained model
+   1. execute an `ML.evaluate` query to evaluate the performance of the trained model on the evaluation dataset.
+   2. analyze lost metrics like a root mean squared error for forecasting models and area under the curve accuracy, precision and recall for classification models.
+
+![Screenshot 2023-09-27 at 11.45.00](/assets/img/post/Screenshot%202023-09-27%20at%2011.45.00.png)
+
+5. use it to make predictions.
+   1. invoke that `ML.predict` command on the trained model to return with predictions and the model's confidence in those predictions.
+   2. With the results the label field will have predicted added to the field name. This is the model's prediction for that label.
+
+![Screenshot 2023-09-27 at 11.45.16](/assets/img/post/Screenshot%202023-09-27%20at%2011.45.16.png)
+
+
+
+
+
+
+
+。
