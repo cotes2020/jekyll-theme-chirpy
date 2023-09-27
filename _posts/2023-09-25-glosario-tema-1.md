@@ -2,7 +2,7 @@
 title: Glosario Tema 1
 authors: [tomas, miguel, hector, matias, andres]
 date: 2023-09-23 10:30:00 +0800
-categories: [Trabajos, Tema1]
+categories: [Grupal]
 tags: [glosario, tema1, grupo]
 comments: true
 ---
