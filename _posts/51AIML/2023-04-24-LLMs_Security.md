@@ -31,6 +31,7 @@ tags: [AIML]
     - [Insecure Output Handling (LLM02)](#insecure-output-handling-llm02)
       - [Vulnerability Examples](#vulnerability-examples-1)
       - [Attack Scenario Examples](#attack-scenario-examples)
+      - [Prevention Solution](#prevention-solution-1)
 
 
 ---
@@ -473,3 +474,22 @@ Reference Links:
 - An LLM `allows users to craft SQL queries for a backend database through a chat-like feature. A user requests a query to delete all database table`s. If the crafted query from the LLM is not scrutinized, then all database tables would be deletedG
 
 - A malicious user `instructs the LLM to return a JavaScript payload back to a user, without sanitization controls. This can occur either through a sharing a prompt, prompt injected website, or chatbot that accepts prompts from a URL parameter`. The LLM would then return the unsanitized XSS payload back to the user. Without additional filters, outside of those expected by the LLM itself, the JavaScript would execute within the user's browser.
+
+
+Reference Links
+- [Snyk Vulnerability DB- Arbitrary Code Execution](https://security.snyk.io/vuln/SNYK-PYTHON-LANGCHAIN-541135)
+- [ChatGPT Plugin Exploit Explained: From Prompt Injection to Accessing Private Data](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection)
+- [New prompt injection attack on ChatGPT web version. Markdown images can steal the chat data](https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c)
+- [Don't blindly trust LLM responses. Threats to chatbots](https://embracethered.com/blog/posts/2023/ai-injections-threats-context-matterst)
+- [Threat Modeling LLM Applications](https://aivillage.org/largelanguagemodels/threat-modeling-llm)
+- [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding)
+
+
+---
+
+
+#### Prevention Solution
+
+- **Treat the model as any other user** and apply proper input validation on responses coming from the model to backend functions. Follow the `OWASP ASVS (Application Security Verification Standard)` guidelines to ensure effective input validation and sanitization.
+
+- **Encode model output** back to users to mitigate undesired code execution by JavaScript or Markdown. OWASP ASVS provides detailed guidance on output encoding.
