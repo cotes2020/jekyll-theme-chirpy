@@ -1,11 +1,5 @@
-/*!
- * Chirpy v6.0.1 (https://github.com/cotes2020/jekyll-theme-chirpy)
- * © 2019 Cotes Chung
- * MIT Licensed
- */
-
-@import 'colors/light-typography';
-@import 'colors/dark-typography';
+@import 'colors/typography-light';
+@import 'colors/typography-dark';
 @import 'addon/variables';
 @import 'variables-hook';
 @import 'addon/module';

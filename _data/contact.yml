@@ -4,7 +4,7 @@
   icon: "fab fa-github"
 
 - type: twitter
-  icon: "fab fa-twitter"
+  icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"

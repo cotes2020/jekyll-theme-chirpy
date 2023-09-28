@@ -1,6 +1,6 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
 import {
-  imgLazy,
+  loadImg,
   imgPopup,
   initLocaleDatetime,
   initClipboard,
@@ -10,7 +10,7 @@ import {
 basic();
 initSidebar();
 initTopbar();
-imgLazy();
+loadImg();
 imgPopup();
 initLocaleDatetime();
 initClipboard();

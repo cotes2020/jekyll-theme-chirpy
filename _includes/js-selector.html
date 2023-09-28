@@ -12,7 +12,7 @@
 <!-- layout specified -->
 
 {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
-  {% assign urls = urls | append: ',' | append: site.data.origin[type].lazysizes.js %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type]['lazy-polyfill'].js %}
 
   {% unless page.layout == 'home' %}
     <!-- image lazy-loading & popup & clipboard -->
