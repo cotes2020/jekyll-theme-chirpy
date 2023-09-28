@@ -186,7 +186,7 @@ div {
   align-items: center;
   height: $code-header-height;
   margin-left: 0.75rem;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
 
   /* the label block */
   span {
@@ -267,7 +267,7 @@ div {
     .code-header {
       @include ml-mr(0);
 
-      $dot-margin: calc($code-header-height / 2);
+      $dot-margin: 1rem;
 
       &::before {
         content: '';
