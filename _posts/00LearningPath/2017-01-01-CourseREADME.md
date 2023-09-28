@@ -74,8 +74,10 @@ sleepy....
 | [COURSE 4 Elastic Google Cloud Infrastructure: Scaling and Automation](https://www.coursera.org/learn/gcp-infrastructure-scaling-automation?specialization=cloud-engineering-gcp)          | ✏️    |
 | [COURSE 5 Architecting with Google Kubernetes Engine: Foundations](https://www.coursera.org/learn/foundations-google-kubernetes-engine-gke?specialization=cloud-engineering-gcp)           | ✏️    |
 | [COURSE 6 Preparing for the Google Cloud Associate Cloud Engineer Exam](https://www.coursera.org/learn/preparing-cloud-associate-cloud-engineer-exam?specialization=cloud-engineering-gcp) | ✏️    |
-| Certification: `Architecting with Google Kubernetes Engine Specialization`                                                                                                                 |
+| Certification: `Architecting with Google Kubernetes Engine Specialization`                                                                                                                 | 🐰    |
 | [Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?)                                                 | ✏️    |
+| Certification: `Google Cloud Certification: Machine Learning Engineer Specialization`                                                                                                      | 🐰    |
+| [Google Cloud Big Data and Machine Learning Fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals/home/info)                                                           | ✔️    |
 | **cloudacademy** ==========                                                                                                                                                                |
 | Certification: `Google Professional Cloud Architect Exam Preparation`                                                                                                                      | ✏️    |
 | **GCP Webpage** ==========                                                                                                                                                                 |
