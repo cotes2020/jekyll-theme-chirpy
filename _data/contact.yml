@@ -1,7 +1,7 @@
 #  The contact options.
 
 - type: linkedin
-  icon: 'fa fa-linkedin'
+  icon: 'fab fa-linkedin'
   url: "https://www.linkedin.com/in/shyamu431/"
   
 - type: github
