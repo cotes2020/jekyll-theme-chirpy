@@ -507,8 +507,6 @@ Reference Links
 
 > A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
 
-
-
 - Training data poisoning refers to `manipulating the data or fine-tuning process to introduce vulnerabilities, backdoors or biases that could compromise the model’s security, effectiveness or ethical behavior`.
 
   - Poisoned information may be surfaced to users or create other risks like performance degradation, downstream software exploitation and reputational damage.
@@ -518,26 +516,3 @@ Reference Links
 - Data poisoning is considered an **integrity attack** because tampering with the training data `impacts the model’s ability to output correct predictions`.
 
 - Naturally, external data sources present higher risk as the model creators do not have control of the data or a high level of confidence that the content does not contain bias, falsified information or inappropriate content.
-
-**Bias Amplification**
-- Bias amplification occurs when an LLM, trained on large-scale data, amplifies existing biases in the training dataset rather than merely learning and reflecting them. The challenge lies in how LLMs handle ambiguous scenarios – when presented with inputs that could have multiple valid outputs, they tend to favor the most prevalent 流行的 trend seen during training, which often coincides with societal biases.
-
-- For example, if an LLM is trained on data that includes the bias that “men are more associated with professional occupations than women”, the model, when asked to fill in the blank in a statement like, “The professional entered the room. He was a…”, is more likely to generate occupations mostly held by men. This is bias amplification – taking the initial bias and solidifying or escalating it.
-
-- The amplification of bias has far-reaching implications:
-  - `Reinforcement of Stereotypes 陈规定型观念`: By generating outputs that mirror and enhance existing biases, these models can perpetuate harmful stereotypes, leading to their normalization.
-  - `Unfair Decision Making`: As LLMs are increasingly used in high-stakes areas such as hiring or loan approvals, bias amplification could lead to unfair decision-making, with certain demographics being unjustly favored over others.
-  - `Erosion 侵蚀 of Trust`: Bias amplification can erode user trust, particularly amongst those from marginalized communities who might be adversely affected by these biases.
-
-
-#### Vulnerability Examples
-
-- LLM model can `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data`
-
-- LLM victim model trains `using falsified information which is reflected in outputs of generative AI prompts to it's consumers`
-
-- LLM model can `trained using data which has not been verified by its source, origin or content`
-
-- The model itself when situated within infrastructure `has unrestricted access or inadequate sandboxing to gather datasets to be used as training data` which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
-
-- this vulnerability could `reflect risks within the LLM application when interacting with a non-proprietary LLM`.

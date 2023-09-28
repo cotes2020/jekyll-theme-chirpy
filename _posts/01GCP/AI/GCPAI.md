@@ -26,6 +26,10 @@ tags: [AIML]
       - [Phases of ML project](#phases-of-ml-project)
       - [BigQuery ML command](#bigquery-ml-command)
       - [example](#example)
+  - [Machine Learning on GCP](#machine-learning-on-gcp)
+    - [Pre-built APIs](#pre-built-apis)
+    - [AutoML](#automl)
+    - [Custom training](#custom-training)
 
 ref:
 - [coursera - gcp-big-data-ml-fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals)
@@ -606,7 +610,7 @@ For supervised models
 Task 1. Explore ecommerce data
 
 ```bash
-# open the data-to-insights project in a new browser tab to bring this project into your BigQuery projects panel.
+# open the data-to-insights project in a new browser tab to bring this project into the BigQuery projects panel.
 https://console.cloud.google.com/bigquery?p=data-to-insights&d=ecommerce&t=web_analytics&page=table
 
 
@@ -661,7 +665,7 @@ GROUP BY will_buy_on_return_visit
 ```
 
 
-Task 2. Select features and create your training dataset
+Task 2. Select features and create the training dataset
 
 ```sql
 SELECT * EXCEPT(fullVisitorId)
@@ -688,7 +692,7 @@ ORDER BY time_on_site DESC
 LIMIT 10;
 -- The features are bounces and time_on_site.
 -- The label is will_buy_on_return_visit.
--- Discussion: will_buy_on_return_visit is not known after the first visit. Again, you're predicting for a subset of users who returned to your website and purchased. Since you don't know the future at prediction time, you cannot say with certainty whether a new visitor comes back and purchases. The value of building a ML model is to get the probability of future purchase based on the data gleaned about their first session.
+-- Discussion: will_buy_on_return_visit is not known after the first visit. Again, you're predicting for a subset of users who returned to the website and purchased. Since you don't know the future at prediction time, you cannot say with certainty whether a new visitor comes back and purchases. The value of building a ML model is to get the probability of future purchase based on the data gleaned about their first session.
 ```
 
 
@@ -697,7 +701,7 @@ Task 3. Create a BigQuery dataset to store models
 
 
 Task 4. Select a BigQuery ML model type and specify options
-- Note: You cannot feed all of your available data to the model during training since you need to save some unseen data points for model evaluation and testing. To accomplish this, add a WHERE clause condition is being used to filter and train on only the first 9 months of session data in your 12 month dataset.
+- Note: You cannot feed all of the available data to the model during training since you need to save some unseen data points for model evaluation and testing. To accomplish this, add a WHERE clause condition is being used to filter and train on only the first 9 months of session data in the 12 month dataset.
 
 ```sql
 -- create a model and specify model options:
@@ -736,7 +740,7 @@ FROM
 ```
 
 Task 5. Evaluate classification model performance
-- In BigQuery ML, `roc_auc` is simply a queryable field when evaluating your trained ML model.
+- In BigQuery ML, `roc_auc` is simply a queryable field when evaluating the trained ML model.
 
 
 ```sql
@@ -903,7 +907,7 @@ FROM (
 
 Task 7. Predict which new visitors will come back and purchase
 - The predictions are made in the last 1 month (out of 12 months) of the dataset.
-- Your model will now output the predictions it has for those July 2017 ecommerce sessions. You can see three newly added fields:
+- the model will now output the predictions it has for those July 2017 ecommerce sessions. You can see three newly added fields:
   - `predicted_will_buy_on_return_visit`: whether the model thinks the visitor will buy later (1 = yes)
   - `predicted_will_buy_on_return_visit_probs.label`: the binary classifier for yes / no
   - `predicted_will_buy_on_return_visit_probs.prob`: the confidence the model has in it's prediction (1 = 100%)
@@ -1138,7 +1142,193 @@ ORDER BY
 ```
 
 
+---
+
+## Machine Learning on GCP
+
+GCP offers 4 options for building machine learning models.
+
+- BigQuery ML.
+  - a tool for using SQL queries to create and execute machine learning models in BigQuery.
+  - when have the data in BigQuery and the problems fit the predefined ML models, this could be the choice.
+
+- Pre-built APIs
+  - leverage machine-learning models that have already been built and trained by Google
+  - don't have to build the own machine learning models if you don't have enough training data or sufficient machine learning expertise
+
+- AutoML
+  - a no-code solution
+  - build the own machine learning models on Vertex AI through a point-and-click interface.
+
+- Vertex AI custom training
+  - code the very own machine learning environment, the training and the deployment
+  - gives flexibility and provides full control over the ML pipeline.
+
+
+![Screenshot 2023-09-27 at 15.08.09](/assets/img/post/Screenshot%202023-09-27%20at%2015.08.09.png)
+
+- Datatype.
+  - BigQuery ML only supports tabular data,
+  - while the other three support tabular image, text, and video data.
+
+- Training data size.
+  - Pre-built APIs don't require any training data,
+  - while BigQuery ML, and custom training require a large amount of data.
+
+- Machine learning and coding expertise,
+  - pre-built APIs and AutoML are user-friendly with low requirements
+  - while custom training has the highest requirement and BigQuery ML requires you to understand SQL.
+
+- Flexibility to tune the hyperparameters.
+  - you can't tune the hyperparameters with pre-built APIs or AutoML.
+  - you can experiment with hyperparameters using BigQuery ML and custom training.
+
+- Time to train the model.
+  - Pre-built APIs require no time to train a model because they directly use pre-built models from Google.
+  - The time to train a model for the other three options depends on the specific project. Normally, custom training takes the longest time because it builds the ML model from scratch, unlike AutoML and BigQuery ML.
+
+![Screenshot 2023-09-27 at 15.08.42](/assets/img/post/Screenshot%202023-09-27%20at%2015.08.42.png)
+
+Selecting depend on the business needs and ML expertise.
+- If the data engineers, data scientists, and data analysts are familiar with SQL and already have the data in BigQuery, BigQuery ML lets you develop SQL-based models.
+- If the business users or developers have little ML experience, using pre-built APIs is likely the best choice. Pre-built APIs address common perceptual tasks, such as vision, video, and natural language. They are ready to use without any ML expertise or model development effort.
+- If the developers and data scientists want to build custom models with the own training data while spending minimal time coding, then AutoML is the choice. AutoML provides a codeless solution to enable you to focus on business problems instead of the underlying model architecture and ML provisioning.
+- If the ML engineers and data scientists want full control of ML workflow, Vertex AI custom training lets you train and serve custom models with code on vertex workbench. We've already explored BigQuery ML, so in the videos that follow, we'll explore the other three options in more detail.
+
+![Screenshot 2023-09-27 at 15.08.51](/assets/img/post/Screenshot%202023-09-27%20at%2015.08.51.png)
+
+---
+
+### Pre-built APIs
+
+- Good Machine Learning models require lots of high-quality training data. You should aim for hundreds of thousands of records to train a custom model.
+- If you don't have that kind of data, pre-built APIs are a great place to start.
+- Pre-built APIs are offered as services.
+- act as building blocks to create the application without expense or complexity of creating the own models.
+- They save the time and effort of building, curating, and training a new dataset to just jump right ahead to predictions.
+
+pre-built APIs
+
+- `Speech-to-Text API`: converts audio to text for data processing.
+
+- `Text-to-Speech API`: converts text into high quality voice audio.
+
+- `Cloud Natural Language API` recognizes parts of speech called entities and sentiment.
+
+- `Cloud Translation API`" converts text from one language to another.
+
+- `Vision API`
+  - works with and recognizes content in static images.
+
+- `Video Intelligence API`: recognizes motion and action in video.
+
+![Screenshot 2023-09-27 at 21.39.11](/assets/img/post/Screenshot%202023-09-27%20at%2021.39.11.png)
+
+- Google has already done a lot of work to train these models using Google datasets.
+  - For example,
+    - the Vision API is based on Google’s image datasets,
+    - the Speech-to-Text API is trained on YouTube captions,
+    - the Translation API is built on Google’s neural machine translation technology.
+
+---
+
+### AutoML
+
+> training and deploying ML models can be extremely time consuming, as need to repeatedly add new data and features, try different models, and tune parameters to achieve the best result.
+
+AutoML
+- short for automated machine learning
+
+- To solve this problem, when AutoML was first announced in January of 2018,
+
+- the goal was to automate machine learning pipelines to save data scientists from manual work, such as tuning hyperparameters and comparing against multiple models.
+
+- machine learning is similar to human learning.
+  - all starts with gathering the right information.
+  - For AutoML, 2 technologies are vital.
+
+  - `transfer learning`:
+    - goal: build a knowledge base in the field.
+    - like gathering lots of books to create a library.
+    - a powerful technique that lets people with smaller datasets, or less computational power, achieve state-of-the-art results by `taking advantage of pre-trained models` that have been trained on similar, larger data sets.
+    - Because the model learns via transfer learning, it `doesn’t have to learn from scratch`, so it can generally reach higher accuracy with much less data and computation time than models that don’t use transfer learning.
+
+  - `neural architecture search`.
+    - goal: find the optimal model for the relevant project.
+    - like finding the best book in the library to help you learn what you need to.
+    - ​​AutoML is powered by the latest machine-learning research, so although a model performs training, the AutoML platform actually trains and evaluates multiple models and compares them to each other.
+    - This neural architecture search produces an ensemble of ML models and chooses the best one.
 
 
 
-。
+Leveraging these technologies has produced a tool that can significantly benefit data scientists.
+
+- One of the biggest benefits is that it’s a `no-code solution`.
+  - train high-quality custom machine learning models with minimal effort and requires little machine learning expertise.
+  - allows data scientists to focus their time on tasks like defining business problems or evaluating and improving model results.
+
+- Others might find AutoML useful as a tool to quickly `prototype models and explore new datasets` before investing in development.
+  - using it to identify the best features in a dataset,
+
+
+AutoML supports 4 types of data:
+- image, tabular, text, and video.
+- For each data type, AutoML solves different types of problems, called **objectives**.
+
+To get started,
+- upload the data into AutoML (from Cloud Storage, BigQuery, or even the local machine).
+- inform AutoML of the problems to solve.
+  - Some problems may sound similar to those mentioned in pre-built APIs.
+  - pre-built APIs use `pre-built machine learning models`,
+  - AutoML uses `custom-built models`. In AutoML, you use the own data to train the machine learning model and then apply the trained model to predict the goal.
+
+- For **image data**:
+  - use a `classification model` to analyze image data and return a list of content categories that apply to the image.
+    - For example,
+      - train a model to classify images as containing a dog or not containing a dog,
+      - train a model to classify images of dogs by breed.
+  - use an `object detection model` to analyze the image data and return annotations that consist of a label and bounding box location for each object found in an image.
+    - For example
+      - train a model to find the location of the dogs in image data.
+
+- For **tabular data**:
+  - use a `regression model` to analyze tabular data and return a numeric value.
+    - For example
+      - train a model to estimate a house’s value or rental price based on a set of factors such as location, size of the house, and number of bedrooms.
+  - use a `classification model` to analyze tabular data and return a list of categories.
+    - For example
+      - train a model to classify different types of land into high, median, and low potentials for commercial real estate.
+  - use `forecasting model` can use multiple rows of time-dependent tabular data from the past to predict a series of numeric values in the future.
+    - For example
+      - use the historical plus the economic data to predict what the housing market will look like in the next five years.
+
+- For **text data**:
+  - use a `classification model` to analyze text data and return a list of categories that apply to the text found in the data.
+    - For example
+      - can classify customer questions and comments to different categories and then redirect them to corresponding departments.
+  - An `entity extraction model` can be used to inspect text data for known entities referenced in the data and label those entities in the text.
+    - For example
+      - label a social media post in terms of predefined entities such as time, location, and topic, etc. This can help with online search, similar to the concept of a hashtag, but created by machine.
+  - And a `sentiment analysis model` can be used to inspect text data and identify the prevailing emotional opinion within it, especially to determine a writer's comment as positive, negative, or neutral.
+
+- for **video data**:
+  - use a `classification model` to analyze video data and return a list of categorized shots and segments.
+    - For example
+      - train a model that analyzes video data to identify whether the video is of a soccer, baseball, basketball, or football game
+  - use an `object tracking` model to analyze video data and return a list of shots and segments where these objects were detected.
+    - For example
+      - train a model that analyzes video data from soccer games to identify and track the ball.
+  - an `action recognition model` can be used to analyze video data and return a list of categorized actions with the moments the actions happened.
+    - For example
+      - train a model that analyzes video data to identify the action moments involving a soccer goal, a golf swing, a touchdown, or a high five.
+
+---
+
+### Custom training
+
+We've explored the options google cloud provides to build machine learning models using BigQuery ML, Pre-built APIs and AutoML. Now let's take a look at the last option custom training.
+Play video starting at ::13 and follow transcript0:13
+If you want to code your machine learning model, you can use this option by building a custom training solution with Vertex AI Workbench. Workbench is a single development environment for the entire data science workflow from exploring, to training and then deploying a machine learning model with code. Before any coding begins, you need to determine what environment you want, your ML training code to use. There are two options a pre-built container or a custom container. Imagine that a container is a kitchen. A pre-built container would represent a fully furnished room with cabinets and appliances which represent the dependencies that includes all the cookware, which represents the libraries, you need to make a meal. So if your ML training needs a platform like TensorFlow, Pytorch, Scikit-learn or XGboost and Python code to work with the platform, a pre built container is probably your best solution. A custom container alternatively is like an empty room with no cabinets, appliances or cookware. You define the exact tools, you need to complete the job.
+
+
+.
