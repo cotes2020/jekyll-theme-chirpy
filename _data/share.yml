@@ -8,7 +8,7 @@ platforms:
 
   - type: Telegram
     icon: "fab fa-telegram"
-    link: "https://t.me/share/url?url=URL&text=TITLE"
+    link: "https://t.me/@paveldurov431"
 
   # Uncomment below if you need to.
   #
