@@ -519,3 +519,9 @@ Reference Links
 
 
 - For example，if an LLM is trained on data that includes the bias that “men are more associated with professional occupations than women”, the model, when asked to fill in the blank in a statement like, “The professional entered the room. He was a…”, is more likely to generate occupations mostly held by men. This is bias amplification, taking the initial bias and solidifying or escalating it.
+
+
+- The amplification of bias has far-reaching implications:
+  - `Reinforcement of Stereotypes 陈规定型观念`: By generating outputs that mirror and enhance existing biases, these models can perpetuate harmful stereotypes, leading to their normalization.
+  - `Unfair Decision Making`: As LLMs are increasingly used in high-stakes areas such as hiring or loan approvals, bias amplification could lead to unfair decision-making, with certain demographics being unjustly favored over others.
+  - `Erosion 侵蚀 of Trust`: Bias amplification can erode user trust, particularly amongst those from marginalized communities who might be adversely affected by these biases.
