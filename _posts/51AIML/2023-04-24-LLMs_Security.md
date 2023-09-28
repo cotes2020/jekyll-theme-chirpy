@@ -516,3 +516,6 @@ Reference Links
 
 **Bias Amplification**
 - Bias amplification occurs when an LLM, trained on large-scale data, amplifies existing biases in the training dataset rather than merely learning and reflecting them. The challenge lies in how LLMs handle ambiguous scenarios – when presented with inputs that could have multiple valid outputs, they tend to favor the most prevalent 流行的 trend seen during training, which often coincides with societal biases.
+
+
+- For example，if an LLM is trained on data that includes the bias that “men are more associated with professional occupations than women”, the model, when asked to fill in the blank in a statement like, “The professional entered the room. He was a…”, is more likely to generate occupations mostly held by men. This is bias amplification, taking the initial bias and solidifying or escalating it.
