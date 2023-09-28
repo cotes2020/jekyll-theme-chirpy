@@ -7,7 +7,7 @@
     flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
   "
 >
-  <p>
+  <!-- <p>
     {{ '©' }}
     <time>{{ 'now' | date: '%Y' }}</time>
     <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
@@ -20,9 +20,9 @@
         {{- site.data.locales[include.lang].copyright.brief -}}
       </span>
     {% endif %}
-  </p>
+  </p> -->
 
-  <p>
+  <!-- <p>
     {%- capture _platform -%}
       <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
     {%- endcapture -%}
@@ -32,5 +32,5 @@
     {%- endcapture -%}
 
     {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
-  </p>
+  </p> -->
 </footer>

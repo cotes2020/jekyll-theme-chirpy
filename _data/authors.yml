@@ -6,12 +6,17 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
-cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
+<author_id>:
+  name: soozzang
+  twitter: https://soozzang.github.io
+  url: https://soozzang.github.io
 
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+# cotes:
+#   name: Cotes Chung
+#   twitter: cotes2020
+#   url: https://github.com/cotes2020/
+
+# sille_bille:
+#   name: Dinesh Prasanth Moluguwan Krishnamoorthy
+#   twitter: dinesh_MKD
+#   url: https://github.com/SilleBille/

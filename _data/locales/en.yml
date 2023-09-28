@@ -13,8 +13,8 @@ tabs:
   home: Home
   categories: Categories
   tags: Tags
-  archives: Archives
-  about: About
+  # archives: Archives
+  # about: About
 
 # the text displayed in the search bar & search results
 search:
