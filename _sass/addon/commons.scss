@@ -71,9 +71,9 @@ a {
 img {
   max-width: 100%;
   height: auto;
-  transition: all 0.7s ease-in-out;
+  transition: all 0.35s ease-in-out;
 
-  &[data-lqip='true'] {
+  .blur & {
     $blur: 20px;
 
     -webkit-filter: blur($blur);

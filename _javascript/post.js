@@ -7,7 +7,6 @@ import {
   toc
 } from './modules/plugins';
 
-basic();
 initSidebar();
 initTopbar();
 loadImg();
@@ -15,3 +14,4 @@ imgPopup();
 initLocaleDatetime();
 initClipboard();
 toc();
+basic();
