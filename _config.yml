@@ -18,9 +18,9 @@ timezone: Asia/Calcutta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Portfolio Website # the main title
+title: Shyamu Yadav # the main title
 
-tagline: Aspiring Data Analyst # it will display as the sub-title
+tagline: My Portfolio # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Portfolio Website of Shyamu Yadav
