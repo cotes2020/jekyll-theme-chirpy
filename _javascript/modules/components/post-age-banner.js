@@ -27,6 +27,6 @@ export function postAgeBanner() {
   // If the post age (in months) is greater than 6 (months), then remove the hidden CSS class from the target node, and insert the HTML message
   if (postAgeMonths > ageMonths) {
     postBanner.classList.remove('d-none');
-    postBanner.innerHTML = `This post is ${postAgeMonths} months old. Some information may be outdated or inaccurate.<br>If any updates are required please let us know.`;
+    postBanner.textContent = `This post is ${postAgeMonths} months old. Some information may be outdated or inaccurate.`;
   }
 }
