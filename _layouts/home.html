@@ -47,10 +47,6 @@ layout: default
         {% assign card_body_col = '12' %}
 
         {% if post.image %}
-          {% if post.image.lqip %}
-            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
-          {% endif %}
-
           {% assign src = post.image.path | default: post.image %}
           {% unless src contains '//' %}
             {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
@@ -59,7 +55,7 @@ layout: default
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            <img src="{{ src }}" alt="{{ alt }}" {% if post.image.lqip %}lqip="{{ post.image.lqip }}"{% endif %}>
           </div>
 
           {% assign card_body_col = '7' %}

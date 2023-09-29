@@ -81,6 +81,7 @@
     {% assign _left = _left | remove: ' /' | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
     {% assign _attrs = _left | split: '" ' %}
 
+    {% assign _src = null %}
     {% assign _lqip = null %}
     {% assign _class = null %}
 
@@ -119,8 +120,9 @@
     {% endunless %}
 
     {% if _lqip %}
-      {% if _lqip contains ':' %}
+      {% if _lqip contains 'data:' %}
         {% assign _lazyload = false %}
+        {% assign _class = _class | append: ' blur' %}
       {% else %}
         {% assign _lqip_alt = 'lqip="' | append: _path_prefix %}
         {% assign _left = _left | replace: 'lqip="', _lqip_alt %}
