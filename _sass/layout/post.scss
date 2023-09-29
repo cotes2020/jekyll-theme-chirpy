@@ -5,7 +5,9 @@
 @mixin btn-sharing-color($light-color, $important: false) {
   @if $important {
     color: var(--btn-share-color, $light-color) !important;
-  } @else {
+  }
+
+  @else {
     color: var(--btn-share-color, $light-color);
   }
 }
@@ -26,8 +28,8 @@
   color: var(--text-color);
 }
 
-h1 + .post-meta {
-  > span + span::before {
+h1+.post-meta {
+  >span+span::before {
     @include dot;
   }
 
@@ -55,7 +57,7 @@ h1 + .post-meta {
   .license-wrapper {
     line-height: 1.2rem;
 
-    > a {
+    >a {
       @extend %text-highlight;
 
       &:hover {
@@ -66,7 +68,9 @@ h1 + .post-meta {
     span:last-child {
       font-size: 0.85rem;
     }
-  } /* .license-wrapper */
+  }
+
+  /* .license-wrapper */
 
   .post-meta a:not(:hover) {
     @extend %link-underline;
@@ -82,7 +86,7 @@ h1 + .post-meta {
     .share-icons {
       font-size: 1.2rem;
 
-      > * {
+      >* {
         margin-left: 0.25rem;
 
         &:hover {
@@ -123,12 +127,16 @@ h1 + .post-meta {
       .fa-weibo {
         @include btn-sharing-color(rgb(229, 20, 43));
       }
-    } /* .share-icons */
+    }
+
+    /* .share-icons */
 
     .fas.fa-link {
       @include btn-sharing-color(rgb(171, 171, 171));
     }
-  } /* .share-wrapper */
+  }
+
+  /* .share-wrapper */
 }
 
 .post-tags {
@@ -194,10 +202,13 @@ h1 + .post-meta {
     margin-top: 0.3rem;
     white-space: normal;
   }
-} /* .post-navigation */
+}
+
+/* .post-navigation */
 
 @media (hover: hover) {
   .post-navigation {
+
     .btn,
     .btn::before {
       transition: all 0.35s ease-in-out;
@@ -298,7 +309,7 @@ h1 + .post-meta {
 /* --- Related Posts --- */
 
 #related-posts {
-  > h3 {
+  >h3 {
     @include label(1.1rem, 600);
   }
 
@@ -351,7 +362,7 @@ h1 + .post-meta {
   .post-tail-bottom {
     flex-wrap: wrap-reverse !important;
 
-    > div:first-child {
+    >div:first-child {
       width: 100%;
       margin-top: 1rem;
     }
@@ -359,7 +370,7 @@ h1 + .post-meta {
 }
 
 @media all and (max-width: 768px) {
-  .content > p > img {
+  .content>p>img {
     max-width: calc(100% + 1rem);
   }
 }
@@ -371,5 +382,23 @@ h1 + .post-meta {
     padding-right: 0;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
+  }
+}
+
+#post-series {
+  margin-top: 1.75rem;
+  padding-right: 0.5rem;
+
+  .series-list {
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--card-border-color);
+    background: var(--card-bg);
+
+    .card-header {
+      font-size: 1.4rem;
+      margin: 0;
+      color: var(--heading-color);
+    }
   }
 }

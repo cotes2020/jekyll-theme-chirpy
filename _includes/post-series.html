@@ -1,0 +1,19 @@
+{% if page.series %}
+{% assign posts = site.posts | where: "series", page.series | sort: 'date' %}
+<div class="row justify-content-center" id="post-series">
+  <div class="card series-list">
+    <div class="card-header">
+        {{ page.series | upcase }} ({{ posts | size }} part series)
+    </div>
+    <ul class="list-group list-group-flush">
+            {% for post in posts %}
+                {% if post.title == page.title %}
+                  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">{{ post.title }}</a>
+                {% else %}
+                <a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action">{{ post.title }}</a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+  </div>
+</div>
+{% endif %}
