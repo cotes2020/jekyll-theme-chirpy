@@ -148,7 +148,6 @@ footer {
   }
 
   p {
-    line-height: 1.75;
     text-align: center;
     margin-bottom: 0;
   }
@@ -820,9 +819,11 @@ $btn-mb: 0.5rem;
     padding-right: 1rem;
     margin-bottom: 1.5rem;
 
+    $btn-size: 1.75rem;
+
     %button {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: $btn-size;
+      height: $btn-size;
       margin-bottom: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
@@ -849,7 +850,7 @@ $btn-mb: 0.5rem;
     }
 
     i {
-      line-height: 1.75rem;
+      line-height: $btn-size;
     }
 
     .mode-toggle {
@@ -1128,10 +1129,6 @@ search {
 #tail-wrapper {
   > :not(script) {
     margin-top: 3rem;
-  }
-
-  > :only-child {
-    margin-top: 0;
   }
 }
 
