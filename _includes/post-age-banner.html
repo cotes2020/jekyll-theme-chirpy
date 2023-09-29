@@ -1,10 +1,12 @@
-{% assign post-date = include.post-date | date: "%s" %}
-{% assign last-modified = include.modified-date | date: "%s" %}
+{% if site.post_age_banner.enabled == true %}
+    {% assign post-date = include.post-date | date: "%s" %}
+    {% assign last-modified = include.modified-date | date: "%s" %}
 
-<div class="d-none">
-    <div id="posted-date">{{ post-date }}</div>
-    <div id="updated-date">{{ last-modified }}</div>
-    <div id="age-months">{{ include.age }}</div>
-</div>
+    <div class="d-none">
+        <div id="posted-date">{{ post-date }}</div>
+        <div id="updated-date">{{ last-modified }}</div>
+        <div id="age-months">{{ include.age }}</div>
+    </div>
 
-<blockquote class="d-none prompt-info" id="post-age-banner"></blockquote>
+    <blockquote class="d-none prompt-info" id="post-age-banner"></blockquote>
+{% endif %}

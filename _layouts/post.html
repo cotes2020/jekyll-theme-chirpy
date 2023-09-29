@@ -77,12 +77,13 @@ tail_includes:
     <!-- .d-flex -->
   </div>
   <!-- .post-meta -->
+
+  <!-- post_age_banner -->
+  {% include post-age-banner.html post-date=page.date modified-date=page.last_modified_at age=site.post_age_banner.age_months %}
+
 </header>
 
-<!-- post_age_banner -->
-{% if site.post_age_banner.enabled == true %}
-  {% include post-age-banner.html post-date=page.date modified-date=page.last_modified_at age=site.post_age_banner.age_months %}
-{% endif %}
+
 <div class="content">
   {{ content }}
 </div>
