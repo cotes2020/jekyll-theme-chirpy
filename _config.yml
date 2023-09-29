@@ -114,6 +114,10 @@ pwa:
 
 paginate: 10
 
+post_age_banner:
+  enabled: true # Enables banner on posts to show age warning
+  age_months: 6 # The age in months for a banner to be shown
+
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:

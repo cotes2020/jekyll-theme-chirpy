@@ -4,7 +4,8 @@ import {
   imgPopup,
   initLocaleDatetime,
   initClipboard,
-  toc
+  toc,
+  postAgeBanner
 } from './modules/plugins';
 
 initSidebar();
@@ -15,3 +16,4 @@ initLocaleDatetime();
 initClipboard();
 toc();
 basic();
+postAgeBanner();
