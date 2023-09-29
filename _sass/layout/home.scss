@@ -6,8 +6,6 @@
   margin-top: 2rem;
 
   .card-wrapper {
-    display: block;
-
     &:hover {
       text-decoration: none;
     }
@@ -18,27 +16,23 @@
   }
 
   .card {
+    border: 0;
+    background: none;
+
     %img-radius {
       border-radius: $base-radius $base-radius 0 0;
     }
 
     .preview-img {
-      height: 10rem;
-
       @extend %img-radius;
 
       img {
-        width: 100%;
-        height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
-
         @extend %img-radius;
       }
     }
 
     .card-body {
-      min-height: 10.5rem;
+      height: 100%;
       padding: 1rem;
 
       .card-title {
@@ -136,20 +130,13 @@
 
 /* Tablet */
 @media all and (min-width: 768px) {
+  %img-radius {
+    border-radius: 0 $base-radius $base-radius 0;
+  }
+
   #post-list {
-    %img-radius {
-      border-radius: 0 $base-radius $base-radius 0;
-    }
-
     .card {
-      .preview-img {
-        width: 20rem;
-        height: 11.55rem; // can hold 2 lines each for title and content
-      }
-
       .card-body {
-        min-height: 10.75rem;
-        width: 60%;
         padding: 1.75rem 1.75rem 1.25rem 1.75rem;
 
         .card-text {

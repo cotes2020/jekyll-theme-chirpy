@@ -19,31 +19,28 @@
 ## Features
 
 <details>
-  <summary>
-    <i>Click to view features</i>
-  </summary>
-  <p>
+  <summary>Click to expand/close details</summary>
+  &nbsp;
 
-  - Dark / Light Theme Mode
-  - Localized UI language
-  - Pinned Posts on Home Page
-  - Hierarchical Categories
-  - Trending Tags
-  - Table of Contents
-  - Last Modified Date
-  - Syntax Highlighting
-  - Mathematical Expressions
-  - Mermaid Diagrams & Flowcharts
-  - Dark / Light Mode Images
-  - Embed Videos
-  - Disqus / Utterances / Giscus Comments
-  - Built-in Search
-  - Atom Feeds
-  - PWA
-  - Google Analytics
-  - SEO & Performance Optimization
+- Dark / Light Theme Mode
+- Localized UI language
+- Pinned Posts on Home Page
+- Hierarchical Categories
+- Trending Tags
+- Table of Contents
+- Last Modified Date
+- Syntax Highlighting
+- Mathematical Expressions
+- Mermaid Diagrams & Flowcharts
+- Dark / Light Mode Images
+- Embed Videos
+- Disqus / Giscus / Utterances Comments
+- Built-in Search
+- Atom Feeds
+- PWA
+- Google Analytics
+- SEO & Performance Optimization
 
-  </p>
 </details>
 
 ## Documentation
@@ -52,7 +49,9 @@ To explore usage, development, and upgrade guide of the project, please refer to
 
 ## Contributing
 
-Contributions (Issues/PRs/Discussions) are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. For details, see the "[Contributing Guidelines][contribute-guide]".
+Contributions (_pull requests_, _issues_ and _discussions_) are what make the open source community such an amazing place
+to learn, inspire, and create. Any contributions you make are greatly appreciated.
+For details, see the "[Contributing Guidelines][contribute-guide]".
 
 ## Credits
 
@@ -67,11 +66,11 @@ Last but not least, thanks to [JetBrains][jetbrains] for providing the _Open Sou
 
 ## Sponsoring
 
-If you'd like to sponsor this project, the following options are available.
+If you like this project, or have built something through it, please consider supporting me in the following ways. Any support would be greatly appreciated!
 
 [![Ko-fi](https://img.shields.io/badge/Support_Me_on_Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)][ko-fi]&nbsp;
-[![Wechat Pay](https://img.shields.io/badge/Tip_Me_on_WeChat-brightgreen?logo=wechat&logoColor=white)][donation]&nbsp;
-[![Alipay](https://img.shields.io/badge/Tip_Me_on_Alipay-blue?logo=alipay&logoColor=white)][donation]
+[![Wechat Pay](https://img.shields.io/badge/Support_Me_on_WeChat-brightgreen?logo=wechat&logoColor=white)][donation]&nbsp;
+[![Alipay](https://img.shields.io/badge/Support_Me_on_Alipay-blue?logo=alipay&logoColor=white)][donation]
 
 ## License
 
