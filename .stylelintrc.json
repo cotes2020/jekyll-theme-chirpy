@@ -15,7 +15,7 @@
     "scss/operator-no-newline-after": null,
     "rule-empty-line-before": [
       "always",
-      { "ignore": ["after-comment", "first-nested", "inside-block"] }
+      { "ignore": ["after-comment", "first-nested"] }
     ],
     "value-keyword-case": ["lower", { "ignoreProperties": ["/^\\$/"] }],
     "media-feature-range-notation": "prefix"

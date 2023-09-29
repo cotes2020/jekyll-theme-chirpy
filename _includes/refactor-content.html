@@ -30,22 +30,22 @@
 {% endif %}
 
 <!-- Change the icon of checkbox -->
+
 {% if _content contains '<input type="checkbox"' %}
   {% assign _content = _content
-    | replace:
-        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />',
-        '<i class="fas fa-check-circle fa-fw checked"></i>'
-    | replace:
-        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />',
-        '<i class="far fa-circle fa-fw"></i>'
+    | replace: '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />',
+      '<i class="fas fa-check-circle fa-fw checked"></i>'
+    | replace: '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />',
+      '<i class="far fa-circle fa-fw"></i>'
   %}
 {% endif %}
 
-<!-- images -->
+<!-- Handle images -->
+
 {% assign IMG_TAG = '<img ' %}
 
 {% if _content contains IMG_TAG %}
-  {% assign _img_content = nil %}
+  {% assign _img_content = null %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
 
   <!-- CDN URL -->
@@ -81,10 +81,9 @@
     {% assign _left = _left | remove: ' /' | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
     {% assign _attrs = _left | split: '" ' %}
 
-    {% assign _width = nil %}
-    {% assign _height = nil %}
-    {% assign _lqip = nil %}
-    {% assign _class = nil %}
+    {% assign _src = null %}
+    {% assign _lqip = null %}
+    {% assign _class = null %}
 
     {% for _attr in _attrs %}
       {% unless _attr contains '=' %}
@@ -96,10 +95,6 @@
       {% capture _value %}{{ _pair | last | remove: '"' }}{% endcapture %}
 
       {% case _key %}
-        {% when 'width' %}
-          {% assign _width = _value %}
-        {% when 'height' %}
-          {% assign _height = _value %}
         {% when 'src' %}
           {% assign _src = _value %}
         {% when 'lqip' %}
@@ -115,54 +110,40 @@
       {% assign _left = _left | remove: _old_class %}
     {% endif %}
 
-    {% assign _final_src = nil %}
+    {% assign _final_src = null %}
+    {% assign _lazyload = true %}
 
     {% unless _src contains '//' %}
       {% assign _final_src = _path_prefix | append: _src %}
-      {% capture _src_from %}"{{ _src }}"{% endcapture %}
-      {% capture _src_to %}"{{ _final_src }}"{% endcapture %}
-      {% assign _left = _left | replace: _src_from, _src_to %}
+      {% assign _src_alt = 'src="' | append: _path_prefix %}
+      {% assign _left = _left | replace: 'src="', _src_alt %}
     {% endunless %}
 
     {% if _lqip %}
-      {% unless _lqip contains ':' %}
-        {% assign _final_lqip = _path_prefix | append: _lqip %}
-        {% capture _lqip_from %}"{{ _lqip }}"{% endcapture %}
-        {% capture _lqip_to %}"{{ _final_lqip }}"{% endcapture %}
-        {% assign _left = _left | replace: _lqip_from, _lqip_to %}
-      {% endunless %}
-    {% endif %}
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    {% assign _left = _left | replace: 'src=', 'data-src=' %}
-    {% if _left contains 'class=' %}
-      {% assign _left = _left | replace: 'class="', 'class="lazyload '%}
-    {% else %}
-      {% assign _left = _left | append: ' class="lazyload"' %}
-    {% endif %}
-
-    <!-- add image placeholder -->
-    {% if _lqip %}
-      {% assign _left = _left | replace: ' lqip=', ' data-lqip="true" src=' %}
-    {% else %}
-      {% if _width and _height %}
-        <!-- add SVG placehoder -->
-        {%- capture _svg -%}
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width  }} {{ _height }}'%3E%3C/svg%3E"
-        {%- endcapture -%}
-        {% assign _left =  _svg | append: ' ' | append: _left %}
-        {% assign _class = _class | append: ' shimmer' %}
+      {% if _lqip contains 'data:' %}
+        {% assign _lazyload = false %}
+        {% assign _class = _class | append: ' blur' %}
+      {% else %}
+        {% assign _lqip_alt = 'lqip="' | append: _path_prefix %}
+        {% assign _left = _left | replace: 'lqip="', _lqip_alt %}
       {% endif %}
+
+      <!-- add image placeholder -->
+      {% assign _left = _left | replace: 'src=', 'data-src=' | replace: ' lqip=', ' data-lqip="true" src=' %}
+
+    {% else %}
+      {% assign _class = _class | append: ' shimmer' %}
     {% endif %}
 
-    <!-- Bypass the HTML-proofer test -->
-    {% assign _left = _left | append: ' data-proofer-ignore' %}
+    <!-- lazy-load images -->
+    {% if _lazyload %}
+      {% assign _left = _left | append: ' loading="lazy"' %}
+    {% endif %}
 
     {% if page.layout == 'home' %}
       <!-- create the image wrapper -->
-      {%- capture _wrapper_start -%}
-        <div class="preview-img {{ _class | strip }}">
-      {%- endcapture -%}
+      {% assign _wrapper_start = '<div class="preview-img ' | append: _class | append: '">' %}
+
       {% assign _img_content = _img_content | append: _wrapper_start %}
       {% assign _right = _right | prepend: '></div' %}
 
@@ -176,26 +157,30 @@
         {% capture _class %}
           class="img-link{% unless _lqip %} shimmer{% endunless %}"
         {% endcapture %}
-        {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>'  %}
+        {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>' %}
+
       {% else %}
         <!-- create the image wrapper -->
-        {%- capture _wrapper_start -%}
-          <a href="{{ _final_src | default: _src  }}" class="popup img-link {{ _class }}">
-        {%- endcapture -%}
+        {% assign _wrapper_start = _final_src
+          | default: _src
+          | prepend: '<a href="'
+          | append: '" class="popup img-link '
+          | append: _class
+          | append: '">'
+        %}
+
         {% assign _img_content = _img_content | append: _wrapper_start %}
-        {% assign _right = _right | prepend: '></a' %}
+        {% assign _right = '></a' | append: _right %}
       {% endif %}
     {% endif %}
 
     <!-- combine -->
-    {% assign _img_content = _img_content | append: debug | append: IMG_TAG | append: _left | append: _right %}
-
+    {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
   {% endfor %}
 
   {% if _img_content %}
     {% assign _content = _img_content %}
   {% endif %}
-
 {% endif %}
 
 <!-- Add header for code snippets -->
@@ -205,13 +190,11 @@
   {% assign _new_content = '' %}
 
   {% for _snippet in _code_spippets %}
-
     {% if forloop.last %}
       {% assign _new_content = _new_content | append: _snippet %}
 
     {% else %}
-
-      {% assign _left = _snippet | split: '><' | last%}
+      {% assign _left = _snippet | split: '><' | last %}
 
       {% if _left contains 'file="' %}
         {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
@@ -226,21 +209,19 @@
         <span data-label-text="{{ _label_text | strip }}"><i class="{{ _label_icon }}"></i></span>
       {% endcapture %}
 
-      {% assign _new_content = _new_content | append: _snippet
-          | append: '<div class="code-header">'
-          | append: _label
-          | append: '<button aria-label="copy" data-title-succeed="'
-          | append: site.data.locales[include.lang].post.button.copy_code.succeed
-          | append: '"><i class="far fa-clipboard"></i></button></div>'
-          | append: '<div class="highlight"><code>'
+      {% assign _new_content = _new_content
+        | append: _snippet
+        | append: '<div class="code-header">'
+        | append: _label
+        | append: '<button aria-label="copy" data-title-succeed="'
+        | append: site.data.locales[include.lang].post.button.copy_code.succeed
+        | append: '"><i class="far fa-clipboard"></i></button></div>'
+        | append: '<div class="highlight"><code>'
       %}
-
     {% endif %}
-
   {% endfor %}
 
   {% assign _content = _new_content %}
-
 {% endif %}
 
 <!-- Create heading anchors -->
@@ -249,11 +230,11 @@
 {% assign _heading_content = _content %}
 
 {% for level in heading_levels %}
-  {% capture mark_start %}<h{{ level }} id="{% endcapture %}
-  {% capture mark_end %}</h{{ level }}>{% endcapture %}
+  {% assign mark_start = '<h' | append: level | append: ' id="' %}
+  {% assign mark_end = '</h' | append: level | append: '>' %}
 
   {% if _heading_content contains mark_start %}
-    {% assign _new_content = nil %}
+    {% assign _new_content = null %}
     {% assign heading_snippets = _heading_content | split: mark_start %}
 
     {% for snippet in heading_snippets %}
@@ -263,20 +244,19 @@
       {% endif %}
 
       {% assign id = snippet | split: '"' | first %}
-      {% capture anchor %}<a href="#{{ id }}" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+      {% assign anchor = '<a href="#'
+        | append: id
+        | append: '" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>'
+      %}
 
       {% assign left = snippet | split: mark_end | first %}
       {% assign right = snippet | slice: left.size, snippet.size %}
       {% assign left = left | replace_first: '">', '"><span class="me-2">' | append: '</span>' %}
 
-      {% assign _new_content = _new_content | append: mark_start
-          | append: left | append: anchor | append: right
-      %}
-
+      {% assign _new_content = _new_content | append: mark_start | append: left | append: anchor | append: right %}
     {% endfor %}
 
     {% assign _heading_content = _new_content %}
-
   {% endif %}
 {% endfor %}
 
