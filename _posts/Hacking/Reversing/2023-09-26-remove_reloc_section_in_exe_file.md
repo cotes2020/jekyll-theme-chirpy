@@ -37,12 +37,3 @@ reloc 섹션은 보통 마지막에 위치하므로 제거하기 어렵지 않�
 <br><br>
 <hr style="border: 2px solid;">
 <br><br>
-
-## 
-<hr style="border-top: 1px solid;"><br>
-
-
-
-<br><br>
-<hr style="border: 2px solid;">
-<br><br>
