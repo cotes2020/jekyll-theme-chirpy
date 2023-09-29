@@ -6,7 +6,7 @@ icon: fas fa-graduation-cap
 <p><br/></p>
 <p><a href="https://www.linkedin.com/in/rzimmerdev/">LinkedIn</a></p>
 <p><a href="https://github.com/rzimmerdev">GitHub</a></p>
-<p><a>rzimmerdev at gmail dot com</a> Brazil</p>
+<p><span style="text-decoration: underline; text-decoration-color: blue;">rzimmerdev at gmail dot com</span> Brazil</p>
 <p> </p>
 <h1>Rafael Zimmer <span class="s1">Undergraduate Student</span></h1>
 <p><br/></p>

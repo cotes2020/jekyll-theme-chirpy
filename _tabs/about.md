@@ -51,7 +51,7 @@ order: 4
 		            <strong>Hybrid Models for Facial Emotion Recognition in Children</strong><br>
             <strong>Authors:</strong> <a href="https://rzimmerdev.github.io">Zimmer, R.</a><br>
             <strong>Published:</strong> arXiv:cs.LG, 2023<br>
-            <a href="https://arxiv.org/abs/2308.12547">Abstract</a> | <a href="https://arxiv.org/pdf/2308.12547.pdf">PDF</a> <!-- | <a href="#">Website</a> -->
+            <a href="https://arxiv.org/abs/2308.12547">Abstract</a> | <a href="https://arxiv.org/pdf/2308.12547.pdf">PDF</a>
 		</div>
         </li>
         <li>
