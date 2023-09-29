@@ -38,7 +38,7 @@ order: 4
     <h3>Publications</h3>
     <ul>
         <li class="row">
-        	<img class="col-4" src="https://media.tenor.com/9Up2fSPNadoAAAAC/reinforcement-learning-cartpole-v0.gif">
+        	<img class="col-4" src="https://media.tenor.com/9Up2fSPNadoAAAAC/reinforcement-learning-cartpole-v0.gif" alt="Reinforcement cartpole example">
 		<div class="col">
 		            <strong>Optimizing a Market-Making strategy using Reinforcement Learning</strong><br>
             <strong>Authors:</strong> <a href="https://rzimmerdev.github.io">Zimmer, R.</a><br>
@@ -46,7 +46,7 @@ order: 4
 	</div>
         </li>
         <li class="row">
-        	<img class="col-4" src="https://github.com/rzimmerdev/emotion-recognition/blob/main/images/architecture.png?raw=true">
+        	<img class="col-4" src="https://github.com/rzimmerdev/emotion-recognition/blob/main/images/architecture.png?raw=true" alt="HybridCNNFusion architecture">
 		<div class="col">
 		            <strong>Hybrid Models for Facial Emotion Recognition in Children</strong><br>
             <strong>Authors:</strong> <a href="https://rzimmerdev.github.io">Zimmer, R.</a><br>
