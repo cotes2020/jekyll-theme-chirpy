@@ -75,6 +75,16 @@ Having said that, the key `author` can also identify multiple entries.
 > The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
 {: .prompt-info }
 
+### Series of posts
+
+If you have a series of posts add the following front matter with the name of the series to each of the posts:
+
+```yaml
+---
+series: <series-name>
+---
+```
+
 ## Table of Contents
 
 By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml`{: .filepath} and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
