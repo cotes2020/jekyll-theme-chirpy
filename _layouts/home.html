@@ -1,5 +1,6 @@
 ---
 layout: default
+refactor: true
 ---
 
 {% include lang.html %}
@@ -39,24 +40,23 @@ layout: default
   {% endfor %}
 {% endif %}
 
-{% capture _content %}
-<div id="post-list" class="flex-grow-1 pe-xl-2">
+<div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
     <article class="card-wrapper card">
       <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
         {% assign card_body_col = '12' %}
 
         {% if post.image %}
-          {% if post.image.lqip %}
-            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
-          {% endif %}
-
           {% assign src = post.image.path | default: post.image %}
           {% unless src contains '//' %}
             {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
           {% endunless %}
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
+
+          {% if post.image.lqip %}
+            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
+          {% endif %}
 
           <div class="col-md-5">
             <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
@@ -110,9 +110,6 @@ layout: default
   {% endfor %}
 </div>
 <!-- #post-list -->
-{% endcapture %}
-
-{% include refactor-content.html content=_content lang=lang %}
 
 {% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}
