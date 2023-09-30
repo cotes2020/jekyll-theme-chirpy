@@ -1,5 +1,5 @@
 ## Type of change
-<!-- Please select the desired item checkbox and change it to "[x]", then delete options that are not relevant. -->
+<!-- Please select the desired item checkbox and change it from `[ ]` to `[x]` and then delete the irrelevant options. -->
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Improvement (refactoring and improving code)
