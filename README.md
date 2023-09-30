@@ -45,18 +45,18 @@
 
 ## Documentation
 
-To explore usage, development, and upgrade guide of the project, please refer to the [**Wiki**][wiki].
+To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
 
 ## Contributing
 
-Contributions (_pull requests_, _issues_ and _discussions_) are what make the open source community such an amazing place
+Contributions (_pull requests_, _issues_, and _discussions_) are what make the open source community such an amazing place
 to learn, inspire, and create. Any contributions you make are greatly appreciated.
 For details, see the "[Contributing Guidelines][contribute-guide]".
 
 ## Credits
 
-This theme is mainly built with [Jekyll][jekyllrb] ecosystem,
-[Bootstrap][bootstrap], [Font Awesome][icons] and some other [wonderful tools][lib].
+This project is mainly built with [Jekyll][jekyllrb] ecosystem,
+[Bootstrap][bootstrap], [Font Awesome][icons], and some other [wonderful tools][lib].
 The avatar and favicon design come from [Clipart Max][image].
 
 Many thanks to the [contributors][contributors] who participated in the development
@@ -66,7 +66,7 @@ Last but not least, thanks to [JetBrains][jetbrains] for providing the _Open Sou
 
 ## Sponsoring
 
-If you like this project, or have built something through it, please consider supporting me in the following ways. Any support would be greatly appreciated!
+If you like this project, or have built something through it, please consider supporting this project. Any support would be greatly appreciated!
 
 [![Ko-fi](https://img.shields.io/badge/Support_Me_on_Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)][ko-fi]&nbsp;
 [![Wechat Pay](https://img.shields.io/badge/Support_Me_on_WeChat-brightgreen?logo=wechat&logoColor=white)][donation]&nbsp;
@@ -74,7 +74,7 @@ If you like this project, or have built something through it, please consider su
 
 ## License
 
-This work is published under [MIT License][license].
+This project is published under [MIT License][license].
 
 [gem]: https://rubygems.org/gems/jekyll-theme-chirpy
 [ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
