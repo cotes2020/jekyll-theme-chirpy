@@ -6,5 +6,49 @@ permalink: /robots.txt
 User-agent: *
 
 Disallow: /norobots/
-Vulntine{"H3r3_1s_7h3_fl4g"}
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
+
+#include <iostream>
+#include <unistd.h>
+#include <netinet/ip.h>
+#include <netinet/ip_icmp.h>
+#include <cstring>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    int sockfd;
+    char buffer[0x10000];
+    struct sockaddr_in sock_addr;
+    socklen_t sock_addr_len = sizeof(sock_addr);
+    struct ip* ip_hdr;
+    struct icmphdr* icmp_hdr;
+
+    sockfd = socket(AF_INET,SOCK_RAW,IPPROTO_ICMP);
+    if(sockfd < 0){
+        perror("socket");
+    }
+
+    while (1)
+    {
+        int packet_size = recvfrom(sockfd,buffer,sizeof(buffer),0,(struct sockaddr *)&sock_addr,&sock_addr_len);
+        if(packet_size < 0){
+            perror("packet_size");
+        }
+
+        ip_hdr = (struct ip*)buffer;
+        icmp_hdr = (struct icmphdr*)(buffer + (ip_hdr->ip_hl << 2));
+        if(ip_hdr->ip_p == IPPROTO_ICMP){
+            cout << "Received ICMP packet" << endl;
+            cout << "IP Header Length: " << (ip_hdr->ip_hl << 2) << " bytes" << endl;
+        }
+    }
+    
+    close(sockfd);
+
+    return 0;
+}
