@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: Hello World hihihoho
+=======
+title: Hello World
+>>>>>>> parent of 534224a (Darius: update)
 author: cotes
 date: 2019-08-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
