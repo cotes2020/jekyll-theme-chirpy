@@ -1055,14 +1055,14 @@ Reference Links
   - An LLM agent has access to plugins which `include functions that are not needed for the intended operation of the system`.
     - For example,
     - a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party plugin they choose to use also includes the ability to modify and delete documents.
-    - a plugin may have been trialled during a development phase and dropped in favour of a better alternative, but the original plugin remains available to the LLM agent
+    - a plugin may have been trialled during a development phase and dropped in favour of a better alternative, but the original plugin remains available to the LLM agent
 
   - An LLM plugin with `open-ended functionality fails to properly filter the input instructions` for commands outside what's necessary for the intended operation of the application.
-    - E.g., a plugin to run one specific shell command fails to properly prevent other shell commands from being executed
+    - E.g., a plugin to run one specific shell command fails to properly prevent other shell commands from being executed
 
 - `Excessive Permissions`:
   - An LLM plugin `has permissions on other systems that are not needed` for the intended operation of the application.
-    - E.g., a plugin intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions
+    - E.g., a plugin intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions
 
   - An LLM plugin that is designed to perform operations on behalf of a user accesses downstream systems `with a generic high-privileged identity`.
     - E.g., a plugin to read the current user's document store connects to the document repository with a privileged account that has access to all users' files.
