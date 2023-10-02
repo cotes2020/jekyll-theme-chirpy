@@ -53,12 +53,13 @@ tags: [AIML]
       - [Attack Scenario Examples](#attack-scenario-examples-6)
       - [Prevention Solution](#prevention-solution-6)
     - [LLM08: Excessive Agency 过度代理](#llm08-excessive-agency-过度代理)
-    - [LLM09: Overreliance](#llm09-overreliance)
       - [Vulnerability Examples](#vulnerability-examples-7)
+    - [LLM09: Overreliance](#llm09-overreliance)
+      - [Vulnerability Examples](#vulnerability-examples-8)
       - [Attack Scenario Example](#attack-scenario-example)
       - [Prevention Solution](#prevention-solution-7)
     - [Model Theft (LLM10)](#model-theft-llm10)
-      - [Vulnerability Examples](#vulnerability-examples-8)
+      - [Vulnerability Examples](#vulnerability-examples-9)
       - [Attack Scenario Examples](#attack-scenario-examples-7)
       - [Prevention Solution](#prevention-solution-8)
     - [Model itself](#model-itself)
@@ -943,12 +944,6 @@ Reference Links
     - The ongoing research and advancements in the field of differential privacy offer promising prospects for its widespread adoption in LLMs, making privacy-preserving AI not just a theoretical concept but a practical reality.
 
 
-
-
----
-
-
-
 ---
 
 ### LLM07: Insecure Plugin Design
@@ -1051,6 +1046,33 @@ Reference Links
 - The root cause of Excessive Agency is typically one or more of: `excessive functionality, excessive permissions or excessive autonomy`.
 
 - Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+
+
+#### Vulnerability Examples
+
+- `Excessive Functionality`:
+
+  - An LLM agent has access to plugins which `include functions that are not needed for the intended operation of the system`.
+    - For example,
+    - a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party plugin they choose to use also includes the ability to modify and delete documents.
+    - a plugin may have been trialled during a development phase and dropped in favour of a better alternative, but the original plugin remains available to the LLM agent
+
+  - An LLM plugin with `open-ended functionality fails to properly filter the input instructions` for commands outside what's necessary for the intended operation of the application.
+    - E.g., a plugin to run one specific shell command fails to properly prevent other shell commands from being executed
+
+- `Excessive Permissions`:
+  - An LLM plugin `has permissions on other systems that are not needed` for the intended operation of the application.
+    - E.g., a plugin intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions
+
+  - An LLM plugin that is designed to perform operations on behalf of a user accesses downstream systems `with a generic high-privileged identity`.
+    - E.g., a plugin to read the current user's document store connects to the document repository with a privileged account that has access to all users' files.
+
+
+- `Excessive Autonomy`:
+  - An LLM-based application or plugin `fails to independently verify and approve high-impact actions`.
+    - E.g., a plugin that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+
+
 
 ---
 
