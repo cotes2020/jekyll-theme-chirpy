@@ -540,22 +540,6 @@ Reference Links
 
 #### Vulnerability Examples
 
-- LLM model can `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data`
-
-- LLM victim model trains `using falsified information which is reflected in outputs of generative AI prompts to it's consumers`
-
-- LLM model can `trained using data which has not been verified by its source, origin or content`
-
-- The model itself when situated within infrastructure `has unrestricted access or inadequate sandboxing to gather datasets to be used as training data` which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
-
-- this vulnerability could `reflect risks within the LLM application when interacting with a non-proprietary LLM`.
-
-
-
-
-
----
-
 
 
 #### Prevention Solution
