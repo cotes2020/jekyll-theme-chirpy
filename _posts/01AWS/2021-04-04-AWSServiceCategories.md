@@ -1,5 +1,5 @@
 ---
-title: AWS - 一句话解释AWS
+title: AWS - Service categories
 date: 2021-04-04 11:11:11 -0400
 categories: [01AWS]
 tags: [AWS]
@@ -7,45 +7,44 @@ toc: true
 image:
 ---
 
-# Amazon Web Services
+# AWS service categories
 
-- [Amazon Web Services](#amazon-web-services)
-  - [AWS service categories](#aws-service-categories)
-    - [Compute 计算](#compute-计算)
-    - [Storage 存储](#storage-存储)
-    - [Database 数据库](#database-数据库)
-    - [Migration \& Transfer 数据迁移和传输](#migration--transfer-数据迁移和传输)
-    - [Networking \& Content Delivery 网络和内容传送](#networking--content-delivery-网络和内容传送)
-    - [Developer Tools 开发工具](#developer-tools-开发工具)
-    - [Robotics 机器人](#robotics-机器人)
-    - [Customer Enablement 针对每个客户的优化](#customer-enablement-针对每个客户的优化)
-    - [Blockchain 区块链](#blockchain-区块链)
-    - [Satellite 卫星](#satellite-卫星)
-    - [Quantum Technologies 量子技术](#quantum-technologies-量子技术)
-    - [Management \& Governance 管理与政府治理](#management--governance-管理与政府治理)
-    - [Identity \& access management](#identity--access-management)
-    - [Detection](#detection)
-    - [Infrastructure protection](#infrastructure-protection)
-    - [Data protection](#data-protection)
-    - [Incidence response](#incidence-response)
-    - [Compliance](#compliance)
-    - [Media Services | 媒体服务](#media-services--媒体服务)
-    - [Machine Learning 机器学习](#machine-learning-机器学习)
-    - [Analytics 分析](#analytics-分析)
-    - [Mobile 移动设备](#mobile-移动设备)
-    - [AR \& VR 增强现实和虚拟现实](#ar--vr-增强现实和虚拟现实)
-    - [Application Integration 应用程序集成](#application-integration-应用程序集成)
-    - [AWS Cost Management AWS的成本管理](#aws-cost-management-aws的成本管理)
-    - [Customer Engagement 客户交互](#customer-engagement-客户交互)
-    - [Business Applications 商业应用程序](#business-applications-商业应用程序)
-    - [End User Computing 终端用户计算机技术](#end-user-computing-终端用户计算机技术)
-    - [Internet Of Things 物联网](#internet-of-things-物联网)
-    - [Game Development 游戏开发](#game-development-游戏开发)
-    - [Containers 容器](#containers-容器)
+- [AWS service categories](#aws-service-categories)
+  - [AWS service categories](#aws-service-categories-1)
+  - [Compute 计算](#compute-计算)
+  - [Storage 存储](#storage-存储)
+  - [Database 数据库](#database-数据库)
+  - [Migration \& Transfer 数据迁移和传输](#migration--transfer-数据迁移和传输)
+  - [Networking \& Content Delivery 网络和内容传送](#networking--content-delivery-网络和内容传送)
+  - [Developer Tools 开发工具](#developer-tools-开发工具)
+  - [Robotics 机器人](#robotics-机器人)
+  - [Customer Enablement 针对每个客户的优化](#customer-enablement-针对每个客户的优化)
+  - [Blockchain 区块链](#blockchain-区块链)
+  - [Satellite 卫星](#satellite-卫星)
+  - [Quantum Technologies 量子技术](#quantum-technologies-量子技术)
+  - [Management \& Governance 管理与政府治理](#management--governance-管理与政府治理)
+  - [Identity \& access management](#identity--access-management)
+  - [Detection](#detection)
+  - [Infrastructure protection](#infrastructure-protection)
+  - [Data protection](#data-protection)
+  - [Incidence response](#incidence-response)
+  - [Compliance](#compliance)
+  - [Media Services | 媒体服务](#media-services--媒体服务)
+  - [Machine Learning 机器学习](#machine-learning-机器学习)
+  - [Analytics 分析](#analytics-分析)
+  - [Mobile 移动设备](#mobile-移动设备)
+  - [AR \& VR 增强现实和虚拟现实](#ar--vr-增强现实和虚拟现实)
+  - [Application Integration 应用程序集成](#application-integration-应用程序集成)
+  - [AWS Cost Management AWS的成本管理](#aws-cost-management-aws的成本管理)
+  - [Customer Engagement 客户交互](#customer-engagement-客户交互)
+  - [Business Applications 商业应用程序](#business-applications-商业应用程序)
+  - [End User Computing 终端用户计算机技术](#end-user-computing-终端用户计算机技术)
+  - [Internet Of Things 物联网](#internet-of-things-物联网)
+  - [Game Development 游戏开发](#game-development-游戏开发)
+  - [Containers 容器](#containers-容器)
 
 
 ---
-
 
 ## AWS service categories
 
@@ -56,7 +55,9 @@ image:
 
 ![Screenshot 2023-10-01 at 21.10.46](/assets/img/post/Screenshot%202023-10-01%20at%2021.10.46.png)
 
-### Compute 计算
+---
+
+## Compute 计算
 
 - EC2
   - 虚拟私有服务器
@@ -84,7 +85,7 @@ image:
 
 ![Screen Shot 2020-06-24 at 13.24.29](/assets/img/post/Screen%20Shot%202020-06-24%20at%2013.24.29.png)
 
-### Storage 存储
+## Storage 存储
 
 - S3
   - 不能直接挂载，但可以通过HTTP下载的文件存储
@@ -107,7 +108,7 @@ image:
 ![Screen Shot 2020-06-24 at 13.24.46](/assets/img/post/Screen%20Shot%202020-06-24%20at%2013.24.46.png)
 
 
-### Database 数据库
+## Database 数据库
 
 
 - RDS
@@ -137,7 +138,7 @@ image:
 ![Screen Shot 2020-06-24 at 13.25.03](/assets/img/post/Screen%20Shot%202020-06-24%20at%2013.25.03.png)
 
 
-### Migration & Transfer 数据迁移和传输
+## Migration & Transfer 数据迁移和传输
 
 - Migration Hub
   - 从数据中心迁移到AWS
@@ -163,7 +164,7 @@ image:
 ![Screen Shot 2020-06-24 at 13.25.15](/assets/img/post/Screen%20Shot%202020-06-24%20at%2013.25.15.png)
 
 
-### Networking & Content Delivery 网络和内容传送
+## Networking & Content Delivery 网络和内容传送
 
 - [VPC](https://ocholuo.github.io/posts/VPC/)
   - 在AWS中创建您自己的VPN
@@ -196,7 +197,7 @@ image:
 
 ---
 
-### Developer Tools 开发工具
+## Developer Tools 开发工具
 | service                                                        | info                                                               |
 | -------------------------------------------------------------- | ------------------------------------------------------------------ |
 | CodeStar(CodeStar)                                             | 可以使用template code、CodeCommit和CodeBuild的模板快速开发应用程序 |
@@ -207,35 +208,35 @@ image:
 | Cloud9                                                         | 在线的集成开发环境IDE                                              |
 | X-Ray                                                          | 可以分析和调试应用程序，支持Python、Node.js、Go等开发语言          |
 
-### Robotics 机器人
+## Robotics 机器人
 | service       | info                                                                                             |
 | ------------- | ------------------------------------------------------------------------------------------------ |
 | AWS RoboMaker | Cloud solution for robotic developers to simulate, test and securely deploy robotic applications |
 | AWS RoboMaker | 为机器人工程师提供的云端解决方案，可用于模拟、测试和安全部署机器人的应用程序                     |
 
-### Customer Enablement 针对每个客户的优化
+## Customer Enablement 针对每个客户的优化
 | service          | info                            |
 | ---------------- | ------------------------------- |
 | AWS IQ           | 可以根据需要聘请AWS专家的招工板 |
 | Support          | AWS支持中心                     |
 | Managed Services | 委托AWS为您运行管理AWS服务      |
 
-### Blockchain 区块链
+## Blockchain 区块链
 | service                   | info   |
 | ------------------------- | ------ |
 | Amazon Managed Blockchain | 区块链 |
 
-### Satellite 卫星
+## Satellite 卫星
 | service        | info                           |
 | -------------- | ------------------------------ |
 | Ground Station | 分时无线电和指向太空的大型天线 |
 
-### Quantum Technologies 量子技术
+## Quantum Technologies 量子技术
 | service       | info         |
 | ------------- | ------------ |
 | Amazon Braket | 一些量子技术 |
 
-### Management & Governance 管理与政府治理
+## Management & Governance 管理与政府治理
 
 - [CloudWatch](https://ocholuo.github.io/posts/AWS-CloudWatch/)
   - 从不同的AWS组件获取日志
@@ -286,7 +287,7 @@ image:
 
 ---
 
-### Identity & access management
+## Identity & access management
 
 - [AWS Identity & Access Management (IAM)](https://ocholuo.github.io/posts/IAM/)
   - AWS权限系统，可管理用户和AWS服务
@@ -324,7 +325,7 @@ image:
 
 ---
 
-### Detection
+## Detection
 
 - AWS Security Hub:
   - Unified security and compliance center
@@ -347,7 +348,7 @@ image:
 
 ---
 
-### Infrastructure protection
+## Infrastructure protection
 - AWS Shield:
   - DDoS protection
   - Web应用防火墙,可以设置规则或指定预先准备的规则
@@ -361,7 +362,7 @@ image:
 
 ---
 
-### Data protection
+## Data protection
 
 - Amazon Macie:
   - Discover and protect the sensitive data at scale
@@ -385,7 +386,7 @@ image:
 
 ---
 
-### Incidence response
+## Incidence response
 - Amazon Detective:
   - Investigate potential security issues
   - (来自Security Hub等)将安全问题留在日志中
@@ -395,14 +396,14 @@ image:
 
 ---
 
-### Compliance
+## Compliance
 - AWS Artifact:
   - No cost, self-service portal for on-demand access to AWS’ compliance reports
   - 云合规性文档(ISO/IEC 27001类似的东西)
 
 ---
 
-### Media Services | 媒体服务
+## Media Services | 媒体服务
 
 - Elastic Transcoder
   - 将S3的文件转换为不同的格式或者以S3格式存储
@@ -436,7 +437,7 @@ image:
 ---
 
 
-### Machine Learning 机器学习
+## Machine Learning 机器学习
 | service                                                              | info                                             |
 | -------------------------------------------------------------------- | ------------------------------------------------ |
 | Amazon SageMaker                                                     | 机器学习工具                                     |
@@ -459,7 +460,7 @@ image:
 | Amazon Augmented AI                                                  | 让人类参与学习流程，使机器学习更好               |
 | AWS DeepComposer                                                     | 用电脑作曲，听上去相当的厉害                     |
 
-### Analytics 分析
+## Analytics 分析
 
 - Athena
   - 将查询数据保存在S3存储桶中
@@ -500,7 +501,7 @@ image:
 ---
 
 
-### Mobile 移动设备
+## Mobile 移动设备
 | service     | info                                                            |
 | ----------- | --------------------------------------------------------------- |
 | AWS Amplify | 在AWS上自动生成并自动部署前端和后端应用程序                     |
@@ -508,7 +509,7 @@ image:
 | AWS AppSync | 可以创建可连接的后端API，也可以通过Amplify创建                  |
 | Device Farm | AWS的BrowserStack，可以在不同的移动设备和浏览器上自动进行测试。 |
 
-### AR & VR 增强现实和虚拟现实
+## AR & VR 增强现实和虚拟现实
 | service         | info             |
 | --------------- | ---------------- |
 | Amazon Sumerian | 截止目前内容不明 |
@@ -516,7 +517,7 @@ image:
 
 ---
 
-### Application Integration 应用程序集成
+## Application Integration 应用程序集成
 
 - Step Functions
   - 可以用亚马逊自己的语言描述机器配置
@@ -543,21 +544,21 @@ image:
 
 ---
 
-### AWS Cost Management AWS的成本管理
+## AWS Cost Management AWS的成本管理
 | service                        | info                      |
 | ------------------------------ | ------------------------- |
 | AWS Cost Explorer              | 可视化AWS成本状况         |
 | AWS Budgets                    | 创建AWS预算               |
 | AWS Marketplace Subs criptions | 查找并购买已安装软件的AMI |
 
-### Customer Engagement 客户交互
+## Customer Engagement 客户交互
 | service              | info                                         |
 | -------------------- | -------------------------------------------- |
 | Amazon Connect       | AWS呼叫中心平台                              |
 | Pinpoint             | 通过模板创建交易用的电子邮件、短信或语音电话 |
 | Simple Email Service | 邮件提供商，可以发送邮件                     |
 
-### Business Applications 商业应用程序
+## Business Applications 商业应用程序
 | service            | info                     |
 | ------------------ | ------------------------ |
 | Alexa for Business | 将业务与Alexa联系起来    |
@@ -566,7 +567,7 @@ image:
 
 ---
 
-### End User Computing 终端用户计算机技术
+## End User Computing 终端用户计算机技术
 
 - WorkSpaces
   - 提供Windows或Linux的虚拟桌面服务
@@ -584,7 +585,7 @@ image:
 
 ---
 
-### Internet Of Things 物联网
+## Internet Of Things 物联网
 
 - IoT Core
   - 通过MQTT代理管理IoT设备组
@@ -616,12 +617,12 @@ image:
 - IoT Things Graph
   - 类似CloudFormatation的设计工具，用于将设备与其他AWS服务的通信方式视觉化
 
-### Game Development 游戏开发
+## Game Development 游戏开发
 | service         | info                  |
 | --------------- | --------------------- |
 | Amazon GameLift | 在AWS上部署游戏服务器 |
 
-### Containers 容器
+## Containers 容器
 | service                                                                     | info                                                        |
 | --------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | [Elastic Container Registry]()                                              | 可以像在Docker Hub一样保存Docker映像                        |
