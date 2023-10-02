@@ -19,7 +19,6 @@ they wants 2 pieces of 4x8 MDF boards. My mini-van is simply not big enough, so 
 The whole process is very straightforward, just a lot of cutting and drilling. It's a lot of manual labor
 work though. On the first day I borrowed my neighbor's table saw and finished all the cutting. 
 
-
 ![cut_wood](/assets/img/20231001/end_of_0930.jpg)
 
 
