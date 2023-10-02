@@ -32,29 +32,32 @@ tags: [AIML]
       - [Vulnerability Examples](#vulnerability-examples-1)
       - [Attack Scenario Examples](#attack-scenario-examples-1)
       - [Prevention Solution](#prevention-solution-1)
-    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
+    - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
       - [Vulnerability Examples](#vulnerability-examples-2)
       - [Attack Scenario Examples](#attack-scenario-examples-2)
-      - [Prevention Solution](#prevention-solution-2)
-    - [Supply Chain Vulnerabilities (LLM05)](#supply-chain-vulnerabilities-llm05)
+    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
       - [Vulnerability Examples](#vulnerability-examples-3)
       - [Attack Scenario Examples](#attack-scenario-examples-3)
-      - [Prevention Solution](#prevention-solution-3)
-    - [Sensitive Information Disclosure (LLM06)](#sensitive-information-disclosure-llm06)
+      - [Prevention Solution](#prevention-solution-2)
+    - [Supply Chain Vulnerabilities (LLM05)](#supply-chain-vulnerabilities-llm05)
       - [Vulnerability Examples](#vulnerability-examples-4)
       - [Attack Scenario Examples](#attack-scenario-examples-4)
-      - [Prevention Solution](#prevention-solution-4)
-    - [LLM07: Insecure Plugin Design](#llm07-insecure-plugin-design)
+      - [Prevention Solution](#prevention-solution-3)
+    - [Sensitive Information Disclosure (LLM06)](#sensitive-information-disclosure-llm06)
       - [Vulnerability Examples](#vulnerability-examples-5)
       - [Attack Scenario Examples](#attack-scenario-examples-5)
+      - [Prevention Solution](#prevention-solution-4)
+    - [LLM07: Insecure Plugin Design](#llm07-insecure-plugin-design)
+      - [Vulnerability Examples](#vulnerability-examples-6)
+      - [Attack Scenario Examples](#attack-scenario-examples-6)
       - [Prevention Solution](#prevention-solution-5)
     - [LLM09: Overreliance](#llm09-overreliance)
-      - [Vulnerability Examples](#vulnerability-examples-6)
+      - [Vulnerability Examples](#vulnerability-examples-7)
       - [Attack Scenario Example](#attack-scenario-example)
       - [Prevention Solution](#prevention-solution-6)
     - [Model Theft (LLM10)](#model-theft-llm10)
-      - [Vulnerability Examples](#vulnerability-examples-7)
-      - [Attack Scenario Examples](#attack-scenario-examples-6)
+      - [Vulnerability Examples](#vulnerability-examples-8)
+      - [Attack Scenario Examples](#attack-scenario-examples-7)
       - [Prevention Solution](#prevention-solution-7)
     - [Model itself](#model-itself)
     - [Social Engineering](#social-engineering)
@@ -525,6 +528,63 @@ Reference Links
 ---
 
 
+### LLM03: Training Data Poisoning
+
+> The starting point of any machine learning approach is training data, simply “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres and languages.
+
+> A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
+
+- Training data poisoning refers to `manipulating the data or fine-tuning process to introduce vulnerabilities, backdoors or biases that could compromise the model’s security, effectiveness or ethical behavior`.
+
+  - Poisoned information may be surfaced to users or create other risks like performance degradation, downstream software exploitation and reputational damage.
+
+  - Even if users distrust the problematic AI output, the risks remain, including impaired model capabilities and potential harm to brand reputation.
+
+- Data poisoning is considered an **integrity attack** because tampering with the training data `impacts the model’s ability to output correct predictions`.
+
+- Naturally, external data sources present higher risk as the model creators do not have control of the data or a high level of confidence that the content does not contain bias, falsified information or inappropriate content.
+
+**Bias Amplification**
+- Bias amplification occurs when an LLM, trained on large-scale data, amplifies existing biases in the training dataset rather than merely learning and reflecting them. The challenge lies in how LLMs handle ambiguous scenarios – when presented with inputs that could have multiple valid outputs, they tend to favor the most prevalent 流行的 trend seen during training, which often coincides with societal biases.
+
+
+- For example，if an LLM is trained on data that includes the bias that “men are more associated with professional occupations than women”, the model, when asked to fill in the blank in a statement like, “The professional entered the room. He was a…”, is more likely to generate occupations mostly held by men. This is bias amplification, taking the initial bias and solidifying or escalating it.
+
+
+- The amplification of bias has far-reaching implications:
+  - `Reinforcement of Stereotypes 陈规定型观念`: By generating outputs that mirror and enhance existing biases, these models can perpetuate harmful stereotypes, leading to their normalization.
+  - `Unfair Decision Making`: As LLMs are increasingly used in high-stakes areas such as hiring or loan approvals, bias amplification could lead to unfair decision-making, with certain demographics being unjustly favored over others.
+  - `Erosion 侵蚀 of Trust`: Bias amplification can erode user trust, particularly amongst those from marginalized communities who might be adversely affected by these biases.
+
+
+
+#### Vulnerability Examples
+
+- LLM model can `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data`
+
+- LLM victim model trains `using falsified information which is reflected in outputs of generative AI prompts to it's consumers`
+
+- LLM model can `trained using data which has not been verified by its source, origin or content`
+
+- The model itself when situated within infrastructure `has unrestricted access or inadequate sandboxing to gather datasets to be used as training data` which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
+
+- this vulnerability could `reflect risks within the LLM application when interacting with a non-proprietary LLM`.
+
+
+
+#### Attack Scenario Examples
+
+- The LLM generative AI prompt output can `mislead users of the application which can lead to biased opinions, following or even worse, hate crimes etc`
+
+- If the training data is not correctly filtered and|or sanitized, a malicious user of the application may try to `influence and inject toxic data into the model for it to adapt to the biased and false data`
+
+- A malicious actor or competitor `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data` in which is training the model at the same time based on inputs. The victim model trains using this falsified information which is reflected in outputs of generative AI prompts to it's consumers
+
+- The vulnerability Prompt Injection could be an attack vector to this vulnerability if insufficient sanitization and filtering is performed when clients of the LLM application input is used to train the model. I.E, if malicious or falsified data is input to the model from a client as part of a prompt injection technique, this could inherently be portrayed into the model data.
+
+
+
+---
 
 ### LLM04: Model Denial of Service
 
