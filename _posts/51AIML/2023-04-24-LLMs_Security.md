@@ -26,17 +26,18 @@ tags: [AIML]
         - [Remote Control](#remote-control)
         - [Persisting between Sessions](#persisting-between-sessions)
       - [Vulnerability Examples](#vulnerability-examples)
-      - [Attack Scenarios Example](#attack-scenarios-example)
+      - [Attack Scenario Examples](#attack-scenario-examples)
       - [Prevention Solution](#prevention-solution)
     - [Insecure Output Handling (LLM02)](#insecure-output-handling-llm02)
       - [Vulnerability Examples](#vulnerability-examples-1)
-      - [Attack Scenario Examples](#attack-scenario-examples)
+      - [Attack Scenario Examples](#attack-scenario-examples-1)
       - [Prevention Solution](#prevention-solution-1)
     - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
+      - [Vulnerability Examples](#vulnerability-examples-2)
       - [Prevention Solution](#prevention-solution-2)
     - [Model Theft (LLM10)](#model-theft-llm10)
-      - [Vulnerability Examples](#vulnerability-examples-2)
-      - [Attack Scenario Example](#attack-scenario-example)
+      - [Vulnerability Examples](#vulnerability-examples-3)
+      - [Attack Scenario Examples](#attack-scenario-examples-2)
       - [Prevention Solution](#prevention-solution-3)
     - [Model itself](#model-itself)
     - [Social Engineering](#social-engineering)
@@ -352,7 +353,7 @@ poisoned agent can persist between sessions by storing a small payload in its me
 
 
 
-#### Attack Scenarios Example
+#### Attack Scenario Examples
 
 - An attacker, with a deep understanding of LLMs, could potentially feed crafted inputs that manipulate the model into generating harmful or malicious content. Additionally, input manipulation can also be used to trick the model into revealing sensitive information. This could be data that the model was trained on or proprietary information about the model’s design and function.
 
@@ -537,6 +538,20 @@ Reference Links
 
 
 
+#### Vulnerability Examples
+
+- LLM model can `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data`
+
+- LLM victim model trains `using falsified information which is reflected in outputs of generative AI prompts to it's consumers`
+
+- LLM model can `trained using data which has not been verified by its source, origin or content`
+
+- The model itself when situated within infrastructure `has unrestricted access or inadequate sandboxing to gather datasets to be used as training data` which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
+
+- this vulnerability could `reflect risks within the LLM application when interacting with a non-proprietary LLM`.
+
+
+
 
 
 ---
@@ -586,6 +601,8 @@ Reference Links
 - When using LLMs in development environments, **establish secure coding practices and guidelines** to prevent the integration of possible vulnerabilities.
 
 
+---
+
 
 ---
 
@@ -633,7 +650,7 @@ Reference Links
 
 
 
-#### Attack Scenario Example
+#### Attack Scenario Examples
 
 - An attacker `exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository`. The attacker proceeds to exfiltrate valuable LLM models and uses them to launch a competing language processing service or extract sensitive information, causing significant financial harm to the original company.
 
