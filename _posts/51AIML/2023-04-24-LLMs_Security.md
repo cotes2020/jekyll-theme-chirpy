@@ -33,11 +33,10 @@ tags: [AIML]
       - [Attack Scenario Examples](#attack-scenario-examples)
       - [Prevention Solution](#prevention-solution-1)
     - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
-      - [Attack Scenario Example](#attack-scenario-example)
       - [Prevention Solution](#prevention-solution-2)
     - [Model Theft (LLM10)](#model-theft-llm10)
       - [Vulnerability Examples](#vulnerability-examples-2)
-      - [Attack Scenario Example](#attack-scenario-example-1)
+      - [Attack Scenario Example](#attack-scenario-example)
       - [Prevention Solution](#prevention-solution-3)
     - [Model itself](#model-itself)
     - [Social Engineering](#social-engineering)
@@ -542,31 +541,6 @@ Reference Links
 
 ---
 
-
-
----
-
-
-#### Attack Scenario Example
-
-- A news organization `heavily uses an AI model to generate news articles`
-  - A malicious actor exploits this over-reliance, feeding the AI misleading information, causing the spread of disinformation. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organizationE
-
-- A software development team `utilizes an AI system like Codex to expedite the coding process`
-  - Over-reliance on the AI's suggestions introduces security vulnerabilities into the application due to insecure default settings or recommendations inconsistent with secure coding practices
-
-- A software development firm uses an LLM to assist developers.
-  - The LLM suggests a non-existent code library or package, and a developer, trusting the AI, unknowingly integrates a malicious package into the firm's software.
-  - This highlights the importance of `cross-checking AI suggestions`, especially when involving third-party code or libraries.
-
-
-Reference Links
-- [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7780)
-- [How Should Companies Communicate the Risks of Large Language Models to Users](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large- language-models-to-users)
-- [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections)
-- [AI Hallucinations: Package Risk](https://vulcan.io/blog/ai-hallucinations-package-risk)
-- [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models)
-- [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination)
 
 
 #### Prevention Solution
