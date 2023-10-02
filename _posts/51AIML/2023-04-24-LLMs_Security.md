@@ -32,13 +32,13 @@ tags: [AIML]
       - [Vulnerability Examples](#vulnerability-examples-1)
       - [Attack Scenario Examples](#attack-scenario-examples-1)
       - [Prevention Solution](#prevention-solution-1)
-    - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
+    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
       - [Vulnerability Examples](#vulnerability-examples-2)
-      - [no](#no)
+      - [Attack Scenario Examples](#attack-scenario-examples-2)
       - [Prevention Solution](#prevention-solution-2)
     - [Model Theft (LLM10)](#model-theft-llm10)
       - [Vulnerability Examples](#vulnerability-examples-3)
-      - [Attack Scenario Examples](#attack-scenario-examples-2)
+      - [Attack Scenario Examples](#attack-scenario-examples-3)
       - [Prevention Solution](#prevention-solution-3)
     - [Model itself](#model-itself)
     - [Social Engineering](#social-engineering)
@@ -509,85 +509,86 @@ Reference Links
 ---
 
 
-### LLM03: Training Data Poisoning
 
-> The starting point of any machine learning approach is training data, simply “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres and languages.
+### LLM04: Model Denial of Service
 
-> A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
+- An attacker interacts with a LLM in a method that `consumes an exceptionally high amount of resources, which results in a decline in the quality of service` for them and other users, as well as potentially incurring high resource costs.
 
-- Training data poisoning refers to `manipulating the data or fine-tuning process to introduce vulnerabilities, backdoors or biases that could compromise the model’s security, effectiveness or ethical behavior`.
-
-  - Poisoned information may be surfaced to users or create other risks like performance degradation, downstream software exploitation and reputational damage.
-
-  - Even if users distrust the problematic AI output, the risks remain, including impaired model capabilities and potential harm to brand reputation.
-
-- Data poisoning is considered an **integrity attack** because tampering with the training data `impacts the model’s ability to output correct predictions`.
-
-- Naturally, external data sources present higher risk as the model creators do not have control of the data or a high level of confidence that the content does not contain bias, falsified information or inappropriate content.
-
-**Bias Amplification**
-- Bias amplification occurs when an LLM, trained on large-scale data, amplifies existing biases in the training dataset rather than merely learning and reflecting them. The challenge lies in how LLMs handle ambiguous scenarios – when presented with inputs that could have multiple valid outputs, they tend to favor the most prevalent 流行的 trend seen during training, which often coincides with societal biases.
-
-
-- For example，if an LLM is trained on data that includes the bias that “men are more associated with professional occupations than women”, the model, when asked to fill in the blank in a statement like, “The professional entered the room. He was a…”, is more likely to generate occupations mostly held by men. This is bias amplification, taking the initial bias and solidifying or escalating it.
-
-
-- The amplification of bias has far-reaching implications:
-  - `Reinforcement of Stereotypes 陈规定型观念`: By generating outputs that mirror and enhance existing biases, these models can perpetuate harmful stereotypes, leading to their normalization.
-  - `Unfair Decision Making`: As LLMs are increasingly used in high-stakes areas such as hiring or loan approvals, bias amplification could lead to unfair decision-making, with certain demographics being unjustly favored over others.
-  - `Erosion 侵蚀 of Trust`: Bias amplification can erode user trust, particularly amongst those from marginalized communities who might be adversely affected by these biases.
-
+- Furthermore, an emerging major security concern is the possibility of `an attacker interfering with or manipulating the context window of an LLM`.
+  - This issue is becoming more critical due to the increasing use of LLMs in various applications, their intensive resource utilization, the unpredictability of user input, and a general unawareness among developers regarding this vulnerability.
+  - In LLMs, the context window represents the maximum length of text the model can manage, covering both input and output. It's a crucial characteristic of LLMs as it dictates the complexity of language patterns the model can understand and the size of the text it can process at any given time.
+  - The size of the context window is defined by the model's architecture and can differ between models.
 
 
 #### Vulnerability Examples
 
-#### no
+- `resource-limitation`
+  - Posing queries that lead to  `recurring resource usage through high-volume generation of tasks in a queue`
+    - e.g. with LangChain or AutoGPTz
 
+  - Sending queries that are unusually `resource-consuming`, perhaps because they use unusual orthography or sequencesz
+
+- `Continuous input overflow`:
+  - An attacker sends a stream of input to the LLM that exceeds its context window, causing the model to consume excessive computational resourcesz
+
+- `Repetitive long inputs`:
+  - The attacker repeatedly sends long inputs to the LLM, each exceeding the context windows
+
+- `Recursive context expansion`:
+  - The attacker constructs input that triggers recursive context expansion, forcing the LLM to repeatedly expand and process the context windows
+
+- `Variable-length input flood`:
+  - The attacker floods the LLM with a large volume of variable-length inputs, where each input is carefully crafted to just reach the limit of the context window.
+  - This technique aims to exploit any inefficiencies in processing variable-length inputs, straining the LLM and potentially causing it to become unresponsive.
+
+
+#### Attack Scenario Examples
+
+- An attacker `repeatedly sends multiple requests` to a hosted model that are difficult and costly for it to process, leading to worse service for other users and increased resource bills for the host
+
+- `A piece of text on a webpage is encountered` while an LLM-driven tool is collecting information to respond to a benign query.
+  - This leads to the tool making many more web page requests, resulting in large amounts of resource consumption
+
+- An attacker continuously `bombards the LLM with input that exceeds its context window`.
+  - The attacker may use automated scripts or tools to send a high volume of input, overwhelming the LLM's processing capabilities. As a result, the LLM consumes excessive computational resources, leading to a significant slowdown or complete unresponsiveness of the system
+
+- An attacker `sends a series of sequential inputs to the LLM, with each input designed to be just below the context window's limit`.
+  - By repeatedly submitting these inputs, the attacker aims to `exhaust the available context window capacity`.
+  - As the LLM struggles to process each input within its context window, system resources become strained, potentially resulting in degraded performance or a complete denial of service
+
+- An attacker leverages the LLM's recursive mechanisms to `trigger context expansion repeatedly`.
+  - By crafting input that exploits the recursive behavior of the LLM, the attacker forces the model to repeatedly expand and process the context window, consuming significant computational resources.
+  - This attack strains the system and may lead to a DoS condition, making the LLM unresponsive or causing it to crash
+
+- An attacker `floods the LLM with a large volume of variable-length inputs, carefully crafted to approach or reach the context window's limit`.
+  - By overwhelming the LLM with inputs of varying lengths, the attacker aims to exploit any inefficiencies in processing variable-length inputs.
+  - This flood of inputs puts excessive load on the LLM's resources, potentially causing performance degradation and hindering the system's ability to respond to legitimate requests.
+
+---
 
 #### Prevention Solution
 
-- Addressing misuse of generated content necessitates comprehensive strategies:
+- **Implement input validation and sanitization** to ensure user input adheres to defined limits and filters out any malicious content
 
-- **Robust Content Filters**: Developing and implementing robust content filtering mechanisms is crucial.
-  - These filters can help detect and prevent the generation of harmful or inappropriate content.
-  - This could involve techniques such as `Reinforcement Learning from Human Feedback (RLHF)` where the model is trained to avoid certain types of outputs.
-  - **Build APIs and user interfaces that encourage responsible and safe use of LLMs**, such as `content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content`.
+- **Cap resource use per request or step**, so that requests involving complex parts execute more slowly
 
-- **Regularly monitor and review the LLM outputs**.
-  - Use `self-consistency or voting techniques` to filter out inconsistent text.
-  - Comparing multiple model responses for a single prompt can better judge the quality and consistency of outputx
+- **Enforce API rate limits** to restrict the number of requests an individual user or IP address can make within a specific timeframe
 
-- **Adversarial Testing**:
-  - Regular adversarial testing can help identify potential misuse scenarios and help in developing effective countermeasures.
+- **Limit the number of queued actions and total actions** in a system reacting to LLM responses
 
-- **Collaboration with Policymakers**: Collaborating with regulators and policymakers to establish guidelines and laws can deter misuse and ensure proper repercussions.
+- **Continuously monitor the resource utilization** of the LLM to identify abnormal spikes or patterns that may indicate a DoS attack.
 
-- **Cross-check the LLM output with trusted external sources**.
-  - This additional layer of validation can help ensure the information provided by the model is accurate and reliablex
+- Set **strict input limits based on the LLM's context window** to prevent overload and resource exhaustionk
 
-- **Enhance the model with fine-tuning or embeddings to improve output quality**.
-  - Generic pre-trained models are more likely to produce inaccurate information compared to tuned models in a particular domain.
-  - Techniques such as `prompt engineering, parameter efficient tuning (PET), full model tuning, and chain of thought prompting` can be employed for this purpose.
-
-- Implement **automatic validation mechanisms that can cross-verify the generated output against known facts or data**.
-  - This can provide an additional layer of security and mitigate the risks associated with hallucinationsE
-
-- **Break down complex tasks into manageable subtasks and assign them to different agents**.
-  - This not only helps in managing complexity, but it also reduces the chances of hallucinations as each agent can be held accountable for a smaller task.
-
-- **Communicate the risks and limitations associated with using LLMs**.
-  - This includes potential for information inaccuracies, and other risks. Effective risk communication can prepare users for potential issues and help them make informed decisions.
-
-- **User Verification and Rate Limiting**:
-  - To prevent mass generation of misleading information, platforms could use stricter user verification methods and impose rate limits on content generation.
-
-- **Awareness and Education**:
-  - Informing users about the potential misuse of LLM-generated content can encourage responsible use and enable them to identify and report instances of misuse.
-
-- When using LLMs in development environments, **establish secure coding practices and guidelines** to prevent the integration of possible vulnerabilities.
+- Promote awareness among developers about potential DoS vulnerabilities in LLMs and provide guidelines for secure LLM implementation.
 
 
----
+
+Reference Links
+- [LangChain max_iterations](https://twitter.com/hwchase17/status/160846749387757977D)
+- [Sponge Examples Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03469)
+- [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Servic)
+- [Learning From Machines: Know Thy Context](https://lukebechtel.com/blog/lfm-know-thy-context)
 
 
 ---
