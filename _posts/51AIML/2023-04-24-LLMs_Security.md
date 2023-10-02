@@ -35,30 +35,31 @@ tags: [AIML]
     - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
       - [Vulnerability Examples](#vulnerability-examples-2)
       - [Attack Scenario Examples](#attack-scenario-examples-2)
+      - [Prevention Solution](#prevention-solution-2)
     - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
       - [Vulnerability Examples](#vulnerability-examples-3)
       - [Attack Scenario Examples](#attack-scenario-examples-3)
-      - [Prevention Solution](#prevention-solution-2)
+      - [Prevention Solution](#prevention-solution-3)
     - [Supply Chain Vulnerabilities (LLM05)](#supply-chain-vulnerabilities-llm05)
       - [Vulnerability Examples](#vulnerability-examples-4)
       - [Attack Scenario Examples](#attack-scenario-examples-4)
-      - [Prevention Solution](#prevention-solution-3)
+      - [Prevention Solution](#prevention-solution-4)
     - [Sensitive Information Disclosure (LLM06)](#sensitive-information-disclosure-llm06)
       - [Vulnerability Examples](#vulnerability-examples-5)
       - [Attack Scenario Examples](#attack-scenario-examples-5)
-      - [Prevention Solution](#prevention-solution-4)
+      - [Prevention Solution](#prevention-solution-5)
     - [LLM07: Insecure Plugin Design](#llm07-insecure-plugin-design)
       - [Vulnerability Examples](#vulnerability-examples-6)
       - [Attack Scenario Examples](#attack-scenario-examples-6)
-      - [Prevention Solution](#prevention-solution-5)
+      - [Prevention Solution](#prevention-solution-6)
     - [LLM09: Overreliance](#llm09-overreliance)
       - [Vulnerability Examples](#vulnerability-examples-7)
       - [Attack Scenario Example](#attack-scenario-example)
-      - [Prevention Solution](#prevention-solution-6)
+      - [Prevention Solution](#prevention-solution-7)
     - [Model Theft (LLM10)](#model-theft-llm10)
       - [Vulnerability Examples](#vulnerability-examples-8)
       - [Attack Scenario Examples](#attack-scenario-examples-7)
-      - [Prevention Solution](#prevention-solution-7)
+      - [Prevention Solution](#prevention-solution-8)
     - [Model itself](#model-itself)
     - [Social Engineering](#social-engineering)
     - [Malicious Content Authoring](#malicious-content-authoring)
@@ -583,6 +584,37 @@ Reference Links
 
 - The vulnerability Prompt Injection could be an attack vector to this vulnerability if insufficient sanitization and filtering is performed when clients of the LLM application input is used to train the model. I.E, if malicious or falsified data is input to the model from a client as part of a prompt injection technique, this could inherently be portrayed into the model data.
 
+
+
+#### Prevention Solution
+
+- **Verify the supply chain of the training data**, especially when sourced externally as well as maintaining attestations 证书, similar to the "SBOM" (Software Bill of Materials) methodology
+
+- **Verify the correct legitimacy of targeted data sources and data contained obtained** during both the training and fine-tuning stages
+
+- **Verify the use-case for the LLM and the application it will integrate to**. Craft different models via separate training data or fine-tuning for different use-cases to create a more granular and accurate generative AI output as per it's defined use-case
+
+- **Ensure sufficient sandboxing is present** to prevent the model from scraping unintended data sources which could hinder the machine learning output
+
+- **Use strict vetting or input filters** for specific training data or categories of data sources to control volume of falsified data.
+  - Data sanitization, with techniques such as `statistical outlier 异常值 detection` and `anomaly detection` methods to detect and remove adversarial data from potentially being fed into the fine-tuning process
+
+- **Adversarial robustness techniques** such as federated learning and constraints to minimize the effect of `outliers or adversarial 敌对的 training` to be vigorous 有力的 against worst-case perturbations 干扰 of the training data
+
+  - `An "MLSecOps" approach` could be to include adversarial 敌对的 robustness to the training lifecycle with the auto poisoning technique
+
+  - An example repository of this would be `Autopoison testing`, including both attacks such as `Content Injection Attacks` (“how to inject the brand into the LLM responses”) and `Refusal Attacks` (“always making the model refuse to respond”) that can be accomplished with this approach.
+
+
+- **Testing and Detection**, by measuring the loss during the training stage and analyzing trained models to detect signs of a poisoning attack by analyzing model behavior on specific test inputs.
+
+  - Monitoring and alerting on number of skewed responses exceeding a threshold.
+
+  - Use of a `human loop to review responses and auditing`.
+
+  - Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using reinforcement learning techniques.
+
+  - Perform `LLM-based red team exercises or LLM vulnerability scanning` into the testing phases of the LLM's lifecycle.
 
 
 ---
