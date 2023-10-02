@@ -617,6 +617,18 @@ Reference Links
   - Perform `LLM-based red team exercises or LLM vulnerability scanning` into the testing phases of the LLM's lifecycle.
 
 
+Reference Links
+- [Stanford Research Paper](https://stanford-cs324.github.io/winter2022/lectures/data)
+- [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html)
+- [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009)
+- [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
+- [Inject My PDF: Prompt Injection for the Resume](https://kai-greshake.de/posts/inject-my-pdf)
+- [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1)
+- [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.0094)
+- [FedMLSecurity](https://arxiv.org/abs/2306.0495r)
+- [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/)
+
+
 ---
 
 ### LLM04: Model Denial of Service
