@@ -291,7 +291,7 @@ Trucy
 
 ```bash
 Action: Read Email
-Observation: Subject: "'"Party 32", "Message Body: [...]'"
+Observation: Subject: Party 32, Message Body: [...]
 Action: Read Contacts
 Contacts: Alice, Dave, Eve
 Action: Send Email
