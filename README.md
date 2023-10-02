@@ -1,7 +1,8 @@
 <div align="center">
-  A minimal, responsive and feature-rich Jekyll page.
-
+  A minimal, responsive and feature-rich Jekyll blog.
 </div>
+
+[Take a look!](https://rzimmerdev.github.io)
 
 ## License
 
