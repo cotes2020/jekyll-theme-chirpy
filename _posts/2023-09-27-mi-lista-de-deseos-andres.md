@@ -1,8 +1,8 @@
 ---
 title: Mi lista de deseos
-authors: [matias]
+authors: [andres]
 date: 2023-09-27 10:30:00 +0800
-categories: [Matias]
+categories: [Andres]
 tags: [lista de deseos, tema1, individual, trabajos]
 comments: true
 ---
