@@ -34,6 +34,7 @@ tags: [AIML]
       - [Prevention Solution](#prevention-solution-1)
     - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
       - [Vulnerability Examples](#vulnerability-examples-2)
+      - [no](#no)
       - [Prevention Solution](#prevention-solution-2)
     - [Model Theft (LLM10)](#model-theft-llm10)
       - [Vulnerability Examples](#vulnerability-examples-3)
@@ -540,15 +541,7 @@ Reference Links
 
 #### Vulnerability Examples
 
-- LLM model can `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data`
-
-- LLM victim model trains `using falsified information which is reflected in outputs of generative AI prompts to it's consumers`
-
-- LLM model can `trained using data which has not been verified by its source, origin or content`
-
-- The model itself when situated within infrastructure `has unrestricted access or inadequate sandboxing to gather datasets to be used as training data` which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
-
-- this vulnerability could `reflect risks within the LLM application when interacting with a non-proprietary LLM`.
+#### no
 
 
 #### Prevention Solution
