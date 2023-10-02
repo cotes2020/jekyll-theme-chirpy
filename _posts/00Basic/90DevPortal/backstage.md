@@ -158,51 +158,63 @@ const routes = (
 
 Note that we use `"/catalog"` as our path to this plugin page, but we can choose any route we want for the page, as long as it doesn't collide with the routes that we choose for the other plugins in the app.
 
-These components that are exported from plugins are referred to as "Plugin Extension Components", or "Extension Components". They are regular React components, but in addition to being able to be rendered by React, they also contain various pieces of metadata that is used to wire together the entire app.
-Extension components are created using `create*Extension` methods, which you can read more about in the [composability documentation](../plugins/composability.md).
+These components that are exported from plugins are referred to as `"Plugin Extension Components", or "Extension Components"`.
+- They are regular React components, but in addition to being able to be rendered by React, they also contain various pieces of metadata that is used to wire together the entire app.
+- Extension components are created using `create*Extension` methods [composability documentation].
 
 As of this moment, there is no config based install procedure for plugins. Some code changes are required.
 
+
+---
+
 #### Plugin architecture
 
-Architecturally, plugins can take three forms:
+Architecturally, plugins can take 3 forms:
 
 1. Standalone
 2. Service backed
 3. Third-party backed
 
+---
+
 ##### Standalone plugins
 
-Standalone plugins run entirely in the browser.
-[The Tech Radar plugin](https://demo.backstage.io/tech-radar), for example,
-simply renders hard-coded information. It doesn't make any API requests to other
-services.
+**Standalone plugins**
+- run entirely in the browser
+- simply renders hard-coded information
+- doesn't make any API requests to other services
+
+for example
+- [The Tech Radar plugin](https://demo.backstage.io/tech-radar),
 
 ![tech radar plugin ui](/assets/img/backstage-assets/architecture-overview/tech-radar-plugin.png)
 
-The architecture of the Tech Radar installed into a Backstage app is very
-simple.
+- The architecture of the Tech Radar installed into a Backstage app is very simple.
 
 ![ui and tech radar plugin connected together](/assets/img/backstage-assets/architecture-overview/tech-radar-plugin-architecture.png)
 
+---
+
 ##### Service backed plugins
 
-Service backed plugins make API requests to a service which is within the
-purview of the organisation running Backstage.
+**Service backed plugins**
+- make API requests to a service which is within the purview of the organisation running Backstage.
 
-The Lighthouse plugin, for example, makes requests to the
-[lighthouse-audit-service](https://github.com/spotify/lighthouse-audit-service).
-The `lighthouse-audit-service` is a microservice which runs a copy of Google's
-[Lighthouse library](https://github.com/GoogleChrome/lighthouse/) and stores the
-results in a PostgreSQL database.
+for example:
 
-Its architecture looks like this:
+- The Lighthouse plugin
+  - makes requests to the [lighthouse-audit-service](https://github.com/spotify/lighthouse-audit-service).
+  - The `lighthouse-audit-service` is a microservice which runs a copy of Google's [Lighthouse library](https://github.com/GoogleChrome/lighthouse/) and stores the results in a PostgreSQL database.
 
-![lighthouse plugin backed to microservice and database](/assets/img/backstage-assets/architecture-overview/lighthouse-plugin-architecture.png)
+  - Its architecture looks like this:
 
-The software catalog in Backstage is another example of a service backed plugin.
-It retrieves a list of services, or "entities", from the Backstage Backend
-service and renders them in a table for the user.
+  - ![lighthouse plugin backed to microservice and database](/assets/img/backstage-assets/architecture-overview/lighthouse-plugin-architecture.png)
+
+- The software catalog
+  - another example of a service backed plugin.
+  - It retrieves a list of services, or "entities", from the Backstage Backend service and renders them in a table for the user.
+
+---
 
 ##### Third-party backed plugins
 

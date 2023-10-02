@@ -52,6 +52,7 @@ tags: [AIML]
       - [Vulnerability Examples](#vulnerability-examples-6)
       - [Attack Scenario Examples](#attack-scenario-examples-6)
       - [Prevention Solution](#prevention-solution-6)
+    - [LLM08: Excessive Agency 过度代理](#llm08-excessive-agency-过度代理)
     - [LLM09: Overreliance](#llm09-overreliance)
       - [Vulnerability Examples](#vulnerability-examples-7)
       - [Attack Scenario Example](#attack-scenario-example)
@@ -1029,6 +1030,27 @@ Reference Links
 
 - Plugins are, typically, REST APIs, so developers should **apply OWASP Top 10 API Security Risks – 2023 to minimize generic vulnerabilities**
 
+
+---
+
+
+### LLM08: Excessive Agency 过度代理
+
+- An LLM-based system is often granted a degree of agency by its developer - the ability to interface with other systems and undertake actions in response to a prompt.
+
+- The decision over which functions to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output.
+
+- `Excessive Agency is the vulnerability` that `enables damaging actions to be performed in response` to unexpected/ambiguous outputs from an LLM
+  - regardless of what is causing the LLM to malfunction;
+  - be it hallucination/confabulation,
+  - direct/indirect prompt injection,
+  - malicious plugin,
+  - poorly-engineered benign prompts,
+  - or just a poorly-performing model
+
+- The root cause of Excessive Agency is typically one or more of: `excessive functionality, excessive permissions or excessive autonomy`.
+
+- Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
 
 ---
 
