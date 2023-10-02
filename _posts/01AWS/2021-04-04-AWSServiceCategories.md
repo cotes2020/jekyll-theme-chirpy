@@ -10,7 +10,7 @@ image:
 # AWS service categories
 
 - [AWS service categories](#aws-service-categories)
-  - [AWS service categories](#aws-service-categories-1)
+  - [overall](#overall)
   - [Compute 计算](#compute-计算)
   - [Storage 存储](#storage-存储)
   - [Database 数据库](#database-数据库)
@@ -46,14 +46,16 @@ image:
 
 ---
 
-## AWS service categories
+## overall
 
 ![Screenshot 2023-10-01 at 21.10.30](/assets/img/post/Screenshot%202023-10-01%20at%2021.10.30.png)
-￼
+
 ![Screenshot 2023-10-01 at 21.10.38](/assets/img/post/Screenshot%202023-10-01%20at%2021.10.38.png)
 
-
 ![Screenshot 2023-10-01 at 21.10.46](/assets/img/post/Screenshot%202023-10-01%20at%2021.10.46.png)
+
+![Screenshot 2023-10-01 at 22.30.58](/assets/img/post/Screenshot%202023-10-01%20at%2022.30.58.png)
+
 
 ---
 
