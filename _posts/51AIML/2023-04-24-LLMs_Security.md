@@ -62,6 +62,7 @@ tags: [AIML]
     - [Social Engineering](#social-engineering)
     - [Malicious Content Authoring](#malicious-content-authoring)
     - [Reward Hacking](#reward-hacking)
+  - [Solution](#solution)
 
 
 ---
@@ -562,6 +563,11 @@ Reference Links
 - LLM model can intentionally creates inaccurate or malicious documents which are targeted at a model’s training data.
 
 
+- LLM victim model trains using falsified information which is reflected in outputs of generative AI prompts to it's consumers
+
+- LLM model can trained using data which has not been verified by its source, origin or content
+
+- The model itself when situated within infrastructure has unrestricted access or inadequate sandboxing to gather datasets to be used as training data which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
 
 ---
 
@@ -1320,3 +1326,15 @@ Reference Links
 
 
 ---
+
+## Solution
+
+> [Trustworthy LLMs](https://arxiv.org/abs/2308.05374)
+
+![IMG_2747](/assets/img/post/IMG_2747_5kw3wyplc.PNG)
+
+
+
+
+
+.
