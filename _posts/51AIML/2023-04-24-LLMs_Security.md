@@ -1130,8 +1130,6 @@ The following options will not prevent Excessive Agency, but can limit the level
 - **Implement rate-limiting** to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
 
 
-
-
 ---
 
 
