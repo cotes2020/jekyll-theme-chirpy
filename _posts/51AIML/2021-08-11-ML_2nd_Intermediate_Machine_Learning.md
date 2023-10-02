@@ -1,8 +1,8 @@
 ---
-title: ML - 2nd - Intermediate Machine Learning
+title: AIML - 2nd - Intermediate Machine Learning
 date: 2021-08-11 11:11:11 -0400
-categories: [00CodeNote, MLNote]
-tags: [ML]
+categories: [51AIML, MLNote]
+tags: [AIML]
 toc: true
 ---
 
@@ -44,11 +44,6 @@ toc: true
     - [Train-Test Contamination](#train-test-contamination)
     - [To detect and remove target leakage.](#to-detect-and-remove-target-leakage)
     - [Conclusion](#conclusion-3)
-
-- ref:
-  - https://www.kaggle.com/learn/intermediate-machine-learning
-- data set:
-  - [Melbourne Housing dataset](https://www.kaggle.com/dansbecker/melbourne-housing-snapshot/home)
 
 ---
 
