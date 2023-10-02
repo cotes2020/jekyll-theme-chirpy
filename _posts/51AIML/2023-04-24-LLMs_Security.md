@@ -540,9 +540,9 @@ Reference Links
 
 #### Vulnerability Examples
 
-- LLM model can `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data`
+- LLM model can intentionally creates inaccurate or malicious documents which are targeted at a model’s training data
 
-- LLM victim model trains `using falsified information which is reflected in outputs of generative AI prompts to it's consumers`
+- LLM victim model trains using falsified information which is reflected in outputs of generative AI prompts to it's consumers
 
 
 
