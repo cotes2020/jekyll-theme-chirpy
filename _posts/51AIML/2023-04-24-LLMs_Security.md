@@ -33,28 +33,29 @@ tags: [AIML]
       - [Attack Scenario Examples](#attack-scenario-examples-1)
       - [Prevention Solution](#prevention-solution-1)
     - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
-    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
       - [Vulnerability Examples](#vulnerability-examples-2)
+    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
+      - [Vulnerability Examples](#vulnerability-examples-3)
       - [Attack Scenario Examples](#attack-scenario-examples-2)
       - [Prevention Solution](#prevention-solution-2)
     - [Supply Chain Vulnerabilities (LLM05)](#supply-chain-vulnerabilities-llm05)
-      - [Vulnerability Examples](#vulnerability-examples-3)
+      - [Vulnerability Examples](#vulnerability-examples-4)
       - [Attack Scenario Examples](#attack-scenario-examples-3)
       - [Prevention Solution](#prevention-solution-3)
     - [Sensitive Information Disclosure (LLM06)](#sensitive-information-disclosure-llm06)
-      - [Vulnerability Examples](#vulnerability-examples-4)
+      - [Vulnerability Examples](#vulnerability-examples-5)
       - [Attack Scenario Examples](#attack-scenario-examples-4)
       - [Prevention Solution](#prevention-solution-4)
     - [LLM07: Insecure Plugin Design](#llm07-insecure-plugin-design)
-      - [Vulnerability Examples](#vulnerability-examples-5)
+      - [Vulnerability Examples](#vulnerability-examples-6)
       - [Attack Scenario Examples](#attack-scenario-examples-5)
       - [Prevention Solution](#prevention-solution-5)
     - [LLM09: Overreliance](#llm09-overreliance)
-      - [Vulnerability Examples](#vulnerability-examples-6)
+      - [Vulnerability Examples](#vulnerability-examples-7)
       - [Attack Scenario Example](#attack-scenario-example)
       - [Prevention Solution](#prevention-solution-6)
     - [Model Theft (LLM10)](#model-theft-llm10)
-      - [Vulnerability Examples](#vulnerability-examples-7)
+      - [Vulnerability Examples](#vulnerability-examples-8)
       - [Attack Scenario Examples](#attack-scenario-examples-6)
       - [Prevention Solution](#prevention-solution-7)
     - [Model itself](#model-itself)
@@ -555,6 +556,10 @@ Reference Links
   - `Erosion 侵蚀 of Trust`: Bias amplification can erode user trust, particularly amongst those from marginalized communities who might be adversely affected by these biases.
 
 
+
+#### Vulnerability Examples
+
+- LLM model can intentionally creates inaccurate or malicious documents which are targeted at a model’s training data.
 
 
 
