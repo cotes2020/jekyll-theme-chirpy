@@ -32,18 +32,43 @@ tags: [AIML]
       - [Vulnerability Examples](#vulnerability-examples-1)
       - [Attack Scenario Examples](#attack-scenario-examples-1)
       - [Prevention Solution](#prevention-solution-1)
-    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
+    - [LLM03: Training Data Poisoning](#llm03-training-data-poisoning)
       - [Vulnerability Examples](#vulnerability-examples-2)
       - [Attack Scenario Examples](#attack-scenario-examples-2)
       - [Prevention Solution](#prevention-solution-2)
-    - [Model Theft (LLM10)](#model-theft-llm10)
+    - [LLM04: Model Denial of Service](#llm04-model-denial-of-service)
       - [Vulnerability Examples](#vulnerability-examples-3)
       - [Attack Scenario Examples](#attack-scenario-examples-3)
       - [Prevention Solution](#prevention-solution-3)
+    - [Supply Chain Vulnerabilities (LLM05)](#supply-chain-vulnerabilities-llm05)
+      - [Vulnerability Examples](#vulnerability-examples-4)
+      - [Attack Scenario Examples](#attack-scenario-examples-4)
+      - [Prevention Solution](#prevention-solution-4)
+    - [Sensitive Information Disclosure (LLM06)](#sensitive-information-disclosure-llm06)
+      - [Vulnerability Examples](#vulnerability-examples-5)
+      - [Attack Scenario Examples](#attack-scenario-examples-5)
+      - [Prevention Solution](#prevention-solution-5)
+    - [LLM07: Insecure Plugin Design](#llm07-insecure-plugin-design)
+      - [Vulnerability Examples](#vulnerability-examples-6)
+      - [Attack Scenario Examples](#attack-scenario-examples-6)
+      - [Prevention Solution](#prevention-solution-6)
+    - [LLM08: Excessive Agency 过度代理](#llm08-excessive-agency-过度代理)
+      - [Vulnerability Examples](#vulnerability-examples-7)
+      - [Attack Scenario Example](#attack-scenario-example)
+      - [Prevention Solution](#prevention-solution-7)
+    - [LLM09: Overreliance](#llm09-overreliance)
+      - [Vulnerability Examples](#vulnerability-examples-8)
+      - [Attack Scenario Example](#attack-scenario-example-1)
+      - [Prevention Solution](#prevention-solution-8)
+    - [Model Theft (LLM10)](#model-theft-llm10)
+      - [Vulnerability Examples](#vulnerability-examples-9)
+      - [Attack Scenario Examples](#attack-scenario-examples-7)
+      - [Prevention Solution](#prevention-solution-9)
     - [Model itself](#model-itself)
     - [Social Engineering](#social-engineering)
     - [Malicious Content Authoring](#malicious-content-authoring)
     - [Reward Hacking](#reward-hacking)
+  - [Solution](#solution)
 
 
 ---
@@ -509,6 +534,107 @@ Reference Links
 ---
 
 
+### LLM03: Training Data Poisoning
+
+> The starting point of any machine learning approach is training data, simply “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres and languages.
+
+> A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
+
+- Training data poisoning refers to `manipulating the data or fine-tuning process to introduce vulnerabilities, backdoors or biases that could compromise the model’s security, effectiveness or ethical behavior`.
+
+  - Poisoned information may be surfaced to users or create other risks like performance degradation, downstream software exploitation and reputational damage.
+
+  - Even if users distrust the problematic AI output, the risks remain, including impaired model capabilities and potential harm to brand reputation.
+
+- Data poisoning is considered an **integrity attack** because tampering with the training data `impacts the model’s ability to output correct predictions`.
+
+- Naturally, external data sources present higher risk as the model creators do not have control of the data or a high level of confidence that the content does not contain bias, falsified information or inappropriate content.
+
+**Bias Amplification**
+- Bias amplification occurs when an LLM, trained on large-scale data, amplifies existing biases in the training dataset rather than merely learning and reflecting them. The challenge lies in how LLMs handle ambiguous scenarios – when presented with inputs that could have multiple valid outputs, they tend to favor the most prevalent 流行的 trend seen during training, which often coincides with societal biases.
+
+
+- For example，if an LLM is trained on data that includes the bias that “men are more associated with professional occupations than women”, the model, when asked to fill in the blank in a statement like, “The professional entered the room. He was a…”, is more likely to generate occupations mostly held by men. This is bias amplification, taking the initial bias and solidifying or escalating it.
+
+
+- The amplification of bias has far-reaching implications:
+  - `Reinforcement of Stereotypes 陈规定型观念`: By generating outputs that mirror and enhance existing biases, these models can perpetuate harmful stereotypes, leading to their normalization.
+  - `Unfair Decision Making`: As LLMs are increasingly used in high-stakes areas such as hiring or loan approvals, bias amplification could lead to unfair decision-making, with certain demographics being unjustly favored over others.
+  - `Erosion 侵蚀 of Trust`: Bias amplification can erode user trust, particularly amongst those from marginalized communities who might be adversely affected by these biases.
+
+
+
+#### Vulnerability Examples
+
+- LLM model can intentionally creates inaccurate or malicious documents which are targeted at a model’s training data.
+
+
+- LLM victim model trains using falsified information which is reflected in outputs of generative AI prompts to it's consumers
+
+- LLM model can trained using data which has not been verified by its source, origin or content
+
+- The model itself when situated within infrastructure has unrestricted access or inadequate sandboxing to gather datasets to be used as training data which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
+
+
+
+
+#### Attack Scenario Examples
+
+- The LLM generative AI prompt output can `mislead users of the application which can lead to biased opinions, following or even worse, hate crimes etc`
+
+- If the training data is not correctly filtered and|or sanitized, a malicious user of the application may try to `influence and inject toxic data into the model for it to adapt to the biased and false data`
+
+- A malicious actor or competitor `intentionally creates inaccurate or malicious documents which are targeted at a model’s training data` in which is training the model at the same time based on inputs. The victim model trains using this falsified information which is reflected in outputs of generative AI prompts to it's consumers
+
+- The vulnerability Prompt Injection could be an attack vector to this vulnerability if insufficient sanitization and filtering is performed when clients of the LLM application input is used to train the model. I.E, if malicious or falsified data is input to the model from a client as part of a prompt injection technique, this could inherently be portrayed into the model data.
+
+
+
+#### Prevention Solution
+
+- **Verify the supply chain of the training data**, especially when sourced externally as well as maintaining attestations 证书, similar to the "SBOM" (Software Bill of Materials) methodology
+
+- **Verify the correct legitimacy of targeted data sources and data contained obtained** during both the training and fine-tuning stages
+
+- **Verify the use-case for the LLM and the application it will integrate to**. Craft different models via separate training data or fine-tuning for different use-cases to create a more granular and accurate generative AI output as per it's defined use-case
+
+- **Ensure sufficient sandboxing is present** to prevent the model from scraping unintended data sources which could hinder the machine learning output
+
+- **Use strict vetting or input filters** for specific training data or categories of data sources to control volume of falsified data.
+  - Data sanitization, with techniques such as `statistical outlier 异常值 detection` and `anomaly detection` methods to detect and remove adversarial data from potentially being fed into the fine-tuning process
+
+- **Adversarial robustness techniques** such as federated learning and constraints to minimize the effect of `outliers or adversarial 敌对的 training` to be vigorous 有力的 against worst-case perturbations 干扰 of the training data
+
+  - `An "MLSecOps" approach` could be to include adversarial 敌对的 robustness to the training lifecycle with the auto poisoning technique
+
+  - An example repository of this would be `Autopoison testing`, including both attacks such as `Content Injection Attacks` (“how to inject the brand into the LLM responses”) and `Refusal Attacks` (“always making the model refuse to respond”) that can be accomplished with this approach.
+
+
+- **Testing and Detection**, by measuring the loss during the training stage and analyzing trained models to detect signs of a poisoning attack by analyzing model behavior on specific test inputs.
+
+  - Monitoring and alerting on number of skewed responses exceeding a threshold.
+
+  - Use of a `human loop to review responses and auditing`.
+
+  - Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using reinforcement learning techniques.
+
+  - Perform `LLM-based red team exercises or LLM vulnerability scanning` into the testing phases of the LLM's lifecycle.
+
+
+Reference Links
+- [Stanford Research Paper](https://stanford-cs324.github.io/winter2022/lectures/data)
+- [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html)
+- [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009)
+- [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
+- [Inject My PDF: Prompt Injection for the Resume](https://kai-greshake.de/posts/inject-my-pdf)
+- [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1)
+- [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.0094)
+- [FedMLSecurity](https://arxiv.org/abs/2306.0495r)
+- [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/)
+
+
+
+---
 
 ### LLM04: Model Denial of Service
 
@@ -589,6 +715,531 @@ Reference Links
 - [Sponge Examples Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03469)
 - [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Servic)
 - [Learning From Machines: Know Thy Context](https://lukebechtel.com/blog/lfm-know-thy-context)
+
+
+
+---
+
+
+### Supply Chain Vulnerabilities (LLM05)
+
+- The supply chain in LLMs can be vulnerable, impacting the `integrity of training data, ML models, and deployment platforms`. These vulnerabilities can lead to `biased outcomes, security breaches, or even complete system failures`.
+
+- Traditionally, vulnerabilities are focused on `software components`
+
+- But Machine Learning extends this with the pre-trained models and training data supplied by third parties susceptible to tampering and poisoning attacks. Finally, `LLM Plugin extensions` can bring their own vulnerabilities. These are described in LLM - Insecure Plugin Design, which covers writing LLM Plugins and provides information useful to evaluate third-party plugins.
+
+
+#### Vulnerability Examples
+
+- `Traditional third-party package vulnerabilities`, including outdated or deprecated components
+
+- Using a `vulnerable pre-trained model for fine-tuning`
+
+- Use of `poisoned crowd-sourced data for training`
+
+- Using `outdated or deprecated models` that are no longer maintained leads to security issues
+
+- Unclear `T&Cs and data privacy policies of the model operators` lead to the application’s sensitive data being used for model training and subsequent sensitive information exposure.
+  - This may also apply to risks from using copyrighted material by the model supplier.
+
+
+#### Attack Scenario Examples
+
+- An attacker `exploits a vulnerable Python library to compromise a system`. This happened in the first OpenAI data breach
+
+- An attacker provides `an LLM plugin to search for flights which generates fake links` that lead to scamming plugin users
+
+- An attacker `exploits the PyPi package registry to trick model developers into downloading a compromised package` and exfiltrating data or escalating privilege in a model development environment. This was an actual attack
+
+- An attacker `poisons a publicly available pre-trained model` specialising in economic analysis and social research to create a backdoor which generates misinformation and fake news. They deploy it on a model marketplace (e.g. HuggingFace) for victims to use
+
+- An attacker `poisons publicly available data set` to help create a backdoor when fine-tuning models. The backdoor subtly favours certain companies in different markets
+
+- A `compromised employee of a supplier (outsourcing developer, hosting company, etc) exfiltrates data, model, or code stealing IP`.
+
+- An `LLM operator changes its T&Cs and Privacy Policy` so that it requires an explicit opt-out from using application data for model training, leading to memorization of sensitive data.
+
+
+Reference Links
+
+- [ChatGPT Data Breach Confirmed as Security Firm Warns of Vulnerable Component Exploitation](https://www.securityweek.com/chatgpt-data-breach-confirmed-as-security-firm-warns-of-vulnerable-component-exploitation)
+- [Open AI’s Plugin review process](https://platform.openai.com/docs/plugins/review)
+- [Compromised PyTorch-nightly dependency chain](https://pytorch.org/blog/compromised-nightly-dependency)
+- [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
+- [Army looking at the possibility of AI BOMs](https://defensescoop.com/2023/05/25/army-looking-at-the-possibility-of-ai-boms-bill-of-materials)
+- [Failure Modes in Machine Learning](https://learn.microsoft.com/en-us/security/engineering/failure-modes-in-machine-learnin)
+- [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010)
+- [Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples](https://arxiv.org/pdf/1605.07277.pdf)
+- [BadNets: Identifying Vulnerabilities in the Machine Learning Model Supply Chain](https://arxiv.org/abs/1708.0673/)
+- [VirusTotal Poisoning](https://atlas.mitre.org/studies/AML.CS0002)
+
+
+#### Prevention Solution
+
+- **Carefully vet data sources and suppliers, including T&Cs and their privacy policies, only using trusted suppliers**.
+  - Ensure adequate and independently-audited security is in place and that model operator policies align with the data protection policies, i.e., the data is not used for training their models;
+  - similarly, seek assurances and legal mitigations against using copyrighted material from model maintainers
+
+- **Only use reputable plug-ins and ensure they have been tested for the application requirements**. LLM-Insecure Plugin Design provides information on the LLM-aspects of Insecure Plugin design you should test against to mitigate risks from using third-party plugins.
+
+- **Understand and apply the mitigations found in the OWASP Top Ten's A06:2021 – Vulnerable and Outdated Components**.
+  - This includes vulnerability scanning, management, and patching components.
+  - For development environments with access to sensitive data, apply these controls in those environments, too。
+
+- **Maintain an up-to-date inventory of components**
+  - using a `Software Bill of Materials (SBOM)` to ensure you have an up-to-date, accurate, and signed inventory preventing tampering with deployed packages.
+  - SBOMs can be used to detect and alert for new, zero-date vulnerabilities quickly
+  - At the time of writing, SBOMs do not cover models, their artefacts, and datasets; If the LLM application uses its own model, you should use `MLOPs best practices` and platforms offering secure model repositories with data, model, and experiment tracking
+
+- You should also **use model and code signing** when using external models and suppliers
+
+- **Anomaly detection and adversarial robustness tests** on supplied models and data can help detect tampering and poisoning as discussed in Training Data Poisoning;
+  - ideally, this should be part of MLOps pipelines; however, these are emerging techniques and may be easier implemented as part of red teaming exercises
+
+- **Implement sufficient monitoring** to cover
+  - component and environment vulnerabilities scanning,
+  - use of unauthorised plugins,
+  - out-of-date components, including the model and its artefacts
+
+- **Implement a patching policy to mitigate vulnerable or outdated components**. Ensure that the application relies on a maintained version of APIs and the underlying model
+
+- **Regularly review and audit** supplier Security and Access, ensuring no changes in their security posture or T&Cs.
+
+
+---
+
+
+
+### Sensitive Information Disclosure (LLM06)
+
+- `LLM applications have the potential to reveal sensitive information, proprietary algorithms, or other confidential details` through their output.
+
+- This can result in unauthorized access to sensitive data, intellectual property, privacy violations, and other security breaches.
+
+- It is important for consumers of LLM applications to be aware of how to safely interact with LLMs and identify the risks associated with unintentionally inputting sensitive data that it may be returned by the LLM in output elsewhere.
+
+
+
+**Training Data Exposure**
+
+- In simple terms, training data exposure refers to scenarios where LLMs inadvertently leak aspects of the data they were trained on, particularly when they generate outputs in response to specific queries.
+
+- A well-trained adversary 对手 can `use cleverly constructed queries to trick a model into regurgitating aspects of its training data`. This could lead to privacy concerns if the model was trained on sensitive data. This kind of exposure can lead to significant privacy and security risks if the models have been trained on sensitive or confidential data.
+
+- Given the size and complexity of the training datasets, it can be challenging to fully assess and understand the extent of this exposure. This challenge underscores the need for vigilance 警觉 and protective measures in training these models.
+
+- The issue of training data exposure in large language models is a multifaceted challenge, `involving not only technical aspects but also ethical, legal, and societal considerations`. It is imperative for researchers, data scientists, and cybersecurity professionals to come together to address these challenges and develop robust strategies to mitigate the risks associated with data exposure.
+
+- While the solutions outlined in this blog post provide a strong foundation for mitigating these risks, the reality is that managing the risks of training data exposure in LLMs requires ongoing vigilance, research, and refinement of methods. We are in the early stages of fully understanding and navigating the complex landscape of LLMs, but as we progress, we must continue to prioritize privacy and security to harness the potential of these models responsibly.
+
+- Remember, managing the risk of training data exposure in LLMs is not a one-size-fits-all approach. The strategies should be tailored to suit the specific needs, resources, and threat landscape of each organization or project. As we forge ahead in this exciting frontier of AI and machine learning, let’s carry forward the responsibility to ensure the tools we build are not just powerful, but also secure and ethical.
+
+
+
+To mitigate this risk
+- LLM applications should perform `adequate 足够的 data sanitization to prevent user data from entering the training model data`.
+- LLM application owners should have `appropriate Terms of Use policies available to make consumers aware of how their data is processed and the ability to opt-out of having their data included in the training model`.
+
+- The consumer-LLM application interaction forms a two-way trust boundary
+  - we cannot inherently trust the `client->LLM input` or the `LLM->client output`.
+  - It is important to note that this vulnerability assumes that certain pre-requisites are out of scope, such as threat modeling exercises, securing infrastructure, and adequate sandboxing.
+  - `Adding restrictions within the system prompt around the types of data the LLM should return` can provide some mitigation against sensitive information disclosure, but the **unpredictable nature of LLMs** means such restrictions may not always be honoured and could be circumvented via prompt injection or other vectors.
+
+
+#### Vulnerability Examples
+
+- `Incomplete or improper filtering of sensitive information` in the LLM’s responses
+
+- `Overfitting or memorization of sensitive data` in the LLM’s training process
+
+- `Unintended disclosure of confidential information due to LLM misinterpretation`, lack of data scrubbing methods or errors.
+
+
+#### Attack Scenario Examples
+
+- Unsuspecting legitimate user A is `exposed to certain other user data via the LLM when interacting with the LLM application` in a non-malicious manner
+
+- User A targets a `well crafted set of prompts to bypass input filters and sanitization` from the LLM to cause it to reveal sensitive information (PII) about other users of the applicationX
+
+- `Personal data such as PII is leaked into the model via training data due to either negligence from the user themselves, or the LLM application`. This case could increase risk and probability of scenario 1 or 2 above.
+
+
+Reference Links
+
+- [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgp)
+
+- [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons)
+
+- [Cohere - Terms Of Use](https://cohere.com/terms-of-usz)
+
+- [AI Village- Threat Modeling Example](https://aivillage.org/large%20language%20models/threat-modeling-llm)
+
+- [OWASP AI Security and Privacy Guide](https://owasp.org/www-project-ai-security-and-privacy-guide/)
+
+
+#### Prevention Solution
+
+- Integrate **adequate data sanitization and scrubbing techniques** to prevent user data from entering the training model dataq
+
+- Implement **robust input validation and sanitization methods** to identify and filter out potential malicious inputs to prevent the model from being poisoned
+
+- When enriching the model with data and if fine-tuning a model: (I.E, data fed into the model before or during deployment)
+
+
+  - **apply the rule of least privilege and do not train the model on information** that the highest-privileged user can access which may be displayed to a lower-privileged user.
+    - Anything that is deemed sensitive in the fine-tuning data has the potential to be revealed to a user.
+
+  - **Access to external data sources (orchestration of data at runtime) should be limited**.
+
+  - Apply **strict access control methods to external data sources** and a **rigorous approach to maintaining a secure supply chain**.
+
+
+- **Differential Privacy**
+
+  - Differential privacy is a mathematical framework that quantifies the privacy loss when statistical analysis is performed on a dataset.
+
+  - It guarantees that the removal or addition of a single database entry does not significantly change the output of a query, thereby maintaining the privacy of individuals in the dataset.
+
+  - In simpler terms, it ensures that an adversary with `access to the model’s output can’t infer much about any specific individual’s data present in the training set`.
+
+  - This guarantee holds even if the adversary has additional outside information.
+
+  - Implementing Differential Privacy in LLMs
+
+    - The implementation of differential privacy in LLMs involves a process known as `private learning`, where **the model learns from data without memorizing or leaking sensitive information**.
+      - Here’s how it works:
+
+      - `Noise Addition`:
+        - The primary method of achieving differential privacy is by adding noise to the data or the learning process.
+        - This noise makes it hard to reverse-engineer specific inputs, thus protecting individual data points.
+
+      - `Privacy Budget`:
+        - A key concept in differential privacy is the `privacy budget`, denoted by epsilon (`𝜖`).
+        - A lower value of `𝜖` signifies a higher level of privacy but at the cost of utility or accuracy of the model.
+        - The privacy budget guides the amount of noise that needs to be added.
+
+      - `Regularization 正则化 and Early Stopping`:
+        - Techniques like `L2 regularization, dropout, and early stopping in model training` have a regularizing effect that can enhance differential privacy by `preventing overfitting and ensuring the model does not memorize the training data`.
+
+      - `Privacy Accounting`:
+        - It involves tracking the cumulative 累积的 privacy loss across multiple computations.
+        - In the context of LLMs, each epoch 纪元 of training might consume a portion of the privacy budget, necessitating careful privacy accounting.
+
+  - **Benefits and Challenges**
+
+    - Adopting differential privacy in LLMs offers substantial benefits, including
+      - compliance with privacy regulations,
+      - enhanced user trust,
+      - protection against data leakage.
+
+    - However, the challenges include:
+
+      - `Accuracy-Privacy Trade-off`: The addition of noise for privacy protection can impact the accuracy of the model. Balancing this trade-off is crucial.
+
+      - `Selecting a Privacy Budget`: Determining an appropriate privacy budget can be complex as it depends on several factors like data sensitivity, user expectations, and legal requirements.
+
+      - `Computational Overhead`: The process of achieving and maintaining differential privacy can add computational complexity and overhead.
+
+    - Incorporating differential privacy into LLMs is a crucial step in protecting individual data and preserving trust in AI systems. While challenges exist, `the trade-off often leans towards privacy` given the potential risks associated with data exposure.
+
+    - The ongoing research and advancements in the field of differential privacy offer promising prospects for its widespread adoption in LLMs, making privacy-preserving AI not just a theoretical concept but a practical reality.
+
+
+---
+
+### LLM07: Insecure Plugin Design
+
+LLM plugins
+- extensions that, when enabled, are called automatically by the model during user interactions.
+- They are `driven by the model`, and there is `no application control over the execution.`
+- Furthermore, to deal with context-size limitations, `plugins are likely to implement free-text inputs from the model with no validation or type checking`.
+  - This allows a potential attacker to construct a malicious request to the plugin, which could result in a wide range of undesired behaviors, up to and including remote code execution.
+
+- The harm of malicious inputs often depends on `insufficient access controls and the failure to track authorization across plugins`.
+  - Inadequate access control allows a plugin to blindly trust other plugins and assume that the end user provided the inputs. Such inadequate access control can enable malicious inputs to have harmful consequences ranging from data exfiltration, remote code execution, and privilege escalation.
+
+- This item focuses on the creation of LLM plugins rather than using third-party plugins, which is covered by [LLM-Supply-Chain-Vulnerabilities].
+
+#### Vulnerability Examples
+
+- A plugin `accepts all parameters in a single text field instead of distinct input parameters`
+
+- A plugin `accepts configuration strings, instead of parameters, that can override entire configuration settings`
+
+- A plugin `accepts raw SQL or programming statements instead of parameters`
+
+- `Authentication is performed without explicit authorization to a particular plugin`
+
+- A plugin `treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization`
+
+#### Attack Scenario Examples
+
+- A plugin accepts a base URL and `instructs the LLM to combine the URL with a query to obtain weather forecasts which are included in handling the user request`.
+  - A malicious user can craft a request such that the URL points to a domain they control, which allows them to inject their own content into the LLM system via their domainM
+
+- A plugin `accepts a free-form input into a single field that it does not validate`.
+  - An attacker supplies carefully crafted payloads to perform reconnaissance 侦察 from error messages. It then exploits known third-party vulnerabilities to execute code and perform data exfiltration or privilege escalationM
+
+- A plugin used to `retrieve embeddings from a vector store accepts configuration parameters as a connection string without any validation`.
+  - This allows an attacker to experiment and access other vector stores by changing names or host parameters and exfiltrate embeddings they should not have access to
+
+- A plugin `accepts SQL WHERE clauses as advanced filters, which are then appended to the filtering SQL`.
+  - This allows an attacker to stage a SQL attack
+
+- An attacker uses indirect prompt injection to `exploit an insecure code management plugin with no input validation and weak access control to transfer repository ownership and lock out the user from their repositories.`
+
+Reference Links
+
+- [OpenAI ChatGPT Plugins](https://platform.openai.com/docs/plugins/introduction)
+- [OpenAI ChatGPT Plugins - Plugin Flow](https://platform.openai.com/docs/plugins/introduction/plugin-flow)
+
+- [OpenAI ChatGPT Plugins - Authentication](https://platform.openai.com/docs/plugins/authentication/service-level)
+
+- [OpenAI Semantic Search Plugin Sample](https://github.com/openai/chatgpt-retrieval-plugin)
+
+- [Plugin Vulnerabilities: Visit a Website and Have the Source Code Stolen](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code)
+
+- [ChatGPT Plugin Exploit Explained: From Prompt Injection to Accessing Private Data](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection)
+
+- [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding)
+- [OWASP ASVS 4.1 General Access Control Design](https://owasp-aasvs4.readthedocs.io/en/latest/V4.1.html#general-access-control-design)
+- [OWASP Top 10 API Security Risks – 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
+
+
+#### Prevention Solution
+
+- **Plugins should enforce strict parameterized input wherever possible and include type and range checks on inputs**.
+  - When this is not possible, a second layer of typed calls should be introduced, parsing requests and applying validation and sanitization.
+  - When freeform input must be accepted because of application semantics, it should be carefully inspected to ensure that no potentially harmful methods are being called
+
+- **Plugin developers should apply OWASP’s recommendations in ASVS (Application Security Verification Standard)** to ensure effective input validation and sanitization.
+
+- **Plugins should be inspected and tested thoroughly** to ensure adequate validation. Use `Static Application Security Testing (SAST) scans` as well as `Dynamic and Interactive application testing (DAST, IAST)` in development pipelines
+
+- Plugins should **be designed to minimize the impact of any insecure input parameter exploitation following the OWASP ASVS Access Control Guidelines**.
+  - This includes least-privilege access control, exposing as little functionality as possible while still performing its desired function
+
+- Plugins should **use appropriate authentication identities**, such as OAuth2, to apply effective authorization and access control.
+  - Additionally, API Keys should be used to provide context for custom authorization decisions which reflect the plugin route rather than the default interactive user
+
+- Require **manual user authorization and confirmation of any action taken by sensitive plugins**
+
+- Plugins are, typically, REST APIs, so developers should **apply OWASP Top 10 API Security Risks – 2023 to minimize generic vulnerabilities**
+
+
+---
+
+
+### LLM08: Excessive Agency 过度代理
+
+- An LLM-based system is often granted a degree of agency by its developer - the ability to interface with other systems and undertake actions in response to a prompt.
+
+- The decision over which functions to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output.
+
+- `Excessive Agency is the vulnerability` that `enables damaging actions to be performed in response` to unexpected/ambiguous outputs from an LLM
+  - regardless of what is causing the LLM to malfunction;
+  - be it hallucination/confabulation,
+  - direct/indirect prompt injection,
+  - malicious plugin,
+  - poorly-engineered benign prompts,
+  - or just a poorly-performing model
+
+- The root cause of Excessive Agency is typically one or more of: `excessive functionality, excessive permissions or excessive autonomy`.
+
+- Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+
+
+#### Vulnerability Examples
+
+- `Excessive Functionality`:
+
+  - An LLM agent has access to plugins which `include functions that are not needed for the intended operation of the system`.
+    - For example,
+    - a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party plugin they choose to use also includes the ability to modify and delete documents.
+    - a plugin may have been trialled during a development phase and dropped in favour of a better alternative, but the original plugin remains available to the LLM agent
+
+  - An LLM plugin with `open-ended functionality fails to properly filter the input instructions` for commands outside what's necessary for the intended operation of the application.
+    - E.g., a plugin to run one specific shell command fails to properly prevent other shell commands from being executed
+
+- `Excessive Permissions`:
+  - An LLM plugin `has permissions on other systems that are not needed` for the intended operation of the application.
+    - E.g., a plugin intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions
+
+  - An LLM plugin that is designed to perform operations on behalf of a user accesses downstream systems `with a generic high-privileged identity`.
+    - E.g., a plugin to read the current user's document store connects to the document repository with a privileged account that has access to all users' files.
+
+
+- `Excessive Autonomy`:
+  - An LLM-based application or plugin `fails to independently verify and approve high-impact actions`.
+    - E.g., a plugin that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+
+
+#### Attack Scenario Example
+
+- An LLM-based personal assistant app is granted access to an individual’s mailbox via a plugin in order to summarise the content of incoming emails.
+  - To achieve this functionality, the email plugin requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages.
+  - The LLM is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the email plugin to call the 'send message' function to send spam from the user's mailbox.
+  - This could be avoided by:
+    - (a) eliminating excessive functionality by using a plugin that only offered mail-reading capabilities,
+    - (b) eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope,
+    - (c) eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM plugin.
+    - Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+
+
+Reference Links
+- [EmbracetheRed:ConfusedDeputyProblem](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection)
+- [NeMo-GuardrailsInterfaceGuidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines)
+- [LangChain:Human-approvalfortools](https://python.langchain.com/docs/modules/agents/tools/how_to/human_approval)
+- [SimonWillison:DualLLMPattern](https://simonwillison.net/2023/Apr/25/dual-llm- pattern/)
+
+
+
+#### Prevention Solution
+
+The following actions can prevent Excessive Agency.
+
+- **Limit the plugins/tools that LLM agents are allowed to call** to only the minimum functions necessary.
+  - For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such a plugin should not be offered to the LLM agent
+
+- **Limit the functions that are implemented in LLM plugins/tools to the minimum necessary**.
+  - For example, a plugin that accesses a user's mailbox to summarize emails may only require the ability to read emails, so the plugin should not contain other functionality such as deleting or sending messages
+
+- **Avoid open-ended functions where possible** (e.g., run a shell command, fetch a URL, etc) and use plugins/tools with more granular functionality.
+  - For example, an LLM- based app may need to write some output to a file. If this were implemented using a plugin to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed).
+  - A more secure alternative would be to build a file-writing plugin that could only support that specific functionality
+
+- **Limit the permissions that LLM plugins/tools are granted to other systems** the minimum necessary in order to limit the scope of undesirable actions.
+  - For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM plugin uses to connect to the database
+
+- **Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user**, and with the minimum privileges necessary.
+  - For example, an LLM plugin that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required
+
+- **Utilize human-in-the-loop control** to require a human to approve all actions before they are taken.
+  - This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM plugin/tool itself.
+  - For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the plugin/tool/API that implements the 'post' operation
+
+- **Implement authorization in downstream systems rather than relying on an LLM** to decide if an action is allowed or not.
+  - When implementing tools/plugins enforce the complete mediation principle so that all requests made to downstream systems via the plugins/tools are validated against security policies.
+
+
+The following options will not prevent Excessive Agency, but can limit the level of damage caused
+
+- **Log and monitor the activity** of LLM plugins/tools and downstream systems to identify where undesirable actions are taking place, and respond accordingly!
+
+- **Implement rate-limiting** to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+
+
+---
+
+
+### LLM09: Overreliance
+
+- Overreliance occurs `when systems or people depend on LLMs for decision-making or content generation without sufficient oversight`.
+
+- LLMs can produce creative and informative content, LLMs can also
+
+  - generate content that is factually incorrect, inappropriate or unsafe. This is referred to as `hallucination` or `confabulation` and can result in misinformation, miscommunication, legal issues, and reputational damage.
+
+  - LLM-generated source code can introduce `unnoticed security vulnerabilities`. This poses a significant risk to the operational safety and security of applications.
+
+- These risks show the importance of a rigorous review processes, with:
+  - Oversight
+  - Continuous validation mechanisms
+  - Disclaimers on risk
+
+
+**Misuse of Generated Content**
+
+- LLMs learn from a massive amount of text data and generate responses or content based on that.
+
+  - In the right hands, this can lead to innovative applications like drafting emails, writing code, creating articles, etc.
+
+  - However, this very capability can be manipulated for harmful purposes, leading to misuse of the generated content.
+
+    - `Sophisticated LLMs` can be used to `create realistic but false news articles, blog posts, or social media content`. This capability can be exploited to spread disinformation, manipulate public opinion, or conduct propaganda campaigns on a large scale.
+
+    - LLMs can also be manipulated to `mimic a specific writing style or voice`. This can potentially be used for impersonation or identity theft, sending messages that seem like they are from a trusted person or entity, leading to scams or phishing attacks.
+
+    - LLMs can `generate harmful, violent, or inappropriate content`. Even with content filtering mechanisms in place, there might be cases where harmful content slips through.
+
+
+#### Vulnerability Examples
+
+- LLM `provides inaccurate information as a response, causing misinformation`
+
+- LLM `produces logically incoherent or nonsensical text that, while grammatically correct, doesn't make sense`
+
+- LLM `melds information from varied sources, creating misleading content`
+
+- LLM `suggests insecure or faulty code, leading to vulnerabilities when incorporated into a software system`
+
+- `Failure of provider to appropriately communicate the inherent risks to end users`, leading to potential harmful consequences.
+
+
+#### Attack Scenario Example
+
+- A news organization `heavily uses an AI model to generate news articles`
+  - A malicious actor exploits this over-reliance, feeding the AI misleading information, causing the spread of disinformation. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organizationE
+
+- A software development team `utilizes an AI system like Codex to expedite the coding process`
+  - Over-reliance on the AI's suggestions introduces security vulnerabilities into the application due to insecure default settings or recommendations inconsistent with secure coding practices
+
+- A software development firm uses an LLM to assist developers.
+  - The LLM suggests a non-existent code library or package, and a developer, trusting the AI, unknowingly integrates a malicious package into the firm's software.
+  - This highlights the importance of `cross-checking AI suggestions`, especially when involving third-party code or libraries.
+
+
+Reference Links
+- [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7780)
+- [How Should Companies Communicate the Risks of Large Language Models to Users](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large- language-models-to-users)
+- [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections)
+- [AI Hallucinations: Package Risk](https://vulcan.io/blog/ai-hallucinations-package-risk)
+- [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models)
+- [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination)
+
+
+#### Prevention Solution
+
+- Addressing misuse of generated content necessitates comprehensive strategies:
+
+- **Robust Content Filters**: Developing and implementing robust content filtering mechanisms is crucial.
+  - These filters can help detect and prevent the generation of harmful or inappropriate content.
+  - This could involve techniques such as `Reinforcement Learning from Human Feedback (RLHF)` where the model is trained to avoid certain types of outputs.
+  - **Build APIs and user interfaces that encourage responsible and safe use of LLMs**, such as `content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content`.
+
+- **Regularly monitor and review the LLM outputs**.
+  - Use `self-consistency or voting techniques` to filter out inconsistent text.
+  - Comparing multiple model responses for a single prompt can better judge the quality and consistency of outputx
+
+- **Adversarial Testing**:
+  - Regular adversarial testing can help identify potential misuse scenarios and help in developing effective countermeasures.
+
+- **Collaboration with Policymakers**: Collaborating with regulators and policymakers to establish guidelines and laws can deter misuse and ensure proper repercussions.
+
+- **Cross-check the LLM output with trusted external sources**.
+  - This additional layer of validation can help ensure the information provided by the model is accurate and reliablex
+
+- **Enhance the model with fine-tuning or embeddings to improve output quality**.
+  - Generic pre-trained models are more likely to produce inaccurate information compared to tuned models in a particular domain.
+  - Techniques such as `prompt engineering, parameter efficient tuning (PET), full model tuning, and chain of thought prompting` can be employed for this purpose.
+
+- Implement **automatic validation mechanisms that can cross-verify the generated output against known facts or data**.
+  - This can provide an additional layer of security and mitigate the risks associated with hallucinationsE
+
+- **Break down complex tasks into manageable subtasks and assign them to different agents**.
+  - This not only helps in managing complexity, but it also reduces the chances of hallucinations as each agent can be held accountable for a smaller task.
+
+- **Communicate the risks and limitations associated with using LLMs**.
+  - This includes potential for information inaccuracies, and other risks. Effective risk communication can prepare users for potential issues and help them make informed decisions.
+
+- **User Verification and Rate Limiting**:
+  - To prevent mass generation of misleading information, platforms could use stricter user verification methods and impose rate limits on content generation.
+
+- **Awareness and Education**:
+  - Informing users about the potential misuse of LLM-generated content can encourage responsible use and enable them to identify and report instances of misuse.
+
+- When using LLMs in development environments, **establish secure coding practices and guidelines** to prevent the integration of possible vulnerabilities.
 
 
 ---
@@ -836,3 +1487,15 @@ Reference Links
 
 
 ---
+
+## Solution
+
+> [Trustworthy LLMs](https://arxiv.org/abs/2308.05374)
+
+![IMG_2747](/assets/img/post/IMG_2747_5kw3wyplc.PNG)
+
+
+
+
+
+.
