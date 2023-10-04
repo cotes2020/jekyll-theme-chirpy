@@ -19,8 +19,8 @@ jquery:
   js: https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
 
 bootstrap:
-  css: https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css
-  js: https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js
+  css: https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+  js: https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js
 
 toc:
   css: https://cdn.jsdelivr.net/npm/tocbot@4.21.1/dist/tocbot.min.css
@@ -37,10 +37,10 @@ mermaid:
 
 dayjs:
   js:
-    common: https://cdn.jsdelivr.net/npm/dayjs@1.11.9/dayjs.min.js
-    locale: https://cdn.jsdelivr.net/npm/dayjs@1.11.9/locale/:LOCALE.min.js
-    relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.9/plugin/relativeTime.min.js
-    localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.9/plugin/localizedFormat.min.js
+    common: https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js
+    locale: https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/:LOCALE.min.js
+    relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.10/plugin/relativeTime.min.js
+    localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.10/plugin/localizedFormat.min.js
 
 magnific-popup:
   css: https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css
