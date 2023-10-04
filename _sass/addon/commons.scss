@@ -315,9 +315,7 @@ sup {
   @extend %rounded;
 
   &:not(.no-bg) {
-    img {
-      background: var(--img-bg);
-    }
+    background: var(--img-bg);
   }
 
   img {
