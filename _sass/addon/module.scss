@@ -123,8 +123,12 @@
 }
 
 %text-highlight {
-  color: inherit;
+  color: var(--text-muted-hightlight-color);
   font-weight: 600;
+}
+
+%text-meta {
+  font-size: 0.85rem;
 }
 
 %sup-fn-target {
