@@ -53,8 +53,5 @@ lazy-polyfill:
 clipboard:
   js: https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js
 
-polyfill:
-  js: https://polyfill.io/v3/polyfill.min.js?features=es6
-
 mathjax:
   js: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js

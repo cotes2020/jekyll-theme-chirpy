@@ -42,8 +42,5 @@ lazy-polyfill:
 clipboard:
   js: /assets/lib/clipboard/clipboard.min.js
 
-polyfill:
-  js: /assets/lib/polyfill-v3-es6/polyfill.min.js
-
 mathjax:
   js: /assets/lib/mathjax/tex-chtml.js
