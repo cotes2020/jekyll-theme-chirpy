@@ -49,7 +49,7 @@ To learn how to use, develop, and upgrade the project, please refer to the [Wiki
 
 ## Contributing
 
-Contributions (_pull requests_, _issues_, and _discussions_) are what make the open source community such an amazing place
+Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
 to learn, inspire, and create. Any contributions you make are greatly appreciated.
 For details, see the "[Contributing Guidelines][contribute-guide]".
 
@@ -66,7 +66,7 @@ Last but not least, thanks to [JetBrains][jetbrains] for providing the _Open Sou
 
 ## Sponsoring
 
-If you like this project, or have built something through it, please consider supporting this project. Any support would be greatly appreciated!
+If you like this project or have built something through it, please consider sponsoring it, and your support would be greatly appreciated.
 
 [![Ko-fi](https://img.shields.io/badge/Support_Me_on_Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)][ko-fi]&nbsp;
 [![Wechat Pay](https://img.shields.io/badge/Support_Me_on_WeChat-brightgreen?logo=wechat&logoColor=white)][donation]&nbsp;
