@@ -7,7 +7,7 @@ tags: [articulos, tema1, grupal, trabajos]
 comments: true
 pin: true
 image:
-  path: /assets/img/consulta.jpg
+  path: /assets/img/familia.jpg
   alt: Libro
 ---
 
