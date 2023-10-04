@@ -5,14 +5,11 @@ date: 2023-10-02 10:30:00 +0800
 categories: [Grupal]
 tags: [articulos, tema1, grupal, trabajos]
 comments: true
-toc: true
+pin: true
 image:
   path: /assets/img/consulta.jpg
   alt: Libro
 ---
-
-> Articulo en proceso de edicion, puede contener errores
-{: .prompt-info }
 
 # Como tener una economía familiar sana y evitar errores financieros.
 
@@ -28,7 +25,7 @@ Para evitar este problema la familia debe de tratar de ahorrar para tener al men
 
 Estaría bien hablar de estos temas con tus hijos desde que tienen una cierta madurez y tratar de servir de ejemplo para ellos en un futuro. Si tus padres viven siempre al día lo más probable es que tú termines viendo eso como algo normal y lo imites.
 
-# Como tener una buena salid financiera?[^footnote]
+# ¿Como tener una buena salud financiera?[^footnote]
 
 Para tener una buena salud finanaciera familiar hace falta seguir varios principios
 
@@ -37,7 +34,7 @@ Para tener una buena salud finanaciera familiar hace falta seguir varios princip
 3.  Necesitamos conocer nuestra capacidad de endeudamiento por si pedimos un préstamo, nuestro endeudamiento no puede superar el 40% de nuestros ingresos y un solo préstamo no puede superar el 30% de nuestro ingresos tampoco
 4. No retrasarse en los pagos sobretodo en los bancarios ya que esto te pondria en la lista negra de los bancos y otras empresas haciendo mas dificil contratar servicios o pedir prestamos
 5. Ahorra como minimo un 10% de tus ingresos para imprevistos u oportunidades inesperadas
-6. Prepara tu retiro ya sea con  un plan de pensiones o por tu cuenta pero es muy importante tener preparada la jubilación, ya que, el sistema de pensiones no es fiable( por no decir que va quebrar seguro), entonces hace falta un plan para tu vejez
+6. Prepara tu retiro ya sea con  un plan de pensiones o por tu cuenta pero es muy importante tener preparada la jubilación, ya que, el sistema de pensiones no es fiable (por no decir que va quebrar seguro), entonces hace falta un plan para tu vejez
 
 
 # Fuentes
