@@ -13,20 +13,20 @@ baseurl: "/sog13.github.io"
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Shanghai
+timezone: America/New_York
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Sonu George # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Passionate about Technology, Data Engineering, Travel, and Personal Finance # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+ Passionate about Technology, Data Engineering, Travel, and Personal Finance
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://sog13.github.io"
 
 github:
   username: sog13 # change to your github username
@@ -38,14 +38,14 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Sonu George
-  email: example@domain.com # change to your email address
+  email: sonugeorge49@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
+    # https://twitter.com/username # change to your twitter homepage
     - https://github.com/sog13 # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/sonugeorge
 
 google_site_verification: # fill in to your verification string
 
@@ -76,7 +76,7 @@ theme_mode: # [light|dark]
 img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://media.licdn.com/dms/image/C5603AQHb9HHCAsmmaQ/profile-displayphoto-shrink_800_800/0/1517558916086?e=2147483647&v=beta&t=qPlLEt3oR2PIwenMiRKiN_jHHGodB8mWcl55ywm9dtU"
+avatar: "https://avatars.githubusercontent.com/u/63515503?v=4"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
