@@ -10,7 +10,7 @@ baseurl: ''
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: en-US
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: America/New_York
@@ -23,7 +23,7 @@ title: Sonu George # the main title
 tagline: Passionate about Technology, Data Engineering, Travel, and Personal Finance # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
- Passionate about Technology, Data Engineering, Travel, and Personal Finance
+ Passionate about Technology, Data, Travel, and Personal Finance
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://sog13.github.io"
@@ -66,7 +66,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: # [light|dark]
+theme_mode: light
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -76,7 +76,7 @@ theme_mode: # [light|dark]
 img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://avatars.githubusercontent.com/u/63515503?v=4"
+avatar: https://avatars.githubusercontent.com/u/63515503?v=4
 
 # boolean type, the global switch for TOC in posts.
 toc: true
