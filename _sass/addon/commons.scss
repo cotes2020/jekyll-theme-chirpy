@@ -736,9 +736,9 @@ $btn-mb: 0.5rem;
   .site-title {
     font-family: inherit;
     font-weight: 900;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     line-height: 1.2;
-    letter-spacing: 0.25px;
+    letter-spacing: 0.5px;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
 
@@ -746,13 +746,13 @@ $btn-mb: 0.5rem;
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
 
-      color: var(--site-title-color);
+      color: rgba(254,254,254,99%);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    color: var(--site-subtitle-color);
+    color: rgba(254,254,254,99%);
     margin-top: 0.25rem;
     word-spacing: 1px;
     -webkit-user-select: none;
