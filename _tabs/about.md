@@ -1,8 +1,13 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 4
+title: About Me
+icon: fas fa-info
+order: 1
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+Hi, I am Sonu George. Welcome to my personal website where I mostly blog
+about Data, Technology, Personal Finance and other things that interest me.
+
+I am based out of the East Coast and work for a startup based out of California. I have been in the data space for a little over a decade and engineering the past 7 years. 
+
+Feel free to visit my [LinkedIn profile](https://www.linkedin.com/in/sonugeorge) to
+learn more about my career
