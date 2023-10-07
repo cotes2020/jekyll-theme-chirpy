@@ -40,7 +40,7 @@ h1 + .post-meta {
 }
 
 .post-tail-wrapper {
-  @extend %text-meta;
+  @extend %text-sm;
 
   margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
@@ -57,7 +57,7 @@ h1 + .post-meta {
     }
 
     span:last-child {
-      @extend %text-meta;
+      @extend %text-sm;
     }
   } /* .license-wrapper */
 
@@ -297,6 +297,7 @@ h1 + .post-meta {
 
   time {
     @extend %normal-font-style;
+    @extend %text-xs;
 
     color: var(--text-muted-color);
   }

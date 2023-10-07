@@ -136,7 +136,7 @@ footer {
   height: $footer-height;
   border-top: 1px solid var(--main-border-color);
 
-  @extend %text-meta;
+  @extend %text-xs;
 
   a {
     @extend %text-highlight;
@@ -379,7 +379,7 @@ main {
 }
 
 .post-meta {
-  @extend %text-meta;
+  @extend %text-sm;
 
   a {
     &:not([class]):hover {
