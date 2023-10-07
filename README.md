@@ -4,7 +4,16 @@
 
 [Take a look!](https://rzimmerdev.github.io)
 
-To setup locally, access the [Jekyll docs](https://jekyllrb.com/docs/installation/).
+To setup locally, access the [Jekyll docs](https://jekyllrb.com/docs/installation/) to install Jekyll and Gem.
+Then run:
+
+```
+git clone git@github.com:rzimmerdev/rzimmerdev.github.io.git
+cd rzimmerdev.github.io
+
+bundle
+bundle exec jekyll s
+```
 
 ## License
 
