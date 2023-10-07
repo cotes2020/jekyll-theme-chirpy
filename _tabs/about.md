@@ -12,9 +12,7 @@ I am based out of the East Coast and work for a startup located in California. I
 Feel free to visit my [LinkedIn profile](https://www.linkedin.com/in/sonugeorge) to
 learn more about my career
 
-If you would like to connect in a 1:1 setting
-1`<!-- Calendly link widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sonugeorge'});return false;">feel free to schedule time with me</a>
-<!-- Calendly link widget end -->
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/sonugeorge" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
