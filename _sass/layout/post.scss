@@ -22,10 +22,6 @@
   padding-right: $pr;
 }
 
-%text-color {
-  color: var(--text-color);
-}
-
 h1 + .post-meta {
   > span + span::before {
     @include dot;
@@ -33,7 +29,7 @@ h1 + .post-meta {
 
   em,
   time {
-    color: var(--text-color);
+    @extend %text-highlight;
   }
 
   em {
@@ -44,13 +40,10 @@ h1 + .post-meta {
 }
 
 .post-tail-wrapper {
+  @extend %text-meta;
+
   margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
-  font-size: 0.85rem;
-
-  .post-tail-bottom a {
-    color: inherit;
-  }
 
   .license-wrapper {
     line-height: 1.2rem;
@@ -64,7 +57,7 @@ h1 + .post-meta {
     }
 
     span:last-child {
-      font-size: 0.85rem;
+      @extend %text-meta;
     }
   } /* .license-wrapper */
 
@@ -320,7 +313,6 @@ h1 + .post-meta {
 
   .card {
     h4 {
-      @extend %text-color;
       @extend %text-clip;
     }
   }
