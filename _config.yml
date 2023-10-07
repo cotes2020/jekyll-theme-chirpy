@@ -23,10 +23,10 @@ title: Sonu George # the main title
 tagline: Passionate about Technology, Data Engineering, Travel, and Personal Finance # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
- Passionate about Technology, Data, Travel, and Personal Finance
-
+ Passionate about Technology, Data Engineering, Travel, and Personal Finance
+ 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://sog13.github.io"
+url: "https://sonugeorge.github.io"
 
 github:
   username: sog13 # change to your github username
@@ -76,7 +76,7 @@ theme_mode: light
 img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/images/avatar.png'
+avatar: 'https://avatars.githubusercontent.com/u/63515503?s=400&u=4d676d271f1ca3661f7f95407783f7cb80d8ab29&v=4'
 
 # boolean type, the global switch for TOC in posts.
 toc: true
