@@ -12,8 +12,8 @@ I am based out of the East Coast and work for a startup located in California. I
 Feel free to visit my [LinkedIn profile](https://www.linkedin.com/in/sonugeorge) to
 learn more about my career
 
-<!-- Calendly badge widget begin -->
+<!-- Calendly link widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/sonugeorge', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
-<!-- Calendly badge widget end -->
+<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sonugeorge'});return false;">Schedule time with me</a>
+<!-- Calendly link widget end -->
