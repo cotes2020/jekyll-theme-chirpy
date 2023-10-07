@@ -4,6 +4,8 @@
 
 [Take a look!](https://rzimmerdev.github.io)
 
+To setup locally, access the [Jekyll docs](https://jekyllrb.com/docs/installation/).
+
 ## License
 
 This work is published under [MIT License](https://opensource.org/license/mit/).
