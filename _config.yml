@@ -20,10 +20,10 @@ timezone: America/New_York
 
 title: Sonu George # the main title
 
-tagline: Passionate about Technology, Data Engineering, Travel, and Personal Finance # it will display as the sub-title
+tagline: Passionate about Technology, Data Engineering, and Personal Finance # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
- Passionate about Technology, Data Engineering, Travel, and Personal Finance
+ Passionate about Technology, Data Engineering, and Personal Finance
  
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://sog13.github.io"
