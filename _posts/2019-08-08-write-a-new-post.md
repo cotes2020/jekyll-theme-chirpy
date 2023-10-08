@@ -109,8 +109,8 @@ math: true
 
 After enabling the mathematical feature, you can add math equations with the following syntax: 
 
-- **Block math** should be added with `$$ math $$` *with* **mandatory** blank lines before and after `$$`
-- **Inline math** (in lines) should be added with `$$ math $$` *without* any blank line before or after `$$`
+- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
+- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
 - **Inline math** (in lists) should be added with `\$$ math $$`
 
 ```markdown
@@ -129,7 +129,7 @@ $$
 - \$$ LaTeX_math_expression $$
 ```
 
-> Kramdown, the default markdown engine of Jekyll and GitHub, might have some bugs with parsing math blocks with its [default syntax](https://kramdown.gettalong.org/syntax.html#math-blocks). Experiments to reproduce the bug can be found [here](https://zhengyuan-public.github.io/posts/PersonalBlogWithJekyll/#latex-math-equations-in-jekyll). The solutions above have only been tested with [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy). 
+The solutions above have only been tested with [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy). 
 {: .prompt-info }
 
 ## Mermaid
