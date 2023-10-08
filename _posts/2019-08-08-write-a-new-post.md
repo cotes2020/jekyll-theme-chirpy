@@ -114,23 +114,22 @@ After enabling the mathematical feature, you can add math equations with the fol
 - **Inline math** (in lists) should be added with `\$$ math $$`
 
 ```markdown
-# Block math, keep all blank lines
+<!-- Block math, keep all blank lines -->
 
 $$
 LaTeX_math_expression
 $$
 
-# Inline math in lines, NO blank lines
+<!-- Inline math in lines, NO blank lines -->
+
 "Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
 
-# Inline math in lists, escape the first $
+<!-- Inline math in lists, escape the first `$` -->
+
 1. \$$ LaTeX_math_expression $$
 2. \$$ LaTeX_math_expression $$
-- \$$ LaTeX_math_expression $$
+3. \$$ LaTeX_math_expression $$
 ```
-
-The solutions above have only been tested with [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy). 
-{: .prompt-info }
 
 ## Mermaid
 
