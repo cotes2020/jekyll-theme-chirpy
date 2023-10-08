@@ -47,13 +47,13 @@ social:
     # - https://www.facebook.com/vivace-log
     # - https://www.linkedin.com/in/vivace-log
 
-google_site_verification: # fill in to your verification string
+google_site_verification: oZ4pUnmBnDq0hT7U8boeXfSLeMsbymG8hyTCaiKz-RA # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: # fill in your Google Analytics ID
+  id: G-1ND73KPK9G # fill in your Google Analytics ID
 
 # Prefer color scheme setting.
 #
