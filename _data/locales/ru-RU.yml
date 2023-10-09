@@ -3,7 +3,7 @@
 # ----- Commons label -----
 
 layout:
-  post: Публикация
+  post: Пост
   category: Категория
   tag: Тег
 
@@ -30,14 +30,14 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: Публикация автора защищена лицензией :LICENSE_NAME.
+    template: Авторский пост защищен лицензией :LICENSE_NAME.
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
   brief: Некоторые права защищены.
   verbose: >-
-    Если не указано иное, публикации автора на этом сайте защищены лицензией Creative Commons Attribution 4.0 International (CC BY 4.0).
+    Если не указано иное, авторские посты на этом сайте защищены лицензией Creative Commons Attribution 4.0 International (CC BY 4.0).
 
 meta: Использует тему :THEME для :PLATFORM
 
@@ -59,11 +59,11 @@ post:
   read_time:
     unit: мин.
     prompt: чтения
-  relate_posts: Похожие публикации
+  relate_posts: Похожие посты
   share: Поделиться
   button:
-    next: Следующая публикация
-    previous: Предыдущая публикация
+    next: Следующий пост
+    previous: Предыдущий пост
     copy_code:
       succeed: Скопировано!
     share_link:
@@ -86,5 +86,5 @@ categories:
     singular: категория
     plural: категории
   post_measure:
-    singular: публикация
-    plural: публикации
+    singular: пост
+    plural: посты
