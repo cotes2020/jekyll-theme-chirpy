@@ -76,10 +76,6 @@ df:
   post:
     strftime: "%d.%m.%Y"
     dayjs: "DD.MM.YYYY"
-  archives:
-    strftime: "%B"
-    dayjs: "MMMM"
-
 # categories page
 categories:
   category_measure:
