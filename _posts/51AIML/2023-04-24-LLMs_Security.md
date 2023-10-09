@@ -69,7 +69,23 @@ tags: [AIML]
     - [Malicious Content Authoring](#malicious-content-authoring)
     - [Reward Hacking](#reward-hacking)
   - [Solution](#solution)
+  - [LLM with code generation](#llm-with-code-generation)
+    - [overall](#overall-1)
+      - [INTRODUCTION](#introduction)
+      - [AI-assisted Code Generation Tools](#ai-assisted-code-generation-tools)
+      - [Security of Code Generation Techniques and LLMs](#security-of-code-generation-techniques-and-llms)
+      - [Security Static Analysis](#security-static-analysis)
+  - [LLMs with Graphs](#llms-with-graphs)
+    - [Retrieval-augmented](#retrieval-augmented)
+    - [multi-hop](#multi-hop)
+    - [Knowledge Graph](#knowledge-graph)
+    - [Combining Graph and Textual Data](#combining-graph-and-textual-data)
+    - [Knowledge Graphs in Chain-of-Thought Flow](#knowledge-graphs-in-chain-of-thought-flow)
+  - [RESEARCH](#research)
 
+ref:
+- https://arxiv.org/abs/2310.02059
+- https://neo4j.com/developer-blog/knowledge-graphs-llms-multi-hop-question-answering/
 
 ---
 
@@ -77,12 +93,11 @@ tags: [AIML]
 
 > - [OWASP Top 10 for LLM VERSION 1.0 Published: August 1, 2023 ](https://owasp.org/www-project-top-10-for-large-language-model-applications/assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf)
 
-- This undertaking is not a one-time effort but a continuous process, mirroring the ever-evolving nature of cyber threats. With the rapid advancements in LLMs, their potential for both utility and abuse will continue to grow, making the task of security a continually moving target that demands our attention and expertise.
+- This undertaking is not a one-time effort but a continuous process, mirroring the ever-evolving nature of cyber threats. With the rapid advancements in LLMs, their potential for both utility and abuse will continue to grow, making the task of security a continually moving target that demands the attention and expertise.
 
 - In closing, the quest for robust security measures for LLMs is ongoing.
 
 - ensure that the tools are not just powerful and effective, but also `secure and ethically used`.
-
 
 
 ---
@@ -97,23 +112,23 @@ tags: [AIML]
 
 
 Who is it for?
-- Our primary audience is developers, data scientists and security experts tasked with designing and building applications and plug-ins leveraging LLM technologies. We aim to provide practical, actionable, and concise security guidance to help these professionals navigate the complex and evolving terrain of LLM security.
+- the primary audience is developers, data scientists and security experts tasked with designing and building applications and plug-ins leveraging LLM technologies. aim to provide practical, actionable, and concise security guidance to help these professionals navigate the complex and evolving terrain of LLM security.
 
 The Making of the List
-- The creation of the OWASP Top 10 for LLMs list was a major undertaking, built on the collective expertise of an international team of nearly 500 experts, with over 125 active contributors. Our contributors come from diverse backgrounds, including AI companies, security companies, ISVs, cloud hyperscalers, hardware providers and academia.
+- The creation of the OWASP Top 10 for LLMs list was a major undertaking, built on the collective expertise of an international team of nearly 500 experts, with over 125 active contributors. the contributors come from diverse backgrounds, including AI companies, security companies, ISVs, cloud hyperscalers, hardware providers and academia.
 
-- Over the course of a month, we brainstormed and proposed `potential vulnerabilities`, with team members writing up 43 distinct threats. Through multiple rounds of voting, we refined these proposals down to a concise list of the ten most critical vulnerabilities. Each vulnerability was then further scrutinized and refined by dedicated sub-teams and subjected to public review, ensuring the most comprehensive and actionable final list.
+- Over the course of a month, brainstormed and proposed `potential vulnerabilities`, with team members writing up 43 distinct threats. Through multiple rounds of voting, refined these proposals down to a concise list of the ten most critical vulnerabilities. Each vulnerability was then further scrutinized and refined by dedicated sub-teams and subjected to public review, ensuring the most comprehensive and actionable final list.
 
 - Each of these vulnerabilities, along with common examples, prevention tips, attack scenarios, and references, was further scrutinized and refined by dedicated sub-teams and subjected to public review, ensuring the most comprehensive and actionable final list.
 
 
 Relating to other OWASP Top 10 Lists
-- While our list shares DNA with vulnerability types found in other OWASP Top 10 lists, we do not simply reiterate these vulnerabilities. Instead, we delve into the unique implications these vulnerabilities have when encountered in applications utilizing LLMs.
+- While the list shares DNA with vulnerability types found in other OWASP Top 10 lists, do not simply reiterate these vulnerabilities. Instead, delve into the unique implications these vulnerabilities have when encountered in applications utilizing LLMs.
 
-- Our goal is to bridge the divide between general application security principles and the specific challenges posed by LLMs. This includes exploring how conventional vulnerabilities may pose different risks or might be exploited in novel ways within LLMs, as well as how traditional remediation strategies need to be adapted for applications utilizing LLMs.
+- the goal is to bridge the divide between general application security principles and the specific challenges posed by LLMs. This includes exploring how conventional vulnerabilities may pose different risks or might be exploited in novel ways within LLMs, as well as how traditional remediation strategies need to be adapted for applications utilizing LLMs.
 
 The Future
-- This first version of the list will not be our last. We expect to update it on a periodic basis to keep pace with the state of the industry. We will be working with the broader community to push the state of the art, and creating more educational materials for a range of uses. We also seek to collaborate with standards bodies and governments on AI security topics. We welcome you to join our group and contribute.
+- This first version of the list will not be the last. expect to update it on a periodic basis to keep pace with the state of the industry. will be working with the broader community to push the state of the art, and creating more educational materials for a range of uses. also seek to collaborate with standards bodies and governments on AI security topics. welcome you to join the group and contribute.
 
 
 ### Top 10
@@ -188,7 +203,7 @@ LLM09: **Overreliance** 过度依赖
 
 - One of the common vulnerabilities for LLMs lies in their input space. Since these models use input data to generate outputs, a sophisticated adversary could craft malicious inputs to induce unexpected behavior or to extract confidential information from the model. Regularly assessing the input vulnerability of your LLMs is critical. This malicious practice exploits the model’s design, leveraging its learning process to produce harmful outputs.
 
-- potentially brutal consequences of giving LLMs like ChatGPT interfaces to other applications. We propose newly enabled attack vectors and techniques and provide demonstrations of each in this repository:
+- potentially brutal consequences of giving LLMs like ChatGPT interfaces to other applications. propose newly enabled attack vectors and techniques and provide demonstrations of each in this repository:
 
   - Remote control of LLMs
   - Leaking/exfiltrating user data
@@ -204,7 +219,7 @@ LLM09: **Overreliance** 过度依赖
 - Indirect prompt injections are a new, much more powerful way of delivering injections.
 
 - There are usually 2 steps to make this work.
-  - First, the attacker would “plant” (yes, just like we plant seeds to grow something in our backyard) the code typically on a publicly accessible website.
+  - First, the attacker would “plant” (yes, just like plant seeds to grow something in the backyard) the code typically on a publicly accessible website.
   - Second, user would be interacting with an LLM connected app and it would then access that potentially corrupted public web resource and thus would cause the LLM to perform the relevant actions.
 
 ![0*Ur5Unft4k0nHDYJN](/assets/img/post/0*Ur5Unft4k0nHDYJN.webp)
@@ -247,14 +262,14 @@ Equipping LLMs with retrieval capabilities might allow adversaries to manipulate
 
 **Compromising LLMs using Indirect Prompt Injection**
 
-- We present a new class of vulnerabilities and impacts stemming from "indirect prompt injection" affecting language models integrated with applications.
-- Our demos currently span GPT-4 (Bing and synthetic apps) using ChatML, GPT-3 & LangChain based apps in addition to proof-of-concepts for attacks on code completion engines like Copilot.
-- We expect these attack vectors to also apply to ChatGPT plugins and other LLMs integrated into applications.
+- present a new class of vulnerabilities and impacts stemming from "indirect prompt injection" affecting language models integrated with applications.
+- the demos currently span GPT-4 (Bing and synthetic apps) using ChatML, GPT-3 & LangChain based apps in addition to proof-of-concepts for attacks on code completion engines like Copilot.
+- expect these attack vectors to also apply to ChatGPT plugins and other LLMs integrated into applications.
 
 > This repo serves as a proof of concept for findings discussed in [**Paper on ArXiv**](https://arxiv.org/abs/2302.12173), [(PDF direct link)](https://arxiv.org/pdf/2302.12173.pdf)
 
 > Connecting LLMs to other applications can have critical security implications. Even without compromising any connected applications, LLM can be the attack's target.
-> We show how an LLM could get compromised by "looking" at a website, and how compromised LLMs can be remote-controlled or get used to exfiltrate or change user data.
+> show how an LLM could get compromised by "looking" at a website, and how compromised LLMs can be remote-controlled or get used to exfiltrate or change user data.
 
 
 ##### Ask for Einstein, get Pirate.
@@ -363,7 +378,7 @@ start with an already compromised LLM and force it to `retrieve new instructions
 
 poisoned agent can persist between sessions by storing a small payload in its memory.
 - A simple key-value store to the agent may simulate a long-term persistent memory.
-- The agent will be reinfected by looking at its ‘notes’. If we prompt it to remember the last conversation, it re-poisons itself.
+- The agent will be reinfected by looking at its ‘notes’. If prompt it to remember the last conversation, it re-poisons itself.
 
 
 
@@ -625,7 +640,7 @@ Reference Links
 - [Stanford Research Paper](https://stanford-cs324.github.io/winter2022/lectures/data)
 - [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html)
 - [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009)
-- [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
+- [PoisonGPT: How hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
 - [Inject My PDF: Prompt Injection for the Resume](https://kai-greshake.de/posts/inject-my-pdf)
 - [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1)
 - [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.0094)
@@ -766,7 +781,7 @@ Reference Links
 - [ChatGPT Data Breach Confirmed as Security Firm Warns of Vulnerable Component Exploitation](https://www.securityweek.com/chatgpt-data-breach-confirmed-as-security-firm-warns-of-vulnerable-component-exploitation)
 - [Open AI’s Plugin review process](https://platform.openai.com/docs/plugins/review)
 - [Compromised PyTorch-nightly dependency chain](https://pytorch.org/blog/compromised-nightly-dependency)
-- [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
+- [PoisonGPT: How hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
 - [Army looking at the possibility of AI BOMs](https://defensescoop.com/2023/05/25/army-looking-at-the-possibility-of-ai-boms-bill-of-materials)
 - [Failure Modes in Machine Learning](https://learn.microsoft.com/en-us/security/engineering/failure-modes-in-machine-learnin)
 - [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010)
@@ -831,9 +846,9 @@ Reference Links
 
 - The issue of training data exposure in large language models is a multifaceted challenge, `involving not only technical aspects but also ethical, legal, and societal considerations`. It is imperative for researchers, data scientists, and cybersecurity professionals to come together to address these challenges and develop robust strategies to mitigate the risks associated with data exposure.
 
-- While the solutions outlined in this blog post provide a strong foundation for mitigating these risks, the reality is that managing the risks of training data exposure in LLMs requires ongoing vigilance, research, and refinement of methods. We are in the early stages of fully understanding and navigating the complex landscape of LLMs, but as we progress, we must continue to prioritize privacy and security to harness the potential of these models responsibly.
+- While the solutions outlined in this blog post provide a strong foundation for mitigating these risks, the reality is that managing the risks of training data exposure in LLMs requires ongoing vigilance, research, and refinement of methods. are in the early stages of fully understanding and navigating the complex landscape of LLMs, but as progress, must continue to prioritize privacy and security to harness the potential of these models responsibly.
 
-- Remember, managing the risk of training data exposure in LLMs is not a one-size-fits-all approach. The strategies should be tailored to suit the specific needs, resources, and threat landscape of each organization or project. As we forge ahead in this exciting frontier of AI and machine learning, let’s carry forward the responsibility to ensure the tools we build are not just powerful, but also secure and ethical.
+- Remember, managing the risk of training data exposure in LLMs is not a one-size-fits-all approach. The strategies should be tailored to suit the specific needs, resources, and threat landscape of each organization or project. As forge ahead in this exciting frontier of AI and machine learning, let’s carry forward the responsibility to ensure the tools build are not just powerful, but also secure and ethical.
 
 
 
@@ -842,7 +857,7 @@ To mitigate this risk
 - LLM application owners should have `appropriate Terms of Use policies available to make consumers aware of how their data is processed and the ability to opt-out of having their data included in the training model`.
 
 - The consumer-LLM application interaction forms a two-way trust boundary
-  - we cannot inherently trust the `client->LLM input` or the `LLM->client output`.
+  - cannot inherently trust the `client->LLM input` or the `LLM->client output`.
   - It is important to note that this vulnerability assumes that certain pre-requisites are out of scope, such as threat modeling exercises, securing infrastructure, and adequate sandboxing.
   - `Adding restrictions within the system prompt around the types of data the LLM should return` can provide some mitigation against sensitive information disclosure, but the **unpredictable nature of LLMs** means such restrictions may not always be honoured and could be circumvented via prompt injection or other vectors.
 
@@ -1364,7 +1379,7 @@ Reference Links
     - Encryption ensures that the model’s architecture and parameters remain confidential, preventing unauthorized individuals from gaining insights into the workings of the model.
 
   - `Integrity`:
-    - By encrypting a model, we can protect it from being tampered with or modified maliciously. This is especially important in cases where the model influences critical decisions, such as in healthcare or finance.
+    - By encrypting a model, can protect it from being tampered with or modified maliciously. This is especially important in cases where the model influences critical decisions, such as in healthcare or finance.
 
   - `IP Protection`:
     - LLMs often result from significant investment in terms of data, resources, and time.
@@ -1431,7 +1446,7 @@ Reference Links
     - `Complex Implementation`: Integrating SMPC protocols into LLMs is technically complex and requires expertise in both cryptography and machine learning.
 
 
-- SMPC provides a robust framework for securing LLMs, offering privacy preservation and fostering collaborative opportunities. While there are challenges to be surmounted, the potential benefits make it a promising approach to ensuring the privacy and security of LLMs. As the fields of AI and cryptography continue to evolve, we can expect more refined and efficient methods for integrating SMPC and LLMs, paving the way for secure, privacy-preserving AI systems.
+- SMPC provides a robust framework for securing LLMs, offering privacy preservation and fostering collaborative opportunities. While there are challenges to be surmounted, the potential benefits make it a promising approach to ensuring the privacy and security of LLMs. As the fields of AI and cryptography continue to evolve, can expect more refined and efficient methods for integrating SMPC and LLMs, paving the way for secure, privacy-preserving AI systems.
 
 
 ---
@@ -1442,7 +1457,7 @@ Reference Links
 - Perhaps the most common danger of LLMs as tools is their ability to generate new text. Phishing has become a lot easier for non-native speakers as an unintended consequence of LLMs. OpenAI has put filters to minimise this but they are still pretty easy to bypass.
 
 - A common method is telling ChatGPT you are doing an assignment and that it should write you a letter to the person.
-- In the example below, I told ChatGPT that we were playing a game, gave the following prompt, and got the following response. All that’s needed now is a few tweaks to the letter and I could be my own victim to a scam perpetrated by myself 🥲.
+- In the example below, I told ChatGPT that were playing a game, gave the following prompt, and got the following response. All that’s needed now is a few tweaks to the letter and I could be my own victim to a scam perpetrated by myself 🥲.
 
 
 ![ChatGPT writing a potential phishing email](https://www.freecodecamp.org/news/content/images/2023/04/image-237.png)
@@ -1493,6 +1508,346 @@ Reference Links
 > [Trustworthy LLMs](https://arxiv.org/abs/2308.05374)
 
 ![IMG_2747](/assets/img/post/IMG_2747_5kw3wyplc.PNG)
+
+
+---
+
+
+## LLM with code generation
+
+### overall
+
+- Modern code generation tools use AI models, particularly Large Language Models (LLMs), to generate functional and complete code. While such tools are becoming popular and widely available for developers,
+
+- using these tools is often accompanied by security challenges, leading to insecure code merging into the code base.
+
+- Therefore, it is important to assess the quality of the generated code, especially in terms of its security.
+
+- project:
+  - conducted an empirical study by analyzing the security weaknesses in code snippets generated by GitHub Copilot that are found as part of publicly available projects hosted on GitHub. The goal is to investigate the types of security issues and their scale in real-world scenarios (rather than crafted scenarios). To this end, identified 435 code snippets generated by GitHub Copilot from publicly available projects.
+  - then conducted extensive security analysis to identify Common Weakness Enumeration (CWE) instances in these code snippets. The results show that
+    - (1) 35.8% of Copilot generated code snippets contain CWEs, and those issues are spread across multiple languages,
+    - (2) the security weaknesses are diverse and related to 42 different CWEs, in which CWE-78: OS Command Injection, CWE-330: Use of Insufficiently Random Values, and CWE- 703: Improper Check or Handling of Exceptional Conditions occurred the most frequently, and
+    - (3) among the 42 CWEs identified, 11 of those belong to the currently recognized 2022 CTop-25.
+  - the findings confirm that developers should be careful when adding code generated by Copilot (and similar AI code generation tools) and should also run appropriate security checks as they accept the Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page.
+
+#### INTRODUCTION
+
+> Code generation tools aim to automatically generate functional code based on prompts, which can include text descriptions (comments), code (such as function signatures, expressions, variable names, etc.), or a combination of text and code. After writing an initial code or comment, developers can rely on code generation tools to complete the remaining code.
+> This approach can save development time and accelerate the software development process.
+
+- Recent advancements in code generation came with the emergence of Large Language Models (LLMs).
+  - LLMs are deep learning models trained on a large code/text corpus with powerful language understanding capabilities that can be used for tasks such as `natural language generation, text classification, and question-answering systems`.
+  - Compared to previous deep learning methods, the latest developments in LLMs, such as Generative Pre-trained Transformer (GPT) models, have opened up new opportunities to address the limitations of existing automated code generation technology
+  - Currently, code generation tools based on LLMs have also been widely applied, such as Codex by OpenAI, AlphaCode by DeepMind, and CodeWhisperer by Amazon.
+  - These models are trained on billions of public open-source lines of code, which includes public code with unsafe coding patterns. Therefore, code generation tools based on such models can pose security risks, and the code they generate may also have security weaknesses.
+
+
+#### AI-assisted Code Generation Tools
+
+- With the rise of code generation tools integrated with IDEs, many studies have evaluated these code generation systems based on transformer models to better understand their effectiveness in realworld scenarios. Previous research mainly focused on whether the code generated by these tools can meet users’ functional requirements.
+  - evaluated the effectiveness, correctness, and efficiency of the code generated by GitHub Copilot, and the results showed that GitHub Copilot could `generate valid code` with a success rate of 91.5%, making it a promising tool.
+  - evaluated the `correctness of the code generated` by GitHub Copilot and compared the tool with an automatic program generator with a Genetic Programming (GP) architecture. They concluded there was no significant difference between the two methods on benchmark problems.
+  - using LeetCode problems and created queries for Copilot in four different programming languages. evaluated the `correctness and comprehensibility of the code` by running tests provided by LeetCode.
+    - Copilot’s suggestions have lower complexity.
+  - evaluated the code quality of AI-assisted code generation tools (GitHub Copilot, Amazon CodeWhisperer, and ChatGPT). They compared the improvements between the latest and older versions of Copilot and CodeWhisperer and found that the quality of generated code had improved.
+  - improve productivity by observing their behavior.
+    - how programmers interact, use and perceive Copilot, while Copilot may not necessarily improve task completion time or success rate, it often provides a useful starting point. participants faced difficulties in understanding, editing, and debugging the code snippets generated by Copilot.
+  - conducted an empirical study on AlphaCode, `identifying similarities and performance differences between code generated by code generation tools and code written by human developers`. They argued that software developers should check the generated code for potentially problematic code that could introduce performance weaknesses.
+
+
+#### Security of Code Generation Techniques and LLMs
+
+- Code security is an issue that cannot be ignored in the software development process.
+
+- Recent work has primarily focused on evaluating the security of the code generation tools and the security of the LLMs that these tools are based on.
+
+- Pearce et al. [28] first evaluated the security of GitHub Copilot in generating programs by identifying known weaknesses in the suggested code. The authors prompted Copilot to generate code for 89 cybersecurity scenarios and evaluated the weaknesses in the generated code. They found that 40% of `the suggestions in the relevant context contained security-related bugs` (i.e., Cclassification from MITRE [40]).
+
+- Siddiq et al. [35] conducted a large-scale empirical study on code smells in the training set of a transformerbased Python code generation model and investigated the impact of these harmful patterns on the generated code. They observed that `Copilot introduces 18 code smells, including non-standard coding patterns and two security smells` (i.e., code patterns that often lead to security defects).
+
+- Khoury et al. [19] studied the security of the source code generated by the ChatGPT chatbot based on LLMs, and they found that ChatGPT was `aware of potential weaknesses but still frequently generated some non-robust code`. Several researchers also compared the situation where code generation tools produce insecure code with that of human developers.
+
+- Sandoval et al. [33] conducted a security-driven user study, and their results showed that the rate at which AI-assisted user programming produced critical security errors was no more than 10% of the control group, indicating that `the use of LLMs does not introduce new security risks`.
+
+- Asare et al. [1] conducted a comparative empirical analysis of these tools and language models from a security perspective and investigated whether Copilot is as bad as humans in generating insecure code. They found that `while Copilot performs differently across vulnerability types, it is not as bad as human developers when it comes to introducing vulnerabilities in code`. In addition, researchers have also constructed datasets to test the security of these tools.
+
+- Tony et al. [44] proposed `LLMSecEval, a dataset containing 150 natural language prompts that can be used to evaluate the security performance of LLMs`.
+
+- Siddiq et al. [36] provided a dataset, SecurityEval, for `testing whether a code generation model has weaknesses. The dataset contains 130 Python code samples`.
+
+- studied the security weaknesses exhibited by code generation tools in a real-world production environment (i.e., GitHub). collected code snippets from GitHub generated by developers using Copilot in daily production as a source of research data, whereas in the Pearce et al. [28] study, the research data came from code generated by the authors using Copilot based on the natural language prompts related to highrisk network security weaknesses.
+
+- Pearce et al. configured CodeQL only to examine CWEs targeted by security weaknesses associated with the prompted scenarios.
+  - or used various static analysis tools to examine all types of CWEs and analyze them extensively.
+
+
+#### Security Static Analysis
+
+> Vulnerabilities detection is critical to improve software security and ensure quality
+> There are two used methods for vulnerability detection in source code: via static and dynamic code analysis.
+
+Dynamic analysis techniques
+- more sound and precise but lack coverage
+
+static analysis
+- less precise but offers greater coverage and allows to analyze programs without the need to execute them
+- Static analysis has been widely used to find security issues in code, given it is cheaper to run and can conduct whole program analyses without the need to execute the program [7].
+- OWASP [27] provides a list of commonly used static analysis tools. This includes tools like
+  - CodeQL: a general-purpose automatic scanning tool,
+  - FindBugs: a tool for Java programs,
+  - ESLint: a tool for JavaScript programs,
+  - Bandit: a tool for Python programs,
+  - GoSec: a tool for Go programs.
+  - Such tools have been widely used in previous security analysis research
+
+- Kaur compared static analysis tools for vulnerability detection in scanning C/C++ and Java source code.
+- Tomasdottir conducted an empirical study on ESLint, the most commonly used JavaScript static analysis tool among developers.
+- Pearce used CodeQL for security weakness scanning of generated Python and C++ code.
+- Siddiq used Bandit to check Python code generated using a test dataset.
+
+- These static analysis tools support different analysis algorithms and techniques. By using multiple tools for analysis, potential weaknesses in the code can be discovered from different perspectives and levels, avoiding omissions and improving the accuracy of the analysis.
+
+---
+
+## LLMs with Graphs
+
+> to overcome the limitations of Large Language Models (LLMs), such as hallucinations and limited knowledge.
+
+- Retrieval-augmented generation applications often require retrieving information from multiple sources to generate accurate answers.
+
+- textual summarization can be challenging, it representing information in a graph format can offer several advantages.
+
+### Retrieval-augmented
+
+**Retrieval-augmented approach**
+
+![1zydD2GKzjpEyvL-d_cP0vA](/assets/img/post/1zydD2GKzjpEyvL-d_cP0vA.png)
+
+- reference external data at question time and feed it to an LLM to enhance its ability to generate accurate and relevant answers.
+
+- When a user asks a question, an intelligent search tool looks for relevant information in the provided Knowledge bases.
+- For example
+  - searching for relevant information within PDFs or a company’s documentation.
+  - Most of those examples use vector similarity search to identify which chunks of text might contain relevant data to answer the user’s question accurately. The implementation is relatively straightforward.
+  - ![1oMLZ5s8OHftzqPEVreTd_g](/assets/img/post/1oMLZ5s8OHftzqPEVreTd_g.png)
+  - The PDFs or the documentation are first split into multiple chunks of text.
+    - Some different strategies include how large the text chunks should be and if there should be any overlap between them.
+  - In the next step, vector representations of text chunks are generated by using any of the available `text embedding models`. That is all the preprocessing needed to perform a vector similarity search at query time.
+  - The only step left is to encode the user input as a vector at query time and use cosine or any other similarity to compare the distance between the user input and the embedded text chunks.
+  - Most frequently, you will see that the top three most similar documents are returned to provide the context to the LLM to enhance its capability to generate accurate answers. This approach works fairly well when the vector search can produce relevant chunks of text.
+
+---
+
+### multi-hop
+
+**multi-hop question-answering task**
+
+> - simple vector similarity search might not be sufficient when the LLM needs information from multiple documents or even just multiple chunks to generate an answer.
+> - For example:
+>   - Did any of the former OpenAI employees start their own company?
+>   - can be broken down into two questions.
+>     - Who are the former employees of OpenAI?
+>     - Did any of them start their own company?
+
+Answering these types of questions is a **multi-hop question-answering task**, where `a single question can be broken down into multiple sub-questions` and can `require numerous documents to be provided to the LLM to generate an accurate answer`.
+
+- The above-mentioned workflow (simply chunking and embeddings documents in database and using plain vector similarity search) might struggle with multi-hop questions due to:
+  - **Repeated information in top N documents**: The provided documents are not guaranteed to contain complementary and complete information needed to answer a question. For example, the top three similar documents might all mention that Shariq worked at OpenAI and possibly founded a company while completely ignoring all the other former employees that became founders
+  - **Missing reference information**: Depending on the chunk sizes, might lose the reference to the entities in the documents. This can be partially solved by chunk overlaps. However, there are also examples where the references point to another document, so some sort of co-reference resolution or other preprocessing would be needed.
+  - **Hard to define ideal N number of retrieved documents**: Some questions require more documents to be provided to an LLM to accurately answer the question, while in other situations, a large number of provided documents would only increase the noise (and cost).
+
+- A plain vector similarity search might struggle with multi-hop questions. we can employ **multiple strategies** to attempt to answer multi-hop questions requiring information from various documents.
+
+---
+
+### Knowledge Graph
+
+**Knowledge Graph as Condensed Information Storage**
+
+using various techniques to `condense information` for it to be more easily accessible during query time.
+- For example, you could use an LLM to provide a summary of documents and then embed and store the summaries instead of the actual documents.
+- Using this approach,
+  - you could remove a lot of noise, get better results, and worry less about prompt token space.
+  - you could conduct the **contextual summarization** at ingestion or perform it during the query time.
+    - Contextual compression during query time: the context is picked that is relevant to the provided question, so it is a bit more guided.
+    - the heavier the workload during the query time, the worse the expected user latency will be. it is recommended to move as much of the workload to ingestion time as possible to improve latency and avoid other runtime issues.
+
+The same approach can be applied to **summarize conversation history** to avoid running into token limit problems.
+
+I haven’t seen any articles about combining and summarizing multiple documents as a single record. The problem is probably that there are too many combinations of documents that we could merge and summarize. Therefore, it is perhaps too costly to process all the combinations of documents at ingestion time.
+However, a knowledge graph can help here too.
+
+The process of extracting structured information in the form of entities and relationships from unstructured text has been around for some time and is better known as the **information extraction pipeline**. The beauty of `combining an information extraction pipeline with knowledge graphs` is that you can process each document individually, and the information from different records gets connected when the knowledge graph is constructed or enriched.
+
+
+![1N-TVTbRffy_VQ0DPcx0JKg](/assets/img/post/1N-TVTbRffy_VQ0DPcx0JKg.png)
+
+- The knowledge graph used `nodes and relationships` to represent data.
+  - In this example, the first document provided the information that Dario and Daniela used to work at OpenAI, while the second document offered information about their Anthropic startup.
+
+- Each record was processed individually, yet the knowledge graph representation connects the data and makes it easy to answer questions spanning across multiple documents.
+
+- Most of the newer approaches using LLMs to answer multi-hop questions we encountered focus on `solving the task at query time`. However, we believe that many multi-hop question-answering issues can be solved by preprocessing data before ingestion and connecting it in a knowledge graph. The information extraction pipeline can be performed using LLMs or custom text domain models.
+
+- In order to retrieve information from the knowledge graph at query time, we have to construct an appropriate Cypher statement.
+  - LLMs are pretty good at translating natural language to Cypher graph-query language.
+  - In this example,
+  - the smart search uses an LLM to generate an appropriate Cypher statement to retrieve relevant information from a knowledge graph.
+  - The relevant information is then passed to another LLM call, which uses the original question and the provided information to generate an answer.
+  - In practice, you could use different LLMs for generating Cypher statements and answers or use various prompts on a single LLM.
+
+![1mkYvs8_TmzLhUUI1CShNfw](/assets/img/post/1mkYvs8_TmzLhUUI1CShNfw.png)
+
+---
+
+### Combining Graph and Textual Data
+
+- to combine textual and graph data to find relevant information.
+  - For example:
+  - What is the latest news about Prosper Robotics founders?
+    - identify the Prosper Robotics founders using the knowledge graph structure
+    - and retrieve the latest articles mentioning them.
+  - To answer the question, start from the Prosper Robotics node, traverse to its founders, and then retrieve the latest articles mentioning them.
+
+- A `knowledge graph` can be used to represent structured information about entities and their relationships, as well as unstructured text as node properties.
+- Additionally, you could employ natural language techniques like `named entity recognition` to connect unstructured information to relevant entities in the knowledge graph, as shown with the `MENTIONS` relationship.
+
+![1J9LkK_WuH5z00hLJi97_Hw-1](/assets/img/post/1J9LkK_WuH5z00hLJi97_Hw-1.png)
+
+- the future of retrieval-augmented generation applications is utilizing both structured and unstructured information to generate accurate answers. so knowledge graph is a perfect solution because you can store both structured and unstructured data and connect them with explicit relationships, making information more accessible and easier to find.
+
+
+When the knowledge graph contains structured and unstructured data, the smart search tool could utilize `Cypher queries or vector similarity search` to retrieve relevant information. In some cases, you could also use a combination of the two.
+- For example, you could start with a Cypher query to identify relevant documents and then use vector similarity search to find specific information within those documents.
+
+
+### Knowledge Graphs in Chain-of-Thought Flow
+
+
+- chain-of-thought question answering, especially with LLM agents.
+
+- The idea behind LLM agents is that they can decompose questions into multiple steps, define a plan, and use any of the provided tools. In most cases, the agent tools are APIs or knowledge bases that the agent can access to retrieve additional information.
+
+- example:
+  - What is the latest news about Prosper Robotics founders?
+  - Suppose don’t have explicit connections between articles and entities they mention. The articles and entities could even be in separate databases.
+
+![1xPSKLXVQUyoOhzv1AYDszA](/assets/img/post/1xPSKLXVQUyoOhzv1AYDszA.png)
+
+- In this case, an **LLM agent using chain-of-thought flow** would be very helpful.
+
+- First, the agent would decompose the question into sub-questions.
+
+  - Who are the founders of Prosper Robotics?
+  - What is the latest news about them?
+
+- Now, an agent could decide which tool to use. Suppose we provide it with a knowledge graph access that it can use to retrieve structured information.
+  - Therefore, an agent could choose to retrieve the information about the founders of Prosper Robotics from a knowledge graph.
+  - got: `the founder of Prosper Robotics is Shariq Hashme`.
+
+- Now that the first question was answered, the agent could rewrite the second subquestion as:
+  - What is the latest news about Shariq Hashme?
+
+- The agent could use any of the available tools to answer the subsequent question. The tools can range from knowledge graphs, document or vector databases, various APIs, and more. Having access to structured information allows LLM applications to perform various analytics workflows where aggregation, filtering, or sorting is required.
+
+- Consider the following questions:
+
+  - Which company with a solo founder has the highest valuation?
+  - Who founded the most companies?
+
+
+Plain vector similarity search can struggle with these types of analytical questions since it searches through unstructured text data, making it hard to sort or aggregate data. Therefore, a combination of structured and unstructured data is probably the future of retrieval-augmented LLM applications. Additionally, as we have seen, knowledge graphs are also ideal for representing connected information and, consequently, multi-hop queries.
+
+While the chain-of-thought is a fascinating development around LLMs as it shows how an LLM can reason, it is not the most user-friendly as the response latency can be high due to multiple LLM calls. However, we are still very excited to understand more about incorporating knowledge graphs into chain-of-thought flows for various use cases.
+
+
+
+---
+
+## RESEARCH
+
+research design in detail
+1. first define the `Research Questions (RQs)`, followed by the process of collecting and filtering the code snippets generated by Copilot
+2. explain the security analysis performed on the identified snippets and the process of filtering the raw results generated by static analysis tools
+
+
+Research Goal and Questions
+
+- collected code snippets generated by Copilot from GitHub projects as the data source for the research.
+- RQ1. How secure is the code generated by Copilot in GitHub Projects?
+- RQ2. What security weaknesses are present in the code snippets generated by Copilot?
+- RQ3. How many security weaknesses belong to the MITRE CWE Top-25?
+
+
+Data Collection and Filtering
+- Code Snippets Collection.
+- Filtering Code Snippets.
+
+
+![Screenshot 2023-10-06 at 21.25.18](/assets/img/post/Screenshot%202023-10-06%20at%2021.25.18.png)
+
+
+- Data Pre-processing and Analysis
+
+  - Data Pre-process
+    - create a CodeQL database for the source code.
+    - For interpreted languages like Python and JavaScript, the source code can be directly analyzed,
+    - while for compiled languages such as Java, the source code will need to be compiled first and then imported into the CodeQL database. (i.e., C#, Java, C++, and Go).
+    - removed any code snippets that could not be compiled.
+    - For successfully compiled files, we generated the CodeQL database required for queries. At the same time, for interpreted languages Python and JavaScript files, we stored 20 files in each database to improve efficiency, because if we generate a database for an exceptionally large number of files, this would increase the database compilation and scanning time, which is much longer than partitioning them into small databases. In total, we obtained 80 code databases available for CodeQL scanning.
+
+  - Data Analysis
+    - used well-known automated static analysis tools listed by OWASP to scan the collected code snippets.
+    - Since different static analysis tools may use different algorithms and rules to detect security weaknesses, using multiple tools can increase our chances of discovering security issues in the code.
+
+    - To improve the coverage and accuracy of the results, used 2 static analysis tools for security checks on each code snippet (i.e., CodeQL plus a dedicated tool for the specific language).
+
+      - used CodeQL to analyze the code in our dataset.
+        - The default query suite for the standard CodeQL query package is `codeql-suites/<lang>-code-scanning.qls`. There are several useful query suites in the codeql-suite directory of each package.
+        - For example, the `codeql/cpp-queries` package contains the following query suites:
+          - `Cpp-code-scanning.qls`: the standard code scanning query for C++. It covers various features and syntax of C++ and aims to **discover some common weaknesses in the code**.
+          - `Cpp-security-extended.qls`: includes some more advanced queries than cpp-code-scanning.qls and can **detect more security weaknesses**.
+          - `Cpp-security-and-quality.qls`: **combines queries related to security and quality**, covering various aspects of C++ development from basic code structure and naming conventions to advanced security and performance weaknesses. It aims to help developers improve the security and quality of their code.
+        - scanned code snippets using the `<language>-security-and-quality.qls` test suite related to security weaknesses.
+        - These test suites check for multiple security properties and cover many CWEs.
+        - For example, the python-security-and-quality.qls test suite for Python provides 168 security checks, the JavaScript test suite provides 203 security checks, and the C++ test suite provides 163 security checks.
+
+    - selected other popular static security analysis tools for files in each program languages we analyzed.
+      - popular security analysis tools:
+      - Bandit for Python, ESLint for JavaScript, Cppcheck for C ++, Findbugs for Java, Roslyn for C# and Gosec for Go.
+
+    - As the query reports only provide the name and description of the security issues, we manually matched the results in the query reports with the corresponding CWE IDs.
+
+    - In cases where we could not directly obtain the CWE ID related to the security issue from the scan results, we manually mapped the security attributes to the corresponding CWE for later analysis. We explain the specific correspondences.
+
+    - We scanned code snippets from the Repository and Code labels, and we filtered the scan results before analyzing them. We first removed the scan results that were repeatedly prompted by two of the tools, then removed the results that were unrelated to the security issue, and finally confirmed that the Copilot generated code indeed caused the results related to the security issue.
+
+
+RESULTS
+
+- RQ1. How secure is the code generated by Copilot in GitHub Projects?
+  - We used two static analysis tools to scan and analyze the code snippets and then combine the results obtained from the two tools.
+  - The aim is to achieve a better coverage of security issues. Therefore, as long as one of the tools detected the presence of a security issue, the code snippet was considered vulnerable
+  - three types of warnings were used to describe the detected weaknesses:
+    - **Recommendation**, which provides suggestions for improving code quality;
+    - **Warning**, which alerts to potential weaknesses that could cause code to run abnormally or unsafely;
+    - **Error**, which is the highest level of warning and alert to inform that the error could cause code to fail to compile or run incorrectly.
+
+
+- RQ2. What security weaknesses are present in the code snippets generated by Copilot?
+
+  - processed the results of the scans conducted for RQ1, eliminating duplicate security issues detected at the same code snippet location.
+    - identified 600 security weaknesses across 435 code snippets.
+  - For each code snippet, we used CWEs to classify the security issues identified by the static analysis.
+
+- RQ3. How many security weaknesses belong to the MITRE CWE Top-25?
+
+
+
+
+
+
 
 
 
