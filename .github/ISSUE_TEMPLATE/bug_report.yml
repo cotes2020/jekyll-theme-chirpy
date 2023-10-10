@@ -1,0 +1,64 @@
+name: Bug Report
+description: Create a report to help us improve
+body:
+  - type: checkboxes
+    attributes:
+      label: Checklist
+      description: Following the guidelines can make you more likely to get responses.
+      options:
+        - label: >-
+            I have read and accepted the
+            [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
+          required: true
+
+  - type: dropdown
+    id: download
+    attributes:
+      label: How did you create the site?
+      options:
+        - Generated from `chirpy-starter`
+        - Built from `jekyll-theme-chirpy`
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps To Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. In this environment...
+        2. With this config...
+        3. Run '...'
+        4. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Environment
+      value: |
+        - Ruby: <!-- run `ruby -v` -->
+        - Jekyll: <!-- run `bundle exec jekyll -v` -->
+        - Chirpy: <!-- run `bundle info jekyll-theme-chirpy` -->
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        Links? References? Or logs? Anything that will give us more context about the issue you are encountering!

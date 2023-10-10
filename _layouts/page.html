@@ -2,13 +2,7 @@
 layout: default
 ---
 
-{% capture _content %}
-  {% if layout.refactor or page.layout == 'page' %}
-    {% include refactor-content.html content=content lang=lang %}
-  {% else %}
-    {{ content }}
-  {% endif %}
-{% endcapture %}
+{% include lang.html %}
 
 <article class="px-1">
   {% if page.layout == 'page' or page.collection == 'tabs' %}
@@ -18,9 +12,9 @@ layout: default
       {{ title }}
     </h1>
     <div class="content">
-      {{ _content }}
+      {{ content }}
     </div>
   {% else %}
-    {{ _content }}
+    {{ content }}
   {% endif %}
 </article>

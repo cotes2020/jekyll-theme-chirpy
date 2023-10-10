@@ -17,13 +17,17 @@ This post is to show Markdown syntax rendering on [**Chirpy**](https://github.co
 
 ## Headings
 
-<h1 class="mt-5">H1 - heading</h1>
+# H1 - heading
+{: .mt-4 .mb-0 }
 
-<h2 data-toc-skip>H2 - heading</h2>
+## H2 - heading
+{: data-toc-skip='' .mt-4 .mb-0 }
 
-<h3 data-toc-skip>H3 - heading</h3>
+### H3 - heading
+{: data-toc-skip='' .mt-4 .mb-0 }
 
-<h4 data-toc-skip>H4 - heading</h4>
+#### H4 - heading
+{: data-toc-skip='' .mt-4 }
 
 ## Paragraph
 

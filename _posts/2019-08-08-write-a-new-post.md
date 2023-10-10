@@ -107,9 +107,33 @@ math: true
 ---
 ```
 
+After enabling the mathematical feature, you can add math equations with the following syntax: 
+
+- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
+- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
+- **Inline math** (in lists) should be added with `\$$ math $$`
+
+```markdown
+<!-- Block math, keep all blank lines -->
+
+$$
+LaTeX_math_expression
+$$
+
+<!-- Inline math in lines, NO blank lines -->
+
+"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
+
+<!-- Inline math in lists, escape the first `$` -->
+
+1. \$$ LaTeX_math_expression $$
+2. \$$ LaTeX_math_expression $$
+3. \$$ LaTeX_math_expression $$
+```
+
 ## Mermaid
 
-[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagrams generation tool. To enable it on your post, add the following to the YAML block:
+[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagram generation tool. To enable it on your post, add the following to the YAML block:
 
 ```yaml
 ---
@@ -123,7 +147,7 @@ Then you can use it like other markdown languages: surround the graph code with 
 
 ### Caption
 
-Add italics to the next line of an image，then it will become the caption and appear at the bottom of the image:
+Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
 
 ```markdown
 ![img-description](/path/to/image)
