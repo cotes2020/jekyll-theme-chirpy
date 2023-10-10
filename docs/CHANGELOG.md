@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.2.3](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.2.2...v6.2.3) (2023-10-10)
+
+### Bug Fixes
+
+* avoid `utterances` initialization failure  ([#1234](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1234)) ([b34661e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/b34661efd72e8697fd5b30ba7e55c86c7dd10338))
+* **home:** avoid LQIP dirty data passing to the next post ([#1278](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1278)) ([109725d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/109725d2dc56e329c60a876e9ce4094513fd36a5))
+* **posts:** code snippet clipboard tooltip missing title ([#1246](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1246)) ([726085c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/726085c6478e7a9dc2cc57189b2dcbc85d90f048))
+* **posts:** resume target highlighting for superscripts and footnotes ([#1253](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1253)) ([0465a98](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0465a985dc5262fa2043540f4eddafa251f917a3))
+
+### Improvements
+
+* **comments:** lazy load `giscus` ([#1254](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1254)) ([e9c9206](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e9c920641b9c97594fa078ea89747d77eb7e7493))
+* **core:** replace `lazysizes` with browser-level lazy loading ([#1267](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1267)) ([bf3a34d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/bf3a34d0544b49fcf40f57080c4d6b4ff44750c4))
+* **layout:** improve margins for tail block ([#1243](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1243)) ([13a3c3c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/13a3c3c906bb6c5a38314ea27b6cf3767df94b27))
+* **layout:** optimize the main block height calculation ([#1249](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1249)) ([73e171b](https://github.com/cotes2020/jekyll-theme-chirpy/commit/73e171b0fbce4a542e2141d7e2b1144450571ce1))
+* **pwa:** enhance cache privacy protection ([#1275](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1275)) ([2d56597](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2d56597571aaafa92251d192861ea69cce3e83d2))
+* **ui:** standardize metadata text styles ([#1295](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1295)) ([2574118](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2574118f40a956184705f87dea4d88e7c246a055))
+* **ux:** render background color before loading preview image ([#1298](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1298)) ([42bf39e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/42bf39e21c9a497aecc3e9b4549e2fc3ba4a1e4a))
+
 ## [6.2.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.2.1...v6.2.2) (2023-09-10)
 
 ### Bug Fixes
