@@ -1,0 +1,203 @@
+---
+title: 예시 글 # 파일 명은 영어만 써야하지만, 여기는 한글이 가능
+author: nahjh2 # \_data/authors.yml 에 있는 author id (여러명인경우 authors: [id1, id2, ...])
+date: 2023-10-11 11:33:00 +0900 # +0900은 한국의 타임존  (날짜가 미래인경우 빌드시 스킵함.)
+categories: [Exmaple, post examaple] # 카테고리는 메인, 서브 2개만 설정 가능 (띄어쓰기 가능)
+tags: [post examaple] # 태그는 개수제한 X (띄어쓰기 가능)
+# toc: true # Table Of Content는 기본적으로 true로 되어있음.
+# comments: true # 기본적으로 true
+# pin: false # 글 고정 여부로 기본적으로 false, 공지 같은게 아니라면 그대로 두기
+# math: false # 성능 문제로 기본적으로 false로 되어있음. 수식을 적는다면 true로 바꿀 것
+# mermaid: false # 다이어그램 툴로써 성능 문제로 기본적으로 flase로 되어있음.  https://mermaid.js.org/intro/
+---
+
+일단 글은 기본적으로 마크다운 형식으로 쓰면 되고, 필요한 기능들이 있으면 밑에 링크를 확인하면 됨
+
+작성자는 \_data/authors.yml 에 추가하고 위에 author에 id를 넣으면됨
+
+파일이나 이미지는 assets/img/NAME_OF_POST 이런식으로 만들어서 링크 걸면 됨
+
+밑에 있는 내용들은 바로 밑에 링크에 있는 사용법 치트시트
+
+참고: https://chirpy.cotes.page/posts/write-a-new-post
+
+---
+
+This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
+
+## Headings
+
+# H1 - heading
+
+{: .mt-4 .mb-0 }
+
+## H2 - heading
+
+{: data-toc-skip='' .mt-4 .mb-0 }
+
+### H3 - heading
+
+{: data-toc-skip='' .mt-4 .mb-0 }
+
+#### H4 - heading
+
+{: data-toc-skip='' .mt-4 }
+
+## Paragraph
+
+Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.
+
+## Lists
+
+### Ordered list
+
+1. Firstly
+2. Secondly
+3. Thirdly
+
+### Unordered list
+
+- Chapter
+  - Section
+    - Paragraph
+
+### ToDo list
+
+- [ ] Job
+  - [x] Step 1
+  - [x] Step 2
+  - [ ] Step 3
+
+### Description list
+
+Sun
+: the star around which the earth orbits
+
+Moon
+: the natural satellite of the earth, visible by reflected light from the sun
+
+## Block Quote
+
+> This line shows the _block quote_.
+
+## Prompts
+
+> An example showing the `tip` type prompt.
+> {: .prompt-tip }
+
+> An example showing the `info` type prompt.
+> {: .prompt-info }
+
+> An example showing the `warning` type prompt.
+> {: .prompt-warning }
+
+> An example showing the `danger` type prompt.
+> {: .prompt-danger }
+
+## Tables
+
+| Company                      | Contact          | Country |
+| :--------------------------- | :--------------- | ------: |
+| Alfreds Futterkiste          | Maria Anders     | Germany |
+| Island Trading               | Helen Bennett    |      UK |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
+
+## Links
+
+<http://127.0.0.1:4000>
+
+## Footnote
+
+Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
+
+## Inline code
+
+This is an example of `Inline Code`.
+
+## Filepath
+
+Here is the `/path/to/the/file.extend`{: .filepath}.
+
+## Code blocks
+
+### Common
+
+```
+This is a common code snippet, without syntax highlight and line number.
+```
+
+### Specific Language
+
+```bash
+if [ $? -ne 0 ]; then
+  echo "The command was not successful.";
+  #do the needful / exit
+fi;
+```
+
+### Specific filename
+
+```sass
+@import
+  "colors/light-typography",
+  "colors/dark-typography";
+```
+
+{: file='\_sass/jekyll-theme-chirpy.scss'}
+
+## Mathematics
+
+The mathematics powered by [**MathJax**](https://www.mathjax.org/):
+
+$$ \sum\_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6} $$
+
+When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+
+## Mermaid SVG
+
+```mermaid
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+```
+
+## Images
+
+### Default (with caption)
+
+![Desktop View](/assets/img/yyyy-mm-dd-post-name/mockup.png){: width="972" height="589" }
+_Full screen width and center alignment_
+
+### Left aligned
+
+![Desktop View](/assets/img/yyyy-mm-dd-post-name/mockup.png){: width="972" height="589" .w-75 .normal}
+
+### Float to left
+
+![Desktop View](/assets/img/yyyy-mm-dd-post-name/mockup.png){: width="972" height="589" .w-50 .left}
+Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
+
+### Float to right
+
+![Desktop View](/assets/img/yyyy-mm-dd-post-name/mockup.png){: width="972" height="589" .w-50 .right}
+Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
+
+### Dark/Light mode & Shadow
+
+The image below will toggle dark/light mode based on theme preference, notice it has shadows.
+
+![light mode only](/assets/img/yyyy-mm-dd-post-name/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/img/yyyy-mm-dd-post-name/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+## Video
+
+{% include embed/youtube.html id='Balreaj8Yqs' %}
+
+## Reverse Footnote
+
+[^footnote]: The footnote source
+[^fn-nth-2]: The 2nd footnote source
