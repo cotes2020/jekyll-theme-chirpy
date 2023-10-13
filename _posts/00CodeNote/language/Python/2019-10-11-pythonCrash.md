@@ -25,6 +25,11 @@ tags: [Python]
 - [images](#images)
   - [ku example](#ku-example)
     - [filter() function](#filter-function)
+- [Python example](#python-example)
+  - [write](#write)
+  - [chop the api](#chop-the-api)
+  - [write dic to csv](#write-dic-to-csv)
+  - [logging](#logging)
 
 ---
 
@@ -608,8 +613,134 @@ filteredArray = list(filter(lambda x : x not in array2, array1))
 # Filtered Array  :  [1, 4, 21, 33, 45, 77, 88, 99, 32, 55, 77, 22, 4]
 ```
 
+---
+
+# Python example
+
+---
+
+## write
+
+```py
+# writeDicToTXT
+def writeDicToTXT(infodic, outfile):
+    with open(outfile, 'w') as f:
+        print(infodic, file=f)
+
+# writeDicToCSV
+import csv
+my_dict={}
+with open(filepath, 'w') as f:
+    for key in my_dict.keys():
+        f.write("%s,%s\n"%(key,my_dict[key]))
+```
+
+---
+
+## chop the api
+
+```py
+import csv
+
+def writeDicToTXT(infodic, outfile):
+    with open(outfile, 'w') as f:
+        print(infodic, file=f)
+
+def createdic(apidic, apistr):
+    stop = apistr.find("?")
+    if stop == -1:
+        apiname = apistr
+    else:
+        apiname = apistr[0:stop]
+        value = apistr[stop:]
+
+    if apiname not in apidic.keys():
+        apidic[apiname] = []
+#         print("api added: " + apiname)
+#         print(apidic)
+    value = apistr[stop:]
+    while(1==1):
+        valueH = 0
+        valueT = value.find('=')
+        vdata = value[valueH+1:valueT]
+        vdata.strip()
+        if(vdata not in apidic.get(apiname)):
+            apidic.get(apiname).append(vdata)
+#         print(vdata)
+        if(value[valueT:].find('&') != -1):
+            valueH = valueT + value[valueT:].find('&')
+            value = value[valueH:]
+        else:
+            break
+#     print(apidic)
+    return apidic
+
+# apistr="/xx/xx?xx=123&xxx=2347"
+# apidic={}
+# apidic=createdic(apidic, apistr)
+
+def mfunc(path, infodic):
+    with open(path) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            if row != []:
+                line_count += 1
+                print(row)
+                infodic = createdic(infodic, row[0])
+    print(f'Processed {line_count} lines.')
+    print(len(infodic))
+    return infodic
+
+sapidic={}
+sapidic = mfunc('/Users/api.csv', sapidic)
+print(len(sapidic))
+writeDicToTXT(sapidic, "/Users/api.txt")
+```
+
+---
+
+## write dic to csv
 
 
+
+---
+
+
+## logging
+
+```py
+import sys
+import logging
+import os
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
+
+LOGGER.info("info()")
+
+LOGGER.debug("debug")
+
+
+
+
+from loguru import logger
+logger.add(
+    sys.stdout,
+    backtrace=True, colorize=True,
+    format="{time:YYYY-MM-DDTHH:mm:ss.SSS[Z]!UTC} - {level} - {file}:{line} - {message}")
+logger.level("ERROR", color="<red>")
+```
+
+
+
+
+
+
+
+
+.
 
 
 
