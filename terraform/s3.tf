@@ -1,9 +1,15 @@
+variable "secret_header" {
+  type    = string
+  default = "secret-header"
+}
+
 resource "aws_s3_bucket" "guydevops-com_s3_bucket" {
   bucket = "guydevops.com"
   tags = {
     Name        = "guydevops"
     Environment = "prod"
   }
+
 }
 
 
@@ -13,28 +19,6 @@ resource "aws_s3_bucket_website_configuration" "guydevops-com_s3_bucket_website"
   index_document {
     suffix = "index.html"
   }
-  #   error_document {
-  #     key = "error.html"
-  #   }
-
-  #   routing_rule {
-  #     condition {
-  #       key_prefix_equals = "docs/"
-  #     }
-  #     redirect {
-  #       replace_key_prefix_with = "documents/"
-  #     }
-  #   }
-}
-
-
-resource "aws_s3_bucket_public_access_block" "allow_public_access_to_site_block" {
-  bucket = aws_s3_bucket.guydevops-com_s3_bucket.id
-
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
 }
 
 resource "aws_s3_bucket_policy" "allow_public_access_to_site" {
@@ -58,6 +42,11 @@ data "aws_iam_policy_document" "allow_public_access_to_site_policy" {
       aws_s3_bucket.guydevops-com_s3_bucket.arn,
       "${aws_s3_bucket.guydevops-com_s3_bucket.arn}/*",
     ]
+    condition {
+      test     = "StringLike"
+      variable = "aws:Referer"
+      values   = ["${var.secret_header}"]
+    }
   }
 }
 
