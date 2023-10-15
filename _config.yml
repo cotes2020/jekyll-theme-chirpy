@@ -183,6 +183,7 @@ exclude:
   - rollup.config.js
   - node_modules
   - package*.json
+  - terraform/
 
 jekyll-archives:
   enabled: [categories, tags]
