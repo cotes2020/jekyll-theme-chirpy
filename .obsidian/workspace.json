@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_tabs/archives.md",
+                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md",
                 "mode": "source",
                 "source": false
               }
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_tabs/archives.md",
+                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_tabs/archives.md",
+                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_tabs/archives.md"
+                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md"
               }
             }
           },
@@ -165,5 +165,12 @@
     }
   },
   "active": "a7596bd8104c8852",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "_tabs/cv.md",
+    "_tabs/categories.md",
+    "_tabs/archives.md",
+    "_tabs/about.md",
+    "_posts/2023-10-16-GETTING STARTED DXLIB.md",
+    "_posts/2023-09-29-WELCOME.md"
+  ]
 }

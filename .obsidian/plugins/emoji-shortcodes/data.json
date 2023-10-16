@@ -1,0 +1,9 @@
+{
+  "immediateReplace": true,
+  "suggester": true,
+  "historyPriority": true,
+  "historyLimit": 100,
+  "history": [
+    ":hourglass:"
+  ]
+}

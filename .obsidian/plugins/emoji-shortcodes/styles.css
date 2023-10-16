@@ -1,0 +1,31 @@
+a[href="https://ko-fi.com/phibr0"] > img
+{
+  height: 3em;
+}
+
+a[href="https://ko-fi.com/phibr0"]
+{
+  transform: translate(0, 5%);
+}
+
+.ES-suggester-container {
+  display: flex;
+  place-content: space-between;
+}
+
+.ES-shortcode {
+  margin-right: 8px;
+}
+
+.ES-suggestion-item {
+  border-top: solid var(--background-secondary) 1px;
+  padding-left: 10px;
+}
+
+.ES-sub-setting {
+  padding-left: 2em;
+}
+.ES-sub-setting + .ES-sub-setting {
+  padding-left: 0;
+  margin-left: 2em;
+}

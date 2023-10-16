@@ -1,0 +1,11 @@
+{
+	"id": "emoji-shortcodes",
+	"name": "Emoji Shortcodes",
+	"version": "2.2.0",
+	"minAppVersion": "1.0.0",
+	"description": "This Plugin enables the use of Markdown Emoji Shortcodes :smile:",
+	"author": "phibr0",
+	"authorUrl": "https://github.com/phibr0",
+	"isDesktopOnly": false,
+	"fundingUrl": "https://ko-fi.com/phibr0"
+}
