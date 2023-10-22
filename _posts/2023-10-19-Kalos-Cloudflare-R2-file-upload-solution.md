@@ -6,8 +6,6 @@ categories: [DevOps, cloud] # 카테고리는 메인, 서브 2개만 설정 가�
 tags: [cloudflare R2, kalos, image upload, cloudflare, s3, R2] # 태그는 개수제한 X (띄어쓰기 가능)
 ---
 
-# Kalos, Cloudflare R2 file upload solution
-
 현재 클라우드 파일스토리지라고 하면 가장 먼저 떠오르는 솔루션은 단연코 AWS의 S3라고 말할 수 있을 것입니다. 그만큼 수많은 사람들이 AWS S3를 사용하고 있으며, S3는 그에 걸맞게 탄탄한 기능과 일정 수준의 보안을 제공합니다. 하지만 비싸다는 단점을 가지고 있습니다. 정확히 따지면 AWS S3에는 Egress fee라는 요금이 존재하는데, 이는 S3에 존재하는 파일을 요청해서 다른 사람이 파일을 요청할 때, 다운로드 용량에 따른 요금을 부과하는 방식입니다.
 
 이 Egress fee가 바로 S3에서 AWS에서 벌어들이는 소득의 대부분입니다.
