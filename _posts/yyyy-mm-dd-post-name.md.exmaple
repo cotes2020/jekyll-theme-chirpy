@@ -9,6 +9,7 @@ tags: [post examaple] # 태그는 개수제한 X (띄어쓰기 가능)
 # pin: false # 글 고정 여부로 기본적으로 false, 공지 같은게 아니라면 그대로 두기
 # math: false # 성능 문제로 기본적으로 false로 되어있음. 수식을 적는다면 true로 바꿀 것
 # mermaid: false # 다이어그램 툴로써 성능 문제로 기본적으로 flase로 되어있음.  https://mermaid.js.org/intro/
+render_with_liquid: false
 ---
 
 일단 글은 기본적으로 마크다운 형식으로 쓰면 되고, 필요한 기능들이 있으면 밑에 링크를 확인하면 됨
