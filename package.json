@@ -29,7 +29,7 @@
     "rimraf": "^5.0.5",
     "rollup": "^3.29.4",
     "rollup-plugin-license": "^3.1.0",
-    "stylelint": "^15.10.3",
+    "stylelint": "^15.11.0",
     "stylelint-config-standard-scss": "^11.0.0"
   }
 }
