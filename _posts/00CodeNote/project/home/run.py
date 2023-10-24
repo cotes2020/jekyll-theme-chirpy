@@ -17,31 +17,32 @@ target_month = 24
 additional_payment_at_target_month = 0
 
 
-yearly_additional_payment = 90000
+yearly_additional_payment = 2288
+# yearly_additional_payment = 90000
 # yearly_additional_payment = 60000
 # yearly_additional_payment = 0
 # yearly_additional_payment = 30000
-# years_for_additional_payment = [2]
-years_for_additional_payment = [
-    12,
-    24,
-    36,
-    48,
-    60,
-    72,
-    84,
-    96,
-    108,
-    120,
-    132,
-    144,
-    156,
-    268,
-    180,
-    192,
-    204,
-    216,
-]
+years_for_additional_payment = [2]
+# years_for_additional_payment = [
+#     12,
+#     24,
+#     36,
+#     48,
+#     60,
+#     72,
+#     84,
+#     96,
+#     108,
+#     120,
+#     132,
+#     144,
+#     156,
+#     268,
+#     180,
+#     192,
+#     204,
+#     216,
+# ]
 
 
 # Initialize balances

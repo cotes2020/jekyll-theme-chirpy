@@ -20,8 +20,13 @@ tags: [AIML]
   - [Prompt elements](#prompt-elements)
   - [Prompt Engineering Use Cases](#prompt-engineering-use-cases-1)
   - [Prompt Engineering techniques](#prompt-engineering-techniques)
-    - [Zero-shot Prompting:](#zero-shot-prompting)
-    - [N-shot Prompting:](#n-shot-prompting)
+    - [Zero-shot Prompting](#zero-shot-prompting)
+      - [Zero Shot Inference with an Instruction Prompt](#zero-shot-inference-with-an-instruction-prompt)
+      - [Zero Shot Inference with the Prompt Template from FLAN-T5](#zero-shot-inference-with-the-prompt-template-from-flan-t5)
+    - [One Shot Prompting / In-contect learning (ICL)](#one-shot-prompting--in-contect-learning-icl)
+      - [One Shot Inference](#one-shot-inference)
+    - [Few / N Shot Prompting](#few--n-shot-prompting)
+      - [Few Shot Inference](#few-shot-inference)
     - [Chain-of-thought CoT prompting](#chain-of-thought-cot-prompting)
     - [Tree-of-thought prompting](#tree-of-thought-prompting)
     - [Maieutic 启发性的  prompting](#maieutic-启发性的--prompting)
@@ -267,11 +272,6 @@ Prompt engineering can be applied to various NLP tasks. Let’s explore some com
 - Code Generation
 - Text Classification
 
-
-
-
-
-
 ---
 
 ## Prompt Engineering techniques
@@ -282,19 +282,138 @@ Here are some examples of techniques that prompt engineers use to improve their 
 
 ---
 
-### Zero-shot Prompting:
+### Zero-shot Prompting
 
 - In zero-shot prompting, models are trained to perform tasks they haven’t been explicitly trained on. Instead, the prompt provides a clear task specification without any labeled examples.
 
 ---
 
-### N-shot Prompting:
+#### Zero Shot Inference with an Instruction Prompt
+
+- take the dialogue and convert it into an instruction prompt.
+
+```py
+prompt = f"""
+          Summarize the following conversation.
+
+          {dialogue}
+
+          Summary:
+          """
+# This is much better! But the model still does not pick up on the nuance of the conversations though.
+```
+
+---
+
+#### Zero Shot Inference with the Prompt Template from FLAN-T5
+
+- FLAN-T5 has many prompt templates that are published for certain tasks
+
+```py
+prompt = f"""
+          Dialogue:
+
+          {dialogue}
+
+          What was going on?
+          """
+# use one of the pre-built FLAN-T5 prompts:
+```
+
+---
+
+
+### One Shot Prompting / In-contect learning (ICL)
+
+![Screenshot 2023-10-21 at 11.33.27](/assets/img/Screenshot%202023-10-21%20at%2011.33.27.png)
+
+One shot inference involves providing an example question with answer followed by a second question to be answered by the LLM.
+
+#### One Shot Inference
+
+```py
+# The stop sequence '{summary}\n\n\n' is important for FLAN-T5. Other models may have their own preferred stop sequence.
+def make_prompt(example_indices_full, example_index_to_summarize):
+    prompt = ''
+
+    # add exsisted example into prompt
+    for index in example_indices_full:
+        dialogue = dataset['test'][index]['dialogue']
+        summary = dataset['test'][index]['summary']
+
+        # The stop sequence '{summary}\n\n\n' is important for FLAN-T5. Other models may have their own preferred stop sequence.
+        prompt += f"""
+                  Dialogue:
+                  {dialogue}
+                  What was going on?
+                  {summary}
+                  """
+
+    # use the prompt for new example
+    dialogue = dataset['test'][example_index_to_summarize]['dialogue']
+    prompt += f"""
+                Dialogue:
+                {dialogue}
+                What was going on?
+                """
+    return prompt
+
+# get one_shot_prompt
+example_indices_full = [40]
+example_index_to_summarize = 200
+one_shot_prompt = make_prompt(example_indices_full, example_index_to_summarize)
+print(one_shot_prompt)
+
+
+summary = dataset['test'][example_index_to_summarize]['summary']
+
+inputs = tokenizer(one_shot_prompt, return_tensors='pt')
+output = tokenizer.decode(
+    model.generate(
+        inputs["input_ids"],
+        max_new_tokens=50,
+    )[0],
+    skip_special_tokens=True
+)
+
+print(dash_line)
+print(f'BASELINE HUMAN SUMMARY:\n{summary}\n')
+print(dash_line)
+print(f'MODEL GENERATION - ONE SHOT:\n{output}')
+```
+
+
+---
+
+
+### Few / N Shot Prompting
+
+Few shot inference provides multiple example prompts and answers while zero shot provides only one prompt to be answered by the LLM.
 
 - N-shot prompting involves fine-tuning models with limited or no labeled data for a specific task.
 
 - By providing a small number of labeled examples, language models can learn to generalize and perform the task accurately.
 
 - N-shot prompting encompasses zero-shot and few-shot prompting approaches.
+
+![Screenshot 2023-10-21 at 11.33.27](/assets/img/Screenshot%202023-10-21%20at%2011.33.27_dn2czimtk.png)
+
+![Screenshot 2023-10-21 at 11.34.16](/assets/img/Screenshot%202023-10-21%20at%2011.34.16.png)
+
+
+#### Few Shot Inference
+
+explore few shot inference by adding two more full dialogue-summary pairs to your prompt.
+
+```py
+example_indices_full = [40, 80, 120]
+example_index_to_summarize = 200
+
+few_shot_prompt = make_prompt(example_indices_full, example_index_to_summarize)
+
+print(few_shot_prompt)
+```
+
 
 ---
 

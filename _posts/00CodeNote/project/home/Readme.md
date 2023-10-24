@@ -329,6 +329,14 @@ yearly_additional_payment = 0
 // 30-360 yearly_interest_payment: --> 2,375.15, current_balance: --> -0.18761445945983724
 // total_interest_payment: $993,205.01
 
+yearly_additional_payment = 1000
+// 1-12 yearly_interest_payment: --> 45,781.66, current_balance: --> 735013.137077492
+// total_interest_payment: $986,770.48
+
+yearly_additional_payment = 2288
+// 1-12 yearly_interest_payment: --> 45,714.97, current_balance: --> 733650.8254058858
+// total_interest_payment: $978,572.29
+
 
 yearly_additional_payment = 30000
 years_for_additional_payment = [2]
