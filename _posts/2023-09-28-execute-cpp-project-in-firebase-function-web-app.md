@@ -1,6 +1,6 @@
 ---
 layout: post
-title: execute cpp project in firebase function web app
+title: Execute cpp Project in Firebase Function Web App
 date: 2023-09-28 11:32 +0900
 category: [Framework]
 tag: [Python, Firebase, cmake, pybind11, wheel]

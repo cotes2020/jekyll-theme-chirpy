@@ -28,6 +28,7 @@ $code-dot-gap: 0.5rem !default;
 $code-icon-width: 1.75rem !default;
 
 /* fonts */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap';
 
-$font-family-base: 'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
-$font-family-heading: Lato, 'Microsoft Yahei', sans-serif !default;
+$font-family-base: 'Noto Sans KR', sans-serif !default;
+$font-family-heading: 'Noto Sans KR', sans-serif !default;

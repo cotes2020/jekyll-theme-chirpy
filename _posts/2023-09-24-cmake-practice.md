@@ -1,6 +1,6 @@
 ---
 layout: post
-title: cmake-practice
+title: Cmake Practice
 date: 2023-09-24 09:03 +0900
 category: [Framework]
 tag: [cmake]

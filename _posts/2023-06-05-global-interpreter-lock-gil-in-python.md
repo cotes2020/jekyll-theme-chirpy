@@ -110,4 +110,4 @@ multi_process(io_bound_process, 10)
 
 ### Ref.
 
-[#realpython](https://realpython.com/python-gil/) [#dabeaz](http://www.dabeaz.com/python/GIL.pdf) [#dabeaz2](http://dabeaz.blogspot.com/2010/01/python-gil-visualized.html) [#numbersapi](http://numbersapi.com/#42)
+[#realpython](https://realpython.com/python-gil/) [#dabeaz](https://www.dabeaz.com/python/GIL.pdf) [#dabeaz2](https://dabeaz.blogspot.com/2010/01/python-gil-visualized.html)
