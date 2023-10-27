@@ -23,3 +23,16 @@ platforms:
   # - type: Weibo
   #   icon: "fab fa-weibo"
   #   link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"
+  #
+  # - type: Mastodon
+  #   icon: "fa-brands fa-mastodon"
+  #   link: |
+  #     [
+  #       {&quot;label&quot;:&quot;Mastodon.Social&quot;,&quot;link&quot;:&quot;https://mastodon.social/&quot;},
+  #       {&quot;label&quot;:&quot;Mastodon.Online&quot;,&quot;link&quot;:&quot;https://mastodon.online/&quot;},
+  #       {&quot;label&quot;:&quot;fosstodon.org&quot;,&quot;link&quot;:&quot;https://fosstodon.org/&quot;},
+  #       {&quot;label&quot;:&quot;photog.social&quot;,&quot;link&quot;:&quot;https://photog.social/&quot;}]
+  #
+  # The Mastodon sharing uses https://www.npmjs.com/package/@justinribeiro/share-to-mastodon, which doesn't
+  # seem to respect the single or double quotes if you specify it here. So, you'll need to use the `&quot;`
+  # HTML entity instead.  These are the default instances listed in the package.

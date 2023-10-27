@@ -7,20 +7,58 @@
     {% assign title = title | uri_escape %}
     {% assign url = page.url | absolute_url | url_encode %}
 
-    {% for share in site.data.share.platforms %}
-      {% assign link = share.link | replace: 'TITLE', title | replace: 'URL', url %}
-      <a
-        href="{{ link }}"
+    {% for share in site.data.share.platforms %}{% unless share.type == 'Mastodon' %}
+    {% assign link = share.link | replace: 'TITLE', title | replace: 'URL', url %}
+    <a
+      href="{{ link }}"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="{{ share.type }}"
+      target="_blank"
+      rel="noopener"
+      aria-label="{{ share.type }}"
+    >
+      <i class="fa-fw {{ share.icon }}"></i>
+    </a>
+  {% endunless %}
+  {% if share.type == 'Mastodon' %}
+    <button
+        id="share-to-mastodon"
+        aria-label="Mastodon"
+        class="btn small"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
-        title="{{ share.type }}"
-        target="_blank"
-        rel="noopener"
-        aria-label="{{ share.type }}"
+        title="Mastodon"
       >
-        <i class="fa-fw {{ share.icon }}"></i>
-      </a>
-    {% endfor %}
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/share-to-mastodon/+esm"></script>
+        <share-to-mastodon
+          message="{{ page.title }}"
+          url="{{ page.url | absolute_url }}"
+          style="
+            --wc-stm-color: var(--text-color);
+            --wc-stm-link-color-initial: var(--btn-share-color);
+            --wc-stm-dialog-background-color: var(--sidebar-bg);
+            --wc-stm-dialog-border-color: var(--sidebar-border-color);
+            --wc-stm-font-family: 'Source Sans Pro','Microsoft Yahei',sans-serif;
+            --wc-stm-font-color: var(--text-color);
+            --wc-stm-link-text-decoration: none;
+            --wc-stm-form-button-background-color: var(--main-bg);
+            --wc-stm-form-button-background-color-hover: var(--sidebar-hover-bg);
+            --wc-stm-form-input-border: var(--sidebar-border-color);
+            --wc-stm-link-color-active: var(--btn-share-color);
+            --wc-stm-link-color-initial: var(--btn-share-color);
+            --wc-stm-link-color-visited: var(--btn-share-color);
+            --wc-stm-form-submit-background-color: var(--sidebar-btn-bg);
+            --wc-stm-form-cancel-background-color: var(--sidebar-btn-bg);
+            --wc-stm-form-submit-color: var(--sidebar-btn-color);
+            --wc-stm-form-cancel-color: var(--sidebar-btn-color);"
+          customInstanceList="{{ share.link }}"
+        >
+          <i class="{{ share.icon }}"></i>
+        </share-to-mastodon>
+      </button>
+  {% endif %}
+  {% endfor %}
 
     <button
       id="copy-link"
