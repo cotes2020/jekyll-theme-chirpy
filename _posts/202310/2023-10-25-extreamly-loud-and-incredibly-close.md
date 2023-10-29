@@ -11,11 +11,11 @@ tags:
 pin: false
 math: true
 mermaid: true
-lastmod: 2023-10-29T11:08:31.758Z
+lastmod: 2023-10-29T12:46:44.861Z
 ---
 
 ![](/assets/img/202310/book1.jpeg)
-_Extreamly Loud and Incredibly Close authored by Jonathan Safran Foer_
+_Extreamly Loud and Incredibly Close - Jonathan Safran Foer_
 
 사랑하는 사람들을 갑작스럽게 잃어버린 이들이 크나큰 상실의 아픔을 가지고 살아가는 이야기이다.
 젊은 시절 드레스덴 폭격으로 가족과 사랑하는 연인을 잃어버리고 후에는 911 테러로 인해 아들을 잃어버린 할아버지와 할머니, 마찬가지로 아버지를 잃어버린 오스카 쉘의 관점에서 이야기가 진행된다.
@@ -39,4 +39,4 @@ _Extreamly Loud and Incredibly Close authored by Jonathan Safran Foer_
 
 만약 내가 저러한 상실을 겪었다면 어땠을까? 그들처럼 괴로워했을까?
 
-다만 확실한 것은 저러한 상실을 겪고싶지 않다는 것이다.
+다만 확실한 것은 저러한 상실을 평생 겪고싶지 않다는 것이다.
