@@ -4,7 +4,8 @@
 
   A minimal, responsive, and feature-rich Jekyll theme for technical writing.
 
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)][gem]&nbsp;
+  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)][![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcotes2020%2Fjekyll-theme-chirpy.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcotes2020%2Fjekyll-theme-chirpy?ref=badge_shield)
+[gem]&nbsp;
   [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg?branch=master&event=push)][ci]&nbsp;
   [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)][codacy]&nbsp;
   [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)][license]&nbsp;
@@ -15,6 +16,9 @@
   [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
 
 </div>
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcotes2020%2Fjekyll-theme-chirpy.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcotes2020%2Fjekyll-theme-chirpy?ref=badge_large)
 
 ## Features
 
