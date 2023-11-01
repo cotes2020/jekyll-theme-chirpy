@@ -9,62 +9,107 @@
 
 <url>
   <loc>https://bbb1293.github.io/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/categories/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/tags/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/archives/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/about/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/posts/no-longer-human/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/posts/extreamly-loud-and-incredibly-close/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/posts/sam-smith-concert-2023/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/posts/github-ssh/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/posts/make-blog/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/tags/book/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/tags/github/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/tags/blog/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/tags/concert/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/tags/sam-smith/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/tags/ssh/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/categories/github/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://bbb1293.github.io/categories/setup/</loc>
-  <lastmod>2023-10-15T15:01:37+00:00</lastmod>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/categories/hobby/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/categories/book/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bbb1293.github.io/categories/concert/</loc>
+  <lastmod>2023-10-29T12:47:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
