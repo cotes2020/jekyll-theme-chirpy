@@ -4,7 +4,6 @@ author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Demo]
 tags: [typography]
-pin: true
 math: true
 mermaid: true
 image:
@@ -15,19 +14,16 @@ image:
 
 This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
 
-## Headings
-
+## Titles
+---
 # H1 - heading
-{: .mt-4 .mb-0 }
 
-## H2 - heading
-{: data-toc-skip='' .mt-4 .mb-0 }
+<h2 data-toc-skip>H2 - heading</h2>
 
-### H3 - heading
-{: data-toc-skip='' .mt-4 .mb-0 }
+<h3 data-toc-skip>H3 - heading</h3>
 
-#### H4 - heading
-{: data-toc-skip='' .mt-4 }
+<h4>H4 - heading</h4>
+---
 
 ## Paragraph
 
@@ -126,7 +122,7 @@ fi;
 ```sass
 @import
   "colors/light-typography",
-  "colors/dark-typography";
+  "colors/dark-typography"
 ```
 {: file='_sass/jekyll-theme-chirpy.scss'}
 
