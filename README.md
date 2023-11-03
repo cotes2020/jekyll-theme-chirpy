@@ -1,3 +1,11 @@
+
+This is a fork of the chirpy jekyll theme.
+
+to run: 
+'''
+budle exec jekyll s
+'''
+
 <div align="center">
 
   # Chirpy Jekyll Theme
