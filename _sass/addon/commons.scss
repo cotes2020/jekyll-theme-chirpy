@@ -73,11 +73,52 @@ img {
   height: auto;
   transition: all 0.35s ease-in-out;
 
-  .blur & {
-    $blur: 20px;
+  &[data-src] {
+    &[data-lqip='true'] {
+      &.lazyload,
+      &.lazyloading {
+        -webkit-filter: blur(20px);
+        filter: blur(20px);
+      }
+    }
 
-    -webkit-filter: blur($blur);
-    filter: blur($blur);
+    &:not([data-lqip='true']) {
+      &.lazyload,
+      &.lazyloading {
+        background: var(--img-bg);
+      }
+
+      &.lazyloaded {
+        -webkit-animation: fade-in 0.35s ease-in;
+        animation: fade-in 0.35s ease-in;
+      }
+    }
+
+    &.shadow {
+      -webkit-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+      box-shadow: none !important; /* cover the Bootstrap 4.6.1 styles */
+    }
+
+    @extend %img-caption;
+  }
+
+  @-webkit-keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 
@@ -132,11 +173,12 @@ kbd {
 }
 
 footer {
+  font-size: 0.8rem;
   background-color: var(--main-bg);
   height: $footer-height;
   border-top: 1px solid var(--main-border-color);
 
-  @extend %text-xs;
+  @extend %text-color;
 
   a {
     @extend %text-highlight;
@@ -147,6 +189,7 @@ footer {
   }
 
   p {
+    line-height: 1.75;
     text-align: center;
     margin-bottom: 0;
   }
@@ -306,30 +349,6 @@ sup {
 
 /* --- post --- */
 
-.preview-img {
-  aspect-ratio: 40 / 21;
-  width: 100%;
-  overflow: hidden;
-
-  @extend %rounded;
-
-  &:not(.no-bg) {
-    background: var(--img-bg);
-  }
-
-  img {
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-
-    @extend %rounded;
-
-    @at-root #post-list & {
-      width: 100%;
-    }
-  }
-}
-
 .post-preview {
   @extend %rounded;
 
@@ -365,6 +384,7 @@ main {
   }
 
   p {
+    > img[data-src],
     > a.popup {
       &:not(.normal):not(.left):not(.right) {
         @include align-center;
@@ -382,7 +402,7 @@ main {
 }
 
 .post-meta {
-  @extend %text-sm;
+  font-size: 0.85rem;
 
   a {
     &:not([class]):hover {
@@ -518,15 +538,14 @@ main {
     background: var(--shimmer-bg);
     height: 100%;
     width: 100%;
-    -webkit-animation: shimmer 1.3s infinite;
-    animation: shimmer 1.3s infinite;
+    -webkit-animation: shimmer 1s infinite;
+    animation: shimmer 1s infinite;
   }
 
   @-webkit-keyframes shimmer {
     0% {
       transform: translateX(-100%);
     }
-
     100% {
       transform: translateX(100%);
     }
@@ -536,7 +555,6 @@ main {
     0% {
       transform: translateX(-100%);
     }
-
     100% {
       transform: translateX(100%);
     }
@@ -680,7 +698,6 @@ $btn-mb: 0.5rem;
 
 #sidebar {
   @include pl-pr(0);
-
   position: fixed;
   top: 0;
   left: 0;
@@ -688,7 +705,7 @@ $btn-mb: 0.5rem;
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  background: var(--sidebar-bg);
+  background: black;
   border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -750,6 +767,7 @@ $btn-mb: 0.5rem;
       @extend %sidebar-link-hover;
 
       color: var(--site-title-color);
+      color: white;
     }
   }
 
@@ -775,13 +793,14 @@ $btn-mb: 0.5rem;
 
       a.nav-link {
         @include pt-pb(0.6rem);
-
+        color: rgba(255, 255, 255, 0.6);
         display: flex;
         align-items: center;
         border-radius: 0.75rem;
         font-weight: 600;
 
         &:hover {
+          color: var(--sidebar-active-color);
           background-color: var(--sidebar-hover-bg);
         }
 
@@ -819,11 +838,9 @@ $btn-mb: 0.5rem;
     padding-right: 1rem;
     margin-bottom: 1.5rem;
 
-    $btn-size: 1.75rem;
-
     %button {
-      width: $btn-size;
-      height: $btn-size;
+      width: 1.75rem;
+      height: 1.75rem;
       margin-bottom: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
@@ -850,7 +867,7 @@ $btn-mb: 0.5rem;
     }
 
     i {
-      line-height: $btn-size;
+      line-height: 1.75rem;
     }
 
     .mode-toggle {
@@ -1129,6 +1146,10 @@ search {
 #tail-wrapper {
   > :not(script) {
     margin-top: 3rem;
+  }
+
+  > :only-child {
+    margin-top: 0;
   }
 }
 
