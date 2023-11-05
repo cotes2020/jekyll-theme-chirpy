@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Dev.note # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: 앱과 인공지능에 관심이 많은 대학생 개발자 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -73,7 +73,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'joshua-sortino-71vAb1FXB6g-unsplash.jpg'
+avatar: assets/img/profile.jpg
 
 # boolean type, the global switch for TOC in posts.
 toc: true
