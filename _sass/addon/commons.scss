@@ -309,7 +309,6 @@ sup {
 .preview-img {
   aspect-ratio: 40 / 21;
   width: 100%;
-  height: 100%;
   overflow: hidden;
 
   @extend %rounded;
@@ -324,6 +323,10 @@ sup {
     object-fit: cover;
 
     @extend %rounded;
+
+    @at-root #post-list & {
+      width: 100%;
+    }
   }
 }
 
