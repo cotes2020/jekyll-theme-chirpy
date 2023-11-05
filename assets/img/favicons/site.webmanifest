@@ -1,8 +1,8 @@
 ---
 layout: compress
 ---
-
-{% assign favicon_path = "/assets/img/favicons" | relative_url %}
+ 
+{% assign favicon_path = "assets/img/favicons" | relative_url %}
 
 {
   "name": "{{ site.title }}",
@@ -10,13 +10,13 @@ layout: compress
   "description": "{{ site.description }}",
   "icons": [
     {
-      "src": "{{ favicon_path }}/android-chrome-192x192.png",
-      "sizes": "192x192",
+      "src": "{{ favicon_path }}/apple-touch-icon-114x114.png",
+      "sizes": "114x114",
       "type": "image/png"
     },
     {
-      "src": "{{ favicon_path }}/android-chrome-512x512.png",
-      "sizes": "512x512",
+      "src": "{{ favicon_path }}/apple-touch-icon-120x120.png",
+      "sizes": "120x120",
       "type": "image/png"
     }],
   "start_url": "{{ '/index.html' | relative_url }}",
