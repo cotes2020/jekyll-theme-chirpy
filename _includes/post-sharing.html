@@ -8,15 +8,13 @@
     {% assign url = page.url | absolute_url | url_encode %}
 
     {% for share in site.data.share.platforms -%}
+      {%- capture tooltip -%}
+        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ share.type }}" aria-label="{{ share.type }}"
+      {%- endcapture -%}
+
       {% if share.type == 'Mastodon' %}
         <script defer type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/share-to-mastodon/+esm"></script>
-        <button
-          class="btn text-start"
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          title="{{ share.type }}"
-          aria-label="{{ share.type }}"
-        >
+        <button class="btn text-start" {{ tooltip }}>
           <share-to-mastodon
             class="share-mastodon"
             message="{{ title }}"
@@ -25,7 +23,7 @@
               customInstanceList="{{ share.instances | jsonify | xml_escape }}"
             {%- endif %}
           >
-            <i class="{{ share.icon }}"></i>
+            <i class="fa-fw {{ share.icon }}"></i>
           </share-to-mastodon>
         </button>
 
@@ -34,15 +32,7 @@
 
       {% assign link = share.link | replace: 'TITLE', title | replace: 'URL', url %}
 
-      <a
-        href="{{ link }}"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="{{ share.type }}"
-        target="_blank"
-        rel="noopener"
-        aria-label="{{ share.type }}"
-      >
+      <a href="{{ link }}" target="_blank" rel="noopener" {{ tooltip }}>
         <i class="fa-fw {{ share.icon }}"></i>
       </a>
     {% endfor %}
