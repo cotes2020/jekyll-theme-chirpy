@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  background: var(--mask-bg);
+  background: var(dark);
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
