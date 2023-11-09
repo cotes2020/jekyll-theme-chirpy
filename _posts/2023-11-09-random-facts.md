@@ -1,6 +1,6 @@
 ---
 title: TITLE
-date: YYYY-MM-DD HH:MM:SS +/-TTTT
+date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Tutorial]
 tags: [random]     # TAG names should always be lowercase
 pin: true
