@@ -4,8 +4,7 @@
 
 @mixin dark-syntax {
   --language-border-color: #2d2d2d;
-  --highlight-bg-color: #8659e1;
-  // --highlight-bg-color: #151515; 
+  --highlight-bg-color: #151515; 
   --highlighter-rouge-color: #c9def1;
   --highlight-lineno-color: #808080;
   --inline-code-bg: #323238;
@@ -33,7 +32,7 @@
   .highlight,
   .highlight .w {
     color: #d0d0d0;
-    background-color: #151515;
+    background-color: #e72525;
   }
 
   .highlight .err {
