@@ -3,7 +3,7 @@
 */
 
 html {
-  @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: light) {
     &:not([data-mode]),
     &[data-mode='light'] {
       @include light-scheme;
