@@ -2,14 +2,6 @@
   Post-specific style
 */
 
-@mixin btn-sharing-color($light-color, $important: false) {
-  @if $important {
-    color: var(--btn-share-color, $light-color) !important;
-  } @else {
-    color: var(--btn-share-color, $light-color);
-  }
-}
-
 %btn-post-nav {
   width: 50%;
   position: relative;
@@ -72,11 +64,23 @@ h1 + .post-meta {
     -ms-user-select: none;
     user-select: none;
 
+    %icon-size {
+      font-size: 1.125rem;
+    }
+
     .share-icons {
-      font-size: 1.2rem;
+      display: flex;
+
+      i {
+        color: var(--btn-share-color);
+
+        @extend %icon-size;
+      }
 
       > * {
-        margin-left: 0.25rem;
+        @extend %icon-size;
+
+        margin-left: 0.5rem;
 
         &:hover {
           i {
@@ -86,42 +90,27 @@ h1 + .post-meta {
       }
 
       button {
-        position: relative;
-        bottom: 2px;
         padding: 0;
+        border: none;
+        line-height: inherit;
 
         @extend %cursor-pointer;
       }
-
-      a :hover {
-        text-decoration: none;
-      }
-
-      .fa-square-x-twitter {
-        @include btn-sharing-color(black);
-      }
-
-      .fa-facebook-square {
-        @include btn-sharing-color(rgb(66, 95, 156));
-      }
-
-      .fa-telegram {
-        @include btn-sharing-color(rgb(39, 159, 217));
-      }
-
-      .fa-linkedin {
-        @include btn-sharing-color(rgb(0, 119, 181));
-      }
-
-      .fa-weibo {
-        @include btn-sharing-color(rgb(229, 20, 43));
-      }
     } /* .share-icons */
-
-    .fas.fa-link {
-      @include btn-sharing-color(rgb(171, 171, 171));
-    }
   } /* .share-wrapper */
+}
+
+.share-mastodon {
+  /* See: https://github.com/justinribeiro/share-to-mastodon#properties */
+  --wc-stm-font-family: $font-family-base;
+  --wc-stm-dialog-background-color: var(--card-bg);
+  --wc-stm-form-button-border: 1px solid var(--btn-border-color);
+  --wc-stm-form-submit-background-color: var(--sidebar-btn-bg);
+  --wc-stm-form-cancel-background-color: var(--sidebar-btn-bg);
+  --wc-stm-form-button-background-color-hover: #007bff;
+  --wc-stm-form-button-color-hover: white;
+
+  font-size: 1rem;
 }
 
 .post-tags {
