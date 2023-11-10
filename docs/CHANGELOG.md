@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.3.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.2.3...v6.3.0) (2023-11-10)
+
+### Features
+
+* add Mastodon sharing link ([#1344](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1344)) ([2bf87e0](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2bf87e0de7928f325811e1bb96cfcaefdf6cf66a)), closes [#1324](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1324)
+
+### Bug Fixes
+
+* **home:** crop the preview image that doesn't match 1.91:1 ([#1325](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1325)) ([5810bcd](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5810bcd1d7b83e111017831fa82c368a6b15c7cd))
+* resume lazy loading for Twitch videos ([#1326](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1326)) ([9f174d9](https://github.com/cotes2020/jekyll-theme-chirpy/commit/9f174d9088e5c83a5e0c4630336cea65e199c553)), closes [#1267](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1267)
+
 ## [6.2.3](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.2.2...v6.2.3) (2023-10-10)
 
 ### Bug Fixes
