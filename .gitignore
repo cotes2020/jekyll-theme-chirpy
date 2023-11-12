@@ -19,8 +19,4 @@ package-lock.json
 .vscode
 
 # Misc
-<<<<<<< HEAD
 # assets/js/dist
-=======
-assets/js/dist
->>>>>>> d1a5b57e4d4cab51daee9cbf5bede96b34c4f0cf
