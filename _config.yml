@@ -14,6 +14,8 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
+published: true
+
 title: Dani Kim # the main title
 
 tagline: 다니의 vlog # it will display as the sub-title
@@ -192,3 +194,5 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+futrue: true
