@@ -184,7 +184,7 @@ Features of Network Queries
 > this query type does not have `api.name or json.rule` as attributes.
 
 Network Query Attributes
-- Bytes, accepted.bytes, reponse.bytes, packets
+- Bytes, accepted.bytes, response.bytes, packets
 - Dest.ip / port / publicnetwork / resource / state / country
 - Source.ip / publicnetwork / resource / state / country
 - IN resource where finding.severity, finding.type, finding.source, securitygroup.name, virtualnetwork.name, role

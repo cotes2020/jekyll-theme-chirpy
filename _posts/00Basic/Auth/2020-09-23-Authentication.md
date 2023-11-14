@@ -1409,7 +1409,7 @@ pass_host_header = true
 email_domains=["*"]
 
 # callback的域名
-whitelist_domains = [".example.com"]
+allowlist_domains = [".example.com"]
 cookie_domains = ["example.com"]
 skip_auth_preflight = false
 
