@@ -2,9 +2,10 @@
 
 - type: github
   icon: "fab fa-github"
+  url: "https://github.io/wangmaac"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+    #- type: twitter
+    #  icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
@@ -21,7 +22,7 @@
 #
 # - type: linkedin
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+#   url:  ''                  # Fill with your Linkedin# homepage
 #
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
