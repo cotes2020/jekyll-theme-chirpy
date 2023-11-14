@@ -10,7 +10,13 @@ image:
 
 # Find and Kill Running Processes in Linux
 
-[toc]
+- [Find and Kill Running Processes in Linux](#find-and-kill-running-processes-in-linux)
+  - [Process](#process)
+  - [Find Process PID](#find-process-pid)
+  - [Kill Processes](#kill-processes)
+  - [Kill Multiple Process](#kill-multiple-process)
+
+---
 
 ## Process
 
@@ -34,29 +40,31 @@ When killing processes, the kill command is used to send a named signal to a nam
 ## Find Process PID
 In Linux every process on a system has a PID (Process Identification Number).
 
-```c
-$ pidof processname
-$ pidof firefox
-$ pidof chrome
+```bash
+pidof processname
+pidof firefox
+pidof chrome
 ```
 
 ## Kill Processes
+```bash
+ps -ef | grep xxx
+lsof -i
 
-`$ kill pid_number`
+kill pid_number
 
-send a named signal to the process by using the signal name:
+# send a named signal to the process by using the signal name:
+kill -SIGTERM pid_number
 
-`$ kill -SIGTERM pid_number`
-
-Using the signal number to kill a process:
-
-`$ kill -9 pid_number`
-
+# Using the signal number to kill a process:
+kill -9 pid_number
+```
 
 ## Kill Multiple Process
 
-$ kill -9 pid_number1, pid_number2, pid_number3
-
+```bash
+kill -9 pid_number1, pid_number2, pid_number3
+```
 
 
 .

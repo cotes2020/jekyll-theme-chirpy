@@ -11,7 +11,6 @@ toc: true
 
 # Programming - Code & Learning Path
 
-
 `| ᐕ)⁾⁾ como estas~~~~ bien~~~~ y tu?~~~~ yes`
 
 ---
