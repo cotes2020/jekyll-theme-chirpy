@@ -1,5 +1,5 @@
 ---
-title: AIML - LLM Training
+title: AIML - LLM Data Training
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AIML]
@@ -7,11 +7,24 @@ categories: [51AIML]
 tags: [AIML]
 ---
 
-- [LLM Training](#llm-training)
+- [LLM Data Training](#llm-data-training)
+  - [CNN基础知识](#cnn基础知识)
+    - [CNN 卷积神经网络](#cnn-卷积神经网络)
+    - [Convolution 卷积](#convolution-卷积)
+    - [Padding 填充](#padding-填充)
+    - [Stride 步长](#stride-步长)
+    - [多通道卷积](#多通道卷积)
+    - [Mask](#mask)
+      - [深度学习中的mask](#深度学习中的mask)
+      - [为什么需要 Mask](#为什么需要-mask)
+      - [Mask 为解决 PAD 问题顺应而生](#mask-为解决-pad-问题顺应而生)
+      - [常见的 Mask](#常见的-mask)
+        - [Padding mask](#padding-mask)
+        - [Sequence mask](#sequence-mask)
   - [人类反馈的强化学习(RLHF)](#人类反馈的强化学习rlhf)
     - [1.预训练阶段](#1预训练阶段)
     - [2.Supervised Fine-Tuning 监督微调阶段](#2supervised-fine-tuning-监督微调阶段)
-    - [3RLHF 人类反馈强化学习阶段](#3rlhf-人类反馈强化学习阶段)
+    - [3.RLHF 人类反馈强化学习阶段](#3rlhf-人类反馈强化学习阶段)
       - [3.1 奖励模型](#31-奖励模型)
       - [对比数据集](#对比数据集)
       - [3.2 PPO微调](#32-ppo微调)
@@ -22,7 +35,7 @@ tags: [AIML]
       - [Prompting and prompt engineering](#prompting-and-prompt-engineering)
       - [Pattern-Verbalizer-Pair(PVP)](#pattern-verbalizer-pairpvp)
       - [Prompt-Tuning](#prompt-tuning)
-    - [2.4 Prompt-Tuning vs Fine-Tuning](#24-prompt-tuning-vs-fine-tuning)
+      - [Prompt-Tuning vs Fine-Tuning](#prompt-tuning-vs-fine-tuning)
     - [3.Instruction-Tuning(指示微调)](#3instruction-tuning指示微调)
       - [3.1 Instruction-Tuning的提出](#31-instruction-tuning的提出)
       - [3.2 Fine-Tuning vs Prompt-Tuning vs Instruction-Tuning](#32-fine-tuning-vs-prompt-tuning-vs-instruction-tuning)
@@ -39,7 +52,481 @@ tags: [AIML]
 
 ---
 
-# LLM Training
+# LLM Data Training
+
+---
+
+## CNN基础知识
+
+---
+
+### CNN 卷积神经网络
+
+- **卷积神经网络** （convolutional neural network，CNN）是指至少在网络的一层中 **使用卷积运算来代替一般的矩阵乘法运算** 的神经网络，因此命名为卷积神经网络. [^CNN基础知识]
+
+[^CNN基础知识]: CNN基础知识——卷积（Convolution）、填充（Padding）、步长(Stride), https://zhuanlan.zhihu.com/p/77471866
+
+---
+
+### Convolution 卷积
+
+我们以灰度图像为例进行讲解：
+
+- 从一个小小的`权重矩阵`，也就是卷积核（kernel）开始，让它逐步在二维输入数据上“扫描”。
+- 卷积核“滑动”的同时，计算`权重矩阵`和扫描所得的`数据矩阵`的乘积，然后把结果汇总成一个输出像素。
+
+![pic](https://pic1.zhimg.com/v2-6428cf505ac1e9e1cf462e1ec8fe9a68_b.gif)
+
+![pic](https://pic3.zhimg.com/v2-705305fee5a050575544c64067405fce_b.gif)
+
+深度学习里面所谓的卷积运算，其实它被称为 **互相关（cross-correlation）运算：**
+- 将图像矩阵中，从左到右，由上到下，取与滤波器同等大小的一部分
+- 每一部分中的值与滤波器中的值对应相乘后求和，最后的结果组成一个矩阵，其中没有对核进行翻转。
+
+---
+
+### Padding 填充
+
+输入图像与卷积核进行卷积后的结果中损失了部分值，输入图像的边缘被“修剪”掉了
+- （边缘处只检测了部分像素点，丢失了图片边界处的众多信息）。
+- 这是因为边缘上的像素永远不会位于卷积核中心，而卷积核也没法扩展到边缘区域以外。
+
+这个结果我们是不能接受的
+- 有时我们还希望输入和输出的大小应该保持一致。
+- 为解决这个问题，可以在进行卷积操作前，对原矩阵进行边界 **填充（Padding）** ，也就是在矩阵的边界上填充一些值，以增加矩阵的大小，通常都用“ 0 ”来进行填充的。
+- 通过填充的方法，当卷积核扫描输入数据时，它能延伸到边缘以外的伪像素，从而使输出和输入size相同。
+
+![pic](https://pic3.zhimg.com/v2-2a2307d5c20551f1a3e8458c7070cf16_b.gif)
+
+常用的两种padding：
+
+1. valid padding
+   1. 不进行任何处理，只使用原始图像，不允许卷积核超出原始图像边界
+
+2. same padding
+   1. 进行填充，允许卷积核超出原始图像边界，并使得卷积后结果的大小与原来的一致
+
+---
+
+### Stride 步长
+
+- 滑动卷积核时，我们会先从输入的左上角开始，每次往左滑动一列或者往下滑动一行逐一计算输出，我们将每次滑动的行数和列数称为`Stride`
+  - 在之前的图片中，Stride=1；在下图中，Stride=2。
+  - ![pic](https://pic1.zhimg.com/v2-294159b043a917ea622e1794b4857a34_b.gif)
+
+卷积过程中，有时需要通过`padding`来避免信息损失，有时也要在卷积时通过设置的 **步长（Stride）** 来压缩一部分信息，或者使输出的尺寸小于输入的尺寸。
+
+![pic](https://pic3.zhimg.com/v2-c14af9d136b1431018146118492b0856_b.gif)
+
+
+**Stride的作用：**
+- 是成倍缩小尺寸，而这个参数的值就是缩小的具体倍数，比如
+  - 步幅为2，输出就是输入的1/2
+  - 步幅为3，输出就是输入的1/3
+
+**卷积核的大小一般为奇数\奇数**
+- `1\1，3\3，5\5，7\7` 都是最常见的。
+- 没有偶数\偶数
+  - 更容易padding
+    - 在卷积时，我们有时候需要卷积前后的尺寸不变。
+    - 这时候我们就需要用到padding。
+    - 假设图像的大小，也就是被卷积对象的大小为n\n，卷积核大小为k\k，padding的幅度设为(k-1)/2时，卷积后的输出就为(n-k+2\((k-1)/2))/1+1=n，即卷积输出为n\n，保证了卷积前后尺寸不变。
+    - 但是如果k是偶数的话，(k-1)/2就不是整数了。
+
+  - 更容易找到卷积锚点
+    - 在CNN中，进行卷积操作时一般会以卷积核模块的一个位置为基准进行滑动，这个基准通常就是卷积核模块的中心。
+    - 如果卷积核为奇数，卷积锚点很好找，自然就是卷积模块中心
+    - 如果卷积核是偶数，这时候就没有办法确定了，让谁是锚点似乎都不怎么好。
+
+**卷积的计算公式**
+- **输入图片的尺寸：** 一般用 $n\times$ 表示输入的image大小。
+- **卷积核的大小：** 一般用 $f\times$ 表示卷积核的大小。
+- **填充（Padding）：** 一般用 $p$ 来表示填充大小。
+- **步长(Stride)：** 一般用 $s$ 来表示步长大小。
+- **输出图片的尺寸：** 一般用 $o$ 来表示。
+
+- 如果已知 $n 、 f 、 p 、 s$ 可以求得 $o$ , 计算公式如下:
+  - $o=\lfloor \frac{n + 2p - f}{s} \rfloor + 1$
+
+其中" $\lfloor \ \rfloor$ "是向下取整符号，用于结果不是整数时进行向下取整。
+
+
+
+---
+
+
+### 多通道卷积
+
+上述例子都只包含一个输入通道。实际上，大多数输入图像都有 RGB 3个通道。
+
+这里就要涉及到“卷积核”和“filter”这两个术语的区别。
+- 在只有一个通道的情况下，“卷积核”就相当于“filter”，这两个概念是可以互换的。
+- 但在一般情况下，它们是两个完全不同的概念。
+- **每个“filter”实际上恰好是“卷积核”的一个集合** ，在当前层，每个通道都对应一个卷积核，且这个卷积核是独一无二的。
+
+**多通道卷积的计算过程：**
+- 将矩阵与滤波器对应的每一个通道进行卷积运算，最后相加，形成一个单通道输出，加上偏置项后，我们得到了一个最终的单通道输出。
+- 如果存在多个filter，这时我们可以把这些最终的单通道输出组合成一个总输出。
+
+还需要注意一些问题
+- 滤波器的通道数、输出特征图的通道数。
+- **某一层滤波器的通道数 = 上一层特征图的通道数。**
+  - 输入一张 $6\times6\times3$ 的RGB图片，
+  - 那么滤波器（ $3\times3\times3$ ）也要有三个通道。
+
+- **某一层输出特征图的通道数 = 当前层滤波器的个数。**
+  - 当只有一个filter时，输出特征图（ $4\times4$ ）的通道数为1；
+  - 当有2个filter时，输出特征图（ $4\times4\times2$ ）的通道数为2。
+
+![pic](https://pic3.zhimg.com/v2-fc70463d7f82f7268ee23b7235515f4a_b.jpg)
+
+
+---
+
+### Mask
+
+#### 深度学习中的mask
+
+- 分类的结果叫label。
+
+- 分割的结果叫mask。
+
+- 因为分割结果通常会半透明的覆盖在待分割目标上，所以就叫它掩膜吧。[^深度学习中的mask]
+
+[^深度学习中的mask]: 深度学习中的mask到底是什么意思？https://www.zhihu.com/question/320615749
+
+所谓 Mask，更像是语义分割的概念。
+- 例子，看看下图，把它分为三个要素，竹子，熊猫，天空，也就是三个类别，分别记为，-1，0，1
+- 我们现在可以构建一个Mask矩阵A，大小也图片包含的像素数量相同，初始值设为0，
+- 所有分类为竹子的像素所在位置的值设为-1，为熊猫设为0，为天空的设为1
+- 那么这个矩阵就变成了一个 Mask 矩阵，因为它可以把属于不同语义的像素分割出来。
+- 在Mask-RCNN中的应用和这也差不多，只不过放在了最后的步骤。
+
+![Screenshot 2023-11-16 at 00.16.59](/assets/img/Screenshot%202023-11-16%20at%2000.16.59.png)
+
+
+
+#### 为什么需要 Mask
+
+
+
+需要mask的最重要的原因之一是, 要batchize多个句子作为一个输入，即输入了一批句子的模型做一个向前计算。
+
+像这样的成像案例：
+- 两个句子：
+
+```md
+I like cats.
+He does not like cats.
+```
+
+- 然后我们通过词汇表中的索引将每个单词转换为int：
+
+```md
+1I 2He 3like 4does 5not 6cats…。
+
+1 3 6 0
+2 4 5 3 6 0
+```
+
+- 如果要将这两个句子作为一个批处理连接到网络（在Pytorch，tensorflow中使用其他方法），则需要将它们作为张量或矩阵。
+- 但是它们的长度不同。所以给它们填充一些随机整数：
+
+`1 3 6 0 9 9`
+
+`2 4 5 3 6 0`
+
+- 现在它变成了2x6矩阵。
+- 然后您可以将此矩阵提供给网络。
+- 但是这些填充物是没有意义的，甚至是有害的。因此，您需要提供有关蒙版填充的模型信息
+
+`1 1 1 1 0 0`
+
+`1 1 1 1 1 1`
+
+- 因此，在计算时，模型可以使用mask过滤掉填充（第一句末尾为9 9）。
+
+
+
+- 在 NLP 中，一个最常见的问题便是输入序列长度不等，通常需要进行 PAD 操作，通常在较短的序列后面填充 0
+- 虽然 RNN 等模型可以处理不定长输入，但在实践中，需要对 input 做 batchsize，转换成固定的 tensor。
+
+- PAD 案例：
+  - 如下是两句英文，先将文本转换成数字
+
+    ```py
+    s1 = 'He likes cats'
+    s2 = 'He does not like cats'
+    s = s1.split(' ') + s2.split(' ')
+
+    word_to_id = dict(zip(s, range(len(s))))
+    id_to_word = dict((k,v) for v,k in word_to_id.items())
+    # {'He': 3, 'likes': 1, 'cats': 7, 'does': 4, 'not': 5, 'like': 6}
+    # {3: 'He', 1: 'likes', 7: 'cats', 4: 'does', 5: 'not', 6: 'like'}
+
+    s1_vector = [word_to_id[x] for x in s1.split(' ')]
+    s2_vector = [word_to_id[x] for x in s2.split(' ')]
+    sentBatch = [s1_vector, s2_vector]
+    print(sentBatch)
+    ```
+  - 对文本进行数字编码
+
+    ```py
+    [[3, 1, 7], [3, 4, 5, 6, 7]]
+    ```
+
+  - 对如上两个 vector 进行 pad 处理。
+
+    ```py
+    from torch.nn.utils.rnn import pad_sequence
+    a = torch.tensor(s1_vector)
+    b = torch.tensor(s2_vector)
+    pad = pad_sequence([a, b])
+    print(pad)
+    ```
+
+
+  - PAD 结果
+
+    ```py
+    tensor([[3, 3],
+            [1, 4],
+            [7, 5],
+            [0, 6],
+            [0, 7]])
+    ```
+
+以句子 ”He likes cats“ 的 PAD 结果举例：`[3, 1, 7, 0, 0]`，PAD 操作会引起以下几个问题。
+
+**1. mean-pooling 的问题**
+
+- 如上述案例所示，对于矩阵： $s1 = [3, 1, 7]$
+
+- 对 s1 进行 `mean-pooling`： $mean_{s1}=(3+1+7)/3=3.667$
+
+- 进行 pad 之后： $pad_{s1}=[3,1,7,0,0]$
+
+- 对 $pad_{s1}$ 进行 `mean-pooling`： $pad_{s1}=(3+1+7+0+0)/10=1.1$
+
+- 对比 $mean_{s1}$ 和 $pad_{s1}$ 发现：pad 操作影响 `mean-pooling`。
+
+**2. max-pooling 的问题**
+
+- 对于矩阵 s1: $s1 = [-3, -1, -7]$ ，PAD 之后： $pad_{s1}=[-3,-1,-7,0,0]$
+
+- 分别对 s1 和 $pad_{s1}$ 进行 `max-pooling`： $max_{s1}=-1, max_{pad_{s1}}=0$
+
+- 对比 $mean_{s1}$ 和 $pad_{s1}$ 发现：pad 操作影响 max-pooling。
+
+**3. attention 的问题**
+
+- 通常在 Attention 计算中最后一步是使用 softmax 进行归一化操作，将数值转换成概率。
+- 但如果直接对 PAD 之后的向量进行 softmax，那么 PAD 的部分也会分摊一部分概率，这就导致有意义的部分 (非 PAD 部分) 概率之和小于等于 1。
+
+
+
+---
+
+#### Mask 为解决 PAD 问题顺应而生
+
+Mask 是相对于 PAD 而产生的技术，具备告诉模型一个向量有多长的功效。
+
+Mask 矩阵有如下特点：
+
+1. Mask 矩阵是与 PAD 之后的矩阵具有相同的 shape。
+2. mask 矩阵只有 1 和 0两个值，如果值为 1 表示 PAD 矩阵中该位置的值有意义，值为 0 则表示对应 PAD 矩阵中该位置的值无意义。
+
+在第一部分中两个矩阵的 mask 矩阵如下所示：
+
+```py
+mask_s1 = [1, 1, 1, 0, 0]
+mask_s2 = [1, 1, 1, 1, 1]
+mask = a.ne(torch.tensor(paddingIdx)).byte()
+print(mask)
+>>> tensor([[1, 1],
+            [1, 1],
+            [1, 1],
+            [0, 1],
+            [0, 1]], dtype=torch.uint8)
+```
+
+
+**1. 解决 `mean-pooling` 问题**
+
+$mean_s1=sum(pad_{s1}\m)/sum(m)$
+
+**2. 解决 max-pooling 问题**
+
+在进行 max-pooling 时，只需要将 pad 的部分的值足够小即可，可以将 mask 矩阵中的值为 0 的位置替换的足够小 ( 如: $10^{-10}$ 甚至 负无穷 ，则不会影响 max-pooling 计算。
+
+$max_b=max(pad_b-(1-m)\10^{-10})$
+
+**3. 解决 Attention 问题**
+
+该问题的解决方式跟 max-pooling 一样，就是将 pad 的部分足够小，使得 $e^x$ 的值非常接近于 0，以至于忽略。
+
+$softmax(x)=softmax(x-(1-m)\10^{10})$
+
+
+
+
+
+---
+
+#### 常见的 Mask
+
+
+在Transformer模型中，mask的作用是控制模型在处理序列时对未来信息的可见性。
+- Transformer模型是一个自注意力机制的序列到序列模型，它通过将输入序列中的每个位置与其他位置进行交互来建模上下文关系。
+- 当我们预测目标序列的下一个位置时，为了避免模型能够"看到"未来信息，需要使用mask将未来位置的信息屏蔽掉。
+
+具体来说，在Transformer中有两种常用的mask方式：padding mask和look-ahead mask。
+
+1. **Padding mask**
+   1. 用于处理不定长输入
+   2. 在输入序列中，可能存在不等长的句子，为了保持输入序列的统一长度，我们会在较短的句子后面添加一些特殊符号（如0）进行填充。
+   3. Padding mask就是用来标记这些填充位置，在计算注意力权重时，将填充位置的注意力权重设为一个很小的值（如负无穷），使得模型不会关注这些填充位置。
+
+2. **Look-ahead mask / seqence-mask**
+   1. 在Transformer的解码器中，为了生成目标序列的下一个位置时只使用已经生成的部分序列，会使用look-ahead mask。
+   2. Look-ahead mask将当前位置之后的位置都屏蔽掉，确保模型只能看到当前位置之前的信息，避免了信息泄露。
+
+
+通过使用这些mask，Transformer能够更好地处理不等长序列，并且在生成目标序列时不会依赖未来信息，提高了模型的性能和泛化能力。
+- 在 NLP 任务中，因为功能不同，Mask 也会不同。
+
+---
+
+##### Padding mask
+
+在 NLP 中，一个常见的问题是输入序列长度不等
+- 在处理序列数据时，由于不同的序列可能具有不同的长度，我们经常需要对较短的序列进行填充（padding）以使它们具有相同的长度。对一个 batch 内的句子进行 PAD，通常值为 0。
+  - PAD 为 0 会引起很多问题，影响最后的结果，
+  - 在模型的计算过程中，这些填充值是没有实际意义的
+- 因此我们需要一种方法来确保模型在其计算中忽略这些填充值。这就是padding mask的作用。
+
+> 比如常用的就是在数据集准备中，想用batch来训练，就得将一个batch的数据的长度全部对齐。
+
+Padding mask
+- 是一个与输入序列形状相同的二进制矩阵，用于指示哪些位置是真实的数据，哪些位置是填充值。
+- 真实数据位置的mask值为0。填充位置的mask值为1。
+
+- 用处：[^对transformer使用PaddingMask]
+  - 忽略无关信息：通过使用padding mask，我们可以确保模型在其计算中忽略填充值，从而避免这些无关的信息对模型的输出产生影响。
+
+  - 稳定性：如果不使用padding mask，填充值可能会对模型的输出产生不稳定的影响，尤其是在使用softmax函数时。
+
+  - 解释性：使用padding mask可以提高模型的解释性，因为我们可以确保模型的输出只与真实的输入数据有关，而不是与填充值有关。
+
+  - padding mask是处理序列数据时的一个重要工具，它确保模型在其计算中忽略填充值，从而提高模型的性能和稳定性。
+
+[^对transformer使用PaddingMask]: 对transformer使用PaddingMask, https://www.cnblogs.com/sherrlock/p/17629223.html
+
+
+使用Padding Mask:
+- 在自注意力机制中，我们计算查询和键的点积来得到注意力分数。
+- 在应用softmax函数之前，我们可以使用padding mask来确保填充位置的注意力分数为一个非常大的负数（例如，乘以-1e9）。
+- 这样，当应用softmax函数时，这些位置的权重将接近于零，从而确保模型在其计算中忽略这些填充值。
+
+
+例子：
+
+1. case 1
+
+```py
+case 1: I like cats.
+case 2: He does not like cats.
+
+# 假设默认的 seq_len 是5
+# 一般会对 case 1 做 pad 处理，变成
+[1, 1, 1, 0, 1]
+
+# - 在上述例子数字编码后，开始做 embedding，而 pad 也会有 embedding 向量，但 pad 本身没有实际意义，参与训练可能还是有害的。
+# - 因此，有必要维护一个 mask tensor 来记录哪些是真实的 value
+# 上述例子的两个 mask 如下：
+1 1 1 0 0
+1 1 1 1 1
+# - 后续再梯度传播中，mask 起到了过滤的作用，在 pytorch 中，有参数可以设置：
+nn.Embedding(vocab_size, embed_dim, padding_idx=0)
+```
+
+
+2. 假设我们有一个长度为4的序列：[A, B, C, <pad>]，其中<pad>是填充标记。对应的padding mask是：[0, 0, 0, 1]。
+
+```py
+# 在计算注意力分数后，使用以下方法应用padding mask：
+attention_scores = attention_scores.masked_fill(mask == 1, -1e9)
+# 这里，masked_fill是一个PyTorch函数，它会将mask中值为1的位置替换为-1e9
+```
+
+![Screenshot 2023-11-16 at 12.01.45](/assets/img/Screenshot%202023-11-16%20at%2012.01.45.png)
+
+- 这里的`attention_scores`就是 $Q×K$ 的矩阵，把尾部多余的部分变成-inf，再过SoftMax，这样就是0了。
+- 这样，即使V的后半部分有padding的部分，也会因为乘0而变回0。
+- 这样被padding掉的部分就从计算图上被剥离了，由此不会影响模型的训练。
+
+```py
+import torch.nn as nn
+
+class Attention(nn.Module):
+    def __init__(self, dim, num_heads=8, qkv_bias=False, qk_scale=None, attn_drop=0., proj_drop=0.):
+        super().__init__()
+        self.num_heads = num_heads
+        head_dim = dim // num_heads
+        self.scale = qk_scale or head_dim ** -0.5
+        self.qkv = nn.Linear(dim, dim * 3, bias=qkv_bias)
+        self.attn_drop = nn.Dropout(attn_drop)
+        self.proj = nn.Linear(dim, dim)
+        self.proj_drop = nn.Dropout(proj_drop)
+
+    def forward(self, x, mask=None):
+        B, N, C = x.shape
+        qkv = self.qkv(x).reshape(B, N, 3, self.num_heads, C // self.num_heads).permute(2, 0, 3, 1, 4)
+        q, k, v = qkv[0], qkv[1], qkv[2]
+
+        attn = (q @ k.transpose(-2, -1)) * self.scale
+
+        # Apply the padding mask
+        if mask is not None:
+            attn = attn.masked_fill(mask.unsqueeze(1).unsqueeze(2) == 1, float('-inf'))
+
+        attn = attn.softmax(dim=-1)
+        attn = self.attn_drop(attn)
+
+        x = (attn @ v).transpose(1, 2).reshape(B, N, C)
+        x = self.proj(x)
+        x = self.proj_drop(x)
+        return x
+```
+
+
+
+
+
+
+
+
+---
+
+##### Sequence mask
+
+- 在语言模型中，常常需要从上一个词预测下一个词，sequence mask 是为了使得 decoder 不能看见未来的信息。
+- 也就是对于一个序列，在 time_step 为 t 的时刻，我们的解码输出应该只能依赖于 t 时刻之前的输出，而不能依赖 t 之后的输出。
+- 因此我们需要想一个办法，把 t 之后的信息给隐藏起来。
+
+具体怎么做
+- **产生一个上三角矩阵，上三角的值全为 1，下三角的值全为 0，对角线也是 0** 。
+- 把这个矩阵作用在每一个序列上，就可以达到目的
+
+一个常见的 trick 就是生成一个 mask 对角矩阵:
+
+```py
+def sequence_mask(seq):
+    batch_size, seq_len = seq.size()
+    mask = torch.triu(torch.ones((seq_len, seq_len), dtype=torch.uint8), diagonal=1)
+    mask = mask.unsqueeze(0).expand(batch_size, -1, -1)  # [B, L, L]
+    return mask
+```
 
 ---
 
@@ -127,7 +614,7 @@ LLM模型训练过程中的三个核心步骤
 ```
 
 
-### 3RLHF 人类反馈强化学习阶段
+### 3.RLHF 人类反馈强化学习阶段
 
 - 在经过监督 (指令)微调后，LLM模型已经可以根据指令生成正确的响应了，为什么还要进行强化学习微调？
 
@@ -178,9 +665,9 @@ $(prompt, good_response，bad_response)$
     - $y^l, y_l, yl​$ : bad response
 
 $$\begin{pmatrix}
-    x & y^w & y^l \\
-    x & y_w & y_l \\
-    x & yw & yl \\
+    x & y^w & y^l \
+    x & y_w & y_l \
+    x & yw & yl \
 \end{pmatrix}$$
 
 - For each training sample:
@@ -254,7 +741,7 @@ RLHF微调过程如下：
 
         \
 
-        \[R_{\theta}(x, y) - \beta \log \frac{LLM^{RL}_\phi(y \vert x)}{LLM^{SFT}(y \vert x)}\] +
+        [R_{\theta}(x, y) - \beta \log \frac{LLM^{RL}_\phi(y \vert x)}{LLM^{SFT}(y \vert x)}] +
 
         $$
         \gamma E_{x \sim D_{pretrain}}\log LLM^{RL}_\phi(x)
@@ -267,10 +754,6 @@ RLHF微调过程如下：
 ---
 
 ## Tuning 微调
-
-
-
-
 
 目前学术界一般将NLP任务的发展分为四个阶段，即NLP四范式: [^通俗易懂的LLM(上篇)]
 
@@ -518,9 +1001,16 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
 
     - 这种方式存在一个显式的弊端: `预训练任务`与`下游任务`存在**gap**
 
-    - Bert的预训练任务包括两个: MLM与NSP(具体可参考[Bert预训练的任务MLM和NSP](https://zhuanlan.zhihu.com/p/562352255))
+    - Bert的预训练任务包括两个: `MLM`与`NSP`
+      - (具体可参考[Bert预训练的任务MLM和NSP](https://zhuanlan.zhihu.com/p/562352255))
 
-    - 简单来说，MLM任务是通过分类模型识别被MASK掉的词，类别大小即为整个词表大小；NSP任务是预测两个句子之间的关系；而Prompt-Oriented Fine-Tuning训练方法，是将情感分类任务转换为类似于MLM任务的`[Mask]`预测任务，具体来说，我们构建如下的prompt文本: `prompt = It was [MASK].`，将prompt文本与输入text文本`text = The film is attractive.`进行拼接生成`It was [MASK].The film is attractive.`，输入至预训练模型中，训练任务目标和MLM任务的目标一致，即识别被`[Mask]`掉的词。
+      - `MLM`任务是通过分类模型识别被`MASK`掉的词，类别大小即为整个词表大小；
+      - `NSP`任务是预测两个句子之间的关系；
+
+      - 而Prompt-Oriented Fine-Tuning训练方法，是将情感分类任务转换为类似于MLM任务的`[Mask]`预测任务:
+        - 构建如下的prompt文本: `prompt = It was [MASK].`
+        - 将prompt文本与输入text文本`text = The film is attractive.`进行拼接生成`It was [MASK].The film is attractive.`
+        - 输入至预训练模型中，训练任务目标和MLM任务的目标一致，即识别被`[Mask]`掉的词。
 
     - 通过这种方式，可以将下游任务转换为和预训练任务较为一致的任务，已有实验证明，Prompt-Oriented Fine-Tuning相对于常规的Fine-Tuning，效果确实会得到提升([Prompt进行情感分类](https://blog.csdn.net/wf19971210/article/details/120543015))。
 
@@ -543,13 +1033,13 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
       如何避免这种问题呢，Soft Prompt方法便是来解决这种问题的，其将模板转换为可以进行优化的连续向量，换句话说，我们不需要显式地指定这些模板中各个token具体是什么，只需要在语义空间中表示一个向量即可，这样，不同的任务 数据可以自适应地在语义空间中寻找若干合适的向量，来代表模板中的每一个词，相较于显式的token，这类token称为伪标记(Pseudo Token)。下面给出基于Soft Prompt的模板定义:
 
     > 假设针对分类任务，给定一个输入句子 x x x，连续提示的模板可以定义为:
-    > T = \[ x \] , \[ v 1 \] , \[ v 2 \] ， … ， \[ v m \] \[ M A S K \]   \\mathcal{T} =\[x\],\[v\_{1}\],\[v\_{2}\]，…，\[v\_{m}\]`[Mask]`\\ T\=\[x\],\[v1​\],\[v2​\]，…，\[vm​\]`[Mask]` 其中 \[ v 1 \] \[v\_{1}\] \[v1​\]则是伪标记，其仅代表一个抽象的token，并没有实际的含义，本质上是一个向量。
+    > T = [ x ] , [ v 1 ] , [ v 2 ] ， … ， [ v m ] [ M A S K ]   \mathcal{T} =[x],[v_{1}],[v_{2}]，…，[v_{m}]`[Mask]`\ T\=[x],[v1​],[v2​]，…，[vm​]`[Mask]` 其中 [ v 1 ] [v_{1}] [v1​]则是伪标记，其仅代表一个抽象的token，并没有实际的含义，本质上是一个向量。
 
       **总结来说**: Soft Prompt方法，是将模板变为可训练的参数，不同的样本可以在连续的向量空间中寻找合适的伪标记，同时也增加模型的泛化能力。因此，连续法需要引入少量的参数并在训练时进行参数更新，但预训练模型参数是不变的，变的是prompt token对应的词向量(Word Embedding)表征及其他引入的少量参数。主要适用场景同Hard Prompt一致。目前具有代表性的三种Soft Prompt方法如下，下面我们进行逐一介绍:
 
     - **Parameter-Efficient Prompt Tuning**: 该方法率先提出了伪标记和连续提示的概念，支持模型能够动态地对模板在语义空间内进行调整。主要针对的是NLU任务，形式化的描述如下:
 
-        > 给定 n n n个token，记作 x 1 , . . . , x n x\_{1}, ..., x\_{n} x1​,...,xn​，通过一个预训练模型对应的embedding table，将 n n n个token表征为向量矩阵 X e ∈ R n × e X\_{e} \\in R^{n\\times e} Xe​∈Rn×e，其中 e e e是向量的维度(其与预训练模型的配置有关，例如Bert-base是768)。连续模板中的每个伪标记 v i v\_{i} vi​可以视为参数，也可以视为一个token，因此，可以通过另一个embedding table将 p p p个伪标记token表征为向量矩阵 P e ∈ R p × e P\_{e} \\in R^{p\\times e} Pe​∈Rp×e 。将文本和prompt进行拼接获得新的输入 \[ P e : X e \] ∈ R ( p + n ) × e \[P\_{e} :X\_{e}\] \\in R^{(p+n) \\times e} \[Pe​:Xe​\]∈R(p+n)×e。这个新的输入将会进入T5的encoder-decoder结构来训练和推理。注意，只有prompt对应的向量表征参数 P e P\_{e} Pe​会随着训练进行更新。
+        > 给定 n n n个token，记作 x 1 , . . . , x n x_{1}, ..., x_{n} x1​,...,xn​，通过一个预训练模型对应的embedding table，将 n n n个token表征为向量矩阵 X e ∈ R n × e X_{e} \in R^{n\times e} Xe​∈Rn×e，其中 e e e是向量的维度(其与预训练模型的配置有关，例如Bert-base是768)。连续模板中的每个伪标记 v i v_{i} vi​可以视为参数，也可以视为一个token，因此，可以通过另一个embedding table将 p p p个伪标记token表征为向量矩阵 P e ∈ R p × e P_{e} \in R^{p\times e} Pe​∈Rp×e 。将文本和prompt进行拼接获得新的输入 [ P e : X e ] ∈ R ( p + n ) × e [P_{e} :X_{e}] \in R^{(p+n) \times e} [Pe​:Xe​]∈R(p+n)×e。这个新的输入将会进入T5的encoder-decoder结构来训练和推理。注意，只有prompt对应的向量表征参数 P e P_{e} Pe​会随着训练进行更新。
 
           论文中提到，每个伪标记的初始化可以有下列三种情况，分别是Random Uniform，Sampled Vocab和Class Label。
 
@@ -560,13 +1050,13 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
 
           最后发现，非随机初始化方法要显著好于随机初始化，而Class Label效果相对更好，当然，只要模型足够大，这几种初始化方法的差异就比较小了。具体论文参考2021年谷歌发表的[《The Power of Scale for Parameter-Efficient Prompt Tuning》](https://aclanthology.org/2021.emnlp-main.243.pdf)。
 
-    - **P-Tuning**: P-Tuning是另一个具有代表性的连续提示方法，主要针对的是NLU任务，方法图如下所示(图中的 P i P\_{i} Pi​等价于上文的 v i v\_{i} vi​，表示伪标记)，谷歌于2021年发表。![P-Tuning结构](https://img-blog.csdnimg.cn/8356a2a18e0b4b4d8b64b9d947ed4423.png#pic_center)
+    - **P-Tuning**: P-Tuning是另一个具有代表性的连续提示方法，主要针对的是NLU任务，方法图如下所示(图中的 P i P_{i} Pi​等价于上文的 v i v_{i} vi​，表示伪标记)，谷歌于2021年发表。![P-Tuning结构](https://img-blog.csdnimg.cn/8356a2a18e0b4b4d8b64b9d947ed4423.png#pic_center)
         P-Tuning方法中的四个技巧点:
 
-        - 考虑到这些伪标记的相互依赖关系: 认为 \[ P 1 \] \[P\_{1}\] \[P1​\]与 \[ P 2 \] \[P\_{2}\] \[P2​\]是有先后关系的，而transformer无法显式地刻画这层关系，因此引入Prompt Encoder(BiLSTM+MLP)；
+        - 考虑到这些伪标记的相互依赖关系: 认为 [ P 1 ] [P_{1}] [P1​]与 [ P 2 ] [P_{2}] [P2​]是有先后关系的，而transformer无法显式地刻画这层关系，因此引入Prompt Encoder(BiLSTM+MLP)；
         - 指定上下文词: 如果模板全部是伪标记，在训练时无法很好地控制这些模板朝着与对应句子相似的语义上优化，因此选定部分具有与当前句子语义代表性的一些词作为一些伪标记的初始化(例如上图中“capital” “Britain”等)；
         - 重参数(Reparameterization): 具体到代码实现上，P-Tuning先通过一个Prompt Encoder表征这些伪标记后，直接将这些新的表征覆盖到对应的embedding table上，换句话说，Prompt Encoder只在训练时候会使用到，而在推理阶段则不再使用，直接使用构建好的embedding table；
-        - 混合提示(Hydride Prompt): 将连续提示与离散token进行混合，例如 \[ x \] \[ i t \] \[ v 1 \] \[ m a s k \] \[x\]\[it\]\[v1\]\[mask \] \[x\]\[it\]\[v1\]`[mask]`。
+        - 混合提示(Hydride Prompt): 将连续提示与离散token进行混合，例如 [ x ] [ i t ] [ v 1 ] [ m a s k ] [x][it][v1][mask ] [x][it][v1]`[mask]`。
              
 
           具体可参考: 2021年发表的[《GPT Understands, Too》](https://arxiv.org/pdf/2103.10385.pdf) [《论文解读: GPT Understands, Too》](https://wjn1996.blog.csdn.net/article/details/120802305) [《细读经典: P-Tuning》](https://zhuanlan.zhihu.com/p/391992466)
@@ -575,10 +1065,10 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
           基于以上实验结果，作者提出了Pre-trained Pormpt Tuning解决few-shot learning问题，核心思路是对soft prompt进行预训练，得到一个更好的soft prompt初始化表示。对于每种类型的任务，设计一个和其匹配的预训练任务，得到soft prompt embedding的预训练表示。
           论文中以sentence-pair classification multiple-choice classification single sentence classification三种任务介绍了如何针对每种下游任务设计预训练任务学习soft prompt embedding。例如对于sentence-pair classification，作者设计了如下预训练任务。将2个句子对拼接在一起，如果两个句子来自同一个文档相邻两句话，则label为yes(完全一致)；如果两个句子来自同一个文档但距离较远，则label为maybe；其他句子对label为no，如下图所示(图中的 P P P即连续的提示模板， < x > <x> <x\>表示mask token。最上面的任务是预训练任务，下面三个任务为下游任务)。![PPT核心思想](https://img-blog.csdnimg.cn/49c6411ed3de4466a794ca92e3335168.png#pic_center)  
 
-          另外论文中还给出了四种微调方案，如下图所示，\[a\]展示了模型的预训练过程，\[b\]和\[c\]展示了两种主流的Fine-Tuning方法(前文已经介绍过)，\[d\]展示了提示学习( Prompt Tuning, PT )方法，具体可参考2022年清华大学发表的[《PPT: Pre-trained Prompt Tuning for Few-shot Learning》](https://aclanthology.org/2022.acl-long.576.pdf) [小样本学习: Pre-trained Prompt Tuning for Few-shot Learning](https://zhuanlan.zhihu.com/p/617006511)，[Prompt 如何更好地应用于工业界？](https://www.zhihu.com/question/495040812/answer/2438217999)。![Tuning方案](https://img-blog.csdnimg.cn/94f3d30b97b54f47a0b39bc82bc610a8.png#pic_center)
+          另外论文中还给出了四种微调方案，如下图所示，[a]展示了模型的预训练过程，[b]和[c]展示了两种主流的Fine-Tuning方法(前文已经介绍过)，[d]展示了提示学习( Prompt Tuning, PT )方法，具体可参考2022年清华大学发表的[《PPT: Pre-trained Prompt Tuning for Few-shot Learning》](https://aclanthology.org/2022.acl-long.576.pdf) [小样本学习: Pre-trained Prompt Tuning for Few-shot Learning](https://zhuanlan.zhihu.com/p/617006511)，[Prompt 如何更好地应用于工业界？](https://www.zhihu.com/question/495040812/answer/2438217999)。![Tuning方案](https://img-blog.csdnimg.cn/94f3d30b97b54f47a0b39bc82bc610a8.png#pic_center)
 
 
-### 2.4 Prompt-Tuning vs Fine-Tuning
+#### Prompt-Tuning vs Fine-Tuning
 
   至此，我们已经深入了解了Fine-Tuning和Prompt-Tuning两种微调方法，也或多或少能观察到二者之间的区别，我们在这里进行下总结。众多周知，Prompt-Tuning是在Fine-Tuning后发展起来的，可以说是解决NLP领域各种下游问题更好的一种方式。要提出一个好的方式那必然是用来「解决另一种方式存在的缺陷或不足」，那我们就先从预训练模型PLM+Fine-Tuning范式说起，这个范式常用的结构是Bert+Fine-Tuning，这种范式若想要预训练模型更好的应用在下游任务，需要利用下游数据对模型参数微调；首先，模型在预训练的时候，采用的训练形式: 自回归 自编码，这与下游任务形式存在极大的 gap，不能完全发挥预训练模型本身的能力，必然导致: 较多的数据来适应新的任务形式(少样本学习能力差 容易过拟合)。其次，现在的预训练模型参数量越来越大，为了一个特定的任务去Fine-Tuning一个模型，会占用特别多的训练资源，对一些中小企业或者用户来说并不现实，也会造成资源的一定浪费。
   而Prompt-Tuning则很好的解决了这些问题，它将所有下游任务统一成预训练任务，以特定的模板，将下游任务的数据转成自然语言形式，充分挖掘预训练模型本身的能力。本质上就是设计一个比较契合上游预训练任务的模板，通过模板的设计来挖掘出上游预训练模型的潜力，让上游的预训练模型在尽量不需要标注数据的情况下比较好的完成下游的任务，即只需要少量数据的 Prompt Tuning，就可以实现很好的效果，具有较强的零样本/少样本学习能力。具体可参考[Prompt-Tuning VS Fine-Tuning](https://www.zhihu.com/question/504324484?utm_id=0)。
@@ -711,21 +1201,21 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
 
 - **Prefix-Tuning**: Prefix-Tuning也是一种Prompt-Tuning，是最早提出soft-prompt的论文之一[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://aclanthology.org/2021.acl-long.353.pdf)，斯坦福大学于2021年发表。Prefix-Tuning在模型输入前添加一个连续的且任务特定的向量序列(continuous task-specific vectors)，称之为前缀(prefix)。前缀同样是一系列“虚拟 tokens”，即没有真实语义。与更新所有 PLM 参数的全量微调不同，Prefix-Tuning固定PLM的所有参数，只更新优化特定任务的prefix。Prefix-Tuning与传统Fine-Tuning的对比图如下所示:
     ![在这里插入图片描述](https://img-blog.csdnimg.cn/27aa031746bc403793e27a7ef70833b6.png#pic_center)
-      如下图所示，Prefix-Tuning有两种模式，一种是自回归模型(例如GPT-2)，在输入前添加一个前缀得到 \[ P R E F I X ; x ; y \] \[PREFIX;x;y\] \[PREFIX;x;y\]；另一种是encoder-decoder模型(例如Bart)，在编码器和解码器前加前缀得到 \[ P R E F I X ; x ; P R E F I X ′ ; y \] \[PREFIX;x;PREFIX^{'};y\] \[PREFIX;x;PREFIX′;y\]。接下来我们以GPT-2的自回归语言模型为例，介绍下Prefix-Tuning的流程。
-      首先，对于传统的GPT-2模型来说，将输入 x x x和输出 y y y拼接为 z = \[ x ; y \] z=\[x;y\] z\=\[x;y\]，其中 X i d x X\_{idx} Xidx​和 Y i d x Y\_{idx} Yidx​分别为输入和输出序列的索引， h i ∈ R d h\_{i} \\in R^{d} hi​∈Rd是每个时间步 i i i下的激活向量(隐藏层向量)， h i = \[ h i ( 1 ) ; … … ; h i ( n ) \] h\_{i}=\[h\_{i}^{(1)}; ……;h\_{i}^{(n)}\] hi​\=\[hi(1)​;……;hi(n)​\]表示在当前时间步的所有激活层的拼接， h i ( j ) h\_{i}^{(j)} hi(j)​是时间步 i i i的第 j j j层激活层。自回归模型通过如下公式计算 h i h\_{i} hi​，其中 ϕ \\phi ϕ是模型参数:
-    h i = L M ϕ ( z i , h < i )   h\_{i} =LM\_{\\phi}(z\_{i},h\_{<i})\\ hi​\=LMϕ​(zi​,h<i​) 
-    h i h\_{i} hi​的最后一层，用来计算下一个token的概率分布:
-    p ϕ ( z i + 1 ∣ h ≤ i ) = s o f t m a x ( W ϕ h i ( n ) )   p\_{\\phi}(z\_{i+1}|h\_{≤i}) =softmax(W\_{\\phi}h\_{i}^{(n)})\\ pϕ​(zi+1​∣h≤i​)\=softmax(Wϕ​hi(n)​) 
-    其中 W ϕ W\_{\\phi} Wϕ​是将 h i ( n ) h\_{i}^{(n)} hi(n)​根据词表大小进行映射。
-      在采用Prefix-Tuning技术后，则在输入前添加前缀，即将prefix和输入以及输出进行拼接得到 z = \[ P R E F I X ; x ; y \] z=\[PREFIX;x;y\] z\=\[PREFIX;x;y\]， P i d x P\_{idx} Pidx​为前缀序列的索引， ∣ P i d x ∣ |P\_{idx}| ∣Pidx​∣为前缀序列的长度，这里需要注意的是，Prefix-Tuning是在模型的每一层都添加prefix(注意不是只有输入层，中间层也会添加prefix，目的增加可训练参数)。前缀序列索引对应着由 θ \\theta θ参数化的向量矩阵 P θ P\_{\\theta} Pθ​，维度为 ∣ P i d x ∣ × d i m ( h i ) |P\_{idx}|\\times dim(h\_{i}) ∣Pidx​∣×dim(hi​)。隐层表示的计算如下式所示，若索引为前缀索引 P i d x P\_{idx} Pidx​，直接从 P θ P\_{\\theta} Pθ​复制对应的向量作为 h i h\_{i} hi​(在模型每一层都添加前缀向量)；否则直接通过LM计算得到，同时，经过LM计算的 h i h\_{i} hi​也依赖于其左侧的前缀参数 P θ P\_{\\theta} Pθ​，即通过前缀来影响后续的序列激活向量值(隐层向量值)。
-    h i = { P θ \[ i , : \] if    i ∈ P i d x L M ϕ ( z i , h < i ) otherwise h\_{i}= \\begin{cases} P\_{\\theta}\[i,:\]& \\text{if} \\ \\ \\ i\\in P\_{idx}\\\\ LM\_{\\phi}(z\_{i},h\_{<i})& \\text{otherwise} \\end{cases} hi​\={Pθ​\[i,:\]LMϕ​(zi​,h<i​)​if   i∈Pidx​otherwise​
-      在训练时，Prefix-Tuning的优化目标与正常微调相同，但只需要更新前缀向量的参数。在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 P θ ′ P\_{\\theta}^{'} Pθ′​和一个大型前馈神经网络 MLP θ \\text{MLP}\_{\\theta} MLPθ​对 P θ P\_{\\theta} Pθ​进行重参数化: P θ \[ i , : \] = MLP θ ( P θ ′ \[ i , : \] ) P\_{\\theta}\[i,:\]=\\text{MLP}\_{\\theta}(P\_{\\theta}^{'}\[i,:\]) Pθ​\[i,:\]\=MLPθ​(Pθ′​\[i,:\])，可训练参数包括 P θ ′ P\_{\\theta}^{'} Pθ′​和 MLP θ \\text{MLP}\_{\\theta} MLPθ​的参数，其中， P θ P\_{\\theta} Pθ​和 P θ ′ P\_{\\theta}^{'} Pθ′​有相同的行维度(也就是相同的prefix length), 但不同的列维度。在训练时，LM 的参数 ϕ \\phi ϕ被固定，只有前缀参数 P θ ′ P\_{\\theta}^{'} Pθ′​和 MLP θ \\text{MLP}\_{\\theta} MLPθ​的参数为可训练的参数。训练完成后， P θ ′ P\_{\\theta}^{'} Pθ′​和 MLP θ \\text{MLP}\_{\\theta} MLPθ​的参数被丢掉，只有前缀参数 P θ P\_{\\theta} Pθ​被保存。
+      如下图所示，Prefix-Tuning有两种模式，一种是自回归模型(例如GPT-2)，在输入前添加一个前缀得到 [ P R E F I X ; x ; y ] [PREFIX;x;y] [PREFIX;x;y]；另一种是encoder-decoder模型(例如Bart)，在编码器和解码器前加前缀得到 [ P R E F I X ; x ; P R E F I X ′ ; y ] [PREFIX;x;PREFIX^{'};y] [PREFIX;x;PREFIX′;y]。接下来我们以GPT-2的自回归语言模型为例，介绍下Prefix-Tuning的流程。
+      首先，对于传统的GPT-2模型来说，将输入 x x x和输出 y y y拼接为 z = [ x ; y ] z=[x;y] z\=[x;y]，其中 X i d x X_{idx} Xidx​和 Y i d x Y_{idx} Yidx​分别为输入和输出序列的索引， h i ∈ R d h_{i} \in R^{d} hi​∈Rd是每个时间步 i i i下的激活向量(隐藏层向量)， h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h_{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接， h i ( j ) h_{i}^{(j)} hi(j)​是时间步 i i i的第 j j j层激活层。自回归模型通过如下公式计算 h i h_{i} hi​，其中 ϕ \phi ϕ是模型参数:
+    h i = L M ϕ ( z i , h < i )   h_{i} =LM_{\phi}(z_{i},h_{<i})\ hi​\=LMϕ​(zi​,h<i​) 
+    h i h_{i} hi​的最后一层，用来计算下一个token的概率分布:
+    p ϕ ( z i + 1 ∣ h ≤ i ) = s o f t m a x ( W ϕ h i ( n ) )   p_{\phi}(z_{i+1}|h_{≤i}) =softmax(W_{\phi}h_{i}^{(n)})\ pϕ​(zi+1​∣h≤i​)\=softmax(Wϕ​hi(n)​) 
+    其中 W ϕ W_{\phi} Wϕ​是将 h i ( n ) h_{i}^{(n)} hi(n)​根据词表大小进行映射。
+      在采用Prefix-Tuning技术后，则在输入前添加前缀，即将prefix和输入以及输出进行拼接得到 z = [ P R E F I X ; x ; y ] z=[PREFIX;x;y] z\=[PREFIX;x;y]， P i d x P_{idx} Pidx​为前缀序列的索引， ∣ P i d x ∣ |P_{idx}| ∣Pidx​∣为前缀序列的长度，这里需要注意的是，Prefix-Tuning是在模型的每一层都添加prefix(注意不是只有输入层，中间层也会添加prefix，目的增加可训练参数)。前缀序列索引对应着由 θ \theta θ参数化的向量矩阵 P θ P_{\theta} Pθ​，维度为 ∣ P i d x ∣ × d i m ( h i ) |P_{idx}|\times dim(h_{i}) ∣Pidx​∣×dim(hi​)。隐层表示的计算如下式所示，若索引为前缀索引 P i d x P_{idx} Pidx​，直接从 P θ P_{\theta} Pθ​复制对应的向量作为 h i h_{i} hi​(在模型每一层都添加前缀向量)；否则直接通过LM计算得到，同时，经过LM计算的 h i h_{i} hi​也依赖于其左侧的前缀参数 P θ P_{\theta} Pθ​，即通过前缀来影响后续的序列激活向量值(隐层向量值)。
+    h i = { P θ [ i , : ] if    i ∈ P i d x L M ϕ ( z i , h < i ) otherwise h_{i}= \begin{cases} P_{\theta}[i,:]& \text{if} \ \ \ i\in P_{idx}\\ LM_{\phi}(z_{i},h_{<i})& \text{otherwise} \end{cases} hi​\={Pθ​[i,:]LMϕ​(zi​,h<i​)​if   i∈Pidx​otherwise​
+      在训练时，Prefix-Tuning的优化目标与正常微调相同，但只需要更新前缀向量的参数。在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 P θ ′ P_{\theta}^{'} Pθ′​和一个大型前馈神经网络 MLP θ \text{MLP}_{\theta} MLPθ​对 P θ P_{\theta} Pθ​进行重参数化: P θ [ i , : ] = MLP θ ( P θ ′ [ i , : ] ) P_{\theta}[i,:]=\text{MLP}_{\theta}(P_{\theta}^{'}[i,:]) Pθ​[i,:]\=MLPθ​(Pθ′​[i,:])，可训练参数包括 P θ ′ P_{\theta}^{'} Pθ′​和 MLP θ \text{MLP}_{\theta} MLPθ​的参数，其中， P θ P_{\theta} Pθ​和 P θ ′ P_{\theta}^{'} Pθ′​有相同的行维度(也就是相同的prefix length), 但不同的列维度。在训练时，LM 的参数 ϕ \phi ϕ被固定，只有前缀参数 P θ ′ P_{\theta}^{'} Pθ′​和 MLP θ \text{MLP}_{\theta} MLPθ​的参数为可训练的参数。训练完成后， P θ ′ P_{\theta}^{'} Pθ′​和 MLP θ \text{MLP}_{\theta} MLPθ​的参数被丢掉，只有前缀参数 P θ P_{\theta} Pθ​被保存。
     ![在这里插入图片描述](https://img-blog.csdnimg.cn/f1daf9e5ba2047dc992df48fb965abe7.png#pic_center)
       上述内容详细介绍了Prefix-Tuning的主要训练流程，下面我们给出论文中通过实验得出的三个主要结论:
 
     - **方法有效性**: 作者采用了Table-To-Text与Summarization作为实验任务，在Table-To-Text任务上，Prefix-Tuning在优化相同参数的情况下结果大幅优于Adapter，并与全参数微调几乎相同。而在Summarization任务上，Prefix-Tuning方法在使用2%参数与0.1%参数时略微差于全参数微调，但仍优于Adapter微调；
     - **Full vs Embedding-only**: Embedding-only方法只在embedding层添加前缀向量并优化，而Full代表的Prefix-Tuning不仅在embedding层添加前缀参数，还在模型所有层添加前缀并优化。实验得到一个不同方法的表达能力增强链条: discrete prompting < embedding-only < Prefix-Tuning。同时，Prefix-Tuning可以直接修改模型更深层的表示，避免了跨越网络深度的长计算路径问题；
-    - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 x x x和 y y y的中间来研究可训练参数位置对性能的影响，即 \[ x ; I n f i x ; y \] \[x;Infix;y\] \[x;Infix;y\]，这种方式成为infix-tuning。实验表明Prefix-Tuning性能好于 infix-tuning，因为prefix能够同时影响 x x x和 y y y的隐层向量，而infix只能够影响 y y y的隐层向量。
+    - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 x x x和 y y y的中间来研究可训练参数位置对性能的影响，即 [ x ; I n f i x ; y ] [x;Infix;y] [x;Infix;y]，这种方式成为infix-tuning。实验表明Prefix-Tuning性能好于 infix-tuning，因为prefix能够同时影响 x x x和 y y y的隐层向量，而infix只能够影响 y y y的隐层向量。
          
 
       我们回顾下前文提到的parameter-efficient prompt tuning(下面简称为Prompt Tuning)，其论文中有提到，它可以看作是Prefix-Tuning的简化版。总结下两者的不同点:
@@ -756,29 +1246,29 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
         - **提示长度**: 提示长度在提示优化方法的超参数搜索中起着核心作用。论文中表明不同的理解任务通常用不同的提示长度来实现其最佳性能，比如一些简单的task倾向比较短的prompt(less than 20)，而一些比较难的序列标注任务，长度需求比较大；
         - **多任务学习**: 多任务学习对P-Tuning v2方法来说是可选的，但可能是有帮助的。在对特定任务进行微调之前，用共享的prompts去进行多任务预训练，可以让prompts有比较好的初始化；
         - **分类方式选择**: 对标签分类任务，用原始的CLS+linear head模式替换Prompt-Tuning范式中使用的Verbalizer+LM head模式，不过效果并不明显，如下图。![在这里插入图片描述](https://img-blog.csdnimg.cn/80409db3a7174e59a1c8263b430f7080.png#pic_center)
-- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项2019年的工作第一次提出了Adapter方法。与Prefix-Tuning和Prompt Tuning这类在输入前添加可训练prompt embedding参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 ϕ w ( x ) \\phi\_{w}(x) ϕw​(x)，对于Adapter-Tuning，添加适配器之后模型函数更新为:  ϕ w , w 0 ( x ) \\phi\_{w,w\_{0}}(x) ϕw,w0​​(x)， w w w是预训练模型的参数， w 0 w\_{0} w0​是新添加的适配器的参数，在训练过程中， w w w被固定，只有 w 0 w\_{0} w0​被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w\_{0}|\\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
+- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项2019年的工作第一次提出了Adapter方法。与Prefix-Tuning和Prompt Tuning这类在输入前添加可训练prompt embedding参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 ϕ w ( x ) \phi_{w}(x) ϕw​(x)，对于Adapter-Tuning，添加适配器之后模型函数更新为:  ϕ w , w 0 ( x ) \phi_{w,w_{0}}(x) ϕw,w0​​(x)， w w w是预训练模型的参数， w 0 w_{0} w0​是新添加的适配器的参数，在训练过程中， w w w被固定，只有 w 0 w_{0} w0​被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w_{0}|\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
       论文中采用Bert作为实验模型，Adapter模块被添加到每个transformer层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了adapter的结构，有不同见解可在评论区沟通): ![在这里插入图片描述](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
       Adapter结构有两个特点: 较少的参数 在初始化时与原结构相似的输出。在实际微调时，由于采用了down-project与up-project的架构，在进行微调时，Adapter会先将特征输入通过down-project映射到较低维度，再通过up-project映射回高维度，从而减少参数量。Adapter-Tuning只需要训练原模型0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量Adapter结构的参数即可。由于Adapter中存在残差连接结构，采用合适的小参数去初始化Adapter就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在GLUE测试集上，Adapter用了更少量的参数达到了与传统Fine-Tuning方法接近的效果。
 - **LoRA**: LoRA是又一种PEFT方法，微软于2022年发表[《LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS》](https://arxiv.org/pdf/2106.09685.pdf)。我们依照下图以及论文，简单介绍下LoRA的实现原理。![在这里插入图片描述](https://img-blog.csdnimg.cn/f3c74f46e06242cd96e01da393d6bfb2.png#pic_center)
-      LoRA原理其实并不复杂。简单理解一下，就是在模型的Linear层的旁边，增加一个“旁支”，这个“旁支”的作用，就是代替原有的参数矩阵 W W W进行训练。结合上图，我们来直观地理解一下这个过程，输入 x ∈ R d x\\in R^{d} x∈Rd，举个例子，在普通的transformer模型中，这个 x x x可能是embedding的输出，也有可能是上一层transformer layer的输出，而 d d d一般就是768或者1024。按照原本的路线，它应该只走左边的部分，也就是原有的模型部分。
-      而在LoRA的策略下，增加了右侧的“旁支”，也就是先用一个Linear层 A A A，将数据从 d d d维降到 r r r，这个 r r r也就是LoRA的秩，是LoRA中最重要的一个超参数。一般会远远小于 d d d，尤其是对于现在的大模型， d d d已经不止是768或者1024，例如LLaMA-7B，每一层transformer有32个head，这样一来 d d d就达到了4096。接着再用第二个Linear层 B B B，将数据从 r r r变回 d d d维。最后再将左右两部分的结果相加融合，就得到了输出的hidden\_state。
-      对于左右两个部分，右侧看起来像是左侧原有矩阵 W W W的分解，将参数量从 d × d d\\times d d×d变成了 d × r + d × r d\\times r +d\\times r d×r+d×r，在 r ≪ d r\\ll d r≪d的情况下，参数量就大大地降低了。熟悉各类预训练模型的同学可能会发现，这个思想其实与Albert的思想有异曲同工之处，在Albert中，作者通过两个策略降低了训练的参数量，其一是Embedding矩阵分解，其二是跨层参数共享。在Albert中，作者考虑到词表的维度很大，所以将Embedding矩阵分解成两个相对较小的矩阵，用来模拟Embedding矩阵的效果，这样一来需要训练的参数量就减少了很多。
-      LoRA也是类似的思想，并且它不再局限于Embedding层，而是所有出现大矩阵的地方，理论上都可以用到这样的分解。但是与Albert不同的是，Albert直接用两个小矩阵替换了原来的大矩阵，而LoRA保留了原来的矩阵 W W W，但是不让 W W W参与训练(Fine-Tuning是更新权重矩阵 W W W，LoRA中的 W = W 0 + B A W=W\_{0}+BA W\=W0​+BA，但是 W 0 W\_{0} W0​不参与更新，只更新 A A A和 B B B)，所以需要计算梯度的部分就只剩下旁支的 A A A和 B B B两个小矩阵。用随机高斯分布初始化A，用0矩阵初始化B，保证训练的开始此旁路矩阵是0矩阵，使得模型保留原有知识，在训练的初始阶段仍然表现良好。A矩阵不采用0初始化主要是因为如果矩阵A也用0初始化，那么矩阵B梯度就始终为0(对B求梯度，结果带有A矩阵，A矩阵全0，B的梯度结果必然是0)，无法更新参数。
+      LoRA原理其实并不复杂。简单理解一下，就是在模型的Linear层的旁边，增加一个“旁支”，这个“旁支”的作用，就是代替原有的参数矩阵 W W W进行训练。结合上图，我们来直观地理解一下这个过程，输入 x ∈ R d x\in R^{d} x∈Rd，举个例子，在普通的transformer模型中，这个 x x x可能是embedding的输出，也有可能是上一层transformer layer的输出，而 d d d一般就是768或者1024。按照原本的路线，它应该只走左边的部分，也就是原有的模型部分。
+      而在LoRA的策略下，增加了右侧的“旁支”，也就是先用一个Linear层 A A A，将数据从 d d d维降到 r r r，这个 r r r也就是LoRA的秩，是LoRA中最重要的一个超参数。一般会远远小于 d d d，尤其是对于现在的大模型， d d d已经不止是768或者1024，例如LLaMA-7B，每一层transformer有32个head，这样一来 d d d就达到了4096。接着再用第二个Linear层 B B B，将数据从 r r r变回 d d d维。最后再将左右两部分的结果相加融合，就得到了输出的hidden_state。
+      对于左右两个部分，右侧看起来像是左侧原有矩阵 W W W的分解，将参数量从 d × d d\times d d×d变成了 d × r + d × r d\times r +d\times r d×r+d×r，在 r ≪ d r\ll d r≪d的情况下，参数量就大大地降低了。熟悉各类预训练模型的同学可能会发现，这个思想其实与Albert的思想有异曲同工之处，在Albert中，作者通过两个策略降低了训练的参数量，其一是Embedding矩阵分解，其二是跨层参数共享。在Albert中，作者考虑到词表的维度很大，所以将Embedding矩阵分解成两个相对较小的矩阵，用来模拟Embedding矩阵的效果，这样一来需要训练的参数量就减少了很多。
+      LoRA也是类似的思想，并且它不再局限于Embedding层，而是所有出现大矩阵的地方，理论上都可以用到这样的分解。但是与Albert不同的是，Albert直接用两个小矩阵替换了原来的大矩阵，而LoRA保留了原来的矩阵 W W W，但是不让 W W W参与训练(Fine-Tuning是更新权重矩阵 W W W，LoRA中的 W = W 0 + B A W=W_{0}+BA W\=W0​+BA，但是 W 0 W_{0} W0​不参与更新，只更新 A A A和 B B B)，所以需要计算梯度的部分就只剩下旁支的 A A A和 B B B两个小矩阵。用随机高斯分布初始化A，用0矩阵初始化B，保证训练的开始此旁路矩阵是0矩阵，使得模型保留原有知识，在训练的初始阶段仍然表现良好。A矩阵不采用0初始化主要是因为如果矩阵A也用0初始化，那么矩阵B梯度就始终为0(对B求梯度，结果带有A矩阵，A矩阵全0，B的梯度结果必然是0)，无法更新参数。
       从论文中的公式来看，在加入LoRA之前，模型训练的优化表示为:
-    m a x Φ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ ( y t ∣ x , y < t ) ) max\_{\\Phi} \\sum\_{(x,y \\in Z)}\\sum\_{t=1}^{|y|}log(P\_{\\Phi}(y\_{t}|x,y\_{<t})) maxΦ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ​(yt​∣x,y<t​))
-    其中，模型的参数用 Φ \\Phi Φ表示。
+    m a x Φ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ ( y t ∣ x , y < t ) ) max_{\Phi} \sum_{(x,y \in Z)}\sum_{t=1}^{|y|}log(P_{\Phi}(y_{t}|x,y_{<t})) maxΦ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ​(yt​∣x,y<t​))
+    其中，模型的参数用 $\Phi$ 表示。
       而加入了LoRA之后，模型的优化表示为:
-    m a x Θ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ 0 + Δ Φ ( Θ ) ( y t ∣ x , y < t ) ) max\_{\\Theta} \\sum\_{(x,y \\in Z)}\\sum\_{t=1}^{|y|}log(P\_{\\Phi\_{0}+\\Delta\\Phi(\\Theta)}(y\_{t}|x,y\_{<t})) maxΘ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ0​+ΔΦ(Θ)​(yt​∣x,y<t​))
-    其中，模型原有的参数是 Φ 0 \\Phi\_{0} Φ0​，LoRA新增的参数是 Δ Φ ( Θ ) \\Delta\\Phi(\\Theta) ΔΦ(Θ)。
-      从第二个式子可以看到，尽管参数看起来增加了 Δ Φ ( Θ ) \\Delta\\Phi(\\Theta) ΔΦ(Θ)，但是从前面的max的目标来看，需要优化的参数只有 Θ \\Theta Θ，而根 ∣ Θ ∣ ≪ ∣ Φ 0 ∣ |\\Theta|\\ll |\\Phi\_{0}| ∣Θ∣≪∣Φ0​∣，这就使得训练过程中，梯度计算量少了很多，所以就在低资源的情况下，我们可以只消耗 Θ \\Theta Θ这部分的资源，这样一来就可以在单卡低显存的情况下训练大模型了。这里再多说一点，通常在实际使用中，一般LoRA作用的矩阵是注意力机制部分的 W Q W\_{Q} WQ​  W K W\_{K} WK​  W V W\_{V} WV​矩阵(即与输入相乘获取 Q Q Q  K K K  V V V的权重矩阵。这三个权重矩阵的数量正常来说，分别和heads的数量相等，但在实际计算过程中，是将多个头的这三个权重矩阵分别进行了合并，因此每一个transformer层都只有一个 W Q W\_{Q} WQ​  W K W\_{K} WK​  W V W\_{V} WV​矩阵)。下面介绍下LoRA架构的优点:
+    m a x Θ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ 0 + Δ Φ ( Θ ) ( y t ∣ x , y < t ) ) max_{\Theta} \sum_{(x,y \in Z)}\sum_{t=1}^{|y|}log(P_{\Phi_{0}+\Delta\Phi(\Theta)}(y_{t}|x,y_{<t})) maxΘ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ0​+ΔΦ(Θ)​(yt​∣x,y<t​))
+    其中，模型原有的参数是 Φ 0 \Phi_{0} Φ0​，LoRA新增的参数是 Δ Φ ( Θ ) \Delta\Phi(\Theta) ΔΦ(Θ)。
+      从第二个式子可以看到，尽管参数看起来增加了 Δ Φ ( Θ ) \Delta\Phi(\Theta) ΔΦ(Θ)，但是从前面的max的目标来看，需要优化的参数只有 Θ \Theta Θ，而根 ∣ Θ ∣ ≪ ∣ Φ 0 ∣ |\Theta|\ll |\Phi_{0}| ∣Θ∣≪∣Φ0​∣，这就使得训练过程中，梯度计算量少了很多，所以就在低资源的情况下，我们可以只消耗 Θ \Theta Θ这部分的资源，这样一来就可以在单卡低显存的情况下训练大模型了。这里再多说一点，通常在实际使用中，一般LoRA作用的矩阵是注意力机制部分的 W Q W_{Q} WQ​  W K W_{K} WK​  W V W_{V} WV​矩阵(即与输入相乘获取 Q Q Q  K K K  V V V的权重矩阵。这三个权重矩阵的数量正常来说，分别和heads的数量相等，但在实际计算过程中，是将多个头的这三个权重矩阵分别进行了合并，因此每一个transformer层都只有一个 W Q W_{Q} WQ​  W K W_{K} WK​  W V W_{V} WV​矩阵)。下面介绍下LoRA架构的优点:
     - **全量微调的一般化**: LoRA 不要求权重矩阵的累积梯度更新在适配过程中具有满秩。当对所有权重矩阵应用 LoRA 并训练所有偏差时，将 LoRA 的秩 r r r设置为预训练权重矩阵的秩，就能大致恢复了全量微调的表现力。也就是说，随着增加可训练参数的数量，训练 LoRA 大致收敛于训练原始模型；
-    - **没有额外的推理延时**: 在生产部署时，可以明确地计算和存储 W = W 0 + B A W=W\_{0}+BA W\=W0​+BA，并正常执行推理。当需要切换到另一个下游任务时，可以通过减去 B A BA BA来恢复 W 0 W\_{0} W0​，然后增加一个不同的 B ′ A ′ B^{'}A^{'} B′A′，这是一个只需要很少内存开销的快速运算。最重要的是，与Fine-Tuning的模型相比，LoRA 推理过程中没有引入任何额外的延迟(将 B A BA BA加到原参数 W 0 W\_{0} W0​上后，计算量是一致的)；
-    - **减少内存和存储资源消耗**: 对于用Adam训练的大型Transformer，若 r ≪ d m o d e l r\\ll d\_{model} r≪dmodel​，LoRA 减少2/3的显存用量(训练模型时，模型参数往往都会存储在显存中)，因为不需要存储已固定的预训练参数的优化器状态，可以用更少的GPU进行大模型训练。在175B的GPT-3上，训练期间的显存消耗从1.2TB减少到350GB。在有且只有query和value矩阵被调整的情况下，checkpoint的大小大约减少了10000倍(从350GB到35MB)。另一个好处是，可以在部署时以更低的成本切换任务，只需更换 LoRA 的权重，而不是所有的参数。可以创建许多定制的模型，这些模型可以在将预训练模型的权重存储在显存中的机器上进行实时切换。在175B的GPT-3上训练时，与完全微调相比，速度提高了25%，因为我们不需要为绝大多数的参数计算梯度；
+    - **没有额外的推理延时**: 在生产部署时，可以明确地计算和存储 W = W 0 + B A W=W_{0}+BA W\=W0​+BA，并正常执行推理。当需要切换到另一个下游任务时，可以通过减去 B A BA BA来恢复 W 0 W_{0} W0​，然后增加一个不同的 B ′ A ′ B^{'}A^{'} B′A′，这是一个只需要很少内存开销的快速运算。最重要的是，与Fine-Tuning的模型相比，LoRA 推理过程中没有引入任何额外的延迟(将 B A BA BA加到原参数 W 0 W_{0} W0​上后，计算量是一致的)；
+    - **减少内存和存储资源消耗**: 对于用Adam训练的大型Transformer，若 r ≪ d m o d e l r\ll d_{model} r≪dmodel​，LoRA 减少2/3的显存用量(训练模型时，模型参数往往都会存储在显存中)，因为不需要存储已固定的预训练参数的优化器状态，可以用更少的GPU进行大模型训练。在175B的GPT-3上，训练期间的显存消耗从1.2TB减少到350GB。在有且只有query和value矩阵被调整的情况下，checkpoint的大小大约减少了10000倍(从350GB到35MB)。另一个好处是，可以在部署时以更低的成本切换任务，只需更换 LoRA 的权重，而不是所有的参数。可以创建许多定制的模型，这些模型可以在将预训练模型的权重存储在显存中的机器上进行实时切换。在175B的GPT-3上训练时，与完全微调相比，速度提高了25%，因为我们不需要为绝大多数的参数计算梯度；
     - **更长的输入**: 相较P-Tuning等soft-prompt方法，LoRA最明显的优势，就是不会占用输入token的长度。
 - **AdaLoRA**: AdaLoRA是发表于2023年3月[《ADAPTIVE BUDGET ALLOCATION FOR PARAMETEREFFICIENT FINE-TUNING》](https://arxiv.org/pdf/2303.10512.pdf)，论文并未仔细阅读，简单来说，论文中发现对不同类型权重矩阵或者不同层的权重矩阵应用LoRA方法，产生的效果是不同的，如下图所示。![在这里插入图片描述](https://img-blog.csdnimg.cn/f8722ab2b3d84dceb9e428a1354c8a65.png#pic_center)
       在参数预算有限的情况下(例如限定模型可微调参数的数量)，如何智能的选取更重要的参数进行更新，显得尤为重要。论文中提出的解决办法，是先对LoRA对应的权重矩阵进行SVD分解，即:
-    W = W 0 + Δ = W 0 + B A = W 0 + P Λ Q   W=W\_{0}+\\Delta=W\_{0}+BA=W\_{0}+P\\Lambda Q\\ W\=W0​+Δ\=W0​+BA\=W0​+PΛQ 
-    其中:  Δ \\Delta Δ称为增量矩阵， W ∈ R d 1 × d 2 W\\in R^{d1 \\times d2} W∈Rd1×d2， P ∈ R d 1 × r P\\in R^{d1 \\times r} P∈Rd1×r， Q ∈ R r × d 2 Q\\in R^{r \\times d2} Q∈Rr×d2， Λ ∈ R r × r \\Lambda\\in R^{r \\times r} Λ∈Rr×r， r ≪ m i n ( d 1 , d 2 ) r\\ll min(d1,d2) r≪min(d1,d2)。再根据重要性指标动态地调整每个增量矩阵中奇异值的大小。这样可以使得在微调过程中只更新那些对模型性能贡献较大或必要的参数，从而提高了模型性能和参数效率。具体可参考论文简介[ADAPTIVE BUDGET ALLOCATION FOR PARAMETER- EFFICIENT FINE-TUNING](https://zhuanlan.zhihu.com/p/628259936) 。
+    W = W 0 + Δ = W 0 + B A = W 0 + P Λ Q   W=W_{0}+\Delta=W_{0}+BA=W_{0}+P\Lambda Q\ W\=W0​+Δ\=W0​+BA\=W0​+PΛQ 
+    其中:  Δ \Delta Δ称为增量矩阵， W ∈ R d 1 × d 2 W\in R^{d1 \times d2} W∈Rd1×d2， P ∈ R d 1 × r P\in R^{d1 \times r} P∈Rd1×r， Q ∈ R r × d 2 Q\in R^{r \times d2} Q∈Rr×d2， Λ ∈ R r × r \Lambda\in R^{r \times r} Λ∈Rr×r， r ≪ m i n ( d 1 , d 2 ) r\ll min(d1,d2) r≪min(d1,d2)。再根据重要性指标动态地调整每个增量矩阵中奇异值的大小。这样可以使得在微调过程中只更新那些对模型性能贡献较大或必要的参数，从而提高了模型性能和参数效率。具体可参考论文简介[ADAPTIVE BUDGET ALLOCATION FOR PARAMETER- EFFICIENT FINE-TUNING](https://zhuanlan.zhihu.com/p/628259936) 。
 - **BitFit**: BitFit(Bias-term Fine-tuning)发表于2022年[BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models](https://arxiv.org/pdf/2106.10199.pdf)的思想更简单，其不需要对预训练模型做任何改动，只需要指定神经网络中的偏置(Bias)为可训练参数即可，BitFit的参数量只有不到2%，但是实验效果可以接近全量参数。
 
 #### 5.2 PEFT实践
@@ -836,7 +1326,7 @@ ChatGLM-6B+LoRA
 
 - **ChatGLM-6B微调实践**:
 
-    - **ChatGLM-6B + P-Tuning v2 ⇒ \\Rightarrow ⇒官方任务实践**: [【官方教程】ChatGLM-6B 微调](https://www.bilibili.com/video/BV1fd4y1Z7Y5/?spm_id_from=333.999.0.0&vd_source=25d0b87065d3da39fe110c6e0b4906e1)。
+    - **ChatGLM-6B + P-Tuning v2 ⇒ \Rightarrow ⇒官方任务实践**: [【官方教程】ChatGLM-6B 微调](https://www.bilibili.com/video/BV1fd4y1Z7Y5/?spm_id_from=333.999.0.0&vd_source=25d0b87065d3da39fe110c6e0b4906e1)。
 
         - **模型下载**: 下载[ChatGLM-6B](https://www.huggingface.co/THUDM/chatglm-6b/tree/main)模型的方法很多，这里介绍官方给出的最快下载方式。
             - **下载模型实现**:  由于下载整体模型较慢，所以我们先下载模型实现，再手动下载模型参数文件。下载模型实现前，需先[安装Git LFS](https://docs.github.com/zh/repositories/working-with-files/managing-large-files/installing-git-large-file-storage?platform=mac)，安装好之后再下载模型实现。
@@ -913,7 +1403,7 @@ ChatGLM-6B+LoRA
                     sh train.sh
 
 
-                - **注意**: 训练过程中可能会出现错误[init\_process\_group error](https://github.com/THUDM/ChatGLM-6B/issues/1169)，可按照[fix pturning init\_process\_group error](https://github.com/THUDM/ChatGLM-6B/pull/1173/files)进行解决。
+                - **注意**: 训练过程中可能会出现错误[init_process_group error](https://github.com/THUDM/ChatGLM-6B/issues/1169)，可按照[fix pturning init_process_group error](https://github.com/THUDM/ChatGLM-6B/pull/1173/files)进行解决。
             - **模型推理**:
 
                     #!/usr/bin/env python3
@@ -1011,7 +1501,7 @@ ChatGLM-6B+LoRA
             - **灾难性遗忘问题**: 在该数据集上进行微调后，会出现灾难性遗忘的情况，在数据集有限的情况下，目前通过实践总结出下面三种做法，可在一定程度上缓解灾难性遗忘
 
                 - **学习率调整**: 通过调整学习率进行解决的[灾难性遗忘问题](https://github.com/THUDM/ChatGLM-6B/issues/1148)；
-                - **采用LoRA方法**: 参见「**ChatGLM-6B + LoRA ⇒ \\Rightarrow ⇒真实任务实践**」；
+                - **采用LoRA方法**: 参见「**ChatGLM-6B + LoRA ⇒ \Rightarrow ⇒真实任务实践**」；
                 - **采用ChatGLM2-6B**: ChatGLM2-6B确实比ChatGLM-6B强。使用相同的超参数进行微调训练，ChatGLM2-6B在上述的广告数据集上微调后，确实没有出现灾难性遗忘的问题。不过仍然存在其他问题，大家自行体验。下面简单介绍下，使用ChatGLM2-6B复用ChatGLM-6B进行P-Tuning v2流程需要注意的点。
                     - **模型下载**: 模型下载方式同ChatGLM-6B相同，先下载模型实现[ChatGLM2-6B](https://huggingface.co/THUDM/chatglm2-6b/tree/main)，再下载模型参数文件[ChatGLM2-6B](https://cloud.tsinghua.edu.cn/d/674208019e314311ab5c/?p=/chatglm2-6b&mode=list)，注意这里博主是直接手动下载的，脚本下载方式没有尝试成功，大家可以试一试。
                         - **百度网盘下载**: 同样在百度网盘保存了一份模型参数文件，优先级较低，大家按需提取。链接: [ChatGLM2-6B](https://pan.baidu.com/s/1VsVY1di492WSRt1GsY8uGg)，提取码: 0625。
@@ -1057,7 +1547,7 @@ ChatGLM-6B+LoRA
 
 
                     - **模型推理**: 基本无变化，同样注意修改模型文件路径。
-    - **ChatGLM-6B + LoRA ⇒ \\Rightarrow ⇒官方任务实践**: 参考代码[ChatGLM\_Tuning](https://github.com/zejunwang1/chatglm_tuning/blob/main/README.md)，实现了ChatGLM-6B基于LoRA的微调流程。具体代码见[LLM微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。模型文件同样可根据前文的方法进行获取，其中官方的模型可能存在更新，如果想顺利复现训练过程，建议从网盘进行下载。
+    - **ChatGLM-6B + LoRA ⇒ \Rightarrow ⇒官方任务实践**: 参考代码[ChatGLM_Tuning](https://github.com/zejunwang1/chatglm_tuning/blob/main/README.md)，实现了ChatGLM-6B基于LoRA的微调流程。具体代码见[LLM微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。模型文件同样可根据前文的方法进行获取，其中官方的模型可能存在更新，如果想顺利复现训练过程，建议从网盘进行下载。
 
         - **LoRA配置参数**:
 
@@ -1098,7 +1588,7 @@ ChatGLM-6B+LoRA
 
                 - **注意**: 进行模型并行训练时，需要注意一个问题，即安装包问题。
                     - **安装包问题**: 采用模型并行时，还需安装`accelerate` `bitsandbytes` `scipy` `tensorboardX`四个安装包。
-    - **ChatGLM2-6B + LoRA ⇒ \\Rightarrow ⇒官方任务实践**: 实现了ChatGLM2-6B基于LoRA的微调流程。具体代码见[LLM微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。模型文件同样可根据前文的方法进行获取，其中官方的模型可能存在更新，如果想顺利复现训练过程，建议从网盘进行下载。
+    - **ChatGLM2-6B + LoRA ⇒ \Rightarrow ⇒官方任务实践**: 实现了ChatGLM2-6B基于LoRA的微调流程。具体代码见[LLM微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。模型文件同样可根据前文的方法进行获取，其中官方的模型可能存在更新，如果想顺利复现训练过程，建议从网盘进行下载。
 
         - **LoRA配置参数**: 同ChatGLM-6B；
         - **训练启动方式**:
@@ -1189,7 +1679,7 @@ ChatGLM-6B+LoRA
                             )
 
 
-    - **ChatGLM-6B + LoRA + Accelerate + Deepspeed ⇒ \\Rightarrow ⇒官方任务实践**: 参考了代码[LLM-tuning](https://github.com/jiangxinyang227/LLM-tuning/blob/master/README.md)，实现了该流程，具体代码见[LLM微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。ChatGLM2-6B可参考前文代码，对tokensize改写，进行适配训练即可。由于Deepspeed框架对环境依赖性很高，因此我们采用docker技术，构建**cuda11.7**+**torch2.0.0**+**python3.10**虚拟环境。Docker构建的具体方法参考[Docker基础知识](https://blog.csdn.net/qq_39439006/article/details/131906881?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22131906881%22,%22source%22:%22qq_39439006%22%7D)，此处简要介绍整体流程。
+    - **ChatGLM-6B + LoRA + Accelerate + Deepspeed ⇒ \Rightarrow ⇒官方任务实践**: 参考了代码[LLM-tuning](https://github.com/jiangxinyang227/LLM-tuning/blob/master/README.md)，实现了该流程，具体代码见[LLM微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。ChatGLM2-6B可参考前文代码，对tokensize改写，进行适配训练即可。由于Deepspeed框架对环境依赖性很高，因此我们采用docker技术，构建**cuda11.7**+**torch2.0.0**+**python3.10**虚拟环境。Docker构建的具体方法参考[Docker基础知识](https://blog.csdn.net/qq_39439006/article/details/131906881?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22131906881%22,%22source%22:%22qq_39439006%22%7D)，此处简要介绍整体流程。
 
         - **Docker容器构建**:
 
@@ -1237,7 +1727,7 @@ ChatGLM-6B+LoRA
 
 
                 - **模型加载说明**:
-                    - `empty_init=False`: 目前如果使用Deepspeed进行训练，在加载ChatGLM模型时，参数`empty_init`必须置为False(参考[empty\_init问题](https://github.com/THUDM/ChatGLM-6B/issues/530))，后续官方可能会更新源码，修复该问题；
+                    - `empty_init=False`: 目前如果使用Deepspeed进行训练，在加载ChatGLM模型时，参数`empty_init`必须置为False(参考[empty_init问题](https://github.com/THUDM/ChatGLM-6B/issues/530))，后续官方可能会更新源码，修复该问题；
                     - `trust_remote_code=True`: 加载模型代码时，加上此参数，防止报错；
                     - `torch_dtype=torch.float16`，FP16加载模型；
                     - `args.base_model`: 模型文件路径，最后一定是以`/`结尾，如`./chatglm-6b-model/`，`./chatglm-6b-model`会报错。
@@ -1361,13 +1851,13 @@ ChatGLM-6B+LoRA
 - **DataParallel(DP)**:
     - **简介**: 单机多卡的分布式训练工具；数据并行模式。
 
-    - **原理**: 网络在前向传播的时候会将model从主卡(默认是逻辑0卡)复制一份到所有的device上，input\_data会在batch这个维度被分组后加载到不同的device上计算。在反向传播时，每个卡上的梯度会汇总到主卡上，求得梯度的均值后，再用反向传播更新单个GPU上的模型参数，最后将更新后的模型参数复制到剩余指定的GPU中进行下一轮的前向传播，以此来实现并行。
+    - **原理**: 网络在前向传播的时候会将model从主卡(默认是逻辑0卡)复制一份到所有的device上，input_data会在batch这个维度被分组后加载到不同的device上计算。在反向传播时，每个卡上的梯度会汇总到主卡上，求得梯度的均值后，再用反向传播更新单个GPU上的模型参数，最后将更新后的模型参数复制到剩余指定的GPU中进行下一轮的前向传播，以此来实现并行。
 
     - **参数简介**: `torch.nn.DataParallel(module, device_ids=None, output_device=None, dim=0)`
 
         - **module**: 是要放到多卡训练的模型；
-        - **device\_ids**: 数据类型是一个列表, 表示可用的gpu卡号；
-        - **output\_devices**: 数据类型也是列表，表示模型输出结果存放的卡号(如果不指定的话,默认放在0卡，即device\_ids首位，这也是为什么多gpu训练并不是负载均衡的，一般0卡会占用的多，这里还涉及到一个小知识点: 如果代码开始设定`os.environ["CUDA_VISIBLE_DEVICES"] = "2, 3"`，那么0卡(逻辑卡号)指的是2卡(物理卡号)。
+        - **device_ids**: 数据类型是一个列表, 表示可用的gpu卡号；
+        - **output_devices**: 数据类型也是列表，表示模型输出结果存放的卡号(如果不指定的话,默认放在0卡，即device_ids首位，这也是为什么多gpu训练并不是负载均衡的，一般0卡会占用的多，这里还涉及到一个小知识点: 如果代码开始设定`os.environ["CUDA_VISIBLE_DEVICES"] = "2, 3"`，那么0卡(逻辑卡号)指的是2卡(物理卡号)。
     - **模型参数更新方式**:
 
         - DataLoader把数据通过多个worker读到主进程的内存中；
@@ -1382,7 +1872,7 @@ ChatGLM-6B+LoRA
         - **scatter**: 是主进程将数据的每一小部分给组里的其它进程；
         - **gather**: 是将其它进程的数据收集过来；
         - **reduce**: 是将其它进程的数据收集过来并应用某种操作(比如SUM)；
-        - **补充**: 在gather和reduce概念前面还可以加上all，如all\_gather，all\_reduce，那就是多对多的关系了。
+        - **补充**: 在gather和reduce概念前面还可以加上all，如all_gather，all_reduce，那就是多对多的关系了。
             ![在这里插入图片描述](https://img-blog.csdnimg.cn/b198db115c8c4a7cacfe1db9cabf35c6.png#pic_center)
     - **使用示例**: 参考[一文搞定分布式训练: dataparallel distributed deepspeed accelerate transformers horovod](https://zhuanlan.zhihu.com/p/628022953)
 
@@ -1394,8 +1884,8 @@ ChatGLM-6B+LoRA
     - **参数简介**: `torch.nn.parallel.DistributedDataParallel(module, device_ids=None, output_device=None, dim=0, broadcast_buffers=True, process_group=None, bucket_cap_mb=25, find_unused_parameters=False, check_reduction=False)`
 
         - **module**: 是要放到多卡训练的模型；
-        - **device\_ids**: 是一个列表, 表示可用的gpu卡号；
-        - **output\_devices**: 也是列表，表示模型输出结果存放的卡号(如果不指定的话,默认放在0卡，这也是为什么多gpu训练并不是负载均衡的,一般0卡会占用的多，这里还涉及到一个小知识点: 如果程序开始加`os.environ["CUDA_VISIBLE_DEVICES"] = "2, 3"`，那么0卡(逻辑卡号)指的是2卡(物理卡号))；
+        - **device_ids**: 是一个列表, 表示可用的gpu卡号；
+        - **output_devices**: 也是列表，表示模型输出结果存放的卡号(如果不指定的话,默认放在0卡，这也是为什么多gpu训练并不是负载均衡的,一般0卡会占用的多，这里还涉及到一个小知识点: 如果程序开始加`os.environ["CUDA_VISIBLE_DEVICES"] = "2, 3"`，那么0卡(逻辑卡号)指的是2卡(物理卡号))；
         - **dim**: 指按哪个维度进行数据的划分，默认是输入数据的第一个维度，即按batchsize划分(设数据数据的格式是B, C, H, W)。
     - **模型参数更新方式**:
 
@@ -1456,8 +1946,8 @@ ChatGLM-6B+LoRA
 
         - **FP32权重备份**: 这种方法主要是用于解决舍入误差的问题。其主要思路，可以概括为: weights，activations，gradients等数据在训练中都利用FP16来存储，同时拷贝一份FP32的weights，用于更新。如下图: ![在这里插入图片描述](https://img-blog.csdnimg.cn/00e19cb3f86b42b2afaa6a0c6c4357b9.jpeg#pic_center)
              
-              可以看到，其他所有值(weights，activations， gradients)均使用FP16来存储，而唯独权重weights需要用FP32的格式额外备份一次。 这主要是因为，在更新权重的时候，往往公式: **权重 = 旧权重 + lr \* 梯度**，而在深度模型中，**lr \* 梯度**这个值往往是非常小的，如果利用FP16来进行相加的话， 则很可能会出现上面所说的『舍入误差』的这个问题，导致更新无效。因此上图中，通过将weights拷贝成FP32格式，并且确保整个更新(update)过程是在FP32格式下进行的，如下所示:
-            w e i g h t 32 = w e i g h t 32 + η ⋅ g r a d i e n t 32 weight\_{32}=weight\_{32}+\\eta \\cdot gradient\_{32} weight32​\=weight32​+η⋅gradient32​
+              可以看到，其他所有值(weights，activations， gradients)均使用FP16来存储，而唯独权重weights需要用FP32的格式额外备份一次。 这主要是因为，在更新权重的时候，往往公式: **权重 = 旧权重 + lr \ 梯度**，而在深度模型中，**lr \ 梯度**这个值往往是非常小的，如果利用FP16来进行相加的话， 则很可能会出现上面所说的『舍入误差』的这个问题，导致更新无效。因此上图中，通过将weights拷贝成FP32格式，并且确保整个更新(update)过程是在FP32格式下进行的，如下所示:
+            w e i g h t 32 = w e i g h t 32 + η ⋅ g r a d i e n t 32 weight_{32}=weight_{32}+\eta \cdot gradient_{32} weight32​\=weight32​+η⋅gradient32​
               看到这里，可能有人提出这种FP32拷贝weights的方式，那岂不是使得内存占用反而更高了呢？是的，FP32额外拷贝一份weights的确新增加了训练时候存储的占用。 但是实际上，在训练过程中，内存中占据大部分的基本都是activations的值，如下图所示。特别是在batchsize很大的情况下， activations更是特别占据空间。 保存activiations主要是为了在backward的时候进行计算。因此，只要activations的值基本都是使用FP16来进行存储的话，则最终模型与FP32相比起来， 内存占用也基本能够减半。 ![在这里插入图片描述](https://img-blog.csdnimg.cn/09703dfad812470bbc47fc5a3f9989ac.png#pic_center)
 
         - **损失放大(Loss Scale)**: 即使采用了混合精度训练，还是存在无法收敛的情况，原因是激活梯度的值太小，造成了下溢出(Underflow)。Loss Scale主要是为了解决FP16 underflow的问题。刚才提到，训练到了后期，梯度(特别是激活函数平滑段的梯度)会特别小，如果用FP16来表示，则这些梯度都会变成0，因此导致FP16表示容易产生underflow现象。
@@ -1506,7 +1996,7 @@ ChatGLM-6B+LoRA
                 - **gradients**: 模型梯度G；
                 - **parameters**: 模型参数W。
             - **Residual States**: 指并非模型必须的，但在训练过程中会额外产生的内容，具体包括:
-                - **activations**: 激活值。在backward过程中使用链式法则计算梯度时会用到。有了它计算梯度会更快，但它不是必须存储的，因为可以通过重新做forward来计算算它。实际上，activations就是模型在训练过程中产生的中间值，举个例子:  x 2 = w 1 ∗ x ， y = w 2 ∗ x 2 x\_{2}=w\_{1} \* x，y=w\_{2} \* x\_{2} x2​\=w1​∗x，y\=w2​∗x2​，假设上面的参数( w 1 w\_{1} w1​， w 2 w\_{2} w2​)和输入 x x x都是标量，在反向传播阶段要计算 y y y对 w 2 w\_{2} w2​的梯度，很明显是 x 2 x\_{2} x2​，这个 x 2 x\_{2} x2​就属于activations，也就是在前向阶段需要保存的一个中间结果。当然我们也可以不保存，当反向阶段需要用到 x 2 x\_{2} x2​时再重新通过forward过程临时计算；
+                - **activations**: 激活值。在backward过程中使用链式法则计算梯度时会用到。有了它计算梯度会更快，但它不是必须存储的，因为可以通过重新做forward来计算算它。实际上，activations就是模型在训练过程中产生的中间值，举个例子:  x 2 = w 1 ∗ x ， y = w 2 ∗ x 2 x_{2}=w_{1} \ x，y=w_{2} \ x_{2} x2​\=w1​∗x，y\=w2​∗x2​，假设上面的参数( w 1 w_{1} w1​， w 2 w_{2} w2​)和输入 x x x都是标量，在反向传播阶段要计算 y y y对 w 2 w_{2} w2​的梯度，很明显是 x 2 x_{2} x2​，这个 x 2 x_{2} x2​就属于activations，也就是在前向阶段需要保存的一个中间结果。当然我们也可以不保存，当反向阶段需要用到 x 2 x_{2} x2​时再重新通过forward过程临时计算；
                 - **temporary buffers**: 临时存储。例如把梯度发送到某块GPU上做加总聚合时产生的存储。
                 - **unusable fragment memory**: 碎片化的存储空间。虽然总存储空间是够的，但是如果取不到连续的存储空间，相关的请求也会被fail掉。对这类空间浪费可以通过内存整理来解决。
         - **存储大小**: 了解了存储分类，接下来了解下每种存储占用的内存大小。首先我们回忆下混合精度训练的过程，大致如下图所示: ![在这里插入图片描述](https://img-blog.csdnimg.cn/af39b25e42a945c2bb55d0e6c1cabc1d.png#pic_center)
@@ -1518,9 +2008,9 @@ ChatGLM-6B+LoRA
                 - 将FP16的gradients转换为FP32的gradients，用FP32的gradients去更新FP32下的model states。 当模型收敛后，FP32的parameter就是最终的参数输出。
                      
 
-              现在，我们可以来计算模型在训练时需要的存储大小了，假设模型的参数W大小是 Φ \\Phi Φ (根据参数量预估显存占用的方法参见[参数量估计与显存估计](http://mingchao.wang/rJXF8VxX/)，这里简单提下，比如6B的模型，使用FP16方式载入显存，所需显存大小: 6B ∗ \\ast ∗ 2 = 12G)，则训练时对应的存储如下:
+              现在，我们可以来计算模型在训练时需要的存储大小了，假设模型的参数W大小是 $\Phi$  (根据参数量预估显存占用的方法参见[参数量估计与显存估计](http://mingchao.wang/rJXF8VxX/)，这里简单提下，比如6B的模型，使用FP16方式载入显存，所需显存大小: 6B ∗ \ast ∗ 2 = 12G)，则训练时对应的存储如下:
             ![在这里插入图片描述](https://img-blog.csdnimg.cn/647ac6be79b741adb9025bd9b6a964cc.jpeg#pic_center)
-              因为采用了Adam优化，所以才会出现momentum和variance，当然你也可以选择别的优化办法，这里为了通用，模型必存的数据大小为 K Φ K\\Phi KΦ，因此总的存储大小为 ( 2 + 2 + K ) Φ (2+2+K)\\Phi (2+2+K)Φ。另外，这里暂不将activations纳入统计范围，原因是:
+              因为采用了Adam优化，所以才会出现momentum和variance，当然你也可以选择别的优化办法，这里为了通用，模型必存的数据大小为 K Φ K\Phi KΦ，因此总的存储大小为 ( 2 + 2 + K ) Φ (2+2+K)\Phi (2+2+K)Φ。另外，这里暂不将activations纳入统计范围，原因是:
 
             - activations不仅与模型参数相关，还与batchsize相关；
             - activations的存储不是必须的。前文已经提到，存储activations只是为了在用链式法则做backward的过程中，计算梯度更快一些。但你永远可以通过只保留最初的输入X，重新做forward来得到每一层的activations(虽然实际中并不会这么极端)；
@@ -1534,135 +2024,135 @@ ChatGLM-6B+LoRA
 
               诸如此类，所以，ZeRO-DP想了一个简单粗暴的办法: 如果数据算完即废，等需要的时候，我再想办法从个什么地方拿回来，那不就省了一笔存储空间吗？沿着这个思路，我们逐一来看ZeRO是如何递进做存储优化的。
 
-            - **ZeRO-1**: 即 P o s P\_{os} Pos​，优化状态分割。首先，从optimizer states开始优化。将optimizer states分成若干份，每块GPU上各自维护一份。这样就减少了相当一部分的显存开销。如下图: ![在这里插入图片描述](https://img-blog.csdnimg.cn/94046d5dac01482180594cef742a0c4a.jpeg#pic_center)
+            - **ZeRO-1**: 即 P o s P_{os} Pos​，优化状态分割。首先，从optimizer states开始优化。将optimizer states分成若干份，每块GPU上各自维护一份。这样就减少了相当一部分的显存开销。如下图: ![在这里插入图片描述](https://img-blog.csdnimg.cn/94046d5dac01482180594cef742a0c4a.jpeg#pic_center)
                 整体数据并行的流程如下:
                 - 每块GPU上存一份完整的参数W。将一个batch的数据分成3份，每块GPU各吃一份，做完一轮forward和backward后，各得一份梯度；
-                - 对梯度做一次all-reduce，得到完整的梯度G，产生单卡通讯量 2 Φ 2\\Phi 2Φ。对于all-reduce(reduce-scatter + all-gather)的通讯量，reduce-scatter操作发送和接收的通讯量为 Φ \\Phi Φ，all-gather操作发送和接收的通讯量也为 Φ \\Phi Φ，因此all-reduce的通讯录为 2 Φ 2\\Phi 2Φ。注意，此处我们不去探寻单次发送和接收的通讯量为什么是 Φ \\Phi Φ，感兴趣的同学可自行探索[手把手推导Ring All-reduce的数学性质](https://zhuanlan.zhihu.com/p/504957661)；
+                - 对梯度做一次all-reduce，得到完整的梯度G，产生单卡通讯量 $2\Phi$ 。对于all-reduce(reduce-scatter + all-gather)的通讯量，reduce-scatter操作发送和接收的通讯量为 $\Phi$ ，all-gather操作发送和接收的通讯量也为 $\Phi$ ，因此all-reduce的通讯录为 $2\Phi$ 。注意，此处我们不去探寻单次发送和接收的通讯量为什么是 $\Phi$ ，感兴趣的同学可自行探索[手把手推导Ring All-reduce的数学性质](https://zhuanlan.zhihu.com/p/504957661)；
                 - 得到完整梯度G，就可以对W做更新。我们知道W的更新由optimizer states和梯度共同决定。由于每块GPU上只保管部分optimizer states，因此只能将相应的W(蓝色部分)进行更新。上述步骤可以用下图表示: ![在这里插入图片描述](https://img-blog.csdnimg.cn/ed410fbe73ea430cb032a20bdedaf2f6.png#pic_center)
-                - 此时，每块GPU上都有部分W没有完成更新(图中白色部分)。所以我们需要对W做一次all-gather，从别的GPU上把更新好的部分W取回来。产生单卡通讯量 Φ \\Phi Φ。
+                - 此时，每块GPU上都有部分W没有完成更新(图中白色部分)。所以我们需要对W做一次all-gather，从别的GPU上把更新好的部分W取回来。产生单卡通讯量 $\Phi$ 。
                      
 
-              做完 P o s P\_{os} Pos​后，设GPU个数为 N d N\_{d} Nd​，显存和通讯量的情况如下:
+              做完 P o s P_{os} Pos​后，设GPU个数为 N d N_{d} Nd​，显存和通讯量的情况如下:
 
             并行化技术
 
             显存
 
-            显存(GB)， Φ = 7.5 B \\Phi=7.5B Φ\=7.5B， N d = 64 N\_{d}=64 Nd​\=64， K = 12 K=12 K\=12
+            显存(GB)， Φ = 7.5 B \Phi=7.5B Φ\=7.5B， N d = 64 N_{d}=64 Nd​\=64， K = 12 K=12 K\=12
 
             单卡通讯量
 
             朴素DP
 
-            (2+2+ K K K) Φ \\Phi Φ
+            (2+2+ K K K) $\Phi$
 
             120GB
 
-            2 Φ \\Phi Φ
+            2 $\Phi$
 
-            P o s P\_{os} Pos​
+            P o s P_{os} Pos​
 
-            (2+2+ K N d \\frac{K}{N\_{d}} Nd​K​) Φ \\Phi Φ
+            (2+2+ K N d \frac{K}{N_{d}} Nd​K​) $\Phi$
 
             31.4GB
 
-            3 Φ \\Phi Φ
+            3 $\Phi$
 
-               如图所示， P o s P\_{os} Pos​在增加1.5倍单卡通讯开销的基础上，将单卡存储降低了4倍。这里需要说明下，有其他相关技术博客，给出的 P o s P\_{os} Pos​单卡通讯量是2 Φ \\Phi Φ。其实虽然按照论文中定义，计算的通讯量是3 Φ \\Phi Φ，但在官方代码的具体实现中，通讯量应该是2 Φ \\Phi Φ，这是因为在第二个步骤中，由于每块GPU上只保管部分optimizer states，因此根本不需要对梯度做all-gather操作。因为即使每块GPU上有完整的梯度，在实际计算中有部分梯度也用不上。这样 P o s P\_{os} Pos​单卡通讯量就是2 Φ \\Phi Φ了。
+               如图所示， P o s P_{os} Pos​在增加1.5倍单卡通讯开销的基础上，将单卡存储降低了4倍。这里需要说明下，有其他相关技术博客，给出的 P o s P_{os} Pos​单卡通讯量是2 $\Phi$ 。其实虽然按照论文中定义，计算的通讯量是3 $\Phi$ ，但在官方代码的具体实现中，通讯量应该是2 $\Phi$ ，这是因为在第二个步骤中，由于每块GPU上只保管部分optimizer states，因此根本不需要对梯度做all-gather操作。因为即使每块GPU上有完整的梯度，在实际计算中有部分梯度也用不上。这样 P o s P_{os} Pos​单卡通讯量就是2 $\Phi$ 了。
 
-            - **ZeRO-2**: 即 P o s + P g P\_{os}+P\_{g} Pos​+Pg​，优化状态与梯度分割。现在，更近一步，我们把梯度也拆开，每个GPU格子维护一块梯度。![在这里插入图片描述](https://img-blog.csdnimg.cn/a18b35f0e7e544f192f9ecb8e30506a4.png#pic_center)
+            - **ZeRO-2**: 即 P o s + P g P_{os}+P_{g} Pos​+Pg​，优化状态与梯度分割。现在，更近一步，我们把梯度也拆开，每个GPU格子维护一块梯度。![在这里插入图片描述](https://img-blog.csdnimg.cn/a18b35f0e7e544f192f9ecb8e30506a4.png#pic_center)
                 此时，数据并行的整体流程如下:
                 - 每块GPU上存一份完整的参数W。将一个batch的数据分成3份，每块GPU各吃一份，做完一轮foward和backward后，算得一份完整的梯度(下图中绿色+白色)；
-                - 对梯度做一次reduce-scatter，保证每个GPU上所维持的那块梯度是聚合更新后的梯度。例如对GPU1，它负责维护G1，因此其他的GPU只需要把G1对应位置的梯度发给GPU1做加总就可。汇总完毕后，白色块对GPU无用，可以从显存中移除。单卡通讯量为 Φ \\Phi Φ。如下图所示。![在这里插入图片描述](https://img-blog.csdnimg.cn/3e23d6c0685843018bcedfea73862647.png#pic_center)
-                - 每块GPU用自己对应的O和G去更新相应的W。更新完毕后，每块GPU维持了一块更新完毕的W。同理，对W做一次all-gather，将别的GPU算好的W同步到自己这来。单卡通讯量 Φ \\Phi Φ。
+                - 对梯度做一次reduce-scatter，保证每个GPU上所维持的那块梯度是聚合更新后的梯度。例如对GPU1，它负责维护G1，因此其他的GPU只需要把G1对应位置的梯度发给GPU1做加总就可。汇总完毕后，白色块对GPU无用，可以从显存中移除。单卡通讯量为 $\Phi$ 。如下图所示。![在这里插入图片描述](https://img-blog.csdnimg.cn/3e23d6c0685843018bcedfea73862647.png#pic_center)
+                - 每块GPU用自己对应的O和G去更新相应的W。更新完毕后，每块GPU维持了一块更新完毕的W。同理，对W做一次all-gather，将别的GPU算好的W同步到自己这来。单卡通讯量 $\Phi$ 。
                      
 
-              做完 P o s + P g P\_{os}+P\_{g} Pos​+Pg​后，设GPU个数为 N d N\_{d} Nd​，显存和通讯量的情况如下:
+              做完 P o s + P g P_{os}+P_{g} Pos​+Pg​后，设GPU个数为 N d N_{d} Nd​，显存和通讯量的情况如下:
 
             并行化技术
 
             显存
 
-            显存(GB)， Φ = 7.5 B \\Phi=7.5B Φ\=7.5B， N d = 64 N\_{d}=64 Nd​\=64， K = 12 K=12 K\=12
+            显存(GB)， Φ = 7.5 B \Phi=7.5B Φ\=7.5B， N d = 64 N_{d}=64 Nd​\=64， K = 12 K=12 K\=12
 
             单卡通讯量
 
             朴素DP
 
-            (2+2+ K K K) Φ \\Phi Φ
+            (2+2+ K K K) $\Phi$
 
             120GB
 
-            2 Φ \\Phi Φ
+            2 $\Phi$
 
-            P o s P\_{os} Pos​
+            P o s P_{os} Pos​
 
-            (2+2+ K N d \\frac{K}{N\_{d}} Nd​K​) Φ \\Phi Φ
+            (2+2+ K N d \frac{K}{N_{d}} Nd​K​) $\Phi$
 
             31.4GB
 
-            3 Φ \\Phi Φ
+            3 $\Phi$
 
-            P o s + P g P\_{os}+P\_{g} Pos​+Pg​
+            P o s + P g P_{os}+P_{g} Pos​+Pg​
 
-            (2+ 2 + K N d \\frac{2+K}{N\_{d}} Nd​2+K​) Φ \\Phi Φ
+            (2+ 2 + K N d \frac{2+K}{N_{d}} Nd​2+K​) $\Phi$
 
             16.6GB
 
-            2 Φ \\Phi Φ
+            2 $\Phi$
 
                如图所示，和朴素DP相比，存储降了8倍，单卡通讯量持平。
 
-            - **ZeRO-3**: 即 P o s + P g + P p P\_{os}+P\_{g}+P\_{p} Pos​+Pg​+Pp​，优化状态 梯度与参数分割。现在，我们把参数也切开。每块GPU置维持对应的optimizer states，gradients和parameters(即W)。![在这里插入图片描述](https://img-blog.csdnimg.cn/f55d3e65be614701ac874871b309ae9f.png#pic_center)
+            - **ZeRO-3**: 即 P o s + P g + P p P_{os}+P_{g}+P_{p} Pos​+Pg​+Pp​，优化状态 梯度与参数分割。现在，我们把参数也切开。每块GPU置维持对应的optimizer states，gradients和parameters(即W)。![在这里插入图片描述](https://img-blog.csdnimg.cn/f55d3e65be614701ac874871b309ae9f.png#pic_center)
                 数据并行的流程如下:
                 - 每块GPU上只保存部分参数W。将一个batch的数据分成3份，每块GPU各吃一份；
-                - 做forward时，对W做一次all-gather，取回分布在别的GPU上的W，得到一份完整的W，单卡通讯量 Φ \\Phi Φ。forward做完，立刻把不是自己维护的W抛弃；
-                - 做backward时，对W做一次all-gather，取回完整的W，单卡通讯量 Φ \\Phi Φ。backward做完，立刻把不是自己维护的W抛弃；
-                - 做完backward，算得一份完整的梯度G，对G做一次reduce-scatter，从别的GPU上聚合自己维护的那部分梯度，单卡通讯量 Φ \\Phi Φ。聚合操作结束后，立刻把不是自己维护的G抛弃。
+                - 做forward时，对W做一次all-gather，取回分布在别的GPU上的W，得到一份完整的W，单卡通讯量 $\Phi$ 。forward做完，立刻把不是自己维护的W抛弃；
+                - 做backward时，对W做一次all-gather，取回完整的W，单卡通讯量 $\Phi$ 。backward做完，立刻把不是自己维护的W抛弃；
+                - 做完backward，算得一份完整的梯度G，对G做一次reduce-scatter，从别的GPU上聚合自己维护的那部分梯度，单卡通讯量 $\Phi$ 。聚合操作结束后，立刻把不是自己维护的G抛弃。
                 - 用自己维护的O和G，更新W。由于只维护部分W，因此无需再对W做任何all-reduce操作。
                      
 
-              做完 P o s + P g + P p P\_{os}+P\_{g}+P\_{p} Pos​+Pg​+Pp​后，设GPU个数为 N d N\_{d} Nd​，显存和通讯量的情况如下:
+              做完 P o s + P g + P p P_{os}+P_{g}+P_{p} Pos​+Pg​+Pp​后，设GPU个数为 N d N_{d} Nd​，显存和通讯量的情况如下:
 
             并行化技术
 
             显存
 
-            显存(GB)， Φ = 7.5 B \\Phi=7.5B Φ\=7.5B， N d = 64 N\_{d}=64 Nd​\=64， K = 12 K=12 K\=12
+            显存(GB)， Φ = 7.5 B \Phi=7.5B Φ\=7.5B， N d = 64 N_{d}=64 Nd​\=64， K = 12 K=12 K\=12
 
             单卡通讯量
 
             朴素DP
 
-            (2+2+ K K K) Φ \\Phi Φ
+            (2+2+ K K K) $\Phi$
 
             120GB
 
-            2 Φ \\Phi Φ
+            2 $\Phi$
 
-            P o s P\_{os} Pos​
+            P o s P_{os} Pos​
 
-            (2+2+ K N d \\frac{K}{N\_{d}} Nd​K​) Φ \\Phi Φ
+            (2+2+ K N d \frac{K}{N_{d}} Nd​K​) $\Phi$
 
             31.4GB
 
-            3 Φ \\Phi Φ
+            3 $\Phi$
 
-            P o s + P g P\_{os}+P\_{g} Pos​+Pg​
+            P o s + P g P_{os}+P_{g} Pos​+Pg​
 
-            (2+ 2 + K N d \\frac{2+K}{N\_{d}} Nd​2+K​) Φ \\Phi Φ
+            (2+ 2 + K N d \frac{2+K}{N_{d}} Nd​2+K​) $\Phi$
 
             16.6GB
 
-            2 Φ \\Phi Φ
+            2 $\Phi$
 
-            P o s + P g + P p P\_{os}+P\_{g}+P\_{p} Pos​+Pg​+Pp​
+            P o s + P g + P p P_{os}+P_{g}+P_{p} Pos​+Pg​+Pp​
 
-            ( 2 + 2 + K N d \\frac{2+2+K}{N\_{d}} Nd​2+2+K​) Φ \\Phi Φ
+            ( 2 + 2 + K N d \frac{2+2+K}{N_{d}} Nd​2+2+K​) $\Phi$
 
             1.9GB
 
-            3 Φ \\Phi Φ
+            3 $\Phi$
 
                如图所示，和朴素DP相比，用1.5倍的通讯开销，换回近120倍的显存。最终，我们可以看下论文中的总体对比图: ![在这里插入图片描述](https://img-blog.csdnimg.cn/1448e46ff6224bd89811ddd0f4c7ddf4.png#pic_center)
 
@@ -1695,7 +2185,7 @@ ChatGLM-6B+LoRA
 - 如果有N张显存足够大的显卡，怎么加速训练？
     - 数据并行(DP)，充分利用多张显卡的算力。
 - 如果显卡的显存不够装下一个完整的模型呢？
-    - 最直观想法，需要分层加载，把不同的层加载到不同的GPU上(accelerate的device\_map)，也就是常见的PP，流水线并行。
+    - 最直观想法，需要分层加载，把不同的层加载到不同的GPU上(accelerate的device_map)，也就是常见的PP，流水线并行。
 - 但PP推理起来，是一个串行的过程，1个GPU计算，其他GPU空闲，有没有其他方式？
     - 横向切分，流水线并行(PP)，也就是分层加载到不同的显卡上；
     - 纵向切分，张量并行(TP)，也称作模型并行(MP)。
