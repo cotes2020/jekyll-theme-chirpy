@@ -21,7 +21,7 @@ Tuy nhiên, hầu hết các kí tự đặc biệt đều đã được filter 
 
 ![Neonify](/posts/Neonify-CookieArena/Untitled%202.png)
 
-Vì admin không cung cấp source code nên cũng hơi bí bách. Ngồi vò đầu bứt tóc một lúc, vô tình trigger ra một exception khi `neon=%ab`. (Nhắc lại đây chỉ là vô tình =)) )
+Vì admin không cung cấp source code nên cũng hơi bí bách. Ngồi vò đầu bứt tóc một lúc, vô tình trigger ra một exception và nhảy đến trang debug khi `neon=%ab`. (Nhắc lại đây chỉ là vô tình =)) )
 
 ![Neonify](/posts/Neonify-CookieArena/Untitled%203.png)
 
