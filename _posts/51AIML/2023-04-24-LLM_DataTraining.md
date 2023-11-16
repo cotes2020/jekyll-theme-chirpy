@@ -12,6 +12,8 @@ tags: [AIML]
     - [CNN 卷积神经网络](#cnn-卷积神经网络)
     - [Convolution 卷积](#convolution-卷积)
     - [Padding 填充](#padding-填充)
+      - [valid padding](#valid-padding)
+      - [same padding](#same-padding)
     - [Stride 步长](#stride-步长)
     - [多通道卷积](#多通道卷积)
     - [Mask](#mask)
@@ -83,6 +85,37 @@ tags: [AIML]
 - 将图像矩阵中，从左到右，由上到下，取与滤波器同等大小的一部分
 - 每一部分中的值与滤波器中的值对应相乘后求和，最后的结果组成一个矩阵，其中没有对核进行翻转。
 
+
+一般卷積網路過程中，除了Input image不稱為Feature map外，中間產生的圖我們都稱之為Feature map
+- 原因很簡單就是這些中間產生的圖都是為了「描繪出該任務所應該產生對應的特徵資料」
+- 也呼應Yann LeCun, Yoshua Bengio & Geoffrey Hinton寫的Deep Learning第一句話寫的「Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction」
+- 深度學習過程就是在學資料的特性，所以中間出來的結果都是特徵資料，在影像因為是2D，所以用Feature map來稱呼。[^卷積計算中的步伐和填充]
+
+
+
+[^卷積計算中的步伐和填充]:卷積計算中的步伐(stride)和填充(padding), https://chih-sheng-huang821.medium.com/卷積神經網路-convolutional-neural-network-cnn-卷積計算中的步伐-stride-和填充-padding-94449e638e82
+
+
+一個卷積計算基本上有幾個部份:
+1. 輸入的圖: 假設大小是 $W × W$。
+2. Filter (kernel map)大小是 $ks × ks$
+3. Stride: kernel map在移動時的步伐長度 $S$
+4. 輸出的圖大小為 $new_height × new_width$
+
+
+例子:
+1. 輸入的圖: W × W =10 × 10。
+2. Filter (kernel map): ks × ks=3 × 3
+3. Stride: S=1
+4. 輸出的圖大小為 new_height × new_width = 8 × 8
+- ![Screenshot 2023-11-16 at 12.15.25](/assets/img/Screenshot%202023-11-16%20at%2012.15.25.png)
+
+
+
+卷積計算部份除了基本的`input和filter (kernel map)`通常還有兩個參數可以調`(strides, padding)`
+
+
+
 ---
 
 ### Padding 填充
@@ -99,12 +132,32 @@ tags: [AIML]
 ![pic](https://pic3.zhimg.com/v2-2a2307d5c20551f1a3e8458c7070cf16_b.gif)
 
 常用的两种padding：
-
 1. valid padding
-   1. 不进行任何处理，只使用原始图像，不允许卷积核超出原始图像边界
+2. same padding / zero padding
 
-2. same padding
-   1. 进行填充，允许卷积核超出原始图像边界，并使得卷积后结果的大小与原来的一致
+在tensorflow，padding那邊給了兩個選項「padding = ‘VALID’」和「padding = ‘SAME’」
+
+
+#### valid padding
+- 不进行任何处理，只使用原始图像，不允许卷积核超出原始图像边界
+- padding = ‘VALID’ 等於最一開始敘述的卷積計算，圖根據filter大小和stride大小而變小。
+
+
+#### same padding
+- 进行填充，允许卷积核超出原始图像边界，并使得卷积后结果的大小与原来的一致
+
+- padding = ‘SAME’，會用zero-padding的手法，讓輸入的圖不會受到kernel map的大小影響。
+
+zero padding
+- 看你會消失多少的大小，在輸入的圖部份就給你加上0元素進去
+- 此刻的卷積計算如下，這樣卷積後的圖就不會變小了。
+
+
+![Screenshot 2023-11-16 at 12.21.24](/assets/img/Screenshot%202023-11-16%20at%2012.21.24.png)
+
+![Screenshot 2023-11-16 at 12.21.29](/assets/img/Screenshot%202023-11-16%20at%2012.21.29.png)
+
+
 
 ---
 
@@ -194,6 +247,8 @@ tags: [AIML]
 - 因为分割结果通常会半透明的覆盖在待分割目标上，所以就叫它掩膜吧。[^深度学习中的mask]
 
 [^深度学习中的mask]: 深度学习中的mask到底是什么意思？https://www.zhihu.com/question/320615749
+
+
 
 所谓 Mask，更像是语义分割的概念。
 - 例子，看看下图，把它分为三个要素，竹子，熊猫，天空，也就是三个类别，分别记为，-1，0，1
