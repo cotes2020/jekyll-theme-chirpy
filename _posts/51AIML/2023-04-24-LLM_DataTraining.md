@@ -37,6 +37,11 @@ tags: [AIML]
       - [Prompting and prompt engineering](#prompting-and-prompt-engineering)
       - [Pattern-Verbalizer-Pair(PVP)](#pattern-verbalizer-pairpvp)
       - [Prompt-Tuning](#prompt-tuning)
+        - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
+        - [Hard Prompt \& Soft Prompt](#hard-prompt--soft-prompt)
+        - [Parameter-Efficient Prompt Tuning](#parameter-efficient-prompt-tuning)
+        - [P-Tuning](#p-tuning)
+        - [PPT (Pre-trained Prompt Tuning)](#ppt-pre-trained-prompt-tuning)
       - [Prompt-Tuning vs Fine-Tuning](#prompt-tuning-vs-fine-tuning)
     - [3.Instruction-Tuning(指示微调)](#3instruction-tuning指示微调)
       - [3.1 Instruction-Tuning的提出](#31-instruction-tuning的提出)
@@ -50,6 +55,10 @@ tags: [AIML]
       - [5.2 PEFT实践](#52-peft实践)
       - [5.3 大模型Fine-Tuning之分布式训练](#53-大模型fine-tuning之分布式训练)
       - [5.4 大模型知识问答](#54-大模型知识问答)
+  - [改進LLM](#改進llm)
+    - [從能找到的最強LLM（GPT4）開始](#從能找到的最強llmgpt4開始)
+      - [如果LLM沒有達成標準](#如果llm沒有達成標準)
+      - [如果LLM沒有達成標準](#如果llm沒有達成標準-1)
 
 
 ---
@@ -715,7 +724,7 @@ $(prompt, good_response，bad_response)$
 - $R_{\theta}$​ : 奖励模型
 
 - Training data format:
-    - $x x x$ : prompt
+    - $$x$ $ : prompt
     - $y^w, y_w, yw​$ : good response
     - $y^l, y_l, yl​$ : bad response
 
@@ -768,7 +777,7 @@ RLHF微调过程如下：
 
 - $LLM^{RL}_{\phi}$​ : the model being trained with PPO, parameterized by $\phi$ .
 
-    - x x x : prompt.
+    - $x$  : prompt.
     - $D_{RL}$​ : the distribution of prompts used explicitly for the RL model.
     - $D_{pretrain}$​ : the distribution of the training data for the pretrain model.
 
@@ -936,7 +945,7 @@ in-context learning method
 
     - **Self-supervised in-context training**:
 
-      - Supervised Learning指的是有一个model，输入是 x x x，输出是 y y y，要有label(标签)才可以训练Supervised Learning，
+      - Supervised Learning指的是有一个model，输入是 $x$ ，输出是 $y$ ，要有label(标签)才可以训练Supervised Learning，
 
       - 比如让机器看一篇文章，决定文章是正面的还是负面的，得先找一大堆文章，标注文章是正面的还是负面的，正面负面就是label。
 
@@ -964,8 +973,8 @@ in-context learning method
       - **Demonstration Ordering**: 挑选完演示示例后，如何对其进行排序也非常重要。排序的方法既有不需要训练的，也有根据示例跟当前输入距离远近进行排序的，也可以根据自定义的熵指标进行重排。
 
       - **Demonstration Formatting**:
-        - 如何设计演示示例的格式？最简单的方式就是将示例们的` ( x , y ) (x,y) (x,y)`对按照顺序直接拼接到一起。
-        - 但是对于复杂的推理问题，语言模型很难直接根据 x x x推理出 y y y，这种格式就不适用了。
+        - 如何设计演示示例的格式？最简单的方式就是将示例们的 $(x,y)$ 对按照顺序直接拼接到一起。
+        - 但是对于复杂的推理问题，语言模型很难直接根据 $x$ 推理出 $y$ ，这种格式就不适用了。
         - 另外，有的研究旨在设计更好的任务指令instruction作为演示内容(即Instruction-Tuning)。
         - 对于这两类场景，除了人工撰写的方式外，还可以利用语言模型自身去生成对应的演示内容。
 
@@ -1040,93 +1049,184 @@ PET最核心的部分Pattern-Verbalizer-Pair(PVP)，PET设计了两个很重要�
 
 ---
 
+
 #### Prompt-Tuning
 
-Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用场景的不同，分别介绍几种成熟的Prompt-Tuning方法。
+Prompt-Tuning是用来自动构建pattern的方法
 
-- **Prompt-Oriented Fine-Tuning**:
+根据使用场景的不同，分别介绍几种成熟的Prompt-Tuning方法。
 
-  - 这个就是前面提到的需要更新全部参数(包括预训练模型参数)的Prompt-Tuning方法。
+---
 
-  - 训练方法的本质是`将目标任务`转换为`适应预训练模型`的`预训练任务`，以适应预训练模型的学习体系。
+##### Prompt-Oriented Fine-Tuning
 
-  - 例如我们在Bert模型上做情感分类任务，
+需要更新全部参数(包括预训练模型参数)的Prompt-Tuning方法。
+- 训练方法的本质是`将目标任务`转换为`适应预训练模型`的`预训练任务`，以适应预训练模型的学习体系。
 
-    - 正常的Fine-Tuning流程，是将训练文本经过Bert编码后，生成`向量表征`，再利用该向量表征，连接全连接层，实现最终的情感类别识别。
 
-    - 这种方式存在一个显式的弊端: `预训练任务`与`下游任务`存在**gap**
+例如我们在Bert模型上做情感分类任务，
 
-    - Bert的预训练任务包括两个: `MLM`与`NSP`
-      - (具体可参考[Bert预训练的任务MLM和NSP](https://zhuanlan.zhihu.com/p/562352255))
+- 正常的Fine-Tuning流程，是将`训练文本`经过Bert编码后，生成`向量表征`，再利用该向量表征，连接`全连接层`，实现最终的情感类别识别。
+  - 这种方式存在一个显式的弊端: `预训练任务`与`下游任务`存在**gap**
 
-      - `MLM`任务是通过分类模型识别被`MASK`掉的词，类别大小即为整个词表大小；
-      - `NSP`任务是预测两个句子之间的关系；
+- Bert的预训练任务包括两个: `MLM`与`NSP`
+    - (具体可参考[Bert预训练的任务MLM和NSP](https://zhuanlan.zhihu.com/p/562352255))
 
-      - 而Prompt-Oriented Fine-Tuning训练方法，是将情感分类任务转换为类似于MLM任务的`[Mask]`预测任务:
-        - 构建如下的prompt文本: `prompt = It was [MASK].`
-        - 将prompt文本与输入text文本`text = The film is attractive.`进行拼接生成`It was [MASK].The film is attractive.`
-        - 输入至预训练模型中，训练任务目标和MLM任务的目标一致，即识别被`[Mask]`掉的词。
+    - `MLM`任务是通过分类模型识别被`MASK`掉的词，类别大小即为整个词表大小；
+    - `NSP`任务是预测两个句子之间的关系；
 
-    - 通过这种方式，可以将下游任务转换为和预训练任务较为一致的任务，已有实验证明，Prompt-Oriented Fine-Tuning相对于常规的Fine-Tuning，效果确实会得到提升([Prompt进行情感分类](https://blog.csdn.net/wf19971210/article/details/120543015))。
+- Prompt-Oriented Fine-Tuning训练方法，是将情感分类任务转换为类似于`MLM`任务的`[Mask]`预测任务:
+  - 构建如下的prompt文本: `prompt = It was [MASK].`
+  - 将prompt文本与输入text文本`text = The film is attractive.` 进行拼接生成 `It was [MASK].The film is attractive.`
+  - 输入至预训练模型中，训练任务目标和`MLM`任务的目标一致，即识别被`[Mask]`掉的词。
 
-- 通过以上描述我们可以知道，Prompt-Oriented Fine-Tuning方法中，预训练模型参数是可变的。其实将Prompt-Oriented Fine-Tuning方法放在Prompt-Tuning这个部分合理也不合理，因为它其实是Prompt-Tuning+Fine-Tuning的结合体，将它视为Fine-Tuning的升级版是最合适的。Prompt-Oriented Fine-Tuning方法在Bert类相对较小的模型上表现较好，但是随着模型越来越大，如果每次针对下游任务，都需要更新预训练模型的参数，资源成本及时间成本都会很高，因此后续陆续提出了不更新预训练模型参数，单纯只针对prompt进行调优的方法，例如**Hard Prompt**和**Soft Prompt**。
+- 通过这种方式，可以将下游任务转换为和预训练任务较为一致的任务，已有实验证明，Prompt-Oriented Fine-Tuning相对于常规的Fine-Tuning，效果确实会得到提升([Prompt进行情感分类](https://blog.csdn.net/wf19971210/article/details/120543015))。
+
+- 通过以上描述我们可以知道，Prompt-Oriented Fine-Tuning方法中，预训练模型参数是可变的。
+- 其实将Prompt-Oriented Fine-Tuning方法放在Prompt-Tuning这个部分合理也不合理，因为它其实是`Prompt-Tuning`+`Fine-Tuning`的结合体，将它视为Fine-Tuning的升级版是最合适的。
+- Prompt-Oriented Fine-Tuning方法在Bert类相对较小的模型上表现较好，但是随着模型越来越大，如果每次针对下游任务，都需要更新预训练模型的参数，资源成本及时间成本都会很高，因此后续陆续提出了不更新预训练模型参数，单纯只针对prompt进行调优的方法，例如**Hard Prompt**和**Soft Prompt**。
 
 - 这里再给出一些常见下游任务的prompt设计:
 
 ![常见任务的Prompt设计](https://img-blog.csdnimg.cn/4a5f862ee964472189079e88a73c23f3.png#pic_center)
 
-- **Hard Prompt & Soft Prompt**: 承接上文，Hard Prompt和Soft Prompt的提出，是为了解决预训练模型过大，难以针对下游任务进行训练的痛点。目前常见的Hard Prompt和Soft Prompt方法，分为以下五种:
+---
 
+##### Hard Prompt & Soft Prompt
+
+- Hard Prompt和Soft Prompt的提出，是为了解决预训练模型过大，难以针对下游任务进行训练的痛点。
+
+- 目前常见的Hard Prompt和Soft Prompt方法，分为以下五种:
+
+  - **Hard Prompt**:
     - **人工构建(Manual Template)**: 最简单的构建模板方法；
     - **启发式法(Heuristic-based Template)**: 通过规则 启发式搜索等方法构建合适的模板；
     - **生成(Generation)**: 根据给定的任务训练数据(通常是小样本场景)，生成出合适的模板；
+
+  - **Soft Prompt**:
     - **词向量微调(Word Embedding)**: 显式地定义离散字符的模板，但在训练时这些模板字符的词向量参与梯度下降，初始定义的离散字符用于作为向量的初始化；
     - **伪标记(Pseudo Token)**: 不显式地定义离散的模板，而是将模板作为可训练的参数。
-- **Hard Prompt**: 前面三种称为离散的模板构建法(记作Hard Template Hard Prompt Discrete Template Discrete Prompt)，其旨在直接与原始文本拼接显式离散的字符，且在训练中始终保持不变。这里的保持不变是指这些离散字符的词向量(Word Embedding)在训练过程中保持固定。通常情况下，离散法不需要引入任何参数。主要适用场景是GPT-3类相对较大的模型，Bert类相对较小的模型也可以用，只是个人觉得Bert等预训练模型，针对下游任务训练的成本并不是很高，完全可以同时微调预训练模型参数。上述三种Hard Prompt方法，实际场景中用的比较少，这里就不一一介绍了，大家有兴趣可以参考[Prompt-Tuning——深度解读一种新的微调范式](https://blog.csdn.net/qq_36426650/article/details/120607050)。
 
-- **Soft Prompt**: 后面两种则被称为连续的模板构建法(记作Soft Template Soft Prompt Continuous Template Continuous Prompt)，其旨在让模型在训练过程中根据具体的上下文语义和任务目标对模板参数进行调整。反观Hard Prompt方法，不论是启发式方法，还是通过生成的方法，都需要为每一个任务单独设计对应的模板，因为这些模板都是可读的离散的token，这导致很难寻找到最佳的模板。另外，即便是同一个任务，不同的句子也会有其所谓最佳的模板，而且有时候，即便是人类理解的相似的模板，也会对模型预测结果产生很大差异。例如下图，以SNLI推断任务为例，仅仅只是修改了模板，测试结果差异很明显，因此离散的模板存在方差大 不稳定等问题。![Hard Prompt设计对比实验](https://img-blog.csdnimg.cn/4cc12829dc2b4c2a920c22b447435821.png#pic_center)
-      如何避免这种问题呢，Soft Prompt方法便是来解决这种问题的，其将模板转换为可以进行优化的连续向量，换句话说，我们不需要显式地指定这些模板中各个token具体是什么，只需要在语义空间中表示一个向量即可，这样，不同的任务 数据可以自适应地在语义空间中寻找若干合适的向量，来代表模板中的每一个词，相较于显式的token，这类token称为伪标记(Pseudo Token)。下面给出基于Soft Prompt的模板定义:
+- **Hard Prompt**:
+  - 前面三种称为离散的模板构建法(记作Hard Template Hard Prompt Discrete Template Discrete Prompt)，其旨在`直接与原始文本拼接`显式离散的字符，且在训练中始终保持不变。
+  - 这里的保持不变是指这些离散字符的词向量(Word Embedding)在训练过程中保持固定。
+  - 通常情况下，离散法不需要引入任何参数。
+  - 主要适用场景是GPT-3类相对较大的模型，Bert类相对较小的模型也可以用，只是个人觉得Bert等预训练模型，针对下游任务训练的成本并不是很高，完全可以同时微调预训练模型参数。
+  - 上述三种Hard Prompt方法，实际场景中用的比较少
+  - [Prompt-Tuning——深度解读一种新的微调范式](https://blog.csdn.net/qq_36426650/article/details/120607050)。
 
-    > 假设针对分类任务，给定一个输入句子 x x x，连续提示的模板可以定义为:
-    > T = [ x ] , [ v 1 ] , [ v 2 ] ， … ， [ v m ] [ M A S K ]   \mathcal{T} =[x],[v_{1}],[v_{2}]，…，[v_{m}]`[Mask]`\ T\=[x],[v1​],[v2​]，…，[vm​]`[Mask]` 其中 [ v 1 ] [v_{1}] [v1​]则是伪标记，其仅代表一个抽象的token，并没有实际的含义，本质上是一个向量。
+  - Hard Prompt方法，不论是启发式方法，还是通过生成的方法，都需要为每一个任务单独设计对应的模板，因为这些模板都是可读的离散的token
+    - 这导致很难寻找到最佳的模板。
+    - 另外，即便是同一个任务，不同的句子也会有其所谓最佳的模板，而且有时候，即便是人类理解的相似的模板，也会对模型预测结果产生很大差异。
+    - 例如下图，以SNLI推断任务为例，仅仅只是修改了模板，测试结果差异很明显，因此离散的模板存在方差大 不稳定等问题。
+    - ![Hard Prompt设计对比实验](https://img-blog.csdnimg.cn/4cc12829dc2b4c2a920c22b447435821.png#pic_center)
+  - 如何避免这种问题呢，Soft Prompt方法便是来解决这种问题的，
 
-      **总结来说**: Soft Prompt方法，是将模板变为可训练的参数，不同的样本可以在连续的向量空间中寻找合适的伪标记，同时也增加模型的泛化能力。因此，连续法需要引入少量的参数并在训练时进行参数更新，但预训练模型参数是不变的，变的是prompt token对应的词向量(Word Embedding)表征及其他引入的少量参数。主要适用场景同Hard Prompt一致。目前具有代表性的三种Soft Prompt方法如下，下面我们进行逐一介绍:
+- **Soft Prompt**:
+  - 后面两种则被称为连续的模板构建法(记作Soft Template Soft Prompt Continuous Template Continuous Prompt)，其旨在让模型在训练过程中`根据具体的上下文语义和任务目标对模板参数进行调整`。
+  - 其将模板转换为可以进行优化的连续向量
+  - 我们不需要显式地指定这些模板中各个token具体是什么，只需要在语义空间中表示一个向量即可，这样，不同的任务 数据可以自适应地在语义空间中寻找若干合适的向量，来代表模板中的每一个词，相较于显式的token，这类token称为伪标记(`Pseudo Token`)。
 
-    - **Parameter-Efficient Prompt Tuning**: 该方法率先提出了伪标记和连续提示的概念，支持模型能够动态地对模板在语义空间内进行调整。主要针对的是NLU任务，形式化的描述如下:
+  - 基于Soft Prompt的模板定义:
 
-        > 给定 n n n个token，记作 x 1 , . . . , x n x_{1}, ..., x_{n} x1​,...,xn​，通过一个预训练模型对应的embedding table，将 n n n个token表征为向量矩阵 X e ∈ R n × e X_{e} \in R^{n\times e} Xe​∈Rn×e，其中 e e e是向量的维度(其与预训练模型的配置有关，例如Bert-base是768)。连续模板中的每个伪标记 v i v_{i} vi​可以视为参数，也可以视为一个token，因此，可以通过另一个embedding table将 p p p个伪标记token表征为向量矩阵 P e ∈ R p × e P_{e} \in R^{p\times e} Pe​∈Rp×e 。将文本和prompt进行拼接获得新的输入 [ P e : X e ] ∈ R ( p + n ) × e [P_{e} :X_{e}] \in R^{(p+n) \times e} [Pe​:Xe​]∈R(p+n)×e。这个新的输入将会进入T5的encoder-decoder结构来训练和推理。注意，只有prompt对应的向量表征参数 P e P_{e} Pe​会随着训练进行更新。
+    > 假设针对分类任务，给定一个输入句子 $x$ ，
+    > 连续提示的模板可以定义为:
+    > $\mathcal{T} =[x],[v_{1}],[v_{2}]，…，[v_{m}][Mask]$
+    > 其中 $[v_{1}]$ 则是伪标记，其仅代表一个抽象的token，并没有实际的含义，本质上是一个向量。
 
-          论文中提到，每个伪标记的初始化可以有下列三种情况，分别是Random Uniform，Sampled Vocab和Class Label。
+   - **总结来说**:
+     - Soft Prompt方法，是将模板变为可训练的参数，不同的样本可以在连续的向量空间中寻找合适的伪标记，同时也增加模型的泛化能力。
+     - 因此，连续法需要引入少量的参数并在训练时进行参数更新，但预训练模型参数是不变的，变的是prompt token对应的词向量(Word Embedding)表征及其他引入的少量参数。
+     - 主要适用场景同Hard Prompt一致。
 
-        - **Random Uniform**: 从均匀分布中随机进行初始化；
-        - **Sampled Vocab**: 从T5的语料库中选择最常见的5000个词汇，并从中选择词汇嵌入作为初始化；
-        - **Class Label**: 是将下游任务的标签对应的字符串表示的嵌入作为初始化，如果一个类有多个词，取词嵌入的平均表示作为一个prompt。假如标签数目不足，则从Sampled Vocab方案中继续采样补足。
+
+   - 目前具有代表性的三种Soft Prompt方法如下:
+
+
+##### Parameter-Efficient Prompt Tuning
+
+- 该方法率先提出了伪标记和连续提示的概念，支持模型能够动态地对模板在语义空间内进行调整。
+
+- 主要针对的是NLU任务，形式化的描述如下:
+
+> 给定 $n$ 个token，记作 $x_{1}, ..., x_{n}$​，
+> 通过一个预训练模型对应的embedding table，将 $n$ 个token表征为向量矩阵 $X_{e} \in R^{n\times e}$，
+> 其中 $e$ 是向量的维度(其与预训练模型的配置有关，例如Bert-base是768)。
+> 连续模板中的每个伪标记 $v_{i}$ ​可以视为参数，也可以视为一个token，因此，可以通过另一个embedding table将 $p$ 个伪标记token表征为向量矩阵 $P_{e} \in R^{p\times e}$ 。
+> 将文本和prompt进行拼接获得新的输入 $[P_{e} :X_{e}] \in R^{(p+n) \times e}$。
+> 这个新的输入将会进入T5的encoder-decoder结构来训练和推理。
+> 注意，只有prompt对应的向量表征参数 $P_{e}$ ​会随着训练进行更新。
+
+- 论文中提到，每个伪标记的初始化可以有下列三种情况，分别是Random Uniform，Sampled Vocab和Class Label。
+
+  - **Random Uniform**: 从均匀分布中随机进行初始化；
+  - **Sampled Vocab**: 从T5的语料库中选择最常见的5000个词汇，并从中选择词汇嵌入作为初始化；
+  - **Class Label**: 是将下游任务的标签对应的字符串表示的嵌入作为初始化，如果一个类有多个词，取词嵌入的平均表示作为一个prompt。假如标签数目不足，则从Sampled Vocab方案中继续采样补足。
+
+- 最后发现，非随机初始化方法要显著好于随机初始化，而Class Label效果相对更好，当然，只要模型足够大，这几种初始化方法的差异就比较小了。
+
+- 具体论文
+  - [《The Power of Scale for Parameter-Efficient Prompt Tuning》](https://aclanthology.org/2021.emnlp-main.243.pdf)。
+
+---
+
+
+##### P-Tuning
+
+- P-Tuning是另一个具有代表性的连续提示方法
+
+- 主要针对的是NLU任务
+- 方法图如下所示(图中的 $P_{i}$ ​等价于上文的 $v_{i}$ ​，表示伪标记)，
+- 谷歌于2021年发表:
+- ![P-Tuning结构](https://img-blog.csdnimg.cn/8356a2a18e0b4b4d8b64b9d947ed4423.png#pic_center)
+
+- P-Tuning方法中的四个技巧点:
+
+  - 考虑到这些伪标记的相互依赖关系: 认为 $[P_{1}]$ 与 $[P_{2}]$ 是有先后关系的，而transformer无法显式地刻画这层关系，因此引入Prompt Encoder(BiLSTM+MLP)；
+  - 指定上下文词: 如果模板全部是伪标记，在训练时无法很好地控制这些模板朝着与对应句子相似的语义上优化，因此选定部分具有与当前句子语义代表性的一些词作为一些伪标记的初始化(例如上图中“capital” “Britain”等)；
+  - 重参数(Reparameterization): 具体到代码实现上，P-Tuning先通过一个Prompt Encoder表征这些伪标记后，直接将这些新的表征覆盖到对应的embedding table上，换句话说，Prompt Encoder只在训练时候会使用到，而在推理阶段则不再使用，直接使用构建好的embedding table；
+  - 混合提示(Hydride Prompt): 将连续提示与离散token进行混合，例如 $[x][it][v1][mask]$。
              
 
-          最后发现，非随机初始化方法要显著好于随机初始化，而Class Label效果相对更好，当然，只要模型足够大，这几种初始化方法的差异就比较小了。具体论文参考2021年谷歌发表的[《The Power of Scale for Parameter-Efficient Prompt Tuning》](https://aclanthology.org/2021.emnlp-main.243.pdf)。
+- 具体可参考:
+  - [《GPT Understands, Too》](https://arxiv.org/pdf/2103.10385.pdf)
+  - [《论文解读: GPT Understands, Too》](https://wjn1996.blog.csdn.net/article/details/120802305)
+  - [《细读经典: P-Tuning》](https://zhuanlan.zhihu.com/p/391992466)
 
-    - **P-Tuning**: P-Tuning是另一个具有代表性的连续提示方法，主要针对的是NLU任务，方法图如下所示(图中的 P i P_{i} Pi​等价于上文的 v i v_{i} vi​，表示伪标记)，谷歌于2021年发表。![P-Tuning结构](https://img-blog.csdnimg.cn/8356a2a18e0b4b4d8b64b9d947ed4423.png#pic_center)
-        P-Tuning方法中的四个技巧点:
+---
 
-        - 考虑到这些伪标记的相互依赖关系: 认为 [ P 1 ] [P_{1}] [P1​]与 [ P 2 ] [P_{2}] [P2​]是有先后关系的，而transformer无法显式地刻画这层关系，因此引入Prompt Encoder(BiLSTM+MLP)；
-        - 指定上下文词: 如果模板全部是伪标记，在训练时无法很好地控制这些模板朝着与对应句子相似的语义上优化，因此选定部分具有与当前句子语义代表性的一些词作为一些伪标记的初始化(例如上图中“capital” “Britain”等)；
-        - 重参数(Reparameterization): 具体到代码实现上，P-Tuning先通过一个Prompt Encoder表征这些伪标记后，直接将这些新的表征覆盖到对应的embedding table上，换句话说，Prompt Encoder只在训练时候会使用到，而在推理阶段则不再使用，直接使用构建好的embedding table；
-        - 混合提示(Hydride Prompt): 将连续提示与离散token进行混合，例如 [ x ] [ i t ] [ v 1 ] [ m a s k ] [x][it][v1][mask ] [x][it][v1]`[mask]`。
-             
+##### PPT (Pre-trained Prompt Tuning)
 
-          具体可参考: 2021年发表的[《GPT Understands, Too》](https://arxiv.org/pdf/2103.10385.pdf) [《论文解读: GPT Understands, Too》](https://wjn1996.blog.csdn.net/article/details/120802305) [《细读经典: P-Tuning》](https://zhuanlan.zhihu.com/p/391992466)
+- Prompt-Tuning通常适用于低资源场景，但是由于连续的模板是随机初始化的，即其存在新的参数，少量样本可能依然很难确保这些模板被很好地优化。
+- 因此简单的方法就是对这些连续的模板进行预训练。
+- PPT旨在通过先让这些连续提示在大量无标注的预训练语料进行预训练，然后将其加载到对应下游任务的PLM上进行训练。
+- 具体来说，作者对3种Prompt-Tuning的优化策略在few-shot learning问题上分别进行了效果对比，包括hard prompt和soft prompt结合 label到text映射方法选择以及使用真实单词的embedding进行soft prompt的随机初始化。通过对比实验发现，hard+soft prompt结合的方法可以提升效果，但是仍然比finetune效果差。
+- Label到text的映射方法对于效果影响很大，选择能够表达label对应含义的常用单词会带来最好效果。
+- 而使用单词embedding进行soft prompt的初始化在大模型上并没有明显的效果提升。
 
-    - **PPT(Pre-trained Prompt Tuning)**: Prompt-Tuning通常适用于低资源场景，但是由于连续的模板是随机初始化的，即其存在新的参数，少量样本可能依然很难确保这些模板被很好地优化。因此简单的方法就是对这些连续的模板进行预训练。PPT旨在通过先让这些连续提示在大量无标注的预训练语料进行预训练，然后将其加载到对应下游任务的PLM上进行训练。具体来说，作者对3种Prompt-Tuning的优化策略在few-shot learning问题上分别进行了效果对比，包括hard prompt和soft prompt结合 label到text映射方法选择以及使用真实单词的embedding进行soft prompt的随机初始化。通过对比实验发现，hard+soft prompt结合的方法可以提升效果，但是仍然比finetune效果差。Label到text的映射方法对于效果影响很大，选择能够表达label对应含义的常用单词会带来最好效果。而使用单词embedding进行soft prompt的初始化在大模型上并没有明显的效果提升。
-          基于以上实验结果，作者提出了Pre-trained Pormpt Tuning解决few-shot learning问题，核心思路是对soft prompt进行预训练，得到一个更好的soft prompt初始化表示。对于每种类型的任务，设计一个和其匹配的预训练任务，得到soft prompt embedding的预训练表示。
-          论文中以sentence-pair classification multiple-choice classification single sentence classification三种任务介绍了如何针对每种下游任务设计预训练任务学习soft prompt embedding。例如对于sentence-pair classification，作者设计了如下预训练任务。将2个句子对拼接在一起，如果两个句子来自同一个文档相邻两句话，则label为yes(完全一致)；如果两个句子来自同一个文档但距离较远，则label为maybe；其他句子对label为no，如下图所示(图中的 P P P即连续的提示模板， < x > <x> <x\>表示mask token。最上面的任务是预训练任务，下面三个任务为下游任务)。![PPT核心思想](https://img-blog.csdnimg.cn/49c6411ed3de4466a794ca92e3335168.png#pic_center)  
+- 基于以上实验结果，作者提出了Pre-trained Pormpt Tuning解决few-shot learning问题，核心思路是对soft prompt进行预训练，得到一个更好的soft prompt初始化表示。对于每种类型的任务，设计一个和其匹配的预训练任务，得到soft prompt embedding的预训练表示。
 
-          另外论文中还给出了四种微调方案，如下图所示，[a]展示了模型的预训练过程，[b]和[c]展示了两种主流的Fine-Tuning方法(前文已经介绍过)，[d]展示了提示学习( Prompt Tuning, PT )方法，具体可参考2022年清华大学发表的[《PPT: Pre-trained Prompt Tuning for Few-shot Learning》](https://aclanthology.org/2022.acl-long.576.pdf) [小样本学习: Pre-trained Prompt Tuning for Few-shot Learning](https://zhuanlan.zhihu.com/p/617006511)，[Prompt 如何更好地应用于工业界？](https://www.zhihu.com/question/495040812/answer/2438217999)。![Tuning方案](https://img-blog.csdnimg.cn/94f3d30b97b54f47a0b39bc82bc610a8.png#pic_center)
+- 论文中以sentence-pair classification multiple-choice classification single sentence classification三种任务介绍了如何针对每种下游任务设计预训练任务学习soft prompt embedding。例如对于sentence-pair classification，作者设计了如下预训练任务。将2个句子对拼接在一起，如果两个句子来自同一个文档相邻两句话，则label为yes(完全一致)；如果两个句子来自同一个文档但距离较远，则label为maybe；其他句子对label为no，如下图所示(图中的 P P P即连续的提示模板， < x > <x> <x\>表示mask token。最上面的任务是预训练任务，下面三个任务为下游任务)。![PPT核心思想](https://img-blog.csdnimg.cn/49c6411ed3de4466a794ca92e3335168.png#pic_center)  
+
+- 另外论文中还给出了四种微调方案，如下图所示，
+- [a]展示了模型的预训练过程，[b]和[c]展示了两种主流的Fine-Tuning方法(前文已经介绍过)，[d]展示了提示学习( Prompt Tuning, PT )方法，
+
+- 具体参考
+  - 2022年清华大学发表的[《PPT: Pre-trained Prompt Tuning for Few-shot Learning》](https://aclanthology.org/2022.acl-long.576.pdf)
+  - [小样本学习: Pre-trained Prompt Tuning for Few-shot Learning](https://zhuanlan.zhihu.com/p/617006511)
+  - [Prompt 如何更好地应用于工业界？](https://www.zhihu.com/question/495040812/answer/2438217999)
+  - ![Tuning方案](https://img-blog.csdnimg.cn/94f3d30b97b54f47a0b39bc82bc610a8.png#pic_center)
+
+
+
+
+---
 
 
 #### Prompt-Tuning vs Fine-Tuning
 
-  至此，我们已经深入了解了Fine-Tuning和Prompt-Tuning两种微调方法，也或多或少能观察到二者之间的区别，我们在这里进行下总结。众多周知，Prompt-Tuning是在Fine-Tuning后发展起来的，可以说是解决NLP领域各种下游问题更好的一种方式。要提出一个好的方式那必然是用来「解决另一种方式存在的缺陷或不足」，那我们就先从预训练模型PLM+Fine-Tuning范式说起，这个范式常用的结构是Bert+Fine-Tuning，这种范式若想要预训练模型更好的应用在下游任务，需要利用下游数据对模型参数微调；首先，模型在预训练的时候，采用的训练形式: 自回归 自编码，这与下游任务形式存在极大的 gap，不能完全发挥预训练模型本身的能力，必然导致: 较多的数据来适应新的任务形式(少样本学习能力差 容易过拟合)。其次，现在的预训练模型参数量越来越大，为了一个特定的任务去Fine-Tuning一个模型，会占用特别多的训练资源，对一些中小企业或者用户来说并不现实，也会造成资源的一定浪费。
-  而Prompt-Tuning则很好的解决了这些问题，它将所有下游任务统一成预训练任务，以特定的模板，将下游任务的数据转成自然语言形式，充分挖掘预训练模型本身的能力。本质上就是设计一个比较契合上游预训练任务的模板，通过模板的设计来挖掘出上游预训练模型的潜力，让上游的预训练模型在尽量不需要标注数据的情况下比较好的完成下游的任务，即只需要少量数据的 Prompt Tuning，就可以实现很好的效果，具有较强的零样本/少样本学习能力。具体可参考[Prompt-Tuning VS Fine-Tuning](https://www.zhihu.com/question/504324484?utm_id=0)。
+- 至此，我们已经深入了解了Fine-Tuning和Prompt-Tuning两种微调方法，也或多或少能观察到二者之间的区别，我们在这里进行下总结。众多周知，Prompt-Tuning是在Fine-Tuning后发展起来的，可以说是解决NLP领域各种下游问题更好的一种方式。要提出一个好的方式那必然是用来「解决另一种方式存在的缺陷或不足」，那我们就先从预训练模型PLM+Fine-Tuning范式说起，这个范式常用的结构是Bert+Fine-Tuning，这种范式若想要预训练模型更好的应用在下游任务，需要利用下游数据对模型参数微调；首先，模型在预训练的时候，采用的训练形式: 自回归 自编码，这与下游任务形式存在极大的 gap，不能完全发挥预训练模型本身的能力，必然导致: 较多的数据来适应新的任务形式(少样本学习能力差 容易过拟合)。其次，现在的预训练模型参数量越来越大，为了一个特定的任务去Fine-Tuning一个模型，会占用特别多的训练资源，对一些中小企业或者用户来说并不现实，也会造成资源的一定浪费。
+- 而Prompt-Tuning则很好的解决了这些问题，它将所有下游任务统一成预训练任务，以特定的模板，将下游任务的数据转成自然语言形式，充分挖掘预训练模型本身的能力。本质上就是设计一个比较契合上游预训练任务的模板，通过模板的设计来挖掘出上游预训练模型的潜力，让上游的预训练模型在尽量不需要标注数据的情况下比较好的完成下游的任务，即只需要少量数据的 Prompt Tuning，就可以实现很好的效果，具有较强的零样本/少样本学习能力。具体可参考[Prompt-Tuning VS Fine-Tuning](https://www.zhihu.com/question/504324484?utm_id=0)。
 
 ### 3.Instruction-Tuning(指示微调)
 
@@ -1257,20 +1357,20 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
 - **Prefix-Tuning**: Prefix-Tuning也是一种Prompt-Tuning，是最早提出soft-prompt的论文之一[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://aclanthology.org/2021.acl-long.353.pdf)，斯坦福大学于2021年发表。Prefix-Tuning在模型输入前添加一个连续的且任务特定的向量序列(continuous task-specific vectors)，称之为前缀(prefix)。前缀同样是一系列“虚拟 tokens”，即没有真实语义。与更新所有 PLM 参数的全量微调不同，Prefix-Tuning固定PLM的所有参数，只更新优化特定任务的prefix。Prefix-Tuning与传统Fine-Tuning的对比图如下所示:
     ![在这里插入图片描述](https://img-blog.csdnimg.cn/27aa031746bc403793e27a7ef70833b6.png#pic_center)
       如下图所示，Prefix-Tuning有两种模式，一种是自回归模型(例如GPT-2)，在输入前添加一个前缀得到 [ P R E F I X ; x ; y ] [PREFIX;x;y] [PREFIX;x;y]；另一种是encoder-decoder模型(例如Bart)，在编码器和解码器前加前缀得到 [ P R E F I X ; x ; P R E F I X ′ ; y ] [PREFIX;x;PREFIX^{'};y] [PREFIX;x;PREFIX′;y]。接下来我们以GPT-2的自回归语言模型为例，介绍下Prefix-Tuning的流程。
-      首先，对于传统的GPT-2模型来说，将输入 x x x和输出 y y y拼接为 z = [ x ; y ] z=[x;y] z\=[x;y]，其中 X i d x X_{idx} Xidx​和 Y i d x Y_{idx} Yidx​分别为输入和输出序列的索引， h i ∈ R d h_{i} \in R^{d} hi​∈Rd是每个时间步 i i i下的激活向量(隐藏层向量)， h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h_{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接， h i ( j ) h_{i}^{(j)} hi(j)​是时间步 i i i的第 j j j层激活层。自回归模型通过如下公式计算 h i h_{i} hi​，其中 ϕ \phi ϕ是模型参数:
+      首先，对于传统的GPT-2模型来说，将输入 $x$ 和输出 $y$ 拼接为 z = [ x ; y ] z=[x;y] z\=[x;y]，其中 X i d x X_{idx} Xidx​和 Y i d x Y_{idx} Yidx​分别为输入和输出序列的索引， h i ∈ R d h_{i} \in R^{d} hi​∈Rd是每个时间步 i i i下的激活向量(隐藏层向量)， h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h_{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接， h i ( j ) h_{i}^{(j)} hi(j)​是时间步 i i i的第 j j j层激活层。自回归模型通过如下公式计算 $h_{i}$ ​，其中 ϕ \phi ϕ是模型参数:
     h i = L M ϕ ( z i , h < i )   h_{i} =LM_{\phi}(z_{i},h_{<i})\ hi​\=LMϕ​(zi​,h<i​) 
-    h i h_{i} hi​的最后一层，用来计算下一个token的概率分布:
+    $h_{i}$ ​的最后一层，用来计算下一个token的概率分布:
     p ϕ ( z i + 1 ∣ h ≤ i ) = s o f t m a x ( W ϕ h i ( n ) )   p_{\phi}(z_{i+1}|h_{≤i}) =softmax(W_{\phi}h_{i}^{(n)})\ pϕ​(zi+1​∣h≤i​)\=softmax(Wϕ​hi(n)​) 
     其中 W ϕ W_{\phi} Wϕ​是将 h i ( n ) h_{i}^{(n)} hi(n)​根据词表大小进行映射。
-      在采用Prefix-Tuning技术后，则在输入前添加前缀，即将prefix和输入以及输出进行拼接得到 z = [ P R E F I X ; x ; y ] z=[PREFIX;x;y] z\=[PREFIX;x;y]， P i d x P_{idx} Pidx​为前缀序列的索引， ∣ P i d x ∣ |P_{idx}| ∣Pidx​∣为前缀序列的长度，这里需要注意的是，Prefix-Tuning是在模型的每一层都添加prefix(注意不是只有输入层，中间层也会添加prefix，目的增加可训练参数)。前缀序列索引对应着由 θ \theta θ参数化的向量矩阵 P θ P_{\theta} Pθ​，维度为 ∣ P i d x ∣ × d i m ( h i ) |P_{idx}|\times dim(h_{i}) ∣Pidx​∣×dim(hi​)。隐层表示的计算如下式所示，若索引为前缀索引 P i d x P_{idx} Pidx​，直接从 P θ P_{\theta} Pθ​复制对应的向量作为 h i h_{i} hi​(在模型每一层都添加前缀向量)；否则直接通过LM计算得到，同时，经过LM计算的 h i h_{i} hi​也依赖于其左侧的前缀参数 P θ P_{\theta} Pθ​，即通过前缀来影响后续的序列激活向量值(隐层向量值)。
+      在采用Prefix-Tuning技术后，则在输入前添加前缀，即将prefix和输入以及输出进行拼接得到 z = [ P R E F I X ; x ; y ] z=[PREFIX;x;y] z\=[PREFIX;x;y]， P i d x P_{idx} Pidx​为前缀序列的索引， ∣ P i d x ∣ |P_{idx}| ∣Pidx​∣为前缀序列的长度，这里需要注意的是，Prefix-Tuning是在模型的每一层都添加prefix(注意不是只有输入层，中间层也会添加prefix，目的增加可训练参数)。前缀序列索引对应着由 θ \theta θ参数化的向量矩阵 $P_{\theta}$ ​，维度为 ∣ P i d x ∣ × d i m ( h i ) |P_{idx}|\times dim(h_{i}) ∣Pidx​∣×dim(hi​)。隐层表示的计算如下式所示，若索引为前缀索引 P i d x P_{idx} Pidx​，直接从 $P_{\theta}$ ​复制对应的向量作为 $h_{i}$ ​(在模型每一层都添加前缀向量)；否则直接通过LM计算得到，同时，经过LM计算的 $h_{i}$ ​也依赖于其左侧的前缀参数 $P_{\theta}$ ​，即通过前缀来影响后续的序列激活向量值(隐层向量值)。
     h i = { P θ [ i , : ] if    i ∈ P i d x L M ϕ ( z i , h < i ) otherwise h_{i}= \begin{cases} P_{\theta}[i,:]& \text{if} \ \ \ i\in P_{idx}\\ LM_{\phi}(z_{i},h_{<i})& \text{otherwise} \end{cases} hi​\={Pθ​[i,:]LMϕ​(zi​,h<i​)​if   i∈Pidx​otherwise​
-      在训练时，Prefix-Tuning的优化目标与正常微调相同，但只需要更新前缀向量的参数。在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 P θ ′ P_{\theta}^{'} Pθ′​和一个大型前馈神经网络 MLP θ \text{MLP}_{\theta} MLPθ​对 P θ P_{\theta} Pθ​进行重参数化: P θ [ i , : ] = MLP θ ( P θ ′ [ i , : ] ) P_{\theta}[i,:]=\text{MLP}_{\theta}(P_{\theta}^{'}[i,:]) Pθ​[i,:]\=MLPθ​(Pθ′​[i,:])，可训练参数包括 P θ ′ P_{\theta}^{'} Pθ′​和 MLP θ \text{MLP}_{\theta} MLPθ​的参数，其中， P θ P_{\theta} Pθ​和 P θ ′ P_{\theta}^{'} Pθ′​有相同的行维度(也就是相同的prefix length), 但不同的列维度。在训练时，LM 的参数 ϕ \phi ϕ被固定，只有前缀参数 P θ ′ P_{\theta}^{'} Pθ′​和 MLP θ \text{MLP}_{\theta} MLPθ​的参数为可训练的参数。训练完成后， P θ ′ P_{\theta}^{'} Pθ′​和 MLP θ \text{MLP}_{\theta} MLPθ​的参数被丢掉，只有前缀参数 P θ P_{\theta} Pθ​被保存。
+      在训练时，Prefix-Tuning的优化目标与正常微调相同，但只需要更新前缀向量的参数。在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 $P_{\theta}^{'}$ ​和一个大型前馈神经网络 $\text{MLP}_{\theta}$ ​对 $P_{\theta}$ ​进行重参数化: P θ [ i , : ] = MLP θ ( P θ ′ [ i , : ] ) P_{\theta}[i,:]=\text{MLP}_{\theta}(P_{\theta}^{'}[i,:]) Pθ​[i,:]\=MLPθ​(Pθ′​[i,:])，可训练参数包括 $P_{\theta}^{'}$ ​和 $\text{MLP}_{\theta}$ ​的参数，其中， $P_{\theta}$ ​和 $P_{\theta}^{'}$ ​有相同的行维度(也就是相同的prefix length), 但不同的列维度。在训练时，LM 的参数 ϕ \phi ϕ被固定，只有前缀参数 $P_{\theta}^{'}$ ​和 $\text{MLP}_{\theta}$ ​的参数为可训练的参数。训练完成后， $P_{\theta}^{'}$ ​和 $\text{MLP}_{\theta}$ ​的参数被丢掉，只有前缀参数 $P_{\theta}$ ​被保存。
     ![在这里插入图片描述](https://img-blog.csdnimg.cn/f1daf9e5ba2047dc992df48fb965abe7.png#pic_center)
       上述内容详细介绍了Prefix-Tuning的主要训练流程，下面我们给出论文中通过实验得出的三个主要结论:
 
     - **方法有效性**: 作者采用了Table-To-Text与Summarization作为实验任务，在Table-To-Text任务上，Prefix-Tuning在优化相同参数的情况下结果大幅优于Adapter，并与全参数微调几乎相同。而在Summarization任务上，Prefix-Tuning方法在使用2%参数与0.1%参数时略微差于全参数微调，但仍优于Adapter微调；
     - **Full vs Embedding-only**: Embedding-only方法只在embedding层添加前缀向量并优化，而Full代表的Prefix-Tuning不仅在embedding层添加前缀参数，还在模型所有层添加前缀并优化。实验得到一个不同方法的表达能力增强链条: discrete prompting < embedding-only < Prefix-Tuning。同时，Prefix-Tuning可以直接修改模型更深层的表示，避免了跨越网络深度的长计算路径问题；
-    - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 x x x和 y y y的中间来研究可训练参数位置对性能的影响，即 [ x ; I n f i x ; y ] [x;Infix;y] [x;Infix;y]，这种方式成为infix-tuning。实验表明Prefix-Tuning性能好于 infix-tuning，因为prefix能够同时影响 x x x和 y y y的隐层向量，而infix只能够影响 y y y的隐层向量。
+    - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 $x$ 和 $y$ 的中间来研究可训练参数位置对性能的影响，即 $[x;Infix;y]$ ，这种方式成为infix-tuning。实验表明Prefix-Tuning性能好于 infix-tuning，因为prefix能够同时影响 $x$ 和 $y$ 的隐层向量，而infix只能够影响 $y$ 的隐层向量。
          
 
       我们回顾下前文提到的parameter-efficient prompt tuning(下面简称为Prompt Tuning)，其论文中有提到，它可以看作是Prefix-Tuning的简化版。总结下两者的不同点:
@@ -1301,14 +1401,14 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
         - **提示长度**: 提示长度在提示优化方法的超参数搜索中起着核心作用。论文中表明不同的理解任务通常用不同的提示长度来实现其最佳性能，比如一些简单的task倾向比较短的prompt(less than 20)，而一些比较难的序列标注任务，长度需求比较大；
         - **多任务学习**: 多任务学习对P-Tuning v2方法来说是可选的，但可能是有帮助的。在对特定任务进行微调之前，用共享的prompts去进行多任务预训练，可以让prompts有比较好的初始化；
         - **分类方式选择**: 对标签分类任务，用原始的CLS+linear head模式替换Prompt-Tuning范式中使用的Verbalizer+LM head模式，不过效果并不明显，如下图。![在这里插入图片描述](https://img-blog.csdnimg.cn/80409db3a7174e59a1c8263b430f7080.png#pic_center)
-- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项2019年的工作第一次提出了Adapter方法。与Prefix-Tuning和Prompt Tuning这类在输入前添加可训练prompt embedding参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 ϕ w ( x ) \phi_{w}(x) ϕw​(x)，对于Adapter-Tuning，添加适配器之后模型函数更新为:  ϕ w , w 0 ( x ) \phi_{w,w_{0}}(x) ϕw,w0​​(x)， w w w是预训练模型的参数， w 0 w_{0} w0​是新添加的适配器的参数，在训练过程中， w w w被固定，只有 w 0 w_{0} w0​被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w_{0}|\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
+- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项2019年的工作第一次提出了Adapter方法。与Prefix-Tuning和Prompt Tuning这类在输入前添加可训练prompt embedding参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 $\phi_{w}(x)$ ，对于Adapter-Tuning，添加适配器之后模型函数更新为:  ϕ w , w 0 ( x ) \phi_{w,w_{0}}(x) ϕw,w0​​(x)， w w w是预训练模型的参数， $w_{0}$ ​是新添加的适配器的参数，在训练过程中， w w w被固定，只有 $w_{0}$ ​被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w_{0}|\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
       论文中采用Bert作为实验模型，Adapter模块被添加到每个transformer层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了adapter的结构，有不同见解可在评论区沟通): ![在这里插入图片描述](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
       Adapter结构有两个特点: 较少的参数 在初始化时与原结构相似的输出。在实际微调时，由于采用了down-project与up-project的架构，在进行微调时，Adapter会先将特征输入通过down-project映射到较低维度，再通过up-project映射回高维度，从而减少参数量。Adapter-Tuning只需要训练原模型0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量Adapter结构的参数即可。由于Adapter中存在残差连接结构，采用合适的小参数去初始化Adapter就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在GLUE测试集上，Adapter用了更少量的参数达到了与传统Fine-Tuning方法接近的效果。
 - **LoRA**: LoRA是又一种PEFT方法，微软于2022年发表[《LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS》](https://arxiv.org/pdf/2106.09685.pdf)。我们依照下图以及论文，简单介绍下LoRA的实现原理。![在这里插入图片描述](https://img-blog.csdnimg.cn/f3c74f46e06242cd96e01da393d6bfb2.png#pic_center)
-      LoRA原理其实并不复杂。简单理解一下，就是在模型的Linear层的旁边，增加一个“旁支”，这个“旁支”的作用，就是代替原有的参数矩阵 W W W进行训练。结合上图，我们来直观地理解一下这个过程，输入 x ∈ R d x\in R^{d} x∈Rd，举个例子，在普通的transformer模型中，这个 x x x可能是embedding的输出，也有可能是上一层transformer layer的输出，而 d d d一般就是768或者1024。按照原本的路线，它应该只走左边的部分，也就是原有的模型部分。
-      而在LoRA的策略下，增加了右侧的“旁支”，也就是先用一个Linear层 A A A，将数据从 d d d维降到 r r r，这个 r r r也就是LoRA的秩，是LoRA中最重要的一个超参数。一般会远远小于 d d d，尤其是对于现在的大模型， d d d已经不止是768或者1024，例如LLaMA-7B，每一层transformer有32个head，这样一来 d d d就达到了4096。接着再用第二个Linear层 B B B，将数据从 r r r变回 d d d维。最后再将左右两部分的结果相加融合，就得到了输出的hidden_state。
-      对于左右两个部分，右侧看起来像是左侧原有矩阵 W W W的分解，将参数量从 d × d d\times d d×d变成了 d × r + d × r d\times r +d\times r d×r+d×r，在 r ≪ d r\ll d r≪d的情况下，参数量就大大地降低了。熟悉各类预训练模型的同学可能会发现，这个思想其实与Albert的思想有异曲同工之处，在Albert中，作者通过两个策略降低了训练的参数量，其一是Embedding矩阵分解，其二是跨层参数共享。在Albert中，作者考虑到词表的维度很大，所以将Embedding矩阵分解成两个相对较小的矩阵，用来模拟Embedding矩阵的效果，这样一来需要训练的参数量就减少了很多。
-      LoRA也是类似的思想，并且它不再局限于Embedding层，而是所有出现大矩阵的地方，理论上都可以用到这样的分解。但是与Albert不同的是，Albert直接用两个小矩阵替换了原来的大矩阵，而LoRA保留了原来的矩阵 W W W，但是不让 W W W参与训练(Fine-Tuning是更新权重矩阵 W W W，LoRA中的 W = W 0 + B A W=W_{0}+BA W\=W0​+BA，但是 W 0 W_{0} W0​不参与更新，只更新 A A A和 B B B)，所以需要计算梯度的部分就只剩下旁支的 A A A和 B B B两个小矩阵。用随机高斯分布初始化A，用0矩阵初始化B，保证训练的开始此旁路矩阵是0矩阵，使得模型保留原有知识，在训练的初始阶段仍然表现良好。A矩阵不采用0初始化主要是因为如果矩阵A也用0初始化，那么矩阵B梯度就始终为0(对B求梯度，结果带有A矩阵，A矩阵全0，B的梯度结果必然是0)，无法更新参数。
+      LoRA原理其实并不复杂。简单理解一下，就是在模型的Linear层的旁边，增加一个“旁支”，这个“旁支”的作用，就是代替原有的参数矩阵 $W$ 进行训练。结合上图，我们来直观地理解一下这个过程，输入 x ∈ R d x\in R^{d} x∈Rd，举个例子，在普通的transformer模型中，这个 $x$ 可能是embedding的输出，也有可能是上一层transformer layer的输出，而 $d$ 一般就是768或者1024。按照原本的路线，它应该只走左边的部分，也就是原有的模型部分。
+      而在LoRA的策略下，增加了右侧的“旁支”，也就是先用一个Linear层 $A$ ，将数据从 $d$ 维降到 $r$ ，这个 $r$ 也就是LoRA的秩，是LoRA中最重要的一个超参数。一般会远远小于 $d$ ，尤其是对于现在的大模型， $d$ 已经不止是768或者1024，例如LLaMA-7B，每一层transformer有32个head，这样一来 $d$ 就达到了4096。接着再用第二个Linear层 $B$，将数据从 $r$ 变回 $d$ 维。最后再将左右两部分的结果相加融合，就得到了输出的hidden_state。
+      对于左右两个部分，右侧看起来像是左侧原有矩阵 $W$ 的分解，将参数量从 d × d d\times d d×d变成了 d × r + d × r d\times r +d\times r d×r+d×r，在 r ≪ d r\ll d r≪d的情况下，参数量就大大地降低了。熟悉各类预训练模型的同学可能会发现，这个思想其实与Albert的思想有异曲同工之处，在Albert中，作者通过两个策略降低了训练的参数量，其一是Embedding矩阵分解，其二是跨层参数共享。在Albert中，作者考虑到词表的维度很大，所以将Embedding矩阵分解成两个相对较小的矩阵，用来模拟Embedding矩阵的效果，这样一来需要训练的参数量就减少了很多。
+      LoRA也是类似的思想，并且它不再局限于Embedding层，而是所有出现大矩阵的地方，理论上都可以用到这样的分解。但是与Albert不同的是，Albert直接用两个小矩阵替换了原来的大矩阵，而LoRA保留了原来的矩阵 $W$ ，但是不让 $W$ 参与训练(Fine-Tuning是更新权重矩阵 $W$ ，LoRA中的 W = W 0 + B A W=W_{0}+BA W\=W0​+BA，但是 $W_{0}$ ​不参与更新，只更新 $A$ 和 $B$)，所以需要计算梯度的部分就只剩下旁支的 $A$ 和 $B$两个小矩阵。用随机高斯分布初始化A，用0矩阵初始化B，保证训练的开始此旁路矩阵是0矩阵，使得模型保留原有知识，在训练的初始阶段仍然表现良好。A矩阵不采用0初始化主要是因为如果矩阵A也用0初始化，那么矩阵B梯度就始终为0(对B求梯度，结果带有A矩阵，A矩阵全0，B的梯度结果必然是0)，无法更新参数。
       从论文中的公式来看，在加入LoRA之前，模型训练的优化表示为:
     m a x Φ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ ( y t ∣ x , y < t ) ) max_{\Phi} \sum_{(x,y \in Z)}\sum_{t=1}^{|y|}log(P_{\Phi}(y_{t}|x,y_{<t})) maxΦ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ​(yt​∣x,y<t​))
     其中，模型的参数用 $\Phi$ 表示。
@@ -1316,8 +1416,8 @@ Prompt-Tuning是用来自动构建pattern的方法，接下来我们根据使用
     m a x Θ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ 0 + Δ Φ ( Θ ) ( y t ∣ x , y < t ) ) max_{\Theta} \sum_{(x,y \in Z)}\sum_{t=1}^{|y|}log(P_{\Phi_{0}+\Delta\Phi(\Theta)}(y_{t}|x,y_{<t})) maxΘ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ0​+ΔΦ(Θ)​(yt​∣x,y<t​))
     其中，模型原有的参数是 Φ 0 \Phi_{0} Φ0​，LoRA新增的参数是 Δ Φ ( Θ ) \Delta\Phi(\Theta) ΔΦ(Θ)。
       从第二个式子可以看到，尽管参数看起来增加了 Δ Φ ( Θ ) \Delta\Phi(\Theta) ΔΦ(Θ)，但是从前面的max的目标来看，需要优化的参数只有 Θ \Theta Θ，而根 ∣ Θ ∣ ≪ ∣ Φ 0 ∣ |\Theta|\ll |\Phi_{0}| ∣Θ∣≪∣Φ0​∣，这就使得训练过程中，梯度计算量少了很多，所以就在低资源的情况下，我们可以只消耗 Θ \Theta Θ这部分的资源，这样一来就可以在单卡低显存的情况下训练大模型了。这里再多说一点，通常在实际使用中，一般LoRA作用的矩阵是注意力机制部分的 W Q W_{Q} WQ​  W K W_{K} WK​  W V W_{V} WV​矩阵(即与输入相乘获取 Q Q Q  K K K  V V V的权重矩阵。这三个权重矩阵的数量正常来说，分别和heads的数量相等，但在实际计算过程中，是将多个头的这三个权重矩阵分别进行了合并，因此每一个transformer层都只有一个 W Q W_{Q} WQ​  W K W_{K} WK​  W V W_{V} WV​矩阵)。下面介绍下LoRA架构的优点:
-    - **全量微调的一般化**: LoRA 不要求权重矩阵的累积梯度更新在适配过程中具有满秩。当对所有权重矩阵应用 LoRA 并训练所有偏差时，将 LoRA 的秩 r r r设置为预训练权重矩阵的秩，就能大致恢复了全量微调的表现力。也就是说，随着增加可训练参数的数量，训练 LoRA 大致收敛于训练原始模型；
-    - **没有额外的推理延时**: 在生产部署时，可以明确地计算和存储 W = W 0 + B A W=W_{0}+BA W\=W0​+BA，并正常执行推理。当需要切换到另一个下游任务时，可以通过减去 B A BA BA来恢复 W 0 W_{0} W0​，然后增加一个不同的 B ′ A ′ B^{'}A^{'} B′A′，这是一个只需要很少内存开销的快速运算。最重要的是，与Fine-Tuning的模型相比，LoRA 推理过程中没有引入任何额外的延迟(将 B A BA BA加到原参数 W 0 W_{0} W0​上后，计算量是一致的)；
+    - **全量微调的一般化**: LoRA 不要求权重矩阵的累积梯度更新在适配过程中具有满秩。当对所有权重矩阵应用 LoRA 并训练所有偏差时，将 LoRA 的秩 $r$ 设置为预训练权重矩阵的秩，就能大致恢复了全量微调的表现力。也就是说，随着增加可训练参数的数量，训练 LoRA 大致收敛于训练原始模型；
+    - **没有额外的推理延时**: 在生产部署时，可以明确地计算和存储 W = W 0 + B A W=W_{0}+BA W\=W0​+BA，并正常执行推理。当需要切换到另一个下游任务时，可以通过减去 B A BA BA来恢复 $W_{0}$ ​，然后增加一个不同的 B ′ A ′ B^{'}A^{'} B′A′，这是一个只需要很少内存开销的快速运算。最重要的是，与Fine-Tuning的模型相比，LoRA 推理过程中没有引入任何额外的延迟(将 B A BA BA加到原参数 $W_{0}$ ​上后，计算量是一致的)；
     - **减少内存和存储资源消耗**: 对于用Adam训练的大型Transformer，若 r ≪ d m o d e l r\ll d_{model} r≪dmodel​，LoRA 减少2/3的显存用量(训练模型时，模型参数往往都会存储在显存中)，因为不需要存储已固定的预训练参数的优化器状态，可以用更少的GPU进行大模型训练。在175B的GPT-3上，训练期间的显存消耗从1.2TB减少到350GB。在有且只有query和value矩阵被调整的情况下，checkpoint的大小大约减少了10000倍(从350GB到35MB)。另一个好处是，可以在部署时以更低的成本切换任务，只需更换 LoRA 的权重，而不是所有的参数。可以创建许多定制的模型，这些模型可以在将预训练模型的权重存储在显存中的机器上进行实时切换。在175B的GPT-3上训练时，与完全微调相比，速度提高了25%，因为我们不需要为绝大多数的参数计算梯度；
     - **更长的输入**: 相较P-Tuning等soft-prompt方法，LoRA最明显的优势，就是不会占用输入token的长度。
 - **AdaLoRA**: AdaLoRA是发表于2023年3月[《ADAPTIVE BUDGET ALLOCATION FOR PARAMETEREFFICIENT FINE-TUNING》](https://arxiv.org/pdf/2303.10512.pdf)，论文并未仔细阅读，简单来说，论文中发现对不同类型权重矩阵或者不同层的权重矩阵应用LoRA方法，产生的效果是不同的，如下图所示。![在这里插入图片描述](https://img-blog.csdnimg.cn/f8722ab2b3d84dceb9e428a1354c8a65.png#pic_center)
@@ -2051,7 +2151,7 @@ ChatGLM-6B+LoRA
                 - **gradients**: 模型梯度G；
                 - **parameters**: 模型参数W。
             - **Residual States**: 指并非模型必须的，但在训练过程中会额外产生的内容，具体包括:
-                - **activations**: 激活值。在backward过程中使用链式法则计算梯度时会用到。有了它计算梯度会更快，但它不是必须存储的，因为可以通过重新做forward来计算算它。实际上，activations就是模型在训练过程中产生的中间值，举个例子:  x 2 = w 1 ∗ x ， y = w 2 ∗ x 2 x_{2}=w_{1} \ x，y=w_{2} \ x_{2} x2​\=w1​∗x，y\=w2​∗x2​，假设上面的参数( w 1 w_{1} w1​， w 2 w_{2} w2​)和输入 x x x都是标量，在反向传播阶段要计算 y y y对 w 2 w_{2} w2​的梯度，很明显是 x 2 x_{2} x2​，这个 x 2 x_{2} x2​就属于activations，也就是在前向阶段需要保存的一个中间结果。当然我们也可以不保存，当反向阶段需要用到 x 2 x_{2} x2​时再重新通过forward过程临时计算；
+                - **activations**: 激活值。在backward过程中使用链式法则计算梯度时会用到。有了它计算梯度会更快，但它不是必须存储的，因为可以通过重新做forward来计算算它。实际上，activations就是模型在训练过程中产生的中间值，举个例子:  x 2 = w 1 ∗ x ， y = w 2 ∗ x 2 x_{2}=w_{1} \ x，y=w_{2} \ x_{2} x2​\=w1​∗x，y\=w2​∗x2​，假设上面的参数( w 1 w_{1} w1​， w 2 w_{2} w2​)和输入 $x$ 都是标量，在反向传播阶段要计算 $y$ 对 w 2 w_{2} w2​的梯度，很明显是 x 2 x_{2} x2​，这个 x 2 x_{2} x2​就属于activations，也就是在前向阶段需要保存的一个中间结果。当然我们也可以不保存，当反向阶段需要用到 x 2 x_{2} x2​时再重新通过forward过程临时计算；
                 - **temporary buffers**: 临时存储。例如把梯度发送到某块GPU上做加总聚合时产生的存储。
                 - **unusable fragment memory**: 碎片化的存储空间。虽然总存储空间是够的，但是如果取不到连续的存储空间，相关的请求也会被fail掉。对这类空间浪费可以通过内存整理来解决。
         - **存储大小**: 了解了存储分类，接下来了解下每种存储占用的内存大小。首先我们回忆下混合精度训练的过程，大致如下图所示: ![在这里插入图片描述](https://img-blog.csdnimg.cn/af39b25e42a945c2bb55d0e6c1cabc1d.png#pic_center)
@@ -2256,3 +2356,142 @@ ChatGLM-6B+LoRA
 - 如何给LLM注入领域知识？
     - 第一种办法，检索+LLM，先用问题在领域数据库里检索到候选答案，再用LLM对答案进行加工；
     - 第二种方法，把领域知识构建成问答数据集，用SFT让LLM学习这部分知识。
+
+---
+
+## 改進LLM
+
+怎麼使用、使用哪個LLM來部屬產品？ [^如何改進LLM]
+
+[^如何改進LLM]: 【LLM專欄1】如何改進LLM？, 一條綜合技術與商業視角的LLM開發思路 (2023.7 ver), https://axk51013.medium.com/llm專欄1-如何改進llm-161e7a504658
+
+1. 用GPT4還是GTP3.5？Llama聽說不錯？
+2. 用API來服務還是要自己訓練、部屬模型？
+3. 需要Finetune嗎？
+4. 要做prompt engineering嗎？怎麼做？
+5. 要做retrival嗎？，RAG（Retrieval Augmented Generation）架構對我的任務有幫助嗎？
+6. 主流模型就有十多個、Training有數十種的方法，到底該怎麼辦？
+7. ......
+
+FSDL的課程:
+- [李宏毅老師](https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ)
+- [Deep Learning.ai](https://www.deeplearning.ai/) 的Andrew Ng老師
+- UCBerkeley的 [Full Stack Deep Learning](https://fullstackdeeplearning.com/)
+
+**要選擇各種ML DL的技巧之前，應該先分清楚我們現在遇到的問題，並想清楚哪些方法可以解決這個問題**
+
+![Screenshot 2023-11-16 at 14.18.24](/assets/img/Screenshot%202023-11-16%20at%2014.18.24.png)
+
+- 如果Training Error比Testing Error低一截，那我們遇到的就是`Overfitting`，各種類型的regularization或是縮小model都可以派上用場。
+- 但是如果我們遇到的是Training Error跟Human的水平有一截差距，那變成我們是`Underfitting`，反而是要加大model甚至是重新定義問題，找到一個更好fit的問題。
+
+---
+
+### 從能找到的最強LLM（GPT4）開始
+
+- 不論如何，請從你手邊能找到的最強LLM開始產品
+- **對於任何一個AI產品而言，同時要面對兩個不確定性：1. 需求的不確定，2. 技術的不確定** 。
+- 技術的不確定指的是： **我們沒辦法在訓練模型之前知道我們最後可以得到的Performance** 。因此很多AI產品投入了資源收集資料及訓練模型，最後卻發現模型遠沒有達到可接受的標準。
+
+
+在LLM時期其實像是GPT4或是Bard這種模型，反倒提供給我們一個非常強的Baseline，所以先使用能找到的最強模型來開始產品。
+
+1. **先用GPT4來做MVP** ，如果可行則確認unit economics、尋找護城河跟盡量減低cost。
+2. **分析錯誤來源**
+   1. 如果錯誤跟factual比較有關， **藉由跑「給定相關資訊來進行預測」的實驗測試LLM到底是不具備相關知識還是Hallucination** 。
+   2. 如果錯誤跟reasoning比較有關，藉由 **perplexity區分model需要language modeling finetuning還是supervised finetuning。**
+3. **如果finetuning是可行的（有一定量資料、成本可接受），直接跑小範圍的finetune可以驗證很多事情。**
+
+---
+
+#### 如果LLM沒有達成標準
+
+如果達成標準, 則思考更多商業上的問題
+
+1. **確認unit economics** ：
+   1. 確保每一次用戶使用服務時，你不會虧錢。
+   2. Ex：用戶訂閱你服務一個月只要120，但是他平均每個月會使用超過120元的GPT-4額度，這就會出現問題（除非你有更完備的商業規劃）。
+
+2. **找尋護城河** ：
+   1. 因為你目前是使用第三方提供的LLM，所以你技術上不具備獨創性，請從其他方面尋找護城河。
+
+3. **在達成標準的前提下盡量降低cost** ：
+   1. 換小模型
+   2. [GPT cache](https://github.com/zilliztech/GPTCache)
+      1. 在傳統chatbot中大多有一個功能是開發者提供QA pairs，然後每次用戶問問題，就從這些QA pairs中找尋最佳的回答，而GPT cache其實就是把每次GPT的回答記起來，當成一個QA pair，新問題進來時就可以先找有沒有相似的問題，減少訪問GPT API的次數。
+
+   3. 限縮LLM使用場景。
+
+
+---
+
+#### 如果LLM沒有達成標準
+
+- 如果沒有達成標準，則需要思考技術上的改進策略。分析LLM失敗的原因。
+
+- 通常來說，LLM會失敗主流會有4種原因，兩種大的類別：
+
+1. **（Factual相關）LLM不具備這個知識** ：
+   1. 嘗試RAG（Retrieval Augmented Generation）
+   2. finetuning
+
+2. **（Factual相關）LLM在胡言亂語（Hallucination）** ：
+   1. prompt engineering (CoT, Self Critique)，
+   2. finetuning
+
+3. **（Reasoning相關）LLM不適應這種類型語料** ：
+   1. finetuning: language modeling，
+   2. 更換LLM
+
+4. **（Reasoning相關）LLM無法正確推理這個問題** ：
+   1. finetuning: supervised finetuning，
+   2. In-Context Learning
+
+
+**Factual相關**
+- 如果LLM回答問題錯誤，
+- 有可能是LLM根本不具備相關知識，導致他只能隨便回答，
+- 也有可能試產生了Hallucination（胡言亂語）的現象
+
+而最好區分這兩者的方法，就是做以下實驗。
+
+1. ICL + Retrieval Augmented Generation
+   1. 選定 **k筆LLM答錯的資料**
+   2. 在prompt中加入能夠回答這題的相關資訊（也是你確定你未來可以取得的相關資訊），檢測是否有 **明顯變好**
+   3. 如果有的話那就可以走 **RAG（Retrieval Augmented Generation）** 這條路
+   4. 如果還是有一定比例的資料無法達成，那則加入像是 **self critique** 之類的prompt engineering的方法。
+
+2. 更直覺的思考方式：
+   1. 你想要LLM完成的這個任務，會不會在網路上常常出現？
+   2. 如果會常常出現，那高機率用Prompt engineering就可以，
+   3. 如果是冷門資訊，甚至是網路上不會出現的資訊（機構內部資訊），那就一定要走RAG。
+   4. Ex:
+      1. 開發銀行的客服機器人->RAG
+      2. 開發一個每天誇獎對話機器人，高機率只要prompr engineering，因為誇獎的用詞、知識、方法網路上出現很多次。
+
+
+**Reasoning相關**
+- 如果LLM有相關知識，但是回答的時候錯誤率依舊很高，那就要考慮是不是LLM根本 **不具備需要的推理能力** 。
+- 而這又分為兩種：
+  - 1. LLM對這種類型的文本不熟悉，
+  - 2. LLM對這種類型的推理、分類問題不熟悉。
+- 兩者最直接的區分方法： **讓LLM在你對應的文本算perplexity。**
+
+**perplexity是用來衡量「LLM預測下一個詞的混亂程度」**
+- 如果perplexity高
+  - 代表LLM對這類型的文本領域（domain）根本不熟，可能是語言不熟悉，也有可能是內容領域不熟悉
+  - 這時候就一定要`language model finetuning，藉由unsupervised finetuning`，**加強LLM對文本領域的熟悉度**。
+
+- 如果perplexity很低，但是問題還是解決不好
+  - 則更需要訓練LLM處理特定的問題，因此則要`supervised finetuning，這就類似傳統finetune CNN，蒐集Label data`，讓模型**學會執行對應任務**。
+
+- 如果是利用GPT4之類的API，沒辦法取得perplexity的數值
+  - 可以從文本中找出你認為基礎的知識語句，找個100句，每一句拋棄後半段請GPT4自行接龍，再基於結果判斷LLM到底有沒有你這個領域的經驗。
+
+- perplexity是高是低，其實是一個非常需要經驗的事情，所以只能當作參考指標。
+  - 如果一個model對文本的`embedding`你可以取得，那可以對embedding去`train linear classifier`
+  - 如果non separable，則表示這個model無法足夠細緻的處理這類型的問題，則更需要supervised finetuning。
+
+只要finetuning對你而言是可以承擔的事情
+- 建議對任何任務都先跑100~1,000筆資料、1個epoch的supervised finetuning，和10,000個token的language modeling
+- 這會更像是以前DL我們直接用訓練來觀測模型是否會有顯著改善。
