@@ -689,8 +689,12 @@ $btn-mb: 0.5rem;
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border-color);
+
+  background: url('/assets/img/vision_bg2.jpeg');
+  background-size: 100% 100%;
+  background-position: center;
+//   background: var(--sidebar-bg);
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -746,16 +750,19 @@ $btn-mb: 0.5rem;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
 
+
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
 
+//       color: rgba(250, 250, 120, 99%);
       color: var(--site-title-color);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
+//     color: rgba(178, 50, 50, 99%);
     color: var(--site-subtitle-color);
     margin-top: 0.25rem;
     word-spacing: 1px;
