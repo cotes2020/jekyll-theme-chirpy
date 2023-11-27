@@ -4,9 +4,9 @@
 const $btnSbTrigger = $('#sidebar-trigger');
 const $btnSearchTrigger = $('#search-trigger');
 const $btnCancel = $('#search-cancel');
-const $content = $('#main-wrapper>.container>.row');
+const $content = $('#main>.row');
 const $topbarTitle = $('#topbar-title');
-const $search = $('search');
+const $searchWrapper = $('#search-wrapper');
 const $resultWrapper = $('#search-result-wrapper');
 const $results = $('#search-results');
 const $input = $('#search-input');
@@ -39,13 +39,13 @@ class MobileSearchBar {
     $btnSbTrigger.addClass(C_UNLOADED);
     $topbarTitle.addClass(C_UNLOADED);
     $btnSearchTrigger.addClass(C_UNLOADED);
-    $search.addClass(C_FLEX);
+    $searchWrapper.addClass(C_FLEX);
     $btnCancel.addClass(C_LOADED);
   }
 
   static off() {
     $btnCancel.removeClass(C_LOADED);
-    $search.removeClass(C_FLEX);
+    $searchWrapper.removeClass(C_FLEX);
     $btnSbTrigger.removeClass(C_UNLOADED);
     $topbarTitle.removeClass(C_UNLOADED);
     $btnSearchTrigger.removeClass(C_UNLOADED);
@@ -55,7 +55,7 @@ class MobileSearchBar {
 class ResultSwitch {
   static on() {
     if (!ScrollBlocker.resultVisible) {
-      // the block method must be called before $(#main-wrapper>.container) unloaded.
+      // the block method must be called before $(#main) unloaded.
       ScrollBlocker.on();
       $resultWrapper.removeClass(C_UNLOADED);
       $content.addClass(C_UNLOADED);
@@ -72,7 +72,7 @@ class ResultSwitch {
       $resultWrapper.addClass(C_UNLOADED);
       $content.removeClass(C_UNLOADED);
 
-      // now the release method must be called after $(#main-wrapper>.container) display
+      // now the release method must be called after $(#main) display
       ScrollBlocker.off();
 
       $input.val('');
@@ -98,11 +98,11 @@ export function displaySearch() {
   });
 
   $input.on('focus', function () {
-    $search.addClass(C_FOCUS);
+    $searchWrapper.addClass(C_FOCUS);
   });
 
   $input.on('focusout', function () {
-    $search.removeClass(C_FOCUS);
+    $searchWrapper.removeClass(C_FOCUS);
   });
 
   $input.on('input', () => {
