@@ -2,6 +2,14 @@
   Post-specific style
 */
 
+@mixin btn-sharing-color($light-color, $important: false) {
+  @if $important {
+    color: var(--btn-share-color, $light-color) !important;
+  } @else {
+    color: var(--btn-share-color, $light-color);
+  }
+}
+
 %btn-post-nav {
   width: 50%;
   position: relative;
@@ -14,34 +22,58 @@
   padding-right: $pr;
 }
 
+%text-color {
+  color: var(--text-color);
+}
+
+.preview-img {
+  overflow: hidden;
+  aspect-ratio: 40 / 21;
+
+  @extend %rounded;
+
+  &:not(.no-bg) {
+    img.lazyloaded {
+      background: var(--img-bg);
+    }
+  }
+
+  img {
+    -o-object-fit: cover;
+    object-fit: cover;
+
+    @extend %rounded;
+  }
+}
+
 h1 + .post-meta {
-  > span + span::before {
+  span + span::before {
     @include dot;
   }
 
-  em,
-  time {
-    @extend %text-highlight;
-  }
-
   em {
+    @extend %text-color;
+
     a {
-      color: inherit;
+      @extend %text-color;
     }
   }
 }
 
 .post-tail-wrapper {
-  @extend %text-sm;
-
   margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
+  font-size: 0.85rem;
+
+  .post-tail-bottom a {
+    color: inherit;
+  }
 
   .license-wrapper {
     line-height: 1.2rem;
 
     > a {
-      @extend %text-highlight;
+      color: var(--text-color);
 
       &:hover {
         @extend %link-hover;
@@ -49,7 +81,7 @@ h1 + .post-meta {
     }
 
     span:last-child {
-      @extend %text-sm;
+      font-size: 0.85rem;
     }
   } /* .license-wrapper */
 
@@ -64,59 +96,69 @@ h1 + .post-meta {
     -ms-user-select: none;
     user-select: none;
 
-    %icon-size {
-      font-size: 1.125rem;
-    }
-
     .share-icons {
-      display: flex;
+      font-size: 1.2rem;
 
-      i {
-        color: var(--btn-share-color);
+      > i {
+        position: relative;
+        bottom: 1px;
 
-        @extend %icon-size;
-      }
-
-      > * {
-        @extend %icon-size;
-
-        margin-left: 0.5rem;
+        @extend %cursor-pointer;
 
         &:hover {
-          i {
+          @extend %btn-share-hovor;
+        }
+      }
+
+      a {
+        &:not(:last-child) {
+          margin-right: 0.25rem;
+        }
+
+        &:hover {
+          text-decoration: none;
+
+          > i {
             @extend %btn-share-hovor;
           }
         }
       }
 
-      button {
-        padding: 0;
-        border: none;
-        line-height: inherit;
+      .fab {
+        &.fa-twitter {
+          @include btn-sharing-color(rgba(29, 161, 242, 1));
+        }
 
-        @extend %cursor-pointer;
+        &.fa-facebook-square {
+          @include btn-sharing-color(rgb(66, 95, 156));
+        }
+
+        &.fa-telegram {
+          @include btn-sharing-color(rgb(39, 159, 217));
+        }
+
+        &.fa-linkedin {
+          @include btn-sharing-color(rgb(0, 119, 181));
+        }
+
+        &.fa-weibo {
+          @include btn-sharing-color(rgb(229, 20, 43));
+        }
       }
     } /* .share-icons */
+
+    .fas.fa-link {
+      @include btn-sharing-color(rgb(171, 171, 171));
+    }
   } /* .share-wrapper */
-}
-
-.share-mastodon {
-  /* See: https://github.com/justinribeiro/share-to-mastodon#properties */
-  --wc-stm-font-family: $font-family-base;
-  --wc-stm-dialog-background-color: var(--card-bg);
-  --wc-stm-form-button-border: 1px solid var(--btn-border-color);
-  --wc-stm-form-submit-background-color: var(--sidebar-btn-bg);
-  --wc-stm-form-cancel-background-color: var(--sidebar-btn-bg);
-  --wc-stm-form-button-background-color-hover: #007bff;
-  --wc-stm-form-button-color-hover: white;
-
-  font-size: 1rem;
 }
 
 .post-tags {
   line-height: 2rem;
 
   .post-tag {
+    background: var(--tag-bg);
+
     &:hover {
       @extend %link-hover;
       @extend %tag-hover;
@@ -126,6 +168,9 @@ h1 + .post-meta {
 }
 
 .post-navigation {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+
   .btn {
     @extend %btn-post-nav;
 
@@ -156,7 +201,7 @@ h1 + .post-meta {
       color: var(--text-muted-color);
       font-size: 0.65rem;
       text-transform: uppercase;
-      content: attr(aria-label);
+      content: attr(prompt);
     }
 
     &:first-child {
@@ -272,7 +317,9 @@ h1 + .post-meta {
     }
 
     ul {
-      padding-left: 0.75rem;
+      a {
+        padding-left: 2rem;
+      }
     }
   }
 }
@@ -284,11 +331,10 @@ h1 + .post-meta {
     @include label(1.1rem, 600);
   }
 
-  time {
+  em {
     @extend %normal-font-style;
-    @extend %text-xs;
 
-    color: var(--text-muted-color);
+    color: var(--relate-post-date);
   }
 
   p {
@@ -303,18 +349,23 @@ h1 + .post-meta {
 
   .card {
     h4 {
+      @extend %text-color;
       @extend %text-clip;
     }
   }
 }
 
-/* stylelint-disable-next-line selector-id-pattern */
-#disqus_thread {
-  min-height: 8.5rem;
-}
+#tail-wrapper {
+  min-height: 2rem;
 
-.utterances {
-  max-width: 100%;
+  > div:last-of-type {
+    margin-bottom: 2rem;
+  }
+
+  /* stylelint-disable-next-line selector-id-pattern */
+  #disqus_thread {
+    min-height: 8.5rem;
+  }
 }
 
 %btn-share-hovor {
@@ -330,6 +381,10 @@ h1 + .post-meta {
 }
 
 @media all and (max-width: 576px) {
+  .preview-img[data-src] {
+    margin-top: 2.2rem;
+  }
+
   .post-tail-bottom {
     flex-wrap: wrap-reverse !important;
 
@@ -341,7 +396,7 @@ h1 + .post-meta {
 }
 
 @media all and (max-width: 768px) {
-  .content > p > img {
+  .post-content > p > img {
     max-width: calc(100% + 1rem);
   }
 }
@@ -353,5 +408,10 @@ h1 + .post-meta {
     padding-right: 0;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
+  }
+
+  .preview-img[data-src] {
+    max-width: 100vw;
+    border-radius: 0;
   }
 }
