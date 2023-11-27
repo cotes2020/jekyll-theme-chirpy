@@ -3,34 +3,26 @@
 - type: github
   icon: "fab fa-github"
 
-- type: instagram
-  icon: "fab fa-instagram"
-  url: 'https://instagram.com/yusufdeniz'
-
-- type: linkedin
-  icon: 'fab fa-linkedin' 
-  url:  'https://www.linkedin.com/in/yusufdeniz/'  
+- type: twitter
+  icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
-  noblank: true 
+  noblank: true # open link in current tab
 
-- type: youtube
-  icon: 'fab fa-youtube' 
-  url:  'https://www.youtube.com/channel/UC7LwuXxjZ7dS5Rk5gd_lyxw'    
-
-- type: spotify
-  icon: 'fab fa-spotify' 
-  url:  'https://podcasters.spotify.com/pod/show/yusuf-deniz5'                
-
-- type: upwork
-  icon: 'fab fa-u'
-  url: 'https://www.upwork.com/freelancers/~01d6c9df56aeca773f'
-
-- type: telegram
-  icon: 'fab fa-telegram'
-  url: 'https://www.t.me/yusuf_deniz'
-
-- type: whatsapp
-  icon: 'fab fa-whatsapp'
-  url: 'https://wa.me/905364149448'
+- type: rss
+  icon: "fas fa-rss"
+  noblank: true
+# Uncomment and complete the url below to enable more contact options
+#
+# - type: mastodon
+#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
+#   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
+#
+# - type: linkedin
+#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+#   url:  ''                  # Fill with your Linkedin homepage
+#
+# - type: stack-overflow
+#   icon: 'fab fa-stack-overflow'
+#   url:  ''                  # Fill with your stackoverflow homepage
