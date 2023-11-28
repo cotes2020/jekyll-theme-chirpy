@@ -10,3 +10,5 @@ I have a strong interest in UX, CX, Product Management, Computer Vision, and ope
 
 I am constantly seeking new challenges and opportunities for growth in these areas.
 
+I also have a deep fascination with Indian history and culture, a passion for learning new languages, and a love for sports like cricket and football.
+
