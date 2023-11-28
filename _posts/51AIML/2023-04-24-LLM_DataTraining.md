@@ -59,6 +59,7 @@ tags: [AIML]
     - [從能找到的最強LLM（GPT4）開始](#從能找到的最強llmgpt4開始)
       - [如果LLM沒有達成標準](#如果llm沒有達成標準)
       - [如果LLM沒有達成標準](#如果llm沒有達成標準-1)
+  - [LLM Evaluation](#llm-evaluation)
 
 
 ---
@@ -2430,6 +2431,11 @@ FSDL的課程:
 - 如果沒有達成標準，則需要思考技術上的改進策略。分析LLM失敗的原因。
 
 - 通常來說，LLM會失敗主流會有4種原因，兩種大的類別：
+  - Factual 事實相關
+  - Reasoning 推理相關
+
+![Screenshot 2023-11-27 at 10.34.11](/assets/img/Screenshot%202023-11-27%20at%2010.34.11.png)
+
 
 1. **（Factual相關）LLM不具備這個知識** ：
    1. 嘗試RAG（Retrieval Augmented Generation）
@@ -2495,3 +2501,23 @@ FSDL的課程:
 只要finetuning對你而言是可以承擔的事情
 - 建議對任何任務都先跑100~1,000筆資料、1個epoch的supervised finetuning，和10,000個token的language modeling
 - 這會更像是以前DL我們直接用訓練來觀測模型是否會有顯著改善。
+
+---
+
+## LLM Evaluation
+
+
+Basic:
+- check for empty strings
+- check for format of output, Guardrails is good at this
+
+Advanced:
+- check for relevance
+- rank results
+- closed deomian only
+
+Expert:
+- Model-based checks ("Are you sure?")
+
+
+.
