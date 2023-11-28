@@ -1,9 +1,9 @@
 ---
-title: Github Actions Introduction
+title: Github Actions
 author: Sarath
-date: 2023-11-26
-categories: [DevOps, CI/CD]
-tags: [Introduction]
+date: 2023-11-24
+categories: [DevOps, Github Actions]
+tags: [Github Actions, CI/CD]
 pin: true
 ---
 

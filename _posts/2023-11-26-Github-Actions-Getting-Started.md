@@ -2,8 +2,8 @@
 title: Getting Started
 author: Sarath
 date: 2023-11-26
-categories: [DevOps, CI/CD]
-tags: [getting started]
+categories: [DevOps, Github Actions]
+tags: [Github Actions, CI/CD]
 pin: true
 ---
 
