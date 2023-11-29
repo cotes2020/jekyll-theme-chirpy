@@ -35,7 +35,7 @@ jobs:
         uses: actions/setup-node@v4
 
       - name: Build Assets
-        run: npm i && npm run build
+        run: npm i 
 
       - name: Test Site
         run: bash tools/test
