@@ -118,4 +118,8 @@ while True:
 
     
 
+    os.system("git add .")
+    os.system("git commit -m 'Content update'")
+    os.system("git push origin master")
+    print("Git push yapıldı")
     time.sleep(60*60)
