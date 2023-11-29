@@ -119,7 +119,7 @@ while True:
     
 
     os.system("git add .")
-    os.system(f"git commit -m 'Content update ${datetime.now()}'")
+    os.system(f"git commit -m 'Content update {datetime.now()}'")
     os.system("git push origin master")
     print("Git push yapıldı")
     time.sleep(60*60)
