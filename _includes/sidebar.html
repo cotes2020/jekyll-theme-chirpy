@@ -27,14 +27,23 @@
   <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
       <!-- home -->
-      <!--
-      <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+      
+      <li class="nav-item{% if page.url == '/' %}{{ " active" }}{% endif %}">
         <a href="{{ '/' | relative_url }}" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-      -->
+
+      <!-- blog -->
+
+      <li class="nav-item{% if page.url == '/blog/' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/blog/' | relative_url }}" class="nav-link">
+          <i class="fa fa-pencil-square"></i>
+          <span>{{ site.data.locales[include.lang].tabs.blog | upcase }}</span>
+        </a>
+      </li>
+      
       <!-- the real tabs -->
       {% for tab in site.tabs %}
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
