@@ -30,35 +30,23 @@ tags: [writing]
      git clone https://github.com/githubname/jekyll-theme-chirpy.git
      ```
 
-![Desktop View](/assest/posts/githubforkimageone.png){: width="972" height="589" }
+3. **Repository setting:**
+   1. Fork한 Repository에서 Setting 창에 들어갑니다.
+   2. Settings - General에서 master이름을 main으로 변경합니다.
+   3. Settings - branch를 master에서 main으로 변경하고 Branch protection rule도 기본값(체크 X)으로 설정합니다.
+   4. 배포 Settings - Pages - Build and deployment 에서 소스를 GitHub Actions로 변경합니다.
+   5. Configure를 선택하고, 별도의 수정 없이 Commit changes…를 선택 후 Commit changes 선택합니다.
+   6. .gihub - workflow 디렉토리 내에서 기존 배포 방식(Deploy form a branch)에 사용되던 파일을 삭제합니다.
 
-3. **Install Dependencies:**
-   - Navigate to the cloned repository and install dependencies:
-     ```bash
-     cd jekyll-theme-chirpy
-     bundle install
-     ```
+참고 :: GitHub Actions로 소스를 변경하지 않거나, Configure를 완료하지 않고 배포할 경우 index.html 화면만 표시되니 주의합니다.
 
-4. **Configure Site Information:**
-   - Open the `_config.yml` file and update site information.
 
-5. **Create and Edit Posts:**
-   - Use the `/_posts` directory to create or modify blog posts in Markdown.
+4. **Local Repository:**
+   7. Github에서 jekyll.yml을 생성했으므로 git pull을 통해 로컬 리소스와 동기화를 먼저 진행합니다.
+   8. .gitignore 내 assets/js/dist 디렉토리 내 파일들의 Push가 무시되도록하는 설정을 주석처리 합니다.
+   9. git 배포를 위해 _posts 경로에 테스트용 포스트를 생성한 후 git push 합니다.
 
-6. **Preview Your Site:**
-   - Build and serve your site locally:
-     ```bash
-     bundle exec jekyll serve
-     ```
-   - Open [http://localhost:4000](http://localhost:4000) in your browser to preview the blog.
+5. **Repository Check:**
+   10. Github - Actions 탭에서 배포 워크플로우 실행을 확인할 수 있습니다.
+   11. 테스트 페이지 및 블로그 기능이 정상 동작하는지 확인합니다.
 
-7. **Customize the Theme:**
-   - Customize the theme by modifying HTML, CSS, or other assets.
-
-8. **Publish to GitHub Pages:**
-   - Deploy your blog to GitHub Pages or any other hosting service.
-
-9. **Update and Maintain:**
-   - Regularly update and maintain your blog with new content and software updates.
-
-Good luck with your tech blog journey!
