@@ -30,7 +30,7 @@ tags: [writing]
      git clone https://github.com/githubname/jekyll-theme-chirpy.git
      ```
 
-![Desktop View](/assets/posts/githubforkimageone.png){: width="972" height="589" }
+![Desktop View](/LJW22222.github.io/assets/img/favicons/posts/githubforkimageone.png){: width="972" height="589" }
 
 3. **Install Dependencies:**
    - Navigate to the cloned repository and install dependencies:
