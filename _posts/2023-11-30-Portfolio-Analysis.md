@@ -29,7 +29,6 @@ will break the script. It could be better in the future to change this
 for getting info from a database (via API or other means).
 
 ````r
-```
   # is a function that takes one argument, ticker. The function constructs a URL for the Yahoo Finance page of the given ticker, then uses read_html to download and parse the HTML content of that page. 
     get_financials <- function(ticker) {
       url <- paste0("https://finance.yahoo.com/quote/", ticker)
@@ -74,7 +73,6 @@ add code to scrape the data from their respective websites.
     financial_data$ExpenseRatio <- ifelse(financial_data$ExpenseRatio == 0,
                                           correct_expense_ratios[financial_data$Ticker],
                                           financial_data$ExpenseRatio)
-```
 ````
 
 End.
