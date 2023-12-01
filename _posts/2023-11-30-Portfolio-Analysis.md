@@ -1,5 +1,5 @@
 ---
-title: Portfolio Analysis: a beginning
+title: "Portfolio Analysis: a beginning"
 date: 2023-11-25 13:17:00 -0500
 categories: [Analytics, R programming]
 tags: [Finance]
