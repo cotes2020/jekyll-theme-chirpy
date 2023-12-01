@@ -14,17 +14,17 @@ The following libraries are used:
 
 The **rvest** package in R is a popular and powerful tool designed for web scraping. It allows users to easily read and manipulate the data from web pages. The **tydiverse** package is a collection of packages useful for datascience, including *ggplot2* and *dyplr* which are necessary for the code used here. The package **flextable** is used to produce nice looking static tables.
 
-````r
+```r
     library(rvest)
     library(tidyverse)
     library(flextable)
-````
+```
 
 ## Get financial data from chosen tickets
 
 The following code uses tools of the **rvest** library to scrape data from finance.yahoo.com. We are creating a function This requires getting the XPATH to specific data in the web page. If the web page changes, it will break the script. It could be better in the future to change this for getting info from a database (via API or other means).
 
-````r
+```r
   # is a function that takes one argument, ticker. The function constructs a URL for the Yahoo Finance page of the given ticker, then uses read_html to download and parse the HTML content of that page. 
     get_financials <- function(ticker) {
       url <- paste0("https://finance.yahoo.com/quote/", ticker)
@@ -59,7 +59,7 @@ The following code uses tools of the **rvest** library to scrape data from finan
     # lapply is a function in R that applies a function over a list or vector. In this case, the function get_financials is applied to each element of the tickers vector. bind_rows() combines multiple data frames into one by binding them row-wise. This means that it takes data frames and stacks them on top of each other.
     financial_data <- lapply(tickers, get_financials) %>%
       bind_rows()
-````
+```
 
 The following code adjusts for the missing values on the yahoo site,
 since the Vanguard and Blackrock tickers are missing. I will eventually
