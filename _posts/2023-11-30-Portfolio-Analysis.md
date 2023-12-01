@@ -15,11 +15,9 @@ The following libraries are used:
 The **rvest** package in R is a popular and powerful tool designed for web scraping. It allows users to easily read and manipulate the data from web pages. The **tydiverse** package is a collection of packages useful for datascience, including *ggplot2* and *dyplr* which are necessary for the code used here. The package **flextable** is used to produce nice looking static tables.
 
 ````r
-```
     library(rvest)
     library(tidyverse)
     library(flextable)
-```
 ````
 
 ## Get financial data from chosen tickets
