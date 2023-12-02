@@ -3,7 +3,7 @@ title: Getting Started with GitLab CI/CD
 author: Sarath
 date: 2023-11-30
 categories: [DevOps, Gitlab]
-tags: [Gilab, CI/CD]
+tags: [Gitlab, CI/CD]
 pin: true
 ---
 
