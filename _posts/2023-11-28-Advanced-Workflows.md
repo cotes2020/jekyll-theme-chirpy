@@ -1,5 +1,5 @@
 ---
-title: Workflows
+title: Github Actions Workflows
 author: Sarath
 date: 2023-11-28
 categories: [DevOps, Github Actions]

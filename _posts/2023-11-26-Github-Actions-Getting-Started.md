@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started with Github Actions
 author: Sarath
 date: 2023-11-26
 categories: [DevOps, Github Actions]
