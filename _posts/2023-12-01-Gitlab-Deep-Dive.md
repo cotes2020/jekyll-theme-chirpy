@@ -1,5 +1,5 @@
 ---
-title: Deep Dive into GitLab CI/CD Pipelines"
+title: Deep Dive into GitLab CI/CD Pipelines
 author: Sarath
 date: 2023-12-01
 categories: [DevOps, Gitlab]
