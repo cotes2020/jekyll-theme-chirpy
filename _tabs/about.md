@@ -1,7 +1,7 @@
 ---
 title: About
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
 
 Hi, Thank you for visiting my homepage. I am an undergraduate student majoring in computer science and technology from Hefei University of Technology. My current research area focuses on Explainable AI, Large Language Models, and secure code generation. 

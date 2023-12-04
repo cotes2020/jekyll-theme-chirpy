@@ -16,17 +16,17 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: America/Menominee
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
 title: Ke (Adria) Dong                         # the main title
 
-tagline: Machine Learning, Deep Learning, CV, SER   # it will display as the sub-title
+tagline: Large Language Model, Explainable AI, Cybersecurity   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A computer science student.
+ computer science Ph.D. student in Kansas State University.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://keadriadong.github.io/'
