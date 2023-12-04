@@ -27,10 +27,10 @@ The dynamic-static fusion features play an important role in speech emotion reco
 <img src="/commons/sd-caff/res2.png" alt="res2" title="res2">
 
 ## Links
-This paper is accepted by 29th International Conference on MultiMedia Modeling (MMM 2023).
+https://link.springer.com/chapter/10.1007/978-3-031-27818-1_29
 
 ## Reference
-The hompage of [MMM 2023](https://www.mmm2023.no/home).
+Dong, Ke, Hao Peng, and Jie Che. "Dynamic-Static Cross Attentional Feature Fusion Method for Speech Emotion Recognition." International Conference on Multimedia Modeling. Cham: Springer Nature Switzerland, 2023.
 
 ## Download
 <a href="/commons/pubs/camera_ready.pdf">SMB.pdf</a>
