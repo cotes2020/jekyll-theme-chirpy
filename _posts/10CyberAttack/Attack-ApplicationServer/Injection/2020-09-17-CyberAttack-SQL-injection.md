@@ -36,7 +36,6 @@ image:
     - [Extended Stored Procedures](#extended-stored-procedures)
     - [Sewer System Tables](#sewer-system-tables)
 
-
 ---
 
 # Meow's CyberAttack - SQL Injection
@@ -126,6 +125,7 @@ use server response as a criterion
 
 
 ### Blind SQL injection attacks
+
 - injection attack on a web server based on `responses to True/False questions`.
 - Not all queries will generate output.
 - be flying blind because
@@ -665,9 +665,9 @@ For example, if the query returns four columns, you would submit:
 3. you are in a position to retrieve interesting data.
 
 Suppose that:
-*   The original query returns two columns, both of which can hold string data.
-*   The injection point is a quoted string within the `WHERE` clause.
-*   The database contains a table called `users` with the columns `username` and `password`.
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the `WHERE` clause.
+* The database contains a table called `users` with the columns `username` and `password`.
 
 - to retrieve the contents of the `users` table by submitting the input:
   - `' UNION SELECT username, password FROM users--`
@@ -677,6 +677,7 @@ Suppose that:
 ---
 
 #### Querying the database type and version
+
 Different databases provide different ways of querying their version. You often need to try out different queries to find one that works, allowing you to determine both the type and version of the database software.
 
 The queries to determine the database version for some popular database types are as follows:
@@ -850,8 +851,6 @@ Examples:
 > /index.asp, line 6
 
 In this manner, all the remaining columns in the table can be found.
-
-
 
 
 ---
@@ -1068,8 +1067,6 @@ Another effective stored procedure in SQL injections: master.dbo.sp_makewebtask:
 ![Screen Shot 2020-11-19 at 01.49.08](https://i.imgur.com/KfXpQHP.png)
 
 ![Screen Shot 2020-11-19 at 01.50.37](https://i.imgur.com/chM5COm.png)
-
-
 
 ---
 

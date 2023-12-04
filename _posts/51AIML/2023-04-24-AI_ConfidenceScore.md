@@ -13,7 +13,17 @@ tags: [AIML]
   - [Data labeling](#data-labeling)
     - [蒸馏法](#蒸馏法)
     - [LLM data labeling benchmark](#llm-data-labeling-benchmark)
-  - [Test Methodology](#test-methodology)
+      - [Exam 1: Test Methodology](#exam-1-test-methodology)
+        - [Setup](#setup)
+        - [Results](#results)
+        - [Qualitative Evaluation](#qualitative-evaluation)
+      - [Exam 2: Language Models (Mostly) Know What They Know](#exam-2-language-models-mostly-know-what-they-know)
+      - [Estimating Confidence with Autolabel](#estimating-confidence-with-autolabel)
+      - [Confidence estimation techniques](#confidence-estimation-techniques-1)
+        - [P(True)](#ptrue)
+        - [Prompting for Confidence Score](#prompting-for-confidence-score)
+        - [Token probabilities](#token-probabilities)
+        - [Entropy 熵](#entropy-熵)
 
 
 
@@ -146,17 +156,15 @@ different techniques for estimating confidence of LLM generated labels:
 - 创建灵活的数据标记流程，使能够进行扩展。随着的需求和用例的发展，期望对这些过程进行迭代。
 
 
-
-
 Next generation data labeling tools
-- like Autolabel
+- like `Autolabel`
 - leverage LLMs to create `large, diverse labeled datasets`.
 - In an application domain like labeling where correctness is critical, it is imperative to be able to accurately estimate the model’s level of confidence in its own knowledge and reasoning.
 - Doing so enables us to automatically reject low confidence labels, ensemble LLMs optimally, and learn more about strengths and weaknesses of any given LLM.
 
 - example
-  - Toxic comments classification dataset [^Datasets_civil_comments] from our labeling benchmark.
-  - If we are able to estimate the LLM’s confidence level alongside the labels it generates, we can calibrate the model’s label quality (% agreement with ground truth labels) at any given confidence score.
+  - Toxic comments classification dataset [^Datasets_civil_comments] from the labeling benchmark.
+  - If are able to estimate the LLM’s confidence level alongside the labels it generates, can calibrate the model’s label quality (% agreement with ground truth labels) at any given confidence score.
   - then decide an operating point (`confidence threshold`) for the LLM, and reject all labels below this threshold.
 
 [^Datasets_civil_comments]: Datasets:civil_comments, https://huggingface.co/datasets/civil_comments
@@ -311,43 +319,10 @@ What do LLMs Know about Financial Markets? A Case Study on Reddit Market Sentime
   - 笔者认为，LLM作为一个工具，如何适当地使用它，让整个标注系统更加的低成本、高质量、高效率，才是人类设计者的最终目的。
 
 
-下期预告
-
-在作为标注员的LLM系列第二期，笔者将介绍LLM与弱监督标注的结合，在Snorkel[7]弱监督标注框架下，LLM与标注系统进行了更深入的协作，其使用方式更加灵活，而通过对一个样本进行多角度标注，甚至可能带来更好的标注效果。
-
-段誉：作为标注员的LLM（四）：开源大语言模型标注效果优化之Bias Calibration篇（文末附代码）
-8 赞同 · 2 评论文章
-
-段誉：作为标注员的LLM（三）：中文开源LLM的标注效果初体验
-16 赞同 · 6 评论文章
-
-段誉：作为标注员的LLM（二）：在弱监督学习的视角下
-13 赞同 · 0 评论文章
-
-参考资料
-
-[1]
-
-The economic trade-offs of large language models: A case study: https://arxiv.org/abs/2306.07402
-
-[2]
-
-What do LLMs Know about Financial Markets? A Case Study on Reddit Market Sentiment Analysis: https://arxiv.org/pdf/2212.11311.pdf
-
-[3]
-
-Charformer: https://openreview.net/pdf?id=JtBRnrlOEFN
-
-
-[7]
-
-Snorkel: https://snorkel.ai/
-
-
-
 ---
 
 ### LLM data labeling benchmark
+
 - LLMs can label data as well as humans, but 100x faster [^labeling_benchmark]
 - a benchmark for evaluating performance of LLMs for labeling text datasets
 
@@ -360,110 +335,198 @@ Key takeaways and learnings:
 - `Confidence based thresholding` can be a very effective way to mitigate impact of hallucinations and ensure high label quality.
 ‍
 
+**LLMs for data labeling** [^LLMs_for_data_labeling]
+
+[^LLMs_for_data_labeling]: Labeling with Confidence https://www.refuel.ai/blog-posts/labeling-with-confidence
+
+- When leveraging LLMs for data labeling, it is important to be able to accurately estimate the `model’s level of confidence` in its own knowledge and reasoning.
+- Doing so enables us to `automatically reject` low confidence labels and ensemble LLMs optimally.
+- We examine different techniques for estimating confidence of LLM generated labels, in the context of data labeling for NLP tasks.
+- **Key takeaways**:
+  - `Token-level generation probabilities` (commonly referred to as `logprobs`) are by far the most accurate technique for estimating LLM confidence.
+  - Explicitly prompting the LLM to output a confidence score, while popular, is `highly unreliable`.
+    - This technique had the lowest accuracy and the highest standard deviation across datasets.
+    - More often than not the LLM just hallucinates some number.
+
+- used `Autolabel`, recently open-sourced library, to run all the experiments that are a part of this report.
+  - Next generation data labeling tools like Autolabel leverage LLMs to create `large, diverse labeled datasets`.
+
+- As a motivating example, consider the `Toxic comments classification dataset` from the labeling benchmark. If are able to estimate the LLM’s confidence level alongside the labels it generates, can
+  - calibrate the model’s label quality (% agreement with ground truth labels) at any given confidence score.
+  - then decide an `operating point` (**confidence threshold**) for the LLM, and reject all labels below this threshold.
+
+![Screenshot 2023-12-04 at 05.02.35](/assets/img/Screenshot%202023-12-04%20at%2005.02.35.png)
 
 
 ---
 
+#### Exam 1: Test Methodology
 
-## Test Methodology
-
-
-**Setup**
+##### Setup
 
 ![Screenshot 2023-11-13 at 21.55.35](/assets/img/Screenshot%202023-11-13%20at%2021.55.35.png)
 
-1. For an `input x`, we generate a `label y` by prompting the Labeling LLM (GPT-4). The setup and prompts for doing this follows exactly the methodology described in the LLM data labeling benchmark.
-1. Next, we estimate the confidence c, given x and y using a Verifier LLM (FLAN-T5-XXL or GPT-4). This score quantifies the Verifier LLM’s confidence in the given `label y` being correct. We describe four confidence calculation methods that we benchmark in the section below.
-1. Then, we compare y with the ground truth label gt to decide whether the prediction is a “true positive” (y == gt) or “false positive” (y != gt).
-1. Finally, we compute AUROC (Area Under the Receiver Operating Characteristic) to understand how “good” a specific confidence estimation method is. For building the ROC curve, we first compute true positive rate and false positive rates at various score thresholds. We use all distinct values of c as thresholds.
+1. For an `input x`, generate a `label y` by prompting the Labeling LLM (GPT-4).
+1. Next, estimate the confidence `c`, given x and y using a Verifier LLM (FLAN-T5-XXL or GPT-4). This score quantifies the Verifier LLM’s confidence in the given `label y` being correct. We describe four confidence calculation methods that benchmark in the section below.
+1. Then, compare y with the ground truth label gt to decide whether the prediction is a “true positive” (y == gt) or “false positive” (y != gt).
+1. Finally, compute AUROC (Area Under the Receiver Operating Characteristic) to understand how “good” a specific confidence estimation method is. For building the ROC curve, first compute true positive rate and false positive rates at various score thresholds. We use all distinct values of c as thresholds.
 
+For generating the labels themselves, use GPT-4 as the labeling LLM in this evaluation.
+- Ideally we’d like to use the same LLM for verification as well, but token-level generation probabilities (logprobs) are currently not available for OpenAI chat engine models (including GPT-4).
+- Hence use FLAN-T5-XXL as the verifier LLM. For techniques that don’t rely on logprobs, also report the AUROC numbers with GPT-4 as the verifier LLM.
 
-For generating the labels themselves, we use GPT-4 as the labeling LLM in this evaluation. Ideally we’d like to use the same LLM for verification as well, but token-level generation probabilities (logprobs) are currently not available for OpenAI chat engine models (including GPT-4). Hence we use FLAN-T5-XXL as the verifier LLM. For techniques that don’t rely on logprobs, we also report the AUROC numbers with GPT-4 as the verifier LLM.
+**Metric**
 
-[2] Metric
+The **AUROC** is a scalar value that summarizes the overall performance of the classifier by measuring the area under the **ROC curve**.
+- It provides a measure of the classifier's ability to distinguish between the positive and negative classes across all possible classification thresholds.
+- The confidence score that are calculating can be thought of as a binary classifier where the labels are whether the model got a specific label `correct` (true positive) or `incorrect` (false positive).
 
-Credit: https://vitalflux.com/roc-curve-auc-python-false-positive-true-positive-rate/
+![Screenshot 2023-12-04 at 04.43.33](/assets/img/Screenshot%202023-12-04%20at%2004.43.33.png) [^Metric]
+
+[^Metric]: https://vitalflux.com/roc-curve-auc-python-false-positive-true-positive-rate/
 ‍
+- Using the plot above as a reference, can see that a random classifier would have an AUROC of 0.5.
 
-The AUROC is a scalar value that summarizes the overall performance of the classifier by measuring the area under the ROC curve. It provides a measure of the classifier's ability to distinguish between the positive and negative classes across all possible classification thresholds. The confidence score that we are calculating can be thought of as a binary classifier where the labels are whether the model got a specific label correct (true positive) or incorrect (false positive). Using the plot above as a reference, we can see that a random classifier would have an AUROC of 0.5.
+![Screenshot 2023-12-04 at 04.45.30](/assets/img/Screenshot%202023-12-04%20at%2004.45.30.png)
 
-[3] Datasets
-We included the following datasets for this evaluation. These datasets are available for download here.
 
+**Datasets**
+
+We included the following datasets for this evaluation. These datasets are available for download [here](https://docs.refuel.ai/guide/resources/refuel_datasets/).
 
 List of datasets used for labeling in this report
-[4] Techniques
 
-Is the first option still a good method to try?
-‍
+![Screenshot 2023-12-04 at 05.08.34](/assets/img/Screenshot%202023-12-04%20at%2005.08.34.png)
+
+
+##### Results
+
+![Screenshot 2023-12-04 at 04.45.30](/assets/img/Screenshot%202023-12-04%20at%2004.45.30.png)
+
+> evaluated the performance of five different confidence estimation techniques across different NLP tasks and datasets.
+
+- **Explicitly prompting the LLM to output a confidence score**
+  - the least accurate.
+  - This technique had the `lowest AUROC (0.58)` and the `highest standard deviation  (+/- 0.13)` across datasets.
+  - More often than not the LLM just hallucinates some number.
+
+- **Token probability**
+  - still by far the most accurate and reliable technique for estimating LLM confidence.
+
+  - Across all the 4 datasets, this technique achieves the `highest AUROC (0.832)`, and the `lowest standard deviation 偏差 (+/- 0.07)`.
+
+  - Even with token probabilities, do see some variability in how well it can work for a given labeling task. From early exploration internally with public and proprietary datasets, have found that fine tuning the verifier LLM on the target labeling task improves the calibration significantly. We hope to share more details about this exploration in a future blog post.
+
+Here’s a breakdown of the performance by dataset:
+
+![Screenshot 2023-12-04 at 08.00.06](/assets/img/Screenshot%202023-12-04%20at%2008.00.06.png)
+
+
+
+##### Qualitative Evaluation
+
+In order to get a more intuitive understanding for which kinds of inputs LLMs are more confident, vs less confident about, here’s what did:
+
+- Compute embeddings for all inputs in the dataset using [sentence transformers](https://github.com/UKPLab/sentence-transformers)
+- Project all inputs into a 2D embedding map using [UMAP](https://umap-learn.readthedocs.io/en/latest/)
+- Overlay this projection map with useful metadata such as confidence score and “whether the LLM label is correct i.e. matches ground truth label” for each point.
+
+
+We illustrate this with the Banking complaints classification dataset below.
+- clusters of low confidence inputs correspond q unite well to incorrect LLM labels
+- Overlaying confidence score and whether `the LLM label (y) == Ground truth label (gt)` for the Banking Dataset
+
+![Screenshot 2023-12-04 at 08.03.07](/assets/img/Screenshot%202023-12-04%20at%2008.03.07.png)
+
+
+
+Further, examine a few rows with low confidence LLM labels (<= 0.2).
+- Many of these inputs are ambiguous 模稜兩可, and it is hard even for a human annotator to tell which of the labels (the one provided as ground truth in the dataset, or the LLM generated one) is “correct”.
+
+![Screenshot 2023-12-04 at 08.12.58](/assets/img/Screenshot%202023-12-04%20at%2008.12.58.png)
+
+
+---
+
+#### Exam 2: Language Models (Mostly) Know What They Know
+
+We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. [^Language_Models_Know_What_They_Know]
+
+[^Language_Models_Know_What_They_Know]: Language Models (Mostly) Know What They Know, https://arxiv.org/pdf/2207.05221.pdf
+
+- We first show that `larger models are well-calibrated on diverse multiple choice and true/false question` when they are provided in the right format.
+
+- Thus we can approach **self-evaluation** on open-ended sampling tasks
+  - asking models to first propose answers, and then to evaluate the `probability "P(True)"` that their answers are correct.
+  - We find encouraging performance, calibration, and scaling for P(True) on a diverse array of tasks.
+  - Performance at self-evaluation further improves when we allow models to consider many of their own samples before predicting the validity of one specific possibility.
+
+- Next, we investigate whether models can be trained to predict `"P(IK)"`
+  - `"P(IK)"`: the probability that "I know" the answer to a question, without reference to any particular proposed answer.
+  - Models perform well at predicting P(IK) and partially generalize across tasks, though they struggle with calibration of P(IK) on new tasks.
+  - The predicted P(IK) probabilities also increase appropriately in the presence of relevant source materials in the context, and in the presence of hints towards the solution of mathematical word problems.
+- We hope these observations lay the groundwork for training more honest models, and for investigating how honesty generalizes to cases where models are trained on objectives other than the imitation of human writing.
+
+
+---
+
+#### Estimating Confidence with Autolabel
+
+- Autolabel library relies on `token level generation probabilities` to estimate LLM label confidence.
+- Generating confidence scores alongside labels is a simple config change - setting the key `compute_confidence = True` should initiate confidence score computation:
+- Enabling confidence estimation in the library is a one line config change
+![Screenshot 2023-12-04 at 08.15.00](/assets/img/Screenshot%202023-12-04%20at%2008.15.00.png)
+
+However, very few LLM providers today support extraction of token level generation probabilities alongside the completion.
+
+For all other models, Refuel provides access to a hosted Verifier LLM (currently a FLAN T5-XXL model) via an API to estimate `logprobs` as a post-processing step after the label is generated, regardless of the LLM that was originally used to generate the label.
+
+---
+
+
+#### Confidence estimation techniques
+
+**Techniques**
+
+![Screenshot 2023-12-04 at 05.09.23](/assets/img/Screenshot%202023-12-04%20at%2005.09.23.png)
+
+>Is the first option still a good method to try?
 
 We benchmark the following four methods for confidence estimation:
 
-P(True):
-The labeling LLM (GPT-4) generates a label (llm_label) given an input prompt. Using this, we prompt the verifier LLM to complete the following sentence. The token generation probability of “Yes” is used as the confidence score
+
+##### P(True)
+1. The labeling LLM (GPT-4) generates a label (llm_label) given an input prompt.
+2. Using this, prompt the verifier LLM to complete the following sentence.
+3. The token generation probability of `“Yes”` is used as the confidence score
+
+![Screenshot 2023-12-04 at 05.11.26](/assets/img/Screenshot%202023-12-04%20at%2005.11.26.png)
 
 
-Prompting for Confidence Score:
-The labeling LLM (GPT-4) generates a label (llm_label) given an input (prompt). Using this, we prompt the verifier LLM to complete the following sentence. The value output by the verifier LLM is parsed as a float and used as the confidence score. If parsing is unsuccessful, we give the sample a confidence score of 0.0 by default.
+##### Prompting for Confidence Score
 
+- The labeling LLM (GPT-4) generates a label (`llm_label`) given an input (`prompt`).
+- Using this, prompt the verifier LLM to complete the following sentence.
+- The value output by the verifier LLM is parsed as a float and used as the confidence score.
+- If parsing is unsuccessful, give the sample a confidence score of 0.0 by default.
 
-Token probabilities:
-For classification-like and QA tasks, this is simply the probability of the first token in the generated label output produced. For NER, probabilities are first generated for all tokens and then the probability of tokens for each entity is averaged to compute confidence scores per entity.
+![Screenshot 2023-12-04 at 05.13.40](/assets/img/Screenshot%202023-12-04%20at%2005.13.40.png)
 
-We use the Verifier LLM for estimating token probabilities of a prediction - we first generate the prediction logits for all tokens in the vocabulary, for the length of the output sequence. Then, we compute the softmax over the token probability distribution for each index and use the probabilities corresponding to respective tokens in the prediction as token probabilities.
+##### Token probabilities
 
-Entropy:
+- For classification-like and QA tasks, this is simply the probability of the first token in the generated label output produced.
+  - For NER, probabilities are first generated for all tokens and then the probability of tokens for each entity is averaged to `compute confidence scores per entity`.
 
-Exhaustive Entropy: This method is used to calculate entropy for classification-like tasks. First, we calculate the probability of each of the possible labels and then calculate the 2-bit shannon entropy of the probability distribution over possible labels.
-‍Semantic Entropy: This method is used to calculate entropy for generation-like tasks. We prompt the LLM to produce N predictions at a temperature of 0.5 and then group them using a pairwise ROGUE score. Then, we will calculate the average probability of each group of predictions and calculate the entropy of that prediction distribution.
+- use the Verifier LLM for estimating token probabilities of a prediction
+  - first, generate the prediction logits for all tokens in the vocabulary, for the length of the output sequence.
+  - Then, compute the softmax over the token probability distribution for each index and use the probabilities corresponding to respective tokens in the prediction as token probabilities.
+
+##### Entropy 熵
+
+- Exhaustive Entropy
+  - This method is used to calculate entropy for classification-like tasks. First, calculate the probability of each of the possible labels and then calculate the 2-bit shannon entropy of the probability distribution over possible labels.
+
+- ‍Semantic Entropy
+  - This method is used to calculate entropy for generation-like tasks. We prompt the LLM to produce N predictions at a temperature of 0.5 and then group them using a pairwise ROGUE score. Then, will calculate the average probability of each group of predictions and calculate the entropy of that prediction distribution.
 ‍
-Results
-As explained in the previous section, we evaluated the performance of five different confidence estimation techniques across different NLP tasks and datasets.
-
-
-How well do various confidence estimation techniques predict the correctness of LLM labels?
-Takeaways:
-
-Token probability is still by far the most accurate and reliable technique for estimating LLM confidence. Across all the 4 datasets, this technique achieves the highest AUROC (0.832), and the lowest standard deviation (+/- 0.07).
-Explicitly prompting the LLM to output a confidence score is the least accurate. This technique had the lowest AUROC (0.58) and the highest standard deviation  (+/- 0.13) across datasets.  More often than not the LLM just hallucinates some number.
-Even with token probabilities, we do see some variability in how well it can work for a given labeling task. From early exploration internally with public and proprietary datasets, we have found that fine tuning the verifier LLM on the target labeling task improves the calibration significantly. We hope to share more details about this exploration in a future blog post.
-Here’s a breakdown of the performance by dataset:
-
-
-‍
-
-Qualitative Evaluation
-In order to get a more intuitive understanding for which kinds of inputs LLMs are more confident, vs less confident about, here’s what we did:
-
-Compute embeddings for all inputs in the dataset using sentence transformers
-Project all inputs into a 2D embedding map using UMAP
-Overlay this projection map with useful metadata such as confidence score and “whether the LLM label is correct i.e. matches ground truth label” for each point.
-We illustrate this with the Banking complaints classification dataset below. As you can see, clusters of low confidence inputs correspond quite well to incorrect LLM labels -
-
-
-Overlaying confidence score and whether the LLM label (y) == Ground truth label (gt) for the Banking Dataset
-‍
-
-Further, let’s examine a few rows with low confidence LLM labels (<= 0.2). Many of these inputs are ambiguous, and it is hard even for a human annotator to tell which of the labels (the one provided as ground truth in the dataset, or the LLM generated one) is “correct”.
-
-
-Input examples with low confidence
-‍
-
-Estimating Confidence with Autolabel
-Autolabel library relies on token level generation probabilities to estimate LLM label confidence. Generating confidence scores alongside labels is a simple config change - setting the key compute_confidence = True should initiate confidence score computation:
-
-
-Enabling confidence estimation in the library is a one line config change
-‍
-
-However, very few LLM providers today support extraction of token level generation probabilities alongside the completion. For all other models, Refuel provides access to a hosted Verifier LLM (currently a FLAN T5-XXL model) via an API to estimate logprobs as a post-processing step after the label is generated, regardless of the LLM that was originally used to generate the label.
-
-You can request an API key for accessing Refuel’s Verifier LLM by filling out the form here. More information about confidence computation in Autolabel can be found on the documentation page.
-
-‍
-
-Acknowledgements
-We would like to thank Arvind Neelakantan, Ayush Kanodia, Joseph Turian, Neil Dhruva and Samar Khanna for their feedback on earlier drafts of this report.
-
-If you discover any issues or potential improvements to the shared results, we would love your contribution! You can open an issue on Github or join our Discord.
+![Screenshot 2023-12-04 at 07.53.10](/assets/img/Screenshot%202023-12-04%20at%2007.53.10.png)
