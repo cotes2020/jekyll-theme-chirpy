@@ -1,6 +1,6 @@
 ---
-title: Spring 기초 [프로젝트 설정]
-date: 2023-02-01 19:43:00 +0800
+title: Spring basic [프로젝트 설정]
+date: 2023-01-30 19:43:00 +0800
 categories: [Spring-basic]
 tags: [Spring]
 ---
@@ -31,7 +31,7 @@ Tools 제작도구로 프로젝트를 직접 생산해도 되지만 Spring Proje
 ## 다운로드 및 압축 해제
 1. 위의 10가지 설정이 완료되면 아래의 GENERATE 버튼을 클릭하여 생성된 zip 파일을 다운로드합니다.<br/>
 2. 다운로드한 zip 파일을 원하는 위치에 압축 해제합니다.<br/>
-3. 압축 해제한 프로젝트를 프로젝트 생성 도구를 사용하여 엽니다 (여기서 IntelliJ를 사용).<br/>
+3. 압축 해제한 프로젝트를 개발 도구를 사용하여 엽니다 (여기서 IntelliJ를 사용).<br/>
 4. 파일을 열고 나면 아래와 같은 형태가 나오게 됩니다.<br/>
 ![Spring Start Site](/assets/img/spring/springprojectsetting.png){: width="200" height="30" }<br/>
 
@@ -50,12 +50,19 @@ Tools 제작도구로 프로젝트를 직접 생산해도 되지만 Spring Proje
 > 위에서 다운 받은 JDK 버전으로 맞춰 줍니다.<br/>
 
 4. 파일 구조에서 build.gradle 파일을 우클릭하고 디스크에 로드시킵니다.<br/>
-> 이부분에서 프로젝트 생성시 Dependencies 부분에서 추가를 못했다면 build.gradle 파일에서 따로 설정이 가능합니다.<br/>
+> 이 부분에서 프로젝트 생성시 Dependencies 부분에서 추가를 못했다면 build.gradle 파일에서 따로 설정이 가능합니다.<br/>
 > ![Spring Start Site](/assets/img/spring/dependencie.png){: width="350" height="200" }<br/>
 
 5. 리로드 버튼을 눌러 build.gradle에 있는 설정 내용을 프로젝트에 적용 시켜줍니다.<br/>
+> 보이지가 않는다면 InteliJ를 완전히 껏다가 다시 키면 보일겁니다.
 > ![Spring Start Site](/assets/img/spring/reload.png){: width="350" height="200" }<br/>
 
-## 마무리
+6. InteliJ에서는 Build, Run 기본적으로 Gradle로 되어있습니다. 이는 애플리케이션을 실행시 속도가 저하되는 경우가 있습니다.<br/>
+그래서 이부분을 InteliJ IDEA로 변경하시면 됩니다.<br/>
+> ![Spring Start Site](/assets/img/spring/spring-build-gradle-setting.png){: width="350" height="200" }<br/>
 
+## 마무리
+Spring 프로젝트를 만들고 설정하는 두 가지 방법중 사이트 기준으로 설명했습니다.<br/> 
+툴을 사용하여 프로젝트를 직접 생성할 수 있지만, Spring 사이트를 통해 프로젝트를 쉽고 빠르게 생성할 수 있습니다.<br/>
+따라서 이 글에서는 사이트를 기준으로 프로젝트 생성과 설정에 관한 과정을 다루어보았습니다.
 
