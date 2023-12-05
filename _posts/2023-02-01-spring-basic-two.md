@@ -12,6 +12,7 @@ tags: [Spring]
 [이미지]
 
 ## 프로젝트 설정
+![Spring Start Site](/assets/img/spring/projectsetting.png){: width="700" height="400" }<br>
 > 1. 프로젝트에서 Groovy 또는 Maven을 선택합니다.
 > 2. 언어 섹션에서 Java를 선택합니다.
 > 3. Spring Boot의 최신 버전을 사용합니다. (다만, SNAPSHOT 버전은 제외)
@@ -26,7 +27,7 @@ tags: [Spring]
 >> 지금 선택하지 않아도 나중에 따로 추가할 수 있습니다.
 
 위의 10가지 설정이 완료되면 아래의 GENERATE 버튼을 클릭하여 생성된 zip 파일을 다운로드합니다.<br/>
-다운로드한 zip 파일을 원하는 위치에 압축 해제합니다.
-
-압축 해제한 프로젝트를 프로젝트 생성 도구를 사용하여 엽니다 (여기서 IntelliJ를 사용).
-![Spring Start Site](/assets/img/spring/githubforkimageone.png){: width="700" height="400" }
+다운로드한 zip 파일을 원하는 위치에 압축 해제합니다.<br>
+압축 해제한 프로젝트를 프로젝트 생성 도구를 사용하여 엽니다 (여기서 IntelliJ를 사용).<br>
+파일을 열고 나면 아래와 같은 형태가 나오게 됩니다.
+![Spring Start Site](/assets/img/spring/springprojectsetting.png){: width="700" height="400" }<br>

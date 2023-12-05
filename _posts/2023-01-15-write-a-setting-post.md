@@ -20,6 +20,7 @@ tags: [writing]
    - [Chirpy repository on GitHub](https://github.com/cotes2020/jekyll-theme-chirpy)로 이동합니다.
    - 오른쪽 상단의 "Fork" 버튼을 클릭하여 저장소를 본인 GitHub 계정으로 Fork합니다.
    - 반드시 [github ID].github.io 이 형식으로 Fork 하고 생성하셔야 합니다.
+![Spring Start Site](/assets/img/spring/githubforkimageone.png){: width="700" height="400" }
 
 2. **Repository Clone**
    - 클론 명령을 사용하여 저장소를 로컬 머신으로 복제합니다.
