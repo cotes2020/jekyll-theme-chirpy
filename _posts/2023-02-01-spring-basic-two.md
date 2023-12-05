@@ -15,7 +15,7 @@ tags: [Spring]
 > 1. 프로젝트에서 Groovy 또는 Maven을 선택합니다.
 > 2. 언어 섹션에서 Java를 선택합니다.
 > 3. Spring Boot의 최신 버전을 사용합니다. (다만, SNAPSHOT 버전은 제외)
->> - 제외 이유: 안정화되지 않은 버전이기 때문입니다.
+>> 제외 이유: 안정화되지 않은 버전이기 때문입니다.
 > 4. 프로젝트의 그룹을 결정하고 기록합니다.
 > 5. 프로젝트의 Artifact 이름을 정하고 기록합니다.
 > 6. 프로젝트에 대한 설명이 있으면 설명 섹션에 작성하고, 그렇지 않으면 건너뛸 수 있습니다.
@@ -29,4 +29,4 @@ tags: [Spring]
 다운로드한 zip 파일을 원하는 위치에 압축 해제합니다.
 
 압축 해제한 프로젝트를 프로젝트 생성 도구를 사용하여 엽니다 (여기서 IntelliJ를 사용).
-![Spring Start Site](../../LJW22222.github.io/assets/img/githubforkimageone.png)
+![Spring Start Site](/assets/img/spring/githubforkimageone.png)
