@@ -4,12 +4,8 @@ author: Sarath
 date: 2023-12-01
 categories: [DevOps, Gitlab]
 tags: [Gitlab, CI/CD]
-pin: true
+pin: false
 ---
-
-# Deep Dive into GitLab CI/CD Pipelines
-
-## Detailed Explanation of Pipeline Structure and Components
 
 ### Pipeline Structure
 In GitLab, a CI/CD pipeline is a series of processes (jobs) that are defined in the `.gitlab-ci.yml` file. A pipeline can be divided into multiple stages, each containing one or more jobs. The stages are executed in the order they are defined.

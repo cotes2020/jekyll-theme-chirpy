@@ -1,13 +1,11 @@
 ---
-title: Github Actions Workflows
+title: Advanced Workflows in GitHub Actions
 author: Sarath
 date: 2023-11-28
 categories: [DevOps, Github Actions]
 tags: [Github Actions, CI/CD]
-pin: true
+pin: false
 ---
-
-# Advanced Workflows in GitHub Actions
 
 **Objective**: Delve into more complex workflows in GitHub Actions to enhance automation capabilities.
 

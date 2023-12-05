@@ -1,13 +1,11 @@
 ---
-title: Github Actions
+title: Introduction to GitHub Actions
 author: Sarath
 date: 2023-11-24
 categories: [DevOps, Github Actions]
 tags: [Github Actions, CI/CD]
-pin: true
+pin: false
 ---
-
-# Introduction to GitHub Actions
 
 **Objective**: Introduce GitHub Actions and its importance in modern software development.
 

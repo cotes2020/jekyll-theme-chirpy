@@ -1,15 +1,11 @@
 ---
-title: Getting Started with GitLab CI/CD
+title: Setting Up a GitLab Account and Project
 author: Sarath
 date: 2023-11-30
 categories: [DevOps, Gitlab]
 tags: [Gitlab, CI/CD]
-pin: true
+pin: false
 ---
-
-# Getting Started with GitLab CI/CD
-
-## Setting Up a GitLab Account and Project
 
 ### Step 1: Creating a GitLab Account
 - Visit [GitLab's sign up page](https://gitlab.com/users/sign_in#register-pane).

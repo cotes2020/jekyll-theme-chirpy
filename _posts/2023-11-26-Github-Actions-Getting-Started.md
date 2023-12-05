@@ -4,7 +4,7 @@ author: Sarath
 date: 2023-11-26
 categories: [DevOps, Github Actions]
 tags: [Github Actions, CI/CD]
-pin: true
+pin: false
 ---
 
 [GitHub Actions](https://github.com/features/actions) is a powerful feature provided by GitHub that enables automation of all your software workflows, including Continuous Integration and Continuous Deployment (CI/CD). With GitHub Actions, you can automate your workflow right from your GitHub repository. The purpose of this article is to guide you through the process of setting up and using GitHub Actions.

@@ -1,16 +1,11 @@
 ---
-title: Automated Testing with GitLab CI/CD
+title: Setting Up Unit and Integration Tests in the Pipeline
 author: Sarath
 date: 2023-12-03
 categories: [DevOps, Gitlab]
 tags: [Gitlab, CI/CD]
 pin: true
 ---
-
-# Automated Testing with GitLab CI/CD
-
-## Setting Up Unit and Integration Tests in the Pipeline
-Automated tests are key to ensuring the quality of your software. Here’s how to set them up in GitLab:
 
 - **Create Test Scripts:** Write scripts for unit and integration tests. For example, a simple Python unit test could look like this:
   ```python
