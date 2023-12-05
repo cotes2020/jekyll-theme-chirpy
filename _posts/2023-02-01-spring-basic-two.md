@@ -10,16 +10,17 @@ Spring 프로젝트를 생성하는 방법은 총 2가지가 있습니다.<br/>
 1. Tools(InteliJ, VsCode 등)에서 직접 프로젝트를 생성<br/>
 2. [Spring](https://start.spring.io/) 사이트에서 간편하게 프로젝트를 생성<br/>
 
-이 포스트에서는 사이트에서 프로젝트를 생성하는 기준으로 설명하겠습니다. <br/>
+Tools 제작도구로 프로젝트를 직접 생산해도 되지만 Spring Project는 사이트에서 간편하고 빠르게 만들 수 있습니다.<br/> 
+그러므로 이 포스트에서는 사이트 기준으로 제작 및 프로젝트 Setting에 대해 설명하겠습니다. <br/>
 
 ## 프로젝트 생성
-![Spring Start Site](/assets/img/spring/projectsetting.png){: width="700" height="400" }<br>
+![Spring Start Site](/assets/img/spring/springstarteio.png){: width="700" height="400" }<br>
 > 1. 프로젝트에서 Groovy 또는 Maven을 선택합니다.
 > 2. 언어 섹션에서 Java를 선택합니다.
 > 3. Spring Boot의 최신 버전을 사용합니다. (다만, SNAPSHOT 버전은 제외)
 >> 제외 이유: 안정화되지 않은 버전이기 때문입니다.
-> 4. 프로젝트의 그룹을 결정하고 기록합니다.
-> 5. 프로젝트의 Artifact 이름을 정하고 기록합니다.
+> 4. 프로젝트의 그룹을 작성합니다. ( 아무 이름이나 가능합니다 )
+> 5. 프로젝트의 Artifact 이름을 정합니다. ( 아무 이름이나 가능합니다 )
 > 6. 프로젝트에 대한 설명이 있으면 설명 섹션에 작성하고, 그렇지 않으면 건너뛸 수 있습니다.
 > 7. 패키지 이름은 그룹과 Artifact를 결합하여 자동으로 작성되므로 건너뛸 수 있습니다.
 > 8. Jar와 War 중에서 빌드 출력 형식을 선택합니다.
@@ -38,15 +39,15 @@ Spring 프로젝트를 생성하는 방법은 총 2가지가 있습니다.<br/>
 ## 프로젝트 설정
 1. 맨 왼쪽의 점 3개가 그려져있는 버튼을 클릭하여 프로젝트 설정 버튼을 눌러 아래의 설정을 적용시켜 줍니다.
 > ![Spring Start Site](/assets/img/spring/projectsetting.png){: width="350" height="200" }<br/>
-> 프로젝트 생성시에 Java버전을 17로 했으면 SDK을 17이나 그 이상으로 설정합니다.
-> 이에맞는 버전이 없으면 SDK - SDK 추가 - JDK 을 눌러 JDK를 다운로드 해줍니다.
+> 프로젝트 생성시에 Java버전을 17로 했으면 SDK을 17이나 그 이상으로 설정합니다.<br/>
+> 이에맞는 버전이 없으면 SDK - SDK 추가 - JDK 을 눌러 JDK를 다운로드 해줍니다.<br/>
 
-2. 다운 받은 JDK 버전으로 설정을 맞춰 줍니다.
+2. 다운 받은 JDK 버전으로 설정을 맞춰 줍니다.<br/>
 > ![Spring Start Site](/assets/img/spring/sdksetting.png){: width="350" height="200" }<br/>
 
-3. 맨 왼쪽의 점 3개가 그려져있는 버튼을 클릭하여 설정 버튼을 눌러 아래의 설정을 적용시켜 줍니다.
+3. 맨 왼쪽의 점 3개가 그려져있는 버튼을 클릭하여 설정 버튼을 눌러 아래의 설정을 적용시켜 줍니다.<br/>
 > ![Spring Start Site](/assets/img/spring/buildsetting.png){: width="350" height="200" }<br/>
-> 위에서 다운 받은 JDK 버전으로 맞춰 줍니다.
+> 위에서 다운 받은 JDK 버전으로 맞춰 줍니다.<br/>
 
 4. 파일 구조에서 build.gradle 파일을 우클릭하고 디스크에 로드시킵니다.<br/>
 > 이부분에서 프로젝트 생성시 Dependencies 부분에서 추가를 못했다면 build.gradle 파일에서 따로 설정이 가능합니다.<br/>
@@ -54,4 +55,7 @@ Spring 프로젝트를 생성하는 방법은 총 2가지가 있습니다.<br/>
 
 5. 리로드 버튼을 눌러 build.gradle에 있는 설정 내용을 프로젝트에 적용 시켜줍니다.<br/>
 > ![Spring Start Site](/assets/img/spring/reload.png){: width="350" height="200" }<br/>
+
+## 마무리
+
 
