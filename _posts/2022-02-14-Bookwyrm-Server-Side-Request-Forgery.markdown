@@ -19,7 +19,7 @@ tags: [Hacking, Django, Code Review, Web]
 
 So to test it out, i hosted my own bookworm instance and tested out the bug.
 
-![](/img/1*rtlmM6TaeleqUQHbHKGYFA.png)I put <http://172.18.0.1/> in the cover-url which is the internal ip of my vps since my bookwyrm instance is hosted with docker. As you see, it responded with a redirect, just like what we expected
+![](/img/1*rtlmM6TaeleqUQHbHKGYFA.png)I put `http://172.18.0.1/`` in the cover-url which is the internal ip of my vps since my bookwyrm instance is hosted with docker. As you see, it responded with a redirect, just like what we expected
 
 Now when we visit the cover of book 2, we will see this.
 
