@@ -1,30 +1,34 @@
-<!--
-  Navigation buttons at the bottom of the post.
--->
+<!-- Navigation buttons at the bottom of the post. -->
 
-<div class="post-navigation d-flex justify-content-between">
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  {% assign previous = site.data.locales[include.lang].post.button.previous %}
+  {% assign next = site.data.locales[include.lang].post.button.next %}
+
   {% if page.previous.url %}
-  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary"
-    prompt="{{ site.data.locales[lang].post.button.previous }}">
-    <p>{{ page.previous.title }}</p>
-  </a>
+    <a
+      href="{{ site.baseurl }}{{ page.previous.url }}"
+      class="btn btn-outline-primary"
+      aria-label="{{ previous }}"
+    >
+      <p>{{ page.previous.title }}</p>
+    </a>
   {% else %}
-  <span class="btn btn-outline-primary disabled"
-    prompt="{{ site.data.locales[lang].post.button.previous }}">
-    <p>-</p>
-  </span>
+    <div class="btn btn-outline-primary disabled" aria-label="{{ previous }}">
+      <p>-</p>
+    </div>
   {% endif %}
 
   {% if page.next.url %}
-  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary"
-    prompt="{{ site.data.locales[lang].post.button.next }}">
-    <p>{{ page.next.title }}</p>
-  </a>
+    <a
+      href="{{ site.baseurl }}{{page.next.url}}"
+      class="btn btn-outline-primary"
+      aria-label="{{ next }}"
+    >
+      <p>{{ page.next.title }}</p>
+    </a>
   {% else %}
-  <span class="btn btn-outline-primary disabled"
-    prompt="{{ site.data.locales[lang].post.button.next }}">
-    <p>-</p>
-  </span>
+    <div class="btn btn-outline-primary disabled" aria-label="{{ next }}">
+      <p>-</p>
+    </div>
   {% endif %}
-
-</div>
+</nav>

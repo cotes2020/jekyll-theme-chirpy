@@ -40,13 +40,14 @@ copyright:
     명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의
     Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.
 
-meta: Powered by :PLATFORM with :THEME theme.
+meta: Powered by :PLATFORM with :THEME theme
 
 not_found:
   statment: 해당 URL은 존재하지 않습니다.
-  hint_template: :HEAD_BAK을 눌러 다시 찾거나 :ARCHIVES_PAGE에서 검색해 주세요.
-  head_back: 홈으로 돌아가기
-  archives_page: 아카이브 페이지
+
+notification:
+  update_found: 새 버전의 콘텐츠를 사용할 수 있습니다.
+  update: 업데이트
 
 # ----- Posts related labels -----
 
@@ -69,8 +70,13 @@ post:
     share_link:
       title: 링크 복사하기
       succeed: 링크가 복사되었습니다!
-  # pinned prompt of posts list on homepage
-  pin_prompt: 핀
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%Y/%m/%d"
+    dayjs: "YYYY/MM/DD"
 
 # categories page
 categories:

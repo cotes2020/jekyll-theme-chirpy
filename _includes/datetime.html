@@ -1,0 +1,20 @@
+<!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+{% assign df_strftime = site.data.locales[include.lang].df.post.strftime | default: '%d/%m/%Y' %}
+{% assign df_dayjs = site.data.locales[include.lang].df.post.dayjs | default: 'DD/MM/YYYY' %}
+
+<time
+  {% if include.class %}
+    class="{{ include.class }}"
+  {% endif %}
+  data-ts="{{ include.date | date: '%s' }}"
+  data-df="{{ df_dayjs }}"
+  {% if include.tooltip %}
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  {% endif %}
+>
+  {{ include.date | date: df_strftime }}
+</time>

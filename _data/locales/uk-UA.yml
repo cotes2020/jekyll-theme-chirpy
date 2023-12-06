@@ -40,13 +40,14 @@ copyright:
     Публікації на сайті захищено ліцензією Creative Commons Attribution 4.0 International (CC BY 4.0),
     якщо інше не вказано в тексті.
 
-meta: Powered by :PLATFORM with :THEME theme.
+meta: Powered by :PLATFORM with :THEME theme
 
 not_found:
   statment: Вибачте, це посилання вказує на ресурс, що не існує.
-  hint_template: :HEAD_BAK аби здійснити пошук, або пошукайте в :ARCHIVES_PAGE.
-  head_back: Поверніться на домашню сторінку
-  archives_page: архіві
+
+notification:
+  update_found: Доступна нова версія вмісту.
+  update: Оновлення
 
 # ----- Posts related labels -----
 
@@ -69,8 +70,6 @@ post:
     share_link:
       title: Скопіювати посилання
       succeed: Посилання успішно скопійовано!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Закріплено
 
 # categories page
 categories:
