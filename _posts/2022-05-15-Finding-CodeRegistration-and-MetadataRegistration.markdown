@@ -3,7 +3,6 @@ layout:	post
 title:	"Il2cppDumper Manually Finding CodeRegistration and MetadataRegistration"
 date:	2022-05-15
 categories: [Hacking, Game Hacking]
-image: /img/guide1.PNG
 tags: [Hacking, Reverse Engineering, Game Hacking, ida]
 ---
 
