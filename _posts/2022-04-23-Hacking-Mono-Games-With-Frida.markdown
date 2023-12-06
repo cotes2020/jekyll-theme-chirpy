@@ -204,5 +204,5 @@ Interceptor.attach(NewMovement_Update, {
 ```    
 ![](/img/frida6.gif)       
 
-# Ending
+# Conclusion
 As you can see, frida is a powerful tool. The hardest part of this is learning and understanding the documentation. I hope this writeup will be a guide to future hackers that are also finding problems in hacking mono games. Thanks for reading.

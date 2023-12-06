@@ -62,5 +62,5 @@ Alternatively, if in any chance, we cant find the global-metadata.dat string, eg
 You can see a function call to `sub_B31484` which is the `il2cpp::vm::Runtime::Init`. Scroll down until you see `4.0`, and you will know that you are close.     
 ![](/img/ida18.PNG)      
 
-# Ending
+# Conclusion
 There you have it. This is how you can get the `CodeRegistration` and `metadataRegistration` manually. Thanks for reading.      

@@ -16,19 +16,21 @@ First bug on the list is a remote code execution.
 
 ![](/img/1*GN1PVeEzmX0QfTk2JnjGeQ.png)Here, it get the value of the parameter date and store it to the **$s0** register.
 
-![](/img/1*rIJ_zN5nAmjLqCnY0JJ9FA.png)And down below, this $s0 register is used as an argument to \_system in the format string date -s %s making it vulnerable to remote code execution. The vulnerability exists in system\_time.cgi
+![](/img/1*rIJ_zN5nAmjLqCnY0JJ9FA.png)And down below, this $s0 register is used as an argument to `_system` in the format string date -s %s making it vulnerable to remote code execution. The vulnerability exists in `system_time.cgi`
 
 ![](/img/1*60a3wWqm26Dj3lJz0SmAXA.png)Now lets try it in burp suite, i tried sending the payload $(reboot), and
 
 ![](/img/1*ZJF8q6uv3k8NQKEdF0v3cg.png)And after sending it, my emulation rebooted, just like what we expected
 
-![](/img/1*pACdpeedKbfusj_fFB1G1A.png)### CVE-2019–9122 & CVE-2020–10214
+![](/img/1*pACdpeedKbfusj_fFB1G1A.png)
 
-Next bugs are two bugs in the same parameter. One is an rce (CVE-2019–9122) and the other one is a buffer overflow (CVE-2020–10214). While reversing, i found this parameter called ntp\_server.
+### CVE-2019–9122 & CVE-2020–10214
+
+Next bugs are two bugs in the same parameter. One is an rce (CVE-2019–9122) and the other one is a buffer overflow (CVE-2020–10214). While reversing, i found this parameter called `ntp_server`.
 
 ![](/img/1*4zdNY9G3QG70DIoJQm7Ddw.png)Here, it gets the value of the parameter and passed it to sprintf as an argument.
 
-![](/img/1*HqWqePed2EH47YFMac7t0A.png)Then, the result of the sprintf is used into \_system making it vulnerable to rce. This bug exist in ntp\_sync.cgi
+![](/img/1*HqWqePed2EH47YFMac7t0A.png)Then, the result of the sprintf is used into `_system` making it vulnerable to rce. This bug exist in `ntp_sync.cgi`
 
 ![](/img/1*RSceuQz3iF1MOwk1S1pTpg.png)Now lets try to replicate it
 

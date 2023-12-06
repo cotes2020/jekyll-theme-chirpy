@@ -9,7 +9,9 @@ tags: [Hacking, Code Review, Web]
 
   As a hacker, we are asked a million times before if we can hack into their school system and change their grades.
 
-![](/img/1*Ota1cQ3LccFNHGRf3MRL0Q.png)So i decided to take it a little further and actually try to research on school management systems. I picked one of the most famous free school management system, Gibbon. Gibbon is a free and open source school management system that is used all over the world and Here’s what i found.
+![](/img/1*Ota1cQ3LccFNHGRf3MRL0Q.png)
+
+So i decided to take it a little further and actually try to research on school management systems. I picked one of the most famous free school management system, Gibbon. Gibbon is a free and open source school management system that is used all over the world and Here’s what i found.
 
 ### CSRF
 
@@ -51,7 +53,7 @@ So i made a txt file called poc.txt and inside it is a simple <?php system(whoam
 
 ![](/img/1*i1Qf-R7fanXgdhxUYa9cVQ.png)The filename and the directory is shown in the responses. Then, i pass its path to the the q parameter in export.php
 
-[http://localhost/gibon/export.php?q=](http://localhost/gibon/export.php?q=%5Cuploads%5C2022%5C01/scratch_eyujxvxibrdess2s.txt)/uploads/2022/01/poc\_ckxsuyxkrm4pehkd.txt .
+`http://localhost/gibon/export.php?q=%5Cuploads%5C2022%5C01/scratch_eyujxvxibrdess2s.txt/uploads/2022/01/poc_ckxsuyxkrm4pehkd.txt` .
 
 I visited the link and….
 

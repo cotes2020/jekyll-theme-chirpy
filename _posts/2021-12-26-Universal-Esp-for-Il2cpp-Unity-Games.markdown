@@ -19,11 +19,13 @@ Next, we need to dump our il2cpp game. For that we will be using [il2cppdumper](
 
 ### Coding
 
-Inside the main.cpp, we will be making a new function called MainHack. We will put all our code in there. Then, we will call MainHack between ImGui::Begin(“ImGui Window”); and ImGui::End();
+Inside the main.cpp, we will be making a new function called MainHack. We will put all our code in there. Then, we will call MainHack between `ImGui::Begin(“ImGui Window”); and ImGui::End();`
 
-![](/img/1*R1KFW0EUAzyfV2ecpVeLXg.png)Like i said, i added a static variable in EnemyTurret class that points to the EnemyTurret Object. You can follow this tutorial to get the static variable. <https://guidedhacking.com/threads/how-to-get-the-address-of-a-static-variable-in-unity-games.16246/>
+![](/img/1*R1KFW0EUAzyfV2ecpVeLXg.png)
 
-![](/img/1*zq94o-TIulD1cLfJjlkt7A.png)Just a note, instead of using 0x5C, use 0xB8 since my game is 64 bit(i forgot to compile it as 32 bit) so it is twice as big.
+Like i said, i added a static variable in EnemyTurret class that points to the EnemyTurret Object. You can follow this tutorial to get the static variable. <https://guidedhacking.com/threads/how-to-get-the-address-of-a-static-variable-in-unity-games.16246/>
+
+![](/img/1*zq94o-TIulD1cLfJjlkt7A.png)Just a note, instead of using `0x5C`, use `0xB8` since my game is 64 bit(i forgot to compile it as 32 bit) so it is twice as big.
 
 ### Getting the position
 
@@ -35,11 +37,17 @@ For the address of the function, we will be using the RVA, the RVA is the offset
 
 ![](/img/1*sWThGqy1ApV8XNNw6nueJA.png)Now we have the transform object of our turret. The Transform class in unity has a property called position which is a vector 3 that holds the position of a game object. Properties on C# can be called just like a normal function call.
 
-![](/img/1*LppSULQZi-XbUZ_pe_ir6w.png)But first, we need to make our own Vector3 struct. Vector 3 is just 3 float, called x,y and z.
+![](/img/1*LppSULQZi-XbUZ_pe_ir6w.png)
 
-![](/img/1*uY4ZaEKujRAFA_VeVfpZwA.png)Now we can write our own position function and call it with the transform of our turret.
+But first, we need to make our own Vector3 struct. Vector 3 is just 3 float, called x,y and z.
 
-![](/img/1*mgG9KqvG_zAmYmUIHUt6TQ.png)### Camera And WorldToScreen
+![](/img/1*uY4ZaEKujRAFA_VeVfpZwA.png)
+
+Now we can write our own position function and call it with the transform of our turret.
+
+![](/img/1*mgG9KqvG_zAmYmUIHUt6TQ.png)
+
+### Camera And WorldToScreen
 
 In making esp, WorldToScreen is a function that transform the position of an object in a 3d world to screen coordinates. Hopefully for us, Unity has a built in worldtoscreen function in the Camera class called [WorldToScreenPoint](https://docs.unity3d.com/ScriptReference/Camera.WorldToScreenPoint.html).
 

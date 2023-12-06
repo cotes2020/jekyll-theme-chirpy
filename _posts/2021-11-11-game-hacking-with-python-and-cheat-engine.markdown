@@ -46,7 +46,9 @@ Now for the next step, we have to guess. Which of these address do actually poin
 
 ![](/img/1*U4DU5f9ukpkoY0psUGNOnw.png)Now we are 100% sure that this pointer point to the health address in the game. If we double click it, we can see that it is a multilevel pointer
 
-![](/img/1*MzKcSOFb-POF6TQ8qlFE9w.png)### Python Scripting
+![](/img/1*MzKcSOFb-POF6TQ8qlFE9w.png)
+
+### Python Scripting
 
 Now in this part, we will be accessing this pointer and we will access the memory address it points to and modify it using python. We will be using pymeow for this writeup since from all the libraries i tested, this is the only one that worked. You can download pymeow here <https://github.com/qb-0/PyMeow>
 
@@ -54,7 +56,7 @@ So we will make a new script and we will start by importing the library
 
 After that, we can start coding. We will follow the cheatsheet of pymeow for <https://github.com/qb-0/PyMeow/blob/master/cheatsheet.txt>
 
-There is 2 way to get the process, process\_by\_name, and process\_by\_pid. We will be using process\_by\_name since it is easier.
+There is 2 way to get the process, `process_by_name`, and `process_by_pid`. We will be using `process_by_name` since it is easier.
 
 ![](/img/1*xg42HKZNO4eK7oyx7FAkIA.png)In there we passed the name of the program ULTRAKILL.exe.
 
@@ -70,15 +72,15 @@ Now, we have to get the base address of the pointer.
 
 ![](/img/1*R0ERdHcI5N8AIhiSSWS9pQ.png)Here, we can see that it has 7 offsets. We can see that below, the first address is 0x7ff920af1820. Then, the first offset came which is 140. What it does is it adds 0x140 bytes to the first address which is 0x7ff920af1820 and then it will get the value in that address with offset. Now that address points to another pointer and again, we will add 0x1F0 bytes into that pointer until we get to the last part which is the actual memory address of the user health. Now, lets implement it in our code.
 
-pymeow has a method pointer\_chain but its not working for me so we will implement our own function instead.
+pymeow has a method `pointer_chain` but its not working for me so we will implement our own function instead.
 
-![](/img/1*Zu9Xhv6I5LyasNQKT_eVRQ.png)I came up with a function that i called read\_offsets. It takes 3 arguments, the first one is the proc, which is the process, the second is the base address, the third is the array of offsets. In line 4, it will get the pointer in the base address. In line 6, it makes a new variable called current\_pointer from the basepoint variable. Then it will loop through every offsets except for the last character, what it does is, it will read the pointer in the current\_pointer+offset and set the value of current\_pointer to it for the next iteration. Then in the last part, it will return the final pointer.
+![](/img/1*Zu9Xhv6I5LyasNQKT_eVRQ.png)I came up with a function that i called `read_offsets`. It takes 3 arguments, the first one is the proc, which is the process, the second is the base address, the third is the array of offsets. In line 4, it will get the pointer in the base address. In line 6, it makes a new variable called `current_pointer` from the basepoint variable. Then it will loop through every offsets except for the last character, what it does is, it will read the pointer in the `current_pointer+offset` and set the value of `current_pointer` to it for the next iteration. Then in the last part, it will return the final pointer.
 
-We use read\_int64 since we are working on a 64 bit program and memory address in 64 bit programs are 8 bytes. Now lets try it if it works
+We use `read_int64` since we are working on a 64 bit program and memory address in 64 bit programs are 8 bytes. Now lets try it if it works
 
 ![](/img/1*qGmb0A-1pwMRo8gxG2IEkQ.png)I mapped out the offsets into an array in my code. Now lets run it.
 
-![](/img/1*iv3P0RXP3NTplFPidT71PQ.png)We can see that it works, it obtained the value 1337 which is the value we set the health earlier in in cheat engine. Now lets try modifying that address using write\_int.
+![](/img/1*iv3P0RXP3NTplFPidT71PQ.png)We can see that it works, it obtained the value 1337 which is the value we set the health earlier in in cheat engine. Now lets try modifying that address using `write_int`.
 
 ![](/img/1*TeUQInQDOkpGjErKO-ckHg.png)Now if we get back to the game,
 
@@ -86,7 +88,7 @@ We use read\_int64 since we are working on a 64 bit program and memory address i
 
 This is the end of my writeup. I hope this resource will help for future hackers that are interested on game hacking with python. Thanks for reading
 
-Follow me on twitter: [https://twitter.com/tomorrowisnew\_](https://twitter.com/tomorrowisnew_)
+Follow me on twitter: [https://twitter.com/tomorrowisnew\__](https://twitter.com/tomorrowisnew__)
 
 Join the discord server: <https://discord.gg/bugbounty>
 

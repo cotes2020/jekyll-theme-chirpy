@@ -7,7 +7,7 @@ categories: [Hacking, Game Hacking]
 tags: [Hacking, Game Hacking, Reverse Engineering, Game Hacking]
 ---
 
-  ### Introduction
+### Introduction
 
 Unlike native games that is made with c++/c, games made with c# are easier since c# is not compiled and the metadata are not completely lost. In this writeup, i will show you how to hack Unity Games compiled with mono, or any other games that is made with .net framework.
 
@@ -17,7 +17,9 @@ For this writeup, i will be hacking the game ultrakill again. The tool we will b
 
 So to start of, we need to open up the dlls of ultrakill to dnspy, these dll’s can be found in ULTRAKILL\_Data\Managed
 
-![](/img/1*bhI11zPql_CeblXdyAKDWg.png)Now, we have full access to the code of the game. After some reversing, i found out that the player class is called NewMovement
+![](/img/1*bhI11zPql_CeblXdyAKDWg.png)
+
+Now, we have full access to the code of the game. After some reversing, i found out that the player class is called NewMovement
 
 ![](/img/1*OpU7pF5jFRJnsPXPmUYReA.png)On Unity, every class has a function called Start() which is called when a new object of the class is made. In the start of NewMovement, we can see various variables being initialized
 

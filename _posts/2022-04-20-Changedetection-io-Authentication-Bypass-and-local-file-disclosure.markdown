@@ -96,5 +96,4 @@ requests.exceptions.InvalidSchema: No connection adapters were found for 'file:/
 # POC
 ![](/img/changedetection-io-2.gif)
 
-# OUTRO
-This is the end of the writeup. This has been fixed in the latest version. Thanks for reading.
+Thanks for reading.

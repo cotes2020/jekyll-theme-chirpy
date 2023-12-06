@@ -30,6 +30,6 @@ I tried achieving lfi with it, unfortunately, by default, requests.get of python
 This is the end of the writeup, thanks for reading. Thank you to the maintainer of bookwyrm for being cooperative and responsive.
 
 Join The Bounty Hunter Discord Server: <https://discord.gg/bugbounty>  
-Add me on Twitter: [https://twitter.com/tomorrowisnew\_](https://twitter.com/tomorrowisnew_)
+Add me on Twitter: [https://twitter.com/tomorrowisnew\_\_](https://twitter.com/tomorrowisnew__)
 
   
