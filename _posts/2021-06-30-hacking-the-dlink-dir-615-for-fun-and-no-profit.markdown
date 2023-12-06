@@ -55,6 +55,5 @@ And there you have it, my writeup of a potential code injection vulnerability in
 
 PS. I assumed that what ***nvram\_safe\_get*** is doing is getting the value of a variable from nvram because it is close to the function ***nvram\_get*** which get the value of the string you provide to it from the nvram. You can see it in this writeup. <https://elongl.github.io/exploitation/2021/05/30/pwning-home-router.html> . Thanks again for reading.
 
-Join the Bounty Hunter Discord Server: <https://discord.gg/bugbounty>
 
   
