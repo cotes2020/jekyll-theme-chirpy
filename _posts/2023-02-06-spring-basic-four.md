@@ -1,7 +1,7 @@
 ---
-title: Spring Basic[스프링핵심기술]
+title: Spring Basic[스프링 컨테이너]
 date: 2023-02-06 22:12:00 +0800
-categories: [Spring-basic]
+categories: [Spring-Basic, 컨테이너]
 tags: [Spring]
 ---
 

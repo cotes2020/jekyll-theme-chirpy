@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[스프링핵심기술]
 date: 2023-02-02 20:12:00 +0800
-categories: [Spring-basic]
+categories: [Spring-Basic, 스프링핵심기술]
 tags: [Spring]
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Spring basic [프로젝트 설정]
+title: Spring Basic [프로젝트 설정]
 date: 2023-01-30 19:43:00 +0800
-categories: [Spring-Basic]
+categories: [Spring-Basic, 프로젝트 설정]
 tags: [Spring]
 ---
 
