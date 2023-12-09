@@ -424,12 +424,11 @@ Where `Platform` is the lowercase of the platform name, and `ID` is the video ID
 
 The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
 
-| Video URL                                                                                          | Platform  | ID            |
-|----------------------------------------------------------------------------------------------------|-----------|:--------------|
-| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube` | `H-B46URT4mg` |
-| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`  | `1634779211`  |
-
-
+| Video URL                                                                                          | Platform   | ID             |
+| -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
+| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
+| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
+| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
 
 ## Learn More
 
