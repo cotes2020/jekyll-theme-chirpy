@@ -1,10 +1,9 @@
 ## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
 
-<author_id>:
-   name: SMASMC
-   twitter: SMASMC
+SMASMC:
+  name: SMASMC
+  twitter: SMASMC
   url: https://smasmc.github.io/
-
 
 cotes:
   name: Cotes Chung
