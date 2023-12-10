@@ -1,17 +1,17 @@
 ## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
 
-author_id:
+<author_id>:
    name: SMASMC
    twitter: SMASMC
   url: https://smasmc.github.io/
 
 
 cotes:
-  name: SMASMC
-  twitter: SMASMC
-  url: https://smasmc.github.io/
+  name: Cotes Chung
+  twitter: cotes2020
+  url: https://github.com/cotes2020/
 
 sille_bille:
-  name: SMASMC
-  twitter: SMASMC
-  url: https://smasmc.github.io/
+  name: Dinesh Prasanth Moluguwan Krishnamoorthy
+  twitter: dinesh_MKD
+  url: https://github.com/SilleBille/
