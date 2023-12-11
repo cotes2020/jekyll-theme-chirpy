@@ -1,0 +1,72 @@
+---
+title: "[BOJ]Z - 1074 (S1)"
+author: kwon
+date: 2022-03-10T14:00:00 +0900
+categories: [boj, silver]
+tags: [divide and conquer, recursion]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 0.5 초 | 512 MB |
+
+
+# 문제
+
+한수는 크기가 $2^N×2^N$인 2차원 배열을 Z모양으로 탐색하려고 한다. 예를 들어, 2×2배열을 왼쪽 위칸, 오른쪽 위칸, 왼쪽 아래칸, 오른쪽 아래칸 순서대로 방문하면 Z모양이다.
+
+N > 1인 경우, 배열을 크기가 $2^{N-1}×2^{N-1}$로 4등분 한 후에 재귀적으로 순서대로 방문한다.
+
+다음 예는 22 × 2 크기의 배열을 방문한 순서이다.
+
+![](https://u.acmicpc.net/adc7cfae-e84d-4d5c-af8e-ee011f8fff8f/Screen%20Shot%202020-12-02%20at%208.11.17%20AM.png)
+
+N이 주어졌을 때, r행 c열을 몇 번째로 방문하는지 출력하는 프로그램을 작성하시오.
+
+다음은 N=3일 때의 예이다.
+
+![](https://u.acmicpc.net/d3e84bb7-9424-4764-ad3a-811e7fcbd53f/Screen%20Shot%202020-12-30%20at%2010.50.47%20PM.png)
+
+# 입력
+
+첫째 줄에 정수 N, r, c가 주어진다.
+
+# 출력
+
+r행 c열을 몇 번째로 방문했는지 출력한다.
+
+# 제한
+
+- $1≤N≤15$
+- $0≤r,c<2^N$
+
+# 풀이
+
+## 코드
+
+```python
+import sys
+N, y, x = map(int, sys.stdin.readline().split())
+
+def position(N, x, y, base=0):
+    if N == 0 or (x <= 1 and y <= 1):
+        print(base)
+        return base
+    
+    num = 2 ** (N - 1)
+    if x <= num and y <= num:
+        position(N-1, x, y, base)
+        
+    elif x > num and y <= num:
+        position(N-1, x - num, y, 4 ** (N - 1) + base)
+    
+    elif x <= num and y > num:
+        position(N-1, x, y - num, 2 * 4 ** (N - 1) + base)
+        
+    elif x > num and y > num:
+        position(N-1, x - num, y - num, 3 * 4 ** (N - 1) + base)
+        
+position(N, x + 1, y + 1)
+```
