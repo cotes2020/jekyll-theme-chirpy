@@ -551,7 +551,8 @@ main {
 
   @extend %rounded;
 
-  &.youtube {
+  &.youtube,
+  &.bilibili {
     aspect-ratio: 16 / 9;
   }
 
