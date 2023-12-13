@@ -3,9 +3,6 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
-
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
@@ -13,11 +10,21 @@
 - type: rss
   icon: "fas fa-rss"
   noblank: true
+
+- type: mastodon
+  icon: "fab fa-mastodon"   # icons powered by <https://fontawesome.com/>
+  url:  "https://mastodon.social/@sadlylink"                 # Fill with your Mastodon account page, rel="me" will be applied for verification
+
+- type: gitlab
+  icon: "fa-brands fa-gitlab fa-lg"
+  url: "https://gitlab.com/sadlylink"
+
+- type: discord
+  icon: "fa-brands fa-discord"
+  url: "https://discord.com/users/786255763307757619"
+
 # Uncomment and complete the url below to enable more contact options
 #
-# - type: mastodon
-#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
 #
 # - type: linkedin
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
