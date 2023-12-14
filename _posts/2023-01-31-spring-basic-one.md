@@ -1,10 +1,9 @@
 ---
-title: "Spring Basic[스프링이란?]"
+title: Spring Basic[스프링이란?]
 date: 2023-01-31 17:12:00 +0800
-categories: ["Spring-Basic", "스프링이란?"]
-tags: ["Spring"]
+categories: [Spring-Basic, 스프링이란?]
+tags: [Spring]
 ---
-
 
 # Spring 프레임워크
 
