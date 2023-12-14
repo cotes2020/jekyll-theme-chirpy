@@ -1,9 +1,10 @@
 ---
 title: Spring Basic[스프링이란?]
 date: 2023-01-31 17:12:00 +0800
-categories: [스프링이란?]
+categories: [Spring-Basic, 스프링이란?]
 tags: [Spring]
 ---
+
 # Spring 프레임워크
 
 ## 백엔드 개발을 위한 Spring 선택
