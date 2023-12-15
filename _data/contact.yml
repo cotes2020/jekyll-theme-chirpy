@@ -1,12 +1,4 @@
 #  The contact options.
-- 
-  type: mathstodon
-  icon: 'fab fa-mastodon'
-  url: 'https://mathstodon.xyz/@Booodaness'
--
-  type: reddit
-  icon: 'fab fa-reddit'
-  url: 'https://www.reddit.com/user/Booodaness'
 -
   type: github
   icon: 'fab fa-github'
@@ -18,6 +10,10 @@
   type: zotero
   icon: 'fas fa-book'
   url: https://www.zotero.org/booodaness
+- 
+  type: mathstodon
+  icon: 'fab fa-mastodon'
+  url: 'https://mathstodon.xyz/@Booodaness'
 -
   type: email
   icon: 'fas fa-envelope'

@@ -1,6 +1,7 @@
 ---
 title: CV
-icon: far fa-user
+icon: fas fa-user-graduate
 order: 7
-redirect_to: https://www.overleaf.com/read/trbwxbqkkmdp#536ac7
+blank: true
+redirect_to: https://booodaness.github.io/tempus-spatium/assets/pdf/cv.pdf
 ---
