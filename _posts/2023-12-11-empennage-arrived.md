@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Empennage arrived!!"
-categories: [Empennage]
-tags: [inventory]
+categories: [Empennage, ~Inventory]
+tags: [inventory, empennage, dimple_dies]
 minutes: 180
 mermaid: true
 ---
