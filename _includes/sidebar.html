@@ -2,26 +2,6 @@
   The Side Bar
 -->
 
-<<<<<<< HEAD
-<div id="sidebar" class="d-flex flex-column align-items-end" lang="{{lang}}">
-  <div class="profile-wrapper text-center">
-    <div id="avatar">
-      <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
-        {% capture avatar_url %}
-          {%- if site.avatar contains '://' -%}
-            {{ site.avatar }}
-          {%- elsif site.img_cdn != '' and site.img_cdn -%}
-            {{ site.avatar | prepend: site.img_cdn }}
-          {%- else -%}
-            {{ site.avatar | relative_url }}
-          {%- endif -%}
-        {% endcapture %}
-        <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
-      </a>
-    </div>
-
-    <div class="site-title mt-3">
-=======
 <div id="sidebar" class="d-flex flex-column align-items-end">
   <div class="profile-wrapper text-center">
     <div id="avatar">
@@ -42,7 +22,6 @@
     </div>
 
     <div class="site-title">
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
     <div class="site-subtitle font-italic">{{ site.tagline }}</div>
@@ -55,11 +34,7 @@
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
-<<<<<<< HEAD
-        <span>{{ site.data.locales[lang].tabs.home | upcase }}</span>
-=======
         <span>{{ site.data.locales[site.lang].tabs.home | upcase }}</span>
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       </a>
     </li>
     <!-- the real tabs -->
@@ -69,41 +44,13 @@
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
         {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
-<<<<<<< HEAD
-        <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-=======
         <span>{{ site.data.locales[site.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       </a>
     </li> <!-- .nav-item -->
     {% endfor %}
 
   </ul> <!-- ul.nav.flex-column -->
 
-<<<<<<< HEAD
-  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center">
-
-    {% for entry in site.data.contact %}
-      {% capture url %}
-        {%- if entry.type == 'github' -%}
-          https://github.com/{{ site.github.username }}
-        {%- elsif entry.type == 'twitter' -%}
-          https://twitter.com/{{ site.twitter.username }}
-        {%- elsif entry.type == 'email' -%}
-          {% assign email = site.social.email | split: '@' %}
-          javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
-        {%- elsif entry.type == 'rss' -%}
-          {{ "/feed.xml" | relative_url }}
-        {%- else -%}
-          {{ entry.url }}
-        {%- endif -%}
-      {% endcapture %}
-
-      {% if url %}
-      <a href="{{ url }}" aria-label="{{ entry.type }}"
-        {% unless site.theme_mode %}class="order-{{ forloop.index | plus: 2 }}"{% endunless %}
-        {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
-=======
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
     {% unless site.theme_mode %}
@@ -148,26 +95,12 @@
 
         {% unless link_types == empty %}rel="{{ link_types }}"{% endunless %}>
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         <i class="{{ entry.icon }}"></i>
       </a>
       {% endif %}
 
     {% endfor %}
 
-<<<<<<< HEAD
-    {% unless site.theme_mode %}
-      {% if site.data.contact.size > 0 %}
-        <span class="icon-border order-2"></span>
-      {% endif %}
-
-      <span id="mode-toggle-wrapper" class="order-1">
-        {% include mode-toggle.html %}
-      </span>
-    {% endunless %}
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   </div> <!-- .sidebar-bottom -->
 
 </div><!-- #sidebar -->

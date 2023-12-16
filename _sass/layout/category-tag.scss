@@ -3,11 +3,7 @@
 */
 
 .dash {
-<<<<<<< HEAD
-  margin: 0 .5rem .6rem .5rem;
-=======
   margin: 0 0.5rem 0.6rem 0.5rem;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   border-bottom: 2px dotted var(--dash-color);
 }
 
@@ -17,48 +13,26 @@
     line-height: 1.5rem;
     padding: 0.6rem 0;
 
-<<<<<<< HEAD
-    &::before { // dot
-      background: #999;
-=======
     /* dot */
     &::before {
       background: #999999;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       width: 5px;
       height: 5px;
       border-radius: 50%;
       display: block;
-<<<<<<< HEAD
-      content: "";
-=======
       content: '';
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       position: relative;
       top: 0.6rem;
       margin-right: 0.5rem;
     }
 
-<<<<<<< HEAD
-    > a { /* post's title */
-=======
     /* post's title */
     > a {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       @extend %no-bottom-border;
 
       font-size: 1.1rem;
     }
 
-<<<<<<< HEAD
-    > span:last-child {
-      white-space: nowrap;
-    } /* post's date */
-  }
-}
-
-#page-tag h1 > i { // tag icon
-=======
     /* post's date */
     > span:last-child {
       white-space: nowrap;
@@ -68,7 +42,6 @@
 
 /* tag icon */
 #page-tag h1 > i {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   font-size: 1.2rem;
 }
 
@@ -82,11 +55,7 @@
   a:hover {
     @extend %link-hover;
 
-<<<<<<< HEAD
-    margin-bottom: -1px; // Avoid jumping
-=======
     margin-bottom: -1px; /* Avoid jumping */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   }
 }
 
@@ -95,14 +64,9 @@
   #page-tag {
     ul > li {
       &::before {
-<<<<<<< HEAD
-        margin: 0 .5rem;
-      }
-=======
         margin: 0 0.5rem;
       }
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       > a {
         white-space: nowrap;
         overflow: hidden;

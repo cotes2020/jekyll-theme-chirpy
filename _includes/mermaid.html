@@ -2,16 +2,6 @@
   mermaid-js loader
 -->
 
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js"></script>
-<script>
-  $(function() {
-    let initTheme = "default";
-
-    if ($("html[mode=dark]").length > 0
-      || ($("html[mode]").length == 0
-        && window.matchMedia("(prefers-color-scheme: dark)").matches ) ) {
-=======
 <script src="{{ site.data.assets[origin].mermaid.js | relative_url }}"></script>
 
 <script>
@@ -47,7 +37,6 @@
     if ($("html[data-mode=dark]").length > 0
       || ($("html[data-mode]").length == 0
         && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       initTheme = "dark";
     }
 
@@ -55,17 +44,6 @@
       theme: initTheme  /* <default|dark|forest|neutral> */
     };
 
-<<<<<<< HEAD
-    /* Markdown converts to HTML */
-    $("pre").has("code.language-mermaid").each(function() {
-      let svgCode = $(this).children().html();
-      $(this).addClass("unloaded");
-      $(this).after(`<div class=\"mermaid\">${svgCode}</div>`);
-    });
-
-    mermaid.initialize(mermaidConf);
-  });
-=======
     /* Create mermaid tag */
     $("pre").has("code.language-mermaid").each(function () {
       let svgCode = $(this).children().html();
@@ -78,5 +56,4 @@
     window.addEventListener("message", updateMermaid);
   })();
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 </script>

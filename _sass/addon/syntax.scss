@@ -2,34 +2,6 @@
 * The syntax highlight.
 */
 
-<<<<<<< HEAD
-@import "colors/light-syntax";
-@import "colors/dark-syntax";
-
-html:not([mode]),
-html[mode=light] {
-  @include light-syntax;
-}
-
-html[mode=dark] {
-  @include dark-syntax;
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([mode]),
-  html[mode=dark] {
-    @include dark-syntax;
-  }
-
-  html[mode=light] {
-    @include light-syntax;
-  }
-}
-
-/* -- Codes Snippet -- */
-
-$code-radius: 6px;
-=======
 @import 'colors/light-syntax';
 @import 'colors/dark-syntax';
 
@@ -58,39 +30,19 @@ html {
 }
 
 /* -- code snippets -- */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 %code-snippet-bg {
   background: var(--highlight-bg-color);
 }
 
-<<<<<<< HEAD
-%code-snippet-radius {
-  border-radius: $code-radius;
-}
-
-%code-snippet-padding {
-  padding: 1.2rem;
-}
-
-div > pre {
-  @extend %code-snippet-bg;
-  @extend %code-snippet-radius;
-  @extend %code-snippet-padding;
-=======
 %code-snippet-padding {
   padding-left: 1rem;
   padding-right: 1.5rem;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 
 .highlighter-rouge {
   @extend %code-snippet-bg;
-<<<<<<< HEAD
-  @extend %code-snippet-radius;
-=======
   @extend %rounded;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   color: var(--highlighter-rouge-color);
   margin-top: 0.5rem;
@@ -98,11 +50,7 @@ div > pre {
 }
 
 .highlight {
-<<<<<<< HEAD
-  @extend %code-snippet-radius;
-=======
   @extend %rounded;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   @extend %code-snippet-bg;
 
   @at-root figure#{&} {
@@ -110,11 +58,8 @@ div > pre {
   }
 
   overflow: auto;
-<<<<<<< HEAD
-=======
   padding-top: 0.5rem;
   padding-bottom: 1rem;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   pre {
     margin-bottom: 0;
@@ -124,97 +69,38 @@ div > pre {
   }
 
   table {
-<<<<<<< HEAD
-    padding: 0;
-    border: 0;
-    td pre {
-      overflow: visible;  /* Fixed iOS safari overflow-x */
-=======
     td pre {
       overflow: visible; /* Fixed iOS safari overflow-x */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       word-break: normal; /* Fixed iOS safari linenos code break */
     }
   }
 
-<<<<<<< HEAD
-  td {
-    padding: 0;
-    border: 0;
-  }
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   .lineno {
     padding-right: 0.5rem;
     min-width: 2.2rem;
     text-align: right;
     color: var(--highlight-lineno-color);
     -webkit-user-select: none;
-<<<<<<< HEAD
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-  }
-
-  /* set the dollar sign to non-selectable */
-  .gp {
-    user-select: none;
-  }
-
-} //.highlight
-=======
     -moz-user-select: none;
     -o-user-select: none;
     -ms-user-select: none;
     user-select: none;
   }
 } /* .highlight */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 code {
   -webkit-hyphens: none;
   -ms-hyphens: none;
-<<<<<<< HEAD
-  -moz-hyphens: none;
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   hyphens: none;
 
   &.highlighter-rouge {
     font-size: $code-font-size;
     padding: 3px 5px;
-<<<<<<< HEAD
-=======
     word-break: break-word;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     border-radius: 4px;
     background-color: var(--inline-code-bg);
   }
 
-<<<<<<< HEAD
-  @at-root a > &.highlighter-rouge {
-    padding-bottom: 0; // show link's underlinke
-    color: inherit;
-  }
-
-  @at-root a:hover > &.highlighter-rouge {
-    border-bottom: none;
-  }
-
-  blockquote &.highlighter-rouge {
-    color: inherit;
-  }
-}
-
-td.rouge-code {
-  padding: 1.2rem 1.5rem 1.2rem 1rem;
-
-  // Prevent some browser extends from
-  // changing the URL string of code block.
-=======
   &.filepath {
     background-color: inherit;
     color: var(--filepath-text-color);
@@ -247,32 +133,16 @@ td.rouge-code {
     Prevent some browser extends from
     changing the URL string of code block.
   */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   a {
     color: inherit !important;
     border-bottom: none !important;
     pointer-events: none;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
   &[class^='highlighter-rouge'],
-<<<<<<< HEAD
-  &.language-plaintext.highlighter-rouge,
-  &.language-console.highlighter-rouge,
-  &.language-terminal.highlighter-rouge,
-  &.nolineno {
-    pre.lineno {
-      display: none;
-    }
-    td.rouge-code {
-      @extend %code-snippet-padding;
-=======
   &.nolineno,
   &.language-plaintext.highlighter-rouge,
   &.language-console.highlighter-rouge,
@@ -283,59 +153,11 @@ div {
 
     td.rouge-code {
       padding-left: 1.5rem;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
   }
 }
 
 .code-header {
-<<<<<<< HEAD
-  background: var(--code-header-bg);
-  border-top-left-radius: $code-radius;
-  border-top-right-radius: $code-radius;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  line-height: 1.85rem;
-
-  // text data
-  &::before {
-    content: attr(text-data);
-    color: var(--lang-badge-color);
-    padding-left: 1em;
-
-    // language
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-
-    // file name
-    @at-root [file] #{&} {
-      font-size: 0.85rem;
-      text-transform: none;
-    }
-  }
-
-  // clipboard
-  button {
-    border: 1px solid var(--code-header-bg);
-    border-radius: $code-radius;
-    padding: 0;
-    width: 1.95rem;
-    background-color: inherit;
-    color: var(--highlight-lineno-color);
-
-    @extend %cursor-pointer;
-
-    &[timeout] {
-      color: var(--clipboard-checked-color);
-      border-color: var(--clipboard-checked-color);
-    }
-
-    &:not([timeout]):hover {
-      background-color: gray;
-      color: white;
-=======
   @extend %no-cursor;
 
   $code-header-height: 2.25rem;
@@ -410,21 +232,12 @@ div {
       i {
         color: var(--clipboard-checked-color);
       }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
 
     &:focus {
       outline: none;
     }
 
-<<<<<<< HEAD
-    i {
-      font-size: 0.9rem;
-    }
-
-  }
-
-=======
     &:not([timeout]):hover {
       background-color: rgba(128, 128, 128, 0.37);
 
@@ -433,7 +246,6 @@ div {
       }
     }
   }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 
 @media all and (max-width: 576px) {
@@ -443,13 +255,10 @@ div {
 
       border-radius: 0;
 
-<<<<<<< HEAD
-=======
       .highlight {
         padding-left: 0.25rem;
       }
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       .code-header {
         border-radius: 0;
         padding-left: 0.4rem;

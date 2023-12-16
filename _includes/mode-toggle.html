@@ -2,16 +2,6 @@
   Switch the mode between dark and light.
 -->
 
-<<<<<<< HEAD
-<i class="mode-toggle fas fa-adjust"></i>
-
-<script type="text/javascript">
-
-  class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
-=======
 <script type="text/javascript">
   class ModeToggle {
     static get MODE_KEY() { return "mode"; }
@@ -19,7 +9,6 @@
     static get DARK_MODE() { return "dark"; }
     static get LIGHT_MODE() { return "light"; }
     static get ID() { return "mode-toggle"; }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
     constructor() {
       if (this.hasMode) {
@@ -34,26 +23,15 @@
         }
       }
 
-<<<<<<< HEAD
-      var self = this;
-
-      /* always follow the system prefers */
-      this.sysDarkPrefers.addListener(function() {
-=======
       let self = this;
 
       /* always follow the system prefers */
       this.sysDarkPrefers.addEventListener('change', () => {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         if (self.hasMode) {
           if (self.isDarkMode) {
             if (!self.isSysDarkPrefer) {
               self.setDark();
             }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
           } else {
             if (self.isSysDarkPrefer) {
               self.setLight();
@@ -63,47 +41,17 @@
           self.clearMode();
         }
 
-<<<<<<< HEAD
-        self.updateMermaid();
-      });
-
-    } /* constructor() */
-
-
-    setDark() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
-
-    setLight() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
-
-    clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_KEY);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-=======
         self.notify();
       });
     } /* constructor() */
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
 
     get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
 
-<<<<<<< HEAD
-    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
-=======
     get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
 
     get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
     get hasMode() { return this.mode != null; }
 
@@ -111,35 +59,13 @@
 
     /* get the current mode on screen */
     get modeStatus() {
-<<<<<<< HEAD
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer) ) {
-=======
       if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         return ModeToggle.DARK_MODE;
       } else {
         return ModeToggle.LIGHT_MODE;
       }
     }
 
-<<<<<<< HEAD
-    updateMermaid() {
-      if (typeof mermaid !== "undefined") {
-        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
-        let config = { theme: expectedTheme };
-
-        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
-        $(".mermaid").each(function() {
-          let svgCode = $(this).prev().children().html();
-          $(this).removeAttr("data-processed");
-          $(this).html(svgCode);
-        });
-
-        mermaid.initialize(config);
-        mermaid.init(undefined, ".mermaid");
-      }
-=======
     setDark() {
       $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
       sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
@@ -161,7 +87,6 @@
         direction: ModeToggle.ID,
         message: this.modeStatus
       }, "*");
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
 
     flipMode() {
@@ -172,10 +97,6 @@
           } else {
             this.setLight();
           }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         } else {
           if (this.isDarkMode) {
             this.clearMode();
@@ -183,10 +104,6 @@
             this.setDark();
           }
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       } else {
         if (this.isSysDarkPrefer) {
           this.setLight();
@@ -195,26 +112,9 @@
         }
       }
 
-<<<<<<< HEAD
-      this.updateMermaid();
-
-    } /* flipMode() */
-
-  } /* ModeToggle */
-
-  let toggle = new ModeToggle();
-
-  $(".mode-toggle").click(function() {
-
-    toggle.flipMode();
-
-  });
-
-=======
       this.notify();
     } /* flipMode() */
   } /* ModeToggle */
 
   const modeToggle = new ModeToggle();
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 </script>

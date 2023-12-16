@@ -277,10 +277,6 @@ Before you start sending logs to Cortex™ Data Lake, you must:
 ![Screen Shot 2020-10-28 at 11.57.02](https://i.imgur.com/Ua3Wu9a.png)
 
 ![Screen Shot 2020-10-28 at 11.57.13](https://i.imgur.com/HpiOzwA.png)
-<<<<<<< HEAD
-![Screen Shot 2020-10-28 at 11.58.04](undefined)
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ![Screen Shot 2020-10-28 at 11.58.14](https://i.imgur.com/j7ssAHM.png)
 

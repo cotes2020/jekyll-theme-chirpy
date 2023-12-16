@@ -12,19 +12,11 @@ import (
 
 // // =========== Custom Metric ===========
 // var (
-<<<<<<< HEAD
-// 	RpcDurations        = medusaprometheus.RpcDurations
-// 	cpuTemp             = medusaprometheus.CpuTemp
-// 	hdFailures          = medusaprometheus.HdFailures
-// 	get_query_url_error = medusaprometheus.GET_QUEUE_URL_ERR
-// 	get_client_error    = medusaprometheus.GET_CLIENTS_ERR
-=======
 // 	RpcDurations        = My_APPprometheus.RpcDurations
 // 	cpuTemp             = My_APPprometheus.CpuTemp
 // 	hdFailures          = My_APPprometheus.HdFailures
 // 	get_query_url_error = My_APPprometheus.GET_QUEUE_URL_ERR
 // 	get_client_error    = My_APPprometheus.GET_CLIENTS_ERR
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 // )
 
 // =========== Exporter ===========
@@ -89,37 +81,22 @@ func (c *ClusterManager) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.RAMUsageDesc
 }
 
-<<<<<<< HEAD
-// =========== Medusa Prometheus Step up ===========
-var (
-	medusa_Prometheus_Port = ":8080"
-	medusa_Prometheus_Path = "/metrics"
-=======
 // =========== My_APP Prometheus Step up ===========
 var (
 	My_APP_Prometheus_Port = ":8080"
 	My_APP_Prometheus_Path = "/metrics"
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 )
 
 func SetupPrometheus() []string {
 	log.Println("+++ SetupPrometheus:")
 	p_port := os.Getenv("MP_PORT")
 	if p_port == "" {
-<<<<<<< HEAD
-		p_port = medusa_Prometheus_Port
-=======
 		p_port = My_APP_Prometheus_Port
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 		// p_port = ":8080"
 	}
 	p_path := os.Getenv("MP_PATH")
 	if p_path == "" {
-<<<<<<< HEAD
-		p_path = medusa_Prometheus_Path
-=======
 		p_path = My_APP_Prometheus_Path
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 		// p_path = "/metrics"
 	}
 	config := []string{p_port, p_path}
@@ -131,22 +108,14 @@ func SetupPrometheus() []string {
 
 func SetupMetricCollector() http.Handler {
 
-<<<<<<< HEAD
-	medusa_core_01 := NewClusterManager("medusa_core_01")
-=======
 	My_APP_core_01 := NewClusterManager("My_APP_core_01")
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 	// Create non-global registry.
 	reg := prometheus.NewRegistry()
 
 	// RegisterMetric
 	log.Println("+++ RegisterMetric: xxxxxxxxx")
-<<<<<<< HEAD
-	reg.MustRegister(medusa_core_01)
-=======
 	reg.MustRegister(My_APP_core_01)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 	gatherers := prometheus.Gatherers{
 		// prometheus.DefaultGatherer,

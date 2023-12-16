@@ -257,11 +257,7 @@ The certificates are created and formatted based on the <font color=red> X.509 s
 
 The following figure shows the contents of X.509 version 3 certificates
 
-<<<<<<< HEAD
-<img src="https://sites.google.com/site/ddmwsst/digital-certificates/x509v3.gif?attredirects=0" width="450">
-=======
 <!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/x509v3.gif?attredirects=0" width="450"> -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 Certificates that conform to X.509 contain the following data:
 - <font color=red> _Version_ </font>
@@ -505,11 +501,7 @@ Let us check a real certificate, its details and its chain.
 
 view certificate link
 
-<<<<<<< HEAD
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/view-cert.png?attredirects=0)
-=======
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/view-cert.png?attredirects=0) -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
@@ -518,22 +510,14 @@ view certificate link
 
 
 
-<<<<<<< HEAD
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-gen.png?attredirects=0)
-=======
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-gen.png?attredirects=0) -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 - details > "Show" dropdown filters them for better viewing.
 - seeing the subject, SBI, and its detail Distinguished Name (DN). On the right issuer's DN.
 
 
-<<<<<<< HEAD
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-det-ver1.png?attredirects=0)
-=======
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-det-ver1.png?attredirects=0) -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
@@ -543,15 +527,9 @@ view certificate link
 - click to download the CRL
 
 
-<<<<<<< HEAD
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-det-ext.png?attredirects=0)
-
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-revo-list.png?attredirects=0)
-=======
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-det-ext.png?attredirects=0) -->
 
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-revo-list.png?attredirects=0) -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
@@ -562,26 +540,16 @@ view certificate link
   - "VeriSign Class 3 Extended Validation SSL SGC CA" is a Issuing CA.
 
 
-<<<<<<< HEAD
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-path.png?attredirects=0)
-=======
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-path.png?attredirects=0) -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 see Issuer CA's certificate.
 - for root certificate the "Issued to" or "Subject" and "Issued by" or "Issuer" fields are same.
 - So this is a self signed certificate.
 
-<<<<<<< HEAD
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/issuer-cert.png?attredirects=0)
-
-![link](https://sites.google.com/site/ddmwsst/digital-certificates/root-cert.png?attredirects=0)
-=======
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/issuer-cert.png?attredirects=0) -->
 
 <!-- ![link](https://sites.google.com/site/ddmwsst/digital-certificates/root-cert.png?attredirects=0) -->
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 

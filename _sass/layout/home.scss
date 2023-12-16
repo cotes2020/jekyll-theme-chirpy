@@ -4,11 +4,7 @@
 
 .pagination {
   color: var(--btn-patinator-text-color);
-<<<<<<< HEAD
-  font-family: 'Lato', sans-serif;
-=======
   font-family: Lato, sans-serif;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   a:hover {
     text-decoration: none;
@@ -26,26 +22,11 @@
       border-radius: 50%;
       border: 1px solid var(--btn-paginator-border-color);
       background-color: var(--button-bg);
-<<<<<<< HEAD
-=======
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       &:hover {
         background-color: var(--btn-paginator-hover-color);
       }
     }
-<<<<<<< HEAD
-    &.active {
-      .page-link {
-        background-color: var(--btn-active-bg);
-        border-color: var(--btn-active-border-color);
-        box-shadow: 0 0 8px 0 var(--btn-paginator-shadow) !important;
-        color: var(--btn-text-color);
-      }
-    }
-    &.disabled {
-      cursor: not-allowed;
-=======
 
     &.active {
       .page-link {
@@ -57,38 +38,17 @@
     &.disabled {
       cursor: not-allowed;
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       .page-link {
         color: rgba(108, 117, 125, 0.57);
         border-color: var(--btn-paginator-border-color);
         background-color: var(--button-bg);
       }
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     &:first-child .page-link,
     &:last-child .page-link {
       border-radius: 50%;
     }
-<<<<<<< HEAD
-  } // .page-item
-
-} // .pagination
-
-#post-list {
-  margin-top: 1rem;
-  padding-right: 0.5rem;
-
-  .post-preview {
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--main-border-color);
-
-    a:hover {
-      @extend %link-hover;
-=======
   } /* .page-item */
 } /* .pagination */
 
@@ -114,7 +74,6 @@
 
     &:not(:last-child) {
       margin-bottom: 1.75rem;
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
 
     h1 {
@@ -125,11 +84,6 @@
     .post-meta {
       i {
         font-size: 0.73rem;
-<<<<<<< HEAD
-      }
-      span:not(:last-child) {
-        margin-right: 1.2rem;
-=======
 
         &:not(:first-child) {
           margin-left: 1.2rem;
@@ -151,7 +105,6 @@
         span {
           display: none;
         }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       }
     }
 
@@ -159,13 +112,8 @@
       margin-top: 0.6rem;
       margin-bottom: 0.6rem;
       color: var(--post-list-text-color);
-<<<<<<< HEAD
-      > p {
-        /* Make preview shorter on the homepage */
-=======
 
       > p {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         margin: 0;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -174,26 +122,6 @@
         -webkit-box-orient: vertical;
       }
     }
-<<<<<<< HEAD
-
-    .pin {
-      > i {
-        transform: rotate(45deg);
-        padding-left: 3px;
-        color: var(--pin-color);
-      }
-      > span {
-        display: none;
-      }
-    }
-
-  } // .post-preview
-
-} // #post-list
-
-/* Hide SideBar and TOC */
-@media all and (max-width: 830px) {
-=======
   } /* .post-preview */
 } /* #post-list */
 
@@ -210,7 +138,6 @@
     margin-right: -0.5rem;
   }
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   .pagination {
     justify-content: space-evenly;
 
@@ -218,35 +145,12 @@
       &:not(:first-child):not(:last-child) {
         display: none;
       }
-<<<<<<< HEAD
-
     }
-
-=======
-    }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   }
 }
 
 /* Sidebar is visible */
 @media all and (min-width: 831px) {
-<<<<<<< HEAD
-
-  #post-list {
-    margin-top: 1.5rem;
-    .post-preview .post-meta {
-      .pin {
-        background: var(--pin-bg);
-        border-radius: 5px;
-        line-height: 1.4rem;
-        height: 1.3rem;
-        margin-top: 3px;
-        padding-left: 1px;
-        padding-right: 6px;
-
-        > span {
-          display: inline;
-=======
   #post-list {
     margin-top: 3rem;
 
@@ -266,7 +170,6 @@
           > span {
             display: inline;
           }
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         }
       }
     }
@@ -284,28 +187,15 @@
         width: 2rem;
         height: 2rem;
       }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
 
     .page-index {
       display: none;
     }
-<<<<<<< HEAD
-
-  } // .pagination
-
-}
-
-/* Pannel hidden */
-=======
   } /* .pagination */
 }
 
 /* Panel hidden */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 @media all and (max-width: 1200px) {
   #post-list {
     padding-right: 0;

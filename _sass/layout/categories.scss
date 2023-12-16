@@ -8,55 +8,28 @@
 
 .categories {
   margin-bottom: 2rem;
-<<<<<<< HEAD
-=======
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   .card-header {
     padding-right: 12px;
   }
 
   i {
-<<<<<<< HEAD
-    &.far,
-    &.fas {
-      font-size: 86%; // fontawesome icons
-    }
-=======
     @extend %category-icon-color;
 
     font-size: 86%; /* fontawesome icons */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   }
 
   .list-group-item {
     border-left: none;
     border-right: none;
     padding-left: 2rem;
-<<<<<<< HEAD
-    > i {
-      @extend %category-icon-color;
-    }
-=======
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     &:first-child {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
-<<<<<<< HEAD
-
-  }
-
-  .card-header > span > i:first-child {
-    @extend %category-icon-color;
-  }
-
-} // .categories
-=======
   }
 } /* .categories */
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 .category-trigger {
   width: 1.7rem;
@@ -64,17 +37,6 @@
   border-radius: 50%;
   text-align: center;
   color: #6c757d !important;
-<<<<<<< HEAD
-  > i.fas {
-    position: relative;
-    height: 0.7rem;
-    width: 1rem;
-    transition: 300ms ease all;
-  }
-}
-
-@media (hover: hover) { // only works on desktop
-=======
 
   i {
     position: relative;
@@ -94,18 +56,12 @@
 
 /* only works on desktop */
 @media (hover: hover) {
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   .category-trigger:hover {
     background-color: var(--categories-hover-bg);
   }
 }
 
 .rotate {
-<<<<<<< HEAD
-  -ms-transform: rotate(-90deg); /* IE 9 */
-  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
-=======
   -webkit-transform: rotate(-90deg);
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   transform: rotate(-90deg);
 }

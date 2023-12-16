@@ -14,11 +14,7 @@ image:
   - [Comparing Hypervisors](#comparing-hypervisors)
   - [Type of Virtualization](#type-of-virtualization)
     - [full virtualization scenario](#full-virtualization-scenario)
-<<<<<<< HEAD
-    - [paravirtualization.](#paravirtualization)
-=======
     - [paravirtualization](#paravirtualization)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   - [QEMU](#qemu)
   - [KVM `Kernel-based Virtual Machine`](#kvm-kernel-based-virtual-machine)
   - [QEMU and KVM](#qemu-and-kvm)
@@ -220,11 +216,7 @@ On Linux systems:
 
 
 
-<<<<<<< HEAD
-### paravirtualization. 
-=======
 ### paravirtualization
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 - in a paravirtualization machine, 
 - the guest os must be modified to know, that it's running as a virtual machine. 
   - These modifications were added to the Linux kernel a while ago. 
@@ -425,12 +417,6 @@ spice 4.4.4.4:8080
 
 ```
 
-<<<<<<< HEAD
-![Uploading Screen Shot 2020-11-28 at 22.39.31.png… (ycc6m1otf)]()
-
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 

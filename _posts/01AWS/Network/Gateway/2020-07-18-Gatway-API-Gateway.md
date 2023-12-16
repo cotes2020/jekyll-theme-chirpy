@@ -8,11 +8,7 @@ image:
 ---
 
 - [AWS API Gateway](#aws-api-gateway)
-<<<<<<< HEAD
-  - [benefits](#benefits)
-=======
   - [basic](#basic)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   - [Security](#security)
     - [Application Firewall](#application-firewall)
     - [Resource Policy](#resource-policy)
@@ -22,11 +18,6 @@ image:
 
 # AWS API Gateway
 
-<<<<<<< HEAD
----
-
-## benefits
-=======
 ![Screen Shot 2020-07-10 at 16.55.04](/assets/img/post/Screen%20Shot%202020-07-10%20at%2016.55.04.png)
 
 ---
@@ -34,7 +25,6 @@ image:
 ## basic
 
 ![Screen Shot 2020-07-27 at 00.02.48](/assets/img/post/Screen%20Shot%202020-07-27%20at%2000.02.48.png)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 1. fully managed service
 

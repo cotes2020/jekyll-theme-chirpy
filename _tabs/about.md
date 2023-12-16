@@ -7,30 +7,6 @@ order: 4
 ---
 
 > A CYBER SECURITY PRACTICIAN
-<<<<<<< HEAD
->
-<br>
-<p align="center">
-
-<img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
-
-</p>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<img src="https://i.imgur.com/vMmUZBI.png" width="100" align="left"> <img src="https://i.imgur.com/0SQ0jOP.png" width="100" align="left"> <img src="https://i.imgur.com/K3wKueK.png" width="100" align="left">
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-=======
 
 <br>
 
@@ -44,7 +20,6 @@ order: 4
 <img src="/assets/img/tabs/PAN.jpg" width="100" height="110" align="center">
 <img src="/assets/img/tabs/Sec+.png" width="100" align="center">
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <br>
 
 > On my way to CISSP, OSCP ...

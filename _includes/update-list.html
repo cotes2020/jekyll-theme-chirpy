@@ -2,11 +2,7 @@
   Get the last 5 posts from lastmod list.
 {% endcomment %}
 
-<<<<<<< HEAD
-{% assign MAX_SIZE = 10 %}
-=======
 {% assign MAX_SIZE = 5 %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 {% assign all_list = "" | split: "" %}
 
@@ -26,8 +22,6 @@
 {% for entry in all_list limit:MAX_SIZE %}
   {% assign update_list = update_list | push: entry %}
 {% endfor %}
-<<<<<<< HEAD
-=======
 
 {% if update_list.size > 0 %}
 
@@ -44,4 +38,3 @@
   </div> <!-- #access-lastmod -->
 
 {% endif %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28

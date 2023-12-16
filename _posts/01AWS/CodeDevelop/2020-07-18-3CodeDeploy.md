@@ -7,9 +7,6 @@ toc: true
 image:
 ---
 
-<<<<<<< HEAD
-[toc]
-=======
 - [CodeDeploy](#codedeploy)
   - [Benefits of AWS CodeDeploy](#benefits-of-aws-codedeploy)
   - [Overview of CodeDeploy compute platforms](#overview-of-codedeploy-compute-platforms)
@@ -32,7 +29,6 @@ image:
     - [CodeDeploy Lifecycle Event Hooks](#codedeploy-lifecycle-event-hooks)
   - [Setup an app in CodeDeploy](#setup-an-app-in-codedeploy)
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 
