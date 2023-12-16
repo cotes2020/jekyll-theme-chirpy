@@ -13,22 +13,13 @@
 
 //     public Cat(String name, int age) {
 //         super(name, age);
-<<<<<<< HEAD
-//         this.food = 1000; // asume the food to 500, if no input
-=======
 //         this.food = 1000; // assume the food to 500, if no input
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 //     }
 
 
 //     public Cat(String name) {
-<<<<<<< HEAD
-//         super(name, 1);  // asume the age to 0, if no input
-//         this.food = 1000; // asume the food to 500, if no input
-=======
 //         super(name, 1);  // assume the age to 0, if no input
 //         this.food = 1000; // assume the food to 500, if no input
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 //     }
 
 

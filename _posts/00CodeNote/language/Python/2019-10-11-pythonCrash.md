@@ -25,14 +25,11 @@ tags: [Python]
 - [images](#images)
   - [ku example](#ku-example)
     - [filter() function](#filter-function)
-<<<<<<< HEAD
-=======
 - [Python example](#python-example)
   - [write](#write)
   - [chop the api](#chop-the-api)
   - [write dic to csv](#write-dic-to-csv)
   - [logging](#logging)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 
@@ -491,11 +488,6 @@ class ElectricCar(Car):
 
 ```
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ---
 
 
@@ -621,11 +613,6 @@ filteredArray = list(filter(lambda x : x not in array2, array1))
 # Filtered Array  :  [1, 4, 21, 33, 45, 77, 88, 99, 32, 55, 77, 22, 4]
 ```
 
-<<<<<<< HEAD
-
-
-
-=======
 ---
 
 # Python example
@@ -755,7 +742,6 @@ logger.level("ERROR", color="<red>")
 
 .
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 

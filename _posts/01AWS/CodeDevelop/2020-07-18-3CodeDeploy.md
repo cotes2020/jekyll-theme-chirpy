@@ -7,19 +7,16 @@ toc: true
 image:
 ---
 
-<<<<<<< HEAD
-[toc]
-=======
 - [CodeDeploy](#codedeploy)
   - [Benefits of AWS CodeDeploy](#benefits-of-aws-codedeploy)
   - [Overview of CodeDeploy compute platforms](#overview-of-codedeploy-compute-platforms)
-    - [1.  EC2/On-Premises compute platform ](#1--ec2on-premises-compute-platform-)
-    - [2.  AWS Lambda ](#2--aws-lambda-)
-    - [3.  Amazon ECS ](#3--amazon-ecs-)
+    - [1. <font color=red> EC2/On-Premises compute platform </font>](#1-font-colorred-ec2on-premises-compute-platform-font)
+    - [2. <font color=red> AWS Lambda </font>](#2-font-colorred-aws-lambda-font)
+    - [3. <font color=red> Amazon ECS </font>](#3-font-colorred-amazon-ecs-font)
   - [CodeDeploy deployment approaches types](#codedeploy-deployment-approaches-types)
     - [blue/green deployment vs in-place deployment](#bluegreen-deployment-vs-in-place-deployment)
-    - [ In-place deployment ](#-in-place-deployment-)
-    - [ Blue/Green deployment ](#-bluegreen-deployment-)
+    - [<font color=red> In-place deployment </font>](#font-colorred-in-place-deployment-font)
+    - [<font color=red> Blue/Green deployment </font>](#font-colorred-bluegreen-deployment-font)
       - [Blue/green deployment on different compute platform](#bluegreen-deployment-on-different-compute-platform)
       - [Blue/Green deployment through lambda and ECS](#bluegreen-deployment-through-lambda-and-ecs)
       - [Blue/Green deployment on an EC2/on-premises compute platform](#bluegreen-deployment-on-an-ec2on-premises-compute-platform)
@@ -32,7 +29,6 @@ image:
     - [CodeDeploy Lifecycle Event Hooks](#codedeploy-lifecycle-event-hooks)
   - [Setup an app in CodeDeploy](#setup-an-app-in-codedeploy)
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 

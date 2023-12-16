@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-
-
-
-- [backstage](#backstage)
-  - [basic](#basic)
-=======
 ---
 title: DevPortal - Backstage
 date: 2021-01-11 11:11:11 -0400
@@ -61,20 +54,10 @@ image:
 
 ref:
 - https://github.com/backstage/backstage
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 ---
 
-<<<<<<< HEAD
-
-# backstage
-
-
-
-## basic
-
-=======
 ## basic
 
 Backstage is an open platform for building developer portals. Powered by a centralized software catalog, Backstage restores order to your microservices and infrastructure and enables your product teams to ship high-quality code quickly — without compromising autonomy.
@@ -82,7 +65,6 @@ Backstage is an open platform for building developer portals. Powered by a centr
 Backstage unifies all your infrastructure tooling, services, and documentation to create a streamlined development environment from end to end.
 
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ```bash
 
@@ -94,15 +76,6 @@ cd my-backstage-app
 yarn dev
 ```
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-=======
 ---
 
 ## architecture-overview
@@ -686,7 +659,6 @@ Luckily both of these steps happen automatically when you create a plugin with t
 If the plugin needs to communicate with services outside the Backstage environment you will probably face challenges like `CORS policies and/or backend-side authorization`.
 
 To smooth this process out you can use `proxy` - either the one you already have (like Nginx, HAProxy, etc.) or the `proxy-backend plugin` that we provide for the Backstage backend. [Read more](https://github.com/backstage/backstage/blob/master/plugins/proxy-backend/README.md)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
