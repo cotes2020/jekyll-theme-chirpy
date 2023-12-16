@@ -247,6 +247,7 @@ i {
       margin-bottom: 4rem;
     }
   }
+
   .post-content {
     font-size: 0.9rem;
   }
@@ -306,10 +307,12 @@ i {
 .footnotes > ol {
   padding-left: 2rem;
   margin-top: 0.5rem;
+
   > li {
     &:not(:last-child) {
       margin-bottom: 0.3rem;
     }
+
     > p {
       margin-left: 0.25em;
       margin-top: 0;
@@ -369,6 +372,7 @@ i {
 
     thead {
       border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+
       th {
         @extend %table-cell;
       }
@@ -608,6 +612,7 @@ i {
   padding: 1px 3px;
   border-radius: 3px;
   color: var(--link-color);
+
   &:focus {
     box-shadow: none;
   }
@@ -1523,6 +1528,7 @@ $sidebar-display: 'sidebar-display';
       span {
         width: 2rem;
       }
+
       .icon-border {
         left: -3px;
       }
@@ -1676,6 +1682,7 @@ $sidebar-display: 'sidebar-display';
         > a {
           width: 6.2rem;
           height: 6.2rem;
+
           &.mx-auto {
             margin-left: 0 !important;
           }

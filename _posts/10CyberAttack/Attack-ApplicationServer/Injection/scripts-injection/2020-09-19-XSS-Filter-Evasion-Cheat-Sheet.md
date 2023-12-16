@@ -702,6 +702,7 @@ This is a simple XSS vector that closes `<TITLE>` tags, which can encapsulate th
 
 ## List-style-image
 Fairly esoteric issue dealing with embedding images for bulleted lists. This will only work in the IE rendering engine because of the JavaScript directive. Not a particularly useful cross site scripting vector:
+
 ```js
 <STYLE>li {list-style-image: url("javascript:alert('XSS')");}</STYLE>
 <UL><LI>XSS</br>
@@ -1041,6 +1042,7 @@ Only works in IE5.0 and later and Netscape 8.1 in IE rendering engine mode). Som
 
 <![endif]-->
 ```
+
 BASE Tag
 Works in IE and Netscape 8.1 in safe mode. You need the // to comment out the next characters so you won’t get a JavaScript error and your XSS tag will render. Also, this relies on the fact that the website uses dynamically placed images like images/image.jpg rather than full paths. If the path includes a leading forward slash like /images/image.jpg you can remove one slash from this vector (as long as there are two to begin the comment this will work):
 

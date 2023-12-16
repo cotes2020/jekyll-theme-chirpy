@@ -31,13 +31,14 @@ image: /assets/img/sample/OSILayer.jpg
   - [hack](#hack)
     - [XSS](#xss)
 - [Risk management](#risk-management)
-- [Security audits, testing & incident response](#security-audits-testing--incident-response)
+- [Security audits, testing \& incident response](#security-audits-testing--incident-response)
 - [Cryptography](#cryptography)
     - [hashing](#hashing)
 - [knowledge point](#knowledge-point)
   - [TCP/UDP](#tcpudp)
   - [API](#api)
   - [Docker Basic Questions](#docker-basic-questions)
+
 
 ---
 

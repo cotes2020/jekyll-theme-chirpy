@@ -8,6 +8,7 @@
 
 .categories {
   margin-bottom: 2rem;
+
   .card-header {
     padding-right: 12px;
   }
@@ -22,6 +23,7 @@
     border-left: none;
     border-right: none;
     padding-left: 2rem;
+
     &:first-child {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
