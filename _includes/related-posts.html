@@ -60,10 +60,6 @@
 {% assign less = TOTAL_SIZE | minus: index_list.size %}
 
 {% if less > 0 %}
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   {% for i in (0..last_index) %}
     {% assign post = site.posts[i] %}
     {% if post.url != page.url  %}
@@ -77,23 +73,12 @@
       {% endunless %}
     {% endif %}
   {% endfor %}
-<<<<<<< HEAD
-
-{% endif %}
-
-
-{% if index_list.size > 0 %}
-  <div id="related-posts" class="mt-5 mb-2 mb-sm-4">
-    <h3 class="pt-2 mt-1 mb-4 ml-1"
-      data-toc-skip>{{ site.data.locales[lang].post.relate_posts }}</h3>
-=======
 {% endif %}
 
 {% if index_list.size > 0 %}
   <div id="related-posts" class="mb-2 mb-sm-4">
     <h3 class="pt-2 mb-4 ml-1"
       data-toc-skip>{{ site.data.locales[site.lang].post.relate_posts }}</h3>
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     <div class="card-deck mb-4">
     {% for entry in index_list %}
       {% assign index = entry | plus: 0 %}
@@ -101,20 +86,12 @@
       <div class="card">
         <a href="{{ post.url | relative_url }}">
           <div class="card-body">
-<<<<<<< HEAD
-            {% include timeago.html date=post.date class="small" %}
-=======
             {% include datetime.html date=post.date class="small" %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
             <h3 class="pt-0 mt-1 mb-3" data-toc-skip>{{ post.title }}</h3>
             <div class="text-muted small">
               <p>
                 {% include no-linenos.html content=post.content %}
-<<<<<<< HEAD
-                {{ content | markdownify | strip_html | truncate: 200 }}
-=======
                 {{ content | markdownify | strip_html | truncate: 200 | escape }}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
               </p>
             </div>
           </div>

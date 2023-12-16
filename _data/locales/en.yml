@@ -20,23 +20,6 @@ tabs:
 search:
   hint: search
   cancel: Cancel
-<<<<<<< HEAD
-  no_results: Oops! No result founds.
-
-panel:
-  lastmod: Recent Update
-  trending_tags: Trending Tags
-  toc: Contents
-
-#  The liquid date format › http://strftime.net/
-date_format:
-  tooltip: '%a, %b %e, %Y, %l:%M %p %z'
-  post:
-    long: '%b %e, %Y'
-    short: '%b %e'
-    archive_month: '%b'
-
-=======
   no_results: Oops! No results found.
 
 panel:
@@ -44,7 +27,6 @@ panel:
   trending_tags: Trending Tags
   toc: Contents
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 copyright:
   # Shown at the bottom of the post
   license:
@@ -58,15 +40,6 @@ copyright:
     Except where otherwise noted, the blog posts on this site are licensed
     under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
-<<<<<<< HEAD
-meta: Powered by :PLATFORM with :THEME theme.
-
-not_found:
-  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
-  hint_template: :HEAD_BAK to try finding it again, or search for it on the :ARCHIVES_PAGE.
-  head_back: Head back Home
-  archives_page: Archives page
-=======
 meta: Using the :PLATFORM theme :THEME.
 
 not_found:
@@ -75,24 +48,13 @@ not_found:
 notification:
   update_found: A new version of content is available.
   update: Update
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 # ----- Posts related labels -----
 
 post:
-<<<<<<< HEAD
-  published: 'on'
-  updated: Updated
-  timeago:
-    day: days ago
-    hour: hours ago
-    minute: minutes ago
-    just_now: just now
-=======
   written_by: By
   posted: Posted
   updated: Updated
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   words: words
   pageview_measure: views
   read_time:
@@ -111,12 +73,6 @@ post:
   # pinned prompt of posts list on homepage
   pin_prompt: Pinned
 
-<<<<<<< HEAD
-# categories page
-categories:
-  category_measure: categories
-  post_measure: posts
-=======
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
@@ -135,4 +91,3 @@ categories:
   post_measure:
     singular: post
     plural: posts
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28

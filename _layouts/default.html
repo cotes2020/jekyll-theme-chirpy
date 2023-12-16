@@ -5,21 +5,6 @@ layout: compress
 
 <!DOCTYPE html>
 
-<<<<<<< HEAD
-{% include lang.html %}
-
-{% capture prefer_mode %}
-  {% if site.theme_mode %}
-    mode="{{ site.theme_mode }}"
-  {% endif %}
-{% endcapture %}
-
-<html lang="{{ site.lang }}" {{ prefer_mode }}>
-
-  {% include head.html %}
-
-  <body data-spy="scroll" data-target="#toc">
-=======
 {% include assets-origin.html %}
 
 {% capture prefer_mode %}
@@ -34,36 +19,22 @@ layout: compress
   {% include head.html %}
 
   <body data-topbar-visible="true">
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
     {% include sidebar.html %}
 
     {% include topbar.html %}
 
-<<<<<<< HEAD
-    <div id="main-wrapper">
-      <div id="main">
-
-        {% include refactor-content.html content=content %}
-
-        {% include footer.html %}
-
-=======
     <div id="main-wrapper" class="d-flex justify-content-center">
       <div id="main" class="container pl-xl-4 pr-xl-4">
         {{ content }}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       </div>
 
       {% include search-results.html %}
 
     </div> <!-- #main-wrapper -->
 
-<<<<<<< HEAD
-=======
     {% include footer.html %}
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     {% if page.mermaid %}
       {% include mermaid.html %}
     {% endif %}
@@ -74,8 +45,6 @@ layout: compress
       <i class="fas fa-angle-up"></i>
     </a>
 
-<<<<<<< HEAD
-=======
     {% if site.pwa.enabled %}
       <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
         data-animation="true" data-autohide="false">
@@ -93,7 +62,6 @@ layout: compress
       </div>
     {% endif %}
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     {% include search-loader.html %}
 
     {% include js-selector.html %}

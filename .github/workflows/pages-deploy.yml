@@ -1,26 +1,14 @@
-<<<<<<< HEAD
-name: 'Automatic build'
-on:
-  push:
-    branches:
-=======
 name: "Build and Deploy"
 on:
   push:
     branches:
       - main
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       - master
     paths-ignore:
       - .gitignore
       - README.md
       - LICENSE
 
-<<<<<<< HEAD
-jobs:
-  continuous-delivery:
-
-=======
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -36,16 +24,10 @@ concurrency:
 
 jobs:
   build:
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-<<<<<<< HEAD
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # for posts's lastmod
-=======
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -56,42 +38,10 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-<<<<<<< HEAD
-          ruby-version: 2.7
-          bundler-cache: true
-
-      - name: Check baseurl
-        run: |
-          baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
-          if [[ -n $baseurl ]]; then
-            echo "BASE_URL=$baseurl" >> $GITHUB_ENV
-          fi
-
-      - name: Build Site
-        env:
-          JEKYLL_ENV: production
-        run: |
-          bundle exec jekyll b -d "_site$BASE_URL"
-
-      - name: Test Site
-        run: |
-          bash tools/test.sh
-
-      - name: Deploy
-        run: |
-          if [[ -n $BASE_URL ]]; then
-            mv _site$BASE_URL _site-rename
-            rm -rf _site
-            mv _site-rename _site
-          fi
-
-          bash tools/deploy.sh
-=======
           ruby-version: 3   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
           bundler-cache: true
 
@@ -119,4 +69,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28

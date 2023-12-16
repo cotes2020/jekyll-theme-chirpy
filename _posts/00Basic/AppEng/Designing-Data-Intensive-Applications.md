@@ -771,11 +771,7 @@ However, finding good abstractions is very hard.
 
 **Scalability** means having strategies for keeping performance good, even when load increases. In order to discuss scalability, we first need ways of describing load and performance quantitatively. We briefly looked at Twitter’s home timelines as an example of describing load, and response time percentiles as a way of measuring performance. In a scalable system, you can add processing capacity in order to remain reliable under high load.
 
-<<<<<<< HEAD
-**Maintainability** has many facets, but in essence it’s about making life better for the engineering and operations teams who need to work with the system. Good abstrac‐ tions can help reduce complexity and make the system easier to modify and adapt for new use cases. Good operability means having good visibility into the system’s health, and having effective ways of managing it.
-=======
 **Maintainability** has many facets, but in essence it’s about making life better for the engineering and operations teams who need to work with the system. Good abstract‐ tions can help reduce complexity and make the system easier to modify and adapt for new use cases. Good operability means having good visibility into the system’s health, and having effective ways of managing it.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 
@@ -949,11 +945,7 @@ Document databases reverted back to the hierarchical model in one aspect:
 However, when it comes to representing **many-to-one** and **many-to-many** relationships, relational and document databases are not fundamentally different:
 - in both cases, the related item is referenced by a unique identifier,
   - foreign key in the relational model
-<<<<<<< HEAD
-  - docuaqsw  q ment reference in the document model
-=======
   - docuaqsw  q meant reference in the document model
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 - That identifier is resolved at read time by using a `join` or `follow-up queries`.
 - To date, document databases have not followed the path of CODASYL.
 
@@ -1649,11 +1641,7 @@ Disks have two significant advantages: they are durable, and they have lower cos
 
 It's quite feasible to keep them entirely in memory, this has lead to _in-memory_ databases.
 
-<<<<<<< HEAD
-Key-value stores, such as Memcached are intended for cache only, it's acceptable for data to be lost if the machine is restarted. Other in-memory databases aim for durability, with special hardware, writing a log of changes to disk, writing periodic snapshots to disk or by replicating in-memory sate to other machines.
-=======
 Key-value stores, such as Memcached are intended for cache only, it's acceptable for data to be lost if the machine is restarted. Other in-memory databases aim for durability, with special hardware, writing a log of changes to disk, writing periodic snapshots to disk or by replicating in-memory to other machines.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 When an in-memory database is restarted, it needs to reload its state, either from disk or over the network from a replica. The disk is merely used as an append-only log for durability, and reads are served entirely from memory.
 
@@ -1750,11 +1738,7 @@ JSON, XML, and CSV are human-readable and popular specially as data interchange 
 
 #### Binary encoding
 
-<<<<<<< HEAD
-JSON is less verbose than XML, but both still use a lot of space compared to binary formats. There are binary encodings for JSON (MesagePack, BSON, BJSON, UBJSON, BISON and Smile), similar thing for XML (WBXML and Fast Infoset).
-=======
 JSON is less verbose than XML, but both still use a lot of space compared to binary formats. There are binary encodings for JSON (messagePack, BSON, BJSON, UBJSON, BISON and Smile), similar thing for XML (WBXML and Fast Infoset).
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 **Apache Thrift and Protocol Buffers (protobuf) are binary encoding libraries.**
 
@@ -1957,11 +1941,7 @@ A solution to this is to replace any nondeterministic function with a fixed retu
 
 ##### Write-ahead log (WAL) shipping
 
-<<<<<<< HEAD
-The log is an append-only sequence of bytes containing all writes to the database. The leader can send it to its followers. This way of replication is used in PostgresSQL and Oracle.
-=======
 The log is an append-only sequence of bytes containing all writes to the database. The leader can send it to its followers. This way of replication is used in PostgreSQL and Oracle.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 The main disadvantage is that the log describes the data at a very low level (like which bytes were changed in which disk blocks), coupling it to the storage engine.
 
@@ -2121,11 +2101,7 @@ The most general topology is _all-to-all_ in which every leader sends its writes
 
 In circular and star topologies a write might need to pass through multiple nodes before they reach all replicas. To prevent infinite replication loops each node is given a unique identifier and the replication log tags each write with the identifiers of the nodes it has passed through. When a node fails it can interrupt the flow of replication messages.
 
-<<<<<<< HEAD
-In all-to-all topology fault tolerance is better as messages can travel along different paths avoiding a single point of failure. It has some issues too, some network links may be faster than others and some replication messages may "overtake" others. To order events correctly. there is a technique called _version vectors_. PostgresSQL BDR does not provide casual ordering of writes, and Tungsten Replicator for MySQL doesn't even try to detect conflicts.
-=======
 In all-to-all topology fault tolerance is better as messages can travel along different paths avoiding a single point of failure. It has some issues too, some network links may be faster than others and some replication messages may "overtake" others. To order events correctly. there is a technique called _version vectors_. PostgreSQL BDR does not provide casual ordering of writes, and Tungsten Replicator for MySQL doesn't even try to detect conflicts.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ### Leaderless replication
 
@@ -2274,11 +2250,7 @@ The process of moving load from one node in the cluster to another.
 
 Strategies for rebalancing:
 * **How not to do it: Hash mod n.** The problem with _mod N_ is that if the number of nodes _N_ changes, most of the keys will need to be moved from one node to another.
-<<<<<<< HEAD
-* **Fixed number of partitions.** Create many more partitions than there are nodes and assign several partitions to each node. If a node is added to the cluster, we can _steal_ a few partitions from every existing node until partitions are fairly distributed once again. The number of partitions does not change, nor does the assignment of keys to partitions. The only thing that change is the assignment of partitions to nodes. This is used in Riak, Elasticsearch, Couchbase, and Voldemport. **You need to choose a high enough number of partitions to accomodate future growth.** Neither too big or too small.
-=======
 * **Fixed number of partitions.** Create many more partitions than there are nodes and assign several partitions to each node. If a node is added to the cluster, we can _steal_ a few partitions from every existing node until partitions are fairly distributed once again. The number of partitions does not change, nor does the assignment of keys to partitions. The only thing that change is the assignment of partitions to nodes. This is used in Riak, Elasticsearch, Couchbase, and Voldemport. **You need to choose a high enough number of partitions to accommodate future growth.** Neither too big or too small.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 * **Dynamic partitioning.** The number of partitions adapts to the total data volume. An empty database starts with an empty partition. While the dataset is small, all writes have to processed by a single node while the others nodes sit idle. HBase and MongoDB allow an initial set of partitions to be configured (_pre-splitting_).
 * **Partitioning proportionally to nodes.** Cassandra and Ketama make the number of partitions proportional to the number of nodes. Have a fixed number of partitions _per node_. This approach also keeps the size of each partition fairly stable.
 
@@ -2581,11 +2553,7 @@ The internet and most internal networks are _asynchronous packet networks_. A me
 1. Request lost
 2. Request waiting in a queue to be delivered later
 3. Remote node may have failed
-<<<<<<< HEAD
-4. Remote node may have temporarily stoped responding
-=======
 4. Remote node may have temporarily stopped responding
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 5. Response has been lost on the network
 6. The response has been delayed and will be delivered later
 
@@ -2620,11 +2588,7 @@ Systems can continually measure response times and their variability (_jitter_),
 
 #### Synchronous vs ashynchronous networks
 
-<<<<<<< HEAD
-A telephone network estabilishes a _circuit_, we say is _synchronous_ even as the data passes through several routers as it does not suffer from queing. The maximum end-to-end latency of the network is fixed (_bounded delay_).
-=======
 A telephone network estabilishes a _circuit_, we say is _synchronous_ even as the data passes through several routers as it does not suffer from queueing. The maximum end-to-end latency of the network is fixed (_bounded delay_).
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 A circuit is a fixed amount of reserved bandwidth which nobody else can use while the circuit is established, whereas packets of a TCP connection opportunistically use whatever network bandwidth is available.
 
@@ -2639,15 +2603,9 @@ The time when a message is received is always later than the time when it is sen
 Each machine on the network has its own clock, slightly faster or slower than the other machines. It is possible to synchronise clocks with Network Time Protocol (NTP).
 
 * **Time-of-day clocks**. Return the current date and time according to some calendar (_wall-clock time_). If the local clock is toof ar ahead of the NTP server, it may be forcibly reset and appear to jump back to a previous point in time. **This makes it is unsuitable for measuring elapsed time.**
-<<<<<<< HEAD
-* **Monotonic clocks**. Peg: `System.nanoTime()`. They are guaranteed to always move forward. The difference between clock reads can tell you how much time elapsed beween two checks. **The _absolute_ value of the clock is meaningless.** NTP allows the clock rate to be speeded up or slowed down by up to 0.05%, but **NTP cannot cause the monotonic clock to jump forward or backward**. **In a distributed system, using a monotonic clock for measuring elapsed time (peg: timeouts), is usually fine**.
-
-If some piece of sofware is relying on an accurately synchronised clock, the result is more likely to be silent and subtle data loss than a dramatic crash.
-=======
 * **Monotonic clocks**. Peg: `System.nanoTime()`. They are guaranteed to always move forward. The difference between clock reads can tell you how much time elapsed between two checks. **The _absolute_ value of the clock is meaningless.** NTP allows the clock rate to be speeded up or slowed down by up to 0.05%, but **NTP cannot cause the monotonic clock to jump forward or backward**. **In a distributed system, using a monotonic clock for measuring elapsed time (peg: timeouts), is usually fine**.
 
 If some piece of software is relying on an accurately synchronised clock, the result is more likely to be silent and subtle data loss than a dramatic crash.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 You need to carefully monitor the clock offsets between all the machines.
 
@@ -2674,11 +2632,7 @@ B = [B earliest, B latest]
 
 And those two intervals do not overlap (`A earliest` < `A latest` < `B earliest` < `B latest`), then B definetively happened after A.
 
-<<<<<<< HEAD
-Spanner deliberately waits for the length of the confidence interval before commiting a read-write transaction, so their confidence intervals do not overlap.
-=======
 Spanner deliberately waits for the length of the confidence interval before committing a read-write transaction, so their confidence intervals do not overlap.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 Spanner needs to keep the clock uncertainty as small as possible, that's why Google deploys a GPS receiver or atomic clock in each datacenter.
 
@@ -2721,11 +2675,7 @@ Assume every time the lock server grant sa lock or a lease, it also returns a _f
 
 The storage server remembers that it has already processed a write with a higher token number, so it rejects the request with the last token.
 
-<<<<<<< HEAD
-If ZooKeeper is used as lock service, the transaciton ID `zcid` or the node version `cversion` can be used as a fencing token.
-=======
 If ZooKeeper is used as lock service, the transaction ID `zcid` or the node version `cversion` can be used as a fencing token.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 #### Byzantine faults
 
@@ -2772,11 +2722,7 @@ Apache ZooKeepr and etcd are often used for distributed locks and leader electio
 
 #### Constraints and uniqueness guarantees
 
-<<<<<<< HEAD
-Unique constraints, like a username or an email address require a situation similiar to a lock.
-=======
 Unique constraints, like a username or an email address require a situation similar to a lock.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 A hard uniqueness constraint in relational databases requires linearizability.
 
@@ -2789,17 +2735,6 @@ The simplest approach would be to have a single copy of the data, but this would
 * Multi-leader replication is not linearizable.
 * Leaderless replication is probably not linearizable.
 
-<<<<<<< HEAD
-Multi-leader replication is often a good choice for multi-datacenter replication. On a network interruption betwen data-centers will force a choice between linearizability and availability.
-
-With multi-leader configuraiton, each data center can operate normally with interruptions.
-
-With single-leader replication, the leader must be in one of the datacenters. If the application requires linearizable reads and writes, the network interruption causes the application to become unavailable.
-
-* If your applicaiton _requires_ linearizability, and some replicas are disconnected from the other replicas due to a network problem, the some replicas cannot process request while they are disconnected (unavailable).
-
-* If your application _does not require_, then it can be written in a way tha each replica can process requests independently, even if it is disconnected from other replicas (peg: multi-leader), becoming _available_.
-=======
 Multi-leader replication is often a good choice for multi-datacenter replication. On a network interruption between data-centers will force a choice between linearizability and availability.
 
 With multi-leader configuration, each data center can operate normally with interruptions.
@@ -2809,7 +2744,6 @@ With single-leader replication, the leader must be in one of the datacenters. If
 * If your application_requires_ linearizability, and some replicas are disconnected from the other replicas due to a network problem, the some replicas cannot process request while they are disconnected (unavailable).
 
 * If your application _does not require_, then it can be written in a way that each replica can process requests independently, even if it is disconnected from other replicas (peg: multi-leader), becoming _available_.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 **If an application does not require linearizability it can be more tolerant of network problems.**
 
@@ -2857,11 +2791,7 @@ There is simple method for generating sequence numbers that _is_ consistent with
 
 Each node has a unique identifier, and each node keeps a counter of the number of operations it has processed. The lamport timestamp is then simply a pair of (_counter_, _node ID_). It provides total order, as if you have two timestamps one with a greater counter value is the greater timestamp. If the counter values are the same, the one with greater node ID is the greater timestamp.
 
-<<<<<<< HEAD
-Every node and every client keeps track of the _maximum_ counter value it has seen so far, and includes that maximum on every request. When a node receives a request of response with a maximum counter value greater than its own counter value, it inmediately increases its own counter to that maximum.
-=======
 Every node and every client keeps track of the _maximum_ counter value it has seen so far, and includes that maximum on every request. When a node receives a request of response with a maximum counter value greater than its own counter value, it immediately increases its own counter to that maximum.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 As long as the maximum counter value is carried along with every operation, this scheme  ensure that the ordering from the lamport timestamp is consistent with causality.
 
@@ -2869,11 +2799,7 @@ Total order of oepration only emerges after you have collected all of the operat
 
 Total order broadcast:
 * Reliable delivery: If a message is delivered to one node, it is delivered to all nodes.
-<<<<<<< HEAD
-* Totally ordered delivery: Mesages are delivered to every node in the same order.
-=======
 * Totally ordered delivery: messages are delivered to every node in the same order.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ZooKeeper and etcd implement total order broadcast.
 
@@ -2885,11 +2811,7 @@ Another way of looking at total order broadcast is that it is a way of creating 
 
 If you have total order broadcast, you can build linearizable storage on top of it.
 
-<<<<<<< HEAD
-Because log entries are delivered to all nodes in the same order, if therer are several concurrent writes, all nodes will agree on which one came first. Choosing the first of the conflicting writes as the winner and aborting later ones ensures that all nodes agree on whether a write was commited or aborted.
-=======
 Because log entries are delivered to all nodes in the same order, if therer are several concurrent writes, all nodes will agree on which one came first. Choosing the first of the conflicting writes as the winner and aborting later ones ensures that all nodes agree on whether a write was committedor aborted.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 This procedure ensures linearizable writes, it doesn't guarantee linearizable reads.
 
@@ -2910,15 +2832,9 @@ There are situations in which it is important for nodes to agree:
 
 #### Atomic commit and two-phase commit (2PC)
 
-<<<<<<< HEAD
-A transaction either succesfully _commit_, or _abort_. Atomicity prevents half-finished results.
-
-On a single node, transaction commitment depends on the _order_ in which data is writen to disk: first the data, then the commit record.
-=======
 A transaction either successfully _commit_, or _abort_. Atomicity prevents half-finished results.
 
 On a single node, transaction commitment depends on the _order_ in which data is written to disk: first the data, then the commit record.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 2PC uses a coordinartor (_transaction manager_). When the application is ready to commit, the coordinator begins phase 1: it sends a _prepare_ request to each of the nodes, asking them whether are able to commit.
 
@@ -2949,11 +2865,7 @@ The problem with _locking_ is that database transactions usually take a row-leve
 
 While those locks are held, no other transaction can modify those rows.
 
-<<<<<<< HEAD
-When a coordinator fails, _orphaned_ in-doubt transactions do ocurr, and the only way out is for an administrator to manually decide whether to commit or roll back the transaction.
-=======
 When a coordinator fails, _orphaned_ in-doubt transactions do occur, and the only way out is for an administrator to manually decide whether to commit or roll back the transaction.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 #### Fault-tolerant consensus
 
@@ -2981,11 +2893,7 @@ So total order broadcast is equivalent to repeated rounds of consensus:
 
 ##### Single-leader replication and consensus
 
-<<<<<<< HEAD
-All of the consensus protocols dicussed so far internally use a leader, but they don't guarantee that the lader is unique. Protocols define an _epoch number_ (_ballot number_ in Paxos, _view number_ in Viewstamped Replication, and _term number_ in Raft). Within each epoch, the leader is unique.
-=======
 All of the consensus protocols discussed so far internally use a leader, but they don't guarantee that the lader is unique. Protocols define an _epoch number_ (_ballot number_ in Paxos, _view number_ in Viewstamped Replication, and _term number_ in Raft). Within each epoch, the leader is unique.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 Every time the current leader is thought to be dead, a vote is started among the nodes to elect a new leader. This election is given an incremented epoch number, and thus epoch numbers are totallly ordered and monotonically increasing. If there is a conflic, the leader with the higher epoch number prevails.
 
@@ -3010,11 +2918,7 @@ ZooKeeper or etcd are often described as "distributed key-value stores" or "coor
 They are designed to hold small amounts of data that can fit entirely in memory, you wouldn't want to store all of your application's data here. Data is replicated across all the nodes using a fault-tolerant total order broadcast algorithm.
 
 ZooKeeper is modeled after Google's Chubby lock service and it provides some useful features:
-<<<<<<< HEAD
-* Linearizable atomic operations: Usuing an atomic compare-and-set operation, you can implement a lock.
-=======
 * Linearizable atomic operations: Using an atomic compare-and-set operation, you can implement a lock.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 * Total ordering of operations: When some resource is protected by a lock or lease, you need a _fencing token_ to prevent clients from conflicting with each other in the case of a process pause. The fencing token is some number that monotonically increases every time the lock is acquired.
 * Failure detection: Clients maintain a long-lived session on ZooKeeper servers. When a ZooKeeper node fails, the session remains active. When ZooKeeper declares the session to be dead all locks held are automatically released.
 * Change notifications: Not only can one client read locks and values, it can also watch them for changes.
@@ -3083,11 +2987,7 @@ MapReduce is a programming framework with which you can write code to process la
 4. Call the reducer function to iterate over the sorted key-value pairs.
 
 * Mapper: Called once for every input record, and its job is to extract the key and value from the input record.
-<<<<<<< HEAD
-* Reducer: Takes the key-value pairs produced by the mappers, collects all the values belonging to the same key, and calls the reducer with an interator over that collection of vaues.
-=======
 * Reducer: Takes the key-value pairs produced by the mappers, collects all the values belonging to the same key, and calls the reducer with an iterator over that collection of vaues.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 MapReduce can parallelise a computation across many machines, without you having ot write code to explicitly handle the parallelism. THe mapper and reducer only operate on one record at a time; they don't need to know where their input is coming from or their output is going to.
 
@@ -3129,11 +3029,7 @@ The _skewed join_ method in Pig first runs a sampling job to determine which key
 
 Handling the hot key over several reducers is called _shared join_ method. In Crunch is similar but requires the hot keys to be specified explicitly.
 
-<<<<<<< HEAD
-Hive's skewed join optimisation requries hot keys to be specified explicitly and it uses map-side join. If you _can_ make certain assumptions about your input data, it is possible to make joins faster. A MapReducer job with no reducers and no sorting, each mapper simply reads one input file and writes one output file.
-=======
 Hive's skewed join optimisation requires hot keys to be specified explicitly and it uses map-side join. If you _can_ make certain assumptions about your input data, it is possible to make joins faster. A MapReducer job with no reducers and no sorting, each mapper simply reads one input file and writes one output file.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 The output of a batch process is often not a report, but some other kind of structure.
 
@@ -3164,19 +3060,11 @@ Design principles that worked well for Unix also seem to be working well for Had
 
 The MapReduce paper was not at all new. The sections we've seen had been already implemented in so-called _massively parallel processing_ (MPP) databases.
 
-<<<<<<< HEAD
-The biggest difference is that MPP databases focus on parallel execution of analytic SQL queries on a cluster of machines, while the combination of MapReduce and a distributed filesystem provides something much more like a general-purpose operating system that can run arbitraty programs.
-
-Hadoop opened up the possibility of indiscriminately dumpint data into HDFS. MPP databases typically require careful upfront modeling of the data and query patterns before importing data into the database's proprietary storage format.
-
-In MapReduce instead of forcing the producer of a dataset to bring it into a standarised format, the interpretation of the data becomes the consumer's problem.
-=======
 The biggest difference is that MPP databases focus on parallel execution of analytic SQL queries on a cluster of machines, while the combination of MapReduce and a distributed filesystem provides something much more like a general-purpose operating system that can run arbitrary programs.
 
 Hadoop opened up the possibility of indiscriminately dumpint data into HDFS. MPP databases typically require careful upfront modeling of the data and query patterns before importing data into the database's proprietary storage format.
 
 In MapReduce instead of forcing the producer of a dataset to bring it into a standardised format, the interpretation of the data becomes the consumer's problem.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 If you have HDFS and MapReduce, you _can_ build a SQL query execution engine on top of it, and indeed this is what the Hive project did.
 
@@ -3188,11 +3076,7 @@ MapReduce is more appropriate for larger jobs.
 
 At Google, a MapReduce task that runs for an hour has an approximately 5% risk of being terminated to make space for higher-priority process.
 
-<<<<<<< HEAD
-Ths is why MapReduce is designed to tolerate frequent unexpected task termination.
-=======
 This is why MapReduce is designed to tolerate frequent unexpected task termination.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ### Beyond MapReduce
 
@@ -3232,11 +3116,7 @@ The difference from MapReduce is that a vertex remembers its state in memory fro
 
 The fact that vertices can only communicate by message passing helps improve the performance of Pregel jobs, since messages can be batched.
 
-<<<<<<< HEAD
-Fault tolerance is achieved by periodically checkpointing the state of all vertices at the end of an interation.
-=======
 Fault tolerance is achieved by periodically checkpointing the state of all vertices at the end of an iteration.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 The framework may partition the graph in arbitrary ways.
 
@@ -3250,11 +3130,7 @@ We can run the processing continuously, abandoning the fixed time slices entirel
 
 ### Transmitting event streams
 
-<<<<<<< HEAD
-A record is more commonly known as an _event_. Something that happened at some point in time, it usually contains a timestamp indicating when it happened acording to a time-of-day clock.
-=======
 A record is more commonly known as an _event_. Something that happened at some point in time, it usually contains a timestamp indicating when it happened according to a time-of-day clock.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 An event is generated once by a _producer_ (_publisher_ or _sender_), and then potentially processed by multiple _consumers_ (_subcribers_ or _recipients_). Related events are usually grouped together into a _topic_ or a _stream_.
 
@@ -3304,11 +3180,7 @@ When multiple consumers read messages in the same topic, to main patterns are us
 
 In order to ensure that the message is not lost, message brokers use _acknowledgements_: a client must explicitly tell the broker when it has finished processing a message so that the broker can remove it from the queue.
 
-<<<<<<< HEAD
-The combination of laod balancing with redelivery inevitably leads to messages being reordered. To avoid this issue, youc an use a separate queue per consumer (not use the load balancing feature).
-=======
 The combination of load balancing with redelivery inevitably leads to messages being reordered. To avoid this issue, youc an use a separate queue per consumer (not use the load balancing feature).
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ##### Partitioned logs
 
@@ -3340,11 +3212,7 @@ If a consumer node fails, another node in the consumer group starts consuming me
 
 If you only ever append the log, you will eventually run out of disk space. From time to time old segments are deleted or moved to archive.
 
-<<<<<<< HEAD
-If a slow consumer cannot keep with the rate of messages, and it falls so far behind that its consumer offset poitns to a deleted segment, it will miss some of the messages.
-=======
 If a slow consumer cannot keep with the rate of messages, and it falls so far behind that its consumer offset points to a deleted segment, it will miss some of the messages.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 The throughput of a log remains more or less constant, since every message is written to disk anyway. This is in contrast to messaging systems that keep messages in memory by default and only write them to disk if the queue grows too large: systems are fast when queues are short and become much slower when they start writing to disk, throughput depends on the amount of history retained.
 
@@ -3390,11 +3258,7 @@ The storage engine periodically looks for log records with the same key, throws 
 
 An update with a special null value (a _tombstone_) indicates that a key was deleted.
 
-<<<<<<< HEAD
-The same idea works in the context of log-based mesage brokers and change data capture.
-=======
 The same idea works in the context of log-based message brokers and change data capture.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 RethinkDB allows queries to subscribe to notifications, Firebase and CouchDB provide data synchronisation based on change feed.
 
@@ -3457,11 +3321,7 @@ What you can do with the stream once you have it:
 
 Processing streams to produce other, derived streams is what an _operator job_ does. The one crucial difference to batch jobs is that a stream never ends.
 
-<<<<<<< HEAD
-_Complex event processing_ (CEP) is an approach for analising event streams where you can specify rules to search for certain patterns of events in them.
-=======
 _Complex event processing_ (CEP) is an approach for analysing event streams where you can specify rules to search for certain patterns of events in them.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 When a match is found, the engine emits a _complex event_.
 
@@ -3497,11 +3357,7 @@ To adjust for incofrrect device clocks, one approach is to log three timestamps:
 * The time at which the event was sent to the server, according to the device clock
 * The time at which the event was received by the server, according to the server clock.
 
-<<<<<<< HEAD
-You can estimate the offset between the device clock and the server clock, then apply that offset to the event timestamp, and thus estimate the true time at which the event actually ocurred.
-=======
 You can estimate the offset between the device clock and the server clock, then apply that offset to the event timestamp, and thus estimate the true time at which the event actually occurred.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 Several types of windows are in common use:
 * Tumbling window: Fixed length. If you have a 1-minute tumbling window, all events between 10:03:00 and 10:03:59 will be grouped in one window, next window would be 10:04:00-10:04:59
@@ -3539,11 +3395,7 @@ If state changes over time, and you join with some state, what point in time do 
 
 If the ordering of events across streams is undetermined, the join becomes nondeterministic.
 
-<<<<<<< HEAD
-This issue is known as _slowly changing dimension_ (SCD), often addressed by using a unique identifier for a particular version of the joined record. For example, we can turn the system deterministic if every time the tax rate changes, it is given a new identifier, and the invoice includes the identifier for the tax rate at the time of sale. But as a consequence makes log compation impossible.
-=======
 This issue is known as _slowly changing dimension_ (SCD), often addressed by using a unique identifier for a particular version of the joined record. For example, we can turn the system deterministic if every time the tax rate changes, it is given a new identifier, and the invoice includes the identifier for the tax rate at the time of sale. But as a consequence makes log compaction impossible.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 #### Fault tolerance
 
@@ -3551,11 +3403,7 @@ Batch processing frameworks can tolerate faults fairly easy:if a task in a MapRe
 
 Even though restarting tasks means records can be processed multiple times, the visible effect in the output is as if they had only been processed once (_exactly-once-semantics_ or _effectively-once_).
 
-<<<<<<< HEAD
-With stream processing waiting until a tasks if finished before making its ouput visible is not an option, stream is infinite.
-=======
 With stream processing waiting until a tasks if finished before making its output visible is not an option, stream is infinite.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 One solution is to break the stream into small blocks, and treat each block like a minuature batch process (_micro-batching_). This technique is used in Spark Streaming, and the batch size is typically around one second.
 
@@ -3571,19 +3419,11 @@ Our goal is to discard the partial output of failed tasks so that they can be sa
 
 An idempotent operation is one that you can perform multiple times, and it has the same effect as if you performed it only once.
 
-<<<<<<< HEAD
-Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata. You can tell wether an update has already been applied.
-
-Idempotent operations can be an effective way of achieving exactly-once semantics with only a small overhead.
-
-Any stream process that requires state must ensure tha this state can be recovered after a failure.
-=======
 Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata. You can tell whether an update has already been applied.
 
 Idempotent operations can be an effective way of achieving exactly-once semantics with only a small overhead.
 
 Any stream process that requires state must ensure that this state can be recovered after a failure.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 One option is to keep the state in a remote datastore and replicate it, but it is slow.
 
@@ -3603,11 +3443,7 @@ Transaction systems provide linearizability, useful guarantees as reading your o
 
 In the absence of widespread support for a good distributed transaction protocol, log-based derived data is the most promising approach for integrating different data systems.
 
-<<<<<<< HEAD
-However, as systems are scaled towards bigger and more coplex worloads, limitiations emerge:
-=======
 However, as systems are scaled towards bigger and more coplex workloads, limitations emerge:
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 * Constructing a totally ordered log requires all events to pass through a _single leader node_ that decides on the ordering.
 * An undefined ordering of events that originate on multiple datacenters.
 * When two events originate in different services, there is no defined order for those events.
@@ -3689,11 +3525,7 @@ Another option would be to precompute the search results for only a fixed set of
 
 ##### Read are events too
 
-<<<<<<< HEAD
-It is also possible to represent read requests as streams of events, and send both the read events and write events through a stream processor; the processor responds to read events by emiting the result of the read to an output stream.
-=======
 It is also possible to represent read requests as streams of events, and send both the read events and write events through a stream processor; the processor responds to read events by emitting the result of the read to an output stream.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 It would allow you to reconstruct what the user saw before they made a particular decision.
 
@@ -3743,11 +3575,7 @@ Asynchronous multi-master replication is ruled out as different masters concurre
 
 A stream processor consumes all the messages in a log partition sequentially on a single thread. A stream processor can unambiguously and deterministically decide which one of several conflicting operations came first.
 1. Every request for a username is encoded as a message.
-<<<<<<< HEAD
-2. A stream processor sequentially reads the requests in the log. For every request for a username tht is available, it records the name as taken and emits a success message to an output stream. For every request for a username that is already taken, it emits a rejection message to an output stream.
-=======
 2. A stream processor sequentially reads the requests in the log. For every request for a username that is available, it records the name as taken and emits a success message to an output stream. For every request for a username that is already taken, it emits a rejection message to an output stream.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 3. The client waits for a success or rejection message corresponding to its request.
 
 The approach works not only for uniqueness constraints, but also for many other kinds of constraints.
@@ -3807,11 +3635,7 @@ ACID databases has led us toward developing applications on the basis of blindly
 
 By contrast, event-based systems can provide better auditability (like with event sourcing).
 
-<<<<<<< HEAD
-Cryptographic auditing and integrity checking often relies on _Merkle trees_. Outside of the hype for cryptocurrencies, _certificate transparency_ is a security technology that relies on Merkle trees to check the validity of TLS/SSL certificates.
-=======
 Cryptographic auditing and integrity checking often relies on _Merkle trees_. Outside of the hype for cryptoccurencies, _certificate transparency_ is a security technology that relies on Merkle trees to check the validity of TLS/SSL certificates.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ### Doing the right thing
 
@@ -3849,11 +3673,7 @@ If the service is funded through advertising, the advertirsers are the actual cu
 
 The user is given a free service and is coaxed into engaging with it as much as possible. The tracking of the user serves the needs of the advertirses who are funding the service. This is basically _surveillance_.
 
-<<<<<<< HEAD
-As a thougt experiment, try replacing the word _data_ with _surveillance_.
-=======
 As a thought experiment, try replacing the word _data_ with _surveillance_.
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 Even themost totalitarian and repressive regimes could only dream of putting a microphone in every room and forcing every person to constantly carry a device capable of tracking their location and movements. Yet we apparently voluntarily, even enthusiastically, throw ourselves into this world of total surveillance. The difference is just that the data is being collected by corporations rather than government agencies.
 

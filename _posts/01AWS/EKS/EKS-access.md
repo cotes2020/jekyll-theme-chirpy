@@ -2,14 +2,11 @@
 - [EKS](#eks)
   - [Kubernetes services](#kubernetes-services)
     - [expose the Kubernetes services](#expose-the-kubernetes-services)
-<<<<<<< HEAD
-=======
       - [`ClusterIP`](#clusterip)
       - [`NodePort`](#nodeport)
       - [`LoadBalancer`](#loadbalancer)
     - [how to choose](#how-to-choose)
     - [example](#example)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   - [Aceess](#aceess)
   - [use case](#use-case)
     - [Enabling cross-account access to EKS cluster resources](#enabling-cross-account-access-to-eks-cluster-resources)
@@ -33,11 +30,6 @@
 ### expose the Kubernetes services
 
 
-<<<<<<< HEAD
-- `ClusterIP` exposes the service on a cluster's internal IP address.
-- `NodePort` exposes the service on each node’s IP address at a static port.
-- `LoadBalancer` exposes the service externally using a load balancer.
-=======
 #### `ClusterIP`
 - exposes the service on a cluster's internal IP address.
 - 默认的ServiceType
@@ -99,7 +91,6 @@ LoadBalancer services are less secure than ClusterIP services,
 
 
 ### example
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ```bash
 # Create a sample application
@@ -185,11 +176,7 @@ kubectl delete service nginx-service-cluster-ip
 2. Create a NodePort service
 
 ```bash
-<<<<<<< HEAD
-# reate a NodePort service
-=======
 # create a NodePort service
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 cat <<EOF > nodeport.yaml
 apiVersion: v1
 kind: Service
@@ -459,36 +446,19 @@ aws iam attach-role-policy \
 
 ```bash
 # Set variables
-<<<<<<< HEAD
-export cluster_name=dev-medusa-01
-export namespace=default
-export service_account=medusa-core
-export my_role=eks-medusa-core
-export policy_arn=arn:aws:iam::350842811077:policy/medusa-coe-config-policy
-=======
 export cluster_name=dev-my-app-01
 export namespace=default
 export service_account=my-app
 export my_role=eks-my-app
 export policy_arn=arn:aws:iam::my_account:policy/my-app-coe-config-policy
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 # Set AWS account ID
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
 # Set cluster's OIDC identity provider
 oidc_provider=$(aws eks describe-cluster \
-<<<<<<< HEAD
-  --name dev-medusa-01 \
-  --query "cluster.identity.oidc.issuer" \
-  --output text | sed -e "s/^https:\/\///")
-
-
-
-=======
   --name dev-my-app-01 \
   --query "cluster.identity.oidc.issuer" \
   --output text | sed -e "s/^https:\/\///")
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 # ============= 1
 eksctl create iamserviceaccount \
   --name $service_account \
@@ -498,10 +468,6 @@ eksctl create iamserviceaccount \
   --attach-policy-arn $policy_arn \
   --approve
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 # ============= 2
 cat >my-service-account.yaml <<EOF
 apiVersion: v1
@@ -634,15 +600,6 @@ kubectl describe serviceaccount $service_account -n default
 ```bash
 
 # Set variables
-<<<<<<< HEAD
-export cluster_name=dev-medusa-01
-export namespace=default
-export service_account=medusa-core
-export my_app=medusa-core
-export my_pod=medusa-core-5bbf4dd447-rshjm
-export my_role=eks-medusa-core
-export policy_arn=arn:aws:iam::350842811077:policy/medusa-coe-config-policy
-=======
 export cluster_name=dev-my-app-01
 export namespace=default
 export service_account=my-app
@@ -650,16 +607,11 @@ export my_app=my-app
 export my_pod=my-app-5bbf4dd447-rshjm
 export my_role=eks-my-app
 export policy_arn=arn:aws:iam::my_account:policy/my-app-coe-config-policy
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 # Set AWS account ID
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
 # Set cluster's OIDC identity provider
 oidc_provider=$(aws eks describe-cluster \
-<<<<<<< HEAD
-  --name dev-medusa-01 \
-=======
   --name dev-my-app-01 \
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   --query "cluster.identity.oidc.issuer" \
   --output text | sed -e "s/^https:\/\///")
 

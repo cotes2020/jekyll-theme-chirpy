@@ -2,18 +2,12 @@ root = true
 
 [*]
 charset = utf-8
-<<<<<<< HEAD
-# 2 space indentation
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
 # Unix-style newlines with a newline ending every file
 end_of_line = lf
 insert_final_newline = true
-<<<<<<< HEAD
-=======
 
 [*.{js,css,scss}]
 quote_type = single
@@ -23,4 +17,3 @@ quote_type = double
 
 [*.md]
 trim_trailing_whitespace = false
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28

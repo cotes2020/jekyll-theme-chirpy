@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-<!--
-  The Head
--->
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  {% if page.layout == 'home' or page.layout == 'post' %}
-
-    <!-- i18n for `_javascript/utils/timeago.js` -->
-    <meta name="day-prompt" content="{{ site.data.locales[lang].post.timeago.day }}">
-    <meta name="hour-prompt" content="{{ site.data.locales[lang].post.timeago.hour }}">
-    <meta name="minute-prompt" content="{{ site.data.locales[lang].post.timeago.minute }}">
-    <meta name="justnow-prompt" content="{{ site.data.locales[lang].post.timeago.just_now }}">
-
-=======
 <!-- The Head -->
 
 <head>
@@ -30,7 +12,6 @@
   >
 
   {% if page.layout == 'home' or page.layout == 'post' %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     {% if site.google_analytics.pv.proxy_endpoint %}
       <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
     {% endif %}
@@ -38,17 +19,6 @@
     {% if site.google_analytics.pv.cache_path %}
       <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
     {% endif %}
-<<<<<<< HEAD
-
-  {% endif %}
-
-  {% seo title=false %}
-
-  <title>
-  {%- unless page.layout == "home" -%}
-    {{ page.title | append: " | "}}
-  {%- endunless -%}
-=======
   {% endif %}
 
   {% capture seo_tags %}
@@ -82,20 +52,11 @@
     {%- unless page.layout == 'home' -%}
       {{ page.title | append: ' | ' }}
     {%- endunless -%}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     {{ site.title }}
   </title>
 
   {% include favicons.html %}
 
-<<<<<<< HEAD
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-
-  <!-- GA -->
-  {% if jekyll.environment == 'production' %}
-=======
   {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
     <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
 
@@ -110,7 +71,6 @@
 
   <!-- GA -->
   {% if jekyll.environment == 'production' and site.google_analytics.id != empty and site.google_analytics.id %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
@@ -119,39 +79,16 @@
 
     {% if site.google_analytics.pv.proxy_endpoint %}
       {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
-<<<<<<< HEAD
-        | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
-
-=======
         | replace: 'https://', ''
         | split: '/'
         | first
         | prepend: 'https://'
       %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
       <link rel="dns-prefetch" href="{{ proxy_url }}">
     {% endif %}
   {% endif %}
 
-<<<<<<< HEAD
-  <!-- jsDelivr CDN -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css">
-
-  {% include css-selector.html %}
-
-  <!-- JavaScript -->
-
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-
-=======
   <!-- Bootstrap -->
   <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css | relative_url}}">
 
@@ -176,5 +113,4 @@
   {% unless site.theme_mode %}
     {% include mode-toggle.html %}
   {% endunless %}
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 </head>

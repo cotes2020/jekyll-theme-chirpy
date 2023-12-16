@@ -50,11 +50,7 @@ tags: [HTML]
 - The language of the document can be declared in the `<html>` tag
 - important for *accessibility applications (screen readers) and search engines*:
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <!DOCTYPE html>
 <html lang="en-US">
 <body>
@@ -67,11 +63,7 @@ tags: [HTML]
 - title attribute is added to the `<p>` element.
 - will be displayed as a tooltip when you mouse over the paragraph:
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h2 title="I'm a header">The title Attribute</h2>
 <p title="I'm a tooltip">Mouse over this paragraph, to display the title attribute as a tooltip.</p>
 ```
@@ -88,11 +80,7 @@ tags: [HTML]
 ### CSS property
 
 #### `background-color`
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <body style="background-color:powderblue;">
 
 <h1>This is a heading</h1>
@@ -121,11 +109,7 @@ CSS can be added to HTML elements in 3 ways:
   - not professional, not scalable, not practical.
 
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="color:blue;">This is a Blue Heading</h1>
 ```
 
@@ -140,11 +124,7 @@ CSS can be added to HTML elements in 3 ways:
 - **avoid**
   - only for that single html file, also fattens up the HTML file.
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <head>
 
   <style>
@@ -171,25 +151,15 @@ CSS can be added to HTML elements in 3 ways:
 
 ![Screen Shot 2020-05-12 at 22.35.19](https://i.imgur.com/GT3XrCC.png)
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <head>
   <link rel="stylesheet" href="styles.css">
 </head>
 ```
 
-<<<<<<< HEAD
-**crate a separate css file**: the `"styles.css"`:
-
-```html
-=======
 **create a separate css file**: the `"styles.css"`:
 
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 body {
   background-color: powderblue;
 }
@@ -207,39 +177,23 @@ h1 {
 External style sheets can be referenced with a full URL or with a path relative to the current web page.
 
 full URL to link to a style sheet:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
 ```
 
 style sheet located in the html folder on the current web site:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <link rel="stylesheet" href="/html/styles.css">
 ```
 
 style sheet located in the same folder as the current page:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <link rel="stylesheet" href="styles.css">
 ```
 
 ---
 
-<<<<<<< HEAD
-#### CSS: Classe and ID
-=======
 #### CSS: Classes and ID
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 **id** is *unique*, wont's use it for other element.
 **class** is may use for other element.
@@ -254,11 +208,7 @@ style sheet located in the same folder as the current page:
   - add an `id` attribute to the element:
   - then define a style for the element with the specific `id`:
 
-<<<<<<< HEAD
-    ```html
-=======
     ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     <p id="p01">I am different</p>
     <img src="cake,jpg" id="cakeimg" />
 
@@ -277,11 +227,7 @@ style sheet located in the same folder as the current page:
    - add a `class` attribute to the element:
    - then define a style for the elements with the specific `class`:
 
-<<<<<<< HEAD
-    ```html
-=======
     ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     <p class="error">I am different</p>
     <li class="foodLi"> choco </li>
 
@@ -320,44 +266,28 @@ p {
   - 140 color name,
   - RGB `rgb(138,42,33)`,
   - Hex value `#8A2BE2`
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="color:blue;">This is a heading</h1>
 <p style="color:red;">This is a paragraph.</p>
 ```
 
 #### `font-family` 字体
 defines the font to be used for an HTML element:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="font-family:verdana;">This is a heading</h1>
 <p style="font-family:courier;">This is a paragraph.</p>
 ```
 
 #### `font-size` 字号
 defines the text size for an HTML element:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="font-size:300%;">This is a heading</h1>
 <p style="font-size:160%;">This is a paragraph.</p>
 ```
 
 #### `text-align` 居中 text alignment
 defines the horizontal text alignment for an HTML element:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="text-align:center;">Centered Heading</h1>
 <p style="text-align:center;">Centered paragraph.</p>
 ```
@@ -367,11 +297,7 @@ defines the horizontal text alignment for an HTML element:
 
 ## HTML Text Formatting
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 <b> - Bold text
 <strong> - Important text
@@ -394,21 +320,13 @@ defines the horizontal text alignment for an HTML element:
 ## HTML Quotation and Citation Elements
 
 ### HTML `<q>` for Short Quotations
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
 ```
 
 ### HTML `<blockquote>` for Quotations
 defines a section that is quoted from another source.
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <p>Here is a quote from WWF's website:</p>
 <blockquote cite="http://www.worldwildlife.org/who/index.html">
 For 50 years, WWF has been protecting the future of nature.
@@ -427,11 +345,7 @@ defines an abbreviation or an acronym.
 
 Marking abbreviations can *give useful information to browsers, translation systems and search-engines*.
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
 ```
 
@@ -441,11 +355,7 @@ defines contact information (author/owner) of a document or an article.
 
 The `<address>` element is usually displayed in italic. Most browsers will add a line break before and after the element.
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <address>
 Written by John Doe.<br>
 Visit us at:<br>
@@ -459,21 +369,13 @@ USA
 defines the title of a work.
 
 Browsers usually display `<cite>` elements in italic.
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <p><cite>The Scream</cite> by Edvard Munch. Painted in 1893.</p>
 ```
 
 ### HTML `<bdo>` for Bi-Directional Override
 defines bi-directional override. override the current text direction:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <bdo>This text will be written from right to left</bdo>
 正方形
 <br>
@@ -491,11 +393,7 @@ exclamation point (!) in the opening tag, but not in the closing tag.
 
 not displayed by the browser, but can help document HTML source code.
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <!-- This is a comment -->
 <p>This is a paragraph.</p>
 <!-- Remember to add more information here -->
@@ -512,11 +410,7 @@ not displayed by the browser, but can help document HTML source code.
 
 ### `background-color` and `color`
 
-<<<<<<< HEAD
-```HTML
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 <body style="background-color:powderblue;">
 
@@ -534,11 +428,7 @@ not displayed by the browser, but can help document HTML source code.
 
 ### `Border` Border Color
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="border:2px solid Tomato;">Hello World</h1>
 <h1 style="border:2px solid DodgerBlue;">Hello World</h1>
 <h1 style="border:2px solid Violet;">Hello World</h1>
@@ -552,11 +442,7 @@ not displayed by the browser, but can help document HTML source code.
 
 `hsl(hue, saturation, lightness)`
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <h1 style="background-color:rgb(255, 99, 71);">...</h1>
 <h1 style="background-color:#ff6347;">...</h1>
 <h1 style="background-color:hsl(9, 100%, 64%);">...</h1>
@@ -604,11 +490,7 @@ The target attribute can have one of the following values:
 
 ### Image as a Link
 It is common to use images as links:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <a href="default.asp">
   <img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
 </a>
@@ -619,11 +501,7 @@ To use an HTML button as a link, you have to add some JavaScript code.
 
 JavaScript allows you to specify what happens at certain events, such as a click of a button:
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <button>HTML Tutorial</button>
 
 <button onclick="document.location = 'default.asp'">HTML Tutorial</button>
@@ -645,11 +523,7 @@ By default, a link will appear like this (in all browsers):
 - A visited link is underlined and purple
 - An active link is underlined and red
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <style>
 a:link {
   color: green;
@@ -681,11 +555,7 @@ a:active {
 #### Link Buttons
 A link can also be styled as a button, by using CSS:
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <style>
 a:link, a:visited {
   background-color: #f44336;        设置内圈颜色
@@ -719,11 +589,7 @@ create a bookmark with the id attribute:
 add a link to the bookmark ("Jump to Chapter 4"), from within the same page:
 `<a href="#C4">Jump to Chapter 4</a>`
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <body>
 <p><a href="#C4">Jump to Chapter 4</a></p>
 <p><a href="#C10">Jump to Chapter 10</a></p>
@@ -746,11 +612,7 @@ add a link to the bookmark ("Jump to Chapter 4"), from within the same page:
 
 ## HTML Images
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 <img src="img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
 
@@ -764,11 +626,7 @@ The `width`, `height`, and `style` attributes are valid in HTML.
 suggest using the `style` attribute. It prevents styles sheets from changing the size of images:
 
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <!DOCTYPE html>
 <html>
 
@@ -790,11 +648,7 @@ suggest using the `style` attribute. It prevents styles sheets from changing the
 
 #### location
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 Images in Another Folder
 <img src="/images/html5.gif" alt="HTML5 Icon">
 
@@ -805,11 +659,7 @@ Images on Another Server:
 
 #### Animated Images
 HTML allows animated GIFs:
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <img src="programming.gif" alt="Computer Man">
 ```
 
@@ -818,11 +668,7 @@ HTML allows animated GIFs:
 use an image as a link, put the `<img>` tag inside the `<a>` tag:
 - `border:0;` is added to prevent IE9 (and earlier) from displaying a border around the image (when the image is a link).
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <a href="default.asp">
   <img src="smiley.gif" alt="HTML tutorial" style="border:0;">
 </a>
@@ -832,11 +678,7 @@ use an image as a link, put the `<img>` tag inside the `<a>` tag:
 #### Image Floating `<img src="url" style="float:right;">`
 let the image float to the right or to the left of a text:
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 float to the right of the text:
 <p>
   <img src="smiley.gif" alt="Smiley face" style="float:right;">
@@ -856,11 +698,7 @@ defines an image-map
 - an image with clickable areas.
 - may insert the `<map>` element anywhere,.
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <img src="workplace.jpg" alt="Workplace" usemap="#workmap">
 
 <map name="workmap">
@@ -884,11 +722,7 @@ defines an image-map
 - A clickable area: a `link to another page`, or trigger a `JavaScript function`.
 - Add a click event on the `<area>` element to execute a JavaScript function:
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <!DOCTYPE html>
 <html>
 <body>
@@ -915,12 +749,8 @@ function myFunction() {
 ### HTML Background Images
 
 1. text background color
-<<<<<<< HEAD
-```html
-=======
 
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <body>
     <div style="background-image: url('img_girl.jpg');">
       You can specify background images.
@@ -934,14 +764,9 @@ or
 </style>
 ```
 
-<<<<<<< HEAD
-2. 网页页面背景：
-```html
-=======
 1. 网页页面背景：
 
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <style>
     body {
       background-image: url('img_girl.jpg');
@@ -957,11 +782,7 @@ or
 - add a background image **on an HTML element**,
 - **use the HTML style attribute and the CSS background-image property**
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <body>
     <div style="background-image: url('img_girl.jpg');">
       hello.         // 只有字段大小的图片显示出来
@@ -970,12 +791,8 @@ or
 ```
 
 Specify the background image **in the style element:**
-<<<<<<< HEAD
-```html
-=======
 
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <style>
     div {background-image: url('img_girl.jpg');}
 </style>
@@ -983,12 +800,8 @@ Specify the background image **in the style element:**
 
 **the entire page to have a background image**
 specify the background image on the `<body>` element:
-<<<<<<< HEAD
-```html
-=======
 
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <style>
     body {background-image: url('img_girl.jpg');}
 </style>
@@ -997,11 +810,7 @@ specify the background image on the `<body>` element:
 
 #### Background Repeat
 - If the background image is smaller than the element,
-<<<<<<< HEAD
-- defalut, the image will repeat itself, horizontally and vertically, until it reaches the end of the element:
-=======
 - default, the image will repeat itself, horizontally and vertically, until it reaches the end of the element:
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 - avoid the repeating: `background-repeat: no-repeat;`
 
 
@@ -1018,11 +827,7 @@ specify the background image on the `<body>` element:
 - display different pictures for different devices or screen sizes.
 - the browser can choose the image that best fits the current view and/or device.
 
-<<<<<<< HEAD
-```html
-=======
 ```js
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <picture>
   <source media="(min-width: 650px)" srcset="img_food.jpg">
   <source media="(min-width: 465px)" srcset="img_car.jpg">

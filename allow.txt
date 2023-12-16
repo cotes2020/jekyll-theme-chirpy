@@ -3,15 +3,10 @@ aline
 anid
 ans
 anumber
-<<<<<<< HEAD
-braket
-bu
-=======
 aks
 braket
 bu
 buildd
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 childs
 cna
 columnn
@@ -26,19 +21,13 @@ insid
 inport
 keypair
 keypairs
-<<<<<<< HEAD
-=======
 msdos
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 nam
 nd
 noone
 ot
-<<<<<<< HEAD
-=======
 reate
 rouge
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 seh
 ser
 te
@@ -56,16 +45,11 @@ whats
 womens
 wouldnt
 wont
-<<<<<<< HEAD
-=======
 ist
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 fromi
 toi
 pricei
-<<<<<<< HEAD
-=======
 
 alle
 archiv
@@ -87,4 +71,3 @@ trough
 reoccurrence
 lamda
 membran
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
