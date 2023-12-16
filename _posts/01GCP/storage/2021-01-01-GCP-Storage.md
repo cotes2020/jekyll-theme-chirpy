@@ -8,12 +8,9 @@ image:
 ---
 
 - [GCP Storage](#gcp-storage)
-<<<<<<< HEAD
-=======
   - [Data Type](#data-type)
     - [Unstructure Data](#unstructure-data)
     - [Structure Data](#structure-data)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   - [object](#object)
     - [Cloudstorage](#cloudstorage)
     - [filestorage](#filestorage)
@@ -31,8 +28,6 @@ image:
 
 ![Screen Shot 2021-06-29 at 12.43.36 AM](https://i.imgur.com/fpA35QT.png)
 
-<<<<<<< HEAD
-=======
 ![Screenshot 2023-09-24 at 23.48.10](/assets/img/post/Screenshot%202023-09-24%20at%2023.48.10.png)
 
 
@@ -49,7 +44,6 @@ image:
 ![Screenshot 2023-09-24 at 23.49.03](/assets/img/post/Screenshot%202023-09-24%20at%2023.49.03.png)![Screenshot 2023-09-24 at 23.49.11](/assets/img/post/Screenshot%202023-09-24%20at%2023.49.11.png)
 
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ---
 
 ## object

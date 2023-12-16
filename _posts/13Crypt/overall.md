@@ -7,13 +7,9 @@ toc: true
 image:
 ---
 
-<<<<<<< HEAD
-[toc]
-=======
 - [Modern Cryptography](#modern-cryptography)
   - [Key Requirements](#key-requirements)
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 
@@ -55,8 +51,4 @@ asymmetric:
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 .

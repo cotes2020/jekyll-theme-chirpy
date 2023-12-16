@@ -6,7 +6,6 @@ tags: [Linux, VMs, Kubernetes]
 math: true
 image:
 ---
-
 - [Virtulization - Google Kubernetes](#virtulization---google-kubernetes)
   - [basic](#basic)
   - [need of container orchestration tool](#need-of-container-orchestration-tool)
@@ -35,13 +34,8 @@ image:
   - [deploy](#deploy)
     - [Deployment](#deployment)
     - [StatefulSet](#statefulset)
-<<<<<<< HEAD
-=======
   - [Network policy?](#network-policy)
     - [network policy security](#network-policy-security)
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
-
-
 
 ---
 
@@ -896,8 +890,6 @@ kubectl get nodes -L role
 ### StatefulSet
 
 
-<<<<<<< HEAD
-=======
 ---
 
 ## Network policy?
@@ -930,7 +922,6 @@ Network policy represents an important evolution of network security, not just b
 
 
 
->>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
