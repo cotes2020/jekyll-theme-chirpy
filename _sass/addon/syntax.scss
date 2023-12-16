@@ -2,6 +2,7 @@
 * The syntax highlight.
 */
 
+<<<<<<< HEAD
 @import "colors/light-syntax";
 @import "colors/dark-syntax";
 
@@ -28,11 +29,42 @@ html[mode=dark] {
 /* -- Codes Snippet -- */
 
 $code-radius: 6px;
+=======
+@import 'colors/light-syntax';
+@import 'colors/dark-syntax';
+
+html {
+  @media (prefers-color-scheme: light) {
+    &:not([data-mode]),
+    &[data-mode='light'] {
+      @include light-syntax;
+    }
+
+    &[data-mode='dark'] {
+      @include dark-syntax;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:not([data-mode]),
+    &[data-mode='dark'] {
+      @include dark-syntax;
+    }
+
+    &[data-mode='light'] {
+      @include light-syntax;
+    }
+  }
+}
+
+/* -- code snippets -- */
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 %code-snippet-bg {
   background: var(--highlight-bg-color);
 }
 
+<<<<<<< HEAD
 %code-snippet-radius {
   border-radius: $code-radius;
 }
@@ -45,11 +77,20 @@ div > pre {
   @extend %code-snippet-bg;
   @extend %code-snippet-radius;
   @extend %code-snippet-padding;
+=======
+%code-snippet-padding {
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 
 .highlighter-rouge {
   @extend %code-snippet-bg;
+<<<<<<< HEAD
   @extend %code-snippet-radius;
+=======
+  @extend %rounded;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   color: var(--highlighter-rouge-color);
   margin-top: 0.5rem;
@@ -57,7 +98,11 @@ div > pre {
 }
 
 .highlight {
+<<<<<<< HEAD
   @extend %code-snippet-radius;
+=======
+  @extend %rounded;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   @extend %code-snippet-bg;
 
   @at-root figure#{&} {
@@ -65,6 +110,11 @@ div > pre {
   }
 
   overflow: auto;
+<<<<<<< HEAD
+=======
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   pre {
     margin-bottom: 0;
@@ -74,25 +124,34 @@ div > pre {
   }
 
   table {
+<<<<<<< HEAD
     padding: 0;
     border: 0;
     td pre {
       overflow: visible;  /* Fixed iOS safari overflow-x */
+=======
+    td pre {
+      overflow: visible; /* Fixed iOS safari overflow-x */
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       word-break: normal; /* Fixed iOS safari linenos code break */
     }
   }
 
+<<<<<<< HEAD
   td {
     padding: 0;
     border: 0;
   }
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   .lineno {
     padding-right: 0.5rem;
     min-width: 2.2rem;
     text-align: right;
     color: var(--highlight-lineno-color);
     -webkit-user-select: none;
+<<<<<<< HEAD
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -106,20 +165,36 @@ div > pre {
   }
 
 } //.highlight
+=======
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+} /* .highlight */
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 code {
   -webkit-hyphens: none;
   -ms-hyphens: none;
+<<<<<<< HEAD
   -moz-hyphens: none;
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   hyphens: none;
 
   &.highlighter-rouge {
     font-size: $code-font-size;
     padding: 3px 5px;
+<<<<<<< HEAD
+=======
+    word-break: break-word;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     border-radius: 4px;
     background-color: var(--inline-code-bg);
   }
 
+<<<<<<< HEAD
   @at-root a > &.highlighter-rouge {
     padding-bottom: 0; // show link's underlinke
     color: inherit;
@@ -139,17 +214,55 @@ td.rouge-code {
 
   // Prevent some browser extends from
   // changing the URL string of code block.
+=======
+  &.filepath {
+    background-color: inherit;
+    color: var(--filepath-text-color);
+    font-weight: 600;
+    padding: 0;
+  }
+
+  a > &.highlighter-rouge {
+    padding-bottom: 0; /* show link's underlinke */
+    color: inherit;
+  }
+
+  a:hover > &.highlighter-rouge {
+    border-bottom: none;
+  }
+
+  blockquote & {
+    color: inherit;
+  }
+
+  .highlight > & {
+    color: transparent;
+  }
+}
+
+td.rouge-code {
+  @extend %code-snippet-padding;
+
+  /*
+    Prevent some browser extends from
+    changing the URL string of code block.
+  */
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   a {
     color: inherit !important;
     border-bottom: none !important;
     pointer-events: none;
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
   &[class^='highlighter-rouge'],
+<<<<<<< HEAD
   &.language-plaintext.highlighter-rouge,
   &.language-console.highlighter-rouge,
   &.language-terminal.highlighter-rouge,
@@ -159,11 +272,24 @@ div {
     }
     td.rouge-code {
       @extend %code-snippet-padding;
+=======
+  &.nolineno,
+  &.language-plaintext.highlighter-rouge,
+  &.language-console.highlighter-rouge,
+  &.language-terminal.highlighter-rouge {
+    pre.lineno {
+      display: none;
+    }
+
+    td.rouge-code {
+      padding-left: 1.5rem;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
   }
 }
 
 .code-header {
+<<<<<<< HEAD
   background: var(--code-header-bg);
   border-top-left-radius: $code-radius;
   border-top-right-radius: $code-radius;
@@ -209,18 +335,105 @@ div {
     &:not([timeout]):hover {
       background-color: gray;
       color: white;
+=======
+  @extend %no-cursor;
+
+  $code-header-height: 2.25rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $code-header-height;
+
+  &::before {
+    $dot-size: 0.75rem;
+    $dot-margin: 0.5rem;
+
+    content: '';
+    display: inline-block;
+    margin-left: 1rem;
+    width: $dot-size;
+    height: $dot-size;
+    border-radius: 50%;
+    background-color: var(--code-header-muted-color);
+    box-shadow: ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
+      ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
+  }
+
+  /* the label block */
+  span {
+    /* label icon */
+    i {
+      font-size: 1rem;
+      margin-right: 0.4rem;
+      color: var(--code-header-icon-color);
+
+      &.small {
+        font-size: 70%;
+      }
+    }
+
+    @at-root [file] #{&} > i {
+      position: relative;
+      top: 1px; /* center the file icon */
+    }
+
+    /* label text */
+    &::after {
+      content: attr(data-label-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--code-header-text-color);
+    }
+  }
+
+  /* clipboard */
+  button {
+    @extend %cursor-pointer;
+    @extend %rounded;
+
+    border: 1px solid transparent;
+    height: $code-header-height;
+    width: $code-header-height;
+    padding: 0;
+    background-color: inherit;
+
+    i {
+      color: var(--code-header-icon-color);
+    }
+
+    &[timeout] {
+      &:hover {
+        border-color: var(--clipboard-checked-color);
+      }
+
+      i {
+        color: var(--clipboard-checked-color);
+      }
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     }
 
     &:focus {
       outline: none;
     }
 
+<<<<<<< HEAD
     i {
       font-size: 0.9rem;
     }
 
   }
 
+=======
+    &:not([timeout]):hover {
+      background-color: rgba(128, 128, 128, 0.37);
+
+      i {
+        color: white;
+      }
+    }
+  }
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 
 @media all and (max-width: 576px) {
@@ -230,6 +443,13 @@ div {
 
       border-radius: 0;
 
+<<<<<<< HEAD
+=======
+      .highlight {
+        padding-left: 0.25rem;
+      }
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       .code-header {
         border-radius: 0;
         padding-left: 0.4rem;

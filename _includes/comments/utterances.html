@@ -1,0 +1,51 @@
+<!-- https://utteranc.es/ -->
+<script src="https://utteranc.es/client.js"
+        repo="{{ site.comments.utterances.repo }}"
+        issue-term="{{ site.comments.utterances.issue_term }}"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    const origin = "https://utteranc.es";
+    const iframe = "iframe.utterances-frame";
+    const lightTheme = "github-light";
+    const darkTheme = "github-dark";
+    let initTheme = lightTheme;
+
+    if ($("html[data-mode=dark]").length > 0
+        || ($("html[data-mode]").length == 0
+            && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      initTheme = darkTheme;
+    }
+
+    addEventListener("message", (event) => {
+      let theme;
+
+      /* credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> */
+      if (event.origin === origin) {
+        /* page initial */
+        theme = initTheme;
+
+      } else if (event.source === window && event.data &&
+            event.data.direction === ModeToggle.ID) {
+        /* global theme mode changed */
+        const mode = event.data.message;
+        theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+
+      } else {
+        return;
+      }
+
+      const message = {
+        type: "set-theme",
+        theme: theme
+      };
+
+      const utterances = document.querySelector(iframe).contentWindow;
+      utterances.postMessage(message, origin);
+    });
+
+  });
+</script>

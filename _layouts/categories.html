@@ -3,8 +3,11 @@ layout: page
 # All the Categories of posts
 ---
 
+<<<<<<< HEAD
 {% include lang.html %}
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 {% assign HEAD_PREFIX = "h_" %}
 {% assign LIST_PREFIX = "l_" %}
 
@@ -47,10 +50,31 @@ layout: page
         <span class="text-muted small font-weight-light">
           {% if sub_categories_size > 0 %}
             {{ sub_categories_size }}
+<<<<<<< HEAD
             {{ site.data.locales[lang].categories.category_measure }},
           {% endif %}
             {{ top_posts_size }}
             {{ site.data.locales[lang].categories.post_measure }}
+=======
+            {% if sub_categories_size > 1 %}
+              {{ site.data.locales[site.lang].categories.category_measure.plural
+                | default: site.data.locales[site.lang].categories.category_measure }}
+            {% else %}
+              {{ site.data.locales[site.lang].categories.category_measure.singular
+                | default: site.data.locales[site.lang].categories.category_measure }}
+            {% endif %},
+          {% endif %}
+
+          {{ top_posts_size }}
+
+          {% if top_posts_size > 1 %}
+            {{ site.data.locales[site.lang].categories.post_measure.plural
+              | default: site.data.locales[site.lang].categories.post_measure }}
+          {% else %}
+            {{ site.data.locales[site.lang].categories.post_measure.singular
+              | default: site.data.locales[site.lang].categories.post_measure }}
+          {% endif %}
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
         </span>
       </span>
 
@@ -83,7 +107,18 @@ layout: page
           {% assign posts_size = site.categories[sub_category] | size %}
           <span class="text-muted small font-weight-light">
             {{ posts_size }}
+<<<<<<< HEAD
             {{ site.data.locales[lang].categories.post_measure }}
+=======
+
+            {% if posts_size > 1 %}
+              {{ site.data.locales[site.lang].categories.post_measure.plural
+                | default: site.data.locales[site.lang].categories.post_measure }}
+            {% else %}
+              {{ site.data.locales[site.lang].categories.post_measure.singular
+                | default: site.data.locales[site.lang].categories.post_measure }}
+            {% endif %}
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
           </span>
         </li>
         {% endfor %}

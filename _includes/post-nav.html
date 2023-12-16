@@ -5,6 +5,7 @@
 <div class="post-navigation d-flex justify-content-between">
   {% if page.previous.url %}
   <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary"
+<<<<<<< HEAD
     prompt="{{ site.data.locales[lang].post.button.previous }}">
     <p>{{ page.previous.title }}</p>
   </a>
@@ -13,10 +14,21 @@
     prompt="{{ site.data.locales[lang].post.button.previous }}">
     <p>-</p>
   </span>
+=======
+    prompt="{{ site.data.locales[site.lang].post.button.previous }}">
+    <p>{{ page.previous.title }}</p>
+  </a>
+  {% else %}
+  <div class="btn btn-outline-primary disabled"
+    prompt="{{ site.data.locales[site.lang].post.button.previous }}">
+    <p>-</p>
+  </div>
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   {% endif %}
 
   {% if page.next.url %}
   <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary"
+<<<<<<< HEAD
     prompt="{{ site.data.locales[lang].post.button.next }}">
     <p>{{ page.next.title }}</p>
   </a>
@@ -25,6 +37,16 @@
     prompt="{{ site.data.locales[lang].post.button.next }}">
     <p>-</p>
   </span>
+=======
+    prompt="{{ site.data.locales[site.lang].post.button.next }}">
+    <p>{{ page.next.title }}</p>
+  </a>
+  {% else %}
+  <div class="btn btn-outline-primary disabled"
+    prompt="{{ site.data.locales[site.lang].post.button.next }}">
+    <p>-</p>
+  </div>
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   {% endif %}
 
 </div>

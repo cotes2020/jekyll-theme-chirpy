@@ -8,10 +8,26 @@ toc: true
 ---
 
 - [Course - Learning Path](#course---learning-path)
+<<<<<<< HEAD
   - [Cloud](#cloud)
   - [Security Project/LAB](#security-projectlab)
   - [Security](#security)
   - [Programmnig and Computer Science](#programmnig-and-computer-science)
+=======
+  - [Cyber Security Career path](#cyber-security-career-path)
+  - [Cloud](#cloud)
+    - [GCP](#gcp)
+    - [AWS](#aws)
+    - [ALI](#ali)
+  - [Security](#security)
+    - [Security Course](#security-course)
+    - [Security Project/LAB](#security-projectlab)
+  - [Programmnig and Computer Science](#programmnig-and-computer-science)
+    - [Machine Learning](#machine-learning)
+    - [Python](#python)
+    - [Java](#java)
+    - [Linux](#linux)
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   - [link](#link)
   - [other source](#other-source)
   - [Tools:](#tools)
@@ -44,11 +60,15 @@ sleepy....
 5. translate to code
 6. run test cases
 7. debug failed test
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ```
 
 ---
 
+<<<<<<< HEAD
 ## Cloud
 
 
@@ -56,6 +76,27 @@ sleepy....
 | GCP Certificate                                                                                                                                                                            | Mark |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
 | **coursera** ==========                                                                                                                                                                    |
+=======
+## Cyber Security Career path
+
+![IMG_1006](/assets/img/Fh8IBRdUoAAuOC5.jpeg)
+
+![IMG_1004](/assets/img/IMG_1004.JPG)
+
+![IMG_1005](/assets/img/IMG_1005.JPG)
+
+---
+
+## Cloud
+
+---
+
+### GCP
+
+| GCP Certificate                                                                                                                                                                            | Mark |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
+| **coursera**                                                                                                                                                                               |
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 | Certification: `GCP - Cloud Engineer Professional Certificate`                                                                                                                             | 🐰    |
 | [COURSE 1 Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/learn/gcp-fundamentals?specialization=cloud-engineering-gcp) 06/15/21                          | ✔️    |
 | [COURSE 2 Essential Google Cloud Infrastructure: Foundation](https://www.coursera.org/learn/gcp-infrastructure-foundation?specialization=cloud-engineering-gcp) 06/20/21                   | ✔️    |
@@ -63,6 +104,7 @@ sleepy....
 | [COURSE 4 Elastic Google Cloud Infrastructure: Scaling and Automation](https://www.coursera.org/learn/gcp-infrastructure-scaling-automation?specialization=cloud-engineering-gcp)          | ✏️    |
 | [COURSE 5 Architecting with Google Kubernetes Engine: Foundations](https://www.coursera.org/learn/foundations-google-kubernetes-engine-gke?specialization=cloud-engineering-gcp)           | ✏️    |
 | [COURSE 6 Preparing for the Google Cloud Associate Cloud Engineer Exam](https://www.coursera.org/learn/preparing-cloud-associate-cloud-engineer-exam?specialization=cloud-engineering-gcp) | ✏️    |
+<<<<<<< HEAD
 | Certification: `Architecting with Google Kubernetes Engine Specialization`                                                                                                                 |
 | [Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?)                                                 | ✏️    |
 | **cloudacademy** ==========                                                                                                                                                                |
@@ -72,6 +114,18 @@ sleepy....
 
 
 
+=======
+| Certification: `Architecting with Google Kubernetes Engine Specialization`                                                                                                                 | 🐰    |
+| [Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?)                                                 | ✏️    |
+| Certification: `Google Cloud Certification: Machine Learning Engineer Specialization`                                                                                                      | 🐰    |
+| [Google Cloud Big Data and Machine Learning Fundamentals](https://www.coursera.org/learn/gcp-big-data-ml-fundamentals/home/info)                                                           | ✔️    |
+| **cloudacademy**                                                                                                                                                                           |
+| Certification: `Google Professional Cloud Architect Exam Preparation`                                                                                                                      | ✏️    |
+| **GCP Webpage**                                                                                                                                                                            |
+| [all learning path](https://cloud.google.com/training#learning-paths)                                                                                                                      |
+
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 **GCP all learning path**
 
 | Cloud Architect learning path                                                                 | Cloud Engineer learning path                                                                |
@@ -94,7 +148,13 @@ sleepy....
 | Optimize Costs for Google Kubernetes Engine                                                   | _None_                                                                                      |
 
 
+<<<<<<< HEAD
 
+=======
+---
+
+### AWS
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 | **AWS Certificate**                                                                                                                                                                                        | Mark   |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
@@ -120,6 +180,7 @@ sleepy....
 | [kiku-AWS internal](https://kiku.aws.training/Details/eLearning?id=34489)                                                                                                                                  | ✏️      |
 | [AWSacademy-ExamReadiness:AWS Certified Alexa Skill Builder-Specialty](https://kiku.aws.training/Details/eLearning?id=34489)                                                                               | ✏️      |
 
+<<<<<<< HEAD
 
 
 ---
@@ -140,12 +201,34 @@ sleepy....
 | [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10/20                                          | ✏️    |
 | **Portswigger - Web Security Academy**                                                                                                                                                |
 | [SQL injection](https://portswigger.net/web-security/sql-injection) - Walkthrough Note [📜](https://ocholuo.github.io/posts/SQL-injection-Lab/) 11/20/20                               | ✔️    |
+=======
+---
+
+### ALI
+
+| **ALI Certificate**                                                                                                                 | Mark |
+| :---------------------------------------------------------------------------------------------------------------------------------- | :--- |
+| Certification: `ACP - Alibaba Cloud Professional`                                                                                   | 🐰    |
+| `coursera`                                                                                                                          | ---  |
+| **Alibaba Cloud Computing Specialization**                                                                                          | ✏️    |
+| [Cloud Computing Fundamentals on Alibaba Cloud](https://www.coursera.org/learn/alibaba-cloud-computing?specialization=alibabacloud) | ✏️    |
+| Big Data Analytical Platform on Alibaba Cloud                                                                                       | ✏️    |
+| Protecting Cloud Architecture with Alibaba Cloud                                                                                    | ✏️    |
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 ---
 
 ## Security
 
+<<<<<<< HEAD
+=======
+
+---
+
+### Security Course
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 | Security                                                                                                                                                                                                       | Mark |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
 | **Palo Alto Networks Product Training**                                                                                                                                                                        | 🐰    |
@@ -180,6 +263,7 @@ sleepy....
 
 ---
 
+<<<<<<< HEAD
 ## Programmnig and Computer Science
 
 | Coursera Specialization                                                                                                                                                                                                     | Mark                                                                          |
@@ -227,6 +311,94 @@ sleepy....
 | [LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24/20                                                                  | ✔️                                                                             |
 | [LFCE: Linux Service Management - Advanced HTTP Services](https://app.pluralsight.com/player?course=https-advanced-services-linux-lfce&author=anthony-nocentino&name=5fcf9867-8ecc-42f3-af73-00a287ae7728&clip=0&mode=live) | ✔️                                                                             |
 | [LFCE: Linux Service Management - Advanced Email Services](https://app.pluralsight.com/library/courses/linux-service-management-advanced-email-services/table-of-contents)                                                  | ✏️                                                                             |
+=======
+### Security Project/LAB
+
+| Project/LAB                                                                                                                                                                           | Mark |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--- |
+| [JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03/20                                                    | ✔️    |
+| [Cloud-CTF-Cloudgoat](https://github.com/RhinoSecurityLabs/cloudgoat) - Walkthrough Note [📜](https://ocholuo.github.io/posts/CloudGoat/)                                              | ✔️    |
+| [Cloud-CTF-Flaws](http://flaws.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw/)                                                                                  | ✔️    |
+| [Cloud-CTF-Flaws2](http://level1.flaws2.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw2/)                                                                        | ✔️    |
+| [PAN8 Cybersecurity Essentials](https://portal.netdevgroup.com/learn/pan8-ce-pilot/wb79h483WM) - Walkthrough Note [📜](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/) | ✔️    |
+| [PAN8 Cybersecurity Gateway](https://portal.netdevgroup.com/learn/pan8-cg-pilot/aiuWjM6CWr/) - Walkthrough Note [📜](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/)     | ✔️    |
+| [Overthewire_bandit](https://overthewire.org/wargames/bandit/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/Overthewire-bandit/)                                            | ✔️    |
+| **codecamp**                                                                                                                                                                          |
+| [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10/20                                          | ✏️    |
+| **Portswigger - Web Security Academy**                                                                                                                                                |
+| [SQL injection](https://portswigger.net/web-security/sql-injection) - Walkthrough Note [📜](https://ocholuo.github.io/posts/SQL-injection-Lab/) 11/20/20                               | ✔️    |
+
+
+---
+
+## Programmnig and Computer Science
+
+| Coursera Specialization                                                | Mark |
+| :--------------------------------------------------------------------- | :--- |
+| **[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page | 🐰    |
+| **[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page  | 🐰    |
+
+### Machine Learning
+
+| Coursera Specialization                                                                                                                                                    | Mark |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
+| **DeepLearning.AI ---------------------------------------------------**                                                                                                    | 🐰    |
+| [DeepLearning.AI] [Generative AI with Large Language Models](https://www.coursera.org/programs/online-learning-for-apple/learn/generative-ai-with-llms?authProvider=apple) | ✏️    |
+| **kaggle ---------------------------------------------------**                                                                                                             | 🐰    |
+| [ML - Python](https://www.kaggle.com/learn/python) 100% 8/13/21                                                                                                            | ✔️    |
+| [ML - Intro to Machine Learning](https://www.kaggle.com/learn/intro-to-machine-learning) 100% 8/13/21                                                                      | ✔️    |
+| [ML - Intermediate Machine Learning](https://www.kaggle.com/learn/intermediate-machine-learning) 100% 9/10/21                                                              | ✔️    |
+| :---------------------------------------------------------------------------------------------------                                                                       | :--- |
+
+### Python
+
+| Coursera Specialization                                                                                                                                                                       | Mark |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
+| **Runestone ---------------------------------------------------------------------**                                                                                                           | 🐰    |
+| [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/book/published/pythonds/index.html)                                                    | ✔️    |
+| :---------------------------------------------------------------------------------------------------                                                                                          | :--- |
+| **UMich. Python 3 Programming ---------------------------------------------------**                                                                                                           | 🐰    |
+| [COURSE 1 Python Basics](https://www.coursera.org/learn/python-basics?specialization=python-3-programming)                                                                                    | ✔️    |
+| [COURSE 2 Python Functions, Files, and Dictionaries](https://www.coursera.org/learn/python-functions-files-dictionaries?specialization=python-3-programming)                                  | ✔️    |
+| [COURSE 3 Data Collection and Processing with Python](https://www.coursera.org/learn/data-collection-processing-python?specialization=python-3-programming)                                   | ✔️    |
+| [COURSE 4 Python Classes and Inheritance](https://www.coursera.org/learn/python-classes-inheritance?specialization=python-3-programming)                                                      | ✔️    |
+| [COURSE 5 Python Project: pillow, tesseract, and opencv](https://www.coursera.org/learn/python-project) 4/3/20                                                                                | ✔️    |
+| **UMich. Python for Everybody ----------------------------------------------------**                                                                                                          | 🐰    |
+| [COURSE 1 Programming for Everybody](https://www.coursera.org/learn/python?specialization=python)                                                                                             | ✔️    |
+| [COURSE 2 Python Data Structures](https://www.coursera.org/learn/python-data?courseSlug=python-data&showOnboardingModal=checkAndRedirect&specialization=python)                               | ✔️    |
+| [COURSE 3 Using Python to Access Web Data](https://www.coursera.org/learn/python-network-data?courseSlug=python-network-data&showOnboardingModal=checkAndRedirect&specialization=python) 4/12 | ✏️    |
+
+### Java
+
+| Coursera Specialization                                                                                                                                                         | Mark                                                                          |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------- |
+| **DukeU. Java Programming and Software Engineering Fundamentals Specialization --**                                                                                             | 🐰 [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/) |
+| [COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 100% 9/2/20               | ✔️                                                                             |
+| [COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 100% 9/6/20                        | ✔️                                                                             |
+| [COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 100% 9/10/20 | ✔️                                                                             |
+| `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher`      |
+| [COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17/20           | ✔️                                                                             |
+| `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`                                                          |
+| [COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) 100% 1/6/21                                             | ✔️                                                                             |
+| `- give the movie recommendations by calculate the movie rating` <br> `- user interface to add multiple Filter function for the movie rating`                                   |
+| **UMich. Web Design for Everybody: Basics of Web Development & Coding ------------**                                                                                            | 🐰                                                                             |
+| [COURSE 1 Introduction to HTML5](https://www.coursera.org/learn/html?specialization=web-design)                                                                                 | ✔️                                                                             |
+| [COURSE 3 Interactivity with JavaScript](https://www.coursera.org/learn/javascript?specialization=web-design)                                                                   | ✔️                                                                             |
+| :---------------------------------------------------------------------------------------------------                                                                            | :---                                                                          |
+
+### Linux
+
+| Coursera Specialization                                                                                                                                                                                                     | Mark |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
+| **LFCE (Linux Foundation Certified Engineer) Path --------------------------------**                                                                                                                                        | 🐰    |
+| [LFCE: Advanced Linux Networking](https://app.pluralsight.com/library/courses/linux-networking-advanced-lfce/table-of-contents) 4/18/20                                                                                     | ✔️    |
+| [LFCE: Advanced Network and System Administration](https://app.pluralsight.com/course-player?clipId=6f88f6c6-bea4-405e-b4c1-7bf38255c33c)                                                                                   | ✔️    |
+| [LFCE: Network and Host Security](https://app.pluralsight.com/player?course=security-network-host-lfce&author=anthony-nocentino&name=security-network-host-lfce-m0&clip=0)                                                  | ✔️    |
+| [LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24/20                                                                  | ✔️    |
+| [LFCE: Linux Service Management - Advanced HTTP Services](https://app.pluralsight.com/player?course=https-advanced-services-linux-lfce&author=anthony-nocentino&name=5fcf9867-8ecc-42f3-af73-00a287ae7728&clip=0&mode=live) | ✔️    |
+| [LFCE: Linux Service Management - Advanced Email Services](https://app.pluralsight.com/library/courses/linux-service-management-advanced-email-services/table-of-contents)                                                  | ✏️    |
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 
@@ -314,12 +486,17 @@ Network Security & Database Vulnerabilities https://www.coursera.org/learn/netwo
 | Certification: [eventbrite](https://www.eventbrite.com/u/487798027239/)                                                                                        | ticket for evert      |
 
 
+<<<<<<< HEAD
 
 
 ---
 
 
 
+=======
+---
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ## pending
 
 | [Coursera Specialization]                                                                                                                                                                                                                                                                                                                                                    | Mark |
@@ -347,6 +524,10 @@ some website:
 
 - https://www.anquanke.com/ 安全客
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ---
 
 ```
@@ -453,7 +634,11 @@ https://www.classcentral.com/report/cs-online-courses/
 
 Real-Time Cyber Threat Detection and Mitigation
 Number Theory and Cryptography
+<<<<<<< HEAD
 Blockchain and Cryptocurrency Explained
+=======
+Blockchain and Cryptoccurency Explained
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 Enterprise and Infrastructure Security
 Introduction to Cyber Attacks
 Cyber Attack Countermeasures

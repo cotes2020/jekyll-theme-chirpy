@@ -11,10 +11,46 @@ image: /assets/img/sample/OSILayer.jpg
 
 # Cyber Security knowledge point
 
+<<<<<<< HEAD
 [toc]
 
 ---
 
+=======
+- [Cyber Security knowledge point](#cyber-security-knowledge-point)
+  - [security field](#security-field)
+- [Network security](#network-security)
+    - [firewall](#firewall)
+    - [traceroute](#traceroute)
+  - [pentest](#pentest)
+  - [wireless](#wireless)
+- [Application security](#application-security)
+  - [Software Reverse Engineering](#software-reverse-engineering)
+  - [Web APP](#web-app)
+  - [Web Security](#web-security)
+  - [AAA](#aaa)
+  - [Architect](#architect)
+    - [TLS/SSL](#tlsssl)
+  - [Forensics](#forensics)
+- [Security architect](#security-architect)
+    - [IPS/IDS](#ipsids)
+  - [hack](#hack)
+    - [XSS](#xss)
+- [Risk management](#risk-management)
+- [Security audits, testing \& incident response](#security-audits-testing--incident-response)
+- [Cryptography](#cryptography)
+    - [hashing](#hashing)
+- [knowledge point](#knowledge-point)
+  - [TCP/UDP](#tcpudp)
+  - [API](#api)
+  - [Docker Basic Questions](#docker-basic-questions)
+
+
+---
+
+
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 1. What is information security and how is it achieved?
 
 2. What are the core principles of information security?
@@ -36,9 +72,16 @@ image: /assets/img/sample/OSILayer.jpg
 16. What are your professional values? Why are professional ethics important in the information
 
 17. What is the difference between threat, vulnerability, and a risk?
+<<<<<<< HEAD
    - A threat is from an attacker that will use a vulnerability that was not mitigated because someone forgot to identify it as a risk.
    - Vulnerability (weakness) is a gap in the protection efforts of a system, a threat is an attacker who exploits that weakness.
    - Risk is the measure of potential loss when that the vulnerability is exploited by the threat.
+=======
+   - `Threat`, a process that magnifies the likelihood of a negative event, such as the exploitation of a vulnerability, is from an attacker that will use a vulnerability that was not mitigated because someone forgot to identify it as a risk.
+   - `Vulnerability`, a weakness in your infrastructure, networks, or applications that potentially exposes you to threats, is a gap in the protection efforts of a system, a threat is an attacker who exploits that weakness.
+   - `Risk`, potential for loss, damage, or destruction of assets or data caused by a cyber threat, is the measure of potential loss when that the vulnerability is exploited by the threat.
+   - `Threats x Vulnerabilities = Risk`
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 18. difference between a vulnerability and an exploit?
    - vulnerability, a potential problem
@@ -48,8 +91,14 @@ image: /assets/img/sample/OSILayer.jpg
 19. How would you find out what a POST code means?
     - POST is one of the best tools available when a system will not boot. Normally through the use of either display LEDs in more modern systems, or traditionally through audio tones, these specific codes can tell you what the system doesn’t like about its current setup. Because of how rare these events can be, unless you are on a tech bench day in and day out, reference materials such as the Motherboard manual and your search engine of choice can be tremendous assets. Just remember to make sure that everything is seated correctly, you have at least the minimum required components to boot, and most importantly that you have all of your connections on the correct pins.
 
+<<<<<<< HEAD
 
 
+=======
+1. TTPs
+   - TTPs stands for tactics, techniques, and procedures.
+   - describe the behaviors, processes, actions, and strategies used by a threat actor to develop threats and engage in cyberattacks.
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 ---
@@ -1064,6 +1113,11 @@ Where do you get your security news from?
    - ensure that your application works seamlessly in any environment, be it development, test or production.
    - Docker containers, wrap a piece of software in a complete filesystem that contains everything needed to run: `code, runtime, system tools, system libraries, etc`. It wraps basically anything that can be installed on a server. This guarantees that the software will always run the same, regardless of its environment.
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ```
 6. What is a Docker Container?
 Docker containers include the application and all of its dependencies. It shares the kernel with other containers, running as isolated processes in user space on the host operating system. Docker containers are not tied to any specific infrastructure: they run on any computer, on any infrastructure, and in any cloud. Docker containers are basically runtime instances of Docker images.

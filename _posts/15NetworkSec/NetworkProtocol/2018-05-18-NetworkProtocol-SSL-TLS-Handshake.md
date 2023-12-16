@@ -14,6 +14,24 @@ image: /assets/img/note/tls-ssl-handshake.png
 
 # NetworkProtocol SSL/TLS Handshake
 
+<<<<<<< HEAD
+=======
+- [NetworkProtocol SSL/TLS Handshake](#networkprotocol-ssltls-handshake)
+  - [overall](#overall)
+  - [4 SSL protocols:](#4-ssl-protocols)
+  - [TLS Handshake Protocol:](#tls-handshake-protocol)
+    - [Phase I of Handshake Protocol:](#phase-i-of-handshake-protocol)
+    - [Phase II of Handshake Protocol:](#phase-ii-of-handshake-protocol)
+    - [Phase III of Handshake Protocol](#phase-iii-of-handshake-protocol)
+    - [Phase IV of Handshake Protocol](#phase-iv-of-handshake-protocol)
+  - [DH算法的握手阶段](#dh算法的握手阶段)
+
+
+---
+
+## overall
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 基本的运行过程
 
 SSL/TLS协议的基本思路是采用公钥加密法，cliemt先向服务器端索要公钥，然后用公钥加密信息，服务器收到密文后，用自己的私钥解密。
@@ -28,7 +46,13 @@ SSL/TLS协议的基本思路是采用公钥加密法，cliemt先向服务器端�
 
 
 因此，SSL/TLS协议的基本过程是这样的：
+<<<<<<< HEAD
 ![Pasted Graphic](https://i.imgur.com/Lm3v5Bv.png)
+=======
+
+![Pasted Graphic](https://i.imgur.com/Lm3v5Bv.png)
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 1. 客户端向服务器端索要并验证公钥。
 2. 双方协商生成"对话密钥"。
 3. 双方采用"对话密钥"进行加密通信。
@@ -45,6 +69,11 @@ SSL/TLS协议的基本思路是采用公钥加密法，cliemt先向服务器端�
 ![Pasted Graphic 5](https://i.imgur.com/goZHVwC.png)
 
 ![Pasted Graphic 6](https://i.imgur.com/s3Tqk8q.png)
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ---
 
 ## TLS Handshake Protocol:

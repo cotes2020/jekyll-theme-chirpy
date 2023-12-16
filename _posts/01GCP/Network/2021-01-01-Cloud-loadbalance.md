@@ -1,7 +1,11 @@
 ---
 title: GCP - Cloud Load balance
 date: 2021-01-01 11:11:11 -0400
+<<<<<<< HEAD
 categories: [01GCP, network]
+=======
+categories: [01GCP, GCPNetwork]
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 tags: [GCP]
 toc: true
 image:

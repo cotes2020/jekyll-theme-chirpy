@@ -10,9 +10,17 @@
   letter-spacing: 0;
   border: 1px solid var(--tag-border) !important;
   box-shadow: 0 0 3px 0 var(--tag-shadow);
+<<<<<<< HEAD
   span {
     margin-left: 0.6em;
     font-size: 0.7em;
     font-family: 'Oswald', sans-serif;
+=======
+
+  span {
+    margin-left: 0.6em;
+    font-size: 0.7em;
+    font-family: Oswald, sans-serif;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   }
 }

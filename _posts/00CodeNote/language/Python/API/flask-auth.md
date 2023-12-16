@@ -53,7 +53,11 @@ if __name__ == '__main__':
 
 The function decorated with the `verify_password` decorator receives the username and password sent by the client.
 - If the credentials belong to a user, then the function should return the user object.
+<<<<<<< HEAD
 - If the credentials are invalid the functon can return `None` or `False`.
+=======
+- If the credentials are invalid the function can return `None` or `False`.
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 - The user object can then be queries from the `current_user()` method of the authentication instance.
 
 

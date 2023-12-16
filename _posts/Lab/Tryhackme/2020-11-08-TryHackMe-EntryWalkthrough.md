@@ -13,6 +13,7 @@ tags: [Lab, TryHackMe]
 
 # TryHackMe - Entry Walkthrough
 
+<<<<<<< HEAD
 Hacktivities | Goal
 ---|---
 Starting Out In Cyber Sec | path
@@ -21,6 +22,16 @@ Introductory Researching | `kali$ searchsploit sofetware`
 Splunk | Splunk commands
 Basic Pentesting | user privilege escalation
 Malware Introductory | Malware analysis
+=======
+| Hacktivities              | Goal                                      |
+| ------------------------- | ----------------------------------------- |
+| Starting Out In Cyber Sec | path                                      |
+| Tutorial                  | how to use and get started with TryHackMe |
+| Introductory Researching  | `kali$ searchsploit sofetware`            |
+| Splunk                    | Splunk commands                           |
+| Basic Pentesting          | user privilege escalation                 |
+| Malware Introductory      | Malware analysis                          |
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ---
 
@@ -282,7 +293,11 @@ index=botsv1 imreallynotbatman.com sourcetype=stream:http src_ip="40.80.148.42"
 # Acunetix-User-agreement: http://www.acunetix.com/wvs/disc.htm
 # Accept: */*
 
+<<<<<<< HEAD
 Asnwer: acunetix
+=======
+Answer: acunetix
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
@@ -408,7 +423,11 @@ Answer: yellow
 
 #8 What was the correct password for admin access to the content management system running imreallynotbatman.com?
 # Upon discovering a seemingly correct password, a password brute-forcing engine such as hydra will enter the password a second time to verify that it works.
+<<<<<<< HEAD
 # count the number of occurences for each password, and extract the one(s) with at least 2 occurences.
+=======
+# count the number of occurrences for each password, and extract the one(s) with at least 2 occurrences.
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 index=botsv1 imreallynotbatman.com sourcetype=stream:http http_method="POST" form_data=*username*passwd*
 | rex field=form_data "passwd=(?<p>\w+)"
 | stats count by p
@@ -433,7 +452,11 @@ Answer: 6
 
 #10 How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?
 # 1 of the passwords (batman) was used 2 times.
+<<<<<<< HEAD
 # extract the timestamps for the occurences of this password.
+=======
+# extract the timestamps for the occurrences of this password.
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 index=botsv1 sourcetype=stream:http form_data=*username*passwd* | rex field=form_data "passwd=(?<p>\w+)"
 | search p="batman"
 | table _time, p, src_ip
@@ -649,7 +672,11 @@ Answer: Miranda_Tate_unveiled.dotm
 
 
 
+<<<<<<< HEAD
 #4 During the initial Cerber infection a VB script is run. The entire script from this execution, pre-pended by the name of the launching .exe, can be found in a field in Splunk. What is the length in characters of this field?
+=======
+#4 During the initial Cerber infection a VB script is run. The entire script from this execution, prepended by the name of the launching .exe, can be found in a field in Splunk. What is the length in characters of this field?
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 index=botsv1 host="we8105desk" sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" (CommandLine="*D:\\*" OR ParentCommandLine="*D:\\*")
 | eval length=len(CommandLine)
 | table CommandLine, length
@@ -830,7 +857,11 @@ nmap -sC -sV 0oN 10.10.100.180
 
 
 # What is the name of the hidden directory on the web server(enter name without /)?
+<<<<<<< HEAD
 broswer > develper page
+=======
+browser > developer page
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 gobuster -w /usr/share/dirbuster/wordlists/wordlist.txt -u http://10.10.100.180/
 show /development
 

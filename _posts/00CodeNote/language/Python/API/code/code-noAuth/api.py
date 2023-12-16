@@ -60,7 +60,11 @@ def for_userlist():
         return make_response(jsonify(user_new), 201)
 
 
+<<<<<<< HEAD
 # operation on a singal user information
+=======
+# operation on a single user information
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 @api.route("/api/userlist/<user_username>", methods=["GET", "PUT", "DELETE"])
 def singal_user(user_username):
     if request.method == "GET":

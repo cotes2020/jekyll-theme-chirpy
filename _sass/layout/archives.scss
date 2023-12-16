@@ -2,6 +2,7 @@
   Style for Archives
 */
 
+<<<<<<< HEAD
 %date-timeline {
   content: "";
   width: 4px;
@@ -31,12 +32,59 @@
       height: 12px;
       top: -26px;
       left: 63px;
+=======
+#archives {
+  letter-spacing: 0.03rem;
+
+  $timeline-width: 4px;
+
+  %timeline {
+    content: '';
+    width: $timeline-width;
+    position: relative;
+    float: left;
+    background-color: var(--timeline-color);
+  }
+
+  .year {
+    height: 3.5rem;
+    font-size: 1.5rem;
+    position: relative;
+    left: 2px;
+    margin-left: -$timeline-width;
+
+    &::before {
+      @extend %timeline;
+
+      height: 72px;
+      left: 79px;
+      bottom: 16px;
+    }
+
+    &:first-child::before {
+      @extend %timeline;
+
+      height: 32px;
+      top: 24px;
+    }
+
+    /* Year dot */
+    &::after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      left: 21.5px;
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       border: 3px solid;
       background-color: var(--timeline-year-dot-color);
       border-color: var(--timeline-node-bg);
       box-shadow: 0 0 2px 0 #c2c6cc;
       z-index: 1;
     }
+<<<<<<< HEAD
 
     &:not(:first-child) {
       position: relative;
@@ -47,11 +95,15 @@
     }
 
   } // #archives span.lead
+=======
+  }
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   ul {
     li {
       font-size: 1.1rem;
       line-height: 3rem;
+<<<<<<< HEAD
 
       div {
         white-space: nowrap;
@@ -94,10 +146,42 @@
       display: none;
     }
   } // #archives ul
+=======
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:nth-child(odd) {
+        background-color: var(--main-bg, #ffffff);
+        background-image: linear-gradient(
+          to left,
+          #ffffff,
+          #fbfbfb,
+          #fbfbfb,
+          #fbfbfb,
+          #ffffff
+        );
+      }
+
+      &::before {
+        @extend %timeline;
+
+        top: 0;
+        left: 77px;
+        height: 3.1rem;
+      }
+    }
+
+    &:last-child li:last-child::before {
+      height: 1.5rem;
+    }
+  } /* #archives ul */
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
   .date {
     white-space: nowrap;
     display: inline-block;
+<<<<<<< HEAD
     &.month {
       width: 1.4rem;
       text-align: center;
@@ -132,10 +216,57 @@
   } // #archives .date
 
 } // #archives
+=======
+    position: relative;
+    right: 0.5rem;
+
+    &.month {
+      width: 1.4rem;
+      text-align: center;
+    }
+
+    &.day {
+      font-size: 85%;
+      font-family: Lato, sans-serif;
+    }
+  }
+
+  a {
+    /* post title in Archvies */
+    margin-left: 2.5rem;
+    position: relative;
+    top: 0.1rem;
+
+    &:hover {
+      border-bottom: none;
+    }
+
+    &::before {
+      /* the dot before post title */
+      content: '';
+      display: inline-block;
+      position: relative;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      float: left;
+      top: 1.35rem;
+      left: 71px;
+      background-color: var(--timeline-node-bg);
+      box-shadow: 0 0 3px 0 #c2c6cc;
+      z-index: 1;
+    }
+  }
+} /* #archives */
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 @media all and (max-width: 576px) {
   #archives {
     margin-top: -1rem;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     ul {
       letter-spacing: 0;
     }

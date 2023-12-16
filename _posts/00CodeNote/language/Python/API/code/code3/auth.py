@@ -1,5 +1,17 @@
+<<<<<<< HEAD
 from flask import (Blueprint, jsonify, make_response, redirect,
                    render_template, request, url_for)
+=======
+from flask import (
+    Blueprint,
+    jsonify,
+    make_response,
+    redirect,
+    render_template,
+    request,
+    url_for,
+)
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 

@@ -27,6 +27,7 @@ panel:
   trending_tags: 热门标签
   toc: 文章内容
 
+<<<<<<< HEAD
 #  The liquid date format › http://strftime.net/
 date_format:
   tooltip: '%F, %R %z'
@@ -35,6 +36,8 @@ date_format:
     short: '%m-%d'
     archive_month: '%m月'
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 copyright:
   # Shown at the bottom of the post
   license:
@@ -51,13 +54,21 @@ meta: 本站由 :PLATFORM 生成，采用 :THEME 主题。
 
 not_found:
   statment: 抱歉，我们放错了该 URL，或者它指向了不存在的内容。
+<<<<<<< HEAD
   hint_template: :HEAD_BAK尝试再次查找它，或在:ARCHIVES_PAGE上搜索它。
   head_back: 返回主页
   archives_page: 归档页面
+=======
+
+notification:
+  update_found: 发现新版本的内容。
+  update: 更新
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 # ----- Posts related labels -----
 
 post:
+<<<<<<< HEAD
   published: 发表于
   updated: 更新于
   timeago:
@@ -65,6 +76,11 @@ post:
     hour: 小时前
     minute: 分钟前
     just_now: 刚刚
+=======
+  written_by: 作者
+  posted: 发表于
+  updated: 更新于
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   words: 字
   pageview_measure: 次浏览
   read_time:
@@ -78,11 +94,25 @@ post:
     copy_code:
       succeed: 已复制！
     share_link:
+<<<<<<< HEAD
       title:  分享链接
+=======
+      title: 分享链接
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       succeed: 链接已复制！
   # pinned prompt of posts list on homepage
   pin_prompt: 顶置
 
+<<<<<<< HEAD
+=======
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: '%Y/%m/%d'
+    dayjs: 'YYYY/MM/DD'
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 # categories page
 categories:
   category_measure: 个分类

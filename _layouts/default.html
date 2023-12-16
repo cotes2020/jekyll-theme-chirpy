@@ -5,6 +5,7 @@ layout: compress
 
 <!DOCTYPE html>
 
+<<<<<<< HEAD
 {% include lang.html %}
 
 {% capture prefer_mode %}
@@ -18,11 +19,28 @@ layout: compress
   {% include head.html %}
 
   <body data-spy="scroll" data-target="#toc">
+=======
+{% include assets-origin.html %}
+
+{% capture prefer_mode %}
+  {% if site.theme_mode %}
+    data-mode="{{ site.theme_mode }}"
+  {% endif %}
+{% endcapture %}
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="{{ site.alt_lang | default: site.lang }}"{{ prefer_mode }}>
+
+  {% include head.html %}
+
+  <body data-topbar-visible="true">
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
     {% include sidebar.html %}
 
     {% include topbar.html %}
 
+<<<<<<< HEAD
     <div id="main-wrapper">
       <div id="main">
 
@@ -30,12 +48,22 @@ layout: compress
 
         {% include footer.html %}
 
+=======
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+        {{ content }}
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
       </div>
 
       {% include search-results.html %}
 
     </div> <!-- #main-wrapper -->
 
+<<<<<<< HEAD
+=======
+    {% include footer.html %}
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     {% if page.mermaid %}
       {% include mermaid.html %}
     {% endif %}
@@ -46,6 +74,26 @@ layout: compress
       <i class="fas fa-angle-up"></i>
     </a>
 
+<<<<<<< HEAD
+=======
+    {% if site.pwa.enabled %}
+      <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+        data-animation="true" data-autohide="false">
+        <div class="toast-header">
+          <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body text-center pt-0">
+          <p class="pl-2 pr-2 mb-3">{{ site.data.locales[site.lang].notification.update_found }}</p>
+          <button type="button" class="btn btn-primary" aria-label="Update">
+            {{ site.data.locales[site.lang].notification.update }}
+          </button>
+        </div>
+      </div>
+    {% endif %}
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     {% include search-loader.html %}
 
     {% include js-selector.html %}

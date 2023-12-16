@@ -1,0 +1,51 @@
+# fonts
+
+webfonts: /assets/lib/fonts/main.css
+
+# Libraries
+
+jquery:
+  js: /assets/lib/jquery/jquery.min.js
+
+bootstrap:
+  css: /assets/lib/bootstrap/bootstrap.min.css
+  js: /assets/lib/bootstrap/bootstrap.bundle.min.js
+
+toc:
+  css: /assets/lib/tocbot/tocbot.min.css
+  js: /assets/lib/tocbot/tocbot.min.js
+
+fontawesome:
+  css: /assets/lib/fontawesome-free/css/all.min.css
+
+search:
+  js: /assets/lib/simple-jekyll-search/simple-jekyll-search.min.js
+
+mermaid:
+  js: /assets/lib/mermaid/mermaid.min.js
+
+dayjs:
+  js:
+    common: /assets/lib/dayjs/dayjs.min.js
+    locale: /assets/lib/dayjs/locale/en.min.js
+    relativeTime: /assets/lib/dayjs/plugin/relativeTime.min.js
+    localizedFormat: /assets/lib/dayjs/plugin/localizedFormat.min.js
+
+countup:
+  js: /assets/lib/countup.js/countUp.min.js
+
+magnific-popup:
+  css: /assets/lib/magnific-popup/magnific-popup.css
+  js: /assets/lib/magnific-popup/jquery.magnific-popup.min.js
+
+lazysizes:
+  js: /assets/lib/lazysizes/lazysizes.min.js
+
+clipboard:
+  js: /assets/lib/clipboard/clipboard.min.js
+
+polyfill:
+  js: /assets/lib/polyfill-v3-es6/polyfill.min.js
+
+mathjax:
+  js: /assets/lib/mathjax/tex-chtml.js

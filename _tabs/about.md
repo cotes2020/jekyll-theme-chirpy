@@ -7,6 +7,7 @@ order: 4
 ---
 
 > A CYBER SECURITY PRACTICIAN
+<<<<<<< HEAD
 >
 <br>
 <p align="center">
@@ -29,6 +30,21 @@ order: 4
 <br>
 <br>
 <br>
+=======
+
+<br>
+
+<img src="/assets/img/tabs/AWS-SA.png" width="100" align="center">
+<img src="/assets/img/tabs/AWS-CP.png" width="100" align="center">
+<img src="/assets/img/tabs/AWS-G.png" width="100" align="center">
+
+<br>
+
+<img src="/assets/img/tabs/CEH.png" width="100" align="center">
+<img src="/assets/img/tabs/PAN.jpg" width="100" height="110" align="center">
+<img src="/assets/img/tabs/Sec+.png" width="100" align="center">
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <br>
 
 > On my way to CISSP, OSCP ...

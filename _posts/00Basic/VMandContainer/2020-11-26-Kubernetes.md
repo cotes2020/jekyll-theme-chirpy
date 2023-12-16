@@ -35,6 +35,11 @@ image:
   - [deploy](#deploy)
     - [Deployment](#deployment)
     - [StatefulSet](#statefulset)
+<<<<<<< HEAD
+=======
+  - [Network policy?](#network-policy)
+    - [network policy security](#network-policy-security)
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 
@@ -891,6 +896,41 @@ kubectl get nodes -L role
 ### StatefulSet
 
 
+<<<<<<< HEAD
+=======
+---
+
+## Network policy?
+
+- Network policy is the primary tool for securing a Kubernetes network.
+
+- It restrict the network traffic in the cluster so only the traffic want to flow is allowed.
+
+> how network security was typically achieved prior to network policy.
+> - physical topology: Historically in enterprise networks, network security was provided by designing a physical topology of network devices (switches, routers, firewalls) and their associated configuration. The physical topology defined the security boundaries of the network.
+> - virtualization: In the first phase of virtualization, the same network and network device constructs were virtualized in the cloud, and the same techniques for creating specific network topologies of (virtual) network devices were used to provide network security. Adding new applications or services often required additional network design to update the network topology and network device configuration to provide the desired security.
+
+- In contrast, the Kubernetes network model defines a "flat" network in which every pod can communicate with all other pods in the cluster using pod IP addresses. This approach massively simplifies network design and allows new workloads to be scheduled dynamically anywhere in the cluster with no dependencies on the network design.
+
+- In this model, rather than network security being defined by `network topology boundaries`, it is defined using `network policies` that are independent of the network topology.
+
+- Network policies are further abstracted from the network by using `label selectors` as their primary mechanism for defining which workloads can talk to which workloads, rather than IP addresses or IP address ranges.
+
+### network policy security
+
+- While you can (and should) use firewalls to restrict traffic at the perimeters of the network (commonly referred to as north-south traffic), their ability to police Kubernetes traffic is often limited to a granularity of the cluster as a whole, rather than to specific groups of pods, due to the dynamic nature of pod scheduling and pod IP addresses. In addition, the goal of most attackers once they gain a small foothold inside the perimeter is to move laterally (commonly referred to as east-west) to gain access to higher value targets, which perimeter based firewalls can't police against.
+
+Network policy on the other hand is designed for the dynamic nature of Kubernetes by following the standard Kubernetes paradigm of using label selectors to define groups of pods, rather than IP addresses. And because network policy is enforced within the cluster itself it can police both north-south and east-west traffic.
+
+Network policy represents an important evolution of network security, not just because it handles the dynamic nature of modern microservices, but because it empowers dev and devops engineers to easily define network security themselves, rather than needing to learn low-level networking details or raise tickets with a separate team responsible for managing firewalls. Network policy makes it easy to define intent, such as "only this microservice gets to connect to the database", write that intent as code (typically in YAML files), and integrate authoring of network policies into git workflows and CI/CD processes.
+
+
+
+
+
+
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 
 

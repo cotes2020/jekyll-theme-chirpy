@@ -34,6 +34,10 @@ toc: true
     - [token and password](#token-and-password)
   - [token based authentication strategies](#token-based-authentication-strategies)
     - [JWT, JSON web tokens](#jwt-json-web-tokens)
+<<<<<<< HEAD
+=======
+    - [SAML](#saml)
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
     - [OAuth - Open Authorization 开放授权](#oauth---open-authorization-开放授权)
       - [OAuth 2.0 术语表](#oauth-20-术语表)
       - [Scope 授权范围](#scope-授权范围)
@@ -716,8 +720,16 @@ token and password 的作用是一样的，都可以进入系统，但是有三�
 ## token based authentication strategies
 
 emaple of token based authentication strategies
+<<<<<<< HEAD
 - SWT, simple web tokenss
 - JWT, JSON web tokens
+=======
+
+- SWT, simple web tokenss
+
+- JWT, JSON web tokens
+
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 - SAML, security assertions markup language
 
 - **OAuth**, open authorization
@@ -736,17 +748,23 @@ emaple of token based authentication strategies
   - 典型场景为企业内部Web系统集成单点登录，典型的有CAS。
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 <font color=red> OAuth 解决了代理授权的问题，但是它没有提供一个认证用户身份的标准方法 </font>
 - OAuth 2.0 用于**授权**
 - OpenID Connect 用于**认证**
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 ---
 
 
@@ -810,9 +828,63 @@ The cons:
 
 ---
 
+<<<<<<< HEAD
 
 
 
+=======
+### SAML
+
+> SAML
+> Security Assertion 断言 Markup Language
+
+![Saml-Authentication-Final](/assets/img/Saml-Authentication-Final.png)
+
+![Pasted Graphic](/assets/img/Pasted%20Graphic.png)
+
+- Security Assertion Markup Language (SAML)
+
+- This `single sign-on (SSO) login standard` has significant advantages over logging in using a username/password, to use this information to log users in to other applications, such as web-based applications, one way of doing this is by using **SAML**.
+
+- a standard for logging users into applications based on their sessions in another context.
+
+- an open standard that defines a XML-based framework for `exchanging authentication and authorization information` between an `identity provider (IdP)` and a `service provider (SP)`, to enable web-based single sign-on (SSO) and identity federation.
+
+- An XML-based markup language, much like HTML.
+  - HTML: defining web page elements
+  - SAML: It uses tags, defines security authorization.
+  - used to exchange authentication and authorization information between identity providers and service providers.
+
+- SAML commly used for
+  - federated identity management across mulyiple organizations.
+  - federation / web browser single sign-on implementations.
+  - Allows an application to securely authenticate a user by receiving credentials from a web domain.
+  - (TACACS+, RADIUS, Kerberos cannot do this)!!!
+
+
+![Pasted Graphic 1](/assets/img/Pasted%20Graphic%201.jpg)
+
+
+
+- An SSO solution used for web-based application.
+
+- Example:
+
+- A secure web portal accessible to user by username and password, use SAML to support authentication.
+  - `Portal`: service provider, request an authentication assertion
+  - `back-end networks`: function as an identity provider and issue an authentication assertion
+
+- SAML在单点登录中大有用处：
+	- 在SAML协议中，一旦用户身份被主网站（身份鉴别服务器，Identity Provider，IDP）认证过后，该用户再去访问其他在主站注册过的应用（服务提供者，Service Providers，SP）时，都可以直接登录，而不用再输入身份和口令。
+
+
+- 用户登录SP，SP向IDP发起请求来确认用户身份为例子
+	- 比如SP是Google的Apps，IDP是一所大学的身份服务器，Alice是该大学的一名学生。
+
+![3297585-50f9c9530cef962d](/assets/img/3297585-50f9c9530cef962d.png)
+
+---
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 
 ### OAuth - Open Authorization 开放授权
 
@@ -1050,12 +1122,20 @@ X-frame-options: SAMEORIGIN
 Alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
 Content-type: application/json; charset=utf-8
 {
+<<<<<<< HEAD
   "access_token": "ya29.a0AVA9y1u8cGrBhqucDXVZM_adavWLWNEo2q4vAVXQ5jFkzVdFCjbNkYZtx_FXOOlqxzil_hj0rDyX5w8LUZoMHo-D2DpoNJ_i3POpADs_5hP38F98aF0Z0mqAqDleQTOKAK69--uChPmZlR3cF9YI6kewI7cT",
+=======
+  "access_token": "abcd",
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
   "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZDY4NWY1ZThmYzYyZDc1ODcwNWMxZWIwZThhNzUyNGM0NzU5NzUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDcwNDMxOTE2NjcyNTM2ODc0NjAiLCJlbWFpbCI6ImxncmFjZXllQGhvdG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIyS1lkaHhKUHVQZlNQZFp4Rk9aV2FBIiwiaWF0IjoxNjU3NDg1NTMyLCJleHAiOjE2NTc0ODkxMzJ9.m675UQKWgX_0eBUNC94sU7FDJHqauWyVQW0XnvYkCz4_AKkuUKxyS7d4VMB4KCSWhUhylBx1ilq5XsdqFlugksEHP6hgRgTf-5M1PIKbo0HEFJWhoFGIZDu907hcQl8eE5mCBk9nr3SuuJpbDLFVy9jaY96qTRrCvVXINOC6mXPjU7mohB0Rg3DgHkCbLvCHbfmPIR72_DuGVmtdQWUrpnQICRGJcdX3PY-wgGoOa9U6qqEJFK9bGcSG-0sE9rnF_iR_piX9jVYFnplxslkuKeGBu4xsQpFenVEFlOEhDw6QAFdvmm6idlpjnXE9j7QwpRxuQ3uX-kM2YOWJCasjdQ",
   "expires_in": 3599,
   "token_type": "Bearer",
   "scope": "https://www.googleapis.com/auth/userinfo.email openid",
+<<<<<<< HEAD
   "refresh_token": "1//04thVSCVNOVSZCgYIARAAGAQSNwF-L9IrjkF38iOULusIQ5arphe564NxPXlVTF3A24t96KiEg3uaVgHlMhWLkadmeUwatdm6IzI"
+=======
+  "refresh_token": "abcd"
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 }
 ```
 
@@ -1343,7 +1423,11 @@ https://b.com/oauth/token?
 
 ```yaml
 auth_logging = true
+<<<<<<< HEAD
 auth_logging_format = "{{.Client}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}}"
+=======
+# auth_logging_format = "{{.Client}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}}"
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 # pass HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email information to upstream
 pass_basic_auth = true
 # pass_user_headers = true
@@ -1362,7 +1446,11 @@ pass_host_header = true
 email_domains=["*"]
 
 # callback的域名
+<<<<<<< HEAD
 whitelist_domains = [".example.com"]
+=======
+allowlist_domains = [".example.com"]
+>>>>>>> 1a148b47672b35d180699fc905d033785c8bbe28
 cookie_domains = ["example.com"]
 skip_auth_preflight = false
 
