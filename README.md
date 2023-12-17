@@ -55,22 +55,48 @@ For details, see the "[Contributing Guidelines][contribute-guide]".
 
 ## Credits
 
-This project was built primarily with the [Jekyll][jekyllrb] ecosystem,
-[Bootstrap][bootstrap], [Font Awesome][icons], and some other [wonderful tools][lib].
-The avatar and favicon design from [Clipart Max][image].
+### Maintainers
 
-Many thanks to the [contributors][contributors] who participated in the development
-and to the folks who reported bugs or shared ideas.
+Thanks to the maintainers for driving the project!
 
-Last but not least, thanks to [JetBrains][jetbrains] for providing the _Open Source License_.
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://github.com/cotes2020">
+          <img src="https://avatars.githubusercontent.com/u/11371340" width="80" height="80" alt="@cotes2020"><br>
+          <sub><b>Cotes Chung</b></sub>
+        </a>
+      </td>
+      <td>
+        <a href="https://github.com/chuckhoupt">
+          <img src="https://avatars.githubusercontent.com/u/1627217" width="80" height="80" alt="@chuckhoupt"><br>
+          <sub><b>Chuck Houpt</b></sub>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Contributors
+
+Thanks to all the [contributors][contributors] involved in the development of the project!
+
+[![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]  
+<sub>_Made with [contrib.rocks](https://contrib.rocks)_.</sub>
+
+### Third-Party Assets
+
+This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
+
+The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
 
 ## Sponsoring
 
 If you like this project or have built something through it, please consider sponsoring it, and your support would be greatly appreciated.
 
-[![Ko-fi](https://img.shields.io/badge/Support_Me_on_Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)][ko-fi]&nbsp;
-[![Wechat Pay](https://img.shields.io/badge/Support_Me_on_WeChat-brightgreen?logo=wechat&logoColor=white)][donation]&nbsp;
-[![Alipay](https://img.shields.io/badge/Support_Me_on_Alipay-blue?logo=alipay&logoColor=white)][donation]
+- [Support me on **Ko-fi**][ko-fi]
+- [Support me on **WeChat Pay** / **Alipay**][donation]
 
 ## License
 
@@ -81,14 +107,13 @@ This project is published under [MIT License][license].
 [codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
 [license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
 [jekyllrb]: https://jekyllrb.com/
-[bootstrap]: https://getbootstrap.com/
-[icons]: https://fontawesome.com/
-[image]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
+[clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
 [demo]: https://cotes2020.github.io/chirpy-demo/
 [wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
 [contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
 [contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
 [lib]: https://github.com/cotes2020/chirpy-static-assets
+[vscode]: https://code.visualstudio.com/
 [jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
 [ko-fi]: https://ko-fi.com/coteschung/
 [donation]: https://sponsor.cotes.page/
