@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 30 - 10610"
+title: "[BOJ] 30 - 10610 (S5)"
 author: kwon
 date: 2022-02-04T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [math, string, greedy algorithm, sort, number theory]
 math: true
 mermaid: false

@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 덩치 - 7568"
+title: "[BOJ] 덩치 - 7568 (S5)"
 author: kwon
 date: 2022-09-26T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [implementation, brute-force]
 math: true
 mermaid: false

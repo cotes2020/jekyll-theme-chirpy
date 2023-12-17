@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 회의실 배정 - 1931"
+title: "[BOJ] 회의실 배정 - 1931 (S1)"
 author: kwon
 date: 2022-12-12T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [greedy algorithm, sort]
 math: true
 mermaid: false

@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 카드 정렬하기 - 1715"
+title: "[BOJ] 카드 정렬하기 - 1715 (G4)"
 author: kwon
 date: 2022-12-13T23:00:00 +0900
-categories: [boj]
+categories: [boj, gold]
 tags: [data structure, greedy algorithm, priority queue]
 math: true
 mermaid: false

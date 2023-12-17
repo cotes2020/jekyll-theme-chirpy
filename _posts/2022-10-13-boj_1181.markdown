@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 단어 정렬 - 1181"
+title: "[BOJ] 단어 정렬 - 1181 (S5)"
 author: kwon
 date: 2022-10-13T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [string, sort]
 math: true
 mermaid: false

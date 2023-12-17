@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 약수 - 1037"
+title: "[BOJ] 약수 - 1037 (B1)"
 author: kwon
 date: 2022-11-15T23:00:00 +0900
-categories: [boj]
+categories: [boj, bronze]
 tags: [math, number theory]
 math: true
 mermaid: false

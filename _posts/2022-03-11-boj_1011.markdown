@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] Fly me to the Alpha Centauri - 1011"
+title: "[BOJ] Fly me to the Alpha Centauri - 1011 (G5)"
 author: kwon
 date: 2022-03-11T23:00:00 +0900
-categories: [boj]
+categories: [boj, gold]
 tags: [math]
 math: true
 mermaid: false

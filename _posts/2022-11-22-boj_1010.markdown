@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 다리 놓기 - 1010"
+title: "[BOJ] 다리 놓기 - 1010 (S5)"
 author: kwon
 date: 2022-11-22T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [math, dynamic programing, combinatorics]
 math: true
 mermaid: false

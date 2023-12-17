@@ -1,0 +1,58 @@
+---
+title: "[BOJ]단어 공부 - 1157 (B1)"
+author: kwon
+date: 2023-12-05T14:00:00 +0900
+categories: [boj, bronze]
+tags: [implementation, string]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 2 초 | 128 MB |
+
+# 문제
+
+알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오. 단, 대문자와 소문자를 구분하지 않는다.
+
+# 입력
+
+첫째 줄에 알파벳 대소문자로 이루어진 단어가 주어진다. 주어지는 단어의 길이는 1,000,000을 넘지 않는다.
+
+# 출력
+
+첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는 ?를 출력한다.
+
+# 풀이
+
+dictionary를 사용하여 등장하는 알파벳의 개수를 세어준다. 그리고 해당 알파벳의 개수가 저장된 최대 개수보다 많으면 그 알파벳과 그 개수를 저장한다. 만약 알파벳의 개수가 저장된 최대 개수와 정확히 같다면 가장 많이 사용된 알파벳이 그 순간에 여러 개 존재한다는 것이므로 변수(`same_chk`)를 통해 체크해준다.
+
+만약 체크 되어 있다면 ‘?’를, 아니면 저장되어 있는 최대 개수의 알파벳을 출력한다.
+
+## 코드
+
+```python
+from collections import defaultdict
+word = input().upper()
+
+counter = defaultdict(int)
+
+max_cnt = 0
+max_alpha = ''
+same_chk = False
+
+for a in word:
+    counter[a] += 1
+    if counter[a] > max_cnt:
+        max_cnt = counter[a]
+        max_alpha = a
+        same_chk = False
+    elif counter[a] == max_cnt:
+        same_chk = True
+
+if same_chk:
+    print('?')
+else:
+    print(max_alpha)
+```

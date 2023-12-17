@@ -1,8 +1,8 @@
 ---
-title: "[BOJ]피보나치 함수- 1003"
+title: "[BOJ]피보나치 함수- 1003 (S3)"
 author: kwon
 date: 2023-02-02T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [dynamic programing]
 math: true
 mermaid: false

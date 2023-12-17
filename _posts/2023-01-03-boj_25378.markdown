@@ -1,8 +1,8 @@
 ---
-title: "[BOJ][KOI] 조약돌 - 25378"
+title: "[BOJ][KOI] 조약돌 - 25378 (G1)"
 author: kwon
 date: 2022-12-16T23:00:00 +0900
-categories: [boj, koi]
+categories: [boj, koi, gold]
 tags: [math, greedy algorithm, sort]
 math: true
 mermaid: false

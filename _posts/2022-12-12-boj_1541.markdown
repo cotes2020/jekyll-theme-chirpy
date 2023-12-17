@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 잃어버린 괄호 - 1541"
+title: "[BOJ] 잃어버린 괄호 - 1541 (S2)"
 author: kwon
 date: 2022-12-12T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [math, string, greedy algorithm, parsing]
 math: true
 mermaid: false

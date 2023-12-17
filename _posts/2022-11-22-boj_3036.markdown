@@ -1,8 +1,8 @@
 ---
-title: "[BOJ] 링 - 3036"
+title: "[BOJ] 링 - 3036 (S4)"
 author: kwon
 date: 2022-11-22T23:00:00 +0900
-categories: [boj]
+categories: [boj, silver]
 tags: [math, number theory, Euclidean algorithm]
 math: true
 mermaid: false
