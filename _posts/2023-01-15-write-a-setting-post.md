@@ -11,7 +11,7 @@ tags: [writing]
 GitBlog는 버전 제어가 가능해 기술 문서 블로그에 적합하다는 장점이 있고, 다양한 테마가 있어 개인이 원하는 테마를 선택하고, 기능 추가가 자유롭다는 이점이 있어서 선택하게 되었습니다.    
 GitBlog를 개설하기전에 테마를 선택해야 하는데, 아래의 3개의 사이트에서 다양한 테마를 무료로 제공 하고 있습니다.      
 
-1. [Jekyll Themes](http://jekyllthemes.org/themes/monos/)
+1. [Jekyll Themes](https://jekyllthemes.org/themes/monos/)
 2. [Jekyll Themes Free](https://jekyll-themes.com/free)
 3. [Jekyll Themes IO Free](https://jekyllthemes.io/free)
 
