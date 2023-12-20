@@ -25,23 +25,22 @@ tags: [Spring]
 # Spring Bean
 ## Spring Bean 등록
  ![Spring Bean Update png](/assets/img/spring/springbean.png){: width="350" height="200" }        
- Spring에서 빈(Bean)을 생성하면 해당 빈은 Spring 컨테이너에 등록되고 관리하게 됩니다.
+ Spring에서 빈(Bean)을 생성하면 해당 빈은 Spring 컨테이너에 등록되고 관리하게 됩니다.       
 
- 
 ## Spring Bean Update Code
     ```bash
 
-        @Bean
-        public BeanAService beanaservice() 
-        {
-            return new BeanAServiceImpl(beanaservicerepository);
-        }
+     @Bean
+     public BeanAService beanaservice() 
+     {
+        return new BeanAServiceImpl(beanaservicerepository);
+     }
 
-        @Bean
-        public BeanARepository beanaservicerepository() 
-        {
-            return new BeanAMemoryRepository();
-        }
+     @Bean
+     public BeanARepository beanaservicerepository() 
+     {
+        return new BeanAMemoryRepository();
+     }
     ```
     빈 이름에는 메서드 이름을 사용하고,      
     빈 이름에 직접 부여 할 수도 있다. ( 예시 : @Bean(name="Example"))       
@@ -49,7 +48,7 @@ tags: [Spring]
 
 ## Spring bean DI
  ![Spring Bean DI png](/assets/img/spring/springbeanupdate.png){: width="350" height="200" }      
-Spring container에서 등록된 설정 정보를 참고하여,     
+ Spring container에서 등록된 설정 정보를 참고하여,     
  Spring 컨테이너에서 등록된 설정 정보를 참고하여 **DI(의존성 주입)**이 이루어집니다.
  
 ## BeanFactory
