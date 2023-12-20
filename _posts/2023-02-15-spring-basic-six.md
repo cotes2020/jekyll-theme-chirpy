@@ -1,17 +1,17 @@
 ---
-title: Spring Basic[스프링 컨테이너]
+title: Spring Basic[싱글톤 컨테이너]
 date: 2023-02-15 22:50:00 +0800
-categories: [Spring-Basic, 스프링 컨테이너]
+categories: [Spring-Basic, 싱글톤 컨테이너]
 tags: [Spring]
 ---
 
-# 스프링 컨테이너
-## 스프링 컨테이너란?
+# 싱글톤 컨테이너
+## 싱글톤 컨테이너란?
 싱글톤 패턴의 문제점을 해결하면서, 객체(빈)를 생성, 관리, 그리고 제공하는 환경을 가지고 있습니다.        
 스프링의 핵심 기능 중 하나인 **제어의 역전(IoC, Inversion of Control)과 의존성 주입(DI, Dependency Injection)**을 구현하고 있습니다.
 그리고 싱글톤 패턴 적용 없이, 객체 인스턴스를 싱글톤으로 관리 합니다.       
 
-## 스프링 컨테이너 적용 후
+## 싱글톤 컨테이너 적용 후
  ![Spring Container png](/assets/img/spring/springspringcontainer.png){: width="350" height="200" }    
  Spring Container덕에 각각의 Clinet가 요청을 보낼 때 마다 객체를 생성하는 것이 아니라, 이미 만들어진 객체를 공유해서 효율적으로 재사용이 가능하다.      
  위의 사진만 보더라도, 각각의 클라이언트에게 새로 객체를 생성해서 반환하는게 아닌,      
@@ -51,7 +51,7 @@ public class StatefulService {
 ```
 
 # 결론
-스프링 컨테이너는 싱글톤 패턴의 문제점을 해결하면서 객체를 생성, 관리하고 제공하는 환경을 제공하는데, 주의할 점이 있습니다.        
+싱글톤 컨테이너는 싱글톤 패턴의 문제점을 해결하면서 객체를 생성, 관리하고 제공하는 환경을 제공하는데, 주의할 점이 있습니다.        
 
 객체를 싱글톤으로 사용하더라도 해당 객체를 무상태(stateless)로 설계해야 합니다.         
 
