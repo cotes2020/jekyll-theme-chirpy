@@ -28,7 +28,7 @@ tags: [Spring]
  Spring에서 빈(Bean)을 생성하면 해당 빈은 Spring 컨테이너에 등록되고 관리하게 됩니다.       
 
 ## Spring Bean Update Code
-    ```bash
+    ```java
 
      @Bean
      public BeanAService beanaservice() 
