@@ -38,6 +38,10 @@ tags: [Spring]
 1. 인터페이스(initializingBean, DisposableBean)
 - 이 방법은 스프링 초창기에 나온 방법들이다. 지금은 더 나은 방법이 있어서 이 방법은 사용되지 않는다.
 2. 설정 정보에 초기화 메서드, 종료 메서드 지정
+- [포스트로_이동하기]https://ljw22222.github.io/posts/spring-basic-eleven/
 3. @PostConstruct, @PreDestroy 어노테이션 지원
+- [포스트로_이동하기]https://ljw22222.github.io/posts/spring-basic-twelve/
+
+
 
 2,3번의 방법은 다음 포스터에서 다루도록 하겠다.
