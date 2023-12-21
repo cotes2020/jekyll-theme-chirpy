@@ -1,15 +1,23 @@
 ---
-title: Customize the Favicon
-author: cotes
-date: 2019-08-11 00:34:00 +0800
-categories: [Blogging, Tutorial]
+title: Hyundai Home Shopping Next Generation Project
+author: moonji
+date: 2023-11-10 00:34:00 +0800
+categories: [Carrer]
 tags: [favicon]
 ---
 
-The [favicons](https://www.favicon-generator.org/about/) of [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/) are placed in the directory `assets/img/favicons/`{: .filepath}. You may want to replace them with your own. The following sections will guide you to create and replace the default favicons.
+교보문고 프로젝트가 끝난 후 함께 했던 개발자들과 같이 투입되었다. 
+폐쇄망인 데다 기획서 없이 Java, Jsp로 된 기존 소스코드를 분석하여 Next.js, Typescript, monorepo 구성으로 전환하는 프로젝트.
+출퇴근 왕복 4시간의 어려움까지-
+많은 어려움들이 있었지만 생각보다 굉장히 성공적으로 프로젝트를 오픈했다.
+서버사이드를 구현한 적은 처음이어서 많이 헤메기도 했고 프로젝트 환경이 일반적인 환경이 아니라 구글링 하기도 힘들었지만,
+그만큼 많은 성장을 했던 프로젝트가 아니였나 싶다.
 
-## Generate the favicon
 
+<!-- The [favicons](https://www.favicon-generator.org/about/) of [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/) are placed in the directory `assets/img/favicons/`{: .filepath}. You may want to replace them with your own. The following sections will guide you to create and replace the default favicons. -->
+
+## 프론트 프로젝트 구성
+<!-- 
 Prepare a square image (PNG, JPG, or SVG) with a size of 512x512 or more, and then go to the online tool [**Real Favicon Generator**](https://realfavicongenerator.net/) and click the button <kbd>Select your Favicon image</kbd> to upload your image file.
 
 In the next step, the webpage will show all usage scenarios. You can keep the default options, scroll to the bottom of the page, and click the button <kbd>Generate your Favicons and HTML code</kbd> to generate the favicon.
@@ -33,4 +41,4 @@ The following table will help you understand the changes to the favicon files:
 >  ✓ means keep, ✗ means delete.
 {: .prompt-info }
 
-The next time you build the site, the favicon will be replaced with a customized edition.
+The next time you build the site, the favicon will be replaced with a customized edition. -->
