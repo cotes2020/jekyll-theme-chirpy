@@ -1,5 +1,5 @@
 ## Install `Jekyll`
-![jekyll](https://jekyllrb.com/)
+[jekyll](https://jekyllrb.com/)
 ```bash
 $ gem install bundler jekyll
 ```
