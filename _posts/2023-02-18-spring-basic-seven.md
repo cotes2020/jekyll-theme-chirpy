@@ -63,3 +63,9 @@ public class BeanServiceImpl implements BeanService {
     - 데이터 접근 계층에서 사용
 5. @Configuration
     - 스프링 설정 정보에서 사용
+
+## 결론
+이처럼 컴포넌트 스캔은 스프링에서 빈을 자동으로 찾아 등록하는 기능으로, 주로 @Component 어노테이션을 사용하여 클래스를 스프링 빈으로 등록합니다.        
+의존성 주입은 @Autowired 어노테이션을 통해 자동으로 이루어집니다.      
+컴포넌트 스캔은 @ComponentScan을 통해 특정 패키지 내에서 빈을 찾아 등록하며, @Controller, @Service, @Repository, @Configuration 등의 어노테이션도 대상으로 합니다.      
+이를 통해 애플리케이션의 구성을 유연하게 관리하고, 의존성 주입을 자동화하여 코드의 가독성과 유지보수성을 향상시킬 수 있습니다.      
