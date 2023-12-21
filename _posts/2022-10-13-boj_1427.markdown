@@ -1,0 +1,49 @@
+---
+title: "[BOJ] 소트 인사이드 - 1427 (S5)"
+author: kwon
+date: 2022-10-13T14:00:00 +0900
+categories: [boj, silver]
+tags: [string, sort]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 2 초 | 128 MB |
+
+# 문제
+
+배열을 정렬하는 것은 쉽다. 수가 주어지면, 그 수의 각 자리수를 내림차순으로 정렬해보자.
+
+# 입력
+
+첫째 줄에 정렬하려고 하는 수 N이 주어진다. N은 1,000,000,000보다 작거나 같은 자연수이다.
+
+# 출력
+
+첫째 줄에 자리수를 내림차순으로 정렬한 수를 출력한다.
+
+# 풀이
+
+주어진 수를 내림차순 정렬하는 간단한 문제이다. 정수로 수열이 이루어져 있기 때문에 counting sort를 사용하여 풀었다.
+
+## 코드
+
+```python
+import sys
+input = sys.stdin.readline
+
+num = input().strip()
+cnt_dict = {str(n):0 for n in range(9, -1, -1)}
+for i in num:
+    cnt_dict[i] += 1
+ans = ''
+for i in cnt_dict:
+    for _ in range(cnt_dict[i]):
+        ans += i
+
+print(ans)
+```
+
+9~0까지의 수를 key로 가지고 value가 0인 dictionary를 만들고 수가 얼마나 나왔는지 count 한다. 이후 dictionary의 key 순서대로(내림차순) count 된 수만큼 문자를 붙여가며 답을 완성한다.
