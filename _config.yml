@@ -18,9 +18,9 @@ timezone: Asia/Ho_Chi_Minh
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Dyl4n # the main title
+title: Ph4nt0mX # the main title
 
-tagline: Nguyen Quoc Dat # it will display as the sub-title
+tagline: Pentester # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Here you'll find linux stuff, programming, writeups about ctfs,.. and more, but above all ethical hacking!
