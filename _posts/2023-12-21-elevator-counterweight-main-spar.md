@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Elevator BCW Assemlby, Elevator Spar Assmebly"
+title:  "Balance counterweigh assembly & main spar"
 categories: [Empennage, ~elevator]
 tags: [empennage, EL-ASS-001-C-F-0]
 minutes: 360
