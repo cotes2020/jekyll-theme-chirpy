@@ -14,8 +14,8 @@ Lombok[롬복]은 자바 프로젝트에서 반복적인 코드를 줄이기 위
 
 ## 적용 방법
 1. [Spring.starter.io](https://start.spring.io/)로 이동하여 Spring Project를 생성 합니다.
-- 생성 방법은 [Poster](https://ljw22222.github.io/posts/spring-basic-two/#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1)의 포스터를 참고하시면 됩니다.        
- ![Spring Project Lombok png](/assets/img/spring/springprojectlombok.png){: width="500" height="400" }
+- 생성 방법은 [Poster](https://ljw22222.github.io/posts/spring-basic-two/#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1)의 포스터를 참고하시면 됩니다.<br/>
+ ![Spring Project Lombok png](/assets/img/spring/springprojectlombok.png){: width="500" height="400" }<br/>
 - 설정을 마치신 다음 Dependencies에서 Lombok을 검색하여 추가해줍니다.       
 - Lombok을 추가하셨다면 GENERATE버튼을 눌러 zip파일을 생성 합니다.      
 
