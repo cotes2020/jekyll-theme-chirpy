@@ -14,23 +14,23 @@ Lombok[롬복]은 자바 프로젝트에서 반복적인 코드를 줄이기 위
 
 ## 적용 방법
 1. [Spring.starter.io](https://start.spring.io/)로 이동하여 Spring Project를 생성 합니다.
-- 생성 방법은 [Poster](https://ljw22222.github.io/posts/spring-basic-two/#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1)의 포스터를 참고하시면 됩니다.
- ![Spring Project Lombok png](/assets/img/spring/springprojectlombok.png){: width="350" height="200" }
-- 설정을 마치신 다음 Dependencies에서 Lombok을 검색하여 추가해줍니다.
-- Lombok을 추가하셨다면 GENERATE버튼을 눌러 zip파일을 생성 합니다.
+- 생성 방법은 [Poster](https://ljw22222.github.io/posts/spring-basic-two/#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1)의 포스터를 참고하시면 됩니다.        
+ ![Spring Project Lombok png](/assets/img/spring/springprojectlombok.png){: width="500" height="400" }
+- 설정을 마치신 다음 Dependencies에서 Lombok을 검색하여 추가해줍니다.       
+- Lombok을 추가하셨다면 GENERATE버튼을 눌러 zip파일을 생성 합니다.      
 
 2. zip파일을 압축해제 하여 Tools(InteliJ 기준)을 사용해 파일을 열어줍니다.
 
- ![Spring Project Lombok Gradle png](/assets/img/spring/springprojectgradlesetting.png){: width="350" height="200" }
+ ![Spring Project Lombok Gradle png](/assets/img/spring/springprojectgradlesetting.png){: width="500" height="400" }
 3. 왼쪽의 파일 구조에서 build.gradle파일에 들어가시면 위와 같이 라이브러리가 추가되어 있는 모습이 확인 가능합니다.
 
 4. build.gradle파일을 마우스 오른쪽 누르고 디스크에 로드 버튼을 눌러 줍니다.
 
- ![Spring Project Lombok Gradle Reload png](/assets/img/spring/springprojecgrablereload.png){: width="350" height="200" }
+ ![Spring Project Lombok Gradle Reload png](/assets/img/spring/springprojecgrablereload.png){: width="500" height="400" }
 5. 그런 다음 위의 사진처럼 오른쪽에 있는 Gradle을 누르고, reload버튼을 눌러주면,        
 build.gradle파일이 프로젝트에 적용이 되면서, 설정되어있는 라이브러리파일을 다운 받기 시작합니다.
 
- ![Spring Project Lombok Annotation enable png](/assets/img/spring/springlombokannotation.png){: width="350" height="200" }
+ ![Spring Project Lombok Annotation enable png](/assets/img/spring/springlombokannotation.png){: width="500" height="400" }
 6. 라이브러리파일 다운이 끝났으면, 왼쪽위의 점3개 버튼을 클릭하여 아래의 절차를 따라가면 됩니다.
 - 파일 -> 설정 -> 빌드,실행,배포 -> 컴파일러 -> 어노테이션 프로세서
 - 파일 -> 설정 이 부분을 한번에 들어갈수 있는 단축키는
