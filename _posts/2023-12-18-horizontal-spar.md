@@ -35,9 +35,7 @@ I finished the other angle without incident.
 
 Given that 3 holes are incorrectly drilled, I sent Sling technical an email to see how to fix it. My plan is to fill the hole using some structural adhesive like hysol, then re-drill them on the other side.
 
-### Fixing incorrect countersinks
-
-To be written once I fix the mistake.
+**Update 2023-12-21**: I got response back from Sling. Unfortunately I cannot patch it with structural adhesive. I will have to get a replacement part. So I will move on to other components for now and come back to the spar when I get the new part.
 
 ## More part cleaning
 
