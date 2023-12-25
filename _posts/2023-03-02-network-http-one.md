@@ -60,16 +60,25 @@ tags: [HTTP]
 ### TCP/IP 4계층
 ![http-network-tcp-ip-4-png](/assets/img/spring/http-network-tcp-ip-4.png){: width="700" height="600" }<br/>
 애플리케이션 계층에서 데이터를 생성하고, SOCKET 라이브러리를 통해 전달합니다. 이후 전송계층에서 TCP 정보를 생성하며, 이 정보에는 메시지 데이터가 포함됩니다. 다음으로 인터넷 계층에서 IP 패킷을 생성하고, 이 IP 패킷은 네트워크 인터페이스 계층의 LNA 카드를 통해 인터넷으로 전송되어 서버에 전달됩니다.    
-
 ### TCP/IP Packet
-TCP/IP Packet은 IP Packet과는 다르게 TCP 세그먼트가 포함됩니다.         
-UDP 와 TCP의 다른점은, UDP는 순서를 보장하지 않고, 데이터그램 패킷 교환 방식을 사용하지만,
-TCP/IP 방식은 연결지향 ( TCP 3 way handshake ) 방식을 사용, 그리고 가상회선 패킷 교환 방식을 사용한다는 점이 다릅니다.          
- - 데이터 그램 교환 방식
-    ![http-network-tcp-data-gram-png](/assets/img/spring/http-network-udp-data-gram.png){: width="700" height="600" }<br/>
+TCP/IP Packet은 IP Packet과는 다르게 TCP 세그먼트가 포함됩니다.   
+
+## TCP / UDP      
+### UDP
+UDP는 순서를 보장하지 않고, 데이터그램 패킷 교환 방식을 사용합니다.
+### TCP
+TCP는 연결지향 ( TCP 3 way handshake ) 방식을 사용, 그리고 가상회선 패킷 교환 방식을 사용합니다.
+### TCP, UDP 교환 방식
+ - 데이터 그램 교환 방식 ( **UDP** )
     - 순서를 보장하지 않고, 수신여부 확인 X, 단지 데이터만 주는 방식
- - 가상 회선 패킷 교환 방식
-    ![http-network-tcp-virtual-line-png](/assets/img/spring/http-network-tcp-virtual-line.png){: width="700" height="600" }<br/>
+    ![http-network-tcp-data-gram-png](/assets/img/spring/http-network-udp-data-gram.png){: width="700" height="600" }<br/>
+    - 장점
+        - 방식이 단순하고, 빠르다는게 장점입니다.
+
+ - 가상 회선 패킷 교환 방식 ( **TCP** )
     - 각 패킷에 가상회선 식별자가 포함되며, 패킷들이 전송된 순서대로 도착하는 방식
+    ![http-network-tcp-virtual-line-png](/assets/img/spring/http-network-tcp-virtual-line.png){: width="700" height="600" }<br/>
+    - 장점
+        - 데이터 순서를 보장하고, 데이터 전달을 보증이 가능합니다.
 
 양이 많아, 다음 포스터에서 이어서 설명하도록 하겠습니다.
