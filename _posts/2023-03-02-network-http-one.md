@@ -1,7 +1,7 @@
 ---
 title: NetWork Basic[InternetNetWork-1]
 date: 2023-03-02 20:24:00 +0800
-categories: [NetWork, InternetNetWork-1]
+categories: [NetWork, InternetNetWork]
 tags: [HTTP]
 ---
 ## 컴퓨터와 컴퓨터의 통신은 어떻게?

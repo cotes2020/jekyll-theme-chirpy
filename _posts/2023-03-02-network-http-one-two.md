@@ -1,6 +1,6 @@
 ---
 title: NetWork Basic[InternetNetWork-2]
 date: 2023-03-02 22:24:00 +0800
-categories: [NetWork, InternetNetWork-2]
+categories: [NetWork, InternetNetWork]
 tags: [HTTP]
 ---
