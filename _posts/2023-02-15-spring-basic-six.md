@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[싱글톤 컨테이너]
 date: 2023-02-15 22:50:00 +0800
-categories: [Spring-Basic, 싱글톤 컨테이너]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 
@@ -12,11 +12,11 @@ tags: [Spring]
 그리고 싱글톤 패턴 적용 없이, 객체 인스턴스를 싱글톤으로 관리 합니다.       
 
 ## 싱글톤 컨테이너 적용 후
- ![Spring Container png](/assets/img/spring/springspringcontainer.png){: width="350" height="200" }    
- Spring Container덕에 각각의 Clinet가 요청을 보낼 때 마다 객체를 생성하는 것이 아니라, 이미 만들어진 객체를 공유해서 효율적으로 재사용이 가능하다.      
+ ![Spring Container png](/assets/img/spring/springspringcontainer.png){: width="700" height="400" }    
+ Spring Container덕에 각각의 Clinet가 요청을 보낼 때 마다 객체를 생성하는 것이 아니라, 이미 만들어진 객체를 공유해서 효율적으로 재사용이 가능합니다.      
  위의 사진만 보더라도, 각각의 클라이언트에게 새로 객체를 생성해서 반환하는게 아닌,      
- 이미 만들어진 객체 하나만으로 모두에게 동일한 객체를 반환 시켜주고 있다.       
- 하지만 무조껀 동일한 객체를 주는것이 아닌, 요청이 올때마다 새로운 객체를 생성해서 반환하는 기능도 있다.     
+ 이미 만들어진 객체 하나만으로 모두에게 동일한 객체를 반환 시켜주고 있습니다.       
+ 하지만 무조껀 동일한 객체를 주는것이 아닌, 요청이 올때마다 새로운 객체를 생성해서 반환하는 기능도 있습니다.     
 
 ## 주의점
  1. **무상태로 설계하기**

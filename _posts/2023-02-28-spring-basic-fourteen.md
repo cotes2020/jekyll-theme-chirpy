@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[웹 스코프]
 date: 2023-02-28 23:08:00 +0800
-categories: [Spring-Basic, 웹 스코프]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[프로젝트 설정]
 date: 2023-01-30 19:43:00 +0800
-categories: [Spring-Basic, 프로젝트 설정]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 
@@ -63,6 +63,6 @@ Tools 제작도구로 프로젝트를 직접 생산해도 되지만 Spring Proje
 
 ## 마무리
 Spring 프로젝트를 만들고 설정하는 두 가지 방법중 사이트 기준으로 설명했습니다.<br/> 
-툴을 사용하여 프로젝트를 직접 생성할 수 있지만, Spring 사이트를 통해 프로젝트를 쉽고 빠르게 생성할 수 있습니다.<br/>
+툴을 사용하여 프로젝트를 직접 생성할 수 있지만, Spring Stater io 사이트를 통해 프로젝트를 보다 쉽고 빠르게 생성할 수 있습니다.<br/>
 따라서 이 글에서는 사이트를 기준으로 프로젝트 생성과 설정에 관한 과정을 다루어보았습니다.
 

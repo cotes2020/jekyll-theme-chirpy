@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[빈 생명주기 콜백 방법 2]
 date: 2023-02-23 20:39:00 +0800
-categories: [Spring-Basic, 빈 생명주기 콜백 방법 2]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 

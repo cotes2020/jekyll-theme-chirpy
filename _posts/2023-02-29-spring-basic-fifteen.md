@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[스코프와 Provider]
 date: 2023-02-29 17:35:00 +0800
-categories: [Spring-Basic, Scope And Provider]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 

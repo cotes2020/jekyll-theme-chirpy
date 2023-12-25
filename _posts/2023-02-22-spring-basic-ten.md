@@ -1,7 +1,7 @@
 ---
 title: Spring Basic[빈 생명주기 콜백]
 date: 2023-02-22 18:12:00 +0800
-categories: [Spring-Basic, 빈 생명주기 콜백]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 
@@ -31,7 +31,7 @@ tags: [Spring]
 ## 지원 방식 3가지 방법
 스프링은 크게 3가지 방법으로 빈 생명주기 콜백을 지원합니다.
 1. 인터페이스(initializingBean, DisposableBean)
-- 이 방법은 스프링 초창기에 나온 방법들이다. 지금은 더 나은 방법이 있어서 이 방법은 사용되지 않습니다.
+- 이 방법은 스프링 초창기에 나온 방법들입니다. 지금은 더 나은 방법이 있어서 이 방법은 사용되지 않습니다.
 2. 설정 정보에 초기화 메서드, 종료 메서드 지정
 - [포스트로_이동하기]https://ljw22222.github.io/posts/spring-basic-eleven/
 3. @PostConstruct, @PreDestroy 어노테이션 지원

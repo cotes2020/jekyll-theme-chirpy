@@ -1,11 +1,12 @@
 ---
 title: Spring Basic[스프링이란]
 date: 2023-01-31 17:12:00 +0800
-categories: [Spring-Basic, 스프링이란]
+categories: [Spring-Basic, Spring-MainPoint]
 tags: [Spring]
 ---
 
 # Spring 프레임워크
+
 
 ### Spring의 핵심이점 5가지
 1. **제어의 역전 (IoC)**
