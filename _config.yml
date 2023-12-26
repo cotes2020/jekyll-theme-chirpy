@@ -6,7 +6,7 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: ko-KR
+lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Shanghai
@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: Bananaketchup # the main title
 
-tagline: 웹 탐험가 바나나케찹의 항해일지 # it will display as the sub-title
+tagline: 프론트엔드 엔지니어, 문지윤입니다. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   웹디자인으로 시작해 시맨틱 마크업, 접근성, 프론트엔드 개발 등을 해왔습니다. 웹을 좋아하고 탐험을 좋아합니다.
@@ -77,6 +77,9 @@ avatar: "assets/img/avatar.jpeg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
+
+# 미래의 날짜도 허용
+future: true
 
 comments:
   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
