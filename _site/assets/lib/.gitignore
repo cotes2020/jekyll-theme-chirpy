@@ -1,0 +1,8 @@
+# hidden files
+.*
+!.git*
+!.editorconfig
+
+# NPM
+node_modules
+package-lock.json

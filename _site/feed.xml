@@ -1,0 +1,74 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Bananaketchup</title>
+  <subtitle>웹디자인으로 시작해 시맨틱 마크업, 접근성, 프론트엔드 개발 등을 해왔습니다. 웹을 좋아하고 탐험을 좋아합니다.</subtitle>
+  <updated>2023-12-27T07:49:40+08:00</updated>
+  <author>
+    <name>Moon Jiyun</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator>
+  <rights> © 2023 Moon Jiyun </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Resume</title>
+    <link href="http://localhost:4000/posts/resume/" rel="alternate" type="text/html" title="Resume" />
+    <published>2023-12-29T00:34:00+08:00</published>
+  
+    <updated>2023-12-29T00:34:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/resume/</id>
+    <content src="http://localhost:4000/posts/resume/" />
+    <author>
+      <name>moonji</name>
+    </author>
+
+  
+    
+    <category term="Carrer" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      EXPERIENCE
+
+  최신 순으로 정리하였습니다.
+
+
+현대홈쇼핑 온라인몰 2022.10 - 2023.12
+
+
+  주관사 : 현대홈쇼핑
+  수행사 : SK C&amp;amp;C
+  협력사 아이엔소프트 서비스 사업 본부
+  소속 : 아이엔소프트 (차장)
+  팀구성 : 40명 이상
+  사용기술 : JAVA, Spring Boot, JSTL, Node.js, Typescript, React.js, Next.js, Webpack,, React-query, Redux, Git,  Atlassian
+  주요업무 :
+    
+      FE개발 환경 구성 참여(baseMiddleware, axios interceptor, api Generator)
+      회원 파트 총괄 (NextAuth, redis 사용자정보 동기...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
