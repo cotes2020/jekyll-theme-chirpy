@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: 띠오의 띠로리로리 # the main title
 
-tagline: 공부한 내용 기록합니다 # it will display as the sub-title
+tagline: 공부 + 일상 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -27,18 +27,18 @@ url: "https://TheoLee72.github.io"
 
 github:
   username: TheoLee72 # change to your github username
+  
+instagram:
+  username: theo.ry_72
 
-twitter:
-  username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 띠오
+  name: 띠오(Theo)
   email: theolee72@snu.ac.kr # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
     - https://github.com/TheoLee72 # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
