@@ -19,3 +19,5 @@ package-lock.json
 
 # Misc
 assets/js/dist
+# 소스올리기
+Gemfile.lock

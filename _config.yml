@@ -9,9 +9,9 @@ timezone: Asia/Seoul    #timezone설정입니다. http://www.timezoneconverter.c
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 개발자블로그                          # 블로그 이름입니다. 설정하면 브라우저 상단에 설정된 이름이 확인가능합니다.
+title: 개발블로그                          # 블로그 이름입니다. 설정하면 브라우저 상단에 설정된 이름이 확인가능합니다.
 
-tagline:    # 서브 타이틀 입니다. 설정하면 블로그 첫 페이지 좌측에서 확인 가능합니다.
+tagline: fullstack    # 서브 타이틀 입니다. 설정하면 블로그 첫 페이지 좌측에서 확인 가능합니다.
 
 description: >-                        # "used by seo meta and the atom feed"라고 나옵니다. 저는 설정을 그대로 두었습니다.
   A minimal, portfolio, sidebar,
@@ -30,7 +30,7 @@ github:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 넓고 얕게
+  name: @개발자
   email: ruukr8080@naver.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
