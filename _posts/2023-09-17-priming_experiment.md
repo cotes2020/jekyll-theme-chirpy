@@ -91,5 +91,4 @@ will probably build a small paint booth in my garage.
 I hang the 2 pieces of aluminum to my backyard. I will keep them there for a few months under California sun. It will be roughly 5 month when my tail kit arrives. I will go check
 their agining when the kit arrives to see if primer did anything to protect the aluminum against elements.
 
-I think it's actually a good thing that I didn't really apply the primers perfectly. When I go check the effect in a few months hopefully I will see a more realistic result from
-imperfect application.
+I think it's actually a good thing that I didn't really apply the primers perfectly. When I go check the effect in a few months hopefully I will see a more realistic result from imperfect application.
