@@ -8,6 +8,14 @@ permissions:
   issues: write
   pull-requests: write
 
+env:
+  STALE_LABEL: stale
+  EXEMPT_LABELS: "pending,planning,in progress"
+  MESSAGE: >
+    This conversation has been automatically marked as stale because it has not had recent activity.
+    It will be closed if no further activity occurs.
+    Thank you for your contributions.
+
 jobs:
   stale:
     runs-on: ubuntu-latest
@@ -16,15 +24,9 @@ jobs:
         with:
           days-before-stale: 30
           days-before-close: 1
-          stale-issue-label: stale
-          exempt-issue-labels: pending
-          stale-issue-message: >
-            This issue has been automatically marked as stale because it has not had recent activity.
-            It will be closed if no further activity occurs.
-            Thank you for your contributions.
-          stale-pr-label: stale
-          exempt-pr-labels: pending
-          stale-pr-message: >
-            This PR has been automatically marked as stale because it has not had recent activity.
-            It will be closed if no further activity occurs.
-            Thank you for your contributions.
+          stale-issue-label: ${{ env.STALE_LABEL }}
+          exempt-issue-labels: ${{ env.EXEMPT_LABELS }}
+          stale-issue-message: ${{ env.MESSAGE }}
+          stale-pr-label: ${{ env.STALE_LABEL }}
+          exempt-pr-labels: ${{ env.EXEMPT_LABELS }}
+          stale-pr-message: ${{ env.MESSAGE }}
