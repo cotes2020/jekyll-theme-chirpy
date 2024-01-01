@@ -12,7 +12,6 @@ HTTP의 요청 메세지는 클라이언트가 서버로 요청을 보낼떄와,
 ## HTTP 요청 메세지
 ```
 GET /search?q=spring&hl=ko HTTP/2.0
-Host : www.googole.com
 ```
 위의 요청 메세지를 기반으로 설명 드리겠습니다.
 - 상태 라인
@@ -26,10 +25,7 @@ Host : www.googole.com
    - HTTP Version ( HTTP/2.0 )
       - 요청 메세지의 HTTP 버전입니다.
 - 헤더
-   ```
-   Host : www.googole.com
-   ```
-   - 요청에 대한 부가 정보를 포함하는 부분입니다. ( Host : www.googole.com )
+   - 요청에 대한 부가 정보를 포함하는 부분입니다.
 - 본문 ( 예제 메세지에서는 없음 )
    - 요청의 실제 데이터를 포함하는 부분입니다.<br/>
 
