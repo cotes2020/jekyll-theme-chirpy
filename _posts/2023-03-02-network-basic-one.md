@@ -1,8 +1,8 @@
 ---
-title: NetWork Basic[InternetNetWork-1]
+title: NetWork_Basic[Network-1]
 date: 2023-03-02 20:24:00 +0800
-categories: [NetWork, InternetNetWork]
-tags: [HTTP]
+categories: [CS, InternetNetwork]
+tags: [Network_Basic,Network]
 ---
 ## 컴퓨터와 컴퓨터의 통신은 어떻게?
 컴퓨터 간 통신은 주로 인터넷을 통해 이루어집니다. 인터넷은 많은 컴퓨터와 네트워크로 구성된 거대한 국제적인 네트워크로, 컴퓨터들은 이를 통해 서로 통신합니다.

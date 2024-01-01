@@ -2,7 +2,7 @@
 title: Spring Basic[Lombok 사용하기]
 date: 2023-02-21 21:12:00 +0800
 categories: [Spring-Basic, Spring-MainPoint]
-tags: [Spring]
+tags: [Spring,Lombok]
 ---
 
 # Lombok
