@@ -116,7 +116,7 @@ Content-Type: application/json
       "age": 50
    }
    ```
-   - 요청 메세지가 위처럼 들어오게 된다면, age필드는 있고, username 필드가 없는 상태로 들어왔기 때문에, username이라는 필드는 삭제되고 age만 대체되게 됩니다.
+   - 요청 메세지가 위처럼 들어오게 된다면, age필드는 있고, username 필드가 없는 상태로 들어왔기 때문에, username이라는 필드는 삭제되고 age만 대체하게 됩니다.
       - username 필드 존재 X -> 필드 삭제
       - age : "20" -> "50"
       ```
