@@ -1,4 +1,8 @@
-# On practical SOLID use
+---
+title: On practical SOLID usage
+date: 2024-01-01 16:00:00 +/-TTTT
+categories: [On Software Development]
+---
 
 In this post I'll go about my personal interpretation of the SOLID principle. What I understand and take from it, and
 how I believe it can be applied practically.
