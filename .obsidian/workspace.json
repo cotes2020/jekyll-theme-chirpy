@@ -4,32 +4,34 @@
     "type": "split",
     "children": [
       {
-        "id": "072d7e84fddd29dc",
+        "id": "a59daa3dd1876c37",
         "type": "tabs",
         "children": [
           {
-            "id": "a7596bd8104c8852",
+            "id": "7a60c93a0130ec3d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "771816c6359825b3",
+            "id": "115a950a44ae3eb8",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "diff-view",
               "state": {
-                "currentVersion": "1.4.16"
+                "file": ".obsidian/workspace.json",
+                "staged": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,7 +97,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +113,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,9 +134,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "_posts/2023-10-16-GETTING STARTED DXLIB.md"
-              }
+              "state": {}
             }
           },
           {
@@ -164,13 +162,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a7596bd8104c8852",
+  "active": "115a950a44ae3eb8",
   "lastOpenFiles": [
+    "_posts/On Software Development/2024-01-01-ON PRACTICAL SOLID USE.md",
+    "_posts/On Software Development/2024-01-01-ON PRACTICAL SOLID USE.md~",
+    "_posts/On Software Development",
+    "_posts/2023-10-16-GETTING STARTED DXLIB.md",
     "_tabs/cv.md",
     "_tabs/categories.md",
     "_tabs/archives.md",
     "_tabs/about.md",
-    "_posts/2023-10-16-GETTING STARTED DXLIB.md",
     "_posts/2023-09-29-WELCOME.md"
   ]
 }
