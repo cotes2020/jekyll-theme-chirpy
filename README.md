@@ -2,7 +2,7 @@
   A minimal, responsive and feature-rich Jekyll blog.
 </div>
 
-[Take a look!](https://rzimmerdev.github.io)
+Take a look at [rzimmerdev.github.io!](https://rzimmerdev.github.io)
 
 To setup locally, access the [Jekyll docs](https://jekyllrb.com/docs/installation/) to install Jekyll and Gem.
 Then run:
