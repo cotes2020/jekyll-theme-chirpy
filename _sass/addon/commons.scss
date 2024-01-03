@@ -85,6 +85,7 @@ blockquote {
   border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
   color: var(--blockquote-text-color);
+  display: flex;
 
   &[class^='prompt-'] {
     border-left: 0;
@@ -132,12 +133,11 @@ kbd {
 }
 
 footer {
-  font-size: 0.8rem;
   background-color: var(--main-bg);
   height: $footer-height;
   border-top: 1px solid var(--main-border-color);
 
-  @extend %text-color;
+  @extend %text-xs;
 
   a {
     @extend %text-highlight;
@@ -148,7 +148,6 @@ footer {
   }
 
   p {
-    line-height: 1.75;
     text-align: center;
     margin-bottom: 0;
   }
@@ -317,9 +316,7 @@ sup {
   @extend %rounded;
 
   &:not(.no-bg) {
-    img {
-      background: var(--img-bg);
-    }
+    background: var(--img-bg);
   }
 
   img {
@@ -328,6 +325,10 @@ sup {
     object-fit: cover;
 
     @extend %rounded;
+
+    @at-root #post-list & {
+      width: 100%;
+    }
   }
 }
 
@@ -383,7 +384,7 @@ main {
 }
 
 .post-meta {
-  font-size: 0.85rem;
+  @extend %text-sm;
 
   a {
     &:not([class]):hover {
@@ -551,7 +552,8 @@ main {
 
   @extend %rounded;
 
-  &.youtube {
+  &.youtube,
+  &.bilibili {
     aspect-ratio: 16 / 9;
   }
 
@@ -640,12 +642,12 @@ main {
 
 .left {
   float: left;
-  margin: 0.75rem 1rem 1rem 0 !important;
+  margin: 0.75rem 1rem 1rem 0;
 }
 
 .right {
   float: right;
-  margin: 0.75rem 0 1rem 1rem !important;
+  margin: 0.75rem 0 1rem 1rem;
 }
 
 /* --- Overriding --- */
@@ -820,9 +822,11 @@ $btn-mb: 0.5rem;
     padding-right: 1rem;
     margin-bottom: 1.5rem;
 
+    $btn-size: 1.75rem;
+
     %button {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: $btn-size;
+      height: $btn-size;
       margin-bottom: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
@@ -849,7 +853,7 @@ $btn-mb: 0.5rem;
     }
 
     i {
-      line-height: 1.75rem;
+      line-height: $btn-size;
     }
 
     .mode-toggle {
@@ -1128,10 +1132,6 @@ search {
 #tail-wrapper {
   > :not(script) {
     margin-top: 3rem;
-  }
-
-  > :only-child {
-    margin-top: 0;
   }
 }
 

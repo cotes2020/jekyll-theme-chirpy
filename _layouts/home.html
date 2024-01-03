@@ -1,5 +1,6 @@
 ---
 layout: default
+refactor: true
 ---
 
 {% include lang.html %}
@@ -39,8 +40,7 @@ layout: default
   {% endfor %}
 {% endif %}
 
-{% capture _content %}
-<div id="post-list" class="flex-grow-1 pe-xl-2">
+<div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
     <article class="card-wrapper card">
       <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
@@ -54,8 +54,14 @@ layout: default
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
+          {% assign lqip = null %}
+
+          {% if post.image.lqip %}
+            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
+          {% endif %}
+
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {% if post.image.lqip %}lqip="{{ post.image.lqip }}"{% endif %}>
+            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
           </div>
 
           {% assign card_body_col = '7' %}
@@ -106,9 +112,6 @@ layout: default
   {% endfor %}
 </div>
 <!-- #post-list -->
-{% endcapture %}
-
-{% include refactor-content.html content=_content lang=lang %}
 
 {% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}

@@ -120,13 +120,13 @@
     {% endunless %}
 
     {% if _lqip %}
-      {% if _lqip contains 'data:' %}
-        {% assign _lazyload = false %}
-        {% assign _class = _class | append: ' blur' %}
-      {% else %}
+      {% assign _lazyload = false %}
+      {% assign _class = _class | append: ' blur' %}
+
+      {% unless _lqip contains 'data:' %}
         {% assign _lqip_alt = 'lqip="' | append: _path_prefix %}
         {% assign _left = _left | replace: 'lqip="', _lqip_alt %}
-      {% endif %}
+      {% endunless %}
 
       <!-- add image placeholder -->
       {% assign _left = _left | replace: 'src=', 'data-src=' | replace: ' lqip=', ' data-lqip="true" src=' %}
