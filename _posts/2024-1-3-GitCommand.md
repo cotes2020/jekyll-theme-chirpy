@@ -50,3 +50,8 @@ $ git branch -a
 $ git switch -c (new branch) origin/branchname
 origin/branchname의 commit 을 들고있는 로컬 브랜치 (new branch)를 만든다.
 ```
+
+## 로컬 branch 지우기
+```
+$ git branch -d (branchname)
+```
