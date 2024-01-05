@@ -6,7 +6,7 @@ tags: [binary, hex, computer architecture]
 math: true
 ---
 
-이 포스트는 CS에서 많이 쓰는 이진수와 16진수에 대해 설명합니다.
+이 포스트는 CS에서 많이 쓰는 이진수와 16진수에 대해 설명한다.
 
 ## Unsigned Binary Integers
 만약 n-bit number이라면 0부터 $$2^n-1$$까지 표현이 가능하다.
