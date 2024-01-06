@@ -87,6 +87,10 @@ blockquote {
   color: var(--blockquote-text-color);
   display: flex;
 
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
   &[class^='prompt-'] {
     border-left: 0;
     position: relative;
@@ -103,10 +107,6 @@ blockquote {
       margin-top: 0.4rem;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
-    }
-
-    > p:last-child {
-      margin-bottom: 0;
     }
   }
 
