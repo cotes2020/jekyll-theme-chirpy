@@ -55,3 +55,8 @@ origin/branchname의 commit 을 들고있는 로컬 브랜치 (new branch)를 �
 ```
 $ git branch -d (branchname)
 ```
+
+## 현재 branch commit 기록 보기
+```
+$ git log //계속 Enter 치면서 다음 페이지 넘어가고 q누르면 나옴.
+```
