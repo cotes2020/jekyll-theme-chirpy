@@ -126,6 +126,5 @@ export function initClipboard() {
   btnCopyLink.on('mouseleave', function (e) {
     const target = $(e.target);
     target.tooltip('hide');
-    console.log('mouse leave...');
   });
 }
