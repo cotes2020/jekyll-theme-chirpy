@@ -1,5 +1,3 @@
-<!-- The Head -->
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
@@ -11,29 +9,38 @@
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
 
-  {% capture seo_tags %}
+  {%- capture seo_tags -%}
     {% seo title=false %}
-  {% endcapture %}
+  {%- endcapture -%}
+
+  <!-- Setup Open Graph image -->
 
   {% if page.image %}
-    {% assign img = page.image.path | default: page.image %}
+    {% assign src = page.image.path | default: page.image %}
 
-    {% unless img contains '://' %}
-      {% assign img_path = page.img_path | append: '/' | append: img | replace: '//', '/' %}
-      {% capture target %}"{{ img | absolute_url }}"{% endcapture %}
+    {% unless src contains '://' %}
+      {%- capture img_url -%}
+        {% include img-url.html src=src img_path=page.img_path %}
+      {%- endcapture -%}
 
-      {% if site.img_cdn contains '//' %}
-        <!-- it's a cross-origin URL -->
-        {% capture replacement %}"{{ site.img_cdn }}{{ img_path }}"{% endcapture %}
-      {% else %}
-        <!-- it's a local file path -->
-        {%- capture replacement -%}
-          "{{ site.img_cdn | append: '/' | append: img_path | replace: '//', '/' | absolute_url }}"
-        {%- endcapture -%}
-      {% endif %}
+      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
+      {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
-      {% assign seo_tags = seo_tags | replace: target, replacement %}
+      {% assign seo_tags = seo_tags | replace: old, new %}
     {% endunless %}
+
+  {% elsif site.social_preview_image %}
+    {%- capture img_url -%}
+      {% include img-url.html src=site.social_preview_image %}
+    {%- endcapture -%}
+
+    {%- capture og_image -%}
+      <meta property="og:image" content="{{ img_url }}" />
+    {%- endcapture -%}
+
+    {% assign old_meta_clip = '<meta name="twitter:card"' %}
+    {% assign new_meta_clip = og_image | append: old_meta_clip %}
+    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
   {% endif %}
 
   {{ seo_tags }}
