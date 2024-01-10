@@ -11,10 +11,10 @@
 
 <!-- layout specified -->
 
-{% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+{% if page.layout == 'post' or page.layout == 'page' or page.layout == 'posts' %}
   {% assign urls = urls | append: ',' | append: site.data.origin[type]['lazy-polyfill'].js %}
 
-  {% unless page.layout == 'home' %}
+  {% unless page.layout == 'posts' %}
     <!-- image lazy-loading & popup & clipboard -->
     {% assign urls = urls
       | append: ','
@@ -25,7 +25,7 @@
   {% endunless %}
 {% endif %}
 
-{% if page.layout == 'home'
+{% if page.layout == 'posts'
   or page.layout == 'post'
   or page.layout == 'archives'
   or page.layout == 'category'
@@ -57,7 +57,7 @@
 {% include jsdelivr-combine.html urls=urls %}
 
 {% case page.layout %}
-  {% when 'home', 'categories', 'post', 'page' %}
+  {% when 'posts', 'categories', 'post', 'page' %}
     {% assign js = page.layout %}
   {% when 'archives', 'category', 'tag' %}
     {% assign js = 'misc' %}
