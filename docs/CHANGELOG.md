@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.4.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.3.1...v6.4.0) (2024-01-10)
+
+### Features
+
+* add bilibili embed video support ([#1406](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1406)) ([4a2b89d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/4a2b89d0b698d672486349131a89025fa47afcb6))
+* add site-wide social preview image settings ([#1463](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1463)) ([241bb4d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/241bb4df7878cff7f82014df660874a1dcddba76))
+
+### Bug Fixes
+
+*  image float breaks quotes and prompts ([#1449](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1449)) ([ea2d238](https://github.com/cotes2020/jekyll-theme-chirpy/commit/ea2d238bd8adc018256862e05a5092311c87a671)), closes [#1441](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1441)
+* url-less authors should not have empty links ([#1410](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1410)) ([2a4fbf6](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2a4fbf6a7925da610a75c498116da7cf9ba857d7)), closes [#1403](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1403)
+
+### Improvements
+
+* include the latest posts in the "Recently Updated" list ([#1456](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1456)) ([82d8f2d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/82d8f2db984711f334f55b6af5098ec16770e824))
+
 ## [6.3.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.3.0...v6.3.1) (2023-11-12)
 
 ### Bug Fixes
