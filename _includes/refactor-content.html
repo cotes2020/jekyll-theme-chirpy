@@ -48,23 +48,6 @@
   {% assign _img_content = null %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
 
-  <!-- CDN URL -->
-  {% if site.img_cdn %}
-    {% if site.img_cdn contains '//' %}
-      {% assign _path_prefix = site.img_cdn %}
-    {% else %}
-      {% assign _path_prefix = site.img_cdn | relative_url %}
-    {% endif %}
-  {% else %}
-    {% assign _path_prefix = site.baseurl %}
-  {% endif %}
-
-  <!-- Add image path -->
-  {% if page.img_path %}
-    {% assign _path = page.img_path | append: '/' | replace: '//', '/' %}
-    {% assign _path_prefix = _path_prefix | append: _path %}
-  {% endif %}
-
   {% for _img_snippet in _img_snippets %}
     {% if forloop.first %}
       {% assign _img_content = _img_snippet %}
@@ -112,6 +95,12 @@
 
     {% assign _final_src = null %}
     {% assign _lazyload = true %}
+
+    {%- capture _img_url -%}
+      {% include img-url.html src=_src img_path=page.img_path %}
+    {%- endcapture -%}
+
+    {% assign _path_prefix = _img_url | remove: _src %}
 
     {% unless _src contains '//' %}
       {% assign _final_src = _path_prefix | append: _src %}

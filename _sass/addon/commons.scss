@@ -85,6 +85,11 @@ blockquote {
   border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
   color: var(--blockquote-text-color);
+  display: flex;
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
 
   &[class^='prompt-'] {
     border-left: 0;
@@ -102,10 +107,6 @@ blockquote {
       margin-top: 0.4rem;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
-    }
-
-    > p:last-child {
-      margin-bottom: 0;
     }
   }
 
@@ -551,7 +552,8 @@ main {
 
   @extend %rounded;
 
-  &.youtube {
+  &.youtube,
+  &.bilibili {
     aspect-ratio: 16 / 9;
   }
 
@@ -640,12 +642,12 @@ main {
 
 .left {
   float: left;
-  margin: 0.75rem 1rem 1rem 0 !important;
+  margin: 0.75rem 1rem 1rem 0;
 }
 
 .right {
   float: right;
-  margin: 0.75rem 0 1rem 1rem !important;
+  margin: 0.75rem 0 1rem 1rem;
 }
 
 /* --- Overriding --- */
