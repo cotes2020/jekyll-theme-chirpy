@@ -5,7 +5,7 @@ Gemfile.lock
 
 # Jekyll cache
 .jekyll-cache
-_site
+# _site
 
 # RubyGems
 *.gem

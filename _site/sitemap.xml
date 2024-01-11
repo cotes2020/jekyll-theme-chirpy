@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/categories/</loc>
+<lastmod>2024-01-11T21:48:15+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/tags/</loc>
+<lastmod>2024-01-11T21:48:15+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/archives/</loc>
+<lastmod>2024-01-11T21:48:15+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+<lastmod>2024-01-11T21:48:15+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+</urlset>
