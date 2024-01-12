@@ -46,7 +46,7 @@
   {{ seo_tags }}
 
   <title>
-    {%- unless page.layout == 'home' -%}
+    {%- unless page.url == '/' or paginator -%}
       {{ page.title | append: ' | ' }}
     {%- endunless -%}
     {{ site.title }}
@@ -87,7 +87,7 @@
     <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
 
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'posts' or page.layout == 'home' %}
     <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
   {% endif %}
 
