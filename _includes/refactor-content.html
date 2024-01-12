@@ -129,7 +129,7 @@
       {% assign _left = _left | append: ' loading="lazy"' %}
     {% endif %}
 
-    {% if page.layout == 'home' %}
+    {% if page.layout == 'posts' or page.layout == 'home' %}
       <!-- create the image wrapper -->
       {% assign _wrapper_start = '<div class="preview-img ' | append: _class | append: '">' %}
 
