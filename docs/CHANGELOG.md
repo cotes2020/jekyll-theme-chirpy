@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.4.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.4.1...v6.4.2) (2024-01-13)
+
+### Bug Fixes
+
+* resume the `blockquote` display type ([#1480](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1480)) ([c7cfde0](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c7cfde093020c73ca9a1b83437eb600379e05918)), closes [#1449](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1449)
+
 ## [6.4.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.4.0...v6.4.1) (2024-01-10)
 
 ### Bug Fixes
