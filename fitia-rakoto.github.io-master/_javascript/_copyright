@@ -1,0 +1,1 @@
+Chirpy v<%= pkg.version %> | © 2019 <%= pkg.author %> | <%= pkg.license %> Licensed | <%= pkg.homepage %>

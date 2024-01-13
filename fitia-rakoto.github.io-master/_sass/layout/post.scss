@@ -1,0 +1,357 @@
+/*
+  Post-specific style
+*/
+
+%btn-post-nav {
+  width: 50%;
+  position: relative;
+  border-color: var(--btn-border-color);
+}
+
+@mixin dot($pl: 0.25rem, $pr: 0.25rem) {
+  content: '\2022';
+  padding-left: $pl;
+  padding-right: $pr;
+}
+
+h1 + .post-meta {
+  > span + span::before {
+    @include dot;
+  }
+
+  em,
+  time {
+    @extend %text-highlight;
+  }
+
+  em {
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.post-tail-wrapper {
+  @extend %text-sm;
+
+  margin-top: 6rem;
+  border-bottom: 1px double var(--main-border-color);
+
+  .license-wrapper {
+    line-height: 1.2rem;
+
+    > a {
+      @extend %text-highlight;
+
+      &:hover {
+        @extend %link-hover;
+      }
+    }
+
+    span:last-child {
+      @extend %text-sm;
+    }
+  } /* .license-wrapper */
+
+  .post-meta a:not(:hover) {
+    @extend %link-underline;
+  }
+
+  .share-wrapper {
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    %icon-size {
+      font-size: 1.125rem;
+    }
+
+    .share-icons {
+      display: flex;
+
+      i {
+        color: var(--btn-share-color);
+
+        @extend %icon-size;
+      }
+
+      > * {
+        @extend %icon-size;
+
+        margin-left: 0.5rem;
+
+        &:hover {
+          i {
+            @extend %btn-share-hovor;
+          }
+        }
+      }
+
+      button {
+        padding: 0;
+        border: none;
+        line-height: inherit;
+
+        @extend %cursor-pointer;
+      }
+    } /* .share-icons */
+  } /* .share-wrapper */
+}
+
+.share-mastodon {
+  /* See: https://github.com/justinribeiro/share-to-mastodon#properties */
+  --wc-stm-font-family: $font-family-base;
+  --wc-stm-dialog-background-color: var(--card-bg);
+  --wc-stm-form-button-border: 1px solid var(--btn-border-color);
+  --wc-stm-form-submit-background-color: var(--sidebar-btn-bg);
+  --wc-stm-form-cancel-background-color: var(--sidebar-btn-bg);
+  --wc-stm-form-button-background-color-hover: #007bff;
+  --wc-stm-form-button-color-hover: white;
+
+  font-size: 1rem;
+}
+
+.post-tags {
+  line-height: 2rem;
+
+  .post-tag {
+    &:hover {
+      @extend %link-hover;
+      @extend %tag-hover;
+      @extend %no-bottom-border;
+    }
+  }
+}
+
+.post-navigation {
+  .btn {
+    @extend %btn-post-nav;
+
+    &:not(:hover) {
+      color: var(--link-color);
+    }
+
+    &:hover {
+      &:not(.disabled)::before {
+        color: whitesmoke;
+      }
+    }
+
+    &.disabled {
+      @extend %btn-post-nav;
+
+      pointer-events: auto;
+      cursor: not-allowed;
+      background: none;
+      color: gray;
+    }
+
+    &.btn-outline-primary.disabled:focus {
+      box-shadow: none;
+    }
+
+    &::before {
+      color: var(--text-muted-color);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      content: attr(aria-label);
+    }
+
+    &:first-child {
+      border-radius: $base-radius 0 0 $base-radius;
+      left: 0.5px;
+    }
+
+    &:last-child {
+      border-radius: 0 $base-radius $base-radius 0;
+      right: 0.5px;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin-top: 0.3rem;
+    white-space: normal;
+  }
+} /* .post-navigation */
+
+@media (hover: hover) {
+  .post-navigation {
+    .btn,
+    .btn::before {
+      transition: all 0.35s ease-in-out;
+    }
+  }
+}
+
+@-webkit-keyframes fade-up {
+  from {
+    opacity: 0;
+    position: relative;
+    top: 2rem;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    position: relative;
+    top: 2rem;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
+}
+
+#toc-wrapper {
+  border-left: 1px solid rgba(158, 158, 158, 0.17);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  transition: top 0.2s ease-in-out;
+  -webkit-animation: fade-up 0.8s;
+  animation: fade-up 0.8s;
+
+  ul {
+    list-style: none;
+    font-size: 0.85rem;
+    line-height: 1.25;
+    padding-left: 0;
+
+    li {
+      &:not(:last-child) {
+        margin: 0.4rem 0;
+      }
+
+      a {
+        padding: 0.2rem 0 0.2rem 1.25rem;
+      }
+    }
+
+    /* Overwrite TOC plugin style */
+
+    .toc-link {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover {
+        color: var(--toc-highlight);
+        text-decoration: none;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .is-active-link {
+      color: var(--toc-highlight) !important;
+      font-weight: 600;
+
+      &::before {
+        display: inline-block;
+        width: 1px;
+        left: -1px;
+        height: 1.25rem;
+        background-color: var(--toc-highlight) !important;
+      }
+    }
+
+    ul {
+      padding-left: 0.75rem;
+    }
+  }
+}
+
+/* --- Related Posts --- */
+
+#related-posts {
+  > h3 {
+    @include label(1.1rem, 600);
+  }
+
+  time {
+    @extend %normal-font-style;
+    @extend %text-xs;
+
+    color: var(--text-muted-color);
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .card {
+    h4 {
+      @extend %text-clip;
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-id-pattern */
+#disqus_thread {
+  min-height: 8.5rem;
+}
+
+.utterances {
+  max-width: 100%;
+}
+
+%btn-share-hovor {
+  color: var(--btn-share-hover-color) !important;
+}
+
+.share-label {
+  @include label(inherit, 400, inherit);
+
+  &::after {
+    content: ':';
+  }
+}
+
+@media all and (max-width: 576px) {
+  .post-tail-bottom {
+    flex-wrap: wrap-reverse !important;
+
+    > div:first-child {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .content > p > img {
+    max-width: calc(100% + 1rem);
+  }
+}
+
+/* Hide SideBar and TOC */
+@media all and (max-width: 849px) {
+  .post-navigation {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+}

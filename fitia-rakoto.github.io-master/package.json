@@ -1,0 +1,106 @@
+{
+  "name": "jekyll-theme-chirpy",
+  "version": "6.3.1",
+  "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
+  },
+  "author": "Cotes Chung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
+  },
+  "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
+  "scripts": {
+    "prebuild": "npx rimraf assets/js/dist",
+    "build": "NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
+    "prewatch": "npx rimraf assets/js/dist",
+    "watch": "npx rollup -c --bundleConfigAsCjs -w",
+    "test": "npx stylelint _sass/**/*.scss",
+    "fixlint": "npm run test -- --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.23.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.9.2",
+    "rollup-plugin-license": "^3.2.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard-scss": "^12.0.0"
+  },
+  "prettier": {
+    "trailingComma": "none"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 0.2%",
+    "not dead"
+  ],
+  "commitlint": {
+    "rules": {
+      "body-max-line-length": [
+        0,
+        "always"
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+      "no-descending-specificity": null,
+      "shorthand-property-no-redundant-values": null,
+      "at-rule-no-vendor-prefix": null,
+      "property-no-vendor-prefix": null,
+      "selector-no-vendor-prefix": null,
+      "value-no-vendor-prefix": null,
+      "color-function-notation": "legacy",
+      "alpha-value-notation": "number",
+      "selector-not-notation": "simple",
+      "color-hex-length": "long",
+      "declaration-block-single-line-max-declarations": 3,
+      "scss/operator-no-newline-after": null,
+      "rule-empty-line-before": [
+        "always",
+        {
+          "ignore": [
+            "after-comment",
+            "first-nested"
+          ]
+        }
+      ],
+      "value-keyword-case": [
+        "lower",
+        {
+          "ignoreProperties": [
+            "/^\\$/"
+          ]
+        }
+      ],
+      "media-feature-range-notation": "prefix"
+    }
+  },
+  "standard-version": {
+    "skip": {
+      "commit": true,
+      "tag": true
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "perf",
+        "section": "Improvements"
+      }
+    ]
+  }
+}
