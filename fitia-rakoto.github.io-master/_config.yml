@@ -22,9 +22,9 @@ description: >- # used by seo meta and the atom feed
   Welcome to the landing page of our AIM-AHEAD DICB project on data linkage, 
   harmonization, and curation.
 
-# Fill in the protocol & hostname for your site.
+### Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://github.com/fitia-rakoto/fitia-rakoto.github.io.git"
+url: fitia-rakoto.github.io
 
 github:
   username: fitia-rakoto # change to your github username
@@ -74,7 +74,7 @@ theme_mode: # [light|dark]
 img_cdn: "https://aim-ahead-dicb.github.io/dicb_lhc"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar: "/assets/img/favicons/data-linkage-icon.png"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
@@ -113,7 +113,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: ""
+baseurl: /fitia-rakoto
 
 # ------------ The following options are not recommended to be modified ------------------
 
