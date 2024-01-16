@@ -19,4 +19,4 @@ package-lock.json
 .vscode
 
 # Misc
-/_javascript
+# assets/js/dist
