@@ -71,17 +71,10 @@ theme_mode: #[light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-<<<<<<< HEAD
-img_cdn:
+img_cdn: https://i.ibb.co/
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
-=======
-img_cdn: https://i.ibb.co
-
-# the avatar on sidebar, support local or CORS resources
-avatar: /hm0NwQT/hacker.jpg
->>>>>>> 647bc39f1c48da8fde36f72e162cbf4b895a36b4
+avatar: hm0NwQT/hacker.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

@@ -1,6 +1,7 @@
 # CDNs
 
 cdns:
+  - url: https://i.ibb.co
   # Google Fonts
   - url: https://fonts.googleapis.com
   - url: https://fonts.gstatic.com
