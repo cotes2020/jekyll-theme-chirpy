@@ -61,7 +61,7 @@ This post is to show Markdown syntax rendering on <a href="https://www.mathjax.o
     </p>
 </blockquote>
 
-
+<h3>Mathematics</h3>
 <h3>Mathematics</h3>
 The mathematics powered by <a href="https://www.mathjax.org/#samples">MathJax</a>:
 
