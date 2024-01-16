@@ -7,39 +7,38 @@ theme: jekyll-theme-chirpy
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
-
+repository: Rubioo02/rubioo02.github.io
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Calcutta
+timezone: Europe/Madrid
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Security Testing Notes # the main title
+title: Rubioo02 # the main title
 
-tagline: Securing Tomorrow - Mastering Offensive Strategies. # it will display as the sub-title
+tagline: Writeups, CTFs & Cybersecurity Tools # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  This Blog Contain Security Testing Notes, CTF Solutions, TryHackME, HackTheBox and Programming etc.
+  Writeups, CTFs & Cybersecurity Tools
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://iamroot0.github.io"
+url: "https://rubioo02.github.io"
 
 github:
-  username: IAmRoot0 # change to your github username
+  username: Rubioo02 # change to your github username
 
 twitter:
-  username: twitter_username # change to your twitter username
+  username: j0sesito777 # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Akshay Borase
-  email: mr.akshayborase@tibco.com # change to your email address
+  name: Rubioo02
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    - https://twitter.com/j0sesito777 # change to your twitter homepage
+    - https://github.com/Rubioo02 # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -49,8 +48,10 @@ google_site_verification: # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id: # fill in your Google Analytics ID
+plugins:
+  - "jekyll-github-metadata"
+
+google_analytics: # fill in your Google Analytics ID
 
 # Prefer color scheme setting.
 #
@@ -63,21 +64,17 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: #[light|dark]
+theme_mode: # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: https://i.ibb.co
+img_cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /hm0NwQT/hacker.jpg
-
-# The URL of the site-wide social preview image used in SEO `og:image` meta tag.
-# It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+avatar: "/commons/avatar.jpg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
