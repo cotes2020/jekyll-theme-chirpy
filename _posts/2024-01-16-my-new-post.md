@@ -10,7 +10,7 @@ image:
   path: ../assets/img/post/devices-mockup.png
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
-This post is to show Markdown syntax rendering on <a href="">Chirpy</a>, you can also use it as an example of writing. Now, let's start looking at text and typography.
+This post is to show Markdown syntax rendering on <a href="https://www.mathjax.org/#samples">Chirpy</a>, you can also use it as an example of writing. Now, let's start looking at text and typography.
 
 <h2>Headings</h2>
 <h1>H1-heading</h1>
