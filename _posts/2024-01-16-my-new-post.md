@@ -7,7 +7,7 @@ tags: [개설]
 math: true
 mermaid: true
 image:
-  path: ../assets/post/devices-mockup.png
+  path: ../assets/img/post/devices-mockup.png
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 This post is to show Markdown syntax rendering on <a href="">Chirpy</a>, you can also use it as an example of writing. Now, let's start looking at text and typography.
