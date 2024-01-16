@@ -14,17 +14,17 @@ timezone: America/Chicago
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: AIM-AHEAD DICB # the main title
+title: AIM-AHEAD DICB (UTHealth, Cedars Sinai, UAPB) # the main title
 
-tagline: A Collaboration Between UTHealth, Cedars Sinai, and UAPB # it will display as the sub-title
+tagline: A collaboration between UTHealth, Cedars Sinai, and UAPB # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Welcome to the landing page of our AIM-AHEAD DICB project on data linkage, 
   harmonization, and curation.
 
-### Fill in the protocol & hostname for your site.
+# Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: fitia-rakoto.github.io
+url: https://fitia-rakoto.github.io
 
 github:
   username: fitia-rakoto # change to your github username
@@ -40,7 +40,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/fitia-rakoto # change to your github homepage
+    - https://github.com/username # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -71,7 +71,7 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://aim-ahead-dicb.github.io/dicb_lhc"
+img_cdn: "https://fitia-rakoto.github.io/"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/assets/img/favicons/data-linkage-icon.png"
@@ -113,7 +113,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: /fitia-rakoto
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
@@ -184,6 +184,11 @@ exclude:
   - LICENSE
   - rollup.config.js
   - package*.json
+  - _posts/2019-08-08-text-and-typography.md
+  - _posts/2019-08-08-write-a-new-post.md
+  - _posts/2019-08-09-getting-started.md
+  - _posts/2019-08-11-customize-the-favicon.md
+
 
 jekyll-archives:
   enabled: [categories, tags]
