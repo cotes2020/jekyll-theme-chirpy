@@ -688,7 +688,10 @@ $btn-mb: 0.5rem;
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  background: var(--sidebar-bg);
+  //background: var(--sidebar-bg);
+  background: url('/assets/img/title/4B0F35CF-9388-4FCB-9C75-4BB567AAF530_1_201_a.jpeg');
+  background-size: 100% 100%;
+  background-position: center;
   border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -749,13 +752,15 @@ $btn-mb: 0.5rem;
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
 
-      color: var(--site-title-color);
+      //color: var(--site-title-color);
+      color: rgba(255, 255, 255, 0.84);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    color: var(--site-subtitle-color);
+    //color: var(--site-subtitle-color);
+    color: rgba(255, 255, 255, 0.8);
     margin-top: 0.25rem;
     word-spacing: 1px;
     -webkit-user-select: none;
@@ -780,8 +785,10 @@ $btn-mb: 0.5rem;
         align-items: center;
         border-radius: 0.75rem;
         font-weight: 600;
+        color: rgba(255, 255, 255, 0.85); 
 
         &:hover {
+          color: var(--sidebar-active-color);
           background-color: var(--sidebar-hover-bg);
         }
 
@@ -827,12 +834,12 @@ $btn-mb: 0.5rem;
       margin-bottom: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
-      background-color: var(--sidebar-btn-bg);
+      background-color: gba(255, 255, 255, 0.3);//var(--sidebar-btn-bg);
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+      box-shadow: rgba(255, 255, 255, 0);//var(--sidebar-border-color) 0 0 0 1px;
 
       &:hover {
         background-color: var(--sidebar-hover-bg);
@@ -867,6 +874,7 @@ $btn-mb: 0.5rem;
       @include ml-mr(calc(($sb-btn-gap - $btn-border-width) / 2));
 
       background-color: var(--sidebar-btn-color);
+
       content: '';
       width: $btn-border-width;
       height: $btn-border-width;
