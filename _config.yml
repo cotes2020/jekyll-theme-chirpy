@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: A Little Bit # the main title
 
-tagline: 민기의 개발 블로그 # it will display as the sub-title
+tagline: 밍기의 개발 블로그 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
