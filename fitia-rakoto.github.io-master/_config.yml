@@ -74,7 +74,7 @@ theme_mode: # [light|dark]
 img_cdn: "https://fitia-rakoto.github.io/"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/favicons/data-linkage-icon.png"
+avatar: "C:/Users/frakoto/Downloads/icon.png"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
