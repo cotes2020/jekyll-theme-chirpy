@@ -1,5 +1,6 @@
 ---
 layout: page
+order: 2
 icon: fas fa-info-circle
 title: About
 permalink: /about/
