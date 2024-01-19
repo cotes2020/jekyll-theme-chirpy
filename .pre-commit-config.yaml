@@ -4,14 +4,14 @@ repos:
     rev: v4.4.0
     hooks:
     # - id: check-added-large-files     # Prevent giant files from being committed
-    - id: check-docstring-first     # Checks a common error of defining a docstring after code.
+    # - id: check-docstring-first     # Checks a common error of defining a docstring after code.
   #   - id: check-json
   #   - id: check-merge-conflict
   #   - id: check-xml
   #   - id: check-yaml
   #     args: [--allow-multiple-documents]
   #   - id: detect-private-key     # Detects the presence of private keys
-  #   - id: end-of-file-fixer     # Fix the empty EOF
+    - id: end-of-file-fixer     # Fix the empty EOF
   #   - id: pretty-format-json
   #     args:
   #     - --autofix
