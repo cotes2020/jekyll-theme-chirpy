@@ -1,4 +1,12 @@
 
+
+
+- [Understanding Risk Management](#understanding-risk-management)
+	- [Risk Assessment](#risk-assessment)
+		- [Qualitative Risk Assessment](#qualitative-risk-assessment)
+
+
+
 # Understanding Risk Management
 Risk is the likelihood that a threat will exploit a vulnerability. A vulnerability is a weakness, and a threat is a potential danger. The result is a negative impact on the organization. Impact refers to the magnitude of harm that can be caused if a threat exercises a vulnerability.
 example, a system without up-to-date antivirus software is vulnerable to malware. Malware written by malicious attackers is the threat. The likelihood that the malware will reach a vulnerable system represents the risk. Depending on what the malware does, the impact may be an unbootable computer, loss of data, or a remote-controlled computer that has joined a botnet. However, the likelihood of a risk occurring isn’t 100 percent. An isolated system without Internet access, network connectivity, or USB ports
@@ -52,7 +60,7 @@ Accept. When the cost of a control outweighs a risk, an organization will often 
 
 ￼
 
-Risk Assessment
+## Risk Assessment
 A risk assessment, or risk analysis, is an important task in risk management. It quantifies or qualifies risks based on different values or judgments. A risk assessment starts by first identifying assets and asset values.
 An asset includes any product, system, resource, or process that an organization values. The asset value identifies the worth of the asset to the organization. It can be a specific monetary value or subjective value, such as Low, Medium, and High. The asset value helps an organization focus on the high-value assets and avoid wasting time on low-value assets.
 After identifying asset values, the risk assessment then identifies threats and vulnerabilities and determines the likelihood a threat will attempt to exploit a vulnerability. A risk assessment attempts to identify the impact of potential threats and identify the potential harm, and prioritizes risks based on the likelihood of occurrence and impact. Last, a risk assessment includes recommendations on what controls to implement to mitigate risks.
@@ -94,11 +102,14 @@ ALE = SLE × ARO
 ARO = ALE / SLE
 SLE = ALE / ARO
 ￼
-Qualitative Risk Assessment
+### Qualitative Risk Assessment
 A qualitative risk assessment uses judgment to categorize risks based on likelihood of occurrence (or probability) and impact. The likelihood of occurrence is the probability that an event will occur, such as the likelihood that a threat will attempt to exploit a vulnerability. Impact is the magnitude of harm resulting from a risk. It includes the negative results of an event, such as the loss of confidentiality, integrity, or availability of a system or data.
 Notice that this is much different from the exact numbers provided by a quantitative assessment that uses monetary figures. You can think of quantitative as using a quantity or a number, whereas qualitative is related to quality, which is often a matter of judgment.
+
 Some qualitative risk assessments use surveys or focus groups. They canvass experts to provide their best judgments and then tabulate the results. example, a survey may ask the experts to rate the probability and impact of risks associated with a web server selling products on the Internet and a library workstation without Internet access. The experts would use words such as low, medium, and high to rate them.
+
 They could rate the probability of a web server being attacked as high, and if the attack takes the web server out of service, the impact is also high. On the other hand, the probability of a library workstation being attacked is low, and, even though a library patron may be inconvenienced, the impact is also low.
+
 It’s common to assign numbers to these judgments. example, you can use terms such as low, medium, and high, and assign values of 1, 5, and
 10, respectively. The experts assign a probability and impact of each risk using low, medium, and high, and when tabulating the results, you change the words to numbers. This makes it a little easier to calculate the results.
 In the web server and library computer examples, you can calculate the risk by multiplying the probability and the impact:
@@ -131,6 +142,7 @@ Action deadline. The deadline identifies when the security control should be imp
 
 
 Organizations might use columns such as these or modify them as they see fit. The key is that the risk register documents relevant risks based on the needs of the organization.
+
 Supply Chain Assessment
 A supply chain includes all the elements required to produce and sell a product. As a simple example, consider the Lard Lad Donuts store. They require a steady supply of flour, sugar, eggs, milk, oil, and other ingredients. They also require equipment such as refrigerators to store raw materials, space to manufacture the donuts, and fryers to cook them. Last, they need a method to sell the donuts to customers. If any of these items fail, the
 company won’t be able to make and sell donuts.

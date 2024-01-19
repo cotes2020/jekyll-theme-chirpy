@@ -1,4 +1,32 @@
 
+- [LLMs for Code: Security Hardening and Adversarial Testing](#llms-for-code-security-hardening-and-adversarial-testing)
+  - [ABSTRACT](#abstract)
+  - [1 INTRODUCTION](#1-introduction)
+    - [SVEN](#sven)
+    - [Evaluating SVEN](#evaluating-sven)
+    - [SVEN’s Security Implications](#svens-security-implications)
+  - [2 BACKGROUND AND RELATED WORK](#2-background-and-related-work)
+    - [Code Generation with LLMs](#code-generation-with-llms)
+    - [LMs’ Benefits in Programming Productivity](#lms-benefits-in-programming-productivity)
+    - [Code Security and Vulnerability](#code-security-and-vulnerability)
+    - [Security of LMs for Code](#security-of-lms-for-code)
+  - [3 CONTROLLED CODE GENERATION](#3-controlled-code-generation)
+    - [Differences from Related Security Tasks](#differences-from-related-security-tasks)
+  - [4 SVEN: INFERENCE, TRAINING, AND DATA](#4-sven-inference-training-and-data)
+    - [Illustrative Code Example](#illustrative-code-example)
+    - [4.1 Inference](#41-inference)
+      - [Visualization: LM vs. SVEN](#visualization-lm-vs-sven)
+      - [SVEN: Lightweight and Modularity](#sven-lightweight-and-modularity)
+    - [4.2 Training](#42-training)
+      - [Training Programs and Code Regions](#training-programs-and-code-regions)
+      - [Loss Terms for Controlling Security](#loss-terms-for-controlling-security)
+      - [Loss Term for Preserving Functional Correctness](#loss-term-for-preserving-functional-correctness)
+      - [Overall Loss Function](#overall-loss-function)
+      - [SVEN vs. Controlled Text Generation](#sven-vs-controlled-text-generation)
+      - [SVEN: Training Data Efficiency](#sven-training-data-efficiency)
+    - [4.3 Constructing High-quality Training Dataset](#43-constructing-high-quality-training-dataset)
+
+
 ## LLMs for Code: Security Hardening and Adversarial Testing
 
 ### ABSTRACT
@@ -139,7 +167,7 @@
 
 - We generate programs by sampling from the LM in a left-to-right fashion.
   - At step $𝑡$, we sample $𝑥_𝑡$ based on $𝑃(𝑥|h_{<𝑡})$
-  - feed $𝑥𝑡$ into the LM to compute $h_𝑡$ , which will be further used at step $𝑡+1$.
+  - feed $𝑥_𝑡$ into the LM to compute $h_𝑡$ , which will be further used at step $𝑡+1$.
   - A temperature is usually applied on $𝑃 (𝑥 |h_{<𝑡})$ to adjust sampling certainty [^LLMs_for_Code_26].
   - The lower the temperature, the more certain the sampling. LM training typically leverages the negative log-likelihood loss:
 
@@ -309,53 +337,138 @@ Similarly, $SVEN_{vul}$ can drive the LM to generate unsafe code with higher pro
 
 ##### Training Programs and Code Regions
 
-- `SVEN`’s training requires a dataset where each program $x$ is annotated with a ground truth property $𝑐$.
-- We construct such a dataset by extracting security fixes from GitHub, where we consider the version before a fix as unsafe and the version after as secure. In Figure 3, we show an example code pair. The lines removed and introduced during the fix are marked in light red and light green, respectively. The introduced characters are represented in dark green.
+- `SVEN`’s training requires a dataset where each `program` $x$ is annotated with a `ground truth property` $𝑐$.
 
-- We make a key observation on our training set: the code changed in a fix determines the security of the entire program, while the untouched code in a fix is neutral. For instance, in Figure 3, adding a call to the function markupsafe.escape turns the program from unsafe to secure [^LLMs_for_Code_11]. This observation motivates our training to handle changed and unchanged code regions separately. Specifically,
-- at security-sensitive regions, we train `SVEN` to enforce code security properties, while at neutral regions, we constrain `SVEN` to comply with the original LM to preserve functional correctness.
-- To implement this idea, we construct a binary mask vector m for each training program x, with a length equal to |x|. Each element 𝑚𝑡 is set to 1 if token $𝑥_𝑡$ is within the regions of changed code and 0 otherwise. We determine the changed regions by computing a diff between the code pair involving x. We consider three diff levels, resulting in three types of token masks:
-  - program: the diff is performed at the program level. All tokens are considered security-sensitive and are masked with 1.
-  - line: we utilize line-level diffs provided in GitHub commits’ metadata. As a result, only the masks in the modified lines are set to 1, e.g., the light red line and the light green line in Figure 3.
-  - character: we compute character-level diffs by comparing code pairs using the diff-match-patch library [^LLMs_for_Code_15]. Only changed characters are masked to 1. In Figure 3, the fix only adds characters, so only the masks in dark green are set to 1. All token masks of the insecure program are set to 0.
-- Among the three types of masks, character-level masks offer the most precise code changes. However, when a fix only introduces new characters, such as in Figure 3, using character-level masks sets all mask elements of the unsafe program to 0. This can lead to insufficient learning signals on insecure code for `SVEN`. To address this problem, we adopt a mixing strategy that utilizes characterlevel masks for secure programs and line-level masks for unsafe programs. In Section 6.3, we experimentally show that our mixing strategy performs better than other options. We note that our technique of differentiating code regions is general and can be applied to code properties other than security.
-- To summarize, each sample in `SVEN`’s training dataset is a tuple (x, m, 𝑐). Since our training set is constructed from code pairs, it also contains another version of x with the opposite security property ¬𝑐. Next, we present three loss terms for training `SVEN`, which are selectively applied on different code regions using m and serve to achieve our dual objective in Figure 1.
-- Loss Terms for Controlling Security The first loss term is a conditional language modeling loss masked with m:
-- |x|
-- LLM =−∑︁𝑚𝑡 ·log𝑃(𝑥𝑡|h_{<𝑡},𝑐). (2)
-- 𝑡=1
-- LLM only takes effects on tokens whose masks are set to 1. Essentially, LLM encourages $SVEN_𝑐$ to produce code in security-sensitive regions that satisfies property 𝑐. As an example, for the insecure training program in Figure 3, LLM optimizes $SVEN_{vul}$ to generate the tokens in the red line.
-- In addition to LLM, we need to discourage the opposite prefix `SVEN`¬𝑐 from generating x, which has property 𝑐. In this way, we provide the **prefixes** with negative samples. For the example in Figure 3, we desire that $SVEN_{sec}$ generates the sanitizer and, at the same time, $SVEN_{vul}$ does not generate the sanitizer. To achieve this, we employ a loss term LCT that contrasts the conditional
--
-- CCS ’23, November 26–30, 2023, Copenhagen, Denmark
-- Jingxuan He and Martin Vechev
-- next-token probabilities produced from $SVEN_𝑐$ and `SVEN`¬𝑐 [^LLMs_for_Code_62]: |x|
-- in low-data settings [^LLMs_for_Code_38, 50, 55, 62]. `SVEN`’s advantage in data efficiency is particularly important given that obtaining high-quality vulnerability datasets is challenging [^LLMs_for_Code_25, 29, 39, 59].
-- 4.3 Constructing High-quality Training Dataset
-- For typical machine learning methods, ensuring the quality of the training dataset and addressing concerns related to distribution shifts are critical for model accuracy and real-world effectiveness [^LLMs_for_Code_20, 39, 45]. Within the context of `SVEN`, the significance of training data quality is even more pronounced, especially when existing software vulnerability datasets exhibit severe quality issues [^LLMs_for_Code_29]. Therefore, we devote significant effort to building and curating `SVEN`’s training data, with a focus on its alignment with real-world use cases. Like LMs, `SVEN` takes effect on daily code completion scenarios. Therefore, the training data needs to be generalizable to these scenarios and should not be overfitted to a restricted set of projects or vulnerabilities. Moreover, `SVEN`’ training should be done on true security fixes and avoid contamination from other code artifacts common in GitHub commits, such as refactorings and functional edits. Next, we describe our steps for constructing a high-quality training set to meet these requirements.
+
+![Figure 3](/assets/img/Screenshot%202023-12-14%20at%2012.13.21.png)
+
+- We construct such a dataset by extracting security fixes from GitHub, where we consider the version before a fix as unsafe and the version after as secure.
+  - example:
+  - The lines removed and introduced during the fix are marked in light red and light green, respectively.
+  - The introduced characters are represented in dark green.
+
+- We make a key observation on our training set: the code changed in a fix determines the security of the entire program, while the untouched code in a fix is neutral.
+  - example:
+  - adding a call to the function `markupsafe`.escape turns the program from unsafe to secure [^LLMs_for_Code_11].
+  - This observation motivates our training to handle changed and unchanged code regions separately.
+
+- Specifically, at security-sensitive regions, we train `SVEN` to enforce code security properties, while at neutral regions, we constrain `SVEN` to comply with the original LM to preserve functional correctness.
+
+  - To implement this idea
+    - construct a binary mask vector $m$ for each training program $x$, with a length equal to $|x|$.
+    - Each element $𝑚_𝑡$ is set to 1 if token $𝑥_𝑡$ is within the regions of changed code and 0 otherwise.
+  - We determine the changed regions by computing a diff between the code pair involving $x$.
+    - We consider three diff levels, resulting in three types of token masks:
+    - **program**:
+      - the diff is performed at the program level.
+      - All tokens are considered security-sensitive and are masked with 1.
+    - **line**:
+      - utilize line-level diffs provided in GitHub commits’ metadata.
+      - As a result, only the masks in the modified lines are set to 1,
+      - e.g., the light red line and the light green line
+    - **character**:
+      - compute character-level diffs by comparing code pairs using the diff-match-patch library [^LLMs_for_Code_15].
+      - Only changed characters are masked to 1.
+      - In Figure 3, the fix only adds characters, so only the masks in dark green are set to 1. All token masks of the insecure program are set to 0.
+  - Among the three types of masks, character-level masks offer the most precise code changes.
+    - However, when a fix only introduces new characters, using character-level masks sets all mask elements of the unsafe program to 0.
+    - This can lead to insufficient learning signals on insecure code for `SVEN`.
+  - To address this problem, we adopt a mixing strategy that utilizes characterlevel masks for secure programs and line-level masks for unsafe programs.
+- To summarize, each sample in `SVEN`’s training dataset is a tuple $(x, m, 𝑐)$.
+  - Since our training set is constructed from code pairs, it also contains another version of $x$ with the opposite security property $¬𝑐$.
+  - Next, we present three loss terms for training `SVEN`, which are selectively applied on different code regions using $m$ and serve to achieve our dual objective in Figure 1.
+
+##### Loss Terms for Controlling Security
+
+The first loss term is a conditional language modeling loss masked with m:
+
+![Screenshot 2023-12-18 at 10.57.27](/assets/img/Screenshot%202023-12-18%20at%2010.57.27.png)
+
+LLM only takes effects on tokens whose masks are set to 1.
+- Essentially, LLM encourages $SVEN_𝑐$ to produce code in security-sensitive regions that satisfies property $𝑐$.
+
+- example:
+- ![Figure 3](/assets/img/Screenshot%202023-12-14%20at%2012.13.21.png)
+- for the insecure training program, LLM optimizes $SVEN_{vul}$ to generate the tokens in the red line.
+
+
+In addition to LLM, we need to discourage the opposite prefix `SVEN¬𝑐` from generating $x$, which has property $𝑐$.
+- In this way, we provide the **prefixes** with negative samples.
+- example:
+- ![Figure 3](/assets/img/Screenshot%202023-12-14%20at%2012.13.21.png)
+- we desire that $SVEN_{sec}$ generates the sanitizer
+- at the same time, $SVEN_{vul}$ does not generate the sanitizer.
+- To achieve this, we employ a loss term LCT that contrasts the conditional next-token probabilities produced from $SVEN_𝑐$ and `SVEN¬𝑐` [^LLMs_for_Code_62]:
+
+![Screenshot 2023-12-18 at 11.09.48](/assets/img/Screenshot%202023-12-18%20at%2011.09.48.png)
+
+- LCT jointly optimizes both prefixes, minimizing $𝑃 (𝑥_𝑡 |h_{<𝑡} , ¬𝑐)$ in relative to $𝑃 (𝑥_𝑡 |h_{<𝑡} , 𝑐)$.
+- Similar to LLM, LCT is applied on tokens in security-sensitive code regions whose masks are set to 1.
+- Note that even with the presence of LCT, LLM remains desired because LLM serves to increase $𝑃 (𝑥_𝑡 |h_{<𝑡} , 𝑐)$ in an absolute manner.
+
+
+##### Loss Term for Preserving Functional Correctness
+
+- We leverage a third loss term LKL that computes the KL divergence between $𝑃 (𝑥 |h_{<𝑡} , 𝑐)$ and $𝑃 (𝑥 |h_{<𝑡})$,
+- i.e., the two next-token probability distributions produced by $SVEN_𝑐$ and the original LM, respectively.
+
+- Each KL divergence term is multiplied by $¬𝑚𝑡$ , meaning that LKL is applied only on unchanged regions. Therefore, LKL does not conflict with LLM and LCT during optimization.
+- KL divergence measures the difference between two probability distributions. On a high level, LKL serves as a form of regularization, encouraging similarities between the token-level probability distributions produced by `SVEN` and the original LM. As we demonstrate in Section 6, this token-level regularization translates to `SVEN` achieving comparable performance with the original LM in the functional correctness of the entire program.
+
+
+
+##### Overall Loss Function
+- Our overall loss function is a weighted sum of the three loss terms in Equations (2) to (4):
+- Section 6.3 examines the trade-off between security control and
+- functional correctness when we adjust the weights 𝑤CT and 𝑤KL.
+
+
+##### SVEN vs. Controlled Text Generation
+- Our work is closely related to controlled text generation, whose goal is to alter text properties such as sentiment and toxicity, while maintaining text fluency [^LLMs_for_Code_30, 41, 43, 46, 47, 62]. However, these works do not study code security and its relationship with functional correctness. Moreover, these works apply their loss functions globally on the entire input text, while our approach identifies the localized nature of code security and proposes to operate different loss terms over different regions of code. As shown in Section 6.3, this technique is indispensable for the effectiveness of `SVEN`.
+
+
+##### SVEN: Training Data Efficiency
+
+- `SVEN` is a highly data-efficient approach that can be effectively trained on a relatively small dataset because.
+  - `SVEN` still performs the original code generation task and `only adjusts the output code distribution towards the given security property`.
+    - This stands in contrast to training for a completely new task such as vulnerability detection or repair [^LLMs_for_Code_25] [^LLMs_for_Code_27] [^LLMs_for_Code_76] [^LLMs_for_Code_80], which requires a larger dataset to achieve desirable accuracy;
+
+  - `SVEN`’s training only updates the small **prefixes** without modifying the huge LM;
+
+  - `SVEN`’s training accesses the LM and benefits from the LM’s `strong code reasoning ability`.
+
+- Indeed, previous works have shown that continuous prompts are effective in low-data settings [^LLMs_for_Code_38] [^LLMs_for_Code_50] [^LLMs_for_Code_55] [^LLMs_for_Code_62].
+
+- `SVEN`’s advantage in data efficiency is particularly important given that obtaining high-quality vulnerability datasets is challenging [^LLMs_for_Code_25] [^LLMs_for_Code_29] [^LLMs_for_Code_39] [^LLMs_for_Code_59].
+
+
+
+#### 4.3 Constructing High-quality Training Dataset
+
+- For typical machine learning methods, ensuring the quality of the training dataset and addressing concerns related to distribution shifts are critical for model accuracy and real-world effectiveness [^LLMs_for_Code_20] [^LLMs_for_Code_39] [^LLMs_for_Code_45].
+
+- Within the context of `SVEN`, the significance of training data quality is even more pronounced, especially when existing software vulnerability datasets exhibit severe quality issues [^LLMs_for_Code_29].
+
+- Therefore, we devote significant effort to `building and curating SVEN’s training data, with a focus on its alignment with real-world use cases`.
+
+  - Like LMs, `SVEN` takes effect on daily code completion scenarios.
+  - Therefore, the training data needs to be generalizable to these scenarios and should not be overfitted to a restricted set of projects or vulnerabilities.
+  - Moreover, `SVEN`’ training should be done on true security fixes and avoid contamination from other code artifacts common in GitHub commits, such as refactorings and functional edits. Next, we describe our steps for constructing a high-quality training set to meet these requirements.
+
 - Reviewing and Selecting Base Datasets Our first step is to thoroughly review existing vulnerability datasets [^LLMs_for_Code_22, 25, 34, 53, 58, 65, 76, 80] to select base datasets for further investigation. We exclude datasets in [^LLMs_for_Code_25, 53, 80] as they target a limited set of (2 or 4) projects or vulnerabilities, thus lacking generalizability to daily code completion scenarios. Instead, we consider datasets derived from CVE records, which cover a broader range of vulnerabilities and projects, making them more suitable for training `SVEN`. Hence, we include CrossVul [^LLMs_for_Code_58] and Big-Vul [^LLMs_for_Code_34]. To avoid redundancy, we do not include other datasets that are also based on CVE records, such as [^LLMs_for_Code_22, 65]. We also include VUDENC [^LLMs_for_Code_76] because it focuses on Python while the majority of programs in CrossVul and Big-Vul are in C/C++. Moreover, VUDENC is collected by scanning GitHub, adding a different data source on top of CVE records. The three included datasets [^LLMs_for_Code_34, 58, 76] all provide CWE tags for their samples, which allows us to focus on the most impactful CWEs.
 - Curating Security Fixes from Commits The base datasets considered by us are all at the commit level. We find that these commits are far from ready for training `SVEN` because they contain quality issues that can cause `SVEN` to learn undesirable behaviors. VUDENC [^LLMs_for_Code_76] applies keyword-matching on commit messages to collect its dataset, which produces many false positives. One such case is shown in Figure 5(a). The commit is identified in [^LLMs_for_Code_76] as fixing a path traversal vulnerability (CWE-022), because the commit message contains keywords such as “path” and “fix”. However, the commit actually only changes a directory name and is not a security fix. Commits crawled from CVE records often contain true security fixes, but many also consist of irrelevant code artifacts [^LLMs_for_Code_29]. In Figure 5(b), we show a security fix commit from [^LLMs_for_Code_34, 58] that performs refactoring on a function, which is explicitly written in the commit message. Moreover, some fixes in [^LLMs_for_Code_34, 58] are only applicable to specific projects and are not generalizable to daily code completion scenarios. For instance, the fix in Figure 5 (c) involves ND_TCHECK_16BITS, an API used only by the tcpdump project.
 - LCT = −
 - ∑︁
 - 𝑡=1
 - 𝑚𝑡 · log
-- 𝑃(𝑥𝑡|h_{<𝑡},𝑐)
-- 𝑃 (𝑥𝑡 |h_{<𝑡} , 𝑐) + 𝑃 (𝑥𝑡 |h_{<𝑡} , ¬𝑐)
+- 𝑃(𝑥_𝑡|h_{<𝑡},𝑐)
+- 𝑃 (𝑥_𝑡 |h_{<𝑡} , 𝑐) + 𝑃 (𝑥_𝑡 |h_{<𝑡} , ¬𝑐)
 - . (3)
--  LCT jointly optimizes both **prefixes**, minimizing 𝑃 (𝑥𝑡 |h_{<𝑡} , ¬𝑐) in relative to 𝑃 (𝑥𝑡 |h_{<𝑡} , 𝑐). Similar to LLM, LCT is applied on tokens in security-sensitive code regions whose masks are set to 1. Note that even with the presence of LCT, LLM remains desired because LLM serves to increase 𝑃 (𝑥𝑡 |h_{<𝑡} , 𝑐) in an absolute manner.
-- Loss Term for Preserving Functional Correctness We leverage a third loss term LKL that computes the KL divergence between 𝑃 (𝑥 |h_{<𝑡} , 𝑐) and 𝑃 (𝑥 |h_{<𝑡}), i.e., the two next-token probability distributions produced by $SVEN_𝑐$ and the original LM, respectively.
-- |x|
-- LKL =∑︁(¬𝑚𝑡)·KL(𝑃(𝑥|h_{<𝑡},𝑐)||𝑃(𝑥|h_{<𝑡})),
-- 𝑡=1
-- (4)
-- Each KL divergence term is multiplied by ¬𝑚𝑡 , meaning that LKL is applied only on unchanged regions. Therefore, LKL does not conflict with LLM and LCT during optimization.
-- KL divergence measures the difference between two probability distributions. On a high level, LKL serves as a form of regularization, encouraging similarities between the token-level probability distributions produced by `SVEN` and the original LM. As we demonstrate in Section 6, this token-level regularization translates to `SVEN` achieving comparable performance with the original LM in the functional correctness of the entire program.
-- Overall Loss Function Our overall loss function is a weighted sum of the three loss terms in Equations (2) to (4):
-- L = LLM + 𝑤CT · LCT + 𝑤KL · LKL. (5) Section 6.3 examines the trade-off between security control and
-- functional correctness when we adjust the weights 𝑤CT and 𝑤KL.
-- `SVEN` vs. Controlled Text Generation Our work is closely related to controlled text generation, whose goal is to alter text properties such as sentiment and toxicity, while maintaining text fluency [^LLMs_for_Code_30, 41, 43, 46, 47, 62]. However, these works do not study code security and its relationship with functional correctness. Moreover, these works apply their loss functions globally on the entire input text, while our approach identifies the localized nature of code security and proposes to operate different loss terms over different regions of code. As shown in Section 6.3, this technique is indispensable for the effectiveness of `SVEN`.
-- `SVEN`: Training Data Efficiency `SVEN` is a highly data-efficient approach that can be effectively trained on a relatively small dataset. This is because: (i) `SVEN` still performs the original code generation task and only adjusts the output code distribution towards the given security property. This stands in contrast to training for a completely new task such as vulnerability detection or repair [^LLMs_for_Code_25, 27, 76, 80], which requires a larger dataset to achieve desirable accuracy; (ii) `SVEN`’s training only updates the small **prefixes** without modifying the huge LM; (iii) `SVEN`’s training accesses the LM and benefits from the LM’s strong code reasoning ability. Indeed, previous works have shown that continuous prompts are effective
--
+-  LCT jointly optimizes both **prefixes**, minimizing 𝑃 (𝑥_𝑡 |h_{<𝑡} , ¬𝑐) in relative to 𝑃 (𝑥_𝑡 |h_{<𝑡} , 𝑐). Similar to LLM, LCT is applied on tokens in security-sensitive code regions whose masks are set to 1. Note that even with the presence of LCT, LLM remains desired because LLM serves to increase 𝑃 (𝑥_𝑡 |h_{<𝑡} , 𝑐) in an absolute manner.
+
+
+
+
 - LLMs for Code: Security Hardening and Adversarial Testing
 - CCS ’23, November 26–30, 2023, Copenhagen, Denmark
 -  # The subdirectories of LICENSES in the kernel source
