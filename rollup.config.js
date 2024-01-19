@@ -16,6 +16,9 @@ function build(filename) {
       name: 'Chirpy',
       sourcemap: !isProd
     },
+    watch: {
+      include: `${JS_SRC}/**`
+    },
     plugins: [
       babel({
         babelHelpers: 'bundled',
@@ -35,6 +38,7 @@ function build(filename) {
 
 export default [
   build('commons'),
+  build('home'),
   build('categories'),
   build('page'),
   build('post'),
