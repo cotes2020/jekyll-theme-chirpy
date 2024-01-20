@@ -51,7 +51,7 @@ For details, see the "[Contributing Guidelines][contribute-guide]".
 
 ### Contributors
 
-Thanks to [all the contributors][contributors] involved in the development of the project!
+Thanks to [all the contributors][contributors] involved in the development of the project.
 
 [![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
 <sub> —— Made with [contrib.rocks](https://contrib.rocks)</sub>
