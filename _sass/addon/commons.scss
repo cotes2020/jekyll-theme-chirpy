@@ -692,9 +692,7 @@ $btn-mb: 0.5rem;
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  /*
-  background: var(--sidebar-bg);
-  */
+  /*  background: var(--sidebar-bg);  */
   background: url('/assets/img/남극.png');
   background-size: 100% 100%;
   background-position: center;
@@ -758,18 +756,14 @@ $btn-mb: 0.5rem;
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
 
-      /*
-      color: var(--site-title-color);
-      */
+      /* color: var(--site-title-color); */
       color: rgba(254, 254, 254, 99%);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    /*
-    color: var(--site-subtitle-color);
-    */
+    /* color: var(--site-subtitle-color); */
     color: rgba(254, 254, 254, 99%);
     margin-top: 0.25rem;
     word-spacing: 1px;
@@ -795,11 +789,7 @@ $btn-mb: 0.5rem;
         align-items: center;
         border-radius: 0.75rem;
         font-weight: 600;
-/*
-        &:hover {
-          background-color: var(--sidebar-hover-bg);
-        }
-*/
+/*        &:hover {          background-color: var(--sidebar-hover-bg);  } */
         i {
           font-size: 95%;
           opacity: 0.8;
