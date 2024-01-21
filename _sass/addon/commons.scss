@@ -711,6 +711,7 @@ $btn-mb: 0.5rem;
     &:hover {
       color: var(--sidebar-active-color);
     }
+  
   }
 
   a {
@@ -727,10 +728,11 @@ $btn-mb: 0.5rem;
 
     img {
       transition: transform 0.5s;
-
+/*
       &:hover {
         transform: scale(1.2);
       }
+      */
     }
   }
 
@@ -806,12 +808,13 @@ $btn-mb: 0.5rem;
         .nav-link {
           /*  color: var(--sidebar-active-color);  */
           color: rgba(255, 255, 255, 100%);
+          /*
           background-color: var(--sidebar-hover-bg);
 
           span {
             opacity: 1;
           }
-
+*/
 
         }
       }
@@ -841,10 +844,11 @@ $btn-mb: 0.5rem;
       align-items: center;
       justify-content: center;
       box-shadow: var(--sidebar-border-color) 0 0 0 1px;
-
+/*
       &:hover {
         background-color: var(--sidebar-hover-bg);
       }
+      */
     }
 
     a {
