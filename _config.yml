@@ -74,7 +74,7 @@ theme_mode: # [light|dark]
 img_cdn: "https://fitia-rakoto.github.io/"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/favicons/lhc-icon.png
+avatar: assets/img/favicons/icon.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -188,6 +188,7 @@ exclude:
   - LICENSE
   - rollup.config.js
   - package*.json
+
 
 jekyll-archives:
   enabled: [categories, tags]
