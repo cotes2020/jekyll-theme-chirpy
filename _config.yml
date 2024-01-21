@@ -19,7 +19,9 @@ title: LogInDev # the main title
 tagline: Never-Ending Improvement # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  java, spring, springboot, python
+  A minimal, portfolio, sidebar,
+  bootstrap Jekyll theme with responsive web design
+  and focuses on text presentation.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -44,13 +46,13 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+#google_site_verification:  #fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id: # fill in your Google Analytics ID
+#google_analytics:
+#  id: # fill in your Google Analytics ID
 
 # Prefer color scheme setting.
 #
@@ -70,7 +72,7 @@ theme_mode: #[light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+#img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
 avatar: '/assets/img/favicon_jp.png'

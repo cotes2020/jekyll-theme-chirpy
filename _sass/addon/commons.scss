@@ -804,15 +804,15 @@ $btn-mb: 0.5rem;
 
       &.active {
         .nav-link {
-          /*
-          color: var(--sidebar-active-color);
+          /*  color: var(--sidebar-active-color);  */
+          color: rgba(255, 255, 255, 100%);
           background-color: var(--sidebar-hover-bg);
 
           span {
             opacity: 1;
           }
-          */
-          color: rgba(255, 255, 255, 100%);
+
+
         }
       }
 
