@@ -117,7 +117,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: fitia-rakoto.github.io
+baseurl: /fitia-rakoto
 
 # ------------ The following options are not recommended to be modified ------------------
 
