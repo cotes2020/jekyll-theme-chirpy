@@ -2,7 +2,7 @@
 title: Monitor - Prometheus
 date: 2020-02-11 11:11:11 -0400
 categories: [02Security, Prometheus]
-tags: [02Security, Prometheus]
+tags: [Security, Prometheus]
 math: true
 image:
 ---

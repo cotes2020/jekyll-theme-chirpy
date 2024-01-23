@@ -2,7 +2,7 @@
 title: Cloud Security Tools
 date: 2020-02-10 11:11:11 -0400
 categories: [02Security]
-tags: [02Security]
+tags: [Security]
 math: true
 image:
 ---
