@@ -1,6 +1,8 @@
 
 - [Work Command](#work-command)
-  - [github repo search](#github-repo-search)
+  - [makefile](#makefile)
+    - [avoid command output](#avoid-command-output)
+    - [github repo search](#github-repo-search)
   - [reuse token](#reuse-token)
 - [My Issue](#my-issue)
   - [Github issue](#github-issue)
@@ -27,7 +29,18 @@
 
 ---
 
-## github repo search
+## makefile 
+
+### avoid command output
+
+```bash
+.PHONY .SILENT: test_single_model
+test_single_model:
+  echo "hi
+```
+
+
+### github repo search
 
 ```bash
 page=1
