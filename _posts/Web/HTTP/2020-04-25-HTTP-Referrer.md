@@ -21,10 +21,6 @@ toc: true
   - [Referrer Policy 的用法](#referrer-policy-的用法)
   - [退出页面重定向](#退出页面重定向)
 
-
-- ref
-  - http://www.ruanyifeng.com/blog/2019/06/http-referer.html
-
 ---
 
 
@@ -58,7 +54,7 @@ Referer的正确拼写是Referrer，但是标准定案只能将错就错。
 
 ```html
 <!-- 加载图片 -->
-<img src="foo.jpg">
+<img alt="pic" src="foo.jpg">
 <!-- 加载脚本 -->
 <script src="foo.js"></script>
 <!-- 加载样式 -->

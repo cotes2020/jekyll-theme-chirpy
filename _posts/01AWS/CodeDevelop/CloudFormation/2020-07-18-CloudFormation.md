@@ -287,7 +287,7 @@ Resources:
 ```
 
 
-<img src="https://i.imgur.com/TU6BesT.png" width="200">
+<img alt="pic" src="https://i.imgur.com/TU6BesT.png" width="200">
 
 The <font color=red> root stack </font>
 - the top-level stack to which all the nested stacks ultimately belong.

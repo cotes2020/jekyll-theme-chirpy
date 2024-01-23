@@ -354,7 +354,7 @@ name += ' says hello!';
 
 <link rel='stylesheet' href='yrl'>;
 <script src="url/main.js"></script>
-<img src="pic.png">
+<img alt="pic" src="pic.png">
 background: url('url');
 
 ---

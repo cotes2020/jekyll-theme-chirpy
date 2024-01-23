@@ -60,7 +60,7 @@ view-source:http://cache.htb/net.html
 # </head>
 # <center>
 # 	<h1> Welcome Back!</h1>
-# 	<img src="4202252.jpg">
+# 	<img alt="pic" src="4202252.jpg">
 # <h1>This page is still underconstruction</h1>
 # </center>
 #  </body>

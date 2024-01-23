@@ -25,19 +25,19 @@ tags: [HTML]
 
 **The `src` Attribute**: The filename of the image source is specified in the src attribute:
 
-`<img src="img_girl.jpg">`
+`<img alt="pic" src="img_girl.jpg">`
 
 
 **The `width` and `height` Attributes**
 
-`<img src="img_girl.jpg" width="500" height="600">`
+`<img alt="pic" src="img_girl.jpg" width="500" height="600">`
 
 
 **The `alt` Attribute**:
 - an alternative text to be used, useful if the image cannot be displayed or does not exist.
 - The value of the alt attribute can be read by screen readers. This way, someone "listening" to the webpage, e.g. a vision impaired person, can "hear" the element.
 
-`<img src="img_girl.jpg" alt="Girl with a jacket">`
+`<img alt="pic" src="img_girl.jpg" alt="Girl with a jacket">`
 
 
 **The `style` Attribute**
@@ -210,7 +210,7 @@ style sheet located in the same folder as the current page:
 
     ```js
     <p id="p01">I am different</p>
-    <img src="cake,jpg" id="cakeimg" />
+    <img alt="pic" src="cake,jpg" id="cakeimg" />
 
     #p01 {
       color: blue;
@@ -492,7 +492,7 @@ The target attribute can have one of the following values:
 It is common to use images as links:
 ```js
 <a href="default.asp">
-  <img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
+  <img alt="pic" src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
 </a>
 ```
 
@@ -614,7 +614,7 @@ add a link to the bookmark ("Jump to Chapter 4"), from within the same page:
 
 ```js
 
-<img src="img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
+<img alt="pic" src="img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
 
 ```
 
@@ -638,8 +638,8 @@ suggest using the `style` attribute. It prevents styles sheets from changing the
 </head>
 
 <body>
-<img src="html5.gif" alt="HTML5 Icon" width="128" height="128">
-<img src="html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+<img alt="pic" src="html5.gif" alt="HTML5 Icon" width="128" height="128">
+<img alt="pic" src="html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
 </body>
 
 </html>
@@ -650,56 +650,56 @@ suggest using the `style` attribute. It prevents styles sheets from changing the
 
 ```js
 Images in Another Folder
-<img src="/images/html5.gif" alt="HTML5 Icon">
+<img alt="pic" src="/images/html5.gif" alt="HTML5 Icon">
 
 Images on Another Server:
-<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+<img alt="pic" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
 ```
 
 
 #### Animated Images
 HTML allows animated GIFs:
 ```js
-<img src="programming.gif" alt="Computer Man">
+<img alt="pic" src="programming.gif" alt="Computer Man">
 ```
 
 
-#### Image as a Link `<a href="url"> <img src="url" style="border:0;"> </a>`
+#### Image as a Link `<a href="url"> <img alt="pic" src="url" style="border:0;"> </a>`
 use an image as a link, put the `<img>` tag inside the `<a>` tag:
 - `border:0;` is added to prevent IE9 (and earlier) from displaying a border around the image (when the image is a link).
 
 ```js
 <a href="default.asp">
-  <img src="smiley.gif" alt="HTML tutorial" style="border:0;">
+  <img alt="pic" src="smiley.gif" alt="HTML tutorial" style="border:0;">
 </a>
 ```
 
 
-#### Image Floating `<img src="url" style="float:right;">`
+#### Image Floating `<img alt="pic" src="url" style="float:right;">`
 let the image float to the right or to the left of a text:
 
 ```js
 float to the right of the text:
 <p>
-  <img src="smiley.gif" alt="Smiley face" style="float:right;">
+  <img alt="pic" src="smiley.gif" alt="Smiley face" style="float:right;">
   Hello
 </p>
 
 float to the left
 <p>
-  <img src="smiley.gif" alt="Smiley face" style="float:left">
+  <img alt="pic" src="smiley.gif" alt="Smiley face" style="float:left">
   Hello
 </p>
 ```
 
 
-### Image Maps `<img src="url" alt="tag" usemap="#workmap">`
+### Image Maps `<img alt="pic" src="url" alt="tag" usemap="#workmap">`
 defines an image-map
 - an image with clickable areas.
 - may insert the `<map>` element anywhere,.
 
 ```js
-<img src="workplace.jpg" alt="Workplace" usemap="#workmap">
+<img alt="pic" src="workplace.jpg" alt="Workplace" usemap="#workmap">
 
 <map name="workmap">
  <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
@@ -727,7 +727,7 @@ defines an image-map
 <html>
 <body>
 
-<img src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+<img alt="pic" src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
 
 <map name="workmap">
   <area shape="circle" coords="337,300,44" onclick="myFunction()">
@@ -831,7 +831,7 @@ specify the background image on the `<body>` element:
 <picture>
   <source media="(min-width: 650px)" srcset="img_food.jpg">
   <source media="(min-width: 465px)" srcset="img_car.jpg">
-  <img src="img_girl.jpg">    这个在第一，则只显示他
+  <img alt="pic" src="img_girl.jpg">    这个在第一，则只显示他
 </picture>
 ```
 

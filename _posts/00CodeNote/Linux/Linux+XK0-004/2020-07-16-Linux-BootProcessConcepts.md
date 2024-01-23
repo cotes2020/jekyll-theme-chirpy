@@ -18,7 +18,7 @@ image:
 ## ✔️ | **Legacy GRUB**
 
 
-<img src="https://i.imgur.com/pmLrHrH.png" width=600>
+<img alt="pic" src="https://i.imgur.com/pmLrHrH.png" width=600>
 
 > BIOS >
 > boot.img (load core file) (first 512 bytes) >
@@ -42,7 +42,7 @@ quit
 ```
 
 
-<img src="https://i.imgur.com/ZcM1ybR.png" width=600>
+<img alt="pic" src="https://i.imgur.com/ZcM1ybR.png" width=600>
 
 MBR(Master Boot Record) change to GPT(GUID Partition Table)
 - more partitions, and bigger partitions size

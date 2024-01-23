@@ -75,9 +75,9 @@ containers
 ## Container
 
 
-<img src="https://i.imgur.com/pb2kD6d.png" width="400">
+<img alt="pic" src="https://i.imgur.com/pb2kD6d.png" width="400">
 
-<img src="https://i.imgur.com/IA6p81K.png" width="400">
+<img alt="pic" src="https://i.imgur.com/IA6p81K.png" width="400">
 
 - a method of operating system virtualization
   - give the environment independent scalability of workloads like PaaS

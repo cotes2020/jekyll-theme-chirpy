@@ -70,10 +70,10 @@ $ more CentOS-Base.repo
 
 [BaseOS]
 name=CentOS-$releasever - Base
-mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo
+mirrorlist=https://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo
 =BaseOS&infra=$infra
 // a copy of the package to download from
-#baseurl=http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/
+#baseurl=https://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/
 gpgcheck=1
 // enabled=one. authenticates the remote repository with a digital signature, gpgkey.
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
@@ -102,8 +102,8 @@ Repo-distro-tags: [cpe:/o:centos:centos:8]:  , 8, C, O, S, e, n, t
 Repo-updated : Wed 22 Apr 2020 01:16:06 AM EDT
 Repo-pkgs    : 4,830
 Repo-size    : 5.6 G
-Repo-mirrors : http://mirrorlist.centos.org/?release=8&arch=x86_64&repo=AppStream&infra=stock
-Repo-baseurl : http://mirrors.xtom.com/centos/8.1.1911/AppStream/x86_64/os/ (9 more)
+Repo-mirrors : https://mirrorlist.centos.org/?release=8&arch=x86_64&repo=AppStream&infra=stock
+Repo-baseurl : https://mirrors.xtom.com/centos/8.1.1911/AppStream/x86_64/os/ (9 more)
 Repo-expire  : 172,800 second(s) (last: Sun 26 Apr 2020 02:54:15 PM EDT)
 Repo-filename: /etc/yum.repos.d/CentOS-AppStream.repo
 // actual location

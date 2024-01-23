@@ -2164,7 +2164,7 @@ ChatGLM-6B+LoRA
                 - 将FP16的gradients转换为FP32的gradients，用FP32的gradients去更新FP32下的model states。 当模型收敛后，FP32的parameter就是最终的参数输出。
                      
 
-              现在，我们可以来计算模型在训练时需要的存储大小了，假设模型的参数W大小是 $\Phi$  (根据参数量预估显存占用的方法参见[参数量估计与显存估计](http://mingchao.wang/rJXF8VxX/)，这里简单提下，比如6B的模型，使用FP16方式载入显存，所需显存大小: 6B ∗ \ast ∗ 2 = 12G)，则训练时对应的存储如下:
+              现在，我们可以来计算模型在训练时需要的存储大小了，假设模型的参数W大小是 $\Phi$  (根据参数量预估显存占用的方法参见[参数量估计与显存估计](https://mingchao.wang/rJXF8VxX/)，这里简单提下，比如6B的模型，使用FP16方式载入显存，所需显存大小: 6B ∗ \ast ∗ 2 = 12G)，则训练时对应的存储如下:
             ![在这里插入图片描述](https://img-blog.csdnimg.cn/647ac6be79b741adb9025bd9b6a964cc.jpeg#pic_center)
               因为采用了Adam优化，所以才会出现momentum和variance，当然你也可以选择别的优化办法，这里为了通用，模型必存的数据大小为 K Φ K\Phi KΦ，因此总的存储大小为 ( 2 + 2 + K ) Φ (2+2+K)\Phi (2+2+K)Φ。另外，这里暂不将activations纳入统计范围，原因是:
 

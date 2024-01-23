@@ -15,7 +15,7 @@ tags: [Lab, HackTheBox]
 # Lab - HTB - Hard - omni (HackyHour4)
 
 
-<img src="https://i.imgur.com/GcY1wEq.png" width="700">
+<img alt="pic" src="https://i.imgur.com/GcY1wEq.png" width="700">
 
 
 > Machine: omni

