@@ -22,14 +22,14 @@ image:
 
 ![model](https://i.imgur.com/4O04y4k.png)
 
-<img src="https://i.imgur.com/Eq8uSel.png" width="500">
+<img alt="pic" src="https://i.imgur.com/Eq8uSel.png" width="500">
 
 ---
 
 
 ### The main branches
 
-<img src="https://i.imgur.com/zSM149w.png" width="300">
+<img alt="pic" src="https://i.imgur.com/zSM149w.png" width="300">
 
 - master
   - consider origin/master to be the main branch
@@ -71,7 +71,7 @@ Each of these branches have a specific purpose and are bound to strict rules as 
 
 #### Feature branches
 
-<img src="https://i.imgur.com/rZF6qli.png" width="100">
+<img alt="pic" src="https://i.imgur.com/rZF6qli.png" width="100">
 
 - May branch off from:
   - develop
@@ -119,14 +119,14 @@ The --no-ff flag
 - Compare:
 
 
-<img src="https://i.imgur.com/XhtCU90.png" width="400">
+<img alt="pic" src="https://i.imgur.com/XhtCU90.png" width="400">
 
 ---
 
 
 #### Release branches
 
-<img src="https://i.imgur.com/GnPThYo.png" width="400">
+<img alt="pic" src="https://i.imgur.com/GnPThYo.png" width="400">
 
 - May branch off from:
   - develop
@@ -221,7 +221,7 @@ $ git branch -d release-1.2
 #### Hotfix branches
 
 
-<img src="https://i.imgur.com/2OvkJZO.png" width="400">
+<img alt="pic" src="https://i.imgur.com/2OvkJZO.png" width="400">
 
 - May branch off from:
   - master

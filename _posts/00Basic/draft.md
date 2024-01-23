@@ -1542,7 +1542,7 @@ linux下载安装比较简单:
 执行以下命令解密:
  outguess -r ‘/root/Desktop/angrybird.jpg’ -t 11.txt
   0x02 mp3stego
-mp3stego(http://www.petitcolas.net/steganography/
+mp3stego(https://www.petitcolas.net/steganography/
     mp3stego/)主要用于mp3隐写
     使用非常简单
 加密:encode -E hidden_text.txt -P pass svega.wav

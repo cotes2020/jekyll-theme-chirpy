@@ -865,7 +865,7 @@ The cons:
 
 - ref:
   - [https://luvletter.cn/blog/使用oauth2-proxy保护你的应用/](https://luvletter.cn/blog/使用oauth2-proxy保护你的应用/)
-  - [http://www.ruanyifeng.com/blog/2019/04/oauth_design.html](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
+  - [https://www.ruanyifeng.com/blog/2019/04/oauth_design.html](https://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
   - https://oauth.net/2/
   - https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/
   - https://oauth2-proxy.github.io/oauth2-proxy/docs/

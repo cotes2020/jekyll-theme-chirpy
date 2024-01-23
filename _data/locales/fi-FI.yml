@@ -39,7 +39,7 @@ copyright:
   verbose: >-
     Paitsi jos erikseen mainitaan on kaikki sisältö Creative Commons Attribution 4.0 International (CC BY 4.0) Lisensoitu kirjoittajan toimesta.
 
-meta: Käytetään :PLATFORM iä Teema :THEME.
+meta: Käytetään :PLATFORM iä Teema :THEME
 
 not_found:
   statment: Valitettavasti tällä URL-osoitteella ei ole saatavilla sisältöä.
@@ -69,18 +69,16 @@ post:
     share_link:
       title: Kopioi linkki
       succeed: Linkki kopioitu onnistuneesti!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Kiinnitetty
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: '%b %e, %Y'
-    dayjs: 'll'
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
   archives:
-    strftime: '%b'
-    dayjs: 'MMM'
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:

@@ -60,12 +60,12 @@ URL:      http://natas1.natas.labs.overthewire.org
 - can’t use Right Click
 - bring up the `developer window` > sources > index
 
-访问 DevTools | 在 Windows 上	| 在 Mac 上
----|---|---
-打开 Developer Tools              | F12、Ctrl + Shift + I	| Cmd + Opt + I
-打开/切换检查元素模式和浏览器窗口	     | Ctrl + Shift + C	      | Cmd + Shift + C
-打开 Developer Tools 并聚焦到控制台  | Ctrl + Shift + J	     | Cmd + Opt + J
-检查检查器（取消停靠第一个后按）	     | Ctrl + Shift + I	       | Cmd + Opt + I
+| 访问 DevTools                       | 在 Windows 上         | 在 Mac 上       |
+| ----------------------------------- | --------------------- | --------------- |
+| 打开 Developer Tools                | F12、Ctrl + Shift + I | Cmd + Opt + I   |
+| 打开/切换检查元素模式和浏览器窗口   | Ctrl + Shift + C      | Cmd + Shift + C |
+| 打开 Developer Tools 并聚焦到控制台 | Ctrl + Shift + J      | Cmd + Opt + J   |
+| 检查检查器（取消停靠第一个后按）    | Ctrl + Shift + I      | Cmd + Opt + I   |
 
 ```html
 <html>
@@ -106,7 +106,7 @@ ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
 <h1>natas2</h1>
 <div id="content">
 There is nothing on this page
-<img src="files/pixel.png">      # a image file linked in the HTML code.
+<img alt="pic" src="files/pixel.png">      # a image file linked in the HTML code.
 </div>
 </body>
 -------------------------------------------------------------------

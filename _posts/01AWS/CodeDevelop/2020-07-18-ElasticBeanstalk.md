@@ -34,7 +34,7 @@ image:
   - Passenger or Puma for Ruby applications;
   - Microsoft Internet Information Services (IIS) for .NET applications, Java SE, Docker, and Go.
 
-<img src="https://i.imgur.com/pr7Dh9z.png" width="400">
+<img alt="pic" src="https://i.imgur.com/pr7Dh9z.png" width="400">
 
 Setup:
 1. Elastic Beanstalk > create a web app
@@ -113,7 +113,7 @@ Blue/green deployment on AWS Elastic Beanstalk
 - Blue/green
   - the live production environment is “blue”
   - the new deployment environment is “green”
-  - <img src="https://i.imgur.com/lkVk2sc.png" width="300">
+  - <img alt="pic" src="https://i.imgur.com/lkVk2sc.png" width="300">
 
 - <fonr color=red> test new hardware or applications without going fully into production </font>
 - quickly deploy the application without downtime for web application.
@@ -125,7 +125,7 @@ Blue/green deployment on AWS Elastic Beanstalk
 Blue/green deployment on AWS CloudFormation
 - AWS CloudFormation templates were used instead of Elastic Beanstalk.
   - It takes little more effort than the Elastic Beanstalk approach.
-  - <img src="https://i.imgur.com/kVF1Tav.png" width="400">
+  - <img alt="pic" src="https://i.imgur.com/kVF1Tav.png" width="400">
 - use AWS CloudFormation to implement the blue/green deployment.
   - Traffic was trickled from Stack 1 to Stack 2 until it was apparent that Stack 2 was functional.
   - After Stack 2 was functional, the connection to Stack 1 (former production environment) was taken away.

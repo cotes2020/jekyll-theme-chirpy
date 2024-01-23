@@ -206,7 +206,7 @@ sleepy....
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--- |
 | [JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03/20                                                    | ✔️    |
 | [Cloud-CTF-Cloudgoat](https://github.com/RhinoSecurityLabs/cloudgoat) - Walkthrough Note [📜](https://ocholuo.github.io/posts/CloudGoat/)                                              | ✔️    |
-| [Cloud-CTF-Flaws](http://flaws.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw/)                                                                                  | ✔️    |
+| [Cloud-CTF-Flaws](https://flaws.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw/)                                                                                 | ✔️    |
 | [Cloud-CTF-Flaws2](http://level1.flaws2.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw2/)                                                                        | ✔️    |
 | [PAN8 Cybersecurity Essentials](https://portal.netdevgroup.com/learn/pan8-ce-pilot/wb79h483WM) - Walkthrough Note [📜](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/) | ✔️    |
 | [PAN8 Cybersecurity Gateway](https://portal.netdevgroup.com/learn/pan8-cg-pilot/aiuWjM6CWr/) - Walkthrough Note [📜](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/)     | ✔️    |
@@ -354,12 +354,12 @@ Network Security & Database Vulnerabilities https://www.coursera.org/learn/netwo
 
 | Name                                                                                                                                                       | S                                                                                   | Mark |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---- |
-| [TRAFFIC ANALYSIS EXERCISE](http://malware-traffic-analysis.net/training-exercises.html)                                                                   | [S](https://github.com/ocholuo/language/tree/master/codegame/TrafficAnalysisExe.md) | ✏️    |
-| [premiumexam](https://premiumexam.com/) <br> <img src="https://i.imgur.com/6JAb2Cm.png" width="400">                                                       |
-| [NDG Online Courses & Labs](https://www.netdevgroup.com/online/courses/cybersecurity#courses) <br> <img src="https://i.imgur.com/0sDYnaC.png" width="400"> |
-| [vmware HOL online](https://www.vmwarelearningplatform.com/HOL/catalogs/catalog/1212) <br> <img src="https://i.imgur.com/cuyokhD.png" width="400">         |
-| [junosgenius](https://cloud.contentraven.com/junosgenius/index) <br> <img src="https://i.imgur.com/mioBe1G.png" width="400">                               |
-| [cisco](https://devnetsandbox.cisco.com/RM/Topology) <br> <img src="https://i.imgur.com/fni2hlX.png" width="400">                                          |
+| [TRAFFIC ANALYSIS EXERCISE](https://malware-traffic-analysis.net/training-exercises.html)                                                                  | [S](https://github.com/ocholuo/language/tree/master/codegame/TrafficAnalysisExe.md) | ✏️    |
+| [premiumexam](https://premiumexam.com/) <br> <img alt="pic" src="pic" src="https://i.imgur.com/6JAb2Cm.png" width="400">                                                       |
+| [NDG Online Courses & Labs](https://www.netdevgroup.com/online/courses/cybersecurity#courses) <br> <img alt="pic" src="pic" src="https://i.imgur.com/0sDYnaC.png" width="400"> |
+| [vmware HOL online](https://www.vmwarelearningplatform.com/HOL/catalogs/catalog/1212) <br> <img alt="pic" src="pic" src="https://i.imgur.com/cuyokhD.png" width="400">         |
+| [junosgenius](https://cloud.contentraven.com/junosgenius/index) <br> <img alt="pic" src="pic" src="https://i.imgur.com/mioBe1G.png" width="400">                               |
+| [cisco](https://devnetsandbox.cisco.com/RM/Topology) <br> <img alt="pic" src="pic" src="https://i.imgur.com/fni2hlX.png" width="400">                                          |
 
 ---
 
@@ -367,9 +367,9 @@ Network Security & Database Vulnerabilities https://www.coursera.org/learn/netwo
 
 | platform                                                                                                                                                       | goal                  |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Certification: [aws educate](https://www.awseducate.com/signin/SiteLogin) <br> <img src="https://i.imgur.com/1b0Eksu.png" width="200">                         | aws learning resource |
-| Certification: [aws academy](https://awsacademy.instructure.com/courses/69/pages/webinar-q-and-a) <br> <img src="https://i.imgur.com/7UEa24X.png" width="200"> | aws learning resource |
-| Certification: [aws training](https://www.aws.training/SignIn) <br> <img src="https://i.imgur.com/2L8TU8S.png" width="200">                                    | aws learning resource |
+| Certification: [aws educate](https://www.awseducate.com/signin/SiteLogin) <br> <img alt="pic" src="pic" src="https://i.imgur.com/1b0Eksu.png" width="200">                         | aws learning resource |
+| Certification: [aws academy](https://awsacademy.instructure.com/courses/69/pages/webinar-q-and-a) <br> <img alt="pic" src="pic" src="https://i.imgur.com/7UEa24X.png" width="200"> | aws learning resource |
+| Certification: [aws training](https://www.aws.training/SignIn) <br> <img alt="pic" src="pic" src="https://i.imgur.com/2L8TU8S.png" width="200">                                    | aws learning resource |
 | Certification: [eventbrite](https://www.eventbrite.com/u/487798027239/)                                                                                        | ticket for evert      |
 
 
@@ -391,7 +391,7 @@ some website:
 
 | name                                                                                       | Note                                                    |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
-| [cybrary.it](https://www.cybrary.it/catalog/career-path/cyber-security-engineer/syllabus/) | <img src="https://i.imgur.com/QVLEnK3.png" width="400"> |
+| [cybrary.it](https://www.cybrary.it/catalog/career-path/cyber-security-engineer/syllabus/) | <img alt="pic" src="pic" src="https://i.imgur.com/QVLEnK3.png" width="400"> |
 
 
 

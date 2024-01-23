@@ -588,11 +588,11 @@ IAM `policy`
     - An explicit deny statement will always take precedence over any allow statement.
     - could define a deny statement in a bucket policy to restrict access to specific IAM users, even if the users are granted access in a separate identity-based policy.
 
-<img src="https://i.imgur.com/HVBkIYM.png" width="320" alt="function_calls">
+<img alt="pic" src="https://i.imgur.com/HVBkIYM.png" width="320" alt="function_calls">
 
 `explicit denial policy -> explicit allow policy -> deny`
 
-<img src="https://i.imgur.com/X79K6Ni.png" width="500" alt="function_calls">
+<img alt="pic" src="https://i.imgur.com/X79K6Ni.png" width="500" alt="function_calls">
 
 
 1. "Version": "2012-10-17",

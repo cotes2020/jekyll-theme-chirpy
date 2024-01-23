@@ -14,7 +14,7 @@ tags: [Lab, codegame]
 # TRAFFIC ANALYSIS EXERCISES
 
 
-[TRAFFIC ANALYSIS EXERCISES](http://malware-traffic-analysis.net/training-exercises.html)
+[TRAFFIC ANALYSIS EXERCISES](https://malware-traffic-analysis.net/training-exercises.html)
 password: infected
 
 

@@ -227,9 +227,9 @@ cache
 
 > Stickiness vs Sticky sessions
 
-<img src="https://i.imgur.com/b2u9xtx.png" width="400">
+<img alt="pic" src="https://i.imgur.com/b2u9xtx.png" width="400">
 
-<img src="https://i.imgur.com/0HkpZ99.png" width="400">
+<img alt="pic" src="https://i.imgur.com/0HkpZ99.png" width="400">
 
 
 1. If the load balancer use <font color=red> sticky sessions </font>

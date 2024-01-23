@@ -1098,7 +1098,7 @@ when a maintenance window is configured to send a command to patch using Patch M
   - Patch Manager automatically notifies SSM Agent to use the currently configured default patch baseline.
 
 
-![\[Diagram showing how patch baselines are determined when performing patching operations.\]](http://docs.aws.amazon.com/systems-manager/latest/userguide/images/patch-groups-how-it-works.png)
+![\[Diagram showing how patch baselines are determined when performing patching operations.\]](https://docs.aws.amazon.com/systems-manager/latest/userguide/images/patch-groups-how-it-works.png)
 
 three groups of EC2 instances:
 

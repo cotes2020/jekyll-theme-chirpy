@@ -238,7 +238,7 @@ Once the data is in a cluster,
 
 #### cloud Dataflow
 
-<img src="https://i.imgur.com/jcqmkNv.png" width="200">
+<img alt="pic" src="pic" src="https://i.imgur.com/jcqmkNv.png" width="200">
 
 | term          | cloud Dataproc                    | Cloud Dataflow                                    |
 | ------------- | --------------------------------- | ------------------------------------------------- |

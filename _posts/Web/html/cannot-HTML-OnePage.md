@@ -184,26 +184,26 @@ This poem will display on a single line:
 ---
 
 ### HTML 图像 `<img>`
-`<img src="/images/logo.png" width="258" height="39" />`
+`<img alt="pic" src="/images/logo.png" width="258" height="39" />`
 
 ### Example
 
 1. `*.html` 文件跟 `*.jpg` 文件(f盘)在不同目录下：
-`<img src="file:///f:/*.jpg" width="300" height="120"/>`
+`<img alt="pic" src="file:///f:/*.jpg" width="300" height="120"/>`
 
 2. `*.html` 文件跟 `*.jpg` 图片在相同目录下：
-`<img src="*.jpg" width="300" height="120"/> `
+`<img alt="pic" src="*.jpg" width="300" height="120"/> `
 
 3. `*.html` 文件跟 `*.jpg` 图片在不同目录下：
 
     - 图片 `*.jpg` 在 image 文件夹中，`*.html` 跟 image 在同一目录下：
-  `<img src="image/*.jpg/"width="300" height="120"/>`
+  `<img alt="pic" src="image/*.jpg/"width="300" height="120"/>`
 
     - 图片 `*.jpg` 在 image 文件夹中，`*.html` 在 connage 文件夹中，image 跟 connage 在同一目录下：
-  `<img src="../image/*.jpg/"width="300" height="120"/>`
+  `<img alt="pic" src="../image/*.jpg/"width="300" height="120"/>`
 
 4. 如果图片来源于网络，那么写绝对路径：
-`<img src="http://static.runoob.com/images/runoob-logo.png" width="300" height="120"/>`
+`<img alt="pic" src="http://static.runoob.com/images/runoob-logo.png" width="300" height="120"/>`
 
 #### HTML 中 href、src 区别
 
@@ -308,12 +308,12 @@ HTML 链接由 `<a>` 标签定义。链接的地址在 `href 属性`中指定：
 
 ### HTML 属性参考手册
 
-属性	    | 描述
----|---
-class	   | 为html元素定义一个或多个类名（classname）(类名从样式文件引入)
-id	     | 定义元素的唯一id
-style	   | 规定元素的行内样式（inline style）
-title	   | 描述了元素的额外信息 (作为工具条使用)
+| 属性  | 描述                                                          |
+| ----- | ------------------------------------------------------------- |
+| class | 为html元素定义一个或多个类名（classname）(类名从样式文件引入) |
+| id    | 定义元素的唯一id                                              |
+| style | 规定元素的行内样式（inline style）                            |
+| title | 描述了元素的额外信息 (作为工具条使用)                         |
 
 
 ### HTML 注释 `<!-- 这是一个注释 -->`
@@ -341,38 +341,38 @@ HTML 使用标签 `<b>("bold")` 与 `<i>("italic")` 对输出的文本进行格�
 - 现今所有主要浏览器都能渲染各种效果的字体。不过，未来浏览器可能会支持更好的渲染效果。
 
 HTML 文本格式化标签
-标签	| 描述
----|---
-`<b>`	  | 定义粗体文本
-`<em>`	| 定义着重文字
-`<i>`	  | 定义斜体字
-`<small>`	| 定义小号字
-`<strong>`	| 定义加重语气
-`<sub>`	| 定义下标字
-`<sup>`	| 定义上标字
-`<ins>`	| 定义插入字
-`<del>`	| 定义删除字
+| 标签       | 描述         |
+| ---------- | ------------ |
+| `<b>`      | 定义粗体文本 |
+| `<em>`     | 定义着重文字 |
+| `<i>`      | 定义斜体字   |
+| `<small>`  | 定义小号字   |
+| `<strong>` | 定义加重语气 |
+| `<sub>`    | 定义下标字   |
+| `<sup>`    | 定义上标字   |
+| `<ins>`    | 定义插入字   |
+| `<del>`    | 定义删除字   |
 
 HTML "计算机输出" 标签
-标签	| 描述
----|---
-`<code>` |	定义计算机代码
-`<kbd>` |	定义键盘码
-`<samp>` |	定义计算机代码样本
-`<var>` |	定义变量
-`<pre>` |	定义预格式文本
+| 标签     | 描述               |
+| -------- | ------------------ |
+| `<code>` | 定义计算机代码     |
+| `<kbd>`  | 定义键盘码         |
+| `<samp>` | 定义计算机代码样本 |
+| `<var>`  | 定义变量           |
+| `<pre>`  | 定义预格式文本     |
 
 
 HTML 引文, 引用, 及标签定义
-标签	| 描述
----|---
-`<abbr>`	| 定义缩写
-`<address>`	| 定义地址
-`<bdo>`	| 定义文字方向
-`<blockquote>`	| 定义长的引用
-`<q>`	| 定义短的引用语
-`<cite>`	| 定义引用、引证
-`<dfn>`	| 定义一个定义项目。
+| 标签           | 描述               |
+| -------------- | ------------------ |
+| `<abbr>`       | 定义缩写           |
+| `<address>`    | 定义地址           |
+| `<bdo>`        | 定义文字方向       |
+| `<blockquote>` | 定义长的引用       |
+| `<q>`          | 定义短的引用语     |
+| `<cite>`       | 定义引用、引证     |
+| `<dfn>`        | 定义一个定义项目。 |
 
 
 ### HTML 链接 `<a href="url">链接文本</a>`

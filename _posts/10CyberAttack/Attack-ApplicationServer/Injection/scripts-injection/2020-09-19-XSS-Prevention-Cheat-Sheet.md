@@ -415,7 +415,7 @@ String cleanResults = sanitizer.sanitize("<p>Hello, <b>World!</b>");
 
 For more information on OWASP Java HTML Sanitizer policy construction, see [here](https://github.com/OWASP/java-html-sanitizer).
 
-**[Ruby on Rails SanitizeHelper](http://api.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html)**
+**[Ruby on Rails SanitizeHelper](https://api.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html)**
 
 The `SanitizeHelper` module provides a set of methods for scrubbing text of undesired HTML elements.
 
@@ -427,7 +427,7 @@ The `SanitizeHelper` module provides a set of methods for scrubbing text of unde
 
 - [HTML sanitizer](https://github.com/google/closure-library/blob/master/closure/goog/html/sanitizer/htmlsanitizer.js) from [Google Closure Library](https://developers.google.com/closure/library/) (JavaScript/Node.js, [docs](https://google.github.io/closure-library/api/goog.html.sanitizer.HtmlSanitizer.html))
 - [DOMPurify](https://github.com/cure53/DOMPurify) (JavaScript, requires [jsdom](https://github.com/jsdom/jsdom) for Node.js)
-- [PHP HTML Purifier](http://htmlpurifier.org/)
+- [PHP HTML Purifier](https://htmlpurifier.org/)
 - [Python Bleach](https://pypi.python.org/pypi/bleach)
 
 ---
@@ -483,12 +483,12 @@ Will instruct web browser to load
     - potentially exposing users to an XSS vulnerability.
     - If **really** have to use them, now all the data must be [sanitized](#rule-6---sanitize-html-markup-with-a-library-designed-for-the-job) by yourself.
 
-| JavaScript framework | Dangerous methods / props                                                                     |
-|----------------------|------------------------------------------------------------------------------------------------|
-| Angular (2+)         | [bypassSecurityTrust](https://angular.io/guide/security#bypass-security-apis)                  |
-| React                | [`dangerouslySetInnerHTML`](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml)|
-| Svelte               | [`{@html ...}`](https://svelte.dev/docs#html)                                                  |
-| Vue (2+)             | [`v-html`](https://vuejs.org/v2/api/#v-html)                                                   |
+| JavaScript framework | Dangerous methods / props                                                                       |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+| Angular (2+)         | [bypassSecurityTrust](https://angular.io/guide/security#bypass-security-apis)                   |
+| React                | [`dangerouslySetInnerHTML`](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml) |
+| Svelte               | [`{@html ...}`](https://svelte.dev/docs#html)                                                   |
+| Vue (2+)             | [`v-html`](https://vuejs.org/v2/api/#v-html)                                                    |
 
 Avoid template injection in Angular by building with `--prod` parameter (`ng build --prod`).
 
@@ -511,16 +511,16 @@ The `X-XSS-Protection` header has been deprecated by modern browsers and its use
 
 ## XSS Prevention Rules Summary
 
-| DataType | Context  | Code Sample | Defense |
-|----------|----------|-------------|---------|
-| String | HTML Body |  `<span>BAD DATA</span>` | HTML Entity Encoding (rule \#1) |
-| String | Safe HTML Attributes | `<input type="text" name="fname" value="BAD DATA">` | Aggressive HTML Entity Encoding (rule \#2) <br> Only place untrusted data into a whitelist of safe attributes (listed below), Strictly validate unsafe attributes such as background, ID and name. |
-| String | GET Parameter | `<a href="/site/search?value=BAD DATA">clickme</a>` <br> 📌 `BAD DATA">clickme</a>`| URL Encoding (rule \#5) |
-| String | Untrusted URL in a SRC or HREF attribute | `<a href="BAD URL">clickme</a>` <br> `<iframe src="BAD URL" />` | Canonicalize input, URL Validation, Safe URL verification, Whitelist http and HTTPS URLs only (Avoid the JavaScript Protocol to Open a new Window), Attribute encoder. |
-| String | CSS Value | `html <div style="width:BAD DATA;">Selection</div>` | Strict structural validation (rule \#4), CSS Hex encoding, Good design of CSS Features. |
-| String | JavaScript Variable | `<script>var currentValue='BAD DATA';</script> <script>someFunction('BAD DATA');</script>` | Ensure JavaScript variables are quoted, JavaScript Hex Encoding, JavaScript Unicode Encoding, Avoid backslash encoding (`\"` or `\'` or `\\`) |
-| HTML   | HTML Body | `<div>BAD HTML</div>` | HTML Validation (JSoup, AntiSamy, HTML Sanitizer...) |
-| String | DOM XSS | `<script>document.write("BAD INPUT: " + document.location.hash );<script/>` | `DOM based XSS Prevention Cheat Sheet` |
+| DataType | Context                                  | Code Sample                                                                                | Defense                                                                                                                                                                                            |
+| -------- | ---------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| String   | HTML Body                                | `<span>BAD DATA</span>`                                                                    | HTML Entity Encoding (rule \#1)                                                                                                                                                                    |
+| String   | Safe HTML Attributes                     | `<input type="text" name="fname" value="BAD DATA">`                                        | Aggressive HTML Entity Encoding (rule \#2) <br> Only place untrusted data into a whitelist of safe attributes (listed below), Strictly validate unsafe attributes such as background, ID and name. |
+| String   | GET Parameter                            | `<a href="/site/search?value=BAD DATA">clickme</a>` <br> 📌 `BAD DATA">clickme</a>`         | URL Encoding (rule \#5)                                                                                                                                                                            |
+| String   | Untrusted URL in a SRC or HREF attribute | `<a href="BAD URL">clickme</a>` <br> `<iframe src="BAD URL" />`                            | Canonicalize input, URL Validation, Safe URL verification, Whitelist http and HTTPS URLs only (Avoid the JavaScript Protocol to Open a new Window), Attribute encoder.                             |
+| String   | CSS Value                                | `html <div style="width:BAD DATA;">Selection</div>`                                        | Strict structural validation (rule \#4), CSS Hex encoding, Good design of CSS Features.                                                                                                            |
+| String   | JavaScript Variable                      | `<script>var currentValue='BAD DATA';</script> <script>someFunction('BAD DATA');</script>` | Ensure JavaScript variables are quoted, JavaScript Hex Encoding, JavaScript Unicode Encoding, Avoid backslash encoding (`\"` or `\'` or `\\`)                                                      |
+| HTML     | HTML Body                                | `<div>BAD HTML</div>`                                                                      | HTML Validation (JSoup, AntiSamy, HTML Sanitizer...)                                                                                                                                               |
+| String   | DOM XSS                                  | `<script>document.write("BAD INPUT: " + document.location.hash );<script/>`                | `DOM based XSS Prevention Cheat Sheet`                                                                                                                                                             |
 
 The following snippets of HTML demonstrate how to safely render untrusted data in a variety of different contexts.
 
@@ -533,12 +533,12 @@ The following snippets of HTML demonstrate how to safely render untrusted data i
 
 The purpose of output encoding (as it relates to Cross Site Scripting) is to convert untrusted input into a safe form where the input is displayed as **data** to the user without executing as **code** in the browser. The following charts details a list of critical output encoding methods needed to stop Cross Site Scripting.
 
-| Encoding Type | Encoding Mechanism |
-|---------------|--------------------|
-| **HTML Entity Encoding**    | `& = &amp;`, `< = &lt;`, `> = &gt;`, `" = &quot;`, `' = &#x27;`, `/ = &#x2F;` |
-| **HTML Attribute Encoding** | Except for alphanumeric characters, encode all characters with the HTML Entity `&#xHH;` format, including spaces. (**HH** = Hex Value) |
-| **URL Encoding**            | Standard percent encoding, see [here](http://www.w3schools.com/tags/ref_urlencode.asp). URL encoding should only be used to encode parameter values, not the entire URL or path fragments of a URL. |
-| **JavaScript Encoding**     | Except for alphanumeric characters, encode all characters with the `\uXXXX` unicode encoding format (**X** = Integer).  |
+| Encoding Type               | Encoding Mechanism                                                                                                                                                                                                                                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **HTML Entity Encoding**    | `& = &amp;`, `< = &lt;`, `> = &gt;`, `" = &quot;`, `' = &#x27;`, `/ = &#x2F;`                                                                                                                                                                                                                                                  |
+| **HTML Attribute Encoding** | Except for alphanumeric characters, encode all characters with the HTML Entity `&#xHH;` format, including spaces. (**HH** = Hex Value)                                                                                                                                                                                         |
+| **URL Encoding**            | Standard percent encoding, see [here](https://www.w3schools.com/tags/ref_urlencode.asp). URL encoding should only be used to encode parameter values, not the entire URL or path fragments of a URL.                                                                                                                           |
+| **JavaScript Encoding**     | Except for alphanumeric characters, encode all characters with the `\uXXXX` unicode encoding format (**X** = Integer).                                                                                                                                                                                                         |
 | **CSS Hex Encoding**        | CSS encoding supports `\XX` and `\XXXXXX`. Using a two character encode can cause problems if the next character continues the encode sequence.  There are two solutions (a) Add a space after the CSS encode (will be ignored by the CSS parser) (b) use the full amount of CSS encoding  possible by zero padding the value. |
 
 ## Related Articles

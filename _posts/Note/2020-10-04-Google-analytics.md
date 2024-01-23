@@ -376,7 +376,7 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
 ref
 - [1](https://taoalpha.github.io/blog/2015/06/07/tech-add-google-analytics-pageviews-to-jekyll-blog/)
 - [jekyll-ga](https://github.com/developmentseed/jekyll-ga#readme)
-- [2](http://zhangwenli.com/blog/2014/08/05/page-view-from-google-analytics-for-your-blog/)
+- [2](https://zhangwenli.com/blog/2014/08/05/page-view-from-google-analytics-for-your-blog/)
 - [3](https://devblog.dymel.pl/2016/10/13/public-api-for-your-google-analytics/)
 - [4](https://blog.cotes.info/posts/fetch-pageviews-from-google-analytics/)
 .

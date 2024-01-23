@@ -146,7 +146,7 @@ The core client-side JavaScript language consists of some common programming fea
 
 
 
-<img src="https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/API-page-graphic.png?itok=5zMemph9">
+<img alt="pic" src="https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/API-page-graphic.png?itok=5zMemph9">
 
 图书发行公司：
 - 提供一个成本高昂应用，供书店店员查看书的库存情况。
@@ -171,7 +171,7 @@ The core client-side JavaScript language consists of some common programming fea
 
 When load a web page in browser, it is running code (the HTML, CSS, and JavaScript) inside an `execution environment` (the browser tab).
 
-<img src="https://mdn.mozillademos.org/files/13504/execution.png">
+<img alt="pic" src="https://mdn.mozillademos.org/files/13504/execution.png">
 
 - A very common use of JavaScript is to `dynamically modify HTML and CSS` to `update a user interface`, via the **Document Object Model API**.
 - Note that the code in your web documents is generally loaded and executed in the order it appears on the page. If the JavaScript loads and tries to run before the HTML and CSS it is affecting has been loaded, errors can occur.
