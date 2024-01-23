@@ -83,17 +83,17 @@ This lab begins with an environment already deployed via AWS CloudFormation incl
             - 10.200.0.0/20   local
             - 0.0.0.0/0       igw-
         - Network ACL tab
-        - <img src="https://i.imgur.com/5Xbn8cW.png" width="500">
+        - <img alt="pic" src="https://i.imgur.com/5Xbn8cW.png" width="500">
 
 1. AWS Management Console > Services menu > VPC > **Internet Gateways.**
-   - <img src="https://i.imgur.com/nYdD6Up.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/nYdD6Up.png" width="500">
 
 2. AWS Management Console > Services menu > VPC > **Security Groups**
     - Click Configuration Server SG.
         - Inbound Rules tab
-        - <img src="https://i.imgur.com/3b5gxv7.png" width="500">
+        - <img alt="pic" src="https://i.imgur.com/3b5gxv7.png" width="500">
         - Outbound Rules tab.
-        - <img src="https://i.imgur.com/PURZ7AQ.png" width="500">
+        - <img alt="pic" src="https://i.imgur.com/PURZ7AQ.png" width="500">
         -
 
 **Task 1.2: Inspect Your Amazon EC2 Instance**
@@ -149,7 +149,7 @@ now access application to confirm that it is working.
 
 The web application should appear and will display information about your location (actually, the location of your Amazon EC2 instance). This information is obtained from freegeoip.app.
 
-<img src="https://i.imgur.com/4fX1Dnt.png" width="500">
+<img alt="pic" src="https://i.imgur.com/4fX1Dnt.png" width="500">
 
 Return to your SSH session, execute the following command:
 
@@ -171,7 +171,7 @@ create an AMI from your Amazon EC2 instance. You will later use this image to la
     - a Root Volume is currently associated with the instance. This volume will be copied into the AMI.
     - For Image name, type: Web application
     - Leave other values at their default settings and click Create Image.
-    - <img src="https://i.imgur.com/LwqrPal.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/LwqrPal.png" width="500">
 
 
 
@@ -186,21 +186,21 @@ You will create:
 - A second NAT Gateway
 - A second private Route Table
 - 2nd AZ
-- <img src="https://i.imgur.com/q6x7wWZ.jpg" width="500">
+- <img alt="pic" src="https://i.imgur.com/q6x7wWZ.jpg" width="500">
 
 
 **Task 5.1: Create a second Public Subnet**
 1. Services menu > VPC > Subnets.
 
 2. Create Subnet.
-   - <img src="https://i.imgur.com/M5vB5h4.png" width="500">
-   - <img src="https://i.imgur.com/VXC5NfS.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/M5vB5h4.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/VXC5NfS.png" width="500">
 
 
 
 **Task 5.2: Create a Second Private Subnet**
 1. Create subnet.
-   - <img src="https://i.imgur.com/nF3i8sq.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/nF3i8sq.png" width="500">
 
 
 
@@ -208,23 +208,23 @@ You will create:
 1. left navigation pane, click NAT Gateways.
 
 2. Create NAT Gateway.
-   - <img src="https://i.imgur.com/dvlRVj5.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/dvlRVj5.png" width="500">
 
 
 **Task 5.4: Create a Second Private Route Table**
 
 1. In the navigation pane, click Route Tables.
 2. Create route table.
-   - <img src="https://i.imgur.com/dC8D6re.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/dC8D6re.png" width="500">
 
 
 3. Highlight the Private Route Table 2 > Routes tab > Edit routes.
-   - <img src="https://i.imgur.com/aWCnJ8S.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/aWCnJ8S.png" width="500">
 
 
 4. Highlight the Private Route Table 2 > Subnet Associations tab > Edit subnet associations.
     - Select (tick) the checkbox beside `Private Subnet 2`.
-    - <img src="https://i.imgur.com/F2KlhYJ.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/F2KlhYJ.png" width="500">
 
 5. Private Subnet 2 will now route Internet-bound traffic through the second NAT Gateway.
 
@@ -236,7 +236,7 @@ You will create:
 
 ## Task 6: Create an Application Load Balancer
 
-<img src="https://i.imgur.com/YaiN4p2.jpg" width="500">
+<img alt="pic" src="https://i.imgur.com/YaiN4p2.jpg" width="500">
 
 do not have any instances yet
 - created by the Auto Scaling group in the next task.
@@ -244,21 +244,21 @@ do not have any instances yet
 
 1. Services menu > EC2 > Load Balancers
     - Create Load Balancer > Application Load Balancer
-    - <img src="https://i.imgur.com/YkmN5md.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/YkmN5md.png" width="500">
 
 - Next: Configure Security Settings
     - Select: Security group for the web servers
     - Note: This Security Group permits only HTTP incoming traffic, so it can be used on both the Load Balancer and the web servers.
 
 - Click Next: Configure Routing.
-- <img src="https://i.imgur.com/JxE0NzM.png" width="500">
+- <img alt="pic" src="https://i.imgur.com/JxE0NzM.png" width="500">
 
 
 
 
 ## Task 7: Create an Auto Scaling Group
 
-<img src="https://i.imgur.com/oxZ7lNl.jpg" width="500">
+<img alt="pic" src="https://i.imgur.com/oxZ7lNl.jpg" width="500">
 
 1. In the left navigation pane > Auto Scaling Groups > Create Auto Scaling group > My AMIs > Web application
     - Accept the default (t2.micro) instance type and click Next: Configure details .
@@ -272,8 +272,8 @@ do not have any instances yet
     - accept the vockey keypair, select the acknowledgement check box, then click Create launch configuration.
 
 2. create the Auto Scaling group.
-   - <img src="https://i.imgur.com/0gcS4bq.png" width="500">
-   - <img src="https://i.imgur.com/lmJcPbb.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/0gcS4bq.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/lmJcPbb.png" width="500">
 
 Ensure Keep this group at its initial size is selected.
 
@@ -315,7 +315,7 @@ testing the application by connecting to the Load Balancer, which will then send
 
 
 The flow of information when displaying this web application is:
-<img src="https://i.imgur.com/ctic2dc.jpg" width="500">
+<img alt="pic" src="https://i.imgur.com/ctic2dc.jpg" width="500">
 
 Data flow
 - sent the request to the Load Balancer, which resides in the public subnets that are connected to the Internet.
@@ -341,9 +341,9 @@ Your application has been configured to be Highly Available. This can be proven 
 # lab2: Using Notifications to Trigger AWS Lambda
 
 
-<img src="https://i.imgur.com/6BND5ml.png" width="500">
+<img alt="pic" src="https://i.imgur.com/6BND5ml.png" width="500">
 
-<img src="https://i.imgur.com/wDkrKIN.png" width="500">
+<img alt="pic" src="https://i.imgur.com/wDkrKIN.png" width="500">
 
 Many AWS services can automatically generate notifications when events occur.
 - These notifications can be used to trigger automated actions without requiring human intervention.
@@ -365,7 +365,7 @@ The lab scenario is:
 create an Amazon Simple Notification Service (SNS) **topic** that the Auto Scaling group will use as a notification target.
 
 1. AWS Management Console > Services > Simple Notification Service > to reveal the Amazon SNS menu > Topics > Create topic.
-   - <img src="https://i.imgur.com/grlMWBr.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/grlMWBr.png" width="500">
 
 The topic is now ready to receive notifications.
 
@@ -378,7 +378,7 @@ The topic is now ready to receive notifications.
   - when new EC2 instances are launched in the group.
 
 1. AWS Management Console > EC2 > Auto Scaling Groups > the Auto Scaling group created > Notifications tab > Create notification.
-   - <img src="https://i.imgur.com/GChiJl9.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/GChiJl9.png" width="500">
 
 
 
@@ -394,7 +394,7 @@ You will later associate this role with your Lambda function.
 - The Lambda function will create a snapshot of the Amazon EBS volumes attached to the instance and then add a tag to the instance.
 
 1. AWS Management Console > Lambda > Create a function > Author from scratch
-   - <img src="https://i.imgur.com/zx5Y8vJ.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/zx5Y8vJ.png" width="500">
 
 This role grants permission to the Lambda function to create an EBS Snapshot and to tag the EC2 instance.
 
@@ -449,7 +449,7 @@ Examine the code.
 - Add a tag to the instance to indicate that snapshots were created
 
 3. the Basic settings section at the bottom
-    - <img src="https://i.imgur.com/ixPP4zM.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/ixPP4zM.png" width="500">
 
 4. configure the trigger that will activate the Lambda function.
     - Add triggers at the top of the page.
@@ -475,7 +475,7 @@ Your Lambda function will now automatically execute whenever Auto Scaling launch
     - cause Auto Scaling to launch an additional Amazon EC2 instance.
     - the Activity History tab and monitor the progress of the new EC2 instance that is being launched.
     - Wait for the status to change to show 2 rows with a Status of Successful. You can occasionally click refresh  to update the status.
-    - <img src="https://i.imgur.com/reYRdBp.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/reYRdBp.png" width="500">
 
 Once the status has updated, you can confirm that the Lambda function executed correctly.
 
@@ -503,7 +503,7 @@ Once the status has updated, you can confirm that the Lambda function executed c
 
 ## Task 1: Create a Lambda Function to Process a Transactions File
 
-<img src="https://i.imgur.com/c6WI7Yy.png" width="320">
+<img alt="pic" src="https://i.imgur.com/c6WI7Yy.png" width="320">
 
 - create an **AWS Lambda function** to process a transactions file.
   - The Lambda function will read the file and insert information into the Customer and Transactions DynamoDB tables.
@@ -590,22 +590,22 @@ def lambda_handler(event, context):
 ```
 
 5. Basic settings
-   - <img src="https://i.imgur.com/pJIni1S.png" width="300">
+   - <img alt="pic" src="https://i.imgur.com/pJIni1S.png" width="300">
 
 6. Add triggers > S3
-   - <img src="https://i.imgur.com/4L2oqF9.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/4L2oqF9.png" width="500">
 
 
 ## Task 2: Create a Lambda Function to Calculate Transaction Totals and Notify About High Account Balances
 
-<img src="https://i.imgur.com/StldKFD.png" width="500">
+<img alt="pic" src="https://i.imgur.com/StldKFD.png" width="500">
 
 - create an **AWS Lambda function** to calculate transaction totals and send a **Simple Notification Service** notification if an account balance exceeds $1500.
 
 1. AWS Management Console > Lambda
 2. Create a function > `Author from scratch`
 3. Configure the following
-    - <img src="https://i.imgur.com/4aIfHkv.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/4aIfHkv.png" width="500">
 
 4. **Function code** section
 
@@ -675,10 +675,10 @@ def lambda_handler(event, context):
 ```
 
 6. Basic settings section
-    - <img src="https://i.imgur.com/zSXqVCP.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/zSXqVCP.png" width="500">
 
 7. Add trigger
-    - <img src="https://i.imgur.com/AiUB6eg.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/AiUB6eg.png" width="500">
 
 
 
@@ -686,24 +686,24 @@ def lambda_handler(event, context):
 
 ## Task 3: Create a Simple Notification Service (SNS) Topic
 
-<img src="https://i.imgur.com/nrgegoF.png" width="500">
+<img alt="pic" src="https://i.imgur.com/nrgegoF.png" width="500">
 
 
 - create a **Simple Notification Service (SNS)** topic that will receive a notification from your Lambda function when an account balance exceeds $1500. You will also subscribe to the topic with an email and via SMS.
 
 1. Services > Simple Notification Service.
 2. Create topic
-    - <img src="https://i.imgur.com/2nyhKV3.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/2nyhKV3.png" width="500">
 
 3. Create subscription
-    - <img src="https://i.imgur.com/mTjk6zB.png" width="500">
+    - <img alt="pic" src="https://i.imgur.com/mTjk6zB.png" width="500">
 
 
 
 
 ## Task 4: Create Two Simple Queue Service Queues
 
-<img src="https://i.imgur.com/yesnLBb.png" width="500">
+<img alt="pic" src="https://i.imgur.com/yesnLBb.png" width="500">
 
 - create two Simple Queue Service (SQS) queues.
   - subscribe 3 queues to the Simple Notification Service (SNS) topic created.
@@ -714,7 +714,7 @@ def lambda_handler(event, context):
     - Queue Name, type: `CreditCollection`
     - Queue Name, type: `CustomerNotify`
 3. Subscribe Queues to SNS Topic.
-   - <img src="https://i.imgur.com/5RFOqaA.png" width="500">
+   - <img alt="pic" src="https://i.imgur.com/5RFOqaA.png" width="500">
 
 
 ## Task 5: Testing the Serverless Architecture by Uploading a Transactions File

@@ -257,7 +257,7 @@ The certificates are created and formatted based on the <font color=red> X.509 s
 
 The following figure shows the contents of X.509 version 3 certificates
 
-<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/x509v3.gif?attredirects=0" width="450"> -->
+<!-- <img alt="pic" src="https://sites.google.com/site/ddmwsst/digital-certificates/x509v3.gif?attredirects=0" width="450"> -->
 
 Certificates that conform to X.509 contain the following data:
 - <font color=red> _Version_ </font>

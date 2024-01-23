@@ -16,9 +16,9 @@ image:
 ![IGW](https://i.imgur.com/9jacyfO.png)
 
 
-<img src="https://i.imgur.com/bkzz2pL.png" width="400">
+<img alt="pic" src="https://i.imgur.com/bkzz2pL.png" width="400">
 
-<img src="https://i.imgur.com/mU8bKIE.png" width="400">
+<img alt="pic" src="https://i.imgur.com/mU8bKIE.png" width="400">
 
 
 - The key: whether it can access internet

@@ -1134,7 +1134,7 @@ ssh -4 -C -c blowfish-cbc
 
 23、使用cstream控制带宽
 tar -cj /backup | cstream -t 777k | ssh host ‘tar -xj -C /backup’
-使用bzip压缩文件夹，然后以777k bit/s速率向远程主机传输。Cstream还有更多的功能，请访问http://www.cons.org/cracauer/cstream.html#usage了解详情，例如：
+使用bzip压缩文件夹，然后以777k bit/s速率向远程主机传输。Cstream还有更多的功能，请访问https://www.cons.org/cracauer/cstream.html#usage了解详情，例如：
 echo w00t, i’m 733+ | cstream -b1 -t2
 
 

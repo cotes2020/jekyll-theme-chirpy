@@ -73,3 +73,5 @@ lamda
 membran
 nin
 mane
+categorie
+possibile

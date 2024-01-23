@@ -1,0 +1,32 @@
+{%- comment -%}
+  Generate image final URL based on `site.img_cdn`, `page.img_path`
+
+  Arguments:
+    src - basic image path, required
+    img_path - relative path of image, optional
+
+  Return:
+    image URL
+{%- endcomment -%}
+
+{% assign url = include.src %}
+
+{%- if url -%}
+  {% unless url contains ':' %}
+    {%- comment -%} CND URL {%- endcomment -%}
+    {% assign prefix = site.img_cdn | default: '' | relative_url %}
+
+    {%- comment -%} Add page image path prefix {%- endcomment -%}
+    {% assign url = include.img_path | default: '' | append: '/' | append: url %}
+
+    {% assign url = prefix
+      | append: '/'
+      | append: url
+      | replace: '///', '/'
+      | replace: '//', '/'
+      | replace: ':', ':/'
+    %}
+  {% endunless %}
+{%- endif -%}
+
+{{- url -}}

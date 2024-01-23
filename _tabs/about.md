@@ -10,15 +10,15 @@ order: 4
 
 <br>
 
-<img src="/assets/img/tabs/AWS-SA.png" width="100" align="center">
-<img src="/assets/img/tabs/AWS-CP.png" width="100" align="center">
-<img src="/assets/img/tabs/AWS-G.png" width="100" align="center">
+<img alt="pic" src="/assets/img/tabs/AWS-SA.png" width="100" align="center">
+<img alt="pic" src="/assets/img/tabs/AWS-CP.png" width="100" align="center">
+<img alt="pic" src="/assets/img/tabs/AWS-G.png" width="100" align="center">
 
 <br>
 
-<img src="/assets/img/tabs/CEH.png" width="100" align="center">
-<img src="/assets/img/tabs/PAN.jpg" width="100" height="110" align="center">
-<img src="/assets/img/tabs/Sec+.png" width="100" align="center">
+<img alt="pic" src="/assets/img/tabs/CEH.png" width="100" align="center">
+<img alt="pic" src="/assets/img/tabs/PAN.jpg" width="100" height="110" align="center">
+<img alt="pic" src="/assets/img/tabs/Sec+.png" width="100" align="center">
 
 <br>
 

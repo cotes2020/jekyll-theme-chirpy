@@ -2,7 +2,7 @@
 title: Monitor - Prometheus
 date: 2020-02-11 11:11:11 -0400
 categories: [02Security, Prometheus]
-tags: [02Security, Prometheus]
+tags: [SecurityTools, Prometheus]
 math: true
 image:
 ---
@@ -2784,7 +2784,7 @@ func main() {
   - api 包提供了 Prometheus HTTP API
 
 - api/prometheus/v1
-  - v1 包提供了 v1 版本的 Prometheus HTTP API,详见 [http://prometheus.io/docs/querying/api/](http://prometheus.io/docs/querying/api/)
+  - v1 包提供了 v1 版本的 Prometheus HTTP API,详见 [https://prometheus.io/docs/querying/api/](https://prometheus.io/docs/querying/api/)
 
 - examples/random
   - 一个简单的示例,将具有不同类型的随机分布(均匀,正态和指数)的虚构 RPC 延迟公开为 Prometheus 数据指标

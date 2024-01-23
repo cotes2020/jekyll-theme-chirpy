@@ -13,7 +13,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
 
 ---
 
-<img src="https://mdn.mozillademos.org/files/8973/Client-server.jpg">
+<img alt="pic" src="https://mdn.mozillademos.org/files/8973/Client-server.jpg">
 
 type a web address into browser:
 

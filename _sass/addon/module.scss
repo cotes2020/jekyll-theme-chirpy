@@ -7,11 +7,11 @@
 %heading {
   color: var(--heading-color);
   font-weight: 400;
-  font-family: Lato, 'Microsoft Yahei', sans-serif;
+  font-family: $font-family-heading;
 }
 
 %section {
-  #core-wrapper & {
+  main & {
     margin-top: 2.5rem;
     margin-bottom: 1.25rem;
 
@@ -69,12 +69,13 @@
 }
 
 %clickable-transition {
-  transition: color 0.35s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 %no-cursor {
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -91,7 +92,7 @@
 }
 
 %rounded {
-  border-radius: 6px;
+  border-radius: $base-radius;
 }
 
 %img-caption {
@@ -106,17 +107,45 @@
 }
 
 %sidebar-links {
-  color: rgba(117, 117, 117, 0.9);
+  color: var(--sidebar-muted-color);
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
-/* ---------- scss mixin --------- */
-
-@mixin no-text-decoration {
-  text-decoration: none;
+%text-clip {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
+
+%text-highlight {
+  color: var(--text-muted-hightlight-color);
+  font-weight: 600;
+}
+
+%text-sm {
+  font-size: 0.85rem;
+}
+
+%text-xs {
+  font-size: 0.8rem;
+}
+
+%sup-fn-target {
+  &:target {
+    background-color: var(--footnote-target-bg);
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    transition: background-color 1.75s ease-in-out;
+  }
+}
+
+/* ---------- scss mixin --------- */
 
 @mixin mt-mb($value) {
   margin-top: $value;
@@ -128,12 +157,21 @@
   margin-right: $value;
 }
 
+@mixin pt-pb($val) {
+  padding-top: $val;
+  padding-bottom: $val;
+}
+
 @mixin pl-pr($val) {
   padding-left: $val;
   padding-right: $val;
 }
 
-@mixin input-placeholder {
+@mixin placeholder {
+  color: var(--text-muted-color) !important;
+}
+
+@mixin placeholder-focus {
   opacity: 0.6;
 }
 
@@ -146,7 +184,6 @@
 @mixin align-center {
   position: relative;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 

@@ -124,7 +124,7 @@ CAs are hierarchical in structure. There are generally three types of hierarchie
 #### Single/One Tier Hierarchy
 
 
-<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-1.png?attredirects=0" width="250"> -->
+<!-- <img alt="pic" src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-1.png?attredirects=0" width="250"> -->
 
 A single tier Hierarchy
 - consists of one CA.
@@ -143,7 +143,7 @@ A single tier Hierarchy
 
 #### Two Tier Hierarchy
 
-<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-2.png?attredirects=0" width="200"> -->
+<!-- <img alt="pic" src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-2.png?attredirects=0" width="200"> -->
 
 
 A two tier hierarchy
@@ -163,7 +163,7 @@ A two tier hierarchy
 
 #### Three Tier Hierarchy
 
-<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-3.png?attredirects=0" width="300"> -->
+<!-- <img alt="pic" src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-3.png?attredirects=0" width="300"> -->
 
 Three Tier Hierarchy
 - a second tier is placed between the Root CA and the issuing CA.
