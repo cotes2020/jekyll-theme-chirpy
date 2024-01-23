@@ -117,7 +117,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "https://github.com/ShahKshitij31/Shah-kshitij.github.io"
+baseurl: "/Shahkshitij"
 
 # ------------ The following options are not recommended to be modified ------------------
 
