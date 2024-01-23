@@ -16,7 +16,7 @@ timezone: America/New_York
 
 title: Grace # the main title
 
-tagline: 2023 Mar 14 updated   # it will display as the sub-title
+tagline: IT Page   # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A webpages focus on IT learning path.
