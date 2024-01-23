@@ -2,7 +2,7 @@
 title: AWS - Security - Amazon CloudWatch (AWS cloud resources)
 date: 2020-07-18 11:11:11 -0400
 categories: [01AWS, Security]
-tags: [AWS, Security]
+tags: [AWS, AWSSecurity]
 toc: true
 image:
 ---
