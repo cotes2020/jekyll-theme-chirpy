@@ -101,7 +101,7 @@ Now you can choose _ONE_ of the following methods to deploy your Jekyll site.
 There are a few things to get ready for.
 
 - If you're on the GitHub Free plan, keep your site repository public.
-- If you have committed `Gemfile.lock`{: .filepath} to the repository, and your local machine is not running Linux, go the the root of your site and update the platform list of the lock-file:
+- If you have committed `Gemfile.lock`{: .filepath} to the repository, and your local machine is not running Linux, go to the root of your site and update the platform list of the lock-file:
 
   ```console
   $ bundle lock --add-platform x86_64-linux
