@@ -66,7 +66,7 @@ If possible, providing a demo that reproduces the error will help us troubleshoo
 
 ## Suggesting a New Feature
 
-Feature requests are welcome! While we will consider all requests, we cannot guarantee your request will be accepted.  
+Feature requests are welcome! While we will consider all requests, we cannot guarantee your request will be accepted.
 We want to avoid chaos in the UI design and therefore do not accept requests for changes like color schemes,
 fontfamilies, typography, and so on. We want to avoid [feature creep][feat-creep] and focus only on the core features.
 If accepted, we cannot make any commitments regarding the timeline for implementation and release. However, you are

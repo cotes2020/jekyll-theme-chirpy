@@ -1,0 +1,92 @@
+
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >-
+  Network Template: Sample template that creates a VPC with DNS and public IPs enabled.
+
+# This template creates:
+#   VPC
+#   Internet Gateway
+#   Public Route Table
+#   Public Subnet
+
+######################
+# Resources section
+######################
+
+Resources:
+
+  ## VPC
+
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      CidrBlock: 10.0.0.0/16
+
+  ## Internet Gateway
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  ## Public Route Table
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: VPCGatewayAttachment
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  ## Public Subnet
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.0.0/24
+
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+  PublicSubnetNetworkAclAssociation:
+    Type: AWS::EC2::SubnetNetworkAclAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      NetworkAclId: !GetAtt
+        - VPC
+        - DefaultNetworkAcl
+
+######################
+# Outputs section
+######################
+
+Outputs:
+
+  VPC:
+    Description: VPC ID
+    Value: VPC
+    Export:
+      Name: !Sub '${AWS::StackName}-VPCID'
+
+  PublicSubnet:
+    Description: The subnet ID to use for public web servers
+    Value: !Ref PublicSubnet
+    Export:
+      Name: !Sub '${AWS::StackName}-SubnetID'

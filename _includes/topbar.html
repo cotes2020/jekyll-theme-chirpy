@@ -17,7 +17,7 @@
           {% if forloop.first %}
             <span>
               <a href="{{ '/' | relative_url }}">
-                {{ site.data.locales[include.lang].tabs.home | capitalize }}
+                {{- site.data.locales[include.lang].tabs.home | capitalize -}}
               </a>
             </span>
 
@@ -30,8 +30,8 @@
 
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>
-              <a href="{{ item | relative_url }}">
-                {{ site.data.locales[include.lang].tabs[item] | default: page.title }}
+              <a href="{{ item | append: '/' | relative_url }}">
+                {{- site.data.locales[include.lang].tabs[item] | default: page.title -}}
               </a>
             </span>
           {% endif %}
