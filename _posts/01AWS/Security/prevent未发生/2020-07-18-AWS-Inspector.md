@@ -1,7 +1,7 @@
 ---
 title: AWS - Security - AWS Inspector (EC2)
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, Security]
+categories: [01AWS, CloudSecurity]
 tags: [AWS, AWSSecurity]
 toc: true
 image:

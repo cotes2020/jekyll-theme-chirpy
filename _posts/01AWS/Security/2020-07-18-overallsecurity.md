@@ -1,7 +1,7 @@
 ---
 title: AWS - Security - Cloud Proactive Security and Forensic Readiness
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, Security]
+categories: [01AWS, CloudSecurity]
 tags: [AWS, SecurityControl, ZeroTrust]
 toc: true
 image:
