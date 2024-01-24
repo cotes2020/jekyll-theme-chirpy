@@ -1,13 +1,3 @@
----
-title: HTML - HTML Style
-date: 2019-08-29 11:11:11 -0400
-description: Learning Path
-categories: [Web, HTML]
-img: /assets/img/sample/rabbit.png
-tags: [HTML]
----
-
-
 # HTML - HTML Style
 
 [toc]

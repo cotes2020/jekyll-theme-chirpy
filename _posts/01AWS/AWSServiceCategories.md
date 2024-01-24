@@ -1,12 +1,3 @@
----
-title: AWS - Service categories
-date: 2021-04-04 11:11:11 -0400
-categories: [01AWS]
-tags: [AWS]
-toc: true
-image:
----
-
 # AWS service categories
 
 - [AWS service categories](#aws-service-categories)
