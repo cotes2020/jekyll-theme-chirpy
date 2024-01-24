@@ -14,8 +14,8 @@ summary: Beef Bourguignon French Comfort Stew
 * Table of Contents
 {:toc}
 
-I found this recipie for a Beef Bourguignon from [Two Plaid Aprons](https://www.instagram.com/two_plaid_aprons/) and it turned out great.
-[https://www.instagram.com/p/CzrD_CvrqZC/](https://www.instagram.com/p/CzrD_CvrqZC/)
+I found this recipie for a Beef Bourguignon from [Two Plaid Aprons](https://www.instagram.com/two_plaid_aprons/){:target="_blank"} and it turned out great.
+[https://www.instagram.com/p/CzrD_CvrqZC/](https://www.instagram.com/p/CzrD_CvrqZC/){:target="_blank"}
 
 
 ## My Notes
