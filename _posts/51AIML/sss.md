@@ -94,7 +94,7 @@
 
 * **[The illustrated transformer](https://jalammar.github.io/illustrated-transformer/)**: A more technical overview of the transformer architecture by Jay Alammar.
 
-* **[The annotated transformer](http://nlp.seas.harvard.edu/annotated-transformer/)**: In-depth post if you want to understand transformers at a source code level. Requires some knowledge of PyTorch.
+* **[The annotated transformer](https://nlp.seas.harvard.edu/annotated-transformer/)**: In-depth post if you want to understand transformers at a source code level. Requires some knowledge of PyTorch.
 
 * **[Let’s build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY)**: For the engineers out there, Karpathy does a video walkthrough of how to build a GPT model.
 

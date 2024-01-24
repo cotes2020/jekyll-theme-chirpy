@@ -510,7 +510,7 @@ Here’s the full source code of the DAG:
     redshift_dbuser='awsuser'
     redshift_table_name='movie_demo'
     test_http='https://grouplens.org/datasets/movielens/latest/'
-    download_http='http://files.grouplens.org/datasets/movielens/ml-latest-small.zip'
+    download_http='https://files.grouplens.org/datasets/movielens/ml-latest-small.zip'
     athena_db='demo_athena_db'
     athena_results='athena-results/'
     create_athena_movie_table_query="""

@@ -390,7 +390,7 @@ test:
 ```bash
 # 1. 运行一个 Nginx 服务器:
 $ docker run -d -p 80:80 --name webserver nginx
-# 服务运行后，可以访问 http://localhost，如果看到了 "Welcome to nginx!"，就说明 Docker Desktop for Mac 安装成功了。
+# 服务运行后，可以访问 https://localhost，如果看到了 "Welcome to nginx!"，就说明 Docker Desktop for Mac 安装成功了。
 # 要停止 Nginx 服务器并删除执行下面的命令:
 $ docker stop webserver
 $ docker rm webserver
@@ -969,7 +969,7 @@ test/ubuntu         v1.0                9d37a6082e97        About a minute ago  
 
 
 # 通过指定 URL 或者某个目录来导入
-$ docker import http://example.com/exampleimage.tgz example/imagerepo
+$ docker import https://example.com/exampleimage.tgz example/imagerepo
 
 
 
@@ -1342,7 +1342,7 @@ bc533791f3f5  training/webapp:latest  python app.py 5 seconds ago  Up 2 seconds 
 
 # 可以通过 docker logs 命令来查看应用的信息。
 $ docker logs -f nostalgic_morse
-* Running on http://0.0.0.0:5000/
+* Running on https://0.0.0.0:5000/
 10.0.2.2 - - [23/May/2014 20:16:31] "GET / HTTP/1.1" 200 -
 10.0.2.2 - - [23/May/2014 20:16:31] "GET /favicon.ico HTTP/1.1" 404 -
 ```
@@ -1656,7 +1656,7 @@ $ curl -L https://raw.githubusercontent.com/docker/compose/1.24.1/contrib/comple
 ---
 
 ref
-- [Visualizing Docker Containers and Images](http://merrigrove.blogspot.com/2015/10/visualizing-docker-containers-and-images.html)
+- [Visualizing Docker Containers and Images](https://merrigrove.blogspot.com/2015/10/visualizing-docker-containers-and-images.html)
 
 
 

@@ -22,7 +22,7 @@ To build fine-grained authorization to protect the APIs using Amazon Cognito, AP
 
 a customer-facing application where the users are going to log into the web or mobile application
 - as such you will be exposing the APIs through **API Gateway** with upstream services.
-- The APIs could be deployed on [Amazon Elastic Container Service (Amazon ECS)](http://aws.amazon.com/ecs), [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/), [AWS Lambda](https://aws.amazon.com/lambda/), or [Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/) where each of these options will forward the request to the [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/) instances.
+- The APIs could be deployed on [Amazon Elastic Container Service (Amazon ECS)](https://aws.amazon.com/ecs), [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/), [AWS Lambda](https://aws.amazon.com/lambda/), or [Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/) where each of these options will forward the request to the [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/) instances.
 - Additionally, you can use on-premises services that are connected to the AWS environment over an **AWS VPN** or [AWS Direct Connect](https://aws.amazon.com/directconnect/).
 - It’s important to have fine-grained controls for each API endpoint and [HTTP method](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-settings-method-request.html#setup-method-add-http-method).
 - For instance
@@ -122,14 +122,14 @@ Based on this example policy
 
 **To implement this reference architecture, utilizing the following services**:
 
-[Amazon Cognito](http://aws.amazon.com/cognito) to support a **user pool** for the user base.
+[Amazon Cognito](https://aws.amazon.com/cognito) to support a **user pool** for the user base.
 - A user pool is a user directory in Amazon Cognito.
 - With a user pool, the users can log in to the web or mobile app through Amazon Cognito.
 - use the Amazon Cognito user directory directly, as this sample solution creates an Amazon Cognito user.
 - However, the users can also log in through `social IdPs, OpenID Connect (OIDC), and SAML IdPs`
 
 
-[Lambda](http://aws.amazon.com/lambda) to serve the APIs.
+[Lambda](https://aws.amazon.com/lambda) to serve the APIs.
 - Lambda as backing API service
 - Initially, create a Lambda function that serves the APIs.
 - API Gateway forwards all requests to the Lambda function to serve up the requests.
@@ -183,7 +183,7 @@ Alternatively, you can open the CloudFormation stack and get the [Amazon Cognito
 
 Since we haven’t installed a web application that would respond to the redirect request, Amazon Cognito will redirect to localhost, which might look like an error.
 - The key aspect is that after a successful log in, there is a URL similar to the following in the navigation bar of the browser:
-- http://localhost/#id_token=eyJraWQiOiJicVhMYWFlaTl4aUhzTnY3W
+- https://localhost/#id_token=eyJraWQiOiJicVhMYWFlaTl4aUhzTnY3W
 
 
 ---

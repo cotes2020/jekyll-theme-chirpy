@@ -548,7 +548,7 @@ AWS CloudFormation Sample Template VPC_Single_Instance_In_Subnet:
         "Fn::Join": [
           "",
           [
-            "http://",
+            "https://",
             {
               "Fn::GetAtt": [
                 "WebServerInstance",

@@ -209,7 +209,7 @@ Purchase the complete official X.509 standard from the International Telecommuni
 ### Classification
 
 Commercial CAs uses the concept of classes for different types of digital certificates.
-- For example [VeriSign](http://www.verisign.com/) has the following classification
+- For example [VeriSign](https://www.verisign.com/) has the following classification
   - Class 1 for individuals, intended for email.
   - Class 2 for organizations, for which proof of identity is required.
   - Class 3 for servers and software signing, for which independent verification and checking of identity and authority is done by the issuing certificate authority.
@@ -451,7 +451,7 @@ PEM-based certificates can be used for just about anything.
 - For example,
 - in BER a boolean value of true can be encoded in 255 ways,
 - while in DER there is only one way to encode a boolean value of true.
-- The full specification of DER is in [RFC 1421](http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf).
+- The full specification of DER is in [RFC 1421](https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf).
 
 X.509 certificate files encode in DER are binary files, which can not be view with text editors. DER encoded certificate files are supported by almost all applications. The file extensions for DER encoded certificates are .cer, .der, .crt
 

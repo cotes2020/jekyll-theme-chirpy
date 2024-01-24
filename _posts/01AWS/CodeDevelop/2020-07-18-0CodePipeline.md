@@ -399,7 +399,7 @@ myapp3.zip
     # cloudFormation.json
     # create the ec2 instance
     aws cloudformation create-stack --stack-name CodeDeployDemoStack \
-    --template-url http://s3-bucket-url/cloudFormation.json \
+    --template-url https://s3-bucket-url/cloudFormation.json \
     --parameters \
     ParameterKey=InstanceCount, ParameterValue=1 \
     ParameterKey=InstanceType, ParameterValue=t2.micro \

@@ -7258,7 +7258,7 @@ version: 0.2
 # and the URL to our console
 # PC_COMPUTE_USER: The Prisma Cloud Compute user with the CI User role
 # PC_COMPUTE_PASS: The password for this user account
-# PC_COMPUTE_CONSOLE_URL: The base URL for the console -- http://
+# PC_COMPUTE_CONSOLE_URL: The base URL for the console -- https://
 console.<my_company>.com:8083 -- without a trailing /
 phases:
  install:
@@ -7294,7 +7294,7 @@ Environment Variable Description
 PC_COMPUTE_USER Prisma Cloud Compute user with the CI User role
 PC_COMPUTE_PASS Prisma Cloud Compute user password
 PC_COMPUTE_CONSOLE_URL Base URL for the Prisma Cloud
-Compute console (e.g. http://
+Compute console (e.g. https://
 console.<example>.com:8083)
 IMAGE_REPO_NAME Docker repository for image to be scanned for vulnerabilities
 IMAGE_TAG Docker tag for image to be scanned for vulnerabilities - STEP 4 | View the results of the container image scan.
@@ -7473,7 +7473,7 @@ create_build() {
  local login_url="${console_url}/login"
  local req_cmd=$(curl -k -i -o -X POST $login_url -H "ContentType:application/json" --user-agent "AWS-CodePipeline-CustomAction/2.0.0"
  -d "{\"username\":\"${access_key}\",\"password\":\"${secret_key}\"}" -x
- http://127.0.0.1:8080 ) || update_job_status "$job_json" "$err_500"
+ https://127.0.0.1:8080 ) || update_job_status "$job_json" "$err_500"
  local err_400="Invalid credentials please verify that API URL, Access
  Key and Secret Key in Prisma Cloud plugin settings are valid For details
  refer to Extension link https://docs.paloaltonetworks.com/prisma/prismacloud/prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloudextension-for-aws-codepipeline.html"
@@ -7692,7 +7692,7 @@ prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloudextension-fo
  echo "Executing the scan api"
  local response="$(curl -k -X POST $url -H "x-redlock-auth:${token}"
  --user-agent "AWS-CodePipeline-CustomAction/2.0.0" $headers -H "xredlock-iac-metadata:${metadata_json}" -F templateFile=@artifact.zip -x
- http://127.0.0.1:8080)" || update_job_status "$job_json" "Call from API
+ https://127.0.0.1:8080)" || update_job_status "$job_json" "Call from API
  failed"
  #echo "response: $response"
  local result="$(echo "$response" | jq -r '.result.is_successful')"
@@ -8058,7 +8058,7 @@ no prisma_cloud_compute_pass Environment
 variable
 prisma_cloud_compute_url The base
 URL for the console --
-e.g. http://
+e.g. https://
 console.<abc>.com:8083
 no $prisma_cloud_compute_url String Parameter Description RequiredDefault Type
 - - without a trailing /
@@ -8428,7 +8428,7 @@ creditapp_server, ConsumerBU_server. etc
 - STEP 2 | Set up environment variables for container image scans.
 Set up the following environment variables only if want to run container image scans. As with the environment variables that support IaC scans, navigate to Project > Settings > CICD > Variables to
 add new environment variables. 1. Add prisma_cloud_compute_url, whose value is the base URL for Prisma Cloud Compute
-console. An example value is http://console<example>.com:8083.
+console. An example value is https://console<example>.com:8083.
 2. Add prisma_cloud_compute_username, whose value is the Prisma Cloud Compute user with a CI user role.
 3. Add prisma_cloud_compute_password, whose value is the password for the Prisma Cloud
 Compute user.

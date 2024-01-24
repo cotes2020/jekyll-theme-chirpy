@@ -19,7 +19,7 @@
 
 # Visualizing AWS CloudTrail Events using Kibana
 
-visualize [AWS CloudTrail](http://aws.amazon.com/cloudtrail) events, near real time, using Kibana.
+visualize [AWS CloudTrail](https://aws.amazon.com/cloudtrail) events, near real time, using Kibana.
 - CloudTrail
   - enables governance, compliance, operational auditing, and risk auditing of the AWS account.
   - log, continuously monitor, and retain account activity related to actions across the AWS infrastructure.
@@ -76,7 +76,7 @@ The following screenshot shows a graph with the occurrences of ResourceNotFound 
 ## AWS Blog solution
 
 In this solution:
-- replace the Logstash with AWS native solutions to stream CloudTrail events to an [Amazon Elasticsearch](http://aws.amazon.com/elasticsearch-service) (Amazon ES) domain.
+- replace the Logstash with AWS native solutions to stream CloudTrail events to an [Amazon Elasticsearch](https://aws.amazon.com/elasticsearch-service) (Amazon ES) domain.
 - Because the cost of the Amazon ES cluster increases as log data grows, you may want to use cheaper storage tiers within the Amazon ES leveraging the [UltraWarm](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/ultrawarm.html) feature.
 
 
@@ -99,7 +99,7 @@ In this solution:
 - use the **Event history** page on the CloudTrail console
   - to view, search, download, archive, analyze, and respond
   - to account activity across the AWS infrastructure for the past 90 days.
-  - This includes activity made through the [AWS Management Console](http://aws.amazon.com/console), [AWS CLI](http://aws.amazon.com/cli), AWS SDKs, and programmatically.
+  - This includes activity made through the [AWS Management Console](https://aws.amazon.com/console), [AWS CLI](https://aws.amazon.com/cli), AWS SDKs, and programmatically.
 
 To implement this visualization solution using Kibana, you complete the following high-level steps:
 
@@ -149,7 +149,7 @@ Placing the Amazon ES domain within a VPC
 
 search the Elasticsearch index using Kibana
 - configure an SSH tunnel to access Kibana from outside the VPC.
-- can also use an NGINX proxy or client VPN to access Kibana from outside a VPC, along with [Amazon Cognito](http://aws.amazon.com/cognito) authentication.
+- can also use an NGINX proxy or client VPN to access Kibana from outside a VPC, along with [Amazon Cognito](https://aws.amazon.com/cognito) authentication.
   1. Create an Amazon Cognito user pool and identity pool.
   2. Create an EC2 instance in a public subnet in the same VPC that the Elasticsearch domain is in.
   3. Use a browser add-on, such as FoxyProxy, to configure a SOCKS proxy.

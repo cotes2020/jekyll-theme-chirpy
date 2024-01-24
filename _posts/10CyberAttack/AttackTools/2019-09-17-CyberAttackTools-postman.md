@@ -232,7 +232,7 @@ postman-echo.com/get
         "postman-token": "8f289d40-e514-4b91-a923-de4b63c1860c",
         "accept-encoding": "gzip, deflate, br"
     },
-    "url": "http://postman-echo.com/get"
+    "url": "https://postman-echo.com/get"
 }
 ```
 

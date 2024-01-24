@@ -118,7 +118,7 @@ $ docker run --net=host -d \
 # 启动主Node
 # 启动 kubelet。
 $ docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock \
-         gcr.io/google_containers/hyperkube:v0.17.0 /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 \
+         gcr.io/google_containers/hyperkube:v0.17.0 /hyperkube kubelet --api_servers=https://localhost:8080 --v=2 --address=0.0.0.0 \
          --enable_server \
          --hostname_override=127.0.0.1 \
          --config=/etc/kubernetes/manifests
@@ -126,7 +126,7 @@ $ docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock \
 
 # 启动服务代理
 $ docker run -d --net=host --privileged
-         gcr.io/google_containers/hyperkube:v0.17.0 /hyperkube proxy --master=http://127.0.0.1:8080 --v=2
+         gcr.io/google_containers/hyperkube:v0.17.0 /hyperkube proxy --master=https://127.0.0.1:8080 --v=2
 
 
 # 测试状态
@@ -382,8 +382,8 @@ Pod 可以通过组合来构建复杂的运用，其本来的意义包含：
 
 - App should be accessible through browser
   - external service:
-    - http://a.b.c.d:port
-    - http://myapp.com <- Ingree
+    - https://a.b.c.d:port
+    - https://myapp.com <- Ingree
   - internal service:
     - http:myDB
 

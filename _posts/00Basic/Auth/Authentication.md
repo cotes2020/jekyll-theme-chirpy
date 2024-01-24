@@ -547,7 +547,7 @@ client sends the **session id** in all the request, and server uses it to identi
 
 ```
 1. client
-http://someurl/login (username:passwd)
+https://someurl/login (username:passwd)
 
 2. server
 session ID: 123456
@@ -555,7 +555,7 @@ session ID: 123456
 3. client stored it
 
 4. silent send request with session id
-http://someurl/login (session id:123456)
+https://someurl/login (session id:123456)
 
 5. server check the session id
 - 200 ok
@@ -1484,7 +1484,7 @@ nginx 配置
 
 ```
 location /oauth2/ {
-        proxy_pass       http://127.0.0.1:4180;
+        proxy_pass       https://127.0.0.1:4180;
         proxy_set_header Host                    $host;
         proxy_set_header X-Real-IP               $remote_addr;
         proxy_set_header X-Scheme                $scheme;
@@ -1494,7 +1494,7 @@ location /oauth2/ {
 }
 
 location = /oauth2/auth {
-proxy_pass       http://127.0.0.1:4180;
+proxy_pass       https://127.0.0.1:4180;
 proxy_set_header Host             $host;
 proxy_set_header X-Real-IP        $remote_addr;
 proxy_set_header X-Scheme         $scheme;
@@ -1564,11 +1564,11 @@ location = /50x.html {
 upstreams:
   - id: example
     path: /example
-    url: http://app.example.com
+    url: https://app.example.com
 ```
 
 - 访问https://example.com/example
-- 就会被直接代理到 http://app.example.com/example
+- 就会被直接代理到 https://app.example.com/example
 
 
 
@@ -2736,9 +2736,9 @@ module.exports = {
         'authorization_code'
       ],
       redirect_uris: [
-        'http://baidu.com',
-        'http://localhost:8080/app1.html',
-        'http://localhost:8080/app2.html'
+        'https://baidu.com',
+        'https://localhost:8080/app1.html',
+        'https://localhost:8080/app2.html'
       ],
     },
   ],
@@ -2778,8 +2778,8 @@ $ touch app1.html
   </head>
 
   <body>
-    <a href="http://localhost:3000/auth?client_id=1
-      &redirect_uri=http://localhost:8080/app1.html
+    <a href="https://localhost:3000/auth?client_id=1
+      &redirect_uri=https://localhost:8080/app1.html
       &scope=openid profile
       &response_type=code
       &state=455356436">
@@ -2810,8 +2810,8 @@ $ touch app2.html
     <title>第二个应用</title>
   </head>
   <body>
-    <a href="http://localhost:3000/auth?client_id=1
-      &redirect_uri=http://localhost:8080/app2.html
+    <a href="https://localhost:3000/auth?client_id=1
+      &redirect_uri=https://localhost:8080/app2.html
       &scope=openid profile
       &response_type=code
       &state=455356436">
@@ -2834,7 +2834,7 @@ $ http-server .
 ```
 
 
-1. 我们访问第一个应用：http://localhost:8080/app1.html
+1. 我们访问第一个应用：https://localhost:8080/app1.html
 2. 点击「登录」，也就是访问 OIDC Provider 的授权接口。
 3. 然后我们来到了 OIDC Provider 交互环节，OIDC Provider 发现用户没有登录，要求用户先登录。
 4. node-oidc-provider demo 会放通任意用户名 + 密码
@@ -2858,11 +2858,11 @@ code 可以直接发送到后端，然后在后端使用 code 换取 access_toke
 # 用 curl 命令来发送 HTTP 请求：
 
 $ curl --location \
-  --request POST 'http://localhost:3000/token' \
+  --request POST 'https://localhost:3000/token' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'client_id=1' \
   --data-urlencode 'client_secret=1' \
-  --data-urlencode 'redirect_uri=http://localhost:8080/app2.html' \
+  --data-urlencode 'redirect_uri=https://localhost:8080/app2.html' \
   --data-urlencode 'code=QL10pBYMjVSw5B3Ir3_KdmgVPCLFOMfQHOcclKd2tj1' \
   --data-urlencode 'grant_type=authorization_code'
 
@@ -2872,7 +2872,7 @@ $ curl --location \
 
 # 你可以使用 curl 来发送 HTTP 请求：
 $ curl --location \
-  --request POST 'http://localhost:3000/me' \
+  --request POST 'https://localhost:3000/me' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'access_token=I6WB2g0Rq9G307pPVTDhN5vKuyC9eWjrGjxsO2j6jm-'
 ```
@@ -2891,7 +2891,7 @@ $ curl --location \
 
 
 
-1. 打开第二个应用，http://localhost:8080/app2.html
+1. 打开第二个应用，https://localhost:8080/app2.html
 
 2. 然后点击「登录」。
 
@@ -2905,11 +2905,11 @@ $ curl --location \
 ```bash
 # curl 命令代码：
 $ curl --location \
-  --request POST 'http://localhost:3000/token' \
+  --request POST 'https://localhost:3000/token' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'client_id=1' \
   --data-urlencode 'client_secret=1' \
-  --data-urlencode 'redirect_uri=http://localhost:8080/app2.html' \
+  --data-urlencode 'redirect_uri=https://localhost:8080/app2.html' \
   --data-urlencode 'code=QL10pBYMjVSw5B3Ir3_KdmgVPCLFOMfQHOcclKd2tj1' \
   --data-urlencode 'grant_type=authorization_code'
 
@@ -2917,7 +2917,7 @@ $ curl --location \
 
 # curl 命令代码：
 $ curl --location \
-  --request POST 'http://localhost:3000/me' \
+  --request POST 'https://localhost:3000/me' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'access_token=I6WB2g0Rq9G307pPVTDhN5vKuyC9eWjrGjxsO2j6jm-'
 ```
@@ -3001,7 +3001,7 @@ features: {
   console.log('mes: ')
   console.log(mes)
   function check_session() {
-    var targetOrigin = 'http://localhost:3000';
+    var targetOrigin = 'https://localhost:3000';
     var win = window.parent.document.getElementById('op').contentWindow;
     win.postMessage(mes, targetOrigin);
   }
@@ -3015,7 +3015,7 @@ features: {
   setTimer()
   function receiveMessage(e) {
     console.log(e.data);
-    var targetOrigin = 'http://localhost:3000';
+    var targetOrigin = 'https://localhost:3000';
     if (e.origin !== targetOrigin) {
       return;
     }
@@ -3031,7 +3031,7 @@ features: {
 在 app1.html 和 app2.html 中加入两个 iframe 标签：
 
 <iframe src="rp.html" hidden></iframe>
-<iframe src="http://localhost:3000/session/check" id="op" hidden></iframe>
+<iframe src="https://localhost:3000/session/check" id="op" hidden></iframe>
 
 
 使用 Ctrl + C 关闭我们的 node-oidc-provider 和 http-server，然后再次启动。访问 app1.html，打开浏览器控制台，会得到以下信息，这意味着，用户当前处于未登录状态，应该进行 App 自身会话的销毁等操作

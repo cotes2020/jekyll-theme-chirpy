@@ -11,7 +11,7 @@
 - it also requires secure transport: must use SSL or TLS.
 - In an IAM policy, you can specify any and all API actions that CloudFront offers. The action name must be prefixed with the lowercase string cloudfront:.
   - An example action name: cloudfront:GetDistributionConfig
-- To learn more about AWS Authentication and Access Control, select the link. http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/UsingWithIAM.html
+- To learn more about AWS Authentication and Access Control, select the link. https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/UsingWithIAM.html
 
 
 encrypting data

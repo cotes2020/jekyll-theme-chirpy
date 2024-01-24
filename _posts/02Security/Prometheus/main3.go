@@ -3,7 +3,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -30,7 +30,7 @@ import (
 
 func ExampleAPI_query() {
 	client, err := api.NewClient(api.Config{
-		Address: "http://demo.robustperception.io:9090",
+		Address: "https://demo.robustperception.io:9090",
 	})
 	if err != nil {
 		fmt.Printf("Error creating client: %v\n", err)
@@ -53,7 +53,7 @@ func ExampleAPI_query() {
 
 func ExampleAPI_queryRange() {
 	client, err := api.NewClient(api.Config{
-		Address: "http://demo.robustperception.io:9090",
+		Address: "https://demo.robustperception.io:9090",
 	})
 	if err != nil {
 		fmt.Printf("Error creating client: %v\n", err)
@@ -104,7 +104,7 @@ func (u userAgentRoundTripper) RoundTrip(r *http.Request) (*http.Response, error
 
 func ExampleAPI_queryRangeWithUserAgent() {
 	client, err := api.NewClient(api.Config{
-		Address:      "http://demo.robustperception.io:9090",
+		Address:      "https://demo.robustperception.io:9090",
 		RoundTripper: userAgentRoundTripper{name: "Client-Golang", rt: api.DefaultRoundTripper},
 	})
 	if err != nil {
@@ -133,7 +133,7 @@ func ExampleAPI_queryRangeWithUserAgent() {
 
 func ExampleAPI_queryRangeWithBasicAuth() {
 	client, err := api.NewClient(api.Config{
-		Address: "http://demo.robustperception.io:9090",
+		Address: "https://demo.robustperception.io:9090",
 		// We can use amazing github.com/prometheus/common/config helper!
 		RoundTripper: config.NewBasicAuthRoundTripper("me", "defintely_me", "", api.DefaultRoundTripper),
 	})
@@ -163,7 +163,7 @@ func ExampleAPI_queryRangeWithBasicAuth() {
 
 func ExampleAPI_queryRangeWithAuthBearerToken() {
 	client, err := api.NewClient(api.Config{
-		Address: "http://demo.robustperception.io:9090",
+		Address: "https://demo.robustperception.io:9090",
 		// We can use amazing github.com/prometheus/common/config helper!
 		RoundTripper: config.NewAuthorizationCredentialsRoundTripper("Bearer", "secret_token", api.DefaultRoundTripper),
 	})
@@ -193,7 +193,7 @@ func ExampleAPI_queryRangeWithAuthBearerToken() {
 
 func ExampleAPI_series() {
 	client, err := api.NewClient(api.Config{
-		Address: "http://demo.robustperception.io:9090",
+		Address: "https://demo.robustperception.io:9090",
 	})
 	if err != nil {
 		fmt.Printf("Error creating client: %v\n", err)

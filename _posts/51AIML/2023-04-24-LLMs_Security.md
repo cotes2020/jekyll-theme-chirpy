@@ -425,7 +425,7 @@ Reference Links:
 
 - [Not what you’ve signed up for- Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf)
 
-- [Threat Modeling LLM Applications](http://aivillage.org/large%20language%20models/threat-modeling-llm)
+- [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm)
 
 - [AI Injections: Direct and Indirect Prompt Injections and Their Implications](https://embracethered.com/blog/posts/2023/ai-injections-direct-and-indirect-prompt-injection-basics/)
 

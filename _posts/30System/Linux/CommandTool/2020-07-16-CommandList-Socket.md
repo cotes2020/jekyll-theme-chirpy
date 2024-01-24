@@ -835,11 +835,11 @@ struct in_addr {
 ref
 - https://segmentfault.com/a/1190000004570985
 - https://www.cs.dartmouth.edu/~campbell/cs50/socketprogramming.html
-- http://zake7749.github.io/2015/03/17/SocketProgramming/
+- https://zake7749.github.io/2015/03/17/SocketProgramming/
 - https://www.tenouk.com/Module39a.html
 - https://www.jb51.net/article/135558.htm
 - https://hit-alibaba.github.io/interview/basic/network/Socket-Programming-Basic.html
-- http://cighao.com/2016/07/12/c-linux-socket/
+- https://cighao.com/2016/07/12/c-linux-socket/
 - https://blog.csdn.net/hguisu/article/details/7445768
 - https://www.jianshu.com/p/6a5d273f3223
 - https://blog.csdn.net/hguisu/article/details/7445768

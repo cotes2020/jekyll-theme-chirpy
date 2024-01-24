@@ -247,10 +247,10 @@ The IDEA algorithm is patented by its Swiss developers.
 - Blowfish encryption is built into a number of commercial software products and operating systems.
 - A number of Blowfish libraries are also available for software developers.
 
-	http://wemedia.ifeng.com/76674795/wemedia.shtml
+	https://wemedia.ifeng.com/76674795/wemedia.shtml
 	https://my.oschina.net/u/3664884/blog/1607425
 	https://blog.csdn.net/findmyself_for_world/article/details/50222081
-	http://blog.51cto.com/yinghao/563302
+	https://blog.51cto.com/yinghao/563302
 
 ---
 

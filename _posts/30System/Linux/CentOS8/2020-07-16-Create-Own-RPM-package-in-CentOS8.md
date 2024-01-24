@@ -20,7 +20,7 @@ LFCE: Advanced Network and System Administration / Advanced Package Management -
 
 ## build a RPM package from source.
 
-http://vault.centos.org/ -> source -> binary RPM
+https://vault.centos.org/ -> source -> binary RPM
 centos 8.1.1911 -> os/ -> source/ -> Spackages/ -> rpm -> save link as
 
 
@@ -157,8 +157,8 @@ Release:        1%{?dist}
 Summary:        The "Hello World" program from GNU
 
 License:        GPLv3+
-URL:            http://ftp.gnu.org/gnu/%{name}
-Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
+URL:            https://ftp.gnu.org/gnu/%{name}
+Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 
 BuildRequires: gettext
 
@@ -248,7 +248,7 @@ $ mv hello.spec ~/rpmbuild/SPECS/
 
 ```c
 $ cd ~/rpmbuild/SOURCES
-$ wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz -P ~/rpmbuild/SOURCES
+$ wget https://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz -P ~/rpmbuild/SOURCES
 
 $ cd ~/rpmbuild/SPECS
 $ rpmdev-newspec hello

@@ -834,7 +834,7 @@ kubectl get deployments
 
 kubectl proxy
 
-curl http://localhost:8001/version
+curl https://localhost:8001/version
 
 # ----- check nodes
 
@@ -851,9 +851,9 @@ kubectl label pods $POD_NAME version=v1
 # export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 echo Name of the Pod: $POD_NAME
 
-curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
+curl https://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
 
-curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+curl https://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
 
 kubectl logs $POD_NAME
 

