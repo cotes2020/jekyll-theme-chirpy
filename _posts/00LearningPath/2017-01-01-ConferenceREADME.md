@@ -1,16 +1,18 @@
 ---
-title: Conference
+title: Conference - Learning Path
 date: 2017-01-01 11:11:11 -0400
 categories: [00LearningPath]
-tags: [LearningPath]
+tags: [LearningPath, code]
 pin: true
 toc: true
 ---
 
-# Conference
-
 - [Conference](#conference)
   - [20231106 CNCF-Hosted Co-located Events North America 2023](#20231106-cncf-hosted-co-located-events-north-america-2023)
+
+---
+
+# Conference
 
 ---
 
