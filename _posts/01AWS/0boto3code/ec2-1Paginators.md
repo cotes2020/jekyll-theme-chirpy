@@ -15338,7 +15338,7 @@ Returns
 
                     - **IpProtocol** _(string) --_
 
-                        The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+                        The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
                         [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -15466,7 +15466,7 @@ Returns
 
                     - **IpProtocol** _(string) --_
 
-                        The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+                        The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
                         [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -17769,7 +17769,7 @@ Returns
 
                     - **IpProtocol** _(string) --_
 
-                        The IP protocol name (for tcp , udp , and icmp ) or number (see [Protocol Numbers)](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) .
+                        The IP protocol name (for tcp , udp , and icmp ) or number (see [Protocol Numbers)](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) .
 
                     - **IpRanges** _(list) --_
 
@@ -17843,7 +17843,7 @@ Returns
 
                     - **IpProtocol** _(string) --_
 
-                        The IP protocol name (for tcp , udp , and icmp ) or number (see [Protocol Numbers)](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) .
+                        The IP protocol name (for tcp , udp , and icmp ) or number (see [Protocol Numbers)](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) .
 
                     - **IpRanges** _(list) --_
 

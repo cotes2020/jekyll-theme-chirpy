@@ -1,6 +1,9 @@
 name: "CI"
 on:
   push:
+    branches:
+      - main
+      - master
     branches-ignore:
       - "production"
       - "docs"
@@ -14,6 +17,15 @@ on:
     paths:
       - "**"
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,14 +36,21 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # for posts's lastmod
+          # submodules: true
+          # If using the 'assets' git submodule from Chirpy Starter, uncomment above
+          # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+  
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Setup Node
@@ -42,3 +61,15 @@ jobs:
 
       - name: Test Site
         run: bash tools/test
+
+      - name: Build site
+        run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: "production"
+
+      - name: Test site
+        run: |
+          bundle exec htmlproofer _site \
+            \-\-disable-external=true \
+            \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+            
