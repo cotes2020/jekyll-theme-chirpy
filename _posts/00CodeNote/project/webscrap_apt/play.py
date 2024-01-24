@@ -169,7 +169,7 @@ OUTPUTDIR = "./_posts/00CodeNote/project/webscrap_apt/apt_output"
 
 URL_DIC = {
     # "talisman": "https://www.livetalisman.com/redmond/talisman/conventional/",
-    "talisman": "https://livetalisman.com/floorplans/",
+    # "talisman": "https://livetalisman.com/floorplans/",
     "modera": "https://www.moderaredmond.com/redmond/modera-redmond/conventional/",
 }
 CLASS_DIC = {
