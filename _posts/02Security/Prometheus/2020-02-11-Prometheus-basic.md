@@ -308,7 +308,7 @@ Pushgateway的常见问题
   - 因此,必须使用Pushgateway的API从推送网关中删除过期的指标.
 
 ```bash
-curl -X DELETE http://pushgateway.example.org:9091/metrics/job/some_job/instance/ some_instance
+curl -X DELETE https://pushgateway.example.org:9091/metrics/job/some_job/instance/ some_instance
 ```
 
 - 防火墙和NAT问题.推荐做法是将Prometheus移到防火墙后面,让Prometheus更加接近采集的目标.

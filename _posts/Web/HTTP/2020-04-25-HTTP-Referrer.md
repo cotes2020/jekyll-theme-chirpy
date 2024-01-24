@@ -108,7 +108,7 @@ Referrer Policy 可以设定8个值。
 
 3. `same-origin`
 链接到同源网址（协议+域名+端口 都相同）时发送，否则不发送。
-注意，https://foo.com 链接到 http://foo.com 也属于跨域。
+注意，https://foo.com 链接到 https://foo.com 也属于跨域。
 
 4. `origin`
 `Referer`字段一律只发送源信息（协议+域名+端口），不管是否跨域。

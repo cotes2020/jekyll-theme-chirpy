@@ -52,7 +52,7 @@ String contents = fr.asString();
 
 create a URLResource by giving it a complete URL, or web address
 
-new URLResource("http://www.something.com/file.ext"),
+new URLResource("https://www.something.com/file.ext"),
 // uses the given address to download the referenced file
 
 new URLResource("https://www.something.com/file.ext"),

@@ -122,7 +122,7 @@ def verify_opaque(opaque):
     """Verify that the opaque value sent by the client is correct."""
     pass
 
-For information of what the `nonce` and `opaque` values are and how they are used in digest authentication, consult [RFC 2617](http://tools.ietf.org/html/rfc2617#section-3.2.1).
+For information of what the `nonce` and `opaque` values are and how they are used in digest authentication, consult [RFC 2617](https://tools.ietf.org/html/rfc2617#section-3.2.1).
 
 Token Authentication Example[¶](#token-authentication-example "Permalink to this headline")
 -------------------------------------------------------------------------------------------
@@ -342,7 +342,7 @@ def index():
 
 _class_ `flask_httpauth.``HTTPDigestAuth`[¶](#flask_httpauth.HTTPDigestAuth "Permalink to this definition")
 
-This class handles HTTP Digest authentication for Flask routes. The `SECRET_KEY` configuration must be set in the Flask application to enable the session to work. Flask by default stores user sessions in the client as secure cookies, so the client must be able to handle cookies. To make this authentication method secure, a [session interface](http://flask.pocoo.org/docs/api/#flask.Flask.session_interface) that writes sessions in the server must be used.
+This class handles HTTP Digest authentication for Flask routes. The `SECRET_KEY` configuration must be set in the Flask application to enable the session to work. Flask by default stores user sessions in the client as secure cookies, so the client must be able to handle cookies. To make this authentication method secure, a [session interface](https://flask.pocoo.org/docs/api/#flask.Flask.session_interface) that writes sessions in the server must be used.
 
 `__init__`(_self_, _scheme=None_, _realm=None_, _use_ha1_pw=False_)[¶](#flask_httpauth.HTTPDigestAuth.__init__ "Permalink to this definition")
 
@@ -468,4 +468,4 @@ See basic authentication for documentation and examples.
 
 See basic authentication for documentation and examples.
 
-[![Fork me on GitHub](http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png)](http://github.com/miguelgrinberg/Flask-HTTPAuth)
+[![Fork me on GitHub](https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png)](https://github.com/miguelgrinberg/Flask-HTTPAuth)

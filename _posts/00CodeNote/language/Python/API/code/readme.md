@@ -137,18 +137,18 @@ $ flask run
 
 
 # insert the test data, if you delete the current exsisted database db.sqlite (optional)
-$ echo '{"username": "gh0st", "Firstname Lastname": "William L. Simon", "password": "", "Mother’s Favorite Search Engine": "Searx"}' | http POST http://127.0.0.1:5000/signup
-$ echo '{"username":"jet-setter", "Firstname Lastname":"Frank Abignale","password":"r0u7!nG", "Mother’s Favorite Search Engine":"Bing"}' | http POST http://127.0.0.1:5000/signup
-$ echo '{"username":"kvothe", "Firstname Lastname":"Patrick Rothfuss","password":"3##Heel7sa*9-zRwT", "Mother’s Favorite Search Engine":"Duck Duck Go"}' | http POST http://127.0.0.1:5000/signup
-$ echo '{"username":"tpratchett", "Firstname Lastname":"Terry Pratchett","password":"Thats Sir Terry to you!", "Mother’s Favorite Search Engine":"Google"}' | http POST http://127.0.0.1:5000/signup
-$ echo '{"username":"lmb", "Firstname Lastname":"Lois McMaster Bujold","password":"null", "Mother’s Favorite Search Engine":"Yandex"}' | http POST http://127.0.0.1:5000/signup
-$ echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/signup
+$ echo '{"username": "gh0st", "Firstname Lastname": "William L. Simon", "password": "", "Mother’s Favorite Search Engine": "Searx"}' | http POST https://127.0.0.1:5000/signup
+$ echo '{"username":"jet-setter", "Firstname Lastname":"Frank Abignale","password":"r0u7!nG", "Mother’s Favorite Search Engine":"Bing"}' | http POST https://127.0.0.1:5000/signup
+$ echo '{"username":"kvothe", "Firstname Lastname":"Patrick Rothfuss","password":"3##Heel7sa*9-zRwT", "Mother’s Favorite Search Engine":"Duck Duck Go"}' | http POST https://127.0.0.1:5000/signup
+$ echo '{"username":"tpratchett", "Firstname Lastname":"Terry Pratchett","password":"Thats Sir Terry to you!", "Mother’s Favorite Search Engine":"Google"}' | http POST https://127.0.0.1:5000/signup
+$ echo '{"username":"lmb", "Firstname Lastname":"Lois McMaster Bujold","password":"null", "Mother’s Favorite Search Engine":"Yandex"}' | http POST https://127.0.0.1:5000/signup
+$ echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/signup
 
 
 
 
 # -------------- test the /adduser, add user --------------
-$ echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/adduser
+$ echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/adduser
 # HTTP/1.0 200 OK
 # Content-Length: 73
 # Content-Type: application/json
@@ -163,7 +163,7 @@ $ echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother�
 #                     "Mother’s Favorite Search Engine":"c"
 #                     }
 # }
-$ echo '{"username":"ab",  "Firstname Lastname":"doubleuser", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/adduser
+$ echo '{"username":"ab",  "Firstname Lastname":"doubleuser", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/adduser
 # HTTP/1.0 400 BAD REQUEST
 # Content-Length: 73
 # Content-Type: application/json
@@ -174,14 +174,14 @@ $ echo '{"username":"ab",  "Firstname Lastname":"doubleuser", "password":"123", 
 #     "Error Message": "username not available or already exsisted",
 #     "status": 400
 # }
-$ echo '{"username":"newusernotindatabseyet",  "Firstname Lastname":"x", "password":"123sufueiwbryilsdifbe",  "Mother’s Favorite Search Engine":"bingo"}' | http POST http://127.0.0.1:5000/adduser
+$ echo '{"username":"newusernotindatabseyet",  "Firstname Lastname":"x", "password":"123sufueiwbryilsdifbe",  "Mother’s Favorite Search Engine":"bingo"}' | http POST https://127.0.0.1:5000/adduser
 
 
 
 
 
 # -------------- test the /login, authenticate the user --------------
-echo '{"username":"a", "password":"123"}' | http POST http://127.0.0.1:5000/login
+echo '{"username":"a", "password":"123"}' | http POST https://127.0.0.1:5000/login
 # HTTP/1.0 200 OK
 # Content-Length: 75
 # Content-Type: application/json
@@ -199,7 +199,7 @@ echo '{"username":"a", "password":"123"}' | http POST http://127.0.0.1:5000/logi
 #                     "username": "a"
 #                 }
 # }
-echo '{"username":"a", "password":"wrongpasswd"}' | http POST http://127.0.0.1:5000/login
+echo '{"username":"a", "password":"wrongpasswd"}' | http POST https://127.0.0.1:5000/login
 # HTTP/1.0 401 UNAUTHORIZED
 # Content-Length: 53
 # Content-Type: application/json
@@ -214,14 +214,14 @@ echo '{"username":"a", "password":"wrongpasswd"}' | http POST http://127.0.0.1:5
 
 
 # -------------- test the /logout, logging out --------------
-$ http GET http://127.0.0.1:5000/logout
+$ http GET https://127.0.0.1:5000/logout
 # redirect url to the main.index
 
 
 
 
 # -------------- test the /userinfo, retrieving user details --------------
-$ http GET http://127.0.0.1:5000/userinfo
+$ http GET https://127.0.0.1:5000/userinfo
 # HTTP/1.0 201 CREATED
 # Content-Length: 108
 # Content-Type: application/json

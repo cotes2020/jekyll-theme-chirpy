@@ -47,10 +47,10 @@ urn:cdx:f08a6ccd-4dce-4759-bd84-c626675d60a7/1
 urn:cdx:f08a6ccd-4dce-4759-bd84-c626675d60a7/1#componentA
 ```
 
-| Field        | Description |
-| ------------ | ----------- |
-| serialNumber | The unique serial number of the BOM. The serial number MUST conform to RFC-4122. |
-| version      | The version of the BOM. The default version is `1`. |
+| Field        | Description                                                                       |
+| ------------ | --------------------------------------------------------------------------------- |
+| serialNumber | The unique serial number of the BOM. The serial number MUST conform to RFC-4122.  |
+| version      | The version of the BOM. The default version is `1`.                               |
 | bom-ref      | The unique identifier of the component, service, or vulnerability within the BOM. |
 
 ## BOM With Embedded VEX
@@ -84,8 +84,8 @@ CSAF also supports an optional VEX profile which can be used with CycloneDX.
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://cyclonedx.org/schema/bom-1.5.schema.json",
   "type": "object",
   "title": "CycloneDX Software Bill of Materials Standard",
   "$comment" : "CycloneDX JSON schema is published under the terms of the Apache License 2.0.",
@@ -99,7 +99,7 @@ CSAF also supports an optional VEX profile which can be used with CycloneDX.
     "$schema": {
       "type": "string",
       "enum": [
-        "http://cyclonedx.org/schema/bom-1.5.schema.json"
+        "https://cyclonedx.org/schema/bom-1.5.schema.json"
       ]
     },
     "bomFormat": {

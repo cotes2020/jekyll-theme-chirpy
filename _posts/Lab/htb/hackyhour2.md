@@ -12,7 +12,7 @@
 ```bash
 # go to cache.htb 10.10.10.188
 
-view-source:http://cache.htb/jquery/functionality.js
+view-source:https://cache.htb/jquery/functionality.js
 # $(function(){
 #     var error_correctPassword = false;
 #     var error_username = false;
@@ -48,7 +48,7 @@ view-source:http://cache.htb/jquery/functionality.js
 
 
 
-view-source:http://cache.htb/net.html
+view-source:https://cache.htb/net.html
 # <html>
 # <head>
 #  <body onload="if (document.referrer == '') self.location='login.html';">
@@ -74,17 +74,17 @@ wfuzz -c -z file./usr/share/wordlists/rockyou.txt cache.htb/FUZZ
 # virtual host
 # wfuzz -w /path/to/wordlist -H "Host: FUZZ.host.com" --hc 200 --hw 356 -t 100 10.10.10.188
 
-wfuzz -w /usr/share/wordlists/rockyou.txt -H "Host: http://cache.htb" --hc 200 --hw 356 -t 100 10.10.10.188
+wfuzz -w /usr/share/wordlists/rockyou.txt -H "Host: https://cache.htb" --hc 200 --hw 356 -t 100 10.10.10.188
 
-wfuzz -w /usr/share/wordlists/rockyou.txt -H "http://FUZZ.cache.htb" --hc 200 --hw 356 -t 100 10.10.10.188
+wfuzz -w /usr/share/wordlists/rockyou.txt -H "https://FUZZ.cache.htb" --hc 200 --hw 356 -t 100 10.10.10.188
 
-wfuzz -w /usr/share/wordlists/rockyou.txt http://FUZZ.htb --hc 200 --hw 356 -t 100 10.10.10.188
+wfuzz -w /usr/share/wordlists/rockyou.txt https://FUZZ.htb --hc 200 --hw 356 -t 100 10.10.10.188
 
-wfuzz -w /usr/share/wordlists/rockyou.txt http://FUZZ.htb
+wfuzz -w /usr/share/wordlists/rockyou.txt https://FUZZ.htb
 
-wfuzz -w /usr/share/wordlists/rockyou.txt -H "http://FUZZ.cache.htb" -t 100 10.10.10.188
+wfuzz -w /usr/share/wordlists/rockyou.txt -H "https://FUZZ.cache.htb" -t 100 10.10.10.188
 
-wfuzz -w /usr/share/wordlists/rockyou.txt http://FUZZ.cache.htb/FUZZ
+wfuzz -w /usr/share/wordlists/rockyou.txt https://FUZZ.cache.htb/FUZZ
 
 
 

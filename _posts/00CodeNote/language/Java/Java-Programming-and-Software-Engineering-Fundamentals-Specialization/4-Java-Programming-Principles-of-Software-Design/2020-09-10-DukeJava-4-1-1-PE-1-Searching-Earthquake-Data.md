@@ -16,7 +16,7 @@ Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 4.Java-Programming-Principles-of-Software-Design
   - 4-1-1 Programming Exercise 1 - Searching Earthquake Data
 
-[Resource Link](http://www.dukelearntoprogram.com/course4/index.php)
+[Resource Link](https://www.dukelearntoprogram.com/course4/index.php)
 
 [ProjectCode](https://github.com/ocholuo/language/tree/master/0.project/javademo)
 
@@ -108,12 +108,12 @@ public class EarthQuakeParser {
             DocumentBuilder builder = factory.newDocumentBuilder();
 
             //Document document = builder.parse(new File(source));
-            //Document document = builder.parse("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom");
+            //Document document = builder.parse("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom");
             Document document = null;
 
             if (source.startsWith("http")){document = builder.parse(source);}
             else {document = builder.parse(new File(source));}
-            //Document document = builder.parse("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom");
+            //Document document = builder.parse("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom");
 
             NodeList nodeList = document.getDocumentElement().getChildNodes();
 
@@ -177,7 +177,7 @@ public class EarthQuakeParser {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException{
         EarthQuakeParser xp = new EarthQuakeParser();
         //String source = "data/2.5_week.atom";
-        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list  = xp.read(source);
         Collections.sort(list);
@@ -211,7 +211,7 @@ public class EarthQuakeClient {
     public EarthQuakeClient() {
         parser = new EarthQuakeParser();
         source = "data/nov20quakedatasmallsmall.atom";
-        // source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        // source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         quakeData  = parser.read(source);
     }
 
@@ -283,7 +283,7 @@ Modify the `EarthQuakeClient` class:
     // this method reads data on earthquakes from a file, stores a QuakeEntry for each earthquake read in the ArrayList named list, and prints out the number of earthquakes read in.
     public void bigQuakes() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedatasmall.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size()+" quakes");
@@ -336,7 +336,7 @@ Modify the `EarthQuakeClient` class:
     // For each earthquake found, print the distance from the earthquake to the specified city, followed by the information about the city (use getInfo()
     public void closeToMe(){
         EarthQuakeParser parser = new EarthQuakeParser();
-        // String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        // String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedatasmall.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size()+" quakes");
@@ -400,7 +400,7 @@ Modify the `EarthQuakeClient` class:
     // ------------------------------------------------------------
     public void quakesOfDepth() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        // String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        // String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> quakeData  = parser.read(source);
         System.out.println("read data for "+ quakeData.size()+" quakes");
@@ -460,7 +460,7 @@ add new methods to one class, the EarthQuakeClient class:
 
     public void quakesByPhrase() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        // String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        // String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> quakeData  = parser.read(source);
         System.out.println("read data for "+ quakeData.size()+" quakes");
@@ -575,7 +575,7 @@ Modify the `ClosestQuakes` class:
     public void findClosestQuakes() {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "data/nov20quakedatasmall.atom";
-        // String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        // String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size());
 

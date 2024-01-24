@@ -18,7 +18,7 @@ Java-Programming-and-Software-Engineering-Fundamentals-Specialization
     - 4-3-2 Programming Exercise 2 Interface-and-Abstract-Class
     - 4-3-3 Programming Exercise 3 Word N-Grams
 
-Resource Link: http://www.dukelearntoprogram.com/course4/index.php
+Resource Link: https://www.dukelearntoprogram.com/course4/index.php
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---

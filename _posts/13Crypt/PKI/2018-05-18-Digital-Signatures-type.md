@@ -409,7 +409,7 @@ The base format of certificates is (CER) or (DER).
   - supported by almost all applications
   - the extension of the certificate is `.pem`
 
-- The full specification of PEM is in [RFC 1421](http://tools.ietf.org/html/rfc1421).
+- The full specification of PEM is in [RFC 1421](https://tools.ietf.org/html/rfc1421).
 - But the idea of PEM encoding on X.509 certificates is very simple:
   - Encode the content with Base64 encoding.
   - Enclose the Base64 encoding output between two lines:

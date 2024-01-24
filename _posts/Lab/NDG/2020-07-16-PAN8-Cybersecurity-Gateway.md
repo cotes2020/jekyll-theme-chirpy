@@ -234,7 +234,7 @@ configure a virtual IP address 192.168.20.1 on the Firewall.
 using Wireshark
 
 1. Start Menu > Wireshark: **internal** interface: Capture > Start.
-2. Google Chrome: http://www.panlabs.com
+2. Google Chrome: https://www.panlabs.com
 3. Wait 5 to 10 seconds and reopen Wireshark and then click the Stop capturing
 4. save the Wireshark packet capture: File > Save As > Desktop > packetcapture > Save
 
@@ -257,7 +257,7 @@ create a packet capture on the Firewall and download it to the Client for inspec
        - Stage: `firewall`
        - File: `pcap-1`
    - `OFF` to turn Packet Capture on.
-3.  New tab: http://www.panlabs.com
+3.  New tab: https://www.panlabs.com
 4.  Click on the firewall-a tab in the upper-left to switch back to the Firewall administrator page.
 5.  **Configure Capturing**: click `ON` to turn Packet Capture off.
 6.  Click the `Refresh` icon in the upper-right of the Firewall administrator page to refresh the Captured Files section.
@@ -276,7 +276,7 @@ create a packet capture on the Firewall and download it to the Client for inspec
 > The Client is configured to use 127.0.0.1 as its DNS server.
 > In this lab environment, the Client is running its own DNS server with the ability to forward requests to 192.168.50.10. This is the DMZ server, which is also running a DNS server.
 > The Info column: a Standard query asking for the A record for www.panlabs.com.
-> used Google Chrome to navigate to http://www.panlabs.com. The first step the Client does is to attempt to resolve www.panlabs.com to an IP address.
+> used Google Chrome to navigate to https://www.panlabs.com. The first step the Client does is to attempt to resolve www.panlabs.com to an IP address.
 
 3. Observe packet 2.
    - the Source is the DMZ Server (192.168.50.10)
@@ -306,7 +306,7 @@ create a packet capture on the Firewall and download it to the Client for inspec
    - The Client and the DMZ server may begin communicating over TCP.
 
 
-8.  Packets 3 – 45 represent a TCP Stream. When put together this represents the website, http://www.panlabs.com that you visited.
+8.  Packets 3 – 45 represent a TCP Stream. When put together this represents the website, https://www.panlabs.com that you visited.
    - right-click on packet 3 and select Follow > `TCP Stream`.
    - Wireshark will assemble the packets associated with this TCP stream.
 
@@ -455,7 +455,7 @@ For this lab, you will use predefined patterns.
 
 ### 8.5 Monitor Sensitive Data in the Palo Alto Networks Firewall
 
-1. Internet Explorer: http://192.168.50.10/fileupload
+1. Internet Explorer: https://192.168.50.10/fileupload
 2. Upload Files > SSN.txt file.
 3. FW > Monitor > Logs > Data Filtering
 4. Notice that the SSN.txt was blocked by the SSN Data Filtering Profile.
@@ -498,7 +498,7 @@ create a File Blocking Security Profile to block PDF files.
 2. In the Commit window, click Commit to proceed with committing the changes.
 
 ### 9.3 Test the File Blocking Profile
-1. New tab: http://192.168.50.10/pan-os.pdf
+1. New tab: https://192.168.50.10/pan-os.pdf
 2. Notice the File Transfer was blocked via the File Blocking Profile that was created in a previous section.
 3. Monitor > Logs > Data Filtering.
 

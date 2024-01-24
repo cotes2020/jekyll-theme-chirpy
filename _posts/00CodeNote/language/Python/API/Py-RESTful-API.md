@@ -121,7 +121,7 @@ if __name__ == '__main__':
 run
 
 ```bash
-$ http GET http://127.0.0.1:5000/hello
+$ http GET https://127.0.0.1:5000/hello
 # HTTP/1.0 200 OK
 # Content-Length: 12
 # Content-Type: text/html; charset=utf-8
@@ -171,7 +171,7 @@ def get_userlist():
     return make_response(jsonify(userlist), 200)
 #   return json.dumps(userlist)
 # test:
-# $ http GET http://127.0.0.1:5000/api/userlist
+# $ http GET https://127.0.0.1:5000/api/userlist
 # HTTP/1.0 200 OK
 # Content-Length: 730
 # Content-Type: application/json
@@ -194,7 +194,7 @@ def post_userlist():
     return make_response(jsonify(user_new), 201)
 #   return json.dumps({"success": True}), 201
 # test:
-# $ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/api/userlist
+# $ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/api/userlist
 # HTTP/1.0 201 CREATED
 # Content-Length: 103
 # Content-Type: application/json
@@ -213,7 +213,7 @@ def get_user(user_username):
     #     return make_response(jsonify(user), 200)
     # else:
     #     return make_response(jsonify({"Get failure"}), 404)
-# http GET http://127.0.0.1:5000/api/userlist/a
+# http GET https://127.0.0.1:5000/api/userlist/a
 
 @api.route('/api/userlist/<username>', methods=['PUT'])
 def update_user(user_username):
@@ -221,8 +221,8 @@ def update_user(user_username):
     userlist[user_username] = content
     user = userlist.get(user_username, {})
     return make_response(jsonify(user), 200)
-# $ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/api/userlist
-# $ echo '{"username":"a",  "Firstname Lastname":"cd", "password":"345",  "Mother’s Favorite Search Engine":"d"}' | http PUT http://127.0.0.1:5000/api/userlist/a
+# $ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/api/userlist
+# $ echo '{"username":"a",  "Firstname Lastname":"cd", "password":"345",  "Mother’s Favorite Search Engine":"d"}' | http PUT https://127.0.0.1:5000/api/userlist/a
 
 
 @api.route('/api/userlist/<username>', methods=['DELETE'])
@@ -276,7 +276,7 @@ $ python flaskapi.py
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on https://127.0.0.1:5000/ (Press CTRL+C to quit)
 127.0.0.1 - - [20/Dec/2020 13:05:01] "GET /usrlist HTTP/1.1" 200 -
 127.0.0.1 - - [20/Dec/2020 13:06:23] "POST /usrlist HTTP/1.1" 201 -
 ```
@@ -367,9 +367,9 @@ if __name__ == '__main__':
 
 
 There will be three routes created :
-- `http://127.0.0.1:5002/employees` shows ids of all the employees in database
-- `http://127.0.0.1:5002/tracks` shows tracks details
-- `http://127.0.0.1:5002/employees/8` shows details of employee whose employeeid is 8
+- `https://127.0.0.1:5002/employees` shows ids of all the employees in database
+- `https://127.0.0.1:5002/tracks` shows tracks details
+- `https://127.0.0.1:5002/employees/8` shows details of employee whose employeeid is 8
 
 
 
@@ -517,9 +517,9 @@ Try these URLs and observe the JSON data returned.
 - Trace the `request/response` messages using web browser's developer web console.
 
 ```
-GET request: http://localhost:5000/api/item/
-GET request: `http://localhost:5000/api/item/1`
-GET request: http://localhost:5000/api/item/6
+GET request: https://localhost:5000/api/item/
+GET request: `https://localhost:5000/api/item/1`
+GET request: https://localhost:5000/api/item/6
 ```
 
 
@@ -644,7 +644,7 @@ $(document).ready(function() {
 
 
 ## 1.3  Flask-RESTful Extension
-Reference: [Flask-RESTful](http://flask-restful-cn.readthedocs.org/en/0.3.4/).
+Reference: [Flask-RESTful](https://flask-restful-cn.readthedocs.org/en/0.3.4/).
 
 Flask-RESTful is an extension for building REST APIs for Flask app, which works with your existing ORM.
 
@@ -718,11 +718,11 @@ To send POST/PUT/DELETE requests, you can use
 - or Chrome's Advanced REST client, user-friendly graphical interface.
 
 For example, use Firefox's HttpRequester to send the following requests:
-- GET request to `http://localhost:5000/api/item/` to list all items.
-- GET request to `http://localhost:5000/api/item/1` to list one item.
-- POST request to `http://localhost:5000/api/item/` to create a new item.
-- PUT request to `http://localhost:5000/api/item/1` to update one item.
-- DELETE request to `http://localhost:5000/api/item/1` to delete one item.
+- GET request to `https://localhost:5000/api/item/` to list all items.
+- GET request to `https://localhost:5000/api/item/1` to list one item.
+- POST request to `https://localhost:5000/api/item/` to create a new item.
+- PUT request to `https://localhost:5000/api/item/1` to update one item.
+- DELETE request to `https://localhost:5000/api/item/1` to delete one item.
 
 
 **Sending AJAX-POST/PUT/PATCH/DELETE HTTP Requests**
@@ -744,10 +744,10 @@ $ man curl
 
 # Send GET request
 # reading item 1
-$ curl --request GET http://localhost:5000/api/item/1
+$ curl --request GET https://localhost:5000/api/item/1
 
 # Send DELETE request. To include the response header
-$ curl --include --request DELETE http://localhost:5000/api/item/1
+$ curl --include --request DELETE https://localhost:5000/api/item/1
 # HTTP/1.0 204 NO CONTENT
 # Content-Type: application/json
 # Content-Length: 0
@@ -757,7 +757,7 @@ $ curl --include --request DELETE http://localhost:5000/api/item/1
 # Send PUT request, with json data and additional header
 # update item 1
 $ curl --include --request PUT --data '{"price":"9.99"}'
-       --Header "Content-Type: application/json" http://localhost:5000/api/item/1
+       --Header "Content-Type: application/json" https://localhost:5000/api/item/1
 # HTTP/1.0 200 OK
 # Content-Type: application/json
 # Content-Length: 16

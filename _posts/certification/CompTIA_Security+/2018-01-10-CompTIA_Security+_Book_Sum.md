@@ -1387,7 +1387,7 @@ Periodic testing validates continuity of operations plans. Exercises validate th
 
 
 Online References
-Do you know how to answer performance-based questions? Check out the online extras at http://gcgapremium.com/501-extras.
+Do you know how to answer performance-based questions? Check out the online extras at https://gcgapremium.com/501-extras.
 
 ---
 
@@ -1821,7 +1821,7 @@ Any type of identification number, such as a Social Security number (SSN) or dri
 In general, you need two or more pieces of information to make it PII. example, “John Smith” is not PII by itself because it can’t be traced back to a specific person. However, when you connect the name with a birth date, an address, medical information, or other data, it is PII.
 When attackers gain PII, they often use it for financial gain at the expense of the individual. example, attackers steal identities, access credit cards, and empty bank accounts. Whenever possible, organizations should minimize the use, collection, and retention of PII. If it’s not kept, it can’t be compromised. On the other hand, if they collect PII and attackers compromise the data, the company is liable.
 The number of security breach incidents resulting in the loss of PII continues to rise. example, a Veteran’s Affairs (VA) employee copied a database onto his laptop that contained PII on over 26 million U.S. veterans. He took the laptop home and a burglar stole it. The VA then went through the painful and expensive process of notifying all of the people who were vulnerable to identity theft, and the affected individuals spent countless hours scouring their records for identity theft incidents. Even though police later recovered the laptop, the VA paid $20 million to settle a lawsuit in the case.
-This is not an isolated incident. The Identity Theft Resource Center tracks data breaches and lists them on their site (http://www.idtheftcenter.org/). Their 2015 report reported the number of
+This is not an isolated incident. The Identity Theft Resource Center tracks data breaches and lists them on their site (https://www.idtheftcenter.org/). Their 2015 report reported the number of
 
 known U.S. data breaches at 780, exposing more than 177 million records containing PII and/or PHI. Some data breaches were small, affecting only a few hundred people. Others were large such as the attack on Scottrade, accessing more than 4.6 million records. Many times, the companies don’t even report how many records were accessed, so the number of data records in the hands of criminals is very likely much higher.
 Each of these instances resulted in potential identity theft and the loss of goodwill and public trust of the company. Both customers and employees were negatively impacted, and the companies were forced to spend time and energy discussing the incident, and spend money trying to repair their reputations.
@@ -1836,7 +1836,7 @@ One of the common reasons data seems to fall into the wrong hands is that employ
 Training is also important. One of the goals of security professionals is to reinforce the risks of not protecting PII. When employees understand the risks, they are less likely to risk customer and employee data to identity theft. Additionally, if employees need to transmit PII over a network, they can ensure it’s protected by using encryption. As mentioned previously in this book, encrypting data-in-transit provides strong protection against loss of
 confidentiality.
 Many governments have enacted laws mandating the protection of both PII and PHI. Also, there are many documents that provide guidance on how to protect it. The National Institute of Standards and Technology (NIST) created Special Publication (SP) 800-122 “Guide to Protecting the Confidentiality of Personally Identifiable Information (PII).” It identifies many specific safeguards that organizations can implement to protect PII along with steps to take in response to a data breach involving PII. You can access all the NIST publications at
-http://csrc.nist. gov/publications/PubsSPs.html.
+https://csrc.nist. gov/publications/PubsSPs.html.
 
 
 Legal and Compliance Issues

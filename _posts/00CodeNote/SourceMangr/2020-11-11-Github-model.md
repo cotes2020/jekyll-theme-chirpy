@@ -18,7 +18,7 @@ image:
 
 ## A successful Git branching model
 
-[link](http://nvie.com/posts/a-successful-git-branching-model/)
+[link](https://nvie.com/posts/a-successful-git-branching-model/)
 
 ![model](https://i.imgur.com/4O04y4k.png)
 

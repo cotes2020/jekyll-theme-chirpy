@@ -148,7 +148,7 @@ json_output: true
 json_include_output_property: true
 http_output:
   enabled: true
-  url: "http://localhost:2801"
+  url: "https://localhost:2801"
 ```
 
 启动falco
@@ -173,7 +173,7 @@ https://github.com/falcosecurity/falcosidekick.git
 
 ```yaml
 elasticsearch:
-   hostport: "http://10.10.116.177:9200"
+   hostport: "https://10.10.116.177:9200"
    index: "falco"
    type: "event"
    minimumpriority: ""
@@ -252,7 +252,7 @@ systemctl enable falco && systemctl start falco
 #!/bin/bash
 
 BDATE=`date +%Y%m%d%H%M%S`
-URL=http://8.8.8.8:8888/falco_update.tar.gz
+URL=https://8.8.8.8:8888/falco_update.tar.gz
 
 if [ -d /etc/falco_bak ]
 then

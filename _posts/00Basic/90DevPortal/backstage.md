@@ -344,7 +344,7 @@ As we have seen, both the `lighthouse-audit-service` and `catalog-backend`
 require a database to work with.
 
 The Backstage backend and its built-in plugins are based on the
-[Knex](http://knexjs.org/) library, and set up a separate logical database per
+[Knex](https://knexjs.org/) library, and set up a separate logical database per
 plugin. This gives great isolation and lets them perform migrations and evolve
 separate from each other.
 
@@ -468,7 +468,7 @@ docker run spotify/lighthouse-audit-service:latest
 ![](/assets/img/backstage-assets/getting-started/create-plugin_output.png)
 
 
-> If the Backstage App is already running (with `yarn start` or `yarn dev`) you should be able to see the default page for the new plugin directly by navigating to `http://localhost:3000/my-plugin`.
+> If the Backstage App is already running (with `yarn start` or `yarn dev`) you should be able to see the default page for the new plugin directly by navigating to `https://localhost:3000/my-plugin`.
 
 ![](/assets/img/backstage-assets/my-plugin_screenshot.png)
 

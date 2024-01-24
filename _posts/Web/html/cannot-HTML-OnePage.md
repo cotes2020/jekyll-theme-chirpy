@@ -102,9 +102,9 @@ HTML 是用来描述网页的一种语言。
 
 HTML5 `<!DOCTYPE html>`
 HTML 4.01
-`<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">`
+`<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">`
 XHTML 1.0
-`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">`
+`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">`
 
 
 ### Empty HTML Elements
@@ -203,7 +203,7 @@ This poem will display on a single line:
   `<img alt="pic" src="../image/*.jpg/"width="300" height="120"/>`
 
 4. 如果图片来源于网络，那么写绝对路径：
-`<img alt="pic" src="http://static.runoob.com/images/runoob-logo.png" width="300" height="120"/>`
+`<img alt="pic" src="https://static.runoob.com/images/runoob-logo.png" width="300" height="120"/>`
 
 #### HTML 中 href、src 区别
 
@@ -296,7 +296,7 @@ HTML 标签对大小写不敏感：`<P>` 等同于 `<p>`。许多网站都使用
 - 属性总是以名称/值对的形式出现，比如：`name="value"`。
 
 HTML 链接由 `<a>` 标签定义。链接的地址在 `href 属性`中指定：
-`<a href="http://www.runoob.com">这是一个链接</a>`
+`<a href="https://www.runoob.com">这是一个链接</a>`
 
 ### HTML 属性常用引用属性值
 - 属性值应该始终被包括在`引号`内。
@@ -431,7 +431,7 @@ id属性可用于创建在一个HTML文档书签标记。
 
 ```
 <head>
-<base href="http://www.runoob.com/images/" target="_blank">
+<base href="https://www.runoob.com/images/" target="_blank">
 </head>
 ```
 

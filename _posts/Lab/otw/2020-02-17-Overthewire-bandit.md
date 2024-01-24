@@ -692,7 +692,7 @@ bandit16@melinda:/tmp/jhalon$ ssh -i ./sshkey.private bandit17@localhost
 
 Are you sure you want to continue connecting (yes/no)? yes
 Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hosts).
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+This is a OverTheWire game server. More information on https://www.overthewire.org/wargames
 Enjoy your stay!
 
 bandit17@bandit:~$
@@ -1384,7 +1384,7 @@ The authenticity of host 'localhost (127.0.0.1)' cant be established.
 ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
 Are you sure you want to continue connecting (yes/no)? yes
 Failed to add the host to the list of known hosts (/home/bandit27/.ssh/known_hosts).
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+This is a OverTheWire game server. More information on https://www.overthewire.org/wargames
 
 bandit27-git@localhosts password: # 3ba3118a22e93127a4ed485be72ef5ea
 remote: Counting objects: 3, done.

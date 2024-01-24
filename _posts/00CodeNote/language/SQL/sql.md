@@ -19,7 +19,7 @@ SQL statements usually are divided into two categories:
 
 
 ## database security
-http://www.aseatw.com/html/Present.aspx?id=DatabaseFundamentals&num=26
+https://www.aseatw.com/html/Present.aspx?id=DatabaseFundamentals&num=26
 
 the first line of database for a database:
 

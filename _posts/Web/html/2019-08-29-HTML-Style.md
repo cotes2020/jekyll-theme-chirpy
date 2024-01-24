@@ -328,7 +328,7 @@ defines the horizontal text alignment for an HTML element:
 defines a section that is quoted from another source.
 ```js
 <p>Here is a quote from WWF's website:</p>
-<blockquote cite="http://www.worldwildlife.org/who/index.html">
+<blockquote cite="https://www.worldwildlife.org/who/index.html">
 For 50 years, WWF has been protecting the future of nature.
 The world's leading conservation organization,
 WWF works in 100 countries and is supported by
