@@ -20,7 +20,7 @@ timezone: America/Los_Angeles
 
 title: Eric Marquez                          # the main title
 
-tagline: technology, projects, and some code snippets   # it will display as the sub-title
+tagline: technology, projects, Food, and some code snippets   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Interesting technology, projects I'm working on, and things I learn throughout the week.
