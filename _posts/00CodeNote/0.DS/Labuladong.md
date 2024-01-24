@@ -1,16 +1,3 @@
----
-title: Labuladong
-# author: Grace JyL
-date: 2021-10-11 11:11:11 -0400
-description:
-excerpt_separator:
-categories: [00CodeNote, DS]
-tags:
-math: true
-# pin: true
-toc: true
-# image: /assets/img/sample/devices-mockup.png
----
 
 - [Labuladong](#labuladong)
   - [question to ask](#question-to-ask)

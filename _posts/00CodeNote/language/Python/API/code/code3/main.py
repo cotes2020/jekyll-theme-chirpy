@@ -12,7 +12,7 @@ def index():
     return make_response("Home index Page", 200)
 
 
-# http GET http://127.0.0.1:5000/
+# http GET https://127.0.0.1:5000/
 
 
 @main.route("/profile", methods=["GET"])
@@ -22,7 +22,7 @@ def profile():
     return make_response("User profile Page", 200)
 
 
-# http GET http://127.0.0.1:5000/profile
+# http GET https://127.0.0.1:5000/profile
 
 
 @main.route("/userinfo", methods=["GET"])
@@ -55,4 +55,4 @@ def user_info():
     #     return make_response(jsonify({{"status": 401, "userinfo":False, "error message":"please login first"}), 401)
 
 
-# http GET http://127.0.0.1:5000/userinfo
+# http GET https://127.0.0.1:5000/userinfo

@@ -15,7 +15,7 @@ image:
 # What are Shell Scripts?
 
 ref
-http://linuxcommand.org/lc3_wss0140.php
+https://linuxcommand.org/lc3_wss0140.php
 
 
 With the thousands of commands available for the command line user, how can you remember them all? The answer is, you don't. The real power of the computer is its ability to do the work for you. To get it to do that, we use `shell` to automate things. We write `shell scripts`.
@@ -2137,7 +2137,7 @@ system_info()
 
 
 
-http://linuxcommand.org/lc3_wss0140.php
+https://linuxcommand.org/lc3_wss0140.php
 
 
 

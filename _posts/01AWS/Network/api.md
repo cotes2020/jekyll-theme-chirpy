@@ -111,7 +111,7 @@ AWS AppSync allows you to create flexible APIs that access and combine multiple 
 Architecting a REST API is structured around creating combinations of resources and methods.
 - Resources are paths that are present in the request URL and methods are HTTP actions that you take against the resource.
 - For example
-- define a resource called “cart”: `http://myapi.somecompany.com/cart`
+- define a resource called “cart”: `https://myapi.somecompany.com/cart`
 - The cart resource can respond to HTTP POSTs for adding items to a shopping cart
 - or HTTP GETs for retrieving the items in your cart.
 

@@ -1,5 +1,5 @@
 # Vigenere Cipher (Polyalphabetic Substitution Cipher)
-# http://inventwithpython.com/hacking (BSD Licensed)
+# https://inventwithpython.com/hacking (BSD Licensed)
 
 import pyperclip
 

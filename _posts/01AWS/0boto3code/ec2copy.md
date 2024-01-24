@@ -123,13 +123,13 @@ Actions call operations on resources. They may automatically handle the passing 
 
 create_dhcp_options(kwargs_)
 
-Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt) .
+Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see [RFC 2132](https://www.ietf.org/rfc/rfc2132.txt) .
 
 - domain-name-servers - The IP addresses of up to four domain name servers, or AmazonProvidedDNS. The default DHCP option set specifies AmazonProvidedDNS. If specifying more than one domain name server, specify the IP addresses in a single parameter, separated by commas. To have your instance receive a custom DNS hostname as specified in domain-name , you must set domain-name-servers to a custom DNS server.
 - domain-name - If you're using AmazonProvidedDNS in us-east-1 , specify ec2.internal . If you're using AmazonProvidedDNS in another Region, specify region.compute.internal (for example, ap-northeast-1.compute.internal ). Otherwise, specify a domain name (for example, ExampleCompany.com ). This value is used to complete unqualified DNS hostnames. **Important** : Some Linux operating systems accept multiple domain names separated by spaces. However, Windows and other Linux operating systems treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.
 - ntp-servers - The IP addresses of up to four Network Time Protocol (NTP) servers.
 - netbios-name-servers - The IP addresses of up to four NetBIOS name servers.
-- netbios-node-type - The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and multicast are not currently supported). For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt) .
+- netbios-node-type - The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and multicast are not currently supported). For more information about these node types, see [RFC 2132](https://www.ietf.org/rfc/rfc2132.txt) .
 
 Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an internet gateway, make sure to set the domain-name-servers option either to AmazonProvidedDNS or to a domain name server of your choice. For more information, see [DHCP Options Sets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -546,7 +546,7 @@ Parameters
 
     The maximum number of instances to launch. If you specify more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount .
 
-    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
+    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
 
 - **MinCount** (_integer_) --
 
@@ -554,7 +554,7 @@ Parameters
 
     The minimum number of instances to launch. If you specify a minimum that is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances.
 
-    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
+    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
 
 - **Monitoring** (_dict_) --
 
@@ -6544,7 +6544,7 @@ You cannot associate an Elastic IP address with an interface in a different netw
 
 Warning
 
-This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the _Elastic IP Addresses_ section of [Amazon EC2 Pricing](http://aws.amazon.com/ec2/pricing/) .
+This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the _Elastic IP Addresses_ section of [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/) .
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress)
 
@@ -15713,7 +15713,7 @@ ip_permissions
 
         *   **IpProtocol** _(string) --_
 
-            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -15836,7 +15836,7 @@ ip_permissions_egress
 
         *   **IpProtocol** _(string) --_
 
-            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -16063,7 +16063,7 @@ Parameters
 
         *   **IpProtocol** _(string) --_
 
-            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -16272,7 +16272,7 @@ Parameters
 
         *   **IpProtocol** _(string) --_
 
-            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -16380,7 +16380,7 @@ Parameters
 
 *   **IpProtocol** (_string_) --
 
-    The IP protocol name (tcp , udp , icmp ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ). To specify icmpv6 , use a set of IP permissions.
+    The IP protocol name (tcp , udp , icmp ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ). To specify icmpv6 , use a set of IP permissions.
 
     [VPC only] Use -1 to specify all protocols. If you specify -1 or a protocol other than tcp , udp , or icmp , traffic on all ports is allowed, regardless of any ports you specify.
 
@@ -16599,7 +16599,7 @@ Parameters
 
         *   **IpProtocol** _(string) --_
 
-            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -16782,7 +16782,7 @@ Returns
 
             *   **IpProtocol** _(string) --_
 
-                The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+                The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
                 [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -16973,7 +16973,7 @@ Parameters
 
         *   **IpProtocol** _(string) --_
 
-            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+            The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -17079,7 +17079,7 @@ Parameters
 
                     The ID of the VPC peering connection, if applicable.
 
-*   **IpProtocol** (_string_) -- The IP protocol name (tcp , udp , icmp ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ). Use -1 to specify all.
+*   **IpProtocol** (_string_) -- The IP protocol name (tcp , udp , icmp ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ). Use -1 to specify all.
 *   **SourceSecurityGroupName** (_string_) -- [EC2-Classic, default VPC] The name of the source security group. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the start of the port range, the IP protocol, and the end of the port range. For EC2-VPC, the source security group must be in the same VPC. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.
 *   **SourceSecurityGroupOwnerId** (_string_) -- [EC2-Classic] The AWS account ID of the source security group, if the source security group is in a different account. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.
 *   **ToPort** (_integer_) -- The end of port range for the TCP and UDP protocols, or an ICMP code number. For the ICMP code number, use -1 to specify all ICMP codes for the ICMP type.
@@ -17155,7 +17155,7 @@ Returns
 
             *   **IpProtocol** _(string) --_
 
-                The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
+                The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
 
                 [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
 
@@ -18611,7 +18611,7 @@ Parameters
 
     The maximum number of instances to launch. If you specify more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount .
 
-    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
+    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
 
 *   **MinCount** (_integer_) --
 
@@ -18619,7 +18619,7 @@ Parameters
 
     The minimum number of instances to launch. If you specify a minimum that is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances.
 
-    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
+    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
 
 *   **Monitoring** (_dict_) --
 
@@ -25172,7 +25172,7 @@ You cannot associate an Elastic IP address with an interface in a different netw
 
 Warning
 
-This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the _Elastic IP Addresses_ section of [Amazon EC2 Pricing](http://aws.amazon.com/ec2/pricing/) .
+This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the _Elastic IP Addresses_ section of [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/) .
 
 See also: [AWS API Documentation](https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateAddress)
 
@@ -25316,4 +25316,4 @@ None
 *   [Boto3 Docs 1.16.47 documentation](../../index.html) »
 *   [Available services](index.html) »
 
-const shortbread = AWSCShortbread({ domain: ".amazonaws.com", }); shortbread.checkForCookieConsent(); [Privacy](http://aws.amazon.com/privacy) | [Site Terms](http://aws.amazon.com/terms) | [Cookie preferences](#) | © Copyright 2020, Amazon Web Services, Inc. Created using [Sphinx](http://sphinx.pocoo.org/).
+const shortbread = AWSCShortbread({ domain: ".amazonaws.com", }); shortbread.checkForCookieConsent(); [Privacy](https://aws.amazon.com/privacy) | [Site Terms](https://aws.amazon.com/terms) | [Cookie preferences](#) | © Copyright 2020, Amazon Web Services, Inc. Created using [Sphinx](https://sphinx.pocoo.org/).

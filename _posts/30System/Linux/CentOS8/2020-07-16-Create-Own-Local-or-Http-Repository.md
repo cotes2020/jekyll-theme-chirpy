@@ -226,7 +226,7 @@ $ systemctl start httpd
 $ systemctl enable httpd
 $ systemctl status httpd
 // confirm that server is up and running
-http://192.168.1.1
+https://192.168.1.1
 
 
 Step 2: Create Yum Local Repository
@@ -254,7 +254,7 @@ $ vi /etc/yum.repos.d/custom.repo
 // change
 [http]
 name=Local HTTP repository
-baseurl=http://192.168.1.1/custom
+baseurl=https://192.168.1.1/custom
 // default http Document root for HTTP server
 enabled=1
 gpgcheck=0

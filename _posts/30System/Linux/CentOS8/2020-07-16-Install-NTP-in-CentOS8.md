@@ -114,7 +114,7 @@ To configure a system as an NTP client, it needs to know which NTP servers it sh
 $ vi /etc/chrony.conf
 // change
 # Use public servers from the pool.ntp.org project.
-# Please consider joining the pool (http://www.pool.ntp.org/join.html).
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
 # pool 2.centos.pool.ntp.org iburst
 server 192.168.1.1 iburst prefer
 

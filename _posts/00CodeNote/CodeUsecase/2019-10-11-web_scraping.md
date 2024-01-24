@@ -139,7 +139,7 @@ class Scraper(HTMLParser):
             print "Data: ", data
 
 if __name__=="__main__":
-    content = urlopen("http://www.baidu.com").read()
+    content = urlopen("https://www.baidu.com").read()
     sc = Scraper()
     sc.feed(content)
 ```

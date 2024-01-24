@@ -545,7 +545,7 @@ Alexa for Business | Yes | Yes | No | No | Yes | No
 ---|---|---|---|---|---|---
 [Amazon AppStream](https://docs.aws.amazon.com/appstream/latest/developerguide/appstream-security.html) | Yes | No | No | No | Yes | No
 [Amazon AppStream 2.0](https://docs.aws.amazon.com/appstream2/latest/developerguide/controlling-access.html) | Yes | Yes | No | Yes | Yes | No
-[Amazon WAM](http://docs.aws.amazon.com/wam/latest/adminguide/iam.html) | Yes | No | No | No | Yes | No
+[Amazon WAM](https://docs.aws.amazon.com/wam/latest/adminguide/iam.html) | Yes | No | No | No | Yes | No
 [Amazon WorkDocs](https://docs.aws.amazon.com/workdocs/latest/adminguide/setting_up.html#iam_policies) | Yes | No | No | No | Yes | No
 [Amazon WorkLink](https://docs.aws.amazon.com/worklink/latest/ag/what-is.html) | Yes | Yes | No | Yes | Yes | [Yes](https://docs.aws.amazon.com/worklink/latest/ag/using-service-linked-roles.html)
 [Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp_iam.html) | Yes | Yes | No | Yes | Yes | No
@@ -556,7 +556,7 @@ Alexa for Business | Yes | Yes | No | No | Yes | No
 
 **Service** | **Actions** | **Resource-level permissions** | **Resource-based policies** | **Authorization based on tags** | **Temporary credentials** | **Service-linked roles** |
 ---|---|---|---|---|---|---
-[AWS Activate](http://aws.amazon.com/activate/faq/#AWS_Activate_Console) | Yes | No | No | No | Yes | No
+[AWS Activate](https://aws.amazon.com/activate/faq/#AWS_Activate_Console) | Yes | No | No | No | Yes | No
 [AWS Billing and Cost Management](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ControllingAccessWebsite.html) | Yes | No | No | No | Yes | No
 [AWS Budget Service](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html) | Yes | Yes | No | No | No | No
 [AWS Cost and Usage Report](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html) | Yes | Yes | No | No | Yes | No

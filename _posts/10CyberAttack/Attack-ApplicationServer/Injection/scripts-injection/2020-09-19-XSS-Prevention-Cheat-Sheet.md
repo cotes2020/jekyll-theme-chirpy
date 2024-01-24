@@ -359,7 +359,7 @@ For example:
 - to put untrusted data into HTTP GET parameter value.
 
 ```html
-<a href="http://www.somesite.com?test=...ENCODE UNTRUSTED DATA BEFORE PUTTING HERE...">link</a >
+<a href="https://www.somesite.com?test=...ENCODE UNTRUSTED DATA BEFORE PUTTING HERE...">link</a >
 ```
 
 - Except for alphanumeric characters, encode all characters with ASCII values less than 256 with the `%HH` encoding format. Including untrusted data in `data:` URLs should not be allowed as there is no good way to disable attacks with encoding/escaping to prevent switching out of the URL.

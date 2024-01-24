@@ -77,7 +77,7 @@ goal: <font color=red> Manage user session </font>
 2. <font color=red> the application remember the context </font> by creating an associated memento
    - This memento is given to the client and returned to the application on subsequent requests.
      1. via URL
-        - `http://www.example.com/products/awesomeDoohickey.html?sessionID=0123456789ABCDEFGH`
+        - `https://www.example.com/products/awesomeDoohickey.html?sessionID=0123456789ABCDEFGH`
      2. via cookies
         - placed within the HTTP request
         - so they can be discovered by the application even if a load balancer intervenes.

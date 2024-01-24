@@ -15,7 +15,7 @@ image:
 ## Servicenow
 
 ref
-http://www.kbstraining.com/blog/servicenow-tutorial.htm#Enterprise_Security_Response_Engine
+https://www.kbstraining.com/blog/servicenow-tutorial.htm#Enterprise_Security_Response_Engine
 
 
 Technology is one that changes regularly to become a better version of itself.

@@ -1757,11 +1757,11 @@ Parameters
 
 *   **MaxCount** (_integer_) -- **[REQUIRED]** The maximum number of instances to launch. If you specify more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount .
 
-    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
+    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
 
 *   **MinCount** (_integer_) -- **[REQUIRED]** The minimum number of instances to launch. If you specify a minimum that is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances.
 
-    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
+    Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
 
 *   **Monitoring** (_dict_) --
 
@@ -7511,7 +7511,7 @@ You cannot associate an Elastic IP address with an interface in a different netw
 
 Warning
 
-This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the _Elastic IP Addresses_ section of [Amazon EC2 Pricing](http://aws.amazon.com/ec2/pricing/) .
+This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the _Elastic IP Addresses_ section of [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/) .
 
 
 **Request Syntax**
@@ -7640,4 +7640,4 @@ vpc_address.reload()
 - Boto3 Docs 1.16.47 documentation](../../index.html) »
 - Available services](index.html) »
 
-const shortbread = AWSCShortbread({ domain: ".amazonaws.com", }); shortbread.checkForCookieConsent(); [Privacy](http://aws.amazon.com/privacy) | [Site Terms](http://aws.amazon.com/terms) | [Cookie preferences](#) | © Copyright 2020, Amazon Web Services, Inc. Created using [Sphinx](http://sphinx.pocoo.org/).
+const shortbread = AWSCShortbread({ domain: ".amazonaws.com", }); shortbread.checkForCookieConsent(); [Privacy](https://aws.amazon.com/privacy) | [Site Terms](https://aws.amazon.com/terms) | [Cookie preferences](#) | © Copyright 2020, Amazon Web Services, Inc. Created using [Sphinx](https://sphinx.pocoo.org/).

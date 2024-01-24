@@ -1,11 +1,4 @@
----
-title: AWS - IdenAccessManage - IAM (Identity and Access Management)
-date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, IdenAccessManage]
-tags: [AWS, IdenAccessManage]
-toc: true
-image:
----
+
 
 - [AWS - IAM Identity and Access Management](#aws---iam-identity-and-access-management)
   - [IAM BEST PRACTICES](#iam-best-practices)

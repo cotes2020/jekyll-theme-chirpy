@@ -105,7 +105,7 @@ import time
 import json
 import random
 
-QUERY = "http://localhost:8080/query?id={}"
+QUERY = "https://localhost:8080/query?id={}"
 
 N=500
 

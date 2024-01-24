@@ -13,7 +13,7 @@ toc: true
 
 # Programming Exercise 2 `Sorting at Scale`
 
-Resource Link: http://www.dukelearntoprogram.com/course4/index.php
+Resource Link: https://www.dukelearntoprogram.com/course4/index.php
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 

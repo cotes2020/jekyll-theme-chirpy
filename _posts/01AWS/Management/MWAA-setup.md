@@ -472,7 +472,7 @@ The following diagram illustrates the architectural overview of the components i
 
 ![The state machine transforms data using AWS Glue.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/05/BDB1205-1.jpg)
 
-![The state machine transforms data using AWS Glue.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20450%22%3E%3C/svg%3E)
+![The state machine transforms data using AWS Glue.](data:image/svg+xml,%3Csvg%20xmlns=%22https://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20450%22%3E%3C/svg%3E)
 
 The workflow includes the following core components:
 
@@ -493,13 +493,13 @@ Take a note of the [Amazon Simple Storage Service](https://aws.amazon.com/s3) (A
 
 ![Take a note of the Amazon Simple Storage Service (Amazon S3) bucket that stores the DAGs.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/05/BDB1205-2.jpg)
 
-![Take a note of the Amazon Simple Storage Service (Amazon S3) bucket that stores the DAGs.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20370%22%3E%3C/svg%3E)
+![Take a note of the Amazon Simple Storage Service (Amazon S3) bucket that stores the DAGs.](data:image/svg+xml,%3Csvg%20xmlns=%22https://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20370%22%3E%3C/svg%3E)
 
 Also note the [AWS Identity and Access Management](https://aws.amazon.com/iam) (IAM) execution role. This role should be modified to allow MWAA to read and write from your S3 bucket, submit an Amazon EMR step, start a Step Functions state machine, and read from the [AWS Systems Manager Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html). The IAM role is available in the **Permissions** section of the environment details.
 
 ![The IAM role is available in the Permissions section of the environment details.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/05/BDB1205-3.jpg)
 
-![The IAM role is available in the Permissions section of the environment details.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20390%22%3E%3C/svg%3E)
+![The IAM role is available in the Permissions section of the environment details.](data:image/svg+xml,%3Csvg%20xmlns=%22https://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20390%22%3E%3C/svg%3E)
 
 The solution references Systems Manager parameters in an [AWS CloudFormation](https://aws.amazon.com/cloudformation) template and scripts. For information on adding and removing IAM identity permissions, see [Adding and removing IAM identity permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html). A sample IAM policy is also provided in the GitHub repository [amazon-mwaa-complex-workflow-using-step-functions](https://github.com/aws-samples/amazon-mwaa-complex-workflow-using-step-functions/blob/main/setup/additional_policy.json).
 

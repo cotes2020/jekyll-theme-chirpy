@@ -102,12 +102,12 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-# http://127.0.0.1:8000/
+# https://127.0.0.1:8000/
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-# http://127.0.0.1:8000/items/5?q=somequery.
+# https://127.0.0.1:8000/items/5?q=somequery.
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
@@ -130,7 +130,7 @@ Run the server with:
 ```bash
 $ uvicorn main:app --reload
 
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Uvicorn running on https://127.0.0.1:8000 (Press CTRL+C to quit)
 INFO:     Started reloader process [28720]
 INFO:     Started server process [28722]
 INFO:     Waiting for application startup.
@@ -153,7 +153,7 @@ The command `uvicorn main:app` refers to:
 
 ### Check it
 
-Open your browser at http://127.0.0.1:8000/items/5?q=somequery.
+Open your browser at https://127.0.0.1:8000/items/5?q=somequery.
 
 You will see the JSON response as:
 
@@ -174,7 +174,7 @@ You already created an API that:
 
 ### Interactive API docs
 
-http://127.0.0.1:8000/docs
+https://127.0.0.1:8000/docs
 - automatic interactive API documentation (provided by Swagger UI):
 
 ![Swagger UI](https://fastapi.tiangolo.com/img/index/index-01-swagger-ui-simple.png)
@@ -183,7 +183,7 @@ http://127.0.0.1:8000/docs
 
 ### Alternative API docs
 
-http://127.0.0.1:8000/redoc
+https://127.0.0.1:8000/redoc
 - alternative automatic documentation (provided by ReDoc):
 
 ![ReDoc](https://fastapi.tiangolo.com/img/index/index-02-redoc-simple.png)
@@ -208,12 +208,12 @@ class Item(BaseModel):
     price: float
     is_offer: Union[bool, None] = None
 
-# http://127.0.0.1:8000/
+# https://127.0.0.1:8000/
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-# http://127.0.0.1:8000/items/5?q=somequery.
+# https://127.0.0.1:8000/items/5?q=somequery.
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
@@ -253,7 +253,7 @@ The server should reload automatically (because you added `--reload` to the `uvi
 
 ### Interactive API docs upgrade
 
-http://127.0.0.1:8000/docs
+https://127.0.0.1:8000/docs
 
 * The interactive API documentation will be automatically updated, including the new body:
 
@@ -271,7 +271,7 @@ http://127.0.0.1:8000/docs
 
 ### Alternative API docs upgrade
 
-http://127.0.0.1:8000/redoc
+https://127.0.0.1:8000/redoc
 
 * The alternative documentation will also reflect the new query parameter and body:
 

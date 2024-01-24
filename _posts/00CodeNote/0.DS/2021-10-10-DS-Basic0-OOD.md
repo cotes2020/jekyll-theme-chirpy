@@ -641,7 +641,7 @@ public class PredatoryCreditCard extends CreditCard{
 
 ### 有限状态机
 
-参见[这里](http://en.wikipedia.org/wiki/Finite-state_machine)
+参见[这里](https://en.wikipedia.org/wiki/Finite-state_machine)
 
 
 ---

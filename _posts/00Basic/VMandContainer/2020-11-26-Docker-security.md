@@ -159,7 +159,7 @@ As a Kubernetes cluster administrator, you can configure it using [Pod Security 
 
 ### RULE #3 - Limit capabilities (Grant only specific capabilities, needed by a container)
 
-[Linux kernel capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html) are a set of privileges that can be used by privileged.
+[Linux kernel capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html) are a set of privileges that can be used by privileged.
 - Docker, by default, runs with only a subset of capabilities.
 - You can change it and drop some capabilities (using `--cap-drop`) to harden your docker containers, or add some capabilities (using `--cap-add`) if needed.
 - Remember not to run containers with the `--privileged` flag - this will add ALL Linux kernel capabilities to the container.

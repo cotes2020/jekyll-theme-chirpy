@@ -135,14 +135,14 @@ script again.
 
 If you think this result is wrong, please report your observation
 and help us to improve this check routine:
-http://lists.wald.intevation.org/mailman/listinfo/openvas-discuss
+https://lists.wald.intevation.org/mailman/listinfo/openvas-discuss
 Please attach the log-file (/tmp/openvas-check-setup.log) to help us analyze the problem.
 # The fix is given as well, run greenbone-scapdata-sync and it will sync OpenVAS SCAP database files.
 
 
 root@kali:~# greenbone-scapdata-sync
-OpenVAS community feed server - http://www.openvas.org/
-This service is hosted by Greenbone Networks - http://www.greenbone.net/
+OpenVAS community feed server - https://www.openvas.org/
+This service is hosted by Greenbone Networks - https://www.greenbone.net/
 sent 10,379 bytes  received 884,066,503 bytes  2,847,268.54 bytes/sec
 total size is 926,410,667  speedup is 1.05
 part 0 Done

@@ -55,7 +55,7 @@ create an Amazon CloudFront distribution that will use a CloudFront domain name 
 <head>My CloudFront Test</head>
 <body>
 <p>My text content goes here.</p>
-<p><img src="http://DOMAIN/OBJECT" alt="my test image" /></p>
+<p><img src="https://DOMAIN/OBJECT" alt="my test image" /></p>
 </body>
 </html>
 ```

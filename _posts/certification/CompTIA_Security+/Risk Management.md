@@ -195,7 +195,7 @@ Figure 8.1: Zenmap scan
 ￼
 Network Mapping
 Network mapping discovers devices on the network and how they are connected with each other. It is often done as part of a network scan, but it only focuses on connectivity. In contrast, a full network scan also includes additional scans to identify open ports, running services, and OS details.
-Some tools, such as Zenmap, provide y o u with a graphical representation of the network. To see how this looks, look a t the Nmap and Zenmap labs available at http://gcgapremium.com/501labs/.
+Some tools, such as Zenmap, provide y o u with a graphical representation of the network. To see how this looks, look a t the Nmap and Zenmap labs available at https://gcgapremium.com/501labs/.
 Wireless Scanners/Cracker
 Chapter 4, “Securing Your Network,” discusses how administrators often perform site surveys while planning and deploying a wireless network. Security personnel periodically repeat the site survey to verify the environment hasn’t changed.
 Wireless scanners can typically use both passive and active scans. When using a passive scan, a scanner just listens to all the traffic being broadcast on known channels within the 2.4 GHz and 5 GHz frequency
@@ -236,7 +236,7 @@ Banner grabbing is a technique used to gain information about remote systems and
 </body></html>
 
 ￼
-Most of this is formatting. However, the information in the address section provides a lot of information on the web server. It shows this is a Unix server running the Apache web server software along with additional information. The command-line tool Netcat can be used for banner grabbing, as shown later in this chapter. You can also check out the Banner Grabbing Lab in the online exercises for this book at http://gcgapremium.com/501labs/.
+Most of this is formatting. However, the information in the address section provides a lot of information on the web server. It shows this is a Unix server running the Apache web server software along with additional information. The command-line tool Netcat can be used for banner grabbing, as shown later in this chapter. You can also check out the Banner Grabbing Lab in the online exercises for this book at https://gcgapremium.com/501labs/.
 
 
 
@@ -378,7 +378,7 @@ Several tools are available for use by security professionals and attackers alik
 Sniffing with a Protocol Analyzer
 A protocol analyzer can capture and analyze packets on a network. The
 process of using a protocol analyzer is sometimes referred to as sniffing or using a sniffer. Both administrators and attackers can use a protocol analyzer to view IP headers and examine packets. example, administrators can use a protocol analyzer to troubleshoot communication issues between network systems, or identify potential attacks using manipulated or fragmented packets.
-Attackers can use a protocol analyzer to capture data sent across a network in cleartext. example, unencrypted credentials are usernames and passwords sent across a network in cleartext. One of the ways attackers can view this data is by connecting an unauthorized switch within a network to capture traffic and forward it to a system running a protocol analyzer. If cabling isn’t protected, they might be able to simply connect a switch above a drop-down ceiling. Wireshark is a free protocol analyzer that y o u can download from the Wireshark site: http://www.wireshark.org/.
+Attackers can use a protocol analyzer to capture data sent across a network in cleartext. example, unencrypted credentials are usernames and passwords sent across a network in cleartext. One of the ways attackers can view this data is by connecting an unauthorized switch within a network to capture traffic and forward it to a system running a protocol analyzer. If cabling isn’t protected, they might be able to simply connect a switch above a drop-down ceiling. Wireshark is a free protocol analyzer that y o u can download from the Wireshark site: https://www.wireshark.org/.
 Figure 8.3 shows Wireshark after it captured packets transmitted over the network. It includes about 150 packets and has packet 121 selected in the top pane. The top pane shows the source and destination IP addresses and the Server Message Block (SMB) protocol. Many networks use SMB to send files over the network, and this packet includes the contents of that file. The middle pane shows details from this packet with the Internet Protocol version 4 header information partially expanded. The bottom pane shows the entire contents of the packet
 (including the unencrypted credentials) displayed in hexadecimal and ASCII characters.
 
@@ -405,7 +405,7 @@ When using a protocol analyzer, you need to configure the network interface card
 ￼
 Command-Line Tools
 Chapter 1 introduces some command-line tools available on Windows and Linux systems. Some tools are useful when performing vulnerability scans and penetration tests. Three tools discussed in this section are tcpdump, Nmap, and Netcat.
-As with any command-line tools, it’s best to dig in and give them a try. I strongly encourage you to check out the free online labs at http://gcgapremium.com/501labs/ and do each of them.
+As with any command-line tools, it’s best to dig in and give them a try. I strongly encourage you to check out the free online labs at https://gcgapremium.com/501labs/ and do each of them.
 Tcpdump
 Tcpdump is a command-line packet analyzer (or protocol analyzer). It allows you to capture packets like you can with Wireshark (mentioned in the “Sniffing with a Protocol Analyzer” section). The difference is that Wireshark is a Windows-based tool and tcpdump is executed from the command line. Many administrators use tcpdump to capture the packets and later use Wireshark to analyze the packet capture. One of the online labs for this chapter shows how to do this.
 Kali Linux includes tcpdump, but you won’t find it on Windows systems. As with most Linux command-line tools, tcpdump is case sensitive. You need to enter tcpdump in all lowercase. Additionally, the switches must be entered with the proper case. example, -c (lowercase c) represents count and indicates the capture should stop after receiving the specified number of packets. However, -C (uppercase C) represents file size and indicates the maximum size (in millions of bytes) of a packet capture. When the file reaches this size, tcpdump closes it and starts storing packets in a new file.

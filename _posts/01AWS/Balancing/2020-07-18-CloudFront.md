@@ -494,7 +494,7 @@ cache control headers
 - <font color=red> Dedicated IP Custom SSL works for all clients </font>
   - to deliver content to browsers that don’t support SNI
   - CloudFront allocates dedicated IP addresses to serve your SSL content at each CloudFront edge location.
-  - To learn more about Dedicated IP Custom SSL certificate support, select the link.http://aws.amazon.com/cloudfront/custom-ssl-domains/
+  - To learn more about Dedicated IP Custom SSL certificate support, select the link.https://aws.amazon.com/cloudfront/custom-ssl-domains/
   - When we approve your request, you can upload an SSL certificate and use the AWS Management Console to associate it with your CloudFront distributions.
   - If you need to associate more than one custom SSL certificate with your CloudFront distribution, include details about your use case and the number of custom SSL certificates that you intend to use in the “Use Case and # of SSL Certs You Intend to Use” section of the form.
 
@@ -923,8 +923,8 @@ In general, using an S3 bucket as the origin for a CloudFront distribution
 
 
 - create an origin access identity by CloudFront console or the CloudFront API.
-  - CloudFront console: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-console
-  - CloudFrontAPI: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-api
+  - CloudFront console: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-console
+  - CloudFrontAPI: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-api
 
 
 - To use this feature to restrict access to content from S3 buckets

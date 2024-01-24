@@ -878,7 +878,7 @@ photoalbum-service   LoadBalancer   10.23.253.241   146.148.111.115   80:32657/T
 
 # ========== Testing the photo album app
 # To access the deployed app in a web browser, go to the following URL and enter the username and password that you previously set up:
-http://external-ip
+https://external-ip
 # Replace external-ip with the IP address that you copied in the previous step.
 # To upload an image file of your choice, click Upload
 

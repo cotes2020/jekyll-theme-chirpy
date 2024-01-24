@@ -172,7 +172,7 @@ No. | Work
 ✔️ | **create own HTTP based repository**
 . | $ mkdir -p /var/www/html/custom
 . | $ vi /etc/yum.repos.d/custom.repo
-. | baseurl=http://192.168.1.1/custom
+. | baseurl=https://192.168.1.1/custom
 . | $ sudo cp ypserv.rpm /var/www/html/custom/ *<font color=red> <-- add custom rpm package to repo </font>*
 . | $ sudo yum createrepo . *<font color=red> <-- each time add rpm </font>*
 . | $ sudo yum clean all
@@ -262,7 +262,7 @@ No. | Work
 . | done < myhosts
 ✔️ | **SSH tunnel**
 . | $ ssh -L 8080:server2.demo.local:80 server2.demo.local
-. | $ curl http://localhost:8080
+. | $ curl https://localhost:8080
 ✔️ | **x11**
 ✔️ | **vnc**
 . | $ sudo cp /usr/lib/systemd/system/vncserver@.service /etc/systemd/system/

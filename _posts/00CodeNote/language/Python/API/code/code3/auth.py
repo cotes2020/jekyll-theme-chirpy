@@ -22,7 +22,7 @@ def adduser():
     return make_response("Add user Page", 200)
 
 
-# http GET http://127.0.0.1:5000/adduser
+# http GET https://127.0.0.1:5000/adduser
 
 
 @auth.route("/adduser", methods=["POST"])
@@ -61,8 +61,8 @@ def adduser_post():
     return make_response(jsonify({"status": 200, "new_user": content}), 201)
 
 
-# echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/adduser
-# echo '{"username":"ab",  "Firstname Lastname":"doubleuser", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/adduser
+# echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/adduser
+# echo '{"username":"ab",  "Firstname Lastname":"doubleuser", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST https://127.0.0.1:5000/adduser
 
 
 @auth.route("/login", methods=["GET"])
@@ -71,7 +71,7 @@ def login():
     return make_response("User Login Page", 200)
 
 
-# http GET http://127.0.0.1:5000/login
+# http GET https://127.0.0.1:5000/login
 
 
 @auth.route("/login", methods=["POST"])
@@ -113,8 +113,8 @@ def login_post():
         )
 
 
-# echo '{"username":"a", "password":"123"}' | http POST http://127.0.0.1:5000/login
-# echo '{"username":"a", "password":"wrongpasswd"}' | http POST http://127.0.0.1:5000/login
+# echo '{"username":"a", "password":"123"}' | http POST https://127.0.0.1:5000/login
+# echo '{"username":"a", "password":"wrongpasswd"}' | http POST https://127.0.0.1:5000/login
 
 
 @auth.route("/logout", methods=["GET"])
@@ -130,4 +130,4 @@ def logout():
     #    return make_response(jsonify({"status": 403, "Session": "you are not even login"}), 403)
 
 
-# http GET http://127.0.0.1:5000/logout
+# http GET https://127.0.0.1:5000/logout

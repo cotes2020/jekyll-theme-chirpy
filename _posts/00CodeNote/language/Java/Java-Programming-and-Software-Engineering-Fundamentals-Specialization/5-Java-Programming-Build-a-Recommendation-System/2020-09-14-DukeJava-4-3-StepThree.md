@@ -341,7 +341,7 @@ public class FirstRatings{
 
     // loadMovies -> movieData [Movie, Movie, Movie, Movie, ...]
     // id,title,year,country,genre,director,minutes,poster
-    // 0006414,"Screen",1916,"USA","Short, Comedy",30,"http://...jpg"
+    // 0006414,"Screen",1916,"USA","Short, Comedy",30,"https://...jpg"
     // return an ArrayList of type Movie with all of the movie data from the file.
     public ArrayList<Movie> loadMovies(String filename){
         FileResource fr = new FileResource("data/" + filename);

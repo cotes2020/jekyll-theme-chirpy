@@ -19,7 +19,7 @@ Java-Programming-and-Software-Engineering-Fundamentals-Specialization
     - 4-3-3 Programming Exercise 3 Word N-Grams
     - 4-3-4 Programming Exercise 4 WordGram Class
 
-Resource Link: http://www.dukelearntoprogram.com/course4/index.php
+Resource Link: https://www.dukelearntoprogram.com/course4/index.php
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---

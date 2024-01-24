@@ -22,7 +22,7 @@ Overthewire_Natas
 
 Natas teaches the basics of server side web-security.
 - [Overthewire_Natas](https://overthewire.org/wargames/natas/)
-- Each level of natas consists of its own website located at `http://natasX.natas.labs.overthewire.org`, where X is the level number.
+- Each level of natas consists of its own website located at `https://natasX.natas.labs.overthewire.org`, where X is the level number.
 - There is no SSH login.
 - To access a level, enter the username for that level (e.g. natas0 for level 0) and its password.
 
@@ -36,7 +36,7 @@ Natas teaches the basics of server side web-security.
 Start here:
 - Username: natas0
 - Password: natas0
-- URL:      http://natas0.natas.labs.overthewire.org
+- URL:      https://natas0.natas.labs.overthewire.org
 
 Right Click > View Page Source.
 
@@ -55,7 +55,7 @@ You can find the password for the next level on this page.
 
 ## Natas Level 0 → Level 1
 Username: natas1
-URL:      http://natas1.natas.labs.overthewire.org
+URL:      https://natas1.natas.labs.overthewire.org
 
 - can’t use Right Click
 - bring up the `developer window` > sources > index
@@ -72,12 +72,12 @@ URL:      http://natas1.natas.labs.overthewire.org
 
 <head>
   <!-- This stuff in the header has nothing to do with the level -->
-  <link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
-  <link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
-  <link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
-  <script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
-  <script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
-  <script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://natas.labs.overthewire.org/css/level.css">
+  <link rel="stylesheet" href="https://natas.labs.overthewire.org/css/jquery-ui.css" />
+  <link rel="stylesheet" href="https://natas.labs.overthewire.org/css/wechall.css" />
+  <script src="https://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
+  <script src="https://natas.labs.overthewire.org/js/jquery-ui.js"></script>
+  <script src=https://natas.labs.overthewire.org/js/wechall-data.js></script><script src="https://natas.labs.overthewire.org/js/wechall.js"></script>
   <script>var wechallinfo = { "level": "natas1", "pass": "gtVrDuiDfck831PqWsLEZy5gyDz1clto" };</script>
 </head>
 
@@ -97,7 +97,7 @@ URL:      http://natas1.natas.labs.overthewire.org
 
 ## Natas Level 1 → Level 2 `add /files to the end of the URL.`
 Username: natas2
-URL:      http://natas2.natas.labs.overthewire.org
+URL:      https://natas2.natas.labs.overthewire.org
 ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
 
 ```html
@@ -111,7 +111,7 @@ There is nothing on this page
 </body>
 -------------------------------------------------------------------
 add /files to the end of the URL.
-http://natas2.natas.labs.overthewire.org/files/. see a page displayed;
+https://natas2.natas.labs.overthewire.org/files/. see a page displayed;
 
 Index of /files
 [ICO]	Name	Last modified	Size	Description
@@ -131,9 +131,9 @@ mallory:9urtcpzBmH
 ```
 ---
 
-## Natas Level 2 → Level 3 `http://natas3.natas.labs.overthewire.org/robots.txt`
+## Natas Level 2 → Level 3 `https://natas3.natas.labs.overthewire.org/robots.txt`
 Username: natas3
-URL:      http://natas3.natas.labs.overthewire.org
+URL:      https://natas3.natas.labs.overthewire.org
 sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
 
 ```html
@@ -150,12 +150,12 @@ sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
 # “Not even Google will find it this time…” is hint.
 # it’s referring to robots.txt.
 
-http://natas3.natas.labs.overthewire.org/robots.txt
+https://natas3.natas.labs.overthewire.org/robots.txt
 User-agent: *
 Disallow: /s3cr3t/
 
 # so the robots.txt is disallowing crawlers to find /s3cr3t/.
-http://natas3.natas.labs.overthewire.org/s3cr3t/.
+https://natas3.natas.labs.overthewire.org/s3cr3t/.
 Index of /s3cr3t
 [ICO]	Name	Last modified	Size	Description
 [PARENTDIR]	Parent Directory	 	-
@@ -171,7 +171,7 @@ natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 > Solution: intercept the packet, change the referrer url
 
 Username: natas4
-URL:      http://natas4.natas.labs.overthewire.org
+URL:      https://natas4.natas.labs.overthewire.org
 Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 
 - “HTTP Referrer”.
@@ -184,9 +184,9 @@ Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
         - Menu > Preferences > Advanced > Network > Connection Settings > `Manual proxy configuration: HTTP Proxy: 127.0.0.1 Port:8080`
 
 ```html
-"Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/""
+"Access disallowed. You are visiting from "" while authorized users should come only from "https://natas5.natas.labs.overthewire.org/""
 --------------------------------------------------------
-goto http://natas4.natas.labs.overthewire.org/
+goto https://natas4.natas.labs.overthewire.org/
 press Refresh page
 --------------------------------------------------------
 brup > proxy > intercept > Raw:
@@ -201,7 +201,7 @@ Accept-Encoding: gzip, deflate
 Authorization: Basic bmF0YXM0Olo5dGtSa1dtcHQ5UXI3WHJSNWpXUmtnT1U5MDFzd0Va
 Connection: close
 # add this line
-Referer: http://natas5.natas.labs.overthewire.org/
+Referer: https://natas5.natas.labs.overthewire.org/
 Upgrade-Insecure-Requests: 1
 --------------------------------------------------------
 
@@ -217,7 +217,7 @@ Note: Once done, go back to Network Settings and select “Use System Proxy Sett
 > Solution: intercept the packet, change the cookie
 
 Username: natas5
-URL:      http://natas5.natas.labs.overthewire.org
+URL:      https://natas5.natas.labs.overthewire.org
 iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
 
 ```html
@@ -246,7 +246,7 @@ Upgrade-Insecure-Requests: 1
 > Solution: source code
 
 Username: natas6
-URL:      http://natas6.natas.labs.overthewire.org
+URL:      https://natas6.natas.labs.overthewire.org
 aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
 
 ```html
@@ -265,7 +265,7 @@ Input secret: <input name=secret><br>
 </body>
 --------------------------------------------------------
 goto:
-http://natas6.natas.labs.overthewire.org/index-source.html
+https://natas6.natas.labs.overthewire.org/index-source.html
 --------------------------------------------------------
 include "includes/secret.inc";
 # the PHP is including a link to a file stored on the webpage /includes/secret.inc.
@@ -288,7 +288,7 @@ Input secret: <input name=secret><br>
 </html>
 --------------------------------------------------------
 goto:
-http://natas6.natas.labs.overthewire.org/includes/secret.inc
+https://natas6.natas.labs.overthewire.org/includes/secret.inc
 --------------------------------------------------------
 <?
 $secret = "FOEIUWGHFEEUHOFUOIU";
@@ -304,7 +304,7 @@ $secret = "FOEIUWGHFEEUHOFUOIU";
 > Solution: intercept the packet, change the cookie
 
 Username: natas7
-URL:      http://natas7.natas.labs.overthewire.org
+URL:      https://natas7.natas.labs.overthewire.org
 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
 
 ```html
@@ -329,9 +329,9 @@ URL:      http://natas7.natas.labs.overthewire.org
 we can get the password from "etc/natas_webpass/natas8"
 assume this is a Directory Traversal Attack.
 --------------------------------------------------------
-Home: http://natas7.natas.labs.overthewire.org/index.php?page=home
+Home: https://natas7.natas.labs.overthewire.org/index.php?page=home
 remove home and add "/etc/natas_webpass/natas8".
-http://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
+https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
 --------------------------------------------------------
 Home About
 DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
@@ -344,7 +344,7 @@ DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
 > Solution: decode the base64
 
 Username: natas8
-URL:      http://natas8.natas.labs.overthewire.org
+URL:      https://natas8.natas.labs.overthewire.org
 DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
 
 ```html
@@ -399,7 +399,7 @@ got the password W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
 > Solution: decode the base64
 
 Username: natas9
-URL:      http://natas9.natas.labs.overthewire.org
+URL:      https://natas9.natas.labs.overthewire.org
 W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
 
 ```html
@@ -444,7 +444,7 @@ nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
 > Solution: decode the base64
 
 Username: natas10
-URL:      http://natas10.natas.labs.overthewire.org
+URL:      https://natas10.natas.labs.overthewire.org
 nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
 
 ```html
@@ -495,7 +495,7 @@ Output:
 
 ## Natas Level 10 → Level 11
 Username: natas11
-URL:      http://natas11.natas.labs.overthewire.org
+URL:      https://natas11.natas.labs.overthewire.org
 U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
 
 
@@ -515,7 +515,7 @@ Accept-Encoding: gzip, deflate
 DNT: 1
 Authorization: Basic bmF0YXMxMTpVODJxNVRDTU1ROXh1Rm9JM2RZWDYxczdPWkQ5SktvSw==
 Connection: close
-Referer: http://natas11.natas.labs.overthewire.org/?bgcolor=%23ffffff
+Referer: https://natas11.natas.labs.overthewire.org/?bgcolor=%23ffffff
 Cookie: data=ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D
 Upgrade-Insecure-Requests: 1
 

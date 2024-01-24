@@ -169,13 +169,13 @@ SELECT * FROM Websites WHERE name LIKE 'G%';
 
 ### SQL 通配符
 
-通配符	| 描述
----|---
-%	| 替代 0 个或多个字符
-_	| 替代一个字符
-[charlist]	| 字符列中的任何单一字符
-^[charlist] | start with
-[^charlist] [!charlist]	| no exist
+| 通配符                  | 描述                   |
+| ----------------------- | ---------------------- |
+| %                       | 替代 0 个或多个字符    |
+| _                       | 替代一个字符           |
+| [charlist]              | 字符列中的任何单一字符 |
+| ^[charlist]             | start with             |
+| [^charlist] [!charlist] | no exist               |
 
 
 ```sql
@@ -214,7 +214,7 @@ INSERT INTO Websites (name, url, alexa, country)
 VALUES ('百度','https://www.baidu.com/','4','CN');
 
 INSERT INTO Websites (name, url, country)   // other will be 0
-VALUES ('stackoverflow', 'http://stackoverflow.com/', 'IND');
+VALUES ('stackoverflow', 'https://stackoverflow.com/', 'IND');
 
 ```
 

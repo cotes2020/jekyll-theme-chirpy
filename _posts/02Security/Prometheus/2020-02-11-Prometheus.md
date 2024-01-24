@@ -116,7 +116,7 @@ image:
 
 - 对Use 和 Red 的实际示例可以参考容器监控实践—K8S常用指标分析这篇文章。
 
-- 容器监控实践—K8S常用指标分析：http://www.xuyasong.com/?P=1717
+- 容器监控实践—K8S常用指标分析：https://www.xuyasong.com/?P=1717
 
 
 
@@ -295,10 +295,10 @@ kubectl patch configmap prometheus-extra-config \
 
 
 // # go to prometheus dashboard
-http://127.0.0.1:9090
-http://127.0.0.1:9090/targets?search=
-http://127.0.0.1:9090/metric
-http://127.0.0.1:8089/metric
+https://127.0.0.1:9090
+https://127.0.0.1:9090/targets?search=
+https://127.0.0.1:9090/metric
+https://127.0.0.1:8089/metric
 ```
 
 
@@ -459,7 +459,7 @@ docker container start prometheus
 
 #### 结果确认
 
-通过`http://localhost:9090` 访问启动起来的Prometheus的UI界面，缺省进入的是Grap标签的所在页面：
+通过`https://localhost:9090` 访问启动起来的Prometheus的UI界面，缺省进入的是Grap标签的所在页面：
 
 <!-- ![pic](https://img-blog.csdnimg.cn/20191231055620111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
@@ -478,7 +478,7 @@ Prometheus使用REACT重新改造了界面的显示，可以通过点
 <!-- ![pic](https://img-blog.csdnimg.cn/20191231060649331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
-确认metrics内容 `http://localhost:9090/metrics`
+确认metrics内容 `https://localhost:9090/metrics`
 
 <!-- ![pic](https://img-blog.csdnimg.cn/20191231061551286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
@@ -631,7 +631,7 @@ docker ps |grep prometheus
 此处网络通信采用的是host模式
 - 所以docker中的pro可以直接通过localhost来指定同一台主机上所监控的程序。
 - prob暴露9090端口进行界面显示或其他操作，需要对docker中9090端口进行映射。
-- 启动之后可以访问web页面http://localhost:9090/graph,在status下拉菜单中可以看到配置文件和目标的状态
+- 启动之后可以访问web页面https://localhost:9090/graph,在status下拉菜单中可以看到配置文件和目标的状态
 - 此时目标状态为DOWN，因为所需要监控的服务还没有启动起来
 
 ![Screenshot 2022-11-02 at 11.39.11](https://github.com/ocholuo/ocholuo.github.io/blob/master/assets/img/note/Screenshot%202022-11-02%20at%2011.39.11_4alo4l7ok.png)
@@ -717,7 +717,7 @@ func main() {
 ```
 
 
-启动程序之后可以在web浏览器里输入http://localhost:8888/metrics 就可以得到client暴露的数据
+启动程序之后可以在web浏览器里输入https://localhost:8888/metrics 就可以得到client暴露的数据
 - 其中有片段显示为：
 
 ```bash
@@ -734,7 +734,7 @@ hd_errors_total{device="/dev/sda"} 1
   - 并且可以看到counterVec是有label的
   - 而单纯的gauage对象却不用lable标识，
   - 这就是基本数据类型和对应Vec版本的差别。
-- 此时再查看http://localhost:9090/graph 就会发现服务状态已经变为UP了。
+- 此时再查看https://localhost:9090/graph 就会发现服务状态已经变为UP了。
 
 ![Screenshot 2022-11-02 at 12.21.31](https://github.com/ocholuo/ocholuo.github.io/blob/master/assets/img/note/Screenshot%202022-11-02%20at%2012.21.31.png)
 
@@ -786,13 +786,13 @@ docker ps
 结果确认：指标确认
 
 ```bash
-curl http://localhost:8080/metrics 2>/dev/null |wc -l
+curl https://localhost:8080/metrics 2>/dev/null |wc -l
 #  164
 
-curl http://localhost:8081/metrics 2>/dev/null |wc -l
+curl https://localhost:8081/metrics 2>/dev/null |wc -l
 #  164
 
-curl http://localhost:8082/metrics 2>/dev/null |wc -l
+curl https://localhost:8082/metrics 2>/dev/null |wc -l
 #  164
 ```
 
@@ -1234,11 +1234,11 @@ K8S 生态的组件都会提供/metric接口以提供自监控:
 - nvidia exporter: 有 gpu 任务，需要 gpu 数据监控
 - node-problem-detector: 即 npd，准确的说不是 exporter，但也会监测机器状态，上报节点异常打 taint
 - 应用层 exporter: mysql、nginx、mq等，看业务需求。
-- cadvisor：http://www.xuyasong.com/?p=1483
-- kube-state-metrics：http://www.xuyasong.com/?p=1525
-- node-exporter：http://www.xuyasong.com/?p=1539
+- cadvisor：https://www.xuyasong.com/?p=1483
+- kube-state-metrics：https://www.xuyasong.com/?p=1525
+- node-exporter：https://www.xuyasong.com/?p=1539
 
-自定义 exporter：http://www.xuyasong.com/?p=1942
+自定义 exporter：https://www.xuyasong.com/?p=1942
 
 
 ### exporter
@@ -1246,7 +1246,7 @@ K8S 生态的组件都会提供/metric接口以提供自监控:
 以下是一个简单的exporter
 - 通过http模块指定了一个路径，并将`client_golang`库中的`promhttp.Handler()`作为处理函数传递进去后，就可以获取指标信息了,
 - 两行代码实现了一个exporter。
-- 这里内部其实是使用了一个默认的收集器将通过NewGoCollector采集当前Go运行时的相关信息比如go堆栈使用,goroutine的数据等等。 通过访问http://localhost:8080/metrics 即可查看详细的指标参数。
+- 这里内部其实是使用了一个默认的收集器将通过NewGoCollector采集当前Go运行时的相关信息比如go堆栈使用,goroutine的数据等等。 通过访问https://localhost:8080/metrics 即可查看详细的指标参数。
 - 上面的代码仅仅展示了一个默认的采集器，并且通过接口调用隐藏了太多实施细节
 
 ```go
@@ -1577,8 +1577,8 @@ kubectl create cm monitoring-prometheus \
 
 
 ```bash
-curl http://192.168.0.226:8080/service?cost=0.2
-curl http://192.168.0.226:8080/metrics | grep myapp
+curl https://192.168.0.226:8080/service?cost=0.2
+curl https://192.168.0.226:8080/metrics | grep myapp
 ```
 
 ---
@@ -1711,7 +1711,7 @@ metric_relabel_configs:
 
 ```bash
 # 查询指标
-curl 'http://localhost:9090/api/v1/query?' --data-urlencod 'query=prometheus_engine_queries_concurrent_max'
+curl 'https://localhost:9090/api/v1/query?' --data-urlencod 'query=prometheus_engine_queries_concurrent_max'
 # {
 # 	"status": "success",
 # 	"data": {
@@ -1753,7 +1753,7 @@ scrape_configs:
 
 
 # 重载配置后查询
-curl 'http://localhost:9090/api/v1/query?' --data-urlencod 'query=prometheus_engine_queries_concurrent_max'
+curl 'https://localhost:9090/api/v1/query?' --data-urlencod 'query=prometheus_engine_queries_concurrent_max'
 # {
 # 	"status": "success",
 # 	"data": {
@@ -1829,7 +1829,7 @@ go get github.com/prometheus/client_golang/prometheus/promhttp
 - You can use the [`prometheus/promhttp`](https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp) library's HTTP [`Handler`](https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#Handler) as the handler function.
 
 ```go
-// This minimal application, for example, would expose the default metrics for Go applications via `http://localhost:2112/metrics:
+// This minimal application, for example, would expose the default metrics for Go applications via `https://localhost:2112/metrics:
 package main
 import (
 	"net/http"
@@ -1845,7 +1845,7 @@ func main() {
 go run main.go
 
 // To access the metrics:
-curl http://localhost:2112/metrics
+curl https://localhost:2112/metrics
 ```
 
 #### Add own metrics
@@ -1897,7 +1897,7 @@ func main() {
 go run main.go
 
 // To access the metrics:
-curl http://localhost:2112/metrics
+curl https://localhost:2112/metrics
 ```
 
 In the metrics output, you'll see the help text, type information, and current value of the `myapp_processed_ops_total` counter:
@@ -2752,7 +2752,7 @@ func main() {
 
 ```
 
-此时就可以去http://localhost:8888/metrics 看到传递过去的数据了。
+此时就可以去https://localhost:8888/metrics 看到传递过去的数据了。
 - 示例中定义了两个matrics, host和zone分别是其label。
 - pro client内部提供了几个Collector供使用参考
   - 在源码包中可以找到go_collector.go, process_collecor.go, expvar_collector这三个文件的Collecor实现。
@@ -3153,10 +3153,10 @@ func main() {
 
 
 ```go
-push.New("http://example.org/metrics", "my_job").Gatherer(myRegistry).Push()
+push.New("https://example.org/metrics", "my_job").Gatherer(myRegistry).Push()
 
 // Complex case:
-push.New("http://example.org/metrics", "my_job").
+push.New("https://example.org/metrics", "my_job").
     Collector(myCollector1).
     Collector(myCollector2).
     Grouping("zone", "xy").
@@ -3191,7 +3191,7 @@ func New(url, job string) *Pusher {
         err = errJobEmpty
     }
     if !strings.Contains(url, "://") {
-        url = "http://" + url
+        url = "https://" + url
     }
     if strings.HasSuffix(url, "/") {
         url = url[:len(url)-1]

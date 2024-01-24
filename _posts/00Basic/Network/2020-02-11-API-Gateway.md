@@ -282,7 +282,7 @@ API 网关：开源
    4. ![pic](https://miro.medium.com/max/1200/0*ja4tOqnEnpBpOZRZ.png)
    5. Configure the API to have a `COMMON` Request Type using HTTP and HTTPS Protocols.
       1. `subdomain`: the **URL variable** required by the Function Compute function, make a note.
-         1. **full path variable** for Function Compute function is: `http://..subdomain../fcpath/`
+         1. **full path variable** for Function Compute function is: `https://..subdomain../fcpath/`
          2. Function Compute currently does not support **Match All Child Paths**.
       2. **request path** must contain the **Parameter Path** in the **request parameter** within brackets `[]`, For example: `/fcpath/[fcparam]`
    6. HTTP Method: `POST`

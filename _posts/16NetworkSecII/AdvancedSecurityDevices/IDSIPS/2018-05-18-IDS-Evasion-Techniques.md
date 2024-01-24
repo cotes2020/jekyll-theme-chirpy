@@ -18,7 +18,7 @@ toc: true
 
 # IDS Evasion Techniques
 
-> "A look at whisker's anti-IDS tactics" by Rain Forest Puppy (http://www.apachesecurity.net/archive/whiskerids.html)
+> "A look at whisker's anti-IDS tactics" by Rain Forest Puppy (https://www.apachesecurity.net/archive/whiskerids.html)
 > "IDS Evasion Techniques and Tactics" by Kevin Timm (https://www.securityfocus.com/printable/infocus/1577)
 
 ---

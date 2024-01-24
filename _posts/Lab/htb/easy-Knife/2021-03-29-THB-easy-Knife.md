@@ -198,7 +198,7 @@ Accept: text/css, */*;q=0.1
 Sec-Fech-Site: cross-site
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Dest: style
-Referer: http://10.10.10.242/
+Referer: https://10.10.10.242/
 Accept-Encoding: gzip, deflate
 Accept-Language: en-US,en;q=0.9
 ```

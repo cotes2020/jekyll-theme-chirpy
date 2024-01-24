@@ -53,10 +53,10 @@ On Target side we will be using DVWA (Dam Vulnerable Web Application)
 -u is used to assign target URL, 192.168.1.105 is our target/DVWA.
 -w is used to assign wordlist. /usr/share/wordlists/dirb/common.txt is the wordlist location.
 
-# gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt
+# gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://192.168.1.105/dvwa
+ [+] Url:            https://192.168.1.105/dvwa
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403
@@ -79,15 +79,15 @@ Above query has scanned all the files & directories on the target URL.
 
 
 PRINTING FILES WITH FULL PATH
-Type gobuster dir -e -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt
+Type gobuster dir -e -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt
 -e is used to print full path of the files.
 -u is used to assign target URL 192.168.1.105 is our target.
 -w is used to assign wordlist. /usr/share/wordlists/dirb/common.txt is the wordlist location.
 
-# gobuster dir -e -u  http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt
+# gobuster dir -e -u  https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://192.168.1.105/dvwa
+ [+] Url:            https://192.168.1.105/dvwa
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403
@@ -95,29 +95,29 @@ Type gobuster dir -e -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/c
  [+] Expanded:       true
  [+] Timeout:        10s
  2019/11/01 01:21:34 Starting gobuster
- http://192.168.1.105/dvwa/.hta (Status: 403)
- http://192.168.1.105/dvwa/.htpasswd (Status: 403)
- http://192.168.1.105/dvwa/.svn (Status: 301)
- http://192.168.1.105/dvwa/.htaccess (Status: 403)
- http://192.168.1.105/dvwa/.svn/entries (Status: 200)
- http://192.168.1.105/dvwa/css (Status: 301)
- http://192.168.1.105/dvwa/images (Status: 301)
- http://192.168.1.105/dvwa/includes (Status: 301)
- http://192.168.1.105/dvwa/js (Status: 301)
+ https://192.168.1.105/dvwa/.hta (Status: 403)
+ https://192.168.1.105/dvwa/.htpasswd (Status: 403)
+ https://192.168.1.105/dvwa/.svn (Status: 301)
+ https://192.168.1.105/dvwa/.htaccess (Status: 403)
+ https://192.168.1.105/dvwa/.svn/entries (Status: 200)
+ https://192.168.1.105/dvwa/css (Status: 301)
+ https://192.168.1.105/dvwa/images (Status: 301)
+ https://192.168.1.105/dvwa/includes (Status: 301)
+ https://192.168.1.105/dvwa/js (Status: 301)
  2019/11/01 01:21:39 Finished
 Above you can find the full path of the target URL. This query can help to prepare for the initial level of information gathering.
 
 
 
 PRINTING OUTPUT USING VERBOSE
-Type gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -v
+Type gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -v
 -u is used to assign target URL. 192.168.1.105 is our target.
 -w is used to assign wordlist. /usr/share/wordlists/dirb/common.txt is the wordlist location.
 -v is used for verbose mode.
-# gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -v
+# gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -v
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://192.168.1.105/dvwa
+ [+] Url:            https://192.168.1.105/dvwa
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403
@@ -139,15 +139,15 @@ Above query has try to find files in verbose mode. Showing HTTP status code on e
 
 
 PRINTING FILES WITH NO STATUS
-Type gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -n
+Type gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -n
 -u is used to assign target URL. 192.168.1.105 is our target URL.
 -w is used to assign wordlist. /usr/share/wordlists/dirb/common.txt is the wordlist location.
 -n is used to print with no status codes.
 
-# gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -n
+# gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -n
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://192.168.1.105/dvwa
+ [+] Url:            https://192.168.1.105/dvwa
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403
@@ -173,14 +173,14 @@ Above query has printed with data without any status codes.
 
 
 FINDING LENGTH OF THE RESPONSE FILES
-Type gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -l
+Type gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -l
 -u is used to assign target URL. 192.168.1.105 is our target URL.
 -w is used to assign wordlist location. -w /usr/share/wordlists/dirb/common.txt is our wordlist location.
 -l is used find length of response files.
-# gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -l
+# gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -l
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://192.168.1.105/dvwa
+ [+] Url:            https://192.168.1.105/dvwa
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403
@@ -204,15 +204,15 @@ Above shows the files size. By this attacker can obtain type of files target use
 
 
 FINDING FILES WITH SPECIFIC EXTENSION
-Type gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -x .php
+Type gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -x .php
 -u is used to assign URL. 192.168.1.105 is our target URL
 -w is used to assign wordlist. -w /usr/share/wordlists/dirb/common.txt is wordlist location.
 -x is used to extract specific extension files. .php will be extracted.
 
-# gobuster dir -u http://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -x .php
+# gobuster dir -u https://192.168.1.105/dvwa -w /usr/share/wordlists/dirb/common.txt -x .php
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://192.168.1.105/dvwa
+ [+] Url:            https://192.168.1.105/dvwa
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403
@@ -238,14 +238,14 @@ Above query has found files with .php extension. This query can help attacker to
 
 
 FINDING USERNAME & PASSWORD
-Type gobuster dir -u http://testphp.vulnweb.com/login.php -w /usr/share/wordlists/dirb/common.txt -U test -P test
+Type gobuster dir -u https://testphp.vulnweb.com/login.php -w /usr/share/wordlists/dirb/common.txt -U test -P test
 -u is used to assign URL. 192.168.1.105 is our target URL
 -w is used to assign wordlist. -w /usr/share/wordlists/dirb/common.txt is wordlist location.
 -U is for username & -P is for password.
-# gobuster dir  -u http://testphp.vulnweb.com/login.php -w /usr/share/wordlists/dirb/common.txt -U test -P test
+# gobuster dir  -u https://testphp.vulnweb.com/login.php -w /usr/share/wordlists/dirb/common.txt -U test -P test
  Gobuster v3.0.1
  by OJ Reeves (@TheColonial) & Christian Mehlmauer (@FireFart)
- [+] Url:            http://testphp.vulnweb.com/login.php
+ [+] Url:            https://testphp.vulnweb.com/login.php
  [+] Threads:        10
  [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
  [+] Status codes:   200,204,301,302,307,401,403

@@ -1328,7 +1328,7 @@ WebServer:
               Fn::Join:
                 - ""
                 -
-                  - "http://s3.amazonaws.com/"
+                  - "https://s3.amazonaws.com/"
                   - Ref: "BucketName"
                   - "/index.html"
             mode: "000400"

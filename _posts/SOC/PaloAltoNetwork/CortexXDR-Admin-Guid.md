@@ -6830,7 +6830,7 @@ Enable or Disable automatic upgrade of the broker VM. By default, auto upgrade i
 disable auto-upgrade, new features and improvements will require manual upgrade.
 - Monitoring
 Enable or Disable of local monitoring of the broker VM usage statistics in Prometheus
-metrics format, allowing to tap in and export data by navigating to http:// <broker_vm_address>:9100/metrics/. By default, monitoring broker VM is disabled.
+metrics format, allowing to tap in and export data by navigating to https:// <broker_vm_address>:9100/metrics/. By default, monitoring broker VM is disabled.
 - (For Broker VM 7.4.5 and earlier) Enable/Disable ssh Palo Alto Networks support team SSH access by using a Cortex XDR token.
 Enabling allows Palo Alto Networks support team to connect to the broker VM remotely, not the customer, with the generated password.
 Make sure save the password before closing the window. The only way to re- generate a password is to disable ssh and re-enable.

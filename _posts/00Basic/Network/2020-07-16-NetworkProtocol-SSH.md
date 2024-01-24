@@ -985,7 +985,7 @@ $ ssh -p 9001 localhost
 
 # 从某主机的80端口开启到本地主机2001端口的隧道
 ssh -N -L 2001:localhost:80 somemachine
-# 现在可以直接在浏览器中输入http://localhost:2001访问这个网站。
+# 现在可以直接在浏览器中输入https://localhost:2001访问这个网站。
 
 ```
 
@@ -1038,7 +1038,7 @@ $ ssh user@host cat /path/to/remotefile | diff /path/to/localfile –
 
 5、通过SSH挂载目录/文件系统
 $ sshfs name@server:/path/to/folder /path/to/mount/point
-从http://fuse.sourceforge.net/sshfs.html下载sshfs，它允许你跨网络安全挂载一个目录。
+从https://fuse.sourceforge.net/sshfs.html下载sshfs，它允许你跨网络安全挂载一个目录。
 
 6、通过中间主机建立SSH连接
 $ ssh -t reachable_host ssh unreachable_host
@@ -1107,7 +1107,7 @@ yes | pv | ssh $host “cat > /dev/null”
 
 18、如果建立一个可以重新连接的远程GNU screen
 ssh -t user@some.domain.com /usr/bin/screen –xRR
-人们总是喜欢在一个文本终端中打开许多shell，如果会话突然中断，或你按下了“Ctrl-a d”，远程主机上的shell不会受到丝毫影响，你可以重新连接，其它有用的screen命令有“Ctrl-a c”（打开新的shell）和“Ctrl-a a”（在shell之间来回切换），请访问http://aperiodic.net/screen/quick_reference阅读更多关于screen命令的快速参考。
+人们总是喜欢在一个文本终端中打开许多shell，如果会话突然中断，或你按下了“Ctrl-a d”，远程主机上的shell不会受到丝毫影响，你可以重新连接，其它有用的screen命令有“Ctrl-a c”（打开新的shell）和“Ctrl-a a”（在shell之间来回切换），请访问https://aperiodic.net/screen/quick_reference阅读更多关于screen命令的快速参考。
 
 19、继续SCP大文件
 rsync –partial –progress –rsh=ssh $file_source $user@$host:$destination_file

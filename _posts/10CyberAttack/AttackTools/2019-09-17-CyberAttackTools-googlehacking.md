@@ -45,7 +45,7 @@ Google also allows keyword searches in specific parts of web pages using special
 
 `inanchor`:
 - `inanchor`:
-  - searches for text in a page's link anchors. A link anchor is the descriptivetext of a link.For example, the link anchor in the HTML code `<ahref="http://www.oreilly.com>O'Reilly and Associates</a>` is "O'Reilly and Associates."
+  - searches for text in a page's link anchors. A link anchor is the descriptivetext of a link.For example, the link anchor in the HTML code `<ahref="https://www.oreilly.com>O'Reilly and Associates</a>` is "O'Reilly and Associates."
 
 > inanchor:"tom peters"
 
@@ -60,7 +60,7 @@ site:
 
 `link`:
 - `link`:
-  - returns a list of pages linking to the specified URL. Enter `link:www.google.com` and you'll be returned a list of pages that link to Google.You can includethe `http://` bit; you don't need it, and, indeed, Googleappears to ignore it even if you do put it in. `link:` works just as well with `"deep"URLs—http://www.raelity.org/apps/blosxom/` for instance—as with top-level URLs suchas raelity.org.
+  - returns a list of pages linking to the specified URL. Enter `link:www.google.com` and you'll be returned a list of pages that link to Google.You can includethe `https://` bit; you don't need it, and, indeed, Googleappears to ignore it even if you do put it in. `link:` works just as well with `"deep"URLs—https://www.raelity.org/apps/blosxom/` for instance—as with top-level URLs suchas raelity.org.
 
 `cache`:
 - `cache`:
@@ -72,7 +72,7 @@ site:
   - limits your search to a particular date or range of dates that a page wasindexed. It's important to note that the search is not limited to when a page was created,but when it was indexed by Google. So a page created on February 2 and not indexed byGoogle until April 11 could be found with daterange:
   - search on April 11.Remember also that Google reindexes pages. Whether the date range changes depends onwhether the page content changed. For example, Google indexes a page on June 1.Google reindexes the page on August 13, but the page content hasn't changed. The datefor the purpose of searching with daterange:
   - is still June 1.Note that daterange:
-  - works with Julian, not Gregorian dates (thecalendar we use every day.) There are Gregorian/Julian converters online, but if you wantto search Google without all that nonsense, use the FaganFinder Google interface`(http://www.faganfinder.com/engines/google.shtml)`, offering daterange:searchingvia a Gregorian date pull-down menu. Some of the hacks deal with daterange:searching without headaches, so you'll see this popping up again and again in the book.
+  - works with Julian, not Gregorian dates (thecalendar we use every day.) There are Gregorian/Julian converters online, but if you wantto search Google without all that nonsense, use the FaganFinder Google interface`(https://www.faganfinder.com/engines/google.shtml)`, offering daterange:searchingvia a Gregorian date pull-down menu. Some of the hacks deal with daterange:searching without headaches, so you'll see this popping up again and again in the book.
 > "George Bush" daterange:2452389-2452389
 > neurosurgery daterange:2452389-2452389
 

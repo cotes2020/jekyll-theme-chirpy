@@ -1,13 +1,3 @@
----
-title: HTML - HTML Style
-date: 2019-08-29 11:11:11 -0400
-description: Learning Path
-categories: [Web, HTML]
-img: /assets/img/sample/rabbit.png
-tags: [HTML]
----
-
-
 # HTML - HTML Style
 
 [toc]
@@ -328,7 +318,7 @@ defines the horizontal text alignment for an HTML element:
 defines a section that is quoted from another source.
 ```js
 <p>Here is a quote from WWF's website:</p>
-<blockquote cite="http://www.worldwildlife.org/who/index.html">
+<blockquote cite="https://www.worldwildlife.org/who/index.html">
 For 50 years, WWF has been protecting the future of nature.
 The world's leading conservation organization,
 WWF works in 100 countries and is supported by

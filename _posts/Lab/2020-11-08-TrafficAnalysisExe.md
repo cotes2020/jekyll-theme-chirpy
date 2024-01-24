@@ -168,7 +168,7 @@ LEVEL 2 QUESTIONS:
     1079	22.647035	188.225.73.100	172.16.165.165	HTTP	1086		HTTP/1.1 200 OK  (text/html)
     open "Line-based text data: text/html (35 lines)"
     <html> \r\n
-    [truncated]<body bgcolor=#ffffff><div align='center'><iframe src='http://stand.trustandprobaterealty.com/?PHPSSESID=njrMNruDMhvJFIPGKuXDSKVbM07PThnJko2ahe6JVg|ZDJiZjZiZjI5Yzc5OTg3MzE1MzJkMmExN2M4NmJiOTM' border=0 width=125 height=10 scro
+    [truncated]<body bgcolor=#ffffff><div align='center'><iframe src='https://stand.trustandprobaterealty.com/?PHPSSESID=njrMNruDMhvJFIPGKuXDSKVbM07PThnJko2ahe6JVg|ZDJiZjZiZjI5Yzc5OTg3MzE1MzJkMmExN2M4NmJiOTM' border=0 width=125 height=10 scro
     \r\n
 
     or
@@ -235,7 +235,7 @@ LEVEL 3 QUESTIONS:
 ```c
 1) Checking my website, what have I (and others) been calling this exploit kit
     Rig EK
-    Rig is similar to Infinity EK (originally identified as Goon in the spring of 2014). Some good info on Rig EK can be found at: http://www.kahusecurity.com/2014/rig-exploit-pack/
+    Rig is similar to Infinity EK (originally identified as Goon in the spring of 2014). Some good info on Rig EK can be found at: https://www.kahusecurity.com/2014/rig-exploit-pack/
 
 
 2) What file or page from the compromised website has the malicious script with the URL for the redirect
@@ -244,7 +244,7 @@ LEVEL 3 QUESTIONS:
     161	6.073686	172.16.165.165	82.150.140.30	HTTP	621	www.ciniholland.nl	GET / HTTP/1.1
     follow -> TCP stream
     Content-Encoding: gzip
-    The index page for www.ciniholland.nl had the URL for http://24corp-shop .com/
+    The index page for www.ciniholland.nl had the URL for https://24corp-shop .com/
 
 
 3) Extract the exploit file(s).  What is(are) the md5 file hash(es)

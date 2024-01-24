@@ -46,18 +46,18 @@ PHP服务器组件非常多有WampServer、XAMPP、AppServ、phpStudy、phpnow�
 推荐：
 WampServer，这也是目前window平台上使用最广泛的，操作也非常简单。
 WampServer, 内部还集成了PhpMyAdmin 数据库管理工具。
-下载地址：http://www.wampserver.com/en/#download-wrapper
+下载地址：https://www.wampserver.com/en/#download-wrapper
 
 ### PHP IDE(Integrated Development Environment,集成开发环境)
 PHP IDE 也是非常多有Zend Studio、Eclipse for PHP、EasyEclipse等。
 推荐：easyeclipse for php
-下载地址：http://www.easyeclipse.org/site/distributions/php.html
+下载地址：https://www.easyeclipse.org/site/distributions/php.html
 
 ### MySql管理工具
 MySql管理工具常用的有：Navicat for Mysql、PhpMyAdmin。
 推荐：Navicat for Mysql，
 Navicat for MySQL是一套专为MySQL设计的强大数据库管理及开发工具。它可以用于任何3.21或以上的MySQL数据库服务器，并支持大部份MySQL最新版本的功能，包括触发器、存储过程、函数、事件、检索、权限管理等等。
-下载地址：http://www.navicat.com.cn/download/navicat-for-mysql
+下载地址：https://www.navicat.com.cn/download/navicat-for-mysql
 
 ### 文本编辑器
 如果你已经能够熟练掌握PHP的语法，那你可以逐渐抛弃那些笨重的IDE，使用文本编辑器来编写PHP代码。

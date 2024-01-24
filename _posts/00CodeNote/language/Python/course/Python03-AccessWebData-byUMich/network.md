@@ -16,7 +16,7 @@ mysock.connect( ('data.pr4e.org', 80))   # host and port
 ---
 
 # HTTP
-http:// www.goo.com/ index.html
+https:// www.goo.com/ index.html
 protocol+host+document
 
 1. usually
@@ -29,7 +29,7 @@ $ telnet data.pr4e.org 80
 Trying 192.241.136.170...
 Connected to data.pr4e.org.
 Escape character is '^]'.
-GET http://data.pr4e.org/page1.htm HTTP/1.0   # send a GET request
+GET https://data.pr4e.org/page1.htm HTTP/1.0   # send a GET request
 
 HTTP/1.1 200 OK                               # the metadata of the file you ask
 Date: Fri, 15 May 2020 00:39:30 GMT
@@ -47,7 +47,7 @@ Content-Type: text/html
 <h1>The First Page</h1>                        # the file you ask
 <p>
 If you like, you can switch to the
-<a href="http://data.pr4e.org/page2.htm">
+<a href="https://data.pr4e.org/page2.htm">
 Second Page</a>.
 </p>
 Connection closed by foreign host.
@@ -64,7 +64,7 @@ import socket
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # make the door open
 mysock.connect( ('data.pr4e.org', 80))    # connect to a host and port
 # encode it from unicode to UTF-8
-cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode() # makeup request, encode to byte from unicode
+cmd = 'GET https://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode() # makeup request, encode to byte from unicode
 mysock.send(cmd) # send to the server
 
 while True:
@@ -75,7 +75,7 @@ while True:
 mysock.close()
 
 python3 py.file
-## result: http://data.pr4e.org/romeo.txt
+## result: https://data.pr4e.org/romeo.txt
 # meta data
 HTTP/1.1 200 OK
 Date: Fri, 15 May 2020 00:47:57 GMT
@@ -103,7 +103,7 @@ ick and pale with grief
 ```py
 import urllib.request, urllib.parse, urllib.error
 # open the file
-fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+fhand = urllib.request.urlopen('https://data.pr4e.org/romeo.txt')
 
 for line in fhand:
     print(line.decode().strip()) # string
@@ -154,7 +154,7 @@ ctx = ssl.create_default_context()   # for https
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = input('Enter - ')  #http://www.dr-chuck.com/
+url = input('Enter - ')  #https://www.dr-chuck.com/
 html = urllib.request.urlopen(url, context=ctx).read() # return entire website in a single string
 soup = BeautifulSoup(html, 'html.parser')
 
@@ -164,7 +164,7 @@ for tag in tags:
     print(tag.get('href', None))
 
 # result
-Enter - http://www.dr-chuck.com/
+Enter - https://www.dr-chuck.com/
 https://www.dr-chuck.com/csev-blog/
 https://www.si.umich.edu/
 https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1159280

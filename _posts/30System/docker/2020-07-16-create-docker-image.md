@@ -82,7 +82,7 @@ COPY package*.json ./
 # With the first argument being our source file(s) and the second our destination.
 
 # ensure the prerequisite packages for our application are installed from NPM. These are just more RUN commands.
-RUN npm config set registry http://registry.npmjs.org/
+RUN npm config set registry https://registry.npmjs.org/
 RUN npm install
 
 
