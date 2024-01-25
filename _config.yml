@@ -148,6 +148,7 @@ defaults:
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
       permalink: /posts/:title/
+defaults:
   - scope:
       path: _drafts
     values:
@@ -155,7 +156,7 @@ defaults:
   - scope:
       path: ""
       type: tabs # see `site.collections`
-    values: f
+    values:
       layout: page
       permalink: /:title/
   - scope:
@@ -169,6 +170,7 @@ defaults:
 
 sass:
   style: compressed
+
 
 compress_html:
   clippings: all
