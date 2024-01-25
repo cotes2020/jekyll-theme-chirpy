@@ -1,81 +1,15 @@
 <div align="center">
 
-  # Chirpy Jekyll Theme
+## Problem Statement
 
-  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
+By creating this research data repository, we will be able to better understand and address the unique health challenging problems faced by diverse communities, particularly those from historically marginalized backgrounds. This will enable us to work towards achieving the North Star goals, which include fostering a diverse, equitable, and inclusive AI/ML workforce, increasing knowledge and community engagement in AI/ML, and building community capacity in AI/ML to tackle community-centric health issues.
 
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)][gem]&nbsp;
-  [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg?branch=master&event=push)][ci]&nbsp;
-  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)][codacy]&nbsp;
-  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)][license]&nbsp;
-  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+## Goals/Objectives of the Contractual Engagement
+**Aim 1:** Establish a collaborative partnership between UTHealth, Cedars-Sinai Medical Center, and the University of Arkansas at Pine Bluff. To achieve this aim, we will establish a strong collaboration between the three institutions, leveraging their expertise in medical information, data management, and infrastructure development. This partnership will involve regular communication, sharing of resources, and joint decision-making to ensure the successful development of the research data repository. We will conduct a detailed needs assessment to identify the necessary resources, expertise, and infrastructure required for the construction of the data repository. This will involve evaluating the current capabilities of each institution and identifying areas for improvement. Based on this assessment, we will develop a workforce development plan to train and equip personnel with the necessary skills and knowledge to construct and maintain the data repository.
 
-  [**Live Demo** →][demo]
+**Aim 2:** Develop a plan for the construction of the research data repository. After completing the needs assessment and workforce development, we will move forward with creating a comprehensive plan for building the research data repository. This will involve forming a dedicated project team, identifying effective solutions for the repository's design, and addressing potential challenges like data security and privacy. We will conduct a thorough risk assessment and establish a detailed resource allocation plan. Additionally, we will explore possible partnerships with cloud, platform, and solution providers to support the data repository's development. Once the plan is finalized, it will be presented to key stakeholders for review and feedback, ensuring a strong foundation for the repository and its ability to meet the research community's needs before proceeding with the construction phase.
 
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+## Requirements from AIM-AHEAD Coordinating Center:
+**DICB Focus Area:** Research Data Repository to Host AIM-AHEAD Generated Datasets: Infrastructure support, Cloud space, Data, Publication help.
 
 </div>
-
-## Features
-
-- Dark / Light Theme Mode
-- Localized UI language
-- Pinned Posts on Home Page
-- Hierarchical Categories
-- Trending Tags
-- Table of Contents
-- Last Modified Date
-- Syntax Highlighting
-- Mathematical Expressions
-- Mermaid Diagrams & Flowcharts
-- Dark / Light Mode Images
-- Embed Videos
-- Disqus / Giscus / Utterances Comments
-- Built-in Search
-- Atom Feeds
-- PWA
-- Google Analytics
-- SEO & Performance Optimization
-
-## Documentation
-
-To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
-
-## Contributing
-
-Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
-to learn, inspire, and create. Any contributions you make are greatly appreciated.
-For details, see the "[Contributing Guidelines][contribute-guide]".
-
-## Credits
-
-### Contributors
-
-Thanks to [all the contributors][contributors] involved in the development of the project.
-
-[![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
-<sub> —— Made with [contrib.rocks](https://contrib.rocks)</sub>
-
-### Third-Party Assets
-
-This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
-
-The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
-
-## License
-
-This project is published under [MIT License][license].
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
-[codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
-[license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
-[jekyllrb]: https://jekyllrb.com/
-[clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
-[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
-[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
-[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
-[lib]: https://github.com/cotes2020/chirpy-static-assets
-[vscode]: https://code.visualstudio.com/
-[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
