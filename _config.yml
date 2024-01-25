@@ -155,7 +155,7 @@ defaults:
   - scope:
       path: ""
       type: tabs # see `site.collections`
-    values:
+    values:f
       layout: page
       permalink: /:title/
   - scope:
