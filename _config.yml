@@ -71,7 +71,7 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://fitia-rakoto.github.io/"
+img_cdn: "https://fitia-rakoto.github.io"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: assets/img/favicons/icon.png
