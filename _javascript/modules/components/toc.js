@@ -1,5 +1,5 @@
 export function toc() {
-  if (document.querySelector('main h2')) {
+  if (document.querySelector('main h2, h3')) {
     // see: https://github.com/tscanlin/tocbot#usage
     tocbot.init({
       tocSelector: '#toc',
