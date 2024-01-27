@@ -751,6 +751,7 @@ $btn-mb: 0.5rem;
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
+      
       color: rgb(254, 254, 254);
     }
   }
