@@ -751,7 +751,7 @@ $btn-mb: 0.5rem;
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
-      color: rgba(254, 254, 254;
+      color: rgb(254, 254, 254);
     }
   }
 
@@ -777,7 +777,7 @@ $btn-mb: 0.5rem;
 
       a.nav-link {
         @include pt-pb(0.6rem);
-        
+
         &:hover {
           color: rgb(255, 255, 255);
         }
