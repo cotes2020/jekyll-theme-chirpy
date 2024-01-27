@@ -51,8 +51,8 @@ social:
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-#google_analytics:
-#  id: # fill in your Google Analytics ID
+google_analytics:
+  id: 'G-BME05MRJXR' # fill in your Google Analytics ID
 
 # Prefer color scheme setting.
 #

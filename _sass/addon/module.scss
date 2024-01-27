@@ -107,7 +107,8 @@
 }
 
 %sidebar-links {
-  color: var(--sidebar-muted-color);
+  /* color: var(--site-subtitle-color); */
+  color: rgba(84, 84, 84, 99%);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
