@@ -777,7 +777,9 @@ $btn-mb: 0.5rem;
 
       a.nav-link {
         @include pt-pb(0.6rem);
-
+        &:hover {
+          color: rgba(255, 255, 255, 1);
+        }
         display: flex;
         align-items: center;
         border-radius: 0.75rem;
@@ -796,7 +798,7 @@ $btn-mb: 0.5rem;
 
       &.active {
         .nav-link {
-          color: rgba(255, 255, 255, 100%);
+          color: rgba(255, 255, 255, 1);
         }
       }
 
