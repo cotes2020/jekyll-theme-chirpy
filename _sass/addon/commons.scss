@@ -751,13 +751,13 @@ $btn-mb: 0.5rem;
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
-      color: rgba(254, 254, 254, 0.99);
+      color: rgba(254, 254, 254;
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    color: rgba(254, 254, 254, 0.99);
+    color: rgb(254, 254, 254, 0.99);
     margin-top: 0.25rem;
     word-spacing: 1px;
     -webkit-user-select: none;
@@ -777,13 +777,16 @@ $btn-mb: 0.5rem;
 
       a.nav-link {
         @include pt-pb(0.6rem);
+        
         &:hover {
-          color: rgba(255, 255, 255, 1);
+          color: rgb(255, 255, 255);
         }
+
         display: flex;
         align-items: center;
         border-radius: 0.75rem;
         font-weight: 600;
+
         i {
           font-size: 95%;
           opacity: 0.8;
