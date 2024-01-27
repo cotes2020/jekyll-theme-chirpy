@@ -45,6 +45,15 @@
 
   {{ seo_tags }}
 
+  <!-- PWA cache settings -->
+  <meta
+    name="pwa-cache"
+    content="{{ site.pwa.cache.enabled | default: 'false' }}"
+    {%- if site.baseurl and site.baseurl != empty -%}
+      data-baseurl="{{ site.baseurl }}"
+    {%- endif -%}
+  >
+
   <title>
     {%- unless page.layout == 'home' -%}
       {{ page.title | append: ' | ' }}
