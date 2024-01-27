@@ -13,10 +13,12 @@ img_path: /assets/img/post6/
 ```cpp
 #include <iostream>
 #include <string>
+
+using namespace std;
 int main ()
 {
-    std::string str;
-    getline(std::cin, str);
+    string str;
+    getline(cin, str);
     //이렇게 하면 한 줄의 string을 입력을 받을 수 있다.
 }
 ```
@@ -26,9 +28,11 @@ vector는 가변 배열 같은 느낌으로 보면 될 듯 하다.
 ```cpp
 #include <iostream>
 #include <vector>
+
+using namespace std;
 int main ()
 {
-    std::vector<long> V(n, 0); //길이 n짜리 vector, 다 0으로 초기화
+    vector<long> V(n, 0); //길이 n짜리 vector, 다 0으로 초기화
     for (int i = 0; i < V.size(); i++)
     {
         V[i] = i; //이렇게 index로 접근도 가능하고
@@ -52,7 +56,37 @@ int main ()
     //이렇게 하면 c언어의 scanf와의 연결을 끊어서 입력을 더욱 빠르게 받을 수 있다. 
 ```
 
-## array
+## array (길이가 정해진 배열)
 ```cpp
     int alphaArray[26] = {0, }; //0으로 초기화
+```
+
+```cpp
+    #include <array>
+    array<int, 3> betaArray{}; //길이 3짜리 int 배열 0으로 초기화해서 생성
+    array<array<int, 1000>, 1000> betaArray{}; // 1000*1000 int 이차원 배열 
+```
+
+## vector (길이가 정해지지 않은 배열)
+```cpp
+    #include <vector>
+    using namespace std;
+    vector<int> gammaArray(n, 0); //길이 n짜리 int 배열 0으로 초기화해서 생성
+
+    vector<vector<int>> gammaArray(n);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            int temp;
+            cin >> temp;
+            gammaArray[i].push_back(temp);
+        }
+    }
+    //n*n 이차원 배열 입력 받기
+
+    vector<int> gammaArray = {3, 5, 4, 1, 2};
+    vector<int> deltaArray(gammaArray.begin(), gammaArray.begin()+3);
+    //deltaArray = {3, 5, 4};
+    //vector 배열 일부 복제하기
 ```
