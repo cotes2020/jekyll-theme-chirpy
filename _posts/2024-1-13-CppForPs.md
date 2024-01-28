@@ -93,6 +93,6 @@ int main ()
     3*3행렬 배열 만들기
     vector<vector<vector<int>>> gammaArray(1, vector<vector<int>>(3, vector<int>(3)));
     //0만 차있는 3*3으로 초기화
-    vector<vector<int>> baseMat = {{0, 1, 0}, {1, 1, 1}, {1, 2, 3}};
+    vector<vector<int>> baseMat = { {0, 1, 0}, {1, 1, 1}, {1, 2, 3} };
     gammaArray.push_back(baseMat); // 뒤에 3*3 행렬 추가
 ```
