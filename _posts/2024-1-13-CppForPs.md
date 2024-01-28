@@ -89,4 +89,10 @@ int main ()
     vector<int> deltaArray(gammaArray.begin(), gammaArray.begin()+3);
     //deltaArray = {3, 5, 4};
     //vector 배열 일부 복제하기
+
+    3*3행렬 배열 만들기
+    vector<vector<vector<int>>> gammaArray(1, vector<vector<int>>(3, vector<int>(3)));
+    // {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}로 초기화
+    vector<vector<int>> baseMat = {{0, 1, 0}, {1, 1, 1}, {1, 2, 3}};
+    gammaArray.push_back(baseMat); // 뒤에 3*3 행렬 추가
 ```
