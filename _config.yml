@@ -49,10 +49,13 @@ google_site_verification: # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
+# Analytics
 analytics:
-    google:
-      measurement_id: "G-YVVZF2T210"
-
+  provider               : "google-gtag" 
+                          # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-YVVZF2T210"
+    anonymize_ip         : # true, false (default)
 # Prefer color scheme setting.
 #
 # Note: Keep empty will follow the system prefer color by default,
