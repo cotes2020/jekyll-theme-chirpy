@@ -49,9 +49,9 @@ google_site_verification: # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-analytics:
-  google:
-    measurement_id: "G-YVVZF2T210"
+# analytics:
+#  google:
+#    measurement_id: "G-YVVZF2T210"
 
 # Prefer color scheme setting.
 #
