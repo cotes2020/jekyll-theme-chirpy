@@ -90,7 +90,7 @@ int main ()
     //deltaArray = {3, 5, 4};
     //vector 배열 일부 복제하기
 
-    3*3행렬 배열 만들기
+    //3*3행렬 배열 만들기
     vector<vector<vector<int>>> gammaArray(1, vector<vector<int>>(3, vector<int>(3)));
     //0만 차있는 3*3으로 초기화
     vector<vector<int>> baseMat = { {0, 1, 0}, {1, 1, 1}, {1, 2, 3} };
