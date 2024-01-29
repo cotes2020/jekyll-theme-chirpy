@@ -8,6 +8,8 @@ cdns:
   - url: https://fonts.googleapis.com
   # jsDelivr CDN
   - url: https://cdn.jsdelivr.net
+  # polyfill.io for math
+  - url: https://polyfill.io
 
 # fonts
 
