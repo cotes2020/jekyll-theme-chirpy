@@ -40,7 +40,7 @@ copyright:
     Kecuali jika dinyatakan, Postingan blog di situs ini dilisensikan
     di bawah Lisensi Creative Commons Attribution 4.0 International (CC BY 4.0) oleh penulis.
 
-meta: Didukung oleh :PLATFORM dengan tema :THEME.
+meta: Didukung oleh :PLATFORM dengan tema :THEME
 
 not_found:
   statment: Maaf, kami gagal menemukan URL itu atau memang mengarah ke sesuatu yang tidak ada.
@@ -70,8 +70,6 @@ post:
     share_link:
       title: Salin tautan
       succeed: Tautan berhasil disalin!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Disematkan
 
 # categories page
 categories:

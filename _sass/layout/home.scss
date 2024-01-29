@@ -2,9 +2,91 @@
   Style for Homepage
 */
 
+#post-list {
+  margin-top: 2rem;
+
+  .card-wrapper {
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .card {
+    border: 0;
+    background: none;
+
+    %img-radius {
+      border-radius: $base-radius $base-radius 0 0;
+    }
+
+    .preview-img {
+      @extend %img-radius;
+
+      img {
+        @extend %img-radius;
+      }
+    }
+
+    .card-body {
+      height: 100%;
+      padding: 1rem;
+
+      .card-title {
+        @extend %text-clip;
+
+        color: var(--heading-color) !important;
+        font-size: 1.25rem;
+      }
+
+      %muted {
+        color: var(--text-muted-color) !important;
+      }
+
+      .card-text.content {
+        @extend %muted;
+
+        p {
+          @extend %text-clip;
+
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .post-meta {
+        @extend %muted;
+
+        i {
+          &:not(:first-child) {
+            margin-left: 1.5rem;
+          }
+        }
+
+        em {
+          @extend %normal-font-style;
+
+          color: inherit;
+        }
+
+        > div:first-child {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+} /* #post-list */
+
 .pagination {
-  color: var(--btn-patinator-text-color);
+  color: var(--text-color);
   font-family: Lato, sans-serif;
+  justify-content: space-evenly;
 
   a:hover {
     text-decoration: none;
@@ -12,26 +94,27 @@
 
   .page-item {
     .page-link {
-      color: inherit;
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0;
+      color: var(--btn-patinator-text-color);
+      padding: 0 0.6rem;
       display: -webkit-box;
       -webkit-box-pack: center;
       -webkit-box-align: center;
-      border-radius: 50%;
-      border: 1px solid var(--btn-paginator-border-color);
-      background-color: var(--button-bg);
-
-      &:hover {
-        background-color: var(--btn-paginator-hover-color);
-      }
+      border-radius: 0.5rem;
+      border: 0;
+      background-color: inherit;
     }
 
     &.active {
       .page-link {
         background-color: var(--btn-paginator-hover-color);
-        color: var(--btn-text-color);
+      }
+    }
+
+    &:not(.active) {
+      .page-link {
+        &:hover {
+          box-shadow: inset var(--btn-border-color) 0 0 0 1px;
+        }
       }
     }
 
@@ -40,106 +123,41 @@
 
       .page-link {
         color: rgba(108, 117, 125, 0.57);
-        border-color: var(--btn-paginator-border-color);
-        background-color: var(--button-bg);
       }
-    }
-
-    &:first-child .page-link,
-    &:last-child .page-link {
-      border-radius: 50%;
     }
   } /* .page-item */
 } /* .pagination */
 
-#post-list {
-  margin-top: 1.75rem;
-  padding-right: 0.5rem;
-
-  a:hover {
-    text-decoration: none;
+/* Tablet */
+@media all and (min-width: 768px) {
+  %img-radius {
+    border-radius: 0 $base-radius $base-radius 0;
   }
 
-  .post-preview {
-    padding: 0.25rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--card-border-color);
-    background: var(--card-bg);
+  #post-list {
+    .card {
+      .card-body {
+        padding: 1.75rem 1.75rem 1.25rem 1.75rem;
 
-    &:hover {
-      background: var(--card-hovor-bg);
-      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 1.75rem;
-    }
-
-    h1 {
-      font-size: 1.4rem;
-      margin: 0;
-    }
-
-    .post-meta {
-      i {
-        font-size: 0.73rem;
-
-        &:not(:first-child) {
-          margin-left: 1.2rem;
-        }
-      }
-
-      em {
-        @extend %normal-font-style;
-      }
-
-      .pin {
-        i {
-          -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-          padding-left: 3px;
-          color: var(--pin-color);
+        .card-text {
+          display: inherit !important;
         }
 
-        span {
-          display: none;
+        .post-meta {
+          i {
+            &:not(:first-child) {
+              margin-left: 1.75rem;
+            }
+          }
         }
       }
     }
-
-    .post-content {
-      margin-top: 0.6rem;
-      margin-bottom: 0.6rem;
-      color: var(--post-list-text-color);
-
-      > p {
-        margin: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-    }
-  } /* .post-preview */
-} /* #post-list */
-
-@media (hover: hover) {
-  .post-preview {
-    transition: all 0.35s ease-in-out;
   }
 }
 
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
-  .post-preview {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-  }
-
   .pagination {
-    justify-content: space-evenly;
-
     .page-item {
       &:not(:first-child):not(:last-child) {
         display: none;
@@ -151,40 +169,16 @@
 /* Sidebar is visible */
 @media all and (min-width: 831px) {
   #post-list {
-    margin-top: 3rem;
-
-    .post-preview {
-      padding: 0.5rem;
-
-      .post-meta {
-        .pin {
-          background: var(--pin-bg);
-          border-radius: 5px;
-          line-height: 1.4rem;
-          height: 1.3rem;
-          margin-top: 3px;
-          padding-left: 1px;
-          padding-right: 6px;
-
-          > span {
-            display: inline;
-          }
-        }
-      }
-    }
+    margin-top: 2.5rem;
   }
 
   .pagination {
     font-size: 0.85rem;
+    justify-content: center;
 
     .page-item {
       &:not(:last-child) {
         margin-right: 0.7rem;
-      }
-
-      .page-link {
-        width: 2rem;
-        height: 2rem;
       }
     }
 
@@ -192,11 +186,4 @@
       display: none;
     }
   } /* .pagination */
-}
-
-/* Panel hidden */
-@media all and (max-width: 1200px) {
-  #post-list {
-    padding-right: 0;
-  }
 }

@@ -40,8 +40,7 @@ copyright:
     Eccetto quando esplicitamente menzionato, i post di questo blog sono da ritenersi sotto
     i termini di licenza Creative Commons Attribution 4.0 International (CC BY 4.0).
 
-
-meta: Servizio offerto da :PLATFORM con tema :THEME.                                       
+meta: Servizio offerto da :PLATFORM con tema :THEME
 not_found:
   statment: Ci scusiamo, non è stato possibile trovare l'URL in questione. Potrebbe puntare ad una pagina non esistente.
 
@@ -70,18 +69,16 @@ post:
     share_link:
       title: Copia link
       succeed: Link copiato con successo!
-  # pinned prompt of posts list on homepage
-  pin_prompt: In alto
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: '%b %e, %Y'
-    dayjs: 'll'
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
   archives:
-    strftime: '%b'
-    dayjs: 'MMM'
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:

@@ -3,15 +3,15 @@ layout: post
 title: Use a hello certificate for ssh and setup your github repo
 date: 2023-01-31 00:05
 category: 
-- Instructions
+- instructions
 author: ebmarquez
 tags:
-- SSH
-- Windows
-- Windows Hello
-- GitHub
-- Keys
-- PowerShell
+- ssh
+- windows
+- windows hello
+- gitHub
+- keys
+- powershell
 summary: Use the windows hello certificate as the ssh key for github
 ---
 * Table of Contents

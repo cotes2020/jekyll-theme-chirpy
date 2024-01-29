@@ -5,7 +5,6 @@
 {% assign domain = 'https://cdn.jsdelivr.net/' %}
 
 {% for url in urls %}
-
   {% if url contains domain %}
     {% assign url_snippet = url | slice: domain.size, url.size %}
 
@@ -16,15 +15,10 @@
     {% endif %}
 
   {% elsif url contains '//' %}
-
     <script src="{{ url }}"></script>
-
   {% else %}
-
     <script src="{{ url | relative_url }}"></script>
-
   {% endif %}
-
 {% endfor %}
 
 {% if combined_urls %}
