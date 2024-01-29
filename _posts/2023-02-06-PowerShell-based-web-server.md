@@ -3,7 +3,7 @@ layout: post
 title: PowerShell based web server
 date: 2023-02-06
 category:
-- Instructions
+- instructions
 author: ebmarquez
 tags:
 - api
@@ -11,7 +11,7 @@ tags:
 - container
 - docker
 - dotnet
-- PowerShell
+- powershell
 summary: Using powershell to run a web server, the code is designed to operate within a container.
 ---
 * Table of Contents

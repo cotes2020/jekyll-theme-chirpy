@@ -3,7 +3,7 @@ layout: post
 title: Beef Bourguignon Recipie
 date: 2024-01-21
 category:
-- Food
+- food
 author: ebmarquez
 tags:
 - recipes
