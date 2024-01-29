@@ -1,9 +1,9 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { imgExtra, initClipboard, smoothScroll } from './modules/plugins';
+import { loadImg, imgPopup, initClipboard } from './modules/plugins';
 
 basic();
 initSidebar();
 initTopbar();
-imgExtra();
+loadImg();
+imgPopup();
 initClipboard();
-smoothScroll();
