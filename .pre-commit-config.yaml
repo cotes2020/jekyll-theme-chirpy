@@ -4,20 +4,20 @@ repos:
     rev: v4.4.0
     hooks:
     - id: check-added-large-files     # Prevent giant files from being committed
-#     # - id: check-docstring-first     # Checks a common error of defining a docstring after code.
-#   #   - id: check-json
-#   #   - id: check-merge-conflict
-#   #   - id: check-xml
-#   #   - id: check-yaml
-#   #     args: [--allow-multiple-documents]
-#   #   - id: detect-private-key     # Detects the presence of private keys
-#     - id: end-of-file-fixer     # Fix the empty EOF
-#   #   - id: pretty-format-json
-#   #     args:
-#   #     - --autofix
-#   #     - --indent=4
-#   #     - --no-sort-keys
-#   #   - id: trailing-whitespace     # Fix the redundant whitespace
+    # - id: check-docstring-first     # Checks a common error of defining a docstring after code.
+    # - id: check-json
+    - id: check-merge-conflict
+    # - id: check-xml
+    # - id: check-yaml
+    #   args: [--allow-multiple-documents]
+    # - id: detect-private-key     # Detects the presence of private keys
+    - id: end-of-file-fixer     # Fix the empty EOF
+  #   - id: pretty-format-json
+  #     args:
+  #     - --autofix
+  #     - --indent=4
+  #     - --no-sort-keys
+  #   - id: trailing-whitespace     # Fix the redundant whitespace
 
 #   # # Check for typos
 #   # - repo: https://github.com/codespell-project/codespell
@@ -30,24 +30,24 @@ repos:
 #   #     exclude: \.ipynb$
 
 
-#   # # ======= check python =======
-#   # # - repo: https://github.com/ambv/black
-#   # #   rev: 22.12.0
-#   # #   hooks:
-#   # #   - id: black
-#   # #     language_version: python3
-#   # - repo: https://github.com/asottile/pyupgrade
-#   #   rev: v3.3.1
-#   #   hooks:
-#   #   - id: pyupgrade
-#   #     args: [--py38-plus]
-#   # - repo: https://github.com/PyCQA/autoflake
-#   #   rev: v2.0.0
-#   #   hooks:
-#   #   - id: autoflake
-#   #   # removes unused imports and unused variables
-#   # # - repo: https://github.com/pycqa/isort
-#   # #   rev: 5.12.0
-#   # #   hooks:
-#   # #   - id: isort
-#   # #   # sort the import package
+  # ======= check python =======
+  # - repo: https://github.com/ambv/black
+  #   rev: 22.12.0
+  #   hooks:
+  #   - id: black
+  #     language_version: python3
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.3.1
+    hooks:
+    - id: pyupgrade
+      args: [--py38-plus]
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.0.0
+    hooks:
+    - id: autoflake
+    # removes unused imports and unused variables
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+    - id: isort
+    # sort the import package

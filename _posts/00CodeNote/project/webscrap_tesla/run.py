@@ -1,15 +1,16 @@
+import datetime
 import logging
 import os
 import sys
+
 from celery import shared_task
-from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+from django.conf import settings
 from django.core.mail import send_mail
-from django.conf import settings 
-import datetime
- 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 LOGGER = logging.getLogger(__name__) 
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
@@ -41,7 +42,7 @@ def watch_tesla():
     options.add_argument('--disable-extensions')
     options.add_argument('--disable-gpu')
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
-    options.add_argument('user-agent={0}'.format(user_agent))
+    options.add_argument(f'user-agent={user_agent}')
 
     driver = webdriver.Chrome(options=options)
     
