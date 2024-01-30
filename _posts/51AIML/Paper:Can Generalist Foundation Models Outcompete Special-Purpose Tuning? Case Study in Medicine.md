@@ -9,7 +9,7 @@
 
 - Yet, there is a prevalent assumption that they `cannot match specialist capabilities without intensive training of models with specialty knowledge`. 
 
--   - For example, most explorations to date on medical competency benchmarks have leveraged domain-specific training, as exemplified by efforts on BioGPT and Med-PaLM.
+  - For example, most explorations to date on medical competency benchmarks have leveraged domain-specific training, as exemplified by efforts on BioGPT and Med-PaLM.
 
 - We build on a prior study of the specialist capabilities of GPT-4 on medical challenge benchmarks in the absence of special training.
 

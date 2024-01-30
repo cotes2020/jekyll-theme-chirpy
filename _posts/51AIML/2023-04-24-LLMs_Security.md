@@ -14,6 +14,7 @@ tags: [AIML]
   - [overall](#overall)
   - [OWASP Top 10 for LLM](#owasp-top-10-for-llm-1)
     - [Top 10](#top-10)
+- [LLMs in Cybersecurity](#llms-in-cybersecurity)
   - [Benefits of LLMs in Cybersecurity](#benefits-of-llms-in-cybersecurity)
     - [Debugging and Coding](#debugging-and-coding)
     - [Analysis of Threat Patterns](#analysis-of-threat-patterns)
@@ -70,6 +71,7 @@ tags: [AIML]
     - [Malicious Content Authoring](#malicious-content-authoring)
     - [Reward Hacking](#reward-hacking)
   - [Solution](#solution)
+  - [LLM Model for CyberSecurity](#llm-model-for-cybersecurity)
   - [LLM with code generation](#llm-with-code-generation)
     - [overall](#overall-1)
       - [INTRODUCTION](#introduction)
@@ -169,6 +171,8 @@ LLM09: **Overreliance** 过度依赖
 
 ---
 
+# LLMs in Cybersecurity
+
 ## Benefits of LLMs in Cybersecurity
 
 
@@ -191,10 +195,9 @@ LLM09: **Overreliance** 过度依赖
 - Scripts, tools, and even reports can be written using these models, reducing the total amount of time professionals require to do their work.
 
 ---
-
+ 
 
 ## Dangers of LLMs in Cybersecurity
-
 
 ---
 
@@ -1512,6 +1515,10 @@ Reference Links
 
 
 ---
+
+## LLM Model for CyberSecurity
+
+- [Clouditera/secgpt](https://github.com/Clouditera/secgpt?tab=readme-ov-file)
 
 
 ## LLM with code generation
