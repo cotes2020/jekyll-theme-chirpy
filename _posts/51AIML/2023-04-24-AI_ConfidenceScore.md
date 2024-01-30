@@ -18,12 +18,18 @@ tags: [AIML]
         - [Results](#results)
         - [Qualitative Evaluation](#qualitative-evaluation)
       - [Exam 2: Language Models (Mostly) Know What They Know](#exam-2-language-models-mostly-know-what-they-know)
-      - [Estimating Confidence with Autolabel](#estimating-confidence-with-autolabel)
-      - [Confidence estimation techniques](#confidence-estimation-techniques-1)
-        - [P(True)](#ptrue)
-        - [Prompting for Confidence Score](#prompting-for-confidence-score)
-        - [Token probabilities](#token-probabilities)
-        - [Entropy 熵](#entropy-熵)
+  - [Estimating Confidence with Autolabel](#estimating-confidence-with-autolabel)
+    - [Confidence estimation techniques](#confidence-estimation-techniques-1)
+    - [P(True)](#ptrue)
+    - [Prompting for Confidence Score](#prompting-for-confidence-score)
+    - [Token probabilities](#token-probabilities)
+    - [Entropy 熵](#entropy-熵)
+    - [logprobs 参数的应用](#logprobs-参数的应用)
+      - [一、使用logprobs评估分类任务的置信度](#一使用logprobs评估分类任务的置信度)
+      - [二、获取置信分数以减少幻觉](#二获取置信分数以减少幻觉)
+      - [三、自动补全](#三自动补全)
+      - [四、高亮提示与字节参数](#四高亮提示与字节参数)
+      - [六、可能的扩展](#六可能的扩展)
   - [LLM能分清真理和谎言](#llm能分清真理和谎言)
     - [create "真假"数据集](#create-真假数据集)
     - [可视化LLM"真/假数据集"的表征](#可视化llm真假数据集的表征)
@@ -478,7 +484,7 @@ We study whether language models can evaluate the validity of their own claims a
 
 ---
 
-#### Estimating Confidence with Autolabel
+## Estimating Confidence with Autolabel
 
 - Autolabel library relies on `token level generation probabilities` to estimate LLM label confidence.
 - Generating confidence scores alongside labels is a simple config change - setting the key `compute_confidence = True` should initiate confidence score computation:
@@ -492,7 +498,7 @@ For all other models, Refuel provides access to a hosted Verifier LLM (currently
 ---
 
 
-#### Confidence estimation techniques
+### Confidence estimation techniques
 
 **Techniques**
 
@@ -503,7 +509,7 @@ For all other models, Refuel provides access to a hosted Verifier LLM (currently
 We benchmark the following four methods for confidence estimation:
 
 
-##### P(True)
+### P(True)
 1. The labeling LLM (GPT-4) generates a label (llm_label) given an input prompt.
 2. Using this, prompt the verifier LLM to complete the following sentence.
 3. The token generation probability of `“Yes”` is used as the confidence score
@@ -511,7 +517,7 @@ We benchmark the following four methods for confidence estimation:
 ![Screenshot 2023-12-04 at 05.11.26](/assets/img/Screenshot%202023-12-04%20at%2005.11.26.png)
 
 
-##### Prompting for Confidence Score
+### Prompting for Confidence Score
 
 - The labeling LLM (GPT-4) generates a label (`llm_label`) given an input (`prompt`).
 - Using this, prompt the verifier LLM to complete the following sentence.
@@ -520,7 +526,7 @@ We benchmark the following four methods for confidence estimation:
 
 ![Screenshot 2023-12-04 at 05.13.40](/assets/img/Screenshot%202023-12-04%20at%2005.13.40.png)
 
-##### Token probabilities
+### Token probabilities
 
 - For classification-like and QA tasks, this is simply the probability of the first token in the generated label output produced.
   - For NER, probabilities are first generated for all tokens and then the probability of tokens for each entity is averaged to `compute confidence scores per entity`.
@@ -529,7 +535,7 @@ We benchmark the following four methods for confidence estimation:
   - first, generate the prediction logits for all tokens in the vocabulary, for the length of the output sequence.
   - Then, compute the softmax over the token probability distribution for each index and use the probabilities corresponding to respective tokens in the prediction as token probabilities.
 
-##### Entropy 熵
+### Entropy 熵
 
 - Exhaustive Entropy
   - This method is used to calculate entropy for classification-like tasks. First, calculate the probability of each of the possible labels and then calculate the 2-bit shannon entropy of the probability distribution over possible labels.
@@ -538,6 +544,406 @@ We benchmark the following four methods for confidence estimation:
   - This method is used to calculate entropy for generation-like tasks. We prompt the LLM to produce N predictions at a temperature of 0.5 and then group them using a pairwise ROGUE score. Then, will calculate the average probability of each group of predictions and calculate the entropy of that prediction distribution.
 ‍
 ![Screenshot 2023-12-04 at 07.53.10](/assets/img/Screenshot%202023-12-04%20at%2007.53.10.png)
+
+
+----
+
+### logprobs 参数的应用
+
+logprobs参数的应用。
+- 启用该参数的时候，API将返回每个输出的token的对数概率，以及每个token位置上出现概率较大的token及其对数概率。
+- 相关的请求参数有：
+  - logprobs：是否在输出token的时候一并返回对数概率。如果是true，则在响应消息体中包含该内容。目前该选项在gpt-4-vision-preview模型上尚不可用。
+  - top_logprobs：0到5之间的数字，指定为每个token位置返回多少最有可能的token。使用本参数的时候，前一个参数必须为true。
+
+模型输出的token的对数概率指代的是，当前上下文中，每个token在该序列中出现的概率。
+- 简单来说，logprob就是`log(p)`，其中p是给定句子序列中其它token，当前token出现在当前位置的概率。
+
+关于logprobs有如下注意点：
+- 对数概率越高，意味着当前上下文中token的似然性越高。用户可以借此衡量模型对其输出内容的置信度，或者探索模型给出的其它选项。
+- 我们可以对序列中的token的对数概率求和，计算序列的整体概率，可以用于对模型输出的评分和排序。
+- 一种常见的用法是计算一句话平均的对数概率，选择最好的答案。
+- 我们可以检查对数概率，从模型的角度了解哪些选项是合理的，哪些是难以置信的。
+
+尽管logprobs的用处很多，本篇主要集中在以下的场景中：
+- 分类任务：
+  - 虽然LLM在许多分类任务中表现出色，但是评估模型输出结果的置信度是比较难的。
+  - logprobs为每个分类预测提供了关联概率，以便用户自行设置分类任务的置信阈值。
+- 检索（Q&A）评估：
+  - logprobs可以在检索应用中辅助自评估的过程。 在问答的案例中，模型会输出一个布尔型标识，has_sufficient_context_for_answer，作为一种置信分数，判断答案是否已经包含在了上下文中。
+  - 这种评估方式可以有效减少基于检索而产生的幻觉，提高准确性。
+- 自动补全：
+  - logprobs帮我们决定在用户打字的时候提示补全什么内容。
+- token高亮及输出字节：
+  - 用户启用logprobs之后可以创建一个token高亮工具。
+  - 此外，输出的字节参数包含了ASCII编码，有助于生成表情和特殊字符。
+
+准备环境
+
+```py
+from openai import OpenAI
+from math import exp
+import numpy as np
+from IPython.display import display, HTML
+
+
+client = OpenAI()
+
+def get_completion(
+    messages: list[dict[str, str]],
+    model: str = "gpt-4",
+    max_tokens=500,
+    temperature=0,
+    stop=None,
+    seed=123,
+    tools=None,
+    logprobs=None,  # whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the content of message..
+    top_logprobs=None,
+) -> str:
+    params = {
+        "model": model,
+        "messages": messages,
+        "max_tokens": max_tokens,
+        "temperature": temperature,
+        "stop": stop,
+        "seed": seed,
+        "logprobs": logprobs,
+        "top_logprobs": top_logprobs,
+    }
+    if tools:
+        params["tools"] = tools
+
+    completion = client.chat.completions.create(**params)
+    return completion
+```
+
+#### 一、使用logprobs评估分类任务的置信度
+
+- 假定我们要做一个系统，将新闻资讯按照预设的类别进行分类。
+- 即便不提logprobs，我们也可以通过会话补全API来完成这个功能，只不过难以评价模型对该分类的置信度。
+
+- 启用了logprobs之后，我们可以准确地知道模型对自己给出的分类结果的置信度，这对于创建可信的分类系统是十分重要的。
+  - 如果某个选定的类别的对数概率很高，就说明模型对这个结果十分有信心；
+  - 反之，则说明模型对这个结果信心不足。
+  - 当模型给出的结果与你的预期不符合，或者模型结果还需要人工校验的情况下，这个数据是很有用的。
+
+接下来我们为模型准备一段提示词，预定义四个类别：科技、政治、体育和艺术。模型的任务是根据文章的标题按照这四个类别进行分类。
+
+```py
+CLASSIFICATION_PROMPT = """You will be given a headline of a news article.
+Classify the article into one of the following categories: Technology, Politics, Sports, and Art.
+Return only the name of the category, and nothing else.
+MAKE SURE your output is one of the four categories stated.
+Article headline: {headline}"""
+接下来是文章标题的例子，这会儿暂时先不用logprobs。
+
+headlines = [
+    "Tech Giant Unveils Latest Smartphone Model with Advanced Photo-Editing Features.",
+    "Local Mayor Launches Initiative to Enhance Urban Public Transport.",
+    "Tennis Champion Showcases Hidden Talents in Symphony Orchestra Debut",
+]
+
+for headline in headlines:
+    print(f"\nHeadline: {headline}")
+    API_RESPONSE = get_completion(
+        [{"role": "user", "content": CLASSIFICATION_PROMPT.format(headline=headline)}],
+        model="gpt-4",
+    )
+    print(f"Category: {API_RESPONSE.choices[0].message.content}\n")
+```
+
+- 这里虽然为每个标题指出了类别，但是我们并不知道模型对其预测的置信度。
+
+![Screenshot 2024-01-29 at 16.43.28](/assets/img/Screenshot%202024-01-29%20at%2016.43.28.png)
+
+- 接下来启用logprobs并将top_logprobs设置为2，重新跑一下。
+- 此外还将对数概率转换为通常比较容易理解的百分比形式。
+
+![Screenshot 2024-01-29 at 16.43.50](/assets/img/Screenshot%202024-01-29%20at%2016.43.50.png)
+
+```py
+for headline in headlines:
+    print(f"\nHeadline: {headline}")
+    API_RESPONSE = get_completion(
+        [{"role": "user", "content": CLASSIFICATION_PROMPT.format(headline=headline)}],
+        model="gpt-4",
+        logprobs=True,
+        top_logprobs=2,
+    )
+    top_two_logprobs = API_RESPONSE.choices[0].logprobs.content[0].top_logprobs
+    html_content = ""
+    for i, logprob in enumerate(top_two_logprobs, start=1):
+        html_content += (
+            f"<span style='color: cyan'>Output token {i}:</span> {logprob.token}, "
+            f"<span style='color: darkorange'>logprobs:</span> {logprob.logprob}, "
+            f"<span style='color: magenta'>linear probability:</span> {np.round(np.exp(logprob.logprob)*100,2)}%<br>"
+        )
+    display(HTML(html_content))
+    print("\n")
+```
+
+- 和预想的相似，gpt-4对前两条分类的信心接近100%，但第三条同时包含了体育和艺术主题，模型在选择的时候信心就没那么强。
+
+- 这里展示了使用logprobs的重要性。基于LLM进行分类的时候，我们可以设置置信度阈值，或者当置信度不够高的时候多输出几种备选token。例如在给文章推荐标签的时候，后者情况下可以交给人工进行最终判断。
+
+
+#### 二、获取置信分数以减少幻觉
+
+- 为了减少RAG系统的幻觉，我们可以使用logprobs来评估模型对检索所得内容的置信度。
+
+- 假定我们为Q&A应用构建了一套基于RAG的检索系统，但是仍然受困于臆造出来的答案。
+
+```py
+# Article retrieved
+ada_lovelace_article = """Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 – 27 November 1852) was an English mathematician and writer, chiefly known for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine. She was the first to recognise that the machine had applications beyond pure calculation.
+Ada Byron was the only legitimate child of poet Lord Byron and reformer Lady Byron. All Lovelace's half-siblings, Lord Byron's other children, were born out of wedlock to other women. Byron separated from his wife a month after Ada was born and left England forever. He died in Greece when Ada was eight. Her mother was anxious about her upbringing and promoted Ada's interest in mathematics and logic in an effort to prevent her from developing her father's perceived insanity. Despite this, Ada remained interested in him, naming her two sons Byron and Gordon. Upon her death, she was buried next to him at her request. Although often ill in her childhood, Ada pursued her studies assiduously. She married William King in 1835. King was made Earl of Lovelace in 1838, Ada thereby becoming Countess of Lovelace.
+Her educational and social exploits brought her into contact with scientists such as Andrew Crosse, Charles Babbage, Sir David Brewster, Charles Wheatstone, Michael Faraday, and the author Charles Dickens, contacts which she used to further her education. Ada described her approach as "poetical science" and herself as an "Analyst (& Metaphysician)".
+When she was eighteen, her mathematical talents led her to a long working relationship and friendship with fellow British mathematician Charles Babbage, who is known as "the father of computers". She was in particular interested in Babbage's work on the Analytical Engine. Lovelace first met him in June 1833, through their mutual friend, and her private tutor, Mary Somerville.
+Between 1842 and 1843, Ada translated an article by the military engineer Luigi Menabrea (later Prime Minister of Italy) about the Analytical Engine, supplementing it with an elaborate set of seven notes, simply called "Notes".
+Lovelace's notes are important in the early history of computers, especially since the seventh one contained what many consider to be the first computer program—that is, an algorithm designed to be carried out by a machine. Other historians reject this perspective and point out that Babbage's personal notes from the years 1836/1837 contain the first programs for the engine. She also developed a vision of the capability of computers to go beyond mere calculating or number-crunching, while many others, including Babbage himself, focused only on those capabilities. Her mindset of "poetical science" led her to ask questions about the Analytical Engine (as shown in her notes) examining how individuals and society relate to technology as a collaborative tool.
+"""
+
+# Questions that can be easily answered given the article
+easy_questions = [
+    "What nationality was Ada Lovelace?",
+    "What was an important finding from Lovelace's seventh note?",
+]
+
+# Questions that are not fully covered in the article
+medium_questions = [
+    "Did Lovelace collaborate with Charles Dickens",
+    "What concepts did Lovelace build with Charles Babbage",
+]
+```
+
+- 接下来让模型回答这些问题，并评价回答的结果。
+- 尤其，我们会让模型输出一个布尔型变量，has_sufficient_context_for_answer。
+- 我们会查看对应的logprobs，看看模型对于上下文是否包含答案这件事情有多少把握。
+
+```py
+PROMPT = """You retrieved this article: {article}. The question is: {question}.
+Before even answering the question, consider whether you have sufficient information in the article to answer the question fully.
+Your output should JUST be the boolean true or false, of if you have sufficient information in the article to answer the question.
+Respond with just one word, the boolean true or false. You must output the word 'True', or the word 'False', nothing else.
+"""
+html_output = ""
+html_output += "Questions clearly answered in article"
+
+for question in easy_questions:
+    API_RESPONSE = get_completion(
+        [
+            {
+                "role": "user",
+                "content": PROMPT.format(
+                    article=ada_lovelace_article, question=question
+                ),
+            }
+        ],
+        model="gpt-4",
+        logprobs=True,
+    )
+    html_output += f'<p style="color:green">Question: {question}</p>'
+    for logprob in API_RESPONSE.choices[0].logprobs.content:
+        html_output += f'<p style="color:cyan">has_sufficient_context_for_answer: {logprob.token}, <span style="color:darkorange">logprobs: {logprob.logprob}, <span style="color:magenta">linear probability: {np.round(np.exp(logprob.logprob)*100,2)}%</span></p>'
+
+html_output += "Questions only partially covered in the article"
+
+for question in medium_questions:
+    API_RESPONSE = get_completion(
+        [
+            {
+                "role": "user",
+                "content": PROMPT.format(
+                    article=ada_lovelace_article, question=question
+                ),
+            }
+        ],
+        model="gpt-4",
+        logprobs=True,
+        top_logprobs=3,
+    )
+    html_output += f'<p style="color:green">Question: {question}</p>'
+    for logprob in API_RESPONSE.choices[0].logprobs.content:
+        html_output += f'<p style="color:cyan">has_sufficient_context_for_answer: {logprob.token}, <span style="color:darkorange">logprobs: {logprob.logprob}, <span style="color:magenta">linear probability: {np.round(np.exp(logprob.logprob)*100,2)}%</span></p>'
+
+display(HTML(html_output))
+```
+
+
+![Screenshot 2024-01-29 at 16.48.18](/assets/img/Screenshot%202024-01-29%20at%2016.48.18.png)
+
+
+- 对于前两个问题，模型有100%的信心说上下文已经包含了完整的答案。
+- 另一方面，对于哪些比较棘手的问题，模型对于上下文完整度的信心就不是那么强。
+- 这对于我们判断检索得到的上下文是否足够是十分有帮助的。
+- 这个自评估过程有助于我们减少幻觉，当置信度低于某个阈值的时候，可以限制回答内容，或者与用户进一步交互。类似的方法已经被认为可以显著降低RAG过程中的幻觉与错误。
+
+
+#### 三、自动补全
+
+- logprobs的另一个使用场景是自动补全系统。
+- 这里我们不会创建整个端到端的自动补全系统，而主要展示logprobs是如何帮我们在用户打字的时候提示不同单词的。
+
+- 首先让我们来看一个例句：“My least favorite TV show is Breaking Bad.”。
+- 我们希望在打字的过程中，系统可以动态地提示下一个单词，不过这种提示需要有把握的时候才提示。
+- 出于展示的目的，我们将句子分解为多个顺序组件。
+
+
+```py
+sentence_list = [
+    "My",
+    "My least",
+    "My least favorite",
+    "My least favorite TV",
+    "My least favorite TV show",
+    "My least favorite TV show is",
+    "My least favorite TV show is Breaking Bad",
+]
+```
+
+- 接下来我们让gpt-3.5-turbo扮演自动补全引擎，接受各种输入。
+- 我们启用logprobs，看看模型对自己的预测的置信度。
+
+```py
+high_prob_completions = {}
+low_prob_completions = {}
+html_output = ""
+
+for sentence in sentence_list:
+    PROMPT = """Complete this sentence. You are acting as auto-complete. Simply complete the sentence to the best of your ability, make sure it is just ONE sentence: {sentence}"""
+    API_RESPONSE = get_completion(
+        [{"role": "user", "content": PROMPT.format(sentence=sentence)}],
+        model="gpt-3.5-turbo",
+        logprobs=True,
+        top_logprobs=3,
+    )
+    html_output += f'<p>Sentence: {sentence}</p>'
+    first_token = True
+    for token in API_RESPONSE.choices[0].logprobs.content[0].top_logprobs:
+        html_output += f'<p style="color:cyan">Predicted next token: {token.token}, <span style="color:darkorange">logprobs: {token.logprob}, <span style="color:magenta">linear probability: {np.round(np.exp(token.logprob)*100,2)}%</span></p>'
+        if first_token:
+            if np.exp(token.logprob) > 0.95:
+                high_prob_completions[sentence] = token.token
+            if np.exp(token.logprob) < 0.60:
+                low_prob_completions[sentence] = token.token
+        first_token = False
+    html_output += "<br>"
+
+display(HTML(html_output))
+```
+
+![Screenshot 2024-01-29 at 16.56.23](/assets/img/Screenshot%202024-01-29%20at%2016.56.23.png)
+
+```py
+# 高置信度的补全结果：
+high_prob_completions
+{
+  'My least': 'favorite', 
+  'My least favorite TV': 'show'}
+# 看起来非常合理！对于这样的补全建议我们是很有信心的。
+
+# 再看下不是那么有信心的补全结果：
+low_prob_completions
+{
+  'My least favorite': 'food', 
+  'My least favorite TV show is': '"My'}
+# 这其中也说得通，用户说完“my least favorite”之后不太容易猜到接下来往哪个方向走。综上，通过gpt-3.5-turbo和logprobs，我们可以搭建出一个动态补全引擎的基干。
+```
+
+
+#### 四、高亮提示与字节参数
+
+
+通过logprobs实现简单的token高亮提示。
+- 先创建一个函数计算并高亮每个token，尽管这里还用不到logprobs，但也涉及了伴随logprobs而来的内置token化机制。
+
+```py
+PROMPT = """What's the longest word in the English language?"""
+
+API_RESPONSE = get_completion(
+    [{"role": "user", "content": PROMPT}], model="gpt-4", logprobs=True, top_logprobs=5
+)
+
+def highlight_text(api_response):
+    colors = [
+        "#FF00FF",  # Magenta
+        "#008000",  # Green
+        "#FF8C00",  # Dark Orange
+        "#FF0000",  # Red
+        "#0000FF",  # Blue
+    ]
+    tokens = api_response.choices[0].logprobs.content
+
+    color_idx = 0  # Initialize color index
+    html_output = ""  # Initialize HTML output
+    for t in tokens:
+        token_str = bytes(t.bytes).decode("utf-8")  # Decode bytes to string
+
+        # Add colored token to HTML output
+        html_output += f"<span style='color: {colors[color_idx]}'>{token_str}</span>"
+
+        # Move to the next color
+        color_idx = (color_idx + 1) % len(colors)
+    display(HTML(html_output))  # Display HTML output
+    print(f"Total number of tokens: {len(tokens)}")
+
+highlight_text(API_RESPONSE)
+```
+
+![Screenshot 2024-01-29 at 16.59.35](/assets/img/Screenshot%202024-01-29%20at%2016.59.35.png)
+
+
+通过byte参数重新构造一句话。
+- 启用了logprobs之后，我们不仅得到每个token，还有其对应的utf-8编码（按字节）。
+- 这些编码在处理颜文字和特殊字符的时候很有帮助。
+
+```py
+PROMPT = """Output the blue heart emoji and its name."""
+API_RESPONSE = get_completion(
+    [{"role": "user", "content": PROMPT}], model="gpt-4", logprobs=True
+)
+
+aggregated_bytes = []
+joint_logprob = 0.0
+
+# Iterate over tokens, aggregate bytes and calculate joint logprob
+for token in API_RESPONSE.choices[0].logprobs.content:
+    print("Token:", token.token)
+    print("Log prob:", token.logprob)
+    print("Linear prob:", np.round(exp(token.logprob) * 100, 2), "%")
+    print("Bytes:", token.bytes, "\n")
+    aggregated_bytes += token.bytes
+    joint_logprob += token.logprob
+
+# Decode the aggregated bytes to text
+aggregated_text = bytes(aggregated_bytes).decode("utf-8")
+
+# Assert that the decoded text is the same as the message content
+assert API_RESPONSE.choices[0].message.content == aggregated_text
+
+# Print the results
+print("Bytes array:", aggregated_bytes)
+print(f"Decoded bytes: {aggregated_text}")
+print("Joint prob:", np.round(exp(joint_logprob) * 100, 2), "%")
+```
+
+![Screenshot 2024-01-29 at 17.01.22](/assets/img/Screenshot%202024-01-29%20at%2017.01.22.png)
+
+- 这里我们看到，开头的token是`\xf0\x9f\x92`，我们得到其ASCII编码之后追加到一个字节数组中
+- 再将这个数组中的内容解码为一个完整的句子，验证可知解码的内容和原本补全的内容一致。
+
+- 此外，我们还能得到整个补全结果的联合概率，也就是每个token的对数概率的指数乘积。这也告诉了我们补全的“似然性”是如何计算出来的。
+- 由此可以看到，因为我们的提示词是十分明确的，所以输出的联合概率很高。如果我们的要求不明确，那么联合概率会低得多。这是开发者在提示工程中的一个好工具。
+
+
+#### 六、可能的扩展
+
+受限于篇幅，logprobs还有些使用场景有待探索：
+- 评估（比如计算输出的perplexity，表示模型对其输出的不确定性）
+- 关键词选择
+- 优化提示词及解释输出内容
+- token修复
+
 
 ---
 

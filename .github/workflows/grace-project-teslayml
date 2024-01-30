@@ -1,0 +1,42 @@
+name: 'Grace project tesla'
+on: 
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  run_project_csv_builder:
+    name: project webscrap_tesla create csv 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          PROJECT_NAME: webscrap_tesla
+        run: |
+          echo $MY_VAR $PROJECT_NAME.
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # for posts's lastmod
+
+      - name: run apt project script
+        # run: bash ./wh.sh \
+        run: python ./_posts/00CodeNote/project/webscrap_tesla/run.py 
+
+      # - name: Install Python dependencies
+      #   run: python -m pip install -r ./_posts/00CodeNote/project/webscrap_tesla/requirements.txt
+
+      # - name: run img player
+      #   run: python ./_posts/00CodeNote/project/webscrap_tesla/img_play.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "grace"
+          git config --global user.email "lgraceye@hotmail.com"
+          git pull origin master
+          git add .
+          git commit -m "Auto updating csv to repo"
+          git push
+ 
