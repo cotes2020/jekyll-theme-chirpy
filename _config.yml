@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: '/white-lotus'
+baseurl: '/lotusk08.github.io'
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -30,7 +30,7 @@ description: >-                                                              # u
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://lotusk08.github.io'
-repository: 'https://lotusk08.github.io/white-lotus'
+repository: 'https://github.com/lotusk08/lotusk08.github.io'
 default_branch: 'main'
 
 github:
