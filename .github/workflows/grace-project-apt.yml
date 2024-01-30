@@ -10,6 +10,9 @@ on:
   schedule:
     - cron: '0 21 * * *'
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    
 jobs:
   run_project_csv_builder:
     name: project webscrap_apt create csv
