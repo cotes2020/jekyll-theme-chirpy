@@ -364,15 +364,15 @@ h1 + .post-meta {
   } /* hide topbar */
 
   main {
-    padding: 0px;
+    padding: 0;
   } /* remove paddings from page - they are replaced by paper margins in print  */
 
   main h1 {
-    margin-top: 0px;
+    margin-top: 0;
   } /* remove title's top margin - it's replaced by paper margins */
 
   .post-tail-wrapper {
-    margin-top: 10px;
+    margin-top: 0;
   }
 
   .embed-video {
@@ -400,6 +400,6 @@ h1 + .post-meta {
   }
 
   footer {
-    margin-top: 0px !important;
+    margin-top: 0 !important;
   }
 }
