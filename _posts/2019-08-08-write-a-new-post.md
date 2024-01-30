@@ -69,7 +69,6 @@ authors: [<author1_id>, <author2_id>]   # for multiple entries
 ---
 ```
 
-
 Having said that, the key `author` can also identify multiple entries.
 
 > The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
@@ -107,9 +106,11 @@ math: true
 ---
 ```
 
-After enabling the mathematical feature, you can add math equations with the following syntax: 
+After enabling the mathematical feature, you can add math equations with the following syntax:
 
 - **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
+  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
+  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
 - **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
 - **Inline math** (in lists) should be added with `\$$ math $$`
 
@@ -119,6 +120,17 @@ After enabling the mathematical feature, you can add math equations with the fol
 $$
 LaTeX_math_expression
 $$
+
+<!-- Equation numbering, keep all blank lines  -->
+
+$$
+\begin{equation}
+  LaTeX_math_expression
+  \label{eq:label_name}
+\end{equation}
+$$
+
+Can be referenced as \eqref{eq:label_name}.
 
 <!-- Inline math in lines, NO blank lines -->
 
@@ -243,7 +255,7 @@ For instance, when using images:
 The parsing result will automatically add the CDN prefix `https://cdn.com` before the image path:
 
 ```html
-<img src="https://cdn.com/path/to/flower.png" alt="The flower">
+<img src="https://cdn.com/path/to/flower.png" alt="The flower" />
 ```
 {: .nolineno }
 
@@ -267,7 +279,7 @@ And then, the image source of Markdown can write the file name directly:
 The output will be:
 
 ```html
-<img src="/img/path/flower.png" alt="The flower">
+<img src="/img/path/flower.png" alt="The flower" />
 ```
 {: .nolineno }
 
@@ -285,7 +297,7 @@ image:
 ---
 ```
 
-Note that the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `path` only needs the image file name.
+Note that the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
 
 For simple use, you can also just use `image` to define the path.
 
@@ -420,6 +432,7 @@ You can embed a video with the following syntax:
 ```liquid
 {% include embed/{Platform}.html id='{ID}' %}
 ```
+
 Where `Platform` is the lowercase of the platform name, and `ID` is the video ID.
 
 The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
