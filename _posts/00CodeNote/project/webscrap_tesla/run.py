@@ -3,9 +3,9 @@ import logging
 import os
 import sys
 
-from celery import shared_task
-from django.conf import settings
-from django.core.mail import send_mail
+# from celery import shared_task
+# from django.conf import settings
+# from django.core.mail import send_mail
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
