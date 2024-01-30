@@ -87,6 +87,7 @@ def watch_tesla():
                 #     ['chriskuis@hotmail.com'],  # List of recipient email addresses
                 #     fail_silently=False,  # Set to True to suppress exceptions if sending fails
                 # )
+                
                 output_prices.append(email_content)
                 
         create_text_file(output_prices)
