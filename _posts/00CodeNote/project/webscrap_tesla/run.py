@@ -7,21 +7,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from django.core.mail import send_mail
-
-from django.conf import settings
+from django.conf import settings 
 import datetime
-
-
-# Logs will go to CloudWatch log group corresponding to lambda,
-# If Lambda has the necessary IAM permissions.
-# Set logLevel to logging.INFO or logging.DEBUG for debugging.
+ 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-LOGGER = logging.getLogger(__name__)
-# Retrieve log level from Lambda Environment Variables
+LOGGER = logging.getLogger(__name__) 
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
 TESLA_URL = "https://www.tesla.com/inventory/new/my?TRIM=LRAWD&arrangeby=plh&zip=98011&range=0"
-
 OUTPUTDIR = "./_posts/00CodeNote/project/webscrap_tesla/output"
 
 def create_text_file(content_list):
@@ -31,12 +24,10 @@ def create_text_file(content_list):
         with open(f"{OUTPUTDIR}/{file_name}", 'w') as file:
             for item in content_list:
                 file.write(item + '\n')  # Write each item followed by a newline character
-
         LOGGER.info(f"File '{file_name}' created successfully with content: {content_list}")
     except Exception as e:
         LOGGER.info(f"Error occurred: {str(e)}")
- 
-
+  
 def watch_tesla():
     
     LOGGER.info("======= watch_tesla =======")
@@ -80,13 +71,14 @@ def watch_tesla():
 
             car_price_str = car_section.find_element(By.CLASS_NAME, "result-purchase-price").get_attribute("innerHTML")
             car_price = int(car_price_str.replace('$', '').replace(',', ''))
-            car_prices.append(car_price) 
-            # LOGGER.info("======= %s =======" % car_price) 
+            car_prices.append(car_price)
             
             if car_price < 50000:
                 
                 email_content = f'There is a model Y for sale for {car_price_str}' 
                 LOGGER.info("======= %s =======" % email_content) 
+                
+                # settings.configure()
                 # send_mail(
                 #     'Model Y for sale gucci price',  # Subject of the email
                 #     f'There is a model Y for sale for {car_price_str}!',  # Message body
