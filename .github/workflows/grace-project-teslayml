@@ -1,12 +1,5 @@
-name: 'Grace project'
-on:
-  # push:
-  #   branches:
-  #     - master
-  #   paths-ignore:
-  #     - .gitignore
-  #     - README.md
-  #     - LICENSE
+name: 'Grace project tesla'
+on: 
   schedule:
     - cron: '*/30 * * * *'
 

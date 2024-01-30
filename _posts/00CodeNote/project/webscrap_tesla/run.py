@@ -80,9 +80,8 @@ def watch_tesla():
 
             car_price_str = car_section.find_element(By.CLASS_NAME, "result-purchase-price").get_attribute("innerHTML")
             car_price = int(car_price_str.replace('$', '').replace(',', ''))
-            car_prices.append(car_price)
-            
-            LOGGER.info("======= %s =======" % car_price) 
+            car_prices.append(car_price) 
+            # LOGGER.info("======= %s =======" % car_price) 
             
             if car_price < 50000:
                 
