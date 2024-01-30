@@ -355,3 +355,51 @@ h1 + .post-meta {
     margin-right: -0.5rem;
   }
 }
+
+/* --- Print Mode, remove unnecessary and annoying elements for printing  --- */
+
+@media print {
+  #topbar-wrapper {
+    display: none;
+  } /* hide topbar */
+
+  main {
+    padding: 0px;
+  } /* remove paddings from page - they are replaced by paper margins in print  */
+
+  main h1 {
+    margin-top: 0px;
+  } /* remove title's top margin - it's replaced by paper margins */
+
+  .post-tail-wrapper {
+    margin-top: 10px;
+  }
+
+  .embed-video {
+    display: none;
+  } /* printers can't print videos, for now */
+
+  #related-posts {
+    display: none;
+  } /* you don't need related posts on paper */
+
+  .share-wrapper {
+    display: none !important;
+  } /* for some reason the buttons printed on paper don't work */
+
+  .code-header button {
+    display: none;
+  } /* remove copy code button */
+
+  div[class^="language-"] .code-header::before{
+    display: none !important;
+  } /* remove dots from code highlight windows */
+
+  .post-navigation {
+    display: none !important;
+  }
+
+  footer {
+    margin-top: 0px !important;
+  }
+}
