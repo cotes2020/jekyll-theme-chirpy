@@ -110,8 +110,11 @@ math: true
 After enabling the mathematical feature, you can add math equations with the following syntax: 
 
 - **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
+  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
+  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
 - **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
 - **Inline math** (in lists) should be added with `\$$ math $$`
+
 
 ```markdown
 <!-- Block math, keep all blank lines -->
@@ -119,6 +122,17 @@ After enabling the mathematical feature, you can add math equations with the fol
 $$
 LaTeX_math_expression
 $$
+
+<!-- Equation numbering, keep all blank lines  -->
+
+$$
+\begin{equation}
+  LaTeX_math_expression
+  \label{eq:label_name}
+\end{equation}
+$$
+
+Can be referenced as \eqref{eq:label_name}.
 
 <!-- Inline math in lines, NO blank lines -->
 
