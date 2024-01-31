@@ -2,9 +2,9 @@ name: "CodeQL"
 
 on:
   push:
-    paths: ["**.js"]
+    paths: ["_javascript/**.js"]
   pull_request:
-    paths: ["**.js"]
+    paths: ["_javascript/**.js"]
   schedule:
     - cron: "0 0 * * 5"
 
