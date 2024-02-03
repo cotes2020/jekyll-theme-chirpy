@@ -27,6 +27,7 @@ NODE_CONFIG="package.json"
 CHANGE_LOG="docs/CHANGELOG.md"
 
 JS_DIST="assets/js/dist"
+PWA_SW="sw.min.js"
 BACKUP_PATH="$(mktemp -d)"
 
 FILES=(
@@ -70,12 +71,14 @@ _check_git() {
     exit 1
   fi
 
-  if [[ $working_branch != "$DEFAULT_BRANCH" &&
-    $working_branch != hotfix/* &&
-    $working_branch != "$PROD_BRANCH" ]]; then
-    echo "> Abort: Please run on the default, release or patch branch."
-    exit 1
-  fi
+  $opt_pre || (
+    if [[ $working_branch != "$DEFAULT_BRANCH" &&
+      $working_branch != hotfix/* &&
+      $working_branch != "$PROD_BRANCH" ]]; then
+      echo "> Abort: Please run on the default, release or patch branch."
+      exit 1
+    fi
+  )
 }
 
 _check_src() {
@@ -156,7 +159,7 @@ build_gem() {
   rm -f ./*.gem
 
   npm run build
-  git add "$JS_DIST" -f # add JS dist to gem
+  git add "$JS_DIST" "$PWA_SW" -f # add JS distribution files to gem
   gem build "$GEM_SPEC"
   cp "$JS_DIST"/* "$BACKUP_PATH"
 
