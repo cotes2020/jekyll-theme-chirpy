@@ -35,6 +35,7 @@
 - Atom Feeds
 - PWA
 - Google Analytics
+- GoatCounter
 - SEO & Performance Optimization
 
 ## Documentation
