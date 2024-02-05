@@ -16,7 +16,7 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
 TESLA_URL = "https://www.tesla.com/inventory/new/my?TRIM=LRAWD&arrangeby=plh&zip=98011&range=0"
-OUTPUTDIR = "./_posts/00CodeNote/project/webscrap_tesla/output"
+OUTPUTDIR = "/Users/graceluo/Documents/GitHub-study/ocholuo.github.io/_posts/00CodeNote/project/webscrap_tesla/output"
 
 def create_text_file(content_list):
     try:
@@ -74,7 +74,7 @@ def watch_tesla():
             car_price = int(car_price_str.replace('$', '').replace(',', ''))
             car_prices.append(car_price)
             
-            if car_price < 50000:
+            if car_price < 45000:
                 
                 email_content = f'There is a model Y for sale for {car_price_str}' 
                 LOGGER.info("======= %s =======" % email_content) 

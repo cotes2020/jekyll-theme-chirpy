@@ -1,7 +1,8 @@
 name: 'Grace project - Tesla'
 on: 
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 21 * * *'
+    # - cron: '*/30 * * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

@@ -7,7 +7,74 @@ math: true
 image:
 --- -->
 
-[toc]
+- [Docker Note](#docker-note)
+  - [basic](#basic)
+    - [architecture in linux](#architecture-in-linux)
+  - [Why use Docker](#why-use-docker)
+    - [Images and containers](#images-and-containers)
+  - [Containers/Docker vs Traditional Virtualization.](#containersdocker-vs-traditional-virtualization)
+    - [优势](#优势)
+  - [使用](#使用)
+    - [`Docker Image` 镜像](#docker-image-镜像)
+      - [分层存储 Advanced Multi-layered Unification Filesystem (AUFS)](#分层存储-advanced-multi-layered-unification-filesystem-aufs)
+    - [`Docker Container` 容器](#docker-container-容器)
+      - [`Docker Container` 的读写](#docker-container-的读写)
+      - [Image Layer Definition](#image-layer-definition)
+    - [docker commands](#docker-commands)
+    - [`Docker Registry` 仓库](#docker-registry-仓库)
+      - [Docker Registry 公开服务](#docker-registry-公开服务)
+      - [私有 Docker Registry](#私有-docker-registry)
+  - [安装 Docker](#安装-docker)
+    - [macOS 安装](#macos-安装)
+  - [`docker image` command](#docker-image-command)
+    - [`docker pull ubuntu:18.04`获取镜像](#docker-pull-ubuntu1804获取镜像)
+    - [`docker run -it --rm ubuntu:18.04 bash` 运行](#docker-run--it---rm-ubuntu1804-bash-运行)
+    - [`docker image ls` 列出镜像](#docker-image-ls-列出镜像)
+    - [`docker system df` 镜像体积](#docker-system-df-镜像体积)
+    - [`docker image ls -f dangling=true` 虚悬镜像](#docker-image-ls--f-danglingtrue-虚悬镜像)
+      - [`docker image ls -a` 中间层镜像](#docker-image-ls--a-中间层镜像)
+    - [`docker image ls xxx ` 列出部分镜像](#docker-image-ls-xxx--列出部分镜像)
+      - [以特定格式显示](#以特定格式显示)
+    - [`docker image rm centos:latest` 删除](#docker-image-rm-centoslatest-删除)
+      - [Untagged 和 Deleted](#untagged-和-deleted)
+  - [commit 理解镜像构成](#commit-理解镜像构成)
+  - [`docker` command](#docker-command)
+    - [tag image](#tag-image)
+    - [启动容器 `docker run ubuntu:18.04`](#启动容器-docker-run-ubuntu1804)
+    - [启动已终止容器 `docker container start`](#启动已终止容器-docker-container-start)
+    - [Daemon 运行 `docker run -d ubuntu:18.04 /bin/bash whoami`](#daemon-运行-docker-run--d-ubuntu1804-binbash-whoami)
+    - [终止容器 `docker container stop`](#终止容器-docker-container-stop)
+    - [进入容器 `docker run -dit ubuntu`](#进入容器-docker-run--dit-ubuntu)
+    - [导出容器 `$ docker export 7691a814370e > ubuntu.tar`](#导出容器--docker-export-7691a814370e--ubuntutar)
+    - [导入容器 `$ cat ubuntu.tar | docker import - test/ubuntu:v1.0`](#导入容器--cat-ubuntutar--docker-import---testubuntuv10)
+    - [`docker container rm ubuntu` 删除容器](#docker-container-rm-ubuntu-删除容器)
+  - [访问仓库](#访问仓库)
+    - [Docker Hub](#docker-hub)
+    - [自动构建 Automated Builds](#自动构建-automated-builds)
+    - [私有仓库](#私有仓库)
+    - [Ubuntu 16.04+, Debian 8+, centos 7](#ubuntu-1604-debian-8-centos-7)
+    - [其他](#其他)
+  - [数据管理](#数据管理)
+    - [数据卷(Volumes)](#数据卷volumes)
+      - [删除数据卷 `docker volume rm my-vol`](#删除数据卷-docker-volume-rm-my-vol)
+      - [启动一个挂载数据卷的容器](#启动一个挂载数据卷的容器)
+    - [启动一个挂载主机目录的容器](#启动一个挂载主机目录的容器)
+      - [查看数据卷的具体信息 `$ docker inspect web`](#查看数据卷的具体信息--docker-inspect-web)
+      - [挂载一个本地主机文件作为数据卷](#挂载一个本地主机文件作为数据卷)
+  - [网络](#网络)
+    - [外部访问容器](#外部访问容器)
+      - [映射所有接口地址 `$ docker run -d -p 5000:5000 training/webapp python app.py`](#映射所有接口地址--docker-run--d--p-50005000-trainingwebapp-python-apppy)
+      - [映射到指定地址的指定端口 `$ docker run -d -p 127.0.0.1:5000:5000 training/webapp python app.py`](#映射到指定地址的指定端口--docker-run--d--p-12700150005000-trainingwebapp-python-apppy)
+      - [映射到指定地址的任意端口](#映射到指定地址的任意端口)
+      - [查看映射端口配置 `$ docker port container_name 5000`](#查看映射端口配置--docker-port-container_name-5000)
+    - [容器互联](#容器互联)
+    - [新建网络 `$ docker network create -d bridge my-net`](#新建网络--docker-network-create--d-bridge-my-net)
+    - [连接容器](#连接容器)
+    - [配置 DNS](#配置-dns)
+  - [高级网络配置](#高级网络配置)
+  - [Docker Compose](#docker-compose)
+    - [安装与卸载](#安装与卸载)
+
 
 ---
 
@@ -700,10 +767,10 @@ $ docker image rm centos:latest
 # 用 镜像摘要 删除镜像。
 $ docker image ls --digests
 REPOSITORY   TAG       DIGEST                                                                    IMAGE ID            CREATED             SIZE
-node         slim      sha256:b4f0e0bdeb578043c1ea6862f0d40cc4afe32a4a582f3be235a3b164422be228   6e0c4c8e3913        3 weeks ago         214 MB
+node         slim      sha256:abc   6e0c4c8e3913        3 weeks ago         214 MB
 
-$ docker image rm node@sha256:b4f0e0bdeb578043c1ea6862f0d40cc4afe32a4a582f3be235a3b164422be228
-Untagged: node@sha256:b4f0e0bdeb578043c1ea6862f0d40cc4afe32a4a582f3be235a3b164422be228
+$ docker image rm node@sha256:abc
+Untagged: node@sha256:abc
 ```
 
 
@@ -763,6 +830,43 @@ $ docker commit 698 learn/ping
 
 - 容器是独立运行的`一个或一组应用`，以及它们的`运行态环境`。
 - 对应的，虚拟机可以理解为`模拟运行的一整套操作系统`(提供了运行态环境和其他系统环境)和`跑在上面的应用`。
+
+---
+
+
+### tag image
+
+docker tag : 标记本地镜像，将其归入某一仓库。
+
+语法
+```bash
+docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]
+```
+
+example:
+
+```bash
+$ docker images
+# REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+# centos              latest              1e1148e4cc2c        2 weeks ago         202MB
+
+$ docker tag centos centos:v1
+$ docker images
+# REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+# centos              latest              1e1148e4cc2c        2 weeks ago         202MB
+# centos              v1                  1e1148e4cc2c        2 weeks ago         202MB
+
+
+$ docker tag centos centos:v2
+$ docker images
+# REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+# centos              latest              1e1148e4cc2c        2 weeks ago         202MB
+# centos              v1                  1e1148e4cc2c        2 weeks ago         202MB
+# centos              v2                  1e1148e4cc2c        2 weeks ago         202MB
+
+# 每开发一个版本打一个标签，如果以后我想回滚版本，就可以使用指定标签的镜像来创建容器：
+$ docker run -itd centos:v1
+```
 
 
 ### 启动容器 `docker run ubuntu:18.04`
@@ -991,7 +1095,7 @@ $ docker import https://example.com/exampleimage.tgz example/imagerepo
 ```bash
 # 删除终止状态的容器
 $ docker container rm trusting_newton
-trusting_newton
+# trusting_newton
 
 # 删除一个运行中的容器，
 # 添加 -f 参数。Docker 会发送 SIGKILL 信号给容器。
@@ -1002,6 +1106,8 @@ $ docker container kill [containID]
 # 清理所有处于终止状态的容器
 # 用 docker container ls -a 命令可以查看所有已经创建的包括终止状态的容器，如果数量太多，用下面的命令可以清理掉所有处于终止状态的容器。
 $ docker container prune
+
+$ docker rm $(docker ps -a -q)
 ```
 
 
