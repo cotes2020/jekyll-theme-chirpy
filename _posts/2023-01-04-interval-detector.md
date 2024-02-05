@@ -1,10 +1,9 @@
 ---
 title: Interval Detector
 author: jake
-date: 2022-02-03 11:33:00 +0800
+date: 2023-01-04 11:33:00 +0800
 categories: [Statistics]
 tags: [statistics, machine learning]
-pin: true
 math: true
 mermaid: true
 image:
