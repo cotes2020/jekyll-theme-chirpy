@@ -1,6 +1,6 @@
 ---
-title: First thread
-date: 2024-02-05 20:17:00 -8000    
+layout: post
+title:  "Welcome to Jekyll!"
 ---
 
 # It's me.
