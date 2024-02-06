@@ -16,7 +16,7 @@ timezone: America/Los_Angeles
 
 title: Jake's Blog # the main title
 
-tagline: Just a blog # it will display as the sub-title
+tagline: I'm just a blog, yeah a lonely old blog... # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A blog for my technical writing.
