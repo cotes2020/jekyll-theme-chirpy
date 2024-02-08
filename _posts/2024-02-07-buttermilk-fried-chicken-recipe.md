@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Buttermilk Fried Chicken Recipie
+title: Buttermilk Fried Chicken Recipe
 date: 2024-02-07 20:37
 category: food
 author: ebmarquez
 tags: [recipes, chicken]
-summary: The best buttermilk fried chicken recipie ever
+summary: The best buttermilk fried chicken recipe ever
 ---
 
 One of my favorite chefs, [Billy Parisi](https://www.billyparisi.com/), has an amazing fried chicken. As my kids told me, "this is the best fried chicken I've ever had." After hearing this, it's clear that this recipe is a keeper! 🍗🔥
 
-The full recipie
+The full recipe
 https://www.billyparisi.com/the-best-fried-chicken-recipe-ever/
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QPcG6QgWLqc?si=FR14VWwOR7ExJfis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
