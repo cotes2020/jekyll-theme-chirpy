@@ -25,24 +25,24 @@ https://www.billyparisi.com/the-best-fried-chicken-recipe-ever/
 
 ### Brine
 
-1 cup water
-3 tablespoons coarse salt
-1/2 cup white distilled vinegar
-1 cup ice
-6 finely grated cloves of garlic
-1 quart buttermilk
-1 tablespoon hot sauce
-1 whole roasting chicken cut up into parts
+* 1 cup water
+* 3 tablespoons coarse salt
+* 1/2 cup white distilled vinegar
+* 1 cup ice
+* 6 finely grated cloves of garlic
+* 1 quart buttermilk
+* 1 tablespoon hot sauce
+* 1 whole roasting chicken cut up into parts
 
 ### For the Breading
 
-3 cups all-purpose flour
-1 cup cornstarch
-2 tablespoons paprika
-1 tablespoon coarse salt
-1/2 tablespoon ground black pepper
+* 3 cups all-purpose flour
+* 1 cup cornstarch
+* 2 tablespoons paprika
+* 1 tablespoon coarse salt
+* 1/2 tablespoon ground black pepper
 
 ### Miscellaneous Ingredients
 
-4-5 cups oil for frying (Grapeseed oil)
-1 cup rendered bacon fat for frying
+* 4-5 cups oil for frying (Grapeseed oil)
+* 1 cup rendered bacon fat for frying
