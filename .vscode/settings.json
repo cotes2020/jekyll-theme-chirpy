@@ -1,6 +1,6 @@
 {
   // Prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "vscode.markdown-language-features",
   "editor.formatOnSave": true,
   "prettier.trailingComma": "none",
   // Shopify Liquid
@@ -20,5 +20,8 @@
   "less.validate": false,
   // Stylint extension settings
   "stylelint.snippet": ["css", "less", "postcss", "scss"],
-  "stylelint.validate": ["css", "less", "postcss", "scss"]
+  "stylelint.validate": ["css", "less", "postcss", "scss"],
+  "files.autoSave": "afterDelay",
+  "editor.renderWhitespace": "all",
+  "belikejekyll.enabled": true
 }

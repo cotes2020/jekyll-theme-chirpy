@@ -1,0 +1,11 @@
+---
+layout: post
+title: %filename%
+date: %yyyy%-%mm%-%dd% %hh%:%ii%
+category: Category
+author: ebmarquez
+tags: [tag1, tag2]
+summary: Summary of the article
+---
+
+
