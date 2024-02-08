@@ -17,8 +17,8 @@ summary: Beef Bourguignon French Comfort Stew
 I found this recipie for a Beef Bourguignon from [Two Plaid Aprons](https://www.instagram.com/two_plaid_aprons/){:target="_blank"} and it turned out great.
 [https://www.instagram.com/p/CzrD_CvrqZC/](https://www.instagram.com/p/CzrD_CvrqZC/){:target="_blank"}
 
-
 ## My Notes
+
 I ended up using larger servings, and added more liquid than I should have but it still had an amazing taste.  The next time I make it, I will stick a bit closer to the recipie this way the stew is a bit thicker.
 
 I also used chicken broth instead of beef and for the wine I used a Costco Kirkland Signature Bordeaux. 
@@ -27,22 +27,23 @@ This was enough to feed a family of 5, two of which are teenage boys.
 
 ## Ingredients
 
-- 3 lbs beef chuck, cut into 2 inch chunks
-- 8 oz bacon, cut into 1 inch pieces
-- 1 medium onion, medium diced
-- 2 TBSP minced garlic
-- 2 TBSP tomato paste
-- 2 TBSP all-purpose flour
-- 2 cups red wine, preferably pinot noir or merlot
-- 1 cup Chicken Broth or Beef Bone Broth
-- 10-12 sprigs thyme, tied into a bundle with butcher’s twine
-- 2 bay leaves
-- 1 tsp salt, or to taste
-- Cracked black pepper, to taste
-- 2 medium carrots, cut into 2 inch pieces
-- 4 oz mushrooms of your choice, cut into smaller pieces
+* 3 lbs beef chuck, cut into 2 inch chunks
+* 8 oz bacon, cut into 1 inch pieces
+* 1 medium onion, medium diced
+* 2 TBSP minced garlic
+* 2 TBSP tomato paste
+* 2 TBSP all-purpose flour
+* 2 cups red wine, preferably pinot noir or merlot
+* 1 cup Chicken Broth or Beef Bone Broth
+* 10-12 sprigs thyme, tied into a bundle with butcher’s twine
+* 2 bay leaves
+* 1 tsp salt, or to taste
+* Cracked black pepper, to taste
+* 2 medium carrots, cut into 2 inch pieces
+* 4 oz mushrooms of your choice, cut into smaller pieces
 
 ## Instructions
+
 I pulled these instructions from the instagram video.
 
 1. Preheat the oven to 350°F.
