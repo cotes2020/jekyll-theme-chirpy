@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Beef Bourguignon Recipie
+title: Beef Bourguignon Recipe
 date: 2024-01-21
 category:
 - food
