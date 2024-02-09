@@ -34,7 +34,7 @@
 - Built-in Search
 - Atom Feeds
 - PWA
-- Google Analytics
+- Google Analytics / GoatCounter
 - SEO & Performance Optimization
 
 ## Documentation
