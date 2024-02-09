@@ -232,7 +232,12 @@ $$
 Which is the Least Squares objective! Minimizing this further for $\theta$ gives the famous estimate:
 
 $$
-\hat \theta = \frac {x^{(i)}y^{(i)}}{x^{(i)}x^{(i)}}
+\begin{align*}
+\frac{d}{d\theta} \frac{1}{n} \sum_{i=1}^n \big (y^{(i)} -x^{(i)}\theta\big)^2 &= 0 \\
+\frac{1}{n} \sum_{i=1}^n -2x^{(i)} \big (y^{(i)} -x^{(i)}\theta\big)  &=0 \\
+\sum_{i=1}^n -x^{(i)}y^{(i)} + \sum_{i=1}^n x^{(i)}x^{(i)}\theta &= 0 \\
+\implies \hat \theta = \frac {\sum_{i=1}^nx^{(i)}y^{(i)}}{\sum_{i=1}^nx^{(i)}x^{(i)}}
+\end{align*}
 $$
 
 And of course, the power of this generality is that we can swap out $P(x^{(i)})$ and quickly derive new estimators. Consider another statistical model:
