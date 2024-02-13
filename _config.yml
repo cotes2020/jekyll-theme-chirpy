@@ -14,9 +14,12 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 비즈니스 분석가가 바라보는 세상 이야기 # the main title
+title: # the main title
+  비즈니스 분석가가<br>
+  바라보는 세상<br>
+  이야기
 
-tagline: Introverted Business Analyst as IBA # it will display as the sub-title
+tagline: 꿈 많은 호기심쟁이 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -34,7 +37,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: IBA # your_full_name
+  name: Introverted Business Analyst # your_full_name
   email: example@domain.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -158,7 +161,7 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path: assets/img/favicons
+      path: origin -> assets/img/favicons
     values:
       swcache: true
   - scope:

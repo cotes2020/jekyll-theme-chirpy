@@ -22,15 +22,19 @@
     {% endif %}
   </p>
 
-  <p>
-    {%- capture _platform -%}
-      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-    {%- endcapture -%}
 
-    {%- capture _theme -%}
-      <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
-    {%- endcapture -%}
+<!--메인 페이지 우측하단 문구 삭제 "Using the Chirpy theme for Jekyll.(240214)"-->
+<!--  <p>-->
+<!--    {%- capture _platform -%}-->
+<!--      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>-->
+<!--    {%- endcapture -%}-->
 
-    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
-  </p>
+<!--    {%- capture _theme -%}-->
+<!--      <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>-->
+<!--    {%- endcapture -%}-->
+
+<!--    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}-->
+<!--  </p>-->
+
+
 </footer>
