@@ -7,25 +7,17 @@ const SRC_DEFAULT = '_javascript';
 const DIST_DEFAULT = 'assets/js/dist';
 const isProd = process.env.NODE_ENV === 'production';
 
-function build(filename, opts) {
-  let src = SRC_DEFAULT;
-  let dist = DIST_DEFAULT;
-
-  if (typeof opts !== 'undefined') {
-    src = opts.src || src;
-    dist = opts.dist || dist;
-  }
-
+function build(filename) {
   return {
-    input: [`${src}/${filename}.js`],
+    input: [`${SRC_DEFAULT}/${filename}.js`],
     output: {
-      file: `${dist}/${filename}.min.js`,
+      file: `${DIST_DEFAULT}/${filename}.min.js`,
       format: 'iife',
       name: 'Chirpy',
       sourcemap: !isProd
     },
     watch: {
-      include: `${src}/**`
+      include: `${SRC_DEFAULT}/**`
     },
     plugins: [
       babel({
@@ -50,7 +42,5 @@ export default [
   build('categories'),
   build('page'),
   build('post'),
-  build('misc'),
-  build('app', { src: `${SRC_DEFAULT}/pwa` }),
-  build('sw', { src: `${SRC_DEFAULT}/pwa`, dist: '.' })
+  build('misc')
 ];

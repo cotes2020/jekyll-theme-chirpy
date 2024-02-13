@@ -1,22 +1,18 @@
-/* PWA loader */
+---
+layout: compress
+permalink: /assets/js/dist/:basename.min.js
+---
 
 if ('serviceWorker' in navigator) {
-  const meta = document.querySelector('meta[name="pwa-cache"]');
-  const isEnabled = meta.content === 'true';
+  const isEnabled = '{{ site.pwa.enabled }}' === 'true';
 
   if (isEnabled) {
-    let swUrl = '/sw.min.js';
-    const baseUrl = meta.getAttribute('data-baseurl');
-
-    if (baseUrl !== null) {
-      swUrl = `${baseUrl}${swUrl}?baseurl=${encodeURIComponent(baseUrl)}`;
-    }
-
+    const swUrl = '{{ '/sw.min.js' | relative_url }}';
     const $notification = $('#notification');
     const $btnRefresh = $('#notification .toast-body>button');
 
     navigator.serviceWorker.register(swUrl).then((registration) => {
-      // In case the user ignores the notification
+      {% comment %}In case the user ignores the notification{% endcomment %}
       if (registration.waiting) {
         $notification.toast('show');
       }
@@ -41,7 +37,7 @@ if ('serviceWorker' in navigator) {
 
     let refreshing = false;
 
-    // Detect controller change and refresh all the opened tabs
+    {% comment %}Detect controller change and refresh all the opened tabs{% endcomment %}
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (!refreshing) {
         window.location.reload();

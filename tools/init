@@ -103,7 +103,7 @@ init_files() {
   npm i && npm run build
 
   # track the js output
-  _sedi "/^assets.*\/dist/d;/^sw.*\.js/d" .gitignore
+  _sedi "/^assets.*\/dist/d" .gitignore
 }
 
 commit() {

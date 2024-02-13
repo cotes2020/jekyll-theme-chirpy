@@ -13,9 +13,9 @@
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "scripts": {
-    "prebuild": "npx rimraf assets/js/dist sw.min.js*",
+    "prebuild": "npx rimraf assets/js/dist",
     "build": "NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
-    "prewatch": "npx rimraf assets/js/dist sw.min.js*",
+    "prewatch": "npx rimraf assets/js/dist",
     "watch": "npx rollup -c --bundleConfigAsCjs -w",
     "test": "npx stylelint _sass/**/*.scss",
     "fixlint": "npm run test -- --fix"
