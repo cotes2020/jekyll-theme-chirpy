@@ -10,9 +10,6 @@ image:
   path: /assets/img/interval_detector.png
   alt: Single Detection and Multiple Detections forming an Interval.
 ---
-
-## Setup
-
 You have a statistical detector capable of raising alerts on time series data (i.e. number of crashes in an hour or average bandwidth for a fleet of servers) and received a question from the engineering team:
 
 > Q: How many alerts should we wait for before actually "alerting" the oncall?
