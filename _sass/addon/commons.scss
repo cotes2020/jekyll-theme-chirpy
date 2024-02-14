@@ -144,6 +144,10 @@ footer {
     }
   }
 
+  em {
+    @extend %text-highlight;
+  }
+
   p {
     text-align: center;
     margin-bottom: 0;
