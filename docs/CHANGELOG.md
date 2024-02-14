@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.5.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.4.2...v6.5.0) (2024-02-14)
+
+### Features
+
+* add `pwa.cache.*` option to precisely control caching ([#1501](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1501)) ([1127c43](https://github.com/cotes2020/jekyll-theme-chirpy/commit/1127c43823aac4db7fd80d5bb706ae7b1e129dc6))
+* add analytics support for GoatCounter ([#1526](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1526)) ([90693ff](https://github.com/cotes2020/jekyll-theme-chirpy/commit/90693ff95e72ca4b5135a7b454a6ab521b995b3e))
+
+### Bug Fixes
+
+* correct the Twitter Card in social share preview ([#1498](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1498)) ([74f1662](https://github.com/cotes2020/jekyll-theme-chirpy/commit/74f16623c9c4877ef36ac52e8b69c19d1d9a82ba))
+* missing "/" at the end of URLs for categories and tags in breadcrumb ([#1495](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1495)) ([02e296e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/02e296ed75b7906b2d112c67f9054f5d71919de9))
+
+### Improvements
+
+* allow no social links to be configured ([#1494](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1494)) ([4facf5b](https://github.com/cotes2020/jekyll-theme-chirpy/commit/4facf5b390eeba612ca439f3354c5d2d881aac56))
+* allow TOC to start at heading 3 ([#1512](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1512)) ([bbbb66b](https://github.com/cotes2020/jekyll-theme-chirpy/commit/bbbb66b489a3bf2b878947336fe894e8ea2ae3f5))
+* enable equation numbering in MathJax ([#1520](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1520)) ([c13ec31](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c13ec311636d5e057c6895e353e1c1a4e570f582))
+
 ## [6.4.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.4.1...v6.4.2) (2024-01-13)
 
 ### Bug Fixes
