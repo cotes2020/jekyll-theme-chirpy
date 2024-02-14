@@ -5,9 +5,6 @@ order: 4
 ---
 
 I am a machine learning engineer that enjoys technical blogging. My interests include:
-- Mathematics / Statistics
+- Mathematics / Statistics / Physics / Machine Learning
 - Software engineering
-- Microcontrollers
-- iOS Development
-- Machine Learning
-- Physics
+- Football
