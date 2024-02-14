@@ -2,7 +2,7 @@
 title: My iOS Development Journey
 author: jake
 date: 2023-06-16 08:40:00 +0800
-categories: [iOS]
+categories: [Software Engineering]
 tags: [iOS, swift]
 math: true
 ---

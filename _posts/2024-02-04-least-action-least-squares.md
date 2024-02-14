@@ -2,7 +2,7 @@
 title: Least Action vs. Least Squares
 author: jake
 date: 2024-02-04 12:00:00 +0800
-categories: [Physics]
+categories: [Math]
 tags: [statistics, physics, least squares, least action]
 math: true
 mermaid: true

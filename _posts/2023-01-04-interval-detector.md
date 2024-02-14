@@ -2,7 +2,7 @@
 title: Interval Detector
 author: jake
 date: 2023-01-04 11:33:00 +0800
-categories: [Statistics]
+categories: [Math]
 tags: [statistics, machine learning]
 math: true
 mermaid: true
