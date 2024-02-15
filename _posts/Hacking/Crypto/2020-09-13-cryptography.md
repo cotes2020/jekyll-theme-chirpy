@@ -110,7 +110,6 @@ RC4, LSFR이 있다.
 
 
 # DES 
-
 ## 구조
 <hr style="border-top: 1px solid;"><br>
 
@@ -249,8 +248,7 @@ RC4, LSFR이 있다.
 # AES
 <hr style="border-top: 1px solid;"><br>
 
-
-
+Not yet
 
 <br><br>
 <hr style="border: 2px solid;">
