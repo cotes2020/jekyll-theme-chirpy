@@ -10,8 +10,7 @@ tags : [Crypto, Incomplete]
 ![image](https://user-images.githubusercontent.com/52172169/154783101-9f3189c2-36a3-4b6e-a242-6bc010f185ee.png)
 
 
-출처
-: https://yjshin.tistory.com/entry/암호학-암호기법의-분류-치환암호-전치암호-블록암호-스트림암호-링크암호-종단간암호-하드웨어암호-소프트웨어-암호 [YJUN IT BLOG]
+출처 : <a href="https://yjshin.tistory.com/entry/암호학-암호기법의-분류-치환암호-전치암호-블록암호-스트림암호-링크암호-종단간암호-하드웨어암호-소프트웨어-암호" target="_blank">[YJUN IT BLOG]</a>
 
 <br><br>
 <hr style="border: 2px solid;">
@@ -38,7 +37,8 @@ tags : [Crypto, Incomplete]
 
 <br>
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Caesar3.svg/320px-Caesar3.svg.png){: .align-center}
+![image](https://github.com/ind2x/ind2x.github.io/assets/52172169/59d4ab6c-7efe-49e6-a3b1-60291a0b8d37)
+
 
 <br><br>
 <hr style="border: 2px solid;">
@@ -52,11 +52,11 @@ tags : [Crypto, Incomplete]
 
 <br>
 
-![](https://upload.wikimedia.org/wikipedia/commons/8/8a/%EB%B9%84%EC%A0%9C%EB%84%A4%EB%A5%B4%ED%91%9C_%EC%98%88%EC%8B%9C.png){: .align-center}
+![image](https://github.com/ind2x/ind2x.github.io/assets/52172169/c40f35bf-13aa-4340-bcc9-ab66410ba894)
 
 <br>
 
-![](https://upload.wikimedia.org/wikipedia/commons/1/13/%EC%95%94%ED%98%B8%ED%99%94%EA%B3%BC%EC%A0%95.png){: .align-center}
+![image](https://github.com/ind2x/ind2x.github.io/assets/52172169/08ae283a-30ae-41ff-9fc8-865bb50c76a8)
 
 <br><br>
 <hr style="border: 2px solid;">
@@ -107,7 +107,6 @@ RC4, LSFR이 있다.
 <br><br>
 <hr style="border: 2px solid;">
 <br><br>
-
 
 # DES 
 ## 구조
