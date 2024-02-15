@@ -8,6 +8,8 @@ cdns:
   - url: https://fonts.googleapis.com
   # jsDelivr CDN
   - url: https://cdn.jsdelivr.net
+  # polyfill.io for math
+  - url: https://polyfill.io
 
 # fonts
 
@@ -33,7 +35,7 @@ search:
   js: https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js
 
 mermaid:
-  js: https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js
+  js: https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js
 
 dayjs:
   js:

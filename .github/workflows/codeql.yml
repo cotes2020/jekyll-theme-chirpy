@@ -2,11 +2,9 @@ name: "CodeQL"
 
 on:
   push:
-    paths: ["**.js"]
+    paths: ["_javascript/**/*.js"]
   pull_request:
-    paths: ["**.js"]
-  schedule:
-    - cron: "0 0 * * 5"
+    paths: ["_javascript/**/*.js"]
 
 jobs:
   analyze:
@@ -32,6 +30,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: "${{ matrix.language }}"
+          config-file: .github/codeql/codeql-config.yml
 
       # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
       # If this step fails, then you should remove it and run the build manually (see below)

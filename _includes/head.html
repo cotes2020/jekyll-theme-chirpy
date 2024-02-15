@@ -20,7 +20,7 @@
 
     {% unless src contains '://' %}
       {%- capture img_url -%}
-        {% include img-url.html src=src img_path=page.img_path %}
+        {% include img-url.html src=src img_path=page.img_path absolute=true %}
       {%- endcapture -%}
 
       {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
@@ -31,15 +31,20 @@
 
   {% elsif site.social_preview_image %}
     {%- capture img_url -%}
-      {% include img-url.html src=site.social_preview_image %}
+      {% include img-url.html src=site.social_preview_image absolute=true %}
     {%- endcapture -%}
 
     {%- capture og_image -%}
       <meta property="og:image" content="{{ img_url }}" />
     {%- endcapture -%}
 
-    {% assign old_meta_clip = '<meta name="twitter:card"' %}
-    {% assign new_meta_clip = og_image | append: old_meta_clip %}
+    {%- capture twitter_image -%}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:image" content="{{ img_url }}" />
+    {%- endcapture -%}
+
+    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
+    {% assign new_meta_clip = og_image | append: twitter_image %}
     {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
   {% endif %}
 
@@ -76,7 +81,7 @@
   {% endif %}
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].bootstrap.css | relative_url}}">
+  <link rel="stylesheet" href="{{ site.data.origin[type].bootstrap.css | relative_url }}">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
