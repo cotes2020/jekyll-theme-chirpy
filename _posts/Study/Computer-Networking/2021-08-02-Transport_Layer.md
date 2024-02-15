@@ -4,7 +4,7 @@ categories : [Study, Computer Network]
 tags : [Transport Layer]
 ---
 
-# 트랜스포트 계층 서비스 및 개요
+## 트랜스포트 계층 서비스 및 개요
 <hr style="border-top: 1px solid;"><br>
 
 트랜스포트 계층 프로토콜은 서로 다른 호스트에서 동작하는 애플리케이션 프로세스들 간의 ```논리적 통신(logical communication)``` 을 제공함.
@@ -41,7 +41,7 @@ tags : [Transport Layer]
 <br>
 <br>
 
-## 트랜스포트 계층과 네트워크 계층 사이의 관계
+### 트랜스포트 계층과 네트워크 계층 사이의 관계
 <hr style="border-top: 1px solid;"><br>
 
 트랜스포트 계층 프로토콜은 서로 다른 호스트에서 동작하는 **프로세스들 사이의** 논리적 통신 제공하지만, 네트워크 계층 프로토콜은 **호스트들 사이의** 논리적 통신 제공.
@@ -71,7 +71,7 @@ tags : [Transport Layer]
 <br>
 <br>
 
-## 인터넷 트랜스포트 계층의 개요
+### 인터넷 트랜스포트 계층의 개요
 <hr style="border-top: 1px solid;"><br>
 
 인터넷의 네트워크 계층 프로토콜은 **인터넷 프로토콜(Internet Protocol), 줄여서 IP**
@@ -114,7 +114,7 @@ UDP가 제공하는 서비스는
 <hr style="border: 2px solid;">
 <br><br>
 
-# 다중화와 역다중화
+## 다중화와 역다중화
 <hr style="border-top: 1px solid;"><br>
 
 ![트랜스포트 계층 다중화와 역다중화](https://user-images.githubusercontent.com/52172169/178129243-eaee3f71-1841-43d2-b17a-4215e39a4caf.png)
@@ -163,7 +163,7 @@ UDP가 제공하는 서비스는
 
 <br><br>
 
-## 비연결형(UDP) 다중화와 역다중화
+### 비연결형(UDP) 다중화와 역다중화
 <hr style="border-top: 1px solid;"><br>
 
 ![비연결형 역다중화](https://user-images.githubusercontent.com/52172169/178129264-458fc075-2552-4abc-a66a-b5e1672a40d3.png)
@@ -178,7 +178,7 @@ UDP가 제공하는 서비스는
 <br>
 <br>
 
-## 연결지향형(TCP) 다중화, 역다중화
+### 연결지향형(TCP) 다중화, 역다중화
 <hr style="border-top: 1px solid;"><br>
 
 TCP는 UDP와 달리 4개의 집합 요소가 있음. 
@@ -213,7 +213,7 @@ TCP 클라이언트-서버 프로그램은 다음과 같은 특징을 가짐.
 <br>
 <br>
 
-## 웹 서버와 TCP
+### 웹 서버와 TCP
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/178129291-f5ad318a-50cc-4073-8cbd-d3d42d065518.png)
@@ -238,7 +238,7 @@ TCP 클라이언트-서버 프로그램은 다음과 같은 특징을 가짐.
 <hr style="border: 2px solid;">
 <br><br>
 
-# 비연결형 트랜스포트: UDP
+## 비연결형 트랜스포트: UDP
 <hr style="border-top: 1px solid;"><br>
 
 UDP는 세그먼트를 송신하기 전에 송신 트랜스포트 계층 개채들과 수신 트랜스포트 계층 개체들 사이에 핸드셰이크를 사용하지 않는데, 이러한 이유로 **비연결형**이라고 함.
@@ -334,7 +334,7 @@ UDP 세그먼트 구조에 대해 설명하기 전에 애플리케이션이 UDP�
 <hr style="border: 2px solid;">
 <br><br>
 
-## UDP 세그먼트 구조
+### UDP 세그먼트 구조
 <hr style="border-top: 1px solid;"><br>
 
 ![UDP_segment](https://user-images.githubusercontent.com/52172169/150629240-8a695ff3-1a49-4e6e-a58c-f1ac76fc892d.png)
@@ -353,7 +353,7 @@ UDP 세그먼트 구조에 대해 설명하기 전에 애플리케이션이 UDP�
 
 <br><br>
 
-## UDP 체크섬
+### UDP 체크섬
 <hr style="border-top: 1px solid;"><br>
 
 UDP 체크섬은 오류 검출을 제공함. 
@@ -415,7 +415,7 @@ UDP 체크섬은 오류 검출을 제공함.
 <hr style="border: 2px solid;">
 <br><br>
 
-# 신뢰성 있는 데이터 전송의 원리
+## 신뢰성 있는 데이터 전송의 원리
 <hr style="border-top: 1px solid;"><br>
 
 이 절에서는 일반적인 상황에서의 신뢰성 있는 데이터 전송 문제를 다룬다.
@@ -444,7 +444,7 @@ UDP 체크섬은 오류 검출을 제공함.
 
 <br><br>
 
-## 신뢰적인 데이터 전달 프로토콜의 구축
+### 신뢰적인 데이터 전달 프로토콜의 구축
 <hr style="border-top: 1px solid;"><br>
 
 완전히 신뢰적 데이터 전송 프로토콜에 도달하기 위해서 조금씩 더 복잡해지는 일련의 프로토콜을 알아갈 것이다.
@@ -453,7 +453,7 @@ rdt는 reliable data transfer이고, udt는 unreliable data transfer을 나타�
 
 <br><br>
 
-### rdt 1.0
+#### rdt 1.0
 <hr style="border-top: 1px solid;"><br>
 
 rdt 1.0은 **완벽하게 신뢰적인 채널 상에서의 신뢰적인 데이터 전송**의 경우이다.
@@ -488,7 +488,7 @@ rdt 1.0은 송신자와 수신자에 대한 유한상태 머신(finite-state mac
 
 <br><br>
 
-### rdt 2.0
+#### rdt 2.0
 <hr style="border-top: 1px solid;"><br>
 
 rdt 2.0은 **비트 오류가 있는 채널 상에서의 신뢰적 데이터 전송**의 경우이다.
@@ -552,7 +552,7 @@ ACK가 수신되었다면 액션으로 아무런 행동을 취하지 않고 다�
 
 <br><br>
 
-### rdt 2.1
+#### rdt 2.1
 <hr style="border-top: 1px solid;"><br>
 
 ![rdt 2.1](https://user-images.githubusercontent.com/52172169/177939498-f282c802-9402-4929-8ac7-f31cad628fe0.png)
@@ -567,7 +567,7 @@ ACK가 수신되었다면 액션으로 아무런 행동을 취하지 않고 다�
 
 <br><br>
 
-### rdt 2.2
+#### rdt 2.2
 <hr style="border-top: 1px solid;"><br>
 
 rdt 2.2는 **비트 오류를 갖는 채널을 위한 NAK 없는 신뢰적인 데이터 전송 프로토콜**이다.
@@ -594,7 +594,7 @@ rdt 2.2 수신자 FSM
 
 <br><br>
 
-### rdt 3.0
+#### rdt 3.0
 <hr style="border-top: 1px solid;"><br>
 
 rdt 3.0은 **비트 오류와 손실 있는 채널 상에서의 신뢰적 데이터 전송**의 경우이다.
@@ -657,7 +657,7 @@ rdt 3.0은 **비트 오류와 손실 있는 채널 상에서의 신뢰적 데이
 
 <br><br>
 
-## 파이프라인된 신뢰적 데이터 전송 프로토콜
+### 파이프라인된 신뢰적 데이터 전송 프로토콜
 <hr style="border-top: 1px solid;"><br>
 
 rdt 3.0은 기능적으로는 정확하나 오늘날의 고속 네트워크에서 보면 성능에 만족할 순 없다. 
@@ -701,7 +701,7 @@ rdt 3.0은 기능적으로는 정확하나 오늘날의 고속 네트워크에�
 
 <br><br>
 
-## N부터 반복(Go-Back-N)
+### N부터 반복(Go-Back-N)
 <hr style="border-top: 1px solid;"><br>
 
 GBN 프로토콜에서 송신자는 확인응답을 기다리지 않고 여러 패킷을 전송할 수 있다.
@@ -823,7 +823,7 @@ GBN 프로토콜에서 수신자는 순서번호가 잘못된 패킷을 버리�
 
 <br><br>
 
-## 선택적 반복(Selective Repeat)
+### 선택적 반복(Selective Repeat)
 <hr style="border-top: 1px solid;"><br>
 
 GBN 프로토콜은 송신자가 패킷으로 파이프라인을 채우는 것을 가능하게 하여, 전송-후-대기 프로토콜의 채널 이용률 문제를 우회하도록 하고 있으나 GBN 자체에도 성능 문제를 겪는 시나리오가 있다.
@@ -948,7 +948,7 @@ SR 프로토콜은 **수신자에서 오류가 발생한 패킷을 수신했다�
 
 <br><br>
 
-## 패킷 순서 바뀜도 일어나는 채널
+### 패킷 순서 바뀜도 일어나는 채널
 <hr style="border-top: 1px solid;"><br>
 
 이 절에서는 한 가지 가정을 했는데 바로 **패킷이 손실될 순 있어도 순서가 바뀌진 않는다는 가정**을 하였다.
@@ -973,14 +973,14 @@ SR 프로토콜은 **수신자에서 오류가 발생한 패킷을 수신했다�
 <hr style="border: 2px solid;">
 <br><br>
 
-# 연결지향형 트랜스포트: TCP
+## 연결지향형 트랜스포트: TCP
 <hr style="border-top: 1px solid;"><br>
 
 이 절에서는 신뢰적인 데이터 전송을 위해 TCP가 오류 검출, 재전송, 누적 확인응답, 타이머, 순서번호와 확인응답 번호를 위한 헤더필드를 포함한 앞 절에서 논의했던 원칙들을 따르고 있다.
 
 <br><br>
 
-## TCP 연결
+### TCP 연결
 <hr style="border-top: 1px solid;"><br>
 
 TCP는 애플리케이션 프로세스가 데이터를 다른 프로세스에게 보내기 전에 핸드셰이킹 과정이 있어서 **연결지향형**이라고 한다.
@@ -1045,7 +1045,7 @@ TCP가 세그먼트를 수신하면 수신 버퍼에 데이터가 위치하고, 
 
 <br><br>
 
-## TCP Segment 구조
+### TCP Segment 구조
 <hr style="border-top: 1px solid;"><br>
 
 ![TCP Segment 구조](https://user-images.githubusercontent.com/52172169/178129534-4b11a530-a707-4820-bb64-a4d394b7ecae.png)
@@ -1095,7 +1095,7 @@ TCP 헤더는 일반적으로 20바이트(UDP 헤더보다 12바이트 크다)�
 
 <br><br>
 
-### 순서번호와 확인응답 번호 
+#### 순서번호와 확인응답 번호 
 <hr style="border-top: 1px solid;"><br>
 
 TCP 세그먼트 헤더에서 가장 중요한 필드 두 가지는 순서번호 필드와 확인응답 번호 필드이다.
@@ -1172,7 +1172,7 @@ RFC에는 여기에 어떤 규칙도 부여하지 않았고, TCP 구현 개발�
 
 <br><br>
 
-### 텔넷으로 본 순서번호와 확인번호 
+#### 텔넷으로 본 순서번호와 확인번호 
 <hr style="border-top: 1px solid;"><br>
 
 텔넷은 TCP 상에서 동작하며, 한 쌍의 호스트들 사이에서 동작하도록 설계되었다.
@@ -1191,7 +1191,7 @@ RFC에는 여기에 어떤 규칙도 부여하지 않았고, TCP 구현 개발�
 
 <br><br>
 
-## 왕복시간(RTT) 예측과 타임아웃
+### 왕복시간(RTT) 예측과 타임아웃
 <hr style="border-top: 1px solid;"><br>
 
 TCP는 rdt 프로토콜처럼 손실 세그먼트를 발견하기 위해 타임아웃/재전송 메커니즘을 사용한다.
@@ -1206,7 +1206,7 @@ TCP는 rdt 프로토콜처럼 손실 세그먼트를 발견하기 위해 타임�
 
 <br><br>
 
-### RTT 예측
+#### RTT 예측
 <hr style="border-top: 1px solid;"><br>
 
 SampleRTT라고 표시되는 세그먼트에 대한 RTT 샘플은 세그먼트가 송신된 시작(즉, IP에게 넘겨진 시간)으로부터 그 세그먼트에 대한 긍정응답이 도착한 시간까지의 시간 길이이다.
@@ -1240,7 +1240,7 @@ RTT 변화율은 DevRTT라 하고, 이 값은 SampleRTT가 EstimatedRTT로부터
 
 <br><br>
 
-### 재전송 타임아웃 주기의 설정 및 관리
+#### 재전송 타임아웃 주기의 설정 및 관리
 <hr style="border-top: 1px solid;"><br>
 
 TCP 타임아웃 주기에는 어떤 값이 사용되어야 하는가?
@@ -1265,7 +1265,7 @@ SampleRTT 값에 많은 변동이 있을 땐 여유 값이 커야하며, 변동�
 
 <br><br>
 
-## 신뢰적인 데이터 전달
+### 신뢰적인 데이터 전달
 <hr style="border-top: 1px solid;"><br>
 
 TCP는 인터넷의 네트워크 계층 프로토콜 IP의 비신뢰적인 최선형 서비스에서 **신뢰적인 데이터 전달 서비스**를 제공한다.
@@ -1308,7 +1308,7 @@ TCP 송신자의 데이터 전송/재전송에 관련된 세 가지 주요 이�
 
 <br><br>
 
-### TCP 재전송 시나리오
+#### TCP 재전송 시나리오
 <hr style="border-top: 1px solid;"><br>
 
 이 프로토콜이 어떻게 작동하는지 몇 가지 간단한 시나리오를 통해 알아본다.
@@ -1353,7 +1353,7 @@ A로부터의 세그먼트가 B 측에서 수신되었음에도 불구하고 B�
 
 <br><br>
 
-### 타임아웃 주기의 두 배로 설정
+#### 타임아웃 주기의 두 배로 설정
 <hr style="border-top: 1px solid;"><br>
 
 타임아웃이 발생할 때마다 TCP는 "아직 확인응답이 안된 가장 작은 순서번호를 가진" 세그먼트를 재전송한다.
@@ -1388,7 +1388,7 @@ TCP는 이 세그먼트를 재전송하고, 타임아웃 주기를 0.75의 **2�
 
 <br><br>
 
-### 빠른 재전송
+#### 빠른 재전송
 <hr style="border-top: 1px solid;"><br>
 
 타임아웃이 유발하는 재전송의 한 가지 문제는 **타임아웃의 주기가 때때로 비교적 길다는 점**이다.
@@ -1415,7 +1415,7 @@ TCP는 이 세그먼트를 재전송하고, 타임아웃 주기를 0.75의 **2�
 
 <br><br>
 
-### GBN? Or SR?
+#### GBN? Or SR?
 <hr style="border-top: 1px solid;"><br>
 
 TCP가 GBN 프로토콜인가 SR 프로토콜인가? 결론부터 말하면 둘의 혼합으로 보면 된다.
@@ -1445,7 +1445,7 @@ TCP는 원래의 SR과 유사하다.
 
 <br><br>
 
-## 흐름제어
+### 흐름제어
 <hr style="border-top: 1px solid;"><br>
 
 TCP는 데이터를 수신하면 수신 버퍼에 저장하고 해당 애플리케이션 프로세스는 버퍼에서 데이터를 읽지만, 데이터가 도달한 시점에서 읽어야 할 필요는 없다.
@@ -1529,7 +1529,7 @@ rwnd의 값보다 작은 확인응답 안 된 데이터의 양을 유지함으�
 
 <br><br>
 
-## TCP 연결 관리
+### TCP 연결 관리
 <hr style="border-top: 1px solid;"><br>
 
 TCP 연결이 어떻게 설정되고 해제되는지를 알아본다.
@@ -1636,7 +1636,7 @@ SYN Flooding Attack
 <hr style="border: 2px solid;">
 <br><br>
 
-# Transport Layer 2
+## Transport Layer 2
 <hr style="border-top: 1px solid;"><br>
 
 Link 
@@ -1646,7 +1646,7 @@ Link
 <hr style="border: 2px solid;">
 <br><br>
 
-# 참고
+## 참고
 <hr style="border-top: 1px solid;"><br>
 
 Link

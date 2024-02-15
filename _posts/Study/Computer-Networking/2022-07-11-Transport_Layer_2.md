@@ -5,7 +5,7 @@ categories : [Study, Computer Network]
 tags : [Transport Layer]
 ---
 
-# Transport Layer 1
+## Transport Layer 1
 <hr style="border-top: 1px solid;"><br>
 
 Link 
@@ -15,14 +15,14 @@ Link
 <hr style="border: 2px solid;">
 <br><br>
 
-# 혼잡제어의 원리
+## 혼잡제어의 원리
 <hr style="border-top: 1px solid;"><br>
 
 네트워크 혼잡 원인을 처리하기 위해서 네트워크 혼잡을 일으키는 송신자를 억제하는 메커니즘이 필요하다.
 
 <br><br>
 
-## 혼잡의 원인과 비용
+### 혼잡의 원인과 비용
 <hr style="border-top: 1px solid;"><br>
 
 혼잡제어가 발생하는 단계적으로 복잡해지는 세 가지 시나리오들을 살펴본다.
@@ -31,7 +31,7 @@ Link
 
 <br><br>
 
-### 시나리오 1
+#### 시나리오 1
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/178448510-b2bd078d-de2a-4eb7-ad4d-7a712b6e54e6.png)
@@ -72,7 +72,7 @@ R/2의 연결당 처리량을 얻는 것은 목적지에 패킷을 전달하는 
 
 <br><br>
 
-### 시나리오 2
+#### 시나리오 2
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/178448580-2fe81852-8f68-4e8a-bb93-48e0c34f1d59.png)
@@ -123,7 +123,7 @@ R/2의 연결당 처리량을 얻는 것은 목적지에 패킷을 전달하는 
 
 <br><br>
 
-### 시나리오 3
+#### 시나리오 3
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/178448774-f73ad4c7-09d1-4baa-aefa-206951aba46a.png)
@@ -152,7 +152,7 @@ A-C와 B-D 트래픽은 R2에서 버퍼공간을 경쟁해야 하므로, R2를 �
 
 <br><br>
 
-## 혼잡제어에 대한 접근법
+### 혼잡제어에 대한 접근법
 <hr style="border-top: 1px solid;"><br>
 
 우리는 네트워크 계층이 혼잡제어를 목적으로 트랜스포트 계층에게 어떤 직접적인 도움을 제공하는지에 따라 혼잡제어 접근을 구별할 수 있다.
@@ -197,7 +197,7 @@ A-C와 B-D 트래픽은 R2에서 버퍼공간을 경쟁해야 하므로, R2를 �
 <hr style="border: 2px solid;">
 <br><br>
 
-# TCP 혼잡제어
+## TCP 혼잡제어
 <hr style="border-top: 1px solid;"><br>
 
 위에서 설명했듯이 IP 계층이 네트워크 혼잡에 관해서 종단 시스템에게 어떠한 직접적인 피드백을 제공하지 않으므로, TCP는 ```네트워크 지원 혼잡제어```보다는 ```종단간의 혼잡제어```를 사용해야 한다.
@@ -273,7 +273,7 @@ TCP는 아래의 원칙에 따른다.
 
 <br><br>
 
-## 슬로 스타트
+### 슬로 스타트
 <hr style="border-top: 1px solid;"><br>
 
 ![TCP slow start](https://user-images.githubusercontent.com/52172169/178416429-a616df54-1d23-4a81-9742-9e527ff5f28d.png)
@@ -316,7 +316,7 @@ cwnd 값을 1MSS에서 시작하여 한 전송 세그먼트가 첫 번째로 확
 
 <br><br>
 
-## 혼잡 회피
+### 혼잡 회피
 <hr style="border-top: 1px solid;"><br>
 
 혼잡 회피 상태로 들어가는 시점에서 cwnd 값은 대략 혼잡이 마지막 발견된 시점에서의 값의 반으로 된다.
@@ -347,7 +347,7 @@ TCP 혼잡 회피 알고리즘은 타임아웃이 발생했을 때와 같이 동
 
 <br><br>
 
-## 빠른 회복
+### 빠른 회복
 <hr style="border-top: 1px solid;"><br>
 
 빠른회복에서 cwnd 값은 잃었던 세그먼트에 대한 매 중복된 ACK를 수신할 때마다 1 MSS만큼씩 증가된다.
@@ -384,7 +384,7 @@ TCP Reno는 빠른회복 상태로 들어가므로 혼잡 회피에서 3개의 �
 
 <br><br>
 
-## TCP 혼잡제어: 복습
+### TCP 혼잡제어: 복습
 <hr style="border-top: 1px solid;"><br>
 
 TCP 혼잡제어는 손실 발생 전까지 RTT마다 1 MSS씩 증가하나 손실 발생 시 절반으로 줄어든다.
@@ -401,7 +401,7 @@ TCP는 3개의 중복 ACK 이벤트 전까지 선형으로 cwnd가 증가하고,
 
 <br><br>
 
-## 공평성
+### 공평성
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/178449162-f31aa6e0-bac1-4ade-b101-e504b4023028.png)
@@ -444,7 +444,7 @@ TCP 윈도우 크기가 연결 1과 2가 A 지점으로 나타내는 처리율�
 
 <br><br>
 
-## 공평성과 UDP
+### 공평성과 UDP
 <hr style="border-top: 1px solid;"><br>
 
 많은 멀티 미디어는 네트워트가 혼잡하더라도 자신의 전송률이 조절되는 것을 원하지 않는다.
@@ -463,7 +463,7 @@ TCP는 혼잡제어로 전송률을 감소시키고, UDP는 그렇지 않으므�
 
 <br><br>
 
-## 명시적 혼잡 표시
+### 명시적 혼잡 표시
 <hr style="border-top: 1px solid;"><br>
 
 TCP는 네트워크 계층으로부터 어떠한 명시적인 혼잡 정보를 받지 않고, 대신 패킷 손실로부터 혼잡을 추측할 뿐이다.
@@ -504,7 +504,7 @@ ECE 비트는 수신자에서 송신자로 가는 TCP ACK 세그먼트에서 정
 <hr style="border: 2px solid;">
 <br><br>
 
-# 사진 인용
+## 사진 인용
 <hr style="border-top: 1px solid;"><br>
 
 Link

@@ -5,7 +5,7 @@ categories: [Study, Computer Network]
 tags: [Link Layer]
 ---
 
-# 링크 계층 소개
+## 링크 계층 소개
 <hr style="border-top: 1px solid;"><br>
 
 링크 계층에서는 데이터그램을 출발지 호스트 노드에서 목적지 호스트 노드까지 전달하기 위해선 개별 링크로 데이터그램을 이동시켜야 한다.
@@ -14,7 +14,7 @@ tags: [Link Layer]
 
 <br><br>
 
-## 링크 계층이 제공하는 서비스
+### 링크 계층이 제공하는 서비스
 <hr style="border-top: 1px solid;"><br>
 
 기본 제공 서비스는 데이터그램을 이동시키는 것이고 세부적으로는 아래와 같다.
@@ -34,7 +34,7 @@ tags: [Link Layer]
 
 <br><br>
 
-## 링크 계층이 구현되는 위치
+### 링크 계층이 구현되는 위치
 <hr style="border-top: 1px solid;"><br>
 
 일반적으로 네트워크 인터페이스 카드(NIC)로 알려진 네트워크 어댑터에 구현된다.
@@ -59,7 +59,7 @@ tags: [Link Layer]
 <hr style="border: 2px solid;">
 <br><br>
 
-# 스위치 근거리 네트워크
+## 스위치 근거리 네트워크
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/180367449-b7c5b903-288a-4ad2-b76b-027782fbe613.png)
@@ -74,7 +74,7 @@ tags: [Link Layer]
 
 <br><br>
 
-## 링크 계층 주소체계와 ARP
+### 링크 계층 주소체계와 ARP
 <hr style="border-top: 1px solid;"><br>
 
 호스트와 라우터들은 링크 계층 주소를 가지는데, 호스트와 라우터는 네트워크 계층 주소도 가지고 있다.
@@ -83,7 +83,7 @@ tags: [Link Layer]
 
 <br><br>
 
-### MAC 주소
+#### MAC 주소
 <hr style="border-top: 1px solid;"><br>
 
 링크 계층 주소를 가지고 있는건 NIC이다.
@@ -120,7 +120,7 @@ IEEE에서는 MAC주소의 첫 24비트를 고정하고, 나머지 24비트는 �
 
 <br><br>
 
-### ARP
+#### ARP
 <hr style="border-top: 1px solid;"><br>
 
 ARP는 IP주소와 MAC주소간의 변환을 담당하는 프로토콜이다.
@@ -159,7 +159,7 @@ ARP 프로토콜은 네트워크 계층 프로토콜이며 링크 계층 프로�
 
 <br><br>
 
-### 서브넷에 없는 노드로의 데이터그램 전송
+#### 서브넷에 없는 노드로의 데이터그램 전송
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/180373335-8623566f-54ac-4822-ba6e-cba4e01a1b3c.png)
@@ -182,7 +182,7 @@ ARP 프로토콜은 네트워크 계층 프로토콜이며 링크 계층 프로�
 
 <br><br>
 
-## 이더넷
+### 이더넷
 <hr style="border-top: 1px solid;"><br>
 
 인터넷이 글로벌 네트워킹에 대한 것이라면, 이더넷은 근거리 네트워킹에 관한 것이다.
@@ -193,7 +193,7 @@ ARP 프로토콜은 네트워크 계층 프로토콜이며 링크 계층 프로�
 
 <br><br>
 
-### 이더넷 프레임 구조
+#### 이더넷 프레임 구조
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/180378414-fadea3fb-3067-4ae4-a7e9-52d9ac8dbe55.png)
@@ -222,7 +222,7 @@ ARP 프로토콜은 네트워크 계층 프로토콜이며 링크 계층 프로�
 
 <br><br>
 
-### 이더넷 기술
+#### 이더넷 기술
 <hr style="border-top: 1px solid;"><br>
 
 모든 이더넷 기술은 네트워크 계층에게 **비연결형 서비스**를 제공하고, **비신뢰적 서비스**를 제공한다.
@@ -245,7 +245,7 @@ UDP를 사용한다면 그대로 패킷이 손실되는 것이고, TCP를 사용
 
 <br><br>
 
-## 링크 계층 스위치
+### 링크 계층 스위치
 <hr style="border-top: 1px solid;"><br>
 
 호스트/라우터는 중간에 스위치가 프레임을 받아서 다른 노드에게 전달하는 것을 알지 못한다.
@@ -254,7 +254,7 @@ UDP를 사용한다면 그대로 패킷이 손실되는 것이고, TCP를 사용
 
 <br><br>
 
-### 전달 및 여과
+#### 전달 및 여과
 <hr style="border-top: 1px solid;"><br>
 
 여과(filtering)는 프레임을 인터페이스로 전달할지 또는 폐기(drop)할지 결정하는 스위치 기능이다.
@@ -288,7 +288,7 @@ UDP를 사용한다면 그대로 패킷이 손실되는 것이고, TCP를 사용
 
 <br><br>
 
-### 자가학습
+#### 자가학습
 <hr style="border-top: 1px solid;"><br>
 
 스위치는 자신의 테이블을 자동으로 구축한다. 즉, 자가학습을 한다.
@@ -303,7 +303,7 @@ UDP를 사용한다면 그대로 패킷이 손실되는 것이고, TCP를 사용
 
 <br><br>
 
-### 링크 계층 스위치의 특성
+#### 링크 계층 스위치의 특성
 <hr style="border-top: 1px solid;"><br>
 
 스위치를 사용하면 다음과 같은 장점이 있다.
@@ -320,7 +320,7 @@ UDP를 사용한다면 그대로 패킷이 손실되는 것이고, TCP를 사용
 
 <br><br>
 
-### 스위치 vs 라우터
+#### 스위치 vs 라우터
 <hr style="border-top: 1px solid;"><br>
 
 + 스위치 장단점
@@ -352,7 +352,7 @@ UDP를 사용한다면 그대로 패킷이 손실되는 것이고, TCP를 사용
 
 <br><br>
 
-## VLAN
+### VLAN
 <hr style="border-top: 1px solid;"><br>
 
 VLAN을 지원하는 스위치는 하나의 물리적 근거리 네트워크 기반구조 상에서 여러 개의 가상 근거리 네트워크들을 정의할 수 있게 한다.

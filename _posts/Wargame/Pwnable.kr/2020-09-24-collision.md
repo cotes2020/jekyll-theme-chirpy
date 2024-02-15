@@ -3,7 +3,7 @@ title : Pwnable.kr - collision
 categories : [Wargame, Pwnable.kr]
 ---
 
-# collision
+## collision
 ```
 Daddy told me about cool MD5 hash collision today.
 I wanna do something like that too!
@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-# Solution
+## Solution
 ```
 0x21DD09EC을 5로 나누면 0x06C5CEC8임. 근데 이 값에 다시 5를 곱하면 원래의 값이 나오지 않고 4가 부족함.
 따라서 payload에는 0x06C5CEC8을 4번 보낸 뒤 이 값에 4를 더한 0x06C5CECC값을 보내주면 됨.

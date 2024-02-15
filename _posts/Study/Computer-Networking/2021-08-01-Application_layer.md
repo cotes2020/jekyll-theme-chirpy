@@ -4,7 +4,7 @@ categories : [Study, Computer Network]
 tags : [Computer Network, Application Layer]
 ---
 
-# 네트워크 애플리케이션 원리
+## 네트워크 애플리케이션 원리
 <hr style="border-top: 1px solid;"><br>
 
 네트워크 애플리케이션 개발의 중심은 다른 종단 시스템에서 동작하고 네트워크를 통해 서로 통신하는 프로그램을 작성하는 것임.
@@ -17,7 +17,7 @@ tags : [Computer Network, Application Layer]
 
 <br><br>
 
-## 네트워크 애플리케이션 구조
+### 네트워크 애플리케이션 구조
 <hr style="border-top: 1px solid;"><br>
 
 + 애플리케이션 구조
@@ -55,7 +55,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-## 프로세스 간 통신(중요)
+### 프로세스 간 통신(중요)
 <hr style="border-top: 1px solid;"><br>
 
 네트워크 애플리케이션 개발 전 여러 ```end system```에서 실행하는 프로그램이 서로 통신하는 방법을 이해해야 함.
@@ -77,7 +77,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-### 클라이언트와 서버 프로세스
+#### 클라이언트와 서버 프로세스
 <hr style="border-top: 1px solid;"><br>
 
 네트워크 애플리케이션은 네트워크에서 서로 메시지를 보내는 두 프로세스로 구성됨.
@@ -94,7 +94,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-### 프로세스와 컴퓨터 네트워크 사이의 인터페이스
+#### 프로세스와 컴퓨터 네트워크 사이의 인터페이스
 <hr style="border-top: 1px solid;"><br>
 
 프로세스는 소켓을 통해 네트워크로 메시지를 보내고 받음.
@@ -108,7 +108,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-### 프로세스 주소 배정
+#### 프로세스 주소 배정
 <hr style="border-top: 1px solid;"><br>
 
 **한 호스트상에서 수행되고 있는 프로세스가 패킷을 다른 호스트에서 수행되고 있는 프로세스로 패킷을 보내기 위해서는 수신 프로세스가 주소를 갖고 있어야 함.**
@@ -129,7 +129,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-### 애플리케이션이 이용 가능한 트랜스포트 서비스
+#### 애플리케이션이 이용 가능한 트랜스포트 서비스
 <hr style="border-top: 1px solid;"><br>
 
 트랜스포트 계층 프로토콜(TCP, UDP)이 그것을 이용하는 애플리케이션들에게 제공할 수 있는 서비스는 크게 4가지임.
@@ -182,7 +182,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-## 인터넷 전송 프로토콜이 제공하는 서비스
+### 인터넷 전송 프로토콜이 제공하는 서비스
 <hr style="border-top: 1px solid;"><br>
 
 인터넷(그리고 일반적인 TCP/IP 네트워크)은 애플리케이션에게 2개의 전송 프로토콜을 제공함.
@@ -192,7 +192,7 @@ tags : [Computer Network, Application Layer]
 <br>
 <br>
 
-### TCP 서비스
+#### TCP 서비스
 <hr style="border-top: 1px solid;"><br>
 
 TCP 서비스 모델은 **연결지향형(connection-oriented) 서비스**와 **신뢰적인 데이터 전송 서비스**를 포함함.
@@ -227,7 +227,7 @@ TCP 혼잡제어 방식은 네트워크가 혼잡상태에 이르면 프로세�
 
 <br><br>
 
-### UDP 서비스
+#### UDP 서비스
 <hr style="border-top: 1px solid;"><br>
 
 UDP는 비연결형이므로 **두 프로세스가 통신을 하기 전에 핸드셰이킹을 하지 않음.**
@@ -244,7 +244,7 @@ UDP는 비신뢰적인 데이터 전송 서비스를 제공함.
 
 <br><br>
 
-## 애플리케이션 계층 프로토콜
+### 애플리케이션 계층 프로토콜
 <hr style="border-top: 1px solid;"><br>
 
 애플리케이션 계층 프로토콜은 다음과 같은 내용을 정의함.
@@ -274,8 +274,8 @@ UDP는 비신뢰적인 데이터 전송 서비스를 제공함.
 <hr style="border: 2px solid;">
 <br><br>
 
-# 웹과 HTTP
-## HTTP 개요
+## 웹과 HTTP
+### HTTP 개요
 <hr style="border-top: 1px solid;"><br>
 
 웹 페이지는 객체들로 구성됨. 
@@ -295,7 +295,7 @@ HTTP 서버는 클라이언트에게 요청 파일을 보낼 때, 서버는 클�
 <br>
 <br>
 
-## 비지속 연결과 지속 연결
+### 비지속 연결과 지속 연결
 <hr style="border-top: 1px solid;"><br>
 
 많은 인터넷 애플리케이션에서 클라이언트와 서버는 서로 상당 기간 통신을 함.
@@ -319,7 +319,7 @@ HTTP는 기본 모드로 ```지속 연결```을 사용하지만, 비지속 연�
 <br>
 <br>
 
-### 비지속 연결 HTTP
+#### 비지속 연결 HTTP
 <hr style="border-top: 1px solid;"><br>
 
 웹 페이지를 서버에서 클라이언트로 전송하는 단계를 통해 살펴보면 다음과 같음.
@@ -378,7 +378,7 @@ HTTP는 기본 모드로 ```지속 연결```을 사용하지만, 비지속 연�
 <br>
 <br>
 
-### 지속 연결 HTTP
+#### 지속 연결 HTTP
 <hr style="border-top: 1px solid;"><br>
 
 + 비지속 연결의 단점
@@ -408,7 +408,7 @@ HTTP는 기본 모드로 ```지속 연결```을 사용하지만, 비지속 연�
 <hr style="border: 2px solid;">
 <br><br>
 
-# 인터넷 전자메일
+## 인터넷 전자메일
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/167245212-0d68d7d5-13b3-4905-b79e-ce7a7b8a59c1.png)
@@ -422,7 +422,7 @@ HTTP는 기본 모드로 ```지속 연결```을 사용하지만, 비지속 연�
 <br>
 <br>
 
-## SMTP
+### SMTP
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/150625337-1f10b101-12da-4418-b2f1-92d2812aa3dd.png)
@@ -475,7 +475,7 @@ HTTP와 SMTP를 비교해보면 두 프로토콜 모두 한 호스트에서 다�
 <br>
 <br>
 
-## 메일 메시지 포맷
+### 메일 메시지 포맷
 <hr style="border-top: 1px solid;"><br>
 
 헤더 라인과 메시지 몸체는 CRLF로 구분.
@@ -487,7 +487,7 @@ HTTP와 SMTP를 비교해보면 두 프로토콜 모두 한 호스트에서 다�
 <br>
 <br>
 
-## 메일 접속 프로토콜
+### 메일 접속 프로토콜
 <hr style="border-top: 1px solid;"><br>
 
 메일을 전송할 땐, SMTP를 이용하지만 **자신의 메일 서버에 도착한 메시지를 로컬 PC 사용자가 어떻게 확인하는가?**
@@ -500,7 +500,7 @@ SMTP는 push 프로토콜이므로 SMTP를 통해서는 불가능함.
 <br>
 <br>
 
-### POP3(Post Office Protocol - Version 3)
+#### POP3(Post Office Protocol - Version 3)
 <hr style="border-top: 1px solid;"><br>
 
 POP3는 사용자 에이전트가 메일 서버의 포트 110번으로 TCP 연결을 열 때 시작함.
@@ -560,7 +560,7 @@ POP3 **트랜잭션**에서, 사용자 에이전트는 명령을 내리고 서�
 <br>
 <br>
 
-### IMAP(Internet Mail Access Protocol)
+#### IMAP(Internet Mail Access Protocol)
 <hr style="border-top: 1px solid;"><br>
 
 POP3를 이용하여 사용자가 로컬 PC로 메시지를 다운로드하면, 폴더를 생성하고 폴더에 메세지를 이동시키거나 메시지를 검색하거나 등을 할 수 있음.
@@ -589,7 +589,7 @@ POP3를 이용하여 사용자가 로컬 PC로 메시지를 다운로드하면, 
 <br>
 <br>
 
-### 웹 기반 전자메일
+#### 웹 기반 전자메일
 <hr style="border-top: 1px solid;"><br>
 
 + 사용자 에이전트는 HTTP를 통해 메일 서버에 있는 원격 메일박스와 통신.
@@ -605,8 +605,8 @@ POP3를 이용하여 사용자가 로컬 PC로 메시지를 다운로드하면, 
 <hr style="border: 2px solid;">
 <br><br>
 
-# DNS - 인터넷의 디렉터리 서비스
-## DNS가 제공하는 서비스
+## DNS - 인터넷의 디렉터리 서비스
+### DNS가 제공하는 서비스
 <hr style="border-top: 1px solid;"><br>
 
 DNS는 
@@ -670,7 +670,7 @@ DNS는 **호스트 네임을 IP 주소로 변환하기 위해 주로 이용함.*
 <br>
 <br>
 
-## DNS 동작 원리 개요
+### DNS 동작 원리 개요
 <hr style="border-top: 1px solid;"><br>
 
 1. 사용자의 호스트에서 실행되는 어떤 애플리케이션의 DNS측의 클라이언트 호출 및 질의. 
@@ -682,7 +682,7 @@ DNS는 **호스트 네임을 IP 주소로 변환하기 위해 주로 이용함.*
 <br>
 <br>
 
-### 분산 계층 데이터베이스
+#### 분산 계층 데이터베이스
 <hr style="border-top: 1px solid;"><br>
 
 ![DNS 서버 계층구조](https://user-images.githubusercontent.com/52172169/150626080-273cec41-6c32-4145-a71a-504d2007254e.png)
@@ -748,7 +748,7 @@ recursive query를 계속 처리하는 서버를 ```recursive DNS server```라 �
 <br>
 <br>
 
-### DNS 캐싱
+#### DNS 캐싱
 <hr style="border-top: 1px solid;"><br>
 
 DNS 캐싱은 **DNS의 지연 성능 향상과 네트워크의 DNS 메시지 수를 줄일 수 있는 방법임.**
@@ -768,7 +768,7 @@ DNS 캐싱은 **DNS의 지연 성능 향상과 네트워크의 DNS 메시지 수
 <br>
 <br>
 
-## DNS 레코드와 메시지
+### DNS 레코드와 메시지
 <hr style="border-top: 1px solid;"><br>
 
 DNS 서버들은 호스트 네임을 IP 주소로 매핑하기 위한 ```자원 레코드 (resource record, RR)``` 를 저장함.
@@ -841,7 +841,7 @@ RR는 ```(Name, Value, Type, TTL)```의 필드를 포함하는 4개의 tuple로 
 <br>
 <br>
 
-## DNS 메시지
+### DNS 메시지
 <hr style="border-top: 1px solid;"><br>
 
 DNS 메시지 유형은 질의, 응답 두 가지뿐임.
@@ -891,7 +891,7 @@ DNS 메시지 유형은 질의, 응답 두 가지뿐임.
 <hr style="border: 2px solid;">
 <br><br>
 
-# P2P 파일 분배
+## P2P 파일 분배
 <hr style="border-top: 1px solid;"><br>
 
 + P2P 구조는 항상 켜져 있는 기반구조 서버에 최소한으로 의존함.
@@ -901,7 +901,7 @@ DNS 메시지 유형은 질의, 응답 두 가지뿐임.
 <br>
 <br>
 
-## P2P 구조의 확장성
+### P2P 구조의 확장성
 <hr style="border-top: 1px solid;"><br>
 
 클라이언트-서버 구조와 P2P구조의 차이점은 **분배시간(distribute time)임.**
@@ -918,7 +918,7 @@ DNS 메시지 유형은 질의, 응답 두 가지뿐임.
 <br>
 <br>
 
-## CDN(콘텐츠 분배 네트워크, Contents Distribution Network)
+### CDN(콘텐츠 분배 네트워크, Contents Distribution Network)
 <hr style="border-top: 1px solid;"><br>
 
 자세한건 <a href="https://www.akamai.com/kr/ko/cdn/what-is-a-cdn.jsp" target="_blank">akamai.com/kr/ko/cdn/what-is-a-cdn.jsp</a>  

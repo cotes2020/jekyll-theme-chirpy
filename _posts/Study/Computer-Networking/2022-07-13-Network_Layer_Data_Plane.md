@@ -5,7 +5,7 @@ categories: [Study, Computer Network]
 tags: [Network Layer]
 ---
 
-# 네트워크 계층 개요
+## 네트워크 계층 개요
 <hr style="border-top: 1px solid;"><br>
 
 ![네트워크 계층](https://user-images.githubusercontent.com/52172169/178651428-21b49494-6ddc-4130-895d-653db3e3d3b5.png)
@@ -22,7 +22,7 @@ tags: [Network Layer]
 
 <br><br>
 
-## 포워딩과 라우팅: 데이터 평면과 제어 평면
+### 포워딩과 라우팅: 데이터 평면과 제어 평면
 <hr style="border-top: 1px solid;"><br>
 
 네트워크 계층의 근본적 역할은 매우 단순하다. 즉, 송신 호스트에서 수신 호스트로 패킷을 전달하는 것이다.
@@ -84,7 +84,7 @@ tags: [Network Layer]
 
 <br><br>
 
-### 제어 평면: 전통적인 접근
+#### 제어 평면: 전통적인 접근
 <hr style="border-top: 1px solid;"><br>
 
 여기서 어떻게 첫 포워딩 테이블이 구성되는가 의문이 생긴다.
@@ -103,7 +103,7 @@ tags: [Network Layer]
 
 <br><br>
 
-### 제어 평면
+#### 제어 평면
 <hr style="border-top: 1px solid;"><br>
 
 ![image](https://user-images.githubusercontent.com/52172169/178666563-0b0d9a12-c67c-42c5-8a62-965f4b16cdbc.png)
@@ -122,7 +122,7 @@ tags: [Network Layer]
 
 <br><br>
 
-## 네트워크 서비스 모델
+### 네트워크 서비스 모델
 <hr style="border-top: 1px solid;"><br>
 
 네트워크 서비스 모델은 송수신 호스트 간 패킷 전송 특성을 정의한다.
@@ -161,7 +161,7 @@ tags: [Network Layer]
 <hr style="border: 2px solid;">
 <br><br>
 
-# 라우터 내부에는 무엇이 있을까?
+## 라우터 내부에는 무엇이 있을까?
 <hr style="border-top: 1px solid;"><br>
 
 ![라우터 구조](https://user-images.githubusercontent.com/52172169/178670771-c274f836-abad-4a2e-9258-dd4ad6d11a28.png)
@@ -205,7 +205,7 @@ tags: [Network Layer]
 
 <br><br>
 
-## 입력 포트 처리 및 목적지 기반 전달
+### 입력 포트 처리 및 목적지 기반 전달
 <hr style="border-top: 1px solid;"><br>
 
 ![입력 포트 프로세싱](https://user-images.githubusercontent.com/52172169/178677580-753797f9-95f2-4e14-a189-bab9e69e3ecf.png)
@@ -280,7 +280,7 @@ tags: [Network Layer]
 
 <br><br>
 
-## 변환기
+### 변환기
 <hr style="border-top: 1px solid;"><br>
 
 스위칭 구조를 통해 패킷이 입력 포트에서 출력 포트로 실제로 스위칭(즉, 전달)되므로 스위칭 구조는 라우터의 핵심이다.
@@ -289,7 +289,7 @@ tags: [Network Layer]
 
 <br><br>
 
-### 메모리 스위칭
+#### 메모리 스위칭
 <hr style="border-top: 1px solid;"><br>
 
 ![key](https://user-images.githubusercontent.com/52172169/178708629-f14a1fad-47b3-4247-82c5-6044873fcb29.png)
@@ -316,7 +316,7 @@ tags: [Network Layer]
 
 <br><br>
 
-### 버스 스위칭
+#### 버스 스위칭
 <hr style="border-top: 1px solid;"><br>
 
 ![key](https://user-images.githubusercontent.com/52172169/178708635-f8255817-2aef-461c-991b-db7863062178.png)
@@ -333,7 +333,7 @@ tags: [Network Layer]
 
 <br><br>
 
-### 크로스바 스위칭
+#### 크로스바 스위칭
 <hr style="border-top: 1px solid;"><br>
 
 ![key](https://user-images.githubusercontent.com/52172169/178708678-19d70070-8d88-4e09-acfb-32bb793f8172.png)
@@ -366,7 +366,7 @@ A에서 Y로, B에서 X로의 패킷들은 다른 입출력 버스를 사용해 
 
 <br><br>
 
-## 출력 포트 프로세싱
+### 출력 포트 프로세싱
 <hr style="border-top: 1px solid;"><br>
 
 ![출력 포트 프로세싱](https://user-images.githubusercontent.com/52172169/178742731-91b9a5ae-dd74-4b03-ac47-6587d1ee6167.png)
@@ -379,7 +379,7 @@ A에서 Y로, B에서 X로의 패킷들은 다른 입출력 버스를 사용해 
 
 <br><br>
 
-## 어디에서 큐잉이 일어날까?
+### 어디에서 큐잉이 일어날까?
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -403,7 +403,7 @@ A에서 Y로, B에서 X로의 패킷들은 다른 입출력 버스를 사용해 
 
 <br><br>
 
-### 입력 큐잉
+#### 입력 큐잉
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -429,7 +429,7 @@ HOL(Head Of The Line) 차단이란 회선 앞쪽 다른 패킷에 의해 입력 
 
 <br><br>
 
-### 출력 큐잉 
+#### 출력 큐잉 
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -459,7 +459,7 @@ AQM 알고리즘으로 알려진 패킷 폐기, 패킷 마킹 정책 중 RED(Ran
 
 <br><br>
 
-## 패킷 스케줄링
+### 패킷 스케줄링
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -475,7 +475,7 @@ AQM 알고리즘으로 알려진 패킷 폐기, 패킷 마킹 정책 중 RED(Ran
 
 <br><br>
 
-### First-In-First-Out
+#### First-In-First-Out
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -498,7 +498,7 @@ FIFO는 말 그대로 출력 링크 큐에 도착한 순서대로 출력 링크�
 
 <br><br>
 
-### 우선순위 큐잉
+#### 우선순위 큐잉
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -529,7 +529,7 @@ FIFO는 말 그대로 출력 링크 큐에 도착한 순서대로 출력 링크�
 
 <br><br>
 
-### 라운드로빈과 WFQ
+#### 라운드로빈과 WFQ
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -566,9 +566,9 @@ WFQ 규칙도 마찬가지로 순환 방식이나 차이점은 클래스 간 다
 <hr style="border: 2px solid;">
 <br><br>
 
-# 인터넷 프로토콜
+## 인터넷 프로토콜
 
-## IPv4 데이터그램 형식
+### IPv4 데이터그램 형식
 <hr style="border-top: 1px solid;"><br>
 
 ![IPv4 Datagram Format](https://user-images.githubusercontent.com/52172169/178907917-4e4cc10f-b1fe-435a-8273-c240f3f781ba.png)
@@ -620,7 +620,7 @@ IP 데이터그램은 총 20바이트의 헤더(보통 옵션이 없다)를 가�
 
 <br><br>
 
-## IPv4 데이터그램 단편화
+### IPv4 데이터그램 단편화
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -692,7 +692,7 @@ length는 1500 = 1480(데이터) + 20(헤더 바이트)이다.
 
 <br><br>
 
-## IPv4 주소체계
+### IPv4 주소체계
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -753,7 +753,7 @@ IP 주소의 또 다른 형태인 브로드캐스트 주소로 ```255.255.255.25
 
 <br><br>
 
-### 주소 블록 흭득
+#### 주소 블록 흭득
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -787,7 +787,7 @@ ICANN에서 ISP로 블록을 제공해주는데 여기서 할당받을 수 도 �
 
 <br><br>
 
-### 호스트 주소 흭득: DHCP
+#### 호스트 주소 흭득: DHCP
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -840,7 +840,7 @@ yiaddr은 새 클라이언트에 할당될 주소이다.
 
 <br><br>
 
-## 네트워크 주소 변환 (NAT)
+### 네트워크 주소 변환 (NAT)
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드
@@ -869,8 +869,8 @@ yiaddr은 새 클라이언트에 할당될 주소이다.
 
 <br><br>
 
-## IPv6
-### IPv6 데이터그램 포맷
+### IPv6
+#### IPv6 데이터그램 포맷
 <hr style="border-top: 1px solid;"><br>
 
 ![IPv6 Datagram Format](https://user-images.githubusercontent.com/52172169/179158022-392184c8-5f53-48a7-9647-ac8e4c4aab74.png)
@@ -924,7 +924,7 @@ IPv4의 데이터그램 형식과 비교해보면 많이 간소화되었다.
 
 <br><br>
 
-### IPv4에서 IPv6로의 전환
+#### IPv4에서 IPv6로의 전환
 <hr style="border-top: 1px solid;"><br>
 
 + 키워드

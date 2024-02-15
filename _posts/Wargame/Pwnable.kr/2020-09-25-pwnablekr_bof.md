@@ -4,7 +4,7 @@ categories : [Wargame, Pwnable.kr]
 tags : [Buffer Overflow]
 ---
 
-# bof
+## bof
 ```
 Nana told me that buffer overflow is 
 one of the most common software vulnerability. 
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-# Solution
+## Solution
 ```
 입력을 ebp-0x2c(44) 부터 받음. 비교는 ebp+0x8에서 함. 
 따라서 52만큼 입력해주고 나머지 4바이트에는 cafebabe값을 넣어주면 될 듯.

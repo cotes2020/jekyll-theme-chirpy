@@ -4,7 +4,7 @@ categories : [Wargame, Root-me]
 tags : [자바스크립트 난독화]
 ---
 
-# Javascript - Obfuscation 4
+## Javascript - Obfuscation 4
 ```
 Javascript - Obfuscation 4
 
