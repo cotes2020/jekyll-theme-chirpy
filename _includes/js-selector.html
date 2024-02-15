@@ -95,6 +95,18 @@
   <script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
 {% endif %}
 
+{% if page.layout == 'post' %}
+  <!-- Pageviews counter -->
+  {% if site.pageviews.provider != empty and site.pageviews.provider %}
+    {% case site.pageviews.provider %}
+      {% when 'goatcounter' %}
+        {% if site.analytics.goatcounter.id != empty and site.analytics.goatcounter.id %}
+          {% include views-counter/goatcounter.html %}
+        {% endif %}
+    {% endcase %}
+  {% endif %}
+{% endif %}
+
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->
   {% if site.pwa.enabled %}
@@ -102,12 +114,12 @@
   {% endif %}
 
   <!-- GA -->
-  {% if site.google_analytics.id != empty and site.google_analytics.id %}
-    {% include google-analytics.html %}
+  {% if site.analytics.google.id != empty and site.analytics.google.id %}
+    {% include analytics/google.html %}
   {% endif %}
 
   <!-- GoatCounter -->
-  {% if site.goatcounter.id != empty and site.goatcounter.id %}
-    {% include goatcounter.html %}
+  {% if site.analytics.goatcounter.id != empty and site.analytics.goatcounter.id %}
+    {% include analytics/goatcounter.html %}
   {% endif %}
 {% endif %}
