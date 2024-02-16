@@ -229,6 +229,9 @@ $$
 
 Which is the starting point for when we derived Hamilton's Equations [above](#least-action-to-hamiltonian). Unsurprsingly, we can derive Hamilton's equations from $f^*$ and $f$:
 
+**$f^*$-**
+: 
+
 $$
 \begin{flalign*}
 \frac{\partial f^*}{\partial p} &= x \\ 
@@ -236,7 +239,8 @@ $$
 \end{flalign*}
 $$ 
 
-And, 
+**$f$-**
+: 
 
 $$
 \begin{flalign*}

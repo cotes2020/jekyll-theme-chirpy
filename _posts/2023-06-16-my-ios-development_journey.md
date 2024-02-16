@@ -8,11 +8,9 @@ math: true
 ---
 I started becoming interested in iOS development in 2021 as a way to learn a compiled language. My background at the time was mostly in Python & R, with undergraduate courses in Java and C++. Initially, I used the [Swift Playgrounds App](https://developer.apple.com/swift-playgrounds/) because it seemed more approachable than Xcode. As my ideas grew, so did the codebase, so I switched to Xcode and purchased my own developer subscription so I could start sharing my app with friends. 
 
-<details><summary>NOTE ON SHARING APP</summary>
-<mark>
-It is possible to share Apps with just Swift Playgrounds. It involves getting the other user to download the Swift Playground App, and then sharing each project with iCloud or as a copy. Then, they can build the code locally on their iPad. Xcode works without a developer subscription, but I found it very difficult to share my Apps without physically building the binary on their device. On the other hand, purchasing a developer subscription gives you access to TestFlight (https://developer.apple.com/testflight/ sharing your beta App with 10,000 people (more or less seamlessly after the testers download the TestFlight App themselves). To me, the $100 a year (or whatever it costs now) is worth it at the point where you *may* want the option of shipping your app to the App Store. If you never plan to ship, then the pain of manually sharing Apps with friends didn't justify the price.
-</mark>
-</details>
+> It is possible to share Apps with just Swift Playgrounds. It involves getting the other user to download the Swift Playground App, and then sharing each project with iCloud or as a copy. Then, they can build the code locally on their iPad. Xcode works without a developer subscription, but I found it very difficult to share my Apps without physically building the binary on their device. On the other hand, purchasing a developer subscription gives you access to TestFlight (https://developer.apple.com/testflight/ sharing your beta App with 10,000 people (more or less seamlessly after the testers download the TestFlight App themselves). To me, the $100 a year (or whatever it costs now) is worth it at the point where you *may* want the option of shipping your app to the App Store. If you never plan to ship, then the pain of manually sharing Apps with friends didn't justify the price.
+{: .prompt-tip }
+
 \\
 After 2+ years of iOS development, I shipped 3 apps to the App Store, each one building on the lessons I learned from the previous. At first, I strictly used SwiftUI which is a beginner friendly, declarative UI language. I gradually gained the confidence to take on UIKit for features not supported by SwiftUI. I used a ton of resources, but [Hacking With Swift](https://www.hackingwithswift.com/) was by far the most reliable source of high quality instruction. Below, I recount the lessons I learned from the experience.
 
