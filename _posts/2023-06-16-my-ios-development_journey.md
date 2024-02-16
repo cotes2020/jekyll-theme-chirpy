@@ -19,7 +19,7 @@ I had already started [a project](https://github.com/jakee417/Pico-Train-Switchi
 
 Home Screen | Yard Devices | Yard Settings
 - | - | -
-![alt](assets/img/IMG_0021.png) | ![alt](assets/img/IMG_0020.png) | ![alt](assets/img/IMG_0022.png)
+![alt](assets/img/IMG_0021.png){: .shadow } | ![alt](assets/img/IMG_0020.png){: .shadow } | ![alt](assets/img/IMG_0022.png){: .shadow }
 
 ### Highlights
 - Networking was a large component of this App. As such, I relied alot on `URLSession`:
@@ -61,7 +61,7 @@ Where `DevicesJSON` is some `Decodable` `struct` that holds the states of GPIO p
 
 Network Scan | Credentials
 - | -
-![alt text](assets/img/D1001C48-CA81-408F-A16D-B0F28EA00E2B_1_102_o.jpeg) | ![alt text](assets/img/1B523B09-1A30-47D3-8AA2-530823B22378_1_102_o.jpeg)
+![alt text](assets/img/D1001C48-CA81-408F-A16D-B0F28EA00E2B_1_102_o.jpeg){: .shadow } | ![alt text](assets/img/1B523B09-1A30-47D3-8AA2-530823B22378_1_102_o.jpeg){: .shadow }
 
 Scanning the network on the pico was straightforward, but I needed a way to know if the App was on the pico's lan network (meaning the pico still needed credentials) or if the App was on the same home network as the pico, indicating credentials had already been passed. Inside my `DeviceNetworkManager` class, I used an API offered through `NEHotspotNetwork`:
 ```swift
@@ -142,7 +142,7 @@ For my next App, I wanted to make a general purpose dice simulator capable of pl
 
 Game Boards | Simulations | Simulation
 - | - | -
-![Game Boards](assets/img/39B72D17-3F15-4DEA-8991-9FE7549C7637_1_102_o-1.jpeg) | ![Simulations](assets/img/0276F762-7DF5-4946-A06D-44375A421438_1_102_o.jpeg) | ![Simulation Definition](assets/img/CBB4185D-144A-4B3C-882F-AEEE2A258D6C_1_102_o.jpeg)
+![Game Boards](assets/img/39B72D17-3F15-4DEA-8991-9FE7549C7637_1_102_o-1.jpeg){: .shadow } | ![Simulations](assets/img/0276F762-7DF5-4946-A06D-44375A421438_1_102_o.jpeg){: .shadow } | ![Simulation Definition](assets/img/CBB4185D-144A-4B3C-882F-AEEE2A258D6C_1_102_o.jpeg){: .shadow }
 
 ### Highlights
 - For the simulations, I created a `SimulationManager` that allowed users to specify custom "simulations" based on the state of the board. I took inspiration from the Shortcuts App, which allows you to build a flowchart-style dependency of actions. Instead of dependencies, the simulation should take a conjunctions of various "Where" clauses like "Exactly 2 D6 Dice Equals 1 in Value" or "Sum of 3 D6 Dice Less Than Or Equal To 5". The basic components of a where clause are:
@@ -276,7 +276,7 @@ This pairing, we believed, would allow users to interact with multiple Generativ
 
 Text-to-Text | Text-to-Image | Image Editing
 - | - | -
-![alt text](assets/img/image.png) | ![alt text](assets/img/image_2.png) | ![alt text](assets/img/image_3.png)
+![alt text](assets/img/image.png){: .shadow } | ![alt text](assets/img/image_2.png){: .shadow } | ![alt text](assets/img/image_3.png){: .shadow }
 
 
 ### Highlights
@@ -360,7 +360,7 @@ Once in SwiftUI, the rest seemed to fall into place:
 
 Image Editing | Image Masking
 - | -
-![alt text](assets/img/42E2FD08-41C8-4784-B48F-2A892EB0BC50_1_102_o.jpeg) | ![alt text](assets/img/F69F6C15-A587-4ECB-9195-AFDA5658BCB9_1_102_o.jpeg)
+![alt text](assets/img/42E2FD08-41C8-4784-B48F-2A892EB0BC50_1_102_o.jpeg){: .shadow } | ![alt text](assets/img/F69F6C15-A587-4ECB-9195-AFDA5658BCB9_1_102_o.jpeg){: .shadow }
 
 - I took advantage of iOS 17's [`VNGenerateForegroundInstanceMaskRequest`](https://developer.apple.com/documentation/vision/vngenerateforegroundinstancemaskrequest) to "lift" subjects out of the foreground for image editing and sticker generation. 
 - I even created a `Trie` class to quickly find images inside the user's history from a keyword search:
