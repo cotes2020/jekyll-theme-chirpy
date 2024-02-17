@@ -286,3 +286,31 @@ $$
 &= 0
 \end{flalign*}
 $$
+
+## HMC Revisited
+Now we can go back to the HMC example from my Stats271 class, and try to visualize some of these properties.
+
+### Conservation
+For conservation, we can view the value of the Hamiltonian for each iteration of the sampler. After a brief warmup period, the algorithm converges to a value of $H$ and then hovers around that value:
+{% include hamiltonian_value.html %}
+
+### Phase Space
+To visualize the $(p, q)$ phase space, we need two separate plots since the entire vector in this example is $[q_1, q_2, p_1, p_2]$. For each plot, I show the (scaled) kde of the frequency of $(p, q)$ along with the raw HMC samples with the $z$-height set to value of the Hamiltonian value for that sample:
+
+$(p_1, q_1)$
+: 
+{% include hamiltonian_0.html %}
+
+$(p_2, q_2)$
+: 
+{% include hamiltonian_1.html %}
+
+Summary
+: 
+Its easy to see from the KDE contours that the geometry of each dimension of phase space is different between the axes (one is elliptical and the other more circular). Although these are not necessarily the paths of the $(p, q)$ traversal, it does show the frequencies at which the points landed after each step of HMC.
+
+### Code for the plots
+
+```python 
+{% include hamiltonian.py %}
+```
