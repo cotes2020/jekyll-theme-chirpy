@@ -48,9 +48,8 @@ $$
 \end{gather*}
 $$
 
-<mark>
-Lets take a pause and review before the algebra. We have already defined $y(x)$ and its path from $a$ to $b$ as $I[y]$. From whichever $y(x)$ we start with, we can always find a larger version $\tilde y(x)$ which has a nonnegative component $\epsilon \eta(x)$. We are now minimizing $I[\tilde y]$ as a bound on $I[y]$, which has the affect of searching, over a space of functions, for the smallest path. Okay, onto the algebra...
-<mark>
+> Lets take a pause and review before the algebra. We have already defined $y(x)$ and its path from $a$ to $b$ as $I[y]$. From whichever $y(x)$ we start with, we can always find a larger version $\tilde y(x)$ which has a nonnegative component $\epsilon \eta(x)$. We are now minimizing $I[\tilde y]$ as a bound on $I[y]$, which has the affect of searching, over a space of functions, for the smallest path. Okay, onto the algebra...
+{: .prompt-info }
 
 First,
 <details><summary>$\int_a^b \frac{d}{d\epsilon}F(\tilde y(x), \tilde y'(x), x)\bigg |_{\epsilon=0} dx = 0 \implies \int_a^b (\frac{\partial F}{\partial \tilde y}\eta + \frac{\partial F}{\partial \tilde y'}\eta')\bigg |_{\epsilon=0} dx = 0$</summary>
@@ -131,9 +130,8 @@ $$
 
 Another property of the Lagrangian is that $\frac{\partial L}{\partial \dot q}$ is always the *conjugate momentum*, which I understand to mean a generalized form of Newton's $p = mv$. So, $\frac{\partial L}{\partial \dot \phi}$ is equal to the (conjugate) momentum in the $\phi$ direction, $p_\phi$, implying that angular momentum is conserved with respect to time. You can see both of these examples [here](https://en.wikipedia.org/wiki/Lagrangian_mechanics#Conservative_force) along with more exotic examples [here](https://en.wikipedia.org/wiki/Lagrangian_(field_theory)#Examples).
 
-<mark>
-Here is the takeaway, these physical systems only differ in the form of $L$. Once we can express the system in terms of $L$, Least Action & Euler Lagrange are a common framework to determine the equations of motions, conserved quantities, and conjugate momentum.
-<mark>
+> Here is the takeaway, these physical systems only differ in the form of $L$. Once we can express the system in terms of $L$, Least Action & Euler Lagrange are a common framework to determine the equations of motions, conserved quantities, and conjugate momentum.
+{: .prompt-info }
 
 ## KL Divergence Minimization
 ![KL Divergence Minimization](assets/img/kl_minimization.png)
@@ -174,9 +172,8 @@ D_{KL}(P || Q) &= H(P, Q) - H(P) \\
 \end{flalign*}
 $$
 
-<mark>
-So, it seems KL divergence is a good candidate to use a notion of "distance" between two distributions (where "distance" is nominal only, since KL divergence does <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Relation_to_metrics">not satisfy the triangle inequality</a>).
-<mark>
+> So, it seems KL divergence is a good candidate to use a notion of "distance" between two distributions (where "distance" is nominal only, since KL divergence does <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Relation_to_metrics">not satisfy the triangle inequality</a>).
+{: .prompt-info }
 
 I remember from [CS229 PS3](https://cs229.stanford.edu/summer2020/ps3.pdf), there was a problem asking us to prove that minimizing the KL Divergence between a parameterized distribution $$P_\theta$$ (i.e. Normal, Bernoulli, Binomial etc.) and the empirical distribution of the population $$\hat P$$, this is equivalent with maximizing likelihood estimate for $$\theta$$. We are looking for single expression that, when satisfied, is equivalent with minimizing the KL divergence between two distributions:
 
@@ -261,9 +258,8 @@ $$
 
 Which is the [Least Absolute Deviations](https://en.wikipedia.org/wiki/Least_absolute_deviations) estimator after solving the minimization problem with a linear program.
 
-<mark>
-Once again, these two estimators only differed in the probability distribution used inside the statistical model. Once we define $P(x^{(i)})$, finding the Maximum Likelihood Estimate automatically finds the "closest" distribution to the sample's empirical distribution judged by the KL Divergence.
-<mark>
+>Once again, these two estimators only differed in the probability distribution used inside the statistical model. Once we define $P(x^{(i)})$, finding the Maximum Likelihood Estimate automatically finds the "closest" distribution to the sample's empirical distribution judged by the KL Divergence.
+{: .prompt-info }
 
 ## Lagrangians and Loss Functions
 I think the comparison between Least Action and Least Squares makes the most sense in terms of hierarchy. For example, take your favorite OOP programming language and try to express each of the different concepts as classes. In pseudocode, this would look something like:
