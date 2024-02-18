@@ -26,27 +26,28 @@ def kde(p, q, points):
     return x, y, Z
 
 
-def plot_hamiltonian(p, q, H, points=100):
+def plot_hamiltonian(p, q, H, contours=20, points=100):
     """Plot the phase space of the Hamiltonian.
 
     Args:
         p: The momentum vector.
         q: The position vector.
         H: The Hamiltonian vector.
+        contours: Number of contours rings in the KDE plot.
         points: Number of points along each edge of the grid.
 
     Returns:
         plotly Figure of the Hamiltonian phase space.
     """
     fig = go.Figure()
-    e = np.exp(-H)
+    P = np.exp(-H)
     x, y, Z = kde(p, q, points=points)
     fig.add_trace(
         go.Surface(
             x=x,
             y=y,
             # Scale the kde values to the size of the Hamiltonian.
-            z=(Z / Z.max()) * max(e),
+            z=(Z / Z.max()) * max(P),
             name=f"KDE of p & q",
             opacity=0.05,
             showscale=False,
@@ -54,9 +55,9 @@ def plot_hamiltonian(p, q, H, points=100):
             contours=dict(
                 z=dict(
                     show=True,
-                    start=min(e),
-                    end=max(e),
-                    size=(max(e) - min(e)) / 20,
+                    start=min(P),
+                    end=max(P),
+                    size=(max(P) - min(P)) / contours,
                     project_z=True,
                     usecolormap=True,
                 )
@@ -67,13 +68,13 @@ def plot_hamiltonian(p, q, H, points=100):
         go.Scatter3d(
             x=p,
             y=q,
-            z=e,
+            z=P,
             opacity=0.1,
             name=f"Samples for p & q",
             mode="markers",
             marker=dict(
                 size=2,
-                color=e,
+                color=P,
             ),
         ),
     )

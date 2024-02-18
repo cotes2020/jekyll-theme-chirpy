@@ -288,14 +288,14 @@ $$
 $$
 
 ## HMC Revisited
-Now we can go back to the HMC example from my Stats271 class, and try to visualize some of these properties.
+Now we can go back to the HMC example from my Stats271 class, and try to visualize some of these properties. For these plots, I ran HMC for 100 iterations, doing 100 leapfrog steps per iteration.
 
 ### Conservation
-For conservation, we can view the value of the Hamiltonian for each iteration of the sampler. After a brief warmup period, the algorithm converges to a value of $H$ and then hovers around that value:
+For conservation, we can view the value of the Hamiltonian after each iteration's leapfrog step:
 {% include hamiltonian_value.html %}
 
 ### Phase Space
-To visualize the $(p, q)$ phase space, we need two separate plots since the entire vector in this example is $[q_1, q_2, p_1, p_2]$. For each plot, I show the (scaled) kde of the frequency of $(p, q)$ along with the raw HMC samples with the $z$-height set to value of the Hamiltonian value for that sample:
+To visualize the $(p, q)$ phase space, we need two separate plots since the entire vector in this example is $[q_1, q_2, p_1, p_2]$. Normally, in a HMC trace plot, you only show the *last* $(p, q)$ state after the leapfrog integrator and acceptance step have been taken. Instead, I logged the trace of each iteration's leapfrog steps, to show the dynamics of each individual iteration. The height of each sample is equal to $\exp{-H(p, q)}$ which converts the energy function to a probability. I also show the (scaled) kde of the frequency of $(p, q)$, to help see the marginal density of this stepping process.
 
 $(p_1, q_1)$
 : 
@@ -305,9 +305,11 @@ $(p_2, q_2)$
 : 
 {% include hamiltonian_1.html %}
 
-Summary
+Plot Summary
 : 
-Its easy to see from the KDE contours that the geometry of each dimension of phase space is different between the axes (one is elliptical and the other more circular). Although these are not necessarily the paths of the $(p, q)$ traversal, it does show the frequencies at which the points landed after each step of HMC.
+We see that the leapfrog estimator (roughly) keeps the value of the Hamiltonian constant within an iteration. Between iterations, $p$ is resampled moving the trace to a different "level" of the log density surface. These are the discrete "steps" inside the $H$ vs. iteration plot on the top, and the mini circles in each of the $(p, q)$ phase space plots on the bottom. Other things I noticed were:
+- The first position coordinate (the first posterior) seems to be more stable than the second.
+- Each of leapfrog steps seem to fluctuate slightly in their value of $H(p, q)$, in the shape of a saddle.
 
 ### Code for the plots
 
