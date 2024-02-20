@@ -57,7 +57,7 @@ $$
 Z_\beta = \sum_x \exp{-\beta H(x; J, H)}
 $$
 
-> So for a specific instantiation of $G$, we can read off each state of $x_n$ giving us a vector $x$. The probability we will remain in this state $x$ (in the long term), will be the ratio of $\exp{-\beta H(x; J, H)}$ normalized by *every other possible configuration* (i.e. $Z_\beta$). There will be $2 ^ {N \times M}$ of these configurations in total, making $P_\beta(x)$ exponential to compute without approximate inference.
+> For a specific instantiation of $G$, we can read off each state of $x_n$ giving us a vector $x$. The probability we will remain in this state $x$ (in the long term), will be the ratio of $\exp{-\beta H(x; J, H)}$ normalized by *every other possible configuration* (i.e. $Z_\beta$). There will be $2 ^ {N \times M}$ of these configurations in total, making $P_\beta(x)$ exponential to compute without approximate inference.
 {: .prompt-warning }
 
 ### Connection to Machine Learning
