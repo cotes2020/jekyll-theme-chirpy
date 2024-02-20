@@ -313,6 +313,4 @@ We see that the leapfrog estimator (roughly) keeps the value of the Hamiltonian 
 
 ### Code for the plots
 
-```python 
-{% include hamiltonian.py %}
-```
+If you want to see an entire HMC code example, including the interactive plots, please see `hw_3` of the `blog_post` branch in my Stats271 repo [here](https://github.com/jakee417/Stats271/blob/blog_post/assignments/hw3/hw3_taylor.ipynb).
