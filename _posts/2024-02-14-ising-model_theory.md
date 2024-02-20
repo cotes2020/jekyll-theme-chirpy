@@ -13,7 +13,7 @@ mermaid: true
 A post about the theory of the [Ising Model](https://en.wikipedia.org/wiki/Ising_model).
 
 ## Ising Model
-I have talked before about Lagrangians and Hamiltonians for classical systems, now it is time to see one from statistical physics. Before getting into the code, lets setup some terminology and definitions. 
+I have talked before about [Lagrangians](https://jakee417.github.io/posts/least-action-least-squares/) and [Hamiltonians](https://jakee417.github.io/posts/hamiltonian-mechanics/) for classical systems, now it is time to see one from statistical physics. Before getting into the code, lets setup some terminology and definitions. 
 
 > I followed Chapter 31 of MacKay's [Information Theory, Inference, and Learning Algorithms](https://www.inference.org.uk/itprnn/book.pdf) which covers Ising Models in great detail. I followed up on [Wikipedia](https://en.wikipedia.org/wiki/Ising_model#) for some omitted details.
 {: .prompt-info }
@@ -152,10 +152,10 @@ First, we give the pseudo code of how MCMC on the Ising Model works:
 The differences are primarily in step 1) how to select an atom each iteration and 3) the probability of flipping the spin. 
 
 ### Metropolis Hastings
-For MH algorithm, one possible transition matrix is moving uniformly across atoms $$n \sim U\{1..., nm\}$$ and setting $x_n$ to $-x_n$ (leaving the remaining $x_{-n}$ unchanged). We can express this in vector form as $x' = \[x_1, ..., -x_n, ... x_{n \times m}\]$ and $x = \[x_1, ..., x_n, ... x_{n \times m}\]$ making the transition kernel:
+For MH algorithm, one possible transition matrix is moving uniformly across atoms $$n \sim U\{1..., NM\}$$ and setting $x_n$ to $-x_n$ (leaving the remaining $x_{-n}$ unchanged). We can express this in vector form as $x' = \[x_1, ..., -x_n, ... x_{N \times M}\]$ and $x = \[x_1, ..., x_n, ... x_{N \times M}\]$ making the transition kernel:
 
 $$
-Q(x' | x) = Q(x | x') = \frac{1}{nm}
+Q(x' | x) = Q(x | x') = \frac{1}{NM}
 $$
 
 The acceptance probability would then be:
