@@ -57,8 +57,8 @@ $$
 Z_\beta = \sum_x \exp{-\beta H(x; J, H)}
 $$
 
-> So for a specific instantiation of $G$, we can read off each state of $x_n$ giving us a vector $x$. The probability we will remain in this state $x$ (in the long term), will be the ratio of $\exp{-\beta H(x; J, H)}$ normalized by *every other possible configuration* (i.e. $Z_\beta$). There will be $2 ^ {N \times M}$ of these configurations in total, making $P_\beta(x)$ difficult to compute without approximate inference.
-{: .prompt-info }
+> So for a specific instantiation of $G$, we can read off each state of $x_n$ giving us a vector $x$. The probability we will remain in this state $x$ (in the long term), will be the ratio of $\exp{-\beta H(x; J, H)}$ normalized by *every other possible configuration* (i.e. $Z_\beta$). There will be $2 ^ {N \times M}$ of these configurations in total, making $P_\beta(x)$ exponential to compute without approximate inference.
+{: .prompt-warning }
 
 ### Connection to Machine Learning
 The Boltzmann distribution is also used in Machine Learning under the name [Boltzmann machines](https://en.wikipedia.org/wiki/Boltzmann_machine) which uses a similar energy to $H$ except $h$ is allowed to vary with each index $n$:
@@ -67,7 +67,7 @@ $$
 E = -\sum_{n < m}w_{n, m}x_nx_m - \sum_n \theta_n x_n
 $$
 
-Boltzmann Machines gave rise to [Restricted Boltzmann Machines](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine) (RBM) and Deep Boltzmann Machines (DBM) which were the first examples of "fully connected networks" now commonly seen in Neural Networks. All of these models are special cases of the [Markov Random Field](https://ermongroup.github.io/cs228-notes/representation/undirected/) which is an undirected probabilistic graphical model. See Box 4.C on page 126 of the [Koller & Friedman](http://mcb111.org/w06/KollerFriedman.pdf) Textbook.
+Boltzmann Machines gave rise to [Restricted Boltzmann Machines](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine) (RBM) and Deep Boltzmann Machines (DBM) which were the first examples of "fully connected networks" now commonly seen in Neural Networks. All of these models are special cases of the [Markov Random Field](https://ermongroup.github.io/cs228-notes/representation/undirected/) which is an undirected probabilistic graphical model. See Box 4.C on page 126 of the [Koller & Friedman](https://github.com/Zhenye-Na/machine-learning-uiuc/blob/master/docs/Probabilistic%20Graphical%20Models%20-%20Principles%20and%20Techniques.pdf) Textbook.
 
 ### Statistical Physics of the Ising Model
 With a probability distribution specified, it is now possible to define statistical quantities of the Ising Model system. Depending on your background, some of these terms will be more familiar than others. Since I am more familiar with statistics, I will start from that perspective and mention the connections to thermodynamics and information theory. First, we can define the expected energy of the Ising Model:
@@ -135,7 +135,7 @@ $$
 ## Approximate Inference
 From the above calculations, we see the importance of $Z_\beta$. There are many ways to simplify the inference problem so that computing $P_\beta(x)$ (and $Z_\beta$ by extension) does not actually take exponential time. The main categories of doing this are:
 - [**Sampling-based Inference**](https://ermongroup.github.io/cs228-notes/inference/sampling/) includes Markov Chain Monte Carlo (MCMC) algorithms. Variants include Metropolis Hastings (MH) & Gibbs Sampling (a special case of Metropolis-Hastings), also known as [Glauber Dynamics](https://en.wikipedia.org/wiki/Glauber_dynamics).
-- [**Variational Inference**](https://ermongroup.github.io/cs228-notes/inference/variational/) includes Mean Field Inference and Loopy Belief Propagation. See Box 11.C on page 409 of the [Koller & Friedman](http://mcb111.org/w06/KollerFriedman.pdf) Textbook for more details on Loopy Belief Propagation applied to the Ising Model.
+- [**Variational Inference**](https://ermongroup.github.io/cs228-notes/inference/variational/) includes Mean Field Inference and Loopy Belief Propagation. See Box 11.C on page 409 of the [Koller & Friedman](https://github.com/Zhenye-Na/machine-learning-uiuc/blob/master/docs/Probabilistic%20Graphical%20Models%20-%20Principles%20and%20Techniques.pdf) Textbook for more details on Loopy Belief Propagation applied to the Ising Model.
 
 For the rest of this post, I will focus on the former case, [**Sampling-based Inference**](https://ermongroup.github.io/cs228-notes/inference/sampling/). I will borrow the notation from the CS228 course notes.
 
@@ -144,15 +144,45 @@ First, we give the pseudo code of how MCMC on the Ising Model works:
 
 ```
 1. Choose an atom, x_{n, m}.
-2. Compute a difference in energy, delta_e, if the atom were to change spins.
-3. Flip the spin with probability based on delta_e.
+2. Compute a difference in energy, delta_H, if the atom were to change spins.
+3. Flip the spin with probability based on delta_H.
 4. Repeat the above steps N Times.
 ```
 
 The differences are primarily in step 1) how to select an atom each iteration and 3) the probability of flipping the spin. 
 
 ### Metropolis Hastings
-TODO
+For MH algorithm, one possible transition matrix is moving uniformly across atoms $$n \sim U\{1..., nm\}$$ and setting $x_n$ to $-x_n$ (leaving the remaining $x_{-n}$ unchanged). We can express this in vector form as $x' = \[x_1, ..., -x_n, ... x_{n \times m}\]$ and $x = \[x_1, ..., x_n, ... x_{n \times m}\]$ making the transition kernel:
+
+$$
+Q(x' | x) = Q(x | x') = \frac{1}{nm}
+$$
+
+The acceptance probability would then be:
+
+$$
+A(x' | x) = \min{\big[ 1, \frac{P(x')Q(x | x')}{P(x)Q(x' | x)} \big ]} = \min{\big[ 1, \frac{P(x')}{P(x)} \big ]} = \min{\big[ 1, \exp{-\beta (H(x') - H(x))} \big ]}
+$$
+
+Importantly, cancelling out $Q(x' | x)$, $Q(x | x')$, and $Z_\beta$. Recognizing that $x'$ and $x$ differ only at atom $n$, we can make two simplifications:
+1. Note that $H(x') - H(x)$ will only differ in the $(i, j)$ pairs involving $i = n$. Thus, we can only focus on that summand in $H$. 
+2. Since we are only considering a single summand, we can drop the leading $\frac{1}{2}$ since that was only accounting for double counting each $(i, j)$ and $(j, i)$ pair.
+
+$$
+\begin{flalign*}
+H(x') - H(x) &= -\sum_m J_{n,m} (-x_n)x_m - h(-x_n) - (-\sum_m J_{n,m} x_nx_m - hx_n) \\ 
+&= \sum_m J_{n,m} x_nx_m + hx_n + \sum_m J_{n,m} x_nx_m + hx_n \\ 
+&= 2x_n \sum_m J_{n,m} x_m + h
+\end{flalign*}
+$$
+
+Making the final acceptance probability:
+
+$$
+A(x' | x) = \min{\big[ 1, \exp{-2\beta x_n \sum_m J_{n,m} x_m + h} \big ]}
+$$
+
+Which matches the equation found in 31.1 of [Information Theory, Inference, and Learning Algorithms](https://www.inference.org.uk/itprnn/book.pdf) on page 402. It is typical to loop through the atoms from left to right, top to bottom when applying MH updates.
 
 ### Gibbs Sampling
 As a special case of MH, we sample in a coordinate-wise fashion using the conditional distribution:
@@ -225,7 +255,7 @@ $$
 \end{flalign*}
 $$
 
-Which now requires our original definition of $H$ and some record keeping. First we note that $H(x_n^+) - H(x_n^-)$ will only differ in the $(i, j)$ pairs involving $i = n$. Thus, we can only focus on that summand in $H$. Secondly, since we are only considering a single summand, we can drop the leading $\frac{1}{2}$ since that was only accounting for double counting each $(i, j)$ and $(j, i)$ pair:
+Which now requires our original definition of $H$ and some record keeping. We only need to consider atom $n$ giving the same two simplifications from the MH algorithm:
 
 $$
 \begin{flalign*}
@@ -242,3 +272,6 @@ P(x_n = 1 | \{x_i\}_{i \neq n}) = \sigma(2\beta\sum_{m}J_{n, m}x_m + h)
 $$
 
 Which matches the expression found in 31.1 of [Information Theory, Inference, and Learning Algorithms](https://www.inference.org.uk/itprnn/book.pdf) on page 402. Also, see [this related blog post](https://leftasexercise.com/2018/03/12/the-ising-model-and-gibbs-sampling/) by [LeftAsExercise](https://leftasexercise.com/) for another excellent presentation of this derivation.
+
+## Summary
+In this post I discussed the Ising Model, its connections to Machine Learning, and its statistical properties. I then derived two approximate inference algorithms, Metropolis Hastings and Gibbs Sampling. In the second part of this post, I will convert the theory to code.
