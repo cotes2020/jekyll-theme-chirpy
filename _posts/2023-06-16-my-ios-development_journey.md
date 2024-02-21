@@ -5,6 +5,9 @@ date: 2023-06-16 08:40:00 +0800
 categories: [Software Engineering]
 tags: [iOS, swift]
 math: true
+image:
+  path: /assets/img/ios_apps.png
+  alt: Rail Yard, Pro Roller, aiMessages
 ---
 I started becoming interested in iOS development in 2021 as a way to learn a compiled language. My background at the time was mostly in Python & R, with undergraduate courses in Java and C++. Initially, I used the [Swift Playgrounds App](https://developer.apple.com/swift-playgrounds/) because it seemed more approachable than Xcode. As my ideas grew, so did the codebase, so I switched to Xcode and purchased my own developer subscription so I could start sharing my app with friends. 
 
