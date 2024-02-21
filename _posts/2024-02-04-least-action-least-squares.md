@@ -6,6 +6,9 @@ categories: [Math]
 tags: [statistics, physics, least squares, least action]
 math: true
 mermaid: true
+image:
+  path: /assets/img/least_squares_action.png
+  alt: Least Action (Top) vs. Least Squares (Bottom)
 ---
 In this post I want to describe two methods that both use the word "Least" to describe them. Both of these concepts are foundational in their respective field (physics and statistics), and I find it interesting to compare/contrast their formulation.
 
