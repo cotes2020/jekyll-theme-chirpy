@@ -6,9 +6,9 @@ categories: [Math]
 tags: [physics]
 math: true
 mermaid: true
-# image:
-#   path: /assets/img/hamiltonian.png
-#   alt: Reversibility, Conservation, & Volume Preservation
+image:
+  path: /assets/img/ising.png
+  alt: Undirected Graphical Model of Ising Model
 ---
 A post about the theory of the [Ising Model](https://en.wikipedia.org/wiki/Ising_model).
 
