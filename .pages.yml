@@ -1,0 +1,23 @@
+media: media
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: '_posts'
+    subfolders: false
+    view:
+      fields: [ title, published, date ]
+    fields:
+      - name: published
+        label: Published
+        type: boolean
+        default: true
+      - name: date
+        label: Date
+        type: date
+      - name: title
+        label: Title
+        type: string
+      - name: body
+        label: Body
+        type: rich-text
