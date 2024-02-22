@@ -29,9 +29,9 @@
     %}
 
     {% if include.absolute %}
-      {% assign url = url | absolute_url %}
+      {% assign url = site.url | append: site.base_url | append: url %}
     {% else %}
-      {% assign url = url | relative_url %}
+      {% assign url = site.base_url | append: url %}
     {% endif %}
   {% endunless %}
 {%- endif -%}
