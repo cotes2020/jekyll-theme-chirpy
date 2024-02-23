@@ -18,7 +18,7 @@ Mặc định Microsoft Word sử dụng đơn vị inch, nhưng người Việt
 *   Chọn **OK**.
     
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-1.png)
+![](/media/image-1-1.png)
 
 # Margin
 
@@ -26,11 +26,11 @@ Tiếp theo cần phải cài đặt margin cho báo cáo, margin là khoảng c
 
 Bạn có thể cài đặt margin trong mục **Layout -> Margins (bên tay trái) -> Custom Margins**.
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image.png)
+![](/media/image.png)
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-2.png)
+![](/media/image-2.png)
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-3.png)
+![](/media/image-3.png)
 
 # Paragraph
 
@@ -49,19 +49,19 @@ Bạn có thể cài đặt margin trong mục **Layout -> Margins (bên tay tr�
 
 Chuột phải vào style **Normal** trên thanh **Styles** và chọn **Modify**.
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-4.png)
+![](/media/image-4.png)
 
 Một popup sẽ hiện lên. Ta cài đặt font chữ và cỡ chữ ở đây.
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-5.png)
+![](/media/image-5.png)
 
 Ở nút **Format** ở góc dưới bên trái. Chọn **Paragraph** để cài đặt thụt đầu dòng 1cm (khoanh màu đỏ) và dãn dòng (khoanh màu xanh).
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-6.png)
+![](/media/image-6.png)
 
 Kết quả:
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-9.png)
+![](/media/image-9.png)
 
 # Heading
 
@@ -69,9 +69,9 @@ Heading là các thanh tiêu đề của báo cáo, trong Microsoft Word hỗ tr
 
 Để bật thanh **Navigation Pane** ta vào mục **View** và check vào **Navigation Pane** ở thanh công cụ.
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-8.png)
+![](/media/image-8.png)
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-7.png)
+![](/media/image-7.png)
 
 Ví dụ:
 
@@ -86,11 +86,11 @@ Ví dụ:
 
 Với heading 1 và heading 2 thì bạn có thể chỉnh sửa bằng cách làm tương tự **Paragraph**, trên thanh **Styles** chuột phải vào **Heading 1** và **Heading 2** và chọn **Modify**.
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-10.png)
+![](/media/image-10.png)
 
 Vậy còn **Heading 3** và **Heading 4** không hiển thị trên thanh Styles thì sao? Bạn có thể làm theo các bước sau đây để hiển thị toàn bộ styles:
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-11-1024x724.png)
+![](/media/image-11-1024x724.png)
 
 # Tab stop
 
@@ -98,11 +98,11 @@ Tab stop là vị trí mà con trỏ sẽ chạy đến khi ta nhấn tab. Tùy 
 
 Ta có thể cài đặt tab stop cho bất kỳ kiểu style nào bằng cách chuột phải vào style và chọn **Modify -> Format -> Tabs** và cài đặt vị trí tab stop. Bên dưới là ví dụ mình muốn mỗi lần mình nhấn tab là con trỏ sẽ chạy đến các vị trí **1cm, 2cm, 3cm**,…
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-12.png)
+![](/media/image-12.png)
 
 Đây là kết quả, khi mình nhấn tab thì con trỏ để đẩy đến vị trí tab stop mà mình đã cài đặt:
 
-![](https://ngosangns.com/wp-content/uploads/2023/07/image-13.png)
+![](/media/image-13.png)
 
 Ngoài ra, để có thể hiển thị thanh ruler bên trên, từ top navigation ta vào mục **View** -> chọn **Ruler**.
 
