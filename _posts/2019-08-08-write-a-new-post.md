@@ -427,6 +427,8 @@ Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the pos
 
 ## Videos
 
+### Video Sharing Platform
+
 You can embed a video with the following syntax:
 
 ```liquid
@@ -442,6 +444,31 @@ The following table shows how to get the two parameters we need in a given video
 | [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
 | [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
 | [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
+
+### Video File
+
+If you want to embed a video file directly, use the following syntax:
+
+```liquid
+{% include embed/video.html src='{URL}' %}
+```
+
+Where `URL` is an URL to a video file e.g. `/assets/img/sample/video.mp4`.
+
+You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
+
+- `poster='/path/to/poster.png'` - poster image for a video that is shown while video is downloading
+- `title='Text'` - title for a video that appears below the video and looks same as for images
+- `autoplay=true` - video automatically begins to play back as soon as it can
+- `loop=true` - automatically seek back to the start upon reaching the end of the video
+- `muted=true` - audio will be initially silenced
+
+Consider an example utilizing all of the above:
+
+```liquid
+{% include embed/video.html src='video.mp4' poster='poster.png' title='Demo video'
+   autoplay=true loop=true muted=true %}
+```
 
 ## Learn More
 
