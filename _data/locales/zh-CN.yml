@@ -25,7 +25,7 @@ search:
 panel:
   lastmod: 最近更新
   trending_tags: 热门标签
-  toc: 文章内容
+  toc: 目录
 
 copyright:
   # Shown at the bottom of the post
