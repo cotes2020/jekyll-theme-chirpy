@@ -6,9 +6,9 @@ categories: [Math]
 tags: [physics]
 math: true
 mermaid: true
-# image:
-#   path: /assets/img/hamiltonian.png
-#   alt: Reversibility, Conservation, & Volume Preservation
+image:
+  path: /assets/img/ising_computation.png
+  alt: Metropolis Hastings MCMC Samples of Average Energy
 ---
 A post about the computation of the [Ising Model](https://en.wikipedia.org/wiki/Ising_model).
 <!-- jupyter nbconvert --NbConvertApp.output_files_dir="../assets/img/ising_model_out" --to markdown _includes/ising_model.ipynb -->
