@@ -8,6 +8,7 @@ tail_includes:
   - post-nav
   - comments
 ---
+
 {% include lang.html %}
 
 <article class="px-1">
@@ -74,16 +75,21 @@ tail_includes:
         </span>
 
         <div>
-          <!-- pageviews counter -->
-          {% include views-counter.html %}
+          <!-- pageviews -->
+          {% if site.pageviews.provider and site.analytics[site.pageviews.provider].id %}
+            <span>
+              <em id="pageviews">
+                <i class="fas fa-spinner fa-spin small"></i>
+              </em>
+              {{ site.data.locales[lang].post.pageview_measure }}
+            </span>
+          {% endif %}
 
           <!-- read time -->
           {% include read-time.html content=content prompt=true lang=lang %}
         </div>
       </div>
-      <!-- .d-flex -->
     </div>
-    <!-- .post-meta -->
   </header>
 
   <div class="content">

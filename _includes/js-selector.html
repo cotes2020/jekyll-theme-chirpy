@@ -95,13 +95,15 @@
   <script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
 {% endif %}
 
+<!-- Pageviews -->
 {% if page.layout == 'post' %}
-  <!-- Pageviews counter -->
-  {% if site.pageviews.provider != empty and site.pageviews.provider %}
-    {% case site.pageviews.provider %}
+  {% assign provider = site.pageviews.provider %}
+
+  {% if provider and provider != empty %}
+    {% case provider %}
       {% when 'goatcounter' %}
-        {% if site.analytics.goatcounter.id != empty and site.analytics.goatcounter.id %}
-          {% include views-counter/goatcounter.html %}
+        {% if site.analytics[provider].id != empty and site.analytics[provider].id %}
+          {% include pageviews/{{ provider }}.html %}
         {% endif %}
     {% endcase %}
   {% endif %}
@@ -113,13 +115,12 @@
     <script defer src="{{ 'app.min.js' | prepend: js_dist | relative_url }}"></script>
   {% endif %}
 
-  <!-- GA -->
-  {% if site.analytics.google.id != empty and site.analytics.google.id %}
-    {% include analytics/google.html %}
-  {% endif %}
-
-  <!-- GoatCounter -->
-  {% if site.analytics.goatcounter.id != empty and site.analytics.goatcounter.id %}
-    {% include analytics/goatcounter.html %}
-  {% endif %}
+  <!-- Web Analytics -->
+  {% for analytics in site.analytics %}
+    {% capture str %}{{ analytics }}{% endcapture %}
+    {% assign type = str | split: '{' | first %}
+    {% if site.analytics[type].id and site.analytics[type].id != empty %}
+      {% include analytics/{{ type }}.html %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
