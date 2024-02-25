@@ -16,6 +16,7 @@ package-lock.json
 
 # IDE configurations
 .idea
+hidden
 
 # Misc
 assets/js/dist
