@@ -89,7 +89,30 @@ if __name__ == "__main__":
 ```
 {: file='main.py'}
 
-With all the interesting details happening in `run()` as defined in `bin/main.py` which is built from `src/main.py`. If you are still developing your `run()`, no problem, just remove the file since its small and continue developing.
+With all the interesting details happening in `run()` as defined in `bin/main.py` which is built from `src/main.py`. If you are still developing your `run()`, no problem, just remove the file since its small and continue developing. My `run()` then looks like:
+```python
+from .connect import connect
+from .microdot_server import run as _run
+from .server_methods import load_devices
+from .logging import log_flush
+
+
+def run() -> None:
+    log_flush()
+    # [1] Connect to wifi network
+    connect()
+    # [2] Setup pins
+    load_devices()
+    # [3] Start webserver
+    _run()
+
+
+if __name__ == "__main__":
+    run()
+```
+{: file='src/main.py'}
+
+Which I will cover in more detail in the next sections.
 
 ### Connecting to the Network
 
