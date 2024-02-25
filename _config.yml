@@ -97,13 +97,13 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: ngosangns/ngosangns.github.io # <gh-username>/<repo>
-    repo_id: 761953395
+    repo_id: R_kgDOLWp8cw
     category: Announcements
-    category_id:
-    mapping: # optional, default to 'pathname'
-    input_position: # optional, default to 'bottom'
+    category_id: DIC_kwDOLWp8c84Cdc22
+    mapping: pathname # optional, default to 'pathname'
+    input_position: bottom # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
+    reactions_enabled: 1 # optional, default to the value of `1`
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
