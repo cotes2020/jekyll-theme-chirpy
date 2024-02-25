@@ -38,8 +38,8 @@ social:
   email: ngosangns@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://x.com/ngosangns # change to your twitter homepage
     - https://github.com/ngosangns # change to your github homepage
+    - https://x.com/ngosangns # change to your twitter homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -86,7 +86,7 @@ social_preview_image: # string, local or CORS resources
 toc: true
 
 comments:
-  active: utterances # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: giscus # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: blog-ngosangns-me # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -148,7 +148,7 @@ collections:
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: "_posts" # An empty string here means all files in the project
       type: posts
     values:
       layout: post
