@@ -76,7 +76,7 @@ theme_mode: # [light | dark]
 # e.g. 'https://cdn.com'
 #img_cdn: "https://chirpy-img.netlify.app"
 
-avatar: "assets/commons/avatar.jpg"
+avatar: "assets/commons/avatar.png"
 # the avatar on sidebar, support local or CORS resources
 #Tyring to make this work
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
