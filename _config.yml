@@ -97,8 +97,8 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: ngosangns/ngosangns.github.io # <gh-username>/<repo>
-    repo_id:
-    category:
+    repo_id: 761953395
+    category: Announcements
     category_id:
     mapping: # optional, default to 'pathname'
     input_position: # optional, default to 'bottom'
