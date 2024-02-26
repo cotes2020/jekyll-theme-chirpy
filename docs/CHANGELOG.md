@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.5.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.5.0...v6.5.1) (2024-02-26)
+
+### Bug Fixes
+
+* correct the generation of relative resource paths ([#1553](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1553)) ([89b9625](https://github.com/cotes2020/jekyll-theme-chirpy/commit/89b962557a56ccc13eba3c9c20b4270ee9d30042))
+
 ## [6.5.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.4.2...v6.5.0) (2024-02-14)
 
 ### Features
