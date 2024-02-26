@@ -53,7 +53,7 @@ Now we need to install the standard libraries and core functionalities onto the 
 {: .prompt-tip }
 
 ### File Structure: `src` vs. `bin`
-As is common in code projects, `src` stands for source code and `bin` stands for binary. In MicroPython, you can create [`.mpy` files](https://docs.micropython.org/en/latest/reference/mpyfiles.html) which is precompiled code that can be used just like its Python equivalent. Ill cover more on how to build these `.mpy` files with the `mpy-cross` in the building section, but for now note that the directory will look like:
+As is common in code projects, `src` stands for source code and `bin` stands for binary. In MicroPython, you can create [`.mpy` files](https://docs.micropython.org/en/latest/reference/mpyfiles.html) which is precompiled code that can be used just like its `.py` equivalent. Ill cover more on how to build these `.mpy` files with the `mpy-cross` in the [building section](#building-from-src-into-bin), but for now note that the directory will look like:
 
 ```
 project
@@ -145,6 +145,15 @@ def connect() -> None:
         log_record("Connected to sta")
 ```
 {: file='src/connect.py'}
+
+> If your project involves multiple Picos and you need to find each Pico on the network automatically, I recommend setting each Pico's hostname to something unique. For example, taking:
+>```python
+> mac = binascii.hexlify(wlan.config("mac"), ":").decode("utf-8")
+> hostname = f"Pico{mac.replace(":", "")[-6:]}"
+> network.hostname(hostname)
+>```
+> Will assign each Pico a hostname involving the mac address which should be unique enough for most use cases.
+{: .prompt-tip }
 
 Where we have the access point connection:
 ```python
@@ -577,7 +586,7 @@ I initially got the OTA idea from [@kevinmcaleer](https://github.com/kevinmcalee
 2. Add a `version.json` containing 1) a commit/branch/tag and 2) a manifest of the files you with to OTA.
 3. On the Pico, download the raw file content from the manifest and write that content to the appropriate file paths.
 
-> The key limitation of this approach is that you **cannot update the firmware** only files in the repo. So, if you introduce a breaking code change that requires a new firmware dependency, this model may not be the best approach for you.
+> The key limitation of this approach is that you **cannot update the firmware**, only files in the repo. So, if you introduce a breaking code change that requires a new firmware dependency, this model may not be the best approach for you.
 {: .prompt-warning }
 
 In my repo, `version.json` looks like:
@@ -674,7 +683,7 @@ def app_ota() -> None:
 
 followed by shutting down the server to update. By the time the server is shutdown, code updates are downloaded and written to the file system and the Pico is restarted. When the Pico comes back to life, it will execute the updated code.
 
-> I have noticed that sometimes the timing of this approach sometimes fails, prompting two attempts to update. Likely, this approach can be optimized, but the general idea will be similar: 
+> I have noticed that the timing of this approach sometimes fails, prompting two attempts to update. Likely, this approach can be optimized, but the general idea will be similar: 
 > 1. request OTA 
 > 2. shutdown server (so that incoming downloads are not blocked)
 > 3. OTA
