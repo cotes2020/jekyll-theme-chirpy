@@ -1067,7 +1067,6 @@ int("b" - "a")
 - Try out in python as (ord('b') - ord('a')), see what you get.
 
 ### Diameter of a binary tree.
-- [[binaryTree]] [[dfs]] [[bfs]]
 - We can use simple dfs to solve this problem
 {% raw %}
 ```cpp
@@ -1094,7 +1093,6 @@ public:
 };
 ```
 {% endraw %}
-
 ### Middle of the linked list
 
 - This question builds upon the solutions discussed, as you can see we are traversing the LL using two pointers.
@@ -1183,8 +1181,8 @@ public:
 };
 ```
 {% endraw %}
+
 ### Maximum Depth of a binary tree.
-- [[dfs]] [[bfs]] [[binaryTree]]
 - Again seeing that we have a binary tree, the problem leads itself well to a very simple recursive approach.
 {% raw %}
 ```cpp
@@ -1696,6 +1694,7 @@ bool isSubtree(TreeNode* s, TreeNode* t) {
 {% endraw %}
 - The bfs approach would be like this
 {% raw %}
+
 ```cpp
 bool isIdentical(TreeNode* s, TreeNode* t) {
     if (!s && !t) {
@@ -2094,7 +2093,6 @@ public:
 
         while (left < right) {
             int sum = nums[left] + nums[right];
-
             if (sum == target) {
                 result.push_back({nums[i], nums[left], nums[right]});
                 // Avoid duplicates.
@@ -2109,7 +2107,6 @@ public:
             }
         }
     }
-
     return result;
 }
 };
