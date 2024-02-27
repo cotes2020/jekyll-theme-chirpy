@@ -129,6 +129,11 @@ kbd {
   box-shadow: inset 0 -2px 0 var(--kbd-wrap-color);
 }
 
+hr {
+  border-color: var(--main-border-color);
+  opacity: 1;
+}
+
 footer {
   background-color: var(--main-bg);
   height: $footer-height;
