@@ -16,11 +16,7 @@ timezone: Asia/Shanghai
 
 title: DongHyeon Kim's Blog # the main title
 
-<<<<<<< HEAD
 tagline: Hello World! # it will display as the sub-title
-=======
-tagline: Hello world # it will display as the sub-title
->>>>>>> 89946f38653916017b73a300e73267cc8ead14c1
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
