@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.5.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.5.1...v6.5.2) (2024-02-29)
+
+### Bug Fixes
+
+* correct the base URL parameter name ([#1576](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1576)) ([19d6baf](https://github.com/cotes2020/jekyll-theme-chirpy/commit/19d6bafbe1a60614e0d63b961bc73c342a9f6f33)), closes [#1553](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1553)
+
 ## [6.5.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.5.0...v6.5.1) (2024-02-26)
 
 ### Bug Fixes
