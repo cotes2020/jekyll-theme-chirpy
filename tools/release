@@ -151,8 +151,10 @@ branch() {
   fi
 }
 
-## Build a gem package
+## Build a Gem package
 build_gem() {
+  git checkout "$PROD_BRANCH"
+
   # Remove unnecessary theme settings
   sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
   rm -f ./*.gem
@@ -168,6 +170,9 @@ build_gem() {
 
   # restore the dist files for future development
   mkdir -p "$JS_DIST" && cp "$BACKUP_PATH"/* "$JS_DIST"
+
+  # back to the default branch
+  git checkout "$DEFAULT_BRANCH"
 }
 
 main() {
