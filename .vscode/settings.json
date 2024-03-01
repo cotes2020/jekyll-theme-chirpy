@@ -7,6 +7,9 @@
   "files.associations": {
     "*.html": "liquid"
   },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
   // Formatter
   "[html][liquid]": {
     "editor.defaultFormatter": "Shopify.theme-check-vscode"
