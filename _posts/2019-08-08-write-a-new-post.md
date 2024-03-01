@@ -58,7 +58,6 @@ Adding author information in `_data/authors.yml` (If your website doesn't have t
 ```
 {: file="_data/authors.yml" }
 
-
 And then use `author` to specify a single entry or `authors` to specify multiple entries:
 
 ```yaml
@@ -319,7 +318,6 @@ image:
 ```
 
 > You can observe LQIP in the preview image of post [_Text and Typography_](/posts/text-and-typography/).
-
 
 For normal images:
 
