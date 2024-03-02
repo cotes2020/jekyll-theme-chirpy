@@ -33,7 +33,7 @@
   or page.layout == 'category'
   or page.layout == 'tag'
 %}
-  {% assign locale = site.lang | split: '-' | first %}
+  {% assign locale = include.lang | split: '-' | first %}
 
   {% assign urls = urls
     | append: ','
