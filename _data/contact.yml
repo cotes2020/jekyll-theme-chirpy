@@ -3,8 +3,8 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
@@ -15,6 +15,10 @@
 #   noblank: true
 # Uncomment and complete the url below to enable more contact options
 #
+- type: youtube
+  icon: "fab fa-youtube"
+  url: "https://www.youtube.com/channel/UCVSC0Mlk2qw2ks8lVt1WzBw"
+
 - type: instagram
   icon: 'fab fa-instagram'   # icons powered by <https://fontawesome.com/>
   url:  'https://www.instagram.com/yuanjianliu/'  # Fill with your Mastodon account page, rel="me" will be applied for verification
