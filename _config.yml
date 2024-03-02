@@ -158,6 +158,12 @@ collections:
   tabs:
     output: true
     sort_by: order
+  research:
+    output: true
+  publication:
+    output: true
+  files:
+    output: true
 
 defaults:
   - scope:

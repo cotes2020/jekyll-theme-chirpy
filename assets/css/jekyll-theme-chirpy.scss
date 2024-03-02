@@ -4,12 +4,66 @@
 @import 'main';
 
 /* append your custom style below */
+// .bullet {
+//     display: grid;
+//     grid-template-columns: min-content auto;
+//     align-items: left;
+//     padding-bottom: 10px;
+// }
 
-.blue-grey-text {
-    color: #607d8b !important;
+// #bullet-entry {
+//     padding-left: 5px;
+// }
+
+.publication > table, tr, td {
+    border: none;
 }
 
-.blue-grey-text.text-darken-4 {
-    color: #263238 !important;
+.publication > td {
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
-  
+
+.right-align {
+    text-align: right
+}
+
+.grey-text {
+    color: #9e9e9e !important;
+}
+.grey-text.text-darken-1 {
+    color: #757575 !important;
+}
+
+.grey {
+    background-color: #9e9e9e !important;
+}
+
+.grey.lighten-3 {
+    background-color: #eeeeee !important;
+}
+
+#dropdown-box {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-color: #bdbdbd;
+    border-style: dotted;
+    border-width: 3px;
+}
+
+#dropdown-box-inner {
+    margin: 0px;
+    padding: 8px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.unhidden {
+    display: inline;
+}

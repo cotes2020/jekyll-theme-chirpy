@@ -1,0 +1,5 @@
+---
+title: Autonomous Laboratory
+---
+
+The science discovery can be slowed down by tedious assembly and tricky mannual operations. The autonomous laboratory project aims to replace the tasks traditionally performed by human researchers by automated systems and intelligent algorithms. I currently work with [Ian Foster](https://cs.uchicago.edu/people/ian-foster/) and [Chibueze Amanchukwu](https://pme.uchicago.edu/faculty/chibueze-amanchukwu) to build an autonomous laboratory to manufacture coin-cell batteries. We propose the development of generative AI models to identify candiate electrolyte solvents with desired properties (high ionic conductivity, oxidative stability, and Coulombic efficiencies) and the deployment of self-driving labs for electrolyte synthesis and battery fabrication and testing.

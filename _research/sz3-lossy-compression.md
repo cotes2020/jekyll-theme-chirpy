@@ -1,0 +1,5 @@
+---
+title: SZ3 Lossy Compression
+---
+
+Modern simulations (e.g. particle simulation, climate simulation) can produce huge amount of data every day. Lossy compression can significantly reduce the data size while preserving important information for analysis. I work with [Sheng Di](https://www.anl.gov/profile/sheng-di) in the compression project. We explore lossy compression on scientific datasets, especially the datasets consisting of floating-point numbers. The data files are usually planar (e.g. [CESM dataset](https://climatedata.ibs.re.kr/data/cesm2-lens) 1800x3600) or cubic (e.g. [Nyx dataset](https://ieee-dataport.org/open-access/nyx-cosmological-simulation-dataset) 512x512x512). Some extremely large single file can be over 900 GB (e.g. [Turbulent Channel Flow](https://klacansky.com/open-scivis-datasets/category-simulation.html) 10240x7680x1536). Other datasets may contain thousands of smaller files. The goal of this project is to provide a friendly program for users to compress, transfer and store these huge datasets.

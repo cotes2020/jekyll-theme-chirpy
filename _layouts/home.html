@@ -3,3 +3,96 @@ layout: default
 refactor: true
 ---
 
+<div class="content">
+
+{% intro introduction.md %} 
+
+</div>
+
+<h2> <ion-icon name="desktop"></ion-icon> RESEARCH </h2>
+
+{% assign research_files = site.research | where_exp: "item", "item.path contains '_research'" %}
+
+{% for file in research_files %}
+
+<div class="bullet">
+    <div id="bullet-entry">
+        <ion-icon name="chevron-forward"></ion-icon> <b>{{ file.title }}:</b> {{ file.content | markdownify | strip_newlines }}
+    </div>
+</div>
+
+{% endfor %}
+
+<h2> <ion-icon name="book"></ion-icon> PUBLICATIONS </h2>
+
+{% assign publications = site.publication | where_exp: "item", "item.path contains '_publication'" | sort: "date" | reverse %}
+
+
+{% for pub in publications %}
+
+<div class="publication content">
+<table id={{ pub.bibtex_id }} cellspacing="0" cellpadding="0">
+    
+    <tr><td>
+        <ion-icon name="chevron-forward"></ion-icon> <b>{{ pub.title }}</b>
+        <span class="grey-text text-darken-1">[{% include datetime.html date=pub.date tooltip=true lang=lang %}]</span>
+        <a href="{{ pub.pdf }}" target="_self">
+            <ion-icon name="link-outline"></ion-icon>
+        </a>
+    </td></tr>
+    <tr><td>
+        {{ pub.authors }}
+    </td></tr>
+    <tr><td>
+        <em>
+            {{ pub.venue }}
+            {% if pub.awards %}
+            — {{ pub.awards }}
+            {% endif %}
+        </em>
+    </td></tr>
+    <tr>
+    <td>
+        <a href="javascript:unhide('{{ pub.bibtex_id }}_tldr')" target="_self">TLDR</a> |
+        {% if pub.website %}
+        <a href="{{ pub.website }}">Website</a> |
+        {% endif %}
+        {% if pub.link %}
+        <a href="{{ pub.link }}">URL</a> |
+        {% endif %}
+        {% if pub.code %}
+        <a href="{{ pub.code }}">Code</a> |
+        {% endif %}
+        {% if pub.poster %}
+        <a href="{{ pub.poster }}">Poster</a> |
+        {% endif %}
+        {% if pub.slides %}
+        <a href="{{ pub.slides }}">Slides</a> |
+        {% endif %}
+        {% if pub.bibtex %}
+        <a href="javascript:unhide('{{ pub.bibtex_id }}_bibtex')" target="_self">BibTex</a> |
+        {% endif %}
+        {% if pub.pdf %}
+        <a href="{{ pub.pdf }}">PDF</a>
+        {% endif %}
+    </td></tr>
+    <tr><td>
+        <div id="{{ pub.bibtex_id }}_tldr" class="hidden">
+            <div class="grey lighten-3" id="dropdown-box">
+                <div id="dropdown-box-inner">
+                <b>TLDR:</b> {{ pub.abstract }}
+                </div>
+            </div>
+        </div>
+    </td></tr>
+    <tr><td>
+        <div id="{{ pub.bibtex_id }}_bibtex" class="hidden">
+            <div class="grey lighten-3" id="dropdown-box">
+            <pre id="dropdown-box-inner" style="white-space: pre-wrap; font-family: 'Roboto Mono'; font-size: 10pt;">{{ pub.bibtex }}</pre>
+            </div>
+        </div>
+    </td></tr>
+</table>
+</div>
+
+{% endfor %}
