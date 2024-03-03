@@ -75,10 +75,10 @@ layout: compress
 
     <!-- JavaScripts -->
 
-    {% include js-selector.html lang=lang %}
+    {% include js-selector.html %}
 
     {% if page.mermaid %}
-      {% include mermaid.html lang=lang %}
+      {% include mermaid.html %}
     {% endif %}
 
     {% include_cached search-loader.html lang=lang %}
