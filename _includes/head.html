@@ -101,12 +101,12 @@
     <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
 
-  {% if page.layout == 'home' %}
+  {% if page.layout == 'home' or page.layout=='blogposts' %}
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   {% endif %}
 
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' or page.layout == 'blogposts' %}
     <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
   {% endif %}
 
