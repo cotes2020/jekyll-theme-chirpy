@@ -26,8 +26,11 @@
       - [SVEN: Training Data Efficiency](#sven-training-data-efficiency)
     - [4.3 Constructing High-quality Training Dataset](#43-constructing-high-quality-training-dataset)
 
+---
 
 ## LLMs for Code: Security Hardening and Adversarial Testing
+
+Paper: LLMs for Code: Security Hardening and Adversarial Testing
 
 ### ABSTRACT
 

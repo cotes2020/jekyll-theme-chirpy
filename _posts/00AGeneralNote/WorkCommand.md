@@ -1,19 +1,26 @@
 
 - [Work Command](#work-command)
+  - [IDE](#ide)
+    - [IntelliJ](#intellij)
+    - [VSC](#vsc)
+      - [Issue](#issue)
+        - [auto save](#auto-save)
   - [makefile](#makefile)
     - [avoid command output](#avoid-command-output)
+    - [move file](#move-file)
     - [github repo search](#github-repo-search)
   - [reuse token](#reuse-token)
 - [My Issue](#my-issue)
   - [Github issue](#github-issue)
+    - [github query 1000 issue](#github-query-1000-issue)
+    - [Github Submodel](#github-submodel)
     - [Github upload](#github-upload)
-  - [VSC Issue](#vsc-issue)
-    - [auto save](#auto-save)
   - [My M1 Issue](#my-m1-issue)
     - [Install brew](#install-brew)
     - [install Pyenv](#install-pyenv)
       - [Prerequisites](#prerequisites)
       - [intsall Pyenv](#intsall-pyenv)
+      - [delete pyenv](#delete-pyenv)
       - [Use pyenv](#use-pyenv)
       - [Use Virtual Environments](#use-virtual-environments)
       - [errors you might meet](#errors-you-might-meet)
@@ -29,6 +36,65 @@
 
 ---
 
+## IDE
+
+### IntelliJ
+
+Recommand Plugin:
+- Leetcode Editor
+  - 上班摸鱼神器，也是一个可以在IDEA中刷算法题目的插件，有很多题目供我们学习，
+  - 表面在写代码，其实是在刷题。 每道题都有很详细的解题思路
+
+- [Translation](https://plugins.jetbrains.com/plugin/8579-translation)
+  - 这是翻译插件，阅读源码有不认识的英文，或者编写变量时，不知道英文怎么写的时候可以直接进行翻译
+  - 在菜单栏上也可以直接进行翻译，不用再去打开一些在线翻译网站了
+
+- [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
+  - 一个可以让你慢慢脱离鼠标操作的插件，在IDEA中操作时，他会将对应的快捷键，进行提示。
+  - 并且右侧会有一个列表，将你近期使用的功能进行展示，对于高频操作我们可以使用快捷键，这样可以提升效率
+
+- [Catppuccin Theme](https://plugins.jetbrains.com/plugin/18682-catppuccin-theme)
+  - Catppuccin is a community-driven pastel theme that aims to be the middle ground between low and high contrast themes. It consists of 4 soothing warm palettes with 26 eye-candy colors each, perfect for coding, designing, and much more!
+  - There are 4 lovely flavours for you to choose from: Latte, Frappé, Macchiato and Mocha.
+
+- [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+  - This plugin is a port of the Atom File Icons and the icons of the Material Theme UI plugin. 
+
+- [Rainbow brackets](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
+  - 如果您曾经为嵌套元素的大量重复中括号而烦恼，那这款插件就是您的救星。 它为每组左中括号和右中括号提供了各自的颜色，使跟踪代码块的起始和结束位置更加容易。 相信我们，只要尝试一次，您就会知道它有多好。
+
+
+- [wakatime](https://plugins.jetbrains.com/plugin/7425-wakatime)
+  - Metrics, insights, and time tracking automatically generated from your programming activity.
+
+- [CodeGlance](https://plugins.jetbrains.com/plugin/7275-codeglance) 
+  - 用过sublime的同学对这个功能一定很熟悉，它是一个迷你缩放图插件
+  - 当代码过长的时候可以使用这个插件，相比如下拉框，这个插件更加的直观和方便
+
+- [JavaDoc](https://plugins.jetbrains.com/plugin/7157-javadoc)
+  - 这是一个快速生成文档注释的插件
+  - windows上可以通过alt + insert 快捷键，mac是control+回车
+
+
+### VSC 
+
+#### Issue
+
+##### auto save
+
+open the Settings editor from the Command Palette (⇧⌘P) with Preferences: Open Settings or use the keyboard shortcut (⌘,).
+
+Settings:
+
+- Commonly used
+  - AutoSave: after delay
+
+- Python Docstring Generate Configuration
+  - Quote Style: `"` or `'`
+
+
+--
+
 ## makefile 
 
 ### avoid command output
@@ -39,12 +105,66 @@ test_single_model:
   echo "hi
 ```
 
+### move file
+
+```bash
+for FILE in ./tests/*.yaml; do git mv $FILE "tests/j/"; done
+```
 
 ### github repo search
 
+**curl**
+
+```bash
+export ORG="AAA-QA"
+
+gh api \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /orgs/$ORG/repos | jq | grep full_name
+
+gh api \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /orgs/$ORG/repos | jq | grep ssh_url
+
+curl https://api.github.com/search/repositories?q=language:java \
+    | jq | grep html_url
+```
+
+**gh api**
+
+```bash
+gh api search/repositories \
+    --method=GET -F q='language:java' \
+    --jq '.items[].html_url' > output.txt
+```
+
+**gh search**
+
+```bash
+gh search repos --visibility=public --language=java  
+
+gh search repos --visibility=public --language=java \
+  --limit 100 --json fullName | jq -r '.[].fullName'
+
+gh search repos --language=java \
+  --sort="updated" --order="asc" \
+  --limit $per_page --json url \
+  | jq -r '.[].url'
+
+
+gh search repos --language=java --visibility=public \
+  --sort="updated" --order="asc" \
+  --limit $per_page --json url \
+  | jq -r '.[].url'
+
+```
+
+
 ```bash
 page=1
-per_page=100
+per_page=1000
 while true; do
     gh search repos --language=java --visibility=public \
       --sort="updated" --order="asc" \
@@ -56,17 +176,10 @@ while true; do
 
     ((page++))
 
-    if [ $page -gt 200 ]; then
+    if [ $page -gt 20000 ]; then
         break
     fi
 done > output.txt
-
-
-gh search repos --language=java --visibility=public \
-      --sort="updated" --order="asc" \
-      --limit $per_page --json url \
-      | jq -r '.[].url'
-
 
 page=1
 per_page=100
@@ -85,6 +198,57 @@ while true; do
         break
     fi
 done > output.txt
+
+page=1
+per_page=1000
+while true; do
+    gh search repos \
+      --language=java \
+      --visibility=public \
+      --sort="updated" \
+      --order="asc" \
+      --limit $per_page \
+      --json url \
+      | jq -r '.[].url' \
+      | while read -r url; do
+        echo "$url"
+    done
+    ((page++))
+done > output.txt
+
+    gh search repos \
+      --language=java \
+      --visibility=public \
+      --sort="updated" \
+      --order="asc" \
+      --limit 1000000000000000000 \
+      --json url \
+      | jq -r '.[].url' > output.txt
+ 
+page=1
+per_page=1000
+while true; do
+    # Perform the GitHub API search request
+    response=$(gh search repos \
+        --language=java \
+        --visibility=public \
+        --sort="updated" \
+        --order="asc" \
+        --limit $per_page \
+        --page $page \
+        --json url)
+
+    # Check if the response contains any repositories
+    if [[ $(echo "$response" | jq -r '.[].url' | wc -l) -eq 0 ]]; then
+        break  # No more repositories found, stop the loop
+    fi
+
+    # Extract and echo repository URLs
+    echo "$response" | jq -r '.[].url'
+
+    ((page++))
+done > output.txt
+
 ```
 
 
@@ -189,17 +353,12 @@ curl -X POST 'https://website/token/scans' \
   }'
 
 
-curl 'https://checkers.apple.com/api/v2/scans/'$UUID'' \
+curl 'https://website/'$UUID'' \
   -H 'Authorization: Bearer '$TOKEN'' \
   -H 'Content-Type: application/json' | jq
 
-
-
 export   -H 'Authorization: Bearer '$TOKEN'' \
   -H 'Content-Type: application/json' | jq
-
-
-
 ```
 
 
@@ -213,6 +372,25 @@ Hopefully you will never need this
 ---
 
 ## Github issue
+
+### github query 1000 issue
+
+- https://github.com/cli/cli/issues/4176
+- https://stackoverflow.com/questions/37602893/github-search-limit-results#:~:text=rb%20in%20Github%2C%20Github%20API,search%20by%20changing%20size%20range
+- https://github.com/sourcegraph/sourcegraph/issues/2562
+- https://github.com/cli/cli/issues/5101
+
+API:
+- https://docs.github.com/en/search-github/searching-on-github/searching-for-repositories#search-based-on-when-a-repository-was-created-or-last-updated
+- https://docs.github.com/en/search-github/searching-on-github/searching-code#considerations-for-code-search
+
+
+### Github Submodel
+
+```bash
+$ git submodule add --force https://github.xxx 
+$ git submodule update --remote
+```
 
 ### Github upload
 
@@ -229,23 +407,6 @@ cat SketchUp-* > SketchUp2023.dmg
 
 
 ---
-
-## VSC Issue
-
-### auto save
-
-open the Settings editor from the Command Palette (⇧⌘P) with Preferences: Open Settings or use the keyboard shortcut (⌘,).
-
-Settings:
-
-- Commonly used
-  - AutoSave: after delay
-
-- Python Docstring Generate Configuration
-  - Quote Style: `"` or `'`
-
-
---
 
 
 ## My M1 Issue
@@ -492,6 +653,11 @@ $ pyenv which python
 # /usr/bin/python
 ```
 
+#### delete pyenv
+
+```bash
+pyenv uninstall 3.8.2/envs/greenhouse
+```
 
 
 #### Use pyenv

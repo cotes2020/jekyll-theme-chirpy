@@ -80,7 +80,7 @@ jobs:
         run: |
           git config --global user.name "grace"
           git config --global user.email "lgraceye@hotmail.com"
-          git pull origin master
+          # git pull origin master
           git add .
           git commit -m "Auto updating img to repo"
           git push
