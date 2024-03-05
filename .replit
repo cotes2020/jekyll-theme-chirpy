@@ -1,0 +1,10 @@
+run = "bundle exec ruby main.rb"
+hidden = [".bundle"]
+entrypoint = "main.rb"
+modules = ["ruby-3.2:v6-20240209-9e3a339"]
+
+[nix]
+channel = "stable-23_11"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]

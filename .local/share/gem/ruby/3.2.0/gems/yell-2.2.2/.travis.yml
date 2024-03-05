@@ -1,0 +1,20 @@
+language: ruby
+before_install: gem install bundler
+script: "bundle exec rspec"
+
+matrix:
+  include:
+    - rvm: ruby-head
+    - rvm: 2.6
+    - rvm: 2.5
+    - rvm: 2.4
+    - rvm: 2.3
+    - rvm: jruby-9.1
+    - rvm: jruby-9.2
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head
+
+notifications:
+  on_success: change
+  on_failure: change
