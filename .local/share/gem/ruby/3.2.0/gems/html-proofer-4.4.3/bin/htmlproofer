@@ -1,0 +1,102 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$stdout.sync = true
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'html-proofer'
+require 'mercenary'
+
+Mercenary.program(:htmlproofer) do |p|
+  p.version HTMLProofer::VERSION
+  p.description %(Test your rendered HTML files to make sure they're accurate.)
+  p.syntax 'htmlproofer PATH [options]'
+
+  p.description 'Runs the HTML-Proofer suite on the files in PATH. For more details, see the README.'
+
+  p.option 'allow_hash_href', '--allow-hash-href=<true|false>',  'String', 'If `true`, assumes `href="#"` anchors are valid (default: `true`)'
+  p.option 'allow_missing_href', '--allow-missing-href=<true|false>',  'String', 'If `true`, does not flag `a` tags missing `href`. In HTML5, this is technically allowed, but could also be human error. (default: `false`)'
+  p.option 'as_links', '--as-links', 'Assumes that `PATH` is a comma-separated array of links to check.'
+  p.option 'assume_extension', '--assume-extension <ext>', 'Automatically add specified extension to files for internal links, to allow extensionless URLs (as supported by most servers) (default: `.html`).'
+  p.option 'checks', '--checks check1,[check2,...]', Array, 'A comma-separated list of Strings indicating which checks you want to run (default: `["Links", "Images", "Scripts"]`)'
+  p.option 'check_external_hash', '--check-external-hash=<true|false>', 'String', 'Checks whether external hashes exist (even if the webpage exists) (default: `true`).'
+  p.option 'check_internal_hash', '--check-internal-hash=<true|false>',  'String', 'Checks whether internal hashes exist (even if the webpage exists) (default: `true`).'
+  p.option 'check_sri', '--check-sri=<true|false>', 'String', 'Check that `<link>` and `<script>` external resources use SRI (default: `false`).'
+  p.option 'directory_index_file', '--directory-index-file <filename>', String, 'Sets the file to look for when a link refers to a directory. (default: `index.html`)'
+  p.option 'disable_external', '--disable-external=<true|false>', String, 'If `true`, does not run the external link checker (default: `false`)'
+  p.option 'enforce_https', '--enforce-https=<true|false>', String, 'Fails a link if it\'s not marked as `https` (default: `true`).'
+  p.option 'extensions', '--extensions ext1,[ext2,...[', Array, 'A comma-separated list of Strings indicating the file extensions you would like to check (including the dot) (default: `.html`)'
+  p.option 'ignore_empty_alt', '--ignore-empty-alt=<true|false>', 'String', 'If `true`, ignores images with empty/missing alt tags (in other words, `<img alt>` and `<img alt="">` are valid; set this to `false` to flag those) (default: `true`)'
+  p.option 'ignore_empty_mailto', '--ignore-empty-mailto=<true|false>',  'String', 'If `true`, allows `mailto:` `href`s which do not contain an email address (default: `false`)'
+  p.option 'ignore_files', '--ignore-files file1,[file2,...]', Array, 'A comma-separated list of Strings or RegExps containing file paths that are safe to ignore'
+  p.option 'ignore_missing_alt', '--ignore-missing-alt=<true|false>',  'String', 'If `true`, ignores images with missing alt tags (default: `false`)'
+  p.option 'ignore_status_codes', '--ignore-status-codes 123,[xxx, ...]', Array, 'A comma-separated list of numbers representing status codes to ignore.'
+  p.option 'ignore_urls', '--ignore-urls link1,[link2,...]', Array, 'A comma-separated list of Strings or RegExps containing URLs that are safe to ignore. This affects all HTML attributes, such as `alt` tags on images.'
+  p.option 'log_level', '--log-level <level>', String, 'Sets the logging level, as determined by Yell. One of `:debug`, `:info`, `:warn`, `:error`, or `:fatal`. (default: `:info`)'
+  p.option 'only_4xx', '--only-4xx', 'Only reports errors for links that fall within the 4xx status code range'
+  p.option 'root_dir', '--root-dir PATH', String, 'The absolute path to the directory serving your html-files.'
+  p.option 'swap_attributes', '--swap-attributes CONFIG', String, 'JSON-formatted config that maps element names to the preferred attribute to check (default: `{}`).'
+  p.option 'swap_urls', '--swap-urls re:string,[re:string,...]', Array, 'A comma-separated list containing key-value pairs of `RegExp => String`. It transforms URLs that match `RegExp` into `String` via `gsub`. The escape sequences `\\:` should be used to produce literal `:`s.'
+
+  p.option 'typhoeus', '--typhoeus CONFIG', String, 'JSON-formatted string of Typhoeus config. Will override the html-proofer defaults.'
+  p.option 'hydra', '--hydra CONFIG', String, 'JSON-formatted string of Hydra config. Will override the html-proofer defaults.'
+  p.option 'parallel', '--parallel CONFIG', String, 'JSON-formatted string of Parallel config. Will override the html-proofer defaults.'
+  p.option 'cache', '--cache CONFIG', String, 'JSON-formatted string of cache config. Will override the html-proofer defaults.'
+
+  p.action do |args, opts|
+    args = ['.'] if args.empty?
+    path = args.first
+
+    options = {}
+
+    # prepare everything to go to proofer
+    p.options.reject { |o| opts[o.config_key].nil? }.each do |option|
+      opts[option.config_key] = opts[option.config_key].map { |i| HTMLProofer::Configuration.to_regex?(i) } if opts[option.config_key].is_a?(Array)
+      options[option.config_key.to_sym] = opts[option.config_key]
+    end
+
+    # some minor manipulation of a special option
+    unless opts['swap_urls'].nil?
+      options[:swap_urls] = {}
+      opts['swap_urls'].each do |s|
+        splt = s.split(/(?<!\\):/, 2)
+
+        re = splt[0].gsub(/\\:/, ':')
+        string = splt[1].gsub(/\\:/, ':')
+        options[:swap_urls][Regexp.new(re)] = string
+      end
+    end
+
+    # check booleans
+    [:allow_hash_href, :allow_missing_href, :check_external_hash, :check_internal_hash, :check_sri, :disable_external, :enforce_https, :ignore_empty_alt, :ignore_empty_mailto, :ignore_missing_alt].each do |option|
+      next if (val = opts[option.to_s]).nil?
+      if val == "false"
+        options[option] = false
+      else
+        options[option] = true
+      end
+    end
+
+    options[:log_level] = opts['log_level'].to_sym unless opts['log_level'].nil?
+
+    options[:typhoeus] = HTMLProofer::Configuration.parse_json_option('typhoeus', opts['typhoeus'], symbolize_names: false) unless opts['typhoeus'].nil?
+    options[:hydra] = HTMLProofer::Configuration.parse_json_option('hydra', opts['hydra']) unless opts['hydra'].nil?
+    options[:parallel] = HTMLProofer::Configuration.parse_json_option('parallel', opts['parallel']) unless opts['parallel'].nil?
+    options[:cache] = HTMLProofer::Configuration.parse_json_option('cache', opts['cache']) unless opts['cache'].nil?
+
+    options[:swap_attributes] = HTMLProofer::Configuration.parse_json_option('swap_attributes', opts['swap_attributes'], symbolize_names: false) unless opts['swap_attributes'].nil?
+
+    options[:ignore_status_codes] = Array(options[:ignore_status_codes]).map(&:to_i)
+
+    paths = path.split(',')
+    if opts['as_links']
+      links = path.split(',').map(&:strip)
+      HTMLProofer.check_links(links, options).run
+    elsif File.directory?(paths.first)
+      HTMLProofer.check_directories(paths, options).run
+    else
+      HTMLProofer.check_file(path, options).run
+    end
+  end
+end

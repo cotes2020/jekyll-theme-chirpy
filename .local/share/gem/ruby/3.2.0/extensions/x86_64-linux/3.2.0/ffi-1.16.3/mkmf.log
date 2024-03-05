@@ -1,0 +1,155 @@
+package configuration for libffi is not found
+have_header: checking for ffi.h... -------------------- no
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -lruby-3.2.2  -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC   -c conftest.c"
+conftest.c:3:10: fatal error: ffi.h: No such file or directory
+    3 | #include <ffi.h>
+      |          ^~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ffi.h>
+/* end */
+
+--------------------
+
+find_header: checking for ffi.h in /usr/local/include,/usr/include/ffi,/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi... -------------------- no
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC   -c conftest.c"
+conftest.c:3:10: fatal error: ffi.h: No such file or directory
+    3 | #include <ffi.h>
+      |          ^~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ffi.h>
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC  -I/usr/local/include -c conftest.c"
+conftest.c:3:10: fatal error: ffi.h: No such file or directory
+    3 | #include <ffi.h>
+      |          ^~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ffi.h>
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC  -I/usr/include/ffi -c conftest.c"
+conftest.c:3:10: fatal error: ffi.h: No such file or directory
+    3 | #include <ffi.h>
+      |          ^~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ffi.h>
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC  -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi -c conftest.c"
+conftest.c:3:10: fatal error: ffi.h: No such file or directory
+    3 | #include <ffi.h>
+      |          ^~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ffi.h>
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC  -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi -c conftest.c"
+conftest.c:3:10: fatal error: ffi.h: No such file or directory
+    3 | #include <ffi.h>
+      |          ^~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ffi.h>
+/* end */
+
+--------------------
+
+block in append_ldflags: checking for whether -Wl,--exclude-libs,ALL is accepted as LDFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -lruby-3.2.2 -Wl,--exclude-libs,ALL -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_gc_mark_movable()... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed -Wl,--exclude-libs,ALL     -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -lruby-3.2.2  -lm -lpthread  -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_gc_mark_movable; return !p; }
+/* end */
+
+--------------------
+
+block in append_ldflags: checking for whether -pthread is accepted as LDFLAGS... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib "gcc -o conftest -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/x86_64-linux -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0/ruby/backward -I/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/include/ruby-3.2.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed -Wl,--exclude-libs,ALL     -Wl,-rpath,/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -L/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/lib -lruby-3.2.2 -pthread -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define HAVE_FFI_PREP_CIF_VAR 1
+4: #define USE_INTERNAL_LIBFFI 1
+5: #define HAVE_RB_GC_MARK_MOVABLE 1
+6: #endif
+/* end */
+

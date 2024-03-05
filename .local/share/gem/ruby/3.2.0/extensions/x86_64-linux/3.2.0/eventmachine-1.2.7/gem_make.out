@@ -1,0 +1,19 @@
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-m0pm58 sitelibdir\=./.gem.20240305-1184-m0pm58 clean
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-m0pm58 sitelibdir\=./.gem.20240305-1184-m0pm58
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-m0pm58 sitelibdir\=./.gem.20240305-1184-m0pm58 install
+install -c -p -m 755 fastfilereaderext.so ./.gem.20240305-1184-m0pm58
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-m0pm58 sitelibdir\=./.gem.20240305-1184-m0pm58 clean

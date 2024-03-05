@@ -1,0 +1,17 @@
+pkg/*
+*.gem
+.bundle
+.idea
+.vscode
+vendor/
+# bundler
+Gemfile.*lock
+
+# vim
+*.swp
+
+# coverage
+/coverage
+
+# rspec
+/spec/examples/txt

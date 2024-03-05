@@ -1,0 +1,19 @@
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/nix/store/4mm3lyj1mmqx25diw044hciai541qcic-ruby-3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-f1jmg8 sitelibdir\=./.gem.20240305-1184-f1jmg8 clean
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-f1jmg8 sitelibdir\=./.gem.20240305-1184-f1jmg8
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.so
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-f1jmg8 sitelibdir\=./.gem.20240305-1184-f1jmg8 install
+install -c -p -m 755 ruby_http_parser.so ./.gem.20240305-1184-f1jmg8
+
+current directory: /home/runner/hyuk-devgithubio/.local/share/gem/ruby/3.2.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240305-1184-f1jmg8 sitelibdir\=./.gem.20240305-1184-f1jmg8 clean
