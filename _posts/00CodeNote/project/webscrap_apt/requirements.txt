@@ -1,0 +1,5 @@
+matplotlib==3.7.1
+nltk==3.8
+pandas==1.5.1
+requests==2.31.0
+selenium==4.8.3
