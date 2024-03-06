@@ -19,6 +19,22 @@
   "scss.validate": false,
   "less.validate": false,
   // Stylint extension settings
-  "stylelint.snippet": ["css", "less", "postcss", "scss"],
-  "stylelint.validate": ["css", "less", "postcss", "scss"]
+  "stylelint.snippet": [
+    "css",
+    "less",
+    "postcss",
+    "scss"
+  ],
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "scss"
+  ],
+  "[julia]": {
+    "editor.defaultFormatter": "julialang.language-julia"
+  },
+  "[mojo]": {
+    "editor.defaultFormatter": "modular-mojotools.vscode-mojo"
+  }
 }
