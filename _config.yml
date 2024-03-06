@@ -78,11 +78,8 @@ pageviews:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-<<<<<<< HEAD
+
 theme_mode: dark # [light|dark]
-=======
-theme_mode: # [light | dark]
->>>>>>> 547b95cc7ae35018dadcc01b6eb1dc8c8943e67e
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -102,14 +99,9 @@ social_preview_image: '/assets/img/huoye.jpg' # string, local or CORS resources
 toc: true
 
 comments:
-<<<<<<< HEAD
-  active: 'disqus' # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
-  # The active options are as follows:
-=======
   # Global switch for the post comment system. Keeping it empty means disabled.
   provider: # [disqus | utterances | giscus]
   # The provider options are as follows:
->>>>>>> 547b95cc7ae35018dadcc01b6eb1dc8c8943e67e
   disqus:
     shortname: https-ocholuo-github-io # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
