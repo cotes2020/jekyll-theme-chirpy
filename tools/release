@@ -70,12 +70,14 @@ _check_git() {
     exit 1
   fi
 
-  if [[ $working_branch != "$DEFAULT_BRANCH" &&
-    $working_branch != hotfix/* &&
-    $working_branch != "$PROD_BRANCH" ]]; then
-    echo "> Abort: Please run on the default, release or patch branch."
-    exit 1
-  fi
+  $opt_pre || (
+    if [[ $working_branch != "$DEFAULT_BRANCH" &&
+      $working_branch != hotfix/* &&
+      $working_branch != "$PROD_BRANCH" ]]; then
+      echo "> Abort: Please run on the default, release or patch branch."
+      exit 1
+    fi
+  )
 }
 
 _check_src() {
@@ -149,14 +151,16 @@ branch() {
   fi
 }
 
-## Build a gem package
+## Build a Gem package
 build_gem() {
+  git checkout "$PROD_BRANCH"
+
   # Remove unnecessary theme settings
   sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
   rm -f ./*.gem
 
   npm run build
-  git add "$JS_DIST" -f # add JS dist to gem
+  git add "$JS_DIST" -f # add JS distribution files to gem
   gem build "$GEM_SPEC"
   cp "$JS_DIST"/* "$BACKUP_PATH"
 
@@ -166,6 +170,9 @@ build_gem() {
 
   # restore the dist files for future development
   mkdir -p "$JS_DIST" && cp "$BACKUP_PATH"/* "$JS_DIST"
+
+  # back to the default branch
+  git checkout "$DEFAULT_BRANCH"
 }
 
 main() {

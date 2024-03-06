@@ -1,3 +1,0 @@
-celery
-django
-selenium 
