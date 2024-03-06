@@ -37,10 +37,6 @@ image:
 - [DNS privacy](#dns-privacy)
   - [DNS over HTTPS](#dns-over-https)
 
-
-- ref
-  - DNS Poisoning (S+ 7th ch9)
-
 ---
 
 
@@ -199,12 +195,12 @@ attacker trick DNS server to cache a false DNS record,
 - Normally, computer uses a DNS server provided by the organization or ISP.
   - DNS servers are generally deployed in an organization's network to improve resolution response performance by caching previously obtained query results.
 
-- <font color=blue> Poisoning attacks on a single DNS server </font>
+- <font color=LightSlateBlue> Poisoning attacks on a single DNS server </font>
   - affect the users serviced directly by the compromised server or indirectly by its downstream server(s) if applicable.
 
 - To perform a cache poisoning attack, the attacker exploits a flaw in the DNS software.
 
-- <font color=blue> If the server does not correctly validate DNS responses </font> to ensure that they are from an authoritative source (using DNSSEC)
+- <font color=LightSlateBlue> If the server does not correctly validate DNS responses </font> to ensure that they are from an authoritative source (using DNSSEC)
   - the server will caching the incorrect entries locally
   - and serve them to other users that make the same request.
   - direct users of a website to another site of the attacker's choosing.
@@ -351,10 +347,10 @@ In addition to attacks on name servers, a similar DNS cache poisoning attack can
 A DNS cache poisoning attack against a client:
 1. On visiting a malicious web site
    1. the victim views a page containing many images,
-   2. each causing a <font color=blue> separate DNS request to a nonexistent subdomain of the domain that is to be poisoned </font>.
+   2. each causing a <font color=LightSlateBlue> separate DNS request to a nonexistent subdomain of the domain that is to be poisoned </font>.
       1. An attacker can construct a `malicious web site containing HTML tags(such as image tags)` that automatically issue requests for additional URLs.
       2. These image tags each `issue a request to a different nonexistent subdomain of the domain the attacker wishes to poison`.
-2. The malicious web server <font color=blue> sends guessed responses to each of these requests </font>
+2. The malicious web server <font color=LightSlateBlue> sends guessed responses to each of these requests </font>
    1. When the attacker receives indication that the victim has navigated to this page, he can rapidly send DNS replies with poisoned glue records to the client.
 3. On a successful guess, the client’s DNS cache will be poisoned.
    1. the client will cache the poisoned DNS entry.
@@ -597,10 +593,10 @@ Because of its direct consequences, **Sinkholing is usually done in special cond
   - it can identify compromised hosts by analysing the sinkhole logs and identifying hosts that are trying to connect to known malicious domains.
   - For example if the logs show that one particular machine is continuously attempting to connect to a C&C server, but the request is being redirected because of the sinkhole, then there is a good chance that this particular machine is infected with a bot.
 
-- <font color=blue> Blocking drive-by downloads </font>
+- <font color=LightSlateBlue> Blocking drive-by downloads </font>
   - DNS sinkhole redirects user access to a legitimate website that an attacker has secretly inserted with a malicious hidden link, which forces the client to download and execute malicious code without their knowledge.
 
-- <font color=blue> Blocking C&C channels </font>
+- <font color=LightSlateBlue> Blocking C&C channels </font>
   - When a user tries to connect to a C&C server, a referrer can be popped up, which indicates a direct connection to the domain.
   - This is a good indicator that tells the user is being compromised and the bot is attempting to contact the controller for further malicious commands.
 

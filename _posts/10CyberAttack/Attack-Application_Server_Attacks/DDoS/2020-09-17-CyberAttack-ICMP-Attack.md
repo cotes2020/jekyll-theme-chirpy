@@ -1,18 +1,11 @@
 ---
 title: Meow's CyberAttack - ICMP Attacks 
 date: 2020-09-17 11:11:11 -0400
-categories: [10CyberAttack, DDos]
-tags: [CyberAttack, DDos]
+categories: [10CyberAttack, Application/Server Attacks, DDos]
+tags: [CyberAttack, DDos, ICMP]
 toc: true
 image:
 ---
-
-<style>
-r { color: Red }
-o { color: Orange }
-g { color: Green }
-b { color: Blue }
-</style>
 
 - [Meow's CyberAttack - ICMP Attacks](#meows-cyberattack---icmp-attacks)
   - [ICMP Attacks](#icmp-attacks)
@@ -45,7 +38,7 @@ b { color: Blue }
 ---
 
 ## Smurf attack can use ICMP traffic, 
-- <font color=lightblue> Ping a broadcast address using a spoofed source address directed to a subnet, to flood a target system with ping replies. </font>
+- <font color=LightSlateBlue> Ping a broadcast address using a spoofed source address directed to a subnet, to flood a target system with ping replies. </font>
 - attacker sends a ping to the broadcast address of subnet 172.16.0.0/16. 
 - This collection of pings instruct devices on that subnet to send their ping replies to the target system at IP address 10.2.2.2
 - thus flooding the target system’s bandwidth and processing resources. 

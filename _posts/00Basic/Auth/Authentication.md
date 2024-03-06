@@ -628,12 +628,12 @@ token has 3 part: `header.payload.signature`
   - ourDatas: data that want to embed in the token (aka JWT Claims)
   - these are called `claims`
   - 3 type of `claims`
-    - <font color=blue> Registered claims </font>
+    - <font color=LightSlateBlue> Registered claims </font>
     - ![Registered claims](https://i.imgur.com/KHBHULL.png)
-    - <font color=blue> Public claims </font>
+    - <font color=LightSlateBlue> Public claims </font>
       - claims to defines and use for our own data
       - e.g. userid, email...
-    - <font color=blue> Private claims </font>
+    - <font color=LightSlateBlue> Private claims </font>
       - names without meaning except the consumer and producer of tokens
     ```
     {
