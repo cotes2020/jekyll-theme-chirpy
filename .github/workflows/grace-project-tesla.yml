@@ -21,7 +21,7 @@ jobs:
           echo $MY_VAR $PROJECT_NAME.
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # for posts's lastmod
 
