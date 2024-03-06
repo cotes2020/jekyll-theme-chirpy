@@ -7,7 +7,11 @@ toc: true
 image:
 ---
 
-[toc]
+- [Meow's CyberAttack - Dos DDos](#meows-cyberattack---dos-ddos)
+  - [DOS - Denial of Service](#dos---denial-of-service)
+  - [DDOS - distributed denial of service attack](#ddos---distributed-denial-of-service-attack)
+  - [Prevent](#prevent)
+
 
 ---
 
@@ -19,7 +23,7 @@ image:
 
 ---
 
-## Denial-of-Service
+## DOS - Denial of Service
 
 DoS的目標不是打服務，而是打掉對方的網路與資源，造成社交攻擊的機會
 
@@ -54,11 +58,11 @@ Type of DoS:
 - Smurf attacks
 - SYN floods
 - Local area network denial (LAND)
-- fraggle.
+- fraggle
 
 ---
 
-## distributed denial-of-service (DDoS) attack
+## DDOS - distributed denial of service attack
 - similar to a DoS attack.
 - amplifies the concepts of a DoS attack by using multiple computer systems (often through botnets) to conduct the attack against a single organization.
 - attacks often include sustained, abnormally high network traffic on the network interface card of the attacked computer.

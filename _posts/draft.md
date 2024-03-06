@@ -24468,6 +24468,8 @@ buy a similar domain for a variety of reasons
   - Earning ad revenue: attacker can host pay-per-click ads. When click on the ads, advertisers pay revenue to the attacker.
   - Reselling the domain: Attackers can buy domain names relatively cheaply, but resell them to the owner of the original site for a hefty profit.
 Best defense: register all those domains around yours, includes top-level domains as well (.com, .biz, .net, and so on) for all reasonable deviations of your site.
+
+
 Denial-of-Service
 Distributed Denial-of-Service Attacks DoS的目標不是打服務，而是打掉對方的網路與資源，造成社交攻擊的機會 DoS攻擊手法:
 (1)Bandwidth Attack:發送大量ICMP ECHO封包。
