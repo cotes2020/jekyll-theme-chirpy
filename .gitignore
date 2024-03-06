@@ -19,3 +19,38 @@ package-lock.json
 .vscode
 
 # Misc
+_posts/.DS_Store
+_posts/00Abook/Data Structures and Algorithms in Java, 6th Edition.pdf
+_posts/00Abook/GCP/PCSE_Workbook.pdf
+_posts/00Abook/GCP/Preparing for Professional Cloud Security Engineer Journey workbook.pdf
+_posts/00AGeneralNote/1330460_finding_100.json
+_posts/00AGeneralNote/1330460_finding_high.json
+_posts/00AGeneralNote/Application/SU/SketchUp-aa
+_posts/00AGeneralNote/Application/SU/SketchUp-ab
+_posts/00AGeneralNote/Application/SU/SketchUp-ac
+_posts/00AGeneralNote/Application/SU/SketchUp-ad
+_posts/00AGeneralNote/Application/SU/SketchUp-ae
+_posts/00AGeneralNote/Application/SU/SketchUp-af
+_posts/00AGeneralNote/Application/SU/SketchUp-ag
+_posts/00AGeneralNote/Application/SU/SketchUp-ah
+_posts/00AGeneralNote/Application/SU/SketchUp-ai
+_posts/00AGeneralNote/Application/SU/SketchUp-aj
+_posts/00AGeneralNote/finding_1330460.json
+_posts/00AGeneralNote/output.txt
+_posts/00AGeneralNote/Paper/Data Structures and Algorithms in Java, 6th Edition.pdf
+_posts/00AGeneralNote/Paper/GCP/PCSE_Workbook.pdf
+_posts/00AGeneralNote/Paper/GCP/Preparing for Professional Cloud Security Engineer Journey workbook.pdf
+_posts/00AGeneralNote/run.py
+_posts/00AGeneralNote/WorkCommand.md
+_posts/00AIssueBook/Application/SU/SketchUp-aa
+_posts/00AIssueBook/Application/SU/SketchUp-ab
+_posts/00AIssueBook/Application/SU/SketchUp-ac
+_posts/00AIssueBook/Application/SU/SketchUp-ad
+_posts/00AIssueBook/Application/SU/SketchUp-ae
+_posts/00AIssueBook/Application/SU/SketchUp-af
+_posts/00AIssueBook/Application/SU/SketchUp-ag
+_posts/00AIssueBook/Application/SU/SketchUp-ah
+_posts/00AIssueBook/Application/SU/SketchUp-ai
+_posts/00AIssueBook/Application/SU/SketchUp-aj
+_posts/00AIssueBook/M1.md
+_posts/10SecConcepts/.DS_Store

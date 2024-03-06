@@ -1,0 +1,38 @@
+{% assign video_url = include.src %}
+{% assign poster_url = include.poster %}
+
+{% unless video_url contains '://' %}
+  {%- capture video_url -%}
+    {% include img-url.html src=video_url img_path=page.img_path %}
+  {%- endcapture -%}
+{% endunless %}
+
+{% if poster_url %}
+  {% unless poster_url contains '://' %}
+    {%- capture poster_url -%}
+      {% include img-url.html src=poster_url img_path=page.img_path %}
+    {%- endcapture -%}
+  {% endunless %}
+  {% assign poster = 'poster="' | append: poster_url | append: '"' %}
+{% endif %}
+
+{% assign attributes = 'controls' %}
+
+{% if include.autoplay %}
+  {% assign attributes = attributes | append: ' ' | append: 'autoplay' %}
+{% endif %}
+
+{% if include.loop %}
+  {% assign attributes = attributes | append: ' ' | append: 'loop' %}
+{% endif %}
+
+{% if include.muted %}
+  {% assign attributes = attributes | append: ' ' | append: 'muted' %}
+{% endif %}
+
+<p>
+  <video class="embed-video file" src="{{ video_url }}" {{ poster }} {{ attributes }}>
+    Your browser doesn't support HTML video. Here is a <a href="{{ video_url }}">link to the video</a> instead.
+  </video>
+  <em>{{ include.title }}</em>
+</p>
