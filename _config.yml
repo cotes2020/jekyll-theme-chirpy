@@ -44,18 +44,28 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+# Site Verification Settings
+webmaster_verifications:
+  google: # fill in your Google verification code
+  bing: # fill in your Bing verification code
+  alexa: # fill in your Alexa verification code
+  yandex: # fill in your Yandex verification code
+  baidu: # fill in your Baidu verification code
+  facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id: 'UA-179830187-1' # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
-  pv:
-    # fill in the Google Analytics superProxy endpoint of Google App Engine
-    proxy_endpoint: 'https://myochosite-291718.ue.r.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDYmr-ACgw'
-    cache_path: # the local PV cache data, friendly to visitors from GFW region
+# Web Analytics Settings
+analytics:
+  google:
+    id: 'UA-179830187-1' # fill in your Google Analytics ID
+  goatcounter:
+    id: # fill in your GoatCounter ID
+
+# Pageviews settings
+pageviews:
+  provider: # now only supports 'goatcounter'
 
 # Prefer color scheme setting.
 #
@@ -68,7 +78,11 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
+<<<<<<< HEAD
 theme_mode: dark # [light|dark]
+=======
+theme_mode: # [light | dark]
+>>>>>>> 547b95cc7ae35018dadcc01b6eb1dc8c8943e67e
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -88,8 +102,14 @@ social_preview_image: '/assets/img/huoye.jpg' # string, local or CORS resources
 toc: true
 
 comments:
+<<<<<<< HEAD
   active: 'disqus' # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
+=======
+  # Global switch for the post comment system. Keeping it empty means disabled.
+  provider: # [disqus | utterances | giscus]
+  # The provider options are as follows:
+>>>>>>> 547b95cc7ae35018dadcc01b6eb1dc8c8943e67e
   disqus:
     shortname: https-ocholuo-github-io # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
@@ -113,10 +133,17 @@ assets:
     enabled: # boolean, keep empty means false
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
-    env: # [development|production]
+    env: # [development | production]
 
 pwa:
-  enabled: true # the option for PWA feature
+  enabled: true # the option for PWA feature (installable)
+  cache:
+    enabled: true # the option for PWA offline cache
+    # Paths defined here will be excluded from the PWA cache.
+    # Usually its value is the `baseurl` of another website that
+    # shares the same domain name as the current website.
+    deny_paths:
+      # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
 paginate: 15
 
@@ -162,10 +189,6 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-  - scope:
-      path: assets/img/favicons
-    values:
-      swcache: true
   - scope:
       path: assets/js/dist
     values:

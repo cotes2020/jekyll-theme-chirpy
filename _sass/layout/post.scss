@@ -15,7 +15,7 @@
 }
 
 h1 + .post-meta {
-  > span + span::before {
+  span + span::before {
     @include dot;
   }
 
