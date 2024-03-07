@@ -7,7 +7,7 @@
 First, we will need to import a variety of items from the standard library.
 
 
-```python
+```mojo
 from tensor import Tensor, TensorSpec, TensorShape
 from utils.index import Index
 from random import rand
@@ -21,7 +21,7 @@ alias data_type = DType.float32
 Now, we can rewrite our functions in Mojo. First, we start with the `random_spin_field`:
 
 
-```python
+```mojo
 fn random_spin_field(N: Int, M: Int) -> Tensor[data_type]:
     var t = rand[data_type](N, M)
     for i in range(N):
@@ -36,7 +36,7 @@ fn random_spin_field(N: Int, M: Int) -> Tensor[data_type]:
 Next, the internal `_ising_update` which takes the summation over the neighbors:
 
 
-```python
+```mojo
 fn _ising_update(inout field: Tensor[data_type], n: Int, m: Int, beta: Float32) -> None:
     var total = SIMD[data_type, 1]()
     var shape = field.shape()
@@ -57,7 +57,7 @@ fn _ising_update(inout field: Tensor[data_type], n: Int, m: Int, beta: Float32) 
 Lastly, we can define the `ising_step`:
 
 
-```python
+```mojo
 fn ising_step(inout field: Tensor[data_type], beta: Float32 = 0.4) -> None:
     var shape = field.shape()
     var N = shape[0]
@@ -72,7 +72,7 @@ fn ising_step(inout field: Tensor[data_type], beta: Float32 = 0.4) -> None:
 We can define a small benchmark function.
 
 
-```python
+```mojo
 @always_inline
 fn bench() -> Report:
     var N = 200
@@ -90,7 +90,7 @@ var report = bench()
 ```
 
 
-```python
+```mojo
 # Print a report in Milliseconds
 report.print("ms")
 ```
@@ -112,11 +112,11 @@ report.print("ms")
 We see that Mojo runs a little bit slower than Numba without optimization.
 
 
-```python
+```mojo
 %%python
 # A little magic to automatically write my blog :)
 import subprocess
 
 subprocess.run(["jupyter", "nbconvert", "--to", "markdown", "ising_model_speed_2.ipynb"])
-subprocess.run("sed -i'' -e 's/```python/```python/g' ising_model_speed_2.md", shell=True)
+subprocess.run("sed -i'' -e 's/```mojo/```python/g' ising_model_speed_2.md", shell=True)
 ```

@@ -1,10 +1,5 @@
 ## Julia ~ 3.2ms
-Lastly, we look at [Julia](https://docs.julialang.org/en/v1/).
-
-
-```julia
-using BenchmarkTools
-```
+Lastly, we look at [Julia](https://docs.julialang.org/en/v1/), another member of the [LLVM](https://en.wikipedia.org/wiki/LLVM) family.
 
 
 ```julia
@@ -16,6 +11,30 @@ end
 
     random_spin_field (generic function with 1 method)
 
+
+
+```julia
+function ising_step(field::Matrix{Int8}, beta::Float32, func)::Matrix{Int8}
+    N, M = size(field)
+    for n_offset in 1:2
+        for m_offset in 1:2
+            for n in n_offset:2:N-1
+                for m in m_offset:2:M-1
+                    func(field, n, m, beta)
+                end
+            end
+        end
+    end
+    return field
+end
+```
+
+
+    ising_step (generic function with 1 method)
+
+
+### Naive ~ 3.2ms
+Julia translates pretty closely from Python, just take note of 1-indexed arrays instead of 0-indexed arrays.
 
 
 ```julia
@@ -50,7 +69,30 @@ end
     _ising_step (generic function with 1 method)
 
 
-Also include the unrolled version
+
+```julia
+N, M = 200, 200
+field = random_spin_field(N, M)
+ising_step(field, 0.04f0, _ising_step)
+println(size(field))
+```
+
+    (200, 200)
+
+
+
+```julia
+using BenchmarkTools
+@btime ising_step(field, 0.04f0, _ising_step)
+println("")
+```
+
+      3.282 ms (158404 allocations: 12.09 MiB)
+    
+
+
+### Unrolled ~ 1.3ms
+We can also include the unrolled version from before.
 
 
 ```julia
@@ -89,53 +131,11 @@ end
 
 
 ```julia
-function ising_step(field::Matrix{Int8}, beta::Float32, func)::Matrix{Int8}
-    N, M = size(field)
-    for n_offset in 1:2
-        for m_offset in 1:2
-            for n in n_offset:2:N-1
-                for m in m_offset:2:M-1
-                    func(field, n, m, beta)
-                end
-            end
-        end
-    end
-    return field
-end
-```
-
-
-    ising_step (generic function with 1 method)
-
-
-
-```julia
-N, M = 200, 200
-field = random_spin_field(N, M)
-ising_step(field, 0.04f0, _ising_step)
-println(size(field))
-```
-
-    (200, 200)
-
-
-
-```julia
-@btime ising_step(field, 0.04f0, _ising_step)
-println("")
-```
-
-      3.282 ms (158404 allocations: 12.09 MiB)
-    
-
-
-
-```julia
 @btime ising_step(field, 0.04f0, _ising_step_unrolled)
 println("")
 ```
 
-      1.297 ms (0 allocations: 0 bytes)
+      1.302 ms (0 allocations: 0 bytes)
     
 
 
