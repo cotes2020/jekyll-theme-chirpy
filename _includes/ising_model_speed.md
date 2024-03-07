@@ -187,7 +187,7 @@ numba_ising_step(field)
     1.09 ms ± 7.63 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 
 
-Although faster than Python, it is still much slower than Cython.
+Although faster than Python, it is still ~2x slower than Cython.
 
 ### @njit(parallel=True) ~ 650µs
 Before trying to speed this up, lets first understand a common exploit of the Ising Model. First, lets extract our outer for-loops and simply keep record of the `n`'s, `m`s, and offset.

@@ -26,7 +26,7 @@ fn random_spin_field(N: Int, M: Int) -> Tensor[data_type]:
     var t = rand[data_type](N, M)
     for i in range(N):
         for j in range(M):
-            if t[Index(i, j)] < 0.5:
+            if t[i, j] < 0.5:
                 t[Index(i, j)] = -1
             else:
                 t[Index(i, j)] = 1
@@ -46,11 +46,11 @@ fn _ising_update(inout field: Tensor[data_type], n: Int, m: Int, beta: Float32) 
         for j in range(m - 1, m + 2):
             if i == n and j == m:
                 continue
-            total += field[Index(i % N, j % M)]
-    var dE = 2 * field[Index(n, m)] * total
+            total += field[i % N, j % M]
+    var dE = 2 * field[n, m] * total
     if dE <= 0:
         field[Index(n, m)] *= -1
-    elif exp(-dE * beta) > rand[data_type](1)[Index(0)]:
+    elif exp(-dE * beta) > rand[data_type](1)[0]:
         field[Index(n, m)] *= -1
 ```
 
@@ -87,10 +87,6 @@ fn bench() -> Report:
     return benchmark.run[ising_step_fn](max_runtime_secs=10)
 
 var report = bench()
-```
-
-
-```python
 # Print a report in Milliseconds
 report.print("ms")
 ```
@@ -98,14 +94,14 @@ report.print("ms")
     ---------------------
     Benchmark Report (ms)
     ---------------------
-    Mean: 2.915081212121212
-    Total: 2404.942
+    Mean: 2.9266933333333331
+    Total: 2414.5219999999999
     Iters: 825
-    Warmup Mean: 2.508
-    Warmup Total: 5.016
+    Warmup Mean: 2.5630000000000002
+    Warmup Total: 5.1260000000000003
     Warmup Iters: 2
-    Fastest Mean: 2.915081212121212
-    Slowest Mean: 2.915081212121212
+    Fastest Mean: 2.9266933333333336
+    Slowest Mean: 2.9266933333333336
     
 
 
