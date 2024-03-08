@@ -1,4 +1,4 @@
-## Mojo ~ 2.9ms
+## Mojo ~ 1.27ms
 [Mojo](https://docs.modular.com/mojo/) is a relatively newcomer to the scientific computing scene, but is quickly gaining popularity.
 
 > Mojo codeblocks display as Python since markdown does not yet support Mojo highlighting.
@@ -10,7 +10,7 @@ First, we will need to import a variety of items from the standard library.
 ```python
 from tensor import Tensor, TensorSpec, TensorShape
 from utils.index import Index
-from random import rand
+from random import rand, random_float64
 from math import exp
 from benchmark import Report
 import benchmark
@@ -37,7 +37,8 @@ Next, the internal `_ising_update` which takes the summation over the neighbors:
 
 
 ```python
-fn _ising_update(inout field: Tensor[data_type], n: Int, m: Int, beta: Float32) -> None:
+@always_inline
+fn _ising_update(inout field: Tensor[data_type], n: Int, m: Int, beta: Float32 = 0.4) -> None:
     var total = SIMD[data_type, 1]()
     var shape = field.shape()
     var N = shape[0]
@@ -50,7 +51,7 @@ fn _ising_update(inout field: Tensor[data_type], n: Int, m: Int, beta: Float32) 
     var dE = 2 * field[n, m] * total
     if dE <= 0:
         field[Index(n, m)] *= -1
-    elif exp(-dE * beta) > rand[data_type](1)[0]:
+    elif exp(-dE * beta) > random_float64().cast[field.dtype]():
         field[Index(n, m)] *= -1
 ```
 
@@ -58,7 +59,7 @@ Lastly, we can define the `ising_step`:
 
 
 ```python
-fn ising_step(inout field: Tensor[data_type], beta: Float32 = 0.4) -> None:
+fn ising_step(inout field: Tensor[data_type]) -> None:
     var shape = field.shape()
     var N = shape[0]
     var M = shape[1]
@@ -66,7 +67,7 @@ fn ising_step(inout field: Tensor[data_type], beta: Float32 = 0.4) -> None:
         for m_offset in range(2):
             for n in range(n_offset, N, 2):
                 for m in range(m_offset, M, 2):
-                    _ising_update(field=field, n=n, m=m, beta=beta)
+                    _ising_update(field, n, m)
 ```
 
 We can define a small benchmark function.
@@ -82,10 +83,13 @@ fn bench() -> Report:
     @always_inline
     @parameter
     fn ising_step_fn():
-        ising_step(field=field)
+        ising_step(field)
 
-    return benchmark.run[ising_step_fn](max_runtime_secs=10)
+    return benchmark.run[ising_step_fn](max_runtime_secs=5)
+```
 
+
+```python
 var report = bench()
 # Print a report in Milliseconds
 report.print("ms")
@@ -94,14 +98,14 @@ report.print("ms")
     ---------------------
     Benchmark Report (ms)
     ---------------------
-    Mean: 2.9266933333333331
-    Total: 2414.5219999999999
-    Iters: 825
-    Warmup Mean: 2.5630000000000002
-    Warmup Total: 5.1260000000000003
+    Mean: 1.2608148342977381
+    Total: 2396.8090000000002
+    Iters: 1901
+    Warmup Mean: 1.492
+    Warmup Total: 2.984
     Warmup Iters: 2
-    Fastest Mean: 2.9266933333333336
-    Slowest Mean: 2.9266933333333336
+    Fastest Mean: 1.2608148342977381
+    Slowest Mean: 1.2608148342977381
     
 
 

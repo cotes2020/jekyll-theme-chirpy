@@ -21,7 +21,7 @@ A post about the *speed* of the computation of the [Ising Model](https://en.wiki
 | Python      | 140ms       | 1 |
 | Cython   | 0.580ms        | 5 |
 | Numba   | 1.1ms        | 2 |
-| Mojo   | 3ms        | 4 |
+| Mojo   | 1.27ms        | 4 |
 | Julia   | 0.850ms        | 3 |
 
 <!-- jupyter nbconvert --NbConvertApp.output_files_dir="../assets/img/ising_model_out" --to markdown _includes/ising_model.ipynb -->
