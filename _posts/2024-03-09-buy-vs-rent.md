@@ -6,9 +6,9 @@ categories: [Math]
 tags: []
 # math: true
 # mermaid: true
-# image:
-#   path: /assets/img/ising_speed.png
-#   alt: Ising Model with Checkerboard Coloring
+image:
+  path: /assets/img/numpy_financial.png
+  alt: Numpy Financial Package
 ---
 Should you rent or buy your next home? `NumPy` rewrite of this [New York Times Calculator](https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html). You can find notebook [here](https://github.com/jakee417/mortgage_forecast/blob/main/rent_vs_buy.ipynb) which uses `NumPy` and [`numpy-financial`](https://numpy.org/numpy-financial/).
 {% include rent_vs_buy.md %}
