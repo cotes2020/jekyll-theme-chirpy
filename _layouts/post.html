@@ -69,7 +69,7 @@ tail_includes:
         {% endif %}
       </em>
     </span>
-    
+
     <div>
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
@@ -94,10 +94,7 @@ tail_includes:
 </div>
 
 <div class="post-tail-wrapper text-muted">
-  <!-- View counts -->
-  <div class="align-items-center w-100" style="text-align: center; margin-bottom: 1rem;">
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | append: page.url | url_encode }}&count_bg=%2361675D&title_bg=%23000000&icon=amazonaws.svg&icon_color=%23FFFFFF&title=Views&edge_flat=false"/>
-  </div>
+
 
   <!-- <div class="align-items-center w-100" style="text-align: center; margin-bottom: 1rem;">
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | append: page.url }}&count_bg=%2361675D&title_bg=%23000000&icon=amazonaws.svg&icon_color=%23FFFFFF&title=Views&edge_flat=false"/>
@@ -152,3 +149,9 @@ tail_includes:
 <script src="https://utteranc.es/client.js" repo="War-Oxi/war-oxi.github.io" issue-term="pathname"
   theme="preferred-color-scheme" crossorigin="anonymous" async>
   </script>
+
+<!-- View counts -->
+<div class="align-items-center w-100" style="text-align: center; margin-bottom: 1rem;">
+  <img
+    src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | append: page.url | url_encode }}&count_bg=%2361675D&title_bg=%23000000&icon=amazonaws.svg&icon_color=%23FFFFFF&title=Views&edge_flat=false" />
+</div>
