@@ -14,6 +14,7 @@ tail_includes:
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <div class="post-meta text-muted">
+
     <!-- published date -->
     <span>
       {{ site.data.locales[lang].post.posted }}
@@ -69,8 +70,12 @@ tail_includes:
       {% endif %}
       </em>
     </span>
-
-    <div>
+    <!-- <div>
+      <a href="https://hits.seeyoufarm.com"> &ensp; 
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fwar-oxi.github.io&count_bg=%23252222&title_bg=%23252222&icon=amazonaws.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="view count"/>
+      </a>
+    </div>
+    <div> -->
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
       <span>
@@ -84,7 +89,7 @@ tail_includes:
       <!-- read time -->
       {% include read-time.html content=content prompt=true lang=lang %}
     </div>
-
+    
   </div> <!-- .d-flex -->
 
 </div> <!-- .post-meta -->

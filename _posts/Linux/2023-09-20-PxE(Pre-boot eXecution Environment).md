@@ -24,10 +24,14 @@ image:
 ### 2.1 DHCP Server
 
 	1. IP가 없는 Baremetal Client와 통신을 위해 사용됩니다
+
+
 ### 2.2 TFTP Server
 
 	1. OS설치에 필요한 절차가 담긴 설정 파일 전송을 위해사용
 	2. UDP 기반 통신 (부트 로딩)에 사용
+
+
 ### 2.3 FTP Server
 
 	1. 실제 iso파일을 전송할 때 사용
@@ -51,8 +55,7 @@ CentOS는 Network설정에 NetworkManager와 /etc/sysconfig/network-script/ifcfg
 #Selinux 중단 및 재부팅 후 자동 실행 막기
 	sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
 
-	만약 위 명령어가 작동하지 않을 시 vi나 nano를 통해 /etc/selinux/config파일에 접근 후
-	SELINUX=enforcing에 해당하는 부분을 SELINUX=disabled로 바꿔주세요
+#만약 위 명령어가 작동하지 않을 시 vi나 nano를 통해 /etc/selinux/config파일에 접근 후 SELINUX=enforcing에 해당하는 부분을 SELINUX=disabled로 바꿔주세요
 ```
 
 ### 3.2 dhcp 서버, tftp pacakage 다운로드 및 설정
@@ -68,25 +71,25 @@ CentOS는 Network설정에 NetworkManager와 /etc/sysconfig/network-script/ifcfg
 	subnet 211.183.3.0 netmask 255.255.255.0 
 	{ 
 	#GW 
-	option routers 211.183.3.2; 
-	
+		option routers 211.183.3.2; 
+		
 	#SM 
-	option subnet-mask 255.255.255.0; 
-	
+		option subnet-mask 255.255.255.0; 
+		
 	#ip를 받아올 수 없는 상황에서도 ip를 부여받을 수 있도록 
-	range dynamic-bootp 211.183.3.240 211.183.3.250; 
-	
+		range dynamic-bootp 211.183.3.240 211.183.3.250; 
+		
 	#DNS 
-	option domain-name-servers 8.8.8.8; 
-	
+		option domain-name-servers 8.8.8.8; 
+		
 	#부팅 허용. 
-	allow booting; 
-	
+		allow booting; 
+		
 	#PxE 서버의 주소 
-	next-server 211.183.3.21; 
-	
+		next-server 211.183.3.21; 
+		
 	#Filename 설정 filename 
-	"pxelinux.0"; 
+		"pxelinux.0"; 
 	} 
 -------------------------------------------------------
 
@@ -95,12 +98,10 @@ CentOS는 Network설정에 NetworkManager와 /etc/sysconfig/network-script/ifcfg
 
 ```
 
-<p align="center"> 
-	<figure > 
-		<img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/bfd3195d-71c0-444e-a070-05deba6bda59"> 
-		<figcaption> 예시) </figcaption>
-	</figure>
+<p align="left"> 
+	<img src="https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/bfd3195d-71c0-444e-a070-05deba6bda59"/> 
 </p>
+
 ### 3.3 TFTP로 운영체제 설치파일(iso), 부트로더 전송을 위한 설정  
 
 TFTP로 전송할 파일은 다음과 같습니다.
