@@ -1,0 +1,11 @@
+{% comment %}
+  Get post description or generate it from the post content.
+{% endcomment %}
+
+{% assign max_length = include.max_length | default: 200 %}
+{% if post.description %}
+  {{ post.description | strip | truncate: max_length | escape }}
+{% else %}
+  {% include no-linenos.html content=post.content %}
+  {{ content | markdownify | strip_html | truncate: max_length | escape }}
+{% endif %}

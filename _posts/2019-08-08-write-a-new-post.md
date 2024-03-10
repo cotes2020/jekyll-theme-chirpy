@@ -1,5 +1,6 @@
 ---
 title: Writing a New Post
+description: This tutorial will guide you how to write a post in the Chirpy template.
 author: cotes
 date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
@@ -72,6 +73,17 @@ Having said that, the key `author` can also identify multiple entries.
 
 > The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
 {: .prompt-info }
+
+### Post description
+
+The `description` field is optional. If it isn't defined, the first words of the post are used to display on the `Home` page for a list of posts, in the `Further Reading` section, and in the XML of the RSS feed. If you don't want to display the auto-generated description for the post, you can customize it using the `description` field in the `Front Matter` as follows:
+
+```yaml
+---
+title: Post title
+description: Short summary of the post
+---
+```
 
 ## Table of Contents
 

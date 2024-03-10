@@ -82,8 +82,7 @@
               <h4 class="pt-0 my-2">{{ post.title }}</h4>
               <div class="text-muted">
                 <p>
-                  {% include no-linenos.html content=post.content %}
-                  {{ content | markdownify | strip_html | truncate: 200 | escape }}
+                  {% include post-description.html max_length=200 %}
                 </p>
               </div>
             </div>

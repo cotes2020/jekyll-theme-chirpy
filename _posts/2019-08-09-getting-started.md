@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+description: A quick start guide to help you get started with Chirpy.
 author: cotes
 date: 2019-08-09 20:55:00 +0800
 categories: [Blogging, Tutorial]

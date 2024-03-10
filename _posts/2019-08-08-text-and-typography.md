@@ -1,5 +1,6 @@
 ---
 title: Text and Typography
+description: See markdown syntax rendering on Chirpy, so you can use it as an example of writing.
 author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Demo]
