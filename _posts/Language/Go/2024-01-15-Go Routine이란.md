@@ -6,7 +6,7 @@ categories: [Language, Go]
 tags: [go, go-routine, go routine, goroutine, concurrency, parallelism]     # TAG names should always be lowercase
 comments: true
 image:
-  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/b1a52758-843c-4cc9-9888-8da7d4faf28f
+  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/4ca580c6-6eb7-4f3f-b243-0a922ae12f8e
 ---
 # Go Routine - [ Concurrency vs Parallelism ]
 
