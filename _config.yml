@@ -16,10 +16,10 @@ timezone: America/Los_Angeles
 
 title: Eric Marquez                          # the main title
 
-tagline: technology, projects, Food, and some code snippets   # it will display as the sub-title
+tagline: technology, Real Estate, projects, Food, and some code snippets   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Interesting technology, projects I'm working on, and things I learn throughout the week.
+  Interesting technology, Real Estate projects I'm working on, and things I learn throughout the week.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://ebmarquez.github.io'
