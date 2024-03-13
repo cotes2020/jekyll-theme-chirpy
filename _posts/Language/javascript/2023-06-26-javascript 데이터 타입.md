@@ -157,3 +157,7 @@ console.log(obj[key]); //value
 3. 전역 변수는 최대한 사용하지 않도록 한다
 4. 변수보다는 상수를 사용해 값의 변경을 억제한다.
 5. 변수 이름은 변수의 목적이나 의미를 파악할 수 있도록 네이밍한다.
+
+
+<strong>궁금하신점이나 추가해야할 부분은 댓글이나 아래의 링크를 통해 문의해주세요.</strong>   
+Written with [KKam.\_\.Ji](https://www.instagram.com/kkam._.ji/)

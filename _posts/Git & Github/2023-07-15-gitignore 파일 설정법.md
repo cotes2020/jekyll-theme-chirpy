@@ -50,3 +50,7 @@ image:
 > 3.넘어간 페이지에서 Ctrl + A 혹은 Command + A를 눌러 소스코드를 전체 복사한 뒤 .**gitignore** 파일에 추가해준다
 
 ![image-2](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/3fd3da45-c3ce-4fdf-bf24-4c7e3aaedce9)
+
+
+<strong>궁금하신점이나 추가해야할 부분은 댓글이나 아래의 링크를 통해 문의해주세요.</strong>   
+Written with [KKam.\_\.Ji](https://www.instagram.com/kkam._.ji/)

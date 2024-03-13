@@ -180,3 +180,6 @@ Math.pow(2, -2); // -> 0.25
 
 (-5) ** 2; // -> 25
 ```
+
+<strong>궁금하신점이나 추가해야할 부분은 댓글이나 아래의 링크를 통해 문의해주세요.</strong>   
+Written with [KKam.\_\.Ji](https://www.instagram.com/kkam._.ji/)
