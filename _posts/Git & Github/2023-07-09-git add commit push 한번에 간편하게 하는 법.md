@@ -3,7 +3,7 @@ title: git add commit push 한번에 간편하게 하는 방법
 date: 2023-07-09 07:24:00 +0900
 author: kkankkandev
 categories: [Git & Github]
-tags: [git add, git commit, git push, git, github, linux, alias, git alias]     # TAG names should always be lowercase
+tags: [git add, git commit, git push, git, github, linux, alias, git alias, git cmp]     # TAG names should always be lowercase
 comments: true
 pin: true
 image: 
