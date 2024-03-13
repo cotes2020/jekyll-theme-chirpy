@@ -22,8 +22,8 @@ jobs:
     steps:
       - uses: actions/stale@v9
         with:
-          days-before-stale: 30
-          days-before-close: 1
+          # 60 days before marking issues/PRs stale
+          days-before-close: -1 # does not close automatically
           stale-issue-label: ${{ env.STALE_LABEL }}
           exempt-issue-labels: ${{ env.EXEMPT_LABELS }}
           stale-issue-message: ${{ env.MESSAGE }}

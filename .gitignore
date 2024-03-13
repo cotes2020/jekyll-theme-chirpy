@@ -18,6 +18,4 @@ package-lock.json
 .idea
 
 # Misc
-*.map
-sw.min.js
 assets/js/dist
