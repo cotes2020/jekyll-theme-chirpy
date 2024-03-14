@@ -6,7 +6,7 @@ categories: [Kubernetes]
 tags: [kubernetes, k8s, k8s-cluster, cluster, api-server, etcd, controller-management, scheduler, kubelet, kube-proxy, containerd, container]     # TAG names should always be lowercase
 comments: true
 image:
-  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/15132279-4bc4-4f16-88c0-0d127fce6e9b
+  path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/c39504c6-3de4-4b41-919b-5ef1b132106c
 ---
 # Concept
 
