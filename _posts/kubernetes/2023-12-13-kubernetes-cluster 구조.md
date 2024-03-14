@@ -11,7 +11,8 @@ image:
 # Concept
 
 > 쿠버네티스 클러스터는 애플리케이션  컨테이너를 실행하기 위한 일련의 노드 머신들의 집합입니다.
-> 
+
+
 - 클러스터는 **Control-Plane** 및 하나 이상의 컴퓨팅 머신 또는 노드를 포함합니다.
 - 컨트롤플레인이 어느 Application을 실행하고 Application이 어느 Conatiner Image를 사용할지와 같이 클러스터를 원하는 상태로 유지 관리합니다. Node는 Control Plane에서 요청을 받아 Appliation과 Workload를 실제로 실행합니다
 - 따라서 물리 머신, 가상 머신, 온프레미스, 클라우드에 구애받지 않고 머신 그룹 전체에서 컨테이너를 예약하고 실행할 수 있습니다.
@@ -19,7 +20,8 @@ image:
 # Master Node
 
 > 클러스터의 전반적인 관리와 조정을 담당합니다. 여러 개의 마스터 노드로 구성될 수 있어 고가용성(HA)를 지원합니다.
-> 
+
+
 
 ## etcd
 
@@ -77,13 +79,15 @@ image:
 ## controller-manager
 
 > 쿠버네티스 컨트롤러는 종류가 매우 다양합니다. 예시로 아래 두 개의 컨트롤러가 있습니다. 이 컨트롤러 들은 Kube Controller Manager라는 하나의 프로세스로 패키지화되어 관리됩니다
-> 
+
+
 - Kube Controller Manager를 설치하면 나머지 다른 컨트롤러도 같이 설치됨
 
 ## scheduler
 
 > Node Pod를 Scheduling
-> 
+
+
 - Pod를 어디에 배치시킬지 결정
 
 # Worker Node
@@ -91,7 +95,8 @@ image:
 ## kubelet
 
 > 클러스터의 각 노드에서 실행되는 Agent
-> 
+
+
 
 <aside>
 🔥 API 서버로부터 Pod 명세를 받아, 이를 해석 후 컨테이너 실행합니다.
@@ -115,7 +120,8 @@ image:
 ## kube-proxy
 
 > K8s 클러스터 내에서 네트워킹을 관리하는 주요 컴포넌트
-> 
+
+
 - 각 K8s 노드에 설치되며, 클러스터 내의 네트워크 통신 및 라우팅 규칙을 처리
 - Pod간 네트워크 통신을 가능하게 하고, 외부 네트워크로부터의 접근을 관리
 
@@ -135,7 +141,8 @@ image:
 ## Containerd
 
 > 컨테이너 런타임으로 사용되는 컴포넌트
-> 
+
+
 - K8s 클러스터 내에서 컨테이너를 생성하고 실행하는 역할을 합니다
 
 ### Containerd의 주요 기능과 특징
