@@ -2,7 +2,7 @@
 title: Kubernetes Cluster 구성 및 개념
 date: 2023-12-13 22:54:32 +0900
 author: kkankkandev
-categories: [kubernetes]
+categories: [Kubernetes]
 tags: [kubernetes, k8s, k8s-cluster, cluster, api-server, etcd, controller-management, scheduler, kubelet, kube-proxy, containerd, container]     # TAG names should always be lowercase
 comments: true
 image:
