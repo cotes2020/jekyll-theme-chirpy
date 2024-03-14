@@ -3,7 +3,7 @@ title: LVM(Logical Volume Manager)-개념, 사용 방법
 date: 2023-09-22 23:11:22 +0900
 author: kkankkandev
 categories: [OS, Linux]
-tags: [centos, linux, ,os, lvm, storage]     # TAG names should always be lowercase
+tags: [centos, linux, os, lvm, storage]     # TAG names should always be lowercase
 comments: true
 image:
   path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/0ec52fc0-1d5d-4d77-b8c2-4e78aa9f80ad
