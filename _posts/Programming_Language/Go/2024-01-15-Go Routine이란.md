@@ -2,7 +2,7 @@
 title: Go Routine 이란?
 date: 2024-01-15 15:54:32 +0900
 author: kkankkandev
-categories: [Language, Go]
+categories: [Programming Language, Go]
 tags: [go, go-routine, go routine, goroutine, concurrency, parallelism]     # TAG names should always be lowercase
 comments: true
 image:

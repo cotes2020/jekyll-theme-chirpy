@@ -2,7 +2,7 @@
 title: Section 01 아두이노 시리얼 통신 기능 이해
 date: 2023-06-11 23:36:55 +0900
 author: kkankkandev
-categories: [Aduino, USB Serial Communication]
+categories: [University]
 tags: [aduino, usb serial communication]     # TAG names should always be lowercase
 comments: true
 image:

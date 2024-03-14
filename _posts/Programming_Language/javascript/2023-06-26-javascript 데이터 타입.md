@@ -2,7 +2,7 @@
 title: JavaScript 데이터 타입
 date: 2023-06-26 18:38:55 +0900
 author: kkankkandev
-categories: [Language, JavaScript]
+categories: [Programming Language, JavaScript]
 tags: [web, javascript, js, gitblog, vscode, gitpage, datatype, javascript data type]     # TAG names should always be lowercase
 comments: true
 # image:

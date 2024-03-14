@@ -2,8 +2,8 @@
 title: PxE(Pre-boot eXecution Envirionment) 개념, 사용법 
 date: 2023-09-20 20:11:22 +0900
 author: kkankkandev
-categories: [Linux]
-tags: [pxe, linux, centos, dhcp, tftp, ftp]     # TAG names should always be lowercase
+categories: [OS, Linux]
+tags: [pxe, os, linux, centos, dhcp, tftp, ftp]     # TAG names should always be lowercase
 comments: true
 image:
   path: https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/28066284-64db-4667-bbad-d3ef05316e01

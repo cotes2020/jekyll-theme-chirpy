@@ -2,7 +2,7 @@
 title: Deep Learning과 TemsorFlow
 date: 2023-06-13 13:15:55 +0900
 author: kkankkandev
-categories: [AI, Deep Learning]
+categories: [University]
 comments: true
 tags: [TensorFlow, Deep Learning]     # TAG names should always be lowercase
 image:
