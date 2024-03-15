@@ -11,5 +11,6 @@ ssh -N -A \
     -o ServerAliveCountMax=3 \
     -o ExitOnForwardFailure=yes \
     -o GatewayPorts=yes \
-    -p 22 root@103.186.101.191
+    -p 22 \
+    root@103.186.101.191
 ```
