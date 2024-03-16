@@ -1,6 +1,5 @@
 ---
 title: Customize the Favicon
-description: How to customize the favicon of Chirpy.
 author: cotes
 date: 2019-08-11 00:34:00 +0800
 categories: [Blogging, Tutorial]
