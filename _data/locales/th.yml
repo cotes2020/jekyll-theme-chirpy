@@ -49,6 +49,8 @@ notification:
   update_found: มีเวอร์ชันใหม่ของเนื้อหา
   update: อัปเดต
 
+jump_to_main_content: ข้ามไปที่เนื้อหาหลัก
+
 # ----- Posts related labels -----
 
 post:

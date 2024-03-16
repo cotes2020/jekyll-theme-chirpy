@@ -49,6 +49,8 @@ notification:
   update_found: Доступна нова версія вмісту.
   update: Оновлення
 
+jump_to_main_content: Перейти до основного контенту
+
 # ----- Posts related labels -----
 
 post:

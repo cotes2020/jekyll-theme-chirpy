@@ -49,6 +49,8 @@ notification:
   update_found: İçeriğin yeni bir sürümü mevcut.
   update: Güncelle
 
+jump_to_main_content: Ana içeriğe atla
+
 # ----- Posts related labels -----
 
 post:

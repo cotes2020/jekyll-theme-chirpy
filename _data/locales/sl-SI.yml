@@ -49,6 +49,8 @@ notification:
   update_found: Novejša različica vsebine je na voljo. #A new version of content is available.
   update: Posodobi #Update
 
+jump_to_main_content: Skok na glavno vsebino #Jump to main content
+
 # ----- Posts related labels -----
 
 post:

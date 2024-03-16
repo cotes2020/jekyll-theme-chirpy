@@ -48,6 +48,8 @@ notification:
   update_found: Доступна новая версия контента.
   update: Обновить
 
+jump_to_main_content: Перейти к основному содержанию
+
 # ----- Posts related labels -----
 
 post:
@@ -76,7 +78,7 @@ df:
   post:
     strftime: "%d.%m.%Y"
     dayjs: "DD.MM.YYYY"
-    
+
 # categories page
 categories:
   category_measure:

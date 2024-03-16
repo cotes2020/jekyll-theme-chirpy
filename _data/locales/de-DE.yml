@@ -48,6 +48,8 @@ notification:
   update_found: Eine neue Version ist verfügbar.
   update: Neue Version
 
+jump_to_main_content: Zum Hauptinhalt springen
+
 # ----- Posts related labels -----
 
 post:
@@ -76,7 +78,7 @@ df:
   post:
     strftime: "%d.%m.%Y"
     dayjs: "DD.MM.YYYY"
-    
+
 # categories page
 categories:
   category_measure:
