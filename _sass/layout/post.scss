@@ -14,19 +14,28 @@
   padding-right: $pr;
 }
 
-h1 + .post-meta {
-  span + span::before {
-    @include dot;
+header {
+  .post-desc {
+    @extend %heading;
+
+    font-size: 1.125rem;
+    line-height: 1.6;
   }
 
-  em,
-  time {
-    @extend %text-highlight;
-  }
+  .post-meta {
+    span + span::before {
+      @include dot;
+    }
 
-  em {
-    a {
-      color: inherit;
+    em,
+    time {
+      @extend %text-highlight;
+    }
+
+    em {
+      a {
+        color: inherit;
+      }
     }
   }
 }
