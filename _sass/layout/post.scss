@@ -15,9 +15,10 @@
 }
 
 header {
-  p {
-    font-family: $font-family-heading;
-    font-size: 1.1rem;
+  .post-desc {
+    @extend %heading;
+
+    font-size: 1.125rem;
     line-height: 1.6;
   }
 
