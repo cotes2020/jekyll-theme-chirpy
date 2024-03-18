@@ -1,0 +1,13 @@
+{% assign media_type_extension = include.type %}
+{% case media_type_extension %}
+  {% when 'mp3' %}
+    {{- 'mpeg' -}}
+  {% when 'mov' %}
+    {{- 'quicktime' -}}
+  {% when 'avi' %}
+    {{- 'x-msvideo' -}}
+  {% when 'mkv' %}
+    {{- 'x-matroska' -}}
+  {% else %}
+    {{- media_type_extension -}}
+{% endcase %}
