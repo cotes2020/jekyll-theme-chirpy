@@ -1,6 +1,10 @@
+{% assign supported_audio_extensions = 'mp4|ogg|webm|mov|avi|mkv' %}
+
 {% assign video_url = include.src %}
 {% assign poster_url = include.poster %}
+{% assign additional_types = include.additional_types | default: '' | strip | split: '|' %}
 
+{% assign extensions = supported_audio_extensions | split: '|' %}
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
     {% include img-url.html src=video_url img_path=page.img_path %}
@@ -31,7 +35,8 @@
 {% endif %}
 
 <p>
-  <video class="embed-video file" src="{{ video_url }}" {{ poster }} {{ attributes }}>
+  <video class="embed-video file" {{ poster }} {{ attributes }}>
+    {% include multi_sources.html tag='video' src=video_url extensions=extensions additional_types=additional_types %}
     Your browser doesn't support HTML video. Here is a <a href="{{ video_url }}">link to the video</a> instead.
   </video>
   <em>{{ include.title }}</em>

@@ -1,0 +1,20 @@
+{% assign supported_audio_extensions = 'mp3|ogg|wav|aac|webm|flac' %}
+
+{% assign additional_types = include.additional_types | default: '' | strip | split: '|' %}
+
+{% assign extensions = supported_audio_extensions | split: '|' %}
+{% assign src = include.src | strip %}
+{% unless src contains '://' %}
+  {%- capture src -%}
+    {% include img-url.html src=src %}
+  {%- endcapture -%}
+{% endunless %}
+
+<p>
+  <audio class="embed-audio" controls>
+    {% include multi_sources.html tag='audio' src=src extensions=extensions additional_types=additional_types %}
+  </audio>
+  {% if include.title %}
+    <em>{{ include.title }}</em>
+  {% endif %}
+</p>
