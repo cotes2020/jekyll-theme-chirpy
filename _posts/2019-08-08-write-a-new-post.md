@@ -472,13 +472,57 @@ You can also specify additional attributes for the embedded video file. Here is 
 - `autoplay=true` - video automatically begins to play back as soon as it can
 - `loop=true` - automatically seek back to the start upon reaching the end of the video
 - `muted=true` - audio will be initially silenced
+- `additional_types` - specify the extensions of additional video formats separated by |. Ensure these files exist in the same directory as your primary video file.
 
 Consider an example utilizing all of the above:
 
 ```liquid
-{% include embed/video.html src='video.mp4' poster='poster.png' title='Demo video'
-   autoplay=true loop=true muted=true %}
+{%
+  include embed/video.html
+  src='/path/to/video/video.mp4'
+  additional_types='ogg|mov'
+  poster='poster.png'
+  title='Demo video'
+  autoplay=true
+  loop=true
+  muted=true
+%}
 ```
+## Audio
+
+### Basic Audio Embedding
+
+To embed an audio file, use the following code snippet:
+
+```liquid
+{% include embed/audio.html src='/path/to/audio/audio.mp3' title='Demo audio' %}
+```
+- `src`: The path to your audio file.
+- `title`: A descriptive title for your audio content.
+
+### Adding Additional Audio Formats
+
+For broader compatibility across browsers and devices, it's a good idea to provide your audio in multiple formats. You can specify additional audio formats using the additional_types attribute.
+
+```liquid
+{% include embed/audio.html src='/path/to/audio/audio.mp3' additional_types='ogg|wav|aac' title='Demo audio' %}
+```
+- `additional_types`: Specify the extensions of additional audio formats separated by |. Ensure these files exist in the same directory as your primary audio file.
+
+### Supported Audio Extensions
+
+|Extension|Media Type for HTML Audio|
+| ----------- | ----------- |
+|.mp3|audio/mpeg|
+|.wav|audio/wav|
+|.ogg|audio/ogg|
+|.aac|audio/aac|
+|.webm|audio/webm|
+|.flac|audio/flac|
+
+> It's not recommended to host audio files in `assets` folder as they cannot be cached by PWA and may cause issues.
+> Instead, use CDN to host audio files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
+{: .prompt-warning }
 
 ## Learn More
 
