@@ -1,14 +1,15 @@
 {% assign tag = include.tag %}
 {% assign src = include.src %}
 {% assign additional_types = include.additional_types %}
-{% assign extensions = include.extensions %}
+{% assign supported_extensions = include.supported_extensions %}
 
+{% assign extensions = supported_extensions | split: '|' %}
 {% assign path_struct = src | split: '.' %}
 {% assign base_path = path_struct.first %}
 {% assign original_media_type = path_struct.last | downcase %}
 
 {% capture media_type %}
-  {% include convert_media_type.html type=original_media_type %}
+  {% include convert-media-type.html type=original_media_type %}
 {% endcapture %}
 <source src="{{ src }}" type="{{ tag }}/{{ media_type | strip }}">
 
@@ -16,7 +17,7 @@
   {% if extensions contains type %}
     {% assign file_extension = '.' | append: type %}
     {% capture media_type %}
-      {% include convert_media_type.html type=type %}
+      {% include convert-media-type.html type=type %}
     {% endcapture %}
     <source src="{{ base_path | append: file_extension }}" type="{{ tag }}/{{ media_type | strip }}">
   {% endif %}
