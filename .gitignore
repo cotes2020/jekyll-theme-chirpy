@@ -18,4 +18,4 @@ package-lock.json
 .idea
 
 # Misc
-assets/js/dist
+# assets/js/dist
