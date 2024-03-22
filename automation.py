@@ -24,6 +24,8 @@ degis = 0
 
 @app.route('/update', methods=['GET'])
 def update():
+    global degis  # Use global keyword to modify global variable
+
     try:
         # RSS feed URL
         rss_url = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yusuf.deniz"
@@ -40,10 +42,10 @@ def update():
         # Check if response contains 'items'
         items = data.get("items", [])
 
-        degis = len(items)-degis
+        degis = len(items) - degis
 
         # Target directory
-        output_directory = ysfdir+'/_posts'
+        output_directory = ysfdir + '/_posts'
 
         # Delete all files in the target directory
         existing_files = os.listdir(output_directory)
@@ -118,7 +120,7 @@ def update():
         os.system("git push origin master")
         print("Git push successful")
 
-        return jsonify({"message": "Update successful","degisiklik":degis}), 200
+        return jsonify({"message": "Update successful", "degisiklik": degis}), 200
 
     except requests.exceptions.RequestException as e:
         return jsonify({"message": f"Error: Request Exception - {e}"}), 500
