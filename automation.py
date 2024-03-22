@@ -20,6 +20,8 @@ def get_clean_title(title):
     first_word = words[0]
     return first_word
 
+degis = 0
+
 @app.route('/update', methods=['GET'])
 def update():
     try:
@@ -37,6 +39,8 @@ def update():
 
         # Check if response contains 'items'
         items = data.get("items", [])
+
+        degis = items-degis
 
         # Target directory
         output_directory = ysfdir+'/_posts'
@@ -114,7 +118,7 @@ def update():
         os.system("git push origin master")
         print("Git push successful")
 
-        return jsonify({"message": "Update successful","sayi":len(items)}), 200
+        return jsonify({"message": "Update successful","degisiklik":degis}), 200
 
     except requests.exceptions.RequestException as e:
         return jsonify({"message": f"Error: Request Exception - {e}"}), 500
