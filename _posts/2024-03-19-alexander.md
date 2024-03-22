@@ -1,9 +1,9 @@
---- 
- title: Alexander Nguyen ,Google’da  $300,000 lık maaşlı işini neden bırakmış olabilir ? 
- date: 2024-03-19 07:46:09 
- categories: ['chatgpt', 'i̇k', 'google', 'people-management', 'openai'] 
- tags: ['chatgpt', 'i̇k', 'google', 'people-management', 'openai'] 
---- 
+---
+title: Alexander Nguyen ,Google’da  $300,000 lık maaşlı işini neden bırakmış olabilir ?
+date: 2024-03-19 07:46:09
+categories: ['chatgpt', 'i̇k', 'google', 'people-management', 'openai']
+tags: ['chatgpt', 'i̇k', 'google', 'people-management', 'openai']
+---
 ### Alexander Nguyen&nbsp;,Google’da $300,000 lık maaşlı işini neden bırakmış olabilir&nbsp;?
 
 Google’da çalışmak, dünyanın dört bir yanından yazılım mühendisleri için harika bir fırsat olarak görülmekte. Belkide, sadece dünyanın en iyi mühendisleriyle bir arada olmak, en üst düzeyde ofis imkanlarına sahip olmak değil; aynı zamanda bu platformun sunduğu büyüme ve gelişim fırsatları için böyle görülüyor olabilir. Ancak, Alexander Nguyen’ın hikayesi gibi durumlar, çalışanlara değer verilmediğinde veya güven ortamı sağlanamadığında, bu hayallerin bile bazen yetersiz kalabileceğini gösteriyor.
