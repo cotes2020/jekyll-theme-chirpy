@@ -40,7 +40,7 @@ def update():
         # Check if response contains 'items'
         items = data.get("items", [])
 
-        degis = items-degis
+        degis = len(items)-degis
 
         # Target directory
         output_directory = ysfdir+'/_posts'
