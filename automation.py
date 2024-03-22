@@ -114,7 +114,7 @@ def update():
         os.system("git push origin master")
         print("Git push successful")
 
-        return jsonify({"message": "Update successful","items":items}), 200
+        return jsonify({"message": "Update successful","sayi":len(items)}), 200
 
     except requests.exceptions.RequestException as e:
         return jsonify({"message": f"Error: Request Exception - {e}"}), 500
