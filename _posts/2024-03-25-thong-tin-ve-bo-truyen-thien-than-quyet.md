@@ -145,3 +145,25 @@ title: Bộ truyện Thiên Thần Quyết
     
 
 <p style="text-align: start"><strong>Lưu ý:</strong> Hành trình tu luyện của Dương Thanh Huyền vẫn đang tiếp tục và anh vẫn đang khám phá những bí mật mới về bản thân và thế giới xung quanh.</p>
+
+* * *
+
+# Kết cục
+
+Cuối bộ truyện, Dương Thanh Huyền, sau khi trải qua vô số gian khổ và thử thách, đã hợp nhất với Huyền Thiên Cơ và bước vào vòng xoáy ánh sáng kim, con đường trở về "nguồn gốc của đạo".
+
+**Lạc ấn trên người Dương Thanh Huyền:**
+
+Lạc ấn trên người Dương Thanh Huyền là "Nhân Quả". Nó đại diện cho mối liên hệ của anh với vô số kiếp luân hồi và nghiệp lực tích lũy từ vô thủy kiếp.
+
+**Thân phận thật sự của Dương Thanh Huyền:**
+
+Dương Thanh Huyền, cũng như Huyền Thiên Cơ, vốn là một phần của "Đạo" trong trạng thái chưa hiển hóa. Khi "Đạo" sinh ra vạn vật, một phần của nó đã hóa thành Dương Thanh Huyền và Huyền Thiên Cơ, cùng với những Thiên Hành Giả khác.
+
+**Chuyện gì đã xảy ra cuối bộ truyện:**
+
+Dương Thanh Huyền và Huyền Thiên Cơ, sau khi hợp nhất, đã sử dụng sức mạnh của Đại Đạo Chi Thư để mở ra con đường trở về "nguồn gốc của đạo". Họ bước vào vòng xoáy ánh sáng kim, cùng với những Thiên Hành Giả khác, để tìm kiếm sự thật và cội nguồn của mọi sự tồn tại.
+
+**Lưu ý:**
+
+Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Việc Dương Thanh Huyền và Huyền Thiên Cơ có thực sự trở về "nguồn gốc của đạo" hay không, và điều gì đang chờ đợi họ ở đó, vẫn là một bí ẩn.
