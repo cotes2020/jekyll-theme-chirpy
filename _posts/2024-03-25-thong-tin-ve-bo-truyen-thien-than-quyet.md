@@ -91,7 +91,7 @@ title: Bộ truyện Thiên Thần Quyết
 
 * * *
 
-# Hành trình tu luyện của nhân vật chính Dương Thanh Huyền
+# Khởi đầu hành trình tu luyện của nhân vật chính Dương Thanh Huyền
 
 <p style="text-align: start"><strong>1. Khởi đầu:</strong></p>
 
@@ -167,3 +167,28 @@ Dương Thanh Huyền và Huyền Thiên Cơ, sau khi hợp nhất, đã sử d�
 **Lưu ý:**
 
 Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Việc Dương Thanh Huyền và Huyền Thiên Cơ có thực sự trở về "nguồn gốc của đạo" hay không, và điều gì đang chờ đợi họ ở đó, vẫn là một bí ẩn.
+
+* * *
+
+# Các nhân vật quan trọng khác
+
+<h2 style="text-align: start">Lý Vân Tiêu:</h2>
+
+*   **Thân phận:** Thánh Vương của Nhân tộc, một trong ba vị chí tôn cường giả của Nhân tộc.
+    
+*   **Nguồn gốc:** Lý Vân Tiêu đến từ cùng một vũ trụ với Dương Thanh Huyền, tức hạ giới. Anh phi thăng lên đời sơ sinh đại vũ trụ và trở thành một nhân vật quan trọng trong cuộc chiến chống lại thâm không dị tộc.
+    
+*   **Thực lực:** Lý Vân Tiêu là một chí tôn cường giả, sở hữu sức mạnh vô song. Anh ta có thể sử dụng kiếm ý và ma lực, đặc biệt là sau khi dung hợp với ma, anh ta đã đạt được "thần ma chi thể" với sức mạnh khủng khiếp.
+    
+*   **Tính cách:** Lý Vân Tiêu là một người điềm tĩnh, quyết đoán và có trách nhiệm. Anh ta luôn đặt lợi ích của Nhân tộc lên hàng đầu và sẵn sàng hy sinh bản thân để bảo vệ tộc nhân.
+    
+
+<h2 style="text-align: start">Huyền Thiên Cơ:</h2>
+
+*   **Thân phận:** Chủ nhân của Luân Hồi Thiên Cung, một nhân vật bí ẩn với lai lịch và mục đích khó đoán.
+    
+*   **Nguồn gốc:** Huyền Thiên Cơ cũng đến từ cùng một vũ trụ với Dương Thanh Huyền. Anh ta chuyển thế trên Thương Khung Tinh Vực và sau đó phi thăng lên đời sơ sinh đại vũ trụ.
+    
+*   **Thực lực:** Huyền Thiên Cơ sở hữu sức mạnh vượt qua cả chí tôn, có thể tự do ra vào Đại Đạo Trường Hà. Anh ta có thể sử dụng nhiều loại thần thông và pháp bảo, bao gồm cả Chúng Tương Không Luân.
+    
+*   **Tính cách:** Huyền Thiên Cơ là một người bí ẩn, khó đoán và có phần ngạo mạn. Anh ta thường xuyên xuất hiện với những thân phận khác nhau và thực hiện những hành động khó hiểu. Tuy nhiên, anh ta luôn giúp đỡ Dương Thanh Huyền và có vẻ như có một kế hoạch lớn cho tương lai.
