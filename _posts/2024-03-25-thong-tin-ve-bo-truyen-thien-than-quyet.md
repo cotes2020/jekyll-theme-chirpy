@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: 2024-03-25
 title: Bộ truyện Thiên Thần Quyết
 ---
