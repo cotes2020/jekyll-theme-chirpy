@@ -1,7 +1,7 @@
 ---
 published: false
 date: 2024-03-25
-title: Thông tin về bộ truyện Thiên Thần Quyết
+title: Bộ truyện Thiên Thần Quyết
 ---
 # Thông tin cơ bản về cảnh giới tu luyện
 
