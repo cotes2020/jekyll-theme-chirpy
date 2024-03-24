@@ -5,69 +5,33 @@ title: Bộ truyện Thiên Thần Quyết
 ---
 # Thông tin cơ bản về cảnh giới tu luyện
 
-**1\. Khí Võ Cảnh:**
+## Luyện khí:
 
-*   Khí Vũ sơ kỳ
+*   Khí Võ Cảnh
     
-*   Khí Vũ trung kỳ
+*   Linh Võ Cảnh
     
-*   Khí Vũ hậu kỳ
-    
-*   Khí Vũ đại viên mãn
-    
+*   <p style="text-align: start">Chân Võ Cảnh</p>
+*   <p style="text-align: start">Nguyên Võ Cảnh</p>
+*   <p style="text-align: start">Địa giai</p>
+*   <p style="text-align: start">Thiên vị</p>
 
-**2\. Linh Võ Cảnh:**
+## Luyện Thể:
 
-*   Linh Vũ sơ kỳ
+*   Thối Thể (10 tầng)
     
-*   Linh Vũ trung kỳ
+*   Đãng Khí (sơ kỳ, trung kỳ, hậu kỳ, đại viên mãn)
     
-*   Linh Vũ hậu kỳ
+*   Ngọc Cốt (sơ kỳ, trung kỳ, hậu kỳ, đại viên mãn)
     
-*   Linh Vũ đại viên mãn
+*   Dịch Tủy (sơ kỳ, trung kỳ, hậu kỳ, đại viên mãn)
     
-
-<p style="text-align: start"><strong>3. Chân Võ Cảnh:</strong></p>
-
-*   Chân Vũ sơ kỳ
-    
-*   Chân Vũ trung kỳ
-    
-*   Chân Vũ hậu kỳ
-    
-*   Chân Vũ đại viên mãn
+*   Bất Phôi Kim Thân (huyết mạch, thông khiếu, thiên mạch)
     
 
-<p style="text-align: start"><strong>4. Nguyên Võ Cảnh:</strong></p>
+## Võ Hồn:
 
-*   Nguyên Võ sơ kỳ
-    
-*   Nguyên Võ trung kỳ
-    
-*   Nguyên Võ hậu kỳ
-    
-*   Nguyên Võ đại viên mãn
-    
-
-<p style="text-align: start"><strong>Lưu ý:</strong></p>
-
-*   Trên Nguyên Võ cảnh còn có **Địa giai** và **Thiên Vị**, nhưng truyện chưa đề cập đến việc phân chia tầng nhỏ trong hai cảnh giới này.
-    
-
-**Luyện Thể:**
-
-1.  Thối Thể (10 tầng)
-    
-2.  Đãng Khí (sơ kỳ, trung kỳ, hậu kỳ, đại viên mãn)
-    
-3.  Ngọc Cốt (sơ kỳ, trung kỳ, hậu kỳ, đại viên mãn)
-    
-4.  Dịch Tủy (sơ kỳ, trung kỳ, hậu kỳ, đại viên mãn)
-    
-5.  Bất Phôi Kim Thân (huyết mạch, thông khiếu, thiên mạch)
-    
-
-<p style="text-align: start"><strong>Võ Hồn:</strong></p><p style="text-align: start">Võ Hồn là một dạng năng lượng đặc biệt được ngưng tụ từ tinh hoa, khí huyết, thần thức, hồn phách và ý chí của võ giả khi họ bước vào Linh Vũ cảnh. Võ Hồn có thể được xem như là linh hồn thứ hai của võ giả, giúp họ tăng cường sức mạnh chiến đấu và khả năng tu luyện.</p><p style="text-align: start">Võ Hồn có thể chia thành nhiều loại khác nhau dựa theo hình dạng và thuộc tính, ví dụ như:</p>
+<p style="text-align: start">Võ Hồn là một dạng năng lượng đặc biệt được ngưng tụ từ tinh hoa, khí huyết, thần thức, hồn phách và ý chí của võ giả khi họ bước vào Linh Vũ cảnh. Võ Hồn có thể được xem như là linh hồn thứ hai của võ giả, giúp họ tăng cường sức mạnh chiến đấu và khả năng tu luyện.</p><p style="text-align: start">Võ Hồn có thể chia thành nhiều loại khác nhau dựa theo hình dạng và thuộc tính, ví dụ như:</p>
 
 *   **Hình thú:** Võ Hồn có hình dạng của một con thú, thường mang sức mạnh và đặc tính của loài thú đó.
     
@@ -93,35 +57,35 @@ title: Bộ truyện Thiên Thần Quyết
 
 # Khởi đầu hành trình tu luyện của nhân vật chính Dương Thanh Huyền
 
-<p style="text-align: start"><strong>Khởi đầu:</strong></p>
+## Khởi đầu:
 
 *   Dương Thanh Huyền bắt đầu tu luyện từ khi còn nhỏ, nhưng do hồn phách không trọn vẹn nên tiến bộ rất chậm.
     
 *   Gia gia của anh, Dương Chiếu, đã tìm mọi cách để giúp anh cải thiện thể chất và tu vi.
     
 
-<p style="text-align: start"><strong>Thức tỉnh:</strong></p>
+## Thức tỉnh:
 
 *   Sau khi gặp được Tinh Vũ Bàn trong địa cung dưới núi Côn Luân, Dương Thanh Huyền đã thức tỉnh hồn phách và dung hợp với tàn hồn của chính mình.
     
 *   Từ đó, tu vi của anh tăng tiến nhanh chóng, đạt đến Khí Vũ cảnh đại viên mãn.
     
 
-<p style="text-align: start"><strong>Luyện thể:</strong></p>
+## Luyện thể:
 
 *   Dương Thanh Huyền quyết định tu luyện thể thuật theo Thanh Dương Võ Kinh để tăng cường sức mạnh và khả năng chống lại phản phệ từ Võ Hồn Thiên Hạ Hữu Địch.
     
 *   Nhờ vào thiên phú và sự chăm chỉ, anh nhanh chóng đạt đến Thối Thể cảnh, sau đó là Đãng Khí cảnh và Ngọc Cốt cảnh.
     
 
-<p style="text-align: start"><strong>Ngưng tụ Võ Hồn:</strong></p>
+## Ngưng tụ Võ Hồn:
 
 *   Sau khi đạt đến Hoàng Cân Lực Sĩ, Dương Thanh Huyền sử dụng Ngưng Hồn Đan để ngưng tụ Võ Hồn của chính mình.
     
 *   Tuy nhiên, Võ Hồn của anh lại là một thanh kiếm gãy, chỉ có một đạo hồn quang.
     
 
-<p style="text-align: start"><strong>Hư Thiên Cổ Đạo:</strong></p>
+## Hư Thiên Cổ Đạo:
 
 *   Dương Thanh Huyền tham gia Nội viện khảo hạch và được lựa chọn để vào Hư Thiên Cổ Đạo tu luyện.
     
@@ -130,14 +94,14 @@ title: Bộ truyện Thiên Thần Quyết
 *   Sau khi trải qua lôi kiếp, Võ Hồn của anh đã thăng cấp lên quân phẩm và anh cũng bước vào Linh Vũ cảnh.
     
 
-<p style="text-align: start"><strong>Tiềm Long Bảng:</strong></p>
+## Tiềm Long Bảng:
 
 *   Dương Thanh Huyền tham gia Tiềm Long Bảng bài vị chiến và đánh bại nhiều đối thủ mạnh, bao gồm cả Tả Hành.
     
 *   Anh được công nhận là một trong bốn vương mới của Thiên Tông học viện.
     
 
-<p style="text-align: start"><strong>Năm quốc thi đấu:</strong></p>
+## Năm quốc thi đấu:
 
 *   Dương Thanh Huyền được lựa chọn để đại diện cho Thiên Tông học viện tham gia năm quốc thi đấu.
     
@@ -150,21 +114,17 @@ title: Bộ truyện Thiên Thần Quyết
 
 Cuối bộ truyện, Dương Thanh Huyền, sau khi trải qua vô số gian khổ và thử thách, đã hợp nhất với Huyền Thiên Cơ và bước vào vòng xoáy ánh sáng kim, con đường trở về "nguồn gốc của đạo".
 
-**Lạc ấn trên người Dương Thanh Huyền:**
+## Lạc ấn trên người Dương Thanh Huyền:
 
 Lạc ấn trên người Dương Thanh Huyền là "Nhân Quả". Nó đại diện cho mối liên hệ của anh với vô số kiếp luân hồi và nghiệp lực tích lũy từ vô thủy kiếp.
 
-**Thân phận thật sự của Dương Thanh Huyền:**
+## Thân phận thật sự của Dương Thanh Huyền:
 
 Dương Thanh Huyền, cũng như Huyền Thiên Cơ, vốn là một phần của "Đạo" trong trạng thái chưa hiển hóa. Khi "Đạo" sinh ra vạn vật, một phần của nó đã hóa thành Dương Thanh Huyền và Huyền Thiên Cơ, cùng với những Thiên Hành Giả khác.
 
-**Chuyện gì đã xảy ra cuối bộ truyện:**
+## Chuyện gì đã xảy ra cuối bộ truyện:
 
 Dương Thanh Huyền và Huyền Thiên Cơ, sau khi hợp nhất, đã sử dụng sức mạnh của Đại Đạo Chi Thư để mở ra con đường trở về "nguồn gốc của đạo". Họ bước vào vòng xoáy ánh sáng kim, cùng với những Thiên Hành Giả khác, để tìm kiếm sự thật và cội nguồn của mọi sự tồn tại.
-
-**Lưu ý:**
-
-Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Việc Dương Thanh Huyền và Huyền Thiên Cơ có thực sự trở về "nguồn gốc của đạo" hay không, và điều gì đang chờ đợi họ ở đó, vẫn là một bí ẩn.
 
 * * *
 
@@ -172,7 +132,7 @@ Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Vi�
 
 ## Lý Vân Tiêu:
 
-*   **Thân phận:** Thánh Vương của Nhân tộc, một trong ba vị chí tôn cường giả của Nhân tộc.
+*   Thánh Vương của Nhân tộc, một trong ba vị chí tôn cường giả của Nhân tộc.
     
 *   Lý Vân Tiêu đến từ cùng một vũ trụ với Dương Thanh Huyền, tức hạ giới. Anh phi thăng lên đời sơ sinh đại vũ trụ và trở thành một nhân vật quan trọng trong cuộc chiến chống lại thâm không dị tộc. Lý Vân Tiêu là một chí tôn cường giả, sở hữu sức mạnh vô song. Anh ta có thể sử dụng kiếm ý và ma lực, đặc biệt là sau khi dung hợp với ma, anh ta đã đạt được "thần ma chi thể" với sức mạnh khủng khiếp.
     
@@ -183,13 +143,13 @@ Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Vi�
 
 ## Huyền Thiên Cơ:
 
-*   **Thân phận:** Chủ nhân của Luân Hồi Thiên Cung, một nhân vật bí ẩn với lai lịch và mục đích khó đoán.
+*   Chủ nhân của Luân Hồi Thiên Cung, một nhân vật bí ẩn với lai lịch và mục đích khó đoán.
     
-*   **Nguồn gốc:** Huyền Thiên Cơ cũng đến từ cùng một vũ trụ với Dương Thanh Huyền. Anh ta chuyển thế trên Thương Khung Tinh Vực và sau đó phi thăng lên đời sơ sinh đại vũ trụ.
+*   Huyền Thiên Cơ cũng đến từ cùng một vũ trụ với Dương Thanh Huyền. Anh ta chuyển thế trên Thương Khung Tinh Vực và sau đó phi thăng lên đời sơ sinh đại vũ trụ.
     
-*   **Thực lực:** Huyền Thiên Cơ sở hữu sức mạnh vượt qua cả chí tôn, có thể tự do ra vào Đại Đạo Trường Hà. Anh ta có thể sử dụng nhiều loại thần thông và pháp bảo, bao gồm cả Chúng Tương Không Luân.
+*   Huyền Thiên Cơ sở hữu sức mạnh vượt qua cả chí tôn, có thể tự do ra vào Đại Đạo Trường Hà. Anh ta có thể sử dụng nhiều loại thần thông và pháp bảo, bao gồm cả Chúng Tương Không Luân.
     
-*   **Tính cách:** Huyền Thiên Cơ là một người bí ẩn, khó đoán và có phần ngạo mạn. Anh ta thường xuyên xuất hiện với những thân phận khác nhau và thực hiện những hành động khó hiểu. Tuy nhiên, anh ta luôn giúp đỡ Dương Thanh Huyền và có vẻ như có một kế hoạch lớn cho tương lai.
+*   Huyền Thiên Cơ là một người bí ẩn, khó đoán và có phần ngạo mạn. Anh ta thường xuyên xuất hiện với những thân phận khác nhau và thực hiện những hành động khó hiểu. Tuy nhiên, anh ta luôn giúp đỡ Dương Thanh Huyền và có vẻ như có một kế hoạch lớn cho tương lai.
     
 
 ## Thâm không dị tộc:
