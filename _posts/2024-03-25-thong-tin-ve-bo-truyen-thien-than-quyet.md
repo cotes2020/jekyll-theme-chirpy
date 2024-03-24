@@ -176,11 +176,11 @@ Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Vi�
 
 *   **Thân phận:** Thánh Vương của Nhân tộc, một trong ba vị chí tôn cường giả của Nhân tộc.
     
-*   **Nguồn gốc:** Lý Vân Tiêu đến từ cùng một vũ trụ với Dương Thanh Huyền, tức hạ giới. Anh phi thăng lên đời sơ sinh đại vũ trụ và trở thành một nhân vật quan trọng trong cuộc chiến chống lại thâm không dị tộc.
+*   Lý Vân Tiêu đến từ cùng một vũ trụ với Dương Thanh Huyền, tức hạ giới. Anh phi thăng lên đời sơ sinh đại vũ trụ và trở thành một nhân vật quan trọng trong cuộc chiến chống lại thâm không dị tộc. Lý Vân Tiêu là một chí tôn cường giả, sở hữu sức mạnh vô song. Anh ta có thể sử dụng kiếm ý và ma lực, đặc biệt là sau khi dung hợp với ma, anh ta đã đạt được "thần ma chi thể" với sức mạnh khủng khiếp.
     
-*   **Thực lực:** Lý Vân Tiêu là một chí tôn cường giả, sở hữu sức mạnh vô song. Anh ta có thể sử dụng kiếm ý và ma lực, đặc biệt là sau khi dung hợp với ma, anh ta đã đạt được "thần ma chi thể" với sức mạnh khủng khiếp.
+*   Lý Vân Tiêu là một người điềm tĩnh, quyết đoán và có trách nhiệm. Anh ta luôn đặt lợi ích của Nhân tộc lên hàng đầu và sẵn sàng hy sinh bản thân để bảo vệ tộc nhân.
     
-*   **Tính cách:** Lý Vân Tiêu là một người điềm tĩnh, quyết đoán và có trách nhiệm. Anh ta luôn đặt lợi ích của Nhân tộc lên hàng đầu và sẵn sàng hy sinh bản thân để bảo vệ tộc nhân.
+*   Lý Vân Tiêu là người đã truyền cảm hứng và động lực cho Dương Thanh Huyền trên con đường tu luyện. Anh ta cũng là người đã giúp Dương Thanh Huyền hoàn thiện Thiên Cổ Phong Lưu Vũ Trường Không. Anh ta đã đánh một trận chiến để ngăn chặn Tố Hành, một chí tôn cường giả của thâm không dị tộc, giáng lâm xuống Nhân tộc lãnh địa. Lý Vân Tiêu bị trọng thương trong trận chiến với Diệu Huy, một chí tôn cường giả của thâm không dị tộc. Tuy nhiên, anh ta đã được Nhân Hoàng cứu và sau đó bế quan để dưỡng thương.
     
 
 <h2 style="text-align: start">Huyền Thiên Cơ:</h2>
@@ -192,3 +192,113 @@ Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Vi�
 *   **Thực lực:** Huyền Thiên Cơ sở hữu sức mạnh vượt qua cả chí tôn, có thể tự do ra vào Đại Đạo Trường Hà. Anh ta có thể sử dụng nhiều loại thần thông và pháp bảo, bao gồm cả Chúng Tương Không Luân.
     
 *   **Tính cách:** Huyền Thiên Cơ là một người bí ẩn, khó đoán và có phần ngạo mạn. Anh ta thường xuyên xuất hiện với những thân phận khác nhau và thực hiện những hành động khó hiểu. Tuy nhiên, anh ta luôn giúp đỡ Dương Thanh Huyền và có vẻ như có một kế hoạch lớn cho tương lai.
+    
+
+## Thâm không dị tộc:
+
+*   **Nguồn gốc:** Thâm không dị tộc là một nhóm các chủng tộc đến từ một vị diện đặc biệt gọi là "thâm không", nằm ở rìa vũ trụ và có liên kết với đời sơ sinh đại vũ trụ.
+    
+*   **Mục tiêu:** Thâm không dị tộc muốn xâm chiếm lãnh địa của Nhân tộc để có được nguồn tài nguyên và không gian sinh tồn tốt hơn.
+    
+*   **Thực lực:** Thâm không dị tộc có sáu vị chí tôn cường giả và nhiều cao thủ khác, tạo thành một thế lực đáng gờm.
+    
+*   **Kết cục:** Sau nhiều cuộc chiến tranh với Nhân tộc, thâm không dị tộc bị tổn thất nặng nề và buộc phải rút lui.
+    
+
+## Phạm Vô:
+
+*   **Thân phận:** Đời thứ chín A Ma La thức thể, một trong những kẻ chủ mưu muốn hủy diệt vũ trụ.
+    
+*   **Nguồn gốc:** Phạm Vô được sinh ra từ Sáng Thế Mẫu Liên, cùng với mười A Ma La thức thể khác.
+    
+*   **Thực lực:** Phạm Vô là một nửa bước chí tôn cường giả, sở hữu sức mạnh gần như tuyệt đối.
+    
+*   **Kết cục:** Phạm Vô bị Dương Thanh Huyền và Huyền Thiên Cơ hợp lực đánh bại và bị hấp thu.
+    
+
+## Ân Võ Vương:
+
+*   **Thân phận:** Một vị cường giả đã từng vang danh thiên hạ, có liên hệ mật thiết với Dương Thanh Huyền.
+    
+*   **Nguồn gốc:** Ân Võ Vương đến từ hạ giới và phi thăng lên đời sơ sinh đại vũ trụ. Anh ta có được một phần của Đại Đạo Chi Thư và sáng tạo ra hạt sen không gian.
+    
+*   **Thực lực:** Ân Võ Vương là một chí tôn cường giả với sức mạnh vô song.
+    
+*   **Kết cục:** Ân Võ Vương bị Phạm Vô giết chết, nhưng một phần ý thức của anh ta vẫn còn tồn tại và sau đó dung hợp với Dương Thanh Huyền.
+    
+
+## Quỷ Tàng:
+
+*   **Thân phận:** Một quỷ tu mạnh mẽ và tàn nhẫn, bạn đồng hành của Dương Thanh Huyền.
+    
+*   **Nguồn gốc:** Quỷ Tàng sinh ra và lớn lên ở Quỷ Giới.
+    
+*   **Thực lực:** Quỷ Tàng là một chín sao Thiên Giới đỉnh phong cường giả, sau đó đột phá đến nửa bước chí tôn.
+    
+*   **Kết cục:** Quỷ Tàng cùng Dương Thanh Huyền chiến đấu chống lại các thế lực tà ác và cuối cùng phi thăng lên đời sơ sinh đại vũ trụ.
+    
+
+## Lục Đạo Bất Phôi Tướng:
+
+*   Một trong bốn đại chí tôn thần thể, là công pháp luyện thể mạnh mẽ nhất.
+    
+*   Lục Đạo Bất Phôi Tướng được cho là do đại đạo trực tiếp diễn hóa ra.
+    
+*   Lục Đạo Bất Phôi Tướng cho phép người sử dụng điều khiển lục đạo chi lực, có thể công kích và phòng ngự vô song.
+    
+*   Dương Thanh Huyền và Ân Võ Vương đều có được Lục Đạo Bất Phôi Tướng và sử dụng nó để chống lại các thế lực tà ác.
+    
+
+* * *
+
+<h2 style="text-align: start">A Ma La thức thể:</h2><p style="text-align: start">A Ma La thức thể là một khái niệm quan trọng trong <strong>Thiên Thần Quyết</strong>. Nó ám chỉ những sinh mệnh được sinh ra từ Sáng Thế Mẫu Liên, một thực thể huyền bí tượng trưng cho cội nguồn của vũ trụ.</p><p style="text-align: start">Theo truyền thuyết, khi đại đạo diễn hóa vạn vật, một phần của nó đã hóa thành Sáng Thế Mẫu Liên. Mẫu Liên này sau đó sinh ra mười một A Ma La thức thể, mỗi thức thể đại diện cho một khía cạnh khác nhau của đại đạo.</p>
+
+*   A Ma La thức thể sở hữu sức mạnh và tiềm năng to lớn, có thể sánh ngang với chí tôn cường giả.
+    
+*   Họ có thể sử dụng các loại thần thông và pháp bảo, đồng thời có khả năng cảm ứng và thao túng đại đạo.
+    
+*   A Ma La thức thể có thể luân hồi chuyển thế, nhưng ký ức kiếp trước thường bị phong ấn.
+    
+
+<p style="text-align: start">Mục đích của A Ma La thức thể là tìm kiếm con đường trở về "nguồn gốc của đạo", nơi mà mọi thứ bắt đầu và kết thúc.</p><p style="text-align: start">Trong <strong>Thiên Thần Quyết</strong>, các A Ma La thức thể dần dần thức tỉnh và tham gia vào cuộc chiến giữa Nhân tộc và thâm không dị tộc. Một số người trong số họ bị giết hoặc bị hấp thu, trong khi những người khác tiếp tục tìm kiếm con đường trở về "nguồn gốc của đạo".</p><p style="text-align: start">Khái niệm A Ma La thức thể được lấy cảm hứng từ Phật giáo. Trong Phật giáo, A Ma La thức là thức thứ tám, được xem là kho chứa đựng tất cả các hạt giống nghiệp lực và ký ức của chúng sinh.</p>
+
+* * *
+
+<h2 style="text-align: start">Thiên Cổ Phong Lưu Vũ Trường Không:</h2><p style="text-align: start">Thiên Cổ Phong Lưu Vũ Trường Không là một thanh chiến kích do Dương Thanh Huyền luyện chế, là một trong những thần binh lợi hại nhất vũ trụ trong <strong>Thiên Thần Quyết</strong>.</p><p style="text-align: start"><strong>Nguồn gốc:</strong></p><p style="text-align: start">Thiên Cổ Phong Lưu Vũ Trường Không được tạo ra từ nhiều loại vật liệu quý hiếm, bao gồm cả một phần của hạt sen không gian, một bảo vật do Ân Võ Vương để lại. Dương Thanh Huyền đã sử dụng kỹ thuật luyện khí và sự hiểu biết về đại đạo của mình để tạo ra chiến kích này.</p><p style="text-align: start"><strong>Sức mạnh:</strong></p>
+
+*   Thiên Cổ Phong Lưu Vũ Trường Không có thể chém giết mọi thứ, kể cả chí tôn cường giả.
+    
+*   Nó có thể hấp thu và chuyển hóa năng lượng của các bảo vật khác, bao gồm cả Hỗn Độn Linh Bảo và Đại Đạo Chi Thư.
+    
+*   Chiến kích này có liên kết tâm linh với Dương Thanh Huyền, cho phép anh ta điều khiển nó một cách dễ dàng và phát huy tối đa sức mạnh của nó.
+    
+
+<p style="text-align: start"><strong>Vai trò trong truyện:</strong></p>
+
+*   Thiên Cổ Phong Lưu Vũ Trường Không là vũ khí chính của Dương Thanh Huyền trong suốt hành trình tu luyện của anh.
+    
+*   Nó đã giúp anh chiến thắng vô số kẻ thù, bao gồm cả Phạm Vô và Tố Hành.
+    
+*   Chiến kích này cũng là một biểu tượng cho sức mạnh, ý chí và quyết tâm của Dương Thanh Huyền.
+    
+
+* * *
+
+<h2 style="text-align: start">Hỗn Độn Linh Bảo:</h2><p style="text-align: start">Hỗn Độn Linh Bảo là năm bảo vật cực kỳ quý hiếm và mạnh mẽ trong <strong>Thiên Thần Quyết</strong>. Chúng được hình thành từ năng lượng hỗn độn nguyên thủy của vũ trụ và đại diện cho năm thời đại: Thái Thủy, Thái Dịch, Thái Tố, Thái Sơ và Thái Cực.</p><p style="text-align: start"><strong>Năm Hỗn Độn Linh Bảo:</strong></p>
+
+1.  **Thái Thủy Vạn Vật Đỉnh:** Có khả năng tạo ra và hủy diệt vạn vật.
+    
+2.  **Thái Dịch Quân Đô Phú Nguyên Đồ:** Có thể thay đổi và thao túng quy tắc của vũ trụ.
+    
+3.  **Thái Tố Thiên Cơ Ngọc:** Có thể nhìn thấu quá khứ, hiện tại và tương lai.
+    
+4.  **Thái Sơ Bồ Đề Tâm:** Có thể điều khiển thời gian và không gian.
+    
+5.  **Thái Cực Lưỡng Nghi Phù:** Có thể dung hợp và phân chia âm dương.
+    
+
+<p style="text-align: start"><strong>Sức mạnh:</strong></p><p style="text-align: start">Hỗn Độn Linh Bảo sở hữu sức mạnh vô song, có thể sánh ngang với chí tôn cường giả. Chúng có thể được sử dụng để công kích, phòng ngự, thao túng quy tắc và thậm chí là thay đổi vận mệnh của vũ trụ.</p><p style="text-align: start"><strong>Vai trò trong truyện:</strong></p><p style="text-align: start">Các Hỗn Độn Linh Bảo đóng vai trò quan trọng trong cuộc chiến giữa Nhân tộc và thâm không dị tộc. Cả hai phe đều tìm cách thu thập và sử dụng những bảo vật này để giành lợi thế trong cuộc chiến.</p><p style="text-align: start"><strong>Kết cục:</strong></p><p style="text-align: start">Cuối truyện, năm Hỗn Độn Linh Bảo được tập hợp lại và đóng một vai trò quan trọng trong việc mở ra con đường trở về "nguồn gốc của đạo".</p>
+
+* * *
+
+<h2 style="text-align: start">Đại Đạo Chi Thư:</h2><p style="text-align: start">Đại Đạo Chi Thư là một bảo vật huyền bí được cho là ghi chép lại toàn bộ bí mật của đại đạo. Nó được cho là đã biến mất từ thời viễn cổ. Đại Đạo Chi Thư được cho là đã được tạo ra bởi đại đạo, hoặc bởi một Thiên Hành Giả viễn cổ nào đó.</p><p style="text-align: start"><strong>Sức mạnh:</strong></p><p style="text-align: start">Đại Đạo Chi Thư được cho là có thể giải khai mọi bí mật của vũ trụ, bao gồm cả bí mật về sự sống và cái chết, về nguồn gốc và kết cục của vạn vật.</p><p style="text-align: start"><strong>Vai trò trong truyện:</strong></p><p style="text-align: start">Đại Đạo Chi Thư là mục tiêu mà nhiều cường giả trong <strong>Thiên Thần Quyết</strong> theo đuổi. Họ tin rằng cuốn sách này có thể giúp họ đột phá đến cảnh giới chí tôn và thậm chí là đạt được sự bất tử.</p><p style="text-align: start"><strong>Kết cục:</strong></p><p style="text-align: start">Cuối truyện, Dương Thanh Huyền và Huyền Thiên Cơ hợp lực để mở ra con đường trở về "nguồn gốc của đạo". Có thể con đường này sẽ dẫn họ đến Đại Đạo Chi Thư.</p>
