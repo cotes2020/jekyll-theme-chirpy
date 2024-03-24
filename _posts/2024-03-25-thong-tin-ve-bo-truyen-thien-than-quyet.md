@@ -5,6 +5,55 @@ title: Thông tin về bộ truyện Thiên Thần Quyết
 ---
 # Thông tin cơ bản về cảnh giới tu luyện
 
+**1\. Khí Võ Cảnh:**
+
+*   Khí Vũ sơ kỳ
+    
+*   Khí Vũ trung kỳ
+    
+*   Khí Vũ hậu kỳ
+    
+*   Khí Vũ đại viên mãn
+    
+
+**2\. Linh Võ Cảnh:**
+
+*   Linh Vũ sơ kỳ
+    
+*   Linh Vũ trung kỳ
+    
+*   Linh Vũ hậu kỳ
+    
+*   Linh Vũ đại viên mãn
+    
+
+<p style="text-align: start"><strong>3. Chân Võ Cảnh:</strong></p>
+
+*   Chân Vũ sơ kỳ
+    
+*   Chân Vũ trung kỳ
+    
+*   Chân Vũ hậu kỳ
+    
+*   Chân Vũ đại viên mãn
+    
+
+<p style="text-align: start"><strong>4. Nguyên Võ Cảnh:</strong></p>
+
+*   Nguyên Võ sơ kỳ
+    
+*   Nguyên Võ trung kỳ
+    
+*   Nguyên Võ hậu kỳ
+    
+*   Nguyên Võ đại viên mãn
+    
+
+<p style="text-align: start"><strong>Lưu ý:</strong></p>
+
+*   Trên Nguyên Võ cảnh còn có **Địa giai** và **Thiên Vị**, nhưng truyện chưa đề cập đến việc phân chia tầng nhỏ trong hai cảnh giới này.
+    
+
 **Luyện Thể:**
 
 1.  Thối Thể (10 tầng)
