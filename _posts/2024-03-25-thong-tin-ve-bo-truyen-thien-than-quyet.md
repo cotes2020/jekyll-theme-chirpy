@@ -3,6 +3,10 @@ published: true
 date: 2024-03-25
 title: Bộ truyện Thiên Thần Quyết
 ---
+Những thông tin dưới đây mình sử dụng AI model để tóm tắt nên có thể đúng có thể sai, các bạn có thể dùng để tham khảo nhé!
+
+* * *
+
 # Thông tin cơ bản về cảnh giới tu luyện
 
 ## Luyện khí
@@ -15,6 +19,10 @@ title: Bộ truyện Thiên Thần Quyết
 *   <p style="text-align: start">Nguyên Võ Cảnh</p>
 *   <p style="text-align: start">Địa giai</p>
 *   <p style="text-align: start">Thiên vị</p>
+*   <p style="text-align: start">...</p>
+*   <p style="text-align: start">Giới Vương</p>
+*   <p style="text-align: start">Thiên Giới Chi Chủ</p>
+*   <p style="text-align: start">Vạn Cổ Chí Tôn</p>
 
 ## Luyện Thể
 
