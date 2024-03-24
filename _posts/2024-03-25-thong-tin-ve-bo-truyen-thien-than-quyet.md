@@ -3,7 +3,7 @@ published: true
 date: 2024-03-25
 title: Bộ truyện Thiên Thần Quyết
 ---
-Những thông tin dưới đây mình sử dụng AI model để tóm tắt nên có thể đúng có thể sai, các bạn có thể dùng để tham khảo nhé!
+Những thông tin dưới đây mình sử dụng AI để tóm tắt nên có thể đúng có thể sai, các bạn có thể dùng để tham khảo nhé!
 
 * * *
 
