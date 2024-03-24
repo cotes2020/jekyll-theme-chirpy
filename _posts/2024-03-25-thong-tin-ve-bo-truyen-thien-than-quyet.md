@@ -93,35 +93,35 @@ title: Bộ truyện Thiên Thần Quyết
 
 # Khởi đầu hành trình tu luyện của nhân vật chính Dương Thanh Huyền
 
-<p style="text-align: start"><strong>1. Khởi đầu:</strong></p>
+<p style="text-align: start"><strong>Khởi đầu:</strong></p>
 
 *   Dương Thanh Huyền bắt đầu tu luyện từ khi còn nhỏ, nhưng do hồn phách không trọn vẹn nên tiến bộ rất chậm.
     
 *   Gia gia của anh, Dương Chiếu, đã tìm mọi cách để giúp anh cải thiện thể chất và tu vi.
     
 
-<p style="text-align: start"><strong>2. Thức tỉnh:</strong></p>
+<p style="text-align: start"><strong>Thức tỉnh:</strong></p>
 
 *   Sau khi gặp được Tinh Vũ Bàn trong địa cung dưới núi Côn Luân, Dương Thanh Huyền đã thức tỉnh hồn phách và dung hợp với tàn hồn của chính mình.
     
 *   Từ đó, tu vi của anh tăng tiến nhanh chóng, đạt đến Khí Vũ cảnh đại viên mãn.
     
 
-<p style="text-align: start"><strong>3. Luyện thể:</strong></p>
+<p style="text-align: start"><strong>Luyện thể:</strong></p>
 
 *   Dương Thanh Huyền quyết định tu luyện thể thuật theo Thanh Dương Võ Kinh để tăng cường sức mạnh và khả năng chống lại phản phệ từ Võ Hồn Thiên Hạ Hữu Địch.
     
 *   Nhờ vào thiên phú và sự chăm chỉ, anh nhanh chóng đạt đến Thối Thể cảnh, sau đó là Đãng Khí cảnh và Ngọc Cốt cảnh.
     
 
-<p style="text-align: start"><strong>4. Ngưng tụ Võ Hồn:</strong></p>
+<p style="text-align: start"><strong>Ngưng tụ Võ Hồn:</strong></p>
 
 *   Sau khi đạt đến Hoàng Cân Lực Sĩ, Dương Thanh Huyền sử dụng Ngưng Hồn Đan để ngưng tụ Võ Hồn của chính mình.
     
 *   Tuy nhiên, Võ Hồn của anh lại là một thanh kiếm gãy, chỉ có một đạo hồn quang.
     
 
-<p style="text-align: start"><strong>5. Hư Thiên Cổ Đạo:</strong></p>
+<p style="text-align: start"><strong>Hư Thiên Cổ Đạo:</strong></p>
 
 *   Dương Thanh Huyền tham gia Nội viện khảo hạch và được lựa chọn để vào Hư Thiên Cổ Đạo tu luyện.
     
@@ -130,21 +130,19 @@ title: Bộ truyện Thiên Thần Quyết
 *   Sau khi trải qua lôi kiếp, Võ Hồn của anh đã thăng cấp lên quân phẩm và anh cũng bước vào Linh Vũ cảnh.
     
 
-<p style="text-align: start"><strong>6. Tiềm Long Bảng:</strong></p>
+<p style="text-align: start"><strong>Tiềm Long Bảng:</strong></p>
 
 *   Dương Thanh Huyền tham gia Tiềm Long Bảng bài vị chiến và đánh bại nhiều đối thủ mạnh, bao gồm cả Tả Hành.
     
 *   Anh được công nhận là một trong bốn vương mới của Thiên Tông học viện.
     
 
-<p style="text-align: start"><strong>7. Năm quốc thi đấu:</strong></p>
+<p style="text-align: start"><strong>Năm quốc thi đấu:</strong></p>
 
 *   Dương Thanh Huyền được lựa chọn để đại diện cho Thiên Tông học viện tham gia năm quốc thi đấu.
     
 *   Anh tiếp tục tu luyện và nâng cao thực lực, đồng thời tìm kiếm bí mật về thân thế của mình và Thanh Dương Võ Kinh.
     
-
-<p style="text-align: start"><strong>Lưu ý:</strong> Hành trình tu luyện của Dương Thanh Huyền vẫn đang tiếp tục và anh vẫn đang khám phá những bí mật mới về bản thân và thế giới xung quanh.</p>
 
 * * *
 
@@ -172,7 +170,7 @@ Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Vi�
 
 # Các nhân vật quan trọng khác
 
-<h2 style="text-align: start">Lý Vân Tiêu:</h2>
+## Lý Vân Tiêu:
 
 *   **Thân phận:** Thánh Vương của Nhân tộc, một trong ba vị chí tôn cường giả của Nhân tộc.
     
@@ -183,7 +181,7 @@ Kết cục của bộ truyện để ngỏ cho nhiều cách diễn giải. Vi�
 *   Lý Vân Tiêu là người đã truyền cảm hứng và động lực cho Dương Thanh Huyền trên con đường tu luyện. Anh ta cũng là người đã giúp Dương Thanh Huyền hoàn thiện Thiên Cổ Phong Lưu Vũ Trường Không. Anh ta đã đánh một trận chiến để ngăn chặn Tố Hành, một chí tôn cường giả của thâm không dị tộc, giáng lâm xuống Nhân tộc lãnh địa. Lý Vân Tiêu bị trọng thương trong trận chiến với Diệu Huy, một chí tôn cường giả của thâm không dị tộc. Tuy nhiên, anh ta đã được Nhân Hoàng cứu và sau đó bế quan để dưỡng thương.
     
 
-<h2 style="text-align: start">Huyền Thiên Cơ:</h2>
+## Huyền Thiên Cơ:
 
 *   **Thân phận:** Chủ nhân của Luân Hồi Thiên Cung, một nhân vật bí ẩn với lai lịch và mục đích khó đoán.
     
