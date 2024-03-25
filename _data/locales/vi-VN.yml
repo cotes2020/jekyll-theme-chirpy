@@ -48,6 +48,8 @@ notification:
   update_found: Đã có phiên bản mới của nội dung.
   update: Cập nhật
 
+jump_to_main_content: Chuyển đến nội dung chính
+
 # ----- Posts related labels -----
 
 post:

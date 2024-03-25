@@ -49,6 +49,8 @@ notification:
   update_found: အကြောင်းအရာဗားရှင်းအသစ်ကို ရနိုင်ပါပြီ။
   update: အပ်ဒိတ်
 
+jump_to_main_content: အဓိက အကြောင်းအရာတွေဆီ ခုန်ချပါ
+
 # ----- Posts related labels -----
 
 post:

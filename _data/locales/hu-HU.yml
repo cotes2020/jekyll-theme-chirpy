@@ -51,6 +51,8 @@ notification:
   update_found: Elérhető a tartalom új verziója.
   update: Frissítés
 
+jump_to_main_content: Ugrás a tartalomhoz
+
 # ----- Posts related labels -----
 
 post:

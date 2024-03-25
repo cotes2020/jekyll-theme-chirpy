@@ -49,6 +49,8 @@ notification:
   update_found: Det finns en ny version av innehållet.
   update: Uppdatera sidan
 
+jump_to_main_content: Hoppa till huvudinnehåll
+
 # ----- Posts related labels -----
 
 post:

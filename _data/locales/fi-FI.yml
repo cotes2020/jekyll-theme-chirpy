@@ -48,6 +48,8 @@ notification:
   update_found: Uusi versio sisällöstä on saatavilla.
   update: Päivitä
 
+jump_to_main_content: Siirry pääsisältöön
+
 # ----- Posts related labels -----
 
 post:

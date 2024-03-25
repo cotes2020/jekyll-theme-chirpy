@@ -49,6 +49,8 @@ notification:
   update_found: Налична е нова версия на съдържанието.
   update: Обнови
 
+jump_to_main_content: Премини към основното съдържание
+
 # ----- Posts related labels -----
 
 post:

@@ -48,6 +48,8 @@ notification:
   update_found: 發現新版本更新。
   update: 更新
 
+jump_to_main_content: 跳到主要內容
+
 # ----- Posts related labels -----
 
 post:

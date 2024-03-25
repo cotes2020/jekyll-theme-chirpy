@@ -35,6 +35,27 @@ body {
   font-family: $font-family-base;
 }
 
+/* --- Skip to Content --- */
+
+.jump-to-main-content {
+  left: -100vw;
+  position: absolute;
+
+  &__button {
+    z-index: 100; // Must be higher than the sidebar
+    top: 0.5em;
+    left: 0.75em;
+    padding: 0.5em;
+    position: fixed;
+    transform: translateY(-10em);
+    transition: transform .2s ease-in-out;
+
+    &:focus {
+      transform: translateY(0em);
+    }
+  }
+}
+
 /* --- Typography --- */
 
 @for $i from 1 through 5 {

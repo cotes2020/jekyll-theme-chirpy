@@ -49,6 +49,8 @@ notification:
   update_found: يتوفر اصدار جديد للمحتوى.
   update: تحديث
 
+jump_to_main_content: الانتقال إلى المحتوى الرئيسي
+
 # ----- Posts related labels -----
 
 post:

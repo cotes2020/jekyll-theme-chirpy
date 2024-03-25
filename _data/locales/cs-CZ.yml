@@ -49,6 +49,8 @@ notification:
   update_found: Je k dispozici nová verze obsahu.
   update: Aktualizace
 
+jump_to_main_content: Přejít k hlavnímu obsahu
+
 # ----- Posts related labels -----
 
 post:
