@@ -8,7 +8,7 @@
     "*.html": "liquid"
   },
   "[markdown]": {
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   // Formatter
   "[html][liquid]": {

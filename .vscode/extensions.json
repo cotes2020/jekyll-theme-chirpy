@@ -7,6 +7,7 @@
     // Common formatter
     "esbenp.prettier-vscode",
     "foxundermoon.shell-format",
-    "stylelint.vscode-stylelint"
+    "stylelint.vscode-stylelint",
+    "yzhang.markdown-all-in-one"
   ]
 }

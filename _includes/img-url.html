@@ -17,24 +17,20 @@
     {%- comment -%} Add page image path prefix {%- endcomment -%}
     {% assign url = include.img_path | default: '' | append: '/' | append: url %}
 
-    {%- comment -%} CND URL {%- endcomment -%}
+    {%- comment -%} Prepend CND URL {%- endcomment -%}
     {% if site.img_cdn %}
-      {% assign url = site.img_cdn
-        | append: '/'
-        | append: url
-        | replace: '///', '/'
-        | replace: '//', '/'
-        | replace: ':/', '://'
-      %}
-
-      {% unless site.img_cdn contains ':' %}
-        {% if include.absolute %}
-          {% assign url = site.url | append: site.baseurl | append: url %}
-        {% else %}
-          {% assign url = site.baseurl | append: url %}
-        {% endif %}
-      {% endunless %}
+      {% assign url = site.img_cdn | append: '/' | append: url %}
     {% endif %}
+
+    {% assign url = url | replace: '///', '/' | replace: '//', '/' | replace: ':/', '://' %}
+
+    {% unless url contains '://' %}
+      {% if include.absolute %}
+        {% assign url = site.url | append: site.baseurl | append: url %}
+      {% else %}
+        {% assign url = site.baseurl | append: url %}
+      {% endif %}
+    {% endunless %}
   {% endunless %}
 {%- endif -%}
 
