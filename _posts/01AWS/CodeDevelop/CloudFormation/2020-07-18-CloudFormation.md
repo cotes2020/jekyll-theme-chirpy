@@ -22,13 +22,13 @@ image:
 
 ## benefits
 
-1. <font color=red> manage, configure and provision the AWS infrastructure as code </font>
+1. <font color=OrangeRed> manage, configure and provision the AWS infrastructure as code </font>
    - repeatedly and predictably model and provision resources
    - infrastructure is provisioned consistently
      - fewer mistakes
      - less time and effort than configure manually
 
-2. <font color=red> Supports almost all the AWS services and programmable </font>
+2. <font color=OrangeRed> Supports almost all the AWS services and programmable </font>
    - provision a broad range of AWS resources.
      - <font color=LightSlateBlue> compare </font>
      - <font color=LightSlateBlue> Elastic Beanstalk </font>
@@ -38,24 +38,24 @@ image:
        - can deploy Elastic Beanstalk-hosted applications
        - however the reverse is not possible.
 
-3. resources are <font color=red> defined by CloudFormation template </font>
+3. resources are <font color=OrangeRed> defined by CloudFormation template </font>
    - Supports YAML and JSON
      - Logical IDs: reference resources within the template.
      - Physical IDs: identify resources outside of AWS CloudFormation templates, but only after the resources have been created.
 
-4. CloudFormation <font color=red> interprets the template and makes the appropriate API calls </font> to create the resources defined.
+4. CloudFormation <font color=OrangeRed> interprets the template and makes the appropriate API calls </font> to create the resources defined.
 
-5. <font color=red> version control </font> and peer review the templates
+5. <font color=OrangeRed> version control </font> and peer review the templates
    - can be used to manage updates & dependencies
    - can be used to rollback and delete the entire stack as well
 
 
-6. AWS CloudFormation provides 2 methods for <font color=red> updating stacks </font>
-   - <font color=red> direct update a stack </font>
+6. AWS CloudFormation provides 2 methods for <font color=OrangeRed> updating stacks </font>
+   - <font color=OrangeRed> direct update a stack </font>
      - submit changes
      - AWS CloudFormation immediately deploys them.
      - Use direct updates to quickly deploy the updates.
-   - creating and executing <font color=red> change sets </font>
+   - creating and executing <font color=OrangeRed> change sets </font>
      - preview the changes AWS CloudFormation will make to your stack
      - and then decide whether to apply those changes.
 
@@ -78,10 +78,10 @@ image:
 
 ### Template
 
-template is used to <font color=red> describe the endstate of the infrastructure either provisioning or changing </font>
+template is used to <font color=OrangeRed> describe the endstate of the infrastructure either provisioning or changing </font>
 1. after created, upload it to CloudFormation using S3
 2. CloudFormation reads the template and makes the API calls
-3. the resulting resources are called a <font color=red> Stack </font>
+3. the resulting resources are called a <font color=OrangeRed> Stack </font>
 
 CloudFormation template
 - create templates to launch, configure, and connect AWS resources
@@ -98,7 +98,7 @@ CloudFormation template
   - manage it by using version control, such as Gitor Subversion
   - Create, update and delete templates.
 
-- is the <font color=red> single source of truth </font> for cloud environment.
+- is the <font color=OrangeRed> single source of truth </font> for cloud environment.
   - Define an entire application stack (all the resources required for application) in a JSON  template file.
   - provides a common language to to model, describe and provision all the infrastructure resources and properties in the cloud environment.
   - model and provision in an automated and secure manner all the resources needed for your applications across all regions and accounts.
@@ -124,7 +124,7 @@ YAML or JSON
 - JavaScript Object Notation (JSON) / YAML-formatted templates.
 - Both YAML/JSON-formatted templates have the same structure, support all the same feature
 
-<font color=red> do not recommend </font>
+<font color=OrangeRed> do not recommend </font>
 - build all of an application's within one template
   - Resources should be grouped into templates
   - based on the ownership and the place in the application lifecycle.
@@ -197,14 +197,14 @@ Template elements:
 
 #### Stack
 
-1. <font color=red> A collection of resources </font> created by AWS cloudFormation templates
+1. <font color=OrangeRed> A collection of resources </font> created by AWS cloudFormation templates
    - All the resources in a stack are defined by the stack's `AWS CloudFormation template`.
      - Deployed resources based on templates.
      - Create, update and delete stacks using templates.
      - Deployed through the Management Console, CLI or APIs.
      - Tracked and reviewable in the AWS management console
 
-2. a collection of AWS resources that can <font color=red> manage as a single unit </font>
+2. a collection of AWS resources that can <font color=OrangeRed> manage as a single unit </font>
    - AWS CloudFormation treats the stack resources as a single unit
    - create, update, or delete a collection of resources by <font color=LightSlateBlue> creating, updating, or deleting stacks </font>
    - Example:
@@ -243,9 +243,9 @@ Template elements:
 
 #### Nested stacks
 
-1. Nested stacks are <font color=red> stacks created as part of other stacks </font>
+1. Nested stacks are <font color=OrangeRed> stacks created as part of other stacks </font>
 
-2. Use nested stacks <font color=red> to declare common components (best practice) </font>
+2. Use nested stacks <font color=OrangeRed> to declare common components (best practice) </font>
    - allow <font color=LightSlateBlue> re-use of CloudFormation code for common use cases </font>
      - such as standard configuration for load balancer, web server, application server, etc.
 
@@ -289,7 +289,7 @@ Resources:
 
 <img alt="pic" src="https://i.imgur.com/TU6BesT.png" width="200">
 
-The <font color=red> root stack </font>
+The <font color=OrangeRed> root stack </font>
 - the top-level stack to which all the nested stacks ultimately belong.
 - each nested stack has an immediate parent stack.
 - For the first level of nested stacks, the root stack is also the parent stack.
@@ -303,9 +303,9 @@ The <font color=red> root stack </font>
 
 1. <kbd>AWS Management Console</kbd> -> <kbd>AWS CloudFormation console</kbd> -> Select the <kbd>stack</kbd>
 2. Nested stacks display `NESTED` next to the stack name.
-3. <font color=red> To view the root stack of a nested stack </font>
+3. <font color=OrangeRed> To view the root stack of a nested stack </font>
    - <kbd>Overview tab</kbd>: click the stack name listed as `Root stack`.
-4. <font color=red> To view the nested stacks that belong to a root stack </font>
+4. <font color=OrangeRed> To view the nested stacks that belong to a root stack </font>
    - <kbd>AWS CloudFormation console</kbd> -> Click the name of the root stack whose nested stacks want to view.
    - Expand the <kbd>Resources</kbd> section.
    - Look for resources of type `AWS::CloudFormation::Stack`.
@@ -331,7 +331,7 @@ The <font color=red> root stack </font>
 
 AWS CloudFormation StackSets
 
-- extends the functionality of stacks by enabling <font color=red> create, update, or delete stacks across multiple accounts and regions with a single operation </font>
+- extends the functionality of stacks by enabling <font color=OrangeRed> create, update, or delete stacks across multiple accounts and regions with a single operation </font>
 
 - An administrator account
   - the AWS account in which you create stack sets.
@@ -1605,7 +1605,7 @@ The DependsOn attribute should be used when
 }
 ```
 
-- This creation policy is associated with <font color=red> the creation of an Auto Scaling group </font>
+- This creation policy is associated with <font color=OrangeRed> the creation of an Auto Scaling group </font>
   - <font color=LightSlateBlue> three successful signals within fifteen minutes are required or it will time out </font>
     - Set timeouts to give resources enough time to get up and running.
   - When the timeout period expires, or a failure signal is received,
@@ -1722,7 +1722,7 @@ For Resources and Features Not Directly Supported by AWS CloudFormation
   - include those resources by using custom resources,
   - which means that you can still manage all your related resources in a single stack.
   - Use the `AWS::CloudFormation::CustomResource` or `Custom::String` resource type to define custom resources in your templates.
-  - Custom resources require one property: <font color=red> the service token </font>
+  - Custom resources require one property: <font color=OrangeRed> the service token </font>
     - specifies where AWS CloudFormationsends requests to, such as an Amazon SNS topic.
   - Examples include
     - provisioning a third-party application subscription and passing the authentication key back to the EC2 instance that needs it.
@@ -1746,7 +1746,7 @@ cfnVerifier
 
 - user creates an AWS CloudFormation template by using a stack that has a `custom resource operation`.
   - This custom resource operation was defined by using `AWS::CloudFormation::CustomResource` or `Custom::CustomResource`.
-- The template includes a <font color=red> ServiceToken </font>
+- The template includes a <font color=OrangeRed> ServiceToken </font>
   - from the third-party resource provider
   - used for authentication.
 - The template also includes any provider-defined parameters required for the custom resource.

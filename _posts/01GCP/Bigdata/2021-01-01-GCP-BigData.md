@@ -45,10 +45,10 @@ image:
 
 - Apache Hadoop
   - an open source framework for big data.
-  - It is based on the <font color=red> MapReduce programming model </font> which Google invented and published.
-    - <font color=red> "Map function" </font>
+  - It is based on the <font color=OrangeRed> MapReduce programming model </font> which Google invented and published.
+    - <font color=OrangeRed> "Map function" </font>
       - runs in parallel with a massive dataset to produce intermediate results.
-    - <font color=red> "Reduce function" </font>
+    - <font color=OrangeRed> "Reduce function" </font>
       - builds a final result set based on all those intermediate results.
   - The term "Hadoop" is often used informally to encompass Apache Hadoop itself, and related projects such as Apache Spark, Apache Pig, and Apache Hive.
 
@@ -79,11 +79,11 @@ image:
 - simple, reliable, scalable foundation for stream analytics.
   - foundation for Dataflow streaming
 
-- <font color=red> Analyzing streaming data </font>
+- <font color=OrangeRed> Analyzing streaming data </font>
 
-- <font color=red> use for IoT applications </font>
+- <font color=OrangeRed> use for IoT applications </font>
 
-- <font color=red> decoupled systems </font> , and scale independently.
+- <font color=OrangeRed> decoupled systems </font> , and scale independently.
   - offers on-demand scalability to one million messages per second and beyond.
 
 - support many-to-many asynchronous messaging service.
@@ -132,12 +132,12 @@ image:
 - if data needs to run more in the way of exploring a vast sea of data.
   - instead of a dynamic pipeline
 
-- fully-managed, petabyte-scale, low-cost <font color=red> data analytics warehouse </font>
+- fully-managed, petabyte-scale, low-cost <font color=OrangeRed> data analytics warehouse </font>
   - no infrastructure to manage
   - no cluster maintencance is required
   - focus on analyze data to find meaningful insights by familiar SQL
 
-- do <font color=red> ad-hoc SQL queries on massive data set </font>
+- do <font color=OrangeRed> ad-hoc SQL queries on massive data set </font>
   - provide near real-time interactive analysis of massive datasets (hundreds of TBs) using SQL syntax (SQL 2011)
 
 - used by all types of organizations
@@ -164,7 +164,7 @@ image:
     - Just specify the EU location where you create your data set.
   - US and Asia locations are also available.
 
-- <font color=red> pay-as-you-go model </font>
+- <font color=OrangeRed> pay-as-you-go model </font>
   - separates storage and computation with a terabit network in between
   - pay for your data storage separately from queries.
   - pay for queries only when they are actually running.
@@ -194,24 +194,24 @@ image:
 > - requires a capital hardware investment.
 
 
-Running Hadoop jobs in <font color=red> Cloud Dataproc </font>
+Running Hadoop jobs in <font color=OrangeRed> Cloud Dataproc </font>
 
-- <font color=red> migrate on=permises Hadoop jobs to cloud </font>
+- <font color=OrangeRed> migrate on=permises Hadoop jobs to cloud </font>
   - a fast, easy, managed way to run and manage `Hadoop, MapReduce, Spark, Hive service, and Pig` on Google Cloud Platform.
 
-- Data mining and analysis in <font color=red> datasets of known size </font>
+- Data mining and analysis in <font color=OrangeRed> datasets of known size </font>
 
-- <font color=red> create clusters in 90 sec or less </font>
+- <font color=OrangeRed> create clusters in 90 sec or less </font>
   - just need to request a Hadoop cluster.
   - It will be built in 90 seconds or less
     - on top of Compute Engine virtual machines whose number and type you control.
 
-- <font color=red> Scale clusters even when jobs are running </font>
+- <font color=OrangeRed> Scale clusters even when jobs are running </font>
   - need more or less processing power while the cluster is running, scale it up or down.
   - use the default configuration for the Hadoop software in the cluster or customize it.
   - monitor the cluster using Stackdriver.
 
-- <font color=red> save money with preemptible Compute Engine instances </font>
+- <font color=OrangeRed> save money with preemptible Compute Engine instances </font>
   - <font color=LightSlateBlue> only pay for hardware resources used during the life of the cluster </font>
     - the costs of the Compute Engine instances isn't the only component of the cost of a Dataproc cluster, but it's a significant one.
     - Although the rate for pricing is based on the hour,
@@ -227,9 +227,9 @@ Running Hadoop jobs in <font color=red> Cloud Dataproc </font>
 
 
 Once the data is in a cluster,
-- use Spark and Spark SQL to do <font color=red> data mining </font>
+- use Spark and Spark SQL to do <font color=OrangeRed> data mining </font>
 
-- use MLib, Apache Spark's machine learning libraries to <font color=red> discover patterns through machine learning </font>
+- use MLib, Apache Spark's machine learning libraries to <font color=OrangeRed> discover patterns through machine learning </font>
 
 
 
@@ -285,7 +285,7 @@ pipelines
   - situations where disproportionately large chunks of your input get mapped to the same cluster.
 
 - use cases.
-  - a general purpose <font color=red> ETL (extract/transform/load) tool </font>
+  - a general purpose <font color=OrangeRed> ETL (extract/transform/load) tool </font>
   - a data analysis engine
     - batch computation or continuous computation using streaming.
     - handy in things like
@@ -294,7 +294,7 @@ pipelines
     - healthcare and logistics and click stream,
     - point of sale and segmentation analysis in retail.
 
-  - <font color=red> orchestration </font>
+  - <font color=OrangeRed> orchestration </font>
     - create pipeline that coordinates multiple services even external services.
     - can be used in real time applications such as personalizing gaming user experiences.
 

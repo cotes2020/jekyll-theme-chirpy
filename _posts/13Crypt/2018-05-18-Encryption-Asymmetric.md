@@ -49,7 +49,7 @@ image:
 
 ## major advantage
 
-- <font color=red> Key distribution </font> is a simple process
+- <font color=OrangeRed> Key distribution </font> is a simple process
   - The addition of new users requires the generation of only one public-private keypair.
     - makes the algorithm extremely scalable.
     - Users who want to participate in the system simply make their public key available to anyone with whom they want to communicate.
@@ -57,30 +57,30 @@ image:
   - Users can be removed far more easily from asymmetric systems.
     - Asymmetric cryptosystems provide a key revocation mechanism that allows a key to be canceled, effectively removing a user from the system.
 
-- <font color=red> Key regeneration </font>
+- <font color=OrangeRed> Key regeneration </font>
   - required only when a user’s private key is compromised.
   - If a user leaves the community, the system administrator simply needs to invalidate that user’s keys.
   - No other keys are compromised, therefore key regeneration is not required for any other user.
 
-- <font color=red> provide integrity, authentication, and nonrepudiation </font>
+- <font color=OrangeRed> provide integrity, authentication, and nonrepudiation </font>
   - If a user does not share their private key with other individuals, a message signed by that user can be shown to be accurate and from a specific source and cannot be later repudiated.
 
-- <font color=red> No preexisting communication link needs to exist </font>
+- <font color=OrangeRed> No preexisting communication link needs to exist </font>
   - individuals can begin communicating securely from the moment they start communicating.
   - does not require a preexisting relationship to provide a secure mechanism for data exchange.
 
 
 ## disadvantage:
-- very strong, but very <font color=red> resource intensive </font>
+- very strong, but very <font color=OrangeRed> resource intensive </font>
   - takes a significant amount of processing power to encrypt and decrypt data,
   - especially when compared with symmetric encryption.
 
 
-- higher security but <font color=red> slower </font>
+- higher security but <font color=OrangeRed> slower </font>
   - not for large quantities of real-time data.
   - might be used to encrypt a small chunk of data.
 
-- Most cryptographic protocols use asymmetric encryption only for <font color=red> key exchange </font>
+- Most cryptographic protocols use asymmetric encryption only for <font color=OrangeRed> key exchange </font>
   - secure transmission of large amounts of data use <font color=LightSlateBlue> public key cryptography to establish a connection and then exchange a symmetric secret key </font>
   - The remainder of the session then uses symmetric cryptography.
   - Key exchange:
@@ -147,12 +147,12 @@ Diffie-Hellman methods
 - support both static keys and ephemeral keys.
   - RSA is based on the Diffie-Hellman key exchange concepts using static keys.
 - Diffie-Hellman methods that use ephemeral keys are:
-  - <font color=red> Diffie-Hellman Ephemeral (DHE) </font>
+  - <font color=OrangeRed> Diffie-Hellman Ephemeral (DHE) </font>
     - uses ephemeral keys, generating different keys for each session.
     - Some documents list this as Ephemeral Diffie-Hellman (EDH).
-  - <font color=red> Elliptic Curve Diffie-Hellman Ephemeral (ECDHE) </font>
+  - <font color=OrangeRed> Elliptic Curve Diffie-Hellman Ephemeral (ECDHE) </font>
     - uses ephemeral keys generated using ECC.
-  - <font color=red> Elliptic Curve Diffie-Hellman (ECDH) </font>
+  - <font color=OrangeRed> Elliptic Curve Diffie-Hellman (ECDH) </font>
     - uses static keys.
 
 When Diffie-Hellman is used, the two parties negotiate the strongest group that both parties support.
@@ -182,7 +182,7 @@ RSA algorithm:
     - PKI uses <font color=LightSlateBlue> digital certificates and a certificate authority (CA) </font> to allow secure communication across a public network.
     - But ECDH better in PKI for key agreement.
 
-- based on <font color=red> factoring 2 larger primes </font>
+- based on <font color=OrangeRed> factoring 2 larger primes </font>
   - the computational difficulty inherent in factoring large prime numbers.
   - uses the mathematical properties of prime numbers to generate secure public and private keys.
   - it is difficult to factor the product of two large prime numbers.

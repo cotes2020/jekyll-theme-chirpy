@@ -150,14 +150,14 @@ total order relation
 - **Transitive property**: if k1 ≤ k2 and k2 ≤ k3, then k1 ≤ k3.
 
 
-Method | Unsorted List | Sorted List
----|---|---
-size | O(1) | O(1)
-isEmpty | O(1) | O(1)
-insert | O(1) | O(n)
-min | O(n) | O(1)
-removeMin | O(n) | O(1)
-space requirement | O(n) |
+| Method            | Unsorted List | Sorted List |
+| ----------------- | ------------- | ----------- |
+| size              | O(1)          | O(1)        |
+| isEmpty           | O(1)          | O(1)        |
+| insert            | O(1)          | O(n)        |
+| min               | O(n)          | O(1)        |
+| removeMin         | O(n)          | O(1)        |
+| space requirement | O(n)          |
 
 ---
 
@@ -546,7 +546,7 @@ two strategies for implementing a priority queue ADT demonstrate an trade-off.
 take advantage of the logarithmic nature of the binary tree
 - In order to guarantee logarithmic performance, we must keep our tree balanced.
 - A balanced binary tree has roughly the same number of nodes in the left and right subtrees of the root.
-- keep the tree balanced by creating a <font color=red> complete binary tree </font>.
+- keep the tree balanced by creating a <font color=OrangeRed> complete binary tree </font>.
   - A complete binary tree is a tree in which each level has all of its nodes.
   - The exception to this is the bottom level of the tree, which we fill in from left to right.
 
@@ -554,8 +554,8 @@ take advantage of the logarithmic nature of the binary tree
 
 
 - The binary heap has two common variations:
-  - min heap, the <font color=red> smallest key is always at the front </font>,
-  - max heap, the <font color=red> largest key value is always at the front </font>.
+  - min heap, the <font color=OrangeRed> smallest key is always at the front </font>,
+  - max heap, the <font color=OrangeRed> largest key value is always at the front </font>.
 
 
 
@@ -1379,7 +1379,7 @@ The algorithm works correctly for any priority queue P, no matter how P is imple
   - takes `O(n)` time, insert each element in O(1) time.
 - in Phase 2 we repeatedly `remove the minimal element from P` using the **removeMin** method.
   - the running time of each **removeMin** operation is proportional to the size of P.
-    - the bottleneck computation is the <font color=red> repeated “selection” of the minimum element in Phase 2. </font>
+    - the bottleneck computation is the <font color=OrangeRed> repeated “selection” of the minimum element in Phase 2. </font>
     - For this reason, this algorithm is better known as **selection-sort**
     - the bottleneck is in Phase 2: `repeatedly remove an entry with smallest key from the priority queue P`.
       - The size of P starts at n and incrementally decreases with each removeMin until it becomes 0.
@@ -1402,7 +1402,7 @@ The algorithm works correctly for any priority queue P, no matter how P is imple
 - Unfortunately, Phase 1 now becomes the bottleneck for the running time,
   - in the worst case, each insert operation takes time proportional to the size of P.
   - This sorting algorithm is therefore better known as **insertion-sort**
-  - for the bottleneck in this sorting algorithm involves the <font color=red> repeated “insertion” of a new element at the appropriate position in a sorted list </font>.
+  - for the bottleneck in this sorting algorithm involves the <font color=OrangeRed> repeated “insertion” of a new element at the appropriate position in a sorted list </font>.
 
 
 - In Phase 1, we repeatedly remove the first element of S and insert it into P.

@@ -740,7 +740,7 @@ emaple of token based authentication strategies
   - 典型场景为企业内部Web系统集成单点登录，典型的有CAS。
 
 
-<font color=red> OAuth 解决了代理授权的问题，但是它没有提供一个认证用户身份的标准方法 </font>
+<font color=OrangeRed> OAuth 解决了代理授权的问题，但是它没有提供一个认证用户身份的标准方法 </font>
 - OAuth 2.0 用于**授权**
 - OpenID Connect 用于**认证**
 
@@ -891,7 +891,7 @@ The cons:
 - 一个用于代理授权的标准协议。
   - 允许应用程序在不提供用户密码的情况下访问该用户的数据。
 
-- 一种 <font color=red> 授权机制 </font>
+- 一种 <font color=OrangeRed> 授权机制 </font>
 
 - **数据的所有者**告诉系统，同意**授权第三方应用**进入系统，获取这些数据。
   - allow users to share their private resources to a third party
@@ -910,7 +910,7 @@ The cons:
 
 
 **OAuth 2.0**
-- OAuth 2.0是用于授权的 <font color=red> 行业标准协议 </font>。
+- OAuth 2.0是用于授权的 <font color=OrangeRed> 行业标准协议 </font>。
 - OAuth 2.0致力于
   - 简化客户端开发人员的工作
   - 同时为Web应用程序，桌面应用程序，移动电话和客厅设备提供特定的授权流程。
@@ -1110,7 +1110,7 @@ Content-type: application/json; charset=utf-8
 
 ##### 授权码 `AUTHORIZATION_CODE` -> response_type=code
 
-<font color=red>第三方应用先申请一个授权码，然后再用该码获取令牌</font>
+<font color=OrangeRed>第三方应用先申请一个授权码，然后再用该码获取令牌</font>
 
 ![Screen Shot 2022-07-10 at 02.19.09](https://i.imgur.com/6GVVn55.png)
 
@@ -1924,7 +1924,7 @@ OpenID vs OpenID Connect
 
 ### OpenID Connect(OIDC) 协议
 
-<font color=red> OAuth2与资源访问和共享有关，而OIDC与用户身份验证有关。 </font>
+<font color=OrangeRed> OAuth2与资源访问和共享有关，而OIDC与用户身份验证有关。 </font>
 
 OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It allows Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
 
@@ -1947,7 +1947,7 @@ OIDC在2014年发行。虽然它不是第一个idp标准，但从可用性、简
   - OAuth2.0 使用 `Access Token` 来授权三方应用访问受保护的信息。
 
 - OIDC
-  - <font color=red> OIDC 对 OAuth2.0 进行协议进行了扩展 </font>
+  - <font color=OrangeRed> OIDC 对 OAuth2.0 进行协议进行了扩展 </font>
     - OIDC 遵循 oAuth2.0 协议流程，并在这个基础上提供了id token来解决三方应用的用户**身份认证**问题。
 
 ---

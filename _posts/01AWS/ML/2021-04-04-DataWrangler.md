@@ -186,7 +186,7 @@ In the data flow section, you’ll notice that the only steps in the data flow a
 
 #### Prepare and Visualize
 
-- Data Wrangler has built-in <font color=red> transformations and visualizations </font>
+- Data Wrangler has built-in <font color=OrangeRed> transformations and visualizations </font>
   - use to analyze, clean, and transform the data.
 - In the **Prepare** tab, all built-in transformations are listed in the right panel, which also contains an area in which can add custom transformations.
 

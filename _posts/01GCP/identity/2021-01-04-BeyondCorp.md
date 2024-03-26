@@ -76,21 +76,21 @@ change security posture
   - define and enforce access policies based on user identity, device health, and other contextual factors
   - and make apps more accessible and responsive through Google's global network.
 
-- <font color=red> Scalable, reliable foundation </font>
+- <font color=OrangeRed> Scalable, reliable foundation </font>
   - <font color=LightSlateBlue> Rely on Google Cloud’s global infrastructure </font>
   - Built on the backbone of Google’s planet-scale network and infrastructure
     - Benefit from the scale, reliability, and security of Google's network
     - with 144 edge locations in over 200 countries and territories.
   - provide a seamless and secure experience with integrated DDoS protection, low-latency connections, and elastic scaling.
 
-- <font color=red> Identity and context-aware access control </font>
+- <font color=OrangeRed> Identity and context-aware access control </font>
   - Provide secure access to critical apps and services
   - Easily configure policies based on user identity, device health, and other contextual factors to enforce granular access controls to applications, VMs, and Google APIs.
   - Implement strong authentication and authorization policies to ensure users have access to the resources they need.
   - Richer access controls protect access to secure systems (applications, virtual machines, APIs, and so on) by using the context of an end-user's request to ensure each request is authenticated, authorized, and as safe as possible.
 
 
-- Safeguard the information with <font color=red> integrated threat and data protection </font>
+- Safeguard the information with <font color=OrangeRed> integrated threat and data protection </font>
   - <font color=LightSlateBlue> Continuous end-to-end protection </font>
   - A layered approach to security across users, access, data, and applications
   - Prevent data loss, malware infections, fraud and thwart threats with real-time alerts and detailed reports,
@@ -104,13 +104,13 @@ change security posture
     - End-to-end security from user to app and app to app (including microsegmentation) inspired by the BeyondProd architecture.
     - Automated public trust SSL certificate lifecycle management for internet-facing BeyondCorp endpoints powered by Google Trust Services.
 
-- Simplify the experience for admins and end-user with an <font color=red> agentless approach </font>
+- Simplify the experience for admins and end-user with an <font color=OrangeRed> agentless approach </font>
   - Easy adoption with our agentless approach
   - non-disruptive overlay to the existing architecture,
   - no need to install additional agents, agentless support delivered through the Chrome Browser,
   - seamless, familiar, easy-to-use experience.
 
-- <font color=red> Open and extensible ecosystem </font>
+- <font color=OrangeRed> Open and extensible ecosystem </font>
   - Integrates posture information and signals from leading security vendors, for extra protection.
   - Support the environment: cloud, on-premises, or hybrid
   - Access SaaS apps, web apps, and cloud resources whether they are hosted on Google Cloud, on other clouds, or on-premises.
@@ -126,16 +126,16 @@ change security posture
 
 ### Guiding Principles of BeyondCorp
 
-1. <font color=red> Perimeterless Design </font>
+1. <font color=OrangeRed> Perimeterless Design </font>
    - Connecting from a particular network must not determine which services you can access.
    - Access to services must not be determined by the network from which you connect
 
 
-2. <font color=red> Context-Aware </font>
+2. <font color=OrangeRed> Context-Aware </font>
    - Access to services is granted based on what we know about you and your device.
    - Access to services is granted based on contextual factors from the user and their device
 
-3. <font color=red> Dynamic Access Controls </font>
+3. <font color=OrangeRed> Dynamic Access Controls </font>
    - All access to services must be authenticated, authorized and encrypted.
 
 
@@ -219,13 +219,13 @@ BeyondCorp Enterprise offers common signals enterprises can take into account wh
 BeyondCorp Enterprise
 - Based on the BeyondCorp security model
 - an approach that utilizes a variety of Google Cloud offerings
-- to enforce granular access control <font color=red> based on a user's identity and context of the request </font>
+- to enforce granular access control <font color=OrangeRed> based on a user's identity and context of the request </font>
 
 Example
 - depending on the policy configuration, your sensitive app/resource can:
-  - Grant access to all employees <font color=red> if they're using a trusted corporate device from your corporate network </font>
-  - Grant access to employees in the Remote Access group <font color=red> if they're using a trusted corporate device with a secure password and up-to-date patch level, from any network </font>
-  - Grant administrators access to the Google Cloud Console (via UI or API) <font color=red> only if they are coming from a corporate network </font>
+  - Grant access to all employees <font color=OrangeRed> if they're using a trusted corporate device from your corporate network </font>
+  - Grant access to employees in the Remote Access group <font color=OrangeRed> if they're using a trusted corporate device with a secure password and up-to-date patch level, from any network </font>
+  - Grant administrators access to the Google Cloud Console (via UI or API) <font color=OrangeRed> only if they are coming from a corporate network </font>
   - Grant developers SSH access to virtual machines.
 
 
@@ -272,7 +272,7 @@ Implementing BeyondCorp Enterprise enacts a zero trust model.
 
 
 BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
-- <font color=red> Endpoint Verification </font>
+- <font color=OrangeRed> Endpoint Verification </font>
   - A Google Chrome extension
     - <font color=LightSlateBlue> collects user device details </font>
       - including encryption status, OS, and user details.
@@ -285,7 +285,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
 
 ![Screen Shot 2021-02-15 at 15.18.56](https://i.imgur.com/uJdAtls.png)
 
-- <font color=red> Access Context Manager </font>
+- <font color=OrangeRed> Access Context Manager </font>
   - A rules engine
   - enables fine-grained access control.
   - Through Access Context Manager, access levels are created
@@ -307,7 +307,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
 
 ![0_zRpXauT263IHpz3Z](https://i.imgur.com/2kuM5jt.png)
 
-- <font color=red> Identity-Aware Proxy (IAP) </font>
+- <font color=OrangeRed> Identity-Aware Proxy (IAP) </font>
   - A service
     - the base of BeyondCorp Enterprise
     - IAP ties everything together
@@ -325,7 +325,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
 
 
 
-- <font color=red> Identity and Access Management (IAM) </font>
+- <font color=OrangeRed> Identity and Access Management (IAM) </font>
   - The identity management and authorization service for Google Cloud.
   - define and enforce conditional, attribute-based access control for Google Cloud resources.
   - With IAM Conditions
@@ -444,7 +444,7 @@ Use the investigation tool to examine security issues
 
 ### Secure the apps and resources with IAP
 
-IAP establishes a <font color=red> central identity awareness layer </font> for apps and resources accessed by HTTPS and TCP.
+IAP establishes a <font color=OrangeRed> central identity awareness layer </font> for apps and resources accessed by HTTPS and TCP.
 - can control access on each individual app and resource instead of using network-level firewalls.
 
 Secure the Google Cloud app and all its resources by selecting one of the following guides:

@@ -21,17 +21,17 @@ image:
 
 ![Pasted Graphic](https://i.imgur.com/XJAk8xl.jpg)
 
-- Designed to <font color=red> actively protect </font> the environment from threats.
+- Designed to <font color=OrangeRed> actively protect </font> the environment from threats.
 
-- intelligent <font color=red> threat detection service </font>
+- intelligent <font color=OrangeRed> threat detection service </font>
 
-- continuously <font color=red> analyzes and monitor events </font> across the accounts, protect the accounts and workloads.
+- continuously <font color=OrangeRed> analyzes and monitor events </font> across the accounts, protect the accounts and workloads.
   - such as
     - information about AWS user and API activity in accounts from CloudTrail,
     - network traffic data from Amazon VPC Flow Logs,
     - name query patterns from DNS logs.
 
-- <font color=red> monitors environment for malicious / unauthorized activiaty </font>
+- <font color=OrangeRed> monitors environment for malicious / unauthorized activiaty </font>
   - activities that can associated with account / instance compromise, and malicious reconnaissance.
   - such as
     - unusual API calls or potentially unauthorized deployments that indicate a possible account compromise.
@@ -112,7 +112,7 @@ Term
 - AWS console > GuardDuty > enable GuardDuty.
 - When enable GuardDuty
   - you give it permission to set up the appropriate service-linked roles and to analyze your logs.
-- A <font color=red> service-linked role </font> is a unique type of IAM role
+- A <font color=OrangeRed> service-linked role </font> is a unique type of IAM role
   - Is linked directly to an AWS service
   - Service-linked roles are predefined by the service
   - defines how you create, modify, and delete a service-linked role.

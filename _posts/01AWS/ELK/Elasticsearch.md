@@ -449,7 +449,7 @@ Some community plugins are installed the same way as core plugins but require ad
 
 ## Logstash Configuration
 
-- Events aggregated and processed by Logstash go through three stages: <font color=red> collection, processing, and dispatching </font>.
+- Events aggregated and processed by Logstash go through three stages: <font color=OrangeRed> collection, processing, and dispatching </font>.
 
 - Which data is collected, how it is processed and where it is sent to, is defined in a Logstash configuration file that defines the pipeline.
 

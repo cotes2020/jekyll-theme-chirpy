@@ -292,7 +292,7 @@ properties:
 
 ### 1. 修改 instance profile 和加裝 ssm agent
 
-An <font color=red> instance profile </font>
+An <font color=OrangeRed> instance profile </font>
 - a container that passes IAM role information to an EC2 instance at launch.
 - This requirement applies to permissions for all AWS Systems Manager capabilities, not only those specific to Session Manager.
 - can attach an IAM instance profile to an EC2 instance as launch it or to a previously launched instance.
@@ -471,7 +471,7 @@ AWS 上面新版的 ubuntu & amazon linux2 都有先裝好了，不過舊的 AMI
 
 ### 3: Control user session access to instances
 
-Session Manager allows <font color=red> centrally grant and revoke user access to instances </font>
+Session Manager allows <font color=OrangeRed> centrally grant and revoke user access to instances </font>
 - Using IAM policies, control which instances specific users or groups can connect to,
 - and you control what Session Manager API actions they can perform on the instances they are given access to.
 

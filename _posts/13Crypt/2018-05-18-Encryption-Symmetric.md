@@ -281,7 +281,7 @@ U.S. National Institute for Standards and Technology (NIST)
 - November 2001, NIST released FIPS 197, which mandated the use of AES/Rijndael for the encryption of all sensitive but unclassified data by the US government.
 
 
-- a <font color=red> strong symmetric block cipher </font>
+- a <font color=OrangeRed> strong symmetric block cipher </font>
   - Same key
   - typically considered the preferred symmetric encryption algorithm.
   - Exhaustive search attack not currently possible
@@ -290,7 +290,7 @@ U.S. National Institute for Standards and Technology (NIST)
   - many applications that encrypt data on USB drives use AES.
 
 
-- <font color=red> encrypts data in 128-bit blocks </font>
+- <font color=OrangeRed> encrypts data in 128-bit blocks </font>
   - several possible AES key sizes:
     - 128-bit keys require 10 rounds of encryption.
     - 192-bit keys require 12 rounds of encryption.

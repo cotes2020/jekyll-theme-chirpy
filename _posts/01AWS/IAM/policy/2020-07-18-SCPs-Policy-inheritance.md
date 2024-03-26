@@ -16,11 +16,11 @@ image:
 
 attach policies to organization entities (organization root, organizational unit (OU), or account) in your organization:
 
-- attach a policy to the <font color=red> organization root </font>
+- attach a policy to the <font color=OrangeRed> organization root </font>
   - <font color=LightSlateBlue> all OUs and accounts </font> in the organization inherit that policy.
-- attach a policy to a <font color=red> specific OU </font>
+- attach a policy to a <font color=OrangeRed> specific OU </font>
   - <font color=LightSlateBlue> accounts or child OU </font> that are directly under that OU inherit the policy.
-- attach a policy to a <font color=red> specific account </font>
+- attach a policy to a <font color=OrangeRed> specific account </font>
   - it affects <font color=LightSlateBlue> only that account </font>
 
 Because you can attach policies to multiple levels in the organization, accounts can inherit multiple policies.
@@ -85,7 +85,7 @@ Exactly how policies affect the OUs and accounts that inherit them depends on th
 
 ### service control policies (SCPs) with IAM permission policies
 
-<font color=red> Users and roles in accounts must still be granted permissions using AWS IAM permission policies attached </font>
+<font color=OrangeRed> Users and roles in accounts must still be granted permissions using AWS IAM permission policies attached </font>
 
 - The SCPs
   - only determine what permissions are **_available_** to be granted by such policies.
@@ -96,10 +96,10 @@ Exactly how policies affect the OUs and accounts that inherit them depends on th
 When you attach SCPs to the organization root, OUs, or directly to accounts
 - all policies that affect a given account are evaluated together using the same rules that govern IAM permission policies:
 
-  * Any action that <font color=red> isn't explicitly allowed by an SCP is implicitly denied </font> and can't be delegated to users or roles in the affected accounts.
+  * Any action that <font color=OrangeRed> isn't explicitly allowed by an SCP is implicitly denied </font> and can't be delegated to users or roles in the affected accounts.
 
   * Users and roles in affected accounts can't perform any actions that are listed in the SCP's `Deny` statement.
-    * An <font color=red> explicit Deny </font> overrides <font color=red> any Allow that other SCPs might grant </font>
+    * An <font color=OrangeRed> explicit Deny </font> overrides <font color=OrangeRed> any Allow that other SCPs might grant </font>
 
   * Any action that has an explicit `Allow` in an SCP can be delegated to users and roles in the affected accounts.
     * such as the default "\*" SCP or by any other SCP that calls out a specific service or action
@@ -145,7 +145,7 @@ see list of policies applied to an account and where that policy comes from.
       * overrides the default implicit deny
       * explicitly allows all permissions from the root to every account
       * unless explicitly deny a permission with an additional SCP created and attached to the appropriate OU or account.
-    * This strategy works because an <font color=red> explicit deny in a policy always overrides allow </font>
+    * This strategy works because an <font color=OrangeRed> explicit deny in a policy always overrides allow </font>
     * No account below the level of the OU with the deny policy can use the denied API
     * and there is no way to add the permission back lower in the hierarchy.
 
@@ -154,4 +154,4 @@ see list of policies applied to an account and where that policy comes from.
     * no APIs are permitted anywhere unless you explicitly allow them.
     * To allow a service API to operate in an AWS account, you must create your own SCPs and attach them to the account and every OU above it, up to and including the root.
     * Every SCP in the hierarchy, starting at the root, must explicitly allow the APIs to be usable in the OUs and accounts below it.
-    * This strategy works because an <font color=red> explicit allow in an SCP overrides an implicit 暗示的 deny </font>
+    * This strategy works because an <font color=OrangeRed> explicit allow in an SCP overrides an implicit 暗示的 deny </font>

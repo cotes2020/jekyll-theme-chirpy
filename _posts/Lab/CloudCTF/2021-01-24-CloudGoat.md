@@ -101,13 +101,13 @@ $ docker run -it -v ~/.aws:/root/.aws/ rhinosecuritylabs/cloudgoat:latest
 
 ### Scenarios 1: iam_privesc_by_rollback (Small / Easy)
 
-| ++             | ++                                                                                                                                                                                                                                                                           |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Scenario Goal  | Acquire full admin privileges.                                                                                                                                                                                                                                               |
-| Size           | Small                                                                                                                                                                                                                                                                        |
-| Difficulty     | Easy                                                                                                                                                                                                                                                                         |
-| Command        | `$ ./cloudgoat.py create iam_privesc_by_rollback`                                                                                                                                                                                                                            |
-| lesson learned | <font color=red> iam:SetDefaultPolicyVersion </font> can lead to serious security issues, user can roll-back to any version, If any of these versions have additional permissions, then it is a privilege escalation and the severity depends on the additional permissions. |
+| ++             | ++                                                                                                                                                                                                                                                                                 |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scenario Goal  | Acquire full admin privileges.                                                                                                                                                                                                                                                     |
+| Size           | Small                                                                                                                                                                                                                                                                              |
+| Difficulty     | Easy                                                                                                                                                                                                                                                                               |
+| Command        | `$ ./cloudgoat.py create iam_privesc_by_rollback`                                                                                                                                                                                                                                  |
+| lesson learned | <font color=OrangeRed> iam:SetDefaultPolicyVersion </font> can lead to serious security issues, user can roll-back to any version, If any of these versions have additional permissions, then it is a privilege escalation and the severity depends on the additional permissions. |
 
 
 ![68747](https://i.imgur.com/8MZEA2V.png)
@@ -208,13 +208,13 @@ python3 cloudgoat.py destroy iam_privesc_by_rollback
 
 ### Scenarios 2: lambda_privesc (Small / Easy)
 
-| ++             | ++                                                                                                                                                                                                                                                                                                |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Scenario Goal  | Acquire full admin privileges.                                                                                                                                                                                                                                                                    |
-| Size           | Small                                                                                                                                                                                                                                                                                             |
-| Difficulty     | Easy                                                                                                                                                                                                                                                                                              |
-| Command        | `$ ./cloudgoat.py create lambda_privesc`                                                                                                                                                                                                                                                          |
-| lesson learned | <font color=red> sts:AssumeRole + Lambda:* </font> able to change the assume role policy document of any existing role to allow them to assume that role. It returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to. |
+| ++             | ++                                                                                                                                                                                                                                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scenario Goal  | Acquire full admin privileges.                                                                                                                                                                                                                                                                          |
+| Size           | Small                                                                                                                                                                                                                                                                                                   |
+| Difficulty     | Easy                                                                                                                                                                                                                                                                                                    |
+| Command        | `$ ./cloudgoat.py create lambda_privesc`                                                                                                                                                                                                                                                                |
+| lesson learned | <font color=OrangeRed> sts:AssumeRole + Lambda:* </font> able to change the assume role policy document of any existing role to allow them to assume that role. It returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to. |
 
 
 ![68747470733a2f2f6170702e6c7563696463686172742e636f6d2f7075626c69635365676d656e74732f766965772f66316237613734392d646565302d343634352d623330352d6164643261303235623963632f696d6167652e706e67](https://i.imgur.com/iam6d77.png)
@@ -419,13 +419,13 @@ aws iam list-attached-user-policies \
 
 ### Scenarios 3: cloud_breach_s3 (Small / Moderate)
 
-| ++             | ++                                                                                                                                                      |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Scenario Goal  | Acquire full admin privileges.                                                                                                                          |
-| Size           | Small                                                                                                                                                   |
-| Difficulty     | Easy                                                                                                                                                    |
-| Command        | `$ ./cloudgoat.py create cloud_breach_s3`                                                                                                               |
-| lesson learned | <font color=red> misconfigured reverse-proxy server </font>  `curl https://$EC2IP/latest/meta-data/iam/security-credentials -H ‘Host: 169.254.169.254’` |
+| ++             | ++                                                                                                                                                            |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scenario Goal  | Acquire full admin privileges.                                                                                                                                |
+| Size           | Small                                                                                                                                                         |
+| Difficulty     | Easy                                                                                                                                                          |
+| Command        | `$ ./cloudgoat.py create cloud_breach_s3`                                                                                                                     |
+| lesson learned | <font color=OrangeRed> misconfigured reverse-proxy server </font>  `curl https://$EC2IP/latest/meta-data/iam/security-credentials -H ‘Host: 169.254.169.254’` |
 
 
 > Introduction
@@ -549,7 +549,7 @@ head cardholder_data_primary.csv
 IMDSv1
 - has been widely exploited using web application vulnerabilities in web applications running on EC2 to gain access to IAM credentials.
 - such as Server Side Request Forgery (SSRF), Command Injection etc
-- AWS released an update to <font color=red> EC2 instance metadata service </font> for querying instance metadata values.
+- AWS released an update to <font color=OrangeRed> EC2 instance metadata service </font> for querying instance metadata values.
 
 IMDSv2
 - a defence in depth
@@ -606,13 +606,13 @@ curl -s https://$EC2IP/latest/meta-data/local-ipv4 \
 ### Scenarios 4: iam_privesc_by_attachment (Medium / Moderate)
 
 
-| ++             | ++                                                                                  |
-| -------------- | ----------------------------------------------------------------------------------- |
-| Scenario Goal  | deleting the `cg-super-critical-security-server`                                    |
-| Size           | Medium                                                                              |
-| Difficulty     | Moderate                                                                            |
-| Command        | `$ ./cloudgoat.py create iam_privesc_by_attachment`                                 |
-| lesson learned | <font color=red> check role, create ec2, swap role, terminate other service </font> |
+| ++             | ++                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| Scenario Goal  | deleting the `cg-super-critical-security-server`                                          |
+| Size           | Medium                                                                                    |
+| Difficulty     | Moderate                                                                                  |
+| Command        | `$ ./cloudgoat.py create iam_privesc_by_attachment`                                       |
+| lesson learned | <font color=OrangeRed> check role, create ec2, swap role, terminate other service </font> |
 
 
 Starting with a very limited set of permissions
@@ -721,13 +721,13 @@ aws ec2 terminate-instances \
 ### Scenarios 5: ec2_ssrf (Medium / Moderate)
 
 
-| ++             | ++                                                                                                                                                                                                                                     |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Scenario Goal  | Invoke the `cg-lambda-[ CloudGoat ID ]` Lambda function                                                                                                                                                                                |
-| Size           | Medium                                                                                                                                                                                                                                 |
-| Difficulty     | Moderate                                                                                                                                                                                                                               |
-| Command        | `$ ./cloudgoat.py create ec2_ssrf`                                                                                                                                                                                                     |
-| lesson learned | <font color=red> found credentials in the environment variables for a Lambda Function > discovered an EC2 instance hosting a website > exploiting the web application, gain credentials by querying the internal metadata API. </font> |
+| ++             | ++                                                                                                                                                                                                                                           |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scenario Goal  | Invoke the `cg-lambda-[ CloudGoat ID ]` Lambda function                                                                                                                                                                                      |
+| Size           | Medium                                                                                                                                                                                                                                       |
+| Difficulty     | Moderate                                                                                                                                                                                                                                     |
+| Command        | `$ ./cloudgoat.py create ec2_ssrf`                                                                                                                                                                                                           |
+| lesson learned | <font color=OrangeRed> found credentials in the environment variables for a Lambda Function > discovered an EC2 instance hosting a website > exploiting the web application, gain credentials by querying the internal metadata API. </font> |
 
 
 Starting as the IAM user Solus
@@ -837,11 +837,11 @@ cat out.txt
 | Command       | `$ ./cloudgoat.py create rce_web_app`                 |
 
 lesson learned:
-1. Access to the <font color=red> elastic load balancer log files </font>
+1. Access to the <font color=OrangeRed> elastic load balancer log files </font>
    - which led to the secret URL. (should be restricted to a need-to-know basis)
 2. Remote code execution vulnerability on the web application
    - which allowed to run commands on the EC2 Instance as root granting us access to sensitive information.
-3. Access to the <font color=red> user data in the EC2 instance </font>
+3. Access to the <font color=OrangeRed> user data in the EC2 instance </font>
    - which granted us access to the RDS Instance.
 4. weak credential manage
    - SSH keys were stored in an S3 bucket and used to gain access to the EC2 instance.

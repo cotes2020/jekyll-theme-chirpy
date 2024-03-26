@@ -41,7 +41,7 @@ In recent years, there is a tendency to move some business logic to the client s
 
 
 **API** (Application Programming Interface)
-- web API generally refers to <font color=red> both sides of computer systems communicating over a network</font>:
+- web API generally refers to <font color=OrangeRed> both sides of computer systems communicating over a network</font>:
   - the `API services` offered by a server
   - and the `API` offered by the client such as a web browser.
 - a set of routines, protocols and tools for building software applications.
@@ -70,9 +70,9 @@ The **server-side portion of the web API** is a `programmatic interface to a def
 
 **SOAP** provides the following advantages when compared to REST:
 - Language, platform, and transport independent
-  - <font color=red> (REST requires use of HTTP) </font>
+  - <font color=OrangeRed> (REST requires use of HTTP) </font>
 - Works well in distributed enterprise environments
-  - <font color=red> (REST assumes direct point-to-point communication) </font>
+  - <font color=OrangeRed> (REST assumes direct point-to-point communication) </font>
 - Standardized
 - Provides significant pre-build extensibility in the form of the `WS* standards`
 - Built-in error handling

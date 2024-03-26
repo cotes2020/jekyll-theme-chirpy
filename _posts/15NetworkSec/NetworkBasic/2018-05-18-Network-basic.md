@@ -571,7 +571,7 @@ UDP is a good for applications need maximize bandwidth and do not require acknow
      - 然后将以太网数据帧通过物理层传输给接收端。
      - 发送处理中的 FCS 由硬件计算， 添加到包的最后。
      - 设置 FCS 的目的是为了判断数据包是否由于噪声而被破坏。
-2. <font color=red> 接收数据包 </font>
+2. <font color=OrangeRed> 接收数据包 </font>
    - 包的接收流程是发送流程的反向过程。
    - <font color=LightSlateBlue> 网络接口处理 </font>
      - 收到以太网包后，首先查看头部信息的目的 <font color=LightSlateBlue> MAC 地址是否是发给自己的包 </font>

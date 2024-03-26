@@ -27,9 +27,9 @@ image:
 - verify users’ identities prior to issuing digital certificates.
   - providing certificates to users, requires server, CAs can become overloaded and need assistance.
 - operates as an intermediary in the process:
-  - <font color=red> distribute keys </font>
-  - <font color=red> accept registrations for a digital certificate for CA </font>
-  - <font color=red> register, authenticate and validate identities, allowing CAs to remotely validate user identities </font>
+  - <font color=OrangeRed> distribute keys </font>
+  - <font color=OrangeRed> accept registrations for a digital certificate for CA </font>
+  - <font color=OrangeRed> register, authenticate and validate identities, allowing CAs to remotely validate user identities </font>
     - require proof of identity from the individual requesting a certificate
     - validate this information
     - then advise the CA to generate a certificate
@@ -37,7 +37,7 @@ image:
       - digitally sign the certificate using its private key.
       - use the RA-provided information to generate a digital certificate,
       - integrate the necessary data into the certificate fields and send a copy of the certificate to the user.
-  - <font color=red> The RA doesn’t directly issue certificates, CA do it </font>
+  - <font color=OrangeRed> The RA doesn’t directly issue certificates, CA do it </font>
 
 
 ---
@@ -128,7 +128,7 @@ CAs are hierarchical in structure. There are generally three types of hierarchie
 
 A single tier Hierarchy
 - consists of one CA.
-- The single CA is both a <font color=red> Root CA and an Issuing CA </font>
+- The single CA is both a <font color=OrangeRed> Root CA and an Issuing CA </font>
   - Root CA
     - is the term for the trust anchor of the PKI.
     - Any applications, users, or computers that trust the Root CA trust any certificates issued by the CA hierarchy.
@@ -150,11 +150,11 @@ A two tier hierarchy
 - most common.
 - a compromise between the One and Three Tier hierarchies.
 - Root CA that is offline, and a subordinate issuing CA that is online.
-- <font color=red> The level of security is increased </font>
+- <font color=OrangeRed> The level of security is increased </font>
   - the Root CA and Issuing CA roles are separated.
-  - <font color=red> the Root CA is offline </font>
+  - <font color=OrangeRed> the Root CA is offline </font>
   - so the private key of the Root CA is better protected from compromise.
-- <font color=red> increases scalability and flexibility </font>
+- <font color=OrangeRed> increases scalability and flexibility </font>
   - there can be multiple Issuing CA’s that are subordinate to the Root CA.
   - allows CA in different geographical location, and with different security levels.
 
@@ -167,7 +167,7 @@ A two tier hierarchy
 
 Three Tier Hierarchy
 - a second tier is placed between the Root CA and the issuing CA.
-- use the second tier CA as a <font color=red> Policy CA </font>
+- use the second tier CA as a <font color=OrangeRed> Policy CA </font>
   - Policy CA
     - configured to issue certificates to the Issuing CA that is restricted in what type of certificates it issues.
     - can also be used as an administrative boundary.
@@ -185,7 +185,7 @@ Three Tier Hierarchy
 ## Certificate Chain / trust / Path
 
 When you get a certificate for your public key from a commercial CA
-- then <font color=red> your certificate is associated with a chain of certificates / trust </font>
+- then <font color=OrangeRed> your certificate is associated with a chain of certificates / trust </font>
 - The number of certificates in the chain depends on the CA's hierarchical structure.
 - The following image shows a certificate chain for a two tier CA.
 - The owners/users certificate is signed by a Issuing CA and issuing CA's certificate is signed by the Root CA. Root CA's certificate is self signed.
@@ -344,7 +344,7 @@ Each chain is built by using a combination of the certificates available in the 
     - For example, is the certificate being used for a purpose other than has been intended?
 
 
-- Each status code has a <font color=red> precedence </font> assigned to it.
+- Each status code has a <font color=OrangeRed> precedence </font> assigned to it.
   - For example,
   - an expired certificate has a higher precedence than a revoked certificate.
   - This is because an expired certificate should not be checked for revocation status.
@@ -387,7 +387,7 @@ Certificate chaining:
 
 
 
-<font color=red> least recently used (LRU) caching scheme </font>
+<font color=OrangeRed> least recently used (LRU) caching scheme </font>
 - To increase performance, the **certificate chain engine** uses a least recently used (LRU) caching scheme.
   - This scheme
   - creates a cache entry for each certificate it encounters as it builds the certificate chain.

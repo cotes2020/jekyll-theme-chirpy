@@ -48,7 +48,7 @@
 
 Cryptographic Agility 敏捷
 
-- The ability to <font color=red> reconfigure </font> an application or system with a different cryptographic algorithm (or implementation).
+- The ability to <font color=OrangeRed> reconfigure </font> an application or system with a different cryptographic algorithm (or implementation).
 
 Cryptographic Agility Advantages
 - Transition to New Algorithms

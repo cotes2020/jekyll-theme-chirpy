@@ -16,7 +16,7 @@ image:
 - simplifies security analysis, resource change tracking, and troubleshooting.
 
 
-- <font color=red> enables governance, compliance, operational auditing, and risk auditing </font> of AWS account.
+- <font color=OrangeRed> enables governance, compliance, operational auditing, and risk auditing </font> of AWS account.
 
 - <font color=LightSlateBlue> enabled automatically </font> when create AWS account
   - delivers log files within 15min of account activity.
@@ -24,11 +24,11 @@ image:
     - can create a trail applies to one Region or to all Regions
     - By default, the trail applies to all AWS Regions.
     - provides a complete audit trail of all AWS services within an account
-  - <font color=red> deliver log files from all regions to one S3 bucket </font>
-    - By default, <font color=red> CloudTrail event log files are encrypted using S3 server-side encryption </font>
+  - <font color=OrangeRed> deliver log files from all regions to one S3 bucket </font>
+    - By default, <font color=OrangeRed> CloudTrail event log files are encrypted using S3 server-side encryption </font>
 
 
-- <font color=red> tracks, records user activity and API activity </font> for all regions in AWS
+- <font color=OrangeRed> tracks, records user activity and API activity </font> for all regions in AWS
   - continuously monitor, tracks <font color=LightSlateBlue> user activity and API usage </font>
   - provides <font color=LightSlateBlue> event history </font> of your AWS account activity
   - including actions taken OR API calls made via:
@@ -59,7 +59,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
 
 
 ### Management Events
-- information about <font color=red> control plane/ management operations </font> performed on resources in AWS account.
+- information about <font color=OrangeRed> control plane/ management operations </font> performed on resources in AWS account.
 - Example management events include:
   - Configuring security
     - IAM `AttachRolePolicy` API operations...
@@ -79,7 +79,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
 - Data events are <font color=LightSlateBlue> disabled by default </font> when create a trail
   - must explicitly add to a trail the supported resources or resource types for which you want to collect activity.
 
-- information about the <font color=red> data plane/resource operations </font> performed on or in a resource.
+- information about the <font color=OrangeRed> data plane/resource operations </font> performed on or in a resource.
   - Data events are often high-volume activities.
 
 - The following two data types are recorded:
@@ -102,7 +102,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
   - can also see the type of insight and the incident time period when you view Insights events on the CloudTrail console.
   - help you understand and act on unusual activity.
 
-- Insights events are logged only when CloudTrail detects changes in your account's API usage that <font color=red> differ significantly from the account's typical usage patterns </font>
+- Insights events are logged only when CloudTrail detects changes in your account's API usage that <font color=OrangeRed> differ significantly from the account's typical usage patterns </font>
 
 - Examples of activity that might generate Insights events include:
   - Your account typically logs no more than 20 Amazon S3 deleteBucket API calls per minute,
@@ -136,7 +136,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
 
 ### Organization Trails
 - a configuration
-- enables <font color=red> delivery of CloudTrail events in the master account and all member accounts in an organization </font> to the same Amazon S3 bucket, CloudWatch Logs, and CloudWatch Events.
+- enables <font color=OrangeRed> delivery of CloudTrail events in the master account and all member accounts in an organization </font> to the same Amazon S3 bucket, CloudWatch Logs, and CloudWatch Events.
 - helps define a uniform event logging strategy for your organization.
 - create an organization trail
   - a trail with the name that you give it will be created in every AWS account that belongs to your organization.

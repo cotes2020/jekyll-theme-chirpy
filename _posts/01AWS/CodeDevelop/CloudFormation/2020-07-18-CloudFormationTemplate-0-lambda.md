@@ -21,7 +21,7 @@ image:
 
 ## AWS::Lambda::Function
 
-<font color=red> AWS::Lambda::Function </font>
+<font color=OrangeRed> AWS::Lambda::Function </font>
 
 - To create a function, you need a deployment package and an execution role.
 - The **deployment package** is a `.zip file archive` or `container image` that contains your function code.

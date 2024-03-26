@@ -36,22 +36,22 @@ image:
 
 - a deployment service
 - CodeDeploy makes it easier to:
-  - <font color=red> Rapidly release new features </font>
-  - <font color=red> Update AWS Lambda function versions</font>
-  - <font color=red> Avoid downtime during application deployment </font>
-  - <font color=red> avoid risks associated with manual deployments </font>
+  - <font color=OrangeRed> Rapidly release new features </font>
+  - <font color=OrangeRed> Update AWS Lambda function versions</font>
+  - <font color=OrangeRed> Avoid downtime during application deployment </font>
+  - <font color=OrangeRed> avoid risks associated with manual deployments </font>
     - CodeDeploy handle the complexity of updating the applications
 
 
-2 <font color=red> deployment approaches </font> type options:
+2 <font color=OrangeRed> deployment approaches </font> type options:
 - <font color=LightSlateBlue> In-place / rolling update deployment </font>
   - The application is stopped on each instance in the deployment group, and the new version is installed.
-  - roll back: <font color=red> re-deploy, time consume </font>
+  - roll back: <font color=OrangeRed> re-deploy, time consume </font>
 - <font color=LightSlateBlue> Blue/Green deployment </font> `more save`
   - new release is installed on the new instances.
   - blue: active deployment
   - green: new release
-  - roll back, <font color=red> easy switch, registered and deregistered to the load balancer </font>
+  - roll back, <font color=OrangeRed> easy switch, registered and deregistered to the load balancer </font>
 
 ![deployment approaches](https://i.imgur.com/3cwLO0t.png)
 
@@ -72,14 +72,14 @@ can deploy nearly unlimited variety of application content, including:
 
 CodeDeploy offers these benefits:
 
-1. <font color=red> Server, serverless, and container applications </font>
+1. <font color=OrangeRed> Server, serverless, and container applications </font>
    - deploy both
      - traditional applications on servers (EC2 instances, on-premises instances)
      -  and applications that deploy a serverless AWS Lambda function version or an Amazon ECS application.
    - CodeDeploy works with various systems for <font color=LightSlateBlue> configuration management, source control, continuous integration, continuous delivery, and continuous deployment </font>
 
 
-2. <font color=red> Automated application deployments </font>
+2. <font color=OrangeRed> Automated application deployments </font>
    - fully automates the application deployments across the <font color=LightSlateBlue> development, test, and production environments </font>
    - <font color=LightSlateBlue> Repeatable deployments </font>
      - easily repeat an application deployment across different groups of instances with AWS CodeDeploy.
@@ -97,13 +97,13 @@ CodeDeploy offers these benefits:
 
 
 
-3. <font color=red> Minimize downtime </font>
+3. <font color=OrangeRed> Minimize downtime </font>
    - no require downtime when upgraded to a new revision
 
    - <font color=LightSlateBlue> in-place / rolling update </font>
      - for EC2/On-Premises compute platform
      - maximize the application availability.
-     - CodeDeploy performs a <font color=red> rolling update across Amazon EC2 instances </font>
+     - CodeDeploy performs a <font color=OrangeRed> rolling update across Amazon EC2 instances </font>
      - specify the number of instances to be taken offline at a time for updates.
    - <font color=LightSlateBlue> blue/green deployment update </font>
        - the latest application revision is installed on replacement instances.
@@ -116,14 +116,14 @@ CodeDeploy offers these benefits:
        - Unexpected downtime can occur if bad updates are deployed.
        - AWS CodeDeploy monitors your deployment and will stop a deployment if there are too many failed updates.
 
-4. <font color=red> Stop and roll back </font>
+4. <font color=OrangeRed> Stop and roll back </font>
    - stop an application deployment that is in process at any time using the AWS Management Console, the AWS CLI, or any of the AWS SDKs.
      - can automatically or manually stop and roll back deployments if there are errors.
      - re-deploy that revision if you want to continue the stopped deployment at a later time.
      - or immediately rollback by redeploying the previous revision.
 
 
-5. <font color=red> Centralized control </font>
+5. <font color=OrangeRed> Centralized control </font>
    - receive a report that lists when each application revision was deployed and to which Amazon EC2 instances.
 
    - Monitoring and control
@@ -147,7 +147,7 @@ CodeDeploy offers these benefits:
      - Searches are case insensitive.
      - only see resources that you have permissions to view.
 
-6. <font color=red> Easy to adopt </font>
+6. <font color=OrangeRed> Easy to adopt </font>
    - platform and language agnostic and works with any application.
    - <font color=LightSlateBlue> easily reuse the setup code </font>
      - AWS CodeDeploy uses a file and command-based install model
@@ -157,14 +157,14 @@ CodeDeploy offers these benefits:
    - Tool chain integration
      - easy to integrate application deployments with your existing <font color=LightSlateBlue> software delivery toolchain </font> by using the AWS CodeDeploy APIs.
      - AWS CodePipeline, AWS CodeStar, and some AWS partners provide pre-built CodeDeploy integrations for continuous integration and continuous delivery services, making it simple to automatically deploy your updated application.
-     - can deploy application content that <font color=red> runs on a server </font> and is <font color=red> stored in S3 buckets, GitHub repositories, or Bitbucket repositories </font>
+     - can deploy application content that <font color=OrangeRed> runs on a server </font> and is <font color=OrangeRed> stored in S3 buckets, GitHub repositories, or Bitbucket repositories </font>
 
 
-7. <font color=red> 同时地 Concurrent deployments. </font>
+7. <font color=OrangeRed> 同时地 Concurrent deployments. </font>
    - have more than one application that uses the EC2/On-Premises compute platform, CodeDeploy can deploy them concurrently to the same set of instances.
 
 
-8. <font color=red> Receive Notifications </font>
+8. <font color=OrangeRed> Receive Notifications </font>
    - Review defined events
      - create notifications for events impacting the deployments.
      - Notifications will come in the form of Amazon SNS notifications.
@@ -177,7 +177,7 @@ CodeDeploy offers these benefits:
 ## Overview of CodeDeploy compute platforms
 CodeDeploy is able to deploy applications to three compute platforms:
 
-### 1. <font color=red> EC2/On-Premises compute platform </font>
+### 1. <font color=OrangeRed> EC2/On-Premises compute platform </font>
    - Deployments that use physical servers like Amazon EC2 cloud instances, on-premises servers, or both.
    - Applications created using the EC2/On-Premises compute platform can be composed of executable files, configuration files, images, and more.
    - manage the way in which traffic is directed to instances by using:
@@ -185,13 +185,13 @@ CodeDeploy is able to deploy applications to three compute platforms:
      - or <font color=LightSlateBlue> blue/green deployment type </font>
 
 
-### 2. <font color=red> AWS Lambda </font>
+### 2. <font color=OrangeRed> AWS Lambda </font>
    - deploy applications that consist of an updated version of a Lambda function.
    - AWS Lambda manages the Lambda function in a serverless compute environment made up of a high-availability compute structure. All administration of the compute resources is performed by AWS Lambda
    - manage the way in which traffic is shifted to the updated Lambda function versions during a deployment by choosing:
      - <font color=LightSlateBlue> canary, linear, or all-at-once configuration </font>
 
-### 3. <font color=red> Amazon ECS </font>
+### 3. <font color=OrangeRed> Amazon ECS </font>
    - deploy an Amazon ECS containerized application as a task set.
    - CodeDeploy performs a blue/green deployment by installing an updated version of the application as a new replacement task set.
    - CodeDeploy reroutes production traffic from the original application task set to the replacement task set.
@@ -214,10 +214,10 @@ CodeDeploy is able to deploy applications to three compute platforms:
 
 ## CodeDeploy deployment approaches types
 
-CodeDeploy provides two <font color=red> deployment approaches </font> type options:
-- <font color=red> In-place deployment </font>
+CodeDeploy provides two <font color=OrangeRed> deployment approaches </font> type options:
+- <font color=OrangeRed> In-place deployment </font>
   - hook: de-registering, installation, re-registering
-- <font color=red> Blue/Green deployment </font>
+- <font color=OrangeRed> Blue/Green deployment </font>
 
 ---
 
@@ -240,10 +240,10 @@ A blue/green deployment offers a number of advantages over an in-place deploymen
 
 ---
 
-### <font color=red> In-place deployment </font>
+### <font color=OrangeRed> In-place deployment </font>
 
 In-place deployment:
-- <font color=red> rolling update </font>
+- <font color=OrangeRed> rolling update </font>
 - The application on each instance in the deployment group is stopped
   - the instance is offline
 - the latest/new application revision is installed
@@ -263,14 +263,14 @@ You can use a load balancer so that each instance is deregistered during its dep
 
 Here's how it works:
 1. local development machine:
-   - bundle <font color=LightSlateBlue> deployable content + Application specification file (AppSpec file) </font> into an <font color=red> archive file (an application revision) </font>
+   - bundle <font color=LightSlateBlue> deployable content + Application specification file (AppSpec file) </font> into an <font color=OrangeRed> archive file (an application revision) </font>
    - and then upload it to an Amazon S3 bucket or a GitHub repository.
 
 2. provide CodeDeploy with information about your deployment
    - such as
      - which Amazon S3 bucket or GitHub repository to pull the revision from
      - to which set of Amazon EC2 instances to deploy its contents.
-   - <font color=red> deployment group </font>
+   - <font color=OrangeRed> deployment group </font>
      - CodeDeploy calls a set of Amazon EC2 instances a deployment group.
      - A deployment group contains
        - <font color=LightSlateBlue> individually tagged Amazon EC2 instances </font>
@@ -280,7 +280,7 @@ Here's how it works:
    - In other words, the application revision that is currently targeted for deployment is the target revision.
    - This is also the revision that is pulled for automatic deployments.
 
-3. <font color=red> CodeDeploy agent </font> on each instance
+3. <font color=OrangeRed> CodeDeploy agent </font> on each instance
    - polls CodeDeploy to determine what and when to pull from the specified Amazon S3 bucket or GitHub repository.
    - pulls the target revision from the Amazon S3 bucket or GitHub repository
    - using the instructions in the AppSpec file, deploys the contents to the instance.
@@ -295,20 +295,20 @@ Here's how it works:
 ---
 
 
-### <font color=red> Blue/Green deployment </font>
+### <font color=OrangeRed> Blue/Green deployment </font>
 
 One of the challenges of automating deployment is the cutover,
-- take software from the <font color=red> final stage of testing to live production </font>
+- take software from the <font color=OrangeRed> final stage of testing to live production </font>
 
 Blue/Green deployment
-1. <font color=red> test new hardware or applications without going fully into production </font>
+1. <font color=OrangeRed> test new hardware or applications without going fully into production </font>
 
-1. update the applications while <font color=red> minimizing interruptions caused by the changes </font> of a new application version.
+1. update the applications while <font color=OrangeRed> minimizing interruptions caused by the changes </font> of a new application version.
 
-1. CodeDeploy provisions your new application version alongside the old version <font color=red> before rerouting your production traffic </font>
+1. CodeDeploy provisions your new application version alongside the old version <font color=OrangeRed> before rerouting your production traffic </font>
    - After the green deployment is complete and functional, begin to shut down or upgrade the blue deployment.
 
-1. <font color=red> rapid roll back </font>
+1. <font color=OrangeRed> rapid roll back </font>
    - switching back to blue deployment if the green environment is not working properly.
 
 
@@ -322,29 +322,29 @@ blue/green deployment is highly desirable
 
 **Blue/green deployment**: The behavior of your deployment depends on which compute platform you use:
 
-1. <font color=red> AWS Lambda </font>:
+1. <font color=OrangeRed> AWS Lambda </font>:
    - Traffic is shifted from <font color=LightSlateBlue> one version of a Lambda function to a new version of the same Lambda function </font>
    - specify Lambda functions that perform validation tests and choose the way in which the traffic shifting occurs.
 
-2. <font color=red> Amazon ECS </font>:
+2. <font color=OrangeRed> Amazon ECS </font>:
    - Traffic is shifted from <font color=LightSlateBlue> a task set in your Amazon ECS service to an updated, replacement task set in the same Amazon ECS service </font>
    - can set the <font color=LightSlateBlue> traffic shifting to linear or canary </font> through the deployment configuration.
    - The protocol and port of a specified load balancer listener is used to reroute production traffic.
    - During a deployment, a test listener can be used to serve traffic to the replacement task set while validation tests are run.
 
 
-3. <font color=red> EC2/On-Premises </font>:
+3. <font color=OrangeRed> EC2/On-Premises </font>:
    - Traffic is shifted from <font color=LightSlateBlue> one set of instances in the original environment to a replacement/different set of instances </font>
    - the original environment -> the replacement environment
      - Instances are provisioned for the replacement environment.
      - The latest application revision is installed on the replacement instances.
      - An optional wait time occurs for activities such as application testing and system verification.
    - Elastic Load Balancing load balancer
-     - <font color=LightSlateBlue> Instances in the replacement environment </font> are registered with an <font color=red> Elastic Load Balancing load balancer </font>, causing traffic to be rerouted to them.
+     - <font color=LightSlateBlue> Instances in the replacement environment </font> are registered with an <font color=OrangeRed> Elastic Load Balancing load balancer </font>, causing traffic to be rerouted to them.
      - <font color=LightSlateBlue> Instances in the original environment </font> are deregistered and can be terminated or kept running for other uses.
 
 
-4. <font color=red> AWS CloudFormation </font>:
+4. <font color=OrangeRed> AWS CloudFormation </font>:
    - Traffic is shifted from your <font color=LightSlateBlue> current resources to your updated resources </font> as part of an AWS CloudFormation stack update.
    - Currently, only Amazon ECS blue/green deployments are supported.
 
@@ -376,14 +376,14 @@ overall
 
 - **Canary** 金丝雀 :
   - split traffic
-  - <font color=red> sending a small percentage </font> of the traffic to the new version of your application
+  - <font color=OrangeRed> sending a small percentage </font> of the traffic to the new version of your application
   - Traffic is <font color=LightSlateBlue> shifted in two increments </font>
   - **predefined canary options**
     - <font color=LightSlateBlue> specify the percentage of traffic shifted </font> to the updated Lambda function version in the first increment
     - and the interval, in minutes, before the remaining traffic is shifted in the second increment.
 
 - **Linear**:
-  - Traffic is shifted in <font color=red> equal increments </font> with an <font color=red> equal number of minutes </font> between each increment.
+  - Traffic is shifted in <font color=OrangeRed> equal increments </font> with an <font color=OrangeRed> equal number of minutes </font> between each increment.
   - **predefined linear options**
     - specify the percentage of traffic shifted in each increment
     - and the number of minutes between each increment.
@@ -408,11 +408,11 @@ to use the EC2/On-Premises compute platform, the following applies:
 
 > You typically also have an application revision running on the instances in your original environment, but this is not a requirement for a blue/green deployment.
 
-- <font color=red> create a deployment group </font> that is used in blue/green deployments, <font color=red> choose how your replacement environment is specified </font>
-  - <font color=red> Copy an existing Amazon EC2 Auto Scaling group </font>
+- <font color=OrangeRed> create a deployment group </font> that is used in blue/green deployments, <font color=OrangeRed> choose how your replacement environment is specified </font>
+  - <font color=OrangeRed> Copy an existing Amazon EC2 Auto Scaling group </font>
     - During the blue/green deployment, CodeDeploy creates the instances for your replacement environment during the deployment.
     - CodeDeploy uses the Amazon EC2 Auto Scaling group you specify as a template for the replacement environment, including the same number of running instances and many other configuration options.
-  - <font color=red> Choose instances manually </font>
+  - <font color=OrangeRed> Choose instances manually </font>
     - specify the instances to be the replacement using  <font color=LightSlateBlue> Amazon EC2 instance tags, Amazon EC2 Auto Scaling group names, or both </font>
     - do not need to specify the instances for the replacement environment until you create a deployment.
 
@@ -466,7 +466,7 @@ manage CodeDeploy blue/green deployments by model the blue/green resources with 
 
 a YAML-formatted or JSON-formatted file used by CodeDeploy to manage a deployment.
 
-<font color=red> defines the parameters </font> to be used during a CodeDeploy deployment
+<font color=OrangeRed> defines the parameters </font> to be used during a CodeDeploy deployment
 
 
 ```json
@@ -656,23 +656,23 @@ ApplicationStop:
 
 ![Screen Shot 2020-12-28 at 23.00.21](https://i.imgur.com/TKYJgop.png)
 
-| Lifecycle event name                                                                                                 | In-place deployment | Blue/green deployment                     |                                              |                                                    |                                                       |
-| -------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------------------------------------- | -------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
-| Lifecycle event name                                                                                                 | In-place deployment | Blue/green deployment: Original instances | Blue/green deployment: Replacement instances | Blue/green deployment rollback: Original instances | Blue/green deployment rollback: Replacement instances |
-| ---                                                                                                                  | ---                 | ---                                       | ---                                          | ---                                                | ---                                                   |
-| BeforeBlockTraffic                                                                                                   | ✓                   | ✓                                         |                                              |                                                    | ✓                                                     |
-| BlockTraffic                                                                                                         | ✓                   | ✓                                         |                                              |                                                    | ✓                                                     |
-| AfterBlockTraffic                                                                                                    | ✓                   | ✓                                         |                                              |                                                    | ✓                                                     |
-| ApplicationStop <br> <font color=red> gracefully stop the app </font>                                                | ✓                   |                                           | ✓                                            |                                                    |
-| DownloadBundle <br> <font color=red> CodeDeploy agent copy the revision files to location <br> </font>               | ✓                   |                                           | ✓                                            |                                                    |
-| BeforeInstall	<br> <font color=red> pre-install, backup the current version, configurstion, decrypting files </font> | ✓                   |                                           | ✓                                            |                                                    |
-| Install <br> <font color=red> copy application file to final location </font>                                        | ✓                   |                                           | ✓                                            |                                                    |
-| AfterInstall <br> <font color=red> post-install, configuration, file permissions <br> </font>                        | ✓                   |                                           | ✓                                            |                                                    |
-| ApplicationStart <br> <font color=red> start servicesthat were stop during application stop <br> </font>             | ✓                   |                                           | ✓                                            |                                                    |
-| ValidateService	<br> <font color=red> run tests to validate the service</font>                                       | ✓                   |                                           | ✓                                            |                                                    |
-| BeforeAllowTraffic                                                                                                   | ✓                   |                                           | ✓                                            | ✓                                                  |
-| AllowTraffic                                                                                                         | ✓                   |                                           | ✓                                            | ✓                                                  |
-| AfterAllowTraffic                                                                                                    | ✓                   |                                           | ✓                                            | ✓                                                  |
+| Lifecycle event name                                                                                                       | In-place deployment | Blue/green deployment                     |                                              |                                                    |                                                       |
+| -------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------------------------------------- | -------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| Lifecycle event name                                                                                                       | In-place deployment | Blue/green deployment: Original instances | Blue/green deployment: Replacement instances | Blue/green deployment rollback: Original instances | Blue/green deployment rollback: Replacement instances |
+| ---                                                                                                                        | ---                 | ---                                       | ---                                          | ---                                                | ---                                                   |
+| BeforeBlockTraffic                                                                                                         | ✓                   | ✓                                         |                                              |                                                    | ✓                                                     |
+| BlockTraffic                                                                                                               | ✓                   | ✓                                         |                                              |                                                    | ✓                                                     |
+| AfterBlockTraffic                                                                                                          | ✓                   | ✓                                         |                                              |                                                    | ✓                                                     |
+| ApplicationStop <br> <font color=OrangeRed> gracefully stop the app </font>                                                | ✓                   |                                           | ✓                                            |                                                    |
+| DownloadBundle <br> <font color=OrangeRed> CodeDeploy agent copy the revision files to location <br> </font>               | ✓                   |                                           | ✓                                            |                                                    |
+| BeforeInstall	<br> <font color=OrangeRed> pre-install, backup the current version, configurstion, decrypting files </font> | ✓                   |                                           | ✓                                            |                                                    |
+| Install <br> <font color=OrangeRed> copy application file to final location </font>                                        | ✓                   |                                           | ✓                                            |                                                    |
+| AfterInstall <br> <font color=OrangeRed> post-install, configuration, file permissions <br> </font>                        | ✓                   |                                           | ✓                                            |                                                    |
+| ApplicationStart <br> <font color=OrangeRed> start servicesthat were stop during application stop <br> </font>             | ✓                   |                                           | ✓                                            |                                                    |
+| ValidateService	<br> <font color=OrangeRed> run tests to validate the service</font>                                       | ✓                   |                                           | ✓                                            |                                                    |
+| BeforeAllowTraffic                                                                                                         | ✓                   |                                           | ✓                                            | ✓                                                  |
+| AllowTraffic                                                                                                               | ✓                   |                                           | ✓                                            | ✓                                                  |
+| AfterAllowTraffic                                                                                                          | ✓                   |                                           | ✓                                            | ✓                                                  |
 
 
 ---

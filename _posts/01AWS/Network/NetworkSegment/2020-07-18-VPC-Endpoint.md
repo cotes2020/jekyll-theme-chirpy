@@ -90,12 +90,12 @@ S3 access from a private subnet doesn’t work, because:
 
 - a logical networking component in a VPC
 
-- A VPC interface endpoint is <font color=red> an elastic network interface </font>
+- A VPC interface endpoint is <font color=OrangeRed> an elastic network interface </font>
   - represents a **virtual network card** with a `private IP address` from the IP address range of your subnet.
   - use **DNS names** to resolve requests to a public AWS service.
-  - It serves as an entry point for <font color=red> traffic destined to a supported AWS/VPC endpoint service </font>
+  - It serves as an entry point for <font color=OrangeRed> traffic destined to a supported AWS/VPC endpoint service </font>
 
-- **Interface endpoints** are powered by <font color=red> AWS PrivateLink </font>
+- **Interface endpoints** are powered by <font color=OrangeRed> AWS PrivateLink </font>
   - AWS PrivateLink
     - a technology that enables you to <font color=LightSlateBlue> privately access services by using private IP addresses. </font>
   - connect to services that are powered by <font color=LightSlateBlue> AWS PrivateLink </font>
@@ -143,7 +143,7 @@ S3 access from a private subnet doesn’t work, because:
   - register the virtual appliances with a target group for the Gateway Load Balancer.
   - specify a Gateway Load Balancer endpoint as a target for a route in a route table.
   - Traffic to and from a Gateway Load Balancer endpoint is configured using route tables.
-    - <font color=red> Traffic flows </font>
+    - <font color=OrangeRed> Traffic flows </font>
       - from the service consumer VPC over the Gateway Load Balancer endpoint
       - to the Gateway Load Balancer in the service provider VPC,
       - and then returns to the service consumer VPC.
@@ -156,17 +156,17 @@ S3 access from a private subnet doesn’t work, because:
 
 # AWS PrivateLink
 - a PrivateLink connection
-- connects an AWS public service to a VPC using a <font color=red> private connection </font>
+- connects an AWS public service to a VPC using a <font color=OrangeRed> private connection </font>
 
 - privately access services by using private IP addresses.
-  - privately connect <font color=red> VPC </font> to
+  - privately connect <font color=OrangeRed> VPC </font> to
     - supported AWS services
     - services hosted by other AWS accounts (VPC endpoint services)
     - supported AWS Marketplace partner services.
-    - that are powered by <font color=red> AWS PrivateLink </font>
-  - An Interface for endpoint to uses <font color=red> AWS PrivateLink </font>
-  - an <font color=LightSlateBlue> elastic network interface (ENI) </font> with a <font color=red> private IP address </font> that serves as <font color=LightSlateBlue> an entry point for traffic destined to a supported service </font>
-    - <font color=red> connectionn from instances in VPC to the services </font>
+    - that are powered by <font color=OrangeRed> AWS PrivateLink </font>
+  - An Interface for endpoint to uses <font color=OrangeRed> AWS PrivateLink </font>
+  - an <font color=LightSlateBlue> elastic network interface (ENI) </font> with a <font color=OrangeRed> private IP address </font> that serves as <font color=LightSlateBlue> an entry point for traffic destined to a supported service </font>
+    - <font color=OrangeRed> connectionn from instances in VPC to the services </font>
       - does not require an <font color=LightSlateBlue> internet gateway, NAT device, VPN connection, or AWS Direct Connect connection </font>
       - Instances in the VPC <font color=LightSlateBlue> do not require public IP addresses </font> to communicate with resources in the service.
       - Traffic between the VPC and the other service <font color=LightSlateBlue> does not leave the Amazon network </font>
@@ -175,7 +175,7 @@ S3 access from a private subnet doesn’t work, because:
 
 ## AWS PrivateLink access over Inter-Region VPC Peering:
 AWS PrivateLink
-- Applications in an AWS VPC can <font color=red> securely access AWS PrivateLink endpoints across AWS Regions </font> using <font color=red> Inter-Region VPC Peering </font>
+- Applications in an AWS VPC can <font color=OrangeRed> securely access AWS PrivateLink endpoints across AWS Regions </font> using <font color=OrangeRed> Inter-Region VPC Peering </font>
 - privately access services hosted on AWS in a highly available and scalable manner,
   - without using public IPs or let traffic traverse the Internet.
   - Traffic using Inter-Region VPC Peering stays on the global AWS backbone and never traverses the public Internet.

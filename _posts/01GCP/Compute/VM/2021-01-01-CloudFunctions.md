@@ -34,7 +34,7 @@ image:
 
 Cloud Functions
 
-- an <font color=red> event-driven </font>, serverless compute service
+- an <font color=OrangeRed> event-driven </font>, serverless compute service
   - for simple single purpose functions that are attached to events.
   - <font color=LightSlateBlue> event-driven, the function gets executed when a particular event occurs. </font>
 

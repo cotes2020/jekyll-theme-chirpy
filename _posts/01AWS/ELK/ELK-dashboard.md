@@ -81,12 +81,12 @@ In this solution:
 
 
 **Solution Overview**
-- got the <font color=red> CloudTrail events </font>
-- send the CloudTrail events to <font color=red> Amazon CloudWatch Logs </font>
-- CloudWatch Logs trigger <font color=red> Lambda function </font> to send the Trail Events to an Amazon Elasticsearch Index.
-- stream the logs to an <font color=red> Amazon ES cluster </font> in near-real time, through a CloudWatch Logs subscription.
+- got the <font color=OrangeRed> CloudTrail events </font>
+- send the CloudTrail events to <font color=OrangeRed> Amazon CloudWatch Logs </font>
+- CloudWatch Logs trigger <font color=OrangeRed> Lambda function </font> to send the Trail Events to an Amazon Elasticsearch Index.
+- stream the logs to an <font color=OrangeRed> Amazon ES cluster </font> in near-real time, through a CloudWatch Logs subscription.
 - Kibana create the near real-time dashboard
-- access the <font color=red> Kibana endpoint </font> to visualize the data.
+- access the <font color=OrangeRed> Kibana endpoint </font> to visualize the data.
 
 ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/Cloudtrail_Kibana.png)
 

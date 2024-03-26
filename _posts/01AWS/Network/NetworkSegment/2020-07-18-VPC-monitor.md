@@ -58,7 +58,7 @@ For more information about Amazon CloudWatch, see the Amazon CloudWatch User Gui
 
 ### Flow logs basics
 VPC Flow Logs
-1. <font color=red> captures accepted and rejected traffic flow information </font> that goes to and from all network interfaces in your VPC or in the selected resource.
+1. <font color=OrangeRed> captures accepted and rejected traffic flow information </font> that goes to and from all network interfaces in your VPC or in the selected resource.
    - <font color=LightSlateBlue> troubleshoot connectivity and security issues </font>
      - why specific traffic is not reaching an instance
    - <font color=LightSlateBlue> test network access rules </font>
@@ -67,12 +67,12 @@ VPC Flow Logs
      - Determining the `direction of the traffic` to and from the network interfaces
    - <font color=LightSlateBlue> detect and investigate security incidents </font>
 
-2. can <font color=red> create alarms </font>
+2. can <font color=OrangeRed> create alarms </font>
    - notify if certain types of traffic are detected
    - create metrics to identify trends and patterns.
 
 
-3. <font color=red> enable flow log </font>
+3. <font color=OrangeRed> enable flow log </font>
    - Flow logs can be enabled/created at the following levels:
      - VPC.
      - Subnet.
@@ -80,14 +80,14 @@ VPC Flow Logs
    - If create a flow log for a subnet / VPC, each network interface in the VPC or subnet is monitored.
 
 
-4. Flow log data is recorded as <font color=red> flow log records </font>
+4. Flow log data is recorded as <font color=OrangeRed> flow log records </font>
    - log events consisting of fields that describe the traffic flow.
    - Flow log data is collected outside of the path of network traffic
      - therefore does not affect network throughput or latency.
      - create or delete flow logs without any risk of impact to network performance.
 
 
-5. can be published to <font color=red> Amazon CloudWatch Logs or Amazon S3 </font>
+5. can be published to <font color=OrangeRed> Amazon CloudWatch Logs or Amazon S3 </font>
    - CloudWatch Logs
      - Flow log data is published / stored to a <font color=LightSlateBlue> log group in CloudWatchLogs </font>
      - each network interface has a unique <font color=LightSlateBlue> log stream </font>

@@ -101,7 +101,7 @@ image:
 
 ![Screen Shot 2021-02-14 at 21.27.28](https://i.imgur.com/pKrLZLF.png)
 
-- <font color=red> Compute Engine </font>
+- <font color=OrangeRed> Compute Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/Compute-engine/)
   - <font color=LightSlateBlue> Infrastructure as a Service </font>
   - A managed environment for deploying virtual machines
@@ -133,7 +133,7 @@ image:
 ![Screen Shot 2021-02-14 at 21.28.45](https://i.imgur.com/0ngmPQq.png)
 
 
-- <font color=red> App Engine </font>
+- <font color=OrangeRed> App Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/app-engine/)
   - <font color=LightSlateBlue> Platform as a Service </font>
   - fully managed serverless application framework.
@@ -183,7 +183,7 @@ image:
 
 ![Screen Shot 2021-02-14 at 21.33.08](https://i.imgur.com/Hf2hreB.png)
 
-- <font color=red> Cloud Function </font>
+- <font color=OrangeRed> Cloud Function </font>
   - <font color=LightSlateBlue> functions as a Service </font>
   - A managed serverless platform/environment for deploying event-driven functions
     - an event-driven, serverless compute service
@@ -246,7 +246,7 @@ image:
 
 ![Screen Shot 2021-02-14 at 21.32.19](https://i.imgur.com/PWNsn3v.png)
 
-- <font color=red> Cloud Run </font>
+- <font color=OrangeRed> Cloud Run </font>
   - serverless
   - builds, deploys, and manages modern stateless workloads.
     - can build the applications in any language using whatever frameworks and tools
@@ -288,7 +288,7 @@ image:
 
 ![Screen Shot 2021-02-14 at 21.30.41](https://i.imgur.com/JZUUrNV.png)
 
-- <font color=red> GKE Kubernetes Engine </font>
+- <font color=OrangeRed> GKE Kubernetes Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/kubernete-engine/)
   - A managed environment for deploying containerized applications
   - to run containerized applications on a Cloud environment that Google Cloud manages for you under the administrative control.

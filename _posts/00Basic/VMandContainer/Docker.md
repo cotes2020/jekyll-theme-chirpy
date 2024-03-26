@@ -88,7 +88,7 @@ image:
 
 - based on `cgroup` and `namespace` of Linux Kernel and Union FS like AUFS
 
-- a software platform that <font color=red> packages software (such as applications) into containers </font>
+- a software platform that <font color=OrangeRed> packages software (such as applications) into containers </font>
   - to <font color=LightSlateBlue> package and isolate the processes </font> which belong to <font color=LightSlateBlue> Operating system level virtualization technology </font>
 
   - Docker is further packaged on a container basis,
@@ -96,7 +96,7 @@ image:
     - isolated processes are independent of the host and other isolated processes.
   - <font color=LightSlateBlue> greatly simplifying container creation and maintenance </font>.
 
-- <font color=red> Docker is installed on each server that will host containers </font>,
+- <font color=OrangeRed> Docker is installed on each server that will host containers </font>,
   - provides simple commands to build, start, or stop containers.
   - quickly deploy and scale applications into any environment.
 
@@ -119,13 +119,13 @@ The initial implementation is based on LXC.
 ## Why use Docker
 
 best used as a solution to:
-- <font color=red> Standardize environments </font>
-- <font color=red> Reduce conflicts between language stacks and versions </font>
-- <font color=red> Use containers as a service </font>
-- <font color=red> Run microservices using standardized code deployments </font>
-- <font color=red> Require portability for data processing </font>
+- <font color=OrangeRed> Standardize environments </font>
+- <font color=OrangeRed> Reduce conflicts between language stacks and versions </font>
+- <font color=OrangeRed> Use containers as a service </font>
+- <font color=OrangeRed> Run microservices using standardized code deployments </font>
+- <font color=OrangeRed> Require portability for data processing </font>
 
-platform for developers and sysadmins to <font color=red> build, run, and share applications with containers </font>
+platform for developers and sysadmins to <font color=OrangeRed> build, run, and share applications with containers </font>
 - The use of containers to deploy applications is called `containerization`.
 
 containerization
@@ -145,7 +145,7 @@ containerization
 
 - Fundamentally, a **container** is nothing but a running process, with some added encapsulation features applied to it in order to keep it isolated from the host and from other containers.
 
-- container isolation: <font color=red> each container interacts with its own private filesystem </font>
+- container isolation: <font color=OrangeRed> each container interacts with its own private filesystem </font>
 
 - this filesystem is provided by a **Docker image**.
   - An image includes everything needed to run an application
@@ -158,15 +158,15 @@ containerization
 
 differences between Docker and Traditional Virtualization.
 - The **traditional Virtual Machine technology** :
-  - <font color=red> virtualize a set of hardwares to </font>
+  - <font color=OrangeRed> virtualize a set of hardwares to </font>
     - run a complete operation system
     - and run the required application process on the system.
-    - <font color=red> runs a full-blown “guest” operating system </font> with virtual access to host resources through a hypervisor.
+    - <font color=OrangeRed> runs a full-blown “guest” operating system </font> with virtual access to host resources through a hypervisor.
     - VMs incur a lot of overhead beyond what is being consumed by your application logic.
 
 
 - **Container/Docker**
-  - The application process in the container <font color=red> runs directly on the host kernel </font>
+  - The application process in the container <font color=OrangeRed> runs directly on the host kernel </font>
   - the container does not have its own Kernel and hardware virtualiztion.
   - Therefore much lighter than traditional virtual machines.
 
@@ -182,9 +182,9 @@ differences between Docker and Traditional Virtualization.
    - a method of operating system virtualization
      - 容器不需要进行硬件虚拟以及运行完整操作系统等额外开销，
      - Docker 对系统资源的利用率更高。
-     - runs natively on Linux and <font color=red> shares the kernel of the host machine with other containers </font>
+     - runs natively on Linux and <font color=OrangeRed> shares the kernel of the host machine with other containers </font>
      - runs a discrete process, taking no more memory than any other executable, making it lightweight.
-   - <font color=red> run an application and its dependencies </font> in <font color=red> resource-isolated processes </font>
+   - <font color=OrangeRed> run an application and its dependencies </font> in <font color=OrangeRed> resource-isolated processes </font>
      - 无论是 应用执行速度、内存损耗或者文件存储速度，都要比传统虚拟机技术更高效。
      - 因此，一个相同配置的主机，往往可以运行更多数量的 Docker 应用。
 
@@ -193,7 +193,7 @@ differences between Docker and Traditional Virtualization.
    - Docker 容器应用，由于直接运行于宿主内核，无需启动完整的操作系统，因此可以做到秒级、甚至毫秒级的启动时间。
    - 节约了开发、测试、部署的时间。
 
-3. 一致的运行环境 <font color=red> Consistent Operating Environment </font>
+3. 一致的运行环境 <font color=OrangeRed> Consistent Operating Environment </font>
    - because everything are packaged into a single object.
    - 开发过程中一个常见的问题是环境一致性问题。开发环境、测试环境、生产环境不一致，导致bug未在开发过程中被发现。
    - Docker 的镜像提供了除内核外完整的运行时环境，确保了应用运行环境一致性

@@ -40,7 +40,7 @@
 - 调用 `kubectl get services` 时获得的CLUSTER-IP是内部在集群内分配给此服务的IP。
 
 - ClusterIP services are created by default when you create a service in Kubernetes.
-- They have a cluster-internal IP address that is <font color=red> only accessible to other pods in the cluster </font>.
+- They have a cluster-internal IP address that is <font color=OrangeRed> only accessible to other pods in the cluster </font>.
 - To access a ClusterIP service from outside the cluster, you would need to use a proxy.
 
 #### `NodePort`

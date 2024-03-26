@@ -89,7 +89,7 @@ different Cloud Interconnect and Peering services available to connect the infra
 
 ### IPsec VPN tunnels
 
-- <font color=red> IPsec VPN tunnels </font>
+- <font color=OrangeRed> IPsec VPN tunnels </font>
   - Cloud VPN offers
   - capacity of 1.5-3 Gbps per tunnel
   - require a VPN device on the on-premise network.
@@ -103,7 +103,7 @@ different Cloud Interconnect and Peering services available to connect the infra
 ![Screen Shot 2021-07-31 at 1.16.20 AM](https://i.imgur.com/DIbFWPL.png)
 
 
-- <font color=red> Dedicated Interconnect </font>
+- <font color=OrangeRed> Dedicated Interconnect </font>
   - capacity of 10 Gbps per link
   - requires a connection in a Google-supported co-location facility.
   - You can have up to eight links to achieve multiples of 10 Gbps, but 10 Gbps is the minimum capacity. As of this recording, there is a Beta feature that provides 100 Gbps per link with a maximum of two links.
@@ -128,7 +128,7 @@ different Cloud Interconnect and Peering services available to connect the infra
 ![Screen Shot 2021-07-31 at 1.25.22 AM](https://i.imgur.com/UEvvgNo.png)
 
 
-- <font color=red> Partner Interconnect </font>
+- <font color=OrangeRed> Partner Interconnect </font>
   - capacity of 50 Mbps to 10 Gbps per connection,
   - requirements depend on the service provider.
 
@@ -211,9 +211,9 @@ a VPN connection between the `VPC `and `on-premise network`.
 - to connect to the on-premise network and its resources
   - configure the `Cloud VPN gateway`, `on-premise VPN gateway` and to `VPN tunnels`.
 
-- The <font color=red> Cloud VPN gateway </font>
+- The <font color=OrangeRed> Cloud VPN gateway </font>
   - a regional resource, uses **regional external IP address**.
-- the <font color=red> on-premise VPN gateway </font>
+- the <font color=OrangeRed> on-premise VPN gateway </font>
   - can be a physical device in the data center or a physical or software based VPN offering in another Cloud providers network.
   - This VPN gateway also has an **external IP address**.
 - A VPN tunnel

@@ -31,7 +31,7 @@
 
 Cloud native tools are meant to introduce security early in the application lifecycle.
 
-- <font color=red> Security testing </font> needs to identify `compliance violations and misconfigurations` early to create `short and actionable feedback cycles` for continuous improvement.
+- <font color=OrangeRed> Security testing </font> needs to identify `compliance violations and misconfigurations` early to create `short and actionable feedback cycles` for continuous improvement.
 
 - This approach enables security failures to follow familiar workflows raised for other issues in the pipeline (e.g., bug fixes or continuous integration failures), which already require resolution before moving software further in the pipeline.
 
@@ -47,7 +47,7 @@ Cloud native tools are meant to introduce security early in the application life
 
 - This challenge is amplified by the necessary, practical, and consistent use of open-source software and third party runtime images, including layers of upstream dependencies.
 
-- <font color=red> Artifacts (e.g., container images) </font> present in the lifecycle pipeline require
+- <font color=OrangeRed> Artifacts (e.g., container images) </font> present in the lifecycle pipeline require
 
   - **continual automated scanning and updates** to ensure safety from <font color=LightSlateBlue> vulnerabilities, malware, insecure coding practices, and other malfeasance </font>.
 
@@ -63,7 +63,7 @@ Cloud native tools are meant to introduce security early in the application life
 
 - **Security integrated throughout the development and distribution phases** allows for the real-time and continuous validation of workload attributes e.g.
 
-- <font color=red> signed artifacts </font> are verified, <font color=red> container image and runtime security policies </font> are ensured, host suitability and trustworthiness can be validated via binary authorization policy in staging and production environments.
+- <font color=OrangeRed> signed artifacts </font> are verified, <font color=OrangeRed> container image and runtime security policies </font> are ensured, host suitability and trustworthiness can be validated via binary authorization policy in staging and production environments.
 
 - Deploy time checks provide the last chance to validate, correct, enforce these checks before the workload starts running to serve its intended business needs.
 

@@ -25,7 +25,7 @@ Given the massive deleterious impact of financial securities fraud in publicly t
 
 ## The Basics of SOX Compliance
 
-“SOX compliance” refers to the <font color=red> annual audit </font>
+“SOX compliance” refers to the <font color=OrangeRed> annual audit </font>
 - in which a public company is obligated to <font color=LightSlateBlue> provide proof of accurate, data-secured financial reporting. </font>
 
 ![sox-compliance-basics](https://www.dnsstuff.com/wp-content/uploads/2019/06/sox-compliance-basics-1024x536.png)

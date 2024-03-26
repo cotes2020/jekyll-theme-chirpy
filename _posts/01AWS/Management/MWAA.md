@@ -26,7 +26,7 @@
 [Apache Airflow](https://airflow.apache.org/)
 - As the volume and complexity of your data processing pipelines increase
 - simplify the overall process by decomposing it into a series of smaller tasks and coordinate the execution of these tasks as part of a **workflow**.
-- platform created by the community to <font color=red> programmatically author, schedule, and monitor workflows </font>
+- platform created by the community to <font color=OrangeRed> programmatically author, schedule, and monitor workflows </font>
 - manage workflows as scripts,
 - monitor them via the user interface (UI),
 - and extend their functionality through a set of powerful plugins.
@@ -58,7 +58,7 @@ Airflow workflows
 
 Benefits of using Amazon MWAA
 
-<font color=red> Setup </font>
+<font color=OrangeRed> Setup </font>
 - a managed service for Apache Airflow
 - build, manage, and maintain Apache Airflow on AWS using services such as Amazon EC2 or Amazon EKS
 - sets up Apache Airflow when you create an environment using the same open-source Airflow and user interface available from Apache.
@@ -68,7 +68,7 @@ Benefits of using Amazon MWAA
   - It is the exact same Apache Airflow that you can download on the own.
 - makes it easy for you to build and manage the workflows in the cloud.
 
-<font color=red> Scaling </font>
+<font color=OrangeRed> Scaling </font>
 - use the same familiar Airflow platform with <font color=LightSlateBlue> improved scalability, availability, and security </font>
   - without the operational burden of having to manage the underlying infrastructure.
 - uses the Apache Celery Executor to automatically scale workers as needed for the environment.
@@ -79,13 +79,13 @@ Benefits of using Amazon MWAA
   - As workers free up, Amazon MWAA removes them.
 
 
-<font color=red> Security </font>
+<font color=OrangeRed> Security </font>
 - Integrated support with AWS Identity and Access Management (IAM), including role-based authentication and authorization for access to the Airflow user interface.
   - Workers assume IAM roles for easy and secure access to AWS services.
   - Workers and Scheduler run in the VPC for access to the resources.
 - Amazon MWAA supports accessing the Airflow UI on either a VPC or a public secured endpoint.
 
-<font color=red> Upgrades and patches </font>
+<font color=OrangeRed> Upgrades and patches </font>
 - updates and patches Airflow automatically, with scheduled and communicated maintenance windows.
   - manages the provisioning and ongoing maintenance of Apache Airflow
   - automatically applies patches and updates to Apache Airflow in the Amazon MWAA environments.
@@ -96,7 +96,7 @@ Benefits of using Amazon MWAA
 
 
 
-<font color=red> Monitoring </font>
+<font color=OrangeRed> Monitoring </font>
 - integrated with CloudWatch.
 - The Apache Airflow logs and performance metrics data for the environment are available in a single location.
 - This lets you easily identify workflow errors or task delays.
@@ -104,7 +104,7 @@ Benefits of using Amazon MWAA
 - view logs and metrics for multiple environments from a single location
 - easily identify task delays or workflow errors without the need for additional third-party tools.
 
-<font color=red> Integration </font>
+<font color=OrangeRed> Integration </font>
 - easily combine data using any of Apache Airflow’s open source integrations.
 - community provides operators (plugins that simplify connections to services) for Apache Airflow to integrate with
   - AWS services
@@ -118,7 +118,7 @@ Benefits of using Amazon MWAA
 - Amazon MWAA is committed to maintaining compatibility with the Amazon MWAA API,
 
 
-<font color=red> Containers </font>
+<font color=OrangeRed> Containers </font>
 - Amazon MWAA offers support for using containers to scale the worker fleet on demand and reduce scheduler outages, through AWS Fargate.
 - Operators that execute tasks on Amazon ECS containers, as well as Kubernetes operators that create and run pods on a Kubernetes cluster, are supported.
 
@@ -127,8 +127,8 @@ Benefits of using Amazon MWAA
 
 ## Amazon MWAA and Airflow workflows
 
-- Apache Airflow manages data through a series of tasks called a <font color=red> workflow </font>
-- A workflow comprised of these tasks: a <font color=red> Directed Acyclic Graph (DAG) </font>
+- Apache Airflow manages data through a series of tasks called a <font color=OrangeRed> workflow </font>
+- A workflow comprised of these tasks: a <font color=OrangeRed> Directed Acyclic Graph (DAG) </font>
   - DAGs describe how to run a workflow and are written in Python
 - When a workflow is created, tasks are configured
   - so that some tasks must finish before the next task can start without needing to loop back to a previous task.
@@ -166,12 +166,12 @@ Benefits of using Amazon MWAA
 
 
 - Required VPC networking components requirements:
-  - <font color=red> Two private subnets </font>
+  - <font color=OrangeRed> Two private subnets </font>
     - in two different availability zones within the same Region.
   - also need one of the following:
-    1. <font color=red> Two public subnets </font>
+    1. <font color=OrangeRed> Two public subnets </font>
        - configured to route the private subnet data to the Internet. (via NAT gateways)
-    2. Or <font color=red> VPC endpoint services (AWS PrivateLink) </font>
+    2. Or <font color=OrangeRed> VPC endpoint services (AWS PrivateLink) </font>
 
 > If you are unable to provide Internet routing for the two private subnets,
 > - VPC endpoint services (AWS PrivateLink) access to the AWS services used by the environment is required.
@@ -219,19 +219,19 @@ Amazon Managed Workflows for Apache Airflow (MWAA) uses
 
 
 ### Prerequisites
-- <font color=red> AWS account </font>
+- <font color=OrangeRed> AWS account </font>
   - An AWS account with permission to use Amazon MWAA and the AWS services and resources used by the environment.
-- <font color=red> Amazon S3 bucket </font>
+- <font color=OrangeRed> Amazon S3 bucket </font>
   - An Amazon S3 bucket with versioning enabled.
   - An Amazon S3 bucket is used to store the DAGs and associated files,
   - such as plugins.zip and requirements.txt.
-- <font color=red> Amazon VPC </font>
+- <font color=OrangeRed> Amazon VPC </font>
   - The Amazon VPC networking components required by an Amazon MWAA environment.
   - You can use an existing VPC that meets these requirements, or create the VPC and networking components as defined in Create the VPC network.
-- <font color=red> Customer master key (CMK) </font>
+- <font color=OrangeRed> Customer master key (CMK) </font>
   - A Customer master key (CMK) for data encryption on the environment.
   - You can choose the default option on the Amazon MWAA console to create an AWS owned CMK when you create an environment.
-- <font color=red> Execution role </font>
+- <font color=OrangeRed> Execution role </font>
   - An execution role that allows Amazon MWAA to access AWS resources in the environment.
   - You can choose the default option on the Amazon MWAA console to create an execution role when you create an environment
 
@@ -239,21 +239,21 @@ Amazon Managed Workflows for Apache Airflow (MWAA) uses
 ### 1. Create S3 bucket for Amazon MWAA
 
 - Buckets have configuration properties, including
-  - <font color=red> name </font>
+  - <font color=OrangeRed> name </font>
     - Avoid including sensitive information in the bucket name.
       - such as account numbers,
     - The bucket name is visible in the URLs that point to the objects in the bucket.
-  - <font color=red> geographical Region </font>
-  - <font color=red> access settings for the objects in the bucket </font>
+  - <font color=OrangeRed> geographical Region </font>
+  - <font color=OrangeRed> access settings for the objects in the bucket </font>
     - Amazon MWAA requires that the bucket does not allow public access.
     - You should leave all settings enabled.
-  - <font color=red> Bucket Versioning </font>
+  - <font color=OrangeRed> Bucket Versioning </font>
     - choose Enable.
-  - <font color=red> encryption </font>
+  - <font color=OrangeRed> encryption </font>
     - whether to enable server-side encryption for the bucket.
     - If you choose to enable server-side encryption
       - <font color=LightSlateBlue> must use the same key for the S3 bucket and Amazon MWAA environment </font>
-  - If you want to <font color=red> enable S3 Object lock </font>
+  - If you want to <font color=OrangeRed> enable S3 Object lock </font>
     - can only enable S3 Object lock for bucket when you create it,
     - can't disable it later.
     - Enabling Object lock also enables versioning for the bucket.
@@ -268,10 +268,10 @@ Amazon Managed Workflows for Apache Airflow (MWAA) uses
   3. use the provided AWS CloudFormation template to create the VPC and other required networking components.
 
 - Amazon MWAA provides private and public networking options for the Apache Airflow web server.
-- A <font color=red> public network </font>
+- A <font color=OrangeRed> public network </font>
   - allows the Airflow UI to be accessed over the Internet by users granted access in the IAM policy.
   - Amazon MWAA attaches an Application Load Balancer with an HTTPS endpoint for the web server as part of the Amazon MWAA managed service.
-- A <font color=red> private network </font>
+- A <font color=OrangeRed> private network </font>
   - limits access to the Airflow UI to users within the VPC.
   - Amazon MWAA attaches a VPC endpoint to the web server.
   - Enabling access to this endpoint requires additional configuration,
@@ -283,7 +283,7 @@ Amazon Managed Workflows for Apache Airflow (MWAA) uses
 
 - When create an environment
   - Amazon MWAA
-    - creates <font color=red> an Aurora PostgreSQL metadata database and an Fargate container </font>
+    - creates <font color=OrangeRed> an Aurora PostgreSQL metadata database and an Fargate container </font>
     - in each of the two private subnets in different availability zones.
   - The Apache Airflow workers on an Amazon MWAA environment
     - use the Celery Executor to queue and distribute tasks to multiple Celery workers from an Apache Airflow platform.
@@ -306,7 +306,7 @@ Amazon MWAA console > Create environment
 - select the Apache Airflow version to use.
   -![mwaa-create-environment-1-1024x342](https://i.imgur.com/njWTLzN.png)
 
-- <font color=red> Under DAG code in Amazon S3: </font>
+- <font color=OrangeRed> Under DAG code in Amazon S3: </font>
   -![mwaa-dag-code-s3-1012x1024](https://i.imgur.com/lsE8wTe.png)
 
   - <font color=LightSlateBlue> For S3 bucket </font>
@@ -344,7 +344,7 @@ Amazon MWAA console > Create environment
     - Only private subnets are supported.
     - You can't change the VPC for an environment after you create it.
 
-  - Under <font color=red> Web server access </font>
+  - Under <font color=OrangeRed> Web server access </font>
     - Web server access to the Airflow UI is always protected by a secure login using IAM
       - can have web server access on a public network to login over the Internet,
       - or on a private network in your VPC.
@@ -357,14 +357,14 @@ Amazon MWAA console > Create environment
 
 
 
-  - Under <font color=red> Security group </font>
+  - Under <font color=OrangeRed> Security group </font>
     - Create new security group
     - to have Amazon MWAA create a new security group with inbound and outbound rules based on your Web server access selection.
     - can add one or more existing security groups to fine-tune control of inbound and outbound traffic for the environment.
       - select up to 5 security groups from your account to use for the environment.
 
 
-  - Under <font color=red> Environment class </font>
+  - Under <font color=OrangeRed> Environment class </font>
   - ![mwaa-environment-class-1024x555](https://i.imgur.com/HhVwUCZ.png)
     - You can increase the environment size later as appropriate.
       - The environment size determines the approximate number of workflows that an environment supports.
@@ -379,7 +379,7 @@ Amazon MWAA console > Create environment
     - Each environment includes a scheduler, a web server, and a worker.
       - Workers automatically scale up and down according to the workload.
 
-  - Under <font color=red> Encryption </font>
+  - Under <font color=OrangeRed> Encryption </font>
   - ![mwaa-encryption-1-1024x286](https://i.imgur.com/3rXU8Dr.png)
     - to encrypt your data
     - AWS owned key (by default)
@@ -388,7 +388,7 @@ Amazon MWAA console > Create environment
       - you must use the same key for both the S3 bucket and your Amazon MWAA environment.
       - You must also grant permissions for Amazon MWAA to use the key by attaching the policy described in Attach key policy.
 
-  - Under <font color=red> Monitoring, </font>
+  - Under <font color=OrangeRed> Monitoring, </font>
   - ![mwaa-monitoring-1-1024x715](https://i.imgur.com/a2j0xXb.png)
     - choose whether to enable CloudWatch Metrics.
       - environment performance to CloudWatch Metrics.
@@ -409,11 +409,11 @@ Amazon MWAA console > Create environment
       - add a customer configuration option
       - Select the configuration option to use a custom value for, then enter the Custom value.
 
-  - Under <font color=red> Tags </font>
+  - Under <font color=OrangeRed> Tags </font>
     - add any tags as appropriate for your environment.
     - Choose Add new tag, and then enter a Key and optionally, a Value for the key.
 
-  - Under <font color=red> Permissions, </font>
+  - Under <font color=OrangeRed> Permissions, </font>
     - ![mwaa-permissions-1024x361](https://i.imgur.com/tz09fDs.png)
     - configure the **permissions** that will be used by environment to <font color=LightSlateBlue> access the DAGs, write logs, and run DAGs accessing other AWS resources </font>
     - choose the role to use as the execution role.

@@ -61,7 +61,7 @@ CloudFormation template takes care of the following tasks
 - [Create an Amazon MWAA execution IAM role](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
 
 - [Set up the VPC network for the Amazon MWAA environment](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html), deploying the following resources:
-  - A <font color=red> VPC with a pair of public and private subnets across two Availability Zones </font>
+  - A <font color=OrangeRed> VPC with a pair of public and private subnets across two Availability Zones </font>
     - a <font color=LightSlateBlue> VPC </font>
       - `10.192.0.0/16` CIDR rule
     - a <font color=LightSlateBlue> VPC security group </font>
@@ -74,20 +74,20 @@ CloudFormation template takes care of the following tasks
       - `10.192.20.0/24` CIDR rule in 1st availability zone
     - <font color=LightSlateBlue> one private subnet </font>
       - `10.192.21.0/24` CIDR rule in 2nd availability zone
-  - An <font color=red> internet gateway </font>
+  - An <font color=OrangeRed> internet gateway </font>
     - with a default route on the public subnets.
     - creates and attaches to the public subets
-  - A pair of <font color=red> NAT gateways </font>
+  - A pair of <font color=OrangeRed> NAT gateways </font>
     - one in each Availability Zone
     - and default routes for them in the private subnets.
     - creates and attaches to the private subnets
     - `two elastic IP addresses (EIPs)`
       - creates and attaches to the NAT gateways
-  - 2 <font color=red> VPC endpoint </font>
+  - 2 <font color=OrangeRed> VPC endpoint </font>
     - Amazon **S3 gateway VPC endpoints**
     - and **EMR interface VPC endpoints**
     - in the private subnets in two Availability Zones.
-  - A <font color=red> security group </font>
+  - A <font color=OrangeRed> security group </font>
     - **security group** to be used by the Amazon MWAA environment
     - only allows local inbound traffic and all outbound traffic.
 

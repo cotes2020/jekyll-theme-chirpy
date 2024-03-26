@@ -922,7 +922,7 @@ the sum of the first `n-1` integers: `(n-1)+(n-2)+...+1`
   - `𝑛−1` passes is needs to sort a list of size `n`.
   - The total number of **comparisons** is the sum of the first `𝑛−1 integers`.
   - $$= \frac{1}{2} n^{2} - \frac{1}{2}n$$
-  - still <font color=red> 𝑂(𝑛&2) </font> comparisons,
+  - still <font color=OrangeRed> 𝑂(𝑛&2) </font> comparisons,
 - **best case**,
   - the list is already ordered,
   - no exchanges will be made.
@@ -1083,18 +1083,18 @@ print(alist)
 - The iteration starts at position 1 and moves through position `𝑛−1`, as these are the items that need to be inserted back into the sorted sublists.
 - Line 8 performs the shift operation that moves a value up one position in the list, making room behind it for the insertion. Remember that this is not a complete exchange as was performed in the previous algorithms.
 
-<font color=red> worse case </font>:
+<font color=OrangeRed> worse case </font>:
 
 - The maximum number of comparisons for an insertion sort is the sum of the `first 𝑛−1 integers`. `𝑂(𝑛^2)`.
 
-<font color=red> best case </font>:
+<font color=OrangeRed> best case </font>:
 
 - However, in the best case, only `one comparison needs to be done on each pass`.
 - This would be the case for an already sorted list.
 
 One note about `shifting` versus `exchanging` is also important.
 - In general, a shift operation requires approximately a third of the processing work of an exchange since only one assignment is performed.
-- In benchmark studies, <font color=red> insertion sort will show very good performance </font>.
+- In benchmark studies, <font color=OrangeRed> insertion sort will show very good performance </font>.
 
 
 

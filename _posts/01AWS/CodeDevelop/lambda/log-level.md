@@ -43,7 +43,7 @@ logging.critical('This is a critical message')
 # CRITICAL:root:This is a critical message
 ```
 
-<font color=red> level::name::message </font>
+<font color=OrangeRed> level::name::message </font>
 
 - The output shows the severity level before each message along with root, the name the logging module gives to its default logger.
 - default output format that can be configured to include things like timestamp, line number, and other details.

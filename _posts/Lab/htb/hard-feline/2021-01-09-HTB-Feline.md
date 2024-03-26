@@ -89,7 +89,7 @@ tags: [Lab, HackTheBox]
 ### Recon NMAP
 
 NMAP:
-- <font color=red> FINDING </font>
+- <font color=OrangeRed> FINDING </font>
   - Port 222 SSH
   - Port 8080 Apache Tomcat 9.0.27
 
@@ -121,7 +121,7 @@ Microsoft CVE-2020-16937: .NET Framework Information Disclosure Vulnerability
 | 4        | (AV:N/AC:M/Au:N/C:P/I:N/A:N) | 10/13/2020 |
 
 
-<font color=red> CVE-2020-9484 Tomcat RCE漏洞分析!!! </font>
+<font color=OrangeRed> CVE-2020-9484 Tomcat RCE漏洞分析!!! </font>
 
 
 
@@ -157,7 +157,7 @@ Microsoft CVE-2020-16937: .NET Framework Information Disclosure Vulnerability
 
 CVE requirement:
 - **Deserialization of Untrusted Data** <font color=green> not yet </font>
-- **have to know the path** <font color=red> not yet </font>
+- **have to know the path** <font color=OrangeRed> not yet </font>
 
 
 
@@ -221,7 +221,7 @@ CVE requirement:
     ```
 
 
-4. <font color=red> Finding </font>
+4. <font color=OrangeRed> Finding </font>
    - upload page: /upload.jsp
    - file upload path: /opt/samples/uploads
 

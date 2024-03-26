@@ -37,15 +37,15 @@ The following diagram shows the different methods of authentication available wi
 ---
 
 ## Security Token Service
-- provides <font color=red> short-term authorization </font> that IAM roles utilize.
+- provides <font color=OrangeRed> short-term authorization </font> that IAM roles utilize.
 
 **Access Keys**:
-- A combination of an <font color=red> access key ID </font> and a <font color=red> secret access key </font>
+- A combination of an <font color=OrangeRed> access key ID </font> and a <font color=OrangeRed> secret access key </font>
   - can assign two active access keys to a user at a time.
   - max limit of access keys an IAM User may possess at a time: 2
   - IAM users are allowed two sets of access keys.
 - can be used to
-  - <font color=red> make programmatic calls </font> to AWS when using the API in program code
+  - <font color=OrangeRed> make programmatic calls </font> to AWS when using the API in program code
   - or at a command prompt when using the AWS CLI or the AWS PowerShell tools.
 - `aws configure`
   - the command needed to allow access key configuration.

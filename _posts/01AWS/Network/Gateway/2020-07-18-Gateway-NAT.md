@@ -16,8 +16,8 @@ image:
 
 # Network address translation (NAT)
 
-1. instances <font color=red> connect to the internet </font> but <font color=red> prevents the internet initial connection </font>
-2. <font color=red> Do not support port forwarding </font>
+1. instances <font color=OrangeRed> connect to the internet </font> but <font color=OrangeRed> prevents the internet initial connection </font>
+2. <font color=OrangeRed> Do not support port forwarding </font>
 
 
 3. enable instances in the private subnet
@@ -35,11 +35,11 @@ image:
      - but only can associate one set of DHCP options with a VPC at a time.
    - The DHCP option sets element of an Amazon VPC allows to direct Amazon EC2 hostname assignments to your own resources.
 
-6. <font color=red> Dynamic / Static NAT gateway </font>
-   - <font color=red> Static NAT: SNAT </font>
+6. <font color=OrangeRed> Dynamic / Static NAT gateway </font>
+   - <font color=OrangeRed> Static NAT: SNAT </font>
      - A private IP is mapped to a public IP. 
      - translates private to public IPs at a <font color=LightSlateBlue> 1:1 ratio </font>
-   - <font color=red> Dynamic NAT: DNAT </font>
+   - <font color=OrangeRed> Dynamic NAT: DNAT </font>
      - A range of private addresses, are mapped onto one or more public IPs.
      - <font color=LightSlateBlue> translate a range of private IPs to public IPs </font>
      - example:
@@ -54,9 +54,9 @@ image:
    - several instances can use the same Elastic IP.
 
 8. AWS offers two primary options for using NAT services:
-   - <font color=red> NAT instance </font>
+   - <font color=OrangeRed> NAT instance </font>
      - An Amazon EC2 instance that set up as a NAT service in a public subnet
-   - <font color=red> NAT Gateway </font>
+   - <font color=OrangeRed> NAT Gateway </font>
 
 ![Screen Shot 2020-06-22 at 01.21.47](https://i.imgur.com/5iVOvIL.png)
 
@@ -65,27 +65,27 @@ image:
 ## NAT instances
 
 1. NAT instances are managed by you.
-1. Used to <font color=red> enable private subnet instances to access the Internet </font>
+1. Used to <font color=OrangeRed> enable private subnet instances to access the Internet </font>
    - be a route from a private subnet to the NAT instance for it to work.
    - setup
      - NAT instance must live on a <font color=LightSlateBlue> single public subnet with a route to an Internet Gateway </font>
      - Private instances in private subnets must <font color=LightSlateBlue> have a route to the NAT instance </font>
        - usually the default route destination of 0.0.0.0/0.
-   - use as a <font color=red> bastion (jump) host </font>
-2. Can <font color=red> monitor traffic metrics </font>
-3. <font color=red> disable the source/destination check on the instance </font>
+   - use as a <font color=OrangeRed> bastion (jump) host </font>
+2. Can <font color=OrangeRed> monitor traffic metrics </font>
+3. <font color=OrangeRed> disable the source/destination check on the instance </font>
 4. NAT instances need to be assigned to security groups.
    - Security groups for NAT instances must allow
      - <font color=LightSlateBlue> HTTP/HTTPS inbound from the private subnet </font>
      - and <font color=LightSlateBlue> outbound to 0.0.0.0/0. </font>
-5. Using a NAT instance <font color=red> can lead to bottlenecks (not HA) </font>
+5. Using a NAT instance <font color=OrangeRed> can lead to bottlenecks (not HA) </font>
    - HA can be achieved by using Auto Scaling groups, multiple subnets in different AZ’s and a script to automate failover.
 6. The amount of traffic a NAT instance can support is based on the instance type.
    - Performance is dependent on instance size.
    - Can <font color=LightSlateBlue> scale up instance size or use enhanced networking. </font>
    - Can <font color=LightSlateBlue> scale out by using multiple NATs in multiple subnets. </font>
-7. <font color=red> Not supported for IPv6 </font> (use Egress-Only Internet Gateway).
-8. <font color=red> stateful </font>
+7. <font color=OrangeRed> Not supported for IPv6 </font> (use Egress-Only Internet Gateway).
+8. <font color=OrangeRed> stateful </font>
    - NAT gateway understands the session
    - will allow inbound information because the request was a response to the private resource's request.
 

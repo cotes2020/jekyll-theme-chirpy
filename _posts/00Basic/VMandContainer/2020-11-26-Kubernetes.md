@@ -513,15 +513,15 @@ Kubernetes 是一套分布式系统
 
 - 3 processes mush be installed on every Node
   -  必要服务包括 Docker，kubelet 和代理服务。
-  1. <font color=red> Container runtime </font>
+  1. <font color=OrangeRed> Container runtime </font>
      1. Container runtime: container ...
      2. Container runtime need to be installed on each pod
-  2. <font color=red> Kubelet </font>
+  2. <font color=OrangeRed> Kubelet </font>
      1. get request from **scheduler**
      2. schedule those container
      3. interface with both the container and node
      4. kubelet starts the pod with a container inside
-  3. <font color=red> Kube proxy </font>
+  3. <font color=OrangeRed> Kube proxy </font>
      1. forward request from service to pod
 
 
@@ -535,22 +535,22 @@ Kubernetes 是一套分布式系统
 
 
 - 4 processes mush be installed on every Node
-  - <font color=red> Api Server </font>
+  - <font color=OrangeRed> Api Server </font>
     - cluster gateway
     - get request and query
     - gatekeepper for Authentication :
       - validate the request
       - health request
-  - <font color=red> scheduler </font>
+  - <font color=OrangeRed> scheduler </font>
     - decide
     - to schedule a new pod
     - decide the resource need
     - decide which worker node (check the **etcd**: A 30% used, B 60% used)
-  - <font color=red> Controller manager </font>
+  - <font color=OrangeRed> Controller manager </font>
     - detect cluster state change
       - pod dead -> recover cluster state
       - request to scheduler -> kubelet
-  - <font color=red> etcd </font>
+  - <font color=OrangeRed> etcd </font>
     - cluster brain
     - store actual application data
     - cluster state information
@@ -755,7 +755,7 @@ distributed system and containers
 - Pod:
   - not rely on one pod
   - replicate every in another node
-  - <font color=red> Deployment </font>:
+  - <font color=OrangeRed> Deployment </font>:
     - you create deployments
     - define blueprints for pod: duplicate=3
 
@@ -765,7 +765,7 @@ distributed system and containers
 - DB cannot be replicate
   - read and write on same share data storage
   - avoid data inconsistency
-  - <font color=red> StatefulSet </font> for SateFul app
+  - <font color=OrangeRed> StatefulSet </font> for SateFul app
   - DB are oftern hosted outside of K8s cluster
     - use external database
 

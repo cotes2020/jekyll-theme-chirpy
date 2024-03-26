@@ -28,7 +28,7 @@ image:
 
 1. fully managed service
 
-2. <font color=red> create a unified API frontend for multiple microservices </font>
+2. <font color=OrangeRed> create a unified API frontend for multiple microservices </font>
    - to loosely couple systems
    - does not compute information from an API.
 
@@ -51,9 +51,9 @@ image:
 
 5. security:
    - DDos protection and throttling for the backend
-   - <font color=red> Throttle and monitor requests to protect your backend </font>
+   - <font color=OrangeRed> Throttle and monitor requests to protect your backend </font>
      - if you have a bad actor or someone who has bad code, you can turn off their access to your data
-   - <font color=red> authenticate and authorize requests to a backend </font>
+   - <font color=OrangeRed> authenticate and authorize requests to a backend </font>
    - Reduced latency and DDoS, protection through Amazon CloudFront
 
 6. Managed cache to store API responses
@@ -107,13 +107,13 @@ Security with API Gateway falls into three major buckets
 
 ### Application Firewall
 
-- enable <font color=red> AWS Web Application Firewall (WAF) for the entire API </font>
+- enable <font color=OrangeRed> AWS Web Application Firewall (WAF) for the entire API </font>
 - WAF will inspect all incoming requests and block requests that fail your inspection rules.
 - For example
 - WAF can inspect requests for SQL Injection, Cross Site Scripting, or whitelisted IP addresses.
 
 ### Resource Policy
-- apply a <font color=red> Resource Policy that protects your entire API </font>
+- apply a <font color=OrangeRed> Resource Policy that protects your entire API </font>
 - an IAM policy applied to the API
 - use this to white/black list client IP ranges or allow AWS accounts and AWS principals to access your API.
 

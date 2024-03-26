@@ -46,7 +46,7 @@ Five-part best practice checklist
 
 ## 1. Identity and Access Management in AWS
 
-AWS has numerous features that enable <font color=red> granular control for access </font> to an account’s resources by means of the Identity and Access Management (IAM) service.
+AWS has numerous features that enable <font color=OrangeRed> granular control for access </font> to an account’s resources by means of the Identity and Access Management (IAM) service.
 - IAM provides control over
   - who can use AWS resources (authentication)
   - and how they can use those resources (authorization).
@@ -59,14 +59,14 @@ The following list focuses on
 
 ### Best-practice checklist
 
-1. <font color=red> protect the access/use of AWS root account credentials </font>
+1. <font color=OrangeRed> protect the access/use of AWS root account credentials </font>
    - Lock away AWS account (root) login credentials
    - Use multi-factor authentication (MFA) on root account
    - Make minimal use of root account (or no use of root account at all if possible).
      - Use IAM user instead to manage the account
    - Do not use AWS root account to create API keys.
 
-2. defining roles and responsibilities of system users to <font color=red> control human access to the AWS Management Console and API </font>
+2. defining roles and responsibilities of system users to <font color=OrangeRed> control human access to the AWS Management Console and API </font>
    - Create individual IAM users
    - Configure a strong password policy for the users
    - Enable MFA for privileged users
@@ -81,7 +81,7 @@ The following list focuses on
    - Use policy conditions for extra security
    - Regularly monitor user activity in the AWS account(s).
 
-1. <font color=red> protecting the access/use of user account credentials </font>
+1. <font color=OrangeRed> protecting the access/use of user account credentials </font>
    - <font color=LightSlateBlue> Rotate credentials regularly </font>
    - Remove/deactivate unnecessary credentials
    - Protect EC2 key pairs.
@@ -92,14 +92,14 @@ The following list focuses on
    - Use IAM roles for cross-account access and identity federation
    - Use temporary security instead of long-term access keys.
 
-1. <font color=red> limiting automated access </font> to AWS resources
+1. <font color=OrangeRed> limiting automated access </font> to AWS resources
    - Use IAM roles for EC2 and an AWS SDK or CLI
    - Store static credentials securely that are used for automated access
    - Use instance profiles or Amazon STS for dynamic authentication
    - For increased security, implement alternative authentication mechanisms (e.g. LDAP or Active Directory)
    - Protect API access using Multi-factor authentication (MFA).
 
-2. <font color=red> protecting CloudTrail logs stored in S3 </font>
+2. <font color=OrangeRed> protecting CloudTrail logs stored in S3 </font>
    - Limit access to users and roles on a “need-to-know” basis for data stored in S3
    - Use <font color=LightSlateBlue> bucket access permissions and object access permissions </font> for fine-grained control over S3 resources
    - Use bucket policies to grant other AWS accounts or IAM
@@ -121,19 +121,19 @@ Protecting any computing infrastructure requires a layered or defense-in-depth a
 - while customers are responsible for security ‘in’ the cloud, or on layers above the hypervisor. This includes the operating system, perimeter and internal network, application and data.
 
 Infrastructure protection requires defining:
-- <font color=red> trust boundaries </font> (e.g., network boundaries and packet filtering),
-- <font color=red> system security configuration and maintenance </font> (e.g., hardening and patching),
-- <font color=red> operating system authentication and authorizations </font> (e.g., users, keys, and access levels),
-- and <font color=red> other appropriate policy enforcement points </font> (e.g., web application firewalls and/or API gateways).
+- <font color=OrangeRed> trust boundaries </font> (e.g., network boundaries and packet filtering),
+- <font color=OrangeRed> system security configuration and maintenance </font> (e.g., hardening and patching),
+- <font color=OrangeRed> operating system authentication and authorizations </font> (e.g., users, keys, and access levels),
+- and <font color=OrangeRed> other appropriate policy enforcement points </font> (e.g., web application firewalls and/or API gateways).
 
-The key AWS service that supports <font color=red> service-level protection </font> is AWS Identity and Access Management (IAM) while Virtual Private Cloud (VPC) is the fundamental service that contributes to securing infrastructure hosted on AWS.
+The key AWS service that supports <font color=OrangeRed> service-level protection </font> is AWS Identity and Access Management (IAM) while Virtual Private Cloud (VPC) is the fundamental service that contributes to securing infrastructure hosted on AWS.
 - VPC is the virtual equivalent of a traditional network operating in a data center, albeit with the scalability benefits of the AWS infrastructure. In addition, there are several other services or features provided by AWS that can be leveraged for infrastructure protection.
 
 The following list mainly focuses on network and host-level boundary protection
 
 ### Best-practice checklist
 
-1. <font color=red> enforcing network and host-level boundary protection </font>
+1. <font color=OrangeRed> enforcing network and host-level boundary protection </font>
    - Establish appropriate network design for workload
      - to ensure only desired network paths and routing are allowed
    - For large-scale deployments, design <font color=LightSlateBlue> network security in layers </font>
@@ -156,7 +156,7 @@ The following list mainly focuses on network and host-level boundary protection
    - Protect data in transit to ensure the confidentiality and integrity of data, as well as the identities of the communicating parties.
 
 
-2. <font color=red> protecting against DDoS at network and application level </font>
+2. <font color=OrangeRed> protecting against DDoS at network and application level </font>
    - Use firewalls including Security groups, network access control lists, and host based firewalls
    - Use rate limiting to protect scarce resources from overconsumption
    - Use <font color=LightSlateBlue> Elastic Load Balancing and Auto Scaling </font>
@@ -174,7 +174,7 @@ The following list mainly focuses on network and host-level boundary protection
      - to gain visibility into traffic targeting the application.
 
 
-3. <font color=red> managing malware </font>
+3. <font color=OrangeRed> managing malware </font>
    - Give users the minimum privileges they need to carry out their tasks
    - Patch external-facing and internal systems to the latest security level.
    - Use a reputable and up-to-date antivirus and antispam solution on the system.
@@ -186,7 +186,7 @@ The following list mainly focuses on network and host-level boundary protection
    - Avoid SMTP open relay, which can be used to spread spam, and which might also represent a breach of the AWS Acceptable Use Policy.
 
 
-4. <font color=red> identify vulnerability/misconfigurations in the os of EC2 </font>
+4. <font color=OrangeRed> identify vulnerability/misconfigurations in the os of EC2 </font>
    - Define approach for securing the system, consider the level of access needed and take a least-privilege approach
    - Open only the ports needed for communication, harden OS and disable permissive configurations
    - Remove or disable unnecessary user accounts.
@@ -210,12 +210,12 @@ The following list mainly focuses on network and host-level boundary protection
      - to create standard, preconfigured environments.
 
 
-5. <font color=red> protect the integrity of the os of EC2 instances </font>
+5. <font color=OrangeRed> protect the integrity of the os of EC2 instances </font>
    - Use file integrity controls for Amazon EC2 instances
    - Use host-based intrusion detection controls for Amazon EC2 instances
    - Use a custom Amazon Machine Image (AMI) or configuration management tools (such as Puppet or Chef) that provide secure settings by default.
 
-6. <font color=red> ensure security of containers on AWS </font>
+6. <font color=OrangeRed> ensure security of containers on AWS </font>
    - Run containers on top of virtual machines
    - Run small images, remove unnecessary binaries
    - Use many small instances to reduce attack surface
@@ -231,12 +231,12 @@ The following list mainly focuses on network and host-level boundary protection
    - Use tools such as Docker Bench to automate security checks
    - Avoid embedding secrets into images or environment variables, Use S3-based secrets storage instead.
 
-7. <font color=red> ensuring only trusted Amazon Machine Images (AMIs) are launched </font>
+7. <font color=OrangeRed> ensuring only trusted Amazon Machine Images (AMIs) are launched </font>
    - Treat shared AMIs as any foreign code that you might consider deploying in the own data centre and perform the appropriate due diligence
    - Look for description of shared AMI, and the AMI ID, in the Amazon EC2 forum
    - Check aliased owner in the account field to find public AMIs from Amazon.
 
-8. <font color=red> creating secure custom (private or public) AMIs </font>
+8. <font color=OrangeRed> creating secure custom (private or public) AMIs </font>
    - Disable root API access keys and secret key
    - Configure Public Key authentication for remote login
    - Restrict access to instances from limited IP ranges using Security Groups
@@ -267,7 +267,7 @@ The following list mainly focuses on network and host-level boundary protection
 The checklist mainly focuses on protection of data (at rest and in transit), protection of encryption keys, removal of sensitive data from AMIs, and, understanding access data requests in AWS.
 
 ### Best-practice checklist
-1. <font color=red> protecting data at rest </font>
+1. <font color=OrangeRed> protecting data at rest </font>
    - Define polices for data classification, access control, retention and deletion
    - Tag information assets stored in AWS based on adopted classification scheme
    - Determine where the data will be located by selecting a suitable AWS region
@@ -279,7 +279,7 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - Restrict access to data using IAM policies, resource policies and capability policies
 
 
-2. <font color=red> protecting data at rest on Amazon S3 </font>
+2. <font color=OrangeRed> protecting data at rest on Amazon S3 </font>
    - Use <font color=LightSlateBlue> bucket-level or object-level permissions </font> alongside IAM policies
    - <font color=LightSlateBlue> Don’t create any publicly accessible S3 buckets </font>
      - Instead, create pre-signed URLs to grant time-limited permission to download the objects
@@ -296,7 +296,7 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - Be familiar with the durability and availability options for different S3 storage types – S3, S3-IA and S3-RR.
 
 
-3. <font color=red> protecting data at rest on Amazon EBS </font>
+3. <font color=OrangeRed> protecting data at rest on Amazon EBS </font>
    - only use encrypted EBS volume
      - encrypt data, snapshots, and disk I/O using the customary AWS-256 algorithm
    - active VPC Flow log
@@ -313,7 +313,7 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
      - for key management
 
 
-4. <font color=red> protecting data at rest on Amazon RDS </font>
+4. <font color=OrangeRed> protecting data at rest on Amazon RDS </font>
    - (Note: Amazon RDS leverages the same secure infrastructure as Amazon EC2. You can use the Amazon RDS service without additional protection, but it is suggested to encrypt data at application layer)
    - Use built-in encryption function that encrypts all sensitive database fields, using an application key, before storing them in the database
    - Use platform level encryption
@@ -322,22 +322,22 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - Use Oracle Transparent Data Encryption on Amazon RDS for Oracle Enterprise Edition under the Bring Your Own License (BYOL) model
 
 
-5. <font color=red> protecting data at rest on Amazon Glacier </font>
+5. <font color=OrangeRed> protecting data at rest on Amazon Glacier </font>
    - Data stored on Amazon Glacier is protected using server-side encryption.
    - AWS generates separate unique encryption keys for each Amazon Glacier archive, and encrypts it using AES-256
    - Encrypt data prior to uploading it to Amazon Glacier for added protection
 
-6. <font color=red> protecting data at rest on Amazon DynamoDB </font>
+6. <font color=OrangeRed> protecting data at rest on Amazon DynamoDB </font>
    - DynamoDB is a shared service from AWS and can be used without added protection
    - implement a data encryption layer over the standard DynamoDB service
    - Use raw binary fields or Base64-encoded string fields, when storing encrypted fields in DynamoDB
 
-7. <font color=red> protecting data at rest on Amazon EMR </font>
+7. <font color=OrangeRed> protecting data at rest on Amazon EMR </font>
    - Store data permanently on Amazon S3 only, and do not copy to HDFS at all. Apply server-side or client-side encryption to data in Amazon S3
    - Protect the integrity of individual fields or entire file (for example, by using HMAC-SHA1) at the application level while you store data in Amazon S3 or DynamoDB
    - Or, employ a combination of Amazon S3 server-side encryption and client-side encryption, as well as application-level encryption
 
-8. <font color=red> protecting data in transit </font>
+8. <font color=OrangeRed> protecting data in transit </font>
    - Encrypt data in transit
      - using IPSec ESP and/or SSL/TLS
    - Encrypt all non-console administrative access using strong cryptographic mechanisms using SSH, user and site-to-site IPSec VPNs, or SSL/TLS to further secure remote system management
@@ -355,7 +355,7 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - Use SSH for clients or applications to access Amazon EMR clusters across the internet using scripts
    - Use SSL/TLS for Thrift, REST, or Avro
 
-9. <font color=red> managing and protecting encryption keys </font>
+9. <font color=OrangeRed> managing and protecting encryption keys </font>
    - Define key rotation policy
    - Do not hard code keys in scripts and applications
    - Securely manage keys
@@ -365,12 +365,12 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - Use a key management solution
      - from the AWS Marketplace or from an APN Partner. (e.g., SafeNet, TrendMicro, etc.)
 
-10. <font color=red> ensuring custom Amazon Machine Images (AMIs) are secure and free of sensitive data </font> before publishing for internal (private) or external (public) use
+10. <font color=OrangeRed> ensuring custom Amazon Machine Images (AMIs) are secure and free of sensitive data </font> before publishing for internal (private) or external (public) use
     - Securely delete all sensitive data including AWS credentials, third-party credentials and certificates or keys from disk and configuration files
     - Delete log files containing sensitive information
     - Delete all shell history on Linux
 
-11. <font color=red> understand who has the right to access the data stored in AWS </font>
+11. <font color=OrangeRed> understand who has the right to access the data stored in AWS </font>
     - Understand the applicable laws to the business and operations
       - consider whether laws in other jurisdictions may apply
     - Understand that relevant government bodies may have rights to issue requests for content, each relevant law will contain criteria that must be satisfied for the relevant law enforcement body to make a valid request.
@@ -394,10 +394,10 @@ These controls can be implemented using
 
 ### best practice checklist
 
-1. using <font color=red> Trusted Advisor  </font>
+1. using <font color=OrangeRed> Trusted Advisor  </font>
    - to check for security compliance.
 
-2. <font color=red> capturing and storing logs  </font>
+2. <font color=OrangeRed> capturing and storing logs  </font>
    - Activate AWS Cloud Trail.
    - Collect logs from various locations/services including
      - AWS APIs and user-related logs (e.g. AWS CloudTrail),
@@ -408,24 +408,24 @@ These controls can be implemented using
    - Use services and features such as AWS CloudFormation, AWS OpsWorks, or Amazon Elastic Compute Cloud (EC2) user data, to ensure that instances have agents installed for log collection
    - Move logs periodically from the source either directly into a log processing system (e.g., CloudWatch Logs) or stored in an Amazon S3 bucket for later processing based on business needs
 
-3. <font color=red> analyzing logs </font>
+3. <font color=OrangeRed> analyzing logs </font>
    - Parse and analyse security data using solutions
    - such as <font color=LightSlateBlue> AWS Config, AWS CloudWatch, Amazon EMR, Amazon Elasticsearch Service, etc. </font>
    - Perform analysis and visualization with Kibana.
 
-4. <font color=red> retaining logs  </font>
+4. <font color=OrangeRed> retaining logs  </font>
    - Store data centrally using Amazon S3, and, for long-term archiving if required, using Amazon Glacier
    - Define data-retention lifecycle for logs.
      - By default, CloudWatch logs are kept indefinitely and never expire.
      - You can adjust the retention policy for each log group, keeping the indefinite retention, or choosing a retention period between 10 years and one day
    - Manage log retention automatically using AWS Lambda.
 
-5. <font color=red> receiving notification and alerts </font>
+5. <font color=OrangeRed> receiving notification and alerts </font>
    - Use Amazon CloudWatch Events for routing events of interest and information reflecting potentially unwanted changes into a proper workflow
    - Use Amazon GuardDuty to continuously monitor for malicious or unauthorized behavior
    - Send events to targets like an AWS Lambda function, Amazon SNS, or other targets for alerts and notifications
 
-6. <font color=red> monitoring billing in the AWS account </font>
+6. <font color=OrangeRed> monitoring billing in the AWS account </font>
    - Use detailed billing to monitor the monthly usage regularly
    - Use consolidated billing for multiple accounts
 
@@ -453,14 +453,14 @@ there are several tools in the AWS cloud environment to help the incident respon
 
 ### Best-practice checklist
 
-1. <font color=red> ensure an appropriate incident response strategy in place </font>
+1. <font color=OrangeRed> ensure an appropriate incident response strategy in place </font>
    - Make sure the security team has the right tools pre-deployed into AWS so that the incident can be responded to in a timely manner.
    - Pre-provision a ‘clean room’ for automated incident handling.
    - Have a list of relevant contacts that may need to be notified.
    - Decide on the medium of communication. If the compromised account contains personal data, you may be required to contact the Data Protection Commission (DPC) within 72 hours to comply with GDPR.
    - Conduct incident response simulations regularly in the non-production and the production environments as well. Incorporate lessons learned into the architecture and operations.
 
-2. <font color=red> AWS tools for prepare in advance for incident handling </font>
+2. <font color=OrangeRed> AWS tools for prepare in advance for incident handling </font>
    - Tags in AWS allow you to proactively label resources with a data classification or a criticality attribute so you can quickly estimate the impact when the incident occurs.
    - <font color=LightSlateBlue> AWS Organisations </font>
      - allows you to create separate accounts along business lines or mission areas which also limits the “blast radius” should a breach occur;
@@ -487,12 +487,12 @@ there are several tools in the AWS cloud environment to help the incident respon
      - coordinates a sequence of steps to automate an incident response process.
    - APIs automate many of the routine tasks that need to be performed during incident handling.
 
-3. <font color=red> respond to AWS abuse warnings </font>
+3. <font color=OrangeRed> respond to AWS abuse warnings </font>
    - Set up a dedicated security communication email address.
    - Do not ignore abuse warnings. Take action to stop the malicious activities, and prevent future re-occurrence.
    - Open a case number with AWS Support for cross-validation.
 
-4. <font color=red> isolate and restrict user access to a compromised Amazon EC2 instance </font>
+4. <font color=OrangeRed> isolate and restrict user access to a compromised Amazon EC2 instance </font>
    - containing the instance manually,
      - use IAM to restrict access permissions to compromised Amazon EC2 instance.
      - Isolate the instance using restrictive ingress and egress security group rules or remove it from a load balancer.
@@ -504,7 +504,7 @@ there are several tools in the AWS cloud environment to help the incident respon
    - automate the above steps using Lambda, Step Functions, CloudFormation and SNS Topic to prepare an EC2 auto clean room for containing the instance.
    - You could also use aws-security-automation code on GitHub, which is a collection of scripts and resources for DevSecOps, Security Automation and Automated Incident Response Remediation.
 
-5. <font color=red> ensure sensitive information is wiped post investigation </font>
+5. <font color=OrangeRed> ensure sensitive information is wiped post investigation </font>
    - Secure wipe-files and delete any KMS data keys, if used.
 
 

@@ -44,7 +44,7 @@ Setup:
      - `application.py`
    - create application
    - get the url
-     - <font color=red> web application server from the container running in Elastic Beanstalk </font>
+     - <font color=OrangeRed> web application server from the container running in Elastic Beanstalk </font>
 
 2. upgrade
    - select <font color=LightSlateBlue> upload and deploy </font>
@@ -56,10 +56,10 @@ Setup:
 ## benefits
 
 - fully managed
-  - The entire platform is already built, <font color=red> only need to upload code </font>
+  - The entire platform is already built, <font color=OrangeRed> only need to upload code </font>
 
 - fast and simple way
-  1. to <font color=red> get web application up and runninng </font>
+  1. to <font color=OrangeRed> get web application up and runninng </font>
      - quick deployment, scaling, and management of web applications and services.
        - Choose instance type, database, set and adjust automaticscaling, update application, access the server log files, and enable HTTPS on the load balancer.
      - provides all the application services that you need for your application.
@@ -67,23 +67,23 @@ Setup:
        - Use the AWS Management Console, a Git repository, or an integrated development environment(IDE) such as Eclipse or Visual Studio to upload your application.
        - deploy code through the AWS Management Console, AWS CLI, Visual Studio, and Eclipse.
        - supports a broad range of platforms (Docker, Go, Java, .NET, Node.js, PHP, Python, and Ruby).
-  2. <font color=red> supports the deployment of Docker containers </font>
+  2. <font color=OrangeRed> supports the deployment of Docker containers </font>
      - Docker containers: are self-containered and include all the cofiguration information and software your web application required to run,
        - libraries, system tools, code&runtime
 
-- <font color=red> automated deployment scaling service for web applications </font>
+- <font color=OrangeRed> automated deployment scaling service for web applications </font>
   - Elastic Beanstalk automatically handles the deployment details of
     - <font color=LightSlateBlue> capacity provisioning, Load balancing, auto scaling, and application health monitoring </font>
     - Application platform management
     - automated infrastructure management
     - Code deployment
 
-- <font color=red> improve developer productivity </font>
+- <font color=OrangeRed> improve developer productivity </font>
   - focusing on writing code
   - instead of managing and configuring servers, databases, load balancers, firewalls, and networks.
   - AWS updates the underlying platform that runs your application with patches and updates.
 
-- Elastic Beanstalk is <font color=red> difficult to outgrow </font>
+- Elastic Beanstalk is <font color=OrangeRed> difficult to outgrow </font>
   - With Elastic Beanstalk, the application can handle peaks in workload or traffic while minimizing your costs.
   - It automatically scales your application up or down based on your application's specific needs by using easily adjustable automatic scaling settings.
   - use CPU utilization metrics to trigger automatic scalingactions.
@@ -154,9 +154,9 @@ Blue/green deployment on AWS CloudFormation
 ## Elastic Beanstalk for docker
 
 1. deploy docker container
-   - <font color=red> single docker container </font>
+   - <font color=OrangeRed> single docker container </font>
      - run a <font color=LightSlateBlue> single docker container on an EC2 instance </font> provisioned by Elastic Beanstalk
-   - <font color=red> multiple docker container </font>
+   - <font color=OrangeRed> multiple docker container </font>
      - use Elastic Beanstalk to <font color=LightSlateBlue> build an ECS cluster and deploy multiple docker container on each instance </font>
 
 2. deploy your code

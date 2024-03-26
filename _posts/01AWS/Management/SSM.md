@@ -16,7 +16,7 @@
 - a management service
 - view and control of the infrastructure on AWS.
   - a unified user interface to view operational data from multiple AWS services
-  - and <font color=red> automate operational tasks </font> across the AWS resources.
+  - and <font color=OrangeRed> automate operational tasks </font> across the AWS resources.
   - maintain security and compliance
     - by scanning the managed instances
     - and reporting on (or taking corrective action on) any policy violations it detects.

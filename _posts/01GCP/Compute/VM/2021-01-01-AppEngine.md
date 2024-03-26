@@ -88,7 +88,7 @@ App Engine
 
 ### Google App Engine Standard Environment
 
-<font color=red> Google App Engine Standard Environment </font>
+<font color=OrangeRed> Google App Engine Standard Environment </font>
 
 - simpler deployment experience than the Flexible environment and fine-grained auto-scale.
 - a free daily usage quota for the use of some services.
@@ -98,7 +98,7 @@ App Engine
 
 
 
-<font color=red> App Engine software development kits </font>
+<font color=OrangeRed> App Engine software development kits </font>
 
 - Google provides App Engine software development kits in several languages
 - can test the application locally before you upload it to the real App Engine service.
@@ -109,7 +109,7 @@ App Engine
 > what exactly is the executable binary?
 
 
-<font color=red> runtime </font>
+<font color=OrangeRed> runtime </font>
 
 - App Engine's term for this kind of binary is the runtime.
 - In App Engine Standard Environment, use a runtime provided by Google.
@@ -121,7 +121,7 @@ App Engine
 > consider the Flexible Environment.
 
 
-<font color=red> Sandbox </font>
+<font color=OrangeRed> Sandbox </font>
 
 - The Standard Environment also enforces restrictions on the code by making it run in Sandbox
 - a software construct that's independent of the hardware, operating system, or physical location of the server it runs on.
@@ -160,7 +160,7 @@ use App Engine Standard Environment in practice
 ### Google App Engine flexible Environment
 
 
-<font color=red> App Engine flexible environment </font>
+<font color=OrangeRed> App Engine flexible environment </font>
 
 - build and deploy containerized apps with a click
 - not sandbox constraints
