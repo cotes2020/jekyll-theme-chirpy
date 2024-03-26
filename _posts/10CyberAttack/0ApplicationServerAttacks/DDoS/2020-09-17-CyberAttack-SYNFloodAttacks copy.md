@@ -15,7 +15,7 @@ image:
 
 # Meow's CyberAttack - Application/Server Attacks - DDos Dos - SYN Flood Attacks
 
-book: (S+ 7th)
+book: Security+ 7th
 
 ---
 
