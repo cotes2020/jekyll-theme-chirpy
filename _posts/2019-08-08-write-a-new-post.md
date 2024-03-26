@@ -472,7 +472,7 @@ You can also specify additional attributes for the embedded video file. Here is 
 - `autoplay=true` - video automatically begins to play back as soon as it can
 - `loop=true` - automatically seek back to the start upon reaching the end of the video
 - `muted=true` - audio will be initially silenced
-- `additional_types` - specify the extensions of additional video formats separated by |. Ensure these files exist in the same directory as your primary video file.
+- `extnames` - specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
 
 Consider an example utilizing all of the above:
 
@@ -480,7 +480,7 @@ Consider an example utilizing all of the above:
 {%
   include embed/video.html
   src='/path/to/video/video.mp4'
-  additional_types='ogg|mov'
+  extnames='ogg|mov'
   poster='poster.png'
   title='Demo video'
   autoplay=true
@@ -488,6 +488,10 @@ Consider an example utilizing all of the above:
   muted=true
 %}
 ```
+> It's not recommended to host video files in `assets` folder as they cannot be cached by PWA and may cause issues.
+> Instead, use CDN to host video files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
+{: .prompt-warning }
+
 ## Audio
 
 ### Basic Audio Embedding
@@ -502,23 +506,12 @@ To embed an audio file, use the following code snippet:
 
 ### Adding Additional Audio Formats
 
-For broader compatibility across browsers and devices, it's a good idea to provide your audio in multiple formats. You can specify additional audio formats using the additional_types attribute.
+For broader compatibility across browsers and devices, it's a good idea to provide your audio in multiple formats. You can specify additional audio formats using the extnames attribute.
 
 ```liquid
-{% include embed/audio.html src='/path/to/audio/audio.mp3' additional_types='ogg|wav|aac' title='Demo audio' %}
+{% include embed/audio.html src='/path/to/audio/audio.mp3' extnames='ogg|wav|aac' title='Demo audio' %}
 ```
-- `additional_types`: Specify the extensions of additional audio formats separated by |. Ensure these files exist in the same directory as your primary audio file.
-
-### Supported Audio Extensions
-
-|Extension|Media Type for HTML Audio|
-| ----------- | ----------- |
-|.mp3|audio/mpeg|
-|.wav|audio/wav|
-|.ogg|audio/ogg|
-|.aac|audio/aac|
-|.webm|audio/webm|
-|.flac|audio/flac|
+- `extnames`: Specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
 
 > It's not recommended to host audio files in `assets` folder as they cannot be cached by PWA and may cause issues.
 > Instead, use CDN to host audio files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).

@@ -1,5 +1,5 @@
-{% assign media_type_extension = include.type %}
-{% case media_type_extension %}
+{% assign extname = include.extname %}
+{% case extname %}
   {% when 'mp3' %}
     {{- 'mpeg' -}}
   {% when 'mov' %}
@@ -9,5 +9,5 @@
   {% when 'mkv' %}
     {{- 'x-matroska' -}}
   {% else %}
-    {{- media_type_extension -}}
+    {{- extname -}}
 {% endcase %}

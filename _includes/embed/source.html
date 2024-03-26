@@ -1,0 +1,8 @@
+{% assign src = include.src %}
+{% assign tag = include.tag %}
+{% assign extname = include.extname %}
+
+{% capture media_type %}
+  {% include embed/convert-media-type.html extname=extname %}
+{% endcapture %}
+<source src="{{ src }}" type="{{ tag }}/{{ media_type | strip }}">
