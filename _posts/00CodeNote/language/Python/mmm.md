@@ -122,4 +122,3 @@ if __name__ == "__main__":
 ![pic](https://pic1.zhimg.com/v2-0995b2cfd39aaf470dc9a97a78f9de74_b.jpg)
 
 - 其实将多线程用在网络爬虫中, 主要的操作模式是和其他方面的应用没有区别的, 依旧是先自定义一个Thread的类型, 再把需要process的函数(如果爬虫)应用到该class的run方法中来。
-

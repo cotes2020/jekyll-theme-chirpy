@@ -268,4 +268,3 @@ tags: [Java code generation, Natural Language Processing, Sequence-to-sequence M
   - In the future, it would be interesting to explore other neural network models performance, and improve the programming language syntax through the decoding algorithm.
 
   - In addition, since in this paper we focus the work on additional training using code only, we leave additional training using bimodal data for future work.
-

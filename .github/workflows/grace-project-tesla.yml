@@ -49,4 +49,3 @@ jobs:
           git add .
           git commit -m "Auto updating output to repo"
           git push
-
