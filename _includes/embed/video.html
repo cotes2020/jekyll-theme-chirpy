@@ -1,8 +1,6 @@
-{% assign supported_video_extensions = 'mp4|ogg|webm|mov|avi|mkv' %}
-
 {% assign video_url = include.src %}
 {% assign poster_url = include.poster %}
-{% assign additional_types = include.additional_types | default: '' | strip | split: '|' %}
+{% assign extnames = include.extnames | default: '' | strip | split: '|' %}
 
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
@@ -36,11 +34,10 @@
 <p>
   <video class="embed-video file" {{ poster }} {{ attributes }}>
     {%
-      include multi-sources.html
+      include embed/multi-sources.html
       tag='video'
       src=video_url
-      supported_extensions=supported_video_extensions
-      additional_types=additional_types
+      extnames=extnames
     %}
   </video>
   {% if include.title %}
