@@ -156,9 +156,9 @@ Google Kubernetes Engine (GKE)
   - **container orchestratory** to `deploy and manage multi-container applications`.
   - <font color=red> an orchestration system for applications in containers </font>
   - uses a <font color=red> container-optimized operating system </font>
-    - <font color=blue> containerization </font>
+    - <font color=LightSlateBlue> containerization </font>
       - a way to package code that's designed to be highly portable and to use resources very efficiently.
-    - <font color=blue> Kubernetes </font>
+    - <font color=LightSlateBlue> Kubernetes </font>
       - a way to orchestrate code in those containers.
   - automates deployment, scaling, load balancing, logging, and monitoring, and other management features
   - A managed environment for deploying containerized applications
@@ -169,22 +169,22 @@ Google Kubernetes Engine (GKE)
   - by adding features and integrating with other GCP services automatically
   - <font color=red> adding features </font>
     - GKE supports
-      - <font color=blue> cluster scaling </font>
-      - <font color=blue> persistent disks </font>
-      - <font color=blue> automated updates to the latest version of Kubernetes </font>
-      - <font color=blue> and auto repair for unhealthy nodes </font>
+      - <font color=LightSlateBlue> cluster scaling </font>
+      - <font color=LightSlateBlue> persistent disks </font>
+      - <font color=LightSlateBlue> automated updates to the latest version of Kubernetes </font>
+      - <font color=LightSlateBlue> and auto repair for unhealthy nodes </font>
     1. Just as Kubernetes support scaling workloads
        - GKE support scaling the cluster itself.
-    2. direct the service to instantiate a <font color=blue> Kubernetes system, cluster </font>
+    2. direct the service to instantiate a <font color=LightSlateBlue> Kubernetes system, cluster </font>
        - GKE clusters can be customized
          - support different machine types, numbers of nodes and network settings.
        - the resources used to build Kubernetes Engine clusters come from Compute Engine
-         - <font color=blue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
+         - <font color=LightSlateBlue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
          - Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities.
        - If enable GKE's `auto upgrade feature`
          - the clusters are automatically upgraded with the latest and greatest version of Kubernetes.
          - and can enable automatic node upgrades too.
-    3. <font color=blue> nodes, the virtual machines </font> that host the containers inside of a GKE cluster
+    3. <font color=LightSlateBlue> nodes, the virtual machines </font> that host the containers inside of a GKE cluster
        - If enable GKE's `auto repair feature`
        - the service will automatically repair unhealthy nodes
          - make periodic health checks on each node in the cluster.
@@ -192,22 +192,22 @@ Google Kubernetes Engine (GKE)
          - cause it's workloads to gracefully exit and then recreate that node.
 
   - <font color=red> seamlessly integrates with: </font>
-    1. with <font color=blue> Google Cloud build and container registry. </font>
+    1. with <font color=LightSlateBlue> Google Cloud build and container registry. </font>
        - create container using Cloud Build
        - and storing a container in Container Registry.
        - automate deployment using private container images that securely stored in container registry.
 
-    2. with <font color=blue> Google's identity and access management </font>
+    2. with <font color=LightSlateBlue> Google's identity and access management </font>
        - control access through the use of accounts and role permissions.
 
-    3. with <font color=blue> Stackdriver monitoring </font>
+    3. with <font color=LightSlateBlue> Stackdriver monitoring </font>
        - Stackdriver, Google Cloud system for monitoring and management for services, containers, applications, and infrastructure.
        - to help understand the applications performance.
 
-    4. with <font color=blue> Google VPCs </font> virtual private clouds
+    4. with <font color=LightSlateBlue> Google VPCs </font> virtual private clouds
        - makes use of GCP's networking features.
 
-    5. <font color=blue> the GCP console </font>
+    5. <font color=LightSlateBlue> the GCP console </font>
        - provides insights into GKE clusters and the resources
        - view, inspect and delete resources in those clusters.
        - open source Kubernetes
@@ -217,7 +217,7 @@ Google Kubernetes Engine (GKE)
          - dashboard for GKE clusters and workloads that don't have to manage.
          - more powerful than the Kubernetes dashboard.
 
-    6. <font color=blue> Existing workloads running within on-premise clusters can easily be moved on to GCP </font>
+    6. <font color=LightSlateBlue> Existing workloads running within on-premise clusters can easily be moved on to GCP </font>
 
 - very well suited for
   - containerized applications.
@@ -313,7 +313,7 @@ Benefits
   - Kubernetes also allows <font color=red> imperative configuration </font>
     - issue commands to change the system state.
     - But administering Kubernetes as scale imperatively, will be a big missed opportunity.
-  - <font color=blue> One of the primary strengths of Kubernetes is its ability to automatically keep a system in a state that declare </font>
+  - <font color=LightSlateBlue> One of the primary strengths of Kubernetes is its ability to automatically keep a system in a state that declare </font>
     - Experienced Kubernetes administrators use imperative configuration
       - only for quick temporary fixes
       - and as a tool in building a declarative configuration.
@@ -418,7 +418,7 @@ Benefits
 > cluster > master + node > pod > containers
 
 - <font color=red> deployment </font>
-  - A deployment represents <font color=blue> a group of replicas of the same pod. </font>
+  - A deployment represents <font color=LightSlateBlue> a group of replicas of the same pod. </font>
   - keeps the pods running
     - even if a node on which some of them run on fails.
   - use a deployment to contain a component of application or entire application.
@@ -436,7 +436,7 @@ Benefits
 ![Screen Shot 2021-02-15 at 20.45.25](https://i.imgur.com/GxzAwZP.png)
 
 - Pods are the atomic unit on the Kubernetes platform.
-  - the <font color=blue> smallest deployable unit </font> in Kubernetes.
+  - the <font color=LightSlateBlue> smallest deployable unit </font> in Kubernetes.
   - the basic building block of the standard Kubernetes model
   - the smallest deployable Kubernetes object.
   - pod is like running process on the cluster.
@@ -445,10 +445,10 @@ Benefits
   - Each Pod is tied to the Node where it is scheduled, and remains there until termination (according to restart policy) or deletion.
   - In case of a Node failure, identical Pods are scheduled on other available Nodes in the cluster.
 
-- Kubernetes deploys <font color=blue> a container or a set of related containers </font> inside pod.
+- Kubernetes deploys <font color=LightSlateBlue> a container or a set of related containers </font> inside pod.
 
 
-- the pod could be <font color=blue> one component of the application or an entire application </font>
+- the pod could be <font color=LightSlateBlue> one component of the application or an entire application </font>
 
 - A pod embodies the environment where the containers live.
   - That environment can accommodate one or more containers.
@@ -459,7 +459,7 @@ Benefits
   - Each pod gets <font color=red> a unique IP address and set of ports </font> for containers.
     - Every container within a pod shares the network namespace, including IP address and network ports.
     - containers inside a pod can communicate with each other
-      - using the <font color=blue> localhost network interface </font>
+      - using the <font color=LightSlateBlue> localhost network interface </font>
       - they don't know or care which nodes they're deployed on.
       - The famous 127.0.0.1 IP address
   - A pod can also specify a set of Storage volumes to be shared among its containers.
@@ -670,7 +670,7 @@ spec:
 <font color=red> pod access </font>
 
 - default:
-  - pods in a deployment is <font color=blue> only accessible inside the cluster </font>
+  - pods in a deployment is <font color=LightSlateBlue> only accessible inside the cluster </font>
   - Every Pod in a cluster gets its own `unique cluster-wide IP address`. do not need to explicitly create links between Pods and almost never need to deal with mapping container ports to host ports.
   - Pods can be treated much like VMs or physical hosts from the perspectives of port allocation, naming, service discovery, load balancing, application configuration, and migration.
   - Kubernetes IP addresses exist at the Pod scope - `containers within a Pod share their network namespaces` - including their IP address and MAC address.
@@ -685,7 +685,7 @@ Kubernetes networking addresses 4 concerns:
   - Ingress provides extra functionality specifically for exposing HTTP applications, websites and APIs.
 - can also use Services to publish services only for consumption inside the cluster.
 
-- To <font color=blue> make the pods in the deployment publicly available </font>
+- To <font color=LightSlateBlue> make the pods in the deployment publicly available </font>
     - to let people on the Internet to access the content in nginx web server
     - <font color=red> connect a load balancer </font> to it
       ```bash
@@ -699,13 +699,13 @@ Kubernetes networking addresses 4 concerns:
      - the fundamental way Kubernetes represents load balancing.
      - A service groups a set of pods together and provides a stable endpoint for them.
      - Suppose the application consisted of a front end and a back end.
-       - <font color=blue> the front end can access the back end using those pods' internal IP addresses </font>
+       - <font color=LightSlateBlue> the front end can access the back end using those pods' internal IP addresses </font>
        - without the need for a service
          - it would be a management problem. As deployments create and destroy pods, pods get their own IP addresses,
          - those addresses don't remain stable over time.
-       - <font color=blue> Services provide a stable endpoint </font>
+       - <font color=LightSlateBlue> Services provide a stable endpoint </font>
 
-2. Kubernetes <font color=blue> attach an external load balancer with a public IP address to the service </font>
+2. Kubernetes <font color=LightSlateBlue> attach an external load balancer with a public IP address to the service </font>
    - so that others outside the cluster can access it.
 
 3. Any client hits that IP address
@@ -1556,7 +1556,7 @@ containers:
     - example
        - choose a rolling update for a deployment
        - when give it a new version of the software that it manages,
-       - Kubernetes will <font color=blue> create pods of the new version one-by-one </font>
+       - Kubernetes will <font color=LightSlateBlue> create pods of the new version one-by-one </font>
        - <font color=red> waiting for each new version pod to become available before destroying one of the old version pods </font>
     - a quick way to push out a new version of the application
     - while sparing the users from experiencing downtime.
@@ -1568,7 +1568,7 @@ containers:
 ## Networking
 
 4 distinct networking problems:
-- Highly-coupled `container-to-container` communications: this is solved by <font color=blue> Pods and localhost </font> communications.
+- Highly-coupled `container-to-container` communications: this is solved by <font color=LightSlateBlue> Pods and localhost </font> communications.
 - `Pod-to-Pod` communications: this is the primary focus of this document.
 - `Pod-to-Service` communications: this is covered by <font color=red> Services </font>
 - `External-to-Service` communications: this is also covered by <font color=red> Services </font>
@@ -1577,7 +1577,7 @@ containers:
 Kubernetes is all about <font color=red> sharing machines between applications </font>
 - Typically, sharing machines requires ensuring that two applications do not try to use the same ports. Coordinating ports across multiple developers is very difficult to do at scale and exposes users to cluster-level issues outside of their control.
 
-- <font color=blue> Dynamic port allocation </font> brings a lot of complications to the system
+- <font color=LightSlateBlue> Dynamic port allocation </font> brings a lot of complications to the system
   - every application has to take ports as flags,
   - the API servers have to know how to insert dynamic port numbers into configuration blocks,
   - services have to know how to find each other, etc.
@@ -1589,7 +1589,7 @@ Kubernetes is all about <font color=red> sharing machines between applications <
     - requires watching and cache invalidation for address/port changes for instances in addition to watching group membership changes, and obstructs container/pod migration (e.g. using CRIU).
     - NAT introduces additional complexity by fragmenting the addressing space, which breaks self-registration mechanisms, among other problems.
 
-- <font color=blue> Kubernetes </font> takes a different approach.
+- <font color=LightSlateBlue> Kubernetes </font> takes a different approach.
 
 
 container runtime
@@ -1615,9 +1615,9 @@ Kubernetes deviates from the default Docker networking model
 
 - Kubernetes imposes the following fundamental requirements on any networking implementation (barring any intentional network segmentation policies):
 
-  - pods can communicate with <font color=blue> all other pods on any other node without NAT </font>
+  - pods can communicate with <font color=LightSlateBlue> all other pods on any other node without NAT </font>
 
-  - agents on a node (e.g. system daemons, kubelet) can communicate with <font color=blue> all pods on that node </font>
+  - agents on a node (e.g. system daemons, kubelet) can communicate with <font color=LightSlateBlue> all pods on that node </font>
 
   - For those platforms that support Pods running in the host network (e.g. Linux), when pods are attached to the host network of a node they can still communicate with all pods on all nodes without NAT.
 
@@ -1712,9 +1712,9 @@ Like Docker, ports can still be published to the host node's interface(s), but t
 
 ##### External to Internal
 
-- The way this is generally implemented is to <font color=red> set up external load balancers </font> (e.g. GCE's ForwardingRules or AWS's ELB) which <font color=blue> target all nodes in a cluster </font>.
+- The way this is generally implemented is to <font color=red> set up external load balancers </font> (e.g. GCE's ForwardingRules or AWS's ELB) which <font color=LightSlateBlue> target all nodes in a cluster </font>.
 
-- When traffic arrives at a node it is <font color=red> recognized as being part of a particular Service </font> and <font color=blue> routed to an appropriate backend Pod </font>.
+- When traffic arrives at a node it is <font color=red> recognized as being part of a particular Service </font> and <font color=LightSlateBlue> routed to an appropriate backend Pod </font>.
 
 - This does mean that some traffic will get double-bounced on the network
 
@@ -2057,13 +2057,13 @@ To control Pod traffic at the IP address or port level, use network policies. Au
 
 # Anthos
 
-- modern solution for <font color=blue> hybrid and multi-cloud distributed systems and service management </font>
+- modern solution for <font color=LightSlateBlue> hybrid and multi-cloud distributed systems and service management </font>
   - powered by the latest innovations in distributed systems, and service management software from Google.
 - On-permises and Cloud environments stay in sync
   - The Anthos framework rests on Kubernetes and GKE on-prem.
 - provides
   - the foundation for an architecture
-    - the foundation that is fully integrated with centralized management through a central control plane that supports <font color=blue> policy based application lifecycle </font> delivery across <font color=blue> hybrid and multi-cloud environments </font>
+    - the foundation that is fully integrated with centralized management through a central control plane that supports <font color=LightSlateBlue> policy based application lifecycle </font> delivery across <font color=LightSlateBlue> hybrid and multi-cloud environments </font>
   - a rich set of tools
     - Manage sevices on-permises and in the cloud
     - monitor systems and services
@@ -2079,7 +2079,7 @@ To control Pod traffic at the IP address or port level, use network policies. Au
 
 
 - <font color=red> Google Kubernetes Engine on the Cloud site </font> of the hybrid network.
-  - Google Kubernetes Engine is a managed production-ready environment for <font color=blue> deploying containerized applications </font>
+  - Google Kubernetes Engine is a managed production-ready environment for <font color=LightSlateBlue> deploying containerized applications </font>
   - Operates seamlessly with high availability and an SLA.
   - Runs certified Kubernetes ensuring portability across clouds and on-premises.
   - Includes auto-node repair, and auto-upgrade, and auto-scaling.
@@ -2090,14 +2090,14 @@ To control Pod traffic at the IP address or port level, use network policies. Au
   - a turn-key production-grade conformed version of Kubernetes
   - with the best practice configuration already pre-loaded.
   - Provides
-    - <font color=blue> easy upgrade path to the latest validated Kubernetes releases </font> by Google.
-    - <font color=blue> Provides access to container services </font> on Google Cloud platform,
+    - <font color=LightSlateBlue> easy upgrade path to the latest validated Kubernetes releases </font> by Google.
+    - <font color=LightSlateBlue> Provides access to container services </font> on Google Cloud platform,
       - such as Cloud build, container registry, audit logging, and more.
-    - <font color=blue> integrates with Istio, Knative and Marketplace Solutions </font>
+    - <font color=LightSlateBlue> integrates with Istio, Knative and Marketplace Solutions </font>
   - Ensures a consistent Kubernetes version and experience across Cloud and on-premises environments.
 
 - <font color=red> Marketplace </font>
-  - both <font color=blue> Google Kubernetes Engine in the Cloud </font> and <font color=blue> Google Kubernetes Engine deployed on-premises </font> integrate with <font color=blue> Marketplace </font>
+  - both <font color=LightSlateBlue> Google Kubernetes Engine in the Cloud </font> and <font color=LightSlateBlue> Google Kubernetes Engine deployed on-premises </font> integrate with <font color=LightSlateBlue> Marketplace </font>
   - so all of the clusters in network (on-premises or in the Cloud), have access to the same repository of containerized applications.
   - benefits:
     - use the same configurations on both the sides of the network,
@@ -2119,9 +2119,9 @@ To control Pod traffic at the IP address or port level, use network policies. Au
   - to sync and pass their data.
 
 - <font color=red> Stackdriver </font>
-  - the <font color=blue> built-in logging and monitoring solution </font> for Google Cloud.
+  - the <font color=LightSlateBlue> built-in logging and monitoring solution </font> for Google Cloud.
     - offers a fully managed logging, metrics collection, monitoring dashboarding, and alerting solution that watches all sides of the hybrid on multi-cloud network.
-  - the ideal solution for <font color=blue> single easy configure powerful cloud-based observability solution </font>
+  - the ideal solution for <font color=LightSlateBlue> single easy configure powerful cloud-based observability solution </font>
   - a single pane of class dashboard to monitor all of the environments.
 
 - <font color=red> Anthos Configuration Management </font>

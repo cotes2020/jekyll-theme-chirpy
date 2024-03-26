@@ -910,8 +910,8 @@ Use of Object
     ```
 
    - `alex = turtle.Turtle()`
-   - The Python interpreter find that `Turtle` is a <font color=blue> class, not function </font>
-   - so it <font color=blue> creates a new instance of the class </font> and returns it.
+   - The Python interpreter find that `Turtle` is a <font color=LightSlateBlue> class, not function </font>
+   - so it <font color=LightSlateBlue> creates a new instance of the class </font> and returns it.
      - Since the Turtle class was defined in a separate module, (confusingly, also named turtle)
      - had to refer to the class as `turtle.Turtle`.
 
@@ -938,9 +938,9 @@ Use of Object
     ```
 
     - The interpreter looks up `alex`
-    - finds `alex` is an <font color=blue> instance of the class </font> `Turtle`.
-    - Then it looks up the <font color=blue> attribute </font> `forward`
-    - finds that it is a <font color=blue> method </font>
+    - finds `alex` is an <font color=LightSlateBlue> instance of the class </font> `Turtle`.
+    - Then it looks up the <font color=LightSlateBlue> attribute </font> `forward`
+    - finds that it is a <font color=LightSlateBlue> method </font>
       - `Methods` return `values`, like `functions`
       - However, none of the methods of the `Turtle class` return values the way the `len` function does.
     - the interpreter invokes the method, passing 50 as a **parameter**.

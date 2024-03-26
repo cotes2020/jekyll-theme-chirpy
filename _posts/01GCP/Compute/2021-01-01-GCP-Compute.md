@@ -103,7 +103,7 @@ image:
 
 - <font color=red> Compute Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/Compute-engine/)
-  - <font color=blue> Infrastructure as a Service </font>
+  - <font color=LightSlateBlue> Infrastructure as a Service </font>
   - A managed environment for deploying virtual machines
   - Fully customizable **VMs**
     - Compute Engine offers virtual machines that run on GCP
@@ -135,7 +135,7 @@ image:
 
 - <font color=red> App Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/app-engine/)
-  - <font color=blue> Platform as a Service </font>
+  - <font color=LightSlateBlue> Platform as a Service </font>
   - fully managed serverless application framework.
     - deploy an application on App Engine
       - hand App Engine the code
@@ -184,7 +184,7 @@ image:
 ![Screen Shot 2021-02-14 at 21.33.08](https://i.imgur.com/Hf2hreB.png)
 
 - <font color=red> Cloud Function </font>
-  - <font color=blue> functions as a Service </font>
+  - <font color=LightSlateBlue> functions as a Service </font>
   - A managed serverless platform/environment for deploying event-driven functions
     - an event-driven, serverless compute service
     - for simple single purpose functions that are attached to events.

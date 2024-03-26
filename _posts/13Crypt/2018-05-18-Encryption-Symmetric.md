@@ -319,7 +319,7 @@ strengths
 
 The 128-bit version of the AES encryption algorithm proceeds in `ten rounds`.
 - Each round performs an invertible transformation on a 128-bit array, called state.
-- The initial state X0 = <font color=blue> XOR of the plaintext P with the key K </font>
+- The initial state X0 = <font color=LightSlateBlue> XOR of the plaintext P with the key K </font>
   - X0 = P XOR K.
 - The ciphertext C is the output of the final round:
   - C = X10.

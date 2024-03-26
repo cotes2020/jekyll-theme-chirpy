@@ -45,11 +45,11 @@ Compute Engine
 - <font color=red> Lift and shift </font>
 
 - choice:
-  - have <font color=blue> complete control over your infrastructure </font>
+  - have <font color=LightSlateBlue> complete control over your infrastructure </font>
     - maximum flexibility
     - for people who prefer to manage those server instances themselves.
     - customize operating systems and even run applications that rely on a mix of operating systems.
-  - best option <font color=blue> if other computing options don't support your applications or requirements </font>
+  - best option <font color=LightSlateBlue> if other computing options don't support your applications or requirements </font>
     - easily lift and shift your on-premises workloads into GCP without rewriting the applications or making any changes.
 
 
@@ -138,12 +138,12 @@ Virtual machines need <font color=red> block storage </font>
 
 
 <font color=red> grained control of costs </font>
-- <font color=blue> per second billing </font>
+- <font color=LightSlateBlue> per second billing </font>
   - GCP enables fine grained control of costs of Compute Engine resources by providing per second billing.
   - helps reduce the costs when deploying compute resources for short periods of time
     - such as batch processing jobs
 
-<font color=blue> preemptible VMs instances 抢先的 </font>
+<font color=LightSlateBlue> preemptible VMs instances 抢先的 </font>
 
 - provide significantly cheaper pricing for the workloads that can be interrupted safely
   - have a workload that no human being is sitting around waiting to finish

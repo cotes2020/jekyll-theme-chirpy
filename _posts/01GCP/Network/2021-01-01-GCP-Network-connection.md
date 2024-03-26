@@ -229,10 +229,10 @@ a VPN connection between the `VPC `and `on-premise network`.
 
 ## Cloud VPN gateway
 
-Classic VPN | High-availability (HA) VPN
----|---
-Supports dynamic routing and static routing | Supports dynamic routing (BGP) only
-No high availability | high availability (99.99 SLA, within region)
+| Classic VPN                                 | High-availability (HA) VPN                   |
+| ------------------------------------------- | -------------------------------------------- |
+| Supports dynamic routing and static routing | Supports dynamic routing (BGP) only          |
+| No high availability                        | high availability (99.99 SLA, within region) |
 
 
 
@@ -245,7 +245,7 @@ No high availability | high availability (99.99 SLA, within region)
 > need to configure **Cloud Router**.
 
 Cloud Router
-- manage routes from Cloud VPN tunnel using <font color=blue> border gateway protocol, BGP </font>.
+- manage routes from Cloud VPN tunnel using <font color=LightSlateBlue> border gateway protocol, BGP </font>.
   - routing method
   - allows for routes to be updated and exchanged without changing the tunnel configuration.
 

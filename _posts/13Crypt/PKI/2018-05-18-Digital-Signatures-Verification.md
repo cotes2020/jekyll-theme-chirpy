@@ -197,9 +197,9 @@ The certificate server:
 10. now <font color=red> verify the integrity of the message </font>
     - Receiver runs the message
       - calculates a message digest value of X.
-    - The certificate holds <font color=blue> Sender’s public key </font>
+    - The certificate holds <font color=LightSlateBlue> Sender’s public key </font>
        - Receiver extracts Sender’s public key from certificate.
-       - <font color=blue> uses Sender’s public key to decrypt digital signature </font>
+       - <font color=LightSlateBlue> uses Sender’s public key to decrypt digital signature </font>
        - a digital signature:
          - message digest encrypted with a private key.
          - decryption get a hash of value Y.

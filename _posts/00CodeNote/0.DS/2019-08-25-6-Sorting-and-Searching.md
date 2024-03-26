@@ -1321,8 +1321,8 @@ def sq(arr, l, r):
 1. begins by locating two position markers
    1. `leftmark` and `rightmark`,
    2. at the beginning and end of the remaining items in the list
-2. incrementing `leftmark` until locate a value <font color=blue> greater than the pivot value </font>.
-3. then decrement `rightmark` until find a value <font color=blue> less than the pivot value </font>.
+2. incrementing `leftmark` until locate a value <font color=LightSlateBlue> greater than the pivot value </font>.
+3. then decrement `rightmark` until find a value <font color=LightSlateBlue> less than the pivot value </font>.
 
 4. we have two items that are out of place with respect to the eventual split point.
    1. For our example, this occurs at 93 and 20.

@@ -97,8 +97,8 @@ S3 access from a private subnet doesn’t work, because:
 
 - **Interface endpoints** are powered by <font color=red> AWS PrivateLink </font>
   - AWS PrivateLink
-    - a technology that enables you to <font color=blue> privately access services by using private IP addresses. </font>
-  - connect to services that are powered by <font color=blue> AWS PrivateLink </font>
+    - a technology that enables you to <font color=LightSlateBlue> privately access services by using private IP addresses. </font>
+  - connect to services that are powered by <font color=LightSlateBlue> AWS PrivateLink </font>
   - These services include:
     - some AWS services,
     - services that are hosted by other AWS customers and AWS Partner Network (APN) Partners in their own VPCs (referred to as endpoint services),
@@ -121,8 +121,8 @@ S3 access from a private subnet doesn’t work, because:
   - Standard charges for data transfer and resource usage apply.
 
 - Gateway endpoints are only available for:
-  - <font color=blue> Amazon DyanmoDB </font>
-  - <font color=blue> Amazon S3 </font>
+  - <font color=LightSlateBlue> Amazon DyanmoDB </font>
+  - <font color=LightSlateBlue> Amazon S3 </font>
 
 - use case:
   - When a private instance needs to access a supported AWS public services such as DynamoDB or S3 without leaving the AWS network
@@ -133,12 +133,12 @@ S3 access from a private subnet doesn’t work, because:
 
 ### Gateway Load Balancer endpoints
 
-<font color=blue> an elastic network interface with a private IP address </font> from the IP address range of your subnet
-- It serves as an entry point to <font color=blue> intercept traffic and route it to a service configured using Gateway Load Balancers </font>
+<font color=LightSlateBlue> an elastic network interface with a private IP address </font> from the IP address range of your subnet
+- It serves as an entry point to <font color=LightSlateBlue> intercept traffic and route it to a service configured using Gateway Load Balancers </font>
   - for example, for security inspection.
   - Gateway Load Balancer endpoints are powered by AWS PrivateLink.
 
-- provides private connectivity between <font color=blue> virtual appliances in service provider VPC </font> and <font color=blue> application servers in service consumer VPC </font>
+- provides private connectivity between <font color=LightSlateBlue> virtual appliances in service provider VPC </font> and <font color=LightSlateBlue> application servers in service consumer VPC </font>
   - deploy the Gateway Load Balancer in the same VPC as the virtual appliances.
   - register the virtual appliances with a target group for the Gateway Load Balancer.
   - specify a Gateway Load Balancer endpoint as a target for a route in a route table.
@@ -147,7 +147,7 @@ S3 access from a private subnet doesn’t work, because:
       - from the service consumer VPC over the Gateway Load Balancer endpoint
       - to the Gateway Load Balancer in the service provider VPC,
       - and then returns to the service consumer VPC.
-    - create the <font color=blue> Gateway Load Balancer endpoint </font> and <font color=blue> the application servers </font> in different subnets.
+    - create the <font color=LightSlateBlue> Gateway Load Balancer endpoint </font> and <font color=LightSlateBlue> the application servers </font> in different subnets.
     - This enables you to configure the Gateway Load Balancer endpoint as the next hop in the route table for the application subnet.
 - Gateway Load Balancer endpoints are supported for endpoint services that are configured for Gateway Load Balancers only.
 
@@ -165,11 +165,11 @@ S3 access from a private subnet doesn’t work, because:
     - supported AWS Marketplace partner services.
     - that are powered by <font color=red> AWS PrivateLink </font>
   - An Interface for endpoint to uses <font color=red> AWS PrivateLink </font>
-  - an <font color=blue> elastic network interface (ENI) </font> with a <font color=red> private IP address </font> that serves as <font color=blue> an entry point for traffic destined to a supported service </font>
+  - an <font color=LightSlateBlue> elastic network interface (ENI) </font> with a <font color=red> private IP address </font> that serves as <font color=LightSlateBlue> an entry point for traffic destined to a supported service </font>
     - <font color=red> connectionn from instances in VPC to the services </font>
-      - does not require an <font color=blue> internet gateway, NAT device, VPN connection, or AWS Direct Connect connection </font>
-      - Instances in the VPC <font color=blue> do not require public IP addresses </font> to communicate with resources in the service.
-      - Traffic between the VPC and the other service <font color=blue> does not leave the Amazon network </font>
+      - does not require an <font color=LightSlateBlue> internet gateway, NAT device, VPN connection, or AWS Direct Connect connection </font>
+      - Instances in the VPC <font color=LightSlateBlue> do not require public IP addresses </font> to communicate with resources in the service.
+      - Traffic between the VPC and the other service <font color=LightSlateBlue> does not leave the Amazon network </font>
 
 ---
 

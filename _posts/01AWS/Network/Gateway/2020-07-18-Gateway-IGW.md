@@ -27,7 +27,7 @@ image:
 - IGW is <font color=red> resilient by design </font>
   - a scalable, redundant, and highly available VPC component
     - horizontally scaled out, redundant, and highly available by default.
-  - provide all subnets in all AZs with <font color=blue> resilient internet connectivity </font>
+  - provide all subnets in all AZs with <font color=LightSlateBlue> resilient internet connectivity </font>
 - <font color=red> one IGW one VPC </font>
   - Default VPC already has IGW
   - cannot assign more than one IGW to a VPC.
@@ -35,9 +35,9 @@ image:
 
 - <font color=red> allows communication between instances in your VPC and the internet </font>
   - provide a way to get access to the internet
-  - <font color=blue> allow traffic on the internet to come by providing a target in the subnet route tables </font> for internet-routable traffic.
+  - <font color=LightSlateBlue> allow traffic on the internet to come by providing a target in the subnet route tables </font> for internet-routable traffic.
     - Because the instance has a public IP address, the internet can access the public instance with the public IP address.
-  - IGW has to <font color=blue> add routing rules to the route table </font> for resources in a public subnet to reach the internet
+  - IGW has to <font color=LightSlateBlue> add routing rules to the route table </font> for resources in a public subnet to reach the internet
   - rules are not automatically created.
 
 

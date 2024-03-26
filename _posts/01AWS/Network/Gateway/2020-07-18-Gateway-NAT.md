@@ -21,14 +21,14 @@ image:
 
 
 3. enable instances in the private subnet
-   - to <font color=blue> initiate outbound traffic to the internet or to other AWS services </font>
-   - <font color=blue> prevent receiving inbound traffic from the Internet. </font>
+   - to <font color=LightSlateBlue> initiate outbound traffic to the internet or to other AWS services </font>
+   - <font color=LightSlateBlue> prevent receiving inbound traffic from the Internet. </font>
      - example:
      - have a database that want to keep in the private subnet
      - but still let it access database patches.
      - NAT service allows the instance to reach the internet to download patches without letting traffic come back in and access the instance.
 
-4. <font color=blue> fault-tolerant and can scale in response to load. </font>
+4. <font color=LightSlateBlue> fault-tolerant and can scale in response to load. </font>
 
 5. DHCP
    - can have multiple sets of DHCP options,
@@ -38,10 +38,10 @@ image:
 6. <font color=red> Dynamic / Static NAT gateway </font>
    - <font color=red> Static NAT: SNAT </font>
      - A private IP is mapped to a public IP. 
-     - translates private to public IPs at a <font color=blue> 1:1 ratio </font>
+     - translates private to public IPs at a <font color=LightSlateBlue> 1:1 ratio </font>
    - <font color=red> Dynamic NAT: DNAT </font>
      - A range of private addresses, are mapped onto one or more public IPs.
-     - <font color=blue> translate a range of private IPs to public IPs </font>
+     - <font color=LightSlateBlue> translate a range of private IPs to public IPs </font>
      - example:
 
      - when private instances only need internet access for an update
@@ -68,22 +68,22 @@ image:
 1. Used to <font color=red> enable private subnet instances to access the Internet </font>
    - be a route from a private subnet to the NAT instance for it to work.
    - setup
-     - NAT instance must live on a <font color=blue> single public subnet with a route to an Internet Gateway </font>
-     - Private instances in private subnets must <font color=blue> have a route to the NAT instance </font>
+     - NAT instance must live on a <font color=LightSlateBlue> single public subnet with a route to an Internet Gateway </font>
+     - Private instances in private subnets must <font color=LightSlateBlue> have a route to the NAT instance </font>
        - usually the default route destination of 0.0.0.0/0.
    - use as a <font color=red> bastion (jump) host </font>
 2. Can <font color=red> monitor traffic metrics </font>
 3. <font color=red> disable the source/destination check on the instance </font>
 4. NAT instances need to be assigned to security groups.
    - Security groups for NAT instances must allow
-     - <font color=blue> HTTP/HTTPS inbound from the private subnet </font>
-     - and <font color=blue> outbound to 0.0.0.0/0. </font>
+     - <font color=LightSlateBlue> HTTP/HTTPS inbound from the private subnet </font>
+     - and <font color=LightSlateBlue> outbound to 0.0.0.0/0. </font>
 5. Using a NAT instance <font color=red> can lead to bottlenecks (not HA) </font>
    - HA can be achieved by using Auto Scaling groups, multiple subnets in different AZ’s and a script to automate failover.
 6. The amount of traffic a NAT instance can support is based on the instance type.
    - Performance is dependent on instance size.
-   - Can <font color=blue> scale up instance size or use enhanced networking. </font>
-   - Can <font color=blue> scale out by using multiple NATs in multiple subnets. </font>
+   - Can <font color=LightSlateBlue> scale up instance size or use enhanced networking. </font>
+   - Can <font color=LightSlateBlue> scale out by using multiple NATs in multiple subnets. </font>
 7. <font color=red> Not supported for IPv6 </font> (use Egress-Only Internet Gateway).
 8. <font color=red> stateful </font>
    - NAT gateway understands the session

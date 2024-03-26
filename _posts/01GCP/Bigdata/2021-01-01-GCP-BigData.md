@@ -212,16 +212,16 @@ Running Hadoop jobs in <font color=red> Cloud Dataproc </font>
   - monitor the cluster using Stackdriver.
 
 - <font color=red> save money with preemptible Compute Engine instances </font>
-  - <font color=blue> only pay for hardware resources used during the life of the cluster </font>
+  - <font color=LightSlateBlue> only pay for hardware resources used during the life of the cluster </font>
     - the costs of the Compute Engine instances isn't the only component of the cost of a Dataproc cluster, but it's a significant one.
     - Although the rate for pricing is based on the hour,
       - Cloud Dataproc is billed by the second.
       - billed in one-second clock-time increments, subject to a one minute minimum billing.
     - when done with the cluster, delete it, and billing stops.
 
-  - <font color=blue> more agile use of resources </font> than on-premise hardware assets.
+  - <font color=LightSlateBlue> more agile use of resources </font> than on-premise hardware assets.
 
-  - let Cloud Dataproc use <font color=blue> preemptible Compute Engine instances </font> for the batch processing.
+  - let Cloud Dataproc use <font color=LightSlateBlue> preemptible Compute Engine instances </font> for the batch processing.
     - make sure that the jobs can be restarted cleanly, if they're terminated, and you get a significant break in the cost of the instances.
     - preemptible instances were around 80 percent cheaper.
 

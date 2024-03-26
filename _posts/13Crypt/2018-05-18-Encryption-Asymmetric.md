@@ -81,7 +81,7 @@ image:
   - might be used to encrypt a small chunk of data.
 
 - Most cryptographic protocols use asymmetric encryption only for <font color=red> key exchange </font>
-  - secure transmission of large amounts of data use <font color=blue> public key cryptography to establish a connection and then exchange a symmetric secret key </font>
+  - secure transmission of large amounts of data use <font color=LightSlateBlue> public key cryptography to establish a connection and then exchange a symmetric secret key </font>
   - The remainder of the session then uses symmetric cryptography.
   - Key exchange:
     - share cryptographic keys between two entities.
@@ -179,7 +179,7 @@ RSA algorithm:
 - RSA works with both encryption and digital signatures, used in many environments,
   - like Secure Sockets Layer (SSL), and key exchange.
   - commonly used as part of a `public key infrastructure (PKI) system`.
-    - PKI uses <font color=blue> digital certificates and a certificate authority (CA) </font> to allow secure communication across a public network.
+    - PKI uses <font color=LightSlateBlue> digital certificates and a certificate authority (CA) </font> to allow secure communication across a public network.
     - But ECDH better in PKI for key agreement.
 
 - based on <font color=red> factoring 2 larger primes </font>

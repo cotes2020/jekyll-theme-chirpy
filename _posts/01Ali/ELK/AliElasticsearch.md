@@ -13,7 +13,7 @@ Alibaba Cloud Elasticsearch is a fully managed cloud service that is developed b
 - X-Pack is integrated into Kibana to provide features, such as security, alerting, monitoring, and machine learning.
 - It also provides SQL capabilities.
 
-Alibaba Cloud Elasticsearch is widely used in scenarios such as <font color=blue> real-time log analysis and processing, information retrieval, multidimensional data queries, and statistical data analytics </font>.
+Alibaba Cloud Elasticsearch is widely used in scenarios such as <font color=LightSlateBlue> real-time log analysis and processing, information retrieval, multidimensional data queries, and statistical data analytics </font>.
 
 
 - providing a low-cost, scenario-based Elasticsearch service on the cloud based on the open source Elastic Stack ecosystem. Alibaba Cloud Elasticsearch originates from but is not limited to this ecosystem. Alibaba Cloud has superior computing and storage capabilities on the cloud and technical expertise in the fields of cluster security and O&M. This enables Alibaba Cloud Elasticsearch to support one-click deployment, auto scaling, intelligent O&M, and various kernel optimization features. Alibaba Cloud Elasticsearch also provides a complete set of solutions such as migration, disaster recovery, backup, and monitoring.

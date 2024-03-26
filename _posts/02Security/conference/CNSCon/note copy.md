@@ -49,7 +49,7 @@ Cloud native tools are meant to introduce security early in the application life
 
 - <font color=red> Artifacts (e.g., container images) </font> present in the lifecycle pipeline require
 
-  - **continual automated scanning and updates** to ensure safety from <font color=blue> vulnerabilities, malware, insecure coding practices, and other malfeasance </font>.
+  - **continual automated scanning and updates** to ensure safety from <font color=LightSlateBlue> vulnerabilities, malware, insecure coding practices, and other malfeasance </font>.
 
   - Upon completing these checks, it is important to **cryptographically sign artifacts** to ensure integrity and enforce non-repudiation.
 

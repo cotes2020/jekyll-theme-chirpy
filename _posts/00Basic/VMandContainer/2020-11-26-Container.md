@@ -87,7 +87,7 @@ containers
   - next step in the evolution of managing code
   - containers as delivery vehicles for application code,
   - lightweight, stand-alone, resource efficient, portable execution packages.
-  - an application-centric way to deliver <font color=blue> high performance and scalable applications </font>
+  - an application-centric way to deliver <font color=LightSlateBlue> high performance and scalable applications </font>
 
 - containers <font color=red> share a virtualized operating system </font>
   - <font color=red> run as resource-isolated processes </font>
@@ -115,10 +115,10 @@ containers
     - makes the code very portable.
       - treat the os and hardware as a black box.
       - can move the code from development, to staging, to production, or from the laptop to the Cloud without changing or rebuilding anything.
-    - all <font color=blue> application's code, configurations, and dependencies </font> are packaged into a single object.
+    - all <font color=LightSlateBlue> application's code, configurations, and dependencies </font> are packaged into a single object.
       - a easy-to-use building blocks
       - Containers hold everything that the software needs to run,
-        - <font color=blue> such as libraries, system tools, code, and the runtime </font>
+        - <font color=LightSlateBlue> such as libraries, system tools, code, and the runtime </font>
       - the container's the same and runs the same anywhere.
 
 - operational efficiency,

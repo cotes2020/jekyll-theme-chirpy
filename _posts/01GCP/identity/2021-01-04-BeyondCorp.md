@@ -77,7 +77,7 @@ change security posture
   - and make apps more accessible and responsive through Google's global network.
 
 - <font color=red> Scalable, reliable foundation </font>
-  - <font color=blue> Rely on Google Cloud’s global infrastructure </font>
+  - <font color=LightSlateBlue> Rely on Google Cloud’s global infrastructure </font>
   - Built on the backbone of Google’s planet-scale network and infrastructure
     - Benefit from the scale, reliability, and security of Google's network
     - with 144 edge locations in over 200 countries and territories.
@@ -91,7 +91,7 @@ change security posture
 
 
 - Safeguard the information with <font color=red> integrated threat and data protection </font>
-  - <font color=blue> Continuous end-to-end protection </font>
+  - <font color=LightSlateBlue> Continuous end-to-end protection </font>
   - A layered approach to security across users, access, data, and applications
   - Prevent data loss, malware infections, fraud and thwart threats with real-time alerts and detailed reports,
     - such as
@@ -274,7 +274,7 @@ Implementing BeyondCorp Enterprise enacts a zero trust model.
 BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
 - <font color=red> Endpoint Verification </font>
   - A Google Chrome extension
-    - <font color=blue> collects user device details </font>
+    - <font color=LightSlateBlue> collects user device details </font>
       - including encryption status, OS, and user details.
     - gathers and reports device information, constantly syncing with Google Workspace.
     - The end result is an inventory of all the corporate and personal devices accessing your corporate resources.
@@ -312,9 +312,9 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
     - the base of BeyondCorp Enterprise
     - IAP ties everything together
     - Once you've secured your apps and resources behind IAP, your organization can gradually extend BeyondCorp Enterprise as richer rules are needed.
-  - establish a <font color=blue> central authorization layer </font>
+  - establish a <font color=LightSlateBlue> central authorization layer </font>
     - for your Google Cloud resources accessed by HTTPS and SSH/TCP traffic.
-  - establish a <font color=blue> resource-level access control model </font>
+  - establish a <font color=LightSlateBlue> resource-level access control model </font>
     - grant members access to your HTTPS apps and resources.
     - instead of relying on network-level firewalls.
   - enables employees to access corporate apps and resources from untrusted networks without the use of a VPN.

@@ -36,7 +36,7 @@ compute infrastructure for applications:
 > when don't want to focus on the infrastructure at all, but focus on the code.
 
 App Engine
-- <font color=blue> Platform as a Service </font>
+- <font color=LightSlateBlue> Platform as a Service </font>
 - fully managed serverless application framework.
   - deploy an application on App Engine
     - hand App Engine the code
@@ -150,10 +150,10 @@ use App Engine Standard Environment in practice
    - automatically provisions server instances and scales and load balances them.
 4. the application can make calls to a variety of services using dedicated APIs.
    - examples:
-   - a NoSQL data store to make data persistent, caching of that data using <font color=blue> Memcache </font>
+   - a NoSQL data store to make data persistent, caching of that data using <font color=LightSlateBlue> Memcache </font>
    - searching
    - user logging,
-   - launch actions triggered by direct user requests, like <font color=blue> task queues and a task scheduler </font>
+   - launch actions triggered by direct user requests, like <font color=LightSlateBlue> task queues and a task scheduler </font>
 
 
 
@@ -183,13 +183,13 @@ use App Engine Standard Environment in practice
 
 ### Standard and Flexible.
 
-| term                       | Standard                 | Flexble                                                |
-| -------------------------- | ------------------------ | ------------------------------------------------------ |
-| instance startup           | Milliseconds              | Minutes                                                |
-| SSH access                 | No                       | Yes (not default)                                      |
-| Write to local disk        | No                       | Yes (not default)                                      |
-| Support 3rd party binaries | No                       | Yes                                                    |
-| Network access             | Via App Engine services  | Yes                                                    |
+| term                       | Standard                                               | Flexble                                                |
+| -------------------------- | ------------------------------------------------------ | ------------------------------------------------------ |
+| instance startup           | Milliseconds                                           | Minutes                                                |
+| SSH access                 | No                                                     | Yes (not default)                                      |
+| Write to local disk        | No                                                     | Yes (not default)                                      |
+| Support 3rd party binaries | No                                                     | Yes                                                    |
+| Network access             | Via App Engine services                                | Yes                                                    |
 | Pricing model              | free daily user, pay per instance class, auto shutdown | pay for resource allocation per hour, no auto shutdown |
 
 
