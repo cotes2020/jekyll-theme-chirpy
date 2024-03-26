@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-LOGGER = logging.getLogger(__name__) 
+LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
 TESLA_URL = "https://www.tesla.com/inventory/new/my?TRIM=LRAWD&arrangeby=plh&zip=98011&range=0"
@@ -28,11 +28,11 @@ def create_text_file(content_list):
         LOGGER.info(f"File '{file_name}' created successfully with content: {content_list}")
     except Exception as e:
         LOGGER.info(f"Error occurred: {str(e)}")
-  
+
 def watch_tesla():
-    
+
     LOGGER.info("======= watch_tesla =======")
-        
+
     # test using Chrome Selenium
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
@@ -45,7 +45,7 @@ def watch_tesla():
     options.add_argument(f'user-agent={user_agent}')
 
     driver = webdriver.Chrome(options=options)
-    
+
     driver.set_page_load_timeout(90)
 
     # Load the URL and get the page source
@@ -57,28 +57,28 @@ def watch_tesla():
 
     try:
         LOGGER.info("======= Start the search =======")
-        
+
         results_container = WebDriverWait(driver, 100).until(
             EC.presence_of_element_located((By.CLASS_NAME, "results-container"))
         )
-        
+
         print(results_container)
 
         car_sections = results_container.find_elements(By.CLASS_NAME, "result-header")
 
         # Now you can iterate over these article elements and perform any actions you desire.
-        
+
         for car_section in car_sections:
 
             car_price_str = car_section.find_element(By.CLASS_NAME, "result-purchase-price").get_attribute("innerHTML")
             car_price = int(car_price_str.replace('$', '').replace(',', ''))
             car_prices.append(car_price)
-            
+
             if car_price < 45000:
-                
-                email_content = f'There is a model Y for sale for {car_price_str}' 
-                LOGGER.info("======= %s =======" % email_content) 
-                
+
+                email_content = f'There is a model Y for sale for {car_price_str}'
+                LOGGER.info("======= %s =======" % email_content)
+
                 # settings.configure()
                 # send_mail(
                 #     'Model Y for sale gucci price',  # Subject of the email
@@ -87,11 +87,11 @@ def watch_tesla():
                 #     ['chriskuis@hotmail.com'],  # List of recipient email addresses
                 #     fail_silently=False,  # Set to True to suppress exceptions if sending fails
                 # )
-                
+
                 output_prices.append(email_content)
-                
+
         create_text_file(output_prices)
-        
+
     finally:
         driver.quit()
 

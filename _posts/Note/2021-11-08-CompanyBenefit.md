@@ -74,10 +74,10 @@ ref:
    8. 在网站上就是直接用 Transfer，而没有 Rollover 字眼，其实就是账户间转账。因为你存入 Traditional IRA 的钱是税后的，所以没有税务问题。
 
 pay
-- Your first `$23,000` + company Match goes into 1 or 2. 
-- Everything above goes into After-Tax. 
-- The key is: 
-  - You are not allowed to contribute amounts over `$23,000` to Roth. 
+- Your first `$23,000` + company Match goes into 1 or 2.
+- Everything above goes into After-Tax.
+- The key is:
+  - You are not allowed to contribute amounts over `$23,000` to Roth.
   - But you are allowed to convert amounts over `$23,000` from After-Tax to Roth.
 
 
@@ -89,14 +89,14 @@ pay
 
 401k的钱必须从paycheck里来
 
-401k can be traditional or roth, and they share a limit. 
+401k can be traditional or roth, and they share a limit.
 
 After-tax 401k is a separate thing, often called mega backdoor roth
 
 **Contribution types**
 - choose to make the regular, catch-up, and commission contributions as Traditional 401(k), Roth 401(k), or both.
-  
-  - **Pre-tax / Traditional 401(k)** 
+
+  - **Pre-tax / Traditional 401(k)**
     - contributions are made **before-tax** (`Pre-tax Deductions`)
     - Part of the paycheck goes in to the 401(k) account before the taxable income is calculated (other than Social Security).
     - This **lowers the taxable income for the current year**.
@@ -140,7 +140,7 @@ Withdrawals:
   - You reach the minimum required distribution (MRD) age
   - You pass away
 
- 
+
 前雇主遗留下来的 401k 账号
 - 所有的操作，最终的目标都是把钱往 Roth 转，因为 Roth 的资本利得是不用交税的。
 - 如果通胀率比利率高很多的话，那么标普500还是会涨的。
@@ -156,7 +156,7 @@ Withdrawals:
 
 ### IRA
 
-- IRA 全称 Individual Retirement Arrangement，一开始是给那些没有 401k 计划的人用来自己存养老金的，分 Traditional IRA 和 Roth IRA. 
+- IRA 全称 Individual Retirement Arrangement，一开始是给那些没有 401k 计划的人用来自己存养老金的，分 Traditional IRA 和 Roth IRA.
 
 - **Traditional IRA**: 税前账号
   - 类似 Pre-tax 401k。
@@ -166,7 +166,7 @@ Withdrawals:
   - 和 Roth 401k 一样是存入税后的资金，资本利得也不用交税。
   - 因为太强大，所以 IRS 除了每年 `$6500` 的限制，还设置了收入上限，高收入者不允许存 Roth IRA。
   - 但是高收入者可以通过 Backdoor Rollover 来绕开这个限制，而且也完全合法。
-  
+
 **Backdoor Rollover**:
 - 在 Fidelity 网站上操作，先开一个 `Traditional IRA`，再开 `Roth IRA`
 - 把银行的税后钱 `$6500` 存到 `Traditional IRA`，等到账了，立即 Rollover 到 `Roth IRA`
@@ -209,10 +209,10 @@ a. Using `Roth IRA`: be limited to the Roth IRA contribution limits of `$7k`
 b. Using `Roth 401(k)`: There is no need for a conversion and no Roth IRA limits.
 
 Considering the strategy makes use of 401(k) contribution limits:
-- **Pre-tax 401(k) contributions** 
+- **Pre-tax 401(k) contributions**
     - pulled from the paycheck
     - `$23k` 2024 limit
-- Post-tax 
+- Post-tax
   - `$69k` 2024 limit: `$23k` - Employer Match
   - Remaining amount left as an option to auto-contribute from our paycheck
 
@@ -220,13 +220,13 @@ Considering the strategy makes use of 401(k) contribution limits:
 
 - 0 relationship between the 401(k) contributions (and their limits) and the IRA contributions (and their limits).
 
-- the only advantage I can think of is that gains aren’t realized and taxed until you withdraw with the 401k. So you can reinvest full dividends and so on without tax burden until you pull the money out decades later. I suspect for most people you’d come out ahead paying long term capital gains on the brokerage vs income tax on the 401k withdrawals, but I’m sure there are some people that can benefit 
+- the only advantage I can think of is that gains aren’t realized and taxed until you withdraw with the 401k. So you can reinvest full dividends and so on without tax burden until you pull the money out decades later. I suspect for most people you’d come out ahead paying long term capital gains on the brokerage vs income tax on the 401k withdrawals, but I’m sure there are some people that can benefit
 
 ---
 
 ### summary
 
-- 401k 的 contribution Limit: `Pre-tax + Roth 401k <= $22500` 
+- 401k 的 contribution Limit: `Pre-tax + Roth 401k <= $22500`
 - 所有的 Contribution Limit: `Pre-tax + Roth 401k + Post-tax + Employer Match <= $66000`
 
 ![Screenshot 2024-03-17 at 12.56.33](/assets/img/Screenshot%202024-03-17%20at%2012.56.33.png)
@@ -236,30 +236,30 @@ Considering the strategy makes use of 401(k) contribution limits:
 - 假设公司match 你50%的contribution，也就送你的free money `$9750`
 
   - 你还可以每年放 `$57,000 – $19,500 – $9750 = $27,750` 的税后contribution。
-    
+
     - **Pre-tax / Traditional 401k** 最差因为它的本金投资都要交税，还不让59.5岁前提前取出本金，用它还不如用一个朴朴素素的Robinhood，
-    
+
     - 最好的是 **Roth IRA**，投资收益不交税，本金还随时取出。复利的意义在于用当年的投资收益来做下一年的投资，而且在最后拿出来的收益都不收税. 可是IRS不是傻子，一年只让人放`$6000`
-    
-    - 推荐**Roth 401k**, 用复利来盈利，所以low cost fund会非常有优势，而且未来任何时候都可以把 Roth 401k 的全部本金和收益转进 Roth IRA， penalty free。 
-    
+
+    - 推荐**Roth 401k**, 用复利来盈利，所以low cost fund会非常有优势，而且未来任何时候都可以把 Roth 401k 的全部本金和收益转进 Roth IRA， penalty free。
+
 
 - **Mega backdoor**就是一个能让我们把 `$27,750` 的 After-Tax 401k 转成 Roth IRA 的走后门方法。
 
-  - 从 **After-tax 401k** 转成 `Roth 401k 或者 Roth IRA` 
-  
+  - 从 **After-tax 401k** 转成 `Roth 401k 或者 Roth IRA`
+
   - 因为401k是公司sponsor，所以并不是每家公司都可以允许你放 after-tax 401k 进而用 Mega Backdoor Conversion。如果公司允许的话，你可以自己`手动选择从after-tax 401k里的钱转成Roth IRA，或者自动转成Roth 401k`。
 
   - 当转进IRA的时候是属于 withdraw，收益部分会有tax，所以 `需要钱一到401k就及时转`，或者索性设置自动转成Roth 401k。
 
 - 既然 after-tax 这么好，为什么还要存 pre-tax 401k ？
-  
+
   - 上面讲到过公司match你个人的`$19,500` IRS limit 401k contribution，不管你是放 pretax 401k，还是税后的Roth 401k。
-  
+
   - 放pretax的好处是你不交税，用原本该交税的那部分钱去为你投资赚钱，但是最后的收益是要交税。
 
   - after-tax是你损失了一部分tax，而用更昂贵的after-tax money来为你赚钱，奖励是最后收益不交钱。
-  
+
   - 具体用哪个其实很复杂，取决与你现在的收入高低，未来期望收入变化，tax bracket高低，以及美国税法将来改变的可能性，因为太复杂所以不细说了，但大家公认的是先放满pretax 401k先defer一点tax再说.
 
 **操作**
@@ -289,7 +289,7 @@ Considering the strategy makes use of 401(k) contribution limits:
 - The maximum you'll get is 50% of 6% of the base salary, irrespective of whether you put it in traditional or Roth or a mix of both. So in the example above, Company's contribution will not exceed `$3000`.
 
 - Contribution types
-  - You can choose to make the regular, catch-up, and commission contributions as Traditional 401(k), Roth 401(k), or both. 
+  - You can choose to make the regular, catch-up, and commission contributions as Traditional 401(k), Roth 401(k), or both.
 
 - Contribution sources and amounts
   - Depending on the situation, here’s what you can contribute to the Company 401(k) Plan in Traditional 401(k), Roth 401(k), or a combination of both contribution types:
@@ -298,19 +298,19 @@ Considering the strategy makes use of 401(k) contribution limits:
   - If you receive sales commissions as part of the eligible pay and want to contribute a portion of the commissions, you’ll need to designate a separate contribution rate, from 1 percent to 75 percent, for the commission pay.
 
 - After-tax contributions
-  - To save more than the annual 401(k) contribution limit for the year, you can make After-tax contributions.  
-  - You can contribute 1 to 20 percent of the eligible pay in After-tax contributions, up to the **IRS annual additions limit**. 
-  - **Note that Company doesn’t match After-tax contributions**. So before you make them, you might want to make regular contributions of at least 6 percent. This helps you get all of the eligible Company Match. 
+  - To save more than the annual 401(k) contribution limit for the year, you can make After-tax contributions.
+  - You can contribute 1 to 20 percent of the eligible pay in After-tax contributions, up to the **IRS annual additions limit**.
+  - **Note that Company doesn’t match After-tax contributions**. So before you make them, you might want to make regular contributions of at least 6 percent. This helps you get all of the eligible Company Match.
   - However, if you choose an after-tax rate that’s too high, you might reach the annual additions limit before the end of the year and may not maximize the `regular contributions and the Company Match`.
 
 - Roth 401(k) contributions
-  - You can convert the `before-tax`, `non-Roth After-tax` contributions and `earnings` to `Roth 401(k)` contributions. If you qualify for a tax-free qualified distribution as defined by the IRS, earnings on Roth 401(k) contributions will not be taxed.  
+  - You can convert the `before-tax`, `non-Roth After-tax` contributions and `earnings` to `Roth 401(k)` contributions. If you qualify for a tax-free qualified distribution as defined by the IRS, earnings on Roth 401(k) contributions will not be taxed.
 
 
 - Company Match
 
-  - When you contribute to the Company 401(k) Plan, Company matches the contributions — up to 6 percent of the eligible pay each pay period. 
-  - Your Company Match is immediately vested, meaning that all matching funds are thes as soon as they’re deposited into the 401(k) account. This match doesn’t count toward the IRS annual contribution limit. And these funds aren’t taxable until you withdraw them. 
+  - When you contribute to the Company 401(k) Plan, Company matches the contributions — up to 6 percent of the eligible pay each pay period.
+  - Your Company Match is immediately vested, meaning that all matching funds are thes as soon as they’re deposited into the 401(k) account. This match doesn’t count toward the IRS annual contribution limit. And these funds aren’t taxable until you withdraw them.
   - If you make `After-tax` or catch-up contributions (optional if you’re 50 or older), these aren’t matched by Company.
   - The amount of the Company Match for which you’re eligible depends on the years of service with Company as of the pay date. If you leave and are rehired by Company within two years, the Company Match rate might depend on the rehire date (or an adjusted hire date).
 
@@ -321,20 +321,20 @@ Considering the strategy makes use of 401(k) contribution limits:
 | x years or more                       | 100 percent: Company matches the contribution dollar for dollar.         |
 
 - Maximize the match
-  - The Company Match is calculated and put into the account each pay period. 
+  - The Company Match is calculated and put into the account each pay period.
   - To get the maximum Company Match, contribute `at least 6 percent` of the biweekly pay (and 6 percent of the commission pay, if applicable) each pay period. If you choose to contribute more than this, you could reach the annual IRS contribution limit too early in the year. Then you miss out on any Company Match you could have gotten by contributing through the whole year.
 
   - To get the maximum Company Match: [Fidelity’s Contribution Maximizer tool](https://workplaceservices.fidelity.com/mybenefits/navstation/navigation#/)
 
-    - Use the Contribution Maximizer tool, if you’d like to contribute to the IRS Section 402(g) limit or Section 415 limit and maximize the Company Match. 
-    - The Contribution Maximizer proposes contribution rates that will help you maximize both the contributions and Company Match up to the IRS annual limit by contributing at or above 6 percent for regular contributions on each paycheck throughout the year. 
+    - Use the Contribution Maximizer tool, if you’d like to contribute to the IRS Section 402(g) limit or Section 415 limit and maximize the Company Match.
+    - The Contribution Maximizer proposes contribution rates that will help you maximize both the contributions and Company Match up to the IRS annual limit by contributing at or above 6 percent for regular contributions on each paycheck throughout the year.
     - Maximizer rates are determined by dividing the remaining 401(k) contributions allowed by the remaining estimated plan-eligible compensation for the current calendar year.
-  
+
     - Select from the following options to see how using Maximizer rates can impact the overall savings.
 
       - Each **Maximizer rate** is a proposed contribution rate that will help you maximize the various contributions and Company Match up to the applicable IRS limits. It is determined by dividing each of the remaining contribution types allowed by the remaining estimated plan eligible compensation for the current calendar year.
 
-      - **Maximize regular contributions**: 
+      - **Maximize regular contributions**:
         - This refers to the `IRS Section 402(g) limit` on the `regular 401(k) contributions you can make to the Plan account in a calendar year`.
         - For 2024, that limit is `$23,000`.
         - Select this option to adjust the contributions to reach this limit while maximizing the Company Match.
@@ -346,13 +346,13 @@ Considering the strategy makes use of 401(k) contribution limits:
         - Select this option to adjust the contributions to reach this limit while maximizing the Company Match.
 
     - Based on the estimated plan eligible compensation and Company 401(k) Plan limits, if you select to `maximize the regular contributions or maximize total contributions`, the resulting contribution amount may not reach the IRS limit. You can contribute up to the Plan limits, which allow contributions of up to 75% of eligible base pay in Traditional Base Pay 401(k) and Roth 401(k) contributions, and up to 20% of eligible base pay in After-Tax contributions.
- 
+
       - You can transfer from in-plant Roth to a Roth IRA 4 times in a year. You can do this at the end of every quarter or whatever works for you
 
       - When I called Fidelity to help me open Roth IRA they mentioned a salary limit. You can do a rollover and open a Roth IRA with it. Salary limit is for direct contribution to Roth IRA. [link](https://www.fidelity.com/learning-center/personal-finance/backdoor-roth-ira)
 
 
-```bash 
+```bash
 
 69,000 - 23,000 - 7,746.44 = 38,253.56
 

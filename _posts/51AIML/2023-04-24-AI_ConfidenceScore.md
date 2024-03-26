@@ -838,14 +838,14 @@ display(HTML(html_output))
 # 高置信度的补全结果：
 high_prob_completions
 {
-  'My least': 'favorite', 
+  'My least': 'favorite',
   'My least favorite TV': 'show'}
 # 看起来非常合理！对于这样的补全建议我们是很有信心的。
 
 # 再看下不是那么有信心的补全结果：
 low_prob_completions
 {
-  'My least favorite': 'food', 
+  'My least favorite': 'food',
   'My least favorite TV show is': '"My'}
 # 这其中也说得通，用户说完“my least favorite”之后不太容易猜到接下来往哪个方向走。综上，通过gpt-3.5-turbo和logprobs，我们可以搭建出一个动态补全引擎的基干。
 ```

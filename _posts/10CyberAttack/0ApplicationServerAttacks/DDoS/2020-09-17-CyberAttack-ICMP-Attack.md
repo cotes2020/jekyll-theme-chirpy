@@ -1,5 +1,5 @@
 ---
-title: Meow's CyberAttack - ICMP Attacks 
+title: Meow's CyberAttack - ICMP Attacks
 date: 2020-09-17 11:11:11 -0400
 categories: [10CyberAttack, DDos]
 tags: [CyberAttack, DDos, ICMP]
@@ -14,14 +14,14 @@ image:
 
 ---
 
-# Meow's CyberAttack - Application/Server Attacks - DDos Dos - ICMP Attacks 
+# Meow's CyberAttack - Application/Server Attacks - DDos Dos - ICMP Attacks
 
---- 
+---
 
-## ICMP Attacks 
+## ICMP Attacks
 - Availability Attacks
-- Many networks permit the use of ICMP traffic (like ping…), because pings can be useful for network troubleshooting. 
-- attackers can use ICMP for DoS attacks. 
+- Many networks permit the use of ICMP traffic (like ping…), because pings can be useful for network troubleshooting.
+- attackers can use ICMP for DoS attacks.
 - ICMP DoS attack variant:
 
 ---
@@ -34,15 +34,15 @@ image:
 
 - This is when an IP datagram is received with the "protocol" field in the IP header set to 1 (ICMP), the Last Fragment bit is set, and (IP offset ` 8) + (IP data length) >65535.
 	- the IP offset (which represents the starting position of this fragment in the original packet, and which is in 8-byte units) plus the rest of the packet is greater than the maximum size for an IP packet.
-  
+
 ---
 
-## Smurf attack can use ICMP traffic, 
+## Smurf attack can use ICMP traffic,
 - <font color=LightSlateBlue> Ping a broadcast address using a spoofed source address directed to a subnet, to flood a target system with ping replies. </font>
-- attacker sends a ping to the broadcast address of subnet 172.16.0.0/16. 
+- attacker sends a ping to the broadcast address of subnet 172.16.0.0/16.
 - This collection of pings instruct devices on that subnet to send their ping replies to the target system at IP address 10.2.2.2
-- thus flooding the target system’s bandwidth and processing resources. 
-- in the subnet being used for the Smurf attack, thousands of systems could potentially be involved and send ping replies to the target system. 
+- thus flooding the target system’s bandwidth and processing resources.
+- in the subnet being used for the Smurf attack, thousands of systems could potentially be involved and send ping replies to the target system.
 
 Prevented smurf
 - Command for cisco routers: No ip directed-broadcasts

@@ -14,7 +14,7 @@ image:
 
 # Meow's CyberAttack - Application/Server Attacks - DDos Dos - Sinkholing
 
-book: 
+book:
 <font color=LightSlateBlue></font>
 <font color=OrangeRed></font>
 
@@ -41,5 +41,3 @@ Example
 - Marcus Hutchins通过设置买下的域名，将所有WannCry的数据流量转发到自己建立的sinkhole服务器上，然后研究这些数据流量。
 - 当他注册了该域名后，由于WannaCry的大量数据导致了sinkhole服务器已经逼近最大负载。
 - 虽然他的sinkhole服务器不能挽救已经中招的电脑，也不能阻止WannaCry的传播，但是给网络安全人员留出了宝贵时间来采取相应的防护措施。
-
-

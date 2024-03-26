@@ -175,7 +175,7 @@ Options
 
 ### Examples
 
-### Assign name and allocate pseudo 
+### Assign name and allocate pseudo
 
 `--name, -it`
 
@@ -191,7 +191,7 @@ d6c0fe130dba        debian:7            "/bin/bash"         26 seconds ago      
 
 This example runs a container named `test` using the `debian:latest` image. The `-it` instructs Docker to allocate a pseudo-TTY connected to the container’s stdin; creating an interactive `bash` shell in the container. In the example, the `bash` shell is quit by entering `exit 13`. This exit code is passed on to the caller of `docker run`, and is recorded in the `test` container’s metadata.
 
-### Capture container ID 
+### Capture container ID
 
 `--cidfile`
 ```bash
@@ -200,7 +200,7 @@ $ docker run --cidfile /tmp/docker_test.cid ubuntu echo "test"
 
 This will create a container and print `test` to the console. The `cidfile` flag makes Docker attempt to create a new file and write the container ID to it. If the file exists already, Docker will return an error. Docker will close this file when `docker run` exits.
 
-### Full container capabilities 
+### Full container capabilities
 
 `--privileged`
 ```bash
@@ -220,7 +220,7 @@ none            1.9G     0  1.9G   0% /mnt
 
 The `--privileged` flag gives _all_ capabilities to the container, and it also lifts all the limitations enforced by the `device` cgroup controller. In other words, the container can then do almost everything that the host can do. This flag exists to allow special use-cases, like running Docker within Docker.
 
-### Set working directory 
+### Set working directory
 
 `-w`
 ```bash
@@ -237,7 +237,7 @@ $ docker run -it --storage-opt size=120G fedora /bin/bash
 
 This (size) will allow to set the container rootfs size to 120G at creation time. This option is only available for the `devicemapper`, `btrfs`, `overlay2`, `windowsfilter` and `zfs` graph drivers. For the `devicemapper`, `btrfs`, `windowsfilter` and `zfs` graph drivers, user cannot pass a size less than the Default BaseFS Size. For the `overlay2` storage driver, the size option is only available if the backing fs is `xfs` and mounted with the `pquota` mount option. Under these conditions, user can pass any size less than the backing fs size.
 
-### Mount tmpfs 
+### Mount tmpfs
 
 `--tmpfs`
 ```bash
@@ -246,7 +246,7 @@ $ docker run -d --tmpfs /run:rw,noexec,nosuid,size=65536k my_image
 
 The `--tmpfs` flag mounts an empty tmpfs into the container with the `rw`, `noexec`, `nosuid`, `size=65536k` options.
 
-### Mount volume 
+### Mount volume
 
 `-v, --read-only`
 ```bash
@@ -291,7 +291,7 @@ The following examples will fail when using Windows-based containers, as the des
 
 For in-depth information about volumes, refer to manage data in containers
 
-### Add bind mounts or volumes using the 
+### Add bind mounts or volumes using the
 
 `--mount`
 
@@ -307,7 +307,7 @@ $ docker run --read-only --mount type=volume,target=/icanwrite busybox touch /ic
 $ docker run -t -i --mount type=bind,src=/data,dst=/data busybox sh
 ```
 
-### Publish or expose port 
+### Publish or expose port
 
 `-p, --expose`
 ```bash
@@ -324,7 +324,7 @@ $ docker run --expose 80 ubuntu bash
 
 This exposes port `80` of the container without publishing the port to the host system’s interfaces.
 
-### Set environment variables 
+### Set environment variables
 
 `-e, --env, --env-file`
 ```bash
@@ -338,7 +338,7 @@ Use the `-e`, `--env`, and `--env-file` flags to set simple (non-array) environm
 $ docker run --env VAR1=value1 --env VAR2=value2 ubuntu env | grep VAR
 VAR1=value1
 VAR2=value2
- 
+
 # You can also use variables that you’ve exported to your local environment:
 export VAR1=value1
 export VAR2=value2
@@ -365,7 +365,7 @@ VAR2=value2
 USER=denis
 ```
 
-### Set metadata on container 
+### Set metadata on container
 
 `-l, --label, --label-file`
 
@@ -395,7 +395,7 @@ You can load multiple label-files by supplying multiple `--label-file` flags.
 
 For additional information on working with labels, see Labels - custom metadata in Docker in the Docker User Guide.
 
-### Connect a container to a network 
+### Connect a container to a network
 
 `--network`
 
@@ -419,7 +419,7 @@ You can connect multiple containers to the same network. Once connected, the con
 
 You can disconnect a container from a network using the `docker network disconnect` command.
 
-### Mount volumes from container 
+### Mount volumes from container
 
 `--volumes-from`
 ```bash
@@ -451,7 +451,7 @@ $ cat somefile | docker run -i -a stdin mybuilder dobuild
 
 This is how piping a file into a container could be done for a build. The container’s ID will be printed after the build is done and the build logs could be retrieved using `docker logs`. This is useful if you need to pipe a file or something else into a container and retrieve the container’s ID once the container has finished running.
 
-### Add host device to container 
+### Add host device to container
 
 `--device`
 ```bash
@@ -521,7 +521,7 @@ The example below exposes the first and third GPUs.
 $ docker run -it --rm --gpus device=0,2 nvidia-smi
 ```
 
-### Restart policies 
+### Restart policies
 
 
 `--restart`
@@ -555,7 +555,7 @@ This will run the `redis` container with a restart policy of **always** so that 
 
 More detailed information on restart policies can be found in the  Restart Policies (--restart) section of the Docker run reference page.
 
-### Add entries to container hosts file 
+### Add entries to container hosts file
 
 `--add-host`
 
@@ -584,7 +584,7 @@ $ docker run  --add-host=docker:${HOSTIP} --rm -it debian
 
 For IPv6 use the `-6` flag instead of the `-4` flag. For other network devices, replace `eth0` with the correct device name (for example `docker0` for the bridge device).
 
-### Set ulimits in container 
+### Set ulimits in container
 
 `--ulimit`
 
@@ -616,7 +616,7 @@ $ docker run -d -u daemon --ulimit nproc=3 busybox top
 
 The 4th container fails and reports “\[8\] System error: resource temporarily unavailable” error. This fails because the caller set `nproc=3` resulting in the first three containers using up the three processes quota set for the `daemon` user.
 
-### Stop container with signal  
+### Stop container with signal
 
 The `--stop-signal` flag sets the system call signal that will be sent to the container to exit. This signal can be a valid unsigned number that matches a position in the kernel’s syscall table, for instance 9, or a signal name in the format SIGNAME, for instance SIGKILL.
 
@@ -625,12 +625,12 @@ The `--stop-signal` flag sets the system call signal that will be sent to the co
 `--security-opt`
 On Windows, this flag can be used to specify the `credentialspec` option. The `credentialspec` must be in the format `file://spec.txt` or `registry://keyname`.
 
-### Stop container with timeout 
+### Stop container with timeout
 
 `--stop-timeout`
 The `--stop-timeout` flag sets the timeout (in seconds) that a pre-defined (see `--stop-signal`) system call signal that will be sent to the container to exit. After timeout elapses the container will be killed with SIGKILL.
 
-### Specify isolation technology for container 
+### Specify isolation technology for container
 
 `--isolation`
 This option is useful in situations where you are running Docker containers on Windows. The `--isolation <value>` option sets a container’s isolation technology. On Linux, the only supported is the `default` option which uses Linux namespaces. These two commands are equivalent on Linux:
@@ -673,7 +673,7 @@ PS C:\> docker run -d --isolation default microsoft/nanoserver powershell echo h
 PS C:\> docker run -d --isolation hyperv microsoft/nanoserver powershell echo hyperv
 ```
 
-### Specify hard limits on memory available to containers 
+### Specify hard limits on memory available to containers
 
 `-m, --memory`
 

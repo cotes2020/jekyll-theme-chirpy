@@ -75,13 +75,13 @@ Asncyhronous or concurrency 解決了什麼問題呢？
 - 其實這些方法都是為了解決一些任務太慢而產生的，在我們當使用者的時候(caller)，實際上也許不知道背後這些 async module 是如何運作的，除非是自己要一手從下到上包辦，但還是有些點需要注意，如果這類程式只是處理 networking IO 的話，應該是不會有太大的問題，但如果中間有個 cpu intensive 的任務最好還是要能 fork 出 process/thread 去處理，或是利用 queue 丟給其他的 worker 去處理，所以一旦我們清楚這些架構後，才能知道採取哪種方式處理問題是比較好的。
 
 
---- 
+---
 
 
 
 # Mastering Concurrency in Python
 
-> “Who this book is for" 
+> “Who this book is for"
 > If you're a developer familiar who's and you Python who want to learn to build high-performance applications that scale by leveraging single-core, multi-core, or distributed concurrency, then this book is for you.”
 
 - 此文首先介绍了线程的基本概念及其和进程的关系
@@ -89,13 +89,13 @@ Asncyhronous or concurrency 解決了什麼問題呢？
 
 
 ## 01. 并发 Concurrency
- 
+
 《Fluent Python》关于Class/Object的读书笔记:
 - [1](https://zhuanlan.zhihu.com/p/460412016)
 - [2](https://zhuanlan.zhihu.com/p/460649228)
 
 
-### 并发与顺序 Concurrent vs Sequential 
+### 并发与顺序 Concurrent vs Sequential
 
 ![pic](https://pic2.zhimg.com/v2-e1be27948611951e4e104493df39311d_b.jpg)
 
@@ -118,12 +118,12 @@ def is_prime(x):
         if x % i == 0:
             return False
     return True
-```                          
+```
 
 Sequential Programming
 - 使用顺序编程，最终耗费的时间约为2.89秒。
 - ![pic](https://pic2.zhimg.com/v2-cc8ed0ac7bbb3754085ae5d2f588890d_b.jpg)
- 
+
 Concurrent Programming
 - 因为判断这一堆数字是否是质数，是可以 **独立** 判断的，所以可以使用并发编程。
 - ![pic](https://pic3.zhimg.com/v2-2b12508498ccb180a5be1ef670ac408e_b.jpg)
@@ -138,7 +138,7 @@ Concurrent Programming
 ![pic](https://pic3.zhimg.com/v2-899efa446198f3b0c2511c3accf605c2_b.jpg)
 
 - 上面的图：并行
-- 下面的图：并发 
+- 下面的图：并发
 - 并行是各个路毫无影响，并发则因为共享资源的存在，会出现一条路等待另一条路的情况，比如 **等红绿灯** 。
 
 ---
@@ -150,15 +150,15 @@ Concurrent Programming
 再来看一眼刚刚执行的两个结果。可以发现，通过并发实现的结果List， **并不是按照大小顺序排列的** 。这也使得一些 **inherit sequential** 问题难以使用并发解决，比如经典的 **牛顿迭代法** 。
 
 
-#### I/O Bound 
+#### I/O Bound
 
 简单来讲，I/O Bound是指， **喂到系统中的数据的速度<系统处理/消耗数据的速度** 。那么，在这种情况下，整个程序耗费时间主要由输入/输出（Input/Output）决定，并发编程就没法起到提速的效果。
- 
+
 ---
 
 ## 02. Amdahl's Law
 
-Amdahl's Law：作用 
+Amdahl's Law：作用
 - 分析了提升背后的简单原理，以及速度提升的极限，重点分析了内在顺序性的影响。
 
 - 从数学角度分析， **增加processor的数量** ，能提升多少的 **执行速度** 。
@@ -167,7 +167,7 @@ Amdahl's Law：作用
 
 - 对于同一个程序，使用N个processors的执行时间是仅使用1个的1/N。但是， **绝大多数的程序是没法100%并行的** ，因为程序中的部分代码之间有内在的顺序性。
 
-Amdahl's Law：公式 
+Amdahl's Law：公式
 - 定义：
   - $B$ ：程序中存在顺序性的比例。
   - $T(j)$ ：使用 j 个processors所需要用的时间
@@ -184,7 +184,7 @@ Amdahl's Law：公式
 
 - $S_{j}=\frac{T( 1)}{T( j)} =\frac{T( 1)} { B * T( 1) + \frac{( 1-B) * T( 1)}{j} } = \frac{1}{B+\frac{1-B}{j}}$
 
-Amdahl's Law：提升极限 
+Amdahl's Law：提升极限
 
 - 对此法则的最后结果做简单的极限分析，可以得到：
 
@@ -192,7 +192,7 @@ $\lim_{j \rightarrow +\infty}{S_{j}}=\frac{1}{B}$
 
 - 所以，在一个程序中，内在顺序性的部分占比越大，增加processors的数量所带来的速度提升的效果越差。
 
-![pic](https://pic2.zhimg.com/v2-39c6017b022b56b144db07af061a0c4d_b.jpg) 
+![pic](https://pic2.zhimg.com/v2-39c6017b022b56b144db07af061a0c4d_b.jpg)
 
 ---
 
@@ -202,53 +202,53 @@ $\lim_{j \rightarrow +\infty}{S_{j}}=\frac{1}{B}$
 
 ---
 
-### 03. 线程 - Python thrading 
+### 03. 线程 - Python thrading
 
-1. thread, 操作系统能够进行运算调度的 **_最小_** 单位 
+1. thread, 操作系统能够进行运算调度的 **_最小_** 单位
 
 2. **_线程（thread）_** 是 **_进程（process）_** 的组成部分：
-   
+
    1. 一个进程可以包含多个线程
 
    2. 这些线程可以同时执行，也允许共享资源，比如内存和数据
 
 ![pic](https://pic3.zhimg.com/v2-961d7a0fe009ffcc3acffc096b68093e_b.jpg)
- 
+
 ---
 
-#### Multithreading/多线程 
+#### Multithreading/多线程
 
-- 在一个进程中，运行多个线程 -> Python -> import threading 
+- 在一个进程中，运行多个线程 -> Python -> import threading
 
 ```py
-import threading 
+import threading
 import time
 
-def func(name, delay): 
-    counter = 5 
+def func(name, delay):
+    counter = 5
     while counter:
         time.sleep(delay)
-        print(f "Thread{name} counting dowm:{counter} ...") 
+        print(f "Thread{name} counting dowm:{counter} ...")
         counter -= 1
 
-class MyThread(threading.Thread): 
-    def __init__(self, name, delay): 
-        threading.Thread.__init__(self) 
-        self.name = name 
+class MyThread(threading.Thread):
+    def __init__(self, name, delay):
+        threading.Thread.__init__(self)
+        self.name = name
         self.delay = delay
-    
+
     def run(self) -> None:
-        print(f "Start thread:{self.name} ") 
-        func(self.name, self.delay) 
+        print(f "Start thread:{self.name} ")
+        func(self.name, self.delay)
         print(f "End thread:{self.name} ")
 
 if __name__ == "__main__":
-    thread1 = MyThread("AAA", 0.5) 
-    thread2 = MyThread("BBB", 1) 
-    thread1.start() 
+    thread1 = MyThread("AAA", 0.5)
+    thread2 = MyThread("BBB", 1)
+    thread1.start()
     thread2.start()
-    thread1.join() 
-    thread2.join() 
+    thread1.join()
+    thread2.join()
     print("Finished.")
 ```
 
@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
 ---
 
-#### threading模块 
+#### threading模块
 
 ##### 3.1 一些基本功能
 
@@ -291,10 +291,10 @@ class MyThread(threading.Thread)
 ```
 
 2. Step2: Override `___init__(self, xxx, xxx)`
- 
+
 
 ```py
-def __init__(self, name, delay): 
+def __init__(self, name, delay):
     threading.Thread.__init__(self)
 ```
 
@@ -312,11 +312,11 @@ def run(self) -> None:
 my_input = [1, 2, 3, 4, ....]  # list
 threads = []  # list
 
-for x in my_input: 
-    temp_thread = MyThread(x) 
+for x in my_input:
+    temp_thread = MyThread(x)
     temp_thread.start()  # 启动线程，调用run()方法
     threads.append(temp_thread)
-for thread in threads: 
+for thread in threads:
     thread.join()  # 优先让该线程的调用者使用 CPU 资源
 ```
 
@@ -324,11 +324,11 @@ for thread in threads:
 
 ##### 3.3 同步线程（Synchronizing threads）
 
-**主要目的：** 
+**主要目的：**
 - 防止共享数据产生错误, avoid data conflicts & discrepencies
 - 因为不同线程在并发中是共享数据的, 所以，可以通过同步线程，来设定不同线程访问 **某部分资源（critical section）** 的先后顺序。
 
-**方法：** 
+**方法：**
 - 使用“锁”，即 **_threading.Lock_** 这个类，主要的功能有：
 - **_threading.Lock()_**:初始化这个类
 - **_acquire(blocking)_**:
@@ -341,41 +341,41 @@ for thread in threads:
 
 ```py
 # Synchronizing
-import threading 
+import threading
 import time
 
-def func(name, delay): 
-    counter = 5 
+def func(name, delay):
+    counter = 5
     while counter:
-        time.sleep(delay) 
-        print(f "Thread{name} counting dowm:{counter} ...") 
+        time.sleep(delay)
+        print(f "Thread{name} counting dowm:{counter} ...")
         counter -= 1
 
-class MyThread(threading.Thread): 
-    def __init__(self, name, delay): 
-        threading.Thread.__init__(self) 
-        self.name = name 
+class MyThread(threading.Thread):
+    def __init__(self, name, delay):
+        threading.Thread.__init__(self)
+        self.name = name
         self.delay = delay
-    
+
     def run(self) -> None:
-        print(f "Start thread:{self.name} ") 
-        thread_lock.acquire(blocking = True) 
-        func(self.name, self.delay) 
+        print(f "Start thread:{self.name} ")
+        thread_lock.acquire(blocking = True)
+        func(self.name, self.delay)
         thread_lock.release()
         print(f "End thread:{self.name} ")
 
 if __name__ == "__main__":
     thread_lock = threading.Lock()
-    
-    thread1 = MyThread("AAA", 0.5) 
+
+    thread1 = MyThread("AAA", 0.5)
     thread2 = MyThread("BBB", 1)
-    thread1.start() 
+    thread1.start()
     thread2.start()
-    thread1.join() 
+    thread1.join()
     thread2.join()
-    
-    print(f "threading.active_count() -> {threading.active_count()}") 
-    print(f "threading.currentThread() -> {threading.current_thread()}") 
+
+    print(f "threading.active_count() -> {threading.active_count()}")
+    print(f "threading.currentThread() -> {threading.current_thread()}")
     print(f "threading.enumerate() -> {threading.enumerate()}")
     print("Finished.")
 ```
@@ -383,13 +383,13 @@ if __name__ == "__main__":
 运行结果，就编程了线程AAA执行完毕后，线程BBB才开始执行，因为我们使用了 **_thread_lock.acquire(blocking=True)_**
 
 ![pic](https://pic4.zhimg.com/v2-a7d4f38a2553bf8a707730c425bb7887_b.jpg)
- 
+
 
 ---
 
 ##### 3.4 线程优先级队列 Multithreaded Priority Queue
 
-**数据结构-队列：** 
+**数据结构-队列：**
 - FIFO，firt-in-first-out
 
 ![pic](https://pic4.zhimg.com/v2-c4227f78d365e23ca67b1adb9b89f2bb_b.jpg)
@@ -409,7 +409,7 @@ if __name__ == "__main__":
 **队列与并发编程：希望使用固定数量的线程 -> thread pool**
 
 ![pic](https://pic2.zhimg.com/v2-b003e21a3c63604a8d4acf386cb93ae9_b.jpg)
- 
+
 **例子：**
 
 ```py
@@ -417,51 +417,51 @@ import queue
 import threading
 import time
 
-def print_factors(x): 
-    result_string = 'Positive factors of %i are: ' % x 
+def print_factors(x):
+    result_string = 'Positive factors of %i are: ' % x
     for i in range(1, x + 1):
         if x % i == 0:
-            result_string += str(i) + ' ' 
+            result_string += str(i) + ' '
             result_string += '\n' + '_' * 20
             print(result_string)
 
-def process_queue(): 
+def process_queue():
     while True:
         try:
             x = my_queue.get(block=False)
         except queue.Empty:
             return
         else:
-            print_factors(x) 
+            print_factors(x)
         time.sleep(1)
 
-class MyThread(threading.Thread): 
+class MyThread(threading.Thread):
     def __init__(self, name):
         threading.Thread.__init__(self)
         self.name = name
-    
+
     def run(self):
         print('Starting thread %s.' % self.name)
         process_queue()
         print('Exiting thread %s.' % self.name)
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     input_ = [1, 10, 4, 3]
-    # 初始化queue，并将input放入queue 
-    my_queue = queue.Queue(maxsize=len(input_)) 
+    # 初始化queue，并将input放入queue
+    my_queue = queue.Queue(maxsize=len(input_))
     for x in input_:
         my_queue.put(x)
-    
-    # 初始化线程 
-    thread1 = MyThread('A') 
-    thread2 = MyThread('B') 
+
+    # 初始化线程
+    thread1 = MyThread('A')
+    thread2 = MyThread('B')
     thread3 = MyThread('C')
-    # 启动线程 
-    thread1.start() 
-    thread2.start() 
+    # 启动线程
+    thread1.start()
+    thread2.start()
     thread3.start()
-    thread1.join() 
-    thread2.join() 
+    thread1.join()
+    thread2.join()
     thread3.join()
     print('Done.')
 ```
@@ -482,8 +482,8 @@ if __name__ == "__main__":
 
 - 关于Python的 **_with_** 语句的内在逻辑
 - 以及如何和 **_threading_** 中的 **_Lock_** 类进行搭配使用，以防止 **deadlock** 的出现。
- 
-#### with语句作为上下文管理器（Context Manager） 
+
+#### with语句作为上下文管理器（Context Manager）
 
 - with可以对程序中的某些变量进行清除（cleanup）
 - with定义了变量的作用域（scope）
@@ -491,74 +491,74 @@ if __name__ == "__main__":
 
 ```py
 # 一
-> with [expression] (as [target]):  
+> with [expression] (as [target]):
 >   [code]
 
 # 二
-> with [expression1] as [target1], [expression2] as [target2]:  
+> with [expression1] as [target1], [expression2] as [target2]:
 >   [code]
 
 # 等价于：
-> with [expression1] as [target1]:  
-> with [expression2] as [target2]:  
+> with [expression1] as [target1]:
+> with [expression2] as [target2]:
 >   [code]
 ```
 
 例子:
 
 ```py
-class Sample:     
-    def __init__(self):     
-        print("__init__")      
-    def __enter__(self):     
-        print("__enter__")      
-    def __exit__(self,exc_type,exc_val,exc_tb):     
-        print("__exit__")      
+class Sample:
+    def __init__(self):
+        print("__init__")
+    def __enter__(self):
+        print("__enter__")
+    def __exit__(self,exc_type,exc_val,exc_tb):
+        print("__exit__")
 
 if __name__ == "__main__":
-    with Sample() as sample:     
-        print("--------------------Inside--------------------")      
-    print("--------------------Outside--------------------")     
+    with Sample() as sample:
+        print("--------------------Inside--------------------")
+    print("--------------------Outside--------------------")
     print(f"f={sample}")
-```             
+```
 
 运行结果：
 
 ![pic](https://pic4.zhimg.com/v2-ed9461adab4bc2e96e9c2133e1ed8a6f_b.jpg)
-  
+
 - 可以看到：
-- -> with首先会去initialize后面的 `[expression]`，即 **_Sample()_** 
+- -> with首先会去initialize后面的 `[expression]`，即 **_Sample()_**
   - 调用 **___init___** ，所以是 **_print("__init__")_**
   - 其次会去调用 **___enter___** 方法，即 print("__enter__")
 - -> 接下来，进入`,` 后面的 `[code]`，即 `print("--------------------Inside--------------------")`
 - -> `[code]`运行结束后，调用 **___exit___** 方法，即 `print("__exit__")`
 
 
-#### with语句与threading.Lock 
+#### with语句与threading.Lock
 
 这个点主要是讲如果出现deadlock的情况，比如：
 
 ```py
-from threading import Lock  
-my_lock = Lock()  
-def get_data_from_file_v1(filename):     
-    my_lock.acquire()      
-    with open(filename, 'r') as f:         
-        data.append(f.read())      
+from threading import Lock
+my_lock = Lock()
+def get_data_from_file_v1(filename):
+    my_lock.acquire()
+    with open(filename, 'r') as f:
+        data.append(f.read())
     my_lock.release()
 ```
-                                            
+
 如果，filename是一个不存在的路径，那么，my_lock将永远不被释放，形成deadlock，程序不能继续进行。
 
 解决办法就是采用with语句：
 
 ```py
-def get_data_from_file_v2(filename):     
-    with my_lock, open(filename, 'r') as f:         
+def get_data_from_file_v2(filename):
+    with my_lock, open(filename, 'r') as f:
         data.append(f.read())
 ```
-                                            
-综上所述，with语句一方面可以帮助程序cleanup，一方面可以去处理一些错误（如threading.Lock），甚至还可以提高程序的可读性，比如最后这个代码块。 
+
+综上所述，with语句一方面可以帮助程序cleanup，一方面可以去处理一些错误（如threading.Lock），甚至还可以提高程序的可读性，比如最后这个代码块。
 
 ---
 
@@ -578,7 +578,7 @@ def get_data_from_file_v2(filename):
 - **客户/浏览器** 是HTTP请求的发出者,  **被访问的网站** 是HTTP请求的接收者, 并在一定条件下, 对客户发出HTTP的相应信息。
 - 请求的主要模式包括：`GET, POST, PUT, HEAD, DELET`等
   - 其中, GET和POST是最主要的方式。
-  - GET就是 **单纯** 从服务器中 **拿** 一个数据, 
+  - GET就是 **单纯** 从服务器中 **拿** 一个数据,
   - POST则是把一个数据 **添加至** 服务器的 **数据库** 中。
 
 - 简单例子就是,  **在金融的程序化交易中** , 如果我们想从交易所 **取得行情信息** , 那么需要发出 **GET** 类型的请求, 如果我们希望向交易所 **下单** , 那么需要发出 **POST** 类型的请求。
@@ -605,15 +605,15 @@ def get_data_from_file_v2(filename):
 用request模块向Bing发出HTTP请求。
 
 ```py
-import requests  
-url = "https://www.bing.com/?mkt=zh-CN"  
-res = requests.get(url)  
-print(res.status_code) 
+import requests
+url = "https://www.bing.com/?mkt=zh-CN"
+res = requests.get(url)
+print(res.status_code)
 print(res.headers)
-``` 
+```
 
 ![pic](https://pic3.zhimg.com/v2-816bc569bf4400db3a791d9c77e60ac6_b.png)
- 
+
 request模块:
 - requests.get(url) 代表用户向Bing发送了一个 **GET** 请求
 - 返回的HTTP状态码是200, 说明HTTP请求成功
@@ -621,35 +621,35 @@ request模块:
 
 response的header中的信息:
 ![pic](https://pic2.zhimg.com/v2-34a267d4c13669034c7c483a75ea1051_b.jpg)
- 
+
 
 ---
 
-#### 3 使用多线程进行HTTP请求 
+#### 3 使用多线程进行HTTP请求
 
 ![pic](https://pic2.zhimg.com/v2-da71a6940a3db4cf37c3e04b91a06049_b.jpg)
-  
-- **每一个HTTP请求, 一般来讲, 是相互独立的。** 
+
+- **每一个HTTP请求, 一般来讲, 是相互独立的。**
 - 尝试用多线程来加快多个HTTP请求的速度。
 
 通过继承之前提及的threading模块中的Thread类, 来编写符合需求的Class。
 
 ```py
-import threading 
-import requests 
-import time  
+import threading
+import requests
+import time
 
-class MyThread(threading.Thread): 
-    def __init__(self, url):     
-        super().__init__()     
-        self.url = url     
-        self.result = None  
-    
-    def run(self):     
-        res = requests.get(url=self.url)     
+class MyThread(threading.Thread):
+    def __init__(self, url):
+        super().__init__()
+        self.url = url
+        self.result = None
+
+    def run(self):
+        res = requests.get(url=self.url)
         self.result = f"{self.url}:{res.text}"
 ```
-            
+
 - 其中,  **_run_** 这个方法是进行override。
 
 使用线程的基本操作模式
@@ -657,34 +657,34 @@ class MyThread(threading.Thread):
 - 接着依次对每一个实例进行 **_start_** 和 **_join_** 。
 
 ```py
-if __name__ == "__main__": 
-    urls = [     
-        'http://httpstat.us/200',    
-        'http://httpstat.us/400',     
-        'http://httpstat.us/404',     
-        'http://httpstat.us/408',     
-        'http://httpstat.us/500',     
-        'http://httpstat.us/524' 
-    ]  
-    start = time.time()  
-    threads = [MyThread(url) for url in urls] 
-    
-    for thread in threads:     
-        thread.start() 
-    for thread in threads:     
-        thread.join()  
-    for thread in threads:     
-        print(thread.result)  
+if __name__ == "__main__":
+    urls = [
+        'http://httpstat.us/200',
+        'http://httpstat.us/400',
+        'http://httpstat.us/404',
+        'http://httpstat.us/408',
+        'http://httpstat.us/500',
+        'http://httpstat.us/524'
+    ]
+    start = time.time()
+    threads = [MyThread(url) for url in urls]
 
-    print(f'Took {time.time() - start : .2f} seconds')  
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    for thread in threads:
+        print(thread.result)
+
+    print(f'Took {time.time() - start : .2f} seconds')
     print('Done.')
 ```
-            
+
 运行结果如下：
 ![pic](https://pic1.zhimg.com/v2-0995b2cfd39aaf470dc9a97a78f9de74_b.jpg)
 
 - 其实将多线程用在网络爬虫中, 主要的操作模式是和其他方面的应用没有区别的, 依旧是先自定义一个Thread的类型, 再把需要process的函数(如果爬虫)应用到该class的run方法中来。
- 
+
 ---
 
 
@@ -703,10 +703,10 @@ if __name__ == "__main__":
 
 ---
 
-## Mastering Concurrency in Python 
+## Mastering Concurrency in Python
 
 此文首先介绍了线程的基本概念及其和进程的关系，再介绍了如何使用Python的threading模块，包括启动线程、同步线程、线程锁、线程优先级&队列等案例。
- 
+
 两种常见的编程模式：多线程 **_Multithreading_** 和多进程 **_Multiprocessing_** 的介绍均告一段落：
 
 *   多线程 & Python thrading模块
@@ -754,8 +754,8 @@ ref: 《Mastering Concurrency in Python》
 -------------------------
 
                                                 `import                                                     asyncio                                                     from                                                     math                                                     import                                                     sqrt                                                      async                                                     def                                                     is_prime                                                     (                                                     x                                                     ):                                                     print                                                     (                                                     'Processing                                                      %i                                                     ...'                                                     %                                                     x                                                     )                                                      if                                                     x                                                     <                                                     2                                                     :                                                     print                                                     (                                                     '                                                     %i                                                      is not a prime number.'                                                     %                                                     x                                                     )                                                      elif                                                     x                                                     ==                                                     2                                                     :                                                     print                                                     (                                                     '                                                     %i                                                      is a prime number.'                                                     %                                                     x                                                     )                                                      elif                                                     x                                                     %                                                     2                                                     ==                                                     0                                                     :                                                     print                                                     (                                                     '                                                     %i                                                      is not a prime number.'                                                     %                                                     x                                                     )                                                      else                                                     :                                                     limit                                                     =                                                     int                                                     (                                                     sqrt                                                     (                                                     x                                                     ))                                                     +                                                     1                                                     for                                                     i                                                     in                                                     range                                                     (                                                     3                                                     ,                                                     limit                                                     ,                                                     2                                                     ):                                                     if                                                     x                                                     %                                                     i                                                     ==                                                     0                                                     :                                                     print                                                     (                                                     '                                                     %i                                                      is not a prime number.'                                                     %                                                     x                                                     )                                                     return                                                     elif                                                     i                                                     %                                                     100000                                                     ==                                                     1                                                     :                                                     # print('Here!')                                                     await                                                     asyncio                                                     .                                                     sleep                                                     (                                                     0                                                     )                                                      print                                                     (                                                     '                                                     %i                                                      is a prime number.'                                                     %                                                     x                                                     )                                                      async                                                     def                                                     main                                                     ():                                                     task1                                                     =                                                     loop                                                     .                                                     create_task                                                     (                                                     is_prime                                                     (                                                     9637529763296797                                                     ))                                                     task2                                                     =                                                     loop                                                     .                                                     create_task                                                     (                                                     is_prime                                                     (                                                     427920331                                                     ))                                                     task3                                                     =                                                     loop                                                     .                                                     create_task                                                     (                                                     is_prime                                                     (                                                     157                                                     ))                                                     await                                                     asyncio                                                     .                                                     wait                                                     ([                                                     task1                                                     ,                                                     task2                                                     ,                                                     task3                                                     ])                                                      if                                                     __name__                                                     ==                                                     "__main__"                                                     :                                                     try                                                     :                                                     loop                                                     =                                                     asyncio                                                     .                                                     get_event_loop                                                     ()                                                     loop                                                     .                                                     run_until_complete                                                     (                                                     main                                                     ())                                                     except                                                     Exception                                                     as                                                     e                                                     :                                                     print                                                     (                                                     str                                                     (                                                     e                                                     ))                                                     finally                                                     :                                                     loop                                                     .                                                     close                                                     ()`
-                                                
-                                            
+
+
 
 运行结果
 

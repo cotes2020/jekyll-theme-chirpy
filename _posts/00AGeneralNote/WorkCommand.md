@@ -58,7 +58,7 @@ Recommand Plugin:
   - There are 4 lovely flavours for you to choose from: Latte, Frappé, Macchiato and Mocha.
 
 - [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
-  - This plugin is a port of the Atom File Icons and the icons of the Material Theme UI plugin. 
+  - This plugin is a port of the Atom File Icons and the icons of the Material Theme UI plugin.
 
 - [Rainbow brackets](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
   - 如果您曾经为嵌套元素的大量重复中括号而烦恼，那这款插件就是您的救星。 它为每组左中括号和右中括号提供了各自的颜色，使跟踪代码块的起始和结束位置更加容易。 相信我们，只要尝试一次，您就会知道它有多好。
@@ -67,7 +67,7 @@ Recommand Plugin:
 - [wakatime](https://plugins.jetbrains.com/plugin/7425-wakatime)
   - Metrics, insights, and time tracking automatically generated from your programming activity.
 
-- [CodeGlance](https://plugins.jetbrains.com/plugin/7275-codeglance) 
+- [CodeGlance](https://plugins.jetbrains.com/plugin/7275-codeglance)
   - 用过sublime的同学对这个功能一定很熟悉，它是一个迷你缩放图插件
   - 当代码过长的时候可以使用这个插件，相比如下拉框，这个插件更加的直观和方便
 
@@ -76,7 +76,7 @@ Recommand Plugin:
   - windows上可以通过alt + insert 快捷键，mac是control+回车
 
 
-### VSC 
+### VSC
 
 #### Issue
 
@@ -95,7 +95,7 @@ Settings:
 
 --
 
-## makefile 
+## makefile
 
 ### avoid command output
 
@@ -143,7 +143,7 @@ gh api search/repositories \
 **gh search**
 
 ```bash
-gh search repos --visibility=public --language=java  
+gh search repos --visibility=public --language=java
 
 gh search repos --visibility=public --language=java \
   --limit 100 --json fullName | jq -r '.[].fullName'
@@ -224,7 +224,7 @@ done > output.txt
       --limit 1000000000000000000 \
       --json url \
       | jq -r '.[].url' > output.txt
- 
+
 page=1
 per_page=1000
 while true; do
@@ -388,7 +388,7 @@ API:
 ### Github Submodel
 
 ```bash
-$ git submodule add --force https://github.xxx 
+$ git submodule add --force https://github.xxx
 $ git submodule update --remote
 ```
 

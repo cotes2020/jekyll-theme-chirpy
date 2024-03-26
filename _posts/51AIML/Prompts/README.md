@@ -37,7 +37,7 @@ Afterwards, you can view the results by running `promptfoo view`
 ]
 
 // output 1
-[ 
+[
     {
         "role": "user",
         "content": "" # C
@@ -51,7 +51,7 @@ Afterwards, you can view the results by running `promptfoo view`
     },
     {
         "role": "user",
-        "content": "[ 
+        "content": "[
             {
                 "role": "user",
                 "content": "" # C
@@ -61,13 +61,13 @@ Afterwards, you can view the results by running `promptfoo view`
     {
         "role": "assistant",
         "content": "..."
-    }, 
+    },
     {
         "role": "user",
         "content": "" # C
     }
 ]
-``` 
+```
 
 ### user outside loop
 
@@ -100,7 +100,7 @@ Afterwards, you can view the results by running `promptfoo view`
         "role": "user",
         "content": "" # A
     },
-    
+
     {
         "role": "user",
         "content": "" # C
@@ -114,7 +114,7 @@ Afterwards, you can view the results by running `promptfoo view`
     },
     {
         "role": "user",
-        "content": "[ 
+        "content": "[
             {
                 "role": "user",
                 "content": "" # A
@@ -128,18 +128,18 @@ Afterwards, you can view the results by running `promptfoo view`
     {
         "role": "assistant",
         "content": "..."
-    }, 
+    },
     {
         "role": "user",
         "content": "" # C
     }
 ]
-``` 
+```
 
 ### user inside loop
 
 ```json
-[ 
+[
     {% for completion in _conversation %}
     {
         "role": "user",
@@ -157,14 +157,14 @@ Afterwards, you can view the results by running `promptfoo view`
 ]
 
 // output 1
-[ 
+[
     {
         "role": "user",
         "content": "" # C
     }
 ]
 // output 2
-[ 
+[
     {
         "role": "user",
         "content": "[
@@ -177,13 +177,13 @@ Afterwards, you can view the results by running `promptfoo view`
     {
         "role": "assistant",
         "content": "..."
-    }, 
+    },
     {
         "role": "user",
         "content": "" # C
     }
 ]
-``` 
+```
 
 
 
@@ -231,7 +231,7 @@ Afterwards, you can view the results by running `promptfoo view`
     },
     {
         "role": "user",
-        "content": "[ 
+        "content": "[
             {
                 "role": "system",
                 "content": "{{ system_message }}"
@@ -245,13 +245,13 @@ Afterwards, you can view the results by running `promptfoo view`
     {
         "role": "assistant",
         "content": "..."
-    }, 
+    },
     {
         "role": "user",
         "content": "" # C
     }
 ]
-``` 
+```
 
 
 
@@ -306,10 +306,10 @@ Afterwards, you can view the results by running `promptfoo view`
     {
         "role": "assistant",
         "content": "..."
-    }, 
+    },
     {
         "role": "user",
         "content": "" # C
     }
 ]
-``` 
+```
