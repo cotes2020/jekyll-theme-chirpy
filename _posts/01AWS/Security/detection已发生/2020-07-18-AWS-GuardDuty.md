@@ -60,7 +60,7 @@ Term
   - can sign in to AWS with your account, and enable GuardDuty.
   - can invite other accounts to enable GuardDuty, and these accounts can be associated with your AWS account in GuardDuty.
     - If your invitations are accepted,
-    - your account is <font color=blue> master GuardDuty account </font>
+    - your account is <font color=LightSlateBlue> master GuardDuty account </font>
     - the added accounts is your member accounts.
     - view and manage GuardDuty findings for member accounts
 - data source:
@@ -77,7 +77,7 @@ Term
 - trusted IP list
   - a list of whitelisted IP addresses for highly secure communication with AWS environment.
   - GuardDuty does not generate findings based on trusted IP lists.
-- <font color=blue> threat list </font>
+- <font color=LightSlateBlue> threat list </font>
   - list of known malicious IP addresses.
   - GuardDuty generates findings based on threat lists.
 
@@ -87,16 +87,16 @@ Term
 1. connect all accounts, and enable GuardDuty within the AWS console.
    - use the console to monitor the AWS accounts
    - without additional security software or infrastructure to deploy or manage.
-2. GuardDuty looks at <font color=blue> CloudTrail Events, VPC Flow Logs, and DNS Query Logs </font>
+2. GuardDuty looks at <font color=LightSlateBlue> CloudTrail Events, VPC Flow Logs, and DNS Query Logs </font>
    - continuously analyzes those logs.
    - automatically analyzes network and account activity at scale,
    - provides broad, continuous monitoring of your AWS accounts and workloads.
 3. intelligently detects threats and malicious or authorized behavior
    - by using
-   - <font color=blue> managed rule sets </font>
-   - <font color=blue> integrated threat intelligence </font>
-   - <font color=blue> anomaly detection </font>
-   - and <font color=blue> machine learning </font>
+   - <font color=LightSlateBlue> managed rule sets </font>
+   - <font color=LightSlateBlue> integrated threat intelligence </font>
+   - <font color=LightSlateBlue> anomaly detection </font>
+   - and <font color=LightSlateBlue> machine learning </font>
 4. After GuardDuty detects a threat,
    - it can use actionable alerts to review detailed findings in the console,
    - integrate into event management or workflow systems,
@@ -120,7 +120,7 @@ Term
 
 - When you enable GuardDuty, it immediately starts analyzing your VPC Flow Logs data.
   - It consumes VPC Flow Log events directly from the VPC Flow Logs feature through an independent and duplicative stream of flow logs.
-  - This process <font color=blue> does not affect any existing flow log configurations </font> that might have.
+  - This process <font color=LightSlateBlue> does not affect any existing flow log configurations </font> that might have.
   - GuardDuty does not manage flow logs or make them accessible in your account.
     - To manage the access and retention of your flow logs, you must configure the VPC Flow Logs feature.
 

@@ -177,10 +177,10 @@ Key features for CloudFront include:
 benefits
 - <font color=red> Fast and global </font>
   - CloudFront is massively scaled and globally distributed.
-  - To deliver content to end users with low latency, CloudFront uses a global network that consists of <font color=blue> edge locations </font> and <font color=blue> regional caches </font>
+  - To deliver content to end users with low latency, CloudFront uses a global network that consists of <font color=LightSlateBlue> edge locations </font> and <font color=LightSlateBlue> regional caches </font>
 
 - <font color=red> Security at the edge </font>
-  - provides both <font color=blue> network-level and application-level protection </font>
+  - provides both <font color=LightSlateBlue> network-level and application-level protection </font>
   - Your traffic and applications benefit through various built-in protections,
     - such as <font color=red> AWS Shield Standard </font> with no additional cost.
   - use configurable features
@@ -188,7 +188,7 @@ benefits
 
 - <font color=red> Highly programmable </font>
   - CloudFront features can be customized for specific application requirements.
-  - integrates with <font color=red> Lambda@Edge </font> to run <font color=blue> custom code across AWS locations worldwide </font> to move complex application logic closer to users to improve responsiveness.
+  - integrates with <font color=red> Lambda@Edge </font> to run <font color=LightSlateBlue> custom code across AWS locations worldwide </font> to move complex application logic closer to users to improve responsiveness.
   - The CDN also supports integrations with other tools and automation interfaces for DevOps. It offers continuous integration and continuous delivery (CI/CD) environments.
 
 - <font color=red> Deeply integrated with AWS </font>
@@ -256,11 +256,11 @@ CloudFront charges are based on actual usage of the service in four areas:
 
 
 CloudFront has several options for enablement.
-- use a <font color=blue> separate Canonical Name Record / CNAME </font> for static content,
+- use a <font color=LightSlateBlue> separate Canonical Name Record / CNAME </font> for static content,
   - the static content is cached straight from the origin server.
   - most efficient
   - but takes more effort to set up and manage.
-- point the <font color=blue> entire uniform resource locator / URL </font> to CloudFront
+- point the <font color=LightSlateBlue> entire uniform resource locator / URL </font> to CloudFront
   - easier to manage.
   - can use URL patterns to stage dynamic content.
   - All of the content goes through edge locations.
@@ -282,9 +282,9 @@ CloudFront has several options for enablement.
   - In this way, CloudFront delivers both static and dynamic content.
 
 <font color=red> 2 distribution types </font>
-- <font color=blue> Web distribution </font>
+- <font color=LightSlateBlue> Web distribution </font>
   - lets access to web content in any combination of up to 10 S3 buckets or custom origin servers.
-- <font color=blue> Real Time Messaging Protocol / RTMP distribution </font>
+- <font color=LightSlateBlue> Real Time Messaging Protocol / RTMP distribution </font>
   - always an S3 bucket.
 
 To configure a cloudfront distribution to access a S3 private bucket:
@@ -482,7 +482,7 @@ cache control headers
 
 - <font color=red> Server Name Indication (SNI) Custom SSL </font>
   - relies on the SNI extension of the Transport Layer Security protocol
-  - <font color=blue> allows multiple domains to serve SSL traffic over the same IP address </font>
+  - <font color=LightSlateBlue> allows multiple domains to serve SSL traffic over the same IP address </font>
   - CloudFront delivers content from each edge location, offers the same security as the Dedicated IP Custom SSL feature.
   - Some older browsers do not support SNI
     - some users might not be able to access your content by older browsers.
@@ -542,7 +542,7 @@ For web distributions, can configure CloudFront to
      - so CloudFront requires HTTPS for some objects, but not for others
 
 2. The configuration steps depend on <font color=red> the domain name using in object URLs </font>
-   - using <font color=blue> the domain name that CloudFront assigned </font> to your distribution
+   - using <font color=LightSlateBlue> the domain name that CloudFront assigned </font> to your distribution
      - like: `d111111abcdef8.cloudfront.net`
      - change the  <font color=red> Viewer Protocol Policy </font> setting for one or more cache behaviors to require HTTPS communication.
      - In that configuration, CloudFront provides the SSL/TLS certificate.
@@ -551,7 +551,7 @@ For web distributions, can configure CloudFront to
        - use the CloudFront API to change the value of the `ViewerProtocolPolicy` element
          - UpdateDistribution in the CloudFront API.
 
-   - using <font color=blue> your own domain name </font>
+   - using <font color=LightSlateBlue> your own domain name </font>
      - like: `example.com`
      - need to
        - change several CloudFront settings.
@@ -579,17 +579,17 @@ To configure CloudFront to <font color=red> require HTTPS between viewers and Cl
      - The viewer then resubmits the request to CloudFront using the HTTPS URL.
        - If you send `POST, PUT, DELETE, OPTIONS, or PATCH` over HTTP with an HTTP to HTTPS cache behavior and a request protocol version of HTTP
        - `protocol version of HTTP 1.1 or above`,
-         - CloudFront redirects the request to a HTTPS location with a <font color=blue> HTTP status code 307 (Temporary Redirect) </font>
+         - CloudFront redirects the request to a HTTPS location with a <font color=LightSlateBlue> HTTP status code 307 (Temporary Redirect) </font>
          - This guarantees that the request is sent again to the new location using the same method and body payload.
        - `protocol version below HTTP 1.1`
-         - CloudFront returns a <font color=blue> HTTP status code 403 (Forbidden) </font>
+         - CloudFront returns a <font color=LightSlateBlue> HTTP status code 403 (Forbidden) </font>
      - When a viewer makes an HTTP request that is redirected to an HTTPS request, CloudFront charges for both requests.
        - For the HTTP request, the charge is only for the request and for the headers that CloudFront returns to the viewer.
        - For the HTTPS request, the charge is for the request, and for the headers and the object that are returned by your origin.
    - <font color=red> HTTPS Only </font>
      - Viewers can access your content only if they're using HTTPS.
      - If a viewer sends an HTTP request instead of an HTTPS request
-       - CloudFront returns <font color=blue> HTTP status code 403 (Forbidden) </font> and does not return the object.
+       - CloudFront returns <font color=LightSlateBlue> HTTP status code 403 (Forbidden) </font> and does not return the object.
 
 5. Choose Yes, Edit
 6. Repeat steps 3 through 5 for each additional cache behavior that you want to require HTTPS for between viewers and CloudFront.
@@ -743,7 +743,7 @@ Choosing Between RSA and ECDSA Ciphers
 <font color=red> Use ECDSA Ciphers for communications between CloudFront and the origin </font>
 
 1. Generate a private key by using either of the supported curves (prime256v1 or secp384r1).
-2. Generate an <font color=blue> ECDSA Digital Certificate </font> in the `X.509` PEM format with a trusted certificate authority.
+2. Generate an <font color=LightSlateBlue> ECDSA Digital Certificate </font> in the `X.509` PEM format with a trusted certificate authority.
 3. Set up your origin to prefer the ECDSA certificate.
 4. Using ECDSA doesn't require any settings changes in the CloudFront console or APIs, and there is no additional fee.
 
@@ -985,20 +985,20 @@ aws cloudfront get-distribution-config \
 
 When set up an S3 bucket as the origin for a CloudFront distribution
 - grant everyone permission to read the files in your bucket.
-  - allows anyone to access your files either <font color=blue> through CloudFront or using the S3 URL </font>
+  - allows anyone to access your files either <font color=LightSlateBlue> through CloudFront or using the S3 URL </font>
   - CloudFront doesn't expose S3 URLs,
   - but the users might have those URLs if your application serves any files directly from S3
   - or if anyone gives out direct links to specific files in S3.
 
 
 - <font color=red> use CloudFront signed URLs or signed cookies </font> to restrict access
-  - but it not prevent users from <font color=blue> accessing S3 files by using S3 URLs </font>
+  - but it not prevent users from <font color=LightSlateBlue> accessing S3 files by using S3 URLs </font>
   - If users access your files directly in S3,
-    - they <font color=blue> bypass the controls provided by CloudFront signed URLs or signed cookies </font>
+    - they <font color=LightSlateBlue> bypass the controls provided by CloudFront signed URLs or signed cookies </font>
       - This includes
       - control over the date and time that a user can no longer access your content,
       - and control over which IP addresses can be used to access content.
-    - <font color=blue> CloudFront access logs are less useful </font>
+    - <font color=LightSlateBlue> CloudFront access logs are less useful </font>
       - because they're incomplete, users access files both through CloudFront and directly by using S3 URLs,
 
 To ensure access by only CloudFront URLs, regardless of whether the URLs are signed, do the following:

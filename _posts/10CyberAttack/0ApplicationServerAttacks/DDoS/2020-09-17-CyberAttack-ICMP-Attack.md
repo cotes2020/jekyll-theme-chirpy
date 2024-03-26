@@ -1,20 +1,20 @@
 ---
 title: Meow's CyberAttack - ICMP Attacks 
 date: 2020-09-17 11:11:11 -0400
-categories: [10CyberAttack, Application/Server Attacks, DDos]
+categories: [10CyberAttack, DDos]
 tags: [CyberAttack, DDos, ICMP]
 toc: true
 image:
 ---
 
-- [Meow's CyberAttack - ICMP Attacks](#meows-cyberattack---icmp-attacks)
+- [Meow's CyberAttack - Application/Server Attacks - DDos Dos - ICMP Attacks](#meows-cyberattack---applicationserver-attacks---ddos-dos---icmp-attacks)
   - [ICMP Attacks](#icmp-attacks)
   - [ping of death](#ping-of-death)
   - [Smurf attack can use ICMP traffic,](#smurf-attack-can-use-icmp-traffic)
 
 ---
 
-# Meow's CyberAttack - ICMP Attacks 
+# Meow's CyberAttack - Application/Server Attacks - DDos Dos - ICMP Attacks 
 
 --- 
 

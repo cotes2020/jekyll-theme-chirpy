@@ -67,16 +67,16 @@
 
 Examples of use a **ClusterIP** service:
 
-1. When you are `developing and testing an application`, you might want to use a ClusterIP service so that <font color=blue> you can access the application from other pods in the cluster </font>.
+1. When you are `developing and testing an application`, you might want to use a ClusterIP service so that <font color=LightSlateBlue> you can access the application from other pods in the cluster </font>.
 
-1. When you are `running a service` that is <font color=blue> only intended to be used by other services in the cluster </font>, you might want to use a ClusterIP service.
+1. When you are `running a service` that is <font color=LightSlateBlue> only intended to be used by other services in the cluster </font>, you might want to use a ClusterIP service.
 
 
 Examples of use a **LoadBalancer** service:
 
-1. When you are `running a service` that is intended to be <font color=blue> used by users outside the cluster </font>, you might want to use a LoadBalancer service.
+1. When you are `running a service` that is intended to be <font color=LightSlateBlue> used by users outside the cluster </font>, you might want to use a LoadBalancer service.
 
-1. When you are `running a service` that needs to <font color=blue> be accessible from multiple regions </font>, you might want to use a LoadBalancer service.
+1. When you are `running a service` that needs to <font color=LightSlateBlue> be accessible from multiple regions </font>, you might want to use a LoadBalancer service.
 
 
 ClusterIP services are more secure than LoadBalancer services

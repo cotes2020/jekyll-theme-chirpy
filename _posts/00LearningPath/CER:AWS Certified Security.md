@@ -86,19 +86,19 @@ TOTAL 100%
 Domain 1: Incident Response
 
 1.1 Given an AWS abuse notice, <font color=red> evaluate the suspected compromised instance or exposed access keys </font>.
-- Given an AWS Abuse report about an EC2 instance, <font color=blue> securely isolate the instance </font> as part of a
+- Given an AWS Abuse report about an EC2 instance, <font color=LightSlateBlue> securely isolate the instance </font> as part of a
 forensic investigation.
-- <font color=blue> Analyze logs </font> relevant to a reported instance to verify a breach, and collect relevant data.
-- <font color=blue> Capture a memory dump </font> from a suspected instance for later deep analysis or for legal compliance reasons.
+- <font color=LightSlateBlue> Analyze logs </font> relevant to a reported instance to verify a breach, and collect relevant data.
+- <font color=LightSlateBlue> Capture a memory dump </font> from a suspected instance for later deep analysis or for legal compliance reasons.
 
 1.2 Verify that the <font color=red> Incident Response plan </font> includes relevant AWS services.
-- Determine <font color=blue> if changes to baseline security configuration </font> have been made.
-- Determine <font color=blue> if list omits services, processes, or procedures </font> which facilitate Incident Response.
+- Determine <font color=LightSlateBlue> if changes to baseline security configuration </font> have been made.
+- Determine <font color=LightSlateBlue> if list omits services, processes, or procedures </font> which facilitate Incident Response.
 - Recommend services, processes, procedures to remediate gaps.
 
 1.3 Evaluate the configuration of <font color=red> automated alerting, and execute possible remediation </font> of security-related incidents and emerging issues.
-- <font color=blue> Automate evaluation of conformance </font> with rules for new/changed/removed resources.
-- Apply <font color=blue> rule-based alerts </font> for common infrastructure misconfigurations.
+- <font color=LightSlateBlue> Automate evaluation of conformance </font> with rules for new/changed/removed resources.
+- Apply <font color=LightSlateBlue> rule-based alerts </font> for common infrastructure misconfigurations.
 - Review previous security incidents and recommend improvements to existing systems.
 
 ---
@@ -106,10 +106,10 @@ forensic investigation.
 Domain 2: Logging and Monitoring
 
 2.1 <font color=red> Design and implement </font> security monitoring and alerting.
-- Analyze architecture and identify <font color=blue> monitoring requirements </font> and sources for monitoring statistics.
+- Analyze architecture and identify <font color=LightSlateBlue> monitoring requirements </font> and sources for monitoring statistics.
 - Analyze architecture to determine which AWS services can be used to automate monitoring and alerting.
-- Analyze the requirements for <font color=blue> custom application monitoring </font>, and determine how this could be achieved.
-- Set up <font color=blue>  </font> to perform regular audits.
+- Analyze the requirements for <font color=LightSlateBlue> custom application monitoring </font>, and determine how this could be achieved.
+- Set up <font color=LightSlateBlue>  </font> to perform regular audits.
 
 2.2 <font color=red> Troubleshoot </font> security monitoring and alerting.
 - Given an occurrence of a known event without the expected alerting, analyze the service functionality and configuration and remediate.
@@ -118,10 +118,10 @@ Domain 2: Logging and Monitoring
 - Review audit trails of system and user activity.
 
 2.3 <font color=red> Design and implement </font> a logging solution.
-- Analyze architecture and identify <font color=blue> logging requirements </font> and sources for log ingestion.
-- Analyze requirements and implement <font color=blue> durable and secure log storage </font> according to AWS best
+- Analyze architecture and identify <font color=LightSlateBlue> logging requirements </font> and sources for log ingestion.
+- Analyze requirements and implement <font color=LightSlateBlue> durable and secure log storage </font> according to AWS best
 practices.
-- Analyze architecture to determine which AWS services can be used to <font color=blue>  </FONT>.
+- Analyze architecture to determine which AWS services can be used to <font color=LightSlateBlue>  </FONT>.
 
 2.4 <font color=red> Troubleshoot </font> logging solutions.
 - Given the absence of logs, determine the incorrect configuration and define remediation steps.

@@ -103,7 +103,7 @@ Properties:
 ## AWS::Config::DeliveryChannel
 
 
-Specifies a delivery channel object to <font color=blue> deliver configuration information to an S3 bucket and SNS topic </font>.
+Specifies a delivery channel object to <font color=LightSlateBlue> deliver configuration information to an S3 bucket and SNS topic </font>.
 - Before you can create a delivery channel, must create a configuration recorder.
 - use this action to change the Amazon S3 bucket or an Amazon SNS topic of the existing delivery channel.
 - To change the Amazon S3 bucket or an Amazon SNS topic, call this action and specify the changed values for the S3 bucket and the SNS topic.

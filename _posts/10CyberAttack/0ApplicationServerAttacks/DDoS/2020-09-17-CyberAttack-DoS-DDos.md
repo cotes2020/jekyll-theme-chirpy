@@ -7,7 +7,7 @@ toc: true
 image:
 ---
 
-- [Meow's CyberAttack - Dos DDos](#meows-cyberattack---dos-ddos)
+- [Meow's CyberAttack - Application/Server Attacks - DDos Dos](#meows-cyberattack---applicationserver-attacks---ddos-dos)
   - [DOS - Denial of Service](#dos---denial-of-service)
   - [DDOS - distributed denial of service attack](#ddos---distributed-denial-of-service-attack)
   - [Prevent](#prevent)
@@ -15,7 +15,7 @@ image:
 
 ---
 
-# Meow's CyberAttack - Dos DDos
+# Meow's CyberAttack - Application/Server Attacks - DDos Dos
 
 ---
 

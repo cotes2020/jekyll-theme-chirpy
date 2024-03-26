@@ -52,10 +52,10 @@ With CodeCommit, you can:
 
 
 3. <font color=red> Work collaboratively on code </font>
-   - CodeCommit repositories <font color=blue> support pull requests </font>
+   - CodeCommit repositories <font color=LightSlateBlue> support pull requests </font>
      - provide a mechanism to request code reviews and discuss code with collaborators.
    - users can review and comment on each other's code changes before merging them to branches;
-      - easily <font color=blue> commit, branch, and merge </font> the code to easily maintain control of team’s projects.
+      - easily <font color=LightSlateBlue> commit, branch, and merge </font> the code to easily maintain control of team’s projects.
    - notifications that automatically send emails to users about pull requests and comments; and more.
 
 4. <font color=red> Easily scale the version control projects </font>

@@ -97,8 +97,8 @@ click for detailed note
 - a <font color=red> threat detection service </font>
 - Designed to <font color=red> actively protect </font> the environment from threats.
 - <font color=red> monitors environment, and identify malicious/unauthorized activity </font> in AWS account and workloads
-  - such as <font color=blue> unusual API calls or potentially unauthorized deployments </font> that indicate a possible account compromise.
-  - detects <font color=blue> potentially compromised instances or reconnaissance </font> by attackers.
+  - such as <font color=LightSlateBlue> unusual API calls or potentially unauthorized deployments </font> that indicate a possible account compromise.
+  - detects <font color=LightSlateBlue> potentially compromised instances or reconnaissance </font> by attackers.
   - continuously monitor and <font color=red> protect AWS accounts and workloads </font>
   - can <font color=red> identify malicious or unauthorized activities </font> in AWS accounts
 - Use <font color=red> threat intelligence </font> feeds to detect threats to the environment.
@@ -115,12 +115,12 @@ click for detailed note
   - dive into configuration details of a resource at any point in time.
 
 - <font color=red> change management </font>
-  - <font color=blue> audit, evaluate, and monitor changes and Aconfigurations </font> of AWS resources.
+  - <font color=LightSlateBlue> audit, evaluate, and monitor changes and Aconfigurations </font> of AWS resources.
   - track resource inventory and changes.
   - review changes in configurations and relationships between AWS resources
   - dive into detailed resource configuration histories,
-  - provides an <font color=blue> AWS resource inventory, configuration history, and configuration change notifications </font> to <font color=red> enable security and regulatory compliance </font>
-  - allows to <font color=blue> automate the evaluation of recorded configurations </font> against desired configurations.
+  - provides an <font color=LightSlateBlue> AWS resource inventory, configuration history, and configuration change notifications </font> to <font color=red> enable security and regulatory compliance </font>
+  - allows to <font color=LightSlateBlue> automate the evaluation of recorded configurations </font> against desired configurations.
 
 - <font color=red> compliance auditing </font>
   - determine your overall compliance against rules/configurations specified in your internal guidelines.
@@ -132,7 +132,7 @@ click for detailed note
 [CloudTrail]() <font color=blacko> got all the log, auditing </font>
 - simplifies security analysis, resource change tracking, and troubleshooting.
 - <font color=red> enables governance, compliance, operational auditing, and risk auditing </font> of AWS account.
-  - <font color=blue> enabled automatically </font> when create AWS account
+  - <font color=LightSlateBlue> enabled automatically </font> when create AWS account
   - delivers log files within 15min of account activity.
   - enable CloudTrail for all regions in your environment
     - can create a trail applies to one Region or to all Regions
@@ -151,16 +151,16 @@ click for detailed note
 
 [CloudWatch Logs]() <font color=blacko> collect log, create alarm, does not debug or log errors </font>
 - monitor, collect, store, and access logs from resources, applications, and services in <font color=red> near real-time </font>
-  - <font color=blue> Basic monitoring collects metrics every 5min </font>
-  - <font color=blue> detailed monitoring collects metrics every 1min </font>
+  - <font color=LightSlateBlue> Basic monitoring collects metrics every 5min </font>
+  - <font color=LightSlateBlue> detailed monitoring collects metrics every 1min </font>
 - <font color=red> collect and track metrics, collect and monitor log files, and set alarms.  </font>
-  - <font color=blue> Compute </font> (EC2 insatnces, autoscaling groups, elastic load balancers, route53 health checks)
-    - <font color=blue> CPU, Disk, Network utilization, and others. </font>
-    - <font color=blue> aggregate 聚集 logs from your EC2 instance.  </font>
-    - <font color=blue> centrally upload logs from all the servers. </font>
-    - <font color=blue> Content Delivery </font> (EBS Volumes, Storage Gateways, CloudFront)
-  - <font color=blue> Storage, CloudTrail, Lambda functions, and Amazon SQS queues </font>
-  - <font color=blue> allow real-time monitoring as well as adjustable retention. </font>
+  - <font color=LightSlateBlue> Compute </font> (EC2 insatnces, autoscaling groups, elastic load balancers, route53 health checks)
+    - <font color=LightSlateBlue> CPU, Disk, Network utilization, and others. </font>
+    - <font color=LightSlateBlue> aggregate 聚集 logs from your EC2 instance.  </font>
+    - <font color=LightSlateBlue> centrally upload logs from all the servers. </font>
+    - <font color=LightSlateBlue> Content Delivery </font> (EBS Volumes, Storage Gateways, CloudFront)
+  - <font color=LightSlateBlue> Storage, CloudTrail, Lambda functions, and Amazon SQS queues </font>
+  - <font color=LightSlateBlue> allow real-time monitoring as well as adjustable retention. </font>
 - providing a unified view of AWS resources, applications and services that run on AWS, and on-premises servers.
 - actionable insights to monitor applications, respond to system-wide performance changes, and optimize resource utilization to get a view of your overall operational health.
 

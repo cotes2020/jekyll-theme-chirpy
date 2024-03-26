@@ -27,8 +27,8 @@ image:
 
 - Inspector uses a defined template and assesses the environment.
   - Providees the findings and recommends steps to resolve any potential security issues found.
-  - define a collection of resources to include in the <font color=blue> assessment target </font>
-  - then create an <font color=blue> assessment template </font> to launch a security assessment run of that target.
+  - define a collection of resources to include in the <font color=LightSlateBlue> assessment target </font>
+  - then create an <font color=LightSlateBlue> assessment template </font> to launch a security assessment run of that target.
   - <font color=red> analyze EC2 instances against pre-defined security templates </font> to check for vulnerabilities
 
 - Results is a <font color=red> detailed list of the security findings/issues </font> prioritized by level of severity!
@@ -37,15 +37,15 @@ image:
   - The assessment run start time, end time, and status
   - The name of the rules package that includes the rule that triggered this finding
   - The name of the finding
-  - The <font color=blue> severity level </font> of severity of the finding
+  - The <font color=LightSlateBlue> severity level </font> of severity of the finding
   - The description of the finding
-  - <font color=blue> prioritized steps for remediation  </font>
+  - <font color=LightSlateBlue> prioritized steps for remediation  </font>
   - findings can be reviewed directly or as part of detailed assessment reports which are available via the Amazon Inspector console or API.
 
 - Amazon Inspector includes a <font color=red> knowledge base with hundreds of rules </font>
-  - Use <font color=blue> rules packages to evaluate an application </font>
-  - mapped to common <font color=blue> security compliance standards and vulnerability definitions </font>
+  - Use <font color=LightSlateBlue> rules packages to evaluate an application </font>
+  - mapped to common <font color=LightSlateBlue> security compliance standards and vulnerability definitions </font>
     - whether remote root login is enabled
     - whether vulnerable software versions are installed.
     - check for unintended network accessibility and vulnerabilities on EC2 instances.
-  - These rules are <font color=blue> regularly updated by AWS security researchers </font>
+  - These rules are <font color=LightSlateBlue> regularly updated by AWS security researchers </font>

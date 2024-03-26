@@ -217,8 +217,8 @@ Use `IAM Policies` to control access to the following:
     - default AWS account users do not have any permissions to any resources/data in AWS account
     - The most restrictive policy is applied.
 
-  - default <font color=blue> implicit deny </font> of an IAM identity can <font color=red> be overridden</font> with an <font color=blue> explicit allow </font>
-    - must <font color=blue> explicitly grant permissions </font> to a user/group/role by `creating a policy`
+  - default <font color=LightSlateBlue> implicit deny </font> of an IAM identity can <font color=red> be overridden</font> with an <font color=LightSlateBlue> explicit allow </font>
+    - must <font color=LightSlateBlue> explicitly grant permissions </font> to a user/group/role by `creating a policy`
     - attaching an IAM access policy to IAM user/group
 
 
@@ -294,7 +294,7 @@ Overall:
   - assign to one users/groups/roles
   - <font color=red> strict 1:1 relationship between entity and the policy </font>
   - in <font color=red> only your AWS account </font>
-- usually Inline Policies are used <font color=blue> to create exceptions </font> to a user, group, or role.
+- usually Inline Policies are used <font color=LightSlateBlue> to create exceptions </font> to a user, group, or role.
   - when you want to be sure that the permissions is not been assigned to any other user.
 
 > create in the user, add inline policy
@@ -370,8 +370,8 @@ Resource-based policies > Identity-based policy
   - defines a guardrail for what actions the principals can perform.
 
 - enables <font color=red> permission controls </font>
-  - can <font color=blue> limit account usage </font> to organizational units or linked accounts.
-  - offer <font color=red> central control </font> over the maximum available permissions <font color=blue> for all accounts in organization </font>
+  - can <font color=LightSlateBlue> limit account usage </font> to organizational units or linked accounts.
+  - offer <font color=red> central control </font> over the maximum available permissions <font color=LightSlateBlue> for all accounts in organization </font>
   - ensure accounts stay in organization’s access control guidelines.
 
 - available only in an organization that <font color=red> has all features enabled </font>
@@ -384,8 +384,8 @@ Resource-based policies > Identity-based policy
   - defines a safeguard for the actions that accounts in the organization root or OU can do.
   - Attaching an SCP to the organization root/unit (OU)
     - Log in to the master account and create the SCP
-    - Select the <font color=blue> Organizational Unit </font>
-    - <font color=blue> Enable the SCP </font> for the Organizational Unit
+    - Select the <font color=LightSlateBlue> Organizational Unit </font>
+    - <font color=LightSlateBlue> Enable the SCP </font> for the Organizational Unit
     - Attach the SCP to the member account within the Organizational Unit
 
 - <font color=red> not a substitute for well-managed each account </font>
@@ -394,13 +394,13 @@ Resource-based policies > Identity-based policy
 
 - similar to IAM permissions policies
   - almost the same syntax. JSON
-  - but, SCP policies <font color=blue> never grants permissions. </font>
+  - but, SCP policies <font color=LightSlateBlue> never grants permissions. </font>
     - <font color=red> it the maximum permissions </font> for an organization or OU.
 
 - <font color=red> No permissions are granted by an SCP </font>
   - it defines a guardrail, or sets limits, on the actions that the account's administrator can delegate to the IAM users/roles in the affected accounts.
     - The administrator must still attach `identity/resource-based policies` to IAM users/roles, or to the resources in accounts to actually grant permissions.
-  - The <font color=blue> effective permissions </font>
+  - The <font color=LightSlateBlue> effective permissions </font>
     - the logical intersection between **what is allowed by the SCP** and **what is allowed by the IAM/Resource-based policies**
   - Important
     - SCPs don't affect users or roles in the management account.
@@ -426,10 +426,10 @@ Resource-based policies > Identity-based policy
 
 - AWS supports `permissions boundaries` for IAM entities (users or roles)
 
-- using a managed policy to set the maximum permissions that an <font color=blue> identity-based policy can grant to an IAM entity </font>
+- using a managed policy to set the maximum permissions that an <font color=LightSlateBlue> identity-based policy can grant to an IAM entity </font>
 - An entity's permissions boundary allows it to <font color=red> perform only the actions that are allowed by both its identity-based policies and Permissions boundaries </font>
 
-- can use an <font color=blue> AWS managed policy </font> or a <font color=blue> customer managed policy </font> to set the boundary for an IAM entity (user or role).
+- can use an <font color=LightSlateBlue> AWS managed policy </font> or a <font color=LightSlateBlue> customer managed policy </font> to set the boundary for an IAM entity (user or role).
 
 - That policy limits the maximum permissions for the user or role.
 
@@ -528,16 +528,16 @@ Identity-based policies
 
 1. <font color=red> Resource-based policies for IAM users </font>
    - Within an account
-     - an <font color=blue> implicit deny in a permissions boundary </font> <font color=red> does not limit the permissions granted </font> to an IAM user by a resource-based policy.
+     - an <font color=LightSlateBlue> implicit deny in a permissions boundary </font> <font color=red> does not limit the permissions granted </font> to an IAM user by a resource-based policy.
    - Permissions boundaries reduce permissions that are granted to a user by identity-based policies.
    - Resource-based policies can provide additional permissions to the user.
 
 2. <font color=red>Resource-based policies for IAM roles and federated users </font>
    - Within an account
-     - an <font color=blue> implicit deny in a permissions boundary </font> <font color=red> does limit the permissions granted </font>  to the ARN of the underlying IAM role/user by the resource-based policy.
+     - an <font color=LightSlateBlue> implicit deny in a permissions boundary </font> <font color=red> does limit the permissions granted </font>  to the ARN of the underlying IAM role/user by the resource-based policy.
    - However
-     - <font color=blue> if resource-based policy grants permissions directly to the session principal </font> (the assumed-role ARN or federated user ARN)
-     - an <font color=blue> implicit deny in the permissions boundary </font> <font color=red> does not limit those permissions </font>
+     - <font color=LightSlateBlue> if resource-based policy grants permissions directly to the session principal </font> (the assumed-role ARN or federated user ARN)
+     - an <font color=LightSlateBlue> implicit deny in the permissions boundary </font> <font color=red> does not limit those permissions </font>
    - [Session policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session).
 
 ---

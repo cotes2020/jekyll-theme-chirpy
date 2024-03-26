@@ -30,7 +30,7 @@
 
 - Cymbal Bank stores customer information in a BigQuery table called ‘Information,’ which belongs to the dataset ‘Customers.’ Various departments of Cymbal Bank, including loan, credit card, and trading, access the information table. Although the data source remains the same, `each department needs to read and analyze separate customers and customer-attributes`. You want a `cost-effective way to configure departmental access to BigQuery to provide optimal performance`. What should you do?
 
-    - Create <font color=blue> separate datasets </font> for each department. Create authorized functions in each dataset to perform required aggregations. Write transformed data to new tables for each department separately. Provide the bigquery.dataViewer role to each department’s required users.
+    - Create <font color=LightSlateBlue> separate datasets </font> for each department. Create authorized functions in each dataset to perform required aggregations. Write transformed data to new tables for each department separately. Provide the bigquery.dataViewer role to each department’s required users.
 
     - Create an authorized dataset in BigQuery’s Explorer panel. Write Customers’ table metadata into a JSON file, and edit the file to add each department’s Project ID and Dataset ID. Provide the bigquery.user role to each department’s required users.
 
@@ -61,7 +61,7 @@
 
 - Cymbal Bank has a Cloud SQL instance that must be shared with an external agency. The agency’s developers will be `assigned roles and permissions through a Google Group in Identity and Access Management (IAM)`. The external agency is on an annual contract and will `require a connection string, username, and password to connect to the database`. How would you `configure the group’s access`?
 
-  - Use Cloud Key Management Service. Use the destination IP address and Port attributes to provide access for developers at the external agency. <font color=blue> Remove the IAM access after one year </font> and rotate the shared keys. Add cloudkms.cryptoKeyEncryptorDecryptor role for the group that contains the external developers.
+  - Use Cloud Key Management Service. Use the destination IP address and Port attributes to provide access for developers at the external agency. <font color=LightSlateBlue> Remove the IAM access after one year </font> and rotate the shared keys. Add cloudkms.cryptoKeyEncryptorDecryptor role for the group that contains the external developers.
 
   - Use Secret Manager for the connection string and username, and use Cloud Key Management Service for the password. Use tags to set the expiry period to the timestamp one year from now. Add secretmanager.secretVersionManager and secretmanager.secretAccessor roles for the group that contains external developers.
 

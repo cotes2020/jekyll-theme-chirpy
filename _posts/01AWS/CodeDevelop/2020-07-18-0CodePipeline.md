@@ -37,7 +37,7 @@ image:
 
 - fully managed
 - <font color=red> Continuous integration / continuous delivery service. </font>
-  - Orchestrates <font color=blue> Build, Test & Deployment (the end-to-end software release process) </font> based on the workflow pre-defined.
+  - Orchestrates <font color=LightSlateBlue> Build, Test & Deployment (the end-to-end software release process) </font> based on the workflow pre-defined.
   - A pipeline is a workflow construct that describes how code changes go through a release process.
 
 - <font color=red> Automated release process required to release the code </font>
@@ -55,16 +55,16 @@ image:
 ![CodePipeline](https://i.imgur.com/IOZKewF.png)
 
 
-CodePipeline: <font color=blue> Defined Workflow </font>
+CodePipeline: <font color=LightSlateBlue> Defined Workflow </font>
 - the workflow begins when there is a change detected in the source code.
 
-CodeCommit: <font color=blue> New code appears </font>
+CodeCommit: <font color=LightSlateBlue> New code appears </font>
 - New source code appears in the CodeCommit repository
 
-CodeBuild: <font color=blue> Code is built&tested </font>
+CodeBuild: <font color=LightSlateBlue> Code is built&tested </font>
 - CodeBuild immediately compiles source code, runs tests, and produces packages.
 
-CodeDeploy: <font color=blue> Application Deployed </font>
+CodeDeploy: <font color=LightSlateBlue> Application Deployed </font>
 - The newly built application is deployed into a staging or porduction environment.
 
 
@@ -126,16 +126,16 @@ You can create, access, and manage your pipelines using any of the following int
 
 AWS Data Pipeline works with the following services <font color=red> to store data </font>
 
-- <font color=blue> Amazon DynamoDB </font>
+- <font color=LightSlateBlue> Amazon DynamoDB </font>
   - fully managed NoSQL database with fast performance at a low cost.
 
-- <font color=blue> Amazon RDS </font>
+- <font color=LightSlateBlue> Amazon RDS </font>
   - fully managed relational database that scales to large datasets.
 
-- <font color=blue> Amazon Redshift </font>
+- <font color=LightSlateBlue> Amazon Redshift </font>
   - fast, fully managed, petabyte-scale data warehouse that makes it easy and cost-effective to analyze a vast amount of data.
 
-- <font color=blue> Amazon S3 </font>
+- <font color=LightSlateBlue> Amazon S3 </font>
   - secure, durable, and highly scalable object storage.
 
 AWS Data Pipeline works with the following compute services to <font color=red> transform data </font>
@@ -264,14 +264,14 @@ For more information, see Pipeline Definition File Syntax.
 
 1. Create an AWS IAM Role
    - the service that will use this role: `CloudFormation`
-   - role name: <font color=blue> pipeRoleFullAdminAcess </font>
+   - role name: <font color=LightSlateBlue> pipeRoleFullAdminAcess </font>
    - Click Next: Permissions:
      - + `AdministratorAccess` permissions policy.
      - Allows CloudFormation to create and manage AWS stacks and resources on your behalf.
 
 2. Create an AWS CodeCommit Repository and SNS Topic
    - Create an AWS CodeCommit Repository
-     - Repository name: <font color=blue> pipeTestsRepo </font>
+     - Repository name: <font color=LightSlateBlue> pipeTestsRepo </font>
    - Navigate to Simple Notification Service (SNS).
      - Enter "manualapprove" as the topic name.
      - Click Next step > Create topic.
@@ -289,24 +289,24 @@ For more information, see Pipeline Definition File Syntax.
      - Advanced settings section
        - ensure the `Default location` and `Default AWS Managed Key options` are selected.
      - Add <font color=red> source stage </font> page:
-       - Source provider: <font color=blue> AWS CodeCommit </font>
-       - Repository name: <font color=blue> pipeTestsRepo </font>
+       - Source provider: <font color=LightSlateBlue> AWS CodeCommit </font>
+       - Repository name: <font color=LightSlateBlue> pipeTestsRepo </font>
        - Branch name: master
        - Change detection options: Amazon CloudWatch Events (recommended)
      - Skip build stage
      - Add <font color=red> deploy stage </font> page:
-       - Deploy provider: <font color=blue> AWS CloudFormation </font>
+       - Deploy provider: <font color=LightSlateBlue> AWS CloudFormation </font>
        - Region: US East - (N. Virginia)
        - Action mode: Create or update a stack
        - Stack name: deploywithmanualapprove
        - Artifact name: SourceArtifact
        - File name: S3Retain.yaml
-       - Role name: <font color=blue> pipeRoleFullAdminAcess </font>
+       - Role name: <font color=LightSlateBlue> pipeRoleFullAdminAcess </font>
        - Click Next > Create pipeline.
      - Click the AWS CloudFormation link in the Deploy panel.
      - Once CloudFormation shows complete, return to the CodePipeline service and verify the manualapprove pipeline status shows Succeeded in the Deploy panel.
    - Add stage between the Source and Deploy panels.
-     - stage name: <font color=blue> manualapprove </font>
+     - stage name: <font color=LightSlateBlue> manualapprove </font>
      - Add action group.
        - action name: `manualapproval`
        - action provider: `Manual approval`
@@ -418,10 +418,10 @@ myapp3.zip
     ```
 
 5. <font color=red> CodeDeploy </font> : setup and deploy
-   - <font color=blue> create application </font>
+   - <font color=LightSlateBlue> create application </font>
      - application name
      - compute plantform
-   - <font color=blue> create deployment group </font>
+   - <font color=LightSlateBlue> create deployment group </font>
      - deployment group name
      - service role
      - deployment type
@@ -429,7 +429,7 @@ myapp3.zip
        - EC2 instance: Key&Value of created EC2
      - deployment setting
      - Load balancer
-   - <font color=blue> create deployment <- create the application </font>
+   - <font color=LightSlateBlue> create deployment <- create the application </font>
      - select deployment group
      - revision type(S3/Github) and revision location.
    - the application is installed and run

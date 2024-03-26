@@ -160,7 +160,7 @@ except Exception as e:
 
 
 2. `logging.exception()` method
-   - <font color=blue> logging from an exception handler </font>
+   - <font color=LightSlateBlue> logging from an exception handler </font>
    - logs a message with level `ERROR` and adds exception information to the message.
      - `logging.exception()` would show a log at the level of `ERROR`.
      - If you don’t want that
@@ -351,7 +351,7 @@ import logging_example
 ### Other Configuration Methods
 
 configure logging
-- using the <font color=blue> module and class functions </font>
+- using the <font color=LightSlateBlue> module and class functions </font>
 - or creating a config file or a [dictionary](https://realpython.com/python-dicts/) and loading it using `fileConfig()` or `dictConfig()` respectively.
 - useful in case to change your logging configuration in a running application.
 

@@ -37,8 +37,8 @@ image:
 - to understand their organization’s current capabilities, set goals, and develop a plan to improve and maintain security posture. However, you still need the right model to optimize security outcomes in the cloud.
 - To <font color=red> adapt the security program for the cloud, AWS developed two tools </font>
   - <font color=red> AWS Cloud Adoption Framework (CAF) and AWS Well-Architected Framework </font>.
-  - complement the risk-based foundation with the AWS CAF, <font color=blue> integrate the organizational business drivers at scale as you move to the cloud </font>
-  - and, when ready to implement specific workloads,use the AWS Well-Architected Framework to <font color=blue> design, measure, and improve the technical implementation </font>.
+  - complement the risk-based foundation with the AWS CAF, <font color=LightSlateBlue> integrate the organizational business drivers at scale as you move to the cloud </font>
+  - and, when ready to implement specific workloads,use the AWS Well-Architected Framework to <font color=LightSlateBlue> design, measure, and improve the technical implementation </font>.
 
 
 
@@ -76,7 +76,7 @@ to use CAF and AWS Well-Architected to help meet NIST CSF objectives, process in
 
 The NIST CSF consists of three elements — <font color=red> Core, Tiers, and Profiles.</font>
 - The Core
-  - includes five continuous functions: <font color=blue> Identify, Protect, Detect, Respond, and Recover </font>
+  - includes five continuous functions: <font color=LightSlateBlue> Identify, Protect, Detect, Respond, and Recover </font>
   - you can map to other standards or control requirements as required by the business. 
 - The Tiers
   - characterize an organization’s aptitude and maturity for managing the CSF functions and controls,
@@ -111,7 +111,7 @@ For AWS, this means creating an AWS account and leveraging AWS IAM to create use
 
 AWS Cloud Adoption Framework – _Prepare the organization for the cloud_
 
-Cloud computing introduces a significant shift in <font color=blue> how technology is procured, accessed, used, and managed </font>.
+Cloud computing introduces a significant shift in <font color=LightSlateBlue> how technology is procured, accessed, used, and managed </font>.
 - To operationalize and optimize the security program for the cloud, the organization needs to `understand the new paradigm, and update skills, adapt existing processes, and introduce new processes`.
 
 The [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/professional-services/CAF/) 
@@ -129,15 +129,15 @@ The [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/professional-ser
 **CAF perspectives**
 - comprised of six perspectives used for planning and strategic considerations
   - based on principles that apply to most organizations.
-  - 3 focus on the organization: <font color=blue> Business, People, and Governance </font>
-  - technical aspects are considered in the <font color=blue> Platform, Security, and Operations perspectives </font>.
+  - 3 focus on the organization: <font color=LightSlateBlue> Business, People, and Governance </font>
+  - technical aspects are considered in the <font color=LightSlateBlue> Platform, Security, and Operations perspectives </font>.
   - As NIST CSF, all these perspectives influence management of security risks and help achieve the security outcomes. 
 - Using the AWS CAF, structure the security program to `meet the desired outcomes with agility, scale, speed, and innovation` that comes with AWS. 
-- AWS CAF helps customers operationalize the security goals through 4 principles: <font color=blue> Directive, Preventive, Detective, and Responsive </font>.
-  - **Directive** principle provides guidance to <font color=blue> understand the environment and data in the cloud </font>
-  - **Preventive** provides guidance to <font color=blue> operate selected security controls in AWS </font>;
-  - **Detective** provides a means to <font color=blue> analyze the environment and alert on anomalies and risks </font>;
-  - **Responsive** looks to <font color=blue> mitigate detected risks, with an emphasis on automation </font>
+- AWS CAF helps customers operationalize the security goals through 4 principles: <font color=LightSlateBlue> Directive, Preventive, Detective, and Responsive </font>.
+  - **Directive** principle provides guidance to <font color=LightSlateBlue> understand the environment and data in the cloud </font>
+  - **Preventive** provides guidance to <font color=LightSlateBlue> operate selected security controls in AWS </font>;
+  - **Detective** provides a means to <font color=LightSlateBlue> analyze the environment and alert on anomalies and risks </font>;
+  - **Responsive** looks to <font color=LightSlateBlue> mitigate detected risks, with an emphasis on automation </font>
 
 
 **AWS CAF Security Perspective**
@@ -153,7 +153,7 @@ The [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/professional-ser
 
 few AWS services being applied and configured to govern IAM at scale.
 - 3 tiers to consider when <font color=red> designing and building the IAM security </font>
-  - Implement <font color=blue> IAM Guardrails, Operationalize IAM, and Privileged Access Management </font>. 
+  - Implement <font color=LightSlateBlue> IAM Guardrails, Operationalize IAM, and Privileged Access Management </font>. 
 
 AWS shift the mindset from “locking down” a system: `implies inflexibility that can impact usability and business agility`, to the concept of “guardrails” where `security is defined by outer limits that allow freedom of movement within those constraints`.
 - allows for more flexibility to explore new methods and technologies to **meet dynamic market changes**

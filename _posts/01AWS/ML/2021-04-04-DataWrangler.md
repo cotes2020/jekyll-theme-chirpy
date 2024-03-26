@@ -349,7 +349,7 @@ Now, select the columns want to keep using SQL. For this demo, select the column
 
 When export the data flow using a **Data Wrangler job**, a **Jupyter Notebook** is automatically created.
 - This notebook automatically opens in the Studio instance
-- is configured to run a SageMaker processing job to execute the Data Wrangler data flow (a <font color=blue> Data Wrangler job </font>)
+- is configured to run a SageMaker processing job to execute the Data Wrangler data flow (a <font color=LightSlateBlue> Data Wrangler job </font>)
 
 1. Save the data flow. Select **File** and then select **Save Data Wrangler Flow**.
 

@@ -47,7 +47,7 @@ Setup:
      - <font color=red> web application server from the container running in Elastic Beanstalk </font>
 
 2. upgrade
-   - select <font color=blue> upload and deploy </font>
+   - select <font color=LightSlateBlue> upload and deploy </font>
    - go to version page and select the previous version.
 
 
@@ -73,7 +73,7 @@ Setup:
 
 - <font color=red> automated deployment scaling service for web applications </font>
   - Elastic Beanstalk automatically handles the deployment details of
-    - <font color=blue> capacity provisioning, Load balancing, auto scaling, and application health monitoring </font>
+    - <font color=LightSlateBlue> capacity provisioning, Load balancing, auto scaling, and application health monitoring </font>
     - Application platform management
     - automated infrastructure management
     - Code deployment
@@ -155,9 +155,9 @@ Blue/green deployment on AWS CloudFormation
 
 1. deploy docker container
    - <font color=red> single docker container </font>
-     - run a <font color=blue> single docker container on an EC2 instance </font> provisioned by Elastic Beanstalk
+     - run a <font color=LightSlateBlue> single docker container on an EC2 instance </font> provisioned by Elastic Beanstalk
    - <font color=red> multiple docker container </font>
-     - use Elastic Beanstalk to <font color=blue> build an ECS cluster and deploy multiple docker container on each instance </font>
+     - use Elastic Beanstalk to <font color=LightSlateBlue> build an ECS cluster and deploy multiple docker container on each instance </font>
 
 2. deploy your code
    - upload a zip file containing the code bundle and Elastic Beanstalk will do the rest.

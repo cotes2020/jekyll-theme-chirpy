@@ -77,8 +77,8 @@ Patch Manager
 
 **Important**
 
-- AWS does not test patches for Windows Server or Linux <font color=blue> before making them available in Patch Manager </font>.
-- Patch Manager doesn't support <font color=blue> upgrading major versions of OSs </font>
+- AWS does not test patches for Windows Server or Linux <font color=LightSlateBlue> before making them available in Patch Manager </font>.
+- Patch Manager doesn't support <font color=LightSlateBlue> upgrading major versions of OSs </font>
   - such as Windows Server 2016 to Windows Server 2019,
   - or SUSE Linux Enterprise Server (SLES) 12.0 to SLES 15.0.
 
@@ -491,19 +491,19 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 2. Each **update notice** in `updateinfo.xml` includes `several attributes`
    - Update notice attributes: denote the properties of the packages in the notice, as described in the following table.
    - list of supported values: `describe-patch-properties`
-   - <font color=blue> type </font>
+   - <font color=LightSlateBlue> type </font>
      - Corresponds to the value of the `Classification key attribute` in the patch baseline's PatchFilter data type.
      - Denotes the type of package included in the update notice.
-   - <font color=blue> severity </font>
+   - <font color=LightSlateBlue> severity </font>
      - Corresponds to the value of the `Severity key attribute` patch baseline's PatchFilter data type.
      - Denotes the severity of the packages included in the update notice. Usually only applicable for Security update notices.
-   - <font color=blue> update_id 	</font>
+   - <font color=LightSlateBlue> update_id 	</font>
      - Denotes the advisory ID, such as ALAS-2017-867.
      - The advisory ID can be used in the ApprovedPatches or RejectedPatches attribute in the patch baseline.
-   - <font color=blue> references </font>
+   - <font color=LightSlateBlue> references </font>
      - Contains additional information about the update notice, such as a CVE ID (format: CVE-2017-1234567).
      - The CVE ID can be used in the ApprovedPatches or RejectedPatches attribute in the patch baseline.
-   - <font color=blue> updated </font>
+   - <font color=LightSlateBlue> updated </font>
      - Corresponds to `ApproveAfterDays` in the patch baseline.
      - Denotes the released date (updated date) of the packages included in the update notice.
      - A comparison between the current timestamp and the value of this attribute plus the ApproveAfterDays is used to determine if the patch is approved for deployment.
@@ -552,7 +552,7 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 - The primary focus of Patch Manager is applying patches to OSs.
 - However, you can also use Patch Manager to apply patches to some applications on the instances.
 - **Linux**
-  - Patch Manager uses the configured repositories for updates, and <font color=blue> does not differentiate between OSs and application patches </font>.
+  - Patch Manager uses the configured repositories for updates, and <font color=LightSlateBlue> does not differentiate between OSs and application patches </font>.
   - use Patch Manager to define which repositories to fetch updates from.
 - **Windows**
   - apply approval rules, as well as *Approved* and *Rejected* patch exceptions, for applications released by Microsoft, s
@@ -747,7 +747,7 @@ Running AWS-RunPatchBaseline outside of a maintenance window
 Parameter name: `InstallOverrideList`
 - **Usage**: Optional.
 - `InstallOverrideList` lets you specify an `https/S3 path-style URL` to a list of patches to be installed.
-- This patch installation list, in YAML format, <font color=blue> overrides the patches specified by the current default patch baseline. </font>
+- This patch installation list, in YAML format, <font color=LightSlateBlue> overrides the patches specified by the current default patch baseline. </font>
 - provides more granular control over which patches are installed on the instances.
 - Be aware that **compliance reports** reflect `patch states` according to what’s specified in the patch baseline, not what you specify in an `InstallOverrideList` list of patches.
   - so Scan operations ignore the `InstallOverrideList` parameter.

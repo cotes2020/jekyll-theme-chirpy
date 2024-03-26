@@ -26,7 +26,7 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 
 2. provides <font color=red> authentication, authorization, and user management </font> for web and mobile apps .
 
-3. actes as an <font color=blue> identity broker </font> between app and web id providers
+3. actes as an <font color=LightSlateBlue> identity broker </font> between app and web id providers
    - no additional code
    - no credentials is stored on the devices.
 
@@ -91,7 +91,7 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 - <font color=red> create unique identities </font> for your users
 - and assign permissions for users.
 - and federate them with identity providers.
-- then obtain <font color=blue> temporary, limited-privilege AWS credentials with permissions pre-define </font> to directly access other AWS services or to access resources through Amazon API Gateway.
+- then obtain <font color=LightSlateBlue> temporary, limited-privilege AWS credentials with permissions pre-define </font> to directly access other AWS services or to access resources through Amazon API Gateway.
 
 
 Identity pool can include:
@@ -181,8 +181,8 @@ The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> 
   - This guarantees that all changes on the device are immediately available on the device,
   - even when offline.
 - When the synchronize method is called,
-  - <font color=blue> changes from the service </font> are pulled to the device,
-  - and <font color=blue> any local changes </font> are pushed to the service.
+  - <font color=LightSlateBlue> changes from the service </font> are pulled to the device,
+  - and <font color=LightSlateBlue> any local changes </font> are pushed to the service.
 - At this point the changes are available to other devices to synchronize.
 
 
@@ -191,7 +191,7 @@ The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> 
 ### setup Synchronize code
 
 1. <font color=red> Initializing </font> the Amazon Cognito Sync Client
-   - first need to create a <font color=blue>  credentials provider </font>
+   - first need to create a <font color=LightSlateBlue>  credentials provider </font>
    - The credentials provider acquires temporary AWS credentials to enable your app to access your AWS resources.
    - also need to import the required header files.
 
@@ -214,7 +214,7 @@ The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> 
 
 5. Synchronizing Local Data with the Sync Store
 Android
-   - The synchronize method compares <font color=blue> local cached data </font> to the <font color=blue> data stored in the Amazon Cognito Sync store </font>
+   - The synchronize method compares <font color=LightSlateBlue> local cached data </font> to the <font color=LightSlateBlue> data stored in the Amazon Cognito Sync store </font>
    - Remote changes are pulled from the `Amazon Cognito Sync store`;
    - conflict resolution is invoked if any conflicts occur;
    - and updated values on the device are pushed to the service.
@@ -273,7 +273,7 @@ Amazon Cognito automatically tracks the association between identity and devices
 2. Enable Push Sync in the Amazon Cognito console
    - <kbd>Amazon Cognito console</kbd> > identity pool for which you want to enable push sync > Dashboard > <kbd>Manage Identity Pools</kbd>
    - The <kbd>Federated Identities page</kbd> appears > click <kbd>Push synchronization</kbd> to expand it > <kbd>Service role</kbd> dropdown menu
-     - select IAM role that <font color=blue> grants Cognito permission to send an SNS notification </font>
+     - select IAM role that <font color=LightSlateBlue> grants Cognito permission to send an SNS notification </font>
        - configure the IAM roles to have `full SNS access`,
        - or create a new role that `trusts cognito-sync` and has `full SNS access`.
    - Click Create role to create or modify the roles associated with your identity pool in the AWS IAM Console.
@@ -374,7 +374,7 @@ use AWS published API calls to access Amazon Cognito through the network.
     - detect if a user’s credentials (user name and password) have been compromised elsewhere.
     - This can happen when users reuse credentials at more than one site, or when they use passwords that are easy to guess.
   - <font color=red> adaptive authentication </font>
-    - use adaptive authentication with its <font color=blue> risk-based model </font> to predict when you might need another authentication factor.
+    - use adaptive authentication with its <font color=LightSlateBlue> risk-based model </font> to predict when you might need another authentication factor.
     - configure user pool to block suspicious sign-ins or add second factor authentication in response to an increased risk level.
     - For each sign-in attempt, Amazon Cognito generates a risk score for how likely the sign-in request is to be from a compromised source.
       - This risk score is based on many factors

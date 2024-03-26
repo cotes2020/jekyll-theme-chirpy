@@ -69,7 +69,7 @@ Benefits of using Amazon MWAA
 - makes it easy for you to build and manage the workflows in the cloud.
 
 <font color=red> Scaling </font>
-- use the same familiar Airflow platform with <font color=blue> improved scalability, availability, and security </font>
+- use the same familiar Airflow platform with <font color=LightSlateBlue> improved scalability, availability, and security </font>
   - without the operational burden of having to manage the underlying infrastructure.
 - uses the Apache Celery Executor to automatically scale workers as needed for the environment.
   - scales capacity up to meet demand
@@ -252,7 +252,7 @@ Amazon Managed Workflows for Apache Airflow (MWAA) uses
   - <font color=red> encryption </font>
     - whether to enable server-side encryption for the bucket.
     - If you choose to enable server-side encryption
-      - <font color=blue> must use the same key for the S3 bucket and Amazon MWAA environment </font>
+      - <font color=LightSlateBlue> must use the same key for the S3 bucket and Amazon MWAA environment </font>
   - If you want to <font color=red> enable S3 Object lock </font>
     - can only enable S3 Object lock for bucket when you create it,
     - can't disable it later.
@@ -309,24 +309,24 @@ Amazon MWAA console > Create environment
 - <font color=red> Under DAG code in Amazon S3: </font>
   -![mwaa-dag-code-s3-1012x1024](https://i.imgur.com/lsE8wTe.png)
 
-  - <font color=blue> For S3 bucket </font>
+  - <font color=LightSlateBlue> For S3 bucket </font>
     - choose the bucket that you created for Amazon MWAA
     - Enter the Amazon S3 URI to the bucket.
 
-  - <font color=blue> For DAGs folder </font>
+  - <font color=LightSlateBlue> For DAGs folder </font>
     - choose the DAG folder that you added to the bucket for Amazon MWAA
     - Enter the Amazon S3 URI to the DAG folder in the bucket.
 
-  - (Optional). <font color=blue> For Plugins file </font>
-    - The plugins file is a ZIP file <font color=blue> containing the plugins used by my DAGs </font>
+  - (Optional). <font color=LightSlateBlue> For Plugins file </font>
+    - The plugins file is a ZIP file <font color=LightSlateBlue> containing the plugins used by my DAGs </font>
     - do one of the following:
       - Choose Browse S3 and select the plugins.zip file that you added to the bucket. You must also select a version from the drop-down menu.
       - Enter the Amazon S3 URI to the plugin.zip file that you added to the bucket.
     - You can create an environment and then add a plugins.zip file later.
 
 
-  - (Optional) <font color=blue> For Requirements file </font>
-    - The requirements file <font color=blue> describes the Python dependencies to run my DAGs </font>
+  - (Optional) <font color=LightSlateBlue> For Requirements file </font>
+    - The requirements file <font color=LightSlateBlue> describes the Python dependencies to run my DAGs </font>
     - do one of the following:
     - Choose Browse S3 and then select the Python requirements.txt that you added to the bucket. Then select a version for the file from the drop-down menu.
     - Enter the Amazon S3 URI to the requirements.txt file in the bucket.
@@ -348,9 +348,9 @@ Amazon MWAA console > Create environment
     - Web server access to the Airflow UI is always protected by a secure login using IAM
       - can have web server access on a public network to login over the Internet,
       - or on a private network in your VPC.
-    - <font color=blue> Public Network </font>
+    - <font color=LightSlateBlue> Public Network </font>
       - This creates a public URL to access the Apache Airflow user interface in the environment.
-    - <font color=blue> Private Network </font>
+    - <font color=LightSlateBlue> Private Network </font>
       - restrict access to the Apache Airflow UI to be accessible only from within the VPC selected
       - This creates a VPC endpoint that requires additional configuration to allow access, including a Linux Bastion.
     - The VPC endpoint for to access the Apache Airflow UI is listed on the Environment details page after you create the environment.
@@ -372,9 +372,9 @@ Amazon MWAA console > Create environment
       - specify the maximum number of workers, up to 25, to run concurrently in the environment.
     - Amazon MWAA automatically handles working scaling up to the maximum worker count.
     - The environment class for the Amazon MWAA environment determines the size of:
-        - the AWS-managed <font color=blue> AWS Fargate containers </font>
+        - the AWS-managed <font color=LightSlateBlue> AWS Fargate containers </font>
           - where the Celery Executor runs,
-        - and the AWS-managed <font color=blue> Amazon Aurora PostgreSQL metadata database </font>
+        - and the AWS-managed <font color=LightSlateBlue> Amazon Aurora PostgreSQL metadata database </font>
           - where the Apache Airflow scheduler creates task instances.
     - Each environment includes a scheduler, a web server, and a worker.
       - Workers automatically scale up and down according to the workload.
@@ -415,7 +415,7 @@ Amazon MWAA console > Create environment
 
   - Under <font color=red> Permissions, </font>
     - ![mwaa-permissions-1024x361](https://i.imgur.com/tz09fDs.png)
-    - configure the **permissions** that will be used by environment to <font color=blue> access the DAGs, write logs, and run DAGs accessing other AWS resources </font>
+    - configure the **permissions** that will be used by environment to <font color=LightSlateBlue> access the DAGs, write logs, and run DAGs accessing other AWS resources </font>
     - choose the role to use as the execution role.
     - To have Amazon MWAA create a role for this environment, choose Create new role.
       - You must have permission to create IAM roles to use this option.

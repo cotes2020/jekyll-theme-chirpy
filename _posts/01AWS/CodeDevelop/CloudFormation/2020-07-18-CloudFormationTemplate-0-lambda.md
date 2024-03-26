@@ -31,11 +31,11 @@ image:
   - Image
     - if the deployment package is a container image.
     - the code property must include the URI of a container image in the Amazon ECR registry.
-    - <font color=blue> do not need to specify the handler and runtime properties </font>
+    - <font color=LightSlateBlue> do not need to specify the handler and runtime properties </font>
   - Zip
     - if the deployment package is a .zip file archive.
     - the code property specifies the location of the .zip file.
-    - <font color=blue> must specify the handler and runtime properties </font>
+    - <font color=LightSlateBlue> must specify the handler and runtime properties </font>
       - You can use **code signing** if your deployment package is a .zip file archive.
       - To enable code signing for this function, specify the ARN of a code-signing configuration.
       - When a user attempts to deploy a code package with `UpdateFunctionCode`, Lambda checks that the code package has a valid signature from a trusted publisher.

@@ -17,11 +17,11 @@ image:
 attach policies to organization entities (organization root, organizational unit (OU), or account) in your organization:
 
 - attach a policy to the <font color=red> organization root </font>
-  - <font color=blue> all OUs and accounts </font> in the organization inherit that policy.
+  - <font color=LightSlateBlue> all OUs and accounts </font> in the organization inherit that policy.
 - attach a policy to a <font color=red> specific OU </font>
-  - <font color=blue> accounts or child OU </font> that are directly under that OU inherit the policy.
+  - <font color=LightSlateBlue> accounts or child OU </font> that are directly under that OU inherit the policy.
 - attach a policy to a <font color=red> specific account </font>
-  - it affects <font color=blue> only that account </font>
+  - it affects <font color=LightSlateBlue> only that account </font>
 
 Because you can attach policies to multiple levels in the organization, accounts can inherit multiple policies.
 
@@ -44,7 +44,7 @@ Exactly how policies affect the OUs and accounts that inherit them depends on th
 - tree structure of the organization
   - from the root to all of the OUs and end at the accounts.
   - All AWS permissions flow into the root of the tree.
-  - <font color=blue> permissions must then flow past the SCPs attached to the root, OUs, and the account to get to the principal (an IAM role or user) making a request </font>
+  - <font color=LightSlateBlue> permissions must then flow past the SCPs attached to the root, OUs, and the account to get to the principal (an IAM role or user) making a request </font>
 - Each SCP can filter the permissions passing through to the levels below it.
   - If an action is blocked by a `Deny` statement,
     - then all OUs and accounts affected by that SCP are denied access to that action.

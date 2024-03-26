@@ -140,7 +140,7 @@ way in which the Application Session State is stored.
 
 - <font color=red> Encryption </font> has to be employed
   - if a user should not be able to see the contents of their session
-  - <font color=blue> HMAC (or similar) has to be employed </font> to prevent user tampering of session data
+  - <font color=LightSlateBlue> HMAC (or similar) has to be employed </font> to prevent user tampering of session data
 
 
 ---
@@ -176,7 +176,7 @@ way in which the Application Session State is stored.
 > probably the cleanest method of the three:
 
 - <font color=red> Session information is stored in a backend database </font>
-  - The user's <font color=blue> browser stores a cookie containing an identifier (like session ID), pointing to the session information </font>
+  - The user's <font color=LightSlateBlue> browser stores a cookie containing an identifier (like session ID), pointing to the session information </font>
   - The user never needs to be exposed to the stored session information.
 
 - all web servers have access to query and update.
@@ -209,7 +209,7 @@ A cloud design pattern that uses multiple load balancers
 
 - When a website is served by <font color=red> multiple web servers behind a load balancer </font>
   - the load balancer decides which web server the request goes to.
-  - load balancer use <font color=blue> sticky sessions </font> or <font color=blue> Stickiness sessions </font>
+  - load balancer use <font color=LightSlateBlue> sticky sessions </font> or <font color=LightSlateBlue> Stickiness sessions </font>
 
 
 ---
@@ -233,9 +233,9 @@ cache
 
 
 1. If the load balancer use <font color=red> sticky sessions </font>
-   - <font color=blue> all interactions happen with the same physical server </font>
+   - <font color=LightSlateBlue> all interactions happen with the same physical server </font>
    - the new sticky session feature instruct the load balancer
-     - to <font color=blue> route repeated requests to the same EC2 instance whenever possible </font>
+     - to <font color=LightSlateBlue> route repeated requests to the same EC2 instance whenever possible </font>
        - A series of requests from the user will be routed to the same EC2 instance if possible.
      - If the instance has been terminated or has failed a recent health check
        - the load balancer will route the request to another instance.
@@ -287,7 +287,7 @@ The <font color=red> session’s validity </font> can be determined by:
 
 - The load balancer uses a special `load balancer–generated cookie` to <font color=red> track the application instance for each request </font>
 - When the load balancer receives a request
-  - first <font color=blue> checks whether this cookie is present in the request </font>
+  - first <font color=LightSlateBlue> checks whether this cookie is present in the request </font>
   - If there is a cookie
     - the request is sent to the application instance specified in the cookie.
   - If there is no cookie
@@ -298,7 +298,7 @@ The <font color=red> session’s validity </font> can be determined by:
 - The stickiness policy configuration
   - <font color=red> defines a cookie expiration </font>
   - establishes the duration of validity for each cookie.
-  - The cookie is <font color=blue> automatically updated after its duration expires </font>
+  - The cookie is <font color=LightSlateBlue> automatically updated after its duration expires </font>
 
 
 
@@ -307,7 +307,7 @@ The <font color=red> session’s validity </font> can be determined by:
 
 - The stickiness policy configuration
   - follows the lifetime of the application-generated cookie corresponding to the cookie name specified in the policy configuration.
-  - The load balancer only inserts a new `stickiness cookie` <font color=blue> if the application response includes a new application cookie </font>
+  - The load balancer only inserts a new `stickiness cookie` <font color=LightSlateBlue> if the application response includes a new application cookie </font>
 
 
 - The load balancer stickiness cookie does not update with each request.

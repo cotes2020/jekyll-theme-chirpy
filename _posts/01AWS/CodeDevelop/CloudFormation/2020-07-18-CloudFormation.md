@@ -30,11 +30,11 @@ image:
 
 2. <font color=red> Supports almost all the AWS services and programmable </font>
    - provision a broad range of AWS resources.
-     - <font color=blue> compare </font>
-     - <font color=blue> Elastic Beanstalk </font>
+     - <font color=LightSlateBlue> compare </font>
+     - <font color=LightSlateBlue> Elastic Beanstalk </font>
        - more focused on deploying web applications on EC2 
        - PaaS
-     - <font color=blue> CloudFormation </font>
+     - <font color=LightSlateBlue> CloudFormation </font>
        - can deploy Elastic Beanstalk-hosted applications
        - however the reverse is not possible.
 
@@ -206,7 +206,7 @@ Template elements:
 
 2. a collection of AWS resources that can <font color=red> manage as a single unit </font>
    - AWS CloudFormation treats the stack resources as a single unit
-   - create, update, or delete a collection of resources by <font color=blue> creating, updating, or deleting stacks </font>
+   - create, update, or delete a collection of resources by <font color=LightSlateBlue> creating, updating, or deleting stacks </font>
    - Example:
      - A stack can include all the resources required to run a web application
        - such as a web server, a database, and networking rules.
@@ -246,7 +246,7 @@ Template elements:
 1. Nested stacks are <font color=red> stacks created as part of other stacks </font>
 
 2. Use nested stacks <font color=red> to declare common components (best practice) </font>
-   - allow <font color=blue> re-use of CloudFormation code for common use cases </font>
+   - allow <font color=LightSlateBlue> re-use of CloudFormation code for common use cases </font>
      - such as standard configuration for load balancer, web server, application server, etc.
 
    - As infrastructure grows, declare the same components in multiple templates
@@ -262,7 +262,7 @@ Template elements:
      - Then, just use the resource to reference that template from within other templates.
 
 3. Nested stacks can contain other nested stacks,
-   - resulting in a <font color=blue> hierarchy of stacks </font>
+   - resulting in a <font color=LightSlateBlue> hierarchy of stacks </font>
 
 4. Certain stack operations, such as stack updates, should be initiated from the `root stack` rather than performed directly on `nested stacks themselves`.
 
@@ -756,7 +756,7 @@ Resources:
 - `AWS-Specific Parameter` Types:
   - AWS-specific
   - catching invalid values at the start of creating or updating a stack.
-  - to create or update a stack <font color=blue> must specify existing AWS values that are in the user's account and in the region for the current stack. </font>
+  - to create or update a stack <font color=LightSlateBlue> must specify existing AWS values that are in the user's account and in the region for the current stack. </font>
   - help ensure that input values for these types exist and are correct before AWS CloudFormation creates or updates any resources.
   - If a user uses the AWS Management Console,
     - AWS CloudFormation prepopulates AWS-specific parameter types with valid values.
@@ -942,10 +942,10 @@ use the `Ref` intrinsic function to reference a parameter, and AWS CloudFormatio
 
 
 At stack creation or stack update,
-- AWS CloudFormation evaluates all the conditions in template <font color=blue> before creating any resources </font>
+- AWS CloudFormation evaluates all the conditions in template <font color=LightSlateBlue> before creating any resources </font>
   - Resources that are associated with a true condition are created.
   - Resources that are associated with a false condition are ignored.
-- AWS CloudFormation also re-evaluates these conditions at each stack update before <font color=blue> updating any resources </font>
+- AWS CloudFormation also re-evaluates these conditions at each stack update before <font color=LightSlateBlue> updating any resources </font>
   - Resources that are still associated with a true condition are updated.
   - Resources that are now associated with a false condition are deleted.
 
@@ -1606,7 +1606,7 @@ The DependsOn attribute should be used when
 ```
 
 - This creation policy is associated with <font color=red> the creation of an Auto Scaling group </font>
-  - <font color=blue> three successful signals within fifteen minutes are required or it will time out </font>
+  - <font color=LightSlateBlue> three successful signals within fifteen minutes are required or it will time out </font>
     - Set timeouts to give resources enough time to get up and running.
   - When the timeout period expires, or a failure signal is received,
   - the creation of the resource fails,

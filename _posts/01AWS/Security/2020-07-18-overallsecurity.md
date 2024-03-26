@@ -82,12 +82,12 @@ The following list focuses on
    - Regularly monitor user activity in the AWS account(s).
 
 1. <font color=red> protecting the access/use of user account credentials </font>
-   - <font color=blue> Rotate credentials regularly </font>
+   - <font color=LightSlateBlue> Rotate credentials regularly </font>
    - Remove/deactivate unnecessary credentials
    - Protect EC2 key pairs.
      - Password protect the .pem and .ppk file on user machines
    - Delete keys on the instances when someone leaves the organization or no longer requires access
-   - Regularly run least privilege checks using <font color=blue> IAM user Access Advisor and IAM user Last Used Access Keys </font>
+   - Regularly run least privilege checks using <font color=LightSlateBlue> IAM user Access Advisor and IAM user Last Used Access Keys </font>
    - Delegate access by using roles instead of by sharing credentials
    - Use IAM roles for cross-account access and identity federation
    - Use temporary security instead of long-term access keys.
@@ -101,7 +101,7 @@ The following list focuses on
 
 2. <font color=red> protecting CloudTrail logs stored in S3 </font>
    - Limit access to users and roles on a “need-to-know” basis for data stored in S3
-   - Use <font color=blue> bucket access permissions and object access permissions </font> for fine-grained control over S3 resources
+   - Use <font color=LightSlateBlue> bucket access permissions and object access permissions </font> for fine-grained control over S3 resources
    - Use bucket policies to grant other AWS accounts or IAM
    - For more details, refer to the following AWS resources:
 
@@ -136,12 +136,12 @@ The following list mainly focuses on network and host-level boundary protection
 1. <font color=red> enforcing network and host-level boundary protection </font>
    - Establish appropriate network design for workload
      - to ensure only desired network paths and routing are allowed
-   - For large-scale deployments, design <font color=blue> network security in layers </font>
+   - For large-scale deployments, design <font color=LightSlateBlue> network security in layers </font>
      - external, DMZ, and internal
    - NACL rules is stateless firewall, ensure to define both outbound and inbound rules
    - Create secure VPCs using network segmentation and security zoning
    - Carefully plan routing and server placement in public and private subnets.
-   - Place instances (EC2 and RDS) within VPC subnets and <font color=blue> restrict access using security groups and NACLs </font>
+   - Place instances (EC2 and RDS) within VPC subnets and <font color=LightSlateBlue> restrict access using security groups and NACLs </font>
    - Use non-overlapping IP addresses with other VPCs or data centre in use
    - Control network traffic by using
      - security groups (stateful firewall, outside OS layer),
@@ -159,18 +159,18 @@ The following list mainly focuses on network and host-level boundary protection
 2. <font color=red> protecting against DDoS at network and application level </font>
    - Use firewalls including Security groups, network access control lists, and host based firewalls
    - Use rate limiting to protect scarce resources from overconsumption
-   - Use <font color=blue> Elastic Load Balancing and Auto Scaling </font>
+   - Use <font color=LightSlateBlue> Elastic Load Balancing and Auto Scaling </font>
      - to configure web servers to scale out when under attack (based on load)
      - and shrink back when the attack stops
-   - Use <font color=blue> AWS Shield </font>
+   - Use <font color=LightSlateBlue> AWS Shield </font>
      - a managed Distributed Denial of Service (DDoS) protection service, that safeguards web applications running on AWS
-   - Use <font color=blue> Amazon CloudFront </font>
+   - Use <font color=LightSlateBlue> Amazon CloudFront </font>
      - to absorb DoS/DDoS flooding attacks
-   - Use <font color=blue> AWS WAF with AWS CloudFront </font>
+   - Use <font color=LightSlateBlue> AWS WAF with AWS CloudFront </font>
      - help protect the web applications from common web exploits that could affect application availability, compromise security, or consume excessive resources
-   - Use <font color=blue> Amazon CloudWatch </font>
+   - Use <font color=LightSlateBlue> Amazon CloudWatch </font>
      - to detect DDoS attacks against the application
-   - Use <font color=blue> VPC Flow Logs </font>
+   - Use <font color=LightSlateBlue> VPC Flow Logs </font>
      - to gain visibility into traffic targeting the application.
 
 
@@ -195,18 +195,18 @@ The following list mainly focuses on network and host-level boundary protection
    - Automate deployments and remove operator access
      - to reduce attack surface area using tools such as EC2 Systems Manager Run Command
    - Ensure operating system and application configurations, such as firewall settings and anti-malware definitions, are correct and up-to-date;
-   - Use <font color=blue> EC2 Systems Manager State Manager </font>
+   - Use <font color=LightSlateBlue> EC2 Systems Manager State Manager </font>
      - to define and maintain consistent operating system configurations
    - Ensure an inventory of instances and installed software is maintained;
-     - Use <font color=blue> EC2 Systems Manager Inventory </font>
+     - Use <font color=LightSlateBlue> EC2 Systems Manager Inventory </font>
        - to collect and query configuration about the instances and installed software
    - Perform routine vulnerability assessments when updates or deployments are pushed;
-     - Use <font color=blue> Amazon Inspector </font>
+     - Use <font color=LightSlateBlue> Amazon Inspector </font>
        - to identify vulnerabilities or deviations from best practices in the guest operating systems and applications
    - Leverage automated patching tools such as EC2 Systems Manager Patch Manager to help you deploy operating system and software patches automatically across large groups of instances
-   - Use <font color=blue> AWS CloudTrail, AWS Config, and AWS Config Rules </font>
+   - Use <font color=LightSlateBlue> AWS CloudTrail, AWS Config, and AWS Config Rules </font>
      - as they provide audit and change tracking features for auditing AWS resource changes.
-   - Use <font color=blue> template definition and management tools, including AWS CloudFormation </font>
+   - Use <font color=LightSlateBlue> template definition and management tools, including AWS CloudFormation </font>
      - to create standard, preconfigured environments.
 
 
@@ -223,7 +223,7 @@ The following list mainly focuses on network and host-level boundary protection
    - Set containers to run as non-root user
    - Set filesystems to be read-only
    - Limit container networking;
-     - Use <font color=blue> AWS ECS </font>
+     - Use <font color=LightSlateBlue> AWS ECS </font>
        - to manage containers and define communication between containers
    - Leverage Linux kernel security features using tools like SELinux, Seccomp, AppArmor
    - Perform vulnerability scans of container images
@@ -280,19 +280,19 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
 
 
 2. <font color=red> protecting data at rest on Amazon S3 </font>
-   - Use <font color=blue> bucket-level or object-level permissions </font> alongside IAM policies
-   - <font color=blue> Don’t create any publicly accessible S3 buckets </font>
+   - Use <font color=LightSlateBlue> bucket-level or object-level permissions </font> alongside IAM policies
+   - <font color=LightSlateBlue> Don’t create any publicly accessible S3 buckets </font>
      - Instead, create pre-signed URLs to grant time-limited permission to download the objects
    - encrypt
-     - Protect sensitive data by <font color=blue> encrypting data at rest </font> in S3.
+     - Protect sensitive data by <font color=LightSlateBlue> encrypting data at rest </font> in S3.
        - Amazon S3 supports server-side encryption and client-side encryption of user data,
        - using which you create and manage the own encryption keys
-     - <font color=blue> Encrypt inbound and outbound S3 data traffic </font>
-   - <font color=blue> data replication and versioning </font> instead of automatic backups.
+     - <font color=LightSlateBlue> Encrypt inbound and outbound S3 data traffic </font>
+   - <font color=LightSlateBlue> data replication and versioning </font> instead of automatic backups.
      - Implement S3 Versioning and S3 Lifecycle Policies
    - Automate the lifecycle of the S3 objects with rule-based actions
    - Enable MFA Delete on S3 bucket
-   - <font color=blue> enable logging </font>
+   - <font color=LightSlateBlue> enable logging </font>
    - Be familiar with the durability and availability options for different S3 storage types – S3, S3-IA and S3-RR.
 
 
@@ -303,13 +303,13 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - AWS creates two copies of the EBS volume for redundancy.
      - However, since both copies are in the same Availability Zone, replicate data at the application level, and/or create backups using EBS snapshots
    - On Windows Server 2008 and later:
-     - use <font color=blue> BitLocker encryption </font>
+     - use <font color=LightSlateBlue> BitLocker encryption </font>
      - to protect sensitive data stored on system or data partitions (this needs to be configured with a password as Amazon EC2 does not support Trusted Platform Module (TPM) to store keys)
    - On Windows Server
-     - implement <font color=blue> Encrypted File System (EFS) </font>
+     - implement <font color=LightSlateBlue> Encrypted File System (EFS) </font>
      - to further protect sensitive data stored on system or data partitions
    - On Linux instances running kernel versions 2.6 and later
-     - use <font color=blue> dmcrypt and Linux Unified Key Setup (LUKS) </font>
+     - use <font color=LightSlateBlue> dmcrypt and Linux Unified Key Setup (LUKS) </font>
      - for key management
 
 
@@ -410,7 +410,7 @@ These controls can be implemented using
 
 3. <font color=red> analyzing logs </font>
    - Parse and analyse security data using solutions
-   - such as <font color=blue> AWS Config, AWS CloudWatch, Amazon EMR, Amazon Elasticsearch Service, etc. </font>
+   - such as <font color=LightSlateBlue> AWS Config, AWS CloudWatch, Amazon EMR, Amazon Elasticsearch Service, etc. </font>
    - Perform analysis and visualization with Kibana.
 
 4. <font color=red> retaining logs  </font>
@@ -462,28 +462,28 @@ there are several tools in the AWS cloud environment to help the incident respon
 
 2. <font color=red> AWS tools for prepare in advance for incident handling </font>
    - Tags in AWS allow you to proactively label resources with a data classification or a criticality attribute so you can quickly estimate the impact when the incident occurs.
-   - <font color=blue> AWS Organisations </font>
+   - <font color=LightSlateBlue> AWS Organisations </font>
      - allows you to create separate accounts along business lines or mission areas which also limits the “blast radius” should a breach occur;
      - for governance, you can apply policies to each of those sub accounts from the AWS master account.
-   - <font color=blue> IAM </font>
+   - <font color=LightSlateBlue> IAM </font>
      - grants appropriate authorisation to incident response teams in advance.
-   - <font color=blue> Security Groups </font>
+   - <font color=LightSlateBlue> Security Groups </font>
      - enables isolation of Amazon EC2 instances.
-   - <font color=blue> AWS Cloud Formation </font>
+   - <font color=LightSlateBlue> AWS Cloud Formation </font>
      - automates the creation of trusted environments for conducting deeper investigations.
-   - <font color=blue> AWS CloudTrail </font>
+   - <font color=LightSlateBlue> AWS CloudTrail </font>
      - provides a history of AWS API calls that can assist in response and trigger automated detection and response systems.
-   - <font color=blue> VPC Flow Logs </font>
+   - <font color=LightSlateBlue> VPC Flow Logs </font>
      - enables you to capture information about the IP traffic going to and from network interfaces in the VPC.
-   - <font color=blue> AWS Key Management Service (KMS) </font>
+   - <font color=LightSlateBlue> AWS Key Management Service (KMS) </font>
      - encrypts sensitive data at rest including logs aggregated and stored centrally.
-   - <font color=blue> Amazon GuardDuty </font>
+   - <font color=LightSlateBlue> Amazon GuardDuty </font>
      - is a managed threat detection service that continuously monitors for malicious or unauthorised behaviour.
-   - <font color=blue> Amazon CloudWatch Events </font>
+   - <font color=LightSlateBlue> Amazon CloudWatch Events </font>
      - triggers different automated actions from changes in AWS resources including CloudTrail.
-   - <font color=blue> Amazon S3 </font>
+   - <font color=LightSlateBlue> Amazon S3 </font>
      - stores snapshots and related incident artefacts.
-   - <font color=blue> AWS Step Functions </font>
+   - <font color=LightSlateBlue> AWS Step Functions </font>
      - coordinates a sequence of steps to automate an incident response process.
    - APIs automate many of the routine tasks that need to be performed during incident handling.
 

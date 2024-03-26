@@ -28,7 +28,7 @@ image:
 
 
 - <font color=red> real-time guidance </font>
-  - to provision resources guid following AWS <font color=blue> best practices </font> and staying within limits.
+  - to provision resources guid following AWS <font color=LightSlateBlue> best practices </font> and staying within limits.
   - provides valuable guidance for architecting your AWS environment and workloads,
   - but doesn't include AWS service health information.
 
@@ -66,7 +66,7 @@ image:
    - Increase the availability and redundancy of your AWS application by
      - taking advantage of automatic scaling, health checks, Multi-AZ deployments, and backup capabilities.
 5. <font color=red> Service Limits </font>
-   - checks for <font color=blue> service usage that is more than 80% of the service limit. </font>
+   - checks for <font color=LightSlateBlue> service usage that is more than 80% of the service limit. </font>
    - Values are based on a snapshot, so your current usage might differ.
    - Limit and usage data can take up to 24 hours to reflect any changes.
 

@@ -111,7 +111,7 @@ image:
    - receive notifications when a user in the organization starts or ends session activity.
   - provides secure and auditable instance management
    - Note:
-   - <font color=blue> Logging is not available for Session Manager sessions that connect through port forwarding or SSH </font>
+   - <font color=LightSlateBlue> Logging is not available for Session Manager sessions that connect through port forwarding or SSH </font>
    - because SSH encrypts all session data, and Session Manager only serves as a tunnel for SSH connections.
   - Logging and auditing capabilities are provided through integration with the following AWS services:
    - AWS CloudTrail
@@ -148,7 +148,7 @@ image:
        - You can even build custom solutions.
 
    - Customer key data encryption support
-     - configure Session Manager to <font color=blue> encrypt the session data logs send to S3 bucket or stream to a CloudWatch Logs log group </font>
+     - configure Session Manager to <font color=LightSlateBlue> encrypt the session data logs send to S3 bucket or stream to a CloudWatch Logs log group </font>
      - configure Session Manager to further encrypt the data transmitted between client machines and instances during sessions.
 
 
@@ -299,10 +299,10 @@ An <font color=red> instance profile </font>
 
 By default, AWS Systems Manager doesn't have permission to perform actions on the instances.
 - must grant access by using an AWS IAM instance profile.
-- <font color=blue> AmazonSSMManagedInstanceCore </font>
+- <font color=LightSlateBlue> AmazonSSMManagedInstanceCore </font>
   - enables an instance to use AWS Systems Manager service core functionality.
   - Depending on the operations plan, might need permissions
-- <font color=blue> custom policy for S3 bucket access </font>
+- <font color=LightSlateBlue> custom policy for S3 bucket access </font>
   - Case 1:
     - using a VPC endpoint to privately connect VPC to supported AWS services and VPC endpoint services powered by PrivateLink.
     - SSM Agent is Amazon software that is installed on the instances and performs Systems Manager tasks.
@@ -319,10 +319,10 @@ By default, AWS Systems Manager doesn't have permission to perform actions on th
       - To access scripts you store in the S3 bucket to use in commands you run.
       - To store the full output of Run Command commands or Session Manager sessions.
       - To access custom patch lists for use when patching the instances.
-- <font color=blue> AmazonSSMDirectoryServiceAccess </font>
+- <font color=LightSlateBlue> AmazonSSMDirectoryServiceAccess </font>
   - Required only if you plan to join EC2 instance for Windows Server to a Microsoft AD directory.
   - This AWS managed policy allows SSM Agent to access AWS Directory Service on your behalf for requests to join the domain by the managed instance.
-- <font color=blue> CloudWatchAgentServerPolicy </font>
+- <font color=LightSlateBlue> CloudWatchAgentServerPolicy </font>
   - Required only if you plan to install and run the CloudWatch agent on the instances to read metric and log data on an instance and write it to Amazon CloudWatch.
   - These help you monitor, analyze, and quickly respond to issues or changes to your AWS resources.
   - Your instance profile needs this policy only if you will use features such as Amazon EventBridge or CloudWatch Logs.
@@ -343,7 +343,7 @@ For these cases, do one of the following to allow Session Manager actions to be 
 #### Embed permissions for Session Manager actions in a custom instance profile
 - add permissions for Session Manager actions to an existing IAM instance profile that does not rely on the AWS-provided default policy `AmazonSSMManagedInstanceCore` for instance permissions.
 - assumes the existing profile already includes other Systems Manager ssm permissions for actions you want to allow access to. This policy alone is not enough to use Session Manager.
-- Roles (the role to embed a policy in) > Permissions > <font color=blue> Add inline policy </font>
+- Roles (the role to embed a policy in) > Permissions > <font color=LightSlateBlue> Add inline policy </font>
 - Replace the default content with the following
 - Review policy page, for Name, enter a name for the inline policy, such as `SessionManagerPermissions`.
 - Choose Create policy.
@@ -372,7 +372,7 @@ Statement:
 1. create a custom AWS IAM instance profile that provides permissions for only Session Manager actions on the instances.
 2. can create a policy to provide the permissions needed for logs of session activity to be sent to Amazon S3 and CloudWatch Logs.
    - IAM console > Policies > Create policy > `SessionManagerPermissions`
-3. Attach an IAM Role to an Instance and <font color=blue> Attach or Replace an Instance Profile </font>
+3. Attach an IAM Role to an Instance and <font color=LightSlateBlue> Attach or Replace an Instance Profile </font>
    - Roles > Create role > AWS service > EC2 > Permissions > `SessionManagerPermissions`
    - Role name (name for the IAM instance profile) > `MySessionManagerInstanceProfile`.
 

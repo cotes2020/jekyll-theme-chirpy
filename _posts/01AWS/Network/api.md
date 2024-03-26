@@ -192,7 +192,7 @@ AppSync also provides other powerful features that are not possible with REST AP
 ![restAPI-1-1024x369](https://i.imgur.com/vfXnxIj.jpg)
 
 1. <font color=red> synchronous, tightly coupled architecture </font>
-   - <font color=blue> the request must wait for a response from the backend integration (RDS) </font>
+   - <font color=LightSlateBlue> the request must wait for a response from the backend integration (RDS) </font>
 
    - This API accepts GET requests to retrieve a user’s cart
      - by using a Lambda function to perform SQL queries against a relational database managed in RDS.
@@ -219,9 +219,9 @@ AppSync also provides other powerful features that are not possible with REST AP
    - A decoupled architecture
    - separates the data ingestion from the data processing and allows you to scale each system separately.
 
-   - This architecture enables ingestion of orders directly into a <font color=blue> highly scalable and durable data store </font> such as Amazon Simple Queue Service (SQS).
+   - This architecture enables ingestion of orders directly into a <font color=LightSlateBlue> highly scalable and durable data store </font> such as Amazon Simple Queue Service (SQS).
    - the backend can process these orders at any speed that is suitable for your business requirements and system ability.
-   - Most importantly, <font color=blue> the health of the backend processing system does not impact your ability to continue accepting orders </font>
+   - Most importantly, <font color=LightSlateBlue> the health of the backend processing system does not impact your ability to continue accepting orders </font>
 
 
 

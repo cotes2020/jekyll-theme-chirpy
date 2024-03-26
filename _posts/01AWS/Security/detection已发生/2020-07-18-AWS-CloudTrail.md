@@ -18,7 +18,7 @@ image:
 
 - <font color=red> enables governance, compliance, operational auditing, and risk auditing </font> of AWS account.
 
-- <font color=blue> enabled automatically </font> when create AWS account
+- <font color=LightSlateBlue> enabled automatically </font> when create AWS account
   - delivers log files within 15min of account activity.
   - enable CloudTrail for all regions in your environment
     - can create a trail applies to one Region or to all Regions
@@ -29,8 +29,8 @@ image:
 
 
 - <font color=red> tracks, records user activity and API activity </font> for all regions in AWS
-  - continuously monitor, tracks <font color=blue> user activity and API usage </font>
-  - provides <font color=blue> event history </font> of your AWS account activity
+  - continuously monitor, tracks <font color=LightSlateBlue> user activity and API usage </font>
+  - provides <font color=LightSlateBlue> event history </font> of your AWS account activity
   - including actions taken OR API calls made via:
     - AWS Management Console.
     - AWS SDKs.
@@ -49,9 +49,9 @@ An event in CloudTrail is the record of an activity in an AWS account.
 - CloudTrail events provide a history of both API and non-API account activity
   - made through the AWS Management Console, AWS SDKs, command line tools, and other AWS services.
 - types of events that can be logged in CloudTrail:
-  - <font color=blue> management events </font>
-  - <font color=blue> data events </font>
-  - <font color=blue> insight events </font>
+  - <font color=LightSlateBlue> management events </font>
+  - <font color=LightSlateBlue> data events </font>
+  - <font color=LightSlateBlue> insight events </font>
     - By default, trails log management events
   - Both use the same CloudTrail JSON log format.
 - CloudTrail can save event history for up to 90 days.
@@ -76,7 +76,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
 
 ### Data Events
 
-- Data events are <font color=blue> disabled by default </font> when create a trail
+- Data events are <font color=LightSlateBlue> disabled by default </font> when create a trail
   - must explicitly add to a trail the supported resources or resource types for which you want to collect activity.
 
 - information about the <font color=red> data plane/resource operations </font> performed on or in a resource.
