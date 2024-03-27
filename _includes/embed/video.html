@@ -1,4 +1,5 @@
 {% assign video_url = include.src %}
+{% assign title = include.title %}
 {% assign poster_url = include.poster %}
 {% assign extnames = include.extnames | default: '' | strip | split: '|' %}
 
@@ -33,14 +34,34 @@
 
 <p>
   <video class="embed-video file" {{ poster }} {{ attributes }}>
-    {%
-      include embed/multi-sources.html
-      tag='video'
-      src=video_url
-      extnames=extnames
-    %}
+    {% assign parts = video_url | split: '/' %}
+    {% assign filename = parts | last %}
+    {% assign extname = filename | split: '.' | last %}
+    {% assign basename = filename | split: '.' | pop | join: '.' %}
+    {% assign path = parts | pop | join: '/' %}
+
+    {% assign media_item = site.data.media | find: 'extension', extname %}
+    {% if media_item %}
+      <source src="{{ video_url }}" type="audio/{{ media_item['mimeType'] }}">
+    {% else %}
+      <source src="{{ video_url }}" type="audio/{{ extname }}">
+    {% endif %}
+
+    {% for extra_extname in extnames %}
+      {% assign filename = basename | append: '.' | append: extra_extname %}
+      {% assign extra_src = path | append: '/' | append: filename %}
+      {% assign media_item = site.data.media | find: 'extension', extra_extname %}
+      {% if media_item %}
+        <source src="{{ extra_src }}" type="audio/{{ media_item['mimeType'] }}">
+      {% else %}
+        <source src="{{ extra_src }}" type="audio/{{ extra_extnames }}">
+      {% endif %}
+    {% endfor %}
+
+    Your browser does not support the video tag. Here is a
+    <a href="{{ video_url | strip }}">link to the video file</a> instead.
   </video>
-  {% if include.title %}
-    <em>{{ include.title }}</em>
+  {% if title %}
+    <em>{{ title }}</em>
   {% endif %}
 </p>
