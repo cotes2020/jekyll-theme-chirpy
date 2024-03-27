@@ -9,6 +9,7 @@ image:
 
 - [Meow's CyberAttack - Application/Server Attacks - Injection - Driver Manipulation](#meows-cyberattack---applicationserver-attacks---injection---driver-manipulation)
   - [Driver Manipulation](#driver-manipulation)
+    - [Drivers](#drivers)
     - [Drivers manipulation](#drivers-manipulation)
     - [Shimming](#shimming)
     - [Refactoring](#refactoring)
@@ -26,38 +27,39 @@ book: Security+ ch7
 
 ## Driver Manipulation
 
-Drivers
+### Drivers
 
-- Operating systems use drivers to interact with hardware devices or software components.
-
+- Operating systems use <font color=OrangeRed>drivers</font> to interact with hardware devices or software components.
 
 Example:
 
 - print a page using Microsoft Word,
-  - Word accesses the appropriate print driver via the Windows operating system.
+  - Word accesses the appropriate <font color=LightSlateBlue>print driver</font> via the Windows operating system.
 
-- access encrypted data on your system,
-  - the operating system typically accesses a software driver to decrypt the data so that you can view it.
+- access encrypted data on the system,
+  - the operating system typically accesses a <font color=LightSlateBlue>software driver</font> to decrypt the data so that you can view it.
+
+---
 
 ### Drivers manipulation
 
-- causes the driver(s) to be bypassed altogether or to do what it was programmed to do—just not with the values that it should be receiving.
+- causes the driver(s) to `be bypassed altogether` or `to do what it was programmed to do—just not with the values that it should be receiving`.
 
-- change the data with which the driver is working.
+- <font color=LightSlateBlue>change the data with which the driver is working</font>.
 
-
-
-Occasionally, an application needs to support an older driver.
-
-- Example:
+Occasionally, an application needs to support an older driver. Example:
 
 - Windows 10 needed to be compatible with drivers used in Windows 8, but all the drivers weren’t compatible at first.
 
-- Shimming provides the solution that makes it appear that the older drivers are compatible.
+- <font color=OrangeRed>Shimming</font> provides the solution that makes it appear that the older drivers are compatible.
 
+A <font color=OrangeRed>driver shim</font> is additional code that can be run instead of the original driver.
 
-A driver shim is additional code that can be run instead of the original driver.
 when a driver is no longer compatible. They Developers can:
+- Shimming
+- Refactoring
+
+---
 
 ### Shimming
 
