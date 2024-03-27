@@ -1,5 +1,5 @@
 ---
-title: Meow's CyberAttack - Application/Server Attacks - MemoryBuffer - Integer Overflow Attack
+title: Meow's CyberAttack - Application/Server Attacks - MemoryBuffer - Integer Overflow
 date: 2020-09-17 11:11:11 -0400
 categories: [10CyberAttack, MemoryBuffer]
 tags: [CyberAttack, MemoryBuffer]
@@ -7,12 +7,12 @@ toc: true
 image:
 ---
 
-- [Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Integer Overflow Attack](#meows-cyberattack---applicationserver-attacks---memory-buffer-vulnerabilities---integer-overflow-attack)
-  - [Integer Overflow Attack](#integer-overflow-attack)
+- [Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Integer Overflow](#meows-cyberattack---applicationserver-attacks---memory-buffer-vulnerabilities---integer-overflow)
+  - [Integer Overflow](#integer-overflow)
 
 ---
 
-# Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Integer Overflow Attack
+# Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Integer Overflow 
  
 book: Security+ 7th 
  
@@ -21,7 +21,7 @@ book: Security+ 7th
 
 ---
 
-## Integer Overflow Attack
+## Integer Overflow 
 
 - <font color=LightSlateBlue>use or create a numeric value that is too big for an application to handle</font>.
 

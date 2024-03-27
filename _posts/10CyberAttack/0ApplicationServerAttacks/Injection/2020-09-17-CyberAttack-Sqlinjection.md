@@ -1,5 +1,5 @@
 ---
-title: Meow's CyberAttack - SQL Injection
+title: Meow's CyberAttack - Application/Server Attacks - Injection - SQL Injection
 date: 2020-09-17 11:11:11 -0400
 categories: [10CyberAttack, Injection]
 tags: [CyberAttack, Injection]
@@ -7,7 +7,7 @@ toc: true
 image:
 ---
 
-- [Meow's CyberAttack - SQL Injection](#meows-cyberattack---sql-injection)
+- [Meow's CyberAttack - Application/Server Attacks - Injection - SQL Injection](#meows-cyberattack---applicationserver-attacks---injection---sql-injection)
   - [Overall](#overall)
   - [SQL injection Type](#sql-injection-type)
     - [Blind SQL injection attacks](#blind-sql-injection-attacks)
@@ -38,7 +38,7 @@ image:
 
 ---
 
-# Meow's CyberAttack - SQL Injection
+# Meow's CyberAttack - Application/Server Attacks - Injection - SQL Injection
 
 ---
 

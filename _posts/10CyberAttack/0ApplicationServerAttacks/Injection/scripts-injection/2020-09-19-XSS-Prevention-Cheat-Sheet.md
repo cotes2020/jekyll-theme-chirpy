@@ -12,7 +12,32 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-[toc]
+- [Cross Site Scripting Prevention Cheat Sheet](#cross-site-scripting-prevention-cheat-sheet)
+  - [Introduction](#introduction)
+  - [Why Can't Just `HTML Entity Encode` Untrusted Data](#why-cant-just-html-entity-encode-untrusted-data)
+    - [You Need a Security Encoding Library](#you-need-a-security-encoding-library)
+  - [XSS Prevention Rules](#xss-prevention-rules)
+    - [RULE #0 - Never Insert Untrusted Data Except in Allowed Locations](#rule-0---never-insert-untrusted-data-except-in-allowed-locations)
+    - [RULE #1 - `HTML Encode` Before Inserting Untrusted Data into `HTML Element Content`](#rule-1---html-encode-before-inserting-untrusted-data-into-html-element-content)
+    - [RULE #2 - `Attribute Encode` Before Inserting Untrusted Data into `HTML Common Attributes`](#rule-2---attribute-encode-before-inserting-untrusted-data-into-html-common-attributes)
+    - [RULE #3 - `JavaScript Encode` Before Inserting Untrusted Data into `JavaScript Data Values`](#rule-3---javascript-encode-before-inserting-untrusted-data-into-javascript-data-values)
+      - [RULE #3.1 - `HTML Encode JSON values` in an HTML context and read the data with `JSON.parse`](#rule-31---html-encode-json-values-in-an-html-context-and-read-the-data-with-jsonparse)
+        - [JSON serialization](#json-serialization)
+        - [HTML entity encoding](#html-entity-encoding)
+    - [RULE #4 - `CSS Encode And Strictly Validate` Before Inserting Untrusted Data into `HTML Style Property Values`](#rule-4---css-encode-and-strictly-validate-before-inserting-untrusted-data-into-html-style-property-values)
+    - [RULE #5 - `URL Encode` Before Inserting Untrusted Data into `HTML URL Parameter Values`](#rule-5---url-encode-before-inserting-untrusted-data-into-html-url-parameter-values)
+    - [RULE #6 - `Sanitize HTML Markup` with a Library Designed for the Job](#rule-6---sanitize-html-markup-with-a-library-designed-for-the-job)
+    - [RULE #7 - Avoid JavaScript URLs](#rule-7---avoid-javascript-urls)
+    - [RULE #8 - Prevent DOM-based XSS](#rule-8---prevent-dom-based-xss)
+    - [Bonus Rule #1: `Use HTTPOnly cookie flag`](#bonus-rule-1-use-httponly-cookie-flag)
+    - [Bonus Rule #2: Implement `Content Security Policy`](#bonus-rule-2-implement-content-security-policy)
+    - [Bonus Rule #3: Use an Auto-Escaping Template System](#bonus-rule-3-use-an-auto-escaping-template-system)
+    - [Bonus Rule #4: Properly use `modern JS frameworks`](#bonus-rule-4-properly-use-modern-js-frameworks)
+    - [X-XSS-Protection Header](#x-xss-protection-header)
+  - [XSS Prevention Rules Summary](#xss-prevention-rules-summary)
+  - [Output Encoding Rules Summary](#output-encoding-rules-summary)
+  - [Related Articles](#related-articles)
+
 
 ---
 

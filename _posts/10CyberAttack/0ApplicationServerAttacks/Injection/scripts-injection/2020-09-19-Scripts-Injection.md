@@ -12,7 +12,8 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-[toc]
+- [Scripts injection](#scripts-injection)
+
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Meow's CyberAttack - Application/Server Attacks - MemoryBuffer - Integer Overflow Attack
+title: Meow's CyberAttack - Application/Server Attacks - MemoryBuffer - Buffer Overflows 
 date: 2020-09-17 11:11:11 -0400
 categories: [10CyberAttack, MemoryBuffer]
 tags: [CyberAttack, MemoryBuffer]
@@ -8,22 +8,22 @@ image:
 ---
 
 - [Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Buffer Overflows](#meows-cyberattack---applicationserver-attacks---memory-buffer-vulnerabilities---buffer-overflows)
-  - [Buffer Overflows](#buffer-overflows)
+  - [Buffer Overflows Attack](#buffer-overflows-attack)
     - [Attack example](#attack-example)
     - [prevention](#prevention)
 
 ---
 
-# Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Buffer Overflows
+# Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Buffer Overflows 
  
-book: Security+ 7th  ch9
+book: Security+ 7th ch9
  
 <font color=LightSlateBlue></font>
 <font color=OrangeRed></font>
 
 ---
 
-## Buffer Overflows
+## Buffer Overflows Attack
 
 - an application <font color=OrangeRed>receives more /different input than it’s programmed to accept</font>. 
 
