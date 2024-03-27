@@ -1,5 +1,5 @@
 name: 'Grace project - Tesla'
-on: 
+on:
   schedule:
     - cron: '0 21 * * *'
     # - cron: '*/30 * * * *'
@@ -9,7 +9,7 @@ on:
 
 jobs:
   run_project_output_builder:
-    name: project webscrap_tesla create output 
+    name: project webscrap_tesla create output
     runs-on: ubuntu-latest
 
     steps:
@@ -49,4 +49,3 @@ jobs:
           git add .
           git commit -m "Auto updating output to repo"
           git push
- 

@@ -44,7 +44,7 @@ image:
   - containers can break these workloads down into microservices,
   - more easily maintained and expanded.
 
-- <font color=red> on-premises systems </font>
+- <font color=OrangeRed> on-premises systems </font>
   - Enterprise systems and workloads, containerized or not, have been housed on-premises,
   - a set of high-capacity servers running in the company's network or data center.
   - When an application's computing needs begin to outstrip its available computing resources
@@ -76,9 +76,9 @@ image:
 
 - benefits:
   - Take advantage of the cloud services for running the workloads you decide to migrate.
-    - <font color=red> flexibility, scalability, and lower computing costs </font>
+    - <font color=OrangeRed> flexibility, scalability, and lower computing costs </font>
   - Add specialized services to the computing resources tool kit.
-    - such as <font color=red> machine learning, content caching, data analysis, long-term storage, and IoT </font>
+    - such as <font color=OrangeRed> machine learning, content caching, data analysis, long-term storage, and IoT </font>
 
 - the adoption of hybrid architecture for powering distributed systems and services.
 
@@ -115,13 +115,13 @@ image:
 
 ![Screen Shot 2022-08-16 at 23.15.37](https://i.imgur.com/qoT2fh4.png)
 
-- modern solution for <font color=blue> hybrid and multi-cloud distributed systems and service management </font>
+- modern solution for <font color=LightSlateBlue> hybrid and multi-cloud distributed systems and service management </font>
   - powered by the latest innovations in distributed systems, and service management software from Google.
 - On-permises and Cloud environments stay in sync
   - The Anthos framework rests on Kubernetes and GKE on-prem.
 - provides
   - the foundation for an architecture
-    - the foundation that is fully integrated with centralized management through a central control plane that supports <font color=blue> policy based application lifecycle </font> delivery across <font color=blue> hybrid and multi-cloud environments </font>
+    - the foundation that is fully integrated with centralized management through a central control plane that supports <font color=LightSlateBlue> policy based application lifecycle </font> delivery across <font color=LightSlateBlue> hybrid and multi-cloud environments </font>
   - a rich set of tools
     - Manage sevices on-permises and in the cloud
     - monitor systems and services
@@ -136,26 +136,26 @@ image:
 ![Screen Shot 2021-02-07 at 23.50.31](https://i.imgur.com/7LTuSeN.png)
 
 
-- <font color=red> Google Kubernetes Engine on the Cloud site </font> of the hybrid network.
-  - Google Kubernetes Engine is a managed production-ready environment for <font color=blue> deploying containerized applications </font>
+- <font color=OrangeRed> Google Kubernetes Engine on the Cloud site </font> of the hybrid network.
+  - Google Kubernetes Engine is a managed production-ready environment for <font color=LightSlateBlue> deploying containerized applications </font>
   - Operates seamlessly with high availability and an SLA.
   - Runs certified Kubernetes ensuring portability across clouds and on-premises.
   - Includes auto-node repair, and auto-upgrade, and auto-scaling.
   - Uses regional clusters for high availability with multiple masters.
   - Node storage replication across multiple zones.
 
-- <font color=red> Google Kubernetes Engine deployed ON-PREM </font>
+- <font color=OrangeRed> Google Kubernetes Engine deployed ON-PREM </font>
   - a turn-key production-grade conformed version of Kubernetes
   - with the best practice configuration already pre-loaded.
   - Provides
-    - <font color=blue> easy upgrade path to the latest validated Kubernetes releases </font> by Google.
-    - <font color=blue> Provides access to container services </font> on Google Cloud platform,
+    - <font color=LightSlateBlue> easy upgrade path to the latest validated Kubernetes releases </font> by Google.
+    - <font color=LightSlateBlue> Provides access to container services </font> on Google Cloud platform,
       - such as Cloud build, container registry, audit logging, and more.
-    - <font color=blue> integrates with Istio, Knative and Marketplace Solutions </font>
+    - <font color=LightSlateBlue> integrates with Istio, Knative and Marketplace Solutions </font>
   - Ensures a consistent Kubernetes version and experience across Cloud and on-premises environments.
 
-- <font color=red> Marketplace </font>
-  - both <font color=blue> Google Kubernetes Engine in the Cloud </font> and <font color=blue> Google Kubernetes Engine deployed on-premises </font> integrate with <font color=blue> Marketplace </font>
+- <font color=OrangeRed> Marketplace </font>
+  - both <font color=LightSlateBlue> Google Kubernetes Engine in the Cloud </font> and <font color=LightSlateBlue> Google Kubernetes Engine deployed on-premises </font> integrate with <font color=LightSlateBlue> Marketplace </font>
   - so all of the clusters in network (on-premises or in the Cloud), have access to the same repository of containerized applications.
   - benefits:
     - use the same configurations on both the sides of the network,
@@ -168,21 +168,21 @@ image:
 
 
 
-- <font color=red> Anthos </font>
+- <font color=OrangeRed> Anthos </font>
   - an Istio Open Source service mesh
   - take these guesswork out of managing and securing the microservices.
 
-- <font color=red> Cloud interconnect </font>
+- <font color=OrangeRed> Cloud interconnect </font>
   - These service mesh layers communicate across the hybrid network by Cloud interconnect
   - to sync and pass their data.
 
-- <font color=red> Stackdriver </font>
-  - the <font color=blue> built-in logging and monitoring solution </font> for Google Cloud.
+- <font color=OrangeRed> Stackdriver </font>
+  - the <font color=LightSlateBlue> built-in logging and monitoring solution </font> for Google Cloud.
     - offers a fully managed logging, metrics collection, monitoring dashboarding, and alerting solution that watches all sides of the hybrid on multi-cloud network.
-  - the ideal solution for <font color=blue> single easy configure powerful cloud-based observability solution </font>
+  - the ideal solution for <font color=LightSlateBlue> single easy configure powerful cloud-based observability solution </font>
   - a single pane of class dashboard to monitor all of the environments.
 
-- <font color=red> Anthos Configuration Management </font>
+- <font color=OrangeRed> Anthos Configuration Management </font>
   - provides
     - a single source of truth for the clusters configuration.
       - source of truth is kept in the policy repository, a git repository.
@@ -190,7 +190,7 @@ image:
     - deploy code changes with a single repository commit.
     - implement configuration inheritance, by using namespaces.
 
-- <font color=red> Anthos Configuration Management agents </font>
+- <font color=OrangeRed> Anthos Configuration Management agents </font>
   - use the policy repository to enforce configurations locally in each environment,
   - managing the complexity of owning clusters across environments.
 

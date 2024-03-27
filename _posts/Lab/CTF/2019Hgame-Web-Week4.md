@@ -140,7 +140,7 @@ class SecureCookieSessionInterface(SessionInterface):
 
 在默认情况下，除了`app.secret_key`的值是未知的，其它的参数都是固定好的
 - 如果项目使用了session机制，`secret_key`字段是被强制要求设定的，可以通过在配置文件里写入固定字符串或启动时随机生成来获得
-- 假如攻击者通过任意文件读取或其它手段拿到了项目的`secret_key`，那么完全有可能 <font color=red> 解密和伪造cookie </font> 来控制用户身份
+- 假如攻击者通过任意文件读取或其它手段拿到了项目的`secret_key`，那么完全有可能 <font color=OrangeRed> 解密和伪造cookie </font> 来控制用户身份
 
 ```py
 # 例如如下代码：

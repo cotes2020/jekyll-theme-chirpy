@@ -30,11 +30,11 @@ Certificate Attributes
 ![Pasted Graphic 45](https://i.imgur.com/z0v2okV.png)
 
 
-- <font color=red> End-entity certificates </font>
+- <font color=OrangeRed> End-entity certificates </font>
   - issued by a CA to a specific subject, Joyce, the Accounting department, or a firewall.
   - An end-entity certificate is the identity document provided by PKI implementations.
 
-- <font color=red> CA certificate </font>
+- <font color=OrangeRed> CA certificate </font>
   - can be self-signed, in the case of a stand-alone or root CA,
   - or can be issued by a superior CA within a hierarchical model.
     - the superior CA gives the authority
@@ -43,12 +43,12 @@ Certificate Attributes
     - different departments within an organization need to have their own CAs servicing their specific end-entities (users, network devices, and applications) in their sections.
     - In these situations, a representative from each department requiring a CA registers with the more highly trusted CA and requests a CA certificate.
 
-- <font color=red> Cross-certification certificates </font>
+- <font color=OrangeRed> Cross-certification certificates </font>
   - used when independent CAs establish peer-to-peer trust relationships.
   - a mechanism
   - one CA can issue a certificate allowing its users to trust another CA.
 
-- <font color=red> Policy certificates </font>
+- <font color=OrangeRed> Policy certificates </font>
   - Within sophisticated CAs used for high-security applications, a mechanism is required to provide centrally controlled policy information to PKI clients.
   - This is often done by placing the policy information in a policy certificate.
 
@@ -87,7 +87,7 @@ The authentication requirements differ depending on the type of certificate bein
 
 Types of X.509 certificates: slightly different purpose, same general structure, but the application is different.
 
-- <font color=red> Wildcard certificates </font>
+- <font color=OrangeRed> Wildcard certificates </font>
   - starts with an asterisk (`*`)
   - more widely, with subdomains of a given domain.
     - wildcard certificate for all subdomains.
@@ -104,7 +104,7 @@ Types of X.509 certificates: slightly different purpose, same general structure,
         - `support.google.com`
       - But could not be used for `gmail.com`.
 
-- <font color=red> Subject Alternative Name (SAN) certificates </font>
+- <font color=OrangeRed> Subject Alternative Name (SAN) certificates </font>
   - not so much a type of certificate as a special field in X.509.
   - used for multiple domains that have different names, but owned by the same organization.
     - Example:
@@ -122,13 +122,13 @@ Types of X.509 certificates: slightly different purpose, same general structure,
       - api.CrucialExams.com,
       - IP 4.5.4.5           (all in a single cert).
 
-- <font color=red> X-509-compliant certificate </font>
+- <font color=OrangeRed> X-509-compliant certificate </font>
   - Examaple:
   - hardening a web server,
   - which should allow a secure certificate-based session using the organization's PKI infrastructure.
   - The web server should also utilize the latest security techniques and standards.
 
-- <font color=red> self-signed certificate </font>
+- <font color=OrangeRed> self-signed certificate </font>
   - not issued by a trusted CA.
     - Private CAs within an enterprise often create self-signed certificates.
     - Self-signed certificates from private CAs
@@ -140,7 +140,7 @@ Types of X.509 certificates: slightly different purpose, same general structure,
     - but it won’t be trusted by browsers,
     - will instead generate a certificate error message.
 
-- <font color=red> Code signing certificates </font>
+- <font color=OrangeRed> Code signing certificates </font>
   - certificates digitally sign computer code.
   - validate the authentication of executable applications or scripts.
   - verifies the code has not been modified.
@@ -149,18 +149,18 @@ Types of X.509 certificates: slightly different purpose, same general structure,
   - This allows the person/computer running the application or script to verify it's authenticity
 
 
-- <font color=red> Machine/computer certificates </font>
+- <font color=OrangeRed> Machine/computer certificates </font>
   - certificates assigned to a specific machine.
   - often used in authentication schemes.
   - The certificate is typically used to identify the computer within a domain.
   - Example:
     - for machine to sign in to the network, it must authenticate using its machine certificate.
 
-- <font color=red> Email certificates </font>
+- <font color=OrangeRed> Email certificates </font>
   - uses of email certificates are for encryption of emails and digital signatures.
   - `Secure Multipurpose Internet Mail Extensions (S/MIME)` uses X.509 certificates to secure email communications.
 
-- <font color=red> User certificates </font>
+- <font color=OrangeRed> User certificates </font>
   - for individual users, often used for authentication.
   - Users must present their certificate to authenticate prior to accessing some resource.
   - Example
@@ -168,11 +168,11 @@ Types of X.509 certificates: slightly different purpose, same general structure,
     - allowing the user to encrypt data using `Encrypting File System (EFS)`.
 
 
-- <font color=red> Root certificates </font>
+- <font color=OrangeRed> Root certificates </font>
   - for root authorities, usually self-signed by that authority.
 
 
-- <font color=red> Domain validation certificates </font>
+- <font color=OrangeRed> Domain validation certificates </font>
   - (most common certificates)
   - to secure communication with a specific domain.
   - a low-cost certificate that website administrators use to provide TLS for a given domain.
@@ -180,7 +180,7 @@ Types of X.509 certificates: slightly different purpose, same general structure,
   - The CA takes extra steps to contact the requestor such as by email or telephone.
   - The intent is to provide additional evidence to clients that the certificate and the organization are trustworthy.
 
-- <font color=red> Extended validation certificates </font>
+- <font color=OrangeRed> Extended validation certificates </font>
   - require more validation of the certificate holder, provide more security.
   - use additional steps beyond domain validation.
   - a domain with an extended validation certificate, the address bar includes the name of the company before the actual URL.
@@ -227,7 +227,7 @@ Other vendors may choose to use different classes or no classes at all as this i
 After an RA verifies an individual’s identity, the CA generates the digital certificate, but how does the CA know what type of data to insert into the certificate?
 
 
-The certificates are created and formatted based on the <font color=red> X.509 standard </font>
+The certificates are created and formatted based on the <font color=OrangeRed> X.509 standard </font>
 - X.509 standard
   - outlines the necessary fields of a certificate
   - and the possible values that can be inserted into the fields.
@@ -239,8 +239,8 @@ The certificates are created and formatted based on the <font color=red> X.509 s
 
 
 - identifying information governed by international standard X.509.
-  - defines the <font color=red> certificate formats </font> and fields for public keys.
-  - defines the <font color=red> procedures should used </font> to distribute public keys.
+  - defines the <font color=OrangeRed> certificate formats </font> and fields for public keys.
+  - defines the <font color=OrangeRed> procedures should used </font> to distribute public keys.
     - comes in two basic types:
       - End-Entity Certificate:
         - The most common
@@ -260,47 +260,47 @@ The following figure shows the contents of X.509 version 3 certificates
 <!-- <img alt="pic" src="https://sites.google.com/site/ddmwsst/digital-certificates/x509v3.gif?attredirects=0" width="450"> -->
 
 Certificates that conform to X.509 contain the following data:
-- <font color=red> _Version_ </font>
+- <font color=OrangeRed> _Version_ </font>
   - the version of the X.509 standard that was followed to create the certificate;
   - indicates the format and fields that can be used.
-- <font color=red> _Certificate Serial number_ </font>
+- <font color=OrangeRed> _Certificate Serial number_ </font>
   - uniquely identifies the certificate, from the CA
   - The CA uses this serial number to validate a certificate.
   - If the CA revokes the certificate, it publishes this serial number in a certificate revocation list (CRL).
 
-- <font color=red> _Certificate Algorithm for Certificate issuer's Signature_ </font>
+- <font color=OrangeRed> _Certificate Algorithm for Certificate issuer's Signature_ </font>
 
-- <font color=red> _Issuer_ </font>
+- <font color=OrangeRed> _Issuer_ </font>
   - identification of the CA that issued the certificate
 
 
-- <font color=red> _Validity period_ </font>
+- <font color=OrangeRed> _Validity period_ </font>
   - the dates and times
   - valid starting and ending date and time
 
-- <font color=red> _Subject_ </font>
+- <font color=OrangeRed> _Subject_ </font>
   - Subject’s name:
   - contains the distinguished name, or DN, of the entity that owns the public key contained in the certificate.
   - example:
   - subject as Google, Inc, a wildcard certificate, used for all web sites with the google.com root domain name.
-- <font color=red> _Subject’s public key Information_ </font>
+- <font color=OrangeRed> _Subject’s public key Information_ </font>
   - the meat of the certificate
   - Identifies the public key being bound to the certified subject;
   - the actual public key the certificate owner used to set up secure communications
   - identifies the algorithm used to create the private/public key pair.
   - RSA asymmetric encryption uses the public key in combination with the matching private key.
-  - <font color=red> _Signature Algorithm identifier_ </font>
+  - <font color=OrangeRed> _Signature Algorithm identifier_ </font>
     - the algorithm used by the CA to digitally sign the contents of the certificate.
-  - <font color=red> _Signature Value_ </font>:
+  - <font color=OrangeRed> _Signature Value_ </font>:
     - Bit string containing the digital signature.
 
-- <font color=red> _Issuer unique identifier_ </font>
+- <font color=OrangeRed> _Issuer unique identifier_ </font>
   - (versions 2 and 3 only)
 
-- <font color=red> _Subject unique identifier_ </font>
+- <font color=OrangeRed> _Subject unique identifier_ </font>
   - (versions 2 and 3 only)
 
-- <font color=red> _Extensions_ </font>
+- <font color=OrangeRed> _Extensions_ </font>
   - (version 3 only).
   - additional customized variables containing data inserted into the certificate by the certificate authority
   - to support tracking of certificates or various applications.
@@ -308,21 +308,21 @@ Certificates that conform to X.509 contain the following data:
   - Companies can customize the use of certificates within their environments by using these extensions.
   - X.509 v3 has extended the extension possibilities.
 
-  - <font color=red> _Subject alternative name_ </font>
+  - <font color=OrangeRed> _Subject alternative name_ </font>
     - A subject can be presented in many different formats.
     - For example,
     - if the certificate must include a user’s account name in the format of an LDAP distinguished name, e-mail name, and a user principal name (UPN),
     - you can include the e-mail name or UPN in a certificate by adding a subject alternative name extension that includes these additional name formats.
 
-  - <font color=red> _CRL distribution points (CDP)_ </font>
+  - <font color=OrangeRed> _CRL distribution points (CDP)_ </font>
     - When a user, service, or computer presents a certificate, an application or service must determine whether the certificate has been revoked before its validity period has expired.
     - The CDP extension provides one or more URLs where the application or service can retrieve the certificate revocation list (CRL) from.
 
-  - <font color=red> _Authority Information Access (AIA)_ </font>
+  - <font color=OrangeRed> _Authority Information Access (AIA)_ </font>
     - After an application or service validates a certificate, the certificate of the CA that issued the certificate (parent CA) must also be evaluated for revocation and validity.
     - The AIA extension provides one or more URLs from where an application or service can retrieve the issuing CA certificate.
 
-  - <font color=red> _Enhanced Key Usage (EKU)_ </font>
+  - <font color=OrangeRed> _Enhanced Key Usage (EKU)_ </font>
     - This attribute includes an object identifier (OID) for each application or service a certificate can be used for.
     - Object identifiers/OIDs:
     - a unique sequence of numbers from a worldwide registry.
@@ -330,7 +330,7 @@ Certificates that conform to X.509 contain the following data:
     - Example, OID 2.5.4.6 might correspond to the country-name value
 
 
-  - <font color=red> _Certificate policies_ </font>
+  - <font color=OrangeRed> _Certificate policies_ </font>
     - Describes what measures an organization takes to validate the identity of a certificate requestor before it issues a certificate.
     - An OID is used to represent the validation process and can include a policy-qualified URL that fully describes the measures taken to validate the identity.
 

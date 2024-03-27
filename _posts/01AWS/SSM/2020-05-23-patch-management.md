@@ -77,12 +77,12 @@ Patch Manager
 
 **Important**
 
-- AWS does not test patches for Windows Server or Linux <font color=blue> before making them available in Patch Manager </font>.
-- Patch Manager doesn't support <font color=blue> upgrading major versions of OSs </font>
+- AWS does not test patches for Windows Server or Linux <font color=LightSlateBlue> before making them available in Patch Manager </font>.
+- Patch Manager doesn't support <font color=LightSlateBlue> upgrading major versions of OSs </font>
   - such as Windows Server 2016 to Windows Server 2019,
   - or SUSE Linux Enterprise Server (SLES) 12.0 to SLES 15.0.
 
-Patch Manager uses <font color=red> patch baselines </font>
+Patch Manager uses <font color=OrangeRed> patch baselines </font>
 - which include rules for `auto-approving patches` within days of their release, as well as a `list of approved and rejected patches`.
 - You can install patches
   - on a regular basis by scheduling patching to run as a Systems Manager maintenance window task.
@@ -338,7 +338,7 @@ Patch Manager only makes available patches for Windows Server OS versions that a
 On Linux systems
 - however, you can also use Patch Manager to
   - install patches that are not related to security, or in a different source repository.
-  - specify alternative patch source repositories when create a <font color=red> custom patch baseline </font>.
+  - specify alternative patch source repositories when create a <font color=OrangeRed> custom patch baseline </font>.
   - In each custom patch baseline, specify **patch source configurations for up to 20 versions of a supported Linux OS**.
 - Running a **custom patch baseline** that `specifies alternative patch repositories` on an instance doesn't change the **default repository** configured for the instance.
 
@@ -425,10 +425,10 @@ On Amazon Linux and Amazon Linux 2 instances, the patch installation workflow is
 1. If a list of patches is specified using an `https/S3 URL` using the `InstallOverrideList` parameter for the `AWS-RunPatchBaseline` or `AWS-RunPatchBaselineAssociation` documents, the listed patches are installed and steps 2-7 are skipped.
 
 2. Apply [GlobalFilters](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreatePatchBaseline.html#systemsmanager-CreatePatchBaseline-request-GlobalFilters) as specified in the **patch baseline**
-   - keeping <font color=red> only the qualified packages for further processing </font>.
+   - keeping <font color=OrangeRed> only the qualified packages for further processing </font>.
 
 3. Apply [ApprovalRules](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreatePatchBaseline.html#EC2-CreatePatchBaseline-request-ApprovalRules) as specified in the **patch baseline**.
-   - <font color=red> Each approval rule can define a package as approved </font>.
+   - <font color=OrangeRed> Each approval rule can define a package as approved </font>.
    - Approval rules are also subject to whether the **Include nonsecurity updates** check box was selected when create/update the patch baseline.
    - If `nonsecurity updates` are excluded
      - an implicit rule is applied in order to select only packages with upgrades in security repos.
@@ -491,19 +491,19 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 2. Each **update notice** in `updateinfo.xml` includes `several attributes`
    - Update notice attributes: denote the properties of the packages in the notice, as described in the following table.
    - list of supported values: `describe-patch-properties`
-   - <font color=blue> type </font>
+   - <font color=LightSlateBlue> type </font>
      - Corresponds to the value of the `Classification key attribute` in the patch baseline's PatchFilter data type.
      - Denotes the type of package included in the update notice.
-   - <font color=blue> severity </font>
+   - <font color=LightSlateBlue> severity </font>
      - Corresponds to the value of the `Severity key attribute` patch baseline's PatchFilter data type.
      - Denotes the severity of the packages included in the update notice. Usually only applicable for Security update notices.
-   - <font color=blue> update_id 	</font>
+   - <font color=LightSlateBlue> update_id 	</font>
      - Denotes the advisory ID, such as ALAS-2017-867.
      - The advisory ID can be used in the ApprovedPatches or RejectedPatches attribute in the patch baseline.
-   - <font color=blue> references </font>
+   - <font color=LightSlateBlue> references </font>
      - Contains additional information about the update notice, such as a CVE ID (format: CVE-2017-1234567).
      - The CVE ID can be used in the ApprovedPatches or RejectedPatches attribute in the patch baseline.
-   - <font color=blue> updated </font>
+   - <font color=LightSlateBlue> updated </font>
      - Corresponds to `ApproveAfterDays` in the patch baseline.
      - Denotes the released date (updated date) of the packages included in the update notice.
      - A comparison between the current timestamp and the value of this attribute plus the ApproveAfterDays is used to determine if the patch is approved for deployment.
@@ -552,7 +552,7 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 - The primary focus of Patch Manager is applying patches to OSs.
 - However, you can also use Patch Manager to apply patches to some applications on the instances.
 - **Linux**
-  - Patch Manager uses the configured repositories for updates, and <font color=blue> does not differentiate between OSs and application patches </font>.
+  - Patch Manager uses the configured repositories for updates, and <font color=LightSlateBlue> does not differentiate between OSs and application patches </font>.
   - use Patch Manager to define which repositories to fetch updates from.
 - **Windows**
   - apply approval rules, as well as *Approved* and *Rejected* patch exceptions, for applications released by Microsoft, s
@@ -611,7 +611,7 @@ This SSM document prompts **Windows Update to download and install the specified
   - specifying a category of updates to install (or whether to disable automatic updates),
   - specifying the day of the week and time of day to run patching operations.
 
-This SSM document is most useful if you <font color=red> don't need strict control over Windows updates and don't need to collect compliance information </font>
+This SSM document is most useful if you <font color=OrangeRed> don't need strict control over Windows updates and don't need to collect compliance information </font>
 
 
 #### AWS-InstallWindowsUpdates
@@ -646,7 +646,7 @@ This SSM document provides **basic patching functionality**
      - On Windows Server, application support is limited to updates for Microsoft applications.
      - For Linux OSs, compliance information is provided for patches from both the default source repository configured on an instance and from any alternative source repositories you specify in a custom patch baseline.
 
-3. This SSM document performs patching operations on instances for <font color=red> both security related and other types of updates </font>.
+3. This SSM document performs patching operations on instances for <font color=OrangeRed> both security related and other types of updates </font>.
    - When the document is run, it uses the **patch baseline currently specified as the "default"** for an OS type if no **patch group** is specified.
    - Otherwise, it uses the **patch baseline that is associated with the patch group**
 
@@ -722,7 +722,7 @@ If a patch specified by the baseline rules is installed *before* Patch Manager u
 Parameter name: `Snapshot ID`
 - **Usage**: Optional.
 - `Snapshot ID` is a unique ID (GUID) used by Patch Manager
-- to ensure that <font color=red> a set of instances that are patched in a single operation all have the exact same set of approved patches </font>
+- to ensure that <font color=OrangeRed> a set of instances that are patched in a single operation all have the exact same set of approved patches </font>
 - Although the parameter is defined as optional, our best practice recommendation depends on whether or not you are running **AWS-RunPatchBaseline** in a maintenance window, as described in the following table.
 
 **AWS-RunPatchBaseline best practices**
@@ -747,7 +747,7 @@ Running AWS-RunPatchBaseline outside of a maintenance window
 Parameter name: `InstallOverrideList`
 - **Usage**: Optional.
 - `InstallOverrideList` lets you specify an `https/S3 path-style URL` to a list of patches to be installed.
-- This patch installation list, in YAML format, <font color=blue> overrides the patches specified by the current default patch baseline. </font>
+- This patch installation list, in YAML format, <font color=LightSlateBlue> overrides the patches specified by the current default patch baseline. </font>
 - provides more granular control over which patches are installed on the instances.
 - Be aware that **compliance reports** reflect `patch states` according to what’s specified in the patch baseline, not what you specify in an `InstallOverrideList` list of patches.
   - so Scan operations ignore the `InstallOverrideList` parameter.
@@ -830,7 +830,7 @@ Parameter name: `RebootOption`
 - To track patch installation, especially patches that were installed since the last system reboot,
 - Systems Manager maintains a file on the managed instance.
 - Do not delete or modify the tracking file. If this file is deleted or corrupted, the patch compliance report for the instance is inaccurate.
-- If this happens, reboot the instance and <font color=red> run a patch Scan operation to restore the file </font>
+- If this happens, reboot the instance and <font color=OrangeRed> run a patch Scan operation to restore the file </font>
 
 This tracking file is stored in the following locations on the managed instances:
 - Linux OSs:
@@ -897,7 +897,7 @@ The following four SSM documents are still available for use in the patching ope
 
 ## predefined and custom patch baselines
 
-<font color=red> patch baseline </font>
+<font color=OrangeRed> patch baseline </font>
 - defines which patches are approved for installation on the instances.
 - You can
   - specify approved or rejected patches one by one.
@@ -911,10 +911,10 @@ To use a list of approved patches to install specific packages
 
 
 Patch Manager provides
-1. <font color=red> predefined patch baselines </font>
+1. <font color=OrangeRed> predefined patch baselines </font>
    - for each of the OSs supported by Patch Manager.
    - use these baselines as they are currently configured (you can't customize them)
-2. <font color=red> create the own custom patch baselines </font>
+2. <font color=OrangeRed> create the own custom patch baselines </font>
    - for greater control over which patches are approved or rejected for the environment.
    - Also, the predefined baselines assign a compliance level of `Unspecified` to all patches installed using those baselines.
    - For compliance values to be assigned, you can create a copy of a predefined baseline and specify the compliance values you want to assign to patches.
@@ -937,7 +937,7 @@ The following table describes the predefined patch baselines provided with Patch
    - Patches are **auto-approved seven days** after release.
 
 3. `AWS-CentOSDefaultPatchBaseline` CentOS
-   - including <font color=red> nonsecurity updates </font>
+   - including <font color=OrangeRed> nonsecurity updates </font>
    - Approves all updates **seven days after they become available**
 
 
@@ -994,16 +994,16 @@ The following table describes the predefined patch baselines provided with Patch
 ## custom baselines
 
 create the own patch baseline
-- you can <font color=red> choose which patches to auto-approve by using the following categories </font>.
-  - <font color=red> OS </font>:
+- you can <font color=OrangeRed> choose which patches to auto-approve by using the following categories </font>.
+  - <font color=OrangeRed> OS </font>:
     - Windows, Amazon Linux, Ubuntu Server, and so on.
-  - <font color=red> Product name (for OSs) </font>:
+  - <font color=OrangeRed> Product name (for OSs) </font>:
     - For example, RHEL 6.5, Amazon Linux 2014.09, Windows Server 2012, Windows Server 2012 R2, and so on.
-  - <font color=red> Product name (for Microsoft applications on Windows Server only) </font>:
+  - <font color=OrangeRed> Product name (for Microsoft applications on Windows Server only) </font>:
     - For example, Word 2016, BizTalk Server, and so on.
-  - <font color=red> Classification </font>:
+  - <font color=OrangeRed> Classification </font>:
     - For example, critical updates, security updates, and so on.
-  - <font color=red> Severity </font>:
+  - <font color=OrangeRed> Severity </font>:
     - For example, critical, important, and so on.
 
 - For each approval rule, you can choose to specify an **auto-approval delay** or specify a **patch approval cutoff date**.
@@ -1042,7 +1042,7 @@ to create a patch baseline:
   - The configuration settings in these two patch baselines are the same.
     - `AWS-DefaultPatchBaseline`: the default patch baseline for Windows Server instances, unless specify a different patch baseline.
     - `AWS-WindowsPredefinedPatchBaseline-OS`, was created to distinguish it from the third predefined patch baseline for Windows Server.
-    - <font color=red> support only OS updates on the Windows OS itself </font>.
+    - <font color=OrangeRed> support only OS updates on the Windows OS itself </font>.
   - `AWS-WindowsPredefinedPatchBaseline-OS-Applications`, can be used to apply patches to both the Windows Server OS and supported Microsoft applications.
 
 - For on-premises servers and virtual machines (VMs)
@@ -1052,7 +1052,7 @@ to create a patch baseline:
 
 - If a patch is listed as both approved and rejected in the same patch baseline, the patch is rejected.
 
-- <font color=red> An instance can have only one patch baseline defined for it </font>
+- <font color=OrangeRed> An instance can have only one patch baseline defined for it </font>
 
 - The formats of **package names add to lists of approved/rejected patches for a patch baseline** depend on the type of OS you are patching.
 

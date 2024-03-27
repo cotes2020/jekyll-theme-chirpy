@@ -27,7 +27,7 @@ image:
 
 ![Screen Shot 2022-08-15 at 00.17.10](https://i.imgur.com/KcFVzIf.jpg)
 
-- <font color=red> flat structure </font>
+- <font color=OrangeRed> flat structure </font>
 
 
 ## Google Cloud Storage
@@ -112,7 +112,7 @@ image:
 
 
 
-- <font color=red> The storage objects </font>
+- <font color=OrangeRed> The storage objects </font>
   - immutable,
     - do not edit them in place but instead create new versions
     - turn on object versioning on the buckets

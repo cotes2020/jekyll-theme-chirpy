@@ -18,7 +18,7 @@ the <font color=bluepi> firmware </font> stage
 the <font color=bluepi> boot loader </font> stage
 - After the firmware stage, the BIOS or UEFI executes the boot loader stage.
 - the boot loader is `grub2`, or grand unified boot loader two.
-- `Grub`'s job is to <font color=red> read configuration file and boot the Linux kernel </font>
+- `Grub`'s job is to <font color=OrangeRed> read configuration file and boot the Linux kernel </font>
   - For BIOS machine, grub reads in `/boot/grub2/grub.cfg`.
   - For UEFI systems, it loads `/boot/efi/EFI/redhat/grub.efi`.
 - The boot loader then executes the kernel.

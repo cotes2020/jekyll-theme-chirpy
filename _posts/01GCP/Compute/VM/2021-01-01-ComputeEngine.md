@@ -32,24 +32,24 @@ image:
 ## basic
 
 Compute Engine
-- <font color=red> Infrastructure as a Service </font>
-- <font color=red> A managed environment </font> for deploying virtual machines
+- <font color=OrangeRed> Infrastructure as a Service </font>
+- <font color=OrangeRed> A managed environment </font> for deploying virtual machines
   - run thousands of virtual CPUs on a system that is designed to be fast and to offer consistent performance.
-- <font color=red> Fully customizable VMs </font>
+- <font color=OrangeRed> Fully customizable VMs </font>
   - Compute Engine offers virtual machines that run on GCP
   - create and run virtual machines on Google infrastructure.
   - run virtual machines on demand in the Cloud.
     - select predefined VM configurations
     - create customized configurations
-- <font color=red> no upfront investments </font>
-- <font color=red> Lift and shift </font>
+- <font color=OrangeRed> no upfront investments </font>
+- <font color=OrangeRed> Lift and shift </font>
 
 - choice:
-  - have <font color=blue> complete control over your infrastructure </font>
+  - have <font color=LightSlateBlue> complete control over your infrastructure </font>
     - maximum flexibility
     - for people who prefer to manage those server instances themselves.
     - customize operating systems and even run applications that rely on a mix of operating systems.
-  - best option <font color=blue> if other computing options don't support your applications or requirements </font>
+  - best option <font color=LightSlateBlue> if other computing options don't support your applications or requirements </font>
     - easily lift and shift your on-premises workloads into GCP without rewriting the applications or making any changes.
 
 
@@ -70,7 +70,7 @@ Compute Engine
 ## create a virtual machine instance
 - by Google Cloud Platform console or the GCloud command line tool.
 
-<font color=red> SSD </font>
+<font color=OrangeRed> SSD </font>
 - standard, SSD, or local SSD.
   - the standard spinning hard disk drives or HDDs, or flash memory solid state drives SSDs.
   - Both of these options provide the same amount of capacity in terms of disk size when choosing a persistent disk.
@@ -89,25 +89,25 @@ Compute Engine
 
 
 
-<font color=red> OS </font>
+<font color=OrangeRed> OS </font>
 - Linux and Windows Server images provided by Google or customized versions of these images
 - import images for many of the physical servers.
 
-<font color=red> Machine type </font>
-<font color=red> OS </font>
+<font color=OrangeRed> Machine type </font>
+<font color=OrangeRed> OS </font>
 - Linux and Windows Server images provided by Google or customized versions of these images
 - import images for many of the physical servers.
 
-<font color=red> Machine type </font>
+<font color=OrangeRed> Machine type </font>
 - how much memory and virtual CPUs
 - range from very small to very large indeed.
 - can make a custom VM.
 
-<font color=red> Processing power </font>
+<font color=OrangeRed> Processing power </font>
 - machine learning and data processing that can take advantage of GPUs, many GCP zones have GPU's available for you.
 - Just like physical computers need disks, so do VM.
 
-Virtual machines need <font color=red> block storage </font>
+Virtual machines need <font color=OrangeRed> block storage </font>
 - (2 main  choices)
 1. 2 persistent storage
    - standard or SSD.
@@ -120,30 +120,30 @@ Virtual machines need <font color=red> block storage </font>
    - local SSDs content doesn't last past when the VM terminates.
    - persistent disks can.
 
-<font color=red> boot image. </font>
+<font color=OrangeRed> boot image. </font>
 - choose a boot image.
   - GCP offers lots of versions of Linux and Windows
   - can import the own images too.
 
-<font color=red> VM startup scripts </font>
+<font color=OrangeRed> VM startup scripts </font>
 - let the VMs come up with certain configurations
   - like installing software packages on first boot.
-- pass <font color=red> GCP VM startup scripts </font> to do so.
+- pass <font color=OrangeRed> GCP VM startup scripts </font> to do so.
   - can also pass in other kinds of metadata too.
 
-<font color=red> snapshot </font>
+<font color=OrangeRed> snapshot </font>
 - Once the VMs are running
 - take a durable snapshot of their disks.
 - keep these as backups or use when need to migrate a VM to another region.
 
 
-<font color=red> grained control of costs </font>
-- <font color=blue> per second billing </font>
+<font color=OrangeRed> grained control of costs </font>
+- <font color=LightSlateBlue> per second billing </font>
   - GCP enables fine grained control of costs of Compute Engine resources by providing per second billing.
   - helps reduce the costs when deploying compute resources for short periods of time
     - such as batch processing jobs
 
-<font color=blue> preemptible VMs instances 抢先的 </font>
+<font color=LightSlateBlue> preemptible VMs instances 抢先的 </font>
 
 - provide significantly cheaper pricing for the workloads that can be interrupted safely
   - have a workload that no human being is sitting around waiting to finish
@@ -167,7 +167,7 @@ Virtual machines need <font color=red> block storage </font>
   - huge VMs are great for workloads like in-memory databases and CPU intensive analytics
   - but most GCP customers start off with scaling out not scaling up.
 
-<font color=red> Auto scaling </font>
+<font color=OrangeRed> Auto scaling </font>
 - add and take away VMs from the application based on load metrics.
 - place the Compute Engine workloads behind global load balancers that support autoscaling
 
@@ -177,12 +177,12 @@ Virtual machines need <font color=red> block storage </font>
   - Google VPC supports several different kinds of load balancing
 
 
-<font color=red> managed instance groups </font>
+<font color=OrangeRed> managed instance groups </font>
 - define resources that are automatically deployed to meet demand
 
 
 
-<font color=red> Availability policies </font>
+<font color=OrangeRed> Availability policies </font>
 - If a VM is stopped (outage or a hardware failure), the automatic restart feature starts it back up. Is this the behavior you want? Are the applications idempotent (written to handle a second startup properly)?
 - During host maintenance, the VM is set for live migration. However, you can have the VM terminated instead of migrated.
 

@@ -51,11 +51,11 @@ The use of digital signatures
 ![Screen Shot 2021-01-08 at 14.42.04](https://i.imgur.com/VnhkqSr.png)
 
 If Alice wants to digitally sign a message she’s sending to Bob, she performs the following actions:
-1. Alice <font color=red> generates a hashing message digest </font> of the original plaintext message </font>
+1. Alice <font color=OrangeRed> generates a hashing message digest </font> of the original plaintext message </font>
    - such as SHA-512.
-2. Alice <font color=red> encrypts the hash using private key </font>
+2. Alice <font color=OrangeRed> encrypts the hash using private key </font>
    - This encrypted message digest is the digital signature.
-3. Alice <font color=red> appends the digital signature with the plaintext message </font>
+3. Alice <font color=OrangeRed> appends the digital signature with the plaintext message </font>
 4. Alice transmits the appended message to Bob.
 5. When Bob receives the digitally signed message, he reverses the procedure:
    - decrypts the digital signature using Alice’s public key.
@@ -114,7 +114,7 @@ self signed certificates
 
 ### certification practices statement (CPS)
 
-Every CA should have a <font color=red> certification practices statement (CPS) </font>
+Every CA should have a <font color=OrangeRed> certification practices statement (CPS) </font>
 - outlines
   - how identities are verified;
     - the steps the CA follows to generate, maintain, and transmit certificates;
@@ -134,9 +134,9 @@ Every CA should have a <font color=red> certification practices statement (CPS) 
 The certificate server:
 - the actual service that issues certificates
   - based on the data provided during the initial registration process.
-  - <font color=red> constructs and populates the digital certificate </font> with the necessary information
-  - and <font color=red> combines the user’s public key with the resulting certificate </font>
-  - The certificate is then <font color=red> digitally signed with the CA’s private key </font>
+  - <font color=OrangeRed> constructs and populates the digital certificate </font> with the necessary information
+  - and <font color=OrangeRed> combines the user’s public key with the resulting certificate </font>
+  - The certificate is then <font color=OrangeRed> digitally signed with the CA’s private key </font>
     - private key assures the recipient that the certificate came from the CA.
 
 ---
@@ -155,21 +155,21 @@ The certificate server:
 1. Receiver receives a digitally signed message from Sender
    - digitally signed message = digital certificate (public key + hash encrypted with private key) + message
 
-2. <font color=red> Compare the CA </font>
+2. <font color=OrangeRed> Compare the CA </font>
    - To sure the authenticity of this message:
-   - Receiver compares the <font color=red> CA signed Sender’s certificate </font> to <font color=red> the list of CAs he has configured/loaded in computer </font>
+   - Receiver compares the <font color=OrangeRed> CA signed Sender’s certificate </font> to <font color=OrangeRed> the list of CAs he has configured/loaded in computer </font>
    - He trusts the CAs in his list and no others.
      - If the certificate was signed by a CA he does not have in the list,
        - not accept the certificate as being valid.
      - If the certificate was signed by a CA in his list of trusted CAs,
        - accepted.
 
-3. Use the <font color=red>  CA’s public key to decrypt the digital signature </font>
+3. Use the <font color=OrangeRed>  CA’s public key to decrypt the digital signature </font>
    - recover the original message digest embedded within the certificate (validating the digital signature).
 
-4. <font color=red> Calculate a message digest for the certificate </font>
+4. <font color=OrangeRed> Calculate a message digest for the certificate </font>
 
-5. <font color=red> Compare the two resulting message digest values </font> to ensure the integrity of the certificate.
+5. <font color=OrangeRed> Compare the two resulting message digest values </font> to ensure the integrity of the certificate.
    - verify that the certificate has not been altered.
    - Using the CA’s public key and the digest certificate,
      - Receiver can verify the integrity of the certificate.
@@ -194,12 +194,12 @@ The certificate server:
 9. Receiver now trusts that this certificate is legitimate and that it belongs to Sender.
 
 
-10. now <font color=red> verify the integrity of the message </font>
+10. now <font color=OrangeRed> verify the integrity of the message </font>
     - Receiver runs the message
       - calculates a message digest value of X.
-    - The certificate holds <font color=blue> Sender’s public key </font>
+    - The certificate holds <font color=LightSlateBlue> Sender’s public key </font>
        - Receiver extracts Sender’s public key from certificate.
-       - <font color=blue> uses Sender’s public key to decrypt digital signature </font>
+       - <font color=LightSlateBlue> uses Sender’s public key to decrypt digital signature </font>
        - a digital signature:
          - message digest encrypted with a private key.
          - decryption get a hash of value Y.

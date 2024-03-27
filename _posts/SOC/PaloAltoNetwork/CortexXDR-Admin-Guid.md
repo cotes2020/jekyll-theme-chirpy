@@ -491,24 +491,24 @@ After receive account details, enable and verify access to Cortex XDR.
   - **traps-management-service**—Requires PAN-OS Applications and Threats content update version 793 or a later release.
   - If **do not use Palo Alto Networks firewalls**, ensure that configure firewall policy to enable communication with the FQDNs.
 
-FQDN | App-ID Coverage
----|---
-`distributions.traps.paloaltonetworks.com` | traps-management-service | Used for the first request in registration flow where the agent passes the distribution id and obtains the `ch- <tenant>.traps.paloaltonetworks.com` of its tenant
-`dc-<xdr-tenant>.traps.paloaltonetworks.com` | traps-management-service | Used for EDR data upload.
-`ch-<xdr-tenant>.traps.paloaltonetworks.com` | traps-management-service | Used for all other requests between the agent and its tenant server including heartbeat, uploads, action results, and scan reports.
-`cc-<xdr-tenant>.traps.paloaltonetworks.com` | traps-management-service |  Used for get-verdict requests.
-`wss://lrc-<region>.paloaltonetworks.com`| cortex-xdr | Used in live terminal flow.
-`panw-xdr-installers-prod- us.storage.googleapis.com` | cortex-xdr | Used to download installers for upgrade actions from the server. This storage bucket is used for all regions.
-`panw-xdr-payloads-prod- us.storage.googleapis.com` | cortex-xdr | sed to download the executable for live terminal for Cortex XDR agents earlier than version 7.1.0. This storage bucket is used for all regions.
-`global-content-profiles- policy.storage.googleapis.com` | cortex-xdr | Used to download content updates.
-`panw-xdr-evr- prod-<region>.storage.googleapis.com` | cortex-xdr | Used to download extended verdict request results in scanning.
+| FQDN                                                     | App-ID Coverage          |
+| -------------------------------------------------------- | ------------------------ |
+| `distributions.traps.paloaltonetworks.com`               | traps-management-service | Used for the first request in registration flow where the agent passes the distribution id and obtains the `ch- <tenant>.traps.paloaltonetworks.com` of its tenant |
+| `dc-<xdr-tenant>.traps.paloaltonetworks.com`             | traps-management-service | Used for EDR data upload.                                                                                                                                          |
+| `ch-<xdr-tenant>.traps.paloaltonetworks.com`             | traps-management-service | Used for all other requests between the agent and its tenant server including heartbeat, uploads, action results, and scan reports.                                |
+| `cc-<xdr-tenant>.traps.paloaltonetworks.com`             | traps-management-service | Used for get-verdict requests.                                                                                                                                     |
+| `wss://lrc-<region>.paloaltonetworks.com`                | cortex-xdr               | Used in live terminal flow.                                                                                                                                        |
+| `panw-xdr-installers-prod- us.storage.googleapis.com`    | cortex-xdr               | Used to download installers for upgrade actions from the server. This storage bucket is used for all regions.                                                      |
+| `panw-xdr-payloads-prod- us.storage.googleapis.com`      | cortex-xdr               | sed to download the executable for live terminal for Cortex XDR agents earlier than version 7.1.0. This storage bucket is used for all regions.                    |
+| `global-content-profiles- policy.storage.googleapis.com` | cortex-xdr               | Used to download content updates.                                                                                                                                  |
+| `panw-xdr-evr- prod-<region>.storage.googleapis.com`     | cortex-xdr               | Used to download extended verdict request results in scanning.                                                                                                     |
 
 - STEP 3 | To **establish secure communication (TLS) to Cortex XDR**, the endpoints, and any other devices that initiate a TLS connection with Cortex, must have the following certificates installed on the operating system:
 
-Certificate | Fingerprint
----|---
-GoDaddy Root Certificate Authority - G2 (Godaddy) | - **SHA1 Fingerprint**—47 BE AB C9 22 EA E8 0E 78 78 34 62 A7 9F 45 C2 54 FD E6 8B <br> - **SHA256 Fingerprint**—45 14 0B 32 47 EB 9C C8 C5 B4 F0 D7 B5 30 91 F7 32 92 08 9E 6E 5A 63 E2 74 9D D3 AC A9 19 8E DA
-lobalSign (Google) | - **SHA1 Fingerprint**—75 E0 AB B6 13 85 12 27 1C 04 F8 5F DD DE 38 E4 B7 24 2E FE <br> - **SHA256 Fingerprint**—CA 42 DD 41 74 5F D0 B8 1E B9 02 36 2C F9 D8 BF 71 9D A1 BD 1B 1E FC 94 6F 5B 4C 99 F4 2C 1B 9E
+| Certificate                                       | Fingerprint                                                                                                                                                                                                      |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GoDaddy Root Certificate Authority - G2 (Godaddy) | - **SHA1 Fingerprint**—47 BE AB C9 22 EA E8 0E 78 78 34 62 A7 9F 45 C2 54 FD E6 8B <br> - **SHA256 Fingerprint**—45 14 0B 32 47 EB 9C C8 C5 B4 F0 D7 B5 30 91 F7 32 92 08 9E 6E 5A 63 E2 74 9D D3 AC A9 19 8E DA |
+| lobalSign (Google)                                | - **SHA1 Fingerprint**—75 E0 AB B6 13 85 12 27 1C 04 F8 5F DD DE 38 E4 B7 24 2E FE <br> - **SHA256 Fingerprint**—CA 42 DD 41 74 5F D0 B8 1E B9 02 36 2C F9 D8 BF 71 9D A1 BD 1B 1E FC 94 6F 5B 4C 99 F4 2C 1B 9E |
 
 - STEP 4 | If use SSL decryption, we recommend that do not decrypt Cortex XDR services.
   - To exclude Cortex XDR services from decryption, add the following domains to SSL Decryption
@@ -1567,15 +1567,15 @@ Although Msiexec supports additional options, the Cortex XDR agent installers su
 
 For example, with Msiexec, the option to install the software in a non-standard directory is not supported—you must use the default path.
 
-command | note
----|---
-`/i<installpath>\<installerfilename>.msi` | Install a package. <br> example: `msiexec /i c:\install\cortexxdr.msi`
-`/qn` | Displays no user interface (quiet installation).
-`/L*v <logpath>\<logfilename>.txt` | Log verbose output to a file. <br> example: `/l*v c:\logs\install.txt`
-`VDI_ENABLED=1` | to install the agent on the golden image for a **non-persistent VDI**. <br> This option identifies the session as a VDI in Cortex XDR and applies license and endpoint management policy specific for non-persistent VDI.
-`TS_ENABLED=1` | to install the agent on the golden image for a **temporary session**. <br> This option identifies the session as a temporary session in XDR and to apply license and endpoint management policy specific for temporary sessions.
-`proxy_list` | to install agents that communicate with Cortex XDR through an **application-specific proxy for Cortex XDR**. <br> This option is relevant in environments where XDR agents communicate with XDR through a proxy, enabling Cortex XDR admins to control and manage the agent proxy configuration settings without affecting the communication of other applications on the endpoint.
-`RESTRICT_RESPONSE_ACTIONS=1` | permanently disable the option for Cortex XDR to perform all, or a combination, of the following actions on endpoints running a Cortex XDR agent: initiate a Live Terminal remote session on the endpoint, execute Python scripts on the endpoint, and retrieve files from the endpoint to Cortex XDR. <br> Disabling any of these actions is an irreversible action, so to enable the action again, must uninstall the Cortex XDR agent and install a new package without this flag. <br> To disable a specific action, use the corresponding flag: <br> `RESTRICT_LIVE_TERMINAL=1`: disable Live Terminal. <br> `RESTRICT_SCRIPT_EXECUTION=1`: disable script execution. <br> `RESTRICT_FILE_RETRIEVAL=1`: disable files retrieval.
+| command                                   | note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/i<installpath>\<installerfilename>.msi` | Install a package. <br> example: `msiexec /i c:\install\cortexxdr.msi`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `/qn`                                     | Displays no user interface (quiet installation).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `/L*v <logpath>\<logfilename>.txt`        | Log verbose output to a file. <br> example: `/l*v c:\logs\install.txt`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `VDI_ENABLED=1`                           | to install the agent on the golden image for a **non-persistent VDI**. <br> This option identifies the session as a VDI in Cortex XDR and applies license and endpoint management policy specific for non-persistent VDI.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `TS_ENABLED=1`                            | to install the agent on the golden image for a **temporary session**. <br> This option identifies the session as a temporary session in XDR and to apply license and endpoint management policy specific for temporary sessions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `proxy_list`                              | to install agents that communicate with Cortex XDR through an **application-specific proxy for Cortex XDR**. <br> This option is relevant in environments where XDR agents communicate with XDR through a proxy, enabling Cortex XDR admins to control and manage the agent proxy configuration settings without affecting the communication of other applications on the endpoint.                                                                                                                                                                                                                                                                                                                                                   |
+| `RESTRICT_RESPONSE_ACTIONS=1`             | permanently disable the option for Cortex XDR to perform all, or a combination, of the following actions on endpoints running a Cortex XDR agent: initiate a Live Terminal remote session on the endpoint, execute Python scripts on the endpoint, and retrieve files from the endpoint to Cortex XDR. <br> Disabling any of these actions is an irreversible action, so to enable the action again, must uninstall the Cortex XDR agent and install a new package without this flag. <br> To disable a specific action, use the corresponding flag: <br> `RESTRICT_LIVE_TERMINAL=1`: disable Live Terminal. <br> `RESTRICT_SCRIPT_EXECUTION=1`: disable script execution. <br> `RESTRICT_FILE_RETRIEVAL=1`: disable files retrieval. |
 
 
 To install Cortex XDR using Msiexec:
@@ -7633,7 +7633,7 @@ After integrate with Slack workspace, configure forwarding settings.
 
 To receive Cortex XDR notifications using <kbd>Syslog server</kbd>, define the settings for the <kbd>Syslog receiver</kbd> from which want to send notifications.
 
-- STEP 1 | Before define the Syslog settings, enable access to the following Cortex XDR IP addresses for deployment region in <font color=red> firewall configurations </font>
+- STEP 1 | Before define the Syslog settings, enable access to the following Cortex XDR IP addresses for deployment region in <font color=OrangeRed> firewall configurations </font>
   - ![ip](https://i.imgur.com/E4LLA3v.png)
 
 - STEP 2 | Settings > Integrations > External Applications.
@@ -7641,13 +7641,13 @@ To receive Cortex XDR notifications using <kbd>Syslog server</kbd>, define the s
 - STEP 3 | In Syslog Servers, add a <kbd>+ New Server</kbd>.
   - ![ip](https://i.imgur.com/01E8dAP.png)
 
-- STEP 4 | Define the <font color=red> Syslog server parameters </font>
+- STEP 4 | Define the <font color=OrangeRed> Syslog server parameters </font>
   - ![configure](https://i.imgur.com/j3TvQpP.png)
   - Name — Unique name for the server profile.
-  - Destination — <font color=blue> IP address or fully qualified domain name (FQDN) </font> of the Syslog server.
-  - Port — The port number on which <font color=blue> to send Syslog messages </font>
+  - Destination — <font color=LightSlateBlue> IP address or fully qualified domain name (FQDN) </font> of the Syslog server.
+  - Port — The port number on which <font color=LightSlateBlue> to send Syslog messages </font>
   - Facility
-    - Choose one of the <font color=blue> Syslog standard values </font>
+    - Choose one of the <font color=LightSlateBlue> Syslog standard values </font>
     - The value maps to how Syslog server uses the facility field to manage messages.
     - For details on the facility field, see RFC 5424.
   - Protocol — Select a method of communication with the Syslog server:
@@ -7776,11 +7776,11 @@ Slack Channel
 Syslog Server
 - Alert notification forwarded to a Syslog server are sent in a `CEF format RF 5425`.
 
-Section | Description
----|---
-Syslog Header | `<9>: PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
-CEF Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string) HEADER/Device Product="Cortex XDR"(as a constant string) HEADER/Product Version= Cortex XDR version (2.0/2.1....) HEADER/Severity=severity(informational/low/medium/high) HEADER/Device Event Class ID=alert source HEADER/name =alert name`
-CEF Body | `end=timestampshost=hostsuser=usernamedeviceFacil typeact=actioncat=categorymsg=descriptionextern idrequest=alert linkflexString1=starredflexString1Label="Starre a constant string)flexString2=excludedflexString2Label="Ex a constant string)cs1=initiated bycs1Label="Initiated by" (as a constant string)cs2=initiator cmdcs2Label="InitiatorCMD" (as a constant string)cs3=string.concat(initiator sig, initiator singer, "-")cs3Label="Signature" (as a constant string)cs4=CGO namecs4Label="CGO name" (as a constant string)cs5=cgo cmdcs5Label="CGO CMD" (as a constant string)cs6=string.concat(cgo sig, cgo singer, "-")cs6Label="CGO Signature" (as a constant string)dst=remoteipdpt=remote portdhost=remote hostsrc=local ipspt=localportapp=app idregistrydata = registrydataregistryfullkey = registryfullkeytargetprocessname = targetprocessnametargetprocesscmd =targetprocesscmdtargetprocesssignature= string.concat(target processsig, target process signer, "-")targetprocesssha256= targetprocesssha256tenantname = tenantnametenantCDLid = tenantCDLidCSPaccountname = CSPaccountnamefileHash=file sha256filePath=file path`
+| Section       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Syslog Header | `<9>: PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| CEF Header    | `HEADER/Vendor="Palo Alto Networks" (as a constant string) HEADER/Device Product="Cortex XDR"(as a constant string) HEADER/Product Version= Cortex XDR version (2.0/2.1....) HEADER/Severity=severity(informational/low/medium/high) HEADER/Device Event Class ID=alert source HEADER/name =alert name`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| CEF Body      | `end=timestampshost=hostsuser=usernamedeviceFacil typeact=actioncat=categorymsg=descriptionextern idrequest=alert linkflexString1=starredflexString1Label="Starre a constant string)flexString2=excludedflexString2Label="Ex a constant string)cs1=initiated bycs1Label="Initiated by" (as a constant string)cs2=initiator cmdcs2Label="InitiatorCMD" (as a constant string)cs3=string.concat(initiator sig, initiator singer, "-")cs3Label="Signature" (as a constant string)cs4=CGO namecs4Label="CGO name" (as a constant string)cs5=cgo cmdcs5Label="CGO CMD" (as a constant string)cs6=string.concat(cgo sig, cgo singer, "-")cs6Label="CGO Signature" (as a constant string)dst=remoteipdpt=remote portdhost=remote hostsrc=local ipspt=localportapp=app idregistrydata = registrydataregistryfullkey = registryfullkeytargetprocessname = targetprocessnametargetprocesscmd =targetprocesscmdtargetprocesssignature= string.concat(target processsig, target process signer, "-")targetprocesssha256= targetprocesssha256tenantname = tenantnametenantCDLid = tenantCDLidCSPaccountname = CSPaccountnamefileHash=file sha256filePath=file path` |
 
 > 3/18/206:22:53.000 PMCEF:0|Palo Alto Networks|Cortex XDR|Cortex XDR x.x |XDR Agent|Example Cortex XDR Alert|5|end=1581471661000 shost=3D4WRQ2 suser=acme\\user deviceFacility=None cat=Restrictions externalId=11148 request=https://test.xdr.us.paloaltonetworks.com/alerts/11111 cs1=example.exe cs1Label=Initiated by cs2=example.exe cs2Label=Initiator CMD cs3=Microsoft CorporationSIGNATURE_SIGNED- cs3Label=Signature cs4=cmd.exe cs4Label=CGO name cs5=C:\\this\\is\\example.exe /c ""\\\\host1\\files\
 \example.bat" " cs5Label=CGO CMD cs6=Microsoft CorporationSIGNATURE_SIGNED- cs6Label=CGO Signature targetprocesssignature=N/ASIGNATURE_UNAVAILABLE- tenantname=E2ETest3 tenantCDLid=1399816473 CSPaccountname=Palo Alto Networks - PANW-XDR-BETA10 act=Detected (Reported)
@@ -7802,11 +7802,11 @@ Email Account
 Syslog Server
 - Agent audit logs forwarded to a Syslog server are sent in a `CEF format RFC 5425` according to the following mapping.
 
-Section | Description
----|---
-Syslog Header | <9>: `PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
-CEF Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string)HEADER/Device Product="Cortex XDRAgent" (as a constant string)HEADER/Device Version= Cortex XDR Agent version (7.0/7.1....)HEADER/Severity=informationalHEADER/Device Event Class ID="Agent Audit Logs" (as a constant string)HEADER/name = type`
-CEF Body | `end=timestamprt=receivedtimecat=categorymsg=descriptiondeviceHostName = domainexternalId = endpoint idshost = endpoint namecs1=xdr agent versioncs1Label="agentversion" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)`
+| Section       | Description                                                                                                                                                                                                                                                                                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Syslog Header | <9>: `PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`                                                                                                                                                                                                           |
+| CEF Header    | `HEADER/Vendor="Palo Alto Networks" (as a constant string)HEADER/Device Product="Cortex XDRAgent" (as a constant string)HEADER/Device Version= Cortex XDR Agent version (7.0/7.1....)HEADER/Severity=informationalHEADER/Device Event Class ID="Agent Audit Logs" (as a constant string)HEADER/name = type`                                              |
+| CEF Body      | `end=timestamprt=receivedtimecat=categorymsg=descriptiondeviceHostName = domainexternalId = endpoint idshost = endpoint namecs1=xdr agent versioncs1Label="agentversion" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)` |
 
 > Example:
 > Audit Logs|REPORTING|5|suser=test end=1584533117501 externalId=0000 cs1Label=email cs1=test@paloaltonetworks.com cs2Label=subtype cs2=Slack Report cs3Label=result cs3=SUCCESS cs4Label=reason cs4=None msg=Slack report 'scheduled_1584533112442' ID 00 to ['CUXM741BK', 'C01022YU00L', 'CV51Y1E2X', 'CRK3VASN9'] tenantname=test CSPaccountname=00000
@@ -7822,11 +7822,11 @@ Email Account
 Syslog Server
 - Management Audit logs forwarded to a Syslog server are sent in a `CEF format RF 5425` according to the following mapping:
 
-Section | Description
----|---
-Syslog Header |  `<9>: PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
-Syslog Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string)HEADER/Device Product="Cortex XDR" (as a constant string)HEADER/Device Version= Cortex XDR version(2.0/2.1....)HEADER/Severity=informationalHEADER/Device Event Class ID="Management Audit Logs" (as a constant string)HEADER/name = type`
-CEF Body | `end=timestampsuser=user namecat=categorymsg=descriptiondeviceHostName = host nameexternalId = idcs1=emailcs1Label="email" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)`
+| Section       | Description                                                                                                                                                                                                                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Syslog Header | `<9>: PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`                                                                                                                                                             |
+| Syslog Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string)HEADER/Device Product="Cortex XDR" (as a constant string)HEADER/Device Version= Cortex XDR version(2.0/2.1....)HEADER/Severity=informationalHEADER/Device Event Class ID="Management Audit Logs" (as a constant string)HEADER/name = type`       |
+| CEF Body      | `end=timestampsuser=user namecat=categorymsg=descriptiondeviceHostName = host nameexternalId = idcs1=emailcs1Label="email" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)` |
 
 > Example
 > 3/18/2012:05:17.567 PM<14>1 2020-03-18T12:05:17.567590Z cortexxdr -
@@ -7885,19 +7885,19 @@ Email body format example:
 
 The following table summarizes the field prefixes and additional relevant fields available for BIOC and IOC alert logs.
 
-Field Name | Definition
----|---
-/edrData/action_file* | attributes of a file for which Traps reported activity.
-edrData/action_module* | attributes of a module for which Traps reported module loading activity.
-edrData/action_module_process* | attributes and activity related to processes reported by Traps that load modules such as DLLs on the endpoint.
-edrData/action_process_image* | attributes of a process image for which Traps reported activity.
-edrData/action_registry* | registry activity and attributes such as key name, data, and previous value for which Traps reported activity.
-edrData/action_network | describe network attributes for which Traps reported activity.
-edrData/action_remote_process* | attributes of remote processes for which Traps reported activity.
-edrData/actor* | attributes about the acting user that initiated the activity on the endpoint.
-edrData/causality_actor* | describe attributes about the acting user that initiated the activity on the endpoint.
-edrData/agent* | describe attributes about the Traps agent deployed on the endpoint.
-edrData/causality_actor* | Fields that begin with this prefix describe attributes about the causality group owner.
+| Field Name                     | Definition                                                                                                     |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| /edrData/action_file*          | attributes of a file for which Traps reported activity.                                                        |
+| edrData/action_module*         | attributes of a module for which Traps reported module loading activity.                                       |
+| edrData/action_module_process* | attributes and activity related to processes reported by Traps that load modules such as DLLs on the endpoint. |
+| edrData/action_process_image*  | attributes of a process image for which Traps reported activity.                                               |
+| edrData/action_registry*       | registry activity and attributes such as key name, data, and previous value for which Traps reported activity. |
+| edrData/action_network         | describe network attributes for which Traps reported activity.                                                 |
+| edrData/action_remote_process* | attributes of remote processes for which Traps reported activity.                                              |
+| edrData/actor*                 | attributes about the acting user that initiated the activity on the endpoint.                                  |
+| edrData/causality_actor*       | describe attributes about the acting user that initiated the activity on the endpoint.                         |
+| edrData/agent*                 | describe attributes about the Traps agent deployed on the endpoint.                                            |
+| edrData/causality_actor*       | Fields that begin with this prefix describe attributes about the causality group owner.                        |
 
 
 ![Screen Shot 2020-10-26 at 15.41.02](https://i.imgur.com/59ovp3o.png)

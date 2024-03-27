@@ -29,7 +29,7 @@ image:
 **malware Denonia**
 - Denonia: the name the attackers gave the domain it communicates with.
 
-- The malware uses `newer address resolution techniques` for command and control traffic to <font color=red> evade typical detection measures and virtual network access controls </font>.
+- The malware uses `newer address resolution techniques` for command and control traffic to <font color=OrangeRed> evade typical detection measures and virtual network access controls </font>.
 
 - this sample is fairly innocuous in that it only runs `crypto-mining software`, it demonstrates how attackers exploit complex cloud infrastructure, and is indicative of potential future, more nefarious attacks.
 

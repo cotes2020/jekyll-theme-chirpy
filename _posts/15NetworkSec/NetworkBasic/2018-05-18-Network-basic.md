@@ -571,23 +571,23 @@ UDP is a good for applications need maximize bandwidth and do not require acknow
      - 然后将以太网数据帧通过物理层传输给接收端。
      - 发送处理中的 FCS 由硬件计算， 添加到包的最后。
      - 设置 FCS 的目的是为了判断数据包是否由于噪声而被破坏。
-2. <font color=red> 接收数据包 </font>
+2. <font color=OrangeRed> 接收数据包 </font>
    - 包的接收流程是发送流程的反向过程。
-   - <font color=blue> 网络接口处理 </font>
-     - 收到以太网包后，首先查看头部信息的目的 <font color=blue> MAC 地址是否是发给自己的包 </font>
+   - <font color=LightSlateBlue> 网络接口处理 </font>
+     - 收到以太网包后，首先查看头部信息的目的 <font color=LightSlateBlue> MAC 地址是否是发给自己的包 </font>
        - 如果不是发送给自己的包就丢弃。
        - 如果是发送给自己的包
          - 查看上层协议类型是 IP 包，以太网帧解封装成 IP 包，传给 IP 模块进行处理。
          - 如果是无法识别的协议类型，则丢弃数据。
-   - <font color=blue> IP  模块处理 </font>
+   - <font color=LightSlateBlue> IP  模块处理 </font>
      - 收到 IP 包后，进行类似处理。
-     - 根据头部信息的目的 <font color=blue> IP 地址判断是否是发送给自己包 </font>
+     - 根据头部信息的目的 <font color=LightSlateBlue> IP 地址判断是否是发送给自己包 </font>
        - 如果是发送给自己的包，则查看上一层的协议类型。
          - 上一层协议是 TCP ，就把 IP 包解封装发送给 TCP 协议处理。
        - 假如有路由器，且接收端不是自己的地址，那么根据路由控制表转发数据。
-   - <font color=blue> TCP 模块处理 </font>
+   - <font color=LightSlateBlue> TCP 模块处理 </font>
      - 收到 TCP 段后
-       - 首先查看**校验和**，<font color=blue> 判断数据是否被破坏 </font>
+       - 首先查看**校验和**，<font color=LightSlateBlue> 判断数据是否被破坏 </font>
        - 然后检查是否按照**序号**接收数据。
        - 最后检查**端口号**，确定具体的应用程序。
      - 数据接收完毕后，发送一个 “ 确认回执 ” 给发送端。

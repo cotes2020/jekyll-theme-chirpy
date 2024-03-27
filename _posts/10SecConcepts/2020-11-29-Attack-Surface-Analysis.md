@@ -63,18 +63,18 @@ Attack Surface Analysis helps you to:
 The Attack Surface describes all of the different points where an attacker could get into a system, and where they could get data out.
 
 The Attack Surface of an application is the sum of
-1. all <font color=red> paths for data/commands </font> into and out of the application
-2. the <font color=red> code that protects these paths </font>, including
+1. all <font color=OrangeRed> paths for data/commands </font> into and out of the application
+2. the <font color=OrangeRed> code that protects these paths </font>, including
    - resource connection and authentication,
    - authorization,
    - activity logging,
    - data validation and encoding
-3. all <font color=red> valuable data </font> used in the application, including
+3. all <font color=OrangeRed> valuable data </font> used in the application, including
    - secrets and keys,
    - intellectual property,
    - critical business data,
    - personal data and PII
-4. <font color=red> the code that protects these data </font>, including
+4. <font color=OrangeRed> the code that protects these data </font>, including
    - encryption and checksums,
    - access auditing,
    - and data integrity
@@ -84,8 +84,8 @@ The Attack Surface of an application is the sum of
 overlay this model with the different types of users - roles, privilege levels - that can access the system (whether authorized or not).
 - Complexity increases with the number of different types of users.
 - But focus especially on the two extremes:
-  - <font color=red> unauthenticated, anonymous users </font>
-  - and <font color=red> highly privileged admin users </font> (e.g. database administrators, system administrators).
+  - <font color=OrangeRed> unauthenticated, anonymous users </font>
+  - and <font color=OrangeRed> highly privileged admin users </font> (e.g. database administrators, system administrators).
 
 
 Group each type of attack point into buckets based on risk (external-facing or internal-facing), purpose, implementation, design and technology.
@@ -148,7 +148,7 @@ With this approach, you don't need to understand every endpoint in order to unde
    - Follow the flow of control and data through the system,
      - see how information is validated and where it is stored,
      - what resources are touched and what other systems are involved.
-   - There is a recursive relationship between <font color=red> Attack Surface Analysis </font> and <font color=red> Application Threat Modeling </font>
+   - There is a recursive relationship between <font color=OrangeRed> Attack Surface Analysis </font> and <font color=OrangeRed> Application Threat Modeling </font>
      - changes to the Attack Surface should trigger threat modeling,
      - and threat modeling helps understand the Attack Surface of the application.
 
@@ -177,7 +177,7 @@ The Attack Surface model may be rough and incomplete to start, especially if you
    - operational controls like network firewalls and application firewalls, and intrusion detection or prevention systems to help protect your application.
 
 Measure:
-1. <font color=red> Relative Attack Surface Quotient (RSQ) </font>
+1. <font color=OrangeRed> Relative Attack Surface Quotient (RSQ) </font>
    - Michael Howard at Microsoft and other researchers have developed this method for measuring the Attack Surface of an application, and to track changes to the Attack Surface over time
    - this method calculate an overall attack surface score for the system,
    - and measure this score as changes are made to the system and to how it is deployed.

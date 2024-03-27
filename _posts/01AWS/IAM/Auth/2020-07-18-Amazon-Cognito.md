@@ -15,30 +15,30 @@ image:
 
 ![Cognito](https://i.imgur.com/QqV5Uoe.png)
 
-<font color=red> web identity federation </font>
+<font color=OrangeRed> web identity federation </font>
 - allows user to authenticate with a web identity ptovider (google, facebook)
 - the user authenticates first with the web id provider and receives and authentication token, and use it to exchanged for temporary AWS credenticals allowing them to assume an IAM role.
 
 
-Amazon Cognito provide <font color=red> web identity federation </font> with the following features:
+Amazon Cognito provide <font color=OrangeRed> web identity federation </font> with the following features:
 
-1. Simple and Secure <font color=red> User Sign-Up, Sign-In, and get access for guest users </font> to web and mobile apps.
+1. Simple and Secure <font color=OrangeRed> User Sign-Up, Sign-In, and get access for guest users </font> to web and mobile apps.
 
-2. provides <font color=red> authentication, authorization, and user management </font> for web and mobile apps .
+2. provides <font color=OrangeRed> authentication, authorization, and user management </font> for web and mobile apps .
 
-3. actes as an <font color=blue> identity broker </font> between app and web id providers
+3. actes as an <font color=LightSlateBlue> identity broker </font> between app and web id providers
    - no additional code
    - no credentials is stored on the devices.
 
-4. <font color=red> Access Control </font>  to AWS resources from your application.
+4. <font color=OrangeRed> Access Control </font>  to AWS resources from your application.
    - define roles and map users to different roles,
    - so application can access only the resources that are authorized for each user.
 
-5. <font color=red> seamless experience </font> across devices with Push Synchronization function.
+5. <font color=OrangeRed> seamless experience </font> across devices with Push Synchronization function.
    - syncs user data for a seamless experience across your devices.
    - use Push Synchronization to send a silent push notification of user data updates to multiple devices associated with a user ID.
 
-6. uses common identity management standards, such as <font color=red> Security Assertion Markup Language (SAML) 2.0 </font>.
+6. uses common identity management standards, such as <font color=OrangeRed> Security Assertion Markup Language (SAML) 2.0 </font>.
    - SAML: open standard for exchanging identity and security information with applications and service providers.
    - Applications and service providers that support SAML enable you to `sign in by using your corporate directory credentials` (user name and password from Microsoft Active Directory)
    - With SAML, you can use single sign-on (SSO) to sign in to all of your SAML-enabled applications by using a single set of credentials.
@@ -51,13 +51,13 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 ---
 
 
-## <font color=red> Secure and scalable user directory </font>
+## <font color=OrangeRed> Secure and scalable user directory </font>
 
 ![scenario-authentication-cup](https://i.imgur.com/R0SLuZ1.png)
 
 ![Screen Shot 2020-12-25 at 14.19.01](https://i.imgur.com/UK7uxxF.png)
 
-- The two main components of Amazon Cognito are <font color=red> user pools and identity pools </font>.
+- The two main components of Amazon Cognito are <font color=OrangeRed> user pools and identity pools </font>.
   - can use identity pools and user pools separately or together.
   - ![Screen Shot 2020-12-25 at 14.10.07](https://i.imgur.com/nGMQv12.png)
 ---
@@ -65,9 +65,9 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 ### user pools
 
 
-- <font color=red> secure user directories </font>
+- <font color=OrangeRed> secure user directories </font>
   - can scales to hundreds of millions of users.
-- <font color=red> provide sign-up and sign-in options </font> for web and mobile app users.
+- <font color=OrangeRed> provide sign-up and sign-in options </font> for web and mobile app users.
 - fully managed service, set up without any worries about standing up server infrastructure.
 - user can sign in directly to the user pool, or indirectly via an iderntity provider.
 
@@ -88,10 +88,10 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 
 ### Identity pools (federated identities)
 
-- <font color=red> create unique identities </font> for your users
+- <font color=OrangeRed> create unique identities </font> for your users
 - and assign permissions for users.
 - and federate them with identity providers.
-- then obtain <font color=blue> temporary, limited-privilege AWS credentials with permissions pre-define </font> to directly access other AWS services or to access resources through Amazon API Gateway.
+- then obtain <font color=LightSlateBlue> temporary, limited-privilege AWS credentials with permissions pre-define </font> to directly access other AWS services or to access resources through Amazon API Gateway.
 
 
 Identity pool can include:
@@ -171,18 +171,18 @@ step:
 
 ### Synchronizing Data
 
-Amazon Cognito lets you save end user data in datasets containing <font color=red> key-value pairs </font>.
+Amazon Cognito lets you save end user data in datasets containing <font color=OrangeRed> key-value pairs </font>.
 - This data is associated with an Amazon Cognito identity, so that it can be accessed across logins and devices.
 - To sync this data between the Amazon Cognito service and an end user’s devices, invoke the synchronize method.
 - Each dataset can have a maximum size of 1 MB. You can associate up to 20 datasets with an identity.
 
-The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> for the identity data.
+The `Amazon Cognito Sync client` creates a <font color=OrangeRed> local cache </font> for the identity data.
 - Your app talks to this local cache when it reads and writes keys.
   - This guarantees that all changes on the device are immediately available on the device,
   - even when offline.
 - When the synchronize method is called,
-  - <font color=blue> changes from the service </font> are pulled to the device,
-  - and <font color=blue> any local changes </font> are pushed to the service.
+  - <font color=LightSlateBlue> changes from the service </font> are pulled to the device,
+  - and <font color=LightSlateBlue> any local changes </font> are pushed to the service.
 - At this point the changes are available to other devices to synchronize.
 
 
@@ -190,12 +190,12 @@ The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> 
 
 ### setup Synchronize code
 
-1. <font color=red> Initializing </font> the Amazon Cognito Sync Client
-   - first need to create a <font color=blue>  credentials provider </font>
+1. <font color=OrangeRed> Initializing </font> the Amazon Cognito Sync Client
+   - first need to create a <font color=LightSlateBlue>  credentials provider </font>
    - The credentials provider acquires temporary AWS credentials to enable your app to access your AWS resources.
    - also need to import the required header files.
 
-2. <font color=red> Understanding Datasets </font>
+2. <font color=OrangeRed> Understanding Datasets </font>
    - With Amazon Cognito, end user profile data is organized into `datasets`.
    - Each dataset can contain up to 1MB of data in the form of key-value pairs.
    - A dataset is the most granular entity on which you can perform a sync operation.
@@ -214,7 +214,7 @@ The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> 
 
 5. Synchronizing Local Data with the Sync Store
 Android
-   - The synchronize method compares <font color=blue> local cached data </font> to the <font color=blue> data stored in the Amazon Cognito Sync store </font>
+   - The synchronize method compares <font color=LightSlateBlue> local cached data </font> to the <font color=LightSlateBlue> data stored in the Amazon Cognito Sync store </font>
    - Remote changes are pulled from the `Amazon Cognito Sync store`;
    - conflict resolution is invoked if any conflicts occur;
    - and updated values on the device are pushed to the service.
@@ -273,7 +273,7 @@ Amazon Cognito automatically tracks the association between identity and devices
 2. Enable Push Sync in the Amazon Cognito console
    - <kbd>Amazon Cognito console</kbd> > identity pool for which you want to enable push sync > Dashboard > <kbd>Manage Identity Pools</kbd>
    - The <kbd>Federated Identities page</kbd> appears > click <kbd>Push synchronization</kbd> to expand it > <kbd>Service role</kbd> dropdown menu
-     - select IAM role that <font color=blue> grants Cognito permission to send an SNS notification </font>
+     - select IAM role that <font color=LightSlateBlue> grants Cognito permission to send an SNS notification </font>
        - configure the IAM roles to have `full SNS access`,
        - or create a new role that `trusts cognito-sync` and has `full SNS access`.
    - Click Create role to create or modify the roles associated with your identity pool in the AWS IAM Console.
@@ -305,9 +305,9 @@ For data protection purposes, recommend that
 - protect AWS account credentials
 - set up individual user accounts with AWS IAM.
 - given only the permissions necessary for job duties
-- Use <font color=red> multi-factor authentication (MFA) </font> with each account.
-- Use <font color=red> SSL/TLS </font> to communicate with AWS resources.
-- <font color=red> Set up API and user activity logging </font> with AWS CloudTrail.
+- Use <font color=OrangeRed> multi-factor authentication (MFA) </font> with each account.
+- Use <font color=OrangeRed> SSL/TLS </font> to communicate with AWS resources.
+- <font color=OrangeRed> Set up API and user activity logging </font> with AWS CloudTrail.
 - Use AWS encryption solutions, along with all default security controls within AWS services.
 - Use advanced managed security services such as Amazon Macie, which assists in discovering and securing personal data that is stored in Amazon S3.
 - never put sensitive identifying information, such as customers' account numbers, into free-form fields such as a Name field.
@@ -367,14 +367,14 @@ use AWS published API calls to access Amazon Cognito through the network.
 
 ### Security Best Practices for Amazon Cognito User Pools
 
-- add <font color=red> multi-factor authentication (MFA) </font> to a user pool to protect the identity of your users. choose to use SMS text messages, or time-based one-time (TOTP) passwords
+- add <font color=OrangeRed> multi-factor authentication (MFA) </font> to a user pool to protect the identity of your users. choose to use SMS text messages, or time-based one-time (TOTP) passwords
 
-- user pool <font color=red> advanced security features </font>
-  - <font color=red> protections against compromised credentials </font>
+- user pool <font color=OrangeRed> advanced security features </font>
+  - <font color=OrangeRed> protections against compromised credentials </font>
     - detect if a user’s credentials (user name and password) have been compromised elsewhere.
     - This can happen when users reuse credentials at more than one site, or when they use passwords that are easy to guess.
-  - <font color=red> adaptive authentication </font>
-    - use adaptive authentication with its <font color=blue> risk-based model </font> to predict when you might need another authentication factor.
+  - <font color=OrangeRed> adaptive authentication </font>
+    - use adaptive authentication with its <font color=LightSlateBlue> risk-based model </font> to predict when you might need another authentication factor.
     - configure user pool to block suspicious sign-ins or add second factor authentication in response to an increased risk level.
     - For each sign-in attempt, Amazon Cognito generates a risk score for how likely the sign-in request is to be from a compromised source.
       - This risk score is based on many factors

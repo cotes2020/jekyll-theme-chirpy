@@ -37,24 +37,24 @@
 
 ## IAM BEST PRACTICES
 - Lock away the AWS root user access keys.
-  - <font color=red> no access key for the root account user </font>
+  - <font color=OrangeRed> no access key for the root account user </font>
 - not use the root account for anything other than billing.
   - Power user access allows all permissions except the management of groups and users in IAM.
 
-- Create <font color=red> individual IAM users </font>
+- Create <font color=OrangeRed> individual IAM users </font>
 - Use AWS defined `policies` to assign permissions whenever possible.
-- <font color=red> Use groups to assign permissions </font> to IAM users.
+- <font color=OrangeRed> Use groups to assign permissions </font> to IAM users.
 - Grant least privilege.
 - Use access levels to review IAM permissions.
-- <font color=red> Use roles for applications </font> that run on AWS EC2 instances.
+- <font color=OrangeRed> Use roles for applications </font> that run on AWS EC2 instances.
 - Delegate by using roles instead of sharing credentials.
 - Configure a strong password policy for users.
-- <font color=red> Enable MFA for all users </font>
+- <font color=OrangeRed> Enable MFA for all users </font>
 - Rotate credentials regularly.
 - Remove unnecessary credentials.
 - Use policy conditions for extra security.
 - Monitor activity in your AWS account.
-- Use <font color=red> Temporary Security Credentials (IAM Roles) </font> Instead of Long-Term Access Keys.
+- Use <font color=OrangeRed> Temporary Security Credentials (IAM Roles) </font> Instead of Long-Term Access Keys.
 - Manage IAM User Access Keys Properly.
 
 ---
@@ -64,7 +64,7 @@
 
 > 颗粒状的 Granular permissions
 
-- a tool that centrally manages access to <font color=red> launching, configuring, managing, and terminating resources in the AWS account </font>
+- a tool that centrally manages access to <font color=OrangeRed> launching, configuring, managing, and terminating resources in the AWS account </font>
 
 - grant different permissions to different people for different resources. 
   - **who, which, how**
@@ -77,14 +77,14 @@
 
 
 - **provides Granular permissions** over access to resources, IAM can be used to manage:
-  - provides <font color=red> 颗粒状的 Granular permissions </font>
+  - provides <font color=OrangeRed> 颗粒状的 Granular permissions </font>
     - grant different permissions to different people / resources.
   - Users. Groups. Access policies. Roles.
   - User credentials. User password policies.
   - for AWS Management Console, AWS CLI, or AWS software development kits (SDKs),
     - every call to an AWS service is an API call.
   - API keys for programmatic access (CLI).
-    - including the ability to <font color=red> specify exactly which API calls the user is authorized to make to each service </font>
+    - including the ability to <font color=OrangeRed> specify exactly which API calls the user is authorized to make to each service </font>
 
 
 
@@ -98,7 +98,7 @@
   - Secure access to AWS resources for applications that run on EC2.
   - create and manage AWS users and groups.
     - should use groups to assign permissions to IAM users
-    - should <font color=red> avoid embedding access keys in application code </font>
+    - should <font color=OrangeRed> avoid embedding access keys in application code </font>
 
 - **Temporary security credentials**
   - IAM can assign temporary security credentials to provide users with temporary access to services/resources.
@@ -122,9 +122,9 @@
 - **Eventually consistent**
 
 
-> IAM is <font color=red> not used for application-level authentication </font>
+> IAM is <font color=OrangeRed> not used for application-level authentication </font>
 
-> IAM is <font color=red> universal (global)</font> and does not apply to regions.
+> IAM is <font color=OrangeRed> universal (global)</font> and does not apply to regions.
 
 
 
@@ -209,21 +209,21 @@ Use `IAM Policies` to control access to the following:
 
 - By default
 
-- <font color=red> the AWS account Root user has full access </font>
+- <font color=OrangeRed> the AWS account Root user has full access </font>
 
-- <font color=red> the AWS account IAM user has no access to any services </font>
+- <font color=OrangeRed> the AWS account IAM user has no access to any services </font>
 
   - All permissions are denied by default.
     - default AWS account users do not have any permissions to any resources/data in AWS account
     - The most restrictive policy is applied.
 
-  - default <font color=blue> implicit deny </font> of an IAM identity can <font color=red> be overridden</font> with an <font color=blue> explicit allow </font>
-    - must <font color=blue> explicitly grant permissions </font> to a user/group/role by `creating a policy`
+  - default <font color=LightSlateBlue> implicit deny </font> of an IAM identity can <font color=OrangeRed> be overridden</font> with an <font color=LightSlateBlue> explicit allow </font>
+    - must <font color=LightSlateBlue> explicitly grant permissions </font> to a user/group/role by `creating a policy`
     - attaching an IAM access policy to IAM user/group
 
 
 - When there is a conflict, the most restrictive policy applies.
-    - <font color=red>  allow vs deny: deny win </font>
+    - <font color=OrangeRed>  allow vs deny: deny win </font>
 
 - a document in `JavaScript Object Notation (JSON)` format
   - lists permissions that `allow / deny` access to resources in the AWS account.
@@ -271,7 +271,7 @@ Overall:
   - `AmazonDynamoDBFullAccess`, `AWSCodeCOmmitPowerUser`, `AmazonEC2ReadOnlyAccess`
 - one policy can
   - assign to multiple users/groups/roles
-  - in <font color=red> same/different AWS account </font>
+  - in <font color=OrangeRed> same/different AWS account </font>
 - A Managed Policy `applies policies` to a user, group, or role (without exceptions).
 
 
@@ -282,7 +282,7 @@ Overall:
 - more flexible but requires administration.
 - policy can
   - assign to multiple users/groups/roles
-  - in <font color=red> only your AWS account </font>
+  - in <font color=OrangeRed> only your AWS account </font>
 
 
 
@@ -292,9 +292,9 @@ Overall:
   - when user/group/role been deleted, the policy also be deleted
 - policy can
   - assign to one users/groups/roles
-  - <font color=red> strict 1:1 relationship between entity and the policy </font>
-  - in <font color=red> only your AWS account </font>
-- usually Inline Policies are used <font color=blue> to create exceptions </font> to a user, group, or role.
+  - <font color=OrangeRed> strict 1:1 relationship between entity and the policy </font>
+  - in <font color=OrangeRed> only your AWS account </font>
+- usually Inline Policies are used <font color=LightSlateBlue> to create exceptions </font> to a user, group, or role.
   - when you want to be sure that the permissions is not been assigned to any other user.
 
 > create in the user, add inline policy
@@ -307,7 +307,7 @@ Overall:
   - less overhead to use a SCP for the entire AWS account.
   - permissions policies that attach to a principal/identity (user/role/group).
 
-- <font color=red> control what actions that identity can perform, on which resources, and under what conditions </font>
+- <font color=OrangeRed> control what actions that identity can perform, on which resources, and under what conditions </font>
 
 - Identity-based policies categorized:
   - **Managed policies**
@@ -326,8 +326,8 @@ Overall:
 ---
 
 ### **Resource-based policies**
-- <font color=red> JSON policy documents that attach to a resource </font> (S3 bucket...)
-- <font color=red> control what actions a specified principal can perform on that resource, and under what conditions </font>
+- <font color=OrangeRed> JSON policy documents that attach to a resource </font> (S3 bucket...)
+- <font color=OrangeRed> control what actions a specified principal can perform on that resource, and under what conditions </font>
 
 - **inline only**:
   - define the policy on the resource itself, instead of creating a separate policy document that you attach.
@@ -365,42 +365,42 @@ Resource-based policies > Identity-based policy
 
 - one type of policy
 
-- use <font color=red> to manage organization </font>
+- use <font color=OrangeRed> to manage organization </font>
   - Attaching an SCP to an AWS Organizations entity (root, OU, or account)
   - defines a guardrail for what actions the principals can perform.
 
-- enables <font color=red> permission controls </font>
-  - can <font color=blue> limit account usage </font> to organizational units or linked accounts.
-  - offer <font color=red> central control </font> over the maximum available permissions <font color=blue> for all accounts in organization </font>
+- enables <font color=OrangeRed> permission controls </font>
+  - can <font color=LightSlateBlue> limit account usage </font> to organizational units or linked accounts.
+  - offer <font color=OrangeRed> central control </font> over the maximum available permissions <font color=LightSlateBlue> for all accounts in organization </font>
   - ensure accounts stay in organization’s access control guidelines.
 
-- available only in an organization that <font color=red> has all features enabled </font>
+- available only in an organization that <font color=OrangeRed> has all features enabled </font>
   - SCPs are not automatically enabled;
   - including consolidated billing
     - SCPs aren't available if organization has enabled only the consolidated billing feature
 
-- <font color=red> restrict the root user of an Organization Unit account </font>
+- <font color=OrangeRed> restrict the root user of an Organization Unit account </font>
   - SCP is a way to restrict a root user on an account.
   - defines a safeguard for the actions that accounts in the organization root or OU can do.
   - Attaching an SCP to the organization root/unit (OU)
     - Log in to the master account and create the SCP
-    - Select the <font color=blue> Organizational Unit </font>
-    - <font color=blue> Enable the SCP </font> for the Organizational Unit
+    - Select the <font color=LightSlateBlue> Organizational Unit </font>
+    - <font color=LightSlateBlue> Enable the SCP </font> for the Organizational Unit
     - Attach the SCP to the member account within the Organizational Unit
 
-- <font color=red> not a substitute for well-managed each account </font>
+- <font color=OrangeRed> not a substitute for well-managed each account </font>
   - still need attach IAM policies to users/roles in organization's accounts
   - to actually grant permissions to them.
 
 - similar to IAM permissions policies
   - almost the same syntax. JSON
-  - but, SCP policies <font color=blue> never grants permissions. </font>
-    - <font color=red> it the maximum permissions </font> for an organization or OU.
+  - but, SCP policies <font color=LightSlateBlue> never grants permissions. </font>
+    - <font color=OrangeRed> it the maximum permissions </font> for an organization or OU.
 
-- <font color=red> No permissions are granted by an SCP </font>
+- <font color=OrangeRed> No permissions are granted by an SCP </font>
   - it defines a guardrail, or sets limits, on the actions that the account's administrator can delegate to the IAM users/roles in the affected accounts.
     - The administrator must still attach `identity/resource-based policies` to IAM users/roles, or to the resources in accounts to actually grant permissions.
-  - The <font color=blue> effective permissions </font>
+  - The <font color=LightSlateBlue> effective permissions </font>
     - the logical intersection between **what is allowed by the SCP** and **what is allowed by the IAM/Resource-based policies**
   - Important
     - SCPs don't affect users or roles in the management account.
@@ -426,10 +426,10 @@ Resource-based policies > Identity-based policy
 
 - AWS supports `permissions boundaries` for IAM entities (users or roles)
 
-- using a managed policy to set the maximum permissions that an <font color=blue> identity-based policy can grant to an IAM entity </font>
-- An entity's permissions boundary allows it to <font color=red> perform only the actions that are allowed by both its identity-based policies and Permissions boundaries </font>
+- using a managed policy to set the maximum permissions that an <font color=LightSlateBlue> identity-based policy can grant to an IAM entity </font>
+- An entity's permissions boundary allows it to <font color=OrangeRed> perform only the actions that are allowed by both its identity-based policies and Permissions boundaries </font>
 
-- can use an <font color=blue> AWS managed policy </font> or a <font color=blue> customer managed policy </font> to set the boundary for an IAM entity (user or role).
+- can use an <font color=LightSlateBlue> AWS managed policy </font> or a <font color=LightSlateBlue> customer managed policy </font> to set the boundary for an IAM entity (user or role).
 
 - That policy limits the maximum permissions for the user or role.
 
@@ -460,7 +460,7 @@ Example:
 
 - example:
   - the policy sets the maximum permissions of `ShirleyRodriguez` as all operations in Amazon S3, CloudWatch, and Amazon EC2.
-  -<font color=red>  Shirley can never perform operations in any other service, including IAM, even if she has a permissions policy that allows it </font>.
+  -<font color=OrangeRed>  Shirley can never perform operations in any other service, including IAM, even if she has a permissions policy that allows it </font>.
 
   - you can add the following policy to the `ShirleyRodriguez` user:
   - allows creating a user in IAM.
@@ -507,7 +507,7 @@ The permissions boundary for an IAM entity (user or role) sets the maximum permi
 #### Identity-based policies with boundaries
 
 Identity-based policies
-- are <font color=red> inline or managed policies attached to a user, group of users, or role </font>
+- are <font color=OrangeRed> inline or managed policies attached to a user, group of users, or role </font>
 
 - effective permissions
   - Identity-based policies grant permission to the entity
@@ -526,18 +526,18 @@ Identity-based policies
 
 - control how the specified principal can access the resource to which the policy is attached.
 
-1. <font color=red> Resource-based policies for IAM users </font>
+1. <font color=OrangeRed> Resource-based policies for IAM users </font>
    - Within an account
-     - an <font color=blue> implicit deny in a permissions boundary </font> <font color=red> does not limit the permissions granted </font> to an IAM user by a resource-based policy.
+     - an <font color=LightSlateBlue> implicit deny in a permissions boundary </font> <font color=OrangeRed> does not limit the permissions granted </font> to an IAM user by a resource-based policy.
    - Permissions boundaries reduce permissions that are granted to a user by identity-based policies.
    - Resource-based policies can provide additional permissions to the user.
 
-2. <font color=red>Resource-based policies for IAM roles and federated users </font>
+2. <font color=OrangeRed>Resource-based policies for IAM roles and federated users </font>
    - Within an account
-     - an <font color=blue> implicit deny in a permissions boundary </font> <font color=red> does limit the permissions granted </font>  to the ARN of the underlying IAM role/user by the resource-based policy.
+     - an <font color=LightSlateBlue> implicit deny in a permissions boundary </font> <font color=OrangeRed> does limit the permissions granted </font>  to the ARN of the underlying IAM role/user by the resource-based policy.
    - However
-     - <font color=blue> if resource-based policy grants permissions directly to the session principal </font> (the assumed-role ARN or federated user ARN)
-     - an <font color=blue> implicit deny in the permissions boundary </font> <font color=red> does not limit those permissions </font>
+     - <font color=LightSlateBlue> if resource-based policy grants permissions directly to the session principal </font> (the assumed-role ARN or federated user ARN)
+     - an <font color=LightSlateBlue> implicit deny in the permissions boundary </font> <font color=OrangeRed> does not limit those permissions </font>
    - [Session policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session).
 
 ---
@@ -691,7 +691,7 @@ María wants to allow Zhang to create all X-Company users, but only with the `XC
   2. The `CloudWatchAndOtherIAMTasks` statement allows Zhang to complete other user, group, and policy management tasks. He has permissions to reset passwords and create access keys for any IAM user not listed in the condition key. This allows him to help users with sign-in issues.
   3. The `NoBoundaryPolicyEdit` statement denies Zhang access to update the `XCompanyBoundaries` policy. He is not allowed to change any policy that is used to set the permissions boundary for himself or other users.
   4. The `NoBoundaryUserDelete` statement denies Zhang access to delete the permissions boundary for himself or other users.
-- María then assigns the `DelegatedUserBoundary` policy <font color=red> as the permissions boundary </font> for the `Zhang` user.
+- María then assigns the `DelegatedUserBoundary` policy <font color=OrangeRed> as the permissions boundary </font> for the `Zhang` user.
 
 
 ```json
@@ -794,7 +794,7 @@ María wants to allow Zhang to create all X-Company users, but only with the `XC
 
 **Task 3:**
 
-- the <font color=red> permissions boundary </font>
+- the <font color=OrangeRed> permissions boundary </font>
   - limits the maximum permissions
   - does not grant access on its own,
   - Maria must create a permissions policy for Zhang.
@@ -862,7 +862,7 @@ She gives Zhang instructions to create a new user.
   2. On the **Set permissions** page
      1. Zhang chooses the **IAMFullAccess** and **AmazonS3ReadOnlyAccess** permissions policies that allow Nikhil to do his work.
   3. Zhang skips the **Set permissions boundary** section
-     1. <font color=red> forgetting María's instructions </font>
+     1. <font color=OrangeRed> forgetting María's instructions </font>
   4. Zhang reviews the user details and chooses **Create user**.
      1. The operation fails and access is denied.
      2. Zhang's `DelegatedUserBoundary` permissions boundary requires that any user he creates have the `XCompanyBoundaries` policy used as a permissions boundary.
@@ -915,7 +915,7 @@ The root account has full administrative permissions and these cannot be restric
 
 - maximum amount of IAM users per account: 5,000
 - IAM users can be created to represent applications and these are known as “service accounts”.
-- Each user account has a friendly name and an <font color=red> ARN </font> which uniquely identifies the user across AWS.
+- Each user account has a friendly name and an <font color=OrangeRed> ARN </font> which uniquely identifies the user across AWS.
     - A unique ID is also created which is returned only when you create the user using the API, Tools for Windows PowerShell or the AWS CLI.
 
 > You should create individual IAM accounts for users (best practice not to share accounts).

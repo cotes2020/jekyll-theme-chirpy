@@ -960,7 +960,7 @@ Return
 ### allocate_address(kwargs_)
 
 - Allocates an Elastic IP address to your AWS account.
-- After you <font color=blue> allocate the Elastic IP address </font> , associate it with an instance or network interface.
+- After you <font color=LightSlateBlue> allocate the Elastic IP address </font> , associate it with an instance or network interface.
   - allocate an Elastic IP address from
     - an address pool owned by AWS
     - or from an address pool created from a public IPv4 address range that you have brought to AWS for use with your AWS resources using bring your own IP addresses (BYOIP).
@@ -970,7 +970,7 @@ Return
     - 5 Elastic IP addresses for EC2-VPC per Region.
   - You can allocate a carrier IP address which is a public IP address from a telecommunication carrier, to a network interface which resides in a subnet in a Wavelength Zone (for example an EC2 instance).
 
-- After you <font color=blue> release an Elastic IP address </font> , it is released to the IP address pool and can be allocated to a different AWS account.
+- After you <font color=LightSlateBlue> release an Elastic IP address </font> , it is released to the IP address pool and can be allocated to a different AWS account.
   - [EC2-VPC] If you release an Elastic IP address, you might be able to recover it.
   - You cannot recover an Elastic IP address that you released after it is allocated to another AWS account.
   - You cannot recover an Elastic IP address for EC2-Classic.

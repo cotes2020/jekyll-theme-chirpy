@@ -18,14 +18,14 @@ image:
 
 ![CodeCommit](https://i.imgur.com/ENCpW6N.png)
 
-- a <font color=red> version control service </font> hosted by Amazon Web Services
+- a <font color=OrangeRed> version control service </font> hosted by Amazon Web Services
   - tracks and manages code changes
   - Maintains version history
-- <font color=red> Centralized Code Repository </font>
+- <font color=OrangeRed> Centralized Code Repository </font>
   - use to privately store and manage assets (such as documents, source code, and binary files) in the cloud.
   - place to store source code, binaries, libraries, images, HTML files ...
   - based on Git
-- <font color=red> Enables Collaboration </font>
+- <font color=OrangeRed> Enables Collaboration </font>
   - manages updates from multiple users.
 
 ---
@@ -38,11 +38,11 @@ image:
 
 With CodeCommit, you can:
 
-1. <font color=red> fully managed service </font> hosted by AWS.
+1. <font color=OrangeRed> fully managed service </font> hosted by AWS.
    - high service availability and durability and eliminates the administrative overhead of managing your own hardware and software.
    - no hardware to provision and scale and no server software to install, configure, and update.
 
-2. <font color=red> Store code securely </font>
+2. <font color=OrangeRed> Store code securely </font>
    - Encryption
      - CodeCommit repositories are auto encrypted at rest and in transit through AWS Key Management Service (AWS KMS) using customer-specific keys.
      - You can transfer your files to and from AWS CodeCommit using HTTPS or SSH, as you prefer.
@@ -51,25 +51,25 @@ With CodeCommit, you can:
      - CodeCommit also helps you monitor your repositories via `AWS CloudTrail and AWS CloudWatch`.
 
 
-3. <font color=red> Work collaboratively on code </font>
-   - CodeCommit repositories <font color=blue> support pull requests </font>
+3. <font color=OrangeRed> Work collaboratively on code </font>
+   - CodeCommit repositories <font color=LightSlateBlue> support pull requests </font>
      - provide a mechanism to request code reviews and discuss code with collaborators.
    - users can review and comment on each other's code changes before merging them to branches;
-      - easily <font color=blue> commit, branch, and merge </font> the code to easily maintain control of team’s projects.
+      - easily <font color=LightSlateBlue> commit, branch, and merge </font> the code to easily maintain control of team’s projects.
    - notifications that automatically send emails to users about pull requests and comments; and more.
 
-4. <font color=red> Easily scale the version control projects </font>
+4. <font color=OrangeRed> Easily scale the version control projects </font>
    - CodeCommit repositories can scale up to meet your development needs.
    - The service can handle repositories with large numbers of files or branches, large file sizes, and lengthy revision histories.
 
-5. <font color=red> Store anything, anytime </font>
+5. <font color=OrangeRed> Store anything, anytime </font>
    - no limit on the size of repositories or the file types to store.
 
 6. Integrate with other AWS and third-party services.
    - CodeCommit keeps your repositories close to your other production resources in the AWS Cloud, which helps increase the speed and frequency of your development lifecycle.
    - It is integrated with IAM and can be used with other AWS services and in parallel with other repositories.
 
-7. <font color=red> Easy Access and Integration </font>
+7. <font color=OrangeRed> Easy Access and Integration </font>
    - Easily migrate files from other remote repositories.
      - migrate to CodeCommit from any Git-based repository.
    - use the AWS Management Console, AWS CLI, and AWS SDKs to manage your repositories.
@@ -78,7 +78,7 @@ With CodeCommit, you can:
      - You can integrate with your development environment plugins or continuous integration/continuous delivery systems.
 
 
-8. <font color=red> High Availability and Durability </font>
+8. <font color=OrangeRed> High Availability and Durability </font>
    - AWS CodeCommit stores your repositories in Amazon S3 and Amazon DynamoDB.
    - encrypted data is redundantly stored across multiple facilities.
    - increases the availability and durability of the repository data.
@@ -130,9 +130,9 @@ With CodeCommit, you can:
    3. Add permissions > Attach existing policies directly.
       1. `AWSCodeCommitFullAccess` policy
    4. user credentials:
-      1. create access Key: <font color=red> for aws configure </font>
+      1. create access Key: <font color=OrangeRed> for aws configure </font>
          - `AcessKeyID` and `cloud_user_accessKeys.csv`
-      2. create HTTPS Git credentials for AWS CodeCommit: <font color=red> for git clone </font>
+      2. create HTTPS Git credentials for AWS CodeCommit: <font color=OrangeRed> for git clone </font>
          - Username: `cloud_user-at-183169071737`
          - credentials: `cloud_user_codecommit_credentials.csv`
 

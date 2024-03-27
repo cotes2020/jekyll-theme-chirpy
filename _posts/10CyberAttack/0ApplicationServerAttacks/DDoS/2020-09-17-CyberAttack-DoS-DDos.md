@@ -7,15 +7,20 @@ toc: true
 image:
 ---
 
-- [Meow's CyberAttack - Dos DDos](#meows-cyberattack---dos-ddos)
-  - [DOS - Denial of Service](#dos---denial-of-service)
+- [Meow's CyberAttack - Application/Server Attacks - DDos Dos](#meows-cyberattack---applicationserver-attacks---ddos-dos)
+  - [Denial-of-Service](#denial-of-service)
+  - [DoS](#dos)
   - [DDOS - distributed denial of service attack](#ddos---distributed-denial-of-service-attack)
   - [Prevent](#prevent)
 
 
 ---
 
-# Meow's CyberAttack - Dos DDos
+# Meow's CyberAttack - Application/Server Attacks - DDos Dos
+
+book: Security+ 7th ch9
+<font color=LightSlateBlue></font>
+<font color=OrangeRed></font>
 
 ---
 
@@ -23,34 +28,35 @@ image:
 
 ---
 
-## DOS - Denial of Service
+## Denial-of-Service
 
 DoS的目標不是打服務，而是打掉對方的網路與資源，造成社交攻擊的機會
 
 DoS攻擊手法：
-（1）Bandwidth Attack：發送大量ICMP ECHO封包。
-（2）Service Request Floods：要求對方回應自己快速發出的所有requests。
-（3）SYN Flooding：送出大量SYN封包，讓對方一直等待到記憶體用盡。
-（4）ICMP Flood Attack：送出大量假地址的ICMP，使其回應給假地址，造成放大效果。
-（5）Peer-to-Peer Attack：利用DC++（Direct Connect）埠打DoS。
-（6）Permanent Denial-of-Service Attack：針對硬體做攻擊。
-（7）Application-Level Flood Attack：針對應用層發起的攻擊。
-（8）Distributed Reflection DoS（DRDoS）：假冒對方身份向其他主機發出某種類型封包，讓其他主機回應給對方。
+1. <font color=OrangeRed>Bandwidth Attack</font>：發送大量ICMP ECHO封包。
+1. <font color=OrangeRed>Service Request Floods</font>：要求對方回應自己快速發出的所有requests。
+1. <font color=OrangeRed>SYN Flooding</font>：送出大量SYN封包，讓對方一直等待到記憶體用盡。
+1. <font color=OrangeRed>ICMP Flood Attack</font>：送出大量假地址的ICMP，使其回應給假地址，造成放大效果。
+1. <font color=OrangeRed>Peer-to-Peer Attack</font>：利用DC++（Direct Connect）埠打DoS。
+1. <font color=OrangeRed>Permanent Denial-of-Service Attack</font>：針對硬體做攻擊。
+1. <font color=OrangeRed>Application-Level Flood Attack</font>：針對應用層發起的攻擊。
+1. <font color=OrangeRed>Distributed Reflection DoS（DRDoS）</font>：假冒對方身份向其他主機發出某種類型封包，讓其他主機回應給對方。
 
 
 - denial-of-service (DoS) attack: attack from one attacker against one target.
 - distributed denial-of-service (DDoS) attack:  attack from two or more computers against a single target.
 
-Denial-of-Service (DoS):
+## DoS
 - Most simple DoS attacks occur from a single system, and a specific server or organization is the target.
 Several types of attacks can occur:
 - Deny access to information, applications, systems, or communications.Bring down a website while the communications and systems continue to operate.
 - Crash the operating system (a simple reboot may restore the server to normal operation).
 - Fill the communications channel of a network and prevent access by authorized users.
 - Open as many TCP sessions as possible. This type of attack is called a TCP SYN flood DoS attack.
+
 Two of the most common types of DoS attacks:
 - ping of death: crashes system by sending Internet Control Message Protocol (ICMP) packets (think echoes) that are larger than the system can handle.
-  - sPing.
+  - `sPing`.
 - buffer overflow: put more data (usually long input strings) into the buffer than it can hold.
   - Code Red, Slapper, and Slammer: took advantage of buffer overflows
 

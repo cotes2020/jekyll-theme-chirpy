@@ -58,21 +58,21 @@ For more information about Amazon CloudWatch, see the Amazon CloudWatch User Gui
 
 ### Flow logs basics
 VPC Flow Logs
-1. <font color=red> captures accepted and rejected traffic flow information </font> that goes to and from all network interfaces in your VPC or in the selected resource.
-   - <font color=blue> troubleshoot connectivity and security issues </font>
+1. <font color=OrangeRed> captures accepted and rejected traffic flow information </font> that goes to and from all network interfaces in your VPC or in the selected resource.
+   - <font color=LightSlateBlue> troubleshoot connectivity and security issues </font>
      - why specific traffic is not reaching an instance
-   - <font color=blue> test network access rules </font>
+   - <font color=LightSlateBlue> test network access rules </font>
      - diagnose overly restrictive security group rules.
-   - <font color=blue> monitor traffic that reaching the instance </font>
+   - <font color=LightSlateBlue> monitor traffic that reaching the instance </font>
      - Determining the `direction of the traffic` to and from the network interfaces
-   - <font color=blue> detect and investigate security incidents </font>
+   - <font color=LightSlateBlue> detect and investigate security incidents </font>
 
-2. can <font color=red> create alarms </font>
+2. can <font color=OrangeRed> create alarms </font>
    - notify if certain types of traffic are detected
    - create metrics to identify trends and patterns.
 
 
-3. <font color=red> enable flow log </font>
+3. <font color=OrangeRed> enable flow log </font>
    - Flow logs can be enabled/created at the following levels:
      - VPC.
      - Subnet.
@@ -80,22 +80,22 @@ VPC Flow Logs
    - If create a flow log for a subnet / VPC, each network interface in the VPC or subnet is monitored.
 
 
-4. Flow log data is recorded as <font color=red> flow log records </font>
+4. Flow log data is recorded as <font color=OrangeRed> flow log records </font>
    - log events consisting of fields that describe the traffic flow.
    - Flow log data is collected outside of the path of network traffic
      - therefore does not affect network throughput or latency.
      - create or delete flow logs without any risk of impact to network performance.
 
 
-5. can be published to <font color=red> Amazon CloudWatch Logs or Amazon S3 </font>
+5. can be published to <font color=OrangeRed> Amazon CloudWatch Logs or Amazon S3 </font>
    - CloudWatch Logs
-     - Flow log data is published / stored to a <font color=blue> log group in CloudWatchLogs </font>
-     - each network interface has a unique <font color=blue> log stream </font>
+     - Flow log data is published / stored to a <font color=LightSlateBlue> log group in CloudWatchLogs </font>
+     - each network interface has a unique <font color=LightSlateBlue> log stream </font>
      - Log streams contain flow log records,
      - which are log events that consist of fields that describe the traffic for that network interface.
 
    - it can take several minutes to begin collecting and publishing data to the chosen destinations.
-     - Flow logs <font color=blue> do not capture real-time log streams for network interfaces </font>
+     - Flow logs <font color=LightSlateBlue> do not capture real-time log streams for network interfaces </font>
    - If you launch more instances into subnet after you've created a flow log for subnet or VPC, a new log stream (for CloudWatch Logs) or log file object (for Amazon S3) is created for each new network interface.
      - This occurs as soon as any network traffic is recorded for that network interface.
 
@@ -107,7 +107,7 @@ VPC Flow Logs
 You cannot:
 - can’t enable flow logs for VPC’s that are peered with your VPC unless the peer VPC is in your account.
 - can’t tag a flow log.
-- <font color=blue> can’t change the configuration </font> of a flow log after it’s been created.
+- <font color=LightSlateBlue> can’t change the configuration </font> of a flow log after it’s been created.
   - need to delete and re-create
 
 
@@ -194,31 +194,31 @@ delete
 **Available fields**
 - The following table describes all of the available fields for a flow log record. The Version column indicates the VPC Flow Logs version in which the field was introduced.
 
-Field	| Description	| Version
----|---|---
-version | The VPC Flow Logs version. If you use the default format, the version is 2. If you use a custom format, the version is the highest version among the specified fields. For example, if you only specify fields from version 2, the version is 2. If you specify a mixture of fields from versions 2, 3, and 4, the version is 4. | 2
-account-id |  The AWS account ID of the owner of the source network interface for which traffic is recorded. If the network interface is created by an AWS service, for example when creating a VPC endpoint or Network Load Balancer, the record may display unknown for this field. | 2
-interface-id |  The ID of the network interface for which the traffic is recorded. | 2
-srcaddr |  The source address for incoming traffic, or the IPv4 or IPv6 address of the network interface for outgoing traffic on the network interface. The IPv4 address of the network interface is always its private IPv4 address. See also pkt-srcaddr. | 2
-dstaddr |  The destination address for outgoing traffic, or the IPv4 or IPv6 address of the network interface for incoming traffic on the network interface. The IPv4 address of the network interface is always its private IPv4 address. See also pkt-dstaddr. | 2
-srcport |  The source port of the traffic. | 2
-dstport |  The destination port of the traffic. | 2
-protocol |  The IANA protocol number of the traffic. For more information, see Assigned Internet Protocol Numbers. | 2
-packets |  The number of packets transferred during the flow | 2bytes | The number of bytes transferred during the flow. | 2
-start |  The time, in Unix seconds, when the first packet of the flow was received within the aggregation interval. This might be up to 60 seconds after the packet was transmitted or received on the network interface. | 2
-end |  The time, in Unix seconds, when the last packet of the flow was received within the aggregation interval. This might be up to 60 seconds after the packet was transmitted or received on the network interface. | 2
-`action` |  The action that is associated with the traffic: <br> ACCEPT: The recorded traffic was permitted by the security groups and network ACLs. <br> REJECT: The recorded traffic was not permitted by the security groups or network ACLs. | 2
-log-status |  The logging status of the flow log: <br> OK: Data is logging normally to the chosen destinations. <br> NODATA: There was no network traffic to or from the network interface during the aggregation interval. <br> SKIPDATA: Some flow log records were skipped during the aggregation interval. This may be because of an internal capacity constraint, or an internal error. | 2
-`vpc-id` |  The ID of the VPC that contains the network interface for which the traffic is recorded. | 3
-subnet-id | The ID of the subnet that contains the network interface for which the traffic is recorded | 3instance-id | The ID of the instance that's associated with network interface for which the traffic is recorded, if the instance is owned by you. Returns a '-' symbol for a requester-managed network interface; for example, the network interface for a NAT gateway. | 3
-`tcp-flags` | The bitmask value for the following TCP flags:<br> SYN: 2 <br> SYN-ACK: 18 <br> FIN: 1 <br> RST: 4 <br> ACK is reported only when it's accompanied with SYN. <br> TCP flags can be OR-ed during the aggregation interval. For short connections, the flags might be set on the same line in the flow log record, for example, 19 for SYN-ACK and FIN, and 3 for SYN and FIN. For an example, see TCP flag sequence. | 3
-`type` | The type of traffic: IPv4, IPv6, or EFA. For more information about the Elastic Fabric Adapter (EFA), see Elastic Fabric Adapter. | 3
-pkt-srcaddr | The packet-level (original) source IP address of the traffic. Use this field with the srcaddr field to distinguish between the IP address of an intermediate layer through which traffic flows, and the original source IP address of the traffic. For example, when traffic flows through a network interface for a NAT gateway, or where the IP address of a pod in Amazon EKS is different from the IP address of the network interface of the instance node on which the pod is running (for communication within a VPC). | 3
-pkt-dstaddr | The packet-level (original) destination IP address for the traffic. Use this field with the dstaddr field to distinguish between the IP address of an intermediate layer through which traffic flows, and the final destination IP address of the traffic. For example, when traffic flows through a network interface for a NAT gateway, or where the IP address of a pod in Amazon EKS is different from the IP address of the network interface of the instance node on which the pod is running (for communication within a VPC). | 3
-region | The Region that contains the network interface for which traffic is recorded. | 4
-az-id | The ID of the Availability Zone that contains the network interface for which traffic is recorded. If the traffic is from a sublocation, the record displays a '-' symbol for this field. | 4
-sublocation-type | The type of sublocation that's returned in the sublocation-id field: <br> wavelength <br> outpost <br> localzone <br> If the traffic is not from a sublocation, the record displays a '-' symbol for this field. |4
-sublocation-id | The ID of the sublocation that contains the network interface for which traffic is recorded. If the traffic is not from a sublocation, the record displays a '-' symbol for this field | 4
+| Field            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Version      |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| version          | The VPC Flow Logs version. If you use the default format, the version is 2. If you use a custom format, the version is the highest version among the specified fields. For example, if you only specify fields from version 2, the version is 2. If you specify a mixture of fields from versions 2, 3, and 4, the version is 4.                                                                                                                                                                                                      | 2            |
+| account-id       | The AWS account ID of the owner of the source network interface for which traffic is recorded. If the network interface is created by an AWS service, for example when creating a VPC endpoint or Network Load Balancer, the record may display unknown for this field.                                                                                                                                                                                                                                                               | 2            |
+| interface-id     | The ID of the network interface for which the traffic is recorded.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 2            |
+| srcaddr          | The source address for incoming traffic, or the IPv4 or IPv6 address of the network interface for outgoing traffic on the network interface. The IPv4 address of the network interface is always its private IPv4 address. See also pkt-srcaddr.                                                                                                                                                                                                                                                                                      | 2            |
+| dstaddr          | The destination address for outgoing traffic, or the IPv4 or IPv6 address of the network interface for incoming traffic on the network interface. The IPv4 address of the network interface is always its private IPv4 address. See also pkt-dstaddr.                                                                                                                                                                                                                                                                                 | 2            |
+| srcport          | The source port of the traffic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 2            |
+| dstport          | The destination port of the traffic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | 2            |
+| protocol         | The IANA protocol number of the traffic. For more information, see Assigned Internet Protocol Numbers.                                                                                                                                                                                                                                                                                                                                                                                                                                | 2            |
+| packets          | The number of packets transferred during the flow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | 2bytes       | The number of bytes transferred during the flow.                                                                                                                                                                                                          | 2 |
+| start            | The time, in Unix seconds, when the first packet of the flow was received within the aggregation interval. This might be up to 60 seconds after the packet was transmitted or received on the network interface.                                                                                                                                                                                                                                                                                                                      | 2            |
+| end              | The time, in Unix seconds, when the last packet of the flow was received within the aggregation interval. This might be up to 60 seconds after the packet was transmitted or received on the network interface.                                                                                                                                                                                                                                                                                                                       | 2            |
+| `action`         | The action that is associated with the traffic: <br> ACCEPT: The recorded traffic was permitted by the security groups and network ACLs. <br> REJECT: The recorded traffic was not permitted by the security groups or network ACLs.                                                                                                                                                                                                                                                                                                  | 2            |
+| log-status       | The logging status of the flow log: <br> OK: Data is logging normally to the chosen destinations. <br> NODATA: There was no network traffic to or from the network interface during the aggregation interval. <br> SKIPDATA: Some flow log records were skipped during the aggregation interval. This may be because of an internal capacity constraint, or an internal error.                                                                                                                                                        | 2            |
+| `vpc-id`         | The ID of the VPC that contains the network interface for which the traffic is recorded.                                                                                                                                                                                                                                                                                                                                                                                                                                              | 3            |
+| subnet-id        | The ID of the subnet that contains the network interface for which the traffic is recorded                                                                                                                                                                                                                                                                                                                                                                                                                                            | 3instance-id | The ID of the instance that's associated with network interface for which the traffic is recorded, if the instance is owned by you. Returns a '-' symbol for a requester-managed network interface; for example, the network interface for a NAT gateway. | 3 |
+| `tcp-flags`      | The bitmask value for the following TCP flags:<br> SYN: 2 <br> SYN-ACK: 18 <br> FIN: 1 <br> RST: 4 <br> ACK is reported only when it's accompanied with SYN. <br> TCP flags can be OR-ed during the aggregation interval. For short connections, the flags might be set on the same line in the flow log record, for example, 19 for SYN-ACK and FIN, and 3 for SYN and FIN. For an example, see TCP flag sequence.                                                                                                                   | 3            |
+| `type`           | The type of traffic: IPv4, IPv6, or EFA. For more information about the Elastic Fabric Adapter (EFA), see Elastic Fabric Adapter.                                                                                                                                                                                                                                                                                                                                                                                                     | 3            |
+| pkt-srcaddr      | The packet-level (original) source IP address of the traffic. Use this field with the srcaddr field to distinguish between the IP address of an intermediate layer through which traffic flows, and the original source IP address of the traffic. For example, when traffic flows through a network interface for a NAT gateway, or where the IP address of a pod in Amazon EKS is different from the IP address of the network interface of the instance node on which the pod is running (for communication within a VPC).         | 3            |
+| pkt-dstaddr      | The packet-level (original) destination IP address for the traffic. Use this field with the dstaddr field to distinguish between the IP address of an intermediate layer through which traffic flows, and the final destination IP address of the traffic. For example, when traffic flows through a network interface for a NAT gateway, or where the IP address of a pod in Amazon EKS is different from the IP address of the network interface of the instance node on which the pod is running (for communication within a VPC). | 3            |
+| region           | The Region that contains the network interface for which traffic is recorded.                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 4            |
+| az-id            | The ID of the Availability Zone that contains the network interface for which traffic is recorded. If the traffic is from a sublocation, the record displays a '-' symbol for this field.                                                                                                                                                                                                                                                                                                                                             | 4            |
+| sublocation-type | The type of sublocation that's returned in the sublocation-id field: <br> wavelength <br> outpost <br> localzone <br> If the traffic is not from a sublocation, the record displays a '-' symbol for this field.                                                                                                                                                                                                                                                                                                                      | 4            |
+| sublocation-id   | The ID of the sublocation that contains the network interface for which traffic is recorded. If the traffic is not from a sublocation, the record displays a '-' symbol for this field                                                                                                                                                                                                                                                                                                                                                | 4            |
 
 > If a field is not applicable for a specific record, the record displays a '-' symbol for that entry.
 
@@ -251,11 +251,11 @@ Flow logs do not capture all IP traffic. The following types of traffic are not 
 
 CloudWatch Container Insights ingests performance events as CloudWatch Logs that automatically create CloudWatch metrics. These performance events are analyzed using CloudWatch Logs Insights queries and are automatically executed as part of some Container Insights automated dashboards (e.g., task/pod, service, node, namespace).
 
-into CloudWatch | price
----|---
-Collect (Data Ingestion)	| $0.50 per GB
-Store (Archival)	| $0.03 per GB
-Analyze (Logs Insights queries)	| $0.005 per GB of data scanned
+| into CloudWatch                 | price                         |
+| ------------------------------- | ----------------------------- |
+| Collect (Data Ingestion)        | $0.50 per GB                  |
+| Store (Archival)                | $0.03 per GB                  |
+| Analyze (Logs Insights queries) | $0.005 per GB of data scanned |
 
 ---
 

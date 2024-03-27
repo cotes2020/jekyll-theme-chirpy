@@ -83,7 +83,7 @@ Each of these branches have a specific purpose and are bound to strict rules as 
 Feature/topic branches
 - used to develop new features for the upcoming or a distant future release.
 - When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point.
-- The essence of a feature branch is that <font color=blue> it exists as long as the feature is in development </font>
+- The essence of a feature branch is that <font color=LightSlateBlue> it exists as long as the feature is in development </font>
   - but will eventually be
     - merged back into develop (add the new feature to the upcoming release)
     - or discarded (in case of a disappointing experiment).
@@ -234,7 +234,7 @@ Hotfix branches
 - very much like release branches in that they are also meant to prepare for a new production release, albeit unplanned.
 - They arise from the necessity to act immediately upon an undesired state of a live production version.
 - When a critical bug in a production version must be resolved immediately, a hotfix branch may be branched off from the corresponding tag on the master branch that marks the production version.
-- <font color=red> The essence </font> is that
+- <font color=OrangeRed> The essence </font> is that
   - work of team members (on the develop branch) can continue
   - while another person is preparing a quick production fix.
 

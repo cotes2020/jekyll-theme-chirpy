@@ -28,14 +28,14 @@ Digital certificates
 - Common uses include business scenarios requiring authentication, encryption, and digital signing.
 
 
-1. <font color=red> combine asymmetric cryptography and hashing </font>
+1. <font color=OrangeRed> combine asymmetric cryptography and hashing </font>
 
 2. Implement a digital signature system for 2 distinct goals:
-   - assure the recipient that <font color=red> the message truly came from the claimed sender. </font>
+   - assure the recipient that <font color=OrangeRed> the message truly came from the claimed sender. </font>
      - enforce nonrepudiation
      - preclude 阻止 the sender from claiming the message is forgery
 
-   - assure the recipient that <font color=red> the message was not altered </font> while in transit between the sender and recipient.
+   - assure the recipient that <font color=OrangeRed> the message was not altered </font> while in transit between the sender and recipient.
      - against malicious modification
        - a third party altering the meaning of the message
      - and against unintentional modification
@@ -45,7 +45,7 @@ Digital certificates
 3. Digital signatures are used for more than just messages.
    - Software vendors often use digital signature technology to authenticate code distributions that you download from the Internet, such as applets and software patches.
    - digital signature process does not provide any privacy in and of itself.
-   - It only ensures that the cryptographic goals of <font color=red> integrity, authentication, and nonrepudiation </font>
+   - It only ensures that the cryptographic goals of <font color=OrangeRed> integrity, authentication, and nonrepudiation </font>
 
 
 4. Essentially are endorsed copies of an individual’s public key.
@@ -59,13 +59,13 @@ Digital certificates
 
 The certificate purpose can be one of four settings:
 
-- <font color=red> Encryption.</font> A certificate with this purpose will contain cryptographic keys for encryption and decryption.
+- <font color=OrangeRed> Encryption.</font> A certificate with this purpose will contain cryptographic keys for encryption and decryption.
 
-- <font color=red> Signature.</font> A certificate with this purpose will contain cryptographic keys for signing data only.
+- <font color=OrangeRed> Signature.</font> A certificate with this purpose will contain cryptographic keys for signing data only.
 
-- <font color=red> Signature and encryption.</font> A certificate with this purpose covers all primary uses of a certificate’s cryptographic key, including encryption of data, decryption of data, initial logon, or digitally signing data.
+- <font color=OrangeRed> Signature and encryption.</font> A certificate with this purpose covers all primary uses of a certificate’s cryptographic key, including encryption of data, decryption of data, initial logon, or digitally signing data.
 
-- <font color=red> Signature and smartcard logon.</font> A certificate with this purpose allows for initial logon with a smart card, and digitally signing data; it cannot be used for data encryption.
+- <font color=OrangeRed> Signature and smartcard logon.</font> A certificate with this purpose allows for initial logon with a smart card, and digitally signing data; it cannot be used for data encryption.
 
 SSL is probably the first protocol to use digital certificates.
 - Now a days they are widely used where ever there is a need for signing and encryption.
@@ -105,11 +105,11 @@ The local key store is just one location where these items can be held.
 ![Screen Shot 2021-01-08 at 14.42.04](https://i.imgur.com/VnhkqSr.png)
 
 If Alice wants to digitally sign a message she’s sending to Bob, she performs the following actions:
-1. Alice <font color=red> generates a hashing message digest </font> of the original plaintext message </font>
+1. Alice <font color=OrangeRed> generates a hashing message digest </font> of the original plaintext message </font>
    - such as SHA-512.
-2. Alice <font color=red> encrypts the hash using private key </font>
+2. Alice <font color=OrangeRed> encrypts the hash using private key </font>
    - This encrypted message digest is the digital signature.
-3. Alice <font color=red> appends the digital signature with the plaintext message </font>
+3. Alice <font color=OrangeRed> appends the digital signature with the plaintext message </font>
 4. Alice transmits the appended message to Bob.
 5. When Bob receives the digitally signed message, he reverses the procedure:
    - decrypts the digital signature using Alice’s public key.
@@ -140,9 +140,9 @@ Digital Signature Standard (DSS).
 - This document
   - specifies all federally approved digital signature algorithms must use the SHA-2 hashing functions.
   - specifies the 3 currently approved standard encryption algorithms that can be used to support a digital signature infrastructure:
-    - The <font color=red> Digital Signature Algorithm (DSA) </font> as specified in FIPS 186-4
-    - The <font color=red> Rivest, Shamir, Adleman (RSA) algorithm </font> as specified in ANSI X9.31
-    - The <font color=red> Elliptic Curve DSA (ECDSA) </font> as specified in ANSI X9.62
+    - The <font color=OrangeRed> Digital Signature Algorithm (DSA) </font> as specified in FIPS 186-4
+    - The <font color=OrangeRed> Rivest, Shamir, Adleman (RSA) algorithm </font> as specified in ANSI X9.31
+    - The <font color=OrangeRed> Elliptic Curve DSA (ECDSA) </font> as specified in ANSI X9.62
 
 2 other digital signature algorithms you should recognize,
 - Schnorr’s signature algorithm > 比特币

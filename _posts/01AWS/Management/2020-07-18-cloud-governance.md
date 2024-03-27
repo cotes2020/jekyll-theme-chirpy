@@ -33,12 +33,12 @@ image:
 - Integrating the NIST Cybersecurity Framework, AWS Cloud Adoption Framework, and AWS Well-Architected
 - approach to security governance, risk management, and compliance can be an enabler to digital transformation and business agility.
 - many customers establish a security foundation using technology **agnostic risk management frameworks**
-  - such as the <font color=red> National Institute of Standards and Technology (NIST) Cybersecurity Framework (CSF) </font>
+  - such as the <font color=OrangeRed> National Institute of Standards and Technology (NIST) Cybersecurity Framework (CSF) </font>
 - to understand their organization’s current capabilities, set goals, and develop a plan to improve and maintain security posture. However, you still need the right model to optimize security outcomes in the cloud.
-- To <font color=red> adapt the security program for the cloud, AWS developed two tools </font>
-  - <font color=red> AWS Cloud Adoption Framework (CAF) and AWS Well-Architected Framework </font>.
-  - complement the risk-based foundation with the AWS CAF, <font color=blue> integrate the organizational business drivers at scale as you move to the cloud </font>
-  - and, when ready to implement specific workloads,use the AWS Well-Architected Framework to <font color=blue> design, measure, and improve the technical implementation </font>.
+- To <font color=OrangeRed> adapt the security program for the cloud, AWS developed two tools </font>
+  - <font color=OrangeRed> AWS Cloud Adoption Framework (CAF) and AWS Well-Architected Framework </font>.
+  - complement the risk-based foundation with the AWS CAF, <font color=LightSlateBlue> integrate the organizational business drivers at scale as you move to the cloud </font>
+  - and, when ready to implement specific workloads,use the AWS Well-Architected Framework to <font color=LightSlateBlue> design, measure, and improve the technical implementation </font>.
 
 
 
@@ -74,9 +74,9 @@ to use CAF and AWS Well-Architected to help meet NIST CSF objectives, process in
 - Its technology and industry-agnostic approach allows for an outcome-based common taxonomy that you can use across the business, from the board level to the technical teams.
 - We continue to see accelerating adoption of the CSF across industries and countries, and its principles are becoming standardized approaches, as we see in the latest ISO 27103:2018 and draft ISO 27101 standards.
 
-The NIST CSF consists of three elements — <font color=red> Core, Tiers, and Profiles.</font>
+The NIST CSF consists of three elements — <font color=OrangeRed> Core, Tiers, and Profiles.</font>
 - The Core
-  - includes five continuous functions: <font color=blue> Identify, Protect, Detect, Respond, and Recover </font>
+  - includes five continuous functions: <font color=LightSlateBlue> Identify, Protect, Detect, Respond, and Recover </font>
   - you can map to other standards or control requirements as required by the business. 
 - The Tiers
   - characterize an organization’s aptitude and maturity for managing the CSF functions and controls,
@@ -91,7 +91,7 @@ Unlike the process for building **on-premises networks and datacenters** that st
 
 For AWS, this means creating an AWS account and leveraging AWS IAM to create users and groups, define roles, and assign permissions and policies.
 - NIST CSF five functions—Identify, Protect, Detect, Respond, and Recover.
-- If we look at the Protect function as an example, there are 7 subcategories under the <font color=red> Identity Management, Authentication and Access Control (PR.AC) category </font>:
+- If we look at the Protect function as an example, there are 7 subcategories under the <font color=OrangeRed> Identity Management, Authentication and Access Control (PR.AC) category </font>:
   - **PR.AC-1:** `Identities and credentials` are issued, managed, verified, revoked, and audited for authorized devices, users and processes
   - **PR.AC-2**: `Physical access` to assets is managed and protected
   - **PR.AC-3:** `Remote access` is managed
@@ -111,7 +111,7 @@ For AWS, this means creating an AWS account and leveraging AWS IAM to create use
 
 AWS Cloud Adoption Framework – _Prepare the organization for the cloud_
 
-Cloud computing introduces a significant shift in <font color=blue> how technology is procured, accessed, used, and managed </font>.
+Cloud computing introduces a significant shift in <font color=LightSlateBlue> how technology is procured, accessed, used, and managed </font>.
 - To operationalize and optimize the security program for the cloud, the organization needs to `understand the new paradigm, and update skills, adapt existing processes, and introduce new processes`.
 
 The [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/professional-services/CAF/) 
@@ -129,15 +129,15 @@ The [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/professional-ser
 **CAF perspectives**
 - comprised of six perspectives used for planning and strategic considerations
   - based on principles that apply to most organizations.
-  - 3 focus on the organization: <font color=blue> Business, People, and Governance </font>
-  - technical aspects are considered in the <font color=blue> Platform, Security, and Operations perspectives </font>.
+  - 3 focus on the organization: <font color=LightSlateBlue> Business, People, and Governance </font>
+  - technical aspects are considered in the <font color=LightSlateBlue> Platform, Security, and Operations perspectives </font>.
   - As NIST CSF, all these perspectives influence management of security risks and help achieve the security outcomes. 
 - Using the AWS CAF, structure the security program to `meet the desired outcomes with agility, scale, speed, and innovation` that comes with AWS. 
-- AWS CAF helps customers operationalize the security goals through 4 principles: <font color=blue> Directive, Preventive, Detective, and Responsive </font>.
-  - **Directive** principle provides guidance to <font color=blue> understand the environment and data in the cloud </font>
-  - **Preventive** provides guidance to <font color=blue> operate selected security controls in AWS </font>;
-  - **Detective** provides a means to <font color=blue> analyze the environment and alert on anomalies and risks </font>;
-  - **Responsive** looks to <font color=blue> mitigate detected risks, with an emphasis on automation </font>
+- AWS CAF helps customers operationalize the security goals through 4 principles: <font color=LightSlateBlue> Directive, Preventive, Detective, and Responsive </font>.
+  - **Directive** principle provides guidance to <font color=LightSlateBlue> understand the environment and data in the cloud </font>
+  - **Preventive** provides guidance to <font color=LightSlateBlue> operate selected security controls in AWS </font>;
+  - **Detective** provides a means to <font color=LightSlateBlue> analyze the environment and alert on anomalies and risks </font>;
+  - **Responsive** looks to <font color=LightSlateBlue> mitigate detected risks, with an emphasis on automation </font>
 
 
 **AWS CAF Security Perspective**
@@ -152,8 +152,8 @@ The [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/professional-ser
 ### AWS CAF use case with identity
 
 few AWS services being applied and configured to govern IAM at scale.
-- 3 tiers to consider when <font color=red> designing and building the IAM security </font>
-  - Implement <font color=blue> IAM Guardrails, Operationalize IAM, and Privileged Access Management </font>. 
+- 3 tiers to consider when <font color=OrangeRed> designing and building the IAM security </font>
+  - Implement <font color=LightSlateBlue> IAM Guardrails, Operationalize IAM, and Privileged Access Management </font>. 
 
 AWS shift the mindset from “locking down” a system: `implies inflexibility that can impact usability and business agility`, to the concept of “guardrails” where `security is defined by outer limits that allow freedom of movement within those constraints`.
 - allows for more flexibility to explore new methods and technologies to **meet dynamic market changes**
@@ -173,7 +173,7 @@ Specifically for AWS IAM, `implementing guardrails` through services such as **A
 ## Secure and resilient system architecture: AWS Well-Architected Framework
 
 The [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
-- Using AWS Well-Architected Framework to <font color=red> measure and improve the workload architecture </font>
+- Using AWS Well-Architected Framework to <font color=OrangeRed> measure and improve the workload architecture </font>
   - helps to understand considerations and key decision points for building systems on AWS
   - a framework for guiding and evaluating the workload architectures.
 - learn architectural best practices for designing and operating reliable, secure, efficient, and cost-effective systems in the cloud.
@@ -184,9 +184,9 @@ The [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-ar
 - To assist customers in documenting and measuring their workloads
 - a questionnaire available on the AWS Management Console that helps you answer, “Am I well-architected?”
   - use AWS Well-Architected for designing, evaluating, and continuously improving the architectures.
-  - After preparing, planning, and scaling for cloud migration using the **Cloud Adoption Framework**, **AWS Well-Architected** can inform how you secure specific workloads in line with the security outcomes (and Target Profile) applied from the <font color=red> NIST CSF </font>.
+  - After preparing, planning, and scaling for cloud migration using the **Cloud Adoption Framework**, **AWS Well-Architected** can inform how you secure specific workloads in line with the security outcomes (and Target Profile) applied from the <font color=OrangeRed> NIST CSF </font>.
 
-- focuses on the workload level: <font color=red> the infrastructure, systems, data, and processes </font>
+- focuses on the workload level: <font color=OrangeRed> the infrastructure, systems, data, and processes </font>
 - by examining five core pillars:
   - Operational Excellence,
   - Security,

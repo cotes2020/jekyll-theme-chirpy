@@ -25,8 +25,8 @@ Given the massive deleterious impact of financial securities fraud in publicly t
 
 ## The Basics of SOX Compliance
 
-“SOX compliance” refers to the <font color=red> annual audit </font>
-- in which a public company is obligated to <font color=blue> provide proof of accurate, data-secured financial reporting. </font>
+“SOX compliance” refers to the <font color=OrangeRed> annual audit </font>
+- in which a public company is obligated to <font color=LightSlateBlue> provide proof of accurate, data-secured financial reporting. </font>
 
 ![sox-compliance-basics](https://www.dnsstuff.com/wp-content/uploads/2019/06/sox-compliance-basics-1024x536.png)
 
@@ -44,8 +44,8 @@ Given the massive deleterious impact of financial securities fraud in publicly t
 ## What SOX Compliance Means for Business IT
 
 In a SOX IT audit
-- the IT department proves compliance by <font color=blue> providing documentation showing that its employer has met mandated financial transparency and data security thresholds </font>. 
-- To align with SOX regulation law, IT departments must be <font color=blue> familiar with the security, access privilege, and log management standards required for their financial records </font>.
+- the IT department proves compliance by <font color=LightSlateBlue> providing documentation showing that its employer has met mandated financial transparency and data security thresholds </font>. 
+- To align with SOX regulation law, IT departments must be <font color=LightSlateBlue> familiar with the security, access privilege, and log management standards required for their financial records </font>.
 
 
 The first step in cementing SOX internal controls is creating a “control environment,” which should:

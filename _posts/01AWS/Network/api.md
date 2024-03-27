@@ -191,8 +191,8 @@ AppSync also provides other powerful features that are not possible with REST AP
 
 ![restAPI-1-1024x369](https://i.imgur.com/vfXnxIj.jpg)
 
-1. <font color=red> synchronous, tightly coupled architecture </font>
-   - <font color=blue> the request must wait for a response from the backend integration (RDS) </font>
+1. <font color=OrangeRed> synchronous, tightly coupled architecture </font>
+   - <font color=LightSlateBlue> the request must wait for a response from the backend integration (RDS) </font>
 
    - This API accepts GET requests to retrieve a user’s cart
      - by using a Lambda function to perform SQL queries against a relational database managed in RDS.
@@ -201,7 +201,7 @@ AppSync also provides other powerful features that are not possible with REST AP
        - but relational databases typically have limited memory/cpu capacity and will quickly exhaust the total number of connections.
 
    - solution
-     1. <font color=red> defining API Keys and requiring your clients to deliver a key with incoming requests. </font>
+     1. <font color=OrangeRed> defining API Keys and requiring your clients to deliver a key with incoming requests. </font>
         - to track each application or client who is consuming your API.
         - to create Usage Plans and throttle your clients according to the plan you define.
         - For example, you if you know your architecture is capable of of sustaining 200 requests per second, you should define a Usage plan that sets a rate of 200 RPS and optionally configure a quota to allow a certain number of requests by day, week, or month.
@@ -215,13 +215,13 @@ AppSync also provides other powerful features that are not possible with REST AP
 ![restAPI-2-1024x548](https://i.imgur.com/BKu0OoH.jpg)
 
 
-2. <font color=red> an asynchronous, loosely coupled architecture </font>
+2. <font color=OrangeRed> an asynchronous, loosely coupled architecture </font>
    - A decoupled architecture
    - separates the data ingestion from the data processing and allows you to scale each system separately.
 
-   - This architecture enables ingestion of orders directly into a <font color=blue> highly scalable and durable data store </font> such as Amazon Simple Queue Service (SQS).
+   - This architecture enables ingestion of orders directly into a <font color=LightSlateBlue> highly scalable and durable data store </font> such as Amazon Simple Queue Service (SQS).
    - the backend can process these orders at any speed that is suitable for your business requirements and system ability.
-   - Most importantly, <font color=blue> the health of the backend processing system does not impact your ability to continue accepting orders </font>
+   - Most importantly, <font color=LightSlateBlue> the health of the backend processing system does not impact your ability to continue accepting orders </font>
 
 
 

@@ -277,8 +277,8 @@ aws cloudformation create-stack \
 
 ## Amazon MWAA Service-linked role policy
 
-Amazon MWAA creates and attaches a JSON policy to your account's <font color=red> service-linked role </font>
-- to <font color=red> allow Amazon MWAA to use other AWS services </font> used by your Amazon MWAA environment.
+Amazon MWAA creates and attaches a JSON policy to your account's <font color=OrangeRed> service-linked role </font>
+- to <font color=OrangeRed> allow Amazon MWAA to use other AWS services </font> used by your Amazon MWAA environment.
 - For example
   - permission to CloudWatch logs and the VPC network for your environment.
 
@@ -286,7 +286,7 @@ Amazon MWAA creates and attaches a JSON policy to your account's <font color=red
 
 ## Amazon MWAA Execution role
 
-<font color=red> An execution role </font>
+<font color=OrangeRed> An execution role </font>
 
 - is an IAM role
 - with a permissions policy

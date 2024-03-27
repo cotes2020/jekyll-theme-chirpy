@@ -65,16 +65,16 @@ Use-Case 2:
 ## session location
 
 
-goal: <font color=red> Manage user session </font>
+goal: <font color=OrangeRed> Manage user session </font>
 - storing those sessions locally to the node responding to the HTTP request
 - design a layer in architecture which can store those sessions in a scalable and robust manner.
 
 
 2 ways to solve this problem of forgetting the context.
 
-1. <font color=red> the client remind the application of the context every time </font> he requests something
+1. <font color=OrangeRed> the client remind the application of the context every time </font> he requests something
 
-2. <font color=red> the application remember the context </font> by creating an associated memento
+2. <font color=OrangeRed> the application remember the context </font> by creating an associated memento
    - This memento is given to the client and returned to the application on subsequent requests.
      1. via URL
         - `https://www.example.com/products/awesomeDoohickey.html?sessionID=0123456789ABCDEFGH`
@@ -106,13 +106,13 @@ way in which the Application Session State is stored.
   - the application session state is stored locally on the same server as the application.
     - This is also referred to as a stateful server
   - to scale up/down the application server
-    - there <font color=red> would be user interruption </font>
+    - there <font color=OrangeRed> would be user interruption </font>
 
 - Stateless
   - the application session state is stored remotely on another server rather than locally on the application server.
     - This is also referred to as a stateless server
   - to scale up/down the application server
-    - <font color=red> no user interruption </font>
+    - <font color=OrangeRed> no user interruption </font>
 
 
 
@@ -123,24 +123,24 @@ way in which the Application Session State is stored.
 
 > least suitable for most applications:
 
-- <font color=red> session identifier + Session information </font> is stored in a user's <font color=red> cookie </font>
+- <font color=OrangeRed> session identifier + Session information </font> is stored in a user's <font color=OrangeRed> cookie </font>
   - example: the user's cookie might contain the contents of their shopping basket.
 
-- <font color=red> No backend storage </font> is required
+- <font color=OrangeRed> No backend storage </font> is required
   - the session data is not stored server-side
   - more difficult for developers to debug
   - The amount of data that can be stored in the session is limited (by the 4K cookie size limit)
 
 - The user does not need to hit the same machine each time, so DNS load balancing can be employed
 
-- <font color=red> no latency </font> associated with retrieving the session information from a database machine
+- <font color=OrangeRed> no latency </font> associated with retrieving the session information from a database machine
   - (as it is provided with the HTTP request).
   - Useful if your site is load-balanced by machines on different continents.
 
 
-- <font color=red> Encryption </font> has to be employed
+- <font color=OrangeRed> Encryption </font> has to be employed
   - if a user should not be able to see the contents of their session
-  - <font color=blue> HMAC (or similar) has to be employed </font> to prevent user tampering of session data
+  - <font color=LightSlateBlue> HMAC (or similar) has to be employed </font> to prevent user tampering of session data
 
 
 ---
@@ -150,20 +150,20 @@ way in which the Application Session State is stored.
 
 > may be good in some situations:
 
-- load balancers may set <font color=red> session cookie </font>
+- load balancers may set <font color=OrangeRed> session cookie </font>
   - indicating which backend machine a user is making requests from
   - and direct them to that machine in the future.
 
 - An `existing application's session handling may not need to be changed` to become multiple machines aware
 
-- <font color=red> No shared database system (or similar) is required </font> for storing sessions
+- <font color=OrangeRed> No shared database system (or similar) is required </font> for storing sessions
   - possibly increasing reliability
   - but at the cost of complexity
 
-- <font color=red> A backend machine going down will take down user sessions started on/with it </font>
-  - Because the user is always directed to the same machine, <font color=red> session sharing between multiple machines is not required. </font>
+- <font color=OrangeRed> A backend machine going down will take down user sessions started on/with it </font>
+  - Because the user is always directed to the same machine, <font color=OrangeRed> session sharing between multiple machines is not required. </font>
 
-- <font color=red> Taking machines out of service is more difficult </font>
+- <font color=OrangeRed> Taking machines out of service is more difficult </font>
   - Users with sessions on a machine to be taken down for maintenance should be allowed to complete their tasks before the machine is turned off.
   - To support this, web load balancers may have a feature to "drain" requests to a certain backend machine.
 
@@ -175,8 +175,8 @@ way in which the Application Session State is stored.
 
 > probably the cleanest method of the three:
 
-- <font color=red> Session information is stored in a backend database </font>
-  - The user's <font color=blue> browser stores a cookie containing an identifier (like session ID), pointing to the session information </font>
+- <font color=OrangeRed> Session information is stored in a backend database </font>
+  - The user's <font color=LightSlateBlue> browser stores a cookie containing an identifier (like session ID), pointing to the session information </font>
   - The user never needs to be exposed to the stored session information.
 
 - all web servers have access to query and update.
@@ -186,7 +186,7 @@ way in which the Application Session State is stored.
 
 - One disadvantage is `the bottleneck that can be placed on whichever backend storage system is employed`.
 
-- most dynamic web applications perform <font color=red> several database queries or key/value store requests </font>
+- most dynamic web applications perform <font color=OrangeRed> several database queries or key/value store requests </font>
   - so the database or key/value store is the logical storage location of session data.
 
 
@@ -200,16 +200,16 @@ way in which the Application Session State is stored.
 A cloud design pattern that uses multiple load balancers
 - 2 separate ELB going to a set of servers.
   - a load balancer that is separated by a certificate
-  - another load balancer that is keeping the <font color=red> session sticky </font>
+  - another load balancer that is keeping the <font color=OrangeRed> session sticky </font>
 
-- When a website is served by <font color=red> only one web server </font>
+- When a website is served by <font color=OrangeRed> only one web server </font>
   - for each client-server pair
     - a session object is created and remains in the memory of the web server.
   - All requests from the client go to this web server and update this session object.
 
-- When a website is served by <font color=red> multiple web servers behind a load balancer </font>
+- When a website is served by <font color=OrangeRed> multiple web servers behind a load balancer </font>
   - the load balancer decides which web server the request goes to.
-  - load balancer use <font color=blue> sticky sessions </font> or <font color=blue> Stickiness sessions </font>
+  - load balancer use <font color=LightSlateBlue> sticky sessions </font> or <font color=LightSlateBlue> Stickiness sessions </font>
 
 
 ---
@@ -232,17 +232,17 @@ cache
 <img alt="pic" src="https://i.imgur.com/0HkpZ99.png" width="400">
 
 
-1. If the load balancer use <font color=red> sticky sessions </font>
-   - <font color=blue> all interactions happen with the same physical server </font>
+1. If the load balancer use <font color=OrangeRed> sticky sessions </font>
+   - <font color=LightSlateBlue> all interactions happen with the same physical server </font>
    - the new sticky session feature instruct the load balancer
-     - to <font color=blue> route repeated requests to the same EC2 instance whenever possible </font>
+     - to <font color=LightSlateBlue> route repeated requests to the same EC2 instance whenever possible </font>
        - A series of requests from the user will be routed to the same EC2 instance if possible.
      - If the instance has been terminated or has failed a recent health check
        - the load balancer will route the request to another instance.
    - the instances can cache user data locally for better performance.
 
 
-1. If the load balancer use <font color=red> Stickiness sessions </font>
+1. If the load balancer use <font color=OrangeRed> Stickiness sessions </font>
    - important because mobile applications need to keep sticky sessions
    - For desktop users, common not require sticky sessions
    - load balancer had the freedom to forward each incoming HTTP or TCP request to any of the EC2 instances under its purview.
@@ -262,21 +262,21 @@ cache
 
 by sticky session
 
-- enables the load balancer to <font color=red> bind user's session to a specific instance </font>
+- enables the load balancer to <font color=OrangeRed> bind user's session to a specific instance </font>
   - all requests from the user during the session are sent to the same server instance.
   - can use `sticky sessions` for only `HTTP/HTTPS load balancer listeners`
 
-- <font color=red> limit application’s scalability </font>
+- <font color=OrangeRed> limit application’s scalability </font>
   - the load balancer is unable to truly balance the load each time it receives request from a client.
   - send all the requests to their original server where the session state was created
     - even that server might be heavily loaded
     - and another less-loaded server is available to take on this request.
 
-- allow to <font color=red> route user to the particular web server </font> which is managing that individual user’s session.
+- allow to <font color=OrangeRed> route user to the particular web server </font> which is managing that individual user’s session.
   - better user experience.
 
 
-The <font color=red> session’s validity </font> can be determined by:
+The <font color=OrangeRed> session’s validity </font> can be determined by:
 - a client-side cookies
 - via configurable duration parameters that set at the load balancer
   - which routes requests to the web servers.
@@ -285,9 +285,9 @@ The <font color=red> session’s validity </font> can be determined by:
 
 #### Duration-based session stickiness
 
-- The load balancer uses a special `load balancer–generated cookie` to <font color=red> track the application instance for each request </font>
+- The load balancer uses a special `load balancer–generated cookie` to <font color=OrangeRed> track the application instance for each request </font>
 - When the load balancer receives a request
-  - first <font color=blue> checks whether this cookie is present in the request </font>
+  - first <font color=LightSlateBlue> checks whether this cookie is present in the request </font>
   - If there is a cookie
     - the request is sent to the application instance specified in the cookie.
   - If there is no cookie
@@ -296,18 +296,18 @@ The <font color=red> session’s validity </font> can be determined by:
       - for binding subsequent requests from the same user to that application instance.
 
 - The stickiness policy configuration
-  - <font color=red> defines a cookie expiration </font>
+  - <font color=OrangeRed> defines a cookie expiration </font>
   - establishes the duration of validity for each cookie.
-  - The cookie is <font color=blue> automatically updated after its duration expires </font>
+  - The cookie is <font color=LightSlateBlue> automatically updated after its duration expires </font>
 
 
 
 #### Application-controlled session stickiness
-- The load balancer uses a special cookie to <font color=red> associate the session with the original server that handled the request </font>
+- The load balancer uses a special cookie to <font color=OrangeRed> associate the session with the original server that handled the request </font>
 
 - The stickiness policy configuration
   - follows the lifetime of the application-generated cookie corresponding to the cookie name specified in the policy configuration.
-  - The load balancer only inserts a new `stickiness cookie` <font color=blue> if the application response includes a new application cookie </font>
+  - The load balancer only inserts a new `stickiness cookie` <font color=LightSlateBlue> if the application response includes a new application cookie </font>
 
 
 - The load balancer stickiness cookie does not update with each request.

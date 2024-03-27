@@ -61,33 +61,33 @@ CloudFormation template takes care of the following tasks
 - [Create an Amazon MWAA execution IAM role](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
 
 - [Set up the VPC network for the Amazon MWAA environment](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html), deploying the following resources:
-  - A <font color=red> VPC with a pair of public and private subnets across two Availability Zones </font>
-    - a <font color=blue> VPC </font>
+  - A <font color=OrangeRed> VPC with a pair of public and private subnets across two Availability Zones </font>
+    - a <font color=LightSlateBlue> VPC </font>
       - `10.192.0.0/16` CIDR rule
-    - a <font color=blue> VPC security group </font>
+    - a <font color=LightSlateBlue> VPC security group </font>
       - directs all inbound traffic to Amazon MWAA environment and all outbound traffic to `0.0.0.0/0`
-    - <font color=blue> one public subnet </font>
+    - <font color=LightSlateBlue> one public subnet </font>
       - `10.192.10.0/24` CIDR rule in 1st availability zone
-    - <font color=blue> one public subnet </font>
+    - <font color=LightSlateBlue> one public subnet </font>
       - `10.192.11.0/24` CIDR rule in 2nd availability zone
-    - <font color=blue> one private subnet </font>
+    - <font color=LightSlateBlue> one private subnet </font>
       - `10.192.20.0/24` CIDR rule in 1st availability zone
-    - <font color=blue> one private subnet </font>
+    - <font color=LightSlateBlue> one private subnet </font>
       - `10.192.21.0/24` CIDR rule in 2nd availability zone
-  - An <font color=red> internet gateway </font>
+  - An <font color=OrangeRed> internet gateway </font>
     - with a default route on the public subnets.
     - creates and attaches to the public subets
-  - A pair of <font color=red> NAT gateways </font>
+  - A pair of <font color=OrangeRed> NAT gateways </font>
     - one in each Availability Zone
     - and default routes for them in the private subnets.
     - creates and attaches to the private subnets
     - `two elastic IP addresses (EIPs)`
       - creates and attaches to the NAT gateways
-  - 2 <font color=red> VPC endpoint </font>
+  - 2 <font color=OrangeRed> VPC endpoint </font>
     - Amazon **S3 gateway VPC endpoints**
     - and **EMR interface VPC endpoints**
     - in the private subnets in two Availability Zones.
-  - A <font color=red> security group </font>
+  - A <font color=OrangeRed> security group </font>
     - **security group** to be used by the Amazon MWAA environment
     - only allows local inbound traffic and all outbound traffic.
 
@@ -119,16 +119,16 @@ The CloudFormation stack requires a few parameters:
 
 
 
-**Parameter** | **Description** | **Default Value**
----|---|---
-Stack name | Enter a meaningful name for the stack. We use `MWAAEmrNBDemo` for this example. Replace it with your own value. | None
-AirflowBucketName | Name of the S3 bucket to store DAGs and support files. The S3 bucket must be in the same Region where you create the environment. The name must start with `airflow-`. Enter the S3 bucket created as a prerequisite. We use the S3 bucket `airflow-emr-demo-us-west-2` for this post. You must replace it with your own value for this field. | None
-EnvironmentName | An MWAA environment name that is prefixed to resource names. All the resources created by this templated are named after the value saved for this field. We name our environment `mwaa-emr-blog-demo` for this post. Replace it with your own value for this field. | mwaa-
-PrivateSubnet1CIDR | The IP range (CIDR notation) for the private subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.20.0/24
-PrivateSubnet2CIDR | The IP range (CIDR notation) for the private subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).. | 10.192.21.0/24
-PublicSubnet1CIDR | The IP range (CIDR notation) for the public subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.10.0/24
-PublicSubnet2CIDR | The IP range (CIDR notation) for the public subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.11.0/24
-VpcCIDR | The IP range (CIDR notation) for this VPC being created. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.0.0/16
+| **Parameter**      | **Description**                                                                                                                                                                                                                                                                                                                                | **Default Value** |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Stack name         | Enter a meaningful name for the stack. We use `MWAAEmrNBDemo` for this example. Replace it with your own value.                                                                                                                                                                                                                                | None              |
+| AirflowBucketName  | Name of the S3 bucket to store DAGs and support files. The S3 bucket must be in the same Region where you create the environment. The name must start with `airflow-`. Enter the S3 bucket created as a prerequisite. We use the S3 bucket `airflow-emr-demo-us-west-2` for this post. You must replace it with your own value for this field. | None              |
+| EnvironmentName    | An MWAA environment name that is prefixed to resource names. All the resources created by this templated are named after the value saved for this field. We name our environment `mwaa-emr-blog-demo` for this post. Replace it with your own value for this field.                                                                            | mwaa-             |
+| PrivateSubnet1CIDR | The IP range (CIDR notation) for the private subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).                                                                                 | 10.192.20.0/24    |
+| PrivateSubnet2CIDR | The IP range (CIDR notation) for the private subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components)..                                                                               | 10.192.21.0/24    |
+| PublicSubnet1CIDR  | The IP range (CIDR notation) for the public subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).                                                                                  | 10.192.10.0/24    |
+| PublicSubnet2CIDR  | The IP range (CIDR notation) for the public subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).                                                                                 | 10.192.11.0/24    |
+| VpcCIDR            | The IP range (CIDR notation) for this VPC being created. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).                                                                                                            | 10.192.0.0/16     |
 
 
 2. Enter the parameter values from the preceding table.

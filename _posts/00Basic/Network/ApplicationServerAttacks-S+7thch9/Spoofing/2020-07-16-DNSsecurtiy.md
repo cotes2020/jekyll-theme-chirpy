@@ -53,7 +53,7 @@ DNS:
 - Some applications use this as a rudimentary security mechanism to detect spoofing.
 
 
-<font color=red> Coumpter domain name - Host File - local DNS (primery DNS + secondary DNS) - public DNS </font>
+<font color=OrangeRed> Coumpter domain name - Host File - local DNS (primery DNS + secondary DNS) - public DNS </font>
 1. Change the host file - need administrator.
 2. Hack the local DNS - redirect it to malicious DNS server.
 - White hat: stop unwilling website reading.
@@ -118,7 +118,7 @@ setting up DNS required not only a hierarchical design but someone to manage it.
 
 > DNS server is given information about a server that it thinks is legitimate when it isn’t.
 
-- forged DNS data is introduced into a <font color=red> DNS resolver’s cache</font>, the resolver `returning an incorrect IP address for a domain`.
+- forged DNS data is introduced into a <font color=OrangeRed> DNS resolver’s cache</font>, the resolver `returning an incorrect IP address for a domain`.
   - Instead of going to the correct website
   - traffic can be diverted to a malicious machine or anywhere else the attacker desires;
   - often this will be a replica of the original site used for malicious purposes such as distributing malware or collecting login information.
@@ -356,7 +356,7 @@ A DNS cache poisoning attack against a client:
    1. the client will cache the poisoned DNS entry.
 
 
-- This type of attack is especially <font color=red> stealthy </font>
+- This type of attack is especially <font color=OrangeRed> stealthy </font>
   - since it can be initiated just by someone visiting a web site that contains images that trigger the attack.
   - These images will not be found, of course, but the only warning the user has that this is causing a DNS cache poisoning attack is that the browser window may display some icons for missing images.
 
@@ -370,7 +370,7 @@ It’s difficult to take down the Internet. However, a cyberattack in October 20
 - Specifically, on October 21,
 - attackers launched three DDoS attacks during the day at 7:00 a.m., at 11:52 a.m., and at 4:00 p.m.
 - These attacks prevented users from accessing a multitude of sites, such as Amazon, CNN, Fox News, Netflix, PayPal, Reddit, Spotify, Twitter, Xbox Live, and more.
-- Attackers infected many Internet-connected devices (such as video cameras, video recorders, printers, and baby monitors), with malware called <font color=red> Mirai </font>.
+- Attackers infected many Internet-connected devices (such as video cameras, video recorders, printers, and baby monitors), with malware called <font color=OrangeRed> Mirai </font>.
 - Mirai forces individual systems to become bots within large botnets.
 - On October 21, they sent commands to millions of infected devices directing them to repeatedly send queries to DNS servers.
 - These queries overwhelmed the DNS servers and prevented regular users from accessing dozens of web sites.
@@ -674,7 +674,7 @@ ref:
   - security specifications for security DNS,
   - provides validation for DNS responses.
 
-- involves <font color=red> many security features </font>
+- involves <font color=OrangeRed> many security features </font>
   - like **digitally signed DNS responses**.
   - mitigate the risk of DNS attacks: like DNS poisoning.
   - Provides **cryptographic authenticity of responses** using `Resource Record Signatures (RRSIG)`

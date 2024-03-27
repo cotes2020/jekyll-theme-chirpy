@@ -349,11 +349,11 @@ curl -X DELETE https://pushgateway.example.org:9091/metrics/job/some_job/instanc
 ![a9185d697de249cce58df1299fc5e7e1](https://i.imgur.com/0PU96mT.png)
 
 
-<font color=red> 抓取 </font>:
+<font color=OrangeRed> 抓取 </font>:
 
 - Prometheus Server通过服务发现组件,周期性地从上面介绍的`Job、Exporter、Pushgateway`这3个组件中通过 `HTTP轮询` 的形式拉取监控指标数据.
 
-<font color=red> 存储 </font>:
+<font color=OrangeRed> 存储 </font>:
 
 - 抓取到的监控数据通过一定的规则清理和数据整理
   - 抓取前使用服务发现提供的 `relabel_configs` 方法
@@ -374,7 +374,7 @@ curl -X DELETE https://pushgateway.example.org:9091/metrics/job/some_job/instanc
     - 远程存储需要配合中间层的适配器进行转换,主要涉及Prometheus中的 `remote_write` 和 `remote_read` 接口.
     - 在实际生产中,远程存储会出现各种各样的问题,需要不断地进行优化、压测、架构改造甚至重写上传数据逻辑的模块等工作.
 
-<font color=red> 查询 </font>:
+<font color=OrangeRed> 查询 </font>:
 
 - Prometheus持久化数据以后,客户端就可以通过 `PromQL` 语句对数据进行查询了.
 

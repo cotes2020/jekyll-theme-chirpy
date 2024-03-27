@@ -508,13 +508,13 @@ SaaS: `AWS trusted advisor`, `AWS shield`, `Amazon chime`
 ![Screen Shot 2020-05-05 at 13.36.28](https://i.imgur.com/2vVuFyK.png)
 
 
-<font color=red>customers</font>
+<font color=OrangeRed>customers</font>
 - updates and patched OS / Oracleon in EC2 instances
 - EC2 security group setting
 - configuration of App / S3 buckekt access / subnet / VPC / Authentication for account user login
 - secure SSH keys
 
-<font color=red>AWS</font>:
+<font color=OrangeRed>AWS</font>:
 - physical.. / virtulization infrastructure / against outage / network isolation between customer / low lantency connection between web server and S3 buckekt
 - updates and patched Oracleon in RDS Instances
 - sercure AWS management console

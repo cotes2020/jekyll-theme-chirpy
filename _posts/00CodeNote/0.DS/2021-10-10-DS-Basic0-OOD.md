@@ -812,19 +812,19 @@ example of the use of inheritance
 
 Uses of Class
 
-- Class is used to <font color=red> hold both data variables and member functions </font>
-- for <font color=red> create user define objects </font>
+- Class is used to <font color=OrangeRed> hold both data variables and member functions </font>
+- for <font color=OrangeRed> create user define objects </font>
   - provides a way to organize information about data.
-- can use class to <font color=red> inherit the property of other class </font>
-- take advantage of <font color=red> constructor or destructor </font>
+- can use class to <font color=OrangeRed> inherit the property of other class </font>
+- take advantage of <font color=OrangeRed> constructor or destructor </font>
 - can be used for a large amount of data and complex applications.
 
 Use of Object
 
-- <font color=red> give the type of message accepted and the type of returned responses </font>
-- use an object to <font color=red> access a piece of memory using an object reference variable </font>
-- <font color=red> It is used to manipulate data </font>
-- Objects represent <font color=red> a real-world problem </font> for which you are finding a solution.
+- <font color=OrangeRed> give the type of message accepted and the type of returned responses </font>
+- use an object to <font color=OrangeRed> access a piece of memory using an object reference variable </font>
+- <font color=OrangeRed> It is used to manipulate data </font>
+- Objects represent <font color=OrangeRed> a real-world problem </font> for which you are finding a solution.
 - It enables data members and member functions to perform the desired task.
 
 
@@ -858,19 +858,19 @@ Use of Object
 
 #### Types of Class
 
-- <font color=red> Derived Classes and Inheritance </font>
+- <font color=OrangeRed> Derived Classes and Inheritance </font>
   - A derived class is a class which is created or derived from other remaining class.
   - It is used for increasing the functionality of base class.
   - This type of class derives and inherits properties from existing class.
   - It can also add or share/extends its own properties.
 
-1. <font color=red> Superclasses </font>
+1. <font color=OrangeRed> Superclasses </font>
    - A superclass is a class from which you can derive many sub classes.
 
-2. <font color=red> Subclasses </font>
+2. <font color=OrangeRed> Subclasses </font>
    - A subclass is a class that derives from superclass.
 
-3. <font color=red> Mixed classes </font>
+3. <font color=OrangeRed> Mixed classes </font>
    - combine the functionality from other classes into a new class.
      - inherit the properties of one class to another.
    - It uses a subset of the functionality of class, whereas a derive class uses the complete set of superclass functionality.
@@ -896,9 +896,9 @@ Use of Object
 
 - Class > Instance > Instance variables/Attributes > Methods
 
-1. import <font color=red> class </font> like `Turtle` or `Screen`
+1. import <font color=OrangeRed> class </font> like `Turtle` or `Screen`
 
-2. create a new <font color=red> instance </font>
+2. create a new <font color=OrangeRed> instance </font>
 
     ```py
     import Turtles
@@ -910,15 +910,15 @@ Use of Object
     ```
 
    - `alex = turtle.Turtle()`
-   - The Python interpreter find that `Turtle` is a <font color=blue> class, not function </font>
-   - so it <font color=blue> creates a new instance of the class </font> and returns it.
+   - The Python interpreter find that `Turtle` is a <font color=LightSlateBlue> class, not function </font>
+   - so it <font color=LightSlateBlue> creates a new instance of the class </font> and returns it.
      - Since the Turtle class was defined in a separate module, (confusingly, also named turtle)
      - had to refer to the class as `turtle.Turtle`.
 
 
 
 
-3. Each instance can have <font color=red> attributes / instance variables </font>
+3. Each instance can have <font color=OrangeRed> attributes / instance variables </font>
 
     ```py
     # For example
@@ -931,22 +931,22 @@ Use of Object
     - use `=` to assign values to an attribute
 
 
-4. <font color=red> Classes have associated methods </font>
+4. <font color=OrangeRed> Classes have associated methods </font>
 
     ```py
     alex.forward(50)
     ```
 
     - The interpreter looks up `alex`
-    - finds `alex` is an <font color=blue> instance of the class </font> `Turtle`.
-    - Then it looks up the <font color=blue> attribute </font> `forward`
-    - finds that it is a <font color=blue> method </font>
+    - finds `alex` is an <font color=LightSlateBlue> instance of the class </font> `Turtle`.
+    - Then it looks up the <font color=LightSlateBlue> attribute </font> `forward`
+    - finds that it is a <font color=LightSlateBlue> method </font>
       - `Methods` return `values`, like `functions`
       - However, none of the methods of the `Turtle class` return values the way the `len` function does.
     - the interpreter invokes the method, passing 50 as a **parameter**.
 
 
-The only difference between <font color=red> invocation </font> and <font color=red> function calls </font>
+The only difference between <font color=OrangeRed> invocation </font> and <font color=OrangeRed> function calls </font>
 - the `object instance` itself is also passed as a parameter.
 - Thus `alex.forward(50)` moves `alex`, while `tess.forward(50)` moves `tess`.
 
@@ -972,7 +972,7 @@ The only difference between <font color=red> invocation </font> and <font color=
 To developing a pet management system, specially meant for dogs.
 
 declared a class called Dog
-1. need to <font color=red> model dogs into software entities </font>
+1. need to <font color=OrangeRed> model dogs into software entities </font>
    - <img alt="pic" src="https://i.imgur.com/Ditinne.jpg" width="400">
 
 
@@ -2553,8 +2553,8 @@ cat1.hi()
 The Python interpreter looks for `hi` in the instance of `Cat`.
 - It does not find it, because there’s no statement of the form `cat1.hi = ....` (if you had set an instance variable on Cat called hi it would be a bad idea, because you would not be able to use the method that it inherited anymore. We’ll see more about this later.)
 - Then it looks for a <font color=DarkCyank> class variable/method `hi` </font> in the <font color='Medblue'> class Cat </font> , and still doesn’t find it.
-- Next, it looks for a <font color=DarkCyank> class variable </font> `hi` on the parent of <font color=Medblue> class Cat </font> , <font color=red> Pet class </font>
-- It finds that – there’s a <font color=DarkCyank> method  </font> called `hi` on the <font color=red> Pet class </font>. Because of the () after hi, the method is invoked.
+- Next, it looks for a <font color=DarkCyank> class variable </font> `hi` on the parent of <font color=Medblue> class Cat </font> , <font color=OrangeRed> Pet class </font>
+- It finds that – there’s a <font color=DarkCyank> method  </font> called `hi` on the <font color=OrangeRed> Pet class </font>. Because of the () after hi, the method is invoked.
 
 ---
 
@@ -2573,7 +2573,7 @@ new_cat = Cheshire("Pumpkin")
 ```
 
 Neither Cheshire nor Cat defines an `__init__` constructor method
-- so the grandaprent <font color=red> Pet class </font> will have it's `__init__` method called.
+- so the grandaprent <font color=OrangeRed> Pet class </font> will have it's `__init__` method called.
 - That constructor method sets the instance variables name, hunger, boredom, and sounds.
 
 ---

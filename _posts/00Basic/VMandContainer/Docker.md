@@ -88,15 +88,15 @@ image:
 
 - based on `cgroup` and `namespace` of Linux Kernel and Union FS like AUFS
 
-- a software platform that <font color=red> packages software (such as applications) into containers </font>
-  - to <font color=blue> package and isolate the processes </font> which belong to <font color=blue> Operating system level virtualization technology </font>
+- a software platform that <font color=OrangeRed> packages software (such as applications) into containers </font>
+  - to <font color=LightSlateBlue> package and isolate the processes </font> which belong to <font color=LightSlateBlue> Operating system level virtualization technology </font>
 
   - Docker is further packaged on a container basis,
     - from ile system, network interconnection to process isolation, etc,
     - isolated processes are independent of the host and other isolated processes.
-  - <font color=blue> greatly simplifying container creation and maintenance </font>.
+  - <font color=LightSlateBlue> greatly simplifying container creation and maintenance </font>.
 
-- <font color=red> Docker is installed on each server that will host containers </font>,
+- <font color=OrangeRed> Docker is installed on each server that will host containers </font>,
   - provides simple commands to build, start, or stop containers.
   - quickly deploy and scale applications into any environment.
 
@@ -119,13 +119,13 @@ The initial implementation is based on LXC.
 ## Why use Docker
 
 best used as a solution to:
-- <font color=red> Standardize environments </font>
-- <font color=red> Reduce conflicts between language stacks and versions </font>
-- <font color=red> Use containers as a service </font>
-- <font color=red> Run microservices using standardized code deployments </font>
-- <font color=red> Require portability for data processing </font>
+- <font color=OrangeRed> Standardize environments </font>
+- <font color=OrangeRed> Reduce conflicts between language stacks and versions </font>
+- <font color=OrangeRed> Use containers as a service </font>
+- <font color=OrangeRed> Run microservices using standardized code deployments </font>
+- <font color=OrangeRed> Require portability for data processing </font>
 
-platform for developers and sysadmins to <font color=red> build, run, and share applications with containers </font>
+platform for developers and sysadmins to <font color=OrangeRed> build, run, and share applications with containers </font>
 - The use of containers to deploy applications is called `containerization`.
 
 containerization
@@ -145,7 +145,7 @@ containerization
 
 - Fundamentally, a **container** is nothing but a running process, with some added encapsulation features applied to it in order to keep it isolated from the host and from other containers.
 
-- container isolation: <font color=red> each container interacts with its own private filesystem </font>
+- container isolation: <font color=OrangeRed> each container interacts with its own private filesystem </font>
 
 - this filesystem is provided by a **Docker image**.
   - An image includes everything needed to run an application
@@ -158,15 +158,15 @@ containerization
 
 differences between Docker and Traditional Virtualization.
 - The **traditional Virtual Machine technology** :
-  - <font color=red> virtualize a set of hardwares to </font>
+  - <font color=OrangeRed> virtualize a set of hardwares to </font>
     - run a complete operation system
     - and run the required application process on the system.
-    - <font color=red> runs a full-blown “guest” operating system </font> with virtual access to host resources through a hypervisor.
+    - <font color=OrangeRed> runs a full-blown “guest” operating system </font> with virtual access to host resources through a hypervisor.
     - VMs incur a lot of overhead beyond what is being consumed by your application logic.
 
 
 - **Container/Docker**
-  - The application process in the container <font color=red> runs directly on the host kernel </font>
+  - The application process in the container <font color=OrangeRed> runs directly on the host kernel </font>
   - the container does not have its own Kernel and hardware virtualiztion.
   - Therefore much lighter than traditional virtual machines.
 
@@ -182,9 +182,9 @@ differences between Docker and Traditional Virtualization.
    - a method of operating system virtualization
      - 容器不需要进行硬件虚拟以及运行完整操作系统等额外开销，
      - Docker 对系统资源的利用率更高。
-     - runs natively on Linux and <font color=red> shares the kernel of the host machine with other containers </font>
+     - runs natively on Linux and <font color=OrangeRed> shares the kernel of the host machine with other containers </font>
      - runs a discrete process, taking no more memory than any other executable, making it lightweight.
-   - <font color=red> run an application and its dependencies </font> in <font color=red> resource-isolated processes </font>
+   - <font color=OrangeRed> run an application and its dependencies </font> in <font color=OrangeRed> resource-isolated processes </font>
      - 无论是 应用执行速度、内存损耗或者文件存储速度，都要比传统虚拟机技术更高效。
      - 因此，一个相同配置的主机，往往可以运行更多数量的 Docker 应用。
 
@@ -193,14 +193,14 @@ differences between Docker and Traditional Virtualization.
    - Docker 容器应用，由于直接运行于宿主内核，无需启动完整的操作系统，因此可以做到秒级、甚至毫秒级的启动时间。
    - 节约了开发、测试、部署的时间。
 
-3. 一致的运行环境 <font color=red> Consistent Operating Environment </font>
+3. 一致的运行环境 <font color=OrangeRed> Consistent Operating Environment </font>
    - because everything are packaged into a single object.
    - 开发过程中一个常见的问题是环境一致性问题。开发环境、测试环境、生产环境不一致，导致bug未在开发过程中被发现。
    - Docker 的镜像提供了除内核外完整的运行时环境，确保了应用运行环境一致性
      - 不会再出现 「这段代码在我机器上没问题啊」 这类问题。
    - Containers hold everything that the software needs to run,
      - such as libraries, system tools, application’s code, configurations, dependencies, and the runtime.
-   - ensure <font color=blue> quick, reliable, and consistent deployments </font>. regardless of deployment environment.
+   - ensure <font color=LightSlateBlue> quick, reliable, and consistent deployments </font>. regardless of deployment environment.
 
 4. 持续交付和部署 CI/CD
    - 对开发和运维(DevOps)人员来说，最希望的就是一次创建或配置，可以在任意地方正常运行。
@@ -244,7 +244,7 @@ differences between Docker and Traditional Virtualization.
 
 ### `Docker Image` 镜像
 
-操作系统分为 <font color=blue> 内核 </font> 和 <font color=blue> 用户空间 </font>
+操作系统分为 <font color=LightSlateBlue> 内核 </font> 和 <font color=LightSlateBlue> 用户空间 </font>
 - 对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提 供用户空间支持。
   - Docker Image，就相当于是一个 root 文件系统。
   - 比如官方镜像 ubuntu:18.04 就包含了完整的一套 Ubuntu 18.04 最小系统的 root 文件系统。
@@ -347,28 +347,28 @@ find / -name happiness.txt
 
 ### docker commands
 
-cmd | pic
----|---
-`docker pull ubuntu:18.04` | download
-`docker run <image-id>` | ![01aedf55bd21abbe607b3864d76f0ec0](https://i.imgur.com/XKic8PI.jpg)
-`docker create <image-id>` | ![062e7af0929dd205b2ac6efdd937d6f4](https://i.imgur.com/J82Sli2.jpg)
-`docker start <container-id>` | ![1c38d4735e9760bdca025ff50a1b5386](https://i.imgur.com/AGAzgEq.jpg) <br> ![275cc486d4ce7ecbdecf0ecc1de0a34b](https://i.imgur.com/wq40mMI.jpg)
-`docker ps` | ![f05a2a8dfc6641d8237306ff575aa283](https://i.imgur.com/4U1HNNz.jpg)
-`docker ps –a` | ![d7f7b0ada7fc1c641c90745a959f9c05](https://i.imgur.com/7uFxaWP.jpg)
-`docker images` | ![d5b0b3e2e7acdcf35e7577d7670a46f7](https://i.imgur.com/Ede9USJ.jpg)
-`docker images -a` |![ce083575e95a0e46b105c3596c12ca71](https://i.imgur.com/86wPwgT.jpg)
-`docker stop <container-id>` |![a41de8fe542efe25e3620691ad9238df](https://i.imgur.com/H0GEqJf.jpg)
-`docker kill <container-id>` |![ac1cbc31d4f191e26e05fb1a11f04d26](https://i.imgur.com/F9zAAgG.jpg)
-`docker pause <container-id>` |![b701a3c51e7d1915da3bea0bc43efcd1](https://i.imgur.com/12MQZ0E.jpg)
-`docker rm <container-id>` | ![8fa2d6e19c29f18548624efd64eb6dfa](https://i.imgur.com/VvbXmHc.jpg) <br> docker rm命令会移除构成容器的可读写层。注意，这个命令只能对非运行态容器执行。
-`docker rmi <image-id>`| ![32a7f413a5f8ff936dd0f4a31d25fdcc](https://i.imgur.com/5DgiDu6.jpg) <br> docker rmi 命令会移除构成镜像的一个只读层。<br> 只能够使用docker rmi来移除最顶层（top level layer）（也可以说是镜像）<br> 也可以使用-f参数来强制删除中间的只读层。
-`docker commit <container-id> [REPOSITORY[:TAG]]` | ![3c02ccf4e7a2a353af065d93b26ae89e](https://i.imgur.com/NsvFAtt.jpg) <br> ![28059b3a499faba896263c0ff077fe3a](https://i.imgur.com/DYct48G.jpg) <br> 将容器的可读写层转换为一个只读层，把一个容器转换成了不可变的镜像。
-`docker build -t makali:v1` | ![b22cd304f28c715ae3ae6812476b222d](https://i.imgur.com/zOlePPX.jpg) <br>![100712263ecf4544dd11602adc39ee3e](https://i.imgur.com/fBRTJCc.png) <br> build命令根据Dockerfile文件中的FROM指令获取到镜像，然后重复地 <br> 1）run（create和start）<br> 2）修改 <br> 3）commit。<br> 在循环中的每一步都会生成一个新的层，因此许多新的层会被创建。
-`docker exec <running-container-id>` | ![db64b3b38aff136d42e9ffeb81675bda](https://i.imgur.com/ac6qMxt.jpg)
-`docker inspect <container-id> or <image-id>` | ![184f9d55770ca036cb5b1e6d96ce4a12](https://i.imgur.com/5AWZAer.jpg) <br> docker inspect命令会提取出容器或者镜像最顶层的元数据。
-`docker save <image-id>` | ![70cdbaf975c88bc83423d88be85476b5](https://i.imgur.com/MNiSruI.jpg) <br> 创建一个镜像的压缩文件，这个文件能够在另外一个主机的Docker上使用。和export命令不同，这个命令为每一个层都保存了它们的元数据。这个命令只能对镜像生效。
-`docker export <container-id>` |![1714c3dd524c807bf9c9b4d0fbe4d056](https://i.imgur.com/lsayIKA.jpg) <br> 创建一个tar文件，并且移除了元数据和不必要的层，将多个层整合成了一个层，只保存了当前统一视角看到的内容 <br> expoxt后的容器再import到Docker中，通过docker images –tree命令只能看到一个镜像；<br> save后的镜像能够看到这个镜像的历史镜像
-`docker history <image-id>` | ![b513dd5467f23fdd23523f60242d5dcb](https://i.imgur.com/Tc2gUar.jpg) <br> docker history命令递归地输出指定镜像的历史镜像。
+| cmd                                               | pic                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `docker pull ubuntu:18.04`                        | download                                                                                                                                                                                                                                                                                                                                    |
+| `docker run <image-id>`                           | ![01aedf55bd21abbe607b3864d76f0ec0](https://i.imgur.com/XKic8PI.jpg)                                                                                                                                                                                                                                                                        |
+| `docker create <image-id>`                        | ![062e7af0929dd205b2ac6efdd937d6f4](https://i.imgur.com/J82Sli2.jpg)                                                                                                                                                                                                                                                                        |
+| `docker start <container-id>`                     | ![1c38d4735e9760bdca025ff50a1b5386](https://i.imgur.com/AGAzgEq.jpg) <br> ![275cc486d4ce7ecbdecf0ecc1de0a34b](https://i.imgur.com/wq40mMI.jpg)                                                                                                                                                                                              |
+| `docker ps`                                       | ![f05a2a8dfc6641d8237306ff575aa283](https://i.imgur.com/4U1HNNz.jpg)                                                                                                                                                                                                                                                                        |
+| `docker ps –a`                                    | ![d7f7b0ada7fc1c641c90745a959f9c05](https://i.imgur.com/7uFxaWP.jpg)                                                                                                                                                                                                                                                                        |
+| `docker images`                                   | ![d5b0b3e2e7acdcf35e7577d7670a46f7](https://i.imgur.com/Ede9USJ.jpg)                                                                                                                                                                                                                                                                        |
+| `docker images -a`                                | ![ce083575e95a0e46b105c3596c12ca71](https://i.imgur.com/86wPwgT.jpg)                                                                                                                                                                                                                                                                        |
+| `docker stop <container-id>`                      | ![a41de8fe542efe25e3620691ad9238df](https://i.imgur.com/H0GEqJf.jpg)                                                                                                                                                                                                                                                                        |
+| `docker kill <container-id>`                      | ![ac1cbc31d4f191e26e05fb1a11f04d26](https://i.imgur.com/F9zAAgG.jpg)                                                                                                                                                                                                                                                                        |
+| `docker pause <container-id>`                     | ![b701a3c51e7d1915da3bea0bc43efcd1](https://i.imgur.com/12MQZ0E.jpg)                                                                                                                                                                                                                                                                        |
+| `docker rm <container-id>`                        | ![8fa2d6e19c29f18548624efd64eb6dfa](https://i.imgur.com/VvbXmHc.jpg) <br> docker rm命令会移除构成容器的可读写层。注意，这个命令只能对非运行态容器执行。                                                                                                                                                                                     |
+| `docker rmi <image-id>`                           | ![32a7f413a5f8ff936dd0f4a31d25fdcc](https://i.imgur.com/5DgiDu6.jpg) <br> docker rmi 命令会移除构成镜像的一个只读层。<br> 只能够使用docker rmi来移除最顶层（top level layer）（也可以说是镜像）<br> 也可以使用-f参数来强制删除中间的只读层。                                                                                                |
+| `docker commit <container-id> [REPOSITORY[:TAG]]` | ![3c02ccf4e7a2a353af065d93b26ae89e](https://i.imgur.com/NsvFAtt.jpg) <br> ![28059b3a499faba896263c0ff077fe3a](https://i.imgur.com/DYct48G.jpg) <br> 将容器的可读写层转换为一个只读层，把一个容器转换成了不可变的镜像。                                                                                                                      |
+| `docker build -t makali:v1`                       | ![b22cd304f28c715ae3ae6812476b222d](https://i.imgur.com/zOlePPX.jpg) <br>![100712263ecf4544dd11602adc39ee3e](https://i.imgur.com/fBRTJCc.png) <br> build命令根据Dockerfile文件中的FROM指令获取到镜像，然后重复地 <br> 1）run（create和start）<br> 2）修改 <br> 3）commit。<br> 在循环中的每一步都会生成一个新的层，因此许多新的层会被创建。 |
+| `docker exec <running-container-id>`              | ![db64b3b38aff136d42e9ffeb81675bda](https://i.imgur.com/ac6qMxt.jpg)                                                                                                                                                                                                                                                                        |
+| `docker inspect <container-id> or <image-id>`     | ![184f9d55770ca036cb5b1e6d96ce4a12](https://i.imgur.com/5AWZAer.jpg) <br> docker inspect命令会提取出容器或者镜像最顶层的元数据。                                                                                                                                                                                                            |
+| `docker save <image-id>`                          | ![70cdbaf975c88bc83423d88be85476b5](https://i.imgur.com/MNiSruI.jpg) <br> 创建一个镜像的压缩文件，这个文件能够在另外一个主机的Docker上使用。和export命令不同，这个命令为每一个层都保存了它们的元数据。这个命令只能对镜像生效。                                                                                                              |
+| `docker export <container-id>`                    | ![1714c3dd524c807bf9c9b4d0fbe4d056](https://i.imgur.com/lsayIKA.jpg) <br> 创建一个tar文件，并且移除了元数据和不必要的层，将多个层整合成了一个层，只保存了当前统一视角看到的内容 <br> expoxt后的容器再import到Docker中，通过docker images –tree命令只能看到一个镜像；<br> save后的镜像能够看到这个镜像的历史镜像                             |
+| `docker history <image-id>`                       | ![b513dd5467f23fdd23523f60242d5dcb](https://i.imgur.com/Tc2gUar.jpg) <br> docker history命令递归地输出指定镜像的历史镜像。                                                                                                                                                                                                                  |
 
 
 

@@ -85,45 +85,45 @@ TOTAL 100%
 
 Domain 1: Incident Response
 
-1.1 Given an AWS abuse notice, <font color=red> evaluate the suspected compromised instance or exposed access keys </font>.
-- Given an AWS Abuse report about an EC2 instance, <font color=blue> securely isolate the instance </font> as part of a
+1.1 Given an AWS abuse notice, <font color=OrangeRed> evaluate the suspected compromised instance or exposed access keys </font>.
+- Given an AWS Abuse report about an EC2 instance, <font color=LightSlateBlue> securely isolate the instance </font> as part of a
 forensic investigation.
-- <font color=blue> Analyze logs </font> relevant to a reported instance to verify a breach, and collect relevant data.
-- <font color=blue> Capture a memory dump </font> from a suspected instance for later deep analysis or for legal compliance reasons.
+- <font color=LightSlateBlue> Analyze logs </font> relevant to a reported instance to verify a breach, and collect relevant data.
+- <font color=LightSlateBlue> Capture a memory dump </font> from a suspected instance for later deep analysis or for legal compliance reasons.
 
-1.2 Verify that the <font color=red> Incident Response plan </font> includes relevant AWS services.
-- Determine <font color=blue> if changes to baseline security configuration </font> have been made.
-- Determine <font color=blue> if list omits services, processes, or procedures </font> which facilitate Incident Response.
+1.2 Verify that the <font color=OrangeRed> Incident Response plan </font> includes relevant AWS services.
+- Determine <font color=LightSlateBlue> if changes to baseline security configuration </font> have been made.
+- Determine <font color=LightSlateBlue> if list omits services, processes, or procedures </font> which facilitate Incident Response.
 - Recommend services, processes, procedures to remediate gaps.
 
-1.3 Evaluate the configuration of <font color=red> automated alerting, and execute possible remediation </font> of security-related incidents and emerging issues.
-- <font color=blue> Automate evaluation of conformance </font> with rules for new/changed/removed resources.
-- Apply <font color=blue> rule-based alerts </font> for common infrastructure misconfigurations.
+1.3 Evaluate the configuration of <font color=OrangeRed> automated alerting, and execute possible remediation </font> of security-related incidents and emerging issues.
+- <font color=LightSlateBlue> Automate evaluation of conformance </font> with rules for new/changed/removed resources.
+- Apply <font color=LightSlateBlue> rule-based alerts </font> for common infrastructure misconfigurations.
 - Review previous security incidents and recommend improvements to existing systems.
 
 ---
 
 Domain 2: Logging and Monitoring
 
-2.1 <font color=red> Design and implement </font> security monitoring and alerting.
-- Analyze architecture and identify <font color=blue> monitoring requirements </font> and sources for monitoring statistics.
+2.1 <font color=OrangeRed> Design and implement </font> security monitoring and alerting.
+- Analyze architecture and identify <font color=LightSlateBlue> monitoring requirements </font> and sources for monitoring statistics.
 - Analyze architecture to determine which AWS services can be used to automate monitoring and alerting.
-- Analyze the requirements for <font color=blue> custom application monitoring </font>, and determine how this could be achieved.
-- Set up <font color=blue>  </font> to perform regular audits.
+- Analyze the requirements for <font color=LightSlateBlue> custom application monitoring </font>, and determine how this could be achieved.
+- Set up <font color=LightSlateBlue>  </font> to perform regular audits.
 
-2.2 <font color=red> Troubleshoot </font> security monitoring and alerting.
+2.2 <font color=OrangeRed> Troubleshoot </font> security monitoring and alerting.
 - Given an occurrence of a known event without the expected alerting, analyze the service functionality and configuration and remediate.
 - Given an occurrence of a known event without the expected alerting, analyze the permissions and remediate.
 - Given a custom application which is not reporting its statistics, analyze the configuration and remediate.
 - Review audit trails of system and user activity.
 
-2.3 <font color=red> Design and implement </font> a logging solution.
-- Analyze architecture and identify <font color=blue> logging requirements </font> and sources for log ingestion.
-- Analyze requirements and implement <font color=blue> durable and secure log storage </font> according to AWS best
+2.3 <font color=OrangeRed> Design and implement </font> a logging solution.
+- Analyze architecture and identify <font color=LightSlateBlue> logging requirements </font> and sources for log ingestion.
+- Analyze requirements and implement <font color=LightSlateBlue> durable and secure log storage </font> according to AWS best
 practices.
-- Analyze architecture to determine which AWS services can be used to <font color=blue>  </FONT>.
+- Analyze architecture to determine which AWS services can be used to <font color=LightSlateBlue>  </FONT>.
 
-2.4 <font color=red> Troubleshoot </font> logging solutions.
+2.4 <font color=OrangeRed> Troubleshoot </font> logging solutions.
 - Given the absence of logs, determine the incorrect configuration and define remediation steps.
 - Analyze logging access permissions to determine incorrect configuration and define remediation steps.
 - Based on the security policy requirements, determine the correct log level, type, and sources.
@@ -132,7 +132,7 @@ practices.
 
 Domain 3: Infrastructure Security
 
-3.1 Design <font color=red> edge security </font> on AWS.
+3.1 Design <font color=OrangeRed> edge security </font> on AWS.
 - For a given workload, assess and limit the attack surface.
 - Reduce blast radius (e.g. by distributing applications across accounts and regions).
 - Choose appropriate AWS and/or third-party edge services such as WAF, CloudFront and Route 53 to protect against DDoS or filter application-level attacks.
@@ -140,7 +140,7 @@ Domain 3: Infrastructure Security
 - Test WAF rules to ensure they block malicious traffic.
 
 
-3.2 Design and implement a <font color=red> secure network infrastructure </FONT>.
+3.2 Design and implement a <font color=OrangeRed> secure network infrastructure </FONT>.
 - Disable any unnecessary network ports and protocols.
 - Given a set of edge protection requirements, evaluate the security groups and NACLs of an application for compliance and recommend required changes.
 - Given security requirements, decide on network segmentation (e.g. security groups and NACLs) that allow the minimum ingress/egress access required.
@@ -148,12 +148,12 @@ Domain 3: Infrastructure Security
 - Determine the use case for enabling VPC Flow Logs.
 - Given a description of the network infrastructure for a VPC, analyze the use of subnets and gateways for secure operation.
 
-3.3 <font color=red> Troubleshoot </font> a secure network infrastructure.
+3.3 <font color=OrangeRed> Troubleshoot </font> a secure network infrastructure.
 - Determine where network traffic flow is being denied.
 - Given a configuration, confirm security groups and NACLs have been implemented correctly.
 
 
-3.4 Design and implement <font color=red> host-based security </font>.
+3.4 Design and implement <font color=OrangeRed> host-based security </font>.
 - Given security requirements, install and configure host-based protections including Inspector, SSM.
 - Decide when to use host-based firewall like iptables.
 - Recommend methods for host hardening and monitoring.
@@ -163,7 +163,7 @@ Domain 3: Infrastructure Security
 
 Domain 4: Identity and Access Management
 
-4.1 Design and implement a <font color=red> scalable authorization and authentication sys. em</font> to access AWS resources.
+4.1 Design and implement a <font color=OrangeRed> scalable authorization and authentication sys. em</font> to access AWS resources.
 - Given a description of a workload, analyze the access control configuration for AWS services and make recommendations that reduce risk.
 - Given a description how an organization manages their AWS accounts, verify security of their root user.
 - Given your organization’s compliance requirements, determine when to apply user policies and resource policies.
@@ -172,7 +172,7 @@ Domain 4: Identity and Access Management
 - Identify and restrict individual users of data and AWS resources.
 - Review policies to establish that users/systems are restricted from performing functions beyond their responsibility, and also enforce proper separation of duties.
 
-4.2 <font color=red> Troubleshoot </font> an authorization and authentication system to access AWS resources.
+4.2 <font color=OrangeRed> Troubleshoot </font> an authorization and authentication system to access AWS resources.
 - Investigate a user’s inability to access S3 bucket contents.
 - Investigate a user’s inability to switch roles to a different account.
 - Investigate an Amazon EC2 instance’s inability to access a given AWS resource.
