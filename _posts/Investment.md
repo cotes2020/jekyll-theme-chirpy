@@ -1,7 +1,10 @@
 ---
-layout: category
-title: Investment        
-category: Project     
+title: Investment
+author: Gabriel
+description: Data Projects
+date: 2024-03-27 22:30:00 +0200
+categories: [Projects, Investment]
+tags: [Projects]
 ---
 
 <a href="https://github.com/GabrielFersPin/BestInvestment.git" target="_blank">
