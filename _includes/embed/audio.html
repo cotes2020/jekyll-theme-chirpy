@@ -1,6 +1,7 @@
+{% assign src = include.src | strip %}
+{% assign title = include.title | strip %}
 {% assign extnames = include.extnames | default: '' | strip | split: '|' %}
 
-{% assign src = include.src | strip %}
 {% unless src contains '://' %}
   {%- capture src -%}
     {% include img-url.html src=src %}
@@ -9,14 +10,34 @@
 
 <p>
   <audio class="embed-audio" controls>
-    {%
-      include embed/multi-sources.html
-      tag='audio'
-      src=src
-      extnames=extnames
-    %}
+    {% assign parts = src | split: '/' %}
+    {% assign filename = parts | last %}
+    {% assign extname = filename | split: '.' | last %}
+    {% assign basename = filename | split: '.' | pop | join: '.' %}
+    {% assign path = parts | pop | join: '/' %}
+
+    {% assign media_item = site.data.media | find: 'extension', extname %}
+    {% if media_item %}
+      <source src="{{ src }}" type="audio/{{ media_item['mimeType'] }}">
+    {% else %}
+      <source src="{{ src }}" type="audio/{{ extname }}">
+    {% endif %}
+
+    {% for extra_extname in extnames %}
+      {% assign filename = basename | append: '.' | append: extra_extname %}
+      {% assign extra_src = path | append: '/' | append: filename %}
+      {% assign media_item = site.data.media | find: 'extension', extra_extname %}
+      {% if media_item %}
+        <source src="{{ extra_src }}" type="audio/{{ media_item['mimeType'] }}">
+      {% else %}
+        <source src="{{ extra_src }}" type="audio/{{ extra_extname }}">
+      {% endif %}
+    {% endfor %}
+
+    Your browser does not support the audio tag. Here is a
+    <a href="{{ src | strip }}">link to the audio file</a> instead.
   </audio>
-  {% if include.title %}
-    <em>{{ include.title }}</em>
+  {% if title %}
+    <em>{{ title }}</em>
   {% endif %}
 </p>
