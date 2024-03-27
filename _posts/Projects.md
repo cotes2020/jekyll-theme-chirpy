@@ -21,7 +21,6 @@ The main goal with this project was to find the tootal Oscar candidate actors/ac
 
 "[GitHub FilmAffinity Repository](https://github.com/GabrielFersPin/FilmAfinnity-Project.git)"
 
-
 <a href="https://github.com/GabrielFersPin/BestInvestment.git" target="_blank">
     <img align="center" src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Graph" height="100" />
 </a>
