@@ -5,7 +5,6 @@ description: Data Projects
 date: 2024-03-27 22:30:00 +0200
 categories: [Blogging, Data]
 tags: [projects]
-render_with_liquid: false
 ---
 
 [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/braydon-coyer/)
