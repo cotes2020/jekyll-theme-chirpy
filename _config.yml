@@ -16,14 +16,14 @@ timezone: America/New_York
 
 title: Grace # the main title
 
-tagline: IT Page   # it will display as the sub-title
+tagline: IT Page 2024 Mar # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A webpages focus on IT learning path.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: 'https://ocholuo.github.io/'
+url: "https://ocholuo.github.io/"
 
 github:
   username: ocholuo # change to your github username
@@ -44,18 +44,33 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+# Site Verification Settings
+webmaster_verifications:
+  google: # fill in your Google verification code
+  bing: # fill in your Bing verification code
+  alexa: # fill in your Alexa verification code
+  yandex: # fill in your Yandex verification code
+  baidu: # fill in your Baidu verification code
+  facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id: 'UA-179830187-1' # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
-  pv:
-    # fill in the Google Analytics superProxy endpoint of Google App Engine
-    proxy_endpoint: 'https://myochosite-291718.ue.r.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDYmr-ACgw'
-    cache_path: # the local PV cache data, friendly to visitors from GFW region
+# Web Analytics Settings
+analytics:
+  google:
+    id: "UA-179830187-1" # fill in your Google Analytics ID
+  # # Google Analytics pageviews report settings
+  # pv:
+  #   # fill in the Google Analytics superProxy endpoint of Google App Engine
+  #   proxy_endpoint: 'https://myochosite-291718.ue.r.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDYmr-ACgw'
+  #   cache_path: # the local PV cache data, friendly to visitors from GFW region
+  goatcounter:
+    id: # fill in your GoatCounter ID
+
+# Pageviews settings
+pageviews:
+  provider: # now only supports 'goatcounter'
 
 # Prefer color scheme setting.
 #
@@ -78,7 +93,7 @@ theme_mode: dark # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: '/assets/img/huoye.jpg'
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -88,6 +103,7 @@ social_preview_image: '/assets/img/huoye.jpg' # string, local or CORS resources
 toc: true
 
 comments:
+  # Global switch for the post comment system. Keeping it empty means disabled.
   active: 'disqus' # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
@@ -116,7 +132,14 @@ assets:
     env: # [development|production]
 
 pwa:
-  enabled: true # the option for PWA feature
+  enabled: true # the option for PWA feature (installable)
+  cache:
+    enabled: true # the option for PWA offline cache
+    # Paths defined here will be excluded from the PWA cache.
+    # Usually its value is the `baseurl` of another website that
+    # shares the same domain name as the current website.
+    deny_paths:
+      # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
 paginate: 15
 
@@ -162,10 +185,6 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-  - scope:
-      path: assets/img/favicons
-    values:
-      swcache: true
   - scope:
       path: assets/js/dist
     values:
