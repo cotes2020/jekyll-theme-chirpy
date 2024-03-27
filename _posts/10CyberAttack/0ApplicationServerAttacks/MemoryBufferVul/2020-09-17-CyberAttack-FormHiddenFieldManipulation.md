@@ -13,9 +13,9 @@ image:
 ---
 
 # Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities - Form/Hidden field manipulation
- 
+
 book: CEH Prep ch13
- 
+
 <font color=LightSlateBlue></font>
 <font color=OrangeRed></font>
 
@@ -23,6 +23,6 @@ book: CEH Prep ch13
 
 ## Form/Hidden field manipulation
 
-- altering the data in a hidden ﬁeld 
+- altering the data in a hidden ﬁeld
 
 - in order for an application to use attack-related data.

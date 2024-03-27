@@ -15,18 +15,18 @@ image:
 # Meow's CyberAttack - Application/Server Attacks - Injection
 
 book: Security+ 7th ch9
- 
+
 <font color=LightSlateBlue></font>
 <font color=OrangeRed></font>
 
 ---
 
-## Injection 
+## Injection
 
 
-One successful web application attack, <font color=LightSlateBlue>injecting malicious commands into the input string</font>. 
+One successful web application attack, <font color=LightSlateBlue>injecting malicious commands into the input string</font>.
 
-- The objective: to pass exploit code to the server through poorly designed input validation in the application. 
+- The objective: to pass exploit code to the server through poorly designed input validation in the application.
 
 
 Many types of injection attacks can occur.
@@ -38,3 +38,8 @@ Many types of injection attacks can occur.
 - <font color=OrangeRed>command injection</font>: injects `commands` into the form fields instead of the expected test entry
 
 - <font color=OrangeRed>shell injection</font>: `gain shell access` using Java or other functions
+
+
+- <font color=OrangeRed>SQL injection</font>: exploit weaknesses in statements input by users.
+
+- <font color=OrangeRed>LDAP injection</font>: exploits weaknesses in LDAP (Lightweight Directory Access Protocol) implementations.

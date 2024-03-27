@@ -14,8 +14,8 @@ image:
 
 # Meow's CyberAttack - Application/Server Attacks - Injection - Header Manipulation
 
-book: 
- 
+book:
+
 <font color=LightSlateBlue></font>
 <font color=OrangeRed></font>
 
@@ -23,8 +23,8 @@ book:
 
 ## Header Manipulation
 
-- Insertion of malicious data, which has not been validated, into a HTTP response header. 
+- Insertion of malicious data, which has not been validated, into a HTTP response header.
 
 - Example
-  - HTTP response splitting attack: exploits applications that allow a carriage return or line feed as input. 
-  - intercepted HTTP traffic and inserted an ASCII line that sets the referrer URL 
+  - HTTP response splitting attack: exploits applications that allow a carriage return or line feed as input.
+  - intercepted HTTP traffic and inserted an ASCII line that sets the referrer URL

@@ -8,9 +8,8 @@ image:
 ---
 
 - [Meow's CyberAttack - Application/Server Attacks - Injection - Driver Manipulation](#meows-cyberattack---applicationserver-attacks---injection---driver-manipulation)
-  - [Driver Manipulation](#driver-manipulation)
-    - [Drivers](#drivers)
-    - [Drivers manipulation](#drivers-manipulation)
+  - [Drivers](#drivers)
+  - [Drivers manipulation](#drivers-manipulation)
     - [Shimming](#shimming)
     - [Refactoring](#refactoring)
 
@@ -25,9 +24,7 @@ book: Security+ ch7
 
 ---
 
-## Driver Manipulation
-
-### Drivers
+## Drivers
 
 - Operating systems use <font color=OrangeRed>drivers</font> to interact with hardware devices or software components.
 
@@ -41,7 +38,7 @@ Example:
 
 ---
 
-### Drivers manipulation
+## Drivers manipulation
 
 - causes the driver(s) to `be bypassed altogether` or `to do what it was programmed to do—just not with the values that it should be receiving`.
 
@@ -59,50 +56,54 @@ when a driver is no longer compatible. They Developers can:
 - Shimming
 - Refactoring
 
+In the malware world, Attackers with strong programming skills can use their knowledge to manipulate drivers by either creating shims, or by rewriting the internal code.
+
+- If the attackers can <font color=LightSlateBlue>fool the operating system into using a manipulated driver</font>, they can cause it to run malicious code contained within the manipulated driver.
+
 ---
 
 ### Shimming
 
 - Shim: (填隙用木片；夹铁)
-  - a small library
-  - write a shim to provide compatibility
-  - When an app attempts to call an older driver,
-  - the operating system intercepts the call and redirects it to run the shim code instead.
 
-  - created to intercept API calls transparently and do one of three things:
-  - handle the operation itself,
-  - change the arguments passed,
-  - or redirect the request elsewhere.
+- a small library
+
+- <font color=OrangeRed>write a shim</font> to provide compatibility
+  - When an app attempts to call an older driver,
+  - the operating system intercepts the call and redirects it to <font color=LightSlateBlue>run the shim code instead</font>.
+
+- created to intercept API calls transparently and do one of three things
+  - handle the operation itself
+  - change the arguments passed
+  - or redirect the request elsewhere
 
 - Often, shims are written to support old APIs
 
-- Conversely, shims can be written to support a new API in an older environment (less common), give them functionality that weren’t originally written to have (which they weren’t developed, like run on OS versions).
+- Conversely, shims can be written to <font color=LightSlateBlue>support a new API in an older environment (less common)</font>, give them functionality that weren’t originally written to have (which they weren’t developed, like run on OS versions).
 
-- In terms of malware:
 
-- Shimming: involves creating or modifying a library, to bypass a driver and perform a function other than the one for which the API was created.
+In terms of malware:
 
+- Shimming: involves <font color=LightSlateBlue>creating or modifying a library</font>, to <font color=OrangeRed>bypass a driver and perform a function other than the one for which the API was created</font>.
+
+---
 
 ### Refactoring
 
 - a set of techniques
 
-- to identify the flow and then modify the internal structure of code without changing the code’s visible behavior.
+- to <font color=OrangeRed>identify the flow and then modify the internal structure of code</font> <font color=LightSlateBlue>without changing the code’s visible behavior</font>.
 
-- Refactoring code is the process of rewriting the internal processing of the code, without changing its external behavior.
+- <font color=OrangeRed>Refactoring code</font> is the process of rewriting the internal processing of the code, without changing its external behavior.
 
 - completely rewrite the driver to refactor the relevant code.
   - If the code is clunky, better rewrite the driver.
   - Usually for correct problems of software design.
 
 
-- In the non-malware world:
-  - done in order to improve the design, to remove unnecessary steps, and to create better code.
-
-- In the malware world:
-  - done to look for opportunities to take advantage of weak code and look for holes that can be exploited.
+In the non-malware world:
+- done in order to improve the design, to remove unnecessary steps, and to create better code.
 
 
-Attackers with strong programming skills can use their knowledge to manipulate drivers by either creating shims, or by rewriting the internal code.
-
-- If the attackers can fool the operating system into using a manipulated driver, they can cause it to run malicious code contained within the manipulated driver.
+In the malware world:
+- done to look for opportunities to take advantage of weak code and look for holes that can be exploited.
