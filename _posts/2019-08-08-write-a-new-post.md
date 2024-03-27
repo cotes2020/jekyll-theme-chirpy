@@ -1,9 +1,10 @@
 ---
-title: Writing a New Post
-author: cotes
-date: 2019-08-08 14:10:00 +0800
-categories: [Blogging, Tutorial]
-tags: [writing]
+title: Projects
+author: Gabriel
+description: Data Projects
+date: 2024-03-27 22:30:00 +0200
+categories: [Blogging, Data]
+tags: [projects]
 render_with_liquid: false
 ---
 
@@ -18,6 +19,7 @@ render_with_liquid: false
 This project was made for test the web scrapping with BeautifulSoup
 
 The main goal with this project was to find the tootal Oscar candidate actors/actresses who have the most famous films by genre.
+
 "[GitHub FilmAffinity Repository](https://github.com/GabrielFersPin/FilmAfinnity-Project.git)"
 
 <a href="https://github.com/GabrielFersPin/BestInvestment.git" target="_blank">
