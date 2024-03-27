@@ -1,9 +1,10 @@
 ---
 title: Data Journey
+date: 2024-04-27 21:00:00 +0200
 description: The Roadmap of the tools that I get for do cool projects
 author: Gabriel
 categories: [Blogging, Demo]
-tags: [typography]
+tags: [Journey]
 pin: true
 math: true
 mermaid: true
