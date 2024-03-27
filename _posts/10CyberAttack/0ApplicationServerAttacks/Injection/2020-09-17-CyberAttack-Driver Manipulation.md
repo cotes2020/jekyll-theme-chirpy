@@ -30,7 +30,8 @@ Drivers
 
 - Operating systems use drivers to interact with hardware devices or software components.
 
-- Example:
+
+Example:
 
 - print a page using Microsoft Word,
   - Word accesses the appropriate print driver via the Windows operating system.
