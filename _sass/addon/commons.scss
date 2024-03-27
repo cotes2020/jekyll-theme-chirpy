@@ -575,6 +575,13 @@ main {
   @extend %img-caption;
 }
 
+.embed-audio {
+  width: 100%;
+  display: block;
+
+  @extend %img-caption;
+}
+
 /* --- buttons --- */
 .btn-lang {
   border: 1px solid !important;

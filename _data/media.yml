@@ -1,0 +1,8 @@
+- extension: mp3
+  mimeType: mpeg
+- extension: mov
+  mimeType: quicktime
+- extension: avi
+  mimeType: x-msvideo
+- extension: mkv
+  mimeType: x-matroska
