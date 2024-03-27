@@ -74,7 +74,7 @@ to use CAF and AWS Well-Architected to help meet NIST CSF objectives, process in
 - Its technology and industry-agnostic approach allows for an outcome-based common taxonomy that you can use across the business, from the board level to the technical teams.
 - We continue to see accelerating adoption of the CSF across industries and countries, and its principles are becoming standardized approaches, as we see in the latest ISO 27103:2018 and draft ISO 27101 standards.
 
-The NIST CSF consists of three elements — <font color=OrangeRed> Core, Tiers, and Profiles.</font>
+The NIST CSF consists of three elements — <font color=OrangeRed> Core, Tiers, and Profiles</font>.
 - The Core
   - includes five continuous functions: <font color=LightSlateBlue> Identify, Protect, Detect, Respond, and Recover </font>
   - you can map to other standards or control requirements as required by the business. 
