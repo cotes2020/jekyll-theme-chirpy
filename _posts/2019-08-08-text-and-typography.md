@@ -80,11 +80,11 @@ tags: [Journey]
     - Start to visualize some works that I can do for companies.
 - January
     - Drop out from college
-    -Try to find some project to do by myself
-    -Start working with a coworking space project
+    - Try to find some project to do by myself
+    - Start working with a coworking space project
 - February:
-    -Continue to work on the coworking project
-    -Change all the project to work in my new Ubunutu 
+    - Continue to work on the coworking project
+    - Change all the project to work in my new Ubunutu 
 - March:
-    -Start to get more knowledge in statistiscs and probability on work.
-    -Getting more familiar with connecting databases with visualization tools.
+    - Start to get more knowledge in statistiscs and probability on work.
+    - Getting more familiar with connecting databases with visualization tools.
