@@ -5,6 +5,9 @@ description: Data Projects
 date: 2024-03-27 22:30:00 +0200
 categories: [Projects, Filmaffinity]
 tags: [Projects]
+pin: true
+math: true
+mermaid: true
 ---
 
 <a href="https://github.com/GabrielFersPin/FilmAfinnity-Project.git" target="_blank">

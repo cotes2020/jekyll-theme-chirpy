@@ -5,6 +5,9 @@ description: The Roadmap of the tools that I get for do cool projects
 author: Gabriel
 categories: [Roadmap, Journey]
 tags: [Journey]
+pin: true
+math: true
+mermaid: true
 ---
 
 ## My journey
