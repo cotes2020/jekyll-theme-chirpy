@@ -747,7 +747,7 @@ $btn-mb: 0.5rem;
     line-height: 1.2;
     letter-spacing: 0.25px;
     margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 
     a {
       @extend %clickable-transition;
@@ -759,11 +759,11 @@ $btn-mb: 0.5rem;
   }
 
   .site-subtitle {
-    font-size: 95%;
+    font-size: 110%;
     //color: var(--site-subtitle-color);
     color: rgba(255, 255, 255, 0.8);
     margin-top: 0.25rem;
-    word-spacing: 1px;
+    word-spacing: 3px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
