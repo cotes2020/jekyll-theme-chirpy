@@ -9,12 +9,11 @@ pin: true
 math: true
 mermaid: true
 ---
+## FilmAffinity project
 
 <a href="https://github.com/GabrielFersPin/FilmAfinnity-Project.git" target="_blank">
     <img align="center" src="https://images.pexels.com/photos/12282183/pexels-photo-12282183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Oscars statue" height="100" />
 </a>
-
-# FilmAffinity project
 
 This project was made for test the web scrapping with BeautifulSoup
 

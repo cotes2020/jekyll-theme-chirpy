@@ -10,11 +10,11 @@ math: true
 mermaid: true
 ---
 
+# Investment
+
 <a href="https://github.com/GabrielFersPin/BestInvestment.git" target="_blank">
     <img align="center" src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Graph" height="100" />
 </a>
-
-# Investment
 
 This project was made to testing web scrapping with Selenium
 
