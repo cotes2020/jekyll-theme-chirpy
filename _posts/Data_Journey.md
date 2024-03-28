@@ -3,7 +3,7 @@ title: Data Journey
 date: 2024-03-27 21:00:00 +0200
 description: The Roadmap of the tools that I get for do cool projects
 author: Gabriel
-categories: [Roadmap]
+categories: [Roadmap, Journey]
 tags: [Journey]
 ---
 
