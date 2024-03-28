@@ -9,6 +9,10 @@ pin: true
 math: true
 mermaid: true
 ---
+[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/braydon-coyer/)
+
+[![GitHub FilmAffinity Repository](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/GabrielFersPin/FilmAfinnity-Project.git)
+
 ## FilmAffinity project
 
 <a href="https://github.com/GabrielFersPin/FilmAfinnity-Project.git" target="_blank">
@@ -19,4 +23,4 @@ This project was made for test the web scrapping with BeautifulSoup
 
 The main goal with this project was to find the tootal Oscar candidate actors/actresses who have the most famous films by genre.
 
-"[GitHub FilmAffinity Repository](https://github.com/GabrielFersPin/FilmAfinnity-Project.git)"
+[[GitHub FilmAffinity Repository](https://github.com/GabrielFersPin/FilmAfinnity-Project.git)]
