@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl:
+baseurl: 
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -23,7 +23,7 @@ timezone: Europe/Amsterdam
 
 title: Mark Pierce                          # the main title
 
-tagline: A personal website about me.   # it will display as the sub-title
+tagline: Organic Code Farmer.   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   TODO
@@ -34,8 +34,8 @@ url: 'https://mpierce.io'
 github:
   username: MarkDPierce             # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
+#twitter:
+#  username: twitter_username            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -43,12 +43,7 @@ social:
   name: Mark Pierce
   email: mark@mpierce.io             # change to your email address
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/markdpierce       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+     - https://www.linkedin.com/in/mdpierce1/
 
 google_site_verification:               # fill in to your verification string
 
@@ -73,7 +68,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: light  # [light|dark]
+theme_mode: dark  # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -83,7 +78,7 @@ theme_mode: light  # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: assets/img/favicons/fotor-ai-2023111819324.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true

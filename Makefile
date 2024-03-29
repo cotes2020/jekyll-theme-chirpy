@@ -5,4 +5,4 @@ local:
       --volume="$$PWD/vendor/bundle:/usr/local/bundle" \
       --platform linux/amd64 \
       -it \
-      --publish 4000:4000 jekyll/jekyll:4.2.0 jekyll serve
+      --publish 4000:4000 jekyll/jekyll:4.2.0 jekyll serve --livereload --force_polling
