@@ -1,0 +1,24 @@
+name: LinkChecker
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  checklinks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Ruby
+        uses: ruby/setup-ruby@d4526a55538b775af234ba4af27118ed6f8f6677 # v1.172.0
+        with:
+          bundler-cache: true
+      - name: Build jekyll website with drafts
+        run: bundle exec jekyll build --drafts
+      - name: Check for broken links
+        run: |
+          bundle exec htmlproofer \
+            ./_site --no-check-external-hash \
+            --typhoeus '{"timeout": 50}' \
+            --log-level :debug

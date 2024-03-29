@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           ref: ${{ github.head_ref }} # so PRs resolve to correct branch
           fetch-depth: 0 # needed for only_changed below
           persist-credentials: false # don't save the DBK_INFRA_BOT_GITHUB_TOKEN
-      - run: git config --global user.name "infra-bot" && git config --global user.email "mark@mark@mpierce.io"
+      - run: git config --global user.name "infra-bot" && git config --global user.email "mark@mpierce.io"
       - name: Prettify code
-        uses: creyD/prettier_action@v4.2
+        uses: creyD/prettier_action@31355f8eef017f8aeba2e0bc09d8502b13dbbad1 #v4.3
         with:
           commit_message: "Prettier"
           only_changed: True
