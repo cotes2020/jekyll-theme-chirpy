@@ -16,6 +16,7 @@ description: Cet article explique le fonctionnement de NTLM dans ces différente
   et de Kerberos v5 au sein de l’environnement Active Directory. Les différences entre
   ces protocoles seront étudiées, ainsi que les attaques liées à ces protocoles.
 date: 2023-09-27 19:00 +0100
+lang: fr-FR
 ---
 <style>
 .tab {
