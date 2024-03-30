@@ -3,32 +3,32 @@ import terser from '@rollup/plugin-terser';
 import license from 'rollup-plugin-license';
 import path from 'path';
 
-const SRC_DEFAULT = '_javascript';
-const DIST_DEFAULT = 'assets/js/dist';
+const JS_SRC = '_javascript';
+const JS_DIST = 'assets/js/dist';
 const isProd = process.env.NODE_ENV === 'production';
 
 function build(filename) {
   return {
-    input: [`${SRC_DEFAULT}/${filename}.js`],
+    input: [`${JS_SRC}/${filename}.js`],
     output: {
-      file: `${DIST_DEFAULT}/${filename}.min.js`,
+      file: `${JS_DIST}/${filename}.min.js`,
       format: 'iife',
       name: 'Chirpy',
       sourcemap: !isProd
     },
     watch: {
-      include: `${SRC_DEFAULT}/**`
+      include: `${JS_SRC}/**`
     },
     plugins: [
       babel({
         babelHelpers: 'bundled',
         presets: ['@babel/env'],
-        plugins: ['@babel/plugin-transform-class-properties']
+        plugins: ['@babel/plugin-proposal-class-properties']
       }),
       license({
         banner: {
           commentStyle: 'ignored',
-          content: { file: path.join(__dirname, SRC_DEFAULT, '_copyright') }
+          content: { file: path.join(__dirname, JS_SRC, '_copyright') }
         }
       }),
       isProd && terser()

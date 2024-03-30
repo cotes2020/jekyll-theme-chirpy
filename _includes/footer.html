@@ -8,15 +8,9 @@
   "
 >
   <p>
-    {{- '©' }}
+    {{ '©' }}
     <time>{{ 'now' | date: '%Y' }}</time>
-
-    {% if site.social.links %}
-      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-    {% else %}
-      <em class="fst-normal">{{ site.social.name }}</em>.
-    {% endif %}
-
+    <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
     {% if site.data.locales[include.lang].copyright.brief %}
       <span
         data-bs-toggle="tooltip"
@@ -34,14 +28,7 @@
     {%- endcapture -%}
 
     {%- capture _theme -%}
-      <a
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="v{{ theme.version }}"
-        href="https://github.com/cotes2020/jekyll-theme-chirpy"
-        target="_blank"
-        rel="noopener"
-      >Chirpy</a>
+      <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
     {%- endcapture -%}
 
     {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
