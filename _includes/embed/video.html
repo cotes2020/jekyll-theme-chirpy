@@ -1,7 +1,7 @@
 {% assign video_url = include.src %}
 {% assign title = include.title %}
 {% assign poster_url = include.poster %}
-{% assign extnames = include.extnames | default: '' | strip | split: '|' %}
+{% assign types = include.types | default: '' | strip | split: '|' %}
 
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
@@ -36,25 +36,25 @@
   <video class="embed-video file" {{ poster }} {{ attributes }}>
     {% assign parts = video_url | split: '/' %}
     {% assign filename = parts | last %}
-    {% assign extname = filename | split: '.' | last %}
+    {% assign extension = filename | split: '.' | last %}
     {% assign basename = filename | split: '.' | pop | join: '.' %}
     {% assign path = parts | pop | join: '/' %}
 
-    {% assign media_item = site.data.media | find: 'extension', extname %}
+    {% assign media_item = site.data.media | find: 'extension', extension %}
     {% if media_item %}
-      <source src="{{ video_url }}" type="audio/{{ media_item['mimeType'] }}">
+      <source src="{{ video_url }}" type="video/{{ media_item['mimeType'] }}">
     {% else %}
-      <source src="{{ video_url }}" type="audio/{{ extname }}">
+      <source src="{{ video_url }}" type="video/{{ extension }}">
     {% endif %}
 
-    {% for extra_extname in extnames %}
-      {% assign filename = basename | append: '.' | append: extra_extname %}
+    {% for extra_type in types %}
+      {% assign filename = basename | append: '.' | append: extra_type %}
       {% assign extra_src = path | append: '/' | append: filename %}
-      {% assign media_item = site.data.media | find: 'extension', extra_extname %}
+      {% assign media_item = site.data.media | find: 'extension', extra_type %}
       {% if media_item %}
-        <source src="{{ extra_src }}" type="audio/{{ media_item['mimeType'] }}">
+        <source src="{{ extra_src }}" type="video/{{ media_item['mimeType'] }}">
       {% else %}
-        <source src="{{ extra_src }}" type="audio/{{ extra_extnames }}">
+        <source src="{{ extra_src }}" type="video/{{ extra_type }}">
       {% endif %}
     {% endfor %}
 

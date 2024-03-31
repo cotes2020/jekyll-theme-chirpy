@@ -1,6 +1,6 @@
 {% assign src = include.src | strip %}
 {% assign title = include.title | strip %}
-{% assign extnames = include.extnames | default: '' | strip | split: '|' %}
+{% assign types = include.types | default: '' | strip | split: '|' %}
 
 {% unless src contains '://' %}
   {%- capture src -%}
@@ -12,25 +12,25 @@
   <audio class="embed-audio" controls>
     {% assign parts = src | split: '/' %}
     {% assign filename = parts | last %}
-    {% assign extname = filename | split: '.' | last %}
+    {% assign extension = filename | split: '.' | last %}
     {% assign basename = filename | split: '.' | pop | join: '.' %}
     {% assign path = parts | pop | join: '/' %}
 
-    {% assign media_item = site.data.media | find: 'extension', extname %}
+    {% assign media_item = site.data.media | find: 'extension', extension %}
     {% if media_item %}
       <source src="{{ src }}" type="audio/{{ media_item['mimeType'] }}">
     {% else %}
-      <source src="{{ src }}" type="audio/{{ extname }}">
+      <source src="{{ src }}" type="audio/{{ extension }}">
     {% endif %}
 
-    {% for extra_extname in extnames %}
-      {% assign filename = basename | append: '.' | append: extra_extname %}
+    {% for extra_type in types %}
+      {% assign filename = basename | append: '.' | append: extra_type %}
       {% assign extra_src = path | append: '/' | append: filename %}
-      {% assign media_item = site.data.media | find: 'extension', extra_extname %}
+      {% assign media_item = site.data.media | find: 'extension', extra_type %}
       {% if media_item %}
         <source src="{{ extra_src }}" type="audio/{{ media_item['mimeType'] }}">
       {% else %}
-        <source src="{{ extra_src }}" type="audio/{{ extra_extname }}">
+        <source src="{{ extra_src }}" type="audio/{{ extra_type }}">
       {% endif %}
     {% endfor %}
 
