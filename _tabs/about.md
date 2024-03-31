@@ -28,6 +28,9 @@ In november 2023, I started a full time job as Pentester at XMCO.
  - 🖥 I loooove AD pentesting (in case you haven't noticed)
  - 🎌 I'm a CTF developer for the international CTF [HackDay](https://hackday.fr)
 
+## Contact me:
+If you want to have technical or professionnal discussion, feel free to add me on discord: **wwwGeneral#0257** or on Twitter [@wwwGeneralFR](https://twitter.com/wwwGeneralFR)
+
 ## Goals to complete on 2023:
 - 👾 Let's start my journey in offsec world:
     - [X] HTB Offshore Prolab
@@ -57,11 +60,6 @@ In november 2023, I started a full time job as Pentester at XMCO.
 ## Hacking Platforms:
  [![wwwGeneral](https://www.hackthebox.eu/badge/image/799064)](https://app.hackthebox.com/profile/799064){: .normal }
  [![wwwGeneral](https://tryhackme-badges.s3.amazonaws.com/wwwGeneral.png)](https://tryhackme.com/p/wwwGeneral){: .normal }
-
-## Contact me:
-If you want to have technical or professionnal discussion, feel free to add me on discord: **wwwGeneral#0257** or on Twitter [@wwwGeneralFR](https://twitter.com/wwwGeneralFR)
-
-![visitors](https://visitor-badge.glitch.me/badge?page_id=wwwGeneral.wwwgeneral.github.io)
 
 ## Scores:
 ![stats](https://github-readme-stats.vercel.app/api?username=wwwGeneral){: .normal }
