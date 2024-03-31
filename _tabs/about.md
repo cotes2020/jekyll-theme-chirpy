@@ -19,19 +19,32 @@ At some point, I took a course on pentesting in Active Directory environment and
 
 I did some internships to strengthen my knowledge in this field.
 
-If you have a job to offer me, please don't hesitate to contact me directly to discuss it !
+In november 2023, I started a full time job as Pentester at XMCO.
 ```
 
+## About me:
+ - 🎮 I do play video games between hacking sessions
+ - 🎌 I'm practicing on CTF, tryhackme and HTB
+ - 🖥 I loooove AD pentesting (in case you haven't noticed)
+ - 🎌 I'm a CTF developer for the international CTF [HackDay](https://hackday.fr)
+
 ## Goals to complete on 2023:
-- 👾 I try to get certified in Active Directory:
+- 👾 Let's start my journey in offsec world:
     - [X] HTB Offshore Prolab
-    - [ ] Teaching Active Directory pentesting
-    - [ ] CRTO
-  
+    - [X] Becoming a professional pentester
+    - [X] Teaching Active Directory pentesting
+
+## Goals to complete on 2024:
+- 👾 Trying to get certified:
+    - [ ] CRTO I
+    - [ ] OSCP
+    - [ ] Zephyr HTB Pro Lab
+    - [ ] RastaLabs HTB Pro Lab
+
 ## Futur Goals: 
 - 👽 Get even more certifications:
+    - [ ] CRTO II
     - [ ] OSEP
-    - [ ] OSCP
     - [ ] CRTP
     - [ ] CRTE
    
@@ -40,21 +53,15 @@ If you have a job to offer me, please don't hesitate to contact me directly to d
     - [ ] Cybernetics
     - [ ] APTProlabs
     
-## About me:
- - 🎮 I do play video games between hacking sessions
- - 🎌 I'm practicing on CTF, tryhackme and HTB
- - 🖥 I loooove AD pentesting (in case you haven't noticed)
- 
 ----
-
+## Hacking Platforms:
  [![wwwGeneral](https://www.hackthebox.eu/badge/image/799064)](https://app.hackthebox.com/profile/799064){: .normal }
  [![wwwGeneral](https://tryhackme-badges.s3.amazonaws.com/wwwGeneral.png)](https://tryhackme.com/p/wwwGeneral){: .normal }
 
-
 ## Contact me:
-If you want to have technical or professionnal discussion, feel free to add me on discord: **wwwGeneral#0257** or on Twitter @wwwGeneralFR
+If you want to have technical or professionnal discussion, feel free to add me on discord: **wwwGeneral#0257** or on Twitter [@wwwGeneralFR](https://twitter.com/wwwGeneralFR)
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=wwwGeneral.visitor-badge)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=wwwGeneral.wwwgeneral.github.io)
 
 ## Scores:
 ![stats](https://github-readme-stats.vercel.app/api?username=wwwGeneral){: .normal }
