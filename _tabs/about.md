@@ -19,12 +19,14 @@ At some point, I took a course on pentesting in Active Directory environment and
 
 I did some internships to strengthen my knowledge in this field.
 
+I finally graduated as class valedictorian with an engineering degree specialising in cybersecurity! 
+
 In november 2023, I started a full time job as Pentester at XMCO.
 ```
 
 ## About me:
  - 🎮 I do play video games between hacking sessions
- - 🎌 I'm practicing on CTF, tryhackme and HTB
+ - 🎌 I'm practicing on real life CTF, TryHackMe and HTB
  - 🖥 I loooove AD pentesting (in case you haven't noticed)
  - 🎌 I'm a CTF developer for the international CTF [HackDay](https://hackday.fr)
 
