@@ -76,7 +76,7 @@ At this point, we successfully decrypted some encrypted parts of the Kerberos co
 
 Now let's search for the requested information!
 
-#### TGT renewal date in dd/mm/yyyy format:
+#### TGT renewal date:
 
 It can be found in the **encrypted part** of a **TGT** inside an `AP-REQ` request (Kerberos funny easter egg), which is in the **pre-authentication data** of a `TGS-REQ` request:
 ![renew](/assets/img/HackDay2024/5_renew.png)
