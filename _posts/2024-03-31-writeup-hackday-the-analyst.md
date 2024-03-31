@@ -98,6 +98,8 @@ Inside this request, we can retrieve the **subkey** value inside the encrypted p
 
 Finally, the SID of the user "odin" can be found in the "**Authorization-data**" field which is inside the encrypted part of a TGT that can be found inside an `AP-REP` request.
 
+![SID](/assets/img/HackDay2024/8_SID.png)
+
 > The **Authorization-data** field here contains the **PAC** (Privilege Attribute Certificate) of the user "odin".
 {: .prompt-info }
 
