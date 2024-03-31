@@ -104,5 +104,5 @@ Finally, the SID of the user "odin" can be found in the "**Authorization-data**"
 {: .prompt-info }
 
 ## References
-- https://medium.com/tenable-techblog/decrypt-encrypted-stub-data-in-wireshark-deb132c076e7
-- https://github.com/dirkjanm/forest-trust-tools/blob/master/keytab.py
+- [https://medium.com/tenable-techblog/decrypt-encrypted-stub-data-in-wireshark-deb132c076e7](https://medium.com/tenable-techblog/decrypt-encrypted-stub-data-in-wireshark-deb132c076e7)
+- [https://github.com/dirkjanm/forest-trust-tools/blob/master/keytab.py](https://github.com/dirkjanm/forest-trust-tools/blob/master/keytab.py)
