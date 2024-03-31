@@ -96,3 +96,15 @@ int main ()
     vector<vector<int>> baseMat = { {0, 1, 0}, {1, 1, 1}, {1, 2, 3} };
     gammaArray.push_back(baseMat); // 뒤에 3*3 행렬 추가
 ```
+
+## queue 생성 (fifo)
+```cpp
+    #include <queue>
+    using namespace std;
+
+    queue<int> q;
+    q.push(10);
+    q.push(20);
+    q.pop();
+    cout << q.front();  //20
+```
