@@ -63,7 +63,7 @@ Au sein de l’Active Directory les utilisateurs et services utilisant NTLM fonc
 ### Différences entre Net-NTLMv1 et Net-NTLMv2
 Net-NTLMv1 et Net-NTLMv2 sont les deux versions du protocole NTLM. Net-NTLMv2 a été lancé en 1998 avec la sortie de Windows NT 4.0 SP4, cette deuxième version de NTLM a été créée dans le but de remplacer Net-NTLMv1 afin d'améliorer la sécurité cryptographique du protocole.
 
-La principale différence entre ces deux versions est l'algorithme utilisé pour chiffrer le challenge. Pour **Net-NTLMv1**, c’est **DES** qui est utilisé, à noter que cet algorithme n’est pas résistant aux attaques par brute force du fait notamment sa faible complexité et de la petite taille de la clé utilisé (56 bits).  
+La principale différence entre ces deux versions est l'algorithme utilisé pour chiffrer le challenge. Pour **Net-NTLMv1**, c’est **DES** qui est utilisé, à noter que cet algorithme n’est pas résistant aux attaques par brute force du fait notamment de sa faible complexité et de la petite taille de la clé utilisée (56 bits).  
 D'autre part, pour **Net-NTLMv2** c’est **HMAC-MD5** qui est utilisé. Bien que ce dernier soit plus résistant contre une attaque par brute force que DES, dû spécifiquement au fait que la clé est plus grande (128 bits), cela reste tout à fait possible. 
 
 **Net-NTLMv1**
@@ -284,7 +284,7 @@ L’attaque par Kerberoasting s’effectue au niveau de la réponse **KRB_TGS_RE
 
 Le principe de l’attaque est de faire des demandes de ticket de service pour tous les SPN du domaine. Une fois le ticket de service reçu, une attaque par brute-force peut être réalisée afin de récupérer le mot de passe du compte auquel le SPN est associé. En effet, le ST est chiffré par le hash du compte de service.
 
-Cependant, pour la plupart des SPN, l’attaque ne sera pas possible car leurs services seront liés à des comptes machines. Ces derniers ont des mots de passes très longs, générés aléatoirement, ce qui rend ces comptes invulnérables à ce type d'attaque.
+Cependant, pour la plupart des SPN, l’attaque ne sera pas possible car leurs services seront liés à des comptes machines. Ces derniers ont des mots de passe très longs, générés aléatoirement, ce qui rend ces comptes invulnérables à ce type d'attaque.
 
 Toutefois, certains comptes de service sont générés par des utilisateurs humains, ce sont donc ces derniers qui vont être ciblés puisque possédant potentiellement un mot de passe faible, facilement vulnérable à une attaque par brute-force. 
 
@@ -316,7 +316,7 @@ Ce TGT forgé avec la PAC d’un utilisateur privilégié (Administrateur de dom
 ### Diamond Ticket & Sapphire Ticket
 Les Diamond et Sapphire tickets sont des versions améliorées du Golden Ticket. Le principe de fonctionnement est le même à une subtilité près : la mise en place de l’attaque.
 
-Pour rappel, le Golden Ticket consiste en la création non légitime d’un TGT. Les méthodes de génération de ces tickets par le biais d’outils offensifs est cependant bien connue et l’absence de personnalisation dans le paramétrage des Golden Tickets rend leur utilisation facilement détectable. 
+Pour rappel, le Golden Ticket consiste en la création non légitime d’un TGT. Les méthodes de génération de ces tickets par le biais d’outils offensifs sont cependant bien connues et l’absence de personnalisation dans le paramétrage des Golden Tickets rend leur utilisation facilement détectable. 
 
 Les attaques par Diamond et Sapphire Ticket ont pour objectif de rendre l’utilisation de ces tickets plus difficiles à détecter. Dans le cas des Diamond Tickets, l’attaquant va effectuer une demande de TGT pour un utilisateur lambda, une fois le TGT reçu, ce dernier est déchiffré et la PAC modifiée. Le ticket est ensuite de nouveau chiffré . En utilisant la méthode du Diamond Ticket, l’attaquant dispose d’un TGT prenant en compte les configurations Kerberos de l’environnement ciblé, le rendant plus difficilement détectable.
 
@@ -339,7 +339,7 @@ Pour le Sapphire Ticket, le principe reste le même, mais au lieu de modifier ma
             <td style="white-space: normal; background-color: #d9ead3;">Supporte la MFA</td>
         </tr>
         <tr style="color: #000000;">
-            <td style="background-color: #f4cccc;">Ne permets pas l’authentification mutuelle</td>
+            <td style="background-color: #f4cccc;">Ne permet pas l’authentification mutuelle</td>
             <td style="white-space: normal; background-color: #d9ead3;">Supporte l’authentification mutuelle</td>
         </tr>
         <tr style="color: #000000;">
@@ -355,7 +355,7 @@ Pour le Sapphire Ticket, le principe reste le même, mais au lieu de modifier ma
             <td style="white-space: normal; background-color: #f4cccc;">Les machines doivent être synchronisées au niveau horaire car Kerberos utilise entre autres des timestamps pour valider l’authentification</td>
         </tr>
         <tr style="color: #000000;">
-            <td style="background-color: #d9ead3;">Prends mieux en charge les systèmes legacy</td>
+            <td style="background-color: #d9ead3;">Prend mieux en charge les systèmes legacy</td>
             <td style="white-space: normal; background-color: #f4cccc;">Chaque service doit être “kerbérisé”, donc adapté au protocole Kerberos</td>
         </tr>
 </table>
@@ -375,7 +375,7 @@ Cependant, dans le cas où NTLM doit être conservé dû à des incompatibilité
 
 De nos jours, les attaquants ont à leur disposition une multitude d’outils pour faciliter l’exploitation des failles de sécurité ou de mauvaises configurations, on pourra citer `Mimikatz`, `Rubeus`, `Impacket` ou encore les différents logiciels de Command & Control souvent remplis de fonctionnalités.
 
-Alors que les protocoles d'authentification basé sur les mots de passes tels que NTLM ont été largement utilisés pour assurer la sécurité des réseaux d'entreprise, de nouvelles méthodes d'authentification ont émergé pour répondre aux besoins de sécurité en constante évolution. 
+Alors que les protocoles d'authentification basés sur les mots de passe tels que NTLM ont été largement utilisés pour assurer la sécurité des réseaux d'entreprise, de nouvelles méthodes d'authentification ont émergé pour répondre aux besoins de sécurité en constante évolution. 
 
 Parmi ces nouvelles méthodes, on trouve l'authentification **“passwordless”**, qui utilise des technologies comme la reconnaissance biométrique ou encore les clés de sécurité pour identifier les utilisateurs et leur accorder un accès sécurisé aux ressources du réseau. 
 
