@@ -496,16 +496,16 @@ Consider an example utilizing all of the above:
 
 ### Audio File
 
-If you want to embed a audio file directly, use the following syntax:
+If you want to embed an audio file directly, use the following syntax:
 
 ```liquid
 {% include embed/audio.html src='{URL}' %}
 ```
-Where `URL` is an URL to a audio file e.g. `/assets/img/sample/audio.mp3`.
+Where `URL` is an URL to an audio file e.g. `/assets/img/sample/audio.mp3`.
 
 You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
 
-- `title='Text'` - title for a audio that appears below the audio and looks same as for images
+- `title='Text'` - title for an audio that appears below the audio and looks same as for images
 - `types` - specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
 
 Consider an example utilizing all of the above:

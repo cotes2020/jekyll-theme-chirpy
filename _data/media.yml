@@ -6,3 +6,13 @@
   mimeType: x-msvideo
 - extension: mkv
   mimeType: x-matroska
+- extension: ogv
+  mimeType: ogg
+- extension: weba
+  mimeType: webm
+- extension: 3gp
+  mimeType: 3gpp
+- extension: 3g2
+  mimeType: 3gpp2
+- extension: mid
+  mimeType: midi
