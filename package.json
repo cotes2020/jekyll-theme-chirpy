@@ -30,9 +30,9 @@
     "@rollup/plugin-terser": "^0.4.4",
     "husky": "^9.0.11",
     "rimraf": "^5.0.5",
-    "rollup": "^4.13.0",
+    "rollup": "^4.13.2",
     "rollup-plugin-license": "^3.3.1",
-    "stylelint": "^16.2.1",
+    "stylelint": "^16.3.1",
     "stylelint-config-standard-scss": "^13.0.0"
   },
   "prettier": {
