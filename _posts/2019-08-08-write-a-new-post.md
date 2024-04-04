@@ -488,6 +488,7 @@ Consider an example utilizing all of the above:
   muted=true
 %}
 ```
+
 > It's not recommended to host video files in `assets` folder as they cannot be cached by PWA and may cause issues.
 > Instead, use CDN to host video files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
 {: .prompt-warning }
@@ -501,6 +502,7 @@ If you want to embed an audio file directly, use the following syntax:
 ```liquid
 {% include embed/audio.html src='{URL}' %}
 ```
+
 Where `URL` is an URL to an audio file e.g. `/assets/img/sample/audio.mp3`.
 
 You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
@@ -511,7 +513,7 @@ You can also specify additional attributes for the embedded audio file. Here is 
 Consider an example utilizing all of the above:
 
 ```liquid
-{% 
+{%
   include embed/audio.html
   src='/path/to/audio/audio.mp3'
   types='ogg|wav|aac'

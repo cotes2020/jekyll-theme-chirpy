@@ -16,21 +16,16 @@
     {% assign basename = filename | split: '.' | pop | join: '.' %}
     {% assign path = parts | pop | join: '/' %}
 
-    {% assign media_item = site.data.media | find: 'extension', extension %}
-    {% if media_item %}
-      <source src="{{ src }}" type="audio/{{ media_item['mimeType'] }}">
-    {% else %}
-      <source src="{{ src }}" type="audio/{{ extension }}">
-    {% endif %}
+    {% assign types = types | push: extension %}
 
-    {% for extra_type in types %}
-      {% assign filename = basename | append: '.' | append: extra_type %}
+    {% for type in types %}
+      {% assign filename = basename | append: '.' | append: type %}
       {% assign extra_src = path | append: '/' | append: filename %}
-      {% assign media_item = site.data.media | find: 'extension', extra_type %}
+      {% assign media_item = site.data.media | find: 'extension', type %}
       {% if media_item %}
-        <source src="{{ extra_src }}" type="audio/{{ media_item['mimeType'] }}">
+        <source src="{{ extra_src }}" type="audio/{{ media_item['mime_type'] }}">
       {% else %}
-        <source src="{{ extra_src }}" type="audio/{{ extra_type }}">
+        <source src="{{ extra_src }}" type="audio/{{ type }}">
       {% endif %}
     {% endfor %}
 
