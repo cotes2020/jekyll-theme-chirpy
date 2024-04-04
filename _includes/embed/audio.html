@@ -1,6 +1,6 @@
 {% assign src = include.src | strip %}
 {% assign title = include.title | strip %}
-{% assign types = include.types | default: '' | strip | split: '|' %}
+{% assign types = include.types | default: '' | strip %}
 
 {% unless src contains '://' %}
   {%- capture src -%}
@@ -16,7 +16,7 @@
     {% assign basename = filename | split: '.' | pop | join: '.' %}
     {% assign path = parts | pop | join: '/' %}
 
-    {% assign types = types | push: extension %}
+    {% assign types = types | prepend: '|' | prepend: extension | split: '|' %}
 
     {% for type in types %}
       {% assign filename = basename | append: '.' | append: type %}

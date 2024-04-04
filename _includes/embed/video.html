@@ -1,7 +1,7 @@
 {% assign video_url = include.src %}
 {% assign title = include.title %}
 {% assign poster_url = include.poster %}
-{% assign types = include.types | default: '' | strip | split: '|' %}
+{% assign types = include.types | default: '' | strip %}
 
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
@@ -40,7 +40,7 @@
     {% assign basename = filename | split: '.' | pop | join: '.' %}
     {% assign path = parts | pop | join: '/' %}
 
-    {% assign types = types | push: extension %}
+    {% assign types = types | prepend: '|' | prepend: extension | split: '|' %}
 
     {% for type in types %}
       {% assign filename = basename | append: '.' | append: type %}
