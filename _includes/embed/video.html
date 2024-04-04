@@ -1,7 +1,7 @@
 {% assign video_url = include.src %}
 {% assign title = include.title %}
 {% assign poster_url = include.poster %}
-{% assign types = include.types | default: '' | strip %}
+{% assign types = include.types | default: '' | strip | split: '|' %}
 
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
@@ -34,23 +34,20 @@
 
 <p>
   <video class="embed-video file" {{ poster }} {{ attributes }}>
-    {% assign parts = video_url | split: '/' %}
-    {% assign filename = parts | last %}
-    {% assign extension = filename | split: '.' | last %}
-    {% assign basename = filename | split: '.' | pop | join: '.' %}
-    {% assign path = parts | pop | join: '/' %}
+    {% assign extension = video_url | split: '.' | last %}
+    {% assign types = extension | concat: types %}
 
-    {% assign types = types | prepend: '|' | prepend: extension | split: '|' %}
+    {% assign ext_size = extension | size %}
+    {% assign src_size = video_url | size %}
+    {% assign slice_size = src_size | minus: ext_size %}
+
+    {% assign filepath = video_url | slice: 0, slice_size %}
 
     {% for type in types %}
-      {% assign filename = basename | append: '.' | append: type %}
-      {% assign extra_src = path | append: '/' | append: filename %}
+      {% assign src = filepath | append: type %}
       {% assign media_item = site.data.media | find: 'extension', type %}
-      {% if media_item %}
-        <source src="{{ extra_src }}" type="video/{{ media_item['mime_type'] }}">
-      {% else %}
-        <source src="{{ extra_src }}" type="video/{{ type }}">
-      {% endif %}
+      {% assign mime_type = media_item.mime_type | default: type %}
+      <source src="{{ src }}" type="video/{{ mime_type }}">
     {% endfor %}
 
     Your browser does not support the video tag. Here is a
