@@ -2,7 +2,7 @@
 title: Ising Model (Computation, pt. 2)
 author: jake
 date: 2024-02-19 12:00:00 +0800
-categories: [Math]
+categories: [Software Engineering]
 tags: [physics]
 math: true
 mermaid: true

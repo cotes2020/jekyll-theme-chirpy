@@ -2,7 +2,7 @@
 title: Ising Model (Python, Cython, Numba, Mojo, Julia, pt. 3)
 author: jake
 date: 2024-03-04 12:00:00 +0800
-categories: [Math]
+categories: [Software Engineering]
 tags: [physics]
 math: true
 mermaid: true

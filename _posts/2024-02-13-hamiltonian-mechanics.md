@@ -2,7 +2,7 @@
 title: Hamiltonian Mechanics
 author: jake
 date: 2024-02-13 12:00:00 +0800
-categories: [Math]
+categories: [Physics]
 tags: [statistics, physics, hamiltonian mechanics, hmc]
 math: true
 mermaid: true

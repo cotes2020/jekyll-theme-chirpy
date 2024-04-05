@@ -2,7 +2,7 @@
 title: Ising Model (Theory, pt. 1)
 author: jake
 date: 2024-02-18 12:00:00 +0800
-categories: [Math]
+categories: [Physics]
 tags: [physics]
 math: true
 mermaid: true
