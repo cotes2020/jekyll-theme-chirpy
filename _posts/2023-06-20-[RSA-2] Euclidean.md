@@ -1,7 +1,9 @@
 ---
 title: "[RSA - 2] 확장 유클리드 호제법 (Extended Euclidean Algorithm)"
-date:   2023-06-20 01:06:00 +0900
-tags: [Cryptography, RSA]
+date: 2023-06-20 01:06:00 +0900
+author: aestera
+categories: [Cryptography, RSA]
+tags: [Cryptography, Euclidean Algorithm]
 math: true
 ---
 
