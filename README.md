@@ -16,6 +16,28 @@
 
 </div>
 
+## How to use
+### Install Ruby>=3.0.0 & Node.js
+#### macOS
+```bash
+brew install ruby node
+brew link --overwrite ruby
+```
+then open a new terminal session.
+#### Others
+...
+### Install Dependencies
+```bash
+npm install
+npm run build
+gem install jekyll bundler
+bundle install
+```
+### Run locally
+```bash
+bundle exec jekyll serve [--host 0.0.0.0]
+```
+
 ## Features
 
 - Dark / Light Theme Mode
