@@ -1,5 +1,5 @@
 {%- comment -%}
-  Generate image final URL based on `site.img_cdn`, `page.img_path`
+  Generate image final URL based on `site.cdn`, `page.img_path`
 
   Arguments:
     src - required, basic image path
@@ -18,8 +18,8 @@
     {% assign url = include.img_path | default: '' | append: '/' | append: url %}
 
     {%- comment -%} Prepend CND URL {%- endcomment -%}
-    {% if site.img_cdn %}
-      {% assign url = site.img_cdn | append: '/' | append: url %}
+    {% if site.cdn %}
+      {% assign url = site.cdn | append: '/' | append: url %}
     {% endif %}
 
     {% assign url = url | replace: '///', '/' | replace: '//', '/' | replace: ':/', '://' %}

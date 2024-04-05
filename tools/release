@@ -156,7 +156,7 @@ build_gem() {
   git checkout "$PROD_BRANCH"
 
   # Remove unnecessary theme settings
-  sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
+  sed -i "s/^cdn:.*/cdn:/;s/^avatar:.*/avatar:/" _config.yml
   rm -f ./*.gem
 
   npm run build

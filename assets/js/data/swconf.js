@@ -24,8 +24,8 @@ const swconf = {
 
     {%- comment -%} The request url with below domain will be cached. {%- endcomment -%}
     allowHosts: [
-      {% if site.img_cdn and site.img_cdn contains '//' %}
-        '{{ site.img_cdn | split: '//' | last | split: '/' | first }}',
+      {% if site.cdn and site.cdn contains '//' %}
+        '{{ site.cdn | split: '//' | last | split: '/' | first }}',
       {% endif %}
 
       {%- unless site.assets.self_host.enabled -%}
