@@ -200,7 +200,7 @@
 
 .project-main {
   width: calc(40% - 36px);
-  padding-left: 0;
+  padding: 0;
   height: fit-content;
   max-height: 72px;
   margin: auto;
@@ -226,4 +226,15 @@
   font-size: 1rem;
   text-overflow: ellipsis;
   line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .project-main {
+    width: calc(100% - 72px);
+  }
+
+  .project-content {
+    width: 100%;
+    margin: 12px 12px 0 12px;
+  }
 }
