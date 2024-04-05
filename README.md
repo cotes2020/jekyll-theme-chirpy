@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-next-line -->
 <div align="center">
 
   # Jake's Blog
