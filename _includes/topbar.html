@@ -20,13 +20,18 @@
                 {{- site.data.locales[include.lang].tabs.home | capitalize -}}
               </a>
             </span>
-
           {% elsif forloop.last %}
-            {% if page.collection == 'tabs' %}
-              <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
+            {% if item == 'blogs' %}
+              <span>Blogs</span>
             {% else %}
               <span>{{ page.title }}</span>
             {% endif %}
+          {% elsif item == 'blogs' or item == 'posts' %}
+            <span>
+              <a href="{{ '/blogs' | relative_url }}">
+                Blogs
+              </a>
+            </span>
 
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>

@@ -187,3 +187,43 @@
     }
   } /* .pagination */
 }
+
+.project-body {
+  padding: 0.75rem!important;
+}
+
+.project-icon {
+  flex: 0 0 auto;
+  height: 72px;
+  width: 72px;
+}
+
+.project-main {
+  width: calc(40% - 36px);
+  padding-left: 0;
+  height: fit-content;
+  max-height: 72px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.project-main > p {
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.project-content {
+  width: calc(60% - 36px);
+  height: fit-content;
+  max-height: 72px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.card-desc {
+  color: var(--heading-color) !important;
+  margin-bottom: 0;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}

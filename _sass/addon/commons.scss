@@ -322,8 +322,9 @@ sup {
 
   img {
     height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
+    -o-object-fit: contain;
+    object-fit: contain;
+    background-color: white;
 
     @extend %rounded;
 

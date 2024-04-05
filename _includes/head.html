@@ -52,7 +52,12 @@
 
   <title>
     {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
+      {% if page.layout == 'blogs' %}
+        {% assign title = 'Blogs' %}
+      {% else %}
+        {% assign title = page.title %}
+      {% endif %}
+      {{ title | append: ' | ' }}
     {%- endunless -%}
     {{ site.title }}
   </title>
@@ -92,7 +97,7 @@
     <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
 
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' or page.layout == 'blogs' or page.layout == 'projects' %}
     <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
   {% endif %}
 
