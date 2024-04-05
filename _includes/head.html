@@ -39,7 +39,7 @@
     {%- endcapture -%}
 
     {%- capture twitter_image -%}
-      <meta property="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:image" content="{{ img_url }}" />
     {%- endcapture -%}
 
@@ -49,15 +49,6 @@
   {% endif %}
 
   {{ seo_tags }}
-
-  <!-- PWA cache settings -->
-  <meta
-    name="pwa-cache"
-    content="{{ site.pwa.cache.enabled | default: 'false' }}"
-    {%- if site.baseurl and site.baseurl != empty -%}
-      data-baseurl="{{ site.baseurl }}"
-    {%- endif -%}
-  >
 
   <title>
     {%- unless page.layout == 'home' -%}
@@ -81,7 +72,7 @@
   {% endif %}
 
   <!-- GA -->
-  {% if jekyll.environment == 'production' and site.google_analytics.id != empty and site.google_analytics.id %}
+  {% if jekyll.environment == 'production' and site.analytics.google.id != empty and site.analytics.google.id %}
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 

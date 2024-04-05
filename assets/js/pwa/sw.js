@@ -1,10 +1,10 @@
-/* PWA service worker */
+---
+layout: compress
+permalink: /:basename.min.js
+# PWA service worker
+---
 
-const swconfPath = '/assets/js/data/swconf.js';
-const params = new URL(location).searchParams;
-const swconfUrl = params.has('baseurl')
-  ? `${params.get('baseurl')}${swconfPath}`
-  : swconfPath;
+const swconfUrl = '{{ '/assets/js/data/swconf.js' | relative_url }}';
 
 importScripts(swconfUrl);
 const purge = swconf.purge;
@@ -88,7 +88,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        // See : <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
+        {% comment %}See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>{% endcomment %}
         let responseToCache = response.clone();
 
         caches.open(swconf.cacheName).then((cache) => {
