@@ -146,4 +146,4 @@ When everything finishes and before clicking `continue` I like to remove the ISO
 
 ![Remove  Media](assets/img/20240408/proxmox-remove-media.png){: width="972" height="589" .w-75 .normal}
 
-[Up Next. Configuring Debian hosts for Docker.](2024-04-08-ConfigureDockerHost.md)
+Up Next. Configuring Debian hosts for Docker.
