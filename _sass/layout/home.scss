@@ -203,6 +203,12 @@
   flex: 0 0 auto;
   height: 72px;
   width: 72px;
+  object-fit: contain;
+  background-color: white;
+}
+
+.preview-img {
+  padding: 0;
 }
 
 .project-main {
@@ -332,7 +338,8 @@
   flex: 0 0 auto;
   height: 29px;
   width: 29px;
-  object-fit: scale-down;
+  object-fit: contain;
+  background-color: white;
 }
 
 .overview-title {
