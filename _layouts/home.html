@@ -3,13 +3,13 @@ layout: default
 refactor: true
 ---
 <div
-  class="pt-20 md:pt-0 full-container md:h-screen w-full md:flex flex-col items-center justify-center text-center relative">
-  <div class="flex items-center justify-center w-full flex-col position-absolute">
-    <div class="w-auto md:pb-0 flex flex-col items-center gap-4 px-4">
+  class="pt-20 md:pt-0 full-container h-fit-content w-100 md:flex flex-col items-center justify-center text-center relative">
+  <div class="flex items-center justify-center w-100 flex-col">
+    <article class="w-auto md:pb-0 flex flex-col items-center gap-4 py-4">
       <div class="card card-wrapper fit-content">
         <div class="overview-title-body card-body">
           <div class="flex justify-center">
-            <h1 class="text-6xl md:text-6xl">Maitrix Org</h1>
+            <h1 class="text-6xl md:text-6xl mt-0 mb-1">Maitrix Org</h1>
           </div>
           <p/>
           <p class="max-32-rem flex m-auto">
@@ -18,10 +18,10 @@ refactor: true
           </p>
         </div>
       </div>
-      <div class="fit-content h-fit-content items-center grid grid-cols-3 grid-auto-rows gap-4" id="post-list">
+      <div class="fit-content h-fit-content items-center grid grid-cols-1-w grid-cols-2-w grid-cols-3 grid-auto-rows gap-4" id="post-list">
         {{ content }}
       </div>
-    </div>
+    </article>
   </div>
 </div>
 

@@ -108,5 +108,8 @@
         "section": "Improvements"
       }
     ]
+  },
+  "dependencies": {
+    "lqip-modern": "^2.0.0"
   }
 }

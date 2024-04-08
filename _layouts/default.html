@@ -20,14 +20,11 @@ layout: compress
     {% include sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
-      {% if page.layout == 'home' %}
-        {{ content }}
-      {% else %}
       <div class="container d-flex flex-column px-xxl-5">
         {% include topbar.html lang=lang %}
 
         <div class="row flex-grow-1">
-          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+          <main aria-label="Main Content" class="col-12 col-lg-11 {% if page.layout != 'home' %} col-xl-9 {% endif %} px-md-4">
             {% if layout.refactor or layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
             {% else %}
@@ -35,6 +32,7 @@ layout: compress
             {% endif %}
           </main>
 
+          {% if page.layout != 'home' %}
           <!-- panel -->
           <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
             <div class="access">
@@ -47,6 +45,7 @@ layout: compress
               {% include {{ _include_path }} lang=lang %}
             {% endfor %}
           </aside>
+          {% endif %}
         </div>
 
         <div class="row">
@@ -69,7 +68,6 @@ layout: compress
           <i class="fas fa-angle-up"></i>
         </button>
       </aside>
-      {% endif %}
     </div>
 
     <div id="mask"></div>
