@@ -81,7 +81,9 @@
       }
     }
   }
-} /* #post-list */
+}
+
+/* #post-list */
 
 .pagination {
   color: var(--text-color);
@@ -125,8 +127,12 @@
         color: rgba(108, 117, 125, 0.57);
       }
     }
-  } /* .page-item */
-} /* .pagination */
+  }
+
+  /* .page-item */
+}
+
+/* .pagination */
 
 /* Tablet */
 @media all and (min-width: 768px) {
@@ -185,11 +191,12 @@
     .page-index {
       display: none;
     }
-  } /* .pagination */
+  }
+  /* .pagination */
 }
 
 .project-body {
-  padding: 0.75rem!important;
+  padding: 0.75rem !important;
 }
 
 .project-icon {
@@ -237,4 +244,131 @@
     width: 100%;
     margin: 12px 12px 0 12px;
   }
+}
+
+.full-container {
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .md\:h-screen {
+    height: 100vh;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.md\:flex {
+  display: flex;
+}
+
+.max-width-1080 {
+  max-width: 1080px;
+}
+
+:where(.child\:absolute) > :where(:not(.not-child)) {
+  position: absolute;
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+.h-fit-content {
+  height: fit-content;
+}
+
+.max-32-rem {
+  max-width: 32rem;
+}
+
+.max-24-rem {
+  max-width: 24rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-auto-rows {
+  grid-auto-rows: 1fr;
+}
+
+#post-list > .overview-card {
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+}
+
+.overview-icon {
+  flex: 0 0 auto;
+  height: 29px;
+  width: 29px;
+  object-fit: scale-down;
+}
+
+.overview-title {
+  width: fit-content;
+}
+
+.overview-body {
+  padding: 0.75rem !important;
+}
+
+.overview-title-body {
+  padding: 2.25rem !important;
+}
+
+.project-main {
+  width: calc(40% - 36px);
+  padding: 0;
+  height: fit-content;
+  max-height: 72px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.project-main > p {
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.project-content {
+  width: calc(60% - 36px);
+  height: fit-content;
+  max-height: 72px;
+  margin: auto;
+  overflow: hidden;
+}
+
+#post-list .card .card-body .overview-text.card-text.content {
+  color: #0b0b0b !important;
 }

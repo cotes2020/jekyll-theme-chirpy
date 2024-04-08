@@ -5,41 +5,40 @@
 {% assign image = include.image %}
 {% assign lqip = include.lqip %}
 {% assign alt = include.alt %}
-{% assign lang = include.lang %}
-  <article class="card-wrapper card">
-    <a href="{{ url }}" class="post-preview row g-0">
-      <!--      {% assign card_body_col = '12' %}-->
+<article class="card-wrapper card">
+  <a href="{{ url }}" class="post-preview row g-0">
+    <!--      {% assign card_body_col = '12' %}-->
 
-      <!--      {% if image %}-->
+    <!--      {% if image %}-->
 
-      <!--      {% if lqip %}-->
-      <!--      {% capture lqip %}lqip="{{ lqip }}"{% endcapture %}-->
-      <!--      {% else %}-->
-      <!--      {% assign lqip = null %}-->
-      <!--      {% endif %}-->
+    <!--      {% if lqip %}-->
+    <!--      {% capture lqip %}lqip="{{ lqip }}"{% endcapture %}-->
+    <!--      {% else %}-->
+    <!--      {% assign lqip = null %}-->
+    <!--      {% endif %}-->
 
 
-      <!--      {% assign card_body_col = '10' %}-->
-      <!--      {% endif %}-->
+    <!--      {% assign card_body_col = '10' %}-->
+    <!--      {% endif %}-->
 
-      <!--      <div class="col-md-{{ card_body_col }}">-->
-      <div class="project-body card-body d-flex row">
-        <div class="project-icon">
-          <img src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
-        </div>
-        <div class="project-main">
-          <p class="card-title mb-0 mt-md-0">{{ title }}</p>
-          {% if caption %}
-          <p class="card-text content mt-0">{{ caption }}</p>
-          {% endif %}
-        </div>
-        <div class="project-content">
-          <p class="card-desc mt-md-0">{{ content }}</p>
-        </div>
-
-        <!-- .post-meta -->
+    <!--      <div class="col-md-{{ card_body_col }}">-->
+    <div class="project-body card-body d-flex row">
+      <div class="project-icon">
+        <img src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
       </div>
-      <!-- .card-body -->
-      <!--      </div>-->
-    </a>
-  </article>
+      <div class="project-main">
+        <p class="card-title mb-0 mt-md-0">{{ title }}</p>
+        {% if caption %}
+        <p class="card-text content mt-0">{{ caption }}</p>
+        {% endif %}
+      </div>
+      <div class="project-content">
+        <p class="card-desc mt-md-0">{{ content }}</p>
+      </div>
+
+      <!-- .post-meta -->
+    </div>
+    <!-- .card-body -->
+    <!--      </div>-->
+  </a>
+</article>
