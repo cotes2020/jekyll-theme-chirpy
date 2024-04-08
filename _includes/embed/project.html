@@ -3,7 +3,9 @@
 {% assign caption = include.caption %}
 {% assign content = include.content %}
 {% assign image = include.image %}
-{% assign lqip = include.lqip %}
+{% if lqip %}
+  {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
+{% endif %}
 {% assign alt = include.alt %}
 <article class="card-wrapper card">
   <a href="{{ url }}" class="post-preview row g-0">
