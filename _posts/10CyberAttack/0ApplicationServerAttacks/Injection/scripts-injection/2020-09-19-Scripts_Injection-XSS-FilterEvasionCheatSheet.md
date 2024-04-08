@@ -1,5 +1,5 @@
 ---
-title: Meow's CyberAttack - Cross Site Scripting Filter Evasion Cheat Sheet
+title: Meow's CyberAttack - Application/Server Attacks - Scripts Injection - Cross Site Scripting Filter Evasion Cheat Sheet
 # author: Grace JyL
 date: 2020-09-19 11:11:11 -0400
 description:

@@ -13,14 +13,11 @@ image:
     - [Shimming](#shimming)
     - [Refactoring](#refactoring)
 
+book: Security+ ch7
+
 ---
 
 # Meow's CyberAttack - Application/Server Attacks - Injection - Driver Manipulation
-
-book: Security+ ch7
-
-<font color=LightSlateBlue></font>
-<font color=OrangeRed></font>
 
 ---
 

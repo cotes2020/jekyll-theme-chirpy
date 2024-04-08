@@ -48,13 +48,13 @@ image:
     - [SQL injection tools](#sql-injection-tools)
     - [Scanner for vulnerabilities](#scanner-for-vulnerabilities)
 
----
-
-# Meow's CyberAttack - Application/Server Attacks - Injection - SQL Injection
-
 book:
 - Security+ 7th ch9
 - CEH Prep ch14
+
+---
+
+# Meow's CyberAttack - Application/Server Attacks - Injection - SQL Injection
 
 ---
 

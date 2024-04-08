@@ -8,16 +8,13 @@ image:
 ---
 
 - [Meow's CyberAttack - Application/Server Attacks - Injection - Header Manipulation](#meows-cyberattack---applicationserver-attacks---injection---header-manipulation)
-	- [Header Manipulation](#header-manipulation)
+  - [Header Manipulation](#header-manipulation)
+
+book:
 
 ---
 
 # Meow's CyberAttack - Application/Server Attacks - Injection - Header Manipulation
-
-book:
-
-<font color=LightSlateBlue></font>
-<font color=OrangeRed></font>
 
 ---
 
