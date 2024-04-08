@@ -2,8 +2,10 @@
 {% assign title = include.title %}
 {% assign caption = include.caption %}
 {% assign image = include.image %}
-{% if lqip %}
-  {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
+{% if include.lqip %}
+  {%- capture lqip -%}lqip="{{ include.lqip }}"{%- endcapture -%}
+{% else %}
+  {%- assign lqip = null -%}
 {% endif %}
 {% assign alt = include.alt %}
 {% assign lang = include.lang %}

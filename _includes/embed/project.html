@@ -3,8 +3,10 @@
 {% assign caption = include.caption %}
 {% assign content = include.content %}
 {% assign image = include.image %}
-{% if lqip %}
-  {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
+{% if include.lqip %}
+  {%- capture lqip -%}lqip="{{ include.lqip }}"{%- endcapture -%}
+{% else %}
+  {%- assign lqip = null -%}
 {% endif %}
 {% assign alt = include.alt %}
 <article class="card-wrapper card">
@@ -27,7 +29,7 @@
     <div class="project-body card-body d-flex row">
       <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
       <div class="project-main">
-        <p class="card-title mb-0 mt-md-0">{{ title }}</p>
+        <h3 class="card-title mb-2 mt-md-0">{{ title }}</h3>
         {% if caption %}
         <p class="card-text content mt-0">{{ caption }}</p>
         {% endif %}
