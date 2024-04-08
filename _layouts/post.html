@@ -9,7 +9,13 @@ tail_includes:
   - comments
 ---
 
-{% include lang.html %}
+{% include lang.html %} {% if page.applause_button %}
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/applause-button/dist/applause-button.css"
+/>
+<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+{% endif %}
 
 <article class="px-1">
   <header>
@@ -18,58 +24,52 @@ tail_includes:
     <div class="post-meta text-muted">
       <!-- published date -->
       <span>
-        {{ site.data.locales[lang].post.posted }}
-        {% include datetime.html date=page.date tooltip=true lang=lang %}
+        {{ site.data.locales[lang].post.posted }} {% include datetime.html
+        date=page.date tooltip=true lang=lang %}
       </span>
 
       <!-- lastmod date -->
       {% if page.last_modified_at and page.last_modified_at != page.date %}
-        <span>
-          {{ site.data.locales[lang].post.updated }}
-          {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
-        </span>
-      {% endif %}
+      <span>
+        {{ site.data.locales[lang].post.updated }} {% include datetime.html
+        date=page.last_modified_at tooltip=true lang=lang %}
+      </span>
+      {% endif %} {% if page.image %} {% capture src %}src="{{ page.image.path |
+      default: page.image }}"{% endcapture %} {% capture class
+      %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{%
+      endcapture %} {% capture alt %}alt="{{ page.image.alt | xml_escape |
+      default: "Preview Image" }}"{% endcapture %} {% if page.image.lqip %} {%-
+      capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%} {% endif %}
 
-      {% if page.image %}
-        {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
-        {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
-        {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
-
-        {% if page.image.lqip %}
-          {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
-        {% endif %}
-
-        <div class="mt-3 mb-3">
-          <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
-          {%- if page.image.alt -%}
-            <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
-          {%- endif -%}
-        </div>
+      <div class="mt-3 mb-3">
+        <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }} />
+        {%- if page.image.alt -%}
+        <figcaption class="text-center pt-2 pb-2">
+          {{ page.image.alt }}
+        </figcaption>
+        {%- endif -%}
+      </div>
       {% endif %}
 
       <div class="d-flex justify-content-between">
         <!-- author(s) -->
         <span>
-          {% if page.author %}
-            {% assign authors = page.author %}
-          {% elsif page.authors %}
-            {% assign authors = page.authors %}
-          {% endif %}
-
-          {{ site.data.locales[lang].post.written_by }}
+          {% if page.author %} {% assign authors = page.author %} {% elsif
+          page.authors %} {% assign authors = page.authors %} {% endif %} {{
+          site.data.locales[lang].post.written_by }}
 
           <em>
-            {% if authors %}
-              {% for author in authors %}
-                {% if site.data.authors[author].url -%}
-                  <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
-                {%- else -%}
-                  {{ site.data.authors[author].name }}
-                {%- endif %}
-                {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
-              {% endfor %}
-            {% else %}
-              <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
+            {% if authors %} {% for author in authors %} {% if
+            site.data.authors[author].url -%}
+            <a href="{{ site.data.authors[author].url }}"
+              >{{ site.data.authors[author].name }}</a
+            >
+            {%- else -%} {{ site.data.authors[author].name }} {%- endif %} {%
+            unless forloop.last %}{{ '</em
+          >,
+          <em
+            >' }}{% endunless %} {% endfor %} {% else %}
+            <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
             {% endif %}
           </em>
         </span>
@@ -82,53 +82,67 @@ tail_includes:
     <!-- .post-meta -->
   </header>
 
-  <div class="content">
-    {{ content }}
+  <br /><br />
+  <div
+    class="align-items-center w-100"
+    style="text-align: center; margin-bottom: 1rem"
+  >
+    <img
+      src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Funiverse2402.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=twitter.svg&icon_color=%23E7E7E7&title=views&edge_flat=false"
+    />
   </div>
 
+  <div class="content">{{ content }}</div>
+
   <div class="post-tail-wrapper text-muted">
+<!-- applause -->
+      {% if page.applause_button %}
+    <div class="applause-button">
+      <applause-button class="mb6" color={{ site.accent_color | default:'rgb(79,177,186)' }} url={{ page.url |
+        absolute_url }}>
+      </applause-button>
+    </div>
+    {% endif %} 
+
     <!-- categories -->
     {% if page.categories.size > 0 %}
-      <div class="post-meta mb-3">
-        <i class="far fa-folder-open fa-fw me-1"></i>
-        {% for category in page.categories %}
-          <a href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/">{{ category }}</a>
-          {%- unless forloop.last -%},{%- endunless -%}
-        {% endfor %}
-      </div>
+    <div class="post-meta mb-3">
+      <i class="far fa-folder-open fa-fw me-1"></i>
+      {% for category in page.categories %}
+      <a
+        href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/"
+        >{{ category }}</a
+      >
+      {%- unless forloop.last -%},{%- endunless -%} {% endfor %}
+    </div>
     {% endif %}
 
     <!-- tags -->
     {% if page.tags.size > 0 %}
-      <div class="post-tags">
-        <i class="fa fa-tags fa-fw me-1"></i>
-        {% for tag in page.tags %}
-          <a
-            href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
-            class="post-tag no-text-decoration"
-          >
-            {{- tag -}}
-          </a>
-        {% endfor %}
-      </div>
+    <div class="post-tags">
+      <i class="fa fa-tags fa-fw me-1"></i>
+      {% for tag in page.tags %}
+      <a
+        href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
+        class="post-tag no-text-decoration"
+      >
+        {{- tag -}}
+      </a>
+      {% endfor %}
+    </div>
     {% endif %}
 
     <div
-      class="
-        post-tail-bottom
-        d-flex justify-content-between align-items-center mt-5 pb-2
-      "
+      class="post-tail-bottom d-flex justify-content-between align-items-center mt-5 pb-2"
     >
       <div class="license-wrapper">
-        {% if site.data.locales[lang].copyright.license.template %}
-          {% capture _replacement %}
+        {% if site.data.locales[lang].copyright.license.template %} {% capture
+        _replacement %}
         <a href="{{ site.data.locales[lang].copyright.license.link }}">
           {{ site.data.locales[lang].copyright.license.name }}
         </a>
-        {% endcapture %}
-
-          {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
-        {% endif %}
+        {% endcapture %} {{ site.data.locales[lang].copyright.license.template |
+        replace: ':LICENSE_NAME', _replacement }} {% endif %}
       </div>
 
       {% include post-sharing.html lang=lang %}

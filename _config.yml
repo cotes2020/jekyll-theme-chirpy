@@ -49,17 +49,12 @@ google_site_verification: # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-<<<<<<< Updated upstream
-google_analytics:
-  id: # fill in your Google Analytics ID
-=======
 # Web Analytics Settings
 analytics:
   google:
     id: 6225642100 # fill in your Google Analytics ID
   goatcounter:
     id: # fill in your GoatCounter ID
->>>>>>> Stashed changes
 
 goatcounter:
   id: # fill in your Goatcounter ID
@@ -75,7 +70,7 @@ goatcounter:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: light # [light | dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -85,11 +80,7 @@ theme_mode: # [light | dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-<<<<<<< Updated upstream
-avatar:
-=======
 avatar: "/assets/images/ai_profile.jpeg"
->>>>>>> Stashed changes
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

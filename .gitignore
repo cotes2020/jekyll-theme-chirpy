@@ -18,3 +18,8 @@ package-lock.json
 .idea
 
 # Misc
+**/.DS_Store
+*.old
+*.map
+sw.min.js
+assets/js/dist
