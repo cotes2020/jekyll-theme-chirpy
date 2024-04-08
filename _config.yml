@@ -14,7 +14,7 @@ timezone: America/Los_Angeles
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Maitrix # the main title
+title: Maitrix.org # the main title
 
 tagline: A text-focused Jekyll theme # it will display as the sub-title
 
@@ -29,7 +29,7 @@ github:
   username: maitrix-org # change to your github username
 
 twitter:
-  username: twitter_username # change to your twitter username TODO: twitter user name
+  username: MaitrixOrg # change to your twitter username TODO: twitter user name
 
 social:
   # Change to your full name.
@@ -38,10 +38,10 @@ social:
   email: example@domain.com # change to your email address TODO: change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage TODO: twitter user name
-    - https://github.com/maitrix # change to your github homepage
+    - https://twitter.com/MaitrixOrg # change to your twitter homepage TODO: twitter user name
+    - https://github.com/maitrix-org # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+#    - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
 google_site_verification: # fill in to your verification string
