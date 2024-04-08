@@ -354,6 +354,10 @@
   color: var(--heading-color);
 }
 
+#home-title p, .overview-card p {
+  line-height: var(--bs-body-line-height);
+}
+
 .overview-title {
   width: fit-content;
 }
@@ -364,6 +368,7 @@
 
 .overview-title-body {
   padding: 2.25rem !important;
+  border-radius: .625rem;
   background-color: var(--card-bg);
 }
 
