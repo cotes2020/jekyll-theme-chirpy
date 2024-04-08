@@ -204,7 +204,7 @@
   height: 72px;
   width: 72px;
   object-fit: contain;
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 0;
   vertical-align: unset;
 }
@@ -341,9 +341,17 @@
   height: 29px;
   width: 29px;
   object-fit: contain;
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 0;
   vertical-align: unset;
+}
+
+#home-title {
+  background: none;
+}
+
+#home-title p {
+  color: var(--heading-color);
 }
 
 .overview-title {
@@ -356,6 +364,7 @@
 
 .overview-title-body {
   padding: 2.25rem !important;
+  background-color: var(--card-bg);
 }
 
 .project-main {
@@ -381,7 +390,7 @@
 }
 
 #post-list .card .card-body .overview-text.card-text.content {
-  color: #0b0b0b !important;
+  color: var(--heading-color) !important;
 }
 
 @media (max-width: 1280px) {

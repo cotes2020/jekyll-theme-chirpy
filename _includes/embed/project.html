@@ -4,11 +4,10 @@
 {% assign content = include.content %}
 {% assign image = include.image %}
 {% if include.lqip %}
-  {%- capture lqip -%}lqip="{{ include.lqip }}"{%- endcapture -%}
+  {%- capture clqip -%}lqip="{{ include.lqip }}"{%- endcapture -%}
 {% else %}
-  {%- assign lqip = null -%}
+  {%- assign clqip = null -%}
 {% endif %}
-{% assign alt = include.alt %}
 <article class="card-wrapper card">
   <a href="{{ url }}" class="post-preview row g-0">
     <!--      {% assign card_body_col = '12' %}-->
@@ -27,7 +26,7 @@
 
     <!--      <div class="col-md-{{ card_body_col }}">-->
     <div class="project-body card-body d-flex row">
-      <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
+      <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
       <div class="project-main">
         <h3 class="card-title mb-2 mt-md-0">{{ title }}</h3>
         {% if caption %}
