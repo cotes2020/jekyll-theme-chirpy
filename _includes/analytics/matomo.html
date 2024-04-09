@@ -4,9 +4,9 @@
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u="//{{site.analytics.matomo.domain}}/";
+    var u="//{{ site.analytics.matomo.domain }}/";
     _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', {{site.analytics.matomo.id}}]);
+    _paq.push(['setSiteId', {{ site.analytics.matomo.id }}]);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
