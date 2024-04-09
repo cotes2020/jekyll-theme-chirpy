@@ -62,6 +62,12 @@ analytics:
     id: # fill in your Google Analytics ID
   goatcounter:
     id: # fill in your GoatCounter ID
+  umami:
+    id: # fill in your Umami ID
+    domain: # fill in your Umami domain
+  matomo:
+    id: # fill in your Matomo ID
+    domain: # fill in your Matomo domain
 
 # Pageviews settings
 pageviews:
