@@ -1,26 +1,19 @@
----
-layout: compress
----
-
-{% assign favicon_path = "/assets/img/favicons" | relative_url %}
-
 {
-  "name": "{{ site.title }}",
-  "short_name": "{{ site.title }}",
-  "description": "{{ site.description }}",
-  "icons": [
-    {
-      "src": "{{ favicon_path }}/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "{{ favicon_path }}/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }],
-  "start_url": "{{ '/index.html' | relative_url }}",
-  "theme_color": "#2a1e6b",
-  "background_color": "#ffffff",
-  "display": "fullscreen"
+    "name": "",
+    "short_name": "",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
 }
