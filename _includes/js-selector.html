@@ -75,6 +75,11 @@
   <script>
     /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
     MathJax = {
+      /* specify caching the mathematical fonts as global SVG fonts */ 
+      svg: { fontCache: 'global'},
+      /* load package */
+      loader: {load: ['[tex]/physics']},
+      /* More extensions can be found: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html*/
       tex: {
         /* start/end delimiter pairs for in-line math */
         inlineMath: [
@@ -86,6 +91,8 @@
           ['$$', '$$'],
           ['\\[', '\\]']
         ],
+        /* load package */
+        packages: {'[+]': ['physics']},
         /* equation numbering */
         tags: 'ams'
       }
