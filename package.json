@@ -28,10 +28,15 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-terser": "^0.4.4",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
     "rimraf": "^5.0.5",
     "rollup": "^4.13.2",
     "rollup-plugin-license": "^3.3.1",
+    "semantic-release": "^23.0.8",
     "stylelint": "^16.3.1",
     "stylelint-config-standard-scss": "^13.0.0"
   },
@@ -89,24 +94,76 @@
       "media-feature-range-notation": "prefix"
     }
   },
-  "standard-version": {
-    "skip": {
-      "commit": true,
-      "tag": true
-    },
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes"
-      },
-      {
-        "type": "perf",
-        "section": "Improvements"
-      }
+  "release": {
+    "branches": [
+      "production"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "section": "Improvements"
+              },
+              {
+                "type": "refactor",
+                "section": "Changes",
+                "hidden": true
+              }
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md",
+          "changelogTitle": "# Changelog"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "bash tools/release --prepare",
+          "publishCmd": "bash tools/release"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "docs",
+            "package.json",
+            "*.gemspec"
+          ],
+          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
     ]
   }
 }
