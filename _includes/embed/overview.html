@@ -14,7 +14,9 @@
     <div class="overview-body card-body d-flex">
       <div class="justify-center flex flex-col w-100">
         <div class="flex justify-center text-center items-center mb-2">
-          <img class="overview-icon" src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
+          {% if image %}
+            <img class="overview-icon" src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
+          {% endif %}
           <h2 class="overview-title mt-0 mb-0">{{ title }}</h2>
         </div>
         <p class="overview-text card-text content mt-0">{{ caption }}</p>

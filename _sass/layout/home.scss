@@ -325,7 +325,7 @@
 }
 
 .grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-auto-rows {
@@ -396,6 +396,10 @@
 
 #post-list .card .card-body .overview-text.card-text.content {
   color: var(--heading-color) !important;
+}
+
+#post-list.grid .card-wrapper {
+  margin-bottom: 1.25rem;
 }
 
 @media (max-width: 1280px) {

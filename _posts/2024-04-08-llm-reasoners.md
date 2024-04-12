@@ -10,12 +10,12 @@ math: true
 mermaid: true
 image:
   path: /assets/img/llm-reasoners-banner.png
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
+  lqip: data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAABQAQCdASoQAAYABUB8JQBdgCgAAP7wT36/6Ws+dmZR/SzgaPGJ0OcUFpU1l6AA
   alt: Responsive rendering of Chirpy theme on multiple devices.
   show_in_post: false
 ---
 
 ## h2
-![LLM Reasoners](/assets/img/llm-reasoners-banner.png)
+![LLM Reasoners](/assets/img/llm-reasoners-banner.png){: lqip="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAABQAQCdASoQAAYABUB8JQBdgCgAAP7wT36/6Ws+dmZR/SzgaPGJ0OcUFpU1l6AA}
 
 ### h3
