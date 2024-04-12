@@ -49,7 +49,7 @@ refactor: true
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
           {% unless src contains '//' %}
-            {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
+            {% assign src = post.media_subpath | append: '/' | append: src | replace: '//', '/' %}
           {% endunless %}
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}

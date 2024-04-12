@@ -93,7 +93,7 @@ init_files() {
     mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
 
     ## Cleanup image settings in site config
-    _sedi "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
+    _sedi "s/^cdn:.*/cdn:/;s/^avatar:.*/avatar:/" _config.yml
   fi
 
   # remove the other files

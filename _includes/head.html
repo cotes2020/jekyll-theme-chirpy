@@ -20,7 +20,7 @@
 
     {% unless src contains '://' %}
       {%- capture img_url -%}
-        {% include img-url.html src=src img_path=page.img_path absolute=true %}
+        {% include media-url.html src=src subpath=page.media_subpath absolute=true %}
       {%- endcapture -%}
 
       {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
@@ -31,7 +31,7 @@
 
   {% elsif site.social_preview_image %}
     {%- capture img_url -%}
-      {% include img-url.html src=site.social_preview_image absolute=true %}
+      {% include media-url.html src=site.social_preview_image absolute=true %}
     {%- endcapture -%}
 
     {%- capture og_image -%}
