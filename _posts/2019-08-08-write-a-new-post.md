@@ -247,14 +247,14 @@ The screenshots of the program window can be considered to show the shadow effec
 
 ### CDN URL
 
-If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `cdn` of `_config.yml`{: .filepath} file:
+If you host the media resources on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `cdn` of `_config.yml`{: .filepath} file:
 
 ```yaml
 cdn: https://cdn.com
 ```
 {: file='_config.yml' .nolineno}
 
-Once `cdn` is assigned, the CDN URL will be added to the path of all images (images of site avatar and posts) starting with `/`.
+Once `cdn` is assigned, the CDN URL will be added to the path of all media resources (site avatar, posts' images, audio and video files) starting with `/`.
 
 For instance, when using images:
 

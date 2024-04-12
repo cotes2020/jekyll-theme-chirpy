@@ -20,7 +20,7 @@
 
     {% unless src contains '://' %}
       {%- capture img_url -%}
-        {% include media-url.html src=src img_path=page.img_path absolute=true %}
+        {% include media-url.html src=src subpath=page.img_path absolute=true %}
       {%- endcapture -%}
 
       {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}

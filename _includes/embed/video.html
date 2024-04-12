@@ -12,7 +12,7 @@
 {% if poster_url %}
   {% unless poster_url contains '://' %}
     {%- capture poster_url -%}
-      {% include media-url.html src=poster_url img_path=page.img_path %}
+      {% include media-url.html src=poster_url subpath=page.img_path %}
     {%- endcapture -%}
   {% endunless %}
   {% assign poster = 'poster="' | append: poster_url | append: '"' %}
