@@ -270,13 +270,13 @@ The parsing result will automatically add the CDN prefix `https://cdn.com` befor
 ```
 {: .nolineno }
 
-### Image Path
+### Media Subpath
 
 When a post contains many images, it will be a time-consuming task to repeatedly define the path of the media resources. To solve this, we can define this path in the YAML block of the post:
 
 ```yml
 ---
-media_subpath: /img/path/
+media_subpath: /media/subpath/
 ---
 ```
 
@@ -290,7 +290,7 @@ And then, the image source of Markdown can write the file name directly:
 The output will be:
 
 ```html
-<img src="/img/path/flower.png" alt="The flower" />
+<img src="/media/subpath/flower.png" alt="The flower" />
 ```
 {: .nolineno }
 
