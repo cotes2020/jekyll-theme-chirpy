@@ -276,7 +276,7 @@ When a post contains many images, it will be a time-consuming task to repeatedly
 
 ```yml
 ---
-media_subpath: /media/subpath/
+media_subpath: /img/path/
 ---
 ```
 
@@ -290,7 +290,7 @@ And then, the image source of Markdown can write the file name directly:
 The output will be:
 
 ```html
-<img src="/media/subpath/flower.png" alt="The flower" />
+<img src="/img/path/flower.png" alt="The flower" />
 ```
 {: .nolineno }
 
