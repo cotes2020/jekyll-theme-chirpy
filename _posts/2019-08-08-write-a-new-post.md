@@ -272,11 +272,11 @@ The parsing result will automatically add the CDN prefix `https://cdn.com` befor
 
 ### Image Path
 
-When a post contains many images, it will be a time-consuming task to repeatedly define the path of the images. To solve this, we can define this path in the YAML block of the post:
+When a post contains many images, it will be a time-consuming task to repeatedly define the path of the media resources. To solve this, we can define this path in the YAML block of the post:
 
 ```yml
 ---
-img_path: /img/path/
+media_subpath: /img/path/
 ---
 ```
 
@@ -308,7 +308,7 @@ image:
 ---
 ```
 
-Note that the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
+Note that the [`media_subpath`](#media-subpath) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
 
 For simple use, you can also just use `image` to define the path.
 
