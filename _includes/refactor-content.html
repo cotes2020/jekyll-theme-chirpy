@@ -97,7 +97,7 @@
     {% assign _lazyload = true %}
 
     {%- capture _img_url -%}
-      {% include img-url.html src=_src img_path=page.img_path %}
+      {% include media-url.html src=_src subpath=page.media_subpath %}
     {%- endcapture -%}
 
     {% assign _path_prefix = _img_url | remove: _src %}

@@ -5,14 +5,14 @@
 
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
-    {% include img-url.html src=video_url %}
+    {% include media-url.html src=video_url %}
   {%- endcapture -%}
 {% endunless %}
 
 {% if poster_url %}
   {% unless poster_url contains '://' %}
     {%- capture poster_url -%}
-      {% include img-url.html src=poster_url img_path=page.img_path %}
+      {% include media-url.html src=poster_url subpath=page.media_subpath %}
     {%- endcapture -%}
   {% endunless %}
   {% assign poster = 'poster="' | append: poster_url | append: '"' %}
