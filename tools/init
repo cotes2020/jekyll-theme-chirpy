@@ -87,10 +87,9 @@ init_files() {
     rm -rf .github
   else
     ## Change the files of `.github`
-    mv .github/workflows/$ACTIONS_WORKFLOW.hook .
-    rm -rf .github
-    mkdir -p .github/workflows
-    mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
+    mv .github/workflows/starter/$ACTIONS_WORKFLOW .
+    rm -rf .github && mkdir -p .github/workflows
+    mv ./$ACTIONS_WORKFLOW .github/workflows/${ACTIONS_WORKFLOW}
 
     ## Cleanup image settings in site config
     _sedi "s/^cdn:.*/cdn:/;s/^avatar:.*/avatar:/" _config.yml
