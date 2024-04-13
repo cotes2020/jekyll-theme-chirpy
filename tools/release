@@ -1,56 +1,47 @@
 #!/usr/bin/env bash
 #
-# Release a new version to the GitLab flow production branch.
-#
-# For a new major/minor version, bump version on the main branch, and then merge into the production branch.
-#
-# For a patch version, bump the version number on the patch branch, then merge that branch into the main branch
-# and production branch.
-#
-#
-# Usage: run on the default, release or the patch branch
-#
 # Requires: Git, NPM and RubyGems
 
 set -eu
 
-opt_pre=false # preview mode option
+opt_pre=false # option for bump gem version
+opt_pkg=false # option for building gem package
 
-working_branch="$(git branch --show-current)"
-
-DEFAULT_BRANCH="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
-
-PROD_BRANCH="production"
+MAIN_BRANCH="master"
+RELEASE_BRANCH="production"
 
 GEM_SPEC="jekyll-theme-chirpy.gemspec"
-NODE_CONFIG="package.json"
-CHANGE_LOG="docs/CHANGELOG.md"
+NODE_SPEC="package.json"
+CHANGELOG="docs/CHANGELOG.md"
+CONFIG="_config.yml"
 
 JS_DIST="assets/js/dist"
-BACKUP_PATH="$(mktemp -d)"
 
 FILES=(
   "$GEM_SPEC"
-  "$NODE_CONFIG"
+  "$NODE_SPEC"
+  "$CHANGELOG"
+  "$CONFIG"
 )
 
 TOOLS=(
   "git"
   "npm"
-  "standard-version"
   "gem"
 )
 
 help() {
-  echo "A tool to release new version Chirpy gem"
+  echo -e "A tool to release new version Chirpy gem.\nThis tool will:"
+  echo "  1. Build a new gem and publish it to RubyGems.org"
+  echo "  2. Merge the release branch into the default branch"
   echo
   echo "Usage:"
-  echo
-  echo "   bash ./tools/release [options]"
+  echo "  bash ./tools/release [options]"
   echo
   echo "Options:"
-  echo "     -p, --preview            Enable preview mode, only package, and will not modify the branches"
-  echo "     -h, --help               Print this information."
+  echo "  --prepare           Preparation for release"
+  echo "  -p, --package       Build a gem package only, for local packaging in case of auto-publishing failure"
+  echo "  -h, --help          Display this help message"
 }
 
 _check_cli() {
@@ -70,11 +61,9 @@ _check_git() {
     exit 1
   fi
 
-  $opt_pre || (
-    if [[ $working_branch != "$DEFAULT_BRANCH" &&
-      $working_branch != hotfix/* &&
-      $working_branch != "$PROD_BRANCH" ]]; then
-      echo "> Abort: Please run on the default, release or patch branch."
+  $opt_pkg || (
+    if [[ "$(git branch --show-current)" != "$RELEASE_BRANCH" ]]; then
+      echo "> Abort: Please run the tool in the '$RELEASE_BRANCH' branch."
       exit 1
     fi
   )
@@ -103,106 +92,93 @@ check() {
   _check_node_packages
 }
 
-# Auto-generate a new version number to the file 'package.json'
-bump_node() {
-  bump="standard-version -i $CHANGE_LOG"
+## Bump new version to gem-spec file
+_bump_version() {
+  _version="$(grep '"version":' "$NODE_SPEC" | sed 's/.*: "//;s/".*//')"
+  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$_version/" "$GEM_SPEC"
+  echo "> Bump gem version to $_version"
+}
 
-  if $opt_pre; then
-    bump="$bump -p rc"
-  fi
-
-  eval "$bump"
-
-  # Change heading of Patch version to heading level 2 (a bug from `standard-version`)
-  sed -i "s/^### \[/## \[/g" "$CHANGE_LOG"
+_improve_changelog() {
   # Replace multiple empty lines with a single empty line
-  sed -i "/^$/N;/^\n$/D" "$CHANGE_LOG"
+  sed -i '/^$/N;/^\n$/D' "$CHANGELOG"
+  # Escape left angle brackets of HTML tag in the changelog as they break the markdown structure. e.g., '<hr>'
+  sed -i -E 's/\s(<[a-z])/ \\\1/g' "$CHANGELOG"
 }
 
-## Bump new version to gem config file
-bump_gem() {
-  _ver="$1"
-
-  if $opt_pre; then
-    _ver="${1/-/.}"
-  fi
-
-  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$_ver/" "$GEM_SPEC"
-}
-
-# Creates a new tag on the production branch with the given version number.
-# Also commits the changes and merges the production branch into the default branch.
-branch() {
-  _version="$1" # X.Y.Z
-
-  git add .
-  git commit -m "chore(release): $_version"
-
-  # Create a new tag on production branch
-  echo -e "> Create tag v$_version\n"
-  git tag "v$_version"
-
-  git checkout "$DEFAULT_BRANCH"
-  git merge --no-ff --no-edit "$PROD_BRANCH"
-
-  if [[ $working_branch == hotfix/* ]]; then
-    # delete the patch branch
-    git branch -D "$working_branch"
-  fi
+prepare() {
+  _bump_version
+  _improve_changelog
 }
 
 ## Build a Gem package
 build_gem() {
-  git checkout "$PROD_BRANCH"
+  if $opt_pkg; then
+    BACKUP_PATH="$(mktemp -d)"
+    cp "$JS_DIST"/* "$BACKUP_PATH"
+  fi
 
   # Remove unnecessary theme settings
-  sed -i "s/^cdn:.*/cdn:/;s/^avatar:.*/avatar:/" _config.yml
+  sed -i "s/^cdn:.*/cdn:/;s/^avatar:.*/avatar:/" $CONFIG
   rm -f ./*.gem
 
   npm run build
   git add "$JS_DIST" -f # add JS distribution files to gem
   gem build "$GEM_SPEC"
-  cp "$JS_DIST"/* "$BACKUP_PATH"
 
-  # Resume the settings
+  # resume the settings
   git reset
   git checkout .
 
-  # restore the dist files for future development
-  mkdir -p "$JS_DIST" && cp "$BACKUP_PATH"/* "$JS_DIST"
+  if $opt_pkg; then
+    # restore the dist files for future development
+    mkdir -p "$JS_DIST" && cp "$BACKUP_PATH"/* "$JS_DIST"
+    rm -rf "$BACKUP_PATH"
+  fi
+}
 
-  # back to the default branch
-  git checkout "$DEFAULT_BRANCH"
+# Push the gem to RubyGems.org (using $GEM_HOST_API_KEY)
+push_gem() {
+  gem push ./*.gem
+}
+
+## Merge the release branch into the default branch
+merge() {
+  git fetch origin "$MAIN_BRANCH"
+  git checkout -b "$MAIN_BRANCH" origin/"$MAIN_BRANCH"
+
+  git merge --no-ff --no-edit "$RELEASE_BRANCH" || (
+    git merge --abort
+    echo -e "\n> Conflict detected. Aborting merge.\n"
+    exit 0
+  )
+
+  git push origin "$MAIN_BRANCH"
 }
 
 main() {
   check
 
-  if [[ $opt_pre = false && $working_branch != "$PROD_BRANCH" ]]; then
-    git checkout "$PROD_BRANCH"
-    git merge --no-ff --no-edit "$working_branch"
+  if $opt_pre; then
+    prepare
+    exit 0
   fi
-
-  bump_node
-
-  _version="$(grep '"version":' "$NODE_CONFIG" | sed 's/.*: "//;s/".*//')"
-
-  bump_gem "$_version"
-
-  if [[ $opt_pre = false ]]; then
-    branch "$_version"
-  fi
-
-  echo -e "> Build the gem package for v$_version\n"
 
   build_gem
+  $opt_pkg && exit 0
+  push_gem
+  merge
 }
 
 while (($#)); do
   opt="$1"
   case $opt in
-  -p | --preview)
+  --prepare)
     opt_pre=true
+    shift
+    ;;
+  -p | --package)
+    opt_pkg=true
     shift
     ;;
   -h | --help)
