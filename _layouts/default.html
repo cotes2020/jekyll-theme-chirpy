@@ -78,6 +78,11 @@ layout: compress
 
     {% include js-selector.html lang=lang %}
 
+    <!-- MathJax -->
+    {% if page.math %}
+      {% include mathjax-support.html %}
+    {% endif %}
+
     {% if page.mermaid %}
       {% include mermaid.html %}
     {% endif %}

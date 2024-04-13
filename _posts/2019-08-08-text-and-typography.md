@@ -152,12 +152,6 @@ When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
-We can also use the physics package in MathJax to render mathematical expressions:
-
-$$
-i G_{\alpha\beta}(\vb{x}t,\vb{x}'t') = \frac{\mel{\Psi_0}{\hat{\mathsf{T}}[\hat{\psi}_{H\alpha}(\vb{x}t)\hat{\psi}_{H\beta}^\dagger(\vb{x}'t')]}{\Psi_0}}{\braket{\Psi_0}{\Psi_0}}
-$$
-
 ## Mermaid SVG
 
 ```mermaid

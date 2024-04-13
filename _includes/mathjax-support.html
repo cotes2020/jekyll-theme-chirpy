@@ -1,0 +1,22 @@
+<script>
+/* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
+/* MathJax extensions can be found: <https://docs.mathjax.org/en/latest/input/tex/extensions/index.html> */
+MathJax = {
+    tex: {
+    /* start/end delimiter pairs for in-line math */
+    inlineMath: [
+        ['$', '$'],
+        ['\\(', '\\)']
+    ],
+    /* start/end delimiter pairs for display math */
+    displayMath: [
+        ['$$', '$$'],
+        ['\\[', '\\]']
+    ],
+    /* equation numbering */
+    tags: 'ams'
+    }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
