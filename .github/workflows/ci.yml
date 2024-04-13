@@ -1,9 +1,8 @@
 name: "CI"
 on:
   push:
-    branches-ignore:
-      - "production"
-      - "docs"
+    branches:
+      - "master"
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
@@ -12,8 +11,6 @@ on:
       - "README.md"
       - "LICENSE"
   pull_request:
-    paths:
-      - "**"
 
 jobs:
   build:
