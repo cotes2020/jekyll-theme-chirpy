@@ -109,7 +109,9 @@ comments: false
 
 ## Mathematics
 
-For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+
+[mathjax]: https://www.mathjax.org/
 
 ```yaml
 ---
@@ -153,6 +155,12 @@ Can be referenced as \eqref{eq:label_name}.
 2. \$$ LaTeX_math_expression $$
 3. \$$ LaTeX_math_expression $$
 ```
+
+> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
+> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
+{: .prompt-tip }
+
+[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
 
 ## Mermaid
 
