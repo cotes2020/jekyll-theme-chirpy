@@ -10,12 +10,14 @@ tags: [project, unity, rogue-lite, hunting action] # TAG names should always be 
 <br>
 [개발일지 링크](https://lagooneng.tistory.com/category/%EC%9C%A0%EB%8B%88%ED%8B%B0%20%EA%B2%8C%EC%9E%84%20%EA%B0%9C%EB%B0%9C/%EB%A9%94%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%3A%20%20Parrying%20Sowrd)
 
-# 프로젝트 설명<br>
+## 프로젝트 설명
+
+<br>
 
 Parrying Sword는 Unity Engine으로 만들어진 로그라이트 헌팅액션 장르의 게임입니다.<br>
 로그라이트, 헌팅액션 두 가지 장르의 관점으로 살펴볼 수 있습니다
 
-# 로그라이트
+- ### 로그라이트
 
 ![stageUML](assets/img/parringsword/stageUML.png)
 로그라이트란, 매번 달라지는 요소들(특히 스테이지)이 존재하고,<br>
@@ -48,7 +50,7 @@ Parrying Sword는 Unity Engine으로 만들어진 로그라이트 헌팅액션 �
 
 <hr>
 
-# 헌팅 액션
+- ### 헌팅 액션
 
 ![hunting1](assets/img/parringsword/hunting1.png)
 
@@ -78,16 +80,16 @@ Parrying Sword는 Unity Engine으로 만들어진 로그라이트 헌팅액션 �
 
 <hr>
 
-# 액션의 모티브
+## 액션의 모티브
 
 <hr>
 
-# 프로젝트 진행 중 있었던 이슈
+## 프로젝트 진행 중 있었던 이슈
 
-1. 로그라이트 시스템 구성
-2. 와이어 액션 구현
-3. 물 구현과 최적화 문제
+1. ### 로그라이트 시스템 구성
+2. ### 와이어 액션 구현
+3. ### 물 구현과 최적화 문제
 
 <hr>
 
-# 앞으로 이 프로젝트는 어떻게 될 것인가
+## 앞으로 이 프로젝트는 어떻게 될 것인가
