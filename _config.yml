@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: Tofurobot.io # the main title
 
-tagline: Technical writing and brain dumps... # it will display as the sub-title
+tagline: Technical writings and notes... # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich blog.
