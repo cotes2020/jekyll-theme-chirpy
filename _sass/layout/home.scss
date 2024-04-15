@@ -418,3 +418,11 @@
     max-width: unset;
   }
 }
+
+#sidebar > header.profile-wrapper {
+  padding-left: 1.25rem;
+}
+
+#sidebar > header.profile-wrapper p {
+  margin-left: 1.25rem;
+}
