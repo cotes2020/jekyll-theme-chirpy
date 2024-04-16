@@ -8,7 +8,7 @@
 {% else %}
   {%- assign clqip = null -%}
 {% endif %}
-<article class="card-wrapper card">
+<article class="card-wrapper card project-card">
   <a href="{{ url }}" class="post-preview row g-0">
     <!--      {% assign card_body_col = '12' %}-->
 
@@ -28,7 +28,7 @@
     <div class="project-body card-body d-flex row">
       <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
       <div class="project-main">
-        <h3 class="card-title mb-2 mt-md-0">{{ title }}</h3>
+        <h3 class="card-title mb-2 mt-0">{{ title }}</h3>
         {% if caption %}
         <p class="card-text content mt-0">{{ caption }}</p>
         {% endif %}

@@ -207,6 +207,7 @@
   background-color: var(--card-bg);
   border-radius: 0;
   vertical-align: unset;
+  margin: auto;
 }
 
 .preview-img {
@@ -419,14 +420,20 @@
     margin-right: 1.75rem;
   }
   #post-list.grid-cols-1-w.grid-auto-rows.gap-4 {
-    gap: 0.0rem!important;
+    gap: 0.0rem !important;
     margin-top: 1rem;
   }
   .grid-cols-1-w.grid-auto-rows .overview-card {
     max-width: unset;
   }
   .grid-cols-1-w.grid-auto-rows .overview-card.h-100 {
-    height: fit-content!important;
+    height: fit-content !important;
+  }
+  .project-card.card {
+    height: fit-content;
+    .project-content {
+      max-height: unset;
+    }
   }
 }
 
@@ -436,4 +443,12 @@
 
 #sidebar > header.profile-wrapper p {
   margin-left: 1.25rem;
+}
+
+.w-300px {
+  width: 300px;
+}
+
+.h-100px {
+  height: 100px;
 }

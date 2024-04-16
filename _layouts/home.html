@@ -9,7 +9,9 @@ refactor: true
       <div class="card card-wrapper fit-content" id="home-title">
         <div class="overview-title-body card-body">
           <div class="flex justify-center">
-            <h1 class="text-6xl md:text-6xl mt-0 mb-1">Maitrix.org</h1>
+            <div class="w-300px h-100px">
+              <img src="assets/img/logo-title.png" alt="Maitrix.org"/>
+            </div>
           </div>
           <p/>
           <p class="max-32-rem flex m-auto">
@@ -18,7 +20,9 @@ refactor: true
           </p>
         </div>
       </div>
-      <div class="fit-content h-fit-content items-center grid grid-cols-1-w grid-cols-2-w grid-cols-3 grid-auto-rows gap-4" id="post-list">
+      <div
+        class="fit-content h-fit-content items-center grid grid-cols-1-w grid-cols-2-w grid-cols-3 grid-auto-rows gap-4"
+        id="post-list">
         {{ content }}
       </div>
     </article>
