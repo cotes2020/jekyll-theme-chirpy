@@ -2,14 +2,10 @@ name: "Style Lint"
 
 on:
   push:
-    branches-ignore:
-      - "production"
-      - "docs"
-    paths:
-      - "_sass/**/*.scss"
+    branches: ["master"]
+    paths: ["_sass/**/*.scss"]
   pull_request:
-    paths:
-      - "_sass/**/*.scss"
+    paths: ["_sass/**/*.scss"]
 
 jobs:
   stylelint:
