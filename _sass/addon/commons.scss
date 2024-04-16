@@ -672,18 +672,6 @@ main {
 
 /* --- Overriding --- */
 
-/* magnific-popup */
-
-figure .mfp-title {
-  text-align: center;
-  padding-right: 0;
-  margin-top: 0.5rem;
-}
-
-.mfp-img {
-  transition: none;
-}
-
 /* mermaid */
 .mermaid {
   text-align: center;
@@ -876,7 +864,7 @@ $btn-mb: 0.5rem;
       line-height: $btn-size;
     }
 
-    .mode-toggle {
+    #mode-toggle {
       padding: 0;
       border: 0;
 
@@ -1158,7 +1146,8 @@ search {
 /* --- button back-to-top --- */
 
 #back-to-top {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   z-index: 1;
   cursor: pointer;
   position: fixed;
@@ -1171,8 +1160,7 @@ search {
   height: $back2top-size;
   border-radius: 50%;
   border: 1px solid var(--btn-backtotop-border-color);
-  transition: transform 0.2s ease-out;
-  -webkit-transition: transform 0.2s ease-out;
+  transition: opacity 0.5s ease-in-out, transform 0.2s ease-out;
 
   &:hover {
     transform: translate3d(0, -5px, 0);
@@ -1183,6 +1171,11 @@ search {
     line-height: $back2top-size;
     position: relative;
     bottom: 2px;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
   }
 }
 

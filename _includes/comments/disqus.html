@@ -28,7 +28,7 @@
     { threshold: [0] }
   );
 
-  disqus_observer.observe(document.querySelector('#disqus_thread'));
+  disqus_observer.observe(document.getElementById('disqus_thread'));
 
   /* Auto switch theme */
   function reloadDisqus() {
@@ -44,7 +44,7 @@
     }
   }
 
-  if (document.querySelector('.mode-toggle')) {
+  if (document.getElementById('mode-toggle')) {
     window.addEventListener('message', reloadDisqus);
   }
 </script>
