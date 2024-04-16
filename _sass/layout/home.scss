@@ -363,7 +363,7 @@
 }
 
 .overview-body {
-  padding: 0.75rem !important;
+  padding: 1.75rem !important;
 }
 
 .overview-title-body {
@@ -414,8 +414,19 @@
     width: 100%;
     grid-auto-rows: unset;
   }
+  article.gap-4 {
+    margin-left: 1.75rem;
+    margin-right: 1.75rem;
+  }
+  #post-list.grid-cols-1-w.grid-auto-rows.gap-4 {
+    gap: 0.0rem!important;
+    margin-top: 1rem;
+  }
   .grid-cols-1-w.grid-auto-rows .overview-card {
     max-width: unset;
+  }
+  .grid-cols-1-w.grid-auto-rows .overview-card.h-100 {
+    height: fit-content!important;
   }
 }
 
