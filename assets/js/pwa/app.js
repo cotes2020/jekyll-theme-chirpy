@@ -8,30 +8,32 @@ if ('serviceWorker' in navigator) {
 
   if (isEnabled) {
     const swUrl = '{{ '/sw.min.js' | relative_url }}';
-    const $notification = $('#notification');
-    const $btnRefresh = $('#notification .toast-body>button');
+    const notification = document.getElementById('notification');
+    const btnRefresh = notification.querySelector('.toast-body>button');
+    const popupWindow = bootstrap.Toast.getOrCreateInstance(notification);
 
     navigator.serviceWorker.register(swUrl).then((registration) => {
       {% comment %}In case the user ignores the notification{% endcomment %}
       if (registration.waiting) {
-        $notification.toast('show');
+        popupWindow.show();
       }
 
       registration.addEventListener('updatefound', () => {
         registration.installing.addEventListener('statechange', () => {
           if (registration.waiting) {
             if (navigator.serviceWorker.controller) {
-              $notification.toast('show');
+              popupWindow.show();
             }
           }
         });
       });
 
-      $btnRefresh.on('click', () => {
+      btnRefresh.addEventListener('click', () => {
         if (registration.waiting) {
           registration.waiting.postMessage('SKIP_WAITING');
         }
-        $notification.toast('hide');
+
+        popupWindow.hide();
       });
     });
 
