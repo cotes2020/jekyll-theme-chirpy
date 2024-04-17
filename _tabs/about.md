@@ -9,18 +9,21 @@ panel_includes:
 
 ## Organizations
 
-<div class="fit-content grid grid-cols-4 m-auto gap-4" markdown="1">
+<div class="fit-content grid grid-cols-5 m-auto gap-4" markdown="1">
 
 ![MixLab](/assets/img/mixlab-logo.png){: .no-popup .logo width="75" }
 _MixLab_
 
-![UC San Diego](/assets/img/ucsd-logo.png){: .no-popup .logo width="75" }
-_UC San Diego_
+![UCSD](/assets/img/ucsd-logo.png){: .no-popup .logo width="75" }
+_UCSD_
 
 ![MBZUAI](/assets/img/mbzuai-logo.png){: .no-popup .logo width="75" }
 _MBZUAI_
 
-![MBZUAI](/assets/img/jhu-logo.png){: .no-popup .logo width="75" }
+![JHU](/assets/img/jhu-logo.png){: .no-popup .logo width="75" }
 _JHU_
+
+![CMU](/assets/img/cmu-logo.png){: .no-popup .logo width="75" }
+_CMU_
 
 </div>
