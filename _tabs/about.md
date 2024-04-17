@@ -7,11 +7,9 @@ panel_includes:
   - toc
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
 ## Organizations
 
-<div class="fit-content grid grid-cols-3 m-auto gap-4" markdown="1">
+<div class="fit-content grid grid-cols-4 m-auto gap-4" markdown="1">
 
 ![MixLab](/assets/img/mixlab-logo.png){: .no-popup .logo width="75" }
 _MixLab_
@@ -21,5 +19,8 @@ _UC San Diego_
 
 ![MBZUAI](/assets/img/mbzuai-logo.png){: .no-popup .logo width="75" }
 _MBZUAI_
+
+![MBZUAI](/assets/img/jhu-logo.png){: .no-popup .logo width="75" }
+_JHU_
 
 </div>
