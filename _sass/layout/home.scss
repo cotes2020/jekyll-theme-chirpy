@@ -416,8 +416,8 @@
     grid-auto-rows: unset;
   }
   article.gap-4 {
-    margin-left: 1.75rem;
-    margin-right: 1.75rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
   #post-list.grid-cols-1-w.grid-auto-rows.gap-4 {
     gap: 0.0rem !important;
@@ -434,6 +434,9 @@
     .project-content {
       max-height: unset;
     }
+  }
+  .w-md-100 {
+    width: 100%!important;
   }
 }
 
