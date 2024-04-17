@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
 url: "https://2WindowLight.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: 2WindowLight # change to your github username
 
 twitter:
   username: twitter_username # change to your twitter username
@@ -39,7 +39,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    - https://github.com/2WindowLight # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
