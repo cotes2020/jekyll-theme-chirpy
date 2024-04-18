@@ -26,4 +26,7 @@ _JHU_
 ![CMU](/assets/img/cmu-logo.png){: .no-popup .logo width="75" }
 _CMU_
 
+![LLM360](/assets/img/llm360-logo.png){: .no-popup .logo width="75" }
+_LLM360_
+
 </div>
