@@ -477,9 +477,9 @@
 }
 
 .logo {
-  aspect-ratio: 1/1;
   height: unset;
   img {
+    aspect-ratio: 1/1;
     object-fit: contain;
   }
 }
