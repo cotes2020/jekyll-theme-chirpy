@@ -1,16 +1,40 @@
 ---
-title: CommandList - git
-date: 2020-07-16 11:11:11 -0400
-categories: [30System, CommandTool]
-tags: [CommandTool]
-math: true
+title: GitHub - Git
+date: 2020-11-11 11:11:11 -0400
+categories: [00CodeNote, SourceMagr]
+tags: [git]
+toc: true
 image:
 ---
 
+- [GitHub - Git](#github---git)
+- [git 常用命令详解](#git-常用命令详解)
+  - [前提条件](#前提条件)
+  - [版本控制](#版本控制)
+  - [Git基础和原理](#git基础和原理)
+  - [直接记录快照，非差异比较](#直接记录快照非差异比较)
+    - [近乎所有操作都是本地执行](#近乎所有操作都是本地执行)
+    - [Git 保证完整性](#git-保证完整性)
+    - [Git 一般只添加数据](#git-一般只添加数据)
+    - [三种状态](#三种状态)
+  - [Git安装设置](#git安装设置)
+  - [从Git 版本库的初始化](#从git-版本库的初始化)
+  - [Git 常用命令](#git-常用命令)
+    - [远程仓库相关命令](#远程仓库相关命令)
+    - [branch - 分支操作相关命令](#branch---分支操作相关命令)
+      - [切换分支：`$ git checkout [name]`](#切换分支-git-checkout-name)
+    - [tag - 版本操作相关命令](#tag---版本操作相关命令)
+    - [submodule - 子模块相关操作命令](#submodule---子模块相关操作命令)
+    - [忽略一些文件、文件夹不提交](#忽略一些文件文件夹不提交)
+    - [`git add`](#git-add)
+    - [`git commit -a` 提交当前repos的所有的改变](#git-commit--a-提交当前repos的所有的改变)
+    - [`git show` 显示各种类型的对象。](#git-show-显示各种类型的对象)
 
-# git
+---
 
-[toc]
+# GitHub - Git
+
+---
 
 # git 常用命令详解
 
@@ -191,6 +215,7 @@ Linux 上安装
 
 ## Git 常用命令
 ### 远程仓库相关命令
+
 - 检出仓库：$ `git clone` git://github.com/jquery/jquery.git
 - 查看远程仓库：$ git remote `-v`
 - 添加远程仓库：$ git remote `add [name] [url]`
@@ -203,118 +228,165 @@ Linux 上安装
 - $ git push origin test:master // 提交本地test分支作为远程的master分支
 - $ git push origin test:test   // 提交本地test分支作为远程的test分支
 
-### 分支(branch)操作相关命令
+---
 
-查看本地分支：`$ git branch`
-查看远程分支：$ git branch -r
-创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
+### branch - 分支操作相关命令
+
+```bash
+# 查看本地分支：
+$ git branch
+# 查看远程分支：
+$ git branch -r
+# 创建本地分支：
+$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
+```
+
+---
 
 #### 切换分支：`$ git checkout [name]`
 
-创建新分支并立即切换到新分支：$ git checkout -b [name]
+```bash
+# 创建新分支并立即切换到新分支：
+$ git checkout -b [name]
 
-删除分支：$ git branch -d [name]
-  - -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
+# 删除分支：
+# -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
+$ git branch -d [name]
 
-合并分支：$ git merge [name] ----将名称为[name]的分支与当前分支合并
+# 合并分支：
+$ git merge [name] ----将名称为[name]的分支与当前分支合并
 
-创建远程分支(本地分支push到远程)：$ git push origin [name]
+# 创建远程分支(本地分支push到远程)：
+$ git push origin [name]
 
-删除远程分支：$ git push origin :heads/[name] 或 $ git push origin :[name]
+# 删除远程分支：
+$ git push origin :heads/[name] 或 $ git push origin :[name]
 
-创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)
-
+# 创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)
 $git symbolic-ref HEAD refs/heads/[name]
-
 $rm .git/index
-
 $git clean -fdx
+```
 
-### 版本(tag)操作相关命令
+---
 
-查看版本：`$ git tag`
+### tag - 版本操作相关命令
 
-创建版本：$ git tag [name]
+```bash
+# 查看版本：
+$ git tag
 
-删除版本：$ git tag -d [name]
+# 创建版本：
+$ git tag [name]
 
-查看远程版本：`$ git tag -r`
+# 删除版本：
+$ git tag -d [name]
 
-创建远程版本(本地版本push到远程)：$ git push origin [name]
+# 查看远程版本：
+$ git tag -r`
 
-删除远程版本：$ git push origin :refs/tags/[name]
+# 创建远程版本(本地版本push到远程)：
+$ git push origin [name]
 
-合并远程仓库的tag到本地：$ git pull origin --tags
+# 删除远程版本：
+$ git push origin :refs/tags/[name]
 
-上传本地tag到远程仓库：$ git push origin --tags
+# 合并远程仓库的tag到本地：
+$ git pull origin --tags
 
-创建带注释的tag：$ git tag -a [name] -m 'yourMessage'
+# 上传本地tag到远程仓库：
+$ git push origin --tags
 
-### 子模块(submodule)相关操作命令
+# 创建带注释的tag：
+$ git tag -a [name] -m 'yourMessage'
+```
 
-添加子模块：$ git submodule add [url] [path]
+---
 
-如：$git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs
+### submodule - 子模块相关操作命令
 
-初始化子模块：$ git submodule init ----只在首次检出仓库时运行一次就行
+```bash
+# 添加子模块：
+$ git submodule add [url] [path]
+$ git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs
 
-更新子模块：$ git submodule update ----每次更新或切换分支后都需要运行一下
+# 初始化子模块：
+$ git submodule init ----只在首次检出仓库时运行一次就行
 
-删除子模块：（分4步走哦）
+# 更新子模块：
+$ git submodule update ----每次更新或切换分支后都需要运行一下
 
+# 删除子模块：（分4步）
 $ git rm --cached [path]
+# 编辑“.gitmodules”文件，将子模块的相关配置节点删除掉
+# 编辑“ .git/config”文件，将子模块的相关配置节点删除掉
+# 手动删除子模块残留的目录
+```
 
-编辑“.gitmodules”文件，将子模块的相关配置节点删除掉
+---
 
-编辑“ .git/config”文件，将子模块的相关配置节点删除掉
-
-手动删除子模块残留的目录
-
-5、忽略一些文件、文件夹不提交
+### 忽略一些文件、文件夹不提交
 
 在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如
-```
+
+```bash
 target
-
 bin
-
 *.db
 ```
 
 附： Git 常用命令速查
-git branch 查看本地所有分支
 
-`git status` 查看当前状态
+```bash
+# 查看本地所有分支
+$ git branch
 
-git commit 提交
+# 查看当前状态
+$ git status
 
-`git branch -a` 查看所有的分支
+# 提交
+$ git commit
 
-`git branch -r` 查看远程所有分支
+# 查看所有的分支
+$ git branch -a
 
-git commit -am "init" 提交并且加注释
+# 查看远程所有分支
+$ git branch -r
 
+# 提交并且加注释
+$ git commit -am "init"
 git remote add origin git@192.168.1.119:ndshow
 
-git push origin master 将文件给推到服务器上
+# 将文件给推到服务器上
+$ git push origin master
 
-git remote show origin 显示远程库origin里的资源
+# 显示远程库origin里的资源
+$ git remote show origin
+$ git push origin master:develop
 
-git push origin master:develop
+# 将本地库与服务器上的库进行关联
+$ git push origin master:hb-dev
 
-git push origin master:hb-dev 将本地库与服务器上的库进行关联
+# 切换到远程dev分支
+$ git checkout --track origin/dev
 
-git checkout --track origin/dev 切换到远程dev分支
+# 删除本地库develop
+$ git branch -D master develop
 
-git branch -D master develop 删除本地库develop
+# 建立一个新的本地分支dev
+$ git checkout -b dev
 
-git checkout -b dev 建立一个新的本地分支dev
+# 将分支dev与当前分支进行合并
+$ git merge origin/dev
 
-git merge origin/dev 将分支dev与当前分支进行合并
+# 切换到本地dev分支
+$ git checkout dev
 
-git checkout dev 切换到本地dev分支
+# 查看远程库
+$ git remote show
+```
 
-git remote show 查看远程库
+---
 
 ### `git add`
 
@@ -344,7 +416,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 - 由Git执行的目录递归或文件名遍历所导致的忽略文件将被默认忽略。
 - `git add-f(force)`选项添加被忽略的文件。
 
-```py
+```bash
 示例
 添加documentation目录及其子目录下所有*.txt文件的内容：
 $ git add documentation/*.txt
@@ -361,7 +433,7 @@ $ git add git-*.sh
 - 把<path>添加到索引库中，<path>可以是文件也可以是目录。
 - git不仅能判断出<path>中，修改(不包括已删除)的文件，还能判断出新添的文件，并把它们的信息添加到索引库中。
 
-```py
+```bash
 $ git add .             # 将所有修改添加到暂存区
 $ git add *             # Ant风格添加修改
 $ git add *Controller   # 将以Controller结尾的文件的所有修改添加到暂存区
@@ -581,22 +653,23 @@ git remote add origin git@github.com:daixu/WebApp.git增加一个远程服务器
 - 对于简单的blobs，它显示了普通的内容。
 - 该命令采用适用于 `git diff-tree` 命令的选项来控制如何显示提交引入的更改。
 
-```py
-1. 显示标签v1，以及标签指向的对象
+```bash
+# 1. 显示标签v1，以及标签指向的对象
 $ git show v1
 
-2. 显示标签v1指向的树
+# 2. 显示标签v1指向的树
 $ git show v1^{tree}
 
-3. 显示标签v1指向的提交的主题
+# 3. 显示标签v1指向的提交的主题
 $ git show -s --format=%s v1^{commit}
 
-4. 显示 Documentation/README 文件的内容，它们是 next 分支的第10次最后一次提交的内容
+# 4. 显示 Documentation/README 文件的内容，它们是 next 分支的第10次最后一次提交的内容
 $ git show next~10:Documentation/README
 
-5. 将Makefile的内容连接到分支主控的头部
+# 5. 将Makefile的内容连接到分支主控的头部
 $ git show master:Makefile master:t/Makefile
 ```
+
 git show-ref
 - 可以现实本地存储库的所有可用的引用以及关联的提交ID
 
