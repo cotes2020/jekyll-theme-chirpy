@@ -9,5 +9,7 @@ export function toc() {
       orderedList: false,
       scrollSmooth: false
     });
+
+    document.getElementById('toc-wrapper').classList.remove('d-none');
   }
 }
