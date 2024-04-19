@@ -23,11 +23,11 @@ book: Security+ 7th ch9
 
 - usually employed as a part of a DDoS attack.
 
-- <font color=LightSlateBlue>get a response to their request in a greater than 1:1 ratio,</font> the additional bandwidth traffic works to <font color=LightSlateBlue>congest and slow the responding server down. </font>
+- <font color=LightSlateBlue>get a response to their request in a greater than 1:1 ratio</font>, the additional bandwidth traffic works to <font color=LightSlateBlue>congest and slow the responding server down. </font>
 
 - significantly increases the amount of traffic sent to, or requested from, a victim.
 
-- The ratio achieved: <font color=LightSlateBlue> amplification factor,</font> and high numbers are possible with UDP-based protocols like `NTP, CharGen, and DNS`.
+- The ratio achieved: <font color=LightSlateBlue> amplification factor</font>, and high numbers are possible with UDP-based protocols like `NTP, CharGen, and DNS`.
 
 Example,
 - the command `monlist` can be used with an NTP amplification attack

@@ -21,7 +21,7 @@ book: Security+ 7th
 
 ## SYN Flood Attacks
 
-- a common attack <font color=LightSlateBlue>used against servers on the Internet.</font>
+- a common attack <font color=LightSlateBlue>used against servers on the Internet</font>.
 
 - Easy to launch, difficult to stop, can cause significant problems.
 
@@ -29,7 +29,7 @@ book: Security+ 7th
 
 - TCP sessions use a <font color=OrangeRed>three-way handshake</font> when establishing a session.
 
-  - 2 systems normally start a TCP session by exchanging <font color=LightSlateBlue>three packets in a TCP handshake.</font>
+  - 2 systems normally start a TCP session by exchanging <font color=LightSlateBlue>three packets in a TCP handshake</font>.
 
   - Example:
 
@@ -51,7 +51,7 @@ book: Security+ 7th
 
   - half-open connections can consume resources and can actually crash.
 
-- More often, the server <font color=OrangeRed>limits the number of these half-open connections.</font>
+- More often, the server <font color=OrangeRed>limits the number of these half-open connections</font>.
   - Once the limit is reached, the server won’t accept any new connections, blocking connections from legitimate users.
 
 - example:
@@ -78,7 +78,7 @@ book: Security+ 7th
   - At this point, the server knows the client is valid and will now accept incoming connections from that client normally
 
 - <font color=OrangeRed>Stack Tweaking 拧</font>
-  - TCP stacks can be tweaked in order to <font color=LightSlateBlue>reduce the effect of SYN floods.</font>
+  - TCP stacks can be tweaked in order to <font color=LightSlateBlue>reduce the effect of SYN floods</font>.
   - <font color=LightSlateBlue>Reduce the timeout before a stack frees up the memory</font> allocated for a connection
 
 - <font color=OrangeRed>Micro Blocks</font>

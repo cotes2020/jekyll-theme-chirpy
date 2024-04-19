@@ -1,5 +1,5 @@
 ---
-title: Scripts injection
+title: Meow's CyberAttack - Application/Server Attacks - Scripts Injection
 # author: Grace JyL
 date: 2020-09-19 11:11:11 -0400
 description:
@@ -12,12 +12,12 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-[toc]
+- [Scripts injection](#scripts-injection)
+
 
 ---
 
 # Scripts injection
-
 
 XSS
 - defined by the `Open Web Application Security Projection (OWASP)` as “a type of injection problem, in which malicious scripts are injected into the otherwise benign and trusted web sites.”
@@ -34,7 +34,7 @@ CSRF
 > CSRF更偏向于一个攻击结果，只要发起了冒牌请求那么就算是CSRF了。
 > 条条大路（XSS路，命令行路）通罗马（CSRF马，XSRF马）。
 
-Unlike SQL Injection, which affects any application type, CSRF and XSS affect only web-based applications and technologies.
+Unlike SQL Injection, which affects any application type, CSRF and XSS <font color=OrangeRed> affect only web-based applications and technologies </font>.
 - internal threats can be even more dangerous, have access to more resources than external attackers, which makes the combination of XSS and CSRF a lethal combination.
 - In an attack scenario, an external attacker combines a CSRF attack with an XSS attack, allowing infiltration, escalation of privilege, and other gains to internal resources.
 - One common form of this combination is called phishing, which utilizes email to entice a user to click a link to a malicious site that contains a CSRF attack signature along with malicious XSS in order to capture and send information or download malicious content without the unsuspecting user’s knowledge.

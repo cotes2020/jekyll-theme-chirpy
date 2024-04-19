@@ -7,7 +7,9 @@
         - [auto save](#auto-save)
   - [makefile](#makefile)
     - [avoid command output](#avoid-command-output)
+    - [rename file](#rename-file)
     - [move file](#move-file)
+    - [copy file](#copy-file)
     - [github repo search](#github-repo-search)
   - [reuse token](#reuse-token)
 - [My Issue](#my-issue)
@@ -40,7 +42,7 @@
 
 ### IntelliJ
 
-Recommand Plugin:
+Recommended Plugin:
 - Leetcode Editor
   - 上班摸鱼神器，也是一个可以在IDEA中刷算法题目的插件，有很多题目供我们学习，
   - 表面在写代码，其实是在刷题。 每道题都有很详细的解题思路
@@ -105,10 +107,52 @@ test_single_model:
   echo "hi
 ```
 
+### rename file
+
+
+```bash
+# main
+
+for file in ./test/xxx_test_output_main/*.json; do
+    # Extract the filename without the directory path
+    filename=$(basename "$file")
+    # Perform the renaming by substituting '_test.json' with '_test_main.json'
+    new_filename="${filename/_test.json/_test_main.json}"
+    # Rename the file
+    mv "$file" "./test/xxx_test_output_main/$new_filename"
+done
+
+
+# master
+
+for file in ./test/xxx_test_output_master/*.json; do
+    # Extract the filename without the directory path
+    filename=$(basename "$file")
+    # Perform the renaming by substituting '_test.json' with '_test_master.json'
+    new_filename="${filename/_test.json/_test_master.json}"
+    # Rename the file
+    mv "$file" "./test/xxx_test_output_master/$new_filename"
+done
+```
+
 ### move file
 
 ```bash
 for FILE in ./tests/*.yaml; do git mv $FILE "tests/j/"; done
+```
+
+### copy file
+
+To create a folder named "all" and copy all files from the other folders into this "all" folder, you can use the following commands:
+
+```bash
+mkdir all
+
+# Copy all files from other folders into the "all" folder
+cp -r ./test/*/*.json ./test/all
+
+# Use find and xargs to copy the files
+find ./test -type f -name "*.json" -print0 | xargs -0 -I {} cp {} ./test/all
 ```
 
 ### github repo search

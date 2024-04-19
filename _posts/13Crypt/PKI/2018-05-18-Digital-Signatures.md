@@ -59,13 +59,13 @@ Digital certificates
 
 The certificate purpose can be one of four settings:
 
-- <font color=OrangeRed> Encryption.</font> A certificate with this purpose will contain cryptographic keys for encryption and decryption.
+- <font color=OrangeRed> Encryption</font>. A certificate with this purpose will contain cryptographic keys for encryption and decryption.
 
-- <font color=OrangeRed> Signature.</font> A certificate with this purpose will contain cryptographic keys for signing data only.
+- <font color=OrangeRed> Signature</font>. A certificate with this purpose will contain cryptographic keys for signing data only.
 
-- <font color=OrangeRed> Signature and encryption.</font> A certificate with this purpose covers all primary uses of a certificate’s cryptographic key, including encryption of data, decryption of data, initial logon, or digitally signing data.
+- <font color=OrangeRed> Signature and encryption</font>. A certificate with this purpose covers all primary uses of a certificate’s cryptographic key, including encryption of data, decryption of data, initial logon, or digitally signing data.
 
-- <font color=OrangeRed> Signature and smartcard logon.</font> A certificate with this purpose allows for initial logon with a smart card, and digitally signing data; it cannot be used for data encryption.
+- <font color=OrangeRed> Signature and smartcard logon</font>. A certificate with this purpose allows for initial logon with a smart card, and digitally signing data; it cannot be used for data encryption.
 
 SSL is probably the first protocol to use digital certificates.
 - Now a days they are widely used where ever there is a need for signing and encryption.

