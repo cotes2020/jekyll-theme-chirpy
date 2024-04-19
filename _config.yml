@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: 코딩상점 # the main title
 
-tagline: 부제목 # it will display as the sub-title
+tagline: 부제목1 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
