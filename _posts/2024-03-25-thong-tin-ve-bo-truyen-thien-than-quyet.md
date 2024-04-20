@@ -3,7 +3,7 @@ published: true
 date: 2024-03-25
 title: Bộ truyện Thiên Thần Quyết
 ---
-Do mới cày xong bộ truyện Vạn Cổ Chí Tôn, và bộ này là phần tiếp theo của nó nhưng quá dài nên mình khá lười khi phải đọc hết nên có xem lướt và bỏ lỡ nhiều thứ. Ngoài ra tranh thủ lúc con Germini của Google vẫn cỏn free thì mình dùng nó để tóm tắt lại khái quát nội dung truyện và vừa giới thiệu bộ truyện đến độc giả. Những thông tin dưới đây mình sử dụng AI để tóm tắt lại nên có thể sai, các bạn có thể dùng để tham khảo nhé!
+Do mới cày xong bộ truyện Vạn Cổ Chí Tôn, và bộ này là phần tiếp theo của nó nhưng quá dài nên mình khá lười khi phải đọc hết nên có xem lướt và bỏ lỡ nhiều thứ. Ngoài ra tranh thủ lúc con Germini của Google vẫn cỏn free thì mình dùng nó để tóm tắt lại khái quát nội dung truyện và cũng là giới thiệu bộ truyện đến độc giả. Những thông tin dưới đây mình sử dụng AI để tóm tắt lại nên có thể sai, các bạn có thể dùng để tham khảo nhé!
 
 * * *
 
