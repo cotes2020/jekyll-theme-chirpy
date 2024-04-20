@@ -45,7 +45,7 @@
     [...basicList].forEach((elem) => {
       const svgCode = elem.textContent;
       const backup = elem.parentElement;
-      backup.classList.add('unloaded');
+      backup.classList.add('d-none');
       /* create mermaid node */
       let mermaid = document.createElement('pre');
       mermaid.classList.add('mermaid');

@@ -596,26 +596,6 @@ main {
 
 /* --- Effects classes --- */
 
-.loaded {
-  display: block !important;
-
-  @at-root .d-flex#{&} {
-    display: flex !important;
-  }
-}
-
-.unloaded {
-  display: none !important;
-}
-
-.visible {
-  visibility: visible !important;
-}
-
-.hidden {
-  visibility: hidden !important;
-}
-
 .flex-grow-1 {
   flex-grow: 1 !important;
 }
