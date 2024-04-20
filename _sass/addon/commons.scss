@@ -823,7 +823,10 @@ $btn-mb: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+
+      &:not(:focus-visible) {
+        box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+      }
 
       &:hover {
         background-color: var(--sidebar-hover-bg);
@@ -845,9 +848,6 @@ $btn-mb: 0.5rem;
     }
 
     #mode-toggle {
-      padding: 0;
-      border: 0;
-
       @extend %button;
       @extend %sidebar-links;
       @extend %sidebar-link-hover;
