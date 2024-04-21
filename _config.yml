@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: Lagooneng's Page # the main title
 
-tagline: Software Developer # it will display as the sub-title
+tagline: 단국대학교 소프트웨어학과 정현우 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   lagooneng's project archive
