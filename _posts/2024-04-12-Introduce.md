@@ -20,6 +20,8 @@ pin: true
 
 ### [Parrying Sword](../Project_ParryingSword)
 
+#### [영상링크](https://www.youtube.com/watch?v=kUkS4zQ0rV0)
+
 진행 기간: 2022.11 ~ 2024.02 <br>
 2D 로그라이트 헌팅액션 장르로 컨셉을 잡고 진행한 프로젝트입니다. <br>
 
