@@ -31,7 +31,7 @@
 -->
 {% if _content contains '<pre class="highlight">' %}
   {% assign _content = _content
-    | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight" style="direction: ltr; text-align: left;"><code'
+    | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight" style="direction: rtl; text-align: right;"><code'
     | replace: '</code></pre></div>', '</code></div>'
   %}
 {% endif %}
