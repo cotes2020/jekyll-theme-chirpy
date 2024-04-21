@@ -3,6 +3,7 @@ title: Introduce
 date: 2024-04-12 16:50:00 +/-0900
 categories: [Inroduce]
 tags: [Inroduce] # TAG names should always be lowercase
+pin: true
 ---
 
 안녕하세요,
