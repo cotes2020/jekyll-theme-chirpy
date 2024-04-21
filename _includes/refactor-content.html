@@ -21,10 +21,17 @@
   https://github.com/penibelst/jekyll-compress-html/issues/101
   https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
 -->
-
+<!--
 {% if _content contains '<pre class="highlight">' %}
   {% assign _content = _content
     | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code'
+    | replace: '</code></pre></div>', '</code></div>'
+  %}
+{% endif %}
+-->
+{% if _content contains '<pre class="highlight">' %}
+  {% assign _content = _content
+    | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight" style="direction: ltr; text-align: left;"><code'
     | replace: '</code></pre></div>', '</code></div>'
   %}
 {% endif %}
