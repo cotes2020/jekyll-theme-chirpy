@@ -21,6 +21,16 @@
   https://github.com/penibelst/jekyll-compress-html/issues/101
   https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
 -->
+
+{%- if page.lang == 'ar' -%}   
+    <div class="root" data-is-touch="false" dir="rtl">
+        {{content}} 
+    </div>
+{%- else -%}
+    <div class="root" data-is-touch="false">
+        {{content}} 
+    </div>
+{%- endif -%}
 <!--
 {% if _content contains '<pre class="highlight">' %}
   {% assign _content = _content
@@ -29,12 +39,6 @@
   %}
 {% endif %}
 -->
-{% if _content contains '<pre class="highlight">' %}
-  {% assign _content = _content
-    | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight" style="direction: rtl; text-align: right;"><code'
-    | replace: '</code></pre></div>', '</code></div>'
-  %}
-{% endif %}
 
 <!-- Change the icon of checkbox -->
 
