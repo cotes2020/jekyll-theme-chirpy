@@ -34,7 +34,7 @@
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
     "rimraf": "^5.0.5",
-    "rollup": "^4.15.0",
+    "rollup": "^4.16.2",
     "rollup-plugin-license": "^3.3.1",
     "semantic-release": "^23.0.8",
     "stylelint": "^16.3.1",
