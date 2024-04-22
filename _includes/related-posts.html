@@ -21,11 +21,11 @@
   {% assign match_posts = match_posts | push: site.tags[tag] | uniq %}
 {% endfor %}
 
+{% assign match_posts = match_posts | reverse %}
 {% assign last_index = match_posts.size | minus: 1 %}
 {% assign score_list = '' | split: '' %}
 
-{% for j in (0..last_index) %}
-  {% assign i = last_index | minus: j %}
+{% for i in (0..last_index) %}
   {% assign post = match_posts[i] %}
 
   {% if post.url == page.url %}
@@ -55,14 +55,12 @@
 {% assign index_list = '' | split: '' %}
 
 {% if score_list.size > 0 %}
-  {% assign score_list = score_list | sort_nature | reverse %}
+  {% assign score_list = score_list | sort | reverse %}
   {% for entry in score_list limit: TOTAL_SIZE %}
     {% assign index = entry | split: SEPARATOR | last %}
     {% assign index_list = index_list | push: index %}
   {% endfor %}
 {% endif %}
-
-{% assign index_list = index_list | reverse %}
 
 {% assign relate_posts = '' | split: '' %}
 
