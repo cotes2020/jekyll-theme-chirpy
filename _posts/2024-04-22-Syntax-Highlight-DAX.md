@@ -2,7 +2,7 @@
 title: DAX Highlighting in Github Pages
 description: DAX Syntax Highlighting on GitHub Pages with Rogue and highlight.js
 author: duddy
-date: 2024-04-09 20:33:00 +0000
+date: 2024-04-22 23:00:00 +0000
 categories: [Syntax Highlighting, DAX]
 tags: [rogue, highlight.js, github pages, dax, syntax highlighting]
 pin: false
