@@ -1,9 +1,9 @@
 ---
 published: true
 date: 2024-04-22
-title: Auto migration command in Laravel
+title: Auto migration MySQL schema command in Laravel
 ---
-```
+```php
 <?php
 
 namespace App\Console\Commands;
