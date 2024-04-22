@@ -714,7 +714,7 @@ $btn-mb: 0.5rem;
 
   %sidebar-link-hover {
     &:hover {
-      color: var(--sidebar-active-color);
+      color: rgb(0 0 0 / 95%);
     }
   }
 
@@ -794,7 +794,8 @@ $btn-mb: 0.5rem;
         font-weight: 600;
 
         &:hover {
-          background-color: var(--sidebar-hover-bg);
+          /*background-color: var(--sidebar-hover-bg);*/
+          background-color: #9eb767;
         }
 
         i {
@@ -811,8 +812,8 @@ $btn-mb: 0.5rem;
 
       &.active {
         .nav-link {
-          color: var(--sidebar-active-color);
-          background-color: var(--sidebar-hover-bg);
+          color: rgb(0 0 0 / 95%);
+          background-color: #9eb767;
 
           span {
             opacity: 1;
@@ -847,7 +848,7 @@ $btn-mb: 0.5rem;
       box-shadow: var(--sidebar-border-color) 0 0 0 1px;
 
       &:hover {
-        background-color: var(--sidebar-hover-bg);
+        background-color: #9eb767;
       }
     }
 
