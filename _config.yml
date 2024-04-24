@@ -7,7 +7,6 @@ theme: jekyll-theme-chirpy
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
 lang: ko-KR
-
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Shanghai
 
@@ -16,7 +15,7 @@ timezone: Asia/Shanghai
 
 title: 코딩상점 # the main title
 
-tagline: 부제목5 # it will display as the sub-title
+tagline: 부재목2 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
