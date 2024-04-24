@@ -1,5 +1,5 @@
 ---
-title: Text and Typography
+title: 테스트 페이지
 description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
 author: cotes
 date: 2019-08-08 11:33:00 +0800
@@ -14,7 +14,7 @@ image:
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
-## Headings
+## 이건 테스트
 
 <!-- markdownlint-capture -->
 <!-- markdownlint-disable -->
