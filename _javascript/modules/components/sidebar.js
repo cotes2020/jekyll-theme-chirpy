@@ -2,7 +2,6 @@
  * Expand or close the sidebar in mobile screens.
  */
 
-const $body = $('body');
 const ATTR_DISPLAY = 'sidebar-display';
 
 class SidebarUtil {
@@ -10,9 +9,9 @@ class SidebarUtil {
 
   static toggle() {
     if (SidebarUtil.isExpanded === false) {
-      $body.attr(ATTR_DISPLAY, '');
+      document.body.setAttribute(ATTR_DISPLAY, '');
     } else {
-      $body.removeAttr(ATTR_DISPLAY);
+      document.body.removeAttribute(ATTR_DISPLAY);
     }
 
     SidebarUtil.isExpanded = !SidebarUtil.isExpanded;
@@ -20,6 +19,9 @@ class SidebarUtil {
 }
 
 export function sidebarExpand() {
-  $('#sidebar-trigger').on('click', SidebarUtil.toggle);
-  $('#mask').on('click', SidebarUtil.toggle);
+  document
+    .getElementById('sidebar-trigger')
+    .addEventListener('click', SidebarUtil.toggle);
+
+  document.getElementById('mask').addEventListener('click', SidebarUtil.toggle);
 }

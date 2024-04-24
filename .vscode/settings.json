@@ -1,0 +1,27 @@
+{
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.trailingComma": "none",
+  // Shopify Liquid
+  "files.associations": {
+    "*.html": "liquid"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  // Formatter
+  "[html][liquid]": {
+    "editor.defaultFormatter": "Shopify.theme-check-vscode"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  // Disable vscode built-in stylelint
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  // Stylint extension settings
+  "stylelint.snippet": ["css", "less", "postcss", "scss"],
+  "stylelint.validate": ["css", "less", "postcss", "scss"]
+}

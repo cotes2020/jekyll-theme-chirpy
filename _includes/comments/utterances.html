@@ -10,7 +10,6 @@
 <script type="text/javascript">
   (function () {
     const origin = 'https://utteranc.es';
-    const iframe = 'iframe.utterances-frame';
     const lightTheme = 'github-light';
     const darkTheme = 'github-dark';
     let initTheme = lightTheme;
@@ -43,7 +42,7 @@
         theme: theme
       };
 
-      const utterances = document.querySelector(iframe).contentWindow;
+      const utterances = document.getElementsByClassName('utterances-frame')[0].contentWindow;
       utterances.postMessage(message, origin);
     });
   })();

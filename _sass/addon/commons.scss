@@ -1,6 +1,4 @@
-/*
-  The common styles
-*/
+/* The common styles */
 
 html {
   @media (prefers-color-scheme: light) {
@@ -86,6 +84,10 @@ blockquote {
   padding-left: 1rem;
   color: var(--blockquote-text-color);
 
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
   &[class^='prompt-'] {
     border-left: 0;
     position: relative;
@@ -102,10 +104,6 @@ blockquote {
       margin-top: 0.4rem;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
-    }
-
-    > p:last-child {
-      margin-bottom: 0;
     }
   }
 
@@ -131,12 +129,17 @@ kbd {
   box-shadow: inset 0 -2px 0 var(--kbd-wrap-color);
 }
 
+hr {
+  border-color: var(--main-border-color);
+  opacity: 1;
+}
+
 footer {
   background-color: var(--main-bg);
   height: $footer-height;
   border-top: 1px solid var(--main-border-color);
 
-  @extend %text-meta;
+  @extend %text-xs;
 
   a {
     @extend %text-highlight;
@@ -144,6 +147,10 @@ footer {
     &:hover {
       @extend %link-hover;
     }
+  }
+
+  em {
+    @extend %text-highlight;
   }
 
   p {
@@ -324,6 +331,10 @@ sup {
     object-fit: cover;
 
     @extend %rounded;
+
+    @at-root #post-list & {
+      width: 100%;
+    }
   }
 }
 
@@ -358,7 +369,6 @@ main {
 
   h1 {
     margin-top: 2rem;
-    margin-bottom: 1.5rem;
   }
 
   p {
@@ -379,7 +389,7 @@ main {
 }
 
 .post-meta {
-  @extend %text-meta;
+  @extend %text-sm;
 
   a {
     &:not([class]):hover {
@@ -544,16 +554,32 @@ main {
   width: 100%;
   height: 100%;
   margin-bottom: 1rem;
+  aspect-ratio: 16 / 9;
 
   @extend %rounded;
-
-  &.youtube {
-    aspect-ratio: 16 / 9;
-  }
 
   &.twitch {
     aspect-ratio: 310 / 189;
   }
+
+  &.file {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    margin-bottom: 0;
+  }
+
+  @extend %img-caption;
+}
+
+.embed-audio {
+  width: 100%;
+  display: block;
+
+  @extend %img-caption;
 }
 
 /* --- buttons --- */
@@ -569,26 +595,6 @@ main {
 }
 
 /* --- Effects classes --- */
-
-.loaded {
-  display: block !important;
-
-  @at-root .d-flex#{&} {
-    display: flex !important;
-  }
-}
-
-.unloaded {
-  display: none !important;
-}
-
-.visible {
-  visibility: visible !important;
-}
-
-.hidden {
-  visibility: hidden !important;
-}
 
 .flex-grow-1 {
   flex-grow: 1 !important;
@@ -636,27 +642,15 @@ main {
 
 .left {
   float: left;
-  margin: 0.75rem 1rem 1rem 0 !important;
+  margin: 0.75rem 1rem 1rem 0;
 }
 
 .right {
   float: right;
-  margin: 0.75rem 0 1rem 1rem !important;
+  margin: 0.75rem 0 1rem 1rem;
 }
 
 /* --- Overriding --- */
-
-/* magnific-popup */
-
-figure .mfp-title {
-  text-align: center;
-  padding-right: 0;
-  margin-top: 0.5rem;
-}
-
-.mfp-img {
-  transition: none;
-}
 
 /* mermaid */
 .mermaid {
@@ -829,7 +823,10 @@ $btn-mb: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+
+      &:not(:focus-visible) {
+        box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+      }
 
       &:hover {
         background-color: var(--sidebar-hover-bg);
@@ -850,10 +847,7 @@ $btn-mb: 0.5rem;
       line-height: $btn-size;
     }
 
-    .mode-toggle {
-      padding: 0;
-      border: 0;
-
+    #mode-toggle {
       @extend %button;
       @extend %sidebar-links;
       @extend %sidebar-link-hover;
@@ -1132,7 +1126,8 @@ search {
 /* --- button back-to-top --- */
 
 #back-to-top {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   z-index: 1;
   cursor: pointer;
   position: fixed;
@@ -1145,8 +1140,7 @@ search {
   height: $back2top-size;
   border-radius: 50%;
   border: 1px solid var(--btn-backtotop-border-color);
-  transition: transform 0.2s ease-out;
-  -webkit-transition: transform 0.2s ease-out;
+  transition: opacity 0.5s ease-in-out, transform 0.2s ease-out;
 
   &:hover {
     transform: translate3d(0, -5px, 0);
@@ -1157,6 +1151,11 @@ search {
     line-height: $back2top-size;
     position: relative;
     bottom: 2px;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
