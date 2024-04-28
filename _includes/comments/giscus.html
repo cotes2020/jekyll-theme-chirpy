@@ -47,7 +47,7 @@
         event.data &&
         event.data.direction === ModeToggle.ID
       ) {
-        /* global theme mode changed */
+        {%- comment -%} global theme mode changed {%- endcomment -%}
         const mode = event.data.message;
         const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
 

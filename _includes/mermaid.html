@@ -11,7 +11,9 @@
       let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
       let config = { theme: expectedTheme };
 
-      /* Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+      {%- comment -%}
+        Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344>
+      {%- endcomment -%}
       const mermaidList = document.getElementsByClassName('mermaid');
 
       [...mermaidList].forEach((elem) => {
@@ -37,16 +39,16 @@
     }
 
     let mermaidConf = {
-      theme: initTheme /* <default | dark | forest | neutral> */
+      theme: initTheme {%- comment -%}  <default | dark | forest | neutral> {%- endcomment -%}
     };
 
-    /* Create mermaid tag */
+    {%- comment -%} Create mermaid tag {%- endcomment -%}
     const basicList = document.getElementsByClassName('language-mermaid');
     [...basicList].forEach((elem) => {
       const svgCode = elem.textContent;
       const backup = elem.parentElement;
       backup.classList.add('d-none');
-      /* create mermaid node */
+      {%- comment -%} create mermaid node {%- endcomment -%}
       let mermaid = document.createElement('pre');
       mermaid.classList.add('mermaid');
       const text = document.createTextNode(svgCode);

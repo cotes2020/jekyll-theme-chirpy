@@ -25,12 +25,12 @@
     addEventListener('message', (event) => {
       let theme;
 
-      /* credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> */
+      {%- comment -%} credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> {%- endcomment -%}
       if (event.origin === origin) {
-        /* page initial */
+        {%- comment -%} page initial {%- endcomment -%}
         theme = initTheme;
       } else if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-        /* global theme mode changed */
+        {%- comment -%} global theme mode changed {%- endcomment -%}
         const mode = event.data.message;
         theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
       } else {
