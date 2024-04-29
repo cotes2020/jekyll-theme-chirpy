@@ -75,6 +75,10 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.headers.has('range')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
@@ -84,7 +88,7 @@ self.addEventListener('fetch', (event) => {
       return fetch(event.request).then((response) => {
         const url = event.request.url;
 
-        if (purge || response.status === 206 || event.request.method !== 'GET' || !verifyUrl(url)) {
+        if (purge || event.request.method !== 'GET' || !verifyUrl(url)) {
           return response;
         }
 
