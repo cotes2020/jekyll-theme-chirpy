@@ -2,14 +2,10 @@ name: "Style Lint"
 
 on:
   push:
-    branches-ignore:
-      - "production"
-      - "docs"
-    paths:
-      - "_sass/**/*.scss"
+    branches: ["master"]
+    paths: ["_sass/**/*.scss"]
   pull_request:
-    paths:
-      - "_sass/**/*.scss"
+    paths: ["_sass/**/*.scss"]
 
 jobs:
   stylelint:
@@ -21,5 +17,7 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
+        with:
+          node-version: latest
       - run: npm i
       - run: npm test
