@@ -9,15 +9,6 @@ body:
             [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md).
           required: true
 
-  - type: dropdown
-    attributes:
-      label: What is the topic?
-      options:
-        - Sharing tips and tricks
-        - Just chatting
-    validations:
-      required: true
-
   - type: textarea
     attributes:
       label: Description
