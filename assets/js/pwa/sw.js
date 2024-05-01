@@ -9,21 +9,7 @@ const swconfUrl = '{{ '/assets/js/data/swconf.js' | relative_url }}';
 importScripts(swconfUrl);
 const purge = swconf.purge;
 
-function verifyHost(url) {
-  for (const host of swconf.allowHosts) {
-    const regex = RegExp(`^http(s)?://${host}/`);
-    if (regex.test(url)) {
-      return true;
-    }
-  }
-  return false;
-}
-
 function verifyUrl(url) {
-  if (!verifyHost(url)) {
-    return false;
-  }
-
   const requestPath = new URL(url).pathname;
 
   for (const path of swconf.denyPaths) {
@@ -32,10 +18,6 @@ function verifyUrl(url) {
     }
   }
   return true;
-}
-
-if (!purge) {
-  swconf.allowHosts.push(location.host);
 }
 
 self.addEventListener('install', (event) => {
