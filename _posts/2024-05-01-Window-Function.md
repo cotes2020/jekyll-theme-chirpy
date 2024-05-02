@@ -1,6 +1,6 @@
 ---
-title: Exploring Window Functions
-description: Rewriting a DAX query with Window Function to investigate ease of use and performance characteristics
+title: TOPN vs INDEX
+description: Rewriting a DAX query that uses TOPN with INDEX to investigate ease of use and performance characteristics
 author: duddy
 date: 2024-05-01 00:00:00 +0000
 categories: [DAX]
