@@ -1,16 +1,16 @@
 ---
-title: Undirected Graphical Models for Tabular Data
+title: Theoretical Minimum - Classical Mechanics
 author: jake
-date: 2024-04-15 12:00:00 +0800
-categories: [Math]
+date: 2024-05-01 12:00:00 +0800
+categories: [Physics]
 tags: []
-math: true
-mermaid: true
+math: false
+mermaid: false
 image:
-  path: /assets/img/ugm.png
-  alt: Converting a tabular dataset into a graphical model
+  path: /assets/img/mindmap.png
+  alt: A mindmap can help collect your thoughts
 ---
-A mind map about Theoretical Minimum, Classical Mechanics.
+My mind map for [Theoretical Minimum, Classical Mechanics](https://theoreticalminimum.com/courses/classical-mechanics/2011/fall).
 
 ## Lecture 1
 ![alt](assets/img/B1L1.png)
