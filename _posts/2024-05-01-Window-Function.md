@@ -128,7 +128,7 @@ The dataset is very small so we can ignore the actual performance timings. To te
 ![DAX Studio Server Timing: INDEX 2000](/assets/img/0003-WindowFunction/index_dax_studio_server_timing_20000.png)
 *INDEX 20,000 Rows*
 
-TOPN quickly performs it's SE queries, followed by a substantial period of Formula Engine (FE). Interesting INDEX twice the time to execute. 
+TOPN quickly performs it's SE queries, followed by a substantial period of Formula Engine (FE). Interestingly INDEX takes twice the time to execute. 
 
 If we look at the Query Plans, the Logical Query Plans are almost identical. But on the Physical Query Plans we see some differences. Both queries end up at the same point, at a CrossApply EqualTo `'(Calendar'[Date])`, `('States'[State])`, `('data'[TestID])` on `('Calendar'[Date], 'States'[State], 'data'[TestID])`, where the latter is the most recent State of the given TestID on a given Date. The main difference is INDEX joins `('Calendar'[Date], 'data'[TestID], 'data'[State]) with the ordered list of ('Calendar'[Date], 'data'[TestID], 'data'[RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61], 'data'[DateTime], 'data'[State])` to determine n<sup>th</sup> row. 
 
