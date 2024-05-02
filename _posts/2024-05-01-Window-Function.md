@@ -8,7 +8,7 @@ tags: [dax, window functions, dax studio]
 pin: false
 ---
 
-Now I have a [DAX Syntax Highlighting](https://evaluationcontext.github.io/posts/Syntax-Highlight-DAX/) working on my blog I wanted to revisit an experiment I did a while, exploring window function when they first came out. This was based on rewriting some DAX written by [Phil Seamark](https://www.linkedin.com/in/seamark/) that [Counts numbers of last known state](https://dax.tips/2021/05/17/dax-count-number-of-last-known-state/). The measure considers each date, and counts the most recent State of each TestID.
+Now I have [DAX Syntax Highlighting](https://evaluationcontext.github.io/posts/Syntax-Highlight-DAX/) working on my blog I wanted to revisit some exploration I did with window function when they first came out. This was based on some DAX written by [Phil Seamark](https://www.linkedin.com/in/seamark/) that [Counts numbers of last known state](https://dax.tips/2021/05/17/dax-count-number-of-last-known-state/). The measure counts, for each day, the most recent State for each TestID.
 
 ## Semantic Model
 ![Data Model](/assets/img/0003-WindowFunction/data_model.webp)
@@ -133,6 +133,6 @@ TOPN quickly performs it's SE queries, followed by a substantial period of Formu
 If we look at the Query Plans, the Logical Query Plans are almost identical. But on the Physical Query Plans we see some differences. Both queries end up at the same point, at a CrossApply EqualTo `'(Calendar'[Date])`, `('States'[State])`, `('data'[TestID])` on `('Calendar'[Date], 'States'[State], 'data'[TestID])`, where the latter is the most recent State of the given TestID on a given Date. The main difference is INDEX joins `('Calendar'[Date], 'data'[TestID], 'data'[State]) with the ordered list of ('Calendar'[Date], 'data'[TestID], 'data'[RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61], 'data'[DateTime], 'data'[State])` to determine n<sup>th</sup> row. 
 
 ## Conclusion
-While the semantics of TOPN and INDEX measures are similar, the query plans and performance differ, resulting in differences in query times. When trying to develop or optimize a measure you should try to experiment with a few variations to check the characteristics of each before landing on a final design. INDEX could be a good solution if you want to get the n<sup>th</sup> item, TOPN wouldn't work out, and you'd have use [RANK](https://learn.microsoft.com/en-us/dax/rank-function-dax)/[RANX](https://learn.microsoft.com/en-us/dax/rankx-function-dax),and the measure would be less readible, and the peformance would need to be quanitified. 
+While the semantics of TOPN and INDEX measures are similar, the underlying algorithm and therefore query plans differ, resulting in differences in query performance. INDEX could be a good solution if you want to get the n<sup>th</sup> item, TOPN wouldn't work out, and you'd have use [RANK](https://learn.microsoft.com/en-us/dax/rank-function-dax)/[RANX](https://learn.microsoft.com/en-us/dax/rankx-function-dax),and the measure would be less readible, and the peformance would need to be quanitified. When trying to develop or optimize a measure you should try to experiment with a few variations to check the characteristics of each before landing on a final design.
 
 
