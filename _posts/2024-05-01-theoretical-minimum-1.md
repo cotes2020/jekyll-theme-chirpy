@@ -12,35 +12,35 @@ image:
 ---
 My mind map for [Theoretical Minimum, Classical Mechanics](https://theoreticalminimum.com/courses/classical-mechanics/2011/fall).
 
-## Lecture 1
+## Lecture 1 - The Nature of Classical Physics
 ![alt](assets/img/B1L1.png)
 
-## Lecture 2
+## Lecture 2 - Motion
 ![alt](assets/img/B1L2.png)
 
-## Lecture 3
+## Lecture 3 - Dynamics
 ![alt](assets/img/B1L3.png)
 
-## Lecture 4
+## Lecture 4 - Systems of More Than One Particle
 ![alt](assets/img/B1L4.png)
 
-## Lecture 5
+## Lecture 5 - Energy
 ![alt](assets/img/B1L5.png)
 
-## Lecture 6
+## Lecture 6 - The Principle of Least Action
 ![alt](assets/img/B1L6.png)
 
-## Lecture 7
+## Lecture 7 - Symmetries and Conservation Laws
 ![alt](assets/img/B1L7.png)
 
-## Lecture 8
+## Lecture 8 - Hamiltonian Mechanics and Time-Translation Invariance
 ![alt](assets/img/B1L8.png)
 
-## Lecture 9
+## Lecture 9 - The Phase Space Fluid and the Gibbs - Liouville Theorem
 ![alt](assets/img/B1L9.png)
 
-## Lecture 10
+## Lecture 10 - Poisson Brackets, Angular Momentum, and Symmetries
 ![alt](assets/img/B1L10.png)
 
-## Lecture 11
+## Lecture 11 - Electric and Magnetic Forces
 ![alt](assets/img/B1L11.png)
