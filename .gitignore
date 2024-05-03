@@ -17,6 +17,11 @@ package-lock.json
 # IDE configurations
 .idea
 
+.clj-kondo/
+.lsp/
+.vscode/
+.DS_Store
+
 # Misc
 _posts/.DS_Store
 _posts/00Abook/Data Structures and Algorithms in Java, 6th Edition.pdf

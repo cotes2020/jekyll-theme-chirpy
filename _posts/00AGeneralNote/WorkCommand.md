@@ -18,6 +18,7 @@
     - [Github Submodel](#github-submodel)
     - [Github upload](#github-upload)
   - [My M1 Issue](#my-m1-issue)
+    - [Check Processors](#check-processors)
     - [Install brew](#install-brew)
     - [install Pyenv](#install-pyenv)
       - [Prerequisites](#prerequisites)
@@ -29,7 +30,7 @@
     - [installation for Conda](#installation-for-conda)
     - [installation](#installation)
       - [pip](#pip)
-      - [brew](#brew)
+      - [brew update and upgrade](#brew-update-and-upgrade)
     - [terraform](#terraform)
 
 ---
@@ -454,6 +455,18 @@ cat SketchUp-* > SketchUp2023.dmg
 
 
 ## My M1 Issue
+
+### Check Processors
+
+Click on the System icon. Click About on the left side menu at the very bottom. Under Device specifications on the right side, check the System type. This will indicate either a
+- x86-based processor (32-bit),
+- x64-based processor (64-bit),
+- or an ARM-based processor.
+
+Click on the Apple icon in the top left corner, and then click on “About This Mac.”
+- If the processor says Intel, it's `x64`.
+- If you see M1 or M2 it's `ARM`.
+
 
 ### Install brew
 
@@ -1139,9 +1152,10 @@ So somehow pip is not recognizing the binary wheels and is rebuilding the wheel 
 Now we need someone to find out why the python you are using decided that the macosx_10_9_x86_64 tag is not acceptable anymore. The installer available via python.org still lists "for OS X 10.9 and later" on the macOSx line. Where did you install python from?
 
 
-#### brew
+#### brew update and upgrade
 
 ```bash
+brew update && brew upgrade
 arch -x86_64 brew update & arch -x86_64 brew upgrade
 ```
 
