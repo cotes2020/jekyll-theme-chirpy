@@ -1,13 +1,13 @@
 ---
-title: AIML - LLM Data Training
+title: LLM - LLM Data Training
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AIML]
+categories: [51AI, LLM]
 # img: /assets/img/sample/rabbit.png
-tags: [AIML]
+tags: [AI, ML]
 ---
 
-- [LLM Data Training](#llm-data-training)
+- [LLM - Data Training](#llm---data-training)
   - [CNN基础知识](#cnn基础知识)
     - [CNN 卷积神经网络](#cnn-卷积神经网络)
     - [Convolution 卷积](#convolution-卷积)
@@ -64,7 +64,7 @@ tags: [AIML]
 
 ---
 
-# LLM Data Training
+# LLM - Data Training
 
 ---
 

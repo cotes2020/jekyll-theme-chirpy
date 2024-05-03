@@ -1,8 +1,8 @@
 ---
-title: AIML - 2nd - Intermediate Machine Learning
+title: AI - 2nd - Intermediate Machine Learning
 date: 2021-08-11 11:11:11 -0400
-categories: [51AIML, MLNote]
-tags: [AIML]
+categories: [51AI]
+tags: [AI, ML]
 toc: true
 ---
 

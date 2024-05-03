@@ -1,13 +1,13 @@
 ---
-title: AIML - Confidence score for ML model
+title: LLM - Confidence score for ML model
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AIML]
+categories: [51AI, LLM]
 # img: /assets/img/sample/rabbit.png
-tags: [AIML]
+tags: [AI, ML]
 ---
 
-- [Confidence score for ML model](#confidence-score-for-ml-model)
+- [LLM - Confidence score for ML model](#llm---confidence-score-for-ml-model)
   - [overall](#overall)
   - [Confidence estimation techniques](#confidence-estimation-techniques)
   - [Data labeling](#data-labeling)
@@ -47,7 +47,7 @@ tags: [AIML]
 
 ---
 
-# Confidence score for ML model
+# LLM - Confidence score for ML model
 
 ---
 

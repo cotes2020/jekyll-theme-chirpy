@@ -1,8 +1,8 @@
 ---
-title: AIML - 1st - Intro to Machine Learning
+title: AI - 1st - Intro to Machine Learning
 date: 2021-08-11 11:11:11 -0400
-categories: [51AIML, MLNote]
-tags: [AIML]
+categories: [51AI]
+tags: [AI, ML]
 toc: true
 ---
 

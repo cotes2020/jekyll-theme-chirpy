@@ -4,7 +4,7 @@ date: 2023-04-24 11:11:11 -0400
 description:
 categories: [01GCP]
 # img: /assets/img/sample/rabbit.png
-tags: [AIML]
+tags: [AI, ML]
 ---
 
 - [Vertex AI](#vertex-ai)

@@ -1,3 +1,34 @@
+---
+title: LLMs Paper - Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine
+date: 2023-04-24 11:11:11 -0400
+description:
+categories: [51AI, Paper]
+# img: /assets/img/sample/rabbit.png
+tags: [LLM]
+---
+
+- [Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine](#can-generalist-foundation-models-outcompete-special-purpose-tuning-case-study-in-medicine)
+  - [Abstract](#abstract)
+  - [1 Introduction](#1-introduction)
+  - [2 Background](#2-background)
+    - [2.1 Foundation Models on Medical Challenge Problems](#21-foundation-models-on-medical-challenge-problems)
+    - [2.2 Prompting Strategies](#22-prompting-strategies)
+  - [3 Experimental Design](#3-experimental-design)
+    - [3.1 Datasets](#31-datasets)
+    - [3.2 Sound Testing Methodology](#32-sound-testing-methodology)
+  - [4 Power of Prompting: Exploration and Results](#4-power-of-prompting-exploration-and-results)
+    - [4.1 Dynamic Few-shot](#41-dynamic-few-shot)
+    - [4.2 Self-Generated Chain of Thought](#42-self-generated-chain-of-thought)
+    - [4.3 Choice Shuffling Ensemble](#43-choice-shuffling-ensemble)
+    - [4.4 Putting it all together: `Medprompt`](#44-putting-it-all-together-medprompt)
+  - [5 Results](#5-results)
+    - [5.2 Insights about `Medprompt` Components via Ablation Studies](#52-insights-about-medprompt-components-via-ablation-studies)
+    - [5.3 Generalization: Cross-Domain Exploration of `Medprompt`](#53-generalization-cross-domain-exploration-of-medprompt)
+  - [6 Limitations and Risks](#6-limitations-and-risks)
+  - [7 Summary and Conclusions](#7-summary-and-conclusions)
+  - [References](#references)
+
+---
 
 ## Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine
 
@@ -438,7 +469,7 @@ Figure 7:
 
 - We also separately assessed GPT-4’s performance on USMLE questions that were behind a paywall and, thus, not available on the public internet, and saw similarly strong performance [^23]. In this study, we adopted standard machine learning best practices to control for overfitting and leakage during the prompt engineering process (Section 5.1). However, concerns of benchmark contamination during training remain.
 
-- Further, we note that the strong performance of GPT-4 with `Medprompt` cannot be taken to demonstrate real-world efficacy of the model and methods on open-world healthcare tasks [^23]. While we are excited about the ability to steer foundations models to become top specialists on the bench- marks, we are cautious about taking the performance of the prompting strategies and model output to mean that the methods will be valuable in the practice of medicine in the open world, whether for automated or assisting healthcare professionals with administrative tasks, clinical decision sup- port, or patient engagement in the open world. To be clear, the medical challenge problems that we and others have studied are designed for testing human competencies in selected domains. Such competency tests are typically framed as sets of multiple choice questions. Although such challenge problems are a common evaluation method and cover diverse topics, they do not capture the range and complexity of medical tasks that healthcare professionals face in actual practice. Thus, the pursuit of tests as proxies for real-world competency and the focus on multiple-choice style answers are limitations when it comes to transferring strong performance on speciality benchmarks to real- world performance. Futhermore, while we believe that the MedPrompt strategy can be adapted to non-multiple choice settings, we did not explicitly test these proposed adaptations on benchmarks in this work.
+- Further, we note that the strong performance of GPT-4 with `Medprompt` cannot be taken to demonstrate real-world efficacy of the model and methods on open-world healthcare tasks [^23]. While we are excited about the ability to steer foundations models to become top specialists on the bench- marks, we are cautious about taking the performance of the prompting strategies and model output to mean that the methods will be valuable in the practice of medicine in the open world, whether for automated or assisting healthcare professionals with administrative tasks, clinical decision sup- port, or patient engagement in the open world. To be clear, the medical challenge problems that we and others have studied are designed for testing human competencies in selected domains. Such competency tests are typically framed as sets of multiple choice questions. Although such challenge problems are a common evaluation method and cover diverse topics, they do not capture the range and complexity of medical tasks that healthcare professionals face in actual practice. Thus, the pursuit of tests as proxies for real-world competency and the focus on multiple-choice style answers are limitations when it comes to transferring strong performance on speciality benchmarks to real- world performance. Furthermore, while we believe that the MedPrompt strategy can be adapted to non-multiple choice settings, we did not explicitly test these proposed adaptations on benchmarks in this work.
 
 - We note that foundation models can generate erroneous information (sometimes referred to as hallucinations) which may compromise generations and advice. While improvements in prompting strategies may lead to reductions in hallucinations and better overall accuracy, they may also make any remaining hallucinations even harder to detect. Promising directions include efforts on prob- abilistic calibration of generations, providing end-users with trustworthy measures of confidence in output. In the prior study, we found that GPT-4 was well-calibrated and could provide trustable measures of its confidence on multiple choice test questions [^23].
 

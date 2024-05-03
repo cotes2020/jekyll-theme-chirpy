@@ -2,9 +2,13 @@
 title: LLMs Paper - JaCoText A Pretrained Model for Java Code-Text
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AIML, Paper]
+categories: [51AI, Paper]
 # img: /assets/img/sample/rabbit.png
 tags: [Java code generation, Natural Language Processing, Sequence-to-sequence Models, Transformers Neural Networks]
+---
+
+- [JaCoText: A Pretrained Model for Java Code-Text](#jacotext-a-pretrained-model-for-java-code-text)
+
 ---
 
 # JaCoText: A Pretrained Model for Java Code-Text

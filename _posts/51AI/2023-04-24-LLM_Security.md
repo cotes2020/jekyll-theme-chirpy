@@ -2,9 +2,9 @@
 title: LLM_Security
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AIML]
+categories: [51AI]
 # img: /assets/img/sample/rabbit.png
-tags: [AIML]
+tags: [AI, ML]
 ---
 
 
