@@ -110,7 +110,7 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: EvaluationContext/evaluationcontext.github.io
-    repo_id: 780975251
+    repo_id: "R_kgDOLoy8kw"
     category: "Announcements"
     category_id: "DIC_kwDOLoy8k84CfJKP"
     mapping: # optional, default to 'pathname'
