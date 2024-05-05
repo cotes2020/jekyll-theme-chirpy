@@ -23,5 +23,6 @@
   "less.validate": false,
   // Stylint extension settings
   "stylelint.snippet": ["css", "less", "postcss", "scss"],
-  "stylelint.validate": ["css", "less", "postcss", "scss"]
+  "stylelint.validate": ["css", "less", "postcss", "scss"],
+  "ansible.python.interpreterPath": "/opt/homebrew/bin/python3.12"
 }
