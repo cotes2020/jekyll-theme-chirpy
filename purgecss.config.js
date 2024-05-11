@@ -2,7 +2,10 @@ const fs = require('fs');
 const DIST_PATH = '_sass/dist';
 
 fs.rm(DIST_PATH, { recursive: true, force: true }, (err) => {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
+
   fs.mkdirSync(DIST_PATH);
 });
 
