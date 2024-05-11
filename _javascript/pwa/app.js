@@ -1,19 +1,15 @@
----
-layout: compress
-permalink: /assets/js/dist/:basename.min.js
----
+import { pwa, baseurl } from '../../_config.yml';
+import Toast from 'bootstrap/js/src/toast';
 
 if ('serviceWorker' in navigator) {
-  const isEnabled = '{{ site.pwa.enabled }}' === 'true';
-
-  if (isEnabled) {
-    const swUrl = '{{ '/sw.min.js' | relative_url }}';
+  if (pwa.enabled) {
+    const swUrl = `${baseurl}/sw.min.js`;
     const notification = document.getElementById('notification');
     const btnRefresh = notification.querySelector('.toast-body>button');
-    const popupWindow = bootstrap.Toast.getOrCreateInstance(notification);
+    const popupWindow = Toast.getOrCreateInstance(notification);
 
     navigator.serviceWorker.register(swUrl).then((registration) => {
-      {% comment %}In case the user ignores the notification{% endcomment %}
+      // In case the user ignores the notification
       if (registration.waiting) {
         popupWindow.show();
       }
@@ -32,14 +28,13 @@ if ('serviceWorker' in navigator) {
         if (registration.waiting) {
           registration.waiting.postMessage('SKIP_WAITING');
         }
-
         popupWindow.hide();
       });
     });
 
     let refreshing = false;
 
-    {% comment %}Detect controller change and refresh all the opened tabs{% endcomment %}
+    // Detect controller change and refresh all the opened tabs
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (!refreshing) {
         window.location.reload();

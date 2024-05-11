@@ -1,12 +1,7 @@
----
-layout: compress
-permalink: /:basename.min.js
-# PWA service worker
----
+import { baseurl } from '../../_config.yml';
 
-const swconfUrl = '{{ '/assets/js/data/swconf.js' | relative_url }}';
+importScripts(`${baseurl}/assets/js/data/swconf.js`);
 
-importScripts(swconfUrl);
 const purge = swconf.purge;
 
 function verifyUrl(url) {
@@ -74,7 +69,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        {% comment %}See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>{% endcomment %}
+        // See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
         let responseToCache = response.clone();
 
         caches.open(swconf.cacheName).then((cache) => {

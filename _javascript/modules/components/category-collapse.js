@@ -1,6 +1,9 @@
 /**
  * Tab 'Categories' expand/close effect.
  */
+
+import 'bootstrap/js/src/collapse.js';
+
 const childPrefix = 'l_';
 const parentPrefix = 'h_';
 const children = document.getElementsByClassName('collapse');

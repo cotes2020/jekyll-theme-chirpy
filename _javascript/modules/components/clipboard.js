@@ -2,9 +2,10 @@
  * Clipboard functions
  *
  * Dependencies:
- *   - popper.js (https://github.com/popperjs/popper-core)
- *   - clipboard.js (https://github.com/zenorocha/clipboard.js)
+ *    clipboard.js (https://github.com/zenorocha/clipboard.js)
  */
+
+import Tooltip from 'bootstrap/js/src/tooltip';
 
 const clipboardSelector = '.code-header>button';
 
@@ -38,11 +39,11 @@ function unlock(node) {
 function showTooltip(btn) {
   const succeedTitle = btn.getAttribute(ATTR_TITLE_SUCCEED);
   btn.setAttribute(ATTR_TITLE_ORIGIN, succeedTitle);
-  bootstrap.Tooltip.getInstance(btn).show();
+  Tooltip.getInstance(btn).show();
 }
 
 function hideTooltip(btn) {
-  bootstrap.Tooltip.getInstance(btn).hide();
+  Tooltip.getInstance(btn).hide();
   btn.removeAttribute(ATTR_TITLE_ORIGIN);
 }
 
@@ -56,7 +57,7 @@ function resumeIcon(btn) {
   icon.setAttribute('class', ICON_DEFAULT);
 }
 
-export function initClipboard() {
+function setCodeClipboard() {
   const clipboardList = document.querySelectorAll(clipboardSelector);
 
   if (clipboardList.length === 0) {
@@ -73,7 +74,7 @@ export function initClipboard() {
 
   [...clipboardList].map(
     (elem) =>
-      new bootstrap.Tooltip(elem, {
+      new Tooltip(elem, {
         placement: 'left'
       })
   );
@@ -97,10 +98,14 @@ export function initClipboard() {
       unlock(trigger);
     }, TIMEOUT);
   });
+}
 
-  /* --- Post link sharing --- */
-
+function setLinkClipboard() {
   const btnCopyLink = document.getElementById('copy-link');
+
+  if (btnCopyLink === null) {
+    return;
+  }
 
   btnCopyLink.addEventListener('click', (e) => {
     const target = e.target;
@@ -116,7 +121,7 @@ export function initClipboard() {
 
       // Switch tooltip title
       target.setAttribute(ATTR_TITLE_ORIGIN, succeedTitle);
-      bootstrap.Tooltip.getInstance(target).show();
+      Tooltip.getInstance(target).show();
 
       lock(target);
 
@@ -128,6 +133,11 @@ export function initClipboard() {
   });
 
   btnCopyLink.addEventListener('mouseleave', (e) => {
-    bootstrap.Tooltip.getInstance(e.target).hide();
+    Tooltip.getInstance(e.target).hide();
   });
+}
+
+export function initClipboard() {
+  setCodeClipboard();
+  setLinkClipboard();
 }
