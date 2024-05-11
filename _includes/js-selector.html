@@ -2,9 +2,7 @@
 
 <!-- commons -->
 
-{%- capture urls -%}
-  {{ site.data.origin[type].bootstrap.js }},{{ site.data.origin[type].search.js }}
-{%- endcapture -%}
+{% assign urls = site.data.origin[type].search.js %}
 
 <!-- layout specified -->
 

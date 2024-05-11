@@ -13,12 +13,16 @@
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "scripts": {
-    "prebuild": "npx rimraf assets/js/dist",
-    "build": "NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
-    "prewatch": "npx rimraf assets/js/dist",
-    "watch": "npx rollup -c --bundleConfigAsCjs -w",
-    "test": "npx stylelint _sass/**/*.scss",
-    "fixlint": "npm run test -- --fix"
+    "build": "npm run build:js",
+    "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
+    "watch:js": "rollup -c --bundleConfigAsCjs -w",
+    "lint:style": "stylelint _sass/**/*.scss",
+    "lint:fix:style": "npm run lint:style -- --fix",
+    "test": "npm run lint:scss"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -27,13 +31,14 @@
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-yaml": "^4.1.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
-    "rimraf": "^5.0.5",
     "rollup": "^4.15.0",
     "rollup-plugin-license": "^3.3.1",
     "semantic-release": "^23.0.8",

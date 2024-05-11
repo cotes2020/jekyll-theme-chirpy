@@ -6,7 +6,6 @@ webfonts: /assets/lib/fonts/main.css
 
 bootstrap:
   css: /assets/lib/bootstrap/bootstrap.min.css
-  js: /assets/lib/bootstrap/bootstrap.bundle.min.js
 
 toc:
   css: /assets/lib/tocbot/tocbot.min.css
