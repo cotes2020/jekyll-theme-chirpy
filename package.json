@@ -18,7 +18,7 @@
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
     "lint:scss": "stylelint _sass/**/*.scss",
-    "lint:fix:scss": "npm run lint:style -- --fix",
+    "lint:fix:scss": "npm run lint:scss -- --fix",
     "test": "npm run lint:scss"
   },
   "dependencies": {
