@@ -2,7 +2,6 @@
 <script type="text/javascript">
   (function () {
     const origin = 'https://giscus.app';
-    const iframe = 'iframe.giscus-frame';
     const lightTheme = 'light';
     const darkTheme = 'dark_dimmed';
 
@@ -25,6 +24,7 @@
       'data-category': '{{ site.comments.giscus.category }}',
       'data-category-id': '{{ site.comments.giscus.category_id }}',
       'data-mapping': '{{ site.comments.giscus.mapping | default: 'pathname' }}',
+      'data-strict' : '{{ site.comments.giscus.strict | default: '0' }}',
       'data-reactions-enabled': '{{ site.comments.giscus.reactions_enabled | default: '1' }}',
       'data-emit-metadata': '0',
       'data-theme': initTheme,
@@ -47,7 +47,7 @@
         event.data &&
         event.data.direction === ModeToggle.ID
       ) {
-        /* global theme mode changed */
+        {%- comment -%} global theme mode changed {%- endcomment -%}
         const mode = event.data.message;
         const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
 
@@ -57,7 +57,7 @@
           }
         };
 
-        const giscus = document.querySelector(iframe).contentWindow;
+        const giscus = document.getElementsByClassName('giscus-frame')[0].contentWindow;
         giscus.postMessage({ giscus: message }, origin);
       }
     });

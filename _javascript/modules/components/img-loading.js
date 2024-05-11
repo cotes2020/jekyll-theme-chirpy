@@ -11,7 +11,7 @@ const cover = {
 };
 
 function removeCover(clzss) {
-  $(this).parent().removeClass(clzss);
+  this.parentElement.classList.remove(clzss);
 }
 
 function handleImage() {
@@ -30,32 +30,38 @@ function handleImage() {
  * Switches the LQIP with the real image URL.
  */
 function switchLQIP() {
-  const $img = $(this);
-  const src = $img.attr(ATTR_DATA_SRC);
-
-  $img.attr('src', encodeURI(src));
-  $img.removeAttr(ATTR_DATA_SRC);
+  const src = this.getAttribute(ATTR_DATA_SRC);
+  this.setAttribute('src', encodeURI(src));
+  this.removeAttribute(ATTR_DATA_SRC);
 }
 
 export function loadImg() {
-  const $images = $('article img');
+  const images = document.querySelectorAll('article img');
 
-  if ($images.length) {
-    $images.on('load', handleImage);
+  if (images.length === 0) {
+    return;
   }
 
+  images.forEach((img) => {
+    img.addEventListener('load', handleImage);
+  });
+
   // Images loaded from the browser cache do not trigger the 'load' event
-  $('article img[loading="lazy"]').each(function () {
-    if (this.complete) {
-      removeCover.call(this, cover.SHIMMER);
+  document.querySelectorAll('article img[loading="lazy"]').forEach((img) => {
+    if (img.complete) {
+      removeCover.call(img, cover.SHIMMER);
     }
   });
 
   // LQIPs set by the data URI or WebP will not trigger the 'load' event,
   // so manually convert the URI to the URL of a high-resolution image.
-  const $lqips = $(`article img[${ATTR_DATA_LQIP}="true"]`);
+  const lqips = document.querySelectorAll(
+    `article img[${ATTR_DATA_LQIP}="true"]`
+  );
 
-  if ($lqips.length) {
-    $lqips.each(switchLQIP);
+  if (lqips.length) {
+    lqips.forEach((lqip) => {
+      switchLQIP.call(lqip);
+    });
   }
 }

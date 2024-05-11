@@ -49,7 +49,7 @@ refactor: true
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
           {% unless src contains '//' %}
-            {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
+            {% assign src = post.media_subpath | append: '/' | append: src | replace: '//', '/' %}
           {% endunless %}
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
@@ -72,10 +72,7 @@ refactor: true
             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
 
             <div class="card-text content mt-0 mb-3">
-              <p>
-                {% include no-linenos.html content=post.content %}
-                {{ content | markdownify | strip_html | truncate: 200 | escape }}
-              </p>
+              <p>{% include post-description.html %}</p>
             </div>
 
             <div class="post-meta flex-grow-1 d-flex align-items-end">

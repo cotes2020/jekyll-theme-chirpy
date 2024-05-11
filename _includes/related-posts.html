@@ -21,6 +21,7 @@
   {% assign match_posts = match_posts | push: site.tags[tag] | uniq %}
 {% endfor %}
 
+{% assign match_posts = match_posts | reverse %}
 {% assign last_index = match_posts.size | minus: 1 %}
 {% assign score_list = '' | split: '' %}
 
@@ -81,10 +82,7 @@
               {% include datetime.html date=post.date lang=include.lang %}
               <h4 class="pt-0 my-2">{{ post.title }}</h4>
               <div class="text-muted">
-                <p>
-                  {% include no-linenos.html content=post.content %}
-                  {{ content | markdownify | strip_html | truncate: 200 | escape }}
-                </p>
+                <p>{% include post-description.html %}</p>
               </div>
             </div>
           </a>

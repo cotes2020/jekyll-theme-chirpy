@@ -58,7 +58,6 @@ Adding author information in `_data/authors.yml` (If your website doesn't have t
 ```
 {: file="_data/authors.yml" }
 
-
 And then use `author` to specify a single entry or `authors` to specify multiple entries:
 
 ```yaml
@@ -73,6 +72,18 @@ Having said that, the key `author` can also identify multiple entries.
 
 > The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
 {: .prompt-info }
+
+### Post Description
+
+By default, the first words of the post are used to display on the home page for a list of posts, in the _Further Reading_ section, and in the XML of the RSS feed. If you don't want to display the auto-generated description for the post, you can customize it using the `description` field in the _Front Matter_ as follows:
+
+```yaml
+---
+description: Short summary of the post.
+---
+```
+
+Additionally, the `description` text will also be displayed under the post title on the post's page.
 
 ## Table of Contents
 
@@ -98,7 +109,9 @@ comments: false
 
 ## Mathematics
 
-For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+
+[mathjax]: https://www.mathjax.org/
 
 ```yaml
 ---
@@ -142,6 +155,12 @@ Can be referenced as \eqref{eq:label_name}.
 2. \$$ LaTeX_math_expression $$
 3. \$$ LaTeX_math_expression $$
 ```
+
+> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
+> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
+{: .prompt-tip }
+
+[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
 
 ## Mermaid
 
@@ -236,14 +255,14 @@ The screenshots of the program window can be considered to show the shadow effec
 
 ### CDN URL
 
-If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `img_cdn` of `_config.yml`{: .filepath} file:
+If you host the media resources on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `cdn` of `_config.yml`{: .filepath} file:
 
 ```yaml
-img_cdn: https://cdn.com
+cdn: https://cdn.com
 ```
 {: file='_config.yml' .nolineno}
 
-Once `img_cdn` is assigned, the CDN URL will be added to the path of all images (images of site avatar and posts) starting with `/`.
+Once `cdn` is assigned, the CDN URL will be added to the path of all media resources (site avatar, posts' images, audio and video files) starting with `/`.
 
 For instance, when using images:
 
@@ -259,13 +278,13 @@ The parsing result will automatically add the CDN prefix `https://cdn.com` befor
 ```
 {: .nolineno }
 
-### Image Path
+### Media Subpath
 
-When a post contains many images, it will be a time-consuming task to repeatedly define the path of the images. To solve this, we can define this path in the YAML block of the post:
+When a post contains many images, it will be a time-consuming task to repeatedly define the path of the media resources. To solve this, we can define this path in the YAML block of the post:
 
 ```yml
 ---
-img_path: /img/path/
+media_subpath: /img/path/
 ---
 ```
 
@@ -297,7 +316,7 @@ image:
 ---
 ```
 
-Note that the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
+Note that the [`media_subpath`](#media-subpath) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
 
 For simple use, you can also just use `image` to define the path.
 
@@ -318,8 +337,7 @@ image:
 ---
 ```
 
-> You can observe LQIP in the preview image of post [_Text and Typography_](/posts/text-and-typography/).
-
+> You can observe LQIP in the preview image of post \"[Text and Typography](../text-and-typography/)\".
 
 For normal images:
 
@@ -427,6 +445,8 @@ Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the pos
 
 ## Videos
 
+### Video Sharing Platform
+
 You can embed a video with the following syntax:
 
 ```liquid
@@ -442,6 +462,76 @@ The following table shows how to get the two parameters we need in a given video
 | [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
 | [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
 | [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
+
+### Video File
+
+If you want to embed a video file directly, use the following syntax:
+
+```liquid
+{% include embed/video.html src='{URL}' %}
+```
+
+Where `URL` is an URL to a video file e.g. `/assets/img/sample/video.mp4`.
+
+You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
+
+- `poster='/path/to/poster.png'` - poster image for a video that is shown while video is downloading
+- `title='Text'` - title for a video that appears below the video and looks same as for images
+- `autoplay=true` - video automatically begins to play back as soon as it can
+- `loop=true` - automatically seek back to the start upon reaching the end of the video
+- `muted=true` - audio will be initially silenced
+- `types` - specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
+
+Consider an example utilizing all of the above:
+
+```liquid
+{%
+  include embed/video.html
+  src='/path/to/video/video.mp4'
+  types='ogg|mov'
+  poster='poster.png'
+  title='Demo video'
+  autoplay=true
+  loop=true
+  muted=true
+%}
+```
+
+> It's not recommended to host video files in `assets` folder as they cannot be cached by PWA and may cause issues.
+> Instead, use CDN to host video files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
+{: .prompt-warning }
+
+## Audios
+
+### Audio File
+
+If you want to embed an audio file directly, use the following syntax:
+
+```liquid
+{% include embed/audio.html src='{URL}' %}
+```
+
+Where `URL` is an URL to an audio file e.g. `/assets/img/sample/audio.mp3`.
+
+You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
+
+- `title='Text'` - title for an audio that appears below the audio and looks same as for images
+- `types` - specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
+
+Consider an example utilizing all of the above:
+
+```liquid
+{%
+  include embed/audio.html
+  src='/path/to/audio/audio.mp3'
+  types='ogg|wav|aac'
+  title='Demo audio'
+%}
+```
+
+> It's not recommended to host audio files in `assets` folder as they cannot be cached by PWA and may cause issues.
+> Instead, use CDN to host audio files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
+{: .prompt-warning }
 
 ## Learn More
 

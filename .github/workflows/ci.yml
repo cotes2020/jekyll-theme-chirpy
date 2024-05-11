@@ -1,9 +1,8 @@
 name: "CI"
 on:
   push:
-    branches-ignore:
-      - "production"
-      - "docs"
+    branches:
+      - "master"
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
@@ -12,8 +11,6 @@ on:
       - "README.md"
       - "LICENSE"
   pull_request:
-    paths:
-      - "**"
 
 jobs:
   build:
@@ -21,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        ruby: ["3.0", "3.1", "3.2"]
+        ruby: ["3.1", "3.2", "3.3"]
 
     steps:
       - name: Checkout
@@ -37,6 +34,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
+        with:
+          node-version: latest
 
       - name: Build Assets
         run: npm i && npm run build

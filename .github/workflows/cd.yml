@@ -1,17 +1,37 @@
 name: CD
+
 on:
   push:
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
     branches:
-      - docs
+      - production
+    tags-ignore:
+      - "**"
 
 jobs:
-  launch:
+  release:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          curl -X POST -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            https://api.github.com/repos/${{ secrets.BUILDER }}/dispatches \
-            -d '{"event_type":"deploy", "client_payload":{"branch": "${{ github.ref_name }}"}}'
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - run: npm install
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+
+  publish:
+    needs: release
+    uses: ./.github/workflows/publish.yml

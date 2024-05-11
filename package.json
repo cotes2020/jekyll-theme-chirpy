@@ -13,27 +13,40 @@
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "scripts": {
-    "prebuild": "npx rimraf assets/js/dist",
-    "build": "NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
-    "prewatch": "npx rimraf assets/js/dist",
-    "watch": "npx rollup -c --bundleConfigAsCjs -w",
-    "test": "npx stylelint _sass/**/*.scss",
-    "fixlint": "npm run test -- --fix"
+    "build": "concurrently npm:build:*",
+    "build:css": "purgecss -c purgecss.config.js",
+    "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
+    "watch:js": "rollup -c --bundleConfigAsCjs -w",
+    "lint:scss": "stylelint _sass/**/*.scss",
+    "lint:fix:scss": "npm run lint:scss -- --fix",
+    "test": "npm run lint:scss"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/preset-env": "^7.23.9",
-    "@commitlint/cli": "^18.6.1",
-    "@commitlint/config-conventional": "^18.6.2",
+    "@babel/core": "^7.24.5",
+    "@babel/plugin-transform-class-properties": "^7.24.1",
+    "@babel/preset-env": "^7.24.5",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-yaml": "^4.1.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "concurrently": "^8.2.2",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.10.0",
-    "rollup-plugin-license": "^3.2.0",
-    "stylelint": "^16.2.1",
-    "stylelint-config-standard-scss": "^13.0.0"
+    "purgecss": "^6.0.0",
+    "rollup": "^4.17.2",
+    "rollup-plugin-license": "^3.3.1",
+    "semantic-release": "^23.1.1",
+    "stylelint": "^16.5.0",
+    "stylelint-config-standard-scss": "^13.1.0"
   },
   "prettier": {
     "trailingComma": "none"
@@ -89,24 +102,76 @@
       "media-feature-range-notation": "prefix"
     }
   },
-  "standard-version": {
-    "skip": {
-      "commit": true,
-      "tag": true
-    },
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes"
-      },
-      {
-        "type": "perf",
-        "section": "Improvements"
-      }
+  "release": {
+    "branches": [
+      "production"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "section": "Improvements"
+              },
+              {
+                "type": "refactor",
+                "section": "Changes",
+                "hidden": true
+              }
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md",
+          "changelogTitle": "# Changelog"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "bash tools/release --prepare",
+          "publishCmd": "bash tools/release"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "docs",
+            "package.json",
+            "*.gemspec"
+          ],
+          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
     ]
   }
 }
