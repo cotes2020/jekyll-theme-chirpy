@@ -214,7 +214,7 @@ exclude:
   - tools
   - README.md
   - LICENSE
-  - rollup.config.js
+  - "*.config.js"
   - package*.json
 
 jekyll-archives:

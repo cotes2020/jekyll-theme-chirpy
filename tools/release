@@ -15,6 +15,7 @@ NODE_SPEC="package.json"
 CHANGELOG="docs/CHANGELOG.md"
 CONFIG="_config.yml"
 
+CSS_DIST="_sass/dist"
 JS_DIST="assets/js/dist"
 
 FILES=(
@@ -79,17 +80,12 @@ _check_src() {
   done
 }
 
-_check_node_packages() {
-  if [[ ! -d node_modules || "$(du node_modules | awk '{print $1}')" == "0" ]]; then
-    npm i
-  fi
-}
-
-check() {
+init() {
   _check_cli
   _check_git
   _check_src
-  _check_node_packages
+  echo -e "> npm install\n"
+  npm i
 }
 
 ## Bump new version to gem-spec file
@@ -115,24 +111,31 @@ prepare() {
 build_gem() {
   if $opt_pkg; then
     BACKUP_PATH="$(mktemp -d)"
-    cp "$JS_DIST"/* "$BACKUP_PATH"
+    mkdir -p "$BACKUP_PATH"/css "$BACKUP_PATH"/js
+    [[ -d $CSS_DIST ]] && cp "$CSS_DIST"/* "$BACKUP_PATH"/css
+    [[ -d $JS_DIST ]] && cp "$JS_DIST"/* "$BACKUP_PATH"/js
   fi
 
   # Remove unnecessary theme settings
-  sed -i "s/^cdn:.*/cdn:/;s/^avatar:.*/avatar:/" $CONFIG
+  sed -i -E "s/(^timezone:).*/\1/;s/(^cdn:).*/\1/;s/(^avatar:).*/\1/" $CONFIG
   rm -f ./*.gem
 
   npm run build
-  git add "$JS_DIST" -f # add JS distribution files to gem
+  # add CSS/JS distribution files to gem package
+  git add "$CSS_DIST" "$JS_DIST" -f
+
+  echo -e "\n> gem build $GEM_SPEC\n"
   gem build "$GEM_SPEC"
 
-  # resume the settings
+  echo -e "\n> Resume file changes ...\n"
   git reset
   git checkout .
 
   if $opt_pkg; then
     # restore the dist files for future development
-    mkdir -p "$JS_DIST" && cp "$BACKUP_PATH"/* "$JS_DIST"
+    mkdir -p "$CSS_DIST" "$JS_DIST"
+    cp "$BACKUP_PATH"/css/* "$CSS_DIST"
+    cp "$BACKUP_PATH"/js/* "$JS_DIST"
     rm -rf "$BACKUP_PATH"
   fi
 }
@@ -157,7 +160,7 @@ merge() {
 }
 
 main() {
-  check
+  init
 
   if $opt_pre; then
     prepare

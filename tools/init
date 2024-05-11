@@ -82,7 +82,7 @@ init_files() {
     rm -rf "$temp"
 
     ## Cleanup image settings in site config
-    _sedi "s/(^.*cdn:).*/\1/;s/(^avatar:).*/\1/" _config.yml
+    _sedi "s/(^timezone:).*/\1/;s/(^.*cdn:).*/\1/;s/(^avatar:).*/\1/" _config.yml
   fi
 
   # remove the other files
@@ -91,8 +91,8 @@ init_files() {
   # build assets
   npm i && npm run build
 
-  # track the js output
-  _sedi "/^assets.*\/dist/d" .gitignore
+  # track the CSS/JS output
+  _sedi "/.*\/dist$/d" .gitignore
 }
 
 commit() {
