@@ -1,5 +1,51 @@
 # Changelog
 
+## [7.0.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.5.5...v7.0.0) (2024-05-11)
+
+### ⚠ BREAKING CHANGES
+
+* optimize the resource hints (#1717)
+* rename media-url file and related parameters (#1651)
+* rename comment setting parameter (#1563)
+* **analytics:** add post pageviews for GoatCounter (#1543)
+
+### Features
+
+* add cloudflare web analytics ([#1723](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1723)) ([c17fba4](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c17fba44f53767c9dfaa8d92cfc6e275e5977f8a))
+* add support for embed video files ([#1558](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1558)) ([9592146](https://github.com/cotes2020/jekyll-theme-chirpy/commit/9592146ca392236e69ee358412ecc32ef1662127))
+* add support for giscus strict title matching ([#1614](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1614)) ([700fd5b](https://github.com/cotes2020/jekyll-theme-chirpy/commit/700fd5bad7272dd950f861e8550215cd8fafb413))
+* **analytics:** add post pageviews for GoatCounter ([#1543](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1543)) ([b641b3f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/b641b3f1f2e54bcfe96d8dff46d4f94186492d98))
+* **analytics:** add Umami and Matomo tracking codes ([#1658](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1658)) ([61bdca2](https://github.com/cotes2020/jekyll-theme-chirpy/commit/61bdca2db45179cd0d1b4b885a4c4864e3ffa3c1))
+* change site verification settings ([#1561](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1561)) ([e436387](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e4363871b5be0608d2b92b8aff482825a8044c1b))
+* **deps:** move `MathJax` configuration to a separate file ([#1670](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1670)) ([44f552c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/44f552cbcee83d037de0e59496bf6bb19eea2691))
+* display theme version in footer ([#1611](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1611)) ([8349314](https://github.com/cotes2020/jekyll-theme-chirpy/commit/834931486dc3e5ed544ce4ff47cd1b2bc45f42fd))
+* **i18n:** allow `page.lang` to override `site.lang` ([#1586](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1586)) ([547b95c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/547b95cc7ae35018dadcc01b6eb1dc8c8943e67e))
+* make post description customizable ([#1602](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1602)) ([f865336](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f865336c896e0db34edf8482a53e0e5d8f07ff95))
+* **media:** support audio and video tag with multi sources ([#1618](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1618)) ([23be416](https://github.com/cotes2020/jekyll-theme-chirpy/commit/23be4162b3f8598db14dc5b39726932ccf2cdc23))
+
+### Bug Fixes
+
+* make TOC title and entries visible at the same time ([#1711](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1711)) ([e0950fc](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e0950fc973d029dc65d0bc1bd68f3d11242527c8))
+* mode toggle not outlined when receiving keyboard focus ([#1690](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1690)) ([cd37f63](https://github.com/cotes2020/jekyll-theme-chirpy/commit/cd37f63a0144e0499ea991d3309da064ad5eccea))
+* prevent footnote back arrow from becoming an emoji ([#1716](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1716)) ([8608147](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8608147fb5037804695d93496c62f96b9c41e9cd))
+* **pwa:** skip range requests in service worker ([#1672](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1672)) ([76d58fe](https://github.com/cotes2020/jekyll-theme-chirpy/commit/76d58fe0ffdc4bd1df35b60815e97560c3564700))
+* search result prompt is empty ([#1583](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1583)) ([8a2afae](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8a2afae6cab8fc9639be0a866b71699c8a80084c))
+* use `https` for Weibo sharing URL ([#1612](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1612)) ([8e5fbb7](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8e5fbb7a74d04a4b3cdde69bcc821f8ccd1a3bc0))
+
+### Improvements
+
+* improve \<hr> visibility in dark mode ([#1565](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1565)) ([4ddd5c4](https://github.com/cotes2020/jekyll-theme-chirpy/commit/4ddd5c437046a1e70cf396113e2351c452a25493))
+* lean bootstrap javascript ([#1734](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1734)) ([ddb48ed](https://github.com/cotes2020/jekyll-theme-chirpy/commit/ddb48eda52827aae16aff720212d7b6d2d8647f9))
+* rename comment setting parameter ([#1563](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1563)) ([f8390d4](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f8390d4384600fb015728b1b186570fa58ca216f))
+* replace jQuery with Vanilla JS ([#1681](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1681)) ([fe7afa3](https://github.com/cotes2020/jekyll-theme-chirpy/commit/fe7afa379f0af0ca98a207f85bdc0fa98575b1ad))
+* simplify mode toggle script ([#1692](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1692)) ([d4a6d64](https://github.com/cotes2020/jekyll-theme-chirpy/commit/d4a6d640bd6d4ab185faf96c0255369a9903ee1d))
+* tree shaking Bootstrap CSS ([#1736](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1736)) ([363a3d9](https://github.com/cotes2020/jekyll-theme-chirpy/commit/363a3d936bbd688fa4f28527e85ef7dd3fe3a79b))
+
+### Changes
+
+* optimize the resource hints ([#1717](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1717)) ([dcb0add](https://github.com/cotes2020/jekyll-theme-chirpy/commit/dcb0add47bf1adf92215514f1ccfa4661d5215be))
+* rename media-url file and related parameters ([#1651](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1651)) ([9f8aeaa](https://github.com/cotes2020/jekyll-theme-chirpy/commit/9f8aeaadbfef9967a9b0a9dd323d8bed46e14d9f))
+
 ## [6.5.5](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.5.4...v6.5.5) (2024-03-23)
 
 ### Bug Fixes
