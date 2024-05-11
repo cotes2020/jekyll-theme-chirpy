@@ -4,9 +4,6 @@ webfonts: /assets/lib/fonts/main.css
 
 # Libraries
 
-bootstrap:
-  css: /assets/lib/bootstrap/bootstrap.min.css
-
 toc:
   css: /assets/lib/tocbot/tocbot.min.css
   js: /assets/lib/tocbot/tocbot.min.js
