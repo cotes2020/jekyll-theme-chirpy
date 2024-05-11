@@ -26,10 +26,10 @@
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.4",
+    "@babel/core": "^7.24.5",
     "@babel/plugin-transform-class-properties": "^7.24.1",
-    "@babel/preset-env": "^7.24.4",
-    "@commitlint/cli": "^19.2.2",
+    "@babel/preset-env": "^7.24.5",
+    "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -42,10 +42,10 @@
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
     "purgecss": "^6.0.0",
-    "rollup": "^4.15.0",
+    "rollup": "^4.17.2",
     "rollup-plugin-license": "^3.3.1",
-    "semantic-release": "^23.0.8",
-    "stylelint": "^16.3.1",
+    "semantic-release": "^23.1.1",
+    "stylelint": "^16.5.0",
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "prettier": {
