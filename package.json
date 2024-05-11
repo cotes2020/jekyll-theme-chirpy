@@ -17,8 +17,8 @@
     "build:css": "purgecss -c purgecss.config.js",
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
-    "lint:style": "stylelint _sass/**/*.scss",
-    "lint:fix:style": "npm run lint:style -- --fix",
+    "lint:scss": "stylelint _sass/**/*.scss",
+    "lint:fix:scss": "npm run lint:style -- --fix",
     "test": "npm run lint:scss"
   },
   "dependencies": {
