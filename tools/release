@@ -56,11 +56,13 @@ _check_cli() {
 }
 
 _check_git() {
-  # ensure that changes have been committed
-  if [[ -n $(git status . -s) ]]; then
-    echo "> Abort: Commit the staged files first, and then run this tool again."
-    exit 1
-  fi
+  $opt_pre || (
+    # ensure that changes have been committed
+    if [[ -n $(git status . -s) ]]; then
+      echo "> Abort: Commit the staged files first, and then run this tool again."
+      exit 1
+    fi
+  )
 
   $opt_pkg || (
     if [[ "$(git branch --show-current)" != "$RELEASE_BRANCH" ]]; then
