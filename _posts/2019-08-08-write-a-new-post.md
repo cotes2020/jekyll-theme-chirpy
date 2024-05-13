@@ -497,10 +497,6 @@ Consider an example utilizing all of the above:
 %}
 ```
 
-> It's not recommended to host video files in `assets` folder as they cannot be cached by PWA and may cause issues.
-> Instead, use CDN to host video files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
-{: .prompt-warning }
-
 ## Audios
 
 ### Audio File
@@ -528,10 +524,6 @@ Consider an example utilizing all of the above:
   title='Demo audio'
 %}
 ```
-
-> It's not recommended to host audio files in `assets` folder as they cannot be cached by PWA and may cause issues.
-> Instead, use CDN to host audio files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
-{: .prompt-warning }
 
 ## Learn More
 
