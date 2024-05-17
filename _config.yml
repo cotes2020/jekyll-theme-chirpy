@@ -9,24 +9,24 @@ theme: jekyll-theme-chirpy
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone:
+timezone: Asia/Saigon
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: MinhToan # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+Tagline: Passionate about Cybersecurity # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Minh Toan blog, CTF, hackthebox, exploit, web, pwn, reverse engineering,...
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://toannguyen3107.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: toannguyen3107 # change to your github username
 
 twitter:
   username: twitter_username # change to your twitter username
@@ -38,11 +38,11 @@ social:
   email: example@domain.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    - https://twitter.com/minhton3107 # change to your twitter homepage
+    - https://github.com/toannguyen3107 # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.facebook.com/nguyenminhtoan03
+    - https://www.linkedin.com/in/toannguyen03
 
 # Site Verification Settings
 webmaster_verifications:
@@ -86,7 +86,7 @@ pageviews:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: dark # [light | dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://postimg.cc/GB8V1zMz
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
