@@ -5,7 +5,7 @@
 
 {% unless video_url contains '://' %}
   {%- capture video_url -%}
-    {% include media-url.html src=video_url %}
+    {% include media-url.html src=video_url subpath=page.media_subpath %}
   {%- endcapture -%}
 {% endunless %}
 

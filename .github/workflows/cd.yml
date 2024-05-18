@@ -35,3 +35,6 @@ jobs:
   publish:
     needs: release
     uses: ./.github/workflows/publish.yml
+    secrets:
+      GH_PAT: ${{ secrets.GH_PAT }}
+      BUILDER: ${{ secrets.BUILDER }}
