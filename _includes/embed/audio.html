@@ -4,7 +4,7 @@
 
 {% unless src contains '://' %}
   {%- capture src -%}
-    {% include media-url.html src=src %}
+    {% include media-url.html src=src subpath=page.media_subpath %}
   {%- endcapture -%}
 {% endunless %}
 
