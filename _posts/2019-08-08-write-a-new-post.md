@@ -107,76 +107,35 @@ comments: false
 ---
 ```
 
-## Mathematics
+## Media
 
-We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+We refer to images, audio and video as media resources in _Chirpy_.
 
-[mathjax]: https://www.mathjax.org/
+### URL Prefix
 
-```yaml
----
-math: true
----
-```
+From time to time we have to define duplicate URL prefixes for multiple resources in a post, which is a boring task that you can avoid by setting two parameters.
 
-After enabling the mathematical feature, you can add math equations with the following syntax:
+- If you are using a CDN to host media files, you can specify the `cdn` in `_config.yml`{: .filepath }. The URLs of media resources for site avatar and posts are then prefixed with the CDN domain name.
 
-- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
-  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
-  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
-- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
-- **Inline math** (in lists) should be added with `\$$ math $$`
+  ```yaml
+  cdn: https://cdn.com
+  ```
+  {: file='_config.yml' .nolineno }
 
-```markdown
-<!-- Block math, keep all blank lines -->
+- To specify the resource path prefix for the current post/page range, set `media_subpath` in the _front matter_ of the post:
 
-$$
-LaTeX_math_expression
-$$
+  ```yaml
+  ---
+  media_subpath: /path/to/media/
+  ---
+  ```
+  {: .nolineno }
 
-<!-- Equation numbering, keep all blank lines  -->
+The option `site.cdn` and `page.media_subpath` can be used individually or in combination to flexibly compose the final resource URL: `[site.cdn/][page.media_subpath/]file.ext`
 
-$$
-\begin{equation}
-  LaTeX_math_expression
-  \label{eq:label_name}
-\end{equation}
-$$
+### Images
 
-Can be referenced as \eqref{eq:label_name}.
-
-<!-- Inline math in lines, NO blank lines -->
-
-"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
-
-<!-- Inline math in lists, escape the first `$` -->
-
-1. \$$ LaTeX_math_expression $$
-2. \$$ LaTeX_math_expression $$
-3. \$$ LaTeX_math_expression $$
-```
-
-> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
-> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
-{: .prompt-tip }
-
-[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
-
-## Mermaid
-
-[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagram generation tool. To enable it on your post, add the following to the YAML block:
-
-```yaml
----
-mermaid: true
----
-```
-
-Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
-
-## Images
-
-### Caption
+#### Caption
 
 Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
 
@@ -186,7 +145,7 @@ _Image Caption_
 ```
 {: .nolineno}
 
-### Size
+#### Size
 
 In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
 
@@ -205,7 +164,7 @@ Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`heig
 ```
 {: .nolineno}
 
-### Position
+#### Position
 
 By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`.
 
@@ -235,7 +194,7 @@ By default, the image is centered, but you can specify the position by using one
   ```
   {: .nolineno}
 
-### Dark/Light mode
+#### Dark/Light mode
 
 You can make images follow theme preferences in dark/light mode. This requires you to prepare two images, one for dark mode and one for light mode, and then assign them a specific class (`dark` or `light`):
 
@@ -244,7 +203,7 @@ You can make images follow theme preferences in dark/light mode. This requires y
 ![Dark mode only](/path/to/dark-mode.png){: .dark }
 ```
 
-### Shadow
+#### Shadow
 
 The screenshots of the program window can be considered to show the shadow effect:
 
@@ -253,56 +212,7 @@ The screenshots of the program window can be considered to show the shadow effec
 ```
 {: .nolineno}
 
-### CDN URL
-
-If you host the media resources on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `cdn` of `_config.yml`{: .filepath} file:
-
-```yaml
-cdn: https://cdn.com
-```
-{: file='_config.yml' .nolineno}
-
-Once `cdn` is assigned, the CDN URL will be added to the path of all media resources (site avatar, posts' images, audio and video files) starting with `/`.
-
-For instance, when using images:
-
-```markdown
-![The flower](/path/to/flower.png)
-```
-{: .nolineno}
-
-The parsing result will automatically add the CDN prefix `https://cdn.com` before the image path:
-
-```html
-<img src="https://cdn.com/path/to/flower.png" alt="The flower" />
-```
-{: .nolineno }
-
-### Media Subpath
-
-When a post contains many images, it will be a time-consuming task to repeatedly define the path of the media resources. To solve this, we can define this path in the YAML block of the post:
-
-```yml
----
-media_subpath: /img/path/
----
-```
-
-And then, the image source of Markdown can write the file name directly:
-
-```md
-![The flower](flower.png)
-```
-{: .nolineno }
-
-The output will be:
-
-```html
-<img src="/img/path/flower.png" alt="The flower" />
-```
-{: .nolineno }
-
-### Preview Image
+#### Preview Image
 
 If you want to add an image at the top of the post, please provide an image with a resolution of `1200 x 630`. Please note that if the image aspect ratio does not meet `1.91 : 1`, the image will be scaled and cropped.
 
@@ -316,7 +226,7 @@ image:
 ---
 ```
 
-Note that the [`media_subpath`](#media-subpath) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
+Note that the [`media_subpath`](#url-prefix) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
 
 For simple use, you can also just use `image` to define the path.
 
@@ -326,7 +236,7 @@ image: /path/to/image
 ---
 ```
 
-### LQIP
+#### LQIP
 
 For preview images:
 
@@ -345,6 +255,86 @@ For normal images:
 ![Image description](/path/to/image){: lqip="/path/to/lqip-file" }
 ```
 {: .nolineno }
+
+### Video
+
+#### Social Media Platform
+
+You can embed videos from social media platforms with the following syntax:
+
+```liquid
+{% include embed/{Platform}.html id='{ID}' %}
+```
+
+Where `Platform` is the lowercase of the platform name, and `ID` is the video ID.
+
+The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
+
+| Video URL                                                                                          | Platform   | ID             |
+| -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
+| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
+| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
+| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
+
+#### Video Files
+
+If you want to embed a video file directly, use the following syntax:
+
+```liquid
+{% include embed/video.html src='{URL}' %}
+```
+
+Where `URL` is an URL to a video file e.g. `/path/to/sample/video.mp4`.
+
+You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
+
+- `poster='/path/to/poster.png'` — poster image for a video that is shown while video is downloading
+- `title='Text'` — title for a video that appears below the video and looks same as for images
+- `autoplay=true` — video automatically begins to play back as soon as it can
+- `loop=true` — automatically seek back to the start upon reaching the end of the video
+- `muted=true` — audio will be initially silenced
+- `types` — specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
+
+Consider an example utilizing all of the above:
+
+```liquid
+{%
+  include embed/video.html
+  src='/path/to/video.mp4'
+  types='ogg|mov'
+  poster='poster.png'
+  title='Demo video'
+  autoplay=true
+  loop=true
+  muted=true
+%}
+```
+
+### Audios
+
+If you want to embed an audio file directly, use the following syntax:
+
+```liquid
+{% include embed/audio.html src='{URL}' %}
+```
+
+Where `URL` is an URL to an audio file e.g. `/path/to/audio.mp3`.
+
+You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
+
+- `title='Text'` — title for an audio that appears below the audio and looks same as for images
+- `types` — specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
+
+Consider an example utilizing all of the above:
+
+```liquid
+{%
+  include embed/audio.html
+  src='/path/to/audio.mp3'
+  types='ogg|wav|aac'
+  title='Demo audio'
+%}
+```
 
 ## Pinned Posts
 
@@ -443,95 +433,74 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 
 Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
 
-## Videos
-
-### Video Sharing Platform
-
-You can embed a video with the following syntax:
-
-```liquid
-{% include embed/{Platform}.html id='{ID}' %}
 ```
 
-Where `Platform` is the lowercase of the platform name, and `ID` is the video ID.
+## Mathematics
 
-The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
+We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
 
-| Video URL                                                                                          | Platform   | ID             |
-| -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
-| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
-| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
-| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
+[mathjax]: https://www.mathjax.org/
 
-### Video File
-
-If you want to embed a video file directly, use the following syntax:
-
-```liquid
-{% include embed/video.html src='{URL}' %}
+```yaml
+---
+math: true
+---
 ```
 
-Where `URL` is an URL to a video file e.g. `/assets/img/sample/video.mp4`.
+After enabling the mathematical feature, you can add math equations with the following syntax:
 
-You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
+- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
+  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
+  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
+- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
+- **Inline math** (in lists) should be added with `\$$ math $$`
 
-- `poster='/path/to/poster.png'` - poster image for a video that is shown while video is downloading
-- `title='Text'` - title for a video that appears below the video and looks same as for images
-- `autoplay=true` - video automatically begins to play back as soon as it can
-- `loop=true` - automatically seek back to the start upon reaching the end of the video
-- `muted=true` - audio will be initially silenced
-- `types` - specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
+```markdown
+<!-- Block math, keep all blank lines -->
 
-Consider an example utilizing all of the above:
+$$
+LaTeX_math_expression
+$$
 
-```liquid
-{%
-  include embed/video.html
-  src='/path/to/video/video.mp4'
-  types='ogg|mov'
-  poster='poster.png'
-  title='Demo video'
-  autoplay=true
-  loop=true
-  muted=true
-%}
+<!-- Equation numbering, keep all blank lines  -->
+
+$$
+\begin{equation}
+  LaTeX_math_expression
+  \label{eq:label_name}
+\end{equation}
+$$
+
+Can be referenced as \eqref{eq:label_name}.
+
+<!-- Inline math in lines, NO blank lines -->
+
+"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
+
+<!-- Inline math in lists, escape the first `$` -->
+
+1. \$$ LaTeX_math_expression $$
+2. \$$ LaTeX_math_expression $$
+3. \$$ LaTeX_math_expression $$
 ```
 
-> It's not recommended to host video files in `assets` folder as they cannot be cached by PWA and may cause issues.
-> Instead, use CDN to host video files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
-{: .prompt-warning }
+> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
+> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
+{: .prompt-tip }
 
-## Audios
+[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
 
-### Audio File
+## Mermaid
 
-If you want to embed an audio file directly, use the following syntax:
+[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagram generation tool. To enable it on your post, add the following to the YAML block:
 
-```liquid
-{% include embed/audio.html src='{URL}' %}
+```yaml
+---
+mermaid: true
+---
 ```
 
-Where `URL` is an URL to an audio file e.g. `/assets/img/sample/audio.mp3`.
-
-You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
-
-- `title='Text'` - title for an audio that appears below the audio and looks same as for images
-- `types` - specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
-
-Consider an example utilizing all of the above:
-
-```liquid
-{%
-  include embed/audio.html
-  src='/path/to/audio/audio.mp3'
-  types='ogg|wav|aac'
-  title='Demo audio'
-%}
-```
-
-> It's not recommended to host audio files in `assets` folder as they cannot be cached by PWA and may cause issues.
-> Instead, use CDN to host audio files. Alternatively, use a separate folder that is excluded from PWA (see `pwa.deny_paths` setting in `_config.yml`).
-{: .prompt-warning }
+Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
 
 ## Learn More
 

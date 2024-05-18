@@ -9,7 +9,8 @@
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        pv.innerText = new Intl.NumberFormat().format(data.count);
+        const count = data.count.replace(/\s/g, '');
+        pv.innerText = new Intl.NumberFormat().format(count);
       })
       .catch((error) => {
         pv.innerText = '1';
