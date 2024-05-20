@@ -14,7 +14,7 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Dev Stuff # the main title
+title: Dev Logs # the main title
 
 tagline: My projects in Game Ai and Path Finding Optimization Algorithms # it will display as the sub-title
 
