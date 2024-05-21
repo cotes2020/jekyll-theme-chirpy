@@ -48,12 +48,12 @@ This code is really enormous, containing more 4000 line!! We'll go through diffe
 void TMCFAlgorithmForm::Handle_Multi_Load_AGVS(); // this uses the job generator in HCDVRP.cpp
 ```
 
-
 ## <code>HCDVRP.cpp</code> Explanation
 
 `HCDVRP` consists of:
-- AGV simulation (such as its properties, its actions) + Container simulation
-```cpp
+- AGV simulation (such as its properties, its actions) + Container simulation.
+
+```  cpp
 struct Container:
 {
     int        JobNo      ;
@@ -74,18 +74,44 @@ struct  Vehicle
         String StartLoc;
 };
 ```
-- It also generates __Trips, Tours,__ and __Destination information__.
+</br>
 
- 
+* It also generates __Trips, Tours,__ and __Destination information__.
+
+## <code>mcfdefs.h</code>, <code>mcf.h</code>
+The `mcfdefs.h` contains the **fields** (parameters and nodes) of the `MCFModel` and `mcf.h` contains **methods**. 
+Examples of the components of `mcfdefs.h`: (A description of Nodes can be found [here]())
+```cpp 
+struct MCF_node{ ///MCF_node_p is the alias (or typeof) of MCF_node
+    int indent;
+    int pre_indent;
+    MCF_node_p child;
+    MCF_node_p right_sibling;     
+    MCF_node_p left_sibling;     
+    ....
+}
+```
+Examples of the components of `mcf.h`: 
+```cpp
+extern long MCF_write_intermediate2(MCF_network_p net);
+extern long MCF_primal_start_artificial (MCF_network_p net);
+extern long MCF_primal_net_simplex (MCF_network_p net)
+```
+**Please note that the comments ("_documentation_") is actually good and pretty important in these two cpp files!**
+
+ ## <code>PBLA1_3.cpp</code>, <code>PXIMPLEX1_3.cpp</code>, <code>TREEUPS.cpp</code>, <code>MCFLIGHT1_0_6.cpp</code>
+- `PBLA` and `PSIMPLEX1_3` and `MCFLIGHT1_0_6` are closely related! There are some useful comments in them, none of which I understand as I still haven't comprehend the mcf algorithm thoroughly.
+- `TREEUP` is used in `PSIMPLEX1_3`.
 ## Miscellaneous Notes
 - `DataSource` type is defined in `OpenPort` file
 - `table2` is defined in `PortAGV` file.
-- `Defines.h` contains all __constants__ (such as `MAXJOB_0 50, Maximum_Container_Jobs 40` etc., and `Global_ext.h` contains __simulation variables__ (such as `SOURCEpOINT, dESTpOINT` etc.)
+- `Defines.h` contains all __constants__ (such as `MAXJOB_0 50, Maximum_Container_Jobs 40` etc.), and `Global_ext.h` contains __simulation variables__ (such as `SOURCEpOINT, dESTpOINT` etc.)
 - `PSIMPLEX.h` Only consists of an interface `MCF_primal_net_simplex(MCF_network_p net)`. `PSIMPLEX1_3.cpp` implements it.
 - `mcfdefs.h` is a bunch of definitions related to MCF problem. `mcf.h` completes it and make itself be accessed to the `MCFModel1_3.cpp`.
+- BEA could stand for "Best Entering Arc".
 
 ## TODO:
-- Examine `pbla1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
+- Examine `PBLA1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
 - Examine `mcfdefs.h`, and `mcf.h` and continue to analyze `MCFModel`
 - Examine The Job Generator
 - Examine `OUTPUT.cpp` as it is used by method `MCF_write_solution` in `MCFLIGHT.cpp`. Then continue to analyze the `MCFLIGHT.cpp`
