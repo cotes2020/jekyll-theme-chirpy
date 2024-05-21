@@ -80,7 +80,7 @@ struct  Vehicle
 
 ## <code>mcfdefs.h</code>, <code>mcf.h</code>
 The `mcfdefs.h` contains the **fields** (parameters and nodes) of the `MCFModel` and `mcf.h` contains **methods**. 
-Examples of the components of `mcfdefs.h`: (A description of Nodes can be found [here]())
+Examples of the components of `mcfdefs.h`: (A description of Nodes can be found [here](https://google.com/))
 ```cpp 
 struct MCF_node{ ///MCF_node_p is the alias (or typeof) of MCF_node
     int indent;
