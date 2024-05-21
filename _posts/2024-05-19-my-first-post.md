@@ -112,12 +112,15 @@ extern long MCF_primal_net_simplex (MCF_network_p net)
 - BEA could stand for "Best Entering Arc".
 
 ## TODO List:
-- [x] Examine `mcfdefs.h`, and `mcf.h`
-- [x] Examine `PBLA1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
-- [ ] Examine `MCFModel` and `MCFLIGHT.cpp`.
-- [ ] Examine The Job Generator
-- [ ] Examine `OUTPUT.cpp` as it is used by method `MCF_write_solution` in `MCFLIGHT.cpp`.
-- [ ] Examine the functionalities of `MCFModel` 
+- [x] `mcfdefs.h`, and `mcf.h`
+- [x] `PBLA1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
+- [ ] `MCFModel` and `MCFLIGHT.cpp`.
+- [ ] The Job Generator
+- [ ] `OUTPUT.cpp` as it is used by method `MCF_write_solution` in `MCFLIGHT.cpp`.
+- [ ] `PortLayout`
+- [ ] the functionalities of `MCFModel` 
+- [ ] `PREPAIR`
+- [ ] `PortBenchmark`, which is mostly a UI thing.
 
 ## Unanswered Questions:
 - What is the use of `MCF_primal_iminus` (and hence `MCF_primal_net_simplex`)? what are jplus and iplus in them?
