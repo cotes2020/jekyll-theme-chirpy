@@ -100,8 +100,9 @@ extern long MCF_primal_net_simplex (MCF_network_p net)
 **Please note that the comments ("_documentation_") is actually good and pretty important in these two cpp files!**
 
  ## <code>PBLA1_3.cpp</code>, <code>PXIMPLEX1_3.cpp</code>, <code>TREEUPS.cpp</code>, <code>MCFLIGHT1_0_6.cpp</code>
-- `PBLA` and `PSIMPLEX1_3` and `MCFLIGHT1_0_6` are closely related! There are some useful comments in them, none of which I understand as I still haven't comprehend the mcf algorithm thoroughly.
+- `PBLA` and `PSIMPLEX1_3` and `MCFLIGHT1_0_6` are closely related! There are some useful comments in them, none of which I understand as I still haven't reviewed the mcf problem and NSA algorithm thoroughly.
 - `TREEUP` is used in `PSIMPLEX1_3`.
+- 
 ## Miscellaneous Notes
 - `DataSource` type is defined in `OpenPort` file
 - `table2` is defined in `PortAGV` file.
@@ -110,9 +111,13 @@ extern long MCF_primal_net_simplex (MCF_network_p net)
 - `mcfdefs.h` is a bunch of definitions related to MCF problem. `mcf.h` completes it and make itself be accessed to the `MCFModel1_3.cpp`.
 - BEA could stand for "Best Entering Arc".
 
-## TODO:
-- Examine `PBLA1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
-- Examine `mcfdefs.h`, and `mcf.h` and continue to analyze `MCFModel`
-- Examine The Job Generator
-- Examine `OUTPUT.cpp` as it is used by method `MCF_write_solution` in `MCFLIGHT.cpp`. Then continue to analyze the `MCFLIGHT.cpp`
-- Examine the functionalities of `MCFModel` 
+## TODO List:
+- [x] Examine `mcfdefs.h`, and `mcf.h`
+- [x] Examine `PBLA1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
+- [ ] Examine `MCFModel` and `MCFLIGHT.cpp`.
+- [ ] Examine The Job Generator
+- [ ] Examine `OUTPUT.cpp` as it is used by method `MCF_write_solution` in `MCFLIGHT.cpp`.
+- [ ] Examine the functionalities of `MCFModel` 
+
+## Unanswered Questions:
+- What is the use of `MCF_primal_iminus` (and hence `MCF_primal_net_simplex`)? what are jplus and iplus in them?
