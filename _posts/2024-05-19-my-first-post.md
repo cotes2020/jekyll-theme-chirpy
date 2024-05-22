@@ -74,13 +74,11 @@ struct  Vehicle
         String StartLoc;
 };
 ```
-</br>
-
 * It also generates __Trips, Tours,__ and __Destination information__.
 
 ## <code>mcfdefs.h</code>, <code>mcf.h</code>
 The `mcfdefs.h` contains the **fields** (parameters and nodes) of the `MCFModel` and `mcf.h` contains **methods**. 
-Examples of the components of `mcfdefs.h`: (A description of Nodes can be found [here](https://google.com/))
+Examples of the components of `mcfdefs.h`: (A description of Nodes can be found [here](https://github.com/amireza007/amireza007.github.io/blob/master/assets/mcfdefs.pdf))
 ```cpp 
 struct MCF_node{ ///MCF_node_p is the alias (or typeof) of MCF_node
     int indent;
@@ -97,24 +95,38 @@ extern long MCF_write_intermediate2(MCF_network_p net);
 extern long MCF_primal_start_artificial (MCF_network_p net);
 extern long MCF_primal_net_simplex (MCF_network_p net)
 ```
-**Please note that the comments ("_documentation_") is actually good and pretty important in these two cpp files!**
+**Please note that the comments ("_documentation_") are actually good and pretty important in these two cpp files!**
 
  ## <code>PBLA1_3.cpp</code>, <code>PXIMPLEX1_3.cpp</code>, <code>TREEUPS.cpp</code>, <code>MCFLIGHT1_0_6.cpp</code>
 - `PBLA` and `PSIMPLEX1_3` and `MCFLIGHT1_0_6` are closely related! There are some useful comments in them, none of which I understand as I still haven't reviewed the mcf problem and NSA algorithm thoroughly.
+
+The `PBLA` (which most likely stands for "problem of best leaving arc") only contains the _mysterious_:
+```cpp
+MCF_node_p MCF_primal_iminus(MCF_flow_p delta,
+                             long       *xchange,
+                             MCF_node_p iplus,
+                             MCF_node_p jplus,
+                             MCF_node_p *w     )
+```
+The `PSIMPLEX` (The bigger cpp file with `"mcfdefs.h`",`"pbeadef.h"`,`"pbea.h"`,`"pbla.h"`,`"pflowup.h"`,`"treeup.h"`,`"mcfutil.h"`) only contains the _mysterious_:
+```cpp
+long MCF_primal_net_simplex(MCF_network_p net)
+```
 - `TREEUP` is used in `PSIMPLEX1_3`.
-- 
+
+## <code>Mcfutil.cpp</code>, <code>MCFLIGHT1_0_6.cpp</code>, and <code>MCFModel1_3.cpp</code>,
+
 ## Miscellaneous Notes
 - `DataSource` type is defined in `OpenPort` file
 - `table2` is defined in `PortAGV` file.
 - `Defines.h` contains all __constants__ (such as `MAXJOB_0 50, Maximum_Container_Jobs 40` etc.), and `Global_ext.h` contains __simulation variables__ (such as `SOURCEpOINT, dESTpOINT` etc.)
 - `PSIMPLEX.h` Only consists of an interface `MCF_primal_net_simplex(MCF_network_p net)`. `PSIMPLEX1_3.cpp` implements it.
-- `mcfdefs.h` is a bunch of definitions related to MCF problem. `mcf.h` completes it and make itself be accessed to the `MCFModel1_3.cpp`.
 - BEA could stand for "Best Entering Arc".
 
 ## TODO List:
 - [x] `mcfdefs.h`, and `mcf.h`
 - [x] `PBLA1_3.cpp`, then `PSIMPLEX1_3.cpp`, and then `TREEUPS.cpp`
-- [ ] `MCFModel` and `MCFLIGHT.cpp`.
+- [ ] `mcfutil.cpp`, `MCFLIGHT.cpp`, and `MCFModel`.
 - [ ] The Job Generator
 - [ ] `OUTPUT.cpp` as it is used by method `MCF_write_solution` in `MCFLIGHT.cpp`.
 - [ ] `PortLayout`
