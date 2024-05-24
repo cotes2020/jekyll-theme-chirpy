@@ -1,0 +1,136 @@
+---
+permalink: /mailgen
+---
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Email Generator</h1>
+        <label for="email">Enter email address:</label>
+        <input type="text" id="email" required>
+        <button onclick="generateEmails()">Generate</button>
+        <div id="output"></div>
+    </div>
+
+   <script>
+    function generateEmails() {
+        var email = document.getElementById('email').value;
+
+        // Regular expression for validating email address
+        var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+
+        // Validate email format
+        if (!emailRegex.test(email)) {
+            alert("Invalid email address");
+            return;
+        }
+
+        // Extract name and domain from email
+        var atIndex = email.indexOf('@');
+        var name = email.substring(0, atIndex);
+        var domain = email.substring(atIndex + 1);
+
+        var generatedEmails = [];
+
+        // Generate email addresses with dots inserted in all possible positions
+        for (var i = 0; i < name.length; i++) {
+            for (var j = i + 1; j < name.length; j++) {
+                var newName = name.substring(0, i) + "." + name.substring(i, j) + "." + name.substring(j);
+                var newEmail = newName + "@" + domain;
+                generatedEmails.push(newEmail);
+            }
+        }
+
+        // Display output
+        var outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = "<h2>Generated Email Addresses:</h2>";
+
+        // Concatenate all generated emails into a single string
+        var emailString = generatedEmails.join("<br>");
+
+        outputDiv.innerHTML += emailString;
+
+        // Add export to txt button
+        var exportButton = document.createElement('button');
+        exportButton.textContent = 'Export to TXT';
+        exportButton.onclick = function() {
+            var textToSave = generatedEmails.join('\n');
+            var blob = new Blob([textToSave], { type: 'text/plain' });
+            var url = URL.createObjectURL(blob);
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'generated_emails.txt';
+            document.body.appendChild(a);
+            a.click();
+
+            URL.revokeObjectURL(url);
+        };
+
+        outputDiv.appendChild(exportButton);
+    }
+</script>
+
+</body>
