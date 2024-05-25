@@ -127,12 +127,14 @@ struct  Vehicle
 - BEA could stand for "Best Entering Arc".
 
 ## Borland Paradox DB files
+- Your reference for tables is [this](https://docwiki.embarcadero.com/Libraries/Sydney/en/Bde.DBTables.TTable)
 - Each DataBase file is most likely created and compiled into a file with `.dfm` extension.
 - To open DB files, download [this](https://github.com/amireza007/DSAGV/blob/main/PDXPlus.exe)
 - There are various tables, but **PortLayoutTable** is the one generated with the <a href="#the-job-generator-hcdvrpcpp"> HCDVRP.cpp </a>
-- `MCFAlgorithmForm->Table4` is `PortAGVTTable.DB` in the database.
+- `MCFAlgorithmForm->Table4` and `MCFAlgorithmForm->Table5` are `PortAGVTTable.DB` in the database.
 - `PortAGVForm->Table2` and `PortAGVForm->Table1` are `portAGVTable.db` in the database. 
 - `PortContainerForm->Table1` and `PortContainerForm->Table2` are `PortContainerTable.db` in the database.
+- ` MCFAlgorithmForm->Table1` is `PortDoneJobTable.db` in database.
 - In BDE, `TTable` is the type for creating table objects.
 
 ## TODO List:
@@ -149,3 +151,4 @@ struct  Vehicle
 ## Unanswered Questions:
 - What is the use of `MCF_primal_iminus` (and hence `MCF_primal_net_simplex`)? what are jplus and iplus in them?
 - Why are there 2 tables pointing to _the same DB_ in `PortAGV.cpp` and `PortContainer.cpp`?
+- Not sure why there are so many `MCFAlgorithmForm->Table4->Delete();` in `MCFModel1_3`? it deletes them, and the loop ends, at the end of the method, `MCFAlgorithmForm->Table4->refresh()`gets called!! why??
