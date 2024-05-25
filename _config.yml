@@ -114,7 +114,7 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: amireza007/amireza007.github.io/ # <gh-username>/<repo>
+    repo: amireza007/amireza007.github.io # <gh-username>/<repo>
     repo_id: R_kgDOL9ah8w
     category: General
     category_id: DIC_kwDOL9ah884CfnCC
