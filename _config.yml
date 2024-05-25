@@ -23,7 +23,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://amireza007.github.io"
 
 github:
   username: amireza007 # change to your github username
@@ -36,7 +36,7 @@ social:
   email: taghizadeh.a.2015@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://github.com/username # change to your github homepage
+    - https://github.com/amireza007 # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/amireza007
@@ -104,7 +104,7 @@ toc: true
 
 comments:
   # Global switch for the post comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
+  provider: giscus # [disqus | utterances | giscus]
   # The provider options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -114,10 +114,10 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: amireza007/amireza007.github.io/ # <gh-username>/<repo>
+    repo_id: R_kgDOL9ah8w
+    category: General
+    category_id: DIC_kwDOL9ah884CfnCC
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
@@ -165,7 +165,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-
 defaults:
   - scope:
       path: "" # An empty string here means all files in the project

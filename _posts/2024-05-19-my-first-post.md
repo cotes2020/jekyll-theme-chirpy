@@ -1,7 +1,10 @@
 ---
+authors: amireza007
 layout: post
 title: DSAGV Guide
 date: '2024-05-19 00:26:55 +0330'
+categories: [DSAGV]
+tags: [Scheduling Algorithms, Vehicle Routing Problem, Minimum Cost Flow, Network Simplex, Automated Guided Vehicles, Integer Programming, AGVs]
 ---
 
 In this post, we'll examine all important cpp files of DSAGV app, and then continue to explore ways to re-implement them in a state-of-the-art fashion!
@@ -126,7 +129,11 @@ struct  Vehicle
 ## Borland Paradox DB files
 - Each DataBase file is most likely created and compiled into a file with `.dfm` extension.
 - To open DB files, download [this](http://www.alexnolan.net/paradox/#google_vignette)
-- There are various tables, but **PortLayoutTable** is the one generated with the <a href="#job-generator"> HCDVRP.cpp </a>
+- There are various tables, but **PortLayoutTable** is the one generated with the <a href="#the-job-generator-hcdvrpcpp"> HCDVRP.cpp </a>
+- `MCFAlgorithmForm->Table4` is `PortAGVTTable.DB` in the database.
+- `PortAGVForm->Table2` and `PortAGVForm->Table1` are `portAGVTable.db` in the database. 
+- `PortContainerForm->Table1` and `PortContainerForm->Table2` are `PortContainerTable.db` in the database.
+- In BDE, `TTable` is the type for creating table objects.
 
 ## TODO List:
 - [x] `mcfdefs.h`, and `mcf.h`
@@ -138,6 +145,7 @@ struct  Vehicle
 - [ ] the functionalities of `MCFModel` 
 - [ ] `PREPAIR`
 - [ ] `PortBenchmark`, which is mostly a UI thing.
-
+  
 ## Unanswered Questions:
 - What is the use of `MCF_primal_iminus` (and hence `MCF_primal_net_simplex`)? what are jplus and iplus in them?
+- Why are there 2 tables pointing to _the same DB_ in `PortAGV.cpp` and `PortContainer.cpp`?
