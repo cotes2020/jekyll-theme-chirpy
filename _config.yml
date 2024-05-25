@@ -16,10 +16,10 @@ timezone: Asia/Seoul
 
 title: Gyu's Devlog # the main title
 
-tagline: Game dev study Blog # it will display as the sub-title
+tagline: 개발 공부하는 블로그 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Game dev study Blog
+  게임 개발 공부 블로그
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
