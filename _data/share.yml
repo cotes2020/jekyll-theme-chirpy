@@ -36,3 +36,7 @@ platforms:
   #       link: "https://fosstodon.org/"
   #     - label: photog.social
   #       link: "https://photog.social/"
+  #
+  # - type: Bluesky
+  #   icon: "fa-brands fa-bluesky"
+  #   link: "https://bsky.app/intent/compose?text=TITLE%20URL"
