@@ -433,8 +433,6 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 
 Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
 
-```
-
 ## Mathematics
 
 We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
