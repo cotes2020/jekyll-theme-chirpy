@@ -35,7 +35,7 @@ Sign in to GitHub to [fork **Chirpy**](https://github.com/cotes2020/jekyll-theme
 Next, clone the repository to your local machine, make sure it has [Node.js][nodejs] installed, then go to the root directory of the repo and run the following command:
 
 ```console
-$ bash tools/init
+$ bash tools/init.sh
 ```
 
 > If you don't want to deploy your site on GitHub Pages, append option `--no-gh` at the end of the above command.

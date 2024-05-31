@@ -156,8 +156,8 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "bash tools/release --prepare",
-          "publishCmd": "bash tools/release"
+          "prepareCmd": "bash tools/release.sh --prepare",
+          "publishCmd": "bash tools/release.sh"
         }
       ],
       [
