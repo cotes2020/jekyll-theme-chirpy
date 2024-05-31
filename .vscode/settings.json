@@ -22,6 +22,6 @@
   "scss.validate": false,
   "less.validate": false,
   // Stylint extension settings
-  "stylelint.snippet": ["css", "less", "postcss", "scss"],
-  "stylelint.validate": ["css", "less", "postcss", "scss"]
+  "stylelint.snippet": ["css", "scss"],
+  "stylelint.validate": ["css", "scss"]
 }

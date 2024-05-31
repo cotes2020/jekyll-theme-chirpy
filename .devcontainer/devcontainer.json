@@ -1,0 +1,20 @@
+{
+  "name": "Jekyll",
+  "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
+  "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
+        "killalau.vscode-liquid-snippets",
+        "mhutchie.git-graph",
+        "Shopify.theme-check-vscode",
+        "stylelint.vscode-stylelint",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  }
+}

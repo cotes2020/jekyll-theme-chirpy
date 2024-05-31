@@ -46,5 +46,11 @@ if $prod; then
   command="JEKYLL_ENV=production $command"
 fi
 
+if [ -e /proc/1/cgroup ]; then
+  if grep -q docker /proc/1/cgroup; then
+    command="$command --force_polling"
+  fi
+fi
+
 echo -e "\n> $command\n"
 eval "$command"
