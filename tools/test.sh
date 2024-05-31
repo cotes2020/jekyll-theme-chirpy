@@ -19,7 +19,7 @@ help() {
   echo
   echo "Usage:"
   echo
-  echo "   bash ./tools/test [options]"
+  echo "   bash $0 [options]"
   echo
   echo "Options:"
   echo '     -c, --config   "<config_a[,config_b[...]]>"    Specify config file(s)'

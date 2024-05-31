@@ -37,7 +37,7 @@ help() {
   echo "  2. Merge the release branch into the default branch"
   echo
   echo "Usage:"
-  echo "  bash ./tools/release [options]"
+  echo "  bash $0 [options]"
   echo
   echo "Options:"
   echo "  --prepare           Preparation for release"

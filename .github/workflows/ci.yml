@@ -42,4 +42,4 @@ jobs:
         run: npm i && npm run build
 
       - name: Test Site
-        run: bash tools/test
+        run: bash tools/test.sh
