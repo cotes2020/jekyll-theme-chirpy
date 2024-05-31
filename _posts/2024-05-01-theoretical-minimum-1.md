@@ -3,7 +3,7 @@ title: Theoretical Minimum - Classical Mechanics
 author: jake
 date: 2024-05-01 12:00:00 +0800
 categories: [Physics]
-tags: []
+tags: [theoretical minimum]
 math: false
 mermaid: false
 image:

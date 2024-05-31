@@ -3,7 +3,7 @@ title: Rent vs. Buy in Numpy
 author: jake
 date: 2024-03-09 12:00:00 +0800
 categories: [Math]
-tags: []
+tags: [finance, numpy]
 # math: true
 # mermaid: true
 image:

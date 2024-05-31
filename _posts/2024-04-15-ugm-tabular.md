@@ -3,7 +3,7 @@ title: Undirected Graphical Models for Tabular Data
 author: jake
 date: 2024-04-15 12:00:00 +0800
 categories: [Math]
-tags: []
+tags: [statistics, probabilistic graphical models, undirected graphical models]
 math: true
 mermaid: true
 image:
