@@ -25,8 +25,10 @@ setup_assets() {
   $has_built_js || npm run build:js
 }
 
-setup_node
-setup_assets
+if [ -f package.json ]; then
+  setup_node
+  setup_assets
+fi
 
 # Install dependencies for shfmt extension
 curl -sS https://webi.sh/shfmt | sh &>/dev/null
