@@ -3,15 +3,24 @@
   "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
   "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postAttachCommand": "exec zsh",
   "customizations": {
     "vscode": {
+      "settings": {
+        // Speed up extension installation
+        "extensions.verifySignature": false
+      },
       "extensions": [
+        // Liquid tags auto-complete
+        "killalau.vscode-liquid-snippets",
+        // Liquid syntax highlighting and formatting
+        "Shopify.theme-check-vscode",
+        // Shell
+        "timonwong.shellcheck",
+        "mkhl.shfmt",
+        // Common formatter
         "EditorConfig.EditorConfig",
         "esbenp.prettier-vscode",
-        "foxundermoon.shell-format",
-        "killalau.vscode-liquid-snippets",
-        "mhutchie.git-graph",
-        "Shopify.theme-check-vscode",
         "stylelint.vscode-stylelint",
         "yzhang.markdown-all-in-one"
       ]

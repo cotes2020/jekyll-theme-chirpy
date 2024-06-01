@@ -1,10 +1,32 @@
 #!/usr/bin/env bash
 
-npm_buid() {
-  bash -i -c "nvm install --lts"
-  npm i && npm run build
+setup_node() {
+  bash -i -c "nvm install --lts && nvm install-latest-npm"
+
+  [[ -f package-lock.json && -d node_modules ]] || npm i
 }
 
-[[ -d _sass/dist && -d assets/js/dist ]] || npm_buid
+setup_assets() {
+  has_built_css=false
+  has_built_js=false
 
-exec zsh
+  CSS_DIST="_sass/dist"
+  JS_DIST="assets/js/dist"
+
+  if [ -d "$CSS_DIST" ]; then
+    [ -z "$(ls -A $CSS_DIST)" ] || has_built_css=true
+  fi
+
+  if [ -d "$JS_DIST" ]; then
+    [ -z "$(ls -A $JS_DIST)" ] || has_built_js=true
+  fi
+
+  $has_built_css || npm run build:css
+  $has_built_js || npm run build:js
+}
+
+setup_node
+setup_assets
+
+# Install dependencies for shfmt extension
+curl -sS https://webi.sh/shfmt | sh &>/dev/null
