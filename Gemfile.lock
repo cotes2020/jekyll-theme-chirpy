@@ -138,6 +138,10 @@ GEM
       bigdecimal (~> 3.1)
     typhoeus (1.4.1)
       ethon (>= 0.9.0)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2024.1)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.5.0)
     webrick (1.8.1)
     yell (2.2.2)
@@ -150,6 +154,8 @@ PLATFORMS
 DEPENDENCIES
   html-proofer (~> 5.0)
   jekyll-theme-chirpy!
+  tzinfo
+  tzinfo-data
 
 BUNDLED WITH
    2.5.9
