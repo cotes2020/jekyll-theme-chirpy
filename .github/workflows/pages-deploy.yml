@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - master
     paths-ignore:
       - .gitignore
       - README.md
@@ -42,7 +41,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: 3.1.6
           bundler-cache: true
 
       - name: Build site
