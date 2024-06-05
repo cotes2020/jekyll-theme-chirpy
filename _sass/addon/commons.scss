@@ -108,7 +108,7 @@ blockquote {
   }
 
   @include prompt('tip', '\f0eb', 'regular');
-  @include prompt('info', '\f06a');
+  @include prompt('info', '\f06a', null, 180);
   @include prompt('warning', '\f06a');
   @include prompt('danger', '\f071');
 }

@@ -187,14 +187,23 @@
   transform: translateX(-50%);
 }
 
-@mixin prompt($type, $fa-content, $fa-style: 'solid') {
+@mixin prompt($type, $fa-content, $fa-style: 'solid', $rotate: 0) {
   &.prompt-#{$type} {
     background-color: var(--prompt-#{$type}-bg);
 
     &::before {
       content: $fa-content;
       color: var(--prompt-#{$type}-icon-color);
+
+      @if not $fa-style {
+        $fa-style: 'solid';
+      }
+
       font: var(--fa-font-#{$fa-style});
+
+      @if $rotate != 0 {
+        transform: rotate(#{$rotate}deg);
+      }
     }
   }
 }
