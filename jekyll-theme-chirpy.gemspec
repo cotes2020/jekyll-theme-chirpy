@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f|
-    f.match(%r!^((_(includes|layouts|sass|(data\/(locales|origin)))|assets)\/|README|LICENSE)!i)
+    f.match(%r!^((_(includes|layouts|sass|app|(data\/(locales|origin)))|assets)\/|README|LICENSE)!i)
   }
 
   spec.metadata = {
