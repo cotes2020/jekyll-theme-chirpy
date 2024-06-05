@@ -14,7 +14,7 @@ tabs:
   categories: Categories
   tags: Tags
   archives: Archives
-  #about: About
+  about: About
 
 # the text displayed in the search bar & search results
 search:
