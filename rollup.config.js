@@ -19,18 +19,11 @@ const isProd = process.env.BUILD === 'production';
 
 function cleanup(...directories) {
   for (const dir of directories) {
-    if (typeof dir !== 'string') {
-      console.warn('Invalid directory:', dir);
-      return;
-    }
-
-    if (fs.existsSync(dir)) {
-      fs.rm(dir, { recursive: true, force: true }, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
-    }
+    fs.rm(dir, { recursive: true, force: true }, (err) => {
+      if (err) {
+        console.error(`Failed to remove directory ${dir}: ${err}`);
+      }
+    });
   }
 }
 
