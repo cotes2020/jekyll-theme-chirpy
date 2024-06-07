@@ -6,9 +6,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        // Speed up extension installation
-        "extensions.verifySignature": false
+        "terminal.integrated.defaultProfile.linux": "zsh"
       },
       "extensions": [
         // Liquid tags auto-complete
