@@ -1,5 +1,6 @@
 ---
 title: "Why This Blog"
+author: "By Electronic Mind"
 date: 2024-06-09 06:30:00 +1100
 categories: [About]
 tags: [about]
