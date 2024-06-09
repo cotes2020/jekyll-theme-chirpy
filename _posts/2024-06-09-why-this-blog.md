@@ -3,7 +3,6 @@ title: "Why This Blog"
 date: 2024-06-09 06:30:00 +1100
 categories: [About]
 tags: [about]
-render_with_liquid: false
 ---
 
 ## This is Why
