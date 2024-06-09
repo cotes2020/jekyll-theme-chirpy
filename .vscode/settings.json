@@ -1,4 +1,6 @@
 {
+  // Zen Mode
+  "zenMode.fullScreen": false,
   // Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
@@ -8,20 +10,24 @@
     "*.html": "liquid"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.fontFamily": "Aeonik Mono",
+    "editor.fontSize": 16,
+    "editor.lineNumbers": "off",
+    "files.autoSave": "onFocusChange"
   },
   // Formatter
   "[html][liquid]": {
     "editor.defaultFormatter": "Shopify.theme-check-vscode"
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "mkhl.shfmt"
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   // Disable vscode built-in stylelint
   "css.validate": false,
   "scss.validate": false,
   "less.validate": false,
   // Stylint extension settings
-  "stylelint.snippet": ["css", "scss"],
-  "stylelint.validate": ["css", "scss"]
+  "stylelint.snippet": ["css", "less", "postcss", "scss"],
+  "stylelint.validate": ["css", "less", "postcss", "scss"]
 }
