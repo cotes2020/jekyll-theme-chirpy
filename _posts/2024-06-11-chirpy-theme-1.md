@@ -51,7 +51,7 @@ Skill : shell, git 명령을 기본적으로 다룰 줄 알아야 합니다.
 * Github Action workflow 를 활성화
 * Settings > Pages
 ![](/assets/img/2024-06-10-Test_images/da0b4cc4.png)
-* git 저장소에 .github/workflows/jekyll.yml 생성이 되는데, Local 도 sync 해줄 것.
+* git 저장소에 `.github/workflows/jekyll.yml` 파일 생성이 되는데, Local 도 sync 해줄 것.
 ```bash
 > git pull
 ```
@@ -97,6 +97,10 @@ categories: [jekyll, chirpy]
 tags: [jekyll, chirpy, github-blog, github, blog]
 date: '2024-06-10 16:00:00 +0900'
 ---
+
+## 첫번째 주제
+* 내용..
+
 ```
 
 ## 참고
