@@ -98,3 +98,8 @@ tags: [jekyll, chirpy, github-blog, github, blog]
 date: '2024-06-10 16:00:00 +0900'
 ---
 ```
+
+## 참고
+
+---
+* 하얀눈길님 블로그 : https://www.irgroup.org/posts/jekyll-chirpy/
