@@ -3,13 +3,13 @@ title: Jekyll Chirpy Theme (2)
 author: Leesh
 categories: [jekyll, chirpy] 
 tags: [jekyll, chirpy, github-blog, github, blog]
-date: '2024-06-11 14:00:00 +0900'
+date: '2024-06-11 17:37:00 +0900'
 ---
 ## 아바타 이미지 설정
 
 ---
 * `assets/img/[avata_img.png]` 경로에 아바타 이미지 업로드
-* `_config.yml` 파일의 avata 설정
+* `_config.yml` 에서 업로드한 avata 이미지 경로 설정
 
 ```yaml
 # the avatar on sidebar, support local or CORS resources
@@ -22,7 +22,7 @@ avatar: assets/img/crab.jpeg
 `assets/img/favicons/[favicon files].ico` 파일들을 교체
 
 {:.prompt-tip}
-> 1) [iconfinder](https://www.iconfinder.com/icons){:target="_blank"} 에서 무료 아이콘 찾기
+> 1) [iconfinder](https://www.iconfinder.com/icons){:target="_blank"} 에서 무료 아이콘 찾기\
 > 2) [favicon.io](https://favicon.io/favicon-converter/){:target="_black"} 에서 favicon 변환
 
 ## 사이드바 타이틀/서브 타이틀 폰트 색상 설정
@@ -62,7 +62,6 @@ avatar: assets/img/crab.jpeg
   background-repeat: no-repeat;
   background-position: 40%;
 ```
-{: .nolineno }
 
 ## Footer 수정
 
