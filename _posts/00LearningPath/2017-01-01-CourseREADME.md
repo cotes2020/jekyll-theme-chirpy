@@ -217,32 +217,32 @@ sleepy....
 
 | Security                                                   | Mark | Hours             |
 | ---------------------------------------------------------- | ---- | ----------------- |
-| **University of Michigan**                                 | 🐰   | 🐰                |
-| Generative AI Essentials: Overview and Impact              | ✏️   | Course 3 h        |
 | **DeepLearning.AI**                                        | 🐰   | 🐰                |
 | Generative AI with Large Language Models                   | ✏️   | Course 16 h       |
-| Finetuning Large Language Models                           | ✏️   | Project 1 hour    |
+| Finetuning Large Language Models                           | ✏️   | Project 1 h   |
 | LangChain Chat with Your Data                              | ✏️   | Project 1 h       |
 | Building Systems with the ChatGPT API                      | ✏️   | Project 1 h       |
-| Introduction to Retrieval Augmented Generation (RAG)       | ✏️   | Video · 8 minutes |
 | ChatGPT Prompt Engineering for Developers                  | ✏️   | Project 1 h       |
+| Introduction to Retrieval Augmented Generation (RAG)       | ✏️   | Video · 8 minutes |
+| **Google Cloud**                                           | 🐰   | 🐰                |
+| Introduction to Large Language Models                      | ✏️   | Course 1 h        |
+| **IBM**                                                    | 🐰   | 🐰                |
+| Tools for Data Science                                     |      | Course 18 h       |
+| - Introduction to Jupyter Notebooks                        | ✔️   | Video · 3 minutes |
+| - Working with Jupyter Notebooks                           | ✔️   | Video · 4 minutes |
+| - Understanding Jupyter Kernels and Working with Notebooks | ✔️   | Video · 2 minutes |
+| - Jupyter Architecture Overview                            | ✔️   | Video · 2 minutes |
+| - Anaconda Jupyter Environments                            | ✔️   | Video · 6 minutes |
+| - Cloud-Based Jupyter Environments                         | ✔️   | Video · 4 minutes |
+| - Retrieval-Augmented Generation Framework                 | ✔️   | Video · 7 minutes |
+| **University of Michigan**                                 | 🐰   | 🐰                |
+| Generative AI Essentials: Overview and Impact              | ✏️   | Course 3 h        |
 | **Duke University**                                        | 🐰   | 🐰                |
 | Retrieval Augmented Generation Overview                    | ✏️   | Video · 3 minutes |
 | Retrieval Augmented Generation                             | ✏️   | Video · 4 minutes |
 | Open Source LLMOps Solutions                               | ✏️   | Course 35 h       |
 | **Vanderbilt University**                                  | 🐰   | 🐰                |
 | Prompt Engineering for ChatGPT                             | ✏️   | Course 18 h       |
-| **Google Cloud**                                           | 🐰   | 🐰                |
-| Introduction to Large Language Models                      | ✏️   | Course 1 h        |
-| **IBM**                                                    | 🐰   | 🐰                |
-| Tools for Data Science                                     |      | Course 18 h       |
-| - Introduction to Jupyter Notebooks                        | ✔️   | Video · 3 minutes |
-| - Working with Jupyter Notebooks                           | ✏️   | Video · 4 minutes |
-| - Understanding Jupyter Kernels and Working with Notebooks | ✏️   | Video · 2 minutes |
-| - Jupyter Architecture Overview                            | ✏️   | Video · 2 minutes |
-| - Anaconda Jupyter Environments                            | ✏️   | Video · 6 minutes |
-| - Cloud-Based Jupyter Environments                         | ✏️   | Video · 4 minutes |
-| - Retrieval-Augmented Generation Framework                 | ✏️   | Video · 7 minutes |
 
 ---
 

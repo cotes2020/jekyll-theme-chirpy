@@ -32,7 +32,7 @@ tags: [LLM]
 
 ## Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine
 
-> 用prompt+logprobs+n调出了一个高分医学模型
+> 用 prompt+logprobs+n 调出了一个高分医学模型
 
 ### Abstract
 
@@ -56,12 +56,9 @@ tags: [LLM]
 
 - The method outperforms state-of-the-art specialist models such as `Med-PaLM 2` by a large margin with an order of magnitude fewer calls to the model. Steering GPT-4 with `Medprompt` achieves a 27% reduction in error rate on the `MedQA` dataset (USMLE exam) over the best methods to date achieved with specialist models, and surpasses a score of 90% for the first time. Moving beyond medical challenge problems, we show the power of `Medprompt` to generalize to other domains and provide evidence for the broad applicability of the approach via studies of the strategy on competency exams in electrical engineering, machine learning, philosophy, accounting, law, nursing, and clinical psychology.
 
-
 ### 1 Introduction
 
-
 - A long-term aspiration in AI research is to develop `principles of computational intelligence` and to harness these to build `learning and reasoning systems` that can perform general problem solving across a diversity of tasks [^21],[^22].
-
 
 - In line with this goal, LLMs / foundation models, such as GPT-3 [^3] and GPT-4 [^24], have demonstrated surprising competencies on a broad swath of tasks `without requiring heavy specialized training` [4].
 
@@ -74,36 +71,29 @@ tags: [LLM]
 (a) Comparison of performance on MedQA.
 (b) GPT-4 with `Medprompt` achieves SoTA on a wide range of medical challenge questions.
 
-
 - A core metric for characterizing the performance of foundation models is **the accuracy of next word prediction**.
 
 - Accuracy with next word prediction is found to `increase with scale in training data, model parameters, and compute, in accordance with empirically derived “neural model scaling laws”` [^3], [^12].
 
 - However, beyond predictions of scaling laws on basic measures such as next word prediction, foundation models show the sudden emergence of numerous problem-solving capabilities at different thresholds of scale [^33], [^27], [^24]. 基础模型在不同规模阈值下突然出现了许多问题解决能力。
 
-
 - Despite the observed emergence of sets of general capabilities, questions remain about whether truly exceptional performance can be achieved on challenges within specialty areas like medicine in the absence of extensive specialized training or fine-tuning of the general models.
-
 
 - Most explorations of foundation model capability on biomedical applications rely heavily on `domain-and-task-specific fine-tuning`.
 
-
-- With first-generation foundation models, the community found an unambiguous advantage with domain-specific pretraining, as exemplified by popular models in biomedicine such as  PubMedBERT [^10] and BioGPT [^19]. But it is unclear whether this is still the case with modern foundation models pretrained at much larger scale.
-
+- With first-generation foundation models, the community found an unambiguous advantage with domain-specific pretraining, as exemplified by popular models in biomedicine such as PubMedBERT [^10] and BioGPT [^19]. But it is unclear whether this is still the case with modern foundation models pretrained at much larger scale.
 
 - We focus in this paper on `steering foundation models via prompt engineering` to excel on a set of medical challenge benchmarks.
 
 - `Med-PaLM 2` attains competitive results on `MedQA` and other medical challenge problems, via expensive, task-specific fine-tuning of the general PaLM [^6] foundation model [^29], [^30].
 
 - In addition to reliance on fine-tuning of the base PaLM model, results on the medical benchmarks for `Med-PaLM 2` were generated via use of sophisticated, complex prompting strategies, leveraging exemplars crafted by experts.
-  - For example, many of the answers rely on an elaborate two-stage prompt scheme of 44 calls for answering each question.
 
+  - For example, many of the answers rely on an elaborate two-stage prompt scheme of 44 calls for answering each question.
 
 - Shortly after GPT-4 was made public in March 2023, several co-authors of this study showed that the model had impressive biomedical competencies “out-of-the-box” on medical challenge bench- marks. To demonstrate the latent power of GPT-4 on specialty medical expertise, the co-authors purposefully employed a rudimentary prompting strategy [^23]. Despite the strong results demon-strated in that study, questions remain about the depth of GPT-4’s domain-specific capabilities in the absence of additional special training or tuning.
 
-
 - We present results and methods of a case study on steering GPT-4 to answer medical challenge questions with **innovative prompting strategies**.
-
 
 - We include a consideration of best practices for studying prompting in an evaluative setting, including the holding out of a true eyes-off evaluation set.
 
@@ -114,11 +104,10 @@ tags: [LLM]
 - As a design principle, we chose to explore prompting strategies that were inexpensive to execute and not customized for the benchmarking workload.
 
 - We converged on a top prompting strategy for GPT-4 for medical challenge problems, which we refer to as `Medprompt`.
-> - `Medprompt` unleashes medical specialist skills in GPT-4 in the absence of expert crafting, easily topping existing benchmarks for all standard medical question-answering datasets.
-> - The approach outperforms GPT-4 with the simple prompting strategy and state-of-the-art specialist models such as `Med-PaLM 2` by large margins.
-> On the `MedQA dataset (USMLE exam)`, `Medprompt` produces a 9 absolute point gain in accuracy, surpassing 90% for the first time on this benchmark.
 
-
+  > - `Medprompt` unleashes medical specialist skills in GPT-4 in the absence of expert crafting, easily topping existing benchmarks for all standard medical question-answering datasets.
+  > - The approach outperforms GPT-4 with the simple prompting strategy and state-of-the-art specialist models such as `Med-PaLM 2` by large margins.
+  >   On the `MedQA dataset (USMLE exam)`, `Medprompt` produces a 9 absolute point gain in accuracy, surpassing 90% for the first time on this benchmark.
 
 - As part of the investigation, we undertake a comprehensive ablation study that reveals the relative significance for the contributing components of `Medprompt`.
 
@@ -130,7 +119,6 @@ tags: [LLM]
 
 - This observation echoes other reports that GPT-4 has an emergent self-improving capability via introspection, such as self-verification [^9].
 
-
 - We note that the automated chain-of-thought reasoning removes dependency on special human expertise and medical datasets. Thus, despite the name `Medprompt`, extending from the framing context and research trajectory of the investigation of the capabilities of GPT-4 on medical challenge problems, the methodology doesn’t include any components specifically oriented towards medicine.
 
 - As we explore in Section 5.3, the approach can be applied readily to other domains.
@@ -139,71 +127,70 @@ tags: [LLM]
 
 ---
 
-
 ### 2 Background
 
 #### 2.1 Foundation Models on Medical Challenge Problems
 
-
 - In the era of first-generation foundation models, `limited model size and computational resources` made domain-specific pretraining advantageous.
 
-
 - Models such as PubMedBERT [^10], BioLinkBERT [^37], DRAGON [^36], BioGPT [^19], and BioMedLM [^2] were pretrained with self-supervised objectives using domain-specific data sources, such as the PubMed corpus and UMLS knowledge graph.
-
 
 - Despite their small size and limited computational power, these models demonstrate strong performance in biomedical NLP tasks. More powerful, general-domain foundation models have demonstrated significantly elevated performance in medical challenges without requiring domain-specific pretraining.
 
 - Several studies have explored the performance of generalist foundation models on medical challenge problems.
+
   - In [^17], ChatGPT-3.5 was evaluated on questions drawn from United States Medical Licensing Exam (USMLE), and performed at or near the passing threshold without any specialized training.
   - In [^23], GPT-4 was shown to exceed the USMLE passing score by over 20 points using simple 5-shot prompting. Other studies have explored the use of foundation models that are specially fine-tuned with medical knowledge.
 
 - Other studies have explored the power of relying on explicit tuning with medical knowledge.
+
   - `Med-PaLM` [^29] and `Med-PaLM 2` [^30] leverage fine-tuning of the 540B-parameter Flan-PaLM, using instruction prompt tuning.
   - With `Med-PaLM`, authors asked a panel of five clinicians to prepare their instruction prompt tuning dataset.
   - `Med-PaLM 2`, built similarly on PaLM 2, relied on instruction-following full fine-tuning and achieved the state-of-the-art performance on medical QA datasets.
 
 - We re-examine the capabilities of generalist foundation models without resorting to extensive fine-tuning. We explore diverse prompting strategies to best steer powerful generalist foundation models toward delivering strong performance in specialized domains.
 
-
 #### 2.2 Prompting Strategies
 
 > Prompting in the context of language models refers to the input given to a model to guide the output that it generates.
 
 - Empirical studies have shown that the performance of foundation models on a specific task can be heavily influenced by the prompt, often in surprising ways.
+
   - For example, recent work shows that model performance on the GSM8K benchmark dataset can vary by over 10% without any changes to the model’s learned parameters [^35].
 
 - Prompt engineering refers to the process of developing effective prompting techniques that enable foundation models to better solve specific tasks.
 
-
 briefly introduce a few key concepts that serve as building blocks for the `Medprompt` approach.
 
 - **In-Context Learning (ICL)** is a key capability of foundation models, allowing the models to solve new tasks from just a few task demonstrations [^3].
+
   - For example, an ICL prompt can be created by preceding a test question with several different examples of questions and desired results.
   - ICL does not require updating model parameters but can offer effects similar to fine-tuning.
   - The choice of examples used in few-shot prompting can substantially influence model performance.
   - In the prior investigation of the performance of GPT-4 on medical challenge problems [^23], we expressly limited prompting to basic in-context learning methods such as fixed one-shot and five-shot prompting to demonstrate the ease with which GPT-4 could be steered to perform with excellence.
 
 - **Chain of Thought (CoT)** is a prompting methodology that employs intermediate reasoning steps prior to introducing the sample answer [^34].
+
   - By breaking down complex problems into a series of smaller steps, CoT is thought to help a foundation model to generate a more accurate answer.
   - CoT ICL prompting integrates the intermediate reasoning steps of CoT directly into the few-shot demonstrations.
 
   - As an example, in the Med-PaLM work, a panel of clinicians was asked to craft CoT prompts tailored for complex medical challenge problems [^29]. Building on this work, we explore in this paper the possibility of moving beyond reliance on human specialist expertise to mechanisms for generating CoT demonstrations automatically using GPT-4 itself. As we shall describe in more detail, we can do this successfully by providing `[question, correct answer]` pairs from a training dataset.
   - We find that GPT-4 is capable of autonomously generating high-quality, detailed CoT prompts, even for the most complex medical challenges.
 
-
 **Ensembling**
+
 - Ensembling is a technique for combining the outputs of multiple model runs to arrive at a more robust or accurate result via combining the separate outputs with functions like averaging, consensus, or majority vote.
 - Ensembling methods employing a technique referred to as self-consistency [^32] use a sampling method to produce multiple outputs that are then consolidated to identify a consensus output.
 - The diversity of the outputs can be controlled by shifting the “temperature” parameter in a model’s generation, where higher temperatures can be viewed as injecting greater amounts of randomness into the generation process.
 - By reordering or shuffling components of a few-shot prompt, ensembling techniques can also address the order sensitivity commonly found with foundation models [^26], [^39], thus improving robustness.
 
 - While ensembling 合奏 can enhance performance, it comes at the cost of increased computational demands.
+
   - For example:
   - `Med-PaLM 2`’s **Ensemble Refinement method** used 44 separate inferences for a single question.
 
 - Due to this computational overhead, we have pursued as a design principle `using simpler techniques to avoid excessive inference costs`.
-    - We report an ablation study in Section 5.2 which explores the potential of further increased performance under increased computational load.
-
+  - We report an ablation study in Section 5.2 which explores the potential of further increased performance under increased computational load.
 
 ### 3 Experimental Design
 
@@ -229,7 +216,6 @@ briefly introduce a few key concepts that serve as building blocks for the `Medp
 - We test the methodology on two nursing datasets focused on answering NCLEX (National Council Licensure Examinaton) questions and six additional datasets from MMLU covering topics like accounting and law.
 - Details of these datasets are presented in Section 5.3.
 
-
 #### 3.2 Sound Testing Methodology
 
 - While prompting and in-context learning does not change model parameters, a specific choice of prompting strategy can be viewed as a high-level setting or hyperparameter of the end-to-end testing process. As a result, we must be cautious about overfitting as part of training and testing, thus providing results that would not generalize out of the training and test sets under consideration.
@@ -248,12 +234,12 @@ briefly introduce a few key concepts that serve as building blocks for the `Medp
 ### 4 Power of Prompting: Exploration and Results
 
 - 3 major techniques employed in `Medprompt`:
+
   - Dynamic few-shot selection,
   - self-generated chain of thought,
   - and choice shuffle ensembling.
 
 - After discussing each technique, we review the approach to composing the three methods into the integrated `Medprompt`.
-
 
 #### 4.1 Dynamic Few-shot
 
@@ -269,6 +255,7 @@ briefly introduce a few key concepts that serve as building blocks for the `Medp
 - Even so, this approach cannot guarantee that the `curated, fixed few-shot examples` will be appropriately representative of every test example.
 
 - In comparison, when available, the `task training set` can serve as an `inexpensive, high-quality source for few-shot examples`.
+
   - If the training set is sufficiently large, we can select different few-shot examples for different task inputs.
 
 - We refer to this approach as employing **dynamic few-shot examples**.
@@ -276,6 +263,7 @@ briefly introduce a few key concepts that serve as building blocks for the `Medp
 - The method identify examples based on their similarity to the case at hand [^18].
 
 - For `Medprompt`, we did the following to identify representative few shot examples:
+
   - Given a test example, we choose `k training examples` that are semantically similar using a `k-NN clustering` in the embedding space.
   - Specifically, we first use `text-embedding-ada-002*` to embed training questions and test questions as **vector representations**.
   - Then, for each test question x, we retrieve its nearest k neighbors x1, x2, ..., xk from the training set (according to distance in the embedding space of `text-embedding-ada-002`).
@@ -284,13 +272,12 @@ briefly introduce a few key concepts that serve as building blocks for the `Medp
 
 - https://openai.com/blog/new-and-improved-embedding-model
 
-
 #### 4.2 Self-Generated Chain of Thought
-
 
 ![Screenshot 2024-01-29 at 22.03.32](/assets/img/Screenshot%202024-01-29%20at%2022.03.32.png)
 
 Figure 2:
+
 - Comparison of expert-crafted and GPT-4-generated chain-of-thought (CoT) prompts.
 - Using a `[question, correct answer]` pair from a training set, GPT-4 is capable of generating a detailed explanation suitable for use in few-shot CoT demonstrations.
 
@@ -323,11 +310,10 @@ Figure 2:
 
 - recent works [^35], [^7] also find that foundation models write better prompts than experts do.
 
-
-
 #### 4.3 Choice Shuffling Ensemble
 
 - While less severe than other foundation models, GPT-4 can exhibit a propensity to favor certain options in multiple choice answers over others (regardless of the option content)
+
   - the model can show position bias [^1], [^16], [^40].
 
 - To reduce this bias, we propose `shuffling the choices` and then checking `consistency of the answers for the different sort orders of the multiple choice`.
@@ -335,6 +321,7 @@ Figure 2:
 - As a result, we perform choice shuffle and self-consistency prompting.
 
 - Self-consistency [^32] replaces the naive single-path or greedy decoding with a diverse set of reasoning paths when prompted multiple times at some `temperature>0`
+
   - setting that introduces a degree of randomness in generations.
 
 - With choice shuffling, we shuffle the relative order of the answer choices before generating each reasoning path. We then select the most consistent answer, i.e., the one that is least sensitive to choice shuffling.
@@ -344,16 +331,14 @@ Figure 2:
 - We also apply this technique in generating intermediate CoT steps for training examples.
 - For each example, we shuffle the choices some number of times and generate a CoT for each variant. We only keep the examples with the correct answer.
 
-
-
 #### 4.4 Putting it all together: `Medprompt`
 
 ![Screenshot 2024-01-29 at 22.18.37](/assets/img/Screenshot%202024-01-29%20at%2022.18.37.png)
 
-
 - `Medprompt` combines intelligent few-shot exemplar selection, self-generated chain of thought steps, and a majority vote ensemble respectively.
 - The composition of these methods yields a general purpose prompt-engineering strategy.
 - A visual depiction of the performance of the `Medprompt` strategy on the `MedQA` benchmark, with the additive contributions of each component, is displayed in Figure 4.
+
   - We provide an a corresponding algorithmic description in Algorithm 1.
   - Visual illustration of `Medprompt` components and additive contributions to performance on the `MedQA` benchmark.
   - The prompting strategy combines `kNN-based few-shot example selection`, `GPT-4–generated chain-of-thought prompting`, and `answer-choice shuffled ensembling`
@@ -364,6 +349,7 @@ Figure 2:
 ![Screenshot 2024-01-29 at 22.24.14](/assets/img/Screenshot%202024-01-29%20at%2022.24.14.png)
 
 - **preprocessing**:
+
   - each question in the training dataset is passed through a lightweight embedding model to generate an embedding vector (Line 4 in Algorithm 1).
   - We employed OpenAI’s text-embedding-ada-002 to create an embedding.
   - For each question, GPT-4 is harnessed to create a chain of thought and a prediction of the final answer (Line 5).
@@ -371,15 +357,16 @@ Figure 2:
   - Otherwise, we discard the question entirely from the retrieval pool, with the assumption that we cannot trust the reasoning if the model ultimately arrives at the wrong final answer (Lines 6-7).
 
 - **inference**:
+
   - given a test question, we reembed the test sample with the same embedding model used during pre-processing, and utilize kNN to retrieve similar examples from the preprocessed pool (Lines 12-13). These examples, and their corresponding GPT-4 generated reasoning chains, are structured as context for GPT-4 (Line 14). The test question and corresponding answer choices are then appended at the end, which serves as the final prompt (Line 17). The model, following the few shot exemplars, then outputs a chain of thought and a candidate answer. Finally, we perform an ensembling process consisting of repeating the steps described above multiple times. We increase diversity by shuffling the answer choices of the test question (Lines 15-16), as detailed in Section 4.3 and Figure 4. To determine the final predicted answer, we select the most frequent answer (Line 20).
 
 - The `Medprompt` results we report here are configured to use 5 kNN selected few shot exemplars and 5 parallel API calls as part of the choice-shuffle ensemble procedure, which we find strikes a reasonable balance between minimizing inference cost and maximizing accuracy.
 
 - Our ablation studies suggest that further improvements may be achieved by increasing these hyperparameter values.
+
   - For example, by increasing to 20 few-shot exemplars and 11 ensemble items, we achieve a further +0.4% performance on MedQA, setting a new state-of-the-art performance threshold of 90.6%.
 
 - We note that, while `Medprompt` achieves record performance on medical benchmark datasets, the algorithm is general purpose and is not restricted to the medical domain or to multiple choice question answering. We believe the general paradigm of combining intelligent few-shot exemplar selection, self-generated chain of thought reasoning steps, and majority vote ensembling can be broadly applied to other problem domains, including less constrained problem solving tasks (see Section 5.3 for details on how this framework can be extended beyond multiple choice questions).
-
 
 ### 5 Results
 
@@ -402,8 +389,6 @@ Figure 2:
 - GPT-4 with `Medprompt` achieved an average performance of 90.6% on the eyes-on data, and an average performance of 91.3% on the eyes-off data, suggesting that the prompt engineering process likely did not lead to overfitting on `MultiMedQA` datasets.
 - As additional evidence, the performance on eyes-off data was better in 6/9 of the benchmark datasets (Figure 5).
 
-
-
 #### 5.2 Insights about `Medprompt` Components via Ablation Studies
 
 ![Screenshot 2024-01-29 at 22.30.43](/assets/img/Screenshot%202024-01-29%20at%2022.30.43.png)
@@ -423,7 +408,6 @@ Figure 6: Identification of the relative contributions of different components o
 
 - The techniques we use are not statistically independent – therefore, the order in which we test the contribution of each method matters. Our choice of ordering for this ablation study is subjective and based on the relative complexity of the technique introduced. A more theoretically sound method for credit allocation in the ablation study would involve the calculation of game-theoretic Shapley values [^28], which takes exponentially more model evaluations to test every potential permutation of orderings. We leave this to future work and encourage readers to think of the specific numbers in the ablation studies as reasonable approximations of relative contributions.
 
-
 ![Screenshot 2024-01-29 at 22.32.41](/assets/img/Screenshot%202024-01-29%20at%2022.32.41.png)
 
 - Table 2: Ablation study on expert-crafted chain-of-thought (CoT) vs. GPT-4 self-generated CoT. Both use fixed 5-shot examples, with no ensemble.
@@ -431,8 +415,6 @@ Figure 6: Identification of the relative contributions of different components o
 - Apart from the stack of incremental changes, we compare the expert-crafted chain-of-thought (CoT) prompt used in `Med-PaLM 2` [^30] with the CoT prompt automatically generated by GPT-4 (Section 4.2). We evaluate GPT-4 using both prompts, with fixed 5-shot examples, no ensemble.
 
 - Table 2 reports their accuracy on the `MedQA` dataset. GPT-4’s self-generated CoT outperforms the expert-crafted one by 3.1 absolute points. We notice that compared with the expert-crafted CoT used in `Med-PaLM 2`, CoT rationales generated by GPT-4 are longer and provide finer-grained step-by-step reasoning logic. One potential explanation is that GPT-4 generated CoT may be better suited to the model’s own strengths and limitations, which could lead to improved performance when compared to the expert-crafted one. Another potential explanation is that expert-crafted CoT may contain implicit biases or assumptions that may not hold for all questions in the `MedQA` dataset, whereas GPT-4 generated CoT may be more neutral and generalizable across different questions.
-
-
 
 #### 5.3 Generalization: Cross-Domain Exploration of `Medprompt`
 
@@ -447,12 +429,12 @@ Figure 6: Identification of the relative contributions of different components o
 ![Screenshot 2024-01-29 at 22.34.43](/assets/img/Screenshot%202024-01-29%20at%2022.34.43.png)
 
 Figure 7:
+
 - GPT-4 performance with three different prompting strategies on out of domain datasets.
 - Zero-shot and five-shot approaches represent baselines and mirror the methodology followed in [^23].
 
 - Figure 7 shows GPT-4’s performance on these diverse, out of domain dataset with `Medprompt` alongside zero-shot and five-shot prompts (with random exemplar selection).
 - Across these datasets, `Medprompt` provides an average improvement of +7.3% over baseline zero-shot prompting. By comparison, `Medprompt` provided a +7.1% improvement over the same zero-shot baseline on the `MultiMedQA` datasets studied in this paper. We emphasize that the similarity of improvement across datasets from different distributions demonstrates the generality of the `Medprompt` approach. While beyond the scope of this paper, we believe the general framework underlying MedPrompt—a combination of few shot learning and chain-of-thought reasoning wrapped in an ensemble layer—can further generalize in applicability beyond the multiple choice question/answer setting with minor algorithmic modifications. For example, in an open-text generation setting, the ensemble layer may not be able to rely on a direct majority vote, but instead may aggregate by selecting the answer closest to all other answers in an embedding space. Another option would be to concatenate each of the K generated pieces of text in a structured format and ask the model to select the most likely option, in the style of Ensemble Refinement [^30]. We leave as future work exploration of the space of algorithmic modifications to other settings.
-
 
 ---
 
