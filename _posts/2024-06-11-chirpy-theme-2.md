@@ -3,7 +3,7 @@ title: Jekyll Chirpy Theme (2)
 author: Leesh
 categories: [jekyll, chirpy] 
 tags: [jekyll, chirpy, github-blog, github, blog]
-date: '2024-06-11 16:00:00 +0900'
+date: '2024-06-11 14:00:00 +0900'
 ---
 ## 아바타 이미지 설정
 
@@ -17,7 +17,7 @@ date: '2024-06-11 16:00:00 +0900'
 
 ---
 > `_sass/colors/typography-dark.scss` 에서 아래의 내용으로 수정\
-> 사이트 전체 컬러가 dark로 타이틀 색상을 화이트로 수정
+> 사이트 전체 컬러가 dark라서 잘 보이도록, 타이틀 색상을 화이트로 수정
 
 ```css
   /* Sidebar */
