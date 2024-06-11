@@ -1,5 +1,5 @@
 ---
-title: Jekyll Chirpy Theme
+title: Jekyll Chirpy Theme (1)
 author: Leesh
 categories: [jekyll, chirpy] 
 tags: [jekyll, chirpy, github-blog, github, blog]
@@ -26,7 +26,7 @@ Skill : shell, git 명령을 기본적으로 다룰 줄 알아야 합니다.
 ## chirpy theme fork
 
 ---
-* [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 에서 fork
+* [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy){:target="_blank"} 에서 fork
 * Create a new fork -> Repository Name 입력 `(<github id>.hithub.io)`
 
 ### Github 저장소 환경 설정 (1)
@@ -87,7 +87,9 @@ Leesh:
 ## 포스팅 테스트
 
 ---
-> `_posts/yyyy-mm-dd-제목.md`{: .filepath} 의 형식으로 파일을 생성해야 페이지를 볼 수 있습니다.
+> `_posts/yyyy-mm-dd-제목.md` 의 형식으로 파일을 작성해야 페이지를 볼 수 있습니다.\
+> 테스트 페이지 생성하고, git 저장소에 push 까지 완료한 후,\
+> 브라우저에서 Site 주소로 접근하여 생성한 테스트 페이지 확인, https://grergea.github.io/
 
 ```yaml
 ---
@@ -102,6 +104,8 @@ date: '2024-06-10 16:00:00 +0900'
 * 내용..
 
 ```
+
+
 
 ## 참고
 
