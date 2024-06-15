@@ -5,7 +5,7 @@
   "prettier.trailingComma": "none",
   // Shopify Liquid
   "files.associations": {
-    "*.html": "liquid"
+    "*.html": "html"
   },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
@@ -39,5 +39,11 @@
   },
   "[mojo]": {
     "editor.defaultFormatter": "modular-mojotools.vscode-mojo"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }

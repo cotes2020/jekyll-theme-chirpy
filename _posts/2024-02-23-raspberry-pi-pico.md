@@ -5,7 +5,7 @@ date: 2024-02-23 12:00:00 +0800
 categories: [Software Engineering]
 tags: [raspberry pi, micropython]
 image:
-  path: /assets/img/pico.png
+  path: /assets/img/custom/pico.png
   alt: Stock Image of a Raspberry Pi Pico W (image credit Amazon)
 ---
 Tips & Tricks I learned along the way for using Micropython with a [Raspberry Pi Pico W](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html) (Pico). This is a 0 to 1 post for starting a project on the Pico. The particular use case is not as important (for me, this was [controlling model train layouts](https://github.com/jakee417/Pico-Train-Switching/tree/main)), as this approach is valid for a **wide range of IoT projects**.

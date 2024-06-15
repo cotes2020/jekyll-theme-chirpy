@@ -7,7 +7,7 @@ tags: [statistics, physics, hamiltonian mechanics, hmc]
 math: true
 mermaid: true
 image:
-  path: /assets/img/hamiltonian.png
+  path: /assets/img/custom/hamiltonian.png
   alt: Reversibility, Conservation, & Volume Preservation
 ---
 In this post, I discuss the physics behind Hamiltonian Monte Carlo (HMC), Hamiltonian Mechanics.
@@ -50,9 +50,9 @@ There are some practical considerations like using the leapfrog integrator and c
 
 And if you don't believe me, then check out [this hw assignment](https://github.com/jakee417/Stats271/blob/main/assignments/hw3/hw3_taylor.ipynb) that I completed as part of Stanford's Stats 271 course. HMC gives similar estimates as MCMC, but with a much higher [effective sample size](https://mc-stan.org/docs/2_18/reference-manual/effective-sample-size-section.html) (ESS):
 
-HMC Posterior Trace | HMC Posterior Histogram
-- | -
-![Trace Plot](assets/img/hmc0.png) | ![Histogram](assets/img/hmc1.png)
+| HMC Posterior Trace                | HMC Posterior Histogram           |
+| ---------------------------------- | --------------------------------- |
+| ![Trace Plot](assets/img/custom/hmc0.png) | ![Histogram](assets/img/custom/hmc1.png) |
 
 ## Hamiltonian Mechanics
 While taking Stats 271, I didn't have time to look too deeply into the physics formulation. But, building off my [recent post about Lagrangian Mechanics](https://jakee417.github.io/posts/least-action-least-squares/), I now have the proper groundwork to understand Hamiltonian Mechanics.
@@ -292,18 +292,18 @@ Now we can go back to the HMC example from my Stats271 class, and try to visuali
 
 ### Conservation
 For conservation, we can view the value of the Hamiltonian after each iteration's leapfrog step:
-{% include hamiltonian_value.html %}
+{% include html/hamiltonian_value.html %}
 
 ### Phase Space
 To visualize the $(p, q)$ phase space, we need two separate plots since the entire vector in this example is $[q_1, q_2, p_1, p_2]$. Normally, in a HMC trace plot, you only show the *last* $(p, q)$ state after the leapfrog integrator and acceptance step have been taken. Instead, I logged the trace of each iteration's leapfrog steps, to show the dynamics of each individual iteration. The height of each sample is equal to $\exp{-H(p, q)}$ which converts the energy function to a probability. I also show the (scaled) kde of the frequency of $(p, q)$, to help see the marginal density of this stepping process.
 
 $(p_1, q_1)$
 : 
-{% include hamiltonian_0.html %}
+{% include html/hamiltonian_0.html %}
 
 $(p_2, q_2)$
 : 
-{% include hamiltonian_1.html %}
+{% include html/hamiltonian_1.html %}
 
 Plot Summary
 : 

@@ -7,7 +7,7 @@ tags: [physics]
 math: true
 mermaid: true
 image:
-  path: /assets/img/ising.png
+  path: /assets/img/custom/ising.png
   alt: Undirected Graphical Model of Ising Model
 ---
 A post about the theory of the [Ising Model](https://en.wikipedia.org/wiki/Ising_model).

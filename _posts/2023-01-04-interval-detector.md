@@ -7,7 +7,7 @@ tags: [statistics, machine learning]
 math: true
 mermaid: true
 image:
-  path: /assets/img/interval_detector.png
+  path: /assets/img/custom/interval_detector.png
   alt: Single Detection and Multiple Detections forming an Interval.
 ---
 You have a statistical detector capable of raising alerts on time series data (i.e. number of crashes in an hour or average bandwidth for a fleet of servers) and received a question from the engineering team:
@@ -280,7 +280,7 @@ $$
 
 We can then compute the updating equation of $$\eqref{eqn:generic_recursion_independence}$$ with numerical methods like [this](https://www.jstor.org/stable/1390838) one.
 
-<img src="assets/img/kernels.png" alt="Different kernels" />
+<img src="assets/img/custom/kernels.png" alt="Different kernels" />
 
 The picture above demonstrates how the choice of $\rho$ impacts $FWER(\alpha)$ in the simple setting of $d=2$ and $T=10$. Specifically, setting $\rho = 0$ will revert $$\eqref{eqn:generic_recursion_independence}$$ back to the full independence case of $$\eqref{eqn:independent_recursion}$$, $$\rho > 0$$ will give more conservative corrections than $$\rho = 0$$, but less stringent than the Bonferroni correction. 
 

@@ -7,9 +7,9 @@ tags: [statistics, probabilistic graphical models, undirected graphical models]
 math: true
 mermaid: true
 image:
-  path: /assets/img/ugm.png
+  path: /assets/img/custom/ugm.png
   alt: Converting a tabular dataset into a graphical model
 ---
 A post about modeling tabular datasets using Undirected Graphical Models with a python package called [pgmpy](https://github.com/pgmpy/pgmpy).
 
-{% include tabular.md %}
+{% include markdown/tabular.md %}

@@ -7,13 +7,13 @@ tags: [statistics, physics, least squares, least action]
 math: true
 mermaid: true
 image:
-  path: /assets/img/least_squares_action.png
+  path: /assets/img/custom/least_squares_action.png
   alt: Least Action (Top) vs. Least Squares (Bottom)
 ---
 In this post I want to describe two methods that both use the word "Least" to describe them. Both of these concepts are foundational in their respective field (physics and statistics), and I find it interesting to compare/contrast their formulation.
 
 ## Path Minimization
-![Path Minimization](assets/img/path_minimization.png)
+![Path Minimization](assets/img/custom/path_minimization.png)
 We start with a path. A path consists of $(x, y(x))$ points in space. When we vary $x + \delta x$, we can move to the corresponding $y$ coordinate along the step defined by $y'(x) = \frac{dy}{dx}$. We can encode this entire relation inside a *functional*:
 
 $$
@@ -137,7 +137,7 @@ Another property of the Lagrangian is that $\frac{\partial L}{\partial \dot q}$ 
 {: .prompt-info }
 
 ## KL Divergence Minimization
-![KL Divergence Minimization](assets/img/kl_minimization.png)
+![KL Divergence Minimization](assets/img/custom/kl_minimization.png)
 Now, lets switch tracks. Instead of a path between two points, lets abstract the discussion to two probability distributions. Our goal is now to find the smallest distance between two probability distributions. Instead of taking a path integral like before, we will use tools from Information Theory to define a notion of "distance":
 - *Entropy* - best possible long term average bits per message (optimal) that can be achieved under a symbol distribution $P(X)$ by using an encoding scheme (possibly unknown) specifically designed for $P(X)$.
 
@@ -181,7 +181,7 @@ $$
 I remember from [CS229 PS3](https://cs229.stanford.edu/summer2020/ps3.pdf), there was a problem asking us to prove that minimizing the KL Divergence between a parameterized distribution $$P_\theta$$ (i.e. Normal, Bernoulli, Binomial etc.) and the empirical distribution of the population $$\hat P$$, this is equivalent with maximizing likelihood estimate for $$\theta$$. We are looking for single expression that, when satisfied, is equivalent with minimizing the KL divergence between two distributions:
 
 <details><summary>CS 229 Problem Set 3 2.C</summary>
-<IMG src="assets/img/PS3.png"  alt="CS 229 Problem Set 3 2.C"/>
+<IMG src="assets/img/custom/PS3.png"  alt="CS 229 Problem Set 3 2.C"/>
 </details>
 
 First, lets define the empirical distribution:
