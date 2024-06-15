@@ -1,29 +1,10 @@
----
-layout: compress
-permalink: /:basename.min.js
-# PWA service worker
----
+import { baseurl } from '../../_config.yml';
 
-const swconfUrl = '{{ '/assets/js/data/swconf.js' | relative_url }}';
+importScripts(`${baseurl}/assets/js/data/swconf.js`);
 
-importScripts(swconfUrl);
 const purge = swconf.purge;
 
-function verifyHost(url) {
-  for (const host of swconf.allowHosts) {
-    const regex = RegExp(`^http(s)?://${host}/`);
-    if (regex.test(url)) {
-      return true;
-    }
-  }
-  return false;
-}
-
 function verifyUrl(url) {
-  if (!verifyHost(url)) {
-    return false;
-  }
-
   const requestPath = new URL(url).pathname;
 
   for (const path of swconf.denyPaths) {
@@ -32,10 +13,6 @@ function verifyUrl(url) {
     }
   }
   return true;
-}
-
-if (!purge) {
-  swconf.allowHosts.push(location.host);
 }
 
 self.addEventListener('install', (event) => {
@@ -75,6 +52,10 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.headers.has('range')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
@@ -88,7 +69,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        {% comment %}See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>{% endcomment %}
+        // See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
         let responseToCache = response.clone();
 
         caches.open(swconf.cacheName).then((cache) => {

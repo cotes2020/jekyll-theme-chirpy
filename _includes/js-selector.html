@@ -2,12 +2,7 @@
 
 <!-- commons -->
 
-{% assign urls = site.data.origin[type].jquery.js
-  | append: ','
-  | append: site.data.origin[type].bootstrap.js
-  | append: ','
-  | append: site.data.origin[type].search.js
-%}
+{% assign urls = site.data.origin[type].search.js %}
 
 <!-- layout specified -->
 
@@ -20,7 +15,7 @@
     <!-- image lazy-loading & popup & clipboard -->
     {% assign urls = urls
       | append: ','
-      | append: site.data.origin[type]['magnific-popup'].js
+      | append: site.data.origin[type].glightbox.js
       | append: ','
       | append: site.data.origin[type].clipboard.js
     %}
@@ -68,29 +63,11 @@
 {% endcase %}
 
 {% capture script %}{{ js_dist }}{{ js }}.min.js{% endcapture %}
-<script defer src="{{ script | relative_url }}"></script>
+<script src="{{ script | relative_url }}"></script>
 
 {% if page.math %}
   <!-- MathJax -->
-  <script>
-    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
-    MathJax = {
-      tex: {
-        /* start/end delimiter pairs for in-line math */
-        inlineMath: [
-          ['$', '$'],
-          ['\\(', '\\)']
-        ],
-        /* start/end delimiter pairs for display math */
-        displayMath: [
-          ['$$', '$$'],
-          ['\\[', '\\]']
-        ],
-        /* equation numbering */
-        tags: 'ams'
-      }
-    };
-  </script>
+  <script src="{{ '/assets/js/data/mathjax.js' | relative_url }}"></script>
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
 {% endif %}
@@ -107,6 +84,10 @@
         {% endif %}
     {% endcase %}
   {% endif %}
+{% endif %}
+
+{% if page.mermaid %}
+  {% include mermaid.html %}
 {% endif %}
 
 {% if jekyll.environment == 'production' %}
