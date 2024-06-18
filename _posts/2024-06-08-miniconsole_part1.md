@@ -6,13 +6,11 @@ categories: [Embedded, Retro handheld]
 tags: [ble, reverse, st]     # TAG names should always be lowercase
 ---
 
-I was brainstorming for a project idea to test my just bought NUCLEO-WB55 evaluation board and its BLE features when my eyes landed on my Xbox controller lying on my desk. This controller can connect remotely to a device via a proprietary 5 GHz protocol requiring a USB adapter or by the famous and standardized protocol : BLE (Bluetooth Low Energy). 
+I was brainstorming for a project idea to test my just bought NUCLEO-WB55 evaluation board and its BLE features when my eyes landed on my Xbox controller lying on my desk. This controller can connect remotely to a device via a proprietary 5 GHz protocol requiring a USB adapter or by the famous wireless and standardized protocol : BLE (Bluetooth Low Energy). 
 
-Even if now I have decided with what my new ST microcontroller is going to connect, I still don’t know what purpose it will serve...
+By continuing my productive brainstorming session, I remembered having a small unused OLED display screen in my stock, originally bought for my Bus Tracker project. I thought it could be a nice occasion to also test this screen.
 
-By continuing my productive brainstorming session, I remembered having a small unused OLED display screen in my stock, originally bought for my Bus Timer project. I thought it could be a nice occasion to also test this screen.
-
-> If you want to learn more about my **Bus Timer** project, you can read more about it [here]({% post_url 2023-02-10-bustracker %}).
+> If you want to learn more about my **Bus Tracker** project, you can read more about it [here]({% post_url 2023-02-10-bustracker %}).
 {: .prompt-tip }
 
 To resume I have : 
