@@ -94,6 +94,14 @@
       {% endif %}
     {% endfor %}
   </div>
+
+      
+    <div class="sidebar-bottom d-flex flex-wrap  align-items-center justify-content-center w-100">
+      {% for tongue in site.languages %}
+        <a style="text-transform:uppercase;{% if tongue == site.active_lang %}font-weight: bold;{% endif %}" {% static_href %}href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"{% endstatic_href %} >{{ tongue }}</a>{%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%- endif -%}
+      {% endfor %}
+    </div>
+    
   <!-- .sidebar-bottom -->
 </aside>
 <!-- #sidebar -->
