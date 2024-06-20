@@ -2,6 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+lang: en
 ---
 
 My name is Nicolas BESNARD, and I'm a young and passionate embedded software engineer. I graduated in 2022 in embedded system and since worked in automotive and currently on an open-source and embedded operating system (prplOS) for network devices. I'm constantly looking for new projects to start (and I hope I will finish...) or new skills and technologies to learn. 

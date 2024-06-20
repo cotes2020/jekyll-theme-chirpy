@@ -5,12 +5,13 @@ date: 2023-02-10
 categories: [Embedded]
 media_subpath: /assets/img/posts/bustracker
 tags: [arduino, esp, network]     # TAG names should always be lowercase
+lang: en
 ---
 
 > The project was realized years before the redaction of this post, so the explanations might be less in-depth.
 {: .prompt-info }
 
-The idea behind this project came from my regular use of public transport to get to work. Since I lived near my job, I only needed to take a 5-minute ride to go to work every day. However, like most of the transport in Toulouse, the bus has this annoying habit of either being late or in advance but rarely on time.
+The idea behind this project came from my regular use of public transport to get to work. Since I lived near my job, I only needed to take a 5-minute ride to go to work every day. However, the bus had this annoying habit of either being late or in advance but rarely on time.
 
 So to never arrive late or wait too long for the bus, I had no choice but to use the Tisseo (Toulouse's public transport company) application to have a real-time update of the next bus passage.
 
@@ -18,7 +19,8 @@ Always having to look at my phone in the morning to know when I need to go to wo
 
 That's why I wanted a display showing when the next bus is coming, exactly like the one often at a bus stop.
 
-TODO Photo afficheur 
+![Real-time stop information display](bustracker_example.jpg){: w="400" h="150"}
+_Real-time stop information display_
 
 It had to be smaller to fit my apartment and my budget, but I can also add some extra functionalities!
 
@@ -140,7 +142,7 @@ I separated each functionality in its class to improve the code readability :
 
 Each class exposes an initialization function called during setup and a tick function (updating internal state) called from the main loop. 
 
-The code is available on my Github here :  [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main)
+The code is available on my Github here : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main)
 
 ## Building a prototype
 Connecting the peripherals to the ESP was straightforward :
