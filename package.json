@@ -8,6 +8,7 @@
   },
   "author": "Cotes Chung",
   "license": "MIT",
+  "since": 2019,
   "bugs": {
     "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
   },
@@ -19,16 +20,17 @@
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
-    "test": "npm run lint:scss"
+    "test": "npm run lint:scss",
+    "prepare": "husky"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.5",
-    "@babel/plugin-transform-class-properties": "^7.24.1",
-    "@babel/preset-env": "^7.24.5",
+    "@babel/core": "^7.24.6",
+    "@babel/plugin-transform-class-properties": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@rollup/plugin-babel": "^6.0.4",
@@ -39,13 +41,12 @@
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "concurrently": "^8.2.2",
-    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
     "husky": "^9.0.11",
     "purgecss": "^6.0.0",
-    "rollup": "^4.17.2",
-    "rollup-plugin-license": "^3.3.1",
-    "semantic-release": "^23.1.1",
-    "stylelint": "^16.5.0",
+    "rollup": "^4.18.0",
+    "semantic-release": "^24.0.0",
+    "stylelint": "^16.6.1",
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "prettier": {
@@ -156,8 +157,8 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "bash tools/release --prepare",
-          "publishCmd": "bash tools/release"
+          "prepareCmd": "bash tools/release.sh --prepare",
+          "publishCmd": "bash tools/release.sh"
         }
       ],
       [
