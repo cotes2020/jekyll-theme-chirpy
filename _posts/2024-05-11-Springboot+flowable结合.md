@@ -1,6 +1,7 @@
 ---
 title: Spring boot flowable Demo
 categories: [Java]
+tags: [Spring Boot,Flowable]
 date: 2024-05-11
 update: 2024-05-28
 ---
