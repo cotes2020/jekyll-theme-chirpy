@@ -2,7 +2,7 @@
 title: "Retro handheld II : Connecting an Xbox controller to a STM32 microcontroller"
 date: 2024-06-09
 categories: [Embedded, Retro handheld]
-tags: [ble, reverse, st]     # TAG names should always be lowercase
+tags: [ble, reverse, st, C]     # TAG names should always be lowercase
 lang: en
 ---
 

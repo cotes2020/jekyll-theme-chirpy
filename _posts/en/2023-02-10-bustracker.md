@@ -4,11 +4,11 @@ description: "A ESP32 and a TFT screen to never be late again."
 date: 2023-02-10
 categories: [Embedded]
 media_subpath: /assets/img/posts/bustracker
-tags: [arduino, esp, network]     # TAG names should always be lowercase
+tags: [arduino, esp, network, C]     # TAG names should always be lowercase
 lang: en
 ---
 
-> The project was realized years before the redaction of this post, so the explanations might be less in-depth.
+> The project was realized years before the redaction of this post, so it may lack details and in-depth explanation.
 {: .prompt-info }
 
 The idea behind this project came from my regular use of public transport to get to work. Since I lived near my job, I only needed to take a 5-minute ride to go to work every day. However, the bus had this annoying habit of either being late or in advance but rarely on time.
@@ -19,8 +19,8 @@ Always having to look at my phone in the morning to know when I need to go to wo
 
 That's why I wanted a display showing when the next bus is coming, exactly like the one often at a bus stop.
 
-![Real-time stop information display](bustracker_example.jpg){: w="400" h="150"}
-_Real-time stop information display_
+![Bus real-time information display](bustracker_example.jpg){: w="400" h="150"}
+_Bus real-time information display_
 
 It had to be smaller to fit my apartment and my budget, but I can also add some extra functionalities!
 
@@ -103,7 +103,7 @@ My choice of a microcontroller for this project was based on two criteria :
 - Having an easy framework to use to get a prototype up and running quickly
 
 The ESP32/ESP8266 meets all the criteria with its built-in WIFI functionality and Arduino framework. 
-Also, I already had a lot of WEMOS D1 Mini Pro boards (ESP8266) bought in bulk in the past, so it was time to use them.
+Also, I already some WEMOS D1 Mini Pro boards (ESP8266) bought in bulk in the past, so it was time to use them.
 
 ![ESP32](bustracker_WEMOSD1.jpg){: w="150" h="50"}
 _ESP32_
@@ -131,8 +131,7 @@ _Rotary encoder button_
 I thought another nice functionality, will be to play a small ringtone when it is time to go to work. So I also added a piezo speaker to my shopping list.
 
 ## Writing the code
-As I said previously, the goal of this project was to have a working prototype quickly and a lot of Arduino library was already available for the screen and the rotary encoder.
-That's why I chose to develop the ESP32 software with the Arduino framework.
+As I said previously, the goal of this project was to have a working prototype quickly. Because a lot of Arduino library was already available for the screen and the rotary encoder, I chose to develop the ESP32 software with the Arduino framework.
 
 I separated each functionality in its class to improve the code readability :
 - **Controller** : Decode signal from the rotary encoder and create callback for user events (button pressed, rotated, ...).
@@ -142,7 +141,7 @@ I separated each functionality in its class to improve the code readability :
 
 Each class exposes an initialization function called during setup and a tick function (updating internal state) called from the main loop. 
 
-The code is available on my Github here : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main)
+The code is available on Github here : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main)
 
 ## Building a prototype
 Connecting the peripherals to the ESP was straightforward :

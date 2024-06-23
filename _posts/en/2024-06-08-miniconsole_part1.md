@@ -3,7 +3,7 @@ title: "Retro handheld I : A minimalist game console"
 description: "A STM32 board equiped with a mini OLED screen and a Xbox Controller to recreate some old memories..."
 date: 2024-06-08
 categories: [Embedded, Retro handheld]
-tags: [ble, reverse, st]     # TAG names should always be lowercase
+tags: [ble, reverse, st, C]     # TAG names should always be lowercase
 lang: en
 ---
 
@@ -19,8 +19,8 @@ To resume I have :
 - a mini-OLED screen 
 - a ST development board waiting to be flashed with its next software
 
-I was just missing an idea of what the real objective of this project could be, until the moment I had a flashback by looking at my little OLED screen. It reminded me of
-the mini handheld game console which was popular when I was a child. The cheap electronics toy which was sometimes given away at McDonald with just one or two buttons, a bad monochrome screen and a battery lasting only a few days. But it didn't matter because you got already bored by it before coming back from the restaurant. 
+I was just missing an idea of what the final objective of this project could be, until the moment I had a flashback by looking at my little OLED screen. It reminded me of
+the mini handheld game console which was popular when I was a child. It was a cheap electronics toy, which was sometimes given away at McDonald, with just one or two buttons, a bad monochrome screen and a battery lasting only a few days.
 
 Now the goal of my next project was clear : create a similar handheld game console based on a STM32 microcontroller but with a nice colorful screen and playable with a wireless Xbox Controller !
 
