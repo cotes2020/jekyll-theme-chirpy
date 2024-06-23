@@ -1,0 +1,315 @@
+---
+title: Measuring Space & Invariants
+author: jake
+date: 2024-06-14 12:00:00 +0800
+categories: [Physics]
+tags: [theoretical minimum, statistics, physics, math, distance, linear algebra]
+math: true
+mermaid: true
+image:
+  path: /assets/img/custom/measuring-space.png
+  alt: Measuring space, stars, and the light within
+---
+
+This post covers different types of distances and their invariant properties. This includes:
+- Euclidean distance
+- Mahalanobis distance
+- Spacetime interval
+
+## Cartesian Coordinates
+To motivate invariant quantities, let's consider rotating the cartesian coordinate frame by a rotation matrix $R$:
+
+$$
+\begin{equation}
+    R = \begin{bmatrix}
+        \cos(\theta) & -\sin(\theta) \\
+        \sin(\theta) & \cos(\theta)
+    \end{bmatrix}
+\end{equation}
+$$
+
+Which looks like:
+
+{% include html/distances/euclidean_distance.html%}
+
+The rotational transformation assigns different $(x, y)$ values to the original point at $(1, 1)$. This leads to an ambiguity; does the system behave differently with this new assignment of points? **Invariant quantities** avoid such questions by measuring things that are *independent* of their frame of reference. With invariant quantities, we can develop theories that hold in *any reference frame*.
+
+### Euclidean Distance
+An example of an invariant quantity is the [euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) between two points $p_1=(x_1, y_1)$ and $p_2=(x_2, y_2)$:
+$$
+\begin{equation}
+d(p_1, p_2) = \sqrt{(p_2^{(x)} - p_1^{(x)})^2 + (p_2^{(y)} - p_1^{(y)})^2}
+\end{equation}
+$$
+Or, in vector notation:
+$$
+\begin{equation}
+d(\vec p_1, \vec p_2) = ||\vec p_2 - \vec p_1||
+\end{equation}
+$$
+
+We can visualize an $xy$ plane rotating underneath this distance calculation, and calculate the distance for each frame:
+{% include html/distances/square_rotation.html%}
+
+Despite the $xy$ plane rotating, the euclidean distance stays the same (up to floating point precision). The measurement is *invariant* under the rotational transformation. 
+
+For the $xy$ plane, the result is straightforward and intuitive. We can generalize this idea to [measuring quantities with respect to distributions](#coordinate-frames-relative-to-distributions) and [measuring quantities with respect to spacetime](#spacetime-coordinates).
+
+## Coordinate Frames Relative To Distributions
+Now instead of the $xy$ plane transforming underneath points, let's consider probability distributions moving beneath points. For example, let's say we are modeling the spatial distribution of stars in a (2D) galaxy. We may want to model a galaxy where stars can stretch uniformly:
+{% include html/distances/isotropic_distribution.html%}
+
+And another where stars on an ellipse can rotate:
+{% include html/distances/anti_isotropic_distribution.html%}
+
+We want a quantity that can measure distance *with respect to the distribution of stars*. That is:
+- If there are two points located on the opposite extremes of the galaxy, this should be a far distance. 
+- As the galaxy expands outwards, forcing two points to the center of the galaxy, the distance should update and become smaller. 
+
+[Euclidean distance](#euclidean-distance) *will not* meet this criteria because it will stay the same (independent) as the distribution transforms.
+
+### Mahalanobis Distance
+We can update our notion of distance to something called [Mahalanobis distance](https://en.wikipedia.org/wiki/Mahalanobis_distance):
+$$
+\begin{equation}
+d_M(\vec x, \vec y; \mathcal D) = \sqrt{(\vec x - \vec y)^TS^{-1}(\vec x - \vec y)}
+\end{equation}
+$$
+Where $S$ is a [positive-definite](https://en.wikipedia.org/wiki/Definite_matrix) [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix) from distribution $\mathcal D$. We can see that as the distribution transforms, the mahalanobis distance updates to reflect the change:
+{% include html/distances/isotropic_distribution_distance.html%}
+
+Since $S^{-1}$ decomposes as $S^{-1} = W^TW$ (by the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem)), then we can actually relate this back to euclidean distance:
+$$
+\begin{equation}
+d_M(\vec x, \vec y; \mathcal D) = ||W(\vec x - \vec y)||
+\end{equation}
+$$
+Which reveals why mahalanobis distance works; it measures the euclidean distance between two points with respect to the geometry of the distribution (as measured by $W$).
+
+### Whitening Transformation
+The [whitening transformation](https://en.wikipedia.org/wiki/Whitening_transformation) generalizes Mahalanobis distance to a random vector $X$:
+$$
+\begin{equation}
+Y = W X
+\end{equation}
+$$
+If $X \sim \mathcal D(\vec 0, S)$, then $Y \sim \mathcal D(\vec 0, I)$ where $I$ is the identity matrix. 
+
+The proofs starts with the definition of $Cov[Y]$:
+
+$$
+\begin{flalign*}
+Cov[Y] &= Cov[WX]\\
+&= W S W^T
+\end{flalign*}
+$$
+
+And shows that $W^T W = S^{-1}$ is sufficient for $Cov[Y] = I$:
+
+$$
+\begin{flalign*}
+W S W^T & = I \\
+\iff W S W^T W &= W \\
+\iff W^T W &= S^{-1}
+\end{flalign*}
+$$
+
+If we use the [eigendecomposition](https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix) of the positive-definite matrix $S = UDU^{T}$ and $W = D^{-1/2}U^{T}$ then its a direct equality:
+
+$$
+\begin{flalign*}
+Cov[Y] &= W S W^T \\
+&= (D^{-1/2}U^{T}) (UDU^T) (UD^{-1/2}) \\
+&= D^{-1/2} (U^TU)D(U^TU)D^{-1/2} \\
+&= D^{-1/2} D D^{-1/2} \\
+&= I
+\end{flalign*}
+$$
+
+Check out [this paper](https://arxiv.org/pdf/1512.00809) to see more choices of $W$. Instead of operating on just two points (like in Mahalanobis distance), we can sphere the entire space (meaning turn the space into a unit sphere) with respect to $W$ *and then* compute the euclidean distance:
+{% include html/distances/whitened_transformation.html%}
+
+After completing the whitening transformation, the resulting euclidean distance computations are invariant (and equal to $d_M$). Regardless of which distribution $\mathcal D$ we started from, $d_M$ is a scale-free measure of distance. This allows us to directly compare distances across distributions. 
+
+[Linear Discriminant Analysis (LDA)](https://en.wikipedia.org/wiki/Linear_discriminant_analysis) and [Gaussian Mixture Models (GMMs)](https://en.wikipedia.org/wiki/Mixture_model) use whitening to amortize repeated computations of expensive/high dimensional distance calculations with respect to [Multivariate Normal Distributions](https://en.wikipedia.org/wiki/Multivariate_normal_distribution). Other use cases are [anomaly detection](https://arxiv.org/abs/2003.00402) and [image processing](https://www.nature.com/articles/s42256-020-00265-z).
+
+### Whitening in Higher Dimensions
+Whitening doesn't need to be limited to only two dimensions and distance calculations. For example, we can whiten a three dimensional distribution and measure the invariant length of a ring:
+{% include html/distances/3d_whitened_transformation.html%}
+
+Transforming entire spaces (not just distances or rings) will be an important feature of the [next section](#spacetime-coordinates).
+
+## Spacetime Coordinates
+[Spacetime diagrams](https://en.wikipedia.org/wiki/Spacetime_diagram) are required knowledge for the next transformations. Using space as the $x$ axis, time as the $y$ axis, and the origin of the coordinate system placed directly on our noses; we can plot the movement of someone walking away from us with speed $v$. This will occur on the line $x = vt$ or $x - vt = 0$:
+{% include html/distances/moving_right.html%}
+
+> The line $x = ct$ representing the motion of light with speed $c$ is also included since it soon becomes relevant to the discussion. For all plots, we define the $x$ axis in light-seconds so that $x = ct$ yields [$c = 1$](https://en.wikipedia.org/wiki/Geometrized_unit_system) and appears as a 45º slope from the $x$ axis. As a consequence all velocities $v$ are expressed as a fraction of the speed of light, i.e. $v = 0.5$ is 1/2 the speed of light, unless I specifically added a $c^2$ term for important definitions.
+{: .prompt-warning }
+
+As time progresses, we would see their position become farther away from our nose. Due to the symmetry of this situation, we can repeat the same experiment for the other person (the one walking away). Except this time, we will call their axes $x'$ and $t'$ and put the origin of the $(x', t')$ coordinate system on their nose. Of course, from their perspective we will be moving in the opposite direction (negative) away from them:
+{% include html/distances/moving_left.html%}
+
+Since both $t$ and $t'$ refer to an absolute notion of time, we can say $t=t'$ for the moment.
+### Galilean Transformation
+Now we want to consider a transformation from the original coordinate frame $(x, t)$ to the moving coordinate frame $(x', t')$. This is known as the [Galilean transformation](https://en.wikipedia.org/wiki/Galilean_transformation). In vector notation this is given by:
+
+$$
+\begin{equation}
+    \begin{bmatrix}
+        x' \\
+        t'
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & -v \\
+        0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        t
+    \end{bmatrix}
+\end{equation}
+$$
+
+Which is another way to say $x' = x - vt$ and $t = t'$. Unlike the rotations from before, this is a [shear transformation](https://en.wikipedia.org/wiki/Shear_mapping):
+{% include html/distances/newtonian_transformation.html %}
+
+If we measure the speed (i.e. the magnitude of the velocity) at any point during the transformation, the total speed is invariant. We can see this by computing a convex combination ($\alpha \in [0, 1]$) of each person's velocity through the transformation:
+
+$$
+\begin{flalign*}
+S &= \sqrt{\alpha v^2 + (1 - \alpha) v^2} \\
+&= \sqrt{v^2} \\
+&= v
+\end{flalign*}
+$$
+
+This makes intuitive sense, the person moving away from the stationary person can only move as fast as the stationary person from the moving person.
+
+### Motivations of Special Relativity
+The Galilean transformation and its corresponding shear mapping works great up until we consider the speed of light. This is the same observation Einstein made in 1905 when he tried reconciling the Galilean transformation against two key principles:
+- [**Principle of Relativity**](https://en.wikipedia.org/wiki/Principle_of_relativity) - "Requirement that the equations describing the laws of physics have the same form in all admissible frames of reference".
+- [**Speed of light**](https://en.wikipedia.org/wiki/Speed_of_light) - "Universal physical constant that is exactly equal to 299,792,458 metres per second" (But again, we will use $c=1$). 
+
+[Importantly, everyone sees light propagate at exactly c (regardless of their frame of reference and whether they are moving or not)](https://en.wikipedia.org/wiki/Michelson%E2%80%93Morley_experiment). Thus, we hit a major contradiction with the Galilean transformation:
+
+Let's consider the same setup from before ($(x, t)$ is the stationary frame and $(x', t')$ is the moving frame), but have the moving person shoot two beams of light in front and behind them at the beginning of their motion. Lets add back in the speed of light and consider the transformation from the $(x', t')$ frame to the $(x, t)$ frame:
+{% include html/distances/newtonian_transformation_problem.html%}
+
+Initially, the $(x', t')$ frame of reference sees two light beams traveling along $x' = ct'$ and $x' = -ct'$, there is no contradiction here. But, when we transform to the stationary observer's $(x, t)$ frame of reference, suddenly we see light traveling faster than $c$ (precisely, the Galilean transformation predicts light to travel at $v + c = 1.25$). But according to the principle of relativity and speed of light, both observers should always see light traveling at exactly $c$; the stationary person can never see light at a higher speed!
+
+### Lorentz Transformation
+Now consider another transformation from $(x, t)$ to $(x', t')$ called the [Lorentz transformation](https://en.wikipedia.org/wiki/Lorentz_transformation):
+
+$$
+\begin{equation}
+    \begin{bmatrix}
+        x' \\
+        t'
+    \end{bmatrix} = 
+    \gamma(v)
+    \begin{bmatrix}
+        1 & -v \\
+        -v & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        t
+    \end{bmatrix}
+\end{equation}
+$$
+
+Where $\gamma(v) = \frac{1}{\sqrt{1 - v^2}}$ and is called the [Lorentz factor](https://en.wikipedia.org/wiki/Lorentz_factor). The two key differences from the Galilean transformation from before:
+1. The Lorentz factor is a nonlinear function of $v$. As $v\rightarrow 0$, then $\gamma(v) \rightarrow 1$
+2. $t' \neq t$ but actually combines both $x$ and $t$ (i.e. space and time get "mixed up" into spacetime)
+
+The Lorentz transformation has a very special property that is actually part of its [derivation](https://en.wikipedia.org/wiki/Lorentz_transformation#Derivation_of_the_group_of_Lorentz_transformations):
+
+$$
+\begin{equation}
+    c^2(t_2 - t_1)^2 - (x_2 - x_1)^2 = c^2(t'_2 - t'_1)^2 - (x'_2 - x'_1)^2
+\end{equation}
+$$
+
+That the speed of light is equal in both $(x, t)$ and $(x', t')$ frames of reference. We can plot the same scenario from before and see how the speed of light now behaves:
+{% include html/distances/lorentz_transformation.html%}
+
+Again, $(x', t')$ starts out observing light traveling to the right with $x' = ct'$ and to the left as  $x' = -ct'$, no contradiction as before. But, after we transform to the $(x, t)$ frame of reference, something different happens. $x$ and $t$ are both bent inwards keeping the speed of light constant at $c$! The Lorentz transformation has succeeded to keep the speed of light equal to $c$ in *all* frames of reference.
+
+How does it work? Well, by design. A generalization of distance for spacetime called the [Spacetime Interval](https://en.wikipedia.org/wiki/Spacetime#Spacetime_interval) was defined as:
+
+$$
+\begin{equation}
+    d_L(\vec x_1, \vec x_2) = c^2(t_2 - t_1)^2 - (x_2 - x_1)^2 = c^2(t'_2 - t'_1)^2 - (x'_2 - x'_1)^2 = (\Delta s)^2
+\end{equation}
+$$
+
+And then the Lorentz transformation was designed to keep $(\Delta s)^2$ invariant while going from $(x, t)$ to $(x', t')$. There is a long list of interesting consequences from the Lorentz transformation & spacetime interval:
+- [Time dilation & Length contraction](https://en.wikipedia.org/wiki/Spacetime#Time_dilation_and_length_contraction)
+- [Twin paradox](https://en.wikipedia.org/wiki/Spacetime#Twin_paradox)
+- [Simultaneity of events](https://en.wikipedia.org/wiki/Spacetime#Relativity_of_simultaneity)
+- [Mass-energy relationship](https://en.wikipedia.org/wiki/Spacetime#Mass%E2%80%93energy_relationship) (i.e. $E=mc^2$)
+
+And many great courses (like the [Theoretical Minimum](https://theoreticalminimum.com/courses/special-relativity-and-electrodynamics/2012/spring)) that explain these in detail.
+
+### Lorentz vs. Galilean
+Here are plots for both the Lorentz and Galilean transformations so you can see them side by side (and in either direction):
+
+**Lorentz**:
+{% include html/distances/lorentz_transformation_grid.html%}
+
+**Galilean**:
+{% include html/distances/galilean_transformation_grid.html%}
+
+While the Galilean transformation operates as a shear map, the Lorentz transformation operates as a rotation. But not like the [rotation matrix](#cartesian-coordinates) from before, but a [hyperbolic rotation](https://en.wikipedia.org/wiki/Lorentz_transformation#Coordinate_transformation):
+
+$$
+\begin{equation}
+    \begin{bmatrix}
+        x' \\
+        t'
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        -\sinh{\xi} & \cosh{\xi} \\
+        \cosh{\xi} & -\sinh{\xi}
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        t
+    \end{bmatrix}
+\end{equation}
+$$
+
+Where $\xi = \tanh^{-1}{\frac{v}{c}}$ is the rapidity of the hyperbolic rotation. You can see the outline of this hyperbolic rotation from the dashed line following the last time point on the $t'$ axis. This is what keeps the transformed $(x', t')$ from asymptotically increasing, but never reaching, the speed of light $c$. This is unlike the shear map of the Galilean transform, which can reach and exceed the speed of light $c$ as we saw before.
+
+Both the Galilean transformation and Lorentz transformation preserve area as shown by the determinant:
+
+$$
+\begin{equation}
+    \begin{vmatrix}
+        1 & -v \\
+        0 & 1
+    \end{vmatrix}
+    = 1 \cdot 1 - (-v \cdot 0) = 1
+\end{equation}
+$$
+
+And for Lorentz:
+
+$$
+\begin{equation}
+    \begin{vmatrix}
+        \gamma(v)
+        \cdot
+        \begin{bmatrix}
+            1 & -v \\
+            -v & 1
+        \end{bmatrix}
+    \end{vmatrix}
+    = \gamma(v)^2(1 - v^2) = 1
+\end{equation}
+$$
+
+We can see from either transformation that the area of the grid of points representing space is preserved.
+
+## Summary
+In this post, we discussed three distances; Euclidean distance, Mahalanobis distance, and the spacetime interval. We discussed how developing these invariant quantities have progressed mathematical theory. It is always fun to find the mathematical underpinnings that unite Statistics and Physics.
