@@ -51,6 +51,29 @@ $$
 We can visualize an $xy$ plane rotating underneath this distance calculation, and calculate the distance for each frame:
 {% include html/distances/square_rotation.html%}
 
-Despite the $xy$ plane rotating, the euclidean distance stays the same (up to floating point precision). The measurement is *invariant* under the rotational transformation. 
+Despite the $xy$ plane rotating, the euclidean distance stays the same (up to floating point precision). The measurement is *invariant* under the rotational transformation. Consider:
 
-For the $xy$ plane, the result is straightforward and intuitive. We can generalize this idea to [Part 2: Mahalanobis distance]({% link _posts/2024-06-14-distances-part-2.md %}) and [Part 3: Spacetime interval]({% link _posts/2024-06-14-distances-part-3.md %}) in the next posts.
+$$
+\begin{flalign*}
+d(\vec p', \vec q') &= ||R(\vec p - \vec q)|| \\
+&= (\vec p - \vec q)^T R^T R(\vec p - \vec q) \\
+&= (\vec p - \vec q)^T \begin{bmatrix}
+        \cos(\theta) & \sin(\theta) \\
+        -\sin(\theta) & \cos(\theta)
+    \end{bmatrix}
+    \begin{bmatrix}
+        \cos(\theta) & -\sin(\theta) \\
+        \sin(\theta) & \cos(\theta)
+    \end{bmatrix}
+    (\vec p - \vec q) \\
+&= (\vec p - \vec q)^T 
+    \begin{bmatrix}
+        \cos^2(\theta) + \sin^2(\theta) & -\cos(\theta)\sin(\theta) + \cos(\theta)\sin(\theta) \\
+        -\cos(\theta)\sin(\theta) + \cos(\theta)\sin(\theta) & \cos^2(\theta) + \sin^2(\theta)
+    \end{bmatrix} (\vec p - \vec q) \\
+&= (\vec p - \vec q)^T I (\vec p - \vec q) \\
+&= ||\vec p - \vec q||
+\end{flalign*}
+$$
+
+This is the definition of an [orthogonal matrix](https://en.wikipedia.org/wiki/Orthogonal_matrix); having $R^TR = I$ and being an [isometry](https://en.wikipedia.org/wiki/Isometry) of Euclidean space. For the $xy$ plane, the result is straightforward and intuitive. We can generalize this idea to [Part 2: Mahalanobis distance]({% link _posts/2024-06-14-distances-part-2.md %}) and [Part 3: Spacetime interval]({% link _posts/2024-06-14-distances-part-3.md %}) in the next posts.
