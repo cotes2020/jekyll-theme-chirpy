@@ -14,16 +14,16 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Unfriendly Japanese # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Learn Japanese but not Really # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  JLPT Notes N5 to N4
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://zentenshi.github.io"
 
 github:
   username: github_username # change to your github username
@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
+  name: Zen Tenshi
   email: example@domain.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://static.vecteezy.com/system/resources/previews/013/076/707/original/japanese-clan-kamon-crest-symbol-japanese-ancient-family-stamp-symbol-japanese-symbol-used-to-decorate-and-identify-people-in-family-the-icon-is-isolated-on-a-white-background-vector.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

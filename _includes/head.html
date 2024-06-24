@@ -104,4 +104,20 @@
   {% endunless %}
 
   {% include metadata-hook.html %}
+
+  <!-- Chatbot Integration Scripts -->
+  <div id="chat-icon" class="chat-icon"></div>
+  <link rel="stylesheet" type="text/css" href="https://proud-ground-02578ac00.5.azurestaticapps.net/style.css">
+  <script src="https://proud-ground-02578ac00.5.azurestaticapps.net/chatbot.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var chatIcon = document.getElementById('chat-icon');
+      var chatbot = new Athena(chatIcon, {
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWYxNDMwYzJlNjc3M2ViZTkyMTc3MWQiLCJpYXQiOjE3MTgzNTY4NzgsImV4cCI6MTc0OTg5Mjg3OH0.ioSvVrLEEf39-EFqY3rC1961-wWOmqg3Rw4TTasrjJ4'
+      });
+    });
+  </script>
 </head>
