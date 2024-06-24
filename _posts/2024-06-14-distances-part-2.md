@@ -56,7 +56,7 @@ Y = W X
 $$
 If $X \sim \mathcal D(\vec 0, S)$, then $Y \sim \mathcal D(\vec 0, I)$ where $I$ is the identity matrix. 
 
-The proofs starts with the definition of $Cov[Y]$:
+Starting with the definition of $Cov[Y]$:
 
 $$
 \begin{flalign*}
@@ -65,7 +65,7 @@ Cov[Y] &= Cov[WX]\\
 \end{flalign*}
 $$
 
-And shows that $W^T W = S^{-1}$ is sufficient for $Cov[Y] = I$:
+We can show that $W^T W = S^{-1}$ is sufficient for $Cov[Y] = I$:
 
 $$
 \begin{flalign*}
@@ -75,7 +75,7 @@ W S W^T & = I \\
 \end{flalign*}
 $$
 
-If we use the [eigendecomposition](https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix) of the positive-definite matrix $S = UDU^{T}$ and $W = D^{-1/2}U^{T}$ then its a direct equality:
+Commonly, we will use $W = S^{-1/2}$ the matrix square root of $S$ as the whitening matrix which directly corresponds with the Mahalanobis distance. If we instead used the [eigendecomposition](https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix) of the positive-definite matrix $S = UDU^{T}$ and $W = D^{-1/2}U^{T}$ then the constraint is also satisfied:
 
 $$
 \begin{flalign*}
@@ -87,7 +87,33 @@ Cov[Y] &= W S W^T \\
 \end{flalign*}
 $$
 
-Check out [this paper](https://arxiv.org/pdf/1512.00809) to see more choices of $W$. Instead of operating on just two points (like in Mahalanobis distance), we can sphere the entire space (meaning turn the space into a unit sphere) with respect to $W$ *and then* compute the euclidean distance:
+Indeed, we can arbitrarily rotate any of these solutions by an orthogonal matrix:
+
+$$
+\begin{flalign*}
+W^* &= QW \\
+{W^*}^T W^* &= W^TQ^TQW \\
+&= W^TW \\
+&= S^{-1}
+\end{flalign*}
+$$
+
+Or rotate the Mahalanobis distance by an arbitrary orthogonal matrix:
+
+$$
+\begin{flalign*}
+||W^*(\vec x - \vec y)|| &= (\vec x - \vec y)^TW^TQ^TQW(\vec x - \vec y) \\
+&= (\vec x - \vec y)W^TW(\vec x - \vec y) \\
+&= ||W(\vec x - \vec y)||
+\end{flalign*}
+$$
+
+And still achieved the desired result. See [this paper](https://arxiv.org/pdf/1512.00809) to see more choices of $W$ and a longer discussion of this rotational freedom in whitening. 
+
+> For the rest of this post, I will use the Mahalanobis whitening, $W = S^{-1/2}$.
+{: .prompt-warning }
+
+Regardless of which $W$ we choose, we can sphere the entire space (meaning turn the space into a unit sphere) with respect to $W$ *and then* compute the euclidean distance:
 {% include html/distances/whitened_transformation.html%}
 
 After completing the whitening transformation, the resulting euclidean distance computations are invariant (and equal to $d_M$). Regardless of which distribution $\mathcal D$ we started from, $d_M$ is a scale-free measure of distance. This allows us to directly compare distances across distributions. 
