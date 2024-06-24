@@ -21,18 +21,18 @@
     "fixlint": "npm run test -- --fix"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.4",
-    "@babel/plugin-transform-class-properties": "^7.24.1",
-    "@babel/preset-env": "^7.24.4",
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-transform-class-properties": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-terser": "^0.4.4",
     "husky": "^9.0.11",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.17.0",
-    "rollup-plugin-license": "^3.3.1",
-    "stylelint": "^16.4.0",
+    "rimraf": "^5.0.7",
+    "rollup": "^4.18.0",
+    "rollup-plugin-license": "^3.5.1",
+    "stylelint": "^16.6.1",
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "prettier": {
