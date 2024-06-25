@@ -61,7 +61,7 @@ CORS는 서버와 브라우저 간의 HTTP 헤더를 사용하여 동작합니�
 서버가 허용하는 요청 헤더 목록을 지정합니다.<br>
 브라우저가 요청에 포함할 수 있는 헤더를 정의하여 알려줍니다.
 
-```http
+```
 Access-Control-Allow-Headers: Content-Type, Authorization
 ```
 
@@ -70,7 +70,7 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 서버가 허용하는 HTTP 메서드 목록을 지정합니다.<br>
 브라우저가 사용할 수 있는 메서드를 정의하여 알려줍니다.
 
-```http
+```
 Access-Control-Allow-Methods: GET, POST, PUT, DELETE
 ```
 
@@ -78,7 +78,7 @@ Access-Control-Allow-Methods: GET, POST, PUT, DELETE
 
 허용하는 오리진(도메인)을 지정합니다. 특정 도메인이나 모든 도메인을 허용할 수 있습니다.
 
-```http
+```
 > 특정 도메인 허용:
 Access-Control-Allow-Origin: https://example.com
 
@@ -94,7 +94,7 @@ Access-Control-Allow-Origin: *
 사전 요청의 응답을 캐시할 수 있는 시간을 초 단위로 지정합니다.<br>
 이 시간 동안 동일한 요청에 대해 사전 요청을 보내지 않습니다.
 
-```http
+```
 Access-Control-Max-Age: 3600
 ```
 
@@ -103,7 +103,7 @@ Access-Control-Max-Age: 3600
 브라우저가 서버 응답에서 접근할 수 있는 헤더 목록을 지정합니다.<br>
 기본적으로 몇 가지 안전한 헤더만`(CORS-safelisted response header)` 접근할 수 있기 때문에, 이 외의 헤더에 접근하기 위해 사용합니다.
 
-```http
+```
 Access-Control-Expose-Headers: Authorization, Content-Length, X-Forwarded-For
 ```
 
@@ -114,7 +114,7 @@ Access-Control-Expose-Headers: Authorization, Content-Length, X-Forwarded-For
 
 기본적으로 접근 가능한 응답 헤더:
 
-```http
+```
 - Cache-Control
 - Content-Language
 - Content-Type
