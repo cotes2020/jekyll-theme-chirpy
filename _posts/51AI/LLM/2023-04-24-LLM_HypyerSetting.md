@@ -1,5 +1,5 @@
 ---
-title: AI - AI HypyerSetting
+title: LLM - HypyerSetting
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI]
@@ -7,7 +7,7 @@ categories: [51AI]
 tags: [AI, ML]
 ---
 
-- [AI HypyerSetting](#ai-hypyersetting)
+- [LLM - HypyerSetting](#llm---hypyersetting)
   - [HypyerSetting](#hypyersetting)
   - [Top\_k](#top_k)
   - [Temperature](#temperature)
@@ -19,7 +19,7 @@ tags: [AI, ML]
 
 ---
 
-# AI HypyerSetting
+# LLM - HypyerSetting
 
 ---
 
