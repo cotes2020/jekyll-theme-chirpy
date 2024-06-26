@@ -2,7 +2,7 @@
 title: AI - AI Prompt engineering
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AI]
+categories: [51AI, LLM]
 # img: /assets/img/sample/rabbit.png
 tags: [AI, ML]
 ---
@@ -47,7 +47,8 @@ tags: [AI, ML]
 ref:
 - https://aws.amazon.com/what-is/prompt-engineering/#:~:text=Prompt%20engineering%20is%20the%20process,high%2Dquality%20and%20relevant%20output.
 - https://www.leewayhertz.com/prompt-engineering/
--
+
+
 
 ---
 

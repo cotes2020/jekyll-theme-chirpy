@@ -325,7 +325,7 @@ for thread in threads:
 ##### 3.3 同步线程（Synchronizing threads）
 
 **主要目的：**
-- 防止共享数据产生错误, avoid data conflicts & discrepencies
+- 防止共享数据产生错误, avoid data conflicts & discrepancies
 - 因为不同线程在并发中是共享数据的, 所以，可以通过同步线程，来设定不同线程访问 **某部分资源（critical section）** 的先后顺序。
 
 **方法：**
