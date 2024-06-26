@@ -8,32 +8,17 @@ tags: [AI, ML]
 ---
 
 - [LLM - Data Training](#llm---data-training)
-  - [CNN基础知识](#cnn基础知识)
-    - [CNN 卷积神经网络](#cnn-卷积神经网络)
-    - [Convolution 卷积](#convolution-卷积)
-    - [Padding 填充](#padding-填充)
-      - [valid padding](#valid-padding)
-      - [same padding](#same-padding)
-    - [Stride 步长](#stride-步长)
-    - [多通道卷积](#多通道卷积)
-    - [Mask](#mask)
-      - [深度学习中的mask](#深度学习中的mask)
-      - [为什么需要 Mask](#为什么需要-mask)
-      - [Mask 为解决 PAD 问题顺应而生](#mask-为解决-pad-问题顺应而生)
-      - [常见的 Mask](#常见的-mask)
-        - [Padding mask](#padding-mask)
-        - [Sequence mask](#sequence-mask)
+  - [Prompt Learning](#prompt-learning)
+    - [Prompt-Tuning(提示微调)](#prompt-tuning提示微调)
+    - [ICL - In-context learning 上下文学习](#icl---in-context-learning-上下文学习)
   - [Tuning 微调](#tuning-微调)
     - [self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
+    - [Fine-Tuning(微调)](#fine-tuning微调)
     - [Supervised Fine-Tuning (SFT 监督微调阶段)](#supervised-fine-tuning-sft-监督微调阶段)
     - [RLHF 人类反馈强化学习阶段](#rlhf-人类反馈强化学习阶段)
       - [奖励模型](#奖励模型)
       - [对比数据集](#对比数据集)
       - [PPO微调](#ppo微调)
-    - [Fine-Tuning(微调)](#fine-tuning微调)
-    - [Prompt-Tuning(提示微调)](#prompt-tuning提示微调)
-      - [Prompting and prompt engineering](#prompting-and-prompt-engineering)
-      - [ICL - In-context learning 上下文学习](#icl---in-context-learning-上下文学习)
       - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
       - [Prompt-Tuning方法](#prompt-tuning方法)
         - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
@@ -68,766 +53,10 @@ tags: [AI, ML]
 
 ---
 
-## CNN基础知识
-
----
-
-### CNN 卷积神经网络
-
-- **卷积神经网络** （convolutional neural network，CNN）是指至少在网络的一层中 **使用卷积运算来代替一般的矩阵乘法运算** 的神经网络，因此命名为卷积神经网络. [^CNN基础知识]
-
-[^CNN基础知识]: CNN基础知识——卷积（Convolution）、填充（Padding）、步长(Stride), https://zhuanlan.zhihu.com/p/77471866
-
----
-
-### Convolution 卷积
-
-我们以灰度图像为例进行讲解：
-
-- 从一个小小的`权重矩阵`，也就是卷积核（kernel）开始，让它逐步在二维输入数据上“扫描”。
-- 卷积核“滑动”的同时，计算`权重矩阵`和扫描所得的`数据矩阵`的乘积，然后把结果汇总成一个输出像素。
-
-![pic](https://pic1.zhimg.com/v2-6428cf505ac1e9e1cf462e1ec8fe9a68_b.gif)
-
-![pic](https://pic3.zhimg.com/v2-705305fee5a050575544c64067405fce_b.gif)
-
-深度学习里面所谓的卷积运算，其实它被称为 **互相关（cross-correlation）运算：**
-- 将图像矩阵中，从左到右，由上到下，取与滤波器同等大小的一部分
-- 每一部分中的值与滤波器中的值对应相乘后求和，最后的结果组成一个矩阵，其中没有对核进行翻转。
-
-一般卷積網路過程中，除了Input image不稱為Feature map外，中間產生的圖我們都稱之為Feature map
-- 原因很簡單就是這些中間產生的圖都是為了「描繪出該任務所應該產生對應的特徵資料」
-- 也呼應Yann LeCun, Yoshua Bengio & Geoffrey Hinton寫的Deep Learning第一句話寫的「Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction」
-- 深度學習過程就是在學資料的特性，所以中間出來的結果都是特徵資料，在影像因為是2D，所以用Feature map來稱呼。[^卷積計算中的步伐和填充]
-
-[^卷積計算中的步伐和填充]:卷積計算中的步伐(stride)和填充(padding), https://chih-sheng-huang821.medium.com/卷積神經網路-convolutional-neural-network-cnn-卷積計算中的步伐-stride-和填充-padding-94449e638e82
-
-一個卷積計算基本上有幾個部份:
-1. 輸入的圖: 假設大小是 $W × W$。
-2. Filter (kernel map)大小是 $ks × ks$
-3. Stride: kernel map在移動時的步伐長度 $S$
-4. 輸出的圖大小為 $new_height × new_width$
-
-例子:
-1. 輸入的圖: W × W =10 × 10。
-2. Filter (kernel map): ks × ks=3 × 3
-3. Stride: S=1
-4. 輸出的圖大小為 new_height × new_width = 8 × 8
-- ![Screenshot 2023-11-16 at 12.15.25](/assets/img/Screenshot%202023-11-16%20at%2012.15.25.png)
-
-卷積計算部份除了基本的`input和filter (kernel map)`通常還有兩個參數可以調`(strides, padding)`
-
----
-
-### Padding 填充
-
-输入图像与卷积核进行卷积后的结果中损失了部分值，输入图像的边缘被“修剪”掉了
-- （边缘处只检测了部分像素点，丢失了图片边界处的众多信息）。
-- 这是因为边缘上的像素永远不会位于卷积核中心，而卷积核也没法扩展到边缘区域以外。
-
-这个结果我们是不能接受的
-- 有时我们还希望输入和输出的大小应该保持一致。
-- 为解决这个问题，可以在进行卷积操作前，对原矩阵进行边界 **填充（Padding）** ，也就是在矩阵的边界上填充一些值，以增加矩阵的大小，通常都用“ 0 ”来进行填充的。
-- 通过填充的方法，当卷积核扫描输入数据时，它能延伸到边缘以外的伪像素，从而使输出和输入size相同。
-
-![pic](https://pic3.zhimg.com/v2-2a2307d5c20551f1a3e8458c7070cf16_b.gif)
-
-常用的两种padding：
-1. valid padding
-2. same padding / zero padding
-
-在tensorflow，padding那邊給了兩個選項「padding = ‘VALID’」和「padding = ‘SAME’」
-
-#### valid padding
-- 不进行任何处理，只使用原始图像，不允许卷积核超出原始图像边界
-- padding = ‘VALID’ 等於最一開始敘述的卷積計算，圖根據filter大小和stride大小而變小。
-
-#### same padding
-- 进行填充，允许卷积核超出原始图像边界，并使得卷积后结果的大小与原来的一致
-
-- padding = ‘SAME’，會用zero-padding的手法，讓輸入的圖不會受到kernel map的大小影響。
-
-zero padding
-- 看你會消失多少的大小，在輸入的圖部份就給你加上0元素進去
-- 此刻的卷積計算如下，這樣卷積後的圖就不會變小了。
-
-![Screenshot 2023-11-16 at 12.21.24](/assets/img/Screenshot%202023-11-16%20at%2012.21.24.png)
-
-![Screenshot 2023-11-16 at 12.21.29](/assets/img/Screenshot%202023-11-16%20at%2012.21.29.png)
-
----
-
-### Stride 步长
-
-- 滑动卷积核时，我们会先从输入的左上角开始，每次往左滑动一列或者往下滑动一行逐一计算输出，我们将每次滑动的行数和列数称为`Stride`
-  - 在之前的图片中，Stride=1；在下图中，Stride=2。
-  - ![pic](https://pic1.zhimg.com/v2-294159b043a917ea622e1794b4857a34_b.gif)
-
-卷积过程中，有时需要通过`padding`来避免信息损失，有时也要在卷积时通过设置的 **步长（Stride）** 来压缩一部分信息，或者使输出的尺寸小于输入的尺寸。
-
-![pic](https://pic3.zhimg.com/v2-c14af9d136b1431018146118492b0856_b.gif)
-
-**Stride的作用：**
-- 是成倍缩小尺寸，而这个参数的值就是缩小的具体倍数，比如
-  - 步幅为2，输出就是输入的1/2
-  - 步幅为3，输出就是输入的1/3
-
-**卷积核的大小一般为奇数\奇数**
-- `1\1，3\3，5\5，7\7` 都是最常见的。
-- 没有偶数\偶数
-  - 更容易padding
-    - 在卷积时，我们有时候需要卷积前后的尺寸不变。
-    - 这时候我们就需要用到padding。
-    - 假设图像的大小，也就是被卷积对象的大小为n\n，卷积核大小为k\k，padding的幅度设为(k-1)/2时，卷积后的输出就为(n-k+2\((k-1)/2))/1+1=n，即卷积输出为n\n，保证了卷积前后尺寸不变。
-    - 但是如果k是偶数的话，(k-1)/2就不是整数了。
-
-  - 更容易找到卷积锚点
-    - 在CNN中，进行卷积操作时一般会以卷积核模块的一个位置为基准进行滑动，这个基准通常就是卷积核模块的中心。
-    - 如果卷积核为奇数，卷积锚点很好找，自然就是卷积模块中心
-    - 如果卷积核是偶数，这时候就没有办法确定了，让谁是锚点似乎都不怎么好。
-
-**卷积的计算公式**
-- **输入图片的尺寸：** 一般用 $n\times$ 表示输入的image大小。
-- **卷积核的大小：** 一般用 $f\times$ 表示卷积核的大小。
-- **填充（Padding）：** 一般用 $p$ 来表示填充大小。
-- **步长(Stride)：** 一般用 $s$ 来表示步长大小。
-- **输出图片的尺寸：** 一般用 $o$ 来表示。
-
-- 如果已知 $n 、 f 、 p 、 s$ 可以求得 $o$ , 计算公式如下:
-  - $o=\lfloor \frac{n + 2p - f}{s} \rfloor + 1$
-
-其中" $\lfloor \ \rfloor$ "是向下取整符号，用于结果不是整数时进行向下取整。
-
----
-
-### 多通道卷积
-
-上述例子都只包含一个输入通道。实际上，大多数输入图像都有 RGB 3个通道。
-
-这里就要涉及到“卷积核”和“filter”这两个术语的区别。
-- 在只有一个通道的情况下，“卷积核”就相当于“filter”，这两个概念是可以互换的。
-- 但在一般情况下，它们是两个完全不同的概念。
-- **每个“filter”实际上恰好是“卷积核”的一个集合** ，在当前层，每个通道都对应一个卷积核，且这个卷积核是独一无二的。
-
-**多通道卷积的计算过程：**
-- 将矩阵与滤波器对应的每一个通道进行卷积运算，最后相加，形成一个单通道输出，加上偏置项后，我们得到了一个最终的单通道输出。
-- 如果存在多个filter，这时我们可以把这些最终的单通道输出组合成一个总输出。
-
-还需要注意一些问题
-- 滤波器的通道数、输出特征图的通道数。
-- **某一层滤波器的通道数 = 上一层特征图的通道数。**
-  - 输入一张 $6\times6\times3$ 的RGB图片，
-  - 那么滤波器（ $3\times3\times3$ ）也要有三个通道。
-
-- **某一层输出特征图的通道数 = 当前层滤波器的个数。**
-  - 当只有一个filter时，输出特征图（ $4\times4$ ）的通道数为1；
-  - 当有2个filter时，输出特征图（ $4\times4\times2$ ）的通道数为2。
-
-![pic](https://pic3.zhimg.com/v2-fc70463d7f82f7268ee23b7235515f4a_b.jpg)
-
----
-
-### Mask
-
-#### 深度学习中的mask
-
-- 分类的结果叫label。
-
-- 分割的结果叫mask。
-
-- 因为分割结果通常会半透明的覆盖在待分割目标上，所以就叫它掩膜吧。[^深度学习中的mask]
-
-[^深度学习中的mask]: 深度学习中的mask到底是什么意思？https://www.zhihu.com/question/320615749
-
-所谓 Mask，更像是语义分割的概念。
-- 例子，看看下图，把它分为三个要素，竹子，熊猫，天空，也就是三个类别，分别记为，-1，0，1
-- 我们现在可以构建一个Mask矩阵A，大小也图片包含的像素数量相同，初始值设为0，
-- 所有分类为竹子的像素所在位置的值设为-1，为熊猫设为0，为天空的设为1
-- 那么这个矩阵就变成了一个 Mask 矩阵，因为它可以把属于不同语义的像素分割出来。
-- 在Mask-RCNN中的应用和这也差不多，只不过放在了最后的步骤。
-
-![Screenshot 2023-11-16 at 00.16.59](/assets/img/Screenshot%202023-11-16%20at%2000.16.59.png)
-
-#### 为什么需要 Mask
-
-需要mask的最重要的原因之一是, 要batchize多个句子作为一个输入，即输入了一批句子的模型做一个向前计算。
-
-像这样的成像案例：
-- 两个句子：
-
-```md
-I like cats.
-He does not like cats.
-```
-
-- 然后我们通过词汇表中的索引将每个单词转换为int：
-
-```md
-1I 2He 3like 4does 5not 6cats…。
-
-1 3 6 0
-2 4 5 3 6 0
-```
-
-- 如果要将这两个句子作为一个批处理连接到网络（在Pytorch，tensorflow中使用其他方法），则需要将它们作为张量或矩阵。
-- 但是它们的长度不同。所以给它们填充一些随机整数：
-
-`1 3 6 0 9 9`
-
-`2 4 5 3 6 0`
-
-- 现在它变成了2x6矩阵。
-- 然后您可以将此矩阵提供给网络。
-- 但是这些填充物是没有意义的，甚至是有害的。因此，您需要提供有关蒙版填充的模型信息
-
-`1 1 1 1 0 0`
-
-`1 1 1 1 1 1`
-
-- 因此，在计算时，模型可以使用mask过滤掉填充（第一句末尾为9 9）。
-
-- 在 NLP 中，一个最常见的问题便是输入序列长度不等，通常需要进行 PAD 操作，通常在较短的序列后面填充 0
-- 虽然 RNN 等模型可以处理不定长输入，但在实践中，需要对 input 做 batchsize，转换成固定的 tensor。
-
-- PAD 案例：
-  - 如下是两句英文，先将文本转换成数字
-
-    ```py
-    s1 = 'He likes cats'
-    s2 = 'He does not like cats'
-    s = s1.split(' ') + s2.split(' ')
-
-    word_to_id = dict(zip(s, range(len(s))))
-    id_to_word = dict((k,v) for v,k in word_to_id.items())
-    # {'He': 3, 'likes': 1, 'cats': 7, 'does': 4, 'not': 5, 'like': 6}
-    # {3: 'He', 1: 'likes', 7: 'cats', 4: 'does', 5: 'not', 6: 'like'}
-
-    s1_vector = [word_to_id[x] for x in s1.split(' ')]
-    s2_vector = [word_to_id[x] for x in s2.split(' ')]
-    sentBatch = [s1_vector, s2_vector]
-    print(sentBatch)
-    ```
-  - 对文本进行数字编码
-
-    ```py
-    [[3, 1, 7], [3, 4, 5, 6, 7]]
-    ```
-
-  - 对如上两个 vector 进行 pad 处理。
-
-    ```py
-    from torch.nn.utils.rnn import pad_sequence
-    a = torch.tensor(s1_vector)
-    b = torch.tensor(s2_vector)
-    pad = pad_sequence([a, b])
-    print(pad)
-    ```
-
-  - PAD 结果
-
-    ```py
-    tensor([[3, 3],
-            [1, 4],
-            [7, 5],
-            [0, 6],
-            [0, 7]])
-    ```
-
-以句子 ”He likes cats“ 的 PAD 结果举例：`[3, 1, 7, 0, 0]`，PAD 操作会引起以下几个问题。
-
-**1. mean-pooling 的问题**
-
-- 如上述案例所示，对于矩阵： $s1 = [3, 1, 7]$
-
-- 对 s1 进行 `mean-pooling`： $mean_{s1}=(3+1+7)/3=3.667$
-
-- 进行 pad 之后： $pad_{s1}=[3,1,7,0,0]$
-
-- 对 $pad_{s1}$ 进行 `mean-pooling`： $pad_{s1}=(3+1+7+0+0)/10=1.1$
-
-- 对比 $mean_{s1}$ 和 $pad_{s1}$ 发现：pad 操作影响 `mean-pooling`。
-
-**2. max-pooling 的问题**
-
-- 对于矩阵 s1: $s1 = [-3, -1, -7]$ ，PAD 之后： $pad_{s1}=[-3,-1,-7,0,0]$
-
-- 分别对 s1 和 $pad_{s1}$ 进行 `max-pooling`： $max_{s1}=-1, max_{pad_{s1}}=0$
-
-- 对比 $mean_{s1}$ 和 $pad_{s1}$ 发现：pad 操作影响 max-pooling。
-
-**3. attention 的问题**
-
-- 通常在 Attention 计算中最后一步是使用 softmax 进行归一化操作，将数值转换成概率。
-- 但如果直接对 PAD 之后的向量进行 softmax，那么 PAD 的部分也会分摊一部分概率，这就导致有意义的部分 (非 PAD 部分) 概率之和小于等于 1。
-
----
-
-#### Mask 为解决 PAD 问题顺应而生
-
-Mask 是相对于 PAD 而产生的技术，具备告诉模型一个向量有多长的功效。
-
-Mask 矩阵有如下特点：
-
-1. Mask 矩阵是与 PAD 之后的矩阵具有相同的 shape。
-2. mask 矩阵只有 1 和 0两个值，如果值为 1 表示 PAD 矩阵中该位置的值有意义，值为 0 则表示对应 PAD 矩阵中该位置的值无意义。
-
-在第一部分中两个矩阵的 mask 矩阵如下所示：
-
-```py
-mask_s1 = [1, 1, 1, 0, 0]
-mask_s2 = [1, 1, 1, 1, 1]
-mask = a.ne(torch.tensor(paddingIdx)).byte()
-print(mask)
->>> tensor([[1, 1],
-            [1, 1],
-            [1, 1],
-            [0, 1],
-            [0, 1]], dtype=torch.uint8)
-```
-
-**1. 解决 `mean-pooling` 问题**
-
-$mean_s1=sum(pad_{s1}\m)/sum(m)$
-
-**2. 解决 max-pooling 问题**
-
-在进行 max-pooling 时，只需要将 pad 的部分的值足够小即可，可以将 mask 矩阵中的值为 0 的位置替换的足够小 ( 如: $10^{-10}$ 甚至 负无穷 ，则不会影响 max-pooling 计算。
-
-$max_b=max(pad_b-(1-m)\10^{-10})$
-
-**3. 解决 Attention 问题**
-
-该问题的解决方式跟 max-pooling 一样，就是将 pad 的部分足够小，使得 $e^x$ 的值非常接近于 0，以至于忽略。
-
-$softmax(x)=softmax(x-(1-m)\10^{10})$
-
-
----
-
-#### 常见的 Mask
-
-在Transformer模型中，mask的作用是控制模型在处理序列时对未来信息的可见性。
-- Transformer模型是一个自注意力机制的序列到序列模型，它通过将输入序列中的每个位置与其他位置进行交互来建模上下文关系。
-- 当我们预测目标序列的下一个位置时，为了避免模型能够"看到"未来信息，需要使用mask将未来位置的信息屏蔽掉。
-
-具体来说，在Transformer中有两种常用的mask方式：padding mask和look-ahead mask。
-
-1. **Padding mask**
-   1. 用于处理不定长输入
-   2. 在输入序列中，可能存在不等长的句子，为了保持输入序列的统一长度，我们会在较短的句子后面添加一些特殊符号（如0）进行填充。
-   3. Padding mask就是用来标记这些填充位置，在计算注意力权重时，将填充位置的注意力权重设为一个很小的值（如负无穷），使得模型不会关注这些填充位置。
-
-2. **Look-ahead mask / seqence-mask**
-   1. 在Transformer的解码器中，为了生成目标序列的下一个位置时只使用已经生成的部分序列，会使用look-ahead mask。
-   2. Look-ahead mask将当前位置之后的位置都屏蔽掉，确保模型只能看到当前位置之前的信息，避免了信息泄露。
-
-通过使用这些mask，Transformer能够更好地处理不等长序列，并且在生成目标序列时不会依赖未来信息，提高了模型的性能和泛化能力。
-- 在 NLP 任务中，因为功能不同，Mask 也会不同。
-
----
-
-##### Padding mask
-
-在 NLP 中，一个常见的问题是输入序列长度不等
-- 在处理序列数据时，由于不同的序列可能具有不同的长度，我们经常需要对较短的序列进行填充（padding）以使它们具有相同的长度。对一个 batch 内的句子进行 PAD，通常值为 0。
-  - PAD 为 0 会引起很多问题，影响最后的结果，
-  - 在模型的计算过程中，这些填充值是没有实际意义的
-- 因此我们需要一种方法来确保模型在其计算中忽略这些填充值。这就是padding mask的作用。
-
-> 比如常用的就是在数据集准备中，想用batch来训练，就得将一个batch的数据的长度全部对齐。
-
-Padding mask
-- 是一个与输入序列形状相同的二进制矩阵，用于指示哪些位置是真实的数据，哪些位置是填充值。
-- 真实数据位置的mask值为0。填充位置的mask值为1。
-
-- 用处：[^对transformer使用PaddingMask]
-  - 忽略无关信息：通过使用padding mask，我们可以确保模型在其计算中忽略填充值，从而避免这些无关的信息对模型的输出产生影响。
-
-  - 稳定性：如果不使用padding mask，填充值可能会对模型的输出产生不稳定的影响，尤其是在使用softmax函数时。
-
-  - 解释性：使用padding mask可以提高模型的解释性，因为我们可以确保模型的输出只与真实的输入数据有关，而不是与填充值有关。
-
-  - padding mask是处理序列数据时的一个重要工具，它确保模型在其计算中忽略填充值，从而提高模型的性能和稳定性。
-
-[^对transformer使用PaddingMask]: 对transformer使用PaddingMask, https://www.cnblogs.com/sherrlock/p/17629223.html
-
-使用Padding Mask:
-- 在自注意力机制中，我们计算查询和键的点积来得到注意力分数。
-- 在应用softmax函数之前，我们可以使用padding mask来确保填充位置的注意力分数为一个非常大的负数（例如，乘以-1e9）。
-- 这样，当应用softmax函数时，这些位置的权重将接近于零，从而确保模型在其计算中忽略这些填充值。
-
-例子：
-
-1. case 1
-
-```py
-case 1: I like cats.
-case 2: He does not like cats.
-
-# 假设默认的 seq_len 是5
-# 一般会对 case 1 做 pad 处理，变成
-[1, 1, 1, 0, 1]
-
-# - 在上述例子数字编码后，开始做 embedding，而 pad 也会有 embedding 向量，但 pad 本身没有实际意义，参与训练可能还是有害的。
-# - 因此，有必要维护一个 mask tensor 来记录哪些是真实的 value
-# 上述例子的两个 mask 如下：
-1 1 1 0 0
-1 1 1 1 1
-# - 后续再梯度传播中，mask 起到了过滤的作用，在 pytorch 中，有参数可以设置：
-nn.Embedding(vocab_size, embed_dim, padding_idx=0)
-```
-
-2. 假设我们有一个长度为4的序列：[A, B, C, <pad>]，其中<pad>是填充标记。对应的padding mask是：[0, 0, 0, 1]。
-
-```py
-# 在计算注意力分数后，使用以下方法应用padding mask：
-attention_scores = attention_scores.masked_fill(mask == 1, -1e9)
-# 这里，masked_fill是一个PyTorch函数，它会将mask中值为1的位置替换为-1e9
-```
-
-![Screenshot 2023-11-16 at 12.01.45](/assets/img/Screenshot%202023-11-16%20at%2012.01.45.png)
-
-- 这里的`attention_scores`就是 $Q×K$ 的矩阵，把尾部多余的部分变成-inf，再过SoftMax，这样就是0了。
-- 这样，即使V的后半部分有padding的部分，也会因为乘0而变回0。
-- 这样被padding掉的部分就从计算图上被剥离了，由此不会影响模型的训练。
-
-```py
-import torch.nn as nn
-
-class Attention(nn.Module):
-    def __init__(self, dim, num_heads=8, qkv_bias=False, qk_scale=None, attn_drop=0., proj_drop=0.):
-        super().__init__()
-        self.num_heads = num_heads
-        head_dim = dim // num_heads
-        self.scale = qk_scale or head_dim ** -0.5
-        self.qkv = nn.Linear(dim, dim * 3, bias=qkv_bias)
-        self.attn_drop = nn.Dropout(attn_drop)
-        self.proj = nn.Linear(dim, dim)
-        self.proj_drop = nn.Dropout(proj_drop)
-
-    def forward(self, x, mask=None):
-        B, N, C = x.shape
-        qkv = self.qkv(x).reshape(B, N, 3, self.num_heads, C // self.num_heads).permute(2, 0, 3, 1, 4)
-        q, k, v = qkv[0], qkv[1], qkv[2]
-
-        attn = (q @ k.transpose(-2, -1)) * self.scale
-
-        # Apply the padding mask
-        if mask is not None:
-            attn = attn.masked_fill(mask.unsqueeze(1).unsqueeze(2) == 1, float('-inf'))
-
-        attn = attn.softmax(dim=-1)
-        attn = self.attn_drop(attn)
-
-        x = (attn @ v).transpose(1, 2).reshape(B, N, C)
-        x = self.proj(x)
-        x = self.proj_drop(x)
-        return x
-```
-
----
-
-##### Sequence mask
-
-- 在语言模型中，常常需要从上一个词预测下一个词，sequence mask 是为了使得 decoder 不能看见未来的信息。
-- 也就是对于一个序列，在 time_step 为 t 的时刻，我们的解码输出应该只能依赖于 t 时刻之前的输出，而不能依赖 t 之后的输出。
-- 因此我们需要想一个办法，把 t 之后的信息给隐藏起来。
-
-具体怎么做
-- **产生一个上三角矩阵，上三角的值全为 1，下三角的值全为 0，对角线也是 0** 。
-- 把这个矩阵作用在每一个序列上，就可以达到目的
-
-一个常见的 trick 就是生成一个 mask 对角矩阵:
-
-```py
-def sequence_mask(seq):
-    batch_size, seq_len = seq.size()
-    mask = torch.triu(torch.ones((seq_len, seq_len), dtype=torch.uint8), diagonal=1)
-    mask = mask.unsqueeze(0).expand(batch_size, -1, -1)  # [B, L, L]
-    return mask
-```
-
----
-
----
-
-## Tuning 微调
-
-目前学术界一般将NLP任务的发展分为四个阶段，即NLP四范式: [^通俗易懂的LLM(上篇)]
-
-[^通俗易懂的LLM(上篇)]: 通俗易懂的LLM(上篇), https://blog.csdn.net/qq_39439006/article/details/130796416
-
-- **第一范式**: 基于「`传统机器学习模型`」的范式，如TF-IDF特征+朴素贝叶斯等机器算法；
-- **第二范式**: 基于「`深度学习模型`」的范式，如word2vec特征+LSTM等深度学习算法，相比于第一范式，模型准确有所提高，特征工程的工作也有所减少；
-
-- **第三范式**: 基于「`预训练模型+fine-tuning`」的范式，如Bert+fine-tuning的NLP任务，相比于第二范式，模型准确度显著提高，模型也随之变得更大，但小数据集就可训练出好模型；
-
-- **第四范式**: 基于「`预训练模型+Prompt+预测`」的范式，如Bert+Prompt的范式相比于第三范式，模型训练所需的训练数据显著减少。
-
-在整个NLP领域，你会发现整个发展是朝着精度更高 少监督，甚至无监督的方向发展的。下面我们对第三范式 第四范式进行详细介绍。
-
-- 总的来说
-  - 基于Fine-Tuning的方法是让预训练模型去迁就下游任务。
-  - 基于Prompt-Tuning的方法可以让下游任务去迁就预训练模型。
-
-LLM模型训练过程中的三个核心步骤
-1. 预训练语言模型 $LLM^{SSL}$ (self-supervised-learning)
-2. (指令)监督微调预训练模型 $LLM^{SFT}$ (supervised-fine-tuning)
-3. 基于人类反馈的强化学习微调 $LLM^{RL}$ (reinforcement-learning)
-
-### self-supervised-learning 预训练阶段
-
-- 从互联网上收集海量的文本数据，通过自监督的方式训练语言模型，根据上下文来预测下个词。
-- token的规模大概在trillion级别，这个阶段要消耗很多资源，海量的数据采集 清洗和计算，
-- 该阶段的目的是：通过海量的数据，让模型接触不同的语言模式，让模型拥有理解和生成上下文连贯的自然语言的能力。
-
-![self-supervised-learning](https://img-blog.csdnimg.cn/3d850b6ad88641a884f41921c8776e76.webp#pic_center)
-
-训练过程大致如下：
-
-- Training data: 来自互联网的开放文本数据，整体质量偏低
-
-- Data scale: 词汇表中的token数量在trillion级别
-
-- $LLM^{SSL}_ϕ$​: 预训练模型
-
-- $[T_1​,T_2​,...,T_V​]$ : vocabulary 词汇表，训练数据中词汇的集合
-
-- $V$: 词汇表的大小
-
-- $f(x)$: 映射函数把词映射为词汇表中的索引即：token.
-  - if $x$ is $T_k$​ in vocab， $f(x) = k$
-
-- $(x_1​,x_2​,...,x_n​)$, 根据文本序列生成训练样本数据:
-    - Input： $x=(x_1​,x_2​,...,x_{i−1}​)$
-    - Output(label) : $x_i​$
-
-- $(x,xi​)$，训练样本:
-    - Let $k = f(x_i), word→token$
-    - Model’s output: $LLM^{SSL}(x)=[\bar{y_​1}​,\bar{y​_2}​,...,\bar{y_​V}​]$
-    - 模型预测下一个词的概率分布，Note : $∑_j \bar{y_j} = 1$
-    - The loss value：$CE(x,x_i​;ϕ)= −log(\overline{y}_k)$
-- Goal : find ϕ, Minimize $CE(\phi) = -E_x log(\overline{y}_k)$
-
-- 预先训练阶段 $LLM^{SSL}$ LLMSSL还不能正确的响应用户的提示
-  - 例如，如果提示“法国的首都是什么？”这样的问题，模型可能会回答另一个问题的答案，
-  - 例如，模型响应的可能是“_意大利的首都是什么？_”，因为模型可能没有“理解”/“对齐aligned”用户的“意图”，只是复制了从训练数据中观察到的结果。
-
-- 为了解决这个问题，出现了一种称为**监督微调**或者也叫做**指令微调**的方法。
-  - 通过在少量的示例数据集上采用监督学习的方式对 $LLM^{SSL}$ 进行微调，经过微调后的模型，可以更好地理解和响应自然语言给出的指令。
-
----
-
-### Supervised Fine-Tuning (SFT 监督微调阶段)
-
-- good option when you have a well-defined task with available labeled data.
-- particularly effective for domain-specific applications where the language or content significantly differs from the data the large model was originally trained on.
-
-Supervised fine-tuning adapts model behavior with a labeled dataset.
-- This process adjusts the model's weights to `minimize the difference between its predictions and the actual labels`.
-
-For example, it can improve model performance for the following types of tasks:
-
-- Classification
-- Summarization
-- Extractive question answering
-- Chat
-
-![Screenshot 2024-06-25 at 12.23.55](/assets/img/Screenshot%202024-06-25%20at%2012.23.55.png)
-
-![pic](https://img-blog.csdnimg.cn/beac83f74a584e10aea968a31271a30f.png#pic_center)
-
-- SFT(Supervised Fine-Tuning)阶段的目标是`优化预训练模型，使模型生成用户想要的结果`。
-  - 在该阶段，给模型展示`如何适当地响应`不同的提示 (指令) (例如问答，摘要，翻译等)的示例。
-  - 这些示例遵循 (prompt response)的格式，称为演示数据。
-  - 通过基于示例数据的监督微调后，模型会模仿示例数据中的响应行为，学会问答 翻译 摘要等能力，
-  - OpenAI 称为：监督微调行为克隆 。
-
-- 基于LLM指令微调的突出优势在于，对于任何特定任务的专用模型，只需要在通用大模型的基础上通过特定任务的指令数据进行微调，就可以解锁LLM在特定任务上的能力，不在需要从头去构建专用的小模型。
-
-- 事实也证明，经过微调后的小模型可以生成比没有经过微调的大模型更好的结果：
-
-指令微调过程如下：
-
-```md
-- Training Data : 高质量的微调数据，由人工产生。
-- Data Scale : 10000~100000
-    - InstructGPT : ~14500个人工示例数据集。
-    - Alpaca : 52K ChatGPT指令数据集。
-
-- Model input and output
-    - Input : 提示 (指令)。
-    - Output : 提示对应的答案(响应)
-- Goal : 最小化交叉熵损失，只计算出现在响应中的token的损失。
-```
-
----
-
----
-
-### RLHF 人类反馈强化学习阶段
-
-> 大语言模型(LLM)和基于人类反馈的强化学习(RLHF)  [^LLM和RLHF]
-
-[^LLM和RLHF]: 大语言模型(LLM)和基于人类反馈的强化学习(RLHF), https://blog.csdn.net/u014281392/article/details/130585256
-
-- 在经过监督 (指令)微调后，LLM模型已经可以根据指令生成正确的响应了，为什么还要进行强化学习微调？
-
-  - 因为随着像ChatGPT这样的通用聊天机器人的日益普及，全球数亿的用户可以访问非常强大的LLM，确保这些模型不被用于恶意目的，同时拒绝可能导致造成实际伤害的请求至关重要。
-
-- 恶意目的的例子如下：
-  - 具有编码能力的LLM可能会被用于以创建**恶意软件**。
-  - 在社交媒体平台上大规模的使用聊天机器人**扭曲公共话语**。
-  - 当LLM无意中从训练数据中复制**个人身份信息**造成的隐私风险。
-  - 用户向聊天机器人寻求社交互动和情感支持时可能会造成**心理伤害**。
-
-- 为了应对以上的风险，需要采取一些策略来防止LLM的能力不被滥用，构建一个可以与人类价值观保持一致的LLM，RLHF (从人类反馈中进行强化学习)可以解决这些问题，让AI更加的Helpfulness Truthfulness和Harmlessness。
-
-#### 奖励模型
-
-- 在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使Policy模型产生更好的 `action` 。
-
-- 在RLHF微调的过程，也需要一个`Reward Model`来充当奖励函数，它代表着人类的价值观，RM 的输入是 `(prompt, response)`，返回一个分数。
-
-- response可以看作LLM的 `action` ，LLM看作Policy模型，通过RL框架把人类的价值观引入LLM。
-
-![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
-
-#### 对比数据集
-
-- 在训练RM之前，需要构建对比数据
-  - 通过人工区分出好的回答和差的回答
-  - 数据通过经过监督微调 (SFT) 后的 $LLM^{SFT}$ 生成，随机采样一些prompt，通过模型生成多个response，
-  - 通过人工对结果进行两两排序，区分出好的和差的。
-
-- 数据格式如下：
-
-$(prompt, good_response，bad_response)$
-
-奖励模型的训练过程如下：
-
-- Training Data : 高质量的人工标记数据集$(prompt, winning_response, losing_response)$
-
-- Data Scale : 100k ~ 1M
-
-- $R_{\theta}$​ : 奖励模型
-
-- Training data format:
-    - $$x$ $ : prompt
-    - $y^w, y_w, yw​$ : good response
-    - $y^l, y_l, yl​$ : bad response
-
-$$\begin{pmatrix}
-    x & y^w & y^l \
-    x & y_w & y_l \
-    x & yw & yl \
-\end{pmatrix}$$
-
-- For each training sample:
-
-    - $s_w = R_{\theta}(x, y_w)$，奖励模型的评价
-    - $s_l = R_{\theta}(x,y_l)$
-    - $Loss: Minimize -log(\sigma(s_w - s_l)$
-
-- Goal : find θ to minimize the expected loss for all training samples.
-  - $-E_xlog(\sigma(s_w - s_l)$
-
-#### PPO微调
-
-![pic](https://img-blog.csdnimg.cn/e8d15a8e222a49aea708b25fcd4e7cf0.png#pic_center)
-
-1. 从数据中随机采样prompt。
-2. Policy( $LLM^{RL}$ 即： $LLM^{SFT}$ )，根据prompt生成response。
-3. Reward模型根据 $(prompt, response)$，计算分数score。
-4. 根据score更新Policy模型 (Policy是在 $LLM^{SFT}$ 基础上微调得到的)。
-
-- 在这个过程中，policy( $LLM^{RL}$ )会不断更新，为了不让它偏离SFT阶段的模型太远，OpenAI在训练过程中增加了KL离散度约束，保证模型在得到更好的结果同时不会跑偏，这是因为Comparison Data不是一个很大的数据集，不会包含全部的回答，对于任何给定的提示，都有许多可能的回答，其中绝大多数是 RM 以前从未见过的。
-- 对于许多未知 (提示 响应)对，RM 可能会错误地给出极高或极低的分数。如果没有这个约束，模型可能会偏向那些得分极高的回答，它们可能不是好的回答。
-
-RLHF微调过程如下：
-
-- ML task : RL(PPO)
-
-    - Action Space : the vocabulary of tokens the LLM uses. Taking action means choosing a token to generate.
-    - Observation Space : the distribution over all possible prompts.
-    - Policy: the probability distribution over all actions to take (aka all tokens to generate) given an observation (aka a prompt). An LLM constitutes a policy because it dictates how likely a token is to be generated next.
-    - Reward function: the reward model.
-
-- Training data: randomly selected prompts
-
-- Data scale: 10,000 - 100,000 prompts
-
-    - [InstructGPT](https://openai.com/research/instruction-following#sample1): 40,000 prompts
-
-- $R_{\phi}$​ : the reward model.
-
-- $LLM^{SFT}$ : the supervised finetuned model(instruction finetuning).
-
-- $LLM^{RL}_{\phi}$​ : the model being trained with PPO, parameterized by $\phi$ .
-
-    - $x$  : prompt.
-    - $D_{RL}$​ : the distribution of prompts used explicitly for the RL model.
-    - $D_{pretrain}$​ : the distribution of the training data for the pretrain model.
-
-    For each training step, sample a batch of $x_{RL}$​ from $D_{RL}$​ and a batch of $x_{pretrain}$​ from $D_{pretrain}$​.
-
-    1. For each $x_{RL}$​ , use $LLM_{\phi}^{RL}$​ to generate a response : $y \sim LLM_{\phi}^{RL}(x_{RL})$
-
-        $$
-        \text{objective}_1(x_{RL}, y; \phi) = R_{\theta}(x_{RL}, y) - \beta \log (\frac{LLM^{RL}_\phi(y \vert x)}{LLM^{SFT}(y \vert x)})
-        $$
-
-    2. For each x p r e t r a i n x_{pretrain} xpretrain​, the objective is computed as follows. Intuitively, this objective is to make sure that the RL model doesn’t perform worse on text completion - the task the pretrained model was optimized for.
-
-        $$
-        \text{objective}_2(x_{pretrain}; \phi) = \gamma \log (LLM^{RL}_\phi(x_{pretrain})
-        $$
-
-    3. The final objective is the sum of the expectation of two objectives above.
-
-        $$
-        \text{objective}(\phi) = E_{x \sim D_{RL}}E_{y \sim LLM^{RL}_\phi(x)}
-        $$
-
-        \
-
-        [R_{\theta}(x, y) - \beta \log \frac{LLM^{RL}_\phi(y \vert x)}{LLM^{SFT}(y \vert x)}] +
-
-        $$
-        \gamma E_{x \sim D_{pretrain}}\log LLM^{RL}_\phi(x)
-        $$
-
-- Goal ： Maximize  $objective(\phi)$
-
----
-
-### Fine-Tuning(微调)
-
-- Fine-Tuning是一种迁移学习，在自然语言处理(NLP)中，Fine-Tuning是用于将预训练的语言模型适应于特定任务或领域。
-
-- 基本思想是采用已经在大量文本上进行训练的预训练语言模型，然后在小规模的任务特定文本上继续训练它。
-
-- Fine-Tuning的概念已经存在很多年，并在各种背景下被使用。
-  - Fine-Tuning在NLP中最早的已知应用是在神经机器翻译(NMT)的背景下，其中研究人员使用预训练的神经网络来初始化一个更小的网络的权重，然后对其进行了特定的翻译任务的微调。
-
-- 经典的Fine-Tuning方法包括将预训练模型与少量特定任务数据一起继续训练。
-  - 在这个过程中，预训练模型的权重被更新，以更好地适应任务。
-  - 所需的Fine-Tuning量取决于预训练语料库和任务特定语料库之间的相似性。
-  - 如果两者相似，可能只需要少量的Fine-Tuning，如果两者不相似，则可能需要更多的Fine-Tuning。
-
-- Bert模型2018年横空出世之后，将Fine-Tuning推向了新的高度。不过目前来看，Fine-Tuning逐渐退出了tuning研究的舞台中心: **LLM蓬勃发展，Fine-Tuning这种大规模更新参数的范式属实无法站稳脚跟**。而更适应于LLM的tuning范式，便是接下来我们要介绍的Prompt-Tuning Instruction-Tuning等。
-
-![Screenshot 2024-06-20 at 15.29.57](/assets/img/Screenshot%202024-06-20%20at%2015.29.57.png)
-
-![Screenshot 2024-06-20 at 15.30.14](/assets/img/Screenshot%202024-06-20%20at%2015.30.14.png)
-
----
-
-### Prompt-Tuning(提示微调)
-
-![Screenshot 2024-06-20 at 15.47.57](/assets/img/Screenshot%202024-06-20%20at%2015.47.57.png)
+## Prompt Learning
 
 **prompt learning**:
+
 - Prompt-Tuning和In-context learning是prompt learning的两种模式。
 
 - In-context learning
@@ -840,6 +69,24 @@ RLHF微调过程如下：
   - **全部/部分**的区别就在于预训练模型参数是否改变(其实本质上的Prompt-Tuning是不更新预训练模型参数的，这里有个特例方法称为Prompt-Oriented Fine-Tuning，其实该方法更适合称为升级版的Fine-Tuning，后面会详细介绍这个方法)。
 
 - 无论是In-context learning还是Prompt-Tuning，它们的目标都是将下游任务转换为预训练模型的预训练任务，以此来广泛激发出预训练模型中的知识。
+
+
+**Prompting and prompt engineering**:
+
+- 如何设计输入的prompt是很重要的一点
+
+![Screenshot 2023-10-21 at 11.30.26](/assets/img/Screenshot%202023-10-21%20at%2011.30.26.png)
+
+![Screenshot 2023-10-21 at 11.34.54](/assets/img/Screenshot%202023-10-21%20at%2011.34.54.png)
+
+- failed with 5-6 example, fune tune the model
+- Typically, above five or six shots, so full prompt and then completions, you really don't gain much after that. Either the model can do it or it can't do it
+
+---
+
+### Prompt-Tuning(提示微调)
+
+![Screenshot 2024-06-20 at 15.47.57](/assets/img/Screenshot%202024-06-20%20at%2015.47.57.png)
 
 - 以二分类的情感分析作为例子:
   - 给定一个句子 `[CLS]` I like the Disney films very much. `[SEP]` ，
@@ -866,20 +113,7 @@ RLHF微调过程如下：
 
 ---
 
-#### Prompting and prompt engineering
-
-对于In-context learning及后面会讲到的Instruction-Tuning方法来说，如何设计输入的prompt是很重要的一点
-
-![Screenshot 2023-10-21 at 11.30.26](/assets/img/Screenshot%202023-10-21%20at%2011.30.26.png)
-
-![Screenshot 2023-10-21 at 11.34.54](/assets/img/Screenshot%202023-10-21%20at%2011.34.54.png)
-
-- failed with 5-6 example, fune tune the model
-- Typically, above five or six shots, so full prompt and then completions, you really don't gain much after that. Either the model can do it or it can't do it
-
----
-
-#### ICL - In-context learning 上下文学习
+### ICL - In-context learning 上下文学习
 
 - ICL又称为上下文学习，最早是在GPT-3[《Language Models are Few-Shot Learners》](https://arxiv.org/pdf/2005.14165.pdf)中被提出来的。
 - ICL的关键思想是从类比中学习。
@@ -972,6 +206,279 @@ in-context learning method
 
 ---
 
+
+## Tuning 微调
+
+目前学术界一般将NLP任务的发展分为四个阶段，即NLP四范式: [^通俗易懂的LLM(上篇)]
+
+[^通俗易懂的LLM(上篇)]: 通俗易懂的LLM(上篇), https://blog.csdn.net/qq_39439006/article/details/130796416
+
+- **第一范式**: 基于「`传统机器学习模型`」的范式，如TF-IDF特征+朴素贝叶斯等机器算法；
+- **第二范式**: 基于「`深度学习模型`」的范式，如word2vec特征+LSTM等深度学习算法，相比于第一范式，模型准确有所提高，特征工程的工作也有所减少；
+
+- **第三范式**: 基于「`预训练模型+fine-tuning`」的范式，如Bert+fine-tuning的NLP任务，相比于第二范式，模型准确度显著提高，模型也随之变得更大，但小数据集就可训练出好模型；
+
+- **第四范式**: 基于「`预训练模型+Prompt+预测`」的范式，如Bert+Prompt的范式相比于第三范式，模型训练所需的训练数据显著减少。
+
+在整个NLP领域，你会发现整个发展是朝着精度更高 少监督，甚至无监督的方向发展的。下面我们对第三范式 第四范式进行详细介绍。
+
+- 总的来说
+  - 基于Fine-Tuning的方法是让预训练模型去迁就下游任务。
+  - 基于Prompt-Tuning的方法可以让下游任务去迁就预训练模型。
+
+LLM模型训练过程中的三个核心步骤
+1. 预训练语言模型 $LLM^{SSL}$ (self-supervised-learning)
+2. (指令)监督微调预训练模型 $LLM^{SFT}$ (supervised-fine-tuning)
+3. 基于人类反馈的强化学习微调 $LLM^{RL}$ (reinforcement-learning)
+
+### self-supervised-learning 预训练阶段
+
+- 从互联网上收集海量的文本数据，通过自监督的方式训练语言模型，根据上下文来预测下个词。
+- token的规模大概在trillion级别，这个阶段要消耗很多资源，海量的数据采集 清洗和计算，
+- 该阶段的目的是：通过海量的数据，让模型接触不同的语言模式，让模型拥有理解和生成上下文连贯的自然语言的能力。
+
+![self-supervised-learning](https://img-blog.csdnimg.cn/3d850b6ad88641a884f41921c8776e76.webp#pic_center)
+
+训练过程大致如下：
+
+- Training data: 来自互联网的开放文本数据，整体质量偏低
+
+- Data scale: 词汇表中的token数量在trillion级别
+
+- $LLM^{SSL}_ϕ$​: 预训练模型
+
+- $[T_1​,T_2​,...,T_V​]$ : vocabulary 词汇表，训练数据中词汇的集合
+
+- $V$: 词汇表的大小
+
+- $f(x)$: 映射函数把词映射为词汇表中的索引即：token.
+  - if $x$ is $T_k$​ in vocab， $f(x) = k$
+
+- $(x_1​,x_2​,...,x_n​)$, 根据文本序列生成训练样本数据:
+    - Input： $x=(x_1​,x_2​,...,x_{i−1}​)$
+    - Output(label) : $x_i​$
+
+- $(x,xi​)$，训练样本:
+    - Let $k = f(x_i), word→token$
+    - Model’s output: $LLM^{SSL}(x)=[\bar{y_​1}​,\bar{y​_2}​,...,\bar{y_​V}​]$
+    - 模型预测下一个词的概率分布，Note : $∑_j \bar{y_j} = 1$
+    - The loss value：$CE(x,x_i​;ϕ)= −log(\overline{y}_k)$
+- Goal : find ϕ, Minimize $CE(\phi) = -E_x log(\overline{y}_k)$
+
+- 预先训练阶段 $LLM^{SSL}$ LLMSSL还不能正确的响应用户的提示
+  - 例如，如果提示“法国的首都是什么？”这样的问题，模型可能会回答另一个问题的答案，
+  - 例如，模型响应的可能是“_意大利的首都是什么？_”，因为模型可能没有“理解”/“对齐aligned”用户的“意图”，只是复制了从训练数据中观察到的结果。
+
+- 为了解决这个问题，出现了一种称为**监督微调**或者也叫做**指令微调**的方法。
+  - 通过在少量的示例数据集上采用监督学习的方式对 $LLM^{SSL}$ 进行微调，经过微调后的模型，可以更好地理解和响应自然语言给出的指令。
+
+---
+
+### Fine-Tuning(微调)
+
+- Fine-Tuning是一种迁移学习，在自然语言处理(NLP)中，Fine-Tuning是用于将预训练的语言模型适应于特定任务或领域。
+
+- 基本思想是采用已经在大量文本上进行训练的预训练语言模型，然后在小规模的任务特定文本上继续训练它。
+
+- Fine-Tuning的概念已经存在很多年，并在各种背景下被使用。
+  - Fine-Tuning在NLP中最早的已知应用是在神经机器翻译(NMT)的背景下，其中研究人员使用预训练的神经网络来初始化一个更小的网络的权重，然后对其进行了特定的翻译任务的微调。
+
+- 经典的Fine-Tuning方法包括将预训练模型与少量特定任务数据一起继续训练。
+  - 在这个过程中，预训练模型的权重被更新，以更好地适应任务。
+  - 所需的Fine-Tuning量取决于预训练语料库和任务特定语料库之间的相似性。
+  - 如果两者相似，可能只需要少量的Fine-Tuning，如果两者不相似，则可能需要更多的Fine-Tuning。
+
+- Bert模型2018年横空出世之后，将Fine-Tuning推向了新的高度。不过目前来看，Fine-Tuning逐渐退出了tuning研究的舞台中心: **LLM蓬勃发展，Fine-Tuning这种大规模更新参数的范式属实无法站稳脚跟**。而更适应于LLM的tuning范式，便是接下来我们要介绍的Prompt-Tuning Instruction-Tuning等。
+
+![Screenshot 2024-06-20 at 15.29.57](/assets/img/Screenshot%202024-06-20%20at%2015.29.57.png)
+
+![Screenshot 2024-06-20 at 15.30.14](/assets/img/Screenshot%202024-06-20%20at%2015.30.14.png)
+
+---
+
+### Supervised Fine-Tuning (SFT 监督微调阶段)
+
+- good option when you have a well-defined task with available labeled data.
+
+- particularly effective for domain-specific applications where the language or content significantly differs from the data the large model was originally trained on.
+
+Supervised fine-tuning adapts model behavior with a labeled dataset.
+- This process adjusts the model's weights to `minimize the difference between its predictions and the actual labels`.
+
+For example, it can improve model performance for the following types of tasks:
+
+- Classification
+- Summarization
+- Extractive question answering
+- Chat
+
+![Screenshot 2024-06-25 at 12.23.55](/assets/img/Screenshot%202024-06-25%20at%2012.23.55.png)
+
+![pic](https://img-blog.csdnimg.cn/beac83f74a584e10aea968a31271a30f.png#pic_center)
+
+- SFT(Supervised Fine-Tuning)阶段的目标是`优化预训练模型，使模型生成用户想要的结果`。
+  - 在该阶段，给模型展示`如何适当地响应`不同的提示 (指令) (例如问答，摘要，翻译等)的示例。
+  - 这些示例遵循 (prompt response)的格式，称为演示数据。
+  - 通过基于示例数据的监督微调后，模型会模仿示例数据中的响应行为，学会问答 翻译 摘要等能力，
+  - OpenAI 称为：监督微调行为克隆 。
+
+- 基于LLM指令微调的突出优势在于，对于任何特定任务的专用模型，只需要在通用大模型的基础上通过特定任务的指令数据进行微调，就可以解锁LLM在特定任务上的能力，不在需要从头去构建专用的小模型。
+
+- 事实也证明，经过微调后的小模型可以生成比没有经过微调的大模型更好的结果：
+
+指令微调过程如下：
+
+```md
+- Training Data : 高质量的微调数据，由人工产生。
+
+- Data Scale : 10000~100000
+    - InstructGPT : ~14500个人工示例数据集。
+    - Alpaca : 52K ChatGPT指令数据集。
+
+- Model input and output
+    - Input : 提示 (指令)。
+    - Output : 提示对应的答案(响应)
+
+- Goal : 最小化交叉熵损失，只计算出现在响应中的token的损失。
+```
+
+---
+
+### RLHF 人类反馈强化学习阶段
+
+> 大语言模型(LLM)和基于人类反馈的强化学习(RLHF)  [^LLM和RLHF]
+
+[^LLM和RLHF]: 大语言模型(LLM)和基于人类反馈的强化学习(RLHF), https://blog.csdn.net/u014281392/article/details/130585256
+
+- 在经过监督 (指令)微调后，LLM模型已经可以根据指令生成正确的响应了，为什么还要进行强化学习微调？
+
+  - 因为随着像ChatGPT这样的通用聊天机器人的日益普及，全球数亿的用户可以访问非常强大的LLM，确保这些模型不被用于恶意目的，同时拒绝可能导致造成实际伤害的请求至关重要。
+
+- 恶意目的的例子如下：
+  - 具有编码能力的LLM可能会被用于以创建**恶意软件**。
+  - 在社交媒体平台上大规模的使用聊天机器人**扭曲公共话语**。
+  - 当LLM无意中从训练数据中复制**个人身份信息**造成的隐私风险。
+  - 用户向聊天机器人寻求社交互动和情感支持时可能会造成**心理伤害**。
+
+- 为了应对以上的风险，需要采取一些策略来防止LLM的能力不被滥用，构建一个可以与人类价值观保持一致的LLM，RLHF (从人类反馈中进行强化学习)可以解决这些问题，让AI更加的Helpfulness Truthfulness和Harmlessness。
+
+#### 奖励模型
+
+- 在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使Policy模型产生更好的 `action` 。
+
+- 在RLHF微调的过程，也需要一个`Reward Model`来充当奖励函数，它代表着人类的价值观，RM 的输入是 `(prompt, response)`，返回一个分数。
+
+- response可以看作LLM的 `action` ，LLM看作Policy模型，通过RL框架把人类的价值观引入LLM。
+
+![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
+
+#### 对比数据集
+
+- 在训练RM之前，需要构建对比数据
+  - 通过人工区分出好的回答和差的回答
+  - 数据通过经过监督微调 (SFT) 后的 $LLM^{SFT}$ 生成，随机采样一些prompt，通过模型生成多个response，
+  - 通过人工对结果进行两两排序，区分出好的和差的。
+
+- 数据格式如下：
+
+$(prompt, good_response，bad_response)$
+
+奖励模型的训练过程如下：
+
+- Training Data : 高质量的人工标记数据集$(prompt, winning_response, losing_response)$
+
+- Data Scale : 100k ~ 1M
+
+- $R_{\theta}$​ : 奖励模型
+
+- Training data format:
+  - $$x$ $ : prompt
+  - $y^w, y_w, yw​$ : good response
+  - $y^l, y_l, yl​$ : bad response
+
+$$\begin{pmatrix}
+    x & y^w & y^l \
+    x & y_w & y_l \
+    x & yw & yl \
+\end{pmatrix}$$
+
+- For each training sample:
+
+  - $s_w = R_{\theta}(x, y_w)$，奖励模型的评价
+  - $s_l = R_{\theta}(x,y_l)$
+  - $Loss: Minimize -log(\sigma(s_w - s_l)$
+
+- Goal : find θ to minimize the expected loss for all training samples.
+  - $-E_xlog(\sigma(s_w - s_l)$
+
+#### PPO微调
+
+![pic](https://img-blog.csdnimg.cn/e8d15a8e222a49aea708b25fcd4e7cf0.png#pic_center)
+
+1. 从数据中随机采样prompt。
+2. Policy( $LLM^{RL}$ 即： $LLM^{SFT}$ )，根据prompt生成response。
+3. Reward模型根据 $(prompt, response)$，计算分数score。
+4. 根据score更新Policy模型 (Policy是在 $LLM^{SFT}$ 基础上微调得到的)。
+
+- 在这个过程中，policy( $LLM^{RL}$ )会不断更新，为了不让它偏离SFT阶段的模型太远，OpenAI在训练过程中增加了KL离散度约束，保证模型在得到更好的结果同时不会跑偏，这是因为Comparison Data不是一个很大的数据集，不会包含全部的回答，对于任何给定的提示，都有许多可能的回答，其中绝大多数是 RM 以前从未见过的。
+- 对于许多未知 (提示 响应)对，RM 可能会错误地给出极高或极低的分数。如果没有这个约束，模型可能会偏向那些得分极高的回答，它们可能不是好的回答。
+
+RLHF微调过程如下：
+
+- ML task : RL(PPO)
+
+  - Action Space : the vocabulary of tokens the LLM uses. Taking action means choosing a token to generate.
+  - Observation Space : the distribution over all possible prompts.
+  - Policy: the probability distribution over all actions to take (aka all tokens to generate) given an observation (aka a prompt). An LLM constitutes a policy because it dictates how likely a token is to be generated next.
+  - Reward function: the reward model.
+
+- Training data: randomly selected prompts
+
+- Data scale: 10,000 - 100,000 prompts
+
+  - [InstructGPT](https://openai.com/research/instruction-following#sample1): 40,000 prompts
+
+- $R_{\phi}$​ : the reward model.
+
+- $LLM^{SFT}$ : the supervised finetuned model(instruction finetuning).
+
+- $LLM^{RL}_{\phi}$​ : the model being trained with PPO, parameterized by $\phi$ .
+
+  - $x$: prompt.
+  - $D_{RL}$​ : the distribution of prompts used explicitly for the RL model.
+  - $D_{pretrain}$​ : the distribution of the training data for the pretrain model.
+
+  - For each training step, sample a batch of $x_{RL}$​ from $D_{RL}$​ and a batch of $x_{pretrain}$​ from $D_{pretrain}$​.
+
+    1. For each $x_{RL}$​ , use $LLM_{\phi}^{RL}$​ to generate a response : $y \sim LLM_{\phi}^{RL}(x_{RL})$
+
+        $$
+        \text{objective}_1(x_{RL}, y; \phi) = R_{\theta}(x_{RL}, y) - \beta \log (\frac{LLM^{RL}_\phi(y \vert x)}{LLM^{SFT}(y \vert x)})
+        $$
+
+    2. For each x p r e t r a i n x_{pretrain} xpretrain​, the objective is computed as follows. Intuitively, this objective is to make sure that the RL model doesn’t perform worse on text completion - the task the pretrained model was optimized for.
+
+        $$
+        \text{objective}_2(x_{pretrain}; \phi) = \gamma \log (LLM^{RL}_\phi(x_{pretrain})
+        $$
+
+    3. The final objective is the sum of the expectation of two objectives above.
+
+        $$
+        \text{objective}(\phi) = E_{x \sim D_{RL}}E_{y \sim LLM^{RL}_\phi(x)}
+        $$
+
+        \
+
+        [R_{\theta}(x, y) - \beta \log \frac{LLM^{RL}_\phi(y \vert x)}{LLM^{SFT}(y \vert x)}] +
+
+        $$
+        \gamma E_{x \sim D_{pretrain}}\log LLM^{RL}_\phi(x)
+        $$
+
+- Goal: Maximize  $objective(\phi)$
+
+---
 
 #### PVP - Pattern-Verbalizer-Pair
 
