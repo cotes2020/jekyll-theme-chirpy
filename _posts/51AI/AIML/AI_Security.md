@@ -2,7 +2,7 @@
 title: AI - Security
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AI]
+categories: [51AI, AIML]
 # img: /assets/img/sample/rabbit.png
 tags: [AI, ML]
 --- -->

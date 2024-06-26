@@ -1,7 +1,7 @@
 ---
 title: AI - 1st - Intro to Machine Learning
 date: 2021-08-11 11:11:11 -0400
-categories: [51AI]
+categories: [51AI, AIML]
 tags: [AI, ML]
 toc: true
 ---

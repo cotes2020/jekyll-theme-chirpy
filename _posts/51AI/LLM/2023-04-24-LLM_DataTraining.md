@@ -42,10 +42,12 @@ tags: [AI, ML]
       - [5.3 大模型Fine-Tuning之分布式训练](#53-大模型fine-tuning之分布式训练)
       - [5.4 大模型知识问答](#54-大模型知识问答)
   - [改進LLM](#改進llm)
-    - [從能找到的最強LLM（GPT4）開始](#從能找到的最強llmgpt4開始)
+    - [從能找到的最強LLM(GPT4)開始](#從能找到的最強llmgpt4開始)
       - [如果LLM沒有達成標準](#如果llm沒有達成標準)
       - [如果LLM沒有達成標準](#如果llm沒有達成標準-1)
   - [LLM Evaluation](#llm-evaluation)
+  - [Traning terms](#traning-terms)
+    - [Gradient Descent](#gradient-descent)
 
 ---
 
@@ -707,6 +709,8 @@ Prompt-Tuning是用来自动构建pattern的方法
 
 > 一种特别适合改进模型在多种任务上表现的策略
 
+---
+
 #### Instruction-Tuning的提出
 
 - 提出的动机: 大规模的语言模型 如GPT-3 在zero-shot上不那么成功, 但却可以非常好地学习few-shot
@@ -715,9 +719,8 @@ Prompt-Tuning是用来自动构建pattern的方法
   - ![Screenshot 2024-06-20 at 15.24.07](/assets/img/Screenshot%202024-06-20%20at%2015.24.07.png)
   - ![Screenshot 2024-06-20 at 15.24.15](/assets/img/Screenshot%202024-06-20%20at%2015.24.15.png)
 
-- 包含一个或多个你希望模型执行的示例（称为一次或几次推理）足以帮助模型识别任务并生成良好的完成结果。
-  -
-  ![Screenshot 2024-06-20 at 15.25.53](/assets/img/Screenshot%202024-06-20%20at%2015.25.53.png)
+- 包含一个或多个你希望模型执行的示例(称为一次或几次推理)足以帮助模型识别任务并生成良好的完成结果。
+  - ![Screenshot 2024-06-20 at 15.25.53](/assets/img/Screenshot%202024-06-20%20at%2015.25.53.png)
   - 然而，这种策略有几个缺点。
     - 对于较小的模型，即使包含五六个示例，也不总是有效。
     - 提示中包含的任何示例都会占据上下文窗口中宝贵的空间，从而减少包含其他有用信息的空间。
@@ -1910,7 +1913,7 @@ ChatGLM-6B+LoRA
 2. 用API來服務還是要自己訓練、部屬模型？
 3. 需要Finetune嗎？
 4. 要做prompt engineering嗎？怎麼做？
-5. 要做retrival嗎？，RAG（Retrieval Augmented Generation）架構對我的任務有幫助嗎？
+5. 要做retrival嗎？，RAG(Retrieval Augmented Generation)架構對我的任務有幫助嗎？
 6. 主流模型就有十多個、Training有數十種的方法，到底該怎麼辦？
 7. ......
 
@@ -1928,7 +1931,7 @@ FSDL的課程:
 
 ---
 
-### 從能找到的最強LLM（GPT4）開始
+### 從能找到的最強LLM(GPT4)開始
 
 - 不論如何，請從你手邊能找到的最強LLM開始產品
 - **對於任何一個AI產品而言，同時要面對兩個不確定性：1. 需求的不確定，2. 技術的不確定** 。
@@ -1940,7 +1943,7 @@ FSDL的課程:
 2. **分析錯誤來源**
    1. 如果錯誤跟factual比較有關， **藉由跑「給定相關資訊來進行預測」的實驗測試LLM到底是不具備相關知識還是Hallucination** 。
    2. 如果錯誤跟reasoning比較有關，藉由 **perplexity區分model需要language modeling finetuning還是supervised finetuning。**
-3. **如果finetuning是可行的（有一定量資料、成本可接受），直接跑小範圍的finetune可以驗證很多事情。**
+3. **如果finetuning是可行的(有一定量資料、成本可接受)，直接跑小範圍的finetune可以驗證很多事情。**
 
 ---
 
@@ -1950,7 +1953,7 @@ FSDL的課程:
 
 1. **確認unit economics** ：
    1. 確保每一次用戶使用服務時，你不會虧錢。
-   2. Ex：用戶訂閱你服務一個月只要120，但是他平均每個月會使用超過120元的GPT-4額度，這就會出現問題（除非你有更完備的商業規劃）。
+   2. Ex：用戶訂閱你服務一個月只要120，但是他平均每個月會使用超過120元的GPT-4額度，這就會出現問題(除非你有更完備的商業規劃)。
 
 2. **找尋護城河** ：
    1. 因為你目前是使用第三方提供的LLM，所以你技術上不具備獨創性，請從其他方面尋找護城河。
@@ -1974,39 +1977,39 @@ FSDL的課程:
 
 ![Screenshot 2023-11-27 at 10.34.11](/assets/img/Screenshot%202023-11-27%20at%2010.34.11.png)
 
-1. **（Factual相關）LLM不具備這個知識** ：
-   1. 嘗試RAG（Retrieval Augmented Generation）
+1. **(Factual相關)LLM不具備這個知識** ：
+   1. 嘗試RAG(Retrieval Augmented Generation)
    2. finetuning
 
-2. **（Factual相關）LLM在胡言亂語（Hallucination）** ：
+2. **(Factual相關)LLM在胡言亂語(Hallucination)** ：
    1. prompt engineering (CoT, Self Critique)，
    2. finetuning
 
-3. **（Reasoning相關）LLM不適應這種類型語料** ：
+3. **(Reasoning相關)LLM不適應這種類型語料** ：
    1. finetuning: language modeling，
    2. 更換LLM
 
-4. **（Reasoning相關）LLM無法正確推理這個問題** ：
+4. **(Reasoning相關)LLM無法正確推理這個問題** ：
    1. finetuning: supervised finetuning，
    2. In-Context Learning
 
 **Factual相關**
 - 如果LLM回答問題錯誤，
 - 有可能是LLM根本不具備相關知識，導致他只能隨便回答，
-- 也有可能試產生了Hallucination（胡言亂語）的現象
+- 也有可能試產生了Hallucination(胡言亂語)的現象
 
 而最好區分這兩者的方法，就是做以下實驗。
 
 1. ICL + Retrieval Augmented Generation
    1. 選定 **k筆LLM答錯的資料**
-   2. 在prompt中加入能夠回答這題的相關資訊（也是你確定你未來可以取得的相關資訊），檢測是否有 **明顯變好**
-   3. 如果有的話那就可以走 **RAG（Retrieval Augmented Generation）** 這條路
+   2. 在prompt中加入能夠回答這題的相關資訊(也是你確定你未來可以取得的相關資訊)，檢測是否有 **明顯變好**
+   3. 如果有的話那就可以走 **RAG(Retrieval Augmented Generation)** 這條路
    4. 如果還是有一定比例的資料無法達成，那則加入像是 **self critique** 之類的prompt engineering的方法。
 
 2. 更直覺的思考方式：
    1. 你想要LLM完成的這個任務，會不會在網路上常常出現？
    2. 如果會常常出現，那高機率用Prompt engineering就可以，
-   3. 如果是冷門資訊，甚至是網路上不會出現的資訊（機構內部資訊），那就一定要走RAG。
+   3. 如果是冷門資訊，甚至是網路上不會出現的資訊(機構內部資訊)，那就一定要走RAG。
    4. Ex:
       1. 開發銀行的客服機器人->RAG
       2. 開發一個每天誇獎對話機器人，高機率只要prompr engineering，因為誇獎的用詞、知識、方法網路上出現很多次。
@@ -2020,7 +2023,7 @@ FSDL的課程:
 
 **perplexity是用來衡量「LLM預測下一個詞的混亂程度」**
 - 如果perplexity高
-  - 代表LLM對這類型的文本領域（domain）根本不熟，可能是語言不熟悉，也有可能是內容領域不熟悉
+  - 代表LLM對這類型的文本領域(domain)根本不熟，可能是語言不熟悉，也有可能是內容領域不熟悉
   - 這時候就一定要`language model finetuning，藉由unsupervised finetuning`，**加強LLM對文本領域的熟悉度**。
 
 - 如果perplexity很低，但是問題還是解決不好
@@ -2053,4 +2056,53 @@ Advanced:
 Expert:
 - Model-based checks ("Are you sure?")
 
-.
+---
+
+## Traning terms
+
+Epoch vs Batch Size vs Iterations
+
+### Gradient Descent
+
+- It is an iterative optimization algorithm used in machine learning to find the best results (minima of a curve).
+
+  - `Gradient`: the rate of inclination or declination of a slope.
+
+  - `Descent`: the instance of descending.
+
+- The algorithm is iterative means that we need to get the results multiple times to get the most optimal result.
+
+- The iterative quality of the gradient descent helps a under-fitted graph to make the graph fit optimally to the data.
+
+
+![Screenshot 2024-06-25 at 17.30.45](/assets/img/Screenshot%202024-06-25%20at%2017.30.45.png)
+
+![Screenshot 2024-06-25 at 17.30.40](/assets/img/Screenshot%202024-06-25%20at%2017.30.40.png)
+
+
+learning rate
+- The Gradient descent has a parameter called `learning rate`. As you can see above (left), initially the steps are bigger that means the learning rate is higher and as the point goes down the learning rate becomes more smaller by the shorter size of steps. Also,the Cost Function is decreasing or the cost is decreasing .Sometimes you might see people saying that the Loss Function is decreasing or the loss is decreasing, both Cost and Loss represent same thing (btw it is a good thing that our loss/cost is decreasing).
+We need terminologies like epochs, batch size, iterations only when the data is too big which happens all the time in machine learning and we can’t pass all the data to the computer at once. So, to overcome this problem we need to divide the data into smaller sizes and give it to our computer one by one and update the weights of the neural networks at the end of every step to fit it to the data given.
+Epochs
+One Epoch is when an ENTIRE dataset is passed forward and backward through the neural network only ONCE.
+Since one epoch is too big to feed to the computer at once we divide it in several smaller batches.
+Why we use more than one Epoch?
+I know it doesn’t make sense in the starting that — passing the entire dataset through a neural network is not enough. And we need to pass the full dataset multiple times to the same neural network. But keep in mind that we are using a limited dataset and to optimise the learning and the graph we are using Gradient Descent which is an iterative process. So, updating the weights with single pass or one epoch is not enough.
+One epoch leads to underfitting of the curve in the graph (below).
+
+As the number of epochs increases, more number of times the weight are changed in the neural network and the curve goes from underfitting to optimal to overfitting curve.
+So, what is the right numbers of epochs?
+Unfortunately, there is no right answer to this question. The answer is different for different datasets but you can say that the numbers of epochs is related to how diverse your data is… just an example - Do you have only black cats in your dataset or is it much more diverse dataset?
+Batch Size
+Total number of training examples present in a single batch.
+Note: Batch size and number of batches are two different things.
+But What is a Batch?
+As I said, you can’t pass the entire dataset into the neural net at once. So, you divide dataset into Number of Batches or sets or parts.
+Just like you divide a big article into multiple sets/batches/parts like Introduction, Gradient descent, Epoch, Batch size and Iterations which makes it easy to read the entire article for the reader and understand it. 😄
+Iterations
+To get the iterations you just need to know multiplication tables or have a calculator. 😃
+Iterations is the number of batches needed to complete one epoch.
+Note: The number of batches is equal to number of iterations for one epoch.
+Let’s say we have 2000 training examples that we are going to use .
+We can divide the dataset of 2000 examples into batches of 500 then it will take 4 iterations to complete 1 epoch.
+Where Batch Size is 500 and Iterations is 4, for 1 complete epoch.
