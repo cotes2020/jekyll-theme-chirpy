@@ -844,7 +844,6 @@ CoT (Chain of Thoughts) approach
 ToT (Tree of Thoughts) approach
 - LLMs evaluate themselves at each stage of thought and stop inefficient approaches early, switching to alternative methods.
 
-
 #### Chain-of-Thought(思维链)
 
 随着LLM的越来越大，以及tuning技术的快速发展，LLM在包括情感分析在内的传统自然语言任务上表现越来越好，但是单纯的扩大LLM模型的参数量无法让模型在算术推理/常识推理/符号推理等推理任务上取得理想的效果。 如何提升LLM在这些推理任务上性能呢？在此前关于LLM的推理任务中，有两种方法:
