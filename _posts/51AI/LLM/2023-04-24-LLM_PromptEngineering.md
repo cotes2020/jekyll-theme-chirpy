@@ -1,5 +1,5 @@
 ---
-title: AI - AI Prompt engineering
+title: LLM - Prompt engineering
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI, LLM]
@@ -7,9 +7,8 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
-# AIML - Prompt engineering
 
-- [AIML - Prompt engineering](#aiml---prompt-engineering)
+- [LLM - Prompt engineering](#llm---prompt-engineering)
   - [prompt engineering](#prompt-engineering)
     - [Prompt](#prompt)
     - [History of prompt engineering](#history-of-prompt-engineering)
@@ -48,7 +47,9 @@ ref:
 - https://aws.amazon.com/what-is/prompt-engineering/#:~:text=Prompt%20engineering%20is%20the%20process,high%2Dquality%20and%20relevant%20output.
 - https://www.leewayhertz.com/prompt-engineering/
 
+---
 
+# LLM - Prompt engineering
 
 ---
 

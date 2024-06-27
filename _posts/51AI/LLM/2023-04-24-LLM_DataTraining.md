@@ -1,5 +1,5 @@
 ---
-title: LLM - LLM Data Training
+title: LLM - Data Training
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI, LLM]
@@ -12,35 +12,34 @@ tags: [AI, ML]
     - [Prompt-Tuning(提示微调)](#prompt-tuning提示微调)
     - [ICL - In-context learning 上下文学习](#icl---in-context-learning-上下文学习)
   - [Tuning 微调](#tuning-微调)
-    - [self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
+    - [Fine-T vs Prompt-T vs Instruction-T](#fine-t-vs-prompt-t-vs-instruction-t)
     - [Fine-Tuning(微调)](#fine-tuning微调)
+    - [self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
     - [Supervised Fine-Tuning (SFT 监督微调阶段)](#supervised-fine-tuning-sft-监督微调阶段)
-    - [RLHF 人类反馈强化学习阶段](#rlhf-人类反馈强化学习阶段)
+    - [Reinforcement learning from human feedback (RLHF 人类反馈强化学习阶段)](#reinforcement-learning-from-human-feedback-rlhf-人类反馈强化学习阶段)
       - [奖励模型](#奖励模型)
       - [对比数据集](#对比数据集)
       - [PPO微调](#ppo微调)
       - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
-      - [Prompt-Tuning方法](#prompt-tuning方法)
-        - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
-        - [Hard Prompt \& Soft Prompt](#hard-prompt--soft-prompt)
-        - [Parameter-Efficient Prompt Tuning](#parameter-efficient-prompt-tuning)
-        - [P-Tuning](#p-tuning)
-        - [PPT (Pre-trained Prompt Tuning)](#ppt-pre-trained-prompt-tuning)
+    - [Prompt-Tuning方法](#prompt-tuning方法)
+      - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
+      - [Hard Prompt \& Soft Prompt](#hard-prompt--soft-prompt)
+      - [Parameter-Efficient Prompt Tuning](#parameter-efficient-prompt-tuning)
+      - [P-Tuning](#p-tuning)
+      - [Pre-trained Prompt Tuning (PPT)](#pre-trained-prompt-tuning-ppt)
       - [Prompt-Tuning Issue](#prompt-tuning-issue)
         - [Catastrophic forgetting](#catastrophic-forgetting)
     - [Instruction-Tuning(指示微调)](#instruction-tuning指示微调)
-      - [Instruction-Tuning的提出](#instruction-tuning的提出)
-    - [Fine-Tuning vs Prompt-Tuning vs Instruction-Tuning](#fine-tuning-vs-prompt-tuning-vs-instruction-tuning)
-    - [Chain-of-Thought(思维链)](#chain-of-thought思维链)
+    - [XXX-of-Thoughts](#xxx-of-thoughts)
+      - [Chain-of-Thought(思维链)](#chain-of-thought思维链)
       - [Manual-CoT(人工思维链)](#manual-cot人工思维链)
-      - [4.2 Zero-shot-CoT(零示例思维链)](#42-zero-shot-cot零示例思维链)
-      - [4.3 Auto-CoT(自动思维链)](#43-auto-cot自动思维链)
+      - [Zero-shot-CoT(零示例思维链)](#zero-shot-cot零示例思维链)
+      - [Auto-CoT(自动思维链)](#auto-cot自动思维链)
     - [Tree-of-Thought (ToT)](#tree-of-thought-tot)
     - [Parameter-Efficient Fine-Tuning (PEFT 参数有效性微调)](#parameter-efficient-fine-tuning-peft-参数有效性微调)
-      - [5.1 PEFT介绍](#51-peft介绍)
+      - [PEFT介绍](#peft介绍)
       - [5.2 PEFT实践](#52-peft实践)
-      - [5.3 大模型Fine-Tuning之分布式训练](#53-大模型fine-tuning之分布式训练)
-      - [5.4 大模型知识问答](#54-大模型知识问答)
+      - [大模型Fine-Tuning之分布式训练](#大模型fine-tuning之分布式训练)
   - [改進LLM](#改進llm)
     - [從能找到的最強LLM(GPT4)開始](#從能找到的最強llmgpt4開始)
       - [如果LLM沒有達成標準](#如果llm沒有達成標準)
@@ -48,6 +47,10 @@ tags: [AI, ML]
   - [LLM Evaluation](#llm-evaluation)
   - [Traning terms](#traning-terms)
     - [Gradient Descent](#gradient-descent)
+    - [Epochs](#epochs)
+    - [Batch Size](#batch-size)
+    - [Iterations](#iterations)
+      - [Q\&A](#qa)
 
 ---
 
@@ -233,6 +236,92 @@ LLM模型训练过程中的三个核心步骤
 2. (指令)监督微调预训练模型 $LLM^{SFT}$ (supervised-fine-tuning)
 3. 基于人类反馈的强化学习微调 $LLM^{RL}$ (reinforcement-learning)
 
+---
+
+### Fine-T vs Prompt-T vs Instruction-T
+
+- **Fine-Tuning**:
+  - 先在大规模语料上进行预训练，然后再在某个下游任务上进行微调，
+  - 如Bert+Fine-Tuning
+
+- **Prompt-Tuning**:
+  - 先选择某个通用的大规模预训练模型，然后为具体的任务`生成一个prompt模板`以适应大模型进行微调，
+  - 如GPT-3+Prompt-Tuning；
+
+- **Instruction-Tuning**:
+  - 仍然在预训练语言模型的基础上，先在多个已知任务上进行指令微调，然后在某个新任务上进行zero-shot，
+  - 如GPT-3+Instruction-Tuning
+
+
+要提出一个好的方式那必然是用来「解决另一种方式存在的缺陷或不足」
+
+**Prompt-Tuning vs Fine-Tuning**
+
+- 预训练模型PLM+Fine-Tuning范式
+  - 这个范式常用的结构是Bert+Fine-Tuning，这种范式若想要预训练模型更好的应用在下游任务，需要利用下游数据对模型参数微调；
+  - 首先，模型在预训练的时候，采用的训练形式: 自回归 自编码，这与下游任务形式存在极大的 gap，不能完全发挥预训练模型本身的能力，必然导致较多的数据来适应新的任务形式(少样本学习能力差 容易过拟合)。
+  - 其次，现在的预训练模型参数量越来越大，为了一个特定的任务去Fine-Tuning一个模型，会占用特别多的训练资源，对一些中小企业或者用户来说并不现实，也会造成资源的一定浪费。
+
+- Prompt-Tuning是在Fine-Tuning后发展起来的，可以说是解决NLP领域各种下游问题更好的一种方式。
+  - Prompt-Tuning则很好的解决了这些问题，它将所有下游任务统一成预训练任务，以特定的模板，将下游任务的数据转成自然语言形式，充分挖掘预训练模型本身的能力。本质上就是设计一个比较契合上游预训练任务的模板，通过模板的设计来挖掘出上游预训练模型的潜力，让上游的预训练模型在尽量不需要标注数据的情况下比较好的完成下游的任务，即只需要少量数据的 Prompt Tuning，就可以实现很好的效果，具有较强的零样本/少样本学习能力。
+  - [Prompt-Tuning VS Fine-Tuning](https://www.zhihu.com/question/504324484?utm_id=0)。
+
+
+**Prompt-Tuning vs Instruction-Tuning**:
+
+![FT vs PT vs IT](https://img-blog.csdnimg.cn/8ac41efdf9884f1ea7876ef8886cdbd5.png#pic_center)
+
+1. Prompt和instruction都是指导语言模型生成输出的文本片段，但它们有着不同的含义和用途。
+
+   - Prompt更多地用于帮助模型理解任务和上下文，而Instruction则更多地用于指导模型执行具体操作或完成任务。
+
+   - Prompt:
+     - 通常是一种短文本字符串，用于指导语言模型生成响应。
+       - Prompt提供上下文和任务相关信息，以帮助模型更好地理解要求，并生成正确的输出。
+     - Prompt通常是人类设计的，以帮助模型更好地理解特定任务或领域；
+     - 例如，在问答任务中，prompt可能包含问题或话题的描述，以帮助模型生成正确的答案。
+   - Instruction
+     - 通常是一种更详细的文本，用于指导模型执行特定操作或完成任务。
+     - Instruction可以是计算机程序或脚本，也可以是人类编写的指导性文本。
+     - Instruction的目的是告诉模型如何处理数据或执行某个操作，而不是简单地提供上下文或任务相关信息。
+
+2. prompt在没精调的模型上也能有一定效果(模型不经过Prompt-Tuning，直接针对下游任务进行推理)，而Instruction-Tuning则必须对模型精调，让模型知道这种指令模式。
+   - 但是，prompt也有精调，经过Prompt-Tuning之后，模型也就学习到了这个prompt模式，
+   - 精调之后跟Instruction-Tuning有什么区别呢？这就是Instruction-Tuning巧妙的地方了，
+     - Prompt-Tuning都是针对一个任务的，比如做个情感分析任务的Prompt-Tuning，精调完的模型只能用于情感分析任务，
+     - 而经过Instruction-Tuning多任务精调后，可以用于其他任务的zero-shot。
+
+两者的对比主要是基于大模型。
+- Prompt是通过对任务进行一定的描述，或者给一些示例(ICL)，来完成既定任务目标，但是如果不给模型示例(zero-shot)
+
+- prompt表现的很一般，这怎么办呢？能不能让大模型理解任务是做什么的，这样不用示例也能完成任务目标，instruction就是来做这个任务的，它为了让模型具备理解任务的能力，采用大量的指令数据，对模型进行微调，即Instruction-Tuning。
+
+- 因此，instruction和prompt的不同之处在于: instruction是在prompt的基础上，进一步挖掘模型理解任务的能力
+
+---
+
+### Fine-Tuning(微调)
+
+- Fine-Tuning是一种迁移学习，在自然语言处理(NLP)中，Fine-Tuning是用于将预训练的语言模型适应于特定任务或领域。
+
+- 基本思想是采用已经在大量文本上进行训练的预训练语言模型，然后在小规模的任务特定文本上继续训练它。
+
+- Fine-Tuning的概念已经存在很多年，并在各种背景下被使用。
+  - Fine-Tuning在NLP中最早的已知应用是在神经机器翻译(NMT)的背景下，其中研究人员使用预训练的神经网络来初始化一个更小的网络的权重，然后对其进行了特定的翻译任务的微调。
+
+- 经典的Fine-Tuning方法包括将预训练模型与少量特定任务数据一起继续训练。
+  - 在这个过程中，预训练模型的权重被更新，以更好地适应任务。
+  - 所需的Fine-Tuning量取决于预训练语料库和任务特定语料库之间的相似性。
+  - 如果两者相似，可能只需要少量的Fine-Tuning，如果两者不相似，则可能需要更多的Fine-Tuning。
+
+- Bert模型2018年横空出世之后，将Fine-Tuning推向了新的高度。不过目前来看，Fine-Tuning逐渐退出了tuning研究的舞台中心: **LLM蓬勃发展，Fine-Tuning这种大规模更新参数的范式属实无法站稳脚跟**。而更适应于LLM的tuning范式，便是接下来我们要介绍的Prompt-Tuning Instruction-Tuning等。
+
+![Screenshot 2024-06-20 at 15.29.57](/assets/img/Screenshot%202024-06-20%20at%2015.29.57.png)
+
+![Screenshot 2024-06-20 at 15.30.14](/assets/img/Screenshot%202024-06-20%20at%2015.30.14.png)
+
+---
+
 ### self-supervised-learning 预训练阶段
 
 - 从互联网上收集海量的文本数据，通过自监督的方式训练语言模型，根据上下文来预测下个词。
@@ -273,28 +362,6 @@ LLM模型训练过程中的三个核心步骤
 
 - 为了解决这个问题，出现了一种称为**监督微调**或者也叫做**指令微调**的方法。
   - 通过在少量的示例数据集上采用监督学习的方式对 $LLM^{SSL}$ 进行微调，经过微调后的模型，可以更好地理解和响应自然语言给出的指令。
-
----
-
-### Fine-Tuning(微调)
-
-- Fine-Tuning是一种迁移学习，在自然语言处理(NLP)中，Fine-Tuning是用于将预训练的语言模型适应于特定任务或领域。
-
-- 基本思想是采用已经在大量文本上进行训练的预训练语言模型，然后在小规模的任务特定文本上继续训练它。
-
-- Fine-Tuning的概念已经存在很多年，并在各种背景下被使用。
-  - Fine-Tuning在NLP中最早的已知应用是在神经机器翻译(NMT)的背景下，其中研究人员使用预训练的神经网络来初始化一个更小的网络的权重，然后对其进行了特定的翻译任务的微调。
-
-- 经典的Fine-Tuning方法包括将预训练模型与少量特定任务数据一起继续训练。
-  - 在这个过程中，预训练模型的权重被更新，以更好地适应任务。
-  - 所需的Fine-Tuning量取决于预训练语料库和任务特定语料库之间的相似性。
-  - 如果两者相似，可能只需要少量的Fine-Tuning，如果两者不相似，则可能需要更多的Fine-Tuning。
-
-- Bert模型2018年横空出世之后，将Fine-Tuning推向了新的高度。不过目前来看，Fine-Tuning逐渐退出了tuning研究的舞台中心: **LLM蓬勃发展，Fine-Tuning这种大规模更新参数的范式属实无法站稳脚跟**。而更适应于LLM的tuning范式，便是接下来我们要介绍的Prompt-Tuning Instruction-Tuning等。
-
-![Screenshot 2024-06-20 at 15.29.57](/assets/img/Screenshot%202024-06-20%20at%2015.29.57.png)
-
-![Screenshot 2024-06-20 at 15.30.14](/assets/img/Screenshot%202024-06-20%20at%2015.30.14.png)
 
 ---
 
@@ -346,7 +413,7 @@ For example, it can improve model performance for the following types of tasks:
 
 ---
 
-### RLHF 人类反馈强化学习阶段
+### Reinforcement learning from human feedback (RLHF 人类反馈强化学习阶段)
 
 > 大语言模型(LLM)和基于人类反馈的强化学习(RLHF)  [^LLM和RLHF]
 
@@ -524,7 +591,7 @@ PET最核心的部分Pattern-Verbalizer-Pair(PVP)，PET设计了两个很重要�
 
 ---
 
-#### Prompt-Tuning方法
+### Prompt-Tuning方法
 
 Prompt-Tuning是用来自动构建pattern的方法
 
@@ -532,7 +599,7 @@ Prompt-Tuning是用来自动构建pattern的方法
 
 ---
 
-##### Prompt-Oriented Fine-Tuning
+#### Prompt-Oriented Fine-Tuning
 
 需要更新全部参数(包括预训练模型参数)的Prompt-Tuning方法。
 - 训练方法的本质是`将目标任务`转换为`适应预训练模型`的`预训练任务`，以适应预训练模型的学习体系。
@@ -565,7 +632,7 @@ Prompt-Tuning是用来自动构建pattern的方法
 
 ---
 
-##### Hard Prompt & Soft Prompt
+#### Hard Prompt & Soft Prompt
 
 - Hard Prompt和Soft Prompt的提出，是为了解决预训练模型过大，难以针对下游任务进行训练的痛点。
 
@@ -614,7 +681,7 @@ Prompt-Tuning是用来自动构建pattern的方法
 
    - 目前具有代表性的三种Soft Prompt方法如下:
 
-##### Parameter-Efficient Prompt Tuning
+#### Parameter-Efficient Prompt Tuning
 
 - 该方法率先提出了伪标记和连续提示的概念，支持模型能够动态地对模板在语义空间内进行调整。
 
@@ -641,7 +708,7 @@ Prompt-Tuning是用来自动构建pattern的方法
 
 ---
 
-##### P-Tuning
+#### P-Tuning
 
 - P-Tuning是另一个具有代表性的连续提示方法
 
@@ -665,7 +732,7 @@ Prompt-Tuning是用来自动构建pattern的方法
 
 ---
 
-##### PPT (Pre-trained Prompt Tuning)
+#### Pre-trained Prompt Tuning (PPT)
 
 - Prompt-Tuning通常适用于低资源场景，但是由于连续的模板是随机初始化的，即其存在新的参数，少量样本可能依然很难确保这些模板被很好地优化。
 - 因此简单的方法就是对这些连续的模板进行预训练。
@@ -707,11 +774,7 @@ Prompt-Tuning是用来自动构建pattern的方法
 
 > 目前最火的研究范式，性能超过包括ICL在内的prompt learning
 
-> 一种特别适合改进模型在多种任务上表现的策略
-
----
-
-#### Instruction-Tuning的提出
+> 一种特别适合改进模型在**多种任务**上表现的策略
 
 - 提出的动机: 大规模的语言模型 如GPT-3 在zero-shot上不那么成功, 但却可以非常好地学习few-shot
 
@@ -769,72 +832,20 @@ Finetuned Language Net(FLAN) 的具体训练流程:
 - 最后基于LaMDA-PT模型进行微调。
   - LaMDA-PT是一个包含137B参数的自回归语言模型，这个模型在web文档(包括代码) 对话数据和维基百科上进行了预训练，同时有大约10%的数据是非英语数据。然后FLAN混合了所有构造的数据集在128核的TPUv3芯片上微调了60个小时。
 
-### Fine-Tuning vs Prompt-Tuning vs Instruction-Tuning
-
-- **Fine-Tuning**:
-  - 先在大规模语料上进行预训练，然后再在某个下游任务上进行微调，
-  - 如Bert+Fine-Tuning
-
-- **Prompt-Tuning**:
-  - 先选择某个通用的大规模预训练模型，然后为具体的任务`生成一个prompt模板`以适应大模型进行微调，
-  - 如GPT-3+Prompt-Tuning；
-
-- **Instruction-Tuning**:
-  - 仍然在预训练语言模型的基础上，先在多个已知任务上进行指令微调，然后在某个新任务上进行zero-shot，
-  - 如GPT-3+Instruction-Tuning
-
-
----
-
-要提出一个好的方式那必然是用来「解决另一种方式存在的缺陷或不足」
-
-**Prompt-Tuning vs Fine-Tuning**
-
-- 预训练模型PLM+Fine-Tuning范式
-  - 这个范式常用的结构是Bert+Fine-Tuning，这种范式若想要预训练模型更好的应用在下游任务，需要利用下游数据对模型参数微调；
-  - 首先，模型在预训练的时候，采用的训练形式: 自回归 自编码，这与下游任务形式存在极大的 gap，不能完全发挥预训练模型本身的能力，必然导致较多的数据来适应新的任务形式(少样本学习能力差 容易过拟合)。
-  - 其次，现在的预训练模型参数量越来越大，为了一个特定的任务去Fine-Tuning一个模型，会占用特别多的训练资源，对一些中小企业或者用户来说并不现实，也会造成资源的一定浪费。
-
-- Prompt-Tuning是在Fine-Tuning后发展起来的，可以说是解决NLP领域各种下游问题更好的一种方式。
-  - Prompt-Tuning则很好的解决了这些问题，它将所有下游任务统一成预训练任务，以特定的模板，将下游任务的数据转成自然语言形式，充分挖掘预训练模型本身的能力。本质上就是设计一个比较契合上游预训练任务的模板，通过模板的设计来挖掘出上游预训练模型的潜力，让上游的预训练模型在尽量不需要标注数据的情况下比较好的完成下游的任务，即只需要少量数据的 Prompt Tuning，就可以实现很好的效果，具有较强的零样本/少样本学习能力。
-  - [Prompt-Tuning VS Fine-Tuning](https://www.zhihu.com/question/504324484?utm_id=0)。
-
-
-**Prompt-Tuning vs Instruction-Tuning**:
-
-![FT vs PT vs IT](https://img-blog.csdnimg.cn/8ac41efdf9884f1ea7876ef8886cdbd5.png#pic_center)
-
-1. Prompt和instruction都是指导语言模型生成输出的文本片段，但它们有着不同的含义和用途。
-
-   - Prompt更多地用于帮助模型理解任务和上下文，而Instruction则更多地用于指导模型执行具体操作或完成任务。
-
-   - Prompt:
-     - 通常是一种短文本字符串，用于指导语言模型生成响应。
-       - Prompt提供上下文和任务相关信息，以帮助模型更好地理解要求，并生成正确的输出。
-     - Prompt通常是人类设计的，以帮助模型更好地理解特定任务或领域；
-     - 例如，在问答任务中，prompt可能包含问题或话题的描述，以帮助模型生成正确的答案。
-   - Instruction
-     - 通常是一种更详细的文本，用于指导模型执行特定操作或完成任务。
-     - Instruction可以是计算机程序或脚本，也可以是人类编写的指导性文本。
-     - Instruction的目的是告诉模型如何处理数据或执行某个操作，而不是简单地提供上下文或任务相关信息。
-
-2. prompt在没精调的模型上也能有一定效果(模型不经过Prompt-Tuning，直接针对下游任务进行推理)，而Instruction-Tuning则必须对模型精调，让模型知道这种指令模式。
-   - 但是，prompt也有精调，经过Prompt-Tuning之后，模型也就学习到了这个prompt模式，
-   - 精调之后跟Instruction-Tuning有什么区别呢？这就是Instruction-Tuning巧妙的地方了，
-     - Prompt-Tuning都是针对一个任务的，比如做个情感分析任务的Prompt-Tuning，精调完的模型只能用于情感分析任务，
-     - 而经过Instruction-Tuning多任务精调后，可以用于其他任务的zero-shot。
-
-两者的对比主要是基于大模型。
-- Prompt是通过对任务进行一定的描述，或者给一些示例(ICL)，来完成既定任务目标，但是如果不给模型示例(zero-shot)
-
-- prompt表现的很一般，这怎么办呢？能不能让大模型理解任务是做什么的，这样不用示例也能完成任务目标，instruction就是来做这个任务的，它为了让模型具备理解任务的能力，采用大量的指令数据，对模型进行微调，即Instruction-Tuning。
-
-- 因此，instruction和prompt的不同之处在于: instruction是在prompt的基础上，进一步挖掘模型理解任务的能力
 
 ---
 
 
-### Chain-of-Thought(思维链)
+### XXX-of-Thoughts
+
+CoT (Chain of Thoughts) approach
+- LLMs tend to progress linearly in their thinking towards problem solving, and if an error occurs along the way, they tend to proceed along that erroneous criterion.
+
+ToT (Tree of Thoughts) approach
+- LLMs evaluate themselves at each stage of thought and stop inefficient approaches early, switching to alternative methods.
+
+
+#### Chain-of-Thought(思维链)
 
 随着LLM的越来越大，以及tuning技术的快速发展，LLM在包括情感分析在内的传统自然语言任务上表现越来越好，但是单纯的扩大LLM模型的参数量无法让模型在算术推理/常识推理/符号推理等推理任务上取得理想的效果。 如何提升LLM在这些推理任务上性能呢？在此前关于LLM的推理任务中，有两种方法:
 
@@ -864,13 +875,23 @@ Manual-CoT是Chain-of-Thought技术的开山之作，由Google在2022年初提�
 
 除此之外，论文中为了证明CoT的有效性，相继做了消融实验(Ablation Study) 鲁棒性实验( Robustness of Chain of Thought) 常识推理(Commonsense Reasoning)实验 符号推理(Symbolic Reasoning)实验，下面分别做以简单介绍:
 
-- **消融实验**: 我们知道，消融实验是通过研究移除某个组件之后的性能，证明该组件的有效性。论文中通过引入CoT的三个变种，证明CoT的有效性，结果如下图所示:
-    ![pic](https://img-blog.csdnimg.cn/be47c4e8e3c64d558480c9322de2f645.png#pic_center)
+- **消融实验**: 通过研究移除某个组件之后的性能，证明该组件的有效性。
 
-    - **Equation only**: 把CoT中的文字去掉，只保留公式部分。结论: 效果对于原始prompt略有提升，对简单任务提升较多，但和CoT没法比，特别是对于复杂任务，几乎没有提升。
-    - **Variable compute only**: 把CoT中的token全换成点(…)。 这是为了验证额外的计算量是否是影响模型性能的因素。结论: 全换成点(…)后效果和原始prompt没什么区别，这说明计算量用的多了对结果影响很小(几乎没有影响)，也说明了人工构建的CoT(token sequence)对结果影响很大。
-    - **Chain of thought after answer**: 把思维链放到生成结果之后。 这样做的原因是: 猜测CoT奏效的原因可能仅仅是这些CoT简单的让模型更好的访问了预训练期间获得的相关知识，而与推理没啥太大关系。结论: CoT放到生成的答案之后的效果和benchmark没太大区别，说明CoT的顺序逻辑推理还是起到了很大作用的(不仅仅是激活知识)，换句话说，模型确实是依赖于生成的思维链一步一步得到的最终结果。
-- **鲁棒性实验**: 论文中通过annotators(标注者)，exemplars(样例选择)和models(模型)三个方面对CoT进行了鲁棒性分析。如下图所示，总体结论是思维链普遍有效，但是**不同的CoT构建方式/exemplars的选择/exemplars的数量/exemplars的顺序**，在一定程度上影响着CoT的效果。![pic](https://img-blog.csdnimg.cn/aaea0032da834412bd55e5ab13d3ed3e.png#pic_center)
+  - 论文中通过引入CoT的三个变种，证明CoT的有效性
+
+  - 结果如下图所示:
+
+  - ![pic](https://img-blog.csdnimg.cn/be47c4e8e3c64d558480c9322de2f645.png#pic_center)
+
+  - **Equation only**: 把CoT中的文字去掉，只保留公式部分。结论: 效果对于原始prompt略有提升，对简单任务提升较多，但和CoT没法比，特别是对于复杂任务，几乎没有提升。
+
+  - **Variable compute only**: 把CoT中的token全换成点(…)。 这是为了验证额外的计算量是否是影响模型性能的因素。结论: 全换成点(…)后效果和原始prompt没什么区别，这说明计算量用的多了对结果影响很小(几乎没有影响)，也说明了人工构建的CoT(token sequence)对结果影响很大。
+
+  - **Chain of thought after answer**: 把思维链放到生成结果之后。 这样做的原因是: 猜测CoT奏效的原因可能仅仅是这些CoT简单的让模型更好的访问了预训练期间获得的相关知识，而与推理没啥太大关系。结论: CoT放到生成的答案之后的效果和benchmark没太大区别，说明CoT的顺序逻辑推理还是起到了很大作用的(不仅仅是激活知识)，换句话说，模型确实是依赖于生成的思维链一步一步得到的最终结果。
+
+- **鲁棒性实验**: 论文中通过annotators(标注者)，exemplars(样例选择)和models(模型)三个方面对CoT进行了鲁棒性分析。如下图所示，总体结论是思维链普遍有效，但是**不同的CoT构建方式/exemplars的选择/exemplars的数量/exemplars的顺序**，在一定程度上影响着CoT的效果。
+
+  - ![pic](https://img-blog.csdnimg.cn/aaea0032da834412bd55e5ab13d3ed3e.png#pic_center)
 
     - **不同人构建CoT**: 尽管每个人构建的CoT都不相同，但都对模型性能产生了正面的影响，说明CoT确实有效。但是另一方面，不同人给出的不同的CoT对最终结果的影响程度还是有很大不同的，说明如何更好的构建CoT是一个研究方向；
     - **Exemplars样本的选择**: 不同的选择都会有提升，但是差异明显。特别是，在一个数据集上选择的exemplars可以用在其他数据集上，比如论文中的实验设置，对于同一种类型的问题，如算术推理，尽管在多个不同的数据集进行实验，但使用的是8个相同的exemplars，结果没有特别大的差异，说明exemplars不需要满足和test set有相同的分布；
@@ -879,36 +900,243 @@ Manual-CoT是Chain-of-Thought技术的开山之作，由Google在2022年初提�
     - **不同LLM上的效果**:  对于一个LLM效果好的CoT exemplars set换到其他LLM上效果不一定好，也就是说CoT对模型的提升是无法在不同的LLM上传递的，这是一个局限。
          
 
-      关于鲁棒性实验，论文中最后指出: **Prompt Engineering**仍然很重要，不同的prompt(CoT)的设计/数量/顺序都会对模型产生不同的影响，且方差还是很大的。 因此未来的一个方向可能是探索一种能够获取稳健CoT(Prompts)的范式。 或许可以用一个LLM自动生成CoT用于Prompting，后面我们将介绍这种技术: Auto-CoT。
+  - 关于鲁棒性实验，论文中最后指出: **Prompt Engineering**仍然很重要，不同的prompt(CoT)的设计/数量/顺序都会对模型产生不同的影响，且方差还是很大的。 因此未来的一个方向可能是探索一种能够获取稳健CoT(Prompts)的范式。 或许可以用一个LLM自动生成CoT用于Prompting，后面我们将介绍这种技术: Auto-CoT。
 
 - **常识推理实验 & 符号推理实验**: 此处我们不做过多介绍，这里给出三种推理模式的exemplars示例(绿色: 算数推理，橙色: 常识推理，蓝色: 符号推理)，供大家参考:
-    ![pic](https://img-blog.csdnimg.cn/3f2139a40193402895d649a4e9bf7b62.jpeg#pic_center)
+
+- ![pic](https://img-blog.csdnimg.cn/3f2139a40193402895d649a4e9bf7b62.jpeg#pic_center)
 
 这篇CoT开山之作首次提出思维链(CoT)的概念，思维链简单的说就是一系列中间推理步骤。这篇论文最大的贡献就是发现了在LLM生成推理任务的结果之前，先生成思维链，会使模型的推理性能有大幅度的提升，特别是在复杂的推理任务上，但是有个前提就是LLM的规模要大于10B，否则CoT没用甚至起副作用。CoT的一大好处是无需微调模型参数，仅仅是改变输入就可以改进模型的性能。随着LLM越来越大，高校和小企业可能无法承担训练LLM的成本，因此无法参与其中进行科研与实践，但CoT这个研究方向仍然可以做。对于CoT的更多细节，大家可参考[《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》](https://arxiv.org/pdf/2201.11903.pdf)和[思维链(Chain-of-Thought, CoT)的开山之作
 ](https://zhuanlan.zhihu.com/p/612136862?utm_id=0)
 
-#### 4.2 Zero-shot-CoT(零示例思维链)
+#### Zero-shot-CoT(零示例思维链)
 
-2022年6月东京大学和谷歌共同发表了一篇论文[《Large Language Models are Zero-Shot Reasoners》](https://arxiv.org/pdf/2205.11916v2.pdf)，这是一篇关于预训练大型语言模型(Pretrained Large Language Models, LLMs)推理能力的探究论文。目前，LLMs被广泛运用在很多NLP任务上。同时，在提供了特定任务的示例之后，LLMs是一个非常优秀的学习者。随着思考链的提示方式(chain of thought prompting, CoT)被提出，对LLMs推理能力的探究上升到一个新的高度，这种提示方式可以引导模型通过示例中一步一步的推理方式，去解决复杂的多步推理，在数学推理(arithmetic reasoning)和符号推理(symbolic reasoning)中取得了SOTA的成果。作者在研究中发现，对拥有175B参数的GPT-3，通过简单的添加”Let’s think step by step“，可以提升模型的zero-shot能力。Zero-shot-CoT的具体格式如下图所示，论文中的具体细节这里不做过多赘述，感兴趣的同学可详读论文内容。需要注意一点的是，同等条件下，Zero-shot-CoT的性能是不及Manual-CoT的。
+2022年6月东京大学和谷歌共同发表了一篇论文[《Large Language Models are Zero-Shot Reasoners》](https://arxiv.org/pdf/2205.11916v2.pdf)，这是一篇关于预训练大型语言模型(Pretrained Large Language Models, LLMs)推理能力的探究论文。
+
+目前，LLMs被广泛运用在很多NLP任务上。同时，在提供了特定任务的示例之后，LLMs是一个非常优秀的学习者。
+
+- 随着思考链的提示方式(chain of thought prompting, CoT)被提出，对LLMs推理能力的探究上升到一个新的高度，这种提示方式可以引导模型通过示例中一步一步的推理方式，去解决复杂的多步推理，在数学推理(arithmetic reasoning)和符号推理(symbolic reasoning)中取得了SOTA的成果。
+
+- 作者在研究中发现，对拥有175B参数的GPT-3，通过简单的添加”Let’s think step by step“，可以提升模型的zero-shot能力。
+
+- Zero-shot-CoT的具体格式如下图所示，需要注意一点的是，同等条件下，Zero-shot-CoT的性能是不及Manual-CoT的。
 ![pic](https://img-blog.csdnimg.cn/6dcd286feadf4fcea7951b6f4ede0bed.jpeg#pic_center)
 
-#### 4.3 Auto-CoT(自动思维链)
+#### Auto-CoT(自动思维链)
 
-前文已经提到过，传统CoT的一个未来研究方向: 可以用一个LLM自动生成CoT用于Prompting，李沐老师团队在2022年10月发表的论文[《AUTOMATIC CHAIN OF THOUGHT PROMPTING IN LARGE LANGUAGE MODELS》](https://arxiv.org/pdf/2210.03493.pdf)证明了这一技术方向的有效性，称为**Auto-CoT**。
+传统CoT的一个未来研究方向: 可以用一个LLM自动生成CoT用于Prompting
+- 李沐老师团队在2022年10月发表的论文[《AUTOMATIC CHAIN OF THOUGHT PROMPTING IN LARGE LANGUAGE MODELS》](https://arxiv.org/pdf/2210.03493.pdf)证明了这一技术方向的有效性，称为**Auto-CoT**。
 
-目前较为流行的CoT方法有两种，一种是Manual-CoT，一种是Zero-shot-CoT，两种方式的输入格式如下图所示。前文我们提到过，Manual-CoT的性能是要优于Zero-shot-CoT的，关键原因在于Manual-CoT包含一些**人工设计的问题** **推理步骤**及**答案**，但是这部分要花费一定的人工成本，而Auto-CoT则解决了这一痛点，具体做法是:
+目前较为流行的CoT方法有两种，一种是Manual-CoT，一种是Zero-shot-CoT，两种方式的输入格式如下图所示。
+- Manual-CoT的性能是要优于Zero-shot-CoT的，关键原因在于Manual-CoT包含一些**人工设计的问题** **推理步骤**及**答案**，但是这部分要花费一定的人工成本
+- Auto-CoT则解决了这一痛点，具体做法是:
 ![pic](https://img-blog.csdnimg.cn/275057c23ba04cda92006c176e89e8f2.png#pic_center)
 
 - 通过多样性选取有代表性的问题；
 - 对于每一个采样的问题拼接上“Let’s think step by step”(类似于 Zero-shot-CoT )输入到语言模型，让语言模型生成中间推理步骤和答案，然后把这些所有采样的问题以及语言模型生成的中间推理步骤和答案全部拼接在一起，构成少样本学习的样例，最后再拼接上需要求解的问题一起输入到语言模型中进行续写，最终模型续写出了中间的推理步骤以及答案。
 
-总体来说，Auto-CoT是Manual-CoT和Zero-shot-CoT的结合体，如下图所示。实验证明，在十个数据集上Auto-CoT是可以匹配甚至超越Manual-CoT的性能，也就说明自动构造的CoT的**问题** **中间推理步骤**和**答案**样例比人工设计的还要好，而且还节省了人工成本。![pic](https://img-blog.csdnimg.cn/c650251cf31149848b7ff2c4f21f8a6a.png#pic_center)
+Auto-CoT是Manual-CoT和Zero-shot-CoT的结合体
+- 实验证明，在十个数据集上Auto-CoT是可以匹配甚至超越Manual-CoT的性能，也就说明自动构造的CoT的**问题** **中间推理步骤**和**答案**样例比人工设计的还要好，而且还节省了人工成本。
+- ![pic](https://img-blog.csdnimg.cn/c650251cf31149848b7ff2c4f21f8a6a.png#pic_center)
 
-至此，我们详细介绍了三种CoT技术: Manual-CoT Zero-shot-CoT以及Auto-CoT，有关CoT的技术还有很多，需要我们慢慢学习，后续持续更新。
 
 ---
 
 ### Tree-of-Thought (ToT)
+
+- an algorithm that combines Large Language Models (LLMs) and heuristic search, as presented in this paper by Princeton University and Google DeepMind.
+
+- It appears that this algorithm is being implemented into Gemini, a multimodal generative AI that is currently under development by Google.
+
+![Screenshot 2024-06-20 at 10.21.21](/assets/img/Screenshot%202024-06-20%20at%2010.21.21.png)
+
+Image Source: Yao et el. (2023)
+
+![Screenshot 2024-06-20 at 10.24.29](/assets/img/Screenshot%202024-06-20%20at%2010.24.29.png)
+
+![Screenshot 2024-06-20 at 10.22.05](/assets/img/Screenshot%202024-06-20%20at%2010.22.05.png)
+
+![Screenshot 2024-06-20 at 10.25.18](/assets/img/Screenshot%202024-06-20%20at%2010.25.18.png)
+
+Implementation
+
+```py
+from langchain.chains import LLMChain
+from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chat_models import ChatOpenAI
+
+
+template ="""
+Step1 :
+
+I have a problem related to {input}. Could you brainstorm three distinct solutions? Please consider a variety of factors such as {perfect_factors}
+A:
+"""
+
+prompt = PromptTemplate(
+    input_variables=["input","perfect_factors"],
+    template = template
+)
+
+chain1 = LLMChain(
+    llm=ChatOpenAI(temperature=0, model="gpt-4"),
+    prompt=prompt,
+    output_key="solutions"
+)
+
+template ="""
+Step 2:
+
+For each of the three proposed solutions, evaluate their potential. Consider their pros and cons, initial effort needed, implementation difficulty, potential challenges, and the expected outcomes. Assign a probability of success and a confidence level to each option based on these factors
+
+{solutions}
+
+A:"""
+
+prompt = PromptTemplate(
+    input_variables=["solutions"],
+    template = template
+)
+
+chain2 = LLMChain(
+    llm=ChatOpenAI(temperature=0, model="gpt-4"),
+    prompt=prompt,
+    output_key="review"
+)
+
+template ="""
+Step 3:
+
+For each solution, deepen the thought process. Generate potential scenarios, strategies for implementation, any necessary partnerships or resources, and how potential obstacles might be overcome. Also, consider any potential unexpected outcomes and how they might be handled.
+
+{review}
+
+A:"""
+
+prompt = PromptTemplate(
+    input_variables=["review"],
+    template = template
+)
+
+chain3 = LLMChain(
+    llm=ChatOpenAI(temperature=0, model="gpt-4"),
+    prompt=prompt,
+    output_key="deepen_thought_process"
+)
+
+template ="""
+Step 4:
+
+Based on the evaluations and scenarios, rank the solutions in order of promise. Provide a justification for each ranking and offer any final thoughts or considerations for each solution
+{deepen_thought_process}
+
+A:"""
+
+prompt = PromptTemplate(
+    input_variables=["deepen_thought_process"],
+    template = template
+)
+
+chain4 = LLMChain(
+    llm=ChatOpenAI(temperature=0, model="gpt-4"),
+    prompt=prompt,
+    output_key="ranked_solutions"
+)
+
+# We connect the four chains using ‘SequentialChain’. The output of one chain becomes the input to the next chain.
+
+from langchain.chains import SequentialChain
+
+overall_chain = SequentialChain(
+    chains=[chain1, chain2, chain3, chain4],
+    input_variables=["input", "perfect_factors"],
+    output_variables=["ranked_solutions"],
+    verbose=True
+)
+
+print(overall_chain({"input":"human colonization of Mars", "perfect_factors":"The distance between Earth and Mars is very large, making regular resupply difficult"}))
+```
+
+Output:
+```py
+{
+    "input": "human colonization of Mars",
+    "perfect_factors": "The distance between Earth and Mars is very large, making regular resupply difficult",
+    "ranked_solutions": {
+        "Ranking_1": {
+            "Justification": "Using In-Situ Resource Utilization is the most promising solution due to its potential to provide the necessary resources for a Mars colony and reduce the need for resupply missions from Earth. The medium initial effort, implementation difficulty, and potential challenges are outweighed by the high probability of success and 70% confidence level.",
+            "In_Situ_Resource_Utilization_ISRU": {
+                "Pros": "This solution could provide the necessary resources for a Mars colony and reduce the need for resupply missions from Earth.",
+                "Cons": "ISRU is technically challenging and would require significant investment in research and development.",
+                "Initial_Effort": "Medium. This would require the development of new technology and the establishment of infrastructure on Mars.",
+                "Implementation_Difficulty": "Medium. ISRU is a complex task that requires advanced technology.",
+                "Potential_Challenges": "Technical difficulties, high costs.",
+                "Expected_Outcomes": "If successful, ISRU could provide a steady supply of resources for a Mars colony.",
+                "Probability_of_Success": "High. ISRU is already being tested by NASA and other space agencies.",
+                "Confidence_Level": "70%"
+            }
+        },
+        "Ranking_2": {
+            "Justification": "Building a self-sustaining colony is a promising solution due to its potential to make the Mars colony self-sufficient. However, the high initial effort, implementation difficulty, and potential challenges make it less promising than the first solution. The medium probability of success and 60% confidence level also contribute to its ranking.",
+            "Building_a_Self_Sustaining_Colony": {
+                "Pros": "This solution could make the Mars colony self-sufficient, reducing the need for resupply missions from Earth.",
+                "Cons": "Building a self-sustaining colony is a complex task that requires advanced technology and a lot of resources.",
+                "Initial_Effort": "High. This would require the development of new technology and the establishment of infrastructure on Mars.",
+                "Implementation_Difficulty": "High. Building a self-sustaining colony is a complex task that requires advanced technology.",
+                "Potential_Challenges": "Technical difficulties, high costs.",
+                "Expected_Outcomes": "If successful, a self-sustaining colony could reduce the need for resupply missions from Earth.",
+                "Probability_of_Success": "Medium. While there are significant challenges, there is also a lot of interest in building a self-sustaining colony on Mars.",
+                "Confidence_Level": "60%"
+            }
+        },
+        "Ranking_3": {
+            "Justification": "While asteroid mining has the potential to provide a steady supply of resources for a Mars colony, the high initial effort, implementation difficulty, and potential challenges make it a less promising solution compared to others. The medium probability of success and 50% confidence level also contribute to its lower ranking.",
+            "Terraforming_Mars": {
+                "Pros": "This solution could make Mars more habitable for humans, reducing the need for life support systems and making the colony more self-sufficient.",
+                "Cons": "Terraforming is a long-term process that could take centuries or even millennia. It would also require a massive amount of resources and energy.",
+                "Initial_Effort": "Extremely High. Terraforming would require a massive amount of resources and energy.",
+                "Implementation_Difficulty": "Extremely High. Terraforming is a long-term process that could take centuries or even millennia.",
+                "Potential_Challenges": "Technical difficulties, high costs, time scale.",
+                "Expected_Outcomes": "If successful, terraforming could make Mars more habitable for humans.",
+                "Probability_of_Success": "Low. Terraforming is a theoretical concept and has never been attempted before.",
+                "Confidence_Level": "20%"
+            }
+        }
+    }
+}
+```
+
+
+From the results reported in the figure below, ToT substantially outperforms the other prompting methods:
+
+![Screenshot 2024-06-26 at 17.16.29](/assets/img/Screenshot%202024-06-26%20at%2017.16.29.png)
+
+Image Source: Yao et el. (2023)
+
+At a high level, the main ideas of Yao et el. (2023) and Long (2023) are similar.
+- Both enhance LLM's capability for complex problem solving through tree search via a `multi-round conversation`.
+
+- One of the main difference is that Yao et el. (2023) leverages DFS/BFS/beam search, while the tree search strategy (i.e. when to backtrack and backtracking by how many levels, etc.) proposed in Long (2023) is driven by a "ToT Controller" trained through reinforcement learning.
+
+- DFS/BFS/Beam search are generic solution search strategies with no adaptation to specific problems.
+
+- In comparison, a ToT Controller trained through RL might be able learn from new data set or through self-play (AlphaGo vs brute force search), and hence the RL-based ToT system can continue to evolve and learn new knowledge even with a fixed LLM.
+
+
+Hulbert (2023) has proposed Tree-of-Thought Prompting, which applies the main concept from ToT frameworks as a simple prompting technique, getting the LLM to evaluate intermediate thoughts in a single prompt.
+- A sample ToT prompt is:
+
+```py
+Imagine three different experts are answering this question.
+All experts will write down 1 step of their thinking,
+then share it with the group.
+Then all experts will go on to the next step, etc.
+If any expert realises they are wrong at any point then they leave.
+The question is...
+```
+
+Sun (2023) benchmarked the Tree-of-Thought Prompting with large-scale experiments, and introduce PanelGPT --- an idea of prompting with Panel discussions among LLMs.
 
 
 ---
@@ -920,20 +1148,50 @@ Manual-CoT是Chain-of-Thought技术的开山之作，由Google在2022年初提�
 - **全参数微调**: 训练过程中更新包括模型在内的所有参数，例如Fine-Tuning Prompt-Orient Fine-Tuning等；
 - **部分参数微调**: 训练过程中只更新部分模型参数，或者固定模型参数，只更新少量额外添加的参数，如Parameter-Efficient Prompt Tuning P-Tuning等。
 
-我们知道，部分参数微调模式的提出，一方面是由于资源限制，无法更新整体大模型参数，另一方面，要保证在资源有限的条件下，能够尽可能的提升大模型在下游任务上的效果。目前，针对部分参数微调的研究，正处于蓬勃发展阶段，这个研究领域有个统一的名称: **Parameter-Efficient Fine-Tuning (PEFT)**，即**参数有效性微调**，PEFT方法仅微调少量或额外的模型参数，固定大部分预训练参数，大大降低了计算和存储成本，同时最先进的 PEFT 技术也能实现了与全量微调相当的性能。前文提到的Prompt-Tuning，包括P-Tuning等，都可以视为PEFT的一种。总体来说，参数有效性微调可分为三个类别:
+部分参数微调模式的提出:
+- 一方面是由于资源限制，无法更新整体大模型参数
+- 另一方面，要保证在资源有限的条件下，能够尽可能的提升大模型在下游任务上的效果。
 
-- **Prompt-Tuning**: 在模型的输入或隐层添加个额外可训练的前缀 tokens(这些前缀是连续的伪tokens，不对应真实的tokens)，只训练这些前缀参数，包括prefix-tuning parameter-efficient Prompt Tuning P-Tuning等；
-- **Adapter-Tuning**: 将较小的神经网络层或模块插入预训练模型的每一层，这些新插入的神经模块称为adapter(适配器)，下游任务微调时也只训练这些适配器参数；
-- **LoRA**: 通过学习小参数的低秩矩阵来近似模型权重矩阵的参数更新，训练时只优化低秩矩阵参数。
+针对部分参数微调的研究，正处于蓬勃发展阶段，这个研究领域有个统一的名称: **Parameter-Efficient Fine-Tuning (PEFT)**，即**参数有效性微调**，
+- PEFT方法仅微调少量或额外的模型参数，固定大部分预训练参数，大大降低了计算和存储成本，同时最先进的 PEFT 技术也能实现了与全量微调相当的性能。
 
-接下来，我们对其中流行的PEFT算法进行详细介绍。
+- 前文提到的Prompt-Tuning，包括P-Tuning等，都可以视为PEFT的一种。
 
-#### 5.1 PEFT介绍
+总体来说，参数有效性微调可分为三个类别:
 
-- **Prefix-Tuning**: Prefix-Tuning也是一种Prompt-Tuning，是最早提出soft-prompt的论文之一[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://aclanthology.org/2021.acl-long.353.pdf)，斯坦福大学于2021年发表。Prefix-Tuning在模型输入前添加一个连续的且任务特定的向量序列(continuous task-specific vectors)，称之为前缀(prefix)。前缀同样是一系列“虚拟 tokens”，即没有真实语义。与更新所有 PLM 参数的全量微调不同，Prefix-Tuning固定PLM的所有参数，只更新优化特定任务的prefix。Prefix-Tuning与传统Fine-Tuning的对比图如下所示:
-    ![pic](https://img-blog.csdnimg.cn/27aa031746bc403793e27a7ef70833b6.png#pic_center)
-      如下图所示，Prefix-Tuning有两种模式，一种是自回归模型(例如GPT-2)，在输入前添加一个前缀得到 [ P R E F I X ; x ; y ] [PREFIX;x;y] [PREFIX;x;y]；另一种是encoder-decoder模型(例如Bart)，在编码器和解码器前加前缀得到 [ P R E F I X ; x ; P R E F I X ′ ; y ] [PREFIX;x;PREFIX^{'};y] [PREFIX;x;PREFIX′;y]。接下来我们以GPT-2的自回归语言模型为例，介绍下Prefix-Tuning的流程。
-      首先，对于传统的GPT-2模型来说，将输入 $x$ 和输出 $y$ 拼接为 z = [ x ; y ] z=[x;y] z\=[x;y]，其中 X i d x X_{idx} Xidx​和 Y i d x Y_{idx} Yidx​分别为输入和输出序列的索引， h i ∈ R d h_{i} \in R^{d} hi​∈Rd是每个时间步 i i i下的激活向量(隐藏层向量)， h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h_{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接， h i ( j ) h_{i}^{(j)} hi(j)​是时间步 i i i的第 j j j层激活层。自回归模型通过如下公式计算 $h_{i}$ ​，其中 ϕ \phi ϕ是模型参数:
+- **Prompt-Tuning**:
+  - 在模型的输入或隐层添加个额外可训练的前缀 tokens(这些前缀是连续的伪tokens，不对应真实的tokens)，只训练这些前缀参数，包括prefix-tuning parameter-efficient Prompt Tuning P-Tuning等；
+- **Adapter-Tuning**:
+  - 将较小的神经网络层或模块插入预训练模型的每一层，这些新插入的神经模块称为adapter(适配器)，下游任务微调时也只训练这些适配器参数；
+- **LoRA**:
+  - 通过学习小参数的低秩矩阵来近似模型权重矩阵的参数更新，训练时只优化低秩矩阵参数。
+
+---
+
+#### PEFT介绍
+
+**Prefix-Tuning**:
+
+- Prefix-Tuning也是一种Prompt-Tuning
+- 是最早提出soft-prompt的论文之一[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://aclanthology.org/2021.acl-long.353.pdf)，斯坦福大学于2021年发表。
+
+- Prefix-Tuning在模型输入前添加一个连续的且任务特定的向量序列(continuous task-specific vectors)，称之为前缀(prefix)。
+
+- 前缀同样是一系列“虚拟 tokens”，即没有真实语义。
+
+- 与更新所有 PLM 参数的全量微调不同，Prefix-Tuning固定PLM的所有参数，只更新优化特定任务的prefix。
+
+- Prefix-Tuning与传统Fine-Tuning的对比图如下所示:
+
+- ![pic](https://img-blog.csdnimg.cn/27aa031746bc403793e27a7ef70833b6.png#pic_center)
+
+- Prefix-Tuning有两种模式，
+  - 一种是自回归模型(例如GPT-2)，在输入前添加一个前缀得到 $[PREFIX;x;y]$；
+  - 另一种是encoder-decoder模型(例如Bart)，在编码器和解码器前加前缀得到 $[PREFIX;x;PREFIX^{'};y]$ m
+
+
+- Prefix-Tuning的流程, 以GPT-2的自回归语言模型为例:
+  - 对于传统的GPT-2模型来说，将输入 $x$ 和输出 $y$ 拼接为 $z\=[x;y]$，其中 $X_{idx}$ ​和 $Y_{idx}$ ​分别为输入和输出序列的索引， h i ∈ R d h_{i} \in R^{d} hi​∈Rd是每个时间步 i i i下的激活向量(隐藏层向量)， h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h_{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接， h i ( j ) h_{i}^{(j)} hi(j)​是时间步 i i i的第 j j j层激活层。自回归模型通过如下公式计算 $h_{i}$ ​，其中 ϕ \phi ϕ是模型参数:
     h i = L M ϕ ( z i , h < i )   h_{i} =LM_{\phi}(z_{i},h_{<i})\ hi​\=LMϕ​(zi​,h<i​) 
     $h_{i}$ ​的最后一层，用来计算下一个token的概率分布:
     p ϕ ( z i + 1 ∣ h ≤ i ) = s o f t m a x ( W ϕ h i ( n ) )   p_{\phi}(z_{i+1}|h_{≤i}) =softmax(W_{\phi}h_{i}^{(n)})\ pϕ​(zi+1​∣h≤i​)\=softmax(Wϕ​hi(n)​) 
@@ -942,18 +1200,20 @@ Manual-CoT是Chain-of-Thought技术的开山之作，由Google在2022年初提�
     h i = { P θ [ i , : ] if    i ∈ P i d x L M ϕ ( z i , h < i ) otherwise h_{i}= \begin{cases} P_{\theta}[i,:]& \text{if} \ \ \ i\in P_{idx}\\ LM_{\phi}(z_{i},h_{<i})& \text{otherwise} \end{cases} hi​\={Pθ​[i,:]LMϕ​(zi​,h<i​)​if   i∈Pidx​otherwise​
       在训练时，Prefix-Tuning的优化目标与正常微调相同，但只需要更新前缀向量的参数。在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 $P_{\theta}^{'}$ ​和一个大型前馈神经网络 $\text{MLP}_{\theta}$ ​对 $P_{\theta}$ ​进行重参数化: P θ [ i , : ] = MLP θ ( P θ ′ [ i , : ] ) P_{\theta}[i,:]=\text{MLP}_{\theta}(P_{\theta}^{'}[i,:]) Pθ​[i,:]\=MLPθ​(Pθ′​[i,:])，可训练参数包括 $P_{\theta}^{'}$ ​和 $\text{MLP}_{\theta}$ ​的参数，其中， $P_{\theta}$ ​和 $P_{\theta}^{'}$ ​有相同的行维度(也就是相同的prefix length), 但不同的列维度。在训练时，LM 的参数 ϕ \phi ϕ被固定，只有前缀参数 $P_{\theta}^{'}$ ​和 $\text{MLP}_{\theta}$ ​的参数为可训练的参数。训练完成后， $P_{\theta}^{'}$ ​和 $\text{MLP}_{\theta}$ ​的参数被丢掉，只有前缀参数 $P_{\theta}$ ​被保存。
     ![pic](https://img-blog.csdnimg.cn/f1daf9e5ba2047dc992df48fb965abe7.png#pic_center)
-      上述内容详细介绍了Prefix-Tuning的主要训练流程，下面我们给出论文中通过实验得出的三个主要结论:
 
-    - **方法有效性**: 作者采用了Table-To-Text与Summarization作为实验任务，在Table-To-Text任务上，Prefix-Tuning在优化相同参数的情况下结果大幅优于Adapter，并与全参数微调几乎相同。而在Summarization任务上，Prefix-Tuning方法在使用2%参数与0.1%参数时略微差于全参数微调，但仍优于Adapter微调；
-    - **Full vs Embedding-only**: Embedding-only方法只在embedding层添加前缀向量并优化，而Full代表的Prefix-Tuning不仅在embedding层添加前缀参数，还在模型所有层添加前缀并优化。实验得到一个不同方法的表达能力增强链条: discrete prompting < embedding-only < Prefix-Tuning。同时，Prefix-Tuning可以直接修改模型更深层的表示，避免了跨越网络深度的长计算路径问题；
-    - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 $x$ 和 $y$ 的中间来研究可训练参数位置对性能的影响，即 $[x;Infix;y]$ ，这种方式成为infix-tuning。实验表明Prefix-Tuning性能好于 infix-tuning，因为prefix能够同时影响 $x$ 和 $y$ 的隐层向量，而infix只能够影响 $y$ 的隐层向量。
+- 上述内容详细介绍了Prefix-Tuning的主要训练流程，下面我们给出论文中通过实验得出的三个主要结论:
+
+  - **方法有效性**: 作者采用了Table-To-Text与Summarization作为实验任务，在Table-To-Text任务上，Prefix-Tuning在优化相同参数的情况下结果大幅优于Adapter，并与全参数微调几乎相同。而在Summarization任务上，Prefix-Tuning方法在使用2%参数与0.1%参数时略微差于全参数微调，但仍优于Adapter微调；
+  - **Full vs Embedding-only**: Embedding-only方法只在embedding层添加前缀向量并优化，而Full代表的Prefix-Tuning不仅在embedding层添加前缀参数，还在模型所有层添加前缀并优化。实验得到一个不同方法的表达能力增强链条: discrete prompting < embedding-only < Prefix-Tuning。同时，Prefix-Tuning可以直接修改模型更深层的表示，避免了跨越网络深度的长计算路径问题；
+  - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 $x$ 和 $y$ 的中间来研究可训练参数位置对性能的影响，即 $[x;Infix;y]$ ，这种方式成为infix-tuning。实验表明Prefix-Tuning性能好于 infix-tuning，因为prefix能够同时影响 $x$ 和 $y$ 的隐层向量，而infix只能够影响 $y$ 的隐层向量。
          
 
-      我们回顾下前文提到的parameter-efficient prompt tuning(下面简称为Prompt Tuning)，其论文中有提到，它可以看作是Prefix-Tuning的简化版。总结下两者的不同点:
+parameter-efficient prompt tuning(下面简称为Prompt Tuning)可以看作是Prefix-Tuning的简化版。
+- 两者的不同点:
 
-    - **参数更新策略不同**: Prompt Tuning只对输入层(Embedding)进行微调，而Prefix-Tuning是对每一层全部进行微调。因此parameter-efficient prompt tuning的微调参数量级要更小(如下图)，且不需要修改原始模型结构；
-    - **参数生成方式不同**: Prompt Tuning与Prefix-Tuning及P-Tuning不同的是，没有采用任何的prompt映射层(即Prefix-Tuning中的重参数化层与P-Tuning中的prompt encoder)，而是直接对prompt token对应的embedding进行了训练；
-    - **面向任务不同**: Pompt Tuning P-Tuning以及后面要介绍的P-Tuning v2都是面向的NLU任务进行效果优化及评测的，而Prefix-Tuning针对的则是NLG任务。
+  - **参数更新策略不同**: Prompt Tuning只对输入层(Embedding)进行微调，而Prefix-Tuning是对每一层全部进行微调。因此parameter-efficient prompt tuning的微调参数量级要更小(如下图)，且不需要修改原始模型结构；
+  - **参数生成方式不同**: Prompt Tuning与Prefix-Tuning及P-Tuning不同的是，没有采用任何的prompt映射层(即Prefix-Tuning中的重参数化层与P-Tuning中的prompt encoder)，而是直接对prompt token对应的embedding进行了训练；
+  - **面向任务不同**: Pompt Tuning P-Tuning以及后面要介绍的P-Tuning v2都是面向的NLU任务进行效果优化及评测的，而Prefix-Tuning针对的则是NLG任务。
 
 ![pic](https://img-blog.csdnimg.cn/3f8b40dff5184a439dce772593efe61b.png#pic_center)
 
@@ -1463,87 +1723,9 @@ ChatGLM-6B+LoRA
                             for fp16_partitioned_group in self.fp16_partitioned_groups if len (fp16_partitioned_group) > 0
                         ])
 
-- **相关学习资源**:
 
-    类别
 
-    简介
-
-    链接
-
-    PEFT工具
-
-    PEFT的官方介绍
-
-    [PEFT](https://github.com/huggingface/peft)
-
-    PEFT工具
-
-    PEFT的简单使用
-
-    [PEFT: 在低资源硬件上对十亿规模模型进行参数高效微调](https://zhuanlan.zhihu.com/p/621740939)
-
-    LLM-Tuning
-
-    LLM原理及实战经验分享
-
-    [LLM-实战经验](https://github.com/liguodongiot/llm-action/blob/main/README.md)
-
-    LLM-Tuning
-
-    ChatGLM-6B在真实任务上的应用
-
-    [ChatGLM-真实任务应用](https://github.com/liucongg/ChatGLM-Finetuning/blob/master/README.md)
-
-    LLM-Tuning
-
-    ChatGLM-6B/ChatGLM2-6B结合QLoRA实现LLM-Tuning
-
-    [ChatGLM-6B+QLoRA](https://github.com/shuxueslpi/chatGLM-6B-QLoRA/blob/main/README.md)
-
-    LLM-Tuning
-
-    关于LLM微调的一些知识点
-
-    [NLP大模型微调答疑](https://blog.csdn.net/mingzai624/article/details/130735366)
-
-    LLM-Tuning
-
-    作者对使用的ChatGLM+LoRA方案进行了代码解析
-
-    [ChatGLM+LoRA代码解析](https://github.com/Pillars-Creation/ChatGLM-LoRA)
-
-    LLM-Tuning
-
-    微调工具transformers.Trainer的参数解析
-
-    [Trainer参数解析](https://zhuanlan.zhihu.com/p/363670628)
-
-    LLM-基础
-
-    作者针对LLM原理进行了知识总结
-
-    [LLM基础知识分享](https://www.zhihu.com/people/suc16/posts)
-
-    LLM-基础
-
-    介绍了LLM多种性能优化方案的原理
-
-    [LLM性能优化方案](https://blog.csdn.net/qq_27590277/article/details/126635256)
-
-    LLM-Pretrain
-
-    介绍千亿参数开源大模型BLOOM背后的技术
-
-    [BLOOM技术介绍](https://zhuanlan.zhihu.com/p/641650843)
-
-    系统知识
-
-    对算法基础 算法应用进行全面总结
-
-    [算法总结](https://www.huaxiaozhuan.com/)
-
-#### 5.3 大模型Fine-Tuning之分布式训练
+#### 大模型Fine-Tuning之分布式训练
 
 按照并行方式，分布式训练一般分为数据并行和模型并行两种，当然也有数据并行和模型并行的混合模式。
 
@@ -1876,30 +2058,6 @@ ChatGLM-6B+LoRA
         - 目前Accelerate已经集成了Deepspeed及Megatron分布式技术，具体可详见前文的PEFT实践部分。
     - **资源分享**: [大模型训练之微调篇](https://zhuanlan.zhihu.com/p/625896377) [大模型训练之框架篇](https://zhuanlan.zhihu.com/p/625894118)。
 
-#### 5.4 大模型知识问答
-
-- nB大小的模型，训练和推理时，显存占用情况？
-    - 推理时显存的下限是2nGB ，至少要把模型加载完全；训练时，如果用Adam优化器，参考前文的2+2+12的公式，训练时显存下限是16nGB，需要把模型参数 梯度和优化器状态加载进来。
-- 如果有N张显存足够大的显卡，怎么加速训练？
-    - 数据并行(DP)，充分利用多张显卡的算力。
-- 如果显卡的显存不够装下一个完整的模型呢？
-    - 最直观想法，需要分层加载，把不同的层加载到不同的GPU上(accelerate的device_map)，也就是常见的PP，流水线并行。
-- 但PP推理起来，是一个串行的过程，1个GPU计算，其他GPU空闲，有没有其他方式？
-    - 横向切分，流水线并行(PP)，也就是分层加载到不同的显卡上；
-    - 纵向切分，张量并行(TP)，也称作模型并行(MP)。
-- 3种并行方式可以叠加吗？
-    - 是可以的，DP+PP+TP，这就是3D并行。如果真有1个超大模型需要预训练，3D并行那是必不可少的，参考BLOOM模型的训练，DP+PP用DeepSpeed，TP用Megatron-LM。
-- 最主流的开源大模型？
-    - ChatGLM-6B，prefix LM；
-    - LLaMA-7B，causal LM。
-- prefix LM和causal LM的区别？
-    - Attention Mask不同，前者的prefix部分的token互相能看到，后者严格遵守只有后面的token才能看到前面的token的规则。
-- 哪种架构是主流？
-    - GPT系列就是Causal LM，目前除了T5和GLM，其他大模型基本上都是Causal LM。
-- 如何给LLM注入领域知识？
-    - 第一种办法，检索+LLM，先用问题在领域数据库里检索到候选答案，再用LLM对答案进行加工；
-    - 第二种方法，把领域知识构建成问答数据集，用SFT让LLM学习这部分知识。
-
 ---
 
 
@@ -2060,7 +2218,9 @@ Expert:
 
 ## Traning terms
 
-Epoch vs Batch Size vs Iterations
+Epoch vs Batch Size vs Iterations [^Epoch_BatchSize_Iterations]
+
+[^Epoch_BatchSize_Iterations]: Epoch vs Batch Size vs Iterations, https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9
 
 ### Gradient Descent
 
@@ -2074,35 +2234,93 @@ Epoch vs Batch Size vs Iterations
 
 - The iterative quality of the gradient descent helps a under-fitted graph to make the graph fit optimally to the data.
 
-
 ![Screenshot 2024-06-25 at 17.30.45](/assets/img/Screenshot%202024-06-25%20at%2017.30.45.png)
 
 ![Screenshot 2024-06-25 at 17.30.40](/assets/img/Screenshot%202024-06-25%20at%2017.30.40.png)
 
-
 learning rate
-- The Gradient descent has a parameter called `learning rate`. As you can see above (left), initially the steps are bigger that means the learning rate is higher and as the point goes down the learning rate becomes more smaller by the shorter size of steps. Also,the Cost Function is decreasing or the cost is decreasing .Sometimes you might see people saying that the Loss Function is decreasing or the loss is decreasing, both Cost and Loss represent same thing (btw it is a good thing that our loss/cost is decreasing).
-We need terminologies like epochs, batch size, iterations only when the data is too big which happens all the time in machine learning and we can’t pass all the data to the computer at once. So, to overcome this problem we need to divide the data into smaller sizes and give it to our computer one by one and update the weights of the neural networks at the end of every step to fit it to the data given.
-Epochs
-One Epoch is when an ENTIRE dataset is passed forward and backward through the neural network only ONCE.
-Since one epoch is too big to feed to the computer at once we divide it in several smaller batches.
-Why we use more than one Epoch?
-I know it doesn’t make sense in the starting that — passing the entire dataset through a neural network is not enough. And we need to pass the full dataset multiple times to the same neural network. But keep in mind that we are using a limited dataset and to optimise the learning and the graph we are using Gradient Descent which is an iterative process. So, updating the weights with single pass or one epoch is not enough.
-One epoch leads to underfitting of the curve in the graph (below).
+- The Gradient descent has a parameter called `learning rate`.
+- As you can see above (left), initially the steps are bigger that means the learning rate is higher and as the point goes down the learning rate becomes more smaller by the shorter size of steps.
+- Also,the Cost Function is decreasing or the cost is decreasing
+- Sometimes you might see people saying that the Loss Function is decreasing or the loss is decreasing, both Cost and Loss represent same thing (btw it is a good thing that our loss/cost is decreasing).
 
-As the number of epochs increases, more number of times the weight are changed in the neural network and the curve goes from underfitting to optimal to overfitting curve.
-So, what is the right numbers of epochs?
-Unfortunately, there is no right answer to this question. The answer is different for different datasets but you can say that the numbers of epochs is related to how diverse your data is… just an example - Do you have only black cats in your dataset or is it much more diverse dataset?
-Batch Size
+We need terminologies like epochs, batch size, iterations only when the data is too big which happens all the time in machine learning and we can’t pass all the data to the computer at once. So, to overcome this problem we need to divide the data into smaller sizes and give it to our computer one by one and update the weights of the neural networks at the end of every step to fit it to the data given.
+
+### Epochs
+
+One Epoch is when `an ENTIRE dataset is passed forward and backward through the neural network only ONCE`.
+
+- Since one epoch is too big to feed to the computer at once we divide it in several smaller batches.
+
+- Why we use more than one Epoch?
+
+  - passing the entire dataset through a neural network is not enough.
+  - we need to pass the full dataset multiple times to the same neural network.
+
+- keep in mind that we are using a limited dataset and to optimise the learning and the graph we are using Gradient Descent which is an iterative process. So, updating the weights with single pass or one epoch is not enough.
+
+> One epoch leads to underfitting of the curve in the graph (below).
+
+![Screenshot 2024-06-25 at 17.38.50](/assets/img/Screenshot%202024-06-25%20at%2017.38.50.png)
+
+- As the number of epochs increases, more number of times the weight are changed in the neural network and the curve goes from underfitting to optimal to overfitting curve.
+
+Right numbers of epochs?
+- The answer is different for different datasets
+- the numbers of epochs is related to how diverse your data is
+- example:
+  - Do you have only black cats in your dataset or is it much more diverse dataset?
+
+### Batch Size
+
 Total number of training examples present in a single batch.
-Note: Batch size and number of batches are two different things.
-But What is a Batch?
-As I said, you can’t pass the entire dataset into the neural net at once. So, you divide dataset into Number of Batches or sets or parts.
-Just like you divide a big article into multiple sets/batches/parts like Introduction, Gradient descent, Epoch, Batch size and Iterations which makes it easy to read the entire article for the reader and understand it. 😄
-Iterations
-To get the iterations you just need to know multiplication tables or have a calculator. 😃
+
+- Batch size and number of batches are two different things.
+
+- Batch:
+
+- you can’t pass the entire dataset into the neural net at once. So, you divide dataset into Number of Batches or sets or parts.
+
+- Just like you divide a big article into multiple sets/batches/parts like Introduction, Gradient descent, Epoch, Batch size and Iterations which makes it easy to read the entire article for the reader and understand it.
+
+
+### Iterations
+
 Iterations is the number of batches needed to complete one epoch.
-Note: The number of batches is equal to number of iterations for one epoch.
-Let’s say we have 2000 training examples that we are going to use .
-We can divide the dataset of 2000 examples into batches of 500 then it will take 4 iterations to complete 1 epoch.
-Where Batch Size is 500 and Iterations is 4, for 1 complete epoch.
+
+- To get the iterations you just need to know multiplication tables or have a calculator.
+
+- the number of batches = the number of iterations for one epoch.
+
+- example:
+  - have 2000 training examples that we are going to use.
+  - divide the dataset of 2000 examples into batches of 500 then it will take 4 iterations to complete 1 epoch.
+  - Where Batch Size is 500 and Iterations is 4, for 1 complete epoch.
+
+---
+
+#### Q&A
+
+- nB大小的模型，训练和推理时，显存占用情况？
+    - 推理时显存的下限是2nGB ，至少要把模型加载完全；训练时，如果用Adam优化器，参考前文的2+2+12的公式，训练时显存下限是16nGB，需要把模型参数 梯度和优化器状态加载进来。
+- 如果有N张显存足够大的显卡，怎么加速训练？
+    - 数据并行(DP)，充分利用多张显卡的算力。
+- 如果显卡的显存不够装下一个完整的模型呢？
+    - 最直观想法，需要分层加载，把不同的层加载到不同的GPU上(accelerate的device_map)，也就是常见的PP，流水线并行。
+- 但PP推理起来，是一个串行的过程，1个GPU计算，其他GPU空闲，有没有其他方式？
+    - 横向切分，流水线并行(PP)，也就是分层加载到不同的显卡上；
+    - 纵向切分，张量并行(TP)，也称作模型并行(MP)。
+- 3种并行方式可以叠加吗？
+    - 是可以的，DP+PP+TP，这就是3D并行。如果真有1个超大模型需要预训练，3D并行那是必不可少的，参考BLOOM模型的训练，DP+PP用DeepSpeed，TP用Megatron-LM。
+- 最主流的开源大模型？
+    - ChatGLM-6B，prefix LM；
+    - LLaMA-7B，causal LM。
+- prefix LM和causal LM的区别？
+    - Attention Mask不同，前者的prefix部分的token互相能看到，后者严格遵守只有后面的token才能看到前面的token的规则。
+- 哪种架构是主流？
+    - GPT系列就是Causal LM，目前除了T5和GLM，其他大模型基本上都是Causal LM。
+- 如何给LLM注入领域知识？
+    - 第一种办法，检索+LLM，先用问题在领域数据库里检索到候选答案，再用LLM对答案进行加工；
+    - 第二种方法，把领域知识构建成问答数据集，用SFT让LLM学习这部分知识。
+
+---

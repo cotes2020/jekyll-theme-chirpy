@@ -1,13 +1,13 @@
 ---
-title: AI - AI Pre-training llms
+title: LLM - Pre-training llms
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AI]
+categories: [51AI, LLM]
 # img: /assets/img/sample/rabbit.png
 tags: [AI, ML]
 ---
 
-- [AIML - AI Pre-training llms](#aiml---ai-pre-training-llms)
+- [LLM - Pre-training llms](#llm---pre-training-llms)
   - [Pre-training llms](#pre-training-llms)
     - [Model Architecture and Pre-training objective](#model-architecture-and-pre-training-objective)
       - [Computational challenges of training LLMs](#computational-challenges-of-training-llms)
@@ -25,7 +25,7 @@ tags: [AI, ML]
 
 ---
 
-# AIML - AI Pre-training llms
+# LLM - Pre-training llms
 
 ## Pre-training llms
 
