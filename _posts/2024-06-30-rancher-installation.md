@@ -8,37 +8,40 @@ image:
   path: /assets/img/headers/rancher.png
 ---
 
+*Rancher is a Kubernetes management tool to deploy and run clusters anywhere and on any provider.*
+
 ### Prerequisites:
 
 - Kubernetes cluster
 - Helm 3.x
 - Domain name and ability to perform DNS changes
 
-### Pick a subdomain and create a DNS entry pointing to the IP Address that will be assigned to the Rancher Server.
+#### Pick a subdomain and create a DNS entry pointing to the IP Address that will be assigned to the Rancher Server.
 
+#### Run the following command to find the IP Address.
 ```sh
 curl -4 icanhazip.com
 ```
 
-### Create an A record with the IP Address in your DNS Provider.
+#### Create an A record with the IP Address in your DNS Provider.
 ```sh
 dig +short subdomain_name
 ```
 
 ### Install cert-manager with Helm
 
-Add the Helm repository:
+#### Add the Helm repository:
 
 ```sh
 helm repo add jetstack https://charts.jetstack.io --force-update
 ```
 
-Update the helm chart repository:
+#### Update the helm chart repository:
 ```sh
 helm repo update
 ```
 
-Install cert-manager:
+#### Install cert-manager:
 
 ```sh
 helm install \
@@ -51,23 +54,23 @@ helm install \
 
 ### Install Rancher:
 
-Create `cattle-system` namesapce
+#### Create `cattle-system` namesapce
 ```sh
 kubectl create ns cattle-system
 ```
 
-Add the `Helm repository`
+#### Add the `Helm repository`
 
 ```sh
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 ```
 
-`Update` the helm chart repository:
+#### `Update` the helm chart repository:
 ```sh
 helm repo update
 ```
 
-Install `Rancher`:
+#### Deploy `Rancher`:
 
 ```sh
 helm install rancher rancher-latest/rancher --namespace cattle-system \
