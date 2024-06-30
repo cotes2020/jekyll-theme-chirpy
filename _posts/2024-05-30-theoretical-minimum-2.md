@@ -21,5 +21,8 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ## Lecture 3 - Relativistic Laws of Motion
 ![alt](assets/img/custom/B2L3.png)
 
+## Lecture 4 - Classical Field Theory
+![alt](assets/img/custom/B2L4.png)
+
 > Following lectures are still under construction 🚧
 {: .prompt-warning } 
