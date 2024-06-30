@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Deploy a kubernetes cluster using ansible in < 10-minutes"
+title: "Deploy a kubernetes cluster using ansible"
 date: 2024-06-30 01:06:00 +0800
-categories: ansible
-tags: kubernetes
+categories: kuberntes
+tags: ansible
 image:
   path: /assets/img/headers/k8s-ansible.png
 ---
