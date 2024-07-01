@@ -18,16 +18,16 @@ image:
 
 <!-- markdownlint-capture -->
 <!-- markdownlint-disable -->
-# H1 - heading
+# H1 — heading
 {: .mt-4 .mb-0 }
 
-## H2 - heading
+## H2 — heading
 {: data-toc-skip='' .mt-4 .mb-0 }
 
-### H3 - heading
+### H3 — heading
 {: data-toc-skip='' .mt-4 .mb-0 }
 
-#### H4 - heading
+#### H4 — heading
 {: data-toc-skip='' .mt-4 }
 <!-- markdownlint-restore -->
 
