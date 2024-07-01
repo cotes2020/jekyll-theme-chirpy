@@ -16,7 +16,7 @@ This setup is perfect for development and testing environments, providing a soli
 
 Before we begin, there are a few prerequisites we need to address. Here’s what you'll need:
 
-- 3 ubuntu 20.04 virtual machines
+- 3 ubuntu 22.04 virtual machines
 - 2 vCPUs & 4 GiB memory per node
 - A host with Ansible installed
 
@@ -32,7 +32,7 @@ Next, create a `ansible.cfg` file :
 #example ansible.cfg file
 
 [defaults]
-inventory       = /Users/mohan.kumar.bn/hosts
+inventory       = /Users/mohan.kumar.bn/inventory
 command_warnings=False
 host_key_checking = false
 forks = 20
@@ -61,11 +61,11 @@ ansible_python_interpreter=/usr/bin/python3
 
 [control_plane:vars]
 ansible_ssh_private_key_file= /Users/mohan.kumar.bn/.ssh/id_rsa
-ansible_user=anisble
+ansible_user=root
 
 [workers:vars]
 ansible_ssh_private_key_file= /Users/mohan.kumar.bn/.ssh/id_rsa
-ansible_user=ansible
+ansible_user=root
 ```
 
 Next, create a playbook called  `setup_kubernetes.yml`
