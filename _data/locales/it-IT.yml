@@ -42,7 +42,7 @@ copyright:
 
 meta: Servizio offerto da :PLATFORM con tema :THEME
 not_found:
-  statment: Ci scusiamo, non è stato possibile trovare l'URL in questione. Potrebbe puntare ad una pagina non esistente.
+  statement: Ci scusiamo, non è stato possibile trovare l'URL in questione. Potrebbe puntare ad una pagina non esistente.
 
 notification:
   update_found: Nuova versione del contenuto disponibile.

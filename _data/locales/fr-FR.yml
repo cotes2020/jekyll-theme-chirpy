@@ -43,7 +43,7 @@ copyright:
 meta: Propulsé par :PLATFORM avec le thème :THEME
 
 not_found:
-  statment: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
+  statement: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
 
 notification:
   update_found: Une nouvelle version du contenu est disponible.

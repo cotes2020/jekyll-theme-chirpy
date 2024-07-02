@@ -42,7 +42,7 @@ copyright:
 meta: Powered by :PLATFORM with :THEME theme
 
 not_found:
-  statment: Entschuldigung, dieser Link verweist auf keine vorhandene Ressource.
+  statement: Entschuldigung, dieser Link verweist auf keine vorhandene Ressource.
 
 notification:
   update_found: Eine neue Version ist verfügbar.
@@ -76,7 +76,7 @@ df:
   post:
     strftime: "%d.%m.%Y"
     dayjs: "DD.MM.YYYY"
-    
+
 # categories page
 categories:
   category_measure:
