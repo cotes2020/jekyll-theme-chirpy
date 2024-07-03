@@ -1,11 +1,11 @@
 ---
-title: "Bus Tracker : Un afficheur en temps réel pour un arrêt de bus"
+title: "Bus Tracker : Un afficheur en temps réel pour les transports publics"
 description: "Un ESP32 et un écran TFT pour ne plus jamais être en retard."
 date: 2023-02-10
 categories: [Embedded]
 media_subpath: /assets/img/posts/bustracker
 tags: [arduino, esp, network, C]     # TAG names should always be lowercase
-lang: fr
+lang: fr-FR
 ---
 
 > Le projet a été réalisé des années avant la rédaction de cet article, des détails et explications approfondies peuvent donc manquer.

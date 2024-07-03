@@ -221,7 +221,7 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-languages: ["en", "fr"]
+languages: ["en", "fr-FR"]
 default_lang: "en"
 exclude_from_localization: ["assets", "_data"]
 parallel_localization: false

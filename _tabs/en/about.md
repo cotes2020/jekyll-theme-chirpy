@@ -16,7 +16,7 @@ You might ask me why I don't keep all of this private and away from the internet
 
 To be honest, that is what I had planned to do first. But then I remembered that my friends, family, or coworkers had been interested in some of my projects, and this website could be a good way to let them know what I do. 
 
-Another advantage of writing publicly is that it creates just a nice pressure on me to meet a minimum quality standard before publishing a post, making it more understandable and detailed.
+Another advantage of writing publicly is that it creates a nice pressure on me to meet a minimum quality standard before publishing a post, making it more understandable and detailed.
 
 
 PS: If you come from the far future and see this website having no recent activities, I probably gave up on it because of a lack of motivation or time...

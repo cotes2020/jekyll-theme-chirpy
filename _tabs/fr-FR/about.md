@@ -2,7 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
-lang: fr
+lang: fr-FR
 ---
 
 Je m'appelle Nicolas BESNARD, et je suis un jeune et passioné ingénieur en logiciel embarqué. Diplômé en 2022 en système embarqué, j'ai depuis travaillé dans l'automobile et actuellement sur un système d'exploitation embarqué et open-source (prplOS) pour les périphériques réseau. Je suis toujours à la recherche de nouveaux projets à commencer (et que j'espère terminer...) ou de nouvelles compétences et technologies à apprendre. 

@@ -14,7 +14,7 @@
     <h1 class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </h1>
-    <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+    <p class="site-subtitle fst-italic mb-0">{{  site.data.locales[include.lang].tagline }}</p>
   </header>
   <!-- .profile-wrapper -->
 
@@ -96,12 +96,11 @@
   </div>
 
       
-    <div class="sidebar-bottom d-flex flex-wrap  align-items-center justify-content-center w-100">
-      {% for tongue in site.languages %}
-        <a style="text-transform:uppercase;{% if tongue == site.active_lang %}font-weight: bold;{% endif %}" {% static_href %}href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"{% endstatic_href %} >{{ tongue }}</a>{%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%- endif -%}
-      {% endfor %}
+    <div class="sidebar-bottom d-flex flex-wrap  align-items-center justify-content-center w-100" style="padding-left:0em;">
+      <a style="width:1.5rem;{% if "en" != site.active_lang %}filter: grayscale(50%);opacity: 20%;{% endif %}" {% static_href %}href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}><img src="/assets/img/languages/english.png"></a>
+      <a style="width:1.5rem;{% if "fr-FR" != site.active_lang %}filter: grayscale(50%);opacity: 20%;{% endif %}"{% static_href %}href="{{site.baseurl}}/fr-FR{{page.url}}"{% endstatic_href %}><img src="/assets/img/languages/french.png"></a>
     </div>
     
   <!-- .sidebar-bottom -->
 </aside>
-<!-- #sidebar -->
+<!-- #sidebar --> 

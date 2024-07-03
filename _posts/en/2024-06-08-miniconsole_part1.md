@@ -7,7 +7,7 @@ tags: [ble, reverse, st, C]     # TAG names should always be lowercase
 lang: en
 ---
 
-I was brainstorming for a project idea to test my just bought NUCLEO-WB55 evaluation board and its BLE features when my eyes landed on my Xbox controller lying on my desk. This controller can connect remotely to a device via a proprietary 5 GHz protocol requiring a USB adapter or by the famous wireless and standardized protocol : BLE (Bluetooth Low Energy). 
+I was brainstorming for a project idea to test my just bought NUCLEO-WB55 evaluation board and its BLE features when my eyes landed on my Xbox controller lying on my desk. This controller can connect remotely to a device via a proprietary 5 GHz protocol requiring a USB adapter or by the famous standardized protocol : BLE (Bluetooth Low Energy). 
 
 By continuing my productive brainstorming session, I remembered having a small unused OLED display screen in my stock, originally bought for my Bus Tracker project. I thought it could be a nice occasion to also test this screen.
 

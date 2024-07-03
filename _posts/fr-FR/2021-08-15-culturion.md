@@ -5,7 +5,7 @@ date: 2021-08-15
 categories: [Mobile]
 media_subpath: /assets/img/posts/bustracker
 tags: [mobile, game, android, java]     # TAG names should always be lowercase
-lang: fr
+lang: fr-FR
 ---
 
 > Le projet a été réalisé des années avant la rédaction de cet article, des détails et explications approfondies peuvent donc manquer.
