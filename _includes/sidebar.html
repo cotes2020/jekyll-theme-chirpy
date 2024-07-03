@@ -97,8 +97,8 @@
 
       
     <div class="sidebar-bottom d-flex flex-wrap  align-items-center justify-content-center w-100" style="padding-left:0em;">
-      <a style="width:1.5rem;{% if "en" != site.active_lang %}filter: grayscale(50%);opacity: 20%;{% endif %}" {% static_href %}href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}><img src="/assets/img/languages/english.png"></a>
-      <a style="width:1.5rem;{% if "fr-FR" != site.active_lang %}filter: grayscale(50%);opacity: 20%;{% endif %}"{% static_href %}href="{{site.baseurl}}/fr-FR{{page.url}}"{% endstatic_href %}><img src="/assets/img/languages/french.png"></a>
+      <a style="width:1.5rem;{% if "en" != site.active_lang %}filter: grayscale(50%);opacity: 20%;{% endif %}" {% static_href %}href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}><img src="/assets/img/languages/english.png" alt="English"></a>
+      <a style="width:1.5rem;{% if "fr-FR" != site.active_lang %}filter: grayscale(50%);opacity: 20%;{% endif %}"{% static_href %}href="{{site.baseurl}}/fr-FR{{page.url}}"{% endstatic_href %}><img src="/assets/img/languages/french.png" alt="Français"></a>
     </div>
     
   <!-- .sidebar-bottom -->
