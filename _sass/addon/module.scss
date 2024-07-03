@@ -194,11 +194,6 @@
     &::before {
       content: $fa-content;
       color: var(--prompt-#{$type}-icon-color);
-
-      @if not $fa-style {
-        $fa-style: 'solid';
-      }
-
       font: var(--fa-font-#{$fa-style});
 
       @if $rotate != 0 {
