@@ -43,7 +43,7 @@ copyright:
 meta: Didukung oleh :PLATFORM dengan tema :THEME
 
 not_found:
-  statment: Maaf, kami gagal menemukan URL itu atau memang mengarah ke sesuatu yang tidak ada.
+  statement: Maaf, kami gagal menemukan URL itu atau memang mengarah ke sesuatu yang tidak ada.
 
 notification:
   update_found: Versi konten baru tersedia.
