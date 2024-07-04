@@ -173,12 +173,12 @@ header {
     }
 
     &:first-child {
-      border-radius: $base-radius 0 0 $base-radius;
+      border-radius: $radius-lg 0 0 $radius-lg;
       left: 0.5px;
     }
 
     &:last-child {
-      border-radius: 0 $base-radius $base-radius 0;
+      border-radius: 0 $radius-lg $radius-lg 0;
       right: 0.5px;
     }
   }

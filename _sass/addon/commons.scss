@@ -134,7 +134,7 @@ kbd {
   padding-top: 0.1rem;
   color: var(--kbd-text-color);
   background-color: var(--kbd-bg-color);
-  border-radius: 0.25rem;
+  border-radius: $radius-sm;
   border: solid 1px var(--kbd-wrap-color);
   box-shadow: inset 0 -2px 0 var(--kbd-wrap-color);
 }

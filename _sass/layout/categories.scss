@@ -16,7 +16,7 @@
   }
 
   .card-header {
-    $radius: calc($base-radius - 1px);
+    $radius: calc($radius-lg - 1px);
 
     padding: 0.75rem;
     border-radius: $radius;
