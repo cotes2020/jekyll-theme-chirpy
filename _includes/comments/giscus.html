@@ -17,6 +17,12 @@
       initTheme = darkTheme;
     }
 
+    let lang = '{{ site.comments.giscus.lang | default: lang }}';
+    {%- comment -%} https://github.com/giscus/giscus/tree/main/locales {%- endcomment -%}
+    if (lang.length > 2 && !lang.startsWith('zh')) {
+      lang = lang.slice(0, 2);
+    }
+
     let giscusAttributes = {
       src: 'https://giscus.app/client.js',
       'data-repo': '{{ site.comments.giscus.repo}}',
@@ -29,7 +35,7 @@
       'data-emit-metadata': '0',
       'data-theme': initTheme,
       'data-input-position': '{{ site.comments.giscus.input_position | default: 'bottom' }}',
-      'data-lang': '{{ site.comments.giscus.lang | default: lang }}',
+      'data-lang': lang,
       'data-loading': 'lazy',
       crossorigin: 'anonymous',
       async: ''
