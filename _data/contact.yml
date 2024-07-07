@@ -26,3 +26,15 @@
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+#
+# - type: bluesky
+#   icon: 'fa-brands fa-bluesky'
+#   url: ''                   # Fill with your Bluesky profile link
+#
+# - type: reddit
+#   icon: 'fa-brands fa-reddit'
+#   url: ''                   # Fill with your Reddit profile link
+#
+# - type: threads
+#   icon: 'fa-brands fa-threads'
+#   url: ''                   # Fill with your Threads profile link

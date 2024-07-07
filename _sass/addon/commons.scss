@@ -107,8 +107,8 @@ blockquote {
     }
   }
 
-  @include prompt('tip', '\f0eb', 'regular');
-  @include prompt('info', '\f06a');
+  @include prompt('tip', '\f0eb', $fa-style: 'regular');
+  @include prompt('info', '\f06a', $rotate: 180);
   @include prompt('warning', '\f06a');
   @include prompt('danger', '\f071');
 }
