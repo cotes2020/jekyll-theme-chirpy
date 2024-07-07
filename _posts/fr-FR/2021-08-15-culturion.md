@@ -22,11 +22,11 @@ La première étape était de trouver une idée de jeu, toujours réalisable dan
 J'ai donc commencé à développer l'application fin 2020, avant de mettre le projet en pause après avoir été découragé par mon manque d'inspiration pour l'interface utilisateur. Ce n'est que 6 mois plus tard, durant l'été, que j'ai retrouvé un peu de motivation grâce à une idée. 
 Le concept était d'afficher une carte de France vierge, et de laisser le joueur la remplir au fur et à mesure avec ses bonnes réponses. Par exemple, en devinant dans quelle ville la photo a été prise, son emplacement est révélé sur la carte.
 
-J'ai ensuite étendu ce concept à d'autres aspects de la France : numéro de département, spécialités gastronomiques et ville natale de célébrités. J'ai travaillé sur ce projet pendant plusieurs mois, passant du temps à développer l'application, mais aussi à rassembler toutes les données nécessaires (photos de villes, spécialités culinaires, ...).
+J'ai ensuite étendu ce concept à d'autres aspects de la France : numéro de département, spécialités gastronomiques et ville natale de célébrités. J'ai travaillé sur ce projet pendant plusieurs mois, passant du temps à développer l'application, mais aussi à rassembler toutes les données nécessaires (photos de villes, spécialités culinaires, ...). Toutes ces données ont ensuite du être ajouté à une base de donnée MySQL.
 
-J'ai également dû réfléchir à un nom et j'ai trouvé 'Culturion' : la contraction de '*Culture*' et '*Région*' car le jeu porte sur la culture des différentes régions françaises.
+J'ai également dû réfléchir à un nom et j'ai trouvé 'Culturion' : la contraction de '*Culture*' et '*Région*' parce que le jeu repose sur les connaissances culturels et aussi divisé par région française.
 
-Une fois le jeu dans un état à peu près jouable, j'ai demandé à ma famille et à mes amis de l'essayer. Leurs commentaires ont été très positifs, et je les ai utilisés pour corriger des erreurs ou améliorer certaines fonctionnalités.
-Enfin, je l'ai publié publiquement sur le Play Store et j'ai lancé une campagne de marketing. Le résultat a dépassé mes attentes, car je suis fier de dire que l'application a été téléchargée par plus de 15 000 personnes !
+Une fois le jeu dans un état jouable, j'ai demandé à ma famille et à mes amis de l'essayer. Leurs commentaires ont été très positifs, et je les ai utilisés pour corriger des erreurs et améliorer certaines fonctionnalités.
+Enfin, je l'ai publié sur le Play Store et lancé une campagne de marketing. Le résultat a dépassé mes attentes, car je suis fier de dire que l'application a été téléchargée par plus de 15 000 personnes !
 
 Malheureusement, l'application n'est plus disponible sur le Play Store à cause du SDK Android obsolète, mais c'est un projet que je n'oublierai jamais !
