@@ -28,6 +28,7 @@ $code-dot-gap: 0.5rem !default;
 $code-icon-width: 1.75rem !default;
 
 /* fonts */
+@import url("https://statics.goorm.io/fonts/GoormSansCode/v1.0.0/GoormSansCode.min.css");
 
-$font-family-base: 'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
-$font-family-heading: Lato, 'Microsoft Yahei', sans-serif !default;
+$font-family-base: 'Goorm Sans Code', sans-serif !default;
+$font-family-heading: 'Goorm Sans Code', sans-serif !default;
