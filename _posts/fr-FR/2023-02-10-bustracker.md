@@ -19,8 +19,8 @@ Avoir toujours à regarder mon téléphone le matin pour savoir quand je dois pa
 
 C'est pourquoi je voulais un affichage indiquant l'heure d'arrivée du prochain bus, exactement comme ceux que l'on peut souvent trouver à un arrêt de bus.
 
-![Affichage d'informations en temps réel sur les bus](bustracker_example.jpg){ : w="400" h="150"}
-Affichage de l'information en temps réel sur les bus
+![Affichage d'informations en temps réel sur les bus](bustracker_example.jpg){: w="400" h="150"}
+_Affichage de l'information en temps réel sur les bus_
 
 Forcément, il sera plus petit pour s'adapter à mon appartement et à mon budget, mais rien ne m'empêche aussi de pouvoir ajouter quelques fonctionnalités supplémentaires !
 
@@ -105,7 +105,7 @@ Mon choix d'un microcontrôleur pour ce projet a été basé sur deux critères 
 L'ESP32/ESP8266 répond à tous ces critères grâce à sa fonctionnalité WIFI intégrée et la possibilité d'utiliser le framework Arduino. 
 De plus, j'avais déjà des cartes WEMOS D1 Mini Pro (ESP8266) achetées en vrac dans le passé, il était donc temps de les utiliser.
 
-![ESP32](bustracker_WEMOSD1.jpg){ : w="150" h="50"}
+![ESP32](bustracker_WEMOSD1.jpg){: w="150" h="50"}
 _ESP32_
 
 ### Écran
@@ -113,10 +113,10 @@ Ensuite, pour afficher le prochain arrêt de bus, un écran était également im
 
 J'ai trouvé deux candidats intéressants pour mon petit budget : un mini écran OLED 128x64 et un écran TFT 128x160.
 
-![écran OLED 128x64](bustracker_OLED.jpg){ : w="150" h="50"}
-Écran OLED 128x64
-![Écran TFT 128x160](bustracker_TFT.jpg){ : w="150" h="50"}
-Écran TFT 128x160
+![écran OLED 128x64](bustracker_OLED.jpg){: w="150" h="50"}
+_Écran OLED 128x64_
+![Écran TFT 128x160](bustracker_TFT.jpg){: w="150" h="50"}
+_Écran TFT 128x160_
 
 Bien que l'écran OLED soit plus petit, j'ai pensé que les meilleurs contrastes pourrait aider à voir l'écran d'un peu plus loin. 
 Comme je n'arrivais pas à prendre une décision, j'ai acheté les deux pour les essayer, et j'ai finalement opté pour l'écran TFT.
@@ -124,8 +124,8 @@ Comme je n'arrivais pas à prendre une décision, j'ai acheté les deux pour les
 ### Bouton
 Un bouton était nécessaire pour interagir avec l'écran et pour l'éteindre lorsqu'il n'est pas utilisé. Comme je voulais avoir le moins de composants possible, je n'ai utilisé qu'un encodeur rotatif avec un bouton poussoir. De cette manière, il est possible de naviguer dans le menu en faisant tourner l'encodeur et valider son choix en appuyant dessus.
 
-![Bouton encodeur rotatif](bustracker_BUTTON.jpg){ : w="150" h="50"}
-Bouton encodeur rotatif
+![Bouton encodeur rotatif](bustracker_BUTTON.jpg){: w="150" h="50"}
+_Bouton encodeur rotatif_
 
 ### Bonus
 J'ai pensé qu'une autre fonctionnalité intéressante serait de jouer une petite sonnerie lorsqu'il est l'heure d'aller au travail. J'ai donc ajouté un haut-parleur piézo à ma liste d'achats.
@@ -149,20 +149,20 @@ La connexion des périphériques à l'ESP a été simple :
 - Les pins de l'encodeur rotatif (CLK/DT pour l'encodeur et SW pour le bouton) vers un port d'entrée.
 - Le haut-parleur piézo vers un port PWM pour jouer des tonalités différentes en variant le duty-cycle.
 
-![Bus Tracker schematic](bustracker_schematic.png){ : w="500" h="500"}
-Schéma du Bus Tracker
+![Bus Tracker schematic](bustracker_schematic.png){: w="500" h="500"}
+_Schéma du Bus Tracker_
 
 Pour les besoins du développement, j'ai simplement utilisé une breadboard et quelques fils de connexion pour relier les composants. 
 
-![Bus Tracker protoype](bustracker_photo.jpg){ : w="500" h="500"}
-Prototype de Bus Tracker
+![Bus Tracker protoype](bustracker_photo.jpg){: w="500" h="500"}
+_Prototype de Bus Tracker_
 
 J'étais assez satisfait du résultat et je l'ai utilisé dans cet état pendant plusieurs semaines. 
 
 Ensuite, j'ai voulu utiliser une perfboard pour rendre l'ensemble du montage plus petit et joli. Je n'ai pas trouvé d'outil approprié pour planifier le positionnement des composants et les pistes pour une perfboard, j'ai donc utilisé un logiciel standard de conception de PCB. Ce n'était pas très pratique, mais j'ai réussi à dessiner une première version du schéma.
 
-![Bus Tracker perfboard schematic](bustracker_pcb.png){ : w="500" h="500"}
-Schéma de la carte à perfusion du Bus Tracker
+![Bus Tracker perfboard schematic](bustracker_pcb.png){: w="500" h="500"}
+_Schéma de la carte à perfusion du Bus Tracker_
 
 Malheureusement, ce projet n'a pas vraiment de conclusion, car j'ai été distrait par un autre projet et je ne l'ai jamais terminé. 
 Néanmoins, c'était un projet intéressant et je l'ai utilisé tous les jours pendant plusieurs mois sans jamais être en retard au travail !
