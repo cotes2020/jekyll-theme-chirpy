@@ -28,11 +28,6 @@ $code-dot-gap: 0.5rem !default;
 $code-icon-width: 1.75rem !default;
 
 /* fonts */
-/* @import url("https://statics.goorm.io/fonts/GoormSansCode/v1.0.0/GoormSansCode.min.css");
+@import url("https://statics.goorm.io/fonts/GoormSansCode/v1.0.0/GoormSansCode.min.css");
 $font-family-base: 'Goorm Sans Code', sans-serif !default;
-$font-family-heading: 'Goorm Sans Code', sans-serif !default;  */
-
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-
-$font-family-base: "Nanum Pen Script", cursive !default;
-$font-family-heading: "Nanum Pen Script", cursive !default;
+$font-family-heading: 'Goorm Sans Code', sans-serif !default;  
