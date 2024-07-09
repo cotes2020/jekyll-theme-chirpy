@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_tabs/archives.md",
+                "file": "_posts/2024-07-01-intro.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:writing",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_tabs/archives.md",
+                "file": "_posts/2024-07-01-intro.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_tabs/archives.md",
+                "file": "_posts/2024-07-01-intro.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_tabs/archives.md"
+                "file": "_posts/2024-07-01-intro.md"
               }
             }
           }
@@ -148,11 +149,11 @@
   },
   "active": "7fa40d54a1479852",
   "lastOpenFiles": [
+    "_tabs/archives.md",
     "_tabs/categories.md",
     "_tabs/tags.md",
-    "_tabs/archives.md",
     "_tabs/about.md",
-    "_posts/2019-08-08-write-a-new-post.md",
+    "_posts/2024-07-01-intro.md",
     "_posts/무제 폴더",
     "CNAME",
     "assets/img/favicons/android-icon-72x72.png",
