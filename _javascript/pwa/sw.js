@@ -5,7 +5,18 @@ importScripts(`${baseurl}/assets/js/data/swconf.js`);
 const purge = swconf.purge;
 
 function verifyUrl(url) {
-  const requestPath = new URL(url).pathname;
+  const requestUrl = new URL(url);
+  const requestPath = requestUrl.pathname;
+
+  if (!requestUrl.protocol.startsWith('http')) {
+    return false;
+  }
+
+  for (const denyUrl of swconf.denyUrls) {
+    if (requestUrl.href.startsWith(denyUrl)) {
+      return false;
+    }
+  }
 
   for (const path of swconf.denyPaths) {
     if (requestPath.startsWith(path)) {

@@ -22,6 +22,13 @@ const swconf = {
       {% endfor %}
     ],
 
+    {%- comment -%} The request url starting with below part will not be cached. {%- endcomment -%}
+    denyUrls: [
+      {% if site.analytics.goatcounter.id != nil and site.pageviews.provider == 'goatcounter' %}
+        'https://{{ site.analytics.goatcounter.id }}.goatcounter.com/counter/'
+      {% endif %}
+    ],
+
     {%- comment -%} The request url with below path will not be cached. {%- endcomment -%}
     denyPaths: [
       {% for path in site.pwa.cache.deny_paths %}
