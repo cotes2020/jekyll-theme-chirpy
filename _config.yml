@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: VCworks.kr # the main title
 
-tagline: Quick Guide # it will display as the sub-title
+tagline: User Guide # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   VCworks.kr의 빠른 사용을 돕는 퀵가이드입니다.
