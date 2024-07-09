@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_tabs/about.md",
+                "file": "_tabs/archives.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_tabs/about.md",
+                "file": "_tabs/archives.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_tabs/about.md",
+                "file": "_tabs/archives.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_tabs/about.md"
+                "file": "_tabs/archives.md"
               }
             }
           }
@@ -148,6 +148,10 @@
   },
   "active": "7fa40d54a1479852",
   "lastOpenFiles": [
+    "_tabs/categories.md",
+    "_tabs/tags.md",
+    "_tabs/archives.md",
+    "_tabs/about.md",
     "assets/img/favicons/android-icon-72x72.png",
     "assets/img/favicons/android-icon-48x48.png",
     "assets/img/favicons/android-icon-36x36.png",
@@ -157,7 +161,6 @@
     "assets/img/favicons/favicon-96x96.png",
     "assets/img/favicons/apple-icon-precomposed.png",
     "assets/img/favicons/apple-icon-152x152.png",
-    "assets/img/favicons/apple-icon-144x144.png",
-    "assets/img/favicons/apple-icon-120x120.png"
+    "assets/img/favicons/apple-icon-144x144.png"
   ]
 }
