@@ -1,7 +1,6 @@
 ---
-# the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
 
 본 페이지의 목적 및 담당자 정보를 명기합니다.

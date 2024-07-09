@@ -10,11 +10,11 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: 새로운소식
+  home: 새로운 소식
   categories: 형태별
   tags: 테그별
   archives: 시간별
-  about: 쉬운시작
+  about: 쉬운 시작
 
 # the text displayed in the search bar & search results
 search:
