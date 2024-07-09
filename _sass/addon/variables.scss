@@ -33,10 +33,12 @@ $code-icon-width: 1.75rem !default;
 
 
 /* fonts */
-// @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&family=Roboto:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@600&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
-// $font-family-base: "Nanum Gothic",'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
-$font-family-base: "Noto Sans KR",'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&family=Roboto:wght@100&display=swap');
+$font-family-base: "Nanum Gothic",'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
+
+// @import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@600&display=swap');
 // $font-family-base: "Jua",'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
-$font-family-heading: "Noto Sans KR", Lato, 'Microsoft Yahei', sans-serif !default;
+// $font-family-base: "Noto Sans KR",'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
+// $font-family-heading: "Noto Sans KR", Lato, 'Microsoft Yahei', sans-serif !default;
+
+// @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
