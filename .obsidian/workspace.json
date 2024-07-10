@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-07-01-intro.md",
+                "file": "_posts/2024-07-02-hr0001.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-07-01-intro.md",
+                "file": "_posts/2024-07-02-hr0001.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-07-01-intro.md",
+                "file": "_posts/2024-07-02-hr0001.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-07-01-intro.md"
+                "file": "_posts/2024-07-02-hr0001.md"
               }
             }
           }
@@ -148,8 +148,9 @@
   },
   "active": "7fa40d54a1479852",
   "lastOpenFiles": [
-    "_posts/2024-07-02-test.md",
     "_posts/2024-07-01-intro.md",
+    "_posts/2024-07-02-hr0001.md",
+    "_posts/2024-07-02-test.md",
     "무제 파일.canvas",
     "Templates/2024-07-01-intro.md",
     "Templates",
