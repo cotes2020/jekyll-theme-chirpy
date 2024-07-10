@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md",
+                "file": "_posts/2024-07-02-se0003.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md",
+                "file": "_posts/2024-07-02-se0003.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md",
+                "file": "_posts/2024-07-02-se0003.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md"
+                "file": "_posts/2024-07-02-se0003.md"
               }
             }
           }
@@ -148,12 +148,18 @@
   },
   "active": "7fa40d54a1479852",
   "lastOpenFiles": [
+    "_posts/2024-07-02-hr0007.md",
+    "_posts/2024-07-02-se0005.md",
+    "_posts/2024-07-02-se0003.md",
+    "_posts/2024-07-01-intro.md",
+    "_posts/2024-07-02-hr0001.md",
+    "_posts/2024-07-02-hr0002.md",
+    "_tabs/about.md",
+    "().md",
     "assets/img/Pasted image 20240710193341.png",
     "assets/img/Pasted image 20240710193338.png",
     "assets/img/Pasted image 20240710193320.png",
     "assets/img/Pasted image 20240710193018.png",
-    "_posts/2024-07-01-intro.md",
-    "_posts/2024-07-02-hr0001.md",
     "_posts/2024-07-02-test.md",
     "무제 파일.canvas",
     "Templates/2024-07-01-intro.md",
@@ -163,14 +169,12 @@
     "_tabs/archives.md",
     "_tabs/categories.md",
     "_tabs/tags.md",
-    "_tabs/about.md",
     "_posts/무제 폴더",
     "CNAME",
     "assets/img/favicons/android-icon-72x72.png",
     "assets/img/favicons/android-icon-48x48.png",
     "assets/img/favicons/android-icon-36x36.png",
     "assets/img/favicons/ms-icon-310x310.png",
-    "assets/img/favicons/ms-icon-144x144.png",
-    "assets/img/favicons/ms-icon-70x70.png"
+    "assets/img/favicons/ms-icon-144x144.png"
   ]
 }

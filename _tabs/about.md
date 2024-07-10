@@ -4,7 +4,7 @@ order: 1
 ---
 # VCworks.kr Quick Guide
 
-VCworks.kr은 똑똑(dkdk.kr)에서 만든 Venture Capital ERP Solution입니다.[1](#user-content-fn-1) VCworks.kr의 빠른 활용을 위해 Quick Guide를 준비하였습니다.
+VCworks.kr은 똑똑(dkdk.kr)에서 만든 Venture Capital ERP Solution입니다. VCworks.kr의 빠른 활용을 위해 Quick Guide를 준비하였습니다.
 
 VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다:
 
@@ -57,10 +57,8 @@ VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다:
 
 ---
 
-버그 및 문의 사항은 다음 이메일로 보내주세요: **[we@dkdk.kr](mailto:we@dkdk.kr)**
+- 버그 및 문의 사항은 다음 이메일로 보내주세요: **[we@dkdk.kr](mailto:we@dkdk.kr)**
 
-## Footnotes
-
-1. 똑똑(dkdk.kr)은 대한민국 벤처투자전문회사인 DSC인베스트먼트가 VC업계의 업무 방식을 혁신하고자 만든 IT자회사입니다. [↩](#user-content-fnref-1)
+- 똑똑(dkdk.kr)은 대한민국 벤처투자전문회사인 DSC인베스트먼트가 VC업계의 업무 방식을 혁신하고자 만든 IT자회사입니다. 
 
 
