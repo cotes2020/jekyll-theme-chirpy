@@ -43,7 +43,7 @@ copyright:
 meta: กำลังใช้ธีมของ :PLATFORM ชื่อ :THEME
 
 not_found:
-  statment: ขออภัย เราวาง URL นั้นไว้ผิดที่ หรือมันชี้ไปยังสิ่งที่ไม่มีอยู่
+  statement: ขออภัย เราวาง URL นั้นไว้ผิดที่ หรือมันชี้ไปยังสิ่งที่ไม่มีอยู่
 
 notification:
   update_found: มีเวอร์ชันใหม่ของเนื้อหา

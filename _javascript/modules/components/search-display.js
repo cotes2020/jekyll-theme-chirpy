@@ -1,5 +1,5 @@
 /**
- * This script make #search-result-wrapper switch to unloaded or shown automatically.
+ * This script make #search-result-wrapper switch to unload or shown automatically.
  */
 
 const btnSbTrigger = document.getElementById('sidebar-trigger');
