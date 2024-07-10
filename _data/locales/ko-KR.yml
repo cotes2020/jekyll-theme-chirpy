@@ -10,11 +10,11 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: 홈
-  categories: 카테고리
-  tags: 태그
-  archives: 아카이브
-  about: 정보
+  home: 새로운 소식
+  categories: 형태별
+  tags: 테그별
+  archives: 시간별
+  about: 퀵 가이드
 
 # the text displayed in the search bar & search results
 search:
@@ -37,7 +37,7 @@ copyright:
   # Displayed in the footer
   brief: 일부 권리 보유
   verbose: >-
-    명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의
+    명시되지 않는 한 이 사이트의 게시물은 
     Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.
 
 meta: Powered by :PLATFORM with :THEME theme
@@ -59,7 +59,7 @@ post:
   pageview_measure: 조회
   read_time:
     unit: 분
-    prompt: 읽는 시간
+    prompt:  
   relate_posts: 관련된 글
   share: 공유하기
   button:
