@@ -2,9 +2,10 @@
 icon: fas fa-info-circle
 order: 1
 ---
-VCworks.kr은 똑똑(dkdk.kr)에서 만든 Venture Capital ERP Solution입니다. VCworks.kr의 빠른 활용을 위해 Quick Guide를 준비하였습니다.
+VCworks.kr은 똑똑(dkdk.kr)에서 만든 Venture Capital ERP Solution입니다. 
+VCworks.kr의 빠른 활용을 위해 Core Guide를 준비하였습니다.
 
-VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다:
+VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다
 
 1. 설정
 2. 결성(조합등록)
@@ -12,10 +13,7 @@ VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다:
 4. 회수
 5. 배분
 
-각 요소별로 상세한 설명을 다음과 같이 정리하였습니다. 
-순서대로 따라해 보실까요?
-
-(자신의 업무에 따라 필요하신 것으로 바로 이동해서 탐색해 보셔도 됩니다.)
+자신의 업무에 따라 필요하신 것으로 바로 이동해서 탐색해 보시거나 순서대로 따라해 보시면 됩니다.
 
 ## 설정
 

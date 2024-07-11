@@ -11,10 +11,10 @@ layout:
 tabs:
   # format: <filename_without_extension>: <value>
   home: 새로운 소식
-  categories: 형태별
+  categories: 구조별
   tags: 테그별
   archives: 시간별
-  about: 퀵 가이드
+  about: 코어 가이드
 
 # the text displayed in the search bar & search results
 search:
