@@ -44,7 +44,6 @@ VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다
 - 이곳에 TC BPM을 다시 구조화한 뒤 세로 형태로 변환하여 삽입 예정
 - Mermaid 방식으로 도해를 우선 검토함
 
-{% raw %}
 ```mermaid
 flowchart TD
     subgraph 셋팅["셋팅"]
@@ -82,7 +81,7 @@ flowchart TD
 
     셋팅 --> 조합결성
 ```
-{% endraw %}
+
 
 ---
 
