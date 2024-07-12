@@ -55,15 +55,16 @@ mermaid: true
 
 ## 확장된 프로세스 플로우차트
 
+
 ```mermaid
-graph TD
+flowchart TD
     A[설정 초기셋팅] --> B{결성 여부}
     B -->|Yes| C[결성 조합등록]
     B -->|No| A
-    C --> D[[운용 투자심사]]
+    C --> D[운용 투자심사]
     D --> E[(데이터베이스)]
-    E --> F{{회수}}
-    F --> G[/배분/]
+    E --> F[회수]
+    F --> G[배분]
 
     A --> |초기화| A1[구성원 등록]
     A --> |업데이트| A2[구성원 정보수정]
@@ -81,8 +82,8 @@ graph TD
     F --> D1((투자금 회수))
     F --> D2((수익 정산))
 
-    G --> E1>/수익 배분/]
-    G --> E2>/보고서 작성/]
+    G --> E1[수익 배분]
+    G --> E2[보고서 작성]
 
     subgraph 투자 프로세스
     D
@@ -97,6 +98,8 @@ graph TD
     click B1 "{% post_url 2024-07-03-fd0001 %}" "조합조회 및 생성 페이지로 이동"
     click B3 "{% post_url 2024-07-03-fd0001 %}" "조합원명부 등록 페이지로 이동"
 
+    classDef process fill:#f9f,stroke:#333,stroke-width:4px;
+    class D,F process;
 ```
 
 ---
