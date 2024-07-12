@@ -97,8 +97,6 @@ graph TD
     click B1 "{% post_url 2024-07-03-fd0001 %}" "조합조회 및 생성 페이지로 이동"
     click B3 "{% post_url 2024-07-03-fd0001 %}" "조합원명부 등록 페이지로 이동"
 
-    classDef process fill:#f9f,stroke:#333,stroke-width:4px;
-    class D,F process;
 ```
 
 ---
