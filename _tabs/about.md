@@ -45,18 +45,6 @@ VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다
 - Mermaid 방식으로 도해를 우선 검토함
 
 ```mermaid
----
-title: 확장된 프로세스 플로우차트
-date: 2023-07-12 17:00:00 +0900
-categories: [프로세스, 플로우차트]
-tags: [mermaid, 프로세스, 다이어그램]
-mermaid: true
----
-
-## 확장된 프로세스 플로우차트
-
-
-```mermaid
 graph TD
     A[설정 초기셋팅] --> B[결성 조합등록]
     B --> C[운용 투자심사]
