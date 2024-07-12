@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-07-01-intro.md",
+                "file": "_posts/2024-07-07-fd0006.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-07-01-intro.md",
+                "file": "_posts/2024-07-07-fd0006.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-07-01-intro.md",
+                "file": "_posts/2024-07-07-fd0006.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-07-01-intro.md"
+                "file": "_posts/2024-07-07-fd0006.md"
               }
             }
           }
@@ -147,24 +147,25 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "84d98367ce21bee5",
+  "active": "7fa40d54a1479852",
   "lastOpenFiles": [
+    "_posts/2024-07-06-fd0012.md",
+    "_posts/2024-07-07-fd0006.md",
+    "_posts/2024-07-05-fd0013.md",
+    "_posts/2024-07-03-se0003.md",
+    "_posts/2024-07-02-se0005.md",
+    "_posts/2024-07-02-hr0007.md",
     "_posts/2024-07-02-hr0002.md",
+    "_posts/2024-07-02-hr0001.md",
     "_posts/2024-07-01-intro.md",
+    "_tabs/about.md",
     "_posts/2024-07-04-fm0010.md",
     "_posts/2024-07-05-fd0009a.md",
-    "_posts/2024-07-05-fd0013.md",
-    "_posts/2024-07-06-fd0012.md",
-    "_tabs/about.md",
-    "_posts/2024-07-02-hr0001.md",
     "_posts/2024-07-04-fd0001.md",
     "2024-07-12.md",
     "무제 파일.canvas",
-    "_posts/2024-07-03-se0003.md",
-    "_posts/2024-07-02-se0005.md",
     "_posts/2024-07-04-fd0011.md",
     "_posts/2024-07-04-fd0010.md",
-    "_posts/2024-07-02-hr0007.md",
     "_tabs/tags.md",
     "_tabs/archives.md",
     "_tabs/categories.md",
