@@ -56,7 +56,7 @@ mermaid: true
 ## 확장된 프로세스 플로우차트
 
 
-
+{% raw %}
 ```mermaid
 flowchart TD
     A[설정 초기셋팅] --> B{결성 여부}
@@ -81,6 +81,7 @@ flowchart TD
     click B1 "{% post_url 2024-07-03-fd0001 %}" "조합조회 및 생성 페이지로 이동"
     click B3 "{% post_url 2024-07-03-fd0001 %}" "조합원명부 등록 페이지로 이동"
 ```
+{% endraw %}
 
 ---
 
