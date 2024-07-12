@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-07-07-fd0006.md",
+                "file": "_posts/2024-07-01-intro.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-07-07-fd0006.md",
+                "file": "_posts/2024-07-01-intro.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-07-07-fd0006.md",
+                "file": "_posts/2024-07-01-intro.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-07-07-fd0006.md"
+                "file": "_posts/2024-07-01-intro.md"
               }
             }
           }
@@ -149,8 +149,10 @@
   },
   "active": "7fa40d54a1479852",
   "lastOpenFiles": [
-    "_posts/2024-07-06-fd0012.md",
+    "_posts/2024-07-08-ed0001.md",
+    "_posts/2024-07-07-oi0002.md",
     "_posts/2024-07-07-fd0006.md",
+    "_posts/2024-07-06-fd0012.md",
     "_posts/2024-07-05-fd0013.md",
     "_posts/2024-07-03-se0003.md",
     "_posts/2024-07-02-se0005.md",
