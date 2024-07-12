@@ -69,12 +69,15 @@ flowchart TD
         fd0013["필수 필요서류 등록"]
         fd0012["보수정보 등록"]
         fd0000["결성완료"]
+
         hr0007 --> fd0009
         fd0001 --> fd0009
         fd0001 --> fd0010
         fd0001 --> fd0011 
         fd0009 --> fd0009a 
         fm0010 --> fd0009a
+
+
         fd0009a-->fd0000
         fd0010-->fd0000
         fd0013-->fd0000
@@ -83,11 +86,12 @@ flowchart TD
 
     subgraph 출자["출자"]
         fd0006["출자/배분 등록"]
-        oi0002["운영지시서 등록"]
+        io0002["운영지시서 등록"]
         ed0001["전자결재"]
+
         fd0000 --> fd0006
         fd0011 --> fd0006
-        fd0006 --> oi0002 --> ed0001
+        fd0006 --> io0002 --> ed0001
 
     end
 
@@ -114,6 +118,8 @@ click fd0012 "{% post_url 2024-07-06-fd0012 %}" " "
 click fd0006 "{% post_url 2024-07-07-fd0006 %}" " "
 click oi0002 "{% post_url 2024-07-07-oi0002 %}" " "
 click ed0001 "{% post_url 2024-07-08-ed0001 %}" " "
+
+style hr0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10
 ```
 
 
