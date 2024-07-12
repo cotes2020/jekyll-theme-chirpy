@@ -1,6 +1,7 @@
 ---
 icon: fas fa-info-circle
 order: 1
+mermaid: true
 ---
 VCworks.kr은 똑똑(dkdk.kr)에서 만든 대한민국 Venture Capital ERP Solution입니다. 
 VCworks.kr의 빠른 활용을 위해 Core Guide를 준비하였습니다.
@@ -38,6 +39,19 @@ VCworks의 활용 단계는 다음과 같이 총 5단계로 이루어집니다
 - 회수
 - 배분
 
+## 비즈니스 프로세스
+
+- 이곳에 TC BPM을 다시 구조화한 뒤 세로 형태로 변환하여 삽입 예정
+- Mermaid 방식으로 도해 할 수 있는지 검
+
+```mermaid
+graph TD
+    A[크리스마스] -->|준비| B(선물 구매)
+    A -->|준비| C(집 꾸미기)
+    B --> D{선물 포장}
+    C --> D
+    D -->|완료| E[크리스마스 이브]
+```
 
 ---
 
