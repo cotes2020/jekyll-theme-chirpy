@@ -30,7 +30,7 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: 이 기사는 저작권자의 :LICENSE_NAME 라이센스를 따릅니다.
+    template: 똑똑의 모든 글은 :LICENSE_NAME 라이센스를 따릅니다.
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
