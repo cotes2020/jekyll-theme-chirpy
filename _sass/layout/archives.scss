@@ -69,11 +69,11 @@
           #ffffff,
           #fbfbfb,
           #fbfbfb,
-          #fbfbfb,
+          #fbfbfb,  
           #ffffff
         );
       }
-
+      
       &::before {
         @extend %timeline;
 
@@ -127,7 +127,7 @@
       top: 1.35rem;
       left: 71px;
       background-color: var(--timeline-node-bg);
-      box-shadow: 0 0 3px 0 #c2c6cc;
+      box-shadow: 0 0 3px 0 #1b509e;
       z-index: 1;
     }
   }
@@ -142,3 +142,6 @@
     }
   }
 }
+
+
+#c2c6cc

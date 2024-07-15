@@ -16,8 +16,8 @@
   "scripts": {
     "build": "concurrently npm:build:*",
     "build:css": "purgecss -c purgecss.config.js",
-    "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
-    "watch:js": "rollup -c --bundleConfigAsCjs -w",
+    "build:js": "rollup -c rollup.config.mjs --bundleConfigAsCjs --environment BUILD:production",
+    "watch:js": "rollup -c rollup.config.mjs --bundleConfigAsCjs -w",
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
     "test": "npm run lint:scss",
@@ -34,6 +34,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-yaml": "^4.1.2",
@@ -45,7 +46,7 @@
     "husky": "^9.0.11",
     "purgecss": "^6.0.0",
     "rollup": "^4.18.0",
-    "semantic-release": "^24.0.0",
+    "rollup-plugin-terser": "^7.0.2",
     "stylelint": "^16.6.1",
     "stylelint-config-standard-scss": "^13.1.0"
   },
@@ -174,5 +175,11 @@
       ],
       "@semantic-release/github"
     ]
-  }
+  },
+  "main": "purgecss.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": [],
+  "type": "module"
 }
