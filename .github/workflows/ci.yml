@@ -36,7 +36,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: lts/*
 
       - name: Build Assets
         run: npm i && npm run build
