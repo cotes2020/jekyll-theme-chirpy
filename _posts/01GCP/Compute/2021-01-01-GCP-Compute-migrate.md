@@ -12,6 +12,7 @@ image:
     - [Traditional: on-premises distributed systems architecture](#traditional-on-premises-distributed-systems-architecture)
     - [Modern: hybrid on multi-cloud architecture](#modern-hybrid-on-multi-cloud-architecture)
   - [Migration](#migration)
+    - [Application Migration](#application-migration)
     - [Migrate for VM](#migrate-for-vm)
     - [Migrate for Compute Engine](#migrate-for-compute-engine)
     - [Anthos (Migrate for Container / from VM to Container)](#anthos-migrate-for-container--from-vm-to-container)
@@ -90,8 +91,6 @@ image:
 
 ---
 
-
-
 ### Migrate for VM
 
 ![Screen Shot 2022-08-16 at 23.14.33](https://i.imgur.com/iIJ4hkf.png)
@@ -137,7 +136,7 @@ image:
 
 
 - <font color=OrangeRed> Google Kubernetes Engine on the Cloud site </font> of the hybrid network.
-  - Google Kubernetes Engine is a managed production-ready environment for <font color=LightSlateBlue> deploying containerized applications </font>
+  - a managed production-ready environment for <font color=LightSlateBlue> deploying containerized applications </font>
   - Operates seamlessly with high availability and an SLA.
   - Runs certified Kubernetes ensuring portability across clouds and on-premises.
   - Includes auto-node repair, and auto-upgrade, and auto-scaling.
