@@ -15,19 +15,27 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
-TESLA_URL = "https://www.tesla.com/inventory/new/my?TRIM=LRAWD&arrangeby=plh&zip=98011&range=0"
+TESLA_URL = (
+    "https://www.tesla.com/inventory/new/my?TRIM=LRAWD&arrangeby=plh&zip=98011&range=0"
+)
 OUTPUTDIR = "/Users/graceluo/Documents/GitHub-study/ocholuo.github.io/_posts/00CodeNote/project/webscrap_tesla/output"
+
 
 def create_text_file(content_list):
     try:
         current_datetime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         file_name = f"{current_datetime}_tesla-list.txt"
-        with open(f"{OUTPUTDIR}/{file_name}", 'w') as file:
+        with open(f"{OUTPUTDIR}/{file_name}", "w") as file:
             for item in content_list:
-                file.write(item + '\n')  # Write each item followed by a newline character
-        LOGGER.info(f"File '{file_name}' created successfully with content: {content_list}")
+                file.write(
+                    item + "\n"
+                )  # Write each item followed by a newline character
+        LOGGER.info(
+            f"File '{file_name}' created successfully with content: {content_list}"
+        )
     except Exception as e:
         LOGGER.info(f"Error occurred: {str(e)}")
+
 
 def watch_tesla():
 
@@ -35,14 +43,14 @@ def watch_tesla():
 
     # test using Chrome Selenium
     options = webdriver.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--headless')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-gpu')
-    user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
-    options.add_argument(f'user-agent={user_agent}')
+    options.add_argument("--no-sandbox")
+    options.add_argument("--headless")
+    options.add_argument("--ignore-certificate-errors")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-gpu")
+    user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36"
+    options.add_argument(f"user-agent={user_agent}")
 
     driver = webdriver.Chrome(options=options)
 
@@ -70,13 +78,15 @@ def watch_tesla():
 
         for car_section in car_sections:
 
-            car_price_str = car_section.find_element(By.CLASS_NAME, "result-purchase-price").get_attribute("innerHTML")
-            car_price = int(car_price_str.replace('$', '').replace(',', ''))
+            car_price_str = car_section.find_element(
+                By.CLASS_NAME, "result-purchase-price"
+            ).get_attribute("innerHTML")
+            car_price = int(car_price_str.replace("$", "").replace(",", ""))
             car_prices.append(car_price)
 
             if car_price < 45000:
 
-                email_content = f'There is a model Y for sale for {car_price_str}'
+                email_content = f"There is a model Y for sale for {car_price_str}"
                 LOGGER.info("======= %s =======" % email_content)
 
                 # settings.configure()
