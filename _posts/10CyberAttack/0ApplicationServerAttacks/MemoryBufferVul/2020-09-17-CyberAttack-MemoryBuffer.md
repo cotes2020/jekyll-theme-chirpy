@@ -13,9 +13,9 @@ image:
 ---
 
 # Meow's CyberAttack - Application/Server Attacks - Memory Buffer Vulnerabilities
- 
-book: Security+ 7th 
- 
+
+book: Security+ 7th
+
 <font color=LightSlateBlue></font>
 <font color=OrangeRed></font>
 
