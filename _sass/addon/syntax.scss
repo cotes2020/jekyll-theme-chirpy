@@ -2,8 +2,8 @@
 * The syntax highlight.
 */
 
-@import 'colors/syntax-light';
-@import 'colors/syntax-dark';
+@import '../colors/syntax-light';
+@import '../colors/syntax-dark';
 
 html {
   @media (prefers-color-scheme: light) {
@@ -50,12 +50,12 @@ html {
   @extend %rounded;
   @extend %code-snippet-bg;
 
+  overflow: auto;
+  padding-bottom: 0.75rem;
+
   @at-root figure#{&} {
     @extend %code-snippet-bg;
   }
-
-  overflow: auto;
-  padding-bottom: 0.75rem;
 
   pre {
     margin-bottom: 0;
