@@ -2,7 +2,7 @@
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
+    <a href="{{ '../assets/img/favicons/profile.jpg' | relative_url }}" id="avatar" class="rounded-circle">
       {%- if site.avatar != empty and site.avatar -%}
         {%- capture avatar_url -%}
           {% include img-url.html src=site.avatar %}
