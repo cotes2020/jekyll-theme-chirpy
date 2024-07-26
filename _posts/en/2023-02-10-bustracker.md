@@ -4,7 +4,7 @@ description: "A ESP32 and a TFT screen to never be late again."
 date: 2023-02-10
 categories: [Embedded]
 media_subpath: /assets/img/posts/bustracker
-tags: [arduino, esp, network, C]     # TAG names should always be lowercase
+tags: [arduino, esp, network, C] 
 lang: en
 ---
 
@@ -141,7 +141,8 @@ I separated each functionality in its class to improve the code readability :
 
 Each class exposes an initialization function called during setup and a tick function (updating internal state) called from the main loop. 
 
-The code is available on Github here : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main)
+> The code is available on Github here : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main).
+{: .prompt-tip }
 
 ## Building a prototype
 Connecting the peripherals to the ESP was straightforward :
