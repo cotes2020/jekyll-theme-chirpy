@@ -8,7 +8,7 @@ tags: [arduino, C]
 lang: en
 ---
 
-> Le projet a été réalisé des années avant la rédaction de cet article, il peut donc manquer de détails et d'explications approfondies.
+> The project was realized years before the redaction of this post, so it may lack details and in-depth explanation.
 {: .prompt-info }
 
 My first personal embedded eletrical project was an LED ambilight monitor. Ambilight is an ambient lighting that creates light behind the monitor based on what is displayed on it. The goal was to use my regular monitor and this technology to it. 
