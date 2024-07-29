@@ -1,6 +1,6 @@
 ---
 title: "Écran ambilight : Ajouter un rétro-éclairage à un écran"
-description: "Une solution bon marché pour ajouter une fonction ambilight à mon écran."
+description: "Une solution bon marché pour ajouter une fonction ambilight à un écran."
 date: 2018-11-18
 categories: [Embedded]
 media_subpath: /assets/img/posts/ambilight
