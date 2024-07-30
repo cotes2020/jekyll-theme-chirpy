@@ -4,6 +4,7 @@ author: Leesh
 categories: [CDN, Security]
 tags: [CDN, 컨텐츠 전송 네트워크, 미디어/웹 캐시, WAAP, Cloud, Security, TLS, SSL]
 date: '2024-07-30 10:55:00 +0900'
+mermaid: true
 ---
 
 ## TLS 버전 별 차이점
