@@ -40,21 +40,21 @@ TLS 1.2는 TLS 1.1대비, 성능과 보안을 개선.
 
 ### TLS 1.0,1.1,1.2 핸드쉐이크
 
+
 ```mermaid
 sequenceDiagram
-    participant Client
-    participant Server
-
-    Client->>Server: ClientHello
-    Server->>Client: ServerHello
-    Server->>Client: Certificate
-    Server->>Client: ServerKeyExchange
-    Server->>Client: ServerHelloDone
-    Client->>Server: ClientKeyExchange
-    Client->>Server: ChangeCipherSpec
-    Client->>Server: Finished
-    Server->>Client: ChangeCipherSpec
-    Server->>Client: Finished
+  participant Client
+  participant Server
+  Client ->> Server: ClientHello
+  Server ->> Client: ServerHello
+  Server ->> Client: Certificate
+  Server ->> Client: ServerKeyExchange
+  Server ->> Client: ServerHelloDone
+  Client ->> Server: ClientKeyExchange
+  Client ->> Server: ChangeCipherSpec
+  Client ->> Server: Finished
+  Server ->> Client: ChangeCipherSpec
+  Server ->> Client: Finished
 ```
 
 ### TLS 1.3 (2018년)
@@ -66,6 +66,8 @@ TLS 1.3은 보안성과 성능을 크게 향상.
 4. **프라이버시 보호**: 다양한 개인 정보 보호 기능이 추가되어, 핸드쉐이크 메시지를 암호화하고 메타데이터를 보호합니다.
 
 ### TLS 1.3 핸드쉐이크
+
+
 ```mermaid
 sequenceDiagram
     participant Client
@@ -131,6 +133,7 @@ sequenceDiagram
 초기 연결과 0-RTT 재연결 과정을 보여줍니다.<br>
 0-RTT를 사용하면 클라이언트와 서버 간의 핸드쉐이크 과정에서 발생하는 지연을 줄일 수 있으므로, 애플리케이션 데이터를 더 빨리 전송할 수 있습니다.<br>
 이는 특히 웹 브라우징이나 여러 번 재 연결이 필요한 애플리케이션에서 유용합니다. HTTPS 웹사이트 로드 속도가 빨라질 수 있습니다.<br>
+
 
 ```mermaid
 sequenceDiagram
