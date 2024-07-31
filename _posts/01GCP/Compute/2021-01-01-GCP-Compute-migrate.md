@@ -12,7 +12,6 @@ image:
     - [Traditional: on-premises distributed systems architecture](#traditional-on-premises-distributed-systems-architecture)
     - [Modern: hybrid on multi-cloud architecture](#modern-hybrid-on-multi-cloud-architecture)
   - [Migration](#migration)
-    - [Application Migration](#application-migration)
     - [Migrate for VM](#migrate-for-vm)
     - [Migrate for Compute Engine](#migrate-for-compute-engine)
     - [Anthos (Migrate for Container / from VM to Container)](#anthos-migrate-for-container--from-vm-to-container)

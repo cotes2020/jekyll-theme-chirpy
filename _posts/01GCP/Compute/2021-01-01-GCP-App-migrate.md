@@ -27,8 +27,6 @@ image:
 - creating a VM, then using the container option, and then the advanced options to set the starting commands and environment variables.
 - For something like Grafana I have setup a template, and use a group with a minimum instance of 1, then use the load balancer to provide certificate offloading.
 
-![serverless-blueprint-architecture](/assets/img/serverless-blueprint-architecture.svg)
-
 ---
 
 ## 在 Google 云平台上部署 ML 模型
