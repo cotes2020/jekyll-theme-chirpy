@@ -7,9 +7,6 @@ math: true
 image:
 ---
 
-
-# Install and Use Docker
-
 - [Install and Use Docker](#install-and-use-docker)
 - [Install and Use Docker on CentOS 7](#install-and-use-docker-on-centos-7)
   - [Uninstall old versions](#uninstall-old-versions)
@@ -22,6 +19,10 @@ image:
   - [Step 7 — Listing Docker Containers](#step-7--listing-docker-containers)
   - [Step 8 — Pushing Docker Images to a Docker Repository](#step-8--pushing-docker-images-to-a-docker-repository)
 
+
+---
+
+# Install and Use Docker
 
 ---
 

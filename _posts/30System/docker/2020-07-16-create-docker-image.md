@@ -63,39 +63,50 @@ curl 172.17.0.2:8080
 ### Dockerfile
 
 ```bash
-
-# define parent image with FROM; all valid Dockerfiles must begin with FROM.
+# define parent image with FROM;
+# all valid Dockerfiles must begin with FROM.
 FROM node:10-alpine
 
 # create a directory and set its owner.
-# use the RUN command, execute any commands against the shell. Our image is based on Alpine, which uses the ash shell
+# use the RUN command, execute any commands against the shell.
+# Our image is based on Alpine, which uses the ash shell
 RUN mkdir -p /home/server/app/node_modules && chown -R server:server /home/server/app
 
-# move into the /home/node/app directory. We do this by setting a working directory with WORKDIR. Any RUN, CMD, COPY, ADD, and ENTRYPOINT instructions that follow will be performed in this directory:
+# move into the /home/node/app directory.
+# We do this by setting a working directory with WORKDIR.
+# Any RUN, CMD, COPY, ADD, and ENTRYPOINT instructions that follow will be performed in this directory:
 WORKDIR /home/server/app
 
 # to add our files.
-# two options for this: COPY and ADD.
+# two options for this: COPY or ADD.
 # ADD can pull files from outside URLs, and thus utilizes additional functionality.
 # COPY: package* files are all local
-COPY package*.json ./
 # With the first argument being our source file(s) and the second our destination.
+COPY package*.json ./
 
-# ensure the prerequisite packages for our application are installed from NPM. These are just more RUN commands.
+# ensure the prerequisite packages for our application are installed from NPM.
+# These are just more RUN commands.
 RUN npm config set registry https://registry.npmjs.org/
 RUN npm install
 
 
-# We can now copy over the rest of our application files using COPY. We'll also want to set the owner of our working directory to the node user and group. Since we're on Linux, this can also be achieved using some special COPY functionality.
+# We can now copy over the rest of our application files using COPY.
+# We'll also want to set the owner of our working directory to the node user and group.
+# Since we're on Linux, this can also be achieved using some special COPY functionality.
 COPY --chown=server:server . .
 
-# to switch users. This works similarly to the previous WORKDIR command, but now we're switching users not directories for any following RUN, CMD, and ENTRYPOINT commands.
+# to switch users.
+# This works similarly to the previous WORKDIR command, but now we're switching users not directories for any following RUN, CMD, and ENTRYPOINT commands.
 USER server
 
-# Our application is hosted on port 8080, so we also want to make sure that port is available on our container. For this, we'll use the EXPOSE keyword.
+# Our application is hosted on port 8080, so we also want to make sure that port is available on our container.
+# For this, we'll use the EXPOSE keyword.
 EXPOSE 8080
 
-# And now, finally, we want to provide the command (CMD) run as soon as the container is launched. Unlike RUN, CMD's preferred format doesn't take this as a shell command. Instead, the executable name should be supplied in an array, followed by any parameters: CMD ["executable","param1","param2"]. In our case, this will be:
+# And now, finally, we want to provide the command (CMD) run as soon as the container is launched.
+# Unlike RUN, CMD's preferred format doesn't take this as a shell command.
+# Instead, the executable name should be supplied in an array, followed by any parameters:
+# CMD ["executable","param1","param2"].
 CMD [ "node", "index.js" ]
 ```
 

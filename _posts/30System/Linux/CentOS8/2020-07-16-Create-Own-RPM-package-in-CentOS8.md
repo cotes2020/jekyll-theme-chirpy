@@ -7,10 +7,13 @@ math: true
 image:
 ---
 
+- [Create Own RPM package in CentOS 8](#create-own-rpm-package-in-centos-8)
+  - [build a RPM package from source.](#build-a-rpm-package-from-source)
+  - [build a RPM package from code](#build-a-rpm-package-from-code)
+
+---
 
 # Create Own RPM package in CentOS 8
-
-[toc]
 
 Assignment under:
 

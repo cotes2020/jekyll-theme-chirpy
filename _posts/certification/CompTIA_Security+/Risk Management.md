@@ -3,9 +3,16 @@
 
 - [Understanding Risk Management](#understanding-risk-management)
 	- [Risk Assessment](#risk-assessment)
-		- [Qualitative Risk Assessment](#qualitative-risk-assessment)
+		- [Quantitative vs. Qualitative Risk Assessment](#quantitative-vs-qualitative-risk-assessment)
+			- [Quantitative Risk Assessment](#quantitative-risk-assessment)
+			- [Qualitative Risk Assessment](#qualitative-risk-assessment)
+			- [Adding Objectivity to a Qualitative Assessment](#adding-objectivity-to-a-qualitative-assessment)
+		- [Documenting the Assessment](#documenting-the-assessment)
+		- [Risk Registers](#risk-registers)
+	- [Identifying Lack of Security Controls](#identifying-lack-of-security-controls)
+	- [False Positive](#false-positive)
 
-
+---
 
 # Understanding Risk Management
 Risk is the likelihood that a threat will exploit a vulnerability. A vulnerability is a weakness, and a threat is a potential danger. The result is a negative impact on the organization. Impact refers to the magnitude of harm that can be caused if a threat exercises a vulnerability.
@@ -67,64 +74,175 @@ After identifying asset values, the risk assessment then identifies threats and 
 A risk assessment is a point-in-time assessment, or a snapshot. In other words, it assesses the risks based on current conditions, such as current
 threats, vulnerabilities, and existing controls. example, consider a library computer that has up-to-date antivirus protection and cannot access the Internet. Based on these conditions, the risks are l o w. However, if administrators connect the system to the Internet, or fail to keep the antivirus software up to date, the risk increases.
 I t ’s common to perform risk assessments on new systems or applications. example, if an organization is considering adding a new service or application that can increase revenue, it will often perform a risk assessment. This helps it determine if the potential risks may offset the potential gains.
-Risk assessments use quantitative measurements or qualitative measurements. Quantitative measurements use numbers, such as a monetary figure representing cost and asset values. Qualitative measurements use judgments. Both methods have the same core goal of helping management make educated decisions based on priorities.
-Quantitative Risk Assessment
-A quantitative risk assessment measures the risk using a specific monetary amount. This monetary amount makes it easier to prioritize risks. example, a risk with a potential loss of
-$30,000 is much more important than a risk with a potential loss of $1,000.
+
+
+### Quantitative vs. Qualitative Risk Assessment
 
 
 
-The asset value is an important element in a quantitative risk assessment. It may include the revenue value or replacement value of an asset. A web server may generate $10,000 in revenue per hour. If the web server fails, the company will lose $10,000 in direct sales each hour it’s down, plus the cost to repair it. It can also result in the loss of future business if customers take their business elsewhere. In contrast, the failure of a library workstation may cost a maximum of
-$1,000 to replace it.
+Risk assessments use quantitative measurements or qualitative measurements.
+- qualitative /'kwɒlɪ tətɪv/
+  - opinion-based and subjective, judgment and experience
+  - Qualitative measurements use judgments.
+- quantitative /'kwɒntɪ, tətɪv/
+  - cost-based and objective, metrics and models: `SLE x ARO = ALE`
+  - Quantitative measurements use numbers, such as a monetary figure representing cost and asset values.
+
+- depending on focusing on dollar amounts or simply downtime.
+
+
+Both methods have the same core goal of helping management make educated decisions based on priorities.
+
+---
+
+#### Quantitative Risk Assessment
+
+- A quantitative risk assessment measures the risk using a specific <font color=OrangeRed> monetary amount </font>.
+
+- This monetary amount makes it easier to prioritize risks.
+  - example, a risk with a potential loss of `$30,000` is much more important than a risk with a potential loss of `$1,000`.
+
+- Objectively determining the impact of an event that affects a project, program, or business.
+
+- involves the use of metrics and models to complete the assessment.
+  - <font color=LightSlateBlue> highly dependent on historical data </font>
+  - gathering such data can be difficult.
+  - applies historical information and trends to attempt to predict future performance.
+  - rely heavily on models that provide decision-making information in the form of quantitative metrics, which attempt to measure risk levels across a common scale.
+
+
+- The asset value is an important element in a quantitative risk assessment.
+  - It may include the revenue value or replacement value of an asset.
+
+  - A web server may generate `$10,000` in revenue per hour.
+  - If the web server fails, the company will lose `$10,000` in direct sales each hour it’s down, plus the cost to repair it.
+  - It can also result in the loss of future business if customers take their business elsewhere.
+  - In contrast, the failure of a library workstation may cost a maximum of `$1,000` to replace it.
+
 One commonly used quantitative model uses the following values to determine risks:
-Single loss expectancy (SLE). The SLE is the cost of any single loss.
-Annual rate of occurrence (ARO). The ARO indicates how many times the loss will occur in a year. If the ARO is less than 1, the ARO is represented as a percentage. example, if you anticipate the occurrence once every two years, the ARO is 50 percent or.5.
-Annual loss expectancy (ALE). The ALE is the value of SLE × ARO.
-Imagine that employees at your company lose, on average, one laptop a month. Thieves have stolen them when employees left them in conference rooms during lunch, while they were on-site at customer locations, and from training rooms.
-Someone suggested purchasing hardware locks to secure these laptops for a total of $1,000. These locks work similar to bicycle locks and allow employees to wrap the cable around a piece of furniture and connect into the laptop. A thief needs to either destroy the laptop to remove the lock or take the furniture with him when stealing the laptop. Should your company purchase them? With a little analysis, the decision is easy.
-You have identified the average cost of these laptops, including the hardware, software, and data, is $2,000 each. This assumes employees do not store entire databases of customer information or other sensitive data on the systems, which can easily result in much higher costs. You can now calculate the SLE, ARO, and ALE as follows:
-SLE. The value of each laptop is $2,000, so the SLE is $2,000.
-ARO. Employees lose about one laptop a month, so the ARO is 12.
-ALE. You calculate the ALE as SLE × ARO, so $2,000 × 12 =
-$24,000.
-Security experts estimate that these locks will reduce the number of lost or stolen laptops from 12 a year to only 2 a year. This changes the ALE from
-$24,000 to only $4,000 (saving $20,000 a year). In other words, the organization can spend $1,000 to save $20,000. It doesn’t take a rocket scientist to see that this is a good fiscal decision, saving a net of $19,000. Buy them.
+
+- <font color=OrangeRed> Single loss expectancy (SLE) </font>.
+  - The SLE is the cost of any single loss.
+
+- <font color=OrangeRed> Annual rate of occurrence (ARO) </font>.
+  - The ARO indicates how many times the loss will occur in a year.
+  - If the ARO is less than 1, the ARO is represented as a percentage.
+  - example, if you anticipate the occurrence once every two years, the ARO is 50 percent or.5.
+
+- <font color=OrangeRed> Annual loss expectancy (ALE) </font>.
+  - The ALE is the value of SLE × ARO.
+
+Example
+- Imagine that employees at your company lose, on average, one laptop a month. Thieves have stolen them when employees left them in conference rooms during lunch, while they were on-site at customer locations, and from training rooms.
+- Someone suggested purchasing hardware locks to secure these laptops for a total of `$1,000`. These locks work similar to bicycle locks and allow employees to wrap the cable around a piece of furniture and connect into the laptop. A thief needs to either destroy the laptop to remove the lock or take the furniture with him when stealing the laptop.
+- Should your company purchase them?
+
+- You have identified the average cost of these laptops, including the hardware, software, and data, is `$2,000` each. This assumes employees do not store entire databases of customer information or other sensitive data on the systems, which can easily result in much higher costs.
+  - You can now calculate the SLE, ARO, and ALE as follows:
+  - SLE. The value of each laptop is `$2,000`, so the SLE is `$2,000`.
+  - ARO. Employees lose about one laptop a month, so the ARO is `12`.
+  - ALE. You calculate the `ALE as SLE × ARO`, so `$2,000 × 12 = $24,000`.
+
+- Security experts estimate that these locks will reduce the number of lost or stolen laptops from 12 a year to only 2 a year.
+- This changes the ALE from `$24,000 to only $4,000 (saving $20,000 a year)`.
+- In other words, the organization can spend `$1,000` to save `$20,000`.
+
 Managers use these two simple guidelines for most of these decisions:
-If the cost of the control is less than the savings, purchase it.
-If the cost of the control is greater than the savings, accept the risk. The organization might be considering other controls, such as a combination of hardware locks, biometric authentication, LoJack for Laptops, and more. The final cost of all of these controls is $30,000 per year. Even if a
-laptop is never stolen again, the company is spending
-$30,000 to save $24,000, resulting in a higher net loss—they’re losing $6,000 more a year.
-Admittedly, a company could choose to factor in other values, such as the sensitivity of data on the laptops, and make a judgment to purchase these additional controls. However, if they’re using a quantitative risk assessment, these values would need to be expressed in monetary terms.
+- If the cost of the control is less than the savings, purchase it.
+- If the cost of the control is greater than the savings, accept the risk.
+- The organization might be considering other controls, such as a combination of hardware locks, biometric authentication, LoJack for Laptops, and more. The final cost of all of these controls is `$30,000` per year. Even if a laptop is never stolen again, the company is spending `$30,000` to save `$24,000`, resulting in a higher net loss—they’re losing `$6,000` more a year.
+
+- Admittedly, a company could choose to factor in other values, such as the sensitivity of data on the laptops, and make a judgment to purchase these additional controls. However, if they’re using a quantitative risk assessment, these values would need to be expressed in monetary terms.
+
 Although you would normally know the SLE and ARO and use these to calculate the ALE, you might occasionally have the SLE and ALE, but not know the ARO. Using basic algebra, you can reformat the formula. Any of these are valid:
+- `ALE = SLE × ARO`
+- `ARO = ALE / SLE`
+- `SLE = ALE / ARO`
+
+---
+
+#### Qualitative Risk Assessment
+
+- A qualitative risk assessment uses judgment to categorize risks based on likelihood of occurrence (or probability) and impact.
+
+	- **Probability**: The likelihood of occurrence that an event will occur, such as the likelihood that a threat will attempt to exploit a vulnerability.
+
+	- **Impact**: the magnitude of harm resulting from a risk. It includes the negative results of an event, such as the loss of confidentiality, integrity, or availability of a system or data.
+
+- 主观的 Subjectively determining the impact of an event that affects a project, program, or business.
+  - Usually involves the use of expert judgment, experience, or group consensus 一致同意 to complete the assessment.
+  - compare the impact of the threat with the probability of occurrence.
+
+Example of a binary assessment:
+- two outcomes possible: impact, and probability.
+  - 2 levels:
+    - ![Screenshot 2024-07-23 at 17.00.58](/assets/img/Screenshot%202024-07-23%20at%2017.00.58.png)
+  - 3 levels:
+    - ![Screenshot 2024-07-23 at 17.01.44](/assets/img/Screenshot%202024-07-23%20at%2017.01.44.png)
+    - low- medium-high/red-green-yellow, nine combinations are possible.
+  - 5 levels:
+    - ![Screenshot 2024-07-23 at 17.02.28](/assets/img/Screenshot%202024-07-23%20at%2017.02.28.png)
+    - 25 values of risk exposure: very low, low, medium, high, or very high.
+
+- different from the exact numbers provided by a quantitative assessment that uses monetary figures. quantitative as using a quantity or a number, whereas qualitative is related to quality, which is often a matter of judgment.
 
 
-ALE = SLE × ARO
-ARO = ALE / SLE
-SLE = ALE / ARO
-￼
-### Qualitative Risk Assessment
-A qualitative risk assessment uses judgment to categorize risks based on likelihood of occurrence (or probability) and impact. The likelihood of occurrence is the probability that an event will occur, such as the likelihood that a threat will attempt to exploit a vulnerability. Impact is the magnitude of harm resulting from a risk. It includes the negative results of an event, such as the loss of confidentiality, integrity, or availability of a system or data.
-Notice that this is much different from the exact numbers provided by a quantitative assessment that uses monetary figures. You can think of quantitative as using a quantity or a number, whereas qualitative is related to quality, which is often a matter of judgment.
 
-Some qualitative risk assessments use surveys or focus groups. They canvass experts to provide their best judgments and then tabulate the results. example, a survey may ask the experts to rate the probability and impact of risks associated with a web server selling products on the Internet and a library workstation without Internet access. The experts would use words such as low, medium, and high to rate them.
+Some qualitative risk assessments use surveys or focus groups. They canvass experts to provide their best judgments and then tabulate the results.
+- example,
+  - a survey may ask the experts to rate the probability and impact of risks associated with a web server selling products on the Internet and a library workstation without Internet access. The experts would use words such as `low, medium, and high` to rate them.
+  - They could rate the probability of a web server being attacked as high, and if the attack takes the web server out of service, the impact is also high.
+  - On the other hand, the probability of a library workstation being attacked is low, and, even though a library patron may be inconvenienced, the impact is also low.
 
-They could rate the probability of a web server being attacked as high, and if the attack takes the web server out of service, the impact is also high. On the other hand, the probability of a library workstation being attacked is low, and, even though a library patron may be inconvenienced, the impact is also low.
+It’s common to assign numbers to these judgments.
+- example,
+  - you can use terms such as low, medium, and high, and assign values of 1, 5, and 10, respectively. The experts assign a probability and impact of each risk using low, medium, and high, and when tabulating the results, you change the words to numbers. This makes it a little easier to calculate the results.
+  - In the web server and library computer examples, you can calculate the risk by multiplying the probability and the impact:
+  - Web server. High probability and high impact: 10 × 10 = 100
+  - Library computer. Low probability and low impact: 1 × 1 = 1
+  - Management can look at these numbers and easily determine how to allocate resources to protect against the risks. They would allocate more resources to protect the web server than the library computer.
 
-It’s common to assign numbers to these judgments. example, you can use terms such as low, medium, and high, and assign values of 1, 5, and
-10, respectively. The experts assign a probability and impact of each risk using low, medium, and high, and when tabulating the results, you change the words to numbers. This makes it a little easier to calculate the results.
-In the web server and library computer examples, you can calculate the risk by multiplying the probability and the impact:
-Web server. High probability and high impact: 10 × 10 = 100
-Library computer. Low probability and low impact: 1 × 1 = 1 Management can look at these numbers and easily determine how to
-allocate resources to protect against the risks. They would allocate more resources to protect the web server than the library computer.
 One of the challenges with a qualitative risk assessment is gaining consensus on the probability and impact. Unlike monetary values that you can validate with facts, probability and impact are often subject to debate.
 
+Qualitative risk assessment can be adapted to a variety of attributes and situations in combination with each other.
+- Example, the 对照 comparison of specific risks that have been identified during a security assessment.
+- risk areas, potential impacts, impacts.
+
+![Screenshot 2024-07-23 at 17.05.20](/assets/img/Screenshot%202024-07-23%20at%2017.05.20.png)
 
 
-Documenting the Assessment
-	•	The final phase of the risk assessment is the report. This identifies the risks discovered during the assessment and the recommended controls. As a simple example, a risk assessment on a database-enabled web application may discover that it’s susceptible to SQL injection attacks. The risk assessment will then recommend rewriting the web application with input validation techniques or stored procedures to protect the database.
-	•	Management uses this to decide which controls to implement and which controls to accept. In many cases, a final report documents the managerial decisions. Of course, management can decide not to implement a control, but instead accept a risk.
-	•	Think how valuable this report will be for an attacker. They won’t need to dig to identify vulnerabilities or controls. Instead, the report lists all the details. Even when management approves controls to correct the vulnerabilities, it may take some time to implement them. Because of this, the results of a risk assessment are highly protected. Normally, only executive management and security professionals will have access to these reports.
-Risk Registers
+#### Adding Objectivity to a Qualitative Assessment
+
+Making a qualitative assessment more objective: assigning numeric values to the tables.
+- Example:
+  - the impacts can be prioritized from highest to lowest and then weighted.
+  - values can be assigned to reflect how each risk was assessed.
+
+![Screenshot 2024-07-23 at 17.07.53](/assets/img/Screenshot%202024-07-23%20at%2017.07.53.png)
+
+![Screenshot 2024-07-23 at 17.08.17](/assets/img/Screenshot%202024-07-23%20at%2017.08.17_glz5jtmyl.png)
+
+- The last step is to calculate an overall risk value for each risk area by multiplying the weights times the assessed values: Risk = W1 × V1 + W2 × V2+...W4 × V4
+
+![Screenshot 2024-07-23 at 17.08.51](/assets/img/Screenshot%202024-07-23%20at%2017.08.51.png)
+
+The key assumptions underlie <font color=OrangeRed> any model, different models will produce different results even when given the same input data </font>.
+- Although significant research and development have been invested in <font color=LightSlateBlue> improving and refining the various risk analysis models </font>, expert judgment and experience must still be considered an essential part of any risk-assessment process.
+- Models can never replace judgment and experience, but they can significantly enhance the decision-making process.
+
+---
+
+### Documenting the Assessment
+- The final phase of the risk assessment is the report. This identifies the risks discovered during the assessment and the recommended controls. As a simple example, a risk assessment on a database-enabled web application may discover that it’s susceptible to SQL injection attacks. The risk assessment will then recommend rewriting the web application with input validation techniques or stored procedures to protect the database.
+- Management uses this to decide which controls to implement and which controls to accept. In many cases, a final report documents the managerial decisions. Of course, management can decide not to implement a control, but instead accept a risk.
+- Think how valuable this report will be for an attacker. They won’t need to dig to identify vulnerabilities or controls. Instead, the report lists all the details. Even when management approves controls to correct the vulnerabilities, it may take some time to implement them. Because of this, the results of a risk assessment are highly protected. Normally, only executive management and security professionals will have access to these reports.
+
+
+
+
+
+
+### Risk Registers
 Some risk assessments use a risk register. There are different definitions for a risk register, depending on which standard you’re following. example, ISO 73:2009 defines it as a “record of information about identified risks.” Projects IN Controlled Environments (PRINCE2), a detailed project management method, defines a risk register as a “repository for all risks identified and includes additional information about each risk.”
 An easy way to create a risk register is in a table format. example, imagine you are evaluating risks related to a new e-commerce web site that accesses a back-end database. Your risk register might include the following columns:
 Category. Risk categories could include downtime due to hardware failures, outages from an attack, downtime to database server failure, data breaches, and more.
@@ -225,6 +343,8 @@ Chapter 4 discusses rogue APs, which are APs placed into service without authori
 Administrators can investigate any unknown SSIDs. The received signal strength indicator (RSSI) shows the strength of the signal. A lower negative number (closer to zero) is stronger than a higher negative number. By installing the wireless scanner on a laptop and walking around an organization, you can locate rogue APs. As you move closer to a rogue AP, the signal becomes stronger. As you move farther away from it, the signal becomes weaker.
 Banner Grabbing
 Banner grabbing is a technique used to gain information about remote systems and many network scanners use it. It is often used to identify the operating system along with information about some applications. If successful, the server returns a Hypertext Markup Language (HTML) banner providing information on the server. The banner might look something like the following:
+
+```html
 <!DOCTYPE HTML PUBLIC“-//IETF//DTD HTML 2.0//EN”>
 <html><head><title>501 Method Not Implemented</title></head>
 <body>
@@ -234,7 +354,7 @@ Banner grabbing is a technique used to gain information about remote systems and
 <address>Apache/2.2.25 (Unix) mod_ssl/2.2.25 OpenSSL/1.0.0-fips mod_auth_ passthrough/2.1 mod_bwlimited/1.4 FrontPage/5.0.2.2635 Server at 72.52.230.233 Port 80
 </ address>
 </body></html>
-
+```
 ￼
 Most of this is formatting. However, the information in the address section provides a lot of information on the web server. It shows this is a Unix server running the Apache web server software along with additional information. The command-line tool Netcat can be used for banner grabbing, as shown later in this chapter. You can also check out the Banner Grabbing Lab in the online exercises for this book at https://gcgapremium.com/501labs/.
 
@@ -273,11 +393,26 @@ An important point about a vulnerability scan is that it does not attempt to exp
 
 
 ￼
-Identifying Lack of Security Controls
+## Identifying Lack of Security Controls
 Vulnerability scanners can also identify missing security controls, such as the lack of up-to- date patches or the lack of antivirus software. Although many patch management tools include the ability to verify systems are up to date with current patches, vulnerability scanners provide an additional check to detect unpatched systems.
-False Positive
+
+## False Positive
+
 Unfortunately, vulnerability scanners aren’t perfect. Occasionally, they report a vulnerability when it doesn’t actually exist. In other words, the scan indicates a system has a known vulnerability, but the report is false. example, a vulnerability scan on a server might report that the server is missing patches related to a database application, but the server doesn’t have a database application installed.
 This is similar to false positives in an intrusion detection system (IDS) where the IDS alerts on an event, but the event isn’t an actual intrusion. Similarly, an antivirus scanner can identify a useful application as malware, even though the application does not have any malicious code. False positives can result in higher administrative overhead because administrators have to investigate them.
+
+
+- False Positive (简称FP)：判断为正，但是判断错了。（实际为负）
+- False Negative (简称FN)：判断为负，但是判断错了。（实际为正）
+- True Positive (简称TP)：判断为正，且实际为正。
+- True Negative (简称TN)：判断为负，且实际为负。
+
+![Screenshot 2024-07-23 at 17.18.32](/assets/img/Screenshot%202024-07-23%20at%2017.18.32.png)
+
+- 后面的positive和nagative: 测试出来是否为nagative或者positive
+- 如果是false positive，说明测试出来的positive是错的，因此原本为nagative，
+- 如果是true positive，说明测试出来的positive是对的，原本也是positive。
+
 Credentialed Versus Non-Credentialed
 Vulnerability scanners can run as a credentialed scan using the credentials of an account, or as non-credentialed without any user credentials. Attackers typically do not have credentials of an internal account, so when they run scans against systems, they run non-credentialed scans.
 Security administrators often run credentialed scans with the privileges of an administrator account. This allows the scan to check security issues at a much deeper level than a non- credentialed scan. Additionally, because the
