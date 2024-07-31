@@ -7,7 +7,6 @@ toc: true
 image:
 ---
 
-
 - [GCP - Command](#gcp---command)
 
 ---
