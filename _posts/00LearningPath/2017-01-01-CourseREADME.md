@@ -22,6 +22,7 @@ toc: true
     - [Python](#python)
     - [Java](#java)
     - [Linux](#linux)
+  - [Course](#course)
   - [link](#link)
   - [other source](#other-source)
   - [Tools:](#tools)
@@ -219,7 +220,7 @@ sleepy....
 | ---------------------------------------------------------- | ---- | ----------------- |
 | **DeepLearning.AI**                                        | 🐰   | 🐰                |
 | Generative AI with Large Language Models                   | ✏️   | Course 16 h       |
-| Finetuning Large Language Models                           | ✏️   | Project 1 h   |
+| Finetuning Large Language Models                           | ✏️   | Project 1 h       |
 | LangChain Chat with Your Data                              | ✏️   | Project 1 h       |
 | Building Systems with the ChatGPT API                      | ✏️   | Project 1 h       |
 | ChatGPT Prompt Engineering for Developers                  | ✏️   | Project 1 h       |
@@ -312,6 +313,25 @@ sleepy....
 | [LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24/20                                                                  | ✔️   |
 | [LFCE: Linux Service Management - Advanced HTTP Services](https://app.pluralsight.com/player?course=https-advanced-services-linux-lfce&author=anthony-nocentino&name=5fcf9867-8ecc-42f3-af73-00a287ae7728&clip=0&mode=live) | ✔️   |
 | [LFCE: Linux Service Management - Advanced Email Services](https://app.pluralsight.com/library/courses/linux-service-management-advanced-email-services/table-of-contents)                                                  | ✏️   |
+
+---
+
+## Course
+
+| name           | link                                                                                                          |
+| -------------- | ------------------------------------------------------------------------------------------------------------- |
+| stanford - HAI | https://hai.stanford.edu/education/courses                                                                    |
+| .              | APPPHYS 229: Statistical Mechanics of Learning and Computation                                                |
+| .              | APPPHYS 293: Theoretical Neuroscience (PSYCH 242)                                                             |
+| .              | BIOE 131: Ethics in Bioengineering (ETHICSOC 131X)                                                            |
+| .              | BIOE 214: Representations and Algorithms for Computational Molecular Biology (BIOMEDIN 214, CS 274, GENE 214) |
+| .              | CS 139: Human-Centered AI                                                                                     |
+| .              | CS 231N: Deep Learning for Computer Vision                                                                    |
+| .              | CS 323: The AI Awakening: Implications for the Economy and Society                                            |
+| .              | ENGLISH 106A: Black Mirror: A.I.Activism                                                                      |
+| .              | MED 277: AI-Assisted Care (CS 337)                                                                            |
+| .              | MUSIC 356: Music and AI (CS 470)                                                                              |
+| .              | PHIL 20N: Philosophy of Artificial Intelligence                                                               |
 
 ---
 

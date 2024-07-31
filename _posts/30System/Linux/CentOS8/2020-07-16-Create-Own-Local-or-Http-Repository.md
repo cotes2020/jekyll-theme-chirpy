@@ -7,12 +7,15 @@ math: true
 image:
 ---
 
+- [Create Own Local or Http Repository](#create-own-local-or-http-repository)
+  - [repository](#repository)
+    - [1. repository configuration](#1-repository-configuration)
+    - [2. create own local repository base on DVD of CentOS](#2-create-own-local-repository-base-on-dvd-of-centos)
+    - [3. create own HTTP based repository](#3-create-own-http-based-repository)
 
+---
 
 # Create Own Local or Http Repository
-
-
-[toc]
 
 Assignment under:
 

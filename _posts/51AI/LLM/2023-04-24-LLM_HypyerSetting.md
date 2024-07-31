@@ -2,7 +2,7 @@
 title: LLM - HypyerSetting
 date: 2023-04-24 11:11:11 -0400
 description:
-categories: [51AI]
+categories: [51AI, LLM]
 # img: /assets/img/sample/rabbit.png
 tags: [AI, ML]
 ---

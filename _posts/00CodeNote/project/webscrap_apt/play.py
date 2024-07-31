@@ -11,12 +11,8 @@ from traceback import print_exc
 
 import requests
 
-# Logs will go to CloudWatch log group corresponding to lambda,
-# If Lambda has the necessary IAM permissions.
-# Set logLevel to logging.INFO or logging.DEBUG for debugging.
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
-# Retrieve log level from Lambda Environment Variables
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
 
@@ -97,7 +93,7 @@ class _DeHTMLParser_General(HTMLParser):
                 if attrs_name == "class" and attrs_value not in keep_line:
                     self.__text.append("\n")
 
-    def text(self):
+    def get_text(self):
         return "".join(self.__text).strip()
 
     def handle_startendtag(self, tag, attrs):
@@ -148,7 +144,7 @@ class _DeHTMLParser_General_Talisman(HTMLParser):
                 if attrs_name == "class" and attrs_value == "page__disclaimer":
                     self.__text.append("\n")
 
-    def text(self):
+    def get_text(self):
         return "".join(self.__text).strip()
 
     def handle_startendtag(self, tag, attrs):
@@ -171,6 +167,7 @@ URL_DIC = {
     # "talisman": "https://www.livetalisman.com/redmond/talisman/conventional/",
     # "talisman": "https://livetalisman.com/floorplans/",
     "modera": "https://www.moderaredmond.com/redmond/modera-redmond/conventional/",
+    # "modera": "https://www.moderasouthlakeunion.com/seattle/modera-south-lake-union/conventional/",
 }
 CLASS_DIC = {
     "talisman": _DeHTMLParser_General_Talisman(),
@@ -178,39 +175,38 @@ CLASS_DIC = {
 }
 
 
-# Method_div
 def get_html(url):
     """
     get plan html
     """
-    text = r"""
-        <html>
-          <body>
-              <b>Project:</b> DeHTML<br>
-              <b>Description</b>:<br>
-              Cannot get correct content from the URL.
-          </body>
-        </html>
-    """
+    # text = r"""
+    #     <html>
+    #       <body>
+    #           <b>Project:</b> DeHTML<br>
+    #           <b>Description</b>:<br>
+    #           Cannot get correct content from the URL.
+    #       </body>
+    #     </html>
+    # """
     header = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        "Connection": "keep-alive",
     }
 
-    r = requests.get(
-        url,
-        timeout=30,
-        headers=header,
-        # cookies=jar,
-    )
-    code = r.status_code
-    if code == 200:
-        LOGGER.info("======= Load info from %s =======" % url)
-        html_text = r.text
-    else:
-        LOGGER.info("======= Error: can not get info from %s =======" % url)
-        html_text = ""
-        # os.Exit(1)
-    return html_text
+    try:
+        r = requests.get(url)
+        r.raise_for_status()
+        LOGGER.info("Loaded info from %s", r.text)
+        LOGGER.info("Loaded info from %s", url)
+        return r.text
+    except requests.RequestException as e:
+        LOGGER.info("Loaded info from %s", r.text)
+        LOGGER.error("Error: cannot get info from %s", url)
+        LOGGER.error(str(e))
+        return ""
 
 
 def dehtml(target_apt, text):
@@ -222,8 +218,9 @@ def dehtml(target_apt, text):
         parser.feed(text)
         parser.close()
         # parser.print_reslut()
-        return parser.text()
-    except:
+        return parser.get_text()
+    except Exception:
+        LOGGER.error("Error parsing HTML for %s", target_apt)
         print_exc(file=stderr)
         return text
 
@@ -267,10 +264,11 @@ def create_dic(apt, lines, output_list):
             info_list = line.split(";")
             # LOGGER.info(info_list)
 
-            dic = {}
-            dic["Date"] = inputdate
-            dic["Apt"] = apt
-            dic["Floor_plan"] = info_list[0]
+            dic = {
+                "Date": inputdate,
+                "Apt": apt,
+                "Floor_plan": info_list[0],
+            }
 
             # for talisman
             if apt == "talisman":
@@ -334,9 +332,7 @@ def create_csv(all_dic_list):
         LOGGER.info("======= filing file: %s =======" % file_name)
         # create the csv writer
         writer = csv.writer(f)
-        # write a header to the csv file
         writer.writerow(header)
-        # write a row to the csv file
         for input_dic in all_dic_list:
             LOGGER.info(input_dic)
             # print(type(input_dic))
@@ -370,30 +366,21 @@ def main(apt):
 
 
 if __name__ == "__main__":
-    # Simple commandline parser to accept inputs for the script
-    # all website
-    # one website
-    parser = argparse.ArgumentParser(description="todo.")
+    parser = argparse.ArgumentParser(description="Web scraper for apartment data.")
     parser.add_argument(
         "-t",
         "--target",
         required=True,
-        help="Whether run locally or on centralized account",
+        help="Target website to scrape (all or specific site).",
     )
-    # Assign the inputs:
     args = parser.parse_args()
     target = args.target.lower()
-
-    # """ Main method for app. """
     timestamp = datetime.now().strftime("%c")
     LOGGER.info("======= Apt_scrapper loaded at %s" % timestamp)
 
     if target == "all":
         target_Apts = URL_DIC
-        LOGGER.info(
-            "============ Apt_scrapper run for url: %s ============\n" % target_Apts
-        )
+        LOGGER.info("=== Apt_scrapper run for url: %s ===\n" % target_Apts)
         main(target_Apts)
     else:
         LOGGER.info("Invalid --target\n")
-        # os.Exit(1)

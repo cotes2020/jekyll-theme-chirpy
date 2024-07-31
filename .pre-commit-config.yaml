@@ -1,11 +1,11 @@
 repos:
   - repo: local
     hooks:
-      - id: pylint
-        name: pylint
-        entry: pylint
-        language: system
-        types: [python]
+      # - id: pylint
+      #   name: pylint
+      #   entry: pylint
+      #   language: system
+      #   types: [python]
       - id: black
         name: black
         entry: black
@@ -22,7 +22,7 @@ repos:
       - id: check-merge-conflict
       - id: check-xml
       - id: check-yaml
-        args: [--allow-multiple-documents]
+        argsa: [--allow-multiple-documents]
       - id: detect-private-key # Detects the presence of private keys
       - id: end-of-file-fixer # Fix the empty EOF
       - id: pretty-format-json

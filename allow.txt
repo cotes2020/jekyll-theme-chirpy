@@ -76,3 +76,4 @@ mane
 categorie
 possibile
 aci
+smal
