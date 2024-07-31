@@ -8,7 +8,7 @@ image:
 ---
 
 - [Migration](#migration)
-  - [1 Application Migration](#1-application-migration)
+  - [Application Migration](#application-migration)
   - [在 Google 云平台上部署 ML 模型](#在-google-云平台上部署-ml-模型)
   - [在 Google Cloud Function 上部署 ML 模型](#在-google-cloud-function-上部署-ml-模型)
   - [在 Google AI 云上部署 ML 模型](#在-google-ai-云上部署-ml-模型)
@@ -19,10 +19,9 @@ image:
 
 # Migration
 
-
 ---
 
-## 1 Application Migration
+## Application Migration
 
 - creating a VM, then using the container option, and then the advanced options to set the starting commands and environment variables.
 - For something like Grafana I have setup a template, and use a group with a minimum instance of 1, then use the load balancer to provide certificate offloading.
@@ -232,7 +231,6 @@ runtime: python38
 
 ---
 
-
 ## 在 Google AI 云上部署 ML 模型
 
 > 之前的两个部署要求您编写不同程度的代码。在谷歌人工智能云上，你可以提供经过训练的模型，他们为你管理一切。
@@ -260,7 +258,7 @@ runtime: python38
 ---
 
 
-##  Google Cloud Run
+## Google Cloud Run
 
 1. 应用打包成 Docker 之后，剩下的任务包括：
    1. 把镜像推送到 Google 镜像库。
@@ -289,14 +287,19 @@ semaphore
 
       ```dockerfile
       FROM ruby:2.5
+
       RUN apt-get update -qq &amp;&amp; apt-get install -y build-essential
       ENV APP_HOME /app
+
       RUN mkdir $APP_HOME
       WORKDIR $APP_HOME
+
       ADD Gemfile* $APP_HOME/
       RUN bundle install --without development test
       ADD . $APP_HOME
+
       EXPOSE 8080
+
       CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "8080"]
       ```
 
@@ -308,6 +311,7 @@ semaphore
 
 
 4. 定义分发管线
+
    1. 编写一个 Pipeline 来构建、标记并推送镜像到 GCR 了：
 
       ```yaml
