@@ -300,7 +300,7 @@ A Systems Manager document (SSM document) defines the actions that Systems Manag
 - straightforward to use.
   - Access AWS Systems Manager from the Amazon EC2 console, select the instances that you want to manage, and define the management tasks you want to perform.
   - no cost to manage both EC2 and on-premises resources.
-- Enables automate configuration and ongoing management of systems at scale through a set of capablity.
+- Enables automate configuration and ongoing management of systems at scale through a set of capability.
   - automatically collect software inventory, apply OS patches, create system images, and configure Windows and Linux operating systems.
   - These capabilities help you define and track system configurations, prevent drift, and maintain software compliance of EC2 and on-premises configurations.
 - providing a management approach that is designed for the scale and agility of the cloud but extends to the on-premises data center

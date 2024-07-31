@@ -46,7 +46,7 @@ image:
 
 # Session Manager
 
-- 使用 session manger 可以減少 key 的管理，減少資安漏洞
+- 使用 session manager 可以減少 key 的管理，減少資安漏洞
 - 透過 proxycommand 可以讓我們建立 ssh tunnel，進而可以使用 scp 等等工具
 - port forwarding 可以幫助 developer 測試在 private subnet 的服務
 - 搭配 aws cliv2 可以透過 SSO 增加系統安全

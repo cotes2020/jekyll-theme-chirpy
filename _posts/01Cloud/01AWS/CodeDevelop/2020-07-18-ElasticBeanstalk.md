@@ -68,7 +68,7 @@ Setup:
        - deploy code through the AWS Management Console, AWS CLI, Visual Studio, and Eclipse.
        - supports a broad range of platforms (Docker, Go, Java, .NET, Node.js, PHP, Python, and Ruby).
   2. <font color=OrangeRed> supports the deployment of Docker containers </font>
-     - Docker containers: are self-containered and include all the cofiguration information and software your web application required to run,
+     - Docker containers: are self-containered and include all the configuration information and software your web application required to run,
        - libraries, system tools, code&runtime
 
 - <font color=OrangeRed> automated deployment scaling service for web applications </font>

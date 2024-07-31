@@ -62,7 +62,7 @@ Amazon Kendra has the following benefits:
   - Amazon Kendra uses machine learning to improve search results over time.
 - Simplicity
   - provides a console and API for managing the document to search.
-  - can use a simple search API to integrate Amazon Kendra into lient applications, such as websites or mobile applications.
+  - can use a simple search API to integrate Amazon Kendra into client applications, such as websites or mobile applications.
 - Connectivity
   - Amazon Kendra can connect to third-party data sources to provide search across documents managed in different environments.
 - User Access Control

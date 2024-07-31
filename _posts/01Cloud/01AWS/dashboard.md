@@ -53,7 +53,7 @@
 
 ## traces
 - Lantency SLO
-- App performence
+- App performance
   - total requests
   - total errors
   - latency xxms avg

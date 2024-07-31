@@ -39,7 +39,7 @@ AWS Systems Manager (SSM) 是一個集中管理 AWS 資源的服務，幫助使�
   - Run Command: 以遠端的方式，透過 Command 安全地管理 Instance 的設定。
 
 
-## run commmand
+## run command
 
 - 以遠端的方式，透過 Command 安全地管理 Instance 的設定。
 - remotely and securely manage the configuration of the managed instances at scale.
