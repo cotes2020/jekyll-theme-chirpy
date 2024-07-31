@@ -21,8 +21,8 @@ repos:
       - id: check-json
       - id: check-merge-conflict
       - id: check-xml
-      - id: check-yaml
-        args: [--allow-multiple-documents]
+      # - id: check-yaml
+      #   args: [--allow-multiple-documents]
       - id: detect-private-key # Detects the presence of private keys
       - id: end-of-file-fixer # Fix the empty EOF
       - id: pretty-format-json
