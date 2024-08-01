@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md",
+                "file": "_tabs/about.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md",
+                "file": "_tabs/about.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md",
+                "file": "_tabs/about.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-07-02-hr0001.md"
+                "file": "_tabs/about.md"
               }
             }
           }
@@ -149,23 +149,28 @@
   },
   "active": "7fa40d54a1479852",
   "lastOpenFiles": [
+    "_posts/2024-07-09-wr0003.md",
     "_posts/2024-07-08-ed0001.md",
-    "_posts/2024-07-07-oi0002.md",
-    "_posts/2024-07-07-fd0006.md",
-    "_posts/2024-07-06-fd0012.md",
-    "_posts/2024-07-05-fd0013.md",
-    "_posts/2024-07-05-fd0009a.md",
-    "_posts/2024-07-04-fm0010.md",
-    "_posts/2024-07-04-fd0011.md",
-    "_posts/2024-07-04-fd0010.md",
-    "_posts/2024-07-04-fd0001.md",
-    "_posts/2024-07-03-se0003.md",
     "_posts/2024-07-02-se0005.md",
+    "_posts/2024-07-01-intro.md",
+    "assets/img/Pasted image 20240709200029.png",
+    "assets/img/Pasted image 20240801142119.png",
+    "assets/img/Pasted image 20240710193341.png",
+    "_posts/2024-07-04-fd0010.md",
+    "README.md",
+    "_posts/2024-07-07-oi0002.md",
     "_posts/2024-07-02-hr0007.md",
     "_posts/2024-07-02-hr0002.md",
     "_posts/2024-07-02-hr0001.md",
+    "_posts/2024-07-07-fd0006.md",
+    "_posts/2024-07-05-fd0013.md",
+    "_posts/2024-07-03-se0003.md",
+    "_posts/2024-07-04-fd0011.md",
+    "_posts/2024-07-06-fd0012.md",
+    "_posts/2024-07-05-fd0009a.md",
+    "_posts/2024-07-04-fm0010.md",
+    "_posts/2024-07-04-fd0001.md",
     "_tabs/about.md",
-    "_posts/2024-07-01-intro.md",
     "2024-07-12.md",
     "무제 파일.canvas",
     "_tabs/tags.md",
@@ -174,21 +179,16 @@
     "posts/2024-07-02-hr0001.md",
     "posts",
     "().md",
-    "assets/img/Pasted image 20240710193341.png",
     "assets/img/Pasted image 20240710193338.png",
     "assets/img/Pasted image 20240710193320.png",
     "assets/img/Pasted image 20240710193018.png",
-    "_posts/2024-07-02-test.md",
-    "Templates/2024-07-01-intro.md",
     "Templates",
     "새 폴더",
-    "assets/img/Pasted image 20240709200029.png",
     "_posts/무제 폴더",
     "CNAME",
     "assets/img/favicons/android-icon-72x72.png",
     "assets/img/favicons/android-icon-48x48.png",
     "assets/img/favicons/android-icon-36x36.png",
-    "assets/img/favicons/ms-icon-310x310.png",
-    "assets/img/favicons/ms-icon-144x144.png"
+    "assets/img/favicons/ms-icon-310x310.png"
   ]
 }
