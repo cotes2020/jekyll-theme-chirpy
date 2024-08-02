@@ -137,8 +137,7 @@ click ex0009 "{% post_url 2024-07-21-ex0009 %}" " "
 click ex0009a "{% post_url 2024-07-22-ex0009 %}" " "
 click fm0002a "{% post_url 2024-07-23-fm0002 %}" " "
 
-%% style fd0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10
-
+%%style fd0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10,color:#333333,fontColor:#333333
 
 
 ```
