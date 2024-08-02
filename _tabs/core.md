@@ -20,7 +20,7 @@ flowchart TD
         hr0002 --> hr0007    
     end
     hr0007 --> fd0001
-    
+
     subgraph 결성["결성"]
         fd0001["조합생성(개요등록)"]
         %% fd0009["조합개요등록"]
@@ -50,11 +50,13 @@ flowchart TD
         fd0006["출자/배분 등록"]
         oi0002["출자 운용지시서 등록"]
         ed0001["전자결재"]
+        fm0001a(("자동전표"))
 
         fd0000 --> fd0006
         fd0011 --> fd0006
         fd0006 --> oi0002 
         oi0002 --> ed0001
+        ed0001 --> fm0001a
 
     end
 
@@ -125,6 +127,7 @@ click oi0002 "{% post_url 2024-07-07-oi0002 %}" " "
 click ed0001 "{% post_url 2024-07-08-ed0001 %}" " "
 
 %% style fd0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10
+
 
 ```
 
