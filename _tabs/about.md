@@ -4,38 +4,39 @@ order: 1
 mermaid: true
 ---
 VCworks.kr은 똑똑[^dkdk] 주식회사에서 만든 대한민국 Venture Capital ERP Solution입니다.   
-VCworks.kr의 빠른 활용을 위해 Core Guide를 준비하였습니다.
 
-
-## 코어 가이드 목차
+## VC업무의 일반 흐름
 - 다음의 항목을 클릭하여 관련있는 항목으로 바로 이동할 수 있습니다.
 
 ```mermaid
 flowchart TD
 
+    subgraph 설정["설정"]
         hr0001["구성원 등록"]
         hr0002["구성원 정보 수정"]
         hr0007["조직도 관리"]
 
         hr0001 --> hr0002
-        hr0002 --> hr0007
-
+        hr0002 --> hr0007    
+    end
+    hr0007 --> fd0001
+    
     subgraph 결성["결성"]
-        fd0001["조합생성"]
-        fd0009["조합개요등록"]
+        fd0001["조합생성(개요등록)"]
+        %% fd0009["조합개요등록"]
         fd0010["투자의무달성현황 등록"]
         fd0011["조합원명부 등록"]
         fm0010["재원별 회계원장 등록"]
         fd0009a["금융정보 등록(계좌등록)"]
         fd0013["필수 필요서류 등록"]
         fd0012["보수정보 등록"]
-        fd0000["결성완료"]
+        fd0000(("결성완료"))
 
-        hr0007 --> fd0009
-        fd0001 --> fd0009
+        
+        %% fd0001 --> fd0001
         fd0001 --> fd0010
         fd0001 --> fd0011 
-        fd0009 --> fd0009a 
+        fd0001 --> fd0009a 
         fm0010 --> fd0009a
 
 
@@ -100,6 +101,7 @@ flowchart TD
         ex0007 --> ex0009
         ex0009 --> ex0009a
         ex0009a --> fm0002a
+        ed0001 --> ex0001
 
 
     end
@@ -121,7 +123,6 @@ click fd0012 "{% post_url 2024-07-06-fd0012 %}" " "
 click fd0006 "{% post_url 2024-07-07-fd0006 %}" " "
 click oi0002 "{% post_url 2024-07-07-oi0002 %}" " "
 click ed0001 "{% post_url 2024-07-08-ed0001 %}" " "
-click wr0003 "{% post_url 2024-07-09-wr0003 %}" " "
 
 %% style fd0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10
 
