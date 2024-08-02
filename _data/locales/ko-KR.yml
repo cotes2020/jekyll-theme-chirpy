@@ -14,7 +14,7 @@ tabs:
   categories: 구조별
   tags: 테그별
   archives: 시간별
-  about: 코어 가이드
+  core: 코어 가이드
 
 # the text displayed in the search bar & search results
 search:
