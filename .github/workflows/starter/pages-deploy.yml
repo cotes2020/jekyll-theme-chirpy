@@ -61,10 +61,10 @@ jobs:
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
-      - name: Fix permission
-            run: |
-              chmod a+x bin/*
-              git commit -am "add execute permission to github/workflows/starter/pages-deploy.yml"
+      # - name: Fix permission
+      #       run: |
+      #         chmod a+x bin/*
+      #         git commit -am "add execute permission to github/workflows/starter/pages-deploy.yml"
 
   deploy:
     environment:
