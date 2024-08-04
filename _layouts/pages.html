@@ -1,0 +1,12 @@
+---
+layout: page
+# Pages that are linked
+---
+<!-- https://jekyllrb.com/tutorials/navigation/ -->
+ <!-- I am using Scenario 1: Basic List -->
+
+<ul>
+    {% for item in site.data.pages.docs %}
+    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>

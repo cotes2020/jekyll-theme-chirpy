@@ -2,7 +2,7 @@
 title: Rent vs Buy in Dart/Flutter
 author: jake
 date: 2024-08-03 12:00:00 +0800
-categories: [Math, Software Engineering]
+categories: [Software Engineering]
 tags: [flutter, finance, dart]
 math: false
 mermaid: false

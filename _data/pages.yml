@@ -1,0 +1,9 @@
+docs_list_title: Pages
+
+# All url's are relatives to /pages/*
+docs:
+  - title: Flutter Demo
+    url: flutter_demo/index.html
+
+  - title: Rent vs Buy Calculator
+    url: rent_vs_buy/index.html
