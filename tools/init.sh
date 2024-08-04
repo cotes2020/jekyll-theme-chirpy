@@ -92,7 +92,7 @@ init_files() {
   npm i && npm run build
 
   # track the CSS/JS output
-  _sedi "/.*\/dist$/d" .gitignore
+  _sedi "/.*\/dist$/d;/^_app$/d" .gitignore
 }
 
 commit() {
