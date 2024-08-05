@@ -45,5 +45,8 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 }
