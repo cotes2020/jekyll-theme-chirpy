@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-07-10-vs0003.md",
+                "file": "2024-07-11-vs0006.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-07-10-vs0003.md",
+                "file": "2024-07-11-vs0006.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-07-10-vs0003.md",
+                "file": "2024-07-11-vs0006.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-07-10-vs0003.md"
+                "file": "2024-07-11-vs0006.md"
               }
             }
           }
@@ -160,8 +160,9 @@
   },
   "active": "efa672a437992eff",
   "lastOpenFiles": [
-    "2024-07-01-intro.md",
     "2024-07-10-vs0003.md",
+    "2024-07-11-vs0006.md",
+    "2024-07-01-intro.md",
     "2024-07-09-wr0003.md",
     "2024-07-07-fd0006.md",
     "2024-07-05-fd0009a.md",
