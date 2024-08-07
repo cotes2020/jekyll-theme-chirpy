@@ -28,7 +28,6 @@ image:
       - [Archive storage](#archive-storage)
   - [bring data into cloud storage.](#bring-data-into-cloud-storage)
 
-
 ---
 
 # Cloud Storage
@@ -316,11 +315,11 @@ used in
 - data is available within milliseconds, not hours or days.
 - Though the typical availability is comparible to nearline and coldline storage. Archive storage also has higher costs for data access and operations as well as a 365 day minimum storage duration.
 
-
 ---
 
-
 ## bring data into cloud storage.
+
+![Screenshot 2024-08-07 at 13.45.53](/assets/img/Screenshot%202024-08-07%20at%2013.45.53.png)
 
 ![Screen Shot 2021-02-03 at 23.54.12](https://i.imgur.com/suMHyqx.png)
 
