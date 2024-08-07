@@ -7,7 +7,7 @@ math: true
 image:
 ---
 
-- [Virtulization - Google Kubernetes](#virtulization---google-kubernetes)
+- [Virtulization - Kubernetes](#virtulization---kubernetes)
   - [Basic](#basic)
   - [need of container orchestration tool](#need-of-container-orchestration-tool)
 - [快速上手](#快速上手)
@@ -56,9 +56,19 @@ image:
 
 ---
 
-# Virtulization - Google Kubernetes
+# Virtulization - Kubernetes
 
 ![k8s_architecture](https://i.imgur.com/ibs26v8.png)
+
+---
+
+container:
+
+![Screenshot 2024-08-07 at 14.49.51](/assets/img/Screenshot%202024-08-07%20at%2014.49.51.png)
+
+![Screenshot 2024-08-07 at 14.51.13](/assets/img/Screenshot%202024-08-07%20at%2014.51.13.png)
+
+![Screenshot 2024-08-07 at 14.52.06](/assets/img/Screenshot%202024-08-07%20at%2014.52.06.png)
 
 ---
 
@@ -98,6 +108,13 @@ image:
   - High Availability - no down time
   - scalability or high performance - high response rate
   - Disaster recovery - backup and restore
+
+- It makes it easy to orchestrate many containers on many hosts, scale them as microservices, and easily deploy, rollouts, and rollbacks.
+
+- Kubernetes is a set of APIs that you can use to deploy containers on a set of nodes called a cluster.
+
+- The system is divided into a set of primary components that run as the control plane, and a set of nodes that run containers.
+
 
 ---
 
@@ -213,16 +230,59 @@ cc3cd263c581        gcr.io/google_containers/etcd:2.0.9          "/usr/local/bin
 
 ![k8s_architecture](https://i.imgur.com/ibs26v8.png)
 
-- 节点(`Node`)：一个 Node 是一个运行 Kubernetes 中的主机。
-- 容器组 (`Pod`)：一个 Pod 对应于由若干 Pod 成的一个 Pod , 同个 Pod 内的容器共享一个存储卷(volume)。
-- 容器组生命周期(`pos-states`)：包含所有容器状态集合, 包括 Pod 状态类型, Pod 生命周期, 事件, 重启策略, 以及 replication controllers。
-- `Replication Controllers`：主要负责指定数量的 pod 在同一时间一起运行。
-- 服务(`services`)：一个 Kubernetes 服务是 Pod 逻辑的高级抽象, 同时也对外提供访问 Pod 的策略。
-- 卷(`volumes`)：一个卷就是一个目录, 容器对其有访问权限。
-- 标签(`labels`)：标签是用来连接一组对象的, 比如 Pod 。标签可以被用来组织和选择子对象。
-- 接口权限(`accessing_the_api`)：端口, IP 地址和代理的防火墙规则。
-- web 界面(`ux`)：用户可以通过 web 界面操作 Kubernetes。
-- 命令行操作(`cli`)：`kubecfg`命令。
+![Screenshot 2024-08-07 at 15.00.57](/assets/img/Screenshot%202024-08-07%20at%2015.00.57.png)
+
+- 节点(`Node`)
+  - 一个 Node 是一个运行 Kubernetes 中的主机。
+  - A node represents a computing instance like a machine.
+
+![Screenshot 2024-08-07 at 15.01.25](/assets/img/Screenshot%202024-08-07%20at%2015.01.25.png)
+
+- 容器组 (`Pod`)
+  - 一个 Pod 对应于由若干 Pod 成的一个 Pod
+  - 同个 Pod 内的容器共享一个存储卷(volume)。
+  - the <font color=OrangeRed> smallest unit </font> in Kubernetes that you can create or deploy, representing a running process on your cluster.
+  - Generally, there is one container per pod, but multiple containers with a hard dependency can be packaged into a single pod.
+  - <font color=LightSlateBlue> A pod provides a unique network IP and set of ports for your containers, </font> and configurable options that govern how your containers should run.
+  - You can run a container in a pod using the kubectl run command, which starts a deployment with a container running inside a pod.
+
+- 容器组生命周期(`pos-states`)
+  - 包含所有容器状态集合, 包括 Pod 状态类型, Pod 生命周期, 事件, 重启策略, 以及 replication controllers。
+  - Kubernetes can be used in an imperative or declarative way, with the latter providing a configuration file that describes the desired state.
+
+- `Replication Controllers`
+  - 主要负责指定数量的 pod 在同一时间一起运行。
+
+![Screenshot 2024-08-07 at 15.04.32](/assets/img/Screenshot%202024-08-07%20at%2015.04.32.png)
+
+- 服务(`services`)
+  - 一个 Kubernetes 服务是 Pod 逻辑的高级抽象, 同时也对外提供访问 Pod 的策略。
+  - Kubernetes creates a <font color=LightSlateBlue> service with a fixed IP address </font> for your pods, and a controller <font color=LightSlateBlue> attaches an external load balancer with a public IP address to that service </font>.
+  - A service is an abstraction that defines a logical set of pods and a policy by which to access them.
+  - Pods will be assigned their own IP addresses, but those addresses don't remain stable over time.
+  - A service group provides a stable endpoint or fixed IP address for a set of pods.
+
+- 卷(`volumes`)
+  - 一个卷就是一个目录, 容器对其有访问权限。
+
+- 标签(`labels`)
+  - 标签是用来连接一组对象的, 比如 Pod 。标签可以被用来组织和选择子对象。
+
+- 接口权限(`accessing_the_api`)
+  - 端口, IP 地址和代理的防火墙规则。
+
+- web 界面(`ux`)
+  - 用户可以通过 web 界面操作 Kubernetes。
+
+- 命令行操作(`cli`)
+  - `kubecfg`命令。
+  - To update a new version of your app, you can use kubectl rollout or change your deployment configuration file and apply the change.
+
+![Screenshot 2024-08-07 at 15.06.23](/assets/img/Screenshot%202024-08-07%20at%2015.06.23.png)
+
+- deployment
+  - A deployment represents a group of replicas of the same pod and keeps your pods running even when the nodes they run on fail.
+  - You can scale a deployment using the kubectl scale command, specifying the number of pods or using autoscaling based on parameters like CPU utilization.
 
 ---
 

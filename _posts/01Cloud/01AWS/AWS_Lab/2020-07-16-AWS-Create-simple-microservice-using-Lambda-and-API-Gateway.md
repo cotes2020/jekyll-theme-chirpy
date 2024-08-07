@@ -17,7 +17,7 @@ image:
 
 ---
 
-## overall
+## Overall
 
 - create a Lambda function, and an Amazon API Gateway endpoint to trigger that function.
 - call the endpoint with any method (GET, POST, PATCH, etc.) to trigger Lambda function.

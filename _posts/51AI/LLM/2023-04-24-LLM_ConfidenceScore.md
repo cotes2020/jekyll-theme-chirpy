@@ -51,7 +51,7 @@ tags: [AI, ML]
 
 ---
 
-## overall
+## Overall
 
 > The main purpose of any confidence indicator, be it a quantitative score or a qualitative signal, is to highlight potential uncertainties for human review.
 

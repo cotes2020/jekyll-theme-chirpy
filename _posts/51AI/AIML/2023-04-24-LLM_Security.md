@@ -96,7 +96,7 @@ ref:
 
 ---
 
-## overall
+## Overall
 
 > - [OWASP Top 10 for LLM VERSION 1.0 Published: August 1, 2023 ](https://owasp.org/www-project-top-10-for-large-language-model-applications/assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf)
 
@@ -1629,7 +1629,7 @@ SecGPT 网络安全大模型 [^Clouditera/secgpt]: https://github.com/Clouditera
 
 ## LLM with code generation
 
-### overall
+### Overall
 
 - Modern code generation tools use AI models, particularly Large Language Models (LLMs), to generate functional and complete code. While such tools are becoming popular and widely available for developers,
 

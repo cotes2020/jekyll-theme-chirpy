@@ -22,7 +22,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## overall
+## Overall
 
 Cortex is designed to
 - reduce alert fatigue,
