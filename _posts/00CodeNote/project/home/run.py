@@ -17,32 +17,32 @@ target_month = 24
 additional_payment_at_target_month = 0
 
 
-yearly_additional_payment = 2288
+yearly_additional_payment = 0
+# yearly_additional_payment = 10000
 # yearly_additional_payment = 90000
 # yearly_additional_payment = 60000
-# yearly_additional_payment = 0
 # yearly_additional_payment = 30000
-years_for_additional_payment = [2]
-# years_for_additional_payment = [
-#     12,
-#     24,
-#     36,
-#     48,
-#     60,
-#     72,
-#     84,
-#     96,
-#     108,
-#     120,
-#     132,
-#     144,
-#     156,
-#     268,
-#     180,
-#     192,
-#     204,
-#     216,
-# ]
+
+months_for_additional_payment = [
+    12,
+    24,
+    36,
+    48,
+    60,
+    72,
+    84,
+    96,
+    108,
+    120,
+    132,
+    144,
+    156,
+    268,
+    180,
+    192,
+    204,
+    216,
+]
 
 
 # Initialize balances
@@ -53,13 +53,13 @@ yearly_interest_payment = 0
 total_interest_payment = 0
 year = 0
 
-# # Print header
-# print(
-#     "| Month | Starting Balance | Monthly Payment | Interest Payment | Principal Payment | Additional Payment | Ending Balance |"
-# )
-# print(
-#     "| ----- | ---------------- | --------------- | ---------------- | ----------------- | ------------------ | -------------- |"
-# )
+# Print header
+print(
+    "| Month | Starting Balance | Monthly Payment | Interest Payment | Principal Payment | Additional Payment | Ending Balance |"
+)
+print(
+    "| ----- | ---------------- | --------------- | ---------------- | ----------------- | ------------------ | -------------- |"
+)
 
 # Print each month's details
 for month in range(1, loan_term_months + 1):
@@ -69,7 +69,7 @@ for month in range(1, loan_term_months + 1):
     # Apply additional payments at the specified months
     if month == target_month:
         current_balance -= additional_payment_at_target_month
-    elif month in years_for_additional_payment:
+    elif month in months_for_additional_payment:
         # print("hhhhh")
         # print(current_balance - yearly_additional_payment)
         # print(current_balance)
@@ -78,10 +78,10 @@ for month in range(1, loan_term_months + 1):
 
     ending_balance = current_balance - principal_payment
 
-    # # Print the row for this month
-    # print(
-    #     f"| {month:5d} | ${current_balance:,.2f} | ${monthly_payment:,.2f} | ${interest_payment:,.2f} | ${principal_payment:,.2f} | ${additional_payment_at_target_month if month == 24 else yearly_additional_payment if month in years_for_additional_payment else 0:,.2f} | ${ending_balance:,.2f} |"
-    # )
+    # Print the row for this month
+    print(
+        f"| {month:5d} | ${current_balance:,.2f} | ${monthly_payment:,.2f} | ${interest_payment:,.2f} | ${principal_payment:,.2f} | ${additional_payment_at_target_month if month == 24 else yearly_additional_payment if month in months_for_additional_payment else 0:,.2f} | ${ending_balance:,.2f} |"
+    )
 
     current_balance = ending_balance
 

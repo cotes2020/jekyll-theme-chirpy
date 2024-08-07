@@ -27,7 +27,7 @@ SQL> SELECT *
 SELECT DISTINCT country FROM Websites;
 
 // SELECT studentNO FROM student WHERE 0 // false, return null
-// SELECT studentNO FROM student WHERE 1 // true, reture all
+// SELECT studentNO FROM student WHERE 1 // true, return all
 // SELECT * FROM Websites WHERE country='CN';
 // SELECT * FROM Websites WHERE id=1;
 // Select * from emp where comm is null;
@@ -157,7 +157,7 @@ SQL> SELECT column1, column2....columnN
 SELECT * FROM Websites WHERE name LIKE 'G%';
 ```
 
-*case sensetive*
+*case sensitive*
 
 * `LIKE` 'Toyota`%`';      /*start with Toyota*
 * `LIKE` '`%`0';           /*end with 0*

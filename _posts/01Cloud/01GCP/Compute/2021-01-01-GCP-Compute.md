@@ -9,10 +9,11 @@ image:
 
 - [Google Cloud Computing Solutions](#google-cloud-computing-solutions)
   - [Cloud Computing](#cloud-computing)
+  - [Cloud Compute trend](#cloud-compute-trend)
   - [Google Cloud Computing Solutions](#google-cloud-computing-solutions-1)
     - [Compute type](#compute-type)
     - [compare](#compare)
-    - [IaaS vs PaaS vs Serverless](#iaas-vs-paas-vs-serverless)
+    - [IaaS vs PaaS vs Serverless vs SaaS](#iaas-vs-paas-vs-serverless-vs-saas)
   - [IaaS](#iaas)
     - [Compute Engine](#compute-engine)
   - [PaaS](#paas)
@@ -40,22 +41,41 @@ image:
 
 ![Screen Shot 2021-02-03 at 14.32.13](https://i.imgur.com/6p8blb8.png)
 
-5 fundamental attributes.
-1. on-demand and self-service.
+5 fundamental attributes, definition of cloud
+
+1. **on-demand and self-service**
    1. automated interface and get the processing power, storage, and network they need with no human intervention.
-2. broad network access
+
+2. **broad network access**
    1. resources are accessible over a network from any location.
-3. Resource pooling
+
+3. **Resource pooling**
    1. Providers allocate resources to customers from a large pool,
    2. allowing them to benefit from economies of scale.
    3. Customers don't have to know or care about the exact physical location of these resources.
-4. Rapid elasticity
+
+4. **Rapid elasticity**
    1. Resources themselves are elastic.
    2. Customers who need more resources can get them rapidly,
    3. when they need less they can scale back.
-5. Measured service
+
+5. **Measured service**
    1. customers pay for only what they use or reserve as they go.
    2. stop using resources, stop paying.
+
+---
+
+## Cloud Compute trend
+
+- The trend towards cloud computing started with **colocation**, which allowed users to rent physical space instead of investing in data center real estate.
+
+- **Virtualized data centers** emerged as the second wave of cloud computing, where physical components were replaced with virtual devices.
+
+- Google realized that the virtualization model was limiting their ability to innovate, so they switched to a **container-based architecture**.
+
+
+![Screenshot 2024-08-07 at 09.49.50](/assets/img/Screenshot%202024-08-07%20at%2009.49.50.png)
+
 
 ---
 
@@ -81,19 +101,13 @@ image:
 
 ![Screen Shot 2022-08-28 at 16.41.39](https://i.imgur.com/jny3hPU.png)
 
-
-### IaaS vs PaaS vs Serverless
-
-![Screen Shot 2021-06-27 at 1.20.06 AM](https://i.imgur.com/tXqN8CH.png)
-
-![Screen Shot 2021-02-12 at 13.25.46](https://i.imgur.com/uuTClRK.png)
-
-![Screen Shot 2021-02-03 at 14.34.02](https://i.imgur.com/e2nAsAC.png)
-
-![Screen Shot 2021-02-09 at 23.26.11](https://i.imgur.com/Zghiw6i.png)
-
 ---
 
+### IaaS vs PaaS vs Serverless vs SaaS
+
+[link](../2021-01-01-GCP.md#iaas-vs-paas-vs-serverless-vs-saas)
+
+---
 
 ## IaaS
 

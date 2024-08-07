@@ -150,7 +150,7 @@ cloud_user@dockerhost:~/containerhub$ vim Dockerfile
 
 cloud_user@dockerhost:~/containerhub$ docker container ls
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS      PORTS               NAMES
-cloud_user@dockerhost:~/containerhub$ docker images ls
+cloud_user@dockerhost:~/containerhub$ docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 
 cloud_user@dockerhost:~/containerhub$ docker build . -t web
