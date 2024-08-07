@@ -7,17 +7,31 @@ toc: true
 image:
 ---
 
-
 - [Cloud Storage](#cloud-storage)
   - [basic](#basic)
-
+  - [Google Cloud Storage](#google-cloud-storage)
+  - [cloud storage level](#cloud-storage-level)
+    - [buckets](#buckets)
+    - [object](#object)
+  - [Access](#access)
+    - [access control lists - ACLs](#access-control-lists---acls)
+    - [Object Versioning](#object-versioning)
+    - [lifecycle policy](#lifecycle-policy)
+    - [signed URLs](#signed-urls)
+    - [storage class](#storage-class)
+      - [Autoclass](#autoclass)
+      - [Standard](#standard)
+        - [Multi-regional storage `99.95 percent`](#multi-regional-storage-9995-percent)
+        - [Regional storage `99.9 percent Availability`](#regional-storage-999-percent-availability)
+      - [Nearline storage `99 percent Availability`](#nearline-storage-99-percent-availability)
+      - [Coldline storage `99 percent Availability`](#coldline-storage-99-percent-availability)
+      - [Archive storage](#archive-storage)
+  - [bring data into cloud storage.](#bring-data-into-cloud-storage)
 
 
 ---
 
-
 # Cloud Storage
-
 
 ---
 
@@ -46,6 +60,9 @@ image:
 
 - the long-term storage location for data.
 
+- Cloud Storage is comprised of buckets and configure and use to hold the storage objects.
+  - Object storage manages data as "objects" rather than a file and folder hierarchy or chunks of a disk.
+
 - Cloud storage can
   - store App Engine logs, cloud data store backups, and objects used by App Engine applications like images.
   - store instant startup scripts, Compute Engine images, and objects used by Compute Engine applications.
@@ -53,13 +70,7 @@ image:
   - storing data for archival and disaster recovery,
   - distributing large data objects to users via direct download.
 
-- Cloud Storage is comprised of buckets and configure and use to hold the storage objects.
-
-- object storage
-  - you save to the storage here
-  - you keep this arbitrary bunch of bytes I give you and the storage lets you address it with a unique key.
-  - Often these unique keys are in the form of URLs which means object storage interacts nicely with Web technologies.
-  - make objects and the service stores them with high durability and high availability.
+- Cloud Storage’s primary use is whenever `binary large-object storage (BLOB)` is needed for online content such as videos and photos, for backup and archived data and for storage of intermediate results in processing workflows.
 
 - Cloud Storage is not:
   - **not a file system**
@@ -73,21 +84,6 @@ image:
   - by default, data in-transit is encrypted using HTTPS.
 - Once they are in Cloud Storage, you can move them onwards to other GCP storage services.
 
-![Screen Shot 2021-06-29 at 1.05.15 AM](https://i.imgur.com/lmWwwgY.png)
-
-
----
-
-### lifecycle
-
-![Screen Shot 2021-06-29 at 1.05.41 AM](https://i.imgur.com/LA9i41y.png)
-
-![Screen Shot 2021-06-29 at 1.06.52 AM](https://i.imgur.com/5cYKp9r.png)
-
-![Screen Shot 2021-06-29 at 1.08.14 AM](https://i.imgur.com/mWf4JUH.png)
-
-![Screen Shot 2021-06-29 at 1.10.17 AM](https://i.imgur.com/BHr6KMB.png)
-
 
 ---
 
@@ -95,12 +91,11 @@ image:
 
 ![Screen Shot 2021-06-29 at 12.59.04 AM](https://i.imgur.com/XxXhkwV.png)
 
-
 ![Screen Shot 2021-06-29 at 1.00.16 AM](https://i.imgur.com/LfMfZkh.png)
 
+---
 
 ### buckets
-
 
 - buckets.
   - globally unique name.
@@ -109,8 +104,6 @@ image:
   - and you choose a default storage class.
 
 ![Screen Shot 2021-02-03 at 22.37.13](https://i.imgur.com/lXaeAvy.png)
-
-
 
 - <font color=OrangeRed> The storage objects </font>
   - immutable,
@@ -129,11 +122,19 @@ image:
     - tell it to delete objects created before January 1, 2013
     - or keep only the three most recent versions of each object in a bucket that has versioning enabled.
 
+---
+
+### object
+
+- <font color=OrangeRed> object </font>
+  - you save to the storage here
+  - you keep this arbitrary bunch of bytes I give you and the storage lets you address it with a unique key.
+  - Often these unique keys are in the form of URLs which means object storage interacts nicely with Web technologies.
+  - make objects and the service stores them with high durability and high availability.
 
 ---
 
-
-## access to the objects and buckets.
+## Access
 
 ![Screen Shot 2021-06-29 at 1.01.03 AM](https://i.imgur.com/yh0Jtnq.png)
 
@@ -155,32 +156,59 @@ image:
 
 ### access control lists - ACLs
 
+![Screenshot 2024-08-07 at 13.40.27](/assets/img/Screenshot%202024-08-07%20at%2013.40.27.png)
+
 ![Screen Shot 2021-06-29 at 1.01.52 AM](https://i.imgur.com/ZVXekXM.png)
 
+---
+
+### Object Versioning
+
+![Screen Shot 2021-06-29 at 1.05.15 AM](https://i.imgur.com/lmWwwgY.png)
+
+![Screenshot 2024-08-07 at 13.39.16](/assets/img/Screenshot%202024-08-07%20at%2013.39.16.png)
+
+![Screen Shot 2021-06-29 at 1.05.41 AM](https://i.imgur.com/LA9i41y.png)
+
+---
+
+### lifecycle policy
+
+![Screenshot 2024-08-07 at 13.41.54](/assets/img/Screenshot%202024-08-07%20at%2013.41.54.png)
+
+![Screen Shot 2021-06-29 at 1.06.52 AM](https://i.imgur.com/5cYKp9r.png)
+
+![Screen Shot 2021-06-29 at 1.08.14 AM](https://i.imgur.com/mWf4JUH.png)
+
+![Screen Shot 2021-06-29 at 1.10.17 AM](https://i.imgur.com/BHr6KMB.png)
+
+---
 
 ### signed URLs
 
 ![Screen Shot 2021-06-29 at 1.02.47 AM](https://i.imgur.com/P3C6TAA.png)
 
-
-
 ![Screen Shot 2021-06-29 at 1.02.47 AM](https://i.imgur.com/hi3Ufsj.png)
-
 
 ---
 
 ### storage class
 
-![Screen Shot 2021-06-29 at 12.47.53 AM](https://i.imgur.com/xnLKgAP.png)
+![Screenshot 2024-08-07 at 13.43.09](/assets/img/Screenshot%202024-08-07%20at%2013.43.09.png)
 
+4 type of storage class:
+- Regional
+- Multi-regional
+- Nearline
+- Coldline
+
+![Screen Shot 2021-06-29 at 12.47.53 AM](https://i.imgur.com/xnLKgAP.png)
 
 ![Screen Shot 2021-02-03 at 22.38.07](https://i.imgur.com/zQFaWOA.png)
 
-4 type of storage class:
-Regional, Multi-regional, Nearline, and Coldline.
+![Screenshot 2024-08-07 at 13.43.50](/assets/img/Screenshot%202024-08-07%20at%2013.43.50.png)
 
 ![Screen Shot 2021-06-29 at 1.12.07 AM](https://i.imgur.com/DeMifDh.png)
-
 
 - Multi-regional and Regional are high-performance object storage
   - multi region: a large geographic areas such as the United States that contains two or more geographic places.
@@ -201,13 +229,21 @@ Regional, Multi-regional, Nearline, and Coldline.
   - Nearline storage also incurs an access fee per gigabyte of data read
   - Coldline storage incurs a higher fee per gigabyte of data read.
 
+---
+
+#### Autoclass
+
+![Screenshot 2024-08-07 at 13.44.26](/assets/img/Screenshot%202024-08-07%20at%2013.44.26.png)
+
+---
 
 #### Standard
 
 - fast for data that is frequently accessed and are stored for only brief periods of time.
-- most expensive storage class,
-- but has no minimum storage duration and no retrieval cost.
 
+- most expensive storage class,
+
+- but has no minimum storage duration and no retrieval cost.
 
 used in
 - **a region**
@@ -219,7 +255,6 @@ used in
 - **used in multi region**
   - appropriate for storing data that is `accessed around the world`.
   - Such as serving website content, stream videos, executing interactive workloads, or serving data supporting mobile and gaming applications
-
 
 ##### Multi-regional storage `99.95 percent`
 - cost a bit more
@@ -238,7 +273,7 @@ used in
 - to store data close to their Compute Engine, virtual machines, or their Kubernetes engine clusters.
   - gives better performance for data-intensive computations.
 
-
+---
 
 #### Nearline storage `99 percent Availability`
 
@@ -251,6 +286,8 @@ used in
   - data backup, long tailed multimedia content, and data archiving.
   - when plan to read or modify the data once a month or less on average.
   - continuously add files to cloud storage and access those files once a month for analysis
+
+---
 
 ####  Coldline storage `99 percent Availability`
 
@@ -267,7 +304,7 @@ used in
 - For example,
   - to archive data or have access to it in case of a disaster recovery event.
 
-
+---
 
 #### Archive storage
 

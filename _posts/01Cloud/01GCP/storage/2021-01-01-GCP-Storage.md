@@ -26,6 +26,8 @@ image:
 
 # GCP Storage
 
+Google Cloud has storage options for structured, unstructured, transactional, and relational data
+
 ![Screen Shot 2021-06-29 at 12.43.36 AM](https://i.imgur.com/fpA35QT.png)
 
 ![Screenshot 2023-09-24 at 23.48.10](/assets/img/post/Screenshot%202023-09-24%20at%2023.48.10.png)
