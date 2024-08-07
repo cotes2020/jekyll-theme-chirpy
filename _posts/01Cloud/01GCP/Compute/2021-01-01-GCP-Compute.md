@@ -105,7 +105,8 @@ image:
 
 ### IaaS vs PaaS vs Serverless vs SaaS
 
-[link](../2021-01-01-GCP.md#iaas-vs-paas-vs-serverless-vs-saas)
+[link](https://github.com/ocholuo/ocholuo.github.io/tree/master/_posts/01Cloud/01GCP/2021-01-01-GCP.md#iaas-vs-paas-vs-serverless-vs-saas)
+
 
 ---
 
