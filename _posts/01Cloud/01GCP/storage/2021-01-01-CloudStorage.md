@@ -325,7 +325,6 @@ used in
 
 ![Screen Shot 2021-06-29 at 1.09.08 AM](https://i.imgur.com/Vqi3oyV.png)
 
-
 - bring data into cloud storage.
   - use gsutil
     - the cloud storage command from this cloud SDK.
@@ -341,18 +340,3 @@ used in
 - other ways of getting your data into cloud storage as this storage option is tightly integrated with many of the Google cloud platform products and services.
 - For example
   - import and export tables from and to BigQuery as well as Cloud SQL.
-
-
----
-
-
-
-
-
-
-
-
-
-
-
-.
