@@ -107,6 +107,7 @@ image:
 
 [link](https://github.com/ocholuo/ocholuo.github.io/tree/master/_posts/01Cloud/01GCP/2021-01-01-GCP.md#iaas-vs-paas-vs-serverless-vs-saas)
 
+![Screenshot 2024-08-07 at 23.04.21](/assets/img/Screenshot%202024-08-07%20at%2023.04.21.png)
 
 ---
 

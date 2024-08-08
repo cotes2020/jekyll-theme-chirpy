@@ -27,6 +27,7 @@ image:
       - [Coldline storage `99 percent Availability`](#coldline-storage-99-percent-availability)
       - [Archive storage](#archive-storage)
   - [bring data into cloud storage.](#bring-data-into-cloud-storage)
+  - [Deployment](#deployment)
 
 ---
 
@@ -340,3 +341,222 @@ used in
 - other ways of getting your data into cloud storage as this storage option is tightly integrated with many of the Google cloud platform products and services.
 - For example
   - import and export tables from and to BigQuery as well as Cloud SQL.
+
+---
+
+## Deployment
+
+Lab Setup
+
+create 2 bucket
+
+Bukect1:
+- BUCKET_NAME: my_bucket
+- Region: us-east4
+- how to control access to objects:
+  - uncheck Enforce public access prevention on this bucket
+  - select Fine-grained.
+
+Create a virtual machine (VM) instance
+- Name: first-vm
+- Region: us-east4
+- Zone: us-east4-b
+- Machine type: click e2-micro (2 shared vCPU)
+- Firewall: click Allow HTTP traffic.
+
+
+Create an IAM service account
+
+- Service account name: test-service-account
+- Grant this service account access to project page: role as Basic > Editor
+- Manage keys: Create new key -> "credentials.json"
+- Move the credentials file you created earlier into Cloud Shell
+
+
+Cloud Shell
+
+```sh
+# list all the zones in a given region:
+MY_REGION=us-east4
+gcloud compute zones list | grep $MY_REGION
+# Set default zone
+MY_ZONE=us-east4-b
+gcloud config set compute/zone $MY_ZONE
+
+# create a second virtual machine
+MY_VMNAME=second-vm
+gcloud compute instances create $MY_VMNAME \
+--machine-type "e2-standard-2" \
+--image-project "debian-cloud" \
+--image-family "debian-11" \
+--subnet "default"
+
+gcloud compute instances list
+
+
+# create a second service account
+gcloud iam service-accounts create test-service-account2 \
+  --display-name "test-service-account2"
+
+# grant the second service account the viewer role:
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+  --member serviceAccount:test-service-account2@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com \
+  --role roles/viewer
+```
+
+- the external IP address of the first VM you created is shown as a link.
+  - because this VM's firewall allow HTTP traffic.
+  - Click the link. Your browser will present a Connection refused message in a new browser tab. This message occurs because, although there is a firewall port open for HTTP traffic to your VM, no web server is running there.
+
+Download a file to Cloud Shell and copy it to Cloud Storage
+
+```sh
+MY_BUCKET_NAME_1=my_bucket
+MY_BUCKET_NAME_2=my_bucket2
+
+# create a bucket:
+gcloud storage buckets create gs://$MY_BUCKET_NAME_2 --location=us-east4
+
+# Copy a picture of a cat from a Google-provided Cloud Storage bucket to your Cloud Shell:
+gcloud storage cp gs://cloud-training/ak8s/cat.jpg cat.jpg
+# Copy the file into the first bucket that you created earlier:
+gcloud storage cp cat.jpg gs://$MY_BUCKET_NAME_1
+# Copy the file from the first bucket into the second bucket:
+gcloud storage cp gs://$MY_BUCKET_NAME_1/cat.jpg gs://$MY_BUCKET_NAME_2/cat.jpg
+
+# Set the access control list for a Cloud Storage object
+
+# To get the default access list that's been assigned to cat.jpg
+gsutil acl get gs://$MY_BUCKET_NAME_1/cat.jpg  > acl.txt
+cat acl.txt
+# [
+#   {
+#     "entity": "project-owners-560255523887",
+#     "projectTeam": {
+#       "projectNumber": "560255523887",
+#       "team": "owners"
+#     },
+#     "role": "OWNER"
+#   },
+#   {
+#     "entity": "project-editors-560255523887",
+#     "projectTeam": {
+#       "projectNumber": "560255523887",
+#       "team": "editors"
+#     },
+#     "role": "OWNER"
+#   },
+#   {
+#     "entity": "project-viewers-560255523887",
+#     "projectTeam": {
+#       "projectNumber": "560255523887",
+#       "team": "viewers"
+#     },
+#     "role": "READER"
+#   },
+#   {
+#     "email": "google12345678_student@qwiklabs.net",
+#     "entity": "user-google12345678_student@qwiklabs.net",
+#     "role": "OWNER"
+#   }
+# ]
+
+
+# change the object to have private access, execute the following command:
+gsutil acl set private gs://$MY_BUCKET_NAME_1/cat.jpg
+
+# To verify the new ACL that's been assigned to cat.jpg
+gsutil acl get gs://$MY_BUCKET_NAME_1/cat.jpg  > acl-2.txt
+cat acl-2.txt
+# [
+#   {
+#     "email": "google12345678_student@qwiklabs.net",
+#     "entity": "user-google12345678_student@qwiklabs.net",
+#     "role": "OWNER"
+#   }
+# ]
+# Now only the original creator of the object (your lab account) has OWNER access.
+```
+
+
+Authenticate as a service account in Cloud Shell
+
+```sh
+gcloud config list
+# [component_manager]
+# disable_update_check = True
+# [compute]
+# gce_metadata_read_timeout_sec = 30
+# zone = us-east4-b
+# [core]
+# account = google12345678_student@qwiklabs.net
+# disable_usage_reporting = False
+# project = qwiklabs-Google Cloud-1aeffbc5d0acb416
+# [metrics]
+# environment = devshell
+# Your active configuration is: [cloudshell-16441]
+
+
+# change the authenticated user to the first service account
+gcloud auth activate-service-account --key-file credentials.json
+gcloud config list
+# [component_manager]
+# disable_update_check = True
+# [compute]
+# gce_metadata_read_timeout_sec = 30
+# zone = us-east4-b
+# [core]
+# account = test-service-account@qwiklabs-Google Cloud-1aeffbc5d0acb416.iam.gserviceaccount.com
+# disable_usage_reporting = False
+# project = qwiklabs-Google Cloud-1aeffbc5d0acb416
+# [metrics]
+# environment = devshell
+# Your active configuration is: [cloudshell-16441]
+
+
+# Because you restricted access to this file
+# verify that the current account (test-service-account) cannot access the cat.jpg file
+gcloud storage cp gs://$MY_BUCKET_NAME_1/cat.jpg ./cat-copy.jpg
+# AccessDeniedException: 403  KiB]
+
+
+# Verify that the current account (test-service-account) can access the cat.jpg file in the second bucket
+gcloud storage cp gs://$MY_BUCKET_NAME_2/cat.jpg ./cat-copy.jpg
+
+# To switch to the lab account, execute the following command
+gcloud config set account [USERNAME]
+gcloud storage cp gs://$MY_BUCKET_NAME_1/cat.jpg ./copy2-of-cat.jpg
+
+
+# Make the first Cloud Storage bucket readable by everyone, including unauthenticated users:
+gsutil iam ch allUsers:objectViewer gs://$MY_BUCKET_NAME_1
+
+
+# In the Cloud Shell code editor, select New File.
+# Name the file index.html.
+# <html><head><title>Cat</title></head>
+# <body>
+# <h1>Cat</h1>
+# <img src="REPLACE_WITH_CAT_URL">
+# </body></html>
+
+
+# SSH to first-vm.
+sudo apt-get remove -y --purge man-db
+sudo touch /var/lib/man-db/auto-update
+sudo apt-get update
+sudo apt-get install nginx
+
+# cloud shell
+gcloud compute scp index.html first-vm:index.nginx-debian.html --zone=us-east4-b
+
+# copy the HTML file from your home directory to the document root of the nginx web server:
+sudo cp index.nginx-debian.html /var/www/html
+
+# Click the link in the External IP column for your first-vm. A new browser tab opens with a webpage that contains the cat image.
+```
+
+
+
+
+.
