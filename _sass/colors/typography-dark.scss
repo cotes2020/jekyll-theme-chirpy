@@ -84,27 +84,29 @@
   --prompt-danger-bg: rgb(86, 28, 8, 0.8);
   --prompt-danger-icon-color: #cd0202;
 
-  /* tags */
+  /* Tags */
   --tag-border: rgb(59, 79, 88);
   --tag-shadow: rgb(32, 33, 33);
   --dash-color: rgb(63, 65, 68);
   --search-tag-bg: #292828;
 
-  /* categories */
+  /* Categories */
   --categories-border: rgb(64, 66, 69, 0.5);
   --categories-hover-bg: rgb(73, 75, 76);
   --categories-icon-hover-color: white;
 
-  /* archives */
+  /* Archive */
   --timeline-node-bg: rgb(150, 152, 156);
   --timeline-color: rgb(63, 65, 68);
   --timeline-year-dot-color: var(--timeline-color);
+
+  color-scheme: dark;
 
   .light {
     display: none;
   }
 
-  /* categories */
+  /* Categories */
   .categories.card,
   .list-group-item {
     background-color: var(--card-bg);
@@ -137,8 +139,6 @@
       rgb(26, 26, 30)
     );
   }
-
-  color-scheme: dark;
 
   /* stylelint-disable-next-line selector-id-pattern */
   #disqus_thread {

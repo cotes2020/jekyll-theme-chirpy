@@ -50,12 +50,12 @@ html {
   @extend %rounded;
   @extend %code-snippet-bg;
 
+  overflow: auto;
+  padding-bottom: 0.75rem;
+
   @at-root figure#{&} {
     @extend %code-snippet-bg;
   }
-
-  overflow: auto;
-  padding-bottom: 0.75rem;
 
   pre {
     margin-bottom: 0;
