@@ -92,14 +92,6 @@
   --tag-hover: rgb(222, 226, 230);
   --search-tag-bg: #f8f9fa;
 
-  [class^='prompt-'] {
-    --link-underline-color: rgb(219, 216, 216);
-  }
-
-  .dark {
-    display: none;
-  }
-
   /* Categories */
   --categories-border: rgba(0, 0, 0, 0.125);
   --categories-hover-bg: var(--btn-border-color);
@@ -109,4 +101,12 @@
   --timeline-color: rgba(0, 0, 0, 0.075);
   --timeline-node-bg: #c2c6cc;
   --timeline-year-dot-color: #ffffff;
+
+  [class^='prompt-'] {
+    --link-underline-color: rgb(219, 216, 216);
+  }
+
+  .dark {
+    display: none;
+  }
 } /* light-scheme */
