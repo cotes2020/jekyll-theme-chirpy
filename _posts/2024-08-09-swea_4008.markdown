@@ -1,9 +1,9 @@
 ---
-title: "[SWEA]요리사 - 4012 (모의 역량 테스트)"
+title: "[SWEA]숫자 만들기 - 4008 (모의 역량 테스트)"
 author: kwon
-date: 2024-08-06T14:00:00 +0900
+date: 2024-08-09T14:00:00 +0900
 categories: [swea, 모의역량]
-tags: [combinatorics, backtracking]
+tags: [dfs]
 math: true
 mermaid: false
 ---
