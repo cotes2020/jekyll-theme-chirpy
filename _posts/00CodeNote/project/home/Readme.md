@@ -63,7 +63,6 @@ for neighborhoods you're interested in, find a few realtors who specialize in th
 - go to open houses as much as possible.
 
 
-
 - Homes can end up going for above (or quite possibly below) the list price.
 
 

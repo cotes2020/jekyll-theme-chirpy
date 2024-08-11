@@ -19,7 +19,7 @@ image:
 
 ---
 
-## overall
+## Overall
 
 cloud computing:
 - Cloud computing is the `on-demand delivery` of compute power, database, storage, applications, and other IT resources via the internet with `pay-as-you-go pricing`.

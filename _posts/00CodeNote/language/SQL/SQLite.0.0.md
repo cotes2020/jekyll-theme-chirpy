@@ -1142,7 +1142,7 @@ SELECT column1, column2....columnN
 FROM table_name
 WHERE column_name LIKE PATTERN;
 ```
-**case sensetive**
+**case sensitive**
 * `LIKE` 'Toyota`%`'; *start with Toyota*
 * `LIKE` '`%`0'; *end with 0*
 * `LIKE` '`%`RX4`%`' *contain RX$*

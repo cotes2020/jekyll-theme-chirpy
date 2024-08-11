@@ -25,7 +25,7 @@
 
 # NER
 
-## overall
+## Overall
 
 NER
 - 命名实体识别

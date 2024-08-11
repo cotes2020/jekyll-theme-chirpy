@@ -31,6 +31,8 @@ image:
 
 ## basic
 
+
+
 Compute Engine
 - <font color=OrangeRed> Infrastructure as a Service </font>
 - <font color=OrangeRed> A managed environment </font> for deploying virtual machines
@@ -63,7 +65,9 @@ Compute Engine
 
 ![Screen Shot 2021-06-27 at 11.31.34 PM](https://i.imgur.com/E1QdnJw.png)
 
+![Screenshot 2024-08-07 at 11.52.50](/assets/img/Screenshot%202024-08-07%20at%2011.52.50.png)
 
+![Screenshot 2024-08-07 at 11.53.04](/assets/img/Screenshot%202024-08-07%20at%2011.53.04.png)
 
 ---
 
@@ -209,7 +213,31 @@ Virtual machines need <font color=OrangeRed> block storage </font>
 
 ![Screen Shot 2021-06-27 at 11.32.27 PM](https://i.imgur.com/RyUriRl.png)
 
-![Screen Shot 2021-06-27 at 11.39.50 PM](https://i.imgur.com/Yp597og.png)
+![Screenshot 2024-08-07 at 11.49.42](/assets/img/Screenshot%202024-08-07%20at%2011.49.42.png)
+
+1. **bills by the second**
+   - with a one-minute minimum for virtual machine usage.
+
+1. **Sustained-use discounts**
+   - apply automatically to virtual machines that run for more than 25% of a month.
+
+1. **Committed-use discounts**
+   - for stable and predictable workloads.
+
+1. **Preemptible and Spot VMs**
+
+   - can be used to <font color=LightSlateBlue> save money for certain workloads </font>
+
+   - Preemptible and spot VMs have the same performance as ordinary VMs of the same machine type.
+
+   - Preemptible 可優先的 VMs can run for up to 24 hours, while Spot VMs have no maximum runtime.
+
+   - ![Screenshot 2024-08-07 at 11.50.07](/assets/img/Screenshot%202024-08-07%20at%2011.50.07.png)
+
+   - ![Screenshot 2024-08-07 at 11.50.15](/assets/img/Screenshot%202024-08-07%20at%2011.50.15.png)
+
+   - ![Screen Shot 2021-06-27 at 11.39.50 PM](https://i.imgur.com/Yp597og.png)
+
 
 ![Screen Shot 2021-06-27 at 11.40.30 PM](https://i.imgur.com/xH8t5cU.png)
 
@@ -258,7 +286,7 @@ Virtual machines need <font color=OrangeRed> block storage </font>
 
 ![Screen Shot 2021-06-28 at 12.38.35 AM](https://i.imgur.com/QIFNlYf.png)
 
-
+---
 
 ## disk snapshiots
 

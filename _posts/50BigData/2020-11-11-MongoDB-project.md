@@ -30,7 +30,7 @@ ref:
 
 # BigData - MongoDB Projects
 
-## overall
+## Overall
 
 - MongoDB Inc offers an amazing database technology that is utilized mainly for storing data in key-value pairs.
 

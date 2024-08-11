@@ -1,11 +1,22 @@
-- [Cloud Service Model](#cloud-service-model)
+---
+title: Cloud Services and Models
+date: 2021-01-01 11:11:11 -0400
+categories: [01GCP, Storage]
+tags: [GCP]
+toc: true
+image:
+---
+
+
+- [Cloud Services and Models](#cloud-services-and-models)
   - [IaaS infrastructure as a service](#iaas-infrastructure-as-a-service)
   - [PaaS Platform as a Service](#paas-platform-as-a-service)
+- [Cloud Services](#cloud-services)
   - [Compare AWS and Azure services to Google Cloud](#compare-aws-and-azure-services-to-google-cloud)
 
 ---
 
-# Cloud Service Model
+# Cloud Services and Models
 
 ---
 
@@ -47,6 +58,10 @@
   - the platform scales the applications seamlessly and independently by workload and infrastructure.
   - scales rapidly
   - but you give up control of the underlying server architecture.
+
+---
+
+# Cloud Services
 
 ---
 

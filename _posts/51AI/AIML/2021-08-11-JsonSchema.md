@@ -26,7 +26,7 @@ tags: [AI, ML]
 
 ---
 
-## overall
+## Overall
 
 JSON Schema is a declarative language that you can use to annotate and validate the structure, constraints, and data types of the JSON documents. It provides a way to standardize and define expectations for the JSON data.
 

@@ -73,7 +73,7 @@ ref:
 # Policy Language
 
 
-## overall
+## Overall
 
 - OPA is purpose built for reasoning about information represented in structured documents.
 - The data that your service and its users publish can be inspected and transformed using OPA’s native query language Rego.
@@ -1963,7 +1963,7 @@ For using the `some` keyword with iteration, see [the documentation of the `in` 
 ```true```
 The `every` keyword takes an (optional) key argument, a value argument, a domain, and a block of further queries, its “body”.
 
-The keyword is used to explicity assert that its body is true for _any element in the domain_ . It will iterate over the domain, bind its variables, and check that the body holds for those bindings. If one of the bindings does not yield a successful evaluation of the body, the overall statement is undefined.
+The keyword is used to explicitly assert that its body is true for _any element in the domain_ . It will iterate over the domain, bind its variables, and check that the body holds for those bindings. If one of the bindings does not yield a successful evaluation of the body, the overall statement is undefined.
 
 If the domain is empty, the overall statement is true.
 

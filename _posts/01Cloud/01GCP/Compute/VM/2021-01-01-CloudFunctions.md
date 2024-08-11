@@ -31,12 +31,14 @@ image:
 > - integrate this function in application, then you have to worry about providing compute resources for it, no matter whether it happens once a day or once a millisecond.
 > - What if you could just make that provisioning problem go away? write a single purpose function that did the necessary image manipulations and then arrange for it to automatically run whenever a new image gets uploaded.
 
-
-Cloud Functions
-
-- an <font color=OrangeRed> event-driven </font>, serverless compute service
+- an <font color=OrangeRed> event-driven </font>
+  - serverless compute service
   - for simple single purpose functions that are attached to events.
-  - <font color=LightSlateBlue> event-driven, the function gets executed when a particular event occurs. </font>
+  - <font color=OrangeRed> lightweight, event-based, asynchronous compute solution. </font>
+  - <font color=OrangeRed> the function gets executed when a particular event occurs. </font>
+  - create small, single-purpose functions that respond to cloud events without the need to manage a server or a runtime environment.
+
+- can be used to construct application workflows from individual business logic tasks.
 
 - create single-purpose functions that respond to events without servers or runtime binaries.
   - just write code in JavaScript for a Node.js environment that GCP provides
@@ -76,10 +78,6 @@ Cloud Functions
   - the data can be extracted, transformed and loaded for querying in analysis.
   - use Cloud Functions as part of intelligent applications
     - such as virtual assistance, video or image analysis, and sentiment analysis.
-
-
-
-
 
 - Min Instance: keep app warm
 - Loneger processung: 60min
