@@ -28,14 +28,11 @@ image:
 
 ---
 
-
 # Google Cloud Computing Solutions
-
 
 ---
 
 ## Cloud Computing
-
 
 ![Screen](https://i.imgur.com/7vMDIFw.png)
 
@@ -73,19 +70,15 @@ image:
 
 - Google realized that the virtualization model was limiting their ability to innovate, so they switched to a **container-based architecture**.
 
-
 ![Screenshot 2024-08-07 at 09.49.50](/assets/img/Screenshot%202024-08-07%20at%2009.49.50.png)
-
 
 ---
 
 ## Google Cloud Computing Solutions
 
-
 > GCP products that provide the compute infrastructure for applications
 
 ### Compute type
-
 
 ![Screen Shot 2022-08-14 at 23.53.19](https://i.imgur.com/zqLCHjW.jpg)
 
@@ -93,13 +86,13 @@ image:
 
 ![Screen Shot 2022-08-15 at 00.11.35](https://i.imgur.com/7tbu3te.png)
 
-
 ### compare
 
+![Screenshot 2024-08-11 at 12.29.51](/assets/img/Screenshot%202024-08-11%20at%2012.29.51.png)
 
-![Screen Shot 2022-08-15 at 00.11.25](https://i.imgur.com/QauFUMT.png)
+![Screenshot 2024-08-11 at 12.29.50](/assets/img/Screenshot%202024-08-11%20at%2012.29.50.png)
 
-![Screen Shot 2022-08-28 at 16.41.39](https://i.imgur.com/jny3hPU.png)
+![Screenshot 2024-08-11 at 12.29.49](/assets/img/Screenshot%202024-08-11%20at%2012.29.49.png)
 
 ---
 
@@ -129,25 +122,24 @@ image:
       - create customized configurations
   - no upfront investments
   - run thousands of virtual CPUs on a system that is designed to be fast and to offer consistent performance.
-  - choice:
-    - have complete control over your infrastructure
-      - maximum flexibility
-      - for people who prefer to manage those server instances themselves.
-      - customize operating systems and even run applications that rely on a mix of operating systems.
-    - best option when other computing options don't support your applications or requirements
-      - easily lift and shift your on-premises workloads into GCP without rewriting the applications or making any changes.
 
+![Screenshot 2024-08-11 at 12.20.41](/assets/img/Screenshot%202024-08-11%20at%2012.20.41.png)
+
+- <font color=OrangeRed> use case </font>:
+  - have complete control over your infrastructure
+    - maximum flexibility
+    - for people who prefer to manage those server instances themselves.
+    - customize operating systems and even run applications that rely on a mix of operating systems.
+  - best option when other computing options don't support your applications or requirements
+    - easily lift and shift your on-premises workloads into GCP without rewriting the applications or making any changes.
 
 ---
 
-
 ## PaaS
-
 
 ### App Engine
 
 ![Screen Shot 2021-02-14 at 21.28.45](https://i.imgur.com/0ngmPQq.png)
-
 
 - <font color=OrangeRed> App Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/app-engine/)
@@ -178,18 +170,20 @@ image:
   - App Engine offers two environments:
     - standard and flexible
   - App Engine supports popular languages like Java and Node.js, Python, PHP, C#, .NET, Ruby, and Go.
-  - especially suited for applications
-    - where the workload is highly variable or unpredictable
-    - like web applications and mobile backend.
-    - for websites, mobile apps, gaming backends,
-    - and as a way to present a RESTful API to the Internet
-      - an application program interface
-      - resembles the way a web browser interacts with the web server.
-      - RESTful APIs are easy for developers to work with and extend.
-      - And App Engine makes them easy to operate
+
+![Screenshot 2024-08-11 at 12.23.07](/assets/img/Screenshot%202024-08-11%20at%2012.23.07.png)
+
+- <font color=OrangeRed> use case </font>:
+  - suited for applications where the workload is highly variable or unpredictable
+  - web applications and mobile backend.
+  - websites, mobile apps, gaming backends,
+  - present a RESTful API to the Internet
+    - an application program interface
+    - resembles the way a web browser interacts with the web server.
+    - RESTful APIs are easy for developers to work with and extend.
+    - And App Engine makes them easy to operate
 
 ---
-
 
 ## Serverless
 
@@ -243,6 +237,8 @@ image:
       - such as virtual assistance, chat bots
       - video or image analysis, and sentiment analysis.
 
+![Screenshot 2024-08-11 at 12.26.17](/assets/img/Screenshot%202024-08-11%20at%2012.26.17_3lo65tiy3.png)
+
 - <font color=OrangeRed> use cases </font>
   - used as part of a microservices application architecture.
     - Some applications, especially those that have microservices architecture, can be implemented entirely in Cloud Functions.
@@ -252,9 +248,7 @@ image:
 
 ---
 
-
 ## container - Stateless
-
 
 ---
 
@@ -275,7 +269,7 @@ image:
   - automatically scales up and down from zero
     - depending upon traffic almost instantaneously
     - no worry about scale configuration.
-  - pay for only the resources used
+  - <font color=LightSlateBlue> pay for only the resources used </font>
     - calculated down to the nearest 100 milliseconds.
     - no pay for those over provisioned resources.
   - gives the choice of running the containers
@@ -291,14 +285,16 @@ image:
   - enables you to deploy stateless containers
     - that listen for requests or events delivered via HTTP requests.
 
----
+![Screenshot 2024-08-11 at 12.26.17](/assets/img/Screenshot%202024-08-11%20at%2012.26.17.png)
 
+- use case:
+  - build your applications in any language using whatever frameworks and tools you wish and deploy them in seconds without having to manage and maintain that server infrastructure.
+
+---
 
 ## container - Hybrid
 
-
 ---
-
 
 ### GKE Kubernetes Engine
 
@@ -311,14 +307,18 @@ image:
   - containerization, a way to package code that's designed to be highly portable and to use resources very efficiently.
   - Kubernetes, a way to orchestrate code in those containers.
 
+![Screenshot 2024-08-11 at 12.24.30](/assets/img/Screenshot%202024-08-11%20at%2012.24.30.png)
+
+- <font color=OrangeRed> use case </font>:
+  - containerized applications
+  - cloud-native distributed systems
+  - and hybrid applications
 
 ---
-
 
 ## which compute service to you adopt
 
 ![Screen Shot 2021-02-14 at 21.36.35](https://i.imgur.com/8e7pec1.png)
-
 
 - compute engine
   - running applications on physical server hardware
