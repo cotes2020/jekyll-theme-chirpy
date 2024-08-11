@@ -35,3 +35,4 @@ The following table will help you understand the changes to the favicon files:
 {: .prompt-info }
 
 The next time you build the site, the favicon will be replaced with a customized edition.
+
