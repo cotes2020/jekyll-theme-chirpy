@@ -237,18 +237,18 @@ image:
 
   - These servers are automatically scaled and are deployed from highly available and a fault-tolerant design.
 
-  - use cases
-    - used as part of a microservices application architecture.
-      - Some applications, especially those that have microservices architecture, can be implemented entirely in Cloud Functions.
-    - build symbols, serverless,
-      - mobile IoT backends
-      - integrate with third party services and APIs.
-
     - Files uploaded into the GCS bucket can be processed in real time.
     - the data can be extracted, transformed and loaded for querying in analysis.
     - intelligent applications
       - such as virtual assistance, chat bots
       - video or image analysis, and sentiment analysis.
+
+- <font color=OrangeRed> use cases </font>
+  - used as part of a microservices application architecture.
+    - Some applications, especially those that have microservices architecture, can be implemented entirely in Cloud Functions.
+  - build symbols, serverless,
+    - mobile IoT backends
+    - integrate with third party services and APIs.
 
 ---
 
