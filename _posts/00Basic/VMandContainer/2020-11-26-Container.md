@@ -9,10 +9,7 @@ image:
 
 - [Virtualization - Container](#virtualization---container)
   - [basic](#basic)
-  - [traditional](#traditional)
-  - [virtualization](#virtualization)
-  - [containers](#containers)
-    - [virtualmachine (VM)-based vs container-based deployment.](#virtualmachine-vm-based-vs-container-based-deployment)
+    - [VM-based vs container-based deployment](#vm-based-vs-container-based-deployment)
   - [Container](#container)
     - [build and run containers](#build-and-run-containers)
   - [containers component](#containers-component)
@@ -33,25 +30,21 @@ image:
 
 ![Screen Shot 2021-02-11 at 17.21.07](https://i.imgur.com/iUnkAWY.png)
 
-traditional
----
+Traditional
 - deploy an application on its own physical computer.
 
+![Screenshot 2024-08-09 at 15.15.41](/assets/img/Screenshot%202024-08-09%20at%2015.15.41.png)
 
-
-![Screen Shot 2021-02-11 at 17.49.44](https://i.imgur.com/KVMQ1Yk.png)
-
-virtualization
----
+Virtualization
 - takes less time to deploy new solutions
 - waste less of the resources on those physical computers
 - get some improved portability because virtual machines can be imaged and then moved around.
 
+![Screen Shot 2021-02-11 at 17.49.44](https://i.imgur.com/KVMQ1Yk.png)
 
 ![Screen Shot 2021-02-11 at 17.49.28](https://i.imgur.com/Edp2Re5.png)
 
-containers
----
+Containers
 - more efficient way to resolve the dependency problem
 - Implement abstraction at the level of the application and its dependencies.
 - not virtualize the entire machine /OS,
@@ -62,18 +55,17 @@ containers
   - building software into Container images
   - and easily package and ship an application without worrying about the system it will be running on
 
-
 ---
 
-### virtualmachine (VM)-based vs container-based deployment.
+### VM-based vs container-based deployment
+
 - ![Container](https://i.imgur.com/xtbJiVc.png)
+
 - ![VM](https://i.imgur.com/SmOVHbs.png)
 
 ---
 
-
 ## Container
-
 
 <img alt="pic" src="https://i.imgur.com/pb2kD6d.png" width="400">
 
@@ -232,27 +224,77 @@ Containers power to isolate workloads is derived from the composition of several
 
 ## container image
 
-- A container image is structured in layers.
-  - The Container manifest:
-    - The file, tool to build the image reads instructions
-  - Docker formatted Container Image:
-    - Docker file.
+- An application and its dependencies are called an **image**.
+- A **container** is simply a running instance of an image.
 
-- Each instruction in the Docker file specifies a layer inside the container image.
-  - Each layer is, `Read only` When a Container runs from this image
-  - have a writable ephemeral top-most layer.
+- By building software into container images, `easily package and ship an application` without worrying about the system it will be running on.
+
+- Containers are not an intrinsic, primitive feature of Linux. Instead, their power to isolate workloads is derived from the composition of several technologies.
+
+  - One foundation is the Linux `process`.
+    - Each <font color=LightSlateBlue> Linux process has its own virtual memory address space </font>, separate from all others, and Linux processes are rapidly created and destroyed.
+
+  - Containers use Linux `namespaces`:
+    - use Linux `namespaces` to control what an application can see: process ID numbers, directory trees, IP addresses, and more.
+    - Linux namespaces are not the same thing as Kubernetes namespaces
+
+  - Containers use `cgroups` to control what an application can use: its maximum consumption of CPU time, memory, I/O bandwidth, and other resources.
+
+  - containers use `union file systems` to efficiently encapsulate applications and their dependencies into a set of clean, minimal layers.
 
 ![Screen Shot 2021-02-11 at 19.22.35](https://i.imgur.com/idTIa2c.png)
 
+- A container image is structured in layers.
+  - The tool you use to build the image reads instructions from a file called the “container manifest”
+  - The Container manifest:
+    - The file, tool to build the image reads instructions
+  - Dockerfile
+    - Docker formatted Container Image
+    - Each instruction in the Dockerfile specifies a layer inside the container image.
+    - Each layer is, `Read only` When a Container runs from this image
+    - have a writable ephemeral top-most layer.
+
+![Screenshot 2024-08-11 at 11.25.39](/assets/img/Screenshot%202024-08-11%20at%2011.25.39.png)
+
+- This Dockerfile will contain four commands, each of which creates a layer.
+  - The `FROM` statement starts out by creating a base layer, pulled from a public repository. This one happens to be the Ubuntu Linux runtime environment of a specific version.
+  - The `COPY` command adds a new layer, containing some files copied in from your build tool’s current directory.
+  - The `RUN` command builds your application using the “make” command and puts the results of the build into a third layer.
+  - The last layer specifies what command to run within the container when it is launched.
+- Each layer is only a set of differences from the layer before it. When you write a Dockerfile
+- organize from the layers likely to change, through to the layers most likely to change.
+
+oversimplified
+- These days, the best practice is not to build your application in the very same container that you ship and run.
+- your build tools are at best just clutter in a deployed container, and at worst they are an additional attack surface.
+- Today, application packaging relies on a multi-stage build process, in which one container builds the final executable image, and a separate container receives only what is needed to run the application.
+
+
+- Fortunately for us, the tools we use support this practice. When you launch a new container from an image, the container runtime adds a new writable layer on top of the underlying layers. This layer is often called the `container layer`.
+  - All changes made to the running container, such as writing new files, modifying existing files, and deleting files, are written to this thin writable container layer.
+  - And they’re ephemeral: When the container is deleted, the contents of this writable layer are lost forever. The underlying container image remains unchanged.
+  - This fact about containers has an implication for your application design: whenever you want to store data permanently, you must do so somewhere other than a running container image.
+
+![Screenshot 2024-08-11 at 11.27.38](/assets/img/Screenshot%202024-08-11%20at%2011.27.38.png)
+
+- Because each container has its own writable container layer, and all changes are stored in this layer, multiple containers can share access to the same underlying image and yet have their own data state.
+- The diagram shows multiple containers sharing the same Ubuntu image. Because each layer is only a set of differences from the layer before it, you get smaller images.
+- For example, your base application image may be 200 MB, but the difference to the next point release might only be 200 KB. When you build a container, instead of copying the whole image, it creates a layer with just the difference. When you run a container, the container runtime pulls down the layers it needs. When you update, you only need to copy the difference. This is much faster than running a new virtual machine.
+
+
+It’s very common to use publicly available open-source container images as the base for your own images, or for unmodified use.
+- “ubuntu” container image, which provides a Ubuntu Linux environment inside a container.
+- “Alpine” is a popular Linux environment in a container, noted for being very small.
+- The nginx web server is frequently used in its container packaging.
+- Artifact Registry is the single place to store container images as well as language and OS packages. You can use Artifact Registry with other Google Cloud services namely IAM for access control, KMS for customer managed encryption keys, Cloud Build for CI/CD and scan for container vulnerabilities with Container Analysis.
+- You can also find container images in other public repositories: Docker Hub Registry, GitLab, and others.
+- Cloud Build can retrieve the source code for your builds from many code repositories, including Cloud Source Repositories, or git-compatible repositories like GitHub and Bitbucket. To generate a build with Cloud Build, you define a series of steps. For example, you can configure build steps to fetch dependencies, compile source code, run integration tests, or use tools such as Docker, Gradle, and Maven. Each build step in Cloud Build runs in a Docker container. Then Cloud Build can deliver your newly built images to various execution environments: not only GKE, but also App Engine and Cloud Functions.
 
 ---
-
 
 ## Docker file
 
 ![Screen Shot 2021-02-11 at 19.24.35](https://i.imgur.com/Z1QHxsH.png)
-
-
 
 - The From statement
   - create a base layer pulled from a public repository.
