@@ -420,6 +420,12 @@
   margin-bottom: 1.25rem;
 }
 
+#post-list.grid > h2 {
+  grid-column: 1 / -1;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 1280px) {
   .grid-cols-2-w {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -427,7 +433,7 @@
 }
 
 @media (max-width: 640px) {
-  .grid-cols-1-w.grid-auto-rows {
+  .grid-cols-1-w {
     grid-template-columns: repeat(1, minmax(0, 1fr));
     width: 100%;
     grid-auto-rows: unset;
@@ -436,14 +442,14 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
-  #post-list.grid-cols-1-w.grid-auto-rows.gap-4 {
+  #post-list.grid-cols-1-w.gap-4 {
     gap: 0.0rem !important;
     margin-top: 1rem;
   }
-  .grid-cols-1-w.grid-auto-rows .overview-card {
+  .grid-cols-1-w .overview-card {
     max-width: unset;
   }
-  .grid-cols-1-w.grid-auto-rows .overview-card.h-100 {
+  .grid-cols-1-w .overview-card.h-100 {
     height: fit-content !important;
   }
   .project-card.card {
