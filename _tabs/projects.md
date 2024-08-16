@@ -17,7 +17,7 @@ toc: true
                               lqip='data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSB8AAAARD9D/iAgoahvJ2b7Xhz/Y1X4PQkT/o8FU8PVTYGoAAFZQOCBKAAAAEAIAnQEqDAAQAAVAfCWwAnQBA/ECqg1YsAD+79RqrU5v9zXdlXGYaiIk+PbK7qo6KjTrkP5uwiidXtjJrXlsDMVwXi35AAQMAAA='
                               content='Library and Evaluation of State-of-the-art Advanced Reasoning with LLMs'
                               url='https://llm-reasoners.net/' %}
-{% include embed/project.html title='Theory of Mind'
+{% include embed/project.html title='MMToM-QA'
                               content='Multimodal Theory of Mind Question Answering'
                               image='/assets/img/MMTOMQA-icon.png'
                               lqip='data:image/webp;base64,UklGRuoAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSFQAAAARL6CobSM2Vy5FMG69LiICun6CTSTJquaBgI855yiAczz/Yh5oiOj/BACJwh3/KwcGERENn9OTiFcNPrP67BO4A2tg8OnEc8HrlFD9IpcCqmPRRAJWUDggcAAAAPABAJ0BKhAAEAAFQHwlAE6AxVq6juhuAADwIvI9E88DKnWE1d5gfNDmQsU0s7UKMH9MpciTw3LbhtCb9rhCoFaayw8b3516cF07fF1opq9SUzjGmtqPOZlzkghqT6rdwJq4li5b4FyVkZ9/hHz6EAA='
