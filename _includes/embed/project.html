@@ -26,7 +26,11 @@
 
     <!--      <div class="col-md-{{ card_body_col }}">-->
     <div class="project-body card-body d-flex row">
-      <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
+      {% if image %}
+        <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
+      {% else %}
+        <div class="project-icon"></div>
+      {% endif %}
       <div class="project-main">
         <h3 class="card-title mb-2 mt-0">{{ title }}</h3>
         {% if caption %}

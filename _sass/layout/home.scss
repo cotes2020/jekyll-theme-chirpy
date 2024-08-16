@@ -377,6 +377,7 @@
 
 .overview-title {
   width: fit-content;
+  padding-left: 4px;
 }
 
 .overview-body {
@@ -391,7 +392,7 @@
 
 .project-main {
   width: calc(40% - 36px);
-  padding: 0;
+  padding: 0 0 0 8px;
   height: fit-content;
   max-height: 72px;
   margin: auto;
