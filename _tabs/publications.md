@@ -10,7 +10,7 @@ panel_includes:
 
 #### MMToM-QA: Multimodal Theory of Mind Question Answering
 Chuanyang Jin, Yutong Wu, Jing Cao, Jiannan Xiang, Yen-Ling Kuo, Zhiting Hu, Tomer Ullman, Antonio Torralba, Joshua Tenenbaum, Tianmin Shu\
-*ACL 2024 Outstanding Paper Award* [[Website]](https://chuanyangjin.com/mmtom-qa) [[Paper]](https://arxiv.org/abs/2401.08743) [[GitHub]](https://github.com/chuanyangjin/MMToM-QA) [[Leaderboard]](https://chuanyangjin.com/mmtom-qa/leaderboard.html)
+*ACL 2024 Outstanding Paper Award* [[Website]](https://chuanyangjin.com/mmtom-qa) [[Paper]](https://arxiv.org/abs/2401.08743) [[GitHub]](https://github.com/chuanyangjin/MMToM-QA) [[Leaderboard]](https://chuanyangjin.com/mmtom-qa-leaderboard)
 
 
 #### Pandora: Towards General World Model with Natural Language Actions and Video States
