@@ -1,4 +1,6 @@
-import { basic, initSidebar, initTopbar } from './modules/layouts';
+import { basic } from './modules/layouts/basic';
+import { initSidebar } from './modules/layouts/sidebar';
+import { initTopbar } from './modules/layouts/topbar';
 
 initSidebar();
 initTopbar();
