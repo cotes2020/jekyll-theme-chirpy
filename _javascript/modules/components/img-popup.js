@@ -9,21 +9,29 @@ const lightImages = '.popup:not(.dark)';
 const darkImages = '.popup:not(.light)';
 let selector = lightImages;
 
-function updateImages(lightbox) {
+function updateImages(current, reverse) {
   if (selector === lightImages) {
     selector = darkImages;
   } else {
     selector = lightImages;
   }
 
-  lightbox.destroy();
-  lightbox = GLightbox({ selector: `${selector}` });
+  if (reverse === null) {
+    reverse = GLightbox({ selector: `${selector}` });
+  }
+
+  [current, reverse] = [reverse, current];
 }
 
 export function imgPopup() {
   if (document.querySelector('.popup') === null) {
     return;
   }
+
+  const hasDualImages = !(
+    document.querySelector('.popup.light') === null &&
+    document.querySelector('.popup.dark') === null
+  );
 
   if (
     (html.hasAttribute('data-mode') &&
@@ -34,16 +42,18 @@ export function imgPopup() {
     selector = darkImages;
   }
 
-  let lightbox = GLightbox({ selector: `${selector}` });
+  let current = GLightbox({ selector: `${selector}` });
 
-  if (document.getElementById('mode-toggle')) {
+  if (hasDualImages && document.getElementById('mode-toggle')) {
+    let reverse = null;
+
     window.addEventListener('message', (event) => {
       if (
         event.source === window &&
         event.data &&
         event.data.direction === ModeToggle.ID
       ) {
-        updateImages(lightbox);
+        updateImages(current, reverse);
       }
     });
   }
