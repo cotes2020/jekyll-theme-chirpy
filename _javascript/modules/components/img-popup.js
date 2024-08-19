@@ -9,15 +9,18 @@ const lightImages = '.popup:not(.dark)';
 const darkImages = '.popup:not(.light)';
 let selector = lightImages;
 
-function updateImages(lightbox) {
+function updateImages(current, reverse) {
   if (selector === lightImages) {
     selector = darkImages;
   } else {
     selector = lightImages;
   }
 
-  lightbox.destroy();
-  lightbox = GLightbox({ selector: `${selector}` });
+  if (reverse === null) {
+    reverse = GLightbox({ selector: `${selector}` });
+  }
+
+  [current, reverse] = [reverse, current];
 }
 
 export function imgPopup() {
@@ -34,7 +37,8 @@ export function imgPopup() {
     selector = darkImages;
   }
 
-  let lightbox = GLightbox({ selector: `${selector}` });
+  let current = GLightbox({ selector: `${selector}` });
+  let reverse = null;
 
   if (document.getElementById('mode-toggle')) {
     window.addEventListener('message', (event) => {
@@ -43,7 +47,7 @@ export function imgPopup() {
         event.data &&
         event.data.direction === ModeToggle.ID
       ) {
-        updateImages(lightbox);
+        updateImages(current, reverse);
       }
     });
   }
