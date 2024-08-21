@@ -2,7 +2,6 @@
   // Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "prettier.trailingComma": "none",
   // Shopify Liquid
   "files.associations": {
     "*.html": "liquid"
