@@ -1,7 +1,7 @@
 ---
 title: <h0>Programmers-덧칠하기 [java]</h0>
 author: cotes   
-categories: [Programmers-Level1]]
+categories: [Programmers-Level1]
 tags: [Programmers,java,덧칠하기,프로그래머스]
 
 
