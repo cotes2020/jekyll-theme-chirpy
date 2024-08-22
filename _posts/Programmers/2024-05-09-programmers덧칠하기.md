@@ -1,16 +1,17 @@
-\---
-
-title: 프로그래머스 덧칠하기 Java
-
+---
+title: <h0>Programmers-덧칠하기 [java]</h0>
 author: cotes   
-
-categories: [Programmers-Level1]
-
+categories: [Programmers-Level1]]
 tags: [Programmers,java,덧칠하기,프로그래머스]
 
-\---
 
-**## 프로그래머스 - 덧칠하기 Java**
+
+
+---
+
+## 프로그래머스 - 덧칠하기 Java
+
+
 
 > [!TIP]
 >
@@ -28,8 +29,8 @@ tags: [Programmers,java,덧칠하기,프로그래머스]
 위의 문제 설명을 쉽게 풀이하면 
 
 * n 은 한 벽면애 몇개의 구역이 있는지의 개수 - 즉 n이 8이면 1층부터 8층 까지 있는 셈이다.
-*  m 은 룰러의 길이 - 즉 m이 3이면 1층-3층 or 2층-5층 까지 덮을 수 있다
-*  section 은 페인트가 안칠해져 있는 벽면 층 - 2,3,5 이면 그 층들이 비어있고 m이 3이면 2,3,5 층을 1번에 채울 수 있음
+* m 은 룰러의 길이 - 즉 m이 3이면 1층-3층 or 2층-5층 까지 덮을 수 있다
+* section 은 페인트가 안칠해져 있는 벽면 층 - 2,3,5 이면 그 층들이 비어있고 m이 3이면 2,3,5 층을 1번에 채울 수 있음
 * 위의 결과로 answer 은 1이다.
 
 ------
