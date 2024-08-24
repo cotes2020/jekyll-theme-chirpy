@@ -26,5 +26,10 @@
   // Run tasks in macOS
   "terminal.integrated.profiles.osx": {
     "zsh": { "path": "/bin/zsh", "args": ["-l", "-i"] }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#272E37",
+    "titleBar.activeBackground": "#36414D",
+    "titleBar.activeForeground": "#F9FAFB"
   }
 }
