@@ -1,43 +1,38 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
+import license from 'rollup-plugin-license';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import yaml from '@rollup/plugin-yaml';
 import fs from 'fs';
-import pkg from './package.json';
+import path from 'path';
+import yaml from '@rollup/plugin-yaml';
 
 const SRC_DEFAULT = '_javascript';
 const DIST_DEFAULT = 'assets/js/dist';
-
 const SRC_PWA = `${SRC_DEFAULT}/pwa`;
-const DIST_PWA = '_app';
-
-const banner = `/*!
- * ${pkg.name} v${pkg.version} | © ${pkg.since} ${pkg.author} | ${pkg.license} Licensed | ${pkg.homepage}
- */`;
 
 const isProd = process.env.BUILD === 'production';
 
-function cleanup(...directories) {
-  for (const dir of directories) {
-    fs.rm(dir, { recursive: true, force: true }, (err) => {
-      if (err) {
-        console.error(`Failed to remove directory ${dir}: ${err}`);
-      }
-    });
-  }
+if (fs.existsSync(DIST_DEFAULT)) {
+  fs.rm(DIST_DEFAULT, { recursive: true, force: true }, (err) => {
+    if (err) {
+      throw err;
+    }
+  });
 }
 
 function build(filename, opts = {}) {
   const src = opts.src || SRC_DEFAULT;
   const dist = opts.dist || DIST_DEFAULT;
+  const bannerUrl =
+    opts.bannerUrl || path.join(__dirname, SRC_DEFAULT, '_copyright');
+  const commentStyle = opts.commentStyle || 'ignored';
 
   return {
-    input: `${src}/${filename}.js`,
+    input: [`${src}/${filename}.js`],
     output: {
       file: `${dist}/${filename}.min.js`,
       format: 'iife',
       name: 'Chirpy',
-      banner,
       sourcemap: !isProd
     },
     watch: {
@@ -51,12 +46,17 @@ function build(filename, opts = {}) {
       }),
       nodeResolve(),
       yaml(),
-      isProd && terser()
+      isProd && commentStyle === 'none' && terser(),
+      license({
+        banner: {
+          commentStyle,
+          content: { file: bannerUrl }
+        }
+      }),
+      isProd && commentStyle !== 'none' && terser()
     ]
   };
 }
-
-cleanup(DIST_DEFAULT, DIST_PWA);
 
 export default [
   build('commons'),
@@ -65,6 +65,10 @@ export default [
   build('page'),
   build('post'),
   build('misc'),
-  build('app', { src: SRC_PWA, dist: DIST_PWA }),
-  build('sw', { src: SRC_PWA, dist: DIST_PWA })
+  build('app', { src: SRC_PWA }),
+  build('sw', {
+    src: SRC_PWA,
+    bannerUrl: path.join(__dirname, SRC_PWA, '_frontmatter'),
+    commentStyle: 'none'
+  })
 ];
