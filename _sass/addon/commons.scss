@@ -42,20 +42,29 @@ body {
     @extend %heading;
 
     @if $i > 1 {
-      @extend %section;
       @extend %anchor;
     }
 
     @if $i < 5 {
-      $factor: 0.18rem;
+      $size-factor: 0.25rem;
 
-      @if $i == 1 {
-        $factor: 0.23rem;
+      @if $i > 1 {
+        $size-factor: 0.18rem;
+
+        main & {
+          @if $i == 2 {
+            margin: 2.5rem 0 1.25rem;
+          } @else {
+            margin: 2rem 0 1rem;
+          }
+        }
       }
 
-      font-size: 1rem + (5 - $i) * $factor;
+      & {
+        font-size: 1rem + (5 - $i) * $size-factor;
+      }
     } @else {
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
   }
 }

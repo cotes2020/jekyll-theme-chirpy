@@ -10,17 +10,6 @@
   font-family: $font-family-heading;
 }
 
-%section {
-  main & {
-    margin-top: 2.5rem;
-    margin-bottom: 1.25rem;
-
-    &:focus {
-      outline: none; /* avoid outline in Safari */
-    }
-  }
-}
-
 %anchor {
   .anchor {
     font-size: 80%;
