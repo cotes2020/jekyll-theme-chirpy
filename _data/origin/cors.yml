@@ -20,8 +20,8 @@ webfonts: https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Sour
 # Libraries
 
 toc:
-  css: https://cdn.jsdelivr.net/npm/tocbot@4.29.20/dist/tocbot.min.css
-  js: https://cdn.jsdelivr.net/npm/tocbot@4.29.20/dist/tocbot.min.js
+  css: https://cdn.jsdelivr.net/npm/tocbot@4.29.0/dist/tocbot.min.css
+  js: https://cdn.jsdelivr.net/npm/tocbot@4.29.0/dist/tocbot.min.js
 
 fontawesome:
   css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css
