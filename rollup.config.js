@@ -35,9 +35,7 @@ function insertFrontmatter() {
   };
 }
 
-function build(filename, opts = {}) {
-  const { src = SRC_DEFAULT, jekyll = false } = opts;
-
+function build(filename, { src = SRC_DEFAULT, jekyll = false } = {}) {
   return {
     input: `${src}/${filename}.js`,
     output: {
