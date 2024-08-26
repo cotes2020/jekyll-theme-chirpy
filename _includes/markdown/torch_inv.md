@@ -154,6 +154,60 @@ torch.dist(x, x_original)
 
 
 
+## LDL Decomposition
+The same applies to an [LDL decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#LDL_decomposition) which is very similar to the cholesky decomposition. LDL decomposition includes an extra diagonal matrix $D$ but avoids computing the square root of the matrix:
+
+$$
+\begin{align*}
+A &= LDL \\
+LDL x &= b \\
+\text{Set } Lx &= c \\
+\text{Set } Dc &= d \\
+Ld &= b
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\text{Forward solve } Ld &= b \text{ for $d$} \\
+\text{Compute } c &= D^{-1}d \\
+\text{Forward solve } Lx &= c \text{ for $x$} \\
+\end{align*}
+$$
+
+> Note, we do take $D^{-1}$, but since this is a diagonal matrix, the inverse can be computed analytically by simply inverting each diagonal entry.
+{: .prompt-tip }
+
+In PyTorch, we can use (the experimental) [`torch.linalg.ldl_factor`](https://pytorch.org/docs/stable/generated/torch.linalg.ldl_factor.html) and [`torch.linalg.ldl_solve`](https://pytorch.org/docs/stable/generated/torch.linalg.ldl_solve.html#torch.linalg.ldl_solve):
+
+
+```python
+LD, pivots = torch.linalg.ldl_factor(A)
+x = torch.linalg.ldl_solve(LD, pivots, b)
+x
+```
+
+
+
+
+    tensor([[-3.2998, -3.1372],
+            [-0.6995, -0.0583],
+            [-1.3701, -0.7586]])
+
+
+
+
+```python
+torch.dist(x, x_original)
+```
+
+
+
+
+    tensor(6.8664e-16)
+
+
+
 ## QR Decomposition
 We can also use the [QR decomposition](https://en.wikipedia.org/wiki/QR_decomposition) where $Q$ is an orthogonal matrix and $R$ is upper right triangular matrix:
 
@@ -247,6 +301,17 @@ torch.dist(x, x_original)
     tensor(1.6614e-14)
 
 
+
+## Summary
+Here is a summary table of these different options:
+
+| Method   | Applicable Matrices     | Computational Complexity | Efficiency              | Stability     | Additional Benefits                    |
+|----------|-------------------------|--------------------------|-------------------------|---------------|----------------------------------------|
+| Cholesky | Symmetric positive def. | $O(n³/3)$                  | Highest for applicable  | Very good     | Memory efficient                       |
+| LU       | Square                  | $O(2n³/3)$                 | Good for general cases  | Good w/ pivot | Useful for determinants and inverses   |
+| LDL      | Symmetric               | $O(n³/3)$                  | Good for symmetric      | Good          | Avoids square roots                    |
+| QR       | Any                     | $O(2mn² - 2n³/3)$ for $m≥n$  | Less than LU for square | Very good     | Best for least squares                 |
+| SVD      | Any                     | $O(\min(mn², m²n))$         | Lowest                  | Excellent     | Best for ill-conditioned systems       |
 
 ## Blackbox Matrix-Matrix Multiplication (BBMM)
 Since matrix inversion is especially relevant to [Gaussian Processes](https://en.wikipedia.org/wiki/Gaussian_process), the library [GPyTorch](https://gpytorch.ai/) has implemented a [Blackbox Matrix-Matrix Gaussian Process Inference with GPU Acceleration](https://arxiv.org/abs/1809.11165) library. Importantly, it lowers the cost of the above approaches from $O(n^3)$ to $O(n^2)$ and allows routines to be used on GPU architectures. GPyTorch uses [LinearOperator](https://github.com/cornellius-gp/linear_operator) which is useful for exploiting specific matrix structure:
