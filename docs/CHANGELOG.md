@@ -1,5 +1,26 @@
 # Changelog
 
+## [7.1.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.0.1...v7.1.0) (2024-08-27)
+
+### Features
+
+* add Bluesky social links ([#1759](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1759)) ([0102aba](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0102abae062be24ec289fb7facb11950aca79e3f))
+* add Reddit social option ([#1836](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1836)) ([8673e13](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8673e1335f0771eac364d0a2866f27476d61a58b))
+* add Threads social links ([#1837](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1837)) ([e3a78b6](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e3a78b6243f7056105d72185bb6e94b436834e5b))
+* **analytics:** add fathom analytics ([#1913](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1913)) ([befc4ce](https://github.com/cotes2020/jekyll-theme-chirpy/commit/befc4ce9c5026f67f99bce66e223d056229f0bdb))
+* **dev:** add vscode tasks ([#1843](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1843)) ([e4db1a1](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e4db1a176f3f69f676cbc0bf27b1d5a657ece05e))
+* **dev:** support vscode dev-container ([#1781](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1781)) ([1e3d4a6](https://github.com/cotes2020/jekyll-theme-chirpy/commit/1e3d4a6323ba3eed06a57f8bf1b2edefd890b127))
+* **ui:** improve block quote layout ([80bd792](https://github.com/cotes2020/jekyll-theme-chirpy/commit/80bd7928a02c75c843a550bd377d11b574e8bfda))
+* **ui:** improve visibility of inline code ([#1831](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1831)) ([c876731](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c876731901784a72ef9d2e9e2936df65ddff5f61))
+* **ui:** make `info-prompt` icon looks like the letter "i" ([#1835](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1835)) ([a07a57e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/a07a57ec922249d3a22da56fbcb30d83eadef728))
+* **ui:** set `<kbd>` font to 'Lato' ([64c7262](https://github.com/cotes2020/jekyll-theme-chirpy/commit/64c7262245e878534971a2e3a2630b614daf72f3))
+
+### Bug Fixes
+
+* adapt the giscus localization parameter ([#1810](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1810)) ([0709854](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0709854dc8f6099d38c2578967a02f73b4be0dc8))
+* avoid caching pageviews data ([#1849](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1849)) ([979f86c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/979f86cf64e1fcace4231fb070c7e6398fd4e5ec))
+* remove extra dual-mode images from lightbox ([#1883](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1883)) ([5c5910f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5c5910f1fc661ec3dce203ac961c7f64f1991895))
+
 ## [7.0.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.0.0...v7.0.1) (2024-05-18)
 
 ### Bug Fixes
