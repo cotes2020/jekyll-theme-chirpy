@@ -1,6 +1,8 @@
 /* The common styles */
 
 html {
+  font-size: 16px;
+
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
     &[data-mode='light'] {
@@ -22,8 +24,6 @@ html {
       @include light-scheme;
     }
   }
-
-  font-size: 16px;
 }
 
 body {
@@ -42,20 +42,29 @@ body {
     @extend %heading;
 
     @if $i > 1 {
-      @extend %section;
       @extend %anchor;
     }
 
     @if $i < 5 {
-      $factor: 0.18rem;
+      $size-factor: 0.25rem;
 
-      @if $i == 1 {
-        $factor: 0.23rem;
+      @if $i > 1 {
+        $size-factor: 0.18rem;
+
+        main & {
+          @if $i == 2 {
+            margin: 2.5rem 0 1.25rem;
+          } @else {
+            margin: 2rem 0 1rem;
+          }
+        }
       }
 
-      font-size: 1rem + (5 - $i) * $factor;
+      & {
+        font-size: 1rem + (5 - $i) * $size-factor;
+      }
     } @else {
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
   }
 }
@@ -80,9 +89,10 @@ img {
 }
 
 blockquote {
-  border-left: 5px solid var(--blockquote-border-color);
+  border-left: 0.125rem solid var(--blockquote-border-color);
   padding-left: 1rem;
   color: var(--blockquote-text-color);
+  margin-top: 0.5rem;
 
   > p:last-child {
     margin-bottom: 0;
@@ -107,14 +117,14 @@ blockquote {
     }
   }
 
-  @include prompt('tip', '\f0eb', 'regular');
-  @include prompt('info', '\f06a');
+  @include prompt('tip', '\f0eb', $fa-style: 'regular');
+  @include prompt('info', '\f06a', $rotate: 180);
   @include prompt('warning', '\f06a');
   @include prompt('danger', '\f071');
 }
 
 kbd {
-  font-family: inherit;
+  font-family: Lato, sans-serif;
   display: inline-block;
   vertical-align: middle;
   line-height: 1.3rem;
@@ -124,7 +134,7 @@ kbd {
   padding-top: 0.1rem;
   color: var(--kbd-text-color);
   background-color: var(--kbd-bg-color);
-  border-radius: 0.25rem;
+  border-radius: $radius-sm;
   border: solid 1px var(--kbd-wrap-color);
   box-shadow: inset 0 -2px 0 var(--kbd-wrap-color);
 }
@@ -218,13 +228,13 @@ i {
 
 #access-lastmod {
   a {
+    color: inherit;
+
     &:hover {
       @extend %link-hover;
     }
 
     @extend %no-bottom-border;
-
-    color: inherit;
   }
 }
 
@@ -682,14 +692,14 @@ $btn-mb: 0.5rem;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border-color);
 
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
   }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 
   %sidebar-link-hover {
     &:hover {
@@ -1036,6 +1046,9 @@ search {
   padding-bottom: 3rem;
 
   a {
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+
     &:hover {
       @extend %link-hover;
     }
@@ -1043,9 +1056,6 @@ search {
     @extend %link-color;
     @extend %no-bottom-border;
     @extend %heading;
-
-    font-size: 1.4rem;
-    line-height: 2.5rem;
   }
 
   > article {

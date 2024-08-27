@@ -1,38 +1,48 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-import license from 'rollup-plugin-license';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import fs from 'fs';
-import path from 'path';
 import yaml from '@rollup/plugin-yaml';
+import fs from 'fs';
+import pkg from './package.json';
 
 const SRC_DEFAULT = '_javascript';
-const DIST_DEFAULT = 'assets/js/dist';
 const SRC_PWA = `${SRC_DEFAULT}/pwa`;
+const DIST = 'assets/js/dist';
+
+const banner = `/*!
+ * ${pkg.name} v${pkg.version} | © ${pkg.since} ${pkg.author} | ${pkg.license} Licensed | ${pkg.homepage}
+ */`;
+
+const frontmatter = `---\npermalink: /:basename\n---\n`;
 
 const isProd = process.env.BUILD === 'production';
 
-if (fs.existsSync(DIST_DEFAULT)) {
-  fs.rm(DIST_DEFAULT, { recursive: true, force: true }, (err) => {
-    if (err) {
-      throw err;
-    }
-  });
+function cleanup() {
+  fs.rmSync(DIST, { recursive: true, force: true });
+  console.log(`> Directory "${DIST}" has been cleaned.`);
 }
 
-function build(filename, opts = {}) {
-  const src = opts.src || SRC_DEFAULT;
-  const dist = opts.dist || DIST_DEFAULT;
-  const bannerUrl =
-    opts.bannerUrl || path.join(__dirname, SRC_DEFAULT, '_copyright');
-  const commentStyle = opts.commentStyle || 'ignored';
-
+function insertFrontmatter() {
   return {
-    input: [`${src}/${filename}.js`],
+    name: 'insert-frontmatter',
+    generateBundle(_, bundle) {
+      for (const chunkOrAsset of Object.values(bundle)) {
+        if (chunkOrAsset.type === 'chunk') {
+          chunkOrAsset.code = frontmatter + chunkOrAsset.code;
+        }
+      }
+    }
+  };
+}
+
+function build(filename, { src = SRC_DEFAULT, jekyll = false } = {}) {
+  return {
+    input: `${src}/${filename}.js`,
     output: {
-      file: `${dist}/${filename}.min.js`,
+      file: `${DIST}/${filename}.min.js`,
       format: 'iife',
       name: 'Chirpy',
+      banner,
       sourcemap: !isProd
     },
     watch: {
@@ -46,17 +56,13 @@ function build(filename, opts = {}) {
       }),
       nodeResolve(),
       yaml(),
-      isProd && commentStyle === 'none' && terser(),
-      license({
-        banner: {
-          commentStyle,
-          content: { file: bannerUrl }
-        }
-      }),
-      isProd && commentStyle !== 'none' && terser()
+      isProd && terser(),
+      jekyll && insertFrontmatter()
     ]
   };
 }
+
+cleanup();
 
 export default [
   build('commons'),
@@ -65,10 +71,6 @@ export default [
   build('page'),
   build('post'),
   build('misc'),
-  build('app', { src: SRC_PWA }),
-  build('sw', {
-    src: SRC_PWA,
-    bannerUrl: path.join(__dirname, SRC_PWA, '_frontmatter'),
-    commentStyle: 'none'
-  })
+  build('app', { src: SRC_PWA, jekyll: true }),
+  build('sw', { src: SRC_PWA, jekyll: true })
 ];

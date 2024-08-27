@@ -6,8 +6,6 @@
 
 <!-- layout specified -->
 
-{% assign js_dist = '/assets/js/dist/' %}
-
 {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
   {% assign urls = urls | append: ',' | append: site.data.origin[type]['lazy-polyfill'].js %}
 
@@ -62,7 +60,8 @@
     {% assign js = 'commons' %}
 {% endcase %}
 
-{% capture script %}{{ js_dist }}{{ js }}.min.js{% endcapture %}
+{% capture script %}/assets/js/dist/{{ js }}.min.js{% endcapture %}
+
 <script src="{{ script | relative_url }}"></script>
 
 {% if page.math %}
@@ -93,7 +92,7 @@
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->
   {% if site.pwa.enabled %}
-    <script defer src="{{ 'app.min.js' | prepend: js_dist | relative_url }}"></script>
+    <script defer src="{{ 'app.min.js' | relative_url }}"></script>
   {% endif %}
 
   <!-- Web Analytics -->

@@ -18,6 +18,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: lts/*
       - run: npm i
       - run: npm test

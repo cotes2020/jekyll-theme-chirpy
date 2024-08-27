@@ -31,7 +31,7 @@ tags: [TAG]     # TAG names should always be lowercase
 
 ### Timezone of Date
 
-In order to accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
+To accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
 
 ### Categories and Tags
 
@@ -147,7 +147,7 @@ _Image Caption_
 
 #### Size
 
-In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
+To prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
 
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
@@ -284,7 +284,7 @@ If you want to embed a video file directly, use the following syntax:
 {% include embed/video.html src='{URL}' %}
 ```
 
-Where `URL` is an URL to a video file e.g. `/path/to/sample/video.mp4`.
+Where `URL` is a URL to a video file e.g. `/path/to/sample/video.mp4`.
 
 You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
 
@@ -295,7 +295,7 @@ You can also specify additional attributes for the embedded video file. Here is 
 - `muted=true` — audio will be initially silenced
 - `types` — specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
 
-Consider an example utilizing all of the above:
+Consider an example using all of the above:
 
 ```liquid
 {%
@@ -318,14 +318,14 @@ If you want to embed an audio file directly, use the following syntax:
 {% include embed/audio.html src='{URL}' %}
 ```
 
-Where `URL` is an URL to an audio file e.g. `/path/to/audio.mp3`.
+Where `URL` is a URL to an audio file e.g. `/path/to/audio.mp3`.
 
 You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
 
 - `title='Text'` — title for an audio that appears below the audio and looks same as for images
 - `types` — specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
 
-Consider an example utilizing all of the above:
+Consider an example using all of the above:
 
 ```liquid
 {%
@@ -365,7 +365,7 @@ There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They
 ```
 {: .nolineno }
 
-### Filepath Hightlight
+### Filepath Highlight
 
 ```md
 `/path/to/a/file.extend`{: .filepath}
@@ -432,8 +432,6 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 ````
 
 Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
-
-```
 
 ## Mathematics
 

@@ -80,13 +80,13 @@ init_files() {
     rm -rf .github && mkdir -p .github/workflows
     mv "$temp/$ACTIONS_WORKFLOW" .github/workflows/"$ACTIONS_WORKFLOW"
     rm -rf "$temp"
-
-    ## Cleanup image settings in site config
-    _sedi "s/(^timezone:).*/\1/;s/(^.*cdn:).*/\1/;s/(^avatar:).*/\1/" _config.yml
   fi
 
+  # Cleanup image settings in site config
+  _sedi "s/(^timezone:).*/\1/;s/(^.*cdn:).*/\1/;s/(^avatar:).*/\1/" _config.yml
+
   # remove the other files
-  rm -rf _posts/*
+  rm -rf tools/init.sh tools/release.sh _posts/*
 
   # build assets
   npm i && npm run build

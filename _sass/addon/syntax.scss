@@ -50,12 +50,12 @@ html {
   @extend %rounded;
   @extend %code-snippet-bg;
 
+  overflow: auto;
+  padding-bottom: 0.75rem;
+
   @at-root figure#{&} {
     @extend %code-snippet-bg;
   }
-
-  overflow: auto;
-  padding-bottom: 0.75rem;
 
   pre {
     margin-bottom: 0;
@@ -104,7 +104,7 @@ code {
     font-size: $code-font-size;
     padding: 3px 5px;
     word-break: break-word;
-    border-radius: 4px;
+    border-radius: $radius-sm;
     background-color: var(--inline-code-bg);
   }
 
@@ -261,7 +261,7 @@ div {
     .content > & {
       @include ml-mr(0);
 
-      border-radius: $base-radius;
+      border-radius: $radius-lg;
     }
 
     .code-header {
