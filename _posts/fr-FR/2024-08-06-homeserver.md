@@ -14,7 +14,7 @@ Dans un monde où nous sommes de plus en plus dépendants du cloud et des grande
 
 Mon addiction à l'auto-hébergement a commencé avec un Raspberry PI et l'application PI-Hole pour filtrer toutes les publicités et le tracking dans mon réseau au niveau DNS. Je l'ai utilisé comme ça pendant presque un an, mais ensuite j'ai voulu en avoir plus. 
 
-![PI-Hole](pihole.png){ : w=« 150 » h=« 150 »}
+![PI-Hole](pihole.png){: w="150" h="150"}
 _PI Hole_
 
 Le premier service que je voulais ajouter était un serveur média. Le plus populaire à l'époque était Plex. 
@@ -29,7 +29,7 @@ Pour résoudre ce problème, j'ai pris deux initiatives : utiliser Docker et ach
 
 Docker est une plateforme conçue pour exécuter des logiciels à l'intérieur d'un conteneur. Les conteneurs sont isolés les uns des autres et regroupent leurs propres logiciels, bibliothèques et fichiers de configuration. Et comme tous les conteneurs partagent un même noyau de système d'exploitation, ils utilisent moins de ressources que les machines virtuelles. 
 
-![Docker](docker.png){ : w=« 300 » h=« 150 »}
+![Docker](docker.png){: w="300" h="150"}
 _Docker_
 
 Pour ces raisons, l'utilisation de Docker est un choix idéal, et il devient trivial de gérer plusieurs services tournant sur le même serveur sans se soucier des dépendances, des incompatibilités, etc...
@@ -40,8 +40,8 @@ De plus, je définis toutes mes configurations de conteneurs dans des fichiers Y
 
 Avec de plus en plus de services et l'incapacité de mon RPI à décoder certains médias volumineux, j'ai choisi d'acheter du matériel plus puissant. J'ai trouvé une Lenovo Thinkstation sur le marché de l'occasion (souvent inondé de vieux matériel d'entreprise). C'est beaucoup moins cher qu'un vrai serveur et c'est largement suffisant pour mon utilisation.
 
-![Lenovo Thinkstation](lenovo.png){ : w=« 200 » h=« 150 »}
-Thinkstation_Lenovo
+![Lenovo Thinkstation](lenovo.png){: w="200" h="150"}
+_Thinkstation Lenovo_
 
 Pour le système d'exploitation, j'ai installé la dernière version stable de Debian (headless) pour avoir une base solide et rester compatible avec la plupart des logiciels.
 
@@ -51,8 +51,8 @@ Il a été installé sur un nouveau SSD de 512Go pour améliorer les performance
 
 Maintenant que j'ai un serveur fonctionnel, j'ai commencé à ajouter de plus en plus de services en fonction de mes besoins. J'ai réalisé l'infographie suivante avec les services que j'utilise actuellement :
 
-![Homeserver Architecture](beniserv.png){ : w=« 600 » h=« 650 »}
-Mes services de serveur domestique
+![Homeserver Architecture](beniserv.png){: w="600" h="650"}
+_Mes services_
 
 ### Accès et sécurité
 
