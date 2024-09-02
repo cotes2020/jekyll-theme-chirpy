@@ -1,0 +1,83 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Entrada
+  category: Categoria
+  tag: Etiqueta
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Inici
+  categories: Categories
+  tags: Etiquetes
+  archives: Arxius
+  about: Qui som
+
+# the text displayed in the search bar & search results
+search:
+  hint: Cerca
+  cancel: Cancel·lar
+
+  no_results: Oops! No es troben resultats.
+
+panel:
+  lastmod: Actualitzat recentment
+  trending_tags: Etiquetes populars
+  toc: Contingut
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Aquesta entrada està llicenciada baix :LICENSE_NAME per l'autor.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Alguns drets reservats.
+  verbose: >-
+    Excepte on s'indiqui el contrari, les entrades del blog d'aquest lloc estan llicenciades
+    sota la llicència Creative Commons Reconeixement 4.0 Internacional (CC BY 4.0) per l'autor.
+
+meta: Fent servir el tema :THEME per :PLATFORM.
+
+not_found:
+  statement: Ho sentim, hem perdut aquest enllaç o apunta a alguna cosa que no existeix.
+
+notification:
+  update_found: Una nova versió del contingut està disponible.
+  update: Actualitzar
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Per
+  posted: Publicat
+  updated: Actualitzat
+  words: paraules
+  pageview_measure: visualitzacions
+  read_time:
+    unit: min
+    prompt: llegeix
+  relate_posts: Lectures Recomanades
+  share: Comparteix
+  button:
+    next: Més nou
+    previous: Més antic
+    copy_code:
+      succeed: Copiat!
+    share_link:
+      title: Copiar enllaç
+      succeed: Enllaç copiat amb èxit!
+
+
+# categories page
+categories:
+  category_measure:
+    singular: categoría
+    plural: categories
+  post_measure:
+    singular: entrada
+    plural: entrades
