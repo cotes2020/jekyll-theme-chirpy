@@ -16,7 +16,7 @@ timezone: Europe/Paris
 
 title: Tanguy Blondin # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: "- Ingénieur informatique junior <br> - Recherche d'emploi dans le developpement" # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -26,10 +26,10 @@ description: >- # used by seo meta and the atom feed
 url: "https://archalos0.github.io"
 
 github:
-  username: archalos0 # change to your GitHub username
+  username: archalos0
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username:
 
 social:
   # Change to your full name.
@@ -38,7 +38,7 @@ social:
   email: tngblondin.prog@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
+    # change to your Twitter homepage
     - https://github.com/archalos0 # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -95,10 +95,10 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar: "/assets/img/photo.jpg"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
