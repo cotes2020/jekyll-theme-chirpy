@@ -18,7 +18,6 @@ image:
 - Port 80 & 443 must be accessible for Let's Encrypt to verify and issue certificates
 
 #### Pick a subdomain and create a DNS entry pointing to the IP Address that will be assigned to the Rancher Server.
-![alt text](../assets/img/headers/dns.png)
 
 
 #### Run the following command to find the IP Address.
@@ -94,7 +93,6 @@ kubectl get pods -n cattle-system -w
 ```sh
 https://rancher.url
 ```
-![alt text](../assets/img/headers/rancher_ui.png)
 ### Reference Links:
 
 - [Installing Helm](https://helm.sh/docs/intro/install/)
