@@ -15,17 +15,20 @@ image:
 - Kubernetes cluster
 - Helm 3.x
 - Domain name and ability to perform DNS changes
+- Port 80 & 443 must be accessible for Let's Encrypt to verify and issue certificates
 
 #### Pick a subdomain and create a DNS entry pointing to the IP Address that will be assigned to the Rancher Server.
+![alt text](../assets/img/headers/dns.png)
+
 
 #### Run the following command to find the IP Address.
 ```sh
-curl -4 icanhazip.com
+curl ifconfig.me
 ```
 
 #### Create an A record with the IP Address in your DNS Provider.
 ```sh
-dig +short subdomain_name
+nslookup subdomain_name
 ```
 
 ### Install cert-manager with Helm
@@ -48,7 +51,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.15.1 \
+  --version v1.15.3 \
   --set crds.enabled=true
 ```
 
@@ -82,6 +85,8 @@ helm install rancher rancher-latest/rancher --namespace cattle-system \
 ```
 
 ```sh
+kubectl -n cattle-system rollout status deploy/rancher
+
 kubectl get pods -n cattle-system -w
 ```
 
@@ -89,7 +94,7 @@ kubectl get pods -n cattle-system -w
 ```sh
 https://rancher.url
 ```
-
+![alt text](../assets/img/headers/rancher_ui.png)
 ### Reference Links:
 
 - [Installing Helm](https://helm.sh/docs/intro/install/)
