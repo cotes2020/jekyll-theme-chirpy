@@ -2,7 +2,6 @@
 layout: default
 refactor: true
 ---
-
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
@@ -87,6 +86,17 @@ refactor: true
                   <span class="categories">
                     {% for category in post.categories %}
                       {{ category }}
+                      {%- unless forloop.last -%},{%- endunless -%}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+
+                {% if post.lang_tags.size > 0 %}
+                  <i class="fa-solid fa-terminal"></i>
+                  <span class="lang_tags">
+                    {{ '&nbsp;' }}
+                    {% for langage in post.lang_tags %}
+                      {{ langage }}
                       {%- unless forloop.last -%},{%- endunless -%}
                     {% endfor %}
                   </span>
