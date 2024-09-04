@@ -22,6 +22,10 @@ Voici la liste des tâches que je dois réalisé prochainement:
 - [ ] Navigation dans le menu du combat
   - [ ] Pouvoir annuler l'action sélectionné (annulé l'action lors de la sélection de la cible)
   - [ ] Pouvoir annuler l'action du joueur précédent (s'il y en a un) 
+  - [ ] Menu des actions dynamique selon les compétences des personnages
+  - [ ] Menu des ennemis et des alliés dynamique selon leur état
+    - [ ] Mort / Vivant
+    - [ ] Poison, Brulure, Gel, Sommeil, Mini, Crapaud, etc
 
 ***
 
