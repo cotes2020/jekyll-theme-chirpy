@@ -4,8 +4,8 @@ description: >-
   Un Final Fantasy au tour par tour
 author: archalos
 date: 2024-09-02 16:00:00 +0100
-categories: [Project, Personnal]
-tags: [game]
+categories: [Project, Personnal, In-progress]
+tags: [game-dev]
 lang_tags: [Godot, GDScript]
 pin: false
 image:
