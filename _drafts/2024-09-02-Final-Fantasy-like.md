@@ -8,6 +8,7 @@ categories: [Project, Personnal]
 tags: [game-dev, draft, in_progress]
 lang_tags: [Godot, GDScript]
 pin: false
+github_repo: https://github.com/Archalos0/ff-fangame
 image:
   path: /assets/img/FF-fond.avif
 ---
