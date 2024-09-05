@@ -4,8 +4,8 @@ description: >-
   Création d'une calculatrice en Rust
 author: archalos
 date: 2024-09-02 16:00:00 +0100
-categories: [Project, Personnal, In-progress]
-tags: [dev]
+categories: [Project, Personnal]
+tags: [dev, draft, in_progress]
 lang_tags: [Rust]
 pin: false
 image:
