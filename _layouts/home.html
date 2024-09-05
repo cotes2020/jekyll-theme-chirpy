@@ -68,6 +68,9 @@ refactor: true
 
         <div class="col-md-{{ card_body_col }}">
           <div class="card-body d-flex flex-column">
+            {% if post.tags contains 'draft' %}
+              <i class="fa-regular fa-pen-to-square fa-fade" style="color: #969696;"></i>
+            {% endif %}
             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
 
             <div class="card-text content mt-0 mb-3">
