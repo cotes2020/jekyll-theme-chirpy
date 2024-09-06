@@ -20,7 +20,7 @@
 
 ## Features
 
-- Dark Theme
+- Dark Theme！
 - Localized UI language
 - Pinned Posts on Home Page
 - Hierarchical Categories
