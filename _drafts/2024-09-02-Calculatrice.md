@@ -8,8 +8,9 @@ categories: [Project, Personnal]
 tags: [dev, draft, in_progress]
 lang_tags: [Rust]
 pin: false
+github_repo: https://github.com/Archalos0/rust-calculatrice
 image:
-  path: /assets/img/rust-lang.svg
+  path: /assets/img/rust-lang-light.svg
 ---
 
 Ce projet est un projet d'entrainement au langage Rust. Je voulais apprendre Rust afin de me familiariser avec les langages bas-niveaux.
