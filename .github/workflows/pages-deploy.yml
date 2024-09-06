@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - master
+      - feature/jekyll/set-jekyll-default-config
     paths-ignore:
       - .gitignore
       - README.md
