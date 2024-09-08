@@ -37,4 +37,5 @@ flowchart
 
 ### Task List
 
-- [ ] Gérer l'association groupements (\<calcul\>)(\<calcul\>)
+- [x] Gérer les parenthèses consécutives : (\<calcul\>)(\<calcul\>)
+- [ ] Gérer les formes de calcul suivantes : (8+2)2
