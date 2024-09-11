@@ -1,5 +1,5 @@
 ---
-title: LLM - Data Training
+title: LLM - Data Tuning
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI, LLM]
@@ -7,65 +7,56 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
-- [LLM - Data Training](#llm---data-training)
-  - [Tuning 微调](#tuning-微调)
-  - [Prompt Learning](#prompt-learning)
-    - [overall](#overall)
-    - [ICL - In-context learning (上下文学习)](#icl---in-context-learning-上下文学习)
-    - [Prompt-Tuning (提示微调)](#prompt-tuning-提示微调)
-      - [Prompt-Tuning 方法](#prompt-tuning-方法)
-  - [Fine-Tuning (微调)](#fine-tuning-微调)
-    - [Full Fine-tuning](#full-fine-tuning)
-      - [Supervised learning and Unsupervised learning](#supervised-learning-and-unsupervised-learning)
-      - [Self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
-      - [SFT (Supervised Fine-Tuning 监督微调阶段)](#sft-supervised-fine-tuning-监督微调阶段)
-        - [Overall](#overall-1)
-        - [Implementation](#implementation)
-        - [Single task Fine-tuning](#single-task-fine-tuning)
-        - [Catastrophic forgetting](#catastrophic-forgetting)
-        - [Multitask fine-tuning](#multitask-fine-tuning)
-      - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
-      - [Hard Prompt \& Soft Prompt](#hard-prompt--soft-prompt)
-      - [Parameter-Efficient Prompt Tuning](#parameter-efficient-prompt-tuning)
-      - [P-Tuning](#p-tuning)
-      - [Pre-trained Prompt Tuning (PPT)](#pre-trained-prompt-tuning-ppt)
-    - [Instruction-Tuning (指示微调)](#instruction-tuning-指示微调)
-    - [Fine-T vs Prompt-T vs Instruction-T](#fine-t-vs-prompt-t-vs-instruction-t)
-    - [Not Full fine-tuning](#not-full-fine-tuning)
-      - [Reinforcement learning from human feedback (RLHF 人类反馈强化学习阶段)](#reinforcement-learning-from-human-feedback-rlhf-人类反馈强化学习阶段)
-        - [奖励模型](#奖励模型)
-        - [对比数据集](#对比数据集)
-        - [PPO 微调](#ppo-微调)
-        - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
-      - [XXX-of-Thoughts](#xxx-of-thoughts)
-        - [Chain-of-Thought(思维链)](#chain-of-thought思维链)
-        - [Manual-CoT(人工思维链)](#manual-cot人工思维链)
-        - [Zero-shot-CoT(零示例思维链)](#zero-shot-cot零示例思维链)
-        - [Auto-CoT(自动思维链)](#auto-cot自动思维链)
-        - [Tree-of-Thought (ToT)](#tree-of-thought-tot)
-      - [Parameter-Efficient Fine-Tuning (PEFT 参数有效性微调)](#parameter-efficient-fine-tuning-peft-参数有效性微调)
-        - [PEFT 介绍](#peft-介绍)
-        - [5.2 PEFT 实践](#52-peft-实践)
-      - [大模型 Fine-Tuning 之分布式训练](#大模型-fine-tuning-之分布式训练)
-  - [改進 LLM](#改進-llm)
-    - [從能找到的最強 LLM(GPT4)開始](#從能找到的最強-llmgpt4開始)
-      - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準)
-      - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準-1)
-  - [LLM Evaluation](#llm-evaluation)
-  - [Traning Terms](#traning-terms)
-    - [Gradient Descent](#gradient-descent)
-    - [Epochs](#epochs)
-    - [Batch Size](#batch-size)
-    - [Iterations](#iterations)
-      - [Q\&A](#qa)
+- [LLM - Data Tuning 微调](#llm---data-tuning-微调)
+- [Instruction-Tuning (指示微调)](#instruction-tuning-指示微调)
+- [Fine-Tuning (微调)](#fine-tuning-微调)
+  - [Full Fine-tuning](#full-fine-tuning)
+    - [Self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
+    - [SFT - Supervised Fine-Tuning (监督微调阶段)](#sft---supervised-fine-tuning-监督微调阶段)
+      - [Overall](#overall)
+      - [Implementation in GCP](#implementation-in-gcp)
+    - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
+  - [Not Full fine-tuning](#not-full-fine-tuning)
+    - [RLHF - Reinforcement learning from human feedback (人类反馈强化学习阶段)](#rlhf---reinforcement-learning-from-human-feedback-人类反馈强化学习阶段)
+      - [奖励模型](#奖励模型)
+      - [对比数据集](#对比数据集)
+      - [PPO 微调](#ppo-微调)
+      - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
+    - [XXX-of-Thoughts](#xxx-of-thoughts)
+      - [Chain-of-Thought(思维链)](#chain-of-thought思维链)
+      - [Manual-CoT(人工思维链)](#manual-cot人工思维链)
+      - [Zero-shot-CoT(零示例思维链)](#zero-shot-cot零示例思维链)
+      - [Auto-CoT(自动思维链)](#auto-cot自动思维链)
+      - [Tree-of-Thought (ToT)](#tree-of-thought-tot)
+    - [PEFT - Parameter-Efficient Fine-Tuning (参数有效性微调)](#peft---parameter-efficient-fine-tuning-参数有效性微调)
+      - [Additive](#additive)
+        - [Soft prompts / Prompt-Tuning](#soft-prompts--prompt-tuning)
+          - [Prompt Learning](#prompt-learning)
+          - [ICL - In-context learning (上下文学习)](#icl---in-context-learning-上下文学习)
+          - [Prefix-Tuning](#prefix-tuning)
+          - [Prompt-Tuning (提示微调)](#prompt-tuning-提示微调)
+        - [Adapter-Tuning](#adapter-tuning)
+      - [Reparameterization](#reparameterization)
+        - [LoRA](#lora)
+        - [AdaLoRA](#adalora)
+      - [BitFit](#bitfit)
+      - [5.2 PEFT 实践](#52-peft-实践)
+    - [大模型 Fine-Tuning 之分布式训练](#大模型-fine-tuning-之分布式训练)
+- [改進 LLM](#改進-llm)
+  - [從能找到的最強 LLM(GPT4)開始](#從能找到的最強-llmgpt4開始)
+    - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準)
+    - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準-1)
+- [LLM Evaluation](#llm-evaluation)
+- [Traning Terms](#traning-terms)
+  - [Gradient Descent](#gradient-descent)
+  - [Epochs](#epochs)
+  - [Batch Size](#batch-size)
+  - [Iterations](#iterations)
+    - [Q\&A](#qa)
 
 ---
 
-# LLM - Data Training
-
----
-
-## Tuning 微调
+# LLM - Data Tuning 微调
 
 目前学术界一般将 NLP 任务的发展分为四个阶段，即 NLP 四范式: [^通俗易懂的LLM(上篇)]
 
@@ -90,178 +81,91 @@ LLM 模型训练过程中的三个核心步骤
 2. (指令)监督微调预训练模型 $LLM^{SFT}$ (supervised-fine-tuning)
 3. 基于人类反馈的强化学习微调 $LLM^{RL}$ (reinforcement-learning)
 
----
-
-## Prompt Learning
-
-### Overall
-
-**prompt learning**:
-
-- Prompt-Tuning 和 In-context learning 是 prompt learning 的两种模式。
-
-- In-context learning
-  - 指在大规模预训练模型上进行推理时，不需要提前在下游目标任务上进行微调，即不改变预训练模型参数就可实现推理，
-  - 其认为超大规模的模型只要配合好合适的模板就可以极大化地发挥其推理和理解能力。
-- 常用的 In-context learning 方法有`few-shot one-shot zero-shot`；
-
-- Prompt-Tuning
-
-  - 指在下游目标任务上进行推理前，需要对全部或者部分参数进行更新
-  - **全部/部分**的区别就在于预训练模型参数是否改变(其实本质上的 Prompt-Tuning 是不更新预训练模型参数的，这里有个特例方法称为 Prompt-Oriented Fine-Tuning，其实该方法更适合称为升级版的 Fine-Tuning，后面会详细介绍这个方法)。
-
-- 无论是 In-context learning 还是 Prompt-Tuning，它们的目标都是将下游任务转换为预训练模型的预训练任务，以此来广泛激发出预训练模型中的知识。
-
-**Prompting and prompt engineering**:
-
-- 如何设计输入的 prompt 是很重要的一点
-
-![Screenshot 2023-10-21 at 11.30.26](/assets/img/Screenshot%202023-10-21%20at%2011.30.26.png)
-
-![Screenshot 2023-10-21 at 11.34.54](/assets/img/Screenshot%202023-10-21%20at%2011.34.54.png)
-
-- failed with 5-6 example, fune tune the model
-- Typically, above five or six shots, so full prompt and then completions, you really don't gain much after that. Either the model can do it or it can't do it
 
 ---
 
-### ICL - In-context learning (上下文学习)
+# Instruction-Tuning (指示微调)
 
-- ICL 又称为上下文学习，最早是在 GPT-3[《Language Models are Few-Shot Learners》](https://arxiv.org/pdf/2005.14165.pdf)中被提出来的。
-- ICL 的关键思想是从类比中学习。
+> 目前最火的研究范式，性能超过包括 ICL 在内的 prompt learning
 
-- 下图给出了一个描述语言模型如何使用 ICL 进行决策的例子。
+> 一种特别适合改进模型在**多种任务**上表现的策略
 
-  - 首先，ICL 需要一些示例来形成一个演示上下文。这些示例通常是用自然语言模板编写的。
-  - 然后 ICL 将查询的问题(即你需要预测标签的 input)和一个上下文演示(一些相关的 cases)连接在一起，形成带有提示的输入(可称之为 prompt)，并将其输入到语言模型中进行预测。
-  - 值得注意的是，与需要使用反向梯度更新模型参数的训练阶段的监督学习不同，ICL 不需要参数更新，并直接对预先训练好的语言模型进行预测(这是与 Prompt-Tuning 不同的地方，ICL 不需要在下游任务中 Prompt-Tuning 或 Fine-Tuning)。
-  - 它希望模型能自动学习隐藏在演示中的模式，并据此做出正确的预测。
-  - ![ICL](https://img-blog.csdnimg.cn/27eb61b06a0b4bbdbbf58b9cee910844.png#pic_center)
+提出的动机:
 
-- use LLMs off the shelf (i.e., without any fine-tuning), then control their behavior through clever prompting and conditioning on private “contextual” data.
+- 大规模的语言模型 如 GPT-3 在 zero-shot 上不那么成功, 但却可以非常好地学习 **few-shot**
 
-- it’s usually easier than the alternative: training or fine-tuning the LLM itself.
+- 一些模型能够识别提示中包含的指令并正确进行 zero-shot 推理，而较小的 LLM 可能在执行任务时失败，
 
-- It also tends to outperform fine-tuning for relatively small datasets—since a specific piece of information needs to occur at least ~10 times in the training set before an LLM will remember it through fine-tuning—and can incorporate new data in near real time.
+  - ![Screenshot 2024-06-20 at 15.24.07](/assets/img/Screenshot%202024-06-20%20at%2015.24.07.png)
+  - ![Screenshot 2024-06-20 at 15.24.15](/assets/img/Screenshot%202024-06-20%20at%2015.24.15.png)
 
-- Example:
-  - building a chatbot to answer questions about a set of legal documents.
-    - `naive approach`: paste all the documents into a ChatGPT or GPT-4 prompt, then ask a question about them at the end. This may work for very small datasets, but it doesn’t scale. The biggest GPT-4 model can only process ~50 pages of input text, and performance (measured by inference time and accuracy) degrades badly when approach the limit `context window`.
-    - `In-context learning`: instead of sending all the documents with each LLM prompt, it sends only a handful of the most relevant documents. And the most relevant documents are determined with the help of . . . you guessed it . . . LLMs.
+- 包含一个或多个你希望模型执行的示例(称为一次或几次推理)足以帮助模型识别任务并生成良好的完成结果。
 
-in-context learning method
+  - ![Screenshot 2024-06-20 at 15.25.53](/assets/img/Screenshot%202024-06-20%20at%2015.25.53.png)
 
-- One shot: creating an initial prompt that states the task to be completed and includes a single example question with answer followed by a second question to be answered by the LLM
+  - 然而缺点有:
 
-- **In-context learning 的优势**:
+    - **对于较小的模型，即使包含 5-6 个示例，也不总是有效**
 
-  - 若干示例组成的演示是用自然语言撰写的，这提供了一个跟 LLM 交流的可解释性手段，通过这些示例跟模版让语言模型更容易利用到人类的知识；
-  - 类似于人类类比学习的决策过程，举一反三；
-  - 相比于监督学习，它不需要模型训练，减小了计算模型适配新任务的计算成本，更容易应用到更多真实场景。
+    - 提示中包含的任何示例都会**占据上下文窗口中宝贵的空间，从而减少包含其他有用信息的空间**
 
-- **In-context learning 的流程**:
+  - 例如: GPT-3 在阅读理解 问题回答和自然语言推理等任务上的表现很一般
 
-  - In-context learning 可以分为两部分，分为作用于 training 跟 inference 阶段:
+Google2021 年的 FLAN 模型[《FINETUNED LANGUAGE MODELS ARE ZERO-SHOT LEARNERS》](https://openreview.net/pdf?id=gEZrGCozdqR)，这篇文章明确提出 Instruction-Tuning(指令微调)的技术，
 
-  - **Training**:
+- 本质目的:
 
-    - 在推理前，通过持续学习让语言模型的 ICL 能力得到进一步提升，这个过程称之为**model warmup**(模型预热)，model warmup 会优化语言模型对应参数或者新增参数，区别于传统的 Fine-Tuning，Fine-Tuning 旨在提升 LLM 在特定任务上的表现，而 model warmup 则是提升模型整体的 ICL 性能。
+  - 将 NLP 任务转换为自然语言指令，再将其投入模型进行训练
+  - 通过给模型提供指令和选项的方式，使其能够**提升 Zero-Shot 任务的性能表现**。
 
-    - **Supervised in-context training**: 为了增强 ICL 的能力，研究人员提出了
+- 作者认为一个潜在的原因是，如果在没有少量示例的 zero-shot 条件下，模型很难在 prompts 上表现很好，因为 prompts 可能和预训练数据的格式相差很大。
 
-      - 通过构建 in-context 训练数据，进而进行一系列有监督 in-context 微调以及多任务训练。由于预训练目标对于 In-context learning 并不是最优的，Sewon Min 等人提出了一种方法 `MetaICL`[《MetaICL: Learning to Learn In Context》](https://github.com/facebookresearch/MetaICL)，以消除预训练和下游 ICL 使用之间的差距。预训练 LLM 在具有演示样例的广泛的任务上进行训练，这提高了其 few-shot 能力，例如，`MetaICL`获得的性能与在 52 个独力数据集上进行有监督微调相当。
+  - 既然如此，那么为什么不直接用自然语言指令做输入呢？
 
-      - 此外，还有一个研究方向，即有监督指令微调，也就是后面要讲到的 Instruction-Tuning。指令微调通过对任务指令进行训练增强了 LLM 的 ICL 能力。例如 Google 提出的`FLAN`方法[《FINETUNED LANGUAGE MODELS ARE ZERO-SHOT LEARNERS》](https://openreview.net/pdf?id=gEZrGCozdqR): 通过在由自然语言指令模板构建的 60 多个 NLP 数据集上调整 137B 参数量的 LaMDA-PT 模型，FLAN 方法可以改善 zero-shot 和 few-shot ICL 性能(具体可参考[Finetuned Language Models are Zero-shot Learners](https://zhuanlan.zhihu.com/p/538013856) [笔记 - Instruction Tuning 时代的模型](https://zhuanlan.zhihu.com/p/616830127))。与 MetaICL 为每个任务构建若干演示样例相比，指令微调主要考虑对任务的解释，并且易于扩展。
+- 通过设计 instruction，让大规模语言模型理解指令，进而完成任务目标，而不是直接依据演示实例做文本生成。
 
-    - **Self-supervised in-context training**:
+  - 如下图所示，不管是 commonsense reasoning 任务还是 machine translation 任务，都可以变为 instruction 的形式，然后利用大模型进行学习。
 
-      - Supervised Learning 指的是有一个 model，输入是 $x$ ，输出是 $y$ ，要有 label(标签)才可以训练 Supervised Learning，
+  - 在这种方式下，当一个 unseen task 进入时，通过理解其自然语言语义可以轻松实现 zero-shot 的扩展，如 natural language inference 任务。
 
-      - 比如让机器看一篇文章，决定文章是正面的还是负面的，得先找一大堆文章，标注文章是正面的还是负面的，正面负面就是 label。
+    - ![FLAN](https://img-blog.csdnimg.cn/cea53e43f97e4cc1ab88b45df7047831.png#pic_center)
 
-      - Self-Supervised Learning 就是机器自己在没有 label 的情况下，想办法做 Supervised Learning。
-        - 比如把没有标注的语料分成两部分，一部分作为模型的输入，一部分作为模型的输出，模型的输出和 label 越接近越好，具体参见[2022 李宏毅机器学习深度学习学习笔记第四周–Self-Supervised Learning](https://blog.csdn.net/qq_45612705/article/details/124755797)。
-        - 引申到 self-supervised in-context training，是根据 ICL 的格式将原始数据转换成 input-output 的 pair 对数据后利用四个自监督目标进行训练，包括掩`[Mask]`预测，分类任务等。
-      - `Supervised ICT`跟`self-supervised ICT`旨在通过引入更加接近于`ICT`的训练目标从而`缩小预训练跟ICL之间的差距`。
-        - 比起需要示例的 In-context learning，只涉及任务描述的 Instruction-Tuning 更加简单且受欢迎。
-        - 另外，在 model warmup 这个阶段，语言模型只需要从少量数据训练就能明显提升 ICL 能力，不断增加相关数据并不能带来 ICL 能力的持续提升。
-        - 从某种角度上看，这些方法通过更新模型参数可以提升 ICL 能力也表明了原始的 LLM 具备这种潜力。
-        - 虽然 ICL 不要求 model warmup，但是一般推荐在推理前增加一个 model warmup 过程
-        - ICL 最初的含义指的是大规模语言模型涌现出一种能力: 不需要更新模型参数，仅仅修改输入 prompt 即添加一些例子就可以提升模型的学习能力。ICL 相比之前需要对模型在某个特定下游任务进行 Fine-Tuning 大大节省了成本。之后 ICL 问题演变成研究怎么提升模型以具备更好更通用的 ICL 能力，这里就可以用上之前 Fine-Tuning 的方式，即指 model warmup 阶段对模型更新参数
+    - ![FLAN](https://img-blog.csdnimg.cn/8fc5c313663b439d8b08e8a27623d7bb.png#pic_center)
 
-    - **Inference**:
+- Instruction-Tuning 也是 ICL 的一种，只是 Instruction-Tuning 是将大模型在多种任务上进行微调，提升大模型的自然语言理解能力，**最终实现在新任务上的 zero-shot**
 
-      - 很多研究表明 LLM 的 ICL 性能严重依赖于演示示例的格式，以及示例顺序等等，在使用目前很多 LLM 模型时我们也会发现，在推理时，同一个问题如果加上不同的示例，可能会得到不同的模型生成结果。
+  - ![Screenshot 2024-06-20 at 15.31.42](/assets/img/Screenshot%202024-06-20%20at%2015.31.42.png)
+  - ![Screenshot 2024-06-20 at 15.31.57](/assets/img/Screenshot%202024-06-20%20at%2015.31.57.png)
+  - ![Screenshot 2024-06-20 at 15.43.37](/assets/img/Screenshot%202024-06-20%20at%2015.43.37.png)
 
-      - **Demonstration Selection**: 对于 ICL 而言，哪些样本是好的？语言模型的输入长度是有限制的，如何从众多的样本中挑选其中合适的部分作为示例这个过程非常重要。按照选择的方法主要可以分为无监督跟有监督两种。
+- 这些提示完成示例允许模型学习生成遵循`给定指令`的响应。
+  - `所有模型权重都会更新`的指令微调过程称为**全微调**
+  - 该过程生成了一个具有更新权重的模型的新版本
+  - 需要注意的是，与预训练一样，全微调需要足够的内存和计算预算来存储和处理所有梯度、优化器和其他在训练过程中被更新的组件
 
-        - **无监督方法**: 首先就是根据句向量距离或者互信息等方式选择跟当前输入 x 最相似的样本作为演示示例，另外还有利用自适应方法去选择最佳的示例排列，有的方法还会考虑到演示示例的泛化能力，尽可能去提高示例的多样性。除了上述这些从人工撰写的样本中选择示例的方式外，还可以利用语言模型自身去生成合适的演示示例。
+采用了 Instruction-Tuning 技术的大规模语言模型
 
-        - **监督方法**: 第一种是先利用无监督检索器召回若干相似的样本，再通过监督学习训练的 Efficient Prompt Retriever 进行打分，从而筛选出最合适的样本。此外还有基于 Prompt Tuning 跟强化学习的方式去选择样本。
+- instructGPT
+- Finetuned Language Net(FLAN)
 
-      - **Demonstration Ordering**: 挑选完演示示例后，如何对其进行排序也非常重要。排序的方法既有不需要训练的，也有根据示例跟当前输入距离远近进行排序的，也可以根据自定义的熵指标进行重排。
+Finetuned Language Net(FLAN) 的具体训练流程:
 
-      - **Demonstration Formatting**:
-        - 如何设计演示示例的格式？最简单的方式就是将示例们的 $(x,y)$ 对按照顺序直接拼接到一起。
-        - 但是对于复杂的推理问题，语言模型很难直接根据 $x$ 推理出 $y$ ，这种格式就不适用了。
-        - 另外，有的研究旨在设计更好的任务指令 instruction 作为演示内容(即 Instruction-Tuning)。
-        - 对于这两类场景，除了人工撰写的方式外，还可以利用语言模型自身去生成对应的演示内容。
+- FLAN 模型将 62 个 NLP 任务分为 12 个簇，同一个簇内是相同的任务类型
+- ![FLAN-TASK](https://img-blog.csdnimg.cn/97a976f658714fd8b5f6fe23aca839ba.png#pic_center)
 
-- **In-context learning 的模式**:
-  - In-context learning 包括三种模式，分别称作 few-shot one-shot 以及 zero-shot，
-  - 三者的主要区别是 prompt 中包含的样本示例数量
-  - **Few-Shot**: 对下游任务，提供多条数据样例，论文中指出一般是 10-100 条；
-  - **One-Shot**: few-shot 的一种特殊情况，对下游任务，只提供一条数据样例；
-  - **Zero-Shot**: 是一种极端情况，对下游任务，不提供数据样例，只提供任务描述。
+- 对于每个 task，将为其手动构建 10 个独特 template，作为以自然语言描述该任务的 instructions。
 
-参考论文:
+  - 为了增加多样性，对于每个数据集，还包括最多三个“turned the task around/变更任务”的模板(例如，对于情感分类，要求其生成电影评论的模板)。
+  - 所有数据集的混合将用于后续预训练语言模型做 Instruction-Tuning，其中每个数据集的 template 都是随机选取的。
+  - 如下图所示，Premise Hypothesis Options 会被填充到不同的 template 中作为训练数据。
+  - ![FLAN-Template](https://img-blog.csdnimg.cn/45b63fc37974479c8bc3d0f7079890a1.png#pic_center)
 
-- [《A Survey on In-context Learning》](https://arxiv.org/pdf/2301.00234.pdf)
-- [《A Survey for In-context Learning》翻译](https://blog.csdn.net/qq_28385535/article/details/128789038)
-- [《译 Prompt Engineering: 循循善诱》](https://zhuanlan.zhihu.com/p/526299013)
+- 最后基于 LaMDA-PT 模型进行微调。
+  - LaMDA-PT 是一个包含 137B 参数的自回归语言模型，这个模型在 web 文档(包括代码) 对话数据和维基百科上进行了预训练，同时有大约 10%的数据是非英语数据。然后 FLAN 混合了所有构造的数据集在 128 核的 TPUv3 芯片上微调了 60 个小时。
 
 ---
 
-### Prompt-Tuning (提示微调)
-
-![Screenshot 2024-06-20 at 15.47.57](/assets/img/Screenshot%202024-06-20%20at%2015.47.57.png)
-
-- 以二分类的情感分析作为例子:
-
-  - 给定一个句子 `[CLS]` I like the Disney films very much. `[SEP]` ，
-
-  - 传统的 Fine-Tuning 方法:
-
-    - 将其通过 Bert 获得 `[CLS]`表征之后再喂入新增加的`MLP`分类器进行二分类，预测该句子是积极的(positive)还是消极的(negative)
-    - 因此需要一定量的训练数据来训练。
-
-  - 而 Prompt-Tuning 则执行如下步骤:
-
-    - **构建模板(Template Construction)**:
-
-      - 通过人工定义 自动搜索 文本生成等方法，生成与给定句子相关的一个含有`[Mask]`标记的模板。例如 It was `[Mask]`
-      - 并拼接到原始的文本中，获得 Prompt-Tuning 的输入: `[CLS]` I like the Disney films very much. It was `[Mask]`. `[SEP]`。
-      - 将其喂入 B 模型中，并复用预训练好的 MLM 分类器(在 huggingface 中为 BertForMaskedLM)，即可直接得到`[Mask]`预测的各个 token 的概率分布；
-
-    - **标签词映射(Label Word Verbalizer)**:
-
-      - 因为`[Mask]`部分我们只对部分词感兴趣，因此需要建立一个映射关系。
-      - 例如如果`[Mask]`预测的词是“great”，则认为是 positive 类，如果是“terrible”，则认为是 negative 类；
-      - 不同的句子应该有不同的 template 和 label word，因为每个句子可能期望预测出来的 label word 都不同，因此如何最大化的寻找当前任务更加合适的 template 和 label word 是 Prompt-Tuning 非常重要的挑战；
-
-    - **训练**:
-      - 根据 Verbalizer，则可以获得指定 label word 的预测概率分布，并采用交叉信息熵进行训练。
-      - 此时因为只对预训练好的 MLM head 进行微调，所以避免了过拟合问题。
-
----
-
-#### Prompt-Tuning 方法
-
-Prompt-Tuning 是用来自动构建 pattern 的方法
-
-根据使用场景的不同，分别介绍几种成熟的 Prompt-Tuning 方法。
-
-## Fine-Tuning (微调)
+# Fine-Tuning (微调)
 
 - Fine-Tuning 是一种迁移学习，在自然语言处理(NLP)中，Fine-Tuning 是用于将预训练的语言模型适应于特定任务或领域。
 
@@ -283,29 +187,11 @@ Prompt-Tuning 是用来自动构建 pattern 的方法
 
 ![Screenshot 2024-06-20 at 15.30.14](/assets/img/Screenshot%202024-06-20%20at%2015.30.14.png)
 
-### Full Fine-tuning
+## Full Fine-tuning
 
-#### Supervised learning and Unsupervised learning
-监督学习(supervised learning)和非监督学习(unsupervised learning)
-- 监督学习：
-  - 简单来说就是给定一定的训练样本
-  - 样本是既有数据，也有数据对应的结果
-  - 利用这个样本进行训练得到一个模型(可以说是一个函数)，然后利用这个模型，将所有的输入映射为相应的输出，之后对输出进行简单的判断从而达到了分类(或者说回归)的问题。
-  - 分类就是离散的数据，回归就是连续的数据。
+---
 
-非监督学习：
-- 同样，给了样本，但是这个样本是只有数据，但是没有其对应的结果，要求直接对数据进行分析建模。
-- 比如去参观一个画展，我们完全对艺术一无所知，但是欣赏完多幅作品之后，我们也能把它们分成不同的派别(比如哪些更朦胧一点，哪些更写实一些，即使我们不知道什么时候叫做朦胧派，什么叫做写实派，但是至少我们能够把它们分为两类)。
-- 无监督学习里面典型的例子就是聚类，聚类的目的在于把相似的东西聚在一起，而我们并不关心这一类是什么，因此，一个聚类算法通常只需要知道如何计算相似度就可以开始工作了。
-
-比如
-- 买房的时候，给了房屋面积以及其对应的价格，进行分析，这个就叫做监督学习；
-- 但是给了面积，没有给价格，就叫做非监督学习。
-- 监督，意味着给了一个标准作为'监督' (或者理解为限制)。就是说建模之后是有一个标准用来衡量你的对与错；
-- 非监督就是没有这个标准，对数据进行聚类之后，并没有一个标准进行对其的衡量。
-
-
-#### Self-supervised-learning 预训练阶段
+### Self-supervised-learning 预训练阶段
 
 - 从互联网上收集海量的文本数据，通过自监督的方式训练语言模型，根据上下文来预测下个词。
 - token 的规模大概在 trillion 级别，这个阶段要消耗很多资源，海量的数据采集 清洗和计算，
@@ -315,51 +201,45 @@ Prompt-Tuning 是用来自动构建 pattern 的方法
 
 训练过程大致如下：
 
-- Training data: 来自互联网的开放文本数据，整体质量偏低
+| name                   | des                                                                      |
+| ---------------------- | ------------------------------------------------------------------------ |
+| Training data          | 来自互联网的开放文本数据，整体质量偏低                                   |
+| Data scale             | 词汇表中的 token 数量在 trillion 级别                                    |
+| $LLM^{SSL}_ϕ$          | 预训练模型                                                               |
+| $V$                    | 词汇表的大小                                                             |
+| $[T_1​,T_2​,...,T_V​]$ | vocabulary 词汇表，训练数据中词汇的集合                                  |
+| $f(x)$                 | 映射函数把词映射为词汇表中的索引即：token.                               |
+| .                      | if $x$ is $T_k$​ in vocab， $f(x) = k$                                   |
+| $(x_1​,x_2​,...,x_n​)$ | 根据文本序列生成训练样本数据:                                            |
+| .                      | Input： $x=(x_1​,x_2​,...,x_{i−1}​)$                                     |
+| .                      | Output(label) : $x_i​$                                                   |
+| $(x,xi​)$              | 训练样本:                                                                |
+| .                      | Let $k = f(x_i), word→token$                                             |
+| .                      | Model’s output: $LLM^{SSL}(x)=[\bar{y_​1}​,\bar{y​_2}​,...,\bar{y_​V}​]$ |
+| .                      | 模型预测下一个词的概率分布，Note : $∑_j \bar{y_j} = 1$                   |
+| .                      | The loss value：$CE(x,x_i​;ϕ)= −log(\overline{y}_k)$                     |
 
-- Data scale: 词汇表中的 token 数量在 trillion 级别
+- Goal : find $ϕ$, Minimize $CE(\phi) = -E_x log(\overline{y}_k)$
 
-- $LLM^{SSL}_ϕ$​: 预训练模型
+- 预先训练阶段 $LLM^{SSL}$ 还不能正确的响应用户的提示
 
-- $[T_1​,T_2​,...,T_V​]$ : vocabulary 词汇表，训练数据中词汇的集合
-
-- $V$: 词汇表的大小
-
-- $f(x)$: 映射函数把词映射为词汇表中的索引即：token.
-
-  - if $x$ is $T_k$​ in vocab， $f(x) = k$
-
-- $(x_1​,x_2​,...,x_n​)$, 根据文本序列生成训练样本数据:
-
-  - Input： $x=(x_1​,x_2​,...,x_{i−1}​)$
-  - Output(label) : $x_i​$
-
-- $(x,xi​)$，训练样本:
-  - Let $k = f(x_i), word→token$
-  - Model’s output: $LLM^{SSL}(x)=[\bar{y_​1}​,\bar{y​_2}​,...,\bar{y_​V}​]$
-  - 模型预测下一个词的概率分布，Note : $∑_j \bar{y_j} = 1$
-  - The loss value：$CE(x,x_i​;ϕ)= −log(\overline{y}_k)$
-- Goal : find ϕ, Minimize $CE(\phi) = -E_x log(\overline{y}_k)$
-
-- 预先训练阶段 $LLM^{SSL}$ LLMSSL 还不能正确的响应用户的提示
-
-  - 例如，如果提示“法国的首都是什么？”这样的问题，模型可能会回答另一个问题的答案，
-  - 例如，模型响应的可能是“_意大利的首都是什么？_”，因为模型可能没有“理解”/“对齐 aligned”用户的“意图”，只是复制了从训练数据中观察到的结果。
+  - 例如，如果提示“法国的首都是什么？”这样的问题，模型可能会回答另一个问题的答案，例如，模型响应的可能是“_意大利的首都是什么？_”
+  - 因为模型可能没有“理解”/“对齐 aligned”用户的“意图”，只是复制了从训练数据中观察到的结果。
 
 - 为了解决这个问题，出现了一种称为**监督微调**或者也叫做**指令微调**的方法。
   - 通过在少量的示例数据集上采用监督学习的方式对 $LLM^{SSL}$ 进行微调，经过微调后的模型，可以更好地理解和响应自然语言给出的指令。
 
 ---
 
-#### SFT (Supervised Fine-Tuning 监督微调阶段)
+### SFT - Supervised Fine-Tuning (监督微调阶段)
 
-##### Overall
+#### Overall
 
 - good option when you have a well-defined task with available labeled data.
 
 - particularly effective for domain-specific applications where the language or content significantly differs from the data the large model was originally trained on.
 
-Supervised fine-tuning adapts model behavior with a labeled dataset.
+Supervised fine-tuning adapts model behavior with a `labeled dataset`.
 
 - This process adjusts the model's weights to `minimize the difference between its predictions and the actual labels`.
 
@@ -381,8 +261,8 @@ For example, it can improve model performance for the following types of tasks:
   - 通过基于示例数据的监督微调后，模型会模仿示例数据中的响应行为，学会问答 翻译 摘要等能力，
   - OpenAI 称为：监督微调行为克隆 。
 
-- 基于 LLM 指令微调的突出优势在于，对于任何特定任务的专用模型，只需要在通用大模型的基础上通过特定任务的指令数据进行微调，就可以解锁 LLM 在特定任务上的能力，不在需要从头去构建专用的小模型。
-
+- 基于 LLM 指令微调的突出优势在于，对于任何特定任务的专用模型，只需要在通用大模型的基础上通过特定任务的指令数据进行微调，就可以解锁 LLM 在特定任务上的能力
+- 不需要从头去构建专用的小模型。
 - 事实也证明，经过微调后的小模型可以生成比没有经过微调的大模型更好的结果：
 
 指令微调过程如下：
@@ -403,10 +283,10 @@ For example, it can improve model performance for the following types of tasks:
 - Goal : 最小化交叉熵损失，只计算出现在响应中的 token 的损失。
 ```
 
-##### Implementation
+#### Implementation in GCP
 
 Recommended configurations
-The following table shows the recommended configurations for tuning a foundation model by task:
+- The following table shows the recommended configurations for tuning a foundation model by task:
 
 | Task           | No. of examples in dataset | Number of epochs |
 | -------------- | -------------------------- | ---------------- |
@@ -451,9 +331,8 @@ from vertexai.preview.tuning import sft
 2. setup env
 
 ```py
-PROJECT_ID = "your_id"  # @param
+PROJECT_ID = "the_id"  # @param
 LOCATION = "us-central1"  # @param
-
 vertexai.init(project=PROJECT_ID, location=LOCATION)
 ```
 
@@ -461,17 +340,13 @@ vertexai.init(project=PROJECT_ID, location=LOCATION)
 
 ```py
 # ++++++++ Dataset Citation ++++++++
-@inproceedings{ladhak-wiki-2020,
+@inproceedings{
+    ladhak-wiki-2020,
     title={WikiLingua: A New Benchmark Dataset for Multilingual Abstractive Summarization},
     author={Faisal Ladhak, Esin Durmus, Claire Cardie and Kathleen McKeown},
     booktitle={Findings of EMNLP, 2020},
     year={2020}
 }
-
-# ++++++++ Create bucket ++++++++
-# Provide a bucket name
-BUCKET_NAME = "your_bucket_id"  # @param {type:"string"}
-BUCKET_URI = f"gs://{BUCKET_NAME}"
 
 # Dataset for model tuning.
 training_data_path = "gs://github-repo/generative-ai/gemini/tuning/summarization/wikilingua/sft_train_samples.jsonl"
@@ -480,7 +355,10 @@ validation_data_path = "gs://github-repo/generative-ai/gemini/tuning/summarizati
 # Dataset for model testing.
 testing_data_path = "gs://github-repo/generative-ai/gemini/tuning/summarization/wikilingua/sft_test_samples.csv"
 
-# Copy the tuning and evaluation data to your bucket.
+# Provide a bucket name
+BUCKET_NAME = "the_bucket_id"  # @param {type:"string"}
+BUCKET_URI = f"gs://{BUCKET_NAME}"
+# Copy the tuning and evaluation data to the bucket.
 !gsutil cp $training_data_path {BUCKET_URI}/sft_train_samples.jsonl
 !gsutil cp $validation_data_path {BUCKET_URI}/sft_val_samples.jsonl
 
@@ -512,7 +390,7 @@ print(f"Let's keep output tokens up to `{tokens}`")
 max_output_tokens = tokens
 ```
 
-4. Setup Model
+4. Test Pre-performance
 
 ```py
 test_doc = test_data.loc[0, "input_text"]
@@ -522,12 +400,10 @@ Article: {test_doc}
 """
 
 generation_model = GenerativeModel("gemini-1.0-pro-002")
-
 generation_config = GenerationConfig(
     temperature=0.1,
     max_output_tokens=max_output_tokens,
 )
-
 response = generation_model.generate_content(
     contents=prompt,
     generation_config=generation_config
@@ -547,7 +423,10 @@ corpus = test_data.to_dict(orient="records")
 len(corpus)
 
 # Create rouge_scorer object for evaluation
-scorer = rouge_scorer.RougeScorer(["rouge1", "rouge2", "rougeL"], use_stemmer=True)
+scorer = rouge_scorer.RougeScorer(
+  ["rouge1", "rouge2", "rougeL"],
+  use_stemmer=True
+  )
 
 def run_evaluation(model: GenerativeModel, corpus: List[Dict]) -> pd.DataFrame:
     """Runs evaluation for the given model and data.
@@ -634,19 +513,18 @@ print("Mean rougeL_precision is", evaluation_df_stats.rougeL_precision["mean"])
 
 | count | document                                          | summary                                           | generated_summary                                 | scores                                            | rouge1_precision | rouge1_recall | rouge1_fmeasure | rouge2_precision | rouge2_recall | rouge2_fmeasure | rougeL_precision | rougeL_recall | rougeL_fmeasure |
 | ----- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ---------------- | ------------- | --------------- | ---------------- | ------------- | --------------- | ---------------- | ------------- | --------------- |
-| 0     | Hold your arm out flat in front of you with yo... | Squeeze a line of lotion onto the tops of both... | This article provides instructions on how to a... | {'rouge1': (0.29508196721311475, 0.58064516129... | 0.295082         | 0.580645      | 0.391304        | 0.133333         | 0.266667      | 0.177778        | 0.213115         | 0.419355      | 0.282609        |
+| 0     | Hold the arm out flat in front of you with yo... | Squeeze a line of lotion onto the tops of both... | This article provides instructions on how to a... | {'rouge1': (0.29508196721311475, 0.58064516129... | 0.295082         | 0.580645      | 0.391304        | 0.133333         | 0.266667      | 0.177778        | 0.213115         | 0.419355      | 0.282609        |
 | 1     | As you continue playing, surviving becomes pai... | Make a Crock Pot for better food. Create an Al... | This article provides a guide on how to surviv... | {'rouge1': (0.14814814814814814, 0.66666666666... | 0.148148         | 0.666667      | 0.242424        | 0.062500         | 0.294118      | 0.103093        | 0.123457         | 0.555556      | 0.202020        |
 
 6. Fine-tune the Model
 
    - `source_model`: Specifies the base model version you want to fine-tune.
-   - `train_dataset`: Path to your training data in JSONL format.
+   - `train_dataset`: Path to the training data in JSONL format.
 
    - **Optional parameters**
      - `validation_dataset`: If provided, this data is used to evaluate the model during tuning.
      - `epochs`: The number of training epochs to run.
      - `learning_rate_multiplier`: A value to scale the learning rate during training.
-
 
 ```py
 # Tune a model using `train` method.
@@ -680,30 +558,25 @@ tuned_model_endpoint_name = sft_tuning_job.tuned_model_endpoint_name
 tuned_model_endpoint_name
 ```
 
-<div class="alert alert-block alert-warning">
-<b>⚠️ It will take around an hour for the model tuning job to complete on the provided dataset and set configurations/hyperparameters. ⚠️</b>
-</div>
-
-
 7. Tuning and evaluation metrics
 
 Model tuning metrics
 
-  - `/train_total_loss`: Loss for the tuning dataset at a training step.
-  - `/train_fraction_of_correct_next_step_preds`:
-    - The token accuracy at a **training step**.
-    - A single prediction consists of a sequence of tokens.
-    - This metric measures the accuracy of the predicted tokens when compared to the ground truth in the tuning dataset.
-  - `/train_num_predictions`: Number of predicted tokens at a training step
+- `/train_total_loss`: Loss for the tuning dataset at a training step.
+- `/train_fraction_of_correct_next_step_preds`:
+  - The token accuracy at a **training step**.
+  - A single prediction consists of a sequence of tokens.
+  - This metric measures the accuracy of the predicted tokens when compared to the ground truth in the tuning dataset.
+- `/train_num_predictions`: Number of predicted tokens at a training step
 
 Model evaluation metrics:
 
-  - `/eval_total_loss`: Loss for the evaluation dataset at an evaluation step.
-  - `/eval_fraction_of_correct_next_step_preds`:
-    - The token accuracy at an **evaluation step**.
-    - A single prediction consists of a sequence of tokens.
-    - This metric measures the accuracy of the predicted tokens when compared to the ground truth in the evaluation dataset.
-  - `/eval_num_predictions`: Number of predicted tokens at an evaluation step.
+- `/eval_total_loss`: Loss for the evaluation dataset at an evaluation step.
+- `/eval_fraction_of_correct_next_step_preds`:
+  - The token accuracy at an **evaluation step**.
+  - A single prediction consists of a sequence of tokens.
+  - This metric measures the accuracy of the predicted tokens when compared to the ground truth in the evaluation dataset.
+- `/eval_num_predictions`: Number of predicted tokens at an evaluation step.
 
 The metrics visualizations are available after the model tuning job completes. If you don't specify a validation dataset when you create the tuning job, only the visualizations for the tuning metrics are available.
 
@@ -797,12 +670,11 @@ else:
     print("Error:", sft_tuning_job.error)
 ```
 
-
 - We can clearly see the difference between summary generated pre and post tuning, as tuned summary is more inline with the ground truth format (**Note**: Pre and Post outputs, might vary based on the set parameters.)
 
-  - *Pre*: `This article provides instructions on how to apply lotion to your back using your forearms. The method involves squeezing a line of lotion onto your forearms, bending your elbows, and reaching behind your back to rub the lotion on. The article also notes that this method may not be suitable for people with shoulder pain or limited flexibility. `
-  - *Post*: `Dispense a line of lotion onto your forearms. Place your forearms behind you. Rub your forearms up and down your back.`
-  - *Ground Truth*:` Squeeze a line of lotion onto the tops of both forearms and the backs of your hands. Place your arms behind your back. Move your arms in a windshield wiper motion.`
+  - _Pre_: `This article provides instructions on how to apply lotion to the back using the forearms. The method involves squeezing a line of lotion onto the forearms, bending the elbows, and reaching behind the back to rub the lotion on. The article also notes that this method may not be suitable for people with shoulder pain or limited flexibility. `
+  - _Post_: `Dispense a line of lotion onto the forearms. Place the forearms behind you. Rub the forearms up and down the back.`
+  - _Ground Truth_:` Squeeze a line of lotion onto the tops of both forearms and the backs of the hands. Place the arms behind the back. Move the arms in a windshield wiper motion.`
 
 11. Evaluation post model tuning
 
@@ -815,7 +687,6 @@ evaluation_df_stats = evaluation_df.dropna().describe()
 evaluation_df_stats
 ```
 
-
 ```py
 # run evaluation
 evaluation_df_post_tuning = run_evaluation(tuned_genai_model, corpus_batch)
@@ -825,7 +696,6 @@ evaluation_df_post_tuning.head()
 evaluation_df_post_tuning_stats = evaluation_df_post_tuning.dropna().describe()
 evaluation_df_post_tuning_stats
 ```
-
 
 ```py
 print(
@@ -845,7 +715,6 @@ print(
 
 ![Screenshot 2024-06-28 at 14.24.38](/assets/img/Screenshot%202024-06-28%20at%2014.24.38.png)
 
-
 ```py
 improvement = round(
     (
@@ -864,97 +733,10 @@ print(
 # Model tuning has improved the rougeL_precision by 198.57% (result might differ based on each tuning iteration)
 ```
 
-
+---
 ---
 
-##### Single task Fine-tuning
-
-![Screenshot 2024-07-20 at 21.22.35](/assets/img/Screenshot%202024-07-20%20at%2021.22.35.png)
-
-##### Catastrophic forgetting
-
-- Fine-tuning on a single task may lead to a phenomenon called **catastrophic forgetting**.
-
-- Catastrophic forgetting happens because the full fine-tuning process modifies the weights of the original LLM.
-
-  - leads to great performance on the single fine-tuning task
-  - it can degrade performance on other tasks.
-
-- Catastrophic forgetting is a problem in both supervised and unsupervised learning tasks.
-  - In unsupervised learning, it can occur when the model is trained on a new dataset that is different from the one used during pre-training.
-
-
-- For example
-  - while fine-tuning can improve the ability of a model to perform sentiment analysis on a review and result in a quality completion, the model may forget how to do other tasks.
-  - This model knew how to carry out named entity recognition before fine-tuning correctly identifying Charlie as the name of the cat in the sentence.
-
-    - ![Screenshot 2024-06-20 at 15.49.08](/assets/img/Screenshot%202024-06-20%20at%2015.49.08.png)
-
-    - ![Screenshot 2024-06-20 at 15.54.58](/assets/img/Screenshot%202024-06-20%20at%2015.54.58.png)
-
-  - But after fine-tuning, the model can no longer carry out this task, confusing both the entity it is supposed to identify and exhibiting behavior related to the new task.
-
-    - ![Screenshot 2024-06-20 at 15.49.22](/assets/img/Screenshot%202024-06-20%20at%2015.49.22.png)
-
-    - ![Screenshot 2024-06-20 at 15.49.30](/assets/img/Screenshot%202024-06-20%20at%2015.49.30.png)
-
-
-avoid catastrophic forgetting
-1. decide whether catastrophic forgetting actually impacts your use case.
-   - If all you need is reliable performance on the single task you fine-tuned on, it may not be an issue that the model can't generalize to other tasks.
-   - If you do want or need the model to maintain its `multitask generalized capabilities`, you can perform fine-tuning on multiple tasks at one time.
-
-2. Good multitask fine-tuning may require 50-100,000 examples across many tasks, and so will require more data and compute to train. Will discuss this option in more detail shortly.
-
-3. perform **parameter efficient fine-tuning (PEFT)** instead of full fine-tuning.
-
-   - PEFT is a set of techniques that preserves the weights of the original LLM and trains only a small number of task-specific adapter layers and parameters.
-   - PEFT shows greater robustness to catastrophic forgetting since most of the pre-trained weights are left unchanged.
-   - using regularization techniques to limit the amount of change that can be made to the weights of the model during training. This can help to preserve the information learned during earlier training phases and prevent overfitting to the new data.
-
-##### Multitask fine-tuning
-
-Multitask fine-tuning is an extension of single task fine-tuning, where the training dataset is comprised of example inputs and outputs for multiple tasks. Here, the dataset contains examples that instruct the model to carry out a variety of tasks, including summarization, review rating, code translation, and entity recognition. You train the model on this mixed dataset so that it can improve the performance of the model on all the tasks simultaneously, thus avoiding the issue of catastrophic forgetting. Over many epochs of training, the calculated losses across examples are used to update the weights of the model, resulting in an instruction tuned model that is learned how to be good at many different tasks simultaneously. One drawback to multitask fine-tuning is that it requires a lot of data. You may need as many as 50-100,000 examples in your training set.
-
-However, it can be really worthwhile and worth the effort to assemble this data.
-- The resulting models are often very capable and suitable for use in situations where good performance at many tasks is desirable.
-
-
-Example
-- Let's take a look at one family of models that have been trained using multitask instruction fine-tuning. Instruct model variance differ based on the datasets and tasks used during fine-tuning.
-- One example is the FLAN family of models. FLAN, which stands for fine-tuned language net, is a specific set of instructions used to fine-tune different models.
-- Because they're FLAN fine-tuning is the last step of the training process the authors of the original paper called it the metaphorical dessert to the main course of pre-training quite a fitting name.
-- FLAN-T5, the FLAN instruct version of the T5 foundation model while FLAN-PALM is the flattening struct version of the palm foundation model. You get the idea,
-- FLAN-T5 is a great general purpose instruct model. In total, it's been fine tuned on 473 datasets across 146 task categories. Those datasets are chosen from other models and papers as shown here. Don't worry about reading all the details right now.
-- One example of a prompt dataset used for summarization tasks in FLAN-T5 is SAMSum.
-- It's part of the muffin collection of tasks and datasets and is used to train language models to summarize dialogue.
-- SAMSum is a dataset with 16,000 messenger like conversations with summaries.
-- Three examples are shown here with the dialogue on the left and the summaries on the right.
-- The dialogues and summaries were crafted by linguists for the express purpose of generating a high-quality training dataset for language models.
-- The linguists were asked to create conversations similar to those that they would write on a daily basis, reflecting their proportion of topics of their real life messenger conversations.
-
-- Although language experts then created short summaries of those conversations that included important pieces of information and names of the people in the dialogue.
-- Here is a prompt template designed to work with this SAMSum dialogue summary dataset. The template is actually comprised of several different instructions that all basically ask the model to do this same thing. Summarize a dialogue.
-- For example, briefly summarize that dialogue. What is a summary of this dialogue? What was going on in that conversation?
-- Including different ways of saying the same instruction helps the model generalize and perform better.
-
-- Just like the prompt templates you saw earlier. You see that in each case, the dialogue from the SAMSum dataset is inserted into the template wherever the dialogue field appears.
-- The summary is used as the label.
-- After applying this template to each row in the SAMSum dataset, you can use it to fine tune a dialogue summarization task.
-
-![Screenshot 2024-07-20 at 22.31.17](/assets/img/Screenshot%202024-07-20%20at%2022.31.17.png)
-
-- While FLAN-T5 is a great general use model that shows good capability in many tasks. You may still find that it has room for improvement on tasks for your specific use case.
-- For example, imagine you're a data scientist building an app to support your customer service team, process requests received through a chat bot
-- Your customer service team needs a summary of every dialogue to identify the key actions that the customer is requesting and to determine what actions should be taken in response. The SAMSum dataset gives FLAN-T5 some abilities to summarize conversations. However, the examples in the dataset are mostly conversations between friends about day-to-day activities and don't overlap much with the language structure observed in customer service chats. You can perform additional fine-tuning of the FLAN-T5 model using a dialogue dataset that is much closer to the conversations that happened with your bot. This is the exact scenario that you'll explore in the lab this week. You'll make use of an additional domain specific summarization dataset called dialogsum to improve FLAN-T5's is ability to summarize support chat conversations. This dataset consists of over 13,000 support chat dialogues and summaries. The dialogue some dataset is not part of the FLAN-T5 training data, so the model has not seen these conversations before. Let's take a look at example from dialogsum and discuss how a further round of fine-tuning can improve the model. This is a support chat that is typical of the examples in the dialogsum dataset. The conversation is between a customer and a staff member at a hotel check-in desk. The chat has had a template applied so that the instruction to summarize the conversation is included at the start of the text. Now, let's take a look at how FLAN-T5 responds to this prompt before doing any additional fine-tuning, note that the prompt is now condensed on the left to give you more room to examine the completion of the model. Here is the model's response to the instruction. You can see that the model does as it's able to identify that the conversation was about a reservation for Tommy. However, it does not do as well as the human-generated baseline summary, which includes important information such as Mike asking for information to facilitate check-in and the models completion has also invented information that was not included in the original conversation. Specifically the name of the hotel and the city it was located in. Now let's take a look at how the model does after fine-tuning on the dialogue some dataset, hopefully, you will agree that this is closer to the human-produced summary. There is no fabricated information and the summary includes all of the important details, including the names of both people participating in the conversation. This example, use the public dialogue, some dataset to demonstrate fine-tuning on custom data. In practice, you'll get the most out of fine-tuning by using your company's own internal data. For example, the support chat conversations from your customer support application. This will help the model learn the specifics of how your company likes to summarize conversations and what is most useful to your customer service colleagues. I know there's a lot to take in here. But don't worry, this example is going to be covered in the lab. You'll get a chance to see this in action and try it out for yourself. One thing you need to think about when fine-tuning is how to evaluate the quality of your models completions. In the next video, you'll learn about several metrics and benchmarks that you can use to determine how well your model is performing and how much better you're fine-tuned version is than the original base model.
-Multitask fine-tuning is an extension of single task fine-tuning, where the training dataset is comprised of example inputs and outputs for multiple tasks. Here, the dataset contains examples that instruct the model to carry out a variety of tasks, including summarization, review rating, code translation, and entity recognition. You train the model on this mixed dataset so that it can improve the performance of the model on all the tasks simultaneously, thus avoiding the issue of catastrophic forgetting. Over many epochs of training, the calculated losses across examples are used to update the weights of the model, resulting in an instruction tuned model that is learned how to be good at many different tasks simultaneously. One drawback to multitask fine-tuning is that it requires a lot of data. You may need as many as 50-100,000 examples in your training set. However, it can be really worthwhile and worth the effort to assemble this data. The resulting models are often very capable and suitable for use in situations where good performance at many tasks is desirable. Let's take a look at one family of models that have been trained using multitask instruction fine-tuning. Instruct model variance differ based on the datasets and tasks used during fine-tuning. One example is the FLAN family of models. FLAN, which stands for fine-tuned language net, is a specific set of instructions used to fine-tune different models. Because they're FLAN fine-tuning is the last step of the training process the authors of the original paper called it the metaphorical dessert to the main course of pre-training quite a fitting name. FLAN-T5, the FLAN instruct version of the T5 foundation model while FLAN-PALM is the flattening struct version of the palm foundation model. You get the idea, FLAN-T5 is a great general purpose instruct model. In total, it's been fine tuned on 473 datasets across 146 task categories. Those datasets are chosen from other models and papers as shown here. Don't worry about reading all the details right now. If you're interested, you can access the original paper through a reading exercise after the video and take a closer look. One example of a prompt dataset used for summarization tasks in FLAN-T5 is SAMSum. It's part of the muffin collection of tasks and datasets and is used to train language models to summarize dialogue. SAMSum is a dataset with 16,000 messenger like conversations with summaries. Three examples are shown here with the dialogue on the left and the summaries on the right. The dialogues and summaries were crafted by linguists for the express purpose of generating a high-quality training dataset for language models. The linguists were asked to create conversations similar to those that they would write on a daily basis, reflecting their proportion of topics of their real life messenger conversations. Although language experts then created short summaries of those conversations that included important pieces of information and names of the people in the dialogue. Here is a prompt template designed to work with this SAMSum dialogue summary dataset. The template is actually comprised of several different instructions that all basically ask the model to do this same thing. Summarize a dialogue. For example, briefly summarize that dialogue. What is a summary of this dialogue? What was going on in that conversation? Including different ways of saying the same instruction helps the model generalize and perform better. Just like the prompt templates you saw earlier. You see that in each case, the dialogue from the SAMSum dataset is inserted into the template wherever the dialogue field appears. The summary is used as the label. After applying this template to each row in the SAMSum dataset, you can use it to fine tune a dialogue summarization task. While FLAN-T5 is a great general use model that shows good capability in many tasks. You may still find that it has room for improvement on tasks for your specific use case. For example, imagine you're a data scientist building an app to support your customer service team, process requests received through a chat bot, like the one shown here. Your customer service team needs a summary of every dialogue to identify the key actions that the customer is requesting and to determine what actions should be taken in response. The SAMSum dataset gives FLAN-T5 some abilities to summarize conversations. However, the examples in the dataset are mostly conversations between friends about day-to-day activities and don't overlap much with the language structure observed in customer service chats. You can perform additional fine-tuning of the FLAN-T5 model using a dialogue dataset that is much closer to the conversations that happened with your bot. This is the exact scenario that you'll explore in the lab this week. You'll make use of an additional domain specific summarization dataset called dialogsum to improve FLAN-T5's is ability to summarize support chat conversations. This dataset consists of over 13,000 support chat dialogues and summaries. The dialogue some dataset is not part of the FLAN-T5 training data, so the model has not seen these conversations before. Let's take a look at example from dialogsum and discuss how a further round of fine-tuning can improve the model. This is a support chat that is typical of the examples in the dialogsum dataset. The conversation is between a customer and a staff member at a hotel check-in desk. The chat has had a template applied so that the instruction to summarize the conversation is included at the start of the text. Now, let's take a look at how FLAN-T5 responds to this prompt before doing any additional fine-tuning, note that the prompt is now condensed on the left to give you more room to examine the completion of the model. Here is the model's response to the instruction. You can see that the model does as it's able to identify that the conversation was about a reservation for Tommy. However, it does not do as well as the human-generated baseline summary, which includes important information such as Mike asking for information to facilitate check-in and the models completion has also invented information that was not included in the original conversation. Specifically the name of the hotel and the city it was located in. Now let's take a look at how the model does after fine-tuning on the dialogue some dataset, hopefully, you will agree that this is closer to the human-produced summary. There is no fabricated information and the summary includes all of the important details, including the names of both people participating in the conversation. This example, use the public dialogue, some dataset to demonstrate fine-tuning on custom data. In practice, you'll get the most out of fine-tuning by using your company's own internal data. For example, the support chat conversations from your customer support application. This will help the model learn the specifics of how your company likes to summarize conversations and what is most useful to your customer service colleagues. I know there's a lot to take in here. But don't worry, this example is going to be covered in the lab. You'll get a chance to see this in action and try it out for yourself. One thing you need to think about when fine-tuning is how to evaluate the quality of your models completions. In the next video, you'll learn about several metrics and benchmarks that you can use to determine how well your model is performing and how much better you're fine-tuned version is than the original base model. Transcript language: English ​: Added to Selection. Press [⌘ + S] to save as a note
-Transcript language: English
-​
-
-
----
-
-#### Prompt-Oriented Fine-Tuning
+### Prompt-Oriented Fine-Tuning
 
 需要更新全部参数(包括预训练模型参数)的 Prompt-Tuning 方法。
 
@@ -991,274 +773,9 @@ Transcript language: English
 
 ---
 
-#### Hard Prompt & Soft Prompt
+## Not Full fine-tuning
 
-- Hard Prompt 和 Soft Prompt 的提出，是为了解决预训练模型过大，难以针对下游任务进行训练的痛点。
-
-- 目前常见的 Hard Prompt 和 Soft Prompt 方法，分为以下五种:
-
-  - **Hard Prompt**:
-
-    - **人工构建(Manual Template)**: 最简单的构建模板方法；
-    - **启发式法(Heuristic-based Template)**: 通过规则 启发式搜索等方法构建合适的模板；
-    - **生成(Generation)**: 根据给定的任务训练数据(通常是小样本场景)，生成出合适的模板；
-
-  - **Soft Prompt**:
-    - **词向量微调(Word Embedding)**: 显式地定义离散字符的模板，但在训练时这些模板字符的词向量参与梯度下降，初始定义的离散字符用于作为向量的初始化；
-    - **伪标记(Pseudo Token)**: 不显式地定义离散的模板，而是将模板作为可训练的参数。
-
-- **Hard Prompt**:
-
-  - 前面三种称为离散的模板构建法(记作 Hard Template Hard Prompt Discrete Template Discrete Prompt)，其旨在`直接与原始文本拼接`显式离散的字符，且在训练中始终保持不变。
-  - 这里的保持不变是指这些离散字符的词向量(Word Embedding)在训练过程中保持固定。
-  - 通常情况下，离散法不需要引入任何参数。
-  - 主要适用场景是 GPT-3 类相对较大的模型，Bert 类相对较小的模型也可以用，只是个人觉得 Bert 等预训练模型，针对下游任务训练的成本并不是很高，完全可以同时微调预训练模型参数。
-  - 上述三种 Hard Prompt 方法，实际场景中用的比较少
-  - [Prompt-Tuning——深度解读一种新的微调范式](https://blog.csdn.net/qq_36426650/article/details/120607050)。
-
-  - Hard Prompt 方法，不论是启发式方法，还是通过生成的方法，都需要为每一个任务单独设计对应的模板，因为这些模板都是可读的离散的 token
-    - 这导致很难寻找到最佳的模板。
-    - 另外，即便是同一个任务，不同的句子也会有其所谓最佳的模板，而且有时候，即便是人类理解的相似的模板，也会对模型预测结果产生很大差异。
-    - 例如下图，以 SNLI 推断任务为例，仅仅只是修改了模板，测试结果差异很明显，因此离散的模板存在方差大 不稳定等问题。
-    - ![Hard Prompt设计对比实验](https://img-blog.csdnimg.cn/4cc12829dc2b4c2a920c22b447435821.png#pic_center)
-  - 如何避免这种问题呢，Soft Prompt 方法便是来解决这种问题的，
-
-- **Soft Prompt**:
-
-  - 后面两种则被称为连续的模板构建法(记作 Soft Template Soft Prompt Continuous Template Continuous Prompt)，其旨在让模型在训练过程中`根据具体的上下文语义和任务目标对模板参数进行调整`。
-  - 其将模板转换为可以进行优化的连续向量
-  - 我们不需要显式地指定这些模板中各个 token 具体是什么，只需要在语义空间中表示一个向量即可，这样，不同的任务 数据可以自适应地在语义空间中寻找若干合适的向量，来代表模板中的每一个词，相较于显式的 token，这类 token 称为伪标记(`Pseudo Token`)。
-
-  - 基于 Soft Prompt 的模板定义:
-
-    > 假设针对分类任务，给定一个输入句子 $x$ ，
-    > 连续提示的模板可以定义为:
-    > $\mathcal{T} =[x],[v_{1}],[v_{2}]，…，[v_{m}][Mask]$
-    > 其中 $[v_{1}]$ 则是伪标记，其仅代表一个抽象的 token，并没有实际的含义，本质上是一个向量。
-
-  - **总结来说**:
-
-    - Soft Prompt 方法，是将模板变为可训练的参数，不同的样本可以在连续的向量空间中寻找合适的伪标记，同时也增加模型的泛化能力。
-    - 因此，连续法需要引入少量的参数并在训练时进行参数更新，但预训练模型参数是不变的，变的是 prompt token 对应的词向量(Word Embedding)表征及其他引入的少量参数。
-    - 主要适用场景同 Hard Prompt 一致。
-
-  - 目前具有代表性的三种 Soft Prompt 方法如下:
-
-#### Parameter-Efficient Prompt Tuning
-
-- 该方法率先提出了伪标记和连续提示的概念，支持模型能够动态地对模板在语义空间内进行调整。
-
-- 主要针对的是 NLU 任务，形式化的描述如下:
-
-> 给定 $n$ 个 token，记作 $x_{1}, ..., x_{n}$​，
-> 通过一个预训练模型对应的 embedding table，将 $n$ 个 token 表征为向量矩阵 $X_{e} \in R^{n\times e}$，
-> 其中 $e$ 是向量的维度(其与预训练模型的配置有关，例如 Bert-base 是 768)。
-> 连续模板中的每个伪标记 $v_{i}$ ​ 可以视为参数，也可以视为一个 token，因此，可以通过另一个 embedding table 将 $p$ 个伪标记 token 表征为向量矩阵 $P_{e} \in R^{p\times e}$ 。
-> 将文本和 prompt 进行拼接获得新的输入 $[P_{e} :X_{e}] \in R^{(p+n) \times e}$。
-> 这个新的输入将会进入 T5 的 encoder-decoder 结构来训练和推理。
-> 注意，只有 prompt 对应的向量表征参数 $P_{e}$ ​ 会随着训练进行更新。
-
-- 论文中提到，每个伪标记的初始化可以有下列三种情况，分别是 Random Uniform，Sampled Vocab 和 Class Label。
-
-  - **Random Uniform**: 从均匀分布中随机进行初始化；
-  - **Sampled Vocab**: 从 T5 的语料库中选择最常见的 5000 个词汇，并从中选择词汇嵌入作为初始化；
-  - **Class Label**: 是将下游任务的标签对应的字符串表示的嵌入作为初始化，如果一个类有多个词，取词嵌入的平均表示作为一个 prompt。假如标签数目不足，则从 Sampled Vocab 方案中继续采样补足。
-
-- 最后发现，非随机初始化方法要显著好于随机初始化，而 Class Label 效果相对更好，当然，只要模型足够大，这几种初始化方法的差异就比较小了。
-
-- 具体论文
-  - [《The Power of Scale for Parameter-Efficient Prompt Tuning》](https://aclanthology.org/2021.emnlp-main.243.pdf)。
-
----
-
-#### P-Tuning
-
-- P-Tuning 是另一个具有代表性的连续提示方法
-
-- 主要针对的是 NLU 任务
-- 方法图如下所示(图中的 $P_{i}$ ​ 等价于上文的 $v_{i}$ ​，表示伪标记)，
-- 谷歌于 2021 年发表:
-- ![P-Tuning结构](https://img-blog.csdnimg.cn/8356a2a18e0b4b4d8b64b9d947ed4423.png#pic_center)
-
-- P-Tuning 方法中的四个技巧点:
-
-  - 考虑到这些伪标记的相互依赖关系: 认为 $[P_{1}]$ 与 $[P_{2}]$ 是有先后关系的，而 transformer 无法显式地刻画这层关系，因此引入 Prompt Encoder(BiLSTM+MLP)；
-  - 指定上下文词: 如果模板全部是伪标记，在训练时无法很好地控制这些模板朝着与对应句子相似的语义上优化，因此选定部分具有与当前句子语义代表性的一些词作为一些伪标记的初始化(例如上图中“capital” “Britain”等)；
-  - 重参数(Reparameterization): 具体到代码实现上，P-Tuning 先通过一个 Prompt Encoder 表征这些伪标记后，直接将这些新的表征覆盖到对应的 embedding table 上，换句话说，Prompt Encoder 只在训练时候会使用到，而在推理阶段则不再使用，直接使用构建好的 embedding table；
-  - 混合提示(Hydride Prompt): 将连续提示与离散 token 进行混合，例如 $[x][it][v1][mask]$。
-
-- 具体可参考:
-  - [《GPT Understands, Too》](https://arxiv.org/pdf/2103.10385.pdf)
-  - [《论文解读: GPT Understands, Too》](https://wjn1996.blog.csdn.net/article/details/120802305)
-  - [《细读经典: P-Tuning》](https://zhuanlan.zhihu.com/p/391992466)
-
----
-
-#### Pre-trained Prompt Tuning (PPT)
-
-- Prompt-Tuning 通常适用于低资源场景，但是由于连续的模板是随机初始化的，即其存在新的参数，少量样本可能依然很难确保这些模板被很好地优化。
-- 因此简单的方法就是对这些连续的模板进行预训练。
-- PPT 旨在通过先让这些连续提示在大量无标注的预训练语料进行预训练，然后将其加载到对应下游任务的 PLM 上进行训练。
-- 具体来说，作者对 3 种 Prompt-Tuning 的优化策略在 few-shot learning 问题上分别进行了效果对比，包括 hard prompt 和 soft prompt 结合 label 到 text 映射方法选择以及使用真实单词的 embedding 进行 soft prompt 的随机初始化。通过对比实验发现，hard+soft prompt 结合的方法可以提升效果，但是仍然比 finetune 效果差。
-- Label 到 text 的映射方法对于效果影响很大，选择能够表达 label 对应含义的常用单词会带来最好效果。
-- 而使用单词 embedding 进行 soft prompt 的初始化在大模型上并没有明显的效果提升。
-
-- 基于以上实验结果，作者提出了 Pre-trained Pormpt Tuning 解决 few-shot learning 问题，核心思路是对 soft prompt 进行预训练，得到一个更好的 soft prompt 初始化表示。对于每种类型的任务，设计一个和其匹配的预训练任务，得到 soft prompt embedding 的预训练表示。
-
-- 论文中以 sentence-pair classification multiple-choice classification single sentence classification 三种任务介绍了如何针对每种下游任务设计预训练任务学习 soft prompt embedding。例如对于 sentence-pair classification，作者设计了如下预训练任务。将 2 个句子对拼接在一起，如果两个句子来自同一个文档相邻两句话，则 label 为 yes(完全一致)；如果两个句子来自同一个文档但距离较远，则 label 为 maybe；其他句子对 label 为 no，如下图所示(图中的 P P P 即连续的提示模板， < x > <x> <x\>表示 mask token。最上面的任务是预训练任务，下面三个任务为下游任务)。![PPT核心思想](https://img-blog.csdnimg.cn/49c6411ed3de4466a794ca92e3335168.png#pic_center)
-
-- 另外论文中还给出了四种微调方案，如下图所示，
-- [a]展示了模型的预训练过程，[b]和[c]展示了两种主流的 Fine-Tuning 方法(前文已经介绍过)，[d]展示了提示学习( Prompt Tuning, PT )方法，
-
-- 具体参考
-  - 2022 年清华大学发表的[《PPT: Pre-trained Prompt Tuning for Few-shot Learning》](https://aclanthology.org/2022.acl-long.576.pdf)
-  - [小样本学习: Pre-trained Prompt Tuning for Few-shot Learning](https://zhuanlan.zhihu.com/p/617006511)
-  - [Prompt 如何更好地应用于工业界？](https://www.zhihu.com/question/495040812/answer/2438217999)
-  - ![Tuning方案](https://img-blog.csdnimg.cn/94f3d30b97b54f47a0b39bc82bc610a8.png#pic_center)
-
----
-
----
-
-### Instruction-Tuning (指示微调)
-
-> 目前最火的研究范式，性能超过包括 ICL 在内的 prompt learning
-
-> 一种特别适合改进模型在**多种任务**上表现的策略
-
-
-提出的动机:
-- 大规模的语言模型 如 GPT-3 在 zero-shot 上不那么成功, 但却可以非常好地学习 few-shot
-
-- 一些模型能够识别提示中包含的指令并正确进行 zero-shot 推理，而较小的 LLM 可能在执行任务时失败，
-
-  - ![Screenshot 2024-06-20 at 15.24.07](/assets/img/Screenshot%202024-06-20%20at%2015.24.07.png)
-  - ![Screenshot 2024-06-20 at 15.24.15](/assets/img/Screenshot%202024-06-20%20at%2015.24.15.png)
-
-- 包含一个或多个你希望模型执行的示例(称为一次或几次推理)足以帮助模型识别任务并生成良好的完成结果。
-
-  - ![Screenshot 2024-06-20 at 15.25.53](/assets/img/Screenshot%202024-06-20%20at%2015.25.53.png)
-  - 然而，这种策略有几个缺点。
-    - 对于较小的模型，即使包含五六个示例，也不总是有效。
-    - 提示中包含的任何示例都会占据上下文窗口中宝贵的空间，从而减少包含其他有用信息的空间。
-  - 例如， GPT-3 在阅读理解 问题回答和自然语言推理等任务上的表现很一般，
-
-- Google2021 年的 FLAN 模型[《FINETUNED LANGUAGE MODELS ARE ZERO-SHOT LEARNERS》](https://openreview.net/pdf?id=gEZrGCozdqR)，这篇文章明确提出 Instruction-Tuning(指令微调)的技术，
-
-- 它的本质目的是想将 NLP 任务转换为自然语言指令，再将其投入模型进行训练，通过给模型提供指令和选项的方式，使其能够提升 Zero-Shot 任务的性能表现。
-  - 作者认为一个潜在的原因是，如果在没有少量示例的 zero-shot 条件下，模型很难在 prompts 上表现很好，因为 prompts 可能和预训练数据的格式相差很大。
-
-  - 既然如此，那么为什么不直接用自然语言指令做输入呢？
-
-- 通过设计 instruction，让大规模语言模型理解指令，进而完成任务目标，而不是直接依据演示实例做文本生成。
-
-  - 如下图所示，不管是 commonsense reasoning 任务还是 machine translation 任务，都可以变为 instruction 的形式，然后利用大模型进行学习。
-
-  - 在这种方式下，当一个 unseen task 进入时，通过理解其自然语言语义可以轻松实现 zero-shot 的扩展，如 natural language inference 任务。
-
-    - ![FLAN](https://img-blog.csdnimg.cn/cea53e43f97e4cc1ab88b45df7047831.png#pic_center)
-
-    - ![FLAN](https://img-blog.csdnimg.cn/8fc5c313663b439d8b08e8a27623d7bb.png#pic_center)
-
-- Instruction-Tuning 也是 ICL 的一种，只是 Instruction-Tuning 是将大模型在多种任务上进行微调，提升大模型的自然语言理解能力，最终实现在新任务上的 zero-shot。
-
-  - ![Screenshot 2024-06-20 at 15.31.42](/assets/img/Screenshot%202024-06-20%20at%2015.31.42.png)
-  - ![Screenshot 2024-06-20 at 15.31.57](/assets/img/Screenshot%202024-06-20%20at%2015.31.57.png)
-  - ![Screenshot 2024-06-20 at 15.43.37](/assets/img/Screenshot%202024-06-20%20at%2015.43.37.png)
-  - 这些提示完成示例允许模型学习生成遵循给定指令的响应。所有模型权重都会更新的指令微调过程称为全微调。
-  - 该过程生成了一个具有更新权重的模型的新版本。
-  - 需要注意的是，与预训练一样，全微调需要足够的内存和计算预算来存储和处理所有梯度、优化器和其他在训练过程中被更新的组件。
-
-采用了 Instruction-Tuning 技术的大规模语言模型
-
-- instructGPT
-- Finetuned Language Net(FLAN)
-
-Finetuned Language Net(FLAN) 的具体训练流程:
-
-- FLAN 模型将 62 个 NLP 任务分为 12 个簇，同一个簇内是相同的任务类型
-- ![FLAN-TASK](https://img-blog.csdnimg.cn/97a976f658714fd8b5f6fe23aca839ba.png#pic_center)
-
-- 对于每个 task，将为其手动构建 10 个独特 template，作为以自然语言描述该任务的 instructions。
-
-  - 为了增加多样性，对于每个数据集，还包括最多三个“turned the task around/变更任务”的模板(例如，对于情感分类，要求其生成电影评论的模板)。
-  - 所有数据集的混合将用于后续预训练语言模型做 Instruction-Tuning，其中每个数据集的 template 都是随机选取的。
-  - 如下图所示，Premise Hypothesis Options 会被填充到不同的 template 中作为训练数据。
-  - ![FLAN-Template](https://img-blog.csdnimg.cn/45b63fc37974479c8bc3d0f7079890a1.png#pic_center)
-
-- 最后基于 LaMDA-PT 模型进行微调。
-  - LaMDA-PT 是一个包含 137B 参数的自回归语言模型，这个模型在 web 文档(包括代码) 对话数据和维基百科上进行了预训练，同时有大约 10%的数据是非英语数据。然后 FLAN 混合了所有构造的数据集在 128 核的 TPUv3 芯片上微调了 60 个小时。
-
----
-
-### Fine-T vs Prompt-T vs Instruction-T
-
-- **Fine-Tuning**:
-
-  - 先在大规模语料上进行预训练，然后再在某个下游任务上进行微调，
-  - 如 Bert+Fine-Tuning
-
-- **Prompt-Tuning**:
-
-  - 先选择某个通用的大规模预训练模型，然后为具体的任务`生成一个prompt模板`以适应大模型进行微调，
-  - 如 GPT-3+Prompt-Tuning；
-
-- **Instruction-Tuning**:
-  - 仍然在预训练语言模型的基础上，先在多个已知任务上进行指令微调，然后在某个新任务上进行 zero-shot，
-  - 如 GPT-3+Instruction-Tuning
-
-要提出一个好的方式那必然是用来「解决另一种方式存在的缺陷或不足」
-
-**Prompt-Tuning vs Fine-Tuning**
-
-- 预训练模型 PLM+Fine-Tuning 范式
-
-  - 这个范式常用的结构是 Bert+Fine-Tuning，这种范式若想要预训练模型更好的应用在下游任务，需要利用下游数据对模型参数微调；
-  - 首先，模型在预训练的时候，采用的训练形式: 自回归 自编码，这与下游任务形式存在极大的 gap，不能完全发挥预训练模型本身的能力，必然导致较多的数据来适应新的任务形式(少样本学习能力差 容易过拟合)。
-  - 其次，现在的预训练模型参数量越来越大，为了一个特定的任务去 Fine-Tuning 一个模型，会占用特别多的训练资源，对一些中小企业或者用户来说并不现实，也会造成资源的一定浪费。
-
-- Prompt-Tuning 是在 Fine-Tuning 后发展起来的，可以说是解决 NLP 领域各种下游问题更好的一种方式。
-  - Prompt-Tuning 则很好的解决了这些问题，它将所有下游任务统一成预训练任务，以特定的模板，将下游任务的数据转成自然语言形式，充分挖掘预训练模型本身的能力。本质上就是设计一个比较契合上游预训练任务的模板，通过模板的设计来挖掘出上游预训练模型的潜力，让上游的预训练模型在尽量不需要标注数据的情况下比较好的完成下游的任务，即只需要少量数据的 Prompt Tuning，就可以实现很好的效果，具有较强的零样本/少样本学习能力。
-  - [Prompt-Tuning VS Fine-Tuning](https://www.zhihu.com/question/504324484?utm_id=0)。
-
-**Prompt-Tuning vs Instruction-Tuning**:
-
-![FT vs PT vs IT](https://img-blog.csdnimg.cn/8ac41efdf9884f1ea7876ef8886cdbd5.png#pic_center)
-
-1. Prompt 和 instruction 都是指导语言模型生成输出的文本片段，但它们有着不同的含义和用途。
-
-   - Prompt 更多地用于帮助模型理解任务和上下文，而 Instruction 则更多地用于指导模型执行具体操作或完成任务。
-
-   - Prompt:
-     - 通常是一种短文本字符串，用于指导语言模型生成响应。
-       - Prompt 提供上下文和任务相关信息，以帮助模型更好地理解要求，并生成正确的输出。
-     - Prompt 通常是人类设计的，以帮助模型更好地理解特定任务或领域；
-     - 例如，在问答任务中，prompt 可能包含问题或话题的描述，以帮助模型生成正确的答案。
-   - Instruction
-     - 通常是一种更详细的文本，用于指导模型执行特定操作或完成任务。
-     - Instruction 可以是计算机程序或脚本，也可以是人类编写的指导性文本。
-     - Instruction 的目的是告诉模型如何处理数据或执行某个操作，而不是简单地提供上下文或任务相关信息。
-
-2. prompt 在没精调的模型上也能有一定效果(模型不经过 Prompt-Tuning，直接针对下游任务进行推理)，而 Instruction-Tuning 则必须对模型精调，让模型知道这种指令模式。
-   - 但是，prompt 也有精调，经过 Prompt-Tuning 之后，模型也就学习到了这个 prompt 模式，
-   - 精调之后跟 Instruction-Tuning 有什么区别呢？这就是 Instruction-Tuning 巧妙的地方了，
-     - Prompt-Tuning 都是针对一个任务的，比如做个情感分析任务的 Prompt-Tuning，精调完的模型只能用于情感分析任务，
-     - 而经过 Instruction-Tuning 多任务精调后，可以用于其他任务的 zero-shot。
-
-两者的对比主要是基于大模型。
-
-- Prompt 是通过对任务进行一定的描述，或者给一些示例(ICL)，来完成既定任务目标，但是如果不给模型示例(zero-shot)
-
-- prompt 表现的很一般，这怎么办呢？能不能让大模型理解任务是做什么的，这样不用示例也能完成任务目标，instruction 就是来做这个任务的，它为了让模型具备理解任务的能力，采用大量的指令数据，对模型进行微调，即 Instruction-Tuning。
-
-- 因此，instruction 和 prompt 的不同之处在于: instruction 是在 prompt 的基础上，进一步挖掘模型理解任务的能力
-
-
----
-
-### Not Full fine-tuning
-
-#### Reinforcement learning from human feedback (RLHF 人类反馈强化学习阶段)
+### RLHF - Reinforcement learning from human feedback (人类反馈强化学习阶段)
 
 > 大语言模型(LLM)和基于人类反馈的强化学习(RLHF) [^LLM和RLHF]
 
@@ -1277,7 +794,7 @@ Finetuned Language Net(FLAN) 的具体训练流程:
 
 - 为了应对以上的风险，需要采取一些策略来防止 LLM 的能力不被滥用，构建一个可以与人类价值观保持一致的 LLM，RLHF (从人类反馈中进行强化学习)可以解决这些问题，让 AI 更加的 Helpfulness Truthfulness 和 Harmlessness。
 
-##### 奖励模型
+#### 奖励模型
 
 - 在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使 Policy 模型产生更好的 `action` 。
 
@@ -1287,7 +804,7 @@ Finetuned Language Net(FLAN) 的具体训练流程:
 
 ![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
 
-##### 对比数据集
+#### 对比数据集
 
 - 在训练 RM 之前，需要构建对比数据
 
@@ -1329,7 +846,7 @@ $$
 - Goal : find θ to minimize the expected loss for all training samples.
   - $-E_xlog(\sigma(s_w - s_l)$
 
-##### PPO 微调
+#### PPO 微调
 
 ![pic](https://img-blog.csdnimg.cn/e8d15a8e222a49aea708b25fcd4e7cf0.png#pic_center)
 
@@ -1398,7 +915,7 @@ RLHF 微调过程如下：
 
 ---
 
-##### PVP - Pattern-Verbalizer-Pair
+#### PVP - Pattern-Verbalizer-Pair
 
 - ICL 方法是在 GPT-3 中被提出的，这类方法有一个明显的缺陷是, 其建立在超大规模的预训练语言模型上，此时的模型参数数量通常超过 100 亿，在真实场景中很难应用，因此众多研究者开始探索 GPT-3 的这套思路在小规模的语言模型(如 Bert)上还是否适用？事实上，这套方法在小规模的语言模型上是可行的，但是需要注意:
 
@@ -1444,7 +961,7 @@ PET 最核心的部分 Pattern-Verbalizer-Pair(PVP)，PET 设计了两个很重�
 
 ---
 
-#### XXX-of-Thoughts
+### XXX-of-Thoughts
 
 CoT (Chain of Thoughts) approach
 
@@ -1454,7 +971,7 @@ ToT (Tree of Thoughts) approach
 
 - LLMs evaluate themselves at each stage of thought and stop inefficient approaches early, switching to alternative methods.
 
-##### Chain-of-Thought(思维链)
+#### Chain-of-Thought(思维链)
 
 随着 LLM 的越来越大，以及 tuning 技术的快速发展，LLM 在包括情感分析在内的传统自然语言任务上表现越来越好，但是单纯的扩大 LLM 模型的参数量无法让模型在算术推理/常识推理/符号推理等推理任务上取得理想的效果。 如何提升 LLM 在这些推理任务上性能呢？在此前关于 LLM 的推理任务中，有两种方法:
 
@@ -1463,7 +980,7 @@ ToT (Tree of Thoughts) approach
 
 但是这两种方法都有着局限性，前者微调计算成本太高，后者采用传统的输入输出样例在推理任务上效果很差，而且不会随着语言模型规模的增加而有实质性的改善。此时，Chain-of-Thought 应运而生。下面我们根据三篇比较有代表性的论文，详细介绍 CoT 的发展历程。
 
-##### Manual-CoT(人工思维链)
+#### Manual-CoT(人工思维链)
 
 Manual-CoT 是 Chain-of-Thought 技术的开山之作，由 Google 在 2022 年初提出[《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》](https://arxiv.org/pdf/2201.11903.pdf)。其旨在进一步提高超大规模模型在一些复杂任务上的推理能力。其认为现有的超大规模语言模型可能存在下面潜在的问题:
 
@@ -1517,7 +1034,7 @@ Manual-CoT 是 Chain-of-Thought 技术的开山之作，由 Google 在 2022 年�
 这篇 CoT 开山之作首次提出思维链(CoT)的概念，思维链简单的说就是一系列中间推理步骤。这篇论文最大的贡献就是发现了在 LLM 生成推理任务的结果之前，先生成思维链，会使模型的推理性能有大幅度的提升，特别是在复杂的推理任务上，但是有个前提就是 LLM 的规模要大于 10B，否则 CoT 没用甚至起副作用。CoT 的一大好处是无需微调模型参数，仅仅是改变输入就可以改进模型的性能。随着 LLM 越来越大，高校和小企业可能无法承担训练 LLM 的成本，因此无法参与其中进行科研与实践，但 CoT 这个研究方向仍然可以做。对于 CoT 的更多细节，大家可参考[《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》](https://arxiv.org/pdf/2201.11903.pdf)和[思维链(Chain-of-Thought, CoT)的开山之作
 ](https://zhuanlan.zhihu.com/p/612136862?utm_id=0)
 
-##### Zero-shot-CoT(零示例思维链)
+#### Zero-shot-CoT(零示例思维链)
 
 2022 年 6 月东京大学和谷歌共同发表了一篇论文[《Large Language Models are Zero-Shot Reasoners》](https://arxiv.org/pdf/2205.11916v2.pdf)，这是一篇关于预训练大型语言模型(Pretrained Large Language Models, LLMs)推理能力的探究论文。
 
@@ -1530,7 +1047,7 @@ Manual-CoT 是 Chain-of-Thought 技术的开山之作，由 Google 在 2022 年�
 - Zero-shot-CoT 的具体格式如下图所示，需要注意一点的是，同等条件下，Zero-shot-CoT 的性能是不及 Manual-CoT 的。
   ![pic](https://img-blog.csdnimg.cn/6dcd286feadf4fcea7951b6f4ede0bed.jpeg#pic_center)
 
-##### Auto-CoT(自动思维链)
+#### Auto-CoT(自动思维链)
 
 传统 CoT 的一个未来研究方向: 可以用一个 LLM 自动生成 CoT 用于 Prompting
 
@@ -1552,7 +1069,7 @@ Auto-CoT 是 Manual-CoT 和 Zero-shot-CoT 的结合体
 
 ---
 
-##### Tree-of-Thought (ToT)
+#### Tree-of-Thought (ToT)
 
 - an algorithm that combines Large Language Models (LLMs) and heuristic search, as presented in this paper by Princeton University and Google DeepMind.
 
@@ -1751,39 +1268,169 @@ Sun (2023) benchmarked the Tree-of-Thought Prompting with large-scale experiment
 
 ---
 
+### PEFT - Parameter-Efficient Fine-Tuning (参数有效性微调)
 
-#### Parameter-Efficient Fine-Tuning (PEFT 参数有效性微调)
+总体来说 PEFT 可分为三个类别:
 
-通过前文的介绍，我们可以把 Tuning 分为两类:
+1. <font color=OrangeRed> Selective </font>
+   - There are several approaches that you can take to identify which parameters you want to update.
+   - You have the option to train only certain components of the model or specific layers, or even individual parameter types.
+   - Researchers have found that the performance of these methods is mixed and there are significant trade-offs between parameter efficiency and compute efficiency
 
-- **全参数微调**: 训练过程中更新包括模型在内的所有参数，例如 Fine-Tuning Prompt-Orient Fine-Tuning 等；
-- **部分参数微调**: 训练过程中只更新部分模型参数，或者固定模型参数，只更新少量额外添加的参数，如 Parameter-Efficient Prompt Tuning P-Tuning 等。
+2. <font color=OrangeRed> Reparameterization </font>
+   - **LoRA**:
+     - 通过学习小参数的低秩矩阵来近似模型权重矩阵的参数更新，训练时只优化低秩矩阵参数。
 
-部分参数微调模式的提出:
+3. <font color=OrangeRed> Additive </font>
+   - keeping all of the original LLM weights frozen and introducing new trainable components.
+   - **Adapter-Tuning**:
+     - 将较小的神经网络层或模块插入预训练模型的每一层，这些新插入的神经模块称为 adapter(适配器)，下游任务微调时也只训练这些适配器参数
+     - **add new trainable layers** to the architecture of the model, typically `inside the encoder or decoder components` after the attention or feed-forward layers.
 
-- 一方面是由于资源限制，无法更新整体大模型参数
-- 另一方面，要保证在资源有限的条件下，能够尽可能的提升大模型在下游任务上的效果。
+   - **Soft prompt methods**
+     - keep the model architecture fixed and frozen, and focus on **manipulating the input to achieve better performance**.
+     - This can be done by **adding trainable parameters** to the `prompt embeddings or keeping the input fixed and retraining the embedding weights`
 
-针对部分参数微调的研究，正处于蓬勃发展阶段，这个研究领域有个统一的名称: **Parameter-Efficient Fine-Tuning (PEFT)**，即**参数有效性微调**，
+     - **Prompt-Tuning**:
+       - 在模型的输入或隐层添加个额外可训练的前缀 tokens(这些前缀是连续的伪 tokens，不对应真实的 tokens)，只训练这些前缀参数，包括 prefix-tuning parameter-efficient Prompt Tuning P-Tuning 等
 
-- PEFT 方法仅微调少量或额外的模型参数，固定大部分预训练参数，大大降低了计算和存储成本，同时最先进的 PEFT 技术也能实现了与全量微调相当的性能。
-
-- 前文提到的 Prompt-Tuning，包括 P-Tuning 等，都可以视为 PEFT 的一种。
-
-总体来说，参数有效性微调可分为三个类别:
-
-- **Prompt-Tuning**:
-  - 在模型的输入或隐层添加个额外可训练的前缀 tokens(这些前缀是连续的伪 tokens，不对应真实的 tokens)，只训练这些前缀参数，包括 prefix-tuning parameter-efficient Prompt Tuning P-Tuning 等；
-- **Adapter-Tuning**:
-  - 将较小的神经网络层或模块插入预训练模型的每一层，这些新插入的神经模块称为 adapter(适配器)，下游任务微调时也只训练这些适配器参数；
-- **LoRA**:
-  - 通过学习小参数的低秩矩阵来近似模型权重矩阵的参数更新，训练时只优化低秩矩阵参数。
+![Screenshot 2024-09-10 at 17.11.35](/assets/img/Screenshot%202024-09-10%20at%2017.11.35.png)
 
 ---
 
-##### PEFT 介绍
+#### Additive
 
-**Prefix-Tuning**:
+##### Soft prompts / Prompt-Tuning
+
+###### Prompt Learning
+
+**prompt learning**:
+
+- Prompt-Tuning 和 In-context learning 是 prompt learning 的两种模式。
+
+- In-context learning
+  - 指在大规模预训练模型上进行推理时，不需要提前在下游目标任务上进行微调，即不改变预训练模型参数就可实现推理，
+  - 其认为超大规模的模型只要配合好合适的模板就可以极大化地发挥其推理和理解能力。
+- 常用的 In-context learning 方法有`few-shot one-shot zero-shot`；
+
+- Prompt-Tuning
+
+  - 指在下游目标任务上进行推理前，需要对全部或者部分参数进行更新
+  - **全部/部分**的区别就在于预训练模型参数是否改变(其实本质上的 Prompt-Tuning 是不更新预训练模型参数的，这里有个特例方法称为 Prompt-Oriented Fine-Tuning，其实该方法更适合称为升级版的 Fine-Tuning，后面会详细介绍这个方法)。
+
+- 无论是 In-context learning 还是 Prompt-Tuning，它们的目标都是将下游任务转换为预训练模型的预训练任务，以此来广泛激发出预训练模型中的知识。
+
+**Prompting and prompt engineering**:
+
+- 如何设计输入的 prompt 是很重要的一点
+
+![Screenshot 2023-10-21 at 11.30.26](/assets/img/Screenshot%202023-10-21%20at%2011.30.26.png)
+
+![Screenshot 2023-10-21 at 11.34.54](/assets/img/Screenshot%202023-10-21%20at%2011.34.54.png)
+
+- failed with 5-6 example, fune tune the model
+- Typically, above five or six shots, so full prompt and then completions, you really don't gain much after that. Either the model can do it or it can't do it
+
+---
+
+###### ICL - In-context learning (上下文学习)
+
+- ICL 又称为上下文学习，最早是在 GPT-3[《Language Models are Few-Shot Learners》](https://arxiv.org/pdf/2005.14165.pdf)中被提出来的。
+- ICL 的关键思想是从类比中学习。
+
+- 下图给出了一个描述语言模型如何使用 ICL 进行决策的例子。
+
+  - 首先，ICL 需要一些示例来形成一个演示上下文。这些示例通常是用自然语言模板编写的。
+  - 然后 ICL 将查询的问题(即你需要预测标签的 input)和一个上下文演示(一些相关的 cases)连接在一起，形成带有提示的输入(可称之为 prompt)，并将其输入到语言模型中进行预测。
+  - 值得注意的是，与需要使用反向梯度更新模型参数的训练阶段的监督学习不同，ICL 不需要参数更新，并直接对预先训练好的语言模型进行预测(这是与 Prompt-Tuning 不同的地方，ICL 不需要在下游任务中 Prompt-Tuning 或 Fine-Tuning)。
+  - 它希望模型能自动学习隐藏在演示中的模式，并据此做出正确的预测。
+  - ![ICL](https://img-blog.csdnimg.cn/27eb61b06a0b4bbdbbf58b9cee910844.png#pic_center)
+
+- use LLMs off the shelf (i.e., without any fine-tuning), then control their behavior through clever prompting and conditioning on private “contextual” data.
+
+- it’s usually easier than the alternative: training or fine-tuning the LLM itself.
+
+- It also tends to outperform fine-tuning for relatively small datasets—since a specific piece of information needs to occur at least ~10 times in the training set before an LLM will remember it through fine-tuning—and can incorporate new data in near real time.
+
+- Example:
+  - building a chatbot to answer questions about a set of legal documents.
+    - `naive approach`: paste all the documents into a ChatGPT or GPT-4 prompt, then ask a question about them at the end. This may work for very small datasets, but it doesn’t scale. The biggest GPT-4 model can only process ~50 pages of input text, and performance (measured by inference time and accuracy) degrades badly when approach the limit `context window`.
+    - `In-context learning`: instead of sending all the documents with each LLM prompt, it sends only a handful of the most relevant documents. And the most relevant documents are determined with the help of . . . you guessed it . . . LLMs.
+
+in-context learning method
+
+- One shot: creating an initial prompt that states the task to be completed and includes a single example question with answer followed by a second question to be answered by the LLM
+
+- **In-context learning 的优势**:
+
+  - 若干示例组成的演示是用自然语言撰写的，这提供了一个跟 LLM 交流的可解释性手段，通过这些示例跟模版让语言模型更容易利用到人类的知识；
+  - 类似于人类类比学习的决策过程，举一反三；
+  - 相比于监督学习，它不需要模型训练，减小了计算模型适配新任务的计算成本，更容易应用到更多真实场景。
+
+- **In-context learning 的流程**:
+
+  - In-context learning 可以分为两部分，分为作用于 training 跟 inference 阶段:
+
+  - **Training**:
+
+    - 在推理前，通过持续学习让语言模型的 ICL 能力得到进一步提升，这个过程称之为**model warmup**(模型预热)，model warmup 会优化语言模型对应参数或者新增参数，区别于传统的 Fine-Tuning，Fine-Tuning 旨在提升 LLM 在特定任务上的表现，而 model warmup 则是提升模型整体的 ICL 性能。
+
+    - **Supervised in-context training**: 为了增强 ICL 的能力，研究人员提出了
+
+      - 通过构建 in-context 训练数据，进而进行一系列有监督 in-context 微调以及多任务训练。由于预训练目标对于 In-context learning 并不是最优的，Sewon Min 等人提出了一种方法 `MetaICL`[《MetaICL: Learning to Learn In Context》](https://github.com/facebookresearch/MetaICL)，以消除预训练和下游 ICL 使用之间的差距。预训练 LLM 在具有演示样例的广泛的任务上进行训练，这提高了其 few-shot 能力，例如，`MetaICL`获得的性能与在 52 个独力数据集上进行有监督微调相当。
+
+      - 此外，还有一个研究方向，即有监督指令微调，也就是后面要讲到的 Instruction-Tuning。指令微调通过对任务指令进行训练增强了 LLM 的 ICL 能力。例如 Google 提出的`FLAN`方法[《FINETUNED LANGUAGE MODELS ARE ZERO-SHOT LEARNERS》](https://openreview.net/pdf?id=gEZrGCozdqR): 通过在由自然语言指令模板构建的 60 多个 NLP 数据集上调整 137B 参数量的 LaMDA-PT 模型，FLAN 方法可以改善 zero-shot 和 few-shot ICL 性能(具体可参考[Finetuned Language Models are Zero-shot Learners](https://zhuanlan.zhihu.com/p/538013856) [笔记 - Instruction Tuning 时代的模型](https://zhuanlan.zhihu.com/p/616830127))。与 MetaICL 为每个任务构建若干演示样例相比，指令微调主要考虑对任务的解释，并且易于扩展。
+
+    - **Self-supervised in-context training**:
+
+      - Supervised Learning 指的是有一个 model，输入是 $x$ ，输出是 $y$ ，要有 label(标签)才可以训练 Supervised Learning，
+
+      - 比如让机器看一篇文章，决定文章是正面的还是负面的，得先找一大堆文章，标注文章是正面的还是负面的，正面负面就是 label。
+
+      - Self-Supervised Learning 就是机器自己在没有 label 的情况下，想办法做 Supervised Learning。
+        - 比如把没有标注的语料分成两部分，一部分作为模型的输入，一部分作为模型的输出，模型的输出和 label 越接近越好，具体参见[2022 李宏毅机器学习深度学习学习笔记第四周–Self-Supervised Learning](https://blog.csdn.net/qq_45612705/article/details/124755797)。
+        - 引申到 self-supervised in-context training，是根据 ICL 的格式将原始数据转换成 input-output 的 pair 对数据后利用四个自监督目标进行训练，包括掩`[Mask]`预测，分类任务等。
+      - `Supervised ICT`跟`self-supervised ICT`旨在通过引入更加接近于`ICT`的训练目标从而`缩小预训练跟ICL之间的差距`。
+        - 比起需要示例的 In-context learning，只涉及任务描述的 Instruction-Tuning 更加简单且受欢迎。
+        - 另外，在 model warmup 这个阶段，语言模型只需要从少量数据训练就能明显提升 ICL 能力，不断增加相关数据并不能带来 ICL 能力的持续提升。
+        - 从某种角度上看，这些方法通过更新模型参数可以提升 ICL 能力也表明了原始的 LLM 具备这种潜力。
+        - 虽然 ICL 不要求 model warmup，但是一般推荐在推理前增加一个 model warmup 过程
+        - ICL 最初的含义指的是大规模语言模型涌现出一种能力: 不需要更新模型参数，仅仅修改输入 prompt 即添加一些例子就可以提升模型的学习能力。ICL 相比之前需要对模型在某个特定下游任务进行 Fine-Tuning 大大节省了成本。之后 ICL 问题演变成研究怎么提升模型以具备更好更通用的 ICL 能力，这里就可以用上之前 Fine-Tuning 的方式，即指 model warmup 阶段对模型更新参数
+
+    - **Inference**:
+
+      - 很多研究表明 LLM 的 ICL 性能严重依赖于演示示例的格式，以及示例顺序等等，在使用目前很多 LLM 模型时我们也会发现，在推理时，同一个问题如果加上不同的示例，可能会得到不同的模型生成结果。
+
+      - **Demonstration Selection**: 对于 ICL 而言，哪些样本是好的？语言模型的输入长度是有限制的，如何从众多的样本中挑选其中合适的部分作为示例这个过程非常重要。按照选择的方法主要可以分为无监督跟有监督两种。
+
+        - **无监督方法**: 首先就是根据句向量距离或者互信息等方式选择跟当前输入 x 最相似的样本作为演示示例，另外还有利用自适应方法去选择最佳的示例排列，有的方法还会考虑到演示示例的泛化能力，尽可能去提高示例的多样性。除了上述这些从人工撰写的样本中选择示例的方式外，还可以利用语言模型自身去生成合适的演示示例。
+
+        - **监督方法**: 第一种是先利用无监督检索器召回若干相似的样本，再通过监督学习训练的 Efficient Prompt Retriever 进行打分，从而筛选出最合适的样本。此外还有基于 Prompt Tuning 跟强化学习的方式去选择样本。
+
+      - **Demonstration Ordering**: 挑选完演示示例后，如何对其进行排序也非常重要。排序的方法既有不需要训练的，也有根据示例跟当前输入距离远近进行排序的，也可以根据自定义的熵指标进行重排。
+
+      - **Demonstration Formatting**:
+        - 如何设计演示示例的格式？最简单的方式就是将示例们的 $(x,y)$ 对按照顺序直接拼接到一起。
+        - 但是对于复杂的推理问题，语言模型很难直接根据 $x$ 推理出 $y$ ，这种格式就不适用了。
+        - 另外，有的研究旨在设计更好的任务指令 instruction 作为演示内容(即 Instruction-Tuning)。
+        - 对于这两类场景，除了人工撰写的方式外，还可以利用语言模型自身去生成对应的演示内容。
+
+- **In-context learning 的模式**:
+  - In-context learning 包括三种模式，分别称作 few-shot one-shot 以及 zero-shot，
+  - 三者的主要区别是 prompt 中包含的样本示例数量
+  - **Few-Shot**: 对下游任务，提供多条数据样例，论文中指出一般是 10-100 条；
+  - **One-Shot**: few-shot 的一种特殊情况，对下游任务，只提供一条数据样例；
+  - **Zero-Shot**: 是一种极端情况，对下游任务，不提供数据样例，只提供任务描述。
+
+参考论文:
+
+- [《A Survey on In-context Learning》](https://arxiv.org/pdf/2301.00234.pdf)
+- [《A Survey for In-context Learning》翻译](https://blog.csdn.net/qq_28385535/article/details/128789038)
+- [《译 Prompt Engineering: 循循善诱》](https://zhuanlan.zhihu.com/p/526299013)
+
+---
+
+###### Prefix-Tuning
 
 - Prefix-Tuning 也是一种 Prompt-Tuning
 - 是最早提出 soft-prompt 的论文之一[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://aclanthology.org/2021.acl-long.353.pdf)，斯坦福大学于 2021 年发表。
@@ -1803,23 +1450,143 @@ Sun (2023) benchmarked the Tree-of-Thought Prompting with large-scale experiment
   - 一种是自回归模型(例如 GPT-2)，在输入前添加一个前缀得到 $[PREFIX;x;y]$；
   - 另一种是 encoder-decoder 模型(例如 Bart)，在编码器和解码器前加前缀得到 $[PREFIX;x;PREFIX^{'};y]$ m
 
-- Prefix-Tuning 的流程, 以 GPT-2 的自回归语言模型为例:
 
-  - 对于传统的 GPT-2 模型来说，将输入 $x$ 和输出 $y$ 拼接为 $z\=[x;y]$，其中 $X_{idx}$ ​ 和 $Y_{idx}$ ​ 分别为输入和输出序列的索引， h i ∈ R d h*{i} \in R^{d} hi​∈Rd 是每个时间步 i i i 下的激活向量(隐藏层向量)， h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h*{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接， h i ( j ) h*{i}^{(j)} hi(j)​ 是时间步 i i i 的第 j j j 层激活层。自回归模型通过如下公式计算 $h*{i}$ ​，其中 ϕ \phi ϕ 是模型参数:
-    h i = L M ϕ ( z i , h < i )   h*{i} =LM*{\phi}(z*{i},h*{<i})\ hi​\=LMϕ​(zi​,h<i​) 
-    $h_{i}$ ​ 的最后一层，用来计算下一个 token 的概率分布:
-    p ϕ ( z i + 1 ∣ h ≤ i ) = s o f t m a x ( W ϕ h i ( n ) )   p*{\phi}(z*{i+1}|h*{≤i}) =softmax(W*{\phi}h*{i}^{(n)})\ pϕ​(zi+1​∣h≤i​)\=softmax(Wϕ​hi(n)​) 
-    其中 W ϕ W*{\phi} Wϕ​ 是将 h i ( n ) h*{i}^{(n)} hi(n)​ 根据词表大小进行映射。
-       在采用 Prefix-Tuning 技术后，则在输入前添加前缀，即将 prefix 和输入以及输出进行拼接得到 z = [ P R E F I X ; x ; y ] z=[PREFIX;x;y] z\=[PREFIX;x;y]， P i d x P*{idx} Pidx​ 为前缀序列的索引， ∣ P i d x ∣ |P*{idx}| ∣Pidx​∣ 为前缀序列的长度，这里需要注意的是，Prefix-Tuning 是在模型的每一层都添加 prefix(注意不是只有输入层，中间层也会添加 prefix，目的增加可训练参数)。前缀序列索引对应着由 θ \theta θ 参数化的向量矩阵 $P*{\theta}$ ​，维度为 ∣ P i d x ∣ × d i m ( h i ) |P*{idx}|\times dim(h*{i}) ∣Pidx​∣×dim(hi​)。隐层表示的计算如下式所示，若索引为前缀索引 P i d x P*{idx} Pidx​，直接从 $P*{\theta}$ ​ 复制对应的向量作为 $h_{i}$ ​(在模型每一层都添加前缀向量)；否则直接通过 LM 计算得到，同时，经过 LM 计算的 $h_{i}$ ​ 也依赖于其左侧的前缀参数 $P_{\theta}$ ​，即通过前缀来影响后续的序列激活向量值(隐层向量值)。
-    h i = { P θ [ i , : ] if    i ∈ P i d x L M ϕ ( z i , h < i ) otherwise h*{i}= \begin{cases} P*{\theta}[i,:]& \text{if} \ \ \ i\in P*{idx}\\ LM*{\phi}(z*{i},h*{<i})& \text{otherwise} \end{cases} hi​\={Pθ​[i,:]LMϕ​(zi​,h<i​)​if   i∈Pidx​otherwise​
-       在训练时，Prefix-Tuning 的优化目标与正常微调相同，但只需要更新前缀向量的参数。在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 $P_{\theta}^{'}$ ​ 和一个大型前馈神经网络 $\text{MLP}_{\theta}$ ​ 对 $P_{\theta}$ ​ 进行重参数化: P θ [ i , : ] = MLP θ ( P θ ′ [ i , : ] ) P*{\theta}[i,:]=\text{MLP}*{\theta}(P*{\theta}^{'}[i,:]) Pθ​[i,:]\=MLPθ​(Pθ′​[i,:])，可训练参数包括 $P*{\theta}^{'}$ ​ 和 $\text{MLP}_{\theta}$ ​ 的参数，其中， $P_{\theta}$ ​ 和 $P_{\theta}^{'}$ ​ 有相同的行维度(也就是相同的 prefix length), 但不同的列维度。在训练时，LM 的参数 ϕ \phi ϕ 被固定，只有前缀参数 $P_{\theta}^{'}$ ​ 和 $\text{MLP}_{\theta}$ ​ 的参数为可训练的参数。训练完成后， $P_{\theta}^{'}$ ​ 和 $\text{MLP}_{\theta}$ ​ 的参数被丢掉，只有前缀参数 $P_{\theta}$ ​ 被保存。
-    ![pic](https://img-blog.csdnimg.cn/f1daf9e5ba2047dc992df48fb965abe7.png#pic_center)
+Prefix-Tuning 的流程, 以 GPT-2 的自回归语言模型为例:
 
-- 上述内容详细介绍了 Prefix-Tuning 的主要训练流程，下面我们给出论文中通过实验得出的三个主要结论:
 
-  - **方法有效性**: 作者采用了 Table-To-Text 与 Summarization 作为实验任务，在 Table-To-Text 任务上，Prefix-Tuning 在优化相同参数的情况下结果大幅优于 Adapter，并与全参数微调几乎相同。而在 Summarization 任务上，Prefix-Tuning 方法在使用 2%参数与 0.1%参数时略微差于全参数微调，但仍优于 Adapter 微调；
-  - **Full vs Embedding-only**: Embedding-only 方法只在 embedding 层添加前缀向量并优化，而 Full 代表的 Prefix-Tuning 不仅在 embedding 层添加前缀参数，还在模型所有层添加前缀并优化。实验得到一个不同方法的表达能力增强链条: discrete prompting < embedding-only < Prefix-Tuning。同时，Prefix-Tuning 可以直接修改模型更深层的表示，避免了跨越网络深度的长计算路径问题；
-  - **Prefix-Tuning vs Infix-Tuning**: 通过将可训练的参数放置在 $x$ 和 $y$ 的中间来研究可训练参数位置对性能的影响，即 $[x;Infix;y]$ ，这种方式成为 infix-tuning。实验表明 Prefix-Tuning 性能好于 infix-tuning，因为 prefix 能够同时影响 $x$ 和 $y$ 的隐层向量，而 infix 只能够影响 $y$ 的隐层向量。
+- 对于传统的 GPT-2 模型来说，将输入 $x$ 和输出 $y$ 拼接为 $z\=[x;y]$，
+  - 其中 $X_{idx}$ ​ 和 $Y_{idx}$ ​ 分别为输入和输出序列的索引，
+  - h i ∈ R d h*{i} \in R^{d} hi​∈Rd 是每个时间步 i i i 下的激活向量(隐藏层向量)，
+  - h i = [ h i ( 1 ) ; … … ; h i ( n ) ] h*{i}=[h_{i}^{(1)}; ……;h_{i}^{(n)}] hi​\=[hi(1)​;……;hi(n)​]表示在当前时间步的所有激活层的拼接，
+  - h i ( j ) h*{i}^{(j)} hi(j)​ 是时间步 i i i 的第 j j j 层激活层。
+  - 自回归模型通过如下公式计算 $h*{i}$ ​，其中 ϕ \phi ϕ 是模型参数:
+    - h i = L M ϕ ( z i , h < i )  
+    - h*{i} =LM*{\phi}(z*{i},h*{<i})\
+    - hi​\=LMϕ​(zi​,h<i​) 
+    - $h_{i}$ ​ 的最后一层，用来计算下一个 token 的概率分布:
+    - p ϕ ( z i + 1 ∣ h ≤ i ) = s o f t m a x ( W ϕ h i ( n ) )  
+    - p*{\phi}(z*{i+1}|h*{≤i}) =softmax(W*{\phi}h*{i}^{(n)})\
+    - pϕ​(zi+1​∣h≤i​)\=softmax(Wϕ​hi(n)​) 
+    - 其中 W ϕ W*{\phi} Wϕ​ 是将 h i ( n ) h*{i}^{(n)} hi(n)​ 根据词表大小进行映射。
+
+  - 在采用 Prefix-Tuning 技术后，则在输入前添加前缀，
+    - 即将 prefix 和输入以及输出进行拼接得到 z = [ P R E F I X ; x ; y ] z=[PREFIX;x;y] z\=[PREFIX;x;y]，
+    - P i d x P*{idx} Pidx​ 为前缀序列的索引，
+    - ∣ P i d x ∣ |P*{idx}| ∣Pidx​∣ 为前缀序列的长度，
+    - 这里需要注意的是，Prefix-Tuning 是在模型的每一层都添加 prefix(注意不是只有输入层，中间层也会添加 prefix，目的增加可训练参数)。
+    - 前缀序列索引对应着由 θ \theta θ 参数化的向量矩阵 $P*{\theta}$ ​，维度为 ∣ P i d x ∣ × d i m ( h i ) |P*{idx}|\times dim(h*{i}) ∣Pidx​∣×dim(hi​)。
+    - 隐层表示的计算如下式所示，若索引为前缀索引 P i d x P*{idx} Pidx​，直接从 $P*{\theta}$ ​ 复制对应的向量作为 $h_{i}$ ​(在模型每一层都添加前缀向量)；否则直接通过 LM 计算得到，同时，经过 LM 计算的 $h_{i}$ ​ 也依赖于其左侧的前缀参数 $P_{\theta}$ ​，即通过前缀来影响后续的序列激活向量值(隐层向量值)。
+    - h i = { P θ [ i , : ] if    i ∈ P i d x L M ϕ ( z i , h < i ) otherwise h*{i}= \begin{cases} P*{\theta}[i,:]& \text{if} \ \ \ i\in P*{idx}\\ LM*{\phi}(z*{i},h*{<i})& \text{otherwise} \end{cases} hi​\={Pθ​[i,:]LMϕ​(zi​,h<i​)​if   i∈Pidx​otherwise​
+
+  - 在训练时，Prefix-Tuning 的优化目标与正常微调相同，但只需要更新前缀向量的参数。
+    - 在论文中，作者发现直接更新前缀向量的参数会导致训练的不稳定与结果的略微下降，因此采用了重参数化的方法，通过一个更小的矩阵 $P_{\theta}^{'}$ ​ 和一个大型前馈神经网络 $\text{MLP}_{\theta}$ ​ 对 $P_{\theta}$ ​ 进行重参数化: P θ [ i , : ] = MLP θ ( P θ ′ [ i , : ] ) P*{\theta}[i,:]=\text{MLP}*{\theta}(P*{\theta}^{'}[i,:]) Pθ​[i,:]\=MLPθ​(Pθ′​[i,:])，可训练参数包括 $P*{\theta}^{'}$ ​ 和 $\text{MLP}_{\theta}$ ​ 的参数
+    - 其中， $P_{\theta}$ ​ 和 $P_{\theta}^{'}$ ​ 有相同的行维度(也就是相同的 prefix length), 但不同的列维度。
+    - 在训练时，LM 的参数 ϕ \phi ϕ 被固定，只有前缀参数 $P_{\theta}^{'}$ ​ 和 $\text{MLP}_{\theta}$ ​ 的参数为可训练的参数。
+    - 训练完成后， $P_{\theta}^{'}$ ​ 和 $\text{MLP}_{\theta}$ ​ 的参数被丢掉，只有前缀参数 $P_{\theta}$ ​ 被保存。
+
+![pic](https://img-blog.csdnimg.cn/f1daf9e5ba2047dc992df48fb965abe7.png#pic_center)
+
+
+Prefix-Tuning 的主要训练流程结论:
+
+- **方法有效性**:
+  - 作者采用了 Table-To-Text 与 Summarization 作为实验任务，在 Table-To-Text 任务上，Prefix-Tuning 在优化相同参数的情况下结果大幅优于 Adapter，并与全参数微调几乎相同。
+  - 而在 Summarization 任务上，Prefix-Tuning 方法在使用 2%参数与 0.1%参数时略微差于全参数微调，但仍优于 Adapter 微调；
+
+- **Full vs Embedding-only**:
+  - Embedding-only 方法只在 embedding 层添加前缀向量并优化，而 Full 代表的 Prefix-Tuning 不仅在 embedding 层添加前缀参数，还在模型所有层添加前缀并优化。
+  - 实验得到一个不同方法的表达能力增强链条: discrete prompting < embedding-only < Prefix-Tuning。同时，Prefix-Tuning 可以直接修改模型更深层的表示，避免了跨越网络深度的长计算路径问题；
+
+- **Prefix-Tuning vs Infix-Tuning**:
+  - 通过将可训练的参数放置在 $x$ 和 $y$ 的中间来研究可训练参数位置对性能的影响，即 $[x;Infix;y]$ ，这种方式成为 infix-tuning。
+  - 实验表明 Prefix-Tuning 性能好于 infix-tuning，因为 prefix 能够同时影响 $x$ 和 $y$ 的隐层向量，而 infix 只能够影响 $y$ 的隐层向量。
+
+---
+
+###### Prompt-Tuning (提示微调)
+
+Not Prompt Engineering:
+- some limitations to prompt engineering
+- require a lot of manual effort to write and try different prompts
+- limited by the length of the context window
+- may still not achieve the performance at the end of the day
+
+![Screenshot 2024-09-10 at 17.20.21](/assets/img/Screenshot%202024-09-10%20at%2017.20.21.png)
+
+With prompt tuning
+- add additional trainable tokens to the prompt and leave it up to the supervised learning process to determine their optimal values.
+- The set of trainable tokens is called a **soft prompt**, and it gets prepended to `embedding vectors` that represent the input text.
+- The soft prompt vectors have the same length as the embedding vectors of the language tokens.
+- including somewhere between 20 and 100 virtual tokens can be sufficient for good performance.
+
+![Screenshot 2024-09-10 at 17.22.30](/assets/img/Screenshot%202024-09-10%20at%2017.22.30.png)
+
+The tokens that represent natural language are hard in the sense that they each correspond to a fixed location in the embedding vector space.
+- the soft prompts are not fixed discrete words of natural language, but virtual tokens that can take on any value within the continuous multidimensional embedding space.
+- And through supervised learning, the model learns the values for these virtual tokens that maximize performance for a given task.
+
+![Screenshot 2024-09-10 at 17.25.45](/assets/img/Screenshot%202024-09-10%20at%2017.25.45.png)
+
+![Screenshot 2024-09-10 at 17.26.04](/assets/img/Screenshot%202024-09-10%20at%2017.26.04.png)
+
+full fine tuning & prompt tuning
+- In full fine tuning
+  - the training data set consists of `input prompts and output completions or labels`.
+  - The weights of the llm are updated during supervised learning.
+- prompt tuning
+  - the weights of the llm are frozen and the underlying model does not get updated.
+  - Instead, the embedding vectors of the soft prompt gets updated over time to optimize the model's completion of the prompt.
+
+
+Prompt tuning
+- very parameter efficient strategy
+- only a few parameters are being trained.
+- can train a different set of soft prompts for each task and then easily swap them out at inference time. You can train a set of soft prompts for one task and a different set for another, simply change the soft prompt.
+- Soft prompts are very small on disk, so this kind of fine tuning is extremely efficient and flexible.
+
+how well does prompt tuning perform?
+
+![Screenshot 2024-09-10 at 17.30.19](/assets/img/Screenshot%202024-09-10%20at%2017.30.19.png)
+
+- once models have around 10 billion parameters, prompt tuning can be as effective as full fine tuning and offers a significant boost in performance over prompt engineering alone.
+
+
+interpretability of learned virtual tokens
+- because the soft prompt tokens can take any value within the continuous embedding vector space. The trained tokens don't correspond to any known token, word, or phrase in the vocabulary of the LLM. However, an analysis of the nearest neighbor tokens to the soft prompt location shows that they form tight semantic clusters. In other words, the words closest to the soft prompt tokens have similar meanings. The words identified usually have some meaning related to the task, suggesting that the prompts are learning word like representations.
+
+![Screenshot 2024-09-10 at 17.32.21](/assets/img/Screenshot%202024-09-10%20at%2017.32.21.png)
+
+![Screenshot 2024-09-10 at 17.32.35](/assets/img/Screenshot%202024-09-10%20at%2017.32.35.png)
+
+
+以二分类的情感分析作为例子:
+
+- 给定一个句子 `[CLS]` I like the Disney films very much. `[SEP]` ，
+
+- 传统的 Fine-Tuning 方法:
+
+  - 将其通过 Bert 获得 `[CLS]`表征之后再喂入新增加的`MLP`分类器进行二分类，预测该句子是积极的(positive)还是消极的(negative)
+  - 因此需要一定量的训练数据来训练。
+
+- 而 Prompt-Tuning 则执行如下步骤:
+
+  - **构建模板(Template Construction)**:
+
+    - 通过人工定义 自动搜索 文本生成等方法，生成与给定句子相关的一个含有`[Mask]`标记的模板。例如 It was `[Mask]`
+    - 并拼接到原始的文本中，获得 Prompt-Tuning 的输入: `[CLS]` I like the Disney films very much. It was `[Mask]`. `[SEP]`。
+    - 将其喂入 B 模型中，并复用预训练好的 MLM 分类器(在 huggingface 中为 BertForMaskedLM)，即可直接得到`[Mask]`预测的各个 token 的概率分布；
+
+  - **标签词映射(Label Word Verbalizer)**:
+
+    - 因为`[Mask]`部分我们只对部分词感兴趣，因此需要建立一个映射关系。
+    - 例如如果`[Mask]`预测的词是“great”，则认为是 positive 类，如果是“terrible”，则认为是 negative 类；
+    - 不同的句子应该有不同的 template 和 label word，因为每个句子可能期望预测出来的 label word 都不同，因此如何最大化的寻找当前任务更加合适的 template 和 label word 是 Prompt-Tuning 非常重要的挑战；
+
+  - **训练**:
+    - 根据 Verbalizer，则可以获得指定 label word 的预测概率分布，并采用交叉信息熵进行训练。
+    - 此时因为只对预训练好的 MLM head 进行微调，所以避免了过拟合问题。
+
+---
 
 parameter-efficient prompt tuning(下面简称为 Prompt Tuning)可以看作是 Prefix-Tuning 的简化版。
 
@@ -1856,32 +1623,213 @@ parameter-efficient prompt tuning(下面简称为 Prompt Tuning)可以看作是 
     - **多任务学习**: 多任务学习对 P-Tuning v2 方法来说是可选的，但可能是有帮助的。在对特定任务进行微调之前，用共享的 prompts 去进行多任务预训练，可以让 prompts 有比较好的初始化；
     - **分类方式选择**: 对标签分类任务，用原始的 CLS+linear head 模式替换 Prompt-Tuning 范式中使用的 Verbalizer+LM head 模式，不过效果并不明显，如下图。![pic](https://img-blog.csdnimg.cn/80409db3a7174e59a1c8263b430f7080.png#pic_center)
 
+##### Adapter-Tuning
+
 - **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项 2019 年的工作第一次提出了 Adapter 方法。与 Prefix-Tuning 和 Prompt Tuning 这类在输入前添加可训练 prompt embedding 参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 $\phi_{w}(x)$ ，对于 Adapter-Tuning，添加适配器之后模型函数更新为: ϕ w , w 0 ( x ) \phi*{w,w*{0}}(x) ϕw,w0​​(x)， w w w 是预训练模型的参数， $w_{0}$ ​ 是新添加的适配器的参数，在训练过程中， w w w 被固定，只有 $w_{0}$ ​ 被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w\_{0}|\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
-     论文中采用 Bert 作为实验模型，Adapter 模块被添加到每个 transformer 层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了 adapter 的结构，有不同见解可在评论区沟通): ![pic](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
+- 论文中采用 Bert 作为实验模型，Adapter 模块被添加到每个 transformer 层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了 adapter 的结构，有不同见解可在评论区沟通): ![pic](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
     Adapter 结构有两个特点: 较少的参数 在初始化时与原结构相似的输出。在实际微调时，由于采用了 down-project 与 up-project 的架构，在进行微调时，Adapter 会先将特征输入通过 down-project 映射到较低维度，再通过 up-project 映射回高维度，从而减少参数量。Adapter-Tuning 只需要训练原模型 0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量 Adapter 结构的参数即可。由于 Adapter 中存在残差连接结构，采用合适的小参数去初始化 Adapter 就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在 GLUE 测试集上，Adapter 用了更少量的参数达到了与传统 Fine-Tuning 方法接近的效果。
-- **LoRA**: LoRA 是又一种 PEFT 方法，微软于 2022 年发表[《LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS》](https://arxiv.org/pdf/2106.09685.pdf)。我们依照下图以及论文，简单介绍下 LoRA 的实现原理。![pic](https://img-blog.csdnimg.cn/f3c74f46e06242cd96e01da393d6bfb2.png#pic_center)
-    LoRA 原理其实并不复杂。简单理解一下，就是在模型的 Linear 层的旁边，增加一个“旁支”，这个“旁支”的作用，就是代替原有的参数矩阵 $W$ 进行训练。结合上图，我们来直观地理解一下这个过程，输入 x ∈ R d x\in R^{d} x∈Rd，举个例子，在普通的 transformer 模型中，这个 $x$ 可能是 embedding 的输出，也有可能是上一层 transformer layer 的输出，而 $d$ 一般就是 768 或者 1024。按照原本的路线，它应该只走左边的部分，也就是原有的模型部分。
-     而在 LoRA 的策略下，增加了右侧的“旁支”，也就是先用一个 Linear 层 $A$ ，将数据从 $d$ 维降到 $r$ ，这个 $r$ 也就是 LoRA 的秩，是 LoRA 中最重要的一个超参数。一般会远远小于 $d$ ，尤其是对于现在的大模型， $d$ 已经不止是 768 或者 1024，例如 LLaMA-7B，每一层 transformer 有 32 个 head，这样一来 $d$ 就达到了 4096。接着再用第二个 Linear 层 $B$，将数据从 $r$ 变回 $d$ 维。最后再将左右两部分的结果相加融合，就得到了输出的 hidden*state。
-     对于左右两个部分，右侧看起来像是左侧原有矩阵 $W$ 的分解，将参数量从 d × d d\times d d×d 变成了 d × r + d × r d\times r +d\times r d×r+d×r，在 r ≪ d r\ll d r≪d 的情况下，参数量就大大地降低了。熟悉各类预训练模型的同学可能会发现，这个思想其实与 Albert 的思想有异曲同工之处，在 Albert 中，作者通过两个策略降低了训练的参数量，其一是 Embedding 矩阵分解，其二是跨层参数共享。在 Albert 中，作者考虑到词表的维度很大，所以将 Embedding 矩阵分解成两个相对较小的矩阵，用来模拟 Embedding 矩阵的效果，这样一来需要训练的参数量就减少了很多。
-    LoRA 也是类似的思想，并且它不再局限于 Embedding 层，而是所有出现大矩阵的地方，理论上都可以用到这样的分解。但是与 Albert 不同的是，Albert 直接用两个小矩阵替换了原来的大矩阵，而 LoRA 保留了原来的矩阵 $W$ ，但是不让 $W$ 参与训练(Fine-Tuning 是更新权重矩阵 $W$ ，LoRA 中的 W = W 0 + B A W=W*{0}+BA W\=W0​+BA，但是 $W_{0}$ ​ 不参与更新，只更新 $A$ 和 $B$)，所以需要计算梯度的部分就只剩下旁支的 $A$ 和 $B$两个小矩阵。用随机高斯分布初始化 A，用 0 矩阵初始化 B，保证训练的开始此旁路矩阵是 0 矩阵，使得模型保留原有知识，在训练的初始阶段仍然表现良好。A 矩阵不采用 0 初始化主要是因为如果矩阵 A 也用 0 初始化，那么矩阵 B 梯度就始终为 0(对 B 求梯度，结果带有 A 矩阵，A 矩阵全 0，B 的梯度结果必然是 0)，无法更新参数。
-     从论文中的公式来看，在加入 LoRA 之前，模型训练的优化表示为:
-  m a x Φ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ ( y t ∣ x , y < t ) ) max*{\Phi} \sum*{(x,y \in Z)}\sum*{t=1}^{|y|}log(P*{\Phi}(y*{t}|x,y*{<t})) maxΦ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ​(yt​∣x,y<t​))
-  其中，模型的参数用 $\Phi$ 表示。
-     而加入了 LoRA 之后，模型的优化表示为:
-  m a x Θ ∑ ( x , y ∈ Z ) ∑ t = 1 ∣ y ∣ l o g ( P Φ 0 + Δ Φ ( Θ ) ( y t ∣ x , y < t ) ) max*{\Theta} \sum*{(x,y \in Z)}\sum*{t=1}^{|y|}log(P*{\Phi*{0}+\Delta\Phi(\Theta)}(y*{t}|x,y*{<t})) maxΘ​(x,y∈Z)∑​t\=1∑∣y∣​log(PΦ0​+ΔΦ(Θ)​(yt​∣x,y<t​))
-  其中，模型原有的参数是 Φ 0 \Phi*{0} Φ0​，LoRA 新增的参数是 Δ Φ ( Θ ) \Delta\Phi(\Theta) ΔΦ(Θ)。
-     从第二个式子可以看到，尽管参数看起来增加了 Δ Φ ( Θ ) \Delta\Phi(\Theta) ΔΦ(Θ)，但是从前面的 max 的目标来看，需要优化的参数只有 Θ \Theta Θ，而根 ∣ Θ ∣ ≪ ∣ Φ 0 ∣ |\Theta|\ll |\Phi*{0}| ∣Θ∣≪∣Φ0​∣，这就使得训练过程中，梯度计算量少了很多，所以就在低资源的情况下，我们可以只消耗 Θ \Theta Θ 这部分的资源，这样一来就可以在单卡低显存的情况下训练大模型了。这里再多说一点，通常在实际使用中，一般 LoRA 作用的矩阵是注意力机制部分的 W Q W*{Q} WQ​ W K W*{K} WK​ W V W*{V} WV​ 矩阵(即与输入相乘获取 Q Q Q K K K V V V 的权重矩阵。这三个权重矩阵的数量正常来说，分别和 heads 的数量相等，但在实际计算过程中，是将多个头的这三个权重矩阵分别进行了合并，因此每一个 transformer 层都只有一个 W Q W*{Q} WQ​ W K W*{K} WK​ W V W\_{V} WV​ 矩阵)。下面介绍下 LoRA 架构的优点:
-  - **全量微调的一般化**: LoRA 不要求权重矩阵的累积梯度更新在适配过程中具有满秩。当对所有权重矩阵应用 LoRA 并训练所有偏差时，将 LoRA 的秩 $r$ 设置为预训练权重矩阵的秩，就能大致恢复了全量微调的表现力。也就是说，随着增加可训练参数的数量，训练 LoRA 大致收敛于训练原始模型；
-  - **没有额外的推理延时**: 在生产部署时，可以明确地计算和存储 W = W 0 + B A W=W*{0}+BA W\=W0​+BA，并正常执行推理。当需要切换到另一个下游任务时，可以通过减去 B A BA BA 来恢复 $W*{0}$ ​，然后增加一个不同的 B ′ A ′ B^{'}A^{'} B′A′，这是一个只需要很少内存开销的快速运算。最重要的是，与 Fine-Tuning 的模型相比，LoRA 推理过程中没有引入任何额外的延迟(将 B A BA BA 加到原参数 $W_{0}$ ​ 上后，计算量是一致的)；
-  - **减少内存和存储资源消耗**: 对于用 Adam 训练的大型 Transformer，若 r ≪ d m o d e l r\ll d\_{model} r≪dmodel​，LoRA 减少 2/3 的显存用量(训练模型时，模型参数往往都会存储在显存中)，因为不需要存储已固定的预训练参数的优化器状态，可以用更少的 GPU 进行大模型训练。在 175B 的 GPT-3 上，训练期间的显存消耗从 1.2TB 减少到 350GB。在有且只有 query 和 value 矩阵被调整的情况下，checkpoint 的大小大约减少了 10000 倍(从 350GB 到 35MB)。另一个好处是，可以在部署时以更低的成本切换任务，只需更换 LoRA 的权重，而不是所有的参数。可以创建许多定制的模型，这些模型可以在将预训练模型的权重存储在显存中的机器上进行实时切换。在 175B 的 GPT-3 上训练时，与完全微调相比，速度提高了 25%，因为我们不需要为绝大多数的参数计算梯度；
-  - **更长的输入**: 相较 P-Tuning 等 soft-prompt 方法，LoRA 最明显的优势，就是不会占用输入 token 的长度。
-- **AdaLoRA**: AdaLoRA 是发表于 2023 年 3 月[《ADAPTIVE BUDGET ALLOCATION FOR PARAMETEREFFICIENT FINE-TUNING》](https://arxiv.org/pdf/2303.10512.pdf)，论文并未仔细阅读，简单来说，论文中发现对不同类型权重矩阵或者不同层的权重矩阵应用 LoRA 方法，产生的效果是不同的，如下图所示。![pic](https://img-blog.csdnimg.cn/f8722ab2b3d84dceb9e428a1354c8a65.png#pic_center)
-     在参数预算有限的情况下(例如限定模型可微调参数的数量)，如何智能的选取更重要的参数进行更新，显得尤为重要。论文中提出的解决办法，是先对 LoRA 对应的权重矩阵进行 SVD 分解，即:
-  W = W 0 + Δ = W 0 + B A = W 0 + P Λ Q   W=W*{0}+\Delta=W*{0}+BA=W\_{0}+P\Lambda Q\ W\=W0​+Δ\=W0​+BA\=W0​+PΛQ 
-  其中: Δ \Delta Δ 称为增量矩阵， W ∈ R d 1 × d 2 W\in R^{d1 \times d2} W∈Rd1×d2， P ∈ R d 1 × r P\in R^{d1 \times r} P∈Rd1×r， Q ∈ R r × d 2 Q\in R^{r \times d2} Q∈Rr×d2， Λ ∈ R r × r \Lambda\in R^{r \times r} Λ∈Rr×r， r ≪ m i n ( d 1 , d 2 ) r\ll min(d1,d2) r≪min(d1,d2)。再根据重要性指标动态地调整每个增量矩阵中奇异值的大小。这样可以使得在微调过程中只更新那些对模型性能贡献较大或必要的参数，从而提高了模型性能和参数效率。具体可参考论文简介[ADAPTIVE BUDGET ALLOCATION FOR PARAMETER- EFFICIENT FINE-TUNING](https://zhuanlan.zhihu.com/p/628259936) 。
+
+#### Reparameterization
+
+##### LoRA
+
+- Low-rank Adaptatio
+
+- a parameter-efficient fine-tuning technique that falls into the re-parameterization category
+
+- 微软于 2022 年发表[《LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS》](https://arxiv.org/pdf/2106.09685.pdf)。
+
+![pic](https://img-blog.csdnimg.cn/f3c74f46e06242cd96e01da393d6bfb2.png#pic_center)
+
+LoRA 的实现原理:
+
+- 在模型的 Linear 层的旁边，增加一个“旁支”
+  - 这个“旁支”的作用，就是代替原有的参数矩阵 $W$ 进行训练。
+
+- 输入 $x\in R^{d}$
+
+- 举个例子，在普通的 transformer 模型中:
+  - $x$ 可能是 embedding 的输出，也有可能是上一层 transformer layer 的输出
+  - $d$ 一般就是 768 或者 1024。
+
+- 按照原本的路线，它应该只走左边的部分，也就是原有的模型部分。
+
+- 而在 LoRA 的策略下，增加了右侧的“旁支”
+
+  - 先用一个 Linear 层 $A$ ，将数据从 $d$ 维降到 $r$
+    - $r$
+      - 也就是 LoRA 的秩，是 LoRA 中最重要的一个超参数。
+      - 一般会远远小于 $d$
+      - 尤其是对于现在的大模型， $d$ 已经不止是 768 或者 1024，
+      - 例如 LLaMA-7B，每一层 transformer 有 32 个 head，这样一来 $d$ 就达到了 4096。
+
+  - 接着再用第二个 Linear 层 $B$，将数据从 $r$ 变回 $d$ 维。
+
+  - 最后再将左右两部分的结果相加融合，就得到了输出的 $hidden*state$
+
+- 对于左右两个部分，右侧看起来像是左侧原有矩阵 $W$ 的分解，将参数量从 $d\times d$ 变成了 $d\times r +d\times r$
+  - 在 $r\ll d$ 的情况下，参数量就大大地降低了。
+
+  - 熟悉各类预训练模型的同学可能会发现，这个思想其实与 Albert 的思想有异曲同工之处
+    - Albert 通过两个策略降低了训练的参数量，其一是 Embedding 矩阵分解，其二是跨层参数共享。
+    - Albert 考虑到词表的维度很大，所以`将 Embedding 矩阵分解成两个相对较小的矩阵`，用来模拟 Embedding 矩阵的效果，这样一来需要训练的参数量就减少了很多。
+
+  - LoRA 也是类似的思想，并且它不再局限于 Embedding 层，而是所有出现大矩阵的地方，理论上都可以用到这样的分解。
+    - 与 Albert 不同的是:
+      - Albert 直接用两个小矩阵替换了原来的大矩阵，
+      - LoRA 保留了原来的矩阵 $W$ ，但是不让 $W$ 参与训练
+      - Fine-Tuning 是更新权重矩阵 $W$
+      - LoRA 中的 $W=W*{0}+BA$，但是 $W_{0}$ 不参与更新，只更新 $A$ 和 $B$
+
+    - 所以需要计算梯度的部分就只剩下旁支的 $A$ 和 $B$两个小矩阵。
+      - 用随机高斯分布初始化 A，用 0 矩阵初始化 B，保证训练的开始此旁路矩阵是 0 矩阵，使得模型保留原有知识，在训练的初始阶段仍然表现良好。
+      - A 矩阵不采用 0 初始化主要是因为如果矩阵 A 也用 0 初始化，那么矩阵 B 梯度就始终为 0(对 B 求梯度，结果带有 A 矩阵，A 矩阵全 0，B 的梯度结果必然是 0)，无法更新参数。
+
+- 从论文中的公式来看，在加入 LoRA 之前，模型训练的优化表示为:
+  - $max*{\Phi} \sum*{(x,y \in Z)}\sum*{t=1}^{|y|}log(P*{\Phi}(y*{t}|x,y*{<t}))$
+  - 其中，模型的参数用 $\Phi$ 表示。
+
+- 而加入了 LoRA 之后，模型的优化表示为:
+  - $max*{\Theta} \sum*{(x,y \in Z)}\sum*{t=1}^{|y|}log(P*{\Phi*{0}+\Delta\Phi(\Theta)}(y*{t}|x,y*{<t}))$
+  - 其中
+    - 模型原有的参数是 $\Phi*{0}$​
+    - LoRA 新增的参数是 $\Delta\Phi(\Theta)$
+
+  - 尽管参数看起来增加了 $\Delta\Phi(\Theta)$，但是从前面的 max 的目标来看，需要优化的参数只有 $\Theta$，而根 $|\Theta|\ll |\Phi*{0}|$, 这就使得训练过程中，梯度计算量少了很多
+
+  - 所以就在低资源的情况下，我们可以只消耗 $\Theta$ 这部分的资源，在单卡低显存的情况下训练大模型了。
+
+- 通常在实际使用中，一般 LoRA 作用的矩阵是注意力机制部分的 $W*{Q}$​ $W*{K}$​ $W*{V}$​ 矩阵
+  - 即与输入相乘获取 $Q K V$ 的权重矩阵。
+  - 这三个权重矩阵的数量正常来说，分别和 heads 的数量相等
+  - 但在实际计算过程中，是将多个头的这三个权重矩阵分别进行了合并
+  - 因此每一个 transformer 层都只有一个 $W*{Q}$ $W*{K}$ $W\_{V}$ 矩阵
+
+LoRA 架构的优点:
+
+- **全量微调的一般化**:
+  - 不要求权重矩阵的累积梯度更新在适配过程中具有满秩。
+  - 当对所有权重矩阵应用 LoRA 并训练所有偏差时，将 LoRA 的秩 $r$ 设置为预训练权重矩阵的秩，就能大致恢复了全量微调的表现力。
+  - 随着增加可训练参数的数量，训练 LoRA 大致收敛于训练原始模型；
+
+- **没有额外的推理延时**:
+  - 在生产部署时，可以明确地计算和存储 $W=W*{0}+BA$，并正常执行推理。
+  - 当需要切换到另一个下游任务时，可以通过减去 $BA$ 来恢复 $W*{0}$ ​，然后增加一个不同的 $B^{'}A^{'}$，这是一个只需要很少内存开销的快速运算。
+  - 最重要的是，与 Fine-Tuning 的模型相比，LoRA 推理过程中没有引入任何额外的延迟(将 $BA$ 加到原参数 $W_{0}$ 上后，计算量是一致的)；
+
+- **减少内存和存储资源消耗**:
+  - 对于用 Adam 训练的大型 Transformer，若 $r\ll d\_{model}$​，LoRA 减少 2/3 的显存用量(训练模型时，模型参数往往都会存储在显存中)
+  - 因为不需要存储已固定的预训练参数的优化器状态，可以用更少的 GPU 进行大模型训练。
+    - 在 175B 的 GPT-3 上，训练期间的显存消耗从 1.2TB 减少到 350GB。
+    - 在有且只有 query 和 value 矩阵被调整的情况下，checkpoint 的大小大约减少了 10000 倍(从 350GB 到 35MB)。
+  - 另一个好处是，可以在部署时以更低的成本切换任务，只需更换 LoRA 的权重，而不是所有的参数。
+    - 可以创建许多定制的模型，这些模型可以在将预训练模型的权重存储在显存中的机器上进行实时切换。
+    - 在 175B 的 GPT-3 上训练时，与完全微调相比，速度提高了 25%，因为我们不需要为绝大多数的参数计算梯度；
+
+- **更长的输入**:
+  - 相较 P-Tuning 等 soft-prompt 方法，LoRA 最明显的优势，就是不会占用输入 token 的长度。
+
+
+
+Transformer architecture:
+1. The input prompt is turned into tokens
+   1. ![Screenshot 2024-09-10 at 16.04.55](/assets/img/Screenshot%202024-09-10%20at%2016.04.55.png)
+
+2. tokens are then converted to embedding vectors and passed into the encoder and/or decoder parts of the transformer.
+   1. ![Screenshot 2024-09-10 at 14.24.37](/assets/img/Screenshot%202024-09-10%20at%2014.24.37.png)
+
+3. In both of these components, there are two kinds of neural networks; self-attention and feedforward networks.
+   1. The weights of these networks are learned during pre-training.
+   2. ![Screenshot 2024-09-10 at 16.28.53](/assets/img/Screenshot%202024-09-10%20at%2016.28.53.png)
+
+4. After the embedding vectors are created, they're fed into the self-attention layers where a series of weights are applied to calculate the attention scores.
+
+5. During full fine-tuning, every parameter in these layers is updated.
+   1. ![Screenshot 2024-09-10 at 14.24.59](/assets/img/Screenshot%202024-09-10%20at%2014.24.59.png)
+
+6. LoRA reduces the number of parameters to be trained during fine-tuning by freezing all of the original model parameters and then injecting a pair of rank decomposition matrices alongside the original weights.
+   1. ![Screenshot 2024-09-10 at 16.37.05](/assets/img/Screenshot%202024-09-10%20at%2016.37.05.png)
+   3. You can keep the original weights of the LLM frozen and train the smaller matrices using the same supervised learning process
+   4. ![Screenshot 2024-09-10 at 14.28.18](/assets/img/Screenshot%202024-09-10%20at%2014.28.18.png)
+   6. The dimensions of the smaller matrices are set so their product is a matrix with the same dimensions as the weights been modifying. the two low-rank matrices are multiplied together to create a matrix with the same dimensions as the frozen weights.
+   7. You then add this to the original weights and replace them in the model with these updated values.
+   8. You now have a LoRA fine-tuned model that can carry out the specific task.
+7. Because this model has the same number of parameters as the original, there is little to no impact on inference latency.
+   1. Researchers have found that applying LoRA to just the <font color=OrangeRed> self-attention layers </font> of the model is often enough to fine-tune for a task and achieve performance gains.
+   2. you can also use LoRA on other components like the feed-forward layers.
+
+8.  But since most of the parameters of LLMs are in the attention layers, you get the biggest savings in trainable parameters by applying LoRA to these weights matrices.
+
+A practical example using the transformer architecture described in the Attention is All You Need paper.
+- ![Screenshot 2024-09-10 at 14.27.24](/assets/img/Screenshot%202024-09-10%20at%2014.27.24.png)
+- The paper specifies that the transformer weights have dimensions of 512 by 64.
+- each weights matrix has 32,768 trainable parameters.
+- If use LoRA as a fine-tuning method with the rank 8
+  - you will train 2 small rank decomposition matrices whose small dimension is eight.
+  - Matrix A will have dimensions of 8 by 64, resulting in 512 total parameters.
+  - Matrix B will have dimensions of 512 by 8, or 4,096 trainable parameters.
+- By updating the weights of these new low-rank matrices instead of the original weights, you'll be training 4,608 parameters instead of 32,768 and 86% reduction.
+
+- Because LoRA allows you to significantly reduce the number of trainable parameters, you can often perform this method of parameter efficient fine tuning `with a single GPU and avoid the need for a distributed cluster of GPUs`.
+
+- Since the rank-decomposition matrices are small, you can fine-tune a different set for each task and then switch them out at inference time by updating the weights.
+  - Suppose you train a pair of LoRA matrices for a specific task; Task A. To carry out inference on this task, you would multiply these matrices together and then add the resulting matrix to the original frozen weights. You then take this new summed weights matrix and replace the original weights where they appear in the model. You can then use this model to carry out inference on Task A.
+  - If you want to carry out a different task, Task B, you simply take the LoRA matrices you trained for this task, calculate their product, and then add this matrix to the original weights and update the model again.
+  - ![Screenshot 2024-09-10 at 14.28.38](/assets/img/Screenshot%202024-09-10%20at%2014.28.38.png)
+
+- The memory required to store these LoRA matrices is very small. So you can use LoRA to train for many tasks. Switch out the weights when you need to use them, and avoid having to store multiple full-size versions of the LLM.
+
+How good are these models?
+
+![Screenshot 2024-09-10 at 14.32.01](/assets/img/Screenshot%202024-09-10%20at%2014.32.01.png)
+- fine-tuning the FLAN-T5 for dialogue summarization
+- baseline score for the FLAN-T5 base model and the summarization data set, the scores are fairly low. Next,
+- full fine-tuning on dialogue summarization
+  - With full fine-tuning, you update every way in the model during supervised learning.
+  - results in a much higher ROUGE 1 score increasing over the base FLAN-T5 model by 0.19.
+  - The additional round of fine-tuning has greatly improved the performance of the model on the summarization task.
+- LoRA fine-tune model.
+  - also resulted in a big boost in performance.
+  - a little lower than full fine-tuning, but not much.
+  - using LoRA for fine-tuning trained a much smaller number of parameters than full fine-tuning using significantly less compute, so this small trade-off in performance may well be worth it.
+
+how to choose the rank of the LoRA matrices.
+- the smaller the rank, the smaller the number of trainable parameters, and the bigger the savings on compute.
+- plateau in the loss value for ranks greater than 16. using larger LoRA matrices didn't improve performance.
+- ranks in the range of 4-32 can provide you with a good trade-off between reducing trainable parameters and preserving performance.
+
+![Screenshot 2024-09-10 at 14.33.08](/assets/img/Screenshot%202024-09-10%20at%2014.33.08.png)
+
+---
+
+##### AdaLoRA
+
+- 发表于 2023 年 3 月[《ADAPTIVE BUDGET ALLOCATION FOR PARAMETEREFFICIENT FINE-TUNING》](https://arxiv.org/pdf/2303.10512.pdf)
+- 论文中发现对不同类型权重矩阵或者不同层的权重矩阵应用 LoRA 方法，产生的效果是不同的
+
+![pic](https://img-blog.csdnimg.cn/f8722ab2b3d84dceb9e428a1354c8a65.png#pic_center)
+
+- 在参数预算有限的情况下(例如限定模型可微调参数的数量)，如何智能的选取更重要的参数进行更新，显得尤为重要。
+- 论文中提出的解决办法，是先对 LoRA 对应的权重矩阵进行 SVD 分解，即:
+  - $W=W*{0}+\Delta=W*{0}+BA=W\_{0}+P\Lambda Q$
+
+  - 其中: $\Delta$ 称为增量矩阵，
+    - $W\in R^{d1 \times d2}$
+    - $P\in R^{d1 \times r}$
+    - $Q\in R^{r \times d2}$
+    - $\Lambda\in R^{r \times r}$
+    - $r\ll min(d1,d2)$
+  - 再根据重要性指标动态地调整每个增量矩阵中奇异值的大小。
+  - 这样可以使得在微调过程中只更新那些对模型性能贡献较大或必要的参数，从而提高了模型性能和参数效率。
+  - 论文简介[ADAPTIVE BUDGET ALLOCATION FOR PARAMETER- EFFICIENT FINE-TUNING](https://zhuanlan.zhihu.com/p/628259936)
+
+---
+
+#### BitFit
+
 - **BitFit**: BitFit(Bias-term Fine-tuning)发表于 2022 年[BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models](https://arxiv.org/pdf/2106.10199.pdf)的思想更简单，其不需要对预训练模型做任何改动，只需要指定神经网络中的偏置(Bias)为可训练参数即可，BitFit 的参数量只有不到 2%，但是实验效果可以接近全量参数。
 
-##### 5.2 PEFT 实践
+#### 5.2 PEFT 实践
 
 **实验环境**: 2 张 A30 卡(单卡显存 24G)，CentOS7。
 
@@ -2357,7 +2305,7 @@ ChatGLM-6B+LoRA
                     for fp16_partitioned_group in self.fp16_partitioned_groups if len (fp16_partitioned_group) > 0
                 ])
 
-#### 大模型 Fine-Tuning 之分布式训练
+### 大模型 Fine-Tuning 之分布式训练
 
 按照并行方式，分布式训练一般分为数据并行和模型并行两种，当然也有数据并行和模型并行的混合模式。
 
@@ -2466,7 +2414,7 @@ ChatGLM-6B+LoRA
 
     - **混合精度训练**: 在某些模型中，FP16 矩阵乘法的过程中，需要利用 FP32 来进行矩阵乘法中间的累加(accumulated)，然后再将 FP32 的值转化为 FP16 进行存储。 换句不太严谨的话来说，也就是在内存中用 FP16 做储存和乘法从而加速计算，而用 FP32 做累加避免舍入误差。混合精度训练的策略有效地缓解了舍入误差的问题。
       ![pic](https://img-blog.csdnimg.cn/7e3880e734634b529b349774d713a3dc.png#pic_center)
-         在这里也就引出了，为什么网上大家都说，只有 Nvidia Volta 结构的拥有 Tensor Core 的 CPU(例如 V100)，才能利用 FP16 混合精度来进行加速。 那是因为 Tensor Core 能够保证 FP16 的矩阵相乘，利用 FP16 or FP32 来进行累加。在累加阶段能够使用 FP32 大幅减少混合精度训练的精度损失。而其他的 GPU 只能支持 FP16 的 multiply-add operation。这里直接贴出原文句子:
+    - 在这里也就引出了，为什么网上大家都说，只有 Nvidia Volta 结构的拥有 Tensor Core 的 CPU(例如 V100)，才能利用 FP16 混合精度来进行加速。 那是因为 Tensor Core 能够保证 FP16 的矩阵相乘，利用 FP16 or FP32 来进行累加。在累加阶段能够使用 FP32 大幅减少混合精度训练的精度损失。而其他的 GPU 只能支持 FP16 的 multiply-add operation。这里直接贴出原文句子:
 
       > Whereas previous GPUs supported only FP16 multiply-add operation, NVIDIA Volta GPUs introduce Tensor Cores that multiply FP16 input matrices andaccumulate products into either FP16 or FP32 outputs
 
@@ -2474,13 +2422,13 @@ ChatGLM-6B+LoRA
 
       可以看到，其他所有值(weights，activations， gradients)均使用 FP16 来存储，而唯独权重 weights 需要用 FP32 的格式额外备份一次。 这主要是因为，在更新权重的时候，往往公式: **权重 = 旧权重 + lr \ 梯度**，而在深度模型中，**lr \ 梯度**这个值往往是非常小的，如果利用 FP16 来进行相加的话， 则很可能会出现上面所说的『舍入误差』的这个问题，导致更新无效。因此上图中，通过将 weights 拷贝成 FP32 格式，并且确保整个更新(update)过程是在 FP32 格式下进行的，如下所示:
       w e i g h t 32 = w e i g h t 32 + η ⋅ g r a d i e n t 32 weight*{32}=weight*{32}+\eta \cdot gradient\_{32} weight32​\=weight32​+η⋅gradient32​
-         看到这里，可能有人提出这种 FP32 拷贝 weights 的方式，那岂不是使得内存占用反而更高了呢？是的，FP32 额外拷贝一份 weights 的确新增加了训练时候存储的占用。 但是实际上，在训练过程中，内存中占据大部分的基本都是 activations 的值，如下图所示。特别是在 batchsize 很大的情况下， activations 更是特别占据空间。 保存 activiations 主要是为了在 backward 的时候进行计算。因此，只要 activations 的值基本都是使用 FP16 来进行存储的话，则最终模型与 FP32 相比起来， 内存占用也基本能够减半。 ![pic](https://img-blog.csdnimg.cn/09703dfad812470bbc47fc5a3f9989ac.png#pic_center)
+    - 看到这里，可能有人提出这种 FP32 拷贝 weights 的方式，那岂不是使得内存占用反而更高了呢？是的，FP32 额外拷贝一份 weights 的确新增加了训练时候存储的占用。 但是实际上，在训练过程中，内存中占据大部分的基本都是 activations 的值，如下图所示。特别是在 batchsize 很大的情况下， activations 更是特别占据空间。 保存 activiations 主要是为了在 backward 的时候进行计算。因此，只要 activations 的值基本都是使用 FP16 来进行存储的话，则最终模型与 FP32 相比起来， 内存占用也基本能够减半。 ![pic](https://img-blog.csdnimg.cn/09703dfad812470bbc47fc5a3f9989ac.png#pic_center)
 
     - **损失放大(Loss Scale)**: 即使采用了混合精度训练，还是存在无法收敛的情况，原因是激活梯度的值太小，造成了下溢出(Underflow)。Loss Scale 主要是为了解决 FP16 underflow 的问题。刚才提到，训练到了后期，梯度(特别是激活函数平滑段的梯度)会特别小，如果用 FP16 来表示，则这些梯度都会变成 0，因此导致 FP16 表示容易产生 underflow 现象。
-         为了解决梯度过小的问题，论文中对计算出来的 loss 值进行 scale，由于链式法则的存在，loss 上的 scale 会作用在梯度上。这样比起对每个梯度进行 scale 更加划算。 scaled 过后的梯度，就会平移到 FP16 有效的展示范围内。
-         这样，scaled-gradient 就可以一直使用 FP16 进行存储了。只有在进行更新的时候，才会将 scaled-gradient 转化为 FP32，同时将 scale 抹去。论文指出， scale 并非对于所有网络而言都是必须的。论文给出 scale 的取值在 8 - 32k 之间皆可。
+    - 为了解决梯度过小的问题，论文中对计算出来的 loss 值进行 scale，由于链式法则的存在，loss 上的 scale 会作用在梯度上。这样比起对每个梯度进行 scale 更加划算。 scaled 过后的梯度，就会平移到 FP16 有效的展示范围内。
+    - 这样，scaled-gradient 就可以一直使用 FP16 进行存储了。只有在进行更新的时候，才会将 scaled-gradient 转化为 FP32，同时将 scale 抹去。论文指出， scale 并非对于所有网络而言都是必须的。论文给出 scale 的取值在 8 - 32k 之间皆可。
         Pytorch 可以通过使用 torch.cuda.amp.GradScaler，通过放大 loss 的值来防止梯度的 underflow(只在 BP 时传递梯度信息使用，真正更新权重时还是要把放大的梯度再 unscale 回去)
-         综上，损失放大的思路是:
+    - 综上，损失放大的思路是:
 
       - 反向传播前，将损失变化手动增大 2 k 2^{k} 2k 倍，因此反向传播时得到的中间变量(激活函数梯度)则不会溢出；
       - 反向传播后，将权重梯度缩小 2 k 2^{k} 2k 倍，恢复正常值。
@@ -2537,7 +2485,7 @@ ChatGLM-6B+LoRA
 
       现在，我们可以来计算模型在训练时需要的存储大小了，假设模型的参数 W 大小是 $\Phi$ (根据参数量预估显存占用的方法参见[参数量估计与显存估计](https://mingchao.wang/rJXF8VxX/)，这里简单提下，比如 6B 的模型，使用 FP16 方式载入显存，所需显存大小: 6B ∗ \ast ∗ 2 = 12G)，则训练时对应的存储如下:
       ![pic](https://img-blog.csdnimg.cn/647ac6be79b741adb9025bd9b6a964cc.jpeg#pic_center)
-         因为采用了 Adam 优化，所以才会出现 momentum 和 variance，当然你也可以选择别的优化办法，这里为了通用，模型必存的数据大小为 K Φ K\Phi KΦ，因此总的存储大小为 ( 2 + 2 + K ) Φ (2+2+K)\Phi (2+2+K)Φ。另外，这里暂不将 activations 纳入统计范围，原因是:
+    - 因为采用了 Adam 优化，所以才会出现 momentum 和 variance，当然你也可以选择别的优化办法，这里为了通用，模型必存的数据大小为 K Φ K\Phi KΦ，因此总的存储大小为 ( 2 + 2 + K ) Φ (2+2+K)\Phi (2+2+K)Φ。另外，这里暂不将 activations 纳入统计范围，原因是:
 
       - activations 不仅与模型参数相关，还与 batchsize 相关；
       - activations 的存储不是必须的。前文已经提到，存储 activations 只是为了在用链式法则做 backward 的过程中，计算梯度更快一些。但你永远可以通过只保留最初的输入 X，重新做 forward 来得到每一层的 activations(虽然实际中并不会这么极端)；
@@ -2704,7 +2652,7 @@ ChatGLM-6B+LoRA
 
 ---
 
-## 改進 LLM
+# 改進 LLM
 
 怎麼使用、使用哪個 LLM 來部屬產品？ [^如何改進LLM]
 
@@ -2733,7 +2681,7 @@ FSDL 的課程:
 
 ---
 
-### 從能找到的最強 LLM(GPT4)開始
+## 從能找到的最強 LLM(GPT4)開始
 
 - 不論如何，請從你手邊能找到的最強 LLM 開始產品
 - **對於任何一個 AI 產品而言，同時要面對兩個不確定性：1. 需求的不確定，2. 技術的不確定** 。
@@ -2749,7 +2697,7 @@ FSDL 的課程:
 
 ---
 
-#### 如果 LLM 沒有達成標準
+### 如果 LLM 沒有達成標準
 
 如果達成標準, 則思考更多商業上的問題
 
@@ -2773,7 +2721,7 @@ FSDL 的課程:
 
 ---
 
-#### 如果 LLM 沒有達成標準
+### 如果 LLM 沒有達成標準
 
 - 如果沒有達成標準，則需要思考技術上的改進策略。分析 LLM 失敗的原因。
 
@@ -2859,7 +2807,7 @@ FSDL 的課程:
 
 ---
 
-## LLM Evaluation
+# LLM Evaluation
 
 Basic:
 
@@ -2878,13 +2826,13 @@ Expert:
 
 ---
 
-## Traning Terms
+# Traning Terms
 
 Epoch vs Batch Size vs Iterations [^Epoch_BatchSize_Iterations]
 
 [^Epoch_BatchSize_Iterations]: Epoch vs Batch Size vs Iterations, https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9
 
-### Gradient Descent
+## Gradient Descent
 
 - It is an iterative optimization algorithm used in machine learning to find the best results (minima of a curve).
 
@@ -2909,7 +2857,7 @@ learning rate
 
 We need terminologies like epochs, batch size, iterations only when the data is too big which happens all the time in machine learning and we can’t pass all the data to the computer at once. So, to overcome this problem we need to divide the data into smaller sizes and give it to our computer one by one and update the weights of the neural networks at the end of every step to fit it to the data given.
 
-### Epochs
+## Epochs
 
 One Epoch is when `an ENTIRE dataset is passed forward and backward through the neural network only ONCE`.
 
@@ -2931,11 +2879,11 @@ One Epoch is when `an ENTIRE dataset is passed forward and backward through the 
 Right numbers of epochs?
 
 - The answer is different for different datasets
-- the numbers of epochs is related to how diverse your data is
+- the numbers of epochs is related to how diverse the data is
 - example:
-  - Do you have only black cats in your dataset or is it much more diverse dataset?
+  - Do you have only black cats in the dataset or is it much more diverse dataset?
 
-### Batch Size
+## Batch Size
 
 Total number of training examples present in a single batch.
 
@@ -2947,7 +2895,7 @@ Total number of training examples present in a single batch.
 
 - Just like you divide a big article into multiple sets/batches/parts like Introduction, Gradient descent, Epoch, Batch size and Iterations which makes it easy to read the entire article for the reader and understand it.
 
-### Iterations
+## Iterations
 
 Iterations is the number of batches needed to complete one epoch.
 
@@ -2962,7 +2910,7 @@ Iterations is the number of batches needed to complete one epoch.
 
 ---
 
-#### Q&A
+### Q&A
 
 - nB 大小的模型，训练和推理时，显存占用情况？
   - 推理时显存的下限是 2nGB ，至少要把模型加载完全；训练时，如果用 Adam 优化器，参考前文的 2+2+12 的公式，训练时显存下限是 16nGB，需要把模型参数 梯度和优化器状态加载进来。

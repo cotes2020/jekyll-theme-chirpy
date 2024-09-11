@@ -8,30 +8,120 @@ tags: [AI, ML]
 ---
 
 - [LLM - Pre-training llms](#llm---pre-training-llms)
+  - [Model Architecture](#model-architecture)
+    - [Encoder-only models](#encoder-only-models)
+    - [Decoder-only models](#decoder-only-models)
+    - [Encoder-Decoder models](#encoder-decoder-models)
   - [Pre-training llms](#pre-training-llms)
-    - [Model Architecture and Pre-training objective](#model-architecture-and-pre-training-objective)
-      - [Computational challenges of training LLMs](#computational-challenges-of-training-llms)
-        - [quantization](#quantization)
-    - [Efficient multi-GPU compute strategies](#efficient-multi-gpu-compute-strategies)
-      - [DDP (distributed data-parallel)](#ddp-distributed-data-parallel)
-      - [FSDP (Fully sharded data parallel)](#fsdp-fully-sharded-data-parallel)
-      - [comparison](#comparison)
-    - [Scaling laws and compute-optimal models](#scaling-laws-and-compute-optimal-models)
-      - [unit of compute that quantifies the required resources](#unit-of-compute-that-quantifies-the-required-resources)
-        - [petaFLOP](#petaflop)
-        - [training dataset size, model size and compute budget](#training-dataset-size-model-size-and-compute-budget)
-    - [Pre-training for domain adaptation](#pre-training-for-domain-adaptation)
-      - [BloombergGPT](#bloomberggpt)
+    - [Pre-training objective](#pre-training-objective)
+    - [Computational challenges of training LLMs](#computational-challenges-of-training-llms)
+      - [quantization](#quantization)
+  - [Efficient multi-GPU compute strategies](#efficient-multi-gpu-compute-strategies)
+    - [DDP (distributed data-parallel)](#ddp-distributed-data-parallel)
+    - [FSDP (Fully sharded data parallel)](#fsdp-fully-sharded-data-parallel)
+    - [comparison](#comparison)
+  - [Scaling laws and compute-optimal models](#scaling-laws-and-compute-optimal-models)
+    - [unit of compute that quantifies the required resources](#unit-of-compute-that-quantifies-the-required-resources)
+      - [petaFLOP](#petaflop)
+      - [training dataset size, model size and compute budget](#training-dataset-size-model-size-and-compute-budget)
+  - [Pre-training for domain adaptation](#pre-training-for-domain-adaptation)
+    - [BloombergGPT](#bloomberggpt)
 
 ---
 
 # LLM - Pre-training llms
 
-## Pre-training llms
-
 Source:
 
 - [coursera:generative-ai-with-llms](https://www.coursera.org/learn/generative-ai-with-llms/lecture/2T3Au/pre-training-large-language-models)
+
+---
+
+## Model Architecture
+
+3 variance of the transformer model:
+- encoder-only, encoder-decoder models, and decode-only.
+
+![Screenshot 2024-05-01 at 11.29.07](/assets/img/Screenshot%202024-05-01%20at%2011.29.07.png)
+
+- Each of these is trained on a different objective, and so learns how to carry out different tasks.
+  - **Autoencoding models**: pre-trained using `masked language modeling`, correspond to the encoder part of the original transformer architecture, and are often used with `sentence classification or token classification`.
+  - **Autoregressive models**: pre-trained using `causal language modeling`, make use of the decoder component of the original transformer architecture, and often used for `text generation`.
+  - **Sequence-to-sequence models**: use both the encoder and decoder part off the original transformer architecture. The exact details of the pre-training objective vary from model to model. often used for `translation, summarization, and question-answering`
+
+![Screenshot 2024-05-01 at 11.34.13](/assets/img/Screenshot%202024-05-01%20at%2011.34.13.png)
+
+---
+
+### Encoder-only models
+
+- <font color=LightSlateBlue> Encoder-only models </font>
+
+  - also known as `Autoencoding models`
+  - pre-trained using `masked language modeling`.
+  - This is also called a `denoising objective`.
+  - tokens in the input sequence are randomly mask, and the training objective is to <font color=LightSlateBlue> predict the mask tokens in order to reconstruct the original sentence. </font>.
+  - Autoencoding models spilled bi-directional representations of the input sequence, meaning that the model has an understanding of the full context of a token and not just of the words that come before.
+
+  - Encoder-only models are ideally suited to task that benefit from this <Font color=OrangeRed> bi-directional </font> contexts.
+    - carry out sentence classification tasks, for example, sentiment analysis or token-level tasks like <font color=OrangeRed> named entity recognition or word classification. </font>
+    - autoencoder model: BERT and RoBERTa.
+
+![Screenshot 2024-05-01 at 11.29.41](/assets/img/Screenshot%202024-05-01%20at%2011.29.41.png)
+
+![Screenshot 2024-05-01 at 11.30.18](/assets/img/Screenshot%202024-05-01%20at%2011.30.18.png)
+
+---
+
+### Decoder-only models
+
+- <font color=LightSlateBlue> decoder-only </font>
+
+  - `autoregressive models`,
+  - pre-trained using `causal language modeling`.
+  - Here, the training objective is to <font color=LightSlateBlue> predict the next token based on the previous sequence of tokens </font>.
+  - `full language modeling`
+    - Decoder-based autoregressive models, mask the input sequence and can only see the input tokens leading up to the token in question.
+    - The model has no knowledge of the end of the sentence. The model then iterates over the input sequence one by one to predict the following token.
+    - In contrast to the encoder architecture, this means that the context is <Font color=OrangeRed> unidirectional </font>.
+  - By learning to predict the next token from a vast number of examples, the model `builds up a statistical representation of language`.
+
+  - Models of this type make use of the decoder component off the original architecture without the encoder.
+    - Decoder-only models are often used for <font color=OrangeRed> text generation </font>, although larger decoder-only models show strong zero-shot inference abilities, and can often perform a range of tasks well.
+    - decoder-based autoregressive models: GBT and BLOOM.
+
+![Screenshot 2024-05-01 at 11.31.14](/assets/img/Screenshot%202024-05-01%20at%2011.31.14.png)
+
+![Screenshot 2024-05-01 at 11.31.42](/assets/img/Screenshot%202024-05-01%20at%2011.31.42.png)
+
+---
+
+### Encoder-Decoder models
+
+- <font color=LightSlateBlue> encoder-decoder models </font>
+  - sequence-to-sequence model
+  - uses both the encoder and decoder parts off the original transformer architecture.
+  - The exact details of the pre-training objective vary from model to model.
+  - A popular sequence-to-sequence model T5,
+    - pre-trains the encoder using span corruption, which <font color=LightSlateBlue> masks random sequences of input tokens. Those mass sequences are then replaced with a unique Sentinel token (x). </font>.
+      - Sentinel tokens are special tokens added to the vocabulary, but do not correspond to any actual word from the input text
+    - The decoder is then tasked with <font color=LightSlateBlue> reconstructing the mask token sequences auto-regressively. The output is the Sentinel token followed by the predicted tokens </font>.
+  - use sequence-to-sequence models for <font color=OrangeRed> translation, summarization, and question-answering </font>. cases where you have a body of texts as both input and output.
+  - well-known encoder-decoder model: T5. BART
+
+![Screenshot 2024-05-01 at 11.33.09](/assets/img/Screenshot%202024-05-01%20at%2011.33.09.png)
+
+![Screenshot 2024-05-01 at 11.33.02](/assets/img/Screenshot%202024-05-01%20at%2011.33.02.png)
+
+- the larger a model, the more likely it is to work as you needed to without additional in-context learning or further training.
+- training these enormous models is difficult and very expensive, so that it may be infeasible to continuously train larger and larger models.
+
+![Screenshot 2024-05-01 at 11.36.11](/assets/img/Screenshot%202024-05-01%20at%2011.36.11.png)
+
+---
+
+## Pre-training llms
+
 
 > Once scoped out the use case, and determined how you'll need the LLM to work within the application, the next step is to select a model to work with.
 > the first choice will be to either work with an existing model, or train the own from scratch.
@@ -43,7 +133,7 @@ Source:
 
 ![Screenshot 2024-05-01 at 11.23.17](/assets/img/Screenshot%202024-05-01%20at%2011.23.17.png)
 
-### Model Architecture and Pre-training objective
+### Pre-training objective
 
 - High-level look at the **initial training process** for LLMs.
 
@@ -75,75 +165,9 @@ Source:
 
 ![Screenshot 2024-05-01 at 11.28.54](/assets/img/Screenshot%202024-05-01%20at%2011.28.54.png)
 
-- 3 variance of the transformer model;
-  - encoder-only, encoder-decoder models, and decode-only.
-    - Each of these is trained on a different objective, and so learns how to carry out different tasks.
-    - **Autoencoding models**: pre-trained using `masked language modeling`, correspond to the encoder part of the original transformer architecture, and are often used with `sentence classification or token classification`.
-    - **Autoregressive models**: pre-trained using `causal language modeling`, make use of the decoder component of the original transformer architecture, and often used for `text generation`.
-    - **Sequence-to-sequence models**: use both the encoder and decoder part off the original transformer architecture. The exact details of the pre-training objective vary from model to model. often used for `translation, summarization, and question-answering`.
-
-![Screenshot 2024-05-01 at 11.29.07](/assets/img/Screenshot%202024-05-01%20at%2011.29.07.png)
-
-![Screenshot 2024-05-01 at 11.34.13](/assets/img/Screenshot%202024-05-01%20at%2011.34.13.png)
-
-- <font color=LightSlateBlue> Encoder-only models </font>
-
-  - also known as `Autoencoding models`
-  - pre-trained using `masked language modeling`.
-  - This is also called a `denoising objective`.
-  - tokens in the input sequence are randomly mask, and the training objective is to <font color=LightSlateBlue> predict the mask tokens in order to reconstruct the original sentence. </font>.
-  - Autoencoding models spilled bi-directional representations of the input sequence, meaning that the model has an understanding of the full context of a token and not just of the words that come before.
-
-  - Encoder-only models are ideally suited to task that benefit from this <Font color=OrangeRed> bi-directional </font> contexts.
-    - carry out sentence classification tasks, for example, sentiment analysis or token-level tasks like <font color=OrangeRed> named entity recognition or word classification. </font>
-    - autoencoder model: BERT and RoBERTa.
-
-![Screenshot 2024-05-01 at 11.29.41](/assets/img/Screenshot%202024-05-01%20at%2011.29.41.png)
-
-![Screenshot 2024-05-01 at 11.30.18](/assets/img/Screenshot%202024-05-01%20at%2011.30.18.png)
-
-- <font color=LightSlateBlue> decoder-only </font>
-
-  - `autoregressive models`,
-  - pre-trained using `causal language modeling`.
-  - Here, the training objective is to <font color=LightSlateBlue> predict the next token based on the previous sequence of tokens </font>.
-  - `full language modeling`
-    - Decoder-based autoregressive models, mask the input sequence and can only see the input tokens leading up to the token in question.
-    - The model has no knowledge of the end of the sentence. The model then iterates over the input sequence one by one to predict the following token.
-    - In contrast to the encoder architecture, this means that the context is <Font color=OrangeRed> unidirectional </font>.
-  - By learning to predict the next token from a vast number of examples, the model `builds up a statistical representation of language`.
-
-  - Models of this type make use of the decoder component off the original architecture without the encoder.
-    - Decoder-only models are often used for <font color=OrangeRed> text generation </font>, although larger decoder-only models show strong zero-shot inference abilities, and can often perform a range of tasks well.
-    - decoder-based autoregressive models: GBT and BLOOM.
-
-![Screenshot 2024-05-01 at 11.31.14](/assets/img/Screenshot%202024-05-01%20at%2011.31.14.png)
-
-![Screenshot 2024-05-01 at 11.31.42](/assets/img/Screenshot%202024-05-01%20at%2011.31.42.png)
-
-- <font color=LightSlateBlue> encoder-decoder models </font>
-  - sequence-to-sequence model
-  - uses both the encoder and decoder parts off the original transformer architecture.
-  - The exact details of the pre-training objective vary from model to model.
-  - A popular sequence-to-sequence model T5,
-    - pre-trains the encoder using span corruption, which <font color=LightSlateBlue> masks random sequences of input tokens. Those mass sequences are then replaced with a unique Sentinel token (x). </font>.
-      - Sentinel tokens are special tokens added to the vocabulary, but do not correspond to any actual word from the input text
-    - The decoder is then tasked with <font color=LightSlateBlue> reconstructing the mask token sequences auto-regressively. The output is the Sentinel token followed by the predicted tokens </font>.
-  - use sequence-to-sequence models for <font color=OrangeRed> translation, summarization, and question-answering </font>. cases where you have a body of texts as both input and output.
-  - well-known encoder-decoder model: T5. BART
-
-![Screenshot 2024-05-01 at 11.33.09](/assets/img/Screenshot%202024-05-01%20at%2011.33.09.png)
-
-![Screenshot 2024-05-01 at 11.33.02](/assets/img/Screenshot%202024-05-01%20at%2011.33.02.png)
-
-- the larger a model, the more likely it is to work as you needed to without additional in-context learning or further training.
-- training these enormous models is difficult and very expensive, so that it may be infeasible to continuously train larger and larger models.
-
-![Screenshot 2024-05-01 at 11.36.11](/assets/img/Screenshot%202024-05-01%20at%2011.36.11.png)
-
 ---
 
-#### Computational challenges of training LLMs
+### Computational challenges of training LLMs
 
 One of the most common issues you still counter when you try to train llms is running out of memory.
 
@@ -171,7 +195,7 @@ to train the model, you'll have to plan for `the memory to store the model weigh
 
 To reduce the memory required for training
 
-##### quantization
+#### quantization
 
 ![Screenshot 2024-05-01 at 12.03.52](/assets/img/Screenshot%202024-05-01%20at%2012.03.52.png)
 
@@ -222,7 +246,7 @@ To reduce the memory required for training
 
 ---
 
-### Efficient multi-GPU compute strategies
+## Efficient multi-GPU compute strategies
 
 `multi GPU compute strategies`: distribute compute across GPUs, scale the model training efforts beyond a single GPU.
 - when the model becomes too big to fit in a single GPU.
@@ -239,7 +263,7 @@ To reduce the memory required for training
 
 
 
-#### DDP (distributed data-parallel)
+### DDP (distributed data-parallel)
 - `the model is still fits on a single GPU`
 - A popular implementation of this model replication technique
 - copy the model onto each GPU and sends batches of data to each of the GPUs in parallel.
@@ -248,7 +272,7 @@ To reduce the memory required for training
 - Note that DDP requires that the model weights and all of the additional parameters, gradients, and optimizer states that are needed for training, fit onto a single GPU.
 
 
-#### FSDP (Fully sharded data parallel)
+### FSDP (Fully sharded data parallel)
 - `models that are too big to fit on a single chip`
 - allows scale model training across GPUs `when the model doesn't fit in the memory of a single chip`.
 - A popular implementation of modal sharding
@@ -272,7 +296,7 @@ To reduce the memory required for training
     - hyper sharding
       - Any sharding factor in-between
 
-#### comparison
+### comparison
 
 > Recap
 > all of the memory components required for tżraining LLMzs,
@@ -347,7 +371,7 @@ Impact of using FSDP
 
 ---
 
-### Scaling laws and compute-optimal models
+## Scaling laws and compute-optimal models
 
 - Increasing the dataset size and the number of parameters in the model can improve performance.
 - The compute budget, including factors like available GPUs and training time, is an important consideration.
@@ -374,9 +398,9 @@ In theory, you could scale either of both of these quantities to improve perform
 
 ![Screenshot 2024-06-17 at 17.08.21](/assets/img/Screenshot%202024-06-17%20at%2017.08.21.png)
 
-#### unit of compute that quantifies the required resources
+### unit of compute that quantifies the required resources
 
-##### petaFLOP
+#### petaFLOP
 - A petaFLOP/s-day: measurement of the number of floating point operations performed at a rate of one petaFLOP per second, running for an entire day.
 - `1 petaFLOP/s = one quadrillion` floating point operations per second.
 - in training transformers, `1 petaFLOP/s = 8 NVIDIA V100 GPUs`, operating at full efficiency for one full day.
@@ -401,7 +425,7 @@ In theory, you could scale either of both of these quantities to improve perform
     - the larger GPT-3 175 billion parameter model required approximately 3,700 petaFLOP/s-day.
 
 
-##### training dataset size, model size and compute budget
+#### training dataset size, model size and compute budget
 
 - <font color=LightSlateBlue> Researchers have explored the trade-offs between training dataset size, model size and compute budget </font>.
 
@@ -470,7 +494,7 @@ ideal balance between these three quantities?
 
 ---
 
-### Pre-training for domain adaptation
+## Pre-training for domain adaptation
 
 使用现有LLM的优点
 - 在开发应用时，你通常会使用现有的LLM。这不仅节省了大量时间，还能更快地达到可行的原型阶段。然而，在某些情况下，你可能需要从头开始预训练自己的模型。这种情况通常出现在目标领域使用的词汇和语言结构在日常语言中不常见的情况下。
@@ -495,7 +519,7 @@ ideal balance between these three quantities?
 
 
 
-#### BloombergGPT
+### BloombergGPT
 
 - first announced in 2023 in a paper by Shijie Wu, Steven Lu, and colleagues at Bloomberg.
 - an example of a LLM that has been pretrained for a specific domain, finance.

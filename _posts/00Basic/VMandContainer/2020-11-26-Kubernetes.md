@@ -35,6 +35,20 @@ image:
   - [deploy](#deploy)
     - [Deployment](#deployment)
     - [StatefulSet](#statefulset)
+  - [Kubernetes Network connection](#kubernetes-network-connection)
+    - [Services](#services-1)
+    - [expose the Kubernetes services](#expose-the-kubernetes-services)
+      - [`ClusterIP`](#clusterip)
+      - [`NodePort`](#nodeport)
+      - [`LoadBalancer`](#loadbalancer)
+      - [`ExternalName`:](#externalname)
+      - [how to choose](#how-to-choose)
+      - [Deployment example](#deployment-example)
+        - [Create the ClusterIP Service](#create-the-clusterip-service)
+        - [Create a NodePort service](#create-a-nodeport-service)
+      - [Services and Labels](#services-and-labels)
+      - [多端口 Service](#多端口-service)
+      - [Port](#port)
   - [Network policy?](#network-policy)
     - [network policy security](#network-policy-security)
   - [monitor](#monitor)
@@ -880,6 +894,505 @@ kubectl get nodes -L role
 ```
 
 ### StatefulSet
+
+---
+
+## Kubernetes Network connection
+
+Service、Ingress和Endpoint是 Kubernetes 中三个重要的概念，它们都与容器编排和服务暴露相关。
+
+Service：
+- 一个 Kubernetes Service 代表着一个在集群内部的逻辑应用服务，
+- 可以是一组 Pod 的负载均衡，也可以是一个静态的网络地址。
+- Service 可以为多个 Pod 提供负载均衡服务，并且可以根据 selector 或 label 筛选出对应的 Pod。
+
+Endpoint：
+- Endpoint 是一组网络地址，通常是一组 Pod 的 IP 地址，用于访问 Service。
+- 为 Service 提供了实际的网络地址
+- Endpoint 会被自动创建并更新，以匹配与 Service 相关的 Pod 的 IP 地址和端口。
+
+Ingress：
+- Ingress 是 Kubernetes 中的一个 API 对象，用于将外部流量路由到集群内部的 Service。
+- 为集群外部的访问提供了路由和负载均衡的功能。
+- Ingress 能够对访问流量进行负载均衡、路由和 SSL/TLS 终止等操作。
+- Ingress 通常需要一个反向代理实现，比如 Nginx、Traefik 等。
+
+Example
+- 小明是一个非常喜欢吃糖果的小学生。有一天，小明发现了一家卖糖果的商店，他想去买糖果。但是商店非常大，有很多窗口卖糖果，小明不知道应该去哪个窗口买糖果。
+- 这时候，商店的老板出来了，他告诉小明，他可以通过三个标志来找到卖糖果的窗口，这三个标志分别是 Service、Endpoint 和 Ingress。
+
+- Service 就像商店的门面一样，它为所有的窗口提供了一个标志，让小明可以很容易地找到这家商店。`在 Kubernetes 中，Service 为所有的 Pod 提供了一个稳定的 IP 和端口`，这个 IP 和端口就是小明在商店门口看到的标志。
+
+- Endpoint 就像商店里面的窗口一样，它是实际卖糖果的地方。`在 Kubernetes 中，Endpoint 是由一组 IP 地址和端口号组成的列表，这些 IP 地址和端口号对应着 Pod 的网络地址和端口`。小明可以通过 Service 的标志找到商店，然后通过 Endpoint 的标志找到卖糖果的窗口。
+
+- Ingress 就像商店的导购一样，它可以帮助小明找到自己喜欢的糖果。`在 Kubernetes 中，Ingress 是一个 API 对象，用于将外部流量路由到集群内部的 Service`。通过 Ingress，小明可以将自己的请求路由到对应的 Service 上，并且支持负载均衡、SSL 终止、HTTP 重定向等功能。
+
+- 小明通过 Service 找到了商店，通过 Endpoint 找到了卖糖果的窗口，最终通过 Ingress 找到了自己喜欢的糖果。现在，小明可以在商店里面尽情地购买糖果了。
+
+
+### Services
+
+- an abstraction which defines a logical set of Pods and a policy by which to access them.
+
+- Kubernetes 之所以需要 Service，一方面是因为 Pod 的 IP 不是固定的，另一方面则是因为一组 Pod 实例之间总会有负载均衡的需求。
+
+- Services enable a loose coupling between dependent Pods.
+  - A Service is defined using YAML (preferred) or JSON, like all Kubernetes objects.
+  - The set of Pods targeted by a Service is usually determined by a LabelSelector
+
+- Services provide load-balanced access to specified Pods.
+  - 所谓 Service，其实就是 Kubernetes 为 Pod `分配的、固定的、基于 iptables（或者 IPVS）的访问入口`。
+  - 这些访问入口代理的 Pod 信息来自于 Etcd，由 kube-proxy 通过控制循环来维护。
+
+
+```yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+
+or
+
+# 没有 selector，就不会创建相关的 Endpoints 对象。手动将 Service 映射到指定的 Endpoints
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: my-service
+subsets:
+  - addresses:
+      - ip: 1.2.3.4
+    ports:
+      - port: 9376
+
+or
+
+# 没有 selector，也没有定义任何的端口和 Endpoint。
+# 相反地，对于运行在集群外部的服务，它通过返回该外部服务的别名这种方式来提供服务。
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
+```
+
+上述配置将创建一个
+- 名称为 “my-service” 的 Service 对象
+- 它会将请求代理到 9376 TCP 端口，具有标签 "app=MyApp" 的 Pod 上。
+- 这个 Service 将被指派一个 IP 地址（通常称为 “Cluster IP”），它会被服务的代理使用
+- Service selector的控制器将会持续扫描符合条件的Pod，扫描结果会更新到名称为my-service的Endpoints对象上。
+- Service 能够将一个接收端口映射到任意的 targetPort。
+  - 默认情况下，targetPort 将被设置为与 port 字段相同的值。
+  - targetPort 可以是一个字符串，引用了 backend Pod 的端口的名称。
+  - 但是，实际指派给该端口名称的端口号，在每个 backend Pod 中可能并不相同。
+  - 对于部署和设计 Service ，这种方式会提供更大的灵活性。例如，可以在 backend 软件下一个版本中，修改 Pod 暴露的端口，并不会中断客户端的调用。
+- Kubernetes Service 支持 TCP 和 UDP 协议，默认为 TCP 协议。
+
+- Although each Pod has a unique IP address, those IPs are not exposed outside the cluster without a Service.
+
+  - Services allow the applications to receive traffic.
+
+  - Services can be exposed in different ways by specifying a type in the `ServiceSpec`
+    - **ClusterIP**
+    - **NodePort**
+    - **LoadBalancer**
+    - **ExternalName**
+
+### expose the Kubernetes services
+
+#### `ClusterIP`
+- the default ServiceType.
+  - `curl CLUSTER-IP:port`
+- ClusterIP services are created by default when you create a service in Kubernetes.
+
+- exposes the service on a cluster's internal IP address.
+
+- Exposes the service on `an IP address` that is only accessible from within this cluster.
+  - cluster-internal IP address that is <font color=OrangeRed> only accessible to other pods in the cluster </font>.
+  - To access a ClusterIP service from outside the cluster, you would need to use a proxy.
+  - 在集群内部IP上公开服务。
+  - 选择使服务只能从群集中访问。
+
+- 可以从spec.clusterIp端口访问它。
+- 如果设置了`spec.ports [*].targetPort`，它将从端口路由到targetPort。
+
+- 调用 `kubectl get services` 时获得的CLUSTER-IP是内部在集群内分配给此服务的IP。
+
+
+#### `NodePort`
+
+- Superset of ClusterIP.
+
+- Exposes the service on `each node’s IP address at a specific static port number` in the cluster,
+
+- Exposes the Service on the `same port of each selected Node` in the cluster using NAT.
+
+- Makes a Service accessible from outside the cluster using
+   - `<NodeIP>:<NodePort>`
+   - pr `<ClusterIP>:<service.Port>`
+
+- 在每个Node的IP上公开静态端口（NodePort）服务。
+
+- 将自动创建NodePort服务到ClusterIP服务的路由。
+
+- 可以通过请求：来从群集外部请求NodePort服务。
+
+- 如果通过nodePort的方式从节点的外部IP访问此服务，它会将请求路由到`spec.clusterIp:spec.ports[*].port`，然后将其路由到`spec.ports [*].targetPort`，如果设置。也可以使用与ClusterIP相同的方式访问此服务。
+
+- NodeIP是节点的外部IP地址。无法从`:spec.ports [*].nodePort`访问您的服务。
+
+
+#### `LoadBalancer`
+
+- Superset of NodePort.
+
+- exposes the service externally using a load balancer service provided by a cloud provider.
+  - 使用云提供商的负载均衡器在外部公开服务。
+  - LoadBalancer services are typically created by the cloud provider that you are using for your Kubernetes cluster.
+
+- Creates an external load balancer in the current cloud (if supported) and assigns a `fixed, external IP` to the Service.
+  - public IP address that is accessible from outside the cluster.
+
+- 将自动创建外部负载均衡器到NodePort和ClusterIP服务的路由。
+
+- 可以从负载均衡器的IP地址访问此服务，该IP地址将您的请求路由到nodePort，而nodePort又将请求路由到clusterIP端口。可以像访问NodePort或ClusterIP服务一样访问此服务。
+
+- LoadBalancer services are created when you specify the type field in the service definition to be "LoadBalancer".
+
+#### `ExternalName`:
+
+- Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value.
+
+- No proxying of any kind is set up.
+
+- This type requires v1.7 or higher of kube-dns, or CoreDNS version 0.0.8 or higher.
+
+
+#### how to choose
+
+> The main difference between `ClusterIP` and `LoadBalancer` services in Kubernetes is that ClusterIP services are only accessible within the cluster, while LoadBalancer services are accessible from outside the cluster.
+
+Examples of use a **ClusterIP** service:
+
+1. When you are `developing and testing an application`, you might want to use a ClusterIP service so that <font color=LightSlateBlue> you can access the application from other pods in the cluster </font>.
+
+2. When you are `running a service` that is <font color=LightSlateBlue> only intended to be used by other services in the cluster </font>, you might want to use a ClusterIP service.
+
+Examples of use a **LoadBalancer** service:
+
+1. When you are `running a service` that is intended to be <font color=LightSlateBlue> used by users outside the cluster </font>, you might want to use a `LoadBalancer` service.
+
+2. When you are `running a service` that needs to <font color=LightSlateBlue> be accessible from multiple regions </font>, you might want to use a `LoadBalancer` service.
+
+ClusterIP services are more secure than LoadBalancer services
+- as they are not exposed to the public internet.
+- This means that they are less likely to be attacked by malicious actors.
+- However, ClusterIP services can only be accessed by other pods that are running in the same cluster. This can be a limitation if you need to access the service from outside the cluster.
+
+LoadBalancer services are less secure than ClusterIP services,
+- as they are exposed to the public internet.
+- This means that they are more likely to be attacked by malicious actors.
+- However, LoadBalancer services can be accessed from anywhere, which can be convenient for users.
+
+
+#### Deployment example
+
+```bash
+# Create a sample application
+# nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+# Create the deployment:
+kubectl apply -f nginx-deployment.yaml
+
+# Verify that the pods are running and have their own internal IP addresses:
+kubectl get pods -l 'app=nginx' -o wide | awk {'print $1" " $3 " " $6'} | column -t
+# NAME                               STATUS   IP
+# nginx-deployment-574b87c764-hcxdg  Running  192.168.20.8
+# nginx-deployment-574b87c764-xsn9s  Running  192.168.53.240
+```
+
+##### Create the ClusterIP Service
+
+```bash
+# Create a ClusterIP service
+# clusterip.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-cluster-ip
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+# create the object and apply the clusterip.yaml file,
+kubectl create -f clusterip.yaml
+
+# or
+
+# To expose a deployment of ClusterIP type, run the following imperative command:
+# expose command creates a service without creating a YAML file.
+# However, kubectl translates your imperative command into a declarative Kubernetes Deployment object.
+kubectl expose deployment nginx-deployment  \
+  --type=ClusterIP  \
+  --name=nginx-service-cluster-ip
+# Output:
+
+# Delete the ClusterIP service:
+kubectl delete service nginx-service-cluster-ip
+```
+
+
+##### Create a NodePort service
+
+```bash
+# create a NodePort service
+# nodeport.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+# create the object and apply the nodeport.yaml file
+kubectl create -f nodeport.yaml
+
+# or
+
+# To expose a deployment of NodePort type
+kubectl expose deployment nginx-deployment  \
+  --type=NodePort  \
+  --name=nginx-service-nodeport
+# Output:
+# service/nginx-service-nodeport exposed
+
+# Get information about nginx-service:
+kubectl get service/nginx-service-nodeport
+# Output:
+# NAME                     TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+# nginx-service-nodeport   NodePort   10.100.106.151   <none>        80:30994/TCP   27s
+
+# Important: The ServiceType is a NodePort and ClusterIP that are created automatically for the service.
+# The output from the preceding command shows that the NodePort service is exposed externally on the port (30994) of the available worker node's EC2 instance.
+# Before you access NodeIP:NodePort from outside the cluster, you must set the security group of the nodes to allow incoming traffic. You can allow incoming traffic through the port (30994) that's listed in the output of the preceding kubectl get service command.
+
+
+# If the node is in a public subnet and is reachable from the internet, check the node’s public IP address:
+kubectl get nodes -o wide |  awk {'print $1" " $2 " " $7'} | column -t
+# Output:
+# NAME                                      STATUS  EXTERNAL-IP
+# ip-10-0-3-226.eu-west-1.compute.internal  Ready   1.1.1.1
+# ip-10-1-3-107.eu-west-1.compute.internal  Ready   2.2.2.2
+
+-or-
+
+# If the node is in a private subnet and is reachable only inside or through a VPC, then check the node’s private IP address:
+kubectl get nodes -o wide |  awk {'print $1" " $2 " " $6'} | column -t
+# Output:
+# NAME                                      STATUS  INTERNAL-IP
+# ip-10-0-3-226.eu-west-1.compute.internal  Ready   10.0.3.226
+# ip-10-1-3-107.eu-west-1.compute.internal  Ready   10.1.3.107
+
+
+# Delete the NodePort service:
+kubectl delete service nginx-service-nodeport
+# Output:
+# service "nginx-service-nodeport" deleted
+```
+
+
+
+
+
+---
+
+#### Services and Labels
+- A Service routes traffic across a set of Pods.
+  - it allows pods to die and replicate in Kubernetes without impacting the application.
+  - Discovery and routing among dependent Pods (such as the frontend and backend components in an application) are handled by Kubernetes Services.
+
+- Services match a set of Pods using `labels and selectors`, a grouping primitive that allows logical operation on objects in Kubernetes.
+  - Labels are key/value pairs attached to objects and can be used in any number of ways:
+    - Designate objects for development, test, and production
+    - Embed version tags
+    - Classify an object using tags
+
+<font color=OrangeRed> pod access </font>
+
+- default:
+  - pods in a deployment is <font color=LightSlateBlue> only accessible inside the cluster </font>
+  - Every Pod in a cluster gets its own `unique cluster-wide IP address`. do not need to explicitly create links between Pods and almost never need to deal with mapping container ports to host ports.
+  - Pods can be treated much like VMs or physical hosts from the perspectives of port allocation, naming, service discovery, load balancing, application configuration, and migration.
+  - Kubernetes IP addresses exist at the Pod scope - `containers within a Pod share their network namespaces` - including their IP address and MAC address.
+  - This means that containers within a Pod can all reach each other's ports on localhost.
+  - This also means that containers within a Pod must coordinate port usage, but this is no different from processes in a VM. This is called the "IP-per-pod" model.
+
+
+Kubernetes networking addresses 4 concerns:
+- Containers within a Pod use networking to communicate via loopback.
+- Cluster networking provides communication between different Pods.
+- The Service API expose an application running in Pods to be reachable from outside the cluster.
+  - Ingress provides extra functionality specifically for exposing HTTP applications, websites and APIs.
+- can also use Services to publish services only for consumption inside the cluster.
+
+- To <font color=LightSlateBlue> make the pods in the deployment publicly available </font>
+    - to let people on the Internet to access the content in nginx web server
+    - <font color=OrangeRed> connect a load balancer </font> to it
+      ```bash
+      kubectl expose deployments nginx \
+        --port=80 --type=LoadBalancer
+      ```
+
+1. Kubernetes <font color=OrangeRed> creates a service with a fixed public IP address </font> for the pods.
+
+   - A <font color=OrangeRed> service </font>
+     - the fundamental way Kubernetes represents load balancing.
+     - A service groups a set of pods together and provides a stable endpoint for them.
+     - Suppose the application consisted of a front end and a back end.
+       - <font color=LightSlateBlue> the front end can access the back end using those pods' internal IP addresses </font>
+       - without the need for a service
+         - it would be a management problem. As deployments create and destroy pods, pods get their own IP addresses,
+         - those addresses don't remain stable over time.
+       - <font color=LightSlateBlue> Services provide a stable endpoint </font>
+
+2. Kubernetes <font color=LightSlateBlue> attach an external load balancer with a public IP address to the service </font>
+   - so that others outside the cluster can access it.
+
+3. Any client hits that IP address
+   - will be routed to a pod behind the service.
+
+- In GKE, this kind of load balancer is <font color=OrangeRed> network load balancer </font>
+  - one of the managed load balancing services that Compute Engine makes available to virtual machines.
+
+- <font color=OrangeRed> replica </font>
+  - This technique allows to share the load and scale the service in Kubernetes.
+
+- Endpoints，你可以使用
+  - 被 selector 选中的 Pod，就称为 Service 的 Endpoints
+
+---
+
+#### 多端口 Service
+
+很多 Service 需要暴露多个端口。对于这种情况，Kubernetes 支持在 Service 对象中定义多个端口。
+
+当使用多个端口时，必须给出所有的端口的名称，这样 Endpoint 就不会产生歧义
+
+```yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+    selector:
+      app: MyApp
+    ports:
+      - name: http
+        protocol: TCP
+        port: 80
+        targetPort: 9376
+      - name: https
+        protocol: TCP
+        port: 443
+        targetPort: 9377
+```
+
+---
+
+#### Port
+
+- Port
+  - exposes the Kubernetes service on the specified port within the cluster.
+  - Other pods within the cluster can communicate with this server on the specified port.
+  - the abstracted Service port, which can be any port other pods use to access the Service
+
+- TargetPort
+  - the port on which the service will send requests to, that the pod will be listening on.
+  - the application in the container will need to be listening on this port also.
+
+- NodePort
+  - exposes a service externally to the cluster by means of the target nodes IP address and the NodePort.
+  - NodePort is the default setting if the port field is not specified.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+spec:
+  type: NodePort
+  selector:
+  app: hello-world
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+    nodePort: 30036
+
+```
+
+- the hello-world service will be exposed
+  - internally to cluster applications on port 8080
+  - and externally to the cluster on the node IP address on 30036.
+- It will also forward requests to pods with the label “app: hello-world” on port 80.
+
+
+
+---
+
+
+
 
 ---
 
