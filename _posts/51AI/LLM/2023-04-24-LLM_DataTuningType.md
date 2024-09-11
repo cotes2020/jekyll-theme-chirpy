@@ -175,10 +175,10 @@ tags: [AI, ML]
 ### P-Tuning (Soft Prompt)
 
 - P-Tuning 是另一个具有代表性的连续提示方法
+- 谷歌于 2021 年发表
 
 - 主要针对的是 NLU 任务
-- 方法图如下所示(图中的 $P_{i}$ ​ 等价于上文的 $v_{i}$ ​，表示伪标记)，
-- 谷歌于 2021 年发表:
+- 方法图: 图中的 $P_{i}$ ​ 等价于上文的 $v_{i}$ ​，表示伪标记
 - ![P-Tuning结构](https://img-blog.csdnimg.cn/8356a2a18e0b4b4d8b64b9d947ed4423.png#pic_center)
 
 - P-Tuning 方法中的四个技巧点:
