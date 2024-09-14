@@ -1,7 +1,6 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import yaml from '@rollup/plugin-yaml';
 import fs from 'fs';
 import pkg from './package.json';
 
@@ -43,7 +42,7 @@ function build(filename, { src = SRC_DEFAULT, jekyll = false } = {}) {
       format: 'iife',
       name: 'Chirpy',
       banner,
-      sourcemap: !isProd
+      sourcemap: !isProd && !jekyll
     },
     watch: {
       include: `${src}/**`
@@ -55,7 +54,6 @@ function build(filename, { src = SRC_DEFAULT, jekyll = false } = {}) {
         plugins: ['@babel/plugin-transform-class-properties']
       }),
       nodeResolve(),
-      yaml(),
       isProd && terser(),
       jekyll && insertFrontmatter()
     ]
