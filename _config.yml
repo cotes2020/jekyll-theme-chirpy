@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: b_lyn.log # the main title
 
-tagline: 기억에서 사라지기 전에 소소하게 끄적끄적~~~!!! # it will display as the subtitle
+tagline: 기억에서 사라지기 전에 소소하게 끄적끄적 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
