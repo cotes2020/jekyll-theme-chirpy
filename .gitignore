@@ -25,3 +25,5 @@ package-lock.json
 # Misc
 _sass/dist
 assets/js/dist
+assets/img/favicons_old
+_posts_examples
