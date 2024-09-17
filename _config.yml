@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Braelyn Chen
+  name: b_lyn.log
   email: braelync@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -95,10 +95,10 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: "http://imlynmi.github.io"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+# avatar: "/commons/avatar.jpg"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
