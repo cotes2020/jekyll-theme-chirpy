@@ -1,3 +1,5 @@
+exclude: ".csv"
+
 repos:
   - repo: local
     hooks:
