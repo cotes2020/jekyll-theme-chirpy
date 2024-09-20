@@ -75,6 +75,27 @@ flowchart TD
 
     end
 
+    subgraph 영업보고["영업보고"]
+        pm0100["포트폴리오 정보"]
+        br0001["템플릿 관리(작성 및 확인)"]
+        br0012["포트폴리오 연락망"]
+        br0004["영업보고 요청"]
+        br0007["영업보고 검수"]
+        br0009["심사역 의견 작성"]
+        br0011["영업보고서 생성"]
+
+
+        vs0009 --> pm0100
+        pm0100 --> br0012
+        br0001 --> br0004
+        br0012 --> br0004
+        br0004 --> br0007
+        br0007 --> br0009
+        br0009 --> br0011
+
+    end
+
+
     subgraph 투자변동관리["투변"]
         pm0001["거래원장관리"]
         pm0004["거래등록"]
@@ -94,6 +115,8 @@ flowchart TD
         ex0009a["회수 운용지시(전자결재)"]
         fm0002a["전표입력"]
 
+
+        br0011 --> ex0001
         pm0001 --> ex0001
         ex0001 --> oi0001
         oi0001 --> ex0007
@@ -136,6 +159,12 @@ click ex0007 "{% post_url 2024-07-20-ex0007 %}" " "
 click ex0009 "{% post_url 2024-07-21-ex0009 %}" " "
 click ex0009a "{% post_url 2024-07-22-ex0009a %}" " "
 click fm0002a "{% post_url 2024-07-23-fm0002a %}" " "
+click br0012 "{% post_url 2024-08-22-br0012 %}" " "
+click br0001 "{% post_url 2024-08-23-br0001 %}" " "
+click br0004 "{% post_url 2024-08-24-br0004 %}" " "
+click br0007 "{% post_url 2024-08-25-br0007 %}" " "
+click br0009 "{% post_url 2024-08-26-br0009 %}" " "
+click br0011 "{% post_url 2024-08-27-br0011 %}" " "
 
 %%style fd0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10,color:#333333,fontColor:#333333
 
