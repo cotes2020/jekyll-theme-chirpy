@@ -38,6 +38,10 @@ Afin d'avoir un menu fonctionnel, j'avais commencé par utiliser le système d'i
 
 C'est pourquoi j'ai dû coder le système pour qu'il suive exactement le fonctionnement souhaité. J'ai dû faire en sorte qu'aux yeux de Godot on ne puisse plus naviguer dans le menu. Par contre, les différents menus ont un comportement indépendant des autres qui permet, lorsque l'on appuie sur les touches ⬇️ et ⬆️ cela déplace le curseur sur le menu qui est en cours d'utilisation. Lors de l'appui sur la touche entrée, cela envoie le signal correspondant au menu pour passer à la suite.
 
+Voici à quoi ressemble mon interface de combat actuelle :
+![](/assets/img/interface_actuelle.png)
+_Interface actuelle de ma scene de combat_
+
 ## Architecture
 
 ### Interface de combat
