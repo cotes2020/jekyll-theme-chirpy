@@ -7,4 +7,7 @@ User-agent: *
 
 Disallow: /norobots/
 
+Allow: /
+
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
+
