@@ -19,8 +19,32 @@ Un projet personnel qui me tient à cœur car je suis fan des jeux tour par tour
 
 J'ai décidé d'utiliser Godot car c'est à la "mode" en ce moment et j'étais curieux de voir comment cela fonctionnait.
 
+## Travail en cours
+
+Je me suis concentré sur le combat pour commencer. Pour moi c'est la partie la plus intéressante et la plus complexe d'un Final Fantasy. 
+
+Contenu de l'interface de combat : 
+
+![](/assets/img/FF3_battle_HUD.png)
+_Final Fantasy 3 - combat contre Medusa_
+
+1. les alliés,
+2. les ennemies,
+3. les actions du joueur actif,
+4. les cibles,
+5. les informations des alliés.
+
+Afin d'avoir un menu fonctionnel, j'avais commencé par utiliser le système d'interface utilisateur de Godot. Cependant, j'ai rencontré une difficulté lors de l'implémentation des compétences qui sélectionnent toute l'équipe ennemie. Le système fourni le ne permet de sélectionner qu'un seul bouton à la fois (ce qui en soit est totalement logique). J'aurais pu utiliser le système de base et faire en sorte qu'en interne cela enregistre qu'on sélectionne toute l'équipe, mais je ne trouvais pas cela propre. 
+
+C'est pourquoi j'ai dû coder le système pour qu'il suive exactement le fonctionnement souhaité. J'ai dû faire en sorte qu'aux yeux de Godot on ne puisse plus naviguer dans le menu. Par contre, les différents menus ont un comportement indépendant des autres qui permet, lorsque l'on appuie sur les touches ⬇️ et ⬆️ cela déplace le curseur sur le menu qui est en cours d'utilisation. Lors de l'appui sur la touche entrée, cela envoie le signal correspondant au menu pour passer à la suite.
 
 ## Architecture
+
+### Interface de combat
+***
+
+Le système peut être amélioré. Par exemple, l'attribut *_are_all_selected* de MenuHandler peut disparaître puisqu'il n'a pas d'intérêt à être stocké.
+![](/assets/img/menu-system.svg){: width="600"}
 
 
 ### Personnage
@@ -198,9 +222,9 @@ classDiagram
 ## Task list
 
 ### Combat 
+
 - [ ] Navigation dans le menu du combat
-  - [ ] Pouvoir annuler l'action sélectionnée (annuler l'action lors de la sélection de la cible)
-  - [ ] Pouvoir annuler l'action du joueur précédent (s'il y en a un) 
+  - [ ] Pouvoir annuler l'action sélectionnée (annuler l'action lors de la sélection de la cible) et l'action du joueur précedent (s'il y en a un)
   - [ ] Menu des actions dynamique selon les compétences des personnages
   - [ ] Menu des ennemis et des alliés dynamique selon leur état
     - [ ] Mort / Vivant
@@ -212,10 +236,7 @@ classDiagram
 
 ***
 
-- [ ] Ajouter des compétences
-  - [ ] Magie blanche
-  - [ ] Magie noire
-  - [ ] Compétences
+- [ ] Ajouter l'ensemble des compétences
 
 ***
 
