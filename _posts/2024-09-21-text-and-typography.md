@@ -1,9 +1,9 @@
 ---
-title: Text and Typography
-description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
-author: cotes
+title: 텍스트, 타이포그래피 사용 방법 (Chirpy)
+description: Chirpy 환경에서 markdown 문법 적용 방법 정리
+author: jinwoo
 date: 2024-09-21 11:33:00 +0900
-categories: [Blogging, Tutorial]
+categories: [Tutorial]
 tags: [writing]
 pin: true
 math: true
@@ -14,26 +14,42 @@ image:
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
+[Chirpy 가이드](https://chirpy.cotes.page/posts/text-and-typography/)를 참고하여 대응하는 markdown 코드를 아래에 추가함 (cheatsheet 처럼 활용하기 위함)
+
 ## Headings
 
-<!-- markdownlint-capture -->
-<!-- markdownlint-disable -->
+
 # H1 — heading
 {: .mt-4 .mb-0 }
+
+```markdown
+# H1 — heading
+{: .mt-4 .mb-0 }
+```
 
 ## H2 — heading
 {: data-toc-skip='' .mt-4 .mb-0 }
 
+```markdown
+## H2 — heading
+{: data-toc-skip='' .mt-4 .mb-0 }
+```
+
 ### H3 — heading
 {: data-toc-skip='' .mt-4 .mb-0 }
 
+```markdown
+### H3 — heading
+{: data-toc-skip='' .mt-4 .mb-0 }
+```
+
 #### H4 — heading
 {: data-toc-skip='' .mt-4 }
-<!-- markdownlint-restore -->
 
-## Paragraph
-
-Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.
+```markdown
+#### H4 — heading
+{: data-toc-skip='' .mt-4 }
+```
 
 ## Lists
 
@@ -43,18 +59,23 @@ Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas int
 2. Secondly
 3. Thirdly
 
+```markdown
+1. Firstly
+2. Secondly
+3. Thirdly
+```
+
 ### Unordered list
 
 - Chapter
   - Section
     - Paragraph
 
-### ToDo list
-
-- [ ] Job
-  - [x] Step 1
-  - [x] Step 2
-  - [ ] Step 3
+``` markdown
+- Chapter
+  - Section
+    - Paragraph
+```
 
 ### Description list
 
@@ -64,26 +85,56 @@ Sun
 Moon
 : the natural satellite of the earth, visible by reflected light from the sun
 
+```markdown
+Sun
+: the star around which the earth orbits
+
+Moon
+: the natural satellite of the earth, visible by reflected light from the sun
+```
+
 ## Block Quote
 
 > This line shows the _block quote_.
 
+```markdown
+> This line shows the _block quote_.
+```
+
+
 ## Prompts
 
-<!-- markdownlint-capture -->
-<!-- markdownlint-disable -->
 > An example showing the `tip` type prompt.
 {: .prompt-tip }
+
+```markdown
+> An example showing the `tip` type prompt.
+{: .prompt-tip }
+```
 
 > An example showing the `info` type prompt.
 {: .prompt-info }
 
+```markdown
+> An example showing the `info` type prompt.
+{: .prompt-info }
+```
+
 > An example showing the `warning` type prompt.
 {: .prompt-warning }
 
+```markdown
+> An example showing the `warning` type prompt.
+{: .prompt-warning }
+```
+
 > An example showing the `danger` type prompt.
 {: .prompt-danger }
-<!-- markdownlint-restore -->
+
+```markdown
+> An example showing the `danger` type prompt.
+{: .prompt-danger }
+```
 
 ## Tables
 
@@ -93,21 +144,46 @@ Moon
 | Island Trading               | Helen Bennett    |      UK |
 | Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
 
+
+```markdown
+| Company                      | Contact          | Country |
+| :--------------------------- | :--------------- | ------: |
+| Alfreds Futterkiste          | Maria Anders     | Germany |
+| Island Trading               | Helen Bennett    |      UK |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
+```
+
 ## Links
 
 <http://127.0.0.1:4000>
+
+```markdown
+<http://127.0.0.1:4000>
+```
 
 ## Footnote
 
 Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
 
+```markdown
+Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
+```
+
 ## Inline code
 
 This is an example of `Inline Code`.
 
+```markdown
+This is an example of `Inline Code`.
+```
+
 ## Filepath
 
 Here is the `/path/to/the/file.extend`{: .filepath}.
+
+```markdown
+Here is the `/path/to/the/file.extend`{: .filepath}.
+```
 
 ## Code blocks
 
@@ -146,11 +222,32 @@ $$
 \end{equation}
 $$
 
+```markdown
+$$
+\begin{equation}
+  \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
+  \label{eq:series}
+\end{equation}
+$$
+```
+
 We can reference the equation as \eqref{eq:series}.
+
+```markdown
+We can reference the equation as \eqref{eq:series}.
+```
 
 When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 
+```markdown
+When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+```
+
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+
+```markdown
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+```
 
 ## Mermaid SVG
 
@@ -162,6 +259,19 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
   cherry :active, c, after b a, 1d
 ```
 
+> 아래 문구에 대하여 코드 블록을 사용한 다음, 언어를 mermaid로 설정 (markdown → mermaid)
+{: .prompt-info }
+
+```markdown
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+```
+
+
+
 ## Images
 
 ### Default (with caption)
@@ -169,32 +279,68 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 ![Desktop View](img/tutorials/mockup.png){: width="972" height="589" }
 _Full screen width and center alignment_
 
+```markdown
+![Desktop View](img/tutorials/mockup.png){: width="972" height="589" }
+_Full screen width and center alignment_
+```
+
 ### Left aligned
 
 ![Desktop View](img/tutorials/mockup.png){: width="972" height="589" .w-75 .normal}
+
+```
+![Desktop View](img/tutorials/mockup.png){: width="972" height="589" .w-75 .normal}
+```
 
 ### Float to left
 
 ![Desktop View](img/tutorials/mockup.png){: width="972" height="589" .w-50 .left}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
+```markdown
+![Desktop View](img/tutorials/mockup.png){: width="972" height="589" .w-50 .left}
+```
+
 ### Float to right
 
 ![Desktop View](img/tutorials/mockup.png){: width="972" height="589" .w-50 .right}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
+```markdown
+![Desktop View](img/tutorials/mockup.png){: width="972" height="589" .w-50 .right}
+```
+
 ### Dark/Light mode & Shadow
 
-The image below will toggle dark/light mode based on theme preference, notice it has shadows.
+아래 이미지는 테마 기본 설정에 따라 어둡게/밝게 모드를 전환됨
+
+그림자가 있음에 유의
 
 ![light mode only](img/tutorials/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](img/tutorials/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+```markdown
+![light mode only](img/tutorials/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](img/tutorials/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+```
 
 ## Video
 
 {% include embed/youtube.html id='Balreaj8Yqs' %}
 
+> 아래 내용은 실제 markdown 표현 형식과 다르기에 주의 필요 (압축 코드로 보임)
+{: .prompt-warning }
+
+```markdown
+{% include embed/youtube.html id='Balreaj8Yqs' %}
+```
+
 ## Reverse Footnote
 
 [^footnote]: The footnote source
 [^fn-nth-2]: The 2nd footnote source
+
+```markdown
+[^footnote]: The footnote source
+[^fn-nth-2]: The 2nd footnote source
+```
