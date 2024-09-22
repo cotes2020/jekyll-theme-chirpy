@@ -1,0 +1,17 @@
+name: Base Branch Check
+
+on:
+  pull_request:
+    branches: [main] # 검사할 브랜치 목록
+
+jobs:
+  base-branch-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Base Branch
+        run: |
+          if [[ "${{ github.event.pull_request.base.ref }}" != "main" ]]; then
+            echo "Base branch should be 'main'. Please change it."
+            exit 1
+          fi
