@@ -16,6 +16,9 @@ refactor: true
 {% assign pinned_num = pinned.size | minus: offset %}
 
 {% if pinned_num > 0 %}
+  {% if pinned_num > paginator.per_page %}
+    {% assign pinned_num = paginator.per_page %}
+  {% endif %}
   {% for i in (offset..pinned.size) limit: pinned_num %}
     {% assign posts = posts | push: pinned[i] %}
   {% endfor %}
