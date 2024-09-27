@@ -1,5 +1,5 @@
 ---
-title: "Stored Pocedure SQL Injection"
+title: "Stored Procedure SQL Injection"
 date: 2024-04-12 19:13:00 +0900
 author: aestera
 categories: [Web]
