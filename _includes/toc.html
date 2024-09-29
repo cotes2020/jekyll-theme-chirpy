@@ -1,9 +1,4 @@
-{% assign enable_toc = false %}
-{% if site.toc and page.toc %}
-  {% if page.content contains '<h2' or page.content contains '<h3' %}
-    {% assign enable_toc = true %}
-  {% endif %}
-{% endif %}
+{% include toc-status.html %}
 
 {% if enable_toc %}
   <section id="toc-wrapper" class="d-none ps-0 pe-4">

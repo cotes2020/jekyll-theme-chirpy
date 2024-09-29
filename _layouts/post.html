@@ -8,8 +8,9 @@ tail_includes:
   - post-nav
   - comments
 ---
-
 {% include lang.html %}
+
+{% include post-topbar.html lang=lang %}
 
 <article class="px-1">
   <header>
@@ -95,6 +96,8 @@ tail_includes:
     </div>
   </header>
 
+  {% include post-toc-button.html lang=lang %}
+
   <div class="content">
     {{ content }}
   </div>
@@ -150,3 +153,5 @@ tail_includes:
   </div>
   <!-- div.post-tail-wrapper -->
 </article>
+
+{% include overlay.html lang=lang %}
