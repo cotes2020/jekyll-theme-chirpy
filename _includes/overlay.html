@@ -1,0 +1,11 @@
+<dialog id="overlay">
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-row align-items-center justify-content-between">
+      <h2>{{- site.data.locales[include.lang].panel.toc -}}</h2>
+      <button id="overlay-close" type="button" class="btn btn-link">
+        <i class="fas fa-close fa-fw"></i>
+      </button>
+    </div>
+    <div id="overlay-content"></div>
+  </div>
+</dialog>

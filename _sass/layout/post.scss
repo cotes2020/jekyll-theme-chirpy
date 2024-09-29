@@ -14,6 +14,47 @@
   padding-right: $pr;
 }
 
+#post-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--sidebar-bg);
+  border-bottom: 1px solid var(--sidebar-border-color);
+
+  @media all and (min-width: 992px) {
+    margin: 0 calc(var(--bs-gutter-x) * -0.5 - 2.5rem);
+  }
+
+  @media all and (max-width: 991px) {
+    margin: 0 calc(var(--bs-gutter-x) * -0.5 - 1.75rem);
+  }
+
+  @media all and (max-width: 849px) {
+    margin: 0 calc(var(--bs-gutter-x) * -0.5 - 1.5rem);
+  }
+
+  @media all and (max-width: 768px) {
+    margin: 0 -1.5rem;
+  }
+
+  @media all and (max-width: 767px) {
+    margin: 0 -0.75rem;
+  }
+
+  span {
+    padding: 0 0.75rem;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+}
+
+#overlay-inline-trigger {
+  margin-top: 2.5rem;
+}
+
 header {
   .post-desc {
     @extend %heading;
@@ -342,6 +383,33 @@ header {
   }
 }
 
+#overlay {
+  border-color: var(--btn-border-color);
+  border-width: 1px;
+  border-radius: 0.5rem;
+  height: 90%;
+
+  h2 {
+    margin: unset;
+  }
+
+  #toc-wrapper {
+    margin-top: 2rem;
+    top: unset;
+    transition: none;
+    animation: none;
+
+    h2 {
+      margin-top: unset;
+      display: none;
+    }
+  }
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(5px);
+}
+
 @media all and (max-width: 576px) {
   .post-tail-bottom {
     flex-wrap: wrap-reverse !important;
@@ -366,5 +434,15 @@ header {
     padding-right: 0;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  #post-topbar {
+    display: none !important;
+  }
+
+  #overlay-inline-trigger {
+    display: none !important;
   }
 }
