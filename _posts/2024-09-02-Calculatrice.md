@@ -5,7 +5,7 @@ description: >-
 author: archalos
 date: 2024-09-02 16:00:00 +0100
 categories: [Project, Personnal]
-tags: [dev, draft, in_progress]
+tags: [dev, in_progress]
 lang_tags: [Rust]
 pin: false
 github_repo: https://github.com/Archalos0/rust-calculatrice

@@ -5,7 +5,7 @@ description: >-
 author: archalos
 date: 2024-09-02 16:00:00 +0100
 categories: [Project, Personnal]
-tags: [game-dev, draft, in_progress]
+tags: [game-dev, in_progress]
 lang_tags: [Godot, GDScript]
 pin: false
 github_repo: https://github.com/Archalos0/ff-fangame
