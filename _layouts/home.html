@@ -68,10 +68,16 @@ refactor: true
 
         <div class="col-md-{{ card_body_col }}">
           <div class="card-body d-flex flex-column">
-            {% if post.tags contains 'draft' %}
-              <i class="fa-regular fa-pen-to-square fa-fade" style="color: #969696;"></i>
-            {% endif %}
-            <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
+            <div class="d-flex flex-row gap-2">
+              {% if post.tags contains 'in_progress' %}
+                <div>
+                  <abbr title="Project in progress"
+                    ><i class="fa-solid fa-gear fa-spin" style="color: #969696; --fa-animation-duration: 5s;"></i
+                  ></abbr>
+                </div>
+              {% endif %}
+              <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
+            </div>
 
             <div class="card-text content mt-0 mb-3">
               <p>{% include post-description.html %}</p>
