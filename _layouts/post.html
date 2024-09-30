@@ -15,8 +15,9 @@ tail_includes:
     <h1 data-toc-skip>
       {{ page.title }}
       {% if page.github_repo %}
-        <a href="{{ page.github_repo }}" style="color: inherit; text-decoration: none"
-          ><i class="fa-brands fa-square-github"></i>
+        <a href="{{ page.github_repo }}" style="color: inherit; text-decoration: none" target="_blank">
+          <i class="fa-brands fa-square-github"></i>
+        </a>
       {% endif %}
     </h1>
     {% if page.description %}
