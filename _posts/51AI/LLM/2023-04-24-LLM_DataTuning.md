@@ -43,7 +43,7 @@ tags: [AI, ML]
         - [Use Reward model](#use-reward-model)
       - [对比数据集](#对比数据集)
       - [Reinforcement learning algorithm](#reinforcement-learning-algorithm)
-        - [PPO 微调](#ppo-微调)
+        - [PPO - Proximal Policy Optimization (微调)](#ppo---proximal-policy-optimization-微调)
           - [核心思想](#核心思想)
           - [特点](#特点)
           - [算法框架](#算法框架)
@@ -1934,15 +1934,15 @@ $$
 - 策略梯度方法：直接优化策略，通过计算策略的梯度来更新策略参数。
   - PPO 属于策略梯度方法的一种。
 
-##### PPO 微调
+##### PPO - Proximal Policy Optimization (微调)
 
 ![Screenshot 2024-09-30 at 18.18.39](/assets/img/Screenshot%202024-09-30%20at%2018.18.39.png)
-
-
 
 ###### 核心思想
 - 旨在通过`限制策略更新的幅度`来提高学习的稳定性。
 - PPO 的目标是在更新策略时，尽量保持当前策略和新策略之间的相似性。
+
+- PPO optimizes a policy, in this case the LLM, to be more aligned with human preferences
 
 ###### 特点
 
@@ -1954,7 +1954,7 @@ $$
 - 稳定性
   - 使用一种截断的目标函数，`限制每次更新的幅度`。
   - 这种限制使得更新过程更加稳定，避免过大更新带来的不稳定性。
-  - makes small updates to the LLM within a `bounded region` for stability.
+  - makes small updates to the LLM within a `bounded region` for stability, resulting in an updated LLM that is close to the previous version
   - 更新策略参数时，通过小批量（mini-batch）方式进行多次迭代，增强样本效率。
   - The goal is to maximize the reward by updating the policy.
 
@@ -2026,6 +2026,38 @@ $$
 - 对于许多未知 (提示 响应)对，RM 可能会错误地给出极高或极低的分数。如果没有这个约束，模型可能会偏向那些得分极高的回答，它们可能不是好的回答。
 
 ###### 微调过程
+
+start PPO with the initial instruct LLM
+
+at a high level, each cycle of PPO goes over two phases.
+
+Phase I
+
+- the LLM, is used to carry out a number of experiments, completing the given prompts.
+- These experiments allow you to update the LLM against the reward model in Phase II.
+
+![Screenshot 2024-09-30 at 19.00.28](/assets/img/Screenshot%202024-09-30%20at%2019.00.28.png)
+
+![Screenshot 2024-09-30 at 19.00.42](/assets/img/Screenshot%202024-09-30%20at%2019.00.42.png)
+
+> the reward model captures the human preferences. For example, the reward can define how helpful, harmless, and honest the responses are.
+
+
+
+The expected reward of a completion is an important quantity used in the PPO objective.
+- estimate this quantity through a separate head of the LLM called the **value function**.
+- Assume a number of prompts are given. First, generate the LLM responses to the prompts, then calculate the reward for the prompt completions using the reward model.
+
+For example, the first prompt completion shown here might receive a reward of 1.87. The next one might receive a reward of -1.24, and so on. You have a set of prompt completions and their corresponding rewards.
+- The value function estimates the expected total reward for a given State S.
+
+- In other words, as the LLM generates each token of a completion, you want to estimate the total future reward based on the current sequence of tokens.
+
+
+You can think of this as a baseline to evaluate the quality of completions against the alignment criteria. Let's say that at this step of completion, the estimated future total reward is 0.34. With the next generated token, the estimated future total reward increases to 1.23. The goal is to minimize the value loss that is the difference between the actual future total reward in this example, 1.87, and its approximation to the value function, in this example, 1.23. The value loss makes estimates for future rewards more accurate. The value function is then used in Advantage Estimation in Phase 2, which we will discuss in a bit. This is similar to when you start writing a passage, and you have a rough idea of its final form even before you write it. [inaudible] you mentioned that the losses and rewards determined in Phase 1 are used in Phase 2 to update the weights resulting in an updated LLM. Can you explain this process in a little bit more detail? Sure. In Phase 2, you make a small updates to the model and evaluate the impact of those updates on the alignment goal for the model. The model weights updates are guided by the prompt completion, losses, and rewards. PPO also ensures to keep the model updates within a certain small region called the trust region. This is where the proximal aspect of PPO comes into play. Ideally, this series of small updates will move the model towards higher rewards. The PPO policy objective is the main ingredient of this method. Remember, the objective is to find a policy whose expected reward is high. In other words, you're trying to make updates to the LLM weights that result in completions more aligned with human preferences and so receive a higher reward. The policy loss is the main objective that the PPO algorithm tries to optimize during training. I know the math looks complicated, but it's actually simpler than it appears. Let's break it down step-by-step. First, focus on the most important expression and ignore the rest for now. Pi of A_t given S_t in this context of an LLM, is the probability of the next token A_t given the current prompt S_t. The action A_t is the next token, and the state S_t is the completed prompt up to the token t. The denominator is the probability of the next token with the initial version of the LLM which is frozen. The numerator is the probabilities of the next token, through the updated LLM, which we can change for the better reward. A-hat_t is called the estimated advantage term of a given choice of action. The advantage term estimates how much better or worse the current action is compared to all possible actions at data state. We look at the expected future rewards of a completion following the new token, and we estimate how advantageous this completion is compared to the rest. There is a recursive formula to estimate this quantity based on the value function that we discussed earlier. Here, we focus on intuitive understanding. Here is a visual representation of what I just described. You have a prompt S, and you have different paths to complete it, illustrated by different paths on the figure. The advantage term tells you how better or worse the current token A_t is with respect to all the possible tokens. In this visualization, the top path which goes higher is better completion, receiving a higher reward. The bottom path goes down which is a worst completion. So I do have a question EK, why does maximizing this term lead to higher rewards? Let's consider the case where the advantage is positive for the suggested token. A positive advantage means that the suggested token is better than the average. Therefore, increasing the probability of the current token seems like a good strategy that leads to higher rewards. This translates to maximizing the expression we have here. If the suggested token is worse than average, the advantage will be negative. Again, maximizing the expression will demote the token, which is the correct strategy. So the overall conclusion is that maximizing this expression results in a better aligned LLM. Great. So let's just maximize this expression then. Directly maximizing the expression would lead into problems because our calculations are reliable under the assumption that our advantage estimations are valid. The advantage estimates are valid only when the old and new policies are close to each other. This is where the rest of the terms come into play. So stepping back and looking at the whole equation again, what happens here is that you pick the smaller of the two terms. The one we just discussed and this second modified version of it. Notice that this second expression defines a region, where two policies are near each other. These extra terms are guardrails, and simply define a region in proximity to the LLM, where our estimates have small errors. This is called the trust region. These extra terms ensure that we are unlikely to leave the trust region. In summary, optimizing the PPO policy objective results in a better LLM without overshooting to unreliable regions. Are there any additional components? Yes. You also have the entropy loss. While the policy loss moves the model towards alignment goal, entropy allows the model to maintain creativity. If you kept entropy low, you might end up always completing the prompt in the same way as shown here. Higher entropy guides the LLM towards more creativity. This is similar to the temperature setting of LLM that you've seen in Week 1. The difference is that the temperature influences model creativity at the inference time, while the entropy influences the model creativity during training. Putting all terms together as a weighted sum, we get our PPO objective, which updates the model towards human preference in a stable manner. This is the overall PPO objective. The C1 and C2 coefficients are hyperparameters. The PPO objective updates the model weights through back propagation over several steps. Once the model weights are updated, PPO starts a new cycle. For the next iteration, the LLM is replaced with the updated LLM, and a new PPO cycle starts. After many iterations, you arrive at the human-aligned LLM. Now, are there other reinforcement learning techniques that are used for RLHF? Yes. For example, Q-learning is an alternate technique for fine-tuning LLMs through RL, but PPO is currently the most popular method. In my opinion, PPO is popular because it has the right balance of complexity and performance. That being said, fine-tuning the LLMs through human or AI feedback is an active area of research. We can expect many more developments in this area in the near future. For example, just before we were recording this video, researchers at Stanford published a paper describing a technique called direct preference optimization, which is a simpler alternate to RLHF. New methods like this are still in active development, and more work has to be done to better understand their benefits, but I think this is a very exciting area of research. Agree. Thanks so much EK for sharing those insights into PPO and reinforcement learning. Thanks, Andrea. Thanks for having me.
+
+
+
 
 - ML task : RL(PPO)
 
