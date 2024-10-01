@@ -20,7 +20,7 @@ Bar Bell SVG =
 VAR _SvgWidth =                 75
 VAR _SvgHeight =                20
 
--- Values
+// Values
 VAR _ActualValue =              [Max Value]
 VAR _ActualColour=              MAX( 'Fact'[Colour] )
 VAR _AcutalValueFormatted =     IF( MAX( Metrics[format] ) = "Percent", FORMAT( _ActualValue, "0%"), FORMAT( _ActualValue, "0.00") )
@@ -31,7 +31,7 @@ VAR _LargeValue =               MAX( _RedValue, _GreenValue)
 VAR _SmallestValue =            MIN( _SmallValue, _ActualValue )
 VAR _LargestValue =             MAX( _LargeValue, _ActualValue )
 
--- Mapping from values to svg scale
+// Mapping from values to svg scale
 VAR _Diff =                     _LargestValue - _SmallestValue
 VAR _InputStart =               _SmallestValue - _Diff / 2          // The lowest number of the range input
 VAR _InputEnd =                 _LargestValue + _Diff / 2           // The largest number of the range input
@@ -42,7 +42,7 @@ VAR _ActualPosition =           _OutputStart + ((_OutputEnd - _OutputStart) / (_
 VAR _SmallPosition =            _OutputStart + ((_OutputEnd - _OutputStart) / (_InputEnd - _InputStart)) * (_SmallValue - _InputStart)
 VAR _LargePosition =            _OutputStart + ((_OutputEnd - _OutputStart) / (_InputEnd - _InputStart)) * (_LargeValue - _InputStart)
  
--- Colours
+// Colours
 VAR _Opacity =                  "80" // 50%
 VAR _AcutalHex =                MAX( 'Fact'[Colour Hex] )
 VAR _RedHex =                   "#D2222D"
@@ -85,7 +85,7 @@ VAR _CallOutHex =
                 "#" & REPT( SubHex, 3 )
     )
 
--- Vectors
+// Vectors
 VAR _Offset = 5
 VAR _linePosition =             _SvgHeight - (_SvgHeight / 4)
 VAR _MiddleLine =               "<line x1=""" & _SmallPosition & """" & UNICHAR(10) & "y1=""" & _linePosition & """ x2=""" & _LargePosition & """ y2=""" & _linePosition & """ stroke=""" & _GreyHex & """/>"
@@ -111,4 +111,4 @@ Resulting in the following:
 
 ![SVG Dumbbell](/assets/img/0008-SVGDumbell/SVGDumbell.png)
 
-I am fairly happy with the results of this visual and will keep this option in mind in the future. The best part of this option is that you can mix this with fields parameters so that user's can select between values and the SVG.
+I am fairly happy with the results of this visual and will keep this option in mind in the future. The best part of this option is that you can mix this with fields parameters so that users can select between values and the SVG.
