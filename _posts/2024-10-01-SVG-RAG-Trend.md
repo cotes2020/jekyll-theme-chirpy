@@ -1,8 +1,8 @@
 ---
 title: Further Adventures in SVGs
-description: Creating a trend SVG visual in Power BI
+description: Creating a Trend SVG Visual in Power BI
 author: duddy
-date: 2024-10-01 12:00:00 +0000
+date: 2024-10-01 13:00:00 +0000
 categories: [SVG, DAX]
 tags: [svg, dax]
 pin: false
