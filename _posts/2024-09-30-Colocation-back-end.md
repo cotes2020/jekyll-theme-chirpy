@@ -25,13 +25,15 @@ C’est ainsi que j’ai eu l’idée de créer une solution qui non seulement f
 
 Au départ, mon idée était de développer une application à la fois web et mobile, capable d'aider les colocataires à s'organiser. L'application aurait regroupé plusieurs fonctionnalités comme :
 
+
 - la répartition des courses,
 - la répartition des tâches ménagères,
 - des informations sur la chambre louée (prix du loyer, état des lieux, baux, etc.),
 - la gestion du frigo,
 - l’organisation des événements entre colocataires,
 - un chat commun à la colocation.
-  
+
+
 Toutefois, en commençant à travailler sur le projet, je me suis rapidement rendu compte que mes compétences en design n’étaient pas à la hauteur. Les interfaces que je créais pour le site et l'application mobile étaient visuellement peu attrayantes. Plutôt que de me disperser sur un domaine où je n'étais pas à l'aise, j'ai choisi de me concentrer sur ce qui me passionne réellement : le développement back-end.
 
 J'ai donc orienté le projet vers la création de l'API, la gestion de la base de données, et la gestion des documents physiques, qui sont pour moi les aspects les plus stimulants et les plus enrichissants.
@@ -65,6 +67,10 @@ Ce que j'apprécie particulièrement dans NestJS, c’est l’organisation des f
 
 Les **DTO** jouent un rôle important dans NestJS. Ils permettent de valider et d’assurer que toutes les données envoyées pour une opération, qu’il s’agisse d’une modification ou d’un ajout dans la base de données, respectent la **cohérence** et les règles définies (une approche similaire au principe **ACID** des transactions en base de données).
 
+> Vous pouvez explorer la documentation complète de mon API générée via Swagger, directement accessible pour tester et visualiser les différents endpoints disponibles : [Documentation Swagger](https://tanguyblondinprog.ovh/api/doc){:target="_blank"}.
+{: .prompt-info }
+
+
 Voici un exemple de la hiérarchie de mon API avec le module `users` :
 
 ```
@@ -86,9 +92,12 @@ src/
 - Le dossier dto contient les différents format pour valider les requêtes. `create-user-dto.ts` valide les données lors de la création d'un utilisateur et `update-user-dto.ts` lors de la modification.
 
 
+## Prochaines étapes et tâches à accomplir
+***
+
 Après avoir mis ce projet de côté pour me consacrer à d'autres sujets, comme la création de ce site, l'apprentissage de Rust, et mes premières expériences en développement de jeux vidéo avec Godot, il reste encore plusieurs points à retravailler et à compléter :
 
-- **Infrastructure** : J'ai récemment perdu mon VPS chez OVH, ce qui signifie que je dois configurer un nouveau serveur. Cela inclut la sécurisation du serveur, la configuration du SFTP, ainsi que la remise en place de la base de données.
+- **Infrastructure** : J'ai récemment perdu mon VPS chez OVH, j'ai depuis remonter le serveur. Il me reste donc à bien sécuriser le serveur, configurer le SFTP.
 
 - **Ajout des fonctionnalités manquantes** : Pour l’instant, seule la base du projet est en place. Il reste encore beaucoup de travail, notamment pour développer l’API et intégrer toutes les fonctionnalités prévues initialement (gestion des tâches, organisation des documents, etc.).
 
