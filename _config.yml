@@ -14,15 +14,35 @@ timezone: Asia/Seoul # 서울 표준시로 설정
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: ltnalsxl # 블로그 제목 설정
-tagline: 기록의 힘 # 부가 설명 설정
+title: sumin lee # 블로그 제목 설정
+tagline: archive # 부가 설명 설정
 
 description: >- # SEO를 위한 설명 (키워드)
-  데이터 분석, 세이버메트릭스, 태블로, 자동화
+  Data Analytics, Automation, Sabermetrics
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://ltnalsxl.github.io" # GitHub Pages URL
+
+navigation:
+  - text: "Home"
+    url: "/"
+  - text: "Categories"
+    url: "/categories/"
+    sublinks:
+      - title: "👩🏻‍💻 Career"
+        url: "/categories/career/"
+      - title: "📊 Data"
+        url: "/categories/data/"
+      - title: "🔨 Tools"
+        url: "/categories/tools/"
+  - text: "Tags"
+    url: "/tags/"
+  - text: "Archives"
+    url: "/archives/"
+  - text: "About"
+    url: "/about/"
+
 
 github:
   username: ltnalsxl # GitHub 사용자명
@@ -31,11 +51,13 @@ twitter:
   username: # 트위터 계정이 없다면 비워둡니다
 
 social:
-  # 기본 저작권 및 포스트 작성자 이름 설정
-  name: Sumin Lee # 이름 입력
-  email: fltnadls1011@gmail.com # 이메일 주소 입력
+  name: Sumin Lee
+  email: fltnadls1011@gmail.com
   links:
     - https://github.com/ltnalsxl # GitHub 링크
+    - https://www.linkedin.com/in/your-linkedin-id # LinkedIn 링크
+    # 필요 시 다른 소셜 미디어 링크 추가 가능
+
     # 필요 시 다른 소셜 미디어 링크 추가 가능
 
 # Site Verification Settings
