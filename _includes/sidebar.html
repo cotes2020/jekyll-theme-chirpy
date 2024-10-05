@@ -1,5 +1,3 @@
-<!-- The Side Bar -->
-
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
@@ -10,54 +8,57 @@
         <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
       {%- endif -%}
     </a>
-
     <a class="site-title d-block" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
   </header>
-  <!-- .profile-wrapper -->
 
   <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
-      <!-- home -->
+      <!-- Home -->
       <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
         <a href="{{ '/' | relative_url }}" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-      
-      <!-- Categories with dropdown -->
-      <li class="nav-item">
-        <a href="#categoriesMenu" class="nav-link" data-bs-toggle="collapse" aria-expanded="false">
-          <i class="fa-fw fas fa-folder-open"></i>
+
+      <!-- Categories dropdown -->
+      <li class="nav-item dropdown-toggle" style="position: relative;">
+        <a href="#categoriesMenu" data-bs-toggle="collapse" aria-expanded="false" class="nav-link d-flex justify-content-between">
           <span>{{ site.data.locales[include.lang].tabs.categories | upcase }}</span>
-          <i class="fas fa-chevron-down float-end"></i>
+          <i class="fas fa-caret-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i>
         </a>
-        <ul class="collapse" id="categoriesMenu">
-          {% for category in site.categories %}
-          <li class="nav-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category[0] | slugify }}" class="nav-link ps-3">
-              {{ category[0] | capitalize }} ({{ category[1].size }})
-            </a>
-          </li>
-          {% endfor %}
+        <ul class="collapse list-unstyled" id="categoriesMenu">
+          <li><a href="/categories/data/">Data</a></li>
+          <li><a href="/categories/automation-tools/">Automation Tools</a></li>
+          <li><a href="/categories/sports/">Sports</a></li>
         </ul>
       </li>
 
-      <!-- other real tabs -->
-      {% for tab in site.tabs %}
-        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
-            <i class="fa-fw {{ tab.icon }}"></i>
-            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-          </a>
-        </li>
-      {% endfor %}
+      <li class="nav-item{% if page.url contains 'tags' %}{{ " active" }}{% endif %}">
+        <a href="{{ site.baseurl }}/tags/" class="nav-link">
+          <i class="fa-fw fas fa-tags"></i>
+          <span>{{ site.data.locales[include.lang].tabs.tags | upcase }}</span>
+        </a>
+      </li>
+
+      <li class="nav-item{% if page.url contains 'archives' %}{{ " active" }}{% endif %}">
+        <a href="{{ site.baseurl }}/archives/" class="nav-link">
+          <i class="fa-fw fas fa-archive"></i>
+          <span>{{ site.data.locales[include.lang].tabs.archives | upcase }}</span>
+        </a>
+      </li>
+
+      <li class="nav-item{% if page.url contains 'about' %}{{ " active" }}{% endif %}">
+        <a href="{{ site.baseurl }}/about/" class="nav-link">
+          <i class="fa-fw fas fa-info-circle"></i>
+          <span>{{ site.data.locales[include.lang].tabs.about | upcase }}</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     {% unless site.theme_mode %}
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
         <i class="fas fa-adjust"></i>
@@ -109,6 +110,4 @@
       {% endif %}
     {% endfor %}
   </div>
-  <!-- .sidebar-bottom -->
 </aside>
-<!-- #sidebar -->
