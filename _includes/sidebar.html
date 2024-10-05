@@ -21,12 +21,12 @@
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-
+      
       <!-- Categories dropdown -->
       <li class="nav-item dropdown-toggle" style="position: relative;">
         <a href="#categoriesMenu" data-bs-toggle="collapse" aria-expanded="false" class="nav-link d-flex justify-content-between">
           <span>{{ site.data.locales[include.lang].tabs.categories | upcase }}</span>
-          <i class="fas fa-caret-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i>
+          <i class="fas fa-caret-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i> <!-- Caret aligned right -->
         </a>
         <ul class="collapse list-unstyled" id="categoriesMenu">
           <li><a href="/categories/data/">Data</a></li>
@@ -34,6 +34,7 @@
           <li><a href="/categories/sports/">Sports</a></li>
         </ul>
       </li>
+
 
       <li class="nav-item{% if page.url contains 'tags' %}{{ " active" }}{% endif %}">
         <a href="{{ site.baseurl }}/tags/" class="nav-link">
