@@ -30,18 +30,19 @@ navigation:
   - text: "Categories"
     url: "/categories/"
     sublinks:
-      - title: "👩🏻‍💻 Career"
-        url: "/categories/career/"
-      - title: "📊 Data"
+      - title: "📈 Data"
         url: "/categories/data/"
-      - title: "🔨 Tools"
-        url: "/categories/tools/"
+      - title: "🔧 Productivity Tools"
+        url: "/categories/productivity-tools/"
+      - title: "⚾ Sports"
+        url: "/categories/sports/"
   - text: "Tags"
     url: "/tags/"
   - text: "Archives"
     url: "/archives/"
   - text: "About"
     url: "/about/"
+
 
 
 github:
