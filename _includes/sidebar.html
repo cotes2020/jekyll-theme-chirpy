@@ -25,17 +25,34 @@
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-      <!-- the real tabs -->
+      
+      <!-- Categories with dropdown -->
+      <li class="nav-item">
+        <a href="#categoriesMenu" class="nav-link" data-bs-toggle="collapse" aria-expanded="false">
+          <i class="fa-fw fas fa-folder-open"></i>
+          <span>{{ site.data.locales[include.lang].tabs.categories | upcase }}</span>
+          <i class="fas fa-chevron-down float-end"></i>
+        </a>
+        <ul class="collapse" id="categoriesMenu">
+          {% for category in site.categories %}
+          <li class="nav-item">
+            <a href="{{ '/categories/' | relative_url }}{{ category[0] | slugify }}" class="nav-link ps-3">
+              {{ category[0] | capitalize }} ({{ category[1].size }})
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+
+      <!-- other real tabs -->
       {% for tab in site.tabs %}
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
           <a href="{{ tab.url | relative_url }}" class="nav-link">
             <i class="fa-fw {{ tab.icon }}"></i>
             {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-
             <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
           </a>
         </li>
-        <!-- .nav-item -->
       {% endfor %}
     </ul>
   </nav>
