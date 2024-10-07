@@ -8,11 +8,12 @@ tail_includes:
   - post-nav
   - comments
 ---
+
 {% include lang.html %}
 
-{% include post-topbar.html lang=lang %}
+{% include toc-status.html %}
 
-<article class="px-1">
+<article class="px-1" data-toc="{{ enable_toc }}">
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
     {% if page.description %}
@@ -96,7 +97,29 @@ tail_includes:
     </div>
   </header>
 
-  {% include post-toc-button.html lang=lang %}
+  {% if enable_toc %}
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">{{ page.title }}</span>
+      <button type="button" class="toc-trigger btn btn-link me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">{{- site.data.locales[lang].panel.toc -}}</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between ps-3">
+        <div class="label text-truncate fw-semibold py-2">{{- page.title -}}</div>
+        <button id="toc-popup-close" type="button" class="btn btn-link">
+          <i class="fas fa-close fa-fw"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="p-4 pt-2 ps-2"></div>
+    </dialog>
+  {% endif %}
 
   <div class="content">
     {{ content }}
@@ -153,5 +176,3 @@ tail_includes:
   </div>
   <!-- div.post-tail-wrapper -->
 </article>
-
-{% include overlay.html lang=lang %}

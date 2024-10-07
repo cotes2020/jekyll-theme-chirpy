@@ -14,47 +14,6 @@
   padding-right: $pr;
 }
 
-#post-topbar {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: var(--sidebar-bg);
-  border-bottom: 1px solid var(--sidebar-border-color);
-
-  @media all and (min-width: 992px) {
-    margin: 0 calc(var(--bs-gutter-x) * -0.5 - 2.5rem);
-  }
-
-  @media all and (max-width: 991px) {
-    margin: 0 calc(var(--bs-gutter-x) * -0.5 - 1.75rem);
-  }
-
-  @media all and (max-width: 849px) {
-    margin: 0 calc(var(--bs-gutter-x) * -0.5 - 1.5rem);
-  }
-
-  @media all and (max-width: 768px) {
-    margin: 0 -1.5rem;
-  }
-
-  @media all and (max-width: 767px) {
-    margin: 0 -0.75rem;
-  }
-
-  span {
-    padding: 0 0.75rem;
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: keep-all;
-    white-space: nowrap;
-  }
-}
-
-#overlay-inline-trigger {
-  margin-top: 2.5rem;
-}
-
 header {
   .post-desc {
     @extend %heading;
@@ -269,6 +228,7 @@ header {
   }
 }
 
+/* TOC pannel */
 #toc-wrapper {
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
@@ -331,6 +291,115 @@ header {
   }
 }
 
+/* --- TOC button, bar and popup in mobile/tablet --- */
+
+#toc-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0 -1rem;
+  height: $topbar-height;
+  background: var(--main-bg);
+  border-bottom: 1px solid var(--main-border-color);
+  transition: all 0.2s ease-in-out;
+
+  .label {
+    @extend %heading;
+
+    margin-left: 0.25rem;
+    padding: 0 0.75rem;
+    color: inherit;
+  }
+
+  &.invisible {
+    top: -$topbar-height;
+    transition: none;
+  }
+}
+
+#toc-solo-trigger {
+  color: var(--link-color);
+  border-radius: $radius-sm;
+
+  .label {
+    font-size: 1rem;
+    font-family: $font-family-heading;
+  }
+
+  &:hover {
+    box-shadow: none;
+    background: none;
+  }
+}
+
+#toc-popup {
+  border-color: var(--main-border-color);
+  border-width: 1px;
+  border-radius: $radius-lg;
+  color: var(--text-color);
+  background: var(--main-bg);
+  margin-top: $topbar-height;
+  min-width: 20rem;
+  font-size: 1.05rem;
+
+  @media all and (min-width: 850px) {
+    left: $sidebar-width;
+  }
+
+  .header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    border-bottom: 1px solid var(--main-border-color);
+
+    .label {
+      font-family: $font-family-heading;
+      color: var(--text-muted-color);
+      max-width: 25rem;
+    }
+  }
+
+  button:focus-visible {
+    box-shadow: none;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 1.25rem;
+
+    li {
+      line-height: 1.5rem;
+      margin-top: 0.75rem;
+    }
+  }
+
+  .toc-link::before {
+    display: none;
+  }
+
+  .is-active-link {
+    color: var(--toc-highlight) !important;
+    font-weight: 600;
+  }
+
+  &::-webkit-backdrop {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  &::backdrop {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  #toc-popup-content {
+    overflow: auto;
+    max-height: calc(100vh - 4 * $topbar-height);
+  }
+}
+
 /* --- Related Posts --- */
 
 #related-posts {
@@ -383,33 +452,6 @@ header {
   }
 }
 
-#overlay {
-  border-color: var(--btn-border-color);
-  border-width: 1px;
-  border-radius: 0.5rem;
-  height: 90%;
-
-  h2 {
-    margin: unset;
-  }
-
-  #toc-wrapper {
-    margin-top: 2rem;
-    top: unset;
-    transition: none;
-    animation: none;
-
-    h2 {
-      margin-top: unset;
-      display: none;
-    }
-  }
-}
-
-dialog::backdrop {
-  backdrop-filter: blur(5px);
-}
-
 @media all and (max-width: 576px) {
   .post-tail-bottom {
     flex-wrap: wrap-reverse !important;
@@ -437,12 +479,17 @@ dialog::backdrop {
   }
 }
 
-@media all and (min-width: 1200px) {
-  #post-topbar {
-    display: none !important;
+@media all and (max-width: 1199px) {
+  h2,
+  h3,
+  h4 {
+    scroll-margin-top: 3.5rem;
   }
+}
 
-  #overlay-inline-trigger {
+@media all and (min-width: 1200px) {
+  #toc-bar,
+  #toc-solo-trigger {
     display: none !important;
   }
 }
