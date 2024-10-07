@@ -5,6 +5,7 @@ const mediaQuery = matchMedia('(min-width: 1200px)');
 
 function refresh() {
   if (mediaQuery.matches) {
+    mobile.hide();
     desktop.refresh();
   } else {
     mobile.refresh();
