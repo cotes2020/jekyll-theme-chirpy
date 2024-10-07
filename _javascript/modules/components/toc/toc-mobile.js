@@ -22,7 +22,7 @@ export class TocMobile {
     orderedList: false,
     scrollSmooth: false,
     collapseDepth: 4,
-    headingsOffset: TocMobile.barHeight
+    headingsOffset: this.barHeight
   };
 
   static initBar() {
@@ -36,26 +36,26 @@ export class TocMobile {
           tocBar.classList.toggle('invisible', entry.isIntersecting);
         });
       },
-      { rootMargin: `-${TocMobile.barHeight}px 0px 0px 0px` }
+      { rootMargin: `-${this.barHeight}px 0px 0px 0px` }
     );
 
     observer.observe(soloTrigger);
   }
 
   static refresh() {
-    if (!TocMobile.isVisible) {
-      TocMobile.initComponents();
+    if (!this.isVisible) {
+      this.initComponents();
     }
 
     tocbot.refresh(this.options);
   }
 
-  static show() {
+  static showPopup() {
     TocMobile.setScrollEnabled(false);
     popup.showModal();
   }
 
-  static hide() {
+  static hidePopup() {
     TocMobile.setScrollEnabled(true);
     popup.close();
   }
@@ -66,20 +66,20 @@ export class TocMobile {
   }
 
   static initComponents() {
-    TocMobile.initBar();
+    this.initBar();
 
     [...triggers].forEach((trigger) => {
-      trigger.addEventListener('click', TocMobile.show);
+      trigger.addEventListener('click', this.showPopup);
     });
 
-    popup?.addEventListener('click', TocMobile.hide);
-    btnClose?.addEventListener('click', TocMobile.hide);
+    popup?.addEventListener('click', this.hidePopup);
+    btnClose?.addEventListener('click', this.hidePopup);
 
-    TocMobile.isVisible = true;
+    this.isVisible = true;
   }
 
   static init() {
     tocbot.init(this.options);
-    TocMobile.initComponents();
+    this.initComponents();
   }
 }

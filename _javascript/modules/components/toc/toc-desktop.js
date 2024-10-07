@@ -11,16 +11,12 @@ export class TocDesktop {
   };
 
   static refresh() {
-    tocbot.refresh(TocDesktop.options);
+    tocbot.refresh(this.options);
   }
 
   static init() {
-    const wrapper = document.getElementById('toc-wrapper');
-
-    if (wrapper === null) {
-      return;
+    if (document.getElementById('toc-wrapper')) {
+      tocbot.init(this.options);
     }
-
-    tocbot.init(TocDesktop.options);
   }
 }
