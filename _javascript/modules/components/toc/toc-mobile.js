@@ -73,6 +73,7 @@ export class TocMobile {
     });
 
     popup?.addEventListener('click', this.hidePopup);
+    popup?.addEventListener('cancel', this.hidePopup);
     btnClose?.addEventListener('click', this.hidePopup);
 
     this.isVisible = true;
