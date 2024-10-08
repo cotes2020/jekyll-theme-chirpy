@@ -1,32 +1,10 @@
 ---
 ---
 
-@import 'main';
+@import 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
 
-{% if jekyll.environment == 'production' %}
-  .bundle {
-    /* Your production-specific styles here */
-  }
-{% endif %}
-
-/* Align the caret to the right of the text */
-.nav-item.dropdown-toggle .fa-caret-down {
-    position: absolute;
-    right: 15px; /* Adjust as necessary */
-    top: 50%;
-    transform: translateY(-50%); /* Vertically center the caret */
-}
-
-/* Optional: Align the dropdown menu items properly */
-.nav-item .collapse ul {
-    padding-left: 15px;
-}
-
-.nav-item .collapse ul li {
-    margin: 5px 0;
-}
-
-/* Optional: Add more spacing between the categories */
-.nav-item a {
-    padding-right: 30px; /* Extra space between text and caret */
-}
+/* append your custom style below */
