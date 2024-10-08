@@ -2,16 +2,21 @@
 layout: home
 # Index page
 ---
-{% include embed/overview.html title='LLM Reasoners'
-                               image='/assets/img/llm-reasoners-icon.png'
-                               lqip='data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSB8AAAARD9D/iAgoahvJ2b7Xhz/Y1X4PQkT/o8FU8PVTYGoAAFZQOCBKAAAAEAIAnQEqDAAQAAVAfCWwAnQBA/ECqg1YsAD+79RqrU5v9zXdlXGYaiIk+PbK7qo6KjTrkP5uwiidXtjJrXlsDMVwXi35AAQMAAA='
-                               caption='Library and Evaluation of State-of-the-art Advanced Reasoning with LLMs'
-                               url='https://llm-reasoners.net/' %}
+{% include embed/overview.html title='Decentralized Arena'
+                               image='/assets/img/de-arena-icon.png'
+                               lqip='data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAQCdASoQAA8ABUB8JQAB8RYMTgAA/vHQKonvw7XF7euD39QLDJHFPg3V4kRs9aheA3XsO+Q7ZA+7oAAAt3AA'
+                               caption='Building Automated, Robust, and Transparent LLM Evaluation for Numerous Dimensions'
+                               url='https://de-arena.maitrix.org/' %}
 {% include embed/overview.html title='Pandora'
                                image='/assets/img/pandora-icon.png'
                                lqip='data:image/webp;base64,UklGRuQAAABXRUJQVlA4WAoAAAAQAAAADwAADAAAQUxQSE0AAAARL0AWYBocyQzqjKOICOJXsIpsu8kJMUD9rwICFpgnIOX6F/OCh4j+TwCkZhEYm2QBsiRt0JyR1F1/4ttbvt499gLNGWS3we4G4Gm2AABWUDggcAAAAPABAJ0BKhAADQAFQHwlsAJ0Bi3OBzYoAAD+xZ5L/hClJi4telcrsL/D8GLPcjru9iSzuId7Jpic+iOrQkMrlCJGki8icmHlpeTXfJ44UdW2ZiNFzoHujSjEmgC7/rA0eBlErnZtQKRGIayQaTN20AA='
                                caption='Towards General World Model with Natural Language Actions and Video States'
                                url='https://world-model.maitrix.org/' %}
+{% include embed/overview.html title='LLM Reasoners'
+                               image='/assets/img/llm-reasoners-icon.png'
+                               lqip='data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSB8AAAARD9D/iAgoahvJ2b7Xhz/Y1X4PQkT/o8FU8PVTYGoAAFZQOCBKAAAAEAIAnQEqDAAQAAVAfCWwAnQBA/ECqg1YsAD+79RqrU5v9zXdlXGYaiIk+PbK7qo6KjTrkP5uwiidXtjJrXlsDMVwXi35AAQMAAA='
+                               caption='Library and Evaluation of State-of-the-art Advanced Reasoning with LLMs'
+                               url='https://llm-reasoners.net/' %}
 ## Benchmarks
 {% include embed/overview.html title='MMToM-QA'
                                image='/assets/img/MMTOMQA-icon.png'

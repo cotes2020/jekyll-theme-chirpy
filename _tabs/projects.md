@@ -7,6 +7,11 @@ toc: true
 ---
 
 
+{% include embed/project.html title='Decentralized Arena'
+                              image='/assets/img/de-arena-icon.png'
+                              lqip='data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAQCdASoQAA8ABUB8JQAB8RYMTgAA/vHQKonvw7XF7euD39QLDJHFPg3V4kRs9aheA3XsO+Q7ZA+7oAAAt3AA'
+                              content='Building Automated, Robust, and Transparent LLM Evaluation for Numerous Dimensions'
+                              url='https://de-arena.maitrix.org/' %}
 {% include embed/project.html title='Pandora'
                               image='/assets/img/pandora-icon.png'
                               lqip='data:image/webp;base64,UklGRuQAAABXRUJQVlA4WAoAAAAQAAAADwAADAAAQUxQSE0AAAARL0AWYBocyQzqjKOICOJXsIpsu8kJMUD9rwICFpgnIOX6F/OCh4j+TwCkZhEYm2QBsiRt0JyR1F1/4ttbvt499gLNGWS3we4G4Gm2AABWUDggcAAAAPABAJ0BKhAADQAFQHwlsAJ0Bi3OBzYoAAD+xZ5L/hClJi4telcrsL/D8GLPcjru9iSzuId7Jpic+iOrQkMrlCJGki8icmHlpeTXfJ44UdW2ZiNFzoHujSjEmgC7/rA0eBlErnZtQKRGIayQaTN20AA='
