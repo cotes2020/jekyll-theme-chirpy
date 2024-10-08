@@ -53,6 +53,8 @@ export class TocMobile {
   static showPopup() {
     TocMobile.setScrollEnabled(false);
     popup.showModal();
+    const activeItem = popup.querySelector('li.is-active-li');
+    activeItem.scrollIntoView({ block: 'center' });
   }
 
   static hidePopup() {
