@@ -228,7 +228,7 @@ header {
   }
 }
 
-/* TOC pannel */
+/* TOC panel */
 #toc-wrapper {
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
@@ -479,15 +479,13 @@ header {
   }
 }
 
-@media all and (max-width: 1199px) {
+@media all and (min-width: 1200px) {
   h2,
   h3,
   h4 {
-    scroll-margin-top: 3.5rem;
+    scroll-margin-top: 2rem;
   }
-}
 
-@media all and (min-width: 1200px) {
   #toc-bar,
   #toc-solo-trigger {
     display: none !important;
