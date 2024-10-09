@@ -908,9 +908,7 @@ $btn-mb: 0.5rem;
 }
 
 #topbar {
-  button i {
-    color: #999999;
-  }
+  @extend %btn-color;
 
   #breadcrumb {
     font-size: 1rem;

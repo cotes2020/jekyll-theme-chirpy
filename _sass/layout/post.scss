@@ -228,6 +228,7 @@ header {
   }
 }
 
+/* TOC panel */
 #toc-wrapper {
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
@@ -287,6 +288,125 @@ header {
     ul {
       padding-left: 0.75rem;
     }
+  }
+}
+
+/* --- TOC button, bar and popup in mobile/tablet --- */
+
+#toc-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0 -1rem;
+  height: $topbar-height;
+  background: var(--main-bg);
+  border-bottom: 1px solid var(--main-border-color);
+  transition: all 0.2s ease-in-out;
+
+  @extend %btn-color;
+
+  .label {
+    @extend %heading;
+
+    margin-left: 0.25rem;
+    padding: 0 0.75rem;
+    color: inherit;
+  }
+
+  &.invisible {
+    top: -$topbar-height;
+    transition: none;
+  }
+}
+
+#toc-solo-trigger {
+  color: var(--text-muted-color);
+  border-color: var(--btn-border-color);
+  border-radius: $radius-lg;
+
+  .label {
+    font-size: 1rem;
+    font-family: $font-family-heading;
+  }
+
+  &:hover {
+    box-shadow: none;
+    background: none;
+  }
+}
+
+#toc-popup {
+  border-color: var(--toc-popup-border-color);
+  border-width: 1px;
+  border-radius: $radius-lg;
+  color: var(--text-color);
+  background: var(--main-bg);
+  margin-top: $topbar-height;
+  min-width: 20rem;
+  font-size: 1.05rem;
+
+  @media all and (min-width: 850px) {
+    left: $sidebar-width;
+  }
+
+  .header {
+    @extend %btn-color;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    border-bottom: 1px solid var(--main-border-color);
+
+    .label {
+      font-family: $font-family-heading;
+      max-width: 25rem;
+    }
+  }
+
+  button:focus-visible {
+    box-shadow: none;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 1.25rem;
+
+    li {
+      line-height: 1.5rem;
+      margin-top: 0.75rem;
+    }
+
+    ul {
+      border-left: 1px solid var(--main-border-color);
+      margin-left: 2px;
+      padding-left: calc(1.25rem - 3px);
+    }
+  }
+
+  .toc-link::before {
+    display: none;
+  }
+
+  .is-active-link {
+    color: var(--toc-highlight) !important;
+    font-weight: 600;
+  }
+
+  &::-webkit-backdrop {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  &::backdrop {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  #toc-popup-content {
+    overflow: auto;
+    max-height: calc(100vh - 4 * $topbar-height);
   }
 }
 
@@ -366,5 +486,18 @@ header {
     padding-right: 0;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  h2,
+  h3,
+  h4 {
+    scroll-margin-top: 2rem;
+  }
+
+  #toc-bar,
+  #toc-solo-trigger {
+    display: none !important;
   }
 }

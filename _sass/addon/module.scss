@@ -8,6 +8,7 @@
   color: var(--heading-color);
   font-weight: 400;
   font-family: $font-family-heading;
+  scroll-margin-top: 3.5rem;
 }
 
 %anchor {
@@ -131,6 +132,12 @@
     width: -webkit-fit-content;
     width: fit-content;
     transition: background-color 1.75s ease-in-out;
+  }
+}
+
+%btn-color {
+  button i {
+    color: #999999;
   }
 }
 
