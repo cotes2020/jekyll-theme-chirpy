@@ -319,8 +319,9 @@ header {
 }
 
 #toc-solo-trigger {
-  color: var(--link-color);
-  border-radius: $radius-sm;
+  color: var(--text-muted-color);
+  border-color: var(--btn-border-color);
+  border-radius: $radius-lg;
 
   .label {
     font-size: 1rem;
@@ -334,7 +335,7 @@ header {
 }
 
 #toc-popup {
-  border-color: var(--main-border-color);
+  border-color: var(--toc-popup-border-color);
   border-width: 1px;
   border-radius: $radius-lg;
   color: var(--text-color);
@@ -356,7 +357,6 @@ header {
 
     .label {
       font-family: $font-family-heading;
-      color: var(--text-muted-color);
       max-width: 25rem;
     }
   }
@@ -372,6 +372,12 @@ header {
     li {
       line-height: 1.5rem;
       margin-top: 0.75rem;
+    }
+
+    ul {
+      border-left: 1px solid var(--main-border-color);
+      margin-left: 2px;
+      padding-left: calc(1.25rem - 3px);
     }
   }
 
