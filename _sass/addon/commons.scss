@@ -604,10 +604,6 @@ main {
   }
 }
 
-button i {
-  color: #999999;
-}
-
 /* --- Effects classes --- */
 
 .flex-grow-1 {
@@ -912,6 +908,8 @@ $btn-mb: 0.5rem;
 }
 
 #topbar {
+  @extend %btn-color;
+
   #breadcrumb {
     font-size: 1rem;
     color: var(--text-muted-color);

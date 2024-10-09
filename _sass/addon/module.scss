@@ -135,6 +135,12 @@
   }
 }
 
+%btn-color {
+  button i {
+    color: #999999;
+  }
+}
+
 /* ---------- scss mixin --------- */
 
 @mixin mt-mb($value) {
