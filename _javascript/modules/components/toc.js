@@ -1,10 +1,10 @@
 import { TocMobile as mobile } from './toc/toc-mobile';
 import { TocDesktop as desktop } from './toc/toc-desktop';
 
-const mediaQuery = matchMedia('(min-width: 1200px)');
+const desktopMode = matchMedia('(min-width: 1200px)');
 
-function refresh() {
-  if (mediaQuery.matches) {
+function refresh(e) {
+  if (e.matches) {
     mobile.hidePopup();
     desktop.refresh();
   } else {
@@ -18,13 +18,13 @@ function init() {
   }
 
   // Avoid create multiple instances of Tocbot. Ref: <https://github.com/tscanlin/tocbot/issues/203>
-  if (mediaQuery.matches) {
+  if (desktopMode.matches) {
     desktop.init();
   } else {
     mobile.init();
   }
 
-  mediaQuery.addEventListener('change', refresh);
+  desktopMode.onchange = refresh;
 }
 
 export { init as initToc };

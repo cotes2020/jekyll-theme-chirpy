@@ -1,16 +1,16 @@
-/*
-  TOC topbar and popup for mobile/tablet
+/**
+ * TOC button, topbar and popup for mobile devices
  */
 
-const tocBar = document.getElementById('toc-bar');
-const soloTrigger = document.getElementById('toc-solo-trigger');
-const triggers = document.getElementsByClassName('toc-trigger');
+const $tocBar = document.getElementById('toc-bar');
+const $soloTrigger = document.getElementById('toc-solo-trigger');
+const $triggers = document.getElementsByClassName('toc-trigger');
 
-const popup = document.getElementById('toc-popup');
-const btnClose = document.getElementById('toc-popup-close');
+const $popup = document.getElementById('toc-popup');
+const $btnClose = document.getElementById('toc-popup-close');
 
 export class TocMobile {
-  static isVisible = false;
+  static invisible = true;
   static FROZEN = 'overflow-hidden';
   static barHeight = 16 * 3; // 3rem
 
@@ -26,24 +26,24 @@ export class TocMobile {
   };
 
   static initBar() {
-    if (tocBar === null) {
+    if ($tocBar === null) {
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          tocBar.classList.toggle('invisible', entry.isIntersecting);
+          $tocBar.classList.toggle('invisible', entry.isIntersecting);
         });
       },
       { rootMargin: `-${this.barHeight}px 0px 0px 0px` }
     );
 
-    observer.observe(soloTrigger);
+    observer.observe($soloTrigger);
   }
 
   static refresh() {
-    if (!this.isVisible) {
+    if (this.invisible) {
       this.initComponents();
     }
 
@@ -52,14 +52,14 @@ export class TocMobile {
 
   static showPopup() {
     TocMobile.setScrollEnabled(false);
-    popup.showModal();
-    const activeItem = popup.querySelector('li.is-active-li');
+    $popup.showModal();
+    const activeItem = $popup.querySelector('li.is-active-li');
     activeItem.scrollIntoView({ block: 'center' });
   }
 
   static hidePopup() {
     TocMobile.setScrollEnabled(true);
-    popup.close();
+    $popup.close();
   }
 
   static setScrollEnabled(enabled) {
@@ -70,15 +70,12 @@ export class TocMobile {
   static initComponents() {
     this.initBar();
 
-    [...triggers].forEach((trigger) => {
-      trigger.addEventListener('click', this.showPopup);
+    [...$triggers].forEach((trigger) => {
+      trigger.onclick = this.showPopup;
     });
 
-    popup?.addEventListener('click', this.hidePopup);
-    popup?.addEventListener('cancel', this.hidePopup);
-    btnClose?.addEventListener('click', this.hidePopup);
-
-    this.isVisible = true;
+    $popup.onclick = $popup.oncancel = $btnClose.onclick = this.hidePopup;
+    this.invisible = !this.invisible;
   }
 
   static init() {
