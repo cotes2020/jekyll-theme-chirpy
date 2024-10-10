@@ -58,6 +58,9 @@ export class TocMobile {
   }
 
   static hidePopup() {
+    if (!$popup.open) {
+      return;
+    }
     TocMobile.setScrollEnabled(true);
     $popup.close();
   }
