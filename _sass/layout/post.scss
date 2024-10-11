@@ -389,6 +389,10 @@ header {
   min-width: 20rem;
   font-size: 1.05rem;
 
+  @media all and (min-width: 576px) {
+    max-width: 32rem;
+  }
+
   &[open] {
     -webkit-animation: $slide-in;
     animation: $slide-in;
@@ -414,7 +418,6 @@ header {
 
     .label {
       font-family: $font-family-heading;
-      max-width: 25rem;
     }
   }
 
@@ -469,6 +472,7 @@ header {
   #toc-popup-content {
     overflow: auto;
     max-height: calc(100vh - 4 * $topbar-height);
+    font-family: $font-family-heading;
   }
 }
 
