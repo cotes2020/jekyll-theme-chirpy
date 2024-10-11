@@ -228,26 +228,6 @@ header {
   }
 }
 
-@mixin slide-down {
-  from {
-    opacity: 0.7;
-    transform: translateY(-$topbar-height);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@-webkit-keyframes slide-down {
-  @include slide-down;
-}
-
-@keyframes slide-down {
-  @include slide-down;
-}
-
 /* TOC panel */
 #toc-wrapper {
   border-left: 1px solid rgba(158, 158, 158, 0.17);
@@ -356,8 +336,49 @@ header {
   }
 }
 
+@mixin slide-in {
+  from {
+    opacity: 0.7;
+    transform: translateY(-$topbar-height);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin slide-out {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-$topbar-height);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slide-in {
+  @include slide-in;
+}
+
+@keyframes slide-in {
+  @include slide-in;
+}
+
+@-webkit-keyframes slide-out {
+  @include slide-out;
+}
+
+@keyframes slide-out {
+  @include slide-out;
+}
+
 #toc-popup {
-  $anmimation: slide-down 0.3s ease-out;
+  $slide-in: slide-in 0.3s ease-out;
+  $slide-out: slide-out 0.3s ease-out;
 
   border-color: var(--toc-popup-border-color);
   border-width: 1px;
@@ -367,8 +388,16 @@ header {
   margin-top: $topbar-height;
   min-width: 20rem;
   font-size: 1.05rem;
-  -webkit-animation: $anmimation;
-  animation: $anmimation;
+
+  &[open] {
+    -webkit-animation: $slide-in;
+    animation: $slide-in;
+  }
+
+  &[closing] {
+    -webkit-animation: $slide-out;
+    animation: $slide-out;
+  }
 
   @media all and (min-width: 850px) {
     left: $sidebar-width;

@@ -9,6 +9,7 @@ const $popup = document.getElementById('toc-popup');
 const $btnClose = document.getElementById('toc-popup-close');
 
 const SCROLL_LOCK = 'overflow-hidden';
+const CLOSING = 'closing';
 
 export class TocMobile {
   static invisible = true;
@@ -65,7 +66,18 @@ export class TocMobile {
     if (!$popup.open) {
       return;
     }
-    $popup.close();
+
+    $popup.toggleAttribute(CLOSING);
+
+    $popup.addEventListener(
+      'animationend',
+      () => {
+        $popup.toggleAttribute(CLOSING);
+        $popup.close();
+      },
+      { once: true }
+    );
+
     TocMobile.lockScroll(false);
   }
 
