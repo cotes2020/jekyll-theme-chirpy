@@ -395,22 +395,31 @@ header {
 
   ul {
     list-style-type: none;
-    padding-left: 1.25rem;
+    padding-left: 0;
 
     li {
-      line-height: 1.5rem;
-      margin-top: 0.75rem;
-    }
+      ul,
+      & + li {
+        margin-top: 0.25rem;
+      }
 
-    ul {
-      border-left: 1px solid var(--main-border-color);
-      margin-left: 2px;
-      padding-left: calc(1.25rem - 3px);
+      a {
+        display: flex;
+        line-height: 1.5;
+        padding: 0.375rem 0;
+        padding-right: 1.125rem;
+
+        &.toc-link::before {
+          display: none;
+        }
+      }
     }
   }
 
-  .toc-link::before {
-    display: none;
+  @for $i from 2 through 4 {
+    .node-name--H#{$i} {
+      padding-left: 1.125rem * ($i - 1);
+    }
   }
 
   .is-active-link {
