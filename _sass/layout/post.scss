@@ -379,6 +379,7 @@ header {
 #toc-popup {
   $slide-in: slide-in 0.3s ease-out;
   $slide-out: slide-out 0.3s ease-out;
+  $curtain-height: 2rem;
 
   border-color: var(--toc-popup-border-color);
   border-width: 1px;
@@ -469,10 +470,19 @@ header {
     backdrop-filter: blur(5px);
   }
 
+  &::after {
+    display: flex;
+    content: '';
+    position: relative;
+    background: linear-gradient(transparent, var(--main-bg) 70%);
+    height: $curtain-height;
+  }
+
   #toc-popup-content {
     overflow: auto;
     max-height: calc(100vh - 4 * $topbar-height);
     font-family: $font-family-heading;
+    margin-bottom: -$curtain-height;
   }
 }
 
