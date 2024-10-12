@@ -62,7 +62,11 @@ export class TocMobile {
     activeItem.scrollIntoView({ block: 'center' });
   }
 
-  static hidePopup() {
+  static hidePopup(event) {
+    if (event?.type === 'cancel') {
+      event.preventDefault();
+    }
+
     if (!$popup.open) {
       return;
     }
