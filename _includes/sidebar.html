@@ -26,16 +26,17 @@
       <!-- Categories dropdown -->
       <li class="nav-item dropdown-toggle" style="position: relative;">
         <a href="#categoriesMenu" data-bs-toggle="collapse" aria-expanded="false" class="nav-link d-flex justify-content-between">
-          <i class="far fa-folder"></i> <!-- 폴더 아이콘 추가 -->
+          <i class="far fa-folder{% if page.url contains 'categories' %}-open{% endif %}"></i> <!-- 닫혔을 때와 열렸을 때 아이콘 변경 -->
           <span>{{ site.data.locales[include.lang].tabs.categories | upcase }}</span>
           <i class="fas fa-caret-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i>
         </a>
         <ul class="collapse list-unstyled" id="categoriesMenu">
-          <li><a href="/categories/data/"><i class="far fa-folder-open"></i> Data</a></li> <!-- 아이콘 추가 -->
-          <li><a href="/categories/automation-tools/"><i class="far fa-folder-open"></i> Automation Tools</a></li> <!-- 아이콘 추가 -->
-          <li><a href="/categories/sports/"><i class="far fa-folder-open"></i> Sports</a></li> <!-- 아이콘 추가 -->
+          <li><a href="/categories/data/"><i class="far fa-file"></i> Data</a></li> <!-- 간단한 아이콘 추가 -->
+          <li><a href="/categories/automation-tools/"><i class="far fa-file"></i> Automation Tools</a></li> <!-- 간단한 아이콘 추가 -->
+          <li><a href="/categories/sports/"><i class="far fa-file"></i> Sports</a></li> <!-- 간단한 아이콘 추가 -->
         </ul>
       </li>
+
 
 
       <li class="nav-item{% if page.url contains 'tags' %}{{ " active" }}{% endif %}">
