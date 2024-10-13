@@ -52,9 +52,13 @@
 
   <title>
     {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
+      {%- if post.seo_title -%}
+        {{ post.seo_title }}
+        {%- else -%}
+          {{ page.title | append: ' | ' }}
+        {%- endif -%}
+      {%- endunless -%}
+      {{ site.title }}
   </title>
 
   {% include_cached favicons.html %}
