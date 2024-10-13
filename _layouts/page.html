@@ -18,3 +18,13 @@ layout: default
     {{ content }}
   {% endif %}
 </article>
+
+<!-- 카테고리 목록 추가 -->
+<h2>Categories</h2>
+<ul>
+  {% for category in site.categories %}
+    <li>
+      <a href="{{ category[1] | first.url }}">{{ category[0] }}</a> ({{ category[1] | size }})
+    </li>
+  {% endfor %}
+</ul>
