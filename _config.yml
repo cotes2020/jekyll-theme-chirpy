@@ -36,6 +36,8 @@ navigation:
         url: "/categories/productivity-tools/"
       - title: "⚾ Sports"
         url: "/categories/sports/"
+      - title: "🚀 Journey"  
+        url: "/categories/journey/" 
   - text: "Tags"
     url: "/tags/"
   - text: "Archives"
