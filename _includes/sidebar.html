@@ -22,30 +22,27 @@
         </a>
       </li>
 
-      <!-- Categories dropdown -->
+     <!-- Categories dropdown -->
       <li class="nav-item dropdown-toggle" style="position: relative;">
         <a href="#categoriesMenu" data-bs-toggle="collapse" aria-expanded="false" class="nav-link d-flex justify-content-between">
-          <i class="far fa-folder"></i> <!-- 아이콘 추가 -->
           <span>{{ site.data.locales[include.lang].tabs.categories | upcase }}</span>
           <i class="fas fa-caret-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i>
         </a>
         <ul class="collapse list-unstyled" id="categoriesMenu">
-          <li>
-            <i class="far fa-folder"></i> <!-- 각 카테고리 아이콘 추가 -->
-            <a href="/categories/data/">Data</a>
+          <li class="nav-item">
+            <a href="/categories/data/" class="nav-link">Data</a>
           </li>
-          <li>
-            <i class="far fa-folder"></i> <!-- 각 카테고리 아이콘 추가 -->
-            <a href="/categories/automation-tools/">Automation Tools</a>
+          <li class="nav-item">
+            <a href="/categories/automation-tools/" class="nav-link">Automation Tools</a>
           </li>
-          <li>
-            <i class="far fa-folder"></i> <!-- 각 카테고리 아이콘 추가 -->
-            <a href="/categories/sports/">Sports</a>
+          <li class="nav-item">
+            <a href="/categories/sports/" class="nav-link">Sports</a>
           </li>
         </ul>
       </li>
-
-
+      
+  
+  
 
 
       <li class="nav-item{% if page.url contains 'tags' %}{{ " active" }}{% endif %}">
