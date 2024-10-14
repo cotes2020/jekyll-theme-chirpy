@@ -5,6 +5,27 @@ mermaid: true
 ---
 STworks.kr은 똑똑[^dkdk] 주식회사에서 만든 스타트업 영업보고(투자자보고) 시스템입니다.
 
+## 투자자 보고 업무의 일반 흐름
+
+```mermaid
+flowchart TD
+    n1["STworks 가입 요청 (VC)"]
+    n2["STworks 회사(회원)가입)<br>scm002"]
+    n3["STworks 로그인<br>scm001"]
+    n4["STworks 사용자 관리<br>scm006"]
+    n5["STworks 역할/권한 관리<br>scm007"]
+    n6["영업보고 목록<br>sbr001 / sbr002 / sbr003"]
+    n7["영업보고 상세(보고서 작성)<br>sbr004"]
+    
+    n1 --> n2
+    n1 --> n3
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
+    n5 --> n6
+    n6 --> n7
+```
+
 ## 신규 계정 등록하기
 
 - STworks 신규 계정 등록 안내 메일의 [계정등록] 버튼을 클릭하여 계정 등록을 진행합니다.
@@ -202,26 +223,6 @@ STworks에서 사용할 계정(ID)를 생성하는 방법은 다음과 같습니
 - 시스템 상 마감일이 지나면 전송할 수 없습니다. 투자자에게 연락하시갈 바랍니다. 
 
 
-## 투자자 보고 업무의 일반 흐름
-
-```mermaid
-flowchart TD
-    n1["STworks 가입 요청 (VC)"]
-    n2["STworks 회사(회원)가입)<br>scm002"]
-    n3["STworks 로그인<br>scm001"]
-    n4["STworks 사용자 관리<br>scm006"]
-    n5["STworks 역할/권한 관리<br>scm007"]
-    n6["영업보고 목록<br>sbr001 / sbr002 / sbr003"]
-    n7["영업보고 상세(보고서 작성)<br>sbr004"]
-    
-    n1 --> n2
-    n1 --> n3
-    n2 --> n3
-    n3 --> n4
-    n4 --> n5
-    n5 --> n6
-    n6 --> n7
-```
 
 버그 및 문의 사항은 다음 이메일로 보내주세요: **[we@ddock.kr](mailto:we@ddock.kr)**
 
