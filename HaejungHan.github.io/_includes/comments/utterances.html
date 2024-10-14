@@ -1,0 +1,49 @@
+<!-- https://utteranc.es/ -->
+<script
+  src="https://utteranc.es/client.js"
+  repo="{{ site.comments.utterances.repo }}"
+  issue-term="{{ site.comments.utterances.issue_term }}"
+  crossorigin="anonymous"
+  async
+></script>
+
+<script type="text/javascript">
+  (function () {
+    const origin = 'https://utteranc.es';
+    const lightTheme = 'github-light';
+    const darkTheme = 'github-dark';
+    let initTheme = lightTheme;
+    const html = document.documentElement;
+
+    if (
+      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      initTheme = darkTheme;
+    }
+
+    addEventListener('message', (event) => {
+      let theme;
+
+      {%- comment -%} credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> {%- endcomment -%}
+      if (event.origin === origin) {
+        {%- comment -%} page initial {%- endcomment -%}
+        theme = initTheme;
+      } else if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+        {%- comment -%} global theme mode changed {%- endcomment -%}
+        const mode = event.data.message;
+        theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
+      } else {
+        return;
+      }
+
+      const message = {
+        type: 'set-theme',
+        theme: theme
+      };
+
+      const utterances = document.getElementsByClassName('utterances-frame')[0].contentWindow;
+      utterances.postMessage(message, origin);
+    });
+  })();
+</script>

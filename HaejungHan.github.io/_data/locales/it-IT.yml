@@ -1,0 +1,90 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Post
+  category: Categoria
+  tag: Tag
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Pagina principale
+  categories: Categorie
+  tags: Tags
+  archives: Archivio
+  about: Informazioni
+
+# the text displayed in the search bar & search results
+search:
+  hint: ricerca
+  cancel: Cancella
+  no_results: Oops! La ricerca non ha fornito risultati.
+
+panel:
+  lastmod: Aggiornati recentemente
+  trending_tags: Tags più cliccati
+  toc: Contenuti
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Questo post è sotto licenza :LICENSE_NAME a nome dell'autore.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Alcuni diritti riservati.
+  verbose: >-
+    Eccetto quando esplicitamente menzionato, i post di questo blog sono da ritenersi sotto
+    i termini di licenza Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+meta: Servizio offerto da :PLATFORM con tema :THEME
+not_found:
+  statement: Ci scusiamo, non è stato possibile trovare l'URL in questione. Potrebbe puntare ad una pagina non esistente.
+
+notification:
+  update_found: Nuova versione del contenuto disponibile.
+  update: Aggiornamento
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Da
+  posted: Postato
+  updated: Aggiornato
+  words: parole
+  pageview_measure: visioni
+  read_time:
+    unit: min
+    prompt: lettura
+  relate_posts: Continua a leggere
+  share: Condividi
+  button:
+    next: Più recenti
+    previous: Meno recenti
+    copy_code:
+      succeed: Copiato!
+    share_link:
+      title: Copia link
+      succeed: Link copiato con successo!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# categories page
+categories:
+  category_measure:
+    singular: categoria
+    plural: categorie
+  post_measure:
+    singular: post
+    plural: posts
