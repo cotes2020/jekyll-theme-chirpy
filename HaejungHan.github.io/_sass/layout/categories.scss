@@ -1,0 +1,83 @@
+/*
+  Style for Tab Categories
+*/
+
+%category-icon-color {
+  color: gray;
+}
+
+.categories {
+  margin-bottom: 2rem;
+  border-color: var(--categories-border);
+
+  &.card,
+  .list-group {
+    @extend %rounded;
+  }
+
+  .card-header {
+    $radius: calc($radius-lg - 1px);
+
+    padding: 0.75rem;
+    border-radius: $radius;
+    border-bottom: 0;
+
+    &.hide-border-bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  i {
+    @extend %category-icon-color;
+
+    font-size: 86%; /* fontawesome icons */
+  }
+
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 2rem;
+
+    &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+} /* .categories */
+
+.category-trigger {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  text-align: center;
+  color: #6c757d !important;
+
+  i {
+    position: relative;
+    height: 0.7rem;
+    width: 1rem;
+    transition: transform 300ms ease;
+  }
+
+  &:hover {
+    i {
+      color: var(--categories-icon-hover-color);
+    }
+  }
+}
+
+/* only works on desktop */
+@media (hover: hover) {
+  .category-trigger:hover {
+    background-color: var(--categories-hover-bg);
+  }
+}
+
+.rotate {
+  transform: rotate(-90deg);
+}

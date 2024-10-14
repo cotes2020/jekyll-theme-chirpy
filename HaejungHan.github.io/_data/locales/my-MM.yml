@@ -1,0 +1,77 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: ပို့စ်
+  category: ကဏ္ဍ
+  tag: နာမ(တက်ဂ်)
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: အဓိကစာမျက်နှာ
+  categories: ကဏ္ဍများ
+  tags: နာမ(တက်ဂ်)များ
+  archives: မှတ်တမ်း​တိုက်
+  about: အကြောင်းအရာ
+
+# the text displayed in the search bar & search results
+search:
+  hint: ရှာဖွေမည်
+  cancel: ဖျက်သိမ်းမည်
+  no_results: အိုး! ဘာမှမရှိပါ
+
+panel:
+  lastmod: မကြာသေးမီကမွမ်းမံထားသည်
+  trending_tags: ခေတ်စားနေသည့်တက်ဂ်များ
+  toc: အကြောင်းအရာများ
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: ဤပို့စ်သည်စာရေးသူ၏ :LICENSE_NAME လိုင်စင်ရထားသည်။
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: မူပိုင်ခွင့်အချို့ကို လက်ဝယ်ထားသည်။
+  verbose: >-
+    အခြားမှတ်သားထားချက်များမှလွဲ၍ ဤဆိုက်ရှိ ဘလော့ဂ်ပို့စ်များသည် စာရေးသူ၏
+    Creative Commons Attribution 4.0 International (CC BY 4.0) အောက်တွင် လိုင်စင်ရထားပါသည်။
+
+meta: Powered by :PLATFORM with :THEME theme
+
+not_found:
+  statement: ဝမ်းနည်းပါသည်၊ ကျွန်ုပ်တို့သည် အဆိုပါ URL ကို မှားယွင်းစွာ နေရာချထားခြင်း သို့မဟုတ် ၎င်းသည် မရှိသောအရာကို ညွှန်ပြနေပါသည်။
+
+notification:
+  update_found: အကြောင်းအရာဗားရှင်းအသစ်ကို ရနိုင်ပါပြီ။
+  update: အပ်ဒိတ်
+
+# ----- Posts related labels -----
+
+post:
+  written_by: ကရေးသားခဲ့သည်။
+  posted: တင်ထားခဲ့သည်။
+  updated: မွမ်းမံထားခဲ့သည်။
+  words: စကားလုံးများ
+  pageview_measure: အမြင်များ
+  read_time:
+    unit: မိနစ်
+    prompt: ဖတ်ပါမည်
+  relate_posts: နောက်ထပ်ဖတ်ရန်
+  share: မျှဝေရန်
+  button:
+    next: အသစ်များ
+    previous: အဟောင်းများ
+    copy_code:
+      succeed: ကူးယူလိုက်ပြီ။
+    share_link:
+      title: လင့်ခ်ကို ကူးယူရန်
+      succeed: လင့်ခ်ကို ကူးယူလိုက်ပြီ။
+
+# categories page
+categories:
+  category_measure: ကဏ္ဍများ
+  post_measure: ပို့စ်များ
