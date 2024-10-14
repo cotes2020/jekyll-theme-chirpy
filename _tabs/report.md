@@ -31,6 +31,8 @@ flowchart TD
     click n5 "{% post_url 2024-09-04-scm007 %}" " "
     click n6 "{% post_url 2024-09-05-sbr001 %}" " "
     click n7 "{% post_url 2024-09-06-sbr004 %}" " "
+
+    %%style n1 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10,color:#333333,fontColor:#333333
 ```
 
 
