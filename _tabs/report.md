@@ -14,7 +14,7 @@ flowchart TD
     n3["STworks 로그인<br>scm001"]
     n4["STworks 사용자 관리<br>scm006"]
     n5["STworks 역할/권한 관리<br>scm007"]
-    n6["영업보고 목록<br>sbr001 / sbr002 / sbr003"]
+    n6["영업보고 목록<br>sbr001~003"]
     n7["영업보고 상세(보고서 작성)<br>sbr004"]
     
     n1 --> n2
@@ -24,10 +24,6 @@ flowchart TD
     n4 --> n5
     n5 --> n6
     n6 --> n7
-
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    classDef highlight fill:#e6ffe6,stroke:#66cc66,stroke-width:2px;
-    class n7 highlight;
 
     click n2 "{% post_url 2024-09-01-scm002 %}" " "
     click n3 "{% post_url 2024-09-02-scm001 %}" " "
