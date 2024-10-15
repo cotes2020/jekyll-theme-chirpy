@@ -1,6 +1,6 @@
 ---
 icon: fas fa-info-circle
-order: 2
+order: 3
 mermaid: true
 ---
 STworks.kr은 똑똑[^dkdk] 주식회사에서 만든 스타트업 영업보고(투자자보고) 시스템입니다.
