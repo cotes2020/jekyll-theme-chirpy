@@ -43,7 +43,8 @@ VCworks는 다중 정렬을 제공합니다. 다중 정렬은 먼저 정렬을 �
 
   ![다중 정렬](/assets/img/Pasted%20image%2020241015192728.png)
 
-> **참고:** 버그 및 문의 사항은 다음 이메일로 보내주세요: [we@ddock.kr](mailto:we@ddock.kr)
+
+
 
 버그 및 문의 사항은 다음 이메일로 보내주세요: **[we@ddock.kr](mailto:we@ddock.kr)**
 
