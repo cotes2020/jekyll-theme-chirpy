@@ -23,7 +23,7 @@ package-lock.json
 
 # Misc
 /_posts/.obsidian
-.obsidian/workspace.json
-.obsidian/app.json
-.obsidian/core-plugins-migration.json
-.obsidian/core-plugins.json
+/.obsidian/workspace.json
+/.obsidian/app.json
+/.obsidian/core-plugins-migration.json
+/.obsidian/core-plugins.json
