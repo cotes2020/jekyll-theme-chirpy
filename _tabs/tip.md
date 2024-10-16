@@ -11,6 +11,10 @@ VCworks.kr 사용 과정상에 꼭 필요한 팁과 자주 묻는 질문을 정�
 
 VCworks.kr은 PWA(Progressive Web Apps)를 지원하여 마치 프로그램처럼 사용할 수 있는 사용성을 제공합니다.
 
+### 동영상
+
+{% include embed/youtube.html id='X5y2KXVuUpc' %}
+
 1. VCworks.kr에 접속합니다.
 2. 주소창에 있는 다음의 아이콘을 클릭합니다.
 
@@ -25,6 +29,10 @@ VCworks.kr은 PWA(Progressive Web Apps)를 지원하여 마치 프로그램처�
 ## 그리드 정렬 사용하는 방법
 
 VCworks는 다중 정렬을 제공합니다. 다중 정렬은 먼저 정렬을 설정한 것을 1번 우선순위로, 다음에 정렬 설정한 것을 2번 우선순위로 하는 기능입니다.
+
+### 동영상
+
+{% include embed/youtube.html id='p_lLOmKI1Zk' %}
 
 - VCworks에서 정렬은 ▲나, ▼ 아이콘을 클릭하지 않고 컬럼명을 클릭하여 동작합니다.
 - 다음의 상태는 아무런 정렬이 적용되지 않은 모습입니다.
