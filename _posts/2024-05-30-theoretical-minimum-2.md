@@ -24,5 +24,21 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ## Lecture 4 - Classical Field Theory
 ![alt](assets/img/custom/B2L4.png)
 
+## Lecture 5 - Particles and Fields
+> I switched editing software to [`MarginNote4`](https://www.marginnote.com/)
+{: .prompt-tip }
+
+![alt](assets/img/custom/B2L5.png)
+
+## Lecture 6 - Lorentz Force Law
+![alt](assets/img/custom/B2L6.png)
+
+## Lecture 7 - Fundamental Principles of Gauge Invariance
+![alt](assets/img/custom/B2L7.png)
+
+## Lecture 8 - Maxwell's Equations
+![alt](assets/img/custom/B2L8.png)
+
+
 > Following lectures are still under construction 🚧
 {: .prompt-warning } 
