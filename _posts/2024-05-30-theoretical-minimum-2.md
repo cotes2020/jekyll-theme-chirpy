@@ -39,6 +39,5 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ## Lecture 8 - Maxwell's Equations
 ![alt](assets/img/custom/B2L8.png)
 
-
 > Following lectures are still under construction 🚧
 {: .prompt-warning } 
