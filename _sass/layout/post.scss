@@ -380,12 +380,13 @@ header {
   $slide-in: slide-in 0.3s ease-out;
   $slide-out: slide-out 0.3s ease-out;
   $curtain-height: 2rem;
+  $backdrop: blur(5px);
 
   border-color: var(--toc-popup-border-color);
   border-width: 1px;
   border-radius: $radius-lg;
   color: var(--text-color);
-  background: var(--main-bg);
+  background: var(--card-bg);
   margin-top: $topbar-height;
   min-width: 20rem;
   font-size: 1.05rem;
@@ -422,8 +423,15 @@ header {
     }
   }
 
-  button:focus-visible {
-    box-shadow: none;
+  button {
+    > i {
+      font-size: 1.25rem;
+      vertical-align: middle;
+    }
+
+    &:focus-visible {
+      box-shadow: none;
+    }
   }
 
   ul {
@@ -461,20 +469,20 @@ header {
   }
 
   &::-webkit-backdrop {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: $backdrop;
+    backdrop-filter: $backdrop;
   }
 
   &::backdrop {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: $backdrop;
+    backdrop-filter: $backdrop;
   }
 
   &::after {
     display: flex;
     content: '';
     position: relative;
-    background: linear-gradient(transparent, var(--main-bg) 70%);
+    background: linear-gradient(transparent, var(--card-bg) 70%);
     height: $curtain-height;
   }
 

@@ -12,8 +12,8 @@ const SCROLL_LOCK = 'overflow-hidden';
 const CLOSING = 'closing';
 
 export class TocMobile {
-  static invisible = true;
-  static barHeight = 16 * 3; // 3rem
+  static #invisible = true;
+  static #barHeight = 16 * 3; // 3rem
 
   static options = {
     tocSelector: '#toc-popup-content',
@@ -23,7 +23,7 @@ export class TocMobile {
     orderedList: false,
     scrollSmooth: false,
     collapseDepth: 4,
-    headingsOffset: this.barHeight
+    headingsOffset: this.#barHeight
   };
 
   static initBar() {
@@ -33,44 +33,40 @@ export class TocMobile {
           $tocBar.classList.toggle('invisible', entry.isIntersecting);
         });
       },
-      { rootMargin: `-${this.barHeight}px 0px 0px 0px` }
+      { rootMargin: `-${this.#barHeight}px 0px 0px 0px` }
     );
 
     observer.observe($soloTrigger);
-    this.invisible = false;
+    this.#invisible = false;
   }
 
   static listenAnchors() {
     const $anchors = document.getElementsByClassName('toc-link');
     [...$anchors].forEach((anchor) => {
-      anchor.onclick = this.hidePopup;
+      anchor.onclick = () => this.hidePopup();
     });
   }
 
   static refresh() {
-    if (this.invisible) {
+    if (this.#invisible) {
       this.initComponents();
     }
     tocbot.refresh(this.options);
     this.listenAnchors();
   }
 
+  static get popupOpened() {
+    return $popup.open;
+  }
+
   static showPopup() {
-    TocMobile.lockScroll(true);
+    this.lockScroll(true);
     $popup.showModal();
     const activeItem = $popup.querySelector('li.is-active-li');
     activeItem.scrollIntoView({ block: 'center' });
   }
 
-  static hidePopup(event) {
-    if (event?.type === 'cancel') {
-      event.preventDefault();
-    }
-
-    if (!$popup.open) {
-      return;
-    }
-
+  static hidePopup() {
     $popup.toggleAttribute(CLOSING);
 
     $popup.addEventListener(
@@ -82,7 +78,7 @@ export class TocMobile {
       { once: true }
     );
 
-    TocMobile.lockScroll(false);
+    this.lockScroll(false);
   }
 
   static lockScroll(enable) {
@@ -91,6 +87,10 @@ export class TocMobile {
   }
 
   static clickBackdrop(event) {
+    if ($popup.hasAttribute(CLOSING)) {
+      return;
+    }
+
     const rect = event.target.getBoundingClientRect();
     if (
       event.clientX < rect.left ||
@@ -98,7 +98,7 @@ export class TocMobile {
       event.clientY < rect.top ||
       event.clientY > rect.bottom
     ) {
-      TocMobile.hidePopup();
+      this.hidePopup();
     }
   }
 
@@ -106,11 +106,15 @@ export class TocMobile {
     this.initBar();
 
     [...$triggers].forEach((trigger) => {
-      trigger.onclick = this.showPopup;
+      trigger.onclick = () => this.showPopup();
     });
 
-    $popup.onclick = this.clickBackdrop;
-    $btnClose.onclick = $popup.oncancel = this.hidePopup;
+    $popup.onclick = (e) => this.clickBackdrop(e);
+    $btnClose.onclick = () => this.hidePopup();
+    $popup.oncancel = (e) => {
+      e.preventDefault();
+      this.hidePopup();
+    };
   }
 
   static init() {
