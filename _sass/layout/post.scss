@@ -1,6 +1,6 @@
-/*
-  Post-specific style
-*/
+/**
+ * Post-specific styles
+ */
 
 %btn-post-nav {
   width: 50%;
@@ -97,7 +97,7 @@ header {
 
         &:hover {
           i {
-            @extend %btn-share-hovor;
+            @extend %btn-share-hover;
           }
         }
       }
@@ -258,9 +258,8 @@ header {
 
     .toc-link {
       display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+      @extend %text-ellipsis;
 
       &:hover {
         color: var(--toc-highlight);
@@ -509,10 +508,11 @@ header {
   }
 
   p {
+    @extend %text-ellipsis;
+
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: break-spaces;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -534,7 +534,7 @@ header {
   max-width: 100%;
 }
 
-%btn-share-hovor {
+%btn-share-hover {
   color: var(--btn-share-hover-color) !important;
 }
 
@@ -566,10 +566,8 @@ header {
 /* Hide SideBar and TOC */
 @media all and (max-width: 849px) {
   .post-navigation {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
+    @include pl-pr(0);
+    @include ml-mr(-0.5rem);
   }
 }
 
