@@ -251,8 +251,8 @@ i {
 
     > p {
       margin-left: 0.25em;
-      margin-top: 0;
-      margin-bottom: 0;
+
+      @include mt-mb(0);
     }
   }
 }
@@ -769,8 +769,8 @@ $btn-mb: 0.5rem;
     li.nav-item {
       opacity: 0.9;
       width: 100%;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+
+      @include pl-pr(1.5rem);
 
       a.nav-link {
         @include pt-pb(0.6rem);
@@ -1043,7 +1043,7 @@ search {
 
   a {
     font-size: 1.4rem;
-    line-height: 2.5rem;
+    line-height: 1.5rem;
 
     &:hover {
       @extend %link-hover;
@@ -1069,8 +1069,9 @@ search {
     }
 
     > p {
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @extend %text-ellipsis;
+
+      white-space: break-spaces;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -1086,10 +1087,7 @@ search {
   color: var(--topbar-text-color);
   text-align: center;
   width: 70%;
-  overflow: hidden;
-  text-overflow: ellipsis;
   word-break: keep-all;
-  white-space: nowrap;
 }
 
 #mask {
@@ -1492,8 +1490,8 @@ search {
 
   #main-wrapper > .container {
     max-width: $main-content-max-width;
-    padding-left: 1.75rem !important;
-    padding-right: 1.75rem !important;
+
+    @include pl-pr(1.75rem, true);
   }
 
   main.col-12,
