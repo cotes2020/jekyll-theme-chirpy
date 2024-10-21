@@ -14,24 +14,23 @@ tabs:
   categories: Kategóriák
   tags: Címkék
   archives: Archívum
-  about: Rólam
+  about: Bemutatkozás
 
 # the text displayed in the search bar & search results
 search:
   hint: keresés
   cancel: Mégse
-  no_results: Oops! Nincs találat a keresésre.
+  no_results: Hoppá! Nincs találat a keresésre.
 
 panel:
   lastmod: Legutóbb frissítve
   trending_tags: Népszerű Címkék
   toc: Tartalom
-  links: Blog linkek
 
 copyright:
   # Shown at the bottom of the post
   license:
-    template: A bejegyzés :LICENSE_NAME licenccel rendelkezik.
+    template: A bejegyzést a szerző :LICENSE_NAME licenc alatt engedélyezte.
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
@@ -42,7 +41,7 @@ copyright:
     Creative Commons Attribution 4.0 International (CC BY 4.0) licenccel rendelkeznek,
     hacsak másképp nincs jelezve.
 
-meta: Készítve :PLATFORM motorral :THEME témával
+meta: Készítve :THEME témával a :PLATFORM platformra.
 
 not_found:
   statement: Sajnáljuk, az URL-t rosszul helyeztük el, vagy valami nem létezőre mutat.
@@ -73,7 +72,21 @@ post:
       title: Link másolása
       succeed: Link sikeresen másolva!
 
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%Y. %B. %e."
+    dayjs: "YYYY. MMMM D."
+  archives:
+    strftime: "%B"
+    dayjs: "MMM"
+
 # categories page
 categories:
-  category_measure: kategória
-  post_measure: bejegyzés
+  category_measure:
+    singular: kategória
+    plural: kategória
+  post_measure:
+    singular: bejegyzés
+    plural: bejegyzés
