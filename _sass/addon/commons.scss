@@ -688,7 +688,6 @@ $btn-mb: 0.5rem;
   height: 100%;
   overflow-y: auto;
   width: $sidebar-width;
-  z-index: 99;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border-color);
 
@@ -1091,16 +1090,7 @@ search {
 }
 
 #mask {
-  display: none;
-  position: fixed;
   inset: 0 0 0 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-
-  @at-root [#{$sidebar-display}] & {
-    display: block !important;
-  }
 }
 
 /* --- basic wrappers --- */
