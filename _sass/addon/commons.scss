@@ -251,8 +251,8 @@ i {
 
     > p {
       margin-left: 0.25em;
-      margin-top: 0;
-      margin-bottom: 0;
+
+      @include mt-mb(0);
     }
   }
 }
@@ -688,7 +688,6 @@ $btn-mb: 0.5rem;
   height: 100%;
   overflow-y: auto;
   width: $sidebar-width;
-  z-index: 99;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border-color);
 
@@ -738,6 +737,9 @@ $btn-mb: 0.5rem;
   }
 
   .site-title {
+    @extend %clickable-transition;
+    @extend %sidebar-link-hover;
+
     font-family: inherit;
     font-weight: 900;
     font-size: 1.75rem;
@@ -745,13 +747,8 @@ $btn-mb: 0.5rem;
     letter-spacing: 0.25px;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
-
-    a {
-      @extend %clickable-transition;
-      @extend %sidebar-link-hover;
-
-      color: var(--site-title-color);
-    }
+    width: fit-content;
+    color: var(--site-title-color);
   }
 
   .site-subtitle {
@@ -771,8 +768,8 @@ $btn-mb: 0.5rem;
     li.nav-item {
       opacity: 0.9;
       width: 100%;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+
+      @include pl-pr(1.5rem);
 
       a.nav-link {
         @include pt-pb(0.6rem);
@@ -910,9 +907,7 @@ $btn-mb: 0.5rem;
 }
 
 #topbar {
-  button i {
-    color: #999999;
-  }
+  @extend %btn-color;
 
   #breadcrumb {
     font-size: 1rem;
@@ -1047,7 +1042,7 @@ search {
 
   a {
     font-size: 1.4rem;
-    line-height: 2.5rem;
+    line-height: 1.5rem;
 
     &:hover {
       @extend %link-hover;
@@ -1073,8 +1068,9 @@ search {
     }
 
     > p {
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @extend %text-ellipsis;
+
+      white-space: break-spaces;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -1090,23 +1086,11 @@ search {
   color: var(--topbar-text-color);
   text-align: center;
   width: 70%;
-  overflow: hidden;
-  text-overflow: ellipsis;
   word-break: keep-all;
-  white-space: nowrap;
 }
 
 #mask {
-  display: none;
-  position: fixed;
   inset: 0 0 0 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-
-  @at-root [#{$sidebar-display}] & {
-    display: block !important;
-  }
 }
 
 /* --- basic wrappers --- */
@@ -1496,8 +1480,8 @@ search {
 
   #main-wrapper > .container {
     max-width: $main-content-max-width;
-    padding-left: 1.75rem !important;
-    padding-right: 1.75rem !important;
+
+    @include pl-pr(1.75rem, true);
   }
 
   main.col-12,
