@@ -3,12 +3,19 @@
  */
 
 @mixin dark-scheme {
+  --black: #000000;
+  --white: #ffffff;
   --accent: #00ff88;
+  --purple-full: #9c01ec;
+  --purple-dark-mid: #6e02a4;
+  --purple-dark: #360151;
+  --purple-darker: #230035;
+  --purple-darkest: #13001d;
 
   /* Framework color */
-  --main-bg: rgb(30, 0, 47);
-  --mask-bg: rgb(0, 0, 0);
-  --main-border-color: rgb(19, 0, 29);
+  --main-bg: var(--purple-dark);
+  --mask-bg: var(--black);
+  --main-border-color: var(--purple-darker);
 
   /* Common color */
   --text-color: rgb(238, 206, 255);
@@ -16,23 +23,27 @@
   --text-muted-highlight-color: #aeaeae;
   --heading-color: var(--accent);
   --label-color: #a7a7a7;
-  --blockquote-border-color: rgb(66, 66, 66);
+  --blockquote-border-color: var(--purple-dark);
   --blockquote-text-color: #868686;
   --link-color: rgb(138, 180, 248);
   --link-underline-color: rgb(82, 108, 150);
-  --button-bg: #1e1e1e;
-  --btn-border-color: #2e2f31;
+  --button-bg: var(--purple-darkest);
+  --btn-border-color: var(--purple-dark-mid);
   --btn-backtotop-color: var(--text-color);
-  --btn-backtotop-border-color: #212122;
-  --card-header-bg: #292929;
+  --btn-backtotop-border-color: var(--accent);
+  --card-header-bg: #ff0000;
   --checkbox-color: rgb(118, 120, 121);
   --checkbox-checked-color: var(--link-color);
-  --img-bg: radial-gradient(circle, rgb(22, 22, 24) 0%, rgb(32, 32, 32) 100%);
+  --img-bg: radial-gradient(
+    circle,
+    var(--black) 0%,
+    var(--purple-darkest) 100%
+  );
   --shimmer-bg: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(58, 55, 55, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
+    var(--purple-darkest) 0%,
+    var(--accent) 50%,
+    var(--purple-darkest) 100%
   );
 
   /* Sidebar */

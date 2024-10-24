@@ -1,4 +1,56 @@
+// 'https://minidiscordthemes.github.io/CRT/crt.min.css';
+body::before {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  display: var(--crt-stripe, block);
+  height: 100vh;
+  background-attachment: scroll;
+  background-size: 100% var(--crt-size, 4px);
+  background-image: linear-gradient(
+    var(--crt-stripe-light-color, rgba(255, 255, 255, 0.1)) 50%,
+    var(--crt-stripe-dark-color, rgba(0, 0, 0, 0.1)) 50%
+  );
+  z-index: var(--crt-height, 9999);
+  animation: var(--crt-flicker, none) var(--crt-flicker-speed, 0.0333333333s)
+    infinite alternate;
+}
+@keyframes flicker {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: var(--crt-flicker-color, rgba(0, 0, 0, 0.1));
+  }
+}
+body::after {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  display: var(--crt-scanline, block);
+  height: var(--crt-size, 4px);
+  top: 0%;
+  background-image: linear-gradient(
+    var(--crt-scanline-color, rgba(0, 0, 0, 0.5)),
+    transparent
+  );
+  z-index: calc(var(--crt-height, 9999) - 1);
+  animation: scanline var(--crt-scanline-speed, 3s) linear infinite
+    var(--crt-scanline-direction, normal);
+}
+@keyframes scanline {
+  0% {
+    top: 100%;
+  }
+}
+
 /* The common styles */
+
+@function glow($color, $size) {
+  @return $color 1px 0 $size;
+}
 
 html {
   font-size: 16px;
@@ -33,6 +85,7 @@ body {
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   font-family: $font-family-base;
+  text-shadow: glow(#00ff88, 15px);
 }
 
 /* --- Typography --- */
@@ -40,6 +93,7 @@ body {
 @for $i from 1 through 5 {
   h#{$i} {
     @extend %heading;
+    text-shadow: glow(#00ff88, 15px), glow(#00ff88, 20px), glow(#00ff88, 25px);
 
     @if $i > 1 {
       @extend %anchor;
