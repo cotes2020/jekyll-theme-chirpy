@@ -1,0 +1,22 @@
+name: Block Invalid PR
+
+on:
+  pull_request_target:
+    types: [opened, reopened, edited]
+
+jobs:
+  check-template:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check PR Content
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const script = require('.github/workflows/scripts/pr-filter.js');
+            await script({ github, context });
