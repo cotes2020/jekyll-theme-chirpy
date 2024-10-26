@@ -1,22 +1,33 @@
-name: Block Invalid PR
+name: PR Filter
 
 on:
   pull_request_target:
-    types: [opened, reopened, edited]
+    types: [opened, reopened]
 
 jobs:
   check-template:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Check PR Content
+        id: intercept
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
           script: |
             const script = require('.github/workflows/scripts/pr-filter.js');
-            await script({ github, context });
+            return await script({ github, context });
+
+      - name: Abort due to invalid PR
+        if: ${{ steps.intercept.outputs.result != 'true' }}
+        run: exit 1
+
+  test:
+    needs: check-template
+    uses: ./.github/workflows/ci.yml
