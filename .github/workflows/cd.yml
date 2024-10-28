@@ -14,26 +14,31 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - run: echo "CD running..."
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.3
-          bundler-cache: true
+      # - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+      # - uses: ruby/setup-ruby@v1
+      #   with:
+      #     ruby-version: 3.3
+      #     bundler-cache: true
 
-      - run: npm install
-      - run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
+
+      # - run: npm install
+      # - run: npx semantic-release
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
 
   publish:
     needs: release
-    uses: ./.github/workflows/publish.yml
-    secrets:
-      GH_PAT: ${{ secrets.GH_PAT }}
-      BUILDER: ${{ secrets.BUILDER }}
+    # uses: ./.github/workflows/publish.yml
+    # secrets:
+    #   GH_PAT: ${{ secrets.GH_PAT }}
+    #   BUILDER: ${{ secrets.BUILDER }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Publishing...'

@@ -154,9 +154,9 @@ main() {
     exit 0
   fi
 
-  build_gem
+  # build_gem
   $opt_pkg && exit 0
-  push_gem
+  # push_gem
   merge
 }
 
