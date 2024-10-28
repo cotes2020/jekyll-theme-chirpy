@@ -9,19 +9,18 @@ body::before {
   background-attachment: scroll;
   background-size: 100% var(--crt-size, 4px);
   background-image: linear-gradient(
-    var(--crt-stripe-light-color, rgba(255, 255, 255, 0.1)) 50%,
+    var(--crt-stripe-light-color, rgba(108, 108, 108, 0.1)) 50%,
     var(--crt-stripe-dark-color, rgba(0, 0, 0, 0.1)) 50%
   );
   z-index: var(--crt-height, 9999);
-  animation: var(--crt-flicker, none) var(--crt-flicker-speed, 0.0333333333s)
-    infinite alternate;
+  animation: flicker var(--crt-flicker-speed, 0.0333333333s) infinite alternate;
 }
 @keyframes flicker {
   0% {
     background-color: rgba(0, 0, 0, 0);
   }
   100% {
-    background-color: var(--crt-flicker-color, rgba(0, 0, 0, 0.1));
+    background-color: var(--crt-flicker-color, rgba(0, 0, 0, 0.043));
   }
 }
 body::after {
@@ -772,6 +771,7 @@ $btn-mb: 0.5rem;
     overflow: hidden;
     box-shadow: var(--avatar-border-color) 0 0 0 2px;
     transform: translateZ(0); /* fixed the zoom in Safari */
+    background: var(--avatar-bg-color);
 
     img {
       transition: transform 0.5s;
