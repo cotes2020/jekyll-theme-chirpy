@@ -1,11 +1,19 @@
 [
   
   {
+<<<<<<< Updated upstream
     "title": "Hyper Light Drifter :: Moribundity :: the Meaning of Death",
     "url": "/posts/hyper-light-drifter/",
     "categories": "",
     "tags": "",
     "date": "2024-10-27 01:00:09 +0200",
+=======
+    "title": "Welcome post !",
+    "url": "/posts/First_post/",
+    "categories": "Blogging, Tutorial",
+    "tags": "writing",
+    "date": "2024-10-24 03:56:00 +0200",
+>>>>>>> Stashed changes
     
 
 
@@ -13,8 +21,13 @@
 
 
     
+<<<<<<< Updated upstream
     "snippet": "",
     "content": ""
+=======
+    "snippet": "Hey there.This is mostly a test post, but this’ll do as a welcome post.",
+    "content": "Hey there.This is mostly a test post, but this’ll do as a welcome post."
+>>>>>>> Stashed changes
   }
   
 ]

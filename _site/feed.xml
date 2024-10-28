@@ -4,7 +4,11 @@
   <id>http://localhost:4000/</id>
   <title>Mouton's Mind Palace</title>
   <subtitle>My little webstie where I put my projects and thoughts on differents things.</subtitle>
+<<<<<<< Updated upstream
   <updated>2024-10-27T01:00:09+02:00</updated>
+=======
+  <updated>2024-10-24T10:13:52+02:00</updated>
+>>>>>>> Stashed changes
   <author>
     <name>MoutonDemocrate</name>
     <uri>http://localhost:4000/</uri>
@@ -20,6 +24,7 @@
 
   
   <entry>
+<<<<<<< Updated upstream
     <title>Hyper Light Drifter :: Moribundity :: the Meaning of Death</title>
     <link href="http://localhost:4000/posts/hyper-light-drifter/" rel="alternate" type="text/html" title="Hyper Light Drifter :: Moribundity :: the Meaning of Death" />
     <published>2024-10-27T01:00:09+02:00</published>
@@ -30,13 +35,37 @@
     <content src="http://localhost:4000/posts/hyper-light-drifter/" />
     <author>
       <name>MoutonDemocrate</name>
+=======
+    <title>Welcome post !</title>
+    <link href="http://localhost:4000/posts/First_post/" rel="alternate" type="text/html" title="Welcome post !" />
+    <published>2024-10-24T03:56:00+02:00</published>
+  
+    <updated>2024-10-24T03:56:00+02:00</updated>
+  
+    <id>http://localhost:4000/posts/First_post/</id>
+    <content src="http://localhost:4000/posts/First_post/" />
+    <author>
+      <name>mouton</name>
+>>>>>>> Stashed changes
     </author>
 
   
     
+<<<<<<< Updated upstream
   
 
   <summary></summary>
+=======
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>Hey there.
+
+This is mostly a test post, but this’ll do as a welcome post.</summary>
+>>>>>>> Stashed changes
 
   </entry>
 

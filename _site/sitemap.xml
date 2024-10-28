@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<<<<<<< Updated upstream
 <loc>http://localhost:4000/posts/hyper-light-drifter/</loc>
 <lastmod>2024-10-27T01:00:09+02:00</lastmod>
 </url>
@@ -19,8 +20,37 @@
 <url>
 <loc>http://localhost:4000/about/</loc>
 <lastmod>2024-10-27T01:00:09+02:00</lastmod>
+=======
+<loc>http://localhost:4000/posts/First_post/</loc>
+<lastmod>2024-10-24T03:56:00+02:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/categories/</loc>
+<lastmod>2024-10-24T10:13:52+02:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/tags/</loc>
+<lastmod>2024-10-24T10:13:52+02:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/archives/</loc>
+<lastmod>2024-10-24T10:13:52+02:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+<lastmod>2024-10-24T10:13:52+02:00</lastmod>
+>>>>>>> Stashed changes
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tags/writing/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/blogging/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/tutorial/</loc>
 </url>
 </urlset>
