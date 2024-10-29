@@ -2,7 +2,9 @@ name: CI
 
 on:
   push:
-    branches-ignore: [production]
+    branches:
+      - master
+      - "hotfix/*"
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"

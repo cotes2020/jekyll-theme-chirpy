@@ -2,7 +2,9 @@ name: Style Lint
 
 on:
   push:
-    branches-ignore: [production]
+    branches:
+      - master
+      - "hotfix/*"
     paths: ["_sass/**/*.scss"]
   pull_request:
     paths: ["_sass/**/*.scss"]

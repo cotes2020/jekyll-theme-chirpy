@@ -2,7 +2,9 @@ name: Lint Commit Messages
 
 on:
   push:
-    branches-ignore: [production]
+    branches:
+      - master
+      - "hotfix/*"
   pull_request:
 
 jobs:
