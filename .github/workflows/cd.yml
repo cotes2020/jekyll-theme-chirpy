@@ -2,13 +2,12 @@ name: CD
 
 on:
   push:
-    branches:
-      - production
-    tags-ignore:
-      - "**"
+    branches: [production]
+    tags-ignore: ["**"]
 
 jobs:
   release:
+    if: ${{ ! startsWith(github.event.head_commit.message, 'chore(release)') }}
     permissions:
       contents: write
       issues: write

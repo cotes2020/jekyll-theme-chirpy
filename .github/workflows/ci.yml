@@ -1,18 +1,23 @@
-name: "CI"
+name: CI
 
 on:
   push:
-    branches:
-      - "master"
-      - "hotfix/**"
+    branches-ignore: [production]
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
-      - ".gitignore"
+      - .gitignore
       - "docs/**"
-      - "README.md"
-      - "LICENSE"
-  workflow_call:
+      - README.md
+      - LICENSE
+  pull_request:
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/ci.yml"
+      - .gitignore
+      - "docs/**"
+      - README.md
+      - LICENSE
 
 jobs:
   build:
@@ -44,7 +49,3 @@ jobs:
 
       - name: Test Site
         run: bash tools/test.sh
-
-  check-commit:
-    needs: build
-    uses: ./.github/workflows/commitlint.yml
