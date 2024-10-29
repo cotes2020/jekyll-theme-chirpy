@@ -1,6 +1,9 @@
 name: Lint Commit Messages
 
-on: workflow_call
+on:
+  push:
+    branches-ignore: [production]
+  pull_request:
 
 jobs:
   commitlint:
