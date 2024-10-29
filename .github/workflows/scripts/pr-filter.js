@@ -1,5 +1,5 @@
 function hasTypes(markdown) {
-  return /## Type of change/.test(markdown) && /-\s*\[x\]/i.test(markdown);
+  return /## Type of change/.test(markdown) && /-\s\[x\]/i.test(markdown);
 }
 
 function hasDescription(markdown) {
@@ -9,9 +9,9 @@ function hasDescription(markdown) {
   );
 }
 
-module.exports = async ({ github, context }) => {
+module.exports = async ({ github, context, core }) => {
   const pr = context.payload.pull_request;
-  const body = pr.body === null ? '' : pr.body.trim();
+  const body = pr.body === null ? '' : pr.body;
   const markdown = body.replace(/<!--[\s\S]*?-->/g, '');
   const action = context.payload.action;
 
@@ -31,7 +31,7 @@ module.exports = async ({ github, context }) => {
       issue_number: pr.number,
       body: `Oops, it seems you've ${action} an invalid pull request. No worries, we'll close it for you.`
     });
-  }
 
-  return isValid;
+    core.setFailed('PR content does not meet template requirements.');
+  }
 };

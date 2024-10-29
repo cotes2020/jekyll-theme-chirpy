@@ -1,8 +1,10 @@
-name: "Style Lint"
+name: Style Lint
 
 on:
   push:
-    branches: ["master", "hotfix/**"]
+    branches:
+      - master
+      - "hotfix/*"
     paths: ["_sass/**/*.scss"]
   pull_request:
     paths: ["_sass/**/*.scss"]

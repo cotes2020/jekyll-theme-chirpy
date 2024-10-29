@@ -1,6 +1,11 @@
 name: Lint Commit Messages
 
-on: workflow_call
+on:
+  push:
+    branches:
+      - master
+      - "hotfix/*"
+  pull_request:
 
 jobs:
   commitlint:

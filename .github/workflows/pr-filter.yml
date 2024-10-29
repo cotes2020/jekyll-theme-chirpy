@@ -19,15 +19,6 @@ jobs:
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-encoding: string
           script: |
             const script = require('.github/workflows/scripts/pr-filter.js');
-            return await script({ github, context });
-
-      - name: Abort due to invalid PR
-        if: ${{ steps.intercept.outputs.result != 'true' }}
-        run: exit 1
-
-  test:
-    needs: check-template
-    uses: ./.github/workflows/ci.yml
+            await script({ github, context, core });
