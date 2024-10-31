@@ -18,6 +18,8 @@
 
 </div>
 
+<!-- hidden -->
+
 ## Features
 
 - Dark Theme
