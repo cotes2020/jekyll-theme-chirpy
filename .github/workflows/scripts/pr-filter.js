@@ -16,7 +16,7 @@ module.exports = async ({ github, context, core }) => {
   const action = context.payload.action;
 
   const isValid =
-    pr.labels.length > 0 || // PR create by Dependabot would have labels
+    pr.base.repo.full_name === pr.head.repo.full_name ||
     (markdown !== '' && hasTypes(markdown) && hasDescription(markdown));
 
   if (!isValid) {
