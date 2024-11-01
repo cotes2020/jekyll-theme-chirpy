@@ -1,6 +1,7 @@
 ---
 layout: category
 title: Sports
+permalink: /categories/sports/
 ---
 
 {% assign posts = site.categories['Sports'] %}
