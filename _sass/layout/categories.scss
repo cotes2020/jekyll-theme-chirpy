@@ -1,3 +1,5 @@
+@use '../addon/variables';
+
 /*
   Style for Tab Categories
 */
@@ -12,11 +14,11 @@
 
   &.card,
   .list-group {
-    @extend %rounded;
+    @extend %rounded !optional;
   }
 
   .card-header {
-    $radius: calc($radius-lg - 1px);
+    $radius: calc(variables.$radius-lg - 1px);
 
     padding: 0.75rem;
     border-radius: $radius;
@@ -29,7 +31,7 @@
   }
 
   i {
-    @extend %category-icon-color;
+    @extend %category-icon-color !optional;
 
     font-size: 86%; /* fontawesome icons */
   }

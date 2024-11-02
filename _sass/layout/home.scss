@@ -1,3 +1,5 @@
+@use '../addon/variables';
+
 /*
   Style for Homepage
 */
@@ -20,14 +22,14 @@
     background: none;
 
     %img-radius {
-      border-radius: $radius-lg $radius-lg 0 0;
+      border-radius: variables.$radius-lg variables.$radius-lg 0 0;
     }
 
     .preview-img {
-      @extend %img-radius;
+      @extend %img-radius !optional;
 
       img {
-        @extend %img-radius;
+        @extend %img-radius !optional;
       }
     }
 
@@ -36,7 +38,7 @@
       padding: 1rem;
 
       .card-title {
-        @extend %text-clip;
+        @extend %text-clip !optional;
 
         color: var(--heading-color) !important;
         font-size: 1.25rem;
@@ -47,10 +49,10 @@
       }
 
       .card-text.content {
-        @extend %muted;
+        @extend %muted !optional;
 
         p {
-          @extend %text-clip;
+          @extend %text-clip !optional;
 
           line-height: 1.5;
           margin: 0;
@@ -58,7 +60,7 @@
       }
 
       .post-meta {
-        @extend %muted;
+        @extend %muted !optional;
 
         i {
           &:not(:first-child) {
@@ -67,7 +69,7 @@
         }
 
         em {
-          @extend %normal-font-style;
+          @extend %normal-font-style !optional;
 
           color: inherit;
         }
@@ -75,7 +77,7 @@
         > div:first-child {
           display: block;
 
-          @extend %text-ellipsis;
+          @extend %text-ellipsis !optional;
         }
       }
     }
@@ -130,7 +132,7 @@
 /* Tablet */
 @media all and (min-width: 768px) {
   %img-radius {
-    border-radius: 0 $radius-lg $radius-lg 0;
+    border-radius: 0 variables.$radius-lg variables.$radius-lg 0;
   }
 
   #post-list {

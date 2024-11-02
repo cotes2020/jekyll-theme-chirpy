@@ -23,7 +23,7 @@
     margin-left: -$timeline-width;
 
     &::before {
-      @extend %timeline;
+      @extend %timeline !optional;
 
       height: 72px;
       left: 79px;
@@ -31,7 +31,7 @@
     }
 
     &:first-child::before {
-      @extend %timeline;
+      @extend %timeline !optional;
 
       height: 32px;
       top: 24px;
@@ -59,7 +59,7 @@
       font-size: 1.1rem;
       line-height: 3rem;
 
-      @extend %text-ellipsis;
+      @extend %text-ellipsis !optional;
 
       &:nth-child(odd) {
         background-color: var(--main-bg, #ffffff);
@@ -74,7 +74,7 @@
       }
 
       &::before {
-        @extend %timeline;
+        @extend %timeline !optional;
 
         top: 0;
         left: 77px;

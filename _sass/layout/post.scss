@@ -1,3 +1,6 @@
+@use '../addon/module';
+@use '../addon/variables';
+
 /**
  * Post-specific styles
  */
@@ -16,7 +19,7 @@
 
 header {
   .post-desc {
-    @extend %heading;
+    @extend %heading !optional;
 
     font-size: 1.125rem;
     line-height: 1.6;
@@ -29,7 +32,7 @@ header {
 
     em,
     time {
-      @extend %text-highlight;
+      @extend %text-highlight !optional;
     }
 
     em {
@@ -45,7 +48,7 @@ header {
 }
 
 .post-tail-wrapper {
-  @extend %text-sm;
+  @extend %text-sm !optional;
 
   margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
@@ -54,20 +57,20 @@ header {
     line-height: 1.2rem;
 
     > a {
-      @extend %text-highlight;
+      @extend %text-highlight !optional;
 
       &:hover {
-        @extend %link-hover;
+        @extend %link-hover !optional;
       }
     }
 
     span:last-child {
-      @extend %text-sm;
+      @extend %text-sm !optional;
     }
   } /* .license-wrapper */
 
   .post-meta a:not(:hover) {
-    @extend %link-underline;
+    @extend %link-underline !optional;
   }
 
   .share-wrapper {
@@ -87,17 +90,17 @@ header {
       i {
         color: var(--btn-share-color);
 
-        @extend %icon-size;
+        @extend %icon-size !optional;
       }
 
       > * {
-        @extend %icon-size;
+        @extend %icon-size !optional;
 
         margin-left: 0.5rem;
 
         &:hover {
           i {
-            @extend %btn-share-hover;
+            @extend %btn-share-hover !optional;
           }
         }
       }
@@ -107,7 +110,7 @@ header {
         border: none;
         line-height: inherit;
 
-        @extend %cursor-pointer;
+        @extend %cursor-pointer !optional;
       }
     } /* .share-icons */
   } /* .share-wrapper */
@@ -131,16 +134,16 @@ header {
 
   .post-tag {
     &:hover {
-      @extend %link-hover;
-      @extend %tag-hover;
-      @extend %no-bottom-border;
+      @extend %link-hover !optional;
+      @extend %tag-hover !optional;
+      @extend %no-bottom-border !optional;
     }
   }
 }
 
 .post-navigation {
   .btn {
-    @extend %btn-post-nav;
+    @extend %btn-post-nav !optional;
 
     &:not(:hover) {
       color: var(--link-color);
@@ -153,7 +156,7 @@ header {
     }
 
     &.disabled {
-      @extend %btn-post-nav;
+      @extend %btn-post-nav !optional;
 
       pointer-events: auto;
       cursor: not-allowed;
@@ -173,12 +176,12 @@ header {
     }
 
     &:first-child {
-      border-radius: $radius-lg 0 0 $radius-lg;
+      border-radius: variables.$radius-lg 0 0 variables.$radius-lg;
       left: 0.5px;
     }
 
     &:last-child {
-      border-radius: 0 $radius-lg $radius-lg 0;
+      border-radius: 0 variables.$radius-lg variables.$radius-lg 0;
       right: 0.5px;
     }
   }
@@ -259,7 +262,7 @@ header {
     .toc-link {
       display: block;
 
-      @extend %text-ellipsis;
+      @extend %text-ellipsis !optional;
 
       &:hover {
         color: var(--toc-highlight);
@@ -298,15 +301,15 @@ header {
   top: 0;
   z-index: 1;
   margin: 0 -1rem;
-  height: $topbar-height;
+  height: variables.$topbar-height;
   background: var(--main-bg);
   border-bottom: 1px solid var(--main-border-color);
   transition: all 0.2s ease-in-out;
 
-  @extend %btn-color;
+  @extend %btn-color !optional;
 
   .label {
-    @extend %heading;
+    @extend %heading !optional;
 
     margin-left: 0.25rem;
     padding: 0 0.75rem;
@@ -314,7 +317,7 @@ header {
   }
 
   &.invisible {
-    top: -$topbar-height;
+    top: -(variables.$topbar-height);
     transition: none;
   }
 }
@@ -322,11 +325,11 @@ header {
 #toc-solo-trigger {
   color: var(--text-muted-color);
   border-color: var(--btn-border-color);
-  border-radius: $radius-lg;
+  border-radius: variables.$radius-lg;
 
   .label {
     font-size: 1rem;
-    font-family: $font-family-heading;
+    font-family: variables.$font-family-heading;
   }
 
   &:hover {
@@ -338,7 +341,7 @@ header {
 @mixin slide-in {
   from {
     opacity: 0.7;
-    transform: translateY(-$topbar-height);
+    transform: translateY(-(variables.$topbar-height));
   }
 
   to {
@@ -354,7 +357,7 @@ header {
   }
 
   100% {
-    transform: translateY(-$topbar-height);
+    transform: translateY(-(variables.$topbar-height));
     opacity: 0;
   }
 }
@@ -383,10 +386,10 @@ header {
 
   border-color: var(--toc-popup-border-color);
   border-width: 1px;
-  border-radius: $radius-lg;
+  border-radius: variables.$radius-lg;
   color: var(--text-color);
   background: var(--card-bg);
-  margin-top: $topbar-height;
+  margin-top: variables.$topbar-height;
   min-width: 20rem;
   font-size: 1.05rem;
 
@@ -405,11 +408,11 @@ header {
   }
 
   @media all and (min-width: 850px) {
-    left: $sidebar-width;
+    left: variables.$sidebar-width;
   }
 
   .header {
-    @extend %btn-color;
+    @extend %btn-color !optional;
 
     position: -webkit-sticky;
     position: sticky;
@@ -418,7 +421,7 @@ header {
     border-bottom: 1px solid var(--main-border-color);
 
     .label {
-      font-family: $font-family-heading;
+      font-family: variables.$font-family-heading;
     }
   }
 
@@ -487,8 +490,8 @@ header {
 
   #toc-popup-content {
     overflow: auto;
-    max-height: calc(100vh - 4 * $topbar-height);
-    font-family: $font-family-heading;
+    max-height: calc(100vh - 4 * variables.$topbar-height);
+    font-family: variables.$font-family-heading;
     margin-bottom: -$curtain-height;
   }
 }
@@ -497,18 +500,18 @@ header {
 
 #related-posts {
   > h3 {
-    @include label(1.1rem, 600);
+    @include module.label(1.1rem, 600);
   }
 
   time {
-    @extend %normal-font-style;
-    @extend %text-xs;
+    @extend %normal-font-style !optional;
+    @extend %text-xs !optional;
 
     color: var(--text-muted-color);
   }
 
   p {
-    @extend %text-ellipsis;
+    @extend %text-ellipsis !optional;
 
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
@@ -520,7 +523,7 @@ header {
 
   .card {
     h4 {
-      @extend %text-clip;
+      @extend %text-clip !optional;
     }
   }
 }
@@ -539,7 +542,7 @@ header {
 }
 
 .share-label {
-  @include label(inherit, 400, inherit);
+  @include module.label(inherit, 400, inherit);
 
   &::after {
     content: ':';
@@ -566,8 +569,8 @@ header {
 /* Hide SideBar and TOC */
 @media all and (max-width: 849px) {
   .post-navigation {
-    @include pl-pr(0);
-    @include ml-mr(-0.5rem);
+    @include module.pl-pr(0);
+    @include module.ml-mr(-0.5rem);
   }
 }
 

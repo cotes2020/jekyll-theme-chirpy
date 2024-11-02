@@ -2,29 +2,31 @@
 * The syntax highlight.
 */
 
-@import 'colors/syntax-light';
-@import 'colors/syntax-dark';
+@use '../colors/syntax-light';
+@use '../colors/syntax-dark';
+@use 'module';
+@use 'variables';
 
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
     &[data-mode='light'] {
-      @include light-syntax;
+      @include syntax-light.light-syntax;
     }
 
     &[data-mode='dark'] {
-      @include dark-syntax;
+      @include syntax-dark.dark-syntax;
     }
   }
 
   @media (prefers-color-scheme: dark) {
     &:not([data-mode]),
     &[data-mode='dark'] {
-      @include dark-syntax;
+      @include syntax-dark.dark-syntax;
     }
 
     &[data-mode='light'] {
-      @include light-syntax;
+      @include syntax-light.light-syntax;
     }
   }
 }
@@ -47,19 +49,19 @@ html {
 }
 
 .highlight {
-  @extend %rounded;
-  @extend %code-snippet-bg;
+  @extend %rounded !optional;
+  @extend %code-snippet-bg !optional;
 
   overflow: auto;
   padding-bottom: 0.75rem;
 
   @at-root figure#{&} {
-    @extend %code-snippet-bg;
+    @extend %code-snippet-bg !optional;
   }
 
   pre {
     margin-bottom: 0;
-    font-size: $code-font-size;
+    font-size: variables.$code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
   }
@@ -101,10 +103,10 @@ code {
   color: var(--code-color);
 
   &.highlighter-rouge {
-    font-size: $code-font-size;
+    font-size: variables.$code-font-size;
     padding: 3px 5px;
     word-break: break-word;
-    border-radius: $radius-sm;
+    border-radius: variables.$radius-sm;
     background-color: var(--inline-code-bg);
   }
 
@@ -130,7 +132,7 @@ code {
 }
 
 td.rouge-code {
-  @extend %code-snippet-padding;
+  @extend %code-snippet-padding !optional;
 
   /*
     Prevent some browser extends from
@@ -144,13 +146,13 @@ td.rouge-code {
 }
 
 div[class^='language-'] {
-  @extend %rounded;
-  @extend %code-snippet-bg;
+  @extend %rounded !optional;
+  @extend %code-snippet-bg !optional;
 
   box-shadow: var(--language-border-color) 0 0 0 1px;
 
   .content > & {
-    @include ml-mr(-1rem);
+    @include module.ml-mr(-1rem);
 
     border-radius: 0;
   }
@@ -179,23 +181,23 @@ div {
 }
 
 .code-header {
-  @extend %no-cursor;
+  @extend %no-cursor !optional;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: $code-header-height;
+  height: variables.$code-header-height;
   margin-left: 0.75rem;
   margin-right: 0.25rem;
 
   /* the label block */
   span {
-    line-height: $code-header-height;
+    line-height: variables.$code-header-height;
 
     /* label icon */
     i {
       font-size: 1rem;
-      width: $code-icon-width;
+      width: variables.$code-icon-width;
       color: var(--code-header-icon-color);
 
       &.small {
@@ -219,12 +221,12 @@ div {
 
   /* clipboard */
   button {
-    @extend %cursor-pointer;
-    @extend %rounded;
+    @extend %cursor-pointer !optional;
+    @extend %rounded !optional;
 
     border: 1px solid transparent;
-    height: $code-header-height;
-    width: $code-header-height;
+    height: variables.$code-header-height;
+    width: variables.$code-header-height;
     padding: 0;
     background-color: inherit;
 
@@ -259,13 +261,13 @@ div {
 @media all and (min-width: 576px) {
   div[class^='language-'] {
     .content > & {
-      @include ml-mr(0);
+      @include module.ml-mr(0);
 
-      border-radius: $radius-lg;
+      border-radius: variables.$radius-lg;
     }
 
     .code-header {
-      @include ml-mr(0);
+      @include module.ml-mr(0);
 
       $dot-margin: 1rem;
 
@@ -273,19 +275,19 @@ div {
         content: '';
         display: inline-block;
         margin-left: $dot-margin;
-        width: $code-dot-size;
-        height: $code-dot-size;
+        width: variables.$code-dot-size;
+        height: variables.$code-dot-size;
         border-radius: 50%;
         background-color: var(--code-header-muted-color);
-        box-shadow: ($code-dot-size + $code-dot-gap) 0 0
+        box-shadow: (variables.$code-dot-size + variables.$code-dot-gap) 0 0
             var(--code-header-muted-color),
-          ($code-dot-size + $code-dot-gap) * 2 0 0
+          (variables.$code-dot-size + variables.$code-dot-gap) * 2 0 0
             var(--code-header-muted-color);
       }
 
       span {
         // center the text of label
-        margin-left: calc(($dot-margin + $code-dot-size) / 2 * -1);
+        margin-left: calc(($dot-margin + variables.$code-dot-size) / 2 * -1);
       }
     }
   }
