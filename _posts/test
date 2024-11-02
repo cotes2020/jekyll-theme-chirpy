@@ -4,13 +4,12 @@ excerpt: "마크다운 문법을 이용해 md파일을 작성하여 Github blog�
 
 writer: chaewon kim
 categories:
-  - github
+  - Demo
 tags:
   - [Blog, jekyll, Github, Git, markdown]
 
 toc: true
 toc_sticky: true
 
-date: 2024-11-02
-last_modified_at: 2024-11-02
+date: 2024-11-02 23:32:00 +0900
 ---
