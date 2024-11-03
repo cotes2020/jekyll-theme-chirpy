@@ -340,7 +340,7 @@ $$
 \tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} \hat {\mathcal S}(X_{t-1}^n; \hat \theta^m) + \sqrt{\epsilon} Z_t^n
 $$
 
-We can visualize the pdf, score function, and sampling process:
+We can [visualize the pdf, score function, and sampling process](https://colab.research.google.com/drive/1IjZuWynvrMRIPyYB1Q7hGWrJVUPWtI5X?usp=sharing):
 {% include html/score_functions/mvn.html %}
 
 This is not really necessary for generating samples from a MVN, but is required for [generating natural images](https://arxiv.org/pdf/2011.13456) (which requires estimating the score function with large neural networks).
