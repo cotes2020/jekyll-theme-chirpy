@@ -331,13 +331,13 @@ $$
 Which matches the maximum likelihood estimate. Given a sample of data, we can estimate $\hat \mu$ and $\hat M$ and form:
 
 $$
-\hat \mathcal S(X^n; \theta^m) = -\hat M(X^n - \hat \mu)
+\hat {\mathcal S}(X^n; \theta^m) = -\hat M(X^n - \hat \mu)
 $$
 
 Which can generate new samples using [Langevin Dynamics MCMC](https://arxiv.org/pdf/1907.05600):
 
 $$
-\tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} \hat S(X_{t-1}^n; \theta^m) + \sqrt{\epsilon} Z_t^n
+\tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} \hat {\mathcal S}(X_{t-1}^n; \theta^m) + \sqrt{\epsilon} Z_t^n
 $$
 
 This is not really necessary for generating samples from a MVN, but becomes useful for generating natural images (which requires estimating the score function with large neural networks).
