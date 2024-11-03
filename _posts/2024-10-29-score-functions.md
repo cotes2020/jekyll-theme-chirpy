@@ -337,7 +337,7 @@ $$
 Which can generate new samples using [Langevin Dynamics MCMC](https://arxiv.org/pdf/1907.05600):
 
 $$
-\tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} \hat {\mathcal S}(X_{t-1}^n; \hat \theta^m) + \sqrt{\epsilon} Z_t^n
+\tilde X_t^n = \tilde X_{t-1}^n + \frac{\epsilon}{2} \hat {\mathcal S}(\tilde X_{t-1}^n; \hat \theta^m) + \sqrt{\epsilon} Z_t^n
 $$
 
 We can [visualize the pdf, score function, and sampling process](https://colab.research.google.com/drive/1IjZuWynvrMRIPyYB1Q7hGWrJVUPWtI5X?usp=sharing):
