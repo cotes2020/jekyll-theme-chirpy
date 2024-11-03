@@ -27,7 +27,7 @@ $$
 
 Where $i$ runs from $1, 2, 3$ making the total dimensionality of the system 4-dimensional (1 time coordinate + 3 spatial coordinates). 
 
-A *mapping* is probably the best way to describe a field. Why? Because in some cases, it is literally a map. Consider the case where $\phi$ represents the temperature along the surface of the earth at a particular point in time. We can set $t = c$ and $X^3 = 0$ to indicate that we have frozen time at some instant of time at an elevation of zero. If we were to plot this scalar field along all $[X^1, X^2] \in \mathbb R^2$, it might look something like this:
+A *mapping* is probably the best way to describe a field. Why? Because in some cases, it is literally a map. Consider the case where $\phi$ represents the temperature along the surface of the earth at a particular point in time. We can set $t = 0$ and $X^3 = 0$ to indicate that we have frozen time at some instant of time at an elevation of zero. If we were to plot this scalar field along all $[X^1, X^2] \in \mathbb R^2$, it might look something like this:
 
 ![Weather map courtesy of National Weather Service (https://www.weather.gov/forecastmaps/)](assets/img/custom/weather_map.png)
 
@@ -43,7 +43,7 @@ $$
 And of course fields can be composed of more complicated functions of other fields, 
 
 $$
-\phi = \phi_1 * \phi_2 + \phi_3 + \phi_4^2
+\phi = \phi_1 * \phi_2 + \phi_3 + \phi_4^2 + \log{\phi_5}
 $$
 
 Despite the added complexity, $\phi$ will still look like our simple weather map from above.
@@ -72,30 +72,30 @@ $$
 $$
 
 #### Scalar Fields $\rightarrow$ Vector Fields {#scalar_to_vector}
-We can start with a scalar field and do some operation to get a vector field. The most relevant for the purposes of this blog, is taking the derivatives with respect to each of the components:
+We can start with a scalar field and do some operation to get a vector field. For example, taking the derivatives with respect to each of the components:
 
 $$
 \frac{\partial \phi}{\partial X^\mu} = \big (\frac{\partial \phi}{\partial t}, \frac{\partial \phi}{\partial X^1}, \frac{\partial \phi}{\partial X^2}, \frac{\partial \phi}{\partial X^3} \big ) = \nabla_{X} \phi
 $$
 
-This special operation $\nabla_X(\cdot)$ is called the [Jacobian](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant) and for a scalar valued function, results in a vector field of partial derivatives. And of course this example would not be complete without a weather analogy. Let's take $\phi$ to be the temperature again, i.e. a scalar field. If we find the differences amongst its spatial coordinates $\big (\frac{\partial \phi}{\partial X^1}, \frac{\partial \phi}{\partial X^2}, \frac{\partial \phi}{\partial X^3} \big)$, we can draw **[surface fronts](https://www.wpc.ncep.noaa.gov/html/fntcodes2.shtml)** of hot air / cold air differences:
+This operation $\nabla_X(\cdot)$ is called the [Jacobian](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant) and for a scalar valued function, results in a vector field of partial derivatives. Let's take $\phi$ to be the temperature again, i.e. a scalar field. If we find the differences amongst its spatial coordinates $\big (\frac{\partial \phi}{\partial X^1}, \frac{\partial \phi}{\partial X^2}, \frac{\partial \phi}{\partial X^3} \big)$, we can draw **[surface fronts](https://www.wpc.ncep.noaa.gov/html/fntcodes2.shtml)** of hot air / cold air differences:
 
 ![Temperature Gradient map courtesy of National Weather Service (https://www.weather.gov/forecastmaps/)](assets/img/custom/weather_pressure_map.png){: width="515" }
 
 #### Vector Fields $\rightarrow$ Scalar Fields
-Can we go the other way? Yes of course. We can take our velocity *vector field* and convert it back to a *scalar field*. To convert velocity into wind speed ([which is the magnitude of each of the velocity vectors](https://en.wikipedia.org/wiki/Velocity#Difference_between_speed_and_velocity)) we use the operation:
+Can we go the other way? We can take our velocity *vector field* and convert it back to a *scalar field*. To convert velocity into wind speed ([which is the magnitude of each of the velocity vectors](https://en.wikipedia.org/wiki/Velocity#Difference_between_speed_and_velocity)) we use the operation:
 
 $$
 \phi_{\text{Wind Speed}}(t, X^i) = \sqrt{\phi^{1}(t, X^i)^2 + \phi^{2}(t, X^i)^2}
 $$
 
-Based on our rules from above, we know that $\phi^{1}(t, X^i)$ and $\phi^{2}(t, X^i)$ are individually scalar fields. Therefore, it shouldn't be surprising that if we mix up these scalar fields together, we get another scalar field. It just so happens that these scalar fields are the components of a vector field. Another example would be the [Divergence](https://en.wikipedia.org/wiki/Divergence) of a field which uses the Jacobian from before:
+The name of this operation is the [Euclidean Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm). Based on our rules from above, we know that $\phi^{1}(t, X^i)$ and $\phi^{2}(t, X^i)$ are individually scalar fields. Therefore, it shouldn't be surprising that if we mix up these scalar fields together, we get another scalar field. Another example would be the [Divergence](https://en.wikipedia.org/wiki/Divergence) of a field which uses the Jacobian from before:
 
 $$
 \text{div } \phi = \nabla \cdot \phi = \frac{\partial \phi}{\partial X^1} + \frac{\partial \phi}{\partial X^2} + \frac{\partial \phi}{\partial X^3}
 $$
 
-Which describes how each point of the field's [flux](https://en.wikipedia.org/wiki/Flux) acts as a source point. Using the basic rules for [vector addition](https://mathworld.wolfram.com/VectorAddition.html), we can see that divergence is just the composite vector of the sum of the partial derivatives of the scalar field.
+Which describes how each point of the field's [flux](https://en.wikipedia.org/wiki/Flux) acts as a source point. Using the rule for [vector addition](https://mathworld.wolfram.com/VectorAddition.html), we can see that divergence is just the composite vector resulting from the sum of the partial derivatives of the scalar field.
 
 > In summary, fields are "maps" from coordinates to either values or vectors. We can combine them to create more complicated fields and switch back and forth between scalar fields and vector fields. 
 {:.prompt-info}
@@ -107,9 +107,10 @@ $$
 \mathcal L = \frac{1}{2} \big [(\frac{\partial \phi}{\partial t})^2 - (\frac{\partial \phi}{\partial X^1})^2 - (\frac{\partial \phi}{\partial X^2})^2 - (\frac{\partial \phi}{\partial X^3})^2 \big ] - g \rho(X^i) \phi(t, X^i)
 $$
 
-If the Lagrangian is new to you, check out my earlier post [here]({% link _posts/2024-02-04-least-action-least-squares.md %}). Although it looks complicated, we can understand it by breaking down the components:
+If the Lagrangian is new to you, check out my earlier post [here]({% link _posts/2024-02-04-least-action-least-squares.md %}). We can understand it by breaking down the components:
 - $\phi(t, X^i)$ now represents an unknown scalar field. Our goal is to solve for this term and understand how it influences the point particle.
-- $\frac{\partial \phi}{\partial t}$, $\frac{\partial \phi}{\partial X^1}$, $\frac{\partial \phi}{\partial X^2}$, & $\frac{\partial \phi}{\partial X^3}$ are the components of the Jacobian of $\phi$. Similar to how we computed wind speed earlier, we are now computing the difference of squares between the time and spatial components. Why the difference of squares in particular? Because it is [Lorentz invariant](https://en.wikipedia.org/wiki/Lorentz_covariance) which is important for the Lagrangian to be compatible with the theory of special relativity.
+- $\frac{\partial \phi}{\partial t}$, $\frac{\partial \phi}{\partial X^1}$, $\frac{\partial \phi}{\partial X^2}$, & $\frac{\partial \phi}{\partial X^3}$ are the components of the Jacobian of $\phi$. Similar to how we computed wind speed earlier, we are now computing the difference of squares between the time and spatial components. 
+- Why the difference of squares in particular (i.e. [Minkowski Distance](https://en.wikipedia.org/wiki/Minkowski_distance))? Because it is [Lorentz invariant](https://en.wikipedia.org/wiki/Lorentz_covariance) which is important for the Lagrangian to be compatible with the theory of special relativity.
 - $\rho(X^i)$ is a source function that depends only on the position of some point particle. Since $X^i$ represents the entirety of our spatial coordinates, we can "pick out" a rest point by taking $\rho(X^i) = \delta^3 (X^i)$ where $\delta^3 = \delta(X^1)\delta(X^2)\delta(X^3)$ is the [three dimensional dirac function](https://en.wikipedia.org/wiki/Dirac_delta_function) with the property: 
   
 $$
@@ -124,7 +125,7 @@ We have already seen all of these operations; squaring fields, adding fields, an
 {:.prompt-info}
 
 #### Equations of Motion {#eqns_of_motion}
-$\mathcal L$ does not yet tell us how a particle would behave in the field. It only creates a new field by mixing and matching components of the field and particle together. To find the equations of motion we have to apply the Euler Lagrange equations. Euler Lagrange finds a unique $\phi$ such that the action is stationary (i.e. minimized):
+$\mathcal L$ does not yet tell us how a particle would behave in the field. To find the equations of motion we have to apply the [Euler Lagrange equations](https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation). Euler Lagrange finds a unique $\phi$ such that the action is stationary (i.e. minimized):
 
 $$
 \begin{gather*}
@@ -134,7 +135,7 @@ $$
 \end{gather*}
 $$
 
-The calculation is not really as bad as it seems:
+The calculation is:
 
 $$
 \begin{gather*}
@@ -149,7 +150,7 @@ $$
 \frac{\partial ^2 \phi}{\partial t^2} - \frac{\partial^2 \phi}{\partial (X^1)^2} - \frac{\partial^2 \phi}{\partial (X^2)^2} - \frac{\partial^2 \phi}{\partial (X^3)^2} = \frac{\partial L}{\partial \phi}
 $$
 
-And the right hand side is simple, $\frac{\partial L}{\partial \phi} = -g\rho(X^\mu) = -g\delta^3(X^\mu)$ which gives the equation of motion:
+And the right hand side is, $\frac{\partial L}{\partial \phi} = -g\rho(X^\mu) = -g\delta^3(X^\mu)$ which gives the equation of motion:
 
 $$
 \frac{\partial ^2 \phi}{\partial t^2} - \frac{\partial^2 \phi}{\partial (X^1)^2} - \frac{\partial^2 \phi}{\partial (X^2)^2} - \frac{\partial^2 \phi}{\partial (X^3)^2} = -g\delta^3(X^\mu)
@@ -197,9 +198,11 @@ Going back to the general equations of motion, if we drop the requirement that $
 - **Diffusion Equation** $\frac{\partial \phi}{\partial t} - k \nabla^2 \phi = S(X^\mu)$ is the diffusion of a solute as it interacts with a source $S(X^\mu)$ and diffusion constant $k$.
 - **Heat Diffusion Equation** $\frac{\partial T}{\partial t} - \kappa \nabla^2 T = (\rho c)^{-1}S(X^\mu)$ describes the temperature field $T(t, X^\mu)$ as it diffuses with a density $\rho$, specific heat $c$, coefficient of thermal diffusivity $\kappa = \frac{k}{\rho c}$, and source of heat $S(X^\mu)$.
 
+The specific form of the Lagrangian, $\mathcal L$, results in a variety of physical examples.
+
 ### A Statistics Field
 #### Probability Density Function
-A score is based off a [probability density function](https://en.wikipedia.org/wiki/Probability_density_function) involving a [random vector](https://en.wikipedia.org/wiki/Multivariate_random_variable) $X^n \in \mathbb R^n$ and a vector of parameters $\theta^m \in \mathbb R^m$ which models some true but unknown probability density function $p_{X}$:
+A score is based off a [probability density function](https://en.wikipedia.org/wiki/Probability_density_function) involving a [random vector](https://en.wikipedia.org/wiki/Multivariate_random_variable) $X^n \in \mathbb R^n$ and a vector of parameters $\theta^m \in \mathbb R^m$ which models some true, but unknown, probability density function $p_{X}$:
 
 $$
 \begin{gather*}
@@ -217,10 +220,10 @@ $$
 The appropriate weather analogy in this case would be the [probability of precipitation](https://graphical.weather.gov/sectors/conus.php?element=PoP12):
 ![Probability of precipitation map courtesy of National Weather Service](assets/img/custom/conus_PoP121.png){: width="515" }
 
-I have superimposed a red elliptical MVN which represents $p(x; M, \mu)$ and the probability of precipitation is $p_X$. In this case, $p(x; M, \mu)$ is not expressive enough to capture $p_X$ which appears to be bimodal and not elliptical.
+The red elliptical MVN which represents $p(x; M, \mu)$ and the probability of precipitation is $p_X$. In this case, $p(x; M, \mu)$ is **not** expressive enough to capture $p_X$ which appears to be bimodal and not elliptical.
 
 #### Score Functions
-In general, $Z(\theta^m)$ is intractable to compute (although it is well known for a MVN):
+In general, $Z(\theta^m)$ is intractable to compute (despite it being [well known](https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Density_function) for a MVN):
 
 $$
 Z(\theta^m) = \int_{X^n} q(X^n; \theta^m) dX^n
@@ -244,10 +247,10 @@ $$
 Some important points about $\mathcal S$ are:
 - This is the Jacobian of the *log* probability density function with respect to the random vector $X^n$.
 - The typical definition of the [score function](https://en.wikipedia.org/wiki/Informant_(statistics)) is the Jacobian with respect to the parameters $\theta^m$. Instead, we are following [Hyvarinen's paper](https://jmlr.org/papers/volume6/hyvarinen05a/hyvarinen05a.pdf) which is with respect to the random vector $X^n$. This forms the basis of [diffusion models](https://yang-song.net/blog/2021/score/).
-- If $p(X^n; \theta^m)$ is playing the part of the scalar field from before, applying the $\log$ simply transforms this to a different scalar field and applying $\nabla_X$ is like [converting the temperature map to the surface fronts](#scalar_to_vector). 
+- If $p(X^n; \theta^m)$ is playing the part of the scalar field from before, applying the $\log$ transforms this to a different scalar field and applying $\nabla_X$ is like [converting the temperature map to the surface fronts](#scalar_to_vector). 
 
 
-> Based on these observations, **we can think of the score function as a vector field**.
+> Based on these observations, **the score function is a vector field**.
 {:.prompt-info}
 
 #### Estimating the Score Function
@@ -285,7 +288,7 @@ J(\theta^M) = \frac{1}{2}\int_{X^n} p_X(X^n) ||\mathcal S(X^n; \theta^m) - \math
 \end{gather*}
 $$
 
-Where in the first step they used integration by parts to avoid the dependency on $\mathcal S_X(X^n)$ which is unknown and the second step approximates the loss with the sample loss over a dataset of $T$ observations. $\tilde J$ is a consistent estimator for $J$ in that it converges in probability towards the true $\theta^m$ given infinite samples.
+Where in the first step they used integration by parts to avoid the dependency on $\mathcal S_X(X^n)$ (which is unknown) and the second step approximates the loss with the sample loss over a dataset of $T$ observations. $\tilde J$ is a consistent estimator for $J$ in that it converges in probability towards the true $\theta^m$ given infinite samples.
 
 #### Score Examples
 ##### MVN Distribution
@@ -304,7 +307,7 @@ $$
 Setting $\mu = [0, 0]$ and 
 
 $$
-M = \begin{bmatrix}
+M^{-1} = \begin{bmatrix}
     1 & 0.5 \\
     0.5 & 1 \\
 \end{bmatrix}
@@ -331,21 +334,21 @@ $$
 Which matches the maximum likelihood estimate. Given a sample of data, we can estimate $\hat \mu$ and $\hat M$ and form:
 
 $$
-\hat {\mathcal S}(X^n; \theta^m) = -\hat M(X^n - \hat \mu)
+\hat {\mathcal S}(X^n; \hat \theta^m) = -\hat M(X^n - \hat \mu)
 $$
 
 Which can generate new samples using [Langevin Dynamics MCMC](https://arxiv.org/pdf/1907.05600):
 
 $$
-\tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} \hat {\mathcal S}(X_{t-1}^n; \theta^m) + \sqrt{\epsilon} Z_t^n
+\tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} \hat {\mathcal S}(X_{t-1}^n; \hat \theta^m) + \sqrt{\epsilon} Z_t^n
 $$
 
-This is not really necessary for generating samples from a MVN, but becomes useful for generating natural images (which requires estimating the score function with large neural networks).
+This is not really necessary for generating samples from a MVN, but is required for [generating natural images](https://arxiv.org/pdf/2011.13456) (which requires estimating the score function with large neural networks).
 
 ## Conclusion
 In physics and statistics we can:
 - Define a scalar field
-- Define a function of the scalar field and the gradients of the field (i.e. Lagrangian & Loss function)
+- Define a function of the scalar field and the gradients of the field (i.e. Lagrangian & Loss function respectively)
 - Find stationary points of the function
 
 To find equations of motions or statistical estimates. Fields are very useful mathematical objects in both fields and it is interesting to compare and contrast how they are used.
