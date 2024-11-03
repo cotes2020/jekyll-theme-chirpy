@@ -78,7 +78,7 @@ $$
 \frac{\partial \phi}{\partial X^\mu} = \big (\frac{\partial \phi}{\partial t}, \frac{\partial \phi}{\partial X^1}, \frac{\partial \phi}{\partial X^2}, \frac{\partial \phi}{\partial X^3} \big ) = \nabla_{X} \phi
 $$
 
-This special operation $\nabla_X(\cdot)$ is called the [Jacobian](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant) and for a scalar valued function, results in a vector field of partial derivatives. And of course this example would not be complete without a weather analogy. Let's take $\phi$ to be the temperature again, i.e. a scalar field. If we find the differences amongst its spatial coordinates $\big (\frac{\partial \phi}{\partial X^1}, \frac{\partial \phi}{\partial X^2}, \frac{\partial \phi}{\partial X^3} \big)$, we can draw **[surface fronts](https://www.wpc.ncep.noaa.gov/html/fntcodes2.shtml)** of important hot air / cold air differences:
+This special operation $\nabla_X(\cdot)$ is called the [Jacobian](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant) and for a scalar valued function, results in a vector field of partial derivatives. And of course this example would not be complete without a weather analogy. Let's take $\phi$ to be the temperature again, i.e. a scalar field. If we find the differences amongst its spatial coordinates $\big (\frac{\partial \phi}{\partial X^1}, \frac{\partial \phi}{\partial X^2}, \frac{\partial \phi}{\partial X^3} \big)$, we can draw **[surface fronts](https://www.wpc.ncep.noaa.gov/html/fntcodes2.shtml)** of hot air / cold air differences:
 
 ![Temperature Gradient map courtesy of National Weather Service (https://www.weather.gov/forecastmaps/)](assets/img/custom/weather_pressure_map.png){: width="515" }
 
@@ -95,7 +95,7 @@ $$
 \text{div } \phi = \nabla \cdot \phi = \frac{\partial \phi}{\partial X^1} + \frac{\partial \phi}{\partial X^2} + \frac{\partial \phi}{\partial X^3}
 $$
 
-Which describes how each point of the field's [flux](https://en.wikipedia.org/wiki/Flux) acts as a source point. Using the basic rules for [vector addition](https://mathworld.wolfram.com/VectorAddition.html), we can see that divergence is just the composite vector of the partial derivatives of the scalar field.
+Which describes how each point of the field's [flux](https://en.wikipedia.org/wiki/Flux) acts as a source point. Using the basic rules for [vector addition](https://mathworld.wolfram.com/VectorAddition.html), we can see that divergence is just the composite vector of the sum of the partial derivatives of the scalar field.
 
 > In summary, fields are "maps" from coordinates to either values or vectors. We can combine them to create more complicated fields and switch back and forth between scalar fields and vector fields. 
 {:.prompt-info}
@@ -124,7 +124,7 @@ We have already seen all of these operations; squaring fields, adding fields, an
 {:.prompt-info}
 
 #### Equations of Motion {#eqns_of_motion}
-$\mathcal L$ does not yet tell us how a particle would behave in the field. It only creates a new field by mixing and matching components of the field and particle together. To find the equations of motion we have to apply the Euler Lagrange equation which is a stationary point (i.e. least) of the action. We are trying to find a unique $\phi$ such that the action is stationary (i.e. minimized):
+$\mathcal L$ does not yet tell us how a particle would behave in the field. It only creates a new field by mixing and matching components of the field and particle together. To find the equations of motion we have to apply the Euler Lagrange equations. Euler Lagrange finds a unique $\phi$ such that the action is stationary (i.e. minimized):
 
 $$
 \begin{gather*}
@@ -208,7 +208,7 @@ p(X^n; \theta^m) \approx p_X
 \end{gather*}
 $$
 
-We can take $n = 2$ and $m = 2$ which would be a two dimensional continuous state space ($x \in \mathbb R^2$) and a probability density function that depends on two parameters; $\mu \in \mathbb R^2$ and $M \in \mathbb R^{2 \times 2}$. The [multivariate normal distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution) (MVN) is given by:
+For example, we can take $n = 2$ and $m = 2$ which would be a two dimensional continuous state space ($x \in \mathbb R^2$) and a probability density function that depends on two parameters; $\mu \in \mathbb R^2$ and $M \in \mathbb R^{2 \times 2}$. The [multivariate normal distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution) (MVN) is given by:
 
 $$
 p(X^n; M, \mu) = \frac{1}{Z(M, \mu)} \exp{\big (-\frac{1}{2}(X^n - \mu)^T M (X^n - \mu)\big )}
@@ -274,7 +274,7 @@ $$
 ||x||^2 = (x_1^2 + \dots + x_n^2)
 $$ 
 
-Is very similar to the operation we used on our scalar field from the [Lagrangian](#a-physics-field) except before we used the [Minkowski norm](https://en.wikipedia.org/wiki/Minkowski_norm). Following the theorems in [Hyvarinen's paper](https://jmlr.org/papers/volume6/hyvarinen05a/hyvarinen05a.pdf), we arrive at:
+Is very similar to the operation we used on our scalar field from the [Lagrangian](#a-physics-field) except before we used the [Minkowski norm](https://en.wikipedia.org/wiki/Minkowski_norm) to be Lorentz invariant (which is not important in statistics). Following the theorems in [Hyvarinen's paper](https://jmlr.org/papers/volume6/hyvarinen05a/hyvarinen05a.pdf), we arrive at:
 
 $$
 \begin{gather*}
@@ -289,7 +289,7 @@ Where in the first step they used integration by parts to avoid the dependency o
 
 #### Score Examples
 ##### MVN Distribution
-If we set $p(x; M, \mu)$ to a MVN:
+If we set $p(X^n; M, \mu)$ to a MVN:
 
 $$
 p(X^n; M, \mu) = \frac{1}{Z(M, \mu)} \exp{\big (-\frac{1}{2}(X^n - \mu)^T M (X^n - \mu)\big )}
@@ -298,7 +298,7 @@ $$
 Then the score function is simply,
 
 $$
-\mathcal S(X^n; \theta^m) = -M(X^n$ - \mu)
+\mathcal S(X^n; \theta^m) = -M(X^n - \mu)
 $$
 
 Setting $\mu = [0, 0]$ and 
@@ -334,10 +334,18 @@ $$
 \mathcal S(X^n; \theta^m) = -\hat M(X^n - \hat \mu)
 $$
 
+Which can generate new samples using [Langevin Dynamics MCMC](https://arxiv.org/pdf/1907.05600):
+
+$$
+\tilde X_t^n = X_{t-1}^n + \frac{\epsilon}{2} S(X_{t-1}^n; \theta^m) + \sqrt{\epsilon} Z_t^n
+$$
+
+This is not really necessary for generating samples from a MVN, but becomes useful for generating natural images (which requires estimating the score function with large neural networks).
+
 ## Conclusion
-Both in physics and statistics we can:
+In physics and statistics we can:
 - Define a scalar field
 - Define a function of the scalar field and the gradients of the field (i.e. Lagrangian & Loss function)
 - Find stationary points of the function
 
-To find equations of motions or statistical estimates.
+To find equations of motions or statistical estimates. Fields are very useful mathematical objects in both fields and it is interesting to compare and contrast how they are used.
