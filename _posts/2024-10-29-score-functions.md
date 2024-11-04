@@ -220,7 +220,7 @@ $$
 The appropriate weather analogy in this case would be the [probability of precipitation](https://graphical.weather.gov/sectors/conus.php?element=PoP12):
 ![Probability of precipitation map courtesy of National Weather Service](assets/img/custom/conus_PoP121.png){: width="515" }
 
-The red elliptical MVN which represents $p(x; M, \mu)$ and the probability of precipitation is $p_X$. In this case, $p(x; M, \mu)$ is **not** expressive enough to capture $p_X$ which appears to be bimodal and not elliptical.
+The red ellipsis (i.e. contour of a MVN) represents $p(x; M, \mu)$ and the probability of precipitation is $p_X$. In this case, $p(x; M, \mu)$ is **not** expressive enough to capture $p_X$ which appears to be bimodal and not elliptical.
 
 #### Score Functions
 In general, $Z(\theta^m)$ is intractable to compute (despite it being [well known](https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Density_function) for a MVN):
