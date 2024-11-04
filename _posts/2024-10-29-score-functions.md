@@ -282,13 +282,14 @@ Is very similar to the operation we used on our scalar field from the [Lagrangia
 $$
 \begin{gather*}
 J(\theta^M) = \frac{1}{2}\int_{X^n} p_X(X^n) ||\mathcal S(X^n; \theta^m) - \mathcal S_X(X^n) ||^2 dX^n \\
-= \int_{X^n} p_X(X^n) \sum_{i=1}^n \big [\partial_i \mathcal S(X^n; \theta^m) + \frac{1}{2}\mathcal S(X^n; \theta^m)^2 \big ]dX^n + const. \\
-\approx \frac{1}{T}\sum_{t=1}^T \sum_{i=1}^n \big[\partial_i \mathcal S(X_t^n; \theta^m) + \frac{1}{2} \mathcal S(X_t^n; \theta^m)^2 \big] + const. \\
+= \int_{X^n} p_X(X^n) \sum_{i=1}^n \big [\frac{\partial}{\partial X^i} \mathcal S_i(X^n; \theta^m) + \frac{1}{2}\mathcal S_i(X^n; \theta^m)^2 \big ]dX^n + const. \\
+\approx \frac{1}{T}\sum_{t=1}^T \sum_{i=1}^n \big[\frac{\partial}{\partial X^i} \mathcal S_i(X_t^n; \theta^m) + \frac{1}{2} \mathcal S_i(X_t^n; \theta^m)^2 \big] + const. \\
+= \frac{1}{T} \sum_{t=1}^T \big [ \text{trace}\big(\frac{\partial}{\partial X^n}\mathcal S(X_t^n; \theta^m)\big) + \frac{1}{2}||\mathcal S(X_t^n; \theta^m)||^2 \big ] \\
 = \tilde J(\theta^m)
 \end{gather*}
 $$
 
-Where in the first step they used integration by parts to avoid the dependency on $\mathcal S_X(X^n)$ (which is unknown) and the second step approximates the loss with the sample loss over a dataset of $T$ observations. $\tilde J$ is a consistent estimator for $J$ in that it converges in probability towards the true $\theta^m$ given infinite samples.
+Where in the first step they used integration by parts to avoid the dependency on $\mathcal S_X(X^n)$ (which is unknown), the second step approximates the loss with the sample loss over a dataset of $T$ observations, and the third step expresses this in vector operations. $\tilde J$ is a consistent estimator for $J$ in that it converges in probability towards the true $\theta^m$ given infinite samples.
 
 #### Score Examples
 ##### MVN Distribution
@@ -302,6 +303,12 @@ Then the score function is simply,
 
 $$
 \mathcal S(X^n; \theta^m) = -M(X^n - \mu)
+$$
+
+And the second partial is:
+
+$$
+\frac{\partial}{\partial X^i} \mathcal S(X^n; \theta^m) = -m_{ii}
 $$
 
 Setting $\mu = [0, 0]$ and 
