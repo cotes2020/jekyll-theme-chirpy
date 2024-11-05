@@ -80,14 +80,33 @@ kubectl -n jenkins get pods
 
 #### Get the `Jenkins URL` to visit by running these commands in the same shell:
 ```sh
+
+kubectl patch svc jenkins --namespace jenkins -p '{"spec": {"type": "NodePort"}}'
+
 export NODE_PORT=$(kubectl get --namespace jenkins -o jsonpath="{.spec.ports[0].nodePort}" services jenkins)
 
-export NODE_IP=$(kubectl get nodes --namespace jenkins -o jsonpath="{.items[0].status.addresses[0].address}")
+  export NODE_IP=$(kubectl get nodes --namespace jenkins -o jsonpath="{.items[0].status.addresses[0].address}")
 
 echo http://$NODE_IP:$NODE_PORT
 ```
-`Login with the username: admin and password: SecureP@ssw0rd!`
 
+
+#### jenkinsUrl must be set correctly else stylesheet won't load and the dark theme. 
+
+```sh
+controller:
+  jenkinsUrl: http://$NODE_IP:$NODE_PORT
+  jenkinsAdminEmail: mkbn@mkbn.com
+  # don't set these via JCasC, set as helm chart values
+```
+
+#### Run helm upgrade
+
+```sh
+helm upgrade jenkins jenkins/jenkins --values /tmp/jenkins/values.yaml -n jenkins
+```
+
+`Login with the username: admin and password: SecureP@ssw0rd!`
 
 Reference Links:
 
