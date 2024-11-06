@@ -53,31 +53,19 @@
 
     {% for entry in site.data.contact %}
       {% case entry.type %}
-        {% when 'github' %}
+        {% when 'github', 'twitter' %}
           {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
-        {% when 'twitter' %}
-          {% comment %}
-          {%- capture url -%}
-            https://{{ entry.type }}.com/{{ site[entry.type].username }}
-          {%- endcapture -%}
-          {% endcomment %}
         {% when 'email' %}
-          {% comment %}
           {% assign email = site.social.email | split: '@' %}
           {%- capture url -%}
             javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
           {%- endcapture -%}
-          {% endcomment %}
         {% when 'rss' %}
-          {% comment %}
           {% assign url = '/feed.xml' | relative_url %}
-          {% endcomment %}
         {% else %}
-          {% comment %}
           {% assign url = entry.url %}
-          {% endcomment %}
       {% endcase %}
 
       {% if url %}
