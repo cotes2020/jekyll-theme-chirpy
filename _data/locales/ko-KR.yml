@@ -58,8 +58,8 @@ post:
   words: 단어
   pageview_measure: 조회
   read_time:
-    unit: 분
-    prompt: 읽는 시간
+    unit: #분
+    prompt: #읽는 시간
   relate_posts: 관련된 글
   share: 공유하기
   button:
