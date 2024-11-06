@@ -161,6 +161,7 @@ tail_includes:
       "
     >
       <div class="license-wrapper">
+        {% comment %}
         {% if site.data.locales[lang].copyright.license.template %}
           {% capture _replacement %}
         <a href="{{ site.data.locales[lang].copyright.license.link }}">
@@ -170,6 +171,7 @@ tail_includes:
 
           {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
         {% endif %}
+        {% endcomment %}
       </div>
 
       {% include post-sharing.html lang=lang %}
