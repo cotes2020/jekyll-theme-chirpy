@@ -75,7 +75,9 @@
           {% assign url = '/feed.xml' | relative_url %}
           {% endcomment %}
         {% else %}
+          {% comment %}
           {% assign url = entry.url %}
+          {% endcomment %}
       {% endcase %}
 
       {% if url %}
