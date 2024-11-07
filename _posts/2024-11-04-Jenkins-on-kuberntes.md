@@ -63,7 +63,7 @@ controller:
     configScripts:
       welcome-message: |
         jenkins:
-          systemMessage: 🚀🚀🚀 Jenkins Prod instance 🚀🚀🚀
+          systemMessage: 🚀 Welcome To Jenkins Prod instance 🚀
 
 ```
 
@@ -108,6 +108,97 @@ helm upgrade jenkins jenkins/jenkins --values /tmp/jenkins/values.yaml -n jenkin
 
 `Login with the username: admin and password: SecureP@ssw0rd!`
 
+#### Expose jenkins ui using ingress
+
+#### Install nginx ingress controller
+```sh
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+helm install ingress-nginx ingress-nginx/ingress-nginx \
+--namespace ingress-nginx --create-namespace
+```
+
+#### Check the status of the Ingress Controller:
+```sh
+kubectl get pods -n ingress-nginx
+kubectl get svc -n ingress-nginx
+```
+`Note: Add the EXTERNAL-IP address of your ingress controller to your domain’s DNS records as an A record.`
+
+#### Installing Cert-Manager
+```sh
+helm repo add jetstack https://charts.jetstack.io --force-update
+
+helm install cert-manager jetstack/cert-manager \
+--namespace cert-manager --create-namespace \
+--version v1.16.1 \
+--set installCRDs=true
+```
+
+#### Verify Cert-Manager is running
+```sh
+kubectl get pods -n cert-manager
+```
+
+#### Create the ClusterIssuer resource
+```sh
+cat <<EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: pes.mohan@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+EOF
+```
+
+#### Create the ingress resource
+```sh
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jenkins-ingress
+  namespace: jenkins
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - jenkins.mkbn.in
+    secretName: jenkins-tls
+  rules:
+  - host: jenkins.mkbn.in
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jenkins
+            port:
+              number: 8080
+EOF
+```
+
+`Now access the jenkins ui with https://jenkins.mkbn.in`
+
 Reference Links:
 
 - [jenkins](https://artifacthub.io/packages/helm/jenkinsjenkins/jenkins)
+
+- [nginx ingress controller](https://kubernetes.github.io/ingress-nginx/deploy/)
+
+- [Cert-Manager](https://cert-manager.io/docs/installation/helm/)
+

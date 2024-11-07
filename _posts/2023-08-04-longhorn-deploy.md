@@ -72,7 +72,7 @@ helm fetch longhorn/longhorn --untar
 Install Longhorn in the longhorn namespace:
 
 ```sh
-helm install longhorn longhorn/longhorn --values /tmp/longhorn/values.yaml -n longhorn --create-namespace --version 1.5.1
+helm install longhorn longhorn/longhorn --values /tmp/longhorn/values.yaml -n longhorn --create-namespace --version 1.7.2
 ```
 
 To confirm that the deployment succeeded, run:
