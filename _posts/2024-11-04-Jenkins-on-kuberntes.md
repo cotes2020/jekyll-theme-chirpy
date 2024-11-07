@@ -151,7 +151,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: pes.mohan@gmail.com
+    email: mkbn@mkbn.in
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
