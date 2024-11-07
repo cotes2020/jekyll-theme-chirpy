@@ -12,7 +12,7 @@ mermaid: false
 ---
 ## 2. 도커의 구조
 
-![docker structure](/posting_imgs/docker_structure.png){: width="40%"}
+![docker structure](/posting_imgs/docker_structure.png){: width="80%"}
 
 위 그림은 도커의 간단한 구조를 나타낸 것이다. 뮬리 서버가 있고, 여기서 동작하는 리눅스 운영체제가 있다.
 
