@@ -15,7 +15,7 @@ image:
 
 ### HAProxy Configurations:
 
-SSH to the node which will function as the load balancer and execute the following commands to install HAProxy.
+SSH to the nodes which will function as the load balancer and execute the following commands to install HAProxy.
 ```sh
 apt update && apt install -y haproxy
 ```

@@ -192,10 +192,9 @@ tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
 ### Install cricctl 
 ```sh
 {
-VERSION="v1.27.1" #change this based on your k8s version
+VERSION="v1.30.0"  # change this based on your k8s version
 curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-${VERSION}-linux-amd64.tar.gz --output crictl-${VERSION}-linux-amd64.tar.gz
-
-tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/bin
+sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/bin
 rm -f crictl-$VERSION-linux-amd64.tar.gz
 }
 ```
@@ -216,10 +215,11 @@ EOF
 ### Add Apt repository & Install Kubernetes components:
 ```sh
 {
-apt-get update && sudo apt-get install -y apt-transport-https curl
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+apt-get install -y apt-transport-https ca-certificates curl gpg
+mkdir /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-deb https://apt.kubernetes.io/ kubernetes-xenial main
+deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /
 EOF
 }
 ```
@@ -227,12 +227,12 @@ EOF
 ```sh
 {
 apt-get update
-apt-get install -y kubelet=1.27.4-00 kubeadm=1.27.4-00 kubectl=1.27.4-00
+apt-get install -y kubelet=1.30.6-1.1 kubeadm=1.30.6-1.1 kubectl=1.30.6-1.1
 }
 
 ```
 
-### ETCD cluster creation`[only on master nodes]`:
+### ETCD cluster creation`[on all etcd nodes]`:
 
 *Note: Copy `ca.pem, kubernetes.pem, kubernetes-key.pem` to other master nodes.*
 
@@ -331,6 +331,7 @@ ETCDCTL_API=3 etcdctl member list \
   --key=/etc/etcd/kubernetes-key.pem
 }
 ```
+`Example output:`
 ```sh
 25ef0cb30a2929f1, started, k8s-master-1, https://k8s-master-1:2380, https://k8s-master-1:2379, false
 5818a496a39840ca, started, k8s-master-2, https://k8s-master-2:2380, https://k8s-master-2:2379, false
