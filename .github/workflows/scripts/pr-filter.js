@@ -16,8 +16,7 @@ module.exports = async ({ github, context, core }) => {
   const action = context.payload.action;
 
   const isValid =
-    pr.labels.length > 0 || // PR create by Dependabot would have labels
-    (markdown !== '' && hasTypes(markdown) && hasDescription(markdown));
+    markdown !== '' && hasTypes(markdown) && hasDescription(markdown);
 
   if (!isValid) {
     await github.rest.pulls.update({
