@@ -12,14 +12,14 @@ function refreshTheme(event) {
 
     [...mermaidList].forEach((elem) => {
       const svgCode = elem.previousSibling.children.item(0).innerHTML;
-      elem.innerHTML = svgCode;
+      elem.textContent = svgCode;
       elem.removeAttribute('data-processed');
     });
 
     const newTheme = themeMapper[Theme.visualState];
 
     mermaid.initialize({ theme: newTheme });
-    mermaid.init(undefined, `.${MERMAID}`);
+    mermaid.init(null, `.${MERMAID}`);
   }
 }
 
