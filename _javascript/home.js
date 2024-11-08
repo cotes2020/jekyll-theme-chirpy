@@ -1,5 +1,5 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { initLocaleDatetime, loadImg } from './modules/plugins';
+import { initLocaleDatetime, loadImg } from './modules/components';
 
 loadImg();
 initLocaleDatetime();

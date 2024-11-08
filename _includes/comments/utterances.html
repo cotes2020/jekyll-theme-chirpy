@@ -1,49 +1,38 @@
 <!-- https://utteranc.es/ -->
-<script
-  src="https://utteranc.es/client.js"
-  repo="{{ site.comments.utterances.repo }}"
-  issue-term="{{ site.comments.utterances.issue_term }}"
-  crossorigin="anonymous"
-  async
-></script>
-
-<script type="text/javascript">
+<script>
   (function () {
     const origin = 'https://utteranc.es';
-    const lightTheme = 'github-light';
-    const darkTheme = 'github-dark';
-    let initTheme = lightTheme;
-    const html = document.documentElement;
+    const themeMapper = Theme.getThemeMapper('github-light', 'github-dark');
+    const initTheme = themeMapper[Theme.visualState];
 
-    if (
-      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = darkTheme;
-    }
+    let script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', '{{ site.comments.utterances.repo }}');
+    script.setAttribute('issue-term', '{{ site.comments.utterances.issue_term }}');
+    script.setAttribute('theme', initTheme);
+    script.crossOrigin = 'anonymous';
+    script.async = true;
+
+    const $footer = document.querySelector('footer');
+    $footer.insertAdjacentElement('beforebegin', script);
 
     addEventListener('message', (event) => {
-      let theme;
+      let newTheme;
 
-      {%- comment -%} credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> {%- endcomment -%}
-      if (event.origin === origin) {
-        {%- comment -%} page initial {%- endcomment -%}
-        theme = initTheme;
-      } else if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-        {%- comment -%} global theme mode changed {%- endcomment -%}
-        const mode = event.data.message;
-        theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
-      } else {
-        return;
+      {%- comment -%}
+        Credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347>
+      {%- endcomment -%}
+      if (event.source === window && event.data && event.data.id === Theme.ID) {
+        newTheme = themeMapper[Theme.visualState];
+
+        const message = {
+          type: 'set-theme',
+          theme: newTheme
+        };
+
+        const utterances = document.querySelector('.utterances-frame').contentWindow;
+        utterances.postMessage(message, origin);
       }
-
-      const message = {
-        type: 'set-theme',
-        theme: theme
-      };
-
-      const utterances = document.getElementsByClassName('utterances-frame')[0].contentWindow;
-      utterances.postMessage(message, origin);
     });
   })();
 </script>
