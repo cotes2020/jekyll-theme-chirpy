@@ -150,7 +150,8 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "https://jinhyung-r.github.io/horoong.github.io/"
+# baseurl: "https://jinhyung-r.github.io/horoong.github.io/"
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
