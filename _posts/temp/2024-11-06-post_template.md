@@ -1,6 +1,6 @@
 ---
-title: post_template
-description: >-
+title: post_template      #제목
+description: >-           #한 문장으로 나옴
   This is post_template
   HI.
   hello.
@@ -28,4 +28,9 @@ pin: false
 published: true
 ---
 
-#This is post_template
+This is post_template
+# 큰 제목
+## 중간 제목
+### 작은 제목
+#### 더 작은 제목
+##### 더더 작은 제목
