@@ -11,7 +11,7 @@ layout:
 tabs:
   # format: <filename_without_extension>: <value>
   home: Home #홈
-  categories: 카테고리 #Categories #카테고리
+  categories: Categories #카테고리
   tags: Tags #태그
   archives: Archives #아카이브
   about: About #정보
