@@ -1,6 +1,6 @@
 ---
 title: "Why AI Optimization"
-date: 2024-11-10 12:40:00 +0000
+date: 2024-11-10 12:35:00 +0000
 tags: [글또]
 categories: [Data]
 ---
