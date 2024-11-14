@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Sebears Embedded Lab #블로그 이름 # the main title
+title: Seabears's Empty Lab #블로그 이름 # the main title
 
-tagline: 임베디드 #소 제목 # it will display as the subtitle
+tagline: 임베디드 Embedded #소 제목 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Embedded에 대하여
