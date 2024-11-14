@@ -1,18 +1,20 @@
 ---
-title: git blog에 대하여      #제목
+title: post_template      #제목
 description: >-           #한 문장으로 나옴
-  about git blog
-date: 2024-11-14 11:52:00 +0900
+  This is post_template
+  HI.
+  hello.
+date: 2024-11-08 17:39:00 +0900
 #lastmod : 2024-11-08 17:40:00  #마지막 수정 시간
 author: "seabears"      # 작성자
 
 categories: # 카테고리
-    - git_blog
-#    - temp1
-#    - temp2
+    - template  
+    - temp1
+    - temp2
 tags: 
-    - git_blog
-#    - tag2
+    - tag1
+    - tag2
 #[Jekyll, 블로그]  # 태그
 
 sitemap :
@@ -22,13 +24,10 @@ sitemap :
 #excerpt: "이 글의 요약"   # 요약
 #image: "url_to_image.jpg"   # 대표 이미지 (옵션)
 #permalink: /category1/first-post/
-pin: false
-published: true
+pin: false              # true | false
+published: false        # true | false
 ---
 
-git clone your_address  
-git pull  
-git push  
 
 <!--
 This is post_template
@@ -38,3 +37,4 @@ This is post_template
 #### 더 작은 제목
 ##### 더더 작은 제목
 -->
+
