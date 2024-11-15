@@ -89,7 +89,7 @@ $$
 \phi_{\text{Wind Speed}}(t, X^i) = \sqrt{\phi^{1}(t, X^i)^2 + \phi^{2}(t, X^i)^2}
 $$
 
-The name of this operation is the [Euclidean Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm). Based on our rules from above, we know that $\phi^{1}(t, X^i)$ and $\phi^{2}(t, X^i)$ are individually scalar fields. Therefore, it shouldn't be surprising that if we mix up these scalar fields together, we get another scalar field. Another example would be the [Divergence](https://en.wikipedia.org/wiki/Divergence) of a field which uses the Jacobian from before:
+The name of this operation is the [Euclidean Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm). It combines the components of a vector in a way that is invariant to translations and rotations. Another example would be the [Divergence](https://en.wikipedia.org/wiki/Divergence) of a field which uses the Jacobian from before:
 
 $$
 \text{div } \phi = \nabla \cdot \phi = \frac{\partial \phi}{\partial X^1} + \frac{\partial \phi}{\partial X^2} + \frac{\partial \phi}{\partial X^3}
@@ -357,7 +357,15 @@ And [visualize the pdf, score function, and sampling process](https://colab.rese
 ## Conclusion
 In physics and statistics we can:
 - Define a scalar field
-- Define a function of the scalar field and the gradients of the field (i.e. Lagrangian & Loss function respectively)
+- Compute gradients of scalar field
+- Define a function of the scalar field and it's gradients
 - Find stationary points of the function
 
-To find equations of motions or statistical estimates. Fields are very useful mathematical objects in both fields and it is interesting to compare and contrast how they are used.
+|                                     | Fields                                  | Score                                               |
+| ------------------------            | -----------------------                 | ---------------------------                         |
+| Scalar Field                        | $\phi$                                  | $p(X^n; \theta^m)$                                  |
+| Gradients of Scalar Field           | $\frac{\partial \phi}{\partial X^\mu}$  | $\mathcal S(X^n; \theta^m)$                         |
+| Scalar Field & Gradients Function   | Lagrangian $\mathcal L$                 | Loss function $J(\theta^m)$                         |
+| Find Stationary Points              | $\nabla^2\phi = g\delta^3(X^\mu)$       | $\hat \theta^M = \arg \min_{\theta^m}J(\theta^m)$   |
+
+Following this procedure yields results in both fields and it is interesting to compare and contrast how they are used.
