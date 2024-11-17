@@ -1,7 +1,7 @@
 ---
-title: "CH2. 도커의 동작 원리 [그림으로 배우는 도커 & 쿠버네티스]"
+title: "CH4. 컨테이너를 실행해 보자 [그림으로 배우는 도커 & 쿠버네티스]"
 author: kwon
-date: 2024-11-07T14:00:00 +0900
+date: 2024-11-17T14:00:00 +0900
 categories: [도커]
 tags: [docker]
 math: true
