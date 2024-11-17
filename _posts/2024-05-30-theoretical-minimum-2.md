@@ -25,13 +25,13 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ![alt](assets/img/custom/B2L4.png)
 
 ## Lecture 5 - Particles and Fields
-> I switched editing software to [`MarginNote4`](https://www.marginnote.com/)
+> I switched editing software to [`Draw.io`](https://www.drawio.com/)
 {: .prompt-tip }
 
-![alt](assets/img/custom/B2L5.png)
+![alt](assets/drawio/B2L5.drawio.png)
 
 ## Lecture 6 - Lorentz Force Law
-![alt](assets/img/custom/B2L6.png)
+![alt](assets/drawio/B2L6.drawio.png)
 
 ## Lecture 7 - Fundamental Principles of Gauge Invariance
 ![alt](assets/img/custom/B2L7.png)

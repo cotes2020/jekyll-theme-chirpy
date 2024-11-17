@@ -1,0 +1,311 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram id="JDI_gfJpjxLJ_JYhKjTu" name="Page-1">
+    <mxGraphModel dx="3033" dy="1308" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Lecture 6 - The Lorentz Force Law" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=auto;rounded=1;startSize=30;labelBackgroundColor=none;swimlaneFillColor=#FFCCCC;gradientColor=none;gradientDirection=south;" parent="1" vertex="1">
+          <mxGeometry y="10" width="880" height="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="103" value="Electric Field" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="2" vertex="1">
+          <mxGeometry x="584" y="910" width="213" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="104" value="$$E_p =\frac{\partial A_0}{\partial X^p} - \frac{\partial A_p}{\partial t}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="103" vertex="1">
+          <mxGeometry x="-233.5" y="50" width="680" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="132" value="Field Tensor Entries" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="2" vertex="1">
+          <mxGeometry x="390" y="1470" width="247" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="133" value="$$F_{\mu\nu} = \frac{\partial A_\nu}{\partial X^\mu} - \frac{\partial A_\mu}{\partial X^\nu}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="132" vertex="1">
+          <mxGeometry x="-306.5" y="40" width="860" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dqOlDg28kX0ByAj1_X98-144" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Field Tensor transforms under Lorentz \({L^\mu}_\nu\)&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="2">
+          <mxGeometry x="643" y="1520" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="136" value="Positive Components" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="2" vertex="1">
+          <mxGeometry x="649" y="1330" width="208" height="160" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="137" value="$$F_{10} = E_x$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="136" vertex="1">
+          <mxGeometry x="-42" y="40" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="138" value="$$F_{20} = E_y$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="136" vertex="1">
+          <mxGeometry x="-42" y="80" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="139" value="$$F_{30} = E_z$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="136" vertex="1">
+          <mxGeometry x="-42" y="120" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="140" value="$$F_{12} = B_z$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="136" vertex="1">
+          <mxGeometry x="68" y="40" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="141" value="$$F_{23} = B_x$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="136" vertex="1">
+          <mxGeometry x="68" y="80" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="142" value="$$F_{31} = B_y$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="136" vertex="1">
+          <mxGeometry x="68" y="120" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="144" value="" style="endArrow=classic;html=1;strokeWidth=2;" parent="2" source="136" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="712" y="1620" as="sourcePoint" />
+            <mxPoint x="637" y="1500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="753" y="1500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dqOlDg28kX0ByAj1_X98-145" value="" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;shadow=0;curved=0;" edge="1" parent="2" source="136" target="dqOlDg28kX0ByAj1_X98-144">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1040" y="1410" as="sourcePoint" />
+            <mxPoint x="1090" y="1360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="870" y="1420" />
+              <mxPoint x="870" y="1460" />
+              <mxPoint x="870" y="1500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="Lorentz Force Law" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="32" y="190" width="197" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="40" value="$$F = e(\vec E + \vec v \times \vec B)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="39" vertex="1">
+          <mxGeometry x="-86.5" y="40" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="55" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="53" target="54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Electromagnetism&lt;/b&gt;&lt;br&gt;Electric and magnetic forces transform into each other under Lorentz transformations.&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="25" y="60" width="287" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="54" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Fields tell charges how to move; charges tell fields how to vary.&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="417" y="80" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="60" value="Lorentz (Co) Transformation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="33.5" y="420" width="287" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="61" value="$$(A&#39;)_\mu = {M_\mu}^\nu A_\nu$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="60" vertex="1">
+          <mxGeometry x="-83" y="40" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="62" value="$$M = \eta L\eta$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="60" vertex="1">
+          <mxGeometry x="127" y="40" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="63" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Rank&lt;br&gt;&amp;nbsp;&lt;/b&gt;Number of indices in a tensor&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="359" y="405" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="64" value="Tensor Transformation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="559" y="400" width="210" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="65" value="$$T^{\mu\nu} = A^\mu B^\nu$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="64" vertex="1">
+          <mxGeometry x="-70" y="40" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="66" value="Lorentz Tensor Transformation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="32" y="540" width="290" height="130" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="67" value="$$(T&#39;)^{\mu\nu} = {L^\mu}_\sigma A^\sigma {L^\nu}_\tau B^\tau$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="66" vertex="1">
+          <mxGeometry x="-175" y="40" width="610" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="70" value="&lt;meta charset=&quot;utf-8&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Comic Sans MS&amp;quot;; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;$$= {L^\mu}_\sigma{L^\nu}_\tau T^{\sigma\tau}$$&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=11;fontFamily=Helvetica;fontColor=default;" parent="66" vertex="1">
+          <mxGeometry x="85" y="70" width="480" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="68" value="Higher Order Tensors" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="359" y="515" width="275" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="69" value="$$(T&#39;)^{\mu \nu \lambda} ={L^\mu}_\sigma{L^\nu}_\tau {L^\lambda}_\kappa&amp;nbsp;T^{\sigma\tau\kappa}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="68" vertex="1">
+          <mxGeometry x="-316.5" y="40" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="75" value="Anti-Symmetric Tensor" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="659" y="517.5" width="210" height="85" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76" value="$$F^{\mu\nu} = - F^{\nu \mu}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="75" vertex="1">
+          <mxGeometry x="-75" y="45" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="102" style="edgeStyle=none;html=1;entryX=0.443;entryY=0.009;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" parent="1" source="89" target="100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="89" value="Action &amp; Vector Potential" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="25" y="920" width="495" height="110" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="90" value="$$Action = \int_a^b -m\sqrt{1 - \dot x^2} dt + e\int_a^b dX^\mu A_\mu(t, x) $$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="89" vertex="1">
+          <mxGeometry x="-120" y="50" width="720" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="93" style="edgeStyle=none;shape=connector;rounded=1;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" parent="1" source="91" target="89" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="95" value="Lorentz (Contra) Transformation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="32" y="300" width="300" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="96" value="$$(A&#39;)^\mu = {L^\mu}_\nu A^\nu$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="95" vertex="1">
+          <mxGeometry x="-70" y="40" width="330" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="99" style="edgeStyle=none;shape=connector;rounded=1;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" parent="1" source="97" target="95" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="97" value="Lorentz Matrix" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="372" y="170" width="380" height="190" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="94" value="$${L^\mu}_\nu = \begin{pmatrix} \frac{1}{\sqrt{1 - v^2}} &amp;amp; -\frac{v}{\sqrt{1 - v^2}}&amp;nbsp;&amp;amp; 0 &amp;amp; 0 \\ -\frac{v}{\sqrt{1 - v^2}} &amp;amp; \frac{1}{\sqrt{1 - v^2}}&amp;nbsp;&amp;amp; 0 &amp;amp; 0 \\0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="97" vertex="1">
+          <mxGeometry x="-681.75" y="90" width="1740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="71" value="Tensor Rules" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="395" y="633" width="446.5" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="72" value="$${T^\mu}_\nu = T^{\mu \sigma}\eta_{\sigma \nu}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="71" vertex="1">
+          <mxGeometry x="-163.5" y="40" width="490" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="$$T^{00} = T_{00}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="71" vertex="1">
+          <mxGeometry x="126.5" y="40" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="74" value="$$T^{01} = -T_{01}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="71" vertex="1">
+          <mxGeometry x="276.5" y="40" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="134" style="edgeStyle=none;html=1;strokeWidth=2;" parent="1" source="78" target="132" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-258" y="990" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="12" y="910" />
+              <mxPoint x="12" y="1600" />
+              <mxPoint x="515" y="1600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="78" value="Field Tensor" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="26" y="697" width="350" height="190" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="80" value="$$F_{\mu \nu} = \begin{pmatrix} 0 &amp;amp; -E_1 &amp;amp; -E_2 &amp;amp; -E_3 \\ E_1 &amp;amp; 0 &amp;amp; B_3 &amp;amp; -B_2 \\ E_2 &amp;amp; -B_3 &amp;amp; 0 &amp;amp; B_1 \\ E_3 &amp;amp; B_2 &amp;amp; -B_1 &amp;amp; 0 \end{pmatrix}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="78" vertex="1">
+          <mxGeometry x="-478.25" y="90" width="1300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="91" value="Lorentz Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="417" y="770" width="440" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="92" value="$$\mathcal L = -m\sqrt{1 - \dot x^2} + e A_0(t, x) + e\dot X^n A_n(t, x)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="91" vertex="1">
+          <mxGeometry x="-115" y="40" width="670" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="123" style="edgeStyle=none;html=1;strokeWidth=2;" parent="1" source="100" target="118" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="100" value="Euler Lagrange Eqns" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="25" y="1070" width="557" height="110" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="101" value="$$m \frac{d}{dt} \frac{\dot X_p}{\sqrt{1 - \dot x^2}} = e(\frac{\partial A_0}{\partial X^p} - \frac{\partial A_p}{\partial t}) + e \dot X^n(\frac{\partial A_n}{\partial X^p} - \frac{\partial A_p}{\partial X^n})$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;fontColor=default;" parent="100" vertex="1">
+          <mxGeometry x="-625" y="45" width="1810" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="105" value="Magnetic Fields" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="612" y="1070" width="220" height="260" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="106" value="$$B_x = \frac{\partial A_z}{\partial y} - \frac{\partial A_y}{\partial z}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="105" vertex="1">
+          <mxGeometry x="-219.5" y="45" width="660" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="107" value="$$B_y = \frac{\partial A_x}{\partial z} - \frac{\partial A_z}{\partial x}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="105" vertex="1">
+          <mxGeometry x="-219.5" y="97.5" width="660" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="108" value="$$B_z = \frac{\partial A_y}{\partial x} - \frac{\partial A_x}{\partial y}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="105" vertex="1">
+          <mxGeometry x="-219.5" y="160" width="660" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="115" value="$$\vec B = \vec \nabla \times \vec A$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="105" vertex="1">
+          <mxGeometry x="-75" y="210" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="118" value="Lorentz Force Law (3-Vector)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="105" vertex="1">
+          <mxGeometry x="-579" y="137.5" width="325" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="119" value="$$m \frac{d}{dt} \frac{\dot X_p}{\sqrt{1 - \dot x^2}} = e(\vec E + \vec v \times \vec B)_p$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="118" vertex="1">
+          <mxGeometry x="-245" y="40" width="820" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="113" style="edgeStyle=none;html=1;strokeWidth=2;" parent="105" source="105" target="118" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-350" y="180" as="targetPoint" />
+            <mxPoint x="-10" y="200" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="117" value="" style="endArrow=classic;html=1;strokeWidth=2;" parent="1" source="103" target="118" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="772" y="970" as="sourcePoint" />
+            <mxPoint x="822" y="920" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="592" y="1060" />
+              <mxPoint x="592" y="1190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="131" style="edgeStyle=none;html=1;strokeWidth=2;" parent="1" source="124" target="129" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="124" value="Lorentz Force Law (4-Vector)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="25" y="1340" width="341" height="110" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="125" value="$$m \frac{d^2 X_\mu}{d\tau^2} = e\frac{dX^\nu}{d\tau}(\frac{\partial A_\nu}{\partial X^\mu} - \frac{\partial A_\mu}{\partial A_\nu})$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="124" vertex="1">
+          <mxGeometry x="-445" y="50" width="1220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="126" style="edgeStyle=none;html=1;strokeWidth=2;" parent="1" source="118" target="124" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="128" style="edgeStyle=none;html=1;strokeWidth=2;" parent="1" source="127" target="124" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350.5" y="1377.8106312292362" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="127" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Manifestly Invariant&lt;/b&gt;&lt;br&gt;Lagrangian respecting symmetries of the problem&lt;br&gt;(4-vectors &amp;amp; indices contracted)&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="390" y="1270" width="211" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="129" value="Lorentz Force Law (4-Velocity)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="40.5" y="1480" width="310" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="130" value="$$m\frac{d U_\mu}{d\tau} = e(\frac{\partial A_\nu}{\partial X^\mu} - \frac{\partial A_\mu}{\partial X^\nu})U^\nu$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=block;" parent="129" vertex="1">
+          <mxGeometry x="-365" y="20" width="1040" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="135" value="" style="endArrow=classic;html=1;strokeWidth=2;" parent="1" source="129" target="132" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="242" y="1530" as="sourcePoint" />
+            <mxPoint x="292" y="1480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dqOlDg28kX0ByAj1_X98-146" value="Lorentz Force Law" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" vertex="1" parent="1">
+          <mxGeometry x="174" y="1700" width="283.5" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dqOlDg28kX0ByAj1_X98-147" value="$$F = e(\vec E + \vec v \times \vec B)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;" vertex="1" parent="dqOlDg28kX0ByAj1_X98-146">
+          <mxGeometry x="-86.5" y="40" width="370" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

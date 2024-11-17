@@ -1,0 +1,201 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="24.8.6">
+  <diagram id="GntyZM1aIyW29agRayfJ" name="B2L5">
+    <mxGraphModel dx="2092" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="17" value="Lecture 5 - Particles and Fields" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=auto;rounded=1;startSize=30;labelBackgroundColor=none;swimlaneFillColor=#FFCCCC;gradientColor=none;gradientDirection=south;" parent="1" vertex="1">
+          <mxGeometry x="20" y="60" width="845.63" height="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="76" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;4-Vector&lt;/b&gt;&lt;br&gt;Complex of four quantities that transforms under Lorentz eqn&amp;nbsp;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillStyle=auto;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;" parent="17" vertex="1">
+          <mxGeometry x="34.07" y="695" width="241.87" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="Field Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="12.5" y="350" width="310" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="$$\mathcal L_{field} = \frac{1}{2}(\frac{\partial \phi}{\partial t})^2 - \frac{1}{2}(\frac{\partial \phi}{\partial x})^2$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="38" vertex="1">
+          <mxGeometry x="-364.37" y="40" width="1030" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="46" value="Euler Lagrange Soln" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="355" y="500" width="440" height="170" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="47" value="$$\frac{\partial^2\phi}{\partial t^2} -\frac{\partial^2\phi}{\partial x^2} - \frac{\partial^2\phi}{\partial y^2}&lt;br&gt;-\frac{\partial^2\phi}{\partial z^2} = -g\rho(x)&lt;br&gt;$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="46" vertex="1">
+          <mxGeometry x="-285" y="30" width="970" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="$$\nabla^2 \phi = g \rho(x)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="46" vertex="1">
+          <mxGeometry x="-80" y="120" width="290" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="97" value="$$\frac{\partial^2 \phi}{\partial t^2} + \nabla^2 \phi = g \rho(x - a(t))$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="46" vertex="1">
+          <mxGeometry x="-19.999999999999993" y="120" width="650" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="98" value="or" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Comic Sans MS;fontSize=18;" parent="46" vertex="1">
+          <mxGeometry x="120" y="125" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="44" value="Euler Lagrange" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="46" vertex="1">
+          <mxGeometry x="-340" y="30" width="310" height="110" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45" value="$$\sum_\mu \frac{\partial}{\partial X^\mu} \frac{\partial \mathcal L}{\partial(\frac{\partial \phi}{\partial X^\mu})} - \frac{\partial \mathcal L}{\partial \phi} = 0$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="44" vertex="1">
+          <mxGeometry x="-575" y="50" width="1440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="52" style="edgeStyle=none;html=1;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;startSize=30;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" parent="46" source="44" target="46" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="73.75" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="58" value="Minkowski Metric" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="540" y="695" width="250" height="175" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="59" value="$$\eta_{\mu\nu} = \begin{pmatrix}-1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \\0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1&lt;br&gt;&amp;nbsp; \end{pmatrix}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="58" vertex="1">
+          <mxGeometry x="-302.5" y="70" width="850" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="Quadratic Form" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;direction=east;" parent="17" vertex="1">
+          <mxGeometry x="40" y="830" width="192.5" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="74" value="$$A^\mu A_\mu =A^\mu&lt;br&gt;\eta_{\mu\nu}A^\nu$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="73" vertex="1">
+          <mxGeometry x="-25" y="35" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="80" value="Wave Eqn." style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="353.5" y="980" width="433" height="200" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83" value="$$\omega = \pm \sqrt{k_x^2 + k_y^2 + k_z^2 + \mu^2}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="80" vertex="1">
+          <mxGeometry x="-71.87" y="150" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="81" value="$$\phi = \exp{-i\omega t}\exp{i(k_x x + k_y y + k_z z)}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="80" vertex="1">
+          <mxGeometry x="-71.87" y="50" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="102" value="$$\exp{i(kx - \omega t)} = \cos{kx - \omega t} + i\sin{kx - \omega t}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="80" vertex="1">
+          <mxGeometry x="-101.87" y="100" width="630" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="99" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Einstein Sum Convention&lt;/b&gt;&lt;br&gt;Sum over repeated indices&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Comic Sans MS;fontSize=18;" parent="17" vertex="1">
+          <mxGeometry x="535" y="890" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="60" value="Lowering Index" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;direction=east;" parent="17" vertex="1">
+          <mxGeometry x="310" y="830" width="155" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="61" value="$$A_\mu = \eta_{\mu\nu}A^\nu$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="60" vertex="1">
+          <mxGeometry x="-87.5" y="45" width="330" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="71" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;" parent="17" source="58" target="60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="75" style="edgeStyle=none;html=1;strokeWidth=2;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="17" source="60" target="73" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="100" style="edgeStyle=none;html=1;fontFamily=Comic Sans MS;fontSize=18;strokeWidth=2;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="17" source="99" target="60" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="56" value="4-Vector" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="322.5" y="700" width="180" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="57" value="$$X^\mu = (t, x, y, z)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="56" vertex="1">
+          <mxGeometry x="-30" y="40" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="79" style="edgeStyle=none;html=1;entryX=0.661;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;" parent="17" source="56" target="60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="77" style="edgeStyle=none;html=1;strokeWidth=2;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="17" source="76" target="56" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="86" value="Klein Gordon Eqn." style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="64.38" y="1130" width="176.25" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="87" value="$$\nabla^2 \phi + \mu^2 \phi = 0$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="86" vertex="1">
+          <mxGeometry x="-85.62" y="40" width="330" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="90" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="17" source="86" target="80" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="570" y="1205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54" value="Harmonic Oscillator Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="17" vertex="1">
+          <mxGeometry x="15" y="980" width="275" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="55" value="$$\mathcal L = \frac{1}{2}[-\partial^\mu\phi \partial_\mu\phi - \mu^2 \phi^2]$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="54" vertex="1">
+          <mxGeometry x="-236.87" y="40" width="730" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="88" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;fontFamily=Comic Sans MS;fontSize=15;fontColor=default;startSize=30;" parent="17" source="54" target="86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="2" target="9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2" value="Independent Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="45" y="110" width="300" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3" value="$$\mathcal L = \mathcal L_x(x, \dot x) + \mathcal L_y(y, \dot y)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="2" vertex="1">
+          <mxGeometry x="-165" y="50" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="15" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="7" target="12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Dependent Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="380" y="110" width="430" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="$$\mathcal L = \frac{1}{2}(\dot x)^2 + \frac{1}{2}(\dot y)^2 - V_x(x) - V_y(y) + xy$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="7" vertex="1">
+          <mxGeometry x="-160" y="50" width="750" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Particle&#39;s Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="40" y="250" width="310" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="$$\mathcal L_{particle} = -m\sqrt{1 - \dot x^2}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="9" vertex="1">
+          <mxGeometry x="-75" y="50" width="460" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="40" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;startSize=30;strokeWidth=2;" parent="1" source="12" target="36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Particle + Field Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="392.5" y="250" width="407.5" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="$$\mathcal L_{particle} = -[mc^2 + g\phi(t, x)]\sqrt{1 - \frac{\dot x^2}{c^2}}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;" parent="12" vertex="1">
+          <mxGeometry x="-152.5" y="50" width="710" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="43" style="edgeStyle=none;html=1;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;startSize=30;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="38" target="36" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="51" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;startSize=30;strokeWidth=2;" parent="1" source="36" target="46" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="Total Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;" parent="1" vertex="1">
+          <mxGeometry x="370" y="400" width="450" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="$$\mathcal L_{total} = [\frac{1}{2}(\frac{\partial \phi}{\partial t})^2 - \frac{1}{2}(\frac{\partial \phi}{\partial x})^2 - g \rho(x)\phi(t, x)]$$" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=0;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;strokeWidth=2;imageAspect=1;recursiveResize=1;expand=1;movable=1;editable=1;rotatable=1;deletable=1;connectable=1;" parent="36" vertex="1">
+          <mxGeometry x="-390" y="40" width="1220" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
