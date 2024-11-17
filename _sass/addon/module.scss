@@ -8,6 +8,7 @@
   color: var(--heading-color);
   font-weight: 400;
   font-family: $font-family-heading;
+  scroll-margin-top: 3.5rem;
 }
 
 %anchor {
@@ -111,6 +112,16 @@
   -webkit-box-orient: vertical;
 }
 
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%text-ellipsis {
+  @include text-ellipsis;
+}
+
 %text-highlight {
   color: var(--text-muted-highlight-color);
   font-weight: 600;
@@ -134,6 +145,12 @@
   }
 }
 
+%btn-color {
+  button i {
+    color: #999999;
+  }
+}
+
 /* ---------- scss mixin --------- */
 
 @mixin mt-mb($value) {
@@ -151,9 +168,14 @@
   padding-bottom: $val;
 }
 
-@mixin pl-pr($val) {
-  padding-left: $val;
-  padding-right: $val;
+@mixin pl-pr($val, $important: false) {
+  @if $important {
+    padding-left: $val !important;
+    padding-right: $val !important;
+  } @else {
+    padding-left: $val;
+    padding-right: $val;
+  }
 }
 
 @mixin placeholder {
