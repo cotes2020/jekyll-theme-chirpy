@@ -2,8 +2,8 @@
 title: Model Uncertainty For Linear Regression
 author: jake
 date: 2023-12-13 12:00:00 +0800
-categories: [statistics, mathematics]
-tags: []
+categories: [Math]
+tags: [statistics, mathematics]
 math: true
 mermaid: false
 ---
