@@ -1,0 +1,83 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram id="JDI_gfJpjxLJ_JYhKjTu" name="Page-1">
+    <mxGraphModel dx="2074" dy="1214" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Lecture 7 - Fundamental Principles of Gauge Invariance" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=auto;rounded=1;startSize=30;labelBackgroundColor=none;swimlaneFillColor=#FFCCCC;gradientColor=none;gradientDirection=south;glass=0;shadow=0;textShadow=0;labelBorderColor=none;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="15" y="10" width="835" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-163" value="Gauge Invariance" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="2">
+          <mxGeometry x="387.5" y="440" width="385" height="170" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-164" value="`\tilde F_{\mu \nu} = \frac{\partial(A_\nu + \frac{\partial S}{\partial X^\nu})}{\partial X^\mu} - \frac{\partial(A_\mu + \frac{\partial S}{\partial X^\mu})}{\partial X^\nu}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-163">
+          <mxGeometry x="10" y="50" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-168" value="`= \frac{\partial A_nu}{\partial X^\mu} - \frac{\partial A_\mu}{\partial X^\nu} = F_{\mu \nu}&amp;nbsp;`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-163">
+          <mxGeometry x="10" y="120" width="840" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-151" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="53" target="5AxUKrXpYOtYbxeD7kyw-149">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-152" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="53" target="5AxUKrXpYOtYbxeD7kyw-144">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Four Principles of Physical Laws&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;1. Action Principle&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;2. Locality&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;3. Lorentz Invariance&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 18px;&quot;&gt;4. Gauge Invariance&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="25" y="60" width="325" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-144" value="Action Principle" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="410" y="67.5" width="290" height="155" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-145" value="$$Action_{particle} = \int dt \mathcal L(X, \dot X)$$" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-144">
+          <mxGeometry x="5" y="40" width="480" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-148" value="$$Action_{field} = \int dt \mathcal L(\phi, \phi_\mu)$$" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-144">
+          <mxGeometry y="105" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-149" value="Lorentz Invariance" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="102.5" y="270" width="170" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-150" value="$$\mathcal L = \text{Scalar}$$" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=0;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=0;pointerEvents=0;expand=0;rotatable=1;imageAspect=0;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-149">
+          <mxGeometry x="12.5" y="40" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-153" value="Translation Symmetry" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="42.5" y="380" width="290" height="190" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-154" value="`\frac{\partial^2 \phi}{\partial t^2} - \frac{\partial \phi}{\partial t^2} = 0`&lt;br&gt;&lt;br&gt;`\frac{\partial^2 (\phi + c)}{\partial t^2} - \frac{\partial (\phi + c)}{\partial t^2} = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-153">
+          <mxGeometry x="20" y="70" width="750" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="5AxUKrXpYOtYbxeD7kyw-157" target="5AxUKrXpYOtYbxeD7kyw-163">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-157" value="Gauge Transformation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="250" width="470" height="170" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-158" value="$$Action_{original} = e\int_a^b A_\mu dX^\mu$$" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-157">
+          <mxGeometry x="5" y="50" width="450" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-159" value="$$Action_{modified} = e\int_a^b A_\mu dX^\mu + e\int_a^b\frac{\partial S}{\partial X^\mu}dX^\mu$$" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="5AxUKrXpYOtYbxeD7kyw-157">
+          <mxGeometry x="5" y="110" width="920" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-160" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="53" target="5AxUKrXpYOtYbxeD7kyw-157">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="490" as="sourcePoint" />
+            <mxPoint x="420" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5AxUKrXpYOtYbxeD7kyw-171" value="&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Comic Sans MS&amp;quot;; font-size: 18px;&quot;&gt;Not possible to write an action principle for the motion of a particle and electromagnetic field without involving a vector potential&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="640" width="590" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

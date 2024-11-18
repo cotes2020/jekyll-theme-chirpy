@@ -34,10 +34,10 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ![alt](assets/drawio/B2L6.drawio.png)
 
 ## Lecture 7 - Fundamental Principles of Gauge Invariance
-![alt](assets/img/custom/B2L7.png)
+![alt](assets/drawio/B2L7.drawio.png)
 
 ## Lecture 8 - Maxwell's Equations
-![alt](assets/img/custom/B2L8.png)
+![alt](assets/drawio/B2L8.drawio.png)
 
 > Following lectures are still under construction 🚧
 {: .prompt-warning } 
