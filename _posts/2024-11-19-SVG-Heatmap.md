@@ -21,7 +21,7 @@ Firstly some notes on the report.
 
 Firstly the data connection uses the format below. I found that this format does allow refreshes in the Power BI service.
 
-```power query
+```
 let AnalyticsQuery =
 let Source = Json.Document(Web.Contents("https://api.loganalytics.io/v1/workspaces/" & #"Azure Log Analytics Workspace Id" & "/query", 
 [Query=[#"query"="
@@ -51,7 +51,7 @@ in AnalyticsQuery
 
 Instead I opted to use the Azure Data Explorer Connector.
 
-```power query
+```
 Source = AzureDataExplorer.Contents(
     "https://ade.loganalytics.io/subcriptions/{subscriptionId}/resourcegroups/providers/microsoft.operationsinsights/workspaces{workspaceName}"
     ,"{databaseName}"
@@ -63,7 +63,7 @@ in Source
 
 ## Log Analytics Query Limits
 
-Log Analytics has some [query limits](https://learn.microsoft.com/en-us/kusto/concepts/query-limits?view=microsoft-fabric) to be aware of; 64 MB and 500,000 rows. This seems to be true even with NoTruncate set. To work around this I applied [incremental refresh](https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-overview), and was able to hydrate daily partitions but not monthly or larger partitions, but you can incrementally collect these daily partitions, which will roll into the larger partitions over time.
+Log Analytics has some [query limits](https://learn.microsoft.com/en-us/kusto/concepts/query-limits?view=microsoft-fabric) to be aware of; 64 MB and 500,000 rows. This seems to be true even with NoTruncate set. To work around this I applied [incremental refresh](https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-overview), and was able to hydrate daily partitions but not monthly or larger partitions, but you can incrementally collect these daily partitions, which will roll into the larger partitions over time. If your data is bigger you have the option to use the export option to move to blob or some other source and connect Power BI to that.
 
 ## xmlaRequestId 00000000-0000-0000-0000-000000000000
 
