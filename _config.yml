@@ -147,6 +147,12 @@ pwa:
     deny_paths:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
+
+# Enable plugins???
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
 paginate: 10
 
 # The base URL of your site
