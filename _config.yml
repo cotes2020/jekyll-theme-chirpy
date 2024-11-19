@@ -148,7 +148,7 @@ pwa:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
 
-# Enable plugins???
+# Enable plugins #내가 추가
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
