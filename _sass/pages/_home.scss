@@ -1,9 +1,13 @@
-/*
-  Style for Homepage
-*/
+@use '../abstracts/variables' as v;
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/placeholders';
 
 #post-list {
   margin-top: 2rem;
+
+  @include bp.lg {
+    margin-top: 2.5rem;
+  }
 
   .card-wrapper {
     &:hover {
@@ -20,7 +24,11 @@
     background: none;
 
     %img-radius {
-      border-radius: $radius-lg $radius-lg 0 0;
+      border-radius: v.$radius-lg v.$radius-lg 0 0;
+
+      @include bp.md {
+        border-radius: 0 v.$radius-lg v.$radius-lg 0;
+      }
     }
 
     .preview-img {
@@ -35,6 +43,10 @@
       height: 100%;
       padding: 1rem;
 
+      @include bp.md {
+        padding: 1.75rem 1.75rem 1.25rem;
+      }
+
       .card-title {
         @extend %text-clip;
 
@@ -46,14 +58,20 @@
         color: var(--text-muted-color) !important;
       }
 
-      .card-text.content {
-        @extend %muted;
+      .card-text {
+        @include bp.md {
+          display: inherit !important;
+        }
 
-        p {
-          @extend %text-clip;
+        &.content {
+          @extend %muted;
 
-          line-height: 1.5;
-          margin: 0;
+          p {
+            @extend %text-clip;
+
+            line-height: 1.5;
+            margin: 0;
+          }
         }
       }
 
@@ -63,6 +81,10 @@
         i {
           &:not(:first-child) {
             margin-left: 1.5rem;
+
+            @include bp.md {
+              margin-left: 1.75rem;
+            }
           }
         }
 
@@ -87,11 +109,28 @@
   font-family: Lato, sans-serif;
   justify-content: space-evenly;
 
+  @include bp.lg {
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+
   a:hover {
     text-decoration: none;
   }
 
   .page-item {
+    @include bp.lt(bp.get(lg)) {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+
+    @include bp.lg {
+      &:not(:last-child) {
+        margin-right: 0.7rem;
+      }
+    }
+
     .page-link {
       color: var(--btn-patinator-text-color);
       padding: 0 0.6rem;
@@ -125,64 +164,10 @@
       }
     }
   } /* .page-item */
-} /* .pagination */
 
-/* Tablet */
-@media all and (min-width: 768px) {
-  %img-radius {
-    border-radius: 0 $radius-lg $radius-lg 0;
-  }
-
-  #post-list {
-    .card {
-      .card-body {
-        padding: 1.75rem 1.75rem 1.25rem 1.75rem;
-
-        .card-text {
-          display: inherit !important;
-        }
-
-        .post-meta {
-          i {
-            &:not(:first-child) {
-              margin-left: 1.75rem;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-/* Hide SideBar and TOC */
-@media all and (max-width: 830px) {
-  .pagination {
-    .page-item {
-      &:not(:first-child):not(:last-child) {
-        display: none;
-      }
-    }
-  }
-}
-
-/* Sidebar is visible */
-@media all and (min-width: 831px) {
-  #post-list {
-    margin-top: 2.5rem;
-  }
-
-  .pagination {
-    font-size: 0.85rem;
-    justify-content: center;
-
-    .page-item {
-      &:not(:last-child) {
-        margin-right: 0.7rem;
-      }
-    }
-
-    .page-index {
+  .page-index {
+    @include bp.lg {
       display: none;
     }
-  } /* .pagination */
+  }
 }
