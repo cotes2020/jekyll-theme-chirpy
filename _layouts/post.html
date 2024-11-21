@@ -45,12 +45,15 @@ script_includes:
           {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
         {% endif %}
 
-        <div class="mt-3 mb-3">
-          <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
-          {%- if page.image.alt -%}
-            <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
-          {%- endif -%}
-        </div>
+        {% if page.image.show_image_in_post != false %}
+          <div class="mt-3 mb-3">
+            <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
+            {%- if page.image.alt -%}
+              <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+            {%- endif -%}
+          </div>
+        {% endif %}
+
       {% endif %}
 
       <div class="d-flex justify-content-between">

@@ -227,6 +227,7 @@ image:
 ```
 
 Note that the [`media_subpath`](#url-prefix) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
+Additionally, `image.show_image_in_post` can be added and set to `false` which will hide the image from being displayed at the top of the post. However, the image will still be displayed on the homepage next to the post and whenever sharing the post in social media. `image.show_image_in_post` is `true` by default.
 
 For simple use, you can also just use `image` to define the path.
 
