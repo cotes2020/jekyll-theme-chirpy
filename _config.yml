@@ -11,6 +11,9 @@ lang: en
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Shanghai
 
+future : true
+published : true
+
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
@@ -26,7 +29,7 @@ description: >- # used by seo meta and the atom feed
 url: "seho-san.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: seho-san # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
