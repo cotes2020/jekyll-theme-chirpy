@@ -1,44 +1,7 @@
-/*
-* The syntax highlight.
-*/
-
-@import 'colors/syntax-light';
-@import 'colors/syntax-dark';
-
-html {
-  @media (prefers-color-scheme: light) {
-    &:not([data-mode]),
-    &[data-mode='light'] {
-      @include light-syntax;
-    }
-
-    &[data-mode='dark'] {
-      @include dark-syntax;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    &:not([data-mode]),
-    &[data-mode='dark'] {
-      @include dark-syntax;
-    }
-
-    &[data-mode='light'] {
-      @include light-syntax;
-    }
-  }
-}
-
-/* -- code snippets -- */
-
-%code-snippet-bg {
-  background-color: var(--highlight-bg-color);
-}
-
-%code-snippet-padding {
-  padding-left: 1rem;
-  padding-right: 1.5rem;
-}
+@use '../abstracts/variables' as v;
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/placeholders';
 
 .highlighter-rouge {
   color: var(--highlighter-rouge-color);
@@ -59,7 +22,7 @@ html {
 
   pre {
     margin-bottom: 0;
-    font-size: $code-font-size;
+    font-size: v.$code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
   }
@@ -101,10 +64,10 @@ code {
   color: var(--code-color);
 
   &.highlighter-rouge {
-    font-size: $code-font-size;
+    font-size: v.$code-font-size;
     padding: 3px 5px;
     word-break: break-word;
-    border-radius: $radius-sm;
+    border-radius: v.$radius-sm;
     background-color: var(--inline-code-bg);
   }
 
@@ -150,9 +113,42 @@ div[class^='language-'] {
   box-shadow: var(--language-border-color) 0 0 0 1px;
 
   .content > & {
-    @include ml-mr(-1rem);
+    @include mx.ml-mr(-1rem);
 
     border-radius: 0;
+
+    @include bp.sm {
+      @include mx.ml-mr(0);
+
+      border-radius: v.$radius-lg;
+    }
+  }
+
+  .code-header {
+    @include bp.sm {
+      @include mx.ml-mr(0);
+
+      $dot-margin: 1rem;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        margin-left: $dot-margin;
+        width: v.$code-dot-size;
+        height: v.$code-dot-size;
+        border-radius: 50%;
+        background-color: var(--code-header-muted-color);
+        box-shadow: (v.$code-dot-size + v.$code-dot-gap) 0 0
+            var(--code-header-muted-color),
+          (v.$code-dot-size + v.$code-dot-gap) * 2 0 0
+            var(--code-header-muted-color);
+      }
+
+      span {
+        // center the text of label
+        margin-left: calc(($dot-margin + v.$code-dot-size) / 2 * -1);
+      }
+    }
   }
 
   .highlight {
@@ -184,18 +180,18 @@ div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: $code-header-height;
+  height: v.$code-header-height;
   margin-left: 0.75rem;
   margin-right: 0.25rem;
 
   /* the label block */
   span {
-    line-height: $code-header-height;
+    line-height: v.$code-header-height;
 
     /* label icon */
     i {
       font-size: 1rem;
-      width: $code-icon-width;
+      width: v.$code-icon-width;
       color: var(--code-header-icon-color);
 
       &.small {
@@ -223,8 +219,8 @@ div {
     @extend %rounded;
 
     border: 1px solid transparent;
-    height: $code-header-height;
-    width: $code-header-height;
+    height: v.$code-header-height;
+    width: v.$code-header-height;
     padding: 0;
     background-color: inherit;
 
@@ -251,41 +247,6 @@ div {
 
       i {
         color: white;
-      }
-    }
-  }
-}
-
-@media all and (min-width: 576px) {
-  div[class^='language-'] {
-    .content > & {
-      @include ml-mr(0);
-
-      border-radius: $radius-lg;
-    }
-
-    .code-header {
-      @include ml-mr(0);
-
-      $dot-margin: 1rem;
-
-      &::before {
-        content: '';
-        display: inline-block;
-        margin-left: $dot-margin;
-        width: $code-dot-size;
-        height: $code-dot-size;
-        border-radius: 50%;
-        background-color: var(--code-header-muted-color);
-        box-shadow: ($code-dot-size + $code-dot-gap) 0 0
-            var(--code-header-muted-color),
-          ($code-dot-size + $code-dot-gap) * 2 0 0
-            var(--code-header-muted-color);
-      }
-
-      span {
-        // center the text of label
-        margin-left: calc(($dot-margin + $code-dot-size) / 2 * -1);
       }
     }
   }

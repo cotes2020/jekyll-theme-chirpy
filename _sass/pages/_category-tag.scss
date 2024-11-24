@@ -1,6 +1,6 @@
-/*
-  Style for page Category and Tag
-*/
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/placeholders';
 
 .dash {
   margin: 0 0.5rem 0.6rem 0.5rem;
@@ -24,6 +24,10 @@
       position: relative;
       top: 0.6rem;
       margin-right: 0.5rem;
+
+      @include bp.lt(bp.get(sm)) {
+        margin: 0 0.5rem;
+      }
     }
 
     /* post's title */
@@ -31,6 +35,10 @@
       @extend %no-bottom-border;
 
       font-size: 1.1rem;
+
+      @include bp.lt(bp.get(sm)) {
+        @include mx.text-ellipsis;
+      }
     }
   }
 }
@@ -51,20 +59,5 @@
     @extend %link-hover;
 
     margin-bottom: -1px; /* Avoid jumping */
-  }
-}
-
-@media all and (max-width: 576px) {
-  #page-category,
-  #page-tag {
-    ul > li {
-      &::before {
-        margin: 0 0.5rem;
-      }
-
-      > a {
-        @include text-ellipsis;
-      }
-    }
   }
 }

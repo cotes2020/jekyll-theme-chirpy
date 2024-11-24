@@ -1,8 +1,7 @@
-/*
-  Style for Tab Categories
-*/
+@use '../abstracts/variables' as v;
+@use '../abstracts/placeholders';
 
-%category-icon-color {
+%-category-icon-color {
   color: gray;
 }
 
@@ -16,7 +15,7 @@
   }
 
   .card-header {
-    $radius: calc($radius-lg - 1px);
+    $radius: calc(v.$radius-lg - 1px);
 
     padding: 0.75rem;
     border-radius: $radius;
@@ -29,7 +28,7 @@
   }
 
   i {
-    @extend %category-icon-color;
+    @extend %-category-icon-color;
 
     font-size: 86%; /* fontawesome icons */
   }

@@ -1,0 +1,80 @@
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin mt-mb($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin ml-mr($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin pt-pb($val) {
+  padding-top: $val;
+  padding-bottom: $val;
+}
+
+@mixin pl-pr($val, $important: false) {
+  @if $important {
+    padding-left: $val !important;
+    padding-right: $val !important;
+  } @else {
+    padding-left: $val;
+    padding-right: $val;
+  }
+}
+
+@mixin placeholder {
+  color: var(--text-muted-color) !important;
+}
+
+@mixin placeholder-focus {
+  opacity: 0.6;
+}
+
+@mixin label($font-size: 1rem, $font-weight: 600, $color: var(--label-color)) {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+@mixin align-center {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin prompt($type, $fa-content, $fa-style: 'solid', $rotate: 0) {
+  &.prompt-#{$type} {
+    background-color: var(--prompt-#{$type}-bg);
+
+    &::before {
+      content: $fa-content;
+      color: var(--prompt-#{$type}-icon-color);
+      font: var(--fa-font-#{$fa-style});
+
+      @if $rotate != 0 {
+        transform: rotate(#{$rotate}deg);
+      }
+    }
+  }
+}
+
+@mixin slide($append: null) {
+  $basic: transform 0.4s ease;
+
+  @if $append {
+    transition: $basic, $append;
+  } @else {
+    transition: $basic;
+  }
+}
+
+@mixin max-w-100 {
+  max-width: 100%;
+}
