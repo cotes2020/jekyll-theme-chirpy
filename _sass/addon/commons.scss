@@ -221,6 +221,8 @@ i {
     margin: 0 0.35rem 0.5rem 0;
 
     &:hover {
+      border-color: #228b22 !important;
+      background-color: #228b22;
       transition: all 0.3s ease-in;
     }
   }

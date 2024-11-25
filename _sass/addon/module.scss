@@ -45,8 +45,8 @@
 }
 
 %link-hover {
-  color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
+  color: #228b22 !important;
+  //border-bottom: 1px solid #228b22;
   text-decoration: none;
 }
 
@@ -55,7 +55,7 @@
 }
 
 %link-underline {
-  border-bottom: 1px solid var(--link-underline-color);
+  // border-bottom: 1px solid var(--link-underline-color);
 }
 
 %clickable-transition {
