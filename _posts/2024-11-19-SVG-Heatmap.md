@@ -11,7 +11,7 @@ image:
   alt: SVG Heatmap
 ---
 
-I have been playing with the [Fabric Log Analytics for Analysis Services Engine report template](https://github.com/microsoft/PowerBI-LogAnalytics-Template-Reports/blob/main/FabricASEngineAnalytics/README.md) in order to get some insights in query and refresh performance. The data is derived from Analysis Services engine trace events that are collected as part of the [Power BI Log Analytics integration](https://learn.microsoft.com/en-us/power-bi/transform-model/log-analytics/desktop-log-analytics-overview). The template provides a a data model and some template visuals to help you understand and manage your Power BI environment.
+I have been playing with the [Fabric Log Analytics for Analysis Services Engine report template](https://github.com/microsoft/PowerBI-LogAnalytics-Template-Reports/blob/main/FabricASEngineAnalytics/README.md) in order to get some insights in query and refresh performance. The data is derived from Analysis Services engine trace events that are collected as part of the [Power BI Log Analytics integration](https://learn.microsoft.com/en-us/power-bi/transform-model/log-analytics/desktop-log-analytics-overview). The template provides a a data model and some template visuals to help you understand and manage your Power BI environment. In order to help understand the distribution of data I developed a heatmap SVG.
 
 # Fabric Log Analytics for Analysis Services Engine report template
 
@@ -19,7 +19,7 @@ Firstly some notes on the report.
 
 ## Data Connection
 
-Firstly the data connection uses the format below. I found that this format does allow refreshes in the Power BI service.
+Firstly the data connection uses the format below. I found that this format does not allow refreshes in the Power BI service.
 
 ```
 let AnalyticsQuery =
@@ -63,7 +63,7 @@ in Source
 
 ## Log Analytics Query Limits
 
-Log Analytics has some [query limits](https://learn.microsoft.com/en-us/kusto/concepts/query-limits?view=microsoft-fabric) to be aware of; 64 MB and 500,000 rows. This seems to be true even with NoTruncate set. To work around this I applied [incremental refresh](https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-overview), and was able to hydrate daily partitions but not monthly or larger partitions, but you can incrementally collect these daily partitions, which will roll into the larger partitions over time. If your data is bigger you have the option to use the export option to move to blob or some other source and connect Power BI to that.
+Log Analytics has some [query limits](https://learn.microsoft.com/en-us/kusto/concepts/query-limits?view=microsoft-fabric) to be aware of; 64 MB and 500,000 rows. This seems to be true even with NoTruncate set. To work around this I applied [incremental refresh](https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-overview), and was able to hydrate daily partitions but not monthly or larger partitions.  You can incrementally collect these daily partitions, which will roll into the larger partitions over time. If your data is bigger you have the option to use the export option to move to blob or some other stoarage, and connect that to Power BI.
 
 ## xmlaRequestId 00000000-0000-0000-0000-000000000000
 
