@@ -13,21 +13,21 @@ image:
 
 In my [previous post](https://evaluationcontext.github.io/posts/SVG-Heatmap/) I created a heat map SVG visual to visualize data distributions. In that post I mentioned Violin plot, this post describes how to create one.
 
-# Violin Plots
+## Violin Plots
 
 Firstly, what are Violin Plots? Violin plot show the distribution of data points, with the width of the curve estimating the density of points in a region. This allows the visualization multimodal data (more than one peak). These tend to be accompanied with a Box Plot to provide addition information and context. The curves of the Violin Plot are calculated using Kernel Density Estimation (KDE).
 
 ![Violin Plot](/assets/img/0011-SVGViolin/Violin_plot.gif)
 *[Wikipedia](https://en.wikipedia.org/wiki/Violin_plot)*
 
-# Kernel Density Estimation (KDE)
+## Kernel Density Estimation (KDE)
 
 In KDE data points are converted into kernels, where each point is represented by a distribution (normal, uniform, gaussian etc.). In the case of the normal distribution each point represents a mean (center of the curve), and the standard deviation can be used to expand the width of the distribution, allowing for smoothing. The data is sampled at uniform points across the range of the data, and the contribution each point is summed. I found this [video](https://www.youtube.com/watch?v=t1PEhjyzxLA) to provide a good description.
 
 ![Kernel Density Estimation (KDE)](/assets/img/0011-SVGViolin/KDE.png)
 *[Wikipedia](https://en.wikipedia.org/wiki/Kernel_density_estimation)*
 
-# Paths and Bézier Curves
+## Paths and Bézier Curves
 
 Once we have calculated our KDE, we need to plot the curves. This is done using [SVG paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths), using [Bézier Curves](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#b%C3%A9zier_curves). Bézier Curves are defined by start and end point, plus 1 or more control points, which act like gravity pulling the curve towards them. Quadratic Bézier Curves have a single control point, Cubic have two, and so on. 
 
