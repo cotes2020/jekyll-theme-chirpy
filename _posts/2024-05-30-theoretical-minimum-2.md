@@ -42,5 +42,8 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ## Lecture 9 - Physical Consequences of Maxwell's Equations
 ![alt](assets/drawio/B2L9.drawio.png)
 
+## Lecture 10 - Maxwell from Lagrange
+![alt](assets/drawio/B2L10.drawio.png)
+
 > Following lectures are still under construction 🚧
 {: .prompt-warning } 

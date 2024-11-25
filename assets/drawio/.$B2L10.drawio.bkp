@@ -1,0 +1,228 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram id="JDI_gfJpjxLJ_JYhKjTu" name="Page-1">
+    <mxGraphModel dx="2070" dy="1463" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Lecture 10 - Maxwell from Lagrange" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=auto;rounded=1;startSize=30;labelBackgroundColor=none;swimlaneFillColor=#FFCCCC;gradientColor=none;gradientDirection=south;glass=0;shadow=0;textShadow=0;labelBorderColor=none;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="8" y="10" width="812" height="1330" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-82" value="Maxwell Lagrangian (w/ sources)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="2">
+          <mxGeometry x="21.340000000000003" y="1110" width="371.33" height="210" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-84" value="Where `J^\mu = \rho, j^m`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-82">
+          <mxGeometry x="11.329999999999998" y="110" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-91" value="&lt;span style=&quot;text-align: center;&quot;&gt;Gauge Invariant due to&amp;nbsp;&lt;/span&gt;`\frac{\partial \rho}{\partial t} + \vec \nabla \cdot \vec j = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-82">
+          <mxGeometry x="11.330000000000013" y="160" width="760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-83" value="`\mathcal L = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} - J^\muA_\mu(x)`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-82">
+          <mxGeometry x="11.329999999999998" y="50" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-86" value="Maxwell Euler Lagrange (w/ sources)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="2">
+          <mxGeometry x="431" y="1090" width="340" height="230" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-87" value="4-vector `\frac{\partial F^{\mu\nu}}{\partial X^{\nu}} = J^\mu`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-86">
+          <mxGeometry x="10" y="50" width="570" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-94" value="3-vector `\vec \nabla \cdot \vec E = \rho`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-86">
+          <mxGeometry x="10" y="110" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-96" value="`c^2 \vec \nabla \times \vec B - \frac{\partial}{\partial t}\vec E = j`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-86">
+          <mxGeometry x="10" y="170" width="610" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-88" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="2" source="6aW9Ky6iXuuB0ks2xfcd-82" target="6aW9Ky6iXuuB0ks2xfcd-86">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="670.67" y="960" as="sourcePoint" />
+            <mxPoint x="720.67" y="910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-70" value="Maxwell Lagrangian (w/o sources)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="2">
+          <mxGeometry x="72" y="930" width="330" height="140" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-71" value="`\mathcal L = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} = \frac{1}{2}(E^2 - B^2)`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-70">
+          <mxGeometry x="5" y="50" width="660" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-80" value="Where `J^\mu = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-70">
+          <mxGeometry x="5" y="100" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-101" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="2" source="6aW9Ky6iXuuB0ks2xfcd-70" target="6aW9Ky6iXuuB0ks2xfcd-82">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="252" y="800" as="sourcePoint" />
+            <mxPoint x="302" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-66" value="Electromagnetic Plane Wave" style="group;fillColor=#D5E8D4;strokeColor=#82b366;fontFamily=Comic Sans MS;labelBorderColor=default;connectable=0;sketch=1;curveFitting=1;jiggle=2;rounded=1;container=0;fontSize=12;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="508.67" y="490" width="300" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="vg88usDtNtBHZfyLmnjd-2" value="Maxwell Equations (4-vector)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="20" y="60" width="290" height="140" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vg88usDtNtBHZfyLmnjd-3" value="`\partial_\mu F_{\nu\sigma} + \partial_\nu F_{\sigma \mu} + \partial_\sigma F_{\mu \nu} = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="vg88usDtNtBHZfyLmnjd-2" vertex="1">
+          <mxGeometry x="5" y="50" width="830" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-2" value="`\partial_\nu F^{\mu \nu} = J^\mu`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="vg88usDtNtBHZfyLmnjd-2">
+          <mxGeometry x="5" y="95" width="330" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-3" value="Plane Wave (in z direction)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="230" width="390" height="210" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-4" value="`F = C \sin {kz - \omega t}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-3">
+          <mxGeometry x="5" y="50" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-6" value="`\lambda = \frac{2\pi}{k}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-3">
+          <mxGeometry x="220" y="50" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-7" value="`E_i(t, z) = \epsilon_i \sin{kz - wt}, \quad i = \{x, y, z\}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-3">
+          <mxGeometry x="5" y="110" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-8" value="`B_i(t, z) = \beta_i \sin{kz - wt}, \quad i = \{x, y, z\}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-3">
+          <mxGeometry x="5" y="160" width="480" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-9" value="Plane Wave (with no sources)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="60" width="330" height="400" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-14" value="`\vec \nabla \cdot \vec E = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;textShadow=0;fontColor=#FF0000;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="5" y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-15" value="`\vec \nabla \cdot \vec B = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;textShadow=0;fontColor=#FF0000;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="160" y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-16" value="&amp;amp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;fontSize=18;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="109" y="41" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-17" value="`\implies \epsilon_z = \beta_z = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="5" y="99" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-18" value="`\vec \nabla \cdot \vec E + \frac{\partial \vec B}{\partial t} = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;fontColor=#FF0000;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="5" y="160" width="580" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-19" value="`\implies \beta_y = \frac{k}{\omega}\epsilon_x`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="5" y="220" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-22" value="`\frac{1}{c^2}\frac{\partial E_x}{\partial t} = -\frac{\partial B_y}{\partial z}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;fontColor=#FF0000;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="5" y="290" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-23" value="`\implies \sin{kz - \omega t} = \sin{k(z - ct}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry x="5" y="350" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-52" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="109.58999999999996" y="560" as="sourcePoint" />
+            <mxPoint x="108.67" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-20" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="6aW9Ky6iXuuB0ks2xfcd-3" target="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="380" as="sourcePoint" />
+            <mxPoint x="590" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-21" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="vg88usDtNtBHZfyLmnjd-2" target="6aW9Ky6iXuuB0ks2xfcd-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="279" as="sourcePoint" />
+            <mxPoint x="500" y="252" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-24" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Wave Summary&lt;/b&gt;&lt;br&gt;- Propagate along single axis at speed of light&lt;br&gt;- E&amp;amp;M waves are transverse (lie in plane perpendicular to propagation axis)&lt;br&gt;- E&amp;amp;M fields are perpendicular to each other&lt;br&gt;- Ratio of electric to magnetic is `\frac{\beta_y}{\epsilon_x} = \frac{1}{c}`&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="20" y="480" width="460" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-27" value="" style="shape=stencil(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);fillColor=#ffe6cc;strokeColor=#d79b00;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="589.5883673469385" y="526.9795918367346" width="180.40816326530611" height="212.24489795918365" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-29" value="" style="shape=stencil(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);fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;perimeterSpacing=5;fillStyle=auto;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="556.9353061224489" y="606.1632653061224" width="235.91836734693877" height="54.69387755102041" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-25" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;exitX=0.149;exitY=0.291;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="6aW9Ky6iXuuB0ks2xfcd-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="586.67" y="623" as="sourcePoint" />
+            <mxPoint x="778.67" y="663" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-46" value="`z`" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;connectable=0;" vertex="1" parent="1">
+          <mxGeometry x="770" y="640" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-47" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" target="6aW9Ky6iXuuB0ks2xfcd-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="589.5899999999999" y="620" as="sourcePoint" />
+            <mxPoint x="809.59" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-49" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="589.5899999999999" y="620" as="sourcePoint" />
+            <mxPoint x="518.67" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-50" value="`y`" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="508.67" y="630" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-53" value="`x`" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="548.67" y="520" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-69" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Principles of Physics (Review)&lt;/b&gt;&lt;br&gt;- Locality `Action = \int d^4 x \mathcal L(\phi, \phi_{,\mu})`&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;- Scalar Lagrangian `\mathcal L = -\frac{1}{2} \phi_{,\mu}\phi^{,\mu} - U(\phi)`&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;- Gauge Invariance `A_\mu \implies A_mu + \frac{\partial S}{\partial X^\mu}`&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="20" y="680" width="460" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-73" value="Maxwell Euler Lagrange (w/o sources)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="935" width="340" height="110" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-74" value="`\frac{\partial}{\partial X^\nu}\frac{\partial L}{\partial A_{\mu, \nu}} = \frac{\partial F^{\mu\nu}}{\partial X^{\nu}} = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-73">
+          <mxGeometry x="5" y="50" width="1060" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-75" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="6aW9Ky6iXuuB0ks2xfcd-69" target="6aW9Ky6iXuuB0ks2xfcd-70">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="760" as="sourcePoint" />
+            <mxPoint x="730" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-76" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="6aW9Ky6iXuuB0ks2xfcd-70" target="6aW9Ky6iXuuB0ks2xfcd-73">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="770" as="sourcePoint" />
+            <mxPoint x="730" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-77" value="Field Tensor (Review)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="548.6700000000001" y="780" width="221.33" height="110" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-78" value="`F_{\mu\nu} = A_{\nu, \mu} - A_{\mu, \nu}`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="6aW9Ky6iXuuB0ks2xfcd-77">
+          <mxGeometry x="5" y="50" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-79" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="6aW9Ky6iXuuB0ks2xfcd-77" target="6aW9Ky6iXuuB0ks2xfcd-70">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="750" as="sourcePoint" />
+            <mxPoint x="650" y="700" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6aW9Ky6iXuuB0ks2xfcd-99" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="6aW9Ky6iXuuB0ks2xfcd-69" target="6aW9Ky6iXuuB0ks2xfcd-82">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="880" as="sourcePoint" />
+            <mxPoint x="370" y="830" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="40" y="930" />
+              <mxPoint x="40" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
