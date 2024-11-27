@@ -6,7 +6,6 @@
   top: 2rem;
   transition: top 0.2s ease-in-out;
   margin-top: 3rem;
-  margin-bottom: 4rem;
 
   &:only-child {
     position: -webkit-sticky;
@@ -14,11 +13,12 @@
   }
 
   > section {
-    padding-left: 1rem;
-    border-left: 1px solid var(--main-border-color);
+    @extend %panel-border;
 
-    &:not(:last-child) {
-      margin-bottom: 4rem;
+    padding-left: 1rem;
+
+    &:not(:first-child) {
+      margin-top: 4rem;
     }
   }
 
@@ -46,6 +46,10 @@
     &:hover {
       transition: all 0.3s ease-in;
     }
+  }
+
+  > :last-child {
+    margin-bottom: 4rem;
   }
 
   @include bp.lt(bp.get(xl)) {

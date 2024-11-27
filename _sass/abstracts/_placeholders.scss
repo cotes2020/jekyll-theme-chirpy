@@ -154,3 +154,7 @@
 %max-w-100 {
   max-width: 100%;
 }
+
+%panel-border {
+  border-left: 1px solid var(--main-border-color);
+}
