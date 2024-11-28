@@ -1,21 +1,8 @@
 <!-- https://giscus.app/ -->
-<script type="text/javascript">
+<script>
   (function () {
-    const origin = 'https://giscus.app';
-    const lightTheme = 'light';
-    const darkTheme = 'dark_dimmed';
-
-    let initTheme = lightTheme;
-    const html = document.documentElement;
-
-    if (
-      (html.hasAttribute('data-mode') &&
-        html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = darkTheme;
-    }
+    const themeMapper = Theme.getThemeMapper('light', 'dark_dimmed');
+    const initTheme = themeMapper[Theme.visualState];
 
     let lang = '{{ site.comments.giscus.lang | default: lang }}';
     {%- comment -%} https://github.com/giscus/giscus/tree/main/locales {%- endcomment -%}
@@ -41,30 +28,27 @@
       async: ''
     };
 
-    let giscusScript = document.createElement('script');
+    let giscusNode = document.createElement('script');
     Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value)
+      giscusNode.setAttribute(key, value)
     );
-    document.getElementById('tail-wrapper').appendChild(giscusScript);
+
+    const $footer = document.querySelector('footer');
+    $footer.insertAdjacentElement("beforebegin", giscusNode);
 
     addEventListener('message', (event) => {
-      if (
-        event.source === window &&
-        event.data &&
-        event.data.direction === ModeToggle.ID
-      ) {
-        {%- comment -%} global theme mode changed {%- endcomment -%}
-        const mode = event.data.message;
-        const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
+      if (event.source === window && event.data && event.data.id === Theme.ID) {
+        const newTheme = themeMapper[Theme.visualState];
 
         const message = {
           setConfig: {
-            theme: theme
+            theme: newTheme
           }
         };
 
-        const giscus = document.getElementsByClassName('giscus-frame')[0].contentWindow;
-        giscus.postMessage({ giscus: message }, origin);
+        const giscus =
+          document.getElementsByClassName('giscus-frame')[0].contentWindow;
+        giscus.postMessage({ giscus: message }, 'https://giscus.app');
       }
     });
   })();

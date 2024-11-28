@@ -15,7 +15,7 @@
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "scripts": {
     "build": "concurrently npm:build:*",
-    "build:css": "purgecss -c purgecss.config.js",
+    "build:css": "node purgecss.js",
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
     "lint:scss": "stylelint _sass/**/*.scss",
@@ -28,24 +28,25 @@
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/plugin-transform-class-properties": "^7.25.4",
-    "@babel/preset-env": "^7.25.4",
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "@babel/plugin-transform-private-methods": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "concurrently": "^9.0.1",
+    "concurrently": "^9.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "husky": "^9.1.6",
-    "purgecss": "^6.0.0",
-    "rollup": "^4.21.3",
-    "semantic-release": "^24.1.1",
-    "stylelint": "^16.9.0",
+    "husky": "^9.1.7",
+    "purgecss": "^7.0.2",
+    "rollup": "^4.27.4",
+    "semantic-release": "^24.2.0",
+    "stylelint": "^16.10.0",
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "prettier": {
@@ -65,41 +66,6 @@
         0,
         "always"
       ]
-    }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard-scss",
-    "rules": {
-      "no-descending-specificity": null,
-      "shorthand-property-no-redundant-values": null,
-      "at-rule-no-vendor-prefix": null,
-      "property-no-vendor-prefix": null,
-      "selector-no-vendor-prefix": null,
-      "value-no-vendor-prefix": null,
-      "color-function-notation": "legacy",
-      "alpha-value-notation": "number",
-      "selector-not-notation": "simple",
-      "color-hex-length": "long",
-      "declaration-block-single-line-max-declarations": 3,
-      "scss/operator-no-newline-after": null,
-      "rule-empty-line-before": [
-        "always",
-        {
-          "ignore": [
-            "after-comment",
-            "first-nested"
-          ]
-        }
-      ],
-      "value-keyword-case": [
-        "lower",
-        {
-          "ignoreProperties": [
-            "/^\\$/"
-          ]
-        }
-      ],
-      "media-feature-range-notation": "prefix"
     }
   },
   "release": {

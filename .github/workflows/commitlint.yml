@@ -1,5 +1,11 @@
 name: Lint Commit Messages
-on: pull_request
+
+on:
+  push:
+    branches:
+      - master
+      - "hotfix/*"
+  pull_request:
 
 jobs:
   commitlint:

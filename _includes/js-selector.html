@@ -62,12 +62,12 @@
 
 {% capture script %}/assets/js/dist/{{ js }}.min.js{% endcapture %}
 
-<script src="{{ script | relative_url }}"></script>
+<script defer src="{{ script | relative_url }}"></script>
 
 {% if page.math %}
   <!-- MathJax -->
-  <script src="{{ '/assets/js/data/mathjax.js' | relative_url }}"></script>
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script async src="{{ '/assets/js/data/mathjax.js' | relative_url }}"></script>
+  <script async src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
 {% endif %}
 
@@ -83,27 +83,4 @@
         {% endif %}
     {% endcase %}
   {% endif %}
-{% endif %}
-
-{% if page.mermaid %}
-  {% include mermaid.html %}
-{% endif %}
-
-{% if jekyll.environment == 'production' %}
-  <!-- PWA -->
-  {% if site.pwa.enabled %}
-    <script
-      defer
-      src="{{ 'app.min.js' | relative_url }}?baseurl={{ site.baseurl | default: '' }}&register={{ site.pwa.cache.enabled }}"
-    ></script>
-  {% endif %}
-
-  <!-- Web Analytics -->
-  {% for analytics in site.analytics %}
-    {% capture str %}{{ analytics }}{% endcapture %}
-    {% assign type = str | split: '{' | first %}
-    {% if site.analytics[type].id and site.analytics[type].id != empty %}
-      {% include analytics/{{ type }}.html %}
-    {% endif %}
-  {% endfor %}
 {% endif %}

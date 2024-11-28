@@ -1,17 +1,25 @@
-name: "CI"
+name: CI
+
 on:
   push:
     branches:
-      - "master"
-      - "hotfix/**"
+      - master
+      - "hotfix/*"
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
-      - ".gitignore"
+      - .gitignore
       - "docs/**"
-      - "README.md"
-      - "LICENSE"
+      - README.md
+      - LICENSE
   pull_request:
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/ci.yml"
+      - .gitignore
+      - "docs/**"
+      - README.md
+      - LICENSE
 
 jobs:
   build:
