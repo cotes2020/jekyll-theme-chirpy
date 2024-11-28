@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.2.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.1.1...v7.2.0) (2024-11-28)
+
+### Features
+
+* show toc on mobile screens ([#1964](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1964)) ([8a064a5](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8a064a5e5a95cd22aa654f7c80da09d107262508))
+* support vertical scrolling for toc in desktop mode ([#2064](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2064)) ([5265b03](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5265b039741555943f9a6f0451287aefb6810f28))
+
+### Bug Fixes
+
+* pagination error when pinned posts exceed the page size ([#1965](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1965)) ([93f616b](https://github.com/cotes2020/jekyll-theme-chirpy/commit/93f616b25d7ed6c4f090c50c8663f8c1f59947f4))
+
+### Improvements
+
+* modular sass architecture ([#2052](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2052)) ([35c794c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/35c794cf5896565430389f35c660b88a93cebb17))
+* speed up page rendering and jekyll build process ([#2034](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2034)) ([65f960c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/65f960c31a734b5306a8b919040c3aae9b783efd))
+
 ## [7.1.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.1.0...v7.1.1) (2024-09-23)
 
 ### Bug Fixes
