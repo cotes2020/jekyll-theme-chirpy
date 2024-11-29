@@ -9,24 +9,24 @@ theme: jekyll-theme-chirpy
 lang: ko-KR
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone:
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: 훈의 개발일지👨‍💻 # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: Welcome to my blog👋 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  초보 개발자 서동훈입니다.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://hoondongseo.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: hoondongseo # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
@@ -34,14 +34,14 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Donghoon Seo
+  email: naosdh@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
+    # - https://twitter.com/username # change to your Twitter homepage
+    - https://github.com/hoondongseo # change to your GitHub homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+    - https://www.instagram.com/sdnghn
     # - https://www.linkedin.com/in/username
 
 # Site Verification Settings
@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/img/avatar.JPEG
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -192,6 +192,8 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+      typora-root-url: ../
+date_format: "%Y-%m-%d"
 
 sass:
   style: compressed
