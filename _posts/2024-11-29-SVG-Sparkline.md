@@ -7,8 +7,8 @@ categories: [SVG, DAX]
 tags: [svg, dax, sparklines]
 pin: false
 image:
-  path: /assets/img/0011-SVGViolin/SVGViolin_Small.png
-  alt: SVG Violin Plot
+  path: /assets/img/0012-SVGsparkline/Visual.png
+  alt: Barcode SVG Matrix
 ---
 
 In this blog post I walk through by discovery of the implementation of Power BI sparklines, and what can be learned in aid of optimizing SVG measures.
