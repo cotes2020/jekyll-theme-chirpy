@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://xmoonanx.github.io/sitemap.xml
