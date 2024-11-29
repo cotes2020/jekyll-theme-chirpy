@@ -14,7 +14,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 훈의 개발일지👨‍💻 # the main title
+title: 훈의 개발일지 # the main title
 
 tagline: Welcome to my blog👋 # it will display as the subtitle
 
