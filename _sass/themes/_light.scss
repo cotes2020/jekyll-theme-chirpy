@@ -33,16 +33,16 @@
   );
 
   /* Sidebar */
-  --site-title-color: rgb(113, 113, 113);
-  --site-subtitle-color: #717171;
-  --sidebar-bg: #f6f8fa;
-  --sidebar-border-color: #efefef;
-  --sidebar-muted-color: #545454;
-  --sidebar-active-color: #1d1d1d;
-  --sidebar-hover-bg: rgb(223, 233, 241, 0.64);
-  --sidebar-btn-bg: white;
-  --sidebar-btn-color: #8e8e8e;
-  --avatar-border-color: white;
+  --site-title-color: #ffffff;
+  --site-subtitle-color: #ffffff;
+  --sidebar-bg: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  --sidebar-border-color: rgba(255, 255, 255, 0.2);
+  --sidebar-muted-color: #f0f0f0;
+  --sidebar-active-color: #2d2d2d;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.1)
+  --sidebar-btn-bg: rgba(255, 255, 255, 0.2);
+  --sidebar-btn-color: #ffffff;
+  --avatar-border-color: rgba(255, 255, 255, 0.5);
 
   /* Topbar */
   --topbar-bg: rgb(255, 255, 255, 0.7);
