@@ -6,7 +6,7 @@
   "description": "Improved table navigation, formatting, manipulation, and formulas",
   "isDesktopOnly": false,
   "minAppVersion": "1.0.0",
-  "version": "0.21.0",
+  "version": "0.22.1",
   "js": "main.js",
   "fundingUrl": {
     "Github Sponsor": "https://github.com/sponsors/tgrosinger",
