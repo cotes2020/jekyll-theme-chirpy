@@ -11,19 +11,19 @@ image:
   alt: Barcode SVG Matrix
 ---
 
-In this blog post I walk through by discovery of the implementation of Power BI sparklines, and what can be learned in aid of optimizing SVG measures.
+In this blog post I walk through my discovery of the implementation of Power BI sparklines, and what can be learned in aid of optimizing SVG measures.
 
 ## Discovery
 
-I expanding on the [Fabric Log Analytics for Analysis Services Engine report template](https://github.com/microsoft/PowerBI-LogAnalytics-Template-Reports/blob/main/FabricASEngineAnalytics/README.md), by creating a barcode SVG visual to visualize refresh successes and failures. 
+I was expanding on the [Fabric Log Analytics for Analysis Services Engine report template](https://github.com/microsoft/PowerBI-LogAnalytics-Template-Reports/blob/main/FabricASEngineAnalytics/README.md), by creating a barcode SVG visual to visualize refresh successes and failures. 
 
 ![Matrix](/assets/img/0012-SVGsparkline/Visual.png)
 
-The measure was working fine locally so I pushed it to the service to a fully hydrated model, and the performance was terrible. So fired up DAX studio to perform some optimization, and ran the visual's DAX query (see below). By chance the visual had a couple of sparklines. I was surprised to see that firstly, the sparklines were measures defined in the query, and they produced a output not too different from a SVG, with x,y coordinates and low and high values for x and y axes. Both the approach and output were similar to what I needed and the performance seemed good. SQLBIs Alberto has a [video](https://www.sqlbi.com/tv/performance-of-sparklines-dax-in-power-bi-unplugged/) exploring sparkline measures and they seem close to optimal so I decided to steal and adjust the code for my purposes.
+The measure was working fine locally so I pushed it to the service to a fully hydrated model, and the performance was terrible. So fired up DAX studio to perform some optimization, and ran the visual's DAX query (see below). By chance the visual had a couple of sparklines. I was surprised to see that the sparklines were measures defined in the query, and produced a output similar to that of a SVG, with list x,y coordinates. I investigated further and found that SQL BIs Alberto has a [video](https://www.sqlbi.com/tv/performance-of-sparklines-dax-in-power-bi-unplugged/) exploring sparkline measures and they seem close to optimal, so I decided to steal and adjust the code for my purposes.
 
 ```dax
 DEFINE MEASURE 'Progress Report'[Sparkline] =
-/* USER DAX BEGIN */
+// USER DAX BEGIN
 VAR __Categories =
     VALUES('DateTimes'[Date])
 VAR __Data =
@@ -121,9 +121,9 @@ RETURN
                 CONCATENATE(",""md"":", FORMAT(__Min_Interval, "General Number", "en-US"))
             ) &
             "}")
-        RETURN IF(ISEMPTY(__Non_Blank_Sync_Data), BLANK(), __Result
+        RETURN IF( ISEMPTY(__Non_Blank_Sync_Data), BLANK(), __Result )
     )
-/* USER DAX END /)
+// USER DAX END
 
 VAR __DS0Core =
     SUMMARIZECOLUMNS(
@@ -142,7 +142,7 @@ ORDER BY
 
 ## Creating the measure
 
-There seem to be a couple of forms of the sparkline measures, the one above that uses a ScalarKey and CROSSJOIN, and another that uses a GroupIndex and SUBSTITUTEWITHINDEX. The latter is used when more than one value is used for the categories on the Y axis if the sort order of a field depends on another field. I used this second form, resulting in the following:
+There seem to be a couple of forms of the sparkline measures, the one above that uses ScalarKey and CROSSJOIN, and another that uses a GroupIndex and SUBSTITUTEWITHINDEX. The latter is used when more than one value is used for the categories on the Y axis if the sort order of a field depends on another field. I used this second one, resulting in the following:
 
 ```dax
 Refresh SVG Barcode =
@@ -191,8 +191,8 @@ VAR __Lines =
         VAR _Hex =
             SWITCH(
                 [Value]
-                ,"Started","#FFB900"                             // Orange
-                ,"Failed", "#DD6B7F"                             // Red 
+                ,"Started","#FFB900"       // Orange
+                ,"Failed", "#DD6B7F"       // Red 
                 ,"Succeeded", "#37A794"    // Green
                 ,"gray"
             )
@@ -215,10 +215,10 @@ All that was left was to test performance, you can see my first attempt was not 
 
 ![Initial Measure](/assets/img/0012-SVGsparkline/First%20attempt.png)
 
-The version using the sparkline background had fantastic performance.
+The version using the sparkline backbone had fantastic performance.
 
 ![Sparkline Backbone](/assets/img/0012-SVGsparkline/sparkline%20backbone.png)
 
 ## Conclusion
 
-This backbone query used by sparklines, is well designed and can and should be used for the generation of SVG visuals.
+This backbone query used by sparklines is well designed and can and should be used for the generation of SVG visuals.
