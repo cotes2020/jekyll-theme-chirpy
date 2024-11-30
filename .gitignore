@@ -27,3 +27,11 @@ package-lock.json
 /.obsidian/app.json
 /.obsidian/core-plugins-migration.json
 /.obsidian/core-plugins.json
+_posts/manual/Welcome.md
+.DS_Store
+_posts/manual/.obsidian/app.json
+_posts/manual/.obsidian/appearance.json
+_posts/manual/.obsidian/core-plugins-migration.json
+_posts/manual/.obsidian/core-plugins.json
+_posts/manual/.obsidian/graph.json
+_posts/manual/.obsidian/workspace.json
