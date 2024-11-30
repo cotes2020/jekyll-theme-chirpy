@@ -1,6 +1,7 @@
 const ATTR_DISPLAY = 'sidebar-display';
 const $sidebar = document.getElementById('sidebar');
 const $trigger = document.getElementById('sidebar-trigger');
+const $icon = $trigger.querySelector('i');
 const $mask = document.getElementById('mask');
 
 class SidebarUtil {
@@ -10,6 +11,8 @@ class SidebarUtil {
     this.#isExpanded = !this.#isExpanded;
     document.body.toggleAttribute(ATTR_DISPLAY, this.#isExpanded);
     $sidebar.classList.toggle('z-2', this.#isExpanded);
+    $icon.classList.toggle('fa-bars', !this.#isExpanded);
+    $icon.classList.toggle('fa-close', this.#isExpanded);
     $mask.classList.toggle('d-none', !this.#isExpanded);
   }
 }
