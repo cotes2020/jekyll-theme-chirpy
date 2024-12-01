@@ -58,7 +58,8 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     width: 6.5rem;
     height: 6.5rem;
     overflow: hidden;
-    box-shadow: var(--avatar-border-color) 0 0 0 2px;
+    border-radius: 20%;
+    /* box-shadow: var(--avatar-border-color) 0 0 0 2px; */
     transform: translateZ(0); /* fixed the zoom in Safari */
 
     @include bp.sm {
@@ -68,6 +69,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
 
     img {
       transition: transform 0.5s;
+      border-radius: inherit;
 
       &:hover {
         transform: scale(1.2);
