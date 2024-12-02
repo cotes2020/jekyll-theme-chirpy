@@ -2,7 +2,7 @@
 title: Optimizing the SVG Heatmap
 description: Optimizing the SVG Heatmap using the Sparkline measure pattern
 author: duddy
-date: 2024-12-92 08:00:00 +0000
+date: 2024-12-02 08:00:00 +0000
 categories: [SVG, DAX]
 tags: [svg, dax]
 pin: false
