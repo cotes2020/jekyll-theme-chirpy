@@ -13,6 +13,9 @@ image:
 
 I have been playing with the [Fabric Log Analytics for Analysis Services Engine report template](https://github.com/microsoft/PowerBI-LogAnalytics-Template-Reports/blob/main/FabricASEngineAnalytics/README.md) in order to get some insights in query and refresh performance. The data is derived from Analysis Services engine trace events that are collected as part of the [Power BI Log Analytics integration](https://learn.microsoft.com/en-us/power-bi/transform-model/log-analytics/desktop-log-analytics-overview). The template provides a a data model and some template visuals to help you understand and manage your Power BI environment. In order to help understand the distribution of data I developed a heatmap SVG.
 
+> The code from this post has been optimized in a another [post](https://evaluationcontext.github.io/posts/SVG-Heatmap-Optimized/)
+{: .prompt-tip }
+
 # Fabric Log Analytics for Analysis Services Engine report template
 
 Firstly some notes on the report.
