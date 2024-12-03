@@ -234,14 +234,11 @@ header {
 @keyframes fade-up {
   from {
     opacity: 0;
-    position: relative;
-    top: 2rem;
+    margin-top: 4rem;
   }
 
   to {
     opacity: 1;
-    position: relative;
-    top: 0;
   }
 }
 
