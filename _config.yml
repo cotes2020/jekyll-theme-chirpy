@@ -46,7 +46,7 @@ social:
 
 # Site Verification Settings
 webmaster_verifications:
-  google: # fill in your Google verification code
+  google: RcOl2O4CMl50ZuJb_wu-ek5vIPEUxNsTFFfNloUoufw # fill in your Google verification code
   bing: # fill in your Bing verification code
   alexa: # fill in your Alexa verification code
   yandex: # fill in your Yandex verification code
@@ -193,7 +193,6 @@ defaults:
       layout: page
       permalink: /:title/
       typora-root-url: ../
-date_format: "%Y-%m-%d"
 
 sass:
   style: compressed
