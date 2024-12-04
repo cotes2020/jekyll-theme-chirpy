@@ -45,5 +45,5 @@ My mind map for [Theoretical Minimum, Special Relativity And Classical Field The
 ## Lecture 10 - Maxwell from Lagrange
 ![alt](assets/drawio/B2L10.drawio.png)
 
-> Following lectures are still under construction 🚧
-{: .prompt-warning } 
+## Lecture 11 - Field Energy and Momentum
+![alt](assets/drawio/B2L11.drawio.png)

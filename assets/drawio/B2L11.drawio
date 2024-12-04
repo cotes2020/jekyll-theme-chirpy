@@ -1,0 +1,339 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1">
+  <diagram id="JDI_gfJpjxLJ_JYhKjTu" name="Page-1">
+    <mxGraphModel dx="1803" dy="1056" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Lecture 11 - Field Energy and Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=auto;rounded=1;startSize=30;labelBackgroundColor=none;swimlaneFillColor=#FFCCCC;gradientColor=none;gradientDirection=south;glass=0;shadow=0;textShadow=0;labelBorderColor=none;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="30" y="10" width="780" height="1470" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-16" value="Relativistic Form" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="2">
+          <mxGeometry x="15" y="1170" width="160" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-17" value="`\frac{\partial T^{\mu\nu}}{\partial X^\nu} = 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="IQ-svMYEMczREjocYg2U-16">
+          <mxGeometry x="3.75" y="44" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-6" value="Types of Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#d5e8d4;strokeColor=#82b366;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=none;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="38.5" y="60" width="751" height="240" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vg88usDtNtBHZfyLmnjd-2" value="Mechanical Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="E-6iDWutbOKhYZRiamqX-6" vertex="1">
+          <mxGeometry x="10" y="40" width="230" height="120" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vg88usDtNtBHZfyLmnjd-3" value="`p_x = \sum_i m_i \dot x_i`&lt;div&gt;- Only applies to particles&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="vg88usDtNtBHZfyLmnjd-2" vertex="1">
+          <mxGeometry x="6" y="42" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-8" value="Canonical Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="E-6iDWutbOKhYZRiamqX-6" vertex="1">
+          <mxGeometry x="260" y="40" width="264" height="190" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-9" value="`\Pi_i = \frac{\partial L(q_i, \dot q_i)}{\partial \dot q_i}`&lt;div&gt;- Generalizes mechanical&lt;/div&gt;&lt;div&gt;- Used w/ Hamiltonian&lt;/div&gt;&lt;div&gt;- Compatible w/ Lagrangian&amp;nbsp;&lt;/div&gt;&lt;div&gt;Density&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-8" vertex="1">
+          <mxGeometry x="11" y="50" width="520" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-10" value="Noether Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="E-6iDWutbOKhYZRiamqX-6" vertex="1">
+          <mxGeometry x="540" y="40" width="200" height="190" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-11" value="`Q = \sum_i \Pi_i f_i(q)`&lt;div&gt;- Symmetry operation&amp;nbsp;&lt;/div&gt;&lt;div&gt;`q_i \rightarrow q_i + \epsilon_i`&amp;nbsp;&lt;/div&gt;&lt;div&gt;doesn&#39;t change `L`&lt;/div&gt;&lt;div&gt;- `Q` is conserved&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-10" vertex="1">
+          <mxGeometry x="10" y="50" width="310" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-12" value="Energy (Mechanics)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="415.75" y="320" width="190" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-13" value="`H = \sum_i p_i \dot q_i - L`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-12" vertex="1">
+          <mxGeometry x="7" y="45" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-14" value="Action (Mechanics)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="64.75" y="320" width="240" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-15" value="`Action = \int L(q_i, \dot q_i) dt`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-14" vertex="1">
+          <mxGeometry x="5" y="40" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-16" value="Action/Lagrange Density (Fields)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="440" width="289.5" height="170" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-17" value="`Action = \int dt L(\phi, \dot \phi, \frac{\partial \phi}{\partial x})`&lt;div&gt;&lt;br&gt;&lt;div&gt;`= \int dt \int d^3 x \mathcal L(\phi, \dot \phi, \frac{\partial \phi}{\partial x})`&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-16" vertex="1">
+          <mxGeometry x="5" y="60" width="710" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-19" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-14" target="E-6iDWutbOKhYZRiamqX-16" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="356.25" y="360" as="sourcePoint" />
+            <mxPoint x="406.25" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-20" value="Energy Density (Fields)" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="365.75" y="480" width="290" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-21" value="`H = \int d^3 x[\Pi_\phi (x) \dot \phi(x) - \mathcal L`]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-20" vertex="1">
+          <mxGeometry x="5" y="40" width="490" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-24" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-12" target="E-6iDWutbOKhYZRiamqX-20" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="315.75" y="420" as="sourcePoint" />
+            <mxPoint x="365.75" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-25" value="Zero Gauge E&amp;M Lagrangian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="37.25" y="630" width="271.5" height="270" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-26" value="`A_0 = 0`&lt;div&gt;`\implies \vec E = -\frac{\partial \vec A}{\partial t}`&lt;/div&gt;&lt;div&gt;&amp;amp; `\vec B = \vec \nabla \times \vec A`&lt;/div&gt;&lt;div&gt;`\therefore \mathcal L = \frac{1}{2}(E^2 - B^2)`&lt;br&gt;`= \frac{1}{2}(\frac{\partial \vec A}{\partial t})^2 - (\vec \nabla \times \vec A)^2`&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-25" vertex="1">
+          <mxGeometry x="5" y="87" width="730" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-27" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-14" target="E-6iDWutbOKhYZRiamqX-12" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="343" y="550" as="sourcePoint" />
+            <mxPoint x="393" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-28" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-16" target="E-6iDWutbOKhYZRiamqX-20" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="315" y="409.09000000000003" as="sourcePoint" />
+            <mxPoint x="426" y="409.09000000000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-30" value="E&amp;M Canonical Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="342.26" y="620" width="230.25" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-31" value="`\Pi_i = \frac{A_i}{\partial t} = -E_i`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-30" vertex="1">
+          <mxGeometry x="8" y="40" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-32" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-25" target="E-6iDWutbOKhYZRiamqX-30" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="428.75" y="670" as="sourcePoint" />
+            <mxPoint x="478.75" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-33" value="E&amp;M Hamitonian" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="601" y="600" width="188.5" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-34" value="`H = \frac{1}{2}(E^2 + B^2)`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-33" vertex="1">
+          <mxGeometry x="8" y="40" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-35" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-30" target="E-6iDWutbOKhYZRiamqX-33" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="368.75" y="640" as="sourcePoint" />
+            <mxPoint x="418.75" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-36" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Lagrangian time symmetry&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;rotation=0;" parent="1" vertex="1">
+          <mxGeometry x="678" y="440" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-37" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Lagrangian spatial symmetry&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;rotation=0;" parent="1" vertex="1">
+          <mxGeometry x="678" y="330" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-38" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-36" target="E-6iDWutbOKhYZRiamqX-12" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="500" as="sourcePoint" />
+            <mxPoint x="420" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-39" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-37" target="E-6iDWutbOKhYZRiamqX-10" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="340" as="sourcePoint" />
+            <mxPoint x="950" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-40" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-36" target="E-6iDWutbOKhYZRiamqX-20" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="490" as="sourcePoint" />
+            <mxPoint x="480" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-41" value="E&amp;M Noether Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" parent="1" vertex="1">
+          <mxGeometry x="340.63" y="737" width="233.5" height="163" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-42" value="`P_n = \int dx E_m \frac{\partial A_m}{\partial X^n}`&lt;div&gt;&lt;br&gt;&lt;div&gt;`\vec P = \int \vec E \times \vec B d^3 x`&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" parent="E-6iDWutbOKhYZRiamqX-41" vertex="1">
+          <mxGeometry x="6.75" y="57" width="480" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E-6iDWutbOKhYZRiamqX-43" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" parent="1" source="E-6iDWutbOKhYZRiamqX-30" target="E-6iDWutbOKhYZRiamqX-41" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="680" as="sourcePoint" />
+            <mxPoint x="460" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-2" value="E&amp;M Definitions" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="609.5" y="717" width="180.5" height="183" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-3" value="&lt;div&gt;&lt;div&gt;Momentum Density&lt;/div&gt;&lt;div&gt;`E_m \frac{\partial A_m}{\partial X^n}`&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Poynting vector&lt;/div&gt;&lt;div&gt;`\vec S = \vec E \times \vec\B`&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="IQ-svMYEMczREjocYg2U-2">
+          <mxGeometry x="8.370000000000001" y="43" width="370" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-4" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="E-6iDWutbOKhYZRiamqX-41" target="IQ-svMYEMczREjocYg2U-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="780" as="sourcePoint" />
+            <mxPoint x="580" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-5" value="Locally Conserved &#xa;Quantities" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=50;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="920" width="170" height="230" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-6" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Charge Density&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;`[\rho, \vec j] \implies J^\mu`&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Energy Density&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;`[E, \vec p] \implies P^\mu`&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="IQ-svMYEMczREjocYg2U-5">
+          <mxGeometry x="5" y="56" width="290" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-7" value="Energy Conservation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="555" y="920" width="234.5" height="270" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-8" value="`T^{00} = \frac{1}{2}(E^2 + B^2)`&lt;br&gt;&lt;br&gt;&lt;div&gt;&amp;amp; `\frac{\partial T^{00}}{\partial t} + \vec \nabla \cdot T^{0m} = 0`&lt;/div&gt;&lt;div&gt;(Continuity Eqn.)&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;amp; Maxwell&#39;s Eqns&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;`\implies T^{0m} = \vec E \times \vec B = T^{m0}`&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="IQ-svMYEMczREjocYg2U-7">
+          <mxGeometry x="3" y="55" width="610" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-9" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="E-6iDWutbOKhYZRiamqX-33" target="IQ-svMYEMczREjocYg2U-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="710" as="sourcePoint" />
+            <mxPoint x="420" y="660" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="800" y="720" />
+              <mxPoint x="800" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-10" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-2" target="IQ-svMYEMczREjocYg2U-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="750" as="sourcePoint" />
+            <mxPoint x="1020" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-11" value="Total Energy/Momentum" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="920" width="220" height="140" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-12" value="`P^0 = \int T^{00}d^3x`&lt;div&gt;`P^m = \int T^{m0}d^3x`&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="IQ-svMYEMczREjocYg2U-11">
+          <mxGeometry x="4.5" y="53" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-13" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="E-6iDWutbOKhYZRiamqX-41" target="IQ-svMYEMczREjocYg2U-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="750" as="sourcePoint" />
+            <mxPoint x="420" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-14" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-7" target="IQ-svMYEMczREjocYg2U-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="750" as="sourcePoint" />
+            <mxPoint x="420" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-15" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-11" target="IQ-svMYEMczREjocYg2U-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="750" as="sourcePoint" />
+            <mxPoint x="420" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-18" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-5" target="IQ-svMYEMczREjocYg2U-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="840" as="sourcePoint" />
+            <mxPoint x="420" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-19" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;entryX=1.009;entryY=0.628;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-7" target="IQ-svMYEMczREjocYg2U-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="1090" as="sourcePoint" />
+            <mxPoint x="349" y="1105" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-21" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Poynting Vector&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Energy Flux &amp;amp; Momentum Density&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="295" y="1080" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-22" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" target="IQ-svMYEMczREjocYg2U-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="890" as="sourcePoint" />
+            <mxPoint x="420" y="980" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="930" />
+              <mxPoint x="530" y="1070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-23" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-7" target="IQ-svMYEMczREjocYg2U-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="1000" as="sourcePoint" />
+            <mxPoint x="460" y="950" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="520" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-24" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-11" target="IQ-svMYEMczREjocYg2U-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="565" y="1146" as="sourcePoint" />
+            <mxPoint x="232" y="1224" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="260" y="1080" />
+              <mxPoint x="260" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-26" value="Momentum Conservation" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="245" y="1180" width="220" height="100" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-27" value="`\frac{\partial T^{m0}}{\partial t} + \frac{\partial T^{mn}}{\partial X^n}= 0`" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontFamily=Comic Sans MS;overflow=visible;portConstraint=none;connectable=0;autosizeGrid=1;backgroundOutline=0;recursiveResize=0;allowArrows=1;" vertex="1" parent="IQ-svMYEMczREjocYg2U-26">
+          <mxGeometry x="4.5" y="44" width="680" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-28" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;" edge="1" parent="1" source="IQ-svMYEMczREjocYg2U-26" target="IQ-svMYEMczREjocYg2U-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="1220" as="sourcePoint" />
+            <mxPoint x="460" y="1170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-29" value="Energy Momentum Tensor" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1290" width="450" height="180" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-31" value="\(T^{\mu\nu} =\begin{pmatrix} \frac{1}{2}(E^2 + B^2) &amp;amp; S_x &amp;amp; S_y &amp;amp; S_z \\ S_x &amp;amp; -\sigma_{xx} &amp;amp; -\sigma_{xy} &amp;amp; -\sigma_{xz} \\ S_y &amp;amp; -\sigma{yx} &amp;amp; -\sigma_{yy} &amp;amp; -\sigma_{yx} \\ S_z &amp;amp; -\sigma_{zx} &amp;amp; -\sigma_{zy} &amp;amp; -\sigma_{zz} \end{pmatrix}\)" style="text;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Comic Sans MS;connectable=0;" vertex="1" parent="IQ-svMYEMczREjocYg2U-29">
+          <mxGeometry x="10" y="40" width="516.25" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-32" value="Energy Momentum Tensor" style="swimlane;fontFamily=Comic Sans MS;fontSize=18;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;fillStyle=auto;rounded=1;startSize=30;swimlaneFillColor=#E6E6E6;collapsible=0;enumerate=0;comic=0;moveCells=0;fixedWidth=1;resizable=1;movableLabel=0;backgroundOutline=0;container=1;autosize=0;" vertex="1" parent="1">
+          <mxGeometry x="493.25" y="1200" width="296.25" height="90" as="geometry">
+            <mxRectangle x="40" y="150" width="250" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-33" value="$$T^{\mu\nu} = F^{\mu\sigma}{F^\mu}_\sigma - \frac{1}{4}\eta^{\mu\nu}F^{\sigma \tau}F_{\sigma \tau}$$" style="text;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Comic Sans MS;connectable=0;" vertex="1" parent="IQ-svMYEMczREjocYg2U-32">
+          <mxGeometry x="3.25" y="9" width="516.25" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-34" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Comic Sans MS;fontSize=18;fontColor=default;autosize=1;resizable=0;strokeWidth=2;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="IQ-svMYEMczREjocYg2U-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="1290" as="sourcePoint" />
+            <mxPoint x="390" y="1070" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-35" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Energy Momentum Tensor&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Densities and currents of energy and momentum&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="523.63" y="1310" width="265.87" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ-svMYEMczREjocYg2U-36" value="&lt;p&gt;&lt;font face=&quot;Comic Sans MS&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Density of momentum&lt;/b&gt; is equal to the &lt;b&gt;flux of energy&lt;/b&gt; divided by `c`&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="text;strokeColor=#82b366;align=center;fillColor=#d5e8d4;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="501.5" y="1410" width="288" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
