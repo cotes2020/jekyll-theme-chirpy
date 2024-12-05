@@ -260,7 +260,7 @@ header {
   -webkit-animation: fade-up 0.8s;
   animation: fade-up 0.8s;
   overflow-y: auto;
-  max-height: calc(100vh - 2rem);
+  max-height: 100vh;
   scrollbar-width: none;
   margin-top: 2rem;
 
@@ -333,7 +333,7 @@ header {
     position: fixed;
     bottom: 0;
     width: 15%;
-    height: 3.25rem;
+    height: 2.25rem;
     margin-left: -1px;
     background: linear-gradient(transparent, var(--main-bg) 70%);
   }
