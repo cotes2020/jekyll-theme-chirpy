@@ -1,5 +1,30 @@
 # Changelog
 
+## [7.2.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.0...v7.2.1) (2024-12-05)
+
+### Bug Fixes
+
+* **build:** exclude `purgecss.js` from output files ([#2090](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2090)) ([976e1a1](https://github.com/cotes2020/jekyll-theme-chirpy/commit/976e1a184b3dbe08991e8a50db4d5d7f8a0b7090))
+* correct the import condition for theme script ([#2075](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2075)) ([a16aa7d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/a16aa7d41e3c3cb28649bfa1361e8bcb91b9ca47))
+* ensure pageviews are fetched after DOM is loaded ([#2071](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2071)) ([b4019f3](https://github.com/cotes2020/jekyll-theme-chirpy/commit/b4019f3517e4a3284df51567d29938cb12bf3acc))
+* **toc:** resume fade up animation in desktop mode ([#2085](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2085)) ([8280adb](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8280adb901b9d15cc1bc18009553aae8746121d8))
+
+## [7.2.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.1.1...v7.2.0) (2024-11-28)
+
+### Features
+
+* show toc on mobile screens ([#1964](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1964)) ([8a064a5](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8a064a5e5a95cd22aa654f7c80da09d107262508))
+* support vertical scrolling for toc in desktop mode ([#2064](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2064)) ([5265b03](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5265b039741555943f9a6f0451287aefb6810f28))
+
+### Bug Fixes
+
+* pagination error when pinned posts exceed the page size ([#1965](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1965)) ([93f616b](https://github.com/cotes2020/jekyll-theme-chirpy/commit/93f616b25d7ed6c4f090c50c8663f8c1f59947f4))
+
+### Improvements
+
+* modular sass architecture ([#2052](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2052)) ([35c794c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/35c794cf5896565430389f35c660b88a93cebb17))
+* speed up page rendering and jekyll build process ([#2034](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2034)) ([65f960c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/65f960c31a734b5306a8b919040c3aae9b783efd))
+
 ## [7.1.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.1.0...v7.1.1) (2024-09-23)
 
 ### Bug Fixes

@@ -1,9 +1,16 @@
-/*
-  Style for Archives
-*/
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/placeholders';
 
 #archives {
   letter-spacing: 0.03rem;
+
+  @include bp.lt(bp.get(sm)) {
+    margin-top: -1rem;
+
+    ul {
+      letter-spacing: 0;
+    }
+  }
 
   $timeline-width: 4px;
 
@@ -131,13 +138,3 @@
     }
   }
 } /* #archives */
-
-@media all and (max-width: 576px) {
-  #archives {
-    margin-top: -1rem;
-
-    ul {
-      letter-spacing: 0;
-    }
-  }
-}
