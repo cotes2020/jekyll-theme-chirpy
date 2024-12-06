@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.2.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.1...v7.2.2) (2024-12-06)
+
+### Bug Fixes
+
+* js files in subdirectories are excluded from the site output ([#2101](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2101)) ([f55cc31](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f55cc31dbd0e7455328c80c7ef38186ad8e54099))
+
 ## [7.2.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.0...v7.2.1) (2024-12-05)
 
 ### Bug Fixes
