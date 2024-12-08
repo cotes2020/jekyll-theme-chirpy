@@ -1,4 +1,355 @@
----
-layout: home
-# Index page
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+        <meta name="generator" content="Jekyll v4.3.4"/>
+        <meta property="og:title" content="Chirpy"/>
+        <meta property="og:locale" content="en"/>
+        <meta name="description" content="A minimal, responsive and feature-rich Jekyll theme for technical writing."/>
+        <meta property="og:description" content="A minimal, responsive and feature-rich Jekyll theme for technical writing."/>
+        <link rel="canonical" href="https://chirpy.cotes.page/"/>
+        <meta property="og:url" content="https://chirpy.cotes.page/"/>
+        <meta property="og:site_name" content="Chirpy"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://chirpy-img.netlify.app/commons/devices-mockup.png"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:image" content="https://chirpy-img.netlify.app/commons/devices-mockup.png"/>
+        <meta property="twitter:title" content="Chirpy"/>
+        <meta name="twitter:site" content="@cotes2020"/>
+        <meta name="google-site-verification" content="C7YH72wCSlsG9z9HXlTQhwzGgTXkXtsq7X8BpcAdcg4"/>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.",
+                "headline": "Chirpy",
+                "name": "Cotes Chung",
+                "sameAs": [
+                    "https://github.com/cotes2020",
+                    "https://twitter.com/cotes2020"
+                ],
+                "url": "https://chirpy.cotes.page/"
+            }</script>
+        <title>Chirpy</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/assets/img/favicons/site.webmanifest">
+        <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="Chirpy">
+        <meta name="application-name" content="Chirpy">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+        <link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+        <script src="/assets/js/dist/theme.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js"></script>
+        <script defer src="/assets/js/dist/home.min.js"></script>
+        <script defer src="/app.min.js?baseurl=&register=true"></script>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-6L3G54N42E"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                gtag('config', 'G-6L3G54N42E');
+            }
+            );
+        </script>
+        <script async src="https://gc.zgo.at/count.js" data-goatcounter="https://chirpy-demo.goatcounter.com/count"></script>
+    <body>
+        <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+            <header class="profile-wrapper">
+                <a href="/" id="avatar" class="rounded-circle">
+                    <img src="https://chirpy-img.netlify.app/commons/avatar.jpg" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
+                </a>
+                <a class="site-title d-block" href="/">Chirpy</a>
+                <p class="site-subtitle fst-italic mb-0">A text-focused Jekyll theme</p>
+            </header>
+            <nav class="flex-column flex-grow-1 w-100 ps-0">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a href="/" class="nav-link">
+                            <i class="fa-fw fas fa-home"></i>
+                            <span>HOME</span>
+                        </a>
+                    <li class="nav-item">
+                        <a href="/categories/" class="nav-link">
+                            <i class="fa-fw fas fa-stream"></i>
+                            <span>CATEGORIES</span>
+                        </a>
+                    <li class="nav-item">
+                        <a href="/tags/" class="nav-link">
+                            <i class="fa-fw fas fa-tags"></i>
+                            <span>TAGS</span>
+                        </a>
+                    <li class="nav-item">
+                        <a href="/archives/" class="nav-link">
+                            <i class="fa-fw fas fa-archive"></i>
+                            <span>ARCHIVES</span>
+                        </a>
+                    <li class="nav-item">
+                        <a href="/about/" class="nav-link">
+                            <i class="fa-fw fas fa-info-circle"></i>
+                            <span>ABOUT</span>
+                        </a>
+                </ul>
+            </nav>
+            <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
+                <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+                    <i class="fas fa-adjust"></i>
+                </button>
+                <span class="icon-border"></span>
+                <a href="https://github.com/cotes2020" aria-label="github" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://twitter.com/cotes2020" aria-label="twitter" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="javascript:location.href = 'mailto:' + ['11371340+cotes2020','users.noreply.github.com'].join('@')" aria-label="email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="/feed.xml" aria-label="rss">
+                    <i class="fas fa-rss"></i>
+                </a>
+            </div>
+        </aside>
+        <div id="main-wrapper" class="d-flex justify-content-center">
+            <div class="container d-flex flex-column px-xxl-5">
+                <header id="topbar-wrapper" aria-label="Top Bar">
+                    <div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100">
+                        <nav id="breadcrumb" aria-label="Breadcrumb">
+                            <span>Home</span>
+                        </nav>
+                        <button type="button" id="sidebar-trigger" class="btn btn-link">
+                            <i class="fas fa-bars fa-fw"></i>
+                        </button>
+                        <div id="topbar-title">Chirpy</div>
+                        <button type="button" id="search-trigger" class="btn btn-link">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                        <search id="search" class="align-items-center ms-3 ms-lg-0">
+                            <i class="fas fa-search fa-fw"></i>
+                            <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search...">
+                        </search>
+                        <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancel</button>
+                    </div>
+                </header>
+                <div class="row flex-grow-1">
+                    <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+                        <div id="post-list" class="flex-grow-1 px-xl-1">
+                            <article class="card-wrapper card">
+                                <a href="/posts/getting-started/" class="post-preview row g-0 flex-md-row-reverse">
+                                    <div class="col-md-12">
+                                        <div class="card-body d-flex flex-column">
+                                            <h1 class="card-title my-2 mt-md-0">Getting Started</h1>
+                                            <div class="card-text content mt-0 mb-3">
+                                                <p>Get started with Chirpy basics in this comprehensive overview. You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.</p>
+                                            </div>
+                                            <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                                <div class="me-auto">
+                                                    <i class="far fa-calendar fa-fw me-1"></i>
+                                                    <time data-ts="1565355300" data-df="ll">Aug 9, 2019 </time>
+                                                    <i class="far fa-folder-open fa-fw me-1"></i>
+                                                    <span class="categories">Blogging, Tutorial </span>
+                                                </div>
+                                                <div class="pin ms-1">
+                                                    <i class="fas fa-thumbtack fa-fw"></i>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                            <article class="card-wrapper card">
+                                <a href="/posts/text-and-typography/" class="post-preview row g-0 flex-md-row-reverse">
+                                    <div class="col-md-5">
+                                        <div class="preview-img blur">
+                                            <img data-src="https://chirpy-img.netlify.app/commons/devices-mockup.png" alt="Responsive rendering of Chirpy theme on multiple devices." data-lqip="true" src="data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="card-body d-flex flex-column">
+                                            <h1 class="card-title my-2 mt-md-0">Text and Typography</h1>
+                                            <div class="card-text content mt-0 mb-3">
+                                                <p>Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.</p>
+                                            </div>
+                                            <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                                <div class="me-auto">
+                                                    <i class="far fa-calendar fa-fw me-1"></i>
+                                                    <time data-ts="1565235180" data-df="ll">Aug 8, 2019 </time>
+                                                    <i class="far fa-folder-open fa-fw me-1"></i>
+                                                    <span class="categories">Blogging, Demo </span>
+                                                </div>
+                                                <div class="pin ms-1">
+                                                    <i class="fas fa-thumbtack fa-fw"></i>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                            <article class="card-wrapper card">
+                                <a href="/posts/customize-the-favicon/" class="post-preview row g-0 flex-md-row-reverse">
+                                    <div class="col-md-12">
+                                        <div class="card-body d-flex flex-column">
+                                            <h1 class="card-title my-2 mt-md-0">Customize the Favicon</h1>
+                                            <div class="card-text content mt-0 mb-3">
+                                                <p>The favicons of Chirpy are placed in the directory assets/img/favicons/. You may want to replace them with your own. The following sections will guide you to create and replace the default favicons...</p>
+                                            </div>
+                                            <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                                <div class="me-auto">
+                                                    <i class="far fa-calendar fa-fw me-1"></i>
+                                                    <time data-ts="1565454840" data-df="ll">Aug 11, 2019 </time>
+                                                    <i class="far fa-folder-open fa-fw me-1"></i>
+                                                    <span class="categories">Blogging, Tutorial </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                            <article class="card-wrapper card">
+                                <a href="/posts/write-a-new-post/" class="post-preview row g-0 flex-md-row-reverse">
+                                    <div class="col-md-12">
+                                        <div class="card-body d-flex flex-column">
+                                            <h1 class="card-title my-2 mt-md-0">Writing a New Post</h1>
+                                            <div class="card-text content mt-0 mb-3">
+                                                <p>This tutorial will guide you how to write a post in the Chirpy template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set. Naming and...</p>
+                                            </div>
+                                            <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                                <div class="me-auto">
+                                                    <i class="far fa-calendar fa-fw me-1"></i>
+                                                    <time data-ts="1565244600" data-df="ll">Aug 8, 2019 </time>
+                                                    <i class="far fa-folder-open fa-fw me-1"></i>
+                                                    <span class="categories">Blogging, Tutorial </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                    </main>
+                    <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+                        <div class="access">
+                            <section id="access-lastmod">
+                                <h2 class="panel-heading">Recently Updated</h2>
+                                <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+                                    <li class="text-truncate lh-lg">
+                                        <a href="/posts/getting-started/">Getting Started</a>
+                                    <li class="text-truncate lh-lg">
+                                        <a href="/posts/text-and-typography/">Text and Typography</a>
+                                    <li class="text-truncate lh-lg">
+                                        <a href="/posts/write-a-new-post/">Writing a New Post</a>
+                                    <li class="text-truncate lh-lg">
+                                        <a href="/posts/customize-the-favicon/">Customize the Favicon</a>
+                                </ul>
+                            </section>
+                            <section>
+                                <h2 class="panel-heading">Trending Tags</h2>
+                                <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/favicon/">favicon</a>
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/getting-started/">getting started</a>
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/typography/">typography</a>
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
+                                </div>
+                            </section>
+                        </div>
+                    </aside>
+                </div>
+                <div class="row">
+                    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+                        <footer aria-label="Site Info" class=" d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3 ">
+                            <p>
+                                © <time>2024</time>
+                                <a href="https://github.com/cotes2020">Cotes Chung</a>
+                                . <span data-bs-toggle="tooltip" data-bs-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span>
+                            </p>
+                            <p>
+                                Using the <a data-bs-toggle="tooltip" data-bs-placement="top" title="v7.2.2" href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
+                                theme for <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+                                .
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+                <div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+                    <div class="col-11 content">
+                        <div id="search-hints">
+                            <section>
+                                <h2 class="panel-heading">Trending Tags</h2>
+                                <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/favicon/">favicon</a>
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/getting-started/">getting started</a>
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/typography/">typography</a>
+                                    <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
+                                </div>
+                            </section>
+                        </div>
+                        <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+                    </div>
+                </div>
+            </div>
+            <aside aria-label="Scroll to Top">
+                <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+                    <i class="fas fa-angle-up"></i>
+                </button>
+            </aside>
+        </div>
+        <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+        <aside id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true" data-bs-autohide="false">
+            <div class="toast-header">
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body text-center pt-0">
+                <p class="px-2 mb-3">A new version of content is available.</p>
+                <button type="button" class="btn btn-primary" aria-label="Update">Update </button>
+            </div>
+        </aside>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                SimpleJekyllSearch({
+                    searchInput: document.getElementById('search-input'),
+                    resultsContainer: document.getElementById('search-results'),
+                    json: '/assets/js/data/search.json',
+                    searchResultTemplate: '<article class="px-1 px-sm-2 px-lg-4 px-xl-0"><header><h2><a href="{url}">{title}</a></h2><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div></header><p>{snippet}</p></article>',
+                    noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+                    templateMiddleware: function(prop, value, template) {
+                        if (prop === 'categories') {
+                            if (value === '') {
+                                return `${value}`;
+                            } else {
+                                return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+                            }
+                        }
+                        if (prop === 'tags') {
+                            if (value === '') {
+                                return `${value}`;
+                            } else {
+                                return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+                            }
+                        }
+                    }
+                });
+            }
+            );
+        </script>
