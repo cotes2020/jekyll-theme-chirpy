@@ -12,7 +12,7 @@ function refreshTheme(event) {
 
     [...mermaidList].forEach((elem) => {
       const svgCode = elem.previousSibling.children.item(0).innerHTML;
-      elem.textContent = svgCode;
+      elem.innerHTML = svgCode;
       elem.removeAttribute('data-processed');
     });
 
