@@ -9,7 +9,7 @@ tags: [Langchain, AI, AI Application]
 
 [1장](./01_Langchain-basic)에서 다뤘던 간단한 LLM 어플리케이션의 아키텍쳐 그림을 다시 살펴봅시다.
 
-![]({{"/assets/img/posts/2024-05-30-17-00-07-image.png" title="" alt="" data-align="center"  | relative_url }})
+![]({{"/assets/img/posts/2024-05-30-17-00-07-image.png"  | relative_url }})
 
 위 아키텍쳐에서 숫자를 매긴 부분에 대한 동작은 아래와 같이 이루어집니다. Langchain의 Model I/O는 아래의 모듈로 구성됩니다.
 
@@ -21,7 +21,7 @@ tags: [Langchain, AI, AI Application]
 
 Model I/O의 아키텍쳐입니다.
 
-![]({{"/assets/img/posts/2024-05-30-17-12-53-image.png" title="" alt="" data-align="center"  | relative_url }})
+![]({{"/assets/img/posts/2024-05-30-17-12-53-image.png"  | relative_url }})
 
 정해진 Format에 따라 Prompt를 생성하고, 연동된 Model에 질문으로 전달하면 응답을 받아서, 사용자가 원하는 형식으로 파싱하여 결과를 전달받는 과정입니다.
 

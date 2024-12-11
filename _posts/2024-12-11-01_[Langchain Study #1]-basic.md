@@ -114,7 +114,7 @@ with st.form('my_form'):
 
 Langchain은 LLM 기반의 어플리케이션 개발 시, 아래 나열된 다양한 모듈과 도구를 통해 개발 과정을 단순화하고 효율화합니다. 
 
-![]({{"/assets/img/posts/2024-06-24-16-05-26-image.png" title="" alt="" data-align="center"  | relative_url }})
+![]({{"/assets/img/posts/2024-06-24-16-05-26-image.png" | relative_url }})
 
 Langchain의 모듈을 이용하면 각 과정들을 별도로 구현할 필요 없이 구현할 수 있으며, 각 과정을 서로 연동(체인화)하는데 매우 편리합니다.
 

@@ -106,11 +106,11 @@ async def on_message(message: str):
 
 처음 실행 후 다람쥐를 다랑어라고 부르겠다고 입력합니다. 
 
-![]({{"/assets/img/posts/2024-06-04-16-38-02-image.png" title="" alt="" data-align="left"  | relative_url }})
+![]({{"/assets/img/posts/2024-06-04-16-38-02-image.png" | relative_url }})
 
 어플리케이션 종료 후 다시 실행하여 새로운 대화 세션에서 다람쥐를 뭐라고 부르는지 질문하니 대화 내용을 기억하고 있다가 다랑어라고 답변합니다.
 
-![]({{"/assets/img/posts/2024-06-04-16-38-15-image.png" title="" alt="" data-align="left"  | relative_url }})
+![]({{"/assets/img/posts/2024-06-04-16-38-15-image.png" | relative_url }})
 
 위와 같이 `RedisChatMessageHistory`와 `ConversationBufferMemory`를 결합하여 대화 내역을 DB에 저장하고, 어플리케이션 종료 후에도 내역을 유지할 수 있는 방법에 대해 알아보았습니다.
 
