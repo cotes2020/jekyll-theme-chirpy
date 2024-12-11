@@ -1,4 +1,8 @@
-## 기업에서의 LLM 활용
+---
+title: [기업에서의 LLM 활용]
+categories: [AI, Trend]
+tags: [AI, Prompt]		
+---
 
 ### LLM이 무엇을 할 수 있고, 무엇을 할 수 없는가?
 
