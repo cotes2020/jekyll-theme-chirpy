@@ -4,7 +4,7 @@ categories: [AI, Langchain]
 tags: [Langchain, AI, AI Application, RAG]		
 ---
 
-[이전 챕터]({{ site.baseurl }}{% link _posts/2024-12-11-02_Langchain모듈-02_Retrieval_1_RAG.md %})의 RAG 아키텍쳐에 대해 살펴보면서 임베딩과 벡터 저장소(벡터 데이터베이스)에 대한 용어를 간단하게 짚고 넘어갔었습니다!
+[이전 챕터]({{ site.baseurl }}{% link _posts/ai/langchain/2024-12-11-02_Langchain모듈-02_Retrieval_1_RAG.md %})의 RAG 아키텍쳐에 대해 살펴보면서 임베딩과 벡터 저장소(벡터 데이터베이스)에 대한 용어를 간단하게 짚고 넘어갔었습니다!
 
 이번 챕터에서는 데이터 소스가 벡터 데이터베이스에 저장이 되고, 사용자가 입력한 질문으로 벡터 데이터베이스에서 관련 정보를 추출하는 과정이 어떻게 진행되는 지에 대해 알아보도록 하겠습니다.
 
