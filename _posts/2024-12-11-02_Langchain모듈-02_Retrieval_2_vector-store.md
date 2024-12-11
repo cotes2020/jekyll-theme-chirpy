@@ -1,3 +1,9 @@
+---
+title: [Langchain Study | 3-2. Retrieval2 - Vector Store]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, RAG]		
+---
+
 [이전 챕터](02_Langchain모듈-02_Retrieval_1_RAG)의 RAG 아키텍쳐에 대해 살펴보면서 임베딩과 벡터 저장소(벡터 데이터베이스)에 대한 용어를 간단하게 짚고 넘어갔었습니다!
 
 이번 챕터에서는 데이터 소스가 벡터 데이터베이스에 저장이 되고, 사용자가 입력한 질문으로 벡터 데이터베이스에서 관련 정보를 추출하는 과정이 어떻게 진행되는 지에 대해 알아보도록 하겠습니다.
@@ -8,7 +14,7 @@
 
 ### 벡터 임베딩
 
-![](uploads/02_Langchain모듈-02_Retrieval_2_vector-store/2024-05-31-16-33-08-image.png)
+![]({{"/assets/img/posts/2024-05-31-16-33-08-image.png"  | relative_url }})
 
 RAG 구조에서의 벡터 임베딩은 크게 두 번으로 구분할 수 있습니다.
 
@@ -52,7 +58,7 @@ RAG 구조에서의 벡터 임베딩은 크게 두 번으로 구분할 수 있�
 
 지난 챕터에서 보았던 RAG 아키텍쳐에서 벡터 임베딩과 벡터 유사도 검색이 적용되는 부분은 노란색과 하늘색 부분으로 표시해보았습니다.
 
-![](uploads/02_Langchain모듈-02_Retrieval_2_vector-store/2024-05-31-18-01-51-image.png)
+![]({{"/assets/img/posts/2024-05-31-18-01-51-image.png"  | relative_url }})
 
 RAG 아키텍쳐에서 벡터 임베딩과 유사도 검색이 적용되는 부분은 크게 두 부분으로 구분됩니다.
 
@@ -60,7 +66,7 @@ RAG 아키텍쳐에서 벡터 임베딩과 유사도 검색이 적용되는 부�
 
 먼저 노란색 부분인 벡터 데이터베이스를 구축하는 부분을 살펴봅시다.
 
-![](uploads/02_Langchain모듈-02_Retrieval_2_vector-store/2024-05-31-17-05-42-image.png)
+![]({{"/assets/img/posts/2024-05-31-17-05-42-image.png"  | relative_url }})
 
 1. **`Load` 텍스트 추출**
    
@@ -92,14 +98,14 @@ RAG 아키텍쳐에서 벡터 임베딩과 유사도 검색이 적용되는 부�
    
    - 벡터 저장소는 벡터화한 숫자 배열을 저장하는 데 특화한 데이터 베이스
    - 여러 종류 있음
-     ![](uploads/02_Langchain모듈-02_Retrieval_2_vector-store/2024-05-31-17-53-32-image.png)
+     ![]({{"/assets/img/posts/2024-05-31-17-53-32-image.png"  | relative_url }})
    - 사용 모듈: [`Vector stores`](https://js.langchain.com/v0.1/docs/modules/data_connection/vectorstores/)
 
 #### 검색 및 프롬프트구축
 
 외부 데이터 소스로 벡터 데이터베이스를 구축한 후, 이를 통해 질문에 대한 답변을 생성하는 부분인 파란색 부분에 대해 알아봅시다.
 
-![](uploads/02_Langchain모듈-02_Retrieval_2_vector-store/2024-05-31-18-12-06-image.png)
+![]({{"/assets/img/posts/2024-05-31-18-12-06-image.png"  | relative_url }})
 
 1. **`Query Vector Store` 사용자 입력(질문)을 벡터화**
    

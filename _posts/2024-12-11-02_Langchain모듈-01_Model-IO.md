@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-1. Model I/O]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application]		
+---
+
+
 이번 챕터에서는 Langchain의 모듈 중 가장 필수적이고 많이 쓰이는 Model I/O 모듈에 대해 알아봅시다.
 
 [1장](./01_Langchain-basic)에서 다뤘던 간단한 LLM 어플리케이션의 아키텍쳐 그림을 다시 살펴봅시다.

@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Chains (Legacy Chains, LCEL)]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Memory]		
+---
+
+
 이번 챕터에서는 여러 가지 모듈들을 서로 연동하기 위한 방법인 `Chains` 모듈에 대해 공부해보겠습니다!
 
 랭체인에서 모듈들을 연동하기 위한 방법은 크게 두 가지로 분류됩니다.

@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Memory 3 - RunnableWithMessageHistory, Memory Session]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Memory]		
+---
+
+
 이번 챕터에서는 `Langchain verion2`에서 제공하는 모듈을 이용해보겠습니다!
 
 [가상환경 구축](https://git.bwg.co.kr/gitlab/study/langchain/-/wikis/02_Langchain%EB%AA%A8%EB%93%88-00\_%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95)을 참고하여 라이브러리 버전을 Langchain version2로 맞춰주세요\~
@@ -18,7 +25,7 @@ Runnable(수행 작업) 전에 대화의 이전 메시지를 로드하고, Runna
 
 이때 `session_id`를 통해 각 대화를 저장하는 것을 통해 여러 대화를 가능하게 합니다.
 
-![image-20240704152905767](uploads/02_Langchain%EB%AA%A8%EB%93%88-03_Memory_3_memory_session/image-20240704152905767.png)
+![image-20240704152905767]({{"/assets/img/posts/image-20240704152905767.png"  | relative_url }})
 
 ## Step 2. 구축 방법
 
@@ -340,17 +347,17 @@ chainlit run 05_chat_memory_5.py
 
 - 세션 입력
 
-  ![image-20240708101433227](uploads/02_Langchain%EB%AA%A8%EB%93%88-03_Memory_3_memory_session/image-20240708101433227.png)
+  ![image-20240708101433227]({{"/assets/img/posts/image-20240708101433227.png"  | relative_url }})
   - 어플리케이션을 수행하면 세션ID를 입력하라는 메시지가 먼저 수행됩니다.
   - `밀구`라는 세션으로 대화를 시작합니다.
   - 기존에 대화한 적이 없는 세션이기 때문에 `새로운 대화를 시작하세요!`라고 나옵니다.
 - 대화
 
-  ![image-20240708101554997](uploads/02_Langchain%EB%AA%A8%EB%93%88-03_Memory_3_memory_session/image-20240708101554997.png)
+  ![image-20240708101554997]({{"/assets/img/posts/image-20240708101554997.png"  | relative_url }})
   - 위와 같이 `밀구` 세션에서 대화를 이어갑니다.
 - 기존 대화 불러오기
 
-  ![image-20240708101650163](uploads/02_Langchain%EB%AA%A8%EB%93%88-03_Memory_3_memory_session/image-20240708101650163.png)
+  ![image-20240708101650163]({{"/assets/img/posts/image-20240708101650163.png"  | relative_url }})
   - 대화 종료 후 다시 어플리케이션을 실행합니다.
   - `밀구`라고 세션을 다시 입력합니다.
   - 그 전에 대화 기록을 보여준 후 다시 대화를 이어갈 수 있습니다.

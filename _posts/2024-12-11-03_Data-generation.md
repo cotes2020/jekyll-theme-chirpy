@@ -1,3 +1,9 @@
+---
+title: [LangChain | Data Generation를 통해 가상데이터 만들기]
+categories: [AI, Langchain]
+tags: [Langchain, AI, synthetic_data_generator]		
+---
+
 
 프로젝트에서 근무할 때, 테스트 진행을 위한 테스트 데이터 생성도 꽤 큰 일이었습니다.
 

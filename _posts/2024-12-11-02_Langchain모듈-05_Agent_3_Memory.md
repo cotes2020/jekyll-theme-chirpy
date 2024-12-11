@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Agents 3 - Agent + Memory]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Agent, Memory]		
+---
+
+
 `Memory` 모듈과 `Agents` 모듈을 조합하여 문맥에 따라 응답할 수 있는 에이전트를 만들어봅시다!
 
 ---

@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Agents 1 - Basic]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Agent]		
+---
+
+
 LLM(언어모델)은 단순히 질문에 대한 답변을 줄 뿐 그 이상은 할 수 없습니다. 예를 들어 검색 결과에 대해 로컬 파일에 저장한다거나, API를 수행하는 등의 Action을 취할 수 없습니다. Langchain의 `Agents` 모듈을 사용하면 LLM을 활용하여 더 확장된 다양한 작업들을 수행할 수 있게 해줍니다!
 
 이번 챕터에서는 Agents 모듈에 대한 컨셉 설명과 기본적으로 적용해볼 수 있는 코드를 작성해보겠습니다!
@@ -375,7 +382,7 @@ Agent는 Tool을 통해 얻은 결과가 원하는 답과 일치하는 지 판�
 
 로컬 파일에 지정한 경로에 `cookbook.txt` 파일이 생성되어, 판나코타의 레시피가 저장되었습니다.
 
-![](uploads/02_Langchain%EB%AA%A8%EB%93%88-05_Agent_1/2024-06-07-15-12-11-image.png)
+![]({{"/assets/img/posts/2024-06-07-15-12-11-image.png"  | relative_url }})
 
 레시피가 중간에 짤렸네요 ㅎㅎ..
 

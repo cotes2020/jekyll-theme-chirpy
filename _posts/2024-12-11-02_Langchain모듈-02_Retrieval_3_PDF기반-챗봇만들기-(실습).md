@@ -1,3 +1,11 @@
+---
+title: [Langchain Study | 3-2. Retrieval3 - PDF기반-챗봇만들기-(실습)]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, RAG]		
+---
+
+
+
 지금까지 [RAG의 개념](https://git.bwg.co.kr/gitlab/study/langchain/-/wikis/02_Langchain%EB%AA%A8%EB%93%88-02_Retrieval_1_RAG)과 [Retrieval(검색기)를 통한 유사도 검색](https://git.bwg.co.kr/gitlab/study/langchain/-/wikis/02_Langchain%EB%AA%A8%EB%93%88-02_Retrieval_2_vector-store)에 대한 개념에 대해 알아보았습니다.
 
 이번 챕터에서는 랭체인의 Retrieval 모듈들을 이용하여, 어떻게 소스에 적용되고 활용하는지 같이 실제 예제를 통해 알아보겠습니다!
@@ -56,11 +64,11 @@
 
 #### 어플리케이션 미리 보기
 
-![](uploads/02_Langchain%EB%AA%A8%EB%93%88-02_Retrieval_3_PDF%EA%B8%B0%EB%B0%98-%EC%B1%97%EB%B4%87%EB%A7%8C%EB%93%A4%EA%B8%B0-(%EC%8B%A4%EC%8A%B5)/add1636ca0515eb439b44230fe0271ec38dd80f2.gif)
+![]({{"/assets/img/posts/add1636ca0515eb439b44230fe0271ec38dd80f2.gif"  | relative_url }})
 
 - 어플리케이션 아키텍쳐
 
-  ![](uploads/02_Langchain%EB%AA%A8%EB%93%88-02_Retrieval_3_PDF%EA%B8%B0%EB%B0%98-%EC%B1%97%EB%B4%87%EB%A7%8C%EB%93%A4%EA%B8%B0-(%EC%8B%A4%EC%8A%B5)/2024-06-03-15-45-31-image.png)
+  ![]({{"/assets/img/posts/2024-06-03-15-45-31-image.png"  | relative_url }})
 
 ---
 
@@ -118,7 +126,7 @@ PDF에서 가져온 문장을 통째로 처리하는 것은 RAG 기법으로 효
 
 `OpenAIEmbeddings`을 통해 지정한 모델명으로 임베딩 모델을 지정합니다. 벡터 데이터베이스로는 `Chroma(크로마)`를 사용합니다. `persist_directory`에서 경로를 설정하면 임베딩된 데이터를 벡터 저장소에 영속적으로 저장할 경로를 생성합니다. 이는 파이썬 명령의 실행이 종료되더라도 데이터베이스의 내용이 삭제되지 않아 영속적으로 사용할 수 있습니다. `embedding_function`에는 위에서 선언한 벡터 임베딩 모델을 지정한다. `add_documents()`를 통해 분할된 `Document`를 벡터화해 데이터베이스에 저장합니다.
 
-![](uploads/02_Langchain%EB%AA%A8%EB%93%88-02_Retrieval_3_PDF%EA%B8%B0%EB%B0%98-%EC%B1%97%EB%B4%87%EB%A7%8C%EB%93%A4%EA%B8%B0-(%EC%8B%A4%EC%8A%B5)/2024-06-03-13-25-09-image.png)
+![]({{"/assets/img/posts/2024-06-03-13-25-09-image.png"  | relative_url }})
 
 임베딩이 완료되면 지정한 경로에 임베딩된 데이터베이스가 파일로 저장됩니다. 만약 기존 임베딩된 데이터를 지우고, 새롭게 임베딩을 수행하여 벡터DB에 저장을 원한다면 `.data` 폴더를 지우고 재수행하면 됩니다.
 

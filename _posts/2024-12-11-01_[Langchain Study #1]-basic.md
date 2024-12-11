@@ -1,3 +1,9 @@
+---
+title: [Langchain Study | 1. Basic]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application]		
+---
+
 Langchain이란 무엇일까요?
 
 앞으로 글에서는 여러 챕터로 나눠 Langchain이 무엇이고, Langchain을 사용하는 방법, 더 나아가 응용하는 방법에 대해 배워보도록 하겠습니다.
@@ -14,7 +20,7 @@ Langchain이 무엇인지에 대해 설명하기 앞서 우리는 LLM에 대한 
 
 최근 AI와 관련된 많은 용어들이 등장하면서, 여러 용어들이 혼재되어 사용되는 경우가 많습니다. 이러한 관계를 아래와 같은 그림으로 정리할 수 있습니다
 
-![AI와LLM](./uploads/%2301_Langchain-basic/image.png)
+![AI와LLM]({{"/assets/img/posts/image.png"  | relative_url }})
 
 `출처: <랭체인으로 LLM 기반의 AI 서비스 개발하기>  (서지영)`
 
@@ -28,7 +34,7 @@ Langchain이 무엇인지에 대해 설명하기 앞서 우리는 LLM에 대한 
 우리에게 ChatGPT는 매우 익숙합니다. 이러한 OpenAI의 ChatGPT, 구글의 Gemini, 엔트로픽의 Claude는 GenAI 즉, 생성형 AI입니다. LLM을 활용하여 이러한 생성형 AI와 같은 어플리케이션을 만들기도 합니다. 물론 LLM은 생성형 AI에 활용되는 것 외에 다른 여러 분야에서도 활용될 수 있습니다. 번역 서비스, 교육, 법률 분야 등에서 넓게 사용되고 있습니다.
 
 참고로 LLM의 종류는 아래 사진처럼 매우 많습니다.
-![llm-모델-종류](./uploads/%2301_Langchain-basic/image-3.png)
+![llm-모델-종류]({{"/assets/img/posts/image-3.png"  | relative_url }})
 
 ## LLM 활용 사례
 
@@ -75,7 +81,7 @@ Langchain을 사용하지 않고도 LLM을 사용한 어플리케이션을 개�
 아래의 영상에서의 어플리케이션을 만들어봅시다.
 chatGPT LLM을 이용하여, 질문에 대한 답을 생성하는 웹 어플리케이션입니다.
 
-![llm-app](./uploads/%2301_Langchain-basic/langchain-app.gif)
+![llm-app]({{"/assets/img/posts/langchain-app.gif"  | relative_url }})
 
 langchain을 이용한다면 단 18줄의 코드만으로 front-end부터 back-end까지 개발이 완료됩니다.
 
@@ -101,7 +107,7 @@ with st.form('my_form'):
 ```
 
 아래의 그림은 어플리케이션의 구조를 단순화한 그림입니다.
-![alt text](./uploads/%2301_Langchain-basic/image-6.png)
+![alt text]({{"/assets/img/posts/image-6.png"  | relative_url }})
 여기서 랭체인의 역할을 중점으로 본다면, 화면에서 넘어오는 질문을 입력받아 모델에 전달하고, 모델로부터 응답을 받아 다시 화면에 보내주는 역할을 합니다. 사실 랭체인은 다양한 모듈들을 가지고 있으며 이를 통해 더 많은 확장성을 가집니다. 
 
 ### Langchain의 모듈
@@ -179,7 +185,7 @@ LangChain은 특정 지점에서 수행할 함수를 트리거하는 콜백 기�
   <details>
   <summary>예제</summary>
   
-  ![](uploads/01_Langchain-basic/2024-06-24-15-45-44-image.png)  
+  ![]({{"/assets/img/posts/2024-06-24-15-45-44-image.png"  | relative_url }})  
   
   </details>
 

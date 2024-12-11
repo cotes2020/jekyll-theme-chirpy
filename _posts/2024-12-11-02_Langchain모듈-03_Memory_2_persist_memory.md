@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Memory 2 - 영속적 메모리 구현하기 (Persist Memory)]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Memory]		
+---
+
+
 이전 챕터에서 대화 세션 내에서 대화 기록을 저장하는 `Memory` 모듈을 사용해보았습니다. 
 
 어플리케이션 프로그램이 종료되어도 기존의 대화 내용을 저장하는 방법이 있는데요, 대화 내용을 데이터베이스에 저장하여 영속화하는 방법입니다. 이번 챕터에서는 앱 종료 후에도 소통을 재개할 수 있는 어플리케이션을 개발해보도록 하겠습니다!

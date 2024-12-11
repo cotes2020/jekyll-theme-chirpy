@@ -1,3 +1,11 @@
+---
+title: [Langchain Study | 3-2. Agents 2 - Agent + Retrievers]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Agent]		
+---
+
+
+
 언어 모델이 모르는 정보에 대해 대답하게 하는 기법인 RAG도 Agent에 적용해볼 수 있습니다.
 
 바로 Retrievers를 Tool로 변환하여 간단하게 적용해줄 수 있습니다.

@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Memory 1 - Chatbot 만들기]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Memory]		
+---
+
+
 많은 LLM 애플리케이션은 대화형 인터페이스를 가지고 있습니다. 우리가 흔히 말하는 챗봇과 같은 형식이죠. 대화의 필수 요소 중 하나는 이전에 대화에서 도입된 정보를 참조할 수 있는 능력입니다.
 
 이번 챕터에서는 언어 모델과의 과거 상호작용에 대한 정보를 저장하는 능력인 "Memory"에 대해 배워보도록 하겠습니다. 랭체인에서는 시스템에 메모리를 추가하기 위한 유틸리티를 제공합니다.

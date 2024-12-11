@@ -1,3 +1,11 @@
+---
+title: [Langchain Study | 3-2. Retrieval4- RetrievalQA]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, RAG]		
+---
+
+
+
 지난 챕터에서는 RAG 기법을 이용해서 QA 시스템을 개발해보았는데요, 벡터 데이터베이스를 호출하고, 유사도 검색 수행 후, 해당 결과값과 질문을 결합하는 프롬프트를 생성하고, 언어 모델을 호출하여 프롬프트를 전달하는 등 여러 과정을 거쳤습니다.
 
 이번 챕터에서는 위 과정을 보다 간단하게 처리할 수 있는 `RetrievalQA` 모듈을 소개해드리겠습니다!
@@ -79,7 +87,7 @@ Document(...), ...
 
 `RetrievalQA`를 사용하지 않을 때와 소스 코드를 비교해봅시다.
 
-![](uploads/02_Langchain모듈-02_Retrieval_4_RetrievalQA/2024-06-03-17-21-50-image.png)
+![]({{"/assets/img/posts/2024-06-03-17-21-50-image.png"  | relative_url }})
 
 기존 [query.py](https://git.bwg.co.kr/gitlab/study/langchain/-/wikis/02_Langchain%EB%AA%A8%EB%93%88-02_Retrieval_3_PDF%EA%B8%B0%EB%B0%98-%EC%B1%97%EB%B4%87%EB%A7%8C%EB%93%A4%EA%B8%B0-(%EC%8B%A4%EC%8A%B5)#2-%EA%B2%80%EC%83%89-%EB%B0%8F-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8-%EA%B5%AC%EC%B6%95) 코드에서 빨간색으로 표시된 부분이 RetrievalQA를 사용하며 아래 코드로 대체됨에 따라 코드의 양이 많이 준 것을 확인할 수 있습니다.
 

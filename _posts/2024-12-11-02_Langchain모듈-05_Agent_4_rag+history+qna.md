@@ -1,3 +1,10 @@
+---
+title: [Langchain Study | 3-2. Agents 4 - Agent로 Q&A 챗봇 구현 (RunnableWithMessageHistory)]
+categories: [AI, Langchain]
+tags: [Langchain, AI, AI Application, Agent, Memory, RAG]		
+---
+
+
 RAG의 `retriver`과 `memory` 모듈이 포함된 Q&A 챗봇을 agent로 다시 만들어봅시다!
 
 ---
@@ -8,7 +15,7 @@ RAG의 `retriver`과 `memory` 모듈이 포함된 Q&A 챗봇을 agent로 다시 
 
 해당 어플리케이션의 아키텍쳐 이렇습니다.
 
-![image.png](uploads/771afc6c7cfad00e2c73a982ea45d02e/image.png){width="712" height="614"}
+![image.png]({{"/assets/img/posts/image.png"  | relative_url }}){width="712" height="614"}
 
 * 대화의 질문/답변을 Chat history로 보관하고 있다가,
 * 사용자에게 질문이 들어오면, Chat history를 이해한 질문을 재구성합니다.
