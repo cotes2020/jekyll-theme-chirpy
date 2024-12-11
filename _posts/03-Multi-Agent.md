@@ -1,0 +1,448 @@
+### Multi-Agent란 무엇인가?
+
+Multi-Agent 시스템은 여러 에이전트들이 협력하여 특정 과제를 수행하는 구조를 갖추고 있습니다.
+
+각 에이전트는 **특정 작업을 수행하는 데 전문화**되어 있으며, 필요에 따라 다른 소프트웨어 **도구를 호출하고 결과를 다시 통합**합니다.
+
+이는 단일 에이전트보다 복잡한 작업을 효과적으로 처리할 수 있습니다.
+
+### Multi-Agent의 장점
+
+- **유연성**: 다양한 도구와 인간의 피드백을 통합하여 작업을 효율적으로 수행할 수 있습니다.
+- **복잡한 상호작용 처리**: 여러 에이전트 간의 복잡한 상호작용을 통해 보다 정교한 작업을 처리할 수 있습니다.
+- **효율성**: 작업을 분할하여 각 에이전트가 전문적으로 처리함으로써 전체 시스템의 효율성을 높입니다.
+
+멀티 에이전트를 구현하기 위한 프레임워크 중 LangGraph, CrewAI, AutoGen의 컨셉과 구성요소(역할)을 코드와 함께 살펴보겠습니다.
+
+- LangGraph 코드는 너무 길고 복잡해서 스킵했습니다.
+
+---
+
+#### 💡 실습 전 주의사항
+
+기존 Langchain의 라이브러리와 충돌 가능성이 있어, 아래 requirements 파일로 새로운 가상환경을 새로 구축하는 것을 권장합니다.
+
+[requirements-advanced.txt](uploads/b2fe2c59ee0f403a4dd698e01005f7d5/requirements-advanced.txt)
+
+---
+
+## LangChain LangGraph
+
+- 그래프 기반의 구조
+- Agent들끼리 Tool을 서로 공유하게 한다.
+- Agent 간의 상호 작용 / 협업을 가능케한다.
+- 구성 요소
+  - `에이전트(Agents)`: 특정 작업을 수행하는 독립된 실행 단위입니다. 각 에이전트는 특정 역할이나 기능을 담당합니다.
+  - `노드(Nodes)`: 각 에이전트가 속한 그래프의 노드로, 에이전트 간의 관계와 상호작용을 정의합니다.
+  - `엣지(Edges)`: 노드 간의 연결로, 에이전트 간의 의사소통 경로를 나타냅니다.
+  - `작업(Task)`: 에이전트가 수행해야 할 작업으로, 그래프 구조 내에서 분배되고 관리됩니다.
+
+## CrewAI
+
+https://www.crewai.com/
+
+![image.png](uploads/c78c406dc2b42bcf274587ac4c604721/image.png)
+
+- 여러 에이전트가 팀(크루)을 이루어 작업 수행하도록 한다.
+- 각 에이전트는 독립적으로 작동하지만, 협력과 조율을 통해 복잡한 작업을 효율적으로 처리
+- 각 에이전트 별로 Tool을 지정하여 역할을 픽스한다.
+- 구성 요소
+  - `에이전트(Agents)`: 특정 역할과 작업을 수행하는 독립된 실행 단위입니다. 각 에이전트는 자신만의 특성과 기능을 가지고 있습니다.
+  - `작업(Task)`: 에이전트가 수행해야 할 작업으로, 팀 단위로 분배되고 처리됩니다.
+  - `팀-크루(Crew)`: 여러 에이전트가 모여 하나의 팀을 이루며, 협력하여 작업을 수행합니다.
+
+#### Setup
+
+```
+pip install crewai
+```
+
+#### 예제
+
+- **시나리오**
+
+  - 에이전트1: 시장조사 분석가
+    - 목표: AI 산업의 향후 분석 제공
+    - 백스토리: 시장 트렌드에 대한 전문가
+    - 툴: search_tool, web_rag_tool 이용
+  - 에이전트2: 콘텐츠 작가
+    - 목표:AI 산업에 대한 블로그 초안 작성
+    - 백스토리: 기술에 대한 열정이 있는 기술력있는 작가
+    - 툴:docs_tool, file_tool
+  - Task1: AI 산업의 최신 트렌드 요약 검색
+    - 에이전트: `에이전트1: 시장조사 분석가`
+  - Task2: AI 산업에 대한 블로그 포스트를 작성해서, 파일로 저장
+    - 에이전트: `에이전트2: 콘텐츠 작가`
+
+  <details>
+  <summary>구현 코드</summary>
+
+  ```python
+  import os
+  from crewai import Agent, Task, Crew
+  # Importing crewAI tools
+  from crewai_tools import (
+      DirectoryReadTool,
+      FileReadTool,
+      SerperDevTool,
+      WebsiteSearchTool
+  )
+
+  # Set up API keys
+  # os.environ["SERPER_API_KEY"] = "Your Key" # serper.dev API key
+  # os.environ["OPENAI_API_KEY"] = "Your Key"
+
+  # Instantiate tools
+  docs_tool = DirectoryReadTool(directory='./blog-posts')
+  file_tool = FileReadTool()
+  search_tool = SerperDevTool()
+  web_rag_tool = WebsiteSearchTool()
+
+  # Create agents
+  researcher = Agent(
+      role='시장 조사 분석가',
+      goal='AI 산업의 최신 시장 분석 제공',
+      backstory='시장 동향에 예리한 안목을 가진 전문 분석가',
+      tools=[search_tool, web_rag_tool],
+      verbose=True
+  )
+
+  writer = Agent(
+      role='콘텐츠 작성자',
+      goal='인공지능 산업에 관한 공예 참여형 블로그 게시물',
+      backstory='기술에 대한 열정을 가진 숙련된 작가',
+      tools=[docs_tool, file_tool],
+      verbose=True
+  )
+
+  # 태스크 정의
+  research = Task(
+      description='AI 산업의 2024년 최신 트렌드를 조사하고 요약을 제공합니다.',
+      expected_output='AI 업계의 2024년 트렌드 3대 트렌드를 그 중요성에 대한 독특한 관점으로 정리한 것',
+      agent=researcher
+  )
+
+  write = Task(
+      description='시장조사 분석가의 요약을 바탕으로 AI 산업에 대한 매력적인 블로그 게시물 작성합니다.',
+      expected_output='복잡한 전문용어를 피하여 매력적이고 유익하며 접근하기 쉬운 콘텐츠로 마크다운 형식의 4단락 블로그 게시물',
+      agent=writer,
+      output_file='blog-posts/new_post.md'  # The final blog post will be saved here
+  )
+
+  # Assemble a crew
+  crew = Crew(
+      agents=[researcher, writer],
+      tasks=[research, write],
+      verbose=2
+  )
+
+  # Execute tasks
+  crew.kickoff()
+
+  ```
+
+  </details>
+
+  <details>
+  <summary>코드 실행 결과</summary>
+
+  ```markdown
+  # 2024년, AI 산업의 새로운 물결: 생성형 AI의 부상
+
+  인공지능(AI) 산업은 매년 빠르게 진화하고 있으며, 2024년은 그 중에서도 특히 흥미진진한 해가 될 것으로 보입니다. 그 중에서도 가장 주목할 만한 트렌드는 생성형 AI(Generative AI)의 급격한 채택입니다. 생성형 AI는 텍스트, 이미지, 음악 등 다양한 형태의 데이터를 생성할 수 있는 능력으로 이미 상당한 가치를 창출하고 있습니다.
+
+  ## 생성형 AI의 경제적 잠재력
+
+  McKinsey의 분석에 따르면, 생성형 AI는 새로운 생산성의 경계를 열어주고 있습니다. 이 기술은 기업의 업무 효율성을 크게 향상시킬 수 있으며, 새로운 비즈니스 모델을 창출할 수 있는 잠재력을 가지고 있습니다. 특히 제조, 금융, 헬스케어 등 다양한 산업에서 생성형 AI를 활용한 혁신이 기대되고 있습니다. 예를 들어, 제조업에서는 생산 공정의 자동화를, 금융업에서는 맞춤형 금융 상품 추천을, 헬스케어에서는 정밀 의학을 가능하게 할 것입니다.
+
+  ## 책임감 있는 AI 사용의 중요성
+
+  생성형 AI의 급속한 발전과 함께, 책임감 있는 AI 사용에 대한 중요성도 강조되고 있습니다. McKinsey는 지속 가능한 성장과 포용적 성장을 가속화하기 위해 책임감 있는 AI 사용을 촉진하고 있습니다. 이는 AI 기술의 윤리적 사용, 데이터 프라이버시 보호, 그리고 공정한 알고리즘 개발 등을 포함합니다. 기업들이 이러한 책임감 있는 AI 관행을 준수한다면, 기술의 혜택을 더욱 많은 사람들이 공평하게 누릴 수 있을 것입니다.
+
+  ## AI 산업의 미래
+
+  이와 같은 트렌드들은 2024년 AI 산업의 중요한 요소들입니다. 생성형 AI의 채택과 경제적 잠재력, 그리고 책임감 있는 AI 사용의 필요성은 AI 산업의 미래를 이끌어 갈 것입니다. 기술의 발전은 우리 삶의 질을 향상시키고, 새로운 기회를 창출하며, 다양한 산업에서 혁신을 가능하게 할 것입니다. 이제 우리는 이러한 변화를 지켜보며, 어떻게 더 나은 미래를 만들 수 있을지 함께 고민해야 할 때입니다.
+
+  2024년, AI 산업의 새로운 물결이 여러분의 삶에 어떤 변화를 가져올지 기대해 보세요!
+  ```
+
+  </details>
+
+## AutoGen
+
+https://microsoft.github.io/autogen/docs/Getting-Started
+
+- Autogen은 일반적인 **다중 에이전트 대화 기반 프레임워크**로 차세대 LLM 애플리케이션을 지원합니다. =\> **Multi Agent Conversation Framework**
+- AutoGen은 AI 에이전트를 구축하고 **여러 에이전트 간의 협력을 용이하게 하여** 작업을 해결하기 위한 오픈소스 프로그래밍 프레임워크입니다.
+- 다른 에이전트와 대화할 수 있는 에이전트, LLM 및 도구 사용 지원, 자동화 및 human-in-the-loop 워크플로우, 다중 에이전트 대화 패턴과 같은 기능을 제공합니다.
+- **여러 유능한 에이전트 간의 채팅을 자동화함으로써 코드를 통해 도구를 사용해야 하는 작업을 포함하여 자율적으로 또는 인간의 피드백을 받아 공동으로 작업을 수행하도록 쉽게 만들 수 있습니다**
+
+![1721871401592](image/03-Multi-Agent/1721871401592.png)
+
+- **AutoGen의 에이전트 종류**
+
+  각 에이전트 유형은 고유한 역할을 하며 복잡한 워크플로를 구축하기 위해 결합할 수 있습니다.
+
+  - `Conversational Agent`
+
+    - 다른 에이전트와 통신하고 작업을 수행
+    - 구조화된 대화를 위해 설계 -\> 사전 정의된 대화 패턴에 따라 상호 작용을 촉진
+    - 특정 정보 수집, 스크립트된 흐름을 따라야 하는 작업에 이상적
+    - 대표적 하위 Agent로 `AssistantAgent`와 `UseProxyAgent` 존재
+  - `Assistant Agent`
+
+    - 기본적으로 LLM을 사용 : 사용자의 입력이나 코드 실행이 필요하지 않은 **AI 보조자 역할**을 하도록 설계 => 작업을 수행하고 LLM과 도구를 활용하여 사용자를 돕습니다.
+    - 메시지(일반적으로 해결해야 할 작업에 대한 설명)를 받았을 때 사용자가 실행할 Python 코드(Python 코딩 블록)를 작성
+    - 실행 결과를 수신하고 수정 사항이나 버그 수정을 제안할 수도 있음
+    - 기술 지원, 연구 지원, 전문 지식이 필요한 작업에 이상적
+  - `UserProxy Agent`
+
+    - 사용자와 시스템 사이의 중간자 역할
+    - 수신된 메시지에서 실행 가능한 코드 블록을 감지하고, **코드를 실행하고 함수나 도구를 호출**
+      - 파라미터에 따라 코드 자동 실행 비활성화 가능
+- **에이전트의 구분 기준**
+
+  - 코드 실행 가능 여부
+    - 실행O: UserProxy Agent (실행 환경은 로컬 혹은 docker 중 선택 가능)
+    - 실행X: Assistant Agent
+
+#### AutoGen으로 구현할 수 있는 어플리케이션 예제
+
+![1721870626632](image/03-Multi-Agent/1721870626632.png)
+
+Find a list of examples in this page: [Automated Agent Chat Examples](https://microsoft.github.io/autogen/docs/Examples#automated-multi-agent-chat)
+
+#### SetUp
+
+```
+pip install pyautogen
+```
+
+#### 예제 1
+
+- **시나리오**
+
+  - 코미디언 joe(aka 멍멍님)와 cathy(aka 야옹님)의 만담
+
+  <details>
+  <summary>구현 코드</summary>
+
+  ```python
+  # from utils import get_openai_api_key
+  # OPENAI_API_KEY = get_openai_api_key()
+  from autogen import ConversableAgent
+
+  llm_config = {"model": "gpt-3.5-turbo"}
+
+  # cathy와 joe의 대화 -> 둘은 코미디언이라고 가정
+  # 코미디언의 만담
+  cathy = ConversableAgent(
+      name="야옹님",
+      system_message=
+      "당신의 이름은 야옹님이고 당신은 짧은 재미난 이야기를 잘 만드는 코미디언입니다",
+      llm_config=llm_config,
+      human_input_mode="NEVER",
+  )
+
+  joe = ConversableAgent(
+      name="멍멍님",
+      system_message=
+      "당신의 이름은 멍멍님이고 당신은 짧은 재미난 이야기를 잘 만드는 코미디언입니다"
+      "이전 대화의 내용을 이어서 다음 재미난 이야기를 시작하세요.",
+      llm_config=llm_config,
+      human_input_mode="NEVER",
+  )
+
+  # joe부터 시작
+  chat_result = joe.initiate_chat(
+      recipient=cathy,
+      message="나는 야옹님이야, 우리 재미난 이야기를 이어서 나가 볼까?",
+      max_turns=2, # 둘의 대화는 2번 반복
+  )
+
+  ```
+
+  </details>
+
+  <details>
+  <summary>코드 실행 결과</summary>
+
+  ```commandline
+  멍멍님 (to 야옹님):
+
+  나는 야옹님이야, 우리 재미난 이야기를 이어서 나가 볼까?
+
+  --------------------------------------------------------------------------------
+  야옹님 (to 멍멍님):
+
+  물론이죠! 한 번 시작해볼까요?
+
+  한 번 천지에 호랑이가 나타났대요. 왜냐면 호랑이가 택배를 배달하는데, 라이언이라고 하는 친구는 주소를 잘 못 보내서... 호랑이가 찾아온 거래요. (하하)
+
+  계속해나갈까요?
+
+  --------------------------------------------------------------------------------
+  멍멍님 (to 야옹님):
+
+  그런데 호랑이는 택배를 전해주려고 하는데 주소를 정말 잘못 보냈어요. 그래서 택배를 받을 사람이 호랑이 발밑에 숨어있었답니다! 호랑이는 주소를 확인할 때마다 발밑을 한 번 더 쳐다보게 되었어요. 그 결과, 택배를 받을 사람은 호랑이 한 발짝 더 가까이 다가가기를 기대했지만, 계속해서 탐탁지 않은 시선을 받았답니다. 호랑이와 택배를 받을 사람 간의 웃긴 대치가 벌어지기 시작했어요.
+
+  어떤 결말이 될지 궁금하죠? 계속해보시죠!
+
+  --------------------------------------------------------------------------------
+  야옹님 (to 멍멍님):
+
+  그러자 택배를 받을 사람이 호랑이를 놀리기로 마음먹었어요. 호랑이가 발밑을 한 번 더 쳐다볼 때마다, 택배를 받을 사람은 한층 더 발밑에 숨어서 호랑이를 놀래키는  찰나를 노렸죠.
+
+  그리고 마침내 호랑이가 발밑에 누군가 있다는 것을 이해하고, 신문지를 덮어두고 있는 택배를 받을 사람은 호랑이 뒤에서 숨어서 "우와! 누가 넌지나는 거야?"라고 소리치면서 호랑이를 놀래키기로 했답니다.
+
+  대미를 앞둔 호랑이와 택배를 받을 사람 사이의 유쾌한 대결, 그 끝은 과연 어떻게  될지 모르겠네요! 그럼 어떻게 해야 할지, 여러분들은 어떻게 생각하시나요? 함께 이어가보세요!
+
+  --------------------------------------------------------------------------------
+  ```
+
+  </details>
+
+#### 예제 2
+
+- **시나리오**
+
+  - NVDA와 TSLA의 주가를 비교하여 표를 이미지로 만드는 python코드를 작성하고, 작성한 코드를 실행해서 이미지를 로컬에 저장하기
+
+  <details>
+  <summary>구현 코드</summary>
+
+  ```python
+  from autogen.coding import LocalCommandLineCodeExecutor
+  from autogen import UserProxyAgent, AssistantAgent
+  import datetime
+  llm_config = {"model": "gpt-4-turbo"}
+
+  # code executor 정의
+  executor = LocalCommandLineCodeExecutor(
+      timeout=60,
+      work_dir="coding", # coding 디렉토리에 코드 생성 후 실행
+  )
+
+  # agent 생성
+  # code executor config Agent
+  code_executor_agent = UserProxyAgent(
+      name="code_executor_agent",
+      llm_config=False,
+      code_execution_config={"executor": executor},
+      human_input_mode="NEVER",
+      default_auto_reply=
+      "Please continue. If everything is done, reply 'TERMINATE'.",
+  )
+  # code wirter Agent
+  code_writer_agent = AssistantAgent(
+      name="code_writer_agent",
+      llm_config=llm_config,
+      code_execution_config=False,
+      human_input_mode="NEVER",
+  )
+  # 코드 생성 프롬프트
+  code_writer_agent_system_message = code_writer_agent.system_message
+  # print(code_writer_agent_system_message)
+  # You are a helpful AI assistant.
+  # Solve tasks using your coding and language skills.
+  # In the following cases, suggest python code (in a python coding block) or shell script (in a sh coding block) for the user to execute.
+  #     1. When you need to collect info, use the code to output the info you need, for example, browse or search the web, download/read a file, print the content of a webpage or a file, get the current date/time, check the operating system. After sufficient info is printed and the task is ready to be solved based on your language skill, you can solve the task by yourself.
+  #     2. When you need to perform some task with code, use the code to perform the task and output the result. Finish the task smartly.
+  # ..(생략)..
+  # Reply "TERMINATE" in the end when everything is done.
+
+  # Task 정의
+  today = datetime.datetime.now().date()
+  message = f"""Today is {today}.
+  NVDA 및 TLSA에 대한 스톡 게인 YTD를 보여주는 선 그래프를 작성합니다.
+  코드가 마크다운 코드 블록에 있는지 확인하고 생성된 선 그래프를 ytd_stock_gains.png 파일에 저장하십시오.
+  """
+
+  # 코드 실행 에이전트를 통해 실행
+  chat_result = code_executor_agent.initiate_chat(
+      code_writer_agent,
+      message=message
+  )
+
+  ```
+
+  </details>
+
+  <details>
+  <summary>코드 실행 결과</summary>
+
+  ```commandline
+  code_executor_agent (to code_writer_agent):
+
+  Today is 2024-06-21. Create a plot showing stock gain YTD for NVDA and TLSA. Make sure the code is in markdown code block and save the figure to a file ytd_stock_gains.png.
+
+  --------------------------------------------------------------------------------
+  code_writer_agent (to code_executor_agent):
+
+  To create a plot showing the Year-To-Date (YTD) stock gains for NVIDIA (ticker symbol: NVDA) and Tesla (ticker symbol: TSLA), we will need to follow several steps:
+
+  1. Fetch the stock data for NVDA and TSLA starting from January 1, 2024, to today (June 21, 2024).
+  2. Calculate the percentage gain YTD for each stock.
+  3. Plot these gains on a chart.
+  4. Save the plot to a file named `ytd_stock_gains.png`.
+
+  Using Python, we can complete these tasks using libraries such as `pandas` for data manipulation and `yfinance` to fetch historical stock data. We'll plot the data using `matplotlib`.
+
+  Here is the complete python script you will execute:
+
+  """python
+  # filename: plot_stocks.py
+  import yfinance as yf
+  import pandas as pd
+  import matplotlib.pyplot as plt
+
+  # Define the start date of the year and today's date
+  start_date = '2024-01-01'
+  end_date = '2024-06-21'
+
+  # Fetch historical data for NVDA and TSLA
+  tickers = ["NVDA", "TSLA"]
+  data = yf.download(tickers, start=start_date, end=end_date)
+
+  # Calculate the relative gain from the start of the year in percent
+  relative_gains = ((data['Adj Close'] - data['Adj Close'].iloc[0]) / data['Adj Close'].iloc[0]) * 100
+
+  # Plotting the results
+  plt.figure(figsize=(10, 6))
+  plt.plot(relative_gains.index, relative_gains['NVDA'], label='NVDA YTD Gain')
+  plt.plot(relative_gains.index, relative_gains['TSLA'], label='TSLA YTD Gain')
+  plt.title('YTD Stock Gains 2024: NVDA vs TSLA')
+  plt.xlabel('Date')
+  plt.ylabel('Percentage Gain (%)')
+  plt.legend()
+  plt.grid(True)
+
+  # Save the plot to a file
+  plt.savefig('ytd_stock_gains.png')
+  plt.show()
+
+
+  This script will:
+  - Download the stock data for NVDA and TSLA for the specified period using yfinance.
+  - Calculate the percentage gain using the adjusted close prices.
+  - Plot these gains and save the resulting plot to `ytd_stock_gains.png`.
+
+  Make sure to install the necessary packages before you run this script:
+  """sh
+  pip install yfinance pandas matplotlib
+  """
+
+  Execute the provided Python script file after installing the dependencies. It will automatically generate and display the plot, as well as save it to `ytd_stock_gains.png`.
+
+  --------------------------------------------------------------------------------
+  ```
+
+  또한 coding 디렉토리 내에 표를 만드는 python코드와 그래프 이미지가 저장되었다.
+
+  </details>
+
+---
+
+`CrewAI`의 시나리오와 코드를 보면 제가 가상의 팀을 구성해서, 팀리더가 된 기분이 듭니다. 실제로 전문가들을 고용하고 일을 지시할 필요 없이 저렇게 코드로 만들고, `넌 이거고 이거해` 라고 하니 알아서 작업을 수행해준다는 것이 너무 신기하네요!!
+
+`AutoGen`에서는 코딩을 하는 Agent도 만들어보았는데요.. 똑똑하게 잘하네요 😂

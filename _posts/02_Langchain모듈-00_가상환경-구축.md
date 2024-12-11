@@ -1,0 +1,55 @@
+1. vscode에서 `requirements-v2.txt` 파일 프로젝트 루트 경로에 두기
+
+[requirements-v2.txt](uploads/59c08381cbac34a8cc2deeac1b8e6497/requirements-v2.txt)
+
+![image-20240704145042017](uploads/02_Langchain%EB%AA%A8%EB%93%88-00_%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95/image-20240704145042017.png)
+
+2. cmd 창 열기
+
+![image-20240704145051998](uploads/02_Langchain%EB%AA%A8%EB%93%88-00_%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95/image-20240704145051998.png)
+
+3. cmd창에 명령어를 통해 새로운 가상환경 생성
+
+   ```
+   python -m venv {가상환경이름}
+   ```
+
+   ![image-20240704145058348](uploads/02_Langchain%EB%AA%A8%EB%93%88-00_%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95/image-20240704145058348.png)
+4. cmd창에 명령어를 통해 새로운 가상환경 활성화하기
+
+   ```
+   {가상환경이름}\Scripts\activate.bat
+   ```
+
+   ex)
+
+   ```
+   .venv-2\Scripts\activate.bat 
+   ```
+5. 가상환경 활성화 확인
+
+   ![image-20240704145104538](uploads/02_Langchain%EB%AA%A8%EB%93%88-00_%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95/image-20240704145104538.png)
+
+- 저는 가상환경명이 `venv-langchain-v2`로 생성하였습니다. 생성된 가상환경 명이 괄호 안에 옵니다.
+
+6. cmd에 명령어 수행하여 라이브러리 설치
+
+   ```
+   pip install -r {requirements파일명}
+   ```
+
+   ex)
+
+   ```
+   pip install -r requirements-v2.txt
+   ```
+
+**:exclamation: 가상환경 변경 방법**
+
+cmd창에서 `{변경대상 가상환경 경로}Scripts\activate.bat`를 수행하면 됩니다.
+
+> 혹시 변동이 바로 적용되지 않는다면, cmd창을 닫았다가 다시 켠 후 재시도 해봅니다.
+
+**:exclamation: 라이브러리 설치 목록 조회 방법**
+
+cmd 창에서 `pip list` 를 수행하면 됩니다.
