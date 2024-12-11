@@ -40,7 +40,6 @@
     "@semantic-release/git": "^10.0.1",
     "concurrently": "^9.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "husky": "^9.1.7",
     "purgecss": "^7.0.2",
     "rollup": "^4.27.4",
     "semantic-release": "^24.2.0",
