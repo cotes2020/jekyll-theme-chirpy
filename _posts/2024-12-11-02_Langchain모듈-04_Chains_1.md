@@ -19,7 +19,7 @@ Chains이 무엇인지에 대해 알아보고, 각 방식들에 대해서도 자
 
 **<mark>`Chains`는 LLM, 도구, 또는 데이터 전처리 단계의 모듈을 하나의 묶음으로 연동하고, 각 단계에 대한 호출 시퀀스를 나타냅니다.</mark>**
 
-![1720574269212](image/02_Langchain모듈-04_Chains_1/1720574269212.png)
+![]({{"/assets/img/posts/1720574269212"  | relative_url }})
 
 Chains는 랭체인의 모듈들을 연결하는 Runnable입니다. 각 모듈들의 input / output type에 맞춰 순서대로 구성해주면 됩니다.
 
@@ -36,7 +36,7 @@ Runnable Interface는 chain을 실행할 수 있는 다양한 메서드를 제�
 
 - Langchain Components' input/output Type
 
-![1720574388998](image/02_Langchain모듈-04_Chains_1/1720574388998.png)
+![]({{"/assets/img/posts/1720574388998"  | relative_url }})
 
 LangChain의 체인은 LCEL 방식과 legacy 방식으로 분류됩니다.
 
@@ -61,21 +61,21 @@ LangChain의 체인은 LCEL 방식과 legacy 방식으로 분류됩니다.
 
 1. **`LLMChain`, `ConversationChain` : 여러 모듈의 조합**
 
-   <img src="uploads/02_Langchain모듈-04_Chains/2024-06-05-11-02-48-image.png" title="" alt="" data-align="left">
+   ![]({{"/assets/img/posts/2024-06-05-11-02-48-image.png" title="" alt="" data-align="left"  | relative_url }})
 
    Chain이 없어도 구현을 할 수 있지만 Chain을 이용하면 여러 단계를 하나의 모듈로 대체할 수 있습니다.
 
    우리는 사실 그 전에도 Chain 모듈을 사용하여 구현을 했습니다. [Memory를 이용한 챗봇 구현](https://git.bwg.co.kr/gitlab/study/langchain/-/wikis/02_Langchain%EB%AA%A8%EB%93%88-03_Memory_1_chatbot#conversationchain-%EB%AA%A8%EB%93%88-%EC%9D%91%EC%9A%A9%ED%8E%B8) 시, Memory 모듈에서 각각 구현했던 모듈들을 `ConversationChain` 하나의 모듈을 이용해 변환하여 구현해보기도 했습니다.
 2. **`LLMRequqestChain(deprecated)`,`createOpenAIChain` : 특정 용도에 특화된 체인**
 
-   <img src="uploads/02_Langchain모듈-04_Chains/2024-06-05-11-03-28-image.png" title="" alt="" data-align="left">
+   ![]({{"/assets/img/posts/2024-06-05-11-03-28-image.png" title="" alt="" data-align="left"  | relative_url }})
 
    언어 모델의 호출만으로는 대응하기 어려운 기능이나 복잡한 처리를 랭체인 측에서 미리 내장해 특정 용도에 특화된 Chains도 존재합니다.
 
    현재는 deprecated되었지만 `LLMRequqestChain`의 경우 주어진 URL에 접속해 얻은 결과와 질문을 조합해 만든 프롬프트로 언어 모델을 호출할 수 있습니다. `createOpenAIChain`은 OpenAPI 스펙을 검색하여 체인을 생성할 수 있습니다.
 3. **`SimpleSequentialChain` : 체인들을 묶음**
 
-   <img src="uploads/02_Langchain모듈-04_Chains/2024-06-05-11-03-40-image.png" title="" alt="" data-align="left">
+   ![]({{"/assets/img/posts/2024-06-05-11-03-40-image.png" title="" alt="" data-align="left"  | relative_url }})
 
    Chain은 하나의 `기능 덩어리` 라고 할 수 있습니다. 이 기능 덩어리를 여러 개 순비해 순서대로 실행하거나 필요에 따라 호출할 수 있도록 Chains 자체를 묶을 수 있습니다. 예를 들어 `LLMRequqestChain`으로 웹페이지에서 얻은 정보를 요약하고, 그 정보를 다른 Chain으로 처리하는 등의 작업이 가능하다.
 

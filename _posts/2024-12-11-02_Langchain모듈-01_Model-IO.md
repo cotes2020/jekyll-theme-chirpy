@@ -9,7 +9,7 @@ tags: [Langchain, AI, AI Application]
 
 [1장](./01_Langchain-basic)에서 다뤘던 간단한 LLM 어플리케이션의 아키텍쳐 그림을 다시 살펴봅시다.
 
-<img src="uploads/%2302_Langchain모듈-(01)Model-IO/2024-05-30-17-00-07-image.png" title="" alt="" data-align="center">
+![]({{"/assets/img/posts/2024-05-30-17-00-07-image.png" title="" alt="" data-align="center"  | relative_url }})
 
 위 아키텍쳐에서 숫자를 매긴 부분에 대한 동작은 아래와 같이 이루어집니다. Langchain의 Model I/O는 아래의 모듈로 구성됩니다.
 
@@ -21,7 +21,7 @@ tags: [Langchain, AI, AI Application]
 
 Model I/O의 아키텍쳐입니다.
 
-<img src="uploads/%2302_Langchain모듈-(01)Model-IO/2024-05-30-17-12-53-image.png" title="" alt="" data-align="center">
+![]({{"/assets/img/posts/2024-05-30-17-12-53-image.png" title="" alt="" data-align="center"  | relative_url }})
 
 정해진 Format에 따라 Prompt를 생성하고, 연동된 Model에 질문으로 전달하면 응답을 받아서, 사용자가 원하는 형식으로 파싱하여 결과를 전달받는 과정입니다.
 
@@ -37,6 +37,7 @@ Model I/O의 세 가지 모듈을 각 각 좀 더 자세히 볼까요?
 Language models 모듈은 다양한 언어 모델을 동일한 인터페이스에서 호출할 수 있는 기능을 제공합니다. 위 예제에서는 openAI의 chatGPT를 사용했으나, 다른 코드 변환 없이 모델을 호출해주는 부분에서 huggingface 등의 다른 모델명을 작성하면 다른 모델을 호출 할 수 있습니다. 이를 통해 다른 모델에 대한 테스트 시, 매우 간편하게 모델을 변경할 수 있습니다.
 
 > 01_model.py
+
 ```python
 from langchain.chat_models import ChatOpenAI  #← 모듈 가져오기
 from langchain.schema import HumanMessage  #← 사용자의 메시지인 HumanMessage 가져오기
@@ -82,6 +83,7 @@ LLM을 호출할 때는 위와 같이 단순히 모델명만 지정해서 호출
 여러 파라미터들을 이용해서 설정을 추가해줄 수 있습니다.
 
 > 01_model_param.py
+
 ```python
 from langchain.chat_models import ChatOpenAI  # ← 모듈 가져오기
 from langchain.schema import HumanMessage  # ← 사용자의 메시지인 HumanMessage 가져오기
@@ -163,6 +165,7 @@ print(result.content)
 위에서는 가장 기본적인 Prompt Template인 `PromptTemplate`을 사용해보았는데요,
 대화 메시지의 목록을 프롬프트로 작성하는 `ChatPromptTemplate`도 많이 사용되는 라이브러리입니다.
 > 02_prompt-2.py
+
 ```python
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import ChatOpenAI

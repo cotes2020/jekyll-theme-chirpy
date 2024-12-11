@@ -180,7 +180,7 @@ print(response["messages"])
 4. File Write Tool 수행: 웹검색 결과값을 지정된 경로에 저장
 5. 모델 호출: 지금까지 수행된 과정 보고, 파일 저장까지 확인 -\> 수행 종료
 
-![1721009026806](image/02_Langchain%EB%AA%A8%EB%93%88-05_Agent_1_basic/1721009026806.png)
+![]({{"/assets/img/posts/1721009026806"  | relative_url }})
 
 로컬에 지정된 경로에 검색 내용이 담긴 파일이 저장된 것을 확인할 수 있습니다.
 
@@ -257,7 +257,7 @@ print(response["messages"])
 
 우리가 만든 `multiply` 툴과 파일 저장하는 툴인 `write_file`을 통해 연산 과정이 아래 그림과 같이 디스크에 파일로 저장되었습니다.
 
-![1721009932188](image/02_Langchain%EB%AA%A8%EB%93%88-05_Agent_1_basic/1721009932188.png)
+![]({{"/assets/img/posts/1721009932188"  | relative_url }})
 
 [랭스미스](https://smith.langchain.com/public/ed4bf1eb-9562-4646-a53b-ac8776d0b57a/r)의 결과를 보면 `multiply` 툴을 통해 곱셈연산을 수행하고, `write_file` 툴을 통해 파일로 저장한 과정을 확인할 수 있습니다.
 
