@@ -1,5 +1,5 @@
 ---
-title: "dd"
+title: "기업에서 AI를 잘 활용하기 꼭 필요한 사항들"
 categories: [AI, Trend]
 tags: [AI, AI사업]
 ---
