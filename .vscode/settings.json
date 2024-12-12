@@ -7,7 +7,7 @@
     "*.html": "liquid"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // Formatter
   "[html][liquid]": {
