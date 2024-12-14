@@ -43,9 +43,9 @@ With more and more services and my RPI's inability to decode some huge media, I 
 ![Lenovo Thinkstation](lenovo.png){: w="200" h="150"}
 _Lenovo Thinkstation_
 
-For the OS, I installed the latest stable Debian release (headless version) to have a solid foundation and still have compatibility with most software.
+For the OS, I installed the most recent stable Debian release (headless version) to provide a solid base while remaining compatible with the majority of software.
 
-It was installed on a new 512Go SSD to improve the performance. The 1 TO hard drive store only services data (media, static storage, ...).
+It was placed on a new 512GB SSD to enhance performance. The 1 TO hard disk store only handles data (media, static storage, etc.).
 
 ## My server services
 
