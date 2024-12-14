@@ -27,7 +27,7 @@ To address these concerns, I took two steps: I installed Docker and purchased ne
 
 ## Easy setup with Docker
 
-Docker is a platform designed to run software inside a container. Containers are isolated from one another and bundle their own software, libraries and configuration files. And because all the containers share a single operating system kernel, they use fewer resources than virtual machines. 
+Docker is a platform for running applications within a container. Containers are segregated from one another and include their own software, libraries, and configuration files. Furthermore, because all containers use the same operating system kernel, they consume fewer resources than virtual computers. 
 
 ![Docker](docker.png){: w="300" h="150"}
 _Docker_
