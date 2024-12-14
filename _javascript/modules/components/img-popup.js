@@ -4,12 +4,47 @@
  * Dependencies: https://github.com/biati-digital/glightbox
  */
 
-const IMG_CLASS = 'popup';
+const lightImages = '.popup:not(.dark)';
+const darkImages = '.popup:not(.light)';
+let selector = lightImages;
+
+function updateImages(current, reverse) {
+  if (selector === lightImages) {
+    selector = darkImages;
+  } else {
+    selector = lightImages;
+  }
+
+  if (reverse === null) {
+    reverse = GLightbox({ selector: `${selector}` });
+  }
+
+  [current, reverse] = [reverse, current];
+}
 
 export function imgPopup() {
-  if (document.getElementsByClassName(IMG_CLASS).length === 0) {
+  if (document.querySelector('.popup') === null) {
     return;
   }
 
-  GLightbox({ selector: `.${IMG_CLASS}` });
+  const hasDualImages = !(
+    document.querySelector('.popup.light') === null &&
+    document.querySelector('.popup.dark') === null
+  );
+
+  if (Theme.visualState === Theme.DARK) {
+    selector = darkImages;
+  }
+
+  let current = GLightbox({ selector: `${selector}` });
+
+  if (hasDualImages && Theme.switchable) {
+    let reverse = null;
+
+    window.addEventListener('message', (event) => {
+      if (event.source === window && event.data && event.data.id === Theme.ID) {
+        updateImages(current, reverse);
+      }
+    });
+  }
 }
