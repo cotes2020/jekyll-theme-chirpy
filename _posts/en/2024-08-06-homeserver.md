@@ -32,7 +32,7 @@ Docker is a platform for running applications within a container. Containers are
 ![Docker](docker.png){: w="300" h="150"}
 _Docker_
 
-For those reasons, using Docker is an ideal choice, and it becomes trivial to manage multiple services running on the same server and not think about dependencies, incompatibilities, etc...
+For these reasons, Docker is an excellent alternative, making it simple to manage different services operating on the same server without worrying about dependencies, incompatibilities, and so on.
 
 Also, I define all my container configuration in YAML files by using Docker Compose. This way all the server configurations can be easily backed up and updated.
 
