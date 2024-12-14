@@ -1,22 +1,21 @@
 ---
-# the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
 lang: en
 ---
 
-My name is Nicolas BESNARD, and I'm a young and passionate embedded software engineer. I graduated in 2022 in embedded system. Since I worked in automotive and nowaday on an open-source and embedded operating system (prplOS) for gateways. I'm constantly looking for new projects to start or new skills and technologies to learn. 
+My name is Nicolas BESNARD, and I'm a young and passionate embedded software engineer. In 2022, I graduated from embedded systems.  I've worked in automotive and am currently working on an open-source and embedded operating system (prplOS) for gateways. I am always looking for new projects to start or new skills and technologies to learn.
 
-I started playing with software and electronics almost 10 years ago, when I was still in high school. During this time, I did a lot of different personal and school projects.
-Although they are probably mostly uninteresting, I would have loved to be able to reflect on my train of thought, why I made these choices, and the mistake I made.
+I began experimenting with software and electronics nearly ten years ago, while still in high school. During this time, I completed a variety of personal and school projects.
+Although they are most likely uninteresting, I would have liked to be able to reflect on my train of thought, why I made these decisions, and the mistake I made.
 
-And because it is never too late, I have decided to write this blog with the main objective of keeping a record of my new projects, thoughts, and knowledge. 
-At the same time, it is also an opportunity for me to improve my technical, communication, and writing skills as a complete beginner blogger. So please don't judge this website too hard; it has no ambition to grow or attract readers but mainly serves as a personal place to archive my projects and talk about my passion.
-You might ask me why I don't keep all of this private and away from the internet's indiscreet and careless eyes.
+And, because it is never too late, I have decided to create this blog with the primary goal of keeping track of my new projects, ideas, and expertise. 
+At the same time, it provides an opportunity for me to hone my technical, communication, and writing skills as a new blogger. Please do not pass judgment on my website; it has no intention of growing or attracting viewers, but rather serves as a personal space for me to archive my efforts and discuss my passions.
 
-To be honest, that is what I had planned to do first. But then I remembered that my friends, family, or coworkers had been interested in some of my projects, and this website could be a good way to let them know what I do. 
+You might be wondering why I don't keep all of this private and out of the prying eyes of the internet.
+To be honest, that was what I had intended to accomplish first. But then I realized that some of my friends, family, and coworkers had expressed an interest in some of my projects, and this website could be an excellent method to inform people about what I do.
 
-Another advantage of writing publicly is that it creates a nice pressure on me to meet a minimum quality standard before publishing a post, making it more understandable and detailed.
+Another benefit of writing publicly is that it puts pressure on me to fulfill a minimum quality standard before releasing a post, which makes it more intelligible and accurate.
 
 
-PS: If you come from the far future and see this website having no recent activities, I probably gave up on it because of a lack of motivation or time...
+PS: If you are viewing this website from the far future and see that there are no recent activities, I most likely gave up on it due to a lack of time or motivation.
