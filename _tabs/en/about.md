@@ -5,7 +5,7 @@ order: 4
 lang: en
 ---
 
-My name is Nicolas BESNARD, and I'm a young and passionate embedded software engineer. I graduated in 2022 in embedded system and since worked in automotive and currently on an open-source and embedded operating system (prplOS) for network devices. I'm constantly looking for new projects to start (and I hope I will finish...) or new skills and technologies to learn. 
+My name is Nicolas BESNARD, and I'm a young and passionate embedded software engineer. I graduated in 2022 in embedded system. Since I worked in automotive and nowaday on an open-source and embedded operating system (prplOS) for gateways. I'm constantly looking for new projects to start or new skills and technologies to learn. 
 
 I started playing with software and electronics almost 10 years ago, when I was still in high school. During this time, I did a lot of different personal and school projects.
 Although they are probably mostly uninteresting, I would have loved to be able to reflect on my train of thought, why I made these choices, and the mistake I made.

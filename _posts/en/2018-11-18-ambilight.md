@@ -1,7 +1,7 @@
 ---
 title: 'Ambilight monitor : Adding backlight to a screen'
 description: A cheap solution to add ambilight technology to a monitor.
-date: {}
+date: 2018-11-18
 categories:
   - Embedded
 media_subpath: /assets/img/posts/ambilight

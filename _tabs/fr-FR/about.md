@@ -5,7 +5,7 @@ order: 4
 lang: fr-FR
 ---
 
-Je m'appelle Nicolas BESNARD, et je suis un jeune et passioné ingénieur en logiciel embarqué. Diplômé en 2022 en système embarqué, j'ai depuis travaillé dans l'automobile et actuellement sur un système d'exploitation embarqué et open-source (prplOS) pour les périphériques réseau. Je suis toujours à la recherche de nouveaux projets à commencer (et que j'espère terminer...) ou de nouvelles compétences et technologies à apprendre. 
+Je m'appelle Nicolas BESNARD, et je suis un jeune et passioné ingénieur en logiciel embarqué. Diplômé en 2022 en système embarqué, j'ai depuis travaillé dans l'automobile et actuellement sur un système d'exploitation embarqué et open-source (prplOS) pour les périphériques réseau. Je suis toujours à la recherche de nouveaux projets à commencer ou de nouvelles compétences et technologies à apprendre. 
 
 J'ai commencé à jouer avec les logiciels et l'électronique, il y a presque 10 ans, alors que j'étais encore au lycée. Pendant cette période, j'ai réalisé de nombreux projets personnels et scolaires.
 Bien qu'ils soient probablement inintéressants pour la plupart, j'aurais aimé pouvoir réfléchir à mon cheminement de pensée, aux raisons de mes choix et aux erreurs que j'ai commises.
