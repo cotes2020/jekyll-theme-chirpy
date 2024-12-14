@@ -49,22 +49,22 @@ It was placed on a new 512GB SSD to enhance performance. The 1 TO hard disk stor
 
 ## My server services
 
-Now that I had a nice and running server, I started to add more and more services depending on my needs. I made the following infographic with the services I am currently using :
+Now that I had a functioning server, I began to add more and more services based on my needs. I created the following infographic using the services I am now utilizing :
 
 ![Homeserver Architecture](beniserv.png){: w="600" h="650"}
 _My Home Server Services_
 
 ### Access and security
 
-The most important service is probably Caddy. It is a web server with automatic HTTPS and reverse proxy features. 
+The most important service is likely Caddy. It is a web server that includes automated HTTPS and reverse proxy functionality. 
 
-In other words, thanks to Caddy, I can access my services directly by using a subdomain and all the traffic will be encrypted and forwarded to the 443 port. For example, I can access one of my services directly on "myservice.beniserv.fr" and another on "myotherservice.beniserv.fr", etc...
+In other words, due to Caddy, I can access my services directly via a subdomain, and all traffic is encrypted and sent to the 443 port. For example, I can access one of my services directly at "myservice.beniserv.fr" and another at "myotherservice.beniserv.fr", and so on.
 
-With this setup, I only have to expose one port (443) to internet, and everything is always encrypted.
+With this configuration, I only need to expose one port (443) to the internet.
 
-I also added a dynamic DNS plugin to Caddy, in order to sync my IP server adress with my domain name provider. So even if my internet service provider attributes me a dynamic IP, I can always have access to my homeserver via my domain name.
+I also implemented a dynamic DNS plugin to Caddy to synchronize my IP server address with my domain name provider. So, even if my internet service provider assigns me a dynamic IP address, I can always reach my home server using my domain name.
 
-To improve security, I also use a service called Crowdsec to detect peers with malicious behaviors and block them from accessing my server. Crowdsec analyzes the Caddy logs, and if its behavior engine detects one of the configured scenarios, it will block the IP at a firewall level. The advantage of Crowdsec over the other similar services available (Fail2ban for example), is that it offers a collaborative solution. Indeed, when a Crowdsec user blocks an aggressive IP, it is also shared among all users to further improve everyone's security.
+To improve security, I also use Crowdsec, a service that detects malicious peers and prevents them from accessing my server. Crowdsec analyzes the Caddy logs, and if its behavior engine detects one of the configured scenarios, it blocks the IP address at the firewall level. Crowdsec's advantage over other similar services (such as Fail2ban) is that it provides a collaborative solution. Indeed, when a Crowdsec user blocks an aggressive IP, the information is shared with all users, thereby improving everyone's security.
 
 ### Update and backup
 
