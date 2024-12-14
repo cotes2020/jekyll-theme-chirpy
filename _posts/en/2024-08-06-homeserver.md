@@ -1,29 +1,29 @@
 ---
 title: 'Home Server : My self-hosted services'
 description: Discover how I host multiples services on my own server
-date: 2022-02-03
+date: {}
 categories: []
 media_subpath: /assets/img/posts/homeserver
 tags: []
 lang: en
 ---
 
-In a world, where we are more and more dependent to the cloud and large corporations to store our data, I became quickly interested in self-hosting. For 3 years, I host several services on my server for my relatives and me.
+In a world where we are increasingly reliant on the cloud and large corporations to store our data, I became very interested in self-hosting. For the past three years, I've hosted several services on my server for my relatives and myself.
 
-## The start of my journey: Raspberry PI and PI-Hole 
+## The beginning of my journey: Raspberry Pi and PI-Hole
 
-My self-hosted addiction first started with a Raspberry PI and the PI-Hole application to filter all advertisements and tracking in my network at a DNS level. I used it like that for almost a year, but then I wanted to have more. 
+My self-hosted addiction began with a Raspberry PI and the PI-Hole application, which filters all advertisements and tracking on my network at the DNS level. I used it that way for nearly a year before realizing I needed more.
 
 ![PI-Hole](pihole.png){: w="150" h="150"}
 _PI Hole_
 
-The first service I wanted to add was a media server. The most popular at that time was Plex. 
-So I connected a 1 TO hard drive to store the media and tried to install and configure Plex Server. It was relatively easy to set up, but after using it for some time, I encountered issues. 
+The first service I intended to create was a media server. The most popular at the time was Plex. 
+So I attached a 1TB hard drive to store the media and attempted to install and configure Plex Server. It was simple to set up, however after a while, I ran across problems.
 
-First, instabilities occured regularly when Plex or other software was updated. 
-Second, the Raspberry PI model 3B+ with 1GB RAM and a quad-core processor cadenced at 1.4GHz, was struggling to decode high-resolution media. 
+First, instabilities occurred frequently when Plex or other software was updated. 
+Second, the Raspberry PI model 3B+, which had 1GB RAM and a quad-core processor clocked at 1.4GHz, struggled to decode high-resolution video. 
 
-To fix this issues I took two initiatives : using Docker and buying new hardware.
+To address these concerns, I took two steps: I installed Docker and purchased new hardware.
 
 ## Easy setup with Docker
 
