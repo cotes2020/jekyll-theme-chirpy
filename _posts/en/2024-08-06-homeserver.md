@@ -38,7 +38,7 @@ I also define all of my container configurations in YAML files using Docker Comp
 
 ## A more powerful hardware
 
-With more and more services and my RPI inability to decode some large media, I chose to buy more powerful hardware. I found a Lenovo Thinkstation on the second-hand market (often flooded with old enterprise hardware). It is a lot cheaper than a real server and is largely enough for my use.
+With more and more services and my RPI's inability to decode some huge media, I decided to purchase more capable hardware. I found a Lenovo Thinkstation on the used market (which is frequently swamped with outdated enterprise hardware). It is significantly less expensive than a traditional server and is adequate for my needs.
 
 ![Lenovo Thinkstation](lenovo.png){: w="200" h="150"}
 _Lenovo Thinkstation_
