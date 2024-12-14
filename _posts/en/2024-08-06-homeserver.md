@@ -1,7 +1,7 @@
 ---
 title: 'Home Server : My self-hosted services'
 description: Discover how I host multiples services on my own server
-date: {}
+date: 2022-02-03T00:00:00.000Z
 categories: []
 media_subpath: /assets/img/posts/homeserver
 tags: []
@@ -68,9 +68,9 @@ To improve security, I also use Crowdsec, a service that detects malicious peers
 
 ### Update and backup
 
-I also have Watchtower to always keep all my services updated and benefits from the latest security fix and features. Every night, it downloads the latest versions and replaces them if an update is available.
+I also have Watchtower, which keeps all of my services up to date and provides me with the most recent security fixes and features. Every night, it downloads and replaces the most recent versions if an update is available.
 
-And because sometimes an update or a storage drive can fail, I use a service to do a periodic backup. Every night, it will save all the server configurations and some data in an encrypted archive file. This archive is then saved on my 1 TO hard drive and on an AWS cloud storage server. A retention policy of 7 days makes sure to not bloat the backup storage by removing the oldest backup archives.
+And, because an update or a storage drive can fail at any time, I use a backup service on a regular basis. Every night, it saves all server configurations and data to an encrypted archive file. This archive is then saved to both my 1 TO hard drive and an AWS cloud storage server. A 7-day retention policy ensures that backup storage does not become bloated by removing the oldest backup archives.
 
 > Find the docker-volume-backup service here : [https://github.com/offen/docker-volume-backup](https://github.com/offen/docker-volume-backup).
 {: .prompt-tip }
@@ -78,11 +78,11 @@ And because sometimes an update or a storage drive can fail, I use a service to 
 
 ### Monitoring
 
-With multiple services running, I need to have a way to monitor them and receive notification when an issue is detected. That's why I use Portainer and Homepage.
+With multiple services running, I need a way to monitor them and receive alerts when an issue arises. This is why I use Portainer and Homepage.
 
-Portainer allows you to directly manage Docker containers via a graphical interface. Even though I prefer to always use Docker Compose to deploy new service, I still use Portainer to monitor the health status of my already existing services. When needed, I can also easily restart them from the Portainer UI.
+Portainer provides a graphical interface for managing Docker containers. Even though I prefer to use Docker Compose to deploy new services, I still use Portainer to monitor the health of my existing services. When necessary, I can easily restart them from the Portainer UI.
 
-Homepage, is a highly customizable dashboard. It proposes widgets for a wide choice of services, and can display different system metrics (uptime, disk space, server temperature, ...). I use it as a quick way to access my different services.
+Homepage is a highly customizable dashboard. It provides widgets for a wide range of services and can display various system metrics (uptime, disk space, server temperature, etc.). I use it to quickly access my various services.
 
 ![Homepage example](homepage.png){: w="600" h="350"}
 _Homepage example (not mine)_
@@ -90,11 +90,11 @@ _Homepage example (not mine)_
 > Find the homepage service here : [https://github.com/gethomepage/homepage](https://github.com/gethomepage/homepage).
 {: .prompt-tip }
 
-To be alerted in case of errors, my services are also sending messages on a private Discord server.
+To be notified of errors, my services also send messages to a private Discord server.
 
 ### Other services
 
-Like you can see on the previous image, the following services are also running :
+As you can see in the previous image, the following services are also running :
 - **Jellyfin** : Media server I use instead of Plex.
 - **Paperless-ngx** : Document management and storage system
 - **Nextcloud** : Cloud storage service
