@@ -34,7 +34,7 @@ _Docker_
 
 For these reasons, Docker is an excellent alternative, making it simple to manage different services operating on the same server without worrying about dependencies, incompatibilities, and so on.
 
-Also, I define all my container configuration in YAML files by using Docker Compose. This way all the server configurations can be easily backed up and updated.
+I also define all of my container configurations in YAML files using Docker Compose. This allows all server configurations to be easily backed up and updated.
 
 ## A more powerful hardware
 
