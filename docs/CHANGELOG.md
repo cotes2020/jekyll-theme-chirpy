@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.2.3](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.2...v7.2.3) (2024-12-15)
+
+### Bug Fixes
+
+* refreshing mermaid theme may fail ([#2113](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2113)) ([2f00d41](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2f00d41861f1b06c2ff7fa4e67e14e647c3c34b0))
+* **ui:** gap between TOC entries is inconsistent ([#2119](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2119)) ([1b4e318](https://github.com/cotes2020/jekyll-theme-chirpy/commit/1b4e318dc1cd57da812e11bf69ebb06083c213fc))
+* **ui:** slow script loading hides TOC fade-up effect in desktop ([#2120](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2120)) ([e0c3faf](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e0c3fafa470eb12bd04ffdf198018bc28b6de20d))
+
 ## [7.2.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.1...v7.2.2) (2024-12-06)
 
 ### Bug Fixes
