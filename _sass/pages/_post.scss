@@ -220,14 +220,11 @@ header {
 @-webkit-keyframes fade-up {
   from {
     opacity: 0;
-    position: relative;
-    top: 2rem;
+    margin-top: 4rem;
   }
 
   to {
     opacity: 1;
-    position: relative;
-    top: 0;
   }
 }
 
@@ -247,6 +244,7 @@ header {
 %top-cover {
   content: '';
   display: block;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;
@@ -257,12 +255,15 @@ header {
 #toc-wrapper {
   top: 0;
   transition: top 0.2s ease-in-out;
-  -webkit-animation: fade-up 0.8s;
-  animation: fade-up 0.8s;
   overflow-y: auto;
   max-height: 100vh;
   scrollbar-width: none;
   margin-top: 2rem;
+
+  &:not(.invisible) {
+    -webkit-animation: fade-up 0.8s;
+    animation: fade-up 0.8s;
+  }
 
   ul {
     list-style: none;
