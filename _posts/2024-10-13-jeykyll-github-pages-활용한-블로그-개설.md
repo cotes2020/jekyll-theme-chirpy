@@ -9,7 +9,7 @@ tags: [blog, jekyll]
 # image: 대표이지미지 경로(/assets/imgages/000.
 # permaling: /custom-url-for-post/
 comments: false  # 댓글 가능 유무
-published: false # 공개/비공개
+published: true # 공개/비공개
 ---
 
 # 블로그 선택
