@@ -33,7 +33,7 @@ tags: [AI, ML]
 
 - 旨在通过`限制策略更新的幅度`来提高学习的稳定性。
 
-- PPO 的目标是在更新策略时，尽量保持当前策略和新策略之间的相似性。
+- 目标是在更新策略时，尽量保持当前策略和新策略之间的相似性。
 
 - PPO optimizes a policy (LLM) to be more aligned with human preferences
 
