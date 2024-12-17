@@ -1,10 +1,10 @@
 ---
 title: [CD3] ACL ARR Submission과 논문을 '잘' 쓰는 법 
-author: cotes
+author: CWK
 date: 2024-12-17 17:03:00 +900
 categories: [Blogging, Tutorial]
 tags: [writing]
-render_with_liquid: false
+published: true
 ---
 
 12월 16일, ACL ARR 2024 December Submission을 완료했다. 
