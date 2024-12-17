@@ -2,8 +2,6 @@
 title: ACL ARR Submission과 논문을 '잘' 쓰는 법 
 author: CWK
 date: 2024-12-17 17:03:00 +900
-categories: [Blogging, Tutorial]
-tags: [writing]
 published: true
 ---
 
