@@ -35,11 +35,27 @@ jobs:
         with:
           fetch-depth: 0 # for posts's lastmod
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+      # Ruby 수동 설치
+      - name: Install Ruby ${{ matrix.ruby }}
+        run: |
+          RUBY_VERSION=${{ matrix.ruby }}
+          INSTALL_PATH=/opt/hostedtoolcache/Ruby/${RUBY_VERSION}/x64
+
+          sudo mkdir -p $INSTALL_PATH
+          sudo chown -R $(whoami) $INSTALL_PATH
+
+          # ruby-build 설치 및 Ruby 빌드
+          curl -fsSL https://github.com/rbenv/ruby-build/archive/refs/heads/master.tar.gz | tar xz
+          cd ruby-build-* && sudo ./install.sh
+          ruby-build $RUBY_VERSION $INSTALL_PATH
+          touch $INSTALL_PATH.complete
+
+          # PATH 설정
+          echo "PATH=$INSTALL_PATH/bin:$PATH" >> $GITHUB_ENV
+
+      - name: Verify Ruby Version
+        run: |
+          ruby --version
 
       - name: Setup Node
         uses: actions/setup-node@v4
