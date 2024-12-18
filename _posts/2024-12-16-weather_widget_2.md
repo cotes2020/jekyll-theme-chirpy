@@ -199,7 +199,7 @@ Font Awesome 사이트에서 물방울 아이콘과 바람 아이콘을 가져�
 
 ![image-20241218191606677](../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191606677.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
-저는 이 아이콘들로 선택했어요. 오른쪽에 있는 html 코드를 복사해서 붙여 넣습니다. 아래 코드와 같이 작성하시면 됩니다!
+저는 이 아이콘들로 선택했어요. 오른쪽에 있는 html 코드를 복사해서 붙여 넣습니다. 아래 코드와 같이 작성하시면 됩니다.
 
 ***
 
