@@ -25,7 +25,7 @@ search: true
 
 Skycons를 사용하려면 **skycons.js** 파일이 필요합니다.
 
-[Skycons 깃허브 링크](https://github.com/darkskyapp/skycons)
+[Skycons 깃허브 링크](https://github.com/darkskyapp/skycons){:target="_blank"}
 
 다음 링크에서 zip 파일을 다운한 후, **skycons.js** 파일만 복사해서 자신의 프로젝트 파일로 가져옵니다!
 
