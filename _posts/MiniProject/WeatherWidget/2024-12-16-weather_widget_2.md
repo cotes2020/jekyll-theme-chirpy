@@ -1,6 +1,8 @@
 ---
-title: "간단한 날씨 위젯 코딩 #2 [초기 화면 세팅 / Java Script 미니 프로젝트]"
-categories: MiniProject
+title: "간단한 날씨 위젯 코딩 #2 [초기 화면 레이아웃 세팅 / Java Script 미니 프로젝트]"
+categories:
+- MiniProject
+- WeatherWidget
 tag: [MiniProject, JS, HTML]
 author_profile: false
 sidebar:
@@ -9,13 +11,13 @@ search: true
 ---
 안녕하세요🖐️
 
-오늘은 날씨 위젯을 실행하면 나오는 초기 화면을 세팅해보도록 하겠습니다!
+오늘은 날씨 위젯을 실행하면 나오는 초기 화면의 레이아웃을 세팅해보도록 하겠습니다!
 
 먼저 이미지를 넣어서 날씨를 표현해보도록 하겠습니다.
 
 이미지를 고르려고 구글링을 하다가 Skycons라는 걸 발견했는데, animated되는 날씨 이미지가 마음에 들어서 이걸 사용했습니다.
 
-![image-20241216165413166](../assets/img/posts/2024-12-16-weather_widget_2/image-20241216165413166.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241216165413166](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241216165413166.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 ***
 
@@ -27,7 +29,7 @@ Skycons를 사용하려면 **skycons.js** 파일이 필요합니다.
 
 다음 링크에서 zip 파일을 다운한 후, **skycons.js** 파일만 복사해서 자신의 프로젝트 파일로 가져옵니다!
 
-![image-20241216174150184](../assets/img/posts/2024-12-16-weather_widget_2/image-20241216174150184.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218213503664](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241218213503664.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 이렇게 설정해 주시면 됩니다!
 
@@ -56,8 +58,8 @@ Skycons 객체를 생성하고, 맑은 날씨 아이콘을 추가한 후, 애니
         <div class="header">
             <div class="search-box">
                 <input type="text" placeholder="Search" class="input-box">
-                <button class="fa-solid fa-magnifying-glass"></button>
-                <button class="fa-solid fa-location-dot"></button>
+                <button class="fa-solid fa-magnifying-glass" id="searchBtn"></button>
+                <button class="fa-solid fa-location-dot" id="locationBtn"></button>
             </div>
             <div class="weather-body">
                 <canvas id="weather-icon" width="200" height="200" alt="Weather Image" class="weather-img"></canvas>
@@ -97,7 +99,7 @@ css 파일을 수정해서 날씨 아이콘을 중앙에 배치했고, 이미지
 
 ### 구현 결과
 
-![image-20241216180350212](../assets/img/posts/2024-12-16-weather_widget_2/image-20241216180350212.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241216180350212](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241216180350212.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 아이콘이 잘 움직이네요 ㅎㅎ
 
@@ -158,7 +160,7 @@ weather-box 요소의 폰트 크기와 두께, 위치, 텍스트 정렬 및 변�
 
 ### 구현 결과
 
-![image-20241216182309761](../assets/img/posts/2024-12-16-weather_widget_2/image-20241216182309761.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241216182309761](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241216182309761.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 ***
 
@@ -193,9 +195,9 @@ Font Awesome 사이트에서 물방울 아이콘과 바람 아이콘을 가져�
 
 [Font Awesome 바로가기]("https://fontawesome.com")
 
-![image-20241218191536649](../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191536649.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218191536649](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191536649.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
-![image-20241218191606677](../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191606677.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218191606677](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191606677.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 저는 이 아이콘들로 선택했어요. 오른쪽에 있는 html 코드를 복사해서 붙여 넣습니다. 아래 코드와 같이 작성하시면 됩니다!
 
@@ -226,7 +228,7 @@ Font Awesome 사이트에서 물방울 아이콘과 바람 아이콘을 가져�
 
 #### 구현 결과
 
-![image-20241218191950408](../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191950408.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218191950408](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191950408.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 물방울 아이콘과 바람 아이콘이 잘 구현이 되었고, 초기 화면 세팅도 거의 다 완료된 것 같아요🥳🥳
 
@@ -280,7 +282,7 @@ flexbox 레이아웃을 통해서 humidity와 wind를 수평으로 배치했고,
 
 #### 구현 결과
 
-![image-20241218193617357](../assets/img/posts/2024-12-16-weather_widget_2/image-20241218193617357.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218193617357](../../../assets/img/posts/2024-12-16-weather_widget_2/image-20241218193617357.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 코드를 작성하시면 이렇게 깔끔한 초기 화면을 만드실 수 있습니다😊
 
