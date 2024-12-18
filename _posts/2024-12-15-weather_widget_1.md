@@ -31,7 +31,7 @@ search: true
 
 검색, 위치 아이콘을 넣으려면 Font Awesome 사이트에서 자신의 Kit을 만들고 본인 코드에 붙여 넣어야 합니다!
 
-[Font Awesome Kit 코드 가져오기](https://blog.naver.com/dlwndbs5/223575661946) ⬅️이 글을 참고해서 킷 생성을 먼저 해주세요.<br>
+[Font Awesome Kit 코드 가져오기](https://blog.naver.com/dlwndbs5/223575661946){:target="_blank"} ⬅️이 글을 참고해서 킷 생성을 먼저 해주세요.<br>
 
 ***
 

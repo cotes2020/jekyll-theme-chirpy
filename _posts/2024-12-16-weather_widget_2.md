@@ -193,7 +193,7 @@ weather-details 클래스를 만들고, humidity, wind-speed를 표현해 준 �
 
 Font Awesome 사이트에서 물방울 아이콘과 바람 아이콘을 가져와줄께요!
 
-[Font Awesome 바로가기]("https://fontawesome.com")
+[Font Awesome 바로가기](https://fontawesome.com){:target="_blank"}
 
 ![image-20241218191536649](../assets/img/posts/2024-12-16-weather_widget_2/image-20241218191536649.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 

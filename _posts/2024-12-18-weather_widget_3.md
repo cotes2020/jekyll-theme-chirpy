@@ -41,13 +41,13 @@ const wind_speed = document.getElementById('wind-speed');
 
 저는 **OpenWeatherMap API**를 사용했습니다. API를 사용하기 위해 우선 아래 사이트 회원 가입을 해주세요
 
-[OpenWeatherMap 회원 가입]("https://openweathermap.org/")
+[OpenWeatherMap 회원 가입](https://openweathermap.org/){:target="_blank"}
 
 회원 가입을 하고 자신의 **API Key**를 복사합니다.
 
-[API key 가져오기]("https://home.openweathermap.org/api_keys")
+[API key 가져오기](https://home.openweathermap.org/api_keys){:target="_blank"}
 
-다음으로 상단 배너의 API => Current Weather Data의 [API doc]("https://openweathermap.org/current")를 들어가면
+다음으로 상단 배너의 API => Current Weather Data의 [API doc](https://openweathermap.org/current){:target="_blank"}를 들어가면
 
 **Built-in API request by city name**가 나옵니다. (한참 내려야 합니다😂)
 
