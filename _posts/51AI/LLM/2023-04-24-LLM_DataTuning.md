@@ -7,7 +7,12 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
+# LLM - Data Tuning 微调
+
+**Table of contents:**
+
 - [LLM - Data Tuning 微调](#llm---data-tuning-微调)
+  - [overview](#overview)
 - [Instruction-Tuning (指示微调)](#instruction-tuning-指示微调)
 - [Fine-Tuning (微调)](#fine-tuning-微调)
   - [Full Fine-tuning](#full-fine-tuning)
@@ -44,7 +49,6 @@ tags: [AI, ML]
       - [对比数据集](#对比数据集)
       - [RLHF Algorithm](#rlhf-algorithm)
         - [RLHF - PPO / Proximal Policy Optimization (微调)](#rlhf---ppo--proximal-policy-optimization-微调)
-          - [overview](#overview)
           - [特点](#特点)
           - [算法框架](#算法框架)
           - [PPO（近端策略优化）的应用](#ppo近端策略优化的应用)
@@ -78,7 +82,7 @@ ref:
 
 ---
 
-# LLM - Data Tuning 微调
+## overview
 
 目前学术界一般将 NLP 任务的发展分为四个阶段，即 NLP 四范式: [^通俗易懂的LLM(上篇)]
 
@@ -103,7 +107,6 @@ LLM 模型训练过程中的三个核心步骤
 2. (指令)监督微调预训练模型 $LLM^{SFT}$ (supervised-fine-tuning)
 3. 基于人类反馈的强化学习微调 $LLM^{RL}$ (reinforcement-learning)
 
-
 Summary:
 - **Instruction fine-tuning** updates model weights using labeled datasets, whereas **in-context learning** uses examples during inference.
 - **Prompt tuning** adjusts only a few parameters (tokens), not all hyperparameters of the model.
@@ -117,8 +120,8 @@ Summary:
 
 - **Soft prompts** are trainable tokens used to guide the model's performance on specific tasks. A set of trainable tokens that are added to a prompt and whose values are updated during additional training to improve performance on specific tasks.
 
-
 - to prevent **catastrophic forgetting** it is important to fine-tune on multiple tasks with a lot of data.
+
 ---
 
 # Instruction-Tuning (指示微调)
@@ -1955,10 +1958,6 @@ $$
 ---
 
 ##### RLHF - PPO / Proximal Policy Optimization (微调)
-
----
-
-###### overview
 
 ![Screenshot 2024-09-30 at 18.18.39](/assets/img/Screenshot%202024-09-30%20at%2018.18.39.png)
 
