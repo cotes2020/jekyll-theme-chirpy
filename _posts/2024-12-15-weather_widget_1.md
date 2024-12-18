@@ -79,7 +79,7 @@ search: true
 
 #### 구현 결과
 
-![image-20241215184011882](../../../assets/img/posts/2024-12-15-weather_widget_1/image-20241215184011882.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241215184011882](../assets/img/posts/2024-12-15-weather_widget_1/image-20241215184011882.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 실행 결과입니다. html만 코딩하니 너무 초라합니다...😭
 
@@ -165,7 +165,7 @@ body {
 
 #### 구현 결과
 
-![image-20241215185740037](../../../assets/img/posts/2024-12-15-weather_widget_1/image-20241215185740037.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241215185740037](../assets/img/posts/2024-12-15-weather_widget_1/image-20241215185740037.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 제법 보기 좋아진 것 같습니다!
 

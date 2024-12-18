@@ -51,7 +51,7 @@ const wind_speed = document.getElementById('wind-speed');
 
 **Built-in API request by city name**가 나옵니다. (한참 내려야 합니다😂)
 
-![image-20241218200925651](../../../assets/img/posts/2024-12-18-weather_widget_3/image-20241218200925651.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218200925651](../assets/img/posts/2024-12-18-weather_widget_3/image-20241218200925651.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 API를 call할 수 있는 URL도 복사해 줍니다!
 
@@ -91,7 +91,7 @@ inputBox.addEventListener('keypress', (event) => {
 
 #### console 창 출력 결과
 
-![image-20241218210047925](../../../assets/img/posts/2024-12-18-weather_widget_3/image-20241218210047925.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218210047925](../assets/img/posts/2024-12-18-weather_widget_3/image-20241218210047925.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 서울을 검색한 후 console 창을 열어보았습니다.
 
@@ -122,7 +122,7 @@ weather_data.main.temp는 API로부터 받은 온도 데이터로, 켈빈(Kelvin
 
 #### 구현 결과
 
-![image-20241218212252164](../../../assets/img/posts/2024-12-18-weather_widget_3/image-20241218212252164.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218212252164](../assets/img/posts/2024-12-18-weather_widget_3/image-20241218212252164.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 프랑스 파리를 검색해보았습니다.
 
@@ -179,7 +179,7 @@ switch문을 통해서 여러 날씨 별로 표현되는 아이콘을 각기 다
 
 #### 구현 결과
 
-![image-20241218213205180](../../../assets/img/posts/2024-12-18-weather_widget_3/image-20241218213205180.png){:style="border:1px solid #ababab; border-radius: 10px;"}
+![image-20241218213205180](../assets/img/posts/2024-12-18-weather_widget_3/image-20241218213205180.png){:style="border:1px solid #ababab; border-radius: 10px;"}
 
 구름 모양이 잘 나왔네요☁️☁️
 
