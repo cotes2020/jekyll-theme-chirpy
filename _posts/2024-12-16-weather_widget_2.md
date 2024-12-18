@@ -72,7 +72,7 @@ Skycons 객체를 생성하고, 맑은 날씨 아이콘을 추가한 후, 애니
 </body>
 ```
 
-다음으로 skycons을 사용하기 위해서 skycons 라이브러리를 html 코드에 포함하고 weather-body 클래스 안에 weather-icon 캔버스를 생성해줘서 날씨 아이콘이 나타나도록 코딩해주었습니다.
+다음으로 skycons을 사용하기 위해서 skycons 라이브러리를 html 코드에 포함하고 weather-body 클래스 안에 weather-icon 캔버스를 생성해줘서 날씨 아이콘이 나타나도록 코딩해주었습니다!
 
 ***
 
