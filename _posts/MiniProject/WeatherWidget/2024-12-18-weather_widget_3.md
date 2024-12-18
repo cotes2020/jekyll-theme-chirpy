@@ -85,7 +85,7 @@ inputBox.addEventListener('keypress', (event) => {
 
 **fetch 함수**는 지정된 URL로 HTTP 요청을 보내고 완료될 때까지 await로 기다렸다가 응답 객체를 JSON 형식으로 변환하는 함수입니다.
 
-또한 검색 버튼이 눌렸을 때, 엔터 키가 입력되었을 때 checkWeather 함수를 호출하는 코드를 작성해 주었습니다.
+또한 검색 버튼이 눌렸을 때, 엔터 키가 입력되었을 때 checkWeather 함수를 호출하는 코드를 작성해 주었습니다!
 
 ***
 
