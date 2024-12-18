@@ -1,5 +1,5 @@
 ---
-title: "간단한 날씨 위젯 코딩 #1 [Java Script 미니 프로젝트]"
+title: "간단한 날씨 위젯 코딩 #1 [검색창과 검색, 위치 버튼 생성 / Java Script 미니 프로젝트]"
 categories: MiniProject
 tag: [MiniProject, JS, HTML]
 author_profile: false
