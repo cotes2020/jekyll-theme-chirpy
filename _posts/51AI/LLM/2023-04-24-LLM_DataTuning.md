@@ -1940,7 +1940,10 @@ $$
 
 ##### PPO - Proximal Policy Optimization (微调)
 
-[LLM - Data Tuning - PPO](./2023-04-24-LLM_DataTuning_PPO.md)
+[LLM - Data Tuning - RLHF - PPO](./2023-04-24-LLM_DataTuning_RLHF_PPO.md)
+
+[LLM - Data Tuning - RLHF - Problem](./2023-04-24-LLM_DataTuning_RLHF_problem.md)
+
 
 #### PVP - Pattern-Verbalizer-Pair
 

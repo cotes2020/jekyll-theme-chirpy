@@ -11,6 +11,7 @@ tags: [AI, ML]
 
 - [RLHF: Problem](#rlhf-problem)
   - [Reward hacking](#reward-hacking)
+  - [Kullback-Leibler (KL) divergence](#kullback-leibler-kl-divergence)
   - [Assess the RL-updated model's performance.](#assess-the-rl-updated-models-performance)
 
 ---
@@ -41,6 +42,29 @@ For example,
     - This language sounds very exaggerated.
   - ![picture 3](assets/img/92b5422189c58a97c112882254a2bc91557c4b00239cfb64f712a00d738aecec.png)
     - The model also start generating <font color=LightSlateBlue> nonsensical, grammatically incorrect text that just happens to maximize the rewards in a similar way </font>, outputs like this are definitely not very useful.
+
+---
+
+## Kullback-Leibler (KL) divergence
+
+KL/Kullback-Leibler Divergence
+- a concept often encountered in the field of reinforcement learning, particularly when using the Proximal Policy Optimization (PPO) algorithm.
+- It is a mathematical measure of the <font color=LightSlateBlue> difference between two probability distributions </font>, which helps understand how one distribution differs from another.
+- In the context of PPO, KL-Divergence plays a crucial role in `guiding the optimization process` to ensure that the `updated policy does not deviate too much from the original policy`.
+  - In PPO, the goal is to find an i`mproved policy` for an agent by iteratively updating its parameters based on the rewards received from interacting with the environment.
+  - However, updating the policy too aggressively can lead to unstable learning or drastic policy changes.
+  - To address this, PPO introduces a constraint that limits the extent of policy updates. This constraint is enforced by using KL-Divergence.
+
+How KL-Divergence works
+
+- two probability distributions: the distribution of the original LLM, and a new proposed distribution of an RL-updated LLM.
+- KL-Divergence measures the `average amount of information gained` when we use the original policy to encode **samples from the new proposed policy**.
+- By minimizing the KL-Divergence between the two distributions, PPO ensures that the updated policy stays close to the original policy, preventing drastic changes that may negatively impact the learning process.
+
+- A library that you can use to train transformer language models with reinforcement learning, using techniques such as PPO, is TRL (**Transformer Reinforcement Learning**)
+- In this link you can read more about this library, and its integration with PEFT (Parameter-Efficient Fine-Tuning) methods, such as LoRA (Low-Rank Adaption). The image shows an overview of the PPO training setup in TRL.
+
+![picture 0](assets/img/c5de2e68b4e8fa25cca7fee20401ac3e4d5e1c2073edd18ffa04c846096569f5.png)
 
 To prevent Reward hacking:
 

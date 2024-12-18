@@ -7,11 +7,12 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
-# PPO
 
-- [PPO](#ppo)
+# LLM - Data Tuning - RLHF - PPO - Proximal Policy Optimization (微调)
+
+
 - [LLM - Data Tuning - RLHF - PPO - Proximal Policy Optimization (微调)](#llm---data-tuning---rlhf---ppo---proximal-policy-optimization-微调)
-  - [核心思想](#核心思想)
+  - [overview](#overview)
   - [特点](#特点)
   - [算法框架](#算法框架)
   - [PPO（近端策略优化）的应用](#ppo近端策略优化的应用)
@@ -22,14 +23,9 @@ tags: [AI, ML]
 
 ---
 
-
-# LLM - Data Tuning - RLHF - PPO - Proximal Policy Optimization (微调)
+## overview
 
 ![Screenshot 2024-09-30 at 18.18.39](/assets/img/Screenshot%202024-09-30%20at%2018.18.39.png)
-
----
-
-## 核心思想
 
 - 旨在通过`限制策略更新的幅度`来提高学习的稳定性。
 
