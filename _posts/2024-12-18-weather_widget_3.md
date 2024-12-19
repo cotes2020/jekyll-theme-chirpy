@@ -3,7 +3,7 @@ title: "간단한 날씨 위젯 코딩 #3 [날씨 검색 기능 구현 / Java Sc
 categories:
 - MiniProject
 - WeatherWidget
-tag: [MiniProject, JS, HTML]
+tag: [MiniProject, JS, HTML, OpenWeatherMap_API, Data_Mapping]
 author_profile: false
 sidebar:
     nav: "docs"
