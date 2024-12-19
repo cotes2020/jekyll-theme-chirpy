@@ -3,7 +3,7 @@ title: "간단한 날씨 위젯 코딩 #2 [초기 화면 레이아웃 세팅 / J
 categories:
 - MiniProject
 - WeatherWidget
-tag: [MiniProject, JS, HTML]
+tag: [MiniProject, JS, HTML, skycons]
 author_profile: false
 sidebar:
     nav: "docs"
