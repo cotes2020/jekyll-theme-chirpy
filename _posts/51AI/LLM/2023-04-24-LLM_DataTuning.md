@@ -13,6 +13,10 @@ tags: [AI, ML]
 
 - [LLM - Data Tuning 微调](#llm---data-tuning-微调)
   - [overview](#overview)
+  - [改進 LLM](#改進-llm)
+  - [從能找到的最強 LLM(GPT4)開始](#從能找到的最強-llmgpt4開始)
+    - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準)
+    - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準-1)
 - [Instruction-Tuning (指示微调)](#instruction-tuning-指示微调)
 - [Fine-Tuning (微调)](#fine-tuning-微调)
   - [Full Fine-tuning](#full-fine-tuning)
@@ -63,12 +67,13 @@ tags: [AI, ML]
           - [Constitutional AI](#constitutional-ai)
       - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
     - [大模型 Fine-Tuning 之分布式训练](#大模型-fine-tuning-之分布式训练)
-- [改進 LLM](#改進-llm)
-  - [從能找到的最強 LLM(GPT4)開始](#從能找到的最強-llmgpt4開始)
-    - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準)
-    - [如果 LLM 沒有達成標準](#如果-llm-沒有達成標準-1)
 - [LLM Evaluation](#llm-evaluation)
   - [Assess the RL-updated model's performance.](#assess-the-rl-updated-models-performance)
+- [Adapt and align large language models](#adapt-and-align-large-language-models)
+  - [Model optimization technique](#model-optimization-technique)
+    - [Model Distillation](#model-distillation)
+    - [PTQ - Post training quantization](#ptq---post-training-quantization)
+    - [Pruning](#pruning)
 - [Traning Terms](#traning-terms)
   - [Gradient Descent](#gradient-descent)
   - [Epochs](#epochs)
@@ -121,6 +126,161 @@ Summary:
 - **Soft prompts** are trainable tokens used to guide the model's performance on specific tasks. A set of trainable tokens that are added to a prompt and whose values are updated during additional training to improve performance on specific tasks.
 
 - to prevent **catastrophic forgetting** it is important to fine-tune on multiple tasks with a lot of data.
+
+---
+
+## 改進 LLM
+
+怎麼使用、使用哪個 LLM 來部屬產品？ [^如何改進LLM]
+
+[^如何改進LLM]: 【LLM 專欄 1】如何改進 LLM？, 一條綜合技術與商業視角的 LLM 開發思路 (2023.7 ver), https://axk51013.medium.com/llm專欄1-如何改進llm-161e7a504658
+
+1. 用 GPT4 還是 GTP3.5？Llama 聽說不錯？
+2. 用 API 來服務還是要自己訓練、部屬模型？
+3. 需要 Finetune 嗎？
+4. 要做 prompt engineering 嗎？怎麼做？
+5. 要做 retrieval 嗎？，RAG(Retrieval Augmented Generation)架構對我的任務有幫助嗎？
+6. 主流模型就有十多個、Training 有數十種的方法，到底該怎麼辦？
+7. ......
+
+FSDL 的課程:
+
+- [李宏毅老師](https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ)
+- [Deep Learning.ai](https://www.deeplearning.ai/) 的 Andrew Ng 老師
+- UCBerkeley 的 [Full Stack Deep Learning](https://fullstackdeeplearning.com/)
+
+**要選擇各種 ML DL 的技巧之前，先分清楚遇到的問題 + 哪些方法可以解決這個問題**
+
+![Screenshot 2023-11-16 at 14.18.24](/assets/img/Screenshot%202023-11-16%20at%2014.18.24.png)
+
+- 如果 Training Error 比 Testing Error 低一截，那我們遇到的就是`Overfitting`，各種類型的 regularization 或是縮小 model 都可以派上用場。
+- 但是如果我們遇到的是 Training Error 跟 Human 的水平有一截差距，那變成我們是`Underfitting`，反而是要加大 model 甚至是重新定義問題，找到一個更好 fit 的問題。
+
+---
+
+## 從能找到的最強 LLM(GPT4)開始
+
+- 從手邊能找到的最強 LLM 開始產品
+- **對於任何一個 AI 產品而言，同時要面對兩個不確定性：1. 需求的不確定，2. 技術的不確定** 。
+- 技術的不確定指的是： **我們沒辦法在訓練模型之前知道我們最後可以得到的 Performance** 。因此很多 AI 產品投入了資源收集資料及訓練模型，最後卻發現模型遠沒有達到可接受的標準。
+
+在 LLM 時期其實像是 GPT4 或是 Bard 這種模型，反倒提供給我們一個非常強的 Baseline，所以先使用能找到的最強模型來開始產品。
+
+1. **先用 GPT4 來做 MVP** ，如果可行則確認 unit economics、尋找護城河跟盡量減低 cost。
+2. **分析錯誤來源**
+   1. 如果錯誤跟 factual 比較有關， **藉由跑「給定相關資訊來進行預測」的實驗測試 LLM 到底是不具備相關知識還是 Hallucination** 。
+   2. 如果錯誤跟 reasoning 比較有關，藉由 **perplexity 區分 model 需要 language modeling finetuning 還是 supervised finetuning。**
+3. **如果 finetuning 是可行的(有一定量資料、成本可接受)，直接跑小範圍的 finetune 可以驗證很多事情。**
+
+---
+
+### 如果 LLM 沒有達成標準
+
+如果達成標準, 則思考更多商業上的問題
+
+1. **確認 unit economics** ：
+
+   1. 確保每一次用戶使用服務時，你不會虧錢。
+   2. Ex：用戶訂閱你服務一個月只要 120，但是他平均每個月會使用超過 120 元的 GPT-4 額度，這就會出現問題(除非你有更完備的商業規劃)。
+
+2. **找尋護城河** ：
+
+   1. 因為你目前是使用第三方提供的 LLM，所以你技術上不具備獨創性，請從其他方面尋找護城河。
+
+3. **在達成標準的前提下盡量降低 cost** ：
+
+   1. 換小模型
+   2. [GPT cache](https://github.com/zilliztech/GPTCache)
+
+      1. 在傳統 chatbot 中大多有一個功能是開發者提供 QA pairs，然後每次用戶問問題，就從這些 QA pairs 中找尋最佳的回答，而 GPT cache 其實就是把每次 GPT 的回答記起來，當成一個 QA pair，新問題進來時就可以先找有沒有相似的問題，減少訪問 GPT API 的次數。
+
+   3. 限縮 LLM 使用場景。
+
+---
+
+### 如果 LLM 沒有達成標準
+
+- 如果沒有達成標準，則需要思考技術上的改進策略。分析 LLM 失敗的原因。
+
+- 通常來說，LLM 會失敗主流會有 4 種原因，兩種大的類別：
+  - Factual 事實相關
+  - Reasoning 推理相關
+
+![Screenshot 2023-11-27 at 10.34.11](/assets/img/Screenshot%202023-11-27%20at%2010.34.11.png)
+
+1. **(Factual 相關)LLM 不具備這個知識** ：
+
+   1. 嘗試 RAG(Retrieval Augmented Generation)
+   2. finetuning
+
+2. **(Factual 相關)LLM 在胡言亂語(Hallucination)** ：
+
+   1. prompt engineering (CoT, Self Critique)，
+   2. finetuning
+
+3. **(Reasoning 相關)LLM 不適應這種類型語料** ：
+
+   1. finetuning: language modeling，
+   2. 更換 LLM
+
+4. **(Reasoning 相關)LLM 無法正確推理這個問題** ：
+   1. finetuning: supervised finetuning，
+   2. In-Context Learning
+
+**Factual 相關**
+
+- 如果 LLM 回答問題錯誤，
+- 有可能是 LLM 根本不具備相關知識，導致他只能隨便回答，
+- 也有可能試產生了 Hallucination(胡言亂語)的現象
+
+而最好區分這兩者的方法，就是做以下實驗。
+
+1. ICL + Retrieval Augmented Generation
+
+   1. 選定 **k 筆 LLM 答錯的資料**
+   2. 在 prompt 中加入能夠回答這題的相關資訊(也是你確定你未來可以取得的相關資訊)，檢測是否有 **明顯變好**
+   3. 如果有的話那就可以走 **RAG(Retrieval Augmented Generation)** 這條路
+   4. 如果還是有一定比例的資料無法達成，那則加入像是 **self critique** 之類的 prompt engineering 的方法。
+
+2. 更直覺的思考方式：
+   1. 你想要 LLM 完成的這個任務，會不會在網路上常常出現？
+   2. 如果會常常出現，那高機率用 Prompt engineering 就可以，
+   3. 如果是冷門資訊，甚至是網路上不會出現的資訊(機構內部資訊)，那就一定要走 RAG。
+   4. Ex:
+      1. 開發銀行的客服機器人->RAG
+      2. 開發一個每天誇獎對話機器人，高機率只要 prompr engineering，因為誇獎的用詞、知識、方法網路上出現很多次。
+
+**Reasoning 相關**
+
+- 如果 LLM 有相關知識，但是回答的時候錯誤率依舊很高，那就要考慮是不是 LLM 根本 **不具備需要的推理能力** 。
+- 而這又分為兩種：
+  - 1. LLM 對這種類型的文本不熟悉，
+  - 2. LLM 對這種類型的推理、分類問題不熟悉。
+- 兩者最直接的區分方法： **讓 LLM 在你對應的文本算 perplexity。**
+
+**perplexity 是用來衡量「LLM 預測下一個詞的混亂程度」**
+
+- 如果 perplexity 高
+
+  - 代表 LLM 對這類型的文本領域(domain)根本不熟，可能是語言不熟悉，也有可能是內容領域不熟悉
+  - 這時候就一定要`language model finetuning，藉由unsupervised finetuning`，**加強 LLM 對文本領域的熟悉度**。
+
+- 如果 perplexity 很低，但是問題還是解決不好
+
+  - 則更需要訓練 LLM 處理特定的問題，因此則要`supervised finetuning，這就類似傳統finetune CNN，蒐集Label data`，讓模型**學會執行對應任務**。
+
+- 如果是利用 GPT4 之類的 API，沒辦法取得 perplexity 的數值
+
+  - 可以從文本中找出你認為基礎的知識語句，找個 100 句，每一句拋棄後半段請 GPT4 自行接龍，再基於結果判斷 LLM 到底有沒有你這個領域的經驗。
+
+- perplexity 是高是低，其實是一個非常需要經驗的事情，所以只能當作參考指標。
+  - 如果一個 model 對文本的`embedding`你可以取得，那可以對 embedding 去`train linear classifier`
+  - 如果 non separable，則表示這個 model 無法足夠細緻的處理這類型的問題，則更需要 supervised finetuning。
+
+只要 finetuning 對你而言是可以承擔的事情
+
+- 建議對任何任務都先跑 100~1,000 筆資料、1 個 epoch 的 supervised finetuning，和 10,000 個 token 的 language modeling
+- 這會更像是以前 DL 我們直接用訓練來觀測模型是否會有顯著改善。
 
 ---
 
@@ -3016,161 +3176,6 @@ PET 最核心的部分 Pattern-Verbalizer-Pair(PVP)，PET 设计了两个很重�
 
 ---
 
-# 改進 LLM
-
-怎麼使用、使用哪個 LLM 來部屬產品？ [^如何改進LLM]
-
-[^如何改進LLM]: 【LLM 專欄 1】如何改進 LLM？, 一條綜合技術與商業視角的 LLM 開發思路 (2023.7 ver), https://axk51013.medium.com/llm專欄1-如何改進llm-161e7a504658
-
-1. 用 GPT4 還是 GTP3.5？Llama 聽說不錯？
-2. 用 API 來服務還是要自己訓練、部屬模型？
-3. 需要 Finetune 嗎？
-4. 要做 prompt engineering 嗎？怎麼做？
-5. 要做 retrieval 嗎？，RAG(Retrieval Augmented Generation)架構對我的任務有幫助嗎？
-6. 主流模型就有十多個、Training 有數十種的方法，到底該怎麼辦？
-7. ......
-
-FSDL 的課程:
-
-- [李宏毅老師](https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ)
-- [Deep Learning.ai](https://www.deeplearning.ai/) 的 Andrew Ng 老師
-- UCBerkeley 的 [Full Stack Deep Learning](https://fullstackdeeplearning.com/)
-
-**要選擇各種 ML DL 的技巧之前，應該先分清楚我們現在遇到的問題，並想清楚哪些方法可以解決這個問題**
-
-![Screenshot 2023-11-16 at 14.18.24](/assets/img/Screenshot%202023-11-16%20at%2014.18.24.png)
-
-- 如果 Training Error 比 Testing Error 低一截，那我們遇到的就是`Overfitting`，各種類型的 regularization 或是縮小 model 都可以派上用場。
-- 但是如果我們遇到的是 Training Error 跟 Human 的水平有一截差距，那變成我們是`Underfitting`，反而是要加大 model 甚至是重新定義問題，找到一個更好 fit 的問題。
-
----
-
-## 從能找到的最強 LLM(GPT4)開始
-
-- 不論如何，請從你手邊能找到的最強 LLM 開始產品
-- **對於任何一個 AI 產品而言，同時要面對兩個不確定性：1. 需求的不確定，2. 技術的不確定** 。
-- 技術的不確定指的是： **我們沒辦法在訓練模型之前知道我們最後可以得到的 Performance** 。因此很多 AI 產品投入了資源收集資料及訓練模型，最後卻發現模型遠沒有達到可接受的標準。
-
-在 LLM 時期其實像是 GPT4 或是 Bard 這種模型，反倒提供給我們一個非常強的 Baseline，所以先使用能找到的最強模型來開始產品。
-
-1. **先用 GPT4 來做 MVP** ，如果可行則確認 unit economics、尋找護城河跟盡量減低 cost。
-2. **分析錯誤來源**
-   1. 如果錯誤跟 factual 比較有關， **藉由跑「給定相關資訊來進行預測」的實驗測試 LLM 到底是不具備相關知識還是 Hallucination** 。
-   2. 如果錯誤跟 reasoning 比較有關，藉由 **perplexity 區分 model 需要 language modeling finetuning 還是 supervised finetuning。**
-3. **如果 finetuning 是可行的(有一定量資料、成本可接受)，直接跑小範圍的 finetune 可以驗證很多事情。**
-
----
-
-### 如果 LLM 沒有達成標準
-
-如果達成標準, 則思考更多商業上的問題
-
-1. **確認 unit economics** ：
-
-   1. 確保每一次用戶使用服務時，你不會虧錢。
-   2. Ex：用戶訂閱你服務一個月只要 120，但是他平均每個月會使用超過 120 元的 GPT-4 額度，這就會出現問題(除非你有更完備的商業規劃)。
-
-2. **找尋護城河** ：
-
-   1. 因為你目前是使用第三方提供的 LLM，所以你技術上不具備獨創性，請從其他方面尋找護城河。
-
-3. **在達成標準的前提下盡量降低 cost** ：
-
-   1. 換小模型
-   2. [GPT cache](https://github.com/zilliztech/GPTCache)
-
-      1. 在傳統 chatbot 中大多有一個功能是開發者提供 QA pairs，然後每次用戶問問題，就從這些 QA pairs 中找尋最佳的回答，而 GPT cache 其實就是把每次 GPT 的回答記起來，當成一個 QA pair，新問題進來時就可以先找有沒有相似的問題，減少訪問 GPT API 的次數。
-
-   3. 限縮 LLM 使用場景。
-
----
-
-### 如果 LLM 沒有達成標準
-
-- 如果沒有達成標準，則需要思考技術上的改進策略。分析 LLM 失敗的原因。
-
-- 通常來說，LLM 會失敗主流會有 4 種原因，兩種大的類別：
-  - Factual 事實相關
-  - Reasoning 推理相關
-
-![Screenshot 2023-11-27 at 10.34.11](/assets/img/Screenshot%202023-11-27%20at%2010.34.11.png)
-
-1. **(Factual 相關)LLM 不具備這個知識** ：
-
-   1. 嘗試 RAG(Retrieval Augmented Generation)
-   2. finetuning
-
-2. **(Factual 相關)LLM 在胡言亂語(Hallucination)** ：
-
-   1. prompt engineering (CoT, Self Critique)，
-   2. finetuning
-
-3. **(Reasoning 相關)LLM 不適應這種類型語料** ：
-
-   1. finetuning: language modeling，
-   2. 更換 LLM
-
-4. **(Reasoning 相關)LLM 無法正確推理這個問題** ：
-   1. finetuning: supervised finetuning，
-   2. In-Context Learning
-
-**Factual 相關**
-
-- 如果 LLM 回答問題錯誤，
-- 有可能是 LLM 根本不具備相關知識，導致他只能隨便回答，
-- 也有可能試產生了 Hallucination(胡言亂語)的現象
-
-而最好區分這兩者的方法，就是做以下實驗。
-
-1. ICL + Retrieval Augmented Generation
-
-   1. 選定 **k 筆 LLM 答錯的資料**
-   2. 在 prompt 中加入能夠回答這題的相關資訊(也是你確定你未來可以取得的相關資訊)，檢測是否有 **明顯變好**
-   3. 如果有的話那就可以走 **RAG(Retrieval Augmented Generation)** 這條路
-   4. 如果還是有一定比例的資料無法達成，那則加入像是 **self critique** 之類的 prompt engineering 的方法。
-
-2. 更直覺的思考方式：
-   1. 你想要 LLM 完成的這個任務，會不會在網路上常常出現？
-   2. 如果會常常出現，那高機率用 Prompt engineering 就可以，
-   3. 如果是冷門資訊，甚至是網路上不會出現的資訊(機構內部資訊)，那就一定要走 RAG。
-   4. Ex:
-      1. 開發銀行的客服機器人->RAG
-      2. 開發一個每天誇獎對話機器人，高機率只要 prompr engineering，因為誇獎的用詞、知識、方法網路上出現很多次。
-
-**Reasoning 相關**
-
-- 如果 LLM 有相關知識，但是回答的時候錯誤率依舊很高，那就要考慮是不是 LLM 根本 **不具備需要的推理能力** 。
-- 而這又分為兩種：
-  - 1. LLM 對這種類型的文本不熟悉，
-  - 2. LLM 對這種類型的推理、分類問題不熟悉。
-- 兩者最直接的區分方法： **讓 LLM 在你對應的文本算 perplexity。**
-
-**perplexity 是用來衡量「LLM 預測下一個詞的混亂程度」**
-
-- 如果 perplexity 高
-
-  - 代表 LLM 對這類型的文本領域(domain)根本不熟，可能是語言不熟悉，也有可能是內容領域不熟悉
-  - 這時候就一定要`language model finetuning，藉由unsupervised finetuning`，**加強 LLM 對文本領域的熟悉度**。
-
-- 如果 perplexity 很低，但是問題還是解決不好
-
-  - 則更需要訓練 LLM 處理特定的問題，因此則要`supervised finetuning，這就類似傳統finetune CNN，蒐集Label data`，讓模型**學會執行對應任務**。
-
-- 如果是利用 GPT4 之類的 API，沒辦法取得 perplexity 的數值
-
-  - 可以從文本中找出你認為基礎的知識語句，找個 100 句，每一句拋棄後半段請 GPT4 自行接龍，再基於結果判斷 LLM 到底有沒有你這個領域的經驗。
-
-- perplexity 是高是低，其實是一個非常需要經驗的事情，所以只能當作參考指標。
-  - 如果一個 model 對文本的`embedding`你可以取得，那可以對 embedding 去`train linear classifier`
-  - 如果 non separable，則表示這個 model 無法足夠細緻的處理這類型的問題，則更需要 supervised finetuning。
-
-只要 finetuning 對你而言是可以承擔的事情
-
-- 建議對任何任務都先跑 100~1,000 筆資料、1 個 epoch 的 supervised finetuning，和 10,000 個 token 的 language modeling
-- 這會更像是以前 DL 我們直接用訓練來觀測模型是否會有顯著改善。
-
----
-
 # LLM Evaluation
 
 Basic:
@@ -3202,6 +3207,129 @@ use the summarization data set to quantify the reduction in toxicity
 - First, create a baseline toxicity score for the original instruct LLM by evaluating its completions off the summarization data set with a reward model that can assess toxic language.
 - Then evaluate the newly human aligned model on the same data set and compare the scores.
 - In this example, the toxicity score has indeed decreased after RLHF, indicating a less toxic, better aligned model.
+
+---
+
+# Adapt and align large language models
+
+![picture 3](assets/img/bb10819c3eb310d7f9e9aa260842d0e5ce507798cbebe824e8d8b41f8f17785f.png)
+
+To integrate the model into applications.
+- The first set is related to **how the LLM will function** in deployment.
+  - how fast do you need the model to generate completions?
+  - What compute budget do you have available?
+  - trade off model performance for improved inference speed or lower storage?
+- The second set of questions is tied to **additional resources that the model may need**.
+  - Do you intend for the model to interact with external data or other applications?
+  - how will you connect to those resources?
+- Lastly, **how the model will be consumed**.
+  - What will the intended application or API interface that the model will be consumed through look like?
+
+---
+
+## Model optimization technique
+
+Optimize the model before deploying it for inference.
+- inference challenges:
+  - <font color=OrangeRed> computing and storage </font> requirements
+  - ensuring <font color=OrangeRed> low latency </font> for consuming applications.
+- These challenges persist whether you're deploying on premises or to the cloud
+  - become even more of an issue when deploying to edge devices.
+- Optimizing the model for deployment will help ensure that the application functions well and provides the users with the best possible experience sense.
+
+reduce the size of the LLM
+
+One of the primary ways to improve application performance is to reduce the size of the LLM.
+- allow for quicker loading of the model, reduces inference latency.
+- the challenge: `reduce the size of the model` while `maintaining model performance`.
+- three techniques
+  - all aim to reduce model size to improve model performance during inference without impacting accuracy.
+
+- Distillation
+  - uses a larger model, the teacher model, to train a smaller model, the student model.
+  - use the smaller model for inference to lower the storage and compute budget.
+- post training quantization
+  - transforms a model's weights to a lower precision representation, such as a 16-bit floating point or eight bit integer.
+  - this reduces the memory footprint of the model.
+- Model Pruning,
+  - removes redundant model parameters that contribute little to the model's performance.
+
+---
+
+### Model Distillation
+
+- technique that focuses on having a larger teacher model train a smaller student model.
+- The student model learns to statistically mimic the behavior of the teacher model, either just in the final prediction layer or in the model's hidden layers as well.
+
+- in the final prediction layer
+  1. start with the fine tune LLM (teacher model), create a smaller LLM (student model).
+  2. freeze the teacher model's weights, use it to generate completions for the training data.
+  3. generate completions for the training data using the student model.
+  4. ![picture 6](assets/img/6adc0dd4a988354bb26be7eaf27e292988e7973df9d9f929df404ef6a5bf6b1f.png)
+
+  5. The knowledge distillation between teacher and student model is achieved by minimizing a loss function: <font color=LightSlateBlue> distillation loss </font>.
+     1. To calculate this loss, distillation uses the probability distribution over tokens that is produced by the teacher model's softmax layer.
+  6. the teacher model
+     1. already fine tuned on the training data.
+     2. So the probability distribution likely closely matches the ground truth data, won't have much variation in tokens.
+    1. That's why Distillation applies a little trick adding a temperature parameter to the softmax function.
+     2. a higher temperature increases the creativity of the language the model generates.
+     3. With a temperature parameter greater than one, the probability distribution becomes broader and less strongly peaked.
+     4. This <font color=OrangeRed> softer distribution </font> provides you with a set of tokens that are similar to the ground truth tokens.
+  7. the teacher model's output is often referred to as soft labels and the student model's predictions as soft predictions.
+  8. ![picture 5](assets/img/2b50776ba288df2d26272a0bde038b6ec9ab24b2b176305734793bec75299b83.png)
+  9. In parallel, train the student model to generate the correct predictions based on the ground truth training data.
+     1. don't vary the temperature setting and instead use the standard softmax function.
+     2. Distillation refers to the student model outputs as the <font color=LightSlateBlue> hard predictions and hard labels </font>.
+     3. The loss between these two is the student loss.
+     4. ![picture 7](assets/img/4abe8cb5ebc23211b4697ac21e08776aab811bc5dee5cdb44700a1789545f65c.png)
+
+  10. The combined distillation and student losses are used to update the weights of the student model via back propagation.
+  11. the smaller student model can be used for inference in deployment instead of the teacher model.
+  12. ![picture 8](assets/img/08a41f523a0a9a8d927501c7cb47c0fde89ef563b744ab962c5180148e478d97.png)
+
+- In practice, distillation is not as effective for generative decoder models.
+  - It's typically more effective for encoder only models,
+    - such as Burt that have a lot of representation redundancy.
+- with Distillation, you're training a second, smaller model to use during inference.
+- not reducing the model size of the initial LLM in any way.
+
+
+---
+
+### PTQ - Post training quantization
+
+![picture 9](assets/img/d4fc111c5a3b206d2349c811f0bd1773a1c3b7165d19ba2f49a43d26b998b147.png)
+
+- model optimization technique that <font color=LightSlateBlue> actually reduces the size of the LLM </font>.
+  - Specifically Quantization Aware Training / QAT
+  - after a model is trained, perform PTQ to optimize it for deployment.
+
+- transforms a model's weights to a lower precision representation, such as 16-bit floating point or 8-bit integer.
+  - To reduce the model size, memory footprint, and compute resources needed for model serving, quantization can be applied to just the model weights or to both weights and activation layers.
+
+- In general, quantization approaches that include the activations can have a higher impact on model performance.
+
+- requires an extra calibration step to <font color=LightSlateBlue> statistically capture the dynamic range of the original parameter values </font>.
+  - sometimes quantization results in a <font color=LightSlateBlue> small percentage reduction </font> in model evaluation metrics.
+  - tradeoffs: <font color=OrangeRed> if the reduction is worth the cost savings and performance gains </font>.
+
+---
+
+### Pruning
+
+![picture 4](assets/img/32263d35596ffcba4792b19984f906a6efcdac6332c39be415ac3fccbcd98297.png)
+
+- reduce model size for inference by eliminating <font color=LightSlateBlue> weights that are not contributing much to overall model performance </font>.
+  - weights with values very close to or equal to zero.
+
+- some pruning methods
+  - require `full retraining of the model`
+  - fall into the category of `parameter efficient fine tuning`, such as LoRA.
+  - methods that focus on post-training Pruning.
+
+- In theory, this <font color=LightSlateBlue> reduces the size of the model and improves performance </font>.
+  - In practice <font color=LightSlateBLUE> may not be much impact on the size and performance if only a small percentage of the model weights are close to zero </font>.
 
 ---
 
