@@ -680,7 +680,7 @@ Although all the training, tuning and aligning techniques you've explored can he
 
 ### Hallucinations in Large Language Models
 
-> Large Language Models (LLMs) are known to have `hallucinations`
+> LLMs are known to have `hallucinations`
 
 hallucinations
 
