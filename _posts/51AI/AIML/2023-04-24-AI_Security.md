@@ -12,43 +12,6 @@ tags: [AI, ML]
 
 **Table of contents**:
 
-- [AIML - Security](#aiml---security)
-  - [Overview](#overview)
-    - [AI tools](#ai-tools)
-    - [AI Security](#ai-security)
-    - [AI pipeline risk](#ai-pipeline-risk)
-    - [AI Observability 可观察性](#ai-observability-可观察性)
-    - [Secure AI Framework](#secure-ai-framework)
-      - [Google Secure AI Framework](#google-secure-ai-framework)
-        - [6 core elements:](#6-core-elements)
-        - [5 steps to support and advance a framework](#5-steps-to-support-and-advance-a-framework)
-  - [LLMs Security](#llms-security)
-    - [Protection solution](#protection-solution)
-      - [Large Language Model (LLM) Monitoring](#large-language-model-llm-monitoring)
-      - [OpenSSF Scorecard](#openssf-scorecard)
-  - [Vendor - Data Security and AI Language Models](#vendor---data-security-and-ai-language-models)
-    - [controls](#controls)
-    - [Security Practices Review](#security-practices-review)
-    - [Contractual Protections 合同的](#contractual-protections-合同的)
-      - [Data Processing Addendum (DPA)](#data-processing-addendum-dpa)
-      - [Business Associate Agreement (BAA)](#business-associate-agreement-baa)
-    - [Customer Data Rights](#customer-data-rights)
-      - [Data Retention Policy](#data-retention-policy)
-    - [Transparency](#transparency)
-    - [Regulatory Compliance](#regulatory-compliance)
-    - [Ethics](#ethics)
-- [Drawbacks of LLMs](#drawbacks-of-llms)
-  - [Hallucination](#hallucination)
-    - [Hallucinations in Large Language Models](#hallucinations-in-large-language-models)
-      - [Using Hallucinations](#using-hallucinations)
-    - [Mitigating Hallucinations](#mitigating-hallucinations)
-  - [Bias](#bias)
-  - [Glitch tokens](#glitch-tokens)
-  - [LLM Generation Inefficient](#llm-generation-inefficient)
-    - [Speculative 推测的 Decoding](#speculative-推测的-decoding)
-
-
-
 ---
 
 ## Overview
@@ -674,6 +637,39 @@ Where available, vendor should also enters into a **Business Associate Agreement
 ---
 
 # Drawbacks of LLMs
+
+Although all the training, tuning and aligning techniques you've explored can help you build a great model for your application.
+
+- There are some broader challenges with LLMs that can't be solved by training alone.
+
+![picture 0](/assets/img/ddb9c6101a2cc596d28ed29b5633f4c81b0a642acc22745d1cb31f2ad75ab47f.png)
+
+---
+
+
+
+## Outdated knowledge
+
+- One issue is that the internal knowledge held by a model cuts off at the moment of pretraining.
+- This knowledge is out of date.
+- For example
+  - ask a model that was trained in early 2022 who the British Prime Minister is, it will probably tell you Boris Johnson.
+  - The model does not know that Johnson left office in late 2022 because that event happened after its training.
+
+---
+
+## struggle with complex math.
+
+- prompt a model to behave like a calculator, it may get the answer wrong, depending on the difficulty of the problem.
+
+  - For example
+    - ask the model to carry out a division problem.
+
+    - The model returns a number close to the correct answer, but it's incorrect.
+
+    - LLMs do not carry out mathematical operations.
+
+    - just trying to predict the next best token based on their training, and can easily get the answer wrong.
 
 ---
 

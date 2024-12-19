@@ -3336,7 +3336,7 @@ One of the primary ways to improve application performance is to reduce the size
 
 ## Generative AI Project Lifecycle
 
-![picture 0](../../../assets/img/5db2a9f1e48113e84bf327374c661d2eb5a9155598f60d19ab2ec20cec1fe3e4.png)
+![picture 0](/assets/img/5db2a9f1e48113e84bf327374c661d2eb5a9155598f60d19ab2ec20cec1fe3e4.png)
 
 time and effort required for each phase of work.
 - pre-training

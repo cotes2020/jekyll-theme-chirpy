@@ -12,7 +12,7 @@ tags: [AI, ML]
 
 - [PEFT Lab](#peft-lab)
   - [ChatGLM-6B 微调实践](#chatglm-6b-微调实践)
-  - [ChatGLM-6B + P-Tuning v2](#chatglm-6b--p-tuning-v2)
+  - [ChatGLM-6B with P-Tuning v2](#chatglm-6b-with-p-tuning-v2)
     - [模型下载](#模型下载)
     - [试用原始模型](#试用原始模型)
     - [量化细节](#量化细节)
@@ -21,15 +21,15 @@ tags: [AI, ML]
   - [使用 ChatGLM2-6B 复用 ChatGLM-6B 进行 P-Tuning v2 流程需要注意的点。](#使用-chatglm2-6b-复用-chatglm-6b-进行-p-tuning-v2-流程需要注意的点)
     - [训练启动方式](#训练启动方式)
     - [模型推理](#模型推理-1)
-  - [ChatGLM-6B + LoRA](#chatglm-6b--lora)
+  - [ChatGLM-6B with LoRA](#chatglm-6b-with-lora)
     - [LoRA 配置参数](#lora-配置参数)
     - [训练启动方式](#训练启动方式-1)
-  - [ChatGLM2-6B + LoRA](#chatglm2-6b--lora)
+  - [ChatGLM2-6B with LoRA](#chatglm2-6b-with-lora)
     - [训练启动方式](#训练启动方式-2)
-  - [ChatGLM-6B + LoRA + Accelerate + Deepspeed](#chatglm-6b--lora--accelerate--deepspeed)
+  - [ChatGLM-6B with LoRA with Accelerate with Deepspeed](#chatglm-6b-with-lora-with-accelerate-with-deepspeed)
     - [Docker 容器构建](#docker-容器构建)
     - [Python 环境构建](#python-环境构建)
-    - [训练启动方式](#训练启动方式-3)
+    - [训练启动method](#训练启动method)
 
 ---
 
@@ -51,7 +51,7 @@ tags: [AI, ML]
 
 ---
 
-## ChatGLM-6B + P-Tuning v2
+## ChatGLM-6B with P-Tuning v2
 - 官方任务实践: [【官方教程】ChatGLM-6B 微调](https://www.bilibili.com/video/BV1fd4y1Z7Y5/?spm_id_from=333.999.0.0&vd_source=25d0b87065d3da39fe110c6e0b4906e1)
 
 ### 模型下载
@@ -311,7 +311,7 @@ if __name__ == "__main__":
 
 ---
 
-## ChatGLM-6B + LoRA
+## ChatGLM-6B with LoRA
 
 官方任务实践
 - 参考代码[ChatGLM_Tuning](https://github.com/zejunwang1/chatglm_tuning/blob/main/README.md)，实现了 ChatGLM-6B 基于 LoRA 的微调流程。
@@ -371,7 +371,7 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py \
 
 ---
 
-## ChatGLM2-6B + LoRA
+## ChatGLM2-6B with LoRA
 
 官方任务实践
 
@@ -477,7 +477,7 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py --train_args_file ./conf/chatglm2_6b_lo
 ```
 
 
-## ChatGLM-6B + LoRA + Accelerate + Deepspeed
+## ChatGLM-6B with LoRA with Accelerate with Deepspeed
 
 官方任务实践
 - 参考了代码[LLM-tuning](https://github.com/jiangxinyang227/LLM-tuning/blob/master/README.md)，实现了该流程，具体代码见[LLM 微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。
@@ -528,7 +528,7 @@ pip install sentencepiece==0.1.99
 
 ---
 
-### 训练启动方式
+### 训练启动method
 
 ```bash
 # 切换路径
