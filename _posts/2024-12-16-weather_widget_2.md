@@ -61,9 +61,9 @@ Skycons 객체를 생성하고, 맑은 날씨 아이콘을 추가한 후, 애니
                 <button class="fa-solid fa-magnifying-glass" id="searchBtn"></button>
                 <button class="fa-solid fa-location-dot" id="locationBtn"></button>
             </div>
-            <div class="weather-body">
-                <canvas id="weather-icon" width="200" height="200" alt="Weather Image" class="weather-img"></canvas>
-            </div>
+        </div>
+        <div class="weather-body">
+            <canvas id="weather-icon" width="200" height="200" alt="Weather Image" class="weather-img"></canvas>
         </div>
     </div>
     <script src="skycons.js"></script>
@@ -118,7 +118,7 @@ css 파일을 수정해서 날씨 아이콘을 중앙에 배치했고, 이미지
 </div>
 ```
 
-weather-body 클래스 바로 아래에 weather-box클래스를 만들어 주었습니다.
+weather-body 클래스 내부, weather-icon 캔버스 아래에 weather-box클래스를 만들어 주었습니다.
 
 p요소가 temperature, description를 갖도록 했고, 초기 온도를 -°C로, 날씨 설명란에는 Weather Description으로 표기해서 초기 화면 세팅을 했습니다.
 
@@ -166,27 +166,27 @@ weather-box 요소의 폰트 크기와 두께, 위치, 텍스트 정렬 및 변�
 
 ## 습도와 풍속 기능 구현
 
-다음으로 습도와 풍속을 Weather Description 아래에 표현하도록 하겠습니다.
+다음으로 습도와 풍속을 weather-box 클래스 아래에 표현하도록 하겠습니다.
 
 ### index.html #1
 
 ```html
 <div class="wether-details">
-                <div class="humidity">
-                    
-                    <div class="text">
-                        <span id="humidity">-%</span>
-                        <p>Humidity</p>
-                    </div>
-                </div>
-                <div class="wind">
+    <div class="humidity">
 
-                    <div class="text">
-                        <span id="wind-speed">-km/h</span>
-                        <p>Wind Speed</p>
-                    </div>
-                </div>
-            </div>
+        <div class="text">
+            <span id="humidity">-%</span>
+            <p>Humidity</p>
+        </div>
+    </div>
+    <div class="wind">
+
+        <div class="text">
+            <span id="wind-speed">-km/h</span>
+            <p>Wind Speed</p>
+        </div>
+    </div>
+</div>
 ```
 
 weather-details 클래스를 만들고, humidity, wind-speed를 표현해 준 후,
@@ -207,21 +207,21 @@ Font Awesome 사이트에서 물방울 아이콘과 바람 아이콘을 가져�
 
 ```html
 <div class="wether-details">
-                <div class="humidity">
-                    <i class="fa-solid fa-droplet"></i>
-                    <div class="text">
-                        <span id="humidity">-%</span>
-                        <p>Humidity</p>
-                    </div>
-                </div>
-                <div class="wind">
-                    <i class="fa-solid fa-wind"></i>
-                    <div class="text">
-                        <span id="wind-speed">-km/h</span>
-                        <p>Wind Speed</p>
-                    </div>
-                </div>
-            </div>
+    <div class="humidity">
+        <i class="fa-solid fa-droplet"></i>
+        <div class="text">
+            <span id="humidity">-%</span>
+            <p>Humidity</p>
+        </div>
+    </div>
+    <div class="wind">
+        <i class="fa-solid fa-wind"></i>
+        <div class="text">
+            <span id="wind-speed">-km/h</span>
+            <p>Wind Speed</p>
+        </div>
+    </div>
+</div>
 ```
 
 ***
