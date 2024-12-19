@@ -1,13 +1,49 @@
----
+<!-- ---
 title: AI Security
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI, AIML]
 # img: /assets/img/sample/rabbit.png
 tags: [AI, ML]
----
+--- -->
 
 # AI Security
+- [AI Security](#ai-security)
+  - [Overview](#overview)
+    - [AI tools](#ai-tools)
+    - [AI Security](#ai-security-1)
+    - [AI pipeline risk](#ai-pipeline-risk)
+    - [AI Observability 可观察性](#ai-observability-可观察性)
+    - [Secure AI Framework](#secure-ai-framework)
+      - [Google Secure AI Framework](#google-secure-ai-framework)
+        - [6 core elements:](#6-core-elements)
+        - [5 steps to support and advance a framework](#5-steps-to-support-and-advance-a-framework)
+  - [LLMs Security](#llms-security)
+    - [Protection solution](#protection-solution)
+      - [Large Language Model (LLM) Monitoring](#large-language-model-llm-monitoring)
+      - [OpenSSF Scorecard](#openssf-scorecard)
+  - [Vendor - Data Security and AI Language Models](#vendor---data-security-and-ai-language-models)
+    - [controls](#controls)
+    - [Security Practices Review](#security-practices-review)
+    - [Contractual Protections 合同的](#contractual-protections-合同的)
+      - [Data Processing Addendum (DPA)](#data-processing-addendum-dpa)
+      - [Business Associate Agreement (BAA)](#business-associate-agreement-baa)
+    - [Customer Data Rights](#customer-data-rights)
+      - [Data Retention Policy](#data-retention-policy)
+    - [Transparency](#transparency)
+    - [Regulatory Compliance](#regulatory-compliance)
+    - [Ethics](#ethics)
+- [Drawbacks of LLMs](#drawbacks-of-llms)
+  - [Outdated knowledge](#outdated-knowledge)
+  - [struggle with complex math.](#struggle-with-complex-math)
+  - [Hallucination](#hallucination)
+    - [Hallucinations in Large Language Models](#hallucinations-in-large-language-models)
+      - [Using Hallucinations](#using-hallucinations)
+    - [Mitigating Hallucinations](#mitigating-hallucinations)
+  - [Bias](#bias)
+  - [Glitch tokens](#glitch-tokens)
+  - [LLM Generation Inefficient](#llm-generation-inefficient)
+    - [Speculative 推测的 Decoding](#speculative-推测的-decoding)
 
 ---
 
