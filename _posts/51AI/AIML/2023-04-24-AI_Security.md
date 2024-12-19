@@ -7,10 +7,7 @@ categories: [51AI, AIML]
 tags: [AI, ML]
 ---
 
-
 # AIML - Security
-
-**Table of contents**:
 
 ---
 
@@ -642,16 +639,16 @@ Although all the training, tuning and aligning techniques you've explored can he
 
 - There are some broader challenges with LLMs that can't be solved by training alone.
 
-![picture 0](/assets/img/ddb9c6101a2cc596d28ed29b5633f4c81b0a642acc22745d1cb31f2ad75ab47f.png)
+![picture 1](/assets/img/3947d047b200c1a5d0ebdeffade0e408fdfd270e1cd8fbeb5079e5e9f0cea3e2.png)
 
 ---
 
-
-
 ## Outdated knowledge
 
-- One issue is that the internal knowledge held by a model cuts off at the moment of pretraining.
+- the internal knowledge held by a model cuts off at the moment of pretraining.
+
 - This knowledge is out of date.
+
 - For example
   - ask a model that was trained in early 2022 who the British Prime Minister is, it will probably tell you Boris Johnson.
   - The model does not know that Johnson left office in late 2022 because that event happened after its training.
@@ -662,14 +659,13 @@ Although all the training, tuning and aligning techniques you've explored can he
 
 - prompt a model to behave like a calculator, it may get the answer wrong, depending on the difficulty of the problem.
 
-  - For example
-    - ask the model to carry out a division problem.
+- LLMs do not carry out mathematical operations.
+  - just predict the next best token based on their training
+  - can easily get the answer wrong.
 
-    - The model returns a number close to the correct answer, but it's incorrect.
-
-    - LLMs do not carry out mathematical operations.
-
-    - just trying to predict the next best token based on their training, and can easily get the answer wrong.
+- For example
+  - ask the model to carry out a division problem.
+  - The model returns a number close to the correct answer, but it's incorrect.
 
 ---
 
@@ -678,6 +674,7 @@ Although all the training, tuning and aligning techniques you've explored can he
 ![Screenshot 2024-08-07 at 15.51.53](/assets/img/Screenshot%202024-08-07%20at%2015.51.53.png)
 
 - An infamous outcome of Microsoft’s Sydney were instances when the AI gave responses that were either bizarre 异乎寻常, untrue, or seemed sentient 有感情.
+
 - These instances are termed Hallucination, where the model gives answers or makes claims that are not based on its training data.
 
 
@@ -686,7 +683,9 @@ Although all the training, tuning and aligning techniques you've explored can he
 > Large Language Models (LLMs) are known to have `hallucinations`
 
 hallucinations
+
 - behavior in that the model speaks false knowledge as if it is accurate.
+  - tendency to generate text even when don't know the answer
 
 - when a model generates text, it can’t tell if the generation is accurate.
   - A large language model is a trained machine learning model that generates text based on the prompt you provided. The model’s training equipped it with some knowledge derived from the `training data` provided. It is difficult to tell what knowledge a model remembers or what it does not.
@@ -799,6 +798,5 @@ speculative decoding
 - These complexities and trade-offs have limited the broader adoption of speculative decoding techniques. So speculative decoding isn't widely adopted.
 
 - Remark: We use speculative decoding to refer to those methods that require an independent draft model here. In a broader sense, our method can also be viewed as speculative decoding, while the draft model is entangled with the original model.
-
 
 ---

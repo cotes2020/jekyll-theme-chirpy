@@ -7,7 +7,6 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
-
 # PEFT Lab
 
 - [PEFT Lab](#peft-lab)
@@ -19,17 +18,17 @@ tags: [AI, ML]
     - [模型推理](#模型推理)
     - [灾难性遗忘问题](#灾难性遗忘问题)
   - [使用 ChatGLM2-6B 复用 ChatGLM-6B 进行 P-Tuning v2 流程需要注意的点。](#使用-chatglm2-6b-复用-chatglm-6b-进行-p-tuning-v2-流程需要注意的点)
-    - [训练启动方式](#训练启动方式)
+    - [训练启动method](#训练启动method)
     - [模型推理](#模型推理-1)
   - [ChatGLM-6B with LoRA](#chatglm-6b-with-lora)
     - [LoRA 配置参数](#lora-配置参数)
-    - [训练启动方式](#训练启动方式-1)
+    - [训练启动方式](#训练启动方式)
   - [ChatGLM2-6B with LoRA](#chatglm2-6b-with-lora)
-    - [训练启动方式](#训练启动方式-2)
+    - [训练启动method](#训练启动method-1)
   - [ChatGLM-6B with LoRA with Accelerate with Deepspeed](#chatglm-6b-with-lora-with-accelerate-with-deepspeed)
     - [Docker 容器构建](#docker-容器构建)
     - [Python 环境构建](#python-环境构建)
-    - [训练启动method](#训练启动method)
+    - [训练启动method](#训练启动method-2)
 
 ---
 
@@ -289,7 +288,7 @@ if __name__ == "__main__":
 
   - **数据集下载**: 无变化，同 ChatGLM-6B 一致。
 
-### 训练启动方式
+### 训练启动method
 
 基本无变化，大体流程同 ChatGLM-6B 一致。有两个地方需要注意，一个是脚本`./ptuning/train.sh`中的各种文件路径按需调整；另一个是`./ptuning/main.py`文件`line 220`左右进行如下修改:
 
@@ -381,7 +380,7 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py \
 - **LoRA 配置参数**: 同 ChatGLM-6B；
 
 
-### 训练启动方式
+### 训练启动method
 
 - **数据并行**:
 
