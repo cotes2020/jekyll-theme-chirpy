@@ -23,12 +23,12 @@ tags: [AI, ML]
   - [ChatGLM-6B with LoRA](#chatglm-6b-with-lora)
     - [LoRA 配置参数](#lora-配置参数)
     - [训练启动方式](#训练启动方式)
-  - [chatglm2 with lora](#chatglm2-with-lora)
-    - [训练启动method](#训练启动method-1)
+  - [2nd chatglm2](#2nd-chatglm2)
+    - [训练 启动 method](#训练-启动-method)
   - [ChatGLM-6B with LoRA with Accelerate with Deepspeed](#chatglm-6b-with-lora-with-accelerate-with-deepspeed)
     - [Docker 容器构建](#docker-容器构建)
     - [Python 环境构建](#python-环境构建)
-    - [训练启动method](#训练启动method-2)
+    - [训练启动 method](#训练启动-method)
 
 ---
 
@@ -370,7 +370,7 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py \
 
 ---
 
-## chatglm2 with lora
+## 2nd chatglm2
 
 ChatGLM2-6B with LoRA
 
@@ -382,7 +382,7 @@ ChatGLM2-6B with LoRA
 - **LoRA 配置参数**: 同 ChatGLM-6B；
 
 
-### 训练启动method
+### 训练 启动 method
 
 - **数据并行**:
 
@@ -529,7 +529,7 @@ pip install sentencepiece==0.1.99
 
 ---
 
-### 训练启动method
+### 训练启动 method
 
 ```bash
 # 切换路径
