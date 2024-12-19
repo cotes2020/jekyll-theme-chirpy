@@ -74,6 +74,7 @@ tags: [AI, ML]
     - [Model Distillation](#model-distillation)
     - [PTQ - Post training quantization](#ptq---post-training-quantization)
     - [Pruning](#pruning)
+  - [Generative AI Project Lifecycle](#generative-ai-project-lifecycle)
 - [Traning Terms](#traning-terms)
   - [Gradient Descent](#gradient-descent)
   - [Epochs](#epochs)
@@ -3330,6 +3331,39 @@ One of the primary ways to improve application performance is to reduce the size
 
 - In theory, this <font color=LightSlateBlue> reduces the size of the model and improves performance </font>.
   - In practice <font color=LightSlateBLUE> may not be much impact on the size and performance if only a small percentage of the model weights are close to zero </font>.
+
+---
+
+## Generative AI Project Lifecycle
+
+![picture 0](../../../assets/img/5db2a9f1e48113e84bf327374c661d2eb5a9155598f60d19ab2ec20cec1fe3e4.png)
+
+time and effort required for each phase of work.
+- pre-training
+  - pre-training a large language model can be a huge effort.
+  - themost complex because of the model architecture decisions, the large amount of training data required, and the expertise needed.
+  - in general will start the development work with an existing foundation model.
+
+- prompt engineering
+  - start to assess the model's performance through prompt engineering
+  - requires less technical expertise, and no additional training of the model.
+
+- prompt tuning and fine tuning
+  - If the model isn't performing as you need
+  - Depending on the use case, performance goals, and compute budget, the methods could range from <font color=LightSlateBlue> full fine-tuning </font> to <font color=LightSlateBlue> parameter efficient fine tuning techniques </font> like laura or prompt tuning.
+  - Some level of technical expertise is required for this work.
+  - fine-tuning can be very successful with a relatively small training dataset
+  - this phase could potentially be completed in a single day.
+
+- reinforcement learning from human feedback
+  - Aligning the model using reinforcement learning from human feedback can be done quickly, once you have the train reward model. see if you can use an existing reward model for this work, as you saw in this week's lab.
+  - if you have to train a reward model from scratch, it could take a long time because of the effort involved to gather human feedback.
+
+- optimization techniques
+  - typically fall in the middle in terms of complexity and effort
+  - can proceed quite quickly assuming the changes to the model don't impact performance too much.
+
+- After working through all of these steps, trained in tuned a gray LLM that is working well for the specific use case, and is optimized for deployment.
 
 ---
 

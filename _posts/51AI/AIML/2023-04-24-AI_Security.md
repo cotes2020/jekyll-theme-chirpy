@@ -1,16 +1,19 @@
-<!-- ---
+---
 title: AI - Security
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI, AIML]
 # img: /assets/img/sample/rabbit.png
 tags: [AI, ML]
---- -->
+---
+
 
 # AIML - Security
 
+**Table of contents**:
+
 - [AIML - Security](#aiml---security)
-  - [overall](#overall)
+  - [Overview](#overview)
     - [AI tools](#ai-tools)
     - [AI Security](#ai-security)
     - [AI pipeline risk](#ai-pipeline-risk)
@@ -34,16 +37,21 @@ tags: [AI, ML]
     - [Transparency](#transparency)
     - [Regulatory Compliance](#regulatory-compliance)
     - [Ethics](#ethics)
-  - [Hallucinations](#hallucinations)
+- [Drawbacks of LLMs](#drawbacks-of-llms)
+  - [Hallucination](#hallucination)
     - [Hallucinations in Large Language Models](#hallucinations-in-large-language-models)
       - [Using Hallucinations](#using-hallucinations)
     - [Mitigating Hallucinations](#mitigating-hallucinations)
+  - [Bias](#bias)
+  - [Glitch tokens](#glitch-tokens)
+  - [LLM Generation Inefficient](#llm-generation-inefficient)
+    - [Speculative 推测的 Decoding](#speculative-推测的-decoding)
 
 
 
 ---
 
-## Overall
+## Overview
 
 ---
 
@@ -617,13 +625,6 @@ Where available, vendor should also enters into a **Business Associate Agreement
 
 - 一般規則。HITECH在2009年進行了調整，以確保商業夥伴必須遵守其HIPAA，但多線規則加強了這種偏見，並在2013年生效。一旦該規則生效，HIPAA要求其商業夥伴和供應商遵守其PHI，作爲相關實體的保護和指令。所涉及的公司不代表BAA的責任。
 
-
-
-
-
-
-
-
 ---
 
 ### Customer Data Rights
@@ -670,12 +671,19 @@ Where available, vendor should also enters into a **Business Associate Agreement
 
 
 
+---
 
-
+# Drawbacks of LLMs
 
 ---
 
-## Hallucinations
+## Hallucination
+
+![Screenshot 2024-08-07 at 15.51.53](/assets/img/Screenshot%202024-08-07%20at%2015.51.53.png)
+
+- An infamous outcome of Microsoft’s Sydney were instances when the AI gave responses that were either bizarre 异乎寻常, untrue, or seemed sentient 有感情.
+- These instances are termed Hallucination, where the model gives answers or makes claims that are not based on its training data.
+
 
 ### Hallucinations in Large Language Models
 
@@ -736,4 +744,65 @@ Many language models have a “temperature” parameter.
   - Hence the model has limited freedom to hallucinate.
   - The reason for prompt engineering is to specify the role and scenario to the model to guide the generation, so that it does not hallucinate unbounded.
 
-.
+---
+
+## Bias
+
+- Sometimes, the data could be the source of the problem. If a model is trained on data that is discriminatory to a person, group, race, or class, the results would also tend to be discriminatory.
+
+- Sometimes, as the model is being used, the bias could change to fit what users tend to input. Microsoft’s Tay in 2016 was a great example of how bias could go wrong.
+
+---
+
+## Glitch tokens
+
+- Also known as adversarial examples 对抗性示例, glitch tokens are inputs given to a model to intentionally make it malfunction and be inaccurate when delivering answers.
+
+---
+
+## LLM Generation Inefficient
+
+> From a systems perspective, LLM generation follows a memory-bound computational pattern with the main latency bottleneck arising from memory reads/writes rather than arithmetic computations. This issue is rooted in the inherently sequential nature of the auto-regressive decoding process. Each forward pass necessitates the transfer of the entire model's parameters from High-Bandwidth Memory (HBM) to the accelerator's compute units. This operation, while only producing a single token for each sample, fails to fully utilize the arithmetic computation capabilities of modern accelerators, resulting in inefficiency.
+
+Before the rise of LLMs, a common mitigation for this inefficiency was to `simply increase the batch size, enabling the parallel production of more tokens`.
+
+But the **situation becomes far more complicated with LLMs**.
+
+- Increasing the batch size in this context not only introduces higher latency but also substantially `inflates 膨胀 the memory requirements` for the Transformer model's key-value cache.
+
+  - This trade-off makes the use of large batches impractical for many applications where low latency is a critical requirement.
+
+- also, for cost structures, as of September 2023, generation costs approximately 2x higher for GPT-4 and roughly 3x for Claude 2, compared to merely processing prompts.
+
+![Screenshot 2023-09-20 at 17.51.23](/assets/img/post/Screenshot%202023-09-20%20at%2017.51.23.png)
+
+### Speculative 推测的 Decoding
+
+> Given the challenges outlined, one appealing strategy to accelerate **text generation** is `more efficient computational utilization—specifically`, by `processing more tokens in parallel`.
+
+speculative decoding
+
+- The methodology employs a streamlined "draft" model to generate a batch of token candidates at each step quickly. These candidates are then validated by the original, full-scale language model to identify the most reasonable text continuations.
+
+- The underlying logic hinges on an intriguing 引起兴趣的 assumption:
+
+  - the draft model, although smaller, should be proficient enough to churn out sequences that the original model will find acceptable.
+
+  - the draft model can rapidly produce token sequences while the original model efficiently vets 审查 multiple tokens in parallel, which maximizing computational throughput.
+
+  - Recent research indicates that with a well-tuned draft model, speculative decoding can cut latency by an impressive factor of up to 2.5x.
+
+- However, the approach is not without its challenges:
+
+  - Finding the Ideal Draft Model: Identifying a "small yet mighty" draft model that aligns well with the original model is easier said than done.
+
+  - System Complexity: Hosting two distinct models in one system introduces layers of complexity, both computational and operational, especially in distributed settings.
+
+  - Sampling Inefficiency: When doing sampling with speculative decoding, an importance sampling scheme needs to be used. This introduces additional overhead on generation, especially at higher sampling temperatures.
+
+- These complexities and trade-offs have limited the broader adoption of speculative decoding techniques. So speculative decoding isn't widely adopted.
+
+- Remark: We use speculative decoding to refer to those methods that require an independent draft model here. In a broader sense, our method can also be viewed as speculative decoding, while the draft model is entangled with the original model.
+
+
+---

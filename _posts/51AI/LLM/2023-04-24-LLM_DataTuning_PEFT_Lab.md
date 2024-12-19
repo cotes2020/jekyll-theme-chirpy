@@ -7,9 +7,12 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
+
+# PEFT Lab
+
 - [PEFT Lab](#peft-lab)
   - [ChatGLM-6B 微调实践](#chatglm-6b-微调实践)
-  - [ChatGLM-6B + P-Tuning v2 ⇒ \\Rightarrow](#chatglm-6b--p-tuning-v2--rightarrow)
+  - [ChatGLM-6B + P-Tuning v2](#chatglm-6b--p-tuning-v2)
     - [模型下载](#模型下载)
     - [试用原始模型](#试用原始模型)
     - [量化细节](#量化细节)
@@ -18,19 +21,15 @@ tags: [AI, ML]
   - [使用 ChatGLM2-6B 复用 ChatGLM-6B 进行 P-Tuning v2 流程需要注意的点。](#使用-chatglm2-6b-复用-chatglm-6b-进行-p-tuning-v2-流程需要注意的点)
     - [训练启动方式](#训练启动方式)
     - [模型推理](#模型推理-1)
-  - [ChatGLM-6B + LoRA ⇒ \\Rightarrow](#chatglm-6b--lora--rightarrow)
+  - [ChatGLM-6B + LoRA](#chatglm-6b--lora)
     - [LoRA 配置参数](#lora-配置参数)
     - [训练启动方式](#训练启动方式-1)
-  - [ChatGLM2-6B + LoRA ⇒ \\Rightarrow](#chatglm2-6b--lora--rightarrow)
+  - [ChatGLM2-6B + LoRA](#chatglm2-6b--lora)
     - [训练启动方式](#训练启动方式-2)
-  - [ChatGLM-6B + LoRA + Accelerate + Deepspeed ⇒ \\Rightarrow](#chatglm-6b--lora--accelerate--deepspeed--rightarrow)
+  - [ChatGLM-6B + LoRA + Accelerate + Deepspeed](#chatglm-6b--lora--accelerate--deepspeed)
     - [Docker 容器构建](#docker-容器构建)
     - [Python 环境构建](#python-环境构建)
     - [训练启动方式](#训练启动方式-3)
-
----
-
-# PEFT Lab
 
 ---
 
@@ -52,7 +51,7 @@ tags: [AI, ML]
 
 ---
 
-## ChatGLM-6B + P-Tuning v2 ⇒ \Rightarrow
+## ChatGLM-6B + P-Tuning v2
 - 官方任务实践: [【官方教程】ChatGLM-6B 微调](https://www.bilibili.com/video/BV1fd4y1Z7Y5/?spm_id_from=333.999.0.0&vd_source=25d0b87065d3da39fe110c6e0b4906e1)
 
 ### 模型下载
@@ -240,7 +239,7 @@ if __name__ == "__main__":
 - 在该数据集上进行微调后，会出现灾难性遗忘的情况，在数据集有限的情况下，目前通过实践总结出下面三种做法，可在一定程度上缓解灾难性遗忘
 
 - **学习率调整**: 通过调整学习率进行解决的[灾难性遗忘问题](https://github.com/THUDM/ChatGLM-6B/issues/1148)；
-- **采用 LoRA 方法**: 参见「**ChatGLM-6B + LoRA ⇒ \Rightarrow ⇒ 真实任务实践**」；
+- **采用 LoRA 方法**: 参见「**ChatGLM-6B + LoRA ⇒ 真实任务实践**」；
 - **采用 ChatGLM2-6B**: ChatGLM2-6B 确实比 ChatGLM-6B 强。使用相同的超参数进行微调训练，ChatGLM2-6B 在上述的广告数据集上微调后，确实没有出现灾难性遗忘的问题。不过仍然存在其他问题，大家自行体验。
 
 ---
@@ -312,7 +311,7 @@ if __name__ == "__main__":
 
 ---
 
-## ChatGLM-6B + LoRA ⇒ \Rightarrow
+## ChatGLM-6B + LoRA
 
 官方任务实践
 - 参考代码[ChatGLM_Tuning](https://github.com/zejunwang1/chatglm_tuning/blob/main/README.md)，实现了 ChatGLM-6B 基于 LoRA 的微调流程。
@@ -372,7 +371,7 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py \
 
 ---
 
-## ChatGLM2-6B + LoRA ⇒ \Rightarrow
+## ChatGLM2-6B + LoRA
 
 官方任务实践
 
@@ -478,7 +477,7 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py --train_args_file ./conf/chatglm2_6b_lo
 ```
 
 
-## ChatGLM-6B + LoRA + Accelerate + Deepspeed ⇒ \Rightarrow
+## ChatGLM-6B + LoRA + Accelerate + Deepspeed
 
 官方任务实践
 - 参考了代码[LLM-tuning](https://github.com/jiangxinyang227/LLM-tuning/blob/master/README.md)，实现了该流程，具体代码见[LLM 微调实践](https://github.com/DankoZhang/LLM/blob/main/README.md)。
@@ -526,6 +525,8 @@ pip install accelerate==0.21.0
 pip install deepspeed==0.10.0
 pip install sentencepiece==0.1.99
 ```
+
+---
 
 ### 训练启动方式
 
