@@ -23,7 +23,7 @@ tags: [AI, ML]
   - [ChatGLM-6B with LoRA](#chatglm-6b-with-lora)
     - [LoRA 配置参数](#lora-配置参数)
     - [训练启动方式](#训练启动方式)
-  - [ChatGLM2-6B with LoRA](#chatglm2-6b-with-lora)
+  - [chatglm2 with lora](#chatglm2-with-lora)
     - [训练启动method](#训练启动method-1)
   - [ChatGLM-6B with LoRA with Accelerate with Deepspeed](#chatglm-6b-with-lora-with-accelerate-with-deepspeed)
     - [Docker 容器构建](#docker-容器构建)
@@ -370,7 +370,9 @@ CUDA_VISIBLE_DEVICES=1,2 python train.py \
 
 ---
 
-## ChatGLM2-6B with LoRA
+## chatglm2 with lora
+
+ChatGLM2-6B with LoRA
 
 官方任务实践
 
