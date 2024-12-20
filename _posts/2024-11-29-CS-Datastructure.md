@@ -42,8 +42,8 @@ image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*hIvxsGZdM3p6mktbo
 배열을 구성하는 각각의 값을 `요소(element)`라고 하며, 배열에서의 위치를 가리키는 숫자를 `인덱스(index)`라고 한다.
 
 **배열 문제 풀이**  
-![CT](../assets/img/TwoSum.png)  
-![CTe](../assets/img/TwoSumex.png)  
+<img src="../assets/img/TwoSum.png"> 
+<img src="../assets/img/TwoSumex.png">  
 이 문제는 배열의 두 정수의 합이 target과 일치할 때 원소 2개의 `인덱스`를 반환해야한다.
 
 ### 1. Brute Force
