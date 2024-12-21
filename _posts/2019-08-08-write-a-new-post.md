@@ -97,7 +97,7 @@ toc: false
 
 ## Comments
 
-The global switch of comments is defined by variable `comments.active` in the file `_config.yml`{: .filepath}. After selecting a comment system for this variable, comments will be turned on for all posts.
+The global setting for comments is defined by the `comments.provider` option in the `_config.yml`{: .filepath} file. Once a comment system is selected for this variable, comments will be enabled for all posts.
 
 If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
 
