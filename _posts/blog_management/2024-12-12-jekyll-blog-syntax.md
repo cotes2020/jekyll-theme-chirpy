@@ -45,6 +45,12 @@ tags: [jekyll, github page]
 
 ### 링크 첨부
 
+- 블로그 내 다른 포스트 링크
+
+```md
+[링크 텍스트]({{ site.baseurl }}{% link _posts/ai/langchain/2024-12-11-01_Langchain모듈-00-basic.md %})
+```
+
 - 기본 링크
 
 ```md
@@ -65,12 +71,14 @@ tags: [jekyll, github page]
 ```shell
 # content
 ```
+
 {: file="path/to/file" }
 ````
 
 ```shell
 # content
 ```
+
 {: file="path/to/file" }
 
 ### Special Block
