@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.2.4](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.3...v7.2.4) (2024-12-21)
+
+### Bug Fixes
+
+* toc not visible when switching from mobile to desktop mode ([#2139](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2139)) ([32051da](https://github.com/cotes2020/jekyll-theme-chirpy/commit/32051dad03cb8f60fa4206969377b9674f9a3f0c))
+* **ui:** left borderline of TOC is notched ([#2140](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2140)) ([8a4d0bc](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8a4d0bc4ee9e142a11401cad80bc9605878f121d))
+
 ## [7.2.3](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.2...v7.2.3) (2024-12-15)
 
 ### Bug Fixes
