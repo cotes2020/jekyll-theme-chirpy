@@ -66,6 +66,10 @@
           {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
+        {% when 'discord' %}
+          {%- capture url -%}
+            {{ site[entry.type].invite }}
+          {%- endcapture -%}
         {% when 'email' %}
           {% assign email = site.social.email | split: '@' %}
           {%- capture url -%}

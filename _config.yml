@@ -19,17 +19,20 @@ title: Maitrix.org # the main title
 tagline: # A text-focused Jekyll theme # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Open Organization to Build AI-powered Realities with Techniques of Large Language/Multi-Modal Models, Agent Models, World Models.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: 'https://maitrix.org'
 
 github:
   username: maitrix-org # change to your github username
 
 twitter:
   username: MaitrixOrg # change to your twitter username TODO: twitter user name
+
+discord:
+  invite: https://discord.gg/b5NEhRbvJg
 
 social:
   # Change to your full name.
