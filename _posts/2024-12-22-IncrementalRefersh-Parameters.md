@@ -23,17 +23,17 @@ Normally with partitions you are responsible for creating and managing them. [In
 
 When you are working on a Power BI file locally you will have static `RangeStart` and `RangeEnd` parameters filtering a table to a given data range.
 
-```fs
+```
 //RangeStart
 #datetime(2022, 12, 01, 0, 0, 0) meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type datetime]
 ```
 
-```fs
+```
 //RangeEnd
 #datetime(2022, 12, 31, 0, 0, 0) meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type datetime]
 ```
 
-```fs
+```
 // table
 let
     source = .....,
@@ -44,19 +44,19 @@ in
 
 If you haven't worked on the Report in a while, these dates might be from months ago, but you want to look at new data. You can update `RangeStart` and `RangeEnd` with new dates, but there is another solution. [Nikolaos Christoforidis's](https://www.linkedin.com/in/nikolaos-christoforidis-2678111b4/) solution is to have dynamic parameters that provides the previous 3 month of data. 
 
-```fs
+```
 //RangeStart
 DateTime.From(Date.StartOfMonth(Date.AddMonths(DateTime.LocalNow(), -3))) meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type datetime]
 ```
 
-```fs
+```
 //RangeEnd
 DateTime.From(Date.EndOfMonth(DateTime.LocalNow())) meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type datetime]
 ```
 
 But this has the issues with dataflow Dataflows GEN1 mentioned before. Instead we are able keep `RangeStart` and `RangeEnd` static, and move the logic to return the most recent 3 month to the table. We can leverage the fact that the Power BI service will hijack the `RangeStart` and `RangeEnd` parameters to filter the data for a data range for each partition, and that we only want the most recent 3 months locally. Firstly we want to identify a date that precedes the window of our Incremental Refresh window. For example if we are archiving 2 years of data we could pick `01-01-2020`. In the table definition we can look out for this date and filter to the last 3 month, else enact the regular incremental refresh pattern.
 
-```fs
+```
 // table
 let
     source = .....,
