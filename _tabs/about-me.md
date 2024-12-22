@@ -5,7 +5,7 @@ order: 4
 ---
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
-  <img src="/assets/img/posts/2024-12-12-15-32-24-i32pmg4.png" alt="profile-img" style="border-radius: 10rem; width: 300px; height: auto; margin-right: 20px; margin-bottom: 20px;">
+  <img src="/assets/img/posts/profile.jpeg" alt="profile-img" style="border-radius: 10rem; width: 300px; height: auto; margin-right: 20px; margin-bottom: 20px;">
   <div>
     <h3>AI Software Engineer, 정예울입니다.</h3>
     <p>AI 기술을 활용하여 혁신적인 솔루션을 개발하고, 다양한 경험을 통해 지속적으로 성장하고 있습니다!</p>
@@ -136,7 +136,7 @@ _2024/07 ~ 2024/08 (1.5M)_
     </div>
   </details>
 
-### 사내 **LangChain 강의 진행**
+### 사내 LangChain 강의 진행
 
 _2024/06 ~ 2024/07_
 
