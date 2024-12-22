@@ -1,5 +1,5 @@
 ---
-title: "From Data Chaos to Clarity: How Microsoft Fabric Transforms Work (1)"
+title: "From Data Chaos to Clarity: How Microsoft Fabric Transforms Work (2)"
 date: 2024-12-21 11:00:00 +0900
 tags: [글또]
 categories: [Data]
