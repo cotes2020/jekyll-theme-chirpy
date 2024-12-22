@@ -474,3 +474,56 @@ mjx-container {
     margin-top: 3rem;
   }
 }
+
+/* Details 기본 스타일 */
+.details-custom {
+  margin: 1.5em 0;
+  padding: 0;
+  background-color: rgba(
+    234,
+    246,
+    251,
+    0.5
+  ); /* 이미지의 배경색과 유사하게 변경, 투명도 추가 */
+  border-radius: 15px;
+  border: 1px solid #d0e6f0; /* 테두리 추가 */
+}
+
+.details-custom summary {
+  cursor: pointer;
+  padding: 0.5em 1em; /* 패딩을 늘려서 더 넓게 */
+  margin: 0;
+  background-color: #eaf6fb; /* 이미지의 배경색과 일치 */
+  color: #444;
+  list-style: none;
+  border-radius: 12px;
+  border-bottom: 1px solid #d0e6f0; /* 하단 테두리 추가 */
+  position: relative; /* 아이콘 위치를 위한 상대 위치 */
+  padding-left: 2em; /* 아이콘 공간 확보 */
+}
+
+.details-custom summary::before {
+  content: '▶'; /* 기본 아이콘 추가 */
+  position: absolute;
+  left: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease; /* 회전 애니메이션 */
+}
+
+.details-custom[open] summary {
+  // background-color: #d8e8f0; /* 열렸을 때의 배경색 */
+  font-weight: bolder;
+}
+
+.details-custom[open] summary::before {
+  transform: translateY(-50%) rotate(90deg); /* 열렸을 때 아이콘 회전 */
+}
+
+.details-custom div {
+  padding: 1em;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444;
+  // border-top: 1px solid #d1ebf7; /* 상단 테두리 추가 */
+}
