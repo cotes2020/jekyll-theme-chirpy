@@ -8,11 +8,9 @@ order: 4
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <img src="/assets/img/posts/2024-12-12-15-32-24-i32pmg4.png" alt="profile-img" style="border-radius: 10rem; width: 300px; height: auto; margin-right: 20px; margin-bottom: 20px;">
   <div>
-    <h3>AI 어플리케이션 개발자, 정예울입니다.</h3>
-    <p>/////가안만 작성하고, 마지막에 업무 경력 및 내 활동을 보고 다시 일관되는 점을 찾아 작성하자///</p>
-    <p>새로운 것을 시도하고 경험을 통해 배웁니다.</p>
-    <p>배운 것을 실생활에서의 아이디어와 결합하여 일상의 새로움을 창조합니다.
-</p>
+    <h3>AI Software Engineer, 정예울입니다.</h3>
+    <p>AI 기술을 활용하여 혁신적인 솔루션을 개발하고, 다양한 경험을 통해 지속적으로 성장하고 있습니다!</p>
+    <p>새로운 도전을 통해 배운 지식을 실생활의 아이디어와 결합하여 창의적인 가치를 창출합니다.😀</p>
   </div>
 </div>
 
@@ -22,22 +20,42 @@ order: 4
 
 ## Skills
 
-- AI : Langchain
-- 언어 : Java, Python, javascript
+- AI : Langchain, Prompt Engineering
+- 언어 : Java, Python, JavaScript
 - 프레임워크: Spring Boot, FastAPI, Flask, Node.js, React
-- 도구 및 플랫폼: Docker, AWS, Git
+- 도구 및 플랫폼: Docker, AWS, Git, GitLab
 - DB: PostgreSQL, Oracle, MySQL
+- 기타: CICD, LLM, Memory, RAG
+
+## Recent Interests and Studies
+
+- 최신 AI 트렌드: Medium에서 최신 AI 트렌드를 공부하고, 블로그에 정리해서 지식을 나누는 걸 좋아해요.
+- Gen AI 활용: Gen AI를 활용한 어플리케이션 개발자로 성장하기 위해 AI 엔지니어 로드맵을 따라 체계적으로 공부하고 있어요.
+- 설계 역량 강화: AI 시대에서 가장 중요한 역량이라고 생각해요. 시스템 설계와 다양한 설계 패턴에 대해 배우고 있어요.
+- 배포 역량 강화: AWS를 활용한 배포와 관리 역량을 키우는 데 관심이 있어요.
+- 사이드 프로젝트: 실생활에서 필요했던 어플리케이션을 사이드 프로젝트로 개발하면서 실무 경험을 쌓고 있어요.
 
 ## Work Activities
 
 #### 2021.03 ~ 현재 | Bankware Global
 
-`사내 툴 개발`, `코어뱅킹 개발(고객)`, `테스트 자동화 프로그램 운영`
+`사내 툴 개발`, `코어뱅킹 시스템 개발`, `테스트 자동화 프로그램 운영`
 
-- AI를 활용한 어플리케이션 개발을 진행하였습니다. AI를 활용하여 BDD 개발 방식에 자동화를 도입하는 툴과 대량 건수의 테스트 데이터를 AI를 통해 생성하는 프로그램을 개발하였습니다.
-- AI 프레임워크인 LangChain 사내 강의를 직접 진행하였습니다. 10회 차로 구성되어 기본 이론부터 실습까지 진행하였으며, 이는 사내 AI를 활용한 제품 개발에도 영향을 주었습니다.
-- 대외 연계 시뮬레이터 솔루션인 BXI Simulator의 버전2 개발을 진행했습니다. REST API도 시뮬레이터를 통한 거래 테스트를 진행할 수 있도록 하였습니다.
-- LINE Bank Japan 의 코어뱅킹 시스템 개발을 진행했습니다. 비대면 고객가입 및 고객관리를 개발하였으며, 테스트 자동화 프로그램을 개발&운영 하였습니다.
+- AI 기반 어플리케이션 개발: BDD 개발 방식에 자동화를 도입하는 툴과 대량의 테스트 데이터를 생성하는 프로그램을 AI를 활용하여 개발하였습니다.
+- LangChain 사내 강의 진행: 10회 차로 구성된 강의를 통해 기본 이론부터 실습까지 진행하며, 사내 AI 제품 개발에 기여하였습니다.
+- BXI Simulator 버전 2 개발: 대외 연계 시뮬레이터 솔루션을 개발하고, REST API를 통한 거래 테스트 기능을 추가하였습니다.
+- LINE Bank Japan 코어뱅킹 시스템 개발: 비대면 고객가입 및 고객 관리 시스템을 개발하고, 테스트 자동화 프로그램을 설계 및 운영하여 시스템 안정성을 확보하였습니다.
+
+## Personal Actities
+
+#### AWS GameDay 참여
+
+- 일자: 2024.12.20
+- 활동 개요: AWS GameDay는 AWS 클라우드 서비스와 관련된 다양한 문제를 해결하는 실습형 이벤트입니다. 팀원들과 함께 주어진 시나리오를 해결하며 AWS 서비스에 대한 이해도를 높이고, 문제 해결 능력을 향상시켰습니다.
+- 주요 성과:
+  - AWS 서비스 (EC2, S3, RDS, Lambda 등) 활용 능력 향상
+  - Storage 부분 1등
+  - 팀원들과의 협업과 AI 활용을 통한 문제 해결 능력 및 커뮤니케이션 스킬 강화
 
 ## 프로젝트
 
