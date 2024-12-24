@@ -9,11 +9,12 @@ VCworks.kr 사용 과정상에 꼭 필요한 팁과 자주 묻는 질문을 정�
 
 
 ## 모바일 앱 다운로드
+### 현재 유효
 [<i class="fas fa-download"></i> Android APK 다운로드](https://guide.vcworks.kr/assets/downloads/app.apk){: .btn .btn-primary }
 
-### 공식스토어
-[애플스토어](https://apps.apple.com/kr/app/vcworks/id6738978723)
-~~[구글플레이 스토어](https://play.google.com/store/apps/details?id=com.vcworks.mobile&hl=ko)~~ 현재 구버전으로 사용이 어렵습니다.
+[<i class="fas fa-apple"></i> iOS 앱스토어](https://apps.apple.com/kr/app/vcworks/id6738978723){: .btn .btn-primary }
+
+[구글플레이 스토어](https://play.google.com/store/apps/details?id=com.vcworks.mobile&hl=ko) (구버전으로 현재 사용 불가, 상단에 APK직접 다운로드를 사용하세요)
 
 ## PC에서 일반 프로그램처럼 VCworks를 사용하는 방법
 
