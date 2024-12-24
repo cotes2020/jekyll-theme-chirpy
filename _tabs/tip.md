@@ -11,11 +11,11 @@ VCworks.kr 사용 과정상에 꼭 필요한 팁과 자주 묻는 질문을 정�
 ## 모바일 앱 다운로드
 Vcworks는 이동 중 전자결재 및 정보조회 편의성을 위해 Mobile 버전을 제공합니다.
 
-[<i class="fas fa-download"></i> VCworks Mobile v1.3 Android APK 다운로드 ](https://guide.vcworks.kr/assets/downloads/app.apk){: .btn .btn-primary }
+[<i class="fas fa-download"></i> VCworks Mobile v1.3 Android APK](https://guide.vcworks.kr/assets/downloads/app.apk){: .btn .btn-primary }
 
-[<i class="fab fa-apple"></i> VCworks Mobile v1.2 iOS 앱스토어 다운로드](https://apps.apple.com/kr/app/vcworks/id6738978723){: .btn .btn-primary }
+[<i class="fab fa-apple"></i> VCworks Mobile v1.2 iOS 앱스토어](https://apps.apple.com/kr/app/vcworks/id6738978723){: .btn .btn-primary }
 
-[<i class="fab fa-android"></i> VCworks Mobile v1.0 구글플레이 스토어 다운로드](https://play.google.com/store/apps/details?id=com.vcworks.mobile&hl=ko){: .btn .btn-primary .disabled } 
+[<i class="fab fa-android"></i> VCworks Mobile v1.0 구글플레이스토어](https://play.google.com/store/apps/details?id=com.vcworks.mobile&hl=ko){: .btn .btn-primary .disabled } 
 
 > **주의**: 구글플레이스토어 버전은 현재 사용할 수 없는 구버전입니다.  
 > 반드시 상단의 **Android APK 직접 다운로드**를 이용해주세요.
