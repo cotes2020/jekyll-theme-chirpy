@@ -7,7 +7,15 @@ mermaid: true
 
 VCworks.kr 사용 과정상에 꼭 필요한 팁과 자주 묻는 질문을 정리하였습니다.
 
-## 프로그램처럼 사용하는 방법
+
+## 모바일 앱 다운로드
+[<i class="fas fa-download"></i> Android APK 다운로드](https://guide.vcworks.kr/assets/downloads/app.apk){: .btn .btn-primary }
+
+### 공식스토어
+[애플스토어](https://apps.apple.com/kr/app/vcworks/id6738978723)
+~~[구글플레이 스토어](https://play.google.com/store/apps/details?id=com.vcworks.mobile&hl=ko)~~ 현재 구버전으로 사용이 어렵습니다.
+
+## PC에서 일반 프로그램처럼 VCworks를 사용하는 방법
 
 VCworks.kr은 PWA(Progressive Web Apps)를 지원하여 마치 프로그램처럼 사용할 수 있는 사용성을 제공합니다.
 
@@ -51,9 +59,6 @@ VCworks는 다중 정렬을 제공합니다. 다중 정렬은 먼저 정렬을 �
 
   ![다중 정렬](/assets/img/Pasted%20image%2020241015192728.png)
 
-## 모바일 앱 다운로드
-
-[<i class="fas fa-download"></i> Android APK 다운로드](https://guide.vcworks.kr/assets/downloads/app.apk){: .btn .btn-primary }
 
 버그 및 문의 사항은 다음 이메일로 보내주세요: **[we@ddock.kr](mailto:we@ddock.kr)**
 
