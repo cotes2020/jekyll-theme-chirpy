@@ -13,7 +13,7 @@ Vcworks는 이동 중 전자결재 및 정보조회 편의성을 위해 Mobile �
 
 [<i class="fas fa-download"></i> VCworks Mobile v1.3 Android APK](https://guide.vcworks.kr/assets/downloads/app.apk){: .btn .btn-primary }
 
-[<i class="fab fa-apple"></i> VCworks Mobile v1.2 iOS 앱스토어](https://apps.apple.com/kr/app/vcworks/id6738978723){: .btn .btn-primary }
+[<i class="fab fa-apple"></i> VCworks Mobile v1.3 iOS 앱스토어](https://apps.apple.com/kr/app/vcworks/id6738978723){: .btn .btn-primary }
 
 [<i class="fab fa-android"></i> VCworks Mobile v1.0 구글플레이스토어](https://play.google.com/store/apps/details?id=com.vcworks.mobile&hl=ko){: .btn .btn-primary .disabled } 
 
