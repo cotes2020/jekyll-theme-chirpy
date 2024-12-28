@@ -1,5 +1,5 @@
 ---
-title: function_vs_method
+title: function vs method
 date: "2024-12-28T23:46:26+09:00"
 categories: [Knowledge, IT]
 tags: [class,method,function,용어]
@@ -14,7 +14,6 @@ author: hoon
 2. 종속되지 않을 수 도 있다.
 
 메소드는 위에서 1번에 해당하는 경우의 함수를 특별히 부르는 단어인 것이다.
-
 따라서 **메소드는 함수의 한 종류**라고 이해해도 무리가 아니다.
 
 ## 예시
