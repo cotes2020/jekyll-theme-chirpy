@@ -1,7 +1,6 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import yaml from '@rollup/plugin-yaml';
 import fs from 'fs';
 import pkg from './package.json';
 
@@ -12,10 +11,10 @@ const DIST = 'assets/js/dist';
 const banner = `/*!
  * ${pkg.name} v${pkg.version} | © ${pkg.since} ${pkg.author} | ${pkg.license} Licensed | ${pkg.homepage}
  */`;
-
 const frontmatter = `---\npermalink: /:basename\n---\n`;
-
 const isProd = process.env.BUILD === 'production';
+
+let hasWatched = false;
 
 function cleanup() {
   fs.rmSync(DIST, { recursive: true, force: true });
@@ -35,27 +34,37 @@ function insertFrontmatter() {
   };
 }
 
-function build(filename, { src = SRC_DEFAULT, jekyll = false } = {}) {
+function build(
+  filename,
+  { src = SRC_DEFAULT, jekyll = false, outputName = null } = {}
+) {
+  const input = `${src}/${filename}.js`;
+  const shouldWatch = hasWatched ? false : true;
+
+  if (!hasWatched) {
+    hasWatched = true;
+  }
+
   return {
-    input: `${src}/${filename}.js`,
+    input,
     output: {
       file: `${DIST}/${filename}.min.js`,
       format: 'iife',
-      name: 'Chirpy',
+      ...(outputName !== null && { name: outputName }),
       banner,
-      sourcemap: !isProd
+      sourcemap: !isProd && !jekyll
     },
-    watch: {
-      include: `${src}/**`
-    },
+    ...(shouldWatch && { watch: { include: `${SRC_DEFAULT}/**/*.js` } }),
     plugins: [
       babel({
         babelHelpers: 'bundled',
         presets: ['@babel/env'],
-        plugins: ['@babel/plugin-transform-class-properties']
+        plugins: [
+          '@babel/plugin-transform-class-properties',
+          '@babel/plugin-transform-private-methods'
+        ]
       }),
       nodeResolve(),
-      yaml(),
       isProd && terser(),
       jekyll && insertFrontmatter()
     ]
@@ -71,6 +80,7 @@ export default [
   build('page'),
   build('post'),
   build('misc'),
+  build('theme', { src: `${SRC_DEFAULT}/modules`, outputName: 'Theme' }),
   build('app', { src: SRC_PWA, jekyll: true }),
   build('sw', { src: SRC_PWA, jekyll: true })
 ];

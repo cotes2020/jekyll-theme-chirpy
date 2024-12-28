@@ -1,0 +1,313 @@
+@mixin styles {
+  /* Framework color */
+  --main-bg: white;
+  --mask-bg: #c1c3c5;
+  --main-border-color: #f3f3f3;
+
+  /* Common color */
+  --text-color: #34343c;
+  --text-muted-color: #757575;
+  --text-muted-highlight-color: inherit;
+  --heading-color: #2a2a2a;
+  --label-color: #585858;
+  --blockquote-border-color: #eeeeee;
+  --blockquote-text-color: #757575;
+  --link-color: #0056b2;
+  --link-underline-color: #dee2e6;
+  --button-bg: #ffffff;
+  --btn-border-color: #e9ecef;
+  --btn-backtotop-color: #686868;
+  --btn-backtotop-border-color: #f1f1f1;
+  --checkbox-color: #c5c5c5;
+  --checkbox-checked-color: #07a8f7;
+  --img-bg: radial-gradient(
+    circle,
+    rgb(255, 255, 255) 0%,
+    rgb(239, 239, 239) 100%
+  );
+  --shimmer-bg: linear-gradient(
+    90deg,
+    rgba(250, 250, 250, 0) 0%,
+    rgba(232, 230, 230, 1) 50%,
+    rgba(250, 250, 250, 0) 100%
+  );
+
+  /* Sidebar */
+  --site-title-color: rgb(113, 113, 113);
+  --site-subtitle-color: #717171;
+  --sidebar-bg: #f6f8fa;
+  --sidebar-border-color: #efefef;
+  --sidebar-muted-color: #545454;
+  --sidebar-active-color: #1d1d1d;
+  --sidebar-hover-bg: rgb(223, 233, 241, 0.64);
+  --sidebar-btn-bg: white;
+  --sidebar-btn-color: #8e8e8e;
+  --avatar-border-color: white;
+
+  /* Topbar */
+  --topbar-bg: rgb(255, 255, 255, 0.7);
+  --topbar-text-color: rgb(78, 78, 78);
+  --search-border-color: rgb(240, 240, 240);
+  --search-icon-color: #c2c6cc;
+  --input-focus-border-color: #b8b8b8;
+
+  /* Home page */
+  --post-list-text-color: dimgray;
+  --btn-patinator-text-color: #555555;
+  --btn-paginator-hover-color: var(--sidebar-bg);
+
+  /* Posts */
+  --toc-highlight: #0550ae;
+  --toc-popup-border-color: lightgray;
+  --btn-share-color: gray;
+  --btn-share-hover-color: #0d6efd;
+  --card-bg: white;
+  --card-hovor-bg: #e2e2e2;
+  --card-shadow: rgb(104, 104, 104, 0.05) 0 2px 6px 0,
+    rgba(211, 209, 209, 0.15) 0 0 0 1px;
+  --footnote-target-bg: lightcyan;
+  --tb-odd-bg: #fbfcfd;
+  --tb-border-color: #eaeaea;
+  --dash-color: silver;
+  --kbd-wrap-color: #bdbdbd;
+  --kbd-text-color: var(--text-color);
+  --kbd-bg-color: white;
+  --prompt-text-color: rgb(46, 46, 46, 0.77);
+  --prompt-tip-bg: rgb(123, 247, 144, 0.2);
+  --prompt-tip-icon-color: #03b303;
+  --prompt-info-bg: #e1f5fe;
+  --prompt-info-icon-color: #0070cb;
+  --prompt-warning-bg: rgb(255, 243, 205);
+  --prompt-warning-icon-color: #ef9c03;
+  --prompt-danger-bg: rgb(248, 215, 218, 0.56);
+  --prompt-danger-icon-color: #df3c30;
+
+  /* Tags */
+  --tag-border: #dee2e6;
+  --tag-shadow: var(--btn-border-color);
+  --tag-hover: rgb(222, 226, 230);
+  --search-tag-bg: #f8f9fa;
+
+  /* Categories */
+  --categories-border: rgba(0, 0, 0, 0.125);
+  --categories-hover-bg: var(--btn-border-color);
+  --categories-icon-hover-color: darkslategray;
+
+  /* Archive */
+  --timeline-color: rgba(0, 0, 0, 0.075);
+  --timeline-node-bg: #c2c6cc;
+  --timeline-year-dot-color: #ffffff;
+
+  /* --- Custom code light mode colors --- */
+  --language-border-color: #ececec;
+  --highlight-bg-color: #f6f8fa;
+  --highlighter-rouge-color: #3f596f;
+  --highlight-lineno-color: #9e9e9e;
+  --inline-code-bg: rgba(25, 25, 28, 0.05);
+  --code-color: #3a3a3a;
+  --code-header-text-color: #a3a3a3;
+  --code-header-muted-color: #e5e5e5;
+  --code-header-icon-color: #c9c8c8;
+  --clipboard-checked-color: #43c743;
+
+  [class^='prompt-'] {
+    --link-underline-color: rgb(219, 216, 216);
+  }
+
+  .dark {
+    display: none;
+  }
+
+  /* --- Syntax highlight theme from `rougify style github` --- */
+
+  .highlight table td {
+    padding: 5px;
+  }
+
+  .highlight table pre {
+    margin: 0;
+  }
+
+  .highlight,
+  .highlight .w {
+    color: #24292f;
+    background-color: #f6f8fa;
+  }
+
+  .highlight .k,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt,
+  .highlight .kv {
+    color: #cf222e;
+  }
+
+  .highlight .gr {
+    color: #f6f8fa;
+  }
+
+  .highlight .gd {
+    color: #82071e;
+    background-color: #ffebe9;
+  }
+
+  .highlight .nb {
+    color: #953800;
+  }
+
+  .highlight .nc {
+    color: #953800;
+  }
+
+  .highlight .no {
+    color: #953800;
+  }
+
+  .highlight .nn {
+    color: #953800;
+  }
+
+  .highlight .sr {
+    color: #116329;
+  }
+
+  .highlight .na {
+    color: #116329;
+  }
+
+  .highlight .nt {
+    color: #116329;
+  }
+
+  .highlight .gi {
+    color: #116329;
+    background-color: #dafbe1;
+  }
+
+  .highlight .kc {
+    color: #0550ae;
+  }
+
+  .highlight .l,
+  .highlight .ld,
+  .highlight .m,
+  .highlight .mb,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .il,
+  .highlight .mo,
+  .highlight .mx {
+    color: #0550ae;
+  }
+
+  .highlight .sb {
+    color: #0550ae;
+  }
+
+  .highlight .bp {
+    color: #0550ae;
+  }
+
+  .highlight .ne {
+    color: #0550ae;
+  }
+
+  .highlight .nl {
+    color: #0550ae;
+  }
+
+  .highlight .py {
+    color: #0550ae;
+  }
+
+  .highlight .nv,
+  .highlight .vc,
+  .highlight .vg,
+  .highlight .vi,
+  .highlight .vm {
+    color: #0550ae;
+  }
+
+  .highlight .o,
+  .highlight .ow {
+    color: #0550ae;
+  }
+
+  .highlight .gh {
+    color: #0550ae;
+    font-weight: bold;
+  }
+
+  .highlight .gu {
+    color: #0550ae;
+    font-weight: bold;
+  }
+
+  .highlight .s,
+  .highlight .sa,
+  .highlight .sc,
+  .highlight .dl,
+  .highlight .sd,
+  .highlight .s2,
+  .highlight .se,
+  .highlight .sh,
+  .highlight .sx,
+  .highlight .s1,
+  .highlight .ss {
+    color: #0a3069;
+  }
+
+  .highlight .nd {
+    color: #8250df;
+  }
+
+  .highlight .nf,
+  .highlight .fm {
+    color: #8250df;
+  }
+
+  .highlight .err {
+    color: #f6f8fa;
+    background-color: #82071e;
+  }
+
+  .highlight .c,
+  .highlight .ch,
+  .highlight .cd,
+  .highlight .cm,
+  .highlight .cp,
+  .highlight .cpf,
+  .highlight .c1,
+  .highlight .cs {
+    color: #68717a;
+  }
+
+  .highlight .gl {
+    color: #68717a;
+  }
+
+  .highlight .gt {
+    color: #68717a;
+  }
+
+  .highlight .ni {
+    color: #24292f;
+  }
+
+  .highlight .si {
+    color: #24292f;
+  }
+
+  .highlight .ge {
+    color: #24292f;
+    font-style: italic;
+  }
+
+  .highlight .gs {
+    color: #24292f;
+    font-weight: bold;
+  }
+}
