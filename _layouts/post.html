@@ -55,8 +55,9 @@ script_includes:
 
       <div class="d-flex justify-content-between">
         <!-- author(s) -->
+        <!-- 20241228 수정. 게시글 제목 밑에 by hoon 라고 쓰는 부분 생략-->
         <span>
-          {% if page.author %}
+          <!-- {% if page.author %}
             {% assign authors = page.author %}
           {% elsif page.authors %}
             {% assign authors = page.authors %}
@@ -77,7 +78,7 @@ script_includes:
             {% else %}
               <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
             {% endif %}
-          </em>
+          </em> -->
         </span>
 
         <div>

@@ -1,5 +1,6 @@
 theme: jekyll-theme-chirpy
 lang: ko-KR
+# lang: en
 timezone: Asia/Seoul
 title: 기억 저장소
 tagline: 어슬렁 어슬렁

@@ -47,7 +47,8 @@ layout: page
           <!-- content count -->
           {% assign top_posts_size = site.categories[category_name] | size %}
           <span class="text-muted small font-weight-light">
-            {% if sub_categories_size > 0 %}
+            <!-- 20241228 수정. 최상위 카테고리 갯수를 보여줌 -->
+            <!-- {% if sub_categories_size > 0 %}
               {{ sub_categories_size }}
               {% if sub_categories_size > 1 %}
                 {{
@@ -61,7 +62,7 @@ layout: page
                 }}
               {% endif -%}
               ,
-            {% endif %}
+            {% endif %} -->
 
             {{ top_posts_size }}
 
