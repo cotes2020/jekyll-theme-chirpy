@@ -190,29 +190,7 @@ my_function(*tuple1,*tuple1)
     (1, 2, 3, 1, 2, 3)
 
 
-#### 4.1.2. Keyword Arguments in functions
-
-You can also send arguments with the key = value syntax.
-
-This way the order of the arguments does not matter.
-
-
-```python
-def my_function(arg1, arg2, arg3):
-    print('arg3 is: '+ str(arg3))
-
-my_function(1, 2, 3)
-my_function(arg1= 1 , arg2 = 2, arg3 = 3)
-my_function(arg1= 1 , arg3 = 3, arg2 = 2)
-
-```
-
-    arg3 is: 3
-    arg3 is: 3
-    arg3 is: 3
-
-
-#### 4.1.3. **kwargs
+#### 4.1.2. **kwargs
 
 This way the function will receive a dictionary of arguments, and can access the items accordingly
 
@@ -251,7 +229,7 @@ print(result)
     {'a': 1, 'b': 2, 'c': 3}
 
 
-#### 4.1.4. Combination of *args, **kwargs
+#### 4.1.3. Combination of *args, **kwargs
 
 
 ```python
