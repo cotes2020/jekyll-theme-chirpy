@@ -59,15 +59,25 @@ dict2 = {'keyA': 'A', 'keyB': 'B'}
 
 # To zip keys:
 zipped_dict_keys = zip(dict1, dict2)
-print(list(zipped_dict_keys))  # Output: [('key1', 'keyA'), ('key2', 'keyB')]
+print(list(zipped_dict_keys))
+# Output: [
+  ('key1', 'keyA'), ('key2', 'keyB')
+]
 
 # To zip values:
 zipped_dict_values = zip(dict1.values(), dict2.values())
-print(list(zipped_dict_values))  # Output: [(10, 'A'), (20, 'B')]
+print(list(zipped_dict_values))
+# Output: [
+  (10, 'A'), (20, 'B')
+]
 
 # To zip items (key-value pairs):
 zipped_dict_items = zip(dict1.items(), dict2.items())
-print(list(zipped_dict_items))  # Output: [(('key1', 10), ('keyA', 'A')), (('key2', 20), ('keyB', 'B'))]
+print(list(zipped_dict_items))
+# Output: [
+  (('key1', 10), ('keyA', 'A')),
+  (('key2', 20), ('keyB', 'B'))
+]
 ```
 
 ---
@@ -80,7 +90,8 @@ tuple1 = ('a', 'b', 'c')
 set1 = {100, 200, 300}
 
 zipped_mixed = zip(list1, tuple1, set1)
-print(list(zipped_mixed))  # Example Output: [(1, 'a', 100), (2, 'b', 200), (3, 'c', 300)]
+print(list(zipped_mixed))
+# Example Output: [(1, 'a', 100), (2, 'b', 200), (3, 'c', 300)]
 ```
 
 ## 6. Key Notes:
