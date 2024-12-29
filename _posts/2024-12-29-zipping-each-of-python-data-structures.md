@@ -5,14 +5,6 @@ categories: [Programming, Python]
 tags: [zip]
 description:
 author: hoon
-output: 
-  html_document:
-    toc: true
-    toc_float:
-      collapsed: true
-    toc_depth: 3
-    number_sections: true
-    theme: lumen
 ---
 
 The `zip()` function in Python is used to **combine multiple iterables (such as lists, tuples, or other sequences) into a single iterable**. 
@@ -25,7 +17,7 @@ The result of `zip()` is an iterator of tuples, where each tuple contains elemen
 
 ---
 
-## 1. **Zipping Lists**
+## 1. Zipping Lists
 ```python
 list1 = [1, 2, 3]
 list2 = ['a', 'b', 'c']
@@ -36,7 +28,7 @@ print(list(zipped_list))  # Output: [(1, 'a'), (2, 'b'), (3, 'c')]
 
 ---
 
-## 2. **Zipping Tuples**
+## 2. Zipping Tuples
 ```python
 tuple1 = (4, 5, 6)
 tuple2 = ('x', 'y', 'z')
@@ -47,7 +39,7 @@ print(list(zipped_tuple))  # Output: [(4, 'x'), (5, 'y'), (6, 'z')]
 
 ---
 
-## 3. **Zipping Sets**
+## 3. Zipping Sets
 Sets are unordered, so the results may vary:
 ```python
 set1 = {7, 8, 9}
@@ -59,7 +51,7 @@ print(list(zipped_set))  # Example Output: [(7, 'p'), (8, 'q'), (9, 'r')]
 
 ---
 
-## 4. **Zipping Dictionaries**
+## 4. Zipping Dictionaries
 When zipping dictionaries, only the keys are zipped by default:
 ```python
 dict1 = {'key1': 10, 'key2': 20}
@@ -79,7 +71,7 @@ print(list(zipped_dict_items))  # Output: [(('key1', 10), ('keyA', 'A')), (('key
 
 ---
 
-## 5. **Zipping Different Data Structures Together**
+## 5. Zipping Different Data Structures Together
 You can mix data structures:
 ```python
 list1 = [1, 2, 3]
@@ -90,6 +82,6 @@ zipped_mixed = zip(list1, tuple1, set1)
 print(list(zipped_mixed))  # Example Output: [(1, 'a', 100), (2, 'b', 200), (3, 'c', 300)]
 ```
 
-## Key Notes:
+## 6. Key Notes:
 - The `zip()` function stops zipping when the shortest iterable is exhausted.
 - If you need a list, tuple, or set as output, wrap the result in the appropriate constructor (e.g., `list(zip(...))`).

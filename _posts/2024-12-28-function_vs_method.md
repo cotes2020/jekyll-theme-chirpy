@@ -6,7 +6,7 @@ tags: [class,method,function,용어]
 description: 함수? 메소드? 뭐가 다르지?
 author: hoon
 ---
-## 메소드는 함수의 한 종류
+## 1. 메소드는 함수의 한 종류
 함수는 `any block of code designed to perform a task`라고 정의할 수 있다.
 
 함수는 
@@ -17,10 +17,10 @@ author: hoon
 
 따라서 **메소드는 함수의 한 종류**라고 이해해도 무리가 아니다.
 
-## 예시
+## 2. 예시
 `add()`함수가 어떻게 정의되었는지에 따라 함수와 메소드로 분류할 수 있다.
 
-### 함수
+### 2.1. 함수
 ```python
 # This is a standalone function
 def add(a, b):
@@ -30,7 +30,7 @@ def add(a, b):
 result = add(3, 4)
 print(result)  # Output: 7
 ```
-### 메소드
+### 2.2. 메소드
 ```python
 # This is a class with a method
 class Calculator:
