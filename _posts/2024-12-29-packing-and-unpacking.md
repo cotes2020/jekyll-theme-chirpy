@@ -94,7 +94,7 @@ print(x,y,z)
     ('apple', 6) ('banana', 2) ('cherry', 3)
 
 
-## 3. Packing
+## 3. Packing (Unpack first, and then pack again)
 
 Packing is the ability to group multiple values into one list that is assigned to a variable. 
 
