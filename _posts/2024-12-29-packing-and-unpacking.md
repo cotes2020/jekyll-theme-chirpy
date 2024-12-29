@@ -279,10 +279,13 @@ We can unpack the iterable with * operator.
 def my_function(a, b, c):
     print(a,b,c)
 
-my_function(1,2,3)
+my_function(1, 2, 3)
 
 numbers = [1, 2, 3]
 my_function(*numbers)
+
+numbers = {'a':1,'b':2,'c':3}
+my_function(**numbers)
 
 # my_function(numbers)
 # my_function() missing 2 required positional arguments: 'b' and 'c'
