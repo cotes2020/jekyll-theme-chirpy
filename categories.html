@@ -1,4 +1,0 @@
----
-layout: categories
-title: Categories
----

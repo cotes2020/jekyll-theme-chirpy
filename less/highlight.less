@@ -1,0 +1,276 @@
+// Atom's One Dark theme for Jekyll
+// Credits: https://github.com/mgyongyosi/OneDarkJekyll/
+
+.highlight,
+pre.highlight {
+  background: #282c34;
+  color: #abb2bf;
+}
+.highlight pre {
+  background: #282c34;
+}
+.highlight .hll {
+  background: #282c34;
+}
+.highlight .c {
+  color: #5c6370;
+  font-style: italic;
+}
+.highlight .err {
+  color: #960050;
+  background-color: #1e0010;
+}
+.language-coq .highlight .err {
+  // Hux: a temp workaround to fix for Coq math symbol
+  // @see https://github.com/rouge-ruby/rouge/issues/1312
+  &:extend(.highlight .k);
+  background-color: transparent;
+}
+.highlight .k {
+  color: #c678dd;
+}
+.highlight .l {
+  color: #98c379;
+}
+.highlight .n {
+  color: #abb2bf;
+}
+.highlight .o {
+  color: #abb2bf;
+}
+.highlight .p {
+  color: #abb2bf;
+}
+.highlight .cm {
+  color: #5c6370;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #5c6370;
+  font-style: italic;
+}
+.highlight .c1 {
+  color: #5c6370;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #5c6370;
+  font-style: italic;
+}
+.highlight .ge {
+  font-style: italic;
+}
+.highlight .gs {
+  font-weight: 700;
+}
+.highlight .kc {
+  color: #c678dd;
+}
+.highlight .kd {
+  color: #c678dd;
+}
+.highlight .kn {
+  color: #c678dd;
+}
+.highlight .kp {
+  color: #c678dd;
+}
+.highlight .kr {
+  color: #c678dd;
+}
+.highlight .kt {
+  color: #c678dd;
+}
+.highlight .ld {
+  color: #98c379;
+}
+.highlight .m {
+  color: #d19a66;
+}
+.highlight .s {
+  color: #98c379;
+}
+.highlight .na {
+  color: #d19a66;
+}
+.highlight .nb {
+  color: #e5c07b;
+}
+.highlight .nc {
+  color: #e5c07b;
+}
+.highlight .no {
+  color: #e5c07b;
+}
+.highlight .nd {
+  color: #e5c07b;
+}
+.highlight .ni {
+  color: #e5c07b;
+}
+.highlight .ne {
+  color: #e5c07b;
+}
+.highlight .nf {
+  color: #abb2bf;
+}
+.highlight .nl {
+  color: #e5c07b;
+}
+.highlight .nn {
+  color: #abb2bf;
+}
+.highlight .nx {
+  color: #abb2bf;
+}
+.highlight .py {
+  color: #e5c07b;
+}
+.highlight .nt {
+  color: #e06c75;
+}
+.highlight .nv {
+  color: #e5c07b;
+}
+.highlight .ow {
+  font-weight: 700;
+}
+.highlight .w {
+  color: #f8f8f2;
+}
+.highlight .mf {
+  color: #d19a66;
+}
+.highlight .mh {
+  color: #d19a66;
+}
+.highlight .mi {
+  color: #d19a66;
+}
+.highlight .mo {
+  color: #d19a66;
+}
+.highlight .sb {
+  color: #98c379;
+}
+.highlight .sc {
+  color: #98c379;
+}
+.highlight .sd {
+  color: #98c379;
+}
+.highlight .s2 {
+  color: #98c379;
+}
+.highlight .se {
+  color: #98c379;
+}
+.highlight .sh {
+  color: #98c379;
+}
+.highlight .si {
+  color: #98c379;
+}
+.highlight .sx {
+  color: #98c379;
+}
+.highlight .sr {
+  color: #56b6c2;
+}
+.highlight .s1 {
+  color: #98c379;
+}
+.highlight .ss {
+  color: #56b6c2;
+}
+.highlight .bp {
+  color: #e5c07b;
+}
+.highlight .vc {
+  color: #e5c07b;
+}
+.highlight .vg {
+  color: #e5c07b;
+}
+.highlight .vi {
+  color: #e06c75;
+}
+.highlight .il {
+  color: #d19a66;
+}
+.highlight .gu {
+  color: #75715e;
+}
+.highlight .gd {
+  color: #f92672;
+}
+.highlight .gi {
+  color: #a6e22e;
+}
+
+// Customize for Hux Blog
+.highlighter-rouge .highlight {
+  margin-bottom: 10px;
+  border-radius: 6px;
+  pre {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal; // Safari Bug
+  }
+  .rouge-table {
+    .rouge-gutter,
+    .rouge-code {
+      border: 0 !important;
+    }
+  }
+  .rouge-code {
+    pre {
+      color: #abb2bf; // default color for nil-lang code
+    }
+  }
+  .table-responsive {
+    margin: 0px;
+    border: 0px;
+  }
+  .table {
+    margin: 0px;
+    table-layout: fixed;
+  }
+  table > tbody > tr {
+    > td {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      > pre {
+        padding: 14px;
+      }
+    }
+  }
+  td.rouge-gutter {
+    width: 56px;
+  }
+  .lineno {
+    text-align: right;
+    // border-right: 1px solid #373434;
+    border-radius: 0px;
+  }
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .highlighter-rouge .highlight {
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 0px;
+    td.rouge-gutter {
+      width: 36px;
+    }
+    table > tbody > tr > td > pre {
+      padding: 14px 10px;
+    }
+  }
+}

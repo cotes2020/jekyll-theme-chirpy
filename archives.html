@@ -1,4 +1,0 @@
----
-layout: archives
-title: Archives
----

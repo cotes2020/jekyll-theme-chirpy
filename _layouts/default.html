@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="en">
 
-  {%- include head.html -%}
+{% include head.html %}
 
-  <body>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-    {%- include views/header.html -%}
+    {% include nav.html %}
+    {% include search.html %}
 
-    {%- include views/banner.html -%}
+    {{ content }}
 
-    {%- include extensions/hashlocate.html -%}
+    {% include footer.html %}
 
-    {%- include extensions/theme-toggle.html -%}
 
-    {%- include extensions/click-to-top.html -%}
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </main>
+</body>
 
-    {%- include views/footer.html -%}
-
-  </body>
 </html>

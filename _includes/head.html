@@ -1,20 +1,72 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
-  {%- seo -%}
-  <link rel="icon" href="{{ site.favicon }}">
-  <link rel="canonical" href="{{ site.url }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-  <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
-  {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-  {%- include extensions/google-analytics.html -%}
-  {%- endif -%}
-  {%- include extensions/code-highlight.html -%}
-  {%- include extensions/photo-swipe.html -%}
-  {%- include custom-head.html -%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="keywords" content="{{ site.keyword }}">
+    <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}">
+    {% case page.layout %}
+    {% when 'post' %}
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="{{ page.excerpt | strip_html | truncate:200 }}">
+    {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date: " %Y-%m-%dT%H:%M:%SZ" }}">
+    {% endif %}
+    {% if page.author %}
+    <meta property="article:author" content="{{ page.author }}">
+    {% endif %}
+    {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+    {% else %}
+    <meta property="og:type" content="website">
+    <meta property="og:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    {% endcase %}
+    <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.SEOTitle }}">
+
+    <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ " /css/bootstrap.min.css" | prepend: site.baseurl }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ " /css/hux-blog.min.css" | prepend: site.baseurl }}">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>

@@ -1,0 +1,234 @@
+/*
+  Please note this CSS is currently in   prototype form. We'll implement a cleaned up version in Web Starter Kit.
+*/
+
+.paper-snackbar {
+  transition-property: opacity, bottom, left, right, width, margin,
+    border-radius;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  /*font-family: RobotoDraft;*/
+  font-size: 14px;
+  min-height: 14px;
+  background-color: #323232;
+  background-color: #0085a1;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  line-height: 22px;
+  padding: 18px 24px;
+  bottom: 0px;
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .paper-snackbar {
+    /*
+    Desktop:
+      Single-line snackbar height: 48 dp tall
+      Minimum width: 288 dp
+      Maximum width: 568 dp
+      2 dp rounded corner
+      Text: Roboto Regular 14 sp
+      Action button: Roboto Medium 14 sp, all-caps text
+      Default background fill: #323232 100%
+    */
+
+    min-width: 288px;
+    max-width: 568px;
+    display: inline-flex;
+    border-radius: 2px;
+    margin: 24px;
+    bottom: -100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .paper-snackbar {
+    /*
+  Mobile:
+    Single-line snackbar height: 48 dp
+    Multi-line snackbar height: 80 dp
+    Text: Roboto Regular 14 sp
+    Action button: Roboto Medium 14 sp, all-caps text
+    Default background fill: #323232 100%  
+  */
+    left: 0px;
+    right: 0px;
+  }
+}
+
+.paper-snackbar .action {
+  background: inherit;
+  display: inline-block;
+  border: none;
+  font-size: inherit;
+  text-transform: uppercase;
+  color: #ffeb3b;
+  margin: 0px 0px 0px 24px;
+  padding: 0px;
+  min-width: min-content;
+  outline: 0px;
+}
+
+/* Everything from here down is actually just for the demo - the material buttons and card, and various other pieces of styling */
+
+/* Variables */
+
+@blue: #4285f4;
+@white: #fff;
+@black: #000;
+@gray: #ccc;
+@button-width: 160px;
+
+@top: 1000;
+
+/* Buttons */
+.paper-button {
+  position: relative;
+  padding: 4px 0;
+  margin: 1em;
+  width: @button-width;
+  overflow: hidden;
+  user-select: none;
+  color: @black;
+  text-transform: uppercase;
+  border-radius: 3px;
+  outline-color: @brand-gray;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  // we don't leverage ripple
+  // .ripple {
+  //     position: absolute;
+  //     width: @button-width * 2;
+  //     height: @button-width * 2;
+  //     //background-color: rgba(@gray, 0.5);
+  //     left: 0;
+  //     top: 0;
+  //     border-radius: 50%;
+  //     margin-left: - @button-width;
+  //     margin-top: - @button-width;
+  //     transform: scaleX(0) scaleY(0);
+  //     z-index: 9000;
+  // }
+}
+
+.paper-button button,
+.paper-button input[type="submit"] {
+  background: inherit;
+  border: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /*font-family: 'Roboto';*/
+  font-size: 1em;
+  color: @black;
+  text-transform: uppercase;
+}
+
+.paper-button.colored,
+.paper-button.colored button {
+  color: @blue;
+}
+
+// .paper-button .ripple {
+//   background-color: rgba(@gray, 0.5);
+// }
+
+// .paper-button.raised-button.colored .ripple {
+//   background-color: rgba(@white, 0.5);
+// }
+
+// .paper-button.raised-button .ripple {
+//   background-color: rgba(@gray, 0.5);
+// }
+
+.paper-button.raised-button.colored {
+  background-color: @blue;
+}
+
+.paper-button .raised-button {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.paper-button.raised-button.colored {
+  background: #4285f4;
+  color: #fff;
+}
+
+.paper-button[disabled] {
+  background-color: #eaeaea !important;
+  color: #a8a8a8 !important;
+  cursor: auto;
+}
+
+.paper-button:hover {
+  background-color: #eaeaea;
+}
+.paper-button.raised-button.colored:hover {
+  background-color: #3367d6;
+}
+
+button.paper-button {
+  border: 0;
+  /*font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;*/
+  font-size: 1em;
+  line-height: 25px;
+  background-color: @white;
+}
+
+.paper-button input[type="submit"] {
+  outline-color: @brand-gray;
+}
+
+.paper-button.colored.raised-button input[type="submit"] {
+  color: @white;
+}
+
+/** Shadows **/
+.paper-shadow-animated.paper-shadow {
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paper-shadow-top-z-1 {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.paper-shadow-bottom-z-1 {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.paper-shadow-top-z-2 {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.paper-shadow-bottom-z-2 {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+}
+
+.paper-shadow-top-z-3 {
+  box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.paper-shadow-bottom-z-3 {
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+.paper-shadow-top-z-4 {
+  box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+
+/** Card **/
+.card {
+  background: white;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 16px;
+  border-radius: 2px;
+}
