@@ -248,7 +248,7 @@ my_function('hello', 'world', 1, 2, 3, x=4, y=5)
 
 ### 4.2. Unpacking into function calls
 
-What is a function does not accept an iterable?
+What if a function does not accept an iterable?
 
 We can unpack the iterable with * operator.
 
