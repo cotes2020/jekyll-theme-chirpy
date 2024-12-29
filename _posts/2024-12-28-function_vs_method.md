@@ -1,5 +1,5 @@
 ---
-title: function vs method
+title: Function vs Method
 date: "2024-12-28T23:46:26+09:00"
 categories: [Knowledge, IT]
 tags: [class,method,function,용어]
