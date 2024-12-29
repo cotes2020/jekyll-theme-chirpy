@@ -250,7 +250,7 @@ my_function('hello', 'world', 1, 2, 3, x=4, y=5)
 
 What if a function does not accept an iterable?
 
-Example of that is in the [4.1. Packing with function parameters](#-41.-Packing-with-function-parameters)
+Example of that is in the [4.1. Packing with function parameters](#41-packing-with-function-parameters)
 
 In this case, We can unpack the iterable with * operator to match the no of arguments that the function requires.
 
