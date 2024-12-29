@@ -1,0 +1,42 @@
+{%- if include.params.name -%}
+  {%- assign name = include.params.name -%}
+{%- endif -%}
+
+{%- assign return = nil -%}
+
+{%- assign keys = name | split:'.' -%}
+{%- assign name = keys.first -%}
+{%- assign keys = keys | shift -%}
+
+{%- for step in (1..7) -%}
+
+  {%- case step -%}
+    {%- when 1 -%}
+      {%- assign return = page[name] -%}
+    {%- when 2 -%}
+      {%- assign return = site[name] -%}
+    {%- when 3 -%}
+      {%- assign return = site.data[name] -%}
+    {%- when 4 -%}
+      {%- assign return = site.defaults[page.layout][name] -%}
+    {%- when 5 -%}
+      {%- assign return = site.data.defaults[page.layout][name] -%}
+    {%- when 6 -%}
+      {%- assign return = layout[name] -%}
+    {%- else -%}
+      {%- assign return = include.params.default -%}
+  {%- endcase -%}
+
+  {%- for key in keys -%}
+    {%- assign return = return[key] -%}
+    {%- if return == nil -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if return != nil -%}
+    {%- break -%}
+  {%- endif -%}
+
+{%- endfor -%}
+

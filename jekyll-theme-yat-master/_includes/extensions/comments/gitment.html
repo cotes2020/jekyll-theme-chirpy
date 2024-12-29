@@ -1,0 +1,15 @@
+  <div id="gitment_thread"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js" async></script>
+  <script>
+    var gitment = new Gitment({
+      id: '{{ page.id }}',
+      owner: '{{ site.gitment.username }}',
+      repo: '{{ site.gitment.repo }}',
+      oauth: {
+        client_id: '{{ site.gitment.client_id }}',
+        client_secret: '{{ site.gitment.client_secret }}',
+      },
+    });
+    gitment.render('gitment_thread')
+  </script>

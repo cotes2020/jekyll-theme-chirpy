@@ -1,0 +1,41 @@
+{%- if page.paginator -%}
+  {%- assign paginator = page.paginator -%}
+{%- elsif paginator == nil -%}
+  {%- assign paginator = site -%}
+{%- endif -%}
+
+{%- assign name = 'excerpt.image_style' -%}
+{%- include functions.html func='get_value' default='z' -%}
+{%- assign image_style = return | append: '-image-style' -%}
+
+{%- if paginator.posts.size > 0 -%}
+<div class="pagination">
+  <!-- Post list links -->
+  <ul class="post-list {{ image_style }}">
+    <!-- Top list item -->
+    {%- if paginator == site or paginator.page == 1 -%}
+      {%- assign post_item_class = "top-post" -%}
+      {%- assign posts = site.posts
+        | where_exp: "item", "item.top > 0"
+        | sort: "top" -%}
+      {%- for post in posts -%}
+        {%- include views/pagination-item.html -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    <!-- Normal list item -->
+    {%- assign post_item_class = "" -%}
+    {%- for post in paginator.posts -%}
+      {%- if post.top -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- include views/pagination-item.html -%}
+    {%- endfor -%}
+  </ul>
+
+  <!-- Pagination links -->
+  {%- if paginator.posts.size < site.posts.size -%}
+    {%- include views/paginator.html -%}
+  {%- endif -%}
+</div>
+{%- endif -%}
