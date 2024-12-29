@@ -156,7 +156,7 @@ For example, if we preset the no of arguments for a function and pass a wrong no
 def my_function(a, b, c):
     print(a,b,c)
 
-# calling function with unpacking args
+# calling function with a wrong no of arguments
 # my_function(0, 1, 4, 9)
 # TypeError: my_function() takes 3 positional arguments but 4 were given
 ```
