@@ -1,0 +1,115 @@
+---
+layout:     keynote
+title:      "都 2015 年了，CSS 怎么还是这么糟糕"
+subtitle:   "🎞  Slides:CSS Still Sucks 2015"
+iframe:     "//huangxuan.me/css-sucks-2015/"
+date:       2015-12-28
+author:     "Hux"
+tags:
+    - Web
+    - CSS
+---
+
+
+> 下滑这里查看更多内容
+
+
+### [Watching Fullscreen →](https://huangxuan.me/css-sucks-2015/)
+
+<div class="visible-md visible-lg">
+<img src="//huangxuan.me/css-sucks-2015/attach/qrcode.png" width="350"/>
+<small class="img-hint">你也可以通过扫描二维码在手机上观看</small>
+</div>
+
+
+这个 Web Slides 开源在[我的 Github 上](https://github.com/Huxpro/css-sucks-2015)，欢迎你帮助我完善这个展示文稿，你可以给我提 issue，可以 fork & pull request。如果它能帮助到你了，希望你还能不吝啬 star 一下这个项目
+
+
+### Catalog
+
+- Document Times
+    - Frameworks
+    - Style Guide
+        - **OOCSS**
+        - **SMACSS**
+    - **Pre-processer**
+    - **PostCSS**
+- Application Times
+    - **Shadow DOM**
+    - **CSS "4"**
+    - Naming Convention
+        - **BEM**
+        - **SUIT**
+    - **Atomic CSS**
+    - **CSS in JS**
+    - **CSS Modules**  
+        - Interoperable CSS
+    - PostCSS, again
+- My Opinionated Proposal
+    - **POCss**
+
+## POCss: Page Override Components CSS
+
+### 1. Scoping Components <br><small style="line-height:2em;">*CSS Blocks should only be used inside a component of the same name.*</small>
+
+```scss
+// Component/index.scss
+.ComponentName {
+    &--mofierName {}
+    &__decendentName {
+        &--modifierName {}
+    }
+    .isStateOfComponent {}
+}
+```
+
+```javascript
+// Component/index.js
+require('./index.scss');
+```
+
+CSS is *always bundled* with components<br>(from loading, mount to unmount)
+
+### 2. Components can be Overrode by Pages <br><small style="line-height:2em;">*There is always requirements to rewrite styles of components in pages*</small>
+
+```scss
+// Pages/PageA.scss
+#PageA {
+    .pagelet-name {
+        .pagelet-descendent-name {}
+    }
+    .ComponentName{ /* override */ }
+}
+```
+
+```javascript
+// Pages/index.js
+require('./PageA.scss');
+```
+
+- *#Page* for absolutely scoping between pages
+- *.pagelet-name* should be lowercase to prevent conflicting with components
+
+### Why POC?
+
+- **It's technology-agnostic**
+<small>
+    *One css framework can be played with whatever technology stacks*<br>
+    *You can combined Scss, PostCSS and whatever you want*
+</small>
+
+- **Solving problems, and easy**
+<small>
+    *Makes reading and teamwork much easier*<br>
+    *Get all benefit from BEM, SUITCSS and others*
+</small>
+
+- **Leverage the power of cascading properly**
+<small>
+    *Scoping components but allow reasonable overriding*<br>
+    *It's pragmatic, flexible and hitting the sweet spot*
+</small>
+
+### Thanks
+
+[Reveal.js](http://lab.hakim.se/reveal-js)
