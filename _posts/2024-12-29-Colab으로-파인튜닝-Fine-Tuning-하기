@@ -16,6 +16,7 @@ published: true
 당연히, high-quality 데이터들이 필요할 것이다. high-quality 데이터란 ,, 거의 완전히 real data 즉 인간 데이터이다. 그치만 이런 데이터들은 보안 문제도 있고, 무제한 생성하기도 어렵고, 개인 사생활 문제도 있다. 
 
 그래서 요즘은 **synthetic data** 를 통해 대체하는 추세이다. LLM을 통해 synthetic을 만들어 human-generate data를 대체한다. 
+
 Prompt Chaining을 통해, 큰 모델을 통해 데이터셋을 만들고 그것을 작은 모델에 학습시켜보는 과정을 진행해보려 한다. 
 
 ## 2. 파인튜닝을 해보자
