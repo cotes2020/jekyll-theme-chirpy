@@ -3,7 +3,7 @@ title: Zipping each of python data structures
 date: "2024-12-29T13:10:43+09:00"
 categories: [Programming, Python]
 tags: [zip]
-description:
+description: combine multiple iterables (such as lists, tuples, or other sequences) into a single iterable
 author: hoon
 ---
 
