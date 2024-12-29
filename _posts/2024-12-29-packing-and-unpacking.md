@@ -275,7 +275,7 @@ my_function(**numbers)
     1 2 3
 
 
-#### 4.2.1. Using * unpacking with the zip() function
+### 4.3. Using * unpacking with the zip() function
 
 
 ```python
