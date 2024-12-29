@@ -1,0 +1,26 @@
+{% if include.selector %}
+  {% assign selector = include.selector %}
+{% endif %}
+
+{% if include.seed %}
+  {% assign seed = include.seed %}
+{% endif %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js" async></script>
+<script>
+  function setRandomBgImage(selector, seed, zoom) {
+    var element = document.querySelector(selector);
+    if (!element) return;
+    var pattern = Trianglify({
+      width: screen.width * zoom,
+      height: element.offsetHeight * zoom,
+      seed: seed
+    });
+
+    var image = document.createElement("div");
+    image.style.backgroundImage = "url(" + pattern.png() + ")";
+    element.appendChild(image);
+  }
+
+  setRandomBgImage('{{ selector }}', '{{ seed }}', {{ zoom | default: 1}});
+</script>

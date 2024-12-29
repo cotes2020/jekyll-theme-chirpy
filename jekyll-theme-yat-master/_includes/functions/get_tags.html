@@ -1,0 +1,12 @@
+{% assign split_mark = '<|>' %}
+
+{% assign tags = '' %}
+{% for tag in site.tags %}
+  {% assign name = tag | first %}
+  {% assign tags = tags | append: split_mark  | append: name %}
+{% endfor %}
+
+{% assign return = tags
+  | remove_first: split_mark
+  | split: split_mark
+  | sort: self %}

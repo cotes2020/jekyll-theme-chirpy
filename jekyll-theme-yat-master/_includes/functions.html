@@ -1,0 +1,30 @@
+{%- assign params = include -%}
+{%- if params.func -%}
+  {%- assign func = params.func -%}
+{%- endif -%}
+
+{%- assign include_path = func -%}
+{%- assign path_array = include_path | split: '.' -%}
+{%- if path_array.size == 1 -%}
+  {%- assign include_path = include_path | append: '.html' -%}
+{%- endif -%}
+
+{%- if func == 'log' -%}
+  {%- include functions/log.html level=include.level msg=include.msg -%}
+{%- else -%}
+  {%- assign include_path = 'functions/' | append: include_path -%}
+  {%- include {{ include_path }} params=params-%}
+{%- endif -%}
+
+{%- if return == nil -%}
+  {%- assign return = include.default -%}
+{%- endif -%}
+
+{%- if func != 'log' -%}
+  {%- assign msg = '[function]['
+    | append: {{func}}
+    | append: '] '
+    | append: {{return}}
+    -%}
+  {%- include functions.html func='log' level='info' -%}
+{%- endif -%}
