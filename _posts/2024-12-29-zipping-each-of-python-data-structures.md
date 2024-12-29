@@ -61,23 +61,23 @@ dict2 = {'keyA': 'A', 'keyB': 'B'}
 zipped_dict_keys = zip(dict1, dict2)
 print(list(zipped_dict_keys))
 # Output: [
-  ('key1', 'keyA'), ('key2', 'keyB')
-]
+# ('key1', 'keyA'), ('key2', 'keyB')
+# ]
 
 # To zip values:
 zipped_dict_values = zip(dict1.values(), dict2.values())
 print(list(zipped_dict_values))
 # Output: [
-  (10, 'A'), (20, 'B')
-]
+# (10, 'A'), (20, 'B')
+# ]
 
 # To zip items (key-value pairs):
 zipped_dict_items = zip(dict1.items(), dict2.items())
 print(list(zipped_dict_items))
 # Output: [
-  (('key1', 10), ('keyA', 'A')),
-  (('key2', 20), ('keyB', 'B'))
-]
+# (('key1', 10), ('keyA', 'A')),
+# (('key2', 20), ('keyB', 'B'))
+# ]
 ```
 
 ---
