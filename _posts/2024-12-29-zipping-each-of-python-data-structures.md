@@ -5,6 +5,14 @@ categories: [Programming, Python]
 tags: [zip]
 description:
 author: hoon
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: true
+    toc_depth: 3
+    number_sections: true
+    theme: lumen
 ---
 
 The `zip()` function in Python is used to **combine multiple iterables (such as lists, tuples, or other sequences) into a single iterable**. 
