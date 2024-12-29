@@ -57,6 +57,7 @@ When zipping dictionaries, only the keys are zipped by default:
 dict1 = {'key1': 10, 'key2': 20}
 dict2 = {'keyA': 'A', 'keyB': 'B'}
 
+# To zip keys:
 zipped_dict_keys = zip(dict1, dict2)
 print(list(zipped_dict_keys))  # Output: [('key1', 'keyA'), ('key2', 'keyB')]
 
