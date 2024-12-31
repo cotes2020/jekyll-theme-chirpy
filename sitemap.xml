@@ -1,36 +1,36 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>http://localhost:4000/posts/FistPost/</loc>
+    <loc>https://jjjung0921.github.io/posts/FistPost/</loc>
     <lastmod>2024-12-31T00:00:00+09:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:4000/categories/</loc>
+    <loc>https://jjjung0921.github.io/categories/</loc>
     <lastmod>2024-12-31T15:32:05+09:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:4000/tags/</loc>
+    <loc>https://jjjung0921.github.io/tags/</loc>
     <lastmod>2024-12-31T15:32:05+09:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:4000/archives/</loc>
+    <loc>https://jjjung0921.github.io/archives/</loc>
     <lastmod>2024-12-31T15:32:05+09:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:4000/about/</loc>
+    <loc>https://jjjung0921.github.io/about/</loc>
     <lastmod>2024-12-31T15:32:05+09:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:4000/</loc>
+    <loc>https://jjjung0921.github.io/</loc>
   </url>
   <url>
-    <loc>http://localhost:4000/categories/github-%EB%B8%94%EB%A1%9C%EA%B7%B8/</loc>
+    <loc>https://jjjung0921.github.io/categories/github-%EB%B8%94%EB%A1%9C%EA%B7%B8/</loc>
   </url>
   <url>
-    <loc>http://localhost:4000/categories/%EC%8B%9C%EC%9E%91/</loc>
+    <loc>https://jjjung0921.github.io/categories/%EC%8B%9C%EC%9E%91/</loc>
   </url>
   <url>
-    <loc>http://localhost:4000/google92f52fe715205333.html</loc>
+    <loc>https://jjjung0921.github.io/google92f52fe715205333.html</loc>
     <lastmod>2024-12-31T15:28:11+09:00</lastmod>
   </url>
 </urlset>
