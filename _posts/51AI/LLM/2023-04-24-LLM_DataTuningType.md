@@ -7,6 +7,10 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
+# LLM - Data Tuning Type
+
+**Table of contents:**
+
 - [LLM - Data Tuning Type](#llm---data-tuning-type)
   - [Fine-T vs Prompt-T vs Instruction-T](#fine-t-vs-prompt-t-vs-instruction-t)
   - [Hard / Soft Prompt](#hard--soft-prompt)
@@ -19,10 +23,6 @@ tags: [AI, ML]
     - [Single task Fine-tuning](#single-task-fine-tuning)
     - [Catastrophic forgetting](#catastrophic-forgetting)
     - [Multi-task fine-tuning](#multi-task-fine-tuning)
-
----
-
-# LLM - Data Tuning Type
 
 ---
 

@@ -22,7 +22,7 @@ tags: [AI, ML]
   - [Full Fine-tuning](#full-fine-tuning)
     - [Self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
     - [SFT - Supervised Fine-Tuning (监督微调阶段)](#sft---supervised-fine-tuning-监督微调阶段)
-      - [Overall](#overall)
+      - [Overview](#overview-1)
       - [Implementation in GCP](#implementation-in-gcp)
     - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
   - [Not Full fine-tuning](#not-full-fine-tuning)
@@ -434,7 +434,7 @@ Finetuned Language Net(FLAN) 的具体训练流程:
 
 ### SFT - Supervised Fine-Tuning (监督微调阶段)
 
-#### Overall
+#### Overview
 
 - good option when you have a well-defined task with available labeled data.
 

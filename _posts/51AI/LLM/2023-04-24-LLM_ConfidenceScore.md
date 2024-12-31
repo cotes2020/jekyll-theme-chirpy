@@ -7,8 +7,12 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
+# LLM - Confidence score for ML model
+
+**Table of contents:**
+
 - [LLM - Confidence score for ML model](#llm---confidence-score-for-ml-model)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [Confidence estimation techniques](#confidence-estimation-techniques)
   - [Data labeling](#data-labeling)
     - [蒸馏法](#蒸馏法)
@@ -43,15 +47,9 @@ tags: [AI, ML]
       - [Comparison of Calibration of Classifiers](#comparison-of-calibration-of-classifiers)
       - [执行概率预测校准 plot\_calibration](#执行概率预测校准-plot_calibration)
 
-
-
 ---
 
-# LLM - Confidence score for ML model
-
----
-
-## Overall
+## Overview
 
 > The main purpose of any confidence indicator, be it a quantitative score or a qualitative signal, is to highlight potential uncertainties for human review.
 

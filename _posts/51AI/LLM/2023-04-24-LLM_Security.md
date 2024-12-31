@@ -9,7 +9,7 @@ tags: [AI, ML]
 
 # AI Security
 
-**TOC**:
+**Table of contents:**
 
 - [AI Security](#ai-security)
   - [Overview](#overview)
