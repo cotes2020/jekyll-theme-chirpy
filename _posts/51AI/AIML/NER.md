@@ -1,6 +1,6 @@
 
 - [NER](#ner)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [Sequence Tagging 传统序列标注方式](#sequence-tagging-传统序列标注方式)
     - [命名实体识别实践与探索](#命名实体识别实践与探索)
       - [1. BI-LSTM-CRF (Bi-directional LSTM)](#1-bi-lstm-crf-bi-directional-lstm)
@@ -25,7 +25,7 @@
 
 # NER
 
-## Overall
+## Overview
 
 NER
 - 命名实体识别

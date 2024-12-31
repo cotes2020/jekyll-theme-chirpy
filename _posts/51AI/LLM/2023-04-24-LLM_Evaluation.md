@@ -12,7 +12,7 @@ tags: [AI, ML]
 **Table of contents:**
 
 - [Evaluation](#evaluation)
-  - [Overall](#overall)
+  - [Overview](#overview)
   - [Model evaluation](#model-evaluation)
     - [evaluation terminology](#evaluation-terminology)
     - [evaluation metrics](#evaluation-metrics)

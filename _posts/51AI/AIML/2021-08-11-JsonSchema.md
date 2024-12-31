@@ -8,7 +8,7 @@ tags: [AI, ML]
 ---
 
 - [JSON Schema](#json-schema)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [validate JSON data using Python](#validate-json-data-using-python)
   - [JSON Schema](#json-schema-1)
   - [Why developers use JSON Schema](#why-developers-use-json-schema)
@@ -26,7 +26,7 @@ tags: [AI, ML]
 
 ---
 
-## Overall
+## Overview
 
 JSON Schema is a declarative language that you can use to annotate and validate the structure, constraints, and data types of the JSON documents. It provides a way to standardize and define expectations for the JSON data.
 

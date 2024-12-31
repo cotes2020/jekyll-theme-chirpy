@@ -11,7 +11,7 @@ tags: [AI, ML]
 
 **Table of contents:**
 - [OWASP Top 10 for LLM](#owasp-top-10-for-llm)
-  - [Overall](#overall)
+  - [Overview](#overview)
   - [OWASP Top 10 for LLM](#owasp-top-10-for-llm-1)
     - [Top 10](#top-10)
 

@@ -12,12 +12,12 @@ image:
 # Create a simple microservice using Lambda and API Gateway
 
 - [Create a simple microservice using Lambda and API Gateway](#create-a-simple-microservice-using-lambda-and-api-gateway)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [create an API using Amazon API Gateway](#create-an-api-using-amazon-api-gateway)
 
 ---
 
-## Overall
+## Overview
 
 - create a Lambda function, and an Amazon API Gateway endpoint to trigger that function.
 - call the endpoint with any method (GET, POST, PATCH, etc.) to trigger Lambda function.

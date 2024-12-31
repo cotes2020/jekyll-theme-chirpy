@@ -36,6 +36,12 @@ tags: [AI, ML]
   - [RAG / Retrieval Augmented Generation](#rag--retrieval-augmented-generation)
     - [Implementation](#implementation)
       - [Retriever](#retriever)
+  - [Helping LLMs reason and plan with chain-of-thought](#helping-llms-reason-and-plan-with-chain-of-thought)
+  - [Program-aided language models (PAL)](#program-aided-language-models-pal)
+    - [Augmenting LLMs](#augmenting-llms)
+  - [ReAct: Combining reasoning and action](#react-combining-reasoning-and-action)
+    - [ReAct structured examples](#react-structured-examples)
+  - [LangChain](#langchain)
   - [LLMs Security](#llms-security)
     - [Protection solution](#protection-solution)
       - [Large Language Model (LLM) Monitoring](#large-language-model-llm-monitoring)
@@ -395,7 +401,7 @@ speculative decoding
 
 connecting to external data sources and applications.
 
-- Your application must manage the passing of user input to the LLM and the return of completions.
+- the application must manage the passing of user input to the LLM and the return of completions.
 
   - often done through some type of orchestration library.
 
@@ -530,6 +536,315 @@ connecting to external data sources and applications.
   - use Rag to generate summaries of filings or identify specific people, places and organizations within the full corpus of the legal documents.
 
 ![picture 11](/assets/img/c36e540ca92aef5b49d464b436c52f08cabaf43c0f6470526914f0cf3b65bda7.png)
+
+---
+
+## Helping LLMs reason and plan with chain-of-thought
+
+Researchers have been exploring ways to improve the performance of large language models on reasoning tasks
+
+
+One strategy that has demonstrated some success is prompting the model to think more like a human, by breaking the problem down into steps.
+
+- Then finish by stating the answer.
+- These intermediate calculations form the reasoning steps that a human might take, and the full sequence of steps illustrates the chain of thought that went into solving the problem.
+- Asking the model to mimic this behavior is known as chain of thought prompting.
+- It works by including `a series of intermediate reasoning steps` into any examples that you use for one or few-shot inference.
+- By structuring the examples in this way, essentially teaching the model how to reason through the task to reach a solution
+- Thinking through the problem has helped the model come to the correct answer.
+- while the input prompt is shown here in a condensed format to save space, the entire prompt is actually included in the output.
+
+![picture 3](/assets/img/bce0f8c899ad73d4669287c1eb4199225b1365e2e04557f3e79fb21a40e6e097.png)
+
+![picture 4](/assets/img/3be4fe7d04f21c970d6399a63a0a16ed810ba8da9df93c11c7b92789babef61e.png)
+
+- use chain of thought prompting to `help LLMs improve their reasoning of other types of problems`
+> - an example
+> - simple physics problem: determine if a gold ring would sink to the bottom of a swimming pool.
+> - The chain of thought prompt included as the one-shot example here, shows the model how to work through this problem, by reasoning that a pair would flow because it's less dense than water.
+> - When pass this prompt to the LLM, it generates a similarly structured completion.
+> - The model correctly identifies the density of gold, which it learned from its training data, and then reasons that the ring would sink because gold is much more dense than water.
+
+![picture 5](/assets/img/55c85fba0c0592ed0bc6ff9a254f162cc2afdc53feb64520ea94d93836d84d95.png)
+
+
+Chain of thought prompting is a powerful technique that improves the ability of the model to reason through problems. While this can greatly improve the performance of the model, the limited math skills of LLMs can still cause problems if the task requires accurate calculations, like totaling sales on an e-commerce site, calculating tax, or applying a discount.
+
+---
+
+## Program-aided language models (PAL)
+
+> letting the LLM talk to a program that is much better at math.
+
+As you saw earlier in this lesson, the ability of LLMs to carry out arithmetic and other mathematical operations is limited.
+
+- Even if the model correctly reasons through a problem, it may still get the individual math operations wrong
+  - especially with larger numbers or complex operations.
+
+  - example: LLM tries to act like a calculator but gets the answer wrong.
+
+- negative consequences:
+  - charging customers the wrong total
+  - getting the measurements for a recipe incorrect.
+
+![picture 0](/assets/img/0daaf0bc77ec09503998b8d869664e03092ca4dd5ee8d4451eee3d7fac654c23.png)
+
+<font color=OrangeRed> The model isn't actually doing any real math here. </font>
+
+- but <font color=LightSlateBlue> predict the most probable tokens </font> that complete the prompt.
+
+### Augmenting LLMs
+
+- program-aided language models (PAL)
+  - presented by Luyu Gao and collaborators at Carnegie Mellon University in 2022,
+  - pairs an LLM with an external code interpreter to carry out calculations.
+
+- overcome this limitation by allowing the model to interact with external applications that are good at math, like a **Python interpreter**.
+
+  - makes use of chain of thought prompting to generate executable Python scripts.
+
+  - The scripts that the model generates are passed to an interpreter to execute.
+
+
+- The strategy behind PAL
+  - the output format for the model by including examples for one or few short inference in the prompt.
+
+  - have the LLM generate completions where <font color=OrangeRed> reasoning steps are accompanied by computer code </font>.
+
+  - This code is then passed to an interpreter to carry out the calculations necessary to solve the problem.
+
+
+![picture 1](/assets/img/199deccaa2b6ae327db6f8d609bd6950d45b64847665150caa37e819f79b98a1.png)
+
+![picture 2](/assets/img/838bbd89848306f7cb669438bb1c46eb4243ec1eb90e2c25f4ca2e92674a54f2.png)
+
+example prompts:
+
+- Variables are declared based on the text in each reasoning step.
+
+- Their values are assigned either directly, as in the first line of code here, or as calculations using numbers present in the reasoning text in the second Python line.
+
+- The model can also work with variables it creates in other steps
+
+- Note that the text of each reasoning step begins with a pound sign, so that the line can be skipped as a comment by the Python interpreter.
+
+- The prompt here ends with the new problem to be solved.
+
+
+How the PAL framework enables an LLM to interact with an external interpreter.
+
+1. To prepare for inference with PAL, format the prompt to contain one or more examples.
+
+   - Each example should contain a question followed by reasoning steps in lines of Python code that solve the problem.
+
+2. append the new question to the prompt template.
+
+3. the resulting PAL formatted prompt, contains both the example and the problem to solve.
+
+4. pass this combined prompt to the LLM, which then generates a completion that is in the form of a Python script having learned how to format the output based on the example in the prompt.
+
+5. hand off the script to a Python interpreter, to run the code and generate an answer.
+
+   - For the bakery example script you saw on the previous slide, the answer is 74.
+
+   - ![picture 3](/assets/img/4dfc3e9acdbb6dc76d2fed28aceaa9db69ebf000539092b620d131abca820ff4.png)
+
+6. append the text containing the answer, have a prompt that includes the correct answer in context.
+   - accurate because the calculation was carried out in Python to the PAL formatted prompt you started with.
+   - ![picture 5](/assets/img/13a64ec71c12a2d2a70a05e95720833d8f2e4c29cbaadf8a1331cf52c2cbdd11.png)
+
+7. pass the updated prompt to the LLM, it generates a completion that contains the correct answer.
+   - ![picture 4](/assets/img/93f7cbf66bdf79258b8c373d79cee1b30bd1fe9050186b356e7fa68edf84271e.png)
+
+
+Automate this process
+- so that you don't have to pass information back and forth between the LLM, and the interpreter by hand.
+
+![picture 6](/assets/img/8fa2f590f47cca16fa3121f039173f861b8be4a1e5fddf73cb9d01b2935f1075.png)
+
+- The orchestrator
+  - a technical component that can manage the flow of information and the initiation of calls to external data sources or applications.
+
+  - It can also decide what actions to take based on the information contained in the output of the LLM.
+
+- LLM is the application's reasoning engine.
+
+  - it creates the plan that the orchestrator will interpret and execute.
+
+![picture 7](/assets/img/cd5a825c71a82cd1438572b78c7c9eedb8c801f29ef33e5896f06f825883477c.png)
+
+- In PAL there's only one action to be carried out, <font color=OrangeRed> the execution of Python code </font>.
+
+- The LLM doesn't really have to decide to run the code, but <font color=LightSlateBlue> write the script which the orchestrator then passes to the external interpreter </font> to run.
+
+- real-world applications use case may require interactions with several external data sources.
+
+- may need to manage multiple decision points, validation actions, and calls to external applications.
+
+---
+
+## ReAct: Combining reasoning and action
+
+> use the LLM to power a more complex application, to manage more complex workflows, perhaps in including interactions with multiple external data sources and applications.
+
+**ReAct**
+
+- framework proposed by researchers at Princeton and Google in 2022.
+
+  - The paper develops a series of complex prompting examples based on problems from:
+    - Hot Pot QA, a multi-step question answering benchmark that requires reasoning over two or more Wikipedia passages
+    - fever, a benchmark that uses Wikipedia passages to verify facts.
+
+- one way to use LLMs to power an application through reasoning and action planning.
+
+- This strategy can be extended for the specific use case by creating examples that work through the decisions and actions that will take place in the application.
+
+![picture 12](/assets/img/ef3ec18db5a8313583b1f566d140583c5b72408e0c1700edc9144de4f363c3f9.png)
+
+- a prompting strategy
+  - combines chain of thought reasoning with action planning.
+  - help LLMs plan out and execute these workflows.
+
+- a novel approach that `integrates verbal reasoning and interactive decision` making in LLMs.
+- While LLMs have excelled in language understanding and decision making, the combination of reasoning and acting has been neglected.
+- ReAct enables LLMs to generate reasoning traces and task-specific actions, leveraging the synergy between them. The approach demonstrates superior performance over baselines in various tasks, overcoming issues like hallucination and error propagation.
+- ReAct outperforms imitation and reinforcement learning methods in interactive decision making, even with minimal context examples. It not only enhances performance but also improves interpretability, trustworthiness, and diagnosability by allowing humans to distinguish between internal knowledge and external information.
+
+In summary, ReAct bridges the gap between reasoning and acting in LLMs, yielding remarkable results across language reasoning and decision making tasks. By interleaving reasoning traces and actions, ReAct overcomes limitations and outperforms baselines, not only enhancing model performance but also providing interpretability and trustworthiness, empowering users to understand the model's decision-making process.
+
+
+![picture 9](../../../assets/img/88c88dee02b58663812d7b16035f3f0bac26d0a57a9bafbb6b0e083fce844ed2.png)
+
+
+---
+
+### ReAct structured examples
+
+ReAct uses structured examples to show a large language model how to reason through a problem and decide on actions to take that move it closer to a solution.
+
+![picture 13](/assets/img/30e0f0790091aa77087f4beebc540b5a5041a5a055b02b0a8fbe771ae276b717.png)
+
+- **question**
+
+  - prompts start with `a question that will require multiple steps to answer`.
+
+  > - example: determine which of two magazines was created first.
+
+![picture 14](/assets/img/44022f8881bfc78c7c601f5167820a0d92392ddceac3bc2228f90e65e3bd1aee.png)
+
+- **thought**
+
+  - then includes `a related thought action observation trio of strings`.
+
+  - a reasoning step that demonstrates to the model how to tackle the problem and identify an action to take.
+
+  > - example: the prompt specifies that the model will search for both magazines and determine which one was published first.
+
+![picture 15](/assets/img/7be072286434a4588fe00cdd7800f9f3c9db8a699ea00803b3737e64c2106f1f.png)
+
+- **action**
+
+  - In order for the model to interact with an external application or data source, it has to `identify an action to take from a pre-determined list`.
+
+  - In the case of the ReAct framework, the authors created a small Python API to interact with Wikipedia.
+    - The action is formatted using the specific square bracket notation so that the model will format its completions in the same way.
+    - The Python interpreter searches for this code to trigger specific API actions.
+
+  - The three allowed actions are
+    - `search`: looks for a Wikipedia entry about a particular topic
+    - `lookup`: searches for a string on a Wikipedia page.
+    - `finish`: the model carries out when it decides it has determined the answer.
+
+  > - example,
+  > - the thought in the prompt identified two searches to carry out one for each magazine.
+  > - the first search will be for Arthur's magazine.
+
+![picture 16](/assets/img/af385b15c8fc0add6adb1bd5a2a70af10503509506ac2f3bcd55073e51863fdb.png)
+
+- **observation**
+
+  - where the new information provided by the external search is brought into the context of the prompt for the model to interpret
+
+- the prompt then repeats the cycle as many times as is necessary to obtain the final answer.
+
+![picture 17](/assets/img/e8edcea0ba08ea9de99a42dfd79e80ef165aec056d61174be63d5f75d9efe040.png)
+
+- In the second thought, the prompt states the start year of Arthur's magazine and identifies the next step needed to solve the problem.
+
+  - The second action is to search for first for women, and the second observation includes text that states the start date of the publication, in this case 1989.
+
+  - At this point, all the information required to answer the question is known.
+
+![picture 18](/assets/img/376c4ecf4797085ff78b685b65c5be469f195fc7a46d217a1e2ce98e0ce89483.png)
+
+- The third thought states the start year of first for women and then gives the explicit logic used to determine which magazine was published first.
+
+- The final action is to finish the cycle and pass the answer back to the user.
+
+- It's important to note that in the ReAct framework, the LLM can only choose from a limited number of actions that are defined by a set of instructions that is prepended to the example prompt text.
+
+---
+
+The full text of the instructions:
+
+![picture 19](/assets/img/5b57241d915d348773d7b450f1d767d9a0e3cf9021a4affd83619afc495347d7.png)
+
+1. the task is defined, telling the model to answer a question using the prompt structure you just explored in detail.
+
+2. the instructions give more detail about what is meant by thought and then specifies that the action step can only be one of three types.
+   1. search action, which looks for Wikipedia entries related to the specified entity.
+   2. lookup action, which retrieves the next sentence that contains the specified keyword.
+   3. finish action, which returns the answer and brings the task to an end.
+
+   - It is critical to define a set of allowed actions when using LLMs to plan tasks that will power applications.
+
+   - LLMs are very creative, and they may propose taking steps that don't actually correspond to something that the application can do.
+
+3. The final sentence in the instructions lets the LLM know that some examples will come next in the prompt text.
+
+---
+
+![picture 20](/assets/img/b9035111fd03882b0c5e53a60a740366ec0a3786f6a09bfeaff0f9f983815663.png)
+
+All the pieces together
+
+1. start with the ReAct example prompt.
+
+   - depending on the LLM you're working with, you may find that you need to include more than one example and carry out future inference.
+
+2. pre-pend the instructions at the beginning of the example
+3. insert the question you want to answer at the end.
+
+4. The full prompt now includes all of these individual pieces, and it can be passed to the LLM for inference.
+
+---
+
+## LangChain
+
+- framework provides modular pieces that contain the components necessary to work with LLMs.
+
+- These components include
+  - **prompt templates**: for many different use cases to format both input examples and model completions.
+
+  - **memory**: to store interactions with an LLM.
+
+  - **pre-built tools**: enable to carry out a wide variety of tasks, including calls to external datasets and various APIs.
+
+![picture 21](/assets/img/98978143e4771480d02e6a53d888994b4c4afbe295b20d1aca26058f02edc03a.png)
+
+- Connecting a selection of these individual components together results in a chain.
+
+  - LangChain have developed a set of predefined chains that have been optimized for different use cases, use these off the shelf to quickly get the app up and running.
+
+- Sometimes the application workflow could take multiple paths depending on the information the user provides, instead of use a pre-determined chain, will need the flexibility to decide which actions to take as the user moves through the workflow.
+
+![picture 22](/assets/img/bf6fab4984dfb5230d1551af1e0e05bdd075948f43f82b900950f7cef886aab5.png)
+
+- LangChain defines another construct, known as an **agent**, that you can use to interpret the input from the user and determine which tool or tools to use to complete the task.
+
+  - LangChain currently includes agents for both PAL and ReAct, among others.
+
+  - Agents can be incorporated into chains to take an action or plan and execute a series of actions.
 
 ---
 

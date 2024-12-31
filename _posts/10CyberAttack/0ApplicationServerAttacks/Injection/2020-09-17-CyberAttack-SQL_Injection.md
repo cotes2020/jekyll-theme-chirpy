@@ -8,7 +8,7 @@ image:
 ---
 
 - [Meow's CyberAttack - Application/Server Attacks - Injection - SQL Injection](#meows-cyberattack---applicationserver-attacks---injection---sql-injection)
-  - [Overall](#overall)
+  - [Overview](#overview)
     - [SQL (Structured Query Language)](#sql-structured-query-language)
   - [SQL injection](#sql-injection)
     - [SQL injection Type](#sql-injection-type)
@@ -58,7 +58,7 @@ book:
 
 ---
 
-## Overall
+## Overview
 
 <font color=LightSlateBlue> cross-site scripting </font> is not the only place where <font color=LightSlateBlue> URL encoding </font> is used.
 - Anywhere you want to obscure text, you can URL-encode it.

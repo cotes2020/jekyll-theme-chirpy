@@ -11,7 +11,7 @@ image:
 # AWS - Cloud computing
 
 - [AWS - Cloud computing](#aws---cloud-computing)
-  - [overall](#overall)
+  - [Overview](#overview)
     - [traditional computing model](#traditional-computing-model)
     - [IaaS - Infrastructure as a Service](#iaas---infrastructure-as-a-service)
     - [PaaS - Platform as a Service](#paas---platform-as-a-service)
@@ -19,7 +19,7 @@ image:
 
 ---
 
-## Overall
+## Overview
 
 cloud computing:
 - Cloud computing is the `on-demand delivery` of compute power, database, storage, applications, and other IT resources via the internet with `pay-as-you-go pricing`.

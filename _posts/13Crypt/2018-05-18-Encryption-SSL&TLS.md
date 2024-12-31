@@ -8,7 +8,7 @@ image:
 ---
 
 - [Cryptography - SSL/TLS Encryption](#cryptography---ssltls-encryption)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [SSL/TLS vs SSH](#ssltls-vs-ssh)
 
 ---
@@ -17,7 +17,7 @@ image:
 
 ---
 
-## Overall
+## Overview
 
 SSL/TLS uses both asymmetric and symmetric encryption to protect the confidentiality and integrity of data-in-transit. Asymmetric encryption is used to establish a secure session between a client and a server, and symmetric encryption is used to exchange data within the secured session.
 

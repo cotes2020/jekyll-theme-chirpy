@@ -420,7 +420,7 @@ In addition to LLM, we need to discourage the opposite prefix `SVEN¬𝑐` from 
 
 
 
-##### Overall Loss Function
+##### Overview Loss Function
 - Our overall loss function is a weighted sum of the three loss terms in Equations (2) to (4):
 - Section 6.3 examines the trade-off between security control and
 - functional correctness when we adjust the weights 𝑤CT and 𝑤KL.

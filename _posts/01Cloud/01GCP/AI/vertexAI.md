@@ -8,7 +8,7 @@ tags: [AI, ML]
 ---
 
 - [Vertex AI](#vertex-ai)
-  - [overall](#overall)
+  - [Overview](#overview)
     - [Codey](#codey)
       - [Getting Started with Codey](#getting-started-with-codey)
       - [Code Generation with Codey](#code-generation-with-codey)
@@ -24,7 +24,7 @@ ref:
 
 ---
 
-## Overall
+## Overview
 
 - OpenAI has released countless Generative AI and Large Language Models built on top of their top-tier GPT frameworks, including ChatGPT, their Generative Conversational AI.
 - After the successful creation of conversational language models, developers are constantly trying to create Large Language Models that can either develop or assist developers in coding applications.

@@ -70,7 +70,7 @@ tags: [AI, ML]
   - [LLM Model for CyberSecurity](#llm-model-for-cybersecurity)
     - [Clouditera/secgpt](#clouditerasecgpt)
   - [LLM with code generation](#llm-with-code-generation)
-    - [Overall](#overall)
+    - [Overview](#overview)
       - [INTRODUCTION](#introduction)
       - [AI-assisted Code Generation Tools](#ai-assisted-code-generation-tools)
       - [Security of Code Generation Techniques and LLMs](#security-of-code-generation-techniques-and-llms)
