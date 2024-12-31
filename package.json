@@ -20,8 +20,7 @@
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
-    "test": "npm run lint:scss",
-    "prepare": "husky"
+    "test": "npm run lint:scss"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -32,8 +31,6 @@
     "@babel/plugin-transform-class-properties": "^7.25.9",
     "@babel/plugin-transform-private-methods": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
-    "@commitlint/cli": "^19.6.0",
-    "@commitlint/config-conventional": "^19.6.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
@@ -42,7 +39,6 @@
     "@semantic-release/git": "^10.0.1",
     "concurrently": "^9.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "husky": "^9.1.7",
     "purgecss": "^7.0.2",
     "rollup": "^4.27.4",
     "semantic-release": "^24.2.0",
