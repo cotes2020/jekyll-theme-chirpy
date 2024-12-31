@@ -1,10 +1,8 @@
 ---
 permalink: /robots.txt
-# The robots rules
+# Robots.txt for search engines
 ---
-
 User-agent: *
-
-Disallow: /norobots/
+Allow: /
 
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
