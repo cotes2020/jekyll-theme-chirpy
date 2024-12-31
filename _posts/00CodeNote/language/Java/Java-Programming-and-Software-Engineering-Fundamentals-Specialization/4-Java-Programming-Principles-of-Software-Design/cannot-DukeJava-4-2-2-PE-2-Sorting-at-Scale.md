@@ -19,7 +19,7 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ![2020-09-13-EfficientSortStarterProgram](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/javademo-EfficientSortStarterProgram.png)
 
-![2020-09-13-EfficientSortStarterProgram](../../../../../assets/img/Javaimg/javademo-EfficientSortStarterProgram.png)
+![2020-09-13-EfficientSortStarterProgram](../../assets/img/Javaimg/javademo-EfficientSortStarterProgram.png)
 
 
 ---
