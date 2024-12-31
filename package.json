@@ -30,7 +30,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "husky": "^9.1.7",
     "rimraf": "^6.0.1",
-    "rollup": "^4.28.1",
+    "rollup": "^4.29.1",
     "rollup-plugin-license": "^3.5.3",
     "stylelint": "^16.12.0",
     "stylelint-config-standard-scss": "^14.0.0"
