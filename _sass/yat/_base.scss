@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
-  margin-bottom: $spacing-unit / 2;
+  margin-bottom: math.div($spacing-unit, 2);
 }
 
 
@@ -221,7 +221,7 @@ table {
   }
 
   th, td {
-    padding: ($spacing-unit / 3) ($spacing-unit / 2);
+    padding: (math.div($spacing-unit,3)) (math.div($spacing-unit,2));
   }
 
   th {
