@@ -3,9 +3,8 @@ title: I study and I record
 SEOTitle: 
 header-img: img/home-bg.jpg
 email: kimchewon1227@gmail.com
-description: 
-keyword: 
 url: "https://chewon1227.github.io/" # your host, for absolute URL
+baseurl: "" 
 theme : Hux Blog
 
 # Publish posts or collection documents with a future date.
