@@ -1,0 +1,9 @@
+{%- include functions.html func='log' level='debug' msg='Get tags value' -%}
+
+{%- include functions.html func='get_tags' -%}
+{% assign tags = return %}
+
+{% assign keys = tags %}
+{% assign field = 'tags' %}
+{% assign url = '/tags.html' | relative_url %}
+{%- include sidebar/common-list.html -%}
