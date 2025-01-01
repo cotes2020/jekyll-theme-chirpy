@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: kimchewon1227@gmail.com
 url: "https://chewon1227.github.io/" # your host, for absolute URL
 baseurl: "" 
-theme : Hux Blog
+remote_theme: "Huxpro/huxpro.github.io"
 
 # Publish posts or collection documents with a future date.
 future: true
