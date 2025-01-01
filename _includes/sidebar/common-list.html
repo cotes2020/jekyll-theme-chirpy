@@ -1,0 +1,25 @@
+{%- if include.keys -%}
+  {%- assign keys = include.keys -%}
+{%- endif -%}
+
+{%- if include.field -%}
+  {%- assign field = include.field -%}
+{%- endif -%}
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="{{ '/index.html' | relative_url }}">
+        All<span>{{ site.posts.size }}</span>
+      </a>
+    </li>
+
+    {% for key in  keys %}
+      <li>
+        <a href="{{ url }}#h-{{ key }}">
+          {{ key }} <span>{{ site.posts | where: field, key | size }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,18 @@
+{% if include.params.filter %}
+  {% assign filter = include.params.filter %}
+{% endif %}
+
+{% assign split_mark = '<|>' %}
+
+{% assign dates = '' %}
+{% for post in site.posts %}
+  {% assign name = post.date | date: filter %}
+  {% assign dates = dates | append: split_mark  | append: name %}
+{% endfor %}
+
+{% assign return = dates
+  | remove_first: split_mark
+  | split: split_mark
+  | sort: self
+  | uniq %}
+

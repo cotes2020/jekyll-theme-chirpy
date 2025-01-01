@@ -1,0 +1,9 @@
+{%- include functions.html func='log' level='debug' msg='Get categories value' -%}
+
+{%- include functions.html func='get_categories' -%}
+{% assign categories = return %}
+
+{% assign keys = categories %}
+{% assign field = 'categories' %}
+{% assign url = '/categories.html' | relative_url %}
+{% include sidebar/common-list.html %}
