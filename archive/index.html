@@ -12,17 +12,17 @@
 
     <!-- Open Graph -->
     <meta property="og:title"
-        content="Offline - 黄玄的博客 | Hux Blog">
+        content="Archive - 黄玄的博客 | Hux Blog">
     
     <meta property="og:type" content="website">
     <meta property="og:description"
-        content="阅读过的页面可以在离线时访问哦 ;)">
+        content="「我干了什么 究竟拿了时间换了什么」">
     
     <meta property="og:image" content="http://localhost:4000https://github.com/Huxpro.png">
-    <meta property="og:url" content="http://localhost:4000/offline.html">
+    <meta property="og:url" content="http://localhost:4000/archive/">
     <meta property="og:site_name" content="黄玄的博客 | Hux Blog">
 
-    <title>Offline - 黄玄的博客 | Hux Blog</title>
+    <title>Archive - 黄玄的博客 | Hux Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/offline.html">
+    <link rel="canonical" href="http://localhost:4000/archive/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href=" /css/bootstrap.min.css">
@@ -195,14 +195,18 @@
   </div>
 </div>
 
-    <!-- Page Header -->
+    <!--
+Credits: this page shamelessly borrowed a lot from:
+https://github.com/kitian616/jekyll-TeXt-theme
+-->
+<!-- Page Header -->
 
 
 
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/404-bg.jpg');
+        background-image: url('/img/bg-little-universe.jpg');
         background: ;
     }
 
@@ -215,16 +219,16 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/404-bg.jpg')">
+<header class="intro-header" style="background-image: url('/img/bg-little-universe.jpg')">
   <div class="header-mask"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
-        <div class="site-heading">
+        <div class="site-heading" id="tag-heading">
         
-          <h1>Offline</h1>
-          <span class="subheading">阅读过的页面可以在离线时访问哦 ;)</span>
+          <h1>Archive</h1>
+          <span class="subheading">「我干了什么 究竟拿了时间换了什么」</span>
         </div>
       </div>
     </div>
@@ -233,9 +237,48 @@
 
 
 
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<!-- Tags (as filter) -->
+			<div id='tag_cloud' class="tags tags-sup js-tags">
+				<a class="tag-button--all" data-encode="">
+					Show All
+					<sup>2</sup>
+				</a>
+
+				
+				
+				
+				
+			</div>
+
+			<!-- Article List -->
+			<div class="mini-post-list js-result d-none"><section>
+					<span class="fa listing-seperator">
+						<span class="tag-text">2024</span>
+					</span><div class="post-preview item" data-tags="">
+						<a href="/2024/12/29/Colab%EC%9C%BC%EB%A1%9C-%ED%8C%8C%EC%9D%B8%ED%8A%9C%EB%8B%9D-Fine-Tuning-%ED%95%98%EA%B8%B0/">
+							<h2 class="post-title">
+								Colab으로 파인튜닝 Finetuning 하기
+							</h2>
+							
+						</a>
+						<hr>
+					</div><div class="post-preview item" data-tags="">
+						<a href="/2024/12/29/Colab%EC%9C%BC%EB%A1%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8C%85-Prompting-%ED%95%98%EA%B8%B0/">
+							<h2 class="post-title">
+								Colab으로 프롬프팅 Prompting 하기
+							</h2>
+							
+						</a>
+						<hr>
+					</div></section>
+			</div>
+		</div>
+	</div>
+</div>
 
 
     <!-- Footer -->
@@ -363,6 +406,18 @@
 
 
 
+
+<!-- jquery.tagcloud.js -->
+<script>
+    async('/js/jquery.tagcloud.js', function () {
+        $.fn.tagcloud.defaults = {
+            //size: {start: 1, end: 1, unit: 'em'},
+            color: { start: '#bbbbee', end: '#2f93b4' },
+        };
+        $('#tag_cloud a').tagcloud();
+    })
+</script>
+<script src='/js/archive.js '></script>
 
 
 <!--fastClick.js -->

@@ -1,0 +1,658 @@
+<p>이 글은 연세대학교 AIC3110 강의를 참고하였으며, 허가 하에 작성되었습니다.</p>
+
+<p>프롬프팅에 이어 파인튜닝을 해보려 한다 !</p>
+
+<h2 id="1-파인튜닝이란">1. 파인튜닝이란?</h2>
+
+<p>파인튜닝이란 처음부터 데이터를 쌓아서 학습시키는 것이 아니라, 원래 있던 모델을 목적에 맞게 추가적인 데이터를 통해 학습시켜 특정 태스크를 잘할 수 있는 모델로 성장시키는 과정이다.</p>
+
+<p>당연히, high-quality 데이터들이 필요할 것이다. high-quality 데이터란 ,, 거의 완전히 real data 즉 인간 데이터이다. 그치만 이런 데이터들은 보안 문제도 있고, 무제한 생성하기도 어렵고, 개인 사생활 문제도 있다.</p>
+
+<p>그래서 요즘은 <strong>synthetic data</strong> 를 통해 대체하는 추세이다. LLM을 통해 synthetic을 만들어 human-generate data를 대체한다.</p>
+
+<p>Prompt Chaining을 통해, 큰 모델을 통해 데이터셋을 만들고 그것을 작은 모델에 학습시켜보는 과정을 진행해보려 한다.</p>
+
+<h2 id="2-파인튜닝을-해보자">2. 파인튜닝을 해보자</h2>
+
+<p>목적은, 심리상담 챗봇을 만드는 것이다.</p>
+
+<p>그렇다면 우선 심리 상담 데이터가 필요할 것이다.</p>
+
+<h3 id="1-심리-상담이-무엇인가-">1) 심리 상담이 무엇인가 ?</h3>
+
+<p>우리가 만들고자 하는 심리 상담 데이터는 현실 상담 시나리오랑 비슷하게 만드는 것이 목표이다.</p>
+
+<p>그렇다면 현실 상담이란 무엇인가?</p>
+
+<ul>
+  <li>Multi-turn 으로 진행한다</li>
+  <li>CBT(인지행동치료)를 적용한다</li>
+</ul>
+
+<p>사실 모든 치료에 대해 CBT가 근거기반치료인 것은 아니다.. (아직 연구되고 있는 분야가 많음) 그치만 CBT는 거의 모든 임상군에게 적용되었을 때 유의미한 효과를 나타내기 때문에 CBT를 특징으로 잡고 가도 크게 임상적 문제는 없을 것이라고 생각이 된다</p>
+
+<p><strong>PatternReframe</strong>이라는 데이터셋을 사용해볼 것이다 (Maddela et al)<strong>.</strong> Persona, Negative Thought, Patters, Reframed Thought 4가지 요소로 구분되어 있다. 이 데이터셋을 이용해서 client를 시뮬레이션해보려 한다. 그 중 하나를 가져왔다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="n">user_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">"</span><span class="s">persona</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">i love computers. i</span><span class="sh">'</span><span class="s">m very good at math and science . i started working at google last week on self driving car research . i i love logical and rational thinking .</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">thought</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">I was rejected by a woman. I am sure it is because she like tough guys and not nerds.</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">reframes</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="sh">"</span><span class="s">I was rejected by a woman but who cares as there</span><span class="sh">'</span><span class="s">s someone for everyone and I can meet others!</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">I was rejected by a woman. I think I will find someone better soon.</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">I was rejected by a woman but thats ok ill find a better match soon!</span><span class="sh">"</span>
+        <span class="p">],</span>
+        <span class="sh">"</span><span class="s">patterns</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="sh">"</span><span class="s">mental filtering</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">jumping to conclusions: mind reading</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">overgeneralization</span><span class="sh">"</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">black-and-white or polarized thinking / all or nothing thinking</span><span class="sh">"</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>persona, negative thought 등의 요소로 이루어져 있다. negative thought → reframes가 CBT의 목표라고 생각하면 된다. pattern의 경우 thought이 포함하고 있는 인지 오류들이다.</p>
+
+<h3 id="2-심리-상담-데이터를-구조화해보자">2) 심리 상담 데이터를 구조화해보자</h3>
+
+<p>심리 상담 데이터를 구조화하기 위해 다음과 같이 세분화하였다.</p>
+
+<ul>
+  <li>Client-side Simulation : LLM에게 PatternReframe 기반으로 정보를 제공한 뒤, 이를 가지고 psychology Intake Form을 적어보도록 함</li>
+  <li>Counselor-side Simulation : Client 상황에 맞는 CBT 기법을 고르고 plan하도록 함. Plan-and-Solve Prompting에서 근거를 찾을 수 있을 것</li>
+  <li>Dialogue Generation : Script Mode를 사용할 것
+    <ul>
+      <li>Script Mode : 한 모델이 양쪽의 대화를 모두 생성함 (자연스러운 대화가 나옴) .</li>
+      <li>Two-agent Mode : 두 모델이 각각 역할을 맡아 대화를 생성함</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Client side simulation (Form 형성) → CBT 기법 고르기 → 상담 plan → 대화 생성</p>
+
+</blockquote>
+
+<p>일반적으로 LLM에게 한 번에 시키면 잘 못하는 것들을, 태스크를 여러 개로 쪼개고 프롬프팅 기법을 통해 더 좋은 품질의 데이터셋을 만들기 위해 노력한 과정이라고 이해하면 좋을 것 같다.</p>
+
+<ol>
+  <li>client-side Simulation</li>
+</ol>
+
+<p>우선 클라이언트를 모델링해보자. 이 클라이언트가 왜 상담하러 온 것인지 자세히 적는 것이다. User의 정보를 통해서 클라이언트에 대한 정보나, 왜 상담에 왔으며, 어떤 문제를 가졌는지 등 정보들을 포함해서 적도록 한다. 이런 식으로 example을 준 후, 이 형식에 따라서 적어주도록 했다(one-shot). 모델은 <code class="language-plaintext highlighter-rouge">llama3-70b-8192</code>를 이용했다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre></td><td class="rouge-code"><pre><span class="c1"># Step 1. Client modeling
+</span><span class="n">persona</span> <span class="o">=</span> <span class="n">user_data</span><span class="p">[</span><span class="sh">'</span><span class="s">persona</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">thought</span> <span class="o">=</span> <span class="n">user_data</span><span class="p">[</span><span class="sh">'</span><span class="s">thought</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">patterns</span> <span class="o">=</span> <span class="n">user_data</span><span class="p">[</span><span class="sh">'</span><span class="s">patterns</span><span class="sh">'</span><span class="p">]</span>
+
+<span class="n">intake_form_generation_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'''</span><span class="s">
+Thought depicts a situation where cognitive distortions exhibited by the client have caused problems in daily life, and patterns refer to the types of cognitive distortions the client possesses.
+
+Please generate a client intake form ...
+
+1. Basic Information
+- occupation, ...
+
+2. Presenting Problem
+- What issue/symptoms ... 
+
+3. Reason for Seeking Counseling
+- What was the ... 
+
+4. Past History (including medical history)
+- Have you experienced ... 
+
+5. Academic/occupational functioning level (attendance, grades/job performance, etc.)
+- Interpersonal ... 
+
+6. Is there anyone you can talk to or get help from when you encounter difficulties or problems?
+
+## Example 1
+~~~
+
+## Example 2
+[Persona]
+</span><span class="si">{</span><span class="n">persona</span><span class="si">}</span><span class="s">
+
+[Thought]
+</span><span class="si">{</span><span class="n">thought</span><span class="si">}</span><span class="s">
+
+[Patterns]
+</span><span class="si">{</span><span class="n">patterns</span><span class="si">}</span><span class="s">
+
+[Client Intake Form]</span><span class="sh">'''</span>
+
+<span class="n">intake_form</span> <span class="o">=</span> <span class="nf">generate_response</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">intake_form_generation_prompt</span><span class="p">,</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">llama3-70b-8192</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="n">intake_form</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>내용이 너무 길어서 중략시켰다. 사실 지금 내용 자체가 중요하지는 않다.</p>
+
+<p>이제 이 인지오류를 겪는 사람에게 어떤 CBT가 적합할지 찾는 과정을 진행해보자. 이를 <code class="language-plaintext highlighter-rouge">cbt_tech_generation_prompt</code> 로 지정한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="c1"># Step 2. CBT Technique Generation
+</span><span class="n">cbt_tech_generation_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'''</span><span class="s">
+You are a counselor specializing in CBT techniques. Choose top 1 appropriate CBT technique from the given CBT techniques to use with the client based on their intake form. Output only the name of the CBT techniques.
+
+[Types of CBT Techniques]
+Efficiency Evaluation, Pie Chart Technique, Alternative Perspective, Decatastrophizing, Pros and Cons Analysis, Evidence-Based Questioning, Reality Testing, Continuum Technique, Changing Rules to Wishes, Behavior Experiment, Problem-Solving Skills Training, Systematic Exposure
+
+## Example 1
+[Intake form written by client]
+&lt;Reason for Seeking Therapy&gt;
+I</span><span class="sh">'</span><span class="s">ve been struggling with my temper, ...
+
+[CBT technique]
+Alternative Perspective
+
+## Example 2
+[Intake form written by client]
+</span><span class="si">{</span><span class="n">intake_form</span><span class="si">}</span><span class="s">
+
+[CBT technique]</span><span class="sh">'''</span>
+
+<span class="n">cbt_tech</span> <span class="o">=</span> <span class="nf">generate_response</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">cbt_tech_generation_prompt</span><span class="p">,</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">llama3-70b-8192</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="n">cbt_tech</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>실행을 해보면, <code class="language-plaintext highlighter-rouge">Evidence-Based Questioning</code> 이라는 결과가 나온다. 즉, 이 상황에 대해 적용할 수 있는 CBT 기법이 바로 Evidence-Based Questioning이라는 것이다. llama 모델은 사전학습된 데이터가 있기에 이를 활용하여 입력된 텍스트를 분석하고, 가장 적절한 것을 선택한 것이다.</p>
+
+<ol>
+  <li>counselor-side Simulation</li>
+</ol>
+
+<p>이제 구체적인 플랜을 짜보자.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="c1"># Step 3. CBT Planning
+</span>
+<span class="n">cbt_planning_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'''</span><span class="s">
+You are a counselor specializing in CBT techniques. Plan to counsel the patient who has completed ... 
+
+## Example 1
+[Intake form written by client]
+&lt;Reason for Seeking Therapy&gt;
+I</span><span class="sh">'</span><span class="s">ve been struggling with ... 
+
+&lt;Goals for Therapy&gt;
+I want to find ways to stay ... 
+
+&lt;Cognitive Distortions Observed&gt;
+All-or-nothing thinking: The client ... 
+
+[CBT technique]
+Decatastrophizing
+
+[Counseling plan]
+Decatastrophizing
+1. Identify Catastrophic ... 
+
+</span><span class="si">{</span><span class="n">intake_form</span><span class="si">}</span><span class="s">
+
+[CBT technique]
+</span><span class="si">{</span><span class="n">cbt_tech</span><span class="si">}</span><span class="s">
+
+[Counseling sequence]
+</span><span class="sh">'''</span>
+
+<span class="n">cbt_plan</span> <span class="o">=</span> <span class="nf">generate_response</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">cbt_planning_prompt</span><span class="p">,</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">llama3-70b-8192</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="n">cbt_plan</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>아주 좋은 결과를 내준다.</p>
+
+<ol>
+  <li>dialogue 제작</li>
+</ol>
+
+<p>이를 가지고 dialogue를 만들어 볼 것이다</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1"># Step 4. Dialogue generation
+</span>
+<span class="n">dialogue_generation_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">'''</span><span class="s">
+Your task is to generate a multi-turn counseling dialogue between a client and a professional counselor. Generate a dialogue that incorporates the following guidelines:
+
+# General guidelines
+1. The dialogue is ...
+
+# Guidelines for the participants
+## Guidelines for the counselor</span><span class="sh">'</span><span class="s">s utterance:
+1. At the start of the conversation, ...
+
+## Guidelines for the client</span><span class="sh">'</span><span class="s">s utterance:
+1. Engage authentically with the counselor</span><span class="sh">'</span><span class="s">s inquiries ... 
+
+[Situation of the client]
+</span><span class="si">{</span><span class="n">intake_form</span><span class="si">}</span><span class="s">
+
+[Counseling plan]
+</span><span class="si">{</span><span class="n">cbt_plan</span><span class="si">}</span><span class="s">
+
+Remember that you are an independent dialogue writer and should finish the dialogue by yourself.
+
+[Generated dialogue]
+</span><span class="sh">'''</span>
+
+<span class="n">dialogue</span> <span class="o">=</span> <span class="nf">generate_response</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">dialogue_generation_prompt</span><span class="p">,</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">llama3-70b-8192</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="n">dialogue</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>그러면 멀티턴 대화를 만들어준다.</p>
+
+<p>보면 알겠지만, 지난 번에 만들었던 generate_response 함수에 프롬포트와 모델명을 넣어서 그냥 계속 생성하는 방식이다. 예시를 한개씩 주고 있으니 one-shot이 되겠다. 어렵지 않은 과정이지만, 프롬포트를 만들 때 임상/상담 전문가가 필요하겠다.</p>
+
+<h3 id="3-파인튜닝-전-기본-작업들">3) 파인튜닝 전 기본 작업들</h3>
+
+<p>모델은 LLaMa2-7b , 데이터셋은 Cactus를 사용한다 (https://huggingface.co/datasets/DLI-Lab/cactus). Cactus는 위의 과정을 계속 반복하여 생성된 데이터셋이다.</p>
+
+<p>우선 필요한 자료들을 설치해준다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">U</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">huggingface</span><span class="o">/</span><span class="n">transformers</span><span class="p">.</span><span class="n">git</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">U</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">huggingface</span><span class="o">/</span><span class="n">peft</span><span class="p">.</span><span class="n">git</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">U</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">huggingface</span><span class="o">/</span><span class="n">accelerate</span><span class="p">.</span><span class="n">git</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">trl</span> <span class="n">xformers</span> <span class="n">wandb</span> <span class="n">datasets</span> <span class="n">einops</span> <span class="n">gradio</span> <span class="n">sentencepiece</span> <span class="n">bitsandbytes</span>
+
+<span class="kn">from</span> <span class="n">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="sh">"</span><span class="s">DLI-Lab/cactus</span><span class="sh">"</span><span class="p">,</span><span class="n">split</span><span class="o">=</span><span class="sh">'</span><span class="s">train</span><span class="sh">'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>파인튜닝을 할 때 기본적으로 GPU가 많이 들기 때문에, 딱 10개 데이터만 가지고 학습을 진행해볼 것이다. <code class="language-plaintext highlighter-rouge">train_dataset</code> 한 개 한 개를 보면 아까 돌았던 사이클 (client-side, counselor-side로 만든 multi-turn dialogue) 이 잘 저장되어 있다.</p>
+
+<p>지금까지의 dialogue history가 주어졌을 때, 그걸 바탕으로 counselor이 적합한 대답을 하는 걸 학습하는 방식을 통해 상담 챗봇을 만들어본다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[:</span><span class="mi">10</span><span class="p">][</span><span class="sh">'</span><span class="s">dialogue</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">refined_dataset</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">dialogue</span> <span class="ow">in</span> <span class="n">train_dataset</span><span class="p">:</span>
+  <span class="n">splited_dialogue</span> <span class="o">=</span> <span class="n">dialogue</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">splited_dialogue</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">data</span><span class="p">[</span><span class="sh">'</span><span class="s">dialogue_history</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">''</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">splited_dialogue</span><span class="p">[:</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="sh">'</span><span class="s">response</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">splited_dialogue</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">refined_dataset</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">refined_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>refined_dataset을 보면 이제 ‘dialogue_history’와 ‘response’로 나뉘어 딕셔너리 형태로 저장되는 것을 볼 수 있다. 이런 식으로 ..</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>{'dialogue_history': "Counselor: Good afternoon, Brooke. Thank you for joining me today. Can you tell me a bit about what brings you to counseling?Client: Hi. I've been really anxious about going back to the animal shelter where I volunteer. I feel like the animals will hate me because they didn't remember me the last time I visited. It's been really tough.",
+ 'response': "Counselor: I'm sorry to hear that you've been feeling this way. It sounds like this is something that’s been troubling you for a while. Can you tell me more about what happened during your last visit to the shelter?"}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">make_data_module</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="n">System_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">You are playing the role of a counselor in a psychological counseling session. Your task is to generate the next counselor utterance in the dialogue. The goal is to create a natural and engaging response that builds on the previous conversation.</span><span class="sh">"</span>
+  <span class="n">User_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Counseling Dialogue History:</span><span class="se">\n</span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="sh">'</span><span class="s">dialogue_history</span><span class="sh">'</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span>
+  <span class="n">output_text</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="sh">'</span><span class="s">response</span><span class="sh">'</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span>
+  <span class="n">input_text</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">&lt;|start_header_id|&gt;system&lt;|end_header_id|&gt;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">System_prompt</span><span class="si">}</span><span class="s">&lt;|eot_id|&gt;&lt;|start_header_id|&gt;user&lt;|end_header_id|&gt;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">User_prompt</span><span class="si">}</span><span class="s">&lt;|eot_id|&gt;&lt;|start_header_id|&gt;assistant&lt;|end_header_id|&gt;</span><span class="se">\n\n</span><span class="sh">"</span>
+  <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">input</span><span class="sh">"</span><span class="p">:</span> <span class="n">input_text</span><span class="p">,</span> <span class="sh">"</span><span class="s">output</span><span class="sh">"</span><span class="p">:</span> <span class="n">output_text</span><span class="p">}</span>
+
+<span class="n">transformed_dataset</span> <span class="o">=</span> <span class="p">[</span><span class="nf">make_data_module</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">refined_dataset</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="4-파인튜닝-진짜-해보자">4) 파인튜닝 진짜 해보자</h3>
+
+<p>이제 진짜로 파인튜닝을 해보자. 먼저 hugging face에서 api를 받아서 오자.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="n">huggingface_hub</span> <span class="kn">import</span> <span class="n">notebook_login</span>
+<span class="nf">notebook_login</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>실행하면 나오는 칸에 LLAMA api key를 넣어주면 된다.</p>
+
+<p>모델은 <code class="language-plaintext highlighter-rouge">Llama-2-7b-hf</code> 를 사용해보겠다 (다른 거 써도 된다.)</p>
+
+<p>LLaMA-2 모델을 4비츠 양자화와 LoRA를 사용해서 훈련하는 방식이다. (보통 LoRA는 미세조정 시 많이 사용하고 적은 리소스로 파라미터를 효율적으로 훈련할 수 있도록 한다)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="n">model_name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">meta-llama/Llama-2-7b-hf</span><span class="sh">"</span>
+
+<span class="kn">from</span> <span class="n">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">BitsAndBytesConfig</span>
+<span class="kn">from</span> <span class="n">peft</span> <span class="kn">import</span> <span class="n">prepare_model_for_kbit_training</span><span class="p">,</span> <span class="n">LoraConfig</span><span class="p">,</span> <span class="n">get_peft_model</span><span class="p">,</span> <span class="n">PeftModel</span>
+<span class="kn">import</span> <span class="n">torch</span>
+
+<span class="n">bnb_config</span> <span class="o">=</span> <span class="nc">BitsAndBytesConfig</span><span class="p">(</span>
+    <span class="n">load_in_4bit</span><span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="n">bnb_4bit_quant_type</span><span class="o">=</span> <span class="sh">"</span><span class="s">nf4</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">bnb_4bit_compute_dtype</span><span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">float16</span><span class="p">,</span>
+    <span class="n">bnb_4bit_use_double_quant</span><span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="p">.</span><span class="nf">from_pretrained</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="p">,</span>
+    <span class="n">quantization_config</span><span class="o">=</span><span class="n">bnb_config</span><span class="p">,</span>
+    <span class="n">device_map</span><span class="o">=</span><span class="p">{</span><span class="sh">""</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="nf">prepare_model_for_kbit_training</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">use_cache</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># silence the warnings. Please re-enable for inference!
+</span><span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">pretraining_tp</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Load LLaMA tokenizer
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="nf">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="p">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">eos_token</span>
+<span class="n">tokenizer</span><span class="p">.</span><span class="n">add_eos_token</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">tokenizer</span><span class="p">.</span><span class="n">add_bos_token</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">add_eos_token</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">bnb_config</code> 는 4비트 양자화를 통해 모델의 메모리 사용량을 줄이고, nf4를 통해 양자화 유형을 정해주었으며 torch.float16으로 계산 데이터 유형을 지정하였다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">AutoModelForCausalLM.from_pretrained</code> 를 통해 사전 학습된 언어 모델을 로드했고, <code class="language-plaintext highlighter-rouge">quantization_config=bnb_config</code> 를 통해 아까 설정해둔 4비트 양자화를 적용했다. <code class="language-plaintext highlighter-rouge">device_map={"": 0}</code> 을 통해 모델을 GPU에 로드하도록 했다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">add_eos_token</code><strong>,</strong> <code class="language-plaintext highlighter-rouge">add_bos_token</code> 을 통해 문장의 시작과 끝을 자동으로 추가하도록 했다.</p>
+
+<p>LoRA 설정을 위해 세부 매개변수를 지정하고, TrainingArguments 클래스로 모델 훈련을 위한 하이퍼파라미터를 설정한다. 그리고 사전 학습된 모델을 LoRA 기반으로 미세 조정하는 설정을 구현한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="n">transformers</span> <span class="kn">import</span> <span class="n">TrainingArguments</span> 
+
+<span class="n">peft_config</span> <span class="o">=</span> <span class="nc">LoraConfig</span><span class="p">(</span>
+    <span class="n">lora_alpha</span><span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">lora_dropout</span><span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">r</span><span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">bias</span><span class="o">=</span><span class="sh">"</span><span class="s">none</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">task_type</span><span class="o">=</span><span class="sh">"</span><span class="s">CAUSAL_LM</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">target_modules</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">q_proj</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">k_proj</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">v_proj</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">o_proj</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">gate_proj</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">up_proj</span><span class="sh">"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">training_arguments</span> <span class="o">=</span> <span class="nc">TrainingArguments</span><span class="p">(</span>
+    <span class="n">output_dir</span><span class="o">=</span> <span class="sh">"</span><span class="s">./results</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">num_train_epochs</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">per_device_train_batch_size</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">#기본값: 8 (코랩에서 돌아가도록 하려면 1이 좋다) 
+</span>    <span class="n">gradient_accumulation_steps</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">optim</span> <span class="o">=</span> <span class="sh">"</span><span class="s">paged_adamw_8bit</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">save_steps</span><span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="n">logging_steps</span><span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span> <span class="mf">2e-4</span><span class="p">,</span>
+    <span class="n">weight_decay</span><span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">fp16</span><span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="n">bf16</span><span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="n">max_grad_norm</span><span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">max_steps</span><span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">warmup_ratio</span><span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">group_by_length</span><span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="n">lr_scheduler_type</span><span class="o">=</span> <span class="sh">"</span><span class="s">linear</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">report_to</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">none</span><span class="sh">"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="n">datasets</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="n">trl</span> <span class="kn">import</span> <span class="n">SFTTrainer</span>
+
+<span class="n">hf_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">.</span><span class="nf">from_dict</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">]</span><span class="si">}{</span><span class="n">item</span><span class="p">[</span><span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">transformed_dataset</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="nc">SFTTrainer</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">train_dataset</span><span class="o">=</span><span class="n">hf_dataset</span><span class="p">,</span>
+    <span class="n">peft_config</span><span class="o">=</span><span class="n">peft_config</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="n">training_arguments</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>모든 설정을 끝냈으니 이제 훈련을 해볼것이다. 우리의 모든 설정을 포함하고 있는 <code class="language-plaintext highlighter-rouge">trainer</code> 을 이용한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">trainer</span><span class="p">.</span><span class="nf">train</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>데이터 양이 적어서 한 20분이면 끝난다.</p>

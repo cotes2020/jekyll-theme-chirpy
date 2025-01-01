@@ -1,14 +1,19 @@
----
-layout: null
----
 [
-  {% for post in site.posts %}
+  
     {
-      "title"    : "{{ post.title | escape }}",
-      "subtitle" : "{{ post.subtitle | escape }}",
-      "tags"     : "{{ post.tags | join: ', ' }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "date"     : "{{ post.date }}"
-    } {% unless forloop.last %},{% endunless %}
-  {% endfor %}
+      "title"    : "Colab으로 파인튜닝 Finetuning 하기",
+      "subtitle" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/29/Colab%EC%9C%BC%EB%A1%9C-%ED%8C%8C%EC%9D%B8%ED%8A%9C%EB%8B%9D-Fine-Tuning-%ED%95%98%EA%B8%B0/",
+      "date"     : "2024-12-29 17:14:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Colab으로 프롬프팅 Prompting 하기",
+      "subtitle" : "",
+      "tags"     : "",
+      "url"      : "/2024/12/29/Colab%EC%9C%BC%EB%A1%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8C%85-Prompting-%ED%95%98%EA%B8%B0/",
+      "date"     : "2024-12-29 17:03:00 +0900"
+    } 
+  
 ]
