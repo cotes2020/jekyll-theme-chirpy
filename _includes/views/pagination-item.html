@@ -1,0 +1,59 @@
+{%- assign date_format = site.yat.date_format | default: "%b %-d, %Y" -%}
+
+{%- assign article = post.content -%}
+{%- assign lang = post.lang -%}
+{%- include functions.html func='get_reading_time' -%}
+{%- assign reading_time = return -%}
+
+{%- include functions.html func='get_article_excerpt' -%}
+{%- assign article_excerpt = return -%}
+{%- assign post_url = post.url | relative_url -%}
+
+{%- assign name = 'excerpt.image_width' -%}
+{%- include functions.html func='get_value' -%}
+{%- assign image_width = return | default: '38.2%' -%}
+
+{%- assign name = 'excerpt.image_height' -%}
+{%- include functions.html func='get_value' -%}
+{%- assign image_height = return | default: '160px' -%}
+
+{%- assign name = 'excerpt.default_image' -%}
+{%- include functions.html func='get_value' -%}
+{%- assign default_image = return -%}
+
+{%- assign post_image = post.excerpt_image
+  | default: post.banner.image
+  | default: post.banner
+  | default: default_image
+  | default: '/assets/images/default-image.jpeg' -%}
+
+<li class="post-item {{ post_item_class }}">
+  <h2 class="post-title">
+    <a class="post-link" href="{{ post_url }}">
+      {{ post.title | escape }}
+      {%- include views/post-badges.html -%}
+    </a>
+  </h2>
+  <div class="post-meta">
+    <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
+    {%- if post.author -%}
+    <span class="post-author left-vsplit"><i class="fa fa-pencil"></i> {{ post.author | escape }}</span>
+    {%- endif -%}
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> {{ reading_time }}</span>
+  </div>
+  <div class="post-excerpt">
+    {%- if post_image and post_image != 'NO_EXCERPT_IMAGE' -%}
+    <a  class="post-image" href="{{ post_url }}" style="flex: 0 1 {{ image_width }}">
+      <div style="background-image: url({{ post_image | relative_url }}); height: {{ image_height }}"></div>
+    </a>
+    {%- endif -%}
+    <a class="post-text" href="{{ post_url }}">
+      <p>{{ article_excerpt }} <span class="read_more">Read More</span></p>
+    </a>
+  </div>
+  <div class="post-tags">
+    {%- for tag in post.tags -%}
+    <a class="post-tag" href="{{ '/tags.html ' | relative_url }}#{{tag}}">#{{tag}}</a>
+    {%- endfor -%}
+  </div>
+</li>

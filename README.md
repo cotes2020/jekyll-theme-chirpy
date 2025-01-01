@@ -86,6 +86,7 @@ I will respect your crucial support and say THANK YOU!
 - Uses font awesome 5 for icons.
 - Beautiful page banner with image and video.
 - Beautiful Syntax Highlight using [highlight.js][highlight-js].
+- Beautiful image gallery previewer using [PhotoSwipe 5][photoswipe-5].
 - RSS support using [Jekyll Feed][jekyll-feed] gem.
 - Optimized for search engines using [Jekyll Seo Tag][jekyll-seo-tag] gem.
 - Sitemap support using [Jekyll Sitemap][jekyll-sitemap] gem.
@@ -95,6 +96,7 @@ I will respect your crucial support and say THANK YOU!
 - Diagram (PlantUML, Mermaid) support using [Jekyll Spaceship][jekyll-spaceship] gem.
 - Google Translation support.
 - New post tag support.
+- Pin post tag support.
 
 Also, visit the [Live Demo][yat-live-demo] site for the theme.
 
@@ -132,7 +134,7 @@ Or install it yourself as:
 $ gem install jekyll-theme-yat
 ```
 
-### Remote Theme Method with GitHub Pages
+### Remote Theme Method with Jekyll Remote Theme Plugin
 
 Remote themes are similar to Gem-based themes, but do not require `Gemfile` changes or whitelisting making them ideal for sites hosted with GitHub Pages.
 
@@ -141,7 +143,7 @@ To install:
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "github-pages", group: :jekyll_plugins
+gem "jekyll-remote-theme", group: :jekyll_plugins
 ```
 
 And add this line to your Jekyll site's `_config.yml`:
@@ -149,6 +151,10 @@ And add this line to your Jekyll site's `_config.yml`:
 ```yaml
 # theme: owner/name --> Don't forget to remove/comment the gem-based theme option
 remote_theme: "jeffreytse/jekyll-theme-yat"
+
+# Add the following to activate the plugin
+plugins:
+  - jekyll-remote-theme
 ```
 
 And then execute:
@@ -156,6 +162,10 @@ And then execute:
 ```bash
 $ bundle
 ```
+
+### Forking/Cloning the project
+
+You need to update the option of github workflow file `.github/workflows/build-jekyll.yml`, especially to ensure the value of `jekyll_baseurl` is correct.
 
 ### GitHub Pages without limitation
 
@@ -198,3 +208,4 @@ This theme is licensed under the [MIT license](https://opensource.org/licenses/m
 [jekyll-sitemap]: https://github.com/jekyll/jekyll-sitemap
 [jekyll-feed]: https://github.com/jekyll/jekyll-feed
 [highlight-js]: https://github.com/highlightjs/highlight.js
+[photoswipe-5]: https://photoswipe.com/
