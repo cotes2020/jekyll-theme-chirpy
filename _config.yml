@@ -39,7 +39,9 @@ timezone: Soeul
 # from PR#40, to support local preview for Jekyll 3.0
 # make sure you have this gem installed
 # `$ gem install jekyll-paginate`
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-remote-theme
 
 # Markdown settings
 # replace redcarpet to kramdown,
