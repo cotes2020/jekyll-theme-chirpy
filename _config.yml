@@ -25,8 +25,8 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Your awesome title
-email: your-email@domain.com
-author: GitHub User
+email: kimchewon1227@gmail.com
+author: Chaewon Kim 
 remote_theme: "jeffreytse/jekyll-theme-yat"
 
 
