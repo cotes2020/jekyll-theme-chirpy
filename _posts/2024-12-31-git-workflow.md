@@ -6,7 +6,7 @@ tags: [git, development]
 description: 로그인 기능 개발을 위한 Git과 GitHub 워크플로우입니다.
 author: hoon
 ---
-
+test
 가상의 시나리오입니다.
 
 기존의 프로젝트 리포지토리를 클론 후 로컬에서 개발 한 뒤 머지하는 과정입니다.
