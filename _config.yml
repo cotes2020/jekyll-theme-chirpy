@@ -41,7 +41,6 @@ timezone: Soeul
 # `$ gem install jekyll-paginate`
 plugins:
   - jekyll-paginate
-  - jekyll-remote-theme
 
 # Markdown settings
 # replace redcarpet to kramdown,
@@ -58,7 +57,7 @@ kramdown:
       start_line: 1
 
 # Disqus settings
-disqus_username: hux
+disqus_username: chaeonii 
 
 # Netease settings
 netease_comment: false
@@ -67,9 +66,6 @@ netease_comment: false
 # Baidu Analytics
 # ba_track_id: [your track id]
 
-# Google Analytics
-ga_track_id: "UA-49627206-1" # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
