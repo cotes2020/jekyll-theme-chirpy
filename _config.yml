@@ -6,7 +6,7 @@ email: kimchewon1227@gmail.com
 description: 
 keyword: 
 url: "https://chewon1227.github.io/" # your host, for absolute URL
-baseurl: 
+theme : Hux Blog
 
 # Publish posts or collection documents with a future date.
 future: true
@@ -34,7 +34,7 @@ exclude:
   ]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 # If you have timezone issue (e.g. #68) in China, uncomment to use this:
-#timezone: CN
+timezone: Soeul
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
