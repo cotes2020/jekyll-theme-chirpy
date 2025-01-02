@@ -31,7 +31,7 @@ image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*hIvxsGZdM3p6mktbo
 자료구조는 `선형(Linear)`과 `비선형(Non Linear)`으로 나눌 수 있다.
 <img src="../assets/img/type.png" width="500" height="500"/>
 
-`선형 자료구조`는 데이터들이 선형으로 되어있어서 한 번에 하나씩 처리하는 구조이다. 예시로는 `배열(Array)`,`스택(Stack)`등이 있다.  
+`선형 자료구조`는 데이터들이 선형으로 되어있어서 한 번에 하나씩 처리하는 구조이다. 예시로는 `배열(Array)`, `스택(Stack)`등이 있다.  
 반면에 `비선형 자료구조`는 데이터들을 여러 갈래로 나누어 복잡하게 연결된 구조이다. 예시로는 `트리(Tree)`, `그래프(Graph)`가 있다.
 
 ### 배열(Array)
