@@ -8,7 +8,7 @@ image:
 ---
 
 - [BigData - MongoDB Projects](#bigdata---mongodb-projects)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [Beginners with Source Code for Practice](#beginners-with-source-code-for-practice)
     - [Beginner Level: Develop a Football Statistics App](#beginner-level-develop-a-football-statistics-app)
     - [Create a Project for Product Catalog Management](#create-a-project-for-product-catalog-management)
@@ -30,7 +30,7 @@ ref:
 
 # BigData - MongoDB Projects
 
-## Overall
+## Overview
 
 - MongoDB Inc offers an amazing database technology that is utilized mainly for storing data in key-value pairs.
 

@@ -13,7 +13,7 @@ toc: true
 ---
 
 - [OWASP Top 10 Parameter](#owasp-top-10-parameter)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [Top 25 Parameters](#top-25-parameters)
     - [Cross-Site Scripting (XSS) Parameters](#cross-site-scripting-xss-parameters)
     - [Server-Side Request Forgery (SSRF) Parameters](#server-side-request-forgery-ssrf-parameters)
@@ -30,7 +30,7 @@ toc: true
 
 ---
 
-## Overall
+## Overview
 
 What is top25-parameter 🧙⚔️ [^OWASP10Parameter]
 

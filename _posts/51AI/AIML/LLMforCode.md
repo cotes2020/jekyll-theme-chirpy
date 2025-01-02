@@ -21,7 +21,7 @@
       - [Training Programs and Code Regions](#training-programs-and-code-regions)
       - [Loss Terms for Controlling Security](#loss-terms-for-controlling-security)
       - [Loss Term for Preserving Functional Correctness](#loss-term-for-preserving-functional-correctness)
-      - [Overall Loss Function](#overall-loss-function)
+      - [Overview Loss Function](#overview-loss-function)
       - [SVEN vs. Controlled Text Generation](#sven-vs-controlled-text-generation)
       - [SVEN: Training Data Efficiency](#sven-training-data-efficiency)
     - [4.3 Constructing High-quality Training Dataset](#43-constructing-high-quality-training-dataset)
@@ -420,7 +420,7 @@ In addition to LLM, we need to discourage the opposite prefix `SVEN¬𝑐` from 
 
 
 
-##### Overall Loss Function
+##### Overview Loss Function
 - Our overall loss function is a weighted sum of the three loss terms in Equations (2) to (4):
 - Section 6.3 examines the trade-off between security control and
 - functional correctness when we adjust the weights 𝑤CT and 𝑤KL.

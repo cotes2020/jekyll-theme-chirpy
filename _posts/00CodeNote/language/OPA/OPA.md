@@ -2,7 +2,7 @@
 
 
 - [Policy Language](#policy-language)
-  - [overall](#overall)
+  - [Overview](#overview)
     - [What is Rego?](#what-is-rego)
     - [Why use Rego?](#why-use-rego)
   - [Basics](#basics)
@@ -73,7 +73,7 @@ ref:
 # Policy Language
 
 
-## Overall
+## Overview
 
 - OPA is purpose built for reasoning about information represented in structured documents.
 - The data that your service and its users publish can be inspected and transformed using OPA’s native query language Rego.

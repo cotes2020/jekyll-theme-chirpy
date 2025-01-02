@@ -1,7 +1,11 @@
 name: 'Grace project - Tesla'
+
 on:
-  schedule:
-    - cron: '0 21 * * *'
+  push:
+    branches:
+      - master
+#   schedule:
+#     - cron: '0 21 * * *'
     # - cron: '*/30 * * * *'
 
   # Allows you to run this workflow manually from the Actions tab

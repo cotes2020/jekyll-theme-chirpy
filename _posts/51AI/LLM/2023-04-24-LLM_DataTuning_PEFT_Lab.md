@@ -9,6 +9,8 @@ tags: [AI, ML]
 
 # PEFT Lab
 
+**Table of contents:**
+
 - [PEFT Lab](#peft-lab)
   - [ChatGLM-6B 微调实践](#chatglm-6b-微调实践)
   - [ChatGLM-6B with P-Tuning v2](#chatglm-6b-with-p-tuning-v2)

@@ -16,13 +16,13 @@ image: /assets/img/note/prisma.png
 # Cortex XDR 2.0 - Architecture, Analytics, and Causality Analysis
 
 - [Cortex XDR 2.0 - Architecture, Analytics, and Causality Analysis](#cortex-xdr-20---architecture-analytics-and-causality-analysis)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [need reformate](#need-reformate)
   - [need re format](#need-re-format)
 
 ---
 
-## Overall
+## Overview
 
 Cortex is designed to
 - reduce alert fatigue,

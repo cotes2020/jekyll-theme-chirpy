@@ -22,7 +22,7 @@ tags: [AI, ML]
   - [Full Fine-tuning](#full-fine-tuning)
     - [Self-supervised-learning 预训练阶段](#self-supervised-learning-预训练阶段)
     - [SFT - Supervised Fine-Tuning (监督微调阶段)](#sft---supervised-fine-tuning-监督微调阶段)
-      - [Overall](#overall)
+      - [Overview](#overview-1)
       - [Implementation in GCP](#implementation-in-gcp)
     - [Prompt-Oriented Fine-Tuning](#prompt-oriented-fine-tuning)
   - [Not Full fine-tuning](#not-full-fine-tuning)
@@ -45,24 +45,23 @@ tags: [AI, ML]
         - [AdaLoRA](#adalora)
       - [BitFit](#bitfit)
     - [RLHF - Reinforcement learning from human feedback (人类反馈强化学习阶段)](#rlhf---reinforcement-learning-from-human-feedback-人类反馈强化学习阶段)
-      - [奖励模型](#奖励模型)
       - [RLHF step](#rlhf-step)
         - [Obtaining feedback from humans](#obtaining-feedback-from-humans)
         - [Train Reward model](#train-reward-model)
         - [Use Reward model](#use-reward-model)
       - [对比数据集](#对比数据集)
       - [RLHF Algorithm](#rlhf-algorithm)
-        - [RLHF - PPO / Proximal Policy Optimization (微调)](#rlhf---ppo--proximal-policy-optimization-微调)
+        - [RLHF - PPO / Proximal Policy Optimization (微调)(近端策略优化)](#rlhf---ppo--proximal-policy-optimization-微调近端策略优化)
           - [特点](#特点)
           - [算法框架](#算法框架)
-          - [PPO（近端策略优化）的应用](#ppo近端策略优化的应用)
+          - [PPO的应用](#ppo的应用)
           - [目标函数](#目标函数)
           - [微调过程 - PPO 2 phaseS](#微调过程---ppo-2-phases)
           - [RL(PPO) 算法](#rlppo-算法)
           - [实现 PPO 算法](#实现-ppo-算法)
         - [RLHF - Reward hacking](#rlhf---reward-hacking)
         - [RLHF - Kullback-Leibler (KL) divergence](#rlhf---kullback-leibler-kl-divergence)
-        - [RLHF - Reward model](#rlhf---reward-model)
+        - [RLHF - Reward model 奖励模型](#rlhf---reward-model-奖励模型)
         - [RLHF - Model self supervision](#rlhf---model-self-supervision)
           - [Constitutional AI](#constitutional-ai)
       - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
@@ -74,7 +73,6 @@ tags: [AI, ML]
     - [Model Distillation](#model-distillation)
     - [PTQ - Post training quantization](#ptq---post-training-quantization)
     - [Pruning](#pruning)
-  - [Generative AI Project Lifecycle](#generative-ai-project-lifecycle)
 - [Traning Terms](#traning-terms)
   - [Gradient Descent](#gradient-descent)
   - [Epochs](#epochs)
@@ -434,7 +432,7 @@ Finetuned Language Net(FLAN) 的具体训练流程:
 
 ### SFT - Supervised Fine-Tuning (监督微调阶段)
 
-#### Overall
+#### Overview
 
 - good option when you have a well-defined task with available labeled data.
 
@@ -1653,9 +1651,30 @@ parameter-efficient prompt tuning(下面简称为 Prompt Tuning)可以看作是 
 
 ##### Adapter-Tuning
 
-- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项 2019 年的工作第一次提出了 Adapter 方法。与 Prefix-Tuning 和 Prompt Tuning 这类在输入前添加可训练 prompt embedding 参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 $\phi_{w}(x)$ ，对于 Adapter-Tuning，添加适配器之后模型函数更新为: ϕ w , w 0 ( x ) \phi*{w,w*{0}}(x) ϕw,w0​​(x)， w w w 是预训练模型的参数， $w_{0}$ ​ 是新添加的适配器的参数，在训练过程中， w w w 被固定，只有 $w_{0}$ ​ 被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w\_{0}|\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
-- 论文中采用 Bert 作为实验模型，Adapter 模块被添加到每个 transformer 层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了 adapter 的结构，有不同见解可在评论区沟通): ![pic](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
-    Adapter 结构有两个特点: 较少的参数 在初始化时与原结构相似的输出。在实际微调时，由于采用了 down-project 与 up-project 的架构，在进行微调时，Adapter 会先将特征输入通过 down-project 映射到较低维度，再通过 up-project 映射回高维度，从而减少参数量。Adapter-Tuning 只需要训练原模型 0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量 Adapter 结构的参数即可。由于 Adapter 中存在残差连接结构，采用合适的小参数去初始化 Adapter 就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在 GLUE 测试集上，Adapter 用了更少量的参数达到了与传统 Fine-Tuning 方法接近的效果。
+- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项 2019 年的工作第一次提出了 Adapter 方法。
+
+- Prefix-Tuning 和 Prompt Tuning: 在输入前添加`可训练 prompt embedding 参数`来以少量参数适配下游任务
+- Adapter-Tuning: 在预训练模型内部的网络层之间`添加新的网络层或模块`来适配下游任务。
+
+- 假设预训练模型函数表示为 $\phi_{w}(x)$
+- 对于 Adapter-Tuning，添加适配器之后模型函数更新为: $\phi*{w,w*{0}}(x)$
+- $w$ 是预训练模型的参数，
+- $w_{0}$ 是新添加的适配器的参数，
+- 在训练过程中， $w$ 被固定，只有 $w_{0}$​ 被更新。
+- $|w\_{0}|\ll|w|$, 这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。
+- 在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
+
+- 论文中采用 Bert 作为实验模型，Adapter 模块被添加到每个 transformer 层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了 adapter 的结构，有不同见解可在评论区沟通):
+
+![pic](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
+
+Adapter 结构有两个特点:
+- 较少的参数
+- q在初始化时与原结构相似的输出。
+
+在实际微调时，由于采用了 down-project 与 up-project 的架构，在进行微调时，Adapter 会先将特征输入通过 down-project 映射到较低维度，再通过 up-project 映射回高维度，从而减少参数量。
+
+Adapter-Tuning 只需要训练原模型 0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量 Adapter 结构的参数即可。由于 Adapter 中存在残差连接结构，采用合适的小参数去初始化 Adapter 就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在 GLUE 测试集上，Adapter 用了更少量的参数达到了与传统 Fine-Tuning 方法接近的效果。
 
 #### Reparameterization
 
@@ -1926,23 +1945,6 @@ BitFit
 
 ---
 
-#### 奖励模型
-
-![Screenshot 2024-09-17 at 21.26.55](/assets/img/Screenshot%202024-09-17%20at%2021.26.55.png)
-
-![Screenshot 2024-09-17 at 21.27.35](/assets/img/Screenshot%202024-09-17%20at%2021.27.35.png)
-
-![Screenshot 2024-09-17 at 21.30.25](/assets/img/Screenshot%202024-09-17%20at%2021.30.25.png)
-
-- 在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使 Policy 模型产生更好的 `action` 。
-
-- 在 RLHF 微调的过程，也需要一个`Reward Model`来充当奖励函数，它代表着人类的价值观，RM 的输入是 `(prompt, response)`，返回一个分数。
-
-- response 可以看作 LLM 的 `action` ，LLM 看作 Policy 模型，通过 RL 框架把人类的价值观引入 LLM。
-
-![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
-
----
 
 #### RLHF step
 
@@ -2118,13 +2120,15 @@ $$
 
 ---
 
-##### RLHF - PPO / Proximal Policy Optimization (微调)
+##### RLHF - PPO / Proximal Policy Optimization (微调)(近端策略优化)
 
 ![Screenshot 2024-09-30 at 18.18.39](/assets/img/Screenshot%202024-09-30%20at%2018.18.39.png)
 
 - 旨在通过`限制策略更新的幅度`来提高学习的稳定性。
 
-- 目标是在更新策略时，尽量保持当前策略和新策略之间的相似性。
+  - 目标是在更新策略时，<font color=OrangeRed> 尽量保持当前策略和新策略之间的相似性 </font。
+
+  - limits the distance between the new and old policy, which prevents the agent from taking large steps in the policy space that could lead to catastrophic changes in behavior.
 
 - PPO optimizes a policy (LLM) to be more aligned with human preferences
 
@@ -2176,7 +2180,7 @@ PPO 的算法框架可以分为以下几个步骤：
 
 ---
 
-###### PPO（近端策略优化）的应用
+###### PPO的应用
 
 PPO 是一种强大的优化算法，能够在多种应用领域中有效地训练智能体。无论是在游戏、机器人控制、自动驾驶，还是在资源管理和金融交易等领域，PPO 都展示了其良好的性能和灵活性。其通过限制策略更新幅度的方法，能够有效提高学习的稳定性，适应各种复杂的决策环境。
 
@@ -2591,12 +2595,6 @@ plt.ylabel("Reward")
 plt.show()
 ```
 
----
-
-
-
-
-
 
 ---
 
@@ -2632,13 +2630,17 @@ For example,
 
 ##### RLHF - Kullback-Leibler (KL) divergence
 
-KL/Kullback-Leibler Divergence
-- a concept often encountered in the field of reinforcement learning, particularly when using the Proximal Policy Optimization (PPO) algorithm.
-- It is a mathematical measure of the <font color=LightSlateBlue> difference between two probability distributions </font>, which helps understand how one distribution differs from another.
+> a concept often encountered in the field of reinforcement learning, particularly when PPO algorithm.
+
+**KL/Kullback-Leibler Divergence**
+
+- It is a mathematical measure of the <font color=LightSlateBlue> difference between two probability distributions </font>
+  - helps understand how one distribution differs from another.
+
 - In the context of PPO, KL-Divergence plays a crucial role in `guiding the optimization process` to ensure that the `updated policy does not deviate too much from the original policy`.
   - In PPO, the goal is to find an i`mproved policy` for an agent by iteratively updating its parameters based on the rewards received from interacting with the environment.
   - However, updating the policy too aggressively can lead to unstable learning or drastic policy changes.
-  - To address this, PPO introduces a constraint that limits the extent of policy updates. This constraint is enforced by using KL-Divergence.
+  - To address this, PPO introduces a <font color=OrangeRed> constraint that limits the extent of policy updates </font>. This constraint is enforced by using KL-Divergence.
 
 How KL-Divergence works
 
@@ -2685,7 +2687,21 @@ To prevent Reward hacking:
 
 ---
 
-##### RLHF - Reward model
+##### RLHF - Reward model 奖励模型
+
+在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使 Policy 模型产生更好的 `action` 。
+
+- ![Screenshot 2024-09-17 at 21.26.55](/assets/img/Screenshot%202024-09-17%20at%2021.26.55.png)
+
+- ![Screenshot 2024-09-17 at 21.27.35](/assets/img/Screenshot%202024-09-17%20at%2021.27.35.png)
+
+在 RLHF 微调的过程，也需要一个`Reward Model`来充当奖励函数，它代表着人类的价值观，RM 的输入是 `(prompt, response)`，返回一个分数。
+
+- ![Screenshot 2024-09-17 at 21.30.25](/assets/img/Screenshot%202024-09-17%20at%2021.30.25.png)
+
+- response 可以看作 LLM 的 `action` ，LLM 看作 Policy 模型，通过 RL 框架把人类的价值观引入 LLM。
+
+![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
 
 <font color=OrangeRed> Reward model </font>
 
@@ -2702,6 +2718,8 @@ To prevent Reward hacking:
 
   - ![picture 0](/assets/img/c435035a5efea29019accd1c8d7d10d29e3f7c0852e05a8e6b2be027a05614d4.png)
 
+
+
 ---
 
 ##### RLHF - Model self supervision
@@ -2715,20 +2733,40 @@ To prevent Reward hacking:
 
 ###### Constitutional AI
 
-- **Constitutional AI**
-  - one approach of scale supervision.
-  - First proposed in 2022 by researchers at Anthropic
-  - a method for training models using a set of rules and principles that govern the model's behavior.
-  - Together with a set of sample prompts, these form the constitution.
-  - then train the model to self critique and revise its responses to comply with those principles.
+> 「Constitution AI 的基本理念是：人类监督将完全来自一套管理 AI 行为的原则，以及少量用于 few-shot prompting 的例子。这些原则共同构成了 constitution。」
 
-  - useful for <font color=LightSlateBlue> scaling feedback </font> and <font color=LightSlateBlue> address some unintended consequences </font> of RLHF.
-    - an aligned model may end up revealing harmful information as it tries to provide the most helpful response it can.
+**Constitutional AI / 宪法 AI**
+
+- Claude 和 ChatGPT 都依赖于强化学习来训练其输出的偏好模型，并将首选生成结果用于后续的微调。然而，用于开发这些偏好模型的方法不同，Anthropic 倾向于一种他们称之为 Constitutional AI 的方法。
+  - 人工智能（AI）初创公司 Anthropic 详细介绍了其“宪法 AI（Constitutional AI）”训练方法的具体原则，该方法为其 Claude 聊天机器人提供了明确的“价值观”。
+  - Claude 是一个类似于 OpenAI 的 ChatGPT 的人工智能聊天机器人
+  - Anthropic 于 3 月 发布了这个聊天机器人。
+  - 它旨在解决对 AI 系统的透明度、安全性和决策制定的担忧，而不依赖于人类的反馈来评估响应。
+
+与 RLHF 不同
+- RLHF (基于人类提供的质量排名训练强化学习模型)，也就是让人类标注员对同一 prompt 生成的输出进行排名，模型学习这些偏好，以便它们可以更大规模地应用于其他生成结果。
+
+- Constitutional  AI 构建在这一 RLHF 基线之上。但使用模型而不是人类标注员, 来生成经过微调的输出的初始排名。该模型根据一套基本原则，即「constitution」，来选择最佳回应。
+
+- one approach of scale supervision.
+- First proposed in 2022 by researchers at Anthropic
+- a method for training models using a set of rules and principles that govern the model's behavior.
+- Together with a set of sample prompts, these form the constitution.
+- then train the model to self critique and revise its responses to comply with those principles.
+
+- useful for <font color=LightSlateBlue> scaling feedback </font> and <font color=LightSlateBlue> address some unintended consequences </font> of RLHF.
+  - an aligned model may end up revealing harmful information as it tries to provide the most helpful response it can.
 
 - For example:
   - ask the model to give you instructions on how to hack the neighbor's WiFi.
   - as model has been aligned to prioritize helpfulness, it actually tells you about an app that lets you do this, even though this activity is illegal.
 
+
+the preference model
+- In Constitutional AI, we train a model to choose between different responses.
+- the preference model will learn what responses are preferred following the constitutional principles.
+- To obtain revised answers for possible harmful prompts, asking the model to critique and revise the elicited harmful answers.
+- Red Teaming is the process of eliciting undesirable responses by interacting with a model, fine-tune the model with those “red team” prompts and revised answers.
 
 constitutional principles
 
@@ -2742,6 +2780,27 @@ constitutional principles
   - play some bounds, asking the model to prioritize harmlessness by assessing whether it's response encourages illegal, unethical, or immoral activity.
 
   - ![picture 1](/assets/img/11639e442bb815327b9582540c69dfe3f4ce7a2599bee82b9077b075c4d316da.png)
+
+---
+
+整个训练过程分为两个阶段
+
+第一阶段：监督阶段
+
+- 批评（Critique）→修改（Revision）→监督学习（Supervised）
+
+- 在 Constitution AI 的第一阶段，研究者首先使用一个 helpful-only AI 助手对有害 prompt 生成响应。然后，他们要求模型根据 constitution 中的一个原则对其响应进行批评，再根据批评修改原始响应。
+- 研究者按顺序反复修改响应，在每个步骤中从 constitution 里随机抽取原则。
+- 一旦这个过程完成，研究者将通过在最终修改后的响应上进行监督学习来微调预训练语言模型。
+- 此阶段的主要目的是轻松灵活地改变模型响应的分布，以减少第二个 RL 阶段的探索需求和总训练时间。
+
+第二阶段：强化学习阶段
+
+- AI 比较评估→偏好模型→强化学习
+
+- 这个阶段模仿了 RLHF，但研究者用「AI 反馈」（即 RLAIF）代替人类无害偏好。
+- 其中，AI 根据一组 constitutional principle 评估响应。
+- 就像 RLHF 将人类偏好提炼成单一偏好模型（PM）一样，在这个阶段，研究者将 LM 对一组原则的解释提炼回一个人类 / AI 混合 PM。
 
 
 implement the Constitutional AI
@@ -3331,39 +3390,6 @@ One of the primary ways to improve application performance is to reduce the size
 
 - In theory, this <font color=LightSlateBlue> reduces the size of the model and improves performance </font>.
   - In practice <font color=LightSlateBLUE> may not be much impact on the size and performance if only a small percentage of the model weights are close to zero </font>.
-
----
-
-## Generative AI Project Lifecycle
-
-![picture 0](/assets/img/5db2a9f1e48113e84bf327374c661d2eb5a9155598f60d19ab2ec20cec1fe3e4.png)
-
-time and effort required for each phase of work.
-- pre-training
-  - pre-training a large language model can be a huge effort.
-  - themost complex because of the model architecture decisions, the large amount of training data required, and the expertise needed.
-  - in general will start the development work with an existing foundation model.
-
-- prompt engineering
-  - start to assess the model's performance through prompt engineering
-  - requires less technical expertise, and no additional training of the model.
-
-- prompt tuning and fine tuning
-  - If the model isn't performing as you need
-  - Depending on the use case, performance goals, and compute budget, the methods could range from <font color=LightSlateBlue> full fine-tuning </font> to <font color=LightSlateBlue> parameter efficient fine tuning techniques </font> like laura or prompt tuning.
-  - Some level of technical expertise is required for this work.
-  - fine-tuning can be very successful with a relatively small training dataset
-  - this phase could potentially be completed in a single day.
-
-- reinforcement learning from human feedback
-  - Aligning the model using reinforcement learning from human feedback can be done quickly, once you have the train reward model. see if you can use an existing reward model for this work, as you saw in this week's lab.
-  - if you have to train a reward model from scratch, it could take a long time because of the effort involved to gather human feedback.
-
-- optimization techniques
-  - typically fall in the middle in terms of complexity and effort
-  - can proceed quite quickly assuming the changes to the model don't impact performance too much.
-
-- After working through all of these steps, trained in tuned a gray LLM that is working well for the specific use case, and is optimized for deployment.
 
 ---
 

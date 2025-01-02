@@ -1,7 +1,7 @@
 # AWS service categories
 
 - [AWS service categories](#aws-service-categories)
-  - [overall](#overall)
+  - [Overview](#overview)
   - [Compute 计算](#compute-计算)
   - [Storage 存储](#storage-存储)
   - [Database 数据库](#database-数据库)
@@ -37,7 +37,7 @@
 
 ---
 
-## Overall
+## Overview
 
 ![Screenshot 2023-10-01 at 21.10.30](/assets/img/post/Screenshot%202023-10-01%20at%2021.10.30.png)
 

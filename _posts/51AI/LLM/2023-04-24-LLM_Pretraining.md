@@ -7,6 +7,10 @@ categories: [51AI, LLM]
 tags: [AI, ML]
 ---
 
+# LLM - Pre-training llms
+
+**Table of contents:**
+
 - [LLM - Pre-training llms](#llm---pre-training-llms)
   - [Model Architecture](#model-architecture)
     - [Encoder-only models](#encoder-only-models)
@@ -26,10 +30,6 @@ tags: [AI, ML]
       - [training dataset size, model size and compute budget](#training-dataset-size-model-size-and-compute-budget)
   - [Pre-training for domain adaptation](#pre-training-for-domain-adaptation)
     - [BloombergGPT](#bloomberggpt)
-
----
-
-# LLM - Pre-training llms
 
 Source:
 
