@@ -36,7 +36,6 @@ image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*hIvxsGZdM3p6mktbo
 
 ### 배열(Array)
 ---
-<img src="../assets/img/type.png">
 
 배열은 `청크(chunk)` 형태로 메모리가 연속적으로 할당된다.  
 배열을 구성하는 각각의 값을 `요소(element)`라고 하며, 배열에서의 위치를 가리키는 숫자를 `인덱스(index)`라고 한다.
