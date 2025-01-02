@@ -2120,13 +2120,15 @@ $$
 
 ---
 
-##### RLHF - PPO / Proximal Policy Optimization (微调)
+##### RLHF - PPO / Proximal Policy Optimization (微调)(近端策略优化)
 
 ![Screenshot 2024-09-30 at 18.18.39](/assets/img/Screenshot%202024-09-30%20at%2018.18.39.png)
 
 - 旨在通过`限制策略更新的幅度`来提高学习的稳定性。
 
-- 目标是在更新策略时，尽量保持当前策略和新策略之间的相似性。
+  - 目标是在更新策略时，<font color=OrangeRed> 尽量保持当前策略和新策略之间的相似性 </font。
+
+  - limits the distance between the new and old policy, which prevents the agent from taking large steps in the policy space that could lead to catastrophic changes in behavior.
 
 - PPO optimizes a policy (LLM) to be more aligned with human preferences
 
@@ -2178,7 +2180,7 @@ PPO 的算法框架可以分为以下几个步骤：
 
 ---
 
-###### PPO（近端策略优化）的应用
+###### PPO的应用
 
 PPO 是一种强大的优化算法，能够在多种应用领域中有效地训练智能体。无论是在游戏、机器人控制、自动驾驶，还是在资源管理和金融交易等领域，PPO 都展示了其良好的性能和灵活性。其通过限制策略更新幅度的方法，能够有效提高学习的稳定性，适应各种复杂的决策环境。
 
@@ -2628,13 +2630,17 @@ For example,
 
 ##### RLHF - Kullback-Leibler (KL) divergence
 
-KL/Kullback-Leibler Divergence
-- a concept often encountered in the field of reinforcement learning, particularly when using the Proximal Policy Optimization (PPO) algorithm.
-- It is a mathematical measure of the <font color=LightSlateBlue> difference between two probability distributions </font>, which helps understand how one distribution differs from another.
+> a concept often encountered in the field of reinforcement learning, particularly when PPO algorithm.
+
+**KL/Kullback-Leibler Divergence**
+
+- It is a mathematical measure of the <font color=LightSlateBlue> difference between two probability distributions </font>
+  - helps understand how one distribution differs from another.
+
 - In the context of PPO, KL-Divergence plays a crucial role in `guiding the optimization process` to ensure that the `updated policy does not deviate too much from the original policy`.
   - In PPO, the goal is to find an i`mproved policy` for an agent by iteratively updating its parameters based on the rewards received from interacting with the environment.
   - However, updating the policy too aggressively can lead to unstable learning or drastic policy changes.
-  - To address this, PPO introduces a constraint that limits the extent of policy updates. This constraint is enforced by using KL-Divergence.
+  - To address this, PPO introduces a <font color=OrangeRed> constraint that limits the extent of policy updates </font>. This constraint is enforced by using KL-Divergence.
 
 How KL-Divergence works
 
@@ -2754,6 +2760,13 @@ To prevent Reward hacking:
 - For example:
   - ask the model to give you instructions on how to hack the neighbor's WiFi.
   - as model has been aligned to prioritize helpfulness, it actually tells you about an app that lets you do this, even though this activity is illegal.
+
+
+the preference model
+- In Constitutional AI, we train a model to choose between different responses.
+- the preference model will learn what responses are preferred following the constitutional principles.
+- To obtain revised answers for possible harmful prompts, asking the model to critique and revise the elicited harmful answers.
+- Red Teaming is the process of eliciting undesirable responses by interacting with a model, fine-tune the model with those “red team” prompts and revised answers.
 
 constitutional principles
 

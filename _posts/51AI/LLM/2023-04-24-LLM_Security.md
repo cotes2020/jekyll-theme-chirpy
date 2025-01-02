@@ -423,7 +423,9 @@ connecting to external data sources and applications.
 
 **RAG**
 
-- Retrieval augmented generation isn't a specific set of technologies, but rather a framework for providing LLMs access to data they did not see during training.
+- Retrieval augmented generation
+
+- isn't a specific set of technologies, but rather a framework for providing LLMs access to data they did not see during training.
 
   - a framework for building LLM powered systems that make use of external data sources.
 
@@ -457,6 +459,10 @@ connecting to external data sources and applications.
 
 - **Avoid the problem of the model hallucinating** when it doesn't know the answer.
 
+- Retrieval methods extract information from external data sources that are not part of the model, and inject the resulting information into the prompt at inference time.
+  - By retrieving from curated, verified datasets you can improve the relevance and accuracy of the model’s completions.
+
+  - The architecture and weights of the LLM are not changes during this process, so the memory footprint is the same.
 
 - A number of different implementations exist, and the one you choose will depend on the details of the task and the format of the data you have to work with.
 
@@ -572,11 +578,20 @@ Chain of thought prompting is a powerful technique that improves the ability of 
 
 ---
 
-## Program-aided language models (PAL)
+## Augmenting LLMs
+
+### PAL - Program-aided language models
 
 > letting the LLM talk to a program that is much better at math.
 
-As you saw earlier in this lesson, the ability of LLMs to carry out arithmetic and other mathematical operations is limited.
+![picture 0](/assets/img/0daaf0bc77ec09503998b8d869664e03092ca4dd5ee8d4451eee3d7fac654c23.png)
+
+<font color=OrangeRed> The model isn't actually doing any real math here. </font>
+
+- but <font color=LightSlateBlue> predict the most probable tokens </font> that complete the prompt.
+
+
+the ability of LLMs to carry out arithmetic and other mathematical operations is limited.
 
 - Even if the model correctly reasons through a problem, it may still get the individual math operations wrong
   - especially with larger numbers or complex operations.
@@ -586,14 +601,6 @@ As you saw earlier in this lesson, the ability of LLMs to carry out arithmetic a
 - negative consequences:
   - charging customers the wrong total
   - getting the measurements for a recipe incorrect.
-
-![picture 0](/assets/img/0daaf0bc77ec09503998b8d869664e03092ca4dd5ee8d4451eee3d7fac654c23.png)
-
-<font color=OrangeRed> The model isn't actually doing any real math here. </font>
-
-- but <font color=LightSlateBlue> predict the most probable tokens </font> that complete the prompt.
-
-### Augmenting LLMs
 
 - program-aided language models (PAL)
   - presented by Luyu Gao and collaborators at Carnegie Mellon University in 2022,
@@ -606,12 +613,17 @@ As you saw earlier in this lesson, the ability of LLMs to carry out arithmetic a
   - The scripts that the model generates are passed to an interpreter to execute.
 
 
-- The strategy behind PAL
-  - the output format for the model by including examples for one or few short inference in the prompt.
+- it assist programmers in writing code using natural language interfaces. They aim to facilitate the coding process by providing support and guidance through human-like interactions.
 
-  - have the LLM generate completions where <font color=OrangeRed> reasoning steps are accompanied by computer code </font>.
+- It offloads these tasks to a runtime symbolic interpreter such as a python function, which reduces the workload for the LLM and improves accuracy as symbolic interpreters tend to be more precise with computational tasks.
 
-  - This code is then passed to an interpreter to carry out the calculations necessary to solve the problem.
+
+The strategy behind PAL
+- the output format for the model by including examples for one or few short inference in the prompt.
+
+- have the LLM generate completions where <font color=OrangeRed> reasoning steps are accompanied by computer code </font>.
+
+- This code is then passed to an interpreter to carry out the calculations necessary to solve the problem.
 
 
 ![picture 1](/assets/img/199deccaa2b6ae327db6f8d609bd6950d45b64847665150caa37e819f79b98a1.png)
@@ -824,7 +836,20 @@ All the pieces together
 
 ## LangChain
 
-- framework provides modular pieces that contain the components necessary to work with LLMs.
+- LangChain framework
+
+- built around LLMs and allows the chaining of various components to create more advanced applications for LLMs.
+  - It supports use cases like chatbots, Generative Question-Answering (GQA), and summarization.
+
+![picture 21](/assets/img/98978143e4771480d02e6a53d888994b4c4afbe295b20d1aca26058f02edc03a.png)
+
+- Sometimes the application workflow could take multiple paths depending on the information the user provides, instead of use a pre-determined chain, will need the flexibility to decide which actions to take as the user moves through the workflow.
+
+- Connecting a selection of these individual components together results in a chain.
+
+  - LangChain have developed a set of predefined chains that have been optimized for different use cases, use these off the shelf to quickly get the app up and running.
+
+- provides modular pieces that contain the components necessary to work with LLMs.
 
 - These components include
   - **prompt templates**: for many different use cases to format both input examples and model completions.
@@ -832,14 +857,6 @@ All the pieces together
   - **memory**: to store interactions with an LLM.
 
   - **pre-built tools**: enable to carry out a wide variety of tasks, including calls to external datasets and various APIs.
-
-![picture 21](/assets/img/98978143e4771480d02e6a53d888994b4c4afbe295b20d1aca26058f02edc03a.png)
-
-- Connecting a selection of these individual components together results in a chain.
-
-  - LangChain have developed a set of predefined chains that have been optimized for different use cases, use these off the shelf to quickly get the app up and running.
-
-- Sometimes the application workflow could take multiple paths depending on the information the user provides, instead of use a pre-determined chain, will need the flexibility to decide which actions to take as the user moves through the workflow.
 
 ![picture 22](/assets/img/bf6fab4984dfb5230d1551af1e0e05bdd075948f43f82b900950f7cef886aab5.png)
 
