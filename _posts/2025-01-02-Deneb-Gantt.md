@@ -7,7 +7,7 @@ categories: [Deneb, Vega-Lite]
 tags: [deneb, vega-lite]
 pin: false
 image:
-  path: /assets/img/0016-DenebGantt/Deneb.png
+  path: /assets/img/0016-DenebGantt/Deneb_small.png
   alt: post
 ---
  
