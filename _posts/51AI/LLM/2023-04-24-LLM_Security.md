@@ -695,7 +695,12 @@ Automate this process
     - Hot Pot QA, a multi-step question answering benchmark that requires reasoning over two or more Wikipedia passages
     - fever, a benchmark that uses Wikipedia passages to verify facts.
 
+
 - one way to use LLMs to power an application through reasoning and action planning.
+
+  - `integrates verbal reasoning and interactive decision` making in LLMs.
+  - While LLMs have excelled in language understanding and decision making, the combination of reasoning and acting has been neglected.
+  - enables LLMs to generate reasoning traces and task-specific actions, leveraging the synergy between them.
 
 - This strategy can be extended for the specific use case by creating examples that work through the decisions and actions that will take place in the application.
 
@@ -705,15 +710,13 @@ Automate this process
   - combines chain of thought reasoning with action planning.
   - help LLMs plan out and execute these workflows.
 
-- a novel approach that `integrates verbal reasoning and interactive decision` making in LLMs.
-- While LLMs have excelled in language understanding and decision making, the combination of reasoning and acting has been neglected.
-- ReAct enables LLMs to generate reasoning traces and task-specific actions, leveraging the synergy between them. The approach demonstrates superior performance over baselines in various tasks, overcoming issues like hallucination and error propagation.
-- ReAct outperforms imitation and reinforcement learning methods in interactive decision making, even with minimal context examples. It not only enhances performance but also improves interpretability, trustworthiness, and diagnosability by allowing humans to distinguish between internal knowledge and external information.
+- demonstrates superior performance over baselines in various tasks, overcoming issues like hallucination and error propagation.
+  - outperforms imitation and reinforcement learning methods in interactive decision making, even with minimal context examples.
+  - It not only enhances performance but also improves interpretability, trustworthiness, and diagnosability by allowing humans to distinguish between internal knowledge and external information.
 
-In summary, ReAct bridges the gap between reasoning and acting in LLMs, yielding remarkable results across language reasoning and decision making tasks. By interleaving reasoning traces and actions, ReAct overcomes limitations and outperforms baselines, not only enhancing model performance but also providing interpretability and trustworthiness, empowering users to understand the model's decision-making process.
+> bridges the gap between reasoning and acting in LLMs, yielding remarkable results across language reasoning and decision making tasks.
 
-
-![picture 9](../../../assets/img/88c88dee02b58663812d7b16035f3f0bac26d0a57a9bafbb6b0e083fce844ed2.png)
+![picture 9](/assets/img/88c88dee02b58663812d7b16035f3f0bac26d0a57a9bafbb6b0e083fce844ed2.png)
 
 
 ---
