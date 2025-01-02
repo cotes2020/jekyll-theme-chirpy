@@ -8,7 +8,7 @@ toc: true
 toc_sticky: true
 
 date: 2024-11-29
-last_modified_at: 2024-11-29
+last_modified_at: 2024-12-29
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*hIvxsGZdM3p6mktboskoYg.png
 ---
 ## Data Structure(자료구조)란?
