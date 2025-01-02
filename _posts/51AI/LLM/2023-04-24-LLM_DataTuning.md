@@ -45,7 +45,6 @@ tags: [AI, ML]
         - [AdaLoRA](#adalora)
       - [BitFit](#bitfit)
     - [RLHF - Reinforcement learning from human feedback (人类反馈强化学习阶段)](#rlhf---reinforcement-learning-from-human-feedback-人类反馈强化学习阶段)
-      - [奖励模型](#奖励模型)
       - [RLHF step](#rlhf-step)
         - [Obtaining feedback from humans](#obtaining-feedback-from-humans)
         - [Train Reward model](#train-reward-model)
@@ -62,7 +61,7 @@ tags: [AI, ML]
           - [实现 PPO 算法](#实现-ppo-算法)
         - [RLHF - Reward hacking](#rlhf---reward-hacking)
         - [RLHF - Kullback-Leibler (KL) divergence](#rlhf---kullback-leibler-kl-divergence)
-        - [RLHF - Reward model](#rlhf---reward-model)
+        - [RLHF - Reward model 奖励模型](#rlhf---reward-model-奖励模型)
         - [RLHF - Model self supervision](#rlhf---model-self-supervision)
           - [Constitutional AI](#constitutional-ai)
       - [PVP - Pattern-Verbalizer-Pair](#pvp---pattern-verbalizer-pair)
@@ -1946,23 +1945,6 @@ BitFit
 
 ---
 
-#### 奖励模型
-
-![Screenshot 2024-09-17 at 21.26.55](/assets/img/Screenshot%202024-09-17%20at%2021.26.55.png)
-
-![Screenshot 2024-09-17 at 21.27.35](/assets/img/Screenshot%202024-09-17%20at%2021.27.35.png)
-
-![Screenshot 2024-09-17 at 21.30.25](/assets/img/Screenshot%202024-09-17%20at%2021.30.25.png)
-
-- 在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使 Policy 模型产生更好的 `action` 。
-
-- 在 RLHF 微调的过程，也需要一个`Reward Model`来充当奖励函数，它代表着人类的价值观，RM 的输入是 `(prompt, response)`，返回一个分数。
-
-- response 可以看作 LLM 的 `action` ，LLM 看作 Policy 模型，通过 RL 框架把人类的价值观引入 LLM。
-
-![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
-
----
 
 #### RLHF step
 
@@ -2611,12 +2593,6 @@ plt.ylabel("Reward")
 plt.show()
 ```
 
----
-
-
-
-
-
 
 ---
 
@@ -2705,7 +2681,21 @@ To prevent Reward hacking:
 
 ---
 
-##### RLHF - Reward model
+##### RLHF - Reward model 奖励模型
+
+在强化学习中一般都有个奖励函数，对当前的 $\tfrac{Action}{(State,Action)}$ 进行评价打分，从而使使 Policy 模型产生更好的 `action` 。
+
+- ![Screenshot 2024-09-17 at 21.26.55](/assets/img/Screenshot%202024-09-17%20at%2021.26.55.png)
+
+- ![Screenshot 2024-09-17 at 21.27.35](/assets/img/Screenshot%202024-09-17%20at%2021.27.35.png)
+
+在 RLHF 微调的过程，也需要一个`Reward Model`来充当奖励函数，它代表着人类的价值观，RM 的输入是 `(prompt, response)`，返回一个分数。
+
+- ![Screenshot 2024-09-17 at 21.30.25](/assets/img/Screenshot%202024-09-17%20at%2021.30.25.png)
+
+- response 可以看作 LLM 的 `action` ，LLM 看作 Policy 模型，通过 RL 框架把人类的价值观引入 LLM。
+
+![pic](https://img-blog.csdnimg.cn/89384afad56a48a895c82da9a0a23a1c.png#pic_center)
 
 <font color=OrangeRed> Reward model </font>
 
@@ -2722,6 +2712,8 @@ To prevent Reward hacking:
 
   - ![picture 0](/assets/img/c435035a5efea29019accd1c8d7d10d29e3f7c0852e05a8e6b2be027a05614d4.png)
 
+
+
 ---
 
 ##### RLHF - Model self supervision
@@ -2735,20 +2727,33 @@ To prevent Reward hacking:
 
 ###### Constitutional AI
 
-- **Constitutional AI**
-  - one approach of scale supervision.
-  - First proposed in 2022 by researchers at Anthropic
-  - a method for training models using a set of rules and principles that govern the model's behavior.
-  - Together with a set of sample prompts, these form the constitution.
-  - then train the model to self critique and revise its responses to comply with those principles.
+> 「Constitution AI 的基本理念是：人类监督将完全来自一套管理 AI 行为的原则，以及少量用于 few-shot prompting 的例子。这些原则共同构成了 constitution。」
 
-  - useful for <font color=LightSlateBlue> scaling feedback </font> and <font color=LightSlateBlue> address some unintended consequences </font> of RLHF.
-    - an aligned model may end up revealing harmful information as it tries to provide the most helpful response it can.
+**Constitutional AI / 宪法 AI**
+
+- Claude 和 ChatGPT 都依赖于强化学习来训练其输出的偏好模型，并将首选生成结果用于后续的微调。然而，用于开发这些偏好模型的方法不同，Anthropic 倾向于一种他们称之为 Constitutional AI 的方法。
+  - 人工智能（AI）初创公司 Anthropic 详细介绍了其“宪法 AI（Constitutional AI）”训练方法的具体原则，该方法为其 Claude 聊天机器人提供了明确的“价值观”。
+  - Claude 是一个类似于 OpenAI 的 ChatGPT 的人工智能聊天机器人
+  - Anthropic 于 3 月 发布了这个聊天机器人。
+  - 它旨在解决对 AI 系统的透明度、安全性和决策制定的担忧，而不依赖于人类的反馈来评估响应。
+
+与 RLHF 不同
+- RLHF (基于人类提供的质量排名训练强化学习模型)，也就是让人类标注员对同一 prompt 生成的输出进行排名，模型学习这些偏好，以便它们可以更大规模地应用于其他生成结果。
+
+- Constitutional  AI 构建在这一 RLHF 基线之上。但使用模型而不是人类标注员, 来生成经过微调的输出的初始排名。该模型根据一套基本原则，即「constitution」，来选择最佳回应。
+
+- one approach of scale supervision.
+- First proposed in 2022 by researchers at Anthropic
+- a method for training models using a set of rules and principles that govern the model's behavior.
+- Together with a set of sample prompts, these form the constitution.
+- then train the model to self critique and revise its responses to comply with those principles.
+
+- useful for <font color=LightSlateBlue> scaling feedback </font> and <font color=LightSlateBlue> address some unintended consequences </font> of RLHF.
+  - an aligned model may end up revealing harmful information as it tries to provide the most helpful response it can.
 
 - For example:
   - ask the model to give you instructions on how to hack the neighbor's WiFi.
   - as model has been aligned to prioritize helpfulness, it actually tells you about an app that lets you do this, even though this activity is illegal.
-
 
 constitutional principles
 
@@ -2762,6 +2767,27 @@ constitutional principles
   - play some bounds, asking the model to prioritize harmlessness by assessing whether it's response encourages illegal, unethical, or immoral activity.
 
   - ![picture 1](/assets/img/11639e442bb815327b9582540c69dfe3f4ce7a2599bee82b9077b075c4d316da.png)
+
+---
+
+整个训练过程分为两个阶段
+
+第一阶段：监督阶段
+
+- 批评（Critique）→修改（Revision）→监督学习（Supervised）
+
+- 在 Constitution AI 的第一阶段，研究者首先使用一个 helpful-only AI 助手对有害 prompt 生成响应。然后，他们要求模型根据 constitution 中的一个原则对其响应进行批评，再根据批评修改原始响应。
+- 研究者按顺序反复修改响应，在每个步骤中从 constitution 里随机抽取原则。
+- 一旦这个过程完成，研究者将通过在最终修改后的响应上进行监督学习来微调预训练语言模型。
+- 此阶段的主要目的是轻松灵活地改变模型响应的分布，以减少第二个 RL 阶段的探索需求和总训练时间。
+
+第二阶段：强化学习阶段
+
+- AI 比较评估→偏好模型→强化学习
+
+- 这个阶段模仿了 RLHF，但研究者用「AI 反馈」（即 RLAIF）代替人类无害偏好。
+- 其中，AI 根据一组 constitutional principle 评估响应。
+- 就像 RLHF 将人类偏好提炼成单一偏好模型（PM）一样，在这个阶段，研究者将 LM 对一组原则的解释提炼回一个人类 / AI 混合 PM。
 
 
 implement the Constitutional AI
