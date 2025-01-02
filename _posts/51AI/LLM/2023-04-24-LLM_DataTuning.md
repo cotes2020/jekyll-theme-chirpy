@@ -1652,9 +1652,30 @@ parameter-efficient prompt tuning(下面简称为 Prompt Tuning)可以看作是 
 
 ##### Adapter-Tuning
 
-- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项 2019 年的工作第一次提出了 Adapter 方法。与 Prefix-Tuning 和 Prompt Tuning 这类在输入前添加可训练 prompt embedding 参数来以少量参数适配下游任务的方式不通，Adapter-Tuning 则是在预训练模型内部的网络层之间添加新的网络层或模块来适配下游任务。假设预训练模型函数表示为 $\phi_{w}(x)$ ，对于 Adapter-Tuning，添加适配器之后模型函数更新为: ϕ w , w 0 ( x ) \phi*{w,w*{0}}(x) ϕw,w0​​(x)， w w w 是预训练模型的参数， $w_{0}$ ​ 是新添加的适配器的参数，在训练过程中， w w w 被固定，只有 $w_{0}$ ​ 被更新。 ∣ w 0 ∣ ≪ ∣ w ∣ |w\_{0}|\ll|w| ∣w0​∣≪∣w∣，这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
-- 论文中采用 Bert 作为实验模型，Adapter 模块被添加到每个 transformer 层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了 adapter 的结构，有不同见解可在评论区沟通): ![pic](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
-    Adapter 结构有两个特点: 较少的参数 在初始化时与原结构相似的输出。在实际微调时，由于采用了 down-project 与 up-project 的架构，在进行微调时，Adapter 会先将特征输入通过 down-project 映射到较低维度，再通过 up-project 映射回高维度，从而减少参数量。Adapter-Tuning 只需要训练原模型 0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量 Adapter 结构的参数即可。由于 Adapter 中存在残差连接结构，采用合适的小参数去初始化 Adapter 就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在 GLUE 测试集上，Adapter 用了更少量的参数达到了与传统 Fine-Tuning 方法接近的效果。
+- **Adapter-Tuning**: [《Parameter-Efficient Transfer Learning for NLP》](https://arxiv.org/pdf/1902.00751.pdf)这项 2019 年的工作第一次提出了 Adapter 方法。
+
+- Prefix-Tuning 和 Prompt Tuning: 在输入前添加`可训练 prompt embedding 参数`来以少量参数适配下游任务
+- Adapter-Tuning: 在预训练模型内部的网络层之间`添加新的网络层或模块`来适配下游任务。
+
+- 假设预训练模型函数表示为 $\phi_{w}(x)$
+- 对于 Adapter-Tuning，添加适配器之后模型函数更新为: $\phi*{w,w*{0}}(x)$
+- $w$ 是预训练模型的参数，
+- $w_{0}$ 是新添加的适配器的参数，
+- 在训练过程中， $w$ 被固定，只有 $w_{0}$​ 被更新。
+- $|w\_{0}|\ll|w|$, 这使得不同下游任务只需要添加少量可训练的参数即可，节省计算和存储开销，同时共享大规模预训练模型。
+- 在对预训练模型进行微调时，我们可以冻结在保留原模型参数的情况下对已有结构添加一些额外参数，对该部分参数进行训练从而达到微调的效果。
+
+- 论文中采用 Bert 作为实验模型，Adapter 模块被添加到每个 transformer 层两次。适配器是一个 bottleneck(瓶颈)结构的模块，由一个两层的前馈神经网络(由向下投影矩阵 非线性函数和向上投影矩阵构成)和一个输入输出之间的残差连接组成。其总体结构如下(跟论文中的结构有些出入，目前没有理解论文中的结构是怎么构建出来的，个人觉得下图更准确的刻画了 adapter 的结构，有不同见解可在评论区沟通):
+
+![pic](https://img-blog.csdnimg.cn/7707eedb17c34e01bfb94486bb014b27.png#pic_center)
+
+Adapter 结构有两个特点:
+- 较少的参数
+- q在初始化时与原结构相似的输出。
+
+在实际微调时，由于采用了 down-project 与 up-project 的架构，在进行微调时，Adapter 会先将特征输入通过 down-project 映射到较低维度，再通过 up-project 映射回高维度，从而减少参数量。
+
+Adapter-Tuning 只需要训练原模型 0.5%-8%的参数量，若对于不同的下游任务进行微调，只需要对不同的任务保留少量 Adapter 结构的参数即可。由于 Adapter 中存在残差连接结构，采用合适的小参数去初始化 Adapter 就可以使其几乎保持原有的输出，使得模型在添加额外结构的情况下仍然能在训练的初始阶段表现良好。在 GLUE 测试集上，Adapter 用了更少量的参数达到了与传统 Fine-Tuning 方法接近的效果。
 
 #### Reparameterization
 
