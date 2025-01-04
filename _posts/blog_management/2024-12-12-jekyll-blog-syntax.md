@@ -26,14 +26,24 @@ tags: [jekyll, github page]
 ![Image]({{"/assets/img/posts/IMAGE-FILE-NAME" | relative_url }}){: style="border: 2px solid black;" }
 ```
 
+- 이미지에 그림자 추가
+
+```md
+![Image]({{"/assets/img/posts/IMAGE-FILE-NAME" | relative_url }}){: .shadow }
+```
+
 - 이미지 정렬
+
   - 왼쪽 정렬
+
   ```md
-  ![Image]({{"/assets/img/posts/IMAGE-FILE-NAME" | relative_url }}){: style="float: left; margin-right: 10px;" }
+  ![Image]({{"/assets/img/posts/IMAGE-FILE-NAME" | relative_url }}){: .left }
   ```
+
   - 오른쪽 정렬
+
   ```md
-  ![Image]({{"/assets/img/posts/IMAGE-FILE-NAME" | relative_url }}){: style="float: right; margin-left: 10px;" }
+  ![Image]({{"/assets/img/posts/IMAGE-FILE-NAME" | relative_url }}){: .right }
   ```
 
 ### 동영상 첨부
