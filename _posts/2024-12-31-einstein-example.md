@@ -1,5 +1,5 @@
 ---
-title: Einstein Example
+title: Lorentz Transformation for Electromagnetic Field Tensor
 author: jake
 date: 2024-12-31 12:00:00 +0800
 categories: [Physics]
@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: assets/img/custom/einstein_example.png
-  alt: Time dilation on a moving train from the perspective of a stationary observer
+  alt: Experimental setup as described in *On The Electrodynamics Of Moving Bodies*
 ---
 Details of an experiment originally explained in [Albert Einstein's 1905 paper on Special Relativity](https://www.fourmilab.ch/etexts/einstein/specrel/specrel.pdf) entitled *On The Electrodynamics Of Moving Bodies*. The experiment consists of an electric charge and a magnet viewed from two perspectives:
 - Moving Charge (stationary magnet)
