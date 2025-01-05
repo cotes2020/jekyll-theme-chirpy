@@ -79,3 +79,7 @@ v &= \frac{\sqrt{3}}{2} c \\
 $$
 
 but both observers will still see light moving at speed, $c$!
+
+## Demo
+Here is a short demo using [neopixel strips](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels) and a [raspberry pi pico](https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html) controller. The red light represents the moving observer and the green light represents the (shifted) stationary observer:
+![Lights from a stationary and moving perspective](assets/video/IMG_1276.gif)
