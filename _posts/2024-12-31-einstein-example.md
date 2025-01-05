@@ -8,7 +8,7 @@ math: true
 mermaid: false
 image:
   path: assets/img/custom/einstein_example.png
-  alt: Experimental setup as described in *On The Electrodynamics Of Moving Bodies*
+  alt: Experimental setup as described in 'On The Electrodynamics Of Moving Bodies'
 ---
 Details of an experiment originally explained in [Albert Einstein's 1905 paper on Special Relativity](https://www.fourmilab.ch/etexts/einstein/specrel/specrel.pdf) entitled *On The Electrodynamics Of Moving Bodies*. The experiment consists of an electric charge and a magnet viewed from two perspectives:
 - Moving Charge (stationary magnet)
@@ -109,7 +109,7 @@ $$
 &= L^0_{\;\mu}L^3_{\;\nu} F^{\mu\nu} \\
 &=L^0_{\;0}L^3_{\;3}F^{03} + L^0_{\;1} L^3_{\;3} F^{13} \\
 &=\gamma E_z + \gamma(-v)-B_y \\
-&=\gamma(E_y + vB_y) \\
+&=\gamma(E_z + vB_y) \\
 &=\gamma(E + v \times B)_z \\ \\
 \end{aligned}
 $$
