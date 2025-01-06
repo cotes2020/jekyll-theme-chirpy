@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: 파푸리카 개발자 # the main title
 
-tagline: 춉춉춉 # it will display as the subtitle
+tagline: 고민은 깊게, 방법은 간단히. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   AI, 개발, 랭체인, BDD
