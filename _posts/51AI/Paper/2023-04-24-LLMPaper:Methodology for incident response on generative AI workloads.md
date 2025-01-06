@@ -1,5 +1,5 @@
 ---
-title: AWS Paper - Methodology for incident response on Gen-AI workloads
+title: LLMs Paper - Methodology for incident response on Gen-AI workloads
 date: 2023-04-24 11:11:11 -0400
 description:
 categories: [51AI, Paper]

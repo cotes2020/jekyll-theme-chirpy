@@ -7,6 +7,8 @@ categories: [01GCP]
 tags: [AI, ML]
 ---
 
+# Vertex AI
+
 - [Vertex AI](#vertex-ai)
   - [Overview](#overview)
     - [Codey](#codey)
@@ -16,11 +18,6 @@ tags: [AI, ML]
 
 ref:
 - [cthesera - gcp-big-data-ml-fundamentals](https://www.cthesera.org/learn/gcp-big-data-ml-fundamentals)
-
----
-
-
-# Vertex AI
 
 ---
 
