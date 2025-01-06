@@ -1,5 +1,9 @@
 # Local testing
 
+Open Docker
+
+Use WSL terminal
+
 #### Install dependencies *Install gemfile dependences to /tmp/vendor with bundler*
 
 ```bash
