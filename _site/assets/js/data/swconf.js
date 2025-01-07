@@ -1,10 +1,6 @@
 const swconf = {
   
-<<<<<<< Updated upstream
-    cacheName: 'chirpy-1729983610',resources: [
-=======
-    cacheName: 'chirpy-1729757633',resources: [
->>>>>>> Stashed changes
+    cacheName: 'chirpy-1731770840',resources: [
       '/assets/css/jekyll-theme-chirpy.css',
       '/',
       

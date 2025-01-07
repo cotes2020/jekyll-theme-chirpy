@@ -915,6 +915,12 @@ $btn-mb: 0.5rem;
       @extend %sidebar-link-hover;
     }
 
+    #vcr-toggle {
+      @extend %button;
+      @extend %sidebar-links;
+      @extend %sidebar-link-hover;
+    }
+
     .icon-border {
       @extend %no-cursor;
       @include ml-mr(calc(($sb-btn-gap - $btn-border-width) / 2));

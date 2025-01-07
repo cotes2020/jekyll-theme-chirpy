@@ -1,20 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
+ 
 
-
-
-
-
-
-
+ 
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
-<html lang="en" >
+<html
+  lang="en"
+  
+>
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
@@ -299,9 +298,13 @@
     </ul>
   </nav>
 
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+      <span class="icon-border"></span>
+      <button type="button" class="btn btn-link nav-link" aria-label="Toggle VCR" id="vcr-toggle">
         <i class="fas fa-adjust"></i>
       </button>
 
@@ -310,6 +313,7 @@
       
     
 
+    
     
       
 
@@ -448,9 +452,11 @@
 
 
         <div class="row flex-grow-1">
-          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            
-              <!-- Refactor the HTML structure -->
+          <main
+            aria-label="Main Content"
+            class="col-12 col-lg-11 col-xl-9 px-md-4"
+          >
+             <!-- Refactor the HTML structure -->
 
 
 
@@ -538,30 +544,19 @@
 <div id="post-list" class="flex-grow-1 px-xl-1">
   
     <article class="card-wrapper card">
-<<<<<<< Updated upstream
       <a href="/posts/hyper-light-drifter/" class="post-preview row g-0 flex-md-row-reverse">
-=======
-      <a href="/posts/First_post/" class="post-preview row g-0 flex-md-row-reverse">
->>>>>>> Stashed changes
         
 
         
 
         <div class="col-md-12">
           <div class="card-body d-flex flex-column">
-<<<<<<< Updated upstream
-            <h1 class="card-title my-2 mt-md-0">Hyper Light Drifter :: Moribundity :: the Meaning of Death</h1>
+            <h1 class="card-title my-2 mt-md-0">Hyper Light Drifter :: Moribundity :: Death without a Meaning</h1>
 
             <div class="card-text content mt-0 mb-3">
-              <p></p>
-=======
-            <h1 class="card-title my-2 mt-md-0">Welcome post !</h1>
+              <p>Hyper Light Drifter is a game released in 2016 by Heart Machine. It follows a character called “The Drifter”, who explores a ruined land seeking a cure for its disease.
 
-            <div class="card-text content mt-0 mb-3">
-              <p>Hey there.
-
-This is mostly a test post, but this’ll do as a welcome post.</p>
->>>>>>> Stashed changes
+I first heard about Hyper L...</p>
             </div>
 
             <div class="post-meta flex-grow-1 d-flex align-items-end">
@@ -578,26 +573,74 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
 
 <time
   
-<<<<<<< Updated upstream
-  data-ts="1729983609"
+  data-ts="1730815660"
   data-df="ll"
   
 >
-  Oct 27, 2024
-=======
-  data-ts="1729734960"
-  data-df="ll"
-  
->
-  Oct 24, 2024
->>>>>>> Stashed changes
+  Nov  5, 2024
 </time>
 
 
                 <!-- categories -->
                 
-<<<<<<< Updated upstream
-=======
+                  <i class="far fa-folder-open fa-fw me-1"></i>
+                  <span class="categories">
+                    
+                      game,
+                      essay
+                  </span>
+                
+              </div>
+
+              
+            </div>
+            <!-- .post-meta -->
+          </div>
+          <!-- .card-body -->
+        </div>
+      </a>
+    </article>
+  
+    <article class="card-wrapper card">
+      <a href="/posts/First_post/" class="post-preview row g-0 flex-md-row-reverse">
+        
+
+        
+
+        <div class="col-md-12">
+          <div class="card-body d-flex flex-column">
+            <h1 class="card-title my-2 mt-md-0">Welcome post !</h1>
+
+            <div class="card-text content mt-0 mb-3">
+              <p>Hey there.
+
+This is mostly a test post, but this’ll do as a welcome post.</p>
+            </div>
+
+            <div class="post-meta flex-grow-1 d-flex align-items-end">
+              <div class="me-auto">
+                <!-- posted date -->
+                <i class="far fa-calendar fa-fw me-1"></i>
+                <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1729734960"
+  data-df="ll"
+  
+>
+  Oct 24, 2024
+</time>
+
+
+                <!-- categories -->
+                
                   <i class="far fa-folder-open fa-fw me-1"></i>
                   <span class="categories">
                     
@@ -605,7 +648,6 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
                       Tutorial
                   </span>
                 
->>>>>>> Stashed changes
               </div>
 
               
@@ -622,12 +664,15 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
 
 
 
-
-            
+ 
           </main>
 
           <!-- panel -->
-          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+          <aside
+            aria-label="Panel"
+            id="panel-wrapper"
+            class="col-xl-3 ps-2 mb-5 text-muted"
+          >
             <div class="access">
               <!-- Get 5 last posted/updated posts -->
 
@@ -652,19 +697,21 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
         
         
         <li class="text-truncate lh-lg">
-<<<<<<< Updated upstream
-          <a href="/posts/hyper-light-drifter/">Hyper Light Drifter :: Moribundity :: the Meaning of Death</a>
-=======
+          <a href="/posts/hyper-light-drifter/">Hyper Light Drifter :: Moribundity :: Death without a Meaning</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/First_post/">Welcome post !</a>
->>>>>>> Stashed changes
         </li>
       
     </ul>
   </section>
   <!-- #access-lastmod -->
 
-
-              <!-- The trending tags list -->
+ <!-- The trending tags list -->
 
 
 
@@ -689,11 +736,30 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <section>
     <h2 class="panel-heading">Trending Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/death/">death</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
@@ -711,9 +777,7 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            
-
-            <!-- The Footer -->
+             <!-- The Footer -->
 
 <footer
   aria-label="Site Info"
@@ -782,11 +846,30 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <section>
     <h2 class="panel-heading">Trending Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/death/">death</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
@@ -803,7 +886,11 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
       </div>
 
       <aside aria-label="Scroll to Top">
-        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+        <button
+          id="back-to-top"
+          type="button"
+          class="btn btn-lg btn-box-shadow"
+        >
           <i class="fas fa-angle-up"></i>
         </button>
       </aside>
@@ -811,8 +898,7 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
 
     <div id="mask"></div>
 
-    
-      <aside
+     <aside
   id="notification"
   class="toast"
   role="alert"
@@ -929,9 +1015,7 @@ This is mostly a test post, but this’ll do as a welcome post.</p>
 
 
 
-
-
-    <!--
+ <!--
   Jekyll Simple Search loader
   See: <https://github.com/christian-fei/Simple-Jekyll-Search>
 -->

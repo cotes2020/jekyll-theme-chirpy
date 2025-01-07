@@ -4,11 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Mouton's Mind Palace</title>
   <subtitle>My little webstie where I put my projects and thoughts on differents things.</subtitle>
-<<<<<<< Updated upstream
-  <updated>2024-10-27T01:00:09+02:00</updated>
-=======
-  <updated>2024-10-24T10:13:52+02:00</updated>
->>>>>>> Stashed changes
+  <updated>2024-11-16T16:27:19+01:00</updated>
   <author>
     <name>MoutonDemocrate</name>
     <uri>http://localhost:4000/</uri>
@@ -24,18 +20,34 @@
 
   
   <entry>
-<<<<<<< Updated upstream
-    <title>Hyper Light Drifter :: Moribundity :: the Meaning of Death</title>
-    <link href="http://localhost:4000/posts/hyper-light-drifter/" rel="alternate" type="text/html" title="Hyper Light Drifter :: Moribundity :: the Meaning of Death" />
-    <published>2024-10-27T01:00:09+02:00</published>
+    <title>Hyper Light Drifter :: Moribundity :: Death without a Meaning</title>
+    <link href="http://localhost:4000/posts/hyper-light-drifter/" rel="alternate" type="text/html" title="Hyper Light Drifter :: Moribundity :: Death without a Meaning" />
+    <published>2024-11-05T15:07:40+01:00</published>
   
-    <updated>2024-10-27T01:00:09+02:00</updated>
+    <updated>2024-11-05T15:07:40+01:00</updated>
   
     <id>http://localhost:4000/posts/hyper-light-drifter/</id>
     <content src="http://localhost:4000/posts/hyper-light-drifter/" />
     <author>
       <name>MoutonDemocrate</name>
-=======
+    </author>
+
+  
+    
+    <category term="game" />
+    
+    <category term="essay" />
+    
+  
+
+  <summary>Hyper Light Drifter is a game released in 2016 by Heart Machine. It follows a character called “The Drifter”, who explores a ruined land seeking a cure for its disease.
+
+I first heard about Hyper Light Drifter when it released, but didn’t give it much thought. I was (at the time) obsessed with Starbound, and would spend the next years on Hollow Knight and Splatoon 2. But in 2021, during a COVID...</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>Welcome post !</title>
     <link href="http://localhost:4000/posts/First_post/" rel="alternate" type="text/html" title="Welcome post !" />
     <published>2024-10-24T03:56:00+02:00</published>
@@ -46,16 +58,10 @@
     <content src="http://localhost:4000/posts/First_post/" />
     <author>
       <name>mouton</name>
->>>>>>> Stashed changes
     </author>
 
   
     
-<<<<<<< Updated upstream
-  
-
-  <summary></summary>
-=======
     <category term="Blogging" />
     
     <category term="Tutorial" />
@@ -65,7 +71,6 @@
   <summary>Hey there.
 
 This is mostly a test post, but this’ll do as a welcome post.</summary>
->>>>>>> Stashed changes
 
   </entry>
 

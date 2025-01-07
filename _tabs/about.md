@@ -2,26 +2,34 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+mermaid: true
 ---
 
 > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+> {: .prompt-tip }
 
 ## Headings
 
 <!-- markdownlint-capture -->
+
 <!-- markdownlint-disable -->
+
 # H1 — heading
+
 {: .mt-4 .mb-0 }
 
 ## H2 — heading
+
 {: data-toc-skip='' .mt-4 .mb-0 }
 
 ### H3 — heading
+
 {: data-toc-skip='' .mt-4 .mb-0 }
 
 #### H4 — heading
+
 {: data-toc-skip='' .mt-4 }
+
 <!-- markdownlint-restore -->
 
 ## Paragraph
@@ -64,27 +72,30 @@ Moon
 ## Prompts
 
 <!-- markdownlint-capture -->
+
 <!-- markdownlint-disable -->
+
 > An example showing the `tip` type prompt.
-{: .prompt-tip }
+> {: .prompt-tip }
 
 > An example showing the `info` type prompt.
-{: .prompt-info }
+> {: .prompt-info }
 
 > An example showing the `warning` type prompt.
-{: .prompt-warning }
+> {: .prompt-warning }
 
 > An example showing the `danger` type prompt.
-{: .prompt-danger }
+> {: .prompt-danger }
+
 <!-- markdownlint-restore -->
 
 ## Tables
 
 | Company                      | Contact          | Country |
-| :--------------------------- | :--------------- | ------: |
+|:---------------------------- |:---------------- | -------:|
 | Alfreds Futterkiste          | Maria Anders     | Germany |
-| Island Trading               | Helen Bennett    |      UK |
-| Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
+| Island Trading               | Helen Bennett    | UK      |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
 
 ## Links
 
@@ -126,6 +137,7 @@ fi;
   "colors/light-typography",
   "colors/dark-typography";
 ```
+
 {: file='_sass/jekyll-theme-chirpy.scss'}
 
 ## Mathematics
@@ -148,7 +160,7 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 ## Mermaid SVG
 
 ```mermaid
- gantt
+gantt
   title  Adding GANTT diagram functionality to mermaid
   apple :a, 2017-07-20, 1w
   banana :crit, b, 2017-07-23, 1d

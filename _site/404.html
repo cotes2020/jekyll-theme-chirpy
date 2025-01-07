@@ -1,20 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
+ 
 
-
-
-
-
-
-
+ 
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
-<html lang="en" >
+<html
+  lang="en"
+  
+>
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
@@ -302,9 +301,13 @@
     </ul>
   </nav>
 
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+      <span class="icon-border"></span>
+      <button type="button" class="btn btn-link nav-link" aria-label="Toggle VCR" id="vcr-toggle">
         <i class="fas fa-adjust"></i>
       </button>
 
@@ -313,6 +316,7 @@
       
     
 
+    
     
       
 
@@ -463,9 +467,11 @@
 
 
         <div class="row flex-grow-1">
-          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            
-              <!-- Refactor the HTML structure -->
+          <main
+            aria-label="Main Content"
+            class="col-12 col-lg-11 col-xl-9 px-md-4"
+          >
+             <!-- Refactor the HTML structure -->
 
 
 
@@ -550,12 +556,15 @@
   
 </article>
 
-
-            
+ 
           </main>
 
           <!-- panel -->
-          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+          <aside
+            aria-label="Panel"
+            id="panel-wrapper"
+            class="col-xl-3 ps-2 mb-5 text-muted"
+          >
             <div class="access">
               <!-- Get 5 last posted/updated posts -->
 
@@ -580,19 +589,21 @@
         
         
         <li class="text-truncate lh-lg">
-<<<<<<< Updated upstream
-          <a href="/posts/hyper-light-drifter/">Hyper Light Drifter :: Moribundity :: the Meaning of Death</a>
-=======
+          <a href="/posts/hyper-light-drifter/">Hyper Light Drifter :: Moribundity :: Death without a Meaning</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/First_post/">Welcome post !</a>
->>>>>>> Stashed changes
         </li>
       
     </ul>
   </section>
   <!-- #access-lastmod -->
 
-
-              <!-- The trending tags list -->
+ <!-- The trending tags list -->
 
 
 
@@ -617,11 +628,30 @@
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <section>
     <h2 class="panel-heading">Trending Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/death/">death</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
@@ -639,9 +669,7 @@
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            
-
-            <!-- The Footer -->
+             <!-- The Footer -->
 
 <footer
   aria-label="Site Info"
@@ -710,11 +738,30 @@
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <section>
     <h2 class="panel-heading">Trending Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/death/">death</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
@@ -731,7 +778,11 @@
       </div>
 
       <aside aria-label="Scroll to Top">
-        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+        <button
+          id="back-to-top"
+          type="button"
+          class="btn btn-lg btn-box-shadow"
+        >
           <i class="fas fa-angle-up"></i>
         </button>
       </aside>
@@ -739,8 +790,7 @@
 
     <div id="mask"></div>
 
-    
-      <aside
+     <aside
   id="notification"
   class="toast"
   role="alert"
@@ -846,9 +896,7 @@
 
 
 
-
-
-    <!--
+ <!--
   Jekyll Simple Search loader
   See: <https://github.com/christian-fei/Simple-Jekyll-Search>
 -->

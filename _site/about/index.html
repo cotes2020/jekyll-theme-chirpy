@@ -1,20 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
+ 
 
-
-
-
-
-
-
+ 
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
-<html lang="en" >
+<html
+  lang="en"
+  
+>
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
@@ -38,20 +37,12 @@
 <meta property="og:url" content="http://localhost:4000/about/" />
 <meta property="og:site_name" content="Mouton’s Mind Palace" />
 <meta property="og:type" content="article" />
-<<<<<<< Updated upstream
-<meta property="article:published_time" content="2024-10-27T01:00:09+02:00" />
-=======
-<meta property="article:published_time" content="2024-10-24T10:13:52+02:00" />
->>>>>>> Stashed changes
+<meta property="article:published_time" content="2024-11-16T16:27:19+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="About" />
 <meta name="twitter:site" content="@MoutonDemocrate" />
 <script type="application/ld+json">
-<<<<<<< Updated upstream
-{"@context":"https://schema.org","@type":"WebSite","dateModified":"2024-10-27T01:00:09+02:00","datePublished":"2024-10-27T01:00:09+02:00","description":"Add Markdown syntax content to file _tabs/about.md and it will show up on this page.","headline":"About","name":"MoutonDemocrate","sameAs":["https://twitter.com/MoutonDemocrate","https://github.com/MoutonDemocrate"],"url":"http://localhost:4000/about/"}</script>
-=======
-{"@context":"https://schema.org","@type":"WebSite","dateModified":"2024-10-24T10:13:52+02:00","datePublished":"2024-10-24T10:13:52+02:00","description":"Add Markdown syntax content to file _tabs/about.md and it will show up on this page.","headline":"About","name":"MoutonDemocrate","sameAs":["https://twitter.com/MoutonDemocrate","https://github.com/MoutonDemocrate"],"url":"http://localhost:4000/about/"}</script>
->>>>>>> Stashed changes
+{"@context":"https://schema.org","@type":"WebSite","dateModified":"2024-11-16T16:27:19+01:00","datePublished":"2024-11-16T16:27:19+01:00","description":"Add Markdown syntax content to file _tabs/about.md and it will show up on this page.","headline":"About","name":"MoutonDemocrate","sameAs":["https://twitter.com/MoutonDemocrate","https://github.com/MoutonDemocrate"],"url":"http://localhost:4000/about/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -311,9 +302,13 @@
     </ul>
   </nav>
 
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+      <span class="icon-border"></span>
+      <button type="button" class="btn btn-link nav-link" aria-label="Toggle VCR" id="vcr-toggle">
         <i class="fas fa-adjust"></i>
       </button>
 
@@ -322,6 +317,7 @@
       
     
 
+    
     
       
 
@@ -472,9 +468,11 @@
 
 
         <div class="row flex-grow-1">
-          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            
-              <!-- Refactor the HTML structure -->
+          <main
+            aria-label="Main Content"
+            class="col-12 col-lg-11 col-xl-9 px-md-4"
+          >
+             <!-- Refactor the HTML structure -->
 
 
 
@@ -1213,17 +1211,6 @@
 
       
     
-      
-
-      
-      
-
-      
-      
-      
-
-      
-    
 
     
   
@@ -1401,21 +1388,24 @@
       About
     </h1>
     <div class="content">
-      <blockquote class="prompt-tip">
-  <p>Add Markdown syntax content to file <code class="language-plaintext filepath highlighter-rouge">_tabs/about.md</code> and it will show up on this page.</p>
+      <blockquote>
+  <p class="prompt-tip">Add Markdown syntax content to file <code class="language-plaintext filepath highlighter-rouge">_tabs/about.md</code> and it will show up on this page.</p>
 </blockquote>
 
 <h2 id="headings"><span class="me-2">Headings</span><a href="#headings" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
 <!-- markdownlint-capture -->
-<!-- markdownlint-disable -->
-<h1 class="mt-4 mb-0" id="h1--heading">H1 — heading</h1>
 
-<h2 data-toc-skip="" class="mt-4 mb-0" id="h2--heading">H2 — heading</h2>
+<!-- markdownlint-disable -->
+
+<h1 id="h1--heading">H1 — heading</h1>
+
+<h2 class="mt-4 mb-0" id="h2--heading">H2 — heading</h2>
 
 <h3 data-toc-skip="" class="mt-4 mb-0" id="h3--heading">H3 — heading</h3>
 
-<h4 data-toc-skip="" class="mt-4" id="h4--heading">H4 — heading</h4>
+<h4 data-toc-skip="" class="mt-4 mb-0" id="h4--heading">H4 — heading</h4>
+
 <!-- markdownlint-restore -->
 
 <h2 id="paragraph"><span class="me-2">Paragraph</span><a href="#paragraph" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
@@ -1476,22 +1466,25 @@
 <h2 id="prompts"><span class="me-2">Prompts</span><a href="#prompts" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
 <!-- markdownlint-capture -->
+
 <!-- markdownlint-disable -->
-<blockquote class="prompt-tip">
-  <p>An example showing the <code class="language-plaintext highlighter-rouge">tip</code> type prompt.</p>
+
+<blockquote>
+  <p class="prompt-tip">An example showing the <code class="language-plaintext highlighter-rouge">tip</code> type prompt.</p>
 </blockquote>
 
-<blockquote class="prompt-info">
-  <p>An example showing the <code class="language-plaintext highlighter-rouge">info</code> type prompt.</p>
+<blockquote>
+  <p class="prompt-info">An example showing the <code class="language-plaintext highlighter-rouge">info</code> type prompt.</p>
 </blockquote>
 
-<blockquote class="prompt-warning">
-  <p>An example showing the <code class="language-plaintext highlighter-rouge">warning</code> type prompt.</p>
+<blockquote>
+  <p class="prompt-warning">An example showing the <code class="language-plaintext highlighter-rouge">warning</code> type prompt.</p>
 </blockquote>
 
-<blockquote class="prompt-danger">
-  <p>An example showing the <code class="language-plaintext highlighter-rouge">danger</code> type prompt.</p>
+<blockquote>
+  <p class="prompt-danger">An example showing the <code class="language-plaintext highlighter-rouge">danger</code> type prompt.</p>
 </blockquote>
+
 <!-- markdownlint-restore -->
 
 <h2 id="tables"><span class="me-2">Tables</span><a href="#tables" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
@@ -1565,8 +1558,8 @@
 
 <h3 id="specific-filename"><span class="me-2">Specific filename</span><a href="#specific-filename" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="code-header">
-        <span data-label-text="_sass/jekyll-theme-chirpy.scss"><i class="far fa-file-code fa-fw"></i></span>
+<div class="language-sass highlighter-rouge"><div class="code-header">
+        <span data-label-text="Sass"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1575,7 +1568,7 @@
   <span class="s2">"colors/dark-typography"</span><span class="o">;</span>
 </pre></td></tr></tbody></table></code></div></div>
 
-<h2 id="mathematics"><span class="me-2">Mathematics</span><a href="#mathematics" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 file="_sass/jekyll-theme-chirpy.scss" id="mathematics">Mathematics</h2>
 
 <p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
 
@@ -1592,7 +1585,7 @@
 
 <h2 id="mermaid-svg"><span class="me-2">Mermaid SVG</span><a href="#mermaid-svg" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<pre><code class="language-mermaid"> gantt
+<pre><code class="language-mermaid">gantt
   title  Adding GANTT diagram functionality to mermaid
   apple :a, 2017-07-20, 1w
   banana :crit, b, 2017-07-23, 1d
@@ -1648,12 +1641,15 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
   
 </article>
 
-
-            
+ 
           </main>
 
           <!-- panel -->
-          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+          <aside
+            aria-label="Panel"
+            id="panel-wrapper"
+            class="col-xl-3 ps-2 mb-5 text-muted"
+          >
             <div class="access">
               <!-- Get 5 last posted/updated posts -->
 
@@ -1678,19 +1674,21 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
         
         
         <li class="text-truncate lh-lg">
-<<<<<<< Updated upstream
-          <a href="/posts/hyper-light-drifter/">Hyper Light Drifter :: Moribundity :: the Meaning of Death</a>
-=======
+          <a href="/posts/hyper-light-drifter/">Hyper Light Drifter :: Moribundity :: Death without a Meaning</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/First_post/">Welcome post !</a>
->>>>>>> Stashed changes
         </li>
       
     </ul>
   </section>
   <!-- #access-lastmod -->
 
-
-              <!-- The trending tags list -->
+ <!-- The trending tags list -->
 
 
 
@@ -1715,11 +1713,30 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <section>
     <h2 class="panel-heading">Trending Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/death/">death</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
@@ -1737,9 +1754,7 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            
-
-            <!-- The Footer -->
+             <!-- The Footer -->
 
 <footer
   aria-label="Site Info"
@@ -1808,11 +1823,30 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <section>
     <h2 class="panel-heading">Trending Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/death/">death</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
@@ -1829,7 +1863,11 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
       </div>
 
       <aside aria-label="Scroll to Top">
-        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+        <button
+          id="back-to-top"
+          type="button"
+          class="btn btn-lg btn-box-shadow"
+        >
           <i class="fas fa-angle-up"></i>
         </button>
       </aside>
@@ -1837,8 +1875,7 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 
     <div id="mask"></div>
 
-    
-      <aside
+     <aside
   id="notification"
   class="toast"
   role="alert"
@@ -1931,9 +1968,16 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 
   
 
+  
+    
+
+    
+
+  
 
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/tocbot@4.29.0/dist/tocbot.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/tocbot@4.29.0/dist/tocbot.min.js,npm/mermaid@11.0.2/dist/mermaid.min.js"></script>
 
 
 
@@ -1949,11 +1993,62 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 
 
 
+  <!-- mermaid-js loader -->
+<script type="text/javascript">
+  function updateMermaid(event) {
+    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+      const mode = event.data.message;
+
+      if (typeof mermaid === 'undefined') {
+        return;
+      }
+
+      let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
+      let config = { theme: expectedTheme };const mermaidList = document.getElementsByClassName('mermaid');
+
+      [...mermaidList].forEach((elem) => {
+        const svgCode = elem.previousSibling.children.item(0).innerHTML;
+        elem.innerHTML = svgCode;
+        elem.removeAttribute('data-processed');
+      });
+
+      mermaid.initialize(config);
+      mermaid.init(undefined, '.mermaid');
+    }
+  }
+
+  (function () {
+    let initTheme = 'default';
+    const html = document.documentElement;
+
+    if (
+      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      initTheme = 'dark';
+    }
+
+    let mermaidConf = {
+      theme: initTheme};const basicList = document.getElementsByClassName('language-mermaid');
+    [...basicList].forEach((elem) => {
+      const svgCode = elem.textContent;
+      const backup = elem.parentElement;
+      backup.classList.add('d-none');let mermaid = document.createElement('pre');
+      mermaid.classList.add('mermaid');
+      const text = document.createTextNode(svgCode);
+      mermaid.appendChild(text);
+      backup.after(mermaid);
+    });
+
+    mermaid.initialize(mermaidConf);
+    window.addEventListener('message', updateMermaid);
+  })();
+</script>
 
 
 
 
-    <!--
+ <!--
   Jekyll Simple Search loader
   See: <https://github.com/christian-fei/Simple-Jekyll-Search>
 -->
