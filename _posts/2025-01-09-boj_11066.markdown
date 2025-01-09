@@ -1,5 +1,5 @@
 ---
-title: "[BOJ] 어린 왕자 - 11066 (G3)"
+title: "[BOJ] 파일 합치기 - 11066 (G3)"
 author: kwon
 date: 2025-01-09T23:00:00 +0900
 categories: [boj, gold]
