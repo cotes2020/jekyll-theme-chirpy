@@ -20,16 +20,20 @@ tags: []
 
 - LLM 오픈소스 커뮤니티 기여 경험을 만들어보자
 
+2025/01/10
+- 좋은 아키텍쳐 및 기술에 대한 나의 경험과 실력이 부족하다. -> 이것을 보완하고, 경험을 쌓아보아야한다!
+
 ### Todo list
 
 - [x] 이력서 - 포트폴리오 작성 => 링크드인도 연동해서 채우기
-- [ ] 이력서 보강하기 (경험, 해결에 대한 부분 중심으로) -> 네이버쇼핑 지원
-- [ ] 사이드 프로젝트 해보고 싶은거 진행하기
+- [x] 이력서 보강하기 (경험, 해결에 대한 부분 중심으로)
+- [ ] 아래 공부할 내용들을 일정을 잡아보자!
+- [ ] 아키텍쳐 공부 - 일단, 책으로 공부해보기
+- [ ] Java reactive programming 공부
+- [ ] 아주 작은 주제의 사이드 프로젝트 해보고 싶은거 진행하기 (목적: java reactive programming 적용)
 - [ ] AI Roadmap 따라서 공부 해보기
 - [ ] AI Agent 관련해서 프로젝트 진행하기
+- [ ] RestAPI 설계 공부 (좋은 사례 공부해보기)
+- [ ] 대규모 트래픽 아키텍쳐 공부
 
-### 채용 정보
 
-[현대오토에버 - 생성형 AI 서비스 기획/개발(Backend Developer)](https://www.linkedin.com/jobs/search/?alertAction=viewjobs&currentJobId=4093071374&distance=25&f_TPR=a1734607674-&geoId=103588929&keywords=%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4&origin=JOB_ALERT_IN_APP_NOTIFICATION&originToLandingJobPostings=4104151391&savedSearchId=14685528684&sortBy=R&start=50)
-
-[블루닷 -AI Agent Developer](https://www.linkedin.com/jobs/search/?alertAction=viewjobs&currentJobId=4083272693&distance=25&f_TPR=a1734607674-&geoId=103588929&keywords=%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4&origin=JOB_ALERT_IN_APP_NOTIFICATION&originToLandingJobPostings=4104151391&savedSearchId=14685528684&sortBy=R&start=50)
