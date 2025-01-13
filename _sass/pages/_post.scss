@@ -125,6 +125,34 @@ header {
   }
 }
 
+/* 실제 버튼 디자인 */
+/* 버튼 컨테이너: 우측 정렬용 */
+.post-edit-button-container {
+  text-align: right; /* 버튼을 우측 끝에 배치 */
+  margin-top: 0.2rem; /* 위쪽 여백 */
+  margin-bottom: 0.2rem; /* 아래쪽 여백(원하는 경우) */
+}
+
+/* 작은 버튼 스타일 */
+.post-edit-button {
+  display: inline-block;
+  padding: 0rem 0.3rem;
+  font-size: 0.85rem; /* 폰트 크기를 작게 */
+  font-weight: 500;
+  color: rgba(155, 153, 153); /* 버튼 텍스트 색상 */
+  // background-color: #5298ce; /* 기본 버튼 배경색 */
+  border: 1px solid #acb8c2; /* 테두리 두께, 스타일, 색상 */
+  border-radius: 6px; /* 모서리를 적당히 둥글게 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+  // transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.post-edit-button:hover {
+  background-color: #b2cbdf; /* 호버 시 살짝 어둡게 */
+  color: white;
+  // opacity: 0.8; /* 투명도(0.0~1.0) - 작을수록 더 투명 */
+}
+
 .share-mastodon {
   /* See: https://github.com/justinribeiro/share-to-mastodon#properties */
   --wc-stm-font-family: v.$font-family-base;

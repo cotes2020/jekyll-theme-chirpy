@@ -224,3 +224,6 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+repository: "papooo-dev/papooo-dev.github.io"
+branch: "master"
