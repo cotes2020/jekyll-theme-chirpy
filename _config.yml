@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 파푸리카 개발자 # the main title
+title: 프로그래머 파푸리카 # the main title
 
-tagline: 고민은 깊게, 방법은 간단히. # it will display as the subtitle
+tagline: 고민은 깊게, 방법은 쉽게. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   AI, 개발, 랭체인, BDD
@@ -118,16 +118,16 @@ comments:
     repo: papooo-dev/pages-comments
     issue_term: title # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
-  giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping: # optional, default to 'pathname'
-    strict: # optional, default to '0'
-    input_position: # optional, default to 'bottom'
-    lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
+  # giscus:
+  #   repo: # <gh-username>/<repo>
+  #   repo_id:
+  #   category:
+  #   category_id:
+  #   mapping: # optional, default to 'pathname'
+  #   strict: # optional, default to '0'
+  #   input_position: # optional, default to 'bottom'
+  #   lang: # optional, default to the value of `site.lang`
+  #   reactions_enabled: # optional, default to the value of `1`
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
