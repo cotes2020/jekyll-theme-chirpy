@@ -59,7 +59,7 @@ social:
 # Web Analytics Settings
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: "G-CSQVH78GCL"
   goatcounter:
     id: # fill in your GoatCounter ID
   umami:
