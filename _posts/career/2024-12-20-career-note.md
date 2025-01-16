@@ -28,7 +28,7 @@ tags: []
 - [x] 이력서 - 포트폴리오 작성 => 링크드인도 연동해서 채우기
 - [x] 이력서 보강하기 (경험, 해결에 대한 부분 중심으로)
 - [ ] 아래 공부할 내용들을 일정을 잡아보자!
-- [ ] 아키텍쳐 공부 - 일단, 책으로 공부해보기
+- [ ] 아키텍쳐 공부 - 일단, 책으로 공부해보기 (하단 링크에 개념 하나씩 공부해보는 것도 좋을듯)
 - [ ] Java reactive programming 공부
 - [ ] 아주 작은 주제의 사이드 프로젝트 해보고 싶은거 진행하기 (목적: java reactive programming 적용)
 - [ ] AI Roadmap 따라서 공부 해보기
@@ -36,4 +36,8 @@ tags: []
 - [ ] RestAPI 설계 공부 (좋은 사례 공부해보기)
 - [ ] 대규모 트래픽 아키텍쳐 공부
 
+### 공부 링크
+
+- [Azure-애플리케이션 아키텍쳐](https://learn.microsoft.com/ko-kr/azure/architecture/guide/) : 애플리케이션 아키텍쳐에 대한 기본 스타일 있음
+- [Azure-디자인패턴](https://learn.microsoft.com/ko-kr/azure/architecture/patterns/) : 클라우드 디자인 패턴에 대한 다양한 설명 있음
 
