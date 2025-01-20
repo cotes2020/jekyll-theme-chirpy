@@ -27,7 +27,7 @@ REST API를 잘 설계하기 위해 우선 REST API의 원칙에 대해 알아�
 
 ## REST API의 6가지 원칙
 
-![img](uploads/2025-01-16-design_Good_REST_API/1lFGlOSW19H184tUt9DhvUg@2x.png)
+![Image]({{"/assets/img/posts/1lFGlOSW19H184tUt9DhvUg@2x.png" | relative_url }})
 
 ### 1. Client - Server
 
