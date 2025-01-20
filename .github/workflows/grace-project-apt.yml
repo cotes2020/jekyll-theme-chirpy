@@ -1,14 +1,15 @@
 name: 'Grace project - Apt'
+
 on:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
   #   paths-ignore:
   #     - .gitignore
   #     - README.md
   #     - LICENSE
-  schedule:
-    - cron: '0 21 * * *'
+  # schedule:
+  #   - cron: '0 21 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

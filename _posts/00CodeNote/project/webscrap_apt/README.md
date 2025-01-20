@@ -21,7 +21,7 @@
 ---
 
 ## Usage
-- Run `python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all  `
+- Run `python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all`
 - generate csv `apt_YYYYMMDD.csv` in `./apt_output`
 - update `APT-xx.png`
 
