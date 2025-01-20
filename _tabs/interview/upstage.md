@@ -2,11 +2,52 @@
 
 **[면접 준비 일정]**
 
-1. (화) 기술면접 - 코테관련 질문 답변 작성
-2. (수목) 기술면접 - 그 외 기술 답변 작성
-3. (토) 미디엄글 하나 보고 정리, 회사 관련 조사 및 그 외 면접 답변 작성
-4. (일) 미디엄글 하나 보고 정리, 그 외 부족한 부분 공부
-5. (월-금) 주 3회 미디엄 글 보고 정리
+월 기술면접 - 코테관련 질문 답변 작성, 미디엄 글 하나 보기
+
+화 기술면접 - 그 외 기술 답변 작성
+
+수 기술면접 - 그 외 기술 답변 작성, 미디엄 글 하나 보고 정리
+
+목 회사 관련 조사 및 그 외 면접 답변 작성, 미디엄 글 하나 보고 정리 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 에 대해 공부해보기)
+
+금 아침 미디엄글 하나 보고 정리
+
+**차주**
+
+**토-월**
+
+* 시스템 책 읽고 공부하기
+* (daily) 미디엄 글 하나보고 정리 - RAG 관련
+
+**금-일**
+
+* (daily) 미디엄 글 하나보고 정리 - RAG 관련
+* [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate)
+  * Advanced RAGs
+  * Evaluating RAGs
+
+
+2월
+
+* 월/수/금 아침에 일찍 일어나서 medium 보기 or 아키텍쳐 패턴 공부
+* RAG deep dive 관련 연구 하나 진행해보기 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 사용?)- 주제 선정해서 평일저녁 2시간씩 소요
+* [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate) 공부
+  * Building Agents(2째주 주말)
+  * Deploying Apps(4째주 주말)
+
+3월
+
+* 월/수/금 아침에 일찍 일어나서 medium 보기  or 아키텍쳐 패턴 공부
+* [AI 로드맵 advanced](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#advanced) 부분 공부
+* SP: Agent 중심 프로젝트 해보기
+* 이력서 쓰기
+
+**4월**
+
+* 매일 아침 일어나서 medium 보기  or 아키텍쳐 패턴 공부
+* [AI 로드맵 advanced](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#advanced) 부분 공부
+* SP: Agent 중심 프로젝트 해보기
+* 이력서 쓰기
 
 # 기술면접 준비
 
@@ -194,7 +235,6 @@ A.안녕하세요, 저는 AI 어플리케이션 개발과 AI 트렌드 공부를
 - 6-7년 전 처음 AI를 접할 때는 모델 개발 중심 - 문턱이 높았다
 - 지난 몇 년간 생성형 AI 서능 크게 향상 -> 누구나 api를 통해 상용 LLM을 통한 AI 어플리케이션을 구축할 수 있는 세상!
 - Langchain, 에이전트, 멀티 에어전트, AI 트렌트를 공부하며 미래에는 많은 것이 AI로 대체될 거라는 확신
-
 - 본격적 공부 -> 사내에서 Langchain 강의 진행 - 지식공유&AI 제품 개발 기여
 - 두 개의 AI 어플리케이션 개발 경험 - LLM 어플리케이션 개발 시, 아키텍쳐, 프롬프트 관리, 응답 퀄리티 일관되고 높게 유지하는 방법 등에 대한 경험
 - 그 전에는 spring 기반의 java 개발. - db 모델링, 프론트, 백엔드, cicd 구축, 서버작업, 기술문서 작업까지 모두 경험

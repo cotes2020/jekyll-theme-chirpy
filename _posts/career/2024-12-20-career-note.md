@@ -36,6 +36,64 @@ tags: []
 - [ ] RestAPI 설계 공부 (좋은 사례 공부해보기)
 - [ ] 대규모 트래픽 아키텍쳐 공부
 
+
+
+### Study Roadmap
+
+1월3째주
+
+- 월:  기술면접 - 코테관련 질문 답변 작성, 미디엄 글 하나 보기
+
+- 화: 기술면접 - 그 외 기술 답변 작성
+
+- 수: 기술면접 - 그 외 기술 답변 작성, 미디엄 글 하나 보고 정리
+
+- 목: 회사 관련 조사 및 그 외 면접 답변 작성, 미디엄 글 하나 보고 정리 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 에 대해 공부해보기)
+
+- 금: 아침 미디엄글 하나 보고 정리 & 면접
+
+1월4째주
+
+토-월
+
+- 시스템 책 읽고 공부하기
+- (daily) 미디엄 글 하나보고 정리 - RAG 관련
+
+금-일
+
+- (daily) 미디엄 글 하나보고 정리 - RAG 관련
+- [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate)
+  - Advanced RAGs
+  - Evaluating RAGs
+
+**2월**
+
+- 월/수/금 아침에 일찍 일어나서 medium 보기 or 아키텍쳐 패턴 공부
+- RAG deep dive 관련 연구 하나 진행해보기 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 사용?)- 주제 선정해서 평일저녁 2시간씩 소요
+- [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate) 공부
+  - Building Agents(2째주 주말)
+  - Deploying Apps(4째주 주말)
+
+**3월**
+
+- 월/수/금 아침에 일찍 일어나서 medium 보기  or 아키텍쳐 패턴 공부
+- [AI 로드맵 advanced](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#advanced) 부분 공부
+
+- SP: Agent 중심 프로젝트 해보기
+- 이력서 쓰기
+
+**4월**
+
+- 매일 아침 일어나서 medium 보기  or 아키텍쳐 패턴 공부
+- [AI 로드맵 advanced](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#advanced) 부분 공부
+
+- SP: Agent 중심 프로젝트 해보기
+- 이력서 쓰기
+
+
+
+
+
 ### 공부 링크
 
 - [Azure-애플리케이션 아키텍쳐](https://learn.microsoft.com/ko-kr/azure/architecture/guide/) : 애플리케이션 아키텍쳐에 대한 기본 스타일 있음
