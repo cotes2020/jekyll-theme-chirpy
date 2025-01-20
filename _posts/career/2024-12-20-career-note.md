@@ -21,6 +21,7 @@ tags: []
 - LLM 오픈소스 커뮤니티 기여 경험을 만들어보자
 
 2025/01/10
+
 - 좋은 아키텍쳐 및 기술에 대한 나의 경험과 실력이 부족하다. -> 이것을 보완하고, 경험을 쌓아보아야한다!
 
 ### Todo list
@@ -36,8 +37,10 @@ tags: []
 - [ ] RestAPI 설계 공부 (좋은 사례 공부해보기)
 - [ ] 대규모 트래픽 아키텍쳐 공부
 
+- 이력서 정리 후 Liner 지원하기
+- about-me.md 파일로 이력서 정리 -> profile-md-pdf-v.md 연동 -> pdf 파일 다시 만들기 -> 링크드인 업데이트
+
 ### 공부 링크
 
 - [Azure-애플리케이션 아키텍쳐](https://learn.microsoft.com/ko-kr/azure/architecture/guide/) : 애플리케이션 아키텍쳐에 대한 기본 스타일 있음
 - [Azure-디자인패턴](https://learn.microsoft.com/ko-kr/azure/architecture/patterns/) : 클라우드 디자인 패턴에 대한 다양한 설명 있음
-
