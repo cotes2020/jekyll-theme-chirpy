@@ -21,6 +21,7 @@ tags: []
 - LLM 오픈소스 커뮤니티 기여 경험을 만들어보자
 
 2025/01/10
+
 - 좋은 아키텍쳐 및 기술에 대한 나의 경험과 실력이 부족하다. -> 이것을 보완하고, 경험을 쌓아보아야한다!
 
 ### Todo list
@@ -36,13 +37,11 @@ tags: []
 - [ ] RestAPI 설계 공부 (좋은 사례 공부해보기)
 - [ ] 대규모 트래픽 아키텍쳐 공부
 
-
-
 ### Study Roadmap
 
 1월3째주
 
-- 월:  기술면접 - 코테관련 질문 답변 작성, 미디엄 글 하나 보기
+- 월: 기술면접 - 코테관련 질문 답변 작성, 미디엄 글 하나 보기
 
 - 화: 기술면접 - 그 외 기술 답변 작성
 
@@ -58,6 +57,8 @@ tags: []
 
 - 시스템 책 읽고 공부하기
 - (daily) 미디엄 글 하나보고 정리 - RAG 관련
+- 이력서 정리 후 Liner 지원하기
+- about-me.md 파일로 이력서 정리 -> profile-md-pdf-v.md 연동 -> pdf 파일 다시 만들기 -> 링크드인 업데이트
 
 금-일
 
@@ -76,7 +77,7 @@ tags: []
 
 **3월**
 
-- 월/수/금 아침에 일찍 일어나서 medium 보기  or 아키텍쳐 패턴 공부
+- 월/수/금 아침에 일찍 일어나서 medium 보기 or 아키텍쳐 패턴 공부
 - [AI 로드맵 advanced](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#advanced) 부분 공부
 
 - SP: Agent 중심 프로젝트 해보기
@@ -84,18 +85,13 @@ tags: []
 
 **4월**
 
-- 매일 아침 일어나서 medium 보기  or 아키텍쳐 패턴 공부
+- 매일 아침 일어나서 medium 보기 or 아키텍쳐 패턴 공부
 - [AI 로드맵 advanced](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#advanced) 부분 공부
 
 - SP: Agent 중심 프로젝트 해보기
 - 이력서 쓰기
 
-
-
-
-
 ### 공부 링크
 
 - [Azure-애플리케이션 아키텍쳐](https://learn.microsoft.com/ko-kr/azure/architecture/guide/) : 애플리케이션 아키텍쳐에 대한 기본 스타일 있음
 - [Azure-디자인패턴](https://learn.microsoft.com/ko-kr/azure/architecture/patterns/) : 클라우드 디자인 패턴에 대한 다양한 설명 있음
-

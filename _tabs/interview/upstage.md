@@ -71,6 +71,37 @@
 - line의 길이는 1 이상 1,000 이하입니다.
 - line의 첫 글자는 항상 대문자입니다.
 
+답안
+
+- keypoint
+  - 연속된 대문자 뒤 소문자가 오는 경우, 소문자 바로 앞 대문자 저장
+  - 소문자 바로 뒤 대문자 저장
+
+```python
+def solution(word):
+    answer = ""
+    char = ""
+    isPrevLower = True
+
+    for w in word:
+        if w.isupper():
+            char = w
+            if isPrevLower:
+                answer += char
+                char = ""
+                isPrevLower = False
+        else:
+            answer += char
+            char = ""
+            isPrevLower = True
+    return answer
+
+
+print(solution("AdminOfWebsite")) # AOW
+print(solution("EUVersusUAE")) # EVU
+print(solution("ABCdeFhHQq")) # ACFHQ
+```
+
 ### 알고리즘-2번문제
 
 문제 설명
