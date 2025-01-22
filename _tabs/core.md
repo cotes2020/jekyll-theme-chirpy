@@ -75,6 +75,21 @@ flowchart TD
 
     end
 
+    subgraph 가치평가["가치평가"]
+        pm0100["포트폴리오 정보"]
+        pm0300["가치평가"]
+        pm0301["투자유형별 등록"]
+        pm0302["재원별 등록"]
+        pm0303["가치평가 조회"]
+        
+        vs0009 --> pm0100
+        pm0100 --> pm0300
+        pm0300 --> pm0301
+        pm0300 --> pm0302
+        pm0301 --> pm0303
+        pm0302 --> pm0303       
+    end
+
     subgraph 영업보고["영업보고"]
         pm0100["포트폴리오 정보"]
         br0001["템플릿 관리(작성 및 확인)"]
@@ -84,8 +99,7 @@ flowchart TD
         br0009["심사역 의견 작성"]
         br0011["영업보고서 생성"]
 
-
-        vs0009 --> pm0100
+        pm0303 --> br0011
         pm0100 --> br0012
         br0001 --> br0004
         br0012 --> br0004
@@ -165,6 +179,10 @@ click br0004 "{% post_url 2024-08-24-br0004 %}" " "
 click br0007 "{% post_url 2024-08-25-br0007 %}" " "
 click br0009 "{% post_url 2024-08-26-br0009 %}" " "
 click br0011 "{% post_url 2024-08-27-br0011 %}" " "
+click pm0300 "{% post_url 2024-09-01-pm0300 %}" " "
+click pm0301 "{% post_url 2024-09-02-pm0301 %}" " "
+click pm0302 "{% post_url 2024-09-03-pm0302 %}" " "
+click pm0303 "{% post_url 2024-09-04-pm0303 %}" " "
 
 %%style fd0001 fill:#e6ffe6,stroke:#66cc66,stroke-width:2px,rx:10,ry:10,color:#333333,fontColor:#333333
 
