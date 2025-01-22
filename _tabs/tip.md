@@ -65,6 +65,14 @@ VCworks는 그리드 내 다중 정렬을 제공합니다. 다중 정렬은 먼�
   ![다중 정렬](/assets/img/Pasted%20image%2020241015192728.png)
 
 
+## 편집기 헤더 사용법
+
+VCworks 편집기는 헤더 기능을 제공합니다. #를 입력할 때 마다 글씨 크기가 줄어듭니다. #과 스페이스 바를 입력한 후 글씨를 쓰면 크기가 달라집니다.
+#은 1개부터 6개까지 지원합니다. 아래 사진을 참고해 주세요.
+
+![image](https://github.com/user-attachments/assets/1bd5f825-f935-488a-8b94-3eef8d045d31)
+
+
 버그 및 문의 사항은 다음 이메일로 보내주세요: **[we@ddock.kr](mailto:we@ddock.kr)**
 
 
