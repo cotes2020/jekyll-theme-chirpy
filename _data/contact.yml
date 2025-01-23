@@ -3,8 +3,9 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: linkedin
+  icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+  url:  'https://www.linkedin.com/in/%EC%A7%80%ED%9B%88-%EC%84%9C-3368a124a'                  # Fill with your Linkedin homepage
 
 - type: email
   icon: "fas fa-envelope"
@@ -19,9 +20,6 @@
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
 #
-# - type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
 #
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
