@@ -22,14 +22,24 @@ const swconf = {
       {% endfor %}
     ],
 
-    {%- comment -%} The request url with below path will not be cached. {%- endcomment -%}
-    denyPaths: [
-      {% for path in site.pwa.cache.deny_paths %}
-        {% unless path == empty %}
-          '{{ path | relative_url }}'{%- unless forloop.last -%},{%- endunless -%}
-        {% endunless  %}
-      {% endfor %}
-    ],
+    interceptor: {
+      {%- comment -%} URLs containing the following paths will not be cached. {%- endcomment -%}
+      paths: [
+        {% for path in site.pwa.cache.deny_paths %}
+          {% unless path == empty %}
+            '{{ path | relative_url }}'{%- unless forloop.last -%},{%- endunless -%}
+          {% endunless  %}
+        {% endfor %}
+      ],
+
+      {%- comment -%} URLs containing the following prefixes will not be cached. {%- endcomment -%}
+      urlPrefixes: [
+        {% if site.analytics.goatcounter.id != nil and site.pageviews.provider == 'goatcounter' %}
+          'https://{{ site.analytics.goatcounter.id }}.goatcounter.com/counter/'
+        {% endif %}
+      ]
+    },
+
     purge: false
   {% else %}
     purge: true

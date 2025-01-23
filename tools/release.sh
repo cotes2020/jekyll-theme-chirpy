@@ -15,7 +15,7 @@ NODE_SPEC="package.json"
 CHANGELOG="docs/CHANGELOG.md"
 CONFIG="_config.yml"
 
-CSS_DIST="_sass/dist"
+CSS_DIST="_sass/vendors"
 JS_DIST="assets/js/dist"
 
 FILES=(
@@ -111,13 +111,6 @@ prepare() {
 
 ## Build a Gem package
 build_gem() {
-  if $opt_pkg; then
-    BACKUP_PATH="$(mktemp -d)"
-    mkdir -p "$BACKUP_PATH"/css "$BACKUP_PATH"/js
-    [[ -d $CSS_DIST ]] && cp "$CSS_DIST"/* "$BACKUP_PATH"/css
-    [[ -d $JS_DIST ]] && cp "$JS_DIST"/* "$BACKUP_PATH"/js
-  fi
-
   # Remove unnecessary theme settings
   sed -i -E "s/(^timezone:).*/\1/;s/(^cdn:).*/\1/;s/(^avatar:).*/\1/" $CONFIG
   rm -f ./*.gem
@@ -132,14 +125,6 @@ build_gem() {
   echo -e "\n> Resume file changes ...\n"
   git reset
   git checkout .
-
-  if $opt_pkg; then
-    # restore the dist files for future development
-    mkdir -p "$CSS_DIST" "$JS_DIST"
-    cp "$BACKUP_PATH"/css/* "$CSS_DIST"
-    cp "$BACKUP_PATH"/js/* "$JS_DIST"
-    rm -rf "$BACKUP_PATH"
-  fi
 }
 
 # Push the gem to RubyGems.org (using $GEM_HOST_API_KEY)

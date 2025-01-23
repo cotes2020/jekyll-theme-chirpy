@@ -1,0 +1,86 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/placeholders';
+
+#topbar-wrapper {
+  height: v.$topbar-height;
+  background-color: var(--topbar-bg);
+
+  @include bp.lt(bp.get(lg)) {
+    @include mx.slide(top 0.2s ease);
+
+    left: 0;
+  }
+}
+
+#topbar {
+  @extend %btn-color;
+
+  #breadcrumb {
+    font-size: 1rem;
+    color: var(--text-muted-color);
+    padding-left: 0.5rem;
+
+    a:hover {
+      @extend %link-hover;
+    }
+
+    span {
+      &:not(:last-child) {
+        &::after {
+          content: '›';
+          padding: 0 0.3rem;
+        }
+      }
+    }
+
+    @include bp.lt(bp.get(lg)) {
+      display: none;
+    }
+
+    @include bp.between(bp.get(lg), calc(#{bp.get(xl)} - 1px)) {
+      width: 65%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+  }
+
+  @include bp.lte(bp.get(md)) {
+    @include mx.max-w-100;
+  }
+
+  @include bp.lt(bp.get(lg)) {
+    max-width: 100%;
+  }
+}
+
+#topbar-title {
+  display: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: var(--topbar-text-color);
+  text-align: center;
+  width: 70%;
+  word-break: keep-all;
+
+  @include bp.lt(bp.get(lg)) {
+    display: block;
+  }
+
+  @include bp.lg {
+    text-align: left;
+  }
+}
+
+#sidebar-trigger,
+#search-trigger {
+  display: none;
+
+  @include bp.lt(bp.get(lg)) {
+    display: block;
+  }
+}

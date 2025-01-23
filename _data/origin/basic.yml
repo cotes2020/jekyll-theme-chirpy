@@ -20,9 +20,9 @@ mermaid:
 dayjs:
   js:
     common: /assets/lib/dayjs/dayjs.min.js
-    locale: /assets/lib/dayjs/locale/en.min.js
-    relativeTime: /assets/lib/dayjs/plugin/relativeTime.min.js
-    localizedFormat: /assets/lib/dayjs/plugin/localizedFormat.min.js
+    locale: /assets/lib/dayjs/locale/en.js
+    relativeTime: /assets/lib/dayjs/plugin/relativeTime.js
+    localizedFormat: /assets/lib/dayjs/plugin/localizedFormat.js
 
 glightbox:
   css: /assets/lib/glightbox/glightbox.min.css
