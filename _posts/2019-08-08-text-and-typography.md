@@ -194,11 +194,11 @@ The image below will toggle dark/light mode based on theme preference, notice it
 
 The images below are grouped into different galleries.
 
-**Gallery 1**
+Gallery 1
 
 ![gallery1](/posts/20190808/mockup.png){: .w-25 .normal data-gallery="gallery1"}
 
-**Gallery 2**
+Gallery 2
 
 ![gallery2](/posts/20190808/devtools-light.png){: .w-25 .normal data-gallery="gallery2"}
 ![gallery2](/posts/20190808/devtools-dark.png){: .w-25 .normal data-gallery="gallery2"}
