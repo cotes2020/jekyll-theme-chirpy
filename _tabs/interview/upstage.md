@@ -308,9 +308,73 @@ ORDER BY CART_ID, NAME
 
 ### 좋은 REST API 설계를 위한 전략
 
-- REST API 원칙을 잘 지키는 것
-  - client와 server의 역할을 완전히 분리 (client는 요청/server는 데이터접근)
-  -
+**REST API 원칙을 잘 지키는 것**
+
+1. 일관된 인터페이스로 설계하는 것
+
+- 리소스 식별
+  - 하나의 리소스에 대해서는 동일한 단어를 사용(되도록 복수형으로)
+  - 동사가 아닌 명사 사용
+- 계층 구조 사용
+  - 부모-자식 관계 반영한 URI 설계
+  - ex) gitlab의 project issue 조회 시 `GET projects/123/issues/2`
+- 리소스 표현(HTTP method)으로 조작 : DELETE users/123 이면 123 유저 삭제, GET users/123 이면 123 유저 정보 조회
+
+2. 무상태성
+
+- 서버는 클라이언트 상태 저장X (다른 요청은 관심X, 요청은 서로 독립적)
+- 모든 요청을 필요한 정보 포함(응답형식 등) - 완전한 요청
+- 자가 설명 메시지: 클라이언트의 요청과 서버의 응답은 별도 매뉴얼 없이도 필요한 정보를 해석할 수 있는 모든 정보 포함
+
+**명확한 응답 구조**
+
+- 데이터와 메타데이터를 포함하는 일관된 구조
+
+```json
+{
+  "header" : {
+    "staff_id" : "STAFF_ID",
+    ..
+  },
+  "data": {
+    "user_id": "USER_ID"
+  }
+}
+```
+
+- 에러 처리 시에도 명확하고 일관된 에러 응답 형식 사용
+
+```json
+{
+  "error": {
+    "code": 400,
+    "message": "Invalid request",
+    "details": "The 'email' field is required."
+  }
+}
+```
+
+- 클라이언트에게 필요한 필드만 반환
+
+- 페이지, 필터링, 정렬 지원
+
+**버저닝**
+
+- API 변경 시 하위호환성 유지를 위해, 버저닝을 명시적으로 제공
+  > _"하위 호환성을 유지한다"_
+  >
+  > = 기존 API를 사용하는 클라이언트가 새로운 변경 사항으로 인해 문제가 생기지 않도록 보호하는 것.
+- 예: `/api/v1/users` -> `api/v2/users`
+
+**보안**
+
+- HTTPS 사용: 모든 통신을 암호화하여 보안 위협을 줄입니다.
+- 인증 및 권한 관리
+  - OAuth 2.0, JWT(JSON Web Token) 등 표준 인증 방식을 사용합니다.
+
+**에러처리**
+
+- 명확하고 일관된 에러 응답 형식
 
 ### 대규모 트래픽 프로그램 시 도입하고 싶은 것
 
@@ -443,7 +507,20 @@ A.
 
 ### Q: 어려운 문제를 해결했던 경험을 이야기해주세요.
 
-**A**: "AI 기반 RAG 시스템에서 메모리 릭으로 인해 서버가 반복적으로 다운되는 문제를 해결한 경험이 있습니다. Python 프로파일링을 통해 원인을 분석하고 비동기 락을 적용하여 동시성을 제어했으며, 참조 해제 로직을 추가해 문제를 완전히 해결했습니다. 이 경험을 통해 복잡한 문제를 분석하고 해결하는 데 자신감을 얻게 되었습니다."
+1. AI 기반 RAG 시스템에서 메모리 릭으로 인해 서버가 반복적으로 다운되는 문제를 해결한 경험이 있습니다. Python 프로파일링을 통해 원인을 분석하고 비동기 락을 적용하여 동시성을 제어했으며, 참조 해제 로직을 추가해 문제를 완전히 해결했습니다. 이 경험을 통해 복잡한 문제를 분석하고 해결하는 데 자신감을 얻게 되었습니다.
+
+2. Docusaurus 기반 document 앱과 Spring Boot 앱을 분리하고 GitLab 멀티 프로젝트 파이프라인과 artifact를 활용해 빌드 효율성을 극대화했음
+
+- 기존에 docusaurus 기반의 document 어플리케이션을 springboot 어플리케이션 내부에 포함해 하나의 jar로 배포하기 위해, springboot 앱을 빌드하는 cicd에서 document 앱을 빌드하는 구조로 있었음
+- 문제: springboot 어플리케이션 변경으로 인해 springboot jar 배포를 할 때, 늘 document 앱 빌드를 했는데, npm install & build가 시간 소요가 컸음
+- 해결
+  - document 앱 프로젝트를 분리 - document 프로젝트에서 npm install & build
+  - build된 정적 리소스를 artifact에 보관
+  - gitlab의 멀티 프로젝트 파이프라인을 통해 document 빌드 완료 후 springboot의 deploy job trigger
+  - artifact에 있는 build 정적 리소스를 포함하여 springboot 어플리케이션 빌드하여 jar 생성
+- 장점
+  - springboot 배포 시, document 빌드로 인한 지연 문제 해결 (springboot 어플리케이션이 변경될때마다 document 빌드를 새로할 필요 X)
+  - document 변경 시, 자동으로 springboot jar에 변경된 정적 리소스 반영하여 배포 가능
 
 ### Q: 생성 AI와 관련된 프로젝트 경험을 소개해주세요.
 
