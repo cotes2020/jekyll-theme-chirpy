@@ -21,7 +21,9 @@
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
     "test": "npm run lint:scss",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start": "bundle exec jekyll serve --force_polling",
+    "bundle": "bundle install"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

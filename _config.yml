@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: zhun's blog # the main title
 
-tagline: 주니어 개발자 성장기 # it will display as the subtitle
+tagline: 망그러진 개발 블로그 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
 url: "https://zihuns.github.io"
 
 github:
-  username: zihuns # change to your GitHub username
+  username: z_huns # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: SEO_JI_HUN
+  name: zihuns
   email: jhseo0313@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -97,7 +97,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: assets\img\manggom_day.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
