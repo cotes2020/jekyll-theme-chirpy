@@ -85,9 +85,23 @@ header {
     .share-icons {
       display: flex;
 
+      /* Facebook */
+      .fab.fa-facebook-square {
+        color: #425f9c;
+      }
+
+      /* Twitter */
+      .fa-square-x-twitter {
+        color: #000000; /* Twitter Blue */
+      }
+
+      /* Telegram */
+      .fab.fa-linkedin {
+        color: #0978b5; /* Telegram Blue */
+      }
+
       i {
         color: var(--btn-share-color);
-
         @extend %icon-size;
       }
 
