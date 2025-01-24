@@ -37,7 +37,7 @@ tags: [Node.js, npm]
   
   # Node 18
   
-  ```jsx
+  ```js
   ---
   package.json
   
@@ -49,7 +49,7 @@ tags: [Node.js, npm]
   ---
   ```
   
-  ```jsx
+  ```yaml
   ---
   terminal
   
@@ -58,7 +58,7 @@ tags: [Node.js, npm]
   ---
   ```
   
-  ```jsx
+  ```js
   ---
   .npmrc
   
