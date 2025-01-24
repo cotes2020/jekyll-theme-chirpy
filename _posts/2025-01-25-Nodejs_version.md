@@ -11,7 +11,7 @@ tags: [Node.js, npm]
 <details>
   <summary>서칭</summary>
     
-  ```jsx
+  ```language
   강제로 캐시 삭제
   $ sudo npm cache clean -f
   npm WARN using --force I sure hope you know what you are doing.
@@ -35,7 +35,7 @@ tags: [Node.js, npm]
   
   # Node 18
   
-  ```jsx
+  ```js
   package.json
   
   NODE_OPTIONS=--openssl-legacy-provider 추가
@@ -45,14 +45,14 @@ tags: [Node.js, npm]
   }
   ```
   
-  ```jsx
+  ```js
   terminal
   
   npm i node-sass@8
   export NODE_OPTIONS=--openssl-legacy-provider
   ```
   
-  ```jsx
+  ```js
   .npmrc
   
   node-options="--openssl-legacy-provider"
