@@ -1,8 +1,9 @@
 ---
+layout: post
 title: Text and Typography
 description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
 author: cotes
-date: 2019-08-08 11:33:00 +0800
+date: 2025-01-25 43:00 +0000
 categories: [Blogging, Demo]
 tags: [typography]
 pin: true
