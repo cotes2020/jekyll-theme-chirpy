@@ -1,3 +1,4 @@
 ---
 layout: posts
+title: "Home"
 ---
