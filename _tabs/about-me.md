@@ -5,8 +5,8 @@ order: 4
 ---
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
-  <img src="/assets/img/posts/profile.jpeg" alt="profile-img" style="border-radius: 10rem; width: 300px; height: auto; margin-right: 20px; margin-bottom: 20px;">
-  <div>
+  <img src="/assets/img/posts/profile.png" alt="profile-img" style="border-radius: 10rem; width: 250px; height: auto; margin-right: 20px; margin-bottom: 20px;">
+  <div style="padding: 20px;">
     <h3>AI Software Engineer, 정예울입니다.</h3>
     <p>AI 기술을 활용하여 혁신적인 솔루션을 개발하고, 다양한 경험을 통해 지속적으로 성장하고 있습니다!</p>
     <p>새로운 도전을 통해 배운 지식을 실생활의 아이디어와 결합하여 창의적인 가치를 창출합니다.😀</p>
@@ -23,8 +23,8 @@ order: 4
 
 - **AI**: Langchain, Prompt Engineering
 - **Languages**: Java, Python, JavaScript
-- **Frameworks**: Spring Boot, FastAPI, Flask, Node.js, React
-- **Tools & Platforms**: Docker, AWS, Git, GitLab
+- **Frameworks**: Spring Boot, React, FastAPI, Flask, Node.js
+- **Tools & Platforms**: Git, GitLab, Docker, AWS
 - **Databases**: PostgreSQL, Oracle, MySQL
 - **Others**: CICD, LLM, Memory, RAG
 
@@ -36,19 +36,18 @@ order: 4
 
 #### **_2023.07 ~ 현재_ / SW 연구소 주임, Product Factory 팀**
 
-<!--
-**`사내 AI 툴 개발`**, **`기술문서 자동화`**, **`코어뱅킹 시스템 개발`**, **`테스트 자동화 프로그램 운영`** -->
+<!-- **`사내 AI 툴 개발`**, **`기술문서 자동화`**, **`코어뱅킹 시스템 개발`**, **`테스트 자동화 프로그램 운영`** --> -->
 
 **Core Responsibilities & Achievements**
 
-- **Java Doc을 통한 자동 API 문서 프로세스 구축**
-  - Java file의 주석을 이용해, 배포 시 Docusaurus API 명세서 사이트에 자동으로 반영되는 프로세스를 구축을 진행 중입니다.
 - **AI 기반 어플리케이션 개발**
-  - BDD 개발 방식에 자동화를 도입하는 툴과 대량의 테스트 데이터를 생성하는 프로그램을 AI를 활용하여 개발하였습니다.
+  - AI를 통해 BDD 개발 방식에 자동화를 도입하는 툴과 대량의 테스트 데이터를 생성하는 프로그램을 개발하였습니다.
+- **Java(POJO) API 명세서 자동화 프로세스 구축**
+  - Javadoc을 통한 Docusaurus API 명세서 자동화 프로세스를 구축하여, 문서의 지속 가능성과 최신화를 가능하도록 하였습니다.
 - **LangChain 사내 강의 진행**
   - 10회 차로 구성된 강의를 통해 기본 이론부터 실습까지 진행하며, 사내 AI 제품 개발에 기여하였습니다.
 - **CS Portal 프로젝트 전반 주도**
-  - SpringBoot3, WebFlux 기반의 고객사 이슈 트래킹 웹 애플리케이션을 개발 전과정 진행
+  - SpringBoot3, WebFlux 기반의 고객사 이슈 트래킹 웹 애플리케이션의 개발 전과정을 진행하였습니다.
 
 **Impactful Experiences & Insights**
 
@@ -64,19 +63,58 @@ order: 4
 - **LINE Bank Japan 코어뱅킹 시스템 개발**
   - 고객업무를 담당하여 비대면 고객가입 및 고객 관리 시스템을 개발하였습니다.
 - **테스트 자동화 프로그램 운영**
-  - 테스트 자동화 프로그램을 설계 및 운영하여 시스템 안정성을 확보하였습니다.
+  - 고객업무와 타 팀 업무를 연계하여, 테스트 자동화 프로그램을 설계 및 운영하여 시스템 안정성을 확보하였습니다.
 
 ---
 
 ## 🚀 Projects
+
+### `API Documentation Automation`: 지속 가능한 API 문서 자동화 프로세스 구축
+
+_2025/01 (1M)_
+
+- **개요**: Java 기반 프로젝트에서 코드 내 Javadoc을 사용하여 Docusaurus 기반 Markdown 문서를 자동 생성하고, CI/CD 파이프라인을 통해 문서를 자동 배포하는 프로세스 구축
+- **기술 스택**: Java, Javadoc, Docusaurus, JavaParser, CI/CD
+- **성과**: API 문서 자동화 프로세스 구축으로 문서 최신화 자동화 및 신뢰도 향상
+
+  <details class="details-custom">
+    <summary> Interested in more details? </summary>
+    <div>
+        <ul>
+            <li>기간: 2025/01 (1M)</li>
+            <li>프로그램 개요: Javadoc 주석을 분석하여 API 명세서를 Markdown 형식으로 자동 변환하고, 이를 Docusaurus를 통해 웹사이트로 배포하는 자동화 프로세스 개발</li>
+            <li>주요 기능:
+                <ul>
+                    <li>JavaParser 라이브러리를 사용해 Javadoc 주석을 분석하여 원하는 문서 포맷의 Markdown로 변환하는 프로그램 개발</li>
+                    <li>CI/CD 파이프라인을 통해 Javadoc 변경 시 문서 자동 생성 및 웹사이트 환경으로 자동 배포환경 구축</li>
+                </ul>
+            </li>
+            <li>기술 스택:
+                <ul>
+                    <li>Backend: Java</li>
+                    <li>Documentation: Docusaurus</li>
+                    <li>Automation: CI/CD</li>
+                </ul>
+            </li>
+            <li>주요 성과:
+                <ul>
+                    <li>Javadoc 작성만으로 API 명세서를 자동화하여 최신 상태 유지 및 문서 관리 효율성 증대</li>
+                    <li>Docusaurus Markdown 문서 생성 프로그램 개발로 반복 작업 최소화</li>
+                    <li>CI/CD 파이프라인 구축으로 문서 최신화 및 배포 자동화</li>
+                    <li>코드와 문서의 불일치를 최소화하여 신뢰도 높은 문서 제공</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </details>
 
 ### `OiBDD`: AI 기반 BDD 자동화 솔루션
 
 _2024/08 ~ 2024/12 (4M)_
 
 - **개요**: BDD의 디스커버리 워크숍 과정을 AI로 자동화하여 지원하는 프로그램
-- **기술 스택**: LangChain, Python, Flask, React, AWS 등.
-- **성과**: API 서버 분리로 UI 확장성 증대 및 코어 기능 보호, Memory와 RAG 적용, FastAPI로 실시간 상태 조회 구현.
+- **기술 스택**: LangChain, RAG, Python, Flask, React, CICD, Docker, AWS E2C
+- **성과**: API 서버 분리로 UI 확장성 증대 및 코어 기능 보호, Memory와 RAG 적용으로 안정적 응답퀄리티 유지
 
   <details class="details-custom">
     <summary> Interested in more details? </summary>
@@ -90,7 +128,14 @@ _2024/08 ~ 2024/12 (4M)_
                     <li>생성된 테스트 케이스는 AI를 활용하여 cucumber 테스트 프로그램 코드(Feature, Step Definition)로 생성하여, 실제 테스트를 위해 바로 사용할 수 있습니다.</li>
                 </ul>
             </li>
-            <li>기술 스택: <code>LangChain</code>, <code>Python</code>, <code>Flask</code>, <code>FastAPI</code>, <code>PostgreSQL</code>, <code>React</code>, <code>CICD</code>, <code>Docker</code>, <code>AWS E2C</code></li>
+            <li>기술 스택:
+                <ul>
+                    <li>Backend: Python, Flask, FastAPI, PostgreSQL</li>
+                    <li>Frontend: React</li>
+                    <li>AI: LangChain</li>
+                    <li>Infra: Docker, AWS E2C, CICD</li>
+                </ul>
+            </li>
             <li>주요 성과:
                 <ul>
                     <li>API 코어 서버와 클라이언트 서버를 분리: 다양한 클라이언트(웹, 플러그인) 지원 가능한 확장성 증대, 코어 기능(프롬프트, 토큰)을 보호</li>
@@ -109,9 +154,9 @@ _2024/08 ~ 2024/12 (4M)_
 
 _2024/07 ~ 2024/08 (1.5M)_
 
-- **개요**: 자연어 규칙에 기반한 고품질 데이터 생성 솔루션.
+- **개요**: 자동 인식한 데이터 구조에 맞춰 자연어 기반의 데이터 생성 규칙을 통한 고품질/고성능 데이터 생성 솔루션.
 - **기술 스택**: LangChain, Prompt Engineering, Flask.
-- **성과**: 데이터 생성 속도 최적화, LLM 사용 비용 절감.
+- **성과**: 데이터 생성 속도 최적화, LLM 사용 비용 절감, 자동 생성 테스트 데이터의 퀄리티 향상.
 
   <details class="details-custom">
     <summary> Interested in more details? </summary>
@@ -125,7 +170,13 @@ _2024/07 ~ 2024/08 (1.5M)_
                     <li>자연어 기반 데이터 생성 규칙: 사용자가 자연어로 작성한 규칙을 통해 mock 데이터를 생성하며, 다양한 출력 형식(csv, json, sql, DB에 직접 insert)으로 데이터를 제공합니다.</li>
                 </ul>
             </li>
-            <li>기술 스택: <code>LangChain</code>, <code>Prompt Engineering</code>, <code>Python</code>, <code>Flask</code>, <code>jquery</code></li>
+            <li>기술 스택:
+                <ul>
+                    <li>Backend: LangChain, Python, Flask</li>
+                    <li>Frontend: jquery</li>
+                    <li>AI: Prompt Engineering</li>
+                </ul>
+            </li>
             <li>주요 성과:
                 <ul>
                     <li>빠르고 저렴한 테스트 데이터 생성: 데이터 생성 규칙을 기반으로 무한의 데이터를 생성할 수 있는 Python 코드를 AI를 통해 자동 생성하여, AI 호출 비용을 최소화하고 빠른 속도로 대량의 데이터를 생성합니다.</li>
@@ -141,11 +192,8 @@ _2024/07 ~ 2024/08 (1.5M)_
 
 _2024/06 ~ 2024/07_
 
-- **성과**: 직원들의 AI 활용 아이디어 발굴, 강의 내용을 바탕으로 실제 개발 프로젝트로 연결.
-
-- 기간: 2024/06 - 2024/07 (1.5M, 10회)
-- 강의 내용: LangChain 기초 및 응용 스터디 자료를 준비하고 강의를 진행하여, 사내 AI 활용 역량을 강화
-- 주요 성과
+- **강의 내용**: 10회 차의 LangChain 기초 및 응용 스터디 자료를 준비하고 강의를 진행하여, 사내 AI 활용 역량을 강화
+- **주요 성과**
   - 직원들이 AI를 회사 사업에 창의적으로 적용할 수 있는 아이디어를 발굴
   - 강의 내용을 바탕으로 실제 개발 프로젝트(상품 팩토리 AI, OiBDD)로 이어짐
 
@@ -153,23 +201,30 @@ _2024/06 ~ 2024/07_
 
 _2024/01 ~ 2024/04 (4M)_
 
-- **개요** : CS Portal은 MA(유지보수 계약) 고객사를 위한 이슈 트래킹 웹 애플리케이션으로, 고객사가 자신의 이슈를 효율적으로 관리하고 신속히 해결받을 수 있도록 지원
+- **개요** : CS Portal은 MA(유지보수 계약) 고객사를 위한 이슈 트래킹 웹 애플리케이션으로, 기존 Gitlab Service Desk의 한계점을 개선하여 제공합니다.
 - **기술 스택**: Spring Boot3, Spring WebFlux, GitLab Service Desk API.
-- **성과**: GitLab 연동을 통한 이슈 관리 효율화
+- **성과**: 이슈 중앙화를 통해 커뮤니케이션 비용 절감(프로젝트 이슈 내용 공유, 이슈의 히스토리 관리 용이)
 
   <details class="details-custom">
     <summary> Interested in more details? </summary>
     <div>
         <ul>
             <li>기간: 2024/01 - 2024/04 (4M)</li>
-            <li>프로그램 개요: CS Portal은 MA(유지보수 계약) 고객사를 위한 이슈 트래킹 웹 애플리케이션으로, 고객사가 자신의 이슈를 효율적으로 관리하고 신속히 해결받을 수 있도록 지원합니다.</li>
+            <li>프로그램 개요: CS Portal은 MA(유지보수 계약) 고객사를 위한 이슈 트래킹 웹 애플리케이션으로, 기존 Gitlab Service Desk의 한계점을 개선하여 제공합니다. 기존 Gitlab Service desk에서는 이메일 당 하나의 이슈의 커뮤니케이션이 진행되어, 프로젝트 구성원 간 이슈 공유가 어려웠습니다. 또한 이슈의 히스토리도 모두 이메일에 보관되어 히스토리 관리도 어려웠습니다. CS Portal은 Gitlab  API 연동을 통해 고객에게는 프로젝트 별 이슈를 중앙화의 장점을 제공하였으며, 기술 담당자에게는 여러 프로젝트를 한 군데서 관리할 수 있는 용이성을 제공하였습니다.</li>
             <li>주요 기능:
                 <ul>
-                    <li>GitLab과의 연동을 통해, CS Portal 사이트에서 이슈 조회, 등록, 코멘트 추가 등 다양한 기능 제공</li>
+                    <li>GitLab과의 연동을 통해, CS Portal 사이트에서 프로젝트의 모든 이슈 조회, 등록, 코멘트 추가 등 다양한 기능 제공</li>
                     <li>프로젝트 별로 이슈 히스토리를 중앙화하여 문제 해결 과정 추적에 용이</li>
                 </ul>
             </li>
-            <li>기술 스택: <code>Java17</code>, <code>Spring boot3</code>, <code>Spring Security</code>, <code>Spring WebFlux</code>, <code>React(Material-UI)</code>, <code>GitLab Service Desk API</code>, <code>Multi Module Architecture</code>, <code>Reactive Programming</code></li>
+            <li>기술 스택:
+                <ul>
+                    <li>Backend: Java17, Spring boot3, Spring Security, Spring WebFlux</li>
+                    <li>Frontend: React (Material-UI)</li>
+                    <li>Integration: GitLab Service Desk API</li>
+                    <li>Other: Multi Module Architecture, Reactive Programming</li>
+                </ul>
+            </li>
             <li>주요 성과:
                 <ul>
                     <li>프로젝트 전반을 주도: DB 설계, API 설계, 애플리케이션 아키텍처 설계 및 구현</li>
@@ -187,9 +242,9 @@ _2024/01 ~ 2024/04 (4M)_
 
 _2023/08 ~ 2023/12 (5M)_
 
-- **개요** : 대외 연계 인터페이스의 테스트와 시뮬레이션을 지원하는 솔루션의 추가 기능 개발
+- **개요** : 기존 솔루션에 대외 연계 인터페이스의 테스트와 시뮬레이션을 지원하는 추가 기능 개발
 - **기술 스택**: Java8, Rest API, HTTP/HTTPS, TCP 등
-- **성과**: REST 시뮬레이터 개발, 전문 변환 및 비동기 호출 처리.
+- **성과**: REST API 시뮬레이터 개발, 전문 변환 및 비동기 호출 처리.
 
   <details class="details-custom">
     <summary> Interested in more details? </summary>
@@ -206,10 +261,11 @@ _2023/08 ~ 2023/12 (5M)_
             </li>
             <li>기술 스택:
                 <ul>
-                    <li><strong>Backend</strong>: Java8, Spring Boot2</li>
-                    <li><strong>Frontend</strong>: React (Material-UI)</li>
-                    <li><strong>Integration</strong>: REST API, HTTP/HTTPS, TCP</li>
-                    <li><strong>Other</strong>: 시스템 헤더 처리, 전문 변환 로직, 동기/비동기 호출 처리</li>
+                    <li>Backend: Java8, Spring Boot2</li>
+                    <li>Frontend: React (Material-UI)</li>
+                    <li>DB: MySQL</li>
+                    <li>Integration: REST API, HTTP/HTTPS, TCP</li>
+                    <li>Other: 시스템 헤더 처리, 전문 변환 로직, 동기/비동기 호출 처리</li>
                 </ul>
             </li>
             <li>주요 성과:
@@ -257,7 +313,14 @@ _2021/04 ~ 2022/04 (13M)_
                     <li>시스템 안정성을 보장하기 위해 자동화 통합 테스트 프로그램을 설계 및 운영하였습니다. 이를 통해 고객 서비스 품질과 개발 생산성을 동시에 향상시켰습니다.</li>
                 </ul>
             </li>
-            <li>기술 스택: <code>Java</code>, <code>Node.js</code>, <code>Oracle</code>, <code>Git</code>, <code>GitLab</code>, <code>AngularJS</code>, <code>BXM Framework</code></li>
+            <li>기술 스택:
+                <ul>
+                    <li>Backend: Java(Spring), Node.js</li>
+                    <li>Frontend: AngularJS</li>
+                    <li>DB: Oracle</li>
+                    <li>Other: Git, GitLab, BXM Framework</li>
+                </ul>
+            </li>
             <li>주요 성과:
                 <ol>
                     <li>고객 업무 개발:
@@ -323,4 +386,8 @@ _2024.12.20_
 
 ## 📜 References
 
-Available upon request
+Available upon request (요청 시 제공 가능)
+
+<!-- prettier-ignore -->
+> 마지막 업데이트 : 2025/01/26
+{: .prompt-tip }
