@@ -1,217 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Luke Ashur's Cybersecurity Blog and Projects">
-    <title>Luke Ashur - Cybersecurity Blog</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1b1b1b;
-            color: #e0e0e0;
-            margin: 0;
-            display: flex;
-        }
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+--><html><head><title>Hielo by TEMPLATED</title><meta charset="utf-8"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/css/main.css"></head><body>
 
-        /* Sidebar */
-        aside {
-            width: 300px;
-            background-color: #1b1b1b;
-            padding: 20px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
-            position: fixed;
-            height: 100vh;
-        }
-        /* Profile Section */
-        .profile {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .profile img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid #76c7c0;
-        }
-        .profile h1 {
-            color: #76c7c0;
-            font-size: 1.5rem;
-            margin: 10px 0 5px;
-        }
-        .profile p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin: 0;
-        }
+		<!-- Header -->
+			<header id="header" class="alt"><div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div>
+				<a href="#menu">Menu</a>
+			</header><!-- Nav --><nav id="menu"><ul class="links"><li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
+				</ul></nav><!-- Banner --><section class="banner full"><article><img src="images/slide01.jpg" alt="" width="1440" height="961"><div class="inner">
+						<header><p>A free responsive web site template by <a href="https://templated.co">TEMPLATED</a></p>
+							<h2>Hielo</h2>
+						</header></div>
+				</article><article><img src="images/slide02.jpg" alt="" width="1440" height="961"><div class="inner">
+						<header><p>Lorem ipsum dolor sit amet nullam feugiat</p>
+							<h2>Magna</h2>
+						</header></div>
+				</article><article><img src="images/slide03.jpg" alt="" width="1440" height="962"><div class="inner">
+						<header><p>Sed cursus aliuam veroeros lorem ipsum nullam</p>
+							<h2>Tempus</h2>
+						</header></div>
+				</article><article><img src="images/slide04.jpg" alt="" width="1440" height="961"><div class="inner">
+						<header><p>Adipiscing lorem ipsum feugiat sed phasellus consequat</p>
+							<h2>Etiam</h2>
+						</header></div>
+				</article><article><img src="images/slide05.jpg" alt="" width="1440" height="962"><div class="inner">
+						<header><p>Ipsum dolor sed magna veroeros lorem ipsum</p>
+							<h2>Adipiscing</h2>
+						</header></div>
+				</article></section><!-- One --><section id="one" class="wrapper style2"><div class="inner">
+					<div class="grid-style">
 
-        /* Sidebar Navigation */
-        aside ul {
-            list-style: none;
-            padding: 0;
-        }
-        aside ul li {
-            margin: 20px 0;
-        }
-        aside ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: block;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease-in-out;
-        }
-        aside ul li a:hover {
-            background-color: #333333;
-        }
+						<div>
+							<div class="box">
+								<div class="image fit">
+									<img src="images/pic02.jpg" alt="" width="600" height="300"></div>
+								<div class="content">
+									<header class="align-center"><p>maecenas sapien feugiat ex purus</p>
+										<h2>Lorem ipsum dolor</h2>
+									</header><p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
+									<footer class="align-center"><a href="#" class="button alt">Learn More</a>
+									</footer></div>
+							</div>
+						</div>
 
-        /* Main Content */
-        main {
-            margin-left: 320px;
-            padding: 30px;
-            flex-grow: 1;
-            background-color: #1b1b1b; /* Same as sidebar */
-            border-left: 2px solid #333333;
-            border-right: 2px solid #333333;
-        }
-        section {
-            margin-bottom: 50px;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 30px;
-        }
-        section h2 {
-            color: #76c7c0;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #333333;
-            padding-bottom: 10px;
-        }
-        section p {
-            line-height: 1.6;
-            color: #b0b0b0;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 20px 0;
-        }
-        ul li img {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        ul li img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-        ul li a {
-            text-decoration: none;
-            color: #76c7c0;
-            font-size: 1.1rem;
-        }
+						<div>
+							<div class="box">
+								<div class="image fit">
+									<img src="images/pic03.jpg" alt="" width="600" height="300"></div>
+								<div class="content">
+									<header class="align-center"><p>mattis elementum sapien pretium tellus</p>
+										<h2>Vestibulum sit amet</h2>
+									</header><p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
+									<footer class="align-center"><a href="#" class="button alt">Learn More</a>
+									</footer></div>
+							</div>
+						</div>
 
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            background-color: #1b1b1b;
-            border-top: 2px solid #333333;
-            color: #777777;
-            font-size: 0.9rem;
-        }
-        footer a {
-            color: #76c7c0;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <!-- Sidebar -->
-    <aside>
-        <!-- Profile Section -->
-        <div class="profile">
-            <img src="https://via.placeholder.com/100" alt="Profile Picture">
-            <h1>Luke Ashur</h1>
-            <p>Cybersecurity Enthusiast</p>
-        </div>
-        <!-- Navigation -->
-        <ul>
-            <li><a href="#blog">Blog Posts</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#tools">Tools</a></li>
-        </ul>
-    </aside>
+					</div>
+				</div>
+			</section><!-- Two --><section id="two" class="wrapper style3"><div class="inner">
+					<header class="align-center"><p>Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
+						<h2>Morbi maximus justo</h2>
+					</header></div>
+			</section><!-- Three --><section id="three" class="wrapper style2"><div class="inner">
+					<header class="align-center"><p class="special">Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
+						<h2>Morbi maximus justo</h2>
+					</header><div class="gallery">
+						<div>
+							<div class="image fit">
+								<a href="#"><img src="images/pic01.jpg" alt="" width="600" height="300"></a>
+							</div>
+						</div>
+						<div>
+							<div class="image fit">
+								<a href="#"><img src="images/pic02.jpg" alt="" width="600" height="300"></a>
+							</div>
+						</div>
+						<div>
+							<div class="image fit">
+								<a href="#"><img src="images/pic03.jpg" alt="" width="600" height="300"></a>
+							</div>
+						</div>
+						<div>
+							<div class="image fit">
+								<a href="#"><img src="images/pic04.jpg" alt="" width="600" height="300"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!-- Footer --><footer id="footer"><div class="container">
+					<ul class="icons"><li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul></div>
+			</footer><div class="copyright">
+			Made with <a href="https://templated.co/">Templated</a>.
+		</div>
 
-    <!-- Main Content -->
-    <main>
-        <section id="blog">
-            <h2>Blog Posts</h2>
-            <p>Check out my latest cybersecurity write-ups:</p>
-            <ul>
-                <li>
-                    <a href="#">
-                        <img src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif" alt="Blog Thumbnail">
-                        How to Secure Active Directory
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Blog Thumbnail">
-                        CTF Walkthrough: HackTheBox - Fortress
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="https://media.giphy.com/media/TilmLMmWrRYYHjLfub/giphy.gif" alt="Blog Thumbnail">
-                        Exploiting Web Vulnerabilities
-                    </a>
-                </li>
-            </ul>
-        </section>
-
-        <section id="projects" style="margin-top: 40px;">
-            <h2>Featured Projects</h2>
-            <p>Explore my top cybersecurity projects:</p>
-            <ul>
-                <li>
-                    <a href="https://github.com/lukeashur/active-directory-exploit-toolkit">
-                        <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" alt="Project Thumbnail">
-                        Active Directory Exploit Toolkit
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/lukeashur/pentest-scripts">
-                        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Project Thumbnail">
-                        Penetration Testing Scripts
-                    </a>
-                </li>
-            </ul>
-        </section>
-
-        <section id="tools">
-            <h2>Tools and Resources</h2>
-            <p>These tools are essential for my cybersecurity work:</p>
-            <ul>
-                <li><a href="https://nmap.org/">Nmap</a> - Network scanning and enumeration</li>
-                <li><a href="https://www.kali.org/">Kali Linux</a> - Penetration testing OS</li>
-                <li><a href="https://burpsuite.com/">Burp Suite</a> - Web application security testing</li>
-            </ul>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 Luke Ashur | <a href="https://github.com/lukeashur">GitHub</a></p>
-    </footer>
-</body>
-</html>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/skel.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script></body></html>
