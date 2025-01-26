@@ -17,24 +17,42 @@
 
         /* Sidebar */
         aside {
-            width: 250px;
+            width: 300px;
             background-color: #1b1b1b;
             padding: 20px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
             position: fixed;
             height: 100vh;
         }
-        aside h2 {
-            color: #76c7c0;
+        /* Profile Section */
+        .profile {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #76c7c0;
+        }
+        .profile h1 {
+            color: #76c7c0;
+            font-size: 1.5rem;
+            margin: 10px 0 5px;
+        }
+        .profile p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Sidebar Navigation */
         aside ul {
             list-style: none;
             padding: 0;
         }
         aside ul li {
-            margin: 15px 0;
+            margin: 20px 0;
         }
         aside ul li a {
             color: #e0e0e0;
@@ -51,7 +69,7 @@
 
         /* Main Content */
         main {
-            margin-left: 270px;
+            margin-left: 320px;
             padding: 30px;
             flex-grow: 1;
         }
@@ -113,12 +131,17 @@
 <body>
     <!-- Sidebar -->
     <aside>
-        <h2>Navigation</h2>
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture">
+            <h1>Luke Ashur</h1>
+            <p>Cybersecurity Enthusiast</p>
+        </div>
+        <!-- Navigation -->
         <ul>
             <li><a href="#blog">Blog Posts</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#tools">Tools</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </aside>
 
@@ -177,20 +200,11 @@
                 <li><a href="https://burpsuite.com/">Burp Suite</a> - Web application security testing</li>
             </ul>
         </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>If you'd like to connect, feel free to reach out:</p>
-            <ul>
-                <li>Email: <a href="mailto:lukeashur@protonmail.com">lukeashur@protonmail.com</a></li>
-                <li>GitHub: <a href="https://github.com/lukeashur">https://github.com/lukeashur</a></li>
-            </ul>
-        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Luke Ashur | <a href="https://github.com/lukeashur">GitHub</a> | <a href="mailto:lukeashur@protonmail.com">Email Me</a></p>
+        <p>© 2025 Luke Ashur | <a href="https://github.com/lukeashur">GitHub</a></p>
     </footer>
 </body>
 </html>
