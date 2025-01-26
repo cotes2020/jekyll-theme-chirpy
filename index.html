@@ -8,79 +8,87 @@
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
             margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar */
+        aside {
+            width: 250px;
+            background-color: #1b1b1b;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+            position: fixed;
+            height: 100vh;
+        }
+        aside h2 {
+            color: #76c7c0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        aside ul {
+            list-style: none;
             padding: 0;
         }
-
-        /* Header Styles */
-        header {
-            background-color: #1f1f1f;
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 2px solid #333;
+        aside ul li {
+            margin: 15px 0;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #00d9ff;
-        }
-        header p {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background-color: #1a1a1a;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: #00d9ff;
-            margin: 0 15px;
+        aside ul li a {
+            color: #e0e0e0;
             text-decoration: none;
             font-size: 1.1rem;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
         }
-        nav a:hover {
-            text-decoration: underline;
+        aside ul li a:hover {
+            background-color: #333333;
         }
 
         /* Main Content */
         main {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
+            margin-left: 270px;
+            padding: 30px;
+            flex-grow: 1;
         }
         section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         section h2 {
-            color: #00d9ff;
+            color: #76c7c0;
             font-size: 1.8rem;
             margin-bottom: 15px;
         }
         section p {
             line-height: 1.6;
-            color: #ccc;
+            color: #b0b0b0;
         }
         ul {
             list-style: none;
             padding: 0;
         }
         ul li {
-            margin: 10px 0;
+            margin: 20px 0;
+        }
+        ul li img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        ul li img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
         ul li a {
-            color: #00d9ff;
             text-decoration: none;
+            color: #76c7c0;
             font-size: 1.1rem;
-        }
-        ul li a:hover {
-            text-decoration: underline;
         }
 
         /* Footer */
@@ -88,94 +96,99 @@
             text-align: center;
             margin-top: 40px;
             padding: 20px 0;
-            background-color: #1f1f1f;
-            border-top: 2px solid #333;
-            color: #777;
+            background-color: #1b1b1b;
+            border-top: 2px solid #333333;
+            color: #777777;
             font-size: 0.9rem;
         }
         footer a {
-            color: #00d9ff;
+            color: #76c7c0;
             text-decoration: none;
         }
         footer a:hover {
             text-decoration: underline;
         }
-
-        /* Images and Animations */
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        section {
-            animation: fadeIn 1s ease-in-out;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Luke's Cybersecurity Blog and Projects</p>
-    </header>
-    <nav>
-        <a href="#blog">Blog</a>
-        <a href="#projects">Projects</a>
-        <a href="#resources">Resources</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <!-- Sidebar -->
+    <aside>
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#blog">Blog Posts</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
     <main>
         <section id="blog">
             <h2>Blog Posts</h2>
-            <p>Read my latest thoughts and write-ups on cybersecurity topics:</p>
+            <p>Check out my latest cybersecurity write-ups:</p>
             <ul>
-                <li><a href="#">How to Secure Active Directory: Step-by-Step Guide</a></li>
-                <li><a href="#">Exploiting Vulnerabilities in Web Applications</a></li>
-                <li><a href="#">CTF Walkthrough: HackTheBox - "Fortress"</a></li>
+                <li>
+                    <a href="#">
+                        <img src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif" alt="Blog Thumbnail">
+                        How to Secure Active Directory
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Blog Thumbnail">
+                        CTF Walkthrough: HackTheBox - Fortress
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://media.giphy.com/media/TilmLMmWrRYYHjLfub/giphy.gif" alt="Blog Thumbnail">
+                        Exploiting Web Vulnerabilities
+                    </a>
+                </li>
             </ul>
         </section>
-        <section id="projects">
+
+        <section id="projects" style="margin-top: 40px;">
             <h2>Featured Projects</h2>
-            <p>Explore some of my cybersecurity projects and tools:</p>
+            <p>Explore my top cybersecurity projects:</p>
             <ul>
-                <li><a href="https://github.com/lukeashur/active-directory-exploit-toolkit">Active Directory Exploit Toolkit</a></li>
-                <li><a href="https://github.com/lukeashur/pentest-scripts">Penetration Testing Scripts</a></li>
-                <li><a href="https://github.com/lukeashur/log-parser-tool">Log Parser Tool for Incident Response</a></li>
+                <li>
+                    <a href="https://github.com/lukeashur/active-directory-exploit-toolkit">
+                        <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" alt="Project Thumbnail">
+                        Active Directory Exploit Toolkit
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/lukeashur/pentest-scripts">
+                        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Project Thumbnail">
+                        Penetration Testing Scripts
+                    </a>
+                </li>
             </ul>
         </section>
+
         <section id="tools">
             <h2>Tools and Resources</h2>
-            <h3>Tools</h3>
+            <p>These tools are essential for my cybersecurity work:</p>
             <ul>
                 <li><a href="https://nmap.org/">Nmap</a> - Network scanning and enumeration</li>
-                <li><a href="https://www.kali.org/">Kali Linux</a> - The go-to penetration testing OS</li>
+                <li><a href="https://www.kali.org/">Kali Linux</a> - Penetration testing OS</li>
                 <li><a href="https://burpsuite.com/">Burp Suite</a> - Web application security testing</li>
             </ul>
-            <h3>Featured Projects</h3>
-            <ul>
-                <li><a href="https://github.com/lukeashur/active-directory-exploit-toolkit">Active Directory Exploit Toolkit</a></li>
-                <li><a href="https://github.com/lukeashur/pentest-scripts">Penetration Testing Scripts</a></li>
-                </ul>
-            </ul>
-
         </section>
-        <section id="resources">
-            </p>
-        <h3>Resources</h3>
-        <ul>
-            <li><a href="https://github.com/lukeashur">GitHub Projects</a></li>
-            <li><a href="#writeups">CTF Write-ups</a></li>
-            <li><a href="#tools">Resources</a></li>
-        </ul>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you'd like to connect, feel free to reach out:</p>
+            <ul>
+                <li>Email: <a href="mailto:lukeashur@protonmail.com">lukeashur@protonmail.com</a></li>
+                <li>GitHub: <a href="https://github.com/lukeashur">https://github.com/lukeashur</a></li>
+            </ul>
         </section>
     </main>
+
+    <!-- Footer -->
     <footer>
         <p>© 2025 Luke Ashur | <a href="https://github.com/lukeashur">GitHub</a> | <a href="mailto:lukeashur@protonmail.com">Email Me</a></p>
     </footer>
