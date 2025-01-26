@@ -6,6 +6,7 @@
     <meta name="description" content="Luke Ashur's Cybersecurity Blog and Projects">
     <title>Luke Ashur - Cybersecurity Blog</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
@@ -13,6 +14,8 @@
             margin: 0;
             padding: 0;
         }
+
+        /* Header Styles */
         header {
             background-color: #1f1f1f;
             text-align: center;
@@ -29,17 +32,38 @@
             font-size: 1.2rem;
             color: #ccc;
         }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #1a1a1a;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #00d9ff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
         main {
             max-width: 800px;
             margin: 30px auto;
             padding: 20px;
         }
-        main h2 {
+        section {
+            margin-bottom: 40px;
+        }
+        section h2 {
             color: #00d9ff;
             font-size: 1.8rem;
             margin-bottom: 15px;
         }
-        main p {
+        section p {
             line-height: 1.6;
             color: #ccc;
         }
@@ -58,6 +82,8 @@
         ul li a:hover {
             text-decoration: underline;
         }
+
+        /* Footer */
         footer {
             text-align: center;
             margin-top: 40px;
@@ -74,33 +100,78 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Images and Animations */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        section {
+            animation: fadeIn 1s ease-in-out;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h2>Luke Ashur</h2>
-        <p>CyberSec Blog and Projects</p>
+        <h1>Luke Ashur</h1>
+        <p>Cybersecurity Blog and Projects</p>
     </header>
+    <nav>
+        <a href="#blog">Blog</a>
+        <a href="#projects">Projects</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+    </nav>
     <main>
-        <h2>Welcome to My CyberSec Blog</h2>
-        <p>
-            Hi, I’m Luke! I’m passionate about cybersecurity, ethical hacking, and web security. Here, you’ll find write-ups, projects, and resources I’ve been working on.
-        </p>
-        <h3>Resources</h3>
-        <ul>
-            <li><a href="https://github.com/lukeashur">GitHub Projects</a></li>
-            <li><a href="#writeups">CTF Write-ups</a></li>
-            <li><a href="#tools">Tools and Resources</a></li>
-            <li><a href="mailto:lukeashur@protonmail.com">Contact Me</a></li>
-        </ul>
-        <h3>Featured Projects</h3>
-        <ul>
-            <li><a href="https://github.com/lukeashur/active-directory-exploit-toolkit">Active Directory Exploit Toolkit</a></li>
-            <li><a href="https://github.com/lukeashur/pentest-scripts">Penetration Testing Scripts</a></li>
-        </ul>
+        <section id="blog">
+            <h2>Blog Posts</h2>
+            <p>Read my latest thoughts and write-ups on cybersecurity topics:</p>
+            <ul>
+                <li><a href="#">How to Secure Active Directory: Step-by-Step Guide</a></li>
+                <li><a href="#">Exploiting Vulnerabilities in Web Applications</a></li>
+                <li><a href="#">CTF Walkthrough: HackTheBox - "Fortress"</a></li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <img src="https://via.placeholder.com/800x400" alt="Project Showcase">
+            <p>Explore some of my cybersecurity projects and tools:</p>
+            <ul>
+                <li><a href="https://github.com/lukeashur/active-directory-exploit-toolkit">Active Directory Exploit Toolkit</a></li>
+                <li><a href="https://github.com/lukeashur/pentest-scripts">Penetration Testing Scripts</a></li>
+                <li><a href="https://github.com/lukeashur/log-parser-tool">Log Parser Tool for Incident Response</a></li>
+            </ul>
+        </section>
+        <section id="tools">
+            <h2>Tools and Resources</h2>
+            <p>Here are some of the tools I use and recommend for cybersecurity work:</p>
+            <ul>
+                <li><a href="https://nmap.org/">Nmap</a> - Network scanning and enumeration</li>
+                <li><a href="https://www.kali.org/">Kali Linux</a> - The go-to penetration testing OS</li>
+                <li><a href="https://burpsuite.com/">Burp Suite</a> - Web application security testing</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you'd like to connect, feel free to reach out:</p>
+            <ul>
+                <li>Email: <a href="mailto:lukeashur@protonmail.com">lukeashur@protonmail.com</a></li>
+                <li>GitHub: <a href="https://github.com/lukeashur">https://github.com/lukeashur</a></li>
+            </ul>
+        </section>
     </main>
     <footer>
-        <p>© 2025 Luke Ashur | <a href="https://github.com/lukeashur">GitHub</a> | <a href="mailto:lukeashur@example.com">Email Me</a></p>
+        <p>© 2025 Luke Ashur | <a href="https://github.com/lukeashur">GitHub</a> | <a href="mailto:lukeashur@protonmail.com">Email Me</a></p>
     </footer>
 </body>
 </html>
