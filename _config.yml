@@ -9,7 +9,7 @@ theme: jekyll-theme-chirpy
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Shanghai
+timezone: Berlin
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
@@ -19,11 +19,11 @@ title: Chirpy # the main title
 tagline: Security Write-ups and Blog # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Explore detailed CTF write-ups, practical tutorials on cutting-edge security tools, and personal projects that showcase real-world applications. Whether you're an ethical hacker, a penetration tester, or just starting your journey, this blog has something for everyone in the cybersecurity community.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "url: "https://lukeashur.github.io"
+url: "https://lukeashur.github.io"
 
 github:
   username: lukeashur # change to your GitHub username
