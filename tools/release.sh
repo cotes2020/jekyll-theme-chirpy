@@ -15,7 +15,7 @@ NODE_SPEC="package.json"
 CHANGELOG="docs/CHANGELOG.md"
 CONFIG="_config.yml"
 
-CSS_DIST="_sass/dist"
+CSS_DIST="_sass/vendors"
 JS_DIST="assets/js/dist"
 
 FILES=(
