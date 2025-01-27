@@ -1,5 +1,26 @@
 # Changelog
 
+## [7.2.4](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.3...v7.2.4) (2024-12-21)
+
+### Bug Fixes
+
+* toc not visible when switching from mobile to desktop mode ([#2139](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2139)) ([32051da](https://github.com/cotes2020/jekyll-theme-chirpy/commit/32051dad03cb8f60fa4206969377b9674f9a3f0c))
+* **ui:** left borderline of TOC is notched ([#2140](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2140)) ([8a4d0bc](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8a4d0bc4ee9e142a11401cad80bc9605878f121d))
+
+## [7.2.3](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.2...v7.2.3) (2024-12-15)
+
+### Bug Fixes
+
+* refreshing mermaid theme may fail ([#2113](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2113)) ([2f00d41](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2f00d41861f1b06c2ff7fa4e67e14e647c3c34b0))
+* **ui:** gap between TOC entries is inconsistent ([#2119](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2119)) ([1b4e318](https://github.com/cotes2020/jekyll-theme-chirpy/commit/1b4e318dc1cd57da812e11bf69ebb06083c213fc))
+* **ui:** slow script loading hides TOC fade-up effect in desktop ([#2120](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2120)) ([e0c3faf](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e0c3fafa470eb12bd04ffdf198018bc28b6de20d))
+
+## [7.2.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.1...v7.2.2) (2024-12-06)
+
+### Bug Fixes
+
+* js files in subdirectories are excluded from the site output ([#2101](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2101)) ([f55cc31](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f55cc31dbd0e7455328c80c7ef38186ad8e54099))
+
 ## [7.2.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.0...v7.2.1) (2024-12-05)
 
 ### Bug Fixes

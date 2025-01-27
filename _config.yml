@@ -212,7 +212,8 @@ exclude:
   - tools
   - README.md
   - LICENSE
-  - "*.js"
+  - purgecss.js
+  - rollup.config.js
   - "package*.json"
 
 jekyll-archives:

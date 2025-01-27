@@ -27,6 +27,9 @@ function init() {
     mobile.init();
   }
 
+  const $tocWrapper = document.getElementById('toc-wrapper');
+  $tocWrapper.classList.remove('invisible');
+
   desktopMode.onchange = refresh;
 }
 
