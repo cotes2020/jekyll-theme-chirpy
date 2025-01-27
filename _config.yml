@@ -16,14 +16,14 @@ timezone: Asia/Shanghai
 
 title: Chirpy # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: Security Write-ups and Blog # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "url: "https://lukeashur.github.io"
 
 github:
   username: lukeashur # change to your GitHub username
@@ -38,7 +38,7 @@ social:
   email: lukeashur@protonmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/luke_ashur # change to your Twitter homepage
+    - https://x.com/luke_ashur # change to your Twitter homepage
     - https://github.com/lukeashur # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -95,7 +95,7 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/avatar.jpg"
