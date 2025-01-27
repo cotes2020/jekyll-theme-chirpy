@@ -17,7 +17,7 @@
 
 header {
   .post-desc {
-    @extend %heading !optional;
+    @extend %heading;
 
     font-size: 1.125rem;
     line-height: 1.6;
@@ -30,7 +30,7 @@ header {
 
     em,
     time {
-      @extend %text-highlight !optional;
+      @extend %text-highlight;
     }
 
     em {
@@ -46,7 +46,7 @@ header {
 }
 
 .post-tail-wrapper {
-  @extend %text-sm !optional;
+  @extend %text-sm;
 
   margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
@@ -55,20 +55,20 @@ header {
     line-height: 1.2rem;
 
     > a {
-      @extend %text-highlight !optional;
+      @extend %text-highlight;
 
       &:hover {
-        @extend %link-hover !optional;
+        @extend %link-hover;
       }
     }
 
     span:last-child {
-      @extend %text-sm !optional;
+      @extend %text-sm;
     }
   } /* .license-wrapper */
 
   .post-meta a:not(:hover) {
-    @extend %link-underline !optional;
+    @extend %link-underline;
   }
 
   .share-wrapper {
@@ -88,17 +88,17 @@ header {
       i {
         color: var(--btn-share-color);
 
-        @extend %icon-size !optional;
+        @extend %icon-size;
       }
 
       > * {
-        @extend %icon-size !optional;
+        @extend %icon-size;
 
         margin-left: 0.5rem;
 
         &:hover {
           i {
-            @extend %btn-share-hover !optional;
+            @extend %btn-share-hover;
           }
         }
       }
@@ -108,7 +108,7 @@ header {
         border: none;
         line-height: inherit;
 
-        @extend %cursor-pointer !optional;
+        @extend %cursor-pointer;
       }
     } /* .share-icons */
   } /* .share-wrapper */
@@ -143,9 +143,9 @@ header {
 
   .post-tag {
     &:hover {
-      @extend %link-hover !optional;
-      @extend %tag-hover !optional;
-      @extend %no-bottom-border !optional;
+      @extend %link-hover;
+      @extend %tag-hover;
+      @extend %no-bottom-border;
     }
   }
 }
@@ -282,7 +282,7 @@ header {
     .toc-link {
       display: block;
 
-      @extend %text-ellipsis !optional;
+      @extend %text-ellipsis;
 
       &:hover {
         color: var(--toc-highlight);
@@ -349,14 +349,14 @@ header {
   border-bottom: 1px solid var(--main-border-color);
   transition: all 0.2s ease-in-out;
 
-  @extend %btn-color !optional;
+  @extend %btn-color;
 
   @include bp.xl {
     display: none !important;
   }
 
   .label {
-    @extend %heading !optional;
+    @extend %heading;
 
     margin-left: 0.375rem;
     padding: 0 0.75rem;
@@ -437,14 +437,14 @@ header {
   }
 
   time {
-    @extend %normal-font-style !optional;
-    @extend %text-xs !optional;
+    @extend %normal-font-style;
+    @extend %text-xs;
 
     color: var(--text-muted-color);
   }
 
   p {
-    @extend %text-ellipsis !optional;
+    @extend %text-ellipsis;
 
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
@@ -456,7 +456,7 @@ header {
 
   .card {
     h4 {
-      @extend %text-clip !optional;
+      @extend %text-clip;
     }
   }
 }

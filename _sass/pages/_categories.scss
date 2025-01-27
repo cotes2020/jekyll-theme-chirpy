@@ -11,7 +11,7 @@
 
   &.card,
   .list-group {
-    @extend %rounded !optional;
+    @extend %rounded;
   }
 
   .card-header {

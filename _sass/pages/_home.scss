@@ -32,10 +32,10 @@
     }
 
     .preview-img {
-      @extend %img-radius !optional;
+      @extend %img-radius;
 
       img {
-        @extend %img-radius !optional;
+        @extend %img-radius;
       }
     }
 
@@ -48,7 +48,7 @@
       }
 
       .card-title {
-        @extend %text-clip !optional;
+        @extend %text-clip;
 
         color: var(--heading-color) !important;
         font-size: 1.25rem;
@@ -76,7 +76,7 @@
       }
 
       .post-meta {
-        @extend %muted !optional;
+        @extend %muted;
 
         i {
           &:not(:first-child) {
@@ -89,7 +89,7 @@
         }
 
         em {
-          @extend %normal-font-style !optional;
+          @extend %normal-font-style;
 
           color: inherit;
         }
@@ -97,7 +97,7 @@
         > div:first-child {
           display: block;
 
-          @extend %text-ellipsis !optional;
+          @extend %text-ellipsis;
         }
       }
     }

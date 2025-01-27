@@ -32,7 +32,7 @@
 
     /* post's title */
     > a {
-      @extend %no-bottom-border !optional;
+      @extend %no-bottom-border;
 
       font-size: 1.1rem;
 
@@ -56,7 +56,7 @@
 #page-tag,
 #access-lastmod {
   a:hover {
-    @extend %link-hover !optional;
+    @extend %link-hover;
 
     margin-bottom: -1px; /* Avoid jumping */
   }

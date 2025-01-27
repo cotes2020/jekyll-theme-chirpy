@@ -10,14 +10,14 @@
 }
 
 .highlight {
-  @extend %rounded !optional;
-  @extend %code-snippet-bg !optional;
+  @extend %rounded;
+  @extend %code-snippet-bg;
 
   overflow: auto;
   padding-bottom: 0.75rem;
 
   @at-root figure#{&} {
-    @extend %code-snippet-bg !optional;
+    @extend %code-snippet-bg;
   }
 
   pre {
@@ -93,7 +93,7 @@ code {
 }
 
 td.rouge-code {
-  @extend %code-snippet-padding !optional;
+  @extend %code-snippet-padding;
 
   /*
     Prevent some browser extends from
@@ -107,8 +107,8 @@ td.rouge-code {
 }
 
 div[class^='language-'] {
-  @extend %rounded !optional;
-  @extend %code-snippet-bg !optional;
+  @extend %rounded;
+  @extend %code-snippet-bg;
 
   box-shadow: var(--language-border-color) 0 0 0 1px;
 
@@ -175,7 +175,7 @@ div {
 }
 
 .code-header {
-  @extend %no-cursor !optional;
+  @extend %no-cursor;
 
   display: flex;
   justify-content: space-between;
@@ -215,8 +215,8 @@ div {
 
   /* clipboard */
   button {
-    @extend %cursor-pointer !optional;
-    @extend %rounded !optional;
+    @extend %cursor-pointer;
+    @extend %rounded;
 
     border: 1px solid transparent;
     height: v.$code-header-height;
