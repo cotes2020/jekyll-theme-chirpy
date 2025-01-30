@@ -1,0 +1,91 @@
+# サイトのレイアウトテキスト
+
+# ----- 共通ラベル -----
+
+layout:
+  post: 投稿
+  category: カテゴリー
+  tag: タグ
+
+# サイドバーのタブ
+tabs:
+  # フォーマット: <拡張子なしのファイル名>: <値>
+  home: ホーム
+  categories: カテゴリー
+  tags: タグ
+  archives: アーカイブ
+  about: このサイトについて
+
+# 検索バーと検索結果に表示されるテキスト
+search:
+  hint: 検索
+  cancel: キャンセル
+  no_results: おっと！結果が見つかりませんでした。
+
+panel:
+  lastmod: 最近更新
+  trending_tags: トレンドタグ
+  toc: 目次
+
+copyright:
+  # 投稿の下部に表示されます
+  license:
+    template: この投稿は、著者によって:LICENSE_NAMEのライセンスの下でライセンスされています。
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # フッターに表示されます
+  brief: 一部の権利は保護されています。
+  verbose: >-
+    特に明記されていない限り、このサイト上のブログ投稿は、著者によって
+    クリエイティブ・コモンズ 表示 4.0 国際 (CC BY 4.0) ライセンスの下で提供されています。
+
+meta: :PLATFORM用の:THEMEテーマを使用しています。
+
+not_found:
+  statement: 申し訳ありませんが、そのURLは見つからないか、存在しないものを指しています。
+
+notification:
+  update_found: 新しいコンテンツバージョンが利用可能です。
+  update: 更新
+
+# ----- 投稿関連のラベル -----
+
+post:
+  written_by: 著者
+  posted: 投稿日時
+  updated: 更新日時
+  words: 単語数
+  pageview_measure: 閲覧回数
+  read_time:
+    unit: 分
+    prompt: 読む
+  relate_posts: 関連記事
+  share: シェア
+  button:
+    next: 次へ
+    previous: 前へ
+    copy_code:
+      succeed: コピーしました！
+    share_link:
+      title: リンクをコピー
+      succeed: リンクが正常にコピーされました！
+
+# 日付フォーマット
+# 詳細: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# カテゴリーページ
+categories:
+  category_measure:
+    singular: カテゴリー
+    plural: カテゴリー
+  post_measure:
+    singular: 投稿
+    plural: 投稿

@@ -98,7 +98,8 @@ script_includes:
     </div>
   </header>
 
-  {% if enable_toc %}
+  <!-- disable toc for now -->
+  {% if enable_toc and false %}
     <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
       <span class="label text-truncate">{{ page.title }}</span>
       <button type="button" class="toc-trigger btn me-1">
@@ -121,10 +122,6 @@ script_includes:
       <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
     </dialog>
   {% endif %}
-
-  <div class="content">
-    {{ content }}
-  </div>
 
   <div class="post-tail-wrapper text-muted">
     <!-- categories -->
@@ -152,6 +149,10 @@ script_includes:
         {% endfor %}
       </div>
     {% endif %}
+
+  <div class="content">
+    {{ content }}
+  </div>
 
     <div
       class="
