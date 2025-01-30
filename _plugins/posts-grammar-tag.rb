@@ -5,51 +5,64 @@
 module Jekyll
     class HeaderTagGenerator < Generator
       priority :high
-  
+
       def generate(site)
         site.posts.docs.each do |post|
           next unless post.content
-  
-          # Extract headers (e.g., #### 1. **～せい**)
-          headers = post.content.scan(/^####[\d\s\.]*\*\*(.*?)\*\*.*$/).flatten
-  
-          # Assign extracted headers as tags
+
           post.data['tags'] ||= []
-          headers.each do |header|
-            tag = header.strip
+          post.data['header_slugs'] ||= {}
+
+          post.content.each_line do |line|
+            next unless line.start_with?('#### ')
+
+            header_line = line.strip.sub(/^#### /, '')
+            tag_match = header_line.match(/\*\*(.*?)\*\*/)
+            next unless tag_match
+
+            # Extract the tag
+            tag = tag_match[1]
+
+            # Generate slug from full header text
+            full_header_text = header_line.gsub(/\*\*/, '').strip
+            slug = Jekyll::Utils.slugify(full_header_text)
+
+            # Store slugified tag and slug
+            # 
+            # for unknown reasons, posts always have header slugs as nil
             post.data['tags'] << tag unless post.data['tags'].include?(tag)
+            post.data['header_slugs'][tag] = slug
           end
-  
-          # Ensure tags are unique
+
           post.data['tags'].uniq!
         end
 
+        # Create tag pages with slugified tags
         all_tags = site.posts.docs.flat_map { |post| post.data['tags'] }.uniq
-        all_tags.each do |tag|
-          site.pages << TagPage.new(site, tag)
+        all_tags.each do |raw_tag|
+          tag = Jekyll::Utils.slugify(raw_tag) # Slugify for filename safety
+          site.pages << TagPage.new(site, tag, raw_tag) # Pass both versions
         end
       end
     end
-  
+
     class TagPage < Jekyll::Page
-      def initialize(site, tag)
+      def initialize(site, slugified_tag, display_tag)
         @site = site
         @base = site.source
         @dir  = 'tags'
-        @name = "#{tag}.md"
-    
+        @name = "#{slugified_tag}.md" # Use slugified name for filename
+        
         self.process(@name)
         
-        # Initialize data hash with default front matter
         self.data ||= {}
         self.data.merge!(
           'layout' => 'tag',
-          'title' => tag,
-          'tag' => tag,
-          'permalink' => "/tags/#{tag}/"
+          'title' => display_tag, # Original display name
+          'tag' => slugified_tag, # Slugified version for lookup
+          'permalink' => "/tags/{slugified_tag}/"
         )
-    
-        # Set proper output extension
+        
         self.ext = '.html'
       end
     end

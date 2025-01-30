@@ -224,3 +224,7 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+slugify:
+  mode: 'pretty'
+  cased: true

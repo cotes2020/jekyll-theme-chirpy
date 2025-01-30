@@ -11,10 +11,12 @@ layout: page
     {{ page.title }}
     <span class="lead text-muted ps-2">{{ page.posts | size }}</span>
   </h1>
+
   <ul class="content ps-0">
-    {% for post in page.posts %}
+      {% for post in page.posts %}
+      {% assign slug = post.data.header_slugs[page.tag] | uri_escape %}
       <li class="d-flex justify-content-between px-md-3">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a href="{{ post.url | relative_url }}#{{ slug }}">{{ post.title }}</a>
         <span class="dash flex-grow-1"></span>
         {% include datetime.html date=post.date class='text-muted small text-nowrap' lang=lang %}
       </li>
