@@ -1,5 +1,5 @@
 ---
-title: "#02_Sprig Boot의 원리(gradle 지시어, @SpringBootApplication, Tomcat)"
+title: "#02_Spring Boot의 원리(gradle 지시어, @SpringBootApplication, Tomcat)"
 categories: [Java, Spring Boot]
 tags: [Java, Spring Boot, complieOnly, SpringBootApplication, Tomcat]
 ---
