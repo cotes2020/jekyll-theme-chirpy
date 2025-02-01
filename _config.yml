@@ -45,8 +45,8 @@ social:
     # - https://www.linkedin.com/in/username
 
 # Site Verification Settings
-# webmaster_verifications:
-#   google: # fill in your Google verification code
+webmaster_verifications:
+  google: # fill in your Google verification code
 #   bing: # fill in your Bing verification code
 #   alexa: # fill in your Alexa verification code
 #   yandex: # fill in your Yandex verification code

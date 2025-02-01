@@ -44,7 +44,7 @@ devops, sre 조직장 => Enterprise business solutions
 
 - 비즈니스 솔루션
   - Devops
-  - SRE(영에 대한 최적화, 개발에 집중)
+  - SRE(운영에 대한 최적화, 개발에 집중)
 - 프로덕트
   - ai application  개발 - 새로운 앱 개발 (연구조직)
 
