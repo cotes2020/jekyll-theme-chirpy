@@ -44,32 +44,6 @@ tags: []
 
 ### Study Roadmap
 
-1월3째주
-
-- 월: 기술면접 - 코테관련 질문 답변 작성, 미디엄 글 하나 보기
-
-- 화: 기술면접 - 그 외 기술 답변 작성
-
-- 수: 기술면접 - 그 외 기술 답변 작성, 미디엄 글 하나 보고 정리
-
-- 목: 회사 관련 조사 및 그 외 면접 답변 작성, 미디엄 글 하나 보고 정리 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 에 대해 공부해보기)
-
-- 금: 아침 미디엄글 하나 보고 정리 & 면접
-
-1월4째주
-
-토-월
-
-- 시스템 책 읽고 공부하기
-- (daily) 미디엄 글 하나보고 정리 - RAG 관련
-- 이력서 정리 후 Liner 지원하기
-- about-me.md 파일로 이력서 정리 -> profile-md-pdf-v.md 연동 -> pdf 파일 다시 만들기 -> 링크드인 업데이트
-
-- TPM이 뭐하는지 직업인지 공부 & 정리
-- 이력서 정리 (+Liner 지원)
-- 시스템 책 읽고 공부
-- 미디엄 글 읽기
-
 금-일
 
 - (daily) 미디엄 글 하나보고 정리 - RAG 관련
@@ -79,7 +53,24 @@ tags: []
 
 **2월**
 
-- 월/수/금 아침에 일찍 일어나서 medium 보기 or 아키텍쳐 패턴 공부
+- 일정: 2/7 upstage 기술2차
+
+  - 2/6(목) Upstage 면접 준비(정리)
+
+- 아침에 medium 보기 or 아키텍쳐 패턴 공부
+
+- `<가상면접 사례로 배우는 대규모 시스템 설계 기초>` 공부
+  - 일) 3, 4, 5장
+  - 월2/3) 6장
+  - 화2/4) 7장
+  - 수2/5) 8장
+- `<혼공운>` 공부
+
+  - 1시간 요약 인강 공부
+  - 퇴근 후 위 공부하고 시간 남으면 책 차근차근 보기(-2/10까지)
+
+- [Advanced+Agentic RAG 공부](https://github.com/athina-ai/rag-cookbooks)
+- [RAG Evaluating 해보기-HuggingFace](https://huggingface.co/learn/cookbook/en/rag_evaluation)
 - RAG deep dive 관련 연구 하나 진행해보기 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 사용?)- 주제 선정해서 평일저녁 2시간씩 소요
 - [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate) 공부
   - Building Agents(2째주 주말)
