@@ -52,6 +52,69 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   a {
     @extend %sidebar-links;
   }
+  .category-sidebar {
+    padding: 10px 25px;
+    font-size: 16px;
+  }
+
+  .category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .category-all {
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 3px 10px;
+    color: black;
+    font-size: 15px;
+    margin-top: 3px;
+
+    &:hover {
+      background-color: var(--sidebar-hover-bg);
+      border-radius: 3px;
+    }
+  }
+
+  .category-item {
+    margin-bottom: 2px; /* Reduced margin */
+  }
+
+  .category-name {
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 3px 10px;
+    color: #666;
+    font-size: 15px;
+    margin-top: 3px;
+
+    &:hover {
+      background-color: var(--sidebar-hover-bg);
+      border-radius: 3px;
+    }
+  }
+
+  .subcategory-list {
+    list-style: none;
+    padding-left: 15px;
+    margin: 0; /* Remove margin */
+  }
+
+  .subcategory-item {
+    display: block;
+    text-decoration: none;
+    color: #666;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: var(--sidebar-hover-bg);
+    }
+  }
 
   #avatar {
     display: block;
@@ -82,6 +145,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     padding-left: 2.5rem;
     padding-right: 1.25rem;
     width: 100%;
+    margin-bottom: 15px;
 
     @include bp.lg {
       margin-top: 3rem;
@@ -121,7 +185,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   }
 
   ul {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 
     li.nav-item {
       opacity: 0.9;
@@ -178,6 +242,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     padding-left: 2rem;
     padding-right: 1rem;
     margin-bottom: 1.5rem;
+    margin-top: 1rem;
 
     @include bp.xxxl {
       padding-left: 2.75rem;

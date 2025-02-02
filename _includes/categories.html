@@ -1,0 +1,48 @@
+{% include lang.html %} {% assign HEAD_PREFIX = 'h_' %} {% assign LIST_PREFIX =
+'l_' %} {% assign group_index = 0 %} {% assign sort_categories = site.categories
+| sort %}
+
+<div class="category-sidebar">
+  <ul class="category-list">
+    <li class="category-item">
+      <a href="/" class="category-all"> 전체 글 보기 </a>
+    </li>
+
+    {% for category in sort_categories %} {% assign category_name = category |
+    first %} {% assign posts_of_category = category | last %} {% assign
+    first_post = posts_of_category | first %} {% if category_name ==
+    first_post.categories[0] %} {% assign sub_categories = '' | split: '' %} {%
+    for post in posts_of_category %} {% assign second_category =
+    post.categories[1] %} {% if second_category %} {% unless sub_categories
+    contains second_category %} {% assign sub_categories = sub_categories |
+    push: second_category %} {% endunless %} {% endif %} {% endfor %} {% assign
+    sub_categories = sub_categories | sort %} {% assign sub_categories_size =
+    sub_categories | size %}
+
+    <li class="category-item">
+      <a
+        href="/categories/{{ category_name | slugify | url_encode }}/"
+        class="category-name"
+      >
+        {{ category_name }} ({{ site.categories[category_name] | size }})
+      </a>
+
+      {% if sub_categories_size > 0 %}
+      <ul class="subcategory-list">
+        {% for sub_category in sub_categories %}
+        <a
+          href="/categories/{{ sub_category | slugify | url_encode }}/"
+          class="subcategory-item"
+        >
+          <li>
+            {{ sub_category }} ({{ site.categories[sub_category] | size }})
+          </li>
+        </a>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+
+    {% assign group_index = group_index | plus: 1 %} {% endif %} {% endfor %}
+  </ul>
+</div>
