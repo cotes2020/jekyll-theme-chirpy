@@ -8,3 +8,15 @@
 ';
 
 /* append your custom style below */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Vazirmatn/Vazirmatn-VariableFont_wght.ttf) format('truetype');
+}
+* {
+  font-family: 'Source Sans Pro', 'Vazirmatn', sans-serif !important;
+  font-size: 1rem;
+}
