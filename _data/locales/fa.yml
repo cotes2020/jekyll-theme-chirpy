@@ -1,0 +1,89 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: پست 
+  category: دسته‌بندی
+  tag: تگ
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: خانه
+  categories: دسته‌بندی‌ها
+  tags: تگ‌ها
+  archives: آرشیو‌ها
+  about: درباره
+
+# the text displayed in the search bar & search results
+search:
+  hint: جست‌و‌جو
+  cancel: لغو
+  no_results: ای بابا، نتیجه ای پیدا نکردیم
+
+panel:
+  lastmod: به تازگی بروز شده
+  trending_tags: پرطرفدار
+  toc: محتوا
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template:
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: حقوق محفوط است
+  verbose: 
+
+meta: 
+
+not_found:
+  statement: اوپس، چیزی که دنبالش بودی پیدا نشد
+
+notification:
+  update_found: نسخه‌ی جدید در دسترس است
+  update: بروزرسانی
+
+# ----- Posts related labels -----
+
+post:
+  written_by: توسط
+  posted: پست شده
+  updated: بروز شده
+  words: کلمات
+  pageview_measure: بازدیدها
+  read_time:
+    unit: دقیقه
+    prompt: خواندن
+  relate_posts: ادامه مطلب
+  share: اشتراک‌‌ گذاری
+  button:
+    next: جدیدتر
+    previous: قدیمی‌تر
+    copy_code:
+      succeed: کپی شده!
+    share_link:
+      title: کپی لینک
+      succeed: لینک با موفقیت کپی شد!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# categories page
+categories:
+  category_measure:
+    singular: دسته‌بندی
+    plural: دسته‌بندی‌ها
+  post_measure:
+    singular: پست‌
+    plural: پست‌ها
