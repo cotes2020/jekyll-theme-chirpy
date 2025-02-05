@@ -8,8 +8,17 @@
 {%- if post.description -%}
   {{- post.description -}}
 {%- else -%}
-  {%- include no-linenos.html content=post.content -%}
-  {{- content | markdownify | strip_html -}}
+  {% comment %}
+    Remove the line number of the code snippet.
+  {% endcomment %}
+  {% assign content = post.content %}
+
+  {% if content contains '<td class="rouge-gutter gl"><pre class="lineno">' %}
+    {% assign content = content | replace: '<td class="rouge-gutter gl"><pre class="lineno">', '<!-- <td class="rouge-gutter gl"><pre class="lineno">'%}
+    {% assign content = content | replace: '</td><td class="rouge-code">', '</td> --><td class="rouge-code">' %}
+  {% endif %}
+
+  {{- content | markdownify | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines -}}
 {%- endif -%}
 {%- endcapture -%}
 
