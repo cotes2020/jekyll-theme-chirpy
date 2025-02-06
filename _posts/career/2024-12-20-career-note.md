@@ -69,12 +69,18 @@ tags: []
   - 1시간 요약 인강 공부
   - 퇴근 후 위 공부하고 시간 남으면 책 차근차근 보기(-2/10까지)
 
+**2째주 주말**
+
+- 점핏 이력서 정리
+- Advanced RAG 해보기
+- 키-값 저장소 구현해보기
+
 - [Advanced+Agentic RAG 공부](https://github.com/athina-ai/rag-cookbooks)
 - [RAG Evaluating 해보기-HuggingFace](https://huggingface.co/learn/cookbook/en/rag_evaluation)
 - RAG deep dive 관련 연구 하나 진행해보기 ([docling](https://github.com/DS4SD/docling?tab=readme-ov-file) 사용?)- 주제 선정해서 평일저녁 2시간씩 소요
 - [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate) 공부
-  - Building Agents(2째주 주말)
-  - Deploying Apps(4째주 주말)
+  - Building Agents
+  - Deploying Apps
 
 **3월**
 
