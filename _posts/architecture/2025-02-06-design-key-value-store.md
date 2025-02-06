@@ -177,7 +177,9 @@ R = 읽기를 보장해야 하는 노드 수
 
   - 머클 트리 사용!
 
-    > ![머클트리(Merkle tree)란?](uploads/2025-02-06-design-key-value-store/img-1738824241928-3.png)
+    > ![머클트리(Merkle tree)란?]
+    >
+    > ![Image]({{"/assets/img/posts/2025-02-06-design-key-value-store/img-1738824241928-3.png" | relative_url }})
     >
     > - 머클 트리는 데이터를 **해시(Hash) 함수로 변환하여 트리 형태로 저장하는 구조**
     > - 루트 해시값을 비교하여, 다르면 하위 루트로 내려가 다른 데이터를 찾아내서 해당 버킷의 데이터만 동기화하면 된다.
