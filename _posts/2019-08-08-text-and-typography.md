@@ -85,6 +85,23 @@ Moon
 {: .prompt-danger }
 <!-- markdownlint-restore -->
 
+<!-- Snippet -->
+**Snippet**
+```markdown
+> An example showing the `tip` type prompt.
+{: .prompt-tip }
+
+> An example showing the `info` type prompt.
+{: .prompt-info }
+
+> An example showing the `warning` type prompt.
+{: .prompt-warning }
+
+> An example showing the `danger` type prompt.
+{: .prompt-danger }
+```
+{: .nolineno}
+
 ## Tables
 
 | Company                      | Contact          | Country |
@@ -101,6 +118,13 @@ Moon
 
 Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
 
+<!-- Snippet -->
+**Snippet**
+```markdown
+Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
+```
+{: .nolineno}
+
 ## Inline code
 
 This is an example of `Inline Code`.
@@ -108,6 +132,13 @@ This is an example of `Inline Code`.
 ## Filepath
 
 Here is the `/path/to/the/file.extend`{: .filepath}.
+
+<!-- Snippet -->
+**Snippet**
+```markdown
+Here is the `/path/to/the/file.extend`{: .filepath}.
+```
+{: .nolineno}
 
 ## Code blocks
 
@@ -135,6 +166,18 @@ fi;
 ```
 {: file='_sass/jekyll-theme-chirpy.scss'}
 
+<!-- Snippet -->
+**Snippet**
+````markdown
+```sass
+@import
+  "colors/light-typography",
+  "colors/dark-typography";
+```
+{: file='_sass/jekyll-theme-chirpy.scss'}
+````
+{: .nolineno}
+
 ## Mathematics
 
 The mathematics powered by [**MathJax**](https://www.mathjax.org/):
@@ -152,6 +195,24 @@ When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
+<!-- Snippet -->
+**Snippet**
+```latex
+$$
+\begin{equation}
+  \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
+  \label{eq:series}
+\end{equation}
+$$
+
+We can reference the equation as \eqref{eq:series}.
+
+When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+```
+{: .nolineno}
+
 ## Mermaid SVG
 
 ```mermaid
@@ -162,6 +223,19 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
   cherry :active, c, after b a, 1d
 ```
 
+<!-- Snippet -->
+**Snippet**
+````markdown
+```mermaid
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+```
+````
+{: .nolineno}
+
 ## Images
 
 ### Default (with caption)
@@ -169,19 +243,48 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 ![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" }
 _Full screen width and center alignment_
 
+<!-- Snippet -->
+**Snippet**
+```markdown
+![Desktop View](/path/to/image.png){: width="972" height="589" }
+_Full screen width and center alignment_
+```
+{: .nolineno}
+
 ### Left aligned
 
 ![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-75 .normal}
+
+<!-- Snippet -->
+**Snippet**
+```markdown
+![Desktop View](/path/to/image.png){: width="972" height="589" .w-75 .normal}
+```
+{: .nolineno}
 
 ### Float to left
 
 ![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-50 .left}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
+<!-- Snippet -->
+**Snippet**
+```markdown
+![Desktop View](/path/to/image.png){: width="972" height="589" .w-50 .left}
+```
+{: .nolineno}
+
 ### Float to right
 
 ![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-50 .right}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
+
+<!-- Snippet -->
+**Snippet**
+```markdown
+![Desktop View](/path/to/image.png){: width="972" height="589" .w-50 .right}
+```
+{: .nolineno}
 
 ### Dark/Light mode & Shadow
 
@@ -190,11 +293,37 @@ The image below will toggle dark/light mode based on theme preference, notice it
 ![light mode only](/posts/20190808/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](/posts/20190808/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
+<!-- Snippet -->
+**Snippet**
+```markdown
+![light mode only](/path/to/image-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/path/to/image-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+```
+{: .nolineno}
+
 ## Video
 
 {% include embed/youtube.html id='Balreaj8Yqs' %}
+
+<!-- Snippet -->
+**Snippet**
+```markdown
+{% raw %}
+{% include embed/youtube.html id='Balreaj8Yqs' %}
+{% endraw %}
+```
+{: .nolineno}
 
 ## Reverse Footnote
 
 [^footnote]: The footnote source
 [^fn-nth-2]: The 2nd footnote source
+
+
+<!-- Snippet -->
+**Snippet**
+```markdown
+[^footnote]: The footnote source
+[^fn-nth-2]: The 2nd footnote source
+```
+{: .nolineno}
