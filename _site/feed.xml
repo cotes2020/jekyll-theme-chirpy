@@ -4,7 +4,7 @@
   <id>https://davidazad1.github.io/</id>
   <title>Bug to Debug</title>
   <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
-  <updated>2025-02-07T18:22:11+08:00</updated>
+  <updated>2025-02-07T20:53:29+08:00</updated>
   <author>
     <name>داوود اروجی</name>
     <uri>https://davidazad1.github.io/</uri>
@@ -17,6 +17,54 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>کمی بیشتر راجب شرط ها</title>
+    <link href="https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/" rel="alternate" type="text/html" title="کمی بیشتر راجب شرط ها" />
+    <published>2025-02-07T00:00:00+08:00</published>
+  
+    <updated>2025-02-07T00:00:00+08:00</updated>
+  
+    <id>https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری\    پس از این بخش، شما خواهید توانست:        می‌دانید چگونه چندین شاخه در عبارات شرطی ایجاد کنید.     هدف از عبارات if، elif و else را در یک عبارت شرطی درک می‌کنید.     می‌توانید از عملگر باقیمانده % در عبارات بولی استفاده کنید.      مقدمه بیایید به برنامه‌ای نگاه کنیم که از کاربر می‌خواهد یک عدد وارد کند و سپس بر اساس منفی، مثبت یا صفر بودن عدد، پیام‌های مختلفی را چاپ می‌کند:  nu...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>اصطلاحات برنامه‌نویسی</title>
+    <link href="https://davidazad1.github.io/posts/Python-estelahat-barname-nevisi/" rel="alternate" type="text/html" title="اصطلاحات برنامه‌نویسی" />
+    <published>2025-02-06T00:00:00+08:00</published>
+  
+    <updated>2025-02-06T00:00:00+08:00</updated>
+  
+    <id>https://davidazad1.github.io/posts/Python-estelahat-barname-nevisi/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-estelahat-barname-nevisi/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری پس از این بخش، شما خواهید توانست:        با برخی اصطلاحات ضروری در برنامه‌نویسی آشنا شوید.     تفاوت بین عبارت (Expression) و دستور (Statement) را بدانید.     بتوانید نوع داده‌ای یک عبارت ارزیابی‌شده را تشخیص دهید.     روش‌های اشکال‌زدایی (Debugging) را برای یافتن خطاهای کد خود یاد بگیرید.     مقدمه در بخش اول این دوره، توجه زیادی به اصطلاحات نداشتیم. بنابراین، بیایید نگاهی به برخ...</summary>
+
+  </entry>
 
   
   <entry>
@@ -87,54 +135,6 @@
   
 
   <summary>چراغ مطالعه‌ی رباتیک اپل می‌تواند با کاربر خود تعامل احساسی داشته باشد و کارهای متنوعی انجام دهد.    تیم رباتیک اپل در حال توسعه‌ی محصولات جدید خانگی است و به نظر می‌رسد که یک لامپ رباتیک ظریف و هوشمند طراحی کرده است.    براساس مقاله‌ای موسوم‌به ELEGNT، محققان اپل توضیح می‌دهند که چگونه پروتوتایپ یا نمونه‌ی اولیه‌ای از یک لامپ رباتیک را ساخته‌اند که می‌تواند با کاربر به‌راحتی تعامل داشته باشد، ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>کمی بیشتر راحب متغیر ها</title>
-    <link href="https://davidazad1.github.io/posts/Python-more-about-variables/" rel="alternate" type="text/html" title="کمی بیشتر راحب متغیر ها" />
-    <published>2025-02-03T00:00:00+08:00</published>
-  
-    <updated>2025-02-03T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/Python-more-about-variables/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-more-about-variables/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اموزش پایتون" />
-    
-  
-
-  <summary>اهداف یادگیری پس از این بخش شما خواهید توانست:        از متغیرها در زمینه‌های مختلف استفاده کنید.     بدانید چه نوع داده‌هایی می‌توانند در متغیرها ذخیره شوند.     تفاوت بین رشته‌ها، اعداد صحیح و اعداد اعشاری را درک کنید.      مقدمه  متغیرها برای اهداف مختلفی در برنامه‌نویسی مورد نیاز هستند. شما می‌توانید از متغیرها برای ذخیره هر اطلاعاتی که بعداً در اجرای برنامه مورد نیاز خواهد بود، استفاده کنی...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>چالش‌های امنیت سایبری در ۲۰۲۵؛ نبرد هوش مصنوعی با هوش مصنوعی</title>
-    <link href="https://davidazad1.github.io/posts/news-chalesh-amniat-ba-ai/" rel="alternate" type="text/html" title="چالش‌های امنیت سایبری در ۲۰۲۵؛ نبرد هوش مصنوعی با هوش مصنوعی" />
-    <published>2025-02-02T00:00:00+08:00</published>
-  
-    <updated>2025-02-02T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/news-chalesh-amniat-ba-ai/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/news-chalesh-amniat-ba-ai/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اخبار تکنولوژی" />
-    
-  
-
-  <summary>در سال ۲۰۲۵، هوش مصنوعی به یکی از مهم‌ترین موضوعات در حوزه‌ی امنیت سایبری تبدیل خواهد شد. هم مهاجمان و هم مدافعان از این فناوری بهره خواهند برد، اما به نظر می‌رسد که مهاجمان سود بیشتری از آن ببرند.  هوش مصنوعی در دستان مهاجمان و مدافعان  ویلی لیشتر، مدیر بازاریابی شرکت AppSOC، معتقد است که مهاجمان سایبری از هوش مصنوعی بدون محدودیت‌های اخلاقی و دقت‌محوری بهره خواهند گرفت. به گفته‌ی او، روش‌هایی ...</summary>
 
   </entry>
 

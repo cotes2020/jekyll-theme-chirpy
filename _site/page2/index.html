@@ -30,23 +30,24 @@
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="اموزش پایتون" />
+<meta property="og:title" content="Bug to Debug" />
 <meta property="og:locale" content="fa" />
 <meta name="description" content="وبلاگ اموزش برنامه نویسی" />
 <meta property="og:description" content="وبلاگ اموزش برنامه نویسی" />
-<link rel="canonical" href="https://davidazad1.github.io/categories/%D8%A7%D9%85%D9%88%D8%B2%D8%B4-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86/" />
-<meta property="og:url" content="https://davidazad1.github.io/categories/%D8%A7%D9%85%D9%88%D8%B2%D8%B4-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86/" />
+<link rel="canonical" href="https://davidazad1.github.io/page2/" />
+<meta property="og:url" content="https://davidazad1.github.io/page2/" />
 <meta property="og:site_name" content="Bug to Debug" />
 <meta property="og:type" content="website" />
+<link rel="prev" href="https://davidazad1.github.io/" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="اموزش پایتون" />
+<meta property="twitter:title" content="Bug to Debug" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"وبلاگ اموزش برنامه نویسی","headline":"اموزش پایتون","url":"https://davidazad1.github.io/categories/%D8%A7%D9%85%D9%88%D8%B2%D8%B4-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"وبلاگ اموزش برنامه نویسی","headline":"Bug to Debug","url":"https://davidazad1.github.io/page2/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>اموزش پایتون | Bug to Debug
+  <title>Bug to Debug
   </title>
 
   <!--
@@ -112,6 +113,8 @@
   
 
   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  
 
   
 
@@ -128,6 +131,10 @@
 <!-- layout specified -->
 
 
+  
+
+  
+
 
 
 
@@ -177,9 +184,16 @@
 
   
 
+  
+    
+
+    
+
+  
 
 
-  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/fa.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/fa.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js"></script>
 
 
 
@@ -187,7 +201,7 @@
 
 
 
-<script defer src="/assets/js/dist/misc.min.js"></script>
+<script defer src="/assets/js/dist/home.min.js"></script>
 
 
 
@@ -217,7 +231,7 @@
   <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
       <!-- home -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a href="/" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>خانه</span>
@@ -381,27 +395,9 @@
       
 
       
-        
-          
-            <span>
-              <a href="/">خانه</a>
-            </span>
+        <!-- index page -->
+        <span>خانه</span>
 
-          
-        
-          
-            <span>
-              <a href="/categories/">دسته‌بندی‌ها</a>
-            </span>
-          
-        
-          
-            
-              <span>اموزش پایتون</span>
-            
-
-          
-        
       
     </nav>
     <!-- endof #breadcrumb -->
@@ -411,7 +407,7 @@
     </button>
 
     <div id="topbar-title">
-      دسته‌بندی
+      Bug to Debug
     </div>
 
     <button type="button" id="search-trigger" class="btn btn-link">
@@ -437,31 +433,112 @@
         <div class="row flex-grow-1">
           <main dir=rtl aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
             
-              
+              <!-- Refactor the HTML structure -->
 
 
 
-<article class="px-1">
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+
+<!-- Handle images -->
+
+
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
   
-    
-
-
-
-<div id="page-category">
-  <h1 class="ps-lg-2">
-    <i class="far fa-folder-open fa-fw text-muted"></i>
-    اموزش پایتون
-    <span class="lead text-muted ps-2">8</span>
-  </h1>
+  
 
   
 
-  <ul class="content ps-0">
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-install-python/">نصب پایتون و ide</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+
+
+
+
+<!-- Get pinned posts on current page -->
+
+
+
+
+
+
+<!-- Get normal posts on current page -->
+
+
+
+
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  
+    <article class="card-wrapper card">
+      <a href="/posts/Python-install-python/" class="post-preview row g-0 flex-md-row-reverse">
+        
+
+        
+
+        <div class="col-md-12">
+          <div class="card-body d-flex flex-column">
+            <h1 class="card-title my-2 mt-md-0">نصب پایتون و ide</h1>
+
+            <div class="card-text content mt-0 mb-3">
+              <p>هداف یادگیری پس از این بخش:        با پایتون اشنا خواهید شد     راجب مفسر و ide ها یاد میگیرید     ابزار های لازم برای برنامه نویسی در پایتون را نصب خواهید کرد      Python چیست؟  پایتون یک زبان برن...</p>
+            </div>
+
+            <div class="post-meta flex-grow-1 d-flex align-items-end">
+              <div class="me-auto">
+                <!-- posted date -->
+                <i class="far fa-calendar fa-fw me-1"></i>
+                <!--
   Date format snippet
   See: ${JS_ROOT}/utils/locale-dateime.js
 -->
@@ -470,8 +547,6 @@
 
 
 <time
-  
-    class="text-muted small text-nowrap"
   
   data-ts="1738166400"
   data-df="ll"
@@ -480,181 +555,105 @@
   Jan 30, 2025
 </time>
 
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-getting-started/">شروع به کار</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
 
+                <!-- categories -->
+                
+                  <i class="far fa-folder-open fa-fw me-1"></i>
+                  <span class="categories">
+                    
+                      اموزش پایتون
+                  </span>
+                
+              </div>
 
-
-
-<time
+              
+            </div>
+            <!-- .post-meta -->
+          </div>
+          <!-- .card-body -->
+        </div>
+      </a>
+    </article>
   
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738339200"
-  data-df="ll"
-  
->
-  Feb  1, 2025
-</time>
-
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-information-from-user-copy/">ورودی از کاربر</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738425600"
-  data-df="ll"
-  
->
-  Feb  2, 2025
-</time>
-
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-more-about-variables/">کمی بیشتر راحب متغیر ها</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738512000"
-  data-df="ll"
-  
->
-  Feb  3, 2025
-</time>
-
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-arithmetic-operations/">عملیات‌ حسابی</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738598400"
-  data-df="ll"
-  
->
-  Feb  4, 2025
-</time>
-
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-conditional-statements/">دستورات شرطی</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738684800"
-  data-df="ll"
-  
->
-  Feb  5, 2025
-</time>
-
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-estelahat-barname-nevisi/">اصطلاحات برنامه‌نویسی</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738771200"
-  data-df="ll"
-  
->
-  Feb  6, 2025
-</time>
-
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/Python-kami-bishtar-rajeb-shart-ha/">کمی بیشتر راجب شرط ها</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1738857600"
-  data-df="ll"
-  
->
-  Feb  7, 2025
-</time>
-
-      </li>
-    
-  </ul>
 </div>
+<!-- #post-list -->
 
-  
-</article>
+
+  <!-- The paginator for post list on HomgPage. -->
+
+<nav aria-label="Page Navigation">
+  <ul class="pagination align-items-center mt-4 mb-0">
+    <!-- left arrow -->
+    
+
+    <li class="page-item ">
+      <a class="page-link" href="/" aria-label="previous-page">
+        <i class="fas fa-angle-left"></i>
+      </a>
+    </li>
+
+    <!-- page numbers -->
+    
+    
+
+    
+      
+      
+      
+      
+      
+
+      
+
+      
+        <!-- show number -->
+        <li class="page-item ">
+          <a
+            class="page-link"
+            href="/"
+          >1</a>
+        </li>
+      
+    
+      
+      
+      
+      
+      
+
+      
+
+      
+        <!-- show number -->
+        <li class="page-item  active">
+          <a
+            class="page-link"
+            href="/page2"
+          >2</a>
+        </li>
+      
+    
+
+    <!-- mobile pagination -->
+    <li class="page-index align-middle">
+      <span>2</span>
+      <span class="text-muted">/ 2</span>
+    </li>
+
+    <!-- right arrow -->
+    
+
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="next-page">
+        <i class="fas fa-angle-right"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- .pagination -->
+
+
+
 
             
           </main>
