@@ -1,0 +1,143 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Bug to Debug</title>
+  <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
+  <updated>2025-02-07T09:22:20+08:00</updated>
+  <author>
+    <name>داوود اروجی</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="fa"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2025 داوود اروجی </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>دستورات شرطی</title>
+    <link href="http://localhost:4000/posts/Python-conditional-statements/" rel="alternate" type="text/html" title="دستورات شرطی" />
+    <published>2025-02-05T00:00:00+08:00</published>
+  
+    <updated>2025-02-05T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Python-conditional-statements/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-conditional-statements/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری پس از این بخش، شما خواهید توانست:        از دستورات شرطی ساده در برنامه‌نویسی استفاده کنید.     بدانید مقدار بولین چیست.     شرط‌ها را با استفاده از عملگرهای مقایسه‌ای بیان کنید.     مقدمه تاکنون، هر برنامه‌ای که نوشته‌ایم به ترتیب خط به خط اجرا شده است. به جای اجرای هر خط کد در هر بار اجرای برنامه، اغلب مفید است بخش‌هایی از برنامه ایجاد کنیم که فقط در شرایط خاصی اجرا شوند.  به عن...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>عملیات‌ حسابی</title>
+    <link href="http://localhost:4000/posts/Python-arithmetic-operations/" rel="alternate" type="text/html" title="عملیات‌ حسابی" />
+    <published>2025-02-04T00:00:00+08:00</published>
+  
+    <updated>2025-02-04T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Python-arithmetic-operations/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-arithmetic-operations/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری پس از این بخش، شما خواهید توانست:        از متغیرها در عملیات‌های حسابی مختلف استفاده کنید.     با اعداد در ورودی کاربر کار کنید.     مقادیر را به انواع داده‌های پایه‌ای دیگر تبدیل کنید.      مقدمه  در بخش‌های قبلی مثال‌هایی با عملیات‌های حسابی پایه دیده‌اید. در جدول زیر رایج‌ترین عملگرهای حسابی در پایتون همراه با مثال آورده شده‌اند:                 عملگر       هدف       مثال     ...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>کمی بیشتر راحب متغیر ها</title>
+    <link href="http://localhost:4000/posts/Python-more-about-variables/" rel="alternate" type="text/html" title="کمی بیشتر راحب متغیر ها" />
+    <published>2025-02-03T00:00:00+08:00</published>
+  
+    <updated>2025-02-03T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Python-more-about-variables/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-more-about-variables/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری پس از این بخش شما خواهید توانست:        از متغیرها در زمینه‌های مختلف استفاده کنید.     بدانید چه نوع داده‌هایی می‌توانند در متغیرها ذخیره شوند.     تفاوت بین رشته‌ها، اعداد صحیح و اعداد اعشاری را درک کنید.      مقدمه  متغیرها برای اهداف مختلفی در برنامه‌نویسی مورد نیاز هستند. شما می‌توانید از متغیرها برای ذخیره هر اطلاعاتی که بعداً در اجرای برنامه مورد نیاز خواهد بود، استفاده کنی...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>ورودی از کاربر</title>
+    <link href="http://localhost:4000/posts/Python-information-from-user-copy/" rel="alternate" type="text/html" title="ورودی از کاربر" />
+    <published>2025-02-02T00:00:00+08:00</published>
+  
+    <updated>2025-02-02T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Python-information-from-user-copy/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-information-from-user-copy/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری پس از این بخش، شما خواهید دانست:        چگونه برنامه‌ای بنویسید که از ورودی کاربر استفاده کند.     چگونه از متغیرها برای ذخیره ورودی و چاپ آن استفاده کنید.     چگونه رشته‌ها را ترکیب کنید.     مقدمه  ورودی به هر اطلاعاتی اشاره دارد که کاربر به برنامه می‌دهد. به طور خاص، دستور input در پایتون یک خط ورودی که توسط کاربر تایپ شده است را می‌خواند. همچنین می‌توان از آن برای نمایش پیام ب...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>شروع به کار</title>
+    <link href="http://localhost:4000/posts/Python-getting-started/" rel="alternate" type="text/html" title="شروع به کار" />
+    <published>2025-02-01T00:00:00+08:00</published>
+  
+    <updated>2025-02-01T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Python-getting-started/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-getting-started/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اموزش پایتون" />
+    
+  
+
+  <summary>اهداف یادگیری پس از این بخش:        اولین برنامه پایتون خود را نوشته و اجرا خواهید کرد.     با نحوه استفاده از دستور print آشنا خواهید شد.     قادر خواهید بود از برنامه‌نویسی برای انجام عملیات محاسباتی استفاده کنید.      مقدمه برنامه‌های کامپیوتری از دستورات تشکیل شده‌اند که هر دستور به کامپیوتر می‌گوید کاری انجام دهد. کامپیوتر این دستورات را یکی پس از دیگری اجرا می‌کند. دستورات می‌توانند برای ...</summary>
+
+  </entry>
+
+</feed>
+
+
