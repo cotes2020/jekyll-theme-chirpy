@@ -4,7 +4,7 @@
   <id>https://davidazad1.github.io/</id>
   <title>Bug to Debug</title>
   <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
-  <updated>2025-02-07T10:12:22+08:00</updated>
+  <updated>2025-02-07T18:22:11+08:00</updated>
   <author>
     <name>داوود اروجی</name>
     <uri>https://davidazad1.github.io/</uri>
@@ -68,6 +68,30 @@
 
   
   <entry>
+    <title>چراغ مطالعه‌ی رباتیک اپل؛ تعامل احساسی و کارایی متنوع</title>
+    <link href="https://davidazad1.github.io/posts/news-cheragh-motale/" rel="alternate" type="text/html" title="چراغ مطالعه‌ی رباتیک اپل؛ تعامل احساسی و کارایی متنوع" />
+    <published>2025-02-03T00:00:00+08:00</published>
+  
+    <updated>2025-02-03T00:00:00+08:00</updated>
+  
+    <id>https://davidazad1.github.io/posts/news-cheragh-motale/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/news-cheragh-motale/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اخبار تکنولوژی" />
+    
+  
+
+  <summary>چراغ مطالعه‌ی رباتیک اپل می‌تواند با کاربر خود تعامل احساسی داشته باشد و کارهای متنوعی انجام دهد.    تیم رباتیک اپل در حال توسعه‌ی محصولات جدید خانگی است و به نظر می‌رسد که یک لامپ رباتیک ظریف و هوشمند طراحی کرده است.    براساس مقاله‌ای موسوم‌به ELEGNT، محققان اپل توضیح می‌دهند که چگونه پروتوتایپ یا نمونه‌ی اولیه‌ای از یک لامپ رباتیک را ساخته‌اند که می‌تواند با کاربر به‌راحتی تعامل داشته باشد، ...</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>کمی بیشتر راحب متغیر ها</title>
     <link href="https://davidazad1.github.io/posts/Python-more-about-variables/" rel="alternate" type="text/html" title="کمی بیشتر راحب متغیر ها" />
     <published>2025-02-03T00:00:00+08:00</published>
@@ -92,49 +116,25 @@
 
   
   <entry>
-    <title>ورودی از کاربر</title>
-    <link href="https://davidazad1.github.io/posts/Python-information-from-user-copy/" rel="alternate" type="text/html" title="ورودی از کاربر" />
+    <title>چالش‌های امنیت سایبری در ۲۰۲۵؛ نبرد هوش مصنوعی با هوش مصنوعی</title>
+    <link href="https://davidazad1.github.io/posts/news-chalesh-amniat-ba-ai/" rel="alternate" type="text/html" title="چالش‌های امنیت سایبری در ۲۰۲۵؛ نبرد هوش مصنوعی با هوش مصنوعی" />
     <published>2025-02-02T00:00:00+08:00</published>
   
     <updated>2025-02-02T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/Python-information-from-user-copy/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-information-from-user-copy/" />
+    <id>https://davidazad1.github.io/posts/news-chalesh-amniat-ba-ai/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/news-chalesh-amniat-ba-ai/" />
     <author>
       <name>داوود اروجی</name>
     </author>
 
   
     
-    <category term="اموزش پایتون" />
+    <category term="اخبار تکنولوژی" />
     
   
 
-  <summary>اهداف یادگیری پس از این بخش، شما خواهید دانست:        چگونه برنامه‌ای بنویسید که از ورودی کاربر استفاده کند.     چگونه از متغیرها برای ذخیره ورودی و چاپ آن استفاده کنید.     چگونه رشته‌ها را ترکیب کنید.     مقدمه  ورودی به هر اطلاعاتی اشاره دارد که کاربر به برنامه می‌دهد. به طور خاص، دستور input در پایتون یک خط ورودی که توسط کاربر تایپ شده است را می‌خواند. همچنین می‌توان از آن برای نمایش پیام ب...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>شروع به کار</title>
-    <link href="https://davidazad1.github.io/posts/Python-getting-started/" rel="alternate" type="text/html" title="شروع به کار" />
-    <published>2025-02-01T00:00:00+08:00</published>
-  
-    <updated>2025-02-01T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/Python-getting-started/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-getting-started/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اموزش پایتون" />
-    
-  
-
-  <summary>اهداف یادگیری پس از این بخش:        اولین برنامه پایتون خود را نوشته و اجرا خواهید کرد.     با نحوه استفاده از دستور print آشنا خواهید شد.     قادر خواهید بود از برنامه‌نویسی برای انجام عملیات محاسباتی استفاده کنید.      مقدمه برنامه‌های کامپیوتری از دستورات تشکیل شده‌اند که هر دستور به کامپیوتر می‌گوید کاری انجام دهد. کامپیوتر این دستورات را یکی پس از دیگری اجرا می‌کند. دستورات می‌توانند برای ...</summary>
+  <summary>در سال ۲۰۲۵، هوش مصنوعی به یکی از مهم‌ترین موضوعات در حوزه‌ی امنیت سایبری تبدیل خواهد شد. هم مهاجمان و هم مدافعان از این فناوری بهره خواهند برد، اما به نظر می‌رسد که مهاجمان سود بیشتری از آن ببرند.  هوش مصنوعی در دستان مهاجمان و مدافعان  ویلی لیشتر، مدیر بازاریابی شرکت AppSOC، معتقد است که مهاجمان سایبری از هوش مصنوعی بدون محدودیت‌های اخلاقی و دقت‌محوری بهره خواهند گرفت. به گفته‌ی او، روش‌هایی ...</summary>
 
   </entry>
 
