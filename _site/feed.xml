@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:4000/</id>
+  <id>https://davidazad1.github.io/</id>
   <title>Bug to Debug</title>
   <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
-  <updated>2025-02-07T10:11:26+08:00</updated>
+  <updated>2025-02-07T10:12:22+08:00</updated>
   <author>
     <name>داوود اروجی</name>
-    <uri>http://localhost:4000/</uri>
+    <uri>https://davidazad1.github.io/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="https://davidazad1.github.io/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="fa"
-    href="http://localhost:4000/"/>
+    href="https://davidazad1.github.io/"/>
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <rights> © 2025 داوود اروجی </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -21,13 +21,13 @@
   
   <entry>
     <title>دستورات شرطی</title>
-    <link href="http://localhost:4000/posts/Python-conditional-statements/" rel="alternate" type="text/html" title="دستورات شرطی" />
+    <link href="https://davidazad1.github.io/posts/Python-conditional-statements/" rel="alternate" type="text/html" title="دستورات شرطی" />
     <published>2025-02-05T00:00:00+08:00</published>
   
     <updated>2025-02-05T00:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Python-conditional-statements/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Python-conditional-statements/" />
+    <id>https://davidazad1.github.io/posts/Python-conditional-statements/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-conditional-statements/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -45,13 +45,13 @@
   
   <entry>
     <title>عملیات‌ حسابی</title>
-    <link href="http://localhost:4000/posts/Python-arithmetic-operations/" rel="alternate" type="text/html" title="عملیات‌ حسابی" />
+    <link href="https://davidazad1.github.io/posts/Python-arithmetic-operations/" rel="alternate" type="text/html" title="عملیات‌ حسابی" />
     <published>2025-02-04T00:00:00+08:00</published>
   
     <updated>2025-02-04T00:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Python-arithmetic-operations/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Python-arithmetic-operations/" />
+    <id>https://davidazad1.github.io/posts/Python-arithmetic-operations/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-arithmetic-operations/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -69,13 +69,13 @@
   
   <entry>
     <title>کمی بیشتر راحب متغیر ها</title>
-    <link href="http://localhost:4000/posts/Python-more-about-variables/" rel="alternate" type="text/html" title="کمی بیشتر راحب متغیر ها" />
+    <link href="https://davidazad1.github.io/posts/Python-more-about-variables/" rel="alternate" type="text/html" title="کمی بیشتر راحب متغیر ها" />
     <published>2025-02-03T00:00:00+08:00</published>
   
     <updated>2025-02-03T00:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Python-more-about-variables/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Python-more-about-variables/" />
+    <id>https://davidazad1.github.io/posts/Python-more-about-variables/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-more-about-variables/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -93,13 +93,13 @@
   
   <entry>
     <title>ورودی از کاربر</title>
-    <link href="http://localhost:4000/posts/Python-information-from-user-copy/" rel="alternate" type="text/html" title="ورودی از کاربر" />
+    <link href="https://davidazad1.github.io/posts/Python-information-from-user-copy/" rel="alternate" type="text/html" title="ورودی از کاربر" />
     <published>2025-02-02T00:00:00+08:00</published>
   
     <updated>2025-02-02T00:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Python-information-from-user-copy/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Python-information-from-user-copy/" />
+    <id>https://davidazad1.github.io/posts/Python-information-from-user-copy/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-information-from-user-copy/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -117,13 +117,13 @@
   
   <entry>
     <title>شروع به کار</title>
-    <link href="http://localhost:4000/posts/Python-getting-started/" rel="alternate" type="text/html" title="شروع به کار" />
+    <link href="https://davidazad1.github.io/posts/Python-getting-started/" rel="alternate" type="text/html" title="شروع به کار" />
     <published>2025-02-01T00:00:00+08:00</published>
   
     <updated>2025-02-01T00:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Python-getting-started/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Python-getting-started/" />
+    <id>https://davidazad1.github.io/posts/Python-getting-started/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/Python-getting-started/" />
     <author>
       <name>داوود اروجی</name>
     </author>
