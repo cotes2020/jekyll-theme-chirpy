@@ -50,7 +50,13 @@
       .card-title {
         @extend %text-clip;
 
-        color: var(--heading-color) !important;
+        // color: var(--heading-color) !important;
+        color: #42d392; /* Fallback color for older browsers */
+        background-image: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+        background-image: linear-gradient(315deg, #42d392 25%, #647eff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
         font-size: 1.25rem;
       }
 

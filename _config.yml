@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: Bug to Debug # the main title
 
-tagline: وبلاگی برای اموزش برنامه نویسی # it will display as the subtitle
+tagline: ما تو این وبلاگ راجب اخبار تکنولوژی و اموزش های برنامه نویسی صحبت میکنیم # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   وبلاگ اموزش برنامه نویسی

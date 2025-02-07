@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>https://davidazad1.github.io/</id>
+  <id>http://localhost:4000/</id>
   <title>Bug to Debug</title>
   <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
-  <updated>2025-02-07T20:53:29+08:00</updated>
+  <updated>2025-02-08T03:56:50+08:00</updated>
   <author>
     <name>داوود اروجی</name>
-    <uri>https://davidazad1.github.io/</uri>
+    <uri>http://localhost:4000/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="https://davidazad1.github.io/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="fa"
-    href="https://davidazad1.github.io/"/>
+    href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <rights> © 2025 داوود اروجی </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -21,13 +21,13 @@
   
   <entry>
     <title>کمی بیشتر راجب شرط ها</title>
-    <link href="https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/" rel="alternate" type="text/html" title="کمی بیشتر راجب شرط ها" />
+    <link href="http://localhost:4000/posts/Python-kami-bishtar-rajeb-shart-ha/" rel="alternate" type="text/html" title="کمی بیشتر راجب شرط ها" />
     <published>2025-02-07T00:00:00+08:00</published>
   
     <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/" />
+    <id>http://localhost:4000/posts/Python-kami-bishtar-rajeb-shart-ha/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-kami-bishtar-rajeb-shart-ha/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -44,86 +44,14 @@
 
   
   <entry>
-    <title>اصطلاحات برنامه‌نویسی</title>
-    <link href="https://davidazad1.github.io/posts/Python-estelahat-barname-nevisi/" rel="alternate" type="text/html" title="اصطلاحات برنامه‌نویسی" />
-    <published>2025-02-06T00:00:00+08:00</published>
+    <title>احتمال رونمایی آیفون SE 4 در هفته آینده</title>
+    <link href="http://localhost:4000/posts/4/" rel="alternate" type="text/html" title="احتمال رونمایی آیفون SE 4 در هفته آینده" />
+    <published>2025-02-07T00:00:00+08:00</published>
   
-    <updated>2025-02-06T00:00:00+08:00</updated>
+    <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/Python-estelahat-barname-nevisi/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-estelahat-barname-nevisi/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اموزش پایتون" />
-    
-  
-
-  <summary>اهداف یادگیری پس از این بخش، شما خواهید توانست:        با برخی اصطلاحات ضروری در برنامه‌نویسی آشنا شوید.     تفاوت بین عبارت (Expression) و دستور (Statement) را بدانید.     بتوانید نوع داده‌ای یک عبارت ارزیابی‌شده را تشخیص دهید.     روش‌های اشکال‌زدایی (Debugging) را برای یافتن خطاهای کد خود یاد بگیرید.     مقدمه در بخش اول این دوره، توجه زیادی به اصطلاحات نداشتیم. بنابراین، بیایید نگاهی به برخ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>دستورات شرطی</title>
-    <link href="https://davidazad1.github.io/posts/Python-conditional-statements/" rel="alternate" type="text/html" title="دستورات شرطی" />
-    <published>2025-02-05T00:00:00+08:00</published>
-  
-    <updated>2025-02-05T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/Python-conditional-statements/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-conditional-statements/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اموزش پایتون" />
-    
-  
-
-  <summary>اهداف یادگیری پس از این بخش، شما خواهید توانست:        از دستورات شرطی ساده در برنامه‌نویسی استفاده کنید.     بدانید مقدار بولین چیست.     شرط‌ها را با استفاده از عملگرهای مقایسه‌ای بیان کنید.     مقدمه تاکنون، هر برنامه‌ای که نوشته‌ایم به ترتیب خط به خط اجرا شده است. به جای اجرای هر خط کد در هر بار اجرای برنامه، اغلب مفید است بخش‌هایی از برنامه ایجاد کنیم که فقط در شرایط خاصی اجرا شوند.  به عن...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>عملیات‌ حسابی</title>
-    <link href="https://davidazad1.github.io/posts/Python-arithmetic-operations/" rel="alternate" type="text/html" title="عملیات‌ حسابی" />
-    <published>2025-02-04T00:00:00+08:00</published>
-  
-    <updated>2025-02-04T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/Python-arithmetic-operations/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-arithmetic-operations/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اموزش پایتون" />
-    
-  
-
-  <summary>اهداف یادگیری پس از این بخش، شما خواهید توانست:        از متغیرها در عملیات‌های حسابی مختلف استفاده کنید.     با اعداد در ورودی کاربر کار کنید.     مقادیر را به انواع داده‌های پایه‌ای دیگر تبدیل کنید.      مقدمه  در بخش‌های قبلی مثال‌هایی با عملیات‌های حسابی پایه دیده‌اید. در جدول زیر رایج‌ترین عملگرهای حسابی در پایتون همراه با مثال آورده شده‌اند:                 عملگر       هدف       مثال     ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>چراغ مطالعه‌ی رباتیک اپل؛ تعامل احساسی و کارایی متنوع</title>
-    <link href="https://davidazad1.github.io/posts/news-cheragh-motale/" rel="alternate" type="text/html" title="چراغ مطالعه‌ی رباتیک اپل؛ تعامل احساسی و کارایی متنوع" />
-    <published>2025-02-03T00:00:00+08:00</published>
-  
-    <updated>2025-02-03T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/news-cheragh-motale/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/news-cheragh-motale/" />
+    <id>http://localhost:4000/posts/4/</id>
+    <content type="text/html" src="http://localhost:4000/posts/4/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -134,7 +62,79 @@
     
   
 
-  <summary>چراغ مطالعه‌ی رباتیک اپل می‌تواند با کاربر خود تعامل احساسی داشته باشد و کارهای متنوعی انجام دهد.    تیم رباتیک اپل در حال توسعه‌ی محصولات جدید خانگی است و به نظر می‌رسد که یک لامپ رباتیک ظریف و هوشمند طراحی کرده است.    براساس مقاله‌ای موسوم‌به ELEGNT، محققان اپل توضیح می‌دهند که چگونه پروتوتایپ یا نمونه‌ی اولیه‌ای از یک لامپ رباتیک را ساخته‌اند که می‌تواند با کاربر به‌راحتی تعامل داشته باشد، ...</summary>
+  <summary>خبرگزاری بلومبرگ گزارش داده است که اپل ممکن است هفته‌ی آینده از نسل جدید آیفون SE رونمایی کند. این گوشی احتمالا پیش از پایان ماه فوریه (اواسط اسفند) در دسترس خریداران قرار خواهد گرفت.  کاهش موجودی مدل فعلی، نشانه‌ای از عرضه‌ی نسخه‌ی جدید  آیفون SE 4 تاکنون در تصاویر و ویدیوهای متعددی دیده شده است. بلومبرگ اشاره کرده که موجودی مدل فعلی این گوشی در انبارهای اپل کاهش یافته، موضوعی که معمولاً نشانه...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>تکذیب شایعه‌ی رفع فیلتر پلتفرم‌های خارجی در ۲۲ بهمن</title>
+    <link href="http://localhost:4000/posts/3/" rel="alternate" type="text/html" title="تکذیب شایعه‌ی رفع فیلتر پلتفرم‌های خارجی در ۲۲ بهمن" />
+    <published>2025-02-07T00:00:00+08:00</published>
+  
+    <updated>2025-02-07T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/3/</id>
+    <content type="text/html" src="http://localhost:4000/posts/3/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اخبار تکنولوژی" />
+    
+  
+
+  <summary>بر اساس پیگیری‌های انجام‌شده، سخنگوی مرکز ملی فضای مجازی اخبار مربوط به رفع فیلتر برخی پلتفرم‌های خارجی در ایام ۲۲ بهمن را رد کرده است. حسین دلیریان اعلام کرده که این ادعاها صحت ندارند و هیچ نهادی تصمیمی در این زمینه اتخاذ نکرده است.  گمانه‌زنی‌ها درباره‌ی رفع فیلتر و پاسخ مسئولان  در روزهای اخیر، شایعاتی منتشر شد مبنی بر اینکه احتمال دارد برخی پلتفرم‌های مسدودشده مانند اینستاگرام و تلگرام در آ...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>آیا مدل جدید مک‌بوک ایر و آیپد در راه است؟</title>
+    <link href="http://localhost:4000/posts/1/" rel="alternate" type="text/html" title="آیا مدل جدید مک‌بوک ایر و آیپد در راه است؟" />
+    <published>2025-02-07T00:00:00+08:00</published>
+  
+    <updated>2025-02-07T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/1/</id>
+    <content type="text/html" src="http://localhost:4000/posts/1/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اخبار تکنولوژی" />
+    
+  
+
+  <summary>گزارش‌های جدید نشان می‌دهند که اپل احتمالاً به‌زودی از نسل جدید مک‌بوک ایر و آیپد ایر رونمایی خواهد کرد. بلومبرگ اعلام کرده است که آیفون SE 4 ممکن است طی روزهای آینده معرفی شود و هم‌زمان، کاهش موجودی آیپد ایر و مک‌بوک ایر در فروشگاه‌های اپل، احتمال عرضه‌ی نسخه‌های جدید این محصولات را تقویت کرده است.  آیا آیپد و مک‌های جدید همراه با آیفون SE 4 معرفی خواهند شد؟  مدتی است که شایعاتی درباره‌ی عرضه‌...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران</title>
+    <link href="http://localhost:4000/posts/0/" rel="alternate" type="text/html" title="دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران" />
+    <published>2025-02-07T00:00:00+08:00</published>
+  
+    <updated>2025-02-07T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/0/</id>
+    <content type="text/html" src="http://localhost:4000/posts/0/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="اخبار تکنولوژی" />
+    
+  
+
+  <summary>گزارش‌های اخیر نشان می‌دهند که دولت بریتانیا در اقدامی بحث‌برانگیز، از شرکت اپل خواسته است تا یک در پشتی در سرویس‌های رمزگذاری‌شده خود ایجاد کند تا امکان دسترسی به داده‌های کاربران فراهم شود. در واکنش به این درخواست، اپل ممکن است سرویس ذخیره‌سازی رمزگذاری‌شده خود را در این کشور غیرفعال کند. کارشناسان هشدار داده‌اند که چنین اقدامی می‌تواند باعث شود سایر کشورها نیز درخواست‌های مشابهی از شرکت‌های ...</summary>
 
   </entry>
 
