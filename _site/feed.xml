@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>https://davidazad1.github.io/</id>
+  <id>http://localhost:4000/</id>
   <title>Bug to Debug</title>
   <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
-  <updated>2025-02-08T04:28:07+08:00</updated>
+  <updated>2025-02-08T04:39:35+08:00</updated>
   <author>
     <name>داوود اروجی</name>
-    <uri>https://davidazad1.github.io/</uri>
+    <uri>http://localhost:4000/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="https://davidazad1.github.io/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="fa"
-    href="https://davidazad1.github.io/"/>
+    href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <rights> © 2025 داوود اروجی </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -21,13 +21,13 @@
   
   <entry>
     <title>کمی بیشتر راجب شرط ها</title>
-    <link href="https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/" rel="alternate" type="text/html" title="کمی بیشتر راجب شرط ها" />
+    <link href="http://localhost:4000/posts/Python-kami-bishtar-rajeb-shart-ha/" rel="alternate" type="text/html" title="کمی بیشتر راجب شرط ها" />
     <published>2025-02-07T00:00:00+08:00</published>
   
     <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/Python-kami-bishtar-rajeb-shart-ha/" />
+    <id>http://localhost:4000/posts/Python-kami-bishtar-rajeb-shart-ha/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Python-kami-bishtar-rajeb-shart-ha/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -45,13 +45,13 @@
   
   <entry>
     <title>احتمال رونمایی آیفون SE 4 در هفته آینده</title>
-    <link href="https://davidazad1.github.io/posts/4/" rel="alternate" type="text/html" title="احتمال رونمایی آیفون SE 4 در هفته آینده" />
+    <link href="http://localhost:4000/posts/4/" rel="alternate" type="text/html" title="احتمال رونمایی آیفون SE 4 در هفته آینده" />
     <published>2025-02-07T00:00:00+08:00</published>
   
     <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/4/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/4/" />
+    <id>http://localhost:4000/posts/4/</id>
+    <content type="text/html" src="http://localhost:4000/posts/4/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -69,13 +69,13 @@
   
   <entry>
     <title>تکذیب شایعه‌ی رفع فیلتر پلتفرم‌های خارجی در ۲۲ بهمن</title>
-    <link href="https://davidazad1.github.io/posts/3/" rel="alternate" type="text/html" title="تکذیب شایعه‌ی رفع فیلتر پلتفرم‌های خارجی در ۲۲ بهمن" />
+    <link href="http://localhost:4000/posts/3/" rel="alternate" type="text/html" title="تکذیب شایعه‌ی رفع فیلتر پلتفرم‌های خارجی در ۲۲ بهمن" />
     <published>2025-02-07T00:00:00+08:00</published>
   
     <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/3/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/3/" />
+    <id>http://localhost:4000/posts/3/</id>
+    <content type="text/html" src="http://localhost:4000/posts/3/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -93,13 +93,13 @@
   
   <entry>
     <title>آیا مدل جدید مک‌بوک ایر و آیپد در راه است؟</title>
-    <link href="https://davidazad1.github.io/posts/1/" rel="alternate" type="text/html" title="آیا مدل جدید مک‌بوک ایر و آیپد در راه است؟" />
+    <link href="http://localhost:4000/posts/1/" rel="alternate" type="text/html" title="آیا مدل جدید مک‌بوک ایر و آیپد در راه است؟" />
     <published>2025-02-07T00:00:00+08:00</published>
   
     <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/1/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/1/" />
+    <id>http://localhost:4000/posts/1/</id>
+    <content type="text/html" src="http://localhost:4000/posts/1/" />
     <author>
       <name>داوود اروجی</name>
     </author>
@@ -117,13 +117,13 @@
   
   <entry>
     <title>دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران</title>
-    <link href="https://davidazad1.github.io/posts/0/" rel="alternate" type="text/html" title="دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران" />
+    <link href="http://localhost:4000/posts/0/" rel="alternate" type="text/html" title="دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران" />
     <published>2025-02-07T00:00:00+08:00</published>
   
     <updated>2025-02-07T00:00:00+08:00</updated>
   
-    <id>https://davidazad1.github.io/posts/0/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/0/" />
+    <id>http://localhost:4000/posts/0/</id>
+    <content type="text/html" src="http://localhost:4000/posts/0/" />
     <author>
       <name>داوود اروجی</name>
     </author>
