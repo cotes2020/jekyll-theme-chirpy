@@ -88,6 +88,21 @@
   --dash-color: rgb(63, 65, 68);
   --search-tag-bg: #292828;
 
+  /* Graph */
+  --graph-border: #3B4F58;
+  --graph-tag-node-color: #f8f9fa;
+  --graph-post-node-color: #8AB4F8;
+  --graph-tag-node-hover-color: #dee2e6;
+  --graph-post-node-hover-color: #0d6efd;
+  --graph-edges-color: #0056b2;
+  --graph-edges-hover-color: #004085;
+  --graph-tag-node-stroke-color: var(--main-bg);
+  --graph-post-node-stroke-color: var(--main-bg);
+  --graph-tag-node-stroke-hover-color: var(--tag-node-hover-color);
+  --graph-post-node-stroke-hover-color: var(--post-node-hover-color);
+  --graph-tag-label-color: #585858;
+  --graph-post-label-color: #34343c;
+
   /* Categories */
   --categories-border: rgb(64, 66, 69, 0.5);
   --categories-hover-bg: rgb(73, 75, 76);

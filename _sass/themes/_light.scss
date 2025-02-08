@@ -88,6 +88,23 @@
   --tag-hover: rgb(222, 226, 230);
   --search-tag-bg: #f8f9fa;
 
+  /* Graph */
+  --graph-border: #dee2e6;
+  --graph-tag-node-color: #f8f9fa;
+  --graph-post-node-color: #0056b2;
+  --graph-tag-node-hover-color: #dee2e6;
+  --graph-post-node-hover-color: #0d6efd;
+  --graph-edges-color: #dee2e6;
+  --graph-edges-hover-color: #004085;
+  --graph-tag-node-stroke-color: #dee2e6;
+  --graph-post-node-stroke-color: var(--main-bg);
+  --graph-tag-node-stroke-hover-color: var(--tag-node-hover-color);
+  --graph-post-node-stroke-hover-color: var(--post-node-hover-color);
+  --graph-tag-label-color: #585858;
+  --graph-post-label-color: #34343c;
+  
+
+
   /* Categories */
   --categories-border: rgba(0, 0, 0, 0.125);
   --categories-hover-bg: var(--btn-border-color);

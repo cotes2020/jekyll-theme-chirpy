@@ -1,0 +1,51 @@
+.graph-container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-radius: 0.7em;
+    border: 1px solid var(--graph-border) !important;
+    overflow: hidden;
+    align-items: center;
+}
+
+.post-node {
+    r: 10;
+    fill: var(--graph-post-node-color);
+    stroke: var(--graph-post-node-stroke-color);
+    stroke-width: 1.5px;
+}
+
+.post-node:hover {
+    fill: var(--graph-post-node-hover-color);
+    stroke: var(--graph-post-node-hover-stroke-color);
+}
+
+.tag-node {
+    fill: var(--graph-tag-node-color);
+    stroke: var(--graph-tag-node-stroke-color);
+    stroke-width: 1.5px;
+}
+
+.tag-node:hover {
+    fill: var(--graph-tag-node-hover-color);
+    stroke: var(--graph-tag-node-hover-stroke-color);
+}
+
+.post-label {
+    text-anchor: middle;
+    font-size: 12px;
+    fill: var(--text-color);
+}
+  
+.tag-label {
+    text-anchor: middle;
+    font-size: 12px;
+    fill: var(--text-color);
+}
+
+.link {
+    stroke: var(--graph-edges-color);
+    stroke-opacity: 0.5;
+}

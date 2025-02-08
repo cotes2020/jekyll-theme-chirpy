@@ -6,7 +6,7 @@ description: >-
 author: cotes
 date: 2019-08-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
-tags: [getting started]
+tags: [getting started, chirpy, showcase]
 pin: true
 media_subpath: '/posts/20180809'
 ---
