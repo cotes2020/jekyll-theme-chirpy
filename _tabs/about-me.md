@@ -5,16 +5,23 @@ toc: true
 order: 1
 ---
 
-<div style="display: flex; align-items: flex-start; gap: 20px;">
-  <img src="/assets/img/posts/profile.png" alt="profile-img" style="border-radius: 10rem; width: 250px; height: auto; margin-right: 20px; margin-bottom: 20px;">
-  <div style="padding: 20px;">
-    <h3>AI Software Engineer, 정예울입니다.</h3>
-    <p>AI 기술을 활용하여 혁신적인 솔루션을 개발하고, 다양한 경험을 통해 지속적으로 성장하고 있습니다!</p>
-    <p>새로운 도전을 통해 배운 지식을 실생활의 아이디어와 결합하여 창의적인 가치를 창출합니다.😀</p>
-  </div>
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
+    <img src="/assets/img/posts/profile.png" alt="profile-img" style="border-radius: 10rem; width: 200px; height: auto; margin: 20px;">
+        <div style="padding: 20px; padding-left: 5px;">
+                <h3 style="margin-top:0px;">AI Software Engineer, <strong>정예울</strong>입니다. </h3>
+                        <div style="margin-top: 15px;">
+                                <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: #222;">다양한 개발 경험</p>
+                                <p style="margin: 3px 0 15px; font-size: 0.9rem; color: #666;">LINEBank Japan 코어뱅킹 개발, AI 애플리케이션 개발, DevOps 경험 보유</p>
+                                <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: #222;">자동화된 프로세스 구축</p>
+                                <p style="margin: 3px 0 15px; font-size: 0.9rem; color: #666;">지속 가능한 API 문서 자동화, 테스트 데이터 생성 최적화 경험</p>
+                                <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: #222;">협업 및 커뮤니케이션</p>
+                                <p style="margin: 3px 0 0; font-size: 0.9rem; color: #666;">이슈 관리 능숙, 사내 포럼 52개 글 작성, 개인 기술블로그 운영을 통한 지식 공유</p>
+                        </div>
+        </div>
 </div>
 
 | E-mail | papooo.dev@gmail.com |
+| LinkedIn | https://www.linkedin.com/in/yewool-jeong-091719342 |
 | Github | [github.com/papooo-dev](https://github.com/papooo-dev) |
 | Blog | `now`: [https://papooo-dev.github.io/](https://papooo-dev.github.io/)<br>`previous`: [https://creamilk88.tistory.com/](https://creamilk88.tistory.com/) |
 
@@ -22,33 +29,34 @@ order: 1
 
 ## 🛠 Skills
 
-- **AI**: Langchain, Prompt Engineering
-- **Languages**: Java, Python, JavaScript
-- **Frameworks**: Spring Boot, React, FastAPI, Flask, Node.js
-- **Tools & Platforms**: Git, GitLab, Docker, AWS
-- **Databases**: PostgreSQL, Oracle, MySQL
-- **Others**: CICD, LLM, Memory, RAG
+| 구분                      | Skill                                           |
+| ------------------------- | ----------------------------------------------- |
+| **AI**                    | Langchain, Prompt Engineering, LLM, Memory, RAG |
+| **Programming Languages** | Java, Python, JavaScript                        |
+| **Framework / Library**   | SpringBoot, React, FastAPI, Flask               |
+| **Tools & DevOps**        | Docker, AWS, Git, Gitlab, CI/CD                 |
+| **Databases**             | Oracle, MySQL, PostgreSQL                       |
 
 ---
 
 ## 💼 Work Activities
 
-### **Bankware Global**
+### **Bankware Global** (총 3년 10개월)
 
-#### **_`2023.07 ~ 현재`_ SW 연구소 (주임)**
+#### **_`2023.07 ~ 현재`_ SW 연구소 (주임)** (1년 8개월)
 
 <!-- **`사내 AI 툴 개발`**, **`기술문서 자동화`**, **`코어뱅킹 시스템 개발`**, **`테스트 자동화 프로그램 운영`** -->
 
 **Core Responsibilities & Achievements**
 
 - **AI 기반 어플리케이션 개발**
-  - AI를 통해 BDD 개발 방식에 자동화를 도입하는 툴과 대량의 테스트 데이터를 생성하는 프로그램을 개발하였습니다.
-- **Java(POJO) API 명세서 자동화 프로세스 구축**
-  - Javadoc을 통한 Docusaurus API 명세서 자동화 프로세스를 구축하여, 문서의 지속 가능성과 최신화를 가능하도록 하였습니다.
-- **LangChain 사내 강의 진행**
-  - 10회 차로 구성된 강의를 통해 기본 이론부터 실습까지 진행하며, 사내 AI 제품 개발에 기여하였습니다.
-- **CS Portal 프로젝트 전반 주도**
-  - SpringBoot3, WebFlux 기반의 고객사 이슈 트래킹 웹 애플리케이션의 개발 전과정을 진행하였습니다.
+  - AI를 활용하여 BDD 개발 방식의 자동화 도구와 대량의 테스트 데이터 생성 프로그램을 성공적으로 개발하였습니다. 이를 통해 개발 효율성과 데이터 품질을 크게 향상시켰습니다.
+- **지속적이고 자동화된 프로세스 구축**
+  - Java POJO 기반의 API 명세서 자동화 프로세스를 구축하여 문서의 지속 가능성과 최신화를 보장하였습니다.
+  - 파이프라인 구조 개선을 통해 배포 속도를 2.5배 향상시켰습니다.
+- **지식 공유 활동**
+  - 10회 차로 구성된 LangChain 사내 강의를 통해 기본 이론부터 실습까지 진행하며, 사내 AI 제품 개발 역량을 강화하였습니다.
+  - 회사 포럼에 AI 트렌드, 사용법, 개발 관련 포스팅을 한 해 동안 51개 이상 작성하여 사내 지식 공유에 활발히 기여하였습니다.
 
 **Impactful Experiences & Insights**
 
@@ -57,9 +65,9 @@ order: 1
   - 해결 방안: LLM으로 데이터 구조 분석 후 데이터 생성이 가능한 Python 코드를 생성, 초기 1회 LLM 호출 뒤 이후 LLM 호출 없이 데이터를 무한 확장 가능하도록 설계. faker 모듈을 활용해 실제와 유사한 고품질 데이터 생성.
   - 성과: 1,000,000건의 mock 데이터를 72.38초 만에 생성, 데이터 생성 비용과 속도를 획기적으로 최적화.
 
-#### **_`2021.03 ~ 2022.05`_ Software Engineer**
+#### **_`2021.04 ~ 2022.05`_ Software Engineer** (2년 2개월)
 
-**[Core Responsibilities & Achievements]**
+**Core Responsibilities & Achievements**
 
 - **LINE Bank Japan 코어뱅킹 시스템 개발**
   - 고객업무를 담당하여 비대면 고객가입 및 고객 관리 시스템을 개발하였습니다.
@@ -390,5 +398,5 @@ _2024.12.20_
 Available upon request (요청 시 제공 가능)
 
 <!-- prettier-ignore -->
-> 마지막 업데이트 : 2025/01/26
+> 마지막 업데이트 : 2025/02/08
 {: .prompt-tip }
