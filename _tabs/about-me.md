@@ -5,11 +5,15 @@ toc: true
 order: 1
 ---
 
+<div style="text-align: right;">
+    <a href="/assets/files/yewool-jeong-20250208.pdf" download="yewool_jeong-cv.pdf" style="display: inline-block; padding: 2px 6px; background-color: #ffffff; color: #717171; text-decoration: none; border-radius: 5px; border: 2px solid #d3d3d3;" onmouseover="this.style.backgroundColor='#fffcdc';" onmouseout="this.style.backgroundColor='#ffffff';">⬇️  Download My CV (PDF)</a>
+</div>
+
 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
     <img src="/assets/img/posts/profile.png" alt="profile-img" style="border-radius: 10rem; width: 200px; height: auto; margin: 20px;">
         <div style="padding: 20px; padding-left: 5px;">
-                <h3 style="margin-top:0px;">AI Software Engineer, <strong>정예울</strong>입니다. </h3>
-                        <div style="margin-top: 15px;">
+                <h3 style="margin-top:0px;"><strong>AI Software Engineer, 정예울입니다.</strong> </h3>
+                        <div style="margin-top: 15px; padding: 10px;">
                                 <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: #222;">다양한 개발 경험</p>
                                 <p style="margin: 3px 0 15px; font-size: 0.9rem; color: #666;">LINEBank Japan 코어뱅킹 개발, AI 애플리케이션 개발, DevOps 경험 보유</p>
                                 <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: #222;">자동화된 프로세스 구축</p>
@@ -21,8 +25,8 @@ order: 1
 </div>
 
 | E-mail | papooo.dev@gmail.com |
-| LinkedIn | https://www.linkedin.com/in/yewool-jeong-091719342 |
 | Github | [github.com/papooo-dev](https://github.com/papooo-dev) |
+| LinkedIn | [LinkedIn/yewool-jeong](https://www.linkedin.com/in/yewool-jeong-091719342) |
 | Blog | `now`: [https://papooo-dev.github.io/](https://papooo-dev.github.io/)<br>`previous`: [https://creamilk88.tistory.com/](https://creamilk88.tistory.com/) |
 
 ---

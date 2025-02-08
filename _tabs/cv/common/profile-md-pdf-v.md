@@ -16,8 +16,8 @@
 | Mobile   | 010-3595-9818                                                                                                                                            |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | E-mail   | papooo.dev@gmail.com                                                                                                                                     |
-| LinkedIn | https://www.linkedin.com/in/yewool-jeong-091719342                                                                                                       |
 | Github   | [github.com/papooo-dev](https://github.com/papooo-dev)                                                                                                   |
+| LinkedIn | https://www.linkedin.com/in/yewool-jeong-091719342                                                                                                       |
 | Blog     | `now`: [https://papooo-dev.github.io/](https://papooo-dev.github.io/)<br/>`previous`: [https://creamilk88.tistory.com/](https://creamilk88.tistory.com/) |
 
 ---
@@ -122,7 +122,7 @@
 - 기간: 2024/01 - 2024/04 (4M)
 - 프로그램 개요:
   CS Portal은 MA(유지보수 계약) 고객사를 위한 이슈 트래킹 웹 애플리케이션으로, GitLab Service Desk의 한계점을 개선하여 프로젝트별 이슈를 중앙 집중적으로 관리할 수 있도록 지원합니다. 고객사와 기술 담당자 모두에게 효율적인 이슈 관리와 히스토리 추적이 가능한 통합 플랫폼을 제공합니다.
-- 기술 스택: `Java17`, `Spring boot3`, `Spring Security`, `Spring WebFlux`, `JPA`,  `Postgresql`, `React(Material-UI)`, `GitLab Service Desk API`, `Multi Module Architecture`, `Reactive Programming`, `CICD`, `AWS E2C`
+- 기술 스택: `Java17`, `Spring boot3`, `Spring Security`, `Spring WebFlux`, `JPA`, `Postgresql`, `React(Material-UI)`, `GitLab Service Desk API`, `Multi Module Architecture`, `Reactive Programming`, `CICD`, `AWS E2C`
 - 인력구성 및 기여도: SWE(1명) / 기여도 100%
 - 주요 업무 및 상세 역할:
   - RESTful API 설계 및 개발 및 DB 모델 설계
@@ -140,13 +140,13 @@
 
 - 프로그램 개요: 기존 대외 연계 인터페이스 시뮬레이션 솔루션에 응답 다양화, REST 시뮬레이터 등 추가 기능 개발
 
-- 기술 스택: `Java8`, `Spring Boot2`, `React`, `REST 통신(HTTP)`, `TCP 통신`, `MySQL` 
+- 기술 스택: `Java8`, `Spring Boot2`, `React`, `REST 통신(HTTP)`, `TCP 통신`, `MySQL`
 
 - 인력구성 및 기여도: SWE(2명) / 기여도 30%
 
 - 주요 업무 및 상세 역할:
 
-  - REST API  시뮬레이터 기능 개발: OpenAPI 명세서를 파싱하여, REST API 서버 및 클라이언트 시뮬레이터 제공, 대상기관 정보와 연동하여 인터페이스 거래 테스트 기능
+  - REST API 시뮬레이터 기능 개발: OpenAPI 명세서를 파싱하여, REST API 서버 및 클라이언트 시뮬레이터 제공, 대상기관 정보와 연동하여 인터페이스 거래 테스트 기능
 
   - 배포 설치 패키징 및 가이드 작성 작업: docker 이미지, jar를 통한 설치 패키징 작업
 
@@ -173,10 +173,11 @@
 
 - 프로그램 개요:
   - LINE Bank Japan의 코어뱅킹 시스템 개발 프로젝트
-  
 - 기술 스택: `Java`, `Node.js`,`Oracle`, `Git`, `GitLab`, `AngularJS`, `BXM Framework(SpringBoot 기반)`
 
-- 인력구성 및 기여도: LINE Finance Japan+Korea와 BwG협력, BwG 인력(50명), 고객팀 인력(8명) / 팀 내 기여도 30%
+- 고객사: LINE Bank Japan 및 Korea (운용인원: 약 100여명)
+
+- 인력구성 및 기여도: BwG(자사) 인력(80명), 고객팀 인력(8명) / 팀 내 기여도 30%
 
 - 주요 업무 및 상세 역할:
 
@@ -211,7 +212,7 @@
 
 국어국문학과 학사, 문화관광콘텐츠학과 복수전공
 
-_2013.03 ~ 2018.02_
+_2013.03 ~ 2019.02_
 
 ---
 
@@ -222,13 +223,13 @@ _2013.03 ~ 2018.02_
 _2024.12.20_
 
 - **개요**: AWS 클라우드 서비스를 활용한 문제 해결 실습 이벤트.
-- **성과**:
+- **주요 성과**:
   - Storage 부문 1등 달성.
   - AWS 서비스 활용 능력 향상 및 협업과 AI 활용 문제 해결 능력 강화.
 
 ### 사내 LangChain 강의 진행
 
-*2024/06 - 2024/07 (1.5M, 10회)*
+_2024/06 - 2024/07 (1.5M, 10회)_
 
 - **개요**: LangChain 기초 및 응용 스터디 자료를 준비하고 강의를 진행하여, 사내 AI 활용 역량을 강화
 - **주요 성과**
