@@ -1,6 +1,6 @@
 <!-- The Side Bar -->
 
-<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+<aside dir={{ site.direction | default: ltr }} aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {%- if site.avatar != empty and site.avatar -%}

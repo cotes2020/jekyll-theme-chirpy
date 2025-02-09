@@ -1,6 +1,6 @@
 <!-- Post sharing snippet -->
 
-<div class="share-wrapper d-flex align-items-center">
+<div dir={{ site.direction | default: ltr }} class="share-wrapper d-flex align-items-center">
   <span class="share-label text-muted">{{ site.data.locales[include.lang].post.share }}</span>
   <span class="share-icons">
     {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}

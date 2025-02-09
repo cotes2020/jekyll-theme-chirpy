@@ -8,6 +8,15 @@ theme: jekyll-theme-chirpy
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
 
+# the direction of the webpage
+#
+# Available options:
+#
+#     ltr — use left to right direction (default)
+#     rtl — use right to left direction
+#
+direction: rtl
+
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Shanghai
 
