@@ -308,7 +308,7 @@ _2023/08 ~ 2023/12 (5M)_
 
 ### `LINE Bank Japan 코어뱅킹 프로젝트`
 
-_2021/04 ~ 2022/04 (13M)_
+_2021/04 ~ 2023/04 (24M)_
 
 - **개요** : LINE Bank Japan의 코어뱅킹 시스템 고객 업무 개발, 자동화 테스트 프로그램 관리
 - **기술 스택**: Java, Node.js, Oracle, Git, AngularJS, BXM Framework

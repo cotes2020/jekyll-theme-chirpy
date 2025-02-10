@@ -33,7 +33,6 @@ tags: []
 
 - [x] 이력서 - 포트폴리오 작성 => 링크드인도 연동해서 채우기
 - [x] 이력서 보강하기 (경험, 해결에 대한 부분 중심으로)
-- [ ] 아래 공부할 내용들을 일정을 잡아보자!
 - [ ] 아키텍쳐 공부 - 일단, 책으로 공부해보기 (하단 링크에 개념 하나씩 공부해보는 것도 좋을듯)
 - [ ] Java reactive programming 공부
 - [ ] 아주 작은 주제의 사이드 프로젝트 해보고 싶은거 진행하기 (목적: java reactive programming 적용)
@@ -44,36 +43,15 @@ tags: []
 
 ### Study Roadmap
 
-금-일
-
-- (daily) 미디엄 글 하나보고 정리 - RAG 관련
-- [AI 로드맵 intermediate 공부](https://papooo-dev.github.io/posts/ai-engineer-roadmap/#intermediate)
-  - Advanced RAGs
-  - Evaluating RAGs
-
 **2월**
 
-- 일정: 2/7 upstage 기술2차
-
-  - 2/6(목) Upstage 면접 준비(정리)
-
-- 아침에 medium 보기 or 아키텍쳐 패턴 공부
-
 - `<가상면접 사례로 배우는 대규모 시스템 설계 기초>` 공부
-  - 일) 3, 4, 5장
-  - 월2/3) 6장
-  - 화2/4) 7장
-  - 수2/5) 8장
 - `<혼공운>` 공부
+  **2째주 주말**
 
-  - 1시간 요약 인강 공부
-  - 퇴근 후 위 공부하고 시간 남으면 책 차근차근 보기(-2/10까지)
-
-**2째주 주말**
-
-- 점핏 이력서 정리
-- Advanced RAG 해보기
-- 키-값 저장소 구현해보기
+  - 점핏 이력서 정리
+  - Advanced RAG 해보기
+  - 단축URL 구현해보기
 
 - [Advanced+Agentic RAG 공부](https://github.com/athina-ai/rag-cookbooks)
 - [RAG Evaluating 해보기-HuggingFace](https://huggingface.co/learn/cookbook/en/rag_evaluation)
