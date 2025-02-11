@@ -1,5 +1,5 @@
 ---
-title: "GitLab Multi-Project Pipelines로 CI/CD 최적화하기"
+title: "GitLab Multi-Project Pipelines로 CI/CD 최적화하기 : 적용 사례"
 categories: [Programming TIP]
 tags:
   [
