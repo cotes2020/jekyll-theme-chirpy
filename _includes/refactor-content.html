@@ -251,5 +251,33 @@
 
 {% assign _content = _heading_content %}
 
+<!-- Handle blockquote with prompts -->
+{% if _content contains '<blockquote>' %}
+  {% assign _blockquote_snippets = _content | split: '<blockquote>' %}
+  {% assign _new_content = _blockquote_snippets.first %}
+
+  {% for _snippet in _blockquote_snippets %}
+    {% unless forloop.first %}
+      {% if _snippet contains '<p>[!NOTE]' or _snippet contains '<p>[!note]' %}
+        {% assign _note_content = _snippet | replace_first: '<p>[!NOTE]', '<p>' | replace_first: '<p>[!note]', '<p>' | replace_first: '<p></p>', '' %}
+        {% assign _new_content = _new_content | append: '<blockquote class="prompt-info">' | append: _note_content %}
+      {% elsif _snippet contains '<p>[!TIP]' or _snippet contains '<p>[!tip]' %}
+        {% assign _note_content = _snippet | replace_first: '<p>[!TIP]', '<p>' | replace_first: '<p>[!tip]', '<p>' | replace_first: '<p></p>', '' %}
+        {% assign _new_content = _new_content | append: '<blockquote class="prompt-tip">' | append: _note_content %}
+      {% elsif _snippet contains '<p>[!WARNING]' or _snippet contains '<p>[!warning]' %}
+        {% assign _note_content = _snippet | replace_first: '<p>[!WARNING]', '<p>' | replace_first: '<p>[!warning]', '<p>' | replace_first: '<p></p>', '' %}
+        {% assign _new_content = _new_content | append: '<blockquote class="prompt-warning">' | append: _note_content %}
+      {% elsif _snippet contains '<p>[!CAUTION]' or _snippet contains '<p>[!caution]' %}
+        {% assign _note_content = _snippet | replace_first: '<p>[!CAUTION]', '<p>' | replace_first: '<p>[!caution]', '<p>' | replace_first: '<p></p>', '' %}
+        {% assign _new_content = _new_content | append: '<blockquote class="prompt-danger">' | append: _note_content %}
+      {% else %}
+        {% assign _new_content = _new_content | append: '<blockquote>' | append: _snippet %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+
+  {% assign _content = _new_content %}
+{% endif %}
+
 <!-- return -->
 {{ _content }}

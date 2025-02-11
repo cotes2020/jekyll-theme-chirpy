@@ -83,6 +83,20 @@ Moon
 
 > An example showing the `danger` type prompt.
 {: .prompt-danger }
+
+> [!TIP] Github `tip` block.
+
+> [!NOTE]
+> Github `note` block.
+
+> [!WARNING]
+>
+> Github `warning` block.
+
+> [!CAUTION]
+>
+> 
+> Github `caution` block.
 <!-- markdownlint-restore -->
 
 ## Tables
