@@ -4,5 +4,13 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+<div class="content" style="
+    font-size: 20px;
+    text-align: center;
+">
+👨&zwj;🎓 داوود اروجی 👨&zwj;🎓<br>
+    👨&zwj;🏫پایه ی یازدهم ریاضی👨&zwj;🏫<br>
+    🏫دبیرستان شهید بهشتی🏫<br>
+    🏙️دوره دوم گچساران🏙️<br>
+    🌐فعالیت در زمینه ی برنامه نویسی و وبلاگ🌐<br>
+</div>
