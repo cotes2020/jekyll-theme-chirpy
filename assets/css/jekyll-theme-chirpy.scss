@@ -7,4 +7,78 @@
 {%- endif -%}
 ';
 
+{% if site.direction == "rtl" %}
+  .nav {
+    padding: 0px;
+  }
+
+  #sidebar .sidebar-bottom a:not(:last-child) {
+    margin-left: .8rem;
+    margin-right: 0px;
+  }
+
+  .me-auto {
+    margin-left: auto !important;
+    margin-right: 0px !important;
+  }
+
+  .fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+    display: inline;
+  }
+
+  .me-1 {
+    margin-left: .25rem !important;
+  }
+
+  @media (min-width: 768px) {
+    #post-list .card .card-body .post-meta i:not(:first-child) {
+        margin-right: 1.75rem;
+    }
+  }
+
+  #archives ul li::before, #archives .year:first-child::before, #archives .year::before {
+    float: right;
+  }
+
+  #archives .year::before {
+    left: 0px;
+    right: 79px;
+  }
+
+  #archives .year::after {
+    left: 0px;
+    right: 21.5px;
+  }
+
+  #archives ul li::before {
+    left: 0px;
+    right: 77px;
+  }
+
+  .list-unstyled {
+    padding-right: 0;
+  }
+
+  #archives a::before {
+    float: right;
+    right: 71px;
+    left: 0;
+  }
+
+  #archives a {
+    margin-left: 0;
+    margin-right: 2.5rem;
+  }
+
+  #archives .date.month {
+    direction: ltr;
+  }
+
+{% else %}
+  body {
+    direction: ltr;
+    text-align: left;
+  }
+{% endif %}
+
 /* append your custom style below */

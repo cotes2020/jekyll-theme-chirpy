@@ -111,6 +111,7 @@ div[class^='language-'] {
   @extend %code-snippet-bg;
 
   box-shadow: var(--language-border-color) 0 0 0 1px;
+  direction: ltr;
 
   .content > & {
     @include mx.ml-mr(-1rem);
