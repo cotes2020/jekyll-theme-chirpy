@@ -9,7 +9,6 @@ tail_includes:
 script_includes:
   - comment
 ---
-
 {% include lang.html %}
 
 {% include toc-status.html %}
@@ -174,6 +173,25 @@ script_includes:
       {% include post-sharing.html lang=lang %}
     </div>
     <!-- .post-tail-bottom -->
+
+    <!-- Gitalk comment start -->
+
+    <!-- Link Gitalk -->
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: 'Ov23lihvnhCObCYBlRIs',
+        clientSecret: '6de677b77e0fade208996e80cd757de36a15ad31',
+        repo: 'RecursoDidacticoDigitalBlog.github.io',
+        owner: 'RecursoDidacticoDigitalBlog',
+        admin: ['RecursoDidacticoDigitalBlog'],
+        id: window.location.pathname
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <!-- Gitalk end -->
   </div>
   <!-- div.post-tail-wrapper -->
 </article>
