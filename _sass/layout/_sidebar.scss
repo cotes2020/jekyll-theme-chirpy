@@ -256,3 +256,40 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     }
   }
 }
+
+#site-header {
+  background-color: var(---main-border-color);
+  color: var(--text-color);
+  padding: 1rem 0;
+  z-index: 1000;
+  margin-left: v.$sidebar-width;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-image {
+    width: 100px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    height: auto;
+  }
+
+  .header-text {
+    text-align: center;
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+
+  @include bp.lt(bp.get(lg)) {
+    margin-left: 0; /* Eliminar margen izquierdo en pantallas pequeñas */
+  }
+}
