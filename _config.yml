@@ -16,10 +16,10 @@ timezone: America/Mexico_City
 
 title: Formulación y Evaluación de Proyectos Informáticos # the main title
 
-tagline: Temas de la unidad de aprendizaje # it will display as the subtitle
+tagline: Blog de la unidad de aprendizaje # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  Sitio Blog para la unidad de aprendizaje de Recurso Didáctico Digital.
+  Sitio Blog para la unidad de aprendizaje.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
