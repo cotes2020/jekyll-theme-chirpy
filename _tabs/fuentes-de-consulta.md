@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-icon: fas fa-book
+icon: fas fa-solid fa-magnifying-glass
 order: 5
 ---
 

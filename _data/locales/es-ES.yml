@@ -14,7 +14,7 @@ tabs:
   categories: Temario
   tags: Etiquetas
   archives: Archivo
-  about: Acerca de
+  about: Conócenos
 
 # the text displayed in the search bar & search results
 search:
@@ -73,5 +73,5 @@ post:
 
 # categories page
 categories:
-  category_measure: categorias
+  category_measure: subtemas
   post_measure: entradas
