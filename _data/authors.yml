@@ -6,12 +6,12 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
-cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
+tanibet:
+  name: Tanibet Pérez de los Santos Mondragón
+  twitter:
+  url:
 
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+virginia:
+  name: Virginia Sanchez Cruz
+  twitter:
+  url:
