@@ -7,6 +7,11 @@ toc: true
 ---
 
 
+{% include embed/project.html title='ReasonerAgent'
+                              image='/assets/img/reasoneragent-icon.png'
+                              lqip='data:image/webp;base64,UklGRroAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AkQBrkDNGq1YgI0k8wiG0rygULIAnWAm4JHAogr38Y3CJE9H8C+NG52Qyx1zQsUjHgmnRYCIOHcEl1OKXDAquUDRC7PGM7uA3T3c9WUDggRgAAABACAJ0BKhAAEAAFQHwlnAAPjMw1P47CvVgA/hZbgZozQ/aDVdXmNLTUB7YoiwUYWdAbVTDaEgc7UKgSsT6Ix7DHErwYUAA='
+                              content='A fully open source, ready-to-run agent that does research in a web browser and answers your queries'
+                              url='https://reasoner-agent.maitrix.org' %}
 {% include embed/project.html title='Decentralized Arena'
                               image='/assets/img/de-arena-icon.png'
                               lqip='data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAQCdASoQAA8ABUB8JQAB8RYMTgAA/vHQKonvw7XF7euD39QLDJHFPg3V4kRs9aheA3XsO+Q7ZA+7oAAAt3AA'
