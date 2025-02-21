@@ -2,6 +2,12 @@
 
 source "https://rubygems.org"
 
+gem "jekyll", "~> 4.3.0"
+gem "csv"
+gem "base64"
+gem 'logger'
+gem "github-pages", group: :jekyll_plugins
+gem "webrick" # Necessário para rodar localmente b
 gemspec
 
 gem "html-proofer", "~> 5.0", group: :test
