@@ -106,7 +106,10 @@
   --inline-code-bg: rgba(25, 25, 28, 0.05);
   --code-color: #3a3a3a;
   --code-header-text-color: #a3a3a3;
-  --code-header-muted-color: #e5e5e5;
+  --code-header-muted-color: #e5e5e5; /* unused */
+  --code-header-first-muted-color: rgb(250, 66, 66);
+  --code-header-second-muted-color: rgb(255, 165, 0);
+  --code-header-third-muted-color: rgb(2, 184, 2);
   --code-header-icon-color: #c9c8c8;
   --clipboard-checked-color: #43c743;
 

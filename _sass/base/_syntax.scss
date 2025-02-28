@@ -137,11 +137,11 @@ div[class^='language-'] {
         width: v.$code-dot-size;
         height: v.$code-dot-size;
         border-radius: 50%;
-        background-color: var(--code-header-muted-color);
+        background-color: var(--code-header-first-muted-color);
         box-shadow: (v.$code-dot-size + v.$code-dot-gap) 0 0
-            var(--code-header-muted-color),
+            var(--code-header-second-muted-color),
           (v.$code-dot-size + v.$code-dot-gap) * 2 0 0
-            var(--code-header-muted-color);
+            var(--code-header-third-muted-color);
       }
 
       span {
