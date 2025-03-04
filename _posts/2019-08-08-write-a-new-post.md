@@ -21,7 +21,7 @@ Basically, you need to fill the [Front Matter](https://jekyllrb.com/docs/front-m
 ---
 title: TITLE
 date: YYYY-MM-DD HH:MM:SS +/-TTTT
-categories: [TOP_CATEGORIE, SUB_CATEGORIE]
+categories: [TOP_CATEGORY, SUB_CATEGORY]
 tags: [TAG]     # TAG names should always be lowercase
 ---
 ```
