@@ -1,28 +1,69 @@
 {
   "name": "Jekyll",
   "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
-  "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  // Command to set Git configuration upon container creation
+  "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global user.name 'Your Name' && git config --global user.email 'your.email@example.com'",
+
+  // Command to execute after the container is created
+  "postCreateCommand": "bash .devcontainer/post-create.sh && gem install jekyll bundler",
+
+  // Customizing VSCode settings for a better developer experience
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        // Set the default terminal profile to Zsh for better shell experience
+        "terminal.integrated.defaultProfile.linux": "zsh",
+
+        // Enable auto-save of files when the window focus changes
+        "files.autoSave": "onWindowChange",
+
+        // Enable auto-format on save for consistent code formatting
+        "editor.formatOnSave": true,
+
+        // Use Dark theme for the VSCode editor
+        "workbench.colorTheme": "Dark+ (default dark)",
+
+        // Ruby path for proper integration with Ruby-based tools
+        "ruby.rubyPath": "/usr/local/bin/ruby"
       },
+
       "extensions": [
-        // Liquid tags auto-complete
+        // Liquid tags auto-completion for Jekyll theme development
         "killalau.vscode-liquid-snippets",
-        // Liquid syntax highlighting and formatting
+
+        // Shopify theme check for liquid file validation in Jekyll
         "Shopify.theme-check-vscode",
-        // Shell
+
+        // Shell script linting to improve shell script quality
         "timonwong.shellcheck",
+
+        // Shell formatting for better readability of shell scripts
         "mkhl.shfmt",
-        // Common formatter
+
+        // Ensures consistent editor configuration across different environments
         "EditorConfig.EditorConfig",
+
+        // Prettier extension for code formatting (JavaScript, CSS, HTML)
         "esbenp.prettier-vscode",
+
+        // Linting for CSS/SCSS to enforce style guidelines
         "stylelint.vscode-stylelint",
+
+        // Markdown support with enhanced features such as TOC and preview
         "yzhang.markdown-all-in-one",
-        // Git
-        "mhutchie.git-graph"
+
+        // Git graph extension for easy visualization of Git commits and branches
+        "mhutchie.git-graph",
+
+        // Ruby syntax, linting, and formatting support for Jekyll development
+        "rebornix.ruby",
+
+        // YAML syntax support for better editing of _config.yml files
+        "redhat.vscode-yaml",
+
+        // Enhanced Git functionality with GitLens for better repository insights
+        "eamodio.gitlens"
       ]
     }
   }
