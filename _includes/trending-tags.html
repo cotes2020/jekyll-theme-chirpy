@@ -34,7 +34,7 @@
 {% endfor %}
 
 {% if trending_tags.size > 0 %}
-  <section>
+  <section dir={{ site.direction | default: ltr }}>
     <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.trending_tags -}}</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
       {% for tag_name in trending_tags %}
