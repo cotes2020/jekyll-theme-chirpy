@@ -14,7 +14,7 @@ swcache: true
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
     "date": "{{ post.date }}",
-    "content": "{{ description }}"
+    "content": {{ description | strip_html | replace: "\\", "\\\\" | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
