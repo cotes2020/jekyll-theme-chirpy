@@ -319,6 +319,11 @@ main {
   @extend %img-caption;
 }
 
+.bluesky-embed {
+    margin: auto;
+    margin-bottom: 1rem !important;
+}
+
 /* --- Effects classes --- */
 
 .flex-grow-1 {
