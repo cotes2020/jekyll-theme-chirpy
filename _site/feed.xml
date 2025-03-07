@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Mouton's Mind Palace</title>
   <subtitle>My little webstie where I put my projects and thoughts on differents things.</subtitle>
-  <updated>2024-11-16T16:27:19+01:00</updated>
+  <updated>2025-03-07T02:35:13+01:00</updated>
   <author>
     <name>MoutonDemocrate</name>
     <uri>http://localhost:4000/</uri>
@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/html" hreflang="en"
     href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator>
-  <rights> © 2024 MoutonDemocrate </rights>
+  <rights> © 2025 MoutonDemocrate </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
@@ -21,13 +21,13 @@
   
   <entry>
     <title>Hyper Light Drifter :: Moribundity :: Death without a Meaning</title>
-    <link href="http://localhost:4000/posts/hyper-light-drifter/" rel="alternate" type="text/html" title="Hyper Light Drifter :: Moribundity :: Death without a Meaning" />
-    <published>2024-11-05T15:07:40+01:00</published>
+    <link href="http://localhost:4000/posts/Hyper_Light_Drifter/" rel="alternate" type="text/html" title="Hyper Light Drifter :: Moribundity :: Death without a Meaning" />
+    <published>2025-03-07T02:32:35+01:00</published>
   
-    <updated>2024-11-05T15:07:40+01:00</updated>
+    <updated>2025-03-07T02:32:35+01:00</updated>
   
-    <id>http://localhost:4000/posts/hyper-light-drifter/</id>
-    <content src="http://localhost:4000/posts/hyper-light-drifter/" />
+    <id>http://localhost:4000/posts/Hyper_Light_Drifter/</id>
+    <content src="http://localhost:4000/posts/Hyper_Light_Drifter/" />
     <author>
       <name>MoutonDemocrate</name>
     </author>

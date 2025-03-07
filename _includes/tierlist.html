@@ -1,0 +1,21 @@
+<div class="tier-list">
+  {% assign tiers = "S,A,B,C,D" | split: "," %}
+  {% assign tier_colors = "S|#ff4d00,A|#ff9900,B|#ffee00,C|#3399ff,D|#888888" | split: "," %}
+  {% assign tier_list = site.data.tier_list %}
+  {% for tier in tiers %}
+    {% assign color = tier_colors | where_exp: "item", "item contains tier" | first | split: "|" | last %}
+    <div class="tier {{ tier }}" style="display: flex; align-items: center; padding: 10px; font-size: 24px; font-weight: bold; text-transform: uppercase; border-radius: 5px; background-color: {{ color }};">
+      <div class="tier-label" style="width: 50px; text-align: center; padding: 10px; margin-right: 10px; color: white;">
+        {{ tier }}
+      </div>
+      <div class="tier-items" style="display: flex; flex-wrap: wrap; align-items: center; gap: 5px;">
+        {% for item in tier_list[tier] %}
+          <a href="{{ item.link }}" style="display: flex; align-items: center;">
+            <img src="{{ item.image }}" alt="{{ item.name }}" 
+                 style="max-height: 150px !important; width: auto !important; height: auto !important; display: block !important; object-fit: contain !important; border-radius: 5px !important; border: 2px solid white !important; margin: 0 !important; padding: 0 !important; vertical-align: middle !important;" />
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
