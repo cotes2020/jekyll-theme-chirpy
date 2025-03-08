@@ -3,12 +3,13 @@ title: "[Data Structure] 연결 리스트(Linked List)"
 
 categories: [CS, Data Stucture]
 tags:
-  - [CS, c, cpp, Data Structure]
+  - [CS, c, cpp, Data Structure, Linked List]
 toc: true
 toc_sticky: true
 
-date: 2024-12-29
-last_modified_at: 2024-12-30
+date: 2025-01-15
+last_modified_at: 2025-01-15
+image: ../assets/img/Linkedlist.png
 ---
 ## Linked List(연결 리스트)란?
 ---
