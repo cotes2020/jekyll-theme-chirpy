@@ -1,212 +1,174 @@
 #!/usr/bin/env bash
 #
-# Release a new version to the GitLab flow production branch.
-#
-# For a new major/minor version, bump version on the main branch, and then merge into the production branch.
-#
-# For a patch version, bump the version number on the patch branch, then merge that branch into the main branch
-# and production branch.
-#
-#
-# Usage: run on main branch or the patch branch
-#
 # Requires: Git, NPM and RubyGems
 
 set -eu
 
-opt_pre=false      # preview mode option
-opt_skip_ver=false # option for skip versioning
+opt_pre=false # option for bump gem version
+opt_pkg=false # option for building gem package
 
-working_branch="$(git branch --show-current)"
-
-STAGING_BRANCH="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
-
-PROD_BRANCH="production"
+MAIN_BRANCH="master"
+RELEASE_BRANCH="production"
 
 GEM_SPEC="jekyll-theme-chirpy.gemspec"
+NODE_SPEC="package.json"
+CHANGELOG="docs/CHANGELOG.md"
+CONFIG="_config.yml"
 
-NODE_CONFIG="package.json"
+CSS_DIST="_sass/vendors"
+JS_DIST="assets/js/dist"
 
 FILES=(
-  "_sass/jekyll-theme-chirpy.scss"
-  "_javascript/copyright"
   "$GEM_SPEC"
-  "$NODE_CONFIG"
+  "$NODE_SPEC"
+  "$CHANGELOG"
+  "$CONFIG"
 )
 
 TOOLS=(
   "git"
   "npm"
-  "standard-version"
   "gem"
 )
 
 help() {
-  echo "A tool to release new version Chirpy gem"
+  echo -e "A tool to release new version Chirpy gem.\nThis tool will:"
+  echo "  1. Build a new gem and publish it to RubyGems.org"
+  echo "  2. Merge the release branch into the default branch"
   echo
   echo "Usage:"
-  echo
-  echo "   bash ./tools/release.sh [options]"
+  echo "  bash $0 [options]"
   echo
   echo "Options:"
-  echo "     -k, --skip-versioning    Skip the step of generating the version number."
-  echo "     -p, --preview            Enable preview mode, only package, and will not modify the branches"
-  echo "     -h, --help               Print this information."
+  echo "  --prepare           Preparation for release"
+  echo "  -p, --package       Build a gem package only, for local packaging in case of auto-publishing failure"
+  echo "  -h, --help          Display this help message"
+}
+
+_check_cli() {
+  for i in "${!TOOLS[@]}"; do
+    cli="${TOOLS[$i]}"
+    if ! command -v "$cli" &>/dev/null; then
+      echo "> Command '$cli' not found!"
+      exit 1
+    fi
+  done
 }
 
 _check_git() {
-  # ensure nothing is uncommitted
-  if [[ -n $(git status . -s) ]]; then
-    echo "Abort: Commit the staged files first, and then run this tool again."
-    exit 1
-  fi
+  $opt_pre || (
+    # ensure that changes have been committed
+    if [[ -n $(git status . -s) ]]; then
+      echo "> Abort: Commit the staged files first, and then run this tool again."
+      exit 1
+    fi
+  )
 
-  # ensure the working branch is the main/patch branch
-  if [[ $working_branch != "$STAGING_BRANCH" && $working_branch != hotfix/* ]]; then
-    echo "Abort: Please run on the main branch or patch branches."
-    exit 1
-  fi
+  $opt_pkg || (
+    if [[ "$(git branch --show-current)" != "$RELEASE_BRANCH" ]]; then
+      echo "> Abort: Please run the tool in the '$RELEASE_BRANCH' branch."
+      exit 1
+    fi
+  )
 }
 
 _check_src() {
-  if [[ ! -f $1 && ! -d $1 ]]; then
-    echo -e "Error: Missing file \"$1\"!\n"
-    exit 1
-  fi
+  for i in "${!FILES[@]}"; do
+    _src="${FILES[$i]}"
+    if [[ ! -f $_src && ! -d $_src ]]; then
+      echo -e "> Error: Missing file \"$_src\"!\n"
+      exit 1
+    fi
+  done
 }
 
-_check_command() {
-  if ! command -v "$1" &>/dev/null; then
-    echo "Command '$1' not found"
-    exit 1
-  fi
-}
-
-_check_node_packages() {
-  if [[ ! -d node_modules || "$(du node_modules | awk '{print $1}')" == "0" ]]; then
-    npm i
-  fi
-}
-
-check() {
+init() {
+  _check_cli
   _check_git
-
-  for i in "${!FILES[@]}"; do
-    _check_src "${FILES[$i]}"
-  done
-
-  for i in "${!TOOLS[@]}"; do
-    _check_command "${TOOLS[$i]}"
-  done
-
-  _check_node_packages
+  _check_src
+  echo -e "> npm install\n"
+  npm i
 }
 
-_bump_file() {
-  for i in "${!FILES[@]}"; do
-    sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
-  done
-
-  npx gulp
+## Bump new version to gem-spec file
+_bump_version() {
+  _version="$(grep '"version":' "$NODE_SPEC" | sed 's/.*: "//;s/".*//')"
+  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$_version/" "$GEM_SPEC"
+  echo "> Bump gem version to $_version"
 }
 
-_bump_gemspec() {
-  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$1/" "$GEM_SPEC"
+_improve_changelog() {
+  # Replace multiple empty lines with a single empty line
+  sed -i '/^$/N;/^\n$/D' "$CHANGELOG"
+  # Escape left angle brackets of HTML tag in the changelog as they break the markdown structure. e.g., '<hr>'
+  sed -i -E 's/\s(<[a-z])/ \\\1/g' "$CHANGELOG"
 }
 
-# 1. Bump latest version number to the following files:
-#
-#   - _sass/jekyll-theme-chirpy.scss
-#   - _javascript/copyright
-#   - assets/js/dist/*.js (will be built by gulp later)
-#   - jekyll-theme-chirpy.gemspec
-#
-# 2. Create a commit to save the changes.
-bump() {
-  _bump_file "$1"
-  _bump_gemspec "$1"
-
-  if [[ $opt_pre = false && -n $(git status . -s) ]]; then
-    git add .
-    git commit -m "chore(release): $1"
-  fi
+prepare() {
+  _bump_version
+  _improve_changelog
 }
 
-## Remove unnecessary theme settings
-cleanup_config() {
-  cp _config.yml _config.yml.bak
-  sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
-}
-
-resume_config() {
-  mv _config.yml.bak _config.yml
-}
-
-# build a gem package
+## Build a Gem package
 build_gem() {
-  echo -e "Build the gem package for v$_version\n"
-  cleanup_config
+  # Remove unnecessary theme settings
+  sed -i -E "s/(^timezone:).*/\1/;s/(^cdn:).*/\1/;s/(^avatar:).*/\1/" $CONFIG
   rm -f ./*.gem
+
+  npm run build
+  # add CSS/JS distribution files to gem package
+  git add "$CSS_DIST" "$JS_DIST" -f
+
+  echo -e "\n> gem build $GEM_SPEC\n"
   gem build "$GEM_SPEC"
-  resume_config
+
+  echo -e "\n> Resume file changes ...\n"
+  git reset
+  git checkout .
 }
 
-# Update the git branch graph, tag, and then build the gem package.
-release() {
-  _version="$1" # X.Y.Z
+# Push the gem to RubyGems.org (using $GEM_HOST_API_KEY)
+push_gem() {
+  gem push ./*.gem
+}
 
-  # Create a new tag on working branch
-  echo -e "Create tag v$_version\n"
-  git tag "v$_version"
+## Merge the release branch into the default branch
+merge() {
+  git fetch origin "$MAIN_BRANCH"
+  git checkout -b "$MAIN_BRANCH" origin/"$MAIN_BRANCH"
 
-  git checkout "$PROD_BRANCH"
-  git merge --no-ff --no-edit "$working_branch"
+  git merge --no-ff --no-edit "$RELEASE_BRANCH" || (
+    git merge --abort
+    echo -e "\n> Conflict detected. Aborting merge.\n"
+    exit 0
+  )
 
-  # merge from patch branch to the staging branch
-  # NOTE: This may break due to merge conflicts, so it may need to be resolved manually.
-  if [[ $working_branch == hotfix/* ]]; then
-    git checkout "$STAGING_BRANCH"
-    git merge --no-ff --no-edit "$working_branch"
-    git branch -D "$working_branch"
-  fi
+  git push origin "$MAIN_BRANCH"
 }
 
 main() {
-  if [[ $opt_skip_ver = false ]]; then
-    check
+  init
 
-    # auto-generate a new version number to the file 'package.json'
-    if $opt_pre; then
-      standard-version --prerelease rc
-    else
-      standard-version
-    fi
+  if $opt_pre; then
+    prepare
+    exit 0
   fi
-
-  _version="$(grep '"version":' package.json | sed 's/.*: "//;s/".*//')"
-
-  echo -e "Bump version number to $_version\n"
-  bump "$_version"
 
   build_gem
-
-  if [[ $opt_pre = true ]]; then
-    # Undo all changes on Git
-    git reset --hard && git clean -fd
-  else
-    release "$_version"
-  fi
+  $opt_pkg && exit 0
+  push_gem
+  merge
 }
 
 while (($#)); do
   opt="$1"
   case $opt in
-  -p | --preview)
+  --prepare)
     opt_pre=true
     shift
     ;;
-  -k | --skip-versioning)
-    opt_skip_ver=true
+  -p | --package)
+    opt_pkg=true
     shift
     ;;
   -h | --help)

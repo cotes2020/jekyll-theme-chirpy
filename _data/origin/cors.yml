@@ -1,0 +1,54 @@
+# Resource Hints
+resource_hints:
+  - url: https://fonts.googleapis.com
+    links:
+      - rel: preconnect
+      - rel: dns-prefetch
+  - url: https://fonts.gstatic.com
+    links:
+      - rel: preconnect
+        opts: [crossorigin]
+      - rel: dns-prefetch
+  - url: https://cdn.jsdelivr.net
+    links:
+      - rel: preconnect
+      - rel: dns-prefetch
+
+# Web Fonts
+webfonts: https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap
+
+# Libraries
+
+toc:
+  css: https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css
+  js: https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.js
+
+fontawesome:
+  css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css
+
+search:
+  js: https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js
+
+mermaid:
+  js: https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js
+
+dayjs:
+  js:
+    common: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/dayjs.min.js
+    locale: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/locale/:LOCALE.js
+    relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/plugin/relativeTime.js
+    localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/plugin/localizedFormat.js
+
+glightbox:
+  css: https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css
+  js: https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js
+
+lazy-polyfill:
+  css: https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css
+  js: https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js
+
+clipboard:
+  js: https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js
+
+mathjax:
+  js: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js

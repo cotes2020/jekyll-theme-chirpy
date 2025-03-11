@@ -1,0 +1,90 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Julkaisu
+  category: Kateogoria
+  tag: Tagi
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Koti
+  categories: Kateogoriat
+  tags: Tagit
+  archives: Arkistot
+  about: Minusta
+
+# the text displayed in the search bar & search results
+search:
+  hint: etsi
+  cancel: Peruuta
+  no_results: Hups! Ei tuloksia.
+
+panel:
+  lastmod: Viimeksi päivitetty
+  trending_tags: Trendaavat tagit
+  toc: Sisältö
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Tämä julkaisu on lisenssoitu :LICENSE_NAME julkaisijan toimesta.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Jotkut oikeudet pidätetään.
+  verbose: >-
+    Paitsi jos erikseen mainitaan on kaikki sisältö Creative Commons Attribution 4.0 International (CC BY 4.0) Lisensoitu kirjoittajan toimesta.
+
+meta: Käytetään :PLATFORM iä Teema :THEME
+
+not_found:
+  statement: Valitettavasti tällä URL-osoitteella ei ole saatavilla sisältöä.
+
+notification:
+  update_found: Uusi versio sisällöstä on saatavilla.
+  update: Päivitä
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Kirjoittaja
+  posted: Julkaistu
+  updated: Päivitetty
+  words: sanaa
+  pageview_measure: katselukertoja
+  read_time:
+    unit: minuuttia
+    prompt: lukea
+  relate_posts: Jatka lukemista
+  share: Jaa
+  button:
+    next: Uudempi
+    previous: Vanhempi
+    copy_code:
+      succeed: Kopiotu!
+    share_link:
+      title: Kopioi linkki
+      succeed: Linkki kopioitu onnistuneesti!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# categories page
+categories:
+  category_measure:
+    singular: kategoria
+    plural: kategoriat
+  post_measure:
+    singular: julkaisu
+    plural: julkaisut

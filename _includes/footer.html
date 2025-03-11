@@ -1,36 +1,49 @@
 <!-- The Footer -->
 
-<footer>
-  <div class="container pl-lg-4 pr-lg-4">
-    <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
-      <div class="footer-left">
-        <p class="mb-0">
-          © {{ 'now' | date: "%Y" }}
-          <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-          {% if site.data.locales[site.lang].copyright.brief %}
-          <span data-toggle="tooltip" data-placement="top"
-            title="{{ site.data.locales[site.lang].copyright.verbose }}">{{ site.data.locales[site.lang].copyright.brief }}</span>
-          {% endif %}
-        </p>
-      </div>
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>
+    {{- '©' }}
+    <time>{{ 'now' | date: '%Y' }}</time>
 
-      <div class="footer-right">
-        <p class="mb-0">
+    {% if site.social.links %}
+      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+    {% else %}
+      <em class="fst-normal">{{ site.social.name }}</em>.
+    {% endif %}
 
-          {% capture _platform %}
-          <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-          {% endcapture %}
+    {% if site.data.locales[include.lang].copyright.brief %}
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="{{ site.data.locales[include.lang].copyright.verbose }}"
+      >
+        {{- site.data.locales[include.lang].copyright.brief -}}
+      </span>
+    {% endif %}
+  </p>
 
-          {% capture _theme %}
-          <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
-          {% endcapture %}
+  <p>
+    {%- capture _platform -%}
+      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+    {%- endcapture -%}
 
-          {{ site.data.locales[site.lang].meta
-            | default: 'Powered by :PLATFORM with :THEME theme.'
-            | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
-          }}
-        </p>
-      </div>
-    </div>
-  </div>
+    {%- capture _theme -%}
+      <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v{{ theme.version }}"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a>
+    {%- endcapture -%}
+
+    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
+  </p>
 </footer>
