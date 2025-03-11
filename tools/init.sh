@@ -1,97 +1,113 @@
 #!/usr/bin/env bash
 #
-# Init the evrionment for new user.
+# Init the environment for new user.
 
 set -eu
 
+# CLI Dependencies
+CLI=("git" "npm")
+
 ACTIONS_WORKFLOW=pages-deploy.yml
 
-TEMP_SUFFIX="to-delete" #  temporary file suffixes that make `sed -i` compatible with BSD and Linux
+RELEASE_HASH=$(git log --grep="chore(release):" -1 --pretty="%H")
+
+# temporary file suffixes that make `sed -i` compatible with BSD and Linux
+TEMP_SUFFIX="to-delete"
+
+_no_gh=false
 
 help() {
   echo "Usage:"
   echo
-  echo "   bash /path/to/init.sh [options]"
+  echo "   bash /path/to/init [options]"
   echo
   echo "Options:"
   echo "     --no-gh              Do not deploy to Github."
   echo "     -h, --help           Print this help information."
 }
 
-check_status() {
+# BSD and GNU compatible sed
+_sedi() {
+  regex=$1
+  file=$2
+  sed -i.$TEMP_SUFFIX -E "$regex" "$file"
+  rm -f "$file".$TEMP_SUFFIX
+}
+
+_check_cli() {
+  for i in "${!CLI[@]}"; do
+    cli="${CLI[$i]}"
+    if ! command -v "$cli" &>/dev/null; then
+      echo "Command '$cli' not found! Hint: you should install it."
+      exit 1
+    fi
+  done
+}
+
+_check_status() {
   if [[ -n $(git status . -s) ]]; then
-    echo "Error: Commit unstaged files first, and then run this tool againt."
-    exit -1
+    echo "Error: Commit unstaged files first, and then run this tool again."
+    exit 1
   fi
 }
 
-check_init() {
-  local _has_inited=false
-
-  if [[ ! -d .github ]]; then # using option `--no-gh`
-    _has_inited=true
-  else
-    if [[ -f .github/workflows/$ACTIONS_WORKFLOW ]]; then
-      # on BSD, the `wc` could contains blank
-      local _count="$(find .github/workflows/ -type f -name "*.yml" | wc -l)"
-      if [[ ${_count//[[:blank:]]/} == 1 ]]; then
-        _has_inited=true
-      fi
-    fi
-  fi
-
-  if $_has_inited; then
+_check_init() {
+  if [[ $(git rev-parse HEAD^1) == "$RELEASE_HASH" ]]; then
     echo "Already initialized."
     exit 0
   fi
+}
+
+check_env() {
+  _check_cli
+  _check_status
+  _check_init
+}
+
+reset_latest() {
+  git reset --hard "$RELEASE_HASH"
+  git clean -fd
+  git submodule update --init --recursive
 }
 
 init_files() {
   if $_no_gh; then
     rm -rf .github
   else
-    ## Change the files of `.github`
-
-    mv .github/workflows/$ACTIONS_WORKFLOW.hook .
-    rm -rf .github
-    mkdir -p .github/workflows
-    mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
-
-    ## Ensure the gh-actions trigger branch
-
-    _workflow=".github/workflows/${ACTIONS_WORKFLOW}"
-    _default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
-    _lineno="$(sed -n "/branches:/=" "$_workflow")"
-
-    sed -i.$TEMP_SUFFIX "$((_lineno + 1))s/- .*/- ${_default_branch}/" "$_workflow"
-    rm -f "$_workflow.$TEMP_SUFFIX"
-
-    ## Cleanup image settings in site config
-    sed -i.$TEMP_SUFFIX "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
-    rm -f _config.yml.$TEMP_SUFFIX
-
+    ## Change the files of `.github/`
+    temp="$(mktemp -d)"
+    find .github/workflows -type f -name "*$ACTIONS_WORKFLOW*" -exec mv {} "$temp/$ACTIONS_WORKFLOW" \;
+    rm -rf .github && mkdir -p .github/workflows
+    mv "$temp/$ACTIONS_WORKFLOW" .github/workflows/"$ACTIONS_WORKFLOW"
+    rm -rf "$temp"
   fi
 
-  # trace the gem lockfile on user-end
-  sed -i.$TEMP_SUFFIX "/Gemfile.lock/d" .gitignore
-  rm -f ".gitignore.$TEMP_SUFFIX"
+  # Cleanup image settings in site config
+  _sedi "s/(^timezone:).*/\1/;s/(^.*cdn:).*/\1/;s/(^avatar:).*/\1/" _config.yml
 
-  # remove the other fies
-  rm -f .travis.yml
-  rm -rf _posts/*
+  # remove the other files
+  rm -rf tools/init.sh tools/release.sh _posts/*
 
-  # save changes
-  git add -A
-  git commit -m "[Automation] Initialize the environment." -q
+  # build assets
+  npm i && npm run build
 
-  echo "[INFO] Initialization successful!"
+  # track the CSS/JS output
+  _sedi "/^_sass\/vendors/d" .gitignore
+  _sedi "/^assets\/js\/dist/d" .gitignore
 }
 
-check_status
+commit() {
+  git add -A
+  git commit -m "chore: initialize the environment" -q
+  echo -e "\n> Initialization successful!\n"
+}
 
-check_init
-
-_no_gh=false
+main() {
+  check_env
+  reset_latest
+  init_files
+  commit
+}
 
 while (($#)); do
   opt="$1"
@@ -112,4 +128,4 @@ while (($#)); do
   esac
 done
 
-init_files
+main

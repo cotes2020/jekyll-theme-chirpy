@@ -1,4 +1,5 @@
 {
+  "ignoreFiles": ["_sass/vendors/**"],
   "extends": "stylelint-config-standard-scss",
   "rules": {
     "no-descending-specificity": null,
@@ -12,11 +13,19 @@
     "selector-not-notation": "simple",
     "color-hex-length": "long",
     "declaration-block-single-line-max-declarations": 3,
-    "font-family-no-missing-generic-family-keyword": [
-      true,
+    "scss/operator-no-newline-after": null,
+    "rule-empty-line-before": [
+      "always",
       {
-        "ignoreFontFamilies": ["Font Awesome 5 Free"]
+        "ignore": ["after-comment", "first-nested"]
       }
-    ]
+    ],
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreProperties": ["/^\\$/"]
+      }
+    ],
+    "media-feature-range-notation": "prefix"
   }
 }

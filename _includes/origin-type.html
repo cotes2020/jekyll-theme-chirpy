@@ -1,0 +1,13 @@
+{% comment %} Site static assets origin type {% endcomment %}
+
+{% assign type = 'cors' %}
+
+{% if site.assets.self_host.enabled %}
+  {% if site.assets.self_host.env %}
+    {% if site.assets.self_host.env == jekyll.environment %}
+      {% assign type = 'basic' %}
+    {% endif %}
+  {% else %}
+    {% assign type = 'basic' %}
+  {% endif %}
+{% endif %}
