@@ -4,7 +4,7 @@
   <id>https://davidazad1.github.io/</id>
   <title>Bug to Debug</title>
   <subtitle>وبلاگ اموزش برنامه نویسی</subtitle>
-  <updated>2025-02-12T18:58:36+08:00</updated>
+  <updated>2025-03-12T02:55:19+08:00</updated>
   <author>
     <name>داوود اروجی</name>
     <uri>https://davidazad1.github.io/</uri>
@@ -17,6 +17,30 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Internet speed in Iran</title>
+    <link href="https://davidazad1.github.io/posts/4/" rel="alternate" type="text/html" title="Internet speed in Iran" />
+    <published>2025-03-11T00:00:00+08:00</published>
+  
+    <updated>2025-03-11T00:00:00+08:00</updated>
+  
+    <id>https://davidazad1.github.io/posts/4/</id>
+    <content type="text/html" src="https://davidazad1.github.io/posts/4/" />
+    <author>
+      <name>داوود اروجی</name>
+    </author>
+
+  
+    
+    <category term="پادکست" />
+    
+  
+
+  <summary>Internet speed in Iran Hello and welcome to today’s episode.  This podcast is an attempt to address the issue of Internet speed in Iran, current challenges and how to solve them. As such, it has 4 sections. First, the context underlying the inquiry is established. Next, the problem and its significance are stated. Then, some viable solutions are presented. And finally, the podcast ends with som...</summary>
+
+  </entry>
 
   
   <entry>
@@ -111,30 +135,6 @@
   
 
   <summary>گزارش‌های جدید نشان می‌دهند که اپل احتمالاً به‌زودی از نسل جدید مک‌بوک ایر و آیپد ایر رونمایی خواهد کرد. بلومبرگ اعلام کرده است که آیفون SE 4 ممکن است طی روزهای آینده معرفی شود و هم‌زمان، کاهش موجودی آیپد ایر و مک‌بوک ایر در فروشگاه‌های اپل، احتمال عرضه‌ی نسخه‌های جدید این محصولات را تقویت کرده است.  آیا آیپد و مک‌های جدید همراه با آیفون SE 4 معرفی خواهند شد؟  مدتی است که شایعاتی درباره‌ی عرضه‌...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران</title>
-    <link href="https://davidazad1.github.io/posts/0/" rel="alternate" type="text/html" title="دستور مخفیانه دولت بریتانیا به اپل برای دسترسی به اطلاعات کاربران" />
-    <published>2025-02-07T00:00:00+08:00</published>
-  
-    <updated>2025-02-07T00:00:00+08:00</updated>
-  
-    <id>https://davidazad1.github.io/posts/0/</id>
-    <content type="text/html" src="https://davidazad1.github.io/posts/0/" />
-    <author>
-      <name>داوود اروجی</name>
-    </author>
-
-  
-    
-    <category term="اخبار تکنولوژی" />
-    
-  
-
-  <summary>گزارش‌های اخیر نشان می‌دهند که دولت بریتانیا در اقدامی بحث‌برانگیز، از شرکت اپل خواسته است تا یک در پشتی در سرویس‌های رمزگذاری‌شده خود ایجاد کند تا امکان دسترسی به داده‌های کاربران فراهم شود. در واکنش به این درخواست، اپل ممکن است سرویس ذخیره‌سازی رمزگذاری‌شده خود را در این کشور غیرفعال کند. کارشناسان هشدار داده‌اند که چنین اقدامی می‌تواند باعث شود سایر کشورها نیز درخواست‌های مشابهی از شرکت‌های ...</summary>
 
   </entry>
 
