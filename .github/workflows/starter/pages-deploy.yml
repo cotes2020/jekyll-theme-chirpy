@@ -2,8 +2,8 @@ name: "Build and Deploy"
 on:
   push:
     branches:
-      - master
       - main
+      - master
     paths-ignore:
       - .gitignore
       - README.md
@@ -42,11 +42,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-<<<<<<<< HEAD:.github/workflows/pages-deploy.yml
-          ruby-version: 2.7 # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
-========
           ruby-version: 3.3
->>>>>>>> 54d4d59d22ac543a14bfbd9bb3d6fb6756056041:.github/workflows/starter/pages-deploy.yml
           bundler-cache: true
 
       - name: Build site
