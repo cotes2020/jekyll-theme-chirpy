@@ -56,10 +56,10 @@ post:
   posted: 投稿日
   updated: 更新日
   words: words
-  pageview_measure: views
+  pageview_measure: 回閲覧
   read_time:
     unit: 分
-    prompt: ""
+    prompt: で読めます
   relate_posts: さらに読む
   share: シェア
   button:
