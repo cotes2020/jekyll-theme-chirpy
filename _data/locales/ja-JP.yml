@@ -25,7 +25,7 @@ search:
 panel:
   lastmod: 最近更新された投稿
   trending_tags: トレンドのタグ
-  toc: Contents
+  toc: コンテンツ
 
 copyright:
   # Shown at the bottom of the post
@@ -55,7 +55,7 @@ post:
   written_by: 投稿者
   posted: 投稿日
   updated: 更新日
-  words: words
+  words: 語
   pageview_measure: 回閲覧
   read_time:
     unit: 分
