@@ -30,7 +30,7 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: This post is licensed under :LICENSE_NAME by the author.
+    template: この投稿は投稿者によって :LICENSE_NAME の下でライセンスされています。
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
@@ -40,13 +40,13 @@ copyright:
     Except where otherwise noted, the blog posts on this site are licensed
     under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
-meta: Using the :THEME theme for :PLATFORM.
+meta: :PLATFORM 用の :THEME テーマを使用しています。
 
 not_found:
-  statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+  statement: このURLは存在しないものを指し示しています。
 
 notification:
-  update_found: 新しいバージョンが利用可能です
+  update_found: 新しいバージョンが利用可能です。
   update: 更新
 
 # ----- Posts related labels -----
