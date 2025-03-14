@@ -3,9 +3,9 @@
 # ----- Commons label -----
 
 layout:
-  post: Post
-  category: Category
-  tag: Tag
+  post: 投稿
+  category: カテゴリー
+  tag: タグ
 
 # The tabs of sidebar
 tabs:
