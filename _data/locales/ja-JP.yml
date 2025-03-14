@@ -78,8 +78,8 @@ df:
     strftime: "%Y/%m/%d"
     dayjs: "YYYY/MM/DD"
   archives:
-    strftime: "%m /"
-    dayjs: "MM /"
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:
