@@ -13,3 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: wagoid/commitlint-github-action@v6
+rules:
+  type-empty: [0, "never"]
+  subject-empty: [0, "never"]
+
