@@ -12,7 +12,7 @@
   [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?&logo=RubyGems&logoColor=ghostwhite&label=gem&color=orange)][gem]&nbsp;
   [![Open in Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-deepskyblue?logo=linuxcontainers)][open-container]
 
-  [**Live Demo** →][demo]
+  [**Live Demo** →][my]
 
   [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
 
@@ -75,7 +75,7 @@ This project is published under [MIT License][license].
 [open-container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/cotes2020/jekyll-theme-chirpy
 [jekyllrb]: https://jekyllrb.com/
 [clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
+[my]: [https://cotes2020.github.io/chirpy-demo/](https://mrkakharov.github.io/)
 [wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
 [contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
 [contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
