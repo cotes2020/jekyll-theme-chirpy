@@ -2,7 +2,6 @@
 layout: page
 # The Category layout
 ---
-
 {% include lang.html %}
 
 <div id="page-category">
@@ -13,7 +12,8 @@ layout: page
   </h1>
 
   <ul class="content ps-0">
-    {% for post in page.posts %}
+    {% assign sorted_posts = page.posts | sort: 'date' %}
+    {% for post in sorted_posts %}
       <li class="d-flex justify-content-between px-md-3">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         <span class="dash flex-grow-1"></span>
