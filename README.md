@@ -2,9 +2,9 @@
 <div align="center">
 
   <!-- markdownlint-disable-next-line -->
-  # Chirpy Jekyll Theme
+  # Chirpy Jekyll Mavzusi
 
-  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
+  Texnik yozuvlar uchun minimal, moslashuvchan va xususiyatlarga boy Jekyll mavzusi.
 
   [![CI](https://img.shields.io/github/actions/workflow/status/cotes2020/jekyll-theme-chirpy/ci.yml?logo=github)][ci]&nbsp;
   [![Codacy Badge](https://img.shields.io/codacy/grade/4e556876a3c54d5e8f2d2857c4f43894?logo=codacy)][codacy]&nbsp;
@@ -12,61 +12,60 @@
   [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?&logo=RubyGems&logoColor=ghostwhite&label=gem&color=orange)][gem]&nbsp;
   [![Open in Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-deepskyblue?logo=linuxcontainers)][open-container]
 
-  [**My page** →][demo]
+  [**Mening sahifam** →][demo]
 
   [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
 
 </div>
 
-## Features
+## Xususiyatlar
 
-- Dark Theme
-- Localized UI language
-- Pinned Posts on Home Page
-- Hierarchical Categories
-- Trending Tags
-- Table of Contents
-- Last Modified Date
-- Syntax Highlighting
-- Mathematical Expressions
-- Mermaid Diagrams & Flowcharts
-- Dark Mode Images
-- Embed Media
-- Comment Systems
-- Built-in Search
-- Atom Feeds
+- Qorong'i Mavzu
+- Mahalliylashtirilgan UI tili
+- Bosh sahifada mahkamlangan postlar
+- Ierarxik Kategoriyalar
+- Trenddagi Teglar
+- Mazmuni Jadvali
+- Oxirgi O'zgartirilgan Sana
+- Sintaksis Yoritish
+- Matematik Ifodalar
+- Mermaid Diagrammalar va Oqim jadvallari
+- Qorong'i Rejim Rasmlari
+- Media Qo'shish
+- Izoh Tizimlari
+- Ichki Qidiruv
+- Atom Ozuqalari
 - PWA
-- Web Analytics
-- SEO & Performance Optimization
+- Veb Tahlil
+- SEO va Ishlashni Optimallashtirish
 
-## Documentation
+## Hujjatlar
 
-To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
+Loyihani qanday ishlatish, rivojlantirish va yangilash haqida bilish uchun, iltimos, [Wiki][wiki]ga murojaat qiling.
 
-## Contributing
+## Hissa qo'shish
 
-Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
-to learn, inspire, and create. Any contributions you make are greatly appreciated.
-For details, see the "[Contributing Guidelines][contribute-guide]".
+Hissalar (pull requestlar, muammolar va muhokamalar) ochiq manba hamjamiyatini o'rganish, ilhom olish va yaratish uchun ajoyib joyga aylantiradi. Sizning har qanday hissangiz juda qadrlanadi.
+Batafsil ma'lumot uchun "[Hissa qo'shish bo'yicha ko'rsatmalar][contribute-guide]"ga qarang.
 
-## Credits
+## Kreditlar
 
-### Contributors
+### Hissa qo'shuvchilar
 
-Thanks to [all the contributors][contributors] involved in the development of the project!
+Loyihani rivojlantirishda ishtirok etgan [barcha hissa qo'shuvchilarga][contributors] rahmat!
 
 [![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
-<sub> — Made with [contrib.rocks](https://contrib.rocks)</sub>
+<sub> — [contrib.rocks](https://contrib.rocks) bilan yaratilgan</sub>
 
-### Third-Party Assets
+### Uchinchi tomon aktivlari
 
-This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
+Ushbu loyiha [Jekyll][jekyllrb] ekotizimi va ba'zi [ajoyib kutubxonalar][lib] asosida qurilgan va [VS Code][vscode] hamda [JetBrains][jetbrains] tomonidan taqdim etilgan vositalardan foydalanib ishlab chiqilgan.
 
-The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
+Loyihaning veb-sayti uchun avatar va favicon [ClipartMAX][clipartmax]dan olingan.
 
-## License
+## Litsenziya
 
-This project is published under [MIT License][license].
+Ushbu loyiha [MIT Litsenziyasi][license] ostida nashr etilgan.
 
 [gem]: https://rubygems.org/gems/jekyll-theme-chirpy
 [ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster

@@ -94,7 +94,7 @@ theme_mode: # [light | dark]
 # barcha media resurslar (sayt avatar, postlarning rasmlari, audio va video fayllar) yo'llariga qo'shiladi, '/' bilan boshlanadi
 #
 # masalan, 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: # "https://chirpy-img.netlify.app"
 
 # Yon paneldagi avatar, mahalliy yoki CORS resurslarini qo'llab-quvvatlaydi
 avatar: "/assets/img/profile.png"
