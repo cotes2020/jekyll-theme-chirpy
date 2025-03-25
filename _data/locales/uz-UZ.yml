@@ -1,0 +1,87 @@
+# Saytning maket matni
+
+# ----- Umumiy yorliqlar -----
+
+layout:
+  post: Post
+  category: Kategoriya
+  tag: Teg
+
+# Yon panelning yorliqlari
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Bosh sahifa
+  categories: Kategoriyalar
+  tags: Teglar
+  archives: Arxiv
+  about: Sayt haqida
+
+# qidiruv paneli va qidiruv natijalarida ko'rsatiladigan matn
+search:
+  hint: qidiruv
+  cancel: Bekor qilish
+  no_results: Uups! Hech narsa topilmadi.
+
+panel:
+  lastmod: Yaqinda yangilangan
+  trending_tags: Mashhur teglar
+  toc: Mundarija
+
+copyright:
+  # Postning pastki qismida ko'rsatiladi
+  license:
+    template: Mualliflik posti :LICENSE_NAME. litsenziyasi bilan himoyalangan.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Footerda ko'rsatiladi
+  brief: Ba'zi huquqlar himoyalangan.
+  verbose: >-
+    Agar boshqacha ko'rsatilmagan bo'lsa, ushbu saytdagi mualliflik postlari Creative Commons Attribution 4.0 International (CC BY 4.0) litsenziyasi bilan himoyalangan.
+
+meta: :PLATFORM uchun :THEME mavzusidan foydalanildi.
+
+not_found:
+  statement: Kechirasiz, biz URL manzilini adashtirdingiz yoki u mavjud bo'lmagan narsaga ishora qilmoqda.
+
+notification:
+  update_found: Yangi kontent versiyasi mavjud.
+  update: Yangilash
+
+# ----- Postlarga tegishli yorliqlar -----
+
+post:
+  written_by: Muallif
+  posted: E'lon qilingan
+  updated: Yangilangan
+  words: so'zlar
+  pageview_measure: ko'rishlar
+  read_time:
+    unit: daq.
+    prompt: o'qish
+  relate_posts: O'xshash postlar
+  share: Ulashish
+  button:
+    next: Keyingi post
+    previous: Oldingi post
+    copy_code:
+      succeed: Nusxalandi!
+    share_link:
+      title: Havolani nusxalash
+      succeed: Havola muvaffaqiyatli nusxalandi!
+
+# Sana va vaqt formati.
+# Ko'ring: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%d.%m.%Y"
+    dayjs: "DD.MM.YYYY"
+
+# kategoriyalar sahifasi
+categories:
+  category_measure:
+    singular: kategoriya
+    plural: kategoriyalar
+  post_measure:
+    singular: post
+    plural: postlar
