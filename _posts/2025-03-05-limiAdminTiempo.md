@@ -5,5 +5,46 @@ date: 2025-03-05 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.4 Gestión del tiempo]
 
 ---
-<p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).
-</p>
+
+Si bien la administración del tiempo es una herramienta fundamental para el éxito de 
+los proyectos, es importante reconocer que existen diversas limitaciones que pueden 
+afectar su efectividad. Estas limitaciones pueden provenir de factores externos o 
+internos al proyecto y deben ser consideradas para una gestión realista del tiempo.
+
+### Limitantes por factores externos 
+- **Condiciones del mercado:** Los cambios en las condiciones del mercado, como 
+la disponibilidad de recursos, el precio de los materiales o las fluctuaciones en 
+la demanda, pueden afectar el cronograma del proyecto. Estos cambios pueden 
+requerir ajustes en la planificación y la estimación del tiempo, lo que puede 
+generar retrasos o sobrecostos. 
+- **Regulaciones y normativas:** El cumplimiento de leyes, regulaciones y normas 
+de seguridad puede introducir retrasos en el proyecto, especialmente en 
+industrias como la construcción o la atención médica. Es necesario considerar 
+estos requisitos desde las etapas tempranas del proyecto para evitar retrasos por 
+incumplimiento. 
+
+### Limitantes por factores internos 
+- **Gestión de recursos:** La disponibilidad y asignación adecuada de recursos 
+humanos, materiales y financieros es crucial para cumplir con el cronograma 
+del proyecto. La escasez de recursos, la mala asignación o la falta de 
+planificación financiera pueden generar retrasos y afectar la calidad del trabajo. 
+- **Complejidad del proyecto:** Los proyectos complejos con múltiples 
+dependencias entre actividades, tareas y entregables son más difíciles de 
+planificar, programar y controlar. La complejidad aumenta el riesgo de retrasos, 
+ya que pequeños cambios en una actividad pueden tener un efecto dominó en 
+otras. 
+- **Falta de información:** La toma de decisiones efectivas en la gestión del tiempo 
+requiere información precisa y completa sobre el alcance del proyecto, las 
+características de las tareas, la disponibilidad de recursos y las condiciones del 
+entorno. La falta de información o la información incompleta puede conducir a 
+estimaciones inexactas del tiempo y a una mala planificación del cronograma. 
+- **Estimaciones inexactas:** La estimación precisa de la duración de las 
+actividades es un desafío en la gestión del tiempo. La incertidumbre inherente 
+a los proyectos, la complejidad de las tareas y la falta de datos históricos pueden 
+dificultar la realización de estimaciones confiables. Las estimaciones inexactas 
+pueden generar retrasos, sobrecostos y frustración en el equipo. 
+- **Resistencia al cambio:** La adopción de nuevas técnicas y herramientas de 
+gestión del tiempo puede encontrar resistencia por parte de los miembros del 
+equipo y la organización. La cultura organizacional, la inercia de los procesos y 
+la falta de capacitación pueden dificultar la implementación de cambios en la 
+forma en que se gestiona el tiempo en los proyectos. 
