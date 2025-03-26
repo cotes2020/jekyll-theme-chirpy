@@ -13,8 +13,12 @@ tabs:
   home: Inicio
   categories: Temario
   tags: Etiquetas
-  archives: Archivo
+  archives: Índice
   about: Conócenos
+  manual: Manual de usuario
+  references: Fuentes de consulta
+  encuadre: Encuadre Pedagógico
+  metodologia: Metodología
 
 # the text displayed in the search bar & search results
 search:

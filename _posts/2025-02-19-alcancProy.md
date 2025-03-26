@@ -3,7 +3,7 @@ layout: post
 title: "1.2 Alcance de un proyecto"
 date: 2025-02-19 00:00:00 +0800
 categories: [Tema 1.- Inicio de un proyecto, 1.2 Alcance de un proyecto]
-tags: [Hola]
+
 ---
 <h2>Definición del Alcance</h2>
 <p>El alcance de un proyecto es un aspecto fundamental para su éxito, ya que define con
