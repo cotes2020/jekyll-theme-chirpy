@@ -1,0 +1,127 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Mr Kakharov</title>
+  <subtitle>O'zim haqimdagi blog va boshqa foydali ma'lumotlar.</subtitle>
+  <updated>2025-03-26T03:02:35+05:00</updated>
+  <author>
+    <name>Jakhongir Kakharov</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="uz-UZ"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2025 Jakhongir Kakharov </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Yangi Maqola Yozish</title>
+    <link href="http://localhost:4000/posts/yangi-maqola-yozish/" rel="alternate" type="text/html" title="Yangi Maqola Yozish" />
+    <published>2025-03-26T02:04:00+05:00</published>
+  
+    <updated>2025-03-26T02:04:00+05:00</updated>
+  
+    <id>http://localhost:4000/posts/yangi-maqola-yozish/</id>
+    <content type="text/html" src="http://localhost:4000/posts/yangi-maqola-yozish/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>Ushbu qo’llanma sizga Chirpy shablonida qanday qilib maqola yozishni ko’rsatadi va agar siz ilgari Jekyll’dan foydalangan bo’lsangiz ham, ko’plab xususiyatlar uchun maxsus o’zgaruvchilarni o’rnatish kerak bo’lganligi sababli, uni o’qishga arziydi.  Nomlash va Yo’l  YYYY-MM-DD-TITLE.EXTENSION nomli yangi fayl yarating va uni root katalogidagi _posts ichiga joylashtiring. Iltimos, EXTENSION md va...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Matn va Tipografiya</title>
+    <link href="http://localhost:4000/posts/mant-va-tipografiya/" rel="alternate" type="text/html" title="Matn va Tipografiya" />
+    <published>2025-03-26T02:03:00+05:00</published>
+  
+    <updated>2025-03-26T02:03:00+05:00</updated>
+  
+    <id>http://localhost:4000/posts/mant-va-tipografiya/</id>
+    <content type="text/html" src="http://localhost:4000/posts/mant-va-tipografiya/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Demo" />
+    
+  
+
+  <summary>Matn, tipografiya, matematik tenglamalar, diagrammalar, oqim jadvallari, rasmlar, videolar va boshqalar misollari.</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Faviconni Moslashtirish</title>
+    <link href="http://localhost:4000/posts/favicon-bilan-ishlash/" rel="alternate" type="text/html" title="Faviconni Moslashtirish" />
+    <published>2025-03-26T02:02:00+05:00</published>
+  
+    <updated>2025-03-26T02:02:00+05:00</updated>
+  
+    <id>http://localhost:4000/posts/favicon-bilan-ishlash/</id>
+    <content type="text/html" src="http://localhost:4000/posts/favicon-bilan-ishlash/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>Chirpy ning favicons assets/img/favicons/ katalogida joylashgan. Siz ularni o’zingizning favikonlaringiz bilan almashtirishni xohlashingiz mumkin. Quyidagi bo’limlar sizga standart favikonlarni yaratish va almashtirish bo’yicha ko’rsatmalar beradi.  Favicon yaratish  512x512 yoki undan katta o’lchamdagi kvadrat rasmni (PNG, JPG yoki SVG) tayyorlang va keyin onlayn vositaga Real Favicon Generato...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Boshlash Uchun Kerakli Tushunchalar</title>
+    <link href="http://localhost:4000/posts/boshlash-uchun-kerakli-tushunchalar/" rel="alternate" type="text/html" title="Boshlash Uchun Kerakli Tushunchalar" />
+    <published>2025-03-26T02:01:00+05:00</published>
+  
+    <updated>2025-03-26T02:01:00+05:00</updated>
+  
+    <id>http://localhost:4000/posts/boshlash-uchun-kerakli-tushunchalar/</id>
+    <content type="text/html" src="http://localhost:4000/posts/boshlash-uchun-kerakli-tushunchalar/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>Chirpy asoslari bilan tanishing. Ushbu qo&amp;#39;llanmada siz Chirpy asosidagi veb-saytni qanday o&amp;#39;rnatish, sozlash va ishlatishni, shuningdek, uni veb-serverga joylashtirishni o&amp;#39;rganasiz.</summary>
+
+  </entry>
+
+</feed>
+
+

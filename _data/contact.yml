@@ -13,6 +13,11 @@
 - type: rss
   icon: "fas fa-rss"
   noblank: true
+
+- type: telegram
+  icon: "fab fa-telegram"
+  url: "https://t.me/jakhongir_kakharov" # Fill with your Telegram profile link
+
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
@@ -35,6 +40,6 @@
 #   icon: 'fa-brands fa-reddit'
 #   url: ''                   # Fill with your Reddit profile link
 #
-# - type: threads
-#   icon: 'fa-brands fa-threads'
-#   url: ''                   # Fill with your Threads profile link
+- type: threads
+  icon: "fa-brands fa-threads"
+  url: "https://www.threads.net/@jaxongir_kaxarov" # Fill with your Threads profile link

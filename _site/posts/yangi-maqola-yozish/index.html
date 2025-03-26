@@ -1,0 +1,2576 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="uz-UZ" >
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+  ><!-- Setup Open Graph image -->
+
+  
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Yangi Maqola Yozish" />
+<meta name="author" content="Cotes Chung" />
+<meta property="og:locale" content="uz_UZ" />
+<meta name="description" content="Ushbu qo’llanma sizga Chirpy shablonida qanday qilib maqola yozishni ko’rsatadi va agar siz ilgari Jekyll’dan foydalangan bo’lsangiz ham, ko’plab xususiyatlar uchun maxsus o’zgaruvchilarni o’rnatish kerak bo’lganligi sababli, uni o’qishga arziydi. Nomlash va Yo’l YYYY-MM-DD-TITLE.EXTENSION nomli yangi fayl yarating va uni root katalogidagi _posts ichiga joylashtiring. Iltimos, EXTENSION md va markdown dan biri bo’lishi kerakligini unutmang. Agar fayllarni yaratish vaqtini tejashni xohlasangiz, bu ishni bajarish uchun Jekyll-Compose plaginidan foydalanishni ko’rib chiqing. Front Matter Asosan, postning yuqori qismida quyidagi Front Matter ni to’ldirishingiz kerak: 1 2 3 4 5 6 --- title: TITLE date: YYYY-MM-DD HH:MM:SS +/-TTTT categories: [TOP_CATEGORY, SUB_CATEGORY] tags: [TAG] # TAG nomlari har doim kichik harflarda bo&#39;lishi kerak --- Postlarning layout i sukut bo’yicha post ga o’rnatilgan, shuning uchun Front Matter blokida layout o’zgaruvchisini qo’shish shart emas. Sana Vaqt Zonasi Postning chiqarilish sanasini aniq qayd etish uchun, siz nafaqat _config.yml ning timezone ni o’rnatishingiz, balki Front Matter blokidagi date o’zgaruvchisida postning vaqt zonasini ham ko’rsatishingiz kerak. Format: +/-TTTT, masalan, +0800. Kategoriyalar va Teglar Har bir postning categories ikkita elementgacha bo’lishi uchun mo’ljallangan va tags elementlar soni nol dan cheksizlikgacha bo’lishi mumkin. Masalan: 1 2 3 4 --- categories: [Hayvon, Hasharot] tags: [ari] --- Muallif Ma’lumotlari Postning muallif ma’lumotlari odatda Front Matter da to’ldirilishi shart emas, ular sukut bo’yicha konfiguratsiya faylidagi social.name va social.links ning birinchi yozuvidan olinadi. Ammo siz uni quyidagicha o’zgartirishingiz mumkin: _data/authors.yml ga muallif ma’lumotlarini qo’shish (Agar veb-saytingizda bu fayl bo’lmasa, uni yaratishdan tortinmang). 1 2 3 4 &lt;author_id&gt;: name: &lt;to&#39;liq ism&gt; twitter: &lt;muallifning twitteri&gt; url: &lt;muallifning veb-sahifasi&gt; Keyin author ni bitta yozuvni yoki authors ni bir nechta yozuvlarni ko’rsatish uchun ishlating: 1 2 3 4 5 --- author: &lt;author_id&gt; # bitta yozuv uchun # yoki authors: [&lt;author1_id&gt;, &lt;author2_id&gt;] # bir nechta yozuvlar uchun --- Shuni aytib o’tish kerakki, author kaliti bir nechta yozuvlarni ham aniqlay oladi. Muallif ma’lumotlarini _data/authors.yml faylidan o’qishning foydasi shundaki, sahifada twitter:creator meta tegi bo’ladi, bu esa Twitter Cards ni boyitadi va SEO uchun foydalidir. Post Tavsifi Sukut bo’yicha, postning birinchi so’zlari bosh sahifada postlar ro’yxati uchun, Further Reading bo’limida va RSS ozuqasining XML da ko’rsatiladi. Agar post uchun avtomatik yaratilgan tavsifni ko’rsatishni xohlamasangiz, uni quyidagicha Front Matter da description maydonidan foydalanib sozlashingiz mumkin: 1 2 3 --- description: Postning qisqa mazmuni. --- Bundan tashqari, description matni post sahifasida post sarlavhasi ostida ham ko’rsatiladi. Mazmuni Jadvali Sukut bo’yicha, postning o’ng panelida Mazmuni Jadvali (TOC) ko’rsatiladi. Agar uni global miqyosda o’chirmoqchi bo’lsangiz, _config.yml ga o’ting va toc o’zgaruvchisini false ga o’rnating. Agar TOC ni ma’lum bir post uchun o’chirmoqchi bo’lsangiz, postning Front Matter ga quyidagini qo’shing: 1 2 3 --- toc: false --- Izohlar Izohlar uchun global sozlama _config.yml faylidagi comments.provider opsiyasi bilan belgilanadi. Ushbu o’zgaruvchi uchun izoh tizimi tanlanganidan so’ng, barcha postlar uchun izohlar yoqiladi. Agar ma’lum bir post uchun izohni yopmoqchi bo’lsangiz, postning Front Matter ga quyidagini qo’shing: 1 2 3 --- comments: false --- Media Biz Chirpy da rasmlar, audio va videolarni media resurslari deb ataymiz. URL Prefiksi Ba’zan biz postdagi bir nechta resurslar uchun takroriy URL prefikslarini belgilashimiz kerak bo’ladi, bu zerikarli vazifani cdn va media_subpath parametrlarini o’rnatish orqali oldini olish mumkin. Agar siz media fayllarni joylashtirish uchun CDN dan foydalansangiz, _config.yml da cdn ni belgilashingiz mumkin. Sayt avatar va postlar uchun media resurslarining URL lari CDN domen nomi bilan prefiks qilinadi. 1 cdn: https://cdn.com Joriy post/sahifa diapazoni uchun resurs yo’li prefiksini belgilash uchun, postning front matter da media_subpath ni o’rnating: 1 2 3 --- media_subpath: /path/to/media/ --- site.cdn va page.media_subpath opsiyalari alohida yoki birgalikda ishlatilishi mumkin, bu esa yakuniy resurs URL ni moslashuvchan tarzda tuzishga imkon beradi: [site.cdn/][page.media_subpath/]file.ext Rasmlar Sarlavha Rasmning keyingi qatoriga kursiv qo’shing, keyin u sarlavha bo’lib, rasmning pastki qismida paydo bo’ladi: 1 2 ![img-description](/path/to/image) _Rasm Sarlavhasi_ O’lcham Rasm yuklanayotganda sahifa tarkibining tartibini o’zgartirmaslik uchun har bir rasm uchun kenglik va balandlikni o’rnatishimiz kerak. 1 ![Desktop View](/assets/img/sample/mockup.png){: width=&quot;700&quot; height=&quot;400&quot; } SVG uchun, hech bo’lmaganda uning width ni ko’rsatishingiz kerak, aks holda u ko’rsatilmaydi. Chirpy v5.0.0 dan boshlab, height va width qisqartmalarni qo’llab-quvvatlaydi (height → h, width → w). Quyidagi misol yuqoridagi bilan bir xil ta’sirga ega: 1 ![Desktop View](/assets/img/sample/mockup.png){: w=&quot;700&quot; h=&quot;400&quot; } Pozitsiya Sukut bo’yicha, rasm markazda joylashgan, lekin siz normal, left va right sinflaridan birini ishlatib pozitsiyani belgilashingiz mumkin. Pozitsiya belgilanganidan so’ng, rasm sarlavhasi qo’shilmasligi kerak. Normal pozitsiya Quyidagi misolda rasm chapga hizalanadi: 1 ![Desktop View](/assets/img/sample/mockup.png){: .normal } Chapga suzuvchi 1 ![Desktop View](/assets/img/sample/mockup.png){: .left } O’ngga suzuvchi 1 ![Desktop View](/assets/img/sample/mockup.png){: .right } Qorong’i/Yorug’ rejim Siz rasmlarni qorong’i/yorug’ rejimda mavzu afzalliklariga moslashtirishingiz mumkin. Bu uchun siz ikkita rasm tayyorlashingiz kerak, biri qorong’i rejim uchun, ikkinchisi yorug’ rejim uchun, keyin ularga maxsus sinf (dark yoki light) tayinlang: 1 2 ![Faqat yorug&#39; rejim](/path/to/light-mode.png){: .light } ![Faqat qorong&#39;i rejim](/path/to/dark-mode.png){: .dark } So’ya Dastur oynasining skrinshotlari so’ya effektini ko’rsatish uchun ko’rib chiqilishi mumkin: 1 ![Desktop View](/assets/img/sample/mockup.png){: .shadow } Oldindan Ko’rish Rasm Agar postning yuqori qismiga rasm qo’shmoqchi bo’lsangiz, iltimos, 1200 x 630 o’lchamdagi rasmni taqdim eting. Iltimos, agar rasmning tomonlar nisbati 1.91 : 1 ga mos kelmasa, rasm o’lchamlanadi va kesiladi. Ushbu talablarni bilgan holda, rasmning atributini sozlashni boshlashingiz mumkin: 1 2 3 4 5 --- image: path: /path/to/image alt: rasmning muqobil matni --- Shuni yodda tutingki, media_subpath oldindan ko’rish rasmiga ham o’tkazilishi mumkin, ya’ni u o’rnatilganda, path atributi faqat rasm fayl nomini talab qiladi. Oddiy foydalanish uchun, siz image ni faqat yo’lni belgilash uchun ishlatishingiz mumkin. 1 2 3 --- image: /path/to/image --- LQIP Oldindan ko’rish rasmlari uchun: 1 2 3 4 --- image: lqip: /path/to/lqip-file # yoki base64 URI --- Siz LQIP ni “Matn va Tipografiya” postining oldindan ko’rish rasmida kuzatishingiz mumkin. Oddiy rasmlar uchun: 1 ![Rasm tavsifi](/path/to/image){: lqip=&quot;/path/to/lqip-file&quot; } Video Ijtimoiy Media Platformasi Siz quyidagi sintaksis bilan ijtimoiy media platformalaridan videolarni joylashtirishingiz mumkin: 1 {% include embed/{Platform}.html id=&#39;{ID}&#39; %} Bu yerda Platform platforma nomining kichik harflari, va ID video ID si. Quyidagi jadvalda berilgan video URL da kerakli ikkita parametrni qanday olish mumkinligi ko’rsatilgan va siz hozirda qo’llab-quvvatlanadigan video platformalarini ham bilib olishingiz mumkin. Video URL Platforma ID https://www.youtube.com/watch?v=H-B46URT4mg youtube H-B46URT4mg https://www.twitch.tv/videos/1634779211 twitch 1634779211 https://www.bilibili.com/video/BV1Q44y1B7Wf bilibili BV1Q44y1B7Wf Video Fayllar Agar siz video faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning: 1 {% include embed/video.html src=&#39;{URL}&#39; %} Bu yerda URL video faylga URL, masalan, /path/to/sample/video.mp4. Siz joylashtirilgan video fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan. poster=&#39;/path/to/poster.png&#39; — video yuklanayotganda ko’rsatiladigan poster rasm title=&#39;Matn&#39; — video uchun sarlavha, video ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega autoplay=true — video imkon qadar tezroq avtomatik ravishda ijro etishni boshlaydi loop=true — video oxiriga yetganda avtomatik ravishda boshiga qaytadi muted=true — audio dastlab o’chiriladi types — qo’shimcha video formatlarining kengaytmalarini | bilan ajratib ko’rsating. Ushbu fayllar asosiy video faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling. Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi: 1 2 3 4 5 6 7 8 9 10 {% include embed/video.html src=&#39;/path/to/video.mp4&#39; types=&#39;ogg|mov&#39; poster=&#39;poster.png&#39; title=&#39;Demo video&#39; autoplay=true loop=true muted=true %} Audios Agar siz audio faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning: 1 {% include embed/audio.html src=&#39;{URL}&#39; %} Bu yerda URL audio faylga URL, masalan, /path/to/audio.mp3. Siz joylashtirilgan audio fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan. title=&#39;Matn&#39; — audio uchun sarlavha, audio ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega types — qo’shimcha audio formatlarining kengaytmalarini | bilan ajratib ko’rsating. Ushbu fayllar asosiy audio faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling. Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi: 1 2 3 4 5 6 {% include embed/audio.html src=&#39;/path/to/audio.mp3&#39; types=&#39;ogg|wav|aac&#39; title=&#39;Demo audio&#39; %} Mahkamlangan Postlar Siz bir yoki bir nechta postlarni bosh sahifaning yuqori qismiga mahkamlashingiz mumkin va mahkamlangan postlar chiqarilish sanasiga ko’ra teskari tartibda saralanadi. Yoqish uchun: 1 2 3 --- pin: true --- Ko’rsatmalar Bir nechta ko’rsatma turlari mavjud: tip, info, warning, va danger. Ular prompt-{type} sinfini blockquote ga qo’shish orqali yaratilishi mumkin. Masalan, info turidagi ko’rsatmani quyidagicha aniqlang: 1 2 &gt; Ko&#39;rsatma uchun misol satri. {: .prompt-info } Sintaksis Inline Kod 1 `inline kod qismi` Fayl Yo’lini Ta’kidlash 1 `/path/to/a/file.extend`{: .filepath} Kod Bloki Markdown belgilar ``` quyidagicha kod blokini osongina yaratishi mumkin: 1 2 3 ``` Bu oddiy matn kod parchasidir. ``` Tilni Belgilash ```{language} dan foydalanib, sintaksisni ta’kidlash bilan kod blokini olasiz: 1 2 3 ```yaml key: value ``` Jekyll tegi {% highlight %} ushbu mavzu bilan mos kelmaydi. Qator Raqami Sukut bo’yicha, plaintext, console va terminal dan tashqari barcha tillar qator raqamlarini ko’rsatadi. Agar kod blokining qator raqamini yashirmoqchi bo’lsangiz, unga nolineno sinfini qo’shing: 1 2 3 4 ```shell echo &#39;Qator raqamlari yo&#39;q!&#39; ``` {: .nolineno } Fayl Nomini Belgilash Siz kod tilining kod blokining yuqori qismida ko’rsatilishini payqagan bo’lishingiz mumkin. Agar uni fayl nomi bilan almashtirmoqchi bo’lsangiz, atribut file ni qo’shishingiz mumkin: 1 2 3 4 ```shell # content ``` {: file=&quot;path/to/file&quot; } Liquid Kodlari Agar Liquid parchasini ko’rsatmoqchi bo’lsangiz, liquid kodini {% raw %} va {% endraw %} bilan o’rab oling: 1 2 3 4 5 6 7 {% raw %} ```liquid {% if product.title contains &#39;Pack&#39; %} This product&#39;s title contains the word Pack. {% endif %} ``` {% endraw %} Yoki postning YAML blokiga render_with_liquid: false (Jekyll 4.0 yoki undan yuqori versiya talab qilinadi) ni qo’shing. Matematika Biz matematikani yaratish uchun MathJax dan foydalanamiz. Veb-saytning ishlash sabablari uchun matematik xususiyat sukut bo’yicha yuklanmaydi. Ammo uni quyidagicha yoqish mumkin: 1 2 3 --- math: true --- Matematik xususiyatni yoqqandan so’ng, quyidagi sintaksis bilan matematik tenglamalarni qo’shishingiz mumkin: Blok matematikasi $$ math $$ bilan qo’shilishi kerak, $$ oldidan va keyin majburiy bo’sh satrlar bo’lishi kerak Tenglama raqamini kiritish $$\begin{equation} math \end{equation}$$ bilan qo’shilishi kerak Tenglama raqamini keltirish tenglama blokida \label{eq:label_name} va matn bilan bir qatorda \eqref{eq:label_name} bilan amalga oshirilishi kerak (quyidagi misolga qarang) Inline matematikasi (qatorda) $$ math $$ bilan qo’shilishi kerak, $$ oldidan yoki keyin hech qanday bo’sh satr bo’lmasdan Inline matematikasi (ro’yxatlarda) birinchi $ ni qochirish bilan qo’shilishi kerak 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 &lt;!-- Blok matematikasi, barcha bo&#39;sh satrlarni saqlang --&gt; $$ LaTeX_math_expression $$ &lt;!-- Tenglama raqamlash, barcha bo&#39;sh satrlarni saqlang --&gt; $$ \begin{equation} LaTeX_math_expression \label{eq:label_name} \end{equation} $$ Can be referenced as \eqref{eq:label_name}. &lt;!-- Inline matematikasi qatorlarda, bo&#39;sh satrlar yo&#39;q --&gt; &quot;Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit.&quot; &lt;!-- Inline matematikasi ro&#39;yxatlarda, birinchi `$` ni qochiring --&gt; 1. \$$ LaTeX_math_expression $$ 2. \$$ LaTeX_math_expression $$ 3. \$$ LaTeX_math_expression $$ v7.0.0 dan boshlab, MathJax uchun konfiguratsiya opsiyalari assets/js/data/mathjax.js fayliga ko’chirildi va siz kerak bo’lganda opsiyalarni o’zgartirishingiz mumkin, masalan, kengaytmalar qo’shish. Agar siz saytni chirpy-starter orqali qurayotgan bo’lsangiz, o’sha faylni gem o’rnatish katalogidan (buyruq bundle info --path jekyll-theme-chirpy bilan tekshiring) repozitoriyingizdagi bir xil katalogga nusxalash. Mermaid Mermaid ajoyib diagramma yaratish vositasi. Uni postingizda yoqish uchun YAML blokiga quyidagini qo’shing: 1 2 3 --- mermaid: true --- Keyin uni boshqa markdown tillari kabi ishlatishingiz mumkin: grafik kodini ```mermaid va ``` bilan o’rab oling. Ko’proq Bilish Jekyll postlari haqida ko’proq ma’lumot olish uchun Jekyll Docs: Posts ni ko’rib chiqing." />
+<meta property="og:description" content="Ushbu qo’llanma sizga Chirpy shablonida qanday qilib maqola yozishni ko’rsatadi va agar siz ilgari Jekyll’dan foydalangan bo’lsangiz ham, ko’plab xususiyatlar uchun maxsus o’zgaruvchilarni o’rnatish kerak bo’lganligi sababli, uni o’qishga arziydi. Nomlash va Yo’l YYYY-MM-DD-TITLE.EXTENSION nomli yangi fayl yarating va uni root katalogidagi _posts ichiga joylashtiring. Iltimos, EXTENSION md va markdown dan biri bo’lishi kerakligini unutmang. Agar fayllarni yaratish vaqtini tejashni xohlasangiz, bu ishni bajarish uchun Jekyll-Compose plaginidan foydalanishni ko’rib chiqing. Front Matter Asosan, postning yuqori qismida quyidagi Front Matter ni to’ldirishingiz kerak: 1 2 3 4 5 6 --- title: TITLE date: YYYY-MM-DD HH:MM:SS +/-TTTT categories: [TOP_CATEGORY, SUB_CATEGORY] tags: [TAG] # TAG nomlari har doim kichik harflarda bo&#39;lishi kerak --- Postlarning layout i sukut bo’yicha post ga o’rnatilgan, shuning uchun Front Matter blokida layout o’zgaruvchisini qo’shish shart emas. Sana Vaqt Zonasi Postning chiqarilish sanasini aniq qayd etish uchun, siz nafaqat _config.yml ning timezone ni o’rnatishingiz, balki Front Matter blokidagi date o’zgaruvchisida postning vaqt zonasini ham ko’rsatishingiz kerak. Format: +/-TTTT, masalan, +0800. Kategoriyalar va Teglar Har bir postning categories ikkita elementgacha bo’lishi uchun mo’ljallangan va tags elementlar soni nol dan cheksizlikgacha bo’lishi mumkin. Masalan: 1 2 3 4 --- categories: [Hayvon, Hasharot] tags: [ari] --- Muallif Ma’lumotlari Postning muallif ma’lumotlari odatda Front Matter da to’ldirilishi shart emas, ular sukut bo’yicha konfiguratsiya faylidagi social.name va social.links ning birinchi yozuvidan olinadi. Ammo siz uni quyidagicha o’zgartirishingiz mumkin: _data/authors.yml ga muallif ma’lumotlarini qo’shish (Agar veb-saytingizda bu fayl bo’lmasa, uni yaratishdan tortinmang). 1 2 3 4 &lt;author_id&gt;: name: &lt;to&#39;liq ism&gt; twitter: &lt;muallifning twitteri&gt; url: &lt;muallifning veb-sahifasi&gt; Keyin author ni bitta yozuvni yoki authors ni bir nechta yozuvlarni ko’rsatish uchun ishlating: 1 2 3 4 5 --- author: &lt;author_id&gt; # bitta yozuv uchun # yoki authors: [&lt;author1_id&gt;, &lt;author2_id&gt;] # bir nechta yozuvlar uchun --- Shuni aytib o’tish kerakki, author kaliti bir nechta yozuvlarni ham aniqlay oladi. Muallif ma’lumotlarini _data/authors.yml faylidan o’qishning foydasi shundaki, sahifada twitter:creator meta tegi bo’ladi, bu esa Twitter Cards ni boyitadi va SEO uchun foydalidir. Post Tavsifi Sukut bo’yicha, postning birinchi so’zlari bosh sahifada postlar ro’yxati uchun, Further Reading bo’limida va RSS ozuqasining XML da ko’rsatiladi. Agar post uchun avtomatik yaratilgan tavsifni ko’rsatishni xohlamasangiz, uni quyidagicha Front Matter da description maydonidan foydalanib sozlashingiz mumkin: 1 2 3 --- description: Postning qisqa mazmuni. --- Bundan tashqari, description matni post sahifasida post sarlavhasi ostida ham ko’rsatiladi. Mazmuni Jadvali Sukut bo’yicha, postning o’ng panelida Mazmuni Jadvali (TOC) ko’rsatiladi. Agar uni global miqyosda o’chirmoqchi bo’lsangiz, _config.yml ga o’ting va toc o’zgaruvchisini false ga o’rnating. Agar TOC ni ma’lum bir post uchun o’chirmoqchi bo’lsangiz, postning Front Matter ga quyidagini qo’shing: 1 2 3 --- toc: false --- Izohlar Izohlar uchun global sozlama _config.yml faylidagi comments.provider opsiyasi bilan belgilanadi. Ushbu o’zgaruvchi uchun izoh tizimi tanlanganidan so’ng, barcha postlar uchun izohlar yoqiladi. Agar ma’lum bir post uchun izohni yopmoqchi bo’lsangiz, postning Front Matter ga quyidagini qo’shing: 1 2 3 --- comments: false --- Media Biz Chirpy da rasmlar, audio va videolarni media resurslari deb ataymiz. URL Prefiksi Ba’zan biz postdagi bir nechta resurslar uchun takroriy URL prefikslarini belgilashimiz kerak bo’ladi, bu zerikarli vazifani cdn va media_subpath parametrlarini o’rnatish orqali oldini olish mumkin. Agar siz media fayllarni joylashtirish uchun CDN dan foydalansangiz, _config.yml da cdn ni belgilashingiz mumkin. Sayt avatar va postlar uchun media resurslarining URL lari CDN domen nomi bilan prefiks qilinadi. 1 cdn: https://cdn.com Joriy post/sahifa diapazoni uchun resurs yo’li prefiksini belgilash uchun, postning front matter da media_subpath ni o’rnating: 1 2 3 --- media_subpath: /path/to/media/ --- site.cdn va page.media_subpath opsiyalari alohida yoki birgalikda ishlatilishi mumkin, bu esa yakuniy resurs URL ni moslashuvchan tarzda tuzishga imkon beradi: [site.cdn/][page.media_subpath/]file.ext Rasmlar Sarlavha Rasmning keyingi qatoriga kursiv qo’shing, keyin u sarlavha bo’lib, rasmning pastki qismida paydo bo’ladi: 1 2 ![img-description](/path/to/image) _Rasm Sarlavhasi_ O’lcham Rasm yuklanayotganda sahifa tarkibining tartibini o’zgartirmaslik uchun har bir rasm uchun kenglik va balandlikni o’rnatishimiz kerak. 1 ![Desktop View](/assets/img/sample/mockup.png){: width=&quot;700&quot; height=&quot;400&quot; } SVG uchun, hech bo’lmaganda uning width ni ko’rsatishingiz kerak, aks holda u ko’rsatilmaydi. Chirpy v5.0.0 dan boshlab, height va width qisqartmalarni qo’llab-quvvatlaydi (height → h, width → w). Quyidagi misol yuqoridagi bilan bir xil ta’sirga ega: 1 ![Desktop View](/assets/img/sample/mockup.png){: w=&quot;700&quot; h=&quot;400&quot; } Pozitsiya Sukut bo’yicha, rasm markazda joylashgan, lekin siz normal, left va right sinflaridan birini ishlatib pozitsiyani belgilashingiz mumkin. Pozitsiya belgilanganidan so’ng, rasm sarlavhasi qo’shilmasligi kerak. Normal pozitsiya Quyidagi misolda rasm chapga hizalanadi: 1 ![Desktop View](/assets/img/sample/mockup.png){: .normal } Chapga suzuvchi 1 ![Desktop View](/assets/img/sample/mockup.png){: .left } O’ngga suzuvchi 1 ![Desktop View](/assets/img/sample/mockup.png){: .right } Qorong’i/Yorug’ rejim Siz rasmlarni qorong’i/yorug’ rejimda mavzu afzalliklariga moslashtirishingiz mumkin. Bu uchun siz ikkita rasm tayyorlashingiz kerak, biri qorong’i rejim uchun, ikkinchisi yorug’ rejim uchun, keyin ularga maxsus sinf (dark yoki light) tayinlang: 1 2 ![Faqat yorug&#39; rejim](/path/to/light-mode.png){: .light } ![Faqat qorong&#39;i rejim](/path/to/dark-mode.png){: .dark } So’ya Dastur oynasining skrinshotlari so’ya effektini ko’rsatish uchun ko’rib chiqilishi mumkin: 1 ![Desktop View](/assets/img/sample/mockup.png){: .shadow } Oldindan Ko’rish Rasm Agar postning yuqori qismiga rasm qo’shmoqchi bo’lsangiz, iltimos, 1200 x 630 o’lchamdagi rasmni taqdim eting. Iltimos, agar rasmning tomonlar nisbati 1.91 : 1 ga mos kelmasa, rasm o’lchamlanadi va kesiladi. Ushbu talablarni bilgan holda, rasmning atributini sozlashni boshlashingiz mumkin: 1 2 3 4 5 --- image: path: /path/to/image alt: rasmning muqobil matni --- Shuni yodda tutingki, media_subpath oldindan ko’rish rasmiga ham o’tkazilishi mumkin, ya’ni u o’rnatilganda, path atributi faqat rasm fayl nomini talab qiladi. Oddiy foydalanish uchun, siz image ni faqat yo’lni belgilash uchun ishlatishingiz mumkin. 1 2 3 --- image: /path/to/image --- LQIP Oldindan ko’rish rasmlari uchun: 1 2 3 4 --- image: lqip: /path/to/lqip-file # yoki base64 URI --- Siz LQIP ni “Matn va Tipografiya” postining oldindan ko’rish rasmida kuzatishingiz mumkin. Oddiy rasmlar uchun: 1 ![Rasm tavsifi](/path/to/image){: lqip=&quot;/path/to/lqip-file&quot; } Video Ijtimoiy Media Platformasi Siz quyidagi sintaksis bilan ijtimoiy media platformalaridan videolarni joylashtirishingiz mumkin: 1 {% include embed/{Platform}.html id=&#39;{ID}&#39; %} Bu yerda Platform platforma nomining kichik harflari, va ID video ID si. Quyidagi jadvalda berilgan video URL da kerakli ikkita parametrni qanday olish mumkinligi ko’rsatilgan va siz hozirda qo’llab-quvvatlanadigan video platformalarini ham bilib olishingiz mumkin. Video URL Platforma ID https://www.youtube.com/watch?v=H-B46URT4mg youtube H-B46URT4mg https://www.twitch.tv/videos/1634779211 twitch 1634779211 https://www.bilibili.com/video/BV1Q44y1B7Wf bilibili BV1Q44y1B7Wf Video Fayllar Agar siz video faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning: 1 {% include embed/video.html src=&#39;{URL}&#39; %} Bu yerda URL video faylga URL, masalan, /path/to/sample/video.mp4. Siz joylashtirilgan video fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan. poster=&#39;/path/to/poster.png&#39; — video yuklanayotganda ko’rsatiladigan poster rasm title=&#39;Matn&#39; — video uchun sarlavha, video ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega autoplay=true — video imkon qadar tezroq avtomatik ravishda ijro etishni boshlaydi loop=true — video oxiriga yetganda avtomatik ravishda boshiga qaytadi muted=true — audio dastlab o’chiriladi types — qo’shimcha video formatlarining kengaytmalarini | bilan ajratib ko’rsating. Ushbu fayllar asosiy video faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling. Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi: 1 2 3 4 5 6 7 8 9 10 {% include embed/video.html src=&#39;/path/to/video.mp4&#39; types=&#39;ogg|mov&#39; poster=&#39;poster.png&#39; title=&#39;Demo video&#39; autoplay=true loop=true muted=true %} Audios Agar siz audio faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning: 1 {% include embed/audio.html src=&#39;{URL}&#39; %} Bu yerda URL audio faylga URL, masalan, /path/to/audio.mp3. Siz joylashtirilgan audio fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan. title=&#39;Matn&#39; — audio uchun sarlavha, audio ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega types — qo’shimcha audio formatlarining kengaytmalarini | bilan ajratib ko’rsating. Ushbu fayllar asosiy audio faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling. Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi: 1 2 3 4 5 6 {% include embed/audio.html src=&#39;/path/to/audio.mp3&#39; types=&#39;ogg|wav|aac&#39; title=&#39;Demo audio&#39; %} Mahkamlangan Postlar Siz bir yoki bir nechta postlarni bosh sahifaning yuqori qismiga mahkamlashingiz mumkin va mahkamlangan postlar chiqarilish sanasiga ko’ra teskari tartibda saralanadi. Yoqish uchun: 1 2 3 --- pin: true --- Ko’rsatmalar Bir nechta ko’rsatma turlari mavjud: tip, info, warning, va danger. Ular prompt-{type} sinfini blockquote ga qo’shish orqali yaratilishi mumkin. Masalan, info turidagi ko’rsatmani quyidagicha aniqlang: 1 2 &gt; Ko&#39;rsatma uchun misol satri. {: .prompt-info } Sintaksis Inline Kod 1 `inline kod qismi` Fayl Yo’lini Ta’kidlash 1 `/path/to/a/file.extend`{: .filepath} Kod Bloki Markdown belgilar ``` quyidagicha kod blokini osongina yaratishi mumkin: 1 2 3 ``` Bu oddiy matn kod parchasidir. ``` Tilni Belgilash ```{language} dan foydalanib, sintaksisni ta’kidlash bilan kod blokini olasiz: 1 2 3 ```yaml key: value ``` Jekyll tegi {% highlight %} ushbu mavzu bilan mos kelmaydi. Qator Raqami Sukut bo’yicha, plaintext, console va terminal dan tashqari barcha tillar qator raqamlarini ko’rsatadi. Agar kod blokining qator raqamini yashirmoqchi bo’lsangiz, unga nolineno sinfini qo’shing: 1 2 3 4 ```shell echo &#39;Qator raqamlari yo&#39;q!&#39; ``` {: .nolineno } Fayl Nomini Belgilash Siz kod tilining kod blokining yuqori qismida ko’rsatilishini payqagan bo’lishingiz mumkin. Agar uni fayl nomi bilan almashtirmoqchi bo’lsangiz, atribut file ni qo’shishingiz mumkin: 1 2 3 4 ```shell # content ``` {: file=&quot;path/to/file&quot; } Liquid Kodlari Agar Liquid parchasini ko’rsatmoqchi bo’lsangiz, liquid kodini {% raw %} va {% endraw %} bilan o’rab oling: 1 2 3 4 5 6 7 {% raw %} ```liquid {% if product.title contains &#39;Pack&#39; %} This product&#39;s title contains the word Pack. {% endif %} ``` {% endraw %} Yoki postning YAML blokiga render_with_liquid: false (Jekyll 4.0 yoki undan yuqori versiya talab qilinadi) ni qo’shing. Matematika Biz matematikani yaratish uchun MathJax dan foydalanamiz. Veb-saytning ishlash sabablari uchun matematik xususiyat sukut bo’yicha yuklanmaydi. Ammo uni quyidagicha yoqish mumkin: 1 2 3 --- math: true --- Matematik xususiyatni yoqqandan so’ng, quyidagi sintaksis bilan matematik tenglamalarni qo’shishingiz mumkin: Blok matematikasi $$ math $$ bilan qo’shilishi kerak, $$ oldidan va keyin majburiy bo’sh satrlar bo’lishi kerak Tenglama raqamini kiritish $$\begin{equation} math \end{equation}$$ bilan qo’shilishi kerak Tenglama raqamini keltirish tenglama blokida \label{eq:label_name} va matn bilan bir qatorda \eqref{eq:label_name} bilan amalga oshirilishi kerak (quyidagi misolga qarang) Inline matematikasi (qatorda) $$ math $$ bilan qo’shilishi kerak, $$ oldidan yoki keyin hech qanday bo’sh satr bo’lmasdan Inline matematikasi (ro’yxatlarda) birinchi $ ni qochirish bilan qo’shilishi kerak 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 &lt;!-- Blok matematikasi, barcha bo&#39;sh satrlarni saqlang --&gt; $$ LaTeX_math_expression $$ &lt;!-- Tenglama raqamlash, barcha bo&#39;sh satrlarni saqlang --&gt; $$ \begin{equation} LaTeX_math_expression \label{eq:label_name} \end{equation} $$ Can be referenced as \eqref{eq:label_name}. &lt;!-- Inline matematikasi qatorlarda, bo&#39;sh satrlar yo&#39;q --&gt; &quot;Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit.&quot; &lt;!-- Inline matematikasi ro&#39;yxatlarda, birinchi `$` ni qochiring --&gt; 1. \$$ LaTeX_math_expression $$ 2. \$$ LaTeX_math_expression $$ 3. \$$ LaTeX_math_expression $$ v7.0.0 dan boshlab, MathJax uchun konfiguratsiya opsiyalari assets/js/data/mathjax.js fayliga ko’chirildi va siz kerak bo’lganda opsiyalarni o’zgartirishingiz mumkin, masalan, kengaytmalar qo’shish. Agar siz saytni chirpy-starter orqali qurayotgan bo’lsangiz, o’sha faylni gem o’rnatish katalogidan (buyruq bundle info --path jekyll-theme-chirpy bilan tekshiring) repozitoriyingizdagi bir xil katalogga nusxalash. Mermaid Mermaid ajoyib diagramma yaratish vositasi. Uni postingizda yoqish uchun YAML blokiga quyidagini qo’shing: 1 2 3 --- mermaid: true --- Keyin uni boshqa markdown tillari kabi ishlatishingiz mumkin: grafik kodini ```mermaid va ``` bilan o’rab oling. Ko’proq Bilish Jekyll postlari haqida ko’proq ma’lumot olish uchun Jekyll Docs: Posts ni ko’rib chiqing." />
+<link rel="canonical" href="http://localhost:4000/posts/yangi-maqola-yozish/" />
+<meta property="og:url" content="http://localhost:4000/posts/yangi-maqola-yozish/" />
+<meta property="og:site_name" content="Mr Kakharov" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-03-26T02:04:00+05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Yangi Maqola Yozish" />
+<meta name="twitter:site" content="@MrKakharov" />
+<meta name="twitter:creator" content="@cotes2020" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Cotes Chung","url":"https://github.com/cotes2020/"},"dateModified":"2025-03-26T02:04:00+05:00","datePublished":"2025-03-26T02:04:00+05:00","description":"Ushbu qo’llanma sizga Chirpy shablonida qanday qilib maqola yozishni ko’rsatadi va agar siz ilgari Jekyll’dan foydalangan bo’lsangiz ham, ko’plab xususiyatlar uchun maxsus o’zgaruvchilarni o’rnatish kerak bo’lganligi sababli, uni o’qishga arziydi. Nomlash va Yo’l YYYY-MM-DD-TITLE.EXTENSION nomli yangi fayl yarating va uni root katalogidagi _posts ichiga joylashtiring. Iltimos, EXTENSION md va markdown dan biri bo’lishi kerakligini unutmang. Agar fayllarni yaratish vaqtini tejashni xohlasangiz, bu ishni bajarish uchun Jekyll-Compose plaginidan foydalanishni ko’rib chiqing. Front Matter Asosan, postning yuqori qismida quyidagi Front Matter ni to’ldirishingiz kerak: 1 2 3 4 5 6 --- title: TITLE date: YYYY-MM-DD HH:MM:SS +/-TTTT categories: [TOP_CATEGORY, SUB_CATEGORY] tags: [TAG] # TAG nomlari har doim kichik harflarda bo&#39;lishi kerak --- Postlarning layout i sukut bo’yicha post ga o’rnatilgan, shuning uchun Front Matter blokida layout o’zgaruvchisini qo’shish shart emas. Sana Vaqt Zonasi Postning chiqarilish sanasini aniq qayd etish uchun, siz nafaqat _config.yml ning timezone ni o’rnatishingiz, balki Front Matter blokidagi date o’zgaruvchisida postning vaqt zonasini ham ko’rsatishingiz kerak. Format: +/-TTTT, masalan, +0800. Kategoriyalar va Teglar Har bir postning categories ikkita elementgacha bo’lishi uchun mo’ljallangan va tags elementlar soni nol dan cheksizlikgacha bo’lishi mumkin. Masalan: 1 2 3 4 --- categories: [Hayvon, Hasharot] tags: [ari] --- Muallif Ma’lumotlari Postning muallif ma’lumotlari odatda Front Matter da to’ldirilishi shart emas, ular sukut bo’yicha konfiguratsiya faylidagi social.name va social.links ning birinchi yozuvidan olinadi. Ammo siz uni quyidagicha o’zgartirishingiz mumkin: _data/authors.yml ga muallif ma’lumotlarini qo’shish (Agar veb-saytingizda bu fayl bo’lmasa, uni yaratishdan tortinmang). 1 2 3 4 &lt;author_id&gt;: name: &lt;to&#39;liq ism&gt; twitter: &lt;muallifning twitteri&gt; url: &lt;muallifning veb-sahifasi&gt; Keyin author ni bitta yozuvni yoki authors ni bir nechta yozuvlarni ko’rsatish uchun ishlating: 1 2 3 4 5 --- author: &lt;author_id&gt; # bitta yozuv uchun # yoki authors: [&lt;author1_id&gt;, &lt;author2_id&gt;] # bir nechta yozuvlar uchun --- Shuni aytib o’tish kerakki, author kaliti bir nechta yozuvlarni ham aniqlay oladi. Muallif ma’lumotlarini _data/authors.yml faylidan o’qishning foydasi shundaki, sahifada twitter:creator meta tegi bo’ladi, bu esa Twitter Cards ni boyitadi va SEO uchun foydalidir. Post Tavsifi Sukut bo’yicha, postning birinchi so’zlari bosh sahifada postlar ro’yxati uchun, Further Reading bo’limida va RSS ozuqasining XML da ko’rsatiladi. Agar post uchun avtomatik yaratilgan tavsifni ko’rsatishni xohlamasangiz, uni quyidagicha Front Matter da description maydonidan foydalanib sozlashingiz mumkin: 1 2 3 --- description: Postning qisqa mazmuni. --- Bundan tashqari, description matni post sahifasida post sarlavhasi ostida ham ko’rsatiladi. Mazmuni Jadvali Sukut bo’yicha, postning o’ng panelida Mazmuni Jadvali (TOC) ko’rsatiladi. Agar uni global miqyosda o’chirmoqchi bo’lsangiz, _config.yml ga o’ting va toc o’zgaruvchisini false ga o’rnating. Agar TOC ni ma’lum bir post uchun o’chirmoqchi bo’lsangiz, postning Front Matter ga quyidagini qo’shing: 1 2 3 --- toc: false --- Izohlar Izohlar uchun global sozlama _config.yml faylidagi comments.provider opsiyasi bilan belgilanadi. Ushbu o’zgaruvchi uchun izoh tizimi tanlanganidan so’ng, barcha postlar uchun izohlar yoqiladi. Agar ma’lum bir post uchun izohni yopmoqchi bo’lsangiz, postning Front Matter ga quyidagini qo’shing: 1 2 3 --- comments: false --- Media Biz Chirpy da rasmlar, audio va videolarni media resurslari deb ataymiz. URL Prefiksi Ba’zan biz postdagi bir nechta resurslar uchun takroriy URL prefikslarini belgilashimiz kerak bo’ladi, bu zerikarli vazifani cdn va media_subpath parametrlarini o’rnatish orqali oldini olish mumkin. Agar siz media fayllarni joylashtirish uchun CDN dan foydalansangiz, _config.yml da cdn ni belgilashingiz mumkin. Sayt avatar va postlar uchun media resurslarining URL lari CDN domen nomi bilan prefiks qilinadi. 1 cdn: https://cdn.com Joriy post/sahifa diapazoni uchun resurs yo’li prefiksini belgilash uchun, postning front matter da media_subpath ni o’rnating: 1 2 3 --- media_subpath: /path/to/media/ --- site.cdn va page.media_subpath opsiyalari alohida yoki birgalikda ishlatilishi mumkin, bu esa yakuniy resurs URL ni moslashuvchan tarzda tuzishga imkon beradi: [site.cdn/][page.media_subpath/]file.ext Rasmlar Sarlavha Rasmning keyingi qatoriga kursiv qo’shing, keyin u sarlavha bo’lib, rasmning pastki qismida paydo bo’ladi: 1 2 ![img-description](/path/to/image) _Rasm Sarlavhasi_ O’lcham Rasm yuklanayotganda sahifa tarkibining tartibini o’zgartirmaslik uchun har bir rasm uchun kenglik va balandlikni o’rnatishimiz kerak. 1 ![Desktop View](/assets/img/sample/mockup.png){: width=&quot;700&quot; height=&quot;400&quot; } SVG uchun, hech bo’lmaganda uning width ni ko’rsatishingiz kerak, aks holda u ko’rsatilmaydi. Chirpy v5.0.0 dan boshlab, height va width qisqartmalarni qo’llab-quvvatlaydi (height → h, width → w). Quyidagi misol yuqoridagi bilan bir xil ta’sirga ega: 1 ![Desktop View](/assets/img/sample/mockup.png){: w=&quot;700&quot; h=&quot;400&quot; } Pozitsiya Sukut bo’yicha, rasm markazda joylashgan, lekin siz normal, left va right sinflaridan birini ishlatib pozitsiyani belgilashingiz mumkin. Pozitsiya belgilanganidan so’ng, rasm sarlavhasi qo’shilmasligi kerak. Normal pozitsiya Quyidagi misolda rasm chapga hizalanadi: 1 ![Desktop View](/assets/img/sample/mockup.png){: .normal } Chapga suzuvchi 1 ![Desktop View](/assets/img/sample/mockup.png){: .left } O’ngga suzuvchi 1 ![Desktop View](/assets/img/sample/mockup.png){: .right } Qorong’i/Yorug’ rejim Siz rasmlarni qorong’i/yorug’ rejimda mavzu afzalliklariga moslashtirishingiz mumkin. Bu uchun siz ikkita rasm tayyorlashingiz kerak, biri qorong’i rejim uchun, ikkinchisi yorug’ rejim uchun, keyin ularga maxsus sinf (dark yoki light) tayinlang: 1 2 ![Faqat yorug&#39; rejim](/path/to/light-mode.png){: .light } ![Faqat qorong&#39;i rejim](/path/to/dark-mode.png){: .dark } So’ya Dastur oynasining skrinshotlari so’ya effektini ko’rsatish uchun ko’rib chiqilishi mumkin: 1 ![Desktop View](/assets/img/sample/mockup.png){: .shadow } Oldindan Ko’rish Rasm Agar postning yuqori qismiga rasm qo’shmoqchi bo’lsangiz, iltimos, 1200 x 630 o’lchamdagi rasmni taqdim eting. Iltimos, agar rasmning tomonlar nisbati 1.91 : 1 ga mos kelmasa, rasm o’lchamlanadi va kesiladi. Ushbu talablarni bilgan holda, rasmning atributini sozlashni boshlashingiz mumkin: 1 2 3 4 5 --- image: path: /path/to/image alt: rasmning muqobil matni --- Shuni yodda tutingki, media_subpath oldindan ko’rish rasmiga ham o’tkazilishi mumkin, ya’ni u o’rnatilganda, path atributi faqat rasm fayl nomini talab qiladi. Oddiy foydalanish uchun, siz image ni faqat yo’lni belgilash uchun ishlatishingiz mumkin. 1 2 3 --- image: /path/to/image --- LQIP Oldindan ko’rish rasmlari uchun: 1 2 3 4 --- image: lqip: /path/to/lqip-file # yoki base64 URI --- Siz LQIP ni “Matn va Tipografiya” postining oldindan ko’rish rasmida kuzatishingiz mumkin. Oddiy rasmlar uchun: 1 ![Rasm tavsifi](/path/to/image){: lqip=&quot;/path/to/lqip-file&quot; } Video Ijtimoiy Media Platformasi Siz quyidagi sintaksis bilan ijtimoiy media platformalaridan videolarni joylashtirishingiz mumkin: 1 {% include embed/{Platform}.html id=&#39;{ID}&#39; %} Bu yerda Platform platforma nomining kichik harflari, va ID video ID si. Quyidagi jadvalda berilgan video URL da kerakli ikkita parametrni qanday olish mumkinligi ko’rsatilgan va siz hozirda qo’llab-quvvatlanadigan video platformalarini ham bilib olishingiz mumkin. Video URL Platforma ID https://www.youtube.com/watch?v=H-B46URT4mg youtube H-B46URT4mg https://www.twitch.tv/videos/1634779211 twitch 1634779211 https://www.bilibili.com/video/BV1Q44y1B7Wf bilibili BV1Q44y1B7Wf Video Fayllar Agar siz video faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning: 1 {% include embed/video.html src=&#39;{URL}&#39; %} Bu yerda URL video faylga URL, masalan, /path/to/sample/video.mp4. Siz joylashtirilgan video fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan. poster=&#39;/path/to/poster.png&#39; — video yuklanayotganda ko’rsatiladigan poster rasm title=&#39;Matn&#39; — video uchun sarlavha, video ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega autoplay=true — video imkon qadar tezroq avtomatik ravishda ijro etishni boshlaydi loop=true — video oxiriga yetganda avtomatik ravishda boshiga qaytadi muted=true — audio dastlab o’chiriladi types — qo’shimcha video formatlarining kengaytmalarini | bilan ajratib ko’rsating. Ushbu fayllar asosiy video faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling. Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi: 1 2 3 4 5 6 7 8 9 10 {% include embed/video.html src=&#39;/path/to/video.mp4&#39; types=&#39;ogg|mov&#39; poster=&#39;poster.png&#39; title=&#39;Demo video&#39; autoplay=true loop=true muted=true %} Audios Agar siz audio faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning: 1 {% include embed/audio.html src=&#39;{URL}&#39; %} Bu yerda URL audio faylga URL, masalan, /path/to/audio.mp3. Siz joylashtirilgan audio fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan. title=&#39;Matn&#39; — audio uchun sarlavha, audio ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega types — qo’shimcha audio formatlarining kengaytmalarini | bilan ajratib ko’rsating. Ushbu fayllar asosiy audio faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling. Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi: 1 2 3 4 5 6 {% include embed/audio.html src=&#39;/path/to/audio.mp3&#39; types=&#39;ogg|wav|aac&#39; title=&#39;Demo audio&#39; %} Mahkamlangan Postlar Siz bir yoki bir nechta postlarni bosh sahifaning yuqori qismiga mahkamlashingiz mumkin va mahkamlangan postlar chiqarilish sanasiga ko’ra teskari tartibda saralanadi. Yoqish uchun: 1 2 3 --- pin: true --- Ko’rsatmalar Bir nechta ko’rsatma turlari mavjud: tip, info, warning, va danger. Ular prompt-{type} sinfini blockquote ga qo’shish orqali yaratilishi mumkin. Masalan, info turidagi ko’rsatmani quyidagicha aniqlang: 1 2 &gt; Ko&#39;rsatma uchun misol satri. {: .prompt-info } Sintaksis Inline Kod 1 `inline kod qismi` Fayl Yo’lini Ta’kidlash 1 `/path/to/a/file.extend`{: .filepath} Kod Bloki Markdown belgilar ``` quyidagicha kod blokini osongina yaratishi mumkin: 1 2 3 ``` Bu oddiy matn kod parchasidir. ``` Tilni Belgilash ```{language} dan foydalanib, sintaksisni ta’kidlash bilan kod blokini olasiz: 1 2 3 ```yaml key: value ``` Jekyll tegi {% highlight %} ushbu mavzu bilan mos kelmaydi. Qator Raqami Sukut bo’yicha, plaintext, console va terminal dan tashqari barcha tillar qator raqamlarini ko’rsatadi. Agar kod blokining qator raqamini yashirmoqchi bo’lsangiz, unga nolineno sinfini qo’shing: 1 2 3 4 ```shell echo &#39;Qator raqamlari yo&#39;q!&#39; ``` {: .nolineno } Fayl Nomini Belgilash Siz kod tilining kod blokining yuqori qismida ko’rsatilishini payqagan bo’lishingiz mumkin. Agar uni fayl nomi bilan almashtirmoqchi bo’lsangiz, atribut file ni qo’shishingiz mumkin: 1 2 3 4 ```shell # content ``` {: file=&quot;path/to/file&quot; } Liquid Kodlari Agar Liquid parchasini ko’rsatmoqchi bo’lsangiz, liquid kodini {% raw %} va {% endraw %} bilan o’rab oling: 1 2 3 4 5 6 7 {% raw %} ```liquid {% if product.title contains &#39;Pack&#39; %} This product&#39;s title contains the word Pack. {% endif %} ``` {% endraw %} Yoki postning YAML blokiga render_with_liquid: false (Jekyll 4.0 yoki undan yuqori versiya talab qilinadi) ni qo’shing. Matematika Biz matematikani yaratish uchun MathJax dan foydalanamiz. Veb-saytning ishlash sabablari uchun matematik xususiyat sukut bo’yicha yuklanmaydi. Ammo uni quyidagicha yoqish mumkin: 1 2 3 --- math: true --- Matematik xususiyatni yoqqandan so’ng, quyidagi sintaksis bilan matematik tenglamalarni qo’shishingiz mumkin: Blok matematikasi $$ math $$ bilan qo’shilishi kerak, $$ oldidan va keyin majburiy bo’sh satrlar bo’lishi kerak Tenglama raqamini kiritish $$\\begin{equation} math \\end{equation}$$ bilan qo’shilishi kerak Tenglama raqamini keltirish tenglama blokida \\label{eq:label_name} va matn bilan bir qatorda \\eqref{eq:label_name} bilan amalga oshirilishi kerak (quyidagi misolga qarang) Inline matematikasi (qatorda) $$ math $$ bilan qo’shilishi kerak, $$ oldidan yoki keyin hech qanday bo’sh satr bo’lmasdan Inline matematikasi (ro’yxatlarda) birinchi $ ni qochirish bilan qo’shilishi kerak 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 &lt;!-- Blok matematikasi, barcha bo&#39;sh satrlarni saqlang --&gt; $$ LaTeX_math_expression $$ &lt;!-- Tenglama raqamlash, barcha bo&#39;sh satrlarni saqlang --&gt; $$ \\begin{equation} LaTeX_math_expression \\label{eq:label_name} \\end{equation} $$ Can be referenced as \\eqref{eq:label_name}. &lt;!-- Inline matematikasi qatorlarda, bo&#39;sh satrlar yo&#39;q --&gt; &quot;Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit.&quot; &lt;!-- Inline matematikasi ro&#39;yxatlarda, birinchi `$` ni qochiring --&gt; 1. \\$$ LaTeX_math_expression $$ 2. \\$$ LaTeX_math_expression $$ 3. \\$$ LaTeX_math_expression $$ v7.0.0 dan boshlab, MathJax uchun konfiguratsiya opsiyalari assets/js/data/mathjax.js fayliga ko’chirildi va siz kerak bo’lganda opsiyalarni o’zgartirishingiz mumkin, masalan, kengaytmalar qo’shish. Agar siz saytni chirpy-starter orqali qurayotgan bo’lsangiz, o’sha faylni gem o’rnatish katalogidan (buyruq bundle info --path jekyll-theme-chirpy bilan tekshiring) repozitoriyingizdagi bir xil katalogga nusxalash. Mermaid Mermaid ajoyib diagramma yaratish vositasi. Uni postingizda yoqish uchun YAML blokiga quyidagini qo’shing: 1 2 3 --- mermaid: true --- Keyin uni boshqa markdown tillari kabi ishlatishingiz mumkin: grafik kodini ```mermaid va ``` bilan o’rab oling. Ko’proq Bilish Jekyll postlari haqida ko’proq ma’lumot olish uchun Jekyll Docs: Posts ni ko’rib chiqing.","headline":"Yangi Maqola Yozish","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/yangi-maqola-yozish/"},"url":"http://localhost:4000/posts/yangi-maqola-yozish/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <title>Yangi Maqola Yozish | Mr Kakharov
+  </title>
+
+  <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+
+  <link rel="manifest" href="/assets/img/favicons/site.webmanifest">
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Mr Kakharov">
+<meta name="application-name" content="Mr Kakharov">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+  <!-- Resource Hints -->
+  
+    
+      
+        <link rel="preconnect" href="https://fonts.googleapis.com" >
+      
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" >
+      
+    
+      
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" >
+      
+    
+      
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+      
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" >
+      
+    
+  
+
+  <!-- Bootstrap -->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
+
+  <!-- Web Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
+
+  <!-- 3rd-party Dependencies -->
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  
+
+  
+    <!-- Image Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+  
+
+  <!-- Scripts -->
+
+  <script src="/assets/js/dist/theme.min.js"></script>
+
+  <!-- JS selector for site. -->
+
+<!-- commons -->
+
+
+
+<!-- layout specified -->
+
+
+  
+
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/uz.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/assets/js/dist/post.min.js"></script>
+
+
+
+<!-- Pageviews -->
+
+  
+
+  
+
+
+
+  
+
+  <!-- A placeholder to allow defining custom metadata -->
+
+</head>
+
+
+  <body>
+    <!-- The Side Bar -->
+
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
+    <a href="/" id="avatar" class="rounded-circle"><img src="/assets/img/profile.png" width="112" height="112" alt="avatar" onerror="this.style.display='none'"></a>
+
+    <a class="site-title d-block" href="/">Mr Kakharov</a>
+    <p class="site-subtitle fst-italic mb-0">Web sahifamga xush kelibsiz!</p>
+  </header>
+  <!-- .profile-wrapper -->
+
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>BOSH SAHIFA</span>
+        </a>
+      </li>
+      <!-- the real tabs -->
+      
+        <li class="nav-item">
+          <a href="/categories/" class="nav-link">
+            <i class="fa-fw fas fa-stream"></i>
+            
+
+            <span>KATEGORIYALAR</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/tags/" class="nav-link">
+            <i class="fa-fw fas fa-tags"></i>
+            
+
+            <span>TEGLAR</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/archives/" class="nav-link">
+            <i class="fa-fw fas fa-archive"></i>
+            
+
+            <span>ARXIV</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+        <li class="nav-item">
+          <a href="/about/" class="nav-link">
+            <i class="fa-fw fas fa-info-circle"></i>
+            
+
+            <span>SAYT HAQIDA</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      
+    </ul>
+  </nav>
+
+  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+    
+      <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/MrKakharov"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/MrKakharov"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['devjk','tuta.io'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="/feed.xml"
+          aria-label="rss"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-rss"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://t.me/jakhongir_kakharov"
+          aria-label="telegram"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-telegram"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://www.threads.net/@jaxongir_kaxarov"
+          aria-label="threads"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fa-brands fa-threads"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</aside>
+<!-- #sidebar -->
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div class="container d-flex flex-column px-xxl-5">
+        <!-- The Top Bar -->
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+  <div
+    id="topbar"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+  >
+    <nav id="breadcrumb" aria-label="Breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/">Bosh sahifa</a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>Yangi Maqola Yozish</span>
+            
+
+          
+        
+      
+    </nav>
+    <!-- endof #breadcrumb -->
+
+    <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+
+    <search id="search" class="align-items-center ms-3 ms-lg-0">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Qidiruv..."
+      >
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Bekor qilish</button>
+  </div>
+</header>
+
+
+        <div class="row flex-grow-1">
+          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              <!-- Refactor the HTML structure -->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+
+<!-- Handle images -->
+
+
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+
+
+
+
+
+<article class="px-1" data-toc="true">
+  <header>
+    <h1 data-toc-skip>Yangi Maqola Yozish</h1>
+    
+
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        E'lon qilingan
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1742936640"
+  data-df="DD.MM.YYYY"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  26.03.2025
+</time>
+
+      </span>
+
+      <!-- lastmod date -->
+      
+
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          Muallif
+
+          <em>
+            
+              
+                <a href="https://github.com/cotes2020/">Cotes Chung</a>
+                
+              
+            
+          </em>
+        </span>
+
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="1811 so'zlar"
+>
+  <em>10 daq.</em> o'qish</span>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Yangi Maqola Yozish</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Mundarija</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between">
+        <div class="label text-truncate py-2 ms-4">Yangi Maqola Yozish</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog>
+  
+
+  <div class="content">
+    <p>Ushbu qo’llanma sizga <em>Chirpy</em> shablonida qanday qilib maqola yozishni ko’rsatadi va agar siz ilgari Jekyll’dan foydalangan bo’lsangiz ham, ko’plab xususiyatlar uchun maxsus o’zgaruvchilarni o’rnatish kerak bo’lganligi sababli, uni o’qishga arziydi.</p>
+
+<h2 id="nomlash-va-yol"><span class="me-2">Nomlash va Yo’l</span><a href="#nomlash-va-yol" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p><code class="language-plaintext filepath highlighter-rouge">YYYY-MM-DD-TITLE.EXTENSION</code> nomli yangi fayl yarating va uni root katalogidagi <code class="language-plaintext filepath highlighter-rouge">_posts</code> ichiga joylashtiring. Iltimos, <code class="language-plaintext filepath highlighter-rouge">EXTENSION</code> <code class="language-plaintext filepath highlighter-rouge">md</code> va <code class="language-plaintext filepath highlighter-rouge">markdown</code> dan biri bo’lishi kerakligini unutmang. Agar fayllarni yaratish vaqtini tejashni xohlasangiz, bu ishni bajarish uchun <a href="https://github.com/jekyll/jekyll-compose"><code class="language-plaintext highlighter-rouge">Jekyll-Compose</code></a> plaginidan foydalanishni ko’rib chiqing.</p>
+
+<h2 id="front-matter"><span class="me-2">Front Matter</span><a href="#front-matter" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Asosan, postning yuqori qismida quyidagi <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a> ni to’ldirishingiz kerak:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">TITLE</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">YYYY-MM-DD HH:MM:SS +/-TTTT</span>
+<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">TOP_CATEGORY</span><span class="pi">,</span> <span class="nv">SUB_CATEGORY</span><span class="pi">]</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">TAG</span><span class="pi">]</span>     <span class="c1"># TAG nomlari har doim kichik harflarda bo'lishi kerak</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<blockquote class="prompt-tip">
+  <p>Postlarning <em>layout</em> i sukut bo’yicha <code class="language-plaintext highlighter-rouge">post</code> ga o’rnatilgan, shuning uchun Front Matter blokida <em>layout</em> o’zgaruvchisini qo’shish shart emas.</p>
+</blockquote>
+
+<h3 id="sana-vaqt-zonasi"><span class="me-2">Sana Vaqt Zonasi</span><a href="#sana-vaqt-zonasi" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Postning chiqarilish sanasini aniq qayd etish uchun, siz nafaqat <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> ning <code class="language-plaintext highlighter-rouge">timezone</code> ni o’rnatishingiz, balki Front Matter blokidagi <code class="language-plaintext highlighter-rouge">date</code> o’zgaruvchisida postning vaqt zonasini ham ko’rsatishingiz kerak. Format: <code class="language-plaintext highlighter-rouge">+/-TTTT</code>, masalan, <code class="language-plaintext highlighter-rouge">+0800</code>.</p>
+
+<h3 id="kategoriyalar-va-teglar"><span class="me-2">Kategoriyalar va Teglar</span><a href="#kategoriyalar-va-teglar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Har bir postning <code class="language-plaintext highlighter-rouge">categories</code> ikkita elementgacha bo’lishi uchun mo’ljallangan va <code class="language-plaintext highlighter-rouge">tags</code> elementlar soni nol dan cheksizlikgacha bo’lishi mumkin. Masalan:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">Hayvon</span><span class="pi">,</span> <span class="nv">Hasharot</span><span class="pi">]</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">ari</span><span class="pi">]</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="muallif-malumotlari"><span class="me-2">Muallif Ma’lumotlari</span><a href="#muallif-malumotlari" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Postning muallif ma’lumotlari odatda <em>Front Matter</em> da to’ldirilishi shart emas, ular sukut bo’yicha konfiguratsiya faylidagi <code class="language-plaintext highlighter-rouge">social.name</code> va <code class="language-plaintext highlighter-rouge">social.links</code> ning birinchi yozuvidan olinadi. Ammo siz uni quyidagicha o’zgartirishingiz mumkin:</p>
+
+<p><code class="language-plaintext highlighter-rouge">_data/authors.yml</code> ga muallif ma’lumotlarini qo’shish (Agar veb-saytingizda bu fayl bo’lmasa, uni yaratishdan tortinmang).</p>
+
+<div file="_data/authors.yml" class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="_data/authors.yml"><i class="far fa-file-code fa-fw"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="na">&lt;author_id&gt;</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">&lt;to'liq ism&gt;</span>
+  <span class="na">twitter</span><span class="pi">:</span> <span class="s">&lt;muallifning twitteri&gt;</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">&lt;muallifning veb-sahifasi&gt;</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Keyin <code class="language-plaintext highlighter-rouge">author</code> ni bitta yozuvni yoki <code class="language-plaintext highlighter-rouge">authors</code> ni bir nechta yozuvlarni ko’rsatish uchun ishlating:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">&lt;author_id&gt;</span>                     <span class="c1"># bitta yozuv uchun</span>
+<span class="c1"># yoki</span>
+<span class="na">authors</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">&lt;author1_id&gt;</span><span class="pi">,</span> <span class="nv">&lt;author2_id&gt;</span><span class="pi">]</span>   <span class="c1"># bir nechta yozuvlar uchun</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Shuni aytib o’tish kerakki, <code class="language-plaintext highlighter-rouge">author</code> kaliti bir nechta yozuvlarni ham aniqlay oladi.</p>
+
+<blockquote class="prompt-info">
+  <p>Muallif ma’lumotlarini <code class="language-plaintext filepath highlighter-rouge">_data/authors.yml</code> faylidan o’qishning foydasi shundaki, sahifada <code class="language-plaintext highlighter-rouge">twitter:creator</code> meta tegi bo’ladi, bu esa <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution">Twitter Cards</a> ni boyitadi va SEO uchun foydalidir.</p>
+</blockquote>
+
+<h3 id="post-tavsifi"><span class="me-2">Post Tavsifi</span><a href="#post-tavsifi" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Sukut bo’yicha, postning birinchi so’zlari bosh sahifada postlar ro’yxati uchun, <em>Further Reading</em> bo’limida va RSS ozuqasining XML da ko’rsatiladi. Agar post uchun avtomatik yaratilgan tavsifni ko’rsatishni xohlamasangiz, uni quyidagicha <em>Front Matter</em> da <code class="language-plaintext highlighter-rouge">description</code> maydonidan foydalanib sozlashingiz mumkin:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Postning qisqa mazmuni.</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Bundan tashqari, <code class="language-plaintext highlighter-rouge">description</code> matni post sahifasida post sarlavhasi ostida ham ko’rsatiladi.</p>
+
+<h2 id="mazmuni-jadvali"><span class="me-2">Mazmuni Jadvali</span><a href="#mazmuni-jadvali" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Sukut bo’yicha, postning o’ng panelida <strong>M</strong>azmuni <strong>J</strong>advali (TOC) ko’rsatiladi. Agar uni global miqyosda o’chirmoqchi bo’lsangiz, <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> ga o’ting va <code class="language-plaintext highlighter-rouge">toc</code> o’zgaruvchisini <code class="language-plaintext highlighter-rouge">false</code> ga o’rnating. Agar TOC ni ma’lum bir post uchun o’chirmoqchi bo’lsangiz, postning <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a> ga quyidagini qo’shing:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">toc</span><span class="pi">:</span> <span class="kc">false</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h2 id="izohlar"><span class="me-2">Izohlar</span><a href="#izohlar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Izohlar uchun global sozlama <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> faylidagi <code class="language-plaintext highlighter-rouge">comments.provider</code> opsiyasi bilan belgilanadi. Ushbu o’zgaruvchi uchun izoh tizimi tanlanganidan so’ng, barcha postlar uchun izohlar yoqiladi.</p>
+
+<p>Agar ma’lum bir post uchun izohni yopmoqchi bo’lsangiz, postning <strong>Front Matter</strong> ga quyidagini qo’shing:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">comments</span><span class="pi">:</span> <span class="kc">false</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h2 id="media"><span class="me-2">Media</span><a href="#media" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Biz <em>Chirpy</em> da rasmlar, audio va videolarni media resurslari deb ataymiz.</p>
+
+<h3 id="url-prefiksi"><span class="me-2">URL Prefiksi</span><a href="#url-prefiksi" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Ba’zan biz postdagi bir nechta resurslar uchun takroriy URL prefikslarini belgilashimiz kerak bo’ladi, bu zerikarli vazifani <code class="language-plaintext highlighter-rouge">cdn</code> va <code class="language-plaintext highlighter-rouge">media_subpath</code> parametrlarini o’rnatish orqali oldini olish mumkin.</p>
+
+<ul>
+  <li>
+    <p>Agar siz media fayllarni joylashtirish uchun CDN dan foydalansangiz, <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> da <code class="language-plaintext highlighter-rouge">cdn</code> ni belgilashingiz mumkin. Sayt avatar va postlar uchun media resurslarining URL lari CDN domen nomi bilan prefiks qilinadi.</p>
+
+    <div class="language-yaml nolineno highlighter-rouge" file="_config.yml"><div class="code-header">
+        <span data-label-text="_config.yml"><i class="far fa-file-code fa-fw"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="na">cdn</span><span class="pi">:</span> <span class="s">https://cdn.com</span>
+</pre></td></tr></tbody></table></code></div>    </div>
+  </li>
+  <li>
+    <p>Joriy post/sahifa diapazoni uchun resurs yo’li prefiksini belgilash uchun, postning <em>front matter</em> da <code class="language-plaintext highlighter-rouge">media_subpath</code> ni o’rnating:</p>
+
+    <div class="language-yaml nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">media_subpath</span><span class="pi">:</span> <span class="s">/path/to/media/</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">site.cdn</code> va <code class="language-plaintext highlighter-rouge">page.media_subpath</code> opsiyalari alohida yoki birgalikda ishlatilishi mumkin, bu esa yakuniy resurs URL ni moslashuvchan tarzda tuzishga imkon beradi: <code class="language-plaintext highlighter-rouge">[site.cdn/][page.media_subpath/]file.ext</code></p>
+
+<h3 id="rasmlar"><span class="me-2">Rasmlar</span><a href="#rasmlar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<h4 id="sarlavha"><span class="me-2">Sarlavha</span><a href="#sarlavha" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Rasmning keyingi qatoriga kursiv qo’shing, keyin u sarlavha bo’lib, rasmning pastki qismida paydo bo’ladi:</p>
+
+<div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">img-description</span><span class="p">](</span><span class="sx">/path/to/image</span><span class="p">)</span>
+<span class="ge">_Rasm Sarlavhasi_</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="olcham"><span class="me-2">O’lcham</span><a href="#olcham" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Rasm yuklanayotganda sahifa tarkibining tartibini o’zgartirmaslik uchun har bir rasm uchun kenglik va balandlikni o’rnatishimiz kerak.</p>
+
+<div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: width="700" height="400" }
+</pre></td></tr></tbody></table></code></div></div>
+
+<blockquote class="prompt-info">
+  <p>SVG uchun, hech bo’lmaganda uning <em>width</em> ni ko’rsatishingiz kerak, aks holda u ko’rsatilmaydi.</p>
+</blockquote>
+
+<p><em>Chirpy v5.0.0</em> dan boshlab, <code class="language-plaintext highlighter-rouge">height</code> va <code class="language-plaintext highlighter-rouge">width</code> qisqartmalarni qo’llab-quvvatlaydi (<code class="language-plaintext highlighter-rouge">height</code> → <code class="language-plaintext highlighter-rouge">h</code>, <code class="language-plaintext highlighter-rouge">width</code> → <code class="language-plaintext highlighter-rouge">w</code>). Quyidagi misol yuqoridagi bilan bir xil ta’sirga ega:</p>
+
+<div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: w="700" h="400" }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="pozitsiya"><span class="me-2">Pozitsiya</span><a href="#pozitsiya" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Sukut bo’yicha, rasm markazda joylashgan, lekin siz <code class="language-plaintext highlighter-rouge">normal</code>, <code class="language-plaintext highlighter-rouge">left</code> va <code class="language-plaintext highlighter-rouge">right</code> sinflaridan birini ishlatib pozitsiyani belgilashingiz mumkin.</p>
+
+<blockquote class="prompt-warning">
+  <p>Pozitsiya belgilanganidan so’ng, rasm sarlavhasi qo’shilmasligi kerak.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p><strong>Normal pozitsiya</strong></p>
+
+    <p>Quyidagi misolda rasm chapga hizalanadi:</p>
+
+    <div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .normal }
+</pre></td></tr></tbody></table></code></div>    </div>
+  </li>
+  <li>
+    <p><strong>Chapga suzuvchi</strong></p>
+
+    <div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .left }
+</pre></td></tr></tbody></table></code></div>    </div>
+  </li>
+  <li>
+    <p><strong>O’ngga suzuvchi</strong></p>
+
+    <div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .right }
+</pre></td></tr></tbody></table></code></div>    </div>
+  </li>
+</ul>
+
+<h4 id="qorongiyorug-rejim"><span class="me-2">Qorong’i/Yorug’ rejim</span><a href="#qorongiyorug-rejim" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Siz rasmlarni qorong’i/yorug’ rejimda mavzu afzalliklariga moslashtirishingiz mumkin. Bu uchun siz ikkita rasm tayyorlashingiz kerak, biri qorong’i rejim uchun, ikkinchisi yorug’ rejim uchun, keyin ularga maxsus sinf (<code class="language-plaintext highlighter-rouge">dark</code> yoki <code class="language-plaintext highlighter-rouge">light</code>) tayinlang:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Faqat yorug' rejim</span><span class="p">](</span><span class="sx">/path/to/light-mode.png</span><span class="p">)</span>{: .light }
+<span class="p">![</span><span class="nv">Faqat qorong'i rejim</span><span class="p">](</span><span class="sx">/path/to/dark-mode.png</span><span class="p">)</span>{: .dark }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="soya"><span class="me-2">So’ya</span><a href="#soya" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Dastur oynasining skrinshotlari so’ya effektini ko’rsatish uchun ko’rib chiqilishi mumkin:</p>
+
+<div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .shadow }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="oldindan-korish-rasm"><span class="me-2">Oldindan Ko’rish Rasm</span><a href="#oldindan-korish-rasm" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Agar postning yuqori qismiga rasm qo’shmoqchi bo’lsangiz, iltimos, <code class="language-plaintext highlighter-rouge">1200 x 630</code> o’lchamdagi rasmni taqdim eting. Iltimos, agar rasmning tomonlar nisbati <code class="language-plaintext highlighter-rouge">1.91 : 1</code> ga mos kelmasa, rasm o’lchamlanadi va kesiladi.</p>
+
+<p>Ushbu talablarni bilgan holda, rasmning atributini sozlashni boshlashingiz mumkin:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">image</span><span class="pi">:</span>
+  <span class="na">path</span><span class="pi">:</span> <span class="s">/path/to/image</span>
+  <span class="na">alt</span><span class="pi">:</span> <span class="s">rasmning muqobil matni</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Shuni yodda tutingki, <a href="#url-prefix"><code class="language-plaintext highlighter-rouge">media_subpath</code></a> oldindan ko’rish rasmiga ham o’tkazilishi mumkin, ya’ni u o’rnatilganda, <code class="language-plaintext highlighter-rouge">path</code> atributi faqat rasm fayl nomini talab qiladi.</p>
+
+<p>Oddiy foydalanish uchun, siz <code class="language-plaintext highlighter-rouge">image</code> ni faqat yo’lni belgilash uchun ishlatishingiz mumkin.</p>
+
+<div class="language-yml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">image</span><span class="pi">:</span> <span class="s">/path/to/image</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="lqip"><span class="me-2">LQIP</span><a href="#lqip" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Oldindan ko’rish rasmlari uchun:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">image</span><span class="pi">:</span>
+  <span class="na">lqip</span><span class="pi">:</span> <span class="s">/path/to/lqip-file</span> <span class="c1"># yoki base64 URI</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<blockquote>
+  <p>Siz LQIP ni “<a href="../text-and-typography/">Matn va Tipografiya</a>” postining oldindan ko’rish rasmida kuzatishingiz mumkin.</p>
+</blockquote>
+
+<p>Oddiy rasmlar uchun:</p>
+
+<div class="language-markdown nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Rasm tavsifi</span><span class="p">](</span><span class="sx">/path/to/image</span><span class="p">)</span>{: lqip="/path/to/lqip-file" }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="video"><span class="me-2">Video</span><a href="#video" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<h4 id="ijtimoiy-media-platformasi"><span class="me-2">Ijtimoiy Media Platformasi</span><a href="#ijtimoiy-media-platformasi" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Siz quyidagi sintaksis bilan ijtimoiy media platformalaridan videolarni joylashtirishingiz mumkin:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="code-header">
+        <span data-label-text="Liquid"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/{Platform}.html<span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s1">'{ID}'</span><span class="w"> </span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Bu yerda <code class="language-plaintext highlighter-rouge">Platform</code> platforma nomining kichik harflari, va <code class="language-plaintext highlighter-rouge">ID</code> video ID si.</p>
+
+<p>Quyidagi jadvalda berilgan video URL da kerakli ikkita parametrni qanday olish mumkinligi ko’rsatilgan va siz hozirda qo’llab-quvvatlanadigan video platformalarini ham bilib olishingiz mumkin.</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Video URL</th>
+      <th>Platforma</th>
+      <th style="text-align: left">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://www.youtube.com/watch?v=H-B46URT4mg">https://www.<strong>youtube</strong>.com/watch?v=<strong>H-B46URT4mg</strong></a></td>
+      <td><code class="language-plaintext highlighter-rouge">youtube</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H-B46URT4mg</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://www.twitch.tv/videos/1634779211">https://www.<strong>twitch</strong>.tv/videos/<strong>1634779211</strong></a></td>
+      <td><code class="language-plaintext highlighter-rouge">twitch</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">1634779211</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://www.bilibili.com/video/BV1Q44y1B7Wf">https://www.<strong>bilibili</strong>.com/video/<strong>BV1Q44y1B7Wf</strong></a></td>
+      <td><code class="language-plaintext highlighter-rouge">bilibili</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BV1Q44y1B7Wf</code></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h4 id="video-fayllar"><span class="me-2">Video Fayllar</span><a href="#video-fayllar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Agar siz video faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="code-header">
+        <span data-label-text="Liquid"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/video.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s1">'{URL}'</span><span class="w"> </span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Bu yerda <code class="language-plaintext highlighter-rouge">URL</code> video faylga URL, masalan, <code class="language-plaintext highlighter-rouge">/path/to/sample/video.mp4</code>.</p>
+
+<p>Siz joylashtirilgan video fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">poster='/path/to/poster.png'</code> — video yuklanayotganda ko’rsatiladigan poster rasm</li>
+  <li><code class="language-plaintext highlighter-rouge">title='Matn'</code> — video uchun sarlavha, video ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega</li>
+  <li><code class="language-plaintext highlighter-rouge">autoplay=true</code> — video imkon qadar tezroq avtomatik ravishda ijro etishni boshlaydi</li>
+  <li><code class="language-plaintext highlighter-rouge">loop=true</code> — video oxiriga yetganda avtomatik ravishda boshiga qaytadi</li>
+  <li><code class="language-plaintext highlighter-rouge">muted=true</code> — audio dastlab o’chiriladi</li>
+  <li><code class="language-plaintext highlighter-rouge">types</code> — qo’shimcha video formatlarining kengaytmalarini <code class="language-plaintext highlighter-rouge">|</code> bilan ajratib ko’rsating. Ushbu fayllar asosiy video faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling.</li>
+</ul>
+
+<p>Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="code-header">
+        <span data-label-text="Liquid"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w">
+  </span><span class="nt">include</span><span class="w"> </span>embed/video.html<span class="w">
+  </span><span class="na">src</span><span class="o">=</span><span class="s1">'/path/to/video.mp4'</span><span class="w">
+  </span><span class="na">types</span><span class="o">=</span><span class="s1">'ogg|mov'</span><span class="w">
+  </span><span class="na">poster</span><span class="o">=</span><span class="s1">'poster.png'</span><span class="w">
+  </span><span class="na">title</span><span class="o">=</span><span class="s1">'Demo video'</span><span class="w">
+  </span><span class="na">autoplay</span><span class="o">=</span><span class="kc">true</span><span class="w">
+  </span><span class="na">loop</span><span class="o">=</span><span class="kc">true</span><span class="w">
+  </span><span class="na">muted</span><span class="o">=</span><span class="kc">true</span><span class="w">
+</span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="audios"><span class="me-2">Audios</span><a href="#audios" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Agar siz audio faylni to’g’ridan-to’g’ri joylashtirmoqchi bo’lsangiz, quyidagi sintaksisdan foydalaning:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="code-header">
+        <span data-label-text="Liquid"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/audio.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s1">'{URL}'</span><span class="w"> </span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Bu yerda <code class="language-plaintext highlighter-rouge">URL</code> audio faylga URL, masalan, <code class="language-plaintext highlighter-rouge">/path/to/audio.mp3</code>.</p>
+
+<p>Siz joylashtirilgan audio fayl uchun qo’shimcha atributlarni ham belgilashingiz mumkin. Bu yerda ruxsat etilgan atributlarning to’liq ro’yxati keltirilgan.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">title='Matn'</code> — audio uchun sarlavha, audio ostida ko’rsatiladi va rasmlar uchun bir xil ko’rinishga ega</li>
+  <li><code class="language-plaintext highlighter-rouge">types</code> — qo’shimcha audio formatlarining kengaytmalarini <code class="language-plaintext highlighter-rouge">|</code> bilan ajratib ko’rsating. Ushbu fayllar asosiy audio faylingiz bilan bir xil katalogda mavjudligiga ishonch hosil qiling.</li>
+</ul>
+
+<p>Quyidagi misol yuqoridagi barcha atributlardan foydalanishni ko’rsatadi:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="code-header">
+        <span data-label-text="Liquid"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w">
+  </span><span class="nt">include</span><span class="w"> </span>embed/audio.html<span class="w">
+  </span><span class="na">src</span><span class="o">=</span><span class="s1">'/path/to/audio.mp3'</span><span class="w">
+  </span><span class="na">types</span><span class="o">=</span><span class="s1">'ogg|wav|aac'</span><span class="w">
+  </span><span class="na">title</span><span class="o">=</span><span class="s1">'Demo audio'</span><span class="w">
+</span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h2 id="mahkamlangan-postlar"><span class="me-2">Mahkamlangan Postlar</span><a href="#mahkamlangan-postlar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Siz bir yoki bir nechta postlarni bosh sahifaning yuqori qismiga mahkamlashingiz mumkin va mahkamlangan postlar chiqarilish sanasiga ko’ra teskari tartibda saralanadi. Yoqish uchun:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">pin</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h2 id="korsatmalar"><span class="me-2">Ko’rsatmalar</span><a href="#korsatmalar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Bir nechta ko’rsatma turlari mavjud: <code class="language-plaintext highlighter-rouge">tip</code>, <code class="language-plaintext highlighter-rouge">info</code>, <code class="language-plaintext highlighter-rouge">warning</code>, va <code class="language-plaintext highlighter-rouge">danger</code>. Ular <code class="language-plaintext highlighter-rouge">prompt-{type}</code> sinfini blockquote ga qo’shish orqali yaratilishi mumkin. Masalan, <code class="language-plaintext highlighter-rouge">info</code> turidagi ko’rsatmani quyidagicha aniqlang:</p>
+
+<div class="language-md nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="gt">&gt; Ko'rsatma uchun misol satri.</span>
+{: .prompt-info }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h2 id="sintaksis"><span class="me-2">Sintaksis</span><a href="#sintaksis" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="inline-kod"><span class="me-2">Inline Kod</span><a href="#inline-kod" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<div class="language-md nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="sb">`inline kod qismi`</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="fayl-yolini-takidlash"><span class="me-2">Fayl Yo’lini Ta’kidlash</span><a href="#fayl-yolini-takidlash" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<div class="language-md nolineno highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="sb">`/path/to/a/file.extend`</span>{: .filepath}
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="kod-bloki"><span class="me-2">Kod Bloki</span><a href="#kod-bloki" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Markdown belgilar <code class="language-plaintext highlighter-rouge">```</code> quyidagicha kod blokini osongina yaratishi mumkin:</p>
+
+<div class="language-md highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">
+</span>Bu oddiy matn kod parchasidir.
+<span class="p">```</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="tilni-belgilash"><span class="me-2">Tilni Belgilash</span><a href="#tilni-belgilash" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p><code class="language-plaintext highlighter-rouge">```{language}</code> dan foydalanib, sintaksisni ta’kidlash bilan kod blokini olasiz:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">yaml
+</span><span class="na">key</span><span class="pi">:</span> <span class="s">value</span>
+<span class="p">```</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<blockquote class="prompt-danger">
+  <p>Jekyll tegi <code class="language-plaintext highlighter-rouge">{% highlight %}</code> ushbu mavzu bilan mos kelmaydi.</p>
+</blockquote>
+
+<h4 id="qator-raqami"><span class="me-2">Qator Raqami</span><a href="#qator-raqami" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Sukut bo’yicha, <code class="language-plaintext highlighter-rouge">plaintext</code>, <code class="language-plaintext highlighter-rouge">console</code> va <code class="language-plaintext highlighter-rouge">terminal</code> dan tashqari barcha tillar qator raqamlarini ko’rsatadi. Agar kod blokining qator raqamini yashirmoqchi bo’lsangiz, unga <code class="language-plaintext highlighter-rouge">nolineno</code> sinfini qo’shing:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">shell
+</span><span class="nb">echo</span> <span class="s1">'Qator raqamlari yo'</span>q!<span class="s1">'</span>
+<span class="p">```</span>
+{: .nolineno }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="fayl-nomini-belgilash"><span class="me-2">Fayl Nomini Belgilash</span><a href="#fayl-nomini-belgilash" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Siz kod tilining kod blokining yuqori qismida ko’rsatilishini payqagan bo’lishingiz mumkin. Agar uni fayl nomi bilan almashtirmoqchi bo’lsangiz, atribut <code class="language-plaintext highlighter-rouge">file</code> ni qo’shishingiz mumkin:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">shell
+</span><span class="c"># content</span>
+<span class="p">```</span>
+{: file="path/to/file" }
+</pre></td></tr></tbody></table></code></div></div>
+
+<h4 id="liquid-kodlari"><span class="me-2">Liquid Kodlari</span><a href="#liquid-kodlari" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Agar <strong>Liquid</strong> parchasini ko’rsatmoqchi bo’lsangiz, liquid kodini <code class="language-plaintext highlighter-rouge">{% raw %}</code> va <code class="language-plaintext highlighter-rouge">{% endraw %}</code> bilan o’rab oling:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>{% raw %}
+<span class="p">```</span><span class="nl">liquid
+</span><span class="cp">{%</span><span class="w"> </span><span class="nt">if</span><span class="w"> </span><span class="nv">product</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s1">'Pack'</span><span class="w"> </span><span class="cp">%}</span>
+  This product's title contains the word Pack.
+<span class="cp">{%</span><span class="w"> </span><span class="nt">endif</span><span class="w"> </span><span class="cp">%}</span>
+<span class="p">```</span>
+{% endraw %}
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Yoki postning YAML blokiga <code class="language-plaintext highlighter-rouge">render_with_liquid: false</code> (Jekyll 4.0 yoki undan yuqori versiya talab qilinadi) ni qo’shing.</p>
+
+<h2 id="matematika"><span class="me-2">Matematika</span><a href="#matematika" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Biz matematikani yaratish uchun <a href="https://www.mathjax.org/"><strong>MathJax</strong></a> dan foydalanamiz. Veb-saytning ishlash sabablari uchun matematik xususiyat sukut bo’yicha yuklanmaydi. Ammo uni quyidagicha yoqish mumkin:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">math</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Matematik xususiyatni yoqqandan so’ng, quyidagi sintaksis bilan matematik tenglamalarni qo’shishingiz mumkin:</p>
+
+<ul>
+  <li><strong>Blok matematikasi</strong> <code class="language-plaintext highlighter-rouge">$$ math $$</code> bilan qo’shilishi kerak, <code class="language-plaintext highlighter-rouge">$$</code> oldidan va keyin <strong>majburiy</strong> bo’sh satrlar bo’lishi kerak
+    <ul>
+      <li><strong>Tenglama raqamini kiritish</strong> <code class="language-plaintext highlighter-rouge">$$\begin{equation} math \end{equation}$$</code> bilan qo’shilishi kerak</li>
+      <li><strong>Tenglama raqamini keltirish</strong> tenglama blokida <code class="language-plaintext highlighter-rouge">\label{eq:label_name}</code> va matn bilan bir qatorda <code class="language-plaintext highlighter-rouge">\eqref{eq:label_name}</code> bilan amalga oshirilishi kerak (quyidagi misolga qarang)</li>
+    </ul>
+  </li>
+  <li><strong>Inline matematikasi</strong> (qatorda) <code class="language-plaintext highlighter-rouge">$$ math $$</code> bilan qo’shilishi kerak, <code class="language-plaintext highlighter-rouge">$$</code> oldidan yoki keyin hech qanday bo’sh satr bo’lmasdan</li>
+  <li><strong>Inline matematikasi</strong> (ro’yxatlarda) birinchi <code class="language-plaintext highlighter-rouge">$</code> ni qochirish bilan qo’shilishi kerak</li>
+</ul>
+
+<div class="language-markdown highlighter-rouge"><div class="code-header">
+        <span data-label-text="Markdown"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- Blok matematikasi, barcha bo'sh satrlarni saqlang --&gt;</span>
+
+$$
+LaTeX_math_expression
+$$
+
+<span class="c">&lt;!-- Tenglama raqamlash, barcha bo'sh satrlarni saqlang  --&gt;</span>
+
+$$
+<span class="se">\b</span>egin{equation}
+  LaTeX_math_expression
+  <span class="se">\l</span>abel{eq:label_name}
+<span class="se">\e</span>nd{equation}
+$$
+
+Can be referenced as <span class="se">\e</span>qref{eq:label_name}.
+
+<span class="c">&lt;!-- Inline matematikasi qatorlarda, bo'sh satrlar yo'q --&gt;</span>
+
+"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
+
+<span class="c">&lt;!-- Inline matematikasi ro'yxatlarda, birinchi `$` ni qochiring --&gt;</span>
+<span class="p">
+1.</span> <span class="se">\$</span>$ LaTeX_math_expression $$
+<span class="p">2.</span> <span class="se">\$</span>$ LaTeX_math_expression $$
+<span class="p">3.</span> <span class="se">\$</span>$ LaTeX_math_expression $$
+</pre></td></tr></tbody></table></code></div></div>
+
+<blockquote class="prompt-tip">
+  <p><code class="language-plaintext highlighter-rouge">v7.0.0</code> dan boshlab, <strong>MathJax</strong> uchun konfiguratsiya opsiyalari <code class="language-plaintext filepath highlighter-rouge">assets/js/data/mathjax.js</code> fayliga ko’chirildi va siz kerak bo’lganda opsiyalarni o’zgartirishingiz mumkin, masalan, <a href="https://docs.mathjax.org/en/latest/input/tex/extensions/index.html">kengaytmalar</a> qo’shish.<br />
+Agar siz saytni <code class="language-plaintext highlighter-rouge">chirpy-starter</code> orqali qurayotgan bo’lsangiz, o’sha faylni gem o’rnatish katalogidan (buyruq <code class="language-plaintext highlighter-rouge">bundle info --path jekyll-theme-chirpy</code> bilan tekshiring) repozitoriyingizdagi bir xil katalogga nusxalash.</p>
+</blockquote>
+
+<h2 id="mermaid"><span class="me-2">Mermaid</span><a href="#mermaid" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p><a href="https://github.com/mermaid-js/mermaid"><strong>Mermaid</strong></a> ajoyib diagramma yaratish vositasi. Uni postingizda yoqish uchun YAML blokiga quyidagini qo’shing:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="code-header">
+        <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Nusxalandi!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">mermaid</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Keyin uni boshqa markdown tillari kabi ishlatishingiz mumkin: grafik kodini <code class="language-plaintext highlighter-rouge">```mermaid</code> va <code class="language-plaintext highlighter-rouge">```</code> bilan o’rab oling.</p>
+
+<h2 id="koproq-bilish"><span class="me-2">Ko’proq Bilish</span><a href="#koproq-bilish" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Jekyll postlari haqida ko’proq ma’lumot olish uchun <a href="https://jekyllrb.com/docs/posts/">Jekyll Docs: Posts</a> ni ko’rib chiqing.</p>
+
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
+    
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/blogging/">Blogging</a>,
+          <a href="/categories/tutorial/">Tutorial</a>
+      </div>
+    
+
+    <!-- tags -->
+    
+      <div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i>
+        
+          <a
+            href="/tags/writing/"
+            class="post-tag no-text-decoration"
+          >writing</a>
+        
+      </div>
+    
+
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
+
+          Mualliflik posti 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+        . litsenziyasi bilan himoyalangan.
+        
+      </div>
+
+      <!-- Post sharing snippet -->
+
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Ulashish</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=Yangi%20Maqola%20Yozish%20-%20Mr%20Kakharov&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fyangi-maqola-yozish%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Yangi%20Maqola%20Yozish%20-%20Mr%20Kakharov&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fyangi-maqola-yozish%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fyangi-maqola-yozish%2F&text=Yangi%20Maqola%20Yozish%20-%20Mr%20Kakharov" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Havolani nusxalash"
+      data-title-succeed="Havola muvaffaqiyatli nusxalandi!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
+</div>
+
+    </div>
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
+</article>
+
+
+            
+          </main>
+
+          <!-- panel -->
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+            <div class="access">
+              <!-- Get 5 last posted/updated posts -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="access-lastmod">
+    <h2 class="panel-heading">Yaqinda yangilangan</h2>
+    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/yangi-maqola-yozish/">Yangi Maqola Yozish</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/mant-va-tipografiya/">Matn va Tipografiya</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/favicon-bilan-ishlash/">Faviconni Moslashtirish</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/posts/boshlash-uchun-kerakli-tushunchalar/">Boshlash Uchun Kerakli Tushunchalar</a>
+        </li>
+      
+    </ul>
+  </section>
+  <!-- #access-lastmod -->
+
+
+              <!-- The trending tags list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <section>
+    <h2 class="panel-heading">Mashhur teglar</h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/boshlash/">boshlash</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/favicon/">favicon</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/typography/">typography</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
+      
+    </div>
+  </section>
+
+
+            </div>
+
+            
+              
+              
+
+
+
+
+
+
+  <div class="toc-border-cover z-3"></div>
+  <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+    <h2 class="panel-heading ps-3 pb-2 mb-0">Mundarija</h2>
+    <nav id="toc"></nav>
+  </section>
+
+
+            
+          </aside>
+        </div>
+
+        <div class="row">
+          <!-- tail -->
+          <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">O'xshash postlar</h3>
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      
+        <article class="col">
+          <a href="/posts/favicon-bilan-ishlash/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1742936520"
+  data-df="DD.MM.YYYY"
+  
+>
+  26.03.2025
+</time>
+
+              <h4 class="pt-0 my-2">Faviconni Moslashtirish</h4>
+              <div class="text-muted">
+                <p>Chirpy ning favicons assets/img/favicons/ katalogida joylashgan. Siz ularni o’zingizning favikonlaringiz bilan almashtirishni xohlashingiz mumkin. Quyidagi bo’limlar sizga standart favikonlarni yar...</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/boshlash-uchun-kerakli-tushunchalar/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1742936460"
+  data-df="DD.MM.YYYY"
+  
+>
+  26.03.2025
+</time>
+
+              <h4 class="pt-0 my-2">Boshlash Uchun Kerakli Tushunchalar</h4>
+              <div class="text-muted">
+                <p>Chirpy asoslari bilan tanishing. Ushbu qo&#39;llanmada siz Chirpy asosidagi veb-saytni qanday o&#39;rnatish, sozlash va ishlatishni, shuningdek, uni veb-serverga joylashtirishni o&#39;rganasiz.</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/mant-va-tipografiya/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1742936580"
+  data-df="DD.MM.YYYY"
+  
+>
+  26.03.2025
+</time>
+
+              <h4 class="pt-0 my-2">Matn va Tipografiya</h4>
+              <div class="text-muted">
+                <p>Matn, tipografiya, matematik tenglamalar, diagrammalar, oqim jadvallari, rasmlar, videolar va boshqalar misollari.</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+    </nav>
+  </aside>
+  <!-- #related-posts -->
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <a
+      href="/posts/mant-va-tipografiya/"
+      class="btn btn-outline-primary"
+      aria-label="Oldingi post"
+    >
+      <p>Matn va Tipografiya</p>
+    </a>
+  
+
+  
+    <div class="btn btn-outline-primary disabled" aria-label="Keyingi post">
+      <p>-</p>
+    </div>
+  
+</nav>
+
+            
+
+            <!-- The Footer -->
+
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>©
+    <time>2025</time>
+
+    
+      <a href="https://twitter.com/MrKakharov">Jakhongir Kakharov</a>.
+    
+
+    
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Agar boshqacha ko'rsatilmagan bo'lsa, ushbu saytdagi mualliflik postlari Creative Commons Attribution 4.0 International (CC BY 4.0) litsenziyasi bilan himoyalangan."
+      >Ba'zi huquqlar himoyalangan.</span>
+    
+  </p>
+
+  <p><a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> uchun <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v7.2.4"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a> mavzusidan foydalanildi.
+  </p>
+</footer>
+
+          </div>
+        </div>
+
+        <!-- The Search results -->
+
+<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+  <div class="col-11 content">
+    <div id="search-hints">
+      <!-- The trending tags list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <section>
+    <h2 class="panel-heading">Mashhur teglar</h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/boshlash/">boshlash</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/favicon/">favicon</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/typography/">typography</a>
+      
+        
+        <a class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
+      
+    </div>
+  </section>
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+      </div>
+
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
+    </div>
+
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+
+    
+      <aside
+  id="notification"
+  class="toast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-animation="true"
+  data-bs-autohide="false"
+>
+  <div class="toast-header">
+    <button
+      type="button"
+      class="btn-close ms-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="toast-body text-center pt-0">
+    <p class="px-2 mb-3">Yangi kontent versiyasi mavjud.</p>
+    <button type="button" class="btn btn-primary" aria-label="Update">
+      Yangilash
+    </button>
+  </div>
+</aside>
+
+    
+
+    <!-- Embedded scripts -->
+
+    
+      
+      <!-- The comments switcher -->
+
+
+    
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/js/data/search.json',
+      searchResultTemplate: '  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">    <header>      <h2><a href="{url}">{title}</a></h2>      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}      </div>    </header>    <p>{content}</p>  </article>',
+      noResultsText: '<p class="mt-5">Uups! Hech narsa topilmadi.</p>',
+      templateMiddleware: function(prop, value, template) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+          }
+        }
+
+        if (prop === 'tags') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+          }
+        }
+      }
+    });
+  });
+</script>
+
+  </body>
+</html>
+

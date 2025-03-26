@@ -1,163 +1,161 @@
-# The Site Configuration
+# Sayt konfiguratsiyasi
 
-# Import the theme
+# Mavzuni import qilish
 theme: jekyll-theme-chirpy
 
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
-# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
-# otherwise, the layout language will use the default value of 'en'.
-lang: en
+# Veb-sahifa tili › http://www.lingoes.net/en/translator/langcode.htm
+# Agar `_data/locales` papkasidagi fayllardan biri bilan bir xil nomga ega bo'lsa, layout tili ham o'zgaradi,
+# aks holda, layout tili 'en' bo'yicha standart qiymatni ishlatadi.
+lang: uz-UZ
 
-# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Shanghai
+# Vaqt zonasini o'zgartirish › https://kevinnovak.github.io/Time-Zone-Picker
+timezone: Asia/Tashkent
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# jekyll-seo-tag sozlamalari › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: "Mr Kakharov" # O'zingizning saytingiz nomini kiriting
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: "Web sahifamga xush kelibsiz!" # Saytingiz uchun qisqa tavsif
 
-description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+description: >- # Sayt haqida umumiy ta’rif
+  O'zim haqimdagi blog va boshqa foydali ma'lumotlar.
 
-# Fill in the protocol & hostname for your site.
-# E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+# Saytingiz uchun protokol va xost nomini to'ldiring.
+# Masalan, 'https://username.github.io', e'tibor bering, u '/' bilan tugamaydi.
+url: "https://mrkakharov.github.io" # GitHub Pages uchun sayt manzili
 
 github:
-  username: github_username # change to your GitHub username
+  username: MrKakharov # Foydalanuvchi nomiga o'zgartirish
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: MrKakharov # Twitter (X) foydalanuvchi nomiga o'zgartirish
 
 social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  # To'liq ismingizni o'zgartiring.
+  # Bu postlarning standart muallifi va Footer'dagi mualliflik huquqi egasi sifatida ko'rsatiladi
+  name: Jakhongir Kakharov
+  email: devjk@tuta.io # Email manzilingizga o'zgartirish
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
-    # Uncomment below to add more social links
+    # Birinchi element mualliflik huquqi egasining havolasi sifatida xizmat qiladi
+    - https://twitter.com/MrKakharov # Twitter sahifangizga o'zgartirish
+    - https://github.com/MrKakharov # GitHub sahifangizga o'zgartirish
+    # Qo'shimcha ijtimoiy havolalarni qo'shish uchun quyidagilarni izohdan chiqarib oling
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-# Site Verification Settings
+# Sayt tasdiqlash sozlamalari
 webmaster_verifications:
-  google: # fill in your Google verification code
-  bing: # fill in your Bing verification code
-  alexa: # fill in your Alexa verification code
-  yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
-  facebook: # fill in your Facebook verification code
+  google: # Google tasdiqlash kodini to'ldiring
+  bing: # Bing tasdiqlash kodini to'ldiring
+  alexa: # Alexa tasdiqlash kodini to'ldiring
+  yandex: # Yandex tasdiqlash kodini to'ldiring
+  baidu: # Baidu tasdiqlash kodini to'ldiring
+  facebook: # Facebook tasdiqlash kodini to'ldiring
 
 # ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
+# `jekyll-seo-tag` sozlamalarining oxiri
 
-# Web Analytics Settings
+# Veb-analitika sozlamalari
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: # Google Analytics ID ni to'ldiring
   goatcounter:
-    id: # fill in your GoatCounter ID
+    id: # GoatCounter ID ni to'ldiring
   umami:
-    id: # fill in your Umami ID
-    domain: # fill in your Umami domain
+    id: # Umami ID ni to'ldiring
+    domain: # Umami domenini to'ldiring
   matomo:
-    id: # fill in your Matomo ID
-    domain: # fill in your Matomo domain
+    id: # Matomo ID ni to'ldiring
+    domain: # Matomo domenini to'ldiring
   cloudflare:
-    id: # fill in your Cloudflare Web Analytics token
+    id: # Cloudflare Web Analytics tokenini to'ldiring
   fathom:
-    id: # fill in your Fathom Site ID
+    id: # Fathom Site ID ni to'ldiring
 
-# Page views settings
+# Sahifa ko'rish sozlamalari
 pageviews:
-  provider: # now only supports 'goatcounter'
+  provider: # hozirda faqat 'goatcounter' ni qo'llab-quvvatlaydi
 
-# Prefer color scheme setting.
+# Rang sxemasi sozlamalari.
 #
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
+# Eslatma: Bo'sh qoldirilsa, tizimning rang sxemasiga mos keladi,
+# va pastki chap burchakda mavzuni qorong'i va yorug' o'rtasida almashtirish uchun tugma bo'ladi.
 #
-# Available options:
+# Mavjud variantlar:
 #
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
+#     light — Yorug' rang sxemasidan foydalaning
+#     dark — Qorong'i rang sxemasidan foydalaning
 #
 theme_mode: # [light | dark]
 
-# The CDN endpoint for media resources.
-# Notice that once it is assigned, the CDN url
-# will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
+# Media resurslar uchun CDN endpoint.
+# E'tibor bering, bir marta tayinlangandan so'ng, CDN URL
+# barcha media resurslar (sayt avatar, postlarning rasmlari, audio va video fayllar) yo'llariga qo'shiladi, '/' bilan boshlanadi
 #
-# e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+# masalan, 'https://cdn.com'
+cdn: # "https://chirpy-img.netlify.app"
 
-# the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+# Yon paneldagi avatar, mahalliy yoki CORS resurslarini qo'llab-quvvatlaydi
+avatar: "/assets/img/profile.png"
 
-# The URL of the site-wide social preview image used in SEO `og:image` meta tag.
-# It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+# SEO `og:image` meta tegida ishlatiladigan sayt bo'ylab ijtimoiy oldindan ko'rish tasviri URL manzili.
+# Bu oldindan ko'rish tasviri front matter'dagi maxsus `page.image` bilan almashtirilishi mumkin.
+social_preview_image: # string, mahalliy yoki CORS resurslari
 
-# boolean type, the global switch for TOC in posts.
+# boolean turi, postlarda TOC uchun global kalit.
 toc: true
 
 comments:
-  # Global switch for the post-comment system. Keeping it empty means disabled.
+  # Post-izoh tizimi uchun global kalit. Bo'sh qoldirilsa, o'chirilgan deb hisoblanadi.
   provider: # [disqus | utterances | giscus]
-  # The provider options are as follows:
+  # Provayder variantlari quyidagicha:
   disqus:
-    shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
+    shortname: # Disqus shortname ni to'ldiring. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  # utterances sozlamalari › https://utteranc.es/
   utterances:
     repo: # <gh-username>/<repo>
     issue_term: # < url | pathname | title | ...>
-  # Giscus options › https://giscus.app
+  # Giscus variantlari › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
     repo_id:
     category:
     category_id:
-    mapping: # optional, default to 'pathname'
-    strict: # optional, default to '0'
-    input_position: # optional, default to 'bottom'
-    lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
+    mapping: # ixtiyoriy, standart qiymat 'pathname'
+    strict: # ixtiyoriy, standart qiymat '0'
+    input_position: # ixtiyoriy, standart qiymat 'bottom'
+    lang: # ixtiyoriy, `site.lang` qiymatiga mos keladi
+    reactions_enabled: # ixtiyoriy, standart qiymat '1'
 
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
+# O'z-o'zidan joylashtirilgan statik aktivlar, ixtiyoriy › https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:
-    enabled: # boolean, keep empty means false
-    # specify the Jekyll environment, empty means both
-    # only works if `assets.self_host.enabled` is 'true'
+    enabled: # boolean, bo'sh qoldirilsa 'false' deb hisoblanadi
+    # Jekyll muhitini aniqlang, bo'sh qoldirilsa ikkala muhit uchun ham amal qiladi
+    # faqat `assets.self_host.enabled` 'true' bo'lsa ishlaydi
     env: # [development | production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: true # PWA xususiyati (o'rnatiladigan) uchun variant
   cache:
-    enabled: true # The option for PWA offline cache
-    # Paths defined here will be excluded from the PWA cache.
-    # Usually its value is the `baseurl` of another website that
-    # shares the same domain name as the current website.
+    enabled: true # PWA offline cache uchun variant
+    # Bu yerda aniqlangan yo'llar PWA cache'dan chiqariladi.
+    # Odatda, bu qiymat bir xil domen nomiga ega bo'lgan boshqa veb-saytning `baseurl` qiymati bo'ladi.
     deny_paths:
-      # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
+      # - "/example"  # `<SITE_URL>/example/*` URL'lari PWA tomonidan cache'lanmaydi
 
 paginate: 10
 
-# The base URL of your site
+# Saytingizning asosiy URL manzili
 baseurl: ""
 
-# ------------ The following options are not recommended to be modified ------------------
+# ------------ Quyidagi variantlarni o'zgartirish tavsiya etilmaydi ------------------
 
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+  syntax_highlighter_opts: # Rouge variantlari › https://github.com/jneen/rouge#full-options
     css_class: highlight
     # default_lang: console
     span:
@@ -173,14 +171,13 @@ collections:
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: "" # Bu yerda bo'sh qoldirilgan satr loyihadagi barcha fayllarni anglatadi
       type: posts
     values:
       layout: post
-      comments: true # Enable comments in posts.
-      toc: true # Display TOC column in posts.
-      # DO NOT modify the following parameter unless you are confident enough
-      # to update the code of all other post links in this project.
+      comments: true # Postlarda izohlarni yoqing.
+      toc: true # Postlarda TOC ustunini ko'rsating.
+      # Quyidagi parametrni o'zgartirmang, agar siz ushbu loyihadagi barcha boshqa post havolalarining kodini yangilashga ishonchingiz komil bo'lmasa.
       permalink: /posts/:title/
   - scope:
       path: _drafts
@@ -188,7 +185,7 @@ defaults:
       comments: false
   - scope:
       path: ""
-      type: tabs # see `site.collections`
+      type: tabs # `site.collections` ga qarang
     values:
       layout: page
       permalink: /:title/

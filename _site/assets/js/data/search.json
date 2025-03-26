@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Yangi Maqola Yozish",
+    "url": "/posts/yangi-maqola-yozish/",
+    "categories": "Blogging, Tutorial",
+    "tags": "writing",
+    "date": "2025-03-26 02:04:00 +0500",
+    "content": "Ushbu qo’llanma sizga Chirpy shablonida qanday qilib maqola yozishni ko’rsatadi va agar siz ilgari Jekyll’dan foydalangan bo’lsangiz ham, ko’plab xususiyatlar uchun maxsus o’zgaruvchilarni o’rnatis..."
+  },
+  {
+    "title": "Matn va Tipografiya",
+    "url": "/posts/mant-va-tipografiya/",
+    "categories": "Blogging, Demo",
+    "tags": "typography",
+    "date": "2025-03-26 02:03:00 +0500",
+    "content": "Matn, tipografiya, matematik tenglamalar, diagrammalar, oqim jadvallari, rasmlar, videolar va boshqalar misollari."
+  },
+  {
+    "title": "Faviconni Moslashtirish",
+    "url": "/posts/favicon-bilan-ishlash/",
+    "categories": "Blogging, Tutorial",
+    "tags": "favicon",
+    "date": "2025-03-26 02:02:00 +0500",
+    "content": "Chirpy ning favicons assets/img/favicons/ katalogida joylashgan. Siz ularni o’zingizning favikonlaringiz bilan almashtirishni xohlashingiz mumkin. Quyidagi bo’limlar sizga standart favikonlarni yar..."
+  },
+  {
+    "title": "Boshlash Uchun Kerakli Tushunchalar",
+    "url": "/posts/boshlash-uchun-kerakli-tushunchalar/",
+    "categories": "Blogging, Tutorial",
+    "tags": "boshlash",
+    "date": "2025-03-26 02:01:00 +0500",
+    "content": "Chirpy asoslari bilan tanishing. Ushbu qo&#39;llanmada siz Chirpy asosidagi veb-saytni qanday o&#39;rnatish, sozlash va ishlatishni, shuningdek, uni veb-serverga joylashtirishni o&#39;rganasiz."
+  }
+  
+]
+
