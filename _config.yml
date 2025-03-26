@@ -1,12 +1,7 @@
 # Sayt konfiguratsiyasi
 
 # Mavzuni import qilish
-# theme: jekyll-theme-chirpy
-remote_theme: cotes2020/jekyll-theme-chirpy
-plugins:
-  - jekyll-remote-theme
-  - jekyll-feed
-  - jekyll-seo-tag
+theme: jekyll-theme-chirpy
 
 # Veb-sahifa tili › http://www.lingoes.net/en/translator/langcode.htm
 # Agar `_data/locales` papkasidagi fayllardan biri bilan bir xil nomga ega bo'lsa, layout tili ham o'zgaradi,

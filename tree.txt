@@ -1,0 +1,616 @@
+./
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── README.md
+├── _config.yml
+├── _data
+│   ├── authors.yml
+│   ├── contact.yml
+│   ├── locales
+│   │   ├── ar.yml
+│   │   ├── bg-BG.yml
+│   │   ├── cs-CZ.yml
+│   │   ├── de-DE.yml
+│   │   ├── el-GR.yml
+│   │   ├── en.yml
+│   │   ├── es-ES.yml
+│   │   ├── fa-IR.yaml
+│   │   ├── fi-FI.yml
+│   │   ├── fr-FR.yml
+│   │   ├── hu-HU.yml
+│   │   ├── id-ID.yml
+│   │   ├── it-IT.yml
+│   │   ├── ko-KR.yml
+│   │   ├── my-MM.yml
+│   │   ├── nl-NL.yml
+│   │   ├── pt-BR.yml
+│   │   ├── ru-RU.yml
+│   │   ├── sl-SI.yml
+│   │   ├── sv-SE.yml
+│   │   ├── th.yml
+│   │   ├── tr-TR.yml
+│   │   ├── uk-UA.yml
+│   │   ├── uz-UZ.yml
+│   │   ├── vi-VN.yml
+│   │   ├── zh-CN.yml
+│   │   └── zh-TW.yml
+│   ├── media.yml
+│   ├── origin
+│   │   ├── basic.yml
+│   │   └── cors.yml
+│   └── share.yml
+├── _includes
+│   ├── analytics
+│   │   ├── cloudflare.html
+│   │   ├── fathom.html
+│   │   ├── goatcounter.html
+│   │   ├── google.html
+│   │   ├── matomo.html
+│   │   └── umami.html
+│   ├── comment.html
+│   ├── comments
+│   │   ├── disqus.html
+│   │   ├── giscus.html
+│   │   └── utterances.html
+│   ├── datetime.html
+│   ├── embed
+│   │   ├── audio.html
+│   │   ├── bilibili.html
+│   │   ├── twitch.html
+│   │   ├── video.html
+│   │   └── youtube.html
+│   ├── favicons.html
+│   ├── footer.html
+│   ├── head.html
+│   ├── js-selector.html
+│   ├── jsdelivr-combine.html
+│   ├── lang.html
+│   ├── language-alias.html
+│   ├── media-url.html
+│   ├── metadata-hook.html
+│   ├── notification.html
+│   ├── origin-type.html
+│   ├── pageviews
+│   │   └── goatcounter.html
+│   ├── post-description.html
+│   ├── post-nav.html
+│   ├── post-paginator.html
+│   ├── post-sharing.html
+│   ├── read-time.html
+│   ├── refactor-content.html
+│   ├── related-posts.html
+│   ├── search-loader.html
+│   ├── search-results.html
+│   ├── sidebar.html
+│   ├── toc-status.html
+│   ├── toc.html
+│   ├── topbar.html
+│   ├── trending-tags.html
+│   └── update-list.html
+├── _javascript
+│   ├── categories.js
+│   ├── commons.js
+│   ├── home.js
+│   ├── misc.js
+│   ├── modules
+│   │   ├── components
+│   │   │   ├── back-to-top.js
+│   │   │   ├── category-collapse.js
+│   │   │   ├── clipboard.js
+│   │   │   ├── img-loading.js
+│   │   │   ├── img-popup.js
+│   │   │   ├── locale-datetime.js
+│   │   │   ├── mermaid.js
+│   │   │   ├── mode-toggle.js
+│   │   │   ├── search-display.js
+│   │   │   ├── toc
+│   │   │   │   ├── toc-desktop.js
+│   │   │   │   └── toc-mobile.js
+│   │   │   ├── toc.js
+│   │   │   └── tooltip-loader.js
+│   │   ├── components.js
+│   │   ├── layouts
+│   │   │   ├── basic.js
+│   │   │   ├── sidebar.js
+│   │   │   └── topbar.js
+│   │   ├── layouts.js
+│   │   └── theme.js
+│   ├── page.js
+│   ├── post.js
+│   └── pwa
+│       ├── app.js
+│       └── sw.js
+├── _layouts
+│   ├── archives.html
+│   ├── categories.html
+│   ├── category.html
+│   ├── compress.html
+│   ├── default.html
+│   ├── home.html
+│   ├── page.html
+│   ├── post.html
+│   ├── tag.html
+│   └── tags.html
+├── _plugins
+│   └── posts-lastmod-hook.rb
+├── _posts
+│   ├── 2025-03-26-boshlash-uchun-kerakli-tushunchalar.md
+│   ├── 2025-03-26-favicon-bilan-ishlash.md
+│   ├── 2025-03-26-mant-va-tipografiya.md
+│   └── 2025-03-26-yangi-maqola-yozish.md
+├── _sass
+│   ├── abstracts
+│   │   ├── _breakpoints.scss
+│   │   ├── _index.scss
+│   │   ├── _mixins.scss
+│   │   ├── _placeholders.scss
+│   │   └── _variables.scss
+│   ├── base
+│   │   ├── _base.scss
+│   │   ├── _index.scss
+│   │   ├── _reset.scss
+│   │   ├── _syntax.scss
+│   │   └── _typography.scss
+│   ├── components
+│   │   ├── _buttons.scss
+│   │   ├── _index.scss
+│   │   └── _popups.scss
+│   ├── layout
+│   │   ├── _footer.scss
+│   │   ├── _index.scss
+│   │   ├── _panel.scss
+│   │   ├── _sidebar.scss
+│   │   └── _topbar.scss
+│   ├── main.bundle.scss
+│   ├── main.scss
+│   ├── pages
+│   │   ├── _archives.scss
+│   │   ├── _categories.scss
+│   │   ├── _category-tag.scss
+│   │   ├── _home.scss
+│   │   ├── _index.scss
+│   │   ├── _post.scss
+│   │   ├── _search.scss
+│   │   └── _tags.scss
+│   └── themes
+│       ├── _dark.scss
+│       ├── _light.scss
+│       └── _site
+├── _site
+│   ├── 404.html
+│   ├── about
+│   │   └── index.html
+│   ├── archives
+│   │   └── index.html
+│   ├── assets
+│   │   ├── css
+│   │   │   ├── jekyll-theme-chirpy.css
+│   │   │   └── jekyll-theme-chirpy.css.map
+│   │   ├── img
+│   │   │   ├── favicons
+│   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   ├── favicon-96x96.png
+│   │   │   │   ├── favicon.ico
+│   │   │   │   ├── favicon.svg
+│   │   │   │   ├── site.webmanifest
+│   │   │   │   ├── web-app-manifest-192x192.png
+│   │   │   │   └── web-app-manifest-512x512.png
+│   │   │   └── profile.png
+│   │   ├── index.html
+│   │   ├── js
+│   │   │   └── data
+│   │   │       ├── mathjax.js
+│   │   │       ├── search.json
+│   │   │       └── swconf.js
+│   │   └── lib
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── clipboard
+│   │       │   └── clipboard.min.js
+│   │       ├── dayjs
+│   │       │   ├── dayjs.min.js
+│   │       │   ├── locale
+│   │       │   │   └── en.js
+│   │       │   └── plugin
+│   │       │       ├── localizedFormat.js
+│   │       │       └── relativeTime.js
+│   │       ├── fontawesome-free
+│   │       │   ├── LICENSE.txt
+│   │       │   ├── README.md
+│   │       │   ├── css
+│   │       │   │   └── all.min.css
+│   │       │   └── webfonts
+│   │       │       ├── fa-brands-400.ttf
+│   │       │       ├── fa-brands-400.woff2
+│   │       │       ├── fa-regular-400.ttf
+│   │       │       ├── fa-regular-400.woff2
+│   │       │       ├── fa-solid-900.ttf
+│   │       │       ├── fa-solid-900.woff2
+│   │       │       ├── fa-v4compatibility.ttf
+│   │       │       └── fa-v4compatibility.woff2
+│   │       ├── fonts
+│   │       │   ├── Lato
+│   │       │   │   ├── Lato-Regular.ttf
+│   │       │   │   └── OFL.txt
+│   │       │   ├── Source_Sans_Pro
+│   │       │   │   ├── OFL.txt
+│   │       │   │   ├── SourceSansPro-Black.ttf
+│   │       │   │   ├── SourceSansPro-Bold.ttf
+│   │       │   │   ├── SourceSansPro-Regular.ttf
+│   │       │   │   └── SourceSansPro-SemiBold.ttf
+│   │       │   └── main.css
+│   │       ├── glightbox
+│   │       │   ├── glightbox.min.css
+│   │       │   └── glightbox.min.js
+│   │       ├── loading-attribute-polyfill
+│   │       │   ├── loading-attribute-polyfill.min.css
+│   │       │   └── loading-attribute-polyfill.umd.min.js
+│   │       ├── mathjax
+│   │       │   ├── a11y
+│   │       │   │   ├── assistive-mml.js
+│   │       │   │   ├── complexity.js
+│   │       │   │   ├── explorer.js
+│   │       │   │   └── semantic-enrich.js
+│   │       │   ├── adaptors
+│   │       │   │   └── liteDOM.js
+│   │       │   ├── core.js
+│   │       │   ├── input
+│   │       │   │   ├── asciimath.js
+│   │       │   │   ├── mml
+│   │       │   │   │   ├── entities.js
+│   │       │   │   │   └── extensions
+│   │       │   │   │       ├── mml3.js
+│   │       │   │   │       └── mml3.sef.json
+│   │       │   │   ├── mml.js
+│   │       │   │   ├── tex
+│   │       │   │   │   └── extensions
+│   │       │   │   │       ├── action.js
+│   │       │   │   │       ├── all-packages.js
+│   │       │   │   │       ├── ams.js
+│   │       │   │   │       ├── amscd.js
+│   │       │   │   │       ├── autoload.js
+│   │       │   │   │       ├── bbox.js
+│   │       │   │   │       ├── boldsymbol.js
+│   │       │   │   │       ├── braket.js
+│   │       │   │   │       ├── bussproofs.js
+│   │       │   │   │       ├── cancel.js
+│   │       │   │   │       ├── centernot.js
+│   │       │   │   │       ├── color.js
+│   │       │   │   │       ├── colortbl.js
+│   │       │   │   │       ├── colorv2.js
+│   │       │   │   │       ├── configmacros.js
+│   │       │   │   │       ├── enclose.js
+│   │       │   │   │       ├── extpfeil.js
+│   │       │   │   │       ├── gensymb.js
+│   │       │   │   │       ├── html.js
+│   │       │   │   │       ├── mathtools.js
+│   │       │   │   │       ├── mhchem.js
+│   │       │   │   │       ├── newcommand.js
+│   │       │   │   │       ├── noerrors.js
+│   │       │   │   │       ├── noundefined.js
+│   │       │   │   │       ├── physics.js
+│   │       │   │   │       ├── require.js
+│   │       │   │   │       ├── setoptions.js
+│   │       │   │   │       ├── tagformat.js
+│   │       │   │   │       ├── textcomp.js
+│   │       │   │   │       ├── textmacros.js
+│   │       │   │   │       ├── unicode.js
+│   │       │   │   │       ├── upgreek.js
+│   │       │   │   │       └── verb.js
+│   │       │   │   ├── tex-base.js
+│   │       │   │   ├── tex-full.js
+│   │       │   │   └── tex.js
+│   │       │   ├── latest.js
+│   │       │   ├── loader.js
+│   │       │   ├── mml-chtml.js
+│   │       │   ├── mml-svg.js
+│   │       │   ├── node-main.js
+│   │       │   ├── output
+│   │       │   │   ├── chtml
+│   │       │   │   │   └── fonts
+│   │       │   │   │       ├── tex.js
+│   │       │   │   │       └── woff-v2
+│   │       │   │   │           ├── MathJax_AMS-Regular.woff
+│   │       │   │   │           ├── MathJax_Calligraphic-Bold.woff
+│   │       │   │   │           ├── MathJax_Calligraphic-Regular.woff
+│   │       │   │   │           ├── MathJax_Fraktur-Bold.woff
+│   │       │   │   │           ├── MathJax_Fraktur-Regular.woff
+│   │       │   │   │           ├── MathJax_Main-Bold.woff
+│   │       │   │   │           ├── MathJax_Main-Italic.woff
+│   │       │   │   │           ├── MathJax_Main-Regular.woff
+│   │       │   │   │           ├── MathJax_Math-BoldItalic.woff
+│   │       │   │   │           ├── MathJax_Math-Italic.woff
+│   │       │   │   │           ├── MathJax_Math-Regular.woff
+│   │       │   │   │           ├── MathJax_SansSerif-Bold.woff
+│   │       │   │   │           ├── MathJax_SansSerif-Italic.woff
+│   │       │   │   │           ├── MathJax_SansSerif-Regular.woff
+│   │       │   │   │           ├── MathJax_Script-Regular.woff
+│   │       │   │   │           ├── MathJax_Size1-Regular.woff
+│   │       │   │   │           ├── MathJax_Size2-Regular.woff
+│   │       │   │   │           ├── MathJax_Size3-Regular.woff
+│   │       │   │   │           ├── MathJax_Size4-Regular.woff
+│   │       │   │   │           ├── MathJax_Typewriter-Regular.woff
+│   │       │   │   │           ├── MathJax_Vector-Bold.woff
+│   │       │   │   │           ├── MathJax_Vector-Regular.woff
+│   │       │   │   │           └── MathJax_Zero.woff
+│   │       │   │   ├── chtml.js
+│   │       │   │   ├── svg
+│   │       │   │   │   └── fonts
+│   │       │   │   │       └── tex.js
+│   │       │   │   └── svg.js
+│   │       │   ├── sre
+│   │       │   │   ├── mathmaps
+│   │       │   │   │   ├── de.js
+│   │       │   │   │   ├── en.js
+│   │       │   │   │   ├── es.js
+│   │       │   │   │   ├── fr.js
+│   │       │   │   │   ├── hi.js
+│   │       │   │   │   ├── it.js
+│   │       │   │   │   └── nemeth.js
+│   │       │   │   ├── sre-node.js
+│   │       │   │   └── sre_browser.js
+│   │       │   ├── startup.js
+│   │       │   ├── tex-chtml-full.js
+│   │       │   ├── tex-chtml.js
+│   │       │   ├── tex-mml-chtml.js
+│   │       │   ├── tex-mml-svg.js
+│   │       │   ├── tex-svg-full.js
+│   │       │   ├── tex-svg.js
+│   │       │   └── ui
+│   │       │       ├── lazy.js
+│   │       │       ├── menu.js
+│   │       │       └── safe.js
+│   │       ├── mermaid
+│   │       │   └── mermaid.min.js
+│   │       ├── package.json
+│   │       ├── simple-jekyll-search
+│   │       │   └── simple-jekyll-search.min.js
+│   │       └── tocbot
+│   │           ├── tocbot.min.css
+│   │           └── tocbot.min.js
+│   ├── categories
+│   │   ├── blogging
+│   │   │   └── index.html
+│   │   ├── demo
+│   │   │   └── index.html
+│   │   ├── index.html
+│   │   └── tutorial
+│   │       └── index.html
+│   ├── feed.xml
+│   ├── index.html
+│   ├── norobots
+│   │   └── index.html
+│   ├── posts
+│   │   ├── boshlash-uchun-kerakli-tushunchalar
+│   │   │   └── index.html
+│   │   ├── favicon-bilan-ishlash
+│   │   │   └── index.html
+│   │   ├── index.html
+│   │   ├── mant-va-tipografiya
+│   │   │   └── index.html
+│   │   └── yangi-maqola-yozish
+│   │       └── index.html
+│   ├── redirects.json
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── tags
+│       ├── boshlash
+│       │   └── index.html
+│       ├── favicon
+│       │   └── index.html
+│       ├── index.html
+│       ├── typography
+│       │   └── index.html
+│       └── writing
+│           └── index.html
+├── _tabs
+│   ├── about.md
+│   ├── archives.md
+│   ├── categories.md
+│   └── tags.md
+├── assets
+│   ├── 404.html
+│   ├── css
+│   │   └── jekyll-theme-chirpy.scss
+│   ├── feed.xml
+│   ├── img
+│   │   ├── favicons
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── favicon-96x96.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── favicon.svg
+│   │   │   ├── site.webmanifest
+│   │   │   ├── web-app-manifest-192x192.png
+│   │   │   └── web-app-manifest-512x512.png
+│   │   └── profile.png
+│   ├── js
+│   │   └── data
+│   │       ├── mathjax.js
+│   │       ├── search.json
+│   │       └── swconf.js
+│   ├── lib
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── clipboard
+│   │   │   └── clipboard.min.js
+│   │   ├── dayjs
+│   │   │   ├── dayjs.min.js
+│   │   │   ├── locale
+│   │   │   │   └── en.js
+│   │   │   └── plugin
+│   │   │       ├── localizedFormat.js
+│   │   │       └── relativeTime.js
+│   │   ├── fontawesome-free
+│   │   │   ├── LICENSE.txt
+│   │   │   ├── README.md
+│   │   │   ├── css
+│   │   │   │   └── all.min.css
+│   │   │   └── webfonts
+│   │   │       ├── fa-brands-400.ttf
+│   │   │       ├── fa-brands-400.woff2
+│   │   │       ├── fa-regular-400.ttf
+│   │   │       ├── fa-regular-400.woff2
+│   │   │       ├── fa-solid-900.ttf
+│   │   │       ├── fa-solid-900.woff2
+│   │   │       ├── fa-v4compatibility.ttf
+│   │   │       └── fa-v4compatibility.woff2
+│   │   ├── fonts
+│   │   │   ├── Lato
+│   │   │   │   ├── Lato-Regular.ttf
+│   │   │   │   └── OFL.txt
+│   │   │   ├── Source_Sans_Pro
+│   │   │   │   ├── OFL.txt
+│   │   │   │   ├── SourceSansPro-Black.ttf
+│   │   │   │   ├── SourceSansPro-Bold.ttf
+│   │   │   │   ├── SourceSansPro-Regular.ttf
+│   │   │   │   └── SourceSansPro-SemiBold.ttf
+│   │   │   └── main.css
+│   │   ├── glightbox
+│   │   │   ├── glightbox.min.css
+│   │   │   └── glightbox.min.js
+│   │   ├── loading-attribute-polyfill
+│   │   │   ├── loading-attribute-polyfill.min.css
+│   │   │   └── loading-attribute-polyfill.umd.min.js
+│   │   ├── mathjax
+│   │   │   ├── a11y
+│   │   │   │   ├── assistive-mml.js
+│   │   │   │   ├── complexity.js
+│   │   │   │   ├── explorer.js
+│   │   │   │   └── semantic-enrich.js
+│   │   │   ├── adaptors
+│   │   │   │   └── liteDOM.js
+│   │   │   ├── core.js
+│   │   │   ├── input
+│   │   │   │   ├── asciimath.js
+│   │   │   │   ├── mml
+│   │   │   │   │   ├── entities.js
+│   │   │   │   │   └── extensions
+│   │   │   │   │       ├── mml3.js
+│   │   │   │   │       └── mml3.sef.json
+│   │   │   │   ├── mml.js
+│   │   │   │   ├── tex
+│   │   │   │   │   └── extensions
+│   │   │   │   │       ├── action.js
+│   │   │   │   │       ├── all-packages.js
+│   │   │   │   │       ├── ams.js
+│   │   │   │   │       ├── amscd.js
+│   │   │   │   │       ├── autoload.js
+│   │   │   │   │       ├── bbox.js
+│   │   │   │   │       ├── boldsymbol.js
+│   │   │   │   │       ├── braket.js
+│   │   │   │   │       ├── bussproofs.js
+│   │   │   │   │       ├── cancel.js
+│   │   │   │   │       ├── centernot.js
+│   │   │   │   │       ├── color.js
+│   │   │   │   │       ├── colortbl.js
+│   │   │   │   │       ├── colorv2.js
+│   │   │   │   │       ├── configmacros.js
+│   │   │   │   │       ├── enclose.js
+│   │   │   │   │       ├── extpfeil.js
+│   │   │   │   │       ├── gensymb.js
+│   │   │   │   │       ├── html.js
+│   │   │   │   │       ├── mathtools.js
+│   │   │   │   │       ├── mhchem.js
+│   │   │   │   │       ├── newcommand.js
+│   │   │   │   │       ├── noerrors.js
+│   │   │   │   │       ├── noundefined.js
+│   │   │   │   │       ├── physics.js
+│   │   │   │   │       ├── require.js
+│   │   │   │   │       ├── setoptions.js
+│   │   │   │   │       ├── tagformat.js
+│   │   │   │   │       ├── textcomp.js
+│   │   │   │   │       ├── textmacros.js
+│   │   │   │   │       ├── unicode.js
+│   │   │   │   │       ├── upgreek.js
+│   │   │   │   │       └── verb.js
+│   │   │   │   ├── tex-base.js
+│   │   │   │   ├── tex-full.js
+│   │   │   │   └── tex.js
+│   │   │   ├── latest.js
+│   │   │   ├── loader.js
+│   │   │   ├── mml-chtml.js
+│   │   │   ├── mml-svg.js
+│   │   │   ├── node-main.js
+│   │   │   ├── output
+│   │   │   │   ├── chtml
+│   │   │   │   │   └── fonts
+│   │   │   │   │       ├── tex.js
+│   │   │   │   │       └── woff-v2
+│   │   │   │   │           ├── MathJax_AMS-Regular.woff
+│   │   │   │   │           ├── MathJax_Calligraphic-Bold.woff
+│   │   │   │   │           ├── MathJax_Calligraphic-Regular.woff
+│   │   │   │   │           ├── MathJax_Fraktur-Bold.woff
+│   │   │   │   │           ├── MathJax_Fraktur-Regular.woff
+│   │   │   │   │           ├── MathJax_Main-Bold.woff
+│   │   │   │   │           ├── MathJax_Main-Italic.woff
+│   │   │   │   │           ├── MathJax_Main-Regular.woff
+│   │   │   │   │           ├── MathJax_Math-BoldItalic.woff
+│   │   │   │   │           ├── MathJax_Math-Italic.woff
+│   │   │   │   │           ├── MathJax_Math-Regular.woff
+│   │   │   │   │           ├── MathJax_SansSerif-Bold.woff
+│   │   │   │   │           ├── MathJax_SansSerif-Italic.woff
+│   │   │   │   │           ├── MathJax_SansSerif-Regular.woff
+│   │   │   │   │           ├── MathJax_Script-Regular.woff
+│   │   │   │   │           ├── MathJax_Size1-Regular.woff
+│   │   │   │   │           ├── MathJax_Size2-Regular.woff
+│   │   │   │   │           ├── MathJax_Size3-Regular.woff
+│   │   │   │   │           ├── MathJax_Size4-Regular.woff
+│   │   │   │   │           ├── MathJax_Typewriter-Regular.woff
+│   │   │   │   │           ├── MathJax_Vector-Bold.woff
+│   │   │   │   │           ├── MathJax_Vector-Regular.woff
+│   │   │   │   │           └── MathJax_Zero.woff
+│   │   │   │   ├── chtml.js
+│   │   │   │   ├── svg
+│   │   │   │   │   └── fonts
+│   │   │   │   │       └── tex.js
+│   │   │   │   └── svg.js
+│   │   │   ├── sre
+│   │   │   │   ├── mathmaps
+│   │   │   │   │   ├── de.js
+│   │   │   │   │   ├── en.js
+│   │   │   │   │   ├── es.js
+│   │   │   │   │   ├── fr.js
+│   │   │   │   │   ├── hi.js
+│   │   │   │   │   ├── it.js
+│   │   │   │   │   └── nemeth.js
+│   │   │   │   ├── sre-node.js
+│   │   │   │   └── sre_browser.js
+│   │   │   ├── startup.js
+│   │   │   ├── tex-chtml-full.js
+│   │   │   ├── tex-chtml.js
+│   │   │   ├── tex-mml-chtml.js
+│   │   │   ├── tex-mml-svg.js
+│   │   │   ├── tex-svg-full.js
+│   │   │   ├── tex-svg.js
+│   │   │   └── ui
+│   │   │       ├── lazy.js
+│   │   │       ├── menu.js
+│   │   │       └── safe.js
+│   │   ├── mermaid
+│   │   │   └── mermaid.min.js
+│   │   ├── package.json
+│   │   ├── simple-jekyll-search
+│   │   │   └── simple-jekyll-search.min.js
+│   │   └── tocbot
+│   │       ├── tocbot.min.css
+│   │       └── tocbot.min.js
+│   └── robots.txt
+├── docs
+│   ├── CHANGELOG.md
+│   ├── CODE_OF_CONDUCT.md
+│   ├── CONTRIBUTING.md
+│   └── SECURITY.md
+├── index.html
+├── jekyll-theme-chirpy.gemspec
+├── package.json
+├── purgecss.js
+├── rollup.config.js
+├── tools
+│   ├── init.sh
+│   ├── release.sh
+│   ├── run.sh
+│   └── test.sh
+└── tree.txt
+
+125 directories, 489 files
