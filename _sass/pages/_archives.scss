@@ -80,13 +80,13 @@
         );
       }
 
-      &::before {
+      /*       &::before {
         @extend %timeline;
 
         top: 0;
         left: 77px;
         height: 3.1rem;
-      }
+      } */
     }
 
     &:last-child li:last-child::before {
@@ -131,7 +131,7 @@
       height: 8px;
       float: left;
       top: 1.35rem;
-      left: 71px;
+      left: 25px;
       background-color: var(--timeline-node-bg);
       box-shadow: 0 0 3px 0 #c2c6cc;
       z-index: 1;

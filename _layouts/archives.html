@@ -1,35 +1,52 @@
 ---
 layout: page
-# The Archives of posts.
+# The Archives of posts as an index.
 ---
-
 {% include lang.html %}
 
-{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
-{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
-
 <div id="archives" class="pl-xl-3">
-  {% for post in site.posts %}
-    {% assign cur_year = post.date | date: '%Y' %}
-
-    {% if cur_year != last_year %}
-      {% unless forloop.first %}</ul>{% endunless %}
-
-      <time class="year lead d-block">{{ cur_year }}</time>
-      {{ '<ul class="list-unstyled">' }}
-
-      {% assign last_year = cur_year %}
-    {% endif %}
-
-    <li>
-      {% assign ts = post.date | date: '%s' %}
-      <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: '%d' }}</span>
-      <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
-        {{ post.date | date: df_strftime_m }}
-      </span>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </li>
-
-    {% if forloop.last %}</ul>{% endif %}
-  {% endfor %}
+  <ul class="list-unstyled">
+    {% assign unidades = site.posts | group_by_exp: 'post', 'post.categories[0] ' %}
+    {% for unidad in unidades %}
+      <li>
+        <strong>{{ unidad.name }}</strong>
+        <ul class="list-unstyled ms-3">
+          {% assign temas = unidad.items
+            | group_by_exp: 'post', "post.title | split: ' ' | first | split: '.' | slice: 0, 2 | join: '.'"
+            | sort: 'name'
+          %}
+          {% for tema in temas %}
+            <li>
+              <!-- Filtrar el post con formato "X.A NOMBRE" -->
+              {% assign tema_post = null %}
+              {% for post in tema.items %}
+                {% assign post_prefix = post.title | split: ' ' | first | split: '.' %}
+                {% if post_prefix.size == 2 %}
+                  {% assign tema_post = post %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% if tema_post %}
+                <a href="{{ tema_post.url | relative_url }}">
+                  <strong>{{ tema_post.title }}</strong>
+                </a>
+              {% endif %}
+              <ul class="list-unstyled ms-3">
+                {% assign subtemas = tema.items
+                  | where_exp: 'post', 'post.url != tema_post.url'
+                  | group_by_exp: 'post', "post.title | split: ' ' | first | split: '.' | slice: 0, 3 | join: '.'"
+                  | sort: 'name'
+                %}
+                {% for subtema in subtemas %}
+                  <li>
+                    <a href="{{ subtema.items[0].url | relative_url }}">{{ subtema.items[0].title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
