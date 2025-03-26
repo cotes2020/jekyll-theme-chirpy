@@ -2,7 +2,7 @@
 layout: post
 title: "1.2 Alcance de un proyecto"
 date: 2025-02-19 00:00:00 +0800
-categories: [Tema 1.- Inicio de un proyecto, 1.2 Alcance de un proyecto]
+categories: [Unidad Temática 1 - Inicio de un proyecto, 1.2 Alcance de un proyecto]
 
 ---
 <h2>Definición del Alcance</h2>
