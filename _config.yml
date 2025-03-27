@@ -16,7 +16,7 @@ timezone: America/Mexico_City
 
 title: Formulación y Evaluación de Proyectos Informáticos # the main title
 
-tagline: Objeto de aprendizaje de la unidad # it will display as the subtitle
+tagline: Objeto de aprendizaje de la unidad. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Sitio para la unidad de aprendizaje de FEPI.
@@ -35,7 +35,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Tanibet Pérez de los Santos Mondragón y Virginia Sanchez Cruz
-  email: example@domain.com # change to your email address
+  email: tperezdm@ipn.mx # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username # change to your Twitter homepage
@@ -95,7 +95,7 @@ theme_mode: light
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/avatar.jpg"
