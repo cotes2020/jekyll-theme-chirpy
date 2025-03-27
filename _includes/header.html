@@ -1,0 +1,110 @@
+{% assign date_format = site.date_format | default: '%B %-d, %Y' %}
+
+{% if page.image %}
+  <div
+    id="header-big-imgs"
+    data-num-img=""
+    {% if page.image.first %}
+      {{- page.image.cover.size -}}
+    {% else %}
+      1
+    {% endif %}
+    {% for bigimg in page.image.cover %}
+      {% assign imgnum = forloop.index %}
+      {% for imginfo in bigimg %}
+        {% if imginfo[0] %}
+          data-img-src-{{ imgnum }}="{{ new_url }}"
+          data-img-desc-{{ imgnum }}="{{ imginfo[1] }}"
+        {% else %}
+          data-img-src-{{ imgnum }}="{{ new_url }}"
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  ></div>
+{% endif %}
+
+<header
+  id="post-header"
+  class="d-flex flex-column w-100"
+  style="
+    background-size: cover;
+    width: 100%;
+    {% if page.image %}
+      height: 300px;
+    {% endif %}
+  "
+>
+  <div
+    class="intro-header {% if page.image %} big-img {% endif %}"
+    style="
+      background-image: url('{{ new_url }}');
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      align-content: end;
+    "
+  >
+    {% if page.image or page.title %}
+      <div class="container d-flex flex-column px-xxl-5">
+        <div class="row">
+          <div class="col-12 col-lg-11 col-xl-9 px-md-4 px-1">
+            <div class="heading">
+              <h1
+                class="header-title"
+                style="
+                  {% if page.image %}
+                  color: white;
+                  text-shadow: -2px 0px 2px black, 0px 2px 2px black, 2px 0px 2px black, 0px -2px 2px black;
+                  {% endif %}
+                "
+              >
+                {% if page.title %}{{ page.title | strip_html }}{% else %}<br>{% endif %}
+              </h1>
+              {% if page.description %}
+                {% if include.type == 'page' %}
+                  <hr class="small">
+                  <span
+                    class="post-desc fw-light mb-4"
+                    style="
+                      {% if page.image %}
+                      color: #bbbbbb;
+                      text-shadow: -1px 0px 1px black, 0px 1px 1px black, 1px 0px 1px black, 0px -1px 1px black;
+                      {% endif %}
+                    "
+                  >
+                    {{- page.description | strip_html -}}
+                  </span>
+                {% else %}
+                  <h2
+                    class="post-desc fw-light mb-4"
+                    style="
+                      {% if page.image %}
+                      color: #bbbbbb;
+                      text-shadow: -1px 0px 1px black, 0px 1px 1px black, 1px 0px 1px black, 0px -1px 1px black;
+                      {% endif %}
+                    "
+                  >
+                    {{ page.description | strip_html }}
+                  </h2>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% if page.image %}
+      <span class="img-desc"></span>
+    {% else %}
+      <hr>
+    {% endif %}
+  </div>
+
+  {% if page['header-extra'] %}
+    {% for file in page['header-extra'] %}
+      {% include {{ file }} %}
+    {% endfor %}
+  {% endif %}
+</header>

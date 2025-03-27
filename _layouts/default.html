@@ -1,7 +1,6 @@
 ---
 layout: compress
 ---
-
 <!doctype html>
 
 {% include origin-type.html %}
@@ -19,10 +18,22 @@ layout: compress
   <body>
     {% include sidebar.html lang=lang %}
 
-    <div id="main-wrapper" class="d-flex justify-content-center">
+    <div id="main-wrapper" class="d-flex justify-content-center flex-column">
+      <div id="center-wrapper" class="d-flex flex-column w-100">
+        <div
+          id="top-bar-div"
+          class="d-flex flex-column w-100"
+          {% if page.image %}
+            style="position: absolute;  backdrop-filter: blur(5px);"
+          {% endif %}
+        >
+          {% include topbar.html lang=lang %}
+        </div>
+        {% if page.layout != 'home' %}
+          {% include header.html lang=lang %}
+        {% endif %}
+      </div>
       <div class="container d-flex flex-column px-xxl-5">
-        {% include topbar.html lang=lang %}
-
         <div class="row flex-grow-1">
           <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
             {% if layout.refactor or layout.layout == 'default' %}
@@ -57,7 +68,6 @@ layout: compress
             {% include_cached footer.html lang=lang %}
           </div>
         </div>
-
         {% include_cached search-results.html lang=lang %}
       </div>
 
