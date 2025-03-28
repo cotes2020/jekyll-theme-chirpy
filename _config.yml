@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 #
 # e.g. 'https://cdn.com'
 # cdn: "https://chirpy-img.netlify.app"
-cdn: "https://symmetrical-lamp-v6p7gj4px4426pvg-4000.app.github.dev"
+cdn: "https://blog.ounols.kr"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/assets/img/favicons/12756091.png"
