@@ -80,9 +80,5 @@ df:
 
 # categories page
 categories:
-  category_measure:
-    singular: カテゴリー
-    plural: カテゴリー
-  post_measure:
-    singular: 投稿
-    plural: 投稿
+  category_measure: カテゴリー
+  post_measure: 投稿
