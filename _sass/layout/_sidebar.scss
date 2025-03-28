@@ -17,7 +17,12 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   overflow-y: auto;
   width: v.$sidebar-width;
   background: var(--sidebar-bg);
+  background-image: url('/assets/img/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: difference;
   border-right: 1px solid var(--sidebar-border-color);
+  transition: background-position 0.2s ease-out;
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
