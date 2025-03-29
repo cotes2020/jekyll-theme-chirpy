@@ -11,7 +11,7 @@ mermaid: true
 redirect_from:
   - 자체-엔진에-global-illumination을-적용하기-위한-삽질기-2
 image:
-  path: /media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/Untitled 1.png
+  path: /media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/화면_캡처_2023-06-05_173803.webp
 ---
 
 {% include embed/video.html src="/media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/C_2023-06-05_23-35-49.mp4" title="레이마칭을 이용한 SDF로 실시간 렌더링한 리플렉션 맵을 적용한 모습" %}
@@ -59,7 +59,7 @@ SDF Render Group에서는 볼륨 텍스쳐를 각 프로브 객체만큼 렌더�
 ![주전자의 초기 SDF 볼륨 텍스쳐](/media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/Untitled%202.png)
 _주전자의 초기 SDF 볼륨 텍스쳐_
 
-![유니티 텍스쳐 프리뷰로 본 볼륨 텍스쳐](/media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/Untitled%203.png){: .w-50}
+![유니티 텍스쳐 프리뷰로 본 볼륨 텍스쳐](/media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/Untitled%203.png)
 _유니티 텍스쳐 프리뷰로 본 볼륨 텍스쳐_
 
 저는 위 이미지와 같이 구간별로 자른다음 이걸 SDF 볼륨 텍스쳐로 사용해보기로 했습니다.<br/>
