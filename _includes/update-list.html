@@ -1,10 +1,11 @@
-<!-- Get 5 last posted/updated posts -->
+<!-- Get 5 last posted/updated not hidden posts -->
 
 {% assign MAX_SIZE = 5 %}
 
 {% assign all_list = '' | split: '' %}
 
 {% for post in site.posts %}
+  {% unless post.hidden %}
   {% assign datetime = post.last_modified_at | default: post.date %}
 
   {% capture elem %}
@@ -12,6 +13,7 @@
   {% endcapture %}
 
   {% assign all_list = all_list | push: elem %}
+  {% endunless %}
 {% endfor %}
 
 {% assign all_list = all_list | sort | reverse %}
