@@ -25,3 +25,10 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+# Cache
+__pycache__
+.dccache
+
+# Obisidan
+.obsidian
