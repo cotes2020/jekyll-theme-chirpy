@@ -68,7 +68,7 @@ For Unix-like systems, you can set up the environment natively for optimal perfo
 To run the site locally, use the following command:
 
 ```terminal
-$ bundle exec jekyll s
+$ bundle exec jekyll serve
 ```
 
 > If you are using Dev Containers, you must run that command in the **VS Code** Terminal.
