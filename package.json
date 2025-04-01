@@ -28,26 +28,26 @@
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
+    "@babel/core": "^7.26.9",
     "@babel/plugin-transform-class-properties": "^7.25.9",
     "@babel/plugin-transform-private-methods": "^7.25.9",
-    "@babel/preset-env": "^7.26.0",
-    "@commitlint/cli": "^19.6.0",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@babel/preset-env": "^7.26.9",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/exec": "^7.0.3",
     "@semantic-release/git": "^10.0.1",
-    "concurrently": "^9.1.0",
+    "concurrently": "^9.1.2",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "husky": "^9.1.7",
     "purgecss": "^7.0.2",
-    "rollup": "^4.27.4",
-    "semantic-release": "^24.2.0",
-    "stylelint": "^16.10.0",
-    "stylelint-config-standard-scss": "^13.1.0"
+    "rollup": "^4.34.8",
+    "semantic-release": "^24.2.3",
+    "stylelint": "^16.14.1",
+    "stylelint-config-standard-scss": "^14.0.0"
   },
   "prettier": {
     "trailingComma": "none"
