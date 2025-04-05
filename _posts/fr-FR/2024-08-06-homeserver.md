@@ -4,7 +4,7 @@ description : Découvrez comment j'héberge plusieurs services sur mon propre se
 date : 2022-02-03
 categories : []
 media_subpath : /assets/img/posts/homeserver
-tags : []
+tags : [network]
 lang : fr-FR
 ---
 
