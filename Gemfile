@@ -13,3 +13,4 @@ end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 ruby "~> 3.1.0"
+gem 'sass-embedded', '~> 1.56.0'
