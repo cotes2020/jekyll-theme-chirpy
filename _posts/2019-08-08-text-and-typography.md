@@ -190,6 +190,19 @@ The image below will toggle dark/light mode based on theme preference, notice it
 ![light mode only](/posts/20190808/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](/posts/20190808/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
+### Galleries
+
+The images below are grouped into different galleries.
+
+Gallery 1
+
+![gallery1](/posts/20190808/mockup.png){: .w-25 .normal data-gallery="gallery1"}
+
+Gallery 2
+
+![gallery2](/posts/20190808/devtools-light.png){: .w-25 .normal data-gallery="gallery2"}
+![gallery2](/posts/20190808/devtools-dark.png){: .w-25 .normal data-gallery="gallery2"}
+
 ## Video
 
 {% include embed/youtube.html id='Balreaj8Yqs' %}
