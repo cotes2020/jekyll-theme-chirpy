@@ -13,5 +13,7 @@ guestbook:
         format: "YYYY-MM-DD HH:mm:ss"
   publicKey: |
     -----BEGIN PUBLIC KEY-----
-  MIIEpAIBAAKCAQEAyKmN5iYkoSwcCWhZ2U3jH5PNHri2tN85N1Z4r+Gb1iG7+wgAI3SkvnECgYBPXd0rnCoTTHdVQDjxhREHBrzerfxt0ZU3dzaGbuMkCnTknc5UaxCDHPHR7q0mqHtpA==
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyKmN5iYkoSwcCWhZ2U3j
+    ...
+    2wIDAQAB
     -----END PUBLIC KEY-----
