@@ -11,7 +11,7 @@ guestbook:
       type: date
       options:
         format: "YYYY-MM-DD HH:mm:ss"
-  token: ${GITHUB_TOKEN}
+  token: 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
   publicKey: |
 -----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlsE7KeJW6iHYs2dawq4Y
