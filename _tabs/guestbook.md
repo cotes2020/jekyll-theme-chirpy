@@ -21,3 +21,10 @@ comments: true
 
   <button type="submit">방명록 남기기</button>
 </form>
+
+{% for entry in site.data.guestbook reversed %}
+  <div class="guestbook-entry">
+    <strong>{{ entry.name }}</strong> - <small>{{ entry.date }}</small>
+    <p>{{ entry.message }}</p>
+  </div>
+{% endfor %}
