@@ -1,4 +1,3 @@
-guestbook:
   allowedFields: ["name", "message", "slug"]
   requiredFields: ["name", "message"]
   branch: "main"
