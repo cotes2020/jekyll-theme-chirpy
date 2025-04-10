@@ -13,18 +13,12 @@ comments: true
 > - 좋은 정보 감사합니다 😄
 
 <form method="POST" action="https://comment-w-guestbook.lanitoous.workers.dev/api/handle/form">
-  <label>닉네임</label><br>
-  <input type="text" name="fields[name]" required><br><br>
-
-  <label>메시지</label><br>
-  <textarea name="fields[message]" rows="4" required></textarea><br><br>
-
+  <input type="text" name="fields[name]" required>
+  <textarea name="fields[message]" required></textarea>
   <input type="hidden" name="fields[slug]" value="guestbook">
-  <input type="hidden" name="options[url]" value="https://lanitoous.github.io">
-
-  <button type="submit">방명록 남기기</button>
+  <input type="hidden" name="options[origin]" value="https://lanitoous.github.io">
+  <button type="submit">Submit</button>
 </form>
-
 
 
 
