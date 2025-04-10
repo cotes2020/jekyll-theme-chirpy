@@ -13,10 +13,10 @@ comments: true
 > - 좋은 정보 감사합니다 😄
 
 <form method="POST" action="https://comment-w-guestbook.lanitoous.workers.dev/api/handle/form">
-  <label for="name">닉네임</label><br>
+  <label>닉네임</label><br>
   <input type="text" name="fields[name]" required><br><br>
 
-  <label for="message">메시지</label><br>
+  <label>메시지</label><br>
   <textarea name="fields[message]" rows="4" required></textarea><br><br>
 
   <input type="hidden" name="fields[slug]" value="guestbook">
@@ -24,6 +24,7 @@ comments: true
 
   <button type="submit">방명록 남기기</button>
 </form>
+
 
 
 
