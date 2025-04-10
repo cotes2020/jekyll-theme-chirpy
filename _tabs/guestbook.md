@@ -15,12 +15,10 @@ comments: true
 <form method="POST" action="https://comment-w-guestbook.lanitoous.workers.dev/api/handle/form">
   <input type="text" name="fields[name]" placeholder="Your Name" required>
   <textarea name="fields[message]" placeholder="Your Comment" required></textarea>
-  <input type="hidden" name="options[slug]" value="comments">
-  <input type="hidden" name="options[origin]" value="https://lanitoous.github.io">
   <button type="submit">Submit</button>
 </form>
 
-
+<dr/>
 
 {% for entry in site.data.comments reversed %}
   <div class="comment-entry">
