@@ -2,7 +2,7 @@ comments:
   allowedFields: ["name", "message"]
   branch: "main"  # 또는 해당하는 브랜치 이름
   commitMessage: "New comment by {fields.name}"
-  path: "_data/comments/{options.slug}"
+  path: "_data/comments"
   filename: "comment-{@timestamp}"
   format: "yaml"
   moderation: true
@@ -15,7 +15,3 @@ comments:
       options:
         format: "iso8601"
         
-  allowedOrigins: ["https://lanitoous.github.io"]
-  parameters:
-    options:
-      slug: true
