@@ -12,18 +12,12 @@ comments: true
 > - 오늘 방문했습니다!
 > - 좋은 정보 감사합니다 😄
 
-<form method="POST" action="https://staticman-service.onrender.com/v3/entry/github/lanitoous/lanitoous.github.io/master/guestbook">
-  <label>닉네임</label><br>
-  <input type="text" name="fields[nickname]" required><br><br>
-
-  <label>메시지</label><br>
-  <textarea name="fields[message]" rows="4" required></textarea><br><br>
-
-  <input type="hidden" name="options[slug]" value="guest">
-  <input type="hidden" name="options[redirect]" value="https://lanitoous.github.io/guest/thank-you/">
-
+<form method="POST" action="https://your-subdomain.workers.dev/api/comment">
+  <input type="text" name="nickname" placeholder="닉네임" required><br>
+  <textarea name="message" placeholder="메시지를 입력하세요" required></textarea><br>
   <button type="submit">방명록 남기기</button>
 </form>
+
 
 
 {% for entry in site.data.guestbook reversed %}
