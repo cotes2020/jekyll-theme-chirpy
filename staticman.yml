@@ -11,14 +11,3 @@ guestbook:
       type: date
       options:
         format: "YYYY-MM-DD HH:mm:ss"
-  token: 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
-  publicKey: |
------BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlsE7KeJW6iHYs2dawq4Y
-UpcN3ofEdAeWSaO937rPf2GWAlL1+rQh5U9HpQdcwVw2gzfgYKqow0bwYytLfJd/
-7G/R+TGpb2BtAVh7pR0AuXfdS8Z0DW01Llf630DzBl+rfwYsl+K3R+J/k7XZPQnp
-qKsckp1kaY8R8ayeel+q8kRbBPHoQDgzko5bY4RiZlBT9oWdjYKS1GT67lPJc6yt
-4hSsSridjFvzD2DgHKh226u0t+AMO9auFbkW3OJmyxqVazWvmuRw+90InXESXX5U
-OvSErw6JPSLd9Rm2hPU72XKOqB4AkSycHVpoJQ8MMoNve7Xlc0a8rQROPiWQGCts
-0wIDAQAB
------END PUBLIC KEY-----
