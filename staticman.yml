@@ -1,12 +1,16 @@
+comments:
   allowedFields: ["name", "message", "slug"]
-  requiredFields: ["name", "message"]
-  branch: "main"
-  path: "_data/guestbook"
-  name: "Guestbook Entry"
-  moderation: false
+  branch: "main"  # 또는 해당하는 브랜치 이름
+  commitMessage: "New comment by {fields.name}"
+  path: "_data/comments/{options.slug}"
+  filename: "comment-{@timestamp}"
   format: "yaml"
+  moderation: true
+  requiredFields: ["name", "message"]
+  transforms:
+    email: md5
   generatedFields:
     date:
-      type: date
+      type: "date"
       options:
-        format: "YYYY-MM-DD HH:mm:ss"
+        format: "iso8601"
