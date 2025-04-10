@@ -12,12 +12,13 @@ comments: true
 > - 오늘 방문했습니다!
 > - 좋은 정보 감사합니다 😄
 
-<form method="POST" action="https://your-staticman-instance/v3/entry/github/your-username/your-repo/main/comments">
+<form method="POST" action="https://comment-w-guestbook.lanitoous.workers.dev/api/handle/form">
   <input type="text" name="fields[name]" placeholder="Your Name" required>
   <textarea name="fields[message]" placeholder="Your Comment" required></textarea>
-  <input type="hidden" name="options[slug]" value="post-slug">
+  <input type="hidden" name="fields[slug]" value="guestbook">
   <button type="submit">Submit</button>
 </form>
+
 
 
 {% for entry in site.data.guestbook reversed %}
