@@ -2,7 +2,7 @@
 layout: page
 title: GUEST
 icon: fas fa-comments
-permalink: /guestbook/
+permalink: /comments/
 comments: true
 ---
 
@@ -21,8 +21,8 @@ comments: true
 
 
 
-{% for entry in site.data.guestbook reversed %}
-  <div class="guestbook-entry">
+{% for entry in site.data.comments reversed %}
+  <div class="comment-entry">
     <strong>{{ entry.name }}</strong> - <small>{{ entry.date }}</small>
     <p>{{ entry.message }}</p>
   </div>
