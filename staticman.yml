@@ -14,3 +14,8 @@ comments:
       type: "date"
       options:
         format: "iso8601"
+        
+  allowedOrigins: ["https://lanitoous.github.io"]
+  parameters:
+    options:
+      slug: true
