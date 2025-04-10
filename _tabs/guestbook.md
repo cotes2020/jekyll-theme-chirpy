@@ -15,7 +15,7 @@ comments: true
 <form method="POST" action="https://comment-w-guestbook.lanitoous.workers.dev/api/handle/form">
   <input type="text" name="fields[name]" placeholder="Your Name" required>
   <textarea name="fields[message]" placeholder="Your Comment" required></textarea>
-  <input type="hidden" name="fields[slug]" value="guestbook">
+  <input type="hidden" name="fields[slug]" value="comments">
   <button type="submit">Submit</button>
 </form>
 
