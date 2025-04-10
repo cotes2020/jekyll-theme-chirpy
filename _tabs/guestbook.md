@@ -19,11 +19,15 @@ comments: true
   <label>메시지</label><br>
   <textarea name="fields[message]" rows="4" required></textarea><br><br>
 
+  <!-- 현재 페이지를 식별할 slug 값 -->
   <input type="hidden" name="fields[slug]" value="guestbook">
-  <input type="hidden" name="options[url]" value="https://lanitoous.github.io/guestbook/">
+
+  <!-- 사이트 주소 지정 -->
+  <input type="hidden" name="options[url]" value="https://lanitoous.github.io">
 
   <button type="submit">방명록 남기기</button>
 </form>
+
 
 
 
