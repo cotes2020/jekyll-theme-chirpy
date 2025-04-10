@@ -1,5 +1,5 @@
 guestbook:
-  allowedFields: ["name", "message"]
+  allowedFields: ["name", "message", "slug"]
   requiredFields: ["name", "message"]
   branch: "main"
   path: "_data/guestbook"
