@@ -1,5 +1,5 @@
 comments:
-  allowedFields: ["name", "message"]
+  allowedFields: ["name", "message","slug", "origin"]
   branch: "main"  # 또는 해당하는 브랜치 이름
   commitMessage: "New comment by {fields.name}"
   path: "_data/comments"
