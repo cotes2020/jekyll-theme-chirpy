@@ -1,0 +1,221 @@
+<style>
+.ticket-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.ticket {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 21 / 9;
+  perspective: 1500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.ticket a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: none;
+}
+
+.ticket-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.ticket:hover .ticket-inner {
+  transform: rotateY(180deg);
+}
+
+.ticket-front, .ticket-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.ticket-front {
+  background-size: cover;
+  background-position: center;
+}
+
+.ticket-back {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1.5rem;
+  transform: rotateY(180deg);
+  position: relative;
+  background-color: var(--card-bg);
+}
+
+.ticket-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('{{ include.front_image }}');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  z-index: 0;
+}
+
+.ticket-details {
+  flex: 1;
+  margin-left: 36%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  z-index: 1;
+}
+
+.ticket-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.ticket-description {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.ticket-info {
+  font-size: 0.875rem;
+  color: var(--text-muted-color);
+}
+
+.ticket-serial {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-muted-color);
+  z-index: 2;
+}
+
+.ticket-divider,
+.ticket-divider-center,
+.ticket-hole {
+  pointer-events: none;
+}
+
+.ticket-divider {
+  position: absolute;
+  left: 3%;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  background: url('/assets/img/sample/B.png') center/cover no-repeat;
+  opacity: 0.5;
+}
+
+.ticket-divider-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 17%;
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  transform: translateX(-50%);
+}
+
+.ticket-hole {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.ticket-hole.top {
+  top: -6px;
+  left: calc(3% + 13%);
+}
+
+.ticket-hole.bottom {
+  bottom: -6px;
+  left: calc(3% + 13%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ticket-back {
+    background-color: var(--card-bg);
+  }
+  .ticket-hole {
+    background: var(--card-bg);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .ticket-divider-center {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  }
+}
+
+@media (max-width: 768px) {
+  .ticket-back {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .ticket-details {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 20%;
+  }
+}
+</style>
+
+<div class="ticket-container">
+  <div class="ticket">
+    <a href="{{ include.link }}">
+      <div class="ticket-inner">
+        <div class="ticket-front" style="background-image: url('{{ include.front_image }}');">
+          <div class="ticket-divider" style="left: auto; right: 3%;"></div>
+          <div class="ticket-divider-center" style="left: auto; right: 17%; transform: translateX(50%);"></div>
+          <div class="ticket-hole top" style="left: auto; right: calc(3% + 13%);"></div>
+          <div class="ticket-hole bottom" style="left: auto; right: calc(3% + 13%);"></div>
+        </div>
+        <div class="ticket-back">
+          <div class="ticket-serial">NO. {{ include.serial | default: '000000' }}</div>
+          <div class="ticket-divider"></div>
+          <div class="ticket-divider-center"></div>
+          <div class="ticket-hole top"></div>
+          <div class="ticket-hole bottom"></div>
+          <div class="ticket-details">
+            <div class="ticket-title">{{ include.title }}</div>
+            <div class="ticket-description">{{ include.description }}</div>
+            <div class="ticket-info">{{ include.info | default: 'Seat A12 · 2025-04-10' }}</div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

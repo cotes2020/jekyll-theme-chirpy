@@ -8,8 +8,8 @@
     <nav id="breadcrumb" aria-label="Breadcrumb">
       {% assign paths = page.url | split: '/' %}
 
-      {% if paths.size == 0 or page.layout == 'home' %}
-        <!-- index page -->
+      {% if paths.size == 0 %}
+        <!-- home page -->
         <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
 
       {% else %}
@@ -28,7 +28,7 @@
               <span>{{ page.title }}</span>
             {% endif %}
 
-          {% elsif page.layout == 'category' or page.layout == 'tag' %}
+          {% elsif page.layout == 'category' or page.layout == 'tag' or page.url == '/' or page.url == site.baseurl %}
             <span>
               <a href="{{ item | append: '/' | relative_url }}">
                 {{- site.data.locales[include.lang].tabs[item] | default: page.title -}}
@@ -45,7 +45,7 @@
     </button>
 
     <div id="topbar-title">
-      {% if page.layout == 'home' %}
+      {% if page.url == '/' or page.url == site.baseurl %}
         {{- site.data.locales[include.lang].title | default: site.title -}}
       {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}

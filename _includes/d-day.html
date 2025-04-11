@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+<div class="day-widget">
+  <div class="day-title">D-DAY</div>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="day-pic">
+          <img src="https://lh3.googleusercontent.com/d/16lXVvxHXYL1vLgbK1t0wcaeTYnkVIxIK" alt="이미지" />
+        </div>
+        <p class="day-text2">탄엘</p>
+        <p class="day-text3">
+          <span id="dday1"></span>일
+        </p>
+      </div>
+
+      <!-- 필요하면 슬라이드 복사해서 추가 -->
+  <div class="swiper-slide">
+    <div class="day-pic">
+      <img src="https://lh3.googleusercontent.com/d/1MZDJq4IN_y572LALmIpttofLOpQMhnVG" alt="다른 이미지" />
+    </div>
+    <p class="day-text2">해루</p>
+    <p class="day-text3">
+      <span id="dday2"></span>일
+    </p>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="day-pic">
+      <img src="https://lh3.googleusercontent.com/d/1RVkxB4d8_iU2GWl__ako2k1d5GZ2PMPy" alt="다른 이미지" />
+    </div>
+    <p class="day-text2">지크세타</p>
+    <p class="day-text3">
+      <span id="dday3"></span>일
+    </p>
+  </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  function setDday(date, id) {
+    const countDownDate = new Date(date).getTime();
+    const now = new Date().getTime();
+    const distance = now - countDownDate;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById(id).innerText = days +1;
+  }
+
+  setDday("2024-03-06", "dday1"); // 첫 번째 슬라이드 날짜
+  setDday("2023-03-18", "dday2"); // 두 번째 슬라이드 날짜
+  setDday("2021-05-06", "dday3"); // 세 번째 슬라이드 날짜
+
+  new Swiper(".mySwiper", {
+    rewind: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+</script>
+
+
+<style>
+.day-widget {
+  width: 140px;
+  background-color: var(--dday-bg, #ffffff);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 2.5rem;
+  font-family: "Nanum Gothic", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: var(--dday-text);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:root {
+  --dday-bg: #ffffff;
+  --dday-text: #333333;
+}
+
+.day-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.day-pic {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-pic img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.day-text2,
+.day-text3 {
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.swiper {
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dday-bg: #2e2e2e;
+    --dday-text: #f0f0f0;
+  }
+}
+
+</style>

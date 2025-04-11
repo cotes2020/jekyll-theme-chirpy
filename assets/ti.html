@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      height: 100%;
+      display: flex;
+      align-items: center;       /* ✅ 세로 가운데 */
+      justify-content: center;   /* ✅ 가로 가운데 (선택사항) */
+    }
+
+
+  .image-container {
+    position: relative;
+    width: 200px;
+    height: 400px;
+    background-color: transparent;
+    display: inline-block;
+  }
+
+
+  .image-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .image-container .hover-image {
+    opacity: 0;
+  }
+
+  .image-container:hover .hover-image {
+    opacity: 1;
+  }
+
+  .image-container:hover .default-image {
+    opacity: 0;
+  }
+</style>
+</head>
+<body>
+<div class="image-container">
+  <img class="default-image" src="https://lh3.googleusercontent.com/d/12aTeJHA2JgKEFNS3NOdbWeLCE8Cf0xVZ" alt="기본 이미지">
+  <img class="hover-image" src="https://lh3.googleusercontent.com/d/1r4wmASkqs2VgXKWsrPQ-eiCB55CtCxWm" alt="호버 이미지">
+</div>
+</body>
+</html>

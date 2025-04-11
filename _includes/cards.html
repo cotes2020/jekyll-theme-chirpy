@@ -1,0 +1,71 @@
+<style>
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--card-bg, #ffffff);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  max-width: 300px;
+  flex: 1 1 calc(33.333% - 20px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 비율 */
+  background-color: #ccc; /* 이미지가 없을 때 배경 */
+  overflow: hidden;
+}
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+@media (max-width: 640px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+</style>
+
+<div class="cards-container">
+  {% for card in include.cards %}
+    <a href="{{ card.link }}" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-image">
+        <img src="{{ card.image }}" alt="{{ card.title }}" onerror="this.style.display='none'">
+      </div>
+      <div class="card-content">
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.description }}</p>
+      </div>
+    </a>
+  {% endfor %}
+</div>
