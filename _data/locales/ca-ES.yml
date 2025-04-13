@@ -20,12 +20,12 @@ tabs:
 search:
   hint: Cercar
   cancel: Cancel·lar
-  no_results: ¡Ups! No s'han trobat resultats.
+  no_results: Ups! No s'han trobat resultats.
 
 panel:
   lastmod: Actualitzat recentment
   trending_tags: Etiquetes populars
-  toc: Contingut
+  toc: Taula de continguts
 
 copyright:
   # Shown at the bottom of the post
@@ -60,10 +60,10 @@ post:
   read_time:
     unit: min
     prompt: " de lectura"
-  relate_posts: Lectures addicionals
+  relate_posts: Entrades relacionades
   share: Compartir
   button:
-    next: Nou
+    next: Següent
     previous: Anterior
     copy_code:
       succeed: Copiat!
