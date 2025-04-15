@@ -3,7 +3,7 @@ name: "Build and Deploy Chirpy"
 on:
   push:
     branches:
-      #- main
+      - main
       - master
     paths-ignore:
       - .gitignore
