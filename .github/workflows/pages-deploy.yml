@@ -3,7 +3,7 @@ name: "Build and Deploy Chirpy"
 on:
   push:
     branches:
-      - main
+      #- main
       - master
     paths-ignore:
       - .gitignore
@@ -57,6 +57,12 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site"
+      - name: Build site
+  run: |
+    bundle exec jekyll build --baseurl "/jekyll-theme-chirpy"
+    # Create critical files:
+    touch _site/.nojekyll
+    echo "freelance28.github.io" > _site/CNAME    
 
   deploy:
     environment:
