@@ -6,6 +6,10 @@ platforms:
     icon: "fa-brands fa-square-x-twitter"
     link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
 
+  - type: Medium
+    icon: "fa-brands fa-medium"
+    link: "https://medium.com"
+
   - type: Facebook
     icon: "fab fa-facebook-square"
     link: "https://www.facebook.com/sharer/sharer.php?title=TITLE&u=URL"

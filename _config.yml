@@ -62,7 +62,7 @@ analytics:
   google:
     id: G-PHHPD5TMG3 # fill in your Google Analytics ID
   goatcounter:
-    id: # fill in your GoatCounter ID
+    id: hanleju # fill in your GoatCounter ID
   umami:
     id: # fill in your Umami ID
     domain: # fill in your Umami domain
@@ -76,7 +76,7 @@ analytics:
 
 # Page views settings
 pageviews:
-  provider: # now only supports 'goatcounter'
+  provider: goatcounter # now only supports 'goatcounter'
 
 # Prefer color scheme setting.
 #
@@ -110,7 +110,7 @@ toc: true
 
 comments:
   # Global switch for the post-comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
+  provider: giscus # [disqus | utterances | giscus]
   # The provider options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -120,10 +120,10 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: hanleju/hanleju.github.io # <gh-username>/<repo>
+    repo_id: R_kgDOOaYigQ
+    category: Announcements
+    category_id: DIC_kwDOOaYigc4CpJTb
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
@@ -152,6 +152,24 @@ paginate: 10
 
 # The base URL of your site
 baseurl: ""
+
+plugins:
+  - jekyll-compose
+
+jekyll_compose:
+  auto_open: true
+  default_front_matter:
+    posts:
+      description: "여기에 설명글 추가"
+      author: hanleju
+      categories: ["카테고리", "추가"]
+      tag: ["태그", "추가"]
+      pin: false
+      math: true
+      mermaid: true
+      toc: true
+      comments: true
+      render_with_liqueid: true
 
 # ------------ The following options are not recommended to be modified ------------------
 
