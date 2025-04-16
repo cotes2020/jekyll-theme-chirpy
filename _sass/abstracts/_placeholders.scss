@@ -41,10 +41,14 @@
   white-space: nowrap;
 }
 
-%link-hover {
+%link-hover-no-border {
   color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
   text-decoration: none;
+}
+
+%link-hover {
+  @extend %link-hover-no-border;
+  border-bottom: 1px solid #d2603a;
 }
 
 %link-color {

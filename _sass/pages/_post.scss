@@ -143,9 +143,8 @@ header {
 
   .post-tag {
     &:hover {
-      @extend %link-hover;
+      @extend %link-hover-no-border;
       @extend %tag-hover;
-      @extend %no-bottom-border;
     }
   }
 }
