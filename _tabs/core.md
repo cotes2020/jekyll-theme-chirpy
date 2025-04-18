@@ -147,6 +147,7 @@ flowchart TD
     click ex0009a "{% post_url 2024-07-22-ex0009a %}"
     click fm0002a "{% post_url 2024-07-23-fm0002a %}"
     click sa0002 "{% post_url 2024-09-11-sa0002 %}"
+    click sa0003 "{% post_url 2024-09-12-sa0003 %}"
 
 ```
 
