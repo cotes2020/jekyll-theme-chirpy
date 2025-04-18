@@ -26,7 +26,6 @@ description: >- # used by seo meta and the atom feed
 url: "https://trappedwhale.github.io"
 
 github:
-  username: github_username # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
