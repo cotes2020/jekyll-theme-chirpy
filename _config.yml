@@ -3,6 +3,20 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
+# RTL Support Configuration
+# Set this to true to enable RTL support for all languages
+# If false, RTL will only be applied to RTL languages (ar, he, fa, etc.)
+rtl_support: false
+
+# RTL Languages array - add more languages if needed
+rtl_languages:
+  - ar
+  - fa-IR
+  - ku-IQ
+  - ur-PK
+  - ps-AF
+  - dv-MV
+
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
