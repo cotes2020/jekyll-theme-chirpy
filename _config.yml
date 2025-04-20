@@ -224,3 +224,18 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+
+author:
+  name: Gen Shi
+  avatar: /assets/img/avatar.png
+  bio: Ph.D. candidate @ Beihang University
+  location: Beijing, China
+  email: shigen@buaa.edu.cn
+  links:
+    - label: Google Scholar
+      icon: fas fa-graduation-cap
+      url: https://scholar.google.com/citations?user=K6awU5kAAAAJ&hl=en
+    - label: GitHub
+      icon: fab fa-github
+      url: https://github.com/shigen-StoneRoot
