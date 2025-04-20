@@ -57,6 +57,9 @@
     {{ site.title }}
   </title>
 
+  <!-- This ensures the RTL fonts are loaded early in the page rendering process -->
+  {% include rtl-font-loader.html %}
+
   {% include_cached favicons.html %}
 
   <!-- Resource Hints -->
