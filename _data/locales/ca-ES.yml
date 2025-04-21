@@ -1,0 +1,84 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Entrada
+  category: Categoria
+  tag: Etiqueta
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Inici
+  categories: Categories
+  tags: Etiquetes
+  archives: Arxiu
+  about: Sobre
+
+# the text displayed in the search bar & search results
+search:
+  hint: Cercar
+  cancel: Cancel·lar
+  no_results: Ups! No s'han trobat resultats.
+
+panel:
+  lastmod: Actualitzat recentment
+  trending_tags: Etiquetes populars
+  toc: Taula de continguts
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Aquesta entrada està llicenciada sota :LICENSE_NAME per l'autor.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Alguns drets reservats.
+  verbose: >-
+    Excepte que s'indiqui explícitament, les entrades d'aquest blog estan llicenciades
+    sota la llicència Creative Commons Attribution 4.0 International (CC BY 4.0) per l'autor.
+
+meta: Fet amb :PLATFORM utilitzant el tema :THEME
+
+not_found:
+  statement: Ho sentim, hem perdut aquesta URL o apunta a alguna cosa que no existeix.
+
+notification:
+  update_found: Hi ha una nova versió de contingut disponible.
+  update: Actualitzar
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Per
+  posted: Publicat
+  updated: Actualitzat
+  words: paraules
+  pageview_measure: visites
+  read_time:
+    unit: min
+    prompt: " de lectura"
+  relate_posts: Entrades relacionades
+  share: Compartir
+  button:
+    next: Següent
+    previous: Anterior
+    copy_code:
+      succeed: Copiat!
+    share_link:
+      title: Copiar enllaç
+      succeed: Enllaç copiat!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%Y/%m/%d"
+    dayjs: "YYYY/MM/DD"
+
+# categories page
+categories:
+  category_measure: categories
+  post_measure: entrades
