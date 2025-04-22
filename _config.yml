@@ -23,7 +23,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://blog.ounols.kr"
+url: "https://ounols.kr"
 
 github:
   username: ounols # change to your GitHub username
@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 #
 # e.g. 'https://cdn.com'
 # cdn: "https://chirpy-img.netlify.app"
-cdn: "https://blog.ounols.kr"
+cdn: "https://ounols.kr"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/assets/img/favicons/12756091.png"
