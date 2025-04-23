@@ -11,7 +11,7 @@ layout:
 tabs:
   # format: <filename_without_extension>: <value>
   home: 새로운 소식
-  categories: 구조별
+  categories: 메뉴별
   tags: 테그별
   archives: 시간별
   core: 코어 가이드
