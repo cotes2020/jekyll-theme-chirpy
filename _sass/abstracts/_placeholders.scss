@@ -31,7 +31,10 @@
 }
 
 %tag-hover {
+  @extend %link-color;
+
   background: var(--tag-hover);
+  border-color: var(--tag-hover);
   transition: background 0.35s ease-in-out;
 }
 
@@ -41,14 +44,10 @@
   white-space: nowrap;
 }
 
-%link-hover-no-border {
-  color: #d2603a !important;
-  text-decoration: none;
-}
-
 %link-hover {
-  @extend %link-hover-no-border;
+  color: #d2603a !important;
   border-bottom: 1px solid #d2603a;
+  text-decoration: none;
 }
 
 %link-color {
