@@ -143,7 +143,6 @@ header {
 
   .post-tag {
     &:hover {
-      @extend %link-hover-no-border;
       @extend %tag-hover;
     }
   }
