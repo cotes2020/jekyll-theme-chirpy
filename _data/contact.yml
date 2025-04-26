@@ -3,25 +3,21 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
 
-- type: email
-  icon: "fas fa-envelope"
-  noblank: true # open link in current tab
-
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+# - type: email
+#   icon: "fas fa-envelope"
+#   noblank: true # open link in current tab
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
 #
-# - type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+- type: linkedin
+  icon: "fab fa-linkedin" # icons powered by <https://fontawesome.com/>
+  url: "https://www.linkedin.com/in/nisan-sher/" # Fill with your Linkedin homepage
 #
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
@@ -38,3 +34,18 @@
 # - type: threads
 #   icon: 'fa-brands fa-threads'
 #   url: ''                   # Fill with your Threads profile link
+- type: kaggle
+  icon: "fab fa-kaggle"
+  url: "https://www.kaggle.com/nisansher" # Fill with your Threads profile link
+#
+- type: Portfolio
+  icon: "fas fa-suitcase"
+  url: "https://nisanman.github.io/PortfolioGallery/"
+  #
+- type: rss
+  icon: "fas fa-rss"
+  noblank: true
+#
+- type: pdf
+  icon: "fas fa-file-alt"
+  url: "/assets/files/Nisan Sher CV.pdf"

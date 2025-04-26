@@ -2,7 +2,6 @@
 layout: default
 refactor: true
 ---
-
 {% include lang.html %}
 
 {% assign all_pinned = site.posts | where: 'pin', 'true' %}
@@ -69,6 +68,25 @@ refactor: true
 
           <div class="col-md-5">
             <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+          </div>
+
+          {% assign card_body_col = '7' %}
+        {% elsif post.light_image and post.dark_image %}
+          <div class="col-md-5">
+            <img
+              src="{{ post.light_image.path }}"
+              alt="{{ post.light_image.alt}}"
+              {{ post.light_image.lqip }}
+              class="popup img-link light shimmer"
+              style="height: 100%; border-top-right-radius: 8px; border-bottom-right-radius: 8px;"
+            >
+            <img
+              src="{{ post.dark_image.path }}"
+              alt="{{ post.dark_image.alt}}"
+              {{ post.dark_image.lqip }}
+              class="popup img-link dark"
+              style="height: 100%;border-top-right-radius: 8px; border-bottom-right-radius: 8px;"
+            >
           </div>
 
           {% assign card_body_col = '7' %}

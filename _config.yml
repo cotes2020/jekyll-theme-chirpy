@@ -9,40 +9,41 @@ theme: jekyll-theme-chirpy
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Shanghai
+timezone: Asia/Jerusalem
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Nisan Sher # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: B.Sc. in Mathematics <br> Data Scientist <br> Software Developer # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Data scientist and software developer based in Tel Aviv, Israel. Skilled in Python, data analysis, machine learning, and mathematical modeling using tools like NumPy, Pandas, and Scikit-learn.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://nisanman.github.io"
 
 github:
-  username: github_username # change to your GitHub username
-
-twitter:
-  username: twitter_username # change to your Twitter username
+  username:
+    nisanMan
+    # change to your GitHub username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
+  name: Nisan Sher
   email: example@domain.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
+    # - https://twitter.com/username # change to your Twitter homepage
+    - https://github.com/nisanMan # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/nisan-sher
+    - https://www.kaggle.com/nisansher
 
 # Site Verification Settings
 webmaster_verifications:
@@ -88,21 +89,21 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: #[light | dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar: https://avatars.githubusercontent.com/u/81760582?v=4
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+social_preview_image: https://media.licdn.com/dms/image/v2/D4E03AQGpMWFJcXjyTw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1714058980243?e=1750291200&v=beta&t=eNbCpskXpcK4kiirchKDOgqgo0Uq0XKwlIFTFYOo-hY # string, local or CORS resources
 
 # boolean type, the global switch for TOC in posts.
 toc: true
