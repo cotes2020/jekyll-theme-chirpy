@@ -173,3 +173,4 @@ This work is published under [MIT][mit] License.
 - [ ] make post on add ficher img dark lith mode
 - [ ] make post on mormate 
 - [ ] make the abute lode bater
+- [ ] and more
