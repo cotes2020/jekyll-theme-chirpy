@@ -170,3 +170,6 @@ This work is published under [MIT][mit] License.
 [CD]: https://en.wikipedia.org/wiki/Continuous_deployment
 [mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
 >>>>>>> v7.2.4
+- [ ] make post on add ficher img dark lith mode
+- [ ] make post on mormate 
+- [ ] make the abute lode bater
