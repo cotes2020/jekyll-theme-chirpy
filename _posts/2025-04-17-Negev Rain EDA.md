@@ -5,6 +5,10 @@ categories: [Data Analysis, EDA]
 tags: [jupyter-notebook, jupyter-slideshow, pandas, numpy, tableau, rast-api]
 render_with_liquid: true
 description: Negev Rain Annual EDA
+image:
+  path: "/assets/img/images/desert n.webp"
+  lqip: data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoUAAsAPm0skkWkIqGYBABABsSzAE6ZQYwAJz6MRM3gaI9K6ADz3vhxvYQG4cBtBWinCjdfsluHofmBYWfCSSXjugaAku5HFeIGE//FofQ9e74Vun/VfrTPQKTR3M4hJUrIBkgUiUV5IcWLs76Uga5zTpz2P0a6JvtJV7oEPfJPukvVFrncjcKAAAA=
+  alt: desert negev eda
 ---
 
 
