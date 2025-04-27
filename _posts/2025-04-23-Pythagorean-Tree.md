@@ -4,12 +4,7 @@ date: 2025-04-23 10:00:00 +0300
 categories: [Dev, Design Patterns]
 tags: [oop, singleton , factory, python, design patterns, numpy, opencv]
 render_with_liquid: true
-description: A visual and object-oriented implementation of the Pythagorean Tree using Python, showcasing design patterns like Singleton and Factory, and leveraging NumPy and OpenCV for graphical rendering.     
-
-# image:
-#   path: "/assets/img/images/PythagoreanTree/scene_night_moon.webp"
-#   # lqip: data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAACQBQCdASoUAAsAPm0skkWkIqGYBABABsS2AE6ZQjgbYBUoUWrZNBERDADEVLSVjE7Nl6ItAAD+/m7ELYcwg+RtFAPhHg3UNYByIGYlMyaubKcmMepfUAHyjEOKt4ydywBT871v5IS9b8FPdN/KfNOV/qx4wGk/0J6gv18RlA/b1qwgk90+GJhSyOas/3F077SHsj/evVy5Ul9F74NYlaCOMsCmshRz3NWhaxquuT7kq5W+r/dP+f/pk2Tx8v8yzLEtKds9ALqvFxls4/3PFwr/8dS3/AAA
-#   alt: Responsive rendering of Chirpy theme on multiple devices.
+description: A visual and object-oriented implementation of the Pythagorean Tree using Python, showcasing design patterns like Singleton and Factory, and leveraging NumPy and OpenCV for graphical rendering.
 light_image:
   path: /assets/img/images/PythagoreanTree/scene_day_sun.webp
   lqip: data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADQBACdASoUAAsAPm0skkWkIqGYBABABsS2AE6ZQjubyX8VQDFW1YsmJWHTNWYHAAD++hR2pRF1Srf1BpL/priIV4qKWVMwv7qCayU/EI29KD3H1AfQOaGzFtisjJ/uS5hmORnfrhT+48wZ+UDurJBD/5UbyUYAUgqRYHvkd+VEe97suzqSjpmNObZ8LT2sd/8zOT1UTAQKn2QFL3tdoGaoj/H/P/280Pdkn9TuH7kuMqR7DuK01mjKjVZ/FwAA
