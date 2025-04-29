@@ -107,34 +107,10 @@ bundle exec jekyll serve
 
 ## 7. 블로그 수정 후 GitHub에 푸시하기
 
-1. 변경사항 확인
-
-```bash
-git status
-```
-
-2. 변경된 파일 추가
-
 ```bash
 git add .
-```
-
-3. 커밋 메시지 작성
-
-```bash
-git commit -m "블로그 글 추가: GitHub Pages와 Jekyll로 블로그 구축 방법"
-```
-
-4. 원격 저장소로 푸시
-
-```bash
+git commit -m "docs: 첫 번째 블로그 포스트 업로드"
 git push origin main
-```
-
-> 한 줄로 요약해서 입력할 수도 있습니다:
-
-```bash
-git add . && git commit -m "커밋 메시지" && git push origin main
 ```
 
 ---
