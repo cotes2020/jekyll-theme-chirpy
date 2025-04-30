@@ -6,8 +6,10 @@ description: Please Tell Me More 논문 리뷰
 author: hanleju
 categories:
 - Paper
+- Privacy
 - Membership Inference Attack
 tag:
+- Privacy
 - Membership Inference Attack
 - Explainable AI
 pin: false
