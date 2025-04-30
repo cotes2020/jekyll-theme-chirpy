@@ -1,0 +1,9 @@
+---
+layout: null
+---
+[
+{% assign post_dates = site.posts | group_by_exp:"post","post.date | date: '%Y-%m-%d'" %}
+{% for date in post_dates %}
+  {"date": "{{ date.name }}", "value": {{ date.items | size }}}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

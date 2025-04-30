@@ -40,6 +40,20 @@
     </ul>
   </nav>
 
+  {% if page.previous %}
+    <section class="sidebar-section">
+      <h6 class="sidebar-heading">Previous</h6>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="{{ page.previous.url | relative_url }}" class="nav-link">
+            <i class="fa-fw fas fa-arrow-left"></i>
+            {{ page.previous.title }}
+          </a>
+        </li>
+      </ul>
+    </section>
+  {% endif %}
+
   <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
     {% unless site.theme_mode %}
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
