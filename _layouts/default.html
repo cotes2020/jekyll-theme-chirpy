@@ -1,7 +1,6 @@
 ---
 layout: compress
 ---
-
 <!doctype html>
 
 {% include origin-type.html %}
@@ -80,6 +79,87 @@ layout: compress
       {% assign _include_path = _include | append: '.html' %}
       {% include {{ _include_path }} %}
     {% endfor %}
+
+    <script type="text/javascript">
+      var data = {% assign counter = 0 %}{
+      {% for post in site.posts %}{% capture day %}{{ post.date | date: '%s' }}{% endcapture %}{% capture prevday %}{{ post.previous.date | date: '%s' }}{% endcapture %}{% assign counter = counter | plus: 1 %}{% if day != prevday %}"{{ post.date | date: '%s' }}": {{ counter }}{% assign counter = 0 %}{% if forloop.last == false %},{% endif %}
+      {% endif %}{% endfor %}};
+
+
+      var responsiveCal = function( options ) {
+        var now = new Date();
+          if( $(window).width() < 420 ) {
+              options.start = now.setMonth(now.getMonth());
+              options.range = 1;
+              options.cellSize = 30;
+          } else if ( $(window).width() < 730 ) {
+              options.start = now.setMonth(now.getMonth() - 1);
+              options.range = 2;
+              options.cellSize = 25;
+          } else if( $(window).width() < 1400 ) {
+              options.start = now.setMonth(now.getMonth() - 2);
+              options.range = 3;
+              options.cellSize = 28;
+          } else {
+              options.start = now.setMonth(now.getMonth() - 3);
+              options.range = 4;
+              options.cellSize = 28;
+          }
+
+          if( typeof cal === "object" ) {
+              $('#cal-heatmap').html('');
+              cal = cal.destroy();
+          }
+          cal = new CalHeatMap();
+          cal.init( options );
+
+      }
+      caloptions = {
+          itemSelector: "#cal-heatmap",
+        domain: "month",
+        subDomain: "x_day",
+        data: data,
+        dataType: "json",
+        cellPadding: 7,
+        domainGutter: 20,
+        displayLegend: false,
+        range: 4,
+        considerMissingDataAsZero:false,
+        domainDynamicDimension: true,
+        previousSelector: "#cal-heatmap-PreviousDomain-selector",
+        nextSelector: "#cal-heatmap-NextDomain-selector",
+        domainLabelFormat: function(date) {
+          moment.locale("en");
+          return moment(date).format("MMMM").toUpperCase();
+        },
+        subDomainTextFormat: "%d",
+        legend: [1,2,3,4],
+        legendColors: {
+          empty: "#FFFFFF",
+
+          max:   "#E65272"
+        },
+        label: {
+          position: "top"
+        }
+      };
+
+
+      // run first time, put in load if your scripts are in footer
+      responsiveCal( caloptions );
+
+      $(window).resize(function() {
+          if(this.resizeTO) clearTimeout(this.resizeTO);
+          this.resizeTO = setTimeout(function() {
+              $(this).trigger('resizeEnd');
+          }, 500);
+      });
+
+      //resize on resizeEnd function
+      $(window).bind('resizeEnd', function() {
+         responsiveCal( cal.options );
+      });
+    </script>
 
     {% include_cached search-loader.html lang=lang %}
   </body>

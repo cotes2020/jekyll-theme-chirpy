@@ -99,6 +99,44 @@
 
   <!-- Scripts -->
 
+  <!-- 💡 추가: heatmap 관련 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css">
+
+  <style type="text/css">
+    .content {
+      min-width: 30px;
+    }
+    #calendar {
+      width: 230px;
+    }
+    .subdomain-text {
+      fill: #000000;
+    }
+    #calendar a {
+      color: #ffffff;
+    }
+    @media all and (max-width: 1400px) {
+      #calendar {
+        width: 626px;
+      }
+    }
+    @media all and (max-width: 730px) {
+      #calendar {
+        width: 365px;
+      }
+    }
+    @media all and (max-width: 420px) {
+      #calendar {
+        width: 191px;
+      }
+    }
+  </style>
+
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
   {% include js-selector.html lang=lang %}
