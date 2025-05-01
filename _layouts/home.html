@@ -76,16 +76,16 @@ refactor: true
             <img
               src="{{ post.light_image.path }}"
               alt="{{ post.light_image.alt}}"
-              {{ post.light_image.lqip }}
-              class="popup img-link light shimmer"
+              lqip="{{ post.light_image.lqip }}"
+              class="img-fluid popup img-link light shimmer"
               loading="lazy"
               style="height: 100%; border-top-right-radius: 8px; border-bottom-right-radius: 8px;"
             >
             <img
               src="{{ post.dark_image.path }}"
               alt="{{ post.dark_image.alt}}"
-              {{ post.dark_image.lqip }}
-              class="popup img-link dark"
+              lqip="{{ post.dark_image.lqip }}"
+              class="img-fluid popup img-link dark"
               loading="lazy"
               style="height: 100%;border-top-right-radius: 8px; border-bottom-right-radius: 8px;"
             >
