@@ -1,6 +1,6 @@
 ---
 layout: compress
-swcache: true
+swcache: false
 ---
 
 [
