@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.1",
+    "clipboard": "^2.0.11",
+    "dayjs": "^1.11.13",
+    "glightbox": "^3.3.0",
+    "lazysizes": "^5.3.2",
+    "mermaid": "^11.4.0",
+    "simple-jekyll-search": "^1.10.0",
+    "tocbot": "^4.32.2"
+  }
+}
