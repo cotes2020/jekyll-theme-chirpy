@@ -1,19 +1,25 @@
-name: "CI"
+name: CI
+
 on:
   push:
-    branches-ignore:
-      - "production"
-      - "docs"
+    branches:
+      - master
+      - "hotfix/*"
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
-      - ".gitignore"
+      - .gitignore
       - "docs/**"
-      - "README.md"
-      - "LICENSE"
+      - README.md
+      - LICENSE
   pull_request:
-    paths:
-      - "**"
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/ci.yml"
+      - .gitignore
+      - "docs/**"
+      - README.md
+      - LICENSE
 
 jobs:
   build:
@@ -21,7 +27,7 @@ jobs:
 
     strategy:
       matrix:
-        ruby: ["3.0", "3.1", "3.2"]
+        ruby: ["3.1", "3.2", "3.3"]
 
     steps:
       - name: Checkout
@@ -37,9 +43,11 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
 
       - name: Build Assets
         run: npm i && npm run build
 
       - name: Test Site
-        run: bash tools/test
+        run: bash tools/test.sh

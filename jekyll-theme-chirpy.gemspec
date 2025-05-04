@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-chirpy"
-  spec.version       = "6.5.3"
+  spec.version       = "7.2.4"
   spec.authors       = ["Cotes Chung"]
   spec.email         = ["cotes.chung@gmail.com"]
 
@@ -23,11 +23,10 @@ Gem::Specification.new do |spec|
     "plugin_type"       => "theme"
   }
 
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = "~> 3.1"
 
   spec.add_runtime_dependency "jekyll", "~> 4.3"
   spec.add_runtime_dependency "jekyll-paginate", "~> 1.1"
-  spec.add_runtime_dependency "jekyll-redirect-from", "~> 0.16"
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.8"
   spec.add_runtime_dependency "jekyll-archives", "~> 2.2"
   spec.add_runtime_dependency "jekyll-sitemap", "~> 1.4"

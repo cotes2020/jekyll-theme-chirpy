@@ -21,6 +21,7 @@
   {% assign match_posts = match_posts | push: site.tags[tag] | uniq %}
 {% endfor %}
 
+{% assign match_posts = match_posts | reverse %}
 {% assign last_index = match_posts.size | minus: 1 %}
 {% assign score_list = '' | split: '' %}
 

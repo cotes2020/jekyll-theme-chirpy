@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 env:
-  STALE_LABEL: stale
+  STALE_LABEL: inactive
   EXEMPT_LABELS: "pending,planning,in progress"
   MESSAGE: >
     This conversation has been automatically marked as stale because it has not had recent activity.

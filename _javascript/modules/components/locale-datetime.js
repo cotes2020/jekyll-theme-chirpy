@@ -15,15 +15,15 @@ class LocaleHelper {
   }
 
   static get locale() {
-    return $('html').attr('lang').substring(0, 2);
+    return document.documentElement.getAttribute('lang').substring(0, 2);
   }
 
   static getTimestamp(elem) {
-    return Number(elem.attr(LocaleHelper.attrTimestamp)); // unix timestamp
+    return Number(elem.getAttribute(this.attrTimestamp)); // unix timestamp
   }
 
   static getDateFormat(elem) {
-    return elem.attr(LocaleHelper.attrDateFormat);
+    return elem.getAttribute(this.attrDateFormat);
   }
 }
 
@@ -31,21 +31,23 @@ export function initLocaleDatetime() {
   dayjs.locale(LocaleHelper.locale);
   dayjs.extend(window.dayjs_plugin_localizedFormat);
 
-  $(`[${LocaleHelper.attrTimestamp}]`).each(function () {
-    const date = dayjs.unix(LocaleHelper.getTimestamp($(this)));
-    const text = date.format(LocaleHelper.getDateFormat($(this)));
-    $(this).text(text);
-    $(this).removeAttr(LocaleHelper.attrTimestamp);
-    $(this).removeAttr(LocaleHelper.attrDateFormat);
+  document
+    .querySelectorAll(`[${LocaleHelper.attrTimestamp}]`)
+    .forEach((elem) => {
+      const date = dayjs.unix(LocaleHelper.getTimestamp(elem));
+      const text = date.format(LocaleHelper.getDateFormat(elem));
+      elem.textContent = text;
+      elem.removeAttribute(LocaleHelper.attrTimestamp);
+      elem.removeAttribute(LocaleHelper.attrDateFormat);
 
-    // setup tooltips
-    const tooltip = $(this).attr('data-bs-toggle');
-    if (typeof tooltip === 'undefined' || tooltip !== 'tooltip') {
-      return;
-    }
-
-    const tooltipText = date.format('llll'); // see: https://day.js.org/docs/en/display/format#list-of-localized-formats
-    $(this).attr('data-bs-title', tooltipText);
-    new bootstrap.Tooltip($(this));
-  });
+      // setup tooltips
+      if (
+        elem.hasAttribute('data-bs-toggle') &&
+        elem.getAttribute('data-bs-toggle') === 'tooltip'
+      ) {
+        // see: https://day.js.org/docs/en/display/format#list-of-localized-formats
+        const tooltipText = date.format('llll');
+        elem.setAttribute('data-bs-title', tooltipText);
+      }
+    });
 }
