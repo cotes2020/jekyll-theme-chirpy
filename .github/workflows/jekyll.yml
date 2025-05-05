@@ -41,7 +41,7 @@ jobs:
           cache-version: 0 # Increment this number if you need to re-download cached gems
 
       - name: Setup Node.js
-        uses: actions/setup-node@v18
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
