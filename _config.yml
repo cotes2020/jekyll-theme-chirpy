@@ -28,7 +28,7 @@ social:
   name: PAK SEONGHUN
   email: aest3ra@gmail.com # change to your email address
   links:
-    - https://twitter.com/aest3ra # change to your twitter homepage
+    - https://x.com/aest3ra # change to your twitter homepage
     - https://github.com/aest3ra # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -67,7 +67,7 @@ pageviews:
 theme_mode: dark
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/shark.jpg"
+avatar: "/assets/profile.jpeg"
 
 social_preview_image: # string, local or CORS resources
 
