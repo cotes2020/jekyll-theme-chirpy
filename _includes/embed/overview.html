@@ -2,6 +2,7 @@
 {% assign title = include.title %}
 {% assign caption = include.caption %}
 {% assign image = include.image %}
+{% assign title_image = include.title_image %}
 {% if include.lqip %}
   {%- capture lqip -%}lqip="{{ include.lqip }}"{%- endcapture -%}
 {% else %}
@@ -13,12 +14,18 @@
   <a href="{{ url }}" class="post-preview row g-0 h-100">
     <div class="overview-body card-body d-flex">
       <div class="justify-center flex flex-col w-100">
-        <div class="flex justify-center text-center items-center mb-2">
-          {% if image %}
-            <img class="overview-icon" src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
-          {% endif %}
-          <h2 class="overview-title mt-0 mb-0">{{ title }}</h2>
-        </div>
+        {% if title_image %}
+          <div class="flex justify-center text-center items-center mb-2">
+            <img class="overview-title-img" src="{{ title_image }}" alt="{{ alt }}" {{ lqip }}>
+          </div>
+        {% else %}
+          <div class="flex justify-center text-center items-center mb-2">
+            {% if image %}
+              <img class="overview-icon" src="{{ image }}" alt="{{ alt }}" {{ lqip }}>
+            {% endif %}
+            <h2 class="overview-title mt-0 mb-0">{{ title }}</h2>
+          </div>
+        {% endif %}
         <p class="overview-text card-text content mt-0">{{ caption }}</p>
       </div>
     </div>
