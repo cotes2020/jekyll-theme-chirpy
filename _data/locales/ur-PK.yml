@@ -1,0 +1,90 @@
+# The layout text of site in Urdu (Pakistan)
+
+# ----- Commons label -----
+
+layout:
+  post: تحریر
+  category: زمرہ
+  tag: ٹیگ
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: گھر
+  categories: زمروں
+  tags: ٹیگز
+  archives: محفوظات
+  about: تعارف
+
+# the text displayed in the search bar & search results
+search:
+  hint: تلاش
+  cancel: منسوخ
+  no_results: اوہ! کوئی نتیجہ نہیں ملا۔
+
+panel:
+  lastmod: حال ہی میں اپ ڈیٹ
+  trending_tags: مقبول ٹیگز
+  toc: مواد
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: یہ تحریر :LICENSE_NAME کے تحت مصنف کی جانب سے لائسنس یافتہ ہے۔
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: کچھ حقوق محفوظ ہیں۔
+  verbose: >-
+    جب تک کہ دوسری صورت میں ذکر نہ ہو، اس سائٹ کی تحریریں
+    مصنف کی جانب سے تخلیقی العام انتساب 4.0 بین الاقوامی (CC BY 4.0) لائسنس کے تحت دستیاب ہیں۔
+
+meta: :PLATFORM کے لیے :THEME تھیم استعمال کیا جا رہا ہے۔
+
+not_found:
+  statement: معذرت، یہ URL غلط ہے یا جس چیز کی طرف اشارہ کر رہا ہے وہ موجود نہیں۔
+
+notification:
+  update_found: نیا مواد دستیاب ہے۔
+  update: اپ ڈیٹ
+
+# ----- Posts related labels -----
+
+post:
+  written_by: از
+  posted: شائع شدہ
+  updated: اپ ڈیٹ شدہ
+  words: لفظ
+  pageview_measure: مشاہدات
+  read_time:
+    unit: منٹ
+    prompt: پڑھیں
+  relate_posts: مزید مطالعہ
+  share: شیئر
+  button:
+    next: نیا
+    previous: پرانا
+    copy_code:
+      succeed: کاپی ہو گیا!
+    share_link:
+      title: لنک کاپی کریں
+      succeed: لنک کامیابی سے کاپی ہو گیا!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+categories:
+  category_measure:
+    singular: زمرہ
+    plural: زمروں
+  post_measure:
+    singular: تحریر
+    plural: تحریریں

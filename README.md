@@ -38,6 +38,7 @@
 - PWA
 - Web Analytics
 - SEO & Performance Optimization
+- RTL Support
 
 ## Documentation
 

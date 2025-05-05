@@ -1,0 +1,118 @@
+/* RTL Fonts for Jekyll-Theme-Chirpy */
+
+@use './abstracts/variables' as v;
+
+/* Arabic, Kurdish and other rtl languages Font */
+@font-face {
+  font-family: 'Noto Sans Arabic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Arabic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Persian (Farsi) Font */
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Urdu Font */
+@font-face {
+  font-family: 'Noto Nastaliq Urdu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* RTL font-family mapping based on lang attribute */
+html[lang='ar'],
+html[lang^='ar-'] {
+  &,
+  body {
+    font-family: 'Noto Sans Arabic', v.$font-family-base;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .post-desc,
+  %heading {
+    font-family: 'Noto Sans Arabic', v.$font-family-heading;
+  }
+}
+
+html[lang='fa'] {
+  &,
+  body {
+    font-family: 'Vazirmatn', v.$font-family-base;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .post-desc,
+  %heading {
+    font-family: 'Vazirmatn', v.$font-family-heading;
+  }
+}
+
+html[lang='ur-PK'] {
+  &,
+  body {
+    font-family: 'Noto Nastaliq Urdu', v.$font-family-base;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .post-desc,
+  %heading {
+    font-family: 'Noto Nastaliq Urdu', v.$font-family-heading;
+  }
+}
+
+/* Default RTL font for other RTL languages */
+html[dir='rtl']:not([lang='ar']):not([lang^='ar-']):not([lang='fa']):not(
+    [lang='ur-PK']
+  ) {
+  &,
+  body {
+    font-family: 'Noto Sans Arabic', v.$font-family-base;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .post-desc,
+  %heading {
+    font-family: 'Noto Sans Arabic', v.$font-family-heading;
+  }
+}
