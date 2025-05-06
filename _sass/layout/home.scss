@@ -140,6 +140,10 @@
     border-radius: 0 $base-radius $base-radius 0;
   }
 
+  #post-list .card .preview-img.project-title-img, #post-list .card .preview-img.project-title-img img {
+    border-radius: 0;
+  }
+
   #post-list {
     .card {
       .card-body {
@@ -221,6 +225,33 @@
   max-height: 72px;
   margin: auto;
   overflow: hidden;
+}
+
+.project-title-img-wrapper {
+  width: calc(40% + 36px);
+  padding: 0;
+  height: fit-content;
+  max-height: 72px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.project-title-img, .project-title-img img {
+  height: 72px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  background-color: var(--card-bg);
+  border-radius: 0;
+  vertical-align: center;
+  horiz-align: left;
+}
+
+.project-title-img {
+  margin-left: 12px;
+}
+
+.preview-img.project-title-img {
+  width: unset;
 }
 
 .project-main > p {
@@ -357,6 +388,15 @@
   flex: 0 0 auto;
   height: 29px;
   width: 29px;
+  object-fit: contain;
+  background-color: var(--card-bg);
+  border-radius: 0;
+  vertical-align: unset;
+}
+
+#post-list .card .overview-title-img, #post-list .card .overview-title-img img {
+  flex: 0 0 auto;
+  height: 33px;
   object-fit: contain;
   background-color: var(--card-bg);
   border-radius: 0;

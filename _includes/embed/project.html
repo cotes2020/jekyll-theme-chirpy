@@ -3,6 +3,7 @@
 {% assign caption = include.caption %}
 {% assign content = include.content %}
 {% assign image = include.image %}
+{% assign title_image = include.title_image %}
 {% if include.lqip %}
   {%- capture clqip -%}lqip="{{ include.lqip }}"{%- endcapture -%}
 {% else %}
@@ -26,17 +27,23 @@
 
     <!--      <div class="col-md-{{ card_body_col }}">-->
     <div class="project-body card-body d-flex row">
-      {% if image %}
-        <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
+      {% if title_image %}
+        <div class="project-title-img-wrapper">
+          <img class="project-title-img" src="{{ title_image }}" alt="{{ alt }}" {{ clqip }}>
+        </div>
       {% else %}
-        <div class="project-icon"></div>
-      {% endif %}
-      <div class="project-main">
-        <h3 class="card-title mb-2 mt-0">{{ title }}</h3>
-        {% if caption %}
-        <p class="card-text content mt-0">{{ caption }}</p>
+        {% if image %}
+          <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
+        {% else %}
+          <div class="project-icon"></div>
         {% endif %}
-      </div>
+        <div class="project-main">
+          <h3 class="card-title mb-2 mt-0">{{ title }}</h3>
+          {% if caption %}
+          <p class="card-text content mt-0">{{ caption }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
       <div class="project-content">
         <p class="card-desc mt-md-0">{{ content }}</p>
       </div>

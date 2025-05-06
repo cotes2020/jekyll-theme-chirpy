@@ -7,6 +7,11 @@ toc: true
 ---
 
 
+{% include embed/project.html title='Voila'
+                              title_image='/assets/img/voila-icon.png'
+                              lqip='data:image/webp;base64,UklGRpYAAABXRUJQVlA4WAoAAAAQAAAADwAAAwAAQUxQSDEAAAARL0AWYBocyADqSqKICFxeKGgkqY0vRcA3AzwSTgMCiOh/HAYG/FstxbY3JOnSuJkbAFZQOCA+AAAA8AEAnQEqEAAEAAVAfCWwAnS6AAJzRwgAAMls0XhWSgozGns9vkTk/FOhwjpZ/BO2XS7VXZQ6zduJDVoYAAA='
+                              content='Voice-Language Foundation Models for Real-Time Autonomous Interaction and Speech Roleplay'
+                              url='https://voila.maitrix.org' %}
 {% include embed/project.html title='ReasonerAgent'
                               image='/assets/img/reasoneragent-icon.png'
                               lqip='data:image/webp;base64,UklGRroAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AkQBrkDNGq1YgI0k8wiG0rygULIAnWAm4JHAogr38Y3CJE9H8C+NG52Qyx1zQsUjHgmnRYCIOHcEl1OKXDAquUDRC7PGM7uA3T3c9WUDggRgAAABACAJ0BKhAAEAAFQHwlnAAPjMw1P47CvVgA/hZbgZozQ/aDVdXmNLTUB7YoiwUYWdAbVTDaEgc7UKgSsT6Ix7DHErwYUAA='
