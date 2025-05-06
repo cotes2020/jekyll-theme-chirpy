@@ -67,6 +67,7 @@
     {% assign _src = null %}
     {% assign _lqip = null %}
     {% assign _class = null %}
+    {% assign _data_gallery = null %}
 
     {% for _attr in _attrs %}
       {% unless _attr contains '=' %}
@@ -84,6 +85,8 @@
           {% assign _lqip = _value %}
         {% when 'class' %}
           {% assign _class = _value %}
+        {% when 'data-gallery' %}
+          {% assign _data_gallery = '" data-gallery="' | append: _value %}
       {% endcase %}
     {% endfor %}
 
@@ -155,6 +158,7 @@
           | prepend: '<a href="'
           | append: '" class="popup img-link '
           | append: _class
+          | append: _data_gallery
           | append: '">'
         %}
 
