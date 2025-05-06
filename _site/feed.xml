@@ -1,0 +1,127 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://civanonur.github.io/</id>
+  <title>Onur Civan</title>
+  <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
+  <updated>2025-05-07T04:49:30+08:00</updated>
+  <author>
+    <name>your_full_name</name>
+    <uri>https://civanonur.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://civanonur.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://civanonur.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2025 your_full_name </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Customize the Favicon</title>
+    <link href="https://civanonur.github.io/posts/customize-the-favicon/" rel="alternate" type="text/html" title="Customize the Favicon" />
+    <published>2019-08-11T00:34:00+08:00</published>
+  
+    <updated>2024-03-02T01:28:45+08:00</updated>
+  
+    <id>https://civanonur.github.io/posts/customize-the-favicon/</id>
+    <content type="text/html" src="https://civanonur.github.io/posts/customize-the-favicon/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>The favicons of Chirpy are placed in the directory assets/img/favicons/. You may want to replace them with your own. The following sections will guide you to create and replace the default favicons.  Generate the favicon  Prepare a square image (PNG, JPG, or SVG) with a size of 512x512 or more, and then go to the online tool Real Favicon Generator and click the button Select your Favicon image ...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Getting Started</title>
+    <link href="https://civanonur.github.io/posts/getting-started/" rel="alternate" type="text/html" title="Getting Started" />
+    <published>2019-08-09T20:55:00+08:00</published>
+  
+    <updated>2025-02-06T13:27:54+08:00</updated>
+  
+    <id>https://civanonur.github.io/posts/getting-started/</id>
+    <content type="text/html" src="https://civanonur.github.io/posts/getting-started/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>Get started with Chirpy basics in this comprehensive overview. You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Writing a New Post</title>
+    <link href="https://civanonur.github.io/posts/write-a-new-post/" rel="alternate" type="text/html" title="Writing a New Post" />
+    <published>2019-08-08T14:10:00+08:00</published>
+  
+    <updated>2025-03-05T05:06:37+08:00</updated>
+  
+    <id>https://civanonur.github.io/posts/write-a-new-post/</id>
+    <content type="text/html" src="https://civanonur.github.io/posts/write-a-new-post/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Tutorial" />
+    
+  
+
+  <summary>This tutorial will guide you how to write a post in the Chirpy template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.  Naming and Path  Create a new file named YYYY-MM-DD-TITLE.EXTENSION and put it in the _posts of the root directory. Please note that the EXTENSION must be one of md and markdown. If you want to save time of cre...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Text and Typography</title>
+    <link href="https://civanonur.github.io/posts/text-and-typography/" rel="alternate" type="text/html" title="Text and Typography" />
+    <published>2019-08-08T11:33:00+08:00</published>
+  
+    <updated>2024-07-02T06:00:39+08:00</updated>
+  
+    <id>https://civanonur.github.io/posts/text-and-typography/</id>
+    <content type="text/html" src="https://civanonur.github.io/posts/text-and-typography/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Blogging" />
+    
+    <category term="Demo" />
+    
+  
+
+  <summary>Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.</summary>
+
+  </entry>
+
+</feed>
+
+
