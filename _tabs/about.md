@@ -12,7 +12,7 @@ panel_includes:
 <div class="fit-content grid grid-cols-5 m-auto gap-4" markdown="1">
 
 ![MixLab](/assets/img/mixlab-logo.png){: .no-popup .logo width="75" }
-_MixLab_
+[_MixLab_](https://zhiting.ucsd.edu)
 
 ![UCSD](/assets/img/ucsd-logo.png){: .no-popup .logo width="75" }
 _UCSD_
@@ -27,6 +27,6 @@ _JHU_
 _CMU_
 
 ![LLM360](/assets/img/llm360-logo.png){: .no-popup .logo width="75" }
-_LLM360_
+[_LLM360_](https://www.llm360.ai)
 
 </div>
