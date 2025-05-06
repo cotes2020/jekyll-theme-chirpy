@@ -530,3 +530,18 @@
     object-fit: contain;
   }
 }
+
+.organization-grid > p > a:nth-child(2) {
+  display: block;
+  margin: auto;
+  width: fit-content;
+  padding: 0;
+
+  em {
+    font-style: normal;
+    font-size: 80%;
+    text-align: center;
+    padding: 0;
+    display: block;
+  }
+}

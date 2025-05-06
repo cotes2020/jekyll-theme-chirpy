@@ -9,7 +9,7 @@ panel_includes:
 
 ## Organizations
 
-<div class="fit-content grid grid-cols-5 m-auto gap-4" markdown="1">
+<div class="fit-content grid grid-cols-5 m-auto gap-4 organization-grid" markdown="1">
 
 ![MixLab](/assets/img/mixlab-logo.png){: .no-popup .logo width="75" }
 [_MixLab_](https://zhiting.ucsd.edu)

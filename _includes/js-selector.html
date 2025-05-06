@@ -69,7 +69,7 @@
     {% assign js = 'commons' %}
 {% endcase %}
 
-{% capture script %}{{ js_dist }}{{ js }}.min.js{% endcapture %}
+{% capture script %}{{ js_dist }}{{ js }}.min.js?v=1{% endcapture %}
 <script defer src="{{ script | relative_url }}"></script>
 
 {% if page.math %}
