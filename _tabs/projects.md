@@ -3,7 +3,6 @@
 layout: projects
 icon: fas fa-table-list
 order: 2
-toc: true
 ---
 
 
