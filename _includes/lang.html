@@ -1,5 +1,6 @@
 {% comment %}
-  Detect appearance language and return it through variable "lang"
+  - Detect appearance language and return it through variable "lang"
+  - Detect appearance language direction and return it through variable "dir"
 {% endcomment %}
 {% if site.data.locales[page.lang] %}
   {% assign lang = page.lang %}
@@ -7,4 +8,17 @@
   {% assign lang = site.lang %}
 {% else %}
   {% assign lang = 'en' %}
+{% endif %}
+
+{% assign dir = 'ltr' %}
+
+{% if site.rtl_support %}
+  {% assign dir = 'rtl' %}
+{% else %}
+  {% for rtl_lang in site.rtl_languages %}
+    {% if lang contains rtl_lang %}
+      {% assign dir = 'rtl' %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
 {% endif %}

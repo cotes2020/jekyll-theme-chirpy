@@ -3,6 +3,26 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
+# Force RTL mode for the entire website
+# When set to true, all pages will be rendered right-to-left, regardless of language
+# Useful if your entire site is in an RTL language
+# If enabled, also set one of the RTL languages in rtl_languages list as your site.lang value
+rtl_support: false
+
+# RTL Languages array
+# If you want to have your entire website in an RTL language, and you set rtl_support: true,
+# then set one of these languages for lang: in the _config.yml and your entire website locale will change too.
+# But if rtl_support is false and you just want specific pages in RTL with RTL locale,
+# add 'lang: fa' (or another code from this list) to the front matter of those specific pages.
+# The page will then be displayed in RTL mode with the appropriate font and locale
+rtl_languages:
+  - ar
+  - fa
+  - ku-IQ
+  - ur-PK
+  - ps-AF
+  - dv-MV
+
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
