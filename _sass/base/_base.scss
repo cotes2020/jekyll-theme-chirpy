@@ -474,3 +474,10 @@ mjx-container {
     margin-top: 3rem;
   }
 }
+
+/* --- image's shadow --- */
+
+img.shadow {
+  @extend %rounded;
+  box-shadow: 0 .5rem 1rem var(--img-shadow-color) !important;
+}
