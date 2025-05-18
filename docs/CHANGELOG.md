@@ -1,5 +1,27 @@
 # Changelog
 
+## [7.3.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.4...v7.3.0) (2025-05-18)
+
+### Features
+
+* **i18n:** add Catalan Spanish locale translation ([#2349](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2349)) ([167c98c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/167c98c781d0607c90ede8fc73eb43dffeea6abd))
+* **i18n:** add Dutch locale ([#2076](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2076)) ([981ddba](https://github.com/cotes2020/jekyll-theme-chirpy/commit/981ddba30e57934f9056b8d468f0d17db131e1e8))
+* **i18n:** add Japanese locale ([#2295](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2295)) ([571c90f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/571c90f13011eb91d0e1392218f3953060b920c9))
+* **i18n:** add persian language ([#2238](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2238)) ([7d4d35c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/7d4d35cd10109e78d60fbb6b25a9b205f780ad63))
+
+### Bug Fixes
+
+* avoid `mathjax` loading failure on page refresh ([#2389](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2389)) ([401e2af](https://github.com/cotes2020/jekyll-theme-chirpy/commit/401e2af0f8a173d8437e03027c7aff558e8c0bde))
+* improve accuracy of moving `img` element classes ([#2399](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2399)) ([d0f8f95](https://github.com/cotes2020/jekyll-theme-chirpy/commit/d0f8f9553e41536eb84ae2fdd3f3bc9d13f7ef8c))
+* prevent the search bar from moving when focused ([#2336](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2336)) ([f744929](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f7449299e88c71da2104f0007f2db23a8fa798be))
+* recognize global theme mode ([#2357](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2357)) ([7708adb](https://github.com/cotes2020/jekyll-theme-chirpy/commit/7708adbf30e6dea51a84311b86bc224739f656f6))
+* **search:** avoid missing spaces between paragraphs in search results ([#2199](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2199)) ([0eb7efa](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0eb7efa7f53508bf6b48eb9d773d5c5047c3c525))
+* **ui:** fix incomplete border color on hover for tags ([#2359](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2359)) ([c626447](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c62644759cb4e0e07f7ee6eb9503ef69be62371b))
+
+### Improvements
+
+* **seo:** improve accessibility and aligns with best practices ([#2289](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2289)) ([54d4d59](https://github.com/cotes2020/jekyll-theme-chirpy/commit/54d4d59d22ac543a14bfbd9bb3d6fb6756056041))
+
 ## [7.2.4](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.3...v7.2.4) (2024-12-21)
 
 ### Bug Fixes
