@@ -83,6 +83,4 @@ categories:
   category_measure:
     singular: kategori
     plural: kategorier
-  post_measure:
-    singular: opslag
-    plural: opslag
+  post_measure: opslag
