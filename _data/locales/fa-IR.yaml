@@ -58,8 +58,8 @@ post:
   words: کلمات
   pageview_measure: بازدیدها
   read_time:
-    unit: دقیقه
-    prompt: زمان مطالعه
+    unit: "دقیقه "
+    prompt: " زمان مطالعه"
   relate_posts: بیشتر بخوانید
   share: اشتراک‌گذاری
   button:
