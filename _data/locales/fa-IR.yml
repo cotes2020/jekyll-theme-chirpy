@@ -37,10 +37,10 @@ copyright:
   # Displayed in the footer
   brief: برخی حقوق محفوظ است.
   verbose: >-
-    مگر اینکه خلاف آن ذکر شده باشد، پست‌های وبلاگ در این سایت
+    به‌جز مواردی که خلاف آن ذکر شده باشد، محتوای پست‌های این وبلاگ
     تحت مجوز Creative Commons Attribution 4.0 International (CC BY 4.0) توسط نویسنده منتشر شده‌اند.
 
-meta: با استفاده از :PLATFORM قالب :THEME
+meta: با استفاده از قالب :THEME برای :PLATFORM
 
 not_found:
   statement: متأسفیم، لینک زیر معتبر نیست یا به صفحه‌ای که وجود ندارد اشاره می‌کند.
@@ -55,11 +55,11 @@ post:
   written_by: نوشته شده توسط
   posted: منتشر شده
   updated: به‌روزرسانی شده
-  words: کلمات
-  pageview_measure: بازدیدها
+  words: کلمه
+  pageview_measure: بازدید
   read_time:
-    unit: دقیقه
-    prompt: زمان مطالعه
+    unit: "دقیقه "
+    prompt: " زمان مطالعه"
   relate_posts: بیشتر بخوانید
   share: اشتراک‌گذاری
   button:
@@ -85,7 +85,7 @@ df:
 categories:
   category_measure:
     singular: دسته‌بندی
-    plural: دسته‌بندی‌ها
+    plural: دسته‌بندی‌
   post_measure:
     singular: پست
-    plural: پست‌ها
+    plural: پست‌
