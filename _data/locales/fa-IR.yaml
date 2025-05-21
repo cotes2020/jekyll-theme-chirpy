@@ -55,8 +55,8 @@ post:
   written_by: نوشته شده توسط
   posted: منتشر شده
   updated: به‌روزرسانی شده
-  words: کلمات
-  pageview_measure: بازدیدها
+  words: کلمه
+  pageview_measure: بازدید
   read_time:
     unit: "دقیقه "
     prompt: " زمان مطالعه"
@@ -85,7 +85,7 @@ df:
 categories:
   category_measure:
     singular: دسته‌بندی
-    plural: دسته‌بندی‌ها
+    plural: دسته‌بندی‌
   post_measure:
     singular: پست
-    plural: پست‌ها
+    plural: پست‌
