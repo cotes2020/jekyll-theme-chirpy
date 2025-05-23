@@ -59,7 +59,7 @@ The Xbox controller protocol is then automatically detected when a BLE packet co
 ![Wireshark with the Xbox Controller Dissector](xbox_wireshark_packet.png){: w="1000" h="700"}
 _Wireshark with the Xbox Controller Dissector_
 
-> My Xbox controller dissector for Wireshark is available on Github : https://github.com/Fantomos/xbox-wireshark-dissector/tree/main
+> My Xbox controller dissector for Wireshark is available on Github : https://github.com/nicopaulb/xbox-wireshark-dissector/tree/main
 
 ## Analyzing BLE profile via nRF Connect
 

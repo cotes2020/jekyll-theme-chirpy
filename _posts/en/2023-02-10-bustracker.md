@@ -149,7 +149,7 @@ To improve code readability, I separated each functionality into its respective 
 
 Each class has an initialization function called during setup and a tick function (which updates internal state) called from the main loop.
 
-> The code is available on Github here : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main).
+> The code is available on Github here : [https://github.com/nicopaulb/BusTracker/tree/main](https://github.com/nicopaulb/BusTracker/tree/main).
 {: .prompt-tip }
 
 ## Building a prototype

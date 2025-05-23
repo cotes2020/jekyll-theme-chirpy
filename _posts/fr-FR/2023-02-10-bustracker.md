@@ -143,7 +143,7 @@ J'ai séparé chaque fonctionnalité dans une classe pour améliorer la lisibili
 
 Chaque classe expose une fonction d'initialisation appelée lors de la configuration et une fonction tick (mise à jour de l'état interne) appelée depuis la boucle principale. 
 
-> Le code est disponible sur Github ici : [https://github.com/Fantomos/BusTracker/tree/main](https://github.com/Fantomos/BusTracker/tree/main).
+> Le code est disponible sur Github ici : [https://github.com/nicopaulb/BusTracker/tree/main](https://github.com/nicopaulb/BusTracker/tree/main).
 {: .prompt-tip }
 
 ## Construction d'un prototype
