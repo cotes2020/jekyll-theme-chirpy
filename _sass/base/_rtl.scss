@@ -131,14 +131,19 @@ html[dir='rtl'] {
       margin-right: 0;
     }
 
-    .post-meta i {
-      &:not(:first-child) {
-        margin-left: 0;
-        margin-right: 1.5rem;
-
-        @include bp.md {
+    .post-meta {
+      div {
+        margin-right: 0 !important;
+      }
+      i {
+        &:not(:first-child) {
           margin-left: 0;
-          margin-right: 1.75rem;
+          margin-right: 1.5rem;
+
+          @include bp.md {
+            margin-left: 0;
+            margin-right: 1.75rem;
+          }
         }
       }
     }
