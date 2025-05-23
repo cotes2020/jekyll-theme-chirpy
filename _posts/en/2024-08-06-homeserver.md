@@ -6,13 +6,15 @@ categories: []
 media_subpath: /assets/img/posts/homeserver
 tags: [network]
 lang: en
+image:
+  path: homepage.png
 ---
 
 In a world where we are increasingly reliant on the cloud and large corporations to store our data, I became very interested in self-hosting. For the past three years, I've hosted several services on my server for my relatives and myself.
 
 ## The beginning of my journey: Raspberry Pi and PI-Hole
 
-My self-hosted addiction began with a Raspberry PI and the PI-Hole application, which filters all advertisements and tracking on my network at the DNS level. I used it that way for nearly a year before realizing I needed more.
+My self-hosted addiction began with a Raspberry PI and the **PI-Hole** application, which filters all advertisements and tracking on my network at the DNS level. I used it that way for nearly a year before realizing I needed more.
 
 ![PI-Hole](pihole.png){: w="150" h="150"}
 _PI Hole_
@@ -27,7 +29,7 @@ To address these concerns, I took two steps: I installed Docker and purchased ne
 
 ## Easy setup with Docker
 
-Docker is a platform for running applications within a container. Containers are segregated from one another and include their own software, libraries, and configuration files. Furthermore, because all containers use the same operating system kernel, they consume fewer resources than virtual computers. 
+**Docker** is a platform for running applications within a container. Containers are segregated from one another and include their own software, libraries, and configuration files. Furthermore, because all containers use the same operating system kernel, they consume fewer resources than virtual computers. 
 
 ![Docker](docker.png){: w="300" h="150"}
 _Docker_
@@ -38,7 +40,7 @@ I also define all of my container configurations in YAML files using Docker Comp
 
 ## A more powerful hardware
 
-With more and more services and my RPI's inability to decode some huge media, I decided to purchase more capable hardware. I found a Lenovo Thinkstation on the used market (which is frequently swamped with outdated enterprise hardware). It is significantly less expensive than a traditional server and is adequate for my needs.
+With more and more services and my RPI's inability to decode some huge media, I decided to purchase more capable hardware. I found a **Lenovo Thinkstation** on the used market (which is frequently swamped with outdated enterprise hardware). It is significantly less expensive than a traditional server and is adequate for my needs.
 
 ![Lenovo Thinkstation](lenovo.png){: w="200" h="150"}
 _Lenovo Thinkstation_
@@ -56,7 +58,7 @@ _My Home Server Services_
 
 ### Access and security
 
-The most important service is likely Caddy. It is a web server that includes automated HTTPS and reverse proxy functionality. 
+The most important service is likely **Caddy**. It is a web server that includes automated HTTPS and reverse proxy functionality. 
 
 In other words, due to Caddy, I can access my services directly via a subdomain, and all traffic is encrypted and sent to the 443 port. For example, I can access one of my services directly at "myservice.beniserv.fr" and another at "myotherservice.beniserv.fr", and so on.
 
@@ -64,11 +66,11 @@ With this configuration, I only need to expose one port (443) to the internet.
 
 I also implemented a dynamic DNS plugin to Caddy to synchronize my IP server address with my domain name provider. So, even if my internet service provider assigns me a dynamic IP address, I can always reach my home server using my domain name.
 
-To improve security, I also use Crowdsec, a service that detects malicious peers and prevents them from accessing my server. Crowdsec analyzes the Caddy logs, and if its behavior engine detects one of the configured scenarios, it blocks the IP address at the firewall level. Crowdsec's advantage over other similar services (such as Fail2ban) is that it provides a collaborative solution. Indeed, when a Crowdsec user blocks an aggressive IP, the information is shared with all users, thereby improving everyone's security.
+To improve security, I also use **Crowdsec**, a service that detects malicious peers and prevents them from accessing my server. Crowdsec analyzes the Caddy logs, and if its behavior engine detects one of the configured scenarios, it blocks the IP address at the firewall level. Crowdsec's advantage over other similar services (such as Fail2ban) is that it provides a collaborative solution. Indeed, when a Crowdsec user blocks an aggressive IP, the information is shared with all users, thereby improving everyone's security.
 
 ### Update and backup
 
-I also have Watchtower, which keeps all of my services up to date and provides me with the most recent security fixes and features. Every night, it downloads and replaces the most recent versions if an update is available.
+I also have **Watchtower**, which keeps all of my services up to date and provides me with the most recent security fixes and features. Every night, it downloads and replaces the most recent versions if an update is available.
 
 And, because an update or a storage drive can fail at any time, I use a backup service on a regular basis. Every night, it saves all server configurations and data to an encrypted archive file. This archive is then saved to both my 1 TO hard drive and an AWS cloud storage server. A 7-day retention policy ensures that backup storage does not become bloated by removing the oldest backup archives.
 
@@ -80,12 +82,12 @@ And, because an update or a storage drive can fail at any time, I use a backup s
 
 With multiple services running, I need a way to monitor them and receive alerts when an issue arises. This is why I use Portainer and Homepage.
 
-Portainer provides a graphical interface for managing Docker containers. Even though I prefer to use Docker Compose to deploy new services, I still use Portainer to monitor the health of my existing services. When necessary, I can easily restart them from the Portainer UI.
+**Portainer** provides a graphical interface for managing Docker containers. Even though I prefer to use Docker Compose to deploy new services, I still use Portainer to monitor the health of my existing services. When necessary, I can easily restart them from the Portainer UI.
 
-Homepage is a highly customizable dashboard. It provides widgets for a wide range of services and can display various system metrics (uptime, disk space, server temperature, etc.). I use it to quickly access my various services.
+**Homepage** is a highly customizable dashboard. It provides widgets for a wide range of services and can display various system metrics (uptime, disk space, server temperature, etc...). I use it to quickly access my various services.
 
 ![Homepage example](homepage.png){: w="600" h="350"}
-_Homepage example (not mine)_
+_Homepage example_
 
 > Find the homepage service here : [https://github.com/gethomepage/homepage](https://github.com/gethomepage/homepage).
 {: .prompt-tip }
@@ -95,7 +97,7 @@ To be notified of errors, my services also send messages to a private Discord se
 ### Other services
 
 As you can see in the previous image, the following services are also running :
-- **Jellyfin** : Media server I use instead of Plex.
+- **Jellyfin** : Media server (replace Plex)
 - **Paperless-ngx** : Document management and storage system
 - **Nextcloud** : Cloud storage service
 - **QBitorrent** : Torrent client

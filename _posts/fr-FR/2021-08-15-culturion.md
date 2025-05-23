@@ -1,11 +1,12 @@
 ---
-title: "Culturion : Test tes connaissances de la France"
+title: "Culturion : Le quiz sur la France"
 description: "Une application mobile pour apprendre et jouer avec la culture française."
 date: 2021-08-15
 categories: [Mobile]
-media_subpath: /assets/img/posts/bustracker
+media_subpath: /assets/img/posts/culturion
 tags: [mobile, game, android, java]     # TAG names should always be lowercase
 lang: fr-FR
+image: culturion_banner.png
 ---
 
 > Le projet a été réalisé des années avant la rédaction de cet article, des détails et explications approfondies peuvent donc manquer.

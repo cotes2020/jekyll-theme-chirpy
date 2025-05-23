@@ -11,6 +11,8 @@ tags:
   - network
   - C
 lang: en
+image:
+  path: bustracker_pcb.png
 ---
 
 > The project was realized years before the redaction of this post, so it may lack details and in-depth explanation.

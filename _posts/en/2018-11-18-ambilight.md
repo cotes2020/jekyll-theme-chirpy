@@ -9,6 +9,7 @@ tags:
   - arduino
   - C
 lang: en
+image: ambilight.jpg
 ---
 
 > The project was realized years before the redaction of this post, so it may lack details and in-depth explanation.

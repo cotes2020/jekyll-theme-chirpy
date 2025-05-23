@@ -1,5 +1,5 @@
 ---
-title: 'Écran ambilight : Ajouter un rétro-éclairage à un écran'
+title: 'Écran ambilight : Un rétro-éclairage DIY'
 description: Une solution bon marché pour ajouter une fonction ambilight à un écran.
 date: 2018-11-18T00:00:00.000Z
 categories:
@@ -9,6 +9,7 @@ tags:
   - arduino
   - C
 lang: fr-FR
+image: ambilight.jpg
 ---
 
 > Le projet a été réalisé des années avant la rédaction de cet article, il peut donc manquer de détails et d'explications approfondies.
