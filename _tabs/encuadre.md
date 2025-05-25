@@ -20,6 +20,45 @@ En este sentido, la escuela como espacio de formación superior tiene la respons
  
 La unidad de aprendizaje “Formulación y Evaluación de Proyectos Informáticos” representa, por tanto, un eje fundamental en esta preparación, ya que permite al estudiante aplicar sus conocimientos en contextos reales, generar propuestas viables y evaluar sus implicaciones desde una visión técnica, económica y ética.
 
+## Contenido temático (AGENDA) 
+- **1.1 Concepción y planteamiento inicial de proyectos** 
+  - Generación de ideas y detección de oportunidades tecnológicas. 
+  - Justificación técnica, económica y social. 
+  - Objetivos del proyecto: formulación general y específica (modelo SMART). 
+- **1.2 Alcance de un proyecto** 
+  - *1.2.1 Herramientas de recopilación de requisitos* 
+    - Técnicas de recolección: entrevistas, encuestas, observación. 
+    - Análisis de necesidades y requisitos funcionales. 
+  - *1.2.2 Medios de determinación de alcance* 
+    - Identificación de entregables y criterios de éxito. 
+    - Definición de restricciones y supuestos. 
+- **1.3 Estructura de desglose de trabajo (EDT/WBS)** 
+  - División en fases, tareas y subtareas. 
+  - Relación jerárquica de actividades. 
+  - *1.3.1 Análisis de entradas – salidas* 
+    - Productos intermedios vs. productos finales. 
+    - Documentación de entradas y procesos de salida. 
+  - *1.3.2 Herramientas y técnicas de desglose y gestión del trabajo* 
+    - Matriz RACI. 
+    - Uso de herramientas digitales: Trello, ClickUp, Notion. 
+  - *1.3.3 Verificación de alcance* 
+    - Validación de entregables. 
+    - Control de cambios. 
+- **1.4 Gestión del tiempo** 
+- *1.4.1 Fundamentos de la gestión del tiempo* 
+  - Relación entre tiempo, recursos y costo. 
+  - Importancia de la planificación temporal. 
+- *1.4.2 Aplicaciones y perspectivas* 
+  - Planificación y control de actividades. 
+  - Línea base y seguimiento. 
+- *1.4.3 Limitantes de la administración del tiempo* 
+  - Identificación de cuellos de botella y desviaciones. 
+  - Gestión de riesgos de tiempo. 
+- *1.4.4 Herramientas de gestión del tiempo* 
+  - Diagrama de Gantt. 
+  - Método de la ruta crítica (CPM). 
+  - Software de gestión: MS Project, Asana, Notion. 
+
 ## Distribución de horas
 
 | Modalidad                   | Horas |
@@ -35,4 +74,6 @@ La unidad de aprendizaje “Formulación y Evaluación de Proyectos Informático
  - Determinar y estructurar el alcance mediante herramientas profesionales.
  - Aplicar fundamentos y herramientas de gestión del tiempo.
  - Trabajar de forma colaborativa con un enfoque ético y crítico.
+
+
 
