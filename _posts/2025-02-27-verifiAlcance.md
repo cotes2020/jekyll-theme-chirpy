@@ -5,26 +5,34 @@ date: 2025-02-27 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.3 Estructura de desglose de trabajo]
 
 ---
-La verificación del alcance es un proceso crucial en la gestión de proyectos que consiste en revisar y aceptar formalmente los entregables del proyecto. Este proceso tiene como objetivo asegurar que el proyecto ha cumplido con sus objetivos y que los entregables satisfacen los criterios de aceptación establecidos. La verificación del alcance se lleva a cabo en dos etapas principales: 
+Para la administración de los proyectos es importante de llevar a cabo el proceso de revisión para la aceptación mediante la verificación de su alcance. Mjeorar redacciñon. Asegurandose que los objetivos del proyecto se haya cumplido así como los entregables cumpla con  lineamientos establecidos.
 
-### 1. Revisión de los entregables
-La revisión de entregables implica evaluar los productos, servicios o resultados del proyecto para verificar que cumplen con los requisitos especificados en la documentación del proyecto. Esta evaluación puede realizarse mediante diferentes técnicas, como inspecciones, pruebas, demostraciones o revisiones por parte de expertos. Algunas de sus ventajas son:
+Para llevar  a cabo la verificación del alcance se propone dos momentos:
 
-- **Asegurar la calidad de los entregables:** La revisión de entregables permite identificar y corregir errores, defectos o incumplimientos en los productos, servicios o resultados del proyecto antes de su entrega final.
-- **Cumple con las expectativas de los interesados:** La revisión de entregables garantiza que los entregables del proyecto cumplen con las expectativas y necesidades de los interesados, incluyendo clientes,patrocinadores, usuarios finales y demás partes involucradas.
-- **Mejora la comunicación y la colaboración:** La revisión de entregables facilita la comunicación y la colaboración entre los miembros del equipo del proyecto y los interesados, permitiendo identificar y resolver problemas de manera oportuna. 
+### A.	Revisión de entregables:
+ Evaluar los entregables ya sean en productos tangible e intangibles o ambos que cumplan con los requisitos establecidos en la documentación del proyecto. Se puede utilizar las pruebas, demostraciones e inspecciones por el personal designado y capacitado para llevar a cabo esa verificación.  El hecho de llevar a cabo dicha verificación permite generar entregables de alta calidad y que cumplan los requisitos levantados anteriormente. Es recomendable que las etapas se vayan supervisando para poder detectar algún problema que se presente y poderlo resolver para ello, se requiere una comunicación fluida y contante de los responsables y de manera inmediata para evitar desviaciones o consumo de tiempo, recursos innecesariamente. Mejorar redacción
 
-### 2. Validación de alcance
-La validación del alcance es un proceso formal de aceptación de los entregables del proyecto por parte de los interesados clave. Esta validación implica confirmar que el proyecto ha cumplido con sus objetivos y que los entregables satisfacen las necesidades y expectativas del cliente o patrocinador. La validación del alcance se realiza típicamente mediante la firma de un documento de aceptación o la aprobación formal por parte de los interesados. Algunas de sus ventajas son:
+### B. Validación del alcance
+ 	En esta etapa es donde se acepta de manera formal  y que el cliente se encuentra convencido que el proyecto ha cumplido con los objetivos y parámetros plasmados y la formalización finaliza con la firma del documento por el cliente y el gestor o la persona que se haya determinado como responsable de la entrega. La ventaja en esta etapa es que lo que se ofreció se cumplió y no genera más o menos expectativas de los que debe ser. El cliente queda convencido que se le entrega lo prometido a tiempo y forma. Eso implica que la empresa evita entregas fuera de tiempo y que permite mantenerse en el mercado ya que no incurre en costos adicionales.
+Los documentos que acompaña al proceso de entregables en uno de ellos, se especifica los tiempo y el subproductos que se fue entregando durante el tiempo que duró el desarrollo y pruebas del proyecto. Mejorar redacción. 
+Al gestionar adecuadamente un proyecto evita que el personal y a su vez, el cliente entre en una situación de conflictos que provoque estrés en ambos lados.
 
-- **Asegura la alineación con los objetivos del cliente:** La validación del alcance garantiza que el proyecto ha cumplido con los objetivos y expectativas del cliente o patrocinador, minimizando el riesgo de discrepancias o insatisfacción. 
-- **Reduce el riesgo de cambios tardíos:** La validación del alcance ayuda a reducir el riesgo de cambios en el alcance del proyecto en etapas tardías,lo que puede generar costos adicionales, retrasos y conflictos.
-- **Fortalece las relaciones con los interesados:** La validación del alcance demuestra el compromiso del equipo del proyecto con la satisfacción del cliente y fortalece las relaciones con los interesados.
+Unos de los recursos que indudablemente se debe de planificar es el tiempo, plasmando los objetivos y la división de la tareas con una estimación de tiempo de cada actividad que debe establecerse en el cronograma de actividad del proyecto.
+Unos de los elementos más usados para la administración y evaluación del proyecto es PERT-Costo y PERT probabilístico. Donde se calcula el desarrollo de cada actividad tomando en cuenta el dinero, tiempo y personal adscrito al proyecto, la importancia radica cual es la ruta crítica para el desarrollo y evaluación del proyecto. Mejorar redacción.
+Otra etapa es la programación del proyecto, los recursos que se le asignará al proyecto en cada uno de sus etapas y actividades. Para ello, es necesario que se lleve a cabo el seguimiento y control para maximizar la optimización de los recursos.
 
-### 3. Documentación de la verificación 
-Es fundamental documentar los resultados de la verificación del alcance, incluyendo los hallazgos de la revisión de entregables, las decisiones de validación y cualquier acción correctiva que se haya tomado. Esta documentación sirve como evidencia del cumplimiento de los entregables y facilita la gestión de cambios futuros en el alcance del proyecto. Algunas de sus ventajas son:  
+#### Actividad 7: Memorama
+- **Instrucciones:** _Encuentra las palabras relacionadas con la verificacion de alcance del siguiente memorama._
 
-- **Proporciona un historial de cumplimiento:** La documentación de la verificación del alcance proporciona un registro detallado del proceso de revisión y aceptación de los entregables, lo que facilita la trazabilidad y la auditoría del proyecto. 
-- **Facilita la gestión de cambios futuros:** La documentación de la verificación del alcance proporciona un marco de referencia para evaluar y gestionar cambios en el alcance del proyecto en etapas posteriores. 
+<iframe src="https://learningapps.org/watch?v=p07z64myk25" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
 
-- **Mejora la comunicación y la transparencia:** La documentación de la verificación del alcance facilita la comunicación y la transparencia entre los miembros del equipo del proyecto y los interesados, reduciendo el riesgo de malentendidos y conflictos. 
+<!-- #### Actividad 8: Sopa de letras
+- **Instrucciones:** _Observa cuidadosamente la sopa de letras proporcionada. Localiza en la sopa de letras las siguientes palabras relacionadas con los conceptos clave del tema revisado._
+  
+<iframe src="https://puzzel.org/es/wordseeker/play?p=-ONhaaRybVJAnKtYYNh3" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+ -->
+
+#### Actividad 8: Sopa de letras
+- **Instrucciones:** _Ingresa al siguiente enlace y realiza la actividad de sopa de letras._
+[Da clic para ir a la actividad](https://puzzel.org/es/wordseeker/play?p=-ONhaaRybVJAnKtYYNh3)
+

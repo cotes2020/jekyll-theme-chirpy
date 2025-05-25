@@ -6,7 +6,7 @@ layout: page
 
 <div id="archives" class="pl-xl-3">
   <ul class="list-unstyled">
-    {% assign unidades = site.posts | group_by_exp: 'post', 'post.categories[0] ' %}
+    {% assign unidades = site.posts | group_by_exp: 'post', 'post.categories[0] ' | sort: 'name' %}
     {% for unidad in unidades %}
       <li>
         <strong>{{ unidad.name }}</strong>
