@@ -73,6 +73,8 @@ analytics:
   fathom:
     id: # fill in your Fathom Site ID
 
+img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
+
 # Page views settings
 pageviews:
   provider: # now only supports 'goatcounter'
