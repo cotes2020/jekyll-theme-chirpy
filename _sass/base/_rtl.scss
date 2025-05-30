@@ -139,6 +139,7 @@ html[dir='rtl'] {
           }
         }
       }
+
       @include bp.xl {
         width: 45%;
 
@@ -177,10 +178,15 @@ html[dir='rtl'] {
         margin-right: 0 !important;
       }
 
+      .pin {
+        margin-left: 0 !important;
+      }
+
       i {
         &:first-child {
           margin-right: 0 !important;
         }
+
         &:not(:first-child) {
           margin-right: 1.5rem !important;
 
@@ -246,6 +252,11 @@ html[dir='rtl'] {
   }
 
   .post-tail-wrapper {
+    .post-meta i,
+    .post-tags i {
+      margin-right: 0 !important;
+    }
+
     .share-wrapper {
       .share-icons {
         > * {
@@ -272,9 +283,10 @@ html[dir='rtl'] {
     }
   }
 
-  /* Page Category */
-  #page-category {
-    ul li {
+  /* Page Category, Page Tag */
+  #page-category,
+  #page-tag {
+    ul > li {
       &::before {
         margin-left: 0.5rem;
         margin-right: 0;
@@ -330,7 +342,7 @@ html[dir='rtl'] {
   /* Categories */
   .category-trigger {
     i {
-      transform: rotate(180deg);
+      transition: transform 300ms ease;
     }
   }
 
