@@ -1,0 +1,5 @@
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in include.posts %}
+    {% include post-card.html post=post %}
+  {% endfor %}
+</div>
