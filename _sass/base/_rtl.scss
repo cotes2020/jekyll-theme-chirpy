@@ -203,12 +203,18 @@ html[dir='rtl'] {
       }
     }
 
-    .post-tag {
-      margin: 0 0 0.5rem 0.35rem;
+    #trending-tags {
+      div {
+        margin-right: 0 !important;
 
-      &:not(:last-child) {
-        margin-right: 0;
-        margin-left: 0.2rem;
+        .post-tag {
+          margin: 0 0 0.5rem 0.35rem;
+
+          &:not(:last-child) {
+            margin-right: 0;
+            margin-left: 0.2rem;
+          }
+        }
       }
     }
   }
