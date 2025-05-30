@@ -370,7 +370,6 @@ html[dir='rtl'] {
     ul {
       &:not([class]),
       &.task-list {
-        padding-inline-end: 2.5rem; /* Increased padding for better marker alignment */
         margin-right: 0;
 
         li {
@@ -382,18 +381,10 @@ html[dir='rtl'] {
             text-align: right;
           }
         }
-
-        ol,
-        ul {
-          padding-inline-end: 1.5rem; /* Adjusted for nested lists */
-        }
       }
     }
 
     ul.task-list {
-      padding-inline-start: 0;
-      padding-inline-end: 1.5rem;
-
       li {
         padding-left: 0;
         padding-right: 0;
@@ -402,10 +393,6 @@ html[dir='rtl'] {
         > i {
           margin-left: 0;
           margin-right: 0.25rem;
-        }
-
-        ul {
-          padding-inline: 0 1.75rem;
         }
       }
 
