@@ -441,6 +441,11 @@ html[dir='rtl'] {
 
   /* TOC */
   #toc-wrapper {
+    > * {
+      border-left: none;
+      border-right: 1px solid var(--main-border-color);
+    }
+
     ul {
       padding-left: 0;
       padding-right: 0;
