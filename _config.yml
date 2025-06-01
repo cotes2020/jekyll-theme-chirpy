@@ -28,6 +28,9 @@ url: ""
 github:
   username: github_username # change to your GitHub username
 
+gitlab:
+  username: gitlab_username # change to your GitLab username
+
 twitter:
   username: twitter_username # change to your Twitter username
 
