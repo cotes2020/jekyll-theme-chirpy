@@ -15,6 +15,3 @@ En tant que nouveau blogueur, cela me donne également l'occasion d'améliorer m
 Peut-être me demanderez-vous alors : "Pourquoi n'as-tu pas gardé tout cela secret et à l'abri des regards indiscrets d'internet"?
 Pour être honnête, c'est exactement ce que j'avais envisagé. Cependant, certains de mes projets suscitent parfois l'intérêt de mes amis, ma famille ou mes collègues de travail, et ce site web pourrait être une excellente façon de partager ma passion. 
 De plus, l'écriture publique me pousse à publier des articles de meilleure qualité, plus faciles à comprendre et plus détaillés.
-
-
-PS : Si vous êtes nouveau et que vous constatez que ce site n'a pas eu de nouvelles activités, cela signifie que j'ai probablement abandonné en raison de manque de motivation ou de temps...
