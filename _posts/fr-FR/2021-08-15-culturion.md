@@ -1,10 +1,10 @@
 ---
-title: "Culturion : Le quiz sur la France"
+title: "Culturion : Le quiz sur les régions françaises"
 description: "Une application mobile pour apprendre et jouer avec la culture française."
 date: 2021-08-15
 categories: [Mobile]
 media_subpath: /assets/img/posts/culturion
-tags: [mobile, game, android, java]     # TAG names should always be lowercase
+tags: [mobile, game, android, java]
 lang: fr-FR
 image: culturion_banner.png
 ---
@@ -12,22 +12,63 @@ image: culturion_banner.png
 > Le projet a été réalisé des années avant la rédaction de cet article, des détails et explications approfondies peuvent donc manquer.
 {: .prompt-info }
 
-Il est temps de parler de l'un de mes projets dont je suis le plus fier : **Culturion**.
+Je vais vous présenter l'un de mes plus gros projets : **Culturion**. Vous pouvez trouver une courte vidéo décrivant cette application Android ci-dessous :
 
 {% include embed/youtube.html id='7KrYA6vUp8Q' %}
 
-J'ai voulu réutiliser les connaissances acquises lors du développement de ma première application native Android : Moovic. Mais cette fois-ci, elle serait plus aboutie et plus ambitieuse.
+Cette vidéo servait de publicité diffusée sur Youtube et les réseaux sociaux.
 
-La première étape était de trouver une idée de jeu, toujours réalisable dans Android Studio, et comme Moovic, sur la culture générale. C'est ainsi que j'ai trouvé le sujet parfait : un quiz sur différents aspects de la culture française.
+> Essayez l'application vous même depuis le Play Store : [https://play.google.com/store/apps/details?id=com.culturion.culturion](https://play.google.com/store/apps/details?id=com.culturion.culturion).
+{: .prompt-info }
 
-J'ai donc commencé à développer l'application fin 2020, avant de mettre le projet en pause après avoir été découragé par mon manque d'inspiration pour l'interface utilisateur. Ce n'est que 6 mois plus tard, durant l'été, que j'ai retrouvé un peu de motivation grâce à une idée. 
-Le concept était d'afficher une carte de France vierge, et de laisser le joueur la remplir au fur et à mesure avec ses bonnes réponses. Par exemple, en devinant dans quelle ville la photo a été prise, son emplacement est révélé sur la carte.
+Le premier objectif de ce projet était de réutiliser les connaissances acquises lors du développement de ma première application Android : **Moovic**. 
 
-J'ai ensuite étendu ce concept à d'autres aspects de la France : numéro de département, spécialités gastronomiques et ville natale de célébrités. J'ai travaillé sur ce projet pendant plusieurs mois, passant du temps à développer l'application, mais aussi à rassembler toutes les données nécessaires (photos de villes, spécialités culinaires, ...). Toutes ces données ont ensuite du être ajouté à une base de donnée MySQL.
+# Moovic : un blind-test cinéma
 
-J'ai également dû réfléchir à un nom et j'ai trouvé 'Culturion' : la contraction de '*Culture*' et '*Région*' parce que le jeu repose sur les connaissances culturels et aussi divisé par région française.
+Moovic a été ma toute première application Android native dévéloppée avec Android Studio en 2018. 
 
-Une fois le jeu dans un état jouable, j'ai demandé à ma famille et à mes amis de l'essayer. Leurs commentaires ont été très positifs, et je les ai utilisés pour corriger des erreurs et améliorer certaines fonctionnalités.
-Enfin, je l'ai publié sur le Play Store et lancé une campagne de marketing. Le résultat a dépassé mes attentes, car je suis fier de dire que l'application a été téléchargée par plus de 15 000 personnes !
+![Moovic](moovic.png){: w="700"}
+_Moovic_
 
-Malheureusement, l'application n'est plus disponible sur le Play Store à cause du SDK Android obsolète, mais c'est un projet que je n'oublierai jamais !
+
+Le concept reposait sur un blind-test cinéma avec la particularité que celui-ci se décompose en 3 manches : 
+  - Un premier film deviné à partir d'un **synopsis**
+  - Un second film deviné à partir d'une **image**
+  - Un troisième film deviné à partir de la **bande audio originale**
+
+Pour chaque manche, le joueur disposait d'un temps limité et la rapidité pour répondre influait sur le score final à la fin de la partie. Il était également possible de jouer avec ses amis en créant des parties personnalisées conçues pour que plusieurs jouerus puisse se défier sur les mêmes manches de films.
+
+Ce jeu a été publié sur le Play Store début 2019 mais n'est aujourd'hui plus disponible. Mais Moovic était surtout une expérience préliminaire avant Culturion qui m'a permit d'avoir une meilleure maitrise des langages, outils et process de développement sur Android et l'IDE Android Studio. 
+
+# Culturion : une application plus ambitieuse
+
+Avec Culturion, je souhaitais mettre la barrière un peu plus haute, car j'avais une idée précise du prochain jeu que je souhaitais développer et je savais qu'une vraie demande existait.
+
+Toujours intéressé par les jeux de quiz et de culture générale, en 2020, je commence donc à travailler sur Culturion : un quiz sur différents aspects du patrimoine français.
+
+![Culturion](culturion.jpg){: w="700"}
+_Culturion_
+
+Le développement de ce jeu subira des hauts et des bas lors de pertes de motivation au cours de l'année, mais se concrétisera vraiment à la fin de l'été 2020 grâce à une nouvelle idée pour l'interface utilisateur. Le concept était d'afficher une carte de France vierge, et de la remplir au fur et à mesure que le joueur donne de bonnes réponses. Par exemple, en devinant dans quelle ville une photo a été prise, son emplacement est révélé sur la carte.
+
+J'ai ensuite étendu ce concept à d'autres éléments liés à la France : numéro de département, spécialités gastronomiques et ville natale de célébrités. J'ai travaillé sur ce projet pendant plusieurs mois, passant du temps à développer l'application, mais aussi à rassembler toutes les données nécessaires (photos de villes, spécialités culinaires, ...).
+
+Toutes ces données (+ de 500 questions différentes) ont ensuite dû être ajoutées à une base de données MySQL pour pouvoir être exploitées facilement par l'application.
+
+J'ai également dû réfléchir à un nom et **Culturion** est venu simplement de la contraction de **Culture** et **Région** car le jeu repose sur les connaissances culturelles divisées  en régions françaises.
+
+Une fois le jeu dans un état jouable, ma famille et mes amis m'ont beaucoup aidé à corriger les erreurs, les bugs et à améliorer certaines fonctionnalités. Devant les retours très positifs, j'ai publié l'application sur le Play Store en janvier 2021.
+
+# Monétisation et marketing
+
+Culturion a aussi été mon premier pas dans le monde de la publicité et de la promotion marketing.
+
+Le modèle économique de mon application repose sur un jeu gratuit mais comportant de la publicité sous la forme de bannière, interstitiel et vidéo à récompenses pour obtenir des indices supplémentaires. Les publicités peuvent être supprimées par l'achat d'un **Pack Explorateur** (0.99€) ou **Pack VIP** (1.79€) donnant aussi accès à des légers avantages. 
+
+Le vrai défi consistait à équilibrer la quantité de publicité et le prix de ces achats intégrés pour pouvoir financer la campagne publicitaire lancé en parallèle pour promouvoir le jeu. Cette campagne a été gérée avec Google Ads et déclare un taux de conversion de 7.10% pour environ 12 900 conversions.
+
+Le résultat a dépassé mes attentes, car je suis fier que l'application ait été téléchargée par plus de 15 000 personnes et notée 4.5/5 sur plus de 200 avis ! 
+<br><br>
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=com.culturion.culturion"><img src="playstore.png" alt="Culturion"/></a>
+</p>
