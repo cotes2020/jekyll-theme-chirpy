@@ -1,5 +1,5 @@
 ---
-title: 'Bus Tracker : A real-time information display'
+title: 'Bus Tracker : Real-time information display'
 description: A ESP32 and a TFT screen to never be late again.
 date: 2023-02-10T00:00:00.000Z
 categories:
@@ -9,7 +9,7 @@ tags:
   - arduino
   - esp
   - network
-  - C
+  - c
 lang: en
 image:
   path: bustracker_pcb.png

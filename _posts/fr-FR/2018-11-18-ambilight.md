@@ -1,5 +1,5 @@
 ---
-title: 'Écran ambilight : Un rétro-éclairage DIY'
+title: 'Écran ambilight : Rétro-éclairage DIY'
 description: Une solution bon marché pour ajouter une fonction ambilight à un écran.
 date: 2018-11-18T00:00:00.000Z
 categories:

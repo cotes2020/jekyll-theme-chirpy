@@ -70,6 +70,9 @@ The economic model of my app is based on a free game but with advertising in the
 The real challenge was to balance the amount of advertising and the price of these in-app purchases in order to finance the advertising campaign launched in parallel to promote the game. This campaign was managed with Google Ads and reported a conversion rate of 7.10% for approximately 12,900 conversions.
 
 The result exceeded my expectations, as I am proud that the app has been downloaded by over 15,000 people and rated 4.5/5 based on over 200 reviews! 
+
+UPDATE (2025-05-24) : I recently updated the Android SDK to be able to compile Culturion for all recent Android smartphones and republish it on the Play Store. It was a tedious effort, having to fix outdated and conflicting dependencies and thousands of warnings after 6 years.
+
 <br><br>
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.culturion.culturion"><img src="playstore.png" alt="Culturion"/></a>

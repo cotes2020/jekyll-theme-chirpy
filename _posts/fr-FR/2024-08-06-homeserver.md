@@ -1,5 +1,5 @@
 ---
-title : 'Home Server : Mes services auto-hébergés'
+title : 'Home Server : Services auto-hébergés'
 description : Découvrez comment j'héberge plusieurs services sur mon propre serveur
 date : 2022-02-03
 categories : []

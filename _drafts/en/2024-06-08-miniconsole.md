@@ -1,9 +1,10 @@
 ---
-title: "Retro handheld : A minimalist game console"
+title: "Retro handheld : Minimalist game console"
 description: "A STM32 board equiped with a mini OLED screen and a Xbox Controller to recreate some old memories..."
 date: 2024-06-08
-categories: [Embedded, Retro handheld]
-tags: [ble, reverse, st, C]     # TAG names should always be lowercase
+categories: [Embedded]
+tags: [ble, reverse, st, c]
+media_subpath: /assets/img/posts/miniconsole
 lang: en
 ---
 
@@ -18,13 +19,15 @@ Those mini-screen reminded me of the cheap mini handheld game console which was 
 ![Mini handled game console](minihandled_model.jpg){: w="1000" h="700"}
 _Mini handled game console_
 
-Now the goal of my next project was clear : create a similar handheld game console based on a STM32 microcontroller but with a nice colorful screen and playable with a wireless Xbox Controller !
+Now the goal of my next project was clear : create a similar handheld game console based on a STM32 microcontroller with a colorful screen and playable with a wireless Xbox Controller !
 
-# Connect to a Xbox Controller
+# Communication with a Xbox Controller
 
 The first goal of this project is to connect the Xbox controller to my NUCLEO-WB55 board. The two communicate via BLE, but an appropriate driver should be written for the microcontroller to realize the connection and parse the controller inputs. 
 
-So before starting programming on my board, I need to know how the controller communicate with the Xbox driver for my PC. To do that I am helped by two software :
+So before starting programming on my board, I need to know how the controller communicate with the Xbox driver for my PC. 
+
+To do that I am helped by two software :
 - Wireshark on Windows/Linux, a network packet analysis software which can also capture and dissect BLE packets
 - nRF Connect on Android, a generic BLE tool to scan, advertise, and communicate with a device.
 
@@ -71,8 +74,13 @@ After a quick search on internet, I found there is an official BLE profile calle
 
 The Human Interface Device (HID) protocol is a standard used by USB devices like keyboards, mice, game controllers, and touchscreens to communicate with an host system efficiently. This way the host operating system can include a built-in and standardized HID driver able to interpret any input devices.
 
-During the device enumeration phase, a *HID descriptor* containing informations about the type of device and features (number of buttons, axes, keystrokes, ...) is sent to the host. Also a *report descriptor* describing the format of data packets (*reports*) and how they should be interpreted can be asked by the host.
+During the device enumeration phase, a **HID descriptor** containing informations about the type of device and features (number of buttons, axes, keystrokes, ...) is sent to the host. Also a **report descriptor** describing the format of data packets (**reports**) and how they should be interpreted can be asked by the host.
 
-The HID host determines how often the device should send data by periodically polling the device at a fixed interval for *input reports* (key presses, mouse movement, ...). The device can also receive *output reports* from the host to for example setting a LED indicators on a keyboard or enabling controller rumble. 
+The HID host determines how often the device should send data by periodically polling the device at a fixed interval for **input reports** (key presses, mouse movement, ...). The device can also receive **output reports** from the host to for example setting a LED indicators on a keyboard or enabling controller rumble. 
 
 ### HOG (HID over GATT)
+
+
+# STM32CubeIDE setup
+
+# Display on the TFT ST7732 screen

@@ -1,5 +1,5 @@
 ---
-title: "Culturion : Le quiz sur les régions françaises"
+title: "Culturion : Quiz sur les régions françaises"
 description: "Une application mobile pour apprendre et jouer avec la culture française."
 date: 2021-08-15
 categories: [Mobile]
