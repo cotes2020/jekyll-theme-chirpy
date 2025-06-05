@@ -1,7 +1,14 @@
 ---
 ---
 
-@import 'main'; // Keeps the original Chirpy styles
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
 
 /* === DARK MODE CUSTOMIZATION === */
 html[data-mode="dark"] {
