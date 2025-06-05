@@ -155,23 +155,3 @@ body::before {
   position: relative;
   z-index: 1;
 }
-#audio-player {
-  background: #1a1a1a;
-  color: #62ea00;
-  border: 2px solid #ae81ff;
-  border-radius: 10px;
-  padding: 1rem;
-  max-width: 400px;
-}
-
-#audio-player button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #62ea00;
-}
-
-#audio-player input[type="range"] {
-  width: 100%;
-}
