@@ -10,8 +10,6 @@
 
 - type: email
   icon: "fas fa-envelope"
-  noblank: true # open link in current tab
-  link: "mailto:kjmonts@gmail.com"
 
 - #type: rss
   #icon: "fas fa-rss"
