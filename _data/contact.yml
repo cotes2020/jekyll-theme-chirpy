@@ -9,8 +9,8 @@
   #icon: "fa-brands fa-x-twitter"
 
 - type: email
-  icon: "fas fa-envelope"
-  url: 'mailto:gotchi@sudomail.com'
+  icon: 'fas fa-envelope'
+  noblank: true
 
 - #type: rss
   #icon: "fas fa-rss"
