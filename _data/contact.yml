@@ -10,7 +10,7 @@
 
 - type: email
   icon: "fas fa-envelope"
-  url: "https://mail.google.com/mail/?view=cm&to=gotchi@sudomail.com"
+  url: 'mailto:gotchi@sudomail.com'
 
 - #type: rss
   #icon: "fas fa-rss"
