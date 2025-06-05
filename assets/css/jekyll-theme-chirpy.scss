@@ -1,11 +1,177 @@
 ---
 ---
 
-/* prettier-ignore */
-@use 'main
-{%- if jekyll.environment == 'production' -%}
-  .bundle
-{%- endif -%}
-';
+@import 'main'; // Keeps the original Chirpy styles
 
-/* append your custom style below */
+/* === DARK MODE CUSTOMIZATION === */
+html[data-mode="dark"] {
+  /* Global colors */
+  --heading-color: #ae81ff;
+  --bs-heading-color: #ae81ff;
+  --text-color: #62ea00;
+  --bs-body-color: #62ea00;
+
+  /* Optional: tweak other UI elements */
+  --sidebar-active-color: #62ea00;
+  --sidebar-btn-color: #ae81ff;
+  --avatar-border-color: rgba(206, 206, 206, 0.9);
+  --search-border-color: #ae81ff;
+  --sidebar-muted-color: #ae81ff;
+  --search-icon-color: #62ea00;
+  --input-focus-border-color: #62ea00;
+  --toc-highlight: #62ea00;
+
+  --prompt-tip-bg: rgba(22, 60, 36, 0.64);
+  --prompt-tip-icon-color: rgba(15, 164, 15, 0.81);
+  --prompt-info-bg: rgba(7, 59, 104, 0.8);
+  --prompt-info-icon-color: #0075d1;
+  --prompt-warning-bg: rgba(90, 69, 3, 0.88);
+  --prompt-warning-icon-color: rgba(255, 165, 0, 0.8);
+  --prompt-danger-bg: rgba(86, 28, 8, 0.8);
+  --prompt-danger-icon-color: #cd0202;
+
+  --tag-border: #ae81ff;
+}
+
+/* === FORCE COLOR OVERRIDES === */
+
+/* All headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ae81ff !important;
+}
+
+/* All paragraph/body text */
+body, .content {
+  color: #62ea00 !important;
+}
+
+/* Tags */
+.post-tag {
+  border: 1px solid #ae81ff;
+  color: #62ea00;
+}
+
+/* Tag hover color on side panel */
+.btn.btn-outline-primary:not(.disabled):hover {
+  border-color: #ae81ff !important;
+}
+
+/* Link styling across all pages */
+#page-category a:hover,
+#page-tag a:hover,
+.post-tags .post-tag:hover,
+.post-tail-wrapper .license-wrapper > a:hover,
+#search-results a:hover,
+#topbar #breadcrumb a:hover,
+.content a:not(.img-link):hover,
+.post-meta a:not([class]):hover,
+#access-lastmod a:hover,
+footer a:hover {
+  color: #62ea00 !important;
+  border-bottom: 1px solid #ae81ff;
+}
+
+/* TOC */
+#toc-wrapper ul .toc-link {
+  color: #ae81ff;
+}
+
+/* End of post nav */
+.post-navigation .btn:not(:hover) {
+  color: #ae81ff;
+}
+
+/* Panel hover text and border */
+.btn:hover {
+  color: #62ea00;
+  background-color: #302e31;
+  border-color: #ae81ff;
+}
+/* Custom post card style */
+#post-list .card .card-body .card-title {
+  color: #aa01cc !important;
+  font-size: 1.5rem;
+}
+
+/* Truncate or not */
+#post-list .card .card-body .card-title,
+#post-list .card .card-body .card-text.content p {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  display: block;
+}
+/* Sidebar Customization */
+#sidebar a,
+#sidebar .sidebar-bottom #mode-toggle {
+  color: #aa01cc!important;
+}
+
+#sidebar ul li.nav-item a.nav-link span {
+  font-size: 95%;
+  letter-spacing: 1px;
+  font-family: 'Fira Code', monospace;
+}
+
+#sidebar ul li.nav-item.active > a.nav-link {
+  color: #aa01cc !important;
+  font-weight: bold;
+  border-left: 3px solid #ae81ff;
+  padding-left: 0.5rem;
+}
+/* === BACKGROUND OVERRIDES === */
+html[data-mode="dark"] {
+  --main-bg: #0c0c0c; /* Darker background */
+  --sidebar-bg: #0a0a0a; /* Sidebar background */
+  --sidebar-border-color: #333; /* Optional border tweak */
+}
+
+/* Optional: Add background image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/assets/img/Q.png') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.10; /* adjust for transparency */
+  z-index: -1;
+}
+/* === SIDEBAR BACKGROUND IMAGE === */
+#sidebar {
+  background: url('/assets/img/rev.png') no-repeat center center;
+  background-size: cover;
+  border-right: 1px solid #333; /* Optional: match your theme */
+}
+#sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.70); /* semi-transparent overlay */
+  z-index: 0;
+}
+#sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+#audio-player {
+  background: #1a1a1a;
+  color: #62ea00;
+  border: 2px solid #ae81ff;
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 400px;
+}
+
+#audio-player button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #62ea00;
+}
+
+#audio-player input[type="range"] {
+  width: 100%;
+}

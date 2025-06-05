@@ -2,14 +2,16 @@
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
-      {%- if site.avatar != empty and site.avatar -%}
-        {%- capture avatar_url -%}
-          {% include media-url.html src=site.avatar %}
-        {%- endcapture -%}
-        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
-      {%- endif -%}
-    </a>
+  <a href="{{ '/' | relative_url }}" id="avatar" style="display: block; width: 112px; height: 112px; overflow: hidden; border-radius: 50%;">
+  <video autoplay muted loop playsinline width="140" height="140" style="transform: scale(1.3); transform-origin: center; object-fit: cover; margin-left: -14px; margin-top: -10px;">
+    <source src="{{ '/assets/img/Qanimation.mp4' | relative_url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</a>
+
+
+
+
 
     <a class="site-title d-block" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>

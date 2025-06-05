@@ -1,18 +1,21 @@
 #  The contact options.
 
-- type: github
-  icon: "fab fa-github"
+- type: linkedin
+  icon: 'fab fa-linkedin'
+  url: 'https://www.linkedin.com/in/jeremymontes7'
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+
+- #type: twitter
+  #icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
+  link: "mailto:kjmonts@gmail.com"
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+- #type: rss
+  #icon: "fas fa-rss"
+  #noblank: true
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon

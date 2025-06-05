@@ -44,3 +44,24 @@
     </div>
   </section>
 {% endif %}
+
+<div id="audio-player" data-turbo-permanent>
+  <h3 style="margin-top: 0;">🎵 The song of the day is:</h3>
+  <p id="song-title">Loading song...</p>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <div>
+    <button id="play-btn">▶️</button>
+    <button id="loop-btn">🔁</button> <!-- loop button -->
+    <input type="range" id="seek" value="0" max="100">
+    <span id="time">0:00 / 0:00</span>
+  </div>
+
+  <div>
+    <label>Volume</label>
+    <input type="range" id="volume" value="100" max="100">
+  </div>
+</div>
+
+<script src="/assets/js/simple-player.js"></script>
