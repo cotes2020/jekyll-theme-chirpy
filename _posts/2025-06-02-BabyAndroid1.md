@@ -28,7 +28,7 @@ baby-android-1.apk: Zip archive data, at least v0.0 to extract, compression meth
 That means it’s an **Android app package.** Think of it like a `.zip` that contains everything an Android app needs (code, layouts, assets, etc).
 ## 1: Open It Up
 
-we can use Apktool for decompiling the file with `apktool d **baby-android-1.apk` .** apktool is for reverse engineering third-party, closed, binary, Android apps. Running this will give us:
+we can use Apktool for decompiling the file with `apktool d **baby-android-1.apk**` . apktool is for reverse engineering third-party, closed, binary, Android apps. Running this will give us:
 
 ```bash
 I: Using Apktool 2.7.0-dirty on baby-android-1.apk

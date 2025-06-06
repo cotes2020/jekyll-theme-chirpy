@@ -10,11 +10,16 @@ const songTitle = document.getElementById('song-title');
 
 
 // === Load volume from localStorage if available ===
-const savedVolume = localStorage.getItem('player-volume');
-if (savedVolume !== null) {
-  volume.value = savedVolume;
-  audio.volume = savedVolume / 100;
+let savedVolume = localStorage.getItem('player-volume');
+
+if (savedVolume === null) {
+  savedVolume = 40; // default to 40% if not set
+  localStorage.setItem('player-volume', savedVolume);
 }
+
+volume.value = savedVolume;
+audio.volume = savedVolume / 100;
+
 
 // === Restore position and song ===
 let song;

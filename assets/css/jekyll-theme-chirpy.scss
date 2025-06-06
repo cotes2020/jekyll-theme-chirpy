@@ -3,6 +3,7 @@
 
 /* prettier-ignore */
 @use 'main
+
 {%- if jekyll.environment == 'production' -%}
   .bundle
 {%- endif -%}
@@ -182,4 +183,104 @@ body::before {
 
 #audio-player input[type="range"] {
   width: 100%;
+}
+/* === Glitch Effect for Homepage Titles === */
+.glitch-title {
+  position: relative;
+  color: #ae81ff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: inline-block;
+  animation: glitch-flicker 2s infinite;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: #62ea00;
+  opacity: 0.7;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch-title::before {
+  animation: glitch-before 1.6s infinite linear alternate-reverse;
+}
+
+.glitch-title::after {
+  animation: glitch-after 1.3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-flicker {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  20% { text-shadow: 2px 0 #ff00c1; }
+  40% { text-shadow: -2px 0 #00ffe1; }
+  60% { text-shadow: 2px 2px #ff00c1; }
+  80% { text-shadow: -2px -2px #00ffe1; }
+}
+
+@keyframes glitch-before {
+  0%   { clip: rect(0, 9999px, 0, 0); }
+  10%  { clip: rect(5px, 9999px, 15px, 0); }
+  20%  { clip: rect(10px, 9999px, 20px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitch-after {
+  0%   { clip: rect(0, 9999px, 0, 0); }
+  10%  { clip: rect(20px, 9999px, 30px, 0); }
+  20%  { clip: rect(15px, 9999px, 25px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+/* === Glitch Effect for Homepage Titles === */
+.glitch-title {
+  position: relative;
+  color: #ae81ff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: inline-block;
+  animation: glitch-flicker 2s infinite;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: #62ea00;
+  opacity: 0.7;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch-title::before {
+  animation: glitch-before 1.6s infinite linear alternate-reverse;
+}
+
+.glitch-title::after {
+  animation: glitch-after 1.3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-flicker {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  20% { text-shadow: 2px 0 #ff00c1; }
+  40% { text-shadow: -2px 0 #00ffe1; }
+  60% { text-shadow: 2px 2px #ff00c1; }
+  80% { text-shadow: -2px -2px #00ffe1; }
+}
+
+@keyframes glitch-before {
+  0%   { clip: rect(0, 9999px, 0, 0); }
+  10%  { clip: rect(5px, 9999px, 15px, 0); }
+  20%  { clip: rect(10px, 9999px, 20px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitch-after {
+  0%   { clip: rect(0, 9999px, 0, 0); }
+  10%  { clip: rect(20px, 9999px, 30px, 0); }
+  20%  { clip: rect(15px, 9999px, 25px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
 }
