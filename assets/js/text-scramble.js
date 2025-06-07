@@ -2,8 +2,8 @@ class TextScramble {
   constructor(el) {
     this.el = el;
     this.chars = '!<>-_\\/[]{}—=+*^?#________';
-    this.revealSpeed = 0.25;
-    this.changeFrequency = 0.3;
+    this.revealSpeed = 0.3;
+    this.changeFrequency = 0.2;
     this.highlightColor = '#00ff00';
     this.glowIntensity = 10;
     this.activeGlowIntensity = 12;
@@ -25,22 +25,25 @@ class TextScramble {
     }
 
     cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
+    this.startTime = performance.now();
+    this.frameRequest = requestAnimationFrame(this.update);
+
     return promise;
   }
 
-  update() {
+  update(time) {
+    const elapsed = time - this.startTime;
     let output = '';
     let complete = 0;
 
     for (let i = 0, n = this.queue.length; i < n; i++) {
       let { from, to, start, end, char } = this.queue[i];
+      const t = elapsed / 16;
 
-      if (this.frame >= end) {
+      if (t >= end) {
         complete++;
         output += to;
-      } else if (this.frame >= start) {
+      } else if (t >= start) {
         if (!char || Math.random() < this.changeFrequency) {
           char = this.randomChar();
           this.queue[i].char = char;
@@ -57,7 +60,6 @@ class TextScramble {
       this.resolve();
     } else {
       this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
     }
   }
 
@@ -68,7 +70,10 @@ class TextScramble {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".card-title").forEach(el => {
+    if (!el.dataset.originalText) {
+      el.dataset.originalText = el.textContent;
+    }
     const fx = new TextScramble(el);
-    fx.setText(el.textContent);
+    fx.setText(el.dataset.originalText);
   });
 });
