@@ -66,14 +66,9 @@ class TextScramble {
   }
 }
 
-// 👇 Wrap your animation in a reusable function
-function runScrambleAnimation() {
+document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".card-title").forEach(el => {
     const fx = new TextScramble(el);
     fx.setText(el.textContent);
   });
-}
-
-// 🔁 Trigger on full load AND when returning to page
-document.addEventListener("DOMContentLoaded", runScrambleAnimation);
-window.addEventListener("pageshow", runScrambleAnimation);
+});
