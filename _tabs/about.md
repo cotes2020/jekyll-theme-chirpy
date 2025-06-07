@@ -56,7 +56,7 @@ order: 4
     <h1><span>Jeremy Montes</span></h1>
       <p><em>Security Enthusiast  ·  Cool Guy  ·  Obsessed with the Unknown</em></p>
     <p>
-      I'm Jeremy, but online I go by <span class="highlight">qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, reverse engineering notes, random tech rants, and other things I find useful or worth sharing.
+      I'm Jeremy, but online I go by <span class="highlight">qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.
     </p>
 
     <blockquote>
