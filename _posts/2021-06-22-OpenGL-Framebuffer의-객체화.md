@@ -30,7 +30,7 @@ image:
 
 일단 프레임버퍼의 기본개념은 아래의 링크로 대체하도록 할게요
 * [LearnOpenGL Framebuffer 튜토리얼 번역본](https://heinleinsgame.tistory.com/28)
-* [LearnOpenGL Render to texture 튜토리얼 원본](http://www.opengl-tutorial.org/kr/intermediate-tutorials/tutorial-14-render-to-texture/)
+* [LearnOpenGL Render to texture 튜토리얼 원본](https://www.opengl-tutorial.org/kr/intermediate-tutorials/tutorial-14-render-to-texture/)
 
 -------------
 ## 1. 어떻게 객체화를 진행할 것인가? ##
