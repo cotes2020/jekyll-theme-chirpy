@@ -16,19 +16,36 @@ script_includes:
 <article class="px-1" data-toc="{{ enable_toc }}">
   <header>
     <div class="post-meta text-muted" style="margin-top: 10px;">
-      <!-- published date -->
-      <span>
-        {{ site.data.locales[lang].post.posted }}
-        {% include datetime.html date=page.date tooltip=true lang=lang %}
-      </span>
+      <div class="d-flex justify-content-between">
+        <!-- categories -->
+        {% if page.categories.size > 0 %}
+          <div class="post-meta">
+            <i class="fa-solid fa-list fa-fw me-1"></i>
+            <b>
+              {% for category in page.categories %}
+                <a href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/">{{ category }}</a>
+                {%- unless forloop.last -%},{%- endunless -%}
+              {% endfor %}
+            </b>
+          </div>
+        {% endif %}
 
-      <!-- lastmod date -->
-      {% if page.last_modified_at and page.last_modified_at != page.date %}
-        <span>
-          {{ site.data.locales[lang].post.updated }}
-          {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
-        </span>
-      {% endif %}
+        <div>
+          <!-- published date -->
+          <span>
+            {{ site.data.locales[lang].post.posted }}
+            {% include datetime.html date=page.date tooltip=true lang=lang %}
+          </span>
+
+          <!-- lastmod date -->
+          {% if page.last_modified_at and page.last_modified_at != page.date %}
+            <span>
+              {{ site.data.locales[lang].post.updated }}
+              {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
+            </span>
+          {% endif %}
+        </div>
+      </div>
 
       <div class="d-flex justify-content-between">
         <!-- author(s) -->
