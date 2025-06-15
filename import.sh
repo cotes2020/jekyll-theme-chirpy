@@ -140,6 +140,11 @@ fi
 
 # Process images
 FINAL_TEMP=$(mktemp)
+IMAGE_COUNTER=1
+
+# 이미지 URL과 새 파일명을 매핑하는 연관 배열 생성
+declare -A IMAGE_MAP
+
 while IFS= read -r line; do
   if [[ $line =~ !\[.*\]\((.*)\) ]] || [[ $line =~ image:\s*path:\s*(.*) ]]; then
     if [[ $line =~ !\[.*\]\((.*)\) ]]; then
@@ -157,18 +162,34 @@ while IFS= read -r line; do
       continue
     fi
 
-    IMG_FILENAME=$(basename "$IMG_URL")
+    # 파일명과 확장자 추출
+    IMG_EXTENSION="${IMG_URL##*.}"
+    IMG_BASENAME=$(basename "$IMG_URL" ".$IMG_EXTENSION")
 
-    if [[ $IMG_URL =~ ^https?:// ]]; then
-      curl -s "$IMG_URL" -o "$MEDIA_DIR/$IMG_FILENAME"
+    # 이미 처리된 URL인지 확인
+    if [[ -n "${IMAGE_MAP[$IMG_URL]}" ]]; then
+      # 이미 처리된 URL이면 저장된 새 파일명 사용
+      NEW_IMG_FILENAME="${IMAGE_MAP[$IMG_URL]}"
     else
-      IMG_URL=${IMG_URL#/}
-      if [ -f "$IMG_URL" ]; then
-        cp "$IMG_URL" "$MEDIA_DIR/$IMG_FILENAME"
+      # 새로운 URL이면 새 파일명 생성 및 저장
+      NEW_IMG_FILENAME="${IMAGE_COUNTER}-${IMG_BASENAME}.${IMG_EXTENSION}"
+      IMAGE_MAP[$IMG_URL]=$NEW_IMG_FILENAME
+
+      # 실제 파일 복사/다운로드
+      if [[ $IMG_URL =~ ^https?:// ]]; then
+        curl -s "$IMG_URL" -o "$MEDIA_DIR/$NEW_IMG_FILENAME"
+      else
+        IMG_URL=${IMG_URL#/}
+        if [ -f "$IMG_URL" ]; then
+          cp "$IMG_URL" "$MEDIA_DIR/$NEW_IMG_FILENAME"
+        fi
       fi
+
+      # 카운터 증가
+      ((IMAGE_COUNTER++))
     fi
 
-    NEW_PATH="/media/$FILENAME/$IMG_FILENAME"
+    NEW_PATH="/media/$FILENAME/$NEW_IMG_FILENAME"
     if [[ $line =~ !\[.*\]\((.*)\) ]]; then
       line=${line//$IMG_URL/$NEW_PATH}
     else
