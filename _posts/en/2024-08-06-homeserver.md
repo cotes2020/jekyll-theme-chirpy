@@ -20,7 +20,7 @@ My self-hosted addiction began with a Raspberry PI and the **PI-Hole** applicati
 _PI Hole_
 
 The first service I intended to create was a media server. The most popular at the time was Plex. 
-So I attached a 1TB hard drive to store the media and attempted to install and configure Plex Server. It was simple to set up, however after a while, I ran across problems.
+So I attached a 1TB hard drive to store the media and attempted to install and configure Plex Server. It was simple to set up, however after a while, I ran across some limitations.
 
 First, instabilities occurred frequently when Plex or other software was updated. 
 Second, the Raspberry PI model 3B+, which had 1GB RAM and a quad-core processor clocked at 1.4GHz, struggled to decode high-resolution video. 

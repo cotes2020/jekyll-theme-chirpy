@@ -20,7 +20,7 @@ Mon addiction à l'auto-hébergement a commencé avec un Raspberry PI et l'appli
 _PI Hole_
 
 Le premier service que je voulais ajouter était un serveur média. Le plus populaire à l'époque était Plex. 
-J'ai donc connecté un disque dur de 1 TO pour stocker les médias et j'ai essayé d'installer et de configurer Plex Server. Il était relativement facile à installer, mais après l'avoir utilisé pendant un certain temps, j'ai rencontré des problèmes. 
+J'ai donc connecté un disque dur de 1 TO pour stocker les médias et j'ai essayé d'installer et de configurer Plex Server. Il était relativement facile à installer, mais après l'avoir utilisé pendant un certain temps, j'ai rencontré certaines limitations. 
 
 Tout d'abord, des instabilités se produisaient régulièrement lorsque Plex ou d'autres logiciels étaient mis à jour. 
 Deuxièmement, le Raspberry PI modèle 3B+ avec 1 Go de RAM et un processeur quadricœur cadencé à 1,4 GHz, avait du mal à décoder les médias haute résolution. 

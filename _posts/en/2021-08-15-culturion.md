@@ -71,9 +71,12 @@ The real challenge was to balance the amount of advertising and the price of the
 
 The result exceeded my expectations, as I am proud that the app has been downloaded by over 15,000 people and rated 4.5/5 based on over 200 reviews! 
 
+![Culturion](culturion_stats.png){: w="300"}
+_Google Play Store metrics_
+
 UPDATE (2025-05-24) : I recently updated the Android SDK to be able to compile Culturion for all recent Android smartphones and republish it on the Play Store. It was a tedious effort, having to fix outdated and conflicting dependencies and thousands of warnings after 6 years.
 
-<br><br>
+<br>
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.culturion.culturion"><img src="playstore.png" alt="Culturion"/></a>
 </p>
