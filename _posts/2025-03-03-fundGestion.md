@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.4.1 Fundamentos de la gestión del tiempo"
+title: "I.IV.I Fundamentos de la gestión del tiempo"
 date: 2025-03-03 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.4 Gestión del tiempo]
 
@@ -36,7 +36,7 @@ El control del cronograma implica monitorear el progreso del proyecto en relaci�
 -	Comunicación efectiva: La comunicación efectiva entre los miembros del equipo del proyecto y los interesados es crucial para identificar problemas, gestionar cambios y mantener el cronograma actualizado (Gray & Larson, 2017, p. 192).
 
 
-### Actividad 9: Completa los espacios en blanco - Fundamentos de la gestión del tiempo
+### Actividad 9: Completa los espacios en blanco - fundamentos de la gestión del tiempo
 - **Instrucciones:** _Lee cada enunciado y completa el espacio en blanco con el término o frase correcta relacionado con la gestión del tiempo en proyectos. Puedes apoyarte en el texto base de la unidad 1.4.1._
 
 <iframe src="https://wordwall.net/play/92316/216/655" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>

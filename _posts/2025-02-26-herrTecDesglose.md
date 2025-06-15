@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.3.2 Herramientas y técnicas de desglose y gestión del trabajo"
+title: "I.III.II Herramientas y técnicas de desglose y gestión del trabajo"
 date: 2025-02-26 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.3 Estructura de desglose de trabajo]
 
@@ -42,7 +42,7 @@ En el paquete “Desarrollo del módulo de autenticación”:
 
 > Esta herramienta reduce ambigüedades y mejora la coordinación del equipo (Lock, 2020, p. 321)
 
-#### Actividad: Verdadero o Falso – Desglose y gestión del trabajo
+#### Actividad: Verdadero o falso – desglose y gestión del trabajo
 - **Instrucciones:** _Lee cada enunciado y escribe **V** si consideras que la afirmación es verdadera o **F** si es falsa, según lo aprendido en la sección 1.3.2._
 
 <iframe src="https://wordwall.net/play/92316/961/375" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>

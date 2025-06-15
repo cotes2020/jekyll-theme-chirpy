@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.3 Estructura de desglose de trabajo"
+title: "I.III Estructura de desglose de trabajo"
 date: 2025-02-24 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.3 Estructura de desglose de trabajo]
 

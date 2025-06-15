@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.4.3 Limitantes de la administración del tiempo"
+title: "I.IV.III Limitantes de la administración del tiempo"
 date: 2025-03-05 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.4 Gestión del tiempo]
 
@@ -30,7 +30,7 @@ Si bien la administración del tiempo es una herramienta fundamental para el éx
 - **Resistencia al cambio:** La adopción de nuevas técnicas y herramientas de gestión del tiempo puede encontrar resistencia por parte de los miembros del equipo y la organización. 
   > La cultura organizacional, la inercia de los procesos y la falta de capacitación pueden dificultar la implementación de cambios en la forma en que se gestiona el tiempo en los proyectos (Lock, 2020, p. 120).
 
-### Actividad 11: Completa los espacios en blanco - Fundamentos de la gestión del tiempo
+### Actividad 11: Completa los espacios en blanco - fundamentos de la gestión del tiempo
 
 - **Instrucciones:** 
   - _1.	A continuación, se presentan una serie de anagramas. Cada uno corresponde a una palabra clave relacionada con las limitaciones en la administración del tiempo en proyectos._

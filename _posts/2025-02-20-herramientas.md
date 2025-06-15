@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.2.1 Herramientas de recopilación de requisitos"
+title: "I.II.I Herramientas de recopilación de requisitos"
 date: 2025-02-20 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.2 Alcance de un proyecto]
 
@@ -18,9 +18,9 @@ Por último, cabe destacar que, además de definir el alcance, es crucial gestio
 Para poder definir el alcance de un proyecto informático, primero es necesario recopilar los requisitos del mismo, es decir, las necesidades y expectativas de los interesados que el proyecto debe satisfacer. 
 > Existen diversas técnicas y herramientas de recopilación de requisitos que ayudan a obtener y documentar esta información clave (Gray & Larson, 2017, p. 160; PMI, 2017, p. 140).
 
-### Actividad 3. Emparejando Herramientas de Recopilación de Requisitos
+### Actividad 3. Emparejando herramientas de recopilación de requisitos
 
-- **Instrucciones:** _Emparejar las herramientas de recopilación de requisitos con las descripciones correspondientes de su uso y aplicación en un proyecto informático._
+- **Instrucciones:** _Emparejar las tarjetas naranjas de herramientas de recopilación de requisitos con su respectiva tarjeta azule de descripción correspondiente de su uso de la herramienta y la aplicación en un proyecto informático._
 Definir el propósito y los objetivos del requerimiento
 
 <iframe src="https://learningapps.org/watch?v=p35a06rfn25" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.1 Concepción y planteamiento inicial de proyectos"
+title: "I.I Concepción y planteamiento inicial de proyectos"
 date: 2025-02-18 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.1 Concepción y planteamiento inicial de proyectos]
 

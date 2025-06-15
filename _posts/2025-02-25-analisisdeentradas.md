@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.3.1 Análisis de entradas – salidas"
+title: "I.III.I Análisis de entradas – salidas"
 date: 2025-02-25 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.3 Estructura de desglose de trabajo]
 
@@ -31,7 +31,7 @@ Es el documento que detalla el contenido, alcance y responsables de cada entrega
 
 Un documento adicional donde se establezca los cambios realizados, así como modificación en los tiempos, presupuesto, recursos humanos, materiales y tecnológicos.
 
-### Actividad 5: Empareja los elementos del proceso “Crear la EDT”
+### Actividad 5: Empareja los elementos del proceso “crear la EDT”
 - **Instrucciones:** _Relaciona correctamente cada **elemento** con su **categoría** (Entrada, Herramienta/Técnica, o Salida). Escribe la letra de la categoría correcta junto a cada elemento._
 
 <iframe src="https://learningapps.org/watch?v=p1uuzxtoj25" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>

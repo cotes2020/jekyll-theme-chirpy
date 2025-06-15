@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.2.2 Medios de determinación de alcance"
+title: "I.II.II Medios de determinación de alcance"
 date: 2025-02-21 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.2 Alcance de un proyecto]
 

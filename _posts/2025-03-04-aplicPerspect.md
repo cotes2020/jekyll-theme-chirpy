@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.4.2 Aplicaciones y perspectivas"
+title: "I.IV.II Aplicaciones y perspectivas"
 date: 2025-03-04 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.4 Gestión del tiempo]
 math: true
@@ -217,7 +217,7 @@ Para el sector de servicios en el caso específico para el desarrollo de IT se h
 - **Capacitación y desarrollo:** La formación continua del equipo de proyecto en técnicas y herramientas de gestión del tiempo es esencial para mejorar su eficiencia y productividad. 
   > Esto permite a los miembros del equipo desarrollar habilidades para estimar el tiempo de manera precisa, planificar su trabajo de manera efectiva y utilizar herramientas tecnológicas para optimizar su desempeño (Levin, 2018, p. 105).
 
-## Actividad 10: Completa los espacios en blanco - Fundamentos de la gestión del tiempo
+## Actividad 10: Completa los espacios en blanco - fundamentos de la gestión del tiempo
 - **Objetivo:** _Relacionar correctamente las principales herramientas, técnicas y sectores aplicables a la gestión del tiempo con sus respectivas descripciones y usos en proyectos reales, con el fin de consolidar los conocimientos adquiridos en la unidad 1.4.2._
 - **Instrucciones:** 
   - _1.	Lee cuidadosamente los conceptos que aparecen en la columna A (izquierda) y las descripciones o aplicaciones en la columna B (derecha)._

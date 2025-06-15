@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1.3.3 Verificación de alcance"
+title: "I.III.III Verificación de alcance"
 date: 2025-02-27 00:00:00 +0800
 categories: [Unidad Temática 1 - Inicio de un proyecto, 1.3 Estructura de desglose de trabajo]
 
@@ -24,7 +24,7 @@ Otra etapa es la programación del proyecto, los recursos que se le asignará al
 #### Actividad 7: Memorama
 - **Instrucciones:** _Encuentra las palabras relacionadas con la verificacion de alcance del siguiente memorama._
 
-<iframe src="https://learningapps.org/watch?v=p07z64myk25" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+<iframe src="https://learningapps.org/watch?v=p07z64myk25" style="border:0px;width:100%;height:700px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
 
 <!-- #### Actividad 8: Sopa de letras
 - **Instrucciones:** _Observa cuidadosamente la sopa de letras proporcionada. Localiza en la sopa de letras las siguientes palabras relacionadas con los conceptos clave del tema revisado._
