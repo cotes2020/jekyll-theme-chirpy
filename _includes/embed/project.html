@@ -9,6 +9,7 @@
 {% else %}
   {%- assign clqip = null -%}
 {% endif %}
+{% assign image_class = include.image_class %}
 <article class="card-wrapper card project-card">
   <a href="{{ url }}" class="post-preview row g-0">
     <!--      {% assign card_body_col = '12' %}-->
@@ -33,7 +34,7 @@
         </div>
       {% else %}
         {% if image %}
-          <img class="project-icon" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
+          <img class="project-icon {{ image_class }}" src="{{ image }}" alt="{{ alt }}" {{ clqip }}>
         {% else %}
           <div class="project-icon"></div>
         {% endif %}

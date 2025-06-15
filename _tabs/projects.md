@@ -6,6 +6,12 @@ order: 2
 ---
 
 
+{% include embed/project.html title='SimWorld'
+                              image='/assets/img/simworld-icon.png'
+                              lqip='data:image/webp;base64,UklGRuoAAABXRUJQVlA4WAoAAAAQAAAADwAADgAAQUxQSGYAAAARL6CobSM2ViKlcPO/IyJQkk+4jSRJkfrAAHz9UH8aAw5G/4+e9t+YOSMi+j8BAI4N+cPUFKJdwO9x0XyvaRHu3GghObexk+RjOR2pXb5M+3CGJF3fv263510FJgPGkLwE0Lw/BQBWUDggXgAAAPABAJ0BKhAADwAFQHwlsAJ0Bi7mFPIAAAD99wUJMagCd+4D2JaORA4UcFVOXnFRhHe2YosaxsC7jP/lnBH9vMmwGZikYfm7P7ndxkvcCSttArevVeICw+namAK4AAA='
+                              content='An Open-ended Simulator for Agents in Physical and Social Worlds'
+                              url='https://simworld-cvpr2025.maitrix.org'
+                              image_class='child-img-px-1' %}
 {% include embed/project.html title='Voila'
                               title_image='/assets/img/voila-icon.png'
                               lqip='data:image/webp;base64,UklGRpYAAABXRUJQVlA4WAoAAAAQAAAADwAAAwAAQUxQSDEAAAARL0AWYBocyADqSqKICFxeKGgkqY0vRcA3AzwSTgMCiOh/HAYG/FstxbY3JOnSuJkbAFZQOCA+AAAA8AEAnQEqEAAEAAVAfCWwAnS6AAJzRwgAAMls0XhWSgozGns9vkTk/FOhwjpZ/BO2XS7VXZQ6zduJDVoYAAA='
