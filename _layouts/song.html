@@ -1,0 +1,127 @@
+---
+layout: default
+---
+
+<article class="song-layout">
+
+  <!-- Cover Art -->
+  <section class="cover">
+    <img src="{{ page.cover }}" alt="{{ page.title }} Cover" class="cover-img" loading="eager" decoding="async" />
+
+  </section>
+
+  <!-- Audio Player -->
+  <section class="player">
+    <audio controls>
+      <source src="{{ page.audio }}" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+  </section>
+
+  <!-- Lyrics Section -->
+  <section class="lyrics">
+    <h2>📝 Lyrics</h2>
+    <pre>{{ page.lyrics }}</pre>
+  </section>
+
+  <!-- Breakdown Section -->
+  <section class="breakdown">
+    <h2> Song Breakdown</h2>
+    {{ page.explanation | markdownify }}
+  </section>
+
+</article>
+
+<style>
+.song-layout {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text-color);
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  line-height: 1.7;
+  animation: fadeIn 1s ease;
+}
+
+.cover {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.cover-img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  background: none;
+  box-shadow: none;
+  filter: none;
+  opacity: 1;
+  animation: none;
+  transition: none;
+  display: block;
+}
+
+img.cover-img.loading,
+img.cover-img.lazyloaded,
+img.cover-img::after {
+  content: none;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.player {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+audio {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 12px;
+  background: #111;
+  padding: 0.5rem;
+}
+
+.lyrics, .breakdown {
+  background-color: rgba(255,255,255,0.03);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 0 15px rgba(255, 0, 204, 0.05);
+}
+
+.lyrics pre {
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: var(--text-muted-color);
+}
+
+h2 {
+  color: #ff00cc;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 5px rgba(255,0,204,0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+img.cover-img,
+img.cover-img.lazyload,
+img.cover-img.lazyloaded,
+img.cover-img.loading,
+img.cover-img::before,
+img.cover-img::after {
+  content: none !important;
+  background: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+</style>
