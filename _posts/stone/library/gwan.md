@@ -1284,3 +1284,159 @@ GUI Label 등
 빙산의 일각  
 모두가 아는 것처럼 언급하는 태도 -> 상상력을 자극  
 뿌리가 약하는 나무는 죽는다. 땅 밖으로 나오면 나무는 죽는다  
+
+KarmoToy/Tool, KarmoLab  
+기술 명세서  
+Lab 풀다이브, 이세계, 특수시공  
+무한한 땅의 세계가 있다면 Like 마인크래프트  
+전사 -> 전쟁 -> 왜? 같은 흐름  
+
+남이 볼 때 왜? 를 계속 생각해야ㅑ 겠다.  
+스크립트 -> 문서, DOC 필요. Editor도 어렵다.  
+VSCode Mark인가 확장? or Google Slide ? or PPT ? or 기타 작업 가능한 플랫폼? Figma?x
+
+업무 요청 시 데드라인 함꼐 (더 나아가 육하원칙?)  
+집중 시간, 쉬는 시간, 자는 시간 -> 죄송합니다. 말고 애초에 연락 X  
+업무 내용은 항상 제 3자에게도 공유될 수 있어야. 채팅 X 문서 O  
+Depot  
+Verbase  
+로컬깃  
+
+## 머리말
+
+---
+
+해결 할 문제들  
+
+## 다음
+
+---
+
+- **Blog**
+  - review
+  - mindset -> strategy 병합 필요
+  - 글 내용 정리 (Project, 일반): (수가 많아서, 천천히 부지런히)
+  - 글 읽을 수 있게 만들기
+    - 메모 형식에 가까운 것들을 시작과 끝이 있는 글로 만들기
+    - 마치 발표자료 처럼
+    - 메모 형식이 맞는 목적의 글도 있지만, 그렇지 않은 글도 메모 형식인것이 문제
+  - [**reference-idea**](/posts/reference-idea): [](/_posts\witch-mendokusai\world\2023-01-27-reference-idea.md)
+  - `gwan.md`
+- **WM**:
+  - item-object shine-shader
+    - 기존 billboard shader-code -> shader-graph converting
+      - [가져온 code 이해](https://darkcatgame.tistory.com/137)
+        - 행렬 공부
+          - 회전 행렬
+- [**Woodon**](/posts/woodon): [](/_posts/works/virtual/woodon/2024-10-25-woodon.md)
+- 구글 드라이브 정리
+- 트위터 팔로우 정리 (레퍼런스)
+- 그림 북마크 정리
+- 세상
+
+## 사냥
+
+---
+
+할 것 만들기.  
+
+- WM
+  - 시간
+    - 어떻게 계산하는지
+    - 시간, 시계, 동주기자전, 위성 (태양과 달을 대신 할)
+    - 계절 (동주기자전 기준)
+  - 시작
+    - WM의 시점
+    - 하루: 위성을 통해, 달/해 -> 어떻게?
+    - 국제 표준, 활발히 활동/교류?
+      - 언어? 마법으로 시각적 표현? 콘택트?
+  - 마을
+    - Pokke Village
+
+- 공부
+  - UI Toolkit
+  - Midi, 음악
+  - Font, OTF TTF
+  - Unity Web: x Github Page
+    - Like 전시회/미술전 ?
+  - PS
+
+- 책
+
+- 그림
+
+- community
+  - 강연
+    - unite, gdc 등
+  - unity
+    - unity square
+    - unity document
+    - unity roadmap
+    - unity how.to
+    - learning resources: unity 6 graphics
+    - 유니티 설계 경험 기록
+  - github
+    - star
+    - `개발자`, `프로그래머`, `면접`, `컴공` 같은 키워드로 repository 검색
+  - follow
+    - [GamePix](https://x.com/G_P_Art): 250527
+    - [Wonpuri](https://x.com/Wonpuri): 240412
+  - site
+    - [Coloso](https://coloso.co.kr/)
+    - [텀블벅](https://tumblbug.com/discover?tab=category&category=video-games)
+    - [위키독스 - 온라인 책 공유 플랫폼](https://wikidocs.net/)
+    - [교보문고](https://ebook.kyobobook.co.kr/dig/pnd/showcase?pageNo=3819&cmdt=EBK&clst1=21&clst2=&clst3=&landing=Y)
+    - velog: [suhan0304](https://velog.io/@suhan0304/posts)
+    - midium: 트라플라
+    - microsoft:
+      - CPU 인사이트: Enum ToString이 Reflection을 쓴다?
+      - visual studio document - cpu insight, 성능 insight, enum.toString()~
+  - discord
+    - VAULT
+    - 어레이의 개발문고 크루
+    - Official Unity Discord
+  - blog
+    - 전문가가 쓴 글 읽기
+      - 이론을 이해하는 것과 관용적인 쓰임새를 이해하는 건 다른 문제
+      - 혼자서는 얻기 어려운 깊은 통찰
+      - 기술에 대해 전문가가 어떤 문제나 주장을 제기하는지 알기 -> 이해 깊어짐
+    - 개발사/개발자 블로그
+      - nexon, cookApps
+    - [슈퍼코믹](https://blog.naver.com/ekfvoddl3535)
+    - [메이플스토리 블로그](https://blog.maplestory.nexon.com/)
+    - [BatStudio](https://www.ibatstudio.com/)
+    - [풍풍풍(sorkelf)](https://blog.naver.com/sorkelf)
+    - [정대찬 - 정대찬의 개발 일지](https://24dc-m.tistory.com/)
+    - [망나니 개발자](https://mangkyu.tistory.com/category)
+    - [BBAGWANG](https://bbagwang.com/posts/)
+    - [잇창명](https://eatchangmyeong.github.io/)
+    - [이고드](https://dogy3045.tistory.com/): 게임 아티클
+    - [K리그 프로그래머](https://jeho.page/)
+    - [한별 - 한별이의 메모장](https://blog.naver.com/twinkle_onestar): 셰이더
+    - [원소랑 - 게임 만드는 원소랑](https://blog.naver.com/sorang226/221709362869)
+    - [펩시맨(izure) - 경어와 반말이 오가는 블로그](https://blog.naver.com/izure)
+    - [대그 - Daeg Game Studio](https://blog.naver.com/mbjjang0321)
+    - [eeeuns](https://eeeuns.github.io/)
+    - [Nauts - Nauts의 게임음악 이야기](https://blog.naver.com/supernauts)
+    - [Ju Hwijung - 개발창고](https://blog.juhwijung.com/)
+      - [Ju Hwijung - 플밍일기](https://blog.naver.com/5755084)
+    - [대마왕 - 대충 살아가는 게임개발자](https://chulin28ho.tistory.com/)
+    - [Arizen - Local](https://blog.naver.com/dkflwps/223623274650)
+      - [Arizen - Local](https://w0lf.kr/pages/index)
+    - [ANDMoonY 앤무니](https://blog.naver.com/PostList.naver?blogId=myoh8901)
+    - [산적대왕](https://blog.naver.com/raveneer)
+    - [댄싱돌핀](https://blog.naver.com/jysa000)
+    - [Wookje](https://wookje.dance/)
+
+### 블로그 글
+
+- `self-qna.md` 정리: Career 병합한 부분을 주제에 맞게 다듬기.
+- `unite.md` 정리: Unity에 일부 세션 영상 올라옴. 참고할 것.
+- \@GWAN
+- \#Q
+
+### 도토리
+
+리뷰: 푸키먼, 피크민, 룬테라, KFC  
+바쁠 땐 신경쓸 것을 줄이자 (푸키먼, 피크민 등)  
+메모리 부족하면 CPU 사용?  
