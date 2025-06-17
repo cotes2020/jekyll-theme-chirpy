@@ -282,4 +282,3 @@ explanation: |
 
 
 ---
-https://www.adaptivesecurity.com/blog/ai-phishing-chatgpt-impact

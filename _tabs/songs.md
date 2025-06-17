@@ -34,6 +34,11 @@ permalink: /songs/
     <a href="/songs/social-engineer/"> Social Engineer</a>
     <p>An educational track breaking down social engineering tactics and the psychology behind billion-dollar scams.</p>
   </li>
+
+  <li>
+    <a href="/songs/digital-war/"> Digital Warfare</a>
+    <p>Digital war song</p>
+  </li>
 </ul>
 
 <style>
