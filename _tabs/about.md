@@ -7,7 +7,6 @@ order: 4
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Audiowide&display=swap');
 
-
   /* Synthwave Background with Parallax */
   .about-container {
     position: relative;
@@ -38,6 +37,7 @@ order: 4
     background-size: 250px 250px;
     animation: stars-move 200s linear infinite;
     opacity: 0.5;
+    z-index: 1;
   }
 
   @keyframes stars-move {
@@ -134,27 +134,54 @@ order: 4
 
   /* Main Title with Typing Effect */
   .main-title {
-    font-family: 'Audiowide', 'Orbitron', monospace !important;
-    font-weight: 900 !important;
-    font-size: 4rem !important;
-    text-align: center !important;
-    color: transparent !important;
-    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-transform: uppercase !important;
-    letter-spacing: 0.2em !important;
-    position: relative !important;
-    z-index: 10 !important;
-    margin: 2rem 0 !important;
-    animation: 
-      gradient-move 3s ease infinite,
-      glitch 2.5s infinite,
-      vhs-distortion 0.3s infinite;
-    overflow: hidden;
-  }
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 3rem;
+  text-align: center;
+  color:rgb(30, 2, 83);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px #ae81ff, 0 0 16pxrgb(51, 4, 139);
+  margin: 2rem 0;
+  position: relative;
+  z-index: 999; /* VERY high to stay above layers */
+}
+.retro-title {
+  position: relative;
+  font-family: 'Exo', sans-serif;
+  font-size: 6rem;
+  text-align: center;
+  transform: skew(-10deg);
+  margin: 2rem 0;
+  z-index: 50;
+  letter-spacing: 0.05em;
+}
 
+.retro-title .retro-back {
+  display: block;
+  color: #a3c8ff;
+  text-shadow:
+    0 0 5px #6eb5ff,
+    0 0 20px #165ff3,
+    0 0 40px #165ff3;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+}
+
+.retro-title .retro-front {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(
+    #032d50 20%, 
+    #00a1ef 30%, 
+    white 45%, 
+  );
+  -webkit-text-stroke: 0.6px #94a0b9;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+z-index: 50 !important;
   .main-title::before {
     content: attr(data-text);
     position: absolute;
@@ -197,22 +224,22 @@ order: 4
     text-shadow: 0 0 20px #62ea00 !important;
     margin-bottom: 3rem !important;
     position: relative !important;
-    z-index: 10 !important;
+    z-index: 50 !important;
     font-style: normal !important;
   }
 
   .subtitle span {
-    display: inline-block;
-    animation: wave 2s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.1s);
-  }
+  display: inline-block;
+  /* no animation */
+}
+
 
   @keyframes wave {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
 
-  /* Profile Image with Simple Glow */
+  /* Profile Image with Simple Glow - Fixed Z-Index */
   .about-img {
     width: 100%;
     max-width: 300px;
@@ -220,7 +247,7 @@ order: 4
     margin: 1rem auto;
     display: block;
     position: relative;
-    z-index: 10;
+    z-index: 50;
     border: 4px solid #ae81ff;
     box-shadow: 
       0 0 30px #ae81ff,
@@ -228,7 +255,6 @@ order: 4
       inset 0 0 30px rgba(174, 129, 255, 0.2);
     animation: float 6s ease-in-out infinite;
   }
-
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -243,6 +269,7 @@ order: 4
     opacity: 0;
     animation: laser-scan 4s ease-in-out infinite;
     pointer-events: none;
+    z-index: 3;
   }
 
   @keyframes laser-scan {
@@ -258,7 +285,7 @@ order: 4
     }
   }
 
-  /* Image Gallery with 3D Cards */
+  /* Image Gallery with 3D Cards - Better Mobile Support */
   .image-row {
     display: flex;
     flex-wrap: wrap;
@@ -266,13 +293,16 @@ order: 4
     justify-content: center;
     margin: 3rem 0;
     position: relative;
-    z-index: 10;
+    z-index: 50;
     perspective: 1000px;
   }
 
   .image-row img {
     flex: 1 1 300px;
-    max-width: 400px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
     border-radius: 15px;
     border: 3px solid transparent;
     position: relative;
@@ -281,6 +311,12 @@ order: 4
     box-shadow: 
       0 10px 30px rgba(174, 129, 255, 0.3),
       inset 0 0 20px rgba(174, 129, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .image-row img {
+      max-width: 400px;
+    }
   }
 
   .image-row img::before {
@@ -310,7 +346,7 @@ order: 4
     filter: brightness(1.2) contrast(1.1);
   }
 
-  /* Interactive Badges - Simple Bright Green */
+  /* Interactive Badges - Simple Bright Green with Fixed Z-Index */
   .badge {
     display: inline-block;
     background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
@@ -321,6 +357,7 @@ order: 4
     margin: 0.3em;
     font-family: 'Share Tech Mono', monospace;
     position: relative;
+    z-index: 50;
     overflow: hidden;
     border: 1px solid #62ea00;
     text-shadow: 0 0 5px #62ea00;
@@ -350,36 +387,23 @@ order: 4
   }
 
   /* Highlight Text with Neon Glow */
-  .highlight {
-    color: #ff00ff;
-    font-weight: bold;
-    text-shadow: 
-      0 0 10px #ff00ff,
-      0 0 20px #ff00ff,
-      0 0 30px #ff00ff;
-    position: relative;
-    display: inline-block;
-    transition: all 0.3s;
-  }
   .highlight-inline {
-  font-size: 0.95em;           /* slightly smaller */
-  padding: 0.1em 0.4em;        /* less padding = less bulky */
-  border-radius: 4px;
-  background: rgba(255, 0, 255, 0.07); /* very light glow background */
-  box-shadow: 0 0 6px rgba(255, 0, 255, 0.2);
-  line-height: 1;
+  display: inline;
+  font-size: 1em;
+  padding: 0 0.3em;
+  border-radius: 0.25em;
+  background: linear-gradient(145deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.1));
+  text-shadow: 0 0 5px #ff00ff;
+  box-shadow: inset 0 0 5px rgba(255, 0, 255, 0.2);
+  transition: all 0.3s ease;
 }
 
+.highlight-inline:hover {
+  background: linear-gradient(145deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.1));
+  text-shadow: 0 0 7px #00ffff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
 
-  .highlight:hover {
-    color: #00ffff;
-    text-shadow: 
-      0 0 10px #00ffff,
-      0 0 20px #00ffff,
-      0 0 30px #00ffff,
-      0 0 40px #00ffff;
-    animation: pulse 0.5s ease-in-out;
-  }
 
   @keyframes pulse {
     0%, 100% { transform: scale(1); }
@@ -425,7 +449,7 @@ order: 4
     text-transform: uppercase !important;
     letter-spacing: 0.1em !important;
     animation: gradient-move 4s linear infinite;
-    z-index: 10 !important;
+    z-index: 50 !important;
   }
 
   h4 {
@@ -457,6 +481,35 @@ order: 4
     50% { opacity: 0.3; }
   }
 
+  /* Special styling for tall image */
+  .tall-image {
+    height: 350px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .tall-image {
+      height: auto !important;
+      width: 100% !important;
+      max-width: 350px !important;
+    }
+  }
+
+  /* Special styling for book image */
+  .book-image {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    width: 250px !important;
+  }
+
+  @media (max-width: 768px) {
+    .book-image {
+      transform: none !important;
+      width: 100% !important;
+      max-width: 350px !important;
+    }
+  }
+
   /* HR Styles with Energy Beam */
   hr {
     border: none;
@@ -465,6 +518,7 @@ order: 4
     margin: 4rem 0;
     position: relative;
     overflow: visible;
+    z-index: 50;
   }
 
   hr::before {
@@ -503,7 +557,7 @@ order: 4
   /* Paragraphs with better readability */
   p {
     position: relative;
-    z-index: 10;
+    z-index: 50;
     line-height: 1.9;
     color: #f0f0f0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -523,6 +577,8 @@ order: 4
       0 0 5px rgba(98, 234, 0, 0.5),
       inset 0 0 5px rgba(98, 234, 0, 0.2);
     transition: all 0.3s;
+    position: relative;
+    z-index: 50;
   }
 
   code:hover {
@@ -533,10 +589,10 @@ order: 4
     transform: scale(1.05);
   }
 
-  /* CRT Scan Line Effect */
+  /* CRT Scan Line Effect - Behind Content */
   .about-container::after {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -551,7 +607,7 @@ order: 4
       );
     animation: scan-lines 8s linear infinite;
     pointer-events: none;
-    z-index: 100;
+    z-index: 1;
   }
 
   @keyframes scan-lines {
@@ -559,28 +615,32 @@ order: 4
     100% { transform: translateY(10px); }
   }
 
-  /* Static Noise Overlay */
+  /* Static Noise Overlay - Behind Content */
   .about-container::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     opacity: 0.03;
-    z-index: 99;
+    z-index: 1;
     pointer-events: none;
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" /></svg>');
   }
 
   /* Mobile Responsive with Style */
   @media (max-width: 768px) {
+    .about-container {
+      padding: 1rem;
+    }
     .main-title {
       font-size: 2.5rem !important;
     }
     .section-title,
     .about-container h3 {
       font-size: 1.5rem !important;
+      padding-left: 25px !important;
     }
     .about-container h4 {
       font-size: 1.3rem !important;
@@ -588,17 +648,41 @@ order: 4
     .image-row {
       flex-direction: column;
       align-items: center;
+      gap: 1rem;
+    }
+    .image-row img {
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
+      display: block;
     }
     .badge {
-      font-size: 0.9rem;
-      padding: 0.5em 1em;
+      font-size: 0.85rem;
+      padding: 0.4em 0.8em;
+      margin: 0.2em;
     }
   }
 
+  /* Easter Egg - Konami Code */
+  .konami-activated {
+    animation: rainbow-bg 2s linear infinite;
+  }
 
   @keyframes rainbow-bg {
     0% { filter: hue-rotate(0deg); }
     100% { filter: hue-rotate(360deg); }
+  }
+
+  /* Content wrapper to ensure proper layering */
+  .content-wrapper {
+    position: relative;
+    z-index: 50;
+  }
+
+  /* Main content divs */
+  .about-container > div:not(.bg-layer):not(.laser-line) {
+    position: relative;
+    z-index: 50;
   }
 
   /* Loading Animation */
@@ -613,11 +697,27 @@ order: 4
     }
   }
 
-  .about-container > * {
+  .content-wrapper > * {
     animation: fade-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     opacity: 0;
   }
 
+  /* Staggered animation with dynamic delays */
+  .content-wrapper > *:nth-child(1) { animation-delay: 0.1s; }
+  .content-wrapper > *:nth-child(2) { animation-delay: 0.2s; }
+  .content-wrapper > *:nth-child(3) { animation-delay: 0.3s; }
+  .content-wrapper > *:nth-child(4) { animation-delay: 0.4s; }
+  .content-wrapper > *:nth-child(5) { animation-delay: 0.5s; }
+  .content-wrapper > *:nth-child(6) { animation-delay: 0.6s; }
+  .content-wrapper > *:nth-child(7) { animation-delay: 0.7s; }
+  .content-wrapper > *:nth-child(8) { animation-delay: 0.8s; }
+  .content-wrapper > *:nth-child(9) { animation-delay: 0.9s; }
+  .content-wrapper > *:nth-child(10) { animation-delay: 1.0s; }
+  .content-wrapper > *:nth-child(11) { animation-delay: 1.1s; }
+  .content-wrapper > *:nth-child(12) { animation-delay: 1.2s; }
+  .content-wrapper > *:nth-child(13) { animation-delay: 1.3s; }
+  .content-wrapper > *:nth-child(14) { animation-delay: 1.4s; }
+  .content-wrapper > *:nth-child(15) { animation-delay: 1.5s; }
 
   /* Performance optimizations */
   * {
@@ -654,7 +754,13 @@ order: 4
     <img src="/assets/img/mev3.jpg" alt="Jeremy Montes" class="about-img" />
   </div>
 
-  <h1 class="main-title" data-text="Jeremy Montes">Jeremy Montes</h1>
+  <h1 class="retro-title">
+  <span class="retro-back">Jeremy Montes</span>
+  </h1>
+  <div class="retro-grid"></div>
+  <div class="retro-lines"></div>
+
+
 
   <div class="subtitle">
     <span style="--i: 0">Security</span>
@@ -669,11 +775,13 @@ order: 4
     <span style="--i: 9">Unknown</span>
   </div>
 
-  <p>I'm Jeremy, but online I go by <span class="highlight highlight-inline">qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.</p>
+  <p>I'm Jeremy, but online I go by <span class="highlight highlight-inline">Qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.</p>
 
   <p>You'll notice the retro 80s vibes throughout the site. There's something about that neon/purple aesthetic that just works when you're staring at terminal windows at 2 AM. When I'm not breaking things, I'm either reading while vibing to Japanese jazz and neo-soul or actually going outside to hike and play tennis. You know, touching grass and all that.</p>
-    <div style="text-align: center; margin-bottom: 2rem;">
-    <img src="https://i.postimg.cc/sx16F4xL/IMG-0906.jpg" alt="Jeremy Montes" class="about-img" />
+
+  <div class="image-row">
+    <img src="https://i.postimg.cc/sx16F4xL/IMG-0906.jpg"
+         alt="Workshop photo" />
   </div>
 
   <hr>
@@ -688,7 +796,7 @@ order: 4
 
   <p>Since then, I've earned my associate's degree in Computer Science with a focus on Networking & Security, and I'm continuing coursework in the same field. I'm planning to pursue a bachelor's degree in either Cloud or Cybersecurity.</p>
 
-  <p>I've attended nearly every major security event and conference in California, helped found the first Cybersecurity Club at my college called CS404 (and became its representative), secured a SysOps/Security internship, won a few CTFs, picked up some certs, and built tons of personal labs and projects.</p>
+      <p>I've attended nearly every major security event and conference in California, helped found the first Cybersecurity Club at my college (and became its representative), secured a SysOps/Security internship, won a few CTFs, picked up some certs like <code>Security+</code> and <code>CCNA</code>, and built tons of personal labs and projects.</p>
 
   <div class="image-row">
     <img src="https://i.postimg.cc/2ys8f3HQ/PXL-20250324-231930647.jpg"
@@ -701,7 +809,7 @@ order: 4
 
   <h3 class="section-title">What Keeps Me Going</h3>
 
-  <p>I'm not a genius, but I love figuring things out. Especially in security, that constant mystery combined with a cat and mouse game is what keeps me on my toes. That's why I've been obsessed with malware analysis and reverse engineering. Do I know what I'm looking at right away? Hell no. But do I love digging into it until it clicks and I find what I need? Absolutely.</p>
+  <p>I'm not a genius, but I love figuring things out. Especially in security, that constant mystery combined with a cat and mouse game is what keeps me on my toes. That's why I've been obsessed with <span class="highlight highlight-inline">Malware Analysis</span> and <span class="highlight highlight-inline">Reverse Engineering</span>. Do I know what I'm looking at right away? Hell no. But do I love digging into it until it clicks and I find what I need? Absolutely.</p>
 
   <h4>Electronics and IoT</h4>
   <p>I was always into electronics, but things really clicked after finishing my Arduino internship at college. Once that wrapped up, I was hungry for more, so I grabbed a big electronics kit and dove into some books. At that point I was torn between going the electrical engineering/hardware route or sticking with computer science. But seeing how I could build practically anything with just copper, modules, and code - that really opened my eyes. I love building stuff, and electronics is where I get to show that off the most. After getting comfortable with schematics and working on my own projects, I naturally drifted into IoT security, radio frequency work, and started making my own hacking gadgets and PCBs.</p>
@@ -723,10 +831,9 @@ order: 4
 
   <div class="image-row">
     <img src="https://i.postimg.cc/CxL6g02t/1746214331685.jpg"
-         alt="Workshop photo" style="max-width: 400px;" />
+         alt="Workshop photo" />
     <img src="https://i.postimg.cc/L8CQ47Ks/rev.jpg"
-         alt="Workshop photo"
-         style="height: 350px; object-fit: cover;" />
+         alt="Workshop photo" class="tall-image" />
   </div>
 
   <hr>
@@ -744,42 +851,52 @@ order: 4
 </div>
 
 <script>
-// Parallax Effect
-document.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const parallax = document.querySelector('.bg-layer.grid');
-  const stars = document.querySelector('.bg-layer.stars');
-  
-  if (parallax) {
-    parallax.style.transform = `perspective(500px) rotateX(60deg) translateY(${50 + scrolled * 0.2}%) translateZ(${scrolled * 0.1}px)`;
-  }
-  if (stars) {
-    stars.style.transform = `translateY(${scrolled * 0.5}px)`;
-  }
-});
-
-// Interactive Hover Effects for Images
-document.querySelectorAll('.image-row img').forEach(img => {
-  img.addEventListener('mousemove', (e) => {
-    const rect = img.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Parallax Effect
+  document.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.bg-layer.grid');
+    const stars = document.querySelector('.bg-layer.stars');
     
-    img.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
+    if (parallax) {
+      parallax.style.transform = `perspective(500px) rotateX(60deg) translateY(${50 + scrolled * 0.2}%) translateZ(${scrolled * 0.1}px)`;
+    }
+    if (stars) {
+      stars.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
   });
-  
-  img.addEventListener('mouseleave', () => {
-    img.style.transform = '';
-  });
-});
 
+  // Interactive Hover Effects for Images
+  const setupImageHover = () => {
+    // Check if device supports mouse events (not touch-only)
+    if (window.matchMedia("(hover: hover)").matches) {
+      document.querySelectorAll('.image-row img').forEach(img => {
+        img.addEventListener('mousemove', (e) => {
+          const rect = img.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+          
+          img.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
+        });
+        
+        img.addEventListener('mouseleave', () => {
+          img.style.transform = '';
+        });
+      });
+    }
+  };
 
-// Initialize on load
-window.addEventListener('load', () => {
+  // Call setup immediately
+  setupImageHover();
+
+  // Also setup after a delay to catch any late-loading images
+  setTimeout(setupImageHover, 1000);
+
   // Add random glitch effect
   setInterval(() => {
     if (Math.random() > 0.95) {
