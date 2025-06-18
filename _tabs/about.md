@@ -229,6 +229,7 @@ order: 4
     animation: float 6s ease-in-out infinite;
   }
 
+
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -360,6 +361,15 @@ order: 4
     display: inline-block;
     transition: all 0.3s;
   }
+  .highlight-inline {
+  font-size: 0.95em;           /* slightly smaller */
+  padding: 0.1em 0.4em;        /* less padding = less bulky */
+  border-radius: 4px;
+  background: rgba(255, 0, 255, 0.07); /* very light glow background */
+  box-shadow: 0 0 6px rgba(255, 0, 255, 0.2);
+  line-height: 1;
+}
+
 
   .highlight:hover {
     color: #00ffff;
@@ -585,10 +595,6 @@ order: 4
     }
   }
 
-  /* Easter Egg - Konami Code */
-  .konami-activated {
-    animation: rainbow-bg 2s linear infinite;
-  }
 
   @keyframes rainbow-bg {
     0% { filter: hue-rotate(0deg); }
@@ -663,9 +669,12 @@ order: 4
     <span style="--i: 9">Unknown</span>
   </div>
 
-  <p>I'm Jeremy, but online I go by <span class="highlight">qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.</p>
+  <p>I'm Jeremy, but online I go by <span class="highlight highlight-inline">qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.</p>
 
   <p>You'll notice the retro 80s vibes throughout the site. There's something about that neon/purple aesthetic that just works when you're staring at terminal windows at 2 AM. When I'm not breaking things, I'm either reading while vibing to Japanese jazz and neo-soul or actually going outside to hike and play tennis. You know, touching grass and all that.</p>
+    <div style="text-align: center; margin-bottom: 2rem;">
+    <img src="https://i.postimg.cc/sx16F4xL/IMG-0906.jpg" alt="Jeremy Montes" class="about-img" />
+  </div>
 
   <hr>
 
@@ -679,7 +688,7 @@ order: 4
 
   <p>Since then, I've earned my associate's degree in Computer Science with a focus on Networking & Security, and I'm continuing coursework in the same field. I'm planning to pursue a bachelor's degree in either Cloud or Cybersecurity.</p>
 
-  <p>I've attended nearly every major security event and conference in California, helped found the first Cybersecurity Club at my college (and became its representative), secured a SysOps/Security internship, won a few CTFs, picked up some certs, and built tons of personal labs and projects.</p>
+  <p>I've attended nearly every major security event and conference in California, helped found the first Cybersecurity Club at my college called CS404 (and became its representative), secured a SysOps/Security internship, won a few CTFs, picked up some certs, and built tons of personal labs and projects.</p>
 
   <div class="image-row">
     <img src="https://i.postimg.cc/2ys8f3HQ/PXL-20250324-231930647.jpg"
@@ -692,7 +701,7 @@ order: 4
 
   <h3 class="section-title">What Keeps Me Going</h3>
 
-  <p>I'm not a genius, but I love figuring things out. Especially in security, that constant mystery combined with a cat and mouse game is what keeps me on my toes. That's why I've been obsessed with **malware analysis** and **reverse engineering**. Do I know what I'm looking at right away? Hell no. But do I love digging into it until it clicks and I find what I need? Absolutely.</p>
+  <p>I'm not a genius, but I love figuring things out. Especially in security, that constant mystery combined with a cat and mouse game is what keeps me on my toes. That's why I've been obsessed with malware analysis and reverse engineering. Do I know what I'm looking at right away? Hell no. But do I love digging into it until it clicks and I find what I need? Absolutely.</p>
 
   <h4>Electronics and IoT</h4>
   <p>I was always into electronics, but things really clicked after finishing my Arduino internship at college. Once that wrapped up, I was hungry for more, so I grabbed a big electronics kit and dove into some books. At that point I was torn between going the electrical engineering/hardware route or sticking with computer science. But seeing how I could build practically anything with just copper, modules, and code - that really opened my eyes. I love building stuff, and electronics is where I get to show that off the most. After getting comfortable with schematics and working on my own projects, I naturally drifted into IoT security, radio frequency work, and started making my own hacking gadgets and PCBs.</p>
@@ -709,7 +718,7 @@ order: 4
     <img src="https://i.postimg.cc/RhK2NT1D/books.webp" alt="Workshop photo" style="transform: rotate(-90deg); transform-origin: center; width: 250px;" />
   </div>
 
-  <h4>CTFs and reverse engineering</h4>
+  <h4>CTF's and reverse engineering</h4>
   <p>As far as CTFs go, I'm kicking myself for not getting into these way earlier. I just started with CTFs and King of the Hill stuff a little over a year ago, but I only really got serious about it this year. I find myself gravitating toward Pwn and reverse engineering challenges, plus hardware ones. While a lot of CTFs are pretty gamified and not always that useful for real-world application, some actually make you think and help sharpen your technical and problem-solving skills. Sometimes I'll burn a whole day on one challenge and come up empty, other times I'll dominate. What I love most about CTFs is the team communication and problem-solving, then reading writeups afterward and talking with other teams about their approaches once the competition wraps up. It's just cool because you don't see many other fields where you can learn and practice new stuff from random competitions that pop up basically every week.</p>
 
   <div class="image-row">
@@ -768,21 +777,6 @@ document.querySelectorAll('.image-row img').forEach(img => {
   });
 });
 
-// Konami Code Easter Egg
-let konamiCode = [];
-const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-
-document.addEventListener('keydown', (e) => {
-  konamiCode.push(e.key);
-  konamiCode = konamiCode.slice(-10);
-  
-  if (konamiCode.join('') === konamiPattern.join('')) {
-    document.body.classList.add('konami-activated');
-    setTimeout(() => {
-      alert('🎮 ACHIEVEMENT UNLOCKED: Retro Gamer! 🎮');
-    }, 100);
-  }
-});
 
 // Initialize on load
 window.addEventListener('load', () => {
