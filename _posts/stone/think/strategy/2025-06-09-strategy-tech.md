@@ -6,7 +6,8 @@ tags: [Strategy]
 image: "/assets/img/background/backtop.gif"
 
 date: 2025-06-09. 21:36 # Init: from shader, effect, ref-idea, gwan
-last_modified_at: 2025-06-13. 00:29 # +공부 링크
+# last_modified_at: 2025-06-13. 00:29 # +공부 링크
+last_modified_at: 2025-06-18. 23:27 # +직장
 ---
 
 ## 머리말
@@ -434,6 +435,145 @@ VFX를 만들기 위한 과정.
 - 프로테제 효과
 
 ### 키워드
+
+### 직장
+
+- [LinkedIn](https://www.linkedin.com/feed/)
+- [게임잡](https://www.gamejob.co.kr/main/home)
+- [점핏 - 보충역](https://www.jumpit.co.kr/search?sort=relation&keyword=보충역)
+- [잡플래닛](https://www.jobplanet.co.kr/job)
+- [어썸피스 인재 영입](https://recruit.awesomepiece.com/)
+- [넥슨 커리어](https://career.nexon.com/common/main)
+
+- [신입 게임 서버 프로그래머 포트폴리오](https://developstudy.tistory.com/72)
+- [게임 서버 하세요](https://gall.dcinside.com/mgallery/board/view/?id=gamejob&no=374)
+
+- [게임 프로그래머 기술, 인성면접 TIP](https://m.dcinside.com/board/gamejob/27979?recommend=1)
+- [실용적인 취업 꿀팁 + 취업 후기](https://gall.dcinside.com/board/view/?id=employment&no=1420825)
+- [채용담당자가 뽑은 취업 면접 멘트 선호도](https://x.com/wildcatclub_/status/1837713685986648119)
+- [불합격 시킨 케이스](https://x.com/Conoh_ts/status/1674653891450003463)
+
+- [3N 클라 개발자로 취직 스펙](https://m.dcinside.com/board/gamejob/180880)
+- [클라 프로그래머로 취업에 대한 잡설](ttps://m.dcinside.com/board/game_dev/76371)
+
+- [입사서류 준비](https://blog.naver.com/signalyeon/222545412093)
+
+- [https://simpleprogrammer.com/career-guide-toolkit/](https://simpleprogrammer.com/career-guide-toolkit/)  
+- [https://simpleprogrammer.com/products/careerguide/links/](https://simpleprogrammer.com/products/careerguide/links/)  
+
+{% include embed/youtube.html id = "9UohU4sWTNY" %}
+{% include embed/youtube.html id = "sd_HrTBfk-4" %}
+{% include embed/youtube.html id = "ifGUz43GjdQ" %}
+{% include embed/youtube.html id = "SISGvQju29k" %}
+{% include embed/youtube.html id = "axUwmi_JtEk" %}
+{% include embed/youtube.html id = "xzMl6bovaa8" %}
+{% include embed/youtube.html id = "3GQGq0cnYbA" %}
+{% include embed/youtube.html id = "gpUsWBGkDFQ" %}
+{% include embed/youtube.html id = "Q0ysHmteGOI" %}
+{% include embed/youtube.html id = "Mbsp9oHbwdM" %}
+{% include embed/youtube.html id = "3Ax_qrKadaY" %}
+{% include embed/youtube.html id = "V9AGvwPmnZU" %}
+{% include embed/youtube.html id = "Ylw6EXH9pLs" %}
+{% include embed/youtube.html id = "vaaftHoQQW8" %}
+
+- [게임 클라이언트 개발자 면접질문 정리](https://velog.io/@audwns356/게임-클라이언트-개발자-면접질문-정리)
+- [면접, 게임 회사마다 제각각](https://brunch.co.kr/@kiel123/6)
+
+- [잼얘하기](https://x.com/parslllley/status/1834080092097851508)
+- [갑분싸를 방지하는 면접 대처법](https://x.com/wildcatclub_/status/1830953390035345542)
+- [게임회사 현직자들이 말하는 합격 꿀팁](https://www.jobplanet.co.kr/contents/news-5777)
+
+- [데브시스터즈](https://careers.devsisters.com/o/111121)
+- [로드 컴플리트](https://loadcomplete.ninehire.site/)
+- [HAEGIN](https://www.haegin.kr/)
+- [콩스튜디오](https://kongstudios.career.greetinghr.com/)
+- [SUPERCENT](https://supercent.career.greetinghr.com/)
+- [111%](https://111percent.career.greetinghr.com/)
+- [넥슨 (넥토리얼)](https://www.nexon-tutorial.com/)
+- [넥슨](https://careers.nexon.com/)
+- [PLAYHARD](https://playhard.career.greetinghr.com)
+- [GAMEDUO (인재풀)](https://gameduo.career.greetinghr.com/o/)
+- 픽셀트라이브 XX
+  - <https://pixeltribe.ninehire.site/job_posting/PXSufoId>
+- 쿡앱스 XX
+  - <https://www.cookapps.com/careers/jobDetail/324>
+  - 예전에 슈퍼루키
+- 네오위즈
+  - <https://www.neowiz.com/careers/recruit?id=5794cb7a-dd08-46e3-ac47-78248f1fb74d>
+- ABLEgames
+
+경험, 능력 등을 붙여서 읽으면 됨  
+
+C# 언어에 대한 이해와 구현 능력  
+유니티 엔진에 대한 이해도와 활용 능력이 좋으신 분  
+
+- 그 외
+  - 기존 프로그램의 구조 개선/리팩토링
+  - 액션/전투 (3)
+  - 방치형
+  - 턴제
+  - SLG
+  - Git (2)1
+  - Lua Script (2)
+  - 코드 분석
+  - 디버깅 (2)
+  - UI/UGUI (7)
+  - URP (2)
+  - 렌더링/그래픽스 (2)
+  - 물리
+  - 플랫폼: iOS/AOS/PC (2)
+  - 데이터 기반 의사결정
+  - 최신 개발 트렌드
+  - Spine (2)
+  - After Effects
+  - 1인 개발
+  - 시스템 구조 설계 (2)
+  - 전용/효율 툴 개발 (2)
+- 컴퓨터 공학 (3)1
+  - 메모리 구조
+  - 알고리즘 (10)
+  - 디자인패턴 (4)
+  - 객체지향/OOP (11)
+  - 자료구조 (9)1
+  - C/C++
+- 셰이더
+  - 노드 기반 셰이더 분석 및 작성 (2)
+  - 프로그래밍
+  - HLSL
+  - 카툰 렌더링
+- 오픈소스
+  - 에셋
+  - SDK/서드파티 (4)
+    - 구글, 애플 연동 (3)
+- Tool
+  - PlayFab
+- 멀티스레드 (3)
+- 네트워크 (5)1
+  - 소켓
+  - 서버
+    - 서버 통신 및 데이터 추가/삭제/추출
+    - SQL
+      - MySQL
+      - PostgreSQL
+  - 멀티
+    - 멀티플레이 구현
+    - P2P, Server to Clients
+      - 동기화
+    - 간헐적 통신을 이용한 위변조 체크, 로그 쌓기
+    - Photon, Nakama
+- 경험
+  - 출시 (5)
+  - 라이브 (2)
+  - 신규
+  - 초기/개발단계부터 상용화/라이브 서비스까지 (11)
+  - 유니티/메모리/성능 최적화 (5)
+- 수학 (2)
+  - 공학수학
+    - 선형대수
+    - 이산수학
+  - 벡터 연산
+  - 행렬 연산
+- 물리
 
 ### 역사
 
