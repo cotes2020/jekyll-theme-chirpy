@@ -28,13 +28,8 @@ lyrics: |
 
   [Hook]
   This is digital warfare in the shadows
-  (We're living in the crossfire)
 
   Sixteen billion reasons why tomorrow ain't promised
-  (They're rewriting the wires)
-
-  From the water that we drink to the air that we breathe
-  (Can't see the enemy)
 
   They're in our infrastructure, we're on our knees
 
