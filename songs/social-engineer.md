@@ -147,7 +147,7 @@ explanation: |
 
   **Mike and Jenny Romance Scam Story**
 
-  **Real-World Context:** This story is based on actual "pig butchering" scam cases where criminals build romantic relationships over months before introducing cryptocurrency investment schemes. The $277,000 loss figure represents typical losses in these extended romance scams.
+  **Real-World Context:** This story is based on actual "pig butchering" scam cases where criminals build romantic relationships over months before introducing cryptocurrency investment schemes. The $277,000 loss represents the real story behind the Mike and Jenny romance scam.
 
   **Psychology Explained:**
 

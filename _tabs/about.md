@@ -148,16 +148,21 @@ order: 4
 .retro-title {
   position: relative;
   font-family: 'Exo', sans-serif;
-  font-size: 6rem;
+  font-size: clamp(2rem, 8vw, 5rem); /* responsive scaling */
   text-align: center;
   transform: skew(-10deg);
-  margin: 2rem 0;
+  margin: 2rem auto;
   z-index: 50;
   letter-spacing: 0.05em;
+  max-width: 90vw;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1.1;
+  padding: 0 1rem;
 }
 
 .retro-title .retro-back {
-  display: block;
+  display: inline-block; /* was block — changed to inline-block for better wrapping */
   color: #a3c8ff;
   text-shadow:
     0 0 5px #6eb5ff,
@@ -165,6 +170,7 @@ order: 4
     0 0 40px #165ff3;
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
 }
+
 
 .retro-title .retro-front {
   position: absolute;
@@ -216,17 +222,19 @@ z-index: 50 !important;
 
   /* Subtitle with Wave Effect */
   .subtitle {
-    display: block !important;
-    text-align: center !important;
-    font-family: 'Share Tech Mono', monospace !important;
-    color: #62ea00 !important;
-    font-size: 1.4rem !important;
-    text-shadow: 0 0 20px #62ea00 !important;
-    margin-bottom: 3rem !important;
-    position: relative !important;
-    z-index: 50 !important;
-    font-style: normal !important;
-  }
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  color: #62ea00;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  text-shadow: 0 0 12px #62ea00;
+  margin: 1.5rem auto 3rem;
+  max-width: 90vw;
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: normal;
+  padding: 0 1rem;
+}
+
 
   .subtitle span {
   display: inline-block;
@@ -763,21 +771,12 @@ z-index: 50 !important;
 
 
   <div class="subtitle">
-    <span style="--i: 0">Security</span>
-    <span style="--i: 1">Enthusiast</span>
-    <span style="--i: 2">·</span>
-    <span style="--i: 3">Cool</span>
-    <span style="--i: 4">Guy</span>
-    <span style="--i: 5">·</span>
-    <span style="--i: 6">Obsessed</span>
-    <span style="--i: 7">with</span>
-    <span style="--i: 8">the</span>
-    <span style="--i: 9">Unknown</span>
+   Security Enthusiast · Cool Guy · Obsessed with the Unknown
   </div>
 
   <p>I'm Jeremy, but online I go by <span class="highlight highlight-inline">Qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.</p>
 
-  <p>You'll notice the retro 80s vibes throughout the site. There's something about that neon/purple aesthetic that just works when you're staring at terminal windows at 2 AM. When I'm not breaking things, I'm either reading while vibing to Japanese jazz and neo-soul or actually going outside to hike and play tennis. You know, touching grass and all that.</p>
+  <p>You'll notice the retro 80s vibes throughout the site. There's something about that neon/purple aesthetic that just works when you're staring at terminal windows at 2 AM. When I'm not breaking things, I'm either reading while vibing to Japanese jazz, neo-soul, or corridos, or actually going outside to hike and play tennis. You know, touching grass and all that.</p>
 
   <div class="image-row">
     <img src="https://i.postimg.cc/sx16F4xL/IMG-0906.jpg"

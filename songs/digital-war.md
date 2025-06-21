@@ -198,7 +198,7 @@ explanation: |
 
   **"Meanwhile, Anubis brings a darker innovation / Encrypt then wipe - permanent devastation"**
 
-  **Real-World Context:** Anubis emerged in December 2024 as a new RaaS group that represents a dangerous evolution in ransomware. Unlike traditional ransomware that encrypts files for ransom, Anubis has a `/WIPEMODE` parameter that permanently destroys data—reducing files to 0 KB and making recovery impossible even after payment.
+  **Real-World Context:** Anubis emerged in December 2024 as a new RaaS group that represents a dangerous evolution in ransomware. Unlike traditional ransomware that encrypts files for ransom, Anubis has a `/WIPEMODE` parameter that permanently destroys data, reducing files to 0 KB and making recovery impossible even after payment.
 
   **Active and Growing Threat:** Despite being only months old, Anubis has already claimed victims across Australia, Canada, Peru, and the United States, targeting healthcare, construction, and engineering sectors. The malware is actively being developed, with interactive prompts showing ongoing improvements to its destructive capabilities.
 
@@ -293,11 +293,11 @@ explanation: |
 
   ## **Key Takeaways**
 
-  1. **Cyber warfare is already here**—it's not a future threat but a current reality affecting millions daily
-  2. **Critical infrastructure is the primary target**—hospitals, water systems, and power grids are under constant attack
-  3. **Nation states use criminal groups**—the line between state sponsored attacks and organized crime has blurred
-  4. **Every payment funds future attacks**—ransomware operates as a self sustaining ecosystem
-  5. **Resilience is our only defense**—we can't prevent all attacks, but we can minimize their impact through preparation
+  1. **Cyber warfare is already here** - it's not a future threat but a current reality affecting millions daily
+  2. **Critical infrastructure is the primary target** - hospitals, water systems, and power grids are under constant attack
+  3. **Nation states use criminal groups** - the line between state sponsored attacks and organized crime has blurred
+  4. **Every payment funds future attacks** - ransomware operates as a self sustaining ecosystem
+  5. **Resilience is our only defense** - we can't prevent all attacks, but we can minimize their impact through preparation
 
   ---
 
