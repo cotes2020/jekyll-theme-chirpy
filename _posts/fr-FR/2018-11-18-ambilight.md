@@ -7,7 +7,7 @@ categories:
 media_subpath: /assets/img/posts/ambilight
 tags:
   - arduino
-  - C
+  - c
 lang: fr-FR
 image: ambilight.jpg
 ---
