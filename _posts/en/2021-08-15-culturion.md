@@ -28,7 +28,7 @@ This video was used as an advertisement on YouTube and social media.
 > Try the app for yourself from the Play Store: [https://play.google.com/store/apps/details?id=com.culturion.culturion](https://play.google.com/store/apps/details?id=com.culturion.culturion).
 {:.prompt-info}
 
-# Moovic : a movie blind test
+## Moovic : a movie blind test
 
 Moovic was my very first native Android app, developed with Android Studio in 2018. 
 
@@ -44,7 +44,7 @@ For each round, the player had a limited amount of time, and the speed of their 
 
 This game was released on the Play Store in early 2019 but is no longer available. However, Moovic was primarily a preliminary experiment before Culturion, which allowed me to gain a better understanding of the languages, tools, and development processes on Android and the Android Studio IDE.
 
-# Culturion : a more ambitious application
+## Culturion : a more ambitious application
 
 With Culturion, I wanted to raise the bar a little higher, because I had a clear idea of the next game I wanted to develop and I knew there was a real demand for it.
 
@@ -61,7 +61,7 @@ I also had to think of a name, and **Culturion** simply came from the contractio
 
 Once the game was playable, my family and friends helped me a lot to fix errors and bugs and improve certain features. Given the very positive feedback, I published the app on the Play Store in January 2021.
 
-# Monetization and marketing
+## Monetization and marketing
 
 Culturion was also my first step into the world of advertising and marketing promotion.
 
@@ -74,7 +74,7 @@ The result exceeded my expectations, as I am proud that the app has been downloa
 ![Culturion](culturion_stats.png){: w="300"}
 _Google Play Store metrics_
 
-UPDATE (2025-05-24) : I recently updated the Android SDK to be able to compile Culturion for all recent Android smartphones and republish it on the Play Store. It was a tedious effort, having to fix outdated and conflicting dependencies and thousands of warnings after 6 years.
+**UPDATE (2025-05-24)** : I recently updated the Android SDK to be able to compile Culturion for all recent Android smartphones and republish it on the Play Store. It was a tedious effort, having to fix outdated and conflicting dependencies and thousands of warnings after 6 years.
 
 <br>
 <p align="center">
