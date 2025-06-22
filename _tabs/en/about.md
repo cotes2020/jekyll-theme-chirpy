@@ -16,3 +16,6 @@ You might be wondering why I don't keep all of this private and out of the pryin
 To be honest, that was what I had intended to accomplish first. But then I realized that some of my friends, family, and coworkers had expressed an interest in some of my projects, and this website could be an excellent method to inform people about what I do.
 
 Another benefit of writing publicly is that it puts pressure on me to fulfill a minimum quality standard before releasing a post, which makes it more intelligible and accurate.
+
+> Want to check my CV ? Click [here](https://flowcv.com/resume/4hjn0t6b1ljg).
+{: .prompt-tip }
