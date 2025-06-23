@@ -6,7 +6,7 @@ tags: [Design-Pattern]
 image: "/assets/img/background/kururu-lab.jpg"
 
 date: 2025-04-19. 01:17 # Init
-# last_modified_at: 2025-04-19. 01:17
+last_modified_at: 2025-06-23. 22:10 # 인터페이스로 구현
 ---
 
 ## 머리말
@@ -64,3 +64,6 @@ public class SomeFactory
     };
 }
 ```
+
+클래스 대신 인터페이스로 만들어도 된다.  
+특정 전략에서 다른 클래스를 상속받아야하거나, 특정 전략에서만 싱글턴을 써야하는 경우 등에 쓰기 좋다.  
