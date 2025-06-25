@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo
+    env_file:
+      - .env
+    restart: unless-stopped
+    volumes:
+      - ./whishper_data/db_data:/data/db
+      - ./whishper_data/db_data/logs/:/var/log/mongodb/
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER:-whishper}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS:-whishper}
+    expose:
+      - 27017
+    command: ['--logpath', '/var/log/mongodb/mongod.log']
+
+  translate:
+    container_name: whisper-libretranslate
+    image: libretranslate/libretranslate:latest
+    restart: unless-stopped
+    volumes:
+      - ./whishper_data/libretranslate/data:/home/libretranslate/.local/share
+      - ./whishper_data/libretranslate/cache:/home/libretranslate/.local/cache
+    env_file:
+      - .env
+    tty: true
+    environment:
+      LT_DISABLE_WEB_UI: True
+      LT_UPDATE_MODELS: True
+    expose:
+      - 5000
+    networks:
+      default:
+        aliases:
+          - translate
+    healthcheck:
+      test: ['CMD-SHELL', './venv/bin/python scripts/healthcheck.py']
+      interval: 2s
+      timeout: 3s
+      retries: 5
+
+  whishper:
+    pull_policy: always
+    image: pluja/whishper:${WHISHPER_VERSION:-latest}
+    env_file:
+      - .env
+    volumes:
+      - ./whishper_data/uploads:/app/uploads
+      - ./whishper_data/logs:/var/log/whishper
+    container_name: whishper
+    restart: unless-stopped
+    networks:
+      default:
+        aliases:
+          - whishper
+    ports:
+      - 8082:80
+    depends_on:
+      - mongo
+      - translate
+    environment:
+      PUBLIC_INTERNAL_API_HOST: "http://127.0.0.1:80"
+      PUBLIC_TRANSLATION_API_HOST: ""
+      PUBLIC_API_HOST: ${WHISHPER_HOST:-}
+      PUBLIC_WHISHPER_PROFILE: cpu
+      WHISPER_MODELS_DIR: /app/models
+      UPLOAD_DIR: /app/uploads
+      CPU_THREADS: 4

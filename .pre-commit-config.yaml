@@ -1,4 +1,4 @@
-exclude: ".csv"
+exclude: ".txt|.csv"
 
 repos:
   # - repo: local
