@@ -1,8 +1,8 @@
 ---
 title: "Unity Reversing"
 # description: ""
-categories: [컴퓨터, 그래픽]
-tags: []
+categories: [컴퓨터, 소프트웨어]
+tags: [유니티]
 image: "/assets/img/background/kururu-lab.jpg"
 hidden: true
 
