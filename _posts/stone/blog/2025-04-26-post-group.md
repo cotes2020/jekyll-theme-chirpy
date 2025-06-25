@@ -8,7 +8,8 @@ image: "/assets/img/background/20230112-151539.jpg"
 date: 2025-04-26. 14:57 # Init (Blog.md에서 분리)
 # last_modified_at: 2025-04-26. 23:35 # 중복 카테고리 수정
 # last_modified_at: 2025-05-01. 14:23 # Tree
-last_modified_at: 2025-05-02. 11:50 # 정리
+# last_modified_at: 2025-05-02. 11:50 # 정리
+last_modified_at: 2025-06-24. 23:10 # blog를 stone 하위 분류로, Tree
 ---
 
 ## 머리말
@@ -29,101 +30,24 @@ Chirpy Theme의 Category tab에서 표현되는 카테고리 최대 깊이는 2.
 전에는 Milestone에서 따와, Stone이라 불렀다. (하룻돌, 달돌, 삶돌)  
 
 ```shell
-├─blog
 ├─computer
 │  ├─algorithm
-│  │  ├─ai
-│  │  ├─back-tracking
-│  │  ├─common-problems
-│  │  ├─divide-conquer
-│  │  ├─dynamic-programming
-│  │  ├─problem-solving
-│  │  │  ├─baekjoon
-│  │  │  └─programmers
-│  │  ├─search
-│  │  └─sort
 │  ├─data-structure
 │  ├─graphics
-│  │  ├─animation
-│  │  ├─cg-api
-│  │  ├─color
-│  │  ├─effect
-│  │  ├─modeling
-│  │  ├─rendering
-│  │  └─shader
 │  ├─internet
 │  ├─programming
-│  │  ├─code-block
-│  │  ├─coding
-│  │  │  ├─convention
-│  │  │  ├─cpp
-│  │  │  └─csharp
-│  │  ├─design-pattern
-│  │  ├─programming-paradigm
-│  │  └─workflow
-│  │      ├─diagram
-│  │      └─testing
 │  ├─software
-│  │  └─unity
-│  │      ├─custom-editor
-│  │      └─third-party
-│  ├─system
-│  │  ├─assembly
-│  │  ├─memory
-│  │  ├─mobile
-│  │  ├─os
-│  │  ├─processor
-│  │  └─windows
-│  └─_drafts
-│      ├─programming-language
-│      ├─programming-language-concept
-│      ├─react-native
-│      └─spring-boot
+│  └─system
 ├─stone
+│  ├─blog
 │  ├─dairy
 │  ├─library
-│  │  ├─career
-│  │  └─culture
-│  │      └─game
 │  └─think
-│      ├─misc
-│      ├─personal
-│      ├─strategy
-│      └─theory
 ├─witch-mendokusai
 │  ├─dev-log
 │  ├─game-design
-│  │  ├─combat
-│  │  ├─features
-│  │  ├─game
-│  │  └─task
 │  └─world
-│      ├─item
-│      │  ├─aspect
-│      │  ├─potion
-│      │  └─weapon
-│      ├─soul
-│      │  ├─belief
-│      │  ├─doll
-│      │  ├─human
-│      │  └─other
-│      │      ├─monster
-│      │      ├─slime
-│      │      └─spirit
-│      ├─space
-│      │  ├─ae
-│      │  │  ├─desert
-│      │  │  └─forest
-│      │  └─some-where
-│      └─story
-│          └─base
 └─works
-    ├─drawing
-    ├─game-dev
-    ├─tool
-    └─virtual
-        ├─rusuk-bar
-        └─woodon
 ```
 
 ## 태그
@@ -171,3 +95,5 @@ Chirpy Theme의 Category tab에서 표현되는 카테고리 최대 깊이는 2.
     - 🍉🍊🍍🍌🍋🍐🥑🍋‍🟩🍈🥥🫐🍇-📀💿
     - 🫐-📀💿
     - 📀-📀💿
+
+- 2025-06-24. 23:10 blog를 stone 하위 분류로
