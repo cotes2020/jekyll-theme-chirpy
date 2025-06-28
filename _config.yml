@@ -98,7 +98,8 @@ theme_mode: light
 # e.g. 'https://cdn.com'
 cdn: ""
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/favicons/favicon-32x32.png"
+#네이버 웨일에 있는 바로가기 아이콘을 의미함
+avatar: "/assets/img/favicons/android-icon-192x192.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
