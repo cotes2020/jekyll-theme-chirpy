@@ -1,12 +1,15 @@
-# 검색 지표 대시보드
-
-날짜: 2025년 6월 27일
-배포: 안함
-상태: 진행 중
-
-# [DS/Product DS/Marketing] - 검색/성과 지표
-
-<br>
+---
+title: "[DS/Product DS/Marketing] 이커머스 산업에서 꼭 알아야 하는 지식들! - 검색/성과 지표 개념"
+author: eun
+date: 2025-06-29 22:26:00 +0900
+categories: [Data Science, Product DS]
+tags: [Intern, Marketing]
+render_with_liquid: true
+image:
+  path: https://ems.elancer.co.kr/99_upload/Append/T_Blog/editor/2024031401122245482.jpg
+  # lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
+  alt: Dashboard
+---
 
 DS팀에서는 고객의 행동 데이터를 분석해 대시보드를 제작하고, 이에 대한 성과를 올릴 수 있는 인사이트를 도출하는데요! 마케팅이나 영업 등 고객의 패턴을 추적하고 확인하는 데 있어서는 꼭꼭!!! 알아야 하는 개념들입니다. 회사에서 과제를 하나 수행하게 되었는데, 특정 조건에 대한 지표를 제작하는 것이었습니다. 생소한 내용이기 때문에 공부할 겸, 익숙해지고자 정리해보았습니다 ヾ(≧▽≦*)o
 
@@ -52,4 +55,4 @@ DS팀에서는 고객의 행동 데이터를 분석해 대시보드를 제작하
 
 <br><br><br><br>
 
-다음에는 직접 코드로 수식을 작성해보는 리뷰를 진행해보겠습니다!
+개념들만 간단하게 작성해봤는데요.. 사실 코드로 직접 짜보는게 이해하기 더 쉽습니다! SQL문으로 열심히 끄적하고 있긴 한데 워낙 생소한 용어이다 보니, 아직은 어색하고 어렵네요 ^^.. 다음에는 직접 코드로 수식을 작성해보는 리뷰를 진행해보겠습니다! φ(*￣0￣)
