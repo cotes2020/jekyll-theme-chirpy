@@ -1,11 +1,12 @@
 ---
-title : 'Home Server : Services auto-hébergés'
-description : Découvrez comment j'héberge plusieurs services sur mon propre serveur
-date : 2022-02-03
-categories : []
-media_subpath : /assets/img/posts/homeserver
-tags : [network]
-lang : fr-FR
+title: 'Home Server : Services auto-hébergés'
+description: Découvrez comment j'héberge plusieurs services sur mon propre serveur
+date: 2022-02-03
+categories:
+  - Website
+media_subpath: /assets/img/posts/homeserver
+tags: [website, network]
+lang: fr-FR
 image:
   path: homepage.png
 ---
