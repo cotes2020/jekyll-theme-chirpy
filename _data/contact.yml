@@ -3,8 +3,12 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: linkedin
+  icon: "fab fa-linkedin"
+  url: "https://in.linkedin.com/in/mahantys"
+
+#- type: twitter
+#  icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"

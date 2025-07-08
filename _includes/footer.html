@@ -17,22 +17,22 @@
       <em class="fst-normal">{{ site.social.name }}</em>.
     {% endif %}
 
-    {% if site.data.locales[include.lang].copyright.brief %}
-      <span
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="{{ site.data.locales[include.lang].copyright.verbose }}"
-      >
-        {{- site.data.locales[include.lang].copyright.brief -}}
-      </span>
-    {% endif %}
+    <a href="/privacy"> Privacy and Data Usage Policy</a>
+    {% comment %}
+      {% if site.data.locales[include.lang].copyright.brief %}
+        <span
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="{{ site.data.locales[include.lang].copyright.verbose }}"
+        >
+          {{- site.data.locales[include.lang].copyright.brief -}}
+        </span>
+      {% endif %}
+    {% endcomment %}
   </p>
 
   <p>
-    {%- capture _platform -%}
-      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-    {%- endcapture -%}
-
+    Made with &#10084;&#65039;&nbsp;
     {%- capture _theme -%}
       <a
         data-bs-toggle="tooltip"
