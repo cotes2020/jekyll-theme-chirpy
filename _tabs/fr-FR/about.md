@@ -12,9 +12,7 @@ Malgré le fait qu'ils soient sans doute peu intéressants pour la majorité, j'
 Et étant donné qu'il n'est jamais trop tard, j'ai pris la décision d'écrire ce blog dans le but principal de noter mes nouveaux projets, mes réflexions et mes connaissances. 
 En tant que nouveau blogueur, cela me donne également l'occasion d'améliorer mes compétences techniques en communication et en écriture. Ne prenez donc pas ce site trop au sérieux ; il ne vise pas à évoluer ou à attirer des lecteurs, mais plutôt à servir d'espace personnel pour stocker mes projets et partager ma passion.
 
-Peut-être me demanderez-vous alors : "Pourquoi n'as-tu pas gardé tout cela secret et à l'abri des regards indiscrets d'internet"?
-Pour être honnête, c'est exactement ce que j'avais envisagé. Cependant, certains de mes projets suscitent parfois l'intérêt de mes amis, ma famille ou mes collègues de travail, et ce site web pourrait être une excellente façon de partager ma passion. 
-De plus, l'écriture publique me pousse à publier des articles de meilleure qualité, plus faciles à comprendre et plus détaillés.
+Aussi certains de mes projets suscitent parfois l'intérêt de mes amis, ma famille ou mes collègues, et ce site web est une excellente façon de partager ma passion.
 
 > Mon CV est disponible [ici](https://flowcv.com/resume/4hjn0t6b1ljg).
 {: .prompt-tip }
