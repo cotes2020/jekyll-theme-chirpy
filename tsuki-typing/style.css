@@ -65,7 +65,7 @@ h1 {
     border: 1px solid var(--border-color);
     padding: 20px;
     width: 80%;
-    max-width: 1200px;
+    max-width: 800px;
     min-height: 80px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -124,7 +124,7 @@ h1 {
 }
 
 #virtual-keyboard {
-    margin-top: 30px;
+    margin-top: 60px;
     display: grid;
     gap: 5px;
     justify-content: center;

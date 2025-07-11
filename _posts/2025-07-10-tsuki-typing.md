@@ -12,4 +12,4 @@ use_math: false
 전체화면은 [여기](/tsuki-typing/index.html)에서. \
 全画面は[こちら](/tsuki-typing/index.html)。
 
-<iframe src="/tsuki-typing/index.html" width="100%" height="740px" frameborder="0" allowfullscreen></iframe>
+<iframe src="/tsuki-typing/index.html" width="100%" height="760px" frameborder="0" allowfullscreen></iframe>
