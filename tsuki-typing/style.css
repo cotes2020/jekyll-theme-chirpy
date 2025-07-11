@@ -1,0 +1,202 @@
+body {
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --primary-color: #0077b6;
+    --secondary-color: #005a8a;
+    --problem-bg-color: #fff;
+    --border-color: #ccc;
+    --current-bg-color: #e0e0e0;
+    --correct-text-color: #0077b6;
+    --committed-text-color: #0077b6;
+    --key-bg-color: #fff;
+    --key-border-color: #ccc;
+    --key-active-bg-color: #ebebeb;
+    --guide-bg-color: #0077b6;
+    --guide-border-color: #00669d;
+    --guide-shadow-color: rgba(0, 102, 157, 0.7);
+    --guide-next-bg-color: #B1D7EC;
+    --guide-next-border-color: #6DB4DA;
+
+    font-family: 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+body.dark-mode {
+    --bg-color: #282c34;
+    --text-color: #abb2bf;
+    --primary-color: #61afef;
+    --secondary-color: #8fc6f4;
+    --problem-bg-color: #3e4452;
+    --border-color: #5c6370;
+    --current-bg-color: #586074;
+    --correct-text-color: #61afef;
+    --committed-text-color: #61afef;
+    --key-bg-color: #3e4452;
+    --key-border-color: #5c6370;
+    --key-active-bg-color: #4b5263;
+    --guide-bg-color: #61afef;
+    --guide-border-color: #78bbf1;
+    --guide-shadow-color: rgba(143, 198, 244, 0.7);
+    --guide-next-bg-color: #45648F;
+    --guide-next-border-color: #567db1;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+#stats {
+    display: flex;
+    gap: 20px;
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#problem, #user-input-display {
+    letter-spacing: 2px;
+    background-color: var(--problem-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    min-height: 80px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#problem .normal-text {
+    font-size: 1.8em; /* 문제 문장 크기 조정 */
+    margin-bottom: 10px;
+}
+
+#problem .hiragana-text {
+    font-size: 1.2em; /* 히라가나 글자 크기 */
+    color: var(--text-color);
+}
+
+#problem span.correct {
+    color: var(--correct-text-color);
+}
+
+#problem span.current {
+    background-color: var(--current-bg-color);
+}
+
+#problem span.committed {
+    color: var(--committed-text-color);
+    font-weight: bold;
+}
+
+#user-input-display {
+    color: var(--text-color);
+    min-height: 1.5em; /* 글자 크기에 맞춰 최소 높이 설정 */
+    padding: 10px 20px; /* 상하좌우 여백 재조정 */
+    font-size: 1.2em; /* 입력 문자와 히라가나 글자 크기 일치 */
+    display: flex; /* Flexbox를 사용하여 수직 정렬 */
+    align-items: center; /* 내용을 수직 중앙에 위치 */
+}
+
+.button-container {
+    display: flex;
+    gap: 20px; /* 버튼 사이의 간격 */
+}
+
+.button-container button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-color); 
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: var(--secondary-color);
+}
+
+#virtual-keyboard {
+    margin-top: 30px;
+    display: grid;
+    gap: 5px;
+    justify-content: center;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 5px;
+}
+
+.keyboard-key {
+    min-width: 50px; /* 기본 키 너비 */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--key-border-color);
+    border-radius: 5px;
+    background-color: var(--key-bg-color);
+    font-size: 1em;
+    position: relative;
+    box-sizing: border-box; /* 패딩과 보더가 너비에 포함되도록 */
+}
+
+.keyboard-key.active {
+    background-color: var(--key-active-bg-color);
+    transform: scale(0.95);
+}
+
+.keyboard-key.guide {
+    background-color: var(--guide-bg-color);
+    color: white;
+    border: 2px solid var(--guide-border-color);
+    box-shadow: 0 0 8px var(--guide-shadow-color); /* 그림자 강도 조절 */
+    transform: scale(1.05); /* Slightly larger */
+}
+
+/* Make text inside the guided key white */
+.keyboard-key.guide .key-main,
+.keyboard-key.guide .key-shift {
+    color: white;
+}
+
+.keyboard-key.guide-next {
+    background-color: var(--guide-next-bg-color); /* 더 연한 파스텔 푸른색 */
+    border: 2px solid var(--guide-next-border-color);
+}
+
+.key-main {
+    font-size: 1.2em;
+}
+
+.key-shift {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: 0.8em;
+    color: var(--text-color);
+}
+
+.keyboard-key.guide.active {
+    transform: scale(0.95); /* guide와 active가 동시에 적용될 때 active의 transform을 우선 */
+}
+.key-backspace { width: 100px; }
+.key-tab { width: 80px; }
+.key-capslock { width: 90px; }
+.key-enter { width: 110px; }
+.key-shift-left { width: 120px; }
+.key-shift-right { width: 120px; }
+.key-ctrl, .key-alt, .key-meta { width: 70px; }
+
+/* Row indentation (mimicking real keyboard layout) */
+.keyboard-row:nth-child(1) { margin-left: 0px; }
+.keyboard-row:nth-child(2) { margin-left: 20px; }
+.keyboard-row:nth-child(3) { margin-left: 50px; }

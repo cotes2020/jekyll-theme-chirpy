@@ -1,0 +1,38 @@
+{
+
+    "KeyQ": { "normal": "そ", "shift": "ぁ" },
+    "KeyW": { "normal": "こ", "shift": "ひ" },
+    "KeyE": { "normal": "し", "shift": "ほ" },
+    "KeyR": { "normal": "て", "shift": "ふ" },
+    "KeyT": { "normal": "ょ", "shift": "め" },
+    "KeyY": { "normal": "つ", "shift": "ぬ" },
+    "KeyU": { "normal": "ん", "shift": "え" },
+    "KeyI": { "normal": "い", "shift": "み" },
+    "KeyO": { "normal": "の", "shift": "や" },
+    "KeyP": { "normal": "り", "shift": "ぇ" },
+    "BracketLeft": { "normal": "ち", "shift": "「" },
+
+    "KeyA": { "normal": "は", "shift": "ぃ" },
+    "KeyS": { "normal": "か", "shift": "を" },
+    "KeyD": { "normal": "☆", "shift": "ら" },
+    "KeyF": { "normal": "と", "shift": "あ" },
+    "KeyG": { "normal": "た", "shift": "よ" },
+    "KeyH": { "normal": "く", "shift": "ま" },
+    "KeyJ": { "normal": "う", "shift": "お" },
+    "KeyK": { "normal": "☆", "shift": "も" },
+    "KeyL": { "normal": "゛", "shift": "わ" },
+    "Semicolon": { "normal": "き", "shift": "ゆ" },
+    "Quote": { "normal": "れ", "shift": "」" },
+    
+    "KeyZ": { "normal": "す", "shift": "ぅ" },
+    "KeyX": { "normal": "け", "shift": "へ" },
+    "KeyC": { "normal": "に", "shift": "せ" },
+    "KeyV": { "normal": "な", "shift": "ゅ" },
+    "KeyB": { "normal": "さ", "shift": "ゃ" },
+    "KeyN": { "normal": "っ", "shift": "む" },
+    "KeyM": { "normal": "る", "shift": "ろ" },
+    "Comma": { "normal": "、", "shift": "ね" },
+    "Period": { "normal": "。", "shift": "ー" },
+    "Slash": { "normal": "゜", "shift": "ぉ" },
+    "Space": { "normal": "　", "shift": " " }
+}
