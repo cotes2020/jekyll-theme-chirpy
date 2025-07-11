@@ -228,3 +228,6 @@ jekyll-archives:
 jekyll_admin:
    hidden_links:
    homepage: ""
+
+plugins:
+  - jekyll-sitemap
