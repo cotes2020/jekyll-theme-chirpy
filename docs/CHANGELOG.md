@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.3.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.3.0...v7.3.1) (2025-07-26)
+
+### Bug Fixes
+
+* escape special JSON characters in search results ([#2481](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2481)) ([7615d72](https://github.com/cotes2020/jekyll-theme-chirpy/commit/7615d72e9300a1514ef2fc8ec941ab2974ba7eb4))
+
 ## [7.3.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.2.4...v7.3.0) (2025-05-18)
 
 ### Features
