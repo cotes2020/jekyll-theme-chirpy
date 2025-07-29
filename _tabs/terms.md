@@ -1,5 +1,5 @@
 ---
-icon: fa-file-contract
+icon: fas fa-handshake
 order: 8
 mermaid: true
 ---
