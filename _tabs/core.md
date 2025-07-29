@@ -1,5 +1,5 @@
 ---
-icon: fas fa-info-circle
+icon: fas fa-compass
 order: 1
 mermaid: true
 ---
