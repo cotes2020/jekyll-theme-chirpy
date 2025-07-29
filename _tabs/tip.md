@@ -1,5 +1,5 @@
 ---
-icon: fas fa-info-circle
+icon: fas fa-lightbulb
 order: 2
 mermaid: true
 ---
