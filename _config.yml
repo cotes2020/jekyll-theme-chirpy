@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: NJU_Shalor
+  name: Shalor
   email: shalorend@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -95,10 +95,10 @@ theme_mode: dark # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://blogassets.netlify.app"
+cdn: ""  # 禁用 CDN，使用本地文件
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/gilfoyle.png"
+avatar: "/assets/img/favicons/android-chrome-192x192.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
