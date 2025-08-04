@@ -1,0 +1,25 @@
+name: PR Filter
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  check-template:
+    if: github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check PR Content
+        id: intercept
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { default: filter } = await import('${{ github.workspace }}/.github/workflows/scripts/pr-filter.js');
+            await filter({ github, context, core });
