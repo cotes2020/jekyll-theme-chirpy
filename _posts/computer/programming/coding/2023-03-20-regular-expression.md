@@ -39,6 +39,7 @@ last_modified_at: 2024-10-24. 16:24 # Regex101.com 추가
 ---
 
 - [Regular Expressions](https://regex101.com/)
+- `(/posts/)(*?/)`, `$1\L$2`
 
 ### 참고
 
