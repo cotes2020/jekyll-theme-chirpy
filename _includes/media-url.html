@@ -25,11 +25,21 @@
     {% assign url = url | replace: '///', '/' | replace: '//', '/' | replace: ':/', '://' %}
 
     {% unless url contains '://' %}
-      {% if include.absolute %}
-        {% assign url = site.url | append: site.baseurl | append: url %}
-      {% else %}
-        {% assign url = site.baseurl | append: url %}
+      {% comment %} Check if URL already contains baseurl to prevent duplication {% endcomment %}
+      {% assign url_starts_with_baseurl = false %}
+      {% if site.baseurl and site.baseurl != '' %}
+        {% if url contains site.baseurl %}
+          {% assign url_starts_with_baseurl = true %}
+        {% endif %}
       {% endif %}
+      
+      {% unless url_starts_with_baseurl %}
+        {% if include.absolute %}
+          {% assign url = site.url | append: site.baseurl | append: url %}
+        {% else %}
+          {% assign url = site.baseurl | append: url %}
+        {% endif %}
+      {% endunless %}
     {% endunless %}
   {% endunless %}
 {%- endif -%}
