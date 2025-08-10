@@ -10,7 +10,8 @@ date: 2025-02-04. 23:49 # Init
 # last_modified_at: 2025-03-23. 18:34 # Soul Template -> Factory
 # last_modified_at: 2025-04-25. 05:42 # X
 # last_modified_at: 2025-05-27. 06:02 # +메모: 참고
-last_modified_at: 2025-05-28. 06:51 # +관계, +메모
+# last_modified_at: 2025-05-28. 06:51 # +관계, +메모
+last_modified_at: 2025-08-11. 00:12 # +말투: 귀찮아, 곤란하네
 ---
 
 ## 머리말
@@ -36,6 +37,9 @@ last_modified_at: 2025-05-28. 06:51 # +관계, +메모
 - 금발 흑안 갈색피부
 
 ### 말투
+
+- 귀찮아~
+- 곤란하네~
 
 ### 얼굴
 

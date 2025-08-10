@@ -1,5 +1,5 @@
 ---
-title: "쓰기"
+title: "정리하기"
 description: "좋은 글을 쓰는 방법"
 categories: [수필, 생각]
 tags: [Strategy]
@@ -9,7 +9,8 @@ date: 2024-09-05. 04:42
 # last_modified_at: 2024-09-29. 20:10
 # last_modified_at: 2025-04-28. 19:26 # 메모
 # last_modified_at: 2025-05-02. 03:08 # 메모
-last_modified_at: 2025-06-25. 22:40 # 카테고리 blog -> stone, 쓰기 메모 조각모음
+# last_modified_at: 2025-06-25. 22:40 # 카테고리 blog -> stone, 쓰기 메모 조각모음
+last_modified_at: 2025-08-11. 00:19 # 쓰기 -> 전략-정리 (2025-06-23. 23:23)
 ---
 
 ## 머리말
