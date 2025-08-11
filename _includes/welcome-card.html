@@ -1,0 +1,29 @@
+{% include lang.html %}
+
+{% assign intro_ko = '실시간 그래픽스 렌더링에 관심이 많은 게임 개발자입니다.' %}
+{% assign intro_en = "I'm a game developer passionate about real-time graphics rendering." %}
+{% assign desc_ko = '제 블로그를 통해 다양한 주제에 대해 공유하고 있습니다.<br>관심 있는 분들은 언제든지 댓글이나 이메일로 소통해 주세요! 😊' %}
+{% assign desc_en = "I share various topics through my blog.<br>Feel free to reach out via comments or email if you're interested! 😊" %}
+
+<div id="home-post" class="flex-grow-1 px-xl-1">
+  <div class="card-wrapper post-preview card">
+    <a href="/about" class="post-preview row g-0 flex-md-row">
+      <div class="col-md-5">
+        <img src="assets/img/favicons/12756091.png" style="width: inherit;" alt="Header Image">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body d-flex flex-column">
+          <h1>Hello There!👋👋</h1>
+          <b style="background: linear-gradient(transparent 10%, #ffeb3b 30%); color: var(--text-muted-color) !important;">
+            {% if lang == 'ko' %}{{ intro_ko }}{% else %}{{ intro_ko }}{% endif %}
+          </b>
+          <div class="card-text content mt-0 mb-3">
+            <p style="color: var(--text-muted-color) !important;">
+              {% if lang == 'ko' %}{{ desc_ko }}{% else %}{{ desc_ko }}{% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
