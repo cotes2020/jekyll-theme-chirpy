@@ -1,5 +1,5 @@
 matplotlib==3.7.1
 nltk==3.9
 pandas==1.5.1
-requests==2.32.0
+requests==2.32.4
 selenium==4.8.3
