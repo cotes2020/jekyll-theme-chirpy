@@ -16,4 +16,4 @@ image: https://wissenpress.files.wordpress.com/2019/01/a1bb1-16oVQ0409lk5n3C2ZPM
 - confidentiality, integrity, and availability, 3 primary goals of network security.
 - the types of attacks that attempt to compromise these areas.
 
-![alt text](images/me7x32eq81.png)
+![alt text](./images/me7x32eq81.png)

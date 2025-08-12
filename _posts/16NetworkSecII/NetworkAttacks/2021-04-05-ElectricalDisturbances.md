@@ -23,7 +23,7 @@ toc: true
 
 ## Attacks on Electrical Disturbances
 
-![alt text](images/me7xbjh380.png)
+![alt text](./images/me7xbjh380.png)
 
 - an attacker could launch an availability attack by interrupting or interfering with the electrical service available to a system.
 

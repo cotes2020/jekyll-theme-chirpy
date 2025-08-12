@@ -30,7 +30,7 @@ toc: true
 
 ## Confidentiality Attacks
 
-![alt text](images/me460uuk94.png)
+![alt text](./images/me460uuk94.png)
 
 - confidentiality attack: **make confidential data viewable by an attacker. (like records, usernames, passwords or e-mails)**
 
@@ -100,7 +100,7 @@ Example:
   - binary data could be represented by sending a series of pings to a destination.
   - A single ping within a certain period of time could represent a binary 0, while two pings within that same time period represented a binary 1.
 
-![alt text](images/me460uum89.png)
+![alt text](./images/me460uum89.png)
 
 ### FTP bounce
 - FTP supports a variety of commands for `setting up a session and managing file transfers. `
