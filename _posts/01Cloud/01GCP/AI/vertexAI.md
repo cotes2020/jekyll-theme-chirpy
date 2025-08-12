@@ -7,20 +7,21 @@ categories: [01GCP]
 tags: [AI, ML]
 ---
 
+# Vertex AI
+
 - [Vertex AI](#vertex-ai)
   - [Overview](#overview)
     - [Codey](#codey)
       - [Getting Started with Codey](#getting-started-with-codey)
       - [Code Generation with Codey](#code-generation-with-codey)
       - [Code Chat with Codey](#code-chat-with-codey)
+  - [command](#command)
+    - [model call](#model-call)
+      - [crul](#crul)
+      - [py](#py)
 
 ref:
 - [cthesera - gcp-big-data-ml-fundamentals](https://www.cthesera.org/learn/gcp-big-data-ml-fundamentals)
-
----
-
-
-# Vertex AI
 
 ---
 
@@ -127,5 +128,164 @@ example
 - introduce an error to the Regular Expression code. In the Python Regex code, replace the `re.findall()` with `re.find()` and run the code
 - the Codey model has analyzed the code and suggested where the error was. It even provided the corrected code for us to work with.
 
+---
 
-.
+## command
+
+
+### model call
+
+#### crul
+
+```bash
+cat << EOF > request.json
+{
+    "contents": [
+    ]
+    , "generationConfig": {
+        "temperature": 1
+        ,"maxOutputTokens": 8192
+        ,"topP": 0.95
+    },
+    "safetySettings": [
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "OFF"
+        },
+        {
+            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+            "threshold": "OFF"
+        },
+        {
+            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            "threshold": "OFF"
+        },
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "OFF"
+        }
+    ]
+}
+EOF
+
+# base
+PROJECT_ID="PROJECT_ID"
+LOCATION_ID="us-central1"
+API_ENDPOINT="us-central1-aiplatform.googleapis.com"
+MODEL_ID="gemini-1.5-pro-002"
+
+curl \
+-X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+"https://${API_ENDPOINT}/v1/projects/${PROJECT_ID}/locations/${LOCATION_ID}/publishers/google/models/${MODEL_ID}:streamGenerateContent" -d '@request.json'
+
+
+# FT
+PROJECT_ID="PROJECT_ID"
+LOCATION_ID="us-central1"
+API_ENDPOINT="us-central1-aiplatform.googleapis.com"
+MODEL_ID="projects/PROJECT_ID/locations/us-central1/endpoints/endpoints_id"
+
+curl \
+-X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+"https://${API_ENDPOINT}/v1/${MODEL_ID}:streamGenerateContent" -d '@request.json'
+```
+
+#### py
+
+```py
+import base64
+import vertexai
+from vertexai.generative_models import GenerativeModel, SafetySetting, Part
+
+def multiturn_generate_content():
+    vertexai.init(
+        project="project_id",
+        location="region_name",
+    )
+    model = GenerativeModel(
+        "gemini-1.5-pro-002",
+        "projects/project_id/locations/region_name/endpoints/endpoints_id",
+    )
+    chat = model.start_chat()
+
+
+generation_config = {
+    "max_output_tokens": 8192,
+    "temperature": 1,
+    "top_p": 0.95,
+}
+
+safety_settings = [
+    SafetySetting(
+        category=SafetySetting.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold=SafetySetting.HarmBlockThreshold.OFF
+    ),
+    SafetySetting(
+        category=SafetySetting.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold=SafetySetting.HarmBlockThreshold.OFF
+    ),
+    SafetySetting(
+        category=SafetySetting.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold=SafetySetting.HarmBlockThreshold.OFF
+    ),
+    SafetySetting(
+        category=SafetySetting.HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold=SafetySetting.HarmBlockThreshold.OFF
+    ),
+]
+
+multiturn_generate_content()
+```
+
+
+```py
+from google import genai
+from google.genai import types
+import base64
+
+def generate():
+  client = genai.Client(
+      vertexai=True,
+      project="project_name",
+      location="region_name",
+  )
+
+  model = "gemini-2.0-flash-exp"
+  contents = []
+  generate_content_config = types.GenerateContentConfig(
+    temperature = 1,
+    top_p = 0.95,
+    max_output_tokens = 8192,
+    response_modalities = ["TEXT"],
+    safety_settings = [
+      types.SafetySetting(
+        category="HARM_CATEGORY_HATE_SPEECH",
+        threshold="OFF"
+      ),
+      types.SafetySetting(
+        category="HARM_CATEGORY_DANGEROUS_CONTENT",
+        threshold="OFF"
+      ),
+      types.SafetySetting(
+        category="HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        threshold="OFF"
+      ),types.SafetySetting(
+        category="HARM_CATEGORY_HARASSMENT",
+        threshold="OFF"
+      )
+    ],
+  )
+
+  for chunk in client.models.generate_content_stream(
+    model = model,
+    contents = contents,
+    config = generate_content_config,
+    ):
+    print(chunk.text, end="")
+
+generate()
+```

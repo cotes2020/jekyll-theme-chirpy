@@ -11,10 +11,12 @@ from traceback import print_exc
 
 import requests
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
+logging.basicConfig(
+    stream=sys.stdout,
+    level=LOG_LEVEL,
+    format="%(lineno)d:%(levelname)s:%(name)s:%(message)s",)
 LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
-
 
 # APT Object
 class _DeHTMLParser_General(HTMLParser):
@@ -165,8 +167,9 @@ OUTPUTDIR = "./_posts/00CodeNote/project/webscrap_apt/apt_output"
 
 URL_DIC = {
     # "talisman": "https://www.livetalisman.com/redmond/talisman/conventional/",
-    # "talisman": "https://livetalisman.com/floorplans/",
-    "modera": "https://www.moderaredmond.com/redmond/modera-redmond/conventional/",
+    "talisman": "https://livetalisman.com/floorplans/",
+    # "modera": "https://everlightapartments.com/floorplans/",
+    # "modera": "https://www.moderaredmond.com/redmond/modera-redmond/conventional/",
     # "modera": "https://www.moderasouthlakeunion.com/seattle/modera-south-lake-union/conventional/",
 }
 CLASS_DIC = {
@@ -199,8 +202,8 @@ def get_html(url):
     try:
         r = requests.get(url)
         r.raise_for_status()
-        LOGGER.info("Loaded info from %s", r.text)
         LOGGER.info("Loaded info from %s", url)
+        LOGGER.info("Loaded info from %s", r.text)
         return r.text
     except requests.RequestException as e:
         LOGGER.info("Loaded info from %s", r.text)

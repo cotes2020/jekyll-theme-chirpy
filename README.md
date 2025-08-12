@@ -1,5 +1,15 @@
 # A CYBER SECURITY PRACTICIAN
 
+- [A CYBER SECURITY PRACTICIAN](#a-cyber-security-practician)
+- [About Me](#about-me)
+  - [WRITE-UPS](#write-ups)
+- [Blog Main PROJECTS](#blog-main-projects)
+  - [LAB EXERCISES](#lab-exercises)
+- [Installation](#installation)
+  - [Basic setup](#basic-setup)
+
+---
+
 <img alt="pic" src="https://i.imgur.com/hOFYY7s.png" width="100" align="left">
 <img alt="pic" src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left">
 <img alt="pic" src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
@@ -75,3 +85,25 @@ Wargames:
 <!-- Leviathan - Based on SetUID.
 Narnia - Based on binary exploitation.
 Protostar - Based on binary exploitation. -->
+
+---
+
+
+# Installation
+
+## Basic setup
+
+<details>
+
+Getting Pyenv
+```sh
+# Setup Development Environment
+pyenv install 3.11.4
+pyenv virtualenv 3.11.4 ocho
+pyenv activate ocho
+
+# setup code format requirement
+brew install pre-commit
+pre-commit install -t pre-push
+```
+</details>

@@ -9,12 +9,23 @@ image:
 
 
 - [Gcloud](#gcloud)
+  - [IAM](#iam)
   - [setup \& secure the GCP credentials for Go apps](#setup--secure-the-gcp-credentials-for-go-apps)
 
 
 ---
 
 # Gcloud
+
+## IAM
+
+```bash
+gcloud projects list --format="value(projectId)"
+
+gcloud iam service-accounts list --project $project --format='json' | jq -r '.[].email'
+
+
+```
 
 
 ## setup & secure the GCP credentials for Go apps

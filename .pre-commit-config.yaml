@@ -1,18 +1,18 @@
-exclude: ".csv"
+exclude: ".txt|.csv"
 
 repos:
-  - repo: local
-    hooks:
-      # - id: pylint
-      #   name: pylint
-      #   entry: pylint
-      #   language: system
-      #   types: [python]
-      - id: black
-        name: black
-        entry: black
-        language: system
-        types: [python]
+  # - repo: local
+  #   hooks:
+  #     # - id: pylint
+  #     #   name: pylint
+  #     #   entry: pylint
+  #     #   language: system
+  #     #   types: [python]
+  #     - id: black
+  #       name: black
+  #       entry: black
+  #       language: system
+  #       types: [python]
 
   # must be initialized via pre-commit install
   - repo: https://github.com/pre-commit/pre-commit-hooks
