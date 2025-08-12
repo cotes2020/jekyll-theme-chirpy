@@ -1,5 +1,5 @@
 ---
-title: "Garmin Bus Tracker : Widget pour montres"
+title: "Garmin Bus Tracker"
 description: "Un widget compatible avec les montres Garmin pour suivre tous les bus DeLijn en Flandre."
 date: 2025-01-30
 categories: [Embedded]
