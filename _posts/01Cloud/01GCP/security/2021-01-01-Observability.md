@@ -9,18 +9,6 @@ image:
 
 # Google Cloud Observability
 
-- [Google Cloud Observability](#google-cloud-observability)
-  - [Overview](#overview)
-  - [Logging](#logging)
-  - [Monitoring](#monitoring)
-    - [error](#error)
-  - [GCP service](#gcp-service)
-    - [Logs Explorer](#logs-explorer)
-    - [Error reporting](#error-reporting)
-  - [Cloud profiler](#cloud-profiler)
-  - [Cloud trace](#cloud-trace)
-  - [Application Performance Management](#application-performance-management)
-
 ref:
 - [Logging and Monitoring in Google Cloud]()
 
