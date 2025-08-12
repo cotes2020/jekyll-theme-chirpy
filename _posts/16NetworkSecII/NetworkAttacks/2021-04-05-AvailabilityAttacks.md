@@ -34,7 +34,7 @@ toc: true
 
 ### Denial of Service (DoS)
 
-![alt text](./images/me7wz4l958.png)
+![alt text](./assets/img/post/me7wz4l958.png)
 
 - `sending the target system a flood of data or requests` that consume the target system’s resources.
 - some operating systems (OS) and applications might crash when they receive specific strings of improperly formatted data,
@@ -43,16 +43,16 @@ toc: true
 
 ### Distributed Denial of Service (DDoS)
 
-![alt text](./images/me7wz4l943.png)
+![alt text](./assets/img/post/me7wz4l943.png)
 
 - DDoS attacks can `increase the amount of traffic flooded` to a target system.
 - an attacker compromises multiple systems (`zombies`), which can `be instructed by attacker to simultaneously launch a DDoS attack` against a target system.
 
 ### TCP SYN Flood
 
-![alt text](./images/me7wz4l952.png)
+![alt text](./assets/img/post/me7wz4l952.png)
 
-![alt text](./images/me7wz4l928.png)
+![alt text](./assets/img/post/me7wz4l928.png)
 
 - One variant of a DoS attack
 - the attack can `send multiple SYN segments to a target system with false source IP addresses` in the header of the SYN segments.
@@ -61,9 +61,9 @@ toc: true
 - a SYN flood can `render a target system incapable`, can not open a TCP session with a legitimate user.
 
 ### Buffer Overflow
-![alt text](./images/me7wz4la63.png)
+![alt text](./assets/img/post/me7wz4la63.png)
 
-![alt text](./images/me7wz4la93.png)
+![alt text](./assets/img/post/me7wz4la93.png)
 
 - `Buffer`: a area of memory, a computer program that has been given a dedicated area of memory to which it can write.
 - `Buffer overflow`: a program attempts to write more information than the buffer can accommodate.

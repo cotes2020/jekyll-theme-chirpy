@@ -23,7 +23,7 @@ toc: true
 
 ## Attacks on Electrical Disturbances
 
-![alt text](./images/me7xbjh380.png)
+![alt text](./assets/img/post/me7xbjh380.png)
 
 - an attacker could launch an availability attack by interrupting or interfering with the electrical service available to a system.
 
@@ -59,3 +59,57 @@ toc: true
   - Access points should be visually `monitored` (like via local security pesonnetnel or remotely via a camera system).
   - `Climate control systems` should maintain temperature and humidity, and send alerts if specified temperature or humidity thresholds are exceeded.
   - The `fire detection and suppression systems` should be designed not to damage electronic equipment.
+
+
+SELECT
+  UPPER(S.scan_source) AS ScanSource,
+  COUNT(DISTINCT(S.findings_id)) AS COUNT
+FROM
+  linkkpi.findings_vulnerabilities as F,
+  linkkpi.code_guard_scans AS S
+WHERE
+  F.first_seen_time BETWEEN $__timeFrom()
+  AND $__timeTo()
+  AND S.findings_id = F._id
+  AND F.service_name = "findings-prod"
+  AND F.first_seen_time BETWEEN $__timeFrom()
+GROUP BY
+  ScanSource,
+  S.scan_source
+ORDER BY
+  S.scan_source DESC;
+
+
+SELECT
+  UPPER(U.EmpType) AS Emp_Type,
+  COUNT(distinct(F._id)) as COUNT
+FROM
+  linkkpi.findings_vulnerabilities AS F,
+  linkkpi.devx_users AS U
+WHERE
+  U.dsid = F.person_id
+  AND F.person_id != -1
+  AND F.service_name = "findings-prod"
+  AND F.product = "Code Guard"
+  AND F.feature IN ("OSS_GUARD")
+  AND F.first_seen_time BETWEEN $__timeFrom()
+  AND $__timeTo()
+GROUP BY
+  U.EmpType
+ORDER BY
+  U.EmpType DESC;
+
+SELECT
+  "TOTAL" AS Emp_Type,
+  COUNT(distinct(F._id)) AS COUNT
+FROM
+  linkkpi.findings_vulnerabilities AS F,
+  linkkpi.devx_users AS U
+WHERE
+  U.dsid = F.person_id
+  AND F.person_id != -1
+  AND F.service_name = "findings-prod"
+  AND F.product = "Code Guard"
+  AND F.feature IN ("OSS_GUARD")
+  AND F.first_seen_time BETWEEN $__timeFrom()
+  AND $__timeTo();
