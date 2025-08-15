@@ -21,5 +21,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const script = require('.github/workflows/scripts/pr-filter.js');
-            await script({ github, context, core });
+            const { default: filter } = await import('${{ github.workspace }}/.github/workflows/scripts/pr-filter.js');
+            await filter({ github, context, core });
