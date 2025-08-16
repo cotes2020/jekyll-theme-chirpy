@@ -3,25 +3,30 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
+- type: linkedin
+  icon: "fab fa-linkedin" # icons powered by <https://fontawesome.com/>
+  url: "https://www.linkedin.com/in/%EC%8A%B9%EC%9E%AC-%EC%98%A4-6b392a309/" # Fill with your Linkedin homepage
+
+- type: solved.ac
+  icon: "fab fa-solid fa-s" # icons powered by <https://fontawesome.com/>
+  url: "https://solved.ac/profile/ohsj0824" # Fill with your Solved.ac profile link
 
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+# - type: rss
+#   icon: "fas fa-rss"
+#   noblank: true
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
 #
-# - type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+
 #
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
