@@ -15,7 +15,8 @@
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "type": "module",
   "scripts": {
-    "build": "concurrently npm:build:*",
+    "prebuild": "npx rimraf assets/js/dist",
+    "build": "cross-env NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
     "build:css": "node purgecss.js",
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
