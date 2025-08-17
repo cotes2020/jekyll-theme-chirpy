@@ -3,16 +3,18 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: youtube
+  icon: "fa-brands fa-youtube"
+  url: "https://www.youtube.com/@thuongmaibrvt"
+  
+- type: amazon
+  icon: 'fa-brands fa-amazon'
+  url: "https://www.amazon.co.uk/KINH-S%C3%81CH-TR%E1%BB%B0C-TUY%E1%BA%BEN/dp/B0D3JCLVSV"
 
-- type: email
-  icon: "fas fa-envelope"
-  noblank: true # open link in current tab
-
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+- type: soundcloud
+  icon: "fa-brands fa-soundcloud"
+  url: "https://soundcloud.com/khuongitvtbadboy"
+ 
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
@@ -31,10 +33,14 @@
 #   icon: 'fa-brands fa-bluesky'
 #   url: ''                   # Fill with your Bluesky profile link
 #
-# - type: reddit
-#   icon: 'fa-brands fa-reddit'
-#   url: ''                   # Fill with your Reddit profile link
+# - type: rss
+#   icon: "fas fa-rss"
+#   noblank: true
 #
 # - type: threads
 #   icon: 'fa-brands fa-threads'
 #   url: ''                   # Fill with your Threads profile link
+#
+# - type: email
+#   icon: "fas fa-envelope"
+#   noblank: true # open link in current tab
