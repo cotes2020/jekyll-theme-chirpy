@@ -10,11 +10,11 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: Trang chủ
-  categories: Các danh mục
-  tags: Các thẻ
-  archives: Lưu trữ
-  about: Giới thiệu
+  home: Kinh Sách
+  categories: Tủ Kinh
+  tags: Thẻ Sách
+  archives: Lưu Trữ
+  about: Itvtbadboy
 
 # the text displayed in the search bar & search results
 search:
@@ -35,11 +35,11 @@ copyright:
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
-  brief: Một số quyền được bảo lưu.
+  brief: Creative Common
   verbose: >-
-    Trừ khi có ghi chú khác, các bài viết đăng trên trang này được cấp phép bởi tác giả theo giấy phép Creative Commons Attribution 4.0 International (CC BY 4.0).
+    Trừ khi có ghi chú khác, các bài viết đăng trên trang này được cấp giấy phép Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-meta: Trang web này được tạo bởi :PLATFORM với chủ đề :THEME
+meta: Mã nguồn :PLATFORM giao diện :THEME
 
 not_found:
   statement: Xin lỗi, chúng tôi đã đặt nhầm URL hoặc đường dẫn trỏ đến một trang nào đó không tồn tại.
