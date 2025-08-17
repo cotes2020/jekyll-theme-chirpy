@@ -84,14 +84,14 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: dark # [light | dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: "https://storage.googleapis.com/khuong-itvtbadboy-8383.appspot.com/oracle"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "https://storage.googleapis.com/khuong-itvtbadboy-8383.appspot.com/oracle/kinh/cover-512.jpg"
