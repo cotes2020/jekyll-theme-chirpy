@@ -14,6 +14,10 @@
 - type: soundcloud
   icon: "fa-brands fa-soundcloud"
   url: "https://soundcloud.com/khuongitvtbadboy"
+
+- type: facebook
+  icon: 'fa-brands fa-facebook'
+  url: "https://www.facebook.com/people/Th%C6%B0%C6%A1ng-m%E1%BA%A1i-brvt/100089607512698/"
  
 # Uncomment and complete the url below to enable more contact options
 #
