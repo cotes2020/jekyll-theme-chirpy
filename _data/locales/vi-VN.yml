@@ -14,7 +14,7 @@ tabs:
   categories: Tủ Kinh
   tags: Thẻ Sách
   archives: Lưu Trữ
-  about: Itvtbadboy
+  about: Chép Kinh
 
 # the text displayed in the search bar & search results
 search:
@@ -23,8 +23,8 @@ search:
   no_results: Không có kết quả tìm kiếm.
 
 panel:
-  lastmod: Mới cập nhật
-  trending_tags: Các thẻ thịnh hành
+  lastmod: Kinh Mới
+  trending_tags: Thẻ Sách
   toc: Mục lục
 
 copyright:
