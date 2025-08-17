@@ -30,14 +30,14 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: Bài viết này được cấp phép bởi tác giả theo giấy phép :LICENSE_NAME.
-    name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+    template: Giấy phép :LICENSE_NAME
+    name: MIT License
+    link: https://github.com/kinhsach/kinhsach.github.io/tree/main?tab=MIT-1-ov-file
 
   # Displayed in the footer
-  brief: Creative Common
+  brief: GNU v2.0
   verbose: >-
-    Trừ khi có ghi chú khác, các bài viết đăng trên trang này được cấp giấy phép Creative Commons Attribution 4.0 International (CC BY 4.0)
+    Trừ khi có ghi chú khác, các bài viết đăng trên trang kinh sách miễn phí được cấp giấy phép GPLv2 www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 meta: Mã nguồn :PLATFORM giao diện :THEME
 
