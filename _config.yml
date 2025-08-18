@@ -1,15 +1,16 @@
 # The Site Configuration
 
 # Import the theme
-theme: jekyll-theme-chirpy
+remote-theme: cotes2020/jekyll-theme-chirpy
+
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
 
-# Change to your timezone › https://GaryKayumba.github.io/Time-Zone-Picker
-timezone: Africa/Nairobi
+# Change to your timezone › https://username/Time-Zone-Picker
+#timezone: Africa/Nairobi
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
@@ -29,7 +30,7 @@ github:
   username: GaryKayumba # change to your GitHub username
 
 twitter:
-  username: @Gary_kayumba # change to your Twitter username
+  username: Gary_kayumba # change to your Twitter username
 
 social:
   # Change to your full name.
@@ -150,7 +151,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "/NetworkSecurityLab.github.io"
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
