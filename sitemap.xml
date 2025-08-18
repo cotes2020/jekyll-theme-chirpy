@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/jekyll/update/2025/08/18/welcome-to-jekyll.html</loc>
+<lastmod>2025-08-18T11:35:26+07:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/kinh%20cha/2025/08/18/cha-giang-tran-day-tu-dao.html</loc>
+<lastmod>2025-08-18T12:14:00+07:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/kinh%20cha/2025/08/18/tinh-yeu-cua-cha.html</loc>
+<lastmod>2025-08-18T12:26:00+07:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+</urlset>
