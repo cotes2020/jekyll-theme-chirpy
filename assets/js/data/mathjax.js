@@ -1,11 +1,1 @@
-MathJax = {
-  tex: {inlineMath: [
-      ['$', '$'],
-      ['\\(', '\\)']
-    ],displayMath: [
-      ['$$', '$$'],
-      ['\\[', '\\]']
-    ],tags: 'ams'
-  }
-};
-
+MathJax = { tex: {inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],displayMath: [ ['$$', '$$'], ['\\[', '\\]'] ],tags: 'ams' } };
