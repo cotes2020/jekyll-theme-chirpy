@@ -28,7 +28,7 @@ social:
 # Theme & appearance
 theme_mode: dark
 cdn: "https://chirpy-img.netlify.app"
-avatar: "/commons/avatar.jpg"
+avatar: "/assets/ampls.jpg"
 social_preview_image: 
 
 # Global site options
