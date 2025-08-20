@@ -12,7 +12,7 @@ We can see that a lot of ports of interest are open, such as HTTP and SSH.
 
 <img width="634" height="499" alt="image" src="https://github.com/user-attachments/assets/d8ba15e1-ca3c-4d96-aae1-2ead76b33de0" />
 
-<img width="280" height="67" alt="image" src="https://github.com/user-attachments/assets/f1e3-470b-b66e-f93587529ca4" />
+<img width="280" height="67" alt="Capture d'écran 2025-08-20 022212" src="https://github.com/user-attachments/assets/b6eff54c-e75b-4942-b4ae-d97ac37b184c" />
 
 We can access the webpage by visiting `http://10.10.15.229:80/`.  
 
