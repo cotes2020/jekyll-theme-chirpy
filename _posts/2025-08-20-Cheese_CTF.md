@@ -118,7 +118,7 @@ Let's add the missing value and execute the script.
 
 <img width="686" height="294" alt="image" src="https://github.com/user-attachments/assets/df0d082a-dac4-4296-ab05-5fa82c6a33e1" />
 
-Now, checking for binaries with the SUID bit set reveals a binary called `xdd`.
+Now, checking for binaries with the SUID bit set reveals a binary called `xxd`.
 
 <img width="1176" height="497" alt="image" src="https://github.com/user-attachments/assets/ec6e4a20-71ae-4ecd-9a62-d43b6125ae1b" />
 
