@@ -9,18 +9,19 @@
 ';
 
 /* append your custom style below */
+
 /* Disable shimmer/pulse effect on post images */
 .post img,
 .post figure img {
-    animation: none !important;      /* stops keyframes */
-    transition: none !important;     /* stops hover transitions */
+    animation: none !important;       /* stops keyframes */
+    transition: none !important;      /* stops hover transitions */
+    --shimmer-bg: none !important;    /* removes the gradient background */
 }
 
-/* disable the shimmer overlay */
+/* disable the shimmer overlay on pseudo-element */
 .post img.shimmer::before,
 .post figure img.shimmer::before {
+    content: none !important;
     animation: none !important;
     background: none !important;
-    content: none !important;
 }
-
