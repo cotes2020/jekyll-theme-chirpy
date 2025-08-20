@@ -18,9 +18,6 @@ we see that a lot of ports of interest are open like http and ssh
 
 we can access the web page by visiting `http://10.10.15.229:80/` 
 
-
-# SQLI AUTH Bypass
-
 i tried enumerating folders but it didn't lead anywhere.
 
 <img width="828" height="492" alt="image" src="https://github.com/user-attachments/assets/290cc50e-a195-4dfb-97ff-beaa21d2f496" />
@@ -28,6 +25,8 @@ i tried enumerating folders but it didn't lead anywhere.
 browsing the site we can find a login page on `http://10.10.15.229:80/login.php`
 
 <img width="1275" height="792" alt="image" src="https://github.com/user-attachments/assets/f483f5bb-3e3b-41c5-a4fb-a0c05cfbbf7a" />
+
+# SQLI AUTH Bypass
 
 i tried testing basic login credentials like admin:admin and admin:Password123 but nothing worked, so i intercepted a login post reequest using burp suite and used it to test the login page using sqlmap for sql injections which tells me that the username parameter appears to be injectable
 
@@ -109,7 +108,8 @@ now checking for binaries with the suid set reveals a binary called xdd
 
 we can check gtfobins and realize we can use it to read files so we use it to read  the flag 
 
-<img width="578" height="171" alt="image" src="https://github.com/user-attachments/assets/1cfacc40-e166-4279-8584-5e2c55c11fa0" />
+<img width="579" height="171" alt="image" src="https://github.com/user-attachments/assets/8beec053-aeda-4ec7-819d-5786dd0d6399" />
+
 
 
 
