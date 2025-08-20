@@ -7,6 +7,10 @@ image:
   path: https://github.com/user-attachments/assets/6c2f9476-ee67-40e4-8f86-cdc842490bd0
 ---
 
+# Summary
+
+In this room, we leverage an SQL injection exploit to bypass authentication on a login page. Further investigation on the webpage reveals an LFI vulnerability that allows us to achieve RCE via a crafted PHP payload using PHP filters. After obtaining a shell with a system account, we can escalate to user by creating and adding our RSA key to the authorized_keys file of the user comte. To gain the root shell, we have to edit a script that activates a SUID binary, which we can leverage to read and write files.
+
 # Reconnaissance
 
 In the reconnaissance phase, I started by using Nmap to enumerate the open ports. After a while, Nmap returned a very long list.  
