@@ -5,10 +5,11 @@
 const ATTR_DATA_SRC = 'data-src';
 const ATTR_DATA_LQIP = 'data-lqip';
 
-const cover = {
-  SHIMMER: 'shimmer',
-  BLUR: 'blur'
-};
+// Remove shimmer/blur references
+// const cover = {
+//   SHIMMER: 'shimmer',
+//   BLUR: 'blur'
+// };
 
 function removeCover(clzss) {
   this.parentElement.classList.remove(clzss);
@@ -19,11 +20,15 @@ function handleImage() {
     return;
   }
 
+  // Only remove blur if present
   if (this.hasAttribute(ATTR_DATA_LQIP)) {
-    removeCover.call(this, cover.BLUR);
-  } else {
-    removeCover.call(this, cover.SHIMMER);
+    // removeCover.call(this, cover.BLUR);
+    this.parentElement.classList.remove('blur');
   }
+  // Remove shimmer references entirely
+  // else {
+  //   removeCover.call(this, cover.SHIMMER);
+  // }
 }
 
 /**
@@ -49,7 +54,8 @@ export function loadImg() {
   // Images loaded from the browser cache do not trigger the 'load' event
   document.querySelectorAll('article img[loading="lazy"]').forEach((img) => {
     if (img.complete) {
-      removeCover.call(img, cover.SHIMMER);
+      // removeCover.call(img, cover.SHIMMER);
+      img.parentElement.classList.remove('shimmer');
     }
   });
 
