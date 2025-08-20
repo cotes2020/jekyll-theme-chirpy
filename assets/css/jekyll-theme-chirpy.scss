@@ -10,18 +10,37 @@
 
 /* append your custom style below */
 
-/* Disable shimmer/pulse effect on post images */
-.post img,
-.post figure img {
-    animation: none !important;       /* stops keyframes */
-    transition: none !important;      /* stops hover transitions */
-    --shimmer-bg: none !important;    /* removes the gradient background */
+/* More comprehensive shimmer removal */
+* {
+    animation: none !important;
 }
 
-/* disable the shimmer overlay on pseudo-element */
-.post img.shimmer::before,
-.post figure img.shimmer::before {
-    content: none !important;
+/* Target all possible shimmer variations */
+.shimmer,
+.shimmer::before,
+.shimmer::after,
+img.shimmer,
+figure.shimmer,
+.loading,
+.loading::before,
+.loading::after {
     animation: none !important;
+    background: none !important;
+    content: none !important;
+}
+
+/* Remove any pulse or loading animations globally */
+@keyframes shimmer { }
+@keyframes pulse { }
+@keyframes loading { }
+
+/* Ensure images have no animations */
+img, 
+figure img,
+.post img,
+.post figure img,
+article img {
+    animation: none !important;
+    transition: none !important;
     background: none !important;
 }
