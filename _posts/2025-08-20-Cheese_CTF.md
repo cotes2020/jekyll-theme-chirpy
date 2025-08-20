@@ -5,7 +5,7 @@ categories: [TryHackMe]
 tags: [thm, ctf, writeup]
 ---
 
-# Enumeration
+# Reconnaissance
 
 in the Reconnaissance phase i started by using nmap to enumerate the open ports, after a while nmap returns a very long list.
 we see that a lot of ports of interest are open like http and ssh
@@ -19,7 +19,7 @@ we see that a lot of ports of interest are open like http and ssh
 we can access the web page by visiting `http://10.10.15.229:80/` 
 
 
-# Enumeration
+# SQLI AUTH Bypass
 
 i tried enumerating folders but it didn't lead anywhere.
 
@@ -42,6 +42,8 @@ i inetially tried to dump the database which was successful and revealed a singl
 so knowing the username parameter is injectable i tried some payloads and eventually this worked `' || 1=1;-- -` and we were able to bypass the authetication process
 
 <img width="1266" height="792" alt="image" src="https://github.com/user-attachments/assets/b37493e5-6140-450c-b102-6d46e8c87480" />
+
+# LFI and RCE
 
 visiting the messages section of the site we see a clickable link that sends you to a page with the message : If you know, you know :D 
 
