@@ -1,4 +1,6 @@
-/* Disable all image animations */
-img {
+/* Disable Chirpy's image animations in posts */
+.post img,
+.post figure img {
     animation: none !important;
+    transition: none !important;
 }
