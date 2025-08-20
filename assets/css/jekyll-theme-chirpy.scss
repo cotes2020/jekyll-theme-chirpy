@@ -9,7 +9,18 @@
 ';
 
 /* append your custom style below */
-
-.shimmer::before{
-  background:none;
+/* Disable shimmer/pulse effect on post images */
+.post img,
+.post figure img {
+    animation: none !important;      /* stops keyframes */
+    transition: none !important;     /* stops hover transitions */
 }
+
+/* disable the shimmer overlay */
+.post img.shimmer::before,
+.post figure img.shimmer::before {
+    animation: none !important;
+    background: none !important;
+    content: none !important;
+}
+
