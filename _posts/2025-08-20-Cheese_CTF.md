@@ -16,6 +16,8 @@ We can see that a lot of ports of interest are open, such as HTTP and SSH.
 
 We can access the webpage by visiting `http://10.10.15.229:80/`.  
 
+<img width="1257" height="750" alt="image" src="https://github.com/user-attachments/assets/25634e9a-9166-4e67-ba63-f4e9db4b7d61" />
+
 I tried enumerating folders, but it didn’t lead anywhere.
 
 <img width="828" height="492" alt="image" src="https://github.com/user-attachments/assets/290cc50e-a195-4dfb-97ff-beaa21d2f496" />
