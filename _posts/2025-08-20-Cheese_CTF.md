@@ -1,11 +1,13 @@
 ---
 title: "TryHackMe | Cheese CTF"
+image:
+  path: https://github.com/user-attachments/assets/6c2f9476-ee67-40e4-8f86-cdc842490bd0
+  alt: Cheese CTF
 date: 2025-08-20 03:00:00 +0100
 categories: [TryHackMe]
 tags: [thm, ctf, writeup]
 ---
 
-![Cheese_CTF](https://github.com/user-attachments/assets/4f629698-e5bc-4062-9b8c-621939845f33)
 
 # Reconnaissance
 
