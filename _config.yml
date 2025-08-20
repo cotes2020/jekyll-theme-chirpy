@@ -2,10 +2,6 @@
 
 # Import the theme
 theme: jekyll-theme-chirpy
-
-# Add custom stylesheets
-stylesheets:
-  - /assets/css/custom.css
   
 # Language & Timezone
 lang: en
