@@ -12,7 +12,9 @@ we see that a lot of ports of interest are open like http and ssh
 
 <img width="634" height="499" alt="image" src="https://github.com/user-attachments/assets/d8ba15e1-ca3c-4d96-aae1-2ead76b33de0" />
 
+
 <img width="280" height="67" alt="image" src="https://github.com/user-attachments/assets/8ae02006-f1e3-470b-b66e-f93587529ca4" />
+
 
 we can access the web page by visiting `http://10.10.15.229:80/` 
 
@@ -30,6 +32,7 @@ browsing the site we can find a login page on `http://10.10.15.229:80/login.php`
 i tried testing basic login credentials like admin:admin and admin:Password123 but nothing worked, so i intercepted a login post reequest using burp suite and used it to test the login page using sqlmap for sql injections which tells me that the username parameter appears to be injectable
 
 <img width="1253" height="328" alt="image" src="https://github.com/user-attachments/assets/536b334e-5752-4e70-a6d4-8c537e554d59" />
+
 <img width="1183" height="70" alt="image" src="https://github.com/user-attachments/assets/3b783620-ee3b-48e0-931d-b244cb578ec3" />
 
 i inetially tried to dump the database which was successful and revealed a single user but the password hash associated whit the user was uncrackable using online sites like crackstation and x.
@@ -76,6 +79,7 @@ we can generate an ssh key and add it to the file to get a shell as comte scince
 <img width="1249" height="82" alt="image" src="https://github.com/user-attachments/assets/946e7f9b-5b7d-4713-935b-d808ffeaf4b6" />
 
 now connect via ssh 
+
 <img width="741" height="700" alt="image" src="https://github.com/user-attachments/assets/1ff1c680-b0f9-43bf-a665-3daeae9acb2c" />
 
 # root flag
