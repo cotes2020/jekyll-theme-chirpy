@@ -1,0 +1,4 @@
+/* Disable all image animations */
+img {
+    animation: none !important;
+}
