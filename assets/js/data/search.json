@@ -5,16 +5,13 @@ swcache: true
 
 [
   {% for post in site.posts %}
-    {%- capture description -%}
-      {% include post-description.html %}
-    {%- endcapture -%}
   {
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
-    "date": "{{ post.date }}",
-    "content": "{{ description }}"
+    "date": {{ post.date | jsonify }},
+    "content": {% include post-description.html json=true %}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

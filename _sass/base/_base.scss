@@ -103,7 +103,7 @@ main {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: var(--card-hovor-bg);
+    background-color: var(--card-hover-bg);
     opacity: 0;
     transition: opacity 0.35s ease-in-out;
   }
@@ -349,7 +349,7 @@ main {
 }
 
 .disabled {
-  color: rgb(206, 196, 196);
+  color: rgb(206 196 196);
   pointer-events: auto;
   cursor: not-allowed;
 }

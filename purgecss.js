@@ -1,5 +1,6 @@
-const fs = require('fs').promises;
-const { PurgeCSS } = require('purgecss');
+import { promises as fs } from 'fs';
+import { PurgeCSS } from 'purgecss';
+
 const DIST_PATH = '_sass/vendors';
 const output = `${DIST_PATH}/_bootstrap.scss`;
 
