@@ -4,5 +4,5 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-20 years old, currently study at USTH in Vietnam, CTFs with [@RaptX](https://ctftime.org/team/357584)
+Hi! My name is Ayham (aka d3dn0v4). CRTP and CBBH certified, I live for web security and hunting the most sophisticated vulnerabilities. If it’s complex, broken, or hidden, I’ll find it—and probably exploit it.
 {: .prompt-tip }
