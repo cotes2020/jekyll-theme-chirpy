@@ -3,6 +3,7 @@ layout: post
 title: "BrunnerCTF: My Cake Warehouse"
 date: 2025-08-26
 categories: web ,writeups CTF
+media_subpath: /_posts/BrunnerCTF-My-Cake-Warehouse/
 ---
 
 # Overview
@@ -258,7 +259,7 @@ My first idea was to try **HTTP request smuggling**, since my instincts pointed 
 
 When I tried sending a request smuggling payload, I observed some interesting behavior:  
 <br>
-![Alt text](assets/img/brunnerctf_my_cake_warehouse/image.png) 
+![Alt text](image.png) 
 <br>
 The server appeared to process two requests at the same time—one returned a **403**, while the other was successfully rendered. This behavior was intriguing, but it didn’t immediately help me get closer to the flag.  
 
@@ -309,7 +310,7 @@ After realizing this, I started considering how I could leverage these parsing d
 
 And voilà—I found this article that directly discussed HTTP parser inconsistencies and their exploitation: [Exploiting HTTP Parser Inconsistencies](https://blog.bugport.net/exploiting-http-parsers-inconsistencies)  
 
-![Alt text](../../assets/img/brunnerctf_my_cake_warehouse/image-1.png)
+![Alt text](../../image-1.png)
 
 
 Below is a table from the article correlating **Nginx versions** with characters that can potentially lead to bypassing URI ACL rules when using Node.js as the backend:
