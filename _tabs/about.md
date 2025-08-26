@@ -4,5 +4,5 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
+20 years old, currently study at USTH in Vietnam, CTFs with [@RaptX](https://ctftime.org/team/357584)
 {: .prompt-tip }

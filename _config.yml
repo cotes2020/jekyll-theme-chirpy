@@ -3,6 +3,7 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
+
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
@@ -16,25 +17,25 @@ timezone: Africa/Tunis
 
 title: d3dn0v4's blog # the main title
 
-tagline: A blog for nerdy stuff # it will display as the subtitle
+tagline: @d3dn0v4 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  just a nerd who's inlove with cybersec and web exploitation.
+  just a nerd who's inlove with cybersec and web exploitation
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://d3dn0v4.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: d3dn0v4 # change to your GitHub username
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: d3dn0v4 # change to your Twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: d3dn0v
+  name: d3dn0v4
   email: ayhamneily01@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -98,7 +99,7 @@ theme_mode: # [light | dark]
 cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/default.jpg"
+avatar: "/assets/default.jpg"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
