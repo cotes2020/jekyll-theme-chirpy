@@ -286,7 +286,10 @@ Which resulted in this :
 
 Despite all my efforts, **Nginx blocked every attempt at HTTP request smuggling**, and after crafting so many payloads, I realized that what I was doing was actually **HTTP tunneling**, making request smuggling impossible. I was left feeling frustrated and unsure of the next step.
 
+#### Second Approach:
+
 After taking a two-hour break and going out with friends, I suddenly remembered a past CTF web challenge where the vulnerability was related to **parsing differentials**. The idea immediately popped into my head, and as soon as I returned home, I started searching for any articles or resources discussing **parsing differentials between Nginx and Node.js**.  
+
 
 ### TL;DR – Parsing Differentials
 Parsing differentials occur when two systems interpret the same input differently. In web security, this can lead to bypasses if one layer (e.g., a reverse proxy) treats a request differently than the backend server. Essentially, the proxy may block a request while the backend interprets it in a way that still allows malicious input.  
