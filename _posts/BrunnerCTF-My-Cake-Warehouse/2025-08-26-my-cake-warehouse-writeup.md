@@ -310,7 +310,7 @@ After realizing this, I started considering how I could leverage these parsing d
 
 And voilà—I found this article that directly discussed HTTP parser inconsistencies and their exploitation: [Exploiting HTTP Parser Inconsistencies](https://blog.bugport.net/exploiting-http-parsers-inconsistencies)  
 
-![Alt text](../../image-1.png)
+![Alt text](image-1.png)
 
 
 Below is a table from the article correlating **Nginx versions** with characters that can potentially lead to bypassing URI ACL rules when using Node.js as the backend:
