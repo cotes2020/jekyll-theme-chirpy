@@ -215,6 +215,7 @@ exclude:
   - purgecss.js
   - rollup.config.js
   - "package*.json"
+  - "naver*.html"
 
 jekyll-archives:
   enabled: [categories, tags]
