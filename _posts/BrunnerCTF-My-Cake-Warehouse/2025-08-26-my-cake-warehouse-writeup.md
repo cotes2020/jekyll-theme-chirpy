@@ -3,7 +3,7 @@ layout: post
 title: "BrunnerCTF: My Cake Warehouse"
 date: 2025-08-26
 categories: web ,writeups CTF
-media_subpath: /_posts/BrunnerCTF-My-Cake-Warehouse/
+media_subpath: _posts/BrunnerCTF-My-Cake-Warehouse/
 ---
 
 # Overview
