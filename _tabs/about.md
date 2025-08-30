@@ -818,6 +818,10 @@ z-index: 50 !important;
          alt="Workshop photo" />
     <img src="https://i.postimg.cc/HWrYpGqr/image.webp"
          alt="Workshop photo" />
+    <img src="https://i.postimg.cc/W4QQ2dTF/cyberdeck.jpg"
+         alt="Workshop photo" />
+    <img src="https://i.postimg.cc/L4krp475/wires.webp"
+         alt="Workshop photo" />
   </div>
 
   <div class="image-row">
@@ -825,7 +829,7 @@ z-index: 50 !important;
     <img src="https://i.postimg.cc/RhK2NT1D/books.webp" alt="Workshop photo" style="transform: rotate(-90deg); transform-origin: center; width: 250px;" />
   </div>
 
-  <h4>CTF's and reverse engineering</h4>
+  <h4>CTF's and Stuff</h4>
   <p>As far as CTFs go, I'm kicking myself for not getting into these way earlier. I just started with CTFs and King of the Hill stuff a little over a year ago, but I only really got serious about it this year. I find myself gravitating toward Pwn and reverse engineering challenges, plus hardware ones. While a lot of CTFs are pretty gamified and not always that useful for real-world application, some actually make you think and help sharpen your technical and problem-solving skills. Sometimes I'll burn a whole day on one challenge and come up empty, other times I'll dominate. What I love most about CTFs is the team communication and problem-solving, then reading writeups afterward and talking with other teams about their approaches once the competition wraps up. It's just cool because you don't see many other fields where you can learn and practice new stuff from random competitions that pop up basically every week.</p>
 
   <div class="image-row">
@@ -842,6 +846,7 @@ z-index: 50 !important;
   <div style="text-align: center; margin: 2rem 0;">
     <div class="badge">Malware Analysis</div>
     <div class="badge">Reverse Engineering</div>
+    <div class="badge">Forensics</div>
     <div class="badge">Electronics & Microcontrollers</div>
     <div class="badge">IoT Hacking</div>
     <div class="badge">Touching Grass</div>

@@ -12,7 +12,7 @@ image:
 
 This book follows Nicole Perlroth investigating the zero-day market, cyber weapons, and the cyber arms race. She was originally covering Silicon Valley when the New York Times asked her to cover cybersecurity - even though she knew nothing about it. This actually works in the book's favor since her learning curve mirrors that of general readers, making her discoveries and reactions feel more relatable.
 
-The book is heavily U.S.-focused, tracing how American government demand for cyber weapons transformed a small bug bounty market into a dangerous global arms trade. Through interviews with NSA hackers, exploit brokers, and foreign intelligence contractors, she shows how America's offensive cyber strategy became insane - the same weapons we developed (like Stuxnet) ended up in the hands of adversaries and authoritarian governments, paving the way for future chaos. There is some political bias that might put readers off, considering this should be objective cybersecurity journalism. She also tends to present every development in the most alarming way possible, which might make readers feel more panicked about cyber threats than necessary.
+The book is heavily U.S.-focused, tracing how American government demand for cyber weapons transformed a small bug bounty market into a dangerous global arms trade. Through interviews with NSA hackers, exploit brokers, and foreign intelligence contractors, she shows how America's offensive cyber strategy became insane - the same weapons we developed (like Stuxnet) ended up in the hands of adversaries and authoritarian governments, paving the way for future chaos. She occasionally adds political commentary that doesn't really connect to the cybersecurity story, which might distract some readers. She also tends to present every development in the most alarming way possible, which might make readers feel more panicked about cyber threats than necessary.
 <img src="https://m.media-amazon.com/images/I/51cRIu2us8L._SY445_SX342_.jpg"
      alt="This Is How They Tell Me the World Ends Book Cover"
      style="width: 200px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.4);" />
@@ -38,7 +38,7 @@ This book is NOT a technical cybersecurity book. If you're planning to read this
 
 #### **The "Race to Bare Metal" - Kernel-Level Exploitation**
 
-The NSA's Tailored Access Operations (TAO) - their elite hacking unit -  pursued what they called the "race to bare metal" ,  achieving kernel-level access on target systems. The kernel is the core component of any operating system that manages all communication between hardware and software. Think of it as the computer's central control system.
+The NSA's Tailored Access Operations (TAO) - their elite hacking unit -  pursued what they called the "race to bare metal" ,  achieving kernel-level access on target systems. The kernel is the core component of any operating system that manages all communication between hardware and software.
 
 TAO wanted kernel access because it provided the deepest possible foothold in a target's system. Most malware operates at the application level, but kernel exploits give you control over the machine's fundamental operations. You can hide from antivirus software, manipulate what users see on their screens, and maintain access even after reboots or updates.
 
@@ -94,4 +94,4 @@ Perlroth tends to present every issue in the most alarming and exaggerated way p
 
 ### **Final Verdict**
 
-Essential reading for understanding how America's cyber weapons strategy blew up  and created the dangerous global cyber arms market we face today. Perlroth's investigative access and storytelling ability make complex geopolitical cyber issues accessible to general audiences. However, readers should be prepared for dramatic commentary that detracts from otherwise solid reporting. Recommended for anyone wanting to grasp how cyber threats became a national security issue without getting lost in technical details.
+Essential reading for understanding how America's cyber weapons strategy blew up  and contributed to the dangerous global cyber arms market we face today. Perlroth's investigative access and storytelling ability make complex geopolitical cyber issues accessible to general audiences. However, readers should be prepared for dramatic commentary that detracts from otherwise solid reporting. Recommended for anyone wanting to grasp how cyber threats became a national security issue without getting lost in technical details.
