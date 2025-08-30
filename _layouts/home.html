@@ -27,7 +27,7 @@ refactor: true
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: boot-fade-out 0.6s ease-out 2s forwards;
+    animation: boot-fade-out 0.6s ease-out 1s forwards;
     pointer-events: none;
     overflow: hidden;
   }
@@ -91,7 +91,7 @@ refactor: true
   if (!sessionStorage.getItem('bootPlayed')) {
     document.write(`
       <div class="boot-sequence">
-        <div class="boot-text">AWESOME WEBSITE INITIALIZING...</div>
+        <div class="boot-text"> INITIALIZING...</div>
       </div>
     `);
     sessionStorage.setItem('bootPlayed', 'true');
