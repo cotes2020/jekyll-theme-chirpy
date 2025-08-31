@@ -71,7 +71,7 @@ To improve security, I also use **Crowdsec**, a service that detects malicious p
 
 ### Update and backup
 
-I also have **Watchtower**, which keeps all of my services up to date and provides me with the most recent security fixes and features. Every night, it downloads and replaces the most recent versions if an update is available.
+I also use **Watchtower**, which keeps all of my services up to date and provides me with the most recent security fixes and features. Every night, it downloads and replaces the most recent versions if an update is available.
 
 And, because an update or a storage drive can fail at any time, I use a backup service on a regular basis. Every night, it saves all server configurations and data to an encrypted archive file. This archive is then saved to both my 1 TO hard drive and an AWS cloud storage server. A 7-day retention policy ensures that backup storage does not become bloated by removing the oldest backup archives.
 

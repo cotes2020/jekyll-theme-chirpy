@@ -71,7 +71,7 @@ Pour améliorer la sécurité, j'utilise également un service appelé **Crowdse
 
 ### Mise à jour et sauvegarde
 
-J'ai aussi **Watchtower** pour garder tous mes services à jour et bénéficier des derniers correctifs de sécurité et des dernières fonctionnalités. Chaque nuit, il télécharge les dernières versions et les remplace si une mise à jour est disponible.
+J'utilise aussi **Watchtower** pour garder tous mes services à jour et bénéficier des derniers correctifs de sécurité et des dernières fonctionnalités. Chaque nuit, il télécharge les dernières versions et les remplace si une mise à jour est disponible.
 
 Et comme il arrive qu'une mise à jour ou un disque de stockage tombe en panne, j'utilise un service pour effectuer une sauvegarde périodique. Chaque nuit, il enregistre toutes les configurations du serveur et certaines données dans un fichier d'archive crypté. Cette archive est ensuite sauvegardée sur mon disque dur de 1 TO et sur un serveur de stockage AWS. Une politique de rétention de 7 jours permet de ne conserver seulement les sauvegardes les plus récentes.
 

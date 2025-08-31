@@ -73,7 +73,7 @@ En plus d'offrir la coloration syntaxique et la complétion de code, elle facili
 
 ### Émulateur
 
-Le gestionnaire SDK est également fourni avec un émulateur d'appareil Garmin permettant d'exécuter directement l'application depuis l'ordinateur.
+Le gestionnaire SDK est également fourni avec un émulateur de montre Garmin permettant d'exécuter directement l'application depuis l'ordinateur.
 Il est très pratique pour exécuter rapidement l'application sans avoir à l'installer sur la montre ou pour pouvoir la tester sur différentes montres.
 
 ![Émulateur Garmin](emulator.png){: w="300"}
@@ -82,6 +82,7 @@ _Émulateur Garmin_
 ## Application
 
 ### Architecture
+
 L'application est assez simple, elle récupère l'heure d'arrivée du prochain bus à partir de l'API DeLijn Open Data Services et affiche un compte à rebours sur la montre.
 Le compte à rebours est mis à jour toutes les secondes et une nouvelle requête API est effectuée toutes les minutes ou, si l'on appuie sur le bouton d'actualisation, pour corriger le compte à rebours si le bus est retardé ou avancé. De cette manière, les informations affichées sont toujours à jour.
 
@@ -89,6 +90,7 @@ Le compte à rebours est mis à jour toutes les secondes et une nouvelle requêt
 Diagramme d'architecture
 
 ### Paramètres
+
 Dans les paramètres, accessibles à partir de l'application Connect IQ, vous pouvez sélectionner les arrêts et les lignes de bus que vous souhaitez suivre. Vous devez également définir votre propre clé API DeLijn, afin de ne pas avoir à vous soucier des limites de requetes journalières.
 
 ![Paramètres](settings.png){: w="200"}

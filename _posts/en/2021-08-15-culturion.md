@@ -35,12 +35,12 @@ Moovic was my very first native Android app, developed with Android Studio in 20
 ![Moovic](moovic.png){: w="700"}
 _Moovic_
 
-The concept was based on a movie blind test, with the unique feature that it was divided into three rounds: 
-  - A first movie guessed from a **synopsis**
-  - A second movie guessed from an **image**
-  - A third movie guessed from the **original soundtrack**
+The concept was a movie blind-test featuring three fast-paced rounds:
+- Guess a movie from its **synopsis**
+- Guess a movie from an **image**
+- Guess a movie from its **original soundtrack**
 
-For each round, the player had a limited amount of time, and the speed of their response affected their final score at the end of the game. It was also possible to play with friends by creating custom games designed so that several players could challenge each other on the same movie rounds.
+Each round was timed, and faster answers meant higher scores. It even allowed multiplayer with friends by creating custom games designed so that several players could challenge each other on the same movie rounds.
 
 This game was released on the Play Store in early 2019 but is no longer available. However, Moovic was primarily a preliminary experiment before Culturion, which allowed me to gain a better understanding of the languages, tools, and development processes on Android and the Android Studio IDE.
 

@@ -1,6 +1,6 @@
 ---
 title: "Culturion : Quiz sur les régions françaises"
-description: "Une application mobile pour apprendre et jouer avec la culture française."
+description: "Une application mobile pour apprendre tout en jouant avec la culture française."
 date: 2021-08-15
 categories: [Mobile]
 media_subpath: /assets/img/posts/culturion
@@ -12,11 +12,11 @@ image: culturion_banner.png
 > Le projet a été réalisé des années avant la rédaction de cet article, des détails et explications approfondies peuvent donc manquer.
 {: .prompt-info }
 
-Je vais vous présenter l'un de mes plus gros projets : **Culturion**. Vous pouvez trouver une courte vidéo décrivant cette application Android ci-dessous :
+Je vais vous présenter l'un de mes plus grands projets : **Culturion**. 
+
+Vous pouvez découvrir l’application Android via une courte vidéo ci-dessous, utilisée comme bande-annonce sur YouTube et les réseaux sociaux :
 
 {% include embed/youtube.html id='7KrYA6vUp8Q' %}
-
-Cette vidéo servait de publicité diffusée sur Youtube et les réseaux sociaux.
 
 > Essayez l'application vous même depuis le Play Store : [https://play.google.com/store/apps/details?id=com.culturion.culturion](https://play.google.com/store/apps/details?id=com.culturion.culturion).
 {: .prompt-info }
@@ -25,20 +25,20 @@ Le premier objectif de ce projet était de réutiliser les connaissances acquise
 
 # Moovic : un blind-test cinéma
 
-Moovic a été ma toute première application Android native dévéloppée avec Android Studio en 2018. 
+Mon voyage a commencé avec **Moovic**, ma toute première application Android native développée avec Android Studio en 2018.
 
 ![Moovic](moovic.png){: w="700"}
 _Moovic_
 
 
-Le concept reposait sur un blind-test cinéma avec la particularité que celui-ci se décompose en 3 manches : 
-  - Un premier film deviné à partir d'un **synopsis**
-  - Un second film deviné à partir d'une **image**
-  - Un troisième film deviné à partir de la **bande audio originale**
+Le concept est un blind-test cinéma en trois manches distinctes :
+  - Deviner un film à partir d’un **synopsis** 
+  - Deviner un film à partir d’une **image**  
+  - Deviner un film à partir de sa **bande-son originale**   
 
-Pour chaque manche, le joueur disposait d'un temps limité et la rapidité pour répondre influait sur le score final à la fin de la partie. Il était également possible de jouer avec ses amis en créant des parties personnalisées conçues pour que plusieurs jouerus puisse se défier sur les mêmes manches de films.
+Chaque manche est chronométrée et la rapidité influence le score final. Vous pouviez également jouer entre amis dans des parties personnalisées conçues pour que les joueurs puissent se défier sur les mêmes manches de films.
 
-Ce jeu a été publié sur le Play Store début 2019 mais n'est aujourd'hui plus disponible. Mais Moovic était surtout une expérience préliminaire avant Culturion qui m'a permit d'avoir une meilleure maitrise des langages, outils et process de développement sur Android et l'IDE Android Studio. 
+Ce jeu a été publié sur le Play Store début 2019 mais n'est aujourd'hui plus disponible. Moovic était surtout une expérience préliminaire avant Culturion qui m'a permit d'avoir une meilleure maitrise des langages, outils et process de développement sur Android et l'IDE Android Studio. 
 
 # Culturion : une application plus ambitieuse
 
@@ -65,14 +65,14 @@ Culturion a aussi été mon premier pas dans le monde de la publicité et de la 
 
 Le modèle économique de mon application repose sur un jeu gratuit mais comportant de la publicité sous la forme de bannière, interstitiel et vidéo à récompenses pour obtenir des indices supplémentaires. Les publicités peuvent être supprimées par l'achat d'un **Pack Explorateur** (0.99€) ou **Pack VIP** (1.79€) donnant aussi accès à des légers avantages. 
 
-Le vrai défi consistait à équilibrer la quantité de publicité et le prix de ces achats intégrés pour pouvoir financer la campagne publicitaire lancé en parallèle pour promouvoir le jeu. Cette campagne a été gérée avec Google Ads et déclare un taux de conversion de 7.10% pour environ 12 900 conversions.
+Le vrai défi consistait à équilibrer la quantité de publicité et le prix de ces achats intégrés pour pouvoir financer la campagne publicitaire lancé en parallèle pour promouvoir le jeu. Cette campagne a été gérée avec Google Ads et a obtenu un taux de conversion de 7.10% pour environ 12 900 conversions.
 
-Le résultat a dépassé mes attentes, car je suis fier que l'application ait été téléchargée par plus de 15 000 personnes et notée 4.5/5 sur plus de 200 avis ! 
+Le résultat a dépassé mes attentes, car je suis fier que l'application ait été téléchargée par plus de **15 000 personnes** et notée **4.5/5** sur plus de 200 avis ! 
 
 ![Culturion](culturion_stats.png){: w="300"}
 _Google Play Store statistiques_
 
-MISE À JOUR (2025-05-24) : J'ai récemment mis à jour le SDK Android afin de pouvoir compiler Culturion pour tous les nouveaux smartphones Android et le republier sur le Play Store. Ce fut un travail fastidieux à cause de nombreuses dépendances obsolètes et des milliers d'avertissements après 6 ans laissé à l'abandon.
+**MISE À JOUR (2025-05-24)** : J'ai récemment mis à jour le SDK Android afin de pouvoir compiler Culturion pour tous les nouveaux smartphones Android et le republier sur le Play Store. Ce fut un travail fastidieux à cause de nombreuses dépendances obsolètes et des milliers d'avertissements après 6 ans laissé à l'abandon.
 
 <br>
 <p align="center">

@@ -18,18 +18,16 @@ image:
 > The project was realized years before the redaction of this post, so it may lack details and in-depth explanation.
 {: .prompt-info }
 
-The inspiration for this project came from my frequent use of public transportation to get to work. Every day, I only had to take a 5-minute ride to work because I lived close to it. However, the bus had the annoying habit of being either late or early, but rarely on time.
+The inspiration for this project came from my frequent use of public transportation to get to work. Every day, I only had to take a 5 minute ride to work because I lived close to it. However, the bus had the annoying habit of being either late or early, but rarely on time.
 
-So, in order to never be late or wait too long for the bus, I had no choice but to use the Tisseo (Toulouse's public transportation company) app to receive a real-time update on the next bus route.
+I found myself constantly checking the Tisséo (Toulouse's public transportation company) application for real-time updates on the next bus route. A cumbersome routine to start the day, and sometimes the app would even crash.
 
-It was inconvenient to constantly check my phone in the morning to see when I needed to leave for work, let alone the bugs that occasionally rendered the application unusable. 
-
-That's why I wanted a display that shows when the next bus is coming, similar to the ones found at bus stops.
+That's why I wanted a compact display that shows when the next bus is coming, similar to the ones found at bus stops.
 
 ![Bus real-time information display](bustracker_example.jpg){: w="400" h="150"}
 _Bus real-time information display_
 
-It had to be smaller to fit my apartment and budget, but I can still add some extra features !
+It had to be smaller to fit my apartment and budget, but I would still be able add some extra features !
 
 ## Obtaining real-time bus data
 
@@ -37,7 +35,7 @@ First, I needed to ensure that I could access all real-time information about To
 
 To use it, a private key was required, so I politely asked Tisseo if I could get one for free. Fortunately, they agreed, and I was able to try out the API a few days later.
 
-Although documentation was limited, using the API was fairly simple. I was able to get everything I needed by simply sending a GET HTTP request with the key, bus line, bus stop ID, and some additional parameters to filter out unnecessary information.
+Despite sparse documentation, using the API was straightforward: a simple HTTP GET request with the key, line ID, stop ID, and filters returns the needed JSON data, including the upcoming bus' waiting time.
 
 So for example by sending this GET request (I censored my key, so it will not work for you): 
 
@@ -106,18 +104,20 @@ The next step was to use this API from a microcontroller and only show the 'wait
 ## Choosing the hardware
 
 ### Microcontroller
+
 My choice of a microcontroller for this project was based on two criteria :
 - Be able to connect to internet without needing an extra module
 - Having an easy framework to use to get a prototype up and running quickly
 
-The ESP32/ESP8266 meets all of the requirements thanks to its built-in WIFI functionality and Arduino framework. 
-Also, I had some WEMOS D1 Mini Pro boards (ESP8266) that I had purchased in bulk in the past, and it was time to use them.
+
+I chose an ESP32 (or ESP8266) for its built-in Wi-Fi and compatibility with the Arduino framework, perfect for quick prototyping. I already had a Wemos D1 Mini Pro (ESP8266) on hand, so I put it to use.
 
 ![ESP32](bustracker_WEMOSD1.jpg){: w="150" h="50"}
 _ESP32_
 
-### Screen
-The information needed to be displayed on a screen as well. It had to be small enough to read the information quickly, but not too big so that it could be powered by the ESP32's internal voltage regulator. The microcontroller should be able to control it via I2C or SPI.
+### Display
+
+The information needed to be displayed on a screen as well. The display needed to be small, readable, and be powered by the ESP32's internal voltage regulator. The microcontroller should also be able to control it via I2C or SPI.
 
 I found two good options for my limited budget: a mini 128x64 OLED and a 128x160 TFT screen.
 
@@ -130,15 +130,18 @@ While the OLED screen was smaller, I hoped that the higher contrast would allow 
 Because I couldn't decide, I bought both to try them out and eventually chose the TFT display.
 
 ### Button
+
 A button was required to interact with the screen and turn it off when not in use. Because I wanted to use as few components as possible, I only used one rotary encoder with a push button. I was able to navigate the menu by rotating the encoder and then validate my selection by pressing it.
 
 ![Rotary encoder button](bustracker_BUTTON.jpg){: w="150" h="50"}
 _Rotary encoder button_
 
 ### Bonus
-I thought another useful feature would be to play a small ringtone when it's time to go to work. So, I added a piezo speaker to my shopping list.
+
+I thought another useful feature would be to play a small ringtone when it's time to leave for the bus. So, I added a piezo speaker to my shopping list.
 
 ## Writing the code
+
 As I previously stated, the goal of this project was to quickly develop a working prototype. Because a large number of Arduino libraries were already available for the screen and rotary encoder, I chose to create the ESP32 software using the Arduino framework.
 
 To improve code readability, I separated each functionality into its respective class :
@@ -153,6 +156,7 @@ Each class has an initialization function called during setup and a tick functio
 {: .prompt-tip }
 
 ## Building a prototype
+
 Connecting the peripherals to the ESP was straightforward :
 - The TFT displays communication pins to the SPI ports (SCK, MOSI, MISO, CS) and the RST and DC pins to some digital outputs. I also added a transistor between the backlight power of the screen (LED pin) and the VCC of the ESP to be able to switch off the screen when needed via one of the output ports.
 - The rotary encoder pins (CLK/DT for the encoder and SW for the button) to some input port.
@@ -173,5 +177,4 @@ Then I wanted to use perfboard to make the whole montage smaller and more attrac
 ![Bus Tracker perfboard schematic](bustracker_pcb.png){: w="500" h="500"}
 _Bus Tracker perfboard schematic_
 
-Unfortunately, the end of this project is a little rough because I became distracted by another project and never finished it. 
-Nonetheless, it was an interesting project, and I used it every day for several months without ever missing a work deadline!
+Unfortunately, I got distracted by another project and never fully finished the final build. Still, it served me well for months and I never missed a bus again!

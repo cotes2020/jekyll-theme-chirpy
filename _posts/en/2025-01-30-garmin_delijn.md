@@ -33,10 +33,10 @@ But before telling you which one I choose to use, let's take a look at the diffe
 
 ### GTFS
 
-General Transit Feed Specification (GTFS) is a standard format for public transport schedules created by Google in 2005. Initially created to incorporate transit data into Google Maps, it has since been adopted by most other navigation services (Apple Maps, Moovit, ...) and public transit services.
+**General Transit Feed Specification (GTFS)** is a standard format for public transport schedules created by Google in 2005. Initially created to incorporate transit data into Google Maps, it has since been adopted by most other navigation services (Apple Maps, Moovit, ...) and public transit services.
 It allows transit agencies to publish their schedule, route, and stop data in a format that navigation services can easily integrate.
 
-A GTFS feed is a collection of files that describe the public transport network, including routes, stops, and schedules. However a GTFS feed is not enough to get real-time information because it contains only the static/planned schedules and not the real-time delays or trip updates.
+A **GTFS feed** is a collection of files that describe the public transport network, including routes, stops, and schedules. However a GTFS feed is not enough to get real-time information because it contains only the static/planned schedules and not the real-time delays or trip updates.
 
 To have this additional real-time information, you need to fetch another feed, GTFS-RT (GTFS Realtime), which is an extension of GTFS. This feed will contain only relative delays for each trip and not the absolute arrival time. So you need to combine the results of both GTFS APIs to compute the absolute arrival/departure time of public transport vehicles.
 
@@ -82,6 +82,7 @@ _Garmin Emulator_
 ## Application
 
 ### Architecture
+
 The application is quite simple, it fetches the time of arrival of the next bus from the DeLijn Open Data Services API and displays a countdown on the watch.
 The countdown is updated every second and a new API request is made every minute or, if the refresh button is pressed, to correct the countdown if the bus is delayed or advanced. This way, the information displayed is always up to date.
 
@@ -89,6 +90,7 @@ The countdown is updated every second and a new API request is made every minute
 _Architecture Diagram_
 
 ### Settings
+
 In the settings, accessible from the Connect IQ application, you can select which bus stop and bus lines you want to track. You should also set your own DeLijn API key, so you don't have to worry about rate limits.
 
 ![Settings](settings.png){: w="200"}
@@ -97,6 +99,7 @@ _Settings_
 The API request interval can be changed as well. 
 
 ### Interface
+
 The countdown (in minutes) to the next bus is displayed. The interface can show up to two bus stop information, one on each line.
 
 The countdown color indicates if the estimated bus arrival time (based on the GPS position) is on schedule, late, or early compared to the static timetable information :

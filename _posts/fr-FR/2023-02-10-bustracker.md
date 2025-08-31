@@ -15,11 +15,11 @@ image:
 
 L'idée de ce projet est née de mon utilisation régulière des transports publics pour me rendre au travail. Habitant près de mon travail, je n'avais besoin que de 5 minutes de trajet pour aller travailler tous les jours. Cependant, le bus avait cette fâcheuse habitude d'être soit en retard, soit en avance, mais rarement à l'heure.
 
-Pour ne jamais arriver en retard ou attendre trop longtemps le bus, je n'avais pas d'autre choix que d'utiliser l'application Tisseo (la société de transport public de Toulouse) pour avoir une mise à jour en temps réel du prochain passage du bus.
+Pour ne jamais arriver en retard ou attendre trop longtemps le bus, je n'avais pas d'autre choix que d'utiliser l'application Tisseo (la société de transport en commun de Toulouse) pour avoir une mise à jour en temps réel du prochain passage du bus.
 
 Avoir toujours à regarder mon téléphone le matin pour savoir quand je dois partir pour arriver au travail à l'heure n'était pas pratique et c'était sans compter les bugs qui rendaient parfois l'application inutilisable. 
 
-C'est pourquoi je voulais un affichage indiquant l'heure d'arrivée du prochain bus, exactement comme ceux que l'on peut souvent trouver à un arrêt de bus.
+J’ai donc décidé de créer un affichage, à l’image de ceux que l’on voit aux arrêts de bus, mais en version compacte pour mon appartement afin d’avoir l’heure d’arrivée du prochain bus sans sortir mon téléphone.
 
 ![Affichage d'informations en temps réel sur les bus](bustracker_example.jpg){: w="400" h="150"}
 _Affichage de l'information en temps réel sur les bus_
@@ -32,7 +32,7 @@ Tout d'abord, je devais m'assurer qu'il était possible d'accéder à toutes les
 
 Pour l'utiliser, une clé privée était nécessaire, je me suis donc directement adressé à Tisseo et je leur ai demandé s'il était possible d'en obtenir une gratuitement. Heureusement, ils ont accepté et j'ai pu commencer à tester l'API quelques jours plus tard.
 
-Bien que la documentation soit limitée, l'utilisation de l'API était relativement simple. En envoyant simplement une requête HTTP GET avec la clé, la ligne de bus, l'identifiant de l'arrêt de bus et quelques paramètres supplémentaires pour filtrer les informations inutiles, j'ai pu obtenir tout ce que je voulais.
+Malgré une documentation limitée, l'utilisation de l'API était relativement simple. En envoyant simplement une requête HTTP GET avec la clé, la ligne de bus, l'identifiant de l'arrêt de bus et quelques paramètres supplémentaires pour filtrer les informations inutiles, j'ai pu obtenir tout ce que je voulais.
 
 Par exemple, en envoyant cette requête GET (j'ai censuré ma clé, inutile d'essayer chez vous) : 
 
@@ -100,6 +100,7 @@ L'étape suivante consistait à utiliser cette API à partir d'un microcontrôle
 ## Choix du matériel
 
 ### Microcontrôleur
+
 Mon choix d'un microcontrôleur pour ce projet a été basé sur deux critères :
 - Pouvoir se connecter à Internet sans avoir besoin d'un module supplémentaire.
 - Avoir un framework facile à utiliser pour mettre en place un prototype rapidement.
@@ -111,6 +112,7 @@ De plus, j'avais déjà des cartes WEMOS D1 Mini Pro (ESP8266) achetées en vrac
 _ESP32_
 
 ### Écran
+
 Ensuite, pour afficher le prochain arrêt de bus, un écran était également important. Il devait être ni trop petit pour pouvoir lire rapidement les informations qu'il contenait, mais aussi ni trop grand, car je voulais qu'il soit alimenté par le régulateur de tension interne de l'ESP32. Le microcontrôleur devait également être capable de le piloter via I2C ou SPI.
 
 J'ai trouvé deux candidats intéressants pour mon petit budget : un mini écran OLED 128x64 et un écran TFT 128x160.
@@ -124,15 +126,18 @@ Bien que l'écran OLED soit plus petit, j'ai pensé que les meilleurs contrastes
 Comme je n'arrivais pas à prendre une décision, j'ai acheté les deux pour les essayer, et j'ai finalement opté pour l'écran TFT.
 
 ### Bouton
+
 Un bouton était nécessaire pour interagir avec l'écran et pour l'éteindre lorsqu'il n'est pas utilisé. Comme je voulais avoir le moins de composants possible, je n'ai utilisé qu'un encodeur rotatif avec un bouton poussoir. De cette manière, il est possible de naviguer dans le menu en faisant tourner l'encodeur et valider son choix en appuyant dessus.
 
 ![Bouton encodeur rotatif](bustracker_BUTTON.jpg){: w="150" h="50"}
 _Bouton encodeur rotatif_
 
 ### Bonus
+
 J'ai pensé qu'une autre fonctionnalité intéressante serait de jouer une petite sonnerie lorsqu'il est l'heure d'aller au travail. J'ai donc ajouté un haut-parleur piézo à ma liste d'achats.
 
 ## Écrire le code
+
 Comme je l'ai dit précédemment, le but de ce projet était d'avoir rapidement un prototype fonctionnel. Comme de nombreuses bibliothèques Arduino étaient déjà disponibles pour l'écran et l'encodeur rotatif, j'ai choisi de développer le logiciel de l'ESP32 avec le framework Arduino.
 
 J'ai séparé chaque fonctionnalité dans une classe pour améliorer la lisibilité du code :
@@ -147,6 +152,7 @@ Chaque classe expose une fonction d'initialisation appelée lors de la configura
 {: .prompt-tip }
 
 ## Construction d'un prototype
+
 La connexion des périphériques à l'ESP a été simple :
 - Les broches de communication de l'écran TFT vers les ports SPI (SCK, MOSI, MISO, CS) et les broches RST et DC vers certaines sorties numériques. J'ai également ajouté un transistor entre l'alimentation du rétro-éclairage de l'écran (broche LED) et le VCC de l'ESP pour pouvoir éteindre l'écran si nécessaire via l'un des ports de sortie.
 - Les pins de l'encodeur rotatif (CLK/DT pour l'encodeur et SW pour le bouton) vers un port d'entrée.
