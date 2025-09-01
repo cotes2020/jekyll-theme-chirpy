@@ -26,25 +26,43 @@ vim /etc/haproxy/haproxy.cfg
 ```
 
 ```sh
-frontend kubernetes
-	bind <load-balancer-vip>:6443
-	option tcplog
-	mode tcp
-	default_backend kubernetes-master-nodes
-backend kubernetes-master-nodes
-	mode tcp
-	balance roundrobin
-	option tcp-check
-	server k8s-master-0 <kube-masterX-ip>:6443 check fall 3 rise 2
-	server k8s-master-1 <kube-masterY-ip>:6443 check fall 3 rise 2
-    server k8s-master-2 <kube-masterZ-ip>:6443 check fall 3 rise 2
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    daemon
+    maxconn 2000
+    user haproxy
+    group haproxy
 
-#----------------------- Enabling Statistics -------------------------------------
+defaults
+    log     global
+    mode    tcp
+    option  tcplog
+    option  dontlognull
+    retries 3
+    timeout connect 10s
+    timeout client 1m
+    timeout server 1m
+
 listen stats
-    bind *:8080
+    bind *:8404
+    mode http
     stats enable
-    stats realm Haproxy\ Statistics
-    stats uri /
+    stats uri /stats
+    stats refresh 10s
+    stats show-node
+    stats auth admin:adminpass
+
+frontend kubernetes-api
+    bind *:6443
+    default_backend kubernetes-masters
+
+backend kubernetes-masters
+    balance roundrobin
+    option tcp-check
+	server k8s-master-0 <kube-masterX-ip>:6443 check
+	server k8s-master-1 <kube-masterY-ip>:6443 check
+    server k8s-master-2 <kube-masterZ-ip>:6443 check
 ```
 *Verify haproxy configuration & restart HAproxy:*
 
@@ -85,7 +103,7 @@ vrrp_script chk_haproxy {
 
 # Configuration for Virtual Interface
 vrrp_instance LB_VIP {
-    interface eth1
+    interface ens6
     state MASTER        # set to BACKUP on the peer machine
     priority 301        # set to  300 on the peer machine
     virtual_router_id 51
@@ -125,7 +143,7 @@ vrrp_script chk_haproxy {
 
 # Configuration for Virtual Interface
 vrrp_instance LB_VIP {
-    interface eth1
+    interface ens6
     state BACKUP        # set to BACKUP on the peer machine
     priority 300        # set to  301 on the peer machine
     virtual_router_id 51

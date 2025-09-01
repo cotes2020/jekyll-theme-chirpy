@@ -140,13 +140,16 @@ sysctl --system
 
 ```sh
 {
-wget https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
-tar Cxzvf /usr/local containerd-1.7.2-linux-amd64.tar.gz
-rm containerd-1.7.2-linux-amd64.tar.gz
+wget https://github.com/containerd/containerd/releases/download/v2.1.4/containerd-2.1.4-linux-amd64.tar.gz
+tar Cxzvf /usr/local containerd-2.1.4-linux-amd64.tar.gz
+rm containerd-2.1.4-linux-amd64.tar.gz
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
-}
 ```
+```sh
+sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+```
+
 ```sh
 {
 mkdir -pv /usr/local/lib/systemd/system/
@@ -175,7 +178,7 @@ swapoff -a; sed -i '/swap/d' /etc/fstab
 ### Install runc
 ```sh
 {
-wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64
+wget https://github.com/opencontainers/runc/releases/download/v1.3.0/runc.amd64
 install -m 755 runc.amd64 /usr/local/sbin/runc
 }
 ```
@@ -184,15 +187,15 @@ install -m 755 runc.amd64 /usr/local/sbin/runc
 
 ```sh
 {
-wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz
+wget https://github.com/containernetworking/plugins/releases/download/v1.7.1/cni-plugins-linux-amd64-v1.7.1.tgz
 mkdir -p /opt/cni/bin
-tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
+tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.7.1.tgz
 }
 ```
 ### Install cricctl 
 ```sh
 {
-VERSION="v1.30.0"  # change this based on your k8s version
+VERSION="v1.34.0"
 curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-${VERSION}-linux-amd64.tar.gz --output crictl-${VERSION}-linux-amd64.tar.gz
 sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/bin
 rm -f crictl-$VERSION-linux-amd64.tar.gz
@@ -217,17 +220,18 @@ EOF
 {
 apt-get install -y apt-transport-https ca-certificates curl gpg
 mkdir /etc/apt/keyrings
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /
+deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /
 EOF
-}
+
 ```
 
 ```sh
 {
 apt-get update
-apt-get install -y kubelet=1.30.6-1.1 kubeadm=1.30.6-1.1 kubectl=1.30.6-1.1
+apt-get install -y kubelet=1.34.0-1.1 kubeadm=1.34.0-1.1 kubectl=1.34.0-1.1
+apt-mark hold kubelet kubeadm kubectl
 }
 
 ```
@@ -258,7 +262,7 @@ done
 
 ```sh
 {
-  ETCD_VER=v3.5.9
+  ETCD_VER=v3.6.4
   wget -q --show-progress "https://github.com/etcd-io/etcd/releases/download/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz"
   tar zxf etcd-${ETCD_VER}-linux-amd64.tar.gz
   mv etcd-${ETCD_VER}-linux-amd64/etcd* /usr/local/bin/
@@ -403,7 +407,7 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 ### Option 2: Activate the calico CNI plugin:
 ```sh
 #Download the custom resources necessary to configure Calico
-curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.30.3/manifests/calico.yaml -O
 
 #Update the CALICO_IPV4POOL_CIDR block in calico.yaml
 - name: CALICO_IPV4POOL_CIDR
@@ -473,6 +477,14 @@ kubeadm join 192.168.X.X:6443 --token 85iw5v.ymo1wqcs9mrqmnnf --discovery-token-
 ### Use the below command to label the worker nodes:
 ```sh
 kubectl label nodes k8sworker1 kubernetes.io/role=k8sworker1
+```
+### Reseting a node [ OPTIONAL ]
+```bash
+{
+kubeadm reset -f
+rm -rf /etc/kubernetes/manifests/*
+fuser -n tcp -k 6443 10259 10257 10250
+}
 ```
 
 ### Reference Links:
