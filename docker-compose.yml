@@ -1,0 +1,29 @@
+services:
+  jekyll-watch:
+    build:
+      context: .
+      target: ruby-base
+    volumes:
+      - .:/app:Z
+    command: jekyll serve --host 0.0.0.0 --livereload --force_polling
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+  js-watch:
+    build:
+      context: .
+      target: node-base
+    volumes:
+      - .:/app:Z
+      - node_modules:/app/node_modules:Z
+    command: npm run watch:js
+  css-watch:
+    build:
+      context: .
+      target: node-base
+    volumes:
+      - .:/app:Z
+      - node_modules:/app/node_modules:Z
+    command: npm run watch:css
+volumes:
+  node_modules:
