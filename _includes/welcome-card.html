@@ -7,23 +7,32 @@
 
 <div id="home-post" class="flex-grow-1 px-xl-1">
   <div class="card-wrapper post-preview card">
-    <a href="/about" class="post-preview row g-0 flex-md-row">
-      <div class="col-md-5">
-        <img src="assets/img/favicons/12756091.png" style="width: inherit;" alt="Header Image">
+    <div class="post-preview" style="position: relative; display: block; overflow: hidden; height: 400px;">
+      <iframe
+        src="https://ounols.github.io/portfolio-banner"
+        style="width: 100%; height: 100%; border: none; border-radius: 10px; position: absolute; top: 0; left: 0; z-index: 1;"
+        frameborder="0"
+      ></iframe>
+      <div style="position: absolute; top: 10px; left: 30px; z-index: 3;">
+        <a
+          href="https://github.com/ounols/portfolio-banner"
+          target="_blank"
+          style="font-size: 10px; color: rgba(255, 255, 255, 0.7); text-decoration: none;"
+        >
+          Powered by My Custom Engine (CSEngine)
+        </a>
       </div>
-      <div class="col-md-7">
-        <div class="card-body d-flex flex-column">
-          <h1>Hello There!👋👋</h1>
-          <b style="background: linear-gradient(transparent 10%, #ffeb3b 30%); color: var(--text-muted-color) !important;">
+      {% comment %}
+        <div
+          class="card-body d-flex flex-column justify-content-end"
+          style="position: relative; z-index: 2; margin: 20px; pointer-events: none;"
+        >
+          <h1 style="color: white;">Hello There!👋👋</h1>
+          <b style="background: linear-gradient(transparent 10%, #ffeb3b 30%); color: darkgray !important;">
             {% if lang == 'ko' %}{{ intro_ko }}{% else %}{{ intro_ko }}{% endif %}
           </b>
-          <div class="card-text content mt-0 mb-3">
-            <p style="color: var(--text-muted-color) !important;">
-              {% if lang == 'ko' %}{{ desc_ko }}{% else %}{{ desc_ko }}{% endif %}
-            </p>
-          </div>
         </div>
-      </div>
-    </a>
+      {% endcomment %}
+    </div>
   </div>
 </div>
