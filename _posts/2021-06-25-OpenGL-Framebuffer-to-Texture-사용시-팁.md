@@ -81,7 +81,7 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT16, width, height, 0, GL_DEPTH_
 뭐 그게 ES특이니 어쩔 수 없네요ㅠㅜ
 
 그래도 상황에 따른 포맷 설정은 아래의 링크에 있답니다!
-> [glTexImage2D - OpenGL ES 3 Reference Pages](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexImage2D.xhtml)
+> [glTexImage2D - OpenGL ES 3 Reference Pages](https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/glTexImage2D.xhtml){:target="_blank"}
 
 ![](/media/2021-06-25-OpenGL-Framebuffer-to-Texture-사용시-팁/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202021-06-25%20035716.png)
 위 그림과 같이 잘 적혀있으니 원하는 것에 맞게 쓰시면 될 것 같습니다.
@@ -94,5 +94,5 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT16, width, height, 0, GL_DEPTH_
 혹시 관련한 소스코드 및 프레임버퍼 객체화 관련 게시글이 궁금하다면<br>
 아래의 링크를 참고해주세요!
 
-> 📑 프레임버퍼 객체화 관련 글 : [https://velog.io/@ounols/Framebuffer의-객체화](https://velog.io/@ounols/Framebuffer%EC%9D%98-%EA%B0%9D%EC%B2%B4%ED%99%94) 
-📣 관련 프로젝트 Git 주소 : https://github.com/ounols/CSEngine
+> 📑 프레임버퍼 객체화 관련 글 : [https://velog.io/@ounols/Framebuffer의-객체화](https://velog.io/@ounols/Framebuffer%EC%9D%98-%EA%B0%9D%EC%B2%B4%ED%99%94){:target="_blank"} 
+📣 관련 프로젝트 Git 주소 : [https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine){:target="_blank"}

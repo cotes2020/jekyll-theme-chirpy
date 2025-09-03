@@ -74,5 +74,5 @@ image:
 번역해주셔서 감사합니다… 이 말 밖에 안나오네요… 정말 감사합니다…
 
 > 책의 구매는 아래의 링크를 통해 구매할 수 있습니다!<br/>
-> [https://www.realtimerendering.com/blog/korean-edition-of-rtr4-available/](https://www.realtimerendering.com/blog/korean-edition-of-rtr4-available/)
+> [https://www.realtimerendering.com/blog/korean-edition-of-rtr4-available/](https://www.realtimerendering.com/blog/korean-edition-of-rtr4-available/){:target="_blank"}
 {: .prompt-info }

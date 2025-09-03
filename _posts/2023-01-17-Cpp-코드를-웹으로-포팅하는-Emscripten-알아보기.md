@@ -59,7 +59,7 @@ emscripten은 LLVM 기반으로 돌아갑니다.<br/>
 설치 방법은 아래의 링크에 친절하게 설명이 적혀있습니다.<br/>
 비록 영어이지만 영알못도 충분히 따라 진행할 수 있기 때문에 그대로 진행해주시면 됩니다.
 
-[https://emscripten.org/docs/getting_started/downloads.html](https://emscripten.org/docs/getting_started/downloads.html)
+[https://emscripten.org/docs/getting_started/downloads.html](https://emscripten.org/docs/getting_started/downloads.html){:target="_blank"}
 
 간단하게 설명하자면 깃허브에 있는 emsdk 레포지토리를 그대로 내려받아 설치를 하는 형태입니다.
 
@@ -137,16 +137,16 @@ set_target_properties(CSEngineWeb
 ### LINK_FLAGS
 
 여기서 사용하는 옵션에 대한 설명은 아래의 링크에 있습니다!
-[https://emscripten.org/docs/tools_reference/emcc.html](https://emscripten.org/docs/tools_reference/emcc.html)
+[https://emscripten.org/docs/tools_reference/emcc.html](https://emscripten.org/docs/tools_reference/emcc.html){:target="_blank"}
 
 이번엔 여기서 중요하다고 생각되는 부분에 대해 제가 다시 설명을 작성해보고자 합니다.
 
 - `USE_GLFW=3` : GLFW3을 사용한다고 설정합니다. 코드에서 GLFW를 사용하는지 확인하고 작성해주시면 됩니다.
 - `ASSERTIONS=1` : 메모리 할당 오류에 대한 검사를 활성화 합니다. 기본적으론 1로 지정되어있으나 최적화 단계가 `O1`이상이 되면 해제되기 때문에 따로 넣어주었습니다.
 - `O3` : 코드의 최적화 단계를 뜻합니다. 기본적으론 `O0`부터 `O3`까지 진행을 하게 되는데 디버그 목적이라면 낮은 단계를 사용하는걸 추천드립니다. **참고로 OpenGL에서의 Warning은 `O3`에서도 상세하게 나타나게 됩니다!**
-- `ALLOW_MEMORY_GROWTH=1` : [프로그램이 요구하는 메모리 양이 변경되는 상황에 대해 허용해줍니다.](https://emscripten.org/docs/optimizing/Optimizing-Code.html#memory-growth) 해당 옵션 없이 빌드하면 프로그램이 런타임 도중 메모리를 사용할 수 있는 최대치를 넘으면 뻗어버립니다.
+- `ALLOW_MEMORY_GROWTH=1` : [프로그램이 요구하는 메모리 양이 변경되는 상황에 대해 허용해줍니다.](https://emscripten.org/docs/optimizing/Optimizing-Code.html#memory-growth){:target="_blank"} 해당 옵션 없이 빌드하면 프로그램이 런타임 도중 메모리를 사용할 수 있는 최대치를 넘으면 뻗어버립니다.
 - **`EXCEPTION_CATCHING_ALLOWED=[..]`** : 이게 참.. 중요한 요소인 것 같습니다. 왜냐하면 `try catch`문이 정상적으로 작동하지 않기 때문입니다!
-[원래 doc의 내용대로라면 정상적으로 예외처리가 되어야 하는데](https://emscripten.org/docs/porting/exceptions.html) 해당 구문이 저에겐 먹히지 않네요... 이것저것 다 달고 구글링을 열심히 했는데도 마땅한 방안을 못 찾았습니다.
+[원래 doc의 내용대로라면 정상적으로 예외처리가 되어야 하는데](https://emscripten.org/docs/porting/exceptions.html){:target="_blank"} 해당 구문이 저에겐 먹히지 않네요... 이것저것 다 달고 구글링을 열심히 했는데도 마땅한 방안을 못 찾았습니다.
 게다가 emscripten에서도 exception 처리는 생각보다 무겁기 때문에 정상적으로 처리하기 힘들다고 적혀있습니다. 다시 정리해보면 **예외처리문인`try catch`문은 사용을 피하는게 정신건강에 이롭습니다!**
 - `USE_WEBGL2=1` : WebGL 2.0을 활성화 여부입니다.
 참고로 ES 2.0은 WebGL 1.0, ES 3.0은 WebGL 2.0으로 돌아갑니다! 저같은 경우엔 OpenGL ES 3.0이 최소사양이기 때문에 WebGL 2.0을 활성화하였습니다.
@@ -252,4 +252,4 @@ python -m http.server
 제가 해놓은 삽질이 다른 분들과 미래의 나에게 도움이 되었으면 합니다!
 
 그리고 저 프로젝트가 궁금하시다면 아래의 링크를 통해 확인해보셔도 좋습니다!<br/>
-[https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine)
+[https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine){:target="_blank"}

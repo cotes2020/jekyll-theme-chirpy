@@ -160,5 +160,5 @@ _아이폰14 프로에서 돌아가는 CSEngine의 Animation 씬_
 
 긴 글 읽어주셔서 감사합니다!
 
-> 자체 게임엔진 Github 주소 : [https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine)
+> 자체 게임엔진 Github 주소 : [https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine){:target="_blank"}
 {: .prompt-tip }

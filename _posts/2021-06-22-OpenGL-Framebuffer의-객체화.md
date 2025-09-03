@@ -29,8 +29,8 @@ image:
 그렇게 객체화를 진행하게 되었습니다.
 
 일단 프레임버퍼의 기본개념은 아래의 링크로 대체하도록 할게요
-* [LearnOpenGL Framebuffer 튜토리얼 번역본](https://heinleinsgame.tistory.com/28)
-* [LearnOpenGL Render to texture 튜토리얼 원본](https://www.opengl-tutorial.org/kr/intermediate-tutorials/tutorial-14-render-to-texture/)
+* [LearnOpenGL Framebuffer 튜토리얼 번역본](https://heinleinsgame.tistory.com/28){:target="_blank"}
+* [LearnOpenGL Render to texture 튜토리얼 원본](https://www.opengl-tutorial.org/kr/intermediate-tutorials/tutorial-14-render-to-texture/){:target="_blank"}
 
 -------------
 ## 1. 어떻게 객체화를 진행할 것인가? ##
@@ -68,7 +68,7 @@ image:
 ## 2. 설계에 맞게 코드 작성 ##
 
 사실 코드 작성은 튜토리얼에 있는 코드를 클래스에 맞게 작성한게 전부라
-전체적인 코드를 원하신다면 제 [Git](https://github.com/ounols/CSEngine/commit/7b76fcce56adbb9db56d57e31269d4248ae687f6)에서 확인해보시면 될 것 같습니다ㅎㅎ
+전체적인 코드를 원하신다면 제 [Git](https://github.com/ounols/CSEngine/commit/7b76fcce56adbb9db56d57e31269d4248ae687f6){:target="_blank"}에서 확인해보시면 될 것 같습니다ㅎㅎ
 
 ### framebuffer 클래스 ###
 
@@ -181,4 +181,4 @@ void RenderMgr::Render() const {
 고마워요 미래의 나!
 
 
-> 📣 관련 프로젝트 Git 주소 : https://github.com/ounols/CSEngine
+> 📣 관련 프로젝트 Git 주소 : [https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine){:target="_blank"}

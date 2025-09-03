@@ -50,5 +50,5 @@ mermaid: true
 여러개의 애니메이션에 대한 요소도 존재하지 않아 이 부분도 어느정도 고민하면서 제작할 것 같네요ㅎㅎ
 
 
-> 📣 관련 프로젝트 Git 주소 : https://github.com/ounols/CSEngine 
+> 📣 관련 프로젝트 Git 주소 : [https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine){:target="_blank"} 
 {: .tip}

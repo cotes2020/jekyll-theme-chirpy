@@ -307,7 +307,7 @@ drReflection.rgb = pow(drReflection.rgb, 1) * (NdotL);
 그렇게 동적 라이팅이 적용되는 실시간 GI는 위와 같이 작동하게 됩니다!
 
 > 참고로 제작 예제로 사용한 배경은 (회사 프로젝트는 공개할 수 없기 때문에) 제가 영상 CG제작을 위해 만들고 배치했던 레벨입니다.<br/>
-> [관련 영상은 해당 링크에서 확인하실 수 있습니다! 많관부!](https://youtu.be/oSIvKaemkfw)
+> [관련 영상은 해당 링크에서 확인하실 수 있습니다! 많관부!](https://youtu.be/oSIvKaemkfw){:target="_blank"}
 {: .prompt-tip }
 
 
@@ -336,7 +336,7 @@ drReflection.rgb = pow(drReflection.rgb, 1) * (NdotL);
 ![왼쪽은 mac os, 오른쪽은 ios에서 돌아가는 모습](/media/unity에-동적-조명을-적용한-global-illumination-구현/image%209.png)
 _왼쪽은 mac os, 오른쪽은 ios에서 돌아가는 모습_
 
-> [Unity WebGL Player DeferredReflectionDemo](https://ounols.github.io/Deferred-Reflection-Demo)
+> [Unity WebGL Player DeferredReflectionDemo](https://ounols.github.io/Deferred-Reflection-Demo){:target="_blank"}
 {: .prompt-info }
 
 성능을 직접 확인해보는 것이 가장 좋기 때문에, WebGL이 구동되는 모든 플랫폼에서 테스트할 수 있도록 웹 데모를 준비했습니다.

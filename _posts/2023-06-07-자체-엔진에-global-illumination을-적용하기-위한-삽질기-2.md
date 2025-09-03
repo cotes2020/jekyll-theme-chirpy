@@ -22,7 +22,7 @@ image:
 참고로 여기서 렌더링 리서칭은 바로 <br/>
 레이 마칭을 통한 글로벌 일루미네이션을 적용하는 내용이였습니다!
 
-제가 이전에 [기존 레거시 렌더링을 통해 무작정 글로벌 일루미네이션을 위한 프로브 맵을 만드는 짓](https://velog.io/@ounols/%EC%9E%90%EC%B2%B4-%EC%97%94%EC%A7%84%EC%97%90-Global-Illumination-%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%82%BD%EC%A7%88%EA%B8%B0-1)을 했었습니다.
+제가 이전에 [기존 레거시 렌더링을 통해 무작정 글로벌 일루미네이션을 위한 프로브 맵을 만드는 짓](https://velog.io/@ounols/%EC%9E%90%EC%B2%B4-%EC%97%94%EC%A7%84%EC%97%90-Global-Illumination-%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%82%BD%EC%A7%88%EA%B8%B0-1){:target="_blank"}을 했었습니다.
 
 그리고 대실패로 돌아갔었지만 레이 마칭으로는 충분히 할만해 보인다고 말하며 글을 마쳤습니다.
 
@@ -271,7 +271,7 @@ vec3(0., 0., -1.)
 
 여기서 $d$값은 위 이미지처럼 보입니다. 여기서 만약 $\theta$값이 $90^\text{o}$라면 어떻게 될까요? 그렇다면 $\frac{\theta}{2}$값은 $45^\text{o}$가 되면서 이등변 직각 삼각형, 즉 $d$값이 1이 되는 상황이 됩니다.
 
-> 관련된 상세한 수학적 분석은 [‘이득우의 게임수학’](https://www.google.com/search?client=firefox-b-d&q=%EC%9D%B4%EB%93%9D%EC%9A%B0%EC%9D%98+%EA%B2%8C%EC%9E%84%EC%88%98%ED%95%99)과 [제 블로그 게시글에서 확인하실 수 있습니다!](https://velog.io/@ounols/%EA%B2%8C%EC%9E%84-%EC%88%98%ED%95%99-%EC%9B%90%EA%B7%BC-%ED%88%AC%EC%98%81)
+> 관련된 상세한 수학적 분석은 ['이득우의 게임수학'](https://www.google.com/search?client=firefox-b-d&q=%EC%9D%B4%EB%93%9D%EC%9A%B0%EC%9D%98+%EA%B2%8C%EC%9E%84%EC%88%98%ED%95%99){:target="_blank"}과 [제 블로그 게시글에서 확인하실 수 있습니다!](https://velog.io/@ounols/%EA%B2%8C%EC%9E%84-%EC%88%98%ED%95%99-%EC%9B%90%EA%B7%BC-%ED%88%AC%EC%98%81){:target="_blank"}
 {: .prompt-info }
 
 무료 홍보는 여기까지 하고 계속 진행해볼까요?ㅎㅎ
@@ -302,9 +302,9 @@ vec3 rd = viewMat * normalize(vec3(p.xy, c_pv_d));
 
 렌더링은 이렇게 하면 모든 준비가 끝났습니다!
 
-이제 엔진 상에서 이 SDF Map을 렌더링하려면 어떻게 하냐가 중요한데요. 이는 제가 [예전에 작성했던 블로그 글](https://velog.io/@ounols/%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%AC%B4%EC%9E%91%EC%A0%95-%EA%B0%9D%EC%B2%B4%ED%99%94-%ED%95%98%EA%B8%B0)의 `RenderGroup` 클래스를 이용하여 구현했습니다.
+이제 엔진 상에서 이 SDF Map을 렌더링하려면 어떻게 하냐가 중요한데요. 이는 제가 [예전에 작성했던 블로그 글](https://velog.io/@ounols/%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%AC%B4%EC%9E%91%EC%A0%95-%EA%B0%9D%EC%B2%B4%ED%99%94-%ED%95%98%EA%B8%B0){:target="_blank"}의 `RenderGroup` 클래스를 이용하여 구현했습니다.
 
-> [`RenderGroup`으로 구현된 레이마칭 렌더러의 코드는 해당 깃허브 링크에서 확인하실 수 있습니다!](https://github.com/ounols/CSEngine/blob/6809cc70883b33be37abc0cef0fc9f0bd3f487e5/src/Manager/Render/SdfRenderGroup.cpp)
+> [`RenderGroup`으로 구현된 레이마칭 렌더러의 코드는 해당 깃허브 링크에서 확인하실 수 있습니다!](https://github.com/ounols/CSEngine/blob/6809cc70883b33be37abc0cef0fc9f0bd3f487e5/src/Manager/Render/SdfRenderGroup.cpp){:target="_blank"}
 {: .prompt-tip }
 
 ![Untitled](/media/자체-엔진에-global-illumination을-적용하기-위한-삽질기-2/Untitled%2011.png)
@@ -319,7 +319,7 @@ vec3 rd = viewMat * normalize(vec3(p.xy, c_pv_d));
 2. 프로브 위치값에 맞게 큐브맵 텍스쳐를 선택해야함
 3. 각 프로브마다 존재하는 큐브맵 텍스쳐를 자연스럽게 처리해야함
 
-먼저 2D 텍스쳐를 큐브맵 텍스쳐로 적용할 수 있는 방법에 대해 정말 막막하고 시간도 부족했지만, 다행스럽게도 [스택 오버플로우에서 설명과 함께 코드가 있었습니다.](https://stackoverflow.com/questions/53115467/how-to-implement-texturecube-using-6-sampler2d)
+먼저 2D 텍스쳐를 큐브맵 텍스쳐로 적용할 수 있는 방법에 대해 정말 막막하고 시간도 부족했지만, 다행스럽게도 [스택 오버플로우에서 설명과 함께 코드가 있었습니다.](https://stackoverflow.com/questions/53115467/how-to-implement-texturecube-using-6-sampler2d){:target="_blank"}
 
 설명 되어있는 수식은 아래와 같습니다.
 

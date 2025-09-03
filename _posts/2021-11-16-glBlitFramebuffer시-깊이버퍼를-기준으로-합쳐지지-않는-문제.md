@@ -87,7 +87,7 @@ glBlitFramebuffer(0, 0, *m_width, *m_height, 0, 0, bufferWidth, bufferHeight, GL
 </br>
 
 사실 이정도 문제면 OpenGL 버그를 의심해볼만해서 관련해서 찾다가 아래의 글을 발견하게 됩니다.
-https://community.khronos.org/t/framebuffer-not-bliting-depth-buffer/66280
+[https://community.khronos.org/t/framebuffer-not-bliting-depth-buffer/66280](https://community.khronos.org/t/framebuffer-not-bliting-depth-buffer/66280){:target="_blank"}
 
 이 글 역시 저와 같은 문제를 겪고 있지만 저와 다른 환경의 문제임을 알 수 있습니다.
 저 글의 환경은 GPU가 AMD사의 라데온 그래픽 카드를 사용하고 있고, 저는 Nvidia사의 RTX 그래픽카드를 사용하고 있다는 차이점이 있습니다.
@@ -113,7 +113,7 @@ https://community.khronos.org/t/framebuffer-not-bliting-depth-buffer/66280
 
 ### 킹능성1. 깊이 버퍼 형식이 진짜 서로 다르다!
 
-https://stackoverflow.com/questions/9914046/opengl-how-to-use-depthbuffer-from-framebuffer-as-usual-depth-buffer
+[https://stackoverflow.com/questions/9914046/opengl-how-to-use-depthbuffer-from-framebuffer-as-usual-depth-buffer](https://stackoverflow.com/questions/9914046/opengl-how-to-use-depthbuffer-from-framebuffer-as-usual-depth-buffer){:target="_blank"}
 2022년이 된 지금까지도 해결을 못하고 있었는데 우연하게 구글링 해보다가 위 글이 나왔습니다.
 
 요약해보자면 기본적으로 제공되는 깊이버퍼를 가지고 `glBlitFramebuffer`를 진행하면 엔비디가 윈도우에선 정상적으로 작동하지만 다른 그래픽카드나 os 환경에선 다른 형식의 깊이값으로 인해 **합치려고 하는 프레임버퍼들의 깊이버퍼 형식이 다를 수 있다**는 내용입니다.
@@ -224,4 +224,4 @@ void main(void) {
 
 
 
-> 📣 프로젝트 Git 주소 : https://github.com/ounols/CSEngine
+> 📣 프로젝트 Git 주소 : [https://github.com/ounols/CSEngine](https://github.com/ounols/CSEngine){:target="_blank"}
