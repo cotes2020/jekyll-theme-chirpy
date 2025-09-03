@@ -93,7 +93,7 @@ This project is published under the [MIT License][license].
 [gem]: https://rubygems.org/gems/jekyll-theme-amethyst
 [ci]: https://github.com/kyroceus/jekyll-theme-amethyst/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
 [codacy]: https://app.codacy.com/gh/kyroceus/jekyll-theme-amethyst/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
-[license]: https://github.com/kyroceus/jekyll-theme-amethyst/blob/master/LICENSE
+[license]: https://github.com/kyroceus/jekyll-theme-amethyst/blob/main/LICENSE
 [open-container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/kyroceus/jekyll-theme-amethyst
 [jekyllrb]: https://jekyllrb.com/
 [demo]: https://kyroceus.github.io/amethyst-demo/
