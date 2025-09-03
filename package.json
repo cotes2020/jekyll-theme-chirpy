@@ -1,18 +1,18 @@
 {
-  "name": "jekyll-theme-amethyst",
+  "name": "jekyll-theme-purple",
   "version": "1.0.0",
   "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kyroceus/jekyll-theme-amethyst.git"
+    "url": "git+https://github.com/kyroceus/jekyll-theme-purple.git"
   },
   "author": "Cotes Chung, Vishwa R",
   "license": "MIT",
   "since": 2019,
   "bugs": {
-    "url": "https://github.com/kyroceus/jekyll-theme-amethyst/issues"
+    "url": "https://github.com/kyroceus/jekyll-theme-purple/issues"
   },
-  "homepage": "https://github.com/kyroceus/jekyll-theme-amethyst/",
+  "homepage": "https://github.com/kyroceus/jekyll-theme-purple/",
   "type": "module",
   "scripts": {
     "build": "concurrently npm:build:*",
