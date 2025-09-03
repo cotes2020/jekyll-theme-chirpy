@@ -7,8 +7,8 @@ set -eu
 opt_pre=false # option for bump gem version
 opt_pkg=false # option for building gem package
 
-MAIN_BRANCH="master"
-RELEASE_BRANCH="production"
+MAIN_BRANCH="main"
+RELEASE_BRANCH="dev"
 
 GEM_SPEC="jekyll-theme-amethyst.gemspec"
 NODE_SPEC="package.json"
