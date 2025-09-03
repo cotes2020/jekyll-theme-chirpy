@@ -16,7 +16,7 @@ timezone: Asia/Kolkata
 
 title: Amethyst # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: A text-focused Jekyll theme fork of Chirpy # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -223,4 +223,4 @@ jekyll-archives:
     tag: tag
   permalinks:
     tag: /tags/:name/
-    category: /categories/:name
+    category: /categories/:name/
