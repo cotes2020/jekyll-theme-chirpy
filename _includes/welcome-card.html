@@ -15,12 +15,14 @@
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Header is visible - activate iframe
-            iframe.style.display = 'block';
-          } else {
-            // Header is not visible - deactivate iframe
-            iframe.style.display = 'none';
-          }
+              // Header is visible - activate iframe and resume Emscripten loop
+              iframe.style.display = 'block';
+              iframe.contentWindow.postMessage({action: 'resume'}, '*');
+            } else {
+              // Header is not visible - pause Emscripten loop and hide iframe
+              iframe.contentWindow.postMessage({action: 'pause'}, '*');
+              iframe.style.display = 'none';
+            }
         });
       },
       {
