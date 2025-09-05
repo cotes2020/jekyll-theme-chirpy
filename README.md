@@ -14,7 +14,7 @@
 
   [**Live Demo** →][demo]
 
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+  [![Devices Mockup](https://purple-img.netlify.app/commons/device-mockup.png)][demo]
 
 </div>
 
