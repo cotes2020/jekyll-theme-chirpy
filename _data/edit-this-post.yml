@@ -1,0 +1,5 @@
+# "Edit this post" options at the bottom of the post.
+
+enabled: false # set to true to display the "Edit this post" link
+url: "" # the repository base URL, e.g. https://github.com/cotes2020/jekyll-theme-chirpy/tree/master
+static_url: false # set to true if the URL should remain exactly as defined above for all posts

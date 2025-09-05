@@ -60,6 +60,7 @@ post:
   read_time:
     unit: خولەک
     prompt: خوێندنەوە
+  edit: ئەم بابەتە دەستکاری بکە
   relate_posts: بابەتی پەیوەندیدار
   share: بڵاوکردنەوە
   button:

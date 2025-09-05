@@ -60,6 +60,7 @@ post:
   read_time:
     unit: မိနစ်
     prompt: ဖတ်ပါမည်
+  edit: ဤပို့စ်ကို တည်းဖြတ်ပါ
   relate_posts: နောက်ထပ်ဖတ်ရန်
   share: မျှဝေရန်
   button:
