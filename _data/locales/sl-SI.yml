@@ -60,6 +60,7 @@ post:
   read_time:
     unit: min
     prompt: beri #read
+  edit: Uredi to objavo #Edit this post
   relate_posts: Nadaljnje branje #Further Reading
   share: Deli #Share
   button:

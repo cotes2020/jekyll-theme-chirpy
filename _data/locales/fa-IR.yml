@@ -60,6 +60,7 @@ post:
   read_time:
     unit: "دقیقه "
     prompt: " زمان مطالعه"
+  edit: ویرایش این پست
   relate_posts: بیشتر بخوانید
   share: اشتراک‌گذاری
   button:

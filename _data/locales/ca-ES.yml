@@ -60,6 +60,7 @@ post:
   read_time:
     unit: min
     prompt: " de lectura"
+  edit: Edita aquesta entrada
   relate_posts: Entrades relacionades
   share: Compartir
   button:

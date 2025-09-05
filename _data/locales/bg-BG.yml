@@ -60,6 +60,7 @@ post:
   read_time:
     unit: мин
     prompt: четиво
+  edit: Редактирай тази публикация
   relate_posts: Още за четене
   share: Споделете
   button:

@@ -1,0 +1,23 @@
+<!-- Link to edit the post to contribute. -->
+
+{% assign enabled = site.actions.edit_post.enabled %}
+{% assign url = site.actions.edit_post.url %}
+{% assign static_url = site.actions.edit_post.static_url %}
+
+{% unless static_url %}
+  {% assign url = url | append: '/' | append: page.path %}
+{% endunless %}
+
+{% if enabled %}
+  <div class="post-edit">
+    {% assign edit = site.data.locales[include.lang].post.edit %}
+    <a
+      href="{{ url }}"
+      target="_blank"
+      rel="noopener"
+    >
+      <i class="fa fa-pen fa-fw me-1"></i>
+      <span>{{ edit }}</span>
+    </a>
+  </div>
+{% endif %}

@@ -60,6 +60,7 @@ post:
   read_time:
     unit: دقیقې
     prompt: لوستل
+  edit: دغه لیکنه سمول
   relate_posts: نوره لوستنه
   share: شریکول
   button:
