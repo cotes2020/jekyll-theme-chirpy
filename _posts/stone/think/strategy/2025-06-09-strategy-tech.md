@@ -55,6 +55,25 @@ Spawn -> HiHi
 - 포폴 뭐로?
   - 수집형 하고 싶으면 수집형을
   - 서버
+- 압축 포맷
+  - ASTC 4x4
+  - ETC2 8Bits
+- Sprite/Default 차이
+  - Atlas 압축 방시 ㄱ따라감?
+- 잘못 커밋했을때
+  - git log --oneline
+  - chectkout <이동할브랜치>
+  - cherrypick <커밋 hash>
+- i.posworld.x,
+- RotateCoords
+  - float rad = radians (angle)
+  - cosA = cos(rad)
+  - sinA = sin(rad)
+  - return float2(coords.x * cosA- coords.y * sinA, Coordsx * sinA + coords.y * cosA)
+- URL 스킴
+- mailto:
+- Application.OpenURL
+
 ## 아트
 
 ---
