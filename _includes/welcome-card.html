@@ -10,19 +10,39 @@
   document.addEventListener('DOMContentLoaded', function () {
     const iframe = document.getElementById('portfolio-banner');
     const container = document.getElementById('portfolio-container');
+    let iframeLoaded = false;
+
+    // Safe postMessage function with error handling
+    function safePostMessage(message) {
+      if (!iframe || !iframeLoaded) return;
+      
+      try {
+        // Check if iframe and contentWindow exist
+        if (iframe.contentWindow && typeof iframe.contentWindow.postMessage === 'function') {
+          iframe.contentWindow.postMessage(message, 'https://ounols.github.io');
+        }
+      } catch (error) {
+        console.warn('PostMessage failed:', error);
+      }
+    }
+
+    // Wait for iframe to load completely
+    iframe.addEventListener('load', function() {
+      iframeLoaded = true;
+    });
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-              // Header is visible - activate iframe and resume Emscripten loop
-              iframe.style.display = 'block';
-              iframe.contentWindow.postMessage({action: 'resume'}, '*');
-            } else {
-              // Header is not visible - pause Emscripten loop and hide iframe
-              iframe.contentWindow.postMessage({action: 'pause'}, '*');
-              iframe.style.display = 'none';
-            }
+            // Header is visible - activate iframe and resume Emscripten loop
+            iframe.style.display = 'block';
+            safePostMessage({action: 'resume'});
+          } else {
+            // Header is not visible - pause Emscripten loop and hide iframe
+            safePostMessage({action: 'pause'});
+            iframe.style.display = 'none';
+          }
         });
       },
       {
