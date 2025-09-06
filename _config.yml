@@ -220,6 +220,7 @@ exclude:
   - "*-DRAFT.md"
   - "*-template.md"
   - "*-TEMPLATE.md"
+  - "**/ticket/*.md"
 
 jekyll-archives:
   enabled: [categories, tags]

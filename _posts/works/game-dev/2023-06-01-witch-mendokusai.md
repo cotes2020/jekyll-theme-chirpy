@@ -36,7 +36,8 @@ date: 2023-06-01. 10:25
 # last_modified_at: 2024-05-05. 11:04
 # last_modified_at: 2024-05-22. 20:49
 # last_modified_at: 2025-04-29. 06:38 # 프로젝트 문서
-last_modified_at: 2025-05-06. 15:45 # +목표
+# last_modified_at: 2025-05-06. 15:45 # +목표
+last_modified_at: 2025-08-17. 09:48 # +나아가야 할 방향
 ---
 
 _
@@ -59,6 +60,24 @@ _
 ## Todo
 
 ---
+
+### 나아가야 할 방향
+
+그게 우리가 나아가야 할 방향이야!  
+
+- 심플하지만 효과적으로
+  - 로우 코스트 하이 리턴
+  - 가능하고 효과적인 방법들
+  - --> 장르: 뱀서류 / 로그라이크
+  - --> UI: 네모네모 벡터벡터
+    - division
+    - 소녀전선, 명일방주
+    - UX는 공부해야
+  - --> 그래픽: 로우폴리 모델 / 간단한 도트
+    - --> 치비, 뽀득뽀득
+    - [](https://youtu.be/MiOBV1_SnHs?feature=shared)
+    - [](https://www.youtube.com/watch?v=9HUMT9F7baM)
+    - [](https://x.com/esukevi)
 
 ### Task 1
 
