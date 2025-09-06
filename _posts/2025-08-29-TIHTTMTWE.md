@@ -10,7 +10,7 @@ image:
 
 ### Short Summary
 
-This book follows Nicole Perlroth investigating the zero-day market, cyber weapons, and the cyber arms race. She was originally covering Silicon Valley when the New York Times asked her to cover cybersecurity - even though she knew nothing about it. This actually works in the book's favor since her learning curve mirrors that of general readers, making her discoveries and reactions feel more relatable.
+This book follows Nicole Perlroth investigating the zero-day market, cyber weapons, and the cyber arms race. She was originally covering Silicon Valley stuff when suddenly the New York Times asked her to cover cybersecurity - even though she knew nothing about it. This actually works in the book's favor since her learning curve mirrors that of general readers, making her discoveries and reactions feel more relatable.
 
 The book is heavily U.S.-focused, tracing how American government demand for cyber weapons transformed a small bug bounty market into a dangerous global arms trade. Through interviews with NSA hackers, exploit brokers, and foreign intelligence contractors, she shows how America's offensive cyber strategy became insane - the same weapons we developed (like Stuxnet) ended up in the hands of adversaries and authoritarian governments, paving the way for future chaos. She occasionally adds political commentary that doesn't really connect to the cybersecurity story, which might distract some readers. She also tends to present every development in the most alarming way possible, which might make readers feel more panicked about cyber threats than necessary.
 <img src="https://m.media-amazon.com/images/I/51cRIu2us8L._SY445_SX342_.jpg"
