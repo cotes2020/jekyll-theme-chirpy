@@ -5,55 +5,6 @@
 {% assign desc_ko = '제 블로그를 통해 다양한 주제에 대해 공유하고 있습니다.<br>관심 있는 분들은 언제든지 댓글이나 이메일로 소통해 주세요! 😊' %}
 {% assign desc_en = "I share various topics through my blog.<br>Feel free to reach out via comments or email if you're interested! 😊" %}
 
-<script>
-  // Iframe visibility control using Intersection Observer
-  document.addEventListener('DOMContentLoaded', function () {
-    const iframe = document.getElementById('portfolio-banner');
-    const container = document.getElementById('portfolio-container');
-    let iframeLoaded = false;
-
-    // Safe postMessage function with error handling
-    function safePostMessage(message) {
-      if (!iframe || !iframeLoaded) return;
-      
-      try {
-        // Check if iframe and contentWindow exist
-        if (iframe.contentWindow && typeof iframe.contentWindow.postMessage === 'function') {
-          iframe.contentWindow.postMessage(message, 'https://ounols.github.io');
-        }
-      } catch (error) {
-        console.warn('PostMessage failed:', error);
-      }
-    }
-
-    // Wait for iframe to load completely
-    iframe.addEventListener('load', function() {
-      iframeLoaded = true;
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Header is visible - activate iframe and resume Emscripten loop
-            iframe.style.display = 'block';
-            safePostMessage({action: 'resume'});
-          } else {
-            // Header is not visible - pause Emscripten loop and hide iframe
-            safePostMessage({action: 'pause'});
-            iframe.style.display = 'none';
-          }
-        });
-      },
-      {
-        threshold: 0.01 // Trigger when 1% of the container is visible
-      }
-    );
-
-    observer.observe(container);
-  });
-</script>
-
 <div id="home-post" class="flex-grow-1 px-xl-1">
   <div class="card-wrapper post-preview card">
     <div
