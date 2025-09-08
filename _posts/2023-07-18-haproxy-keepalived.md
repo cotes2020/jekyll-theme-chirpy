@@ -161,7 +161,7 @@ vrrp_instance LB_VIP {
     virtual_ipaddress {
         <lb-vip>  #vip
     }
-    # Use the Defined Script to Check whether to initiate a fail over
+    # Use the Defined Script to Check whether to initiate a fail over.
     track_script {
         chk_haproxy
     }
