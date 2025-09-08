@@ -1,0 +1,22 @@
+{% assign size = 352 %}
+{% assign theme = '' %}
+
+{% if include.compact %}
+  {% assign size = 152 %}
+{% endif %}
+
+{% if include.dark %}
+  {% assign theme = '?theme=0' %}
+{% endif %}
+
+<iframe
+  class="embed-audio spotify"
+  src="https://open.spotify.com/embed/track/{{ include.id | append: theme }}"
+  height="{{ size }}"
+  frameBorder="0"
+  allowfullscreen=""
+  allowtransparency="true"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  loading="lazy"
+>
+</iframe>
