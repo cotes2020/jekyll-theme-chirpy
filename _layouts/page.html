@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+{% include origin-type.html %}
+
+{% if layout.tail_includes %}
+  {% assign has_tail = true %}
+{% endif %}
+
+<div class="row{% unless has_tail %} mb-5{% endunless %}">
+  <!-- core -->
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pe-xl-4">
+    {% capture padding %}
+      {% unless page.layout == 'home' %}px-1{% endunless %}
+    {% endcapture %}
+
+    <div class="post {{ padding | strip }} px-md-2">
+      {% capture _content %}
+      {% if layout.refactor or page.layout == 'page' %}
+        {% include refactor-content.html content=content lang=lang %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    {% endcapture %}
+
+      {% if page.layout == 'page' or page.collection == 'tabs' %}
+        {% assign tab_key = page.title | downcase %}
+        {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+        <h1 class="dynamic-title">
+          {{ title }}
+        </h1>
+        <div class="post-content">
+          {{ _content }}
+        </div>
+      {% else %}
+        {{ _content }}
+      {% endif %}
+    </div>
+  </div>
+  <!-- #core-wrapper -->
+
+  <!-- panel -->
+  <div id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+    <div class="access">
+      {% include_cached update-list.html lang=lang %}
+      {% include_cached trending-tags.html lang=lang %}
+    </div>
+
+    {% for _include in layout.panel_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} lang=lang %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- tail -->
+{% if has_tail %}
+  <div class="row">
+    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-3 pe-xl-4 mt-5">
+      {% for _include in layout.tail_includes %}
+        {% assign _include_path = _include | append: '.html' %}
+        {% include {{ _include_path }} lang=lang %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

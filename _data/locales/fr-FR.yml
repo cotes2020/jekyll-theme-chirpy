@@ -1,0 +1,77 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Post
+  category: Catégorie
+  tag: Tag
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Accueil
+  categories: Catégories
+  tags: Tags
+  archives: Archives
+  about: A propos de
+
+# the text displayed in the search bar & search results
+search:
+  hint: recherche
+  cancel: Annuler
+  no_results: Oups ! Aucun résultat trouvé.
+
+panel:
+  lastmod: Récemment mis à jour
+  trending_tags: Tags tendance
+  toc: Contenu
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Cet article est sous licence :LICENSE_NAME par l'auteur.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Certains droits réservés.
+  verbose: >-
+    Sauf mention contraire, les articles de ce site sont publiés sous licence
+    sous la licence Creative Commons Attribution 4.0 International (CC BY 4.0) par l'auteur.
+
+meta: Propulsé par :PLATFORM avec le thème :THEME
+
+not_found:
+  statment: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
+
+notification:
+  update_found: Une nouvelle version du contenu est disponible.
+  update: Mise à jour
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Par
+  posted: Posté
+  updated: Mis à jour
+  words: mots
+  pageview_measure: vues
+  read_time:
+    unit: min
+    prompt: lire
+  relate_posts: Autres lectures
+  share: Partager
+  button:
+    next: Plus récent
+    previous: Plus ancien
+    copy_code:
+      succeed: Copié !
+    share_link:
+      title: Copier le lien
+      succeed: Lien copié avec succès !
+
+# categories page
+categories:
+  category_measure: catégories
+  post_measure: posts
