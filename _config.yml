@@ -1,116 +1,40 @@
-# The Site Configuration
 
-# Import the theme
 theme: jekyll-theme-chirpy
-
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
-# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
-# otherwise, the layout language will use the default value of 'en'.
+baseurl: ""
 lang: en
+timezone: Asia/Seoul
 
-# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Shanghai
+image_fulls_loc: "/images/fulls"
+image_thumbs_loc: "/images/thumbs"
+google_analytics: "UA-46465113-2"
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# ↓ --------------------------
-
-title: Chirpy # the main title
-
-tagline: A text-focused Jekyll theme # it will display as the subtitle
-
-description: >- # used by seo meta and the atom feed
+title: 지그의 게임 개발기 
+tagline: 저에게 게임은 휴식이자 즐거움입니다. 그렇기에 게임을 통해 지친 마음을 쉬게하고 다른 도전을 할 수 있는 게임을 만드는 것이 저의 꿈입니다. 
+description: >- 
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
-
-# Fill in the protocol & hostname for your site.
-# E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://tkdals1049.github.io"
 
 github:
-  username: github_username # change to your GitHub username
-
+  username: tkdals1049 
 twitter:
-  username: twitter_username # change to your Twitter username
-
+  username: tkdals1049 
 social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: tkdals1049
+  email: tkdals1049@naver.com 
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://twitter.com/tkdals1049 
+    - https://github.com/tkdals1049 
+google_site_verification: 
 
-# Site Verification Settings
-webmaster_verifications:
-  google: # fill in your Google verification code
-  bing: # fill in your Bing verification code
-  alexa: # fill in your Alexa verification code
-  yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
-  facebook: # fill in your Facebook verification code
+theme_mode: # [dark|light]
 
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
-
-# Web Analytics Settings
-analytics:
-  google:
-    id: # fill in your Google Analytics ID
-  goatcounter:
-    id: # fill in your GoatCounter ID
-  umami:
-    id: # fill in your Umami ID
-    domain: # fill in your Umami domain
-  matomo:
-    id: # fill in your Matomo ID
-    domain: # fill in your Matomo domain
-  cloudflare:
-    id: # fill in your Cloudflare Web Analytics token
-  fathom:
-    id: # fill in your Fathom Site ID
-
-# Page views settings
-pageviews:
-  provider: # now only supports 'goatcounter'
-
-# Prefer color scheme setting.
-#
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
-#
-# Available options:
-#
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
-#
-theme_mode: # [light | dark]
-
-# The CDN endpoint for media resources.
-# Notice that once it is assigned, the CDN url
-# will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
-#
-# e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
-
-# the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
-
-# The URL of the site-wide social preview image used in SEO `og:image` meta tag.
-# It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
-
-# boolean type, the global switch for TOC in posts.
+img_cdn:   "https://tkdals1049.github.io/"  
+avatar: "assets/img/favicons/favicon.ico"
 toc: true
 
 comments:
-  # Global switch for the post-comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
-  # The provider options are as follows:
+  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
@@ -124,7 +48,6 @@ comments:
     category:
     category_id:
     mapping: # optional, default to 'pathname'
-    strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
@@ -135,27 +58,16 @@ assets:
     enabled: # boolean, keep empty means false
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
-    env: # [development | production]
+    env: # [development|production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
-  cache:
-    enabled: true # The option for PWA offline cache
-    # Paths defined here will be excluded from the PWA cache.
-    # Usually its value is the `baseurl` of another website that
-    # shares the same domain name as the current website.
-    deny_paths:
-      # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
+  enabled: true # the option for PWA feature
 
 paginate: 10
-
-# The base URL of your site
-baseurl: ""
-
+future: true
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
-  footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
   syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
     css_class: highlight
@@ -170,6 +82,10 @@ collections:
   tabs:
     output: true
     sort_by: order
+  gallerys:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name
 
 defaults:
   - scope:
@@ -192,6 +108,20 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: assets/img/favicons
+    values:
+      swcache: true
+  - scope:
+      path: assets/js/dist
+    values:
+      swcache: true
+  - scope:
+      path: assets/img/test
+      type: gallerys # see `site.collections`
+    values:
+      image: true
+      
 
 sass:
   style: compressed
@@ -211,10 +141,11 @@ exclude:
   - docs
   - tools
   - README.md
+  - CHANGELOG.md
   - LICENSE
-  - purgecss.js
-  - "*.config.js"
-  - "package*.json"
+  - rollup.config.js
+  - node_modules
+  - package*.json
 
 jekyll-archives:
   enabled: [categories, tags]

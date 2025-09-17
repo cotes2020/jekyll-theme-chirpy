@@ -1,56 +1,71 @@
 <!-- The Side Bar -->
 
-<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
-  <header class="profile-wrapper">
+<div id="sidebar" class="d-flex flex-column align-items-end">
+<div id="bg">
+  <img src="{{site.img_cdn}}assets/img/bg/sky.jpg" alt="My Image"></img>
+  </div>
+<div class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
-      {%- if site.avatar != empty and site.avatar -%}
-        {%- capture avatar_url -%}
-          {% include media-url.html src=site.avatar %}
-        {%- endcapture -%}
-        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
-      {%- endif -%}
+      {% if site.avatar != empty and site.avatar %}
+        {% capture avatar_url %}
+            {% if site.avatar contains '://' %}
+              {{ site.avatar }}
+            {% elsif site.img_cdn != empty and site.img_cdn %}
+              {{ site.avatar | prepend: site.img_cdn }}
+            {% else %}
+              {{ site.avatar | relative_url }}
+            {% endif %}
+          {% endcapture %}
+        <img src="{{ avatar_url | strip }}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
+      {% endif %}
     </a>
 
-    <a class="site-title d-block" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
-  </header>
+    <div class="site-title">
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </div>
+    <div id="subtitle" class="row"></div>
+    <!--<div class="site-subtitle fst-italic">{{ site.tagline }}</div>-->
+  </div>
   <!-- .profile-wrapper -->
 
-  <nav class="flex-column flex-grow-1 w-100 ps-0">
-    <ul class="nav">
-      <!-- home -->
-      <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
-        <a href="{{ '/' | relative_url }}" class="nav-link">
-          <i class="fa-fw fas fa-home"></i>
-          <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+  <ul class="nav flex-column flex-grow-1 w-100 ps-0">
+    <!-- home 
+    <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+      <a href="{{ '/' | relative_url }}" class="nav-link">
+        <i class="fa-fw fas fa-home"></i>
+        <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+      </a>
+    </li>
+     the real tabs -->    
+    {% for tab in site.tabs %}
+    
+    {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+    {% if tab_name != 'tags' %}
+      <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+        <a href="{{ tab.url | relative_url }}" class="nav-link">
+          <i class="fa-fw {{ tab.icon }}"></i>
+
+          <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
         </a>
       </li>
-      <!-- the real tabs -->
-      {% for tab in site.tabs %}
-        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
-            <i class="fa-fw {{ tab.icon }}"></i>
-            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-
-            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-          </a>
-        </li>
-        <!-- .nav-item -->
-      {% endfor %}
-    </ul>
-  </nav>
+      <!-- .nav-item -->
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <!-- ul.nav.flex-column -->
 
   <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
-    {% unless site.theme_mode %}
-      <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+     {% unless site.theme_mode %} 
+     <button class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
 
       {% if site.data.contact.size > 0 %}
         <span class="icon-border"></span>
       {% endif %}
+      
     {% endunless %}
-
+    
     {% for entry in site.data.contact %}
       {% case entry.type %}
         {% when 'github', 'twitter' %}
@@ -93,5 +108,5 @@
     {% endfor %}
   </div>
   <!-- .sidebar-bottom -->
-</aside>
+</div>
 <!-- #sidebar -->

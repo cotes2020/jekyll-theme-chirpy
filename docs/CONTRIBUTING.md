@@ -1,41 +1,38 @@
 # Contributing Guidelines
 
-_First of all, thank you for considering contributing to this project_ ! :tada:
+:tada: _First of all, thank you for considering contributing to this project!_ :tada:
 
 There are many ways to contribute, from writing tutorials or blog posts, improving the documentation, submitting bug
-reports and feature requests, or writing code that can be incorporated into the project. In order to make a good
-experience for both contributors and maintainers, please start with the "[General Rules](#general-rules)"
-before taking further action.
+reports and feature requests or writing code which can be incorporated into Chirpy itself.
 
-## Table of Contents
+## In This Article
 
 - [General Rules](#general-rules)
 - [Questions and Requests for Help](#questions-and-requests-for-help)
-- [Reporting a Bug](#reporting-a-bug)
-- [Suggesting a New Feature](#suggesting-a-new-feature)
-- [Contributing Code/Documentation](#contributing-codedocumentation)
+- [File a Bug Report](#file-a-bug-report)
+- [Suggest a New Feature](#suggest-a-new-feature)
+- [Contributing Code and Documentation Changes](#contributing-code-and-documentation-changes)
 - [Helpful Resources](#helpful-resources)
 
 ## General Rules
 
-All types of contributions (_pull requests_, _issues_, and _discussions_) should follow these rules:
+All contributions should be based on the following rules:
 
 - You should read through the [Wiki][wiki] to understand the project features and how to use it properly. This is to
 respect the time of the project's developers and
-maintainers and to save their energy for other problems that really need to be resolved.
+maintainers, and to save their energy for other problems that really need to be resolved.
 
 - Use the [latest release version][latest-ver]. If your contribution involves code/documentation changes, update to the
 latest version of the default (`master`) branch.
 
-- Avoid making duplicate contributions by searching for existing [issues][issues] / [discussions][discus] /
-[pull requests][pr], but don't leave any unhelpful comments such as "I have the same problem". Prefer using
+- Avoid making duplicate contributions by searching for existing [Issues][issues] / [Discussioins][discus] /
+[Pull Requests][pr], but don't leave any unhelpful comments such as "I have the same problem". Prefer using
 [reactions][gh-reactions] if you simply want to "+1" an existing issue.
 
 - DO NOT email or tweet the
-project developers and maintainers directly, everything about the project should be left on GitHub.
+project developers and maintainers directly, everything about Chirpy should be left in GitHub.
 
-**Tip**: If you are new to the open-source community, then please read through
-"[How To Ask Questions The Smart Way][ext-reading]" before contributing.
+**Tips**: If you're new to open source, see "[How To Ask Questions The Smart Way][ext-reading]".
 
 ## Questions and Requests for Help
 
@@ -46,7 +43,7 @@ enthusiastic geeks who will positively answer your challenging questions.
 If you can't get an answer in any of the above ways, then create a new [discussion][discus]. As long as it is not a
 duplicate and [RTFM][rtfm] / [STFW][stfw] issue, we will respond as soon as possible.
 
-## Reporting a Bug
+## File a Bug Report
 
 A great way to contribute to the project is to send a detailed issue when you encounter a problem. We always appreciate
 a well-written, thorough bug report.
@@ -61,34 +58,34 @@ You can learn about Jekyll and modern Web development to solve problems caused b
 
 3. Make good use of your browser's incognito mode to troubleshoot if the problem is caused by caching.
 
-4. As a last option, you can create a new [Bug Report][bug-report] following the template to describe the details.
+4. As a last option, you can create a new [Bug Report][new-issue] follow the template to describe the details.
 If possible, providing a demo that reproduces the error will help us troubleshoot faster.
 
-## Suggesting a New Feature
+## Suggest a New Feature
 
-Feature requests are welcome! While we will consider all requests, we cannot guarantee your request will be accepted.  
-We want to avoid chaos in the UI design and therefore do not accept requests for changes like color schemes,
-fontfamilies, typography, and so on. We want to avoid [feature creep][feat-creep] and focus only on the core features.
+Feature requests are welcome! While we will consider all requests, we cannot guarantee your request will be accepted.
+
+We want to avoid chaos in the UI design, so we won't accept requests for changes like color schemes, font families,
+typography, and so on. **Do not open a duplicate feature request.** Search for existing feature requests first. If you
+find your feature (or one very similar) previously requested, comment on that issue.
+
 If accepted, we cannot make any commitments regarding the timeline for implementation and release. However, you are
 welcome to submit a pull request to help!
 
-## Contributing Code/Documentation
+## Contributing Code and Documentation Changes
 
-If your request is about an enhancement, it is recommended to first submit a
-[Feature Request][feat-request] to discuss whether your idea fits the project.
-See also: "[Suggesting a New Feature](#suggesting-a-new-feature)". Other than that, you can start the PR process.
+In short, you can follow these steps to complete the contribution.
 
 1. Fork this project on GitHub and clone your repository locally.
 2. Setting up the [development & test environments][dev-env].
-3. Creating a new branch from the default branch and give it a descriptive name (e.g. `add-a-new-feat` or `fix-a-bug`).
+3. Create a new branch from the default branch and give it a descriptive name (e.g. `add-a-new-feat` or `fix-a-bug`).
 When development is complete, create a [Conventional Commit][cc] with Git.
-4. Submitting a [Pull Request][gh-pr].
+4. Create a new [Pull Request][gh-pr].
 
 ## Helpful Resources
 
 - [Code of conduct](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CODE_OF_CONDUCT.md)
 - [Security policy](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/SECURITY.md)
-- [How To Ask Questions The Smart Way][ext-reading]
 
 [latest-ver]: https://github.com/cotes2020/jekyll-theme-chirpy/releases/latest
 [wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
@@ -101,9 +98,7 @@ When development is complete, create a [Conventional Commit][cc] with Git.
 [rtfm]: https://en.wikipedia.org/wiki/RTFM
 [stfw]: https://www.webster-dictionary.org/definition/STFW
 [gh-reactions]: https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/
-[bug-report]: https://github.com/cotes2020/jekyll-theme-chirpy/issues/new?assignees=&labels=&projects=&template=bug_report.yml
-[feat-request]: https://github.com/cotes2020/jekyll-theme-chirpy/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml
-[feat-creep]: https://en.wikipedia.org/wiki/Feature_creep
+[new-issue]: https://github.com/cotes2020/jekyll-theme-chirpy/issues/new/choose
 [dev-env]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Development-&-Test-Environments
 [cc]: https://www.conventionalcommits.org/
 [gh-pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests

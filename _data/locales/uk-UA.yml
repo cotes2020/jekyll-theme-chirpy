@@ -43,7 +43,7 @@ copyright:
 meta: Powered by :PLATFORM with :THEME theme
 
 not_found:
-  statement: Вибачте, це посилання вказує на ресурс, що не існує.
+  statment: Вибачте, це посилання вказує на ресурс, що не існує.
 
 notification:
   update_found: Доступна нова версія вмісту.

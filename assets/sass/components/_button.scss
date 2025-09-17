@@ -1,0 +1,89 @@
+///
+/// Multiverse by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Button */
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
+	.button {
+		@include vendor('appearance', 'none');
+		@include vendor('transition', (
+			'background-color #{_duration(transition)} ease-in-out',
+			'box-shadow #{_duration(transition)} ease-in-out',
+			'color #{_duration(transition)} ease-in-out'
+		));
+		background-color: transparent;
+		border: 0;
+		border-radius: 0;
+		box-shadow: inset 0 0 0 2px _palette(border);
+		color: _palette(fg-bold) !important;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 0.9em;
+		font-weight: _font(weight-bold);
+		height: _size(element-height) * (1 / 0.9);
+		letter-spacing: _font(kerning-alt);
+		line-height: _size(element-height) * (1 / 0.9);
+		padding: 0 2.5em;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		white-space: nowrap;
+
+		&:hover {
+			box-shadow: inset 0 0 0 2px _palette(accent1);
+			color: _palette(accent1) !important;
+
+			&:active {
+				background-color: transparentize(_palette(accent1), 0.85);
+				color: _palette(accent1) !important;
+			}
+		}
+
+		&.icon {
+			padding-left: 1.35em;
+
+			&:before {
+				margin-right: 0.5em;
+			}
+		}
+
+		&.fit {
+			display: block;
+			margin: 0 0 (_size(element-margin) * 0.5) 0;
+			width: 100%;
+		}
+
+		&.small {
+			font-size: 0.8em;
+		}
+
+		&.big {
+			font-size: 1.35em;
+		}
+
+		&.special {
+			background-color: _palette(accent1);
+			box-shadow: none;
+
+			&:hover {
+				background-color: lighten(_palette(accent1), 10);
+				color: _palette(fg-bold) !important;
+
+				&:active {
+					background-color: darken(_palette(accent1), 10);
+				}
+			}
+		}
+
+		&.disabled,
+		&:disabled {
+			@include vendor('pointer-events', 'none');
+			opacity: 0.35;
+		}
+	}

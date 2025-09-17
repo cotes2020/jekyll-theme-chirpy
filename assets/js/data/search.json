@@ -10,8 +10,11 @@ swcache: true
     "url": {{ post.url | relative_url | jsonify }},
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
-    "date": {{ post.date | jsonify }},
-    "content": {% include post-description.html json=true %}
+    "date": "{{ post.date }}",
+    {% include no-linenos.html content=post.content %}
+    {% assign _content = content | strip_html | strip_newlines %}
+    "snippet": {{ _content | truncate: 200 | jsonify }},
+    "content": {{ _content | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

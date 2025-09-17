@@ -1,0 +1,106 @@
+///
+/// Multiverse by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Panel */
+
+	.panel {
+		@include padding(4em, 4em);
+		@include vendor('transform', 'translateY(100vh)');
+		@include vendor('transition', 'transform #{_duration(panel)} ease');
+		-webkit-overflow-scrolling: touch;
+		background: transparentize(_palette(bg), 0.025);
+		bottom: _size(header);
+		left: 0;
+		max-height: calc(80vh - #{_size(header)});
+		overflow-y: auto;
+		position: fixed;
+		width: 100%;
+		z-index: _misc(z-index-base) + 1;
+
+		&.active {
+			@include vendor('transform', 'translateY(1px)');
+		}
+
+		> .inner {
+			margin: 0 auto;
+			max-width: 100%;
+			width: 75em;
+
+			&.split {
+				@include vendor('display', 'flex');
+
+				> div {
+					margin-left: 4em;
+					width: 50%;
+				}
+
+				> :first-child {
+					margin-left: 0;
+				}
+			}
+		}
+
+		> .closer {
+			@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+			background-image: url('https://tkdals1049.github.io/assets/css/images/close.svg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 3em;
+			cursor: pointer;
+			height: 5em;
+			opacity: 0.25;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 5em;
+			z-index: 2;
+
+			&:hover {
+				opacity: 1.0;
+			}
+		}
+
+		@include breakpoint(large) {
+			@include padding(3em, 3em);
+
+			> .inner {
+				&.split {
+					> div {
+						margin-left: 3em;
+					}
+				}
+			}
+
+			> .closer {
+				background-size: 2.5em;
+				background-position: 75% 25%;
+			}
+		}
+
+		@include breakpoint(medium) {
+			> .inner {
+				&.split {
+					@include vendor('flex-direction', 'column');
+
+					> div {
+						margin-left: 0;
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			@include vendor('transform', 'translateY(-100vh)');
+			@include padding(4em, 2em);
+			bottom: auto;
+			top: calc(#{_size(header)} - 1px);
+
+			&.active {
+				@include vendor('transform', 'translateY(0)');
+			}
+		}
+	}

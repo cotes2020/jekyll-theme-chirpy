@@ -1,5 +1,0 @@
-<!-- The comments switcher -->
-{% if page.comments and site.comments.provider %}
-  {% capture path %}comments/{{ site.comments.provider }}.html{% endcapture %}
-  {% include {{ path }} %}
-{% endif %}

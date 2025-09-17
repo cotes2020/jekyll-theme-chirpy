@@ -1,109 +1,121 @@
 /**
- * This script make #search-result-wrapper switch to unload or shown automatically.
+ * This script make #search-result-wrapper switch to unloaded or shown automatically.
  */
+const $btnSbTrigger = $('#sidebar-trigger');
+const $btnSearchTrigger = $('#search-trigger');
+const $btnCancel = $('#search-cancel');
+const $content = $('#main>.row');
+const $topbarTitle = $('#topbar-title');
+const $searchWrapper = $('#search-wrapper');
+const $resultWrapper = $('#search-result-wrapper');
+const $results = $('#search-results');
+const $input = $('#search-input');
+const $hints = $('#search-hints');
+const $viewport = $('html,body');
 
-const btnSbTrigger = document.getElementById('sidebar-trigger');
-const btnSearchTrigger = document.getElementById('search-trigger');
-const btnCancel = document.getElementById('search-cancel');
-const content = document.querySelectorAll('#main-wrapper>.container>.row');
-const topbarTitle = document.getElementById('topbar-title');
-const search = document.getElementById('search');
-const resultWrapper = document.getElementById('search-result-wrapper');
-const results = document.getElementById('search-results');
-const input = document.getElementById('search-input');
-const hints = document.getElementById('search-hints');
+// class names
+const C_LOADED = 'loaded';
+const C_UNLOADED = 'unloaded';
+const C_FOCUS = 'input-focus';
+const C_FLEX = 'd-flex';
 
-// CSS class names
-const LOADED = 'd-block';
-const UNLOADED = 'd-none';
-const FOCUS = 'input-focus';
-const FLEX = 'd-flex';
+class ScrollBlocker {
+  static offset = 0;
+  static resultVisible = false;
 
-/* Actions in mobile screens (Sidebar hidden) */
-class MobileSearchBar {
   static on() {
-    btnSbTrigger.classList.add(UNLOADED);
-    topbarTitle.classList.add(UNLOADED);
-    btnSearchTrigger.classList.add(UNLOADED);
-    search.classList.add(FLEX);
-    btnCancel.classList.add(LOADED);
+    ScrollBlocker.offset = window.scrollY;
+    $viewport.scrollTop(0);
   }
 
   static off() {
-    btnCancel.classList.remove(LOADED);
-    search.classList.remove(FLEX);
-    btnSbTrigger.classList.remove(UNLOADED);
-    topbarTitle.classList.remove(UNLOADED);
-    btnSearchTrigger.classList.remove(UNLOADED);
+    $viewport.scrollTop(ScrollBlocker.offset);
+  }
+}
+
+/*--- Actions in mobile screens (Sidebar hidden) ---*/
+class MobileSearchBar {
+  static on() {
+    $btnSbTrigger.addClass(C_UNLOADED);
+    $topbarTitle.addClass(C_UNLOADED);
+    $btnSearchTrigger.addClass(C_UNLOADED);
+    $searchWrapper.addClass(C_FLEX);
+    $btnCancel.addClass(C_LOADED);
+  }
+
+  static off() {
+    $btnCancel.removeClass(C_LOADED);
+    $searchWrapper.removeClass(C_FLEX);
+    $btnSbTrigger.removeClass(C_UNLOADED);
+    $topbarTitle.removeClass(C_UNLOADED);
+    $btnSearchTrigger.removeClass(C_UNLOADED);
   }
 }
 
 class ResultSwitch {
-  static resultVisible = false;
-
   static on() {
-    if (!this.resultVisible) {
-      resultWrapper.classList.remove(UNLOADED);
-      content.forEach((el) => {
-        el.classList.add(UNLOADED);
-      });
-      this.resultVisible = true;
+    if (!ScrollBlocker.resultVisible) {
+      // the block method must be called before $(#main) unloaded.
+      ScrollBlocker.on();
+      $resultWrapper.removeClass(C_UNLOADED);
+      $content.addClass(C_UNLOADED);
+      ScrollBlocker.resultVisible = true;
     }
   }
 
   static off() {
-    if (this.resultVisible) {
-      results.innerHTML = '';
-
-      if (hints.classList.contains(UNLOADED)) {
-        hints.classList.remove(UNLOADED);
+    if (ScrollBlocker.resultVisible) {
+      $results.empty();
+      if ($hints.hasClass(C_UNLOADED)) {
+        $hints.removeClass(C_UNLOADED);
       }
+      $resultWrapper.addClass(C_UNLOADED);
+      $content.removeClass(C_UNLOADED);
 
-      resultWrapper.classList.add(UNLOADED);
-      content.forEach((el) => {
-        el.classList.remove(UNLOADED);
-      });
-      input.textContent = '';
-      this.resultVisible = false;
+      // now the release method must be called after $(#main) display
+      ScrollBlocker.off();
+
+      $input.val('');
+      ScrollBlocker.resultVisible = false;
     }
   }
 }
 
 function isMobileView() {
-  return btnCancel.classList.contains(LOADED);
+  return $btnCancel.hasClass(C_LOADED);
 }
 
 export function displaySearch() {
-  btnSearchTrigger.addEventListener('click', () => {
+  $btnSearchTrigger.on('click', function () {
     MobileSearchBar.on();
     ResultSwitch.on();
-    input.focus();
+    $input.trigger('focus');
   });
 
-  btnCancel.addEventListener('click', () => {
+  $btnCancel.on('click', function () {
     MobileSearchBar.off();
     ResultSwitch.off();
   });
 
-  input.addEventListener('focus', () => {
-    search.classList.add(FOCUS);
+  $input.on('focus', function () {
+    $searchWrapper.addClass(C_FOCUS);
   });
 
-  input.addEventListener('focusout', () => {
-    search.classList.remove(FOCUS);
+  $input.on('focusout', function () {
+    $searchWrapper.removeClass(C_FOCUS);
   });
 
-  input.addEventListener('input', () => {
-    if (input.value === '') {
+  $input.on('input', () => {
+    if ($input.val() === '') {
       if (isMobileView()) {
-        hints.classList.remove(UNLOADED);
+        $hints.removeClass(C_UNLOADED);
       } else {
         ResultSwitch.off();
       }
     } else {
       ResultSwitch.on();
       if (isMobileView()) {
-        hints.classList.add(UNLOADED);
+        $hints.addClass(C_UNLOADED);
       }
     }
   });
