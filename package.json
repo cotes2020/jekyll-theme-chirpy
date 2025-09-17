@@ -13,14 +13,16 @@
     "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
+  "type": "module",
   "scripts": {
     "build": "concurrently npm:build:*",
     "build:css": "node purgecss.js",
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
+    "lint:js": "eslint",
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
-    "test": "npm run lint:scss",
+    "test": "npm run lint:js && npm run lint:scss",
     "prepare": "husky"
   },
   "dependencies": {
@@ -42,6 +44,8 @@
     "@semantic-release/git": "^10.0.1",
     "concurrently": "^9.1.2",
     "conventional-changelog-conventionalcommits": "^8.0.0",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0",
     "husky": "^9.1.7",
     "purgecss": "^7.0.2",
     "rollup": "^4.41.0",
