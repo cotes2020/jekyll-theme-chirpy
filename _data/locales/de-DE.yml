@@ -42,7 +42,7 @@ copyright:
 meta: Powered by :PLATFORM with :THEME theme
 
 not_found:
-  statment: Entschuldigung, dieser Link verweist auf keine vorhandene Ressource.
+  statement: Entschuldigung, dieser Link verweist auf keine vorhandene Ressource.
 
 notification:
   update_found: Eine neue Version ist verfügbar.
@@ -58,7 +58,7 @@ post:
   pageview_measure: Aufrufe
   read_time:
     unit: Minuten
-    prompt: lesen
+    prompt: Lesezeit
   relate_posts: Weiterlesen
   share: Teilen
   button:
@@ -69,6 +69,13 @@ post:
     share_link:
       title: Link kopieren
       succeed: Link erfolgreich kopiert!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%d.%m.%Y"
+    dayjs: "DD.MM.YYYY"
 
 # categories page
 categories:

@@ -1,6 +1,6 @@
 {% assign urls = include.urls | split: ',' %}
 
-{% assign combined_urls = nil %}
+{% assign combined_urls = null %}
 
 {% assign domain = 'https://cdn.jsdelivr.net/' %}
 
@@ -15,12 +15,12 @@
     {% endif %}
 
   {% elsif url contains '//' %}
-    <script src="{{ url }}"></script>
+    <script defer src="{{ url }}"></script>
   {% else %}
-    <script src="{{ url | relative_url }}"></script>
+    <script defer src="{{ url | relative_url }}"></script>
   {% endif %}
 {% endfor %}
 
 {% if combined_urls %}
-  <script src="{{ combined_urls }}"></script>
+  <script defer src="{{ combined_urls }}"></script>
 {% endif %}

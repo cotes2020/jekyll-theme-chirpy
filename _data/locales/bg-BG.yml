@@ -43,7 +43,7 @@ copyright:
 meta: Създадено чрез :PLATFORM и :THEME тема
 
 not_found:
-  statment: Съжалявам, но на този URL адрес няма налично съдържание.
+  statement: Съжалявам, но на този URL адрес няма налично съдържание.
 
 notification:
   update_found: Налична е нова версия на съдържанието.

@@ -17,6 +17,3 @@ quote_type = double
 
 [*.md]
 trim_trailing_whitespace = false
-
-[*.png,jpg]
-trim_trailing_whitespace = false

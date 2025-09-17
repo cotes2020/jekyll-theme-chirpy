@@ -1,38 +1,26 @@
-<!-- The Disqus lazy loading. -->
-<div id="disqus_thread" class="pt-2 pb-2">
-  <p class="text-center text-muted small">Comments powered by <a href="https://disqus.com/">Disqus</a>.</p>
-</div>
-
-<script type="text/javascript">
+<script>
   var disqus_config = function () {
     this.page.url = '{{ page.url | absolute_url }}';
     this.page.identifier = '{{ page.url }}';
   };
 
-  /* Lazy loading */
-  var disqus_observer = new IntersectionObserver(
-    function (entries) {
-      if (entries[0].isIntersecting) {
-        (function () {
-          var d = document,
-            s = d.createElement('script');
-          s.src = 'https://{{ site.comments.disqus.shortname }}.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
+  function addDisqus() {
+    let disqusThread = document.createElement('div');
+    let paragraph = document.createElement('p');
 
-        disqus_observer.disconnect();
-      }
-    },
-    { threshold: [0] }
-  );
+    disqusThread.id = 'disqus_thread';
+    paragraph.className = 'text-center text-muted small';
+    paragraph.innerHTML = 'Comments powered by <a href="https://disqus.com/">Disqus</a>.';
+    disqusThread.appendChild(paragraph);
 
-  disqus_observer.observe(document.querySelector('#disqus_thread'));
+    const footer = document.querySelector('footer');
+    footer.insertAdjacentElement("beforebegin", disqusThread);
+  }
 
-  /* Auto switch theme */
-  function reloadDisqus() {
-    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-      /* Disqus hasn't been loaded */
+  {%- comment -%} Auto switch theme {%- endcomment -%}
+  function reloadDisqus(event) {
+    if (event.source === window && event.data && event.data.id === Theme.ID) {
+      {%- comment -%} Disqus hasn't been loaded {%- endcomment -%}
       if (typeof DISQUS === 'undefined') {
         return;
       }
@@ -43,7 +31,27 @@
     }
   }
 
-  if (document.querySelector('.mode-toggle')) {
-    window.addEventListener('message', reloadDisqus);
+  addDisqus();
+
+  if (Theme.switchable) {
+    addEventListener('message', reloadDisqus);
   }
+
+  {%- comment -%} Lazy loading {%- endcomment -%}
+  var disqusObserver = new IntersectionObserver(
+    function (entries) {
+      if (entries[0].isIntersecting) {
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://{{ site.comments.disqus.shortname }}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+
+        disqusObserver.disconnect();
+      }
+    },
+    { threshold: [0] }
+  );
+
+  disqusObserver.observe(document.getElementById('disqus_thread'));
 </script>

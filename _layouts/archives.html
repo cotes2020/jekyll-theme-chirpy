@@ -9,28 +9,27 @@ layout: page
 {% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
 
 <div id="archives" class="pl-xl-3">
+  {% for post in site.posts %}
+    {% assign cur_year = post.date | date: '%Y' %}
 
-{% for post in site.posts %}
-  {% capture cur_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% if cur_year != last_year %}
+      {% unless forloop.first %}</ul>{% endunless %}
 
-  {% if cur_year != last_year %}
-    {% unless forloop.first %}</ul>{% endunless %}
-    <div class="year lead">{{ cur_year }}</div>
-    <ul class="list-unstyled">
-    {% assign last_year = cur_year %}
-  {% endif %}
+      <time class="year lead d-block">{{ cur_year }}</time>
+      {{ '<ul class="list-unstyled">' }}
 
-  <li>
-  {% assign ts = post.date | date: '%s' %}
-    <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: "%d" }}</span>
-    <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
-      {{ post.date | date: df_strftime_m }}
-    </span>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-  </li>
+      {% assign last_year = cur_year %}
+    {% endif %}
 
-  {% if forloop.last %}</ul>{% endif %}
+    <li>
+      {% assign ts = post.date | date: '%s' %}
+      <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: '%d' }}</span>
+      <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
+        {{ post.date | date: df_strftime_m }}
+      </span>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
 
-{% endfor %}
-
+    {% if forloop.last %}</ul>{% endif %}
+  {% endfor %}
 </div>

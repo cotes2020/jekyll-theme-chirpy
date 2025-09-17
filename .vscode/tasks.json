@@ -1,0 +1,64 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Jekyll Server",
+      "type": "shell",
+      "command": "./tools/run.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Runs the Jekyll server with live reload."
+    },
+    {
+      "label": "Build Jekyll Site",
+      "type": "shell",
+      "command": "./tools/test.sh",
+      "group": {
+        "kind": "build"
+      },
+      "problemMatcher": [],
+      "detail": "Build the Jekyll site for production."
+    },
+    {
+      "label": "Build JS (watch)",
+      "type": "shell",
+      "command": "npm run watch:js",
+      "group": {
+        "kind": "build"
+      },
+      "problemMatcher": [],
+      "detail": "Build JS files in watch mode."
+    },
+    {
+      "label": "Build CSS",
+      "type": "shell",
+      "command": "npm run build:css",
+      "group": {
+        "kind": "build"
+      },
+      "problemMatcher": [],
+      "detail": "Build CSS files."
+    },
+    {
+      "label": "Build JS & CSS",
+      "type": "shell",
+      "command": "npm run build",
+      "group": {
+        "kind": "build"
+      },
+      "problemMatcher": [],
+      "detail": "Build JS & CSS for production."
+    },
+    {
+      "label": "Run Jekyll Server + Build JS (watch)",
+      "dependsOn": ["Run Jekyll Server", "Build JS (watch)"],
+      "group": {
+        "kind": "build"
+      },
+      "detail": "Runs both the Jekyll server with live reload and build JS files in watch mode."
+    }
+  ]
+}

@@ -42,7 +42,7 @@ copyright:
 meta: 本網站使用 :PLATFORM 產生，採用 :THEME 主題
 
 not_found:
-  statment: 抱歉，您可能正在存取一個已被移動的 URL，或者它從未存在。
+  statement: 抱歉，您可能正在存取一個已被移動的 URL，或者它從未存在。
 
 notification:
   update_found: 發現新版本更新。

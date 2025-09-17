@@ -1,13 +1,36 @@
-export function toc() {
-  if (document.querySelector('#core-wrapper h2,#core-wrapper h3')) {
-    // see: https://github.com/tscanlin/tocbot#usage
-    tocbot.init({
-      tocSelector: '#toc',
-      contentSelector: '.post-content',
-      ignoreSelector: '[data-toc-skip]',
-      headingSelector: 'h2, h3',
-      orderedList: false,
-      scrollSmooth: false
-    });
+import { TocMobile as mobile } from './toc/toc-mobile';
+import { TocDesktop as desktop } from './toc/toc-desktop';
+
+const desktopMode = matchMedia('(min-width: 1200px)');
+
+function refresh(e) {
+  if (e.matches) {
+    if (mobile.popupOpened) {
+      mobile.hidePopup();
+    }
+
+    desktop.refresh();
+  } else {
+    mobile.refresh();
   }
 }
+
+function init() {
+  if (document.querySelector('main>article[data-toc="true"]') === null) {
+    return;
+  }
+
+  // Avoid create multiple instances of Tocbot. Ref: <https://github.com/tscanlin/tocbot/issues/203>
+  if (desktopMode.matches) {
+    desktop.init();
+  } else {
+    mobile.init();
+  }
+
+  const $tocWrapper = document.getElementById('toc-wrapper');
+  $tocWrapper.classList.remove('invisible');
+
+  desktopMode.onchange = refresh;
+}
+
+export { init as initToc };

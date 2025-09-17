@@ -1,19 +1,19 @@
 <!-- Navigation buttons at the bottom of the post. -->
 
-<div class="post-navigation d-flex justify-content-between">
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  {% assign previous = site.data.locales[include.lang].post.button.previous %}
+  {% assign next = site.data.locales[include.lang].post.button.next %}
+
   {% if page.previous.url %}
     <a
       href="{{ site.baseurl }}{{ page.previous.url }}"
       class="btn btn-outline-primary"
-      prompt="{{ site.data.locales[include.lang].post.button.previous }}"
+      aria-label="{{ previous }}"
     >
       <p>{{ page.previous.title }}</p>
     </a>
   {% else %}
-    <div
-      class="btn btn-outline-primary disabled"
-      prompt="{{ site.data.locales[include.lang].post.button.previous }}"
-    >
+    <div class="btn btn-outline-primary disabled" aria-label="{{ previous }}">
       <p>-</p>
     </div>
   {% endif %}
@@ -22,16 +22,13 @@
     <a
       href="{{ site.baseurl }}{{page.next.url}}"
       class="btn btn-outline-primary"
-      prompt="{{ site.data.locales[include.lang].post.button.next }}"
+      aria-label="{{ next }}"
     >
       <p>{{ page.next.title }}</p>
     </a>
   {% else %}
-    <div
-      class="btn btn-outline-primary disabled"
-      prompt="{{ site.data.locales[include.lang].post.button.next }}"
-    >
+    <div class="btn btn-outline-primary disabled" aria-label="{{ next }}">
       <p>-</p>
     </div>
   {% endif %}
-</div>
+</nav>

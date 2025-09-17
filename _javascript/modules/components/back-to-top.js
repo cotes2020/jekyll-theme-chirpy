@@ -3,18 +3,17 @@
  */
 
 export function back2top() {
-  const $window = $(window);
-  const $btn = $('#back-to-top');
+  const btn = document.getElementById('back-to-top');
 
-  $window.on('scroll', () => {
-    if ($window.scrollTop() > 50) {
-      $btn.fadeIn();
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      btn.classList.add('show');
     } else {
-      $btn.fadeOut();
+      btn.classList.remove('show');
     }
   });
 
-  $btn.on('click', () => {
-    $window.scrollTop(0);
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0 });
   });
 }

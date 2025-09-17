@@ -1,16 +1,17 @@
-<!-- Get the last 5 posts from lastmod list. -->
+<!-- Get 5 last posted/updated posts -->
 
 {% assign MAX_SIZE = 5 %}
 
 {% assign all_list = '' | split: '' %}
 
 {% for post in site.posts %}
-  {% if post.last_modified_at and post.last_modified_at != post.date %}
-    {% capture elem %}
-      {{- post.last_modified_at | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
-    {% endcapture %}
-    {% assign all_list = all_list | push: elem %}
-  {% endif %}
+  {% assign datetime = post.last_modified_at | default: post.date %}
+
+  {% capture elem %}
+    {{- datetime | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
+  {% endcapture %}
+
+  {% assign all_list = all_list | push: elem %}
 {% endfor %}
 
 {% assign all_list = all_list | sort | reverse %}
@@ -22,9 +23,9 @@
 {% endfor %}
 
 {% if update_list.size > 0 %}
-  <div id="access-lastmod" class="post">
-    <div class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</div>
-    <ul class="post-content list-unstyled ps-0 pb-1 ms-1 mt-2">
+  <section id="access-lastmod">
+    <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
+    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
       {% for item in update_list %}
         {% assign index = item | split: '::' | last | plus: 0 %}
         {% assign post = site.posts[index] %}
@@ -34,6 +35,6 @@
         </li>
       {% endfor %}
     </ul>
-  </div>
+  </section>
   <!-- #access-lastmod -->
 {% endif %}
