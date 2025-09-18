@@ -9,9 +9,9 @@ image:
 ---
 
 ### Prerequisites:
-- 2 Ubuntu20.04 LoadBalancer node's
-- 3 Ubuntu20.04 Kubernetes master node's
-- 2 Ubuntu20.04 Kubernetes worker node's
+- 2 Ubuntu22.04 LoadBalancer node's
+- 3 Ubuntu22.04 Kubernetes master node's
+- 2 Ubuntu22.04 Kubernetes worker node's
 
 ### HAProxy Configurations:
 
