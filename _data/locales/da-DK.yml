@@ -1,0 +1,86 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Opslag
+  category: Kategori
+  tag: Tag
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Hjem
+  categories: Kategorier
+  tags: Tags
+  archives: Arkiv
+  about: Om siden
+
+# the text displayed in the search bar & search results
+search:
+  hint: søg
+  cancel: Afbryd
+  no_results: Ups! Ingen resultater fundet.
+
+panel:
+  lastmod: Senest opdateret
+  trending_tags: Populære tags
+  toc: Indhold
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Dette opslag er licenseret under :LICENSE_NAME af forfatteren.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Nogle rettigheder forbeholdes.
+  verbose: >-
+    Medmindre andet er angivet, er opslag på denne side beskyttet
+    under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen af forfatteren.
+
+# meta: Using the :THEME theme for :PLATFORM.
+
+not_found:
+  statement: Beklager, vi har malpaceret denne URL, eller den peger på et sted, som ikke findes.
+
+notification:
+  update_found: En ny version af indholdet er fundet!
+  update: Opdater
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Af
+  posted: Udgivet
+  updated: Opdateret
+  words: ord
+  pageview_measure: visninger
+  read_time:
+    unit: min
+    prompt: læsetid
+  relate_posts: Læs videre
+  share: Del
+  button:
+    next: Nyere
+    previous: Ældre
+    copy_code:
+      succeed: Kopieret!
+    share_link:
+      title: Kopier link
+      succeed: Link kopieret!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%Y/%m/%d"
+    dayjs: "YYYY/MM/DD"
+
+# categories page
+categories:
+  category_measure:
+    singular: kategori
+    plural: kategorier
+  post_measure: opslag

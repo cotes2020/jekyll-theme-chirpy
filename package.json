@@ -1,0 +1,147 @@
+{
+  "name": "jekyll-theme-chirpy",
+  "version": "7.3.1",
+  "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
+  },
+  "author": "Cotes Chung",
+  "license": "MIT",
+  "since": 2019,
+  "bugs": {
+    "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
+  },
+  "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
+  "type": "module",
+  "scripts": {
+    "build": "concurrently npm:build:*",
+    "build:css": "node purgecss.js",
+    "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
+    "watch:js": "rollup -c --bundleConfigAsCjs -w",
+    "lint:js": "eslint",
+    "lint:scss": "stylelint _sass/**/*.scss",
+    "lint:fix:scss": "npm run lint:scss -- --fix",
+    "test": "npm run lint:js && npm run lint:scss",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/plugin-transform-class-properties": "^7.27.1",
+    "@babel/plugin-transform-private-methods": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "concurrently": "^9.1.2",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0",
+    "husky": "^9.1.7",
+    "purgecss": "^7.0.2",
+    "rollup": "^4.41.0",
+    "semantic-release": "^24.2.4",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard-scss": "^15.0.1"
+  },
+  "prettier": {
+    "trailingComma": "none"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 0.2%",
+    "not dead"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "body-max-line-length": [
+        0,
+        "always"
+      ]
+    }
+  },
+  "release": {
+    "branches": [
+      "production"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "section": "Improvements"
+              },
+              {
+                "type": "refactor",
+                "section": "Changes",
+                "hidden": true
+              }
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md",
+          "changelogTitle": "# Changelog"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "bash tools/release.sh --prepare",
+          "publishCmd": "bash tools/release.sh"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "docs",
+            "package.json",
+            "*.gemspec"
+          ],
+          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  }
+}

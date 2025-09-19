@@ -1,0 +1,70 @@
+{% comment %}
+
+  Convert the alias of the syntax language to the official name
+
+  See: <https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers>
+
+{% endcomment %}
+
+{% assign _lang = include.language | default: '' %}
+
+{% case _lang %}
+  {% when 'actionscript', 'as', 'as3' %}
+    {{ 'ActionScript' }}
+  {% when 'applescript' %}
+    {{ 'AppleScript' }}
+  {% when 'brightscript', 'bs', 'brs' %}
+    {{ 'BrightScript' }}
+  {% when 'cfscript', 'cfc' %}
+    {{ 'CFScript' }}
+  {% when 'coffeescript', 'coffee', 'coffee-script' %}
+    {{ 'CoffeeScript' }}
+  {% when 'cs', 'csharp' %}
+   {{ 'C#' }}
+  {% when 'erl' %}
+    {{ 'Erlang' }}
+  {% when 'graphql' %}
+   {{ 'GraphQL' }}
+  {% when 'haskell', 'hs' %}
+   {{ 'Haskell' }}
+  {% when 'javascript', 'js' %}
+    {{ 'JavaScript' }}
+  {% when 'make', 'mf', 'gnumake', 'bsdmake' %}
+    {{ 'Makefile' }}
+  {% when 'md', 'mkd' %}
+    {{ 'Markdown' }}
+  {% when 'm' %}
+    {{ 'Matlab' }}
+  {% when 'objective_c', 'objc', 'obj-c', 'obj_c', 'objectivec' %}
+    {{ 'Objective-C' }}
+  {% when 'perl', 'pl' %}
+    {{ 'Perl' }}
+  {% when 'php','php3','php4','php5' %}
+    {{ 'PHP' }}
+  {% when 'py' %}
+    {{ 'Python' }}
+  {% when 'rb' %}
+    {{ 'Ruby' }}
+  {% when 'rs','no_run','ignore','should_panic' %}
+    {{ 'Rust' }}
+  {% when 'bash', 'zsh', 'ksh', 'sh' %}
+    {{ 'Shell' }}
+  {% when 'st', 'squeak' %}
+    {{ 'Smalltalk' }}
+  {% when 'tex'%}
+    {{ 'TeX' }}
+  {% when 'latex' %}
+    {{ 'LaTex' }}
+  {% when 'ts', 'typescript' %}
+    {{ 'TypeScript' }}
+  {% when 'vb', 'visualbasic' %}
+    {{ 'Visual Basic' }}
+  {% when 'vue', 'vuejs' %}
+    {{ 'Vue.js' }}
+  {% when 'yml' %}
+    {{ 'YAML' }}
+  {% when 'css', 'html', 'scss', 'ssh', 'toml', 'xml', 'yaml', 'json' %}
+    {{ _lang | upcase }}
+  {% else %}
+    {{ _lang | capitalize }}
+{% endcase %}
