@@ -1,7 +1,10 @@
 /*
   Style for page Category and Tag
 */
-
+@use  '../colors/light-typography' as lt;
+@use  '../colors/dark-typography' as dt;
+@use '../addon/variables' as v;
+@use '../addon/module';
 .dash {
   margin: 0 0.5rem 0.6rem 0.5rem;
   border-bottom: 2px dotted var(--dash-color);
@@ -53,8 +56,9 @@
 #page-tag,
 #access-lastmod {
   a:hover {
-    @extend %link-hover;
-
+    color: #d2603a !important;
+    border-bottom: 1px solid #d2603a;
+    text-decoration: none;
     margin-bottom: -1px; /* Avoid jumping */
   }
 }

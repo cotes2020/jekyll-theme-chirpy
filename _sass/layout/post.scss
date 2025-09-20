@@ -1,6 +1,10 @@
 /*
   Post-specific style
 */
+@use  '../colors/light-typography' as lt;
+@use  '../colors/dark-typography' as dt;
+@use '../addon/variables' as v;
+@use '../addon/module' as m;
 
 @mixin btn-sharing-color($light-color, $important: false) {
   @if $important {
@@ -202,12 +206,12 @@ h1 + .post-meta {
     }
 
     &:first-child {
-      border-radius: $base-radius 0 0 $base-radius;
+      border-radius: v.$base-radius 0 0 v.$base-radius;
       left: 0.5px;
     }
 
     &:last-child {
-      border-radius: 0 $base-radius $base-radius 0;
+      border-radius: 0 v.$base-radius v.$base-radius 0;
       right: 0.5px;
     }
   }
@@ -325,7 +329,7 @@ h1 + .post-meta {
 
 #related-posts {
   > h3 {
-    @include label(1.1rem, 600);
+    @include m.label(1.1rem, 600);
   }
 
   em {
@@ -370,7 +374,7 @@ h1 + .post-meta {
 }
 
 .share-label {
-  @include label(inherit, 400, inherit);
+  @include m.label(inherit, 400, inherit);
 
   &::after {
     content: ':';

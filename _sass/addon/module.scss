@@ -1,13 +1,13 @@
 /*
 * Mainly scss modules, only imported to `assets/css/main.scss`
 */
-
-/* ---------- scss placeholder --------- */
+@use 'variables' as v;
 
 %heading {
   color: var(--heading-color);
   font-weight: 400;
-  font-family: $font-family-heading;
+  font-family: v.$font-family-heading;
+  
 }
 
 %section {
@@ -92,7 +92,7 @@
 }
 
 %rounded {
-  border-radius: $base-radius;
+  border-radius: v.$base-radius;
 }
 
 %img-caption {

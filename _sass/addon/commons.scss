@@ -1,27 +1,32 @@
 /*
   The common styles
 */
+@use  '../colors/light-typography' as lt;
+@use  '../colors/dark-typography' as dt;
+@use 'variables' as v;
+@use 'addon/module' as m;
+@use '../layout/post';
 
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
     &[data-mode='light'] {
-      @include light-scheme;
+      @include lt.light-scheme;
     }
 
     &[data-mode='dark'] {
-      @include dark-scheme;
+      @include dt.dark-scheme;
     }
   }
 
   @media (prefers-color-scheme: dark) {
     &:not([data-mode]),
     &[data-mode='dark'] {
-      @include dark-scheme;
+      @include dt.dark-scheme;
     }
 
     &[data-mode='light'] {
-      @include light-scheme;
+      @include lt.light-scheme;
     }
   }
 
@@ -34,7 +39,7 @@ body {
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: $font-family-base;
+  font-family: v.$font-family-base;
 }
 
 /* --- Typography --- */
@@ -157,10 +162,10 @@ blockquote {
     }
   }
 
-  @include prompt('tip', '\f0eb', 'regular');
-  @include prompt('info', '\f06a');
-  @include prompt('warning', '\f06a');
-  @include prompt('danger', '\f071');
+  @include m.prompt('tip', '\f0eb', 'regular');
+  @include m.prompt('info', '\f06a');
+  @include m.prompt('warning', '\f06a');
+  @include m.prompt('danger', '\f071');
 }
 
 kbd {
@@ -186,7 +191,7 @@ footer {
   @extend %text-color;
 
   div.d-flex {
-    height: $footer-height;
+    height: v.$footer-height;
     line-height: 1.2rem;
     padding-bottom: 1rem;
     border-top: 1px solid var(--main-border-color);
@@ -246,7 +251,7 @@ i {
 #panel-wrapper {
   /* the headings */
   .panel-heading {
-    @include label(inherit);
+    @include m.label(inherit);
   }
 
   .post-tag {
@@ -293,8 +298,8 @@ i {
 
 .footnote {
   @at-root a#{&} {
-    @include ml-mr(1px);
-    @include pl-pr(2px);
+    @include m.ml-mr(1px);
+    @include m.pl-pr(2px);
 
     border-bottom-style: none !important;
     transition: background-color 1.5s ease-in-out;
@@ -390,7 +395,7 @@ i {
     > img[data-src],
     > a.popup {
       &:not(.normal):not(.left):not(.right) {
-        @include align-center;
+        @include m.align-center;
       }
     }
   }
@@ -419,7 +424,7 @@ i {
     &.popup {
       @extend %no-cursor;
       @extend %img-caption;
-      @include mt-mb(0.5rem);
+      @include m.mt-mb(0.5rem);
 
       cursor: zoom-in;
     }
@@ -734,13 +739,13 @@ $btn-border-width: 3px;
 $btn-mb: 0.5rem;
 
 #sidebar {
-  @include pl-pr(0);
+  @include m.pl-pr(0);
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   overflow-y: auto;
-  width: $sidebar-width;
+  width: v.$sidebar-width;
   z-index: 99;
   //background: var(--sidebar-bg);
 
@@ -801,7 +806,7 @@ $btn-mb: 0.5rem;
   }
 
   .profile-wrapper {
-    @include mt-mb(2.5rem);
+    @include m.mt-mb(2.5rem);
     @extend %clickable-transition;
 
     padding-left: 2.5rem;
@@ -858,7 +863,7 @@ $btn-mb: 0.5rem;
       padding-right: 1.5rem;
 
       a.nav-link {
-        @include pt-pb(0.6rem);
+        @include m.pt-pb(0.6rem);
 
         display: flex;
         align-items: center;
@@ -899,7 +904,7 @@ $btn-mb: 0.5rem;
   }
 
   .sidebar-bottom {
-    @include pl-pr(2rem);
+    @include m.pl-pr(2rem);
 
     position: absolute;
     top:780px;
@@ -947,7 +952,7 @@ $btn-mb: 0.5rem;
 
     .icon-border {
       @extend %no-cursor;
-      @include ml-mr(calc(($btn-gap - $btn-border-width) / 2));
+      @include m.ml-mr(calc(($btn-gap - $btn-border-width) / 2));
 
       background-color: var(--sidebar-muted-color);
       content: '';
@@ -987,7 +992,7 @@ $btn-mb: 0.5rem;
 /* --- top-bar --- */
 
 #topbar-wrapper {
-  height: $topbar-height;
+  height: v.$topbar-height;
   background-color: var(--topbar-bg);
 }
 
@@ -1060,19 +1065,19 @@ $btn-mb: 0.5rem;
 
     &.form-control {
       &::-moz-placeholder {
-        @include input-placeholder;
+        @include m.input-placeholder;
       }
-      &::-webkit-input-placeholder {
-        @include input-placeholder;
+      &::-webkit-m.input-placeholder {
+        @include m.input-placeholder;
       }
-      &:-ms-input-placeholder {
-        @include input-placeholder;
+      &:-ms-m.input-placeholder {
+        @include m.input-placeholder;
       }
-      &::-ms-input-placeholder {
-        @include input-placeholder;
+      &::-ms-m.input-placeholder {
+        @include m.input-placeholder;
       }
       &::placeholder {
-        @include input-placeholder;
+        @include m.input-placeholder;
       }
     }
   }
@@ -1187,15 +1192,15 @@ $btn-mb: 0.5rem;
 
 #main-wrapper {
   position: relative;
-  min-height: calc(100vh - $footer-height-mobile);
+  min-height: calc(100vh - v.$footer-height-mobile);
 
-  @include pl-pr(0);
+  @include m.pl-pr(0);
 }
 
 #topbar-wrapper.row,
 #main > .row,
 #search-result-wrapper > .row {
-  @include ml-mr(0);
+  @include m.ml-mr(0);
 }
 
 /* --- button back-to-top --- */
@@ -1292,13 +1297,13 @@ $btn-mb: 0.5rem;
 
 @media all and (max-width: 576px) {
   #main-wrapper {
-    min-height: calc(100vh - #{$footer-height-mobile});
+    min-height: calc(100vh - #{v.$footer-height-mobile});
   }
 
   #core-wrapper {
     .post-content {
       > blockquote[class^='prompt-'] {
-        @include ml-mr(-1.25rem);
+        @include m.ml-mr(-1.25rem);
 
         border-radius: 0;
         max-width: none;
@@ -1323,7 +1328,7 @@ $btn-mb: 0.5rem;
 
   #main {
     @extend %full-width;
-    @include pl-pr(0);
+    @include m.pl-pr(0);
   }
 }
 
@@ -1347,7 +1352,7 @@ $btn-mb: 0.5rem;
   footer {
     @include slide;
 
-    height: $footer-height-mobile;
+    height: v.$footer-height-mobile;
 
     div.d-flex {
       padding: 1.5rem 0;
@@ -1363,7 +1368,7 @@ $btn-mb: 0.5rem;
 
     #main-wrapper,
     footer {
-      transform: translateX(#{$sidebar-width});
+      transform: translateX(#{v.$sidebar-width});
     }
 
     #back-to-top {
@@ -1374,8 +1379,8 @@ $btn-mb: 0.5rem;
   #sidebar {
     @include slide;
 
-    transform: translateX(-#{$sidebar-width}); /* hide */
-    -webkit-transform: translateX(-#{$sidebar-width});
+    transform: translateX(-#{v.$sidebar-width}); /* hide */
+    -webkit-transform: translateX(-#{v.$sidebar-width});
   }
 
   #main-wrapper {
@@ -1447,11 +1452,11 @@ $btn-mb: 0.5rem;
 
   #main-wrapper,
   footer {
-    margin-left: $sidebar-width;
+    margin-left: v.$sidebar-width;
   }
 
   #main-wrapper {
-    min-height: calc(100vh - $footer-height);
+    min-height: calc(100vh - v.$footer-height);
   }
 
   footer {
@@ -1478,11 +1483,11 @@ $btn-mb: 0.5rem;
   }
 
   #search-wrapper {
-    max-width: $search-max-width;
+    max-width: v.$search-max-width;
   }
 
   #search-result-wrapper {
-    max-width: $main-content-max-width;
+    max-width: v.$main-content-max-width;
     justify-content: start !important;
   }
 
@@ -1586,7 +1591,7 @@ $btn-mb: 0.5rem;
 
 @media all and (min-width: 1400px) {
   #back-to-top {
-    right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
+    right: calc((100vw - #{v.$sidebar-width} - 1140px) / 2 + 3rem);
   }
 }
 
@@ -1595,22 +1600,22 @@ $btn-mb: 0.5rem;
 
   #main-wrapper,
   footer {
-    margin-left: $sidebar-width-large;
+    margin-left: v.$sidebar-width-large;
   }
 
   #topbar-wrapper {
-    left: $sidebar-width-large;
+    left: v.$sidebar-width-large;
   }
 
   #search-wrapper {
     margin-right: calc(
-      #{$main-content-max-width} * 0.25 - #{$search-max-width} - 0.75rem
+      #{v.$main-content-max-width} * 0.25 - #{v.$search-max-width} - 0.75rem
     );
   }
 
   #main,
   footer > .container {
-    max-width: $main-content-max-width;
+    max-width: v.$main-content-max-width;
     padding-left: 1.75rem !important;
     padding-right: 1.75rem !important;
   }
@@ -1622,12 +1627,12 @@ $btn-mb: 0.5rem;
 
   #back-to-top {
     right: calc(
-      (100vw - #{$sidebar-width-large} - #{$main-content-max-width}) / 2 + 2rem
+      (100vw - #{v.$sidebar-width-large} - #{v.$main-content-max-width}) / 2 + 2rem
     );
   }
 
   #sidebar {
-    width: $sidebar-width-large;
+    width: v.$sidebar-width-large;
 
     $icon-gap: 1rem; // for the bottom icons
 
@@ -1639,7 +1644,7 @@ $btn-mb: 0.5rem;
 
     ul {
       li.nav-item {
-        @include pl-pr(2.75rem);
+        @include m.pl-pr(2.75rem);
       }
     }
 
@@ -1652,7 +1657,7 @@ $btn-mb: 0.5rem;
       }
 
       .icon-border {
-        @include ml-mr(calc(($icon-gap - $btn-border-width) / 2));
+        @include m.ml-mr(calc(($icon-gap - $btn-border-width) / 2));
       }
     }
   }

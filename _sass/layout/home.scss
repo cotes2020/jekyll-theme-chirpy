@@ -2,6 +2,11 @@
   Style for Homepage
 */
 
+@use  '../colors/light-typography' as lt;
+@use  '../colors/dark-typography' as dt;
+@use '../addon/variables' as v;
+@use '../addon/module' as m;
+
 #post-list {
   margin-top: 2rem;
 
@@ -19,7 +24,7 @@
 
   .card {
     %img-radius {
-      border-radius: $base-radius $base-radius 0 0;
+      border-radius: v.$base-radius v.$base-radius 0 0;
     }
 
     .preview-img {
@@ -142,7 +147,7 @@
 @media all and (min-width: 768px) {
   #post-list {
     %img-radius {
-      border-radius: 0 $base-radius $base-radius 0;
+      border-radius: 0 v.$base-radius v.$base-radius 0;
     }
 
     .card {
