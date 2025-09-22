@@ -13,14 +13,179 @@ image:
 This book follows Nicole Perlroth investigating the zero-day market, cyber weapons, and the cyber arms race. She was originally covering Silicon Valley stuff when suddenly the New York Times asked her to cover cybersecurity - even though she knew nothing about it. This actually works in the book's favor since her learning curve mirrors that of general readers, making her discoveries and reactions feel more relatable.
 
 The book is heavily U.S.-focused, tracing how American government demand for cyber weapons transformed a small bug bounty market into a dangerous global arms trade. Through interviews with NSA hackers, exploit brokers, and foreign intelligence contractors, she shows how America's offensive cyber strategy became insane - the same weapons we developed (like Stuxnet) ended up in the hands of adversaries and authoritarian governments, paving the way for future chaos. She occasionally adds political commentary that doesn't really connect to the cybersecurity story, which might distract some readers. She also tends to present every development in the most alarming way possible, which might make readers feel more panicked about cyber threats than necessary.
-<img src="https://m.media-amazon.com/images/I/51cRIu2us8L._SY445_SX342_.jpg"
-     alt="This Is How They Tell Me the World Ends Book Cover"
+
+
+<div style="text-align: center; margin: 20px 0;">
+  <!-- Red Alert Variant -->
+  <div style="
+    display: inline-block;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
+    border: 1px solid #ff0040;
+    border-radius: 4px;
+    padding: 8px 12px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Courier New', Consolas, 'Monaco', monospace;
+    font-size: 13px;
+    box-shadow: 
+      0 0 20px rgba(255, 0, 64, 0.2),
+      inset 0 0 20px rgba(255, 0, 64, 0.05);
+    animation: cyber-pulse-red 3s ease-in-out infinite;
+    margin: 10px 0;
+  ">
+    
+    <!-- Scan line effect -->
+    <div style="
+      position: absolute;
+      top: -100%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 0, 64, 0.8) 50%, 
+        transparent 100%);
+      animation: scan-line 4s linear infinite;
+    "></div>
+    
+    <!-- Glitch effect overlay -->
+    <div style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 0, 64, 0.03) 2px,
+        rgba(255, 0, 64, 0.03) 4px
+      );
+      pointer-events: none;
+    "></div>
+    
+    <!-- Terminal prompt -->
+    <span style="
+      color: #ff0040;
+      text-shadow: 0 0 5px rgba(255, 0, 64, 0.5);
+      font-weight: bold;
+    ">root@review:~$</span>
+    
+    <!-- Rating text -->
+    <span style="
+      color: #fff;
+      margin-left: 8px;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+    ">SCORE://</span>
+    
+    <!-- Score -->
+    <span style="
+      color: #ff0040;
+      font-weight: bold;
+      margin-left: 4px;
+      text-shadow: 
+        0 0 10px rgba(255, 0, 64, 0.8),
+        0 0 20px rgba(255, 0, 64, 0.4);
+      animation: glow-text-red 2s ease-in-out infinite alternate;
+    ">7.9</span>
+    
+    <span style="
+      color: #666;
+      margin-left: 2px;
+    ">/10.0</span>
+    
+    <!-- Status indicator -->
+    <span style="
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #ff0040;
+      border-radius: 50%;
+      margin-left: 8px;
+      box-shadow: 0 0 10px rgba(255, 0, 64, 0.9);
+      animation: status-blink-red 2s ease-in-out infinite;
+      vertical-align: middle;
+    "></span>
+    
+    <!-- Mini progress bar -->
+    <div style="
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 0, 64, 0.1);
+    ">
+      <div style="
+        width: 98%;
+        height: 100%;
+        background: linear-gradient(90deg, #ff0040 0%, #cc0030 100%);
+        box-shadow: 0 0 5px rgba(255, 0, 64, 0.5);
+        animation: progress-glow-red 2s ease-in-out infinite;
+      "></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes cyber-pulse-red {
+    0%, 100% { 
+      box-shadow: 
+        0 0 20px rgba(255, 0, 64, 0.2),
+        inset 0 0 20px rgba(255, 0, 64, 0.05);
+    }
+    50% { 
+      box-shadow: 
+        0 0 30px rgba(255, 0, 64, 0.4),
+        inset 0 0 25px rgba(255, 0, 64, 0.1);
+    }
+  }
+  
+  @keyframes glow-text-red {
+    0% { 
+      text-shadow: 
+        0 0 10px rgba(255, 0, 64, 0.8),
+        0 0 20px rgba(255, 0, 64, 0.4);
+    }
+    100% { 
+      text-shadow: 
+        0 0 15px rgba(255, 0, 64, 1),
+        0 0 30px rgba(255, 0, 64, 0.6);
+    }
+  }
+  
+  @keyframes status-blink-red {
+    0%, 100% { 
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes progress-glow-red {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes scan-line {
+    0% { top: -100%; }
+    100% { top: 200%; }
+  }
+</style>
+
+<img src="https://media.licdn.com/dms/image/v2/D5622AQHEtwMPiA-crQ/feedshare-shrink_800/B56Zj6brpEHAAg-/0/1756548218285?e=1761177600&v=beta&t=aZJ7R0xBMZRlFgxbxwtgkU6XHJykktGRBpDgTaF-50I"
+     alt="Book Cover"
      style="width: 200px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.4);" />
 <p style="margin-top: 0.5rem;">
    <a href="https://www.amazon.com/This-They-Tell-World-Ends/dp/1635576059" target="_blank" rel="noopener noreferrer">
     View on Amazon
   </a>
 </p>
+---
 
 ### **Key Takeaways**
 
