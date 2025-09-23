@@ -3,9 +3,8 @@
 icon: fas fa-info-circle
 order: 5
 ---
-<div>
-  <img src="https://tkdals1049.github.io/assets/img/profile1.png"><img style="display:block; margin: -20px 0px 0px 0px;" src="https://tkdals1049.github.io/assets/img/profile2.png">
-</div>
+![Desktop View](/assets/img/profile1.png){: .normal }
+![Desktop View](/assets/img/profile2.png){: .normal }
 
 <h2 class="section-title">
 <span class="fa-stack fa-xs">
@@ -14,8 +13,10 @@ order: 5
 </span>
 자기 소개
 </h2>
+
+![Desktop View](/gallerys/profilePic.jpg){: .normal }
+
 <div class="summary">
-<img style="position: absolute; width:250px; height:320px; top:1180px; left: 560px;"  src="https://tkdals1049.github.io/gallerys/profilePic.jpg">
 <li>이름 - 이상민</li>
 <li>인적 사항 - 남, 1993(30세)</li>
 <li>최종 학력 - 목원대학교 지능로봇공학과(학점-3.92)</li>
