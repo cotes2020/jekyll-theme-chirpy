@@ -66,7 +66,7 @@
 
 {% if page.math %}
   <!-- MathJax -->
-  <script async src="{{ '/assets/js/data/mathjax.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/data/mathjax.js' | relative_url }}"></script>
   <script async src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
 {% endif %}
