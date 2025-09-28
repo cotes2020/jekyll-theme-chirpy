@@ -55,16 +55,15 @@ refactor: true
 
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
-          {% unless src contains '//' %}
-            {% assign src = post.media_subpath | append: '/' | append: src | replace: '//', '/' %}
-          {% endunless %}
+          {% capture src %}{% include media-url.html src=src subpath=post.media_subpath %}{% endcapture %}
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
           {% assign lqip = null %}
 
           {% if post.image.lqip %}
-            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
+            {% capture lqip_url %}{% include media-url.html src=post.image.lqip subpath=post.media_subpath %}{% endcapture %}
+            {% assign lqip = 'lqip="' | append: lqip_url | append: '"' %}
           {% endif %}
 
           <div class="col-md-5">

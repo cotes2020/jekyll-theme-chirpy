@@ -1,0 +1,26 @@
+name: Lint SCSS
+
+on:
+  push:
+    paths:
+      - "_sass/**/*.scss"
+  pull_request:
+    paths:
+      - "_sass/**/*.scss"
+
+jobs:
+  lint-scss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install Dependencies
+        run: npm i
+
+      - name: Lint SCSS
+        run: npm run lint:scss

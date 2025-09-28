@@ -9,7 +9,7 @@
 {% endunless %}
 
 <p>
-  <audio class="embed-audio" controls>
+  <audio class="embed-audio file" controls>
     {% assign extension = src | split: '.' | last %}
     {% assign types = extension | concat: types %}
 
