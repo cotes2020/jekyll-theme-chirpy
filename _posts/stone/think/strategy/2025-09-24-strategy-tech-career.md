@@ -452,6 +452,14 @@ last_modified_at: 2025-09-25. 00:44 # E ~정리
   - 지원자는 넓은 범위 공부해서 가야되는 입장이고
   - 면접관은 자신들이 고른 것들 깊게 준비해서 오니까 대체로 자주 털리게 되더라
 
+### _
+
+- [리플렉션 DRAFT](/posts/reflection-DRAFT) [](/_posts/computer/programming/coding/2024-09-02-reflection-DRAFT.md)
+- [오버라이딩-오버로딩](/posts/override-overload) [](/_posts/computer/programming/coding/2025-09-28-override-overload)
+- [가상 메서드](/posts/virtual-method) [](/_posts/computer/programming/coding/2025-09-28-virtual-method.md)
+- [OOP](/posts/oop) [](/_posts/computer/programming/programming-paradigm/2024-04-23-oop.mdd)
+  - 오버라이딩, 오버로딩
+
 ### 링크
 
 - [신입 게임 서버 프로그래머 포트폴리오](https://developstudy.tistory.com/72)
