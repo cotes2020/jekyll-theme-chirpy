@@ -100,16 +100,6 @@ while(!cin.eof())
 while(cin >> temp);
 ```
 
-### auto
-
-```cpp
-auto add(int x, int y)
-{
-    return x + y;
-}
-auto sum = add(5, 6);
-```
-
 ### Function Prototype
 
 ```cpp
