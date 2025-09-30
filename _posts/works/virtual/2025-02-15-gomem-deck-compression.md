@@ -6,9 +6,6 @@ tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/gomem-deck-compression/250215-000000.png"
 hidden: true
 
-date: 
-date: 
-date: 
 date: 2025-02-15. 00:00
 last_modified_at: 2025-03-09. 21:05 # 전
 ---

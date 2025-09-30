@@ -4,6 +4,7 @@ title: "VRChat 월드 제작 (U# / UdonSharp)"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/background/20240827-140647.jpg"
+hidden: true
 
 # 🌔 VRChat 안개 (Fog)
 # date: 2022-01-28. 09:48
