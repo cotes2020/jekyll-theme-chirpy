@@ -4,6 +4,7 @@ description: "이 블로그에서 사용하는 글 분류 규칙"
 categories: [블로그]
 tags: [블로그]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2025-04-26. 14:57 # Init (Blog.md에서 분리)
 # last_modified_at: 2025-04-26. 23:35 # 중복 카테고리 수정

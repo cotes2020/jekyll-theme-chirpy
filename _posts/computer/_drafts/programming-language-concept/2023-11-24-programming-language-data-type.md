@@ -4,6 +4,7 @@ title: "프로그래밍 언어 - Data Type"
 categories: [컴퓨터, 🌒Programming]
 tags: [Data-Type]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-24. 09:20
 # last_modified_at: 2023-12-01. 11:52

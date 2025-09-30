@@ -4,6 +4,7 @@ title: "0-1 배낭 문제"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬, Dynamic-Programming, Back-Tracking]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 math: true
 
 date: 2023-12-13. 11:04

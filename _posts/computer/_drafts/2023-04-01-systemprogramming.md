@@ -4,6 +4,7 @@ title: "시스템 프로그래밍"
 categories: [컴퓨터, 🌑Computer-OS]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-04-01. 00:00 # ?
 # last_modified_at: 2023-11-17. 09:33

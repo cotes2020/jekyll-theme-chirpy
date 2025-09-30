@@ -4,6 +4,7 @@ description: "구슬요님의 '노래 대결' 컨텐츠."
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/bubble-gum/241026-165542.png"
+hidden: true
 
 date: 2024-10-26. 15:22
 last_modified_at: 2024-10-26. 15:22 # Init

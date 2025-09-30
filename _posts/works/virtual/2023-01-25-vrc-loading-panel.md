@@ -4,6 +4,7 @@ title: "VRChat World 로딩 패널"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/background/20240827-140647.jpg"
+hidden: true
 
 date: 2023-01-25. 10:27
 last_modified_at: 2024-08-29. 22:30

@@ -4,6 +4,7 @@ title: "Binary-Search"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬, Search]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-02-17. 14:44
 # last_modified_at: 2024-06-19. 02:25

@@ -4,6 +4,7 @@ title: "프로젝트_템플릿"
 categories: [작업물]
 tags: [작업물, 프로젝트_템플릿]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2025-00-00. 00:00
 # last_modified_at: 2025-00-00. 00:00

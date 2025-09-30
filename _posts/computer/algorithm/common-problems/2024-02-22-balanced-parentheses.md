@@ -4,6 +4,7 @@ title: "수식의 괄호 쌍"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬, Stack]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-02-22. 00:04
 # last_modified_at: 2024-02-22. 22:41

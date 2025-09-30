@@ -4,6 +4,7 @@ title: "Process, Processor, Thread"
 categories: [컴퓨터, 시스템]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 # 🌑 Process, Processor
 # date: 2023-11-10. 09:21

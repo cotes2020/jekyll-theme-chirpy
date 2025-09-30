@@ -4,6 +4,7 @@ title: "Deque"
 categories: [컴퓨터, 자료구조]
 tags: [자료구조, Deck]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-02-19. 16:54
 # last_modified_at: 2024-02-25. 02:11

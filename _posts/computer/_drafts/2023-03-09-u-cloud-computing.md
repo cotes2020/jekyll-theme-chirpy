@@ -4,6 +4,7 @@ title: "클라우드 컴퓨팅 과목"
 categories: [컴퓨터, 🌚Computer-General]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-03-09. 14:55
 last_modified_at: 2023-05-04. 10:55

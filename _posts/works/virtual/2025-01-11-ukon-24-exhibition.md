@@ -4,6 +4,7 @@ description: "유콘님의 '일러스트 전시회' 컨텐츠."
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/ukon-24-exhibition/ukon-24-exhibition-world-thumbnail.png"
+hidden: true
 
 date: 2025-01-23. 00:00
 # last_modified_at: 2025-01-27. 13:01 # Init

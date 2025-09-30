@@ -4,6 +4,7 @@ title: "Why Binary?"
 categories: [컴퓨터, 시스템]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-11-14. 00:26
 last_modified_at: 2024-11-14. 00:26 # Init
@@ -26,7 +27,7 @@ last_modified_at: 2024-11-14. 00:26 # Init
 1. 저장/전송의 어려움
    - 최초의 컴퓨터 ENIAC은 10진수를 썼는데, 한 단위의 정보를 표현하기 위해 10개의 배관이 필요했다. (0 ~ 9)
 2. 디지털 논리 함수 구현의 어려움
-   - Addition, Multipplication, ...
+   - Addition, Multiplication, ...
 
 최초의 컴퓨터 ENIAC은 10진수를 사용했지만, 폰 노이만에 의해 2진수가 고안됐다.  
 

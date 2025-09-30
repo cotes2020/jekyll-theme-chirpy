@@ -4,6 +4,7 @@ description: "이세계아이돌 고세구님의 '연애 시뮬레이션 토크'
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/love-with-gsg/love-with-gsg-logo.jpg"
+hidden: true
 
 date: 2025-02-26. 00:00
 # last_modified_at: 2025-03-03. 21:35 # Init

@@ -4,6 +4,7 @@ title: "HUNCG - VSCode Extension"
 categories: [작업물]
 tags: [작업물]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2024-09-26. 20:47
 # last_modified_at: 2024-09-26. 20:47

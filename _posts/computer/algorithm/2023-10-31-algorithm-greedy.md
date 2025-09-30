@@ -4,6 +4,7 @@ title: "Greedy | 그리디, 욕심쟁이"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬, Greedy]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-10-31. 13:37
 # last_modified_at: 2023-11-14. 10:03

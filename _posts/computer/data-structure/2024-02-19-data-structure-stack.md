@@ -4,6 +4,7 @@ title: "Stack 스택"
 categories: [컴퓨터, 자료구조]
 tags: [자료구조, Stack]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-02-19. 16:33
 # last_modified_at: 2024-02-19. 17:59

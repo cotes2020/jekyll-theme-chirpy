@@ -4,6 +4,7 @@ title: "Spring-Boot-Memo"
 categories: [컴퓨터, 🌒Programming]
 tags: [Spring-Boot]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-04-03. 15:00
 # last_modified_at: 2024-04-19. 13:24

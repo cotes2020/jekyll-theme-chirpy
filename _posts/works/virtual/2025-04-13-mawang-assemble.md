@@ -4,6 +4,7 @@ description: "이세계아이돌 비챤님의 '마왕 토크쇼' 컨텐츠."
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/mawang-assemble/250413-203153.png"
+hidden: true
 
 date: 2025-04-13. 00:00
 # last_modified_at: 2025-04-16. 21:48 # Init

@@ -4,6 +4,7 @@ title: "Fibonacci | 피보나치 수열"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬, Fibonacci]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-11-13. 03:57
 last_modified_at: 2024-11-13. 03:57 # Init

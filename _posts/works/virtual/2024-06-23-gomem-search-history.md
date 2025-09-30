@@ -4,6 +4,7 @@ description: "우왁굳님의 '왁타버스 고정멤버 유튜브 구독 목록
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/gomem-search-history/240621-000000.png"
+hidden: true
 
 date: 2024-06-23. 00:00
 last_modified_at: 2024-11-09. 08:34 # Init

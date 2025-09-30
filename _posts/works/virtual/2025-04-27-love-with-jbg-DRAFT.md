@@ -4,6 +4,7 @@ title: "VRChat - 옆자리 부가땅"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 # image: ""
+hidden: true
 
 date: 2025-05-00. 00:00
 last_modified_at: 2025-04-24. 20:18 # 인형뽑기 작업

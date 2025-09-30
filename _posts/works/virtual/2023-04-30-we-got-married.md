@@ -4,6 +4,7 @@ description: "이세계아이돌 고세구님, 주르르님의 '우리 결혼했
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/we-got-married/230429-224703.png"
+hidden: true
 
 date: 2023-04-30. 00:00
 # last_modified_at: 2024-11-09. 08:24 # Init

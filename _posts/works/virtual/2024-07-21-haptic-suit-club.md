@@ -4,6 +4,7 @@ title: "촉각슈트 동아리"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/haptic-suit-club/240721-210334.png"
+hidden: true
 
 date: 2024-07-21. 00:00
 last_modified_at: 2024-11-09. 08:35 # Init

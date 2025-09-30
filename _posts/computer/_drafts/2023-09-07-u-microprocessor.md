@@ -4,6 +4,7 @@ title: "마이크로프로세서 과목"
 categories: [컴퓨터, 🌑Computer-OS]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-09-08. 12:51
 # last_modified_at: 2023-09-15. 12:53

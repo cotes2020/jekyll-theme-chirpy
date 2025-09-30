@@ -4,6 +4,7 @@ title: "Networking Solution"
 categories: [컴퓨터, 🌚Computer-General]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-09-25. 01:22
 # last_modified_at: 2024-09-25. 01:22

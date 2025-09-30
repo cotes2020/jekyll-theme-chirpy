@@ -4,6 +4,7 @@ title: "확장 메서드 (External Method)"
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2025-09-28. 18:49 # Init
 # last_modified_at: 2025-09-28. 18:49

@@ -4,6 +4,7 @@ description: "이세계아이돌 비챤님의 '안전수칙 골든벨' 컨텐츠
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/ranibell-safety-rules/230425-154148.png"
+hidden: true
 
 date: 2023-04-22. 00:00
 last_modified_at: 2024-11-09. 08:24 # Init

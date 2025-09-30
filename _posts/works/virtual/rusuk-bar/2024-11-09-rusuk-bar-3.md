@@ -4,6 +4,7 @@ description: "왁타버스 고정멤버 해루석님을 위한 VRChat 월드 제
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티, 루석바]
 image: "/assets/img/post/works/rusuk-bar/rusuk-bar-banner.png"
+hidden: true
 
 date: 2022-01-16. 00:00
 # last_modified_at: 2024-11-09. 08:07 # Init

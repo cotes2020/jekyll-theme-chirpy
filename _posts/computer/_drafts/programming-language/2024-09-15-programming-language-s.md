@@ -4,6 +4,7 @@ title: "프로그래밍 언어들"
 categories: [컴퓨터, 🌒Programming]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-09-15. 10:49
 # last_modified_at: 2024-09-16. 16:02

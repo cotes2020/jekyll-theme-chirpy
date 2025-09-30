@@ -4,6 +4,7 @@ title: "Back Tracking"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬, Back-Tracking]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-12-05. 13:36
 # last_modified_at: 2023-12-07. 10:29

@@ -4,6 +4,7 @@ description: "왁타버스 오르막길 커버 MV"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/uphill-road-cover-mv/uphill-road-cover-mv-banner-0.png"
+hidden: true
 
 date: 2022-12-08. 00:00
 last_modified_at: 2024-11-09. 08:22 # Init

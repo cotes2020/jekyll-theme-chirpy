@@ -4,6 +4,7 @@ description: "왁타버스 고정멤버 집 만들기 컨텐츠"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/gomem-house/scretto/241001-221336.png"
+hidden: true
 
 date: 2024-09-09. 00:00
 last_modified_at: 2024-11-09. 08:36 # Init

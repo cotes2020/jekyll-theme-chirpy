@@ -4,6 +4,7 @@ title: "SW 공학 과목"
 categories: [컴퓨터, 🌚Computer-General]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-03-09. 14:59
 # last_modified_at: 2023-05-08. 16:07

@@ -4,6 +4,7 @@ title: "Spring Boot"
 categories: [컴퓨터, 🌒Programming]
 tags: [Spring-Boot]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-04-09. 12:38
 # last_modified_at: 2024-04-11. 16:46

@@ -4,6 +4,7 @@ title: "C++"
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-02-22. 02:35
 # last_modified_at: 2024-02-17. 20:13

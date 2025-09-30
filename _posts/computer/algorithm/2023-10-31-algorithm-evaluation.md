@@ -4,6 +4,7 @@ title: "알고리듬 성능 평가"
 categories: [컴퓨터, 알고리즘]
 tags: [알고리듬]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-10-31. 13:37
 # last_modified_at: 2023-11-14. 09:40

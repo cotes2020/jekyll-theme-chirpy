@@ -4,6 +4,7 @@ description: "이세계아이돌 징버거님의 '그림 나눠 그려 맞추기
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/catch-drawing/catch-drawing-logo.png"
+hidden: true
 
 date: 2024-10-19. 09:53
 # last_modified_at: 2024-10-19. 12:16 # 기획 정리

@@ -4,6 +4,7 @@ title: "색"
 categories: [컴퓨터, 그래픽]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-11-13. 06:37 # Init
 last_modified_at: 2025-06-10. 23:06 # 네이밍: RGB -> Color, +HDR:, +메모: 관련 링크

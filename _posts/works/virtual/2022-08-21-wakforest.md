@@ -4,6 +4,7 @@ description: "왁타버스 VR 도서관"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/wakforest/wakforest-banner.png"
+hidden: true
 
 date: 2022-08-21. 00:00
 last_modified_at: 2024-11-09. 08:19 # Init

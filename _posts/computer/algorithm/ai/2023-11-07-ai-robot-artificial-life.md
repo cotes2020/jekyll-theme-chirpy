@@ -4,6 +4,7 @@ title: "Artificial Life - 인공생명"
 categories: [컴퓨터, 알고리즘, AI]
 tags: [AI]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-07. 10:07
 # last_modified_at: 2023-11-08 16:23

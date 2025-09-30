@@ -4,6 +4,7 @@ title: "수학"
 categories: [컴퓨터, 알고리즘, PS]
 tags: [PS, 알고리듬, 자료구조]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2025-09-29. 18:08 # Init
 # last_modified_at: 2025-09-29. 18:08

@@ -4,6 +4,7 @@ title: "프로그래밍 언어 - 이름, 바인딩, 영역"
 categories: [컴퓨터, 🌒Programming]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-10-20. 10:32
 # last_modified_at: 2023-11-03. 11:06

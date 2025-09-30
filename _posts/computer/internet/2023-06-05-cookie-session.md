@@ -4,6 +4,7 @@ title: "세션 & 쿠키"
 categories: [컴퓨터, 인터넷]
 tags: [Web]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-06-05. 11:11
 last_modified_at: 2023-06-05. 14:15

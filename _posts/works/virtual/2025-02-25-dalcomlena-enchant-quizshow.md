@@ -4,6 +4,7 @@ description: "달콤레나님의 '인챈트 퀴즈쇼' 컨텐츠."
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "https://img.youtube.com/vi/tt-vGVAu71k/mqdefault.jpg"
+hidden: true
 
 date: 2025-02-25. 00:00
 # last_modified_at: 2025-03-03. 21:38 # Init

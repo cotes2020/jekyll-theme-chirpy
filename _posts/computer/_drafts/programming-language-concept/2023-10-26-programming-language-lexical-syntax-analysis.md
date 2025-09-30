@@ -4,6 +4,7 @@ title: "프로그래밍 언어 - 어휘 분석, 구문 분석"
 categories: [컴퓨터, 🌒Programming]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-10-26. 13:37
 last_modified_at: 2023-12-08. 10:09

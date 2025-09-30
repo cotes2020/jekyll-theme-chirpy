@@ -4,10 +4,11 @@ title: "Web Browser 웹 브라우저"
 categories: [컴퓨터, 인터넷]
 tags: [Web]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-10-05. 07:01
 # last_modified_at: 2023-10-05. 07:01
-last_modified_at: 2024-08-29. 21:27
+# last_modified_at: 2024-08-29. 21:27
 last_modified_at: 2024-09-16. 16:02
 ---
 

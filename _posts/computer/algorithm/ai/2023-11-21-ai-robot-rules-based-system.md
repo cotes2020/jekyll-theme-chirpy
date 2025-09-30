@@ -4,6 +4,7 @@ title: "전문가 시스템 - Rules-Based System"
 categories: [컴퓨터, 알고리즘, AI]
 tags: [AI]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-21 10:43
 # last_modified_at: 2023-11-22 15:57

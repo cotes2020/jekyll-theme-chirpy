@@ -4,6 +4,7 @@ title: "RAM, Main-Memory"
 categories: [컴퓨터, 시스템]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-17. 03:58
 # last_modified_at: 2023-11-28. 09:50

@@ -4,6 +4,7 @@ description: "이 블로그에서 사용하는 글 컨벤션, 작성 규칙."
 categories: [블로그]
 tags: [블로그]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2024-10-22. 11:27
 # last_modified_at: 2024-10-22. 11:27 # Init (Blog로 부터 분리)

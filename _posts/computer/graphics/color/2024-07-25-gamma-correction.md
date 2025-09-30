@@ -4,6 +4,7 @@ title: "Gamma Correction"
 categories: [컴퓨터, 그래픽]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-07-25. 20:39
 last_modified_at: 2024-07-26. 12:22

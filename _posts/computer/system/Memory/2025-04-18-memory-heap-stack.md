@@ -4,6 +4,7 @@ title: "Memory Heap/Stack"
 categories: [컴퓨터, 시스템]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2025-04-18. 18:07 # Init
 # last_modified_at: 2025-04-18. 18:07

@@ -4,6 +4,7 @@ description: "우왁굳님의 '전략 카드 게임' 컨텐츠."
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/gomem-dreamteam/bettingtrain/241130-230638.png"
+hidden: true
 
 date: 2024-01-01. 00:00
 # last_modified_at: 2024-11-12. 10:06 # 1112 기획 추가 전달

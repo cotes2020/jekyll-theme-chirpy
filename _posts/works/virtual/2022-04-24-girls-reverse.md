@@ -4,6 +4,7 @@ description: "카카오 엔터테인먼트 주관 '버추얼 아이돌 오디션
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/girls-reverse/230220-064057.png"
+hidden: true
 
 date: 2022-04-24. 00:00
 last_modified_at: 2024-11-09. 08:11 # Init

@@ -4,6 +4,7 @@ title: "Unity 런타임 애니메이션 녹화"
 categories: [작업물]
 tags: [작업물, 유니티]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2024-10-10. 15:02
 # last_modified_at: 2024-10-10. 15:13 # Init

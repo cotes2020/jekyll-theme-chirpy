@@ -4,6 +4,7 @@ title: "Fuzzy Logic"
 categories: [컴퓨터, 알고리즘, AI]
 tags: [AI]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-28. 10:08
 # last_modified_at: 2023-11-29. 14:59

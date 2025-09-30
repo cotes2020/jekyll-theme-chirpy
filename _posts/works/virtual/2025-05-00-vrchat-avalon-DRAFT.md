@@ -4,6 +4,7 @@ title: "VRChat - 아발론"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2025-05-00. 00:00
 # last_modified_at: 2025-04-18. 06:15 # Init

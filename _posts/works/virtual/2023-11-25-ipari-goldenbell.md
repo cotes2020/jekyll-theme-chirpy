@@ -4,6 +4,7 @@ description: "이파리 골든벨"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/ipari-goldenbell/ipari-goldenbell-banner.png"
+hidden: true
 
 date: 2023-11-25. 00:00
 last_modified_at: 2024-11-09. 08:26 # Init

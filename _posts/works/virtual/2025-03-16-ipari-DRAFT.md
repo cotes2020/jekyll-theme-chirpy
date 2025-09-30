@@ -4,6 +4,7 @@ title: "Team Ipari"
 categories: [작업물, 버추얼]
 tags: [작업물, 게임 개발, 유니티]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2025-03-16. 00:00
 # last_modified_at: 2025-03-16. 00:42 # 1차 작업

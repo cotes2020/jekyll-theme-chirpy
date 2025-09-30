@@ -4,6 +4,7 @@ title: "회전소개팅"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/rotating-blind-date/230916-172652.png"
+hidden: true
 
 date: 2023-09-21. 00:00
 last_modified_at: 2024-11-09. 08:26 # Init

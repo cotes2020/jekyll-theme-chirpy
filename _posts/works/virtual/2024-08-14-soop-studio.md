@@ -4,6 +4,7 @@ description: "'버추얼 종합 대회' 컨텐츠를 위한 VRChat 스튜디오"
 categories: [작업물, 버추얼]
 tags: [작업물, VRChat, 유니티]
 image: "/assets/img/post/works/soop-studio/240814-185806.png"
+hidden: true
 
 date: 2024-08-14. 00:00
 last_modified_at: 2024-11-09. 08:35 # Init

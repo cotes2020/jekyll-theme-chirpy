@@ -4,6 +4,7 @@ description: "이세계아이돌 주르르님의 Twitch 채팅 연동 'OX 퀴즈
 categories: [작업물, 버추얼]
 tags: [작업물, 유니티]
 image: "https://img.youtube.com/vi/e9_KaSa9w_s/mqdefault.jpg"
+hidden: true
 
 date: 2023-01-23. 00:00
 last_modified_at: 2024-11-09. 08:32 # Init

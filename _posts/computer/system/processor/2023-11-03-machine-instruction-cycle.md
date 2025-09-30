@@ -4,6 +4,7 @@ title: "Machine Instruction/Cycle - 기계 명령어, 기계 사이클"
 categories: [컴퓨터, 시스템]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-03. 14:23
 last_modified_at: 2024-08-29. 22:11

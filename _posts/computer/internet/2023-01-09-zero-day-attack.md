@@ -4,6 +4,7 @@ title: "Zero Day Attack(Exploit)"
 categories: [컴퓨터, 인터넷]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-01-09. 21:24
 # last_modified_at: 2023-01-09. 21:24

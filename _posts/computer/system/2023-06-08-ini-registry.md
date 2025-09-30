@@ -4,6 +4,7 @@ title: "Ini, Registry"
 categories: [컴퓨터, 시스템]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-06-07. 11:50
 # last_modified_at: 2025-03-18. 01:35 # Registry Code 추가

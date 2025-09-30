@@ -4,6 +4,7 @@ title: "C# Access Modifier"
 categories: [컴퓨터, 프로그래밍]
 tags: [CSharp]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-01-25. 05:22
 last_modified_at: 2024-09-26. 20:50

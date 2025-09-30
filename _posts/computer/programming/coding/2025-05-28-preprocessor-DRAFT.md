@@ -4,6 +4,7 @@ title: "전처리기"
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2025-05-28. 22:09 # Init
 # last_modified_at: 2025-05-28. 22:09
