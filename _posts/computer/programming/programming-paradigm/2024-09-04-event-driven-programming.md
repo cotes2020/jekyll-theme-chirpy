@@ -4,6 +4,7 @@ title: "Event Driven Programming"
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2024-09-04. 11:10
 # last_modified_at: 2024-09-04. 11:10

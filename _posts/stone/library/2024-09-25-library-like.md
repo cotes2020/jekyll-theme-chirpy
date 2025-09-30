@@ -4,6 +4,7 @@ description: "오호홍 좋아용"
 categories: [수필, 생각]
 tags: []
 image: "/assets/img/background/backtop.gif"
+hidden: true
 
 # https://publish.twitter.com/#
 

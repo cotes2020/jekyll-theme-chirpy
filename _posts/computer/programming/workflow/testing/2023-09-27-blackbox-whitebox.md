@@ -4,6 +4,7 @@ title: "블랙박스, 화이트박스"
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-09-27. 03:11
 last_modified_at: 2023-09-27. 03:11
