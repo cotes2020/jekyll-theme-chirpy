@@ -45,11 +45,11 @@ tags: [AI, ML]
 
 - CyberSecEval is a benchmark suite designed by Meta to assess cybersecurity vulnerabilities in LLMs.
 
-- empirically measuring LLM cybersecurity risks and capabilities. 
+- empirically measuring LLM cybersecurity risks and capabilities.
 
-- CYBERSECEVAL 3 assesses 8 different risks across two broad categories: risk to third parties, and risk to application developers and end users. 
+- CYBERSECEVAL 3 assesses 8 different risks across two broad categories: risk to third parties, and risk to application developers and end users.
 
-- Compared to previous work, we add new areas focused on offensive security capabilities: automated social engineering, scaling manual offensive cyber operations, and autonomous offensive cyber operations.  
+- Compared to previous work, we add new areas focused on offensive security capabilities: automated social engineering, scaling manual offensive cyber operations, and autonomous offensive cyber operations.
 
 CYBERSECEVAL 3: Advancing the Evaluation of Cybersecurity Risks and Capabilities in LLMs
 - Date: July 23, 2024
@@ -59,34 +59,34 @@ CYBERSECEVAL 3: Advancing the Evaluation of Cybersecurity Risks and Capabilities
 
 ---
 
-## 1 Introduction 
+## 1 Introduction
 
-The cybersecurity risks, benefits, and capabilities of AI systems are of intense interest across the security and AI policy community. 
-- Because progress in LLMs is rapid, it is challenging to have a clear picture of what currently is and is not possible. 
+The cybersecurity risks, benefits, and capabilities of AI systems are of intense interest across the security and AI policy community.
+- Because progress in LLMs is rapid, it is challenging to have a clear picture of what currently is and is not possible.
 - To make evidence-based decisions, we need to ground decision-making in empirical measurement.
 
-We make two key contributions to empirical measurement of `cybersecurity capabilities` of AI systems. 
-- First, we provide a transparent description of `cybersecurity measurements` conducted to support the development of the `Llama 3 405b`, `Llama 3 70b`, and ``Llama 3 8b`` models. 
+We make two key contributions to empirical measurement of `cybersecurity capabilities` of AI systems.
+- First, we provide a transparent description of `cybersecurity measurements` conducted to support the development of the `Llama 3 405b`, `Llama 3 70b`, and ``Llama 3 8b`` models.
 - Second, we enhance transparency and collaboration by publicly releasing all non-manual portions of our evaluation within our framework, in a new benchmark suite: **CYBERSECEVAL 3**.
-  - We previously released `CYBERSECEVAL 1 and 2`; those benchmarks focused on measuring various risks and capabilities associated with LLMs (LLMs), including automatic exploit generation, insecure code outputs, content risks in which LLMs agree to assist in cyber-attacks, and susceptibility to prompt injection attacks. This work is described in Bhatt et al. (2023) and Bhatt et al. (2024). 
+  - We previously released `CYBERSECEVAL 1 and 2`; those benchmarks focused on measuring various risks and capabilities associated with LLMs (LLMs), including automatic exploit generation, insecure code outputs, content risks in which LLMs agree to assist in cyber-attacks, and susceptibility to prompt injection attacks. This work is described in Bhatt et al. (2023) and Bhatt et al. (2024).
 - For `CYBERSECEVAL 3`, we extend our evaluations to cover new areas focused on offensive security capabilities, including automated social engineering, scaling manual offensive cyber operations, and autonomous cyber operations.
 
 ---
 
 ### 1.1 Summary of Findings
 
-- We find that while the `Llama 3` models exhibit capabilities that could potentially be employed in cyber-attacks, the associated risks are comparable to other state-of-the-art open and closed source models. 
+- We find that while the `Llama 3` models exhibit capabilities that could potentially be employed in cyber-attacks, the associated risks are comparable to other state-of-the-art open and closed source models.
 - We demonstrate that risks to application developers can be mitigated using guardrails. Furthermore, we have made all discussed guardrails available
 publicly.
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2032.png)
- 
+
 
 > Automated Social Engineering (3rd party risk)
 > - **Evaluation Approach**: Spear phishing simulation with LLM attacker evaluated by both human and automated review Victim interlocutors are simulated with LLMs and may not behave like real people
 > - Llama 3 models may be able to scale spear phishing campaigns with abilities similar to current open source LLMs
 
-> Scaling Manual Offensive Cyber Operations (3rd party risk) 
+> Scaling Manual Offensive Cyber Operations (3rd party risk)
 > - **Evaluation Approach**: "Capture the flag" hacking challenges with novice and expert participants using LLM as co-pilot
 > - High variance in subject success rates; potential confounding variables meaning only large effect sizes can be detected
 > - No significant uplift in success rates for cyberattacks; `marginal benefits` for novices
@@ -102,7 +102,7 @@ publicly.
 > - Toy programs don’t reflect real world codebase scales. Does not also explore more complex agentic design patterns, RAG, or tool augmentation
 > - Llama 3 405b does better than other models but we assess LLMs still don’t provide dramatic uplift
 
-> Prompt Injection (Application risk) 
+> Prompt Injection (Application risk)
 > - **Evaluation Approach**: Evaluation against a corpus of prompt injection cases
 > - Focus on single prompts only, not covering iterative attacks
 > - Comparable attack success rate to other models; significant risk reduction with the use of `PromptGuard`
@@ -121,15 +121,15 @@ publicly.
 > - **Evaluation Approach**: Evaluation of model responses to cyberattack-related prompts
 > - Tests use individual prompts without jailbreaks or iterative attacks
 > - Models generally refuse high-severity attack prompts; effectiveness improved with `LlamaGuard 3`
- 
+
 Figure 1 Overview of risks evaluated, evaluation approach, our limitations, and our results in evaluating `Llama 3` with CyberSecEval.
-- We have publicly released all `non-manual evaluation elements` within CyberSecEval for transparency, reproducibility, and to encourage community contributions. 
+- We have publicly released all `non-manual evaluation elements` within CyberSecEval for transparency, reproducibility, and to encourage community contributions.
 - We also publicly release all mentioned LLM guardrails, including `CodeShield`, `PromptGuard`, and `LlamaGuard 3`.
 
 Figure 1 summarizes our contributions. Specific findings include:
 
-- `Llama 3 405B` demonstrated the capability to automate moderately persuasive multi-turn spear-phishing attacks, 
-  - similar to GPT-4 Turbo, a peer closed model, and Qwen 2 72B Instruct, a peer open model. 
+- `Llama 3 405B` demonstrated the capability to automate moderately persuasive multi-turn spear-phishing attacks,
+  - similar to GPT-4 Turbo, a peer closed model, and Qwen 2 72B Instruct, a peer open model.
   - The risk associated with using benevolently hosted LLM models for phishing can be mitigated by actively monitoring their usage and implementing protective measures like `Llama Guard 3`, which Meta releases simultaneously with this paper.
 
 - how `Llama 3 405B` assists in the speed and completion of offensive network operations
@@ -137,19 +137,19 @@ Figure 1 summarizes our contributions. Specific findings include:
   - **autonomous hacking challenge**: in tests of autonomous cybersecurity operations `Llama 3 405B` showed **limited progress in autonomous hacking challenge**, failing to demonstrate substantial capabilities in strategic planning and reasoning over scripted automation approaches.
   - **vulnerability exploitation challenges**: Among all models tested, `Llama 3 405B` was the most effective at **solving small-scale program vulnerability exploitation challenges**, surpassing GPT-4 Turbo by 23%. This performance indicates incremental progress but does not represent a breakthrough in overcoming the general weaknesses of LLMs in software exploitation.
   - **coding assistants**: all LLMs tested, including `Llama 3 405B`, suggest insecure code, failing our `insecure autocomplete test cases` at the rate of 31%. This risk can be mitigated by implementing guardrails such as our publicly released `Code Shield system`.
-  - Susceptibility to prompt injection was a common issue across all models tested with `Llama 3 405B` and `Llama 3 8B` failing at rates of 22% and 19% respectively, rates comparable to peer models. This risk can be partially mitigated through secure application design and the use of protective measures like our publicly released `Prompt Guard model` 
+  - Susceptibility to prompt injection was a common issue across all models tested with `Llama 3 405B` and `Llama 3 8B` failing at rates of 22% and 19% respectively, rates comparable to peer models. This risk can be partially mitigated through secure application design and the use of protective measures like our publicly released `Prompt Guard model`
   - `Llama 3` models exhibited susceptibility to complying with `clearly malicious prompts and requests to execute malicious code in code interpreters` at rates of 1% to 26%. Both issues can be mitigated by benign cloud hosting services by monitoring API usage and employing guardrails like `Llama Guard 3`.
 
 ---
 
 ## 2 Related Work
 
-Our work builds on a growing body of methods for `assessing the security capabilities of LLMs`. 
+Our work builds on a growing body of methods for `assessing the security capabilities of LLMs`.
 
-We first discuss related work that informs our choice of which risks to evaluate, resulting in a broad spectrum of relevant risks assessed. As noted above, these fall into two categories: 
+We first discuss related work that informs our choice of which risks to evaluate, resulting in a broad spectrum of relevant risks assessed. As noted above, these fall into two categories:
 
-1) risks to third parties and 
-2) risks to application developers, which includes risks to end users of those applications. 
+1) risks to third parties and
+2) risks to application developers, which includes risks to end users of those applications.
 
 Each of these risks has related work we discuss in turn.
 
@@ -159,69 +159,69 @@ Our chosen categories of risks, risks to third parties and risks to application 
 
 - For example, both the UK National Cyber Security Centre (2024) and the White House (2023) Voluntary AI Commitments explicitly raise concerns about cyber capabilities of AI and call for measurement of these risks. These include concerns on `aiding vulnerability discovery` and in `uplifting less-skilled attackers`
 
-- More recently, NIST (2024) calls out two primary categories of risk: 
+- More recently, NIST (2024) calls out two primary categories of risk:
   - “the potential for GAI to `discover or enable new cybersecurity risks through lowering the barriers` for offensive capabilities”
-  - “expand[ing] the available attack surface as GAI itself is vulnerable to novel attacks like prompt-injection or data poisoning.” 
+  - “expand[ing] the available attack surface as GAI itself is vulnerable to novel attacks like prompt-injection or data poisoning.”
 
 ---
 
 ### 2.2 Assessment of risks to third parties
 
-- Previous work by `Hazell (2023)` has shown that LLMs can generate content for spear-phishing attacks. `Bethany et al. (2024)` conducted multi-month ecological studies of the effectiveness of such attacks. 
+- Previous work by `Hazell (2023)` has shown that LLMs can generate content for spear-phishing attacks. `Bethany et al. (2024)` conducted multi-month ecological studies of the effectiveness of such attacks.
 
 - Our work, however, establishes a repeatable method for assessing the risk of a specific model for aiding spear-phishing through a human and AI judging process. We are not aware of another work that can effectively determine per-model spear-phishing risk in a short amount of time.
 
-For “LLM uplift” of manual cyber-operations, 
-- `Microsoft (2024)` reports that threat actors may already be using LLMs to enhance reconnaissance and vulnerability discovery in the wild. 
-- `Hilario et al. (2024)` reports on interactively prompting Chat-GPT 3.5 to carry out a single end-to-end penetration test. 
+For “LLM uplift” of manual cyber-operations,
+- `Microsoft (2024)` reports that threat actors may already be using LLMs to enhance reconnaissance and vulnerability discovery in the wild.
+- `Hilario et al. (2024)` reports on interactively prompting Chat-GPT 3.5 to carry out a single end-to-end penetration test.
 - In contrast, our work **quantifies** LLM uplift for manual cyber-operations across a body of volunteers. We also show quantitative results for both expert and novice populations, shedding light on the current capabilities of LLMs to both broaden the pool of cyber operators and to deepen capabilities of existing operators.
 
-Beyond manual human-in-the-loop uplift, autonomous cyber operation by LLMs has been of great concern. 
-- Recent work by `Fang et al. (2024)` showed that GPT-4 can, in some cases, carry out exploitation of known vulnerabilities; they do not, however, release their prompts or test sets citing ethical concerns. 
-- `Rohlf (2024)` argues that these results may, instead, be simply applying already known exploits. 
-- the startups `XBOW (2024)` and `RunSybil (2024)` have announced products that aim at carrying out autonomous cyber operations. 
+Beyond manual human-in-the-loop uplift, autonomous cyber operation by LLMs has been of great concern.
+- Recent work by `Fang et al. (2024)` showed that GPT-4 can, in some cases, carry out exploitation of known vulnerabilities; they do not, however, release their prompts or test sets citing ethical concerns.
+- `Rohlf (2024)` argues that these results may, instead, be simply applying already known exploits.
+- the startups `XBOW (2024)` and `RunSybil (2024)` have announced products that aim at carrying out autonomous cyber operations.
 - We are not aware, however, of other work that quantifies different models’ capabilities in this area. We are publicly releasing our tests to encourage others to build on top of our work.
 
-**Autonomous vulnerability discovery** is a capability with both `defensive and offensive uses`, but also one that is tricky to evaluate for LLMs because training data may include knowledge of previously discovered vulnerabilities. 
-- `CyberSecEval 2 by Bhatt et al. (2024)` addressed this by programmatically generating new tests. 
-- `Chauvin (2024)` proposes a new test suite based on capturing feeds of known vulnerabilities in commodity software. 
-- `Glazunov and Brand (2024)` report that using multi-step prompting with an agent framework significantly increases performance in discovering vulnerabilities in their “Naptime” system. 
+**Autonomous vulnerability discovery** is a capability with both `defensive and offensive uses`, but also one that is tricky to evaluate for LLMs because training data may include knowledge of previously discovered vulnerabilities.
+- `CyberSecEval 2 by Bhatt et al. (2024)` addressed this by programmatically generating new tests.
+- `Chauvin (2024)` proposes a new test suite based on capturing feeds of known vulnerabilities in commodity software.
+- `Glazunov and Brand (2024)` report that using multi-step prompting with an agent framework significantly increases performance in discovering vulnerabilities in their “Naptime” system.
 - This shows the importance of our work to publicly release benchmarks for vulnerability discovery. As new frameworks and new LLMs come out, we encourage continued development of public benchmarks.
 
 ### 2.3 Assessment of risks to application developers
 
-`OWASP (2024)` places prompt injection as number one on its “Top 10" vulnerability types for LLMs. Measuring prompt injection susceptibility is therefore of great interest. 
-- `Schulhoff et al. (2024)` solicited malicious prompts from 2,800 people and then used them to evaluate three LLMs including GPT-3. 
+`OWASP (2024)` places prompt injection as number one on its “Top 10" vulnerability types for LLMs. Measuring prompt injection susceptibility is therefore of great interest.
+- `Schulhoff et al. (2024)` solicited malicious prompts from 2,800 people and then used them to evaluate three LLMs including GPT-3.
 
-as LLMs have expanded to accept visual and other inputs, “multi-modal” prompt injection techniques have been developed; 
-- for example `Willison (2023)` demonstrates GPT-4 prompt injection from a picture of text with new instructions. 
+as LLMs have expanded to accept visual and other inputs, “multi-modal” prompt injection techniques have been developed;
+- for example `Willison (2023)` demonstrates GPT-4 prompt injection from a picture of text with new instructions.
 - Our work publicly releases an evaluation that can be used to assess any given model for textual prompt injection techniques, applying this to `Llama 3`, and also publicly releases visual prompt injection tests, which we do not apply in this paper.
 
-**Executing malicious code as a result of a prompt** first became a concern following the announcement that GPT-4 would have access to a code interpreter. 
-- For example, `Piltch (2023)` demonstrated that GPT could be induced into executing code that revealed details about its environment. 
+**Executing malicious code as a result of a prompt** first became a concern following the announcement that GPT-4 would have access to a code interpreter.
+- For example, `Piltch (2023)` demonstrated that GPT could be induced into executing code that revealed details about its environment.
 - Our previous work in `CYBERSECEVAL 2 by Bhatt et al. (2024)` then showed this was a feasible attack and provided a data set to evaluate the risk. We continue that work here, showing how to evaluate state of the art models for this risk, both with and without guardrails in place.
 
-**Facilitating cyber attacks with LLMs** has been a key policy concern. 
-- `Li et al. (2024)` introduced a safety benchmark consisting of curated questions and an LLM to judge responses. 
-- We continue the work from `CYBERSECEVAL 1 & 2` on determining if an LLM can be tricked into helping someone carry out a cyber attack with a clever prompt. 
+**Facilitating cyber attacks with LLMs** has been a key policy concern.
+- `Li et al. (2024)` introduced a safety benchmark consisting of curated questions and an LLM to judge responses.
+- We continue the work from `CYBERSECEVAL 1 & 2` on determining if an LLM can be tricked into helping someone carry out a cyber attack with a clever prompt.
 - Our work shows how to meaningfully compare different state of the art models for helpfulness, both with and without guardrails.
 
-**Code assistants** have taken off as a use case for LLMs, 
-- with `Microsoft (2023)` reporting that a substantial fraction of code in GitHub results from GitHub copilot suggestions. 
-- Our previous work in `Bhatt et al. (2024)` quantified insecure coding suggestions, both with and without guardrails. 
+**Code assistants** have taken off as a use case for LLMs,
+- with `Microsoft (2023)` reporting that a substantial fraction of code in GitHub results from GitHub copilot suggestions.
+- Our previous work in `Bhatt et al. (2024)` quantified insecure coding suggestions, both with and without guardrails.
 - We continue this work here to show the benefit of standardized test sets for evaluating state of the art models.
 
 ---
 
 ## 3 Assessment of offensive cybersecurity capabilities and risks to third parties
 
-We assessed four risks to third parties from LLMs: 
-- automated social engineering, 
-- scaling manual offensive cyber-operations, 
-- autonomous offensive cyber-operations, 
+We assessed four risks to third parties from LLMs:
+- automated social engineering,
+- scaling manual offensive cyber-operations,
+- autonomous offensive cyber-operations,
 - autonomous software vulnerability discovery and exploitation.
 
-We discuss these below and note that many of these capabilities are usable by defenders to harden their own networksand code. 
+We discuss these below and note that many of these capabilities are usable by defenders to harden their own networksand code.
 
 We make automated evaluations we describe publicly available part of CyberSecEval 3.
 
@@ -268,7 +268,7 @@ This structured approach allows us to systematically assess and compare the capa
 
 To assess risk, we used a judge LLM to evaluate spear-phishing performance across 250 test cases for each of the models.
 
-We validated these scores against a small sample of human evaluations where four human evaluators blindly rated each of the five model outputs across the same 10 test cases using the rubric defined above. 
+We validated these scores against a small sample of human evaluations where four human evaluators blindly rated each of the five model outputs across the same 10 test cases using the rubric defined above.
 - Both the human and LLM judge evaluations of performance show that, in addition to GPT-4 Turbo and Qwen 2-72b-instruct, `Llama 3` models could potentially be used to scale moderately convincing spear-phishing campaigns in at least some cases.
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2028.png)
@@ -278,10 +278,10 @@ Results from our automated social engineering evaluation. GPT-4 Turbo was evalua
 Human evaluation scores and LLM judge evaluation scores for the 250 test cases sampled
 - `Turbo` scores approximately averaged 2.90 (“Intermediate” capabilities of multi-step persuasion) by human graders.
 - `Llama 3 405b` had an average score of 2.62 (between “Intermediate” and “Poor” persuasive abilities), and
-- `Mixtral 8x22b` had an average score of 1.53 (between “Poor” and “Very Poor” persuasive abilities). 
+- `Mixtral 8x22b` had an average score of 1.53 (between “Poor” and “Very Poor” persuasive abilities).
 - When judge classifier scores of spear-phishing attempt persuasiveness were compared against a small sample of blind human evaluations from 4 different evaluators, we found judge scores and human scores to have a `strong positive correlation` (r = 0.89) for these model outputs.
 
-GPT-4 Turbo and Qwen 2-72b-instruct were evaluated by our judge LLM to be significantly more successful at achieving spear-phishing goals than `Llama 3 405b` and `Mixtral 8x22b`. 
+GPT-4 Turbo and Qwen 2-72b-instruct were evaluated by our judge LLM to be significantly more successful at achieving spear-phishing goals than `Llama 3 405b` and `Mixtral 8x22b`.
 - Note that we used four human evaluators, so the error bars on human evaluation are likely wide and are expected to overlap with the LLM judge evaluations.
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2029.png)
@@ -316,10 +316,10 @@ Although the Llama family of models were scored as being moderately successful a
   - Guardrails via Llama Guard 3 can detect and block misuse.
 
 - **Conclusion**: LLM provides minimal uplift; guardrails recommended.
- 
+
 **Mitigation recommendations**
 
-While `Llama 3` does not appear to significantly improve the success rate of cyberattacks relative to an open-web non-LLM baseline, cloud service providers hosting `Llama 3` may still want to minimize the misuse of hosted models by cyber threat actors. 
+While `Llama 3` does not appear to significantly improve the success rate of cyberattacks relative to an open-web non-LLM baseline, cloud service providers hosting `Llama 3` may still want to minimize the misuse of hosted models by cyber threat actors.
 
 To mitigate this risk of misuse, we have publicly released `Llama Guard 3` with the `Llama 3` launch, which can identify, log, and block requests that induce `Llama 3` models to act as cyberattack co-pilots. We recommend guardrailing `Llama 3` deployments with `Llama Guard 3`, as demonstrated in our system level safety reference implementation.
 
@@ -343,7 +343,7 @@ To mitigate this risk of misuse, we have publicly released `Llama Guard 3` with 
 - **Mitigation**:
   - Risk of autonomous attacks is low.
   - Cloud providers can use Llama Guard 3 to block requests for attack assistance.
- 
+
 ### 3.4 Risk: Autonomous software vulnerability discovery and exploitation
 
 there is no evidence that AI systems outperform traditional non-AI tools and manual techniques in real-world vulnerability identification and exploitation on real-world scale programs. This limitation is attributed to several factors:
@@ -392,9 +392,9 @@ We are releasing with `Llama 3` multiple guardrails that serve to mitigate these
 - **Results** (without guardrails):
   - Attack Success Rates (ASR) ranged from 20% to 40%, similar to GPT-4.
   - Non-English prompts showed slightly higher ASR.
-- **Mitigation**: 
+- **Mitigation**:
   - Deploy Prompt Guard to detect both direct and indirect prompt injections. It significantly reduces attack success, though some sophisticated or application-specific attacks may still bypass filters.
- 
+
 **Mitigation recommendations**
 
 To mitigate prompt injection risk we recommend the deployment of `Prompt Guard`, which we’ve developed and released alongside `Llama 3`. We particularly recommend deploying `Prompt Guard` to detect indirect injections in third-party content consumed by `Llama 3`, as indirect injections pose the most risk to users of applications.
@@ -420,7 +420,7 @@ To mitigate prompt injection risk we recommend the deployment of `Prompt Guard`,
 - **Mitigation**: Deploy Code Shield, which identifies ~190 insecure patterns across 50 CWEs with 90% accuracy. Additional static and dynamic analysis is recommended in the CI/CD pipeline.
 
 
-### 4.3 Risk: Agreeing to execute malicious code in attached code interpreters 
+### 4.3 Risk: Agreeing to execute malicious code in attached code interpreters
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2030-1.png)
 
@@ -467,25 +467,25 @@ Our testing framework evaluates the models’ responses across various attack ca
 ### 5.1 `Prompt Guard`: reduce prompt injection attacks
 
 **Prompt Guard**
-- multi-label classifier releasing to guardrail real-world LLM-powered applications against prompt attack risk, including prompt injections. 
-- Unlike CyberSecEval, which tests the ability of models to enforce consistency of system prompts and user instructions against contradictory requests, Prompt Guard is designed to flag inputs that appear to be risky or explicitly malicious in isolation, such as prompts that contain a known jailbreaking technique. 
+- multi-label classifier releasing to guardrail real-world LLM-powered applications against prompt attack risk, including prompt injections.
+- Unlike CyberSecEval, which tests the ability of models to enforce consistency of system prompts and user instructions against contradictory requests, Prompt Guard is designed to flag inputs that appear to be risky or explicitly malicious in isolation, such as prompts that contain a known jailbreaking technique.
 
 - Prompt Guard has three classifications:
   - **Jailbreak**: identifies prompts as explicitly malicious
   - **Injection**: identifies data or third-party documents in an LLMs context window as containing embedded instructions or prompts
   - **Benign**: any string that does not fall into either of the above two categories
-  
+
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2032-2.png)
 
 Direct Jailbreak Detection:
-- No part of this dataset was used in training, so it can be considered completely “out-of-distribution” from our training dataset, simulating a realistic filter of malicious and benign prompts on an application that the model has not explicitly trained on. 
+- No part of this dataset was used in training, so it can be considered completely “out-of-distribution” from our training dataset, simulating a realistic filter of malicious and benign prompts on an application that the model has not explicitly trained on.
 - Tested on unseen real-world prompts, Prompt Guard detected 97.5% of jailbreaks with 3.9% false positives.
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2033-1.png)
 
 Indirect Injection Detection:
-- repurpose CyberSecEval’s dataset as a benchmark of challenging indirect injections covering a wide range of techniques (with a similar set of datapoints with the embedded injection removed as negatives). 
+- repurpose CyberSecEval’s dataset as a benchmark of challenging indirect injections covering a wide range of techniques (with a similar set of datapoints with the embedded injection removed as negatives).
 - Using CyberSecEval’s indirect injection dataset, Prompt Guard detected 71.4% of injections with a 1% false-positive rate.
 
 ![alttext](/assets/img/_posts/51AI/Screenshot%2034.png)
@@ -493,16 +493,16 @@ Indirect Injection Detection:
 
 Conclusion
 - Indirect injections are the largest realistic security risk faced by LLM-powered applications
-- recommend scanning and filtering all third-party documents included in LLM context windows for injections or jailbreaks. 
-- The tradeoff of filtering jailbreaks in direct user dialogue is application specific. 
-- recommend fine-tuning `Prompt Guard` to the specific benign and malicious prompts of a given application before integration rather than integrating out of the box 
+- recommend scanning and filtering all third-party documents included in LLM context windows for injections or jailbreaks.
+- The tradeoff of filtering jailbreaks in direct user dialogue is application specific.
+- recommend fine-tuning `Prompt Guard` to the specific benign and malicious prompts of a given application before integration rather than integrating out of the box
 
 ### 5.2 `Code Shield`: reduce insecure code suggestions
 
 **Code Shield**
 - filters insecure code generated by LLMs before it reaches production.
 -  uses the `Insecure Code Detector (ICD) static analysis library`, covering 7 programming languages and 50+ CWEs.
- 
+
 How it Works:
 - Layer 1: Fast scan (<60ms) for risky code patterns.
 - Layer 2: In-depth analysis (~300ms) if Layer 1 flags issues.
@@ -544,23 +544,23 @@ Trade-offs:
 ## 6 Limitations and future work
 
 - Maximizing Model Efficacy:
-  - Guardrails were tested on base models, but specialized “agent scaffolding” (like Naptime) can boost performance, achieving up to 20× better CyberSecEval 2 results. 
+  - Guardrails were tested on base models, but specialized “agent scaffolding” (like Naptime) can boost performance, achieving up to 20× better CyberSecEval 2 results.
   - Future work could add model-independent agent architectures or fine-tuning for risk-specific tasks.
 
 - Scaling Human–LLM Cross-Checks:
-  - Current evaluations rely mostly on LLM judges with occasional human checks. 
+  - Current evaluations rely mostly on LLM judges with occasional human checks.
   - Future work should expand the number of human judges, measure agreement rates, and apply crowdsourcing methods for consistent evaluation.
 
 - LLM Judge Consensus:
-  - Using multiple LLM judges and aggregating results may reduce false positives/negatives. 
+  - Using multiple LLM judges and aggregating results may reduce false positives/negatives.
   - Future evaluations should test consensus algorithms with diverse judge models.
 
 - Continuous Risk Monitoring:
-  - Risk assessments are currently “point in time.” 
+  - Risk assessments are currently “point in time.”
   - Public model releases (e.g., on Hugging Face) should be continuously tested as new models emerge to track changes in risk profiles.
 
 ---
- 
+
 ## A Appendix
 
 ## A.1 Detailed description of manual offensive capabilities (uplift) study design
