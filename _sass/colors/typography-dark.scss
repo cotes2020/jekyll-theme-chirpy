@@ -4,8 +4,10 @@
 
 @mixin dark-scheme {
   /* Framework color */
-  --main-bg: rgb(27, 27, 30);
-  --mask-bg: rgb(68, 69, 70);
+  --main-bg: rgb(11, 11, 12);
+  --mask-bg: rgb(38, 38, 39);
+  // --main-bg: rgb(27, 27, 30);
+  // --mask-bg: rgb(68, 69, 70);
   --main-border-color: rgb(44, 45, 45);
 
   /* Common color */
@@ -47,7 +49,7 @@
   --avatar-border-color: rgb(206, 206, 206, 0.9);
 
   /* Topbar */
-  --topbar-bg: rgb(27, 27, 30, 0.64);
+  --topbar-bg: rgb(11, 11, 12, 0.64);
   --topbar-text-color: var(--text-color);
   --search-border-color: rgb(55, 55, 55);
   --search-icon-color: rgb(100, 102, 105);

@@ -39,7 +39,7 @@
 
       <li class="nav-item{% if page.url == '/blog/' %}{{ " active" }}{% endif %}">
         <a href="{{ '/blog/' | relative_url }}" class="nav-link">
-          <i class="fa fa-pencil-square"></i>
+          <i class="fa-fw fa fa-pencil-square"></i>
           <span>{{ site.data.locales[include.lang].tabs.blog | upcase }}</span>
         </a>
       </li>
