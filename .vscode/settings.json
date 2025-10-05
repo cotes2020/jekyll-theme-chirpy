@@ -45,5 +45,6 @@
 	},
 	"[scss]": {
 		"editor.defaultFormatter": "vscode.css-language-features"
-	}
+	},
+	"editor.insertSpaces": true
 }
