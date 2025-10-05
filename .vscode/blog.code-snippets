@@ -18,7 +18,7 @@
 
 	// 24-10-12. 07:22
 	"Blog Time Short": {
-		"prefix": "karmoTimeShort",
+		"prefix": ["karmoTimeShort", "놳"],
 		"body": [
 			"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE. $CURRENT_HOUR:$CURRENT_MINUTE"
 		],
@@ -29,7 +29,7 @@
 	// # last_modified_at: 2024-10-15. 17:37 # VSCode 줄 들여쓰기
 	// 위 같은 형식으로
 	"Blog Time Full": {
-		"prefix": "karmoTimeFull",
+		"prefix": ["karmoTimeFull", "려ㅣㅣ"],
 		"body": [
 			"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE. $CURRENT_HOUR:$CURRENT_MINUTE # Init",
 			"# last_modified_at: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE. $CURRENT_HOUR:$CURRENT_MINUTE"
@@ -38,7 +38,7 @@
 	},
 
 	"Blog Time": {
-		"prefix": ["karmoTime", "ㅏㅁ그ㅐ쌰ㅡㄷ"],
+		"prefix": ["karmoTime", "샤ㅡㄷ"],
 		"body": [
 			"last_modified_at: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE. $CURRENT_HOUR:$CURRENT_MINUTE"
 		],
@@ -46,7 +46,7 @@
 	},
 
 	"Youtube Include": {
-		"prefix": "karmoYoutube",
+		"prefix": ["karmoYoutube", "ㅛㅐㅕ셔ㅠㄷ"],
 		"body": [
 			"{% include embed/youtube.html id = \"_\" %}"
 		],
