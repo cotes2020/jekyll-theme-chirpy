@@ -1,7 +1,7 @@
 ---
 title: "'마녀:귀찮아!' | Forest Dungeon"
 description: "숲 속에 위치한 지하 던전"
-categories: [마녀:귀찮아!, 더 월드]
+categories: [작업물, 마녀:귀찮아!, 더 월드]
 tags: [마녀:귀찮아!]
 image: "/assets/img/post/works/_witch-mendokusai/screenshot/240618-000000.png"
 hidden: true

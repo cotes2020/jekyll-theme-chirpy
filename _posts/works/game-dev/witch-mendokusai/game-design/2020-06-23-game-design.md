@@ -1,7 +1,7 @@
 ---
 title: "Game Design"
 description: "게임 기획, 게임 디자인"
-categories: [마녀:귀찮아!, 디자인]
+categories: [작업물, 마녀:귀찮아!, 디자인]
 tags: [마녀:귀찮아!, Game-Design]
 image: "/assets/img/post/works/_witch-mendokusai/screenshot/240618-000000.png"
 

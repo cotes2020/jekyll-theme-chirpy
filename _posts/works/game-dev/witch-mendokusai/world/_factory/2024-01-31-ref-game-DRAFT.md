@@ -1,7 +1,7 @@
 ---
 title: "게임 메모"
 # description: ""
-categories: [마녀:귀찮아!, 디자인]
+categories: [작업물, 마녀:귀찮아!, 디자인]
 tags: [마녀:귀찮아!, Concept]
 image: "/assets/img/background/backtop.gif"
 hidden: true
