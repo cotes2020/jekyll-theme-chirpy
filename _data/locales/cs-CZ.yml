@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Od
   posted: Zveřejněno
+  original_written_by: "Původně napsal"
+  reposted_from: "Přetištěno z"
+  original_source: "Původní zdroj"
   updated: Aktualizováno
   words: slova
   pageview_measure: zhlednutí

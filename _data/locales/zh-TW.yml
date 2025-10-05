@@ -53,6 +53,9 @@ notification:
 post:
   written_by: 作者
   posted: 發布於
+  original_written_by: "原作者"
+  reposted_from: "轉載自"
+  original_source: "文章來源"
   updated: 更新於
   words: 字
   pageview_measure: 次瀏覽

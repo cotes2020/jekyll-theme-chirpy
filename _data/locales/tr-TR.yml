@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Yazan
   posted: Gönderim
+  original_written_by: "Orijinal Yazar"
+  reposted_from: "Şuradan alındı"
+  original_source: "Orijinal Kaynak"
   updated: Güncelleme
   words: sözcük
   pageview_measure: görüntülenme

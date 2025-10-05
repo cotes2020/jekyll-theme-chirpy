@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Автор
   posted: Час публікації
+  original_written_by: "Автор оригіналу"
+  reposted_from: "Переопубліковано з"
+  original_source: "Джерело"
   updated: Оновлено
   words: слів
   pageview_measure: переглядів

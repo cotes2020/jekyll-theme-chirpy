@@ -53,6 +53,9 @@ notification:
 post:
   written_by: Kirjoittaja
   posted: Julkaistu
+  original_written_by: "Alun perin kirjoittanut"
+  reposted_from: "Uudelleenjulkaistu lähteestä"
+  original_source: "Alkuperäinen lähde"
   updated: Päivitetty
   words: sanaa
   pageview_measure: katselukertoja

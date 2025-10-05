@@ -53,6 +53,9 @@ notification:
 post:
   written_by: Viết bởi
   posted: Đăng lúc
+  original_written_by: "Được viết bởi"
+  reposted_from: "Đăng lại từ"
+  original_source: "Nguồn gốc"
   updated: Cập nhật lúc
   words: từ
   pageview_measure: lượt xem

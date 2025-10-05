@@ -54,6 +54,9 @@ notification:
 post:
   written_by: از
   posted: شائع شدہ
+  original_written_by: "اصل مصنف"
+  reposted_from: "یہاں سے reposted"
+  original_source: "اصل ماخذ"
   updated: اپ ڈیٹ شدہ
   words: لفظ
   pageview_measure: مشاہدات

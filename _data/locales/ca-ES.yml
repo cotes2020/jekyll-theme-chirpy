@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Per
   posted: Publicat
+  original_written_by: "Original escrit per"
+  reposted_from: "Republicat des de"
+  original_source: "Font original"
   updated: Actualitzat
   words: paraules
   pageview_measure: visites

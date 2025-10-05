@@ -53,6 +53,9 @@ notification:
 post:
   written_by: Автор
   posted: Опубликовано
+  original_written_by: "Автор оригинала"
+  reposted_from: "Перепечатано из"
+  original_source: "Оригинальный источник"
   updated: Обновлено
   words: слов
   pageview_measure: просмотров

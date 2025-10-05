@@ -54,6 +54,9 @@ notification:
 post:
   written_by: نوشته شده توسط
   posted: منتشر شده
+  original_written_by: "نوشته شده اولیه توسط"
+  reposted_from: " منتشر شده از"
+  original_source: "منبع اصلی"
   updated: به‌روزرسانی شده
   words: کلمه
   pageview_measure: بازدید

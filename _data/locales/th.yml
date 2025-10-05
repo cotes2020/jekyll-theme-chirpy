@@ -54,6 +54,9 @@ notification:
 post:
   written_by: โดย
   posted: โพสต์เมื่อ
+  original_written_by: "เขียนโดย"
+  reposted_from: "โพสต์ใหม่จาก"
+  original_source: "แหล่งที่มาเดิม"
   updated: อัปเดตเมื่อ
   words: คำ
   pageview_measure: ครั้ง

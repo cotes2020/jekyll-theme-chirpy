@@ -54,6 +54,9 @@ notification:
 post:
   written_by: ကရေးသားခဲ့သည်။
   posted: တင်ထားခဲ့သည်။
+  original_written_by: "မူရင်းရေးသူ"
+  reposted_from: "မှတစ်ဆင့် ပြန်လည်ဖော်ပြ"
+  original_source: "မူရင်းအရင်းအမြစ်"
   updated: မွမ်းမံထားခဲ့သည်။
   words: စကားလုံးများ
   pageview_measure: အမြင်များ

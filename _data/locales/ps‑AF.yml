@@ -54,6 +54,9 @@ notification:
 post:
   written_by: لیکوال
   posted: خپره شوې
+  original_written_by: "اصلي ليکوال"
+  reposted_from: "د ... څخه بياختر شوی"
+  original_source: "اصلي سرچینه"
   updated: تازه شوې
   words: کلمې
   pageview_measure: کتنې

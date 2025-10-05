@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Από
   posted: Δημοσιεύθηκε
+  original_written_by: "Γράφτηκε αρχικά από"
+  reposted_from: "Επανδημοσιεύτηκε από"
+  original_source: "Πρωτότυπη πηγή"
   updated: Ενημερώθηκε
   words: λέξεις
   pageview_measure: προβολές

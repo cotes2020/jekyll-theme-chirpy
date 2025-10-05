@@ -54,6 +54,9 @@ notification:
 post:
   written_by: بواسطة
   posted: نشّر
+  original_written_by: "كُتِبَ الأصل بواسطة"
+  reposted_from: "مُعاد نشره من"
+  original_source: "المصدر الأصلي"
   updated: حدّث
   words: كلمات
   pageview_measure: مشاهدات

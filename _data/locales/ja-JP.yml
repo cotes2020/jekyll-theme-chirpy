@@ -54,6 +54,9 @@ notification:
 post:
   written_by: 投稿者
   posted: 投稿日
+  original_written_by: "原作者"
+  reposted_from: "転載元"
+  original_source: "原文のソース"
   updated: 更新日
   words: 語
   pageview_measure: 回閲覧

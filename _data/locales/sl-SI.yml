@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Od #By
   posted: Objavljeno #Posted
+  original_written_by: "Izvirno napisal"
+  reposted_from: "Objavljeno prek"
+  original_source: "Izvirni vir"
   updated: Posodobljeno #Updated
   words: besede #words
   pageview_measure: ogledi #views

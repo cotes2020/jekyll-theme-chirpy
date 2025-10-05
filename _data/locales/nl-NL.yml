@@ -53,6 +53,9 @@ notification:
 post:
   written_by: Door
   posted: Posted
+  original_written_by: "Oorspronkelijk geschreven door"
+  reposted_from: "Gerepubliceerd van"
+  original_source: "Oorspronkelijke bron"
   updated: Bijgewerkt
   words: woorden
   pageview_measure: Gelezen

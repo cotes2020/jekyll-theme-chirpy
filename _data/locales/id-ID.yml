@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Oleh
   posted: Diterbitkan
+  original_written_by: "Ditulis oleh"
+  reposted_from: "Diposting ulang dari"
+  original_source: "Sumber asli"
   updated: Diperbarui
   words: kata
   pageview_measure: dilihat

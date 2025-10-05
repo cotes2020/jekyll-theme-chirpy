@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Af
   posted: Udgivet
+  original_written_by: "Oprindeligt skrevet af"
+  reposted_from: "Genopslået fra"
+  original_source: "Oprindelig kilde"
   updated: Opdateret
   words: ord
   pageview_measure: visninger

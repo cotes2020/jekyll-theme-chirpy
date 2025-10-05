@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Por
   posted: Postado em
+  original_written_by: "Escrito originalmente por"
+  reposted_from: "Republicado de"
+  original_source: "Fonte original"
   updated: Atualizado
   words: palavras
   pageview_measure: visualizações

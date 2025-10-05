@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Автор
   posted: Публикувана
+  original_written_by: "Оригиналът е написан от"
+  reposted_from: "Препубликувано от"
+  original_source: "Оригинален източник"
   updated: Обновена
   words: думи
   pageview_measure: преглеждания

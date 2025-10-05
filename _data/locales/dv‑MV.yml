@@ -54,6 +54,9 @@ notification:
 post:
   written_by: ލެކްއޯލް
   posted: ޕޯސްޓްކުރެވި
+  original_written_by: "އަސްލު ލިޔަފައިވާ"
+  reposted_from: "އިތުރަށް ނެރުނީ"
+  original_source: "އަސްލު މައްސަރު"
   updated: އޮޕްޑޭޓްކުރެވި
   words: ބަސް
   pageview_measure: ބަނޑުކުރާ

@@ -54,6 +54,9 @@ notification:
 post:
   written_by: Av
   posted: Postad
+  original_written_by: "Ursprungligen skriven av"
+  reposted_from: "Ompublicerad från"
+  original_source: "Originalkälla"
   updated: Uppdaterad
   words: ord
   pageview_measure: visningar

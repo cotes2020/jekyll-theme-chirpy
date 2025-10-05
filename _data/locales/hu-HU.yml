@@ -55,6 +55,9 @@ notification:
 post:
   written_by: Szerző
   posted: Létrehozva
+  original_written_by: "Eredetileg írta"
+  reposted_from: "Újraközölve innen:"
+  original_source: "Eredeti forrás"
   updated: Frissítve
   words: szó
   pageview_measure: látogató

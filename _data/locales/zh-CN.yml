@@ -53,6 +53,9 @@ notification:
 post:
   written_by: 作者
   posted: 发表于
+  original_written_by: 原作者
+  reposted_from: 转载自
+  original_source: 文章来源
   updated: 更新于
   words: 字
   pageview_measure: 次浏览

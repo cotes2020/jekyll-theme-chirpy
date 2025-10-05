@@ -53,6 +53,9 @@ notification:
 post:
   written_by: Da
   posted: Postato
+  original_written_by: "Scritto originalmente da"
+  reposted_from: "Ripubblicato da"
+  original_source: "Fonte originale"
   updated: Aggiornato
   words: parole
   pageview_measure: visioni

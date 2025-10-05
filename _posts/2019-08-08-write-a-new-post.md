@@ -85,6 +85,21 @@ description: Short summary of the post.
 
 Additionally, the `description` text will also be displayed under the post title on the post's page.
 
+### Reposted Articles
+
+For reposted articles, you can add the following fields to the Front Matter to indicate the original source:
+
+```yaml
+---
+original_url: https://example.com/posts/sample-article
+original_author: Example Author  # Optional
+original_source: Example Title Name # Default: "Original Source"
+---
+```
+
+> These fields help maintain proper attribution and credit the original content creator when sharing republished articles.
+{: .prompt-info }
+
 ## Table of Contents
 
 By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml`{: .filepath} and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):

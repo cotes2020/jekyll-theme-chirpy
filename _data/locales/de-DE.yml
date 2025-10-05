@@ -53,6 +53,9 @@ notification:
 post:
   written_by: Von
   posted: Veröffentlicht
+  original_written_by: "Ursprünglich geschrieben von"
+  reposted_from: "Wiederveröffentlicht von"
+  original_source: "Ursprüngliche Quelle"
   updated: Aktualisiert
   words: Wörter
   pageview_measure: Aufrufe
