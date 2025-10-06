@@ -4,6 +4,7 @@ description: "좋은 글을 쓰는 방법"
 categories: [수필, 생각]
 tags: [Strategy]
 image: "/assets/img/background/20230112-151539.jpg"
+hidden: true
 
 date: 2024-09-05. 04:42
 # last_modified_at: 2024-09-29. 20:10

@@ -4,6 +4,7 @@ title: "마음가짐 - 시작과 배움"
 categories: [수필, 생각]
 tags: [Strategy]
 image: "/assets/img/background/backtop.gif"
+hidden: true
 
 date: 2024-11-15. 00:58
 # last_modified_at: 2025-03-19. 01:26 # Theory

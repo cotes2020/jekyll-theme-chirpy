@@ -4,6 +4,7 @@ description: "테크를 배우자"
 categories: [수필, 생각]
 tags: [Strategy]
 image: "/assets/img/background/backtop.gif"
+hidden: true
 
 date: 2025-06-09. 21:36 # Init: from shader, effect, ref-idea, gwan
 # last_modified_at: 2025-06-13. 00:29 # +공부 링크

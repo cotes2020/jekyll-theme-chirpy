@@ -4,6 +4,7 @@ description: "테크를 배우자 - 근데 이제 커리어 포커스"
 categories: [수필, 생각]
 tags: [Strategy]
 image: "/assets/img/background/backtop.gif"
+hidden: true
 
 date: 2025-09-22. 06:46 # S Init: 북마크 정리: 게임 업계
 # last_modified_at: 2025-09-25. 00:44 # E ~정리
