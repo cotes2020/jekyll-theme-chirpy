@@ -7,7 +7,8 @@ image: "/assets/img/background/backtop.gif"
 hidden: true
 
 date: 2025-10-06. 00:20 # S Init
-last_modified_at: 2025-10-06. 02:50 # E 초고
+# last_modified_at: 2025-10-06. 02:50 # E 초고
+last_modified_at: 2025-10-06. 14:18 # E 음악: in the pool, 해석: 김건
 ---
 
 ## 말머리
@@ -124,7 +125,20 @@ JANE DOE
 
 엔딩 음악. 쿠키 영상 기다리면서 들었는데, 노래 하이라이트 때 나오는 신디? 소리가 인상 깊었다.  
 
+{% include embed/youtube.html id = "rOWDEfnWx5s" %}
+in the pool  
+
+2분대부터 나오는 내려가는 멜로디가 좋다.  
+
 ### 01-04: 해석
 
 **[다른 분의 해석](https://www.instagram.com/p/DPLthorifee/?utm_source=ig_web_copy_link)**:  
 영화에 자주 나오는 메타포. 꽃말.  
+
+{% include embed/youtube.html id = "J2UlyOl-2Dc" %}
+서울대생 친구와 \[체인소 맨: 레제편\] 토론 리뷰하기  
+
+- 러시아 민요
+- 칼날길이 2억센치 <-- 체인소 맨 애니메이션 엔딩 중 하나였다는데, 기억이 안나서 몰랐음. 다시 들어보니까 이 혼란한 음악 기억나는 것 같기도.
+- 가독성 떨어지는 전투씬 <-- 거대한 폭풍의 악마와 조그만 상어, 체인소, 봄 걸 전투씬 그리려니 힘들었겠다.
+- 집중할 부분 집중하고, 나중에 넌지시 흘리는 후일담. (vs 극적인 상황 중 회상)
