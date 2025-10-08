@@ -4,6 +4,7 @@ description: "타이무 스토푸"
 categories: [컴퓨터, 프로그래밍]
 tags: [CSharp]
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2025-02-06. 18:24 # Init
 last_modified_at: 2025-04-16. 22:04 # StartNew, Restart
