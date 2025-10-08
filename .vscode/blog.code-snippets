@@ -38,7 +38,7 @@
 	},
 
 	"Blog Time": {
-		"prefix": ["karmoTime", "샤ㅡㄷ"],
+		"prefix": ["karmoTime", "ㅏㅁ그ㅐ쌰ㅡㄷ", "쌰ㅡㄷ", "샤ㅡㄷ"],
 		"body": [
 			"last_modified_at: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE. $CURRENT_HOUR:$CURRENT_MINUTE"
 		],
