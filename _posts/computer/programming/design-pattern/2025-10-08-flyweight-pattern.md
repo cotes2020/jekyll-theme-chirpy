@@ -6,7 +6,8 @@ tags: [Design-Pattern]
 image: "/assets/img/background/kururu-lab.jpg"
 
 date: 2025-10-08. 14:32 # Init
-last_modified_at: 2025-10-08. 17:27 # E 초고
+# last_modified_at: 2025-10-08. 17:27 # E 초고
+last_modified_at: 2025-10-08. 17:56 # E + 예제: 유니티 스크립터블 오브젝트를 이용한 경량 패턴 구현
 ---
 
 ## 머리말
@@ -16,7 +17,10 @@ last_modified_at: 2025-10-08. 17:27 # E 초고
 - **참고:**
   - ['게임 프로그래밍 패턴: 더 빠르고 깔끔한 게임 코드를 구현하는 13가지 디자인 패턴' - 로버트 나이스트롬](https://gameprogrammingpatterns.com/flyweight.html)
 - **핵심:**
+  - 중복되는 것은 분리하여 공유. (= 최적화)
   - 공유를 통해 많은 수의 소립 객체들을 효과적으로 지원한다.
+
+내가 생각하기에, 특별히 어떤 문제에 대해 '경량 패턴을 사용했다!' 라고 말하기는 어렵고, 개발하면서 자연히 체득하게 되는 기술을 구체적으로 개념화 시킨 것에 가까운 것 같다.  
 
 ## 예제-숲 렌더링
 
@@ -146,7 +150,7 @@ bool World::isWater(int x, int y) {
 class Terrain
 {
 public:
-    Terrain(int movementCost, bool is water, Texture texture)
+    Terrain(int movementCost, bool isWater, Texture texture)
     : movementCost_(movementCost),
       isWater_(isWater),
       texture_(texture) {
@@ -166,9 +170,9 @@ private:
 };
 ```
 
-하지만 타일마다 Terrain 인스턴스를 하나씩 만드는 비용은 피하고 싶다. Terrain 클래스에는 타일 위치와 관련된 내용은 전혀 없는 것을 볼 수 있다. 경량 패턴식으로 얘기하자면 모든 지형 상태는 '고유'하다. 즉 '자유문맥'에 해당한다.  
+하지만 타일마다 `Terrain` 인스턴스를 하나씩 만드는 비용은 피하고 싶다. `Terrain` 클래스에는 타일 위치와 관련된 내용은 전혀 없는 것을 볼 수 있다. 경량 패턴식으로 얘기하자면 모든 지형 상태는 '고유'하다. 즉 '자유문맥'에 해당한다.  
 
-따라서 지형 종류별로 Terrain 객체가 여러 개 있을 필요가 없다. 지형에 들어가는 모든 강 타일은 전부 동일하다. 즉, World 클래스 격자 멤버 변수에 열거형이나 Terrain 객체 대신 Terrain 객체의 포인터를 넣을 수 있다.  
+따라서 지형 종류별로 `Terrain` 객체가 여러 개 있을 필요가 없다. 지형에 들어가는 모든 강 타일은 전부 동일하다. 즉, `World` 클래스 격자 멤버 변수에 열거형이나 `Terrain` 객체 대신 `Terrain` 객체의 포인터를 넣을 수 있다.  
 
 ```cpp
 class World {
@@ -177,9 +181,9 @@ private:
 }
 ```
 
-지형 종류가 같은 타일들은 모두 같인 Terrain 인스턴스 포인터를 갖는다.  
+지형 종류가 같은 타일들은 모두 같인 `Terrain` 인스턴스 포인터를 갖는다.  
 
-Terrain 인스턴스는 여러 곳에서 사용되다 보니, 동적으로 할당하면 생명주기를 관리하기 좀 더 어렵다. 그래서 World 클래스에 멤버변수로 저장한다.  
+`Terrain` 인스턴스는 여러 곳에서 사용되다 보니, 동적으로 할당하면 생명주기를 관리하기 좀 더 어렵다. 그래서 World 클래스에 멤버변수로 저장한다.  
 
 ```cpp
 class World {
@@ -222,7 +226,7 @@ void World::generateTerrain() {
 }
 ```
 
-이제 지형 속성 값을 World의 메서드 대신 Terrain 객체에서 바로 얻을 수 있다.  
+이제 지형 속성 값을 `World`의 메서드 대신 `Terrain` 객체에서 바로 얻을 수 있다.  
 
 ```cpp
 const Terrain& World::getTile(int x, int y) const {
@@ -230,7 +234,7 @@ const Terrain& World::getTile(int x, int y) const {
 }
 ```
 
-World 클래스는 더 이상 지형 세부 정보와 커플링되지 않는다. 타일 속성을 Terrain 객체에서 바로 얻을 수 있다.  
+`World` 클래스는 더 이상 지형 세부 정보와 커플링되지 않는다. 타일 속성을 `Terrain` 객체에서 바로 얻을 수 있다.  
 
 ```cpp
 int cost = world.getTile(2, 3).getMovementCost();
@@ -245,6 +249,45 @@ int cost = world.getTile(2, 3).getMovementCost();
 최적화의 황금률은 언제나 **먼저 측정**하는 것이다. 최신 컴퓨터 하드웨어는 너무 복잡해서 더이상 추측만으로는 최적화하기 어려워졌다. 측정해본 결과로는 경량 패턴을 써도 열거형을 쓴 것과 비교해서 성능이 나빠지지 않았따. 오히려 열거형에 비해 훨씬 빨랐다. 하지만 이건 객체가 메모리에 어떤 식으로 배치되느냐에 따라 달라질 수 있다.  
 
 **확실한** 것은 경량 객체를 한 번은 고려해봐야 한다는 점이다. 경량 패턴을 사용하면 객체를 마구 늘리지 않으면서도 객체지향 방식의 장점을 취할 수 있다. 열거형을 선언해 수많은 `switch`문을 만들 생각이라면, 경량 패턴을 고려해보자. 성능이 걱정된다면, 유지보수하기 어려운 형태의 코드를 고치기 전에 적어도 프로파일링이라도 먼저 해보자.
+
+## 예제-유니티 스크립터블 오브젝트
+
+---
+
+유니티에서 스크립터블 오브젝트를 활용해 경량 패턴을 구현할 수도 있다. (꼭 스크립터블 오브젝트를 이용해야 하는 건 아니지만, 스크립터블 오브젝트를 이용하면 쉽고 효과적으로 구현할 수 있다.)  
+
+```cs
+public class Monster : MonoBehaviour
+{
+    [SerializeField] private string monsterName;
+    [SerializeField] private string monsterDescription;
+    [SerializeField] private int hpMax;
+    // ...
+}
+```
+
+몬스터들의 정보를 각 `MonoBehaviour`에 변수로 구현할 수 있다 (좋은 방법은 아니다). `monsterName`, `monsterDescription`, `hpMAX` 같은 값들을 보통 런타임 중에 변하지 않는 정보다. 만약 똑같은 몬스터를 여러 번 생성하는 경우, 이런 값들은 메모리에 중복되어 올라가게 되고, 이는 낭비가 될 수 있다.  
+
+이떄, 스크립터블 오브젝트를 이용하면 쉽고 효과적으로 경량 패턴을 구현할 수 있다.  
+
+```cs
+public class MonsterData : ScriptableObject
+{
+    [field: SerializeField] public string Name { get; private set; }
+    [field: SerializeField] public string Description { get; private set; }
+    [field: SerializeField] public int HpMax { get; private set; }
+    // ...
+}
+
+public class Monster : MonoBehaviour
+{
+    [SerializeField] private MonsterData data;
+}
+```
+
+`monsterName`, `monsterDescription`, `hpMAX`처럼 공용으로 사용하는 데이터는 `MonsterData` 같은 스크립터블 오브젝트를 만들어 분리한다. 그리고 `Monster`는 스크립터블 오브젝트를 참조하도록 수정한다.  
+
+이렇게 되면 똑같은 몬스터를 몇 백, 몇 천 마리 생성하더라도 공용 데이터는 메모리에 스크립터블 오브젝트 하나만 올라간다. (= 메모리 최적화)  
 
 ## 메모
 
