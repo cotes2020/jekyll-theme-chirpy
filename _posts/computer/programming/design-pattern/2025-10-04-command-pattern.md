@@ -4,7 +4,6 @@ title: "커맨드 패턴"
 categories: [컴퓨터, 프로그래밍]
 tags: [Design-Pattern]
 image: "/assets/img/background/kururu-lab.jpg"
-hidden: true
 
 date: 2025-10-04. 14:54 # S Init
 # last_modified_at: 2025-10-06. 03:35 # E 초고
@@ -15,13 +14,13 @@ last_modified_at: 2025-10-08. 14:19 # E ~정리
 
 ---
 
-- 참고:
-  - '게임 프로그래밍 패턴: 더 빠르고 깔끔한 게임 코드를 구현하는 13가지 디자인 패턴' - 로버트 나이스트롬
-- 커맨드 패턴:
-  - 명령 교체:
-    - 메서드 호출을 **실체화** 한 것이다.
+- **참고:**
+  - ['게임 프로그래밍 패턴: 더 빠르고 깔끔한 게임 코드를 구현하는 13가지 디자인 패턴' - 로버트 나이스트롬](https://gameprogrammingpatterns.com/command.html)
+- **핵심:**
+  - **명령 교체:**
+    - 메서드 호출을 **실체화**한 것이다.
     - 콜백을 객체지향적으로 표현한 것이다.
-  - 이점:
+  - **이점:**
     - 코드 유연성/확장성을 극대화.
     - Undo/Redo, 매크로, 리플레이 같은 복잡한 기능을 우아하고 체계적으로 구현할 수 있게 해줌.
 
@@ -168,8 +167,6 @@ AI 엔진 (or 플레이어) -> AI 행동 (or 입력) -> 액터 -> `Command`
 
 디스패터나 액터에서는 명령 객체를 받아서 호출한다.  
 
-TODO: 이벤트 큐 패턴  
-
 ## 예제-실행취소와 재실행
 
 명령 패턴 사용 예 중에서도 가장 잘 알려진 것.  
@@ -300,14 +297,14 @@ function makeMoveUnitCommand(unit, x, y) {
 
 ---
 
-- 관련 자료
+- **관련 자료:**
   - 명령 패턴을 쓰다 보면 수많은 `Command` 클래스를 만들어야 할 수 있다. 이럴 때에는 구체 상위 클래스에 여러 가지 편의를 제공하는 상위 레벨 메서드를 만들어놓은 뒤에 필요하면 하위 클래스에서 원하는 작동을 재정의할 수 있게 하면 좋다. 이러면 명령 클래스의 `execute` 메서드가 하위 클래스 샌드박스 패턴으로 발전하게 된다.
   - 예제에서는 어떤 엑터가 명령을 처리할지를 명시적으로 지정했다. 하지만 계층 구조 객체 모델에서처럼 누가 명령을 처리할지가 그다지 명시적이지 않을 수도 있다. 객체가 명령에 반응할 수도 있고 종속 객체에 명령 처리를 떠넘길 수도 있다면 GoF의 책임 연쇄-chain of responsibility 패턴이라고도 볼 수 있다.
   - 어떤 명령은 처음 예제에 등장한 `JumpCommand` 클래스처럼 상태 없이 순수하게 행위만 정의되어 있을 수 있다. 이런 클래스는 모든 인스터스가 같기 때문에 인스턴스를 여러 개 만들어봐야 메모리만 낭비된다. 이 문제는 경량 패턴으로 해결할 수 있다. (싱글턴으로 만들어도 가능하지만, 권하지는 않는다.)
-- 키워드:
-  - Command Pattern (커맨드 패턴, 명령 패턴)
-  - [Callback (콜백)](/posts/callback/)
+- **키워드:**
   - [Design Pattern (디자인 패턴)](/posts/design-pattern/)
+  - [Command Pattern (커맨드 패턴, 명령 패턴)](/posts/command-pattern/)
+  - [Callback (콜백)](/posts/callback/)
   - First Class (일급 객체)
   - Producer, Consumer (생산자, 소비자)
   - Dispatcher (디스패처)
@@ -323,5 +320,5 @@ function makeMoveUnitCommand(unit, x, y) {
   - Functor (펑터)
   - Concrete Base Class (구체 상위 클래스)
   - Sandbox Pattern (샌드박스 패턴)
-  - 경량 패턴
+  - [Flyweight Pattern (경량 패턴)](/posts/flyweight-pattern/)
   - Singleton Pattern (싱글턴 패턴)

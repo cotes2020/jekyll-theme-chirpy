@@ -10,7 +10,8 @@ date: 2024-04-09. 16:18
 # last_modified_at: 2024-05-22. 02:40
 # last_modified_at: 2024-09-02. 12:55
 # last_modified_at: 2024-09-29. 19:11
-last_modified_at: 2024-10-19. 11:55 # 메모 정리
+# last_modified_at: 2024-10-19. 11:55 # 메모 정리
+last_modified_at: 2025-10-08. 17:28 # +메모: 게임 프로그래밍 패턴
 ---
 
 ## Q
@@ -74,7 +75,7 @@ last_modified_at: 2024-10-19. 11:55 # 메모 정리
 - `컴포지트 | Composite`: 객체들의 관계를 트리 구조로 구성하여 표현하는 방식으로 복합 객체와 단일 객체를 구분없이 다룸
 - `데코레이터 | Decorator`: 주어진 상황에 따라 객체에 다른 객체를 덧붙임
 - `파사드 | Facade`: 서브시스템에 있는 인터페이스 집합에 대해 통합된 인터페이스 제공
-- `플라이웨이트 | Flyweight`: 크기가 작은 여러 개의 객체를 매번 생성하지 않고 최대한 공유하여 사용하도록 메모리 절약
+- [경량/플라이급/플라이웨이트 | Flyweight](/posts/flyweight-pattern/): 크기가 작은 여러 개의 객체를 매번 생성하지 않고 최대한 공유하여 사용하도록 메모리 절약
 - `프록시 | Proxy`: 실제 기능을 수행하는 객체 대신 가상의 객체를 사용해 로직의 흐름을 제어
 
 #### 행동/행위
@@ -87,14 +88,14 @@ last_modified_at: 2024-10-19. 11:55 # 메모 정리
   - `발행-구독 | Pub-Sub`: 발행자와 구독자가 서로를 모르도록 브로커 - 이벤트 버스를 이용
   - <https://velog.io/@luz0415/Unity디자인-패턴-옵저버-패턴-발행-구독-패턴>
 - `책임 연쇄 | Chain of Responsibility`: 요청을 받는 객체를 연쇄적으로 묶어 요청을 처리하는 객체를 만날 때까지 객체 Chain을 따라 요청을 전달
-- `커맨드 | Command`: 요청을 객체로 캡슐화하여 재사용하거나 취소
+- [커맨드/명령 | Command](/posts/command-pattern/): 명령을 객체로 캡슐화하여, 재사용하거나 취소
 - `인터프리터 | Interpreter`: 특정 언어의 문법 표현을 정의
 - `반복자 | Iterator`: 컬렉션 구현 방법을 노출하지 않으면서 모든 항목에 접근할 수 있는 방법을 제공
 - `중재자 | Mediator`: 한 집합에 속해있는 객체들의 상호작용을 캡슐화하여 새로운 객체로 정의
 - `메멘토 | Memento`: 객체가 특정 상태로 다시 되돌아 올 수 있도록 내부 상태를 실체화
 - `상태 | State`: 객체의 상태에 따라 동일한 동작을 다르게 처리
   - <https://velog.io/@jinmin2216/디자인-패턴-스테이트상태-패턴-State-Pattern>
-- [`전략 | Strategy`](/posts/strategy-pattern/): 동일 계열의 알고리듬군을 정의하고 캡슐화하여 상호 교환이 가능하게 함
+- [전략 | Strategy](/posts/strategy-pattern/): 동일 계열의 알고리듬군을 정의하고 캡슐화하여 상호 교환이 가능하게 함
 - `템플릿 메소드 | Template Method`: 상위 클래스는 알고리듬의 골격만을 작성하고 구체적인 처리는 서브 클래스로 위임
 - `방문자 | Visitor`: 객체의 원소에 대해 수행할 연산을 분리하여 별도의 클래스로 구성
 
@@ -123,6 +124,8 @@ last_modified_at: 2024-10-19. 11:55 # 메모 정리
 ## 메모
 
 ---
+
+- ['게임 프로그래밍 패턴: 더 빠르고 깔끔한 게임 코드를 구현하는 13가지 디자인 패턴' - 로버트 나이스트롬](https://gameprogrammingpatterns.com/)
 
 {% include embed/youtube.html id='Mq4MwPXWarI' %}
 {% include embed/youtube.html id='iyeRmq24HVk' %}
