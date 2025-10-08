@@ -4,6 +4,7 @@ title: "이 시스템에서 스크립트를 실행할 수 없으므로 파일을
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2023-11-30. 18:42
 # last_modified_at: 2023-11-30. 18:42

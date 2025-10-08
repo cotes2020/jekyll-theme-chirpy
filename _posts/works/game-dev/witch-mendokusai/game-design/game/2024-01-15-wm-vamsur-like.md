@@ -16,7 +16,7 @@ date: 2024-01-15. 19:53
 last_modified_at: 2025-10-06. 15:03 # E 글 병합 (ticket-vamsur-like, )
 ---
 
-## 말머리
+## 머리말
 
 ---
 

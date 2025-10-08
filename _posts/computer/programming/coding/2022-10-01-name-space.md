@@ -4,9 +4,10 @@ title: "네임스페이스"
 categories: [컴퓨터, 프로그래밍]
 tags: []
 image: "/assets/img/background/kururu-lab.jpg"
+hidden: true
 
 date: 2022-10-01. 11:03
-#last_modified_at: 2022-10-01. 11:03
+# last_modified_at: 2022-10-01. 11:03
 ---
 
 ## Namespace

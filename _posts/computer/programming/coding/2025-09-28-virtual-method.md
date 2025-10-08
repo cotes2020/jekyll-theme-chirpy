@@ -1,5 +1,5 @@
 ---
-title: "가상 메서드 (Virtual Method)"
+title: "가상 메서드"
 # description: ""
 categories: [컴퓨터, 프로그래밍]
 tags: []
@@ -10,11 +10,11 @@ date: 2025-09-28. 12:50 # Init
 # last_modified_at: 2025-09-28. 12:50
 ---
 
-## 말머리
+## 머리말
 
 ---
 
-### 가상 메서드 (Virtual Method)
+### Virtual Method
 
 - `virtual`로 선언된 메서드
   - 자식 클래스에서 `override`로 재정의 가능
