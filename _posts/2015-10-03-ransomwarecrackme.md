@@ -763,7 +763,18 @@ Now we understand what the ransomware does:
 | `sub_0016E4` | `hash_password_sha256` | SHA256 hash function |
 | `sub_00171D` | `aes_256_ecb_encrypt` | AES-256-ECB encryption |
 
-**Problem:** At this point, we understand how the ransomware works, but we need the actual encrypted files to decrypt them.
+ we need the actual encrypted files to decrypt them.
+
+### What We Know So Far
+- user.html encrypted with RC4
+- libgen.dll encrypted with AES-256-ECB (password: "hackingisnotacrime")
+- Both encrypted files were sent to C2 server
+
+### What We Need to Do Next
+1. Extract encrypted files from PCAP
+2. Decrypt libgen.dll using the password
+3. Run libgen.dll to generate RC4 key
+4. Decrypt user.html with RC4 key
 
 ---
 
