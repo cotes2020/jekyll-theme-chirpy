@@ -261,7 +261,6 @@ z-index: 50 !important;
       0 0 30px #ae81ff,
       0 0 60px #ae81ff,
       inset 0 0 30px rgba(174, 129, 255, 0.2);
-    animation: float 6s ease-in-out infinite;
   }
 
   @keyframes float {
@@ -776,7 +775,7 @@ z-index: 50 !important;
 
   <p>I'm Jeremy, but online I go by <span class="highlight highlight-inline">Qewave</span>. This website is my personal playground and documentation hub. If you're looking for my more corporate side, click the LinkedIn icon in the bottom left on this site. Here, I post my CTF writeups, hacking stuff, notes, random tech rants, and other things I find useful or worth sharing.</p>
 
-  <p>You'll notice the retro 80s vibes throughout the site. There's something about that neon/purple aesthetic that just works when you're staring at terminal windows at 2 AM. When I'm not breaking things, I'm either reading while vibing to Japanese jazz, neo-soul, or corridos, or actually going outside to hike and play tennis. You know, touching grass and all that.</p>
+  <p>You'll notice the retro 80s vibes throughout the site. There's something about that neon/purple aesthetic that just hits my soul. When I'm not doing security stuff, I'm probably reading whatever book I'm reviewing next, vibing to music (Japanese jazz, neo-soul, or corridos, House music and everything in between), hitting the gym or actually going outside to hike and play tennis. You know, touching grass and all that.</p>
 
   <div class="image-row">
     <img src="https://i.postimg.cc/sx16F4xL/IMG-0906.jpg"
