@@ -102,6 +102,7 @@ public int i;
 // ~~~(언어) (코드 내용) ~~~
 // 들여쓰기 (코드 내용)
 ```
+{: file='파일_이름'}
 
 <pre><code>
 public int i;
