@@ -388,7 +388,7 @@ A **position** object for a tree supports the method:
 - `isRoot(p)`: Returns true if position p is the root of the tree.
 
 
-**general methods**, unrelated to the specific structure of the tree. These incude:
+**general methods**, unrelated to the specific structure of the tree. These include:
 - `size()`: Returns the number of positions (and hence elements) that are contained in the tree.
 
 - `isEmpty()`: Returns true if the tree does not contain any positions (and thus no elements).
@@ -3411,7 +3411,7 @@ public void levelByLevelOneQueueUsingDelimiter(Node root) {
 }
 ```
 
-3. 1 queue & 2 conter
+3. 1 queue & 2 counter
 
 ![Screen Shot 2020-07-25 at 01.41.49](https://i.imgur.com/kcl3RcP.png )
 

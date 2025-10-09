@@ -230,7 +230,7 @@ O(n!)    | 求具有N个元素的全排列的算法
 
 
 #### The Constant Function `f(n) = c`
-- The simplest functio
+- The simplest function
 - for some fixed constant c, such as c=5, c=27, or c=210.
 - for any argument n, the constant function f(n) assigns the value c.
 - it does not matter what the value of n is; f(n) will always be equal to the constant value c.
@@ -359,7 +359,7 @@ x=logbn ifandonlyif b^x =n.
 
 
 > 5$n^4$ + $3n^3$ + $2n^2$ + 4n + 1 is O($n^4$).
-> Justification: $5n^4$ + $3n^3$ + $2n^2$ + 4n+1 ≤ (5+3+2+4+1)$n^4$ =c$n^4$, for c=15, whenn≥n0 =1.
+> Justification: $5n^4$ + $3n^3$ + $2n^2$ + 4n+1 ≤ (5+3+2+4+1)$n^4$ =c$n^4$, for c=15, when≥n0 =1.
 
 > If f (n) is a polynomial of degree d: f(n) = a0 +a1n+···+adnd, and ad > 0,
 > Justification: a0 +a1n+a2n2 +···+adnd ≤ (|a0|+|a1|+|a2|+···+|ad|)n^d

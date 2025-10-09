@@ -1530,7 +1530,7 @@ Step:
       - is not seen
         - visited time <= low time of comimg point
           - yes
-          - no: update visted to low time
+          - no: update visited to low time
 
 ---
 
