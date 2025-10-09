@@ -936,3 +936,311 @@ VSCode Mark인가 확장? or Google Slide ? or PPT ? or 기타 작업 가능한 
 Depot  
 Verbase  
 로컬깃  
+
+### 노트 0804-
+
+- Steam
+- Addressable
+  - Local, Remote
+  - Platform 별
+    - AOS iOS Windows Mac
+- Code Review
+  - 설계 확인
+  - 수정
+- Test
+  - 여러 기기 테스트
+  - 최소, 최대 기기 설정
+  - 플랫폼 별 테스트
+- QA
+- Web
+  - 프레임 고정
+  - Unity 2022, Unity 6000 성능 차이 크게 없음
+  - 해상도 문제
+  - 기본 시스템 폰트 제거됨
+    - CJK Noto
+  - Mobile Web 이상하게 UnityWebRequest Texture로 받으면 입력 멈춤
+    - 대신 Buffer로 받고 Texture2D로 변환하는 방법을 사용
+- Unity Version
+  - 목표 대상 설정: 변경점 비교
+  - Editor
+    - 설정 변경점
+    - 새로 적용할 것 있는지
+  - Asset Version Update
+    - 참고: Unity 버전마다 다운로드 할 수 있는 Asset의 버전도 달라진다
+  - WhatsNewUnity6
+  - UnityRoadmap
+- 최적화
+  - 사용하지 않는 Package 정리
+    - Unity Registry
+    - Built-in Package 정리
+- 업무 우선 순위
+- Input
+  - Unity InputSystem
+  - InputSystem (Common)
+    - Keyboard, Mouse, Touch, Joystick 등
+- Spine
+- 할 것
+  - MMToolEditor: 인스펙터 GUI 이쁨, 코드 참고하면 좋을 듯
+  - UInspector
+  - Unity Hub: Toast Popup
+  - Unity Hub: 버전 후행자 f1 --> final1
+  - AudioRandomContainer
+  - AppleAuth
+  - AddressableLoader
+    - DataLoader, UISceneLoading에서 분리
+  - 컴포지션 패턴
+  - DX: 개발자 경험
+  - 엔비 레인저
+  - 그래픽스
+    - 더블 버퍼링
+    - Back Buffer
+  - asmdef, asmref
+  - Asset 바로 쓰지 않고, 중간에 뭐 하나 두기
+    - Adapter: Platform 별로 다르게
+    - 나중에 Asset 바꾸더라도 기존 코드에는 문제 없게
+  - APK, AAB
+    - APK: 모든 버전을 통짜로 만듦: 쓰지 않는 것도 포함됨: ABC
+    - AAB: 통짜에서 필요한 것만 뺴서 다운로드: ABC인데, A만 뺴오기
+  - OOB
+    - 추가로 다운?
+  - Foundation: 프레임워크 등, Base: 좀 더 Common
+  - 2D Shader Caster
+- iOS
+  - 메모리: epheria 빠따끄
+  - Metal write only BackBuffer
+  - Memoryless Depth
+- 포그라운드 fore, 백그라운드 back
+- AI
+  - 파일로 채팅 기록 정리 후 저장, 다시 불러오기 위함
+- TriInspector -> Github
+- EditorAttributes --> Unity AssetStore
+- EnumBottomAttribute
+- APV (Adaptive Probe Volume) (vs Light Probe)
+- Multiplayer UnityNET
+- Mixpanel --> 통계?
+- Mouseover Highlight
+- IL2CPP Runtime faster
+- LZ4, LZ4AC
+- WM
+  - 무한 맵 (일단 땅만, 그림자 없이)
+  - 보스 (일단 피통만)
+  - 스포너 (일단 따라다니게)
+- 로딩 GameStat
+  - NowLoading --> 좋다
+- 기라티나 숲, 엘리니아 같은. 나뭇잎 사이로 적은 양의 햇빛많이 떨어지는 빛줄기 어둡게 (효율, 분위기)
+- Shader.Find('~/~') --> new Material() 인스턴스 생성 --> Destroy(material) 인스턴스 파괴
+- 내가 좀 유치한다. 윤가놈님 5기 스토리 평 듣고. 중 중2같긴하지. 담백한 스토리가 필요한가
+- 미연시 시스템. 한 번 만들면 쭉 쓸 듯.
+  - 비단 미연시 뿐만 아니라, 게임 스토리/대화 연출 등
+- 작가. 짧은 글을 써볼까
+- Cursor
+  - TextureType Cursor
+  - MaxSize 32
+  - MacOS Cursor는 MaxSize로 결정되고
+  - Windows는 어떻든 간에 32로 고정됨
+- Span ReadOnlySPan
+  - stackalloc fixed
+  - Span --> Array를 바라보는 View, 참조자, 포인터
+  - 원형(not circle) Array 없이 혼자 요소를 가질 수 없음
+  - IReadOnlyList처럼 ReadOnly 콜렉션을 저장하고 싶은데, 대상이 배열이라 IReadOnlyList를 쓰면 불필요한 낭비가 생기는 경우
+  - 닷넷데브 사이트
+- 마샬링: 어원: 말을 타는 사람, 모으고 (집결) 통제하는 것
+  - 메모리 마샬링: 메모리 모아 통제?
+- Span\<T\> ref struct
+- Memory\<\T> struct
+- IDisposeable 관리되지 않는 리소스 정리. 사용 후 정리 패턴.
+  - using ~
+  - 파일, 네트워크, 연결, 구독
+  - i.e. UniRX.Addto
+- 마니아 제로 폴라
+  - 날 지켜봐줘 제로
+- 커뮤니케이션 & 협업
+  - 매일 마감 못지키는 사람
+  - 하기 싫어하는 사람
+- keycron
+- POT
+  - SpriteAtlas만 설정해도됨
+  - SpriteAtlas -> 씬 이동해도 유지됨?
+- Texture COmpreesion
+- StandaloneFileBrowser
+  - WinAPI, 마샬링
+    - DX 자체엔진? 네이티브? WinAPI?
+- 대체 Dll이 뭐야?
+  - `[DllImport("")]`
+  - 챤니티
+  - user32.dll
+- Toji Github TextureTester
+  - Unity Web Texture Format Tester 만들까?
+- Sprite -> 초보, SpriteAtlas -> 고수
+  - 이때, SpriteAtlas만 압ㅊ축. Sprite는 압축 X
+- 코딩 규칙 (스탠다드 만들기)
+- 버전만들기
+- 서브깃 알아보기
+  - 내 에셋 모듈화
+    - Simple saver
+      - json
+      - pref
+- Memory Instancing
+  - HDD -> Memory (Heap)
+- 사전조사
+  - 지피지기: 나(현황)을 알기 자세히
+  - 적(목표)를 알기 명확히 알기
+- 정리
+  - 표. 숫자만 있으면 안됨
+  - 비교가 가능해야
+- 이거 왜 조사한 거에요?
+  - 목적, 이유를 문명히 알기
+  - 질문하기
+- 초석
+- 실용주의 프로그래머
+  - 실용주의 철학
+    - 고양이가 내 소스코드를 삼켰어요
+    - 책임
+    - 실프는 경력에 책임을 지고 무지나 실수를 인정하기를 두려워 하지 않음
+    - 책임지기
+      - 책임
+        - "적극적으로" "동의"하는 것
+        - 최선을 다하는 것 외에도 통제를 벗어나는 위험요소에 대해 상황을 분석
+        - 불가능하거나 위험요소가 큰 상황에 대해서는 책임지지 않을 권리가 있다
+        - 잘못된 판단을 내린다면 정직하게 인정하고 다른 방안 제안
+      - 어설픈 변경대신 대안을 제시하라
+        - 고무오리나 고양이에게라도 말해보라
+          - 변명이 그럴싸한가 멍청한가
+          - 듣는사람은 어떨까
+          - 뭐하고 할까
+          - 예상 질문
+            - ...는 해보셨나여?
+            - 고려했나요?
+            - 시도해볼말한 것이 있나?
+            - 뭐라 할지 뻔히 보이는게 있나?
+            - --> 변명대신 대안을 제시
+    - 코드 버려야? 리펙토링의 가치를 가르쳐줘라
+    - 프로토타입 목표? 최선의 방향을 결정직기위해? 자원이 필요
+    - 부탁에 어려움을 느끼지 말고, 도움이 필요하다는 사실을 인정하라
+      - 어설픈 변명 늘어놓기 전에, 그 변명거리를 없애려는 노력해보라
+    - 서비스업이 어설픈 변명을 늘어놓으면 어떻게 반응하겠는가?
+    - 그들, 회사에 대해 어떤 생각을 짓게 되겠는가?
+- iOS, iPadOS 별개
+- TextureCompression -> VRAM 최적화 주로
+  - 용량, 메모리 사용량은 부차적인 문제?
+- 아침 전략 -> 전략 읽기
+- 0924
+  - 옐로우 빌딩이었나? 서울대 입구 4번출구쪽 빌딩의 1층이 고사 중. 집에서 지하철가느 쪽에도 건물 새로 지어지는 중
+  - 원주때도 그렇지만, 건물도 순식간에 다 지어진다. 시간이 참 빠르다. 어우, 진부해
+  - 잠을 늦게잠->일어나기 힘듦->마지노선까지 잠 -> 씻을시간 없음 -> 종일 찝찝함 + 종일피곤함
+  - 이어폰 두고 왔네. 음악뿐만 아니라 여상도 못보니까 불편
+  - 에코백 청소. 필통에서 나온 샤프심들 너무 많아 지저분하다.
+- Cursor DotRush
+- 1001
+  - 충전, 보조배터리
+  - 블로그 -> 형광팬 되려나
+- 개념/이론 정리 중요
+  - 내가 까먹거나, 나중에 동료가 똑같은 질문함
+  - -> 기록해둔 지식 공유
+- 마스터 링크
+- 작업대 전략 (main.md)
+  - 취향과 습관을 짐작할 수 있는
+  - 데스크 테리어, 다꾸 같은
+- 책
+  - 소프트웨어장인정신이야기
+    - 소프트웨어장인 = XP 익스트림 프로그래미의 실천 방법을 실천하는 사람
+  - 클린 시리즈
+    - 클린 코더 -> 개발 How, TDD
+    - 클린 코드 -> 코드 How
+    - 클린 아키텍처
+    - 클린 소프트웨어
+    - 클린 애자일
+- 숫자
+  - 눈에 보이는 결과
+  - e.x. 최적화 컨펌
+    - 현재 메모리 ~MB인데, 예상 ~MB 정도 감소할 수 있겠다
+- 오전
+  - 전날 발생한 이슈 정리
+  - 작성했던 코드, 가볍게 살펴보기
+    - 바로 코딩하기 보다, 머리 예열 시간을 꼭 가지려고
+    - 본격적으로 시작하기 전에 참고할만한 코드를 좀 찾아보는 것도
+- 우선 순위 급한것부터 수행
+- 복잡하건 집중이 잘 될때
+- 점심시간에 빌드 돌려서, 오후 업무에 확인 필요한 것
+- 빨리 적응해서 덜 물어보는게 결국 가장 빠른 길이겠다
+- 모르는게 있으면 있을때마다 잘 정리해두고, 멘토가 내가 어디에서 막혔는지를 바로 파악할 수 있도록
+- 오류 스택 트레이스
+- 내 코드가 다른 것에 어떤 영향을 미칠지
+  - 관련 오류 체크
+  - 수정 작업 반영에 문제가 있는 확인 (검증)
+- 기획 꼼꼼히 일기
+  - 내가 이해한 내용이 맞는지, 자세히 확인
+  - 놓치거나, 오해하는 부분 없도록
+  - 중간중간 커밋 단위로 공유하며 피드백 받으려고 노력
+- 코드 작성
+  - 단순 기능 구현에 그치지 않고
+  - 기존 코드 베이스에 자연스럽게 녹아들도록 하는 것을 가장 중요하게 생각
+    - 코드 베이스, 작성자 의도 파악
+      - 설계 측면에서는 어떤 맥락을 고려했는지
+      - 유사 케이스가 과거에는 어떻게 처리됐는지
+      - 잘 이해가 되지 않는 부분은 질문
+      - 더 좋은 접근 방법이 있을지 팀원과 논의
+- Asset -> 코드 수정 전에, 일단 Update 있는지부터 확인
+- Addressable Build. 해싱할때 빌드환경 고려됨
+  - CRC, 빌드한 PC 다르면 발생 (APP, Addressable 다른 위치)
+- 꼼꼼히 비교
+  - 한글자, 한줄씩 비교
+  - 함수 이름 조금씩 다른 게 많음
+    - 차이 알아보기 힘들다
+  - 특히 Enum 등 변환 Parse할때, 되는데 왜 안되지? 하는 상황 많음
+- 이해하기 쉽게
+  - 접속사 넣지 말고, 문장 자체 분리
+  - 뎁스 (깊이) 로 핵심/설명 분리
+  - 가능하면 줄 나누기
+  - Summary 요약
+  - 왜? 넣기
+- 짐룬
+  - 목적, 용건, 원하는 바 or 제안
+  - 문서
+  - 질문, 업무 컨펌
+- 일정
+  - 첨부파일
+- 전문적이고 있어 보이는 것 < 그냥 이해하기 쉽고 객관적이고 오해의 소지가 없개끔
+- 커리어 계획 수립, 수행
+- 호기심 많은 개발자
+  - 개인적으로 연구하는 시간
+  - https://velog.io/@eugene-doobu/%EC%95%8C%EA%B3%A0%EB%A6%AC%EB%93%AC-%EC%96%B4%EB%94%B0-%EC%8D%A8%EC%9A%94-1%ED%8E%B8-%EA%B8%B8%EC%B0%BE%EA%B8%B0-%EC%95%8C%EA%B3%A0%EB%A6%AC%EB%93%AC%EA%B8%B8%EC%B0%BE%EA%B8%B0-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
+Cs 공부에 도움되는 거 추천좀 - https://m.dcinside.com/board/gamejob/53723
+
+포폴 - https://m.dcinside.com/board/gamejob/51602
+
+혹시 유니티 클라이언트 취준생인데 질문 가능할까? - https://m.dcinside.com/board/gamejob/50756
+
+인프런에서 CS 지식 관련 추천 강의 있음? - https://m.dcinside.com/board/gamejob/50746
+
+현직 8년차인데 신입 뽑는 기준 말해줌 - https://m.dcinside.com/board/gamejob/49769
+
+합격하고 나니 든 생각 포폴이 큰 의미없다 - https://m.dcinside.com/board/gamejob/47915
+
+mvc, mvp, mvvm, mpc 다들 쓰는 편임? - https://m.dcinside.com/board/gamejob/46352
+
+요즘 이직이 어려운 이유.txt - https://m.dcinside.com/board/gamejob/45966
+
+컴퓨터구조지도그리기 ㅡ 반타지
+업무과정 미러링
+
+나의 개발 일대기 정리
+3번의 퀀텀 점프
+똥피하기 ㅡ 프로그래밍, 공부
+왁그리드 ㅡ 유니티, 게임 스킬, 테스팅, 배포, 버그, 2D
+VRChat ㅡ 3D ㆍ라이팅,모델링, 협업, 출시, 유지보수, 컨텐츠, 스터디, 재사용, 문서화, 버그, 구독자패턴, 외주, 회사
+산기요 ㅡ 실제 현업, 개발 문화, 최적화, Addressable, 
+Todo ㅡ CS, 코테, 언리얼, C++, 아티클, 서버ㆍ네트워크, 게임잼, 인맥, 아름다운 코드, 커리어
+
+출시, 유지보수, 게임 개발 경험, 기능 모듈화
+
+이력서, 포트폴리오, 커리어
+
+탑뷰 리오레 언리얼 rpg
+커리어 영상 정리
+강의보기
+ct cs pj
+
+여러 종류의 게임개발경헝
+이력서 자기소개서 포폴 초벌
+
