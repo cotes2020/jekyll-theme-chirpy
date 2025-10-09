@@ -1,3 +1,18 @@
+- [LinkedList (array-based structure) (without fixed size) **class**](#linkedlist-array-based-structure-without-fixed-size-class)
+  - [basicc](#basicc)
+  - [Abstract Data Type](#abstract-data-type)
+    - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
+    - [singly linked list](#singly-linked-list)
+    - [Circularly Linked Lists](#circularly-linked-lists)
+    - [doubly linked list](#doubly-linked-list)
+  - [general method](#general-method)
+    - [Equivalence Testing](#equivalence-testing)
+    - [Cloning Data Structures](#cloning-data-structures)
+  - [Node Class](#node-class)
+  - [unordered Linked Lists: Unordered List](#unordered-linked-lists-unordered-list)
+      - [Unordered List Class \<- unordered linked list (new)  (!!!!!!!!!!!!!)](#unordered-list-class---unordered-linked-list-new--)
+  - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
+      - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
 
 
 ### LinkedList (array-based structure) (without fixed size) **class**
