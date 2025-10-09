@@ -790,11 +790,8 @@ z-index: 50 !important;
 
   <hr>
 
-  <h3 class="section-title">Breaking into Cyber</h3>
-
-  <p>Since then, I've earned my associate's degree in Computer Science with a focus on Networking & Security, and I'm continuing coursework in the same field. I'm planning to pursue a bachelor's degree in either Cloud or Cybersecurity.</p>
-
-      <p>I've attended nearly every major security event and conference in California, helped found the first Cybersecurity Club at my college (and became its representative), secured a SysOps/Security internship, won a few CTFs, picked up some certs like <code>Security+</code> and <code>CCNA</code>, and built tons of personal labs and projects.</p>
+<h3 class="section-title">Breaking into Cyber</h3>
+<p>Since then, I've earned my associate's degree in Computer Science with a focus on Networking & Security, and I'm continuing coursework in the same field. I'm planning to pursue a bachelor's degree in the same field with a focus on defensive security. I've attended nearly every major security event and conference in California, helped found the first Cybersecurity Club at my college (and became its representative), secured a SysOps/Security internship, won a few CTFs, picked up some certs like <code>Security+</code> and <code>CCNA</code>, and built tons of personal labs and projects. As far as certs go, I think they're useful for getting past HR filters, providing baseline knowledge, filling in gaps, and demonstrating commitment (especially for the harder exams), particularly early in your career. But once you have that foot in the door, I think what actually separates you from the thousands of other people with the same cert is whether you can actually do the work. I'd rather spend all my time spinning up labs, breaking/analyzing things, and building projects that prove I understand both the theory and practice. I learn security by doing security, not just studying for multiple-choice exams. Moving forward, I'm focused on pursuing certs that are hands-on and teach practical skills.</p>
 
   <div class="image-row">
     <img src="https://i.postimg.cc/2ys8f3HQ/PXL-20250324-231930647.jpg"
@@ -829,7 +826,7 @@ z-index: 50 !important;
   </div>
 
   <h4>CTF's and Stuff</h4>
-  <p>As far as CTFs go, I'm kicking myself for not getting into these way earlier. I just started with CTFs and King of the Hill stuff a little over a year ago, but I only really got serious about it this year. I find myself gravitating toward Pwn and reverse engineering challenges, plus hardware ones. While a lot of CTFs are pretty gamified and not always that useful for real-world application, some actually make you think and help sharpen your technical and problem-solving skills. Sometimes I'll burn a whole day on one challenge and come up empty, other times I'll dominate. What I love most about CTFs is the team communication and problem-solving, then reading writeups afterward and talking with other teams about their approaches once the competition wraps up. It's just cool because you don't see many other fields where you can learn and practice new stuff from random competitions that pop up basically every week.</p>
+  <p>I just started with CTFs  in 2024, but I only really got serious about it this year. I find myself gravitating towards forensics and reverse engineering challenges, plus hardware ones. While a lot of CTFs are pretty gamified and not always that useful for real-world application, some actually make you think and help sharpen your technical and problem-solving skills. Sometimes I'll burn a whole day on one challenge and come up empty, other times I'll dominate. What I love most about CTFs is the team communication and problem-solving, then reading writeups afterward and talking with other teams about their approaches once the competition wraps up. It's just cool because you don't see many other fields where you can learn and practice new stuff from random competitions that pop up basically every week.</p>
 
   <div class="image-row">
     <img src="https://i.postimg.cc/CxL6g02t/1746214331685.jpg"
