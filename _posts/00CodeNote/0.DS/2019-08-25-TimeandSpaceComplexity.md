@@ -248,10 +248,10 @@ void mergeSort(int arr[], int l, int r) {
 
 #### O(n^2) – Quadratic Time
 
-The runtime grows quadratically with the input size. 
+The runtime grows quadratically with the input size.
 
 This is typical for algorithms with nested loops, like bubble sort.
- 
+
 ```java
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n-1; i++) {
@@ -266,7 +266,7 @@ void bubbleSort(int arr[], int n) {
 #### O(2^n) – Exponential Time
 
 This complexity appears in recursive algorithms where the problem branches into multiple subproblems, like the naive Fibonacci implementation.
- 
+
 ```java
 int fib(int n) {
     if (n <= 1) return n;
@@ -282,7 +282,7 @@ Algorithms with this complexity grow rapidly and are generally impractical for l
 vector<int> nums = {1, 2, 3}; // Example vector
 void printPermutations(vector<int>& nums) {
     do {
-        for (int num : nums) 
+        for (int num : nums)
             cout << num << " ";
         cout << endl;
     } while (next_permutation(nums.begin(), nums.end())); // O(!n)
@@ -339,7 +339,7 @@ C <— A+B
 return C
 ```
 
-> The addition of two scalar numbers requires one extra memory location to hold the result. 
+> The addition of two scalar numbers requires one extra memory location to hold the result.
 > Thus the space complexity of this algorithm is constant, hence `S(n) = O(1)`.
 
 The pseudo-code is as follows:
@@ -351,7 +351,7 @@ for(int i = 0; i<n; i++)
 {
 cin>>a[i];
 freq[a[i]]++;
-}  
+}
 ```
 
 Below is the implementation of the above approach:
@@ -362,14 +362,14 @@ Below is the implementation of the above approach:
 # Function to count frequencies of array items
 def countFreq(arr, n):
     freq = dict()
-    
+
     # Traverse through array elements and
     # count frequencies
     for i in arr:
         if i not in freq:
             freq[i] = 0
         freq[i]+=1
-        
+
     # Traverse through map and print frequencies
     for x in freq:
         print(x, freq[x])
