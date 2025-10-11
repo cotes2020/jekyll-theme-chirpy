@@ -11,7 +11,7 @@ image:
 
 I am a quantum computing researcher focused on quantum error correcion and computer architecture.
 
-Before that, I did hardware design and system engineering, as well as project and team management—all in the classical domain.
+Before that, I did hardware design and system engineering, as well as project and team lead roles (in the classical domain).
 
 Interested in research, tech, DIY, and travel.
 

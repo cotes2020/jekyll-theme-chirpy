@@ -15,11 +15,11 @@
       {% else %}
         {% for item in paths %}
           {% if forloop.first %}
-            <span>
+            <!-- <span>
               <a href="{{ '/' | relative_url }}">
                 {{ site.data.locales[include.lang].tabs.home | capitalize }}
               </a>
-            </span>
+            </span> -->
 
           {% elsif forloop.last %}
             {% if page.collection == 'tabs' %}
@@ -31,6 +31,12 @@
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>
               <a href="{{ item | relative_url }}">
+                {{ site.data.locales[include.lang].tabs[item] | default: page.title }}
+              </a>
+            </span>
+          {% elsif page.layout == 'post' %}
+            <span>
+              <a href="{{ '/blog/' | relative_url }}">
                 {{ site.data.locales[include.lang].tabs[item] | default: page.title }}
               </a>
             </span>
