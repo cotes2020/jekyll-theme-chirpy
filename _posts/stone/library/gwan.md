@@ -319,7 +319,6 @@
 - <https://tech.devsisters.com/>  
 - [우리말샘에서는 한자를 검색하면 그 한자를 포함하는 단어를 검색할 수 있다. 그런데 鑾(방울 란)을 검색했을 때, 전혀 관련이 없는 "단추봉합"이나 "당김잔섬유" 등이 노출된다. 이는 우리말샘이 원어 정보에 대해서 UTF-16BE subarray 검색을 하기 때문이다...](https://x.com/giwiyou/status/1878180604585615685)
 - C# Expressions
-- [저는 Marshal, Ptr, Unsafe, unmanaged, stackalloc, Span<>을 사랑합니다 (C#프로그래밍 얘기)](https://x.com/kjh030529/status/1880193871021502632)
 - [](https://x.com/SzwajkaKacper/status/1881406070947803554)
 - VRChat Midi
 - [VRChat 내 움직임을 따내서 유니티 애니메이션 파일로 만들 수 있는 월드??? 월드와 깃허브에 있는 툴을 이용해서 만들 수 있다 하네요 ㄷㄷ](https://x.com/Dem01nS/status/1892878583359836394)
@@ -1037,17 +1036,7 @@ Verbase
   - TextureType Cursor
   - MaxSize 32
   - MacOS Cursor는 MaxSize로 결정되고
-  - Windows는 어떻든 간에 32로 고정됨
-- Span ReadOnlySPan
-  - stackalloc fixed
-  - Span --> Array를 바라보는 View, 참조자, 포인터
-  - 원형(not circle) Array 없이 혼자 요소를 가질 수 없음
-  - IReadOnlyList처럼 ReadOnly 콜렉션을 저장하고 싶은데, 대상이 배열이라 IReadOnlyList를 쓰면 불필요한 낭비가 생기는 경우
-  - 닷넷데브 사이트
-- 마샬링: 어원: 말을 타는 사람, 모으고 (집결) 통제하는 것
-  - 메모리 마샬링: 메모리 모아 통제?
-- Span\<T\> ref struct
-- Memory\<\T> struct
+  - Windows는 어떻든 간에 32로 고정
 - IDisposeable 관리되지 않는 리소스 정리. 사용 후 정리 패턴.
   - using ~
   - 파일, 네트워크, 연결, 구독
@@ -1205,7 +1194,6 @@ Verbase
 - 호기심 많은 개발자
   - 개인적으로 연구하는 시간
   - https://velog.io/@eugene-doobu/%EC%95%8C%EA%B3%A0%EB%A6%AC%EB%93%AC-%EC%96%B4%EB%94%B0-%EC%8D%A8%EC%9A%94-1%ED%8E%B8-%EA%B8%B8%EC%B0%BE%EA%B8%B0-%EC%95%8C%EA%B3%A0%EB%A6%AC%EB%93%AC%EA%B8%B8%EC%B0%BE%EA%B8%B0-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
-Cs 공부에 도움되는 거 추천좀 - https://m.dcinside.com/board/gamejob/53723
 
 포폴 - https://m.dcinside.com/board/gamejob/51602
 
