@@ -17,7 +17,8 @@ date: 2024-07-13. 06:56
 # last_modified_at: 2025-05-14. 07:05 # +푸키먼
 # last_modified_at: 2025-05-26. 21:58 # +정리: _, _UWU
 # last_modified_at: 2025-08-10. 23:46 # +푸키먼
-last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 playlist 기록
+# last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 playlist 기록
+last_modified_at: 2025-10-11. 23:28 # E ~_UWU, +푸키먼 (250803)
 
 # _UwU 재생목록 ID: `PL2fVGJtLXkTUeyniftY8jPhmB6npuhRpD`
 # _ 재생목록 ID: `PL2fVGJtLXkTXRk9pUOIg71B-ayw-L4PmB`
@@ -173,7 +174,6 @@ last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 pl
 - [Vivace!](https://youtu.be/r2lNo4KwGHs)
 - [キミの記憶 -Reload-](https://youtu.be/H5Qtu8fCycE)
 - [The past and now -LEASE-](https://youtu.be/T6lceAueOdk)
-- [UNDEAD](https://youtu.be/BryspbM6s3E)
 - [愛♡スクリ～ム！](https://youtu.be/3yaab2_EEHM)
 - [ススメRunner!!](https://youtu.be/SzGfP0iW0wA)
 - [「Heart Restart」／飯島ゆん(CV.竹尾歩美)](https://youtu.be/NG3dicGsiUs)
@@ -322,7 +322,6 @@ last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 pl
 - [리듬세상 더 베스트 플러스 BGM 브금 -격투가 킥- 「내리는 비를 맞으며」 Ver.Kor](https://youtu.be/toyjq-qnIU8)
 - [クラブミュージックFreeTEMPOメドレー作業用BGM](https://youtu.be/TMIWlUDGJNA)
 - [悲しい ANDROID - APARTMENT¶ - Reach for the sky](https://youtu.be/cJcvNqQF6ns)
-- [Free Beat (무료 비트) - "Groove Tonight"](https://youtu.be/u7zxvV3WJXI)
 - [FreeTempo - Immaterial White](https://youtu.be/ISsjyWLIQcA)
 - [1965 • Astrud Gilberto • The girl from Ipanema](https://youtu.be/soWqSb5FZZg)
 - [Monster Hunter Swing ~Big Band Jazz Arrange~ \| High Quality \| Zac Zinger](https://youtu.be/oBwt8T8P8Zs)
@@ -827,7 +826,6 @@ last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 pl
 - [Minna no Rhythm Tengoku - Night Walk (Full version)](https://youtu.be/24VFmHOFlko)
 - [GunZ The Duel OST - Ryswick Style [Duel Theme 5]](https://youtu.be/8MmBvaGD-IU)
 - [WE ARE JAPANESE GOBLIN](https://youtu.be/Tc8iu0XFUQc)
-- [13  CHOCOLAT feat  Mariya Ise](https://youtu.be/dMwymS9OlFM)
 - [08.  D Rock City feat.  Debra Zeer](https://youtu.be/ckrNVJHcxII)
 - [20. Fallen Angel feat. Aimee B](https://youtu.be/VBF8uA3UJ6w)
 - [【東方MV】チルノのパーフェクトさんすう教室【IOSYS】](https://youtu.be/V_bQNPG2OyE)
@@ -1136,6 +1134,10 @@ last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 pl
 
 ### 기록
 
+- [Dreams of Our Generation](https://youtu.be/nQZkGd2Smew) 리듬세상 Our Generation~
+- [Free Beat (무료 비트) - "Groove Tonight"](https://youtu.be/u7zxvV3WJXI) LCK
+- [UNDEAD](https://youtu.be/BryspbM6s3E) Past and future, can't change the past. Past and future, run for the future.
+- [CHOCOLAT feat. Mariya Ise (feat. Mariya Ise)](https://youtu.be/SdF6b8dIh4g) 팬스가
 - [レイテンシーガール](https://youtu.be/8nsb6KuOOn8)
 - [きゅうくらりん](https://youtu.be/75hkKzWnOTc)
 - [철거예정](https://youtu.be/GDLKWrCyyqA)
@@ -1429,7 +1431,6 @@ last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 pl
 
 ### 푸키먼
 
-- 209번 도로
 - 진실호수
 - 운하시티
 - 물가시티
@@ -1438,9 +1439,45 @@ last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 pl
 - 축복시티
 - 떡잎마을
 - 자연공원
-- 216번 도로
 - 보배마을
+- 209번 도로
+- 216번 도로: 4세대 눈 길
 - 228번 도로
+- 0803
+  - 22:26 dppt 뮤크시 bgm
+  - 22:28 pla 축복마을
+  - 22:33 포켓몬 모미지 박사
+  - 22:35 하우울라시티
+  - 22:41 DPPT 호수
+  - 22:49 주박사
+  - 22:51 pla 호수
+  - 22:54 xy 이설시티
+  - 22:59 프렌들리숍
+  - 23:03 난천 브금
+  - 23:07 잔모래마을
+  - 23:11 태홍 브금
+  - 23:14 아이리스
+  - 23:17 dppt 209
+  - 23:19 hgss 노랑시티
+  - 23:20 그때 그사람
+  - 23:21 무로마을
+  - 23:27 sm 환대시티
+    - 믹스마스터 브금?
+  - 23:33 디아루가ㅡ펄기아 배틀
+  - 23:41 하나 10번도로
+  - 23:44 sla 라벤박사
+    - 두뇌트레이닝
+  - 23:49 기라티나 브금
+  - 23:59 bw 자전거
+  - 0:00 hgss 고동마을
+  - 0:01 검방울시티
+  - 0:03 전설해파리
+  - 0:27 dppt 201
+  - 0:28 bw2기하시티
+  - 0:30 해안시티
+  - 0:54 창공날기 낮
+  - 0:59 쌍용시티
+  - 1:04 소드실드 체육관
 - last_modified_at: 2025-08-10. 23:46
   - An Unwavering Heart
   - or/as 창공날기 (밤)
