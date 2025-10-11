@@ -3,7 +3,7 @@ This is a fork of the chirpy jekyll theme.
 
 to run: 
 '''
-budle exec jekyll s
+bundle exec jekyll s
 '''
 
 <div align="center">
