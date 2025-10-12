@@ -8,7 +8,8 @@ hidden: true
 
 date: 2025-10-06. 00:20 # S Init
 # last_modified_at: 2025-10-06. 02:50 # E 초고
-last_modified_at: 2025-10-06. 14:18 # E 음악: in the pool, 해석: 김건
+# last_modified_at: 2025-10-06. 14:18 # E +음악: in the pool, +해석: 김건
+last_modified_at: 2025-10-13. 01:01 # E +해석: 김건
 ---
 
 ## 머리말
@@ -135,10 +136,16 @@ in the pool
 **[다른 분의 해석](https://www.instagram.com/p/DPLthorifee/?utm_source=ig_web_copy_link)**:  
 영화에 자주 나오는 메타포. 꽃말.  
 
-{% include embed/youtube.html id = "J2UlyOl-2Dc" %}
-서울대생 친구와 \[체인소 맨: 레제편\] 토론 리뷰하기  
-
 - 러시아 민요
 - 칼날길이 2억센치 <-- 체인소 맨 애니메이션 엔딩 중 하나였다는데, 기억이 안나서 몰랐음. 다시 들어보니까 이 혼란한 음악 기억나는 것 같기도.
 - 가독성 떨어지는 전투씬 <-- 거대한 폭풍의 악마와 조그만 상어, 체인소, 봄 걸 전투씬 그리려니 힘들었겠다.
 - 집중할 부분 집중하고, 나중에 넌지시 흘리는 후일담. (vs 극적인 상황 중 회상)
+
+{% include embed/youtube.html id = "J2UlyOl-2Dc" %}
+서울대생 친구와 \[체인소 맨: 레제편\] 토론 리뷰하기  
+
+{% include embed/youtube.html id = "nl5YRygrGdM" %}
+정갈하고 맛있고 완벽한, 최고의 한끼식사｜극장판 체인소 맨 레제편 후기  
+
+{% include embed/youtube.html id = "I5xuPsNAc_s" %}
+서울대 친구가 해석해주는 '체인소맨에 담긴 철학'  
