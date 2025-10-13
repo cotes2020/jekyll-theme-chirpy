@@ -21,13 +21,13 @@ export default defineConfig([
     files: ['_javascript/**/*.js'],
     languageOptions: {
       globals: {
+        ...globals.serviceworker,
         ClipboardJS: 'readonly',
         GLightbox: 'readonly',
         Theme: 'readonly',
         dayjs: 'readonly',
         mermaid: 'readonly',
         tocbot: 'readonly',
-        importScripts: 'readonly',
         swconf: 'readonly'
       }
     }
