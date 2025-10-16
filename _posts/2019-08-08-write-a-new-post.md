@@ -107,7 +107,7 @@ image:
 ---
 ```
 
-You can also use the `post` subfield if you only want the image to show up in the preview and embeds, and *not* in the post.
+You can also use the `post` subfield if you only want the image to show up in the preview and embeds, and _not_ in the post.
 
 ```yaml
 ---
