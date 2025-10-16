@@ -95,6 +95,29 @@ toc: false
 ---
 ```
 
+## Image
+
+To add an image to the post so that it shows on the preview, embeds, and beginning of the post itself, you can specify the `image` field in the _Front Matter_ as follows:
+
+```yaml
+---
+image: 
+  path: /path/to/image.jpeg
+  alt: this is some alt text
+---
+```
+
+You can also use the `post` subfield if you only want the image to show up in the preview and embeds, and *not* in the post.
+
+```yaml
+---
+image: 
+  path: /path/to/image.jpeg
+  alt: this is some alt text
+  post: false
+---
+```
+
 ## Comments
 
 The global setting for comments is defined by the `comments.provider` option in the `_config.yml`{: .filepath} file. Once a comment system is selected for this variable, comments will be enabled for all posts.
