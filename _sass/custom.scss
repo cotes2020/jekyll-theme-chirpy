@@ -1,1 +1,10 @@
 #avatar a { pointer-events: none; }
+#avatar {
+  text-align: center !important;
+  margin-left: 0 !important;
+}
+
+#avatar img {
+  margin: 0 auto !important;
+  display: block !important;
+}
