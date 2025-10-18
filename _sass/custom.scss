@@ -2,26 +2,3 @@
   pointer-events: none;
 }
 
-/* 아바타(프사) 컨테이너 */
-#avatar {
-  text-align: center !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-}
-
-/* 아바타 이미지 */
-#avatar img {
-  display: block !important;
-  margin: 0 auto !important;
-  border-radius: 50%;
-  width: 120px; /* 필요시 조정 */
-  height: 120px;
-  object-fit: cover;
-}
-
-/* 프로필 텍스트 (이름, 설명)도 중앙 정렬 */
-.profile-wrapper,
-.profile-wrapper .site-title,
-.profile-wrapper .site-subtitle {
-  text-align: center !important;
-}
