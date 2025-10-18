@@ -73,8 +73,8 @@ theme_mode: # [light | dark]
 cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/knuckles.jpg"
-social_preview_image: "/assets/knuckles.jpg"
+avatar: "https://dayforged.github.io/assets/knuckles.jpg"
+social_preview_image: "https://dayforged.github.io/assets/knuckles.jpg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
