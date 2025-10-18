@@ -74,7 +74,7 @@ cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "assets/knuckles.jpg"
-social_preview_image: # string, local or CORS resources
+social_preview_image: "assets/knuckles.jpg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
