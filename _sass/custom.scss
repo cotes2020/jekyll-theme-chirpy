@@ -5,13 +5,14 @@
   text-align: center !important;
   margin: 0 auto !important;
   padding: 0 !important;
-  margin-left: -5px !important;
+  margin-left: -1px !important;
 }
 
 /* 이미지 자체 가운데 */
 #avatar img {
   display: block !important;
   margin: 0 auto !important;
+  margin-left: -1px !important;
   border-radius: 50%;
   width: 120px; /* 필요시 조정 */
   height: 120px;
