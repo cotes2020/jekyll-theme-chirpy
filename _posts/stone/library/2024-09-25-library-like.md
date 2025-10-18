@@ -26,7 +26,8 @@ date: 2024-09-25. 18:26
 # last_modified_at: 2025-04-19. 02:35 # zz 추가
 # last_modified_at: 2025-04-23. 05:51 # 트위터 정리
 # last_modified_at: 2025-04-25. 07:12 # Library-Like로 변경, Like 분리
-last_modified_at: 2025-05-06. 15:43 # 정리
+# last_modified_at: 2025-05-06. 15:43 # 정리
+last_modified_at: 2025-10-19. 08:17 # EE +유튜브 정리
 ---
 
 ## 머리말
@@ -676,5 +677,13 @@ WOMBO COMBO!!!!
     - [세카아아아](https://youtu.be/7ZbM7gfY7YU?si=66ow7pCNRjTqKU1b)
     - [볼륨업](https://youtu.be/fGGDXrzjnlM?si=DNQ2fB1G_ZEuDWip)
     - [](https://x.com/shitpost_2077/status/1913525480445427969)
+    - [순간을 잡지 표지 사진처럼](https://youtu.be/jH0NiG1DN_c)
   - dh
     - ['X, _': 럭키스타 캐치아이 (아마?)](https://x.com/quiet_here/status/1912901470170591474)
+  - 가족
+    - [](https://youtu.be/TWRz6tElZi0)
+    - [](https://youtu.be/SlBL4qXYPh0)
+    - [](https://youtu.be/fF_o_EiHTPg)
+    - [](https://youtu.be/6w8Kuvs4Q2s)
+- [](https://youtu.be/8AK7k8J5SA8) 살인마와 가벼운 발걸음
+- [](https://youtu.be/s_Ka3ku1uc4h) 얼음 파도

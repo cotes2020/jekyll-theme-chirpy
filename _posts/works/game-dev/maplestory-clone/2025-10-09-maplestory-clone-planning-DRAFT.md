@@ -7,7 +7,7 @@ image: "/assets/img/background/20230112-151539.jpg"
 hidden: true
 
 date: 2025-10-09. 13:47 # Init
-# last_modified_at: 2025-10-09. 13:47
+last_modified_at: 2025-10-19. 08:15 # EE 모작 참고
 ---
 
 ## 머리말
@@ -74,3 +74,8 @@ date: 2025-10-09. 13:47 # Init
 ---
 
 - [그 다음 가디언 웨이브 조각의 움직임을 구현하기 위해 상태를 좌측으로 이동, 우측으로 이동, 자유낙하, 상승 네 가지로 구분했습니다. 가디언 웨이브가 상승하는 경우는 기획적으로 존재하지 않지만 상태만 변경한다면 하늘로 솟구치는 연출 또한 가능하도록 유연성 있게 작업했는데요. 참고로 메이플스토리의 월드 매트릭스는 DirectX의 왼손 좌표계를 사용하므로 유저가 보는 화면을 기준으로 우측이 +x축, 자유낙하를 하는 방향이 +y축입니다.](https://blog.maplestory.nexon.com/Tech/Content/9?page=2&selectType=All&SubCategorySN=1)
+- 모작
+  - [](https://youtu.be/2P71iEkFjW8)
+  - [](https://youtu.be/5mhyFBSVIjI)
+  - [](https://youtu.be/Wj14kWKQdQk)
+  - [](https://youtu.be/hECar33KaCY)
