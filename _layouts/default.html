@@ -85,19 +85,15 @@ layout: compress
   </body>
   
 <script>
-function fixAvatarPosition() {
+window.addEventListener("load", function() {
+  // 사이드바가 완전히 로드된 뒤 실행
   const avatar = document.querySelector("#avatar");
   if (avatar) {
     avatar.style.display = "flex";
     avatar.style.justifyContent = "center";
     avatar.style.alignItems = "center";
-    avatar.style.transform = "translateX(-3px)";
+    avatar.style.transform = "translateX(-5px)";
   }
-}
-
-// 페이지 완전히 로드된 후에도, JS 비동기 실행을 고려해 약간 지연
-window.addEventListener("load", () => {
-  setTimeout(fixAvatarPosition, 500); // 0.5초 후 강제 재정렬
 });
 </script>
 
