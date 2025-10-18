@@ -1,6 +1,6 @@
-/* ==============================
-   KNUCKLES 블로그 프로필 커스텀
-   ============================== */
+#avatar a {
+  pointer-events: none;
+}
 
 /* 아바타(프사) 컨테이너 */
 #avatar {
@@ -16,44 +16,16 @@
 /* 아바타 이미지 */
 #avatar img {
   display: block !important;
-  width: 120px;                       /* 필요 시 조정 가능 */
-  height: 120px;
+  margin: 0 auto !important;
   border-radius: 50%;
+  width: 120px; /* 필요시 조정 */
+  height: 120px;
   object-fit: cover;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* 살짝 입체감 */
-  transition: transform 0.2s ease;
 }
 
-/* 클릭 시 사라지는 현상 방지 */
-#avatar img:active {
-  transform: scale(0.97);
-  opacity: 1 !important;
-}
-
-/* 프로필 텍스트 중앙 정렬 */
+/* 프로필 텍스트 (이름, 설명)도 중앙 정렬 */
 .profile-wrapper,
 .profile-wrapper .site-title,
 .profile-wrapper .site-subtitle {
   text-align: center !important;
-  margin-left: 0 !important;
-}
-
-/* 사이드바 전체 균형 보정 */
-#sidebar {
-  padding-top: 1.5rem;
-}
-
-#sidebar .profile-wrapper {
-  padding: 0 !important;
-  margin-bottom: 1.2rem !important;
-}
-
-/* 모바일에서도 균형 유지 */
-@media (max-width: 768px) {
-  #avatar img {
-    width: 90px;
-    height: 90px;
-  }
 }
