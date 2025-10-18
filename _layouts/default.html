@@ -83,4 +83,18 @@ layout: compress
 
     {% include_cached search-loader.html lang=lang %}
   </body>
+  
+<script>
+window.addEventListener("load", function() {
+  // 사이드바가 완전히 로드된 뒤 실행
+  const avatar = document.querySelector("#avatar");
+  if (avatar) {
+    avatar.style.display = "flex";
+    avatar.style.justifyContent = "center";
+    avatar.style.alignItems = "center";
+    avatar.style.transform = "translateX(-3px)";
+  }
+});
+</script>
+
 </html>
