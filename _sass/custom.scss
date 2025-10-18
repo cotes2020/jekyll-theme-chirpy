@@ -1,4 +1,6 @@
-#avatar a { pointer-events: none; }
+/* ==============================
+   KNUCKLES 블로그 프로필 커스텀
+   ============================== */
 
 /* 아바타(프사) 컨테이너 */
 #avatar {
@@ -24,10 +26,34 @@
   transition: transform 0.2s ease;
 }
 
+/* 클릭 시 사라지는 현상 방지 */
+#avatar img:active {
+  transform: scale(0.97);
+  opacity: 1 !important;
+}
+
 /* 프로필 텍스트 중앙 정렬 */
 .profile-wrapper,
 .profile-wrapper .site-title,
 .profile-wrapper .site-subtitle {
   text-align: center !important;
   margin-left: 0 !important;
+}
+
+/* 사이드바 전체 균형 보정 */
+#sidebar {
+  padding-top: 1.5rem;
+}
+
+#sidebar .profile-wrapper {
+  padding: 0 !important;
+  margin-bottom: 1.2rem !important;
+}
+
+/* 모바일에서도 균형 유지 */
+@media (max-width: 768px) {
+  #avatar img {
+    width: 90px;
+    height: 90px;
+  }
 }
