@@ -4,13 +4,9 @@
 
 /* 아바타(프사) 컨테이너 */
 #avatar {
-  display: flex !important;
-  justify-content: center !important; /* 가로 중앙 정렬 */
-  align-items: center !important;     /* 세로 중앙 정렬 */
+  text-align: center !important;
   margin: 0 auto !important;
   padding: 0 !important;
-  padding-left: 2px !important;       /* ← 살짝 왼쪽으로 이동 */
-  width: 100%;
 }
 
 /* 아바타 이미지 */
