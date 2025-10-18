@@ -1,4 +1,3 @@
-# Gemfile for Chirpy theme
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3"
