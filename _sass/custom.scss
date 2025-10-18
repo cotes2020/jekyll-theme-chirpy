@@ -1,22 +1,25 @@
 #avatar a { pointer-events: none; }
 
-/* --- 아바타 중앙 정렬 강제 --- */
+/* 아바타(프사) 컨테이너 */
 #avatar {
-  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important; /* 가로 중앙 정렬 */
+  align-items: center !important;     /* 세로 중앙 정렬 */
+  margin: 0 auto !important;
+  padding: 0 !important;
+  padding-left: 2px !important;       /* ← 살짝 왼쪽으로 이동 */
+  width: 100%;
 }
 
-/* 이미지 자체 가운데 */
+/* 아바타 이미지 */
 #avatar img {
   display: block !important;
-  border-radius: 50%;
-  width: 120px; /* 필요시 조정 */
+  width: 120px;                       /* 필요 시 조정 가능 */
   height: 120px;
+  border-radius: 50%;
   object-fit: cover;
-}
-
-/* 프로필 텍스트 (이름, 설명)도 중앙 정렬 */
-.profile-wrapper,
-.profile-wrapper .site-title,
-.profile-wrapper .site-subtitle {
-  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* 살짝 입체감 */
+  transition: transform 0.2s ease;
 }
