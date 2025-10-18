@@ -2,4 +2,9 @@
   pointer-events: none;
 }
 
-#avatar {align-items: center !important;} 
+.profile-wrapper,
+.profile-wrapper .site-title,
+.profile-wrapper .site-subtitle {
+  text-align: center !important;
+  margin-left: 0 !important;
+}
