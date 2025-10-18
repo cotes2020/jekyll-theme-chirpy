@@ -16,7 +16,7 @@ twitter:
   username: twitter_username # change to your Twitter username
 
 social:
-  name: ""          # 이름 표시 안 함
+  name: "너클즈"          # 이름 표시 안 함
   email: ""         # 이메일 표시 안 함
   links: []         # 소셜 링크 완전 비활성화
 
@@ -73,7 +73,7 @@ theme_mode: # [light | dark]
 cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/knuckles.jpg"
+avatar: "/assets/knuckles.jpg"
 social_preview_image: # string, local or CORS resources
 
 # boolean type, the global switch for TOC in posts.
