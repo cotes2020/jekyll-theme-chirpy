@@ -75,7 +75,7 @@ theme_mode: # [light | dark]
 cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar: "/assets/img/knuckles.jpg"
 social_preview_image: # string, local or CORS resources
 
 # boolean type, the global switch for TOC in posts.
