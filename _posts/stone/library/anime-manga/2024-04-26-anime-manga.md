@@ -42,7 +42,8 @@ date: 2024-04-26. 20:55
 # last_modified_at: 2025-09-08. 21:45 # E +무리무리: 8 9화
 # last_modified_at: 2025-09-29. 00:18 # E +TO BE HERO X: 21 22 23화
 # last_modified_at: 2025-10-08. 20:16 # E animation -> anime-manga, +만화 from book.md, ~정리
-last_modified_at: 2025-10-13. 00:15 # E -TO BE HERO X: to to-be-hero-x
+# last_modified_at: 2025-10-13. 00:15 # E -TO BE HERO X: to to-be-hero-x
+last_modified_at: 2025-10-19. 07:16 # EE +타코피의 원죄
 ---
 
 ## 나열
@@ -57,6 +58,8 @@ last_modified_at: 2025-10-13. 00:15 # E -TO BE HERO X: to to-be-hero-x
 - `남자 고교생의 일상`: 오늘은 바람이 소란스럽군..  
   - 1회차: 240605 ~
   - 2회차: 250300 ~
+
+- [`타코피의 원죄`](/posts/takopis-original-sin/) E 2025-10-19. 00:21
 
 - `바이올렛 에버가든`
   - `극장판 바이올렛 에버가든`

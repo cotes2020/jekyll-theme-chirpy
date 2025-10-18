@@ -149,7 +149,6 @@
 - [렌더큐](https://x.com/Fabrazz/status/1782011954027979211)
 - [옵저버 패턴, 발행 패턴 in Unity](https://velog.io/@luz0415/Unity%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4-%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4-%EB%B0%9C%ED%96%89-%EA%B5%AC%EB%8F%85-%ED%8C%A8%ED%84%B4)
 - [PlayerLoop](https://medium.com/@thebeardphantom/unity-2018-and-playerloop-5c46a12a677)
-- [모든 유니티 게임 개발자가 알아야할 상위 7가지 디자인 패턴-1](https://gall.dcinside.com/mgallery/board/view/?id=game_dev&no=146234)
 - [ScreenSpaceReflection](https://docs.unity3d.com/kr/2017.4/Manual/PostProcessing-ScreenSpaceReflection.html)
 - [Animation Culling Type](https://velog.io/@minjujuu/Unity-Animation-Culling-Type)
 - [Content Size Fitter Refresh Problem](https://discussions.unity.com/t/content-size-fitter-refresh-problem/678806)

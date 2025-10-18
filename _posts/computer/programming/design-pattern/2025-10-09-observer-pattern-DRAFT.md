@@ -243,7 +243,7 @@ void Subject::addObserver(Observer* observer) {
 
 이론상으로는 이래도 아무 문제가 없어야 한다. 원칙적으로 같은 대상을 관찰하는 관찰자끼리는 알림 순서로 인한 의존 관계가 없게 만들어야 한다. 순서 때문에 문제가 있다면 관찰자들 사이에 미묘한 커플링이 있다는 얘기이므로, 나중에 문제가 될 소지가 크다.  
 
-등록 취소 코드는 다음과 같다.   
+등록 취소 코드는 다음과 같다.  
 
 ```cpp
 void Subject::removeObserver(Observer* observer) {

@@ -18,7 +18,8 @@ date: 2024-07-13. 06:56
 # last_modified_at: 2025-05-26. 21:58 # +정리: _, _UWU
 # last_modified_at: 2025-08-10. 23:46 # +푸키먼
 # last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 playlist 기록
-last_modified_at: 2025-10-11. 23:28 # E ~_UWU, +푸키먼 (250803)
+# last_modified_at: 2025-10-11. 23:28 # E ~_UWU, +푸키먼 (250803)
+last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
 
 # _UwU 재생목록 ID: `PL2fVGJtLXkTUeyniftY8jPhmB6npuhRpD`
 # _ 재생목록 ID: `PL2fVGJtLXkTXRk9pUOIg71B-ayw-L4PmB`
@@ -42,8 +43,14 @@ last_modified_at: 2025-10-11. 23:28 # E ~_UWU, +푸키먼 (250803)
 
 ---
 
-### _UWU: 2025-10-08
-
+- [Snail's House - Penguin Dream](https://youtu.be/v6xUYqazVA0)
+- [Snail's House - て あも (te amo)](https://youtu.be/Dtbfj8uJyH4)
+- [Vaundy - 踊り子 / 무희 / 카사네 테토 SV cover [ 重音テト SV ]](https://youtu.be/OvQsG6fu728) 무희, 테토 커버
+- [ROUND TABLE - Groovin' Magic](https://youtu.be/xrZeY6CAvMY) 뭐였더라, 어디 외국 롤 편집 영상에서 처음 들었던 음악, 아 아아 아. 이게 원본이구나
+- [KIRINJI - Aliens](https://youtu.be/UiW93Thic7I) 우연히 뜬 음악
+- [Mousou Express](https://youtu.be/y2XArpEcygc) 모노가타리? 하나자와 카나 목소리가 들려서
+- [不屈～無心の叫び～](https://youtu.be/PNLUXDn_S4o) 죠나단 테마곡
+- [ばかみたい](https://youtu.be/EamxSv3xhoE&) 바카미타이 미쿠테토
 - [MURI MURI EVOLUTION](https://youtu.be/lBIyB8w-bwQ): 무리무리 오프닝
 - [Growing Up](https://youtu.be/iqFSRy8Dhms): 코노스바 3기 오프닝
 - [Ao to Kirameki](https://youtu.be/T7lOP8v1ZCc)
@@ -1074,6 +1081,12 @@ last_modified_at: 2025-10-11. 23:28 # E ~_UWU, +푸키먼 (250803)
 - [toy story - you've got a friend in me music](https://youtu.be/XHFy3YWpRx8)
 - [♪. 아마자라시 - 내가 죽으려고 생각한 것은 [가사, Lyrics]](https://youtu.be/p5EmIwUY8a0)
 - [Coldplay - Viva La Vida (Official Video)](https://youtu.be/dvgZkm1xWPE)
+
+## 작가
+
+---
+
+- Ujico*/Snail's House
 
 ## 메모
 
