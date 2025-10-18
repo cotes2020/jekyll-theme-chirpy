@@ -7,9 +7,10 @@
   justify-content: center !important; /* 가로 중앙 정렬 */
   margin: 0 auto !important;
   padding: 0 !important;
-  padding-left: 5px !important;       /* ← 살짝 왼쪽으로 이동 */
   width: 100%;
 }
+
+.profile-wrapper {transform: translateX(-1px);}
 
   
 html body #avatar {
