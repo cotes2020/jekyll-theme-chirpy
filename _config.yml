@@ -198,5 +198,5 @@ jekyll-archives:
     category: /categories/:name/
 
 include:
-  - assets/img/favicons/knuckles.jpg
+  - assets/knuckles.jpg
 
