@@ -9,7 +9,7 @@ function hasDescription(markdown) {
   );
 }
 
-module.exports = async ({ github, context, core }) => {
+export default async ({ github, context, core }) => {
   const pr = context.payload.pull_request;
   const body = pr.body === null ? '' : pr.body;
   const markdown = body.replace(/<!--[\s\S]*?-->/g, '');

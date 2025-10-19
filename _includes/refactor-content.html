@@ -163,7 +163,7 @@
 
     {% if page.layout == 'home' %}
       <!-- create the image wrapper -->
-      {% assign _wrapper_start = '<div class="preview-img ' | append: _class | append: '">' %}
+      {% assign _wrapper_start = '<div class="preview-img ' | append: _wrapper_class | append: '">' %}
 
       {% assign _img_content = _img_content | append: _wrapper_start %}
       {% assign _right = _right | prepend: '></div' %}

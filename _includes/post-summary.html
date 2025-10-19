@@ -1,0 +1,39 @@
+{%- comment -%}
+  Get the post's description or body content.
+
+  Arguments:
+    full_text: If true, return the full content. Default is false.
+    max_length: The maximum length of the returned content. Default is 200.
+{%- endcomment -%}
+
+{%- if post.description and include.full_text != true -%}
+  {{- post.description -}}
+{%- else -%}
+  {%- comment -%} Remove the line numbers from the code snippet. {%- endcomment -%}
+
+  {%- assign content = post.content -%}
+
+  {%- if content contains '<td class="rouge-gutter gl"><pre class="lineno">' -%}
+    {%- assign content = content
+      | replace: '<td class="rouge-gutter gl"><pre class="lineno">',
+        '<!-- <td class="rouge-gutter gl"><pre class="lineno">'
+    -%}
+    {%- assign content = content | replace: '</td><td class="rouge-code">', '</td> --><td class="rouge-code">' -%}
+  {%- endif -%}
+
+  {%- assign content = content
+    | markdownify
+    | strip_html
+    | newline_to_br
+    | replace: '<br />', ' '
+    | strip_newlines
+    | strip
+  -%}
+
+  {%- unless include.full_text -%}
+    {%- assign max_length = include.max_length | default: 200 -%}
+    {%- assign content = content | truncate: max_length -%}
+  {%- endunless -%}
+
+  {{- content -}}
+{%- endif -%}

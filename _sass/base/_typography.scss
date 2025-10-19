@@ -26,9 +26,7 @@
         }
       }
 
-      & {
-        font-size: 1rem + (5 - $i) * $size-factor;
-      }
+      font-size: 1rem + (5 - $i) * $size-factor;
     } @else {
       font-size: 1.05rem;
     }
@@ -238,7 +236,7 @@ main {
     border-spacing: 0;
 
     thead {
-      border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+      border-bottom: solid 2px rgb(210 215 217 / 75%);
 
       th {
         @extend %table-cell;
