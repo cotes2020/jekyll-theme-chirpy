@@ -59,6 +59,7 @@ post:
   read_time:
     unit: 分鐘
     prompt: 閱讀
+  edit: 編輯此文
   relate_posts: 相關文章
   share: 分享
   button:

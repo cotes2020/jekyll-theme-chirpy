@@ -60,6 +60,7 @@ post:
   read_time:
     unit: minut
     prompt: čtení
+  edit: Uprav tento příspěvek
   relate_posts: Další čtení
   share: Sdílet
   button:
