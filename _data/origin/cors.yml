@@ -20,24 +20,24 @@ webfonts: https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Sour
 # Libraries
 
 toc:
-  css: https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css
-  js: https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.js
+  css: https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.min.css
+  js: https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.min.js
 
 fontawesome:
-  css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css
+  css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css
 
 search:
   js: https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js
 
 mermaid:
-  js: https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js
+  js: https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.min.js
 
 dayjs:
   js:
-    common: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/dayjs.min.js
-    locale: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/locale/:LOCALE.js
-    relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/plugin/relativeTime.js
-    localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.13/plugin/localizedFormat.js
+    common: https://cdn.jsdelivr.net/npm/dayjs@1.11.18/dayjs.min.js
+    locale: https://cdn.jsdelivr.net/npm/dayjs@1.11.18/locale/:LOCALE.js
+    relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.18/plugin/relativeTime.js
+    localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.18/plugin/localizedFormat.js
 
 glightbox:
   css: https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css
