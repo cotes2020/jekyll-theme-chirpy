@@ -206,7 +206,6 @@
 - [욕을 하면 고통이 줄어든다?](https://boingboing.net/2020/05/22/scientists-saying-fuck-an.html)
 
 - [IGN 인터뷰, 게임을 만들 때 가장 어려운 것은... 모든 것이다](https://kr.ign.com/control/11198/feature/geimeul-mandeul-ddae-gajang-eoryeoun-geoseun-modeun-geosida)
-- [동인 게임의 전설이 되다. \<동방프로젝트\> 이야기](https://blog.naver.com/sindadel/222035777021)
 
 - [게임 시스템 디자인 시작하기](https://www.slideshare.net/ByungChun2/ss-140743429)
 - [float 연산이 정확하지 않다면 컴퓨터 계산기는 어떻게 소수를 계산하는가](https://www.quora.com/If-computers-cannot-compute-floating-numbers-accurately-how-do-calculators-and-scientific-computers-function)
@@ -216,7 +215,6 @@
 - [레이마칭을 이용한 포탈 데칼](https://x.com/lateasusual_/status/1633659951607365632?s=20)
 - [GPT를 이용한 탄막 패턴 사례](https://x.com/alice_diffusion/status/1636000238757625867?s=20)
 - [라이팅/레벨](https://x.com/jpcorp72/status/1668992816796532737?s=20)
-- [게임으로 언어 공부하기](https://x.com/kinophio/status/1665907410618437633?s=20)
 - [십수년전.. 게임사가 배포한 정식 게임 클라이언트없이 MMO서버에 붙는 봇(OOG:OutOfGame bot)들 잡을 때 썼던 방식](https://x.com/deimos18770812/status/1507938863754334211?s=20&t=UCr8P5wJDoKdC6hj7_SyBQ)
 - [수학적 Coordinate, Color](https://catlikecoding.com/unity/tutorials/basics/mathematical-surfaces/)
 - [수학 시각화](https://gall.dcinside.com/mgallery/board/view/?id=singlebungle1472&no=288516&exception_mode=recommend&page=1)
@@ -1659,6 +1657,6 @@ https://youtu.be/6E3qiNttpaI?si=8c-TRW1ChKtyT9Ah 푸키먼 브금 작곡가
 
 그리고 습관적으로 생각하기.  
 
-ㅇㅇ6(118.235)@ㅇㅇ7(39.115) 걍 a에서는 뭐쓰는게 좋을까요?
+a에서는 뭐쓰는게 좋을까요?
 이러다가 왜요? 이것도 있잖아요 뭐가 달라요?
 이건 왜 안돼요? 이것만 30분

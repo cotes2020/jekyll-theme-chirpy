@@ -51,7 +51,6 @@ date: 2025-08-01. 23:33 # Init
 
 - 매개변수로 넘겨준 트랜지션 Type에 따라 다른 트랜지션 Like 포켓몬
 
-
 ## Catch
 
 ---
@@ -65,7 +64,7 @@ date: 2025-08-01. 23:33 # Init
 - [텍스트 모션그래픽](https://x.com/functiontales/status/1750779547719795026)
 - [#aftereffects #motionGraphics #アフターエフェクト #RpBoundaryFill](https://x.com/repiece_/status/1896032712575828007)
 
-### MDD, Moe-Driven Development
+### 모에
 
 #### 캐릭터
 
@@ -93,4 +92,3 @@ date: 2025-08-01. 23:33 # Init
 ### 키워드
 
 ### 참고
-

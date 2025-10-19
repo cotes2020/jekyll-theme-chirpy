@@ -575,7 +575,7 @@ last_modified_at: 2025-10-19. 08:14 # EE +이직, 갈등 경험
 - [리플렉션 DRAFT](/posts/reflection-DRAFT) [](/_posts/computer/programming/coding/2024-09-02-reflection-DRAFT.md)
 - [오버라이딩-오버로딩](/posts/override-overload) [](/_posts/computer/programming/coding/2025-09-28-override-overload)
 - [가상 메서드](/posts/virtual-method) [](/_posts/computer/programming/coding/2025-09-28-virtual-method.md)
-- [OOP](/posts/oop) [](/_posts/computer/programming/programming-paradigm/2024-04-23-oop.mdd)
+- [OOP](/posts/oop) [](/_posts/computer/programming/programming-paradigm/2024-04-23-oop.md)
   - 오버라이딩, 오버로딩
 - 박싱/언박싱
   - 힙/스택
