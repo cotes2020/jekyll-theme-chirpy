@@ -43,7 +43,8 @@ date: 2024-04-26. 20:55
 # last_modified_at: 2025-09-29. 00:18 # E +TO BE HERO X: 21 22 23화
 # last_modified_at: 2025-10-08. 20:16 # E animation -> anime-manga, +만화 from book.md, ~정리
 # last_modified_at: 2025-10-13. 00:15 # E -TO BE HERO X: to to-be-hero-x
-last_modified_at: 2025-10-19. 07:16 # EE +타코피의 원죄
+# last_modified_at: 2025-10-19. 07:16 # EE +타코피의 원죄
+last_modified_at: 2025-10-21. 01:47 # E +사무라이 참푸르
 ---
 
 ## 나열
@@ -316,6 +317,8 @@ last_modified_at: 2025-10-19. 07:16 # EE +타코피의 원죄
 - `인사이드 아웃 1`, `인사이드 아웃 2`
 
 ### 먹을만 하네요
+
+- `사무라이 참푸르` E 2025-10-21. 01:47
 
 - `사일런트 위치 침묵의 마녀의 비밀`
   - 1화: 250719. 재밌구만. 주인공도, 네코쨩도, 오니쨩도, 메이드쨩도 마법 연출도 좋구만.
