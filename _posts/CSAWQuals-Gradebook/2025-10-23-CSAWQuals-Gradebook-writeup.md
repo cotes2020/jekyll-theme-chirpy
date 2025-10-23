@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CSAW Quals - Gradebook"
-categories: [web, writeups]
+categories: [web, writeups , CTF]
 tags: [xss,csp,csrf]
 date: 2025-10-23
 media_subpath: /assets/img/CSAWQuals
