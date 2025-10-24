@@ -37,16 +37,17 @@ script_includes:
       {% endif %}
 
       {% if page.image %}
-        {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
-        {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
-        {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
-
-        {% if page.image.lqip %}
-          {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
-        {% endif %}
-
         <div class="mt-3 mb-3">
-          <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
+          {% if page.image.light or page.image.dark %}
+            {% if page.image.light %}
+              <img src="{{ page.image.light }}" class="preview-img light" alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}" w="1200" h="630" style="{% if page.image.max_height %}max-height: {{ page.image.max_height }};{% endif %} {% if page.image.object_fit %}object-fit: {{ page.image.object_fit }};{% else %}object-fit: cover;{% endif %} background-color: white; padding: 10px; border-radius: 8px; width: 100%;"{% if page.image.lqip %} lqip="{{ page.image.lqip }}"{% endif %}>
+            {% endif %}
+            {% if page.image.dark %}
+              <img src="{{ page.image.dark }}" class="preview-img dark" alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}" w="1200" h="630" style="{% if page.image.max_height %}max-height: {{ page.image.max_height }};{% endif %} {% if page.image.object_fit %}object-fit: {{ page.image.object_fit }};{% else %}object-fit: cover;{% endif %} background-color: #1b1b1e; padding: 10px; border-radius: 8px; width: 100%;"{% if page.image.lqip %} lqip="{{ page.image.lqip }}"{% endif %}>
+            {% endif %}
+          {% else %}
+            <img src="{{ page.image.path | default: page.image }}" class="preview-img" alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}" w="1200" h="630" style="{% if page.image.max_height %}max-height: {{ page.image.max_height }};{% endif %} {% if page.image.object_fit %}object-fit: {{ page.image.object_fit }};{% else %}object-fit: cover;{% endif %} padding: 10px; border-radius: 8px; width: 100%;"{% if page.image.lqip %} lqip="{{ page.image.lqip }}"{% endif %}>
+          {% endif %}
           {%- if page.image.alt -%}
             <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
           {%- endif -%}

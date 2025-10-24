@@ -67,7 +67,37 @@ refactor: true
           {% endif %}
 
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            {% if post.image.light or post.image.dark %} {% if post.image.light %}
+            <img
+              src="{{ post.image.light }}"
+              alt="{{ alt }}"
+              class="light preview-image"
+              style="{% if post.image.max_height %}max-height: {{ post.image.max_height }};{% else %}max-height: 200px;{% endif %} {% if post.image.object_fit %}object-fit: {{ post.image.object_fit }};{% else %}object-fit: cover;{% endif %} width: 100%; border-radius: 8px;"
+              {{
+              lqip
+              }}
+            />
+            {% endif %} {% if post.image.dark %}
+            <img
+              src="{{ post.image.dark }}"
+              alt="{{ alt }}"
+              class="dark preview-image"
+              style="{% if post.image.max_height %}max-height: {{ post.image.max_height }};{% else %}max-height: 200px;{% endif %} {% if post.image.object_fit %}object-fit: {{ post.image.object_fit }};{% else %}object-fit: cover;{% endif %} width: 100%; border-radius: 8px;"
+              {{
+              lqip
+              }}
+            />
+            {% endif %} {% else %}
+            <img
+              src="{{ post.image.path | default: post.image }}"
+              alt="{{ alt }}"
+              class="preview-image"
+              style="{% if post.image.max_height %}max-height: {{ post.image.max_height }};{% else %}max-height: 200px;{% endif %} {% if post.image.object_fit %}object-fit: {{ post.image.object_fit }};{% else %}object-fit: cover;{% endif %} width: 100%; border-radius: 8px;"
+              {{
+              lqip
+              }}
+            />
+            {% endif %}
           </div>
 
           {% assign card_body_col = '7' %}

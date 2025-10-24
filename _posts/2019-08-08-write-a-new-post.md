@@ -256,6 +256,41 @@ For normal images:
 ```
 {: .nolineno }
 
+#### Preview light/dark images
+
+It is also possible to have the image differ based on if the user is seeing your site in light mode or dark mode:
+
+```yaml
+---
+image:
+  light: /path/to/image-light.png
+  dark: /path/to/image-dark.png
+  alt: this is some alt text
+---
+```
+
+#### Preview scaling
+
+For the home page, the height of the image preview and how it scales to fit can be set.
+
+```yaml
+---
+image: 
+  path: /path/to/image.jpeg
+  alt: this is some alt text
+  object_fit: contain
+  max_height: 200px # default
+---
+```
+
+Available object-fit values:
+
+- **`cover`** (default) - Scales to fill container, may crop edges to maintain aspect ratio
+- **`contain`** - Scales to fit entirely within container, may leave empty space
+- **`fill`** - Stretches to fill container exactly (may distort aspect ratio)
+- **`scale-down`** - Acts like `contain` but never scales up beyond original size
+- **`none`** - Image is not resized
+
 ### Social Media Platforms
 
 You can embed video/audio from social media platforms with the following syntax:
