@@ -25,7 +25,7 @@ layout: compress
 
         <div class="row flex-grow-1">
           <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
-            {% if layout.refactor or layout.layout == 'default' %}
+            {% if layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
             {% else %}
               {{ content }}
