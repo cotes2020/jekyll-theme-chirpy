@@ -60,6 +60,7 @@ post:
   read_time:
     unit: menit
     prompt: baca
+  edit: Sunting entri ini
   relate_posts: Postingan Lainya
   share: Bagikan
   button:

@@ -1,0 +1,21 @@
+<!-- Link to edit the post at the bottom of the post. -->
+
+{% assign enabled = site.data.edit-this-post.enabled %}
+{% assign url = site.data.edit-this-post.url %}
+{% assign static_url = site.data.edit-this-post.static_url %}
+
+{% unless static_url %}
+  {% assign url = url | append: '/' | append: page.path %}
+{% endunless %}
+
+{% if enabled %}
+  <div class="post-edit">
+    {% assign edit = site.data.locales[include.lang].post.edit %}
+    <a
+      href="{{ url }}"
+      target="_blank"
+    >
+      <i class="far fa-edit fa-fw me-1"></i> {{ edit }}
+    </a>
+  </div>
+{% endif %}

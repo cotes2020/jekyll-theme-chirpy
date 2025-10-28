@@ -59,6 +59,7 @@ post:
   read_time:
     unit: min
     prompt: lettura
+  edit: Modifica questo post
   relate_posts: Continua a leggere
   share: Condividi
   button:
