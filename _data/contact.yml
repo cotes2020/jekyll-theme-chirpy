@@ -5,12 +5,14 @@
   url: 'https://www.linkedin.com/in/jeremymontes7'
 
 
-- #type: twitter
-  #icon: "fa-brands fa-x-twitter"
+- type: pgp
+  icon: "fa-solid fa-key"   # placeholder; replaced by SVG below
+  url: "/pgp.txt"  
 
 - type: email
   icon: 'fas fa-envelope'
   noblank: true
+
 
 - #type: rss
   #icon: "fas fa-rss"
