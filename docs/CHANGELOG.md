@@ -1,5 +1,27 @@
 # Changelog
 
+## [7.4.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.4.0...v7.4.1) (2025-10-26)
+
+### Bug Fixes
+
+* avoid duplicate base URL for homepage preview images ([#2568](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2568)) ([66bf232](https://github.com/cotes2020/jekyll-theme-chirpy/commit/66bf232951fbe752821b623dc1e7e4e2824c15bf))
+
+## [7.4.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.3.1...v7.4.0) (2025-10-19)
+
+### Features
+
+* add support for embed spotify ([#2515](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2515)) ([cda62e2](https://github.com/cotes2020/jekyll-theme-chirpy/commit/cda62e28d1b71ce4018301aacf93532230aa2b3b))
+* **i18n:** add Danish locale ([#2410](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2410)) ([f5802b8](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f5802b8a8a4fb94cd51a484e438f6ba2ba8d62c9))
+* **i18n:** add locale files for some rtl languages ([#2415](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2415)) ([18c48b4](https://github.com/cotes2020/jekyll-theme-chirpy/commit/18c48b4c49f896eeeeb52a8de1dca715add70c6a))
+
+### Bug Fixes
+
+* avoid unconfigured social options in sidebar ([#2507](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2507)) ([5f8ec7f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5f8ec7ffd3b23998bad48c110e809576fe5daf80))
+* correct GoatCounter pageviews extraction ([#2420](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2420)) ([c706799](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c706799f9b2e724dee9a3b891dea72dfa587929e))
+* resolve discrepancy in lqip between post and main page ([#2453](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2453)) ([1bac96a](https://github.com/cotes2020/jekyll-theme-chirpy/commit/1bac96a8e1ae23a7a48f2b7d249bfbfd5d9bfe50))
+* restore blurry animation for homepage LQIP ([#2551](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2551)) ([221ca9f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/221ca9f52b55b103900832f3c03ad2ecc4415bcc))
+* **search:** restore full-text search for posts with description ([#2557](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2557)) ([604528e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/604528e3ce11ec0278e83f41105ed5949362bb54))
+
 ## [7.3.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.3.0...v7.3.1) (2025-07-26)
 
 ### Bug Fixes
