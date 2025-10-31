@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.4.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.4.0...v7.4.1) (2025-10-26)
+
+### Bug Fixes
+
+* avoid duplicate base URL for homepage preview images ([#2568](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2568)) ([66bf232](https://github.com/cotes2020/jekyll-theme-chirpy/commit/66bf232951fbe752821b623dc1e7e4e2824c15bf))
+
 ## [7.4.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.3.1...v7.4.0) (2025-10-19)
 
 ### Features
