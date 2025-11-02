@@ -19,7 +19,8 @@ date: 2024-07-13. 06:56
 # last_modified_at: 2025-08-10. 23:46 # +푸키먼
 # last_modified_at: 2025-10-08. 16:47 # E ~music -> music-playlist, +2025-10-08 playlist 기록
 # last_modified_at: 2025-10-11. 23:28 # E ~_UWU, +푸키먼 (250803)
-last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
+# last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
+last_modified_at: 2025-11-02. 23:45 # E ~정리
 
 # _UwU 재생목록 ID: `PL2fVGJtLXkTUeyniftY8jPhmB6npuhRpD`
 # _ 재생목록 ID: `PL2fVGJtLXkTXRk9pUOIg71B-ayw-L4PmB`
@@ -44,6 +45,8 @@ last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
 ---
 
 - [Snail's House - Penguin Dream](https://youtu.be/v6xUYqazVA0)
+- [[블루 아카이브] 메인 OST 'Target for love' Full ver.](https://youtu.be/3nAs-iAPoeM)
+- [Samurai Champloo OST Study/Chill Mix](https://youtu.be/9xnG75Vcw5k)
 - [Snail's House - て あも (te amo)](https://youtu.be/Dtbfj8uJyH4)
 - [Vaundy - 踊り子 / 무희 / 카사네 테토 SV cover [ 重音テト SV ]](https://youtu.be/OvQsG6fu728) 무희, 테토 커버
 - [ROUND TABLE - Groovin' Magic](https://youtu.be/xrZeY6CAvMY) 뭐였더라, 어디 외국 롤 편집 영상에서 처음 들었던 음악, 아 아아 아. 이게 원본이구나
@@ -357,7 +360,6 @@ last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
 - [익숙한 척](https://youtu.be/pfWkeYkBEOs)
 - [Tap Tap Dance](https://youtu.be/sgC2pA6byHw)
 - [그래도 나 사랑하지ㅣ징버거 COVER](https://youtu.be/Q6puNlv3Cm4)
-- [뢴트게늄&해루석&히키킹 - 뢴해히 CYPHER  ｜왁타버스 뮤직 어워즈 2023](https://youtu.be/ULkBnaT7ivk)
 - [glory MAX -나의 최대치로 너와 함께할게-](https://youtu.be/np4XFwrmAkM)
 - [TEKKEN 8 - Paris Stage Theme (Celebration on the Seine 1st)](https://youtu.be/0sEG2PpPTqk)
 - [QWER 'Discord (디스코드)' Official MV](https://youtu.be/WGm2HmXeeRI)
@@ -483,7 +485,6 @@ last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
 - [For The Future \| LCK Music](https://youtu.be/ZVtn7bisjlk)
 - [Heaven’s falling down](https://youtu.be/EKYxjtNRekM)
 - [Battle Tapes - In Too Deep (Official Music Video - Director's Cut)](https://youtu.be/XfrfI4XO9rY)
-- [JoJo's Bizarre Workout Mix](https://youtu.be/W3N-KFESPQ0)
 - [Hollow Season (Feat. INE, C JAMM, YUNHWAY) (없는계절 (Feat. 아이네, C JAMM, YUNHWAY))](https://youtu.be/46eoejOBsU0)
 - [Denzel Curry, Gizzle, Bren Joy - Dynasties & Dystopia \| Arcane League of Legends \| Riot Games Music](https://youtu.be/y_fB0IMbq54)
 - [Miyavi & PVRIS - Snakes \| Arcane League of Legends \| Riot Games Music](https://youtu.be/4UprHuO_zCc)
@@ -616,7 +617,6 @@ last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
 - [(instrumental) 아련히 남아있는 여름날의 기억](https://youtu.be/5OMKzxAHtM4)
 - [Just The Two Of Us](https://youtu.be/g97La0u55_g)
 - [Snail's House - Biscuit Funk](https://youtu.be/BQWyYnf3X2g)
-- [WE ARE JAPANESE GOBLIN (MONTPELIER. REMIX) [PHONK]](https://youtu.be/kwiTBya_2iI)
 - [[한글자막] [우마무스메]ㅣ일편단심 마이노트ㅣ사쿠라 치요노 오 캐릭터송 (c.v 노구치 루리코)](https://youtu.be/yCg7ogBsuSQ)
 - [[UtaMacross] Ikenai Borderline — Sheryl & Ranka [Full Song + 4K60fps]](https://youtu.be/x5H_aox_g9M)
 - [고세구 - 롤모델 (instrumental ver.)](https://youtu.be/9IQ-02r_sx4)
@@ -1108,6 +1108,7 @@ last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
   - [minecraft full soundtrack slowed and reverb & with rain](https://youtu.be/vogXH8kGfYI)
 - [JING TIME! (10:08 ver.)](https://music.youtube.com/watch?v=9QVyFEpIenM)
 - [3:03 PM](https://music.youtube.com/watch?v=xxpg9_2on3I)
+- [JoJo's Bizarre Workout Mix](https://youtu.be/W3N-KFESPQ0)
 
 ### 가끔
 
@@ -1144,9 +1145,11 @@ last_modified_at: 2025-10-19. 07:46 # E +_UWU +작가: Ujico*/Snail's House
   - [[우왁굳 2019 연말공모전] 댈란 - 형 방송 봐도 돼](https://youtu.be/EWnFFz-UPpE)
   - [우왁굳 - 작별 (remix by. Young_Vibe)](https://youtu.be/aZLkG4kcEP4)
   - [우왁굳 - I O N L Y L I K E C A T S (왁굳은 고양이만 좋아해)(이어폰 필수)](https://youtu.be/b8qPgckkkCU)
+  - [뢴트게늄&해루석&히키킹 - 뢴해히 CYPHER  ｜왁타버스 뮤직 어워즈 2023](https://youtu.be/ULkBnaT7ivk)
 
 ### 기록
 
+- [WE ARE JAPANESE GOBLIN (MONTPELIER. REMIX) [PHONK]](https://youtu.be/kwiTBya_2iI)
 - [Dreams of Our Generation](https://youtu.be/nQZkGd2Smew) 리듬세상 Our Generation~
 - [Free Beat (무료 비트) - "Groove Tonight"](https://youtu.be/u7zxvV3WJXI) LCK
 - [UNDEAD](https://youtu.be/BryspbM6s3E) Past and future, can't change the past. Past and future, run for the future.
