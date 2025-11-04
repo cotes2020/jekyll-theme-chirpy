@@ -177,7 +177,7 @@ The book is heavily U.S.-focused, tracing how American government demand for cyb
   }
 </style>
 
-<img src="https://media.licdn.com/dms/image/v2/D5622AQHEtwMPiA-crQ/feedshare-shrink_800/B56Zj6brpEHAAg-/0/1756548218285?e=1761177600&v=beta&t=aZJ7R0xBMZRlFgxbxwtgkU6XHJykktGRBpDgTaF-50I"
+<img src="https://i.postimg.cc/cJz7ZZct/book.jpg"
      alt="Book Cover"
      style="width: 200px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.4);" />
 <p style="margin-top: 0.5rem;">
