@@ -5,7 +5,7 @@ categories: [BookReview]
 tags: [cybersecurity, zero-day, cyberwar]
 media_subpath: 
 image: 
-  path: "https://i.postimg.cc/QN4WPfV4/Chat-GPT-Image-Aug-29-2025-09-37-08-PM.png"
+  path: "https://m.media-amazon.com/images/I/71AwDEjnzZL._AC_UF1000,1000_QL80_.jpg"
 ---
 
 ### Short Summary
