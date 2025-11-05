@@ -16,16 +16,16 @@ html[data-mode="dark"] {
   /* Global colors */
   --heading-color: #ae81ff;
   --bs-heading-color: #ae81ff;
-  --text-color: #62ea00;
-  --bs-body-color: #62ea00;
+  --text-color: #2ec4b6;
+  --bs-body-color: #2ec4b6;
 
   /* Optional: tweak other UI elements */
-  --sidebar-active-color: #62ea00;
+  --sidebar-active-color: #2ec4b6;
   --sidebar-btn-color: #ae81ff;
   --avatar-border-color: rgba(206, 206, 206, 0.9);
   --search-border-color: #ae81ff;
   --sidebar-muted-color: #ae81ff;
-  --search-icon-color: #62ea00;
+  --search-icon-color: #2ec4b6;
   --input-focus-border-color: #62ea00;
   --toc-highlight: #62ea00;
 
@@ -50,13 +50,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* All paragraph/body text */
 body, .content {
-  color: #62ea00 !important;
+  color: #2ec4b6 !important;
 }
 
 /* Tags */
 .post-tag {
   border: 1px solid #ae81ff;
-  color: #62ea00;
+  color: #2ec4b6;
 }
 
 /* Tag hover color on side panel */
