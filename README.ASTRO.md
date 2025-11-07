@@ -2,19 +2,19 @@
 
 A minimal, responsive, and feature-rich Astro theme for technical writing, migrated from the popular [Jekyll Chirpy theme](https://github.com/cotes2020/jekyll-theme-chirpy).
 
-## 🚀 Features
+## Features
 
-- ⚡ **Lightning Fast** - Built with Astro for optimal performance
-- 🎨 **Clean Design** - Minimal and elegant interface
-- 🌓 **Dark Mode** - Automatic theme switching with manual toggle
-- 📱 **Fully Responsive** - Works perfectly on all devices
-- 🔍 **SEO Optimized** - Built-in SEO best practices
-- 📝 **MDX Support** - Write content in Markdown or MDX
-- 🏷️ **Tags & Categories** - Organize your content effectively
-- 🎯 **TypeScript Ready** - Full TypeScript support
-- ♿ **Accessible** - WCAG compliant
+- **Lightning Fast** - Built with Astro for optimal performance
+- **Clean Design** - Minimal and elegant interface
+- **Dark Mode** - Automatic theme switching with manual toggle
+- **Fully Responsive** - Works perfectly on all devices
+- **SEO Optimized** - Built-in SEO best practices
+- **MDX Support** - Write content in Markdown or MDX
+- **Tags & Categories** - Organize your content effectively
+- **TypeScript Ready** - Full TypeScript support
+- **Accessible** - WCAG compliant
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 astro-chirpy/
@@ -58,7 +58,7 @@ astro-chirpy/
 └── package.json
 ```
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -95,7 +95,7 @@ npm run dev
 
 Visit `http://localhost:4321` to see your site!
 
-## 📝 Creating Content
+## Creating Content
 
 ### Writing Posts
 
@@ -145,7 +145,7 @@ order: 1
 Tab content...
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Styling
 
@@ -179,7 +179,7 @@ export const COMMENTS = { ... };
 export const FEATURES = { ... };
 ```
 
-## 🚢 Deployment
+## Deployment
 
 ### Build for Production
 
@@ -204,7 +204,7 @@ You can deploy to any static hosting service:
 - **GitHub Pages**: Use GitHub Actions
 - **Cloudflare Pages**: Connect your repo
 
-## 📚 Commands
+## Commands
 
 | Command | Action |
 |---------|--------|
@@ -215,7 +215,7 @@ You can deploy to any static hosting service:
 | `npm run lint:js` | Lint JavaScript/TypeScript |
 | `npm run lint:scss` | Lint SCSS files |
 
-## 🔄 Migration from Jekyll Chirpy
+## Migration from Jekyll Chirpy
 
 ### Key Differences
 
@@ -255,22 +255,22 @@ If you're migrating from Jekyll Chirpy:
 4. Update `src/config.ts` with your `_config.yml` settings
 5. Copy any custom assets to `public/`
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the original [Jekyll Chirpy theme](https://github.com/cotes2020/jekyll-theme-chirpy) for details.
 
-## 🙏 Credits
+## Credits
 
 - Original theme: [Jekyll Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) by [Cotes Chung](https://github.com/cotes2020)
 - Built with [Astro](https://astro.build)
 - Icons by [Font Awesome](https://fontawesome.com)
 - Styling with [Bootstrap](https://getbootstrap.com) and custom SCSS
 
-## 📞 Support
+## Support
 
 - [Documentation](https://astro.build)
 - [Astro Discord](https://astro.build/chat)
@@ -278,4 +278,4 @@ This project is licensed under the MIT License - see the original [Jekyll Chirpy
 
 ---
 
-Made with ❤️ using [Astro](https://astro.build)
+Made using [Astro](https://astro.build)
