@@ -1,0 +1,91 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: منشور
+  category: فئة
+  tag: وسم
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: الرئيسية
+  categories: الفئات
+  tags: الوسوم
+  archives: الأرشيف
+  about: حول
+
+# the text displayed in the search bar & search results
+search:
+  hint: بحث
+  cancel: إلغاء
+  no_results: نأسف! لا يوجد نتائج.
+
+panel:
+  lastmod: المحدثة مؤخرا
+  trending_tags: الوسوم الشائعة
+  toc: محتويات
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: هذا المنشور تحت ترخيص :LICENSE_NAME بواسطة المؤلف.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: بعض الحقوق محفوظة.
+  verbose: >-
+    ما لم يذكر خلاف ذلك ، يتم ترخيص منشورات المدونة على هذا الموقع
+    بموجب ترخيص Creative Commons Attribution 4.0 International (CC BY 4.0) من قبل المؤلف.
+
+meta: باستخدام :PLATFORM السمة :THEME
+
+not_found:
+  statement: عذرا, الرابط التالي غير صالح أو انه يشير إلى صفحة غير موجودة.
+
+notification:
+  update_found: يتوفر اصدار جديد للمحتوى.
+  update: تحديث
+
+# ----- Posts related labels -----
+
+post:
+  written_by: بواسطة
+  posted: نشّر
+  updated: حدّث
+  words: كلمات
+  pageview_measure: مشاهدات
+  read_time:
+    unit: دقيقة
+    prompt: قراءة
+  relate_posts: إقرأ المزيد
+  share: شارك
+  button:
+    next: الأجدد
+    previous: الأقدم
+    copy_code:
+      succeed: تم النسخ!
+    share_link:
+      title: أنسخ الرابط
+      succeed: تم نسخ الرابط بنجاح!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# categories page
+categories:
+  category_measure:
+    singular: فئة
+    plural: فئات
+  post_measure:
+    singular: منشور
+    plural: منشورات

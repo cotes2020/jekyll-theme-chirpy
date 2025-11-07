@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const tabs = await getCollection('tabs');
+  return tabs.map((tab) => ({
+    params: { slug: tab.slug },
+    props: { tab },
+  }));
+}
+
+const { tab } = Astro.props;
+const { Content } = await tab.render();
+---
+
+<BaseLayout title={tab.data.title}>
+  <div class="page-content">
+    <h1>{tab.data.title}</h1>
+    <Content />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding: 2rem 0;
+  }
+
+  .page-content h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+</style>

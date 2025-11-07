@@ -1,0 +1,90 @@
+# The layout text of site in Dhivehi (Maldives)
+
+# ----- Commons label -----
+
+layout:
+  post: ޕޯސްޓް
+  category: ނަތީޖާ
+  tag: ޓެގް
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: ހުންނަ
+  categories: ނަތީޖާތައް
+  tags: ޓެގްތައް
+  archives: އާރޗިވްސް
+  about: އިންސާން
+
+# the text displayed in the search bar & search results
+search:
+  hint: ސާރޗް
+  cancel: ކެންސަލް
+  no_results: އޮޕްސް! އެއްވެސް ނުފެނުނީ.
+
+panel:
+  lastmod: އާދަމާ އޮޕްޑޭޓްކުރި
+  trending_tags: މަރާހު ޓެގްތައް
+  toc: ކޮންޓެންސް
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: މި ޕޯސްޓް :LICENSE_NAME އިން ލައިސަންސްކުރާ ނުވަތަ މުޤައްރާއަށް.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: އެކީ ބާރަށް ހުށަހަޅާ.
+  verbose: >-
+    އަދި އެ ރަނގަޅުގައި ނުލާހެވެސް، މި ސައިޓުގެ ޕޯސްޓްތައް
+    މުޤައްރާއަށް Creative Commons Attribution 4.0 International (CC BY 4.0) ލައިސަންސްކުރަނީ.
+
+meta: :PLATFORM އަށް :THEME ތީމް ބަލާލާށެވެ.
+
+not_found:
+  statement: ސޯރީ، މި ޔޫ.އާރއެލް މަށެވެއްނެ ނުވަތަ އެކަމެއް ނުވެއެވެ.
+
+notification:
+  update_found: ޔޫ ވާރޝަން ހުރިހާ.
+  update: އޮޕްޑޭޓް
+
+# ----- Posts related labels -----
+
+post:
+  written_by: ލެކްއޯލް
+  posted: ޕޯސްޓްކުރެވި
+  updated: އޮޕްޑޭޓްކުރެވި
+  words: ބަސް
+  pageview_measure: ބަނޑުކުރާ
+  read_time:
+    unit: މިނެޓް
+    prompt: އިސްކާރު
+  relate_posts: އެއްޗެހި ފަހުރަށްދަން
+  share: ސެއާރް
+  button:
+    next: އަދާވަނަ
+    previous: ކޮނޯނި
+    copy_code:
+      succeed: ކޮޕީ ކުރެވި!
+    share_link:
+      title: ލިންކް ކޮޕީ ކުރު
+      succeed: ލިންކް ހަދަންކުރެވި!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+categories:
+  category_measure:
+    singular: ނަތީޖާ
+    plural: ނަތީޖާތައް
+  post_measure:
+    singular: ޕޯސްޓް
+    plural: ޕޯސްޓްތައް

@@ -1,0 +1,142 @@
+---
+import { SITE, FEATURES } from '@/config';
+import { CONTACT_LINKS } from '@/config-contact';
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = SITE.lang } = Astro.props;
+
+// Get tabs from content collection
+const tabs = await getCollection('tabs');
+const sortedTabs = tabs.sort((a, b) => a.data.order - b.data.order);
+
+// Get avatar URL
+const getAvatarUrl = (src: string) => {
+  if (!src) return '';
+  if (src.startsWith('http://') || src.startsWith('https://')) return src;
+  if (src.startsWith('/') && SITE.cdn) return `${SITE.cdn}${src}`;
+  return src;
+};
+
+const avatarUrl = getAvatarUrl(SITE.avatar);
+
+// Simple locale strings
+const locales: Record<string, any> = {
+  en: {
+    tabs: {
+      home: 'HOME'
+    }
+  }
+};
+
+const locale = locales[lang] || locales.en;
+
+// Process contact links
+const contactLinks = CONTACT_LINKS.filter((entry: any) => {
+  if (entry.type === 'github') {
+    return SITE.github?.username;
+  }
+  if (entry.type === 'twitter') {
+    return SITE.twitter?.username;
+  }
+  if (entry.type === 'email') {
+    return SITE.social?.email;
+  }
+  return true;
+}).map((entry: any) => {
+  let url = '';
+
+  if (entry.type === 'github') {
+    url = `https://github.com/${SITE.github?.username || ''}`;
+  } else if (entry.type === 'twitter') {
+    url = `https://twitter.com/${SITE.twitter?.username || ''}`;
+  } else if (entry.type === 'rss') {
+    url = '/rss.xml';
+  } else {
+    url = entry.url || '';
+  }
+
+  return { ...entry, url };
+});
+---
+
+<!-- The Side Bar -->
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
+    <a href="/" id="avatar" class="rounded-circle">
+      {avatarUrl && (
+        <img
+          src={avatarUrl}
+          width="112"
+          height="112"
+          alt="avatar"
+          onerror="this.style.display='none'"
+        />
+      )}
+    </a>
+
+    <a class="site-title d-block" href="/">{SITE.title}</a>
+    <p class="site-subtitle fst-italic mb-0">{SITE.tagline}</p>
+  </header>
+  <!-- .profile-wrapper -->
+
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>{locale?.tabs?.home?.toUpperCase() || 'HOME'}</span>
+        </a>
+      </li>
+      <!-- the real tabs -->
+      {sortedTabs.map((tab) => (
+        <li class="nav-item">
+          <a href={`/${tab.slug}/`} class="nav-link">
+            <i class={`fa-fw ${tab.data.icon}`}></i>
+            <span>{tab.data.title.toUpperCase()}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
+    {!FEATURES.theme_mode && (
+      <>
+        <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+          <i class="fas fa-adjust"></i>
+        </button>
+        {contactLinks.length > 0 && <span class="icon-border"></span>}
+      </>
+    )}
+
+    {contactLinks.map((entry: any) => (
+      <a
+        href={entry.url}
+        aria-label={entry.type}
+        class={entry.type === 'mastodon' ? 'me' : undefined}
+        target={entry.type !== 'rss' && entry.type !== 'email' ? '_blank' : undefined}
+        rel={entry.type !== 'rss' && entry.type !== 'email' ? 'noopener' : undefined}
+      >
+        <i class={entry.icon}></i>
+      </a>
+    ))}
+  </div>
+</aside>
+
+<script>
+  // Make nav items active based on current page
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('#sidebar .nav-item');
+
+  navItems.forEach((item) => {
+    const link = item.querySelector('a');
+    if (link && link.getAttribute('href') === currentPath) {
+      item.classList.add('active');
+    }
+  });
+</script>

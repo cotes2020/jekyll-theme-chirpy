@@ -1,7 +1,7 @@
 {
-  "name": "jekyll-theme-chirpy",
-  "version": "7.4.1",
-  "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
+  "name": "astro-chirpy",
+  "version": "1.0.0",
+  "description": "A minimal, responsive, and feature-rich Astro theme for technical writing, migrated from Jekyll Chirpy.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
@@ -15,21 +15,25 @@
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "type": "module",
   "scripts": {
-    "build": "concurrently npm:build:*",
-    "build:css": "node purgecss.js",
-    "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
-    "watch:js": "rollup -c --bundleConfigAsCjs -w",
-    "lint:js": "eslint",
-    "lint:scss": "stylelint _sass/**/*.scss",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint:js": "eslint src/**/*.{js,ts,astro}",
+    "lint:scss": "stylelint src/styles/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
-    "test": "npm run lint:js && npm run lint:scss",
-    "prepare": "husky"
+    "test": "npm run lint:js && npm run lint:scss"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.8"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@astrojs/mdx": "^4.3.10",
+    "@astrojs/rss": "^4.0.13",
+    "@astrojs/sitemap": "^3.6.0",
     "@babel/core": "^7.28.4",
     "@babel/plugin-transform-class-properties": "^7.27.1",
     "@babel/plugin-transform-private-methods": "^7.27.1",
@@ -42,6 +46,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
+    "astro": "^5.15.4",
     "concurrently": "^9.2.1",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.38.0",
@@ -49,9 +54,11 @@
     "husky": "^9.1.7",
     "purgecss": "^7.0.2",
     "rollup": "^4.52.5",
+    "sass": "^1.93.3",
     "semantic-release": "^25.0.1",
     "stylelint": "^16.25.0",
-    "stylelint-config-standard-scss": "^16.0.0"
+    "stylelint-config-standard-scss": "^16.0.0",
+    "typescript": "^5.9.3"
   },
   "prettier": {
     "trailingComma": "none"

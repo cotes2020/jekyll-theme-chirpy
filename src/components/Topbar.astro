@@ -1,0 +1,111 @@
+---
+export interface Props {
+  lang?: string;
+}
+
+const { lang } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<div id="topbar-wrapper" class="row justify-content-center topbar-down">
+  <div id="topbar" class="col-11 col-xl-9 d-flex align-items-center justify-content-between">
+    <button type="button" id="sidebar-trigger" class="btn btn-link">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+
+    <div id="breadcrumb">
+      <!-- Breadcrumb will be populated by JavaScript -->
+    </div>
+
+    <button type="button" class="btn btn-link" id="search-trigger">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Generate breadcrumbs
+  const generateBreadcrumb = () => {
+    const path = window.location.pathname;
+    const breadcrumb = document.getElementById('breadcrumb');
+
+    if (!breadcrumb) return;
+
+    // Clear existing breadcrumb
+    breadcrumb.innerHTML = '';
+
+    // Skip for home page
+    if (path === '/' || path === '') {
+      return;
+    }
+
+    // Split path and create breadcrumb
+    const parts = path.split('/').filter(Boolean);
+
+    // Create home link
+    const homeSpan = document.createElement('span');
+    homeSpan.innerHTML = '<a href="/">Home</a>';
+    breadcrumb.appendChild(homeSpan);
+
+    // Create other parts
+    parts.forEach((part, index) => {
+      const separator = document.createElement('span');
+      separator.className = 'mx-2';
+      separator.textContent = '›';
+      breadcrumb.appendChild(separator);
+
+      const span = document.createElement('span');
+      const formattedPart = part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+      if (index === parts.length - 1) {
+        // Last part - not a link
+        span.textContent = formattedPart;
+      } else {
+        // Create link for intermediate parts
+        const link = document.createElement('a');
+        link.href = '/' + parts.slice(0, index + 1).join('/');
+        link.textContent = formattedPart;
+        span.appendChild(link);
+      }
+
+      breadcrumb.appendChild(span);
+    });
+  };
+
+  // Generate breadcrumb on load
+  document.addEventListener('DOMContentLoaded', generateBreadcrumb);
+
+  // Also update on navigation (for SPAs)
+  document.addEventListener('astro:after-swap', generateBreadcrumb);
+
+  // Sidebar toggle
+  const sidebarTrigger = document.getElementById('sidebar-trigger');
+  const sidebar = document.getElementById('sidebar');
+  const mask = document.getElementById('mask');
+
+  if (sidebarTrigger && sidebar && mask) {
+    sidebarTrigger.addEventListener('click', () => {
+      sidebar.classList.toggle('shown');
+      mask.classList.toggle('d-none');
+    });
+
+    mask.addEventListener('click', () => {
+      sidebar.classList.remove('shown');
+      mask.classList.add('d-none');
+    });
+  }
+
+  // Search trigger
+  const searchTrigger = document.getElementById('search-trigger');
+  const searchResults = document.getElementById('search-results');
+
+  if (searchTrigger && searchResults) {
+    searchTrigger.addEventListener('click', () => {
+      searchResults.classList.toggle('d-none');
+      const searchInput = searchResults.querySelector('input');
+      if (searchInput) {
+        searchInput.focus();
+      }
+    });
+  }
+</script>

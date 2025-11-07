@@ -1,0 +1,252 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/placeholders';
+
+.highlighter-rouge {
+  color: var(--highlighter-rouge-color);
+  margin-top: 0.5rem;
+  margin-bottom: 1.2em; /* Override BS Inline-code style */
+}
+
+.highlight {
+  @extend %rounded;
+  @extend %code-snippet-bg;
+
+  overflow: auto;
+  padding-bottom: 0.75rem;
+
+  @at-root figure#{&} {
+    @extend %code-snippet-bg;
+  }
+
+  pre {
+    margin-bottom: 0;
+    font-size: v.$code-font-size;
+    line-height: 1.4rem;
+  }
+
+  table {
+    td {
+      &:first-child {
+        display: inline-block;
+        margin-left: 1rem;
+        margin-right: 0.75rem;
+      }
+
+      &:last-child {
+        padding-right: 2rem !important;
+      }
+
+      pre {
+        overflow: visible; /* Fixed iOS safari overflow-x */
+        word-break: normal; /* Fixed iOS safari linenos code break */
+      }
+    }
+  }
+
+  .lineno {
+    text-align: right;
+    color: var(--highlight-lineno-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+} /* .highlight */
+
+code {
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  color: var(--code-color);
+
+  &.highlighter-rouge {
+    font-size: v.$code-font-size;
+    padding: 3px 5px;
+    overflow-wrap: break-word;
+    border-radius: v.$radius-sm;
+    background-color: var(--inline-code-bg);
+  }
+
+  &.filepath {
+    background-color: inherit;
+    color: var(--filepath-text-color);
+    font-weight: 600;
+    padding: 0;
+  }
+
+  a > &.highlighter-rouge {
+    padding-bottom: 0; /* show link's underlinke */
+    color: inherit;
+  }
+
+  a:hover > &.highlighter-rouge {
+    border-bottom: none;
+  }
+
+  blockquote & {
+    color: inherit;
+  }
+}
+
+td.rouge-code {
+  @extend %code-snippet-padding;
+
+  /*
+    Prevent some browser extends from
+    changing the URL string of code block.
+  */
+  a {
+    color: inherit !important;
+    border-bottom: none !important;
+    pointer-events: none;
+  }
+}
+
+div[class^='language-'] {
+  @extend %rounded;
+  @extend %code-snippet-bg;
+
+  box-shadow: var(--language-border-color) 0 0 0 1px;
+
+  .content > & {
+    @include mx.ml-mr(-1rem);
+
+    border-radius: 0;
+
+    @include bp.sm {
+      @include mx.ml-mr(0);
+
+      border-radius: v.$radius-lg;
+    }
+  }
+
+  .code-header {
+    @include bp.sm {
+      @include mx.ml-mr(0);
+
+      $dot-margin: 1rem;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        margin-left: $dot-margin;
+        width: v.$code-dot-size;
+        height: v.$code-dot-size;
+        border-radius: 50%;
+        background-color: var(--code-header-muted-color);
+        box-shadow: (v.$code-dot-size + v.$code-dot-gap) 0 0
+            var(--code-header-muted-color),
+          (v.$code-dot-size + v.$code-dot-gap) * 2 0 0
+            var(--code-header-muted-color);
+      }
+
+      span {
+        // center the text of label
+        margin-left: calc(($dot-margin + v.$code-dot-size) / 2 * -1);
+      }
+    }
+  }
+
+  .highlight {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+/* Hide line numbers for default, console, and terminal code snippets */
+div {
+  &.nolineno,
+  &.language-plaintext,
+  &.language-console,
+  &.language-terminal {
+    td:first-child {
+      padding: 0 !important;
+      margin-right: 0;
+
+      .lineno {
+        display: none;
+      }
+    }
+  }
+}
+
+.code-header {
+  @extend %no-cursor;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: v.$code-header-height;
+  margin-left: 0.75rem;
+  margin-right: 0.25rem;
+
+  /* the label block */
+  span {
+    line-height: v.$code-header-height;
+
+    /* label icon */
+    i {
+      font-size: 1rem;
+      width: v.$code-icon-width;
+      color: var(--code-header-icon-color);
+
+      &.small {
+        font-size: 70%;
+      }
+    }
+
+    @at-root [file] #{&} > i {
+      position: relative;
+      top: 1px; /* center the file icon */
+    }
+
+    /* label text */
+    &::after {
+      content: attr(data-label-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--code-header-text-color);
+    }
+  }
+
+  /* clipboard */
+  button {
+    @extend %cursor-pointer;
+    @extend %rounded;
+
+    border: 1px solid transparent;
+    height: v.$code-header-height;
+    width: v.$code-header-height;
+    padding: 0;
+    background-color: inherit;
+
+    i {
+      color: var(--code-header-icon-color);
+    }
+
+    &[timeout] {
+      &:hover {
+        border-color: var(--clipboard-checked-color);
+      }
+
+      i {
+        color: var(--clipboard-checked-color);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:not([timeout]):hover {
+      background-color: rgb(128 128 128 / 37%);
+
+      i {
+        color: white;
+      }
+    }
+  }
+}

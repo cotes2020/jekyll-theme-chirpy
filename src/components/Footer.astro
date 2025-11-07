@@ -1,0 +1,27 @@
+---
+import { SITE, SOCIAL } from '@/config';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer aria-label="Site Info" class="d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3">
+  <p>
+    © <time>{currentYear}</time>
+    <a href={SOCIAL.links[0] || '/'}>{SOCIAL.name}</a>.
+    {SITE.description && (
+      <span>
+        <br />
+        <span>{SITE.description}</span>
+      </span>
+    )}
+  </p>
+
+  <p>
+    Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
+  </p>
+</footer>

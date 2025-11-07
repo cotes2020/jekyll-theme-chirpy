@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang } = Astro.props;
+
+// Get all posts and count tags
+const posts = await getCollection('posts');
+const tagCounts = new Map<string, number>();
+
+posts
+  .filter(post => !post.data.hidden)
+  .forEach(post => {
+    if (post.data.tags) {
+      post.data.tags.forEach(tag => {
+        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+      });
+    }
+  });
+
+// Sort by count and get top 10
+const trendingTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10);
+---
+
+{trendingTags.length > 0 && (
+  <div id="access-tags" class="post">
+    <h3 class="panel-heading">Trending Tags</h3>
+    <div class="post-content tag-cloud">
+      {trendingTags.map(([tag, count]) => (
+        <a href={`/tags/${tag}/`} class="post-tag" data-count={count}>
+          {tag}
+        </a>
+      ))}
+    </div>
+  </div>
+)}

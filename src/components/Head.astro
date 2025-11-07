@@ -1,0 +1,107 @@
+---
+import { SITE, SOCIAL, ANALYTICS, FEATURES, WEBMASTER_VERIFICATIONS } from '@/config';
+import { ViewTransitions } from 'astro:transitions';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+
+const pageTitle = title ? `${title} | ${SITE.title}` : SITE.title;
+const pageDescription = description || SITE.description;
+const pageImage = image || SITE.social_preview_image;
+const canonicalURL = new URL(Astro.url.pathname, SITE.url).href;
+
+// Handle image URL (add CDN if needed)
+const getImageUrl = (src: string) => {
+  if (!src) return '';
+  if (src.startsWith('http://') || src.startsWith('https://')) return src;
+  if (src.startsWith('/') && SITE.cdn) return `${SITE.cdn}${src}`;
+  return src;
+};
+
+const socialImage = getImageUrl(pageImage);
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- SEO -->
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  {socialImage && <meta property="og:image" content={socialImage} />}
+  <meta property="og:site_name" content={SITE.title} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={pageTitle} />
+  <meta property="twitter:description" content={pageDescription} />
+  {socialImage && <meta property="twitter:image" content={socialImage} />}
+
+  <!-- Webmaster Verifications -->
+  {WEBMASTER_VERIFICATIONS.google && <meta name="google-site-verification" content={WEBMASTER_VERIFICATIONS.google} />}
+  {WEBMASTER_VERIFICATIONS.bing && <meta name="msvalidate.01" content={WEBMASTER_VERIFICATIONS.bing} />}
+  {WEBMASTER_VERIFICATIONS.yandex && <meta name="yandex-verification" content={WEBMASTER_VERIFICATIONS.yandex} />}
+  {WEBMASTER_VERIFICATIONS.baidu && <meta name="baidu-site-verification" content={WEBMASTER_VERIFICATIONS.baidu} />}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- View Transitions -->
+  <ViewTransitions />
+
+  <!-- Theme Script (must run before page renders) -->
+  <script is:inline>
+    const getThemePreference = () => {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    const theme = getThemePreference();
+    document.documentElement.setAttribute('data-mode', theme);
+  </script>
+
+  <!-- Analytics -->
+  {import.meta.env.PROD && ANALYTICS.google.id && (
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.google.id}`}></script>
+    <script is:inline define:vars={{ gaId: ANALYTICS.google.id }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  )}
+
+  <!-- Main scripts -->
+  <script>
+    import '@scripts/main.ts';
+  </script>
+</head>

@@ -1,0 +1,160 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { PAGINATION, SITE } from '@/config';
+
+// Get all posts
+const allPosts = await getCollection('posts');
+
+// Separate pinned and normal posts
+const pinnedPosts = allPosts.filter(post => post.data.pin && !post.data.hidden);
+const normalPosts = allPosts.filter(post => !post.data.pin && !post.data.hidden);
+
+// Sort by date (newest first)
+const sortByDate = (a: any, b: any) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+};
+
+pinnedPosts.sort(sortByDate);
+normalPosts.sort(sortByDate);
+
+// Combine for first page (pinned first, then normal)
+const postsPerPage = PAGINATION.postsPerPage;
+const displayPosts = [...pinnedPosts, ...normalPosts].slice(0, postsPerPage);
+
+// Helper to get image URL
+const getImageUrl = (post: any) => {
+  const image = post.data.image;
+  if (!image) return null;
+
+  const src = image.path || image;
+  if (src.startsWith('http://') || src.startsWith('https://')) return src;
+  if (src.startsWith('/') && SITE.cdn) return `${SITE.cdn}${src}`;
+  return src;
+};
+
+// Format date
+const formatDate = (date: Date) => {
+  return new Date(date).toLocaleDateString(SITE.lang, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+};
+---
+
+<BaseLayout>
+  <div id="post-list" class="flex-grow-1 px-xl-1">
+    {displayPosts.map((post) => {
+      const imageUrl = getImageUrl(post);
+
+      return (
+        <article class="card-wrapper card">
+          <a href={`/posts/${post.slug}/`} class="post-preview row g-0 flex-md-row-reverse">
+            {imageUrl && (
+              <div class="col-md-5">
+                <img src={imageUrl} alt={post.data.image?.alt || 'Preview Image'} loading="lazy" />
+              </div>
+            )}
+
+            <div class={imageUrl ? 'col-md-7' : 'col-md-12'}>
+              <div class="card-body d-flex flex-column">
+                <h1 class="card-title my-2 mt-md-0">{post.data.title}</h1>
+
+                <div class="card-text content mt-0 mb-3">
+                  <p>{post.data.description || post.body.substring(0, 150) + '...'}</p>
+                </div>
+
+                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                  <div class="me-auto">
+                    <!-- posted date -->
+                    <i class="far fa-calendar fa-fw me-1"></i>
+                    <time datetime={post.data.date.toISOString()}>
+                      {formatDate(post.data.date)}
+                    </time>
+
+                    <!-- categories -->
+                    {post.data.categories && post.data.categories.length > 0 && (
+                      <>
+                        <i class="far fa-folder-open fa-fw me-1 ms-3"></i>
+                        <span class="categories">
+                          {post.data.categories.map((category: string, i: number) => (
+                            <>
+                              {category}
+                              {i < (post.data.categories?.length || 0) - 1 && ', '}
+                            </>
+                          ))}
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  {post.data.pin && (
+                    <div class="pin ms-1">
+                      <i class="fas fa-thumbtack fa-fw"></i>
+                      <span>Pinned</span>
+                    </div>
+                  )}
+                </div>
+                <!-- .post-meta -->
+              </div>
+              <!-- .card-body -->
+            </div>
+          </a>
+        </article>
+      );
+    })}
+  </div>
+  <!-- #post-list -->
+
+  <!-- TODO: Add pagination component -->
+</BaseLayout>
+
+<style>
+  .card-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    border: 1px solid var(--card-border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-preview {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--heading-color);
+  }
+
+  .card-text {
+    color: var(--text-muted-color);
+  }
+
+  .post-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted-color);
+  }
+
+  .pin {
+    color: var(--pin-color);
+    font-weight: 600;
+  }
+</style>

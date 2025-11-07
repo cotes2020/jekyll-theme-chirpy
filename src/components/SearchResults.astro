@@ -1,0 +1,49 @@
+---
+export interface Props {
+  lang?: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<div id="search-results" class="d-none">
+  <div class="search-wrapper">
+    <div class="search-header">
+      <input
+        type="text"
+        id="search-input"
+        class="form-control"
+        placeholder="Search posts..."
+        aria-label="Search"
+      />
+      <button type="button" class="btn-close" aria-label="Close" id="search-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div id="search-hints" class="mt-3">
+      <h4>Type to search...</h4>
+    </div>
+    <div id="search-results-list" class="mt-3"></div>
+  </div>
+</div>
+
+<script>
+  const searchClose = document.getElementById('search-close');
+  const searchResults = document.getElementById('search-results');
+
+  if (searchClose && searchResults) {
+    searchClose.addEventListener('click', () => {
+      searchResults.classList.add('d-none');
+    });
+  }
+
+  // Search functionality will be implemented later
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value;
+      // TODO: Implement search
+      console.log('Search query:', query);
+    });
+  }
+</script>

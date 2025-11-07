@@ -1,0 +1,112 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { SITE } from '@/config';
+
+export interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { title, description, date, categories, tags, image, author } = post.data;
+
+const formattedDate = new Date(date).toLocaleDateString(SITE.lang, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image?.path}
+  panelIncludes={['toc']}
+  tailIncludes={['related-posts', 'post-nav', 'comments']}
+>
+  <article class="post">
+    <header>
+      <h1 class="post-title">{title}</h1>
+
+      <div class="post-meta text-muted">
+        <span class="me-3">
+          <i class="far fa-calendar fa-fw me-1"></i>
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+        </span>
+
+        {author && (
+          <span class="me-3">
+            <i class="far fa-user fa-fw me-1"></i>
+            {author}
+          </span>
+        )}
+
+        {categories && categories.length > 0 && (
+          <span class="me-3">
+            <i class="far fa-folder-open fa-fw me-1"></i>
+            {categories.map((category, i) => (
+              <>
+                <a href={`/categories/${category}/`}>{category}</a>
+                {i < categories.length - 1 && ', '}
+              </>
+            ))}
+          </span>
+        )}
+      </div>
+    </header>
+
+    {image?.path && (
+      <div class="post-image">
+        <img src={image.path} alt={image.alt || title} loading="lazy" />
+      </div>
+    )}
+
+    <div class="post-content">
+      <slot />
+    </div>
+
+    {tags && tags.length > 0 && (
+      <footer class="post-tags">
+        <div class="mb-3">
+          {tags.map(tag => (
+            <a href={`/tags/${tag}/`} class="post-tag">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </footer>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .post-image {
+    margin: 2rem 0;
+  }
+
+  .post-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  .post-content {
+    margin: 2rem 0;
+  }
+
+  .post-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    background: var(--tag-bg);
+    color: var(--tag-color);
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .post-tag:hover {
+    background: var(--tag-hover-bg);
+    color: var(--tag-hover-color);
+  }
+</style>

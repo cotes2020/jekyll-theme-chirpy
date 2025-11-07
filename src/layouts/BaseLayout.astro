@@ -1,0 +1,99 @@
+---
+import { SITE, FEATURES } from '@/config';
+import Head from '@components/Head.astro';
+import Sidebar from '@components/Sidebar.astro';
+import Topbar from '@components/Topbar.astro';
+import Footer from '@components/Footer.astro';
+import SearchResults from '@components/SearchResults.astro';
+import UpdateList from '@components/UpdateList.astro';
+import TrendingTags from '@components/TrendingTags.astro';
+import '@styles/main.scss';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: string;
+  panelIncludes?: string[];
+  tailIncludes?: string[];
+  refactorContent?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  lang = SITE.lang,
+  panelIncludes = [],
+  tailIncludes = [],
+  refactorContent = false
+} = Astro.props;
+
+---
+
+<!doctype html>
+<html lang={lang} data-mode={FEATURES.theme_mode || undefined}>
+  <Head
+    title={title}
+    description={description}
+    image={image}
+  />
+
+  <body>
+    <Sidebar lang={lang} />
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div class="container d-flex flex-column px-xxl-5">
+        <Topbar lang={lang} />
+
+        <div class="row flex-grow-1">
+          <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            <slot />
+          </main>
+
+          <!-- panel -->
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+            <div class="access">
+              <UpdateList lang={lang} />
+              <TrendingTags lang={lang} />
+            </div>
+
+            {panelIncludes.map((include) => (
+              <!-- Dynamic panel includes would go here -->
+              <div>{include}</div>
+            ))}
+          </aside>
+        </div>
+
+        <div class="row">
+          <!-- tail -->
+          <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            {tailIncludes.map((include) => (
+              <!-- Dynamic tail includes would go here -->
+              <div>{include}</div>
+            ))}
+
+            <Footer lang={lang} />
+          </div>
+        </div>
+
+        <SearchResults lang={lang} />
+      </div>
+
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
+    </div>
+
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+
+    {FEATURES.pwa.enabled && (
+      <!-- PWA notification will be added later -->
+      <div id="notification"></div>
+    )}
+
+    <!-- Scripts will be added in Head component -->
+  </body>
+</html>
