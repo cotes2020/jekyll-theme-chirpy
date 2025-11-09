@@ -36,7 +36,13 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1.180.0 # v1.146.0
         with:
-          ruby-version: '3.1' # Not needed with a .ruby-version file
+          ruby-version: '3.3'
+    sudo apt-get update
+    sudo apt-get install -y dart-sass
+    export SASS_FORCE_BUILD=false
+    sudo apt-get update
+    sudo apt-get install -y dart-sass
+    export SASS_FORCE_BUILD=false
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Setup Pages
