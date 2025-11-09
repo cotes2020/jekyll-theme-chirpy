@@ -17,16 +17,278 @@
 {% endcapture %}
 
 {% capture not_found %}<p class="mt-5">{{ site.data.locales[include.lang].search.no_results }}</p>{% endcapture %}
+{% assign total_posts = site.posts | size %}
+{% assign search_limit = site.search.limit | default: total_posts %}
+{% assign search_per_page = site.search.per_page | default: site.paginate | default: 10 %}
 
 <script>
   {% comment %} Note: dependent library will be loaded in `js-selector.html` {% endcomment %}
   document.addEventListener('DOMContentLoaded', () => {
+    const SEARCH_LIMIT = Number('{{ search_limit }}') || {{ total_posts }};
+    const RESULTS_PER_PAGE = Number('{{ search_per_page }}') || 10;
+    const searchInput = document.getElementById('search-input');
+    const visibleResults = document.getElementById('search-results');
+    const cacheContainer = document.getElementById('search-results-cache');
+    const paginationNav = document.getElementById('search-pagination');
+    const paginationList = paginationNav ? paginationNav.querySelector('.pagination') : null;
+
+    class SearchPaginator {
+      constructor({ cacheContainer, targetContainer, paginationNav, paginationList, perPage }) {
+        this.cacheContainer = cacheContainer;
+        this.targetContainer = targetContainer;
+        this.paginationNav = paginationNav;
+        this.paginationList = paginationList;
+        this.perPage = Math.max(perPage || 10, 1);
+        this.currentPage = 1;
+        this.totalPages = 0;
+        this.items = [];
+
+        if (this.paginationList) {
+          this.paginationList.addEventListener('click', (event) => this.handleClick(event));
+        }
+      }
+
+      observe() {
+        if (!this.cacheContainer) {
+          return;
+        }
+
+        this.observer = new MutationObserver(() => this.refresh());
+        this.observer.observe(this.cacheContainer, { childList: true });
+      }
+
+      refresh() {
+        if (!this.cacheContainer) {
+          return;
+        }
+
+        this.items = Array.from(this.cacheContainer.children);
+
+        if (this.items.length === 0) {
+          this.clear();
+          return;
+        }
+
+        const onlyParagraph = this.items.length === 1 && this.items[0].tagName === 'P';
+
+        if (onlyParagraph) {
+          if (this.targetContainer) {
+            this.targetContainer.innerHTML = '';
+            this.targetContainer.appendChild(this.items[0].cloneNode(true));
+          }
+          this.hidePagination();
+          this.totalPages = 1;
+          this.currentPage = 1;
+          return;
+        }
+
+        this.gotoPage(1);
+      }
+
+      gotoPage(pageNumber) {
+        if (!this.items.length || !this.targetContainer) {
+          this.clear();
+          return;
+        }
+
+        this.totalPages = Math.max(Math.ceil(this.items.length / this.perPage), 1);
+        this.currentPage = Math.min(Math.max(pageNumber, 1), this.totalPages);
+
+        const start = (this.currentPage - 1) * this.perPage;
+        const end = Math.min(start + this.perPage, this.items.length);
+        const fragment = document.createDocumentFragment();
+
+        for (let i = start; i < end; i += 1) {
+          fragment.appendChild(this.items[i].cloneNode(true));
+        }
+
+        this.targetContainer.innerHTML = '';
+        this.targetContainer.appendChild(fragment);
+
+        this.renderControls();
+      }
+
+      buildVisiblePages() {
+        const sequence = [];
+        let leftEllipsisAdded = false;
+        let rightEllipsisAdded = false;
+
+        for (let i = 1; i <= this.totalPages; i += 1) {
+          let show = false;
+
+          if (this.currentPage === 1) {
+            show = i <= 3 || i === this.totalPages;
+          } else if (this.currentPage === this.totalPages) {
+            show = i === 1 || i >= this.totalPages - 2;
+          } else if (
+            i === 1 ||
+            i === this.totalPages ||
+            (i >= this.currentPage - 1 && i <= this.currentPage + 1)
+          ) {
+            show = true;
+          }
+
+          if (show) {
+            sequence.push(i);
+          } else if (i < this.currentPage && !leftEllipsisAdded) {
+            sequence.push('ellipsis');
+            leftEllipsisAdded = true;
+          } else if (i > this.currentPage && !rightEllipsisAdded) {
+            sequence.push('ellipsis');
+            rightEllipsisAdded = true;
+          }
+        }
+
+        return sequence;
+      }
+
+      renderControls() {
+        if (!this.paginationNav || !this.paginationList) {
+          return;
+        }
+
+        if (this.totalPages <= 1) {
+          this.hidePagination();
+          return;
+        }
+
+        this.paginationNav.classList.remove('d-none');
+        this.paginationList.innerHTML = '';
+
+        this.paginationList.appendChild(this.createArrowItem('prev'));
+
+        this.buildVisiblePages().forEach((item) => {
+          if (item === 'ellipsis') {
+            this.paginationList.appendChild(this.createEllipsisItem());
+          } else {
+            this.paginationList.appendChild(this.createPageItem(item));
+          }
+        });
+
+        this.paginationList.appendChild(this.createMobileIndex());
+        this.paginationList.appendChild(this.createArrowItem('next'));
+      }
+
+      createArrowItem(direction) {
+        const isPrev = direction === 'prev';
+        const isDisabled = isPrev ? this.currentPage === 1 : this.currentPage === this.totalPages;
+        const targetPage = isPrev ? this.currentPage - 1 : this.currentPage + 1;
+
+        const li = document.createElement('li');
+        li.className = `page-item${isDisabled ? ' disabled' : ''}`;
+
+        const anchor = document.createElement('a');
+        anchor.className = 'page-link';
+        anchor.href = '#';
+        anchor.setAttribute('aria-label', isPrev ? 'previous-page' : 'next-page');
+
+        const icon = document.createElement('i');
+        icon.className = `fas ${isPrev ? 'fa-angle-left' : 'fa-angle-right'}`;
+        anchor.appendChild(icon);
+
+        if (!isDisabled) {
+          anchor.dataset.page = targetPage;
+        }
+
+        li.appendChild(anchor);
+        return li;
+      }
+
+      createPageItem(pageNumber) {
+        const li = document.createElement('li');
+        li.className = `page-item${pageNumber === this.currentPage ? ' active' : ''}`;
+
+        const anchor = document.createElement('a');
+        anchor.className = 'page-link';
+        anchor.href = '#';
+        anchor.dataset.page = pageNumber;
+        anchor.textContent = pageNumber;
+
+        li.appendChild(anchor);
+        return li;
+      }
+
+      createEllipsisItem() {
+        const li = document.createElement('li');
+        li.className = 'page-item disabled';
+
+        const span = document.createElement('span');
+        span.className = 'page-link';
+        span.textContent = '...';
+
+        li.appendChild(span);
+        return li;
+      }
+
+      createMobileIndex() {
+        const li = document.createElement('li');
+        li.className = 'page-index align-middle';
+        li.innerHTML = `<span>${this.currentPage}</span><span class="text-muted">/ ${this.totalPages}</span>`;
+        return li;
+      }
+
+      clear() {
+        if (this.targetContainer) {
+          this.targetContainer.innerHTML = '';
+        }
+        this.hidePagination();
+        this.items = [];
+        this.currentPage = 1;
+        this.totalPages = 0;
+      }
+
+      hidePagination() {
+        if (this.paginationNav) {
+          this.paginationNav.classList.add('d-none');
+        }
+
+        if (this.paginationList) {
+          this.paginationList.innerHTML = '';
+        }
+      }
+
+      handleClick(event) {
+        const target = event.target.closest('a[data-page]');
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const page = Number(target.dataset.page);
+
+        if (!Number.isNaN(page)) {
+          this.gotoPage(page);
+        }
+      }
+    }
+
+    const paginator = new SearchPaginator({
+      cacheContainer,
+      targetContainer: visibleResults,
+      paginationNav,
+      paginationList,
+      perPage: RESULTS_PER_PAGE
+    });
+
+    paginator.observe();
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        if (searchInput.value === '') {
+          paginator.clear();
+        }
+      });
+    }
+
     SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('search-results'),
+      searchInput,
+      resultsContainer: cacheContainer || visibleResults,
       json: '{{ '/assets/js/data/search.json' | relative_url }}',
       searchResultTemplate: '{{ result_elem | strip_newlines }}',
       noResultsText: '{{ not_found }}',
+      limit: SEARCH_LIMIT,
       templateMiddleware: function(prop, value, template) {
         if (prop === 'categories') {
           if (value === '') {
