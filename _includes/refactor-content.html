@@ -161,6 +161,9 @@
       {% assign _left = _left | append: ' loading="lazy"' %}
     {% endif %}
 
+    <!-- add referrerpolicy for images -->
+    {% assign _left = _left | append: ' referrerpolicy="no-referrer"' %}
+
     {% if page.layout == 'home' %}
       <!-- create the image wrapper -->
       {% assign _wrapper_start = '<div class="preview-img ' | append: _wrapper_class | append: '">' %}
