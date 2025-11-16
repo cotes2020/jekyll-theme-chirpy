@@ -13,6 +13,11 @@
     {% seo title=false %}
   {%- endcapture -%}
 
+  {%- if site.social.fediverse_handle %}
+    <!-- Fediverse handle/creator -->
+    <meta name="fediverse:creator" content="{{ site.social.fediverse_handle }}" />
+  {% endif %}
+
   <!-- Setup Open Graph image -->
 
   {% if page.image %}
@@ -27,7 +32,7 @@
       {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
       {% assign seo_tags = seo_tags | replace: old_url, new_url %}
-    {% endunless %}
+    {% endunless %} 
 
   {% elsif site.social_preview_image %}
     {%- capture img_url -%}
