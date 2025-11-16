@@ -32,7 +32,7 @@
       {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
       {% assign seo_tags = seo_tags | replace: old_url, new_url %}
-    {% endunless %} 
+    {% endunless %}
 
   {% elsif site.social_preview_image %}
     {%- capture img_url -%}
