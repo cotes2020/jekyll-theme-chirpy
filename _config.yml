@@ -28,8 +28,8 @@ url: "https://coder-cjl.github.io.git"
 github:
   username: coder-cjl # change to your GitHub username
 
-twitter:
-  username: twitter_username # change to your Twitter username
+# twitter:
+#   username: twitter_username # change to your Twitter username
 
 social:
   # Change to your full name.
@@ -101,11 +101,11 @@ cdn: "/"
 
 # the avatar on sidebar, support local or CORS resources
 # avatar: "/commons/avatar.jpg"
-avatar: "/assets/img/logos/avatar.jpeg"
+avatar: "/assets/img/cjl/avatar.jpeg"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+# social_preview_image: "/assets/img/cjl/image.png"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
