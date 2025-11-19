@@ -32,8 +32,6 @@ tags: [TAG]     # TAG names should always be lowercase
 ### Timezone of Date
 
 To accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`. 
-This is a test....
-aadd
 
 ### Categories and Tags
 
