@@ -1,51 +1,27 @@
-# The Site Configuration
-
-# Import the theme
 theme: jekyll-theme-chirpy
-
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
-# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
-# otherwise, the layout language will use the default value of 'en'.
 lang: zh-CN
-
-# Change to your timezone › https://zones.arilyn.cc
 timezone: Asia/Shanghai
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# ↓ --------------------------
+title: 雷子跑不快
+tagline: 世界很大，我们很小。
+description: 世界很大，我们很小。
 
-title: 雷子跑不快 # the main title
-
-tagline: 世界很大，我们很小。 # it will display as the subtitle
-
-description: >- # used by seo meta and the atom feed
-  世界很大，我们很小。
-
-# Fill in the protocol & hostname for your site.
-# E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://coder-cjl.github.io"
 
 github:
-  username: coder-cjl # change to your GitHub username
+  username: coder-cjl
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: twitter_username
 
 social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: 雷子
   email: cjlsire@126.com # change to your email address
   fediverse_handle: "@you@domain.com" # change to your fediverse handle or leave empty
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/coder-cjl # change to your GitHub homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://twitter.com/username
+    - https://github.com/coder-cjl
 
-# Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
   bing: # fill in your Bing verification code
@@ -54,10 +30,6 @@ webmaster_verifications:
   baidu: # fill in your Baidu verification code
   facebook: # fill in your Facebook verification code
 
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
-
-# Web Analytics Settings
 analytics:
   google:
     id: # fill in your Google Analytics ID
@@ -78,18 +50,19 @@ analytics:
 pageviews:
   provider: # now only supports 'goatcounter'
 
-# Prefer color scheme setting.
-#
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
-#
-# Available options:
-#
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
-#
+  # Prefer color scheme setting.
+  #
+  # Note: Keep empty will follow the system prefer color by default,
+  # and there will be a toggle to switch the theme between dark and light
+  # on the bottom left of the sidebar.
+  #
+  # Available options:
+  #
+  #     light — Use the light color scheme
+  #     dark — Use the dark color scheme
+  #
 theme_mode: # [light | dark]
+# enable_theme_switch: true
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -97,7 +70,7 @@ theme_mode: # [light | dark]
 #
 # e.g. 'https://cdn.com'
 # cdn: "https://chirpy-img.netlify.app"
-cdn: "/"
+cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
 # avatar: "/commons/avatar.jpg"
