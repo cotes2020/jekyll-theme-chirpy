@@ -10,7 +10,7 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: 首頁
+  home: 主頁
   categories: 分類
   tags: 標籤
   archives: 封存

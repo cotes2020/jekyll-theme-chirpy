@@ -2,7 +2,7 @@
 title: 我是雷子，这是我的博客
 author: 雷子
 date: 2025-11-19 11:37:00 +0800
-categories: [Blogging, Tutorial]
+categories: [技术, iOS]
 tags: [生活]
 ---
 

@@ -10,7 +10,7 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: 首页
+  home: 主页
   categories: 分类
   tags: 标签
   archives: 归档
