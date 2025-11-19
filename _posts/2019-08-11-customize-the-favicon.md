@@ -12,6 +12,8 @@ The [favicons](https://www.favicon-generator.org/about/) of [**Chirpy**](https:/
 
 Prepare a square image (PNG, JPG, or SVG) with a size of 512x512 or more, and then go to the online tool [**Real Favicon Generator**](https://realfavicongenerator.net/) and click the button <kbd>Pick your favicon image</kbd> to upload your image file.
 
+This is test.
+
 In the next step, the webpage will show all usage scenarios. You can keep the default options, scroll to the bottom of the page, and click the button <kbd>Next →</kbd> to generate the favicon.
 
 ## Download & Replace
