@@ -46,22 +46,226 @@
 {% endif %}
 
 <div id="audio-player" data-turbo-permanent>
-  <h3 style="margin-top: 0;">🎵 The song of the day is:</h3>
-  <p id="song-title">Loading song...</p>
+  <h3 class="player-title">🎵 Song of the Day</h3>
+  <p id="song-title" class="song-name">Loading...</p>
 
   <audio id="audio" preload="metadata"></audio>
 
-  <div>
-    <button id="play-btn">▶️</button>
-    <button id="loop-btn">🔁</button> <!-- loop button -->
-    <input type="range" id="seek" value="0" max="100">
-    <span id="time">0:00 / 0:00</span>
+  <!-- Progress Bar -->
+  <div class="progress-section">
+    <input type="range" id="seek" value="0" max="100" class="seek-bar">
+    <div class="time-info">
+      <span id="time">0:00 / 0:00</span>
+    </div>
   </div>
 
-  <div>
-    <label>Volume</label>
-    <input type="range" id="volume" value="100" max="100">
+  <!-- Controls -->
+  <div class="player-controls">
+    <button id="play-btn" class="ctrl-btn play-pause" aria-label="Play">▶</button>
+    <button id="loop-btn" class="ctrl-btn loop" aria-label="Loop" title="Loop">🔁</button>
+    <div class="volume-section">
+      <span class="volume-icon">🔊</span>
+      <input type="range" id="volume" value="70" max="100" class="volume-slider">
+    </div>
   </div>
 </div>
+
+<style>
+#audio-player {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(98, 234, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.player-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #62ea00;
+  font-weight: 600;
+}
+
+.song-name {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #2ec4b6;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-bottom: 1rem;
+}
+
+.seek-bar {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #62ea00;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(98, 234, 0, 0.4);
+}
+
+.seek-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #62ea00;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(98, 234, 0, 0.4);
+}
+
+.time-info {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.75rem;
+  color: #888;
+  font-family: monospace;
+}
+
+/* Controls */
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ctrl-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(98, 234, 0, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-size: 16px;
+  color: #62ea00;
+}
+
+.ctrl-btn:hover {
+  background: rgba(98, 234, 0, 0.1);
+  border-color: #62ea00;
+  transform: scale(1.05);
+}
+
+.ctrl-btn:active {
+  transform: scale(0.95);
+}
+
+.play-pause {
+  background: #62ea00;
+  color: #0c0c0c;
+  border-color: #62ea00;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.play-pause:hover {
+  background: #52da00;
+  box-shadow: 0 0 15px rgba(98, 234, 0, 0.3);
+}
+
+/* Volume */
+.volume-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  flex: 1;
+}
+
+.volume-icon {
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.volume-slider {
+  flex: 1;
+  height: 3px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #2ec4b6;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #2ec4b6;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  #audio-player {
+    padding: 1rem;
+  }
+
+  .player-controls {
+    gap: 0.5rem;
+  }
+
+  .ctrl-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .play-pause {
+    width: 40px;
+    height: 40px;
+  }
+
+  .volume-section {
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 0;
+    margin-top: 0.75rem;
+    width: 100%;
+  }
+
+  .volume-icon {
+    display: none;
+  }
+}
+</style>
 
 <script src="/assets/js/simple-player.js"></script>
