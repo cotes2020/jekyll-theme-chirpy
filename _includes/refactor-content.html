@@ -171,7 +171,6 @@
     {% else %}
       <!-- make sure the `<img>` is wrapped by `<a>` -->
       {% assign _parent = _right | remove_first: ">" | strip | slice: 0, 4 %}
-      <!-- logging: [{{ _parent }}] -->
 
       {% if _parent == '</a>' %}
         <!-- add class to existing <a> tag -->
