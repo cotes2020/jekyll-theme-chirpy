@@ -61,10 +61,20 @@
 
   <!-- Controls -->
   <div class="player-controls">
-    <button id="play-btn" class="ctrl-btn play-pause" aria-label="Play">▶</button>
-    <button id="loop-btn" class="ctrl-btn loop" aria-label="Loop" title="Loop">🔁</button>
+    <button id="play-btn" class="ctrl-btn play-pause" aria-label="Play">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+    <button id="loop-btn" class="ctrl-btn loop" aria-label="Loop" title="Loop">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+      </svg>
+    </button>
     <div class="volume-section">
-      <span class="volume-icon">🔊</span>
+      <svg class="volume-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>
       <input type="range" id="volume" value="70" max="100" class="volume-slider">
     </div>
   </div>
