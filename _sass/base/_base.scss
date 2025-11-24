@@ -397,8 +397,7 @@ mjx-container {
 
 /* KaTeX */
 .katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto hidden;
 }
 
 @media (hover: hover) {
