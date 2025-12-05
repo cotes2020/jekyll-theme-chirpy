@@ -18,5 +18,5 @@
 
 ## License
 
-This project is published under [MIT License][license].
+This project is published under [MIT License](license).
 
