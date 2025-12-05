@@ -6,15 +6,15 @@
 
   With Chirby Jekyll Theme.
 
-  [![CI](https://img.shields.io/github/actions/workflow/status/prothesmos/page/ci.yml?logo=github)][ci]&nbsp;
+  [![CI](https://img.shields.io/github/actions/workflow/status/prothesmos/page/ci.yml?logo=github)]&nbsp;
 
-  [![GitHub license](https://img.shields.io/github/license/prothesmos/page?color=goldenrod)][license]&nbsp;
+  [![GitHub license](https://img.shields.io/github/license/prothesmos/page?color=goldenrod)]&nbsp;
 
 </div>
 
 ## Documentation
 
-[Wiki][wiki].
+[Wiki](https://github.com/prothesmos/page.wiki)
 
 ## License
 
