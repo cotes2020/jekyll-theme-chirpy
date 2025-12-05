@@ -1,9 +1,8 @@
 ---
 title: "NestJS源码: DTO实现("
-url: "2021-07-02-nestjs-dto"
 date: 2021-07-02
+permalink: /2021-07-02-nestjs-dto/
 ---
-
 ## 概述
 
 

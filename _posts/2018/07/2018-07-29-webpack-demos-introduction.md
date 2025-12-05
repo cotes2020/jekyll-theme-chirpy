@@ -1,9 +1,8 @@
 ---
 title: "Webpack4系列开源课程"
-url: "2018-07-29-webpack-demos-introduction"
 date: 2018-07-29
+permalink: /2018-07-29-webpack-demos-introduction/
 ---
-
 ## 1. 什么是`webpack`?
 
 

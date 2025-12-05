@@ -1,9 +1,8 @@
 ---
 title: "一句话聊聊「降级」设计"
-url: "2020-10-23-down-grade"
 date: 2020-10-23
+permalink: /2020-10-23-down-grade/
 ---
-
 ## 集中管理降级开关
 
 

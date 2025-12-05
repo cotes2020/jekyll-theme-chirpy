@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-链表专题"
-url: "2019-06-23-list-print"
 date: 2019-06-23
+permalink: /2019-06-23-list-print/
 ---
-
 ## 从尾到头打印链表
 
 

@@ -1,9 +1,8 @@
 ---
 title: "微服务架构下，名字服务的使用体验和功能设计"
-url: "2020-05-04-name-service"
 date: 2020-05-04
+permalink: /2020-05-04-name-service/
 ---
-
 ## 背景
 
 

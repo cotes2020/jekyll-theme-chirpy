@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-字符串专题"
-url: "2019-06-23-str-replace-empty"
 date: 2019-06-23
+permalink: /2019-06-23-str-replace-empty/
 ---
-
 ## 替换空格
 
 

@@ -1,9 +1,8 @@
 ---
 title: "深挖 React.js 合成事件原理"
-url: "2021-01-10-react-event-src"
 date: 2021-01-10
+permalink: /2021-01-10-react-event-src/
 ---
-
 > 阅读 [《React 事件代理与 stopImmediatePropagation》](https://github.com/youngwind/blog)的笔记。
 
 

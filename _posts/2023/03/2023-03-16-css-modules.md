@@ -1,9 +1,8 @@
 ---
 title: "css modules原理学习"
-url: "2023-03-16-css-modules"
 date: 2023-03-16
+permalink: /2023-03-16-css-modules/
 ---
-
 ## 整体思路
 
 1. 识别 `:local` 包裹的类名，将其进行hash化，保证不污染全局

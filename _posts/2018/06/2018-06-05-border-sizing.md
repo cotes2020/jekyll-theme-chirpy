@@ -1,9 +1,8 @@
 ---
 title: "CSS3盒模型：border-box"
-url: "2018-06-05-border-sizing"
 date: 2018-06-05
+permalink: /2018-06-05-border-sizing/
 ---
-
 `box-sizing`可以声明计算元素高宽的 CSS 盒模型。它有`content-box`、`border-box`和`inherit`三种取值。其中`border-box`是 css3 新增，也是主流 UI 框架的全局默认属性。
 
 

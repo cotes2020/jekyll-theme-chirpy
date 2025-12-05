@@ -1,9 +1,8 @@
 ---
 title: "函数式编程递归优化专题-TOC和Trampolines"
-url: "2021-09-10-fp-recursion"
 date: 2021-09-10
+permalink: /2021-09-10-fp-recursion/
 ---
-
 ## 递归
 
 

@@ -1,9 +1,8 @@
 ---
 title: "处理Redux异步状态更新"
-url: "2020-12-25-redux-async"
 date: 2020-12-25
+permalink: /2020-12-25-redux-async/
 ---
-
 ## 纯 redux 如何处理异步状态
 
 

@@ -1,9 +1,8 @@
 ---
 title: "面向资源和服务的「隔离」设计"
-url: "2020-10-22-isolation"
 date: 2020-10-22
+permalink: /2020-10-22-isolation/
 ---
-
 ## 隔离的作用
 
 

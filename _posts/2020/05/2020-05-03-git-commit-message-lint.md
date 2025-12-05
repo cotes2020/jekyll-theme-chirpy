@@ -1,9 +1,8 @@
 ---
 title: "如何规范commit message记录"
-url: "2020-05-03-git-commit-message-lint"
 date: 2020-05-03
+permalink: /2020-05-03-git-commit-message-lint/
 ---
-
 ## 概述
 
 

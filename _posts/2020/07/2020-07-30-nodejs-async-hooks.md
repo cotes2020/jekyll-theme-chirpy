@@ -1,9 +1,8 @@
 ---
 title: "Node.js async_hooks模块：处理异步问题"
-url: "2020-07-30-nodejs-async-hooks"
 date: 2020-07-30
+permalink: /2020-07-30-nodejs-async-hooks/
 ---
-
 ## 为什么需要 async_hooks？
 
 

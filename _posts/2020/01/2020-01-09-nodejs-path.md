@@ -1,9 +1,8 @@
 ---
 title: "Node.js path模块：文件路径"
-url: "2020-01-09-nodejs-path"
 date: 2020-01-09
+permalink: /2020-01-09-nodejs-path/
 ---
-
 ## 概述
 
 

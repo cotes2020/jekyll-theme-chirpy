@@ -1,9 +1,8 @@
 ---
 title: "Next.js 与 SSR / SSG 模式"
-url: "2020-05-19-nextjs-docs"
 date: 2020-05-19
+permalink: /2020-05-19-nextjs-docs/
 ---
-
 ## Next.js 基础用法
 
 

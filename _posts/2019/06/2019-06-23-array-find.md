@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-数组专题"
-url: "2019-06-23-array-find"
 date: 2019-06-23
+permalink: /2019-06-23-array-find/
 ---
-
 ## 二维数组中的查找
 
 

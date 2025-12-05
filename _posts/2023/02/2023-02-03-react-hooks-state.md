@@ -1,7 +1,7 @@
 ---
 title: "React Hooks 实现状态管理"
-url: "2023-02-03-react-hooks-state"
 date: 2023-02-03
+permalink: /2023-02-03-react-hooks-state/
 ---
 - 主要api：useContext和useReducer
 - 用途：都是为了进行状态管理。

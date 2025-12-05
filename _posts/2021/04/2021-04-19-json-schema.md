@@ -1,9 +1,8 @@
 ---
 title: "JSON Schema应用开发"
-url: "2021-04-19-json-schema"
 date: 2021-04-19
+permalink: /2021-04-19-json-schema/
 ---
-
 ## json schema 作用
 
 

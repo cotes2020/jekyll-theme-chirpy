@@ -1,9 +1,8 @@
 ---
 title: "canvas离屏技术与放大镜实现"
-url: "2018-08-30-canvas-off-screen"
 date: 2018-08-30
+permalink: /2018-08-30-canvas-off-screen/
 ---
-
 利用`canvas`除了可以实现滤镜，还可以利用**离屏技术**实现放大镜功能。为了方便讲解，本文分为 2 个应用部分：
 
 1. 实现水印和中心缩放

@@ -1,9 +1,8 @@
 ---
 title: "CSS3动画设计 - 字体特效"
-url: "2019-07-16-font-animation"
 date: 2019-07-16
+permalink: /2019-07-16-font-animation/
 ---
-
 ## 特效一览
 
 

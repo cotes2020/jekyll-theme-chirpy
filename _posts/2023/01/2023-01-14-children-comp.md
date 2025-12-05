@@ -1,9 +1,8 @@
 ---
 title: "React父子组件实现：Form(Item)/Tab(Item)"
-url: "2023-01-14-children-comp"
 date: 2023-01-14
+permalink: /2023-01-14-children-comp/
 ---
-
 ## Form(Item)
 
 

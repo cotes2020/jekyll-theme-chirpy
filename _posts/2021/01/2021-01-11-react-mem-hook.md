@@ -1,9 +1,8 @@
 ---
 title: "React 性能优化 Hooks：React.memo & useMemo"
-url: "2021-01-11-react-mem-hook"
 date: 2021-01-11
+permalink: /2021-01-11-react-mem-hook/
 ---
-
 _**Hook 实现原理请参考**_ [一文彻底搞懂react hooks的原理和实现](https://www.notion.so/a3380898e55e49b98a7ec7aae960cb0a) 
 
 

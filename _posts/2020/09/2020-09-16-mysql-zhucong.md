@@ -1,9 +1,8 @@
 ---
 title: "MySQL 主从一致性问题"
-url: "2020-09-16-mysql-zhucong"
 date: 2020-09-16
+permalink: /2020-09-16-mysql-zhucong/
 ---
-
 ## 概述
 
 

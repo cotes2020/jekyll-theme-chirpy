@@ -1,9 +1,8 @@
 ---
 title: "Service Worker离线缓存实战"
-url: "2019-04-02-pwa-service-worker"
 date: 2019-04-02
+permalink: /2019-04-02-pwa-service-worker/
 ---
-
 ## 背景介绍
 
 

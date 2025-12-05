@@ -1,9 +1,8 @@
 ---
 title: "NodeJS开发交互式命令行工具"
-url: "2022-04-11-nodejs-shell"
 date: 2022-04-11
+permalink: /2022-04-11-nodejs-shell/
 ---
-
 ## 颜色控制
 
 

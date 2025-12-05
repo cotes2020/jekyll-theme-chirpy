@@ -1,9 +1,8 @@
 ---
 title: "Node.js querystring模块 — URL工具"
-url: "2020-01-20-querystring"
 date: 2020-01-20
+permalink: /2020-01-20-querystring/
 ---
-
 querystring 是专门用来解析和格式化 URL 的查询字符串 URL 的工具。
 
 - 序列化和解析查询字符串

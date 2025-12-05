@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-栈和队列专题"
-url: "2019-06-23-stack-queue-exchange"
 date: 2019-06-23
+permalink: /2019-06-23-stack-queue-exchange/
 ---
-
 ## 用两个栈实现队列
 
 

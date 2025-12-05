@@ -1,9 +1,8 @@
 ---
 title: "TypeScript进阶实战"
-url: "2020-10-20-advanced-data-strcture"
 date: 2020-10-20
+permalink: /2020-10-20-advanced-data-strcture/
 ---
-
 ## TypeScript 高级数据类型
 
 

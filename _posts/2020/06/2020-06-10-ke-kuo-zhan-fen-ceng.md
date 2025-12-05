@@ -1,9 +1,8 @@
 ---
 title: "可扩展设计：分层架构、SOA、微服务"
-url: "2020-06-10-ke-kuo-zhan-fen-ceng"
 date: 2020-06-10
+permalink: /2020-06-10-ke-kuo-zhan-fen-ceng/
 ---
-
 ## 分层架构-面向流程
 
 

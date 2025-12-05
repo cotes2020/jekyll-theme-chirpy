@@ -1,9 +1,8 @@
 ---
 title: "Node.js events 模块研究"
-url: "2020-01-10-nodejs-events"
 date: 2020-01-10
+permalink: /2020-01-10-nodejs-events/
 ---
-
 ## 概述
 
 

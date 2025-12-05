@@ -1,9 +1,8 @@
 ---
 title: "ImmutableJS 实战"
-url: "2021-03-05-immutable-js"
 date: 2021-03-05
+permalink: /2021-03-05-immutable-js/
 ---
-
 ## 特性 1: 内置对象
 
 

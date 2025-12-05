@@ -1,9 +1,8 @@
 ---
 title: "手搓 React Router 简易源码"
-url: "2021-01-07-react-router-src"
 date: 2021-01-07
+permalink: /2021-01-07-react-router-src/
 ---
-
 ## Hash Router 实现
 
 

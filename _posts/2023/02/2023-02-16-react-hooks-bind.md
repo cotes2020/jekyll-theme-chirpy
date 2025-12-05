@@ -1,9 +1,8 @@
 ---
 title: "React Hooks 实现双向绑定"
-url: "2023-02-16-react-hooks-bind"
 date: 2023-02-16
+permalink: /2023-02-16-react-hooks-bind/
 ---
-
 ## 双向绑定
 
 

@@ -1,9 +1,8 @@
 ---
 title: "TypeScript基础实践"
-url: "2019-08-27-typescript-notes"
 date: 2019-08-27
+permalink: /2019-08-27-typescript-notes/
 ---
-
 ## 联合类型与交叉类型
 
 

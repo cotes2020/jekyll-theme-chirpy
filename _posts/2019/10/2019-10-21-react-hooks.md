@@ -1,9 +1,8 @@
 ---
 title: "一文彻底搞懂react hooks的原理和实现"
-url: "2019-10-21-react-hooks"
 date: 2019-10-21
+permalink: /2019-10-21-react-hooks/
 ---
-
 ## 摘要
 
 

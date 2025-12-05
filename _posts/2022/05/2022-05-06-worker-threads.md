@@ -1,9 +1,8 @@
 ---
 title: "NodeJS 多线程编程"
-url: "2022-05-06-worker-threads"
 date: 2022-05-06
+permalink: /2022-05-06-worker-threads/
 ---
-
 > 开发环境：Node.JS v14.8.0
 
 

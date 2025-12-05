@@ -1,9 +1,8 @@
 ---
 title: "React Router 实战技巧"
-url: "2019-09-11-react-router"
 date: 2019-09-11
+permalink: /2019-09-11-react-router/
 ---
-
 本文介绍在工程中经常用到的 react-router 的技巧：
 
 - 🤔️ 如何在 TypeScript 中使用？

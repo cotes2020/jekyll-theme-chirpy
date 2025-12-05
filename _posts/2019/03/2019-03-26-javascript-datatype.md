@@ -1,9 +1,8 @@
 ---
 title: "JS里的基础类型"
-url: "2019-03-26-javascript-datatype"
 date: 2019-03-26
+permalink: /2019-03-26-javascript-datatype/
 ---
-
 ## 原始数据类型和判断方法
 
 

@@ -1,9 +1,8 @@
 ---
 title: "Javascript进阶-双向数据绑定"
-url: "2019-03-27-javascript-second"
 date: 2019-03-27
+permalink: /2019-03-27-javascript-second/
 ---
-
 要想实现，就要先看看什么是“双向数据绑定”，它和“单向数据绑定”有什么区别？这样才能知道要实现什么效果嘛。
 
 

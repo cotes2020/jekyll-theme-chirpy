@@ -1,9 +1,8 @@
 ---
 title: "[译]SCSS和CSS3对比"
-url: "2019-05-17-why-i-stopped-using-sass"
 date: 2019-05-17
+permalink: /2019-05-17-why-i-stopped-using-sass/
 ---
-
 ## 翻译说明
 
 

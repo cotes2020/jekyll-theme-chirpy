@@ -1,9 +1,8 @@
 ---
 title: "TypeScript 实现 @required 参数装饰器"
-url: "2020-11-23-ts-required"
 date: 2020-11-23
+permalink: /2020-11-23-ts-required/
 ---
-
 ## 参数装饰器作用
 
 

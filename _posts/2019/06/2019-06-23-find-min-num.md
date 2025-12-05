@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-查找专题"
-url: "2019-06-23-find-min-num"
 date: 2019-06-23
+permalink: /2019-06-23-find-min-num/
 ---
-
 ## 旋转数组最小的数字
 
 

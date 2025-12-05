@@ -1,9 +1,8 @@
 ---
 title: "认识 ImmutableJS 与不可变数据实现原理"
-url: "2021-03-03-immutable-js"
 date: 2021-03-03
+permalink: /2021-03-03-immutable-js/
 ---
-
 ## 什么是 Immutable
 
 

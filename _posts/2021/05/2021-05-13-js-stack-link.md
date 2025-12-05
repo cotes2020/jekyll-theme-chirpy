@@ -1,9 +1,8 @@
 ---
 title: "线性栈和链表栈"
-url: "2021-05-13-js-stack-link"
 date: 2021-05-13
+permalink: /2021-05-13-js-stack-link/
 ---
-
 ## 介绍
 
 

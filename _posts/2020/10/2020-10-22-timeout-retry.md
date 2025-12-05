@@ -1,9 +1,8 @@
 ---
 title: "超时重试机制"
-url: "2020-10-22-timeout-retry"
 date: 2020-10-22
+permalink: /2020-10-22-timeout-retry/
 ---
-
 ## 为什么需要超时重试？
 
 

@@ -1,9 +1,8 @@
 ---
 title: "React 组件通信方案"
-url: "2019-04-08-react-components-communication"
 date: 2019-04-08
+permalink: /2019-04-08-react-components-communication/
 ---
-
 最近在做 react 开发的时候，需要在多级组件之间进行有效通信。这里所说的多级组件，可能是父子组件、兄弟组件，还可能是两个完全不相关的组件。
 
 

@@ -1,9 +1,8 @@
 ---
 title: "NodeJS 如何监听文件变化？"
-url: "2019-09-03-nodejs-watch-file"
 date: 2019-09-03
+permalink: /2019-09-03-nodejs-watch-file/
 ---
-
 Keywords: 操作系统差异、识别用户/编辑器操作、连续触发的优化、工程级 API。
 
 

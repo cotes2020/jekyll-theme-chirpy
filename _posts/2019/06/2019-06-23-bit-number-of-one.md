@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-位运算专题"
-url: "2019-06-23-bit-number-of-one"
 date: 2019-06-23
+permalink: /2019-06-23-bit-number-of-one/
 ---
-
 ## 二进制中1的个数
 
 

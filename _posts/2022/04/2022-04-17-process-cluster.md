@@ -1,9 +1,8 @@
 ---
 title: "NodeJS 多进程编程"
-url: "2022-04-17-process-cluster"
 date: 2022-04-17
+permalink: /2022-04-17-process-cluster/
 ---
-
 ## nodejs中的进程对象-process
 
 

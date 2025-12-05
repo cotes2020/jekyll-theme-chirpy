@@ -1,9 +1,8 @@
 ---
 title: "基于 Next.js 和云开发 CMS 的内容型网站应用实战开发"
-url: "2020-05-25-nextjs-cms-website"
 date: 2020-05-25
+permalink: /2020-05-25-nextjs-cms-website/
 ---
-
 ## 引言
 
 

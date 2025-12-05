@@ -1,9 +1,8 @@
 ---
 title: "手写Promise的相关方法"
-url: "2019-11-23-promise-methods"
 date: 2019-11-23
+permalink: /2019-11-23-promise-methods/
 ---
-
 ## 摘要
 
 

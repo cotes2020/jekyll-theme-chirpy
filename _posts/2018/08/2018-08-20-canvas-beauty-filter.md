@@ -1,9 +1,8 @@
 ---
 title: "canvas实现前端滤镜"
-url: "2018-08-20-canvas-beauty-filter"
 date: 2018-08-20
+permalink: /2018-08-20-canvas-beauty-filter/
 ---
-
 ### 常用 API 接口
 
 

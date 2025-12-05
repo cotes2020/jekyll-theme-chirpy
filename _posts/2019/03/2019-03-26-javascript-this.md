@@ -1,9 +1,8 @@
 ---
 title: "ES5和ES6的this"
-url: "2019-03-26-javascript-this"
 date: 2019-03-26
+permalink: /2019-03-26-javascript-this/
 ---
-
 ### 普通函数和箭头函数的 this
 
 

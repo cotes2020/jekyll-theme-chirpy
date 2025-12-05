@@ -1,9 +1,8 @@
 ---
 title: "TypeScript 装饰器"
-url: "2020-09-19-ts-decorator"
 date: 2020-09-19
+permalink: /2020-09-19-ts-decorator/
 ---
-
 ## 认识装饰器
 
 

@@ -1,9 +1,8 @@
 ---
 title: "Node.js下Keep-Alive的"
-url: "2020-10-15-nodejs-keepalive"
 date: 2020-10-15
+permalink: /2020-10-15-nodejs-keepalive/
 ---
-
 ## ECONNRESET 问题
 
 

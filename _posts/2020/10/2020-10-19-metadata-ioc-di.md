@@ -1,9 +1,8 @@
 ---
 title: "认识元编程、控制反转(IoC)以及依赖注入(DI)"
-url: "2020-10-19-metadata-ioc-di"
 date: 2020-10-19
+permalink: /2020-10-19-metadata-ioc-di/
 ---
-
 ## 元编程
 
 

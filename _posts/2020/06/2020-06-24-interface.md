@@ -1,9 +1,8 @@
 ---
 title: "接口高可用：如何应对API故障？"
-url: "2020-06-24-interface"
 date: 2020-06-24
+permalink: /2020-06-24-interface/
 ---
-
 ## 概述
 
 

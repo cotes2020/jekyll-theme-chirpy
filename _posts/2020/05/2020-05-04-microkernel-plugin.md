@@ -1,9 +1,8 @@
 ---
 title: "JS SDK 微内核设计实战"
-url: "2020-05-04-microkernel-plugin"
 date: 2020-05-04
+permalink: /2020-05-04-microkernel-plugin/
 ---
-
 ## 认识微服务架构
 
 

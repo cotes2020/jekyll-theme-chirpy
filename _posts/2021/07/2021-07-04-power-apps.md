@@ -1,9 +1,8 @@
 ---
 title: "从Power Apps认识「数据连接器」"
-url: "2021-07-04-power-apps"
 date: 2021-07-04
+permalink: /2021-07-04-power-apps/
 ---
-
 [bookmark](https://powerapps.microsoft.com/zh-cn/)
 
 

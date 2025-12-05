@@ -1,9 +1,8 @@
 ---
 title: "计算高可用：分散计算压力"
-url: "2020-06-20-gao-ke-yong"
 date: 2020-06-20
+permalink: /2020-06-20-gao-ke-yong/
 ---
-
 ## 概述
 
 

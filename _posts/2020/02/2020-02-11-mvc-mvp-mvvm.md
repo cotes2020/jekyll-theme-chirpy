@@ -1,9 +1,8 @@
 ---
 title: "从Web开发的角度聊聊MVC、MVP和MVVM"
-url: "2020-02-11-mvc-mvp-mvvm"
 date: 2020-02-11
+permalink: /2020-02-11-mvc-mvp-mvvm/
 ---
-
 本文从 Web 开发的角度聊聊 MVC、MVP 和 MVVM 这三种架构模式。
 
 

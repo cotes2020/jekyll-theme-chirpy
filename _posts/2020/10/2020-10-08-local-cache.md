@@ -1,9 +1,8 @@
 ---
 title: "多级缓存设计—常见策略和实践模式"
-url: "2020-10-08-local-cache"
 date: 2020-10-08
+permalink: /2020-10-08-local-cache/
 ---
-
 ## 本地缓存
 
 

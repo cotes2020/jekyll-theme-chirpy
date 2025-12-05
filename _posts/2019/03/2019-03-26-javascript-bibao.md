@@ -1,9 +1,8 @@
 ---
 title: "JS面试常考的源码实现：this绑定/深拷贝/instanceof/Event事件类"
-url: "2019-03-26-javascript-bibao"
 date: 2019-03-26
+permalink: /2019-03-26-javascript-bibao/
 ---
-
 ## call、apply、bind实现
 
 

@@ -1,9 +1,8 @@
 ---
 title: "CSS3动画设计 - 按钮特效"
-url: "2019-07-24-button-animation"
 date: 2019-07-24
+permalink: /2019-07-24-button-animation/
 ---
-
 ## 特效一览
 
 

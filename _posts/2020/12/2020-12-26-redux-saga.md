@@ -1,9 +1,8 @@
 ---
 title: "redux-saga管理异步"
-url: "2020-12-26-redux-saga"
 date: 2020-12-26
+permalink: /2020-12-26-redux-saga/
 ---
-
 ## redux-saga 是做什么？
 
 

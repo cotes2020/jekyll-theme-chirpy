@@ -1,9 +1,8 @@
 ---
 title: "让我们再聊聊Promise的实现"
-url: "2019-11-25-promise-a-plus"
 date: 2019-11-25
+permalink: /2019-11-25-promise-a-plus/
 ---
-
 ## 摘要
 
 

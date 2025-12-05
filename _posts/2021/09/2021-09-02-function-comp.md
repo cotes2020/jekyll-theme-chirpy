@@ -1,9 +1,8 @@
 ---
 title: "函数式编程中的Function Composition"
-url: "2021-09-02-function-comp"
 date: 2021-09-02
+permalink: /2021-09-02-function-comp/
 ---
-
 ## Function Composition
 
 

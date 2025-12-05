@@ -1,9 +1,8 @@
 ---
 title: "Promise Pool并发控制"
-url: "2020-09-13-bing-fa-kong-zhi"
 date: 2020-09-13
+permalink: /2020-09-13-bing-fa-kong-zhi/
 ---
-
 ## 场景
 
 

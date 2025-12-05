@@ -1,9 +1,8 @@
 ---
 title: "常见 Web 攻击手段和防范策略"
-url: "2022-04-07-web-safety"
 date: 2022-04-07
+permalink: /2022-04-07-web-safety/
 ---
-
 ## CSRF：跨站请求伪造
 
 

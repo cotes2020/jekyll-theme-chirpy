@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-递归循环专题"
-url: "2019-06-23-recursive-loop-fibonacci"
 date: 2019-06-23
+permalink: /2019-06-23-recursive-loop-fibonacci/
 ---
-
 ## 青蛙跳台阶
 
 

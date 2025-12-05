@@ -1,9 +1,8 @@
 ---
 title: "TypeScript元编程实现对象函数参数类型检查"
-url: "2020-11-20-ts-metadata"
 date: 2020-11-20
+permalink: /2020-11-20-ts-metadata/
 ---
-
 ## 环境配置
 
 

@@ -1,9 +1,8 @@
 ---
 title: "理解SQL事务隔离等级以及各种读写异常"
-url: "2020-09-29-db-transaction"
 date: 2020-09-29
+permalink: /2020-09-29-db-transaction/
 ---
-
 ## 背景
 
 

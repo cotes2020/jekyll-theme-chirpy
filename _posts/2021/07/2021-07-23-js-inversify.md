@@ -1,9 +1,8 @@
 ---
 title: "认识JS社区通用DI库-Inversify"
-url: "2021-07-23-js-inversify"
 date: 2021-07-23
+permalink: /2021-07-23-js-inversify/
 ---
-
 ## 什么inversify
 
 

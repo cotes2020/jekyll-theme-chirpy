@@ -1,9 +1,8 @@
 ---
 title: "剑指Offer JavaScript-堆专题"
-url: "2019-06-23-heap-kth-numbers"
 date: 2019-06-23
+permalink: /2019-06-23-heap-kth-numbers/
 ---
-
 ## 最小的k个数
 
 

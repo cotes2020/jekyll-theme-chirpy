@@ -1,9 +1,8 @@
 ---
 title: "CSS3动画设计 - Loader特效·进阶篇"
-url: "2019-07-26-loader-animation-second"
 date: 2019-07-26
+permalink: /2019-07-26-loader-animation-second/
 ---
-
 ## 特效一览
 
 

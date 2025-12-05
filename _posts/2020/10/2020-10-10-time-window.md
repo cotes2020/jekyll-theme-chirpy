@@ -1,9 +1,8 @@
 ---
 title: "限流算法-时间窗口算法"
-url: "2020-10-10-time-window"
 date: 2020-10-10
+permalink: /2020-10-10-time-window/
 ---
-
 ## 用途
 
 

@@ -1,9 +1,8 @@
 ---
 title: "CSS 工程化方案"
-url: "2023-03-16-css-program"
 date: 2023-03-16
+permalink: /2023-03-16-css-program/
 ---
-
 ## 方案1：纯CSS or Style or ClassName
 
 

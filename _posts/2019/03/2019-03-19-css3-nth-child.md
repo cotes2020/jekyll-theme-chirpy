@@ -1,9 +1,8 @@
 ---
 title: "你了解css3的nth-child吗"
-url: "2019-03-19-css3-nth-child"
 date: 2019-03-19
+permalink: /2019-03-19-css3-nth-child/
 ---
-
 `:nth-child(n)` 选择器匹配属于其父元素的第 n 个子元素，借助这个特性，可以实现选择第偶数次序的子元素、选择一定范围内的子元素等“**批量选择操作**”。
 
 

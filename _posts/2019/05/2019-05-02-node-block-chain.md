@@ -1,9 +1,8 @@
 ---
 title: "NodeJS实现简易区块链"
-url: "2019-05-02-node-block-chain"
 date: 2019-05-02
+permalink: /2019-05-02-node-block-chain/
 ---
-
 之前由于课程要求，基于 Nodejs 做了一个实现简易区块链。要求非常简单，结构体记录区块结构，顺便能向链中插入新的区块即可。
 
 

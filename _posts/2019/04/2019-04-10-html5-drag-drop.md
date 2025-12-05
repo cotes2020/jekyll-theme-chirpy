@@ -1,9 +1,8 @@
 ---
 title: "HTML5原生拖放事件的学习与实践"
-url: "2019-04-10-html5-drag-drop"
 date: 2019-04-10
+permalink: /2019-04-10-html5-drag-drop/
 ---
-
 ## 前言
 
 
