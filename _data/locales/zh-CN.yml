@@ -10,11 +10,11 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: 首页
-  categories: 分类
+  home: 扬帆起航
+  categories: 世界地图
   tags: 标签
-  archives: 归档
-  about: 关于
+  archives: 冒险日志
+  about: 旅人自陈
 
 # the text displayed in the search bar & search results
 search:
