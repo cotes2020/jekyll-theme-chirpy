@@ -1,18 +1,18 @@
 {
-  "name": "jekyll-theme-chirpy",
-  "version": "7.4.1",
-  "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
+  "name": "prothesmos-page",
+  "version": "1.1.1",
+  "description": "Project Page with Chirby Jekyll Theme.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
+    "url": "git+https://github.com/prothesmos/page.git"
   },
-  "author": "Cotes Chung",
+  "author": "Prime Thesmos",
   "license": "MIT",
-  "since": 2019,
+  "since": 2020,
   "bugs": {
-    "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
+    "url": "https://github.com/prothesmos/page/issues"
   },
-  "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
+  "homepage": "https://github.com/prothesmos/page/",
   "type": "module",
   "scripts": {
     "build": "concurrently npm:build:*",
