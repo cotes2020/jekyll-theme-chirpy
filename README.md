@@ -6,9 +6,9 @@
 
   With Chirby Jekyll Theme.
 
-  [![CI](https://img.shields.io/github/actions/workflow/status/prothesmos/page/ci.yml?logo=github)]&nbsp;
+  ![CI](https://img.shields.io/github/actions/workflow/status/prothesmos/page/ci.yml?logo=github)&nbsp;
 
-  [![GitHub license](https://img.shields.io/github/license/prothesmos/page?color=goldenrod)]&nbsp;
+  ![GitHub license](https://img.shields.io/github/license/prothesmos/page?color=goldenrod)&nbsp;
 
 </div>
 
