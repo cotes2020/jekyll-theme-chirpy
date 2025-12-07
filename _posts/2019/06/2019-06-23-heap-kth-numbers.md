@@ -2,6 +2,7 @@
 title: "剑指Offer JavaScript-堆专题"
 date: 2019-06-23
 permalink: /2019-06-23-heap-kth-numbers/
+categories: ["剑指offer刷题笔记"]
 ---
 ## 最小的k个数
 

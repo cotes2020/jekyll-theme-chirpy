@@ -2,7 +2,9 @@
 title: "Serverless是什么？"
 date: 2020-01-07
 permalink: /2020-01-07-what-is-serverless/
+categories: ["云开发", "serverless"]
 ---
+
 Serverless = Faas + Baas。它代表的是无（少）服务器架构开发，从而使得开发者的精力主要放在了系统架构和软件开发上。
 
 

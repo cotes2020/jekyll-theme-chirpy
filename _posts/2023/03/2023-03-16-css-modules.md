@@ -56,10 +56,10 @@ permalink: /2023-03-16-css-modules/
 
 具体代码这里 [https://github.com/QuarkGluonPlasma/postcss-plugin-exercize](https://github.com/QuarkGluonPlasma/postcss-plugin-exercize) ，或者展开下面：
 
-<details>
-<summary>代码</summary>
+代码如下：
 
-```typescript
+```javascript
+
 const selectorParser = require("postcss-selector-parser");
 function generateScopedName(name) {
     const randomStr = Math.random().toString(16).slice(2);
@@ -185,9 +185,6 @@ const plugin = (options = {}) => {
 plugin.postcss = true;
 module.exports = plugin;
 ```
-
-
-</details>
 
 
 ## 参考文档

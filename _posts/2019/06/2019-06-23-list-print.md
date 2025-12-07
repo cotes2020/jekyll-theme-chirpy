@@ -2,6 +2,7 @@
 title: "剑指Offer JavaScript-链表专题"
 date: 2019-06-23
 permalink: /2019-06-23-list-print/
+categories: ["剑指offer刷题笔记"]
 ---
 ## 从尾到头打印链表
 

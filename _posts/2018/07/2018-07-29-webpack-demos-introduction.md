@@ -2,6 +2,7 @@
 title: "Webpack4系列开源课程"
 date: 2018-07-29
 permalink: /2018-07-29-webpack-demos-introduction/
+categories: ["webpack4系列教程"]
 ---
 ## 1. 什么是`webpack`?
 

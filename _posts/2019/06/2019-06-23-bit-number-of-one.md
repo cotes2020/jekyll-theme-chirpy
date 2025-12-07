@@ -2,6 +2,7 @@
 title: "剑指Offer JavaScript-位运算专题"
 date: 2019-06-23
 permalink: /2019-06-23-bit-number-of-one/
+categories: ["剑指offer刷题笔记"]
 ---
 ## 二进制中1的个数
 
