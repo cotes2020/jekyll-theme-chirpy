@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: DongYuanxin's Blog # the main title
 
-tagline: "AI 时代坚持写文的老手艺人🤷\n前后端都干的全肝工程师🧑‍💻\n少写废话聚焦问题拥趸🧩" # it will display as the subtitle
+tagline: "工作之余 随手记录🧩" # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
