@@ -2,7 +2,9 @@
 title: "让我们再聊聊Promise的实现"
 date: 2019-11-25
 permalink: /2019-11-25-promise-a-plus/
+categories: ["源码精读", "Promise专题"]
 ---
+
 ## 摘要
 
 
