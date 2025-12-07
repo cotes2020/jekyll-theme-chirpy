@@ -2,7 +2,7 @@
 title: "JavaScript「创建型」设计模式"
 date: 2018-10-23
 permalink: /2018-10-23-singleton-pattern/
-categories: ["设计模式手册"]
+categories: ["开源技术课程", "JavaScript 设计模式手册"]
 ---
 > 创建型模式：创建对象的模式，抽象了实例化的过程
 

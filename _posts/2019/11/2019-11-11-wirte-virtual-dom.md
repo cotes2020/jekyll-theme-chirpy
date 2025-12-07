@@ -2,6 +2,7 @@
 title: "一文说清 ReactJS VirtualDOM 的含义与实现"
 date: 2019-11-11
 permalink: /2019-11-11-wirte-virtual-dom/
+categories: ["源码精读", "React"]
 ---
 ## 摘要
 

@@ -2,6 +2,7 @@
 title: "CSS3动画设计 - Loader特效基础篇"
 date: 2019-07-25
 permalink: /2019-07-25-loader-animation-first/
+categories: ["开源技术课程", "CSS3 动画设计"]
 ---
 ## 特效一览
 

@@ -2,7 +2,7 @@
 title: "剑指Offer JavaScript-数组专题"
 date: 2019-06-23
 permalink: /2019-06-23-array-find/
-categories: ["剑指offer刷题笔记"]
+categories: ["开源技术课程", "JavaScript版·剑指offer刷题笔记"]
 ---
 ## 二维数组中的查找
 

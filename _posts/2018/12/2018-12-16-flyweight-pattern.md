@@ -2,7 +2,7 @@
 title: "JavaScript「结构型」设计模式"
 date: 2018-12-16
 permalink: /2018-12-16-flyweight-pattern/
-categories: ["设计模式手册"]
+categories: ["开源技术课程", "JavaScript 设计模式手册"]
 ---
 > 结构型模式：解决怎样组装现有对象，设计交互方式，从而达到实现一定的功能目的。例如，以封装为目的的适配器和桥接，以扩展性为目的的代理、装饰器
 

@@ -2,7 +2,7 @@
 title: "Webpack4系列开源课程"
 date: 2018-07-29
 permalink: /2018-07-29-webpack-demos-introduction/
-categories: ["webpack4系列教程"]
+categories: ["开源技术课程", "webpack4系列教程"]
 ---
 ## 1. 什么是`webpack`?
 
@@ -68,7 +68,6 @@ categories: ["webpack4系列教程"]
 16. [demo16](https://github.com/dongyuanxin/webpack-demos/tree/master/docs/16.%E5%8D%81%E5%85%AD%EF%BC%9A%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%C2%B7%E5%AE%9E%E6%88%98): 生产模式和开发模式分离
 
 ### 3.5 课程源码目录 (截至 2018/7/27)
-
 
 > 按照知识点，目录分成了 16 个文件夹（之后还会持续更新）。代码和配置都在对应的文件夹下。
 

@@ -2,6 +2,7 @@
 title: "CSS3动画设计 - 字体特效"
 date: 2019-07-16
 permalink: /2019-07-16-font-animation/
+categories: ["开源技术课程", "CSS3 动画设计"]
 ---
 ## 特效一览
 
