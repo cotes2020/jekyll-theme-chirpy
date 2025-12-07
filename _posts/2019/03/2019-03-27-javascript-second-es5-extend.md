@@ -3,6 +3,7 @@ title: "ES5 如何实现继承方法"
 date: 2019-03-27
 permalink: /2019-03-27-javascript-second-es5-extend/
 ---
+
 > 题目：ES5 中常用继承方法。
 
 

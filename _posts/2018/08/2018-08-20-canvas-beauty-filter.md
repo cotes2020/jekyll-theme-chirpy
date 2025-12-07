@@ -2,7 +2,9 @@
 title: "canvas实现前端滤镜"
 date: 2018-08-20
 permalink: /2018-08-20-canvas-beauty-filter/
+categories: ["开发实战", "可视化"]
 ---
+
 ### 常用 API 接口
 
 

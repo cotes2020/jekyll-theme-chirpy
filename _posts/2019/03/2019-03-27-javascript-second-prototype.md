@@ -3,6 +3,7 @@ title: "JS里原型、原型链以及instanceof和new实现"
 date: 2019-03-27
 permalink: /2019-03-27-javascript-second-prototype/
 ---
+
 ## JS 对象的 `__proto__`
 
 - 所有的引用类型（数组、对象、函数），都有一个`__proto__`属性，~~属性值是一个普通的对象~~
