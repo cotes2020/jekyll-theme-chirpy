@@ -51,7 +51,7 @@ html 代码：
 
 ```html
 <body>
-  <span>xin-tan.com</span>
+  <span>dongyuanxin.github.io</span>
 </body>
 ```
 
@@ -128,7 +128,7 @@ html 代码：
 
 ```html
 <body>
-  <span>xin-tan.com</span>
+  <span>dongyuanxin.github.io</span>
 </body>
 ```
 
@@ -188,7 +188,7 @@ html:
 
 ```html
 <body>
-  <span>xin-tan.com</span>
+  <span>dongyuanxin.github.io</span>
 </body>
 
 ```

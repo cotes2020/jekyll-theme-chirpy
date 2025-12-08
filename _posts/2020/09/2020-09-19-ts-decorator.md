@@ -26,7 +26,7 @@ type ClassConstructorType = { new (...args: any[]): {} }; // 类的构造函数�
 function userClassDecorator<T extends ClassConstructorType>(constructor: T) {
     // 注意：此种模板语法，为 constructor 参数扩展构造函数的类型声明，否则会类型报错
     return class extends constructor {
-        readonly author: string = "xin-tan.com";
+        readonly author: string = "dongyuanxin.github.io";
         readonly version: string = "1.1.0";
     };
 }
@@ -62,7 +62,7 @@ class User {
 }
 
 const user = new User("dongyuanxin");
-user.printInfo(); // 输出：{"name":"dongyuanxin","author":"xin-tan.com","version":"1.1.0"}
+user.printInfo(); // 输出：{"name":"dongyuanxin","author":"dongyuanxin.github.io","version":"1.1.0"}
 
 ```
 

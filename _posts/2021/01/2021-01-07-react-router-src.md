@@ -17,7 +17,7 @@ permalink: /2021-01-07-react-router-src/
  * @Author: dongyuanxin
  * @Date: 2021-01-07 23:15:50
  * @Github: https://github.com/dongyuanxin/blog
- * @Blog: https://xin-tan.com/
+ * @Blog: https://dongyuanxin.github.io/
  * @Description: react-router hash形式实现
  */
 
@@ -138,7 +138,7 @@ hashRouter.registerRoute("/blue", () => {
  * @Author: dongyuanxin
  * @Date: 2021-01-08 19:09:34
  * @Github: https://github.com/dongyuanxin/blog
- * @Blog: https://xin-tan.com/
+ * @Blog: https://dongyuanxin.github.io/
  * @Description: 封装自己的Router和Link组件
  */
 import React, { useEffect, useState } from "react";

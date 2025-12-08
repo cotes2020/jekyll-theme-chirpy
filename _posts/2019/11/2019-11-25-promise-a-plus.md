@@ -14,7 +14,7 @@ categories: ["源码精读", "Promise专题"]
 在上述文章的基础上，本篇给出更全面的用例和代码，来尽可能阐述清楚一些看起来 "magic" 的做法。
 
 
-所有代码（Promise 以及相关方法）的实现存放在 [github.com/dongyuanxin/diy-promise](https://github.com/dongyuanxin/diy-promise)。关于`.all()`，`.race()`等方法的实现，请见[《手写 Promise 的相关方法》](https://xin-tan.com/passages/2019-11-23-promise-methods/)一文。
+所有代码（Promise 以及相关方法）的实现存放在 [github.com/dongyuanxin/diy-promise](https://github.com/dongyuanxin/diy-promise)。关于`.all()`，`.race()`等方法的实现，请见[《手写 Promise 的相关方法》](https://dongyuanxin.github.io/2019-11-23-promise-methods/)一文。
 
 
 ## 构造函数

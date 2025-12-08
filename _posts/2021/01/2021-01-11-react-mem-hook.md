@@ -114,7 +114,7 @@ App 状态更新后，对于其子组件以及子组件的子组件（依次类�
  * @Author: dongyuanxin
  * @Date: 2021-01-06 00:18:34
  * @Github: https://github.com/dongyuanxin/blog
- * @Blog: https://xin-tan.com/
+ * @Blog: https://dongyuanxin.github.io/
  * @Description: React.memo() 使用
  */
 /**
@@ -236,7 +236,7 @@ useMemo 的第二个参数和 useEffect 第二个参数类似，只有其中的�
  * @Author: dongyuanxin
  * @Date: 2021-01-07 20:14:21
  * @Github: https://github.com/dongyuanxin/blog
- * @Blog: https://xin-tan.com/
+ * @Blog: https://dongyuanxin.github.io/
  * @Description: useMemo()
  */
 
