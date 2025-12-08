@@ -2,7 +2,9 @@
 title: "React父子组件实现：Form(Item)/Tab(Item)"
 date: 2023-01-14
 permalink: /2023-01-14-children-comp/
+categories: ["源码精读", "组件库"]
 ---
+
 ## Form(Item)
 
 
@@ -108,8 +110,8 @@ FormItem 目标：
 1. 响应点击选中样式
 2. 相应点击事件
 3. 需要通过 `displayName` 挂入标识，方便父级 `TabButtonList` 判断
-<details>
-<summary>代码如下：</summary>
+
+代码如下：
 
 ```typescript
 import React from 'react';
@@ -153,15 +155,12 @@ TabButton.displayName = TYPE_NAME.tabButton;
 ```
 
 
-</details>
-
-
 ### TabButtonList
 
 1. 遍历所有的子元素，挑选 `TabButton` 组件，跳过其他组件
-2. 根据外面传入的 `activeKey` ：判定当前的 `TabButton` 组件是否为选中状态，并且选中组件跳过 `click` 回diao
-<details>
-<summary>代码如下</summary>
+2. 根据外面传入的 `activeKey` ：判定当前的 `TabButton` 组件是否为选中状态，并且选中组件跳过 `click` 回调
+
+代码如下：
 
 ```typescript
 /**
@@ -196,8 +195,3 @@ export const TabButtonList = React.memo((props: TabButtonListProps) => {
   );
 });
 ```
-
-
-</details>
-
-

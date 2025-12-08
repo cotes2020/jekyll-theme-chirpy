@@ -124,7 +124,7 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        // 注意: priority属性
+        // 注意: priority 属性
         // 其次: 打包业务中公共代码
         common: {
           name: "common",
