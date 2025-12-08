@@ -2,6 +2,7 @@
 title: "React Hooks 实现双向绑定"
 date: 2023-02-16
 permalink: /2023-02-16-react-hooks-bind/
+categories: ["B源码精读", "React"]
 ---
 ## 双向绑定
 

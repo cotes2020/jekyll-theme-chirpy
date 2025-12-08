@@ -2,7 +2,7 @@
 title: "十四：Clean Plugin and Watch Mode"
 date: 2018-10-18
 permalink: /2018-10-18-webpack-clean-and-watch-mode/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 简单来说：生产开发过程中优雅地自动化！！！

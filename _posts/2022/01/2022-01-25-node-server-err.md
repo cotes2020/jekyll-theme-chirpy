@@ -1,7 +1,8 @@
 ---
-title: "NodeJS 服务错误处理经验"
+title: "NodeJS服务框架的错误处理经验"
 date: 2022-01-25
 permalink: /2022-01-25-node-server-err/
+categories: ["C工作实践分享"]
 ---
 ## 如何在KoaJS中处理错误？
 

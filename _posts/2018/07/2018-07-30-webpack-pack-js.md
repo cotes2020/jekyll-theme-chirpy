@@ -2,7 +2,7 @@
 title: "一：打包JS"
 date: 2018-07-30
 permalink: /2018-07-30-webpack-pack-js/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > webpack 本身就是为了打包`js`所设计，作为第一节，介绍**怎么打包`js`**。

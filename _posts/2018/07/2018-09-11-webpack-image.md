@@ -2,7 +2,7 @@
 title: "十：图片处理汇总"
 date: 2018-09-11
 permalink: /2018-09-11-webpack-image/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 本节课会讲述`webpack4`中的图片常用的基础操作：

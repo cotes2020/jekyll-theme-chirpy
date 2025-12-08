@@ -2,7 +2,7 @@
 title: "Node.js下Keep-Alive的ECONNRESET 问题"
 date: 2020-10-15
 permalink: /2020-10-15-nodejs-keepalive/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 
 ## ECONNRESET 问题

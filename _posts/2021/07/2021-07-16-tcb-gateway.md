@@ -2,7 +2,7 @@
 title: "十亿级日流量--微信云开发网关架构设计"
 date: 2021-07-16
 permalink: /2021-07-16-tcb-gateway/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 ## 背景
 

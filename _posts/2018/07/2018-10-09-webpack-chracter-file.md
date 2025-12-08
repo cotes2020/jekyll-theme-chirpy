@@ -2,7 +2,7 @@
 title: "十一：字体文件处理"
 date: 2018-10-09
 permalink: /2018-10-09-webpack-chracter-file/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 在自己的项目中引入中意的字体样式，是让自己舒坦的重要方式 :)

@@ -2,7 +2,7 @@
 title: "四：单页面解决方案--代码分割和懒加载"
 date: 2018-08-08
 permalink: /2018-08-08-webpack-spa-split-lazy/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 本节课讲解`webpack4`打包**单页应用**过程中的代码分割和代码懒加载。不同于多页面应用的提取公共代码，单页面的代码分割和懒加载不是通过`webpack`配置来实现的，而是通过`webpack`的写法和内置函数实现的。

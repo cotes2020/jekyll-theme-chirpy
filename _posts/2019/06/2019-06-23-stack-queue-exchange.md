@@ -2,7 +2,7 @@
 title: "剑指Offer JavaScript-栈和队列专题"
 date: 2019-06-23
 permalink: /2019-06-23-stack-queue-exchange/
-categories: ["开源技术课程", "JavaScript版·剑指offer刷题笔记"]
+categories: ["A开源技术课程", "JavaScript版·剑指offer刷题笔记"]
 ---
 ## 用两个栈实现队列
 

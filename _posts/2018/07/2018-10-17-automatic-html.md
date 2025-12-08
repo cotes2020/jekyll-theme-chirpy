@@ -2,7 +2,7 @@
 title: "十三：自动生成HTML文件"
 date: 2018-10-17
 permalink: /2018-10-17-automatic-html/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 在真实生产环境中，运行`webpack`进行打包后，完整的`index.html`应该是被自动生成的。例如静态资源、js 脚本都被自动插入了。而不是像之前的教程那样根据生成的文件手动插入。

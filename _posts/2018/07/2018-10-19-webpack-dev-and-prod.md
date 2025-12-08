@@ -2,7 +2,7 @@
 title: "十六：开发模式和生产模式·实战"
 date: 2018-10-19
 permalink: /2018-10-19-webpack-dev-and-prod/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 这是`webpack4`系列最后一篇教程了。这篇文章在之前所有教程的基础上，做了一个真正意义上的 webpack 项目！我花费了三个月整理了这份教程，并且完善了相关示例代码，也更熟悉 webpack 的理论和应用，当然，也感谢大家的支持。

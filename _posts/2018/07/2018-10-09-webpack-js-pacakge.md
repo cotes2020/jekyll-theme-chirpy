@@ -2,7 +2,7 @@
 title: "十二：处理第三方JavaScript库"
 date: 2018-10-09
 permalink: /2018-10-09-webpack-js-pacakge/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 项目做大之后，开发者会更多专注在业务逻辑上，其他方面则尽力使用第三方`JS`库来实现。

@@ -2,7 +2,7 @@
 title: "三：多页面解决方案--提取公共代码"
 date: 2018-08-06
 permalink: /2018-08-06-webpack-mutiple-pages/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 这节课讲解`webpack4`打包多页面应用过程中的**提取公共代码**部分。相比于`webpack3`，`4.0`版本用`optimization.splitChunks`配置替换了`3.0`版本的`CommonsChunkPlugin`插件。在使用和配置上，更加方便和清晰。

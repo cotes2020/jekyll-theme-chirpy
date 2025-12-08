@@ -2,7 +2,7 @@
 title: "十五：开发模式与webpack-dev-server"
 date: 2018-10-19
 permalink: /2018-10-19-webpack-dev-server/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 为什么需要开发模式？

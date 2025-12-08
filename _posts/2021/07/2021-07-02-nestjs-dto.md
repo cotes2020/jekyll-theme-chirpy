@@ -2,6 +2,7 @@
 title: "NestJS源码: DTO实现"
 date: 2021-07-02
 permalink: /2021-07-02-nestjs-dto/
+categories: ["B源码精读", NestJS]
 ---
 ## 概述
 

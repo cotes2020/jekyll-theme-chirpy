@@ -2,7 +2,7 @@
 title: "八：JS Tree Shaking"
 date: 2018-09-01
 permalink: /2018-09-01-js-tree-shaking/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > 本文简述了`webpack3` 和 `webpack4`在 JS Tree Shaking 上的区别，并详细介绍了在 `webpack4` 环境下如何对 JS 代码 和 第三方库 进行 Tree Shaking。

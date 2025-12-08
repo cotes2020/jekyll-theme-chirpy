@@ -2,7 +2,7 @@
 title: "剑指Offer JavaScript-查找专题"
 date: 2019-06-23
 permalink: /2019-06-23-find-min-num/
-categories: ["开源技术课程", "JavaScript版·剑指offer刷题笔记"]
+categories: ["A开源技术课程", "JavaScript版·剑指offer刷题笔记"]
 ---
 ## 旋转数组最小的数字
 

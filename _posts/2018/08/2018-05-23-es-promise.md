@@ -2,7 +2,6 @@
 title: "Promise 概述"
 date: 2018-05-23
 permalink: /2018-05-23-es-promise/
-categories: ["源码精读", "Promise专题"]
 ---
 
 ## 关于`Promise`

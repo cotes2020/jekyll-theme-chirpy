@@ -2,7 +2,7 @@
 title: "剑指Offer JavaScript-字符串专题"
 date: 2019-06-23
 permalink: /2019-06-23-str-replace-empty/
-categories: ["开源技术课程", "JavaScript版·剑指offer刷题笔记"]
+categories: ["A开源技术课程", "JavaScript版·剑指offer刷题笔记"]
 ---
 
 ## 替换空格

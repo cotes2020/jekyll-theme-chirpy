@@ -2,7 +2,7 @@
 title: "六：处理SCSS"
 date: 2018-08-18
 permalink: /2018-08-18-webpack-scss/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 这节课以 SCSS 为例，讲解如何在`webpack`中编译这种 CSS 预处理语言，并配合`CSS`的 LOADER 来进行组合处理。一些更复杂的应用，请翻看《`webpack`处理 CSS》这篇文章。

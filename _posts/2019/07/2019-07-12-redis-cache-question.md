@@ -2,7 +2,7 @@
 title: "redis热key,缓存穿透,击穿,集群等问题研究"
 date: "2019-07-12"
 permalink: /2019-07-12-redis-cache-question/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 
 > with [Hongkai](https://github.com/HuangHongkai)

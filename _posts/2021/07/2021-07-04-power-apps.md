@@ -2,7 +2,7 @@
 title: "从Power Apps认识「数据连接器」"
 date: 2021-07-04
 permalink: /2021-07-04-power-apps/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 
 [bookmark](https://powerapps.microsoft.com/zh-cn/)

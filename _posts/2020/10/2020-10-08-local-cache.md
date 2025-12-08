@@ -2,7 +2,7 @@
 title: "多级缓存设计—常见策略和实践模式"
 date: 2020-10-08
 permalink: /2020-10-08-local-cache/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 
 ## 本地缓存

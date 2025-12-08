@@ -2,7 +2,7 @@
 title: "五：处理CSS"
 date: 2018-08-17
 permalink: /2018-08-17-webpack-css/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 本节课结合`webpack`和相关 LOADER 的特点，可以非常方便地处理 CSS。主要包括以下 4 个部分：

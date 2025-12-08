@@ -2,7 +2,7 @@
 title: "谈谈promise/async/await的执行顺序与V8引擎的BUG"
 date: "2018-05-29"
 permalink: /2018-05-29-promise-async-await-order/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 
 ## 1. 题目和答案

@@ -1,7 +1,8 @@
 ---
-title: "Node.js async_hooks模块：处理异步问题"
+title: "Node.js async_hooks模块：实现异步上下文"
 date: 2020-07-30
 permalink: /2020-07-30-nodejs-async-hooks/
+categories: ["C工作实践分享"]
 ---
 ## 为什么需要 async_hooks？
 

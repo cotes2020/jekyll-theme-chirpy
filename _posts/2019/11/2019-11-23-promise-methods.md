@@ -2,7 +2,7 @@
 title: "手写Promise的相关方法"
 date: 2019-11-23
 permalink: /2019-11-23-promise-methods/
-categories: ["源码精读", "Promise专题"]
+categories: ["B源码精读", "Promise专题"]
 ---
 ## 摘要
 

@@ -2,7 +2,7 @@
 title: "一文彻底搞懂react hooks的原理和实现"
 date: 2019-10-21
 permalink: /2019-10-21-react-hooks/
-categories: ["源码精读", "React"]
+categories: ["B源码精读", "React"]
 ---
 ## 摘要
 

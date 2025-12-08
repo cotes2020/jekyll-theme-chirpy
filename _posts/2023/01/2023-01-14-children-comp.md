@@ -2,7 +2,7 @@
 title: "React父子组件实现：Form(Item)/Tab(Item)"
 date: 2023-01-14
 permalink: /2023-01-14-children-comp/
-categories: ["源码精读", "组件库"]
+categories: ["B源码精读", "Others"]
 ---
 
 ## Form(Item)

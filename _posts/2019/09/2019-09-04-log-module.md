@@ -2,7 +2,7 @@
 title: "NodeJS日志库的设计与优化"
 date: 2019-09-04
 permalink: /2019-09-04-log-module/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 Keywords：堆栈、容器存储、Lazy Log、异步日志、缓存周期
 

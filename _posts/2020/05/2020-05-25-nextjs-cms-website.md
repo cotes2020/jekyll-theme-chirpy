@@ -2,7 +2,7 @@
 title: "基于 Next.js 和云开发 CMS 的内容型网站应用实战开发"
 date: 2020-05-25
 permalink: /2020-05-25-nextjs-cms-website/
-categories: ["实战分享"]
+categories: ["C工作实践分享"]
 ---
 ## 引言
 

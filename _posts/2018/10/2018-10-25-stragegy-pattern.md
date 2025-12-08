@@ -2,7 +2,7 @@
 title: "JavaScript「行为型」设计模式"
 date: 2018-10-25
 permalink: /2018-10-25-stragegy-pattern/
-categories: ["开源技术课程", "JavaScript 设计模式手册"]
+categories: ["A开源技术课程", "JavaScript 设计模式手册"]
 ---
 > 行为型模式：描述多个类或对象怎样交互以及怎样分配职责
 

@@ -2,7 +2,7 @@
 title: "剑指Offer JavaScript-树专题"
 date: 2019-06-23
 permalink: /2019-06-23-tree-rebuild/
-categories: ["开源技术课程", "JavaScript版·剑指offer刷题笔记"]
+categories: ["A开源技术课程", "JavaScript版·剑指offer刷题笔记"]
 ---
 
 ## 重建二叉树

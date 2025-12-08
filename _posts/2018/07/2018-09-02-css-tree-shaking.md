@@ -2,7 +2,7 @@
 title: "九：CSS-Tree-Shaking"
 date: 2018-09-02
 permalink: /2018-09-02-css-tree-shaking/
-categories: ["开源技术课程", "webpack4系列教程"]
+categories: ["A开源技术课程", "webpack4系列教程"]
 ---
 
 > CSS 也有 Tree Shaking？
