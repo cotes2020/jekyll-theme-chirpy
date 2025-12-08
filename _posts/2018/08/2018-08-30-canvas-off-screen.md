@@ -66,7 +66,7 @@ categories: ["开发实战", "可视化"]
                 watermarkCtx.font = "bold 20px Arial";
                 watermarkCtx.lineWidth = "1";
                 watermarkCtx.fillStyle = "rgba(255 , 255 , 255, 0.5)";
-                watermarkCtx.fillText("=== yuanxin.me ===", 50, 50);
+                watermarkCtx.fillText("=== dongyuanxin.github.io ===", 50, 50);
                 /****************************************/
                 var img = new Image();
                 img.src = "./img/photo.jpg";

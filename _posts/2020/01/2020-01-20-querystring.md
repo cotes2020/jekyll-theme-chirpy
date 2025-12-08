@@ -42,12 +42,12 @@ console.log(querystring.encode(params));
 
 ```typescript
 const params = {
-    key: "原文地址: http://xxoo521.com/#"
+    key: "原文地址: http://dongyuanxin.github.io/#"
 };
 querystring.stringify(params, {
     encodeURIComponent: encodeURI // 覆盖默认的百分比编码函数
 });
-querystring.parse("xxoo521.com%2F%23", {
+querystring.parse("dongyuanxin.github.io%2F%23", {
     decodeURIComponent: decodeURI // 覆盖默认的百分比解码函数
 });
 ```

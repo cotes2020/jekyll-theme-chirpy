@@ -92,7 +92,7 @@ console.log(findElem(arr, 145));
 ### 3. 代码实现
 
 
-函数`change`运用了设计模式中的“[桥接模式](https://godbmw.com/passages/2019-01-19-bridge-pattern/)”，判断条件由用户自己定义。
+函数`change`运用了设计模式中的“[桥接模式](https://dongyuanxin.github.io/2018-12-16-flyweight-pattern/)”，判断条件由用户自己定义。
 
 
 ```javascript

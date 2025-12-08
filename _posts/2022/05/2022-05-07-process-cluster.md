@@ -320,7 +320,7 @@ cluster.on("exit", (worker, code, signal) => {
 **负载检测**：工作进程和主进程可以定期检测 cpu 占用率、内存占用率、平均负载等指标，过高的话，则关闭重启对应工作进程。关于检测方法可以看这篇文章[《NodeJS 模块研究 - os》](https://0x98k.com/2020-01-11-nodejs-os/)。
 
 
-这些方法在 vemojs 中都有应用，具体可以看这篇文章：[《VemoJS 源码拆解》](https://xxoo521.com/2019-04-23-vemojs/)
+这些方法在 vemojs 中都有应用，具体可以看这篇文章：[《VemoJS 源码拆解》](https://dongyuanxin.github.io/2019-04-23-vemojs/)
 
 
 ## 多进程管理工具 - pm2
@@ -415,7 +415,7 @@ pm2 支持 cluster 模式。通过配置文件的 `exec_mode : "cluster"` 指定
 ## 参考链接
 
 - [Nodejs 文档](http://nodejs.cn/api/cluster.html)
-- [NodeJS 模块研究 - os](https://xxoo521.com/2020-01-11-nodejs-os/)
+- [NodeJS 模块研究 - os](https://dongyuanxin.github.io/2020-01-11-nodejs-os/)
 - [autocannon](https://www.npmjs.com/package/autocannon)
 - [解读 NodeJS 的 Cluster 模块](https://www.notion.so/0x98k/alloyteam.com/2015/08/nodejs-cluster-tutorial/)
 - [Node.js 集群（cluster）：扩展你的 Node.js 应用](https://zhuanlan.zhihu.com/p/36728299)

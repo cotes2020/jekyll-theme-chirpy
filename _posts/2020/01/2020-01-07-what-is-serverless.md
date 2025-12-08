@@ -105,8 +105,8 @@ Fass 和 Bass 共同组成了 Serverless。
 
 之前写过基于 Serverless 进行实战开发的文章：
 
-- [Serverless 开发一款极简网页计数器](https://xxoo521.com/2019-05-18-serverless-page-counter/)
-- [Serverless 开发：实时对战五子棋小游戏](https://xxoo521.com/2019-08-14-game-gomoku/)
+- [Serverless 开发一款极简网页计数器](https://dongyuanxin.github.io/2019-05-18-serverless-page-counter/)
+- [Serverless 开发：实时对战五子棋小游戏](https://dongyuanxin.github.io/2019-08-14-game-gomoku/)
 
 如果想看更详细的内容，可以参考：
 

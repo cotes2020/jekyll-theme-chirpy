@@ -7,11 +7,11 @@ categories: ["开源技术课程", "webpack4系列教程"]
 
 这节课以 SCSS 为例，讲解如何在`webpack`中编译这种 CSS 预处理语言，并配合`CSS`的 LOADER 来进行组合处理。一些更复杂的应用，请翻看《`webpack`处理 CSS》这篇文章。
 
-[>>> 了解更多处理`css`的内容](http://yuanxin.me/#/passage/36)
+[>>> 了解更多处理`css`的内容](https://dongyuanxin.github.io/2018-08-17-webpack-css/)
 
 <!-- more -->
 
-> 这节课讲解`webpack4`中处理`scss`。只需要在处理`css`的配置上增加编译`scss`的 LOADER 即可。[了解更多处理`css`的内容 >>>](http://yuanxin.me/#/passage/36)
+> 这节课讲解`webpack4`中处理`scss`。只需要在处理`css`的配置上增加编译`scss`的 LOADER 即可。[了解更多处理`css`的内容 >>>](https://dongyuanxin.github.io/2018-08-17-webpack-css/)
 
 [>>> 本节课源码](https://github.com/dongyuanxin/webpack-demos/tree/master/demo06)
 
@@ -121,4 +121,4 @@ module.exports = {
 
 ![](https://static.godbmw.com/images/webpack/webpack4系列教程/9.png)
 
-同时，对于其他的 css 预处理语言，处理方式一样，首先应该编译成 css，然后交给 css 的相关 loader 进行处理。[点我了解更多关于处理`css`的内容 >>>](http://yuanxin.me/#/passage/36)
+同时，对于其他的 css 预处理语言，处理方式一样，首先应该编译成 css，然后交给 css 的相关 loader 进行处理。[点我了解更多关于处理`css`的内容 >>>](http://dongyuanxin.github.io/#/passage/36)
