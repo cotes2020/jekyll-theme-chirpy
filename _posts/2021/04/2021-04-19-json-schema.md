@@ -2,7 +2,9 @@
 title: "JSON Schema应用开发"
 date: 2021-04-19
 permalink: /2021-04-19-json-schema/
+categories: ["实战分享"]
 ---
+
 ## json schema 作用
 
 

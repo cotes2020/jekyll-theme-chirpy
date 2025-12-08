@@ -2,7 +2,9 @@
 title: "JS SDK 微内核设计实战"
 date: 2020-05-04
 permalink: /2020-05-04-microkernel-plugin/
+categories: ["实战分享"]
 ---
+
 ## 认识微服务架构
 
 

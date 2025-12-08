@@ -2,6 +2,7 @@
 title: "微服务架构下，名字服务的使用体验和功能设计"
 date: 2020-05-04
 permalink: /2020-05-04-name-service/
+categories: ["实战分享"]
 ---
 ## 背景
 

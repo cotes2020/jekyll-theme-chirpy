@@ -2,9 +2,10 @@
 title: "redis热key,缓存穿透,击穿,集群等问题研究"
 date: "2019-07-12"
 permalink: /2019-07-12-redis-cache-question/
+categories: ["实战分享"]
 ---
 
-> 本篇由来自 [Hongkai](https://github.com/HuangHongkai) 分享。
+> with [Hongkai](https://github.com/HuangHongkai)
 
 Redis 主要用途有 2 个
 

@@ -2,6 +2,7 @@
 title: "BitMap 优化美业模版的「预约模块」"
 date: 2021-11-23
 permalink: /2021-11-23-bitmap-yuyue/
+categories: ["实战分享"]
 ---
 ## 预约功能难点
 

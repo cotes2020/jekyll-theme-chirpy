@@ -2,7 +2,7 @@
 title: "玩转 Nodejs 命令行"
 date: "2019-05-07"
 permalink: /2019-05-07-play-node-shell/
-categories: ["开发实战", "命令行编程"]
+categories: ["实战分享"]
 ---
 
 ## 背景

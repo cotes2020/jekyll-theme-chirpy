@@ -2,6 +2,7 @@
 title: "腾讯云云开发短信验证码实战"
 date: 2020-05-01
 permalink: /2020-05-01-tcb-verification-code/
+categories: ["实战分享"]
 ---
 最近支持了云开发的自定义短信验证码登录功能。
 

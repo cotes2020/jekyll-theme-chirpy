@@ -2,7 +2,7 @@
 title: "Serverless开发一款极简网页计数器"
 date: 2019-05-18
 permalink: /2019-05-18-serverless-page-counter/
-categories: ["开发实战", "serverless"]
+categories: ["实战分享"]
 ---
 ![007S8ZIlgy1giwwzo7rfaj310f0oy753.jpg](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2019-05-18-serverless-page-counter/007S8ZIlgy1giwwzo7rfaj310f0oy753.jpg)
 

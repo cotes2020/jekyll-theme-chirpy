@@ -2,6 +2,7 @@
 title: "MathJax：让前端支持数学公式"
 date: 2018-10-03
 permalink: /2018-10-03-js-mathjax/
+categories: ["实战分享"]
 ---
 
 ## 1. 必须要说

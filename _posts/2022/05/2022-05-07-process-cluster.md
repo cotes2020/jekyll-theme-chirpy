@@ -2,6 +2,7 @@
 title: "NodeJS 集群：cluster.js 和 PM2"
 date: 2022-05-07
 permalink: /2022-05-07-process-cluster/
+categories: ["实战分享"]
 ---
 Nodejs 提供了 cluster 来支持多进程集群，提高多核 CPU 的利用效率，实现负载均衡，最大程度利用机器性能。
 

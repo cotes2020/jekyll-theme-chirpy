@@ -2,7 +2,9 @@
 title: "原生websocket学习和群聊实现"
 date: 2018-08-19
 permalink: /2018-08-19-websocket-group-chat/
+categories: ["实战分享"]
 ---
+
 `WebSocket`协议可以实现前后端全双工通信，从而取代浪费资源的长轮询。在此协议的基础上，可以实现前后端数据、多端数据，真正的**实时响应**。在学习`WebSocket`的过程中，实现了一个简化版群聊，过程和代码详细记录在这篇文章中。
 
 
