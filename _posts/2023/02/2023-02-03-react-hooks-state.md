@@ -3,6 +3,7 @@ title: "React Hooks 实现状态管理"
 date: 2023-02-03
 permalink: /2023-02-03-react-hooks-state/
 ---
+
 - 主要api：useContext和useReducer
 - 用途：都是为了进行状态管理。
 	- 一般useContext更常用。
@@ -16,11 +17,12 @@ permalink: /2023-02-03-react-hooks-state/
 	- 使用 范式memo（React.memo && useMemo）
 - 拆分context做法示例。
 
-	以[全局Log组件为例](https://www.51cto.com/article/630362.html?u_atoken=84610f16-99c7-408b-8e3a-b9f846387eba&u_asession=01znUZrh7C3idq64_q-ThjY_xYZvR0tdXB1bM8a8UaamyBUhGyphFRy-jZIl3EHPNPX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K8nnLKg8ynsdYVoq0PbrC86Ue3R9QHfzEvknA4dzJmVTGBkFo3NEHBv0PZUm6pbxQU&u_asig=05FK9I6z1Cl1R4tzutay0zKTvfAScjsn9SNr5NrgBxHloIquIsuQxnYq5meqgKU1dYzciszZ-4s5g5YWHcxNmhke6cDpp6A9EKTssTYM8_My0mpNQOrRCcK5E6KXhACw-A0B8iNDCiwYonkEOD43qrfB1wWd0Uo_0AxwudsNZ8eEr9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzf71r16cZbeFVVtB9MmU55gpBem96xLqNn0FQq1FIJSlH_8T8uYGNepqxdb-gLe1IO3h9VXwMyh6PgyDIVSG1W_VHHHLSS3YReTPPaLLxcwIfX5y-uYeLDQishV-vt1GW0-rYI4ZS3jgdyFCUUhU2fN0Rr_BaKvGm8Uyij_HgnOQmWspDxyAEEo4kbsryBKb9Q&u_aref=do2ntTdKyx4MUR4eZE35G7u2ahE%3D)，实现「读写分离」：
 
-	- Before:
-<details>
-<summary>定义方代码：</summary>
+以[全局Log组件为例](https://www.51cto.com/article/630362.html?u_atoken=84610f16-99c7-408b-8e3a-b9f846387eba&u_asession=01znUZrh7C3idq64_q-ThjY_xYZvR0tdXB1bM8a8UaamyBUhGyphFRy-jZIl3EHPNPX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K8nnLKg8ynsdYVoq0PbrC86Ue3R9QHfzEvknA4dzJmVTGBkFo3NEHBv0PZUm6pbxQU&u_asig=05FK9I6z1Cl1R4tzutay0zKTvfAScjsn9SNr5NrgBxHloIquIsuQxnYq5meqgKU1dYzciszZ-4s5g5YWHcxNmhke6cDpp6A9EKTssTYM8_My0mpNQOrRCcK5E6KXhACw-A0B8iNDCiwYonkEOD43qrfB1wWd0Uo_0AxwudsNZ8eEr9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzf71r16cZbeFVVtB9MmU55gpBem96xLqNn0FQq1FIJSlH_8T8uYGNepqxdb-gLe1IO3h9VXwMyh6PgyDIVSG1W_VHHHLSS3YReTPPaLLxcwIfX5y-uYeLDQishV-vt1GW0-rYI4ZS3jgdyFCUUhU2fN0Rr_BaKvGm8Uyij_HgnOQmWspDxyAEEo4kbsryBKb9Q&u_aref=do2ntTdKyx4MUR4eZE35G7u2ahE%3D)，实现「读写分离」：
+
+- Before: 
+
+定义方代码👇
 
 ```typescript
 const LogContext = React.createContext();
@@ -36,15 +38,11 @@ function LogProvider({children }) {
 }
 ```
 
+使用方代码：必须使用 LogContext 上下文。
 
-</details>
+- After: 
 
-
-		使用方代码：必须使用 LogContext 上下文。
-
-	- After:
-<details>
-<summary>定义方代码：</summary>
+定义方代码👇
 
 ```typescript
 const LogStateContext = React.createContext();
@@ -65,14 +63,8 @@ function LogProvider({children }) {
 }
 ```
 
-
-</details>
-
-
-		使用方代码：根据读、写的需要，只使用 LogStateContext、LogDispatcherContext 即可。
-
-
-		![Untitled.png](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2023-02-03-react-hooks-state/72f95e6b5c68751ac7b9e24884a03806.png)
+使用方代码：根据读、写的需要，只使用 LogStateContext、LogDispatcherContext 即可。
+![Untitled.png](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2023-02-03-react-hooks-state/72f95e6b5c68751ac7b9e24884a03806.png)
 
 - **范式memo的做法示例：**
 	- 核心思路：
@@ -107,5 +99,3 @@ function LogProvider({children }) {
 		  , [theme]);
 		}
 		```
-
-
