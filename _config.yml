@@ -124,6 +124,7 @@ comments:
     repo_id:
     category:
     category_id:
+    theme: # optional, default to 'theme map'
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
