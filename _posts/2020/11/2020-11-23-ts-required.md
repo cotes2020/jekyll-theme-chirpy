@@ -3,7 +3,9 @@ title: "TypeScript 实现 @required 参数装饰器"
 date: 2020-11-23
 permalink: /2020-11-23-ts-required/
 categories: ["B源码精读", "Others"]
+categories: [元编程]
 ---
+
 ## 参数装饰器作用
 
 

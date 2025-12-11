@@ -2,6 +2,7 @@
 title: "HTTP Headers判断请求来源"
 date: 2020-07-29
 permalink: /2020-07-29-http-headers/
+tags: [HTTP协议]
 ---
 ## X-Powered-By
 

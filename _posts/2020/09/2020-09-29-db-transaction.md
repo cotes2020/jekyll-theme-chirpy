@@ -2,6 +2,7 @@
 title: "理解SQL事务隔离等级以及各种读写异常"
 date: 2020-09-29
 permalink: /2020-09-29-db-transaction/
+tags: [MySQL, 事务设计]
 ---
 ## 背景
 

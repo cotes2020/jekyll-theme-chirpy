@@ -2,6 +2,7 @@
 title: "Promise Pool并发控制"
 date: 2020-09-13
 permalink: /2020-09-13-bing-fa-kong-zhi/
+tags: [并发编程, 池化技术]
 ---
 ## 场景
 

@@ -2,6 +2,7 @@
 title: "redux的reducer管理"
 date: 2020-12-25
 permalink: /2020-12-25-redux-reducer/
+tags: [状态管理]
 ---
 ## 如何封装多个 reducer？
 

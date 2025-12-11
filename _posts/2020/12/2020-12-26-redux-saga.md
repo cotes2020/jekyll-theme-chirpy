@@ -2,7 +2,9 @@
 title: "redux-saga管理异步"
 date: 2020-12-26
 permalink: /2020-12-26-redux-saga/
+tags: [状态管理, 异步编程]
 ---
+
 ## redux-saga 是做什么？
 
 

@@ -3,6 +3,7 @@ title: "Node.js async_hooks模块：实现异步上下文"
 date: 2020-07-30
 permalink: /2020-07-30-nodejs-async-hooks/
 categories: ["C工作实践分享"]
+tags: [异步编程, AsyncContext]
 ---
 ## 为什么需要 async_hooks？
 

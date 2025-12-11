@@ -3,6 +3,7 @@ title: "Protobuf协议优化研究与Node.js使用"
 date: 2020-07-11
 permalink: /2020-07-11-node-protobuf/
 categories: ["C工作实践分享"]
+tags: [Protobuf, RPC]
 ---
 
 Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。

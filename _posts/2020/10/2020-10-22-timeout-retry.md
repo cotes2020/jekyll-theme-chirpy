@@ -2,7 +2,9 @@
 title: "超时重试机制"
 date: 2020-10-22
 permalink: /2020-10-22-timeout-retry/
+tags: [重试设计]
 ---
+
 ## 为什么需要超时重试？
 
 

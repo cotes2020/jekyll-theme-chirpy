@@ -2,7 +2,9 @@
 title: "TypeScript 装饰器"
 date: 2020-09-19
 permalink: /2020-09-19-ts-decorator/
+tags: [面向对象编程]
 ---
+
 ## 认识装饰器
 
 

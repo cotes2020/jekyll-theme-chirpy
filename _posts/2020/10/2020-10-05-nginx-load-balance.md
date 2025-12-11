@@ -2,7 +2,9 @@
 title: "Nginx 学习笔记：http代理/负载均衡/长连接/健康检查"
 date: 2020-10-05
 permalink: /2020-10-05-nginx-load-balance/
+tags: [网关设计, HTTP协议, 负载均衡]
 ---
+
 Nginx 是一款轻量级的 Web 服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
 
 

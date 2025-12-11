@@ -2,6 +2,7 @@
 title: "限流算法-时间窗口算法"
 date: 2020-10-10
 permalink: /2020-10-10-time-window/
+tags: [限流设计, 可用性设计]
 ---
 ## 用途
 

@@ -2,6 +2,7 @@
 title: "MySQL 主从一致性问题"
 date: 2020-09-16
 permalink: /2020-09-16-mysql-zhucong/
+tags: [并发编程, MySQL, 进群设计, 事务设计]
 ---
 ## 概述
 

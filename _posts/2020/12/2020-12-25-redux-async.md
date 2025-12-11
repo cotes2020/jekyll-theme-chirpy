@@ -2,7 +2,9 @@
 title: "处理Redux异步状态更新"
 date: 2020-12-25
 permalink: /2020-12-25-redux-async/
+tags: [状态管理, 异步编程]
 ---
+
 ## 纯 redux 如何处理异步状态
 
 
