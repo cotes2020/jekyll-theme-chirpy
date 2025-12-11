@@ -2,7 +2,9 @@
 title: "认识JS社区通用DI库-Inversify"
 date: 2021-07-23
 permalink: /2021-07-23-js-inversify/
+tags: [DI, IoC]
 ---
+
 ## 什么inversify
 
 

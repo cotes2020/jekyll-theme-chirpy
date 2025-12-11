@@ -3,6 +3,7 @@ title: "ImmutableJS 实战"
 date: 2021-03-05
 permalink: /2021-03-05-immutable-js/
 categories: ["C工作实践分享"]
+tags: [不可变数据设计]
 ---
 
 ## 特性 1: 内置对象

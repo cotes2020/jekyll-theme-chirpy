@@ -3,6 +3,7 @@ title: "JSON Schema应用开发"
 date: 2021-04-19
 permalink: /2021-04-19-json-schema/
 categories: ["C工作实践分享"]
+tags: [Schema设计, 数据处理]
 ---
 
 ## json schema 作用

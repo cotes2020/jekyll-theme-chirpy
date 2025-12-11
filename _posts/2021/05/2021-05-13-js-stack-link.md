@@ -2,6 +2,7 @@
 title: "线性栈和链表栈"
 date: 2021-05-13
 permalink: /2021-05-13-js-stack-link/
+tags: [栈, 链表]
 ---
 ## 介绍
 
