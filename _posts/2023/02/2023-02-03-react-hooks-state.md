@@ -2,6 +2,7 @@
 title: "React Hooks 实现状态管理"
 date: 2023-02-03
 permalink: /2023-02-03-react-hooks-state/
+tags: [状态管理, 函数式编程, 组件开发]
 ---
 
 - 主要api：useContext和useReducer

@@ -2,7 +2,9 @@
 title: "NodeJS 多线程编程"
 date: 2022-05-06
 permalink: /2022-05-06-worker-threads/
+tags: [并发编程]
 ---
+
 > 开发环境：Node.JS v14.8.0
 
 

@@ -2,7 +2,9 @@
 title: "NodeJS开发交互式命令行工具"
 date: 2022-04-11
 permalink: /2022-04-11-nodejs-shell/
+tags: [命令行编程]
 ---
+
 ## 颜色控制
 
 

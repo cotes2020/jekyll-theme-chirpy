@@ -2,7 +2,9 @@
 title: "NodeJS 多进程编程"
 date: 2022-04-17
 permalink: /2022-04-17-process-cluster/
+tags: [并发编程]
 ---
+
 ## nodejs中的进程对象-process
 
 

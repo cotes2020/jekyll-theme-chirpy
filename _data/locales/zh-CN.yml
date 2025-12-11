@@ -12,7 +12,7 @@ tabs:
   # format: <filename_without_extension>: <value>
   home: 博客首页
   categories: 内容索引
-  tags: 标签
+  tags: 技术索引
   archives: 历史快照
   about: 开发者信息
 

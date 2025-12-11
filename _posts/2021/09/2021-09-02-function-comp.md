@@ -2,6 +2,7 @@
 title: "函数式编程中的Function Composition"
 date: 2021-09-02
 permalink: /2021-09-02-function-comp/
+tags: [函数式编程]
 ---
 ## Function Composition
 

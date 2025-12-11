@@ -2,6 +2,7 @@
 title: "常见 Web 攻击手段和防范策略"
 date: 2022-04-07
 permalink: /2022-04-07-web-safety/
+tags: [安全设计]
 ---
 ## CSRF：跨站请求伪造
 

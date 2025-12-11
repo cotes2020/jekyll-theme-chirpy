@@ -3,7 +3,9 @@ title: "BitMap 优化美业模版的「预约模块」"
 date: 2021-11-23
 permalink: /2021-11-23-bitmap-yuyue/
 categories: ["C工作实践分享"]
+tags: [BitMap, 数据库设计, MonogoDB]
 ---
+
 ## 预约功能难点
 
 
