@@ -79,7 +79,7 @@ The Typical Phases of the Software Development Life Cycle (SDLC):
 - **Maintain**:
   - Once software is in production and being used by customers, we need to continuously maintain it
   - This is the ongoing phase where:
-    - the software is monitored, maintained, and updated to meet changing user needs and address any issues that arise after deployment. 
+    - the software is monitored, maintained, and updated to meet changing user needs and address any issues that arise after deployment.
     - Bug fixes, enhancements, and performance improvements are continuously performed.
     - monitoring the software and the environment for overall performance issues and for security purposes
 

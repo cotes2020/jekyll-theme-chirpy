@@ -44,4 +44,3 @@ SCA tools maintain a `list of known vulnerable components`
 
 - scan your code repository on a regular basis
 - have them run a scan each time you're writing new code as part of your deployment pipeline
-

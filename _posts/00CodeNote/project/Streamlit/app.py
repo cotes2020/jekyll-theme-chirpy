@@ -1,6 +1,6 @@
-import streamlit as st
-import pandas as pd
 import altair as alt
+import pandas as pd
+import streamlit as st
 
 # ----------- Custom Theme -----------
 st.set_page_config(
@@ -144,9 +144,9 @@ with tab4:
     with col1:
         st.success(
             f"""
-        🥇 **Cheapest Price**  
-        - Fruit: **{cheapest['fruit']}**  
-        - Shop: **{cheapest['shop']}**  
+        🥇 **Cheapest Price**
+        - Fruit: **{cheapest['fruit']}**
+        - Shop: **{cheapest['shop']}**
         - Price: **${cheapest['price']:.2f}**
         """
         )
@@ -154,9 +154,9 @@ with tab4:
     with col2:
         st.error(
             f"""
-        💰 **Most Expensive Price**  
-        - Fruit: **{most_expensive['fruit']}**  
-        - Shop: **{most_expensive['shop']}**  
+        💰 **Most Expensive Price**
+        - Fruit: **{most_expensive['fruit']}**
+        - Shop: **{most_expensive['shop']}**
         - Price: **${most_expensive['price']:.2f}**
         """
         )

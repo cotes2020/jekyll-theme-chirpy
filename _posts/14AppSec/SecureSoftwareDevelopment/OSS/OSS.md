@@ -28,7 +28,7 @@ Here are your structured notes on Open Source Software (OSS) and its Security Im
 > - OSS (Open Source Software): Software with source code made available for use and modification.
 > - Dependencies: External pieces of software (often other OSS projects) that a main project relies on to function.
 > - Zero-Day Vulnerability: A software flaw unknown to those who should be interested in its mitigation (vendor, etc.) that is exploited by attackers before the vendor can develop a patch.
-> - Application Security (AppSec): The process of developing, adding, and testing security features within applications to prevent vulnerabilities. 
+> - Application Security (AppSec): The process of developing, adding, and testing security features within applications to prevent vulnerabilities.
 
 - What is Open Source Software (OSS)?
   - Definition: Software that can be used and integrated into new features or products to avoid reinventing the solution.

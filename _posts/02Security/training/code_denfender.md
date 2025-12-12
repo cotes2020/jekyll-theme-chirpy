@@ -80,12 +80,12 @@ Alice has A record keeping application
 
 - thoroughly reviewed and tested by her peers and is satisfied that it is secure and ready for deployment.
 - Alice is not particularly experienced with web-server internals and configuration files editing. So, she decided to use an `older Apache web-server image` she found in a repository in her organization, which was `preconfigured with cPanel` (which provides a graphical interface and automation tools to simplify the process of hosting a web site), and easily deployed her application there.
-- The vulnerable application pane loads a record keeping application. 
+- The vulnerable application pane loads a record keeping application.
 - Alice is an authorized user of this application. She logs in with the following credentials to check if everything was deployed correctly:
   - Username: `alice@suredence.com`
   - Password: `Alice123!`
 
-Bob is a hacker. 
+Bob is a hacker.
 
 - He scans the Web, testing for old and recent Bash vulnerabilities (there is always a possibility that someone forgot to run an update on their server).
 - In his discovery, Bob uses an `Internet port scanner` and a `Proxy tool` to `intercept HTTP/S requests`, allowing him to also tamper with them and create malicious request payloads.
@@ -96,7 +96,7 @@ Bob is a hacker.
 
 ```bash
 [bob@hackserver~]# nmap -sV -p443 --script http-shellshock records.suredence.com
-Starting Nmap 7.60 ( https://nmap.org ) at Thu Dec 11 2025 15:52:35 GMT-0800 (Pacific Standard Time) 
+Starting Nmap 7.60 ( https://nmap.org ) at Thu Dec 11 2025 15:52:35 GMT-0800 (Pacific Standard Time)
 Nmap scan report for records.suredence.com (2.2.27)
 Host is up (0.023s latency).
 rDNS record for 2.2.27: server-2-2-27.fra2.r.cloudfront.net
@@ -109,7 +109,7 @@ PORT    STATE SERVICE  VERSION
 |   IDs:  CVE:CVE-2014-6271
 |   This web application might be affected by the vulnerability known as Shellshock. It seems the server
 |   is executing commands injected via malicious HTTP headers.
-|   
+|
 |   Disclosure date: 2014-09-24
 |   References:
 |   http: //www.openwall.com/lists/oss-security/2014/09/24/10
@@ -136,32 +136,32 @@ $ curl -H "custom:() { :; }; echo Content-Type: text/html; echo; /bin/cat /etc/p
 > User-Agent: curl/7.54.0"}
 > Accept: */*
 > "custom: () { :; }; echo Content-Type: text/html; echo; /bin/cat /etc/passwd"
-root:x:0:0:root:/root:/bin/bash 
- daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin 
-  bin:x:2:2:bin:/bin:/usr/sbin/nologin 
- sys:x:3:3:sys:/dev:/usr/sbin/nologin 
- sync:x:4:65534:sync:/bin:/bin/sync 
- 
-  ... 
- 
-  Content-Type: text/html 
- 
- <!DOCTYPE html> 
- <html lang='en'> 
- <head> 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-  <title></title> 
- </head> 
- <body> 
-  ... 
+root:x:0:0:root:/root:/bin/bash
+ daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+  bin:x:2:2:bin:/bin:/usr/sbin/nologin
+ sys:x:3:3:sys:/dev:/usr/sbin/nologin
+ sync:x:4:65534:sync:/bin:/bin/sync
+
+  ...
+
+  Content-Type: text/html
+
+ <!DOCTYPE html>
+ <html lang='en'>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+ </head>
+ <body>
+  ...
  </body>
 ```
 
-- The Shellshock vulnerability affected certain version of the GNU Bash parser (up to version 4.3). The vulnerability resided in the ability to `arbitrarily define environment variables which specify a function definition` within a Bash shell. 
+- The Shellshock vulnerability affected certain version of the GNU Bash parser (up to version 4.3). The vulnerability resided in the ability to `arbitrarily define environment variables which specify a function definition` within a Bash shell.
   - When Bash continued to process shell commands after the function definition, a code injection attack became possible.
   - The Shellshock bug is a parser bug and an encapsulation bug.
   - When we set the value of some environment variable "x", we make sure it is wrapped in apostrophes ('). Shellshock occurs despite proper encapsulation allowing it to be escaped.
-  - Let's check if our Bash is vulnerable. Set the following value into "x": 
+  - Let's check if our Bash is vulnerable. Set the following value into "x":
 
 ```bash
 [root@recordssuredence~]# env x='() { :;}; echo vulnerable' bash -c 'echo hello'
@@ -218,9 +218,9 @@ function validateCertificate(validationErrors):
 return false
 ```
 
-- SSL2 and SSL3 have critical vulnerabilities that allow an attacker to decipher the ciphertext. 
-- TLS 1.0 itself doesn't have critical vulnerabilities but in order to comply with some standards, TLS 1.0 shouldn't be used. 
-- TLS 1.2 has no known security vulnerabilities. 
+- SSL2 and SSL3 have critical vulnerabilities that allow an attacker to decipher the ciphertext.
+- TLS 1.0 itself doesn't have critical vulnerabilities but in order to comply with some standards, TLS 1.0 shouldn't be used.
+- TLS 1.2 has no known security vulnerabilities.
 - In TLS 1.3, support of some obsolete and insecure features was removed.
 
 ---
@@ -233,12 +233,12 @@ return false
 int * get_packet_content(int *raw_packet) {
   int *packet_data, *length, i, required_memory;
   // first four bytes is the size of the packet
-  length = raw_packet; 
+  length = raw_packet;
 
   required_memory = (*length * sizeof(int));//sizeof(int) is assumed to be 4 bytes
-  //required_memory = 240 = (60* 4) 
-  //required_memory = 4 = (1073741825* 4) 
-  //required_memory = 4 = (1073741825* 4) 
+  //required_memory = 240 = (60* 4)
+  //required_memory = 4 = (1073741825* 4)
+  //required_memory = 4 = (1073741825* 4)
 
   packet_data = malloc(required_memory);
   if(packet_data == NULL){
@@ -265,7 +265,7 @@ int * get_packet_content(int *raw_packet) {
 
 ### Secrets Management
 
-- Liz, Josh, Johnny, Kenny, and Peter aredevelopers working on an IaC projectat a company. ​The IaC configuration is stored in a git repository where all the developers have read access, and a few DevSecOpsteam members have write access. 
+- Liz, Josh, Johnny, Kenny, and Peter aredevelopers working on an IaC projectat a company. ​The IaC configuration is stored in a git repository where all the developers have read access, and a few DevSecOpsteam members have write access.
 - ​Josh, ​a DevSecOps team member, mistakenly ​​uploads a separate Terraform secrets file stored locally on their laptop to the git repository. Upon noticingthe mistake, Josh removes the file but neither wipes it from the history nor changes the secrets.
 
 - Later that month, Dudly, the attacker, compromises Liz’s computer. ​He steals her git credentials and examines the available repositories. The repository with the IaC configuration seems like a good target for valuable data. ​​Dudly scans the repository using open-source IaC and git secret scanners and manages to find a file containing an AWS access key.
@@ -302,16 +302,16 @@ X-Frame-Options: DENY
 
 X-Robots-Tag: noodp
 
-x-xss-protection: 1; mode=block  
+x-xss-protection: 1; mode=block
 ```
 
 `HTTP Strict Transport Security (HSTS)` is a mechanism that prevents user-agents (a browser or any kind of program designed for communication with a particular server) from browsing a website via an unencrypted connection in case an encrypted connection can be established, and only using a trusted certificate.
 
-- If the request is communicated through an unencrypted channel, it can be captured and tampered with by an attacker. The attacker then can steal or modify any information transmitted between the client and the server or redirect the user to a phishing website. 
+- If the request is communicated through an unencrypted channel, it can be captured and tampered with by an attacker. The attacker then can steal or modify any information transmitted between the client and the server or redirect the user to a phishing website.
 - So, the first goal of HSTS is to ensure traffic is encrypted, so it instructs the browser to always use HTTPS instead of HTTP.
-- Usually, browsers allow users to ignore TLS errors and continue browsing potentially insecure websites. With HSTS enabled, the user will be unable to skip the browser warning and continue. 
+- Usually, browsers allow users to ignore TLS errors and continue browsing potentially insecure websites. With HSTS enabled, the user will be unable to skip the browser warning and continue.
 - The second important goal of HSTS is to make sure that the traffic is encrypted using a trusted and valid certificate.
- 
+
 ---
 
 ### No Server-Side Validation
@@ -343,7 +343,7 @@ This is the fundamental design flaw that is the root cause of many vulnerabiliti
 //     return HTMLCharMap[ch];
 //   }
 //   return s.replace(/[&"'<>\\`:]/g, encodeHTMLmapper);
-// }; 
+// };
 ```
 
 Bob is a malicious user of the WorldNews.info website. He uses a proxy tool to scan web servers for vulnerabilities, and while scanning, he found out that the part of the functionality on the WorldNews.info server that is responsible for processing user comments has no server-side validation of user input.
@@ -406,9 +406,9 @@ The ability to traverse file paths and load arbitrary files from the system is c
 
 ![](../../../assets/img/code_denfender-20251212104828.png)
 
-There is an Internet banking server-side application that has an `API`. 
+There is an Internet banking server-side application that has an `API`.
 
-- Web and mobile clients communicate with the application back-end through the API using JSON format. 
+- Web and mobile clients communicate with the application back-end through the API using JSON format.
 - The application also has its own database.
 - Data that goes through your back-end section of the "pipeline" shouldn't be considered trusted only because it has already got into that "pipeline" through some entry point and traveled through some other systems before it finally comes to your back-end application.
 
@@ -423,10 +423,10 @@ When users provide the screenshots, they are first passed to the ImageMagic whic
 ![](../../../assets/img/code_denfender-20251212105101.png)
 
 ```py
-// Processing the user request and file upload.  
-function convert(filename, userId): 
-    args = "/c magick convert C:\path\to\uploaded\files\" + filename + " -resize 50% C:\path\to\screenshots\folder\"+ userId +"\RandomlyGeneratedFileName.png"; 
-    run OS Command ”cmd.exe” + args  
+// Processing the user request and file upload.
+function convert(filename, userId):
+    args = "/c magick convert C:\path\to\uploaded\files\" + filename + " -resize 50% C:\path\to\screenshots\folder\"+ userId +"\RandomlyGeneratedFileName.png";
+    run OS Command ”cmd.exe” + args
 ```
 
 He intercepts the HTTP request that is going to the Internet Banking server and changes there the legitimate filename to the malicious command:
@@ -501,7 +501,7 @@ A defense-in-depth approach also recommends to carefully `set permissions for th
 
 ```js
 chars = @"^[a-zA-Z0-9.]+$"
-if(RegexMatch(filename, chars) is true:  
+if(RegexMatch(filename, chars) is true:
     ....
 ```
 
@@ -519,27 +519,27 @@ The main idea of the XSS is to break out of the current context and end up insid
 <head>
 <script>
 function submitFunction(message){
- 
+
     let additionalMessage = "[Insert into Javascript between double-quotes]";
     // let additionalMessage = "";alert('We triggered the XSS!');"";
- 
- 
+
+
     let thankyou = `[Insert into template literal], we will be happy to see you on our Javascript course!
     Have a nice day ${[Insert into template literal]}
     There are ${daysLeft} days left till the course start`;
     // let thankyou = `${alert('We triggered the XSS!')}, we will be happy to see you on our Javascript course!
     // Have a nice day ${alert('We triggered the XSS!')}
- 
+
     var daysLeft = eval(getStartDate() - [Insert into eval]);
     // var daysLeft = eval(getStartDate() - alert('We triggered the XSS!'));
- 
+
     document.getElementsById("enroll").innerText = message + "/n" + additionalMessage;
- 
+
 }
- 
+
 /* Do not forget to add authorization to the admin interface at [Insert into JS comment] */
 </script>
- 
+
 <style>
 .item-each .item-text{font-size:14px;font-weight:300;padding:8px; color:[Insert into CSS];}
 /* .item-each .item-text{font-size:14px;font-weight:300;padding:8px; color:"blue";}</style><script>alert('We triggered the XSS!')</script><style>;} */
@@ -547,11 +547,11 @@ function submitFunction(message){
 .item-each .item-text ul li span{font-weight:300}
 .item-each .item-image{height:60px;width:60px;position:absolute;top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
 </style>
- 
+
 </head>
- 
+
 <body>
- 
+
 <div class=[Insert_tag_attribute_without_quotes]>
 <div class=1 onmouseover=alert('We triggered the XSS!')>
     <a href="/paths/javascript?difficulty=[Insert URL query parameter]">
@@ -565,32 +565,32 @@ function submitFunction(message){
                 <ul>
                     <li><span>[Insert between HTML tags]</span> Courses</li>
                     <li><span><script>alert('XSS is successfully triggered!')</script></span> Courses</li>
-                    
+
                     <li><span>21</span> Hours</li>
                 </ul>
             </div>
         </div>
     </a>
 </div>
- 
+
 <div id="enroll"></div>
 <form action="/enroll" class="form" onsubmit="submitFunction([Insert into javascript without quotes])">
 <form action="/enroll" class="form" onsubmit="submitFunction(0123);alert('XSS is successfully triggered!')">
 
     First name: <input type="text" name="fname" value="[Insert into double-quoted attribute]"><br>
-    First name: <input type="text" name="fname" value="onmouseover=alert('XSS is successfully triggered!') alt="1"><br>    
+    First name: <input type="text" name="fname" value="onmouseover=alert('XSS is successfully triggered!') alt="1"><br>
 
     Last name: <input type="text" name="lname"><br>
   <input type="submit" value="Submit">
 </form>
- 
- 
+
+
 <noscript>
     Please turn on Javascript! [Insert into noscript tag] element cannot be displayed without Javascript!
     Please turn on Javascript! </noscript><script>alert('XSS is successfully triggered!')</script> element cannot be displayed without Javascript!
 
 </noscript>
- 
+
 <iframe src="[Insert iframe src attribute]" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 ```
 
@@ -609,12 +609,12 @@ Note that in this case, HTML encoding is more preferable than escaping quotes (d
 
 There are two options for an attacker to trigger the XSS when template literals are used:
 
-1. If the user-controlled data is inserted between the backticks "(`)" and not inside "${}", 
-   1. an attacker should either `break out of the backticks and insert a malicious script` into the JavaScript context 
-   2. or insert a `malicious script enclosed in curly brackets and prepended with a dollar sign (${malicious script})` between the backticks. 
+1. If the user-controlled data is inserted between the backticks "(`)" and not inside "${}",
+   1. an attacker should either `break out of the backticks and insert a malicious script` into the JavaScript context
+   2. or insert a `malicious script enclosed in curly brackets and prepended with a dollar sign (${malicious script})` between the backticks.
    3. In both cases, the malicious script is going to be executed.
 
-2. If the user-controlled data is inserted right into `${}`, an attacker can insert the JavaScript code right away. 
+2. If the user-controlled data is inserted right into `${}`, an attacker can insert the JavaScript code right away.
 
 
 #### To prevent XSS
@@ -691,14 +691,14 @@ Currently, URLs in CSS properties are sanitized by browsers, and CSS expressions
 
 Developers should avoid disclosing sensitive data to clients in API responses, as this can expose the system to attack.
 
-The consequences of excessive data exposure vulnerability vary depending on the type of sensitive data disclosed. 
+The consequences of excessive data exposure vulnerability vary depending on the type of sensitive data disclosed.
 
-The remediation strategies for excessive data exposure attacks are:  
+The remediation strategies for excessive data exposure attacks are:
 
-- Avoiding client-side filtering  
-- Defining sensitive data  
-- Examining API responses  
-- Utilizing the Data Transfer Object design 
+- Avoiding client-side filtering
+- Defining sensitive data
+- Examining API responses
+- Utilizing the Data Transfer Object design
 - Creating tests to check provided data
 
 ---
@@ -878,7 +878,7 @@ bobhackeye@kali: ~#
 @RequestMapping("/loan")
 public class LoansController {
   ...
-    @PostMapping("/approve")  
+    @PostMapping("/approve")
     public ResponseEntity<LoanStatus> approve(@RequestBody UUID loanId) {
         return ResponseEntity.ok(loanService.approve(loanId));
   }
@@ -899,7 +899,7 @@ There are three high-level ways of configuring authentication and authorization:
 The centralized configuration can be mixed with the method-level configuration. It also allows setting up authentication and authorization based on URL patterns. (Authorization is limited to the check of the current user role or authority.)
 
 ```java
-@PreAuthorize("hasRole('LoanManager')") 
+@PreAuthorize("hasRole('LoanManager')")
 ```
 
 ---
@@ -939,21 +939,21 @@ Bob is a hacker. He registered an account on the Bizent platform, set up the sam
 
 In a response, Bob receives a JSON containing the details of all the fake users from his second shopping app.
 
-This means that the `/api/admin/shops/` API endpoint is vulnerable to BOLA attacks. 
+This means that the `/api/admin/shops/` API endpoint is vulnerable to BOLA attacks.
 
 ```java
 @PreAuthorize("hasRole('ADMIN')")
-@GetMapping("/{id}") 
-public List<User> retrieveAllUsers(@PathVariable(value = "id") UUID id){ 
+@GetMapping("/{id}")
+public List<User> retrieveAllUsers(@PathVariable(value = "id") UUID id){
   List<User> allUsers = new ArrayList<>();
-  shopUsersRepository.findByShopId(id.toString()).forEach(allUsers::add); 
+  shopUsersRepository.findByShopId(id.toString()).forEach(allUsers::add);
   return allUsers;
 }
 ```
 
 JAVA Spring Security authorization mechanism doesn’t offer any specific controls against BOLA.
 
-- In some cases, an expression-based check can be used for authorization, e.g., a `@PreAuthorize annotation containing a comparison of the currently authenticated user name with a user name parameter supplied in the incoming object`, or a `@PostFilter annotation that narrows a collection of objects down to the ones the current user has access to`. 
+- In some cases, an expression-based check can be used for authorization, e.g., a `@PreAuthorize annotation containing a comparison of the currently authenticated user name with a user name parameter supplied in the incoming object`, or a `@PostFilter annotation that narrows a collection of objects down to the ones the current user has access to`.
 - But it’s not a solid approach because it doesn’t cover all the cases.
 
 BOLA protection should reside on the repository or DB level, which are not a part of Spring Security.
@@ -973,7 +973,6 @@ The following strategies can be applied to mitigate the Broken Object Level Auth
 4. A separate DB schema for every organization (or a separate DB on a separate tenant) could also prevent unauthorized users from accessing data that belongs to another company.
 
 ```java
-long loggedUserId = usersRepository.findByUsername(currentPrincipalName).getId(); 
+long loggedUserId = usersRepository.findByUsername(currentPrincipalName).getId();
 Note requestedNote = notesRepository.findById(id).get();
 ```
-

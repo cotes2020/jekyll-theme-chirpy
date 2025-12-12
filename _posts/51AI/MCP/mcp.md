@@ -23,13 +23,13 @@
   - Proxy/Credential Forwarding
     - MCP server forwards client-provided credentials directly to product API
     - MCP server does NOT exchange tokens
-    - Each client provides their own product token 
+    - Each client provides their own product token
     - Upstream product API handles all authentication and authorization
     - User identity is maintained (each user uses their own product token)
     - MCP server acts as a pass-through proxy with input validation
 
 - Secrets and Credentials
-  
+
   - Client secrets and credentials management:
     - Client Provides Credentials Per-Request
       - Clients supply their own tokens via request headers per-operation
@@ -43,7 +43,7 @@
     - Security Measures
       - Token format validation
       - Tokens logged only as prefix
-  
+
   - Application secrets and credentials management:
     - No Application-Level Secrets:
       - MCP server has no secrets of its own
@@ -501,7 +501,7 @@ Input Validation
   - alphanumeric only
   - predefined values only
   - Whitelist validation
-- Length constraints (minimum 9 chars: 1 prefix + 8 alphanumeric) 
+- Length constraints (minimum 9 chars: 1 prefix + 8 alphanumeric)
 - Range validation
 - Prefix validation
 
@@ -532,22 +532,22 @@ Deserialization:
   - file creation functionality
   - user input written to disk
 
-- Directory listing  
+- Directory listing
   - directory traversal operations (os.listdir(), os.walk(), etc.)
   - directory listing functionality
   - directory serving endpoints
 
-- File upload  
+- File upload
   - file upload endpoints
   - multipart form data handling for files
   - file storage functionality
 
-- Symlink following  
+- Symlink following
   - file operations that could follow symlinks
   - os.path.realpath() or symlink resolution
   - file access via paths
 
-- Race condition (TOCTOU)  
+- Race condition (TOCTOU)
   - file existence checks followed by file operations
   - os.path.exists() → open() patterns
   - file metadata checks
@@ -565,7 +565,7 @@ Deserialization:
 
 ---
 
-1. Authentication and Authorization: 
+1. Authentication and Authorization:
    1. It uses Slack tokens (third-party authentication) rather than Approved Apple Internal Authentication Methods (A3, IdMS, AppleConnectOIDC, IAS, or Notary adapters).
    2. Special Considerations for Proxy-Type MCP Servers: Currently relies entirely on Slack's authentication system.
 
@@ -576,7 +576,7 @@ Deserialization:
       3. send_direct_message: logs Slack user_id (e.g., "U1234567890")
       4. send_multi_person_dm
       5. list_channels: logs Slack user_id (e.g., "U1234567890")
-   2. Example compliant log: 
+   2. Example compliant log:
       1. logger.info(f"AUDIT: {timestamp} | user_dsid={dsid} | user_email={email} | tool=post_channel_message | channel={channel} | result=success")
 
 3. Input validation:
