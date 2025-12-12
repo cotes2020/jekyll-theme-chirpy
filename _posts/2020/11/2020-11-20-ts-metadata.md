@@ -2,7 +2,7 @@
 title: "TypeScript元编程实现对象函数参数类型检查"
 date: 2020-11-20
 permalink: /2020-11-20-ts-metadata/
-categories: [元编程]
+tags: [元编程]
 ---
 ## 环境配置
 
