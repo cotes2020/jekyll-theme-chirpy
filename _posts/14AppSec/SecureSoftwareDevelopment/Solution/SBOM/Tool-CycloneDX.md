@@ -1,5 +1,5 @@
 
-- [CycloneDX](#cyclonedx)
+- [SBOM Tool - CycloneDX](#sbom-tool---cyclonedx)
 - [Vulnerability Exploitability Exchange (VEX)](#vulnerability-exploitability-exchange-vex)
   - [Independent BOM and VEX BOM](#independent-bom-and-vex-bom)
   - [BOM With Embedded VEX](#bom-with-embedded-vex)
@@ -9,7 +9,7 @@
 
 ---
 
-# CycloneDX
+# SBOM Tool - CycloneDX
 
 ---
 
