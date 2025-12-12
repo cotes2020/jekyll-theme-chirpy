@@ -1,23 +1,26 @@
 ---
-title: "跨境电商 BFF 集群耗时过长问题排查与性能优化之旅"
+title: "跨境电商 NodeJS BFF 集群耗时问题定位与优化之旅"
 date: 2024-09-01
 permalink: /2024-09-01-bff-performance/
 categories: [C工作实践分享]
 ---
 
-# 背景
+- 本文介绍了如何在一个真实业务服务中，通过火焰图等工具，定位和解决耗时问题。抽丝剥茧，遇水搭桥，最终也取得了非常好的效果。
+- 本文介绍的BFF集群是我工作这么多年来觉得，为数不多真正业务、后端、前端都认可并且真有用的BFF服务，因为涉及到跨境和合规，所以需要BFF来提供「聚合」和「代理」的功能，解决大陆前端请求多次海外服务的链路耗时问题。
+
+## 背景
 
 在2023 Q3（还在字节跳动的时候），被调去支援Global Selling项目（后面也称S业务）。根据原团队同学的调研结果文档发现整个跨境电商的 BFF 服务层在调用rpc接口时，存在通用的接口耗时过长问题，rpc本身耗时与nodejs端耗时达到了惊人的10:1 。
 
-和原团队同学沟通后得知，此问题在长达一个Q的时间里持续影响着S业务，并且随着美英开国，对用户体验的影响日趋严重。因此专门抽出时间与相关同学一起进行定位和解决。
+当时和原团队同学沟通后得知，此问题在长达一个Q的时间里持续影响着S业务，并且随着美英开国，对用户体验的影响日趋严重。因此专门抽出时间与相关同学一起进行定位和解决。
 
-# 收益效果
+## 收益效果
 
 如果不想看下面的定位和分析过程，可以直接看这里的收益。**效果比较明显。**
 
 下面截图是压测并发数4 5分钟，同时打CPU profile的记录，运行120s，查看整体的js耗时情况
 
-## CPU Profile 整体降低 26%
+### CPU Profile 整体降低 26%
 
 ![](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2024-09-01-bff-performance/1.jpg)
 
@@ -35,7 +38,7 @@ categories: [C工作实践分享]
 优化2（最终效果）：**开启rpc预编译+关闭全量logger**
 - excute⽅法耗时降下来，整体cpu资源占⽤减少26%
 
-## Nodejs侧rpc调用时间与rpc时间的比降低到 1:1
+### Nodejs侧rpc调用时间与rpc时间的比降低到 1:1
 
 ![](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2024-09-01-bff-performance/4.jpg)
 
@@ -55,7 +58,7 @@ categories: [C工作实践分享]
 优化2（最终效果）：**开启rpc预编译+关闭全量logger**
 - bff时间:rpc时间稳定在1:1，除了网络，几乎没有损耗了
 
-## 相同并发下QPS提高2倍，耗时降低60%
+### 相同并发下QPS提高2倍，耗时降低60%
 
 控制变量：同样使用并发量4进行压测，观察单机服务的qps。
 
@@ -73,7 +76,7 @@ categories: [C工作实践分享]
 优化2：平均qps在10左右，耗时350ms左右
 
 
-# NodeJS 服务排查步骤
+## NodeJS 服务排查步骤
 
 > 古人云：工欲善其事，必先利其器。
 
@@ -100,11 +103,11 @@ categories: [C工作实践分享]
   - 使用 Perf 压测中台(内部平台) 进行压测，然后再通过「监控观察」和「进程观察」分析优化效果
 
 
-# 问题归纳
+## 问题归纳
 
-## RPC未开启「预编译」导致astDecode和runMicroTasks耗时过多
+### RPC未开启「预编译」导致astDecode和runMicroTasks耗时过多
 
-### 现象描述
+#### 现象描述
 
 ![](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2024-09-01-bff-performance/11.png)
 
@@ -114,15 +117,15 @@ categories: [C工作实践分享]
 
 通过拓扑链路分析，能看出来底层rpc耗时只有23ms，而nodejs服务里面的rpc调用耗时达到了390ms。多出来很多无效时间。
 
-### 问题分析
+#### 问题分析
 
 通过第一张cpu profiler图的方法对应代码路径进行定位，发现是 `@byted-service/rpc` 的内置方法。通过函数名以及内部的运行逻辑，大概能猜出来是在对 IDL 进行 AST 解析时，耗时比较大。
 
 当时找了 NodeJS Infra 的同学帮忙定位，确实是 AST 解析导致的耗时过多（问题群已解散，找不到截图了 ）。**可以通过打开「预编译」配置来优化**。
 
-### 解决方案
+#### 解决方案
 
-#### 预编译
+##### 预编译
 
 > 什么是预编译呢？
 
@@ -167,9 +170,9 @@ function encode() {
 
 ![](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2024-09-01-bff-performance/15.png)
 
-## 日志打印导致CPU过高
+### 日志打印导致CPU过高
 
-### 现象描述
+#### 现象描述
 
 ![](https://raw.githubusercontent.com/dongyuanxin/static/main/blog/imgs/2024-09-01-bff-performance/16.png)
 
@@ -177,9 +180,9 @@ function encode() {
 
 同时，从内部的告警来看，当一个接口里面调用的rpc接口返回数据比较大时（比如PLM系统的选品池列表接口），数据达到10mb，此时调用次数过多就会导致OOM（服务崩溃了）
 
-### 问题分析  
+#### 问题分析  
 
-#### 日志体积
+##### 日志体积
 
 目前使用 JSON.stringify 全量转换数据，其中遍历了6层，对里面超出1000长度的字符串做了裁剪。
 
@@ -189,7 +192,7 @@ function encode() {
 
 **治理思路：利用 util.inspect 替换 JSON.stringfy() ，控制复杂对象序列化后的字符串长度（日志长度）。**
 
-#### 文件I/O
+##### 文件I/O
 
 在http请求进入/返回和rpc请求发送/返回都做了日志打印，并且 gulu 提供的 logger.info() 方法也会往本地文件写入日志，占用文件IO：
 1. Console：把日志输出到控制台，默认仅本地生效
@@ -199,7 +202,7 @@ function encode() {
 
 **治理思路：对于大多数日志场景而言，我们都是在argos上对日志数据进行消费，极少有上实例上直接查询日志，并且实例上的日志会因为机器容量问题定期清理，可靠性不高，可以考虑关闭**
 
-#### 无效打印
+##### 无效打印
 
 **由于NodeJS服务和前端页面不同，在中心化的服务中，大量打印非常影响性能。** 并且大多数日志对于排查问题而言没有帮助，属于无用日志，比如log会打印所有header信息，用户登录信息会打印所有用户权限，transferProperty会打印所有转换用的数据等，降低排查效率。
 
@@ -207,9 +210,9 @@ function encode() {
 
 **治理思路：提供统一的安全打印函数，函数内部调用 gulu 的 logger 方法；通过 eslint 配置，在中心化的nodejs 服务中禁用 console.log 方法。**
 
-### 解决方案
+#### 解决方案
 
-#### JSON 序列化
+##### JSON 序列化
 
 使用 `utils.inspect()` 方法替换 `JSON.stringfy()` ，优化日志体积大小。`utils.inspect()` 函数配置如下：
 - 整体日志长度限制在1000个字符
@@ -234,7 +237,7 @@ const genLog = (obj: any) =>
   .substring(0, 1000);
 ```
 
-#### 通用打印函数
+##### 通用打印函数
 
 - 封装通用打印函数 sLog 。代码实现上，调用前面封装的 genLog 进行json序列化，调用gulu 的 logger 方法进行打印。并且将其挂入到 gulu 的上下文中。
 - rpc-forward、gulus-trace等插件内部，使用 sLog 方法进行打印，控制打印日志体积，避免console.log 调用导致的阻塞。
@@ -251,7 +254,7 @@ export default (_app: HttpApplication) => ({
 });
 ```
 
-#### 黑名单机制
+##### 黑名单机制
 
 BFF中，不论是rpc转发还是rpc调用拼装业务逻辑，由于gulus-trace的存在，每次rpc请求前后，都会进行日志打印；而在大多数bff接口中，都会调用3-5次rpc请求。
 
@@ -301,7 +304,7 @@ export const rpcLogger: ClientMiddleware = {
 };
 ```
 
-# 总结
+## 总结
 
 - 善用公司内的各类 Node.js 工具分析问题，而不是凭空猜测
 - 定位问题拉 Node.js Oncall 时，给出详细的问题描述以及监控截图，减少沟通成本
