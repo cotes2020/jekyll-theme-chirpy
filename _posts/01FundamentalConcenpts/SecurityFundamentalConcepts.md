@@ -1,6 +1,6 @@
 ---
-title: Security Fundamental Concepts
-date: 2020-02-10 11:11:11 -0400
+title: Basic - Security Fundamental Concepts
+date: 2020-09-23 11:11:11 -0400
 categories: [01FundamentalConcenpts]
 tags: [FundamentalConcenpts, CIA]
 math: true
