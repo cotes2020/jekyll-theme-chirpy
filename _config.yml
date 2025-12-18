@@ -129,6 +129,7 @@ comments:
     input_position: # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
+    data_loading: # optional, default to 'lazy'. Set to 'eager' to load giscus immediately with page.
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
