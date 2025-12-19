@@ -59,6 +59,7 @@ post:
   read_time:
     unit: minuuttia
     prompt: lukea
+  edit: Muokkaa tätä julkaisua
   relate_posts: Jatka lukemista
   share: Jaa
   button:

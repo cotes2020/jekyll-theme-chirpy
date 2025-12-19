@@ -60,6 +60,7 @@ post:
   read_time:
     unit: นาที
     prompt: อ่าน
+  edit: แก้ไขโพสต์นี้
   relate_posts: อ่านต่อ
   share: แชร์
   button:

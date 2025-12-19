@@ -148,6 +148,16 @@ header {
   }
 }
 
+.post-edit {
+  line-height: 2rem;
+
+  > a {
+    &:hover {
+      @extend %link-hover;
+    }
+  }
+}
+
 .post-navigation {
   @include bp.lt(bp.get(lg)) {
     @include mx.pl-pr(0);

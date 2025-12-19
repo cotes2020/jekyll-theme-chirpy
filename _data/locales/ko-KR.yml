@@ -60,6 +60,7 @@ post:
   read_time:
     unit: 분
     prompt: 읽는 시간
+  edit: 이 글 편집
   relate_posts: 관련된 글
   share: 공유하기
   button:
