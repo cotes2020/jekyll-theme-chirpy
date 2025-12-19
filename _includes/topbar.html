@@ -54,24 +54,55 @@
         {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
       {% endif %}
     </div>
+    {% comment %} Container for buttons {% endcomment %}
+    <div class="d-flex">
+      {% unless site.theme_mode %}
+        <button
+          type="button"
+          class="btn btn-link nav-link"
+          aria-label="Switch Mode"
+          id="mode-toggle"
+          onClick="iconSwap()"
+        >
+          {% comment %} <i class="fas fa-adjust"></i> {% endcomment %}
+          <i class="bi bi-brightness-high-fill"></i>
+        </button>
+      {% endunless %}
+      <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
+        <i class="fas fa-search fa-fw"></i>
+      </button>
 
-    <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
-      <i class="fas fa-search fa-fw"></i>
-    </button>
-
-    <search id="search" class="align-items-center ms-3 ms-lg-0">
-      <i class="fas fa-search fa-fw"></i>
-      <input
-        class="form-control"
-        id="search-input"
-        type="search"
-        aria-label="search"
-        autocomplete="off"
-        placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
-      >
-    </search>
-    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">
-      {{- site.data.locales[include.lang].search.cancel -}}
-    </button>
+      <search id="search" class="align-items-center">
+        <i class="fas fa-search fa-fw"></i>
+        <input
+          class="form-control"
+          id="search-input"
+          type="search"
+          aria-label="search"
+          autocomplete="off"
+          placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
+        >
+      </search>
+      <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">
+        {{- site.data.locales[include.lang].search.cancel -}}
+      </button>
+      {% comment %} Theme button {% endcomment %}
+    </div>
   </div>
 </header>
+
+<script>
+  $toggle = document.getElementById('mode-toggle');
+  if (Theme.visualState == 'dark') {
+    $toggle.innerHTML = '<i class="bi bi-brightness-high-fill"></i>';
+  } else if (Theme.visualState == 'light') {
+    $toggle.innerHTML = '<i class="bi bi-moon-stars"></i>';
+  }
+  function iconSwap() {
+    if (Theme.visualState == 'dark') {
+      $toggle.innerHTML = '<i class="bi bi-moon-stars"></i>';
+    } else if (Theme.visualState == 'light') {
+      $toggle.innerHTML = '<i class="bi bi-brightness-high-fill"></i>';
+    }
+  }
+</script>
