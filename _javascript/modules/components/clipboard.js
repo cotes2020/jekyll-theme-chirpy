@@ -68,7 +68,7 @@ function setCodeClipboard() {
   const clipboard = new ClipboardJS(clipboardSelector, {
     target: (trigger) => {
       const codeBlock = trigger.parentNode.nextElementSibling;
-      return codeBlock.querySelector('code .rouge-code');
+      return codeBlock.querySelector('code');
     }
   });
 
