@@ -1,0 +1,15 @@
+---
+title: "Bài viết đầu tiên về hành trình học IT"
+date: 2024-05-20 10:00:00 +0700
+categories: [Chia sẻ, Lập trình]
+tags: [github, blog]
+---
+
+Chào mọi người, đây là bài viết đầu tiên của tôi.
+
+## Tại sao tôi học IT?
+Vì tôi đam mê công nghệ...
+
+## Đoạn code đầu tiên
+```python
+print("Hello World")
