@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"><svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+
+  <!-- ===== Globe ===== -->
+  <circle cx="256" cy="256" r="144" stroke-width="8"></circle>
+
+  <!-- Latitude -->
+  <ellipse cx="256" cy="256" rx="144" ry="72" stroke-width="4" opacity="0.7"></ellipse>
+
+  <ellipse cx="256" cy="256" rx="144" ry="36" stroke-width="4" opacity="0.4"></ellipse>
+
+  <!-- Longitude -->
+  <ellipse cx="256" cy="256" rx="72" ry="144" stroke-width="4" opacity="0.7"></ellipse>
+
+  <ellipse cx="256" cy="256" rx="36" ry="144" stroke-width="4" opacity="0.4"></ellipse>
+
+  <!-- ===== Satellite ===== -->
+  <g transform="translate(256,256) rotate(-35) translate(0,-144)">
+      <rect x="-24" y="-8" width="16" height="16" fill="currentColor"></rect>
+      <rect x="8" y="-8" width="16" height="16" fill="currentColor"></rect>
+      <rect x="-8" y="-8" width="16" height="16" fill="currentColor"></rect>
+  </g>
+
+  <!-- ===== FPGA Chip (Navy 50% Opacity) ===== -->
+  <rect x="176" y="176" width="160" height="160" rx="16" fill="#0B1C2D" fill-opacity="0.5" stroke-width="8"></rect>
+
+  <!-- Chip Pins -->
+  <g stroke-width="6">
+    <line x1="208" y1="160" x2="208" y2="176"></line>
+    <line x1="256" y1="160" x2="256" y2="176"></line>
+    <line x1="304" y1="160" x2="304" y2="176"></line>
+
+    <line x1="208" y1="336" x2="208" y2="352"></line>
+    <line x1="256" y1="336" x2="256" y2="352"></line>
+    <line x1="304" y1="336" x2="304" y2="352"></line>
+
+    <line x1="160" y1="208" x2="176" y2="208"></line>
+    <line x1="160" y1="256" x2="176" y2="256"></line>
+    <line x1="160" y1="304" x2="176" y2="304"></line>
+
+    <line x1="336" y1="208" x2="352" y2="208"></line>
+    <line x1="336" y1="256" x2="352" y2="256"></line>
+    <line x1="336" y1="304" x2="352" y2="304"></line>
+  </g>
+
+  <!-- ===== Internal Digital Routing ===== -->
+  <g stroke-width="4" opacity="0.85">
+    <line x1="200" y1="224" x2="312" y2="224"></line>
+    <line x1="200" y1="288" x2="312" y2="288"></line>
+    <line x1="224" y1="200" x2="224" y2="312"></line>
+    <line x1="288" y1="200" x2="288" y2="312"></line>
+  </g>
+
+  <!-- Logic Nodes -->
+  <g fill="currentColor">
+    <circle cx="224" cy="224" r="6"></circle>
+    <circle cx="288" cy="224" r="6"></circle>
+    <circle cx="224" cy="288" r="6"></circle>
+    <circle cx="288" cy="288" r="6"></circle>
+  </g>
+
+  <!-- Core -->
+  <circle cx="256" cy="256" r="12" fill="currentColor"></circle>
+
+</svg></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
