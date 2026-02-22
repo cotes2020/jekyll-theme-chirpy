@@ -38,4 +38,3 @@ date: 2025-08-01. 23:33 # Init
 - [UI](https://x.com/maribouoekaki/status/1829896941347749902)
 - [UI](https://x.com/Ninnih_/status/1828859787850797101)
 - [힉의 법칙 \"의사결정에 걸리는 시간은 선택지의 개수와 복잡성에 비례해 늘어난다.\"\n\nUX 개선 실제 사례: 노인용 리모콘](https://x.com/JakeSeo8/status/1871830935437730259)
-
