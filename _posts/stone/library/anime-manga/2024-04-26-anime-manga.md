@@ -43,7 +43,7 @@ date: 2024-04-26. 20:55
 # last_modified_at: 2025-09-29. 00:18 # E +TO BE HERO X: 21 22 23화
 # last_modified_at: 2025-10-08. 20:16 # E animation -> anime-manga, +만화 from book.md, ~정리
 # last_modified_at: 2025-10-13. 00:15 # E -TO BE HERO X: to to-be-hero-x
-# last_modified_at: 2025-10-19. 07:16 # EE +타코피의 원죄
+# last_modified_at: 2025-10-19. 07:16 # E +타코피의 원죄
 # last_modified_at: 2025-10-21. 01:47 # E +사무라이 참푸르
 last_modified_at: 2025-11-02. 23:38 # E +와라! 편의점: 유튜브 투니버스 채널 재생목록 링크
 ---

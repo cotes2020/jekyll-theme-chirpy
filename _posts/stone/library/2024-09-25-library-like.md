@@ -27,7 +27,7 @@ date: 2024-09-25. 18:26
 # last_modified_at: 2025-04-23. 05:51 # 트위터 정리
 # last_modified_at: 2025-04-25. 07:12 # Library-Like로 변경, Like 분리
 # last_modified_at: 2025-05-06. 15:43 # 정리
-last_modified_at: 2025-10-19. 08:17 # EE +유튜브 정리
+last_modified_at: 2025-10-19. 08:17 # E +유튜브 정리
 ---
 
 ## 머리말

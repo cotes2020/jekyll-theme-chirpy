@@ -343,14 +343,9 @@
 - [https://epheria.github.io/](https://epheria.github.io/)
   - Unity 관련 글
 
-- 프로젝트
-- 플레이팹
-- 이펙트 쓸 수 있는지
-
 - Gpgs 인앱결제 광고 등 외부플러그인 같은 기능
 - 내외적 짐벌락 사원수
 - 유니티 설계 경험 기록
-- Dotween
 - 클로저
 - 앱 출시 경험 Relay적용 경험
 - Dx
@@ -494,9 +489,9 @@
   - DontDestroy
   - Scene마다 -> 씬 별로 다른 처리가 가능
 - Pwd DelDDa - Discord Bot" date: 2024-10-16. 07:24
-- [](https://namu.wiki/w/VA-11%20HALL-A:%20Cyberpunk%20Bartender%20Action#s-3.1)
-- [](https://discord.com/developers/applications)
-- [](https://docs.discordnet.dev/guides/getting_started/terminology.html)
+  - [](https://namu.wiki/w/VA-11%20HALL-A:%20Cyberpunk%20Bartender%20Action#s-3.1)
+  - [](https://discord.com/developers/applications)
+  - [](https://docs.discordnet.dev/guides/getting_started/terminology.html)
 - 디커플링: 양쪽 코드 중에서 한쪽이 없으면 코드를 이해할 수 없을 때, 둘이 커플링되어 있다고 본다
   - 작업에 관련된 코드가 두 코드 중에서 하나에만 연관되어 있다면, 한쪽 코드만 머리에 집어넣으면 된다
 - 작업에 들어가기 전에 알아야 할 지식의 양을 줄이는 것
@@ -900,9 +895,6 @@ Unity 기본 셰이더/에디터 탐구
 
 win cnt shaderGUI  
 
-개인팀플 github  
-회사 gitlab tortoise-git
-
 프로퍼티 드로어  
 
 작업하면서 알려주게 되는 것들 그냥 글로 써도 될 듯  
@@ -1243,6 +1235,8 @@ ai를 신입으로치환해서 읽기
 
 쉬는공간 일하는 공간 구분이 사라지면 힘들더라구요
 객체지향 SOLID 원칙중 첫번째 단일책임원칙
+
+- 맥킨지에서 넥슨까지: 커리어 점검하기 : <https://www.youtube.com/watch?v=GSZq0uKbEik&list=PL-YZok6UmCwON8N8NdWAxmovJVkWjDww4&index=12>
 - 20:15 눈위에 모래덮힌
 - 7:45 말투. 다시카니 확실히..
 - 7:54 사회 생활 관점에서의 인간의 결함 ㅡ
@@ -1866,3 +1860,533 @@ cascaded shadow. unity memory
 - 냥냥기사단
 - 메M
 - 메월드
+---
+
+메모 정리 10 31
+
+OnMouse/OnPointer, Collider-GUI/UGUI  
+Unity Upgrade Guide  
+AOS Java Class UnityPlayer 변경  
+ObjectFindOfType과 ByType의 차이  
+
+Web 최적화  
+Frontend에서 Unity 화면을 그리는 Canvas 자체의 해상도를 줄이기 (Unity 개발자의 말에 따르면 효과 있다고)  
+Mobile용, Standalone용 데이터를 따로 준비하기 (Unity 공식 문서에서 제안하는 기능) (OS/브라우저 유무에 따라 별로 지원하는 텍스처 압축 방식이 다름.)  
+
+Editor와 실제 빌드 차이  
+Editor용 Asset들 (Gizmos - 2D Texture, SceneView, GameView, CameraRenderTexture 등)  
+실제 빌드에서는 스트리핑되는 셰이더들  
+
+Memory Profiler Snapshot  
+Memory PRofiler Web (Browser)에서는 지원 안함. 대신 그냥 Profiler나 Diagnostics 기능 활용  
+
+TempBuffer (렌더 후처리에 필요한 RenderTexture) (PP나 AA, HGR 등)  
+Camera 저장 데이터를 보면 m_ForceInfo나 m_AllowMSAA 등으로 확인 가능. 과거 Unity에 PP를 제거해도 옵션이 켜져있는 채로 남아있는 버그 있었음.  
+
+NoName 런타임에 생성되는 Texture3D  
+
+Web Diagnostics  
+따로 Package 같은 게 있는게 아니고 그냥 Web HTML에서 API 불러와서 확인하는, 템플릿에 가까운  
+WASM Heap (주로 이것을 가지고 기준을 논한다)  
+JS Memory  ㅉ
+
+Texture 압축  
+Crunch Compression은 빌드 용량만 줄고, 실제 런타임 메모리에는 영향을 주지 않는다  
+POT: 특정 포맷은 2의 승수여야 압축 설정 가능. SpriteAtlas를 사용하는 경우, SpriteAtlas만 설정하면 됨.  
+Auto 웬만하면 Auto를 쓰자  
+RGBA32 Bit 무압축.  지원하지 않는 텍스처 압축 방식을 사용하면, 실제로는 압축해제된 것을 쓰게 돼서 메모리 이슈 발생  
+
+Web용 GPU 압축 포맷 (DXT, ETC, ASTC)  
+
+Cloud front 서비스 장애?  
+Steam 국가 차낟 ==> 직접 Steam에 티켓 넣어야 함  
+Web SystemFont 제거 됨.  
+
+이미지를 그리자  
+이벤트 큐, 마치 컨베이터 벨트처럼. 한 쪽 끝에 있는 노동자는, 이 반대편에 있는 노동자가 누구인지 알 수 없다. 그냥 자기에게 주어진 일만 하는 것이다.  
+
+Struct와 Class. 인형과 인간  
+
+S-TIER 애니메이션 아티스트들의 셀 셰이딩을 마스터하는 방법
+https://youtu.be/XwZ8PC7_ICg?si=WmPV0ejpb-dAY6u8
+
+유니티 튜토리얼 (Google Play 게임 로그인, Systems-driven design in Caves of Qud, How-to: Localiation)  
+롤 개발자 스케치  
+김실장 개발자 초대석  
+
+게임에서 객체를 완벽하게 참조하기 (PracticAPI)
+https://youtu.be/xYRFwFXNskc?si=27sXBgdMsTYmKVjY
+
+Unity gemometry shader : Extrude faces
+https://youtu.be/lQgUzBGlVtE?si=M2ASN9zCVNo-NGlJ
+
+게임 ㅇ펙트 언리얼 이펙터가 꼭 알아야 할 색감과 타이밍
+https://youtu.be/VyvOfTGh3MM?si=B4TPouurIywK-UMd
+
+Coding Adventure: Simulating Smoke
+https://youtu.be/Q78wvrQ9xsU?si=dDryI6jGvTmqLonb
+
+재밌는 코미디 애니들의 연출 비밀
+https://youtu.be/udvg3cyoJQo?si=-SQlA1wP5FI_bE7Z
+
+어레이의 개발문고  
+홍정모 (라이브 - 그래픽스 게임 프로그래밍 입문 총정리)
+
+やる気が出ない歌 / 初音ミク・重音テト
+https://youtu.be/xAwnI9AraXs?si=rEDej_zOA4LbA55y
+테토미쿠 하이하이
+
+갈로아 - 판타지 수학대전 케이 624장
+
+멀티스레딩 디버깅 팁 (널널한 개발자 TV)  
+
+https://youtu.be/tadUeiNe5-g?si=nQOamWDi68jPnfTZ
+Core Dumped CPU가 다양한 장치와 상호작용하는 방식  
+
+게임 달고나  
+
+조코딩 강민철 컴퓨터구조/운영체제  
+강민철 [컴퓨터 구조] 과목 몰아보기
+개발자로 취업하려면 꼭 알아야 하는 기술 면접 CS 지식 총 정리 특강
+
+Unity 이벤트 버스: 메시징 최소화 - Freedom COding
+https://youtu.be/oJtIIDcImhU?si=wImFZVNldK8bK27p
+더 나은 게임을 만드는 10가지 간단한 습고나
+https://youtu.be/R6RLP-Js2dc?si=hg0yEx0kRnKOG2P_
+
+Creative UIs with Compose | Chris ----------
+https://youtu.be/9KdP2idt6LE?si=se66MVyK7M3Z62Lm
+
+DEVTECH 데브시스터즈 엔지니어링 데이 - 에셋번들 배치로 용량 줄이기
+https://youtu.be/CtZ1-n6PbFM?si=o3ZEd0X2hCwOHAR1
+
+TA - 펄크루트 직무탐구
+https://youtu.be/ZsYIMF3wpj0?si=9HLDQJ6pMH32oQNC
+
+스토리 보기  롤 (롤 공식채널 GCL), 닌텐도 DS
+리뷰 김실장
+
+ptumbre, 홀로라이브, Doomkemon, crashune  
+snowtenkey, keven, 夏森轄（なつもり かつ）
+
+넥토리얼 포트폴리오  
+https://youtu.be/6INjf4HjQSA?si=sxZRG5tdxlXk_k2F
+https://youtu.be/eSxGcerFtT8?si=wT44lVOZMbJVoHdt
+https://youtu.be/JGDMONawCOw?si=uHPFO8fy_eatc3kO
+https://youtu.be/QErFfPjhP7w?si=HQQa4pasPtXIV4k9
+https://youtu.be/thn1efLw7-Y?si=paozXsFRgeAikzUZ
+팟퀘스트 게임회사 포트폴리오
+https://youtu.be/9hLASuG_-ZY?si=z7ua8WPc2P2K1ZHD
+넥슨 채용설명회
+https://youtu.be/G3QizLUlt6Y?si=TWMEWq_visithFWk
+[NDC] Microsoft, Blizzard 그리고 Nexon 에서는 어떻게 개발하나요?
+https://youtu.be/TdWTBxURHdg?si=_nXR6CFBAbvek0r6
+안콜 3D - 면접 합격을 위한 예상질문 60가지
+
+How I Make and Animate Low Poly Characters  
+https://youtu.be/v5_odSRUbms?si=jqeYdxXpQViXFtel
+
+https://youtu.be/VyvOfTGh3MM?si=JfTsRtczOSMeSL5-
+
+팬스가 2
+
+이클립스 (유튜브 채널)
+
+동방심비록 전 캐릭터 필살기 모음  
+(옆집손ㄴ 필살 모음 시리즈)
+블아스킬컷신변천사
+https://youtu.be/IQo35dCJI90?si=gJ1hF0XrvS_kt3KY
+https://youtu.be/LB716x6wFJE?si=kQaHZ3eezbgxye6G
+
+https://youtu.be/P33pMKtwmLE?si=ki-NL2_6a-FMT0Qm
+Rock & Road (Raw Fury)
+
+z코드 리뷰  
+https://youtu.be/sXotP-9LcDY?si=ZjuYerlGdwy09pvG
+https://youtu.be/HHwhiz0s2x8?si=Ag-huHApgn3Oqa0b
+
+스타일라이즈드 나무 유니티
+https://youtu.be/aEuPLAtmuqk?si=v7fGw51Nw_quUgP0
+
+개발일지 GARAGE ARTS
+Die/Algen
+https://youtu.be/ZhOZ6S9JkKw?si=35hf29Mo7oGO5hlY
+신입 | 크로노스튜디오 | '강*ㅎ' Game Animation Reel 2025
+https://youtu.be/OQnZhIx-CiA?si=yS8z3DBMCk1t0Gcy
+유니티 VFX 포트폴리오 / Unity Game Effect Portfolio
+https://youtu.be/Qt4KOrRSQ3I?si=TyiT-Yjma0PL5pzX
+
+Dream Shape 
+https://youtu.be/gXJDu4BGXHk?si=5CBT2nSFM-xUilQ1
+
+미호요 신작 게임 - 언리얼 5, 보스 전투, 이런 것들 공부해볼까
+
+봄날은 간다
+
+라군? 석호? 폭우로 잠깐 나타나는 사막 호수
+
+https://youtu.be/MuCfDjGehmA?si=fcfl6IDGTtz-_7mS
+LED 액자 연출
+
+일본서예가 코타 >
+
+덕 코프  
+
+https://youtu.be/ohwI3V207Ts?si=CaiVfVW-ppFU51q5
+Mini PC 공장
+
+그림, 탄젠트, 굽히기,사이사이 공간을 넣기, 관절을 쓰기
+
+자연현상
+우박
+화산번개
+햇무리
+일식
+채운
+오로라
+신기루 (AT필드)
+
+ Coding Tutorials - Stackalloc 및 Spans
+
+방구석 게임평론자 쥐냥  
+
+오누레 - Onure Sounds
+Gamescom
+유니콘 오버로드
+Hj - https://youtu.be/HPXxd4dF8sU?si=s8cEOTfQh5dGGGh6
+팥쥐
+
+https://youtu.be/wC9iu7cuQjI?si=2c2q9g5Tvi_8vcFq
+Challacade
+
+https://youtu.be/YV9OW_i-s8A?si=dADMUuGCiowaP8T0
+포프TV
+
+https://youtu.be/Dl8XihCQWQ0?si=S8cI0pHfDrOs4b2j
+단비스  
+
+명일방주  
+데드셀 개발사 신작
+
+https://youtu.be/92xYUYLuK6k?si=yXSALluabnAKLZcH
+나요딴딴나
+
+https://youtu.be/jPeR1PJQXy0?si=JLQDNpwlwMdwpvTP 표범
+https://youtu.be/_2QDRNtWhz8?si=OQuJC25ObCqyO-Y2 손에 잡히는 셰이더 번외
+https://youtu.be/epixwRw80MM?si=pSHIziZGZErK6zhh UNite Writing Shaders
+https://youtu.be/zr5kgZeo9LA?si=1b2WCS1QSKNp0chu 눈 쉐이더
+
+블랙홀이 고리행성 모양인 이유
+
+https://youtu.be/gpZg0k9BEF0?si=SGEAaBxB3UR6M4e6 콜드플레이 내한 콘 강강술래
+
+
+https://youtu.be/TzTbOuPGLY0?si=KVexPtIsEpO1wWs- 감동 연출
+
+제미나이 그래었더랫죠
+롤드컵 티저
+챤님 크리스마스 낚시 컨셉아트
+유니티 코리아 견학 준비
+소셜 카지노 게임 미래 전망
+
+[세탁물 분류]: 적을 종류별(색깔별)로 처치할 때마다 보너스 데미지.
+
+[티 타임 (Tea Time)]: 5초간 제자리에서 차를 마시면 체력이 회복되고 화면 전체에 강력한 충격파 발생 (리스크/리턴).
+
+[광택 내기]: 대시를 사용한 자리가 미끄러워져, 적들이 밟으면 넘어짐(스턴).
+
+[초과 근무 수당]: 체력이 낮을수록 공격력이 폭발적으로 증가.
+
+먼지 토끼 (Dust Bunny): 가장 약한 적. 뭉쳐서 다니며 귀엽지만 귀찮음.
+곰팡이 포자: 죽으면 주변에 오염 장판을 넓게 퍼뜨림.
+책벌레 (Bookworm): 마법 도서관 스테이지에서 등장. 마법서를 갉아먹으며 원거리 탄막 발사.
+
+패턴: 실험용 플라스크를 마구 던져 바닥을 독극물, 화염, 얼음으로 더럽힘.
+공략: 알렉스가 던진 약병이 깨지기 전에 빗자루로 쳐내서 반사해야 함.
+패턴: 끊임없이 먼지 괴물을 소환하고 도망다님.
+공략: 진공 청소기로 소환물들을 한 번에 빨아들여 릴리에게 쏘아 맞춰야 함.
+
+컷신: 보스 조우 시, 또는 필살기 사용 시 클로에의 안경이 빛나며 매도하는 컷신(애니메이션) 삽입.
+
+Mermaid  
+
+Web PC/Mobile 빌드 따로 (Unity docs 존재)  
+
+특정 포맷은 2의 승수여야 설정 가능  
+POT --> SpriteAtlas로 설정하면 됨  
+
+웬만하면 Formatdms Auto로  
+
+RGBA 32bit (Uncompressed)  
+시스템에서 압축 포맷을 지원하지 않으면 무압축으로 올라감 
+
+Web용 GPU 압축 포맷: DXT, ETC, ASTC  
+
+MemoryProfiller  
+
+Editor OS  전체 빌드
+Editor용 Asset 툴
+Gizmos (2D Texture) , Scene/GameView 
+Camera REnder Textrue  
+빌드에선느 스트리핑되는 Shader들  
+
+MemoryProfiler Snapshot  (브라우저도 지원)  
+Web Diagnostics WASM Heap, JS Memory  
+
+Crunch는 빌드 용량만 영향 주고, 런타임 메모리 영향 X  
+
+OnMouse Collider, UGUI  
+OnPointer UGUI  
+
+Unity 6 UpgradeGuide  
+Unity Player  
+Object Find Of/By Type 차이  
+
+Web 최적화  
+FrontEnd에서 CanvasSize 해상도 줄이기 효과있음 (유니티 문서)  
+
+1104  
+WebTemplate Data 최신화 (Unity 설치 경로)  
+TempBuffer (기기 플랫폼별차이, ForceIntoRT, HDR, MSAA)  
+Font --> 자체 용량 뿐만아니라 런타임에 만들어내는 것도 생각해야 함  
+
+OSX, Windows 조합키  
+
+Control OK
+Command MacOnly  
+Alt Alt or Option
+Shift OK 
+
+UI 180도 회전 시 뒤집혀져서 Raycast가 안됨  
+
+Web 해상도 문제, 회전시 화며 작아지는 문제 등, 가로모드  
+세로에서 가로 화면 보여주기  
+
+IL2CPP 영상  
+IL2CPP Code Generation  
+
+JJ의 코딩 시력 쌓기 ref  
+
+Scene 이동 메뉴  
+Build Window  
+Unity PDF (블로그),베스트 프랙티스 페이지  
+Untiy PReset (Inspector)  
+Unity 6 생산성 높이는 법 (PDF 이름)  
+
+[HelpURL] Attribute  
+Alt + Shift + A  토클  
+GameObject (Menu) Align With View  
+
+POST/Get 차이 간단히  
+코딩 표준 (들여쓰기/띄어쓰기, 멤버변수, ..)  
+
+Web 문서 (6.5 Alpha)  
+C,C++은 멀티스레딩 지원, C#을 안한다는 거임  
+포커스 아니면 1초에 1번 업데이트 된다고 함  
+Font 제거되므로, 직접 추가해야 함  
+
+Unity 명령줄 옵션 9Editor실행, Editor Log 확인
+
+SteamOS비중 95 Windows, 2 macOS, 3 Linux (Steam Deck)
+
+6.3 새로운 하이어라키 (2)  
+딥링크? 로컬 프로젝트에 대한 딥링크?  
+Toolbar 커스터마이징
+
+RuntimeInitializeOnLoadMethod  
+ADB  
+
+SimpeWebServer 같이 우클릭 메뉴 (Windows - Context Menu?)
+
+과거에 게임 개발자는 HDD의 기능에 의해 제한을 받는 경우가 많았습니다. 또한 교차 플랫폼 타이틀은 HDD 기반 콘솔에 서도 작동해야 했기 때문에 개발자는 SSD의 속도를 온전히 활용할 수 없었습니다.
+
+차세대 콘솔은 둘 다 NVMe SSD를 사용하는 방식으로 바뀔 것입니다. 또한 Microsoft의 DirectStorage API와 같은 기술을 통해 게임은 훨씬 더 많은 I/O 요청을 할 수 있습니다. 즉, 이제 크리에이터는 구축 시 느린 스토리지로 인한 I/O 병목 현상을 감수하는 대신 NVMe 드라이브의 기능을 통해 게임을 확장할 수 있습니다.
+
+이는 자산 스트리밍 예산 확대로 이어지며, 이를 통해 게임 화면 속 시야에서 더 많은 물체를 확인할 수 있습니다. 좁은 복도나 엘리베이터와 같이 새로운 텍스처 및 영역이 로딩되는 것을 감추기 위해 플레어의 속도를 늦추도록 설계된 레벨 섹션은 더 이상 필요하지 않을 수 있습니다.
+
+간선 수를 제약 (E = V - 1)하여 BFS 탐색 복잡도 O(V)달성 메모리 안정성 - RAII 패턴? 자원의 획득과 해제를 자동화하여 관리 비용 최소화 스마트포인터: TSharedPtr로 메모리 누수 및 댕글링 포인터 방지  
+
+Bug Factor: '프로젝트를 구성하는 팀원 중 몆명이 갑자기 버스에 치여 죽으면 프로젝트가 중단되는지'를 알려주는 수치래요
+트럭 팩터 맥주 트럭 시나리오 복권 팩터 등 여러 이름으로 불리기도 한다
+
+배우기 스킬: 전문가 다음 행동 예측하기  
+
+소셜 미디어는 무료가 아니라 내 시간을 지불하는 것  
+
+기한내에 업무를 끝내는건 일 잘하는게 아니다. 그건 그냥 업무를 한거다.
+
+일 잘하는건 결과물의 퀄리티가 끝장나거나
+일을 정해준 시간보다 빨리 한것이다. 
+
+중국 유니티  
+<https://bbs.ruliweb.com/news/board/320108/read/2248830>  
+? 유니티 본사, 중국 지사 별개 회사?  
+
+GPU, 그래픽스 용어 공부  
+[엔드필드 기사](https://www.gamevu.co.kr/news/articleView.html?idxno=55455)  
+
+이게 깊게파면 디더링부터해서 dlss 등 그래픽카드의 각종기술을 공부합니다 결국 최종결론은 “어떻게해야 보는사람으로 해서 이쁘고 멋지고 선명하고 좋게보일까의” 집합체지요
+
+어려운거하기
+시간정하기
+샌츠 타이핑 효과음
+
+간단히 말해서 서술적 학습은 생각이 필요한 것이고 절차적 학습은 무의식적으로 가능한 행동들을 말해요
+서술적학습에는 코딩 공부 등이 있고 절차적 학습은 운동 정원가꾸기 이런거에요
+코딩과운동을 병행해야하는거군요
+
+기획 '업무'로 범주를 보면,
+아이디에이션 및 추상화 -> 구체화 -> 문서 작성 -> 설득 및 커뮤니케이션 -> 구현까지 트래킹. 이 과정에서 본인이 어떻게 사용했는지 설명하면 되지 않을까~ 합니다. 아이디에이션이어도 좋고, 레퍼런스나 와이어프레임 혹은 프로토타이핑 까지 다 좋은데 그게 어떻게 도움이 되었는지 잘 설명하면 되지 않을까요?
+
+<http://youtube.com/post/Ugkx5yXyRG1ZQoMGMsHJy2gJD2mc5tmuhPR0?si=yiCt1gXgUoyBjhta>
+
+클루치크의 감정의 바퀴
+
+제가 대충이해한건 허수 3개와 실수1개를 가지고 4차원 복소평면으로 실수1개는 angle과 허수 3개는 삼각함수를 통해서 회전축을 뜻한다 정도로 이해하고 있는 상태에요
+수학적 이해는 넘어가셔도 괜찮은데
+오일러는 행렬곱연산을 이용하기 때문에 연산 순서에 따라 결과가 달라진다
+vs 쿼터니온은 아님
+만약에 수학적 이해를 하고싶다면
+x +yi = z 를 시작으로 복소평면에 대한 이해부터..
+동시에 연산을 하여 보간이 자연스럽게된다(키프레임 애니메이션, ik등에서 사용 가능)
+선형대수보단 복소해석학입니다
+적다가 아니라 없다로 알고있기는하고
+그럼 실제로 활용할때는 쿼터니언으로 연산후 오일러각도로 변환해서 사용하나요?
+회전부분이 이해가 안되는게 많아서
+복소평면에서의 연산 및 특징 , 오일러 공식 이해후에
+아마 쿼터니온 회전 증명을 해보시면..
+엔진단에 근접한 직군(내지 그래픽스 쪽)인 경우 이런 선형대수쪽 질문도 하시는 것 같긴 하더라구요. 아님 테스트가 있던가...
+https://youtu.be/fKsh9UvoMOM?si=WqZlWsAU7SKfQbG_
+translation이나 scale과 다르게 3개의 행렬이 필요하다는게 너무 제약이 많죠 사실
+회전량 값이 필요해서 사원소가 사용됩니다
+특정 축으로 정해진 회전량만큼 딱 1번만 회전시키니까 순차적 회전이 필요없어져요
+
+게임 행사에 초대되고 싶다...
+일기ㆍ메모를 게임 퀘스트랑 인벤토리처럼
+
+음식 유통기한이라든지
+콜렉션이라든지
+저장위치라든지
+
+장비라든지
+
+할 일
+일퀘
+긴급 퀘
+
+업적
+
+[디아블로 데미지 수치](https://www.inven.co.kr/webzine/news/?news=150429&site=diablo3)
+
+<https://www.aseprite.org/> 이거 좀 써보려고 했다가 코드가 공개되어 있어서 ai 이미지 생성툴을 붙이려고 했는데 
+
+<https://m.blog.naver.com/PostView.naver?blogId=sssang97&logNo=224112437726&proxyReferer=&noTrackingCode=true>
+<https://www.pixellab.ai/>
+넷플릭스 "세이브 더 게임"
+
+[Unity Mono Speed](https://news.hada.io/topic?id=25421)
+
+[넥슨 리플레이 (고전 게임 IP)](https://iphub.nexon.com/)
+
+스펙 드리븐 개발이라는 개념도 있는데 (바이브코딩이랑 결부해서 쓰는 개념) 사실 oop식으로 가독성 챙기다가 성능 낮아지는 경우도 있긴해서 (ecs가 그 대안격인 패턴이라고 생각합니다)… 요즘 cpu가 좋아가지고 큰 차이는 아니겠지만여 요거 필요하신 분들이 있을듯 하여, 공유 합니다.
+
+팹에서 주마다 에셋을 뿌립니다
+https://www.youtube.com/watch?v=rP4-Wjh9OYA&t=1746s
+
+카톡 정리 - 파일 저장기한 제한 주의  
+CS 하루하나? 반복학습 ~ 뒤 질문해줘  
+
+스케줄 관리 
+아침 - 뉴스, 코드리뷰  
+점심 ~
+저녁 스케줄/일정, D-Day, 할일 (일기, 집안일), 무언가 스트릭  
+
+스터디?
+발표?
+--> 한달 정산
+
+API 그냥 적극적으로 서뽈까  
+라프텔 끊고 1달 써보기 (1만원치)  
+
+서버일ㄷ나 ㅁ나들긴해쓴데  
+간단한 웹살이트 만들어볼까  
+뭐 드래프트나 멀티 이상형 월드컵?  
+
+Steamworks SDK 
+Android Studio  
+
+작업한 내용 정리해서 보여죽   
+
+작업 내용 정리로 이름 수정  
+시각자료 ㅁ누제  
+벤치마킹 수정/정햊진거 있으면 
+릴리즈노트 (버전노트, 패치노트  )  
+
+뉴스바? 무한루프?  
+
+체크 리스트  
+메모정리
+북마크
+캍
+Zeroing  
+
+Editor 단축키  
+에디전트를 여러개? 
+페르소나 X  
+
+gitkeep 생성하는 컨텍스트 메뉴  
+
+나이에 둔감해지다  
+매년 뭐가 바뀌었었는데  나이가 들수록 비슷하니까  
+
+패치노트 (학창시절 vs 대규모패치 xx)  
+그래서 아기를 낳나?   
+세상에 내 반이라도 남기자, 자아실현  
+
+ADNetworks  
+Behance
+
+애초에 구글 캘린터 FE는 가져오면 됐느데  
+예시를 들기, 비유  
+Trella
+OPM2
+node.js  
+
+안된다?  
+재설치, 재실행 (무언가 설치하고 수정한 ㄱ경우)  
+
+CLI PS CMD  
+
+Deadline
+TC 목적 확인
+
+점점 멀어져간다 이상과 추후  
+어제는 아아아아아아 Arknights  
+
+명방 UI같은 ㅋ플래너 
+(!) 예정, 예약
+<!> 삼각형/역삼각현  변동, 긴급, 예정에 없던, 계획 틀어짐, 어긋남  
+
+지역거점 그거같이 보상 쭈루룩 받는  
+
+이상적인 나 (고스트)레벨을 1달 1레벨로 잡고, 내가 그걸 맞춰가ㅡㄴ거야  
+
+연말 정산 (2월 빼먹음)  
+
+Phaser3 뱀서도 이거였다는데, 버튼 존나 뱀서 냄새남 ㅋㅋ
+Uniy Loadshow  
+3월 8일 판교  
+
+RPT 카지노 심리학, 통계학? 
+
+타타 mdd
+가짜인간 ㆍ 다른 사람이 어색하게 느껴지는 페르소나
+
+branding Like 골드메탈
+
+Android Manifest  
+Mobile 지원  
+데이터 클라우딩  
+Android 9 HTTP 접속 제한  
+Manifest 파일에서 설정 가능  
+아무곳이나 눌러 시작 IOS Safari 보안 정책  
