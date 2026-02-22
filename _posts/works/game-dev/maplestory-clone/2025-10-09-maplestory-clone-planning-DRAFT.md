@@ -7,7 +7,7 @@ image: "/assets/img/background/20230112-151539.jpg"
 hidden: true
 
 date: 2025-10-09. 13:47 # Init
-last_modified_at: 2025-10-19. 08:15 # EE 모작 참고
+last_modified_at: 2025-10-19. 08:15 # E 모작 참고
 ---
 
 ## 머리말

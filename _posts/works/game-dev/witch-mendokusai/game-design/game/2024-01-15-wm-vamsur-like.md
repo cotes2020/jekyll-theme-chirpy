@@ -14,7 +14,7 @@ date: 2024-01-15. 19:53
 # last_modified_at: 2024-08-29. 21:32
 # last_modified_at: 2025-04-19. 01:59 # 메모 정리
 # last_modified_at: 2025-10-06. 15:03 # E 글 병합 (ticket-vamsur-like, )
-last_modified_at: 2025-10-19. 08:13 # EE MVP 정리
+last_modified_at: 2025-10-19. 08:13  MVP 정리
 ---
 
 ## 머리말
