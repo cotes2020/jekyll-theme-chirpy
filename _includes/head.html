@@ -57,9 +57,17 @@
 
   <title>
     {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
+      {%- capture title -%}
+        {%- if page.collection == 'tabs' -%}
+          {%- assign tab_key = page.title | downcase -%}
+          {{- site.data.locales[include.lang].tabs[tab_key] -}}
+        {%- else -%}
+          {{- page.title -}}
+        {%- endif -%}
+      {%- endcapture -%}
+      {{- title | append: ' | ' -}}
     {%- endunless -%}
-    {{ site.title }}
+    {{- site.title -}}
   </title>
 
   {% include_cached favicons.html %}
