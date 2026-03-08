@@ -250,8 +250,8 @@ permalink: /toolbox/
                 const iterations = parseInt(iterHex, 16);
                 const ciphertext = CryptoJS.enc.Hex.parse(encryptedHex);
 
-                if (isNaN(iterations) || iterations <= 0) {
-                    throw new Error("반복 횟수 정보를 파싱할 수 없습니다.");
+                if (isNaN(iterations) || iterations <= 0 || iterations > 1000000) {
+                    throw new Error("잘못된 데이터입니다. (구버전 암호문에서는 반복 횟수 파싱 불가)");
                 }
 
                 const key = CryptoJS.PBKDF2(pass, salt, {
