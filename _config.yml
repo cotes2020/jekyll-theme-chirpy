@@ -22,9 +22,9 @@ title: Jake Wu # the main title
 
 tagline: A blog by Jake Wu. # it will display as the sub-title
 
-description: >- 
-  
-  
+description: >-
+  A personal blog by Jake Wu covering technology, programming, and more.
+
 
 # fill in the protocol & hostname for your site, e.g., 'https://jakewqj.github.io'
 url: "https://jakewqj.github.io"
@@ -33,7 +33,7 @@ github:
   username: jakewqj # change to your github username
 
 twitter:
-  wuthedude: wuthedude # change to your twitter username
+  username: wuthedude # change to your twitter username
 
 social:
   # Change to your full name.

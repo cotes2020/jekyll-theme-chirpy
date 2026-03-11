@@ -8,9 +8,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta
     name="viewport"
-    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    content="width=device-width, user-scalable=no, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
-<meta name="google-site-verification" content="ua8jGAAqHGddZLKGdmpykyCjq2DYs7FW6Ffs9cZ-1Ow" />
+{% if site.google_site_verification %}
+  <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
+{% endif %}
 
   {% capture seo_tags %}
     {% seo title=false %}
@@ -48,7 +50,7 @@
 
   {% include_cached favicons.html %}
 
-  {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
+  {% if site.assets.self_host.enabled and site.assets.self_host.env != jekyll.environment %}
     <link href="{{ site.data.origin[type].webfonts | relative_url }}" rel="stylesheet">
 
   {% else %}
