@@ -36,7 +36,7 @@
     "@babel/preset-env": "^7.29.0",
     "@commitlint/cli": "^20.4.4",
     "@commitlint/config-conventional": "^20.4.4",
-    "@eslint/js": "^10.0.0",
+    "@eslint/js": "^10.0.1",
     "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
