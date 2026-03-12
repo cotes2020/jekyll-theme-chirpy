@@ -15,7 +15,8 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/.github/workflows/**"
     groups:
       gh-actions:
         update-types:
