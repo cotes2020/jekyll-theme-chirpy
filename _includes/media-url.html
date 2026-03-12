@@ -2,36 +2,86 @@
   Generate media resource final URL based on `site.cdn`, `page.media_subpath`
 
   Arguments:
-    src - required, basic media resources path
-    subpath - optional, relative path of media resources
-    absolute - optional, boolean, if true, generate absolute URL
+    src       - required, basic media resource path
+    subpath   - optional, relative path of media resources
+    absolute  - optional, boolean, force full absolute URL
 
   Return:
     media resources URL
 {%- endcomment -%}
 
-{% assign url = include.src %}
+{%- assign url = include.src -%}
 
-{%- if url -%}
-  {% unless url contains ':' %}
-    {%- comment -%} Add media resources subpath prefix {%- endcomment -%}
-    {% assign url = include.subpath | default: '' | append: '/' | append: url %}
-
-    {%- comment -%} Prepend CND URL {%- endcomment -%}
-    {% if site.cdn %}
-      {% assign url = site.cdn | append: '/' | append: url %}
-    {% endif %}
-
-    {% assign url = url | replace: '///', '/' | replace: '//', '/' | replace: ':/', '://' %}
-
-    {% unless url contains '://' %}
-      {% if include.absolute %}
-        {% assign url = site.url | append: site.baseurl | append: url %}
-      {% else %}
-        {% assign url = site.baseurl | append: url %}
-      {% endif %}
-    {% endunless %}
-  {% endunless %}
+{%- comment -%}
+  Normalize site.baseurl:
+  - strip whitespace
+  - treat "/" as empty (common misconfiguration)
+  - remove trailing slash for other non-empty values
+{%- endcomment -%}
+{%- assign b_url = site.baseurl | default: '' | strip -%}
+{%- if b_url == '/' -%}
+  {%- assign b_url = '' -%}
+{%- elsif (b_url | slice: -1, 1) == '/' -%}
+  {%- assign b_url = b_url | remove_last: '/' -%}
 {%- endif -%}
+
+{%- comment -%}
+  Normalize CDN:
+  - strip whitespace
+  - remove trailing slash
+{%- endcomment -%}
+{%- assign cdn = site.cdn | default: '' | strip -%}
+{%- if cdn != '' and (cdn | slice: -1, 1) == '/' -%}
+  {%- assign cdn = cdn | remove_last: '/' -%}
+{%- endif -%}
+
+{%- comment -%}
+  Only process non-absolute URLs
+{%- endcomment -%}
+{%- unless url contains '://' -%}
+
+  {%- comment -%}Apply optional subpath{%- endcomment -%}
+  {%- assign url = include.subpath | default: '' | append: '/' | append: url -%}
+
+  {%- comment -%}Apply CDN if present{%- endcomment -%}
+  {%- if cdn != '' -%}
+    {%- assign url = cdn | append: '/' | append: url -%}
+  {%- endif -%}
+
+  {%- comment -%}Cleanup duplicate slashes{%- endcomment -%}
+  {%- assign url = url
+    | replace: '///', '/'
+    | replace: '//', '/'
+    | replace: ':/', '://'
+  -%}
+
+  {%- comment -%}
+    Detect whether URL already has baseurl (boundary-aware).
+    We only consider it "already prefixed" if:
+      - url starts with b_url, AND
+      - the next character is end-of-string or one of "/ # ?"
+    This avoids false matches like "/blogerati" when b_url is "/blog".
+  {%- endcomment -%}
+  {%- assign has_baseurl = false -%}
+  {%- if b_url != '' -%}
+    {%- assign b_url_size = b_url | size -%}
+    {%- assign url_prefix = url | slice: 0, b_url_size -%}
+    {%- assign next_char  = url | slice: b_url_size, 1 -%}
+    {%- if url_prefix == b_url and (next_char == '' or '/#?' contains next_char) -%}
+      {%- assign has_baseurl = true -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- comment -%}Prepend baseurl if needed{%- endcomment -%}
+  {%- if b_url != '' and has_baseurl == false -%}
+    {%- assign url = b_url | append: url -%}
+  {%- endif -%}
+
+  {%- comment -%}Make absolute if requested{%- endcomment -%}
+  {%- if include.absolute -%}
+    {%- assign url = site.url | append: url -%}
+  {%- endif -%}
+
+{%- endunless -%}
 
 {{- url -}}
