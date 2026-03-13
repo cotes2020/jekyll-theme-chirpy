@@ -170,15 +170,15 @@
 
     {% else %}
       <!-- make sure the `<img>` is wrapped by `<a>` -->
-      {% assign _parent = _right | slice: 1, 4 %}
+      {% assign _parent = _right | remove_first: ">" | strip | slice: 0, 4 %}
 
       {% if _parent == '</a>' %}
-        <!-- add class to exist <a> tag -->
-        {% assign _size = _img_content | size | minus: 1 %}
+        <!-- add class to existing <a> tag -->
+        {% assign _size = _img_content | strip | size | minus: 1 %}
         {% capture _class %}
-          class="img-link{% unless _lqip %} shimmer{% endunless %}"
+          class="popup img-link{% unless _lqip %} shimmer{% endunless %}"
         {% endcapture %}
-        {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>' %}
+        {% assign _img_content = _img_content | strip | slice: 0, _size | append: _class | append: '>' %}
 
       {% else %}
         <!-- create the image wrapper -->
