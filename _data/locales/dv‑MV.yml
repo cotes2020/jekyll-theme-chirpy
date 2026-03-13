@@ -60,6 +60,7 @@ post:
   read_time:
     unit: މިނެޓް
     prompt: އިސްކާރު
+  edit: މި ޕޯސްޓް އެޑިޓް ކުރު
   relate_posts: އެއްޗެހި ފަހުރަށްދަން
   share: ސެއާރް
   button:

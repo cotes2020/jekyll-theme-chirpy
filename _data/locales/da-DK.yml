@@ -60,6 +60,7 @@ post:
   read_time:
     unit: min
     prompt: læsetid
+  edit: Rediger dette opslag
   relate_posts: Læs videre
   share: Del
   button:

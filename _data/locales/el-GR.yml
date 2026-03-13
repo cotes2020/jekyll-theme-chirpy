@@ -60,6 +60,7 @@ post:
   read_time:
     unit: Λεπτά
     prompt: διαβάσματος
+  edit: Επεξεργασία αυτής της δημοσίευσης
   relate_posts: Περισσότερα
   share: Κοινοποιήστε
   button:

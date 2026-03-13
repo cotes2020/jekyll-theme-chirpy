@@ -60,6 +60,7 @@ post:
   read_time:
     unit: min
     prompt: lire
+  edit: Modifier cet article
   relate_posts: Autres lectures
   share: Partager
   button:

@@ -59,6 +59,7 @@ post:
   read_time:
     unit: min
     prompt: lees
+  edit: Bewerk dit bericht
   relate_posts: Verder Lezen
   share: Deel
   button:
