@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Features
+
+* add support for KaTeX server-side math rendering via jektex plugin as an alternative to MathJax
+
 ## [7.4.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.4.0...v7.4.1) (2025-10-26)
 
 ### Bug Fixes

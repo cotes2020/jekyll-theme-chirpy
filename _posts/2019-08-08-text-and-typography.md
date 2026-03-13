@@ -137,16 +137,11 @@ fi;
 
 ## Mathematics
 
-The mathematics powered by [**MathJax**](https://www.mathjax.org/):
+Mathematical expressions can be rendered using either [**MathJax**](https://www.mathjax.org/) or [**KaTeX**](https://katex.org/).
 
 $$
-\begin{equation}
-  \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
-  \label{eq:series}
-\end{equation}
+\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
 $$
-
-We can reference the equation as \eqref{eq:series}.
 
 When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 

@@ -110,6 +110,14 @@
     <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
   {% endif %}
 
+  {% if page.math %}
+    {% assign math_engine = site.math.engine | default: 'mathjax' %}
+    {% if math_engine == 'katex' %}
+      <!-- KaTeX CSS for server-side rendering -->
+      <link rel="stylesheet" href="{{ site.data.origin[type].katex.css | relative_url }}">
+    {% endif %}
+  {% endif %}
+
   <!-- Scripts -->
 
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>

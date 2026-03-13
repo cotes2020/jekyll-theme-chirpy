@@ -395,6 +395,11 @@ mjx-container {
   min-width: auto !important;
 }
 
+/* KaTeX */
+.katex-display {
+  overflow: auto hidden;
+}
+
 @media (hover: hover) {
   #sidebar ul > li:last-child::after {
     transition: top 0.5s ease;

@@ -439,15 +439,46 @@ Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the pos
 
 ## Mathematics
 
-We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+Chirpy supports rendering mathematical expressions using either [**MathJax**][mathjax] (client-side) or [**KaTeX**][katex] (server-side) engines.
 
 [mathjax]: https://www.mathjax.org/
+[katex]: https://katex.org/
+
+### Choosing a Rendering Engine
+
+You can configure the math rendering engine in your `_config.yml`:
+
+```yaml
+math:
+  engine: katex  # [mathjax | katex]
+```
+
+**MathJax** (default):
+
+- Client-side rendering using JavaScript
+- Larger feature set and better LaTeX compatibility
+- Requires loading JavaScript library (slower initial page load)
+
+**KaTeX**:
+
+- Server-side rendering via the [jektex][jektex] plugin
+- Faster page loads (no JavaScript required)
+- Math is rendered during site build
+- Slightly more limited LaTeX support
+
+[jektex]: https://github.com/yagarea/jektex
+
+### Enabling Math in Posts
+
+For website performance reasons, the mathematical feature won't be loaded by default. Enable it per post:
 
 ```yaml
 ---
 math: true
 ---
 ```
+
+### Syntax
 
 After enabling the mathematical feature, you can add math equations with the following syntax:
 
@@ -486,8 +517,11 @@ Can be referenced as \eqref{eq:label_name}.
 3. \$$ LaTeX_math_expression $$
 ```
 
-> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
+> **MathJax Configuration**: Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
 > If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
+{: .prompt-tip }
+
+> **KaTeX Configuration**: When using KaTeX, you can configure global macros and other options in the `jektex:` section of `_config.yml`. See the [jektex documentation][jektex] for details.
 {: .prompt-tip }
 
 [mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html

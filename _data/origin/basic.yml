@@ -37,3 +37,6 @@ clipboard:
 
 mathjax:
   js: /assets/lib/mathjax/tex-chtml.js
+
+katex:
+  css: /assets/lib/katex/katex.min.css
