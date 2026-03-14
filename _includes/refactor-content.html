@@ -173,7 +173,7 @@
       {% assign _parent = _right | slice: 1, 4 %}
 
       {% if _parent == '</a>' %}
-        <!-- add class to exist <a> tag -->
+        <!-- add class to existing <a> tag -->
         {% assign _size = _img_content | size | minus: 1 %}
         {% capture _class %}
           class="img-link{% unless _lqip %} shimmer{% endunless %}"
