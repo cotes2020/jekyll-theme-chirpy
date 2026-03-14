@@ -1,9 +1,7 @@
 {% comment %}
-
   Convert the alias of the syntax language to the official name
 
   See: <https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers>
-
 {% endcomment %}
 
 {% assign _lang = include.language | default: '' %}
@@ -20,13 +18,13 @@
   {% when 'coffeescript', 'coffee', 'coffee-script' %}
     {{ 'CoffeeScript' }}
   {% when 'cs', 'csharp' %}
-   {{ 'C#' }}
+    {{ 'C#' }}
   {% when 'erl' %}
     {{ 'Erlang' }}
   {% when 'graphql' %}
-   {{ 'GraphQL' }}
+    {{ 'GraphQL' }}
   {% when 'haskell', 'hs' %}
-   {{ 'Haskell' }}
+    {{ 'Haskell' }}
   {% when 'javascript', 'js' %}
     {{ 'JavaScript' }}
   {% when 'make', 'mf', 'gnumake', 'bsdmake' %}
@@ -39,22 +37,22 @@
     {{ 'Objective-C' }}
   {% when 'perl', 'pl' %}
     {{ 'Perl' }}
-  {% when 'php','php3','php4','php5' %}
+  {% when 'php', 'php3', 'php4', 'php5' %}
     {{ 'PHP' }}
   {% when 'py' %}
     {{ 'Python' }}
   {% when 'rb' %}
     {{ 'Ruby' }}
-  {% when 'rs','no_run','ignore','should_panic' %}
+  {% when 'rs', 'no_run', 'ignore', 'should_panic' %}
     {{ 'Rust' }}
   {% when 'bash', 'zsh', 'ksh', 'sh' %}
     {{ 'Shell' }}
   {% when 'st', 'squeak' %}
     {{ 'Smalltalk' }}
-  {% when 'tex'%}
+  {% when 'tex' %}
     {{ 'TeX' }}
   {% when 'latex' %}
-    {{ 'LaTex' }}
+    {{ 'LaTeX' }}
   {% when 'ts', 'typescript' %}
     {{ 'TypeScript' }}
   {% when 'vb', 'visualbasic' %}
