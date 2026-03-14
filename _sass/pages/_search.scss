@@ -127,6 +127,16 @@ search {
   }
 }
 
+#search-pagination {
+  width: 100%;
+  margin-top: 1.5rem;
+
+  .pagination {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* 'Cancel' link */
 #search-cancel {
   color: var(--link-color);
