@@ -72,11 +72,11 @@
         background-color: var(--main-bg, #ffffff);
         background-image: linear-gradient(
           to left,
-          #ffffff,
-          #fbfbfb,
-          #fbfbfb,
-          #fbfbfb,
-          #ffffff
+          var(--timeline-bg-edge),
+          var(--timeline-bg-center),
+          var(--timeline-bg-center),
+          var(--timeline-bg-center),
+          var(--timeline-bg-edge)
         );
       }
 
