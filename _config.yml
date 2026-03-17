@@ -91,6 +91,25 @@ pageviews:
 #
 theme_mode: # [light | dark]
 
+# Custom theme colors.
+#
+# Set the foreground (text) and background colors for light and dark modes.
+# Colors should be fully opaque CSS color values (e.g., hex like "#34343c",
+# rgb like "rgb(52 52 60)", or hsl). Do not use transparent/semi-transparent
+# values, as all other UI colors are derived from these via color-mix().
+# Leave empty to use the built-in defaults.
+#
+# These two base colors drive all UI element colors across the theme,
+# giving you a cohesive palette that adapts to your brand.
+#
+theme_colors:
+  light:
+    forecolor: # e.g. "#34343c"
+    backcolor: # e.g. "#ffffff"
+  dark:
+    forecolor: # e.g. "#afb0b1"
+    backcolor: # e.g. "#1b1b1e"
+
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'

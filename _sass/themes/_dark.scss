@@ -1,78 +1,86 @@
 @mixin styles {
   color-scheme: dark;
 
+  /* Base theme colors — overridable via _config.yml theme_colors */
+  --theme-forecolor: #afb0b1;
+  --theme-backcolor: rgb(27 27 30);
+
   /* Framework color */
-  --main-bg: rgb(27 27 30);
-  --mask-bg: rgb(68 69 70);
-  --main-border-color: rgb(44 45 45);
+  --main-bg: var(--theme-backcolor);
+  --mask-bg: color-mix(in srgb, var(--theme-forecolor) 30%, var(--theme-backcolor));
+  --main-border-color: color-mix(in srgb, var(--theme-forecolor) 8%, var(--theme-backcolor));
 
   /* Common color */
-  --text-color: rgb(175 176 177);
-  --text-muted-color: #868686;
-  --text-muted-highlight-color: #aeaeae;
-  --heading-color: #cccccc;
-  --label-color: #a7a7a7;
-  --blockquote-border-color: rgb(66 66 66);
-  --blockquote-text-color: #868686;
+  --text-color: var(--theme-forecolor);
+  --text-muted-color: color-mix(in srgb, var(--theme-forecolor) 48%, var(--theme-backcolor));
+  --text-muted-highlight-color: color-mix(in srgb, var(--theme-forecolor) 62%, var(--theme-backcolor));
+  --heading-color: color-mix(in srgb, var(--theme-forecolor) 80%, white);
+  --label-color: color-mix(in srgb, var(--theme-forecolor) 68%, var(--theme-backcolor));
+  --blockquote-border-color: color-mix(in srgb, var(--theme-forecolor) 17%, var(--theme-backcolor));
+  --blockquote-text-color: color-mix(in srgb, var(--theme-forecolor) 48%, var(--theme-backcolor));
   --link-color: rgb(138 180 248);
-  --link-underline-color: rgb(82 108 150);
-  --button-bg: #1e1e1e;
-  --btn-border-color: #2e2f31;
+  --link-underline-color: color-mix(in srgb, var(--theme-forecolor) 30%, var(--theme-backcolor));
+  --button-bg: color-mix(in srgb, var(--theme-forecolor) 4%, var(--theme-backcolor));
+  --btn-border-color: color-mix(in srgb, var(--theme-forecolor) 8%, var(--theme-backcolor));
   --btn-backtotop-color: var(--text-color);
-  --btn-backtotop-border-color: #212122;
-  --card-header-bg: #292929;
-  --checkbox-color: rgb(118 120 121);
+  --btn-backtotop-border-color: color-mix(in srgb, var(--theme-forecolor) 3%, var(--theme-backcolor));
+  --card-header-bg: color-mix(in srgb, var(--theme-forecolor) 6%, var(--theme-backcolor));
+  --checkbox-color: color-mix(in srgb, var(--theme-forecolor) 40%, var(--theme-backcolor));
   --checkbox-checked-color: var(--link-color);
-  --img-bg: radial-gradient(circle, rgb(22 22 24) 0%, rgb(32 32 32) 100%);
+  --img-bg: radial-gradient(
+    circle,
+    var(--theme-backcolor) 0%,
+    color-mix(in srgb, var(--theme-forecolor) 3%, var(--theme-backcolor)) 100%
+  );
   --shimmer-bg: linear-gradient(
     90deg,
-    rgb(255 255 255 / 0%) 0%,
-    rgb(58 55 55 / 40%) 50%,
-    rgb(255 255 255 / 0%) 100%
+    transparent 0%,
+    color-mix(in srgb, var(--theme-forecolor) 14%, transparent) 50%,
+    transparent 100%
   );
 
   /* Sidebar */
-  --site-title-color: #717070;
-  --site-subtitle-color: #868686;
-  --sidebar-bg: #1e1e1e;
-  --sidebar-border-color: #292929;
-  --sidebar-muted-color: #868686;
-  --sidebar-active-color: rgb(255 255 255 / 95%);
-  --sidebar-hover-bg: #262626;
-  --sidebar-btn-bg: #232328;
-  --sidebar-btn-color: #787878;
-  --avatar-border-color: rgb(206 206 206 / 90%);
+  --site-title-color: color-mix(in srgb, var(--theme-forecolor) 40%, var(--theme-backcolor));
+  --site-subtitle-color: color-mix(in srgb, var(--theme-forecolor) 48%, var(--theme-backcolor));
+  --sidebar-bg: color-mix(in srgb, var(--theme-forecolor) 4%, var(--theme-backcolor));
+  --sidebar-border-color: color-mix(in srgb, var(--theme-forecolor) 6%, var(--theme-backcolor));
+  --sidebar-muted-color: color-mix(in srgb, var(--theme-forecolor) 48%, var(--theme-backcolor));
+  --sidebar-active-color: color-mix(in srgb, var(--theme-forecolor) 70%, white);
+  --sidebar-hover-bg: color-mix(in srgb, var(--theme-forecolor) 5%, var(--theme-backcolor));
+  --sidebar-btn-bg: color-mix(in srgb, var(--theme-forecolor) 5%, var(--theme-backcolor));
+  --sidebar-btn-color: color-mix(in srgb, var(--theme-forecolor) 38%, var(--theme-backcolor));
+  --avatar-border-color: color-mix(in srgb, var(--theme-forecolor) 80%, white);
 
   /* Topbar */
-  --topbar-bg: rgb(27 27 30 / 64%);
+  --topbar-bg: color-mix(in srgb, var(--theme-backcolor) 64%, transparent);
   --topbar-text-color: var(--text-color);
-  --search-border-color: rgb(55 55 55);
-  --search-icon-color: rgb(100 102 105);
-  --input-focus-border-color: rgb(112 114 115);
+  --search-border-color: color-mix(in srgb, var(--theme-forecolor) 12%, var(--theme-backcolor));
+  --search-icon-color: color-mix(in srgb, var(--theme-forecolor) 32%, var(--theme-backcolor));
+  --input-focus-border-color: color-mix(in srgb, var(--theme-forecolor) 48%, var(--theme-backcolor));
 
   /* Home page */
-  --post-list-text-color: rgb(175 176 177);
+  --post-list-text-color: var(--theme-forecolor);
   --btn-patinator-text-color: var(--text-color);
-  --btn-paginator-hover-color: #2e2e2e;
+  --btn-paginator-hover-color: color-mix(in srgb, var(--theme-forecolor) 6%, var(--theme-backcolor));
 
   /* Posts */
   --toc-highlight: rgb(116 178 243);
-  --toc-popup-border-color: #373737;
-  --tag-hover: rgb(43 56 62);
-  --tb-odd-bg: #252526; /* odd rows of the posts' table */
-  --tb-even-bg: rgb(31 31 34); /* even rows of the posts' table */
+  --toc-popup-border-color: color-mix(in srgb, var(--theme-forecolor) 12%, var(--theme-backcolor));
+  --tag-hover: color-mix(in srgb, var(--theme-forecolor) 14%, var(--theme-backcolor));
+  --tb-odd-bg: color-mix(in srgb, var(--theme-forecolor) 4%, var(--theme-backcolor));
+  --tb-even-bg: color-mix(in srgb, var(--theme-forecolor) 2%, var(--theme-backcolor));
   --tb-border-color: var(--tb-odd-bg);
   --footnote-target-bg: rgb(63 81 181);
-  --btn-share-color: #6c757d;
-  --btn-share-hover-color: #bfc1ca;
-  --card-bg: #1e1e1e;
-  --card-hover-bg: #464d51;
-  --card-shadow: rgb(21 21 21 / 72%) 0 6px 18px 0,
-    rgb(137 135 135 / 24%) 0 0 0 1px;
-  --kbd-wrap-color: #6a6a6a;
-  --kbd-text-color: #d3d3d3;
-  --kbd-bg-color: #242424;
-  --prompt-text-color: rgb(216 212 212 / 75%);
+  --btn-share-color: color-mix(in srgb, var(--theme-forecolor) 36%, var(--theme-backcolor));
+  --btn-share-hover-color: color-mix(in srgb, var(--theme-forecolor) 72%, var(--theme-backcolor));
+  --card-bg: color-mix(in srgb, var(--theme-forecolor) 4%, var(--theme-backcolor));
+  --card-hover-bg: color-mix(in srgb, var(--theme-forecolor) 20%, var(--theme-backcolor));
+  --card-shadow: color-mix(in srgb, var(--theme-forecolor) 4%, transparent) 0 6px 18px 0,
+    color-mix(in srgb, var(--theme-forecolor) 8%, transparent) 0 0 0 1px;
+  --kbd-wrap-color: color-mix(in srgb, var(--theme-forecolor) 30%, var(--theme-backcolor));
+  --kbd-text-color: color-mix(in srgb, var(--theme-forecolor) 80%, white);
+  --kbd-bg-color: color-mix(in srgb, var(--theme-forecolor) 4%, var(--theme-backcolor));
+  --prompt-text-color: color-mix(in srgb, var(--theme-forecolor) 75%, transparent);
   --prompt-tip-bg: rgb(22 60 36 / 64%);
   --prompt-tip-icon-color: rgb(15 164 15 / 81%);
   --prompt-info-bg: rgb(7 59 104 / 80%);
@@ -83,33 +91,33 @@
   --prompt-danger-icon-color: #cd0202;
 
   /* Tags */
-  --tag-border: rgb(59 79 88);
-  --tag-shadow: rgb(32 33 33);
-  --dash-color: rgb(63 65 68);
-  --search-tag-bg: #292828;
+  --tag-border: color-mix(in srgb, var(--theme-forecolor) 20%, var(--theme-backcolor));
+  --tag-shadow: color-mix(in srgb, var(--theme-forecolor) 5%, var(--theme-backcolor));
+  --dash-color: color-mix(in srgb, var(--theme-forecolor) 16%, var(--theme-backcolor));
+  --search-tag-bg: color-mix(in srgb, var(--theme-forecolor) 6%, var(--theme-backcolor));
 
   /* Categories */
-  --categories-border: rgb(64 66 69 / 50%);
-  --categories-hover-bg: rgb(73 75 76);
-  --categories-icon-hover-color: white;
+  --categories-border: color-mix(in srgb, var(--theme-forecolor) 18%, transparent);
+  --categories-hover-bg: color-mix(in srgb, var(--theme-forecolor) 26%, var(--theme-backcolor));
+  --categories-icon-hover-color: color-mix(in srgb, var(--theme-forecolor) 70%, white);
 
   /* Archive */
-  --timeline-node-bg: rgb(150 152 156);
-  --timeline-color: rgb(63 65 68);
+  --timeline-node-bg: color-mix(in srgb, var(--theme-forecolor) 55%, var(--theme-backcolor));
+  --timeline-color: color-mix(in srgb, var(--theme-forecolor) 16%, var(--theme-backcolor));
   --timeline-year-dot-color: var(--timeline-color);
 
   /* Code highlight colors */
-  --language-border-color: #2d2d2d;
-  --highlight-bg-color: #151515;
+  --language-border-color: color-mix(in srgb, var(--theme-forecolor) 6%, var(--theme-backcolor));
+  --highlight-bg-color: color-mix(in srgb, var(--theme-forecolor) 2%, var(--theme-backcolor));
   --highlighter-rouge-color: #c9def1;
-  --highlight-lineno-color: #808080;
-  --inline-code-bg: rgb(255 255 255 / 5%);
-  --code-color: #b0b0b0;
-  --code-header-text-color: #6a6a6a;
-  --code-header-muted-color: #353535;
-  --code-header-icon-color: #565656;
+  --highlight-lineno-color: color-mix(in srgb, var(--theme-forecolor) 38%, var(--theme-backcolor));
+  --inline-code-bg: color-mix(in srgb, var(--theme-forecolor) 5%, transparent);
+  --code-color: color-mix(in srgb, var(--theme-forecolor) 72%, var(--theme-backcolor));
+  --code-header-text-color: color-mix(in srgb, var(--theme-forecolor) 30%, var(--theme-backcolor));
+  --code-header-muted-color: color-mix(in srgb, var(--theme-forecolor) 10%, var(--theme-backcolor));
+  --code-header-icon-color: color-mix(in srgb, var(--theme-forecolor) 20%, var(--theme-backcolor));
   --clipboard-checked-color: #2bcc2b;
-  --filepath-text-color: #cacaca;
+  --filepath-text-color: color-mix(in srgb, var(--theme-forecolor) 80%, white);
 
   .light {
     display: none;

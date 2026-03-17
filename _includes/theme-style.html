@@ -1,0 +1,42 @@
+<!-- Inject user-configured theme colors from _config.yml theme_colors -->
+{%- if site.theme_colors -%}
+  {%- assign light_fc = site.theme_colors.light.forecolor -%}
+  {%- assign light_bc = site.theme_colors.light.backcolor -%}
+  {%- assign dark_fc  = site.theme_colors.dark.forecolor -%}
+  {%- assign dark_bc  = site.theme_colors.dark.backcolor -%}
+
+  {%- if light_fc or light_bc or dark_fc or dark_bc -%}
+<style>
+  {%- if light_fc or light_bc %}
+  @media (prefers-color-scheme: light) {
+    html:not([data-mode]),
+    html[data-mode='light'] {
+      {%- if light_fc %} --theme-forecolor: {{ light_fc }};{%- endif %}
+      {%- if light_bc %} --theme-backcolor: {{ light_bc }};{%- endif %}
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    html[data-mode='light'] {
+      {%- if light_fc %} --theme-forecolor: {{ light_fc }};{%- endif %}
+      {%- if light_bc %} --theme-backcolor: {{ light_bc }};{%- endif %}
+    }
+  }
+  {%- endif %}
+  {%- if dark_fc or dark_bc %}
+  @media (prefers-color-scheme: dark) {
+    html:not([data-mode]),
+    html[data-mode='dark'] {
+      {%- if dark_fc %} --theme-forecolor: {{ dark_fc }};{%- endif %}
+      {%- if dark_bc %} --theme-backcolor: {{ dark_bc }};{%- endif %}
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html[data-mode='dark'] {
+      {%- if dark_fc %} --theme-forecolor: {{ dark_fc }};{%- endif %}
+      {%- if dark_bc %} --theme-backcolor: {{ dark_bc }};{%- endif %}
+    }
+  }
+  {%- endif %}
+</style>
+  {%- endif -%}
+{%- endif -%}
