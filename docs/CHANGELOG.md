@@ -1,5 +1,15 @@
 # Changelog
 
+## [7.5.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.4.1...v7.5.0) (2026-03-15)
+
+### Features
+
+* add support for `fediverse:creator` meta tag ([#2593](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2593)) ([d2db439](https://github.com/cotes2020/jekyll-theme-chirpy/commit/d2db439c169c45ac683fa1c8157c6ea7e0b54b85))
+
+### Bug Fixes
+
+* **i18n:** localize the title ([#2610](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2610)) ([52d160f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/52d160f8574e8d0cddcaa46af114eb382fea1644))
+
 ## [7.4.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.4.0...v7.4.1) (2025-10-26)
 
 ### Bug Fixes

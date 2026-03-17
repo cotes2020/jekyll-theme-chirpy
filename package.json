@@ -1,6 +1,6 @@
 {
   "name": "jekyll-theme-chirpy",
-  "version": "7.4.1",
+  "version": "7.5.0",
   "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
   "repository": {
     "type": "git",
@@ -30,28 +30,29 @@
     "bootstrap": "^5.3.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/plugin-transform-class-properties": "^7.27.1",
-    "@babel/plugin-transform-private-methods": "^7.27.1",
-    "@babel/preset-env": "^7.28.3",
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@rollup/plugin-babel": "^6.1.0",
+    "@babel/core": "^7.29.0",
+    "@babel/plugin-transform-class-properties": "^7.28.6",
+    "@babel/plugin-transform-private-methods": "^7.28.6",
+    "@babel/preset-env": "^7.29.0",
+    "@commitlint/cli": "^20.4.4",
+    "@commitlint/config-conventional": "^20.4.4",
+    "@eslint/js": "^10.0.0",
+    "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-terser": "^1.0.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "concurrently": "^9.2.1",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
-    "eslint": "^9.38.0",
-    "globals": "^16.4.0",
+    "conventional-changelog-conventionalcommits": "^9.3.0",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
     "husky": "^9.1.7",
-    "purgecss": "^7.0.2",
-    "rollup": "^4.52.5",
-    "semantic-release": "^25.0.1",
-    "stylelint": "^16.25.0",
-    "stylelint-config-standard-scss": "^16.0.0"
+    "purgecss": "^8.0.0",
+    "rollup": "^4.59.0",
+    "semantic-release": "^25.0.3",
+    "stylelint": "^17.4.0",
+    "stylelint-config-standard-scss": "^17.0.0"
   },
   "prettier": {
     "trailingComma": "none"
