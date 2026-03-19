@@ -33,10 +33,10 @@
     "@babel/core": "^7.29.0",
     "@babel/plugin-transform-class-properties": "^7.28.6",
     "@babel/plugin-transform-private-methods": "^7.28.6",
-    "@babel/preset-env": "^7.29.0",
-    "@commitlint/cli": "^20.4.4",
-    "@commitlint/config-conventional": "^20.4.4",
-    "@eslint/js": "^10.0.0",
+    "@babel/preset-env": "^7.29.2",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^10.0.1",
     "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
@@ -51,7 +51,7 @@
     "purgecss": "^8.0.0",
     "rollup": "^4.59.0",
     "semantic-release": "^25.0.3",
-    "stylelint": "^17.4.0",
+    "stylelint": "^17.5.0",
     "stylelint-config-standard-scss": "^17.0.0"
   },
   "prettier": {
