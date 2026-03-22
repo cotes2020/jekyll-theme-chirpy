@@ -25,7 +25,7 @@ module Jekyll
       pages = []
 
       site.posts.docs.each do |post|
-        next if post.published == false
+        next unless post.published?
         pages << {
           title: post.data['title'].to_s,
           url: post.url,
