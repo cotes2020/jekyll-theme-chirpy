@@ -30,7 +30,7 @@
     30|        pages << {
     31|          title: post.data['title'].to_s,
     32|          url: post.url,
-    33|          description: (post.data['excerpt'] || post.data['description'] || '').to_s.strip
+    33|          description: strip_html(post.data['excerpt'] || post.data['description'] || '').to_s.strip
     34|        }
     35|      end
     36|
@@ -44,7 +44,7 @@
     44|        pages << {
     45|          title: title,
     46|          url: page.url,
-    47|          description: (page.data['excerpt'] || page.data['description'] || '').to_s.strip
+    47|          description: strip_html(page.data['excerpt'] || page.data['description'] || '').to_s.strip
     48|        }
     49|      end
     50|
@@ -124,8 +124,20 @@
    124|    end
    125|
    126|    def truncate(text, max)
-   127|      text.length > max ? "#{text[0..max - 3]}..." : text
-   128|    end
-   129|  end
-   130|end
-   131|
+   127|
+   128|    def strip_html(text)
+   129|      text.to_s.gsub(%r{<[^>]+>}, "").strip
+   130|    end
+   131|      text.length > max ? "#{text[0..max - 3]}..." : text
+   132|
+   133|    def strip_html(text)
+   134|      text.to_s.gsub(%r{<[^>]+>}, "").strip
+   135|    end
+   136|    end
+   137|
+   138|    def strip_html(text)
+   139|      text.to_s.gsub(%r{<[^>]+>}, "").strip
+   140|    end
+   141|  end
+   142|end
+   143|
