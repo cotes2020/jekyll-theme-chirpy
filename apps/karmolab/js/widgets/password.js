@@ -6,12 +6,12 @@
         layout: 'form',
         icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="16" r="1" fill="currentColor"/>',
         tabs: [{ id: 'app', label: '비번', build: function(container) {
-            Mdd.setMood('smug'); Mdd.say('비밀번호 맞춰볼래냥?');
+            Mdd.setMood('smug'); Mdd.say('비밀번호 맞춰볼래요?');
                 container.innerHTML = `
                     <div style="display:flex; flex-direction:column; padding:20px; height:100%; box-sizing:border-box;">
                         <div style="font-size:18px; font-weight:bold; color:var(--text-primary); margin-bottom:8px;">비밀번호 야구 ⚾</div>
                         <div style="font-size:var(--font-size-sm); color:var(--text-secondary); margin-bottom:20px;">
-                            알파벳(대/소문자) + 숫자 + 일부 기호(!@#$%^&*)가 섞인 <b>4자리</b> 비밀번호를 맞춰보세요냥!<br>
+                            알파벳(대/소문자) + 숫자 + 일부 기호(!@#$%^&*)가 섞인 <b>4자리</b> 비밀번호를 맞춰보세요!<br>
                             결과와 함께 살살 긁는 힌트가 제공됩니다.
                         </div>
                     
@@ -56,10 +56,10 @@
                         else hasSym = true;
                     }
                 
-                    if (hasLower) hints.push("혹시 정답 어딘가에 귀여운 소문자가 숨어있지 않을까냥?");
-                    if (hasUpper) hints.push("정답에 크고 우람한 대문자가 포함되어 있는 것 같다냥...");
-                    if (hasNum) hints.push("숫자가 하나쯤은 섞여야 제맛이지냥.");
-                    if (hasSym) hints.push("특수기호(!@#$ 등)를 안 쓴 보안 허접은 아니라냥!");
+                    if (hasLower) hints.push("혹시 정답 어딘가에 귀여운 소문자가 숨어있지 않을까요?");
+                    if (hasUpper) hints.push("정답에 크고 우람한 대문자가 포함되어 있는 것 같아요...");
+                    if (hasNum) hints.push("숫자가 하나쯤은 섞여야 제맛이죠.");
+                    if (hasSym) hints.push("특수기호(!@#$ 등)를 안 쓴 보안 허접은 아니죠!");
 
                     // 2. 특정 위치의 힌트 (가끔 조롱조)
                     const randPos = Math.floor(Math.random() * 4);
@@ -70,9 +70,9 @@
                     else if (/[0-9]/.test(tgt)) typeStr = '숫자';
                     else typeStr = '특수기호';
                 
-                    hints.push(`이건 비밀인데... ${randPos + 1}번째 글자는 바로 [${typeStr}] 라냥!`);
-                    hints.push(`그딴 비밀번호로는 내 지갑을 못 턴다냥~`);
-                    hints.push(`인생의 진리는 삽질에 있다냥. 다시 해라냥.`);
+                    hints.push(`이건 비밀인데... ${randPos + 1}번째 글자는 바로 [${typeStr}] 래요!`);
+                    hints.push(`그딴 비밀번호로는 내 지갑을 못 터요~`);
+                    hints.push(`인생의 진리는 삽질에 있어요. 다시 해보세요.`);
 
                     // 랜덤하게 하나 선택해서 조롱
                     return hints[Math.floor(Math.random() * hints.length)];
@@ -80,7 +80,7 @@
 
                 function checkGuess() {
                     const guess = input.value;
-                    if (guess.length !== 4) { Toolbox.showToast('4자리를 정확히 입력해라냥!', 'warning'); return; }
+                    if (guess.length !== 4) { Toolbox.showToast('4자리를 정확히 입력하세요!', 'warning'); return; }
 
                     let strike = 0, ball = 0;
                     let ansLetters = answer.split('');
@@ -116,7 +116,7 @@
                     if (strike === 4) {
                         logEntry.innerHTML = `
                             <div style="display:flex; gap:6px; margin-bottom:8px; justify-content:center;">${tilesHtml}</div>
-                            <div style="text-align:center; color:var(--success); font-weight:bold;">[해킹 성공] 완벽히 일치한다냥! 🎉</div>
+                            <div style="text-align:center; color:var(--success); font-weight:bold;">[해킹 성공] 완벽히 일치해요! 🎉</div>
                         `;
                         setTimeout(generateAnswer, 3000);
                     } else {

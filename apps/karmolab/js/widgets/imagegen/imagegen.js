@@ -650,7 +650,7 @@
         if (running) {
             cancelQueueItem(running.id);
             Toolbox.showToast('현재 생성 취소됨');
-            Mdd.setMood('idle'); Mdd.say('취소했다냥!');
+            Mdd.setMood('idle'); Mdd.say('취소했어요!');
         }
     }
 
@@ -754,7 +754,7 @@
 
     /* ===== buildMain ===== */
     function buildMain(container) {
-        Mdd.setMood('happy'); Mdd.say('이미지 만들어볼까냥?');
+        Mdd.setMood('happy'); Mdd.say('이미지 만들어볼까요?');
 
         container.innerHTML = `
             <div class="ig-layout">
@@ -932,7 +932,7 @@
     /* ===== Toolbox.register ===== */
     Toolbox.register({
         id: 'imagegen',
-        title: 'AI 이미지 생성',
+        title: '이미지 생성',
         category: 'feature',
         desc: 'AI로 이미지를 생성합니다',
         layout: 'full',

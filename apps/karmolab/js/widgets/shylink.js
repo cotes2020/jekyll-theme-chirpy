@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71 M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
         tabs: [{ id: 'app', label: '어그로', build: function(container) {
-            Mdd.setMood('smug'); Mdd.say('이 링크... 잡을 수 있다냥?');
+            Mdd.setMood('smug'); Mdd.say('이 링크... 잡을 수 있어요?');
                 container.innerHTML = `
                     <div style="position:relative; width:100%; height:450px; background:#1a1a2e; overflow:hidden; border-radius:var(--radius-lg); cursor:crosshair;" id="shyArea">
                         <a href="#" id="shyTarget" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#ff4757; font-size:24px; font-weight:900; text-decoration:none; text-shadow:0 0 10px rgba(255,71,87,0.5); white-space:nowrap; padding:20px; transition: opacity 0.1s; user-select:none;">

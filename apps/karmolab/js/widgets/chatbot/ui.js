@@ -201,7 +201,7 @@
     }
 
     function buildChat(container) {
-        if (typeof Mdd !== 'undefined') { Mdd.setMood('think'); Mdd.say('대화 상대가 필요하냥?'); }
+        if (typeof Mdd !== 'undefined') { Mdd.setMood('think'); Mdd.say('대화 상대가 필요해요?'); }
 
         var presets = window.Chatbot.presets || [];
         var defaultText = '당신은 친절하고 유용한 AI 어시스턴트입니다. 한국어로 답변해주세요.';
@@ -248,7 +248,7 @@
                     '</div>' +
                 '</div>' +
                 '<div class="cb-chat-header">' +
-                    '<span class="cb-chat-header-title">💬 AI 챗봇</span>' +
+                    '<span class="cb-chat-header-title">💬 챗봇</span>' +
                     '<div style="display:flex;gap:6px;">' +
                         '<button class="btn btn-ghost" id="cbShortcutsBtn" title="키보드 단축키 (Ctrl+/)">⌨️</button>' +
                         '<button class="btn btn-ghost" id="cbSearchToggle" title="대화 검색 (Ctrl+F)">🔍</button>' +

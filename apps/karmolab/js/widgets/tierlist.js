@@ -595,16 +595,16 @@
                     addItem(file.name.replace(/\.[^.]+$/, ''), imgKey);
                 }
                 Toolbox.showToast(`${pendingFiles.length}개 아이템 추가됨`);
-                Mdd.setMood('happy'); Mdd.say('한꺼번에 추가했다냥!');
+                Mdd.setMood('happy'); Mdd.say('한꺼번에 추가했어요!');
             } else if (pendingFiles.length === 1) {
                 const imgKey = await processImageFile(pendingFiles[0]);
                 addItem(name || pendingFiles[0].name.replace(/\.[^.]+$/, ''), imgKey);
                 Toolbox.showToast('아이템 추가됨');
-                Mdd.setMood('happy'); Mdd.say('새 아이템이다냥!');
+                Mdd.setMood('happy'); Mdd.say('새 아이템이에요!');
             } else {
                 addItem(name, null);
                 Toolbox.showToast('아이템 추가됨');
-                Mdd.setMood('happy'); Mdd.say('텍스트 아이템 추가했다냥!');
+                Mdd.setMood('happy'); Mdd.say('텍스트 아이템 추가했어요!');
             }
             renderEditor();
         };
@@ -722,7 +722,7 @@
             overlay.remove();
             renderAll();
             Toolbox.showToast('새 티어리스트 생성됨');
-            Mdd.setMood('cheer'); Mdd.say('새 리스트 시작이다냥!');
+            Mdd.setMood('cheer'); Mdd.say('새 리스트 시작이에요!');
         };
         dialog.querySelector('#tl-new-title').focus();
     }
@@ -839,7 +839,7 @@
             link.href = canvas.toDataURL('image/png');
             link.click();
             Toolbox.showToast('이미지 저장됨');
-            Mdd.setMood('cheer'); Mdd.say('스크린샷 완료다냥!');
+            Mdd.setMood('cheer'); Mdd.say('스크린샷 완료했어요!');
         } catch (err) {
             Toolbox.showToast('이미지 생성 실패', 'error', err);
         }
@@ -914,7 +914,7 @@
                 saveState();
                 renderAll();
                 Toolbox.showToast('가져오기 완료');
-                Mdd.setMood('happy'); Mdd.say('데이터 불러왔다냥!');
+                Mdd.setMood('happy'); Mdd.say('데이터 불러왔어요!');
             } catch (err) {
                 Toolbox.showToast('가져오기 실패', 'error', err);
             }
@@ -1034,7 +1034,7 @@
                     removeItem(itemId);
                     renderEditor();
                     Toolbox.showToast('아이템 삭제됨');
-                    Mdd.setMood('shock'); Mdd.say('지워버렸다냥...');
+                    Mdd.setMood('shock'); Mdd.say('지워버렸어요...');
                 }},
             ]);
         });
@@ -1050,7 +1050,7 @@
             addItem('', imgKey);
             renderEditor();
             Toolbox.showToast('클립보드에서 추가됨');
-            Mdd.setMood('happy'); Mdd.say('붙여넣기 성공이다냥!');
+            Mdd.setMood('happy'); Mdd.say('붙여넣기 성공이에요!');
         });
 
         wrap.setAttribute('tabindex', '0');
@@ -1107,7 +1107,7 @@
                         deleteList(id);
                         renderAll();
                         Toolbox.showToast('삭제됨');
-                        Mdd.setMood('sad'); Mdd.say('지워버렸다냥...');
+                        Mdd.setMood('sad'); Mdd.say('지워버렸어요...');
                     }},
                 ]);
             });

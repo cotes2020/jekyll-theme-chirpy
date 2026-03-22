@@ -179,7 +179,7 @@
                 <div class="il-lib-empty" id="ilEmpty" style="display:none">
                     <div class="il-lib-empty-icon">🖼️</div>
                     <div class="il-lib-empty-text">아직 생성된 이미지가 없습니다</div>
-                    <div class="il-lib-empty-sub">AI 이미지 생성에서 이미지를 만들어보세요</div>
+                    <div class="il-lib-empty-sub">이미지 생성에서 이미지를 만들어보세요</div>
                 </div>
             </div>
             <div id="ilDetailView" style="display:none">

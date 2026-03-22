@@ -83,7 +83,7 @@
             label: '생성',
             build: function (container) {
                 Mdd.setMood('think');
-                Mdd.say('어떤 주제를 뽑을까냥?');
+                Mdd.say('어떤 주제를 뽑을까요?');
 
                 function buildTopicCardsHtml() {
                     var html = '';
@@ -308,7 +308,7 @@
                     msgEl.textContent = '"' + label + '" 추가됨.';
                     msgEl.style.color = 'var(--text-secondary)';
                     Mdd.setMood('happy');
-                    Mdd.say('추가됐다냥!');
+                    Mdd.say('추가됐어요!');
                     switchTopicTab('select');
                     updateOptionsWrap();
                 };
@@ -462,7 +462,7 @@
                         Mdd.say('중복 없이 뽑을 수 있는 게 이거까지만 있대요.');
                     } else {
                         Mdd.setMood('happy');
-                        Mdd.say('이거 어떠냥?');
+                        Mdd.say('이거 어때요?');
                     }
                     Mdd.addAffection(1);
                 }
@@ -478,7 +478,7 @@
                             sessionStorage.setItem('toolbox_chatbot_story_keywords', JSON.stringify(kw));
                         } catch (e) {}
                         Toolbox.switchPage('chatbot');
-                        Mdd.say('챗봇에서 이야기 만들어보라냥!');
+                        Mdd.say('챗봇에서 이야기 만들어보세요!');
                     };
                 }
 

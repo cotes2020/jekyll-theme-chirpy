@@ -31,7 +31,7 @@
             const total = 90;
             totalLabel.textContent = total;
 
-            Mdd.setMood('idle'); Mdd.say('뽁뽁이다냥! 눌러보라냥~');
+            Mdd.setMood('idle'); Mdd.say('뽁뽁이에요! 눌러보세요~');
 
             function createGrid() {
                 grid.innerHTML = ''; popped = 0; countLabel.textContent = '0';
@@ -44,10 +44,10 @@
                             popped++; countLabel.textContent = popped;
 
                             if (popped % 15 === 0 && popped < total) {
-                                Mdd.setMood('shock'); Mdd.bounce(); Mdd.say('뽁! 뽁! 멈출 수 없다냥!');
+                                Mdd.setMood('shock'); Mdd.bounce(); Mdd.say('뽁! 뽁! 멈출 수 없어요!');
                             }
                             if (popped === total) {
-                                Mdd.setMood('cheer'); Mdd.say('올 클리어다냥!! 🎉🎉');
+                                Mdd.setMood('cheer'); Mdd.say('올 클리어예요!! 🎉🎉');
                             }
                         }
                     };
@@ -57,7 +57,7 @@
 
             container.querySelector('#resetBubbleBtn').onclick = () => {
                 createGrid();
-                Mdd.setMood('happy'); Mdd.say('새 뽁뽁이를 깔았다냥!');
+                Mdd.setMood('happy'); Mdd.say('새 뽁뽁이를 깔았어요!');
             };
             createGrid();
         } }]

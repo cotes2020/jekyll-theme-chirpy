@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z M8 10h8 M8 14h8" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '토스트', build: function(container) {
-            Mdd.setMood('smug'); Mdd.say('알림이 끝도 없다냥...');
+            Mdd.setMood('smug'); Mdd.say('알림이 끝도 없어요...');
                 container.innerHTML = `
                     <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:360px; gap:16px;">
                         <div id="toastStatus" style="font-size:15px; font-weight:600; color:var(--text-secondary);">식빵 위에 마우스를 올리고 있으세요 🍞</div>

@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '문페이즈', build: function(container) {
-            Mdd.setMood('love'); Mdd.say('달을 바라보고 있다냥...');
+            Mdd.setMood('love'); Mdd.say('달을 바라보고 있어요...');
                 container.innerHTML = `
                     <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:380px; gap:16px; background:#020205; overflow:hidden; position:relative; border-radius:var(--radius-lg);">
                         <div style="font-size:14px; color:var(--text-secondary); letter-spacing:4px; z-index:2; text-shadow:0 0 4px #000;">THE MOON PHASE</div>

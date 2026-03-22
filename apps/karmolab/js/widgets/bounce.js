@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '바운스', build: function(container) {
-            Mdd.setMood('happy'); Mdd.say('통통볼 놀이다냥!');
+            Mdd.setMood('happy'); Mdd.say('통통볼 놀이에요!');
                 container.innerHTML = `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                         <div style="font-size:var(--font-size-xs); color:var(--text-tertiary);">구석 적중: <span id="cornerCount" style="color:var(--success); font-weight:bold;">0</span></div>

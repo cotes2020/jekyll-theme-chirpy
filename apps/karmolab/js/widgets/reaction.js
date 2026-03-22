@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
         tabs: [{ id: 'app', label: '반응속도', build: function(container) {
-            Mdd.setMood('think'); Mdd.say('반응 속도를 테스트한다냥!');
+            Mdd.setMood('think'); Mdd.say('반응 속도를 테스트해요!');
 
             const STATES = { WAITING: 0, READY: 1, GREEN: 2, RESULT: 3, EARLY: 4 };
             let state = STATES.WAITING;
@@ -79,7 +79,7 @@
                         text.textContent = '너무 빨랐습니다!';
                         text.style.color = '#f87171';
                         sub.textContent = '클릭하여 다시 시도';
-                        Mdd.setMood('shock'); Mdd.say('너무 빠르다냥!');
+                        Mdd.setMood('shock'); Mdd.say('너무 빨라요!');
                         break;
                 }
             }
@@ -119,13 +119,13 @@
                             Toolbox.setProgress('reaction_best', reactionTime);
                             bestEl.textContent = `최고 기록: ${reactionTime}ms`;
                             bestEl.style.color = 'var(--accent)';
-                            Mdd.setMood('cheer'); Mdd.say('신기록이다냥!');
+                            Mdd.setMood('cheer'); Mdd.say('신기록이에요!');
                         } else if (reactionTime < 200) {
-                            Mdd.setMood('shock'); Mdd.say('빠르다냥!!! 인간 맞냥?!');
+                            Mdd.setMood('shock'); Mdd.say('빨라요!!! 인간 맞아요?!');
                         } else if (reactionTime < 300) {
-                            Mdd.setMood('happy'); Mdd.say('꽤 빠르다냥~');
+                            Mdd.setMood('happy'); Mdd.say('꽤 빨라요~');
                         } else {
-                            Mdd.setMood('smug'); Mdd.say('나보다 느리다냥 ㅋ');
+                            Mdd.setMood('smug'); Mdd.say('나보다 느려요 ㅋ');
                         }
 
                         if (reactionTime < 200) Toolbox.completeAchievement('reaction_200', { title: '초고속 반응 200ms' });

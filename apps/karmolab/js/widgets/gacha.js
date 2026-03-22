@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
         tabs: [{ id: 'app', label: '가챠', build: function(container) {
-            Mdd.setMood('shock'); Mdd.say('가챠를 돌린다냥! 뭐가 나올까냥!');
+            Mdd.setMood('shock'); Mdd.say('가챠를 돌려요! 뭐가 나올까요!');
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; padding:20px; height:380px; box-sizing:border-box; overflow:hidden;">
                     <button class="btn btn-primary" id="gachaBtn" style="margin-bottom:15px;">로또 1등 당첨될 때까지 시뮬레이션 돌리기</button>

@@ -393,7 +393,7 @@
 
     /* ===== 빌드 ===== */
     function buildChat(container) {
-        Mdd.setMood('think'); Mdd.say('대화 상대가 필요하냥?');
+        Mdd.setMood('think'); Mdd.say('대화 상대가 필요해요?');
 
         container.innerHTML = `
             <div class="cb-layout">
@@ -460,7 +460,7 @@
                         </div>
                     </div>
                     <div class="cb-chat-header">
-                        <span class="cb-chat-header-title">💬 AI 챗봇</span>
+                        <span class="cb-chat-header-title">💬 챗봇</span>
                         <div style="display:flex;gap:6px;">
                             <button class="btn btn-ghost" id="cbShortcutsBtn" title="키보드 단축키 (Ctrl+/)">⌨️</button>
                             <button class="btn btn-ghost" id="cbSearchToggle" title="대화 검색 (Ctrl+F)">🔍</button>
@@ -1101,14 +1101,14 @@ Here is my actual response...`;
                 chatHistory.push({ role: 'model', parts: [{ text: responseText }] });
                 saveSession();
                 Toolbox.recordUsage('chat', lastUsage?.totalTokenCount || 0);
-                Mdd.setMood('happy'); Mdd.say('대답 완료다냥!');
+                Mdd.setMood('happy'); Mdd.say('대답 완료해요!');
 
             } catch (e) {
                 if (streamEl.wrap.parentNode) streamEl.wrap.remove();
                 if (e.message !== '요청이 취소되었습니다.') {
                     appendMsg('bot', `오류: ${e.message}`, true);
                     Toolbox.showToast(e.message || '오류', 'error', e);
-                    Mdd.setMood('sad'); Mdd.say('에러다냥...');
+                    Mdd.setMood('sad'); Mdd.say('에러예요...');
                 }
                 console.error('Chat Error:', e);
             } finally {
@@ -1191,7 +1191,7 @@ Here is my actual response...`;
                 chatHistory.push({ role: 'model', parts: [{ text: responseText }] });
                 saveSession();
                 Toolbox.recordUsage('chat', lastUsage?.totalTokenCount || 0);
-                Mdd.setMood('happy'); Mdd.say('다시 대답했다냥!');
+                Mdd.setMood('happy'); Mdd.say('다시 대답했어요!');
             } catch (e) {
                 if (streamEl.wrap.parentNode) streamEl.wrap.remove();
                 if (e.message !== '요청이 취소되었습니다.') {
@@ -1219,7 +1219,7 @@ Here is my actual response...`;
                 appendMsg('bot', '대화가 초기화되었습니다. 무엇을 도와드릴까요?');
             }
             Toolbox.showToast('대화 초기화 완료');
-            Mdd.setMood('idle'); Mdd.say('새로 시작이다냥!');
+            Mdd.setMood('idle'); Mdd.say('새로 시작이에요!');
         },
 
         importChat() {
@@ -1304,7 +1304,7 @@ Here is my actual response...`;
     /* ===== 위젯 등록 ===== */
     Toolbox.register({
         id: 'chatbot',
-        title: 'AI 챗봇',
+        title: '챗봇',
         category: 'feature',
         desc: 'AI와 대화합니다',
         layout: 'full',

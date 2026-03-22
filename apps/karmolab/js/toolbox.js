@@ -106,7 +106,9 @@ const Toolbox = (() => {
         mobileNav.appendChild(mHome);
 
         function buildSidebarGroup(cat) {
-            const catTools = tools.filter(t => !hiddenSet.has(t.id) && t.category === cat.id);
+            const catTools = tools
+                .filter(t => !hiddenSet.has(t.id) && t.category === cat.id)
+                .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
             if (!catTools.length) return;
 
             const isOpen = groupState[cat.id] !== undefined ? groupState[cat.id] : (cat.id === 'feature');
@@ -134,7 +136,9 @@ const Toolbox = (() => {
         CATEGORIES.forEach(cat => buildSidebarGroup(cat));
 
         // Uncategorized tools
-        const uncategorized = tools.filter(t => !hiddenSet.has(t.id) && !t.category);
+        const uncategorized = tools
+            .filter(t => !hiddenSet.has(t.id) && !t.category)
+            .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
         if (uncategorized.length) {
             const wrap = document.createElement('div');
             wrap.className = 'sidebar-group';
@@ -157,8 +161,9 @@ const Toolbox = (() => {
         // Build landing page
         toolPages.appendChild(buildLanding());
 
-        // Build tool pages
-        tools.forEach(tool => {
+        // Build tool pages (가나다순)
+        const sortedTools = [...tools].sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
+        sortedTools.forEach(tool => {
             if (!hiddenSet.has(tool.id)) addMobileNavItem(tool);
             toolPages.appendChild(buildToolPage(tool));
         });
@@ -306,7 +311,7 @@ const Toolbox = (() => {
             try { localStorage.setItem(LAST_PAGE_KEY, 'home'); } catch (_) {}
             if (typeof Mdd !== 'undefined') {
                 Mdd.setMood('happy');
-                Mdd.say('환영한다냥~ 즐겨찾기에서 자주 쓰는 걸 모아뒀다냥!');
+                Mdd.say('환영해요! 즐겨찾기에서 자주 쓰는 걸 모아뒀어요.');
             }
             return;
         }

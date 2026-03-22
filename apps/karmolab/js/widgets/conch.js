@@ -8,7 +8,7 @@
         tabs: [{ id: 'app', label: '소라고동', build: function(container) {
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:380px; gap:16px; text-align:center;">
-                    <div style="font-size:14px; color:var(--text-secondary);">🐚 마법의 소라고동에게 질문을 속삭이세요냥</div>
+                    <div style="font-size:14px; color:var(--text-secondary);">🐚 마법의 소라고동에게 질문을 속삭이세요</div>
                     <input type="text" id="conchInput" class="input" style="width:80%; max-width:300px; text-align:center;" placeholder="질문을 입력한 뒤 버튼을 누르세요">
                     <div id="conchVisual" style="font-size:70px; cursor:pointer; transition:transform 0.3s; user-select:none;">🐚</div>
                     <div id="conchResult" style="font-size:16px; font-weight:bold; color:var(--accent); min-height:24px;"></div>
@@ -20,7 +20,7 @@
             const result = container.querySelector('#conchResult');
             const btn = container.querySelector('#conchBtn');
 
-            Mdd.setMood('idle'); Mdd.say('소라고동님은 모든 걸 알고 있다냥...');
+            Mdd.setMood('idle'); Mdd.say('소라고동님은 모든 걸 알고 있어요...');
 
             const answers = [
                 "그래.", "안 돼.", "가만히 있어.", "다시 한번 물어봐.",
@@ -30,11 +30,11 @@
 
             function ask() {
                 const text = input.value.trim();
-                if (!text) { Toolbox.showToast('질문을 입력하셔야 합니다냥!', 'warning'); return; }
+                if (!text) { Toolbox.showToast('질문을 입력하셔야 해요!', 'warning'); return; }
 
                 visual.style.transform = 'scale(1.2) rotate(15deg)';
                 result.textContent = '음...';
-                Mdd.setMood('think'); Mdd.say('소라고동님이 고민 중이시다냥...');
+                Mdd.setMood('think'); Mdd.say('소라고동님이 고민 중이세요...');
 
                 setTimeout(() => {
                     visual.style.transform = 'scale(1) rotate(0deg)';

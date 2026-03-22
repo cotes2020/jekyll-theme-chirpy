@@ -8,16 +8,16 @@
         achievements: [
             { id: 'pet_100', title: '100번 쓰다듬기', desc: '고양이를 100번 쓰다듬었다', icon: '🐱', source: 'pet' },
             { id: 'pet_1000', title: '1,000번 쓰다듬기', desc: '고양이를 1,000번 쓰다듬었다', icon: '🐱', source: 'pet' },
-            { id: 'pet_10000', title: '10,000번 쓰다듬기', desc: '집사 가끔 대단하다냥', icon: '🐱', source: 'pet' },
-            { id: 'pet_100000', title: '100,000번 쓰다듬기', desc: '진짜로 하고 있었냥?!', icon: '🐱', source: 'pet' },
-            { id: 'pet_500000', title: '500,000번 쓰다듬기', desc: '반이다냥... 설마 진심이냥?!', icon: '🐱', source: 'pet' },
-            { id: 'first_chat', title: '첫 대화', desc: 'AI 챗봇과 첫 대화를 나눴다', icon: '💬', source: 'chatbot' },
-            { id: 'first_image', title: '첫 이미지 생성', desc: 'AI로 첫 이미지를 생성했다', icon: '🎨', source: 'imagegen' },
+            { id: 'pet_10000', title: '10,000번 쓰다듬기', desc: '집사 가끔 대단해요', icon: '🐱', source: 'pet' },
+            { id: 'pet_100000', title: '100,000번 쓰다듬기', desc: '진짜로 하고 있었어요?!', icon: '🐱', source: 'pet' },
+            { id: 'pet_500000', title: '500,000번 쓰다듬기', desc: '반이에요... 설마 진심이에요?!', icon: '🐱', source: 'pet' },
+            { id: 'first_chat', title: '첫 대화', desc: '챗봇과 첫 대화를 나눴다', icon: '💬', source: 'chatbot' },
+            { id: 'first_image', title: '첫 이미지 생성', desc: '첫 이미지를 생성했다', icon: '🎨', source: 'imagegen' },
             { id: 'reaction_200', title: '초고속 반응 200ms', desc: '번개같은 반사신경', icon: '⚡', source: 'reaction' },
             { id: 'reaction_150', title: '번개 반응 150ms', desc: '인간의 한계를 넘었다', icon: '⚡', source: 'reaction' },
         ],
         badges: [
-            { id: 'pet_marriage', title: '검의 서약', desc: '100만번 쓰다듬고 결혼했다냥 💍', icon: '💖', source: 'pet' },
+            { id: 'pet_marriage', title: '검의 서약', desc: '100만번 쓰다듬고 결혼했어요 💍', icon: '💖', source: 'pet' },
             { id: 'toolbox_explorer', title: '탐험가', desc: '5개 이상 도구를 사용했다', icon: '🧭', source: 'system' },
         ],
     };
@@ -111,7 +111,7 @@
     }
 
     function buildAchievements(container) {
-        Mdd.setMood('think'); Mdd.say('도전과제 보여줄게냥~');
+        Mdd.setMood('think'); Mdd.say('도전과제 보여줄게요~');
         renderAchievements(container);
     }
 
@@ -139,7 +139,7 @@
     }
 
     function buildBadges(container) {
-        Mdd.setMood('think'); Mdd.say('뱃지 보여줄게냥~');
+        Mdd.setMood('think'); Mdd.say('뱃지 보여줄게요~');
         renderBadges(container);
     }
 
@@ -219,7 +219,7 @@
     }
 
     function buildStorage(container) {
-        Mdd.setMood('think'); Mdd.say('저장소 상태 보여줄게냥~');
+        Mdd.setMood('think'); Mdd.say('저장소 상태 보여줄게요~');
         renderStorage(container);
     }
 
@@ -295,7 +295,7 @@
     }
 
     function buildSettings(container) {
-        Mdd.setMood('think'); Mdd.say('설정 바꿀 거냥?');
+        Mdd.setMood('think'); Mdd.say('설정 바꿀 거야?');
         renderSettings(container);
     }
 

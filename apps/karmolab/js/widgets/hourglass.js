@@ -6,10 +6,10 @@
         layout: 'form',
         icon: '<path d="M6 2h12 M6 22h12 M6 2l6 10-6 10 M18 2l-6 10 18 10" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '모래시계', build: function(container) {
-            Mdd.setMood('think'); Mdd.say('모래시계... 졸린다냥...');
+            Mdd.setMood('think'); Mdd.say('모래시계... 졸려요...');
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; padding:20px; height:380px; box-sizing:border-box; overflow:hidden;">
-                    <div style="font-size:var(--font-size-xs); color:var(--text-tertiary); margin-bottom:8px;">픽셀 모래가 다 떨어지면 페이지가 새로고침됩니다냥...</div>
+                    <div style="font-size:var(--font-size-xs); color:var(--text-tertiary); margin-bottom:8px;">픽셀 모래가 다 떨어지면 페이지가 새로고침돼요...</div>
                     <canvas id="hourglassCanvas" style="flex:1; background:#0a0a0c; border-radius:8px;"></canvas>
                 </div>
             `;

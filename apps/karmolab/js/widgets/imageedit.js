@@ -439,7 +439,7 @@
         };
         img.onerror = () => {
             Toolbox.showToast('이미지를 불러올 수 없습니다.', 'error');
-            Mdd.setMood('sad'); Mdd.say('이미지 로드 실패냥...');
+            Mdd.setMood('sad'); Mdd.say('이미지 로드 실패했어요...');
         };
         img.src = src;
     }
@@ -454,7 +454,7 @@
         updateSizeLabel();
         hidePlaceholder();
         selectTool(activeTool);
-        Mdd.setMood('happy'); Mdd.say('이미지 불러왔다냥!');
+        Mdd.setMood('happy'); Mdd.say('이미지 불러왔어요!');
     }
 
     function commitImageLoadDownscaled(img, targetW, targetH) {
@@ -467,7 +467,7 @@
         updateSizeLabel();
         hidePlaceholder();
         selectTool(activeTool);
-        Mdd.setMood('happy'); Mdd.say('이미지를 축소해서 불러왔다냥!');
+        Mdd.setMood('happy'); Mdd.say('이미지를 축소해서 불러왔어요!');
     }
 
     function showSizeWarning(img, forceDownscale) {
@@ -1007,7 +1007,7 @@
         pushHistory();
         updateSizeLabel();
         Toolbox.showToast('크로마키 적용 완료');
-        Mdd.setMood('happy'); Mdd.say('배경 날렸다냥!');
+        Mdd.setMood('happy'); Mdd.say('배경 날렸어요!');
     }
 
     /* ===== Mode 2 — Brush ===== */
@@ -1119,7 +1119,7 @@
         pushHistory();
         updateSizeLabel();
         Toolbox.showToast('브러시 분류 적용 완료');
-        Mdd.setMood('happy'); Mdd.say('누끼 작업 완료냥!');
+        Mdd.setMood('happy'); Mdd.say('누끼 작업 완료했어요!');
     }
 
     /* ===== Mode 3 — AI (ONNX) ===== */
@@ -1288,7 +1288,7 @@
             URL.revokeObjectURL(u);
             pushHistory(); updateSizeLabel(); cleanupOverlay(ui);
             Toolbox.showToast('배경 제거 완료!');
-            Mdd.setMood('cheer'); Mdd.say('누끼 완성이다냥!');
+            Mdd.setMood('cheer'); Mdd.say('누끼 완성이에요!');
         } catch (e) {
             console.error('BG removal error:', e);
             cleanupOverlay(ui);
@@ -1400,12 +1400,12 @@
 
             pushHistory(); updateSizeLabel(); cleanupOverlay(ui);
             Toolbox.showToast('Gemini 마스크 적용 완료!');
-            Mdd.setMood('cheer'); Mdd.say('Gemini가 마스크 만들어줬다냥!');
+            Mdd.setMood('cheer'); Mdd.say('Gemini가 마스크 만들어줬어요!');
         } catch (e) {
             console.error('Gemini mask error:', e);
             cleanupOverlay(ui);
             Toolbox.showToast('Gemini 실패: ' + (e.message || e), 'error');
-            Mdd.setMood('sad'); Mdd.say('Gemini 실패했다냥...');
+            Mdd.setMood('sad'); Mdd.say('Gemini 실패했어요...');
         }
     }
 
@@ -1480,12 +1480,12 @@
             ctx.drawImage(img, 0, 0);
             pushHistory(); updateSizeLabel(); cleanupOverlay(ui);
             Toolbox.showToast('배경색 변경 완료!');
-            Mdd.setMood('cheer'); Mdd.say('배경색 바꿔줬다냥!');
+            Mdd.setMood('cheer'); Mdd.say('배경색 바꿔줬어요!');
         } catch (e) {
             console.error('Gemini BGG error:', e);
             cleanupOverlay(ui);
             Toolbox.showToast('Gemini 실패: ' + (e.message || e), 'error');
-            Mdd.setMood('sad'); Mdd.say('Gemini 실패했다냥...');
+            Mdd.setMood('sad'); Mdd.say('Gemini 실패했어요...');
         } finally {
             bggBusy = false;
         }
@@ -2173,7 +2173,7 @@
         destroyMaskPreview();
         pushHistory(); updateSizeLabel();
         Toolbox.showToast('마스크 적용 완료!');
-        Mdd.setMood('cheer'); Mdd.say('마스크 적용했다냥!');
+        Mdd.setMood('cheer'); Mdd.say('마스크 적용했어요!');
     }
 
     function applySelfMask() {
@@ -2206,7 +2206,7 @@
         pushHistory(); updateSizeLabel();
         const label = target === 'dark' ? '어두운' : '밝은';
         Toolbox.showToast(`${label} 영역 제거 완료!`);
-        Mdd.setMood('cheer'); Mdd.say('깔끔하게 날렸다냥!');
+        Mdd.setMood('cheer'); Mdd.say('깔끔하게 날렸어요!');
     }
 
     /* ===== Crop ===== */
@@ -2447,7 +2447,7 @@
                 elapsed: null
             });
             Toolbox.showToast('라이브러리에 저장됨');
-            Mdd.setMood('cheer'); Mdd.say('라이브러리에 저장했다냥!');
+            Mdd.setMood('cheer'); Mdd.say('라이브러리에 저장했어요!');
         } catch (e) {
             Toolbox.showToast('저장 실패', 'error', e);
         }
@@ -2523,7 +2523,7 @@
 
     /* ===== Build ===== */
     function buildEditor(container) {
-        Mdd.setMood('happy'); Mdd.say('이미지 편집이다냥!');
+        Mdd.setMood('happy'); Mdd.say('이미지 편집이에요!');
 
         container.innerHTML = `
             <div class="ie-layout">

@@ -17,7 +17,7 @@
     `);
 
     function buildDashboard(container) {
-        Mdd.setMood('think'); Mdd.say('사용 기록을 볼까냥?');
+        Mdd.setMood('think'); Mdd.say('사용 기록을 볼까요?');
         render(container);
     }
 
@@ -35,7 +35,7 @@
         });
 
         if (days.length === 0) {
-            container.innerHTML = '<div class="dash-empty"><div style="font-size:40px;margin-bottom:12px;opacity:0.3;">📊</div>아직 사용 기록이 없습니다.<br>AI 챗봇이나 이미지 생성을 사용하면 여기에 기록됩니다.</div>';
+            container.innerHTML = '<div class="dash-empty"><div style="font-size:40px;margin-bottom:12px;opacity:0.3;">📊</div>아직 사용 기록이 없습니다.<br>챗봇이나 이미지 생성을 사용하면 여기에 기록됩니다.</div>';
             return;
         }
 

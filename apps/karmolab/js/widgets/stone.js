@@ -8,7 +8,7 @@
         tabs: [{ id: 'app', label: '돌', build: function(container) {
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:380px; gap:20px; text-align:center;">
-                    <div style="font-size:14px; color:var(--text-secondary);">🪨 당신의 디지털 반려돌입니다냥</div>
+                    <div style="font-size:14px; color:var(--text-secondary);">🪨 당신의 디지털 반려돌이에요</div>
                     <div id="stoneEmoji" style="font-size:100px; user-select:none; cursor:default; filter:drop-shadow(0 5px 5px rgba(0,0,0,0.5)); transition:transform 0.2s;">🪨</div>
                     <div id="stoneStatus" style="font-size:var(--font-size-sm); color:var(--text-tertiary); min-height:18px;">돌은 가만히 있습니다.</div>
                     <div style="display:flex; gap:10px;">
@@ -24,12 +24,12 @@
             const timeEl = container.querySelector('#stoneTime');
             let seconds = 0;
 
-            Mdd.setMood('sleep'); Mdd.say('돌이다냥... 반응이 없는 게 정상이다냥.');
+            Mdd.setMood('sleep'); Mdd.say('돌이에요... 반응이 없는 게 정상이에요.');
 
             const reactions = {
-                feed: ['...미동조차 하지 않습니다냥.', '...씹지도 않습니다냥.', '...소화기관이 없습니다냥.'],
-                walk: ['...굴러가지 않습니다냥.', '...다리가 없습니다냥.', '...움직임을 거부합니다냥.'],
-                praise: ['...여전히 돌입니다냥.', '...수줍지도 않습니다냥.', '...감정이 없습니다냥.']
+                feed: ['...미동조차 하지 않아요.', '...씹지도 않아요.', '...소화기관이 없어요.'],
+                walk: ['...굴러가지 않아요.', '...다리가 없어요.', '...움직임을 거부해요.'],
+                praise: ['...여전히 돌이에요.', '...수줍지도 않아요.', '...감정이 없어요.']
             };
 
             function react(type) {
@@ -39,9 +39,9 @@
                 stoneEmoji.style.transform = 'rotate(3deg)';
                 setTimeout(() => stoneEmoji.style.transform = 'rotate(0deg)', 200);
 
-                if (type === 'feed') { Mdd.setMood('eating'); Mdd.say('밥을 줬는데... 반응이 없다냥...'); }
-                else if (type === 'walk') { Mdd.setMood('sad'); Mdd.say('산책 시켰는데... 꿈쩍도 안 한다냥...'); }
-                else { Mdd.setMood('idle'); Mdd.say('칭찬해도 소용없다냥... 돌이니까냥.'); }
+                if (type === 'feed') { Mdd.setMood('eating'); Mdd.say('밥을 줬는데... 반응이 없어요...'); }
+                else if (type === 'walk') { Mdd.setMood('sad'); Mdd.say('산책 시켰는데... 꿈쩍도 안 해요...'); }
+                else { Mdd.setMood('idle'); Mdd.say('칭찬해도 소용없어요... 돌이니까요.'); }
 
                 setTimeout(() => Mdd.setMood('sleep'), 2000);
             }

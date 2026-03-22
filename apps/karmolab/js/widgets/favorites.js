@@ -192,7 +192,7 @@
 
     function buildFavorites(container) {
         Mdd.setMood('happy');
-        Mdd.say('자주 가는 곳을 모아뒀다냥~ 클릭해서 가봐!');
+        Mdd.say('자주 가는 곳을 모아뒀어요~ 클릭해서 가봐요!');
 
         function render() {
             const customNow = loadFavorites();

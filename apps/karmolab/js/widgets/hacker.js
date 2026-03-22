@@ -21,7 +21,7 @@
                 `;
                 const screen = container.querySelector('#hackerScreen');
 
-                Mdd.setMood('smug'); Mdd.say('해킹 시작이다냥... 히힛');
+                Mdd.setMood('smug'); Mdd.say('해킹 시작이에요... 히힛');
 
                 fetch('/apps/karmolab/js/toolbox.js')
                     .then(r => r.text())
@@ -50,7 +50,7 @@
                     keystrokeCount++;
                     if (keystrokeCount % 30 === 0) {
                         Mdd.bounce();
-                        const quips = ['타다닥... 히힛냥!', '방화벽 돌파 중이다냥...', '거의 다 왔다냥!', '키보드에 불이 난다냥!'];
+                        const quips = ['타다닥... 히힛!', '방화벽 돌파 중이에요...', '거의 다 왔어요!', '키보드에 불이 나요!'];
                         Mdd.say(quips[Math.floor(Math.random() * quips.length)]);
                     }
                 };

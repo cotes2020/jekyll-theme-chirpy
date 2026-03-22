@@ -8,7 +8,7 @@
         tabs: [{ id: 'app', label: '폰트가챠', build: function(container) {
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:380px; gap:16px; text-align:center;">
-                    <div style="font-size:14px; color:var(--text-secondary);">🎰 폰트를 바꾸려면 가챠를 돌리세요냥!</div>
+                    <div style="font-size:14px; color:var(--text-secondary);">🎰 폰트를 바꾸려면 가챠를 돌리세요!</div>
                     <div id="fontDisplay" style="font-size:24px; font-weight:bold; margin:10px 0; min-height:36px; transition:all 0.3s;">가나다라 ABC Hello 123</div>
                     <div id="fontGrade" style="font-size:40px; min-height:50px; transition:transform 0.3s;"></div>
                     <button class="btn btn-accent" id="drawFontBtn">🎰 가챠 돌리기!</button>
@@ -22,7 +22,7 @@
             const grade = container.querySelector('#fontGrade');
             const collected = container.querySelector('#fontCollected');
 
-            Mdd.setMood('idle'); Mdd.say('폰트 가챠다냥! 뭐가 나올까냥~');
+            Mdd.setMood('idle'); Mdd.say('폰트 가챠예요! 뭐가 나올까요~');
 
             const fonts = [
                 { name: '기본 폰트', style: 'sans-serif', grade: 'C', color: '#888' },
@@ -39,7 +39,7 @@
             btn.onclick = () => {
                 // 연출: 빠르게 폰트 돌리기
                 btn.disabled = true;
-                Mdd.setMood('shock'); Mdd.say('돌아간다냥...!!');
+                Mdd.setMood('shock'); Mdd.say('돌아가요...!!');
                 let spinCount = 0;
                 const spinInterval = setInterval(() => {
                     const r = fonts[Math.floor(Math.random() * fonts.length)];
@@ -63,13 +63,13 @@
                         collected.textContent = collectedSet.size;
 
                         if (rand.grade === 'UR') {
-                            Mdd.setMood('cheer'); Mdd.bounce(); Mdd.say('UR!! 전설급 폰트다냥!! 🎉🎉🎉');
+                            Mdd.setMood('cheer'); Mdd.bounce(); Mdd.say('UR!! 전설급 폰트예요!! 🎉🎉🎉');
                         } else if (rand.grade === 'SR') {
-                            Mdd.setMood('happy'); Mdd.bounce(); Mdd.say('SR! 꽤 레어한 득템이다냥!');
+                            Mdd.setMood('happy'); Mdd.bounce(); Mdd.say('SR! 꽤 레어한 득템이에요!');
                         } else if (rand.grade === 'C') {
-                            Mdd.setMood('sad'); Mdd.say('C급... 흔해빠진 거다냥...');
+                            Mdd.setMood('sad'); Mdd.say('C급... 흔해빠진 거예요...');
                         } else {
-                            Mdd.setMood('happy'); Mdd.say(`${rand.name} 나왔다냥!`);
+                            Mdd.setMood('happy'); Mdd.say(`${rand.name} 나왔어요!`);
                         }
 
                         btn.disabled = false;

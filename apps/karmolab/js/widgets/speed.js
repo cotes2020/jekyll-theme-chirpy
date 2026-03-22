@@ -6,10 +6,10 @@
         layout: 'form',
         icon: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '속도측정', build: function(container) {
-            Mdd.setMood('cheer'); Mdd.say('속도 측정이다냥! 빨리 드래그하라냥!');
+            Mdd.setMood('cheer'); Mdd.say('속도 측정이에요! 빨리 드래그하세요!');
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; padding:20px; height:380px; box-sizing:border-box; text-align:center;">
-                    <div style="font-size:14px; color:var(--text-secondary); margin-bottom:10px;">💾 [1MB] 블럭을 마우스로 잡고 골인 지점까지 끌고 가세요냥!</div>
+                    <div style="font-size:14px; color:var(--text-secondary); margin-bottom:10px;">💾 [1MB] 블럭을 마우스로 잡고 골인 지점까지 끌고 가세요!</div>
                     <div id="dropZone" style="flex:1; background:rgba(0,0,0,0.3); border:2px dashed #444; border-radius:8px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
                         <div id="targetArea" style="position:absolute; right:20px; width:80px; height:80px; background:rgba(0, 200, 0, 0.1); border:2px dashed var(--success); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--success); font-size:var(--font-size-xs); font-weight:bold;">GOAL</div>
                         <div id="dragBlock" style="position:absolute; left:20px; width:60px; height:60px; background:var(--accent); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:var(--font-size-xs); cursor:grab; box-shadow:0 4px 6px rgba(0,0,0,0.3); user-select:none;">1 MB</div>
@@ -60,7 +60,7 @@
                         const tookMs = endTime - startTime;
                         const speed = 1000 / tookMs; // 1MB / sec
                         
-                        result.innerHTML = `이동 시간: 무려 <span style="color:var(--warning)">${tookMs.toFixed(0)} ms</span>!<br>당신의 수동 손목 속도는 <span style="color:var(--success)">${speed.toFixed(2)} MB/s</span> 입니다냥!`;
+                        result.innerHTML = `이동 시간: 무려 <span style="color:var(--warning)">${tookMs.toFixed(0)} ms</span>!<br>당신의 수동 손목 속도는 <span style="color:var(--success)">${speed.toFixed(2)} MB/s</span> 이에요!`;
                         startTime = null; // 리셋
                     }
                 }
