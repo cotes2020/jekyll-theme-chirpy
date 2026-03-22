@@ -24,8 +24,10 @@ module Jekyll
     def collect_pages(site)
       pages = []
 
-      site.posts.docs.each do |post|
-        next unless post.published?
+      # Collect from posts (compatible with Jekyll 3.x and 4.x)
+      posts = site.posts.respond_to?(:docs) ? site.posts.docs : []
+      posts.each do |post|
+        next if post.respond_to?(:published?) && !post.published?
         pages << {
           title: post.data['title'].to_s,
           url: post.url,
@@ -111,7 +113,7 @@ module Jekyll
     def default_sections
       [
         { 'title' => 'Documentation', 'pattern' => '/^(about|docs|guide|help|reference|tab|archives|categories|tags)/i' },
-        { 'title' => 'Blog Posts', 'pattern' => '/^\\/\\d{4}/' }
+        { 'title' => 'Blog Posts', 'pattern' => '/^\\\\/\\\\d{4}/' }
       ]
     end
 
