@@ -1,0 +1,108 @@
+---
+layout: none
+permalink: /karmolab/
+---
+<!--
+    로컬 테스트 (Jekyll 빌드 없이):
+    1. 블로그 루트에서 python -m http.server 8899
+    2. http://localhost:8899/apps/karmolab/index.html 접속
+    * 상단에 프론트매터 텍스트가 보이지만 JS/CSS/기능은 정상 동작함
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KarmoLab</title>
+    <meta name="description" content="AI 챗봇, 이미지 생성·편집, 암호화, 랜덤 생성기 등 유틸리티와 미니게임을 모은 KarmoLab. 삶을 섞고 술을 바꿀 시간.">
+    <link rel="canonical" href="https://mascari4615.github.io/karmolab/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KarmoLab">
+    <meta property="og:description" content="AI 챗봇, 이미지 생성·편집, 암호화, 랜덤 생성기 등 유틸리티와 미니게임을 모은 KarmoLab. 삶을 섞고 술을 바꿀 시간.">
+    <meta property="og:url" content="https://mascari4615.github.io/karmolab/">
+    <meta property="og:image" content="https://mascari4615.github.io/apps/karmolab/img/favicon.ico">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="KarmoLab">
+    <meta name="twitter:description" content="AI 챗봇, 이미지 생성·편집, 암호화, 랜덤 생성기 등 유틸리티와 미니게임을 모은 KarmoLab. 삶을 섞고 술을 바꿀 시간.">
+    <link rel="icon" href="/apps/karmolab/img/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha384-S3wQ/l0OsbJoFeJC81UIr3JOlx/OzNJpRt1bV+yhpWQxPAahfpQtpxBSfn+Isslc" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="/apps/karmolab/css/toolbox.css">
+    <link rel="stylesheet" href="/apps/karmolab/css/randomgen.css">
+    <link id="prism-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script>
+(function(){
+  var t=localStorage.getItem('toolbox_theme')||'dark';
+  var b=localStorage.getItem('toolbox_bg_theme')||'blue-magenta';
+  document.documentElement.setAttribute('data-theme',t);
+  document.documentElement.setAttribute('data-bg',b);
+  var pt=localStorage.getItem('toolbox_prism_theme');
+  var b='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/',e='https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/';
+  var m={tomorrow:b+'prism-tomorrow.min.css',okaidia:b+'prism-okaidia.min.css',twilight:b+'prism-twilight.min.css',prism:b+'prism.min.css',coy:b+'prism-coy.min.css',dracula:e+'prism-dracula.min.css','one-dark':e+'prism-one-dark.min.css',nord:e+'prism-nord.min.css','material-dark':e+'prism-material-dark.min.css','vsc-dark-plus':e+'prism-vsc-dark-plus.min.css',ghcolors:e+'prism-ghcolors.min.css','one-light':e+'prism-one-light.min.css','material-light':e+'prism-material-light.min.css'};
+  var url=(pt&&m[pt])?m[pt]:(t==='light'?m.ghcolors:m.tomorrow);
+  var el=document.getElementById('prism-css');
+  if(el&&url)el.href=url;
+})();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.1.4/marked.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha384-06z5D//U/xpvxZHuUz92xBvq3DqBBFi7Up53HRrbV7Jlv7Yvh/MZ7oenfUe9iCEt" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha384-Uq05+JLko69eOiPr39ta9bh7kld5PKZoU+fF7g0EXTAriEollhZ+DrN8Q/Oi8J2Q" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <div class="status-toast" id="statusToast"></div>
+    <div class="app-layout">
+        <header class="header-bar" id="headerBar">
+            <div class="header-bar-left">
+                <button type="button" class="header-logo" id="sidebarHome" data-page="home" onclick="Toolbox.switchPage('home')" title="홈으로"><span class="header-logo-text">KarmoLab</span></button>
+            </div>
+            <div class="header-bar-right">
+                <span id="server-status-dot" class="server-status-dot" role="button" tabindex="0" title="서버 상태 (클릭: 서버 모니터)" aria-label="서버 상태"></span>
+                <button type="button" class="header-btn user-btn" id="userPageBtn" title="내 정보" aria-label="내 정보">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                </button>
+                <button type="button" class="theme-toggle" id="themeToggle" title="테마 전환" aria-label="라이트/다크 모드 전환">
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </header>
+        <div class="app-body">
+            <aside class="sidebar" id="sidebar">
+                <nav class="sidebar-nav" role="navigation" aria-label="도구 목록">
+                    <div id="sidebar-nav"></div>
+                </nav>
+                <div class="sidebar-footer">
+                    <button type="button" class="sidebar-toggle" id="sidebarToggle" onclick="Toolbox.toggleSidebar()" title="사이드바 접기/펼치기" aria-label="사이드바 접기">
+                        <svg class="sidebar-toggle-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        <svg class="sidebar-toggle-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+            </aside>
+            <main class="main-content" role="main">
+                <div class="intro-overlay hidden" id="introOverlay" aria-hidden="true">
+                    <h1 class="intro-title">KarmoLab</h1>
+                </div>
+                <div class="mobile-nav" id="mobile-nav"></div>
+                <div class="content-header" id="contentHeader" style="display:none">
+                    <div><div class="breadcrumb" id="breadcrumb"></div><h1 class="content-title" id="pageTitle"></h1></div>
+                </div>
+                <div class="content-body" id="tool-pages"></div>
+            </main>
+        </div>
+    </div>
+    <script src="/apps/karmolab/js/toolbox.js"></script>
+    <script src="/apps/karmolab/js/mdd.js"></script>
+    <script src="/apps/karmolab/js/gemini.js"></script>
+    <script src="/apps/karmolab/js/widgets/randomgen/randomgen-topics.js"></script>
+    <script src="/apps/karmolab/js/widgets/randomgen/randomgen-time.js"></script>
+    <script src="/apps/karmolab/js/widgets/randomgen/randomgen-number.js"></script>
+    <script src="/apps/karmolab/js/widgets/randomgen/randomgen-name.js"></script>
+    <script src="/apps/karmolab/js/widgets/randomgen/randomgen-color.js"></script>
+    <script src="/apps/karmolab/js/widgets-manifest.js"></script>
+    <script src="/apps/karmolab/js/widgets-loader.js"></script>
+</body>
+</html>

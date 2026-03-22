@@ -37,6 +37,12 @@
         </li>
         <!-- .nav-item -->
       {% endfor %}
+      <li class="nav-item">
+        <a href="{{ '/karmolab/' | relative_url }}" class="nav-link" title="유틸리티, 미니게임, AI 도구">
+          <i class="fa-fw fas fa-flask"></i>
+          <span>{{ site.data.locales[include.lang].tabs.karmolab | default: "KarmoLab" | upcase }}</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
