@@ -11,6 +11,7 @@
 window.KARMOLAB_WIDGETS = [
     // ── 기능 (feature): 랜딩 → 유틸 → AI → 미디어 → 문서 → 사용자
     'favorites',
+    'linktree/linktree',
     'crypto', 'memo', // 'morse', 'password',
     'chatbot/chatbot',
     'imagegen/presets', 'imagegen/config', 'imagegen/styles', 'imagegen/core', 'imagegen/imagegen',

@@ -5,7 +5,7 @@
  * │                                                            │
  * │  index.html ─→ toolbox.js (코어)                           │
  * │                  ├─ 랜딩 페이지 (히어로 + 즐겨찾기 CTA)       │
- * │                  ├─ 사이드바 (기능/놀이/도구)                │
+ * │                  ├─ 사이드바 (도구/놀이/기타)               │
  * │                  ├─ 검색, breadcrumb, 테마, 사용량 추적      │
  * │                  └─ 도전과제/뱃지/진행도 시스템              │
  * │               ─→ mdd.js (마스코트)                          │
@@ -15,7 +15,7 @@
  * │               ─→ gemini.js (AI API)                        │
  * │               ─→ widgets/*.js (개별 도구)                   │
  * │                                                            │
- * │  카테고리:  feature (기능)  /  play (놀이)  /  tool (도구)  │
+ * │  카테고리:  tool (도구)  /  play (놀이)  /  null (기타)  │
  * └────────────────────────────────────────────────────────────┘
  *
  * 새 도구 추가 방법:
@@ -23,7 +23,7 @@
  * 2. widgets-manifest.js의 KARMOLAB_WIDGETS 배열에 id 추가
  * 3. Toolbox.register({ id, title, icon, category, desc, hidden?, tabs }) 호출
  *    - icon: SVG path 문자열 (viewBox 0 0 24 24 기준)
- *    - category: 'feature' | 'play' | 'tool'
+ *    - category: 'tool' | 'play' | null
  *    - desc: 한 줄 설명 (검색·즐겨찾기용)
  *    - hidden: true면 사이드바 비표시 (user 등)
  *    - tabs: [{ id, label, build(container) }]
@@ -41,9 +41,8 @@ const Toolbox = (() => {
     /* ===== 카테고리 & 메타데이터 ===== */
 
     const CATEGORIES = [
-        { id: 'feature', label: '기능', icon: '<path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z" stroke-linejoin="round"/>' },
-        { id: 'play',    label: '놀이', icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/>' },
-        { id: 'tool',    label: '도구', icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94L6.73 20.15a2.1 2.1 0 0 1-3-3l6.72-6.72a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>' },
+        { id: 'tool', label: '도구', icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94L6.73 20.15a2.1 2.1 0 0 1-3-3l6.72-6.72a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>' },
+        { id: 'play', label: '놀이', icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/>' },
     ];
 
     /** 위젯별 메타데이터 (category, desc, hidden 등) — 각 위젯 register에서 정의 */
@@ -60,7 +59,7 @@ const Toolbox = (() => {
             const raw = localStorage.getItem(SIDEBAR_GROUP_KEY);
             if (raw) return JSON.parse(raw);
         } catch (_) {}
-        return { feature: true, play: false, tool: false };
+        return { tool: true, play: false };
     }
 
     function setGroupState(state) {
@@ -111,7 +110,7 @@ const Toolbox = (() => {
                 .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
             if (!catTools.length) return;
 
-            const isOpen = groupState[cat.id] !== undefined ? groupState[cat.id] : (cat.id === 'feature');
+            const isOpen = groupState[cat.id] !== undefined ? groupState[cat.id] : (cat.id === 'tool');
             const wrap = document.createElement('div');
             wrap.className = 'sidebar-group';
             const trigger = document.createElement('button');
@@ -193,8 +192,7 @@ const Toolbox = (() => {
             if (isValidPage(pageId)) switchPage(pageId, { pushHistory: false });
         });
 
-        const collapsed = (() => { try { return localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === '1'; } catch (_) { return false; } })();
-        if (collapsed) document.getElementById('sidebar')?.classList.add('collapsed');
+        document.getElementById('sidebar')?.classList.add('collapsed');
 
         const serverDot = document.getElementById('server-status-dot');
         if (serverDot && typeof getServerBase === 'function') {
@@ -259,11 +257,6 @@ const Toolbox = (() => {
                     <div class="landing-cta-card-title">즐겨찾기</div>
                     <div class="landing-cta-card-desc">자주 쓰는 도구를 모아봐요</div>
                 </button>
-                <a href="/" class="landing-cta-card" title="블로그">
-                    <div class="landing-cta-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></svg></div>
-                    <div class="landing-cta-card-title">블로그</div>
-                    <div class="landing-cta-card-desc">KarmoLab 메인</div>
-                </a>
                 <button type="button" class="landing-cta-card" onclick="Toolbox.switchPage('docs')">
                     <div class="landing-cta-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
                     <div class="landing-cta-card-title">문서</div>

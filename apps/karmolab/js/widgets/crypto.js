@@ -2,7 +2,7 @@
     Toolbox.register({
         id: 'crypto',
         title: '암호화 / 복호화',
-        category: 'feature',
+        category: 'tool',
         desc: '텍스트를 AES, Base64, URL 인코딩으로 암호화·복호화합니다',
         layout: 'form',
         icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>',

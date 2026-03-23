@@ -2839,7 +2839,7 @@
     Toolbox.register({
         id: 'imageedit',
         title: '이미지 편집',
-        category: 'feature',
+        category: 'tool',
         desc: 'AI로 이미지를 편집·변형합니다',
         layout: 'full',
         icon: '<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 3v18" stroke="currentColor" stroke-width="1.5"/><path d="M3 15h18" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>',

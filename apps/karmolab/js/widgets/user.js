@@ -393,7 +393,7 @@
     Toolbox.register({
         id: 'user',
         title: '내 정보',
-        category: 'feature',
+        category: 'tool',
         desc: '사용량, 도전과제, 뱃지 등 내 정보를 확인합니다',
         hidden: true,
         layout: 'form',

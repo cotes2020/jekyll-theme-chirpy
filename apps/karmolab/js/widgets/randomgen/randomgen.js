@@ -74,7 +74,7 @@
     Toolbox.register({
         id: 'randomgen',
         title: '랜덤 생성기',
-        category: 'tool',
+        category: 'play',
         desc: '창작용 키워드·주제를 랜덤으로 뽑습니다',
         layout: 'wide',
         icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="16" y1="3" x2="22" y2="3"/><line x1="19" y1="0" x2="19" y2="6"/>',

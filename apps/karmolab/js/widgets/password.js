@@ -1,7 +1,7 @@
 (function() {
     Toolbox.register({
         id: 'password', title: '비번',
-        category: 'feature',
+        category: null,
         desc: '랜덤 비밀번호를 생성합니다',
         layout: 'form',
         icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="16" r="1" fill="currentColor"/>',

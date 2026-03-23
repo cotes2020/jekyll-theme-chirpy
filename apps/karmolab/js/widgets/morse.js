@@ -1,7 +1,7 @@
 (function() {
     Toolbox.register({
         id: 'morse', title: '모스',
-        category: 'feature',
+        category: null,
         desc: '모스 부호로 인코딩·디코딩합니다',
         layout: 'form',
         icon: '<path d="M2 12h4 M8 12h8 M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',

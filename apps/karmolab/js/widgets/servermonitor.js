@@ -112,7 +112,7 @@
     Toolbox.register({
         id: 'servermonitor',
         title: '서버 모니터',
-        category: 'tool',
+        category: null,  // 기타
         desc: '서버 상태를 모니터링합니다',
         layout: 'form',
         icon: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',

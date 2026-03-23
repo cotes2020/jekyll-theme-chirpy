@@ -49,6 +49,8 @@
             { url: 'https://novelai.net/', label: 'NovelAI', icon: null },
         ]},
         { group: '소셜·미디어', items: [
+            { url: 'https://www.netflix.com', label: '넷플릭스', icon: 'https://cdn.simpleicons.org/netflix' },
+            { url: 'https://laftel.net', label: '라프텔', icon: null },
             { url: 'https://www.youtube.com', label: 'YouTube', icon: 'https://cdn.simpleicons.org/youtube' },
             { url: 'https://music.youtube.com', label: 'YouTube Music', icon: 'https://cdn.simpleicons.org/youtube' },
             { url: 'https://kr.pinterest.com', label: 'Pinterest', icon: 'https://cdn.simpleicons.org/pinterest' },
@@ -390,7 +392,7 @@
     Toolbox.register({
         id: 'favorites',
         title: '즐겨찾기',
-        category: 'feature',
+        category: null,  // 기타
         desc: '자주 가는 사이트와 도구를 모아 빠르게 접속합니다',
         layout: 'wide',
         icon: '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',

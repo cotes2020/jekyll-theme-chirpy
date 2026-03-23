@@ -83,7 +83,7 @@
     Toolbox.register({
         id: 'docs',
         title: '문서',
-        category: 'feature',
+        category: null,  // 기타
         desc: 'KarmoLab 소개, 기획, 로드맵 문서',
         layout: 'wide',
         icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',

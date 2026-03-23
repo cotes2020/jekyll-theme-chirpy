@@ -76,10 +76,10 @@ permalink: /karmolab/
                     <div id="sidebar-nav"></div>
                 </nav>
                 <div class="sidebar-footer">
-                    <button type="button" class="sidebar-toggle" id="sidebarToggle" onclick="Toolbox.toggleSidebar()" title="사이드바 접기/펼치기" aria-label="사이드바 접기">
-                        <svg class="sidebar-toggle-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <svg class="sidebar-toggle-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </button>
+                    <a href="#linktree" class="sidebar-dev-links" onclick="if(typeof Toolbox!=='undefined'){Toolbox.switchPage('linktree');return false}" title="개발자 연락처 · 링크" aria-label="누가 만들었나요">
+                    <span class="sidebar-dev-links-icon" aria-hidden="true">i</span>
+                    <span class="sidebar-dev-links-text">누가 만들었나요?</span>
+                </a>
                 </div>
             </aside>
             <main class="main-content" role="main">
