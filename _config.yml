@@ -57,6 +57,34 @@ webmaster_verifications:
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
+# ------------ LLMs.txt settings › https://llmstxt.org/ ------------------
+# ↓ --------------------------
+
+llms_txt:
+  # Required
+  enabled: false     # false or omitted = plugin does nothing
+
+  # Optional — omit or leave empty to use defaults.
+  # llms_txt `enabled` must be 'true' for these to apply.
+  full:              # generate llms-full.txt (default: false)
+  title:             # default: site.title → "Site"
+  description: 
+
+  # Optional — extra links shown under "## Optional" section.
+  # Per the llmstxt.org spec, LLMs may skip this section when context is limited.
+  # Omit or leave empty to skip this section.
+
+  optional:
+    - name:            # e.g. RSS Feed
+      url:             # e.g. https://yourblog.com/feed.xml
+      description:     # e.g. Subscribe to new posts
+    - name:            # e.g. Resume
+      url:             # e.g. https://yourblog.com/resume.pdf
+      description:     # e.g. Professional background and experience
+
+# ↑ --------------------------
+# The end of LLMs.txt settings
+
 # Web Analytics Settings
 analytics:
   google:
