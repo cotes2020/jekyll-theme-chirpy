@@ -1305,12 +1305,7 @@ Here is my actual response...`;
 
     /* ===== 위젯 등록 ===== */
     Toolbox.register({
-        id: 'chatbot',
-        title: '챗봇',
-        category: 'tool',
-        desc: 'AI와 대화합니다',
-        layout: 'full',
-        icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>',
+        ...Toolbox.getLazyWidgetPublicMeta('chatbot'),
         tabs: [{ id: 'chatbot-main', label: '채팅', build: buildChat }]
     });
 })();

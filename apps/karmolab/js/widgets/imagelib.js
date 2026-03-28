@@ -349,12 +349,7 @@
 
     /* ===== 위젯 등록 ===== */
     Toolbox.register({
-        id: 'imagelib',
-        title: '이미지 라이브러리',
-        category: 'tool',
-        desc: '생성한 이미지를 저장하고 관리합니다',
-        layout: 'full',
-        icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
+        ...Toolbox.getLazyWidgetPublicMeta('imagelib'),
         tabs: [
             { id: 'imagelib-main', label: '라이브러리', build: buildMain }
         ]

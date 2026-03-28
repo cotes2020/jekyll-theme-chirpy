@@ -1,10 +1,6 @@
 (function() {
     Toolbox.register({
-        id: 'gacha', title: '시뮬레이터',
-        category: 'play',
-        desc: '가챠 시뮬레이터를 돌립니다',
-        layout: 'form',
-        icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
+        ...Toolbox.getLazyWidgetPublicMeta('gacha'),
         tabs: [{ id: 'app', label: '가챠', build: function(container) {
             Mdd.setMood('shock'); Mdd.say('가챠를 돌려요! 뭐가 나올까요!');
             container.innerHTML = `

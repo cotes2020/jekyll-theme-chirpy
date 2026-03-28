@@ -1,10 +1,6 @@
 (function() {
     Toolbox.register({
-        id: 'fortune', title: '운세',
-        category: 'play',
-        desc: '오늘의 운세를 봅니다',
-        layout: 'form',
-        icon: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
+        ...Toolbox.getLazyWidgetPublicMeta('fortune'),
         tabs: [{ id: 'app', label: '운세', build: function(container) {
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:380px; gap:20px; text-align:center;">

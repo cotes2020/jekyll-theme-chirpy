@@ -1,13 +1,36 @@
 /**
  * 즐겨찾기 모음 — 사이트 파비콘/아이콘으로 빠른 접속
- * - Google Favicon API 또는 Simple Icons CDN 사용
+ * - icon 미지정: 공개 URL은 Google s2/favicons / 로컬·사설은 지구본만(요청 없음)
+ * - icon에 지구본 data URL(FAVICON_FALLBACK): Google이 404만 내는 항목만 수동 지정
+ * - 그 외 명시 icon(Simple Icons 등): 그대로 사용
  * - 사용자 추가/삭제 (localStorage)
  */
 (function () {
     const STORAGE_KEY = 'toolbox_favorites';
     const VIEW_KEY = 'toolbox_fav_view';
+    const FAVICON_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#666">' +
+        '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>' +
+        '</svg>'
+    );
+    const FAVICON_IMG_ONERROR = 'this.onerror=null;this.src=' + JSON.stringify(FAVICON_FALLBACK);
     const FAVICON_API = 'https://www.google.com/s2/favicons?domain=';
     const FAVICON_SZ = '64';
+
+    function isPrivateOrLocalHostname(host) {
+        if (!host) return true;
+        const h = host.toLowerCase();
+        if (h === 'localhost' || h === '::1' || h.endsWith('.localhost')) return true;
+        if (h === '127.0.0.1' || h.startsWith('127.')) return true;
+        if (h.startsWith('10.')) return true;
+        if (h.startsWith('192.168.')) return true;
+        const m = /^172\.(\d+)\./.exec(h);
+        if (m) {
+            const n = parseInt(m[1], 10);
+            if (n >= 16 && n <= 31) return true;
+        }
+        return false;
+    }
 
     const DEFAULT_ITEMS = [
         { group: '개발', items: [
@@ -18,12 +41,12 @@
             { url: 'https://solved.ac', label: 'solved.ac', icon: null },
             { url: 'https://assetstore.unity.com/ko-KR/publisher-sale', label: 'Unity Asset Store - Publisher Sale', icon: null },
             { url: 'http://127.0.0.1:4000/', label: 'Local', icon: null },
-            { url: 'https://wrchat.github.io/Woodon/', label: 'WRChat VCC Listing', icon: null },
-            { url: 'https://wrchat.github.io/Woodon/index.json', label: 'WRChat index.json', icon: null },
+            { url: 'https://wrchat.github.io/Woodon/', label: 'WRChat VCC Listing', icon: FAVICON_FALLBACK },
+            { url: 'https://wrchat.github.io/Woodon/index.json', label: 'WRChat index.json', icon: FAVICON_FALLBACK },
         ]},
         { group: '채용·커리어', items: [
             { url: 'https://blog.maplestory.nexon.com/Employment', label: '메이플 채용', icon: 'https://cdn.simpleicons.org/nexon' },
-            { url: 'https://maplecareer.stibee.com', label: '메이플 커리어 레터', icon: 'https://www.google.com/s2/favicons?domain=stibee.com&sz=64' },
+            { url: 'https://maplecareer.stibee.com', label: '메이플 커리어 레터', icon: FAVICON_FALLBACK },
             { url: 'https://careers.nexon.com', label: '넥슨 채용', icon: 'https://cdn.simpleicons.org/nexon' },
             { url: 'https://www.nexon-tutorial.com', label: '넥토리얼', icon: 'https://cdn.simpleicons.org/nexon' },
             { url: 'https://www.gamejob.co.kr/User/resumemng/portfolio', label: '게임잡 포트폴리오', icon: null },
@@ -39,7 +62,7 @@
             { url: 'https://www.google.com', label: 'Google', icon: 'https://cdn.simpleicons.org/google' },
             { url: 'https://www.naver.com/', label: 'Naver', icon: null },
             { url: 'https://feedly.com/i/my', label: 'Feedly', icon: null },
-            { url: 'https://chat.openai.com', label: 'ChatGPT', icon: 'https://www.google.com/s2/favicons?domain=chat.openai.com&sz=64' },
+            { url: 'https://chat.openai.com', label: 'ChatGPT', icon: null },
             { url: 'https://claude.ai', label: 'Claude', icon: 'https://cdn.simpleicons.org/anthropic' },
             { url: 'https://gemini.google.com', label: 'Gemini', icon: 'https://cdn.simpleicons.org/google' },
             { url: 'https://aistudio.google.com', label: 'AI Studio', icon: 'https://cdn.simpleicons.org/google' },
@@ -70,10 +93,10 @@
         ]},
         { group: '짝이웃', items: [
             { url: 'https://hyngng.github.io', label: 'HYNGNG', icon: null },
-            { url: 'https://blog.naver.com/tigermon', label: '윤농 - 윤농의 작업실', icon: null },
+            { url: 'https://blog.naver.com/tigermon', label: '윤농 - 윤농의 작업실', icon: FAVICON_FALLBACK },
             { url: 'https://shoark7.github.io/', label: 'Parkito - Faster, Faster', icon: null },
-            { url: 'https://blog.naver.com/blancleo/', label: '블랑레오', icon: null },
-            { url: 'https://blog.naver.com/hugspa', label: '그대만을(hugspa) - 득행하자!', icon: null },
+            { url: 'https://blog.naver.com/blancleo/', label: '블랑레오', icon: FAVICON_FALLBACK },
+            { url: 'https://blog.naver.com/hugspa', label: '그대만을(hugspa) - 득행하자!', icon: FAVICON_FALLBACK },
         ]},
         { group: '도구', items: [
             { url: 'https://www.dhlottery.co.kr/main', label: '동행복권', icon: null },
@@ -94,7 +117,7 @@
         { group: '계속', items: [
             { url: 'https://brunch.co.kr/@dangkunlove/21', label: '시시콜콜한 이야기의 위로', icon: null },
             { url: 'https://brunch.co.kr/@064040503a2242a/42', label: '내 작업물에 대한 공격은 나에 대한 공격으로 간주한다', icon: null },
-            { url: 'https://blog.naver.com/jysa000/223676533324', label: '나는 어떤 경험을 하고 싶을까?', icon: null },
+            { url: 'https://blog.naver.com/jysa000/223676533324', label: '나는 어떤 경험을 하고 싶을까?', icon: FAVICON_FALLBACK },
             { url: 'https://brunch.co.kr/@whizzer4/79', label: '우리 엄마도 한때는 소녀였으니까', icon: null },
         ]},
     ];
@@ -109,12 +132,17 @@
 
     function getFaviconUrl(item) {
         if (item.icon) return item.icon;
+        const base = typeof location !== 'undefined' ? location.href : 'https://example.org/';
+        let u;
         try {
-            const u = new URL(item.url);
-            return FAVICON_API + u.hostname + '&sz=' + FAVICON_SZ;
+            u = new URL(item.url, base);
         } catch (_) {
-            return FAVICON_API + 'example.com&sz=' + FAVICON_SZ;
+            return FAVICON_FALLBACK;
         }
+        if (u.protocol !== 'http:' && u.protocol !== 'https:') return FAVICON_FALLBACK;
+        const host = u.hostname;
+        if (isPrivateOrLocalHostname(host)) return FAVICON_FALLBACK;
+        return FAVICON_API + encodeURIComponent(host) + '&sz=' + FAVICON_SZ;
     }
 
     function loadFavorites() {
@@ -255,7 +283,7 @@
                                     const removeBtn = it.isCustom ? `<button type="button" class="fav-remove" data-group="${esc(g.group)}" data-url="${esc(it.url)}" title="삭제">×</button>` : '';
                                     const iconHtml = isTool
                                         ? `<div class="fav-icon fav-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${it.icon || ''}</svg></div>`
-                                        : `<img class="fav-icon" src="${esc(getFaviconUrl(it))}" alt="" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23666%22%3E%3Cpath d=%22M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z%22/%3E%3C/svg%3E'">`;
+                                        : `<img class="fav-icon" src="${esc(getFaviconUrl(it))}" alt="" loading="lazy" onerror="${FAVICON_IMG_ONERROR.replace(/"/g, '&quot;')}">`;
                                     const linkAttrs = isTool
                                         ? `href="#" class="fav-item" title="${esc(it.label)}" data-tool-id="${esc(it.toolId)}"`
                                         : `href="${esc(it.url)}" class="fav-item" target="_blank" rel="noopener noreferrer" title="${esc(it.label)}"`;
