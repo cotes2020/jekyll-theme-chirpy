@@ -20,7 +20,7 @@
  *
  * 새 도구 추가 방법:
  * 1. widgets/ 폴더에 새 JS 파일 생성
- * 2. widgets-manifest.js의 KARMOLAB_WIDGETS 배열에 id 추가
+ * 2. widgets-manifest.js(boot) + widgets-lazy-meta.js(지연 메타 단일 출처)
  * 3. Toolbox.register({ id, title, icon, category, desc, hidden?, tabs }) 호출
  *    - icon: SVG path 문자열 (viewBox 0 0 24 24 기준)
  *    - category: 'tool' | 'play' | null
@@ -68,7 +68,134 @@ const Toolbox = (() => {
 
     /* ===== Public API ===== */
 
-    function register(config) { tools.push(config); }
+    const lazyLoadPromises = new Map();
+
+    function register(config) {
+        const deferredIdx = tools.findIndex(t => t.id === config.id && t._deferred);
+        if (deferredIdx >= 0) {
+            tools[deferredIdx] = { ...config, _deferred: false };
+            rebuildToolPageIfInDom(config.id);
+            return;
+        }
+        if (tools.some(t => t.id === config.id)) return;
+        tools.push(config);
+    }
+
+    /** 사이드바·초기화용 — 스크립트는 첫 방문 시 loadDeferredWidget에서 로드 */
+    function registerDeferred(stub) {
+        const { lazyScriptPaths, ...rest } = stub;
+        tools.push({
+            ...rest,
+            _deferred: true,
+            lazyScriptPaths: lazyScriptPaths || [],
+            tabs: [{
+                id: '__lazy',
+                label: '…',
+                build(container) {
+                    container.innerHTML = '<p class="tb-lazy-loading" style="padding:32px;text-align:center;color:var(--text-secondary);">불러오는 중…</p>';
+                },
+            }],
+        });
+    }
+
+    function rebuildToolPageIfInDom(pageId) {
+        const toolPages = document.getElementById('tool-pages');
+        if (!toolPages) return;
+        const tool = tools.find(t => t.id === pageId);
+        if (!tool || !tool.tabs) return;
+        const old = document.getElementById('page-' + pageId);
+        if (!old) return;
+        const wasActive = old.classList.contains('active');
+        const nu = buildToolPage(tool);
+        if (wasActive) nu.classList.add('active');
+        old.replaceWith(nu);
+    }
+
+    function getWidgetScriptBase() {
+        const b = typeof window !== 'undefined' && window.KARMOLAB_WIDGET_SCRIPT_BASE;
+        if (b) return b;
+        try {
+            const origin = location.origin || '';
+            return origin + '/apps/karmolab/js/widgets/';
+        } catch (_) {
+            return '/apps/karmolab/js/widgets/';
+        }
+    }
+
+    const widgetScriptsLoaded = new Set();
+    const widgetScriptsLoading = new Map();
+
+    function loadScriptOnce(src) {
+        if (widgetScriptsLoaded.has(src)) return Promise.resolve();
+        if (widgetScriptsLoading.has(src)) return widgetScriptsLoading.get(src);
+        const p = new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = false;
+            s.onload = () => {
+                widgetScriptsLoaded.add(src);
+                widgetScriptsLoading.delete(src);
+                resolve();
+            };
+            s.onerror = () => {
+                widgetScriptsLoading.delete(src);
+                reject(new Error('load failed: ' + src));
+            };
+            document.body.appendChild(s);
+        });
+        widgetScriptsLoading.set(src, p);
+        return p;
+    }
+
+    function loadDeferredWidget(pageId) {
+        const tool = tools.find(t => t.id === pageId && t._deferred);
+        if (!tool) return Promise.resolve();
+        if (lazyLoadPromises.has(pageId)) return lazyLoadPromises.get(pageId);
+
+        const paths = tool.lazyScriptPaths;
+        if (!paths || !paths.length) {
+            return Promise.resolve();
+        }
+
+        const base = getWidgetScriptBase();
+        const p = (async () => {
+            let waitIdx = (window.KARMOLAB_WIDGET_LOADER_WAIT || []).length;
+            for (let i = 0; i < paths.length; i++) {
+                const url = base + paths[i] + '.js';
+                await loadScriptOnce(url);
+                const w = window.KARMOLAB_WIDGET_LOADER_WAIT || [];
+                if (w.length > waitIdx) {
+                    await Promise.allSettled(w.slice(waitIdx));
+                    waitIdx = w.length;
+                }
+            }
+        })()
+            .finally(() => {
+                lazyLoadPromises.delete(pageId);
+            })
+            .catch((err) => {
+                try { showToast('도구 로드 실패', 'error', err); } catch (_) {}
+                throw err;
+            });
+
+        lazyLoadPromises.set(pageId, p);
+        return p;
+    }
+
+    function kickLazyLoad(pageId) {
+        return loadDeferredWidget(pageId);
+    }
+
+    /** 지연 위젯용 — lazy-meta에 정의된 공개 필드만 (lazyScriptPaths 제외). 위젯 register 시 스프레드 */
+    function getLazyWidgetPublicMeta(id) {
+        const m = typeof window !== 'undefined' && window.KARMOLAB_LAZY_META_BY_ID && window.KARMOLAB_LAZY_META_BY_ID[id];
+        if (!m) {
+            console.warn('[KarmoLab] getLazyWidgetPublicMeta: 정의 없음 —', id);
+            return { id };
+        }
+        const { lazyScriptPaths: _paths, ...rest } = m;
+        return rest;
+    }
 
     function init() {
         const sidebarNav = document.getElementById('sidebar-nav');
@@ -289,6 +416,11 @@ const Toolbox = (() => {
         const allNav = document.querySelectorAll('.nav-item');
         const sidebarHome = document.getElementById('sidebarHome');
         const breadcrumb = document.getElementById('breadcrumb');
+
+        const toolForPage = tools.find(t => t.id === pageId);
+        if (toolForPage && toolForPage._deferred) {
+            kickLazyLoad(pageId);
+        }
 
         allPages.forEach(p => p.classList.remove('active'));
         allNav.forEach(n => n.classList.remove('active'));
@@ -770,7 +902,8 @@ const Toolbox = (() => {
     function getTools() { return [...tools]; }
 
     return {
-        register, init, initTheme, switchPage, switchTab, toggleSidebar, getTools,
+        register, registerDeferred, init, initTheme, switchPage, switchTab, toggleSidebar, getTools,
+        kickLazyLoad, getLazyWidgetPublicMeta,
         showToast, displayResult, copyResult, toggleCollapsible,
         field, resultBox, button, select,
         escapeHtml, formatTimestamp, showLightbox,
