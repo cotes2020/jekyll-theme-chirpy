@@ -17,6 +17,7 @@ tabs:
   about: 정보
   works: 작업물
   karmolab: KarmoLab
+  graph: 글 그래프
 
 # the text displayed in the search bar & search results
 search:

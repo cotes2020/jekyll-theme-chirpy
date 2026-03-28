@@ -16,6 +16,7 @@ tabs:
   archives: Archives
   about: About
   karmolab: KarmoLab
+  graph: Post graph
 
 # the text displayed in the search bar & search results
 search:

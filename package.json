@@ -23,7 +23,8 @@
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
     "test": "npm run lint:js && npm run lint:scss",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build:graph": "node scripts/build-post-graph.cjs"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -51,7 +52,8 @@
     "rollup": "^4.41.0",
     "semantic-release": "^24.2.4",
     "stylelint": "^16.19.1",
-    "stylelint-config-standard-scss": "^15.0.1"
+    "stylelint-config-standard-scss": "^15.0.1",
+    "yaml": "^2.8.3"
   },
   "prettier": {
     "trailingComma": "none"
