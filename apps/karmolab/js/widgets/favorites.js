@@ -43,6 +43,7 @@
             { url: 'http://127.0.0.1:4000/', label: 'Local', icon: null },
             { url: 'https://wrchat.github.io/Woodon/', label: 'WRChat VCC Listing', icon: FAVICON_FALLBACK },
             { url: 'https://wrchat.github.io/Woodon/index.json', label: 'WRChat index.json', icon: FAVICON_FALLBACK },
+            { url: 'https://status.vrchat.com/', label: 'VRChat Status', icon: 'https://cdn.simpleicons.org/vrchat' },
         ]},
         { group: '채용·커리어', items: [
             { url: 'https://blog.maplestory.nexon.com/Employment', label: '메이플 채용', icon: 'https://cdn.simpleicons.org/nexon' },
