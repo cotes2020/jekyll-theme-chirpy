@@ -1,0 +1,93 @@
+---
+description: Google AI Studio (generativelanguage.googleapis.com) API 모델 목록 레퍼런스. Toolbox의 gemini.js 모델 정의 수정 시 반드시 참조.
+globs:
+  - apps/karmolab/js/gemini.js
+  - apps/karmolab/js/widgets/imagegen.js
+  - apps/karmolab/js/widgets/chatbot.js
+alwaysApply: false
+---
+
+# Google AI Studio API 모델 목록
+
+> 조회 일시: 2026-03-18
+> 엔드포인트: `https://generativelanguage.googleapis.com/v1beta/models?key=YOUR_KEY`
+> AI Studio에서 사용자가 직접 확인한 목록과 API ListModels 결과를 대조한 것
+
+## Gemini 시리즈 (generateContent 지원 — 채팅/텍스트용)
+
+| API 모델 ID | AI Studio 표시명 | 비고 |
+|---|---|---|
+| `gemini-2.5-flash` | Gemini 2.5 Flash | **기본값 추천** (stable, 1M context) |
+| `gemini-2.5-pro` | Gemini 2.5 Pro | stable |
+| `gemini-2.0-flash` | Gemini 2 Flash | stable |
+| `gemini-2.0-flash-lite` | Gemini 2 Flash Lite | stable |
+| `gemini-2.5-flash-lite` | Gemini 2.5 Flash Lite | stable |
+| `gemini-3-flash-preview` | Gemini 3 Flash | ⚠️ ID에 `-preview` 붙음 |
+| `gemini-3-pro-preview` | Gemini 3 Pro | ⚠️ ID에 `-preview` 붙음 |
+| `gemini-3.1-pro-preview` | Gemini 3.1 Pro | ⚠️ ID에 `-preview` 붙음 |
+| `gemini-3.1-flash-lite-preview` | Gemini 3.1 Flash Lite | ⚠️ ID에 `-preview` 붙음 |
+
+### 주의: 존재하지 않는 ID
+- ~~`gemini-2.0-flash-exp`~~ — API에 없음 (제거됨)
+- ~~`gemini-3-flash`~~ — 올바른 ID는 `gemini-3-flash-preview`
+- ~~`gemini-3.1-pro`~~ — 올바른 ID는 `gemini-3.1-pro-preview`
+- ~~`gemini-3.1-flash-lite`~~ — 올바른 ID는 `gemini-3.1-flash-lite-preview`
+
+## Nano Banana 시리즈 (이미지 생성 — generateContent + responseModalities: IMAGE)
+
+| API 모델 ID | AI Studio 표시명 | 비고 |
+|---|---|---|
+| `gemini-2.5-flash-image` | Nano Banana (Gemini 2.5 Flash Preview Image) | **기본값** |
+| `gemini-3-pro-image-preview` | Nano Banana Pro (Gemini 3 Pro Image) | thinking 지원 |
+| `gemini-3.1-flash-image-preview` | Nano Banana 2 (Gemini 3.1 Flash Image) | thinking 지원 |
+
+### 주의: 존재하지 않는 ID
+- ~~`gemini-2.5-flash-preview-05-20`~~ — API에 없음
+
+## Imagen 시리즈 (predict 엔드포인트)
+
+| API 모델 ID | AI Studio 표시명 | 비고 |
+|---|---|---|
+| `imagen-4.0-generate-001` | Imagen 4 Generate | |
+| `imagen-4.0-ultra-generate-001` | Imagen 4 Ultra Generate | |
+| `imagen-4.0-fast-generate-001` | Imagen 4 Fast Generate | |
+
+## 기타 (Toolbox에서 미사용)
+
+| API 모델 ID | 표시명 | 용도 |
+|---|---|---|
+| `gemini-2.5-flash-preview-tts` | Gemini 2.5 Flash TTS | TTS |
+| `gemini-2.5-pro-preview-tts` | Gemini 2.5 Pro TTS | TTS |
+| `gemini-2.5-flash-native-audio-latest` | Gemini 2.5 Flash Native Audio | bidiGenerateContent |
+| `gemini-robotics-er-1.5-preview` | Gemini Robotics ER 1.5 | 로보틱스 |
+| `gemini-2.5-computer-use-preview-10-2025` | Computer Use Preview | 컴퓨터 사용 |
+| `deep-research-pro-preview-12-2025` | Deep Research Pro Preview | 딥 리서치 |
+| `gemini-embedding-001` | Gemini Embedding 1 | embedContent |
+| `gemini-embedding-2-preview` | Gemini Embedding 2 | embedContent |
+| `gemma-3-1b-it` ~ `gemma-3-27b-it` | Gemma 3 시리즈 | 오픈 모델 |
+| `veo-3.0-generate-001` | Veo 3 Generate | 영상 생성 (predictLongRunning) |
+| `veo-3.0-fast-generate-001` | Veo 3 Fast Generate | 영상 생성 (predictLongRunning) |
+
+## 이미지 생성 API 옵션
+
+### Gemini (Nano Banana) — generateContent
+
+`generationConfig` 내부:
+- `responseModalities`: `['TEXT', 'IMAGE']` (필수)
+- `imageConfig.aspectRatio`: `'1:1'`, `'16:9'`, `'9:16'`, `'3:4'`, `'4:3'`, `'3:2'`, `'2:3'` 등
+
+`safetySettings` 배열:
+- `threshold`: `BLOCK_ONLY_HIGH` | `BLOCK_MEDIUM_AND_ABOVE` | `BLOCK_LOW_AND_ABOVE` | `BLOCK_NONE`
+- 카테고리: `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`, `HARM_CATEGORY_DANGEROUS_CONTENT`
+
+### Imagen — predict
+
+`parameters` 내부:
+- `sampleCount`: 생성할 이미지 수 (1~4)
+- `aspectRatio`: `'1:1'`(기본), `'16:9'`, `'9:16'`, `'3:4'`, `'4:3'`
+- `safetyFilterLevel`: `block_only_high` | `block_medium_and_above` | `block_low_and_above` | `block_none`
+- `personGeneration`: `allow_adult`(기본) | `allow_all` | `dont_allow`
+
+`instances[0]` 내부:
+- `prompt`: 프롬프트 텍스트 (필수)
+- `negativePrompt`: 제외할 요소 텍스트
