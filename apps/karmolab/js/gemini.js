@@ -4,7 +4,7 @@
  * Toolbox 전역에서 사용하는 Gemini/Imagen API 헬퍼.
  * - API 키 관리 (localStorage)
  * - 모델 목록 정의
- * - fetchWithRetry, callText, callChat, callChatStream, callGeminiImage, callImagen
+ * - fetchWithRetry, callText, callChat, callChatStream, callGeminiImage (선택: referenceImage), callImagen
  * - enhancePrompt, buildApiKeyUI
  *
  * 모델 목록 출처: Google AI Studio (aistudio.google.com) 확인 목록 기준.
@@ -156,6 +156,19 @@ const Gemini = (() => {
 
     function recordApiCall(entry) {
         const copy = { ...entry, ts: new Date().toISOString() };
+        if (copy.requestBody && typeof copy.requestBody === 'object') {
+            try {
+                copy.requestBody = JSON.parse(JSON.stringify(copy.requestBody));
+                copy.requestBody.contents?.forEach(c => {
+                    c.parts?.forEach(p => {
+                        if (p.inlineData?.data) {
+                            const len = String(p.inlineData.data).length;
+                            p.inlineData.data = `[base64 ${len} chars]`;
+                        }
+                    });
+                });
+            } catch (_) {}
+        }
         if (copy.responseBody && copy.responseBody.candidates) {
             copy.responseBody = JSON.parse(JSON.stringify(copy.responseBody));
             copy.responseBody.candidates?.forEach(c => {
@@ -363,9 +376,11 @@ const Gemini = (() => {
 
     /* ===== Gemini 이미지 생성 (NanoBanana) ===== */
     /**
-     * options: { signal, aspectRatio, safetyThreshold }
+     * options: { signal, aspectRatio, safetyThreshold, referenceImage, referenceMimeType }
      * - aspectRatio: '1:1', '16:9', '9:16', '3:4', '4:3' 등
      * - safetyThreshold: 'OFF' | 'BLOCK_NONE' | 'BLOCK_ONLY_HIGH' | 'BLOCK_MEDIUM_AND_ABOVE' | 'BLOCK_LOW_AND_ABOVE'
+     * - referenceImage: data URL 또는 순수 base64(편집·업스케일 등 입력 이미지)
+     * - referenceMimeType: 기본 image/png
      */
     async function callGeminiImage(prompt, modelId, options = {}) {
         const key = requireApiKey();
@@ -382,9 +397,22 @@ const Gemini = (() => {
             genConfig.imageConfig = { aspectRatio: options.aspectRatio };
         }
 
+        const parts = [{ text: prompt }];
+        if (options.referenceImage) {
+            let b64 = options.referenceImage;
+            if (typeof b64 === 'string' && b64.includes(',')) b64 = b64.split(',')[1];
+            if (typeof b64 !== 'string' || !b64.length) throw new Error('참조 이미지(base64)가 비어 있습니다.');
+            parts.push({
+                inlineData: {
+                    mimeType: options.referenceMimeType || 'image/png',
+                    data: b64
+                }
+            });
+        }
+
         const threshold = options.safetyThreshold || 'BLOCK_ONLY_HIGH';
         const body = {
-            contents: [{ parts: [{ text: prompt }] }],
+            contents: [{ parts }],
             generationConfig: genConfig,
             safetySettings: [
                 { category: 'HARM_CATEGORY_HARASSMENT', threshold },
