@@ -25,3 +25,6 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+# macOS legacy
+.DS_Store
