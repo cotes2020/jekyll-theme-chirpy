@@ -20,7 +20,10 @@
         .ie-tb-btn.accent { background:var(--accent); color:#fff; border-color:var(--accent); }
         .ie-tb-btn.accent:hover { background:var(--accent-hover); }
         .ie-toolbar .ie-spacer { flex:1; }
-        .ie-size-label { font-size:var(--font-size-2xs); color:var(--text-tertiary); font-family:monospace; }
+        .ie-size-label {
+            font-size:var(--font-size-2xs); color:var(--text-tertiary); font-family:monospace;
+            max-width:min(46vw, 560px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+        }
 
         /* Import dropdown */
         .ie-dropdown { position:relative; }
@@ -40,27 +43,52 @@
         /* Body (tool sidebar + canvas) */
         .ie-body { display:flex; flex:1; overflow:hidden; }
 
-        /* Tool sidebar */
+        /* Tool sidebar — 기본 접힘, 호버·포커스 시 라벨 펼침 (메인 사이드바와 동일 UX) */
         .ie-tools {
-            width:52px; flex-shrink:0; display:flex; flex-direction:column; gap:2px;
+            width:var(--sidebar-collapsed-width, 56px); flex-shrink:0; display:flex; flex-direction:column; gap:2px;
             padding:8px 6px; border-right:1px solid var(--border); background:var(--bg-secondary);
+            overflow:hidden; transition:width var(--transition-slow, 350ms ease);
+        }
+        .ie-tools:hover,
+        .ie-tools:focus-within {
+            width:var(--sidebar-width, 224px);
         }
         .ie-tool-btn {
-            width:40px; height:40px; display:flex; align-items:center; justify-content:center;
-            border:1px solid transparent; border-radius:var(--radius-sm); background:none;
-            color:var(--text-tertiary); cursor:pointer; transition:all var(--transition); font-size:16px;
+            width:100%; min-height:40px; height:auto; box-sizing:border-box;
+            display:flex; flex-direction:row; align-items:center; justify-content:flex-start; gap:8px;
+            padding:0 6px 0 0; border:1px solid transparent; border-radius:var(--radius-sm); background:none;
+            color:var(--text-tertiary); cursor:pointer; transition:color var(--transition), background var(--transition), border-color var(--transition), justify-content var(--transition-slow, 350ms ease);
+            font-size:16px; font-family:inherit; text-align:left;
+        }
+        .ie-tools:not(:hover):not(:focus-within) .ie-tool-btn {
+            justify-content:center; padding-left:0; padding-right:0;
+        }
+        .ie-tool-icon {
+            flex-shrink:0; width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+        }
+        .ie-tool-icon svg { width:18px; height:18px; }
+        .ie-tool-label {
+            font-size:var(--font-size-2xs); font-weight:500; color:inherit;
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0;
+            transition:opacity var(--transition-slow, 350ms ease), max-width var(--transition-slow, 350ms ease), width var(--transition-slow, 350ms ease);
+        }
+        .ie-tools:not(:hover):not(:focus-within) .ie-tool-label {
+            width:0; max-width:0; opacity:0; pointer-events:none;
+        }
+        .ie-tools:hover .ie-tool-label,
+        .ie-tools:focus-within .ie-tool-label {
+            width:auto; max-width:none; opacity:1; pointer-events:auto;
         }
         .ie-tool-btn:hover { color:var(--text-primary); background:var(--bg-hover); }
         .ie-tool-btn.active { color:var(--accent); border-color:var(--accent); background:var(--accent-subtle); }
-        .ie-tool-btn svg { width:18px; height:18px; }
 
-        /* Canvas area */
+        /* Canvas + options (options = 우측 사이드바) */
         .ie-canvas-area {
-            flex:1; display:flex; flex-direction:column; overflow:hidden;
+            flex:1; display:flex; flex-direction:row; min-height:0; overflow:hidden;
         }
         .ie-canvas-wrap {
-            flex:1; display:flex; align-items:center; justify-content:center;
-            position:relative; overflow:hidden; background:var(--bg-primary);
+            flex:1; min-width:0; min-height:0; position:relative; overflow:hidden;
+            background:var(--bg-primary);
             background-image: linear-gradient(45deg, var(--bg-tertiary) 25%, transparent 25%),
                               linear-gradient(-45deg, var(--bg-tertiary) 25%, transparent 25%),
                               linear-gradient(45deg, transparent 75%, var(--bg-tertiary) 75%),
@@ -68,14 +96,102 @@
             background-size: 20px 20px;
             background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
         }
-        .ie-canvas-wrap canvas {
-            max-width:95%; max-height:95%; object-fit:contain;
+        .ie-canvas-wrap.ie-view-grab { cursor:grab; }
+        .ie-canvas-wrap.ie-view-grabbing { cursor:grabbing; }
+        .ie-pan-zoom {
+            position:absolute; left:50%; top:50%;
+            will-change:transform;
+            z-index:1;
+        }
+        .ie-pan-inner {
+            position:relative; display:inline-block; line-height:0; vertical-align:middle;
+        }
+        .ie-pan-inner #ieCanvas {
+            display:block; max-width:min(92vw, 1600px); max-height:min(88vh, 1100px);
+            width:auto; height:auto; object-fit:contain;
             border-radius:2px; box-shadow:0 2px 16px rgba(0,0,0,0.4);
         }
+        .ie-pan-inner .ie-brush-overlay,
+        .ie-pan-inner .ie-caption-overlay,
+        .ie-pan-inner .ie-sticker-overlay,
+        .ie-pan-inner .ie-crop-overlay {
+            position:absolute; left:0; top:0;
+        }
+        /* EXIF: 편집 영역(체크 무늬 래퍼) 좌상단 고정 — 이미지 줌/팬과 무관 */
+        .ie-canvas-wrap > .ie-exif-overlay {
+            position:absolute; left:8px; top:8px; z-index:6;
+            max-width:min(300px, 42vw); max-height:min(220px, 38vh);
+            overflow:auto; padding:8px 10px; margin:0;
+            font-size:11px; line-height:1.45; font-family:var(--font-mono, ui-monospace, monospace);
+            color:#f2f2f2; text-align:left; white-space:pre-wrap; word-break:break-word;
+            background:rgba(12,12,14,0.92); border:1px solid rgba(255,255,255,0.22);
+            border-radius:var(--radius-sm); box-shadow:0 4px 18px rgba(0,0,0,0.45);
+            pointer-events:auto;
+        }
+        .ie-exif-locate-hint {
+            font-size:var(--font-size-2xs); color:var(--text-tertiary);
+            white-space:nowrap; margin-left:10px; font-weight:400;
+        }
+        .ie-pan-inner .ie-mask-preview-overlay { z-index:40; }
+        .ie-cv-lightbox {
+            display:none; position:fixed; inset:0; z-index:100000;
+            box-sizing:border-box; margin:0; padding:0;
+            min-height:100vh; min-height:100dvh;
+            background:rgba(0,0,0,0.92); backdrop-filter:blur(4px); cursor:pointer;
+        }
+        .ie-cv-lightbox.open {
+            display:grid; grid-template:1fr / 1fr; place-items:stretch;
+        }
+        .ie-cv-lightbox-fill {
+            grid-area:1 / 1; min-width:0; min-height:0;
+            display:grid; grid-template:1fr / 1fr; position:relative;
+        }
+        .ie-cv-lightbox-inner {
+            grid-area:1 / 1; min-width:0; min-height:0;
+            display:grid; place-items:stretch;
+        }
+        .ie-cv-lightbox-inner img {
+            grid-area:1 / 1; box-sizing:border-box;
+            width:100%; height:100%; min-width:0; min-height:0;
+            object-fit:contain; object-position:center;
+            pointer-events:none; user-select:none;
+        }
+        .ie-cv-lightbox-bar {
+            grid-area:1 / 1; align-self:end; justify-self:start;
+            z-index:2; pointer-events:auto; cursor:default;
+            display:flex; flex-direction:column; align-items:flex-start; gap:8px;
+            margin:14px 16px; padding:8px 10px;
+            border-radius:var(--radius-sm);
+            background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.12);
+            backdrop-filter:blur(8px);
+            max-width:min(92vw, 480px);
+        }
+        .ie-cv-lb-btn-row { display:flex; flex-wrap:wrap; gap:6px; }
+        .ie-cv-lb-meta {
+            font-size:11px; font-family:var(--font-mono, ui-monospace, monospace);
+            color:rgba(255,255,255,0.78); line-height:1.4; white-space:normal; word-break:break-all;
+        }
+        .ie-cv-lb-btn {
+            margin:0; padding:6px 12px; font-size:var(--font-size-2xs); font-family:inherit;
+            border:1px solid rgba(255,255,255,0.2); border-radius:var(--radius-sm);
+            background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.85);
+            cursor:pointer; line-height:1.2;
+        }
+        .ie-cv-lb-btn:hover { background:rgba(255,255,255,0.14); }
+        .ie-cv-lb-btn.ie-cv-lb-active {
+            border-color:var(--accent); color:var(--text-primary); background:var(--accent-subtle);
+        }
+        .ie-cv-fmt {
+            display:inline-flex; align-items:center; gap:5px; font-size:var(--font-size-2xs);
+            padding:5px 10px; border:1px solid var(--border); border-radius:var(--radius-sm);
+            cursor:pointer; color:var(--text-secondary); background:var(--bg-tertiary);
+        }
+        .ie-cv-fmt.ie-cv-off { opacity:0.4; pointer-events:none; }
+        .ie-cv-fmt:has(input:checked) { border-color:var(--accent); color:var(--text-primary); background:var(--accent-subtle); }
         .ie-placeholder {
             display:flex; flex-direction:column; align-items:center; justify-content:center;
             gap:12px; color:var(--text-tertiary); text-align:center;
-            position:absolute; inset:0; cursor:pointer; transition:background 0.2s;
+            position:absolute; inset:0; z-index:5; cursor:pointer; transition:background 0.2s;
         }
         .ie-placeholder:hover { background:rgba(139,124,246,0.05); }
         .ie-placeholder-icon { font-size:48px; opacity:0.25; }
@@ -100,12 +216,24 @@
         .ie-crop-handle.sw { bottom:-5px; left:-5px; cursor:sw-resize; }
         .ie-crop-handle.se { bottom:-5px; right:-5px; cursor:se-resize; }
 
-        /* Options panel */
+        /* Options — 우측 사이드바 (좁은 폭에서 줄바꿈) */
         .ie-options {
-            min-height:56px; padding:10px 14px; border-top:1px solid var(--border);
-            display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+            box-sizing:border-box;
+            width:min(300px, 36vw); min-width:240px; max-width:100%;
+            flex-shrink:0; align-self:stretch; min-height:0;
+            padding:12px 14px; border-left:1px solid var(--border); border-top:none;
+            display:flex; flex-direction:row; flex-wrap:wrap;
+            align-items:center; align-content:flex-start; gap:10px 12px;
+            overflow-x:hidden; overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
             background:var(--bg-secondary);
         }
+        .ie-options > .ie-opt-label { white-space:normal; max-width:100%; line-height:1.4; }
+        .ie-options .ie-opt-row,
+        .ie-options-stack {
+            flex:1 1 100%; width:100%; min-width:0; box-sizing:border-box;
+        }
+        .ie-options > .ie-filter-grid { flex:1 1 100%; width:100%; }
         .ie-opt-label { font-size:var(--font-size-xs); color:var(--text-secondary); font-weight:500; white-space:nowrap; }
         .ie-opt-input {
             width:72px; padding:4px 8px; font-size:var(--font-size-xs); font-family:monospace;
@@ -125,7 +253,8 @@
         .ie-apply-btn {
             padding:5px 16px; font-size:var(--font-size-xs); font-weight:600; border:none;
             border-radius:var(--radius-sm); background:var(--accent); color:#fff;
-            cursor:pointer; font-family:inherit; transition:all var(--transition); margin-left:auto;
+            cursor:pointer; font-family:inherit; transition:all var(--transition);
+            margin-left:0; flex:1 1 100%; width:100%; box-sizing:border-box; text-align:center;
         }
         .ie-apply-btn:hover { background:var(--accent-hover); }
 
@@ -317,9 +446,29 @@
 
         @media (max-width:768px) {
             .ie-body { flex-direction:column; }
-            .ie-tools { width:100%; flex-direction:row; overflow-x:auto; border-right:none; border-bottom:1px solid var(--border); padding:4px 6px; }
-            .ie-tool-btn { width:36px; height:36px; flex-shrink:0; }
-            .ie-options { flex-wrap:wrap; }
+            .ie-tools {
+                width:100%; flex-direction:row; overflow-x:auto; border-right:none; border-bottom:1px solid var(--border);
+                padding:6px 8px; gap:4px; transition:none;
+            }
+            .ie-tools:hover,
+            .ie-tools:focus-within { width:100%; }
+            .ie-tool-btn {
+                width:auto; min-width:52px; max-width:76px; min-height:auto; flex-shrink:0;
+                flex-direction:column; gap:2px; padding:4px 2px; justify-content:flex-start;
+            }
+            .ie-tools:not(:hover):not(:focus-within) .ie-tool-btn { justify-content:flex-start; padding:4px 2px; }
+            .ie-tool-icon { width:32px; height:32px; }
+            .ie-tool-icon svg { width:16px; height:16px; }
+            .ie-tool-label {
+                width:auto; max-width:100%; opacity:1; pointer-events:none;
+                font-size:10px; line-height:1.15; text-align:center; white-space:normal;
+                display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+            }
+            .ie-canvas-area { flex-direction:column; }
+            .ie-options {
+                width:100%; min-width:0; border-left:none; border-top:1px solid var(--border);
+                max-height:min(42vh, 300px); flex-shrink:0;
+            }
         }
     `);
 
@@ -349,6 +498,47 @@
     let brushMode = 'bg';
     let brushSize = 20;
     let brushDrawing = false;
+    /** 툴바·변환 미리보기 — bytesKind: file | dataUrl | null. natural = 마지막으로 디코드된 원본 픽셀 크기 */
+    let ieImageSourceMeta = {
+        displayName: '',
+        sourceBytes: null,
+        bytesKind: null,
+        sourceNaturalW: null,
+        sourceNaturalH: null,
+        exifLines: null
+    };
+    /** 이미지 로드 경쟁 시 EXIF·디코드 순서 보정 */
+    let ieImageLoadGen = 0;
+    /** 형식·변환 탭 — 여러 파일 일괄 처리 중 취소용 */
+    let ieCvBatchAbort = null;
+    /** 일괄 변환 대기 파일(패널을 다시 그려도 드롭으로 채운 목록 유지) */
+    let ieCvBatchState = { files: [] };
+
+    let viewPanX = 0;
+    let viewPanY = 0;
+    let viewZoom = 1;
+    let viewDragging = false;
+    let viewDragPointerId = null;
+    let viewDragStartClientX = 0;
+    let viewDragStartClientY = 0;
+    let viewStartPanX = 0;
+    let viewStartPanY = 0;
+    let viewSpaceDown = false;
+    const VIEW_ZOOM_MIN = 0.12;
+    const VIEW_ZOOM_MAX = 8;
+
+    const IE_CONVERT_STORAGE = 'karmolab_imageconvert_settings_v1';
+    const IE_CV_DEFAULTS = {
+        outFmt: 'png',
+        quality: 92,
+        maxPreset: '',
+        maxCustom: 1920,
+        bg: '#ffffff',
+        fillAlpha: false,
+        smoothing: 'high'
+    };
+    let convertPreviewBlob = null;
+    let convertPreviewKey = '';
 
     /* ===== Helpers ===== */
     function pushHistory() {
@@ -396,14 +586,419 @@
         if (redoBtn) redoBtn.disabled = historyIdx >= history.length - 1;
     }
 
+    function ieFormatToolbarBytes(n) {
+        if (n == null || !Number.isFinite(n) || n < 0) return '';
+        if (n < 1024) return n + ' B';
+        if (n < 1024 * 1024) return (n / 1024).toFixed(n < 10240 ? 1 : 0) + ' KB';
+        return (n / (1024 * 1024)).toFixed(n < 10485760 ? 2 : 1) + ' MB';
+    }
+
+    /** data: URL 페이로드 바이트 수 근사 (base64 디코딩 길이) */
+    function ieEstimateDataUrlBytes(dataUrl) {
+        if (!dataUrl || typeof dataUrl !== 'string' || !dataUrl.startsWith('data:')) return null;
+        const comma = dataUrl.indexOf(',');
+        if (comma < 0) return null;
+        const meta = dataUrl.slice(0, comma);
+        const payload = dataUrl.slice(comma + 1);
+        if (/;base64/i.test(meta)) {
+            const len = payload.replace(/\s/g, '').length;
+            return Math.max(0, Math.floor((len * 3) / 4));
+        }
+        try {
+            return new TextEncoder().encode(decodeURIComponent(payload)).length;
+        } catch (_) {
+            return null;
+        }
+    }
+
+    /** MP = 화소 수 ÷ 1,000,000 (카메라·이미지 업계 관례). 1 미만이면 소수로 표시되는 것이 정상. */
+    function ieFormatMegapixels(w, h) {
+        const px = w * h;
+        const mp = px / 1e6;
+        if (mp < 0.01) return px.toLocaleString() + ' px';
+        if (mp < 1) {
+            const s = mp.toFixed(2).replace(/\.?0+$/, '');
+            return s + ' MP';
+        }
+        if (mp < 10) return mp.toFixed(1).replace(/\.0$/, '') + ' MP';
+        return Math.round(mp) + ' MP';
+    }
+
+    /** 툴바 표시용: 마지막 점 뒤가 짧은 영숫자 확장자일 때만 stem / 확장자 분리 */
+    function ieToolbarSplitFileName(name) {
+        const s = (name || '').trim();
+        if (!s) return { stem: '', extWithDot: '' };
+        const dot = s.lastIndexOf('.');
+        if (dot <= 0 || dot >= s.length - 1) return { stem: s, extWithDot: '' };
+        const after = s.slice(dot + 1);
+        if (!/^[a-zA-Z0-9]{1,12}$/.test(after)) return { stem: s, extWithDot: '' };
+        return { stem: s.slice(0, dot), extWithDot: s.slice(dot) };
+    }
+
+    /** 저장 파일명: 표시명(보통 원본 파일명)의 stem + 출력 확장자. OS 금지 문자 제거 */
+    function ieDownloadFilenameFromDisplayName(displayName, outExt) {
+        let ext = String(outExt || 'png')
+            .replace(/^\./, '')
+            .replace(/[^a-z0-9]/gi, '');
+        if (!ext) ext = 'png';
+        const raw = (displayName || '').trim();
+        let base = ieToolbarSplitFileName(raw).stem.trim();
+        base = base.replace(/[<>:"/\\|?*\u0000-\u001f]/g, '').replace(/\s+/g, ' ').trim();
+        if (!base || base === '.' || base === '..') base = '편집';
+        if (base.length > 200) base = base.slice(0, 200);
+        return base + '.' + ext;
+    }
+
+    function ieIsJpegArrayBuffer(ab) {
+        if (!ab || ab.byteLength < 2) return false;
+        const u8 = new Uint8Array(ab, 0, 2);
+        return u8[0] === 0xff && u8[1] === 0xd8;
+    }
+
+    function ieExifU16(u8, off, le) {
+        return le ? u8[off] | (u8[off + 1] << 8) : (u8[off] << 8) | u8[off + 1];
+    }
+
+    function ieExifU32(u8, off, le) {
+        const a = u8[off],
+            b = u8[off + 1],
+            c = u8[off + 2],
+            d = u8[off + 3];
+        return le
+            ? (a | (b << 8) | (c << 16) | (d << 24)) >>> 0
+            : ((a << 24) | (b << 16) | (c << 8) | d) >>> 0;
+    }
+
+    function ieExifReadAscii(u8, off, maxLen) {
+        let s = '';
+        for (let i = 0; i < maxLen && off + i < u8.length; i++) {
+            const c = u8[off + i];
+            if (c === 0) break;
+            if (c >= 32 && c < 127) s += String.fromCharCode(c);
+        }
+        return s.trim();
+    }
+
+    function ieExifFmtShutter(sec) {
+        if (!(sec > 0) || !Number.isFinite(sec)) return null;
+        if (sec >= 1) return sec.toFixed(1).replace(/\.0$/, '') + ' s';
+        const inv = Math.round(1 / sec);
+        return inv > 0 ? '1/' + inv + ' s' : null;
+    }
+
+    function ieExifReadU32BE(u8, o) {
+        return ((u8[o] << 24) | (u8[o + 1] << 16) | (u8[o + 2] << 8) | u8[o + 3]) >>> 0;
+    }
+
+    function ieExifReadU32LE(u8, o) {
+        return (u8[o] | (u8[o + 1] << 8) | (u8[o + 2] << 16) | (u8[o + 3] << 24)) >>> 0;
+    }
+
+    /**
+     * JPEG APP1 / PNG eXIf / WebP EXIF 등 페이로드에서 TIFF EXIF 추출.
+     * Exif\\0\\0 + TIFF 또는 곧바로 TIFF(II/MM).
+     */
+    function ieTryExifPayloadToLines(u8, off, byteLen) {
+        const end = Math.min(off + byteLen, u8.length);
+        if (off + 8 > end) return null;
+        if (
+            end >= off + 6 &&
+            u8[off] === 0x45 &&
+            u8[off + 1] === 0x78 &&
+            u8[off + 2] === 0x69 &&
+            u8[off + 3] === 0x66 &&
+            u8[off + 4] === 0 &&
+            u8[off + 5] === 0
+        ) {
+            const lines = ieParseExifTiffToLines(u8, off + 6);
+            if (lines && lines.length) return lines;
+        }
+        const b0 = u8[off],
+            b1 = u8[off + 1];
+        if ((b0 === 0x49 && b1 === 0x49) || (b0 === 0x4d && b1 === 0x4d)) {
+            const lines = ieParseExifTiffToLines(u8, off);
+            if (lines && lines.length) return lines;
+        }
+        return null;
+    }
+
+    /** JPEG APP1(Exif) */
+    function ieParseJpegExifLines(ab) {
+        if (!ieIsJpegArrayBuffer(ab)) return null;
+        const u8 = new Uint8Array(ab);
+        let i = 2;
+        while (i + 3 < u8.length) {
+            if (u8[i] !== 0xff) {
+                i++;
+                continue;
+            }
+            const m = u8[i + 1];
+            if (m === 0xd9 || m === 0xda) break;
+            const len = (u8[i + 2] << 8) | u8[i + 3];
+            if (len < 2 || i + 2 + len > u8.length) break;
+            if (m === 0xe1) {
+                const start = i + 4;
+                const payloadLen = len - 2;
+                const lines = ieTryExifPayloadToLines(u8, start, payloadLen);
+                if (lines && lines.length) return lines;
+            }
+            i += 2 + len;
+        }
+        return null;
+    }
+
+    /** PNG eXIf 청크 */
+    function ieParsePngExifLines(ab) {
+        const u8 = new Uint8Array(ab);
+        const PNG_SIG = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+        if (u8.length < 32) return null;
+        for (let k = 0; k < 8; k++) {
+            if (u8[k] !== PNG_SIG[k]) return null;
+        }
+        let o = 8;
+        for (let iter = 0; iter < 256 && o + 12 <= u8.length; iter++) {
+            const clen = ieExifReadU32BE(u8, o);
+            if (clen > 80 * 1024 * 1024) break;
+            if (o + 12 + clen > u8.length) break;
+            if (u8[o + 4] === 0x65 && u8[o + 5] === 0x58 && u8[o + 6] === 0x49 && u8[o + 7] === 0x66) {
+                const lines = ieTryExifPayloadToLines(u8, o + 8, clen);
+                if (lines && lines.length) return lines;
+            }
+            o += 12 + clen;
+        }
+        return null;
+    }
+
+    /** WebP 컨테이너의 EXIF 청크 */
+    function ieParseWebpExifLines(ab) {
+        const u8 = new Uint8Array(ab);
+        if (u8.length < 20) return null;
+        if (u8[0] !== 0x52 || u8[1] !== 0x49 || u8[2] !== 0x46 || u8[3] !== 0x46) return null;
+        if (u8[8] !== 0x57 || u8[9] !== 0x45 || u8[10] !== 0x42 || u8[11] !== 0x50) return null;
+        const riffSize = ieExifReadU32LE(u8, 4);
+        const containerEnd = Math.min(u8.length, 8 + riffSize);
+        let o = 12;
+        for (let iter = 0; iter < 256 && o + 8 <= containerEnd; iter++) {
+            const c0 = u8[o],
+                c1 = u8[o + 1],
+                c2 = u8[o + 2],
+                c3 = u8[o + 3];
+            const sz = ieExifReadU32LE(u8, o + 4);
+            if (sz > 80 * 1024 * 1024) break;
+            const dataOff = o + 8;
+            if (dataOff + sz > u8.length) break;
+            if (c0 === 0x45 && c1 === 0x58 && c2 === 0x49 && c3 === 0x46) {
+                const lines = ieTryExifPayloadToLines(u8, dataOff, sz);
+                if (lines && lines.length) return lines;
+            }
+            o += 8 + sz + (sz % 2);
+        }
+        return null;
+    }
+
+    /** JPEG · PNG(eXIf) · WebP(EXIF) 순으로 시도 */
+    function ieExtractExifLinesFromArrayBuffer(ab) {
+        return ieParseJpegExifLines(ab) || ieParsePngExifLines(ab) || ieParseWebpExifLines(ab);
+    }
+
+    function ieParseExifTiffToLines(u8, t0) {
+        if (t0 + 8 > u8.length) return null;
+        const b0 = u8[t0],
+            b1 = u8[t0 + 1];
+        const le = b0 === 0x49 && b1 === 0x49;
+        if (!le && !(b0 === 0x4d && b1 === 0x4d)) return null;
+        if (ieExifU16(u8, t0 + 2, le) !== 0x002a) return null;
+        const ifd0Off = ieExifU32(u8, t0 + 4, le);
+        const tags = {};
+        function readIFD(ifdRel) {
+            const p = t0 + ifdRel;
+            if (p + 2 > u8.length) return;
+            const n = ieExifU16(u8, p, le);
+            for (let k = 0; k < n; k++) {
+                const e = p + 2 + k * 12;
+                if (e + 12 > u8.length) break;
+                const type = ieExifU16(u8, e + 2, le);
+                const cnt = ieExifU32(u8, e + 4, le);
+                const comp =
+                    type === 1 || type === 2 || type === 7
+                        ? 1
+                        : type === 3
+                          ? 2
+                          : type === 4
+                            ? 4
+                            : type === 5 || type === 10
+                              ? 8
+                              : 0;
+                if (!comp || cnt < 1) continue;
+                const total = cnt * comp;
+                const dataOff = total > 4 ? t0 + ieExifU32(u8, e + 8, le) : e + 8;
+                if (dataOff + total > u8.length) continue;
+                const tag = ieExifU16(u8, e, le);
+                if (type === 2) {
+                    tags[tag] = ieExifReadAscii(u8, dataOff, cnt);
+                } else if (type === 3) {
+                    tags[tag] = ieExifU16(u8, dataOff, le);
+                } else if (type === 4) {
+                    tags[tag] = ieExifU32(u8, dataOff, le);
+                } else if (type === 5 || type === 10) {
+                    const num = ieExifU32(u8, dataOff, le);
+                    const den = ieExifU32(u8, dataOff + 4, le);
+                    tags[tag] = den ? num / den : null;
+                }
+            }
+        }
+        readIFD(ifd0Off);
+        const exOff = tags[0x8769];
+        if (typeof exOff === 'number' && exOff > 0) readIFD(exOff);
+        const lines = [];
+        const make = tags[0x010f] || '';
+        const model = tags[0x0110] || '';
+        const cam = [make, model].filter(Boolean).join(' ');
+        if (cam) lines.push(cam);
+        const when = tags[0x9003] || tags[0x0132];
+        if (when) lines.push(when);
+        const ori = tags[0x0112];
+        if (ori >= 1 && ori <= 8) {
+            const om = {
+                1: '0°',
+                2: '좌우 반전',
+                3: '180°',
+                4: '상하 반전',
+                5: '90°+반전',
+                6: '90° (시계)',
+                7: '90° CCW+반전',
+                8: '90° (반시계)'
+            }[ori];
+            if (om) lines.push('방향 · ' + om);
+        }
+        const photo = [];
+        const exp = tags[0x829a];
+        if (typeof exp === 'number' && exp > 0) {
+            const es = ieExifFmtShutter(exp);
+            if (es) photo.push(es);
+        }
+        const fn = tags[0x829d];
+        if (typeof fn === 'number' && fn > 0) {
+            const fv = fn < 10 ? fn.toFixed(1).replace(/\.0$/, '') : String(Math.round(fn * 10) / 10);
+            photo.push('f/' + fv);
+        }
+        const iso = tags[0x8827];
+        if (iso != null && iso > 0) photo.push('ISO ' + iso);
+        const fl = tags[0x920a];
+        if (typeof fl === 'number' && fl > 0) photo.push(Math.round(fl) + ' mm');
+        const fl35 = tags[0xa405];
+        if (typeof fl35 === 'number' && fl35 > 0) photo.push('35mm환산 ' + fl35 + ' mm');
+        if (photo.length) lines.push(photo.join(' · '));
+        return lines.length ? lines : null;
+    }
+
+    function updateExifOverlay() {
+        const el = document.getElementById('ieExifOverlay');
+        const hint = document.getElementById('ieExifLocateHint');
+        if (hint) hint.hidden = !hasImage();
+        if (!el) return;
+        if (!hasImage()) {
+            el.textContent = '';
+            el.style.display = 'none';
+            el.removeAttribute('aria-label');
+            return;
+        }
+        el.style.display = 'block';
+        const lines = ieImageSourceMeta.exifLines;
+        if (lines === null) {
+            el.textContent = 'EXIF\n읽는 중…';
+            el.setAttribute('aria-label', 'EXIF 읽는 중');
+            return;
+        }
+        if (!lines.length) {
+            el.textContent =
+                'EXIF\n이 파일에는 읽을 수 있는 EXIF가 없습니다.\n' +
+                '(카메라 JPEG에 흔하고, PNG·WebP·재저장본에는 없을 수 있어요.)\n' +
+                'URL은 보안(CORS) 때문에 메타를 못 읽을 때도 있습니다.';
+            el.setAttribute('aria-label', 'EXIF 없음');
+            return;
+        }
+        el.textContent = 'EXIF\n' + lines.join('\n');
+        el.setAttribute('aria-label', 'EXIF 메타데이터');
+    }
+
     function updateSizeLabel() {
         const el = document.getElementById('ieSizeLabel');
-        if (el && canvas && canvas.width > 0) {
-            const mp = ((canvas.width * canvas.height) / 1e6).toFixed(1);
-            el.textContent = canvas.width + ' × ' + canvas.height + '  (' + mp + 'MP)';
-        } else if (el) {
+        if (!el) return;
+        if (!canvas || canvas.width <= 0) {
             el.textContent = '';
+            el.removeAttribute('title');
+            ieImageSourceMeta = {
+                displayName: '',
+                sourceBytes: null,
+                bytesKind: null,
+                sourceNaturalW: null,
+                sourceNaturalH: null,
+                exifLines: null
+            };
+            updateExifOverlay();
+            return;
         }
+        const w = canvas.width;
+        const h = canvas.height;
+        const nameRaw = (ieImageSourceMeta.displayName || '').trim();
+        const { stem, extWithDot } = ieToolbarSplitFileName(nameRaw);
+        const mpStr = ieFormatMegapixels(w, h);
+        const px = w * h;
+        const uncomp = px * 4;
+        let bytesPart = '';
+        let bytesTitleExtra = '';
+        const sb = ieImageSourceMeta.sourceBytes;
+        const bk = ieImageSourceMeta.bytesKind;
+        if (sb != null && Number.isFinite(sb) && sb >= 0) {
+            const fmt = ieFormatToolbarBytes(sb);
+            if (bk === 'file') {
+                bytesPart = fmt + ' (파일)';
+                bytesTitleExtra = '\n파일 용량: ' + fmt + ' (업로드·저장 시 크기)';
+            } else if (bk === 'dataUrl') {
+                bytesPart = '≈' + fmt + ' (data 근사)';
+                bytesTitleExtra = '\ndata URL 인코딩 길이로 잡은 근사 용량입니다.';
+            } else {
+                bytesPart = fmt;
+                bytesTitleExtra = '\n용량: ' + fmt;
+            }
+        } else {
+            bytesPart = '≈' + ieFormatToolbarBytes(uncomp) + ' (무압축)';
+            bytesTitleExtra =
+                '\n파일 용량을 알 수 없어, 현재 캔버스 픽셀 기준 무압축(RGBA·가로×세로×4) 추정치입니다. JPEG/PNG 등 압축 파일은 실제보다 클 수 있어요.';
+        }
+        const parts = [];
+        if (nameRaw) {
+            if (extWithDot) {
+                const stemMax = 36;
+                let stemShown = stem;
+                if (stem.length > stemMax) stemShown = stem.slice(0, stemMax - 1) + '…';
+                if (stemShown) parts.push(stemShown);
+                parts.push(extWithDot);
+            } else {
+                const nameShort = nameRaw.length > 42 ? nameRaw.slice(0, 41) + '…' : nameRaw;
+                parts.push(nameShort);
+            }
+        }
+        parts.push(w + '×' + h);
+        parts.push(mpStr);
+        parts.push(bytesPart);
+        el.textContent = parts.join(' · ');
+        const mpVal = px / 1e6;
+        el.title =
+            (nameRaw ? '파일: ' + nameRaw + '\n' : '') +
+            '해상도: ' +
+            w +
+            ' × ' +
+            h +
+            ' px (' +
+            px.toLocaleString() +
+            ' 화소)\n' +
+            '메가픽셀: ' +
+            (mpVal < 0.01 ? '—' : mpVal.toFixed(3).replace(/\.?0+$/, '') + ' MP') +
+            ' (= 가로×세로÷1,000,000)\n' +
+            '1 미만(예: 0.2 MP)은 약 20만 화소짜리 작은 이미지일 때 정상입니다.' +
+            bytesTitleExtra;
     }
 
     function hasImage() {
@@ -416,15 +1011,84 @@
         return false;
     }
 
+    /** 형식·변환 — 캔버스 미리보기/저장 전용 (빈 캔버스일 때 일괄 변환 안내) */
+    function requireImageForConvertCanvas() {
+        if (hasImage()) return true;
+        if (window.KarmoLabImageBatch) {
+            Toolbox.showToast(
+                '캔버스 미리보기·저장은 이미지가 필요해요. 여러 장만 한꺼번에 변환할 때는 오른쪽 「여러 파일 → 파일 선택」이나 이미지를 2장 이상 드래그하세요.',
+                'error'
+            );
+        } else {
+            Toolbox.showToast('먼저 이미지를 불러오세요.', 'error');
+        }
+        return false;
+    }
+
+    function updateIePlaceholderForTool() {
+        const text = document.querySelector('#iePlaceholder .ie-placeholder-text');
+        const sub = document.querySelector('#iePlaceholder .ie-placeholder-sub');
+        if (!text || !sub) return;
+        if (activeTool === 'convert' && window.KarmoLabImageBatch) {
+            text.textContent = '이미지를 불러오세요';
+            sub.innerHTML =
+                '클릭·드롭·붙여넣기·가져오기는 다른 도구와 같습니다. <strong>여러 장 일괄 변환</strong>만 오른쪽 「여러 파일 → 파일 선택」 또는 <strong>이미지 2장 이상</strong>을 한 번에 드래그하세요.<br><span style="opacity:0.75">보기: 휠 줌 · 스페이스+드래그 또는 가운데 클릭으로 이동</span>';
+        } else {
+            text.textContent = '이미지를 불러오세요';
+            sub.innerHTML =
+                '클릭, 드래그&드롭, Ctrl+V 붙여넣기, 또는 \'가져오기\' 사용<br><span style="opacity:0.75">보기: 휠 줌 · 스페이스+드래그 또는 가운데 클릭으로 이동</span>';
+        }
+    }
+
+    function syncIeCvBatchUiFromState() {
+        const run = document.getElementById('ieCvBatchRun');
+        const status = document.getElementById('ieCvBatchStatus');
+        if (status) {
+            status.textContent =
+                ieCvBatchState.files.length === 0
+                    ? '선택된 파일: 없음'
+                    : '선택된 파일: ' + ieCvBatchState.files.length + '개';
+        }
+        if (run) run.disabled = ieCvBatchState.files.length === 0;
+    }
+
+    function applyImageViewTransform() {
+        const pz = document.getElementById('iePanZoom');
+        if (!pz) return;
+        pz.style.transform =
+            'translate(calc(-50% + ' + viewPanX + 'px), calc(-50% + ' + viewPanY + 'px)) scale(' + viewZoom + ')';
+    }
+
+    function resetImageView() {
+        viewPanX = 0;
+        viewPanY = 0;
+        viewZoom = 1;
+        viewDragging = false;
+        const wrap = document.getElementById('ieCanvasWrap');
+        if (wrap) {
+            wrap.classList.remove('ie-view-grab', 'ie-view-grabbing');
+        }
+        applyImageViewTransform();
+    }
+
+    function syncOverlaySizeToCanvas(ov) {
+        if (!ov || !canvas) return;
+        ov.style.left = '0px';
+        ov.style.top = '0px';
+        ov.style.width = canvas.offsetWidth + 'px';
+        ov.style.height = canvas.offsetHeight + 'px';
+    }
+
     function closeAllDropdowns() {
         document.querySelectorAll('.ie-dropdown-menu').forEach(m => m.classList.remove('open'));
     }
 
     /* ===== Image Loading ===== */
-    function loadImageFromSrc(src) {
+    function loadImageFromSrc(src, loadGen) {
         const img = new Image();
         img.crossOrigin = 'anonymous';
         img.onload = () => {
+            if (loadGen != null && loadGen !== ieImageLoadGen) return;
             const pixels = img.naturalWidth * img.naturalHeight;
 
             if (pixels > MAX_PIXELS) {
@@ -434,6 +1098,17 @@
             if (pixels > WARN_PIXELS) {
                 showSizeWarning(img, false);
                 return;
+            }
+            if (
+                ieImageSourceMeta.sourceBytes == null &&
+                typeof src === 'string' &&
+                src.startsWith('data:')
+            ) {
+                const est = ieEstimateDataUrlBytes(src);
+                if (est != null && est > 0) {
+                    ieImageSourceMeta.sourceBytes = est;
+                    ieImageSourceMeta.bytesKind = 'dataUrl';
+                }
             }
             commitImageLoad(img);
         };
@@ -445,6 +1120,8 @@
     }
 
     function commitImageLoad(img) {
+        ieImageSourceMeta.sourceNaturalW = img.naturalWidth;
+        ieImageSourceMeta.sourceNaturalH = img.naturalHeight;
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         ctx.drawImage(img, 0, 0);
@@ -452,12 +1129,16 @@
         historyIdx = -1;
         pushHistory();
         updateSizeLabel();
+        updateExifOverlay();
         hidePlaceholder();
+        resetImageView();
         selectTool(activeTool);
         Mdd.setMood('happy'); Mdd.say('이미지 불러왔어요!');
     }
 
     function commitImageLoadDownscaled(img, targetW, targetH) {
+        ieImageSourceMeta.sourceNaturalW = img.naturalWidth;
+        ieImageSourceMeta.sourceNaturalH = img.naturalHeight;
         canvas.width = targetW;
         canvas.height = targetH;
         ctx.drawImage(img, 0, 0, targetW, targetH);
@@ -465,7 +1146,9 @@
         historyIdx = -1;
         pushHistory();
         updateSizeLabel();
+        updateExifOverlay();
         hidePlaceholder();
+        resetImageView();
         selectTool(activeTool);
         Mdd.setMood('happy'); Mdd.say('이미지를 축소해서 불러왔어요!');
     }
@@ -475,14 +1158,14 @@
         if (!dialog) { commitImageLoad(img); return; }
 
         const w = img.naturalWidth, h = img.naturalHeight;
-        const mp = ((w * h) / 1e6).toFixed(1);
+        const mp = ieFormatMegapixels(w, h);
         const maxSide = Math.max(w, h);
         const targetMax = 2048;
         const scale = targetMax / maxSide;
         const dw = Math.round(w * scale), dh = Math.round(h * scale);
 
         document.getElementById('ieWarnText').innerHTML =
-            '이미지 크기: <strong>' + w + ' × ' + h + '</strong> (' + mp + 'MP)<br>' +
+            '이미지 크기: <strong>' + w + ' × ' + h + '</strong> (' + mp + ')<br>' +
             (forceDownscale
                 ? '너무 큰 이미지입니다. 편집을 위해 <strong>' + dw + ' × ' + dh + '</strong>로 축소합니다.'
                 : '큰 이미지는 메모리를 많이 사용합니다. 축소하시겠습니까?<br>축소 시: <strong>' + dw + ' × ' + dh + '</strong>');
@@ -509,8 +1192,29 @@
             Toolbox.showToast('이미지 파일이 아닙니다.', 'error');
             return;
         }
+        const g = ++ieImageLoadGen;
+        ieImageSourceMeta = {
+            displayName: (file.name && String(file.name).trim()) || '이미지',
+            sourceBytes: typeof file.size === 'number' && file.size >= 0 ? file.size : null,
+            bytesKind: 'file',
+            sourceNaturalW: null,
+            sourceNaturalH: null,
+            exifLines: null
+        };
+        file
+            .arrayBuffer()
+            .then(ab => {
+                if (g !== ieImageLoadGen) return;
+                ieImageSourceMeta.exifLines = ieExtractExifLinesFromArrayBuffer(ab) || [];
+                updateExifOverlay();
+            })
+            .catch(() => {
+                if (g !== ieImageLoadGen) return;
+                ieImageSourceMeta.exifLines = [];
+                updateExifOverlay();
+            });
         const reader = new FileReader();
-        reader.onload = (e) => loadImageFromSrc(e.target.result);
+        reader.onload = e => loadImageFromSrc(e.target.result, g);
         reader.readAsDataURL(file);
     }
 
@@ -910,7 +1614,7 @@
             { id: 'bgg',    label: '배경색' }
         ];
         container.innerHTML = `
-            <div style="width:100%;display:flex;flex-direction:column;gap:8px;">
+            <div class="ie-options-stack" style="width:100%;display:flex;flex-direction:column;gap:8px;">
                 <div class="ie-rembg-tabs">${modes.map(m =>
                     `<button class="ie-rembg-tab${rembgMode === m.id ? ' active' : ''}" data-rm="${m.id}">${m.label}</button>`
                 ).join('')}</div>
@@ -1043,20 +1747,17 @@
     function initBrushOverlay() {
         const ov = document.getElementById('ieBrushOverlay');
         if (!ov || !hasImage()) return;
-        const wrap = document.getElementById('ieCanvasWrap');
-        const rect = canvas.getBoundingClientRect();
-        const wrapRect = wrap.getBoundingClientRect();
         ov.style.display = 'block';
-        ov.style.left = (rect.left - wrapRect.left) + 'px';
-        ov.style.top = (rect.top - wrapRect.top) + 'px';
-        ov.style.width = rect.width + 'px';
-        ov.style.height = rect.height + 'px';
-        ov.width = Math.round(rect.width);
-        ov.height = Math.round(rect.height);
+        syncOverlaySizeToCanvas(ov);
+        const bw = canvas.offsetWidth;
+        const bh = canvas.offsetHeight;
+        ov.width = Math.round(bw);
+        ov.height = Math.round(bh);
         const bCtx = ov.getContext('2d');
         bCtx.clearRect(0, 0, ov.width, ov.height);
 
         ov.onpointerdown = (e) => {
+            if (e.button !== 0) return;
             brushDrawing = true;
             const r = ov.getBoundingClientRect();
             bCtx.beginPath();
@@ -1664,14 +2365,8 @@
     function initCaptionOverlay() {
         const ov = document.getElementById('ieCaptionOverlay');
         if (!ov || !hasImage()) return;
-        const wrap = document.getElementById('ieCanvasWrap');
-        const rect = canvas.getBoundingClientRect();
-        const wrapRect = wrap.getBoundingClientRect();
         ov.style.display = 'block';
-        ov.style.left = (rect.left - wrapRect.left) + 'px';
-        ov.style.top = (rect.top - wrapRect.top) + 'px';
-        ov.style.width = rect.width + 'px';
-        ov.style.height = rect.height + 'px';
+        syncOverlaySizeToCanvas(ov);
         ov.width = canvas.width;
         ov.height = canvas.height;
         redrawCaptionPreview();
@@ -1682,6 +2377,7 @@
             return { x, y };
         };
         ov.onpointerdown = (e) => {
+            if (e.button !== 0) return;
             captionDragging = true;
             const coords = getCanvasCoords(e);
             captionPosX = coords.x;
@@ -1799,14 +2495,8 @@
     function initStickerOverlay() {
         const ov = document.getElementById('ieStickerOverlay');
         if (!ov || !hasImage()) return;
-        const wrap = document.getElementById('ieCanvasWrap');
-        const rect = canvas.getBoundingClientRect();
-        const wrapRect = wrap.getBoundingClientRect();
         ov.style.display = 'block';
-        ov.style.left = (rect.left - wrapRect.left) + 'px';
-        ov.style.top = (rect.top - wrapRect.top) + 'px';
-        ov.style.width = rect.width + 'px';
-        ov.style.height = rect.height + 'px';
+        syncOverlaySizeToCanvas(ov);
         ov.width = canvas.width;
         ov.height = canvas.height;
         redrawStickerPreview();
@@ -1818,6 +2508,7 @@
             };
         };
         ov.onpointerdown = (e) => {
+            if (e.button !== 0) return;
             stickerDragging = true;
             const coords = getCanvasCoords(e);
             stickerPosX = coords.x;
@@ -1923,7 +2614,7 @@
 
     function buildMaskOptions(optPanel) {
         optPanel.innerHTML = `
-            <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+            <div class="ie-options-stack" style="display:flex;flex-direction:column;gap:10px;width:100%;">
                 <div style="padding-bottom:8px;border-bottom:1px solid var(--border);">
                     <span class="ie-opt-label" style="font-weight:600;margin-bottom:4px;">📁 외부 마스크 적용</span>
                     <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px;">
@@ -2213,44 +2904,40 @@
     function initCrop() {
         const overlay = document.getElementById('ieCropOverlay');
         if (!overlay || !hasImage()) return;
-        const wrap = document.getElementById('ieCanvasWrap');
-        const rect = canvas.getBoundingClientRect();
-        const wrapRect = wrap.getBoundingClientRect();
-
-        overlay.style.left = (rect.left - wrapRect.left) + 'px';
-        overlay.style.top = (rect.top - wrapRect.top) + 'px';
-        overlay.style.width = rect.width + 'px';
-        overlay.style.height = rect.height + 'px';
+        syncOverlaySizeToCanvas(overlay);
         overlay.classList.add('active');
 
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const cw = canvas.offsetWidth;
+        const ch = canvas.offsetHeight;
+        const scaleX = canvas.width / cw;
+        const scaleY = canvas.height / ch;
 
-        let cw, ch, cx, cy;
+        let cx, cy;
+        let cropDispW, cropDispH;
         if (cropAspect) {
-            const displayAspect = rect.width / rect.height;
+            const displayAspect = cw / ch;
             if (cropAspect > displayAspect) {
-                cw = rect.width * 0.8;
-                ch = cw / cropAspect;
+                cropDispW = cw * 0.8;
+                cropDispH = cropDispW / cropAspect;
             } else {
-                ch = rect.height * 0.8;
-                cw = ch * cropAspect;
+                cropDispH = ch * 0.8;
+                cropDispW = cropDispH * cropAspect;
             }
-            cx = (rect.width - cw) / 2;
-            cy = (rect.height - ch) / 2;
+            cx = (cw - cropDispW) / 2;
+            cy = (ch - cropDispH) / 2;
         } else {
             const pad = 0.1;
-            cx = Math.round(rect.width * pad);
-            cy = Math.round(rect.height * pad);
-            cw = Math.round(rect.width * (1 - 2 * pad));
-            ch = Math.round(rect.height * (1 - 2 * pad));
+            cx = Math.round(cw * pad);
+            cy = Math.round(ch * pad);
+            cropDispW = Math.round(cw * (1 - 2 * pad));
+            cropDispH = Math.round(ch * (1 - 2 * pad));
         }
 
         cropState = {
             x: Math.round(cx), y: Math.round(cy),
-            w: Math.round(cw), h: Math.round(ch),
+            w: Math.round(cropDispW), h: Math.round(cropDispH),
             scaleX, scaleY,
-            maxW: rect.width, maxH: rect.height,
+            maxW: cw, maxH: ch,
             dragging: null, startX: 0, startY: 0, startCrop: null
         };
         renderCropRegion();
@@ -2293,6 +2980,8 @@
 
     function onCropPointerDown(e) {
         if (!cropState) return;
+        if (e.button !== 0) return;
+        if (viewSpaceDown) return;
         const overlay = document.getElementById('ieCropOverlay');
         const oRect = overlay.getBoundingClientRect();
         const mx = e.clientX - oRect.left;
@@ -2411,7 +3100,8 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'edited-image-' + Date.now() + '.' + format;
+            const dlExt = format === 'jpeg' ? 'jpg' : format;
+            a.download = ieDownloadFilenameFromDisplayName(ieImageSourceMeta.displayName, dlExt);
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -2453,11 +3143,687 @@
         }
     }
 
+    /* ===== Format convert (embedded) ===== */
+    function loadIeConvertSettings() {
+        let o = {};
+        try {
+            o = JSON.parse(localStorage.getItem(IE_CONVERT_STORAGE) || '{}') || {};
+        } catch (_) {}
+        return {
+            outFmt: o.outFmt === 'jpeg' || o.outFmt === 'webp' || o.outFmt === 'png' ? o.outFmt : IE_CV_DEFAULTS.outFmt,
+            quality: Math.min(100, Math.max(5, parseInt(o.quality, 10) || IE_CV_DEFAULTS.quality)),
+            maxPreset: typeof o.maxPreset === 'string' ? o.maxPreset : IE_CV_DEFAULTS.maxPreset,
+            maxCustom: Math.min(16384, Math.max(64, parseInt(o.maxCustom, 10) || IE_CV_DEFAULTS.maxCustom)),
+            bg: typeof o.bg === 'string' && /^#[0-9a-fA-F]{6}$/.test(o.bg) ? o.bg : IE_CV_DEFAULTS.bg,
+            fillAlpha: !!o.fillAlpha,
+            smoothing: o.smoothing === 'low' || o.smoothing === 'medium' ? o.smoothing : IE_CV_DEFAULTS.smoothing
+        };
+    }
+
+    function saveIeConvertSettings(s) {
+        try {
+            localStorage.setItem(IE_CONVERT_STORAGE, JSON.stringify(s));
+        } catch (_) {}
+    }
+
+    function ieCvMaxLong(preset, customVal) {
+        if (preset === 'custom') return customVal > 0 ? customVal : 0;
+        if (!preset) return 0;
+        const n = parseInt(preset, 10);
+        return n > 0 ? n : 0;
+    }
+
+    function ieCvPersistFromPanel() {
+        const fmtEl = document.querySelector('input[name="ieCvFmt"]:checked');
+        const maxPreset = document.getElementById('ieCvMaxPreset');
+        const maxCustom = document.getElementById('ieCvMaxCustom');
+        const q = document.getElementById('ieCvQuality');
+        const bg = document.getElementById('ieCvBg');
+        const fa = document.getElementById('ieCvFillAlpha');
+        const sm = document.getElementById('ieCvSmooth');
+        if (!fmtEl || !maxPreset || !maxCustom || !q || !bg || !fa || !sm) return;
+        saveIeConvertSettings({
+            outFmt: fmtEl.value,
+            quality: parseInt(q.value, 10),
+            maxPreset: maxPreset.value,
+            maxCustom: parseInt(maxCustom.value, 10) || IE_CV_DEFAULTS.maxCustom,
+            bg: bg.value,
+            fillAlpha: fa.checked,
+            smoothing: sm.value
+        });
+    }
+
+    function ieCvOptsFromPanel(IC) {
+        const fmtEl = document.querySelector('input[name="ieCvFmt"]:checked');
+        const fmt = fmtEl ? fmtEl.value : 'png';
+        const maxPreset = document.getElementById('ieCvMaxPreset');
+        const maxCustom = document.getElementById('ieCvMaxCustom');
+        const q = document.getElementById('ieCvQuality');
+        const bg = document.getElementById('ieCvBg');
+        const fa = document.getElementById('ieCvFillAlpha');
+        const sm = document.getElementById('ieCvSmooth');
+        const mime = fmt === 'jpeg' ? IC.MIME_JPEG : fmt === 'webp' ? IC.MIME_WEBP : IC.MIME_PNG;
+        return {
+            outputMime: mime,
+            quality: (parseInt(q && q.value, 10) || 92) / 100,
+            maxLongSide: ieCvMaxLong(maxPreset && maxPreset.value, parseInt(maxCustom && maxCustom.value, 10) || 1920),
+            background: (bg && bg.value) || '#ffffff',
+            fillAlpha: !!(fa && fa.checked),
+            smoothing: (sm && sm.value) || 'high'
+        };
+    }
+
+    function ieCvSettingsKeyFromPanel() {
+        const fmtEl = document.querySelector('input[name="ieCvFmt"]:checked');
+        const maxPreset = document.getElementById('ieCvMaxPreset');
+        const maxCustom = document.getElementById('ieCvMaxCustom');
+        const q = document.getElementById('ieCvQuality');
+        const bg = document.getElementById('ieCvBg');
+        const fa = document.getElementById('ieCvFillAlpha');
+        const sm = document.getElementById('ieCvSmooth');
+        return JSON.stringify({
+            f: fmtEl ? fmtEl.value : 'png',
+            q: q ? q.value : '92',
+            mp: maxPreset ? maxPreset.value : '',
+            mc: maxCustom ? maxCustom.value : '',
+            bg: bg ? bg.value : '',
+            fa: fa ? fa.checked : false,
+            sm: sm ? sm.value : 'high',
+            cw: canvas && canvas.width,
+            ch: canvas && canvas.height
+        });
+    }
+
+    function ieCvInvalidatePreview() {
+        convertPreviewBlob = null;
+        convertPreviewKey = '';
+    }
+
+    function ieCvSyncResampleRow() {
+        const row = document.getElementById('ieCvResampleRow');
+        const sel = document.getElementById('ieCvMaxPreset');
+        if (!row || !sel) return;
+        row.style.display = sel.value ? 'flex' : 'none';
+    }
+
+    function ieCvSyncQualityRow(IC) {
+        const fmtEl = document.querySelector('input[name="ieCvFmt"]:checked');
+        const fmt = fmtEl ? fmtEl.value : 'png';
+        const lossy = fmt === 'jpeg' || fmt === 'webp';
+        const row = document.getElementById('ieCvQlRow');
+        const ql = document.getElementById('ieCvQlLabel');
+        const q = document.getElementById('ieCvQuality');
+        const qv = document.getElementById('ieCvQualityVal');
+        const hint = document.getElementById('ieCvHint');
+        if (!row || !q) return;
+        row.style.opacity = lossy ? '1' : '0.45';
+        q.disabled = !lossy;
+        if (ql) ql.style.opacity = lossy ? '1' : '0.45';
+        if (qv) qv.style.opacity = lossy ? '1' : '0.45';
+        if (hint) {
+            const tail = ' 미리보기 후 화면을 누르면 닫혀요.';
+            if (fmt === 'jpeg') {
+                hint.textContent = 'JPEG는 알파가 없습니다. 투명 영역은 배경색으로 채워집니다.' + tail;
+            } else if (fmt === 'webp') {
+                hint.textContent = 'WebP는 투명을 유지할 수 있어요.' + tail;
+            } else {
+                hint.textContent = 'PNG는 무손실입니다. 캔버스 내용을 그대로 인코딩합니다.' + tail;
+            }
+        }
+    }
+
+    function ieCvRevokeLightboxUrls(lb) {
+        const list = lb._ieCvRevokeUrls;
+        if (list && list.length) {
+            list.forEach(u => {
+                if (u && String(u).indexOf('blob:') === 0) {
+                    try {
+                        URL.revokeObjectURL(u);
+                    } catch (_) {}
+                }
+            });
+        }
+        lb._ieCvRevokeUrls = null;
+        lb._ieCvPreviewUrl = '';
+        lb._ieCvOriginalUrl = '';
+        lb._ieCvMeta = null;
+    }
+
+    function ieCvFormatLbBytes(n) {
+        if (n == null || n < 0 || !Number.isFinite(n)) return '—';
+        if (n < 1024) return n + ' B';
+        if (n < 1024 * 1024) return (n / 1024).toFixed(n < 10240 ? 1 : 0) + ' KB';
+        return (n / (1024 * 1024)).toFixed(n < 10485760 ? 2 : 1) + ' MB';
+    }
+
+    /** @param {{ w?: number, h?: number, bytes?: number }|null|undefined} m */
+    function ieCvFormatLbMetaLine(label, m) {
+        if (!m) return label + ': —';
+        const parts = [];
+        if (m.w > 0 && m.h > 0) parts.push(m.w + ' × ' + m.h + ' px');
+        else if (m.w > 0) parts.push(m.w + ' px');
+        if (m.bytes != null && m.bytes >= 0) parts.push(ieCvFormatLbBytes(m.bytes));
+        if (!parts.length) return label + ': —';
+        return label + ': ' + parts.join(' · ');
+    }
+
+    /**
+     * 변환 전 패널 — 해상도는 실제 인코딩 입력(캔버스), 용량은 불러온 파일·data 근사 우선(캔버스 PNG 재인코딩 크기는 쓰지 않음)
+     * @param {{ w?: number, h?: number, bytes?: number|null, bytesKind?: string|null, naturalW?: number, naturalH?: number }|null|undefined} m
+     */
+    function ieCvFormatOriginalMetaLine(m) {
+        const label = '변환 전';
+        if (!m || !(m.w > 0) || !(m.h > 0)) return label + ': —';
+        const parts = [m.w + ' × ' + m.h + ' px'];
+        const nw = m.naturalW,
+            nh = m.naturalH;
+        if (nw > 0 && nh > 0 && (nw !== m.w || nh !== m.h)) {
+            parts.push('불러온 원본 ' + nw + '×' + nh);
+        }
+        if (m.bytes != null && m.bytes >= 0) {
+            const b = ieCvFormatLbBytes(m.bytes);
+            if (m.bytesKind === 'file') parts.push(b + ' (파일)');
+            else if (m.bytesKind === 'dataUrl') parts.push('≈' + b + ' (data 근사)');
+            else parts.push(b);
+        } else {
+            parts.push('용량 알 수 없음');
+        }
+        return label + ': ' + parts.join(' · ');
+    }
+
+    function ieCvLightboxUpdateMeta(lb, mode) {
+        const el = lb.querySelector('#ieCvLbMeta');
+        if (!el) return;
+        const meta = lb._ieCvMeta;
+        if (!meta) {
+            el.textContent = '';
+            return;
+        }
+        const showOriginal = mode === 'original' && lb._ieCvOriginalUrl;
+        if (showOriginal) {
+            el.textContent = ieCvFormatOriginalMetaLine(meta.original);
+            return;
+        }
+        el.textContent = ieCvFormatLbMetaLine('변환 미리보기', meta.preview);
+    }
+
+    function ieCvLightboxSetView(lb, mode) {
+        const preview = lb._ieCvPreviewUrl;
+        const original = lb._ieCvOriginalUrl;
+        const img = lb.querySelector('.ie-cv-lightbox-inner img') || lb.querySelector('img');
+        if (!img || !preview) return;
+        const showOriginal = mode === 'original' && original;
+        img.src = showOriginal ? original : preview;
+        img.alt = showOriginal ? '변환 전(현재 편집 화면)' : '변환 미리보기';
+        lb.querySelectorAll('.ie-cv-lb-btn').forEach(b => {
+            const v = b.getAttribute('data-ie-cv-view');
+            b.classList.toggle('ie-cv-lb-active', showOriginal ? v === 'original' : v === 'preview');
+        });
+        ieCvLightboxUpdateMeta(lb, showOriginal ? 'original' : 'preview');
+    }
+
+    function ieCvEnsureLightboxShell() {
+        let lb = document.getElementById('ieCvLightbox');
+        if (!lb) {
+            lb = document.createElement('div');
+            lb.id = 'ieCvLightbox';
+            lb.className = 'ie-cv-lightbox';
+            lb.setAttribute('role', 'dialog');
+            lb.setAttribute('aria-label', '변환 미리보기');
+            lb.innerHTML =
+                '<div class="ie-cv-lightbox-fill">' +
+                '<div class="ie-cv-lightbox-inner"><img alt="변환 미리보기"></div>' +
+                '<div class="ie-cv-lightbox-bar" role="group" aria-label="변환 전과 미리보기 전환">' +
+                '<div class="ie-cv-lb-btn-row">' +
+                '<button type="button" class="ie-cv-lb-btn" data-ie-cv-view="original">변환 전</button>' +
+                '<button type="button" class="ie-cv-lb-btn ie-cv-lb-active" data-ie-cv-view="preview">미리보기</button>' +
+                '</div>' +
+                '<div class="ie-cv-lb-meta" id="ieCvLbMeta" aria-live="polite"></div>' +
+                '</div></div>';
+            lb.addEventListener('click', e => {
+                if (e.target.closest('.ie-cv-lightbox-bar')) return;
+                ieCvCloseLightbox();
+            });
+            lb.querySelectorAll('.ie-cv-lb-btn').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    const v = btn.getAttribute('data-ie-cv-view');
+                    if (v) ieCvLightboxSetView(lb, v);
+                });
+            });
+            document.body.appendChild(lb);
+        } else if (!lb.querySelector('.ie-cv-lightbox-bar')) {
+            lb.onclick = null;
+            ieCvRevokeLightboxUrls(lb);
+            const img = lb.querySelector('img');
+            const prevAlt = (img && img.getAttribute('alt')) || '변환 미리보기';
+            lb.innerHTML =
+                '<div class="ie-cv-lightbox-fill">' +
+                '<div class="ie-cv-lightbox-inner"><img alt="' +
+                prevAlt.replace(/"/g, '&quot;') +
+                '"></div>' +
+                '<div class="ie-cv-lightbox-bar" role="group" aria-label="변환 전과 미리보기 전환">' +
+                '<div class="ie-cv-lb-btn-row">' +
+                '<button type="button" class="ie-cv-lb-btn" data-ie-cv-view="original">변환 전</button>' +
+                '<button type="button" class="ie-cv-lb-btn ie-cv-lb-active" data-ie-cv-view="preview">미리보기</button>' +
+                '</div>' +
+                '<div class="ie-cv-lb-meta" id="ieCvLbMeta" aria-live="polite"></div>' +
+                '</div></div>';
+            lb.addEventListener('click', e => {
+                if (e.target.closest('.ie-cv-lightbox-bar')) return;
+                ieCvCloseLightbox();
+            });
+            lb.querySelectorAll('.ie-cv-lb-btn').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    const v = btn.getAttribute('data-ie-cv-view');
+                    if (v) ieCvLightboxSetView(lb, v);
+                });
+            });
+        }
+        return lb;
+    }
+
+    function ieCvCloseLightbox() {
+        const lb = document.getElementById('ieCvLightbox');
+        if (!lb) return;
+        lb.classList.remove('open');
+        const img = lb.querySelector('.ie-cv-lightbox-inner img') || lb.querySelector('img');
+        if (img) img.removeAttribute('src');
+        const metaEl = lb.querySelector('#ieCvLbMeta');
+        if (metaEl) metaEl.textContent = '';
+        ieCvRevokeLightboxUrls(lb);
+        document.removeEventListener('keydown', ieCvOnEscape);
+    }
+
+    function ieCvOnEscape(e) {
+        if (e.key === 'Escape') ieCvCloseLightbox();
+    }
+
+    /**
+     * @param {string} previewUrl
+     * @param {string} [originalUrl] 비교용 — 현재 캔버스를 PNG로 뗀 blob URL(표시만, 메타 용량은 meta.original 기준)
+     * @param {{ original?: { w?: number, h?: number, bytes?: number|null, bytesKind?: string|null, naturalW?: number, naturalH?: number }, preview?: { w?: number, h?: number, bytes?: number } }} [meta]
+     */
+    function ieCvOpenLightbox(previewUrl, originalUrl, meta) {
+        const lb = ieCvEnsureLightboxShell();
+        ieCvRevokeLightboxUrls(lb);
+        lb._ieCvPreviewUrl = previewUrl;
+        lb._ieCvOriginalUrl = originalUrl || '';
+        lb._ieCvRevokeUrls = originalUrl ? [previewUrl, originalUrl] : [previewUrl];
+        lb._ieCvMeta = meta && typeof meta === 'object' ? meta : null;
+        const img = lb.querySelector('.ie-cv-lightbox-inner img') || lb.querySelector('img');
+        const origBtn = lb.querySelector('[data-ie-cv-view="original"]');
+        if (origBtn) origBtn.style.display = originalUrl ? '' : 'none';
+        img.src = previewUrl;
+        img.alt = '변환 미리보기';
+        lb.querySelectorAll('.ie-cv-lb-btn').forEach(b => {
+            const v = b.getAttribute('data-ie-cv-view');
+            b.classList.toggle('ie-cv-lb-active', v === 'preview');
+        });
+        ieCvLightboxUpdateMeta(lb, 'preview');
+        const wasOpen = lb.classList.contains('open');
+        lb.classList.add('open');
+        if (!wasOpen) document.addEventListener('keydown', ieCvOnEscape);
+    }
+
+    function ieCvProbeImageBlobSize(blob) {
+        if (typeof createImageBitmap === 'function') {
+            return createImageBitmap(blob).then(
+                bmp => {
+                    const w = bmp.width;
+                    const h = bmp.height;
+                    try {
+                        bmp.close();
+                    } catch (_) {}
+                    return { w, h };
+                },
+                () => ({ w: 0, h: 0 })
+            );
+        }
+        return new Promise(resolve => {
+            const u = URL.createObjectURL(blob);
+            const im = new Image();
+            im.onload = () => {
+                resolve({ w: im.naturalWidth, h: im.naturalHeight });
+                URL.revokeObjectURL(u);
+            };
+            im.onerror = () => {
+                resolve({ w: 0, h: 0 });
+                URL.revokeObjectURL(u);
+            };
+            im.src = u;
+        });
+    }
+
+    /** @param {(img: HTMLImageElement, objectUrl: string, pngBlob: Blob) => void} fn */
+    function withCanvasAsImage(fn) {
+        if (!hasImage()) return;
+        canvas.toBlob(blob => {
+            if (!blob) return;
+            const url = URL.createObjectURL(blob);
+            const img = new Image();
+            img.onload = () => {
+                fn(img, url, blob);
+            };
+            img.onerror = () => {
+                URL.revokeObjectURL(url);
+                Toolbox.showToast('캔버스를 읽지 못했어요.', 'error');
+            };
+            img.src = url;
+        }, 'image/png');
+    }
+
+    function buildConvertOptions(optPanel) {
+        const IC = window.KarmoLabImageConvert;
+        const Batch = window.KarmoLabImageBatch;
+        if (!IC) {
+            optPanel.innerHTML =
+                '<span class="ie-opt-label">변환 모듈이 로드되지 않았어요. 페이지를 새로고침해 주세요.</span>';
+            return;
+        }
+        convertPreviewBlob = null;
+        convertPreviewKey = '';
+        const webpOk = IC.supportsWebpOutput();
+        const st = loadIeConvertSettings();
+        if (st.outFmt === 'webp' && !webpOk) st.outFmt = 'png';
+
+        const maxOpts =
+            '<option value="">원본 크기 유지</option>' +
+            '<option value="8192">8192 px 이하</option>' +
+            '<option value="4096">4096 px 이하</option>' +
+            '<option value="2560">2560 px 이하</option>' +
+            '<option value="1920">1920 px 이하</option>' +
+            '<option value="1280">1280 px 이하</option>' +
+            '<option value="1024">1024 px 이하</option>' +
+            '<option value="800">800 px 이하</option>' +
+            '<option value="640">640 px 이하</option>' +
+            '<option value="512">512 px 이하</option>' +
+            '<option value="384">384 px 이하</option>' +
+            '<option value="256">256 px 이하</option>' +
+            '<option value="custom">사용자 지정…</option>';
+
+        optPanel.innerHTML = `
+            <div class="ie-opt-row" style="flex-wrap:wrap;align-items:center;gap:8px;width:100%;">
+                <span class="ie-opt-label">형식</span>
+                <label class="ie-cv-fmt"><input type="radio" name="ieCvFmt" value="png" ${st.outFmt === 'png' ? 'checked' : ''}> PNG</label>
+                <label class="ie-cv-fmt"><input type="radio" name="ieCvFmt" value="jpeg" ${st.outFmt === 'jpeg' ? 'checked' : ''}> JPEG</label>
+                <label class="ie-cv-fmt${webpOk ? '' : ' ie-cv-off'}"><input type="radio" name="ieCvFmt" value="webp" ${st.outFmt === 'webp' && webpOk ? 'checked' : ''} ${webpOk ? '' : 'disabled'}> WebP</label>
+            </div>
+            <div class="ie-opt-row" id="ieCvQlRow" style="flex-wrap:wrap;align-items:center;gap:8px;">
+                <span class="ie-opt-label" id="ieCvQlLabel">품질</span>
+                <input type="range" class="ie-opt-range" id="ieCvQuality" min="5" max="100" value="${st.quality}" style="width:120px;">
+                <span class="ie-opt-range-val" id="ieCvQualityVal">${st.quality}%</span>
+            </div>
+            <div class="ie-opt-row" style="flex-wrap:wrap;align-items:center;gap:8px;">
+                <span class="ie-opt-label">긴 변</span>
+                <select class="ie-opt-input" id="ieCvMaxPreset" style="width:auto;min-width:132px;font-family:inherit;">${maxOpts}</select>
+                <input type="number" class="ie-opt-input" id="ieCvMaxCustom" min="64" max="16384" value="${st.maxCustom}" title="px" style="width:88px;">
+            </div>
+            <div class="ie-opt-row" id="ieCvResampleRow" style="flex-wrap:wrap;align-items:center;gap:8px;">
+                <span class="ie-opt-label">스케일</span>
+                <select class="ie-opt-input" id="ieCvSmooth" style="width:auto;min-width:120px;font-family:inherit;">
+                    <option value="high" ${st.smoothing === 'high' ? 'selected' : ''}>고품질 · 부드럽게</option>
+                    <option value="medium" ${st.smoothing === 'medium' ? 'selected' : ''}>보통</option>
+                    <option value="low" ${st.smoothing === 'low' ? 'selected' : ''}>빠름 · 픽셀 느낌</option>
+                </select>
+            </div>
+            <div class="ie-opt-row" style="flex-wrap:wrap;align-items:center;gap:8px;">
+                <span class="ie-opt-label">배경</span>
+                <input type="color" id="ieCvBg" value="${st.bg}" style="width:44px;height:28px;padding:2px;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;vertical-align:middle;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:var(--font-size-2xs);color:var(--text-secondary);white-space:nowrap;">
+                    <input type="checkbox" class="ie-opt-check" id="ieCvFillAlpha" ${st.fillAlpha ? 'checked' : ''}> 투명→배경색
+                </label>
+            </div>
+            <div class="ie-opt-row" style="flex-wrap:wrap;align-items:center;gap:8px;">
+                <button type="button" class="ie-opt-btn" id="ieCvPreview">변환 미리보기</button>
+                <button type="button" class="ie-apply-btn" id="ieCvDownload">파일로 저장</button>
+            </div>
+            <div class="ie-opt-row" style="width:100%;">
+                <span class="ie-opt-label" id="ieCvHint" style="white-space:normal;font-weight:400;line-height:1.45;max-width:720px;"></span>
+            </div>
+            ${
+                Batch
+                    ? `<div class="ie-opt-row ie-cv-batch" style="flex-direction:column;align-items:stretch;gap:10px;padding-top:12px;border-top:1px solid var(--border);width:100%;">
+                <span class="ie-opt-label" style="font-weight:600;">여러 파일</span>
+                <span class="ie-opt-label" style="white-space:normal;font-weight:400;line-height:1.45;">캔버스와 별개입니다. <strong>여러 장</strong>을 한 번에 고르면 위 옵션대로 각각 변환합니다. 한 장은 캔버스(클릭·드롭 등)로 불러오세요. 저장 창이 연달아 뜰 수 있어요.</span>
+                <input type="file" id="ieCvBatchInput" accept="image/*" multiple style="display:none">
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <button type="button" class="ie-opt-btn" id="ieCvBatchPick">파일 선택…</button>
+                    <button type="button" class="ie-opt-btn" id="ieCvBatchRun" disabled>일괄 변환 후 저장</button>
+                    <button type="button" class="ie-opt-btn" id="ieCvBatchCancel" disabled style="display:none">취소</button>
+                </div>
+                <span class="ie-opt-label" id="ieCvBatchStatus" style="white-space:normal;font-weight:400;">선택된 파일: 없음</span>
+            </div>`
+                    : ''
+            }`;
+
+        const maxPresetEl = document.getElementById('ieCvMaxPreset');
+        const maxCustomEl = document.getElementById('ieCvMaxCustom');
+        maxPresetEl.value = st.maxPreset;
+        maxCustomEl.style.display = st.maxPreset === 'custom' ? 'inline-block' : 'none';
+
+        const onChange = () => {
+            ieCvPersistFromPanel();
+            ieCvInvalidatePreview();
+            ieCvSyncResampleRow();
+            ieCvSyncQualityRow(IC);
+        };
+
+        document.querySelectorAll('input[name="ieCvFmt"]').forEach(r => {
+            r.addEventListener('change', onChange);
+        });
+        document.getElementById('ieCvQuality').addEventListener('input', () => {
+            document.getElementById('ieCvQualityVal').textContent = document.getElementById('ieCvQuality').value + '%';
+            onChange();
+        });
+        maxPresetEl.addEventListener('change', () => {
+            maxCustomEl.style.display = maxPresetEl.value === 'custom' ? 'inline-block' : 'none';
+            onChange();
+        });
+        maxCustomEl.addEventListener('change', onChange);
+        document.getElementById('ieCvBg').addEventListener('change', onChange);
+        document.getElementById('ieCvFillAlpha').addEventListener('change', onChange);
+        document.getElementById('ieCvSmooth').addEventListener('change', onChange);
+
+        ieCvSyncResampleRow();
+        ieCvSyncQualityRow(IC);
+
+        document.getElementById('ieCvPreview').onclick = () => {
+            if (!requireImageForConvertCanvas()) return;
+            const key = ieCvSettingsKeyFromPanel();
+            const opts = ieCvOptsFromPanel(IC);
+            const btn = document.getElementById('ieCvPreview');
+            btn.disabled = true;
+            withCanvasAsImage((img, srcUrl, pngBlob) => {
+                IC.convertImage(img, opts)
+                    .then(blob => {
+                        convertPreviewBlob = blob;
+                        convertPreviewKey = key;
+                        const outUrl = URL.createObjectURL(blob);
+                        const sm = ieImageSourceMeta;
+                        const fileBytes =
+                            sm.sourceBytes != null &&
+                            Number.isFinite(sm.sourceBytes) &&
+                            sm.sourceBytes >= 0
+                                ? sm.sourceBytes
+                                : null;
+                        const metaBase = {
+                            original: {
+                                w: canvas.width,
+                                h: canvas.height,
+                                bytes: fileBytes,
+                                bytesKind: sm.bytesKind,
+                                naturalW: sm.sourceNaturalW != null ? sm.sourceNaturalW : 0,
+                                naturalH: sm.sourceNaturalH != null ? sm.sourceNaturalH : 0
+                            }
+                        };
+                        return ieCvProbeImageBlobSize(blob).then(wh => {
+                            ieCvOpenLightbox(outUrl, srcUrl, {
+                                ...metaBase,
+                                preview: {
+                                    w: wh.w,
+                                    h: wh.h,
+                                    bytes: blob.size
+                                }
+                            });
+                            Toolbox.showToast('미리보기 — 화면을 눌러 닫기');
+                            Mdd.setMood('happy');
+                            Mdd.say('이렇게 저장돼요');
+                        });
+                    })
+                    .catch(() => {
+                        URL.revokeObjectURL(srcUrl);
+                        Toolbox.showToast('변환에 실패했어요.', 'error');
+                    })
+                    .finally(() => {
+                        btn.disabled = false;
+                    });
+            });
+        };
+
+        document.getElementById('ieCvDownload').onclick = () => {
+            if (!requireImageForConvertCanvas()) return;
+            const key = ieCvSettingsKeyFromPanel();
+            const opts = ieCvOptsFromPanel(IC);
+            const mime = opts.outputMime;
+            const ext = IC.extFromMime(mime);
+
+            const doDl = blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = ieDownloadFilenameFromDisplayName(ieImageSourceMeta.displayName, ext);
+                a.click();
+                setTimeout(() => URL.revokeObjectURL(url), 2000);
+                Toolbox.showToast('저장했어요');
+                Mdd.setMood('happy');
+                Mdd.say('내려받기 완료!');
+            };
+
+            if (convertPreviewBlob && convertPreviewKey === key) {
+                doDl(convertPreviewBlob);
+                return;
+            }
+            withCanvasAsImage((img, srcUrl, _pngBlob) => {
+                IC.convertImage(img, opts)
+                    .then(blob => {
+                        URL.revokeObjectURL(srcUrl);
+                        doDl(blob);
+                    })
+                    .catch(() => {
+                        URL.revokeObjectURL(srcUrl);
+                        Toolbox.showToast('변환에 실패했어요.', 'error');
+                    });
+            });
+        };
+
+        if (Batch) {
+            const batchInput = document.getElementById('ieCvBatchInput');
+            const batchPick = document.getElementById('ieCvBatchPick');
+            const batchRun = document.getElementById('ieCvBatchRun');
+            const batchCancel = document.getElementById('ieCvBatchCancel');
+            const batchStatus = document.getElementById('ieCvBatchStatus');
+            const batchIdle = () => {
+                ieCvBatchAbort = null;
+                syncIeCvBatchUiFromState();
+                batchPick.disabled = false;
+                batchCancel.disabled = true;
+                batchCancel.style.display = 'none';
+                const p = document.getElementById('ieCvPreview');
+                const d = document.getElementById('ieCvDownload');
+                if (p) p.disabled = false;
+                if (d) d.disabled = false;
+            };
+            batchPick.onclick = e => {
+                e.stopPropagation();
+                batchInput.click();
+            };
+            batchInput.onchange = () => {
+                ieCvBatchState.files = batchInput.files ? Array.from(batchInput.files) : [];
+                syncIeCvBatchUiFromState();
+                batchInput.value = '';
+            };
+            batchCancel.onclick = e => {
+                e.stopPropagation();
+                if (ieCvBatchAbort) ieCvBatchAbort.abort();
+            };
+            syncIeCvBatchUiFromState();
+            batchRun.onclick = e => {
+                e.stopPropagation();
+                if (!ieCvBatchState.files.length) return;
+                ieCvPersistFromPanel();
+                const opts = ieCvOptsFromPanel(IC);
+                const mime = opts.outputMime;
+                const recipe = Batch.recipeConvert(opts);
+                ieCvBatchAbort = new AbortController();
+                batchRun.disabled = true;
+                batchPick.disabled = true;
+                batchCancel.disabled = false;
+                batchCancel.style.display = 'inline-block';
+                const prevBtn = document.getElementById('ieCvPreview');
+                const dlBtn = document.getElementById('ieCvDownload');
+                if (prevBtn) prevBtn.disabled = true;
+                if (dlBtn) dlBtn.disabled = true;
+                batchStatus.textContent = '변환 중… 0 / ' + ieCvBatchState.files.length;
+                Batch.processFilesSequential(IC, ieCvBatchState.files, recipe, {
+                    signal: ieCvBatchAbort.signal,
+                    onItemStart(idx, file, total) {
+                        batchStatus.textContent =
+                            '변환 중… ' + (idx + 1) + ' / ' + total + ' · ' + (file.name || '');
+                    }
+                })
+                    .then(out => {
+                        const results = out.results;
+                        const okc = results.filter(r => r.ok).length;
+                        const failed = results.length - okc;
+                        if (out.aborted) {
+                            Toolbox.showToast('일괄 변환을 취소했어요.');
+                            batchStatus.textContent =
+                                '취소됨 · 처리 ' + results.length + ' · 성공 ' + okc + ' · 실패 ' + failed;
+                            return;
+                        }
+                        batchStatus.textContent =
+                            '완료 · 성공 ' + okc + ' · 실패 ' + failed + (okc ? ' · 저장 창이 순서대로 열립니다' : '');
+                        if (!okc) {
+                            Toolbox.showToast('변환에 성공한 파일이 없어요.', 'error');
+                            return;
+                        }
+                        return Batch.downloadResultsSequential(results, IC, mime).then(() => {
+                            Toolbox.showToast('일괄 저장 요청을 마쳤어요');
+                            Mdd.setMood('happy');
+                            Mdd.say('모두 저장했어요!');
+                        });
+                    })
+                    .catch(() => {
+                        Toolbox.showToast('일괄 처리 중 오류가 났어요.', 'error');
+                    })
+                    .finally(() => {
+                        batchIdle();
+                        syncIeCvBatchUiFromState();
+                    });
+            };
+        }
+
+        Mdd.setMood('idle');
+        Mdd.say('캔버스 그대로 두고 형식만 바꿔요');
+    }
+
     /* ===== Tool Switching ===== */
     function selectTool(toolId) {
         if (hasPendingPreview && toolId !== activeTool) {
             if (!confirm('적용하지 않은 변경사항이 있습니다. 무시하고 전환하시겠습니까?')) return;
         }
+        if (ieCvBatchAbort) {
+            try {
+                ieCvBatchAbort.abort();
+            } catch (_) {}
+            ieCvBatchAbort = null;
+        }
+        if (activeTool === 'convert' && toolId !== 'convert') {
+            ieCvBatchState.files = [];
+        }
+        ieCvCloseLightbox();
         activeTool = toolId;
         canvas.style.filter = '';
         canvas.style.transform = '';
@@ -2484,8 +3850,12 @@
             case 'mask': buildMaskOptions(optPanel); break;
             case 'caption': buildCaptionOptions(optPanel); break;
             case 'sticker': buildStickerOptions(optPanel); break;
+            case 'convert':
+                buildConvertOptions(optPanel);
+                break;
             default: optPanel.innerHTML = '';
         }
+        updateIePlaceholderForTool();
     }
 
     /* ===== Dialogs ===== */
@@ -2511,7 +3881,36 @@
                 card.className = 'ie-lib-thumb-card';
                 card.innerHTML = '<img src="' + Toolbox.escapeHtml(item.url) + '" alt="" loading="lazy">';
                 card.onclick = () => {
-                    loadImageFromSrc(item.url);
+                    const p = item.prompt != null ? String(item.prompt) : '';
+                    const g = ++ieImageLoadGen;
+                    ieImageSourceMeta = {
+                        displayName: p ? (p.length > 48 ? p.slice(0, 47) + '…' : p) : '라이브러리',
+                        sourceBytes: null,
+                        bytesKind: null,
+                        sourceNaturalW: null,
+                        sourceNaturalH: null,
+                        exifLines: null
+                    };
+                    loadImageFromSrc(item.url, g);
+                    fetch(item.url, { mode: 'cors', credentials: 'omit' })
+                        .then(r => {
+                            if (g !== ieImageLoadGen || !r.ok) return null;
+                            return r.arrayBuffer();
+                        })
+                        .then(ab => {
+                            if (g !== ieImageLoadGen) return;
+                            if (!ab) {
+                                ieImageSourceMeta.exifLines = [];
+                            } else {
+                                ieImageSourceMeta.exifLines = ieExtractExifLinesFromArrayBuffer(ab) || [];
+                            }
+                            updateExifOverlay();
+                        })
+                        .catch(() => {
+                            if (g !== ieImageLoadGen) return;
+                            ieImageSourceMeta.exifLines = [];
+                            updateExifOverlay();
+                        });
                     d.classList.remove('open');
                 };
                 grid.appendChild(card);
@@ -2534,6 +3933,7 @@
                         <button class="ie-tb-btn" id="ieResetBtn" title="원본으로 복원">⟲ 리셋</button>
                     </div>
                     <span class="ie-size-label" id="ieSizeLabel"></span>
+                    <span class="ie-exif-locate-hint" id="ieExifLocateHint" hidden title="EXIF 요약은 편집 영역(회색 체크 무늬) 왼쪽 위 고정 패널에 표시됩니다.">EXIF · 편집영역 좌상단</span>
                     <span class="ie-spacer"></span>
                     <div class="ie-toolbar-group">
                         <div class="ie-dropdown">
@@ -2563,77 +3963,95 @@
                 </div>
 
                 <div class="ie-body">
-                    <div class="ie-tools">
-                        <button class="ie-tool-btn active" data-tool="crop" title="자르기">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
+                    <div class="ie-tools" role="toolbar" aria-label="편집 도구" aria-orientation="vertical">
+                        <button type="button" class="ie-tool-btn active" data-tool="crop" title="자르기">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></span>
+                            <span class="ie-tool-label">자르기</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="resize" title="크기 조절">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="resize" title="크기 조절">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
+                            <span class="ie-tool-label">크기 조절</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="rotate" title="회전/뒤집기">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="rotate" title="회전/뒤집기">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+                            <span class="ie-tool-label">회전·뒤집기</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="adjust" title="밝기/대비/채도">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="adjust" title="밝기/대비/채도">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/></svg></span>
+                            <span class="ie-tool-label">밝기·대비·채도</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="filter" title="필터">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="filter" title="필터">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span>
+                            <span class="ie-tool-label">필터</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="rembg" title="배경 제거 (AI)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l9.5-9.5"/><path d="M15 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/><path d="M19 10l.7 1.3 1.3.7-1.3.7-.7 1.3-.7-1.3-1.3-.7 1.3-.7z"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="rembg" title="배경 제거 (AI)">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l9.5-9.5"/><path d="M15 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/><path d="M19 10l.7 1.3 1.3.7-1.3.7-.7 1.3-.7-1.3-1.3-.7 1.3-.7z"/></svg></span>
+                            <span class="ie-tool-label">배경 제거</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="mask" title="마스크 적용">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="5"/><path d="M12 7v0M12 17v0M7 12h0M17 12h0"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="mask" title="마스크 적용">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="5"/><path d="M12 7v0M12 17v0M7 12h0M17 12h0"/></svg></span>
+                            <span class="ie-tool-label">마스크</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="caption" title="캡션">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h12"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="caption" title="캡션">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h12"/></svg></span>
+                            <span class="ie-tool-label">캡션</span>
                         </button>
-                        <button class="ie-tool-btn" data-tool="sticker" title="스티커">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+                        <button type="button" class="ie-tool-btn" data-tool="sticker" title="스티커">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg></span>
+                            <span class="ie-tool-label">스티커</span>
+                        </button>
+                        <button type="button" class="ie-tool-btn" data-tool="convert" title="형식·크기 변환">
+                            <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                            <span class="ie-tool-label">형식·변환</span>
                         </button>
                     </div>
                     <div class="ie-canvas-area">
                         <div class="ie-canvas-wrap" id="ieCanvasWrap">
-                            <canvas id="ieCanvas"></canvas>
                             <div class="ie-placeholder" id="iePlaceholder">
                                 <div class="ie-placeholder-icon">🖼️</div>
                                 <div class="ie-placeholder-text">이미지를 불러오세요</div>
-                                <div class="ie-placeholder-sub">클릭, 드래그&드롭, Ctrl+V 붙여넣기, 또는 '가져오기' 사용</div>
+                                <div class="ie-placeholder-sub">클릭, 드래그&드롭, Ctrl+V 붙여넣기, 또는 '가져오기' 사용<br><span style="opacity:0.75">보기: 휠 줌 · 스페이스+드래그 또는 가운데 클릭으로 이동</span></div>
                             </div>
-                            <canvas class="ie-brush-overlay" id="ieBrushOverlay" style="display:none;"></canvas>
-                            <canvas class="ie-caption-overlay" id="ieCaptionOverlay" style="display:none;"></canvas>
-                            <canvas class="ie-sticker-overlay" id="ieStickerOverlay" style="display:none;"></canvas>
-                            <div class="ie-crop-overlay" id="ieCropOverlay">
-                                <div class="ie-crop-region" id="ieCropRegion">
-                                    <div class="ie-crop-handle nw" data-dir="nw"></div>
-                                    <div class="ie-crop-handle ne" data-dir="ne"></div>
-                                    <div class="ie-crop-handle sw" data-dir="sw"></div>
-                                    <div class="ie-crop-handle se" data-dir="se"></div>
-                                </div>
-                            </div>
-                            <div class="ie-mask-preview-overlay" id="ieMaskPreviewOverlay">
-                                <div class="ie-mask-preview-box" id="ieMaskPreviewBox">
-                                    <div class="ie-mask-preview-imgwrap" id="ieMaskPreviewImgwrap">
-                                        <div class="ie-mask-preview-inner" id="ieMaskPreviewInner">
-                                            <div class="ie-mask-preview-layer" id="ieMaskLayerBefore">
-                                                <canvas id="ieMaskBefore"></canvas>
-                                            </div>
-                                            <div class="ie-mask-preview-layer" id="ieMaskLayerAfter">
-                                                <canvas id="ieMaskAfter"></canvas>
-                                            </div>
-                                            <div class="ie-mask-preview-divider" id="ieMaskPreviewDivider"></div>
+                            <pre class="ie-exif-overlay" id="ieExifOverlay" role="note" aria-label="EXIF"></pre>
+                            <div class="ie-pan-zoom" id="iePanZoom">
+                                <div class="ie-pan-inner" id="iePanInner">
+                                    <canvas id="ieCanvas"></canvas>
+                                    <canvas class="ie-brush-overlay" id="ieBrushOverlay" style="display:none;"></canvas>
+                                    <canvas class="ie-caption-overlay" id="ieCaptionOverlay" style="display:none;"></canvas>
+                                    <canvas class="ie-sticker-overlay" id="ieStickerOverlay" style="display:none;"></canvas>
+                                    <div class="ie-crop-overlay" id="ieCropOverlay">
+                                        <div class="ie-crop-region" id="ieCropRegion">
+                                            <div class="ie-crop-handle nw" data-dir="nw"></div>
+                                            <div class="ie-crop-handle ne" data-dir="ne"></div>
+                                            <div class="ie-crop-handle sw" data-dir="sw"></div>
+                                            <div class="ie-crop-handle se" data-dir="se"></div>
                                         </div>
                                     </div>
-                                    <div class="ie-mask-preview-sliderrow" id="ieMaskPreviewSliderrow">
-                                        <span>적용 전</span>
-                                        <input type="range" id="ieMaskPreviewRange" min="0" max="100" value="50">
-                                        <span>적용 후</span>
-                                        <button class="ie-mask-preview-close" id="ieMaskPreviewClose">닫기</button>
+                                    <div class="ie-mask-preview-overlay" id="ieMaskPreviewOverlay">
+                                        <div class="ie-mask-preview-box" id="ieMaskPreviewBox">
+                                            <div class="ie-mask-preview-imgwrap" id="ieMaskPreviewImgwrap">
+                                                <div class="ie-mask-preview-inner" id="ieMaskPreviewInner">
+                                                    <div class="ie-mask-preview-layer" id="ieMaskLayerBefore">
+                                                        <canvas id="ieMaskBefore"></canvas>
+                                                    </div>
+                                                    <div class="ie-mask-preview-layer" id="ieMaskLayerAfter">
+                                                        <canvas id="ieMaskAfter"></canvas>
+                                                    </div>
+                                                    <div class="ie-mask-preview-divider" id="ieMaskPreviewDivider"></div>
+                                                </div>
+                                            </div>
+                                            <div class="ie-mask-preview-sliderrow" id="ieMaskPreviewSliderrow">
+                                                <span>적용 전</span>
+                                                <input type="range" id="ieMaskPreviewRange" min="0" max="100" value="50">
+                                                <span>적용 후</span>
+                                                <button class="ie-mask-preview-close" id="ieMaskPreviewClose">닫기</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ie-options" id="ieOptions"></div>
+                        <div class="ie-options" id="ieOptions" role="region" aria-label="도구 옵션"></div>
                     </div>
                 </div>
             </div>
@@ -2692,6 +4110,7 @@
                 pushHistory();
                 updateSizeLabel();
                 canvas.style.filter = '';
+                resetImageView();
                 Toolbox.showToast('원본으로 복원');
                 selectTool(activeTool);
             };
@@ -2742,15 +4161,54 @@
                 btn.onclick = () => selectTool(btn.dataset.tool);
             });
 
-            /* Placeholder click => file picker */
-            document.getElementById('iePlaceholder').onclick = () => fileInput.click();
+            /* Placeholder → 단일 파일(캔버스). 일괄은 오른쪽 「여러 파일」또는 2장 이상 드롭만. */
+            document.getElementById('iePlaceholder').onclick = e => {
+                e.stopPropagation();
+                fileInput.click();
+            };
 
             /* URL dialog */
             document.getElementById('ieUrlCancel').onclick = () => document.getElementById('ieUrlDialog').classList.remove('open');
             document.getElementById('ieUrlConfirm').onclick = () => {
                 const url = document.getElementById('ieUrlInput').value.trim();
                 if (!url) { Toolbox.showToast('URL을 입력하세요.', 'error'); return; }
-                loadImageFromSrc(url);
+                let disp = 'URL';
+                try {
+                    const u = new URL(url);
+                    const seg = u.pathname.split('/').filter(Boolean).pop();
+                    if (seg) disp = decodeURIComponent(seg);
+                } catch (_) {
+                    disp = url.length > 48 ? url.slice(0, 47) + '…' : url;
+                }
+                const g = ++ieImageLoadGen;
+                ieImageSourceMeta = {
+                    displayName: disp,
+                    sourceBytes: null,
+                    bytesKind: null,
+                    sourceNaturalW: null,
+                    sourceNaturalH: null,
+                    exifLines: null
+                };
+                loadImageFromSrc(url, g);
+                fetch(url, { mode: 'cors', credentials: 'omit' })
+                    .then(r => {
+                        if (g !== ieImageLoadGen || !r.ok) return null;
+                        return r.arrayBuffer();
+                    })
+                    .then(ab => {
+                        if (g !== ieImageLoadGen) return;
+                        if (!ab) {
+                            ieImageSourceMeta.exifLines = [];
+                        } else {
+                            ieImageSourceMeta.exifLines = ieExtractExifLinesFromArrayBuffer(ab) || [];
+                        }
+                        updateExifOverlay();
+                    })
+                    .catch(() => {
+                        if (g !== ieImageLoadGen) return;
+                        ieImageSourceMeta.exifLines = [];
+                        updateExifOverlay();
+                    });
                 document.getElementById('ieUrlDialog').classList.remove('open');
             };
             document.getElementById('ieUrlInput').onkeydown = (e) => {
@@ -2770,12 +4228,100 @@
             const wrap = document.getElementById('ieCanvasWrap');
             wrap.ondragover = (e) => { e.preventDefault(); wrap.classList.add('dragover'); };
             wrap.ondragleave = () => wrap.classList.remove('dragover');
-            wrap.ondrop = (e) => {
+            wrap.ondrop = e => {
                 e.preventDefault();
                 wrap.classList.remove('dragover');
-                const file = e.dataTransfer.files[0];
+                const dt = e.dataTransfer && e.dataTransfer.files;
+                if (!dt || !dt.length) return;
+                const list = Array.from(dt).filter(f => f.type.startsWith('image/'));
+                if (
+                    activeTool === 'convert' &&
+                    window.KarmoLabImageBatch &&
+                    list.length >= 2
+                ) {
+                    ieCvBatchState.files = list;
+                    syncIeCvBatchUiFromState();
+                    Toolbox.showToast(list.length + '개를 일괄 변환 목록에 넣었어요. 오른쪽에서 「일괄 변환 후 저장」을 누르세요.');
+                    return;
+                }
+                const file = list[0] || dt[0];
                 if (file) loadImageFromFile(file);
             };
+
+            applyImageViewTransform();
+
+            function onViewPanPointerDown(e) {
+                const page = document.getElementById('page-imageedit');
+                if (!page || !page.classList.contains('active')) return;
+                if (e.button === 1) e.preventDefault();
+                if (e.button !== 1 && !(e.button === 0 && viewSpaceDown)) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                viewDragging = true;
+                viewDragPointerId = e.pointerId;
+                viewDragStartClientX = e.clientX;
+                viewDragStartClientY = e.clientY;
+                viewStartPanX = viewPanX;
+                viewStartPanY = viewPanY;
+                wrap.classList.add('ie-view-grabbing');
+                wrap.classList.remove('ie-view-grab');
+                try {
+                    wrap.setPointerCapture(e.pointerId);
+                } catch (_) {}
+            }
+            function onViewPanPointerMove(e) {
+                if (!viewDragging || e.pointerId !== viewDragPointerId) return;
+                viewPanX = viewStartPanX + (e.clientX - viewDragStartClientX);
+                viewPanY = viewStartPanY + (e.clientY - viewDragStartClientY);
+                applyImageViewTransform();
+            }
+            function onViewPanPointerUp(e) {
+                if (!viewDragging || e.pointerId !== viewDragPointerId) return;
+                viewDragging = false;
+                try {
+                    wrap.releasePointerCapture(e.pointerId);
+                } catch (_) {}
+                wrap.classList.remove('ie-view-grabbing');
+                if (viewSpaceDown) wrap.classList.add('ie-view-grab');
+            }
+            wrap.addEventListener('pointerdown', onViewPanPointerDown, true);
+            wrap.addEventListener('pointermove', onViewPanPointerMove);
+            wrap.addEventListener('pointerup', onViewPanPointerUp);
+            wrap.addEventListener('pointercancel', onViewPanPointerUp);
+
+            wrap.addEventListener(
+                'wheel',
+                (e) => {
+                    const page = document.getElementById('page-imageedit');
+                    if (!page || !page.classList.contains('active')) return;
+                    if (!wrap.contains(e.target)) return;
+                    e.preventDefault();
+                    const rect = wrap.getBoundingClientRect();
+                    const cx = rect.width * 0.5;
+                    const cy = rect.height * 0.5;
+                    const mx = e.clientX - rect.left;
+                    const my = e.clientY - rect.top;
+                    let delta = e.deltaY;
+                    if (e.deltaMode === 1) delta *= 16;
+                    const factor = delta < 0 ? 1.08 : 1 / 1.08;
+                    let newZoom = viewZoom * factor;
+                    newZoom = Math.min(VIEW_ZOOM_MAX, Math.max(VIEW_ZOOM_MIN, newZoom));
+                    if (Math.abs(newZoom - viewZoom) < 1e-6) return;
+                    const wx = (mx - cx - viewPanX) / viewZoom;
+                    const wy = (my - cy - viewPanY) / viewZoom;
+                    viewPanX = mx - cx - wx * newZoom;
+                    viewPanY = my - cy - wy * newZoom;
+                    viewZoom = newZoom;
+                    applyImageViewTransform();
+                },
+                { passive: false }
+            );
+
+            window.addEventListener('blur', () => {
+                viewSpaceDown = false;
+                const w = document.getElementById('ieCanvasWrap');
+                if (w) w.classList.remove('ie-view-grab', 'ie-view-grabbing');
+            });
 
             /* Clipboard paste */
             document.addEventListener('paste', (e) => {
@@ -2796,9 +4342,24 @@
             document.addEventListener('keydown', (e) => {
                 const page = document.getElementById('page-imageedit');
                 if (!page || !page.classList.contains('active')) return;
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                const inField = !!e.target.closest(
+                    'a[href], button, input, textarea, select, [contenteditable="true"]'
+                );
+                if (e.code === 'Space' && !e.repeat && !inField) {
+                    viewSpaceDown = true;
+                    wrap.classList.add('ie-view-grab');
+                    e.preventDefault();
+                }
+                if (inField) return;
                 if (e.ctrlKey && e.key === 'z') { e.preventDefault(); undo(); }
                 if (e.ctrlKey && e.key === 'y') { e.preventDefault(); redo(); }
+            });
+            document.addEventListener('keyup', (e) => {
+                if (e.code !== 'Space') return;
+                viewSpaceDown = false;
+                const page = document.getElementById('page-imageedit');
+                if (!page || !page.classList.contains('active')) return;
+                wrap.classList.remove('ie-view-grab', 'ie-view-grabbing');
             });
 
             /* Crop pointer events */
@@ -2837,12 +4398,7 @@
 
     /* ===== Register ===== */
     Toolbox.register({
-        id: 'imageedit',
-        title: '이미지 편집',
-        category: 'tool',
-        desc: 'AI로 이미지를 편집·변형합니다',
-        layout: 'full',
-        icon: '<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 3v18" stroke="currentColor" stroke-width="1.5"/><path d="M3 15h18" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>',
+        ...Toolbox.getLazyWidgetPublicMeta('imageedit'),
         tabs: [{ id: 'imageedit-main', label: '편집', build: buildEditor }]
     });
 })();
