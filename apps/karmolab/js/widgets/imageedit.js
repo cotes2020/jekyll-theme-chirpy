@@ -483,7 +483,12 @@
     let activeTool = 'crop';
     let cropState = null;
     let cropAspect = null;
-    let adjustValues = { brightness: 100, contrast: 100, saturate: 100, hue: 0 };
+    let adjustValues = { brightness: 100, contrast: 100, saturate: 100, hue: 0, sharpen: 0 };
+    /** 조정 도구 진입 시점의 픽셀 (선명도 실시간 미리보기·취소 시 복원용) */
+    let adjustSnapshot = null;
+    let adjustPreviewRaf = 0;
+    let ieAdjSrcCanvas = null;
+    let ieAdjOffCanvas = null;
     let jpegQuality = 0.92;
     let freeRotateDeg = 0;
     let hasPendingPreview = false;
@@ -1368,15 +1373,16 @@
     }
 
     function buildAdjustOptions(container) {
-        adjustValues = { brightness: 100, contrast: 100, saturate: 100, hue: 0 };
+        adjustValues = { brightness: 100, contrast: 100, saturate: 100, hue: 0, sharpen: 0 };
         const sliders = [
             { id: 'brightness', label: '밝기', min: 0, max: 200, val: 100, unit: '%' },
             { id: 'contrast', label: '대비', min: 0, max: 200, val: 100, unit: '%' },
             { id: 'saturate', label: '채도', min: 0, max: 200, val: 100, unit: '%' },
             { id: 'hue', label: '색조', min: -180, max: 180, val: 0, unit: '°' },
+            { id: 'sharpen', label: '선명도', min: 0, max: 120, val: 0, unit: '' },
         ];
         container.innerHTML = sliders.map(s => `
-            <span class="ie-opt-label">${s.label}</span>
+            <span class="ie-opt-label">${s.label}${s.suffix || ''}</span>
             <input type="range" class="ie-opt-range" id="ieAdj_${s.id}" min="${s.min}" max="${s.max}" value="${s.val}">
             <span class="ie-opt-range-val" id="ieAdjVal_${s.id}">${s.val}${s.unit}</span>
         `).join('') + '<button class="ie-opt-btn" id="ieAdjReset">초기화</button><button class="ie-apply-btn" id="ieAdjApply">적용</button>';
@@ -1386,7 +1392,7 @@
                 const range = document.getElementById('ieAdj_' + s.id);
                 const valEl = document.getElementById('ieAdjVal_' + s.id);
                 range.oninput = () => {
-                    adjustValues[s.id] = parseInt(range.value);
+                    adjustValues[s.id] = parseInt(range.value, 10);
                     valEl.textContent = range.value + s.unit;
                     previewAdjust();
                 };
@@ -1400,7 +1406,32 @@
                 previewAdjust();
             };
             document.getElementById('ieAdjApply').onclick = applyAdjust;
+            captureAdjustSnapshot();
+            previewAdjust();
         });
+    }
+
+    function cloneImageData(id) {
+        return new ImageData(new Uint8ClampedArray(id.data), id.width, id.height);
+    }
+
+    function captureAdjustSnapshot() {
+        if (!canvas || !ctx || !hasImage()) {
+            adjustSnapshot = null;
+            return;
+        }
+        adjustSnapshot = cloneImageData(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    }
+
+    function ensureIeAdjWorkCanvases(w, h) {
+        if (!ieAdjSrcCanvas) {
+            ieAdjSrcCanvas = document.createElement('canvas');
+            ieAdjOffCanvas = document.createElement('canvas');
+        }
+        if (ieAdjSrcCanvas.width !== w || ieAdjSrcCanvas.height !== h) {
+            ieAdjSrcCanvas.width = ieAdjOffCanvas.width = w;
+            ieAdjSrcCanvas.height = ieAdjOffCanvas.height = h;
+        }
     }
 
     const FILTERS = [
@@ -1467,18 +1498,102 @@
         return s;
     }
 
+    /** 인접 4방 라플라시안 계열 샤프닝 (브라우저 전용, strength 0–120) */
+    function sharpenImageData(srcData, strength) {
+        const w = srcData.width;
+        const h = srcData.height;
+        if (strength <= 0 || w < 3 || h < 3) return srcData;
+        const src = srcData.data;
+        const out = new ImageData(w, h);
+        const dst = out.data;
+        const k = Math.min(1.2, strength / 90);
+        const center = 1 + 4 * k;
+        const edge = -k;
+        const row = w * 4;
+        for (let y = 0; y < h; y++) {
+            for (let x = 0; x < w; x++) {
+                const i = (y * w + x) * 4;
+                if (y === 0 || y === h - 1 || x === 0 || x === w - 1) {
+                    dst[i] = src[i];
+                    dst[i + 1] = src[i + 1];
+                    dst[i + 2] = src[i + 2];
+                    dst[i + 3] = src[i + 3];
+                    continue;
+                }
+                for (let c = 0; c < 3; c++) {
+                    const sum =
+                        edge * (src[i - 4 + c] + src[i + 4 + c] + src[i - row + c] + src[i + row + c]) +
+                        center * src[i + c];
+                    dst[i + c] = sum < 0 ? 0 : sum > 255 ? 255 : sum | 0;
+                }
+                dst[i + 3] = src[i + 3];
+            }
+        }
+        return out;
+    }
+
+    function isAdjustPending() {
+        const v = adjustValues;
+        return (
+            v.brightness !== 100 ||
+            v.contrast !== 100 ||
+            v.saturate !== 100 ||
+            v.hue !== 0 ||
+            v.sharpen !== 0
+        );
+    }
+
+    function runAdjustPreview() {
+        if (!canvas || !ctx) return;
+        if (!adjustSnapshot) {
+            canvas.style.filter = buildAdjustFilterStr();
+            hasPendingPreview = isAdjustPending();
+            return;
+        }
+        if (adjustValues.sharpen === 0) {
+            ctx.putImageData(adjustSnapshot, 0, 0);
+            canvas.style.filter = buildAdjustFilterStr();
+        } else {
+            canvas.style.filter = '';
+            const w = canvas.width;
+            const h = canvas.height;
+            ensureIeAdjWorkCanvases(w, h);
+            const sctx = ieAdjSrcCanvas.getContext('2d');
+            const offCtx = ieAdjOffCanvas.getContext('2d');
+            sctx.putImageData(adjustSnapshot, 0, 0);
+            offCtx.filter = buildAdjustFilterStr();
+            offCtx.drawImage(ieAdjSrcCanvas, 0, 0);
+            let id = offCtx.getImageData(0, 0, w, h);
+            id = sharpenImageData(id, adjustValues.sharpen);
+            ctx.putImageData(id, 0, 0);
+        }
+        hasPendingPreview = isAdjustPending();
+    }
+
     function previewAdjust() {
         if (!canvas) return;
-        canvas.style.filter = buildAdjustFilterStr();
-        hasPendingPreview = true;
+        if (adjustPreviewRaf) cancelAnimationFrame(adjustPreviewRaf);
+        adjustPreviewRaf = requestAnimationFrame(() => {
+            adjustPreviewRaf = 0;
+            runAdjustPreview();
+        });
     }
 
     function applyAdjust() {
         if (!requireImage()) return;
-        applyCanvasFilter(buildAdjustFilterStr());
+        if (!isAdjustPending()) {
+            Toolbox.showToast('변경된 항목이 없습니다.', 'info');
+            return;
+        }
+        if (adjustValues.sharpen === 0) {
+            applyCanvasFilter(buildAdjustFilterStr());
+        } else {
+            pushHistory();
+        }
         canvas.style.filter = '';
         hasPendingPreview = false;
-        adjustValues = { brightness: 100, contrast: 100, saturate: 100, hue: 0 };
+        adjustValues = { brightness: 100, contrast: 100, saturate: 100, hue: 0, sharpen: 0 };
+        captureAdjustSnapshot();
         Toolbox.showToast('조정 적용 완료');
     }
 
@@ -1611,7 +1726,8 @@
             { id: 'brush',  label: '🖌️ 브러시' },
             { id: 'ai',     label: '🤖 AI (ONNX)' },
             { id: 'gemini', label: '✨ Gemini' },
-            { id: 'bgg',    label: '배경색' }
+            { id: 'bgg',    label: '배경색' },
+            { id: 'upscale', label: '✨ 업스케일' }
         ];
         container.innerHTML = `
             <div class="ie-options-stack" style="width:100%;display:flex;flex-direction:column;gap:8px;">
@@ -1643,6 +1759,7 @@
             case 'ai':     buildAiBody(body); break;
             case 'gemini': buildGeminiBody(body); break;
             case 'bgg':    buildBggBody(body); break;
+            case 'upscale': buildUpscaleBody(body); break;
         }
     }
 
@@ -2107,6 +2224,176 @@
             cleanupOverlay(ui);
             Toolbox.showToast('Gemini 실패: ' + (e.message || e), 'error');
             Mdd.setMood('sad'); Mdd.say('Gemini 실패했어요...');
+        }
+    }
+
+    function geminiNearestAspectRatio(w, h) {
+        const r = w / Math.max(h, 1);
+        const pairs = [
+            ['1:1', 1],
+            ['2:3', 2 / 3],
+            ['3:2', 3 / 2],
+            ['3:4', 3 / 4],
+            ['4:3', 4 / 3],
+            ['9:16', 9 / 16],
+            ['16:9', 16 / 9]
+        ];
+        let best = '1:1';
+        let bestDiff = Infinity;
+        pairs.forEach(([name, v]) => {
+            const d = Math.abs(Math.log(r / v));
+            if (d < bestDiff) {
+                bestDiff = d;
+                best = name;
+            }
+        });
+        return best;
+    }
+
+    /* ===== Mode 4b — Gemini 업스케일 ===== */
+    let upscaleBusy = false;
+
+    function buildUpscaleBody(body) {
+        const hasKey = !!Gemini.getApiKey();
+        body.innerHTML = `
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;width:100%;">
+                <span class="ie-opt-label">배율</span>
+                <select class="ie-opt-input" id="ieUpscaleFactor" style="width:auto;">
+                    <option value="2">2×</option>
+                    <option value="4">4×</option>
+                </select>
+                <button type="button" class="ie-opt-btn" id="ieUpscaleLocal">⚡ 로컬 확대</button>
+                <span class="ie-toolbar-sep"></span>
+                <span class="ie-opt-label">모델 (AI)</span>
+                <select class="ie-opt-input" id="ieUpscaleModel" style="width:auto;">
+                    ${Gemini.MODELS.geminiImage.map(m => `<option value="${m.id}">${m.name}</option>`).join('')}
+                </select>
+                <button type="button" class="ie-apply-btn" id="ieUpscaleApply" ${hasKey ? '' : 'disabled'}>✨ AI 업스케일</button>
+            </div>
+            <span class="ie-opt-label ie-rembg-note">${hasKey ? '✅ API 키 설정됨' : '⚠️ API 키 필요 (홈 > 사용자 설정)'}</span>
+            <div style="font-size:var(--font-size-xs);opacity:0.85;max-width:600px;line-height:1.45;">
+                <strong>로컬</strong> — 브라우저 2D 보간(고품질)으로만 키웁니다. API·네트워크 없음. 원래 없던 선명한 디테일은 생기지 않고, 덜 뭉개져 보일 수 있습니다. Real-ESRGAN 같은 초해상도 신경망은 별도 모델(WASM 등)이 필요해 여기서는 넣지 않았습니다.<br>
+                <strong>AI</strong> — Nano Banana에 보내 디테일을 “추정”해 키웁니다. 긴 변 최대 약 1536px로 줄여 요청하고, 결과를 위 배율 크기에 맞춥니다.
+            </div>`;
+        requestAnimationFrame(() => {
+            document.getElementById('ieUpscaleLocal').onclick = applyLocalUpscale;
+            document.getElementById('ieUpscaleApply').onclick = applyGeminiUpscale;
+        });
+    }
+
+    /** 보간만 사용하는 업스케일 (서버·API 없음). 초해상도(Real-ESRGAN 등)와는 다릅니다. */
+    function applyLocalUpscale() {
+        if (!requireImage()) return;
+        if (upscaleBusy) { Toolbox.showToast('이미 처리 중입니다.', 'error'); return; }
+        const factor = parseInt(document.getElementById('ieUpscaleFactor')?.value || '2', 10);
+        if (factor !== 2 && factor !== 4) return;
+        const origW = canvas.width;
+        const origH = canvas.height;
+        const maxOut = 8192;
+        if (origW * factor > maxOut || origH * factor > maxOut) {
+            Toolbox.showToast(`로컬 확대 결과가 한 변 ${maxOut}px를 넘습니다. 캔버스를 줄이거나 배율을 낮춰 주세요.`, 'error');
+            return;
+        }
+        const tw = origW * factor;
+        const th = origH * factor;
+        const off = document.createElement('canvas');
+        off.width = tw;
+        off.height = th;
+        const o = off.getContext('2d');
+        o.imageSmoothingEnabled = true;
+        o.imageSmoothingQuality = 'high';
+        o.drawImage(canvas, 0, 0, tw, th);
+        canvas.width = tw;
+        canvas.height = th;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(off, 0, 0, tw, th);
+        pushHistory();
+        updateSizeLabel();
+        Toolbox.showToast(`${factor}× 로컬 확대 완료`);
+        Mdd.setMood('happy');
+        Mdd.say('로컬에서 키웠어요!');
+    }
+
+    async function applyGeminiUpscale() {
+        if (!requireImage()) return;
+        if (!Gemini.requireApiKey()) return;
+        if (upscaleBusy) { Toolbox.showToast('이미 처리 중입니다.', 'error'); return; }
+
+        const factor = parseInt(document.getElementById('ieUpscaleFactor')?.value || '2', 10);
+        if (factor !== 2 && factor !== 4) return;
+
+        const origW = canvas.width;
+        const origH = canvas.height;
+        const maxOut = 4096;
+        if (origW * factor > maxOut || origH * factor > maxOut) {
+            Toolbox.showToast(`결과 한 변이 ${maxOut}px를 넘습니다. 캔버스를 줄이거나 배율을 낮춰 주세요.`, 'error');
+            return;
+        }
+
+        upscaleBusy = true;
+        const ui = showRembgOverlay();
+        const stEl = () => document.getElementById('ieRembgStatus');
+        const targetW = origW * factor;
+        const targetH = origH * factor;
+
+        try {
+            if (stEl()) stEl().textContent = '이미지 준비 중...';
+            const maxSide = 1536;
+            let dw = origW, dh = origH;
+            const longest = Math.max(dw, dh);
+            if (longest > maxSide) {
+                const sc = maxSide / longest;
+                dw = Math.round(dw * sc);
+                dh = Math.round(dh * sc);
+            }
+            const tmp = document.createElement('canvas');
+            tmp.width = dw;
+            tmp.height = dh;
+            tmp.getContext('2d').drawImage(canvas, 0, 0, dw, dh);
+            const base64 = tmp.toDataURL('image/png').split(',')[1];
+
+            const modelId = document.getElementById('ieUpscaleModel')?.value || Gemini.MODELS.geminiImage[0].id;
+            const ar = geminiNearestAspectRatio(dw, dh);
+            const multText = factor === 4 ? 'four times' : 'two times';
+            const prompt =
+                `Upscale this image to approximately ${multText} the width and height (${factor}× resolution). ` +
+                'Preserve the same composition, subjects, colors, and overall scene. ' +
+                'Enhance fine detail and sharpness naturally without adding new objects, people, or text. ' +
+                'Do not crop or reframe. Output a single PNG image.';
+
+            if (stEl()) stEl().textContent = 'Gemini 업스케일 요청 중...';
+            const result = await Gemini.callGeminiImage(prompt, modelId, {
+                referenceImage: base64,
+                aspectRatio: ar
+            });
+            if (!result?.dataUrl) throw new Error('이미지 응답이 없습니다.');
+
+            if (stEl()) stEl().textContent = '결과 적용 중...';
+            const img = new Image();
+            await new Promise((ok, no) => { img.onload = ok; img.onerror = no; img.src = result.dataUrl; });
+
+            canvas.width = targetW;
+            canvas.height = targetH;
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.clearRect(0, 0, targetW, targetH);
+            ctx.drawImage(img, 0, 0, targetW, targetH);
+
+            pushHistory();
+            updateSizeLabel();
+            cleanupOverlay(ui);
+            Toolbox.showToast(`${factor}× AI 업스케일 완료`);
+            Mdd.setMood('cheer');
+            Mdd.say('이미지 키워줬어요!');
+        } catch (e) {
+            console.error('Gemini upscale error:', e);
+            cleanupOverlay(ui);
+            Toolbox.showToast('업스케일 실패: ' + (e.message || e), 'error');
+            Mdd.setMood('sad');
+            Mdd.say('업스케일 실패했어요...');
+        } finally {
+            upscaleBusy = false;
         }
     }
 
@@ -3813,6 +4100,9 @@
     function selectTool(toolId) {
         if (hasPendingPreview && toolId !== activeTool) {
             if (!confirm('적용하지 않은 변경사항이 있습니다. 무시하고 전환하시겠습니까?')) return;
+            if (activeTool === 'adjust' && adjustSnapshot && ctx) {
+                ctx.putImageData(adjustSnapshot, 0, 0);
+            }
         }
         if (ieCvBatchAbort) {
             try {
@@ -3825,6 +4115,13 @@
         }
         ieCvCloseLightbox();
         activeTool = toolId;
+        if (toolId !== 'adjust') {
+            if (adjustPreviewRaf) {
+                cancelAnimationFrame(adjustPreviewRaf);
+                adjustPreviewRaf = 0;
+            }
+            adjustSnapshot = null;
+        }
         canvas.style.filter = '';
         canvas.style.transform = '';
         hasPendingPreview = false;
@@ -3976,9 +4273,9 @@
                             <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
                             <span class="ie-tool-label">회전·뒤집기</span>
                         </button>
-                        <button type="button" class="ie-tool-btn" data-tool="adjust" title="밝기/대비/채도">
+                        <button type="button" class="ie-tool-btn" data-tool="adjust" title="밝기/대비/채도/선명도">
                             <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/></svg></span>
-                            <span class="ie-tool-label">밝기·대비·채도</span>
+                            <span class="ie-tool-label">밝기·대비·선명</span>
                         </button>
                         <button type="button" class="ie-tool-btn" data-tool="filter" title="필터">
                             <span class="ie-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span>
