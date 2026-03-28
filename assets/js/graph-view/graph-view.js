@@ -186,7 +186,10 @@ export async function createGraphView(options) {
   ro.observe(root);
 
   const mo = new MutationObserver(() => applyStyles());
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-mode'] });
+  mo.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-mode', 'data-theme']
+  });
 
   return {
     destroy() {
