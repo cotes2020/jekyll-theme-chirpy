@@ -61,6 +61,36 @@ class StockService {
         });
     }
 
+    /** 주식 차트 URL 생성 (QuickChart.io) */
+    getChartUrl(symbol) {
+        const stock = this.stocks[symbol];
+        if (!stock) return '';
+        if (!stock.priceHistory || stock.priceHistory.length === 0) stock.priceHistory = [stock.price];
+
+        const labels = stock.priceHistory.map((_, i) => `'${i + 1}m'`).join(',');
+        const data = stock.priceHistory.join(',');
+        const color = stock.price >= stock.previousPrice ? 'green' : 'red';
+
+        const config = `{
+            type: 'line',
+            data: {
+                labels: [${labels}],
+                datasets: [{
+                    label: '${stock.name}',
+                    data: [${data}],
+                    borderColor: '${color}',
+                    fill: false
+                }]
+            },
+            options: {
+                scales: { yAxes: [{ ticks: { beginAtZero: false } }] },
+                title: { display: true, text: '${stock.name} (${stock.symbol}) 차트' }
+            }
+        }`;
+
+        return `https://quickchart.io/chart?c=${encodeURIComponent(config)}`;
+    }
+
     /** 매수 */
     buy(userId, symbol, amount) {
         if (amount <= 0) return { ok: false, msg: '수량은 1개 이상이어야 합니다.' };

@@ -31,6 +31,15 @@ const commands = [
 
     // ── 주식 ──
     new SlashCommandBuilder().setName('주식목록').setDescription('현재 상장된 주식 시세를 확인합니다.'),
+    new SlashCommandBuilder().setName('주식차트').setDescription('특정 주식의 차트를 확인합니다.')
+        .addStringOption(opt => opt.setName('종목').setDescription('종목 심볼').setRequired(true)
+            .addChoices(
+                { name: '떡락전자 (SAMSUNG)', value: 'SAMSUNG' },
+                { name: '화성갈끄니까 (DOGE)', value: 'DOGE' },
+                { name: '테슬라 (TESLA)', value: 'TESLA' },
+                { name: '사과 (APPLE)', value: 'APPLE' },
+                { name: '비트코인 (BITCOIN)', value: 'BITCOIN' },
+            )),
     new SlashCommandBuilder().setName('매수').setDescription('주식을 매수합니다.')
         .addStringOption(opt => opt.setName('종목').setDescription('종목 심볼').setRequired(true)
             .addChoices(
