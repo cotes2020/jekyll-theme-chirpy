@@ -1,5 +1,7 @@
 use tauri::menu::{Menu, MenuItem};
-use tauri::tray::{MouseButton, TrayIconBuilder, TrayIconEvent};
+use tauri::tray::TrayIconBuilder;
+#[cfg(windows)]
+use tauri::tray::{MouseButton, TrayIconEvent};
 use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
 use tauri::Manager;
 use tauri::Url;
@@ -114,6 +116,7 @@ fn desktop_notify(
     let text = body.trim();
     let body_line = if text.is_empty() { "KarmoLab" } else { text };
 
+    #[cfg(windows)]
     let want_sound = match &sound {
         Some(s) => {
             let k = s.trim();
@@ -256,6 +259,8 @@ pub fn run() {
                                     let _ = w.set_focus();
                                 }
                             }
+                            #[cfg(not(windows))]
+                            let _ = (tray, event);
                         })
                         .build(app)?;
                 }
