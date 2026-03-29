@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Remote KarmoLab page does not use Tauri IPC; placeholder capability for main window.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}
