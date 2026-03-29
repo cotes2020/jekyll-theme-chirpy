@@ -70,7 +70,7 @@ window.KARMOLAB_LAZY_META = [
     {
         id: 'postgraph',
         title: '글 그래프',
-        category: 'tool',
+        category: null,
         desc: '블로그 포스트 간 내부 링크 관계를 그래프로 봅니다',
         layout: 'full',
         icon: '<circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="10.2" y1="10.2" x2="13.8" y2="13.8" stroke="currentColor" stroke-width="1.5"/>',

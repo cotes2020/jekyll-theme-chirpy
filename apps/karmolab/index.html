@@ -107,5 +107,13 @@ permalink: /karmolab/
     <script defer src="/apps/karmolab/js/widgets-lazy-meta.js"></script>
     <script defer src="/apps/karmolab/js/widgets-manifest.js"></script>
     <script defer src="/apps/karmolab/js/widgets-loader.js"></script>
+    {% if jekyll.environment == 'production' and site.pwa.enabled and site.pwa.cache.enabled %}
+    <!-- Chirpy SW는 루트(/sw.min.js)에 있으나 layout:none 페이지는 app.min.js를 쓰지 않아 등록되지 않았음 → 방문 시 동일 출처·허용 URL을 런타임 캐시(오프라인/앱용). -->
+    <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('{{ "/sw.min.js" | relative_url }}').catch(function () {});
+    }
+    </script>
+    {% endif %}
 </body>
 </html>
