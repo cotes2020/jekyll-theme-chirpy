@@ -45,6 +45,7 @@ npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 
   - `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`: 키에 비밀번호를 둔 경우
 - 키 생성 예: `npx tauri signer generate -w src-tauri/karmolab-updater.key` (로컬 전용으로 만든 키는 **백업**하세요). 저장소에는 비밀키를 올리지 마세요(`.gitignore`에 `src-tauri/karmolab-updater.key` 가 있습니다). 공개키 문자열을 바꾼 뒤에는 **이미 배포된 앱**과 맞지 않으면 업데이트가 실패하므로, 키 교체는 신중히 하세요.
 - `bundle.createUpdaterArtifacts` 가 켜져 있어 `tauri build` 시 업데이트용 시그니처 파일 등이 함께 생성됩니다. 예시 manifest 뼈대는 `updater/latest.json.example` 을 참고하세요.
+- **릴리스 체크리스트(버전·서명·Release·CI)** 는 KarmoLab 앱 **문서 → 로드맵** 탭(`apps/karmolab/js/widgets/docs/roadmap.md` 의 「Tauri 데스크톱 · 자동 업데이트」절)에 모아 두었습니다.
 
 ## 데스크톱 전용
 
