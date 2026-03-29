@@ -26,6 +26,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "createUpdaterArtifacts": true,
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -33,5 +34,16 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU4Njc4REEwQUQzQ0ZGRkYKUldULy96eXRvSTFuNktOVnIxZ0ZsV1hxTGF4MGlieWJGc3EydXhCR1c4aUYrUWxzYnRpVmNnMEsK",
+      "endpoints": [
+        "https://github.com/mascari4615/mascari4615.github.io/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
   }
 }

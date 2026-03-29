@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Tauri updater — private key must never be committed (pubkey lives in tauri.conf.json)
+src-tauri/karmolab-updater.key
+src-tauri/karmolab-updater.key.pub
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
