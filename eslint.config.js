@@ -3,7 +3,13 @@ import js from '@eslint/js';
 import globals from 'globals';
 
 export default defineConfig([
-  globalIgnores(['assets/*', 'node_modules/*', '_site/*']),
+  globalIgnores([
+    'assets/*',
+    'node_modules/*',
+    '_site/*',
+    // Own deps in apps/karmolab-react-src; root npm i does not install them.
+    'apps/karmolab-react-src/**',
+  ]),
   js.configs.recommended,
   {
     rules: {
