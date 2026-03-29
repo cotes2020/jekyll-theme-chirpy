@@ -1,5 +1,5 @@
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+// Hide the extra console window when launching the .exe on Windows (debug and release).
+#![cfg_attr(target_os = "windows", windows_subsystem = "windows")]
 
 fn main() {
     karmolab_desktop_lib::run()

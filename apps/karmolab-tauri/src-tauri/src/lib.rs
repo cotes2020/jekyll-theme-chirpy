@@ -1,11 +1,13 @@
 use tauri::menu::{Menu, MenuItem};
-use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
+use tauri::tray::{MouseButton, TrayIconBuilder, TrayIconEvent};
 use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
 use tauri::Manager;
 use tauri::Url;
 
 /// Injected before page scripts; KarmoLab reads `window.__KARMOLAB_DESKTOP__`.
 const INIT_DESKTOP: &str = r#"window.__KARMOLAB_DESKTOP__=!0;"#;
+
+const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
 
 fn allow_in_webview(url: &Url) -> bool {
     match url.scheme() {
@@ -29,6 +31,13 @@ fn allow_in_webview(url: &Url) -> bool {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
+            if let Some(w) = app.get_webview_window("main") {
+                let _ = w.unminimize();
+                let _ = w.show();
+                let _ = w.set_focus();
+            }
+        }))
         .setup(|app| {
             let window_conf = app
                 .config()
@@ -60,34 +69,41 @@ pub fn run() {
             {
                 let show_i =
                     MenuItem::with_id(app, "tray_show", "KarmoLab 창 보이기", true, None::<&str>)?;
+                let browser_i =
+                    MenuItem::with_id(app, "tray_browser", "브라우저에서 열기", true, None::<&str>)?;
                 let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
-                let menu = Menu::with_items(app, &[&show_i, &quit_i])?;
+                let menu = Menu::with_items(app, &[&show_i, &browser_i, &quit_i])?;
 
                 if let Some(icon) = app.default_window_icon().cloned() {
                     let _ = TrayIconBuilder::new()
                         .icon(icon)
                         .menu(&menu)
-                        .tooltip("KarmoLab")
-                        .show_menu_on_left_click(false)
+                        .tooltip("KarmoLab — 왼쪽 클릭: 메뉴 · Windows: 왼쪽 더블클릭: 창만")
+                        .show_menu_on_left_click(true)
                         .on_menu_event(|app, event| {
                             if event.id == "tray_show" {
                                 if let Some(w) = app.get_webview_window("main") {
+                                    let _ = w.unminimize();
                                     let _ = w.show();
                                     let _ = w.set_focus();
                                 }
+                            } else if event.id == "tray_browser" {
+                                let _ = open::that(KARMOLAB_WEB_URL);
                             } else if event.id == "tray_quit" {
                                 app.exit(0);
                             }
                         })
                         .on_tray_icon_event(|tray, event| {
-                            if let TrayIconEvent::Click {
+                            // Windows only: double-click tray to raise the window without opening the menu.
+                            #[cfg(windows)]
+                            if let TrayIconEvent::DoubleClick {
                                 button: MouseButton::Left,
-                                button_state: MouseButtonState::Up,
                                 ..
                             } = event
                             {
                                 let app = tray.app_handle();
                                 if let Some(w) = app.get_webview_window("main") {
+                                    let _ = w.unminimize();
                                     let _ = w.show();
                                     let _ = w.set_focus();
                                 }

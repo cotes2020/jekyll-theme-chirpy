@@ -510,6 +510,27 @@ html[data-bg="minimal"] body {
     gap: var(--space-sm);
 }
 
+.karmolab-desktop-chrome {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.karmolab-open-browser {
+    font-size: var(--font-size-2xs);
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    transition: color var(--transition), background var(--transition);
+}
+.karmolab-open-browser:hover {
+    color: var(--text-primary);
+    background: var(--accent-dim);
+}
+
 .karmolab-desktop-badge {
     font-size: var(--font-size-2xs);
     font-weight: 600;
