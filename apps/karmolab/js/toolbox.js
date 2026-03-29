@@ -224,6 +224,22 @@ const Toolbox = (() => {
         return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
     }
 
+    function mirrorToastToDesktop(msg, type, detailText) {
+        if (!isDesktopApp()) return;
+        if (type !== 'error' && type !== 'success') return;
+        if (type === 'success') {
+            const m = String(msg);
+            if (m.includes('클립보드') || m.includes('코드 테마')) return;
+        }
+        const invokeFn = window.__TAURI__?.core?.invoke;
+        if (typeof invokeFn !== 'function') return;
+        const title = String(msg).trim();
+        if (!title) return;
+        let body = typeof detailText === 'string' ? detailText.trim() : '';
+        if (body.length > 240) body = body.slice(0, 237) + '…';
+        invokeFn('desktop_notify', { title: title.slice(0, 120), body: body || 'KarmoLab' }).catch(function () {});
+    }
+
     function init() {
         const sidebarNav = document.getElementById('sidebar-nav');
         const mobileNav = document.getElementById('mobile-nav');
@@ -588,6 +604,7 @@ const Toolbox = (() => {
                 t.onclick = null;
                 t.style.pointerEvents = '';
             }, 5000);
+            mirrorToastToDesktop(msg, type, detailText);
         } else {
             t.textContent = msg;
             t.className = 'status-toast visible ' + type;
@@ -595,6 +612,7 @@ const Toolbox = (() => {
             t.style.pointerEvents = '';
             clearTimeout(t._toastHide);
             t._toastHide = setTimeout(() => t.classList.remove('visible'), 2500);
+            mirrorToastToDesktop(msg, type, '');
         }
     }
 
