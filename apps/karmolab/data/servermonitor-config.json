@@ -1,0 +1,26 @@
+{
+    "localMonitors": [
+        {
+            "id": "yawnbot",
+            "label": "YawnBot (8080)",
+            "url": "http://localhost:8080/webhook/github"
+        },
+        {
+            "id": "jekyll",
+            "label": "Jekyll Blog (4000)",
+            "url": "http://localhost:4000"
+        },
+        {
+            "id": "react",
+            "label": "React Dev (5173)",
+            "url": "http://localhost:5173"
+        }
+    ],
+    "remotePresets": [
+        {
+            "id": "main-api",
+            "label": "Main API Server",
+            "url": "https://yt-api.example.com"
+        }
+    ]
+}

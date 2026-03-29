@@ -60,46 +60,105 @@
         container.appendChild(btnRow);
         container.appendChild(statusBox);
 
+        async function pingLocal(url) {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000); // 2s timeout
+                // Use no-cors to check if the port is open without being blocked by CORS
+                await fetch(url, { mode: 'no-cors', signal: controller.signal, cache: 'no-cache' });
+                clearTimeout(timeoutId);
+                return 'online';
+            } catch (e) {
+                return 'offline';
+            }
+        }
+
+        async function loadConfig() {
+            const configPath = '/apps/karmolab/data/servermonitor-config.json';
+            try {
+                const res = await fetch(configPath, { cache: 'no-cache' });
+                if (!res.ok) throw new Error('설정 파일을 찾을 수 없습니다.');
+                return await res.json();
+            } catch (e) {
+                console.error('[ServerMonitor] 설정 로드 실패:', e.message);
+                return { localMonitors: [] };
+            }
+        }
+
         async function fetchStatus() {
             let base = (baseInput.value.trim() || (Toolbox.getPref && Toolbox.getPref(PREFS_KEY, ''))) || '';
             if (!base && Toolbox.getPref) base = Toolbox.getPref('ytdl_cobalt_base', '') || '';
-            if (!base) {
-                statusBox.innerHTML = '서버 URL을 입력하고 저장하세요. (유튜브 다운로드에서 설정한 URL이 있으면 자동 사용)';
-                statusBox.className = 'sm-status-box error';
-                return;
-            }
-            const url = base.replace(/\/$/, '');
+            
             statusBox.innerHTML = '조회 중...';
             statusBox.className = 'sm-status-box loading';
             refreshBtn.disabled = true;
 
             try {
-                const res = await fetch(url + '/api/status');
-                const data = await res.json().catch(() => ({}));
-                if (data.error) {
-                    statusBox.innerHTML = '오류: ' + data.error;
-                    statusBox.className = 'sm-status-box error';
-                    return;
+                // 0. Load Configuration from JSON
+                const config = await loadConfig();
+                const localTargets = config.localMonitors || [];
+
+                // 1. Check Local Servers
+                const localResults = await Promise.all(localTargets.map(async m => {
+                    const status = await pingLocal(m.url);
+                    return { ...m, status };
+                }));
+
+                // 2. Check Remote Server (if configured)
+                let remoteHtml = '';
+                if (base) {
+                    try {
+                        const url = base.replace(/\/$/, '');
+                        const res = await fetch(url + '/api/status');
+                        const data = await res.json().catch(() => ({}));
+                        
+                        if (data.error) {
+                            remoteHtml = `<div class="sm-row"><span style="color:var(--error)">원격 서버 오류: ${data.error}</span></div>`;
+                        } else {
+                            const m = data.memory || {};
+                            const d = data.disk || {};
+                            const svc = data.services || {};
+                            const ytStatus = svc['yt-api'] === 'ok' ? 'ok' : 'offline';
+                            const dcStatus = svc['discord-bot'] === 'running' ? 'running' : (svc['discord-bot'] === 'unknown' ? 'unknown' : 'offline');
+                            
+                            remoteHtml = `
+                                <div class="sm-row"><span>원격 서버</span><span style="color:var(--success)">● 온라인</span></div>
+                                <div class="sm-row"><span>CPU</span><span>${data.cpu}%</span></div>
+                                <div class="sm-row"><span>메모리</span><span>${m.used_gb}/${m.total_gb} GB (${m.percent}%)</span></div>
+                                <div class="sm-row"><span>디스크</span><span>${d.used_gb}/${d.total_gb} GB (${d.percent}%)</span></div>
+                                <div class="sm-row"><span>가동시간</span><span>${data.uptime || '-'}</span></div>
+                                <div class="sm-services">
+                                    <div class="sm-service ${ytStatus}"><strong>yt-api</strong><br>${ytStatus === 'ok' ? '정상' : '오프라인'}</div>
+                                    <div class="sm-service ${dcStatus}"><strong>봇 서버</strong><br>${dcStatus === 'running' ? '실행 중' : dcStatus === 'unknown' ? '확인 불가' : '오프라인'}</div>
+                                </div>
+                            `;
+                        }
+                    } catch (e) {
+                        remoteHtml = `<div class="sm-row"><span style="color:var(--error)">원격 연결 실패: ${e.message || 'Error'}</span></div>`;
+                    }
+                } else {
+                    remoteHtml = `<div class="sm-row"><span style="color:var(--text-tertiary)">원격 서버가 설정되지 않았습니다.</span></div>`;
                 }
-                const m = data.memory || {};
-                const d = data.disk || {};
-                const svc = data.services || {};
-                const ytStatus = svc['yt-api'] === 'ok' ? 'ok' : 'offline';
-                const dcStatus = svc['discord-bot'] === 'running' ? 'running' : (svc['discord-bot'] === 'unknown' ? 'unknown' : 'offline');
-                statusBox.innerHTML = `
-                    <div class="sm-row"><span>서버</span><span style="color:var(--success)">● 온라인</span></div>
-                    <div class="sm-row"><span>CPU</span><span>${data.cpu}%</span></div>
-                    <div class="sm-row"><span>메모리</span><span>${m.used_gb}/${m.total_gb} GB (${m.percent}%)</span></div>
-                    <div class="sm-row"><span>디스크</span><span>${d.used_gb}/${d.total_gb} GB (${d.percent}%)</span></div>
-                    <div class="sm-row"><span>가동시간</span><span>${data.uptime || '-'}</span></div>
-                    <div class="sm-services">
-                        <div class="sm-service ${ytStatus}"><strong>yt-api</strong><br>${ytStatus === 'ok' ? '정상' : '오프라인'}</div>
-                        <div class="sm-service ${dcStatus}"><strong>디스코드 봇</strong><br>${dcStatus === 'running' ? '실행 중' : dcStatus === 'unknown' ? '확인 불가' : '오프라인'}</div>
+
+                // 3. Render Status
+                const localHtml = localResults.map(r => `
+                    <div class="sm-row">
+                        <span>${r.label}</span>
+                        <span style="color:${r.status === 'online' ? 'var(--success)' : 'var(--error)'}">
+                            ● ${r.status === 'online' ? 'Run' : 'Down'}
+                        </span>
                     </div>
+                `).join('');
+
+                statusBox.innerHTML = `
+                    <div style="font-weight:700; margin-bottom:10px; color:var(--accent)">내 컴퓨터 서버 상태</div>
+                    ${localHtml}
+                    <div style="font-weight:700; margin-top:20px; margin-bottom:10px; color:var(--accent)">원격 서버 상태</div>
+                    ${remoteHtml}
                 `;
                 statusBox.className = 'sm-status-box';
             } catch (e) {
-                statusBox.innerHTML = '연결 실패: ' + (e.message || '서버에 연결할 수 없습니다.');
+                statusBox.innerHTML = '조회 실패: ' + (e.message || '알 수 없는 오류');
                 statusBox.className = 'sm-status-box error';
             } finally {
                 refreshBtn.disabled = false;
