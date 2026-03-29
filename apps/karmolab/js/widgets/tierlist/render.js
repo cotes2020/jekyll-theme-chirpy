@@ -430,7 +430,7 @@
         <div class="tl-list-section">
             <h3 class="tl-list-section-title">후보 풀</h3>
             <p class="tl-list-section-desc">
-                <strong>카탈로그</strong>와 <strong>Karmo 순위</strong>는 <code>data/tierlists/index.json</code>에 등록된 JSON입니다.
+                <strong>카탈로그</strong>와 <strong>Karmo 순위</strong>는 저장소 기준 <code>apps/karmolab/data/tierlists/index.json</code>에 등록된 JSON입니다(배포 시 자동으로 불러옵니다).
                 <strong>로컬 후보 풀</strong> 카드를 누르면 그 주제로 <strong>새 순위 인스턴스</strong>가 만들어져 편집 탭으로 이동합니다.
             </p>
             <div class="tl-embed-grids">

@@ -4,12 +4,34 @@
     let publishedIndexCache = null;
     const publishedJsonCache = new Map();
 
+    /**
+     * 티어리스트 JSON(index·카탈로그)이 놓인 디렉터리 URL(끝에 슬래시 없음).
+     * Jekyll: 앱은 permalink로 /karmolab/ 이지만 data 는 /apps/karmolab/data/ 에 그대로 출력됨.
+     * 로컬 file://·/apps/karmolab/index.html 은 현재 문서 기준 디렉터리로 폴백.
+     */
+    function karmolabPublishedDataRoot() {
+        const { origin, pathname } = location;
+        const p = pathname.replace(/\/index\.html?$/i, '') || '/';
+        if (p === '/karmolab' || p.startsWith('/karmolab/')) {
+            return `${origin}/apps/karmolab`;
+        }
+        if (p.startsWith('/apps/karmolab')) {
+            return `${origin}/apps/karmolab`;
+        }
+        return new URL('.', location.href).href.replace(/\/?$/, '');
+    }
+
     function publishedIndexUrl() {
-        return new URL('data/tierlists/index.json', location.href).toString();
+        const root = karmolabPublishedDataRoot();
+        return new URL('data/tierlists/index.json', `${root}/`).toString();
     }
 
     function resolvePublishedUrl(url) {
-        return new URL(url, location.href).toString();
+        const s = String(url || '').trim();
+        if (!s) return s;
+        if (/^https?:\/\//i.test(s)) return s;
+        const root = karmolabPublishedDataRoot();
+        return new URL(s, `${root}/`).toString();
     }
 
     async function getPublishedIndex() {
