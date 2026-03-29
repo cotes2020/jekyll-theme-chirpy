@@ -913,9 +913,18 @@ const Toolbox = (() => {
     function getUserData() {
         try {
             const raw = localStorage.getItem(USER_DATA_KEY);
-            if (raw) return JSON.parse(raw);
+            if (raw) {
+                const data = JSON.parse(raw);
+                if (!data.streaks || typeof data.streaks !== 'object') data.streaks = {};
+                return data;
+            }
         } catch (_) {}
-        return { achievements: [], badges: [], progress: {} };
+        return { achievements: [], badges: [], progress: {}, streaks: {} };
+    }
+
+    function getStreaks() {
+        const data = getUserData();
+        return (data.streaks && typeof data.streaks === 'object') ? data.streaks : {};
     }
 
     function saveUserData(data) {
@@ -980,7 +989,7 @@ const Toolbox = (() => {
         getTheme, setTheme, toggleTheme,
         getBgTheme, setBgTheme, getBgThemes,
         getPrismTheme, setPrismTheme, getPrismThemes: () => [...PRISM_THEMES],
-        getUserData, getProgress, setProgress, incrementProgress,
+        getUserData, getStreaks, getProgress, setProgress, incrementProgress,
         completeAchievement, unlockBadge, hasAchievement, hasBadge,
         registerAchievement, registerBadge,
         getAchievementRegistry: () => ({ ...ACHIEVEMENT_REGISTRY }),
