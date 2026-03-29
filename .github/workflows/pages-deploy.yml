@@ -53,8 +53,13 @@ jobs:
           node-version: '20'
           cache: npm
 
-      - name: Build post graph data
-        run: npm ci && npm run build:graph
+      - name: Build KarmoLab React App
+        working-directory: apps/karmolab-react-src
+        run: |
+          npm ci
+          npm run build
+        env:
+          VITE_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"

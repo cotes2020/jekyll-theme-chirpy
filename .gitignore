@@ -16,6 +16,24 @@ node_modules
 
 # IDE configurations
 .idea
+# Bundler cache
+.bundle
+vendor
+Gemfile.lock
+
+# Jekyll cache
+.jekyll-cache
+.jekyll-metadata
+_site
+
+# RubyGems
+*.gem
+
+# NPM dependencies
+node_modules
+
+# IDE configurations
+.idea
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
@@ -27,3 +45,11 @@ node_modules
 .env.*
 !.env.example
 !.env.template
+
+# Build artifacts
+apps/karmolab/react-dist/
+_site/
+.jekyll-cache/
+.jekyll-metadata/
+node_modules/
+vendor/

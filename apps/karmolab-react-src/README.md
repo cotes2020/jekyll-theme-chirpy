@@ -7,9 +7,18 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## 🚀 Deployment & GitHub Secrets
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This app is automatically built and deployed to GitHub Pages via GitHub Actions. 
+
+### Setting up Google Client ID
+
+Since the `.env` file is not committed to the repository for security, you must set up a **GitHub Secret** for the production build to work:
+
+1.  Go to your GitHub Repository **Settings**.
+2.  Select **Secrets and variables** > **Actions** [Direct Link](https://github.com/Mascari4615/Mascari4615.github.io/settings/secrets/actions).
+3.  Add a **New repository secret** named `GOOGLE_CLIENT_ID`.
+4.  Paste your client ID from your local `.env` file.
 
 ## Expanding the ESLint configuration
 
