@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "identifier": "com.mascari4615.karmolab",
   "build": {
-    "devUrl": "https://mascari4615.github.io/karmolab/",
+    "devUrl": "http://127.0.0.1:4000/karmolab/",
     "frontendDist": "https://mascari4615.github.io/karmolab/"
   },
   "app": {

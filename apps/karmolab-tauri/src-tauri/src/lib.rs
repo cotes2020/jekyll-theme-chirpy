@@ -5,34 +5,18 @@ use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
 
+#[cfg(windows)]
+#[link(name = "user32")]
+extern "system" {
+    /// MB_ICONASTERISK — 토스트 무음일 때 청각 피드백용.
+    fn MessageBeep(u_type: u32) -> i32;
+}
+
 const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
 
-/// `window.__KARMOLAB_DESKTOP__` + WebView가 오래된 `toolbox.js`를 캐시해도 디버그 위젯이 빠지지 않도록
-/// `apps/karmolab/js/widgets/devtools.js`를 바이너리에 넣어 `Toolbox.init` 직전에 실행합니다.
-fn karmolab_desktop_init_script() -> String {
-    fn escape_js_string_literal(s: &str) -> String {
-        let mut out = String::with_capacity(s.len() + 16);
-        out.push('"');
-        for c in s.chars() {
-            match c {
-                '\\' => out.push_str("\\\\"),
-                '"' => out.push_str("\\\""),
-                '\n' => out.push_str("\\n"),
-                '\r' => out.push_str("\\r"),
-                '\0' => out.push_str("\\0"),
-                c => out.push(c),
-            }
-        }
-        out.push('"');
-        out
-    }
-
-    let devtools = include_str!("../../../../apps/karmolab/js/widgets/devtools.js");
-    let lit = escape_js_string_literal(devtools);
-    format!(
-        r#"window.__KARMOLAB_DESKTOP__=!0;(function(){{function k(){{if(typeof Toolbox==='undefined'||!Toolbox.init||Toolbox.__karmolabDevtoolsInjected)return;Toolbox.__karmolabDevtoolsInjected=1;var i=Toolbox.init;Toolbox.init=function(){{try{{if(typeof Toolbox.getTools==='function'&&!Toolbox.getTools().some(function(t){{return t.id==='devtools'}})){{var n=document.createElement('script');n.textContent={lit};document.documentElement.appendChild(n);n.remove();}}}}catch(e){{}}return i.apply(this,arguments)}}}}document.addEventListener('DOMContentLoaded',k);k();setTimeout(k,0)}})();"#,
-        lit = lit
-    )
+/// 데스크톱 앱 플래그만 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
+fn karmolab_desktop_init_script() -> &'static str {
+    r#"window.__KARMOLAB_DESKTOP__=!0;window.__karmolabSetNotifyInvokeDebug=function(){};"#
 }
 
 fn allow_in_webview(url: &Url) -> bool {
@@ -54,20 +38,94 @@ fn allow_in_webview(url: &Url) -> bool {
     }
 }
 
+#[cfg(target_os = "windows")]
+fn winrt_notification_sound_token(raw: &str) -> &'static str {
+    match raw.trim().to_ascii_lowercase().as_str() {
+        "default" | "im" => "IM",
+        "mail" => "Mail",
+        "sms" => "SMS",
+        "reminder" => "Reminder",
+        "alarm" => "Alarm",
+        "alarm2" => "Alarm2",
+        "alarm3" => "Alarm3",
+        "alarm4" => "Alarm4",
+        "alarm5" => "Alarm5",
+        "alarm6" => "Alarm6",
+        "alarm7" => "Alarm7",
+        "alarm8" => "Alarm8",
+        "alarm9" => "Alarm9",
+        "alarm10" => "Alarm10",
+        "call" => "Call",
+        "call2" => "Call2",
+        "call3" => "Call3",
+        "call4" => "Call4",
+        "call5" => "Call5",
+        "call6" => "Call6",
+        "call7" => "Call7",
+        "call8" => "Call8",
+        "call9" => "Call9",
+        "call10" => "Call10",
+        _ => "Mail",
+    }
+}
+
 #[tauri::command]
-fn desktop_notify(title: String, body: String) -> Result<(), String> {
+fn desktop_notify(
+    title: String,
+    body: String,
+    sound: Option<String>,
+    image_path: Option<String>,
+) -> Result<(), String> {
     let summary = title.trim();
     if summary.is_empty() {
         return Ok(());
     }
     let text = body.trim();
     let body_line = if text.is_empty() { "KarmoLab" } else { text };
-    notify_rust::Notification::new()
-        .summary(summary)
-        .body(body_line)
-        .appname("KarmoLab")
-        .show()
-        .map_err(|e| e.to_string())?;
+
+    let want_sound = match &sound {
+        Some(s) => {
+            let k = s.trim();
+            !k.is_empty() && !k.eq_ignore_ascii_case("silent")
+        }
+        None => false,
+    };
+
+    let mut n = notify_rust::Notification::new();
+    n.summary(summary).body(body_line).appname("KarmoLab");
+
+    if let Some(ref path) = image_path {
+        let t = path.trim();
+        if !t.is_empty() {
+            n.image_path(t);
+        }
+    }
+
+    if let Some(ref s) = sound {
+        let key = s.trim();
+        if !key.is_empty() && !key.eq_ignore_ascii_case("silent") {
+            #[cfg(target_os = "windows")]
+            {
+                // WinRT는 대소문자까지 맞아야 파싱됨; 실패 시 .ok() → 무음.
+                // `Default`는 빈 <audio>라 무음이므로 IM으로 돌림.
+                n.sound_name(winrt_notification_sound_token(key));
+            }
+            #[cfg(not(target_os = "windows"))]
+            {
+                n.sound_name(key);
+            }
+        }
+    }
+
+    n.show().map_err(|e| e.to_string())?;
+
+    #[cfg(windows)]
+    if want_sound {
+        unsafe {
+            let _ = MessageBeep(0x0000_0040);
+        }
+    }
+
     Ok(())
 }
 

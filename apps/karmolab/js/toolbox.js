@@ -197,27 +197,44 @@ const Toolbox = (() => {
         return rest;
     }
 
+    function setNotifyInvokeDebugPayload(payload) {
+        if (typeof window.__karmolabSetNotifyInvokeDebug === 'function') {
+            window.__karmolabSetNotifyInvokeDebug(payload);
+            return;
+        }
+        try {
+            const pre = document.getElementById('karmolab-notify-debug-pre');
+            const sum = document.querySelector('.karmolab-notify-debug-summary');
+            const det = document.querySelector('.karmolab-notify-debug');
+            const line = JSON.stringify(payload);
+            if (pre) pre.textContent = JSON.stringify(payload, null, 2);
+            if (sum) sum.textContent = line.length > 100 ? line.slice(0, 97) + '…' : line;
+            if (det) det.open = true;
+        } catch (_) {}
+    }
+
     function injectDesktopBadge() {
         if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
         const left = document.querySelector('.header-bar-left');
-        if (!left || left.querySelector('.karmolab-desktop-chrome')) return;
-        const row = document.createElement('span');
-        row.className = 'karmolab-desktop-chrome';
-        row.setAttribute('aria-label', '데스크톱 앱 모드');
-        const span = document.createElement('span');
-        span.className = 'karmolab-desktop-badge';
-        span.textContent = '앱';
-        span.title = 'Tauri 데스크톱 앱에서 실행 중입니다. 웹에서는 이 배지가 보이지 않습니다.';
-        const browserA = document.createElement('a');
-        browserA.className = 'karmolab-open-browser';
-        browserA.href = 'https://mascari4615.github.io/karmolab/';
-        browserA.target = '_blank';
-        browserA.rel = 'noopener noreferrer';
-        browserA.textContent = '브라우저';
-        browserA.title = '기본 브라우저에서 KarmoLab 열기';
-        row.appendChild(span);
-        row.appendChild(browserA);
-        left.appendChild(row);
+        if (left && !left.querySelector('.karmolab-desktop-chrome')) {
+            const row = document.createElement('span');
+            row.className = 'karmolab-desktop-chrome';
+            row.setAttribute('aria-label', '데스크톱 앱 모드');
+            const span = document.createElement('span');
+            span.className = 'karmolab-desktop-badge';
+            span.textContent = '앱';
+            span.title = 'Tauri 데스크톱 앱에서 실행 중입니다. 웹에서는 이 배지가 보이지 않습니다.';
+            const browserA = document.createElement('a');
+            browserA.className = 'karmolab-open-browser';
+            browserA.href = 'https://mascari4615.github.io/karmolab/';
+            browserA.target = '_blank';
+            browserA.rel = 'noopener noreferrer';
+            browserA.textContent = '브라우저';
+            browserA.title = '기본 브라우저에서 KarmoLab 열기';
+            row.appendChild(span);
+            row.appendChild(browserA);
+            left.appendChild(row);
+        }
     }
 
     function isDesktopApp() {
@@ -237,7 +254,10 @@ const Toolbox = (() => {
         if (!title) return;
         let body = typeof detailText === 'string' ? detailText.trim() : '';
         if (body.length > 240) body = body.slice(0, 237) + '…';
-        invokeFn('desktop_notify', { title: title.slice(0, 120), body: body || 'KarmoLab' }).catch(function () {});
+        const payload = { title: title.slice(0, 120), body: body || 'KarmoLab' };
+        if (type === 'error') payload.sound = 'Mail';
+        setNotifyInvokeDebugPayload(payload);
+        invokeFn('desktop_notify', payload).catch(function () {});
     }
 
     function init() {
