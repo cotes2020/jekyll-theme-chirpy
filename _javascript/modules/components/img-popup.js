@@ -8,7 +8,7 @@ const lightImages = '.popup:not(.dark)';
 const darkImages = '.popup:not(.light)';
 let selector = lightImages;
 
-function updateImages(current, reverse) {
+function swapImages(current, reverse) {
   if (selector === lightImages) {
     selector = darkImages;
   } else {
@@ -19,7 +19,7 @@ function updateImages(current, reverse) {
     reverse = GLightbox({ selector: `${selector}` });
   }
 
-  [current, reverse] = [reverse, current];
+  return [reverse, current];
 }
 
 export function imgPopup() {
@@ -43,7 +43,7 @@ export function imgPopup() {
 
     window.addEventListener('message', (event) => {
       if (event.source === window && event.data && event.data.id === Theme.ID) {
-        updateImages(current, reverse);
+        [current, reverse] = swapImages(current, reverse);
       }
     });
   }

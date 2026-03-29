@@ -127,7 +127,7 @@ header {
 
 .share-mastodon {
   /* See: https://github.com/justinribeiro/share-to-mastodon#properties */
-  --wc-stm-font-family: v.$font-family-base;
+  --wc-stm-font-family: #{v.$font-family-base};
   --wc-stm-dialog-background-color: var(--card-bg);
   --wc-stm-form-button-border: 1px solid var(--btn-border-color);
   --wc-stm-form-submit-background-color: var(--sidebar-btn-bg);

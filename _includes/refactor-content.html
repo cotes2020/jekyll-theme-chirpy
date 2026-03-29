@@ -165,7 +165,7 @@
 
     {% if page.layout == 'home' or page.layout == 'works' %}
       <!-- create the image wrapper -->
-      {% assign _wrapper_start = '<div class="preview-img ' | append: _class | append: '">' %}
+      {% assign _wrapper_start = '<div class="preview-img ' | append: _wrapper_class | append: '">' %}
 
       {% assign _img_content = _img_content | append: _wrapper_start %}
       {% assign _right = _right | prepend: '></div' %}
@@ -175,7 +175,7 @@
       {% assign _parent = _right | slice: 1, 4 %}
 
       {% if _parent == '</a>' %}
-        <!-- add class to exist <a> tag -->
+        <!-- add class to existing <a> tag -->
         {% assign _size = _img_content | size | minus: 1 %}
         {% capture _class %}
           class="img-link{% unless _lqip %} shimmer{% endunless %}"

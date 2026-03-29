@@ -45,7 +45,7 @@ permalink: /feed.xml
     {% endfor %}
   {% endif %}
 
-  <summary>{% include post-description.html max_length=400 %}</summary>
+  <summary>{% include post-summary.html max_length=400 %}</summary>
 
   </entry>
 {% endfor %}

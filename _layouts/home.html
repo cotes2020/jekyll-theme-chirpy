@@ -1,6 +1,5 @@
 ---
 layout: default
-refactor: true
 ---
 
 {% include lang.html %}
@@ -55,19 +54,39 @@ refactor: true
 
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
-          {% capture src %}{% include media-url.html src=src subpath=post.media_subpath %}{% endcapture %}
+
+          {% if post.media_subpath %}
+            {% unless src contains '://' %}
+              {% assign src = post.media_subpath
+                | append: '/'
+                | append: src
+                | replace: '///', '/'
+                | replace: '//', '/'
+              %}
+            {% endunless %}
+          {% endif %}
+
+          {% if post.image.lqip %}
+            {% assign lqip = post.image.lqip %}
+
+            {% if post.media_subpath %}
+              {% unless lqip contains 'data:' %}
+                {% assign lqip = post.media_subpath
+                  | append: '/'
+                  | append: lqip
+                  | replace: '///', '/'
+                  | replace: '//', '/'
+                %}
+              {% endunless %}
+            {% endif %}
+
+            {% assign lqip_attr = 'lqip="' | append: lqip | append: '"' %}
+          {% endif %}
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
-          {% assign lqip = null %}
-
-          {% if post.image.lqip %}
-            {% capture lqip_url %}{% include media-url.html src=post.image.lqip subpath=post.media_subpath %}{% endcapture %}
-            {% assign lqip = 'lqip="' | append: lqip_url | append: '"' %}
-          {% endif %}
-
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            <img src="{{ src }}" alt="{{ alt }}" {{ lqip_attr }}>
           </div>
 
           {% assign card_body_col = '7' %}
@@ -78,7 +97,7 @@ refactor: true
             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
 
             <div class="card-text content mt-0 mb-3">
-              <p>{% include post-description.html %}</p>
+              <p>{% include post-summary.html %}</p>
             </div>
 
             <div class="post-meta flex-grow-1 d-flex align-items-end">

@@ -53,3 +53,10 @@ _site/
 .jekyll-metadata/
 node_modules/
 vendor/
+_sass/vendors
+assets/js/dist
+
+# Hidden system files
+*~
+.DS_Store
+Thumbs.db
