@@ -6,6 +6,8 @@ order: 88
 
 포스트 본문에 있는 **내부 링크**(`/posts/…`)만 모아 관계를 그립니다. 데이터는 `npm run build:graph`로 `post-graph.json`을 갱신합니다.
 
+UI·상호작용 개념 참고: [Obsidian 그래프 뷰(플러그인 도움말)](https://obsidian.md/ko/help/plugins/graph)
+
 <div
   id="post-graph-root"
   class="post-graph-root"
