@@ -4,10 +4,10 @@
  */
 require('dotenv').config();
 
-const { Client, GatewayIntentBits, EmbedBuilder, Collection } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder, Collection, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const express = require('express');
 
-const { GameDataService, formatMoney, getLevelColor, getWeaponLore } = require('./services/gamedata');
+const { GameDataService, formatMoney, getLevelColor, getWeaponLore, getRandomImage } = require('./services/gamedata');
 const { EnhancementService } = require('./services/enhancement');
 const { StockService } = require('./services/stock');
 const { RaidService } = require('./services/raid');
@@ -85,9 +85,181 @@ async function handleMeme(message) {
 }
 
 /* ══════════════════════════════════════
-   커맨드 핸들러
+   공용 상호작용 및 커맨드 핸들러
    ══════════════════════════════════════ */
+async function showHelpPage(interaction, pageIndex, isUpdate = false) {
+    const pages = [
+        { title: gameData.getMessage('Help_Basic_Title'), desc: gameData.getMessage('Help_Basic_Desc'), content: gameData.getMessage('Help_Basic_Content') },
+        { title: gameData.getMessage('Help_MiniGame_Title'), desc: gameData.getMessage('Help_MiniGame_Desc'), content: gameData.getMessage('Help_MiniGame_Content') },
+        { title: gameData.getMessage('Help_Stock_Title'), desc: gameData.getMessage('Help_Stock_Desc'), content: gameData.getMessage('Help_Stock_Content') },
+        { title: gameData.getMessage('Help_Raid_Title'), desc: gameData.getMessage('Help_Raid_Desc'), content: gameData.getMessage('Help_Raid_Content') }
+    ];
+    if (pageIndex < 0) pageIndex = 0;
+    if (pageIndex >= pages.length) pageIndex = pages.length - 1;
+    const page = pages[pageIndex];
+
+    const embed = new EmbedBuilder()
+        .setTitle(gameData.getMessage('General_Help_Title', pageIndex + 1, pages.length))
+        .setDescription(page.desc)
+        .addFields({ name: page.title, value: page.content })
+        .setColor(0x7C4DFF);
+
+    const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId(`help_page:${pageIndex - 1}`).setLabel('이전').setStyle(ButtonStyle.Primary).setDisabled(pageIndex === 0),
+        new ButtonBuilder().setCustomId(`help_page:${pageIndex + 1}`).setLabel('다음').setStyle(ButtonStyle.Primary).setDisabled(pageIndex === pages.length - 1)
+    );
+
+    const payload = { embeds: [embed], components: [row] };
+    if (isUpdate) await interaction.update(payload);
+    else await interaction.reply(payload);
+}
+
+async function handleEnhance(interaction, userId, userName, isUpdate = false) {
+    const r = enhancement.enhance(userId);
+    const embed = new EmbedBuilder();
+    let attachment = null;
+
+    const rowPrimary = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('enhance_retry').setLabel('다시 강화하기').setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('sell_sword').setLabel('판매하기').setStyle(ButtonStyle.Secondary)
+    );
+    const rowFail = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('enhance_retry').setLabel('다시 강화하기').setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('consolation').setLabel('위로(놀림)').setStyle(ButtonStyle.Secondary)
+    );
+
+    let components = [];
+
+    if (r.type === 'max') {
+        embed.setTitle(gameData.getMessage('Enhance_MaxLevel_Title'))
+            .setDescription(gameData.getMessage('Enhance_MaxLevel_Desc'))
+            .setColor(0xFFD700);
+    } else if (r.type === 'no_money') {
+        embed.setTitle(gameData.getMessage('Enhance_NoMoney_Title'))
+            .addFields(
+                { name: gameData.getMessage('Enhance_NoMoney_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_NoMoney_Balance'), value: `${formatMoney(r.balance)}원`, inline: true },
+            ).setColor(0xF44336);
+    } else if (r.type === 'great_success') {
+        embed.setTitle(gameData.getMessage('Enhance_GreatSuccess_Title'))
+            .setDescription(gameData.getMessage('Enhance_GreatSuccess_Desc', `<@${userId}>`, r.sword.name, r.oldLevel, r.newLevel))
+            .addFields(
+                { name: gameData.getMessage('Enhance_Increase'), value: `+${r.increase}강`, inline: true },
+                { name: gameData.getMessage('Enhance_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*"${r.chat}"*` }
+            ).setColor(0xFFD700);
+        if (r.lore) embed.addFields({ name: gameData.getMessage('Enhance_Lore'), value: `*${r.lore}*` });
+        attachment = getImageAttachment(r.sword.imageName);
+        components = [rowPrimary];
+    } else if (r.type === 'success') {
+        embed.setTitle(gameData.getMessage('Enhance_Success_Title'))
+            .setDescription(gameData.getMessage('Enhance_Success_Desc', `<@${userId}>`, r.sword.name, r.oldLevel, r.newLevel))
+            .addFields(
+                { name: gameData.getMessage('Enhance_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*"${r.chat}"*` }
+            ).setColor(0x4CAF50);
+        if (r.lore) embed.addFields({ name: gameData.getMessage('Enhance_Lore'), value: `*${r.lore}*` });
+        attachment = getImageAttachment(r.sword.imageName);
+        components = [rowPrimary];
+    } else if (r.type === 'protected') {
+        embed.setTitle(gameData.getMessage('Enhance_Fail_Protected_Title'))
+            .setDescription(gameData.getMessage('Enhance_Fail_Protected_Desc', `<@${userId}>`, r.level, r.sword.name))
+            .addFields(
+                { name: gameData.getMessage('Enhance_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*"${r.chat}"*` }
+            ).setColor(0x00BCD4);
+        attachment = getImageAttachment(r.imageOverride);
+        components = [rowPrimary];
+    } else if (r.type === 'destroy') {
+        embed.setTitle(gameData.getMessage('Enhance_Fail_Title'))
+            .setDescription(gameData.getMessage('Enhance_Fail_Desc', `<@${userId}>`, r.sword.name))
+            .addFields(
+                { name: gameData.getMessage('Enhance_Fail_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
+                { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*"${r.chat}"*` }
+            ).setColor(0xF44336);
+        attachment = getImageAttachment(r.imageOverride);
+        components = [rowFail];
+    }
+    
+    const payload = { embeds: [embed], components };
+    if (attachment) {
+        embed.setThumbnail(`attachment://${attachment.name}`);
+        payload.files = [attachment.file];
+    }
+    if (isUpdate) await interaction.update(payload);
+    else await interaction.reply(payload);
+}
+
+async function handleSell(interaction, userId, isUpdate = false) {
+    const r = enhancement.sell(userId);
+    const embed = new EmbedBuilder();
+    let components = [];
+    if (r.type === 'no_sword') {
+        embed.setTitle(gameData.getMessage('Sell_NoSword_Title'))
+            .setDescription(gameData.getMessage('Sell_NoSword_Desc')).setColor(0xF44336);
+    } else {
+        embed.setTitle(gameData.getMessage('Sell_Complete_Title'))
+            .setDescription(gameData.getMessage('Sell_Complete_Desc', formatMoney(r.finalPrice)))
+            .addFields(
+                { name: gameData.getMessage('Sell_BasePrice'), value: `${formatMoney(r.basePrice)}원`, inline: true },
+                { name: gameData.getMessage('Sell_FinalPrice'), value: `${formatMoney(r.finalPrice)}원`, inline: true },
+                { name: gameData.getMessage('Sell_Blacksmith_Eval'), value: `*"${r.comment}"*` },
+                { name: gameData.getMessage('Sell_CurrentBalance'), value: `${formatMoney(r.balance)}원` },
+            ).setColor(0x4CAF50);
+        components = [new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('enhance_retry').setLabel('강화하기').setStyle(ButtonStyle.Primary))];
+    }
+    const payload = { embeds: [embed], components };
+    if (isUpdate) await interaction.update(payload);
+    else await interaction.reply(payload);
+}
+
 client.on('interactionCreate', async interaction => {
+    if (interaction.isButton()) {
+        const customId = interaction.customId;
+        const userId = interaction.user.id;
+        const userName = interaction.user.displayName || interaction.user.username;
+
+        try {
+            if (customId.startsWith('help_page:')) {
+                const pageIndex = parseInt(customId.split(':')[1], 10);
+                await showHelpPage(interaction, pageIndex, true);
+                return;
+            }
+
+            if (customId === 'consolation') {
+                const imageName = getRandomImage('위로(놀림)_');
+                const wImg = getImageAttachment(imageName);
+                const embed = new EmbedBuilder()
+                    .setTitle(gameData.getMessage('Consolation_Title'))
+                    .setDescription(gameData.getMessage('Consolation_Desc', `<@${userId}>`))
+                    .setColor(0xFF00FF);
+                let payload = { embeds: [embed] };
+                if (wImg) Object.assign(payload, { files: [wImg.file], embeds: [embed.setImage(`attachment://${wImg.name}`)] });
+
+                await interaction.channel.send(payload);
+                await interaction.deferUpdate();
+                return;
+            }
+
+            if (customId === 'enhance_retry') {
+                await handleEnhance(interaction, userId, userName, true);
+                return;
+            }
+            if (customId === 'sell_sword') {
+                await handleSell(interaction, userId, true);
+                return;
+            }
+        } catch (err) {
+            console.error('[Button Error]', err);
+            await interaction.reply({ content: '오류가 발생했습니다.', ephemeral: true }).catch(() => {});
+        }
+        return;
+    }
+
     if (!interaction.isChatInputCommand()) return;
 
     const userId = interaction.user.id;
@@ -108,103 +280,19 @@ client.on('interactionCreate', async interaction => {
 
         /* ── 도움말 ── */
         case '도움말': {
-            const embed = new EmbedBuilder()
-                .setTitle('📚 YawnBot 도움말')
-                .setColor(0x7C4DFF)
-                .addFields(
-                    { name: gameData.getMessage('Help_Basic_Title'), value: gameData.getMessage('Help_Basic_Content') },
-                    { name: gameData.getMessage('Help_MiniGame_Title'), value: gameData.getMessage('Help_MiniGame_Content') },
-                    { name: gameData.getMessage('Help_Stock_Title'), value: gameData.getMessage('Help_Stock_Content') },
-                    { name: gameData.getMessage('Help_Raid_Title'), value: gameData.getMessage('Help_Raid_Content') },
-                );
-            await interaction.reply({ embeds: [embed] });
+            await showHelpPage(interaction, 0);
             break;
         }
 
         /* ── 강화 ── */
         case '강화': {
-            const r = enhancement.enhance(userId);
-            const embed = new EmbedBuilder();
-            let attachment = null;
-
-            if (r.type === 'max') {
-                embed.setTitle(gameData.getMessage('Enhance_MaxLevel_Title'))
-                    .setDescription(gameData.getMessage('Enhance_MaxLevel_Desc'))
-                    .setColor(0xFFD700);
-            } else if (r.type === 'no_money') {
-                embed.setTitle(gameData.getMessage('Enhance_NoMoney_Title'))
-                    .addFields(
-                        { name: gameData.getMessage('Enhance_NoMoney_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_NoMoney_Balance'), value: `${formatMoney(r.balance)}원`, inline: true },
-                    ).setColor(0xF44336);
-            } else if (r.type === 'great_success') {
-                embed.setTitle(gameData.getMessage('Enhance_GreatSuccess_Title'))
-                    .setDescription(gameData.getMessage('Enhance_GreatSuccess_Desc', userName, r.sword.name, r.oldLevel, r.newLevel))
-                    .addFields(
-                        { name: gameData.getMessage('Enhance_Increase'), value: `+${r.increase}강`, inline: true },
-                        { name: gameData.getMessage('Enhance_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*${r.chat}*` },
-                    ).setColor(0xFFD700);
-                if (r.lore) embed.addFields({ name: gameData.getMessage('Enhance_Lore'), value: `*${r.lore}*` });
-                attachment = getImageAttachment(r.sword.imageName);
-            } else if (r.type === 'success') {
-                embed.setTitle(gameData.getMessage('Enhance_Success_Title'))
-                    .setDescription(gameData.getMessage('Enhance_Success_Desc', userName, r.sword.name, r.oldLevel, r.newLevel))
-                    .addFields(
-                        { name: gameData.getMessage('Enhance_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*${r.chat}*` },
-                    ).setColor(0x4CAF50);
-                if (r.lore) embed.addFields({ name: gameData.getMessage('Enhance_Lore'), value: `*${r.lore}*` });
-                attachment = getImageAttachment(r.sword.imageName);
-            } else if (r.type === 'protected') {
-                embed.setTitle(gameData.getMessage('Enhance_Fail_Protected_Title'))
-                    .setDescription(gameData.getMessage('Enhance_Fail_Protected_Desc', userName, r.level, r.sword.name))
-                    .addFields(
-                        { name: gameData.getMessage('Enhance_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*${r.chat}*` },
-                    ).setColor(0x00BCD4);
-                attachment = getImageAttachment(r.imageOverride);
-            } else if (r.type === 'destroy') {
-                embed.setTitle(gameData.getMessage('Enhance_Fail_Title'))
-                    .setDescription(gameData.getMessage('Enhance_Fail_Desc', userName, r.sword.name))
-                    .addFields(
-                        { name: gameData.getMessage('Enhance_Fail_Cost'), value: `${formatMoney(r.cost)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_RemainingBalance'), value: `${formatMoney(r.balance)}원`, inline: true },
-                        { name: gameData.getMessage('Enhance_Blacksmith_Comment'), value: `*${r.chat}*` },
-                    ).setColor(0xF44336);
-                attachment = getImageAttachment(r.imageOverride);
-            }
-            
-            const payload = { embeds: [embed] };
-            if (attachment) {
-                embed.setThumbnail(`attachment://${attachment.name}`);
-                payload.files = [attachment.file];
-            }
-            await interaction.reply(payload);
+            await handleEnhance(interaction, userId, userName);
             break;
         }
 
         /* ── 판매 ── */
         case '판매': {
-            const r = enhancement.sell(userId);
-            const embed = new EmbedBuilder();
-            if (r.type === 'no_sword') {
-                embed.setTitle(gameData.getMessage('Sell_NoSword_Title'))
-                    .setDescription(gameData.getMessage('Sell_NoSword_Desc')).setColor(0xF44336);
-            } else {
-                embed.setTitle(gameData.getMessage('Sell_Complete_Title'))
-                    .setDescription(gameData.getMessage('Sell_Complete_Desc', r.finalPrice))
-                    .addFields(
-                        { name: gameData.getMessage('Sell_BasePrice'), value: `${formatMoney(r.basePrice)}원`, inline: true },
-                        { name: gameData.getMessage('Sell_FinalPrice'), value: `${formatMoney(r.finalPrice)}원`, inline: true },
-                        { name: gameData.getMessage('Sell_Blacksmith_Eval'), value: `*${r.comment}*` },
-                        { name: gameData.getMessage('Sell_CurrentBalance'), value: `${formatMoney(r.balance)}원` },
-                    ).setColor(0x4CAF50);
-            }
-            await interaction.reply({ embeds: [embed] });
+            await handleSell(interaction, userId);
             break;
         }
 
@@ -417,6 +505,19 @@ client.on('interactionCreate', async interaction => {
             break;
         }
 
+        /* ── 주식차트 ── */
+        case '주식차트': {
+            const symbol = interaction.options.getString('종목');
+            const url = stock.getChartUrl(symbol);
+            if (!url) { await interaction.reply({ content: '존재하지 않는 종목입니다.', ephemeral: true }); break; }
+            const embed = new EmbedBuilder()
+                .setTitle(`📈 ${symbol.toUpperCase()} 차트`)
+                .setImage(url)
+                .setColor(0x00BCD4);
+            await interaction.reply({ embeds: [embed] });
+            break;
+        }
+
         /* ── 매수 ── */
         case '매수': {
             const symbol = interaction.options.getString('종목');
@@ -625,7 +726,7 @@ app.post('/webhook/github', async (req, res) => {
 });
 
 /* ── Bot Ready ── */
-client.once('ready', async () => {
+client.once('clientReady', async () => {
     console.log(`\n  ⚔️  YawnBot (Node.js)`);
     console.log(`  ─────────────────────────`);
     console.log(`  로그인: ${client.user.tag}`);
@@ -634,6 +735,17 @@ client.once('ready', async () => {
     console.log('');
 
     stock.startMarket();
+
+    // 서버 시작 알림 (Webhook Channel)
+    const channelId = process.env.GITHUB_WEBHOOK_CHANNEL_ID;
+    if (channelId) {
+        const channel = await client.channels.fetch(channelId).catch(() => null);
+        if (channel && channel.isTextBased()) {
+            const version = process.env.npm_package_version || '1.0.0';
+            const greeting = gameData.getMessage('Server_Startup_Greeting', version);
+            await channel.send(greeting).catch(e => console.error('[Startup] 인사 메시지 전송 실패:', e.message));
+        }
+    }
 });
 
 /* ── 시작 ── */
