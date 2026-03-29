@@ -11,6 +11,7 @@
     "withGlobalTauri": false,
     "windows": [
       {
+        "create": false,
         "label": "main",
         "title": "KarmoLab",
         "width": 1100,

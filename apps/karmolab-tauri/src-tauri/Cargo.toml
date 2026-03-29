@@ -13,5 +13,6 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
+open = "5"
 tauri = { version = "2", features = [] }
 
