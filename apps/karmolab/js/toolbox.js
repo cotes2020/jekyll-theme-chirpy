@@ -197,6 +197,21 @@ const Toolbox = (() => {
         return rest;
     }
 
+    function injectDesktopBadge() {
+        if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
+        const left = document.querySelector('.header-bar-left');
+        if (!left || left.querySelector('.karmolab-desktop-badge')) return;
+        const span = document.createElement('span');
+        span.className = 'karmolab-desktop-badge';
+        span.textContent = '앱';
+        span.title = 'Tauri 데스크톱 앱에서 실행 중입니다. 웹에서는 이 배지가 보이지 않습니다.';
+        left.appendChild(span);
+    }
+
+    function isDesktopApp() {
+        return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
+    }
+
     function init() {
         const sidebarNav = document.getElementById('sidebar-nav');
         const mobileNav = document.getElementById('mobile-nav');
@@ -320,6 +335,8 @@ const Toolbox = (() => {
         });
 
         document.getElementById('sidebar')?.classList.add('collapsed');
+
+        injectDesktopBadge();
 
         const serverDot = document.getElementById('server-status-dot');
         if (serverDot && typeof getServerBase === 'function') {
@@ -903,6 +920,7 @@ const Toolbox = (() => {
 
     return {
         register, registerDeferred, init, initTheme, switchPage, switchTab, toggleSidebar, getTools,
+        isDesktopApp,
         kickLazyLoad, getLazyWidgetPublicMeta,
         showToast, displayResult, copyResult, toggleCollapsible,
         field, resultBox, button, select,

@@ -510,6 +510,18 @@ html[data-bg="minimal"] body {
     gap: var(--space-sm);
 }
 
+.karmolab-desktop-badge {
+    font-size: var(--font-size-2xs);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    color: var(--secondary);
+    background: var(--secondary-subtle);
+    border: 1px solid color-mix(in srgb, var(--secondary) 35%, transparent);
+    user-select: none;
+}
+
 .header-logo {
     font-size: var(--font-size-sm);
     font-weight: 700;
