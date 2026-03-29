@@ -197,20 +197,23 @@ function CalendarList({
   );
 }
 
-// --- Event Creation Modal ---
-function EventCreateModal({ modal, calendars, onClose, onSave }: {
-  modal: CreateModal;
+// --- Event Modal (Create & Edit) ---
+function EventModal({ modal, event, calendars, onClose, onSave }: {
+  modal?: CreateModal;
+  event?: CalendarEvent;
   calendars: GoogleCalendar[];
   onClose: () => void;
-  onSave: (title: string, start: Date, end: Date, allDay: boolean, calendarId: string) => void;
+  onSave: (title: string, start: Date, end: Date, allDay: boolean, calendarId: string, eventId?: string) => void;
 }) {
-  const [title, setTitle] = useState('');
-  const [startStr, setStartStr] = useState(format(modal.start, "yyyy-MM-dd'T'HH:mm"));
-  const [endStr, setEndStr] = useState(format(modal.end, "yyyy-MM-dd'T'HH:mm"));
-  const [allDay, setAllDay] = useState(modal.allDay);
-  const [startDate, setStartDate] = useState(format(modal.start, 'yyyy-MM-dd'));
-  const [calendarId, setCalendarId] = useState('primary');
+  const isEdit = !!event;
+  const [title, setTitle] = useState(event?.title || '');
+  const [startStr, setStartStr] = useState(format(event?.start || modal?.start || new Date(), "yyyy-MM-dd'T'HH:mm"));
+  const [endStr, setEndStr] = useState(format(event?.end || modal?.end || addHours(new Date(), 1), "yyyy-MM-dd'T'HH:mm"));
+  const [allDay, setAllDay] = useState(event?.allDay || modal?.allDay || false);
+  const [startDate, setStartDate] = useState(format(event?.start || modal?.start || new Date(), 'yyyy-MM-dd'));
+  const [calendarId, setCalendarId] = useState(event?.resource.calendarId || 'primary');
   const inputRef = useRef<HTMLInputElement>(null);
+  
   useEffect(() => { inputRef.current?.focus(); }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -224,14 +227,14 @@ function EventCreateModal({ modal, calendars, onClose, onSave }: {
       start = new Date(startStr);
       end = new Date(endStr);
     }
-    onSave(title.trim(), start, end, allDay, calendarId);
+    onSave(title.trim(), start, end, allDay, calendarId, event?.resource.id);
   };
 
   return (
     <div className="cal-modal-overlay" onClick={onClose}>
       <div className="cal-modal" onClick={e => e.stopPropagation()}>
         <div className="cal-modal-header">
-          <h3 className="cal-modal-title">새 일정</h3>
+          <h3 className="cal-modal-title">{isEdit ? '일정 수정' : '새 일정'}</h3>
           <button className="cal-modal-close" onClick={onClose}>✕</button>
         </div>
         <form onSubmit={handleSubmit} className="cal-modal-body">
@@ -246,7 +249,7 @@ function EventCreateModal({ modal, calendars, onClose, onSave }: {
           {calendars.length > 1 && (
             <div className="cal-modal-field">
               <label className="cal-modal-label">캘린더</label>
-              <select className="cal-modal-input" value={calendarId} onChange={e => setCalendarId(e.target.value)}>
+              <select className="cal-modal-input" value={calendarId} disabled={isEdit} onChange={e => setCalendarId(e.target.value)}>
                 {calendars.map(c => <option key={c.id} value={c.id}>{c.summary}</option>)}
               </select>
             </div>
@@ -283,9 +286,10 @@ function EventCreateModal({ modal, calendars, onClose, onSave }: {
 }
 
 // --- Event Popover ---
-function EventPopoverUI({ popover, onClose, onDelete }: {
+function EventPopoverUI({ popover, onClose, onEdit, onDelete }: {
   popover: EventPopover;
   onClose: () => void;
+  onEdit: (event: CalendarEvent) => void;
   onDelete: (event: CalendarEvent) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -317,14 +321,16 @@ function EventPopoverUI({ popover, onClose, onDelete }: {
         <div className="cal-popover-cal">📅 {event.calendarName}</div>
       )}
       <div className="cal-popover-actions">
+        <button className="btn btn-ghost cal-popover-btn" onClick={() => onEdit(event)}>기본 수정</button>
         <a href={event.resource.htmlLink} target="_blank" rel="noopener noreferrer" className="btn btn-ghost cal-popover-btn">
-          Google에서 열기 ↗
+          Google ↗
         </a>
         <button className="btn btn-danger cal-popover-btn" onClick={() => onDelete(event)}>삭제</button>
       </div>
     </div>
   );
 }
+
 
 // --- Main CalendarView ---
 export function CalendarView({ accessToken }: CalendarViewProps) {
@@ -335,6 +341,7 @@ export function CalendarView({ accessToken }: CalendarViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [currentView, setCurrentView] = useState<View>(Views.WEEK);
   const [createModal, setCreateModal] = useState<CreateModal | null>(null);
+  const [editingEvent, setEditingEvent] = useState<CalendarEvent | null>(null);
   const [popover, setPopover] = useState<EventPopover | null>(null);
 
   const fetchCalendars = useCallback(async () => {
@@ -445,15 +452,20 @@ export function CalendarView({ accessToken }: CalendarViewProps) {
     setCreateModal({ start: slotInfo.start, end, allDay: isAllDay });
   };
 
-  const handleSaveEvent = async (title: string, start: Date, end: Date, allDay: boolean, calId: string) => {
+  const handleSaveEvent = async (title: string, start: Date, end: Date, allDay: boolean, calId: string, eventId?: string) => {
     setCreateModal(null);
+    setEditingEvent(null);
     try {
       // For all-day events, end date must be +1 for Google API
       const payload = allDay
         ? { summary: title, start: { date: format(start, 'yyyy-MM-dd') }, end: { date: format(addHours(end, 24), 'yyyy-MM-dd') } }
         : { summary: title, start: { dateTime: start.toISOString() }, end: { dateTime: end.toISOString() } };
-      await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events`, {
-        method: 'POST',
+      const url = eventId 
+        ? `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events/${eventId}`
+        : `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events`;
+      
+      await fetch(url, {
+        method: eventId ? 'PATCH' : 'POST',
         headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
@@ -467,7 +479,13 @@ export function CalendarView({ accessToken }: CalendarViewProps) {
     const ce = event as CalendarEvent;
     const rect = (e.target as HTMLElement).getBoundingClientRect();
     setCreateModal(null);
+    setEditingEvent(null);
     setPopover({ event: ce, x: rect.left, y: rect.bottom + 8 });
+  };
+
+  const handleEditEvent = (event: CalendarEvent) => {
+    setPopover(null);
+    setEditingEvent(event);
   };
 
   const handleDeleteEvent = async (event: CalendarEvent) => {
@@ -507,7 +525,7 @@ export function CalendarView({ accessToken }: CalendarViewProps) {
       <div className="calendar-sidebar">
         <button
           className="cal-create-btn"
-          onClick={() => setCreateModal({ start: new Date(), end: addHours(new Date(), 1), allDay: false })}
+          onClick={() => { setEditingEvent(null); setCreateModal({ start: new Date(), end: addHours(new Date(), 1), allDay: false }); }}
         >
           + 만들기
         </button>
@@ -555,11 +573,12 @@ export function CalendarView({ accessToken }: CalendarViewProps) {
         />
       </div>
 
-      {createModal && (
-        <EventCreateModal
-          modal={createModal}
+      {(createModal || editingEvent) && (
+        <EventModal
+          modal={createModal || undefined}
+          event={editingEvent || undefined}
           calendars={calendars}
-          onClose={() => setCreateModal(null)}
+          onClose={() => { setCreateModal(null); setEditingEvent(null); }}
           onSave={handleSaveEvent}
         />
       )}
@@ -567,6 +586,7 @@ export function CalendarView({ accessToken }: CalendarViewProps) {
         <EventPopoverUI
           popover={popover}
           onClose={() => setPopover(null)}
+          onEdit={handleEditEvent}
           onDelete={handleDeleteEvent}
         />
       )}
