@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Remote KarmoLab page: invoke desktop_notify; main window.",
+  "description": "KarmoLab webview (embedded _site or remote): invoke desktop_notify; main window.",
   "windows": ["main"],
   "remote": {
     "urls": [
