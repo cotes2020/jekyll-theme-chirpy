@@ -14,5 +14,5 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 open = "5"
-tauri = { version = "2", features = [] }
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
 
