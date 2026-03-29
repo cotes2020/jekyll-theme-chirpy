@@ -2,7 +2,7 @@
     Toolbox.register({
         ...Toolbox.getLazyWidgetPublicMeta('gacha'),
         tabs: [{ id: 'app', label: '가챠', build: function(container) {
-            Mdd.setMood('shock'); Mdd.say('가챠를 돌려요! 뭐가 나올까요!');
+            Mdd.linePreset('idle_wake', { msg: '가챠를 돌려요! 뭐가 나올까요!' });
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; padding:20px; height:380px; box-sizing:border-box; overflow:hidden;">
                     <button class="btn btn-primary" id="gachaBtn" style="margin-bottom:15px;">로또 1등 당첨될 때까지 시뮬레이션 돌리기</button>

@@ -17,7 +17,7 @@
     `);
 
     function buildDashboard(container) {
-        Mdd.setMood('think'); Mdd.say('사용 기록을 볼까요?');
+        Mdd.linePreset('tool_run', { msg: '사용 기록을 볼까요?' });
         render(container);
     }
 

@@ -126,7 +126,7 @@
     }
 
     function buildAchievements(container) {
-        Mdd.setMood('think'); Mdd.say('도전과제 보여줄게요~');
+        Mdd.linePreset('achievement', { msg: '도전과제 보여줄게요~' });
         renderAchievements(container);
     }
 
@@ -154,7 +154,7 @@
     }
 
     function buildStreaks(container) {
-        Mdd.setMood('happy'); Mdd.say('스트릭 현황이에요~');
+        Mdd.linePreset('daily_start', { msg: '스트릭 현황이에요~' });
         renderStreaks(container);
     }
 
@@ -188,7 +188,7 @@
     }
 
     function buildBadges(container) {
-        Mdd.setMood('think'); Mdd.say('뱃지 보여줄게요~');
+        Mdd.linePreset('tool_run', { msg: '뱃지 보여줄게요~' });
         renderBadges(container);
     }
 
@@ -268,7 +268,7 @@
     }
 
     function buildStorage(container) {
-        Mdd.setMood('think'); Mdd.say('저장소 상태 보여줄게요~');
+        Mdd.linePreset('tool_run', { msg: '저장소 상태 보여줄게요~' });
         renderStorage(container);
     }
 
@@ -344,7 +344,7 @@
     }
 
     function buildSettings(container) {
-        Mdd.setMood('think'); Mdd.say('설정 바꿀 거야?');
+        Mdd.linePreset('tool_run', { msg: '설정 바꿀 거야?' });
         renderSettings(container);
     }
 

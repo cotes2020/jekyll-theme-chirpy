@@ -394,7 +394,7 @@
 
     /* ===== 빌드 ===== */
     function buildChat(container) {
-        Mdd.setMood('think'); Mdd.say('대화 상대가 필요해요?');
+        Mdd.linePreset('tool_run', { msg: '대화 상대가 필요해요?' });
 
         container.innerHTML = `
             <div class="cb-layout">
@@ -1103,14 +1103,14 @@ Here is my actual response...`;
                 chatHistory.push({ role: 'model', parts: [{ text: responseText }] });
                 saveSession();
                 Toolbox.recordUsage('chat', lastUsage?.totalTokenCount || 0);
-                Mdd.setMood('happy'); Mdd.say('대답 완료해요!');
+                Mdd.linePreset('success', { mood: 'happy', msg: '대답 완료해요!' });
 
             } catch (e) {
                 if (streamEl.wrap.parentNode) streamEl.wrap.remove();
                 if (e.message !== '요청이 취소되었습니다.') {
                     appendMsg('bot', `오류: ${e.message}`, true);
                     Toolbox.showToast(e.message || '오류', 'error', e);
-                    Mdd.setMood('sad'); Mdd.say('에러예요...');
+                    Mdd.linePreset('error', { msg: '에러예요...' });
                 }
                 console.error('Chat Error:', e);
             } finally {
@@ -1193,7 +1193,7 @@ Here is my actual response...`;
                 chatHistory.push({ role: 'model', parts: [{ text: responseText }] });
                 saveSession();
                 Toolbox.recordUsage('chat', lastUsage?.totalTokenCount || 0);
-                Mdd.setMood('happy'); Mdd.say('다시 대답했어요!');
+                Mdd.linePreset('success', { mood: 'happy', msg: '다시 대답했어요!' });
             } catch (e) {
                 if (streamEl.wrap.parentNode) streamEl.wrap.remove();
                 if (e.message !== '요청이 취소되었습니다.') {
@@ -1221,7 +1221,7 @@ Here is my actual response...`;
                 appendMsg('bot', '대화가 초기화되었습니다. 무엇을 도와드릴까요?');
             }
             Toolbox.showToast('대화 초기화 완료');
-            Mdd.setMood('idle'); Mdd.say('새로 시작이에요!');
+            Mdd.linePreset('tool_run', { mood: 'idle', msg: '새로 시작이에요!' });
         },
 
         importChat() {

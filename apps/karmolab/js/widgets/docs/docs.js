@@ -1,8 +1,8 @@
 /**
- * Docs — 소개 & 기획 & API & 가이드 & 예제
+ * Docs — 소개, 로드맵·기획, 가이드
  *
  * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅.
- * 탭: 소개 | 기획 | 로드맵 | 가이드
+ * 탭: 소개 | 로드맵 & 기획 | 가이드
  */
 (function () {
 
@@ -84,15 +84,13 @@
         id: 'docs',
         title: '문서',
         category: null,  // 기타
-        desc: 'KarmoLab 소개, 기획, 로드맵 문서',
+        desc: 'KarmoLab 소개, 로드맵·기획, 가이드',
         layout: 'wide',
         icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
         tabs: [
-            { id: 'docs-intro', label: '소개', build: function (c) { Mdd.setMood('pointing'); Mdd.say('문서 페이지예요!'); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('intro.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-            { id: 'docs-planning', label: '기획', build: function (c) { Mdd.setMood('think'); Mdd.say('기획 문서를 읽어보세요...'); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('planning.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-            { id: 'docs-roadmap', label: '로드맵', build: function (c) { Mdd.setMood('happy'); Mdd.say('앞으로 계획이에요~'); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('roadmap.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-            { id: 'docs-guide', label: '가이드', build: function (c) { Mdd.setMood('happy'); Mdd.say('사용법을 알려줄게요~'); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('guide.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-            { id: 'docs-server-guide', label: '서버·배포 가이드', build: function (c) { Mdd.setMood('think'); Mdd.say('서버 연결·배포는 여기서 확인하세요!'); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('server-guide.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
+            { id: 'docs-intro', label: '소개', build: function (c) { Mdd.linePreset('tool_run', { msg: '문서 페이지예요!' }); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('intro.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
+            { id: 'docs-roadmap', label: '로드맵', build: function (c) { Mdd.linePreset('daily_start', { msg: '로드맵이랑 기획이에요~' }); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('roadmap.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
+            { id: 'docs-guide', label: '가이드', build: function (c) { Mdd.linePreset('tool_run', { msg: '사용법을 알려줄게요~' }); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('guide.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
         ]
     });
 })();

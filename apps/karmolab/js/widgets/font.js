@@ -22,7 +22,7 @@
             const grade = container.querySelector('#fontGrade');
             const collected = container.querySelector('#fontCollected');
 
-            Mdd.setMood('idle'); Mdd.say('폰트 가챠예요! 뭐가 나올까요~');
+            Mdd.linePreset('tool_run', { mood: 'idle', msg: '폰트 가챠예요! 뭐가 나올까요~' });
 
             const fonts = [
                 { name: '기본 폰트', style: 'sans-serif', grade: 'C', color: '#888' },
@@ -39,7 +39,7 @@
             btn.onclick = () => {
                 // 연출: 빠르게 폰트 돌리기
                 btn.disabled = true;
-                Mdd.setMood('shock'); Mdd.say('돌아가요...!!');
+                Mdd.linePreset('idle_wake', { msg: '돌아가요...!!' });
                 let spinCount = 0;
                 const spinInterval = setInterval(() => {
                     const r = fonts[Math.floor(Math.random() * fonts.length)];
@@ -63,13 +63,13 @@
                         collected.textContent = collectedSet.size;
 
                         if (rand.grade === 'UR') {
-                            Mdd.setMood('cheer'); Mdd.bounce(); Mdd.say('UR!! 전설급 폰트예요!! 🎉🎉🎉');
+                            Mdd.linePreset('success', { msg: 'UR!! 전설급 폰트예요!! 🎉🎉🎉' }); Mdd.bounce();
                         } else if (rand.grade === 'SR') {
-                            Mdd.setMood('happy'); Mdd.bounce(); Mdd.say('SR! 꽤 레어한 득템이에요!');
+                            Mdd.linePreset('success', { mood: 'happy', msg: 'SR! 꽤 레어한 득템이에요!' }); Mdd.bounce();
                         } else if (rand.grade === 'C') {
-                            Mdd.setMood('sad'); Mdd.say('C급... 흔해빠진 거예요...');
+                            Mdd.linePreset('error', { msg: 'C급... 흔해빠진 거예요...' });
                         } else {
-                            Mdd.setMood('happy'); Mdd.say(`${rand.name} 나왔어요!`);
+                            Mdd.linePreset('success', { mood: 'happy', msg: `${rand.name} 나왔어요!` });
                         }
 
                         btn.disabled = false;

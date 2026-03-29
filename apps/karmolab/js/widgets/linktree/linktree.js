@@ -60,8 +60,7 @@
     `);
 
     function build(container) {
-        Mdd.setMood('happy');
-        Mdd.say('링크 모아뒀어요~');
+        Mdd.linePreset('home_hub', { msg: '링크 모아뒀어요~' });
 
         const wrap = document.createElement('div');
         wrap.className = 'linktree-wrap';

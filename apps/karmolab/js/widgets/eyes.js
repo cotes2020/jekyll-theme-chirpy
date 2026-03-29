@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '눈동자', build: function(container) {
-            Mdd.setMood('idle'); Mdd.say('눈동자가 따라가요...');
+            Mdd.linePreset('tool_run', { mood: 'idle', msg: '눈동자가 따라가요...' });
                 container.innerHTML = `
                     <div id="eyesArena" style="position:relative; width:100%; flex:1; min-height:300px; background:#1e1e2d; border-radius:var(--radius-lg); overflow:hidden; cursor:crosshair; box-shadow:inset 0 0 20px rgba(0,0,0,0.5);">
                     </div>

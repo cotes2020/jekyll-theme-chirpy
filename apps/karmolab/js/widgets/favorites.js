@@ -68,6 +68,7 @@
             { url: 'https://gemini.google.com', label: 'Gemini', icon: 'https://cdn.simpleicons.org/google' },
             { url: 'https://aistudio.google.com', label: 'AI Studio', icon: 'https://cdn.simpleicons.org/google' },
             { url: 'https://notebooklm.google.com/', label: 'NotebookLM', icon: 'https://cdn.simpleicons.org/google' },
+            { url: 'https://cursor.com/dashboard/spending', label: 'Cursor Spending', icon: 'https://cdn.simpleicons.org/cursor' },
         ]},
         { group: 'AI 아트', items: [
             { url: 'https://pixai.art/', label: 'PixAI', icon: null },
@@ -246,8 +247,7 @@
     `);
 
     function buildFavorites(container) {
-        Mdd.setMood('happy');
-        Mdd.say('자주 가는 곳을 모아뒀어요~ 클릭해서 가봐요!');
+        Mdd.linePreset('home_hub', { msg: '자주 가는 곳을 모아뒀어요~ 클릭해서 가봐요!' });
 
         function render() {
             const customNow = loadFavorites();

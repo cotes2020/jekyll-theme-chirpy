@@ -31,6 +31,7 @@
  * 마스코트 연동:
  *   Mdd.setMood('happy')   — 감정 변경
  *   Mdd.say('메시지')       — 말풍선 표시
+ *   Mdd.linePreset('success', { msg?, mood?, duration? }) — 티메토 대사 프리셋 (`mdd.js`의 LINE_PRESETS)
  *   Mdd.bounce()           — 바운스 애니메이션
  *   Mdd.addAffection(n)    — 호감도 증가 (스토리 해금 트리거)
  */
@@ -500,8 +501,7 @@ const Toolbox = (() => {
             if (breadcrumb) breadcrumb.innerHTML = '';
             try { localStorage.setItem(LAST_PAGE_KEY, 'home'); } catch (_) {}
             if (typeof Mdd !== 'undefined') {
-                Mdd.setMood('happy');
-                Mdd.say('환영해요! 즐겨찾기에서 자주 쓰는 걸 모아뒀어요.');
+                Mdd.linePreset('home_hub');
             }
             return;
         }

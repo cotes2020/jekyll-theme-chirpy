@@ -169,7 +169,7 @@
                 id: 'crypto',
                 label: '암호화 / 복호화',
                 build(c) {
-                    Mdd.setMood('smug'); Mdd.say('암호화·복호화 시작이에요... 히히');
+                    Mdd.linePreset('meme_done', { msg: '암호화·복호화 실험 개시예요... 히히' });
 
                     const modeGroup = document.createElement('div');
                     modeGroup.className = 'field-group';

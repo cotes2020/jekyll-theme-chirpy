@@ -3,6 +3,7 @@
  *
  * 이미지 기반 마스코트 캐릭터, 12가지 감정 표현, 말풍선, 바운스,
  * 호감도 시스템, 스토리 이벤트를 관리합니다.
+ * 티메토 대사는 `linePreset(id, { msg?, mood?, duration? })` + `LINE_PRESETS` 로 통일합니다.
  */
 const Mdd = (() => {
     const POSES = ['idle','happy','sad','shock','think','sleep','angry','love','smug','eating','pointing','cheer'];
@@ -64,12 +65,52 @@ const Mdd = (() => {
         charEl.classList.add('mdd-bounce');
     }
 
-    /* ===== 타이머 ===== */
+    /* ===== 티메토 감정별 대사 프리셋 (로드맵 기준) ===== */
+    const LINE_PRESETS = {
+        first_visit:   { mood: 'pointing', msg: '어서 오세요, 조수님! KarmoLab에 오신 걸 환영해요.' },
+        daily_start:   { mood: 'happy',    msg: '조수님, 오늘의 실험 준비됐어요! 한 번 확인해볼래요?' },
+        tool_run:      { mood: 'think',    msg: '측정 개시... 잠깐만요!' },
+        success:       { mood: 'cheer',    msg: '샘플 확보! 연구 노트에 기록했어요.' },
+        error:         { mood: 'sad',      msg: '장비가 잠깐 삐끗했어요... 다시 한 번만요!' },
+        warn_data:     { mood: 'angry',    msg: '잠깐! 이건 중요한 데이터예요. 꼭 확인해주세요.' },
+        idle_sleep:    { mood: 'sleep',    msg: 'zzZ... 조수님...?' },
+        idle_wake:     { mood: 'shock',    msg: '앗! 돌아오셨군요!' },
+        achievement:   { mood: 'love',     msg: '조수님 덕분에 연구소가 안정되고 있어요...!' },
+        meme_done:     { mood: 'smug',     msg: '후후, 이건 명작이 될지도요?' },
+        home_hub:      { mood: 'happy',    msg: '조수님, 연구소 허브예요! 자주 쓰는 장비는 즐겨찾기에 모아 두었어요.' },
+        measure_done:  { mood: 'cheer',    msg: '측정 완료! 수치는 연구 노트에 반영했어요.' },
+    };
+
+    /**
+     * 프리셋 대사 + 포즈. opts.msg / opts.mood / opts.duration 으로 덮어쓸 수 있음.
+     * @returns {boolean} 알려진 id면 true
+     */
+    function linePreset(id, opts) {
+        const base = LINE_PRESETS[id];
+        if (!base) return false;
+        const mood = (opts && opts.mood) || base.mood;
+        const msg = (opts && opts.msg != null) ? opts.msg : base.msg;
+        const duration = (opts && opts.duration != null) ? opts.duration : 3000;
+        setMood(mood);
+        say(msg, duration);
+        return true;
+    }
+
+    const TAP_QUIPS = [
+        '조수님, 저를 부르셨나요?',
+        '실험 데이터... 아, 장난이에요.',
+        '잠깐 쉬었다 갈게요~',
+        '저도 측정 한번 해볼까요?',
+        '조수님 손길, 기록해 둘게요.',
+        '히히, 오늘 기분 좋아요.',
+        '다음 실험은 뭘까요?',
+        '연구소 안전 점검... 통과예요!',
+    ];
 
     function resetIdleTimer() {
         if (currentMood === 'sleep') return;
         clearTimeout(idleTimer);
-        idleTimer = setTimeout(() => { setMood('sleep'); say('zzz...'); }, IDLE_TIMEOUT);
+        idleTimer = setTimeout(() => { linePreset('idle_sleep', { duration: 4000 }); }, IDLE_TIMEOUT);
     }
 
     /* ===== 호감도 시스템 ===== */
@@ -100,21 +141,21 @@ const Mdd = (() => {
         try { localStorage.setItem(STORY_KEY, JSON.stringify(data)); } catch (_) {}
     }
 
-    /* 티메토 안내 대사 최소 세트 */
+    /* 티메토 온보딩 가이드 (짧은 순서) */
     const GUIDE_MESSAGES = [
-        { id: 'welcome',  msg: '이곳은 KarmoLab이다.' },
-        { id: 'drag',     msg: '드래그해서 옮길 수 있다.' },
-        { id: 'click',    msg: '클릭하면 반응할지도.' },
+        { id: 'welcome',  msg: LINE_PRESETS.first_visit.msg },
+        { id: 'drag',     msg: '저를 드래그해서 연구소 구석구석, 편한 자리로 옮길 수 있어요.' },
+        { id: 'click',    msg: '가끔 눌러 주시면 반응 샘플이 쌓여요. 우클릭은 스토리 로그예요!' },
     ];
 
     const STORY_EVENTS = [
-        { threshold: 0,    id: 'intro',     mood: 'idle',     msg: '처음 보는 얼굴이다. 잘 부탁할지도.' },
-        { threshold: 10,   id: 'curious',   mood: 'think',    msg: '자주 오네? 좋은 취향일지도~' },
-        { threshold: 30,   id: 'comfort',   mood: 'happy',    msg: '이제 좀 편해졌다. 집사 자격 인정할지도!' },
-        { threshold: 50,   id: 'trust',     mood: 'smug',     msg: '다른 인간들과는 다르네... 칭찬할지도.' },
-        { threshold: 100,  id: 'friend',    mood: 'love',     msg: '사실... 여기 오는 거 기다리고 있었다. 비밀일지도!' },
-        { threshold: 200,  id: 'partner',   mood: 'cheer',    msg: '우리 파트너다! 앞으로도 함께할지도!' },
-        { threshold: 500,  id: 'soulmate',  mood: 'love',     msg: '여기가 내 집이다. 네가 있으니까 그럴지도.' },
+        { threshold: 0,    id: 'intro',     mood: 'pointing',  msg: '처음 뵙겠어요, 조수님. 실험 참여 감사드려요!' },
+        { threshold: 10,   id: 'curious',   mood: 'think',     msg: '자주 오시네요... 좋은 데이터가 쌓이고 있어요.' },
+        { threshold: 30,   id: 'comfort',   mood: 'happy',     msg: '이제 조수님 손길이 익숙해졌어요. 안심하고 맡겨 주세요.' },
+        { threshold: 50,   id: 'trust',     mood: 'smug',      msg: '다른 분들과는 뭔가 달라요... 인정할게요.' },
+        { threshold: 100,  id: 'friend',    mood: 'love',      msg: '솔직히... 조수님 오시는 날이 기다려졌어요.' },
+        { threshold: 200,  id: 'partner',   mood: 'cheer',     msg: '이제 공식 파트너예요! 앞으로도 실험 같이 해요!' },
+        { threshold: 500,  id: 'soulmate',  mood: 'love',      msg: '연구소가 집 같아요. 조수님이 계셔서 그래요.' },
     ];
 
     function appendStoryLog(entry) {
@@ -152,7 +193,12 @@ const Mdd = (() => {
     /* 안내 대사 표시 (최소 세트) */
     function showGuide(id) {
         const g = GUIDE_MESSAGES.find(x => x.id === id);
-        if (g) { setMood('pointing'); say(g.msg, 4000); }
+        if (!g) return;
+        if (id === 'welcome') {
+            linePreset('first_visit', { duration: 4000 });
+            return;
+        }
+        linePreset('tool_run', { msg: g.msg, duration: 4000 });
     }
 
     function showNextGuide() {
@@ -251,9 +297,9 @@ const Mdd = (() => {
             } else {
                 bounce();
                 addAffection(1);
-                const quips = ['뭐지?','뭐 볼 거 없어.','만지지 마...','...(그르릉)','히힛... 그럴지도~','좋아...','뭐 하는 거지?','배고파...'];
-                say(quips[Math.floor(Math.random() * quips.length)]);
-                setMood(['happy','smug','love','idle'][Math.floor(Math.random() * 4)]);
+                const q = TAP_QUIPS[Math.floor(Math.random() * TAP_QUIPS.length)];
+                say(q);
+                setMood(['happy', 'smug', 'love', 'idle'][Math.floor(Math.random() * 4)]);
             }
             dragStart = null;
         };
@@ -283,7 +329,7 @@ const Mdd = (() => {
                         <div class="mdd-log-entry">
                             <span class="mdd-log-msg">${escapeHtml(e.msg)}</span>
                         </div>
-                    `).join('') : '<p class="mdd-log-empty">아직 기록이 없다.</p>'}
+                    `).join('') : '<p class="mdd-log-empty">아직 기록된 스토리가 없어요, 조수님.</p>'}
                 </div>
             </div>
         `;
@@ -354,8 +400,8 @@ const Mdd = (() => {
         initDrag();
 
         resetIdleTimer();
-        document.addEventListener('mousemove', () => { if (currentMood === 'sleep') { setMood('idle'); } resetIdleTimer(); });
-        document.addEventListener('keydown', () => { if (currentMood === 'sleep') { setMood('idle'); } resetIdleTimer(); });
+        document.addEventListener('mousemove', () => { if (currentMood === 'sleep') { linePreset('idle_wake', { duration: 3500 }); } resetIdleTimer(); });
+        document.addEventListener('keydown', () => { if (currentMood === 'sleep') { linePreset('idle_wake', { duration: 3500 }); } resetIdleTimer(); });
 
         addAffection(1);
     }
@@ -368,6 +414,7 @@ const Mdd = (() => {
 
     return {
         setMood, say, bounce, injectCSS,
+        linePreset, LINE_PRESETS,
         addAffection, getAffection, getRelationshipTitle,
         getStoryProgress, getStoryLog, STORY_EVENTS,
         showGuide, showNextGuide, openStoryLog, GUIDE_MESSAGES,

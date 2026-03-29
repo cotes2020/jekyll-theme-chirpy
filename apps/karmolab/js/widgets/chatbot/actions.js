@@ -103,13 +103,13 @@
             state.chatHistory.push({ role: 'model', parts: [{ text: responseText }] });
             saveSession();
             if (typeof Toolbox !== 'undefined') Toolbox.recordUsage('chat', (lastUsage && lastUsage.totalTokenCount) || 0);
-            if (typeof Mdd !== 'undefined') { Mdd.setMood('happy'); Mdd.say('대답 완료해요!'); }
+            if (typeof Mdd !== 'undefined') { Mdd.linePreset('success', { mood: 'happy', msg: '대답 완료해요!' }); }
         } catch (e) {
             if (streamEl && streamEl.wrap && streamEl.wrap.parentNode) streamEl.wrap.remove();
             if (e.message !== '요청이 취소되었습니다.') {
                 UI.appendMsg('bot', '오류: ' + e.message, true);
                 if (typeof Toolbox !== 'undefined') Toolbox.showToast(e.message || '오류', 'error', e);
-                if (typeof Mdd !== 'undefined') { Mdd.setMood('sad'); Mdd.say('에러예요...'); }
+                if (typeof Mdd !== 'undefined') { Mdd.linePreset('error', { msg: '에러예요...' }); }
             }
             console.error('Chat Error:', e);
         } finally {
@@ -174,7 +174,7 @@
                 UI.appendMsg('bot', '대화가 초기화되었습니다. 무엇을 도와드릴까요?');
             }
             if (typeof Toolbox !== 'undefined') Toolbox.showToast('대화 초기화 완료');
-            if (typeof Mdd !== 'undefined') { Mdd.setMood('idle'); Mdd.say('새로 시작이에요!'); }
+            if (typeof Mdd !== 'undefined') { Mdd.linePreset('tool_run', { mood: 'idle', msg: '새로 시작이에요!' }); }
         },
 
         importChat: function () {

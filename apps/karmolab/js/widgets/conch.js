@@ -16,7 +16,7 @@
             const result = container.querySelector('#conchResult');
             const btn = container.querySelector('#conchBtn');
 
-            Mdd.setMood('idle'); Mdd.say('소라고동님은 모든 걸 알고 있어요...');
+            Mdd.linePreset('tool_run', { mood: 'idle', msg: '소라고동님은 모든 걸 알고 있어요...' });
 
             const answers = [
                 "그래.", "안 돼.", "가만히 있어.", "다시 한번 물어봐.",
@@ -30,14 +30,14 @@
 
                 visual.style.transform = 'scale(1.2) rotate(15deg)';
                 result.textContent = '음...';
-                Mdd.setMood('think'); Mdd.say('소라고동님이 고민 중이세요...');
+                Mdd.linePreset('tool_run', { msg: '소라고동님이 고민 중이세요...' });
 
                 setTimeout(() => {
                     visual.style.transform = 'scale(1) rotate(0deg)';
                     const rand = answers[Math.floor(Math.random() * answers.length)];
                     result.textContent = `"${rand}"`;
                     input.value = '';
-                    Mdd.setMood('smug'); Mdd.bounce(); Mdd.say(`소라고동님의 답변: "${rand}"`);
+                    Mdd.linePreset('meme_done', { msg: `소라고동님의 답변: "${rand}"` }); Mdd.bounce();
                 }, 800);
             }
 

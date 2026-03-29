@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
         tabs: [{ id: 'app', label: '카운트다운', build: function(container) {
-            Mdd.setMood('think'); Mdd.say('시간이 흐르고 있어요...');
+            Mdd.linePreset('tool_run', { msg: '시간이 흐르고 있어요...' });
                 container.innerHTML = `
                     <div style="display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; padding-top:40px;">
                         <div style="font-size:14px; color:var(--text-secondary);">⏰ 인생이 낭비되는 속도 (목표 시간까지 남은 ms)</div>

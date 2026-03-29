@@ -14,7 +14,7 @@
             const result = container.querySelector('#fortuneResult');
             const reset = container.querySelector('#fortuneReset');
 
-            Mdd.setMood('think'); Mdd.say('운명의 쿠키예요... 두근');
+            Mdd.linePreset('tool_run', { msg: '운명의 쿠키예요... 두근' });
 
             const fortunes = [
                 "오늘은 집 밖으로 나가지 않는 것이 상책입니다.",
@@ -37,7 +37,7 @@
                     const rand = fortunes[Math.floor(Math.random() * fortunes.length)];
                     result.innerHTML = `<span style="color:var(--error); font-weight:bold;">[대흉]</span><br>${rand}`;
                     reset.style.display = 'inline-block';
-                    Mdd.setMood('sad'); Mdd.say('역시... 꽝이에요... 😿');
+                    Mdd.linePreset('error', { msg: '역시... 꽝이에요... 😿' });
                 }, 300);
             };
 
@@ -45,7 +45,7 @@
                 cookie.textContent = '🥠';
                 result.textContent = '쿠키를 클릭해서 열어보세요!';
                 reset.style.display = 'none';
-                Mdd.setMood('think'); Mdd.say('이번엔 다를 거예요...(아닐걸)');
+                Mdd.linePreset('tool_run', { msg: '이번엔 다를 거예요...(아닐걸)' });
             };
         } }]
     });

@@ -464,8 +464,7 @@
 
             function showError(msg) {
                 Toolbox.showToast(msg, 'error');
-                Mdd.setMood('shock');
-                Mdd.say(msg);
+                Mdd.linePreset('error', { msg: msg });
             }
 
             function revokeCurrent() {
@@ -494,8 +493,7 @@
                             ' KB · ' +
                             (res.file.type || 'unknown');
                         panel.classList.add('imc-visible');
-                        Mdd.setMood('happy');
-                        Mdd.say('설정 맞추고 저장해요');
+                        Mdd.linePreset('success', { mood: 'happy', msg: '설정 맞추고 저장해요' });
                     },
                     function (err) {
                         showError(err.message || '오류');
@@ -608,8 +606,7 @@
                         };
                         im.src = outPreviewUrl;
                         Toolbox.showToast('미리보기를 갱신했어요');
-                        Mdd.setMood('happy');
-                        Mdd.say('이렇게 나와요!');
+                        Mdd.linePreset('success', { mood: 'happy', msg: '이렇게 나와요!' });
                     })
                     .catch(function () {
                         showError('변환에 실패했어요.');
@@ -627,16 +624,14 @@
                 if (outBlob && lastPreviewKey === key) {
                     triggerDownloadBlob(outBlob, mime);
                     Toolbox.showToast('저장했어요');
-                    Mdd.setMood('happy');
-                    Mdd.say('내려받기 완료!');
+                    Mdd.linePreset('success', { mood: 'happy', msg: '내려받기 완료!' });
                     return;
                 }
                 IC.convertImage(current.img, getConvertOptsFromSt()).then(
                     function (blob) {
                         triggerDownloadBlob(blob, mime);
                         Toolbox.showToast('저장했어요');
-                        Mdd.setMood('happy');
-                        Mdd.say('내려받기 완료!');
+                        Mdd.linePreset('success', { mood: 'happy', msg: '내려받기 완료!' });
                     },
                     function () {
                         showError('변환에 실패했어요.');
@@ -651,8 +646,7 @@
                 meta.textContent = '';
                 invalidateOutPreview(false);
                 revokeCurrent();
-                Mdd.setMood('idle');
-                Mdd.say('다른 이미지를 골라요');
+                Mdd.linePreset('tool_run', { mood: 'idle', msg: '다른 이미지를 골라요' });
             });
 
             var Batch = window.KarmoLabImageBatch;
@@ -741,8 +735,7 @@
                             }
                             return Batch.downloadResultsSequential(results, IC, mime).then(function () {
                                 Toolbox.showToast('일괄 저장 요청을 마쳤어요');
-                                Mdd.setMood('happy');
-                                Mdd.say('모두 저장했어요!');
+                                Mdd.linePreset('success', { mood: 'happy', msg: '모두 저장했어요!' });
                             });
                         })
                         .catch(function () {
@@ -756,8 +749,10 @@
             }
 
             applySettingsToForm();
-            Mdd.setMood('idle');
-            Mdd.say(embed ? '형식·크기 맞춰서 내려받기' : '이미지 형식·크기·품질을 한곳에서');
+            Mdd.linePreset('tool_run', {
+                mood: 'idle',
+                msg: embed ? '형식·크기 맞춰서 내려받기' : '이미지 형식·크기·품질을 한곳에서',
+            });
 
             return { applyFile: applyFile };
         }

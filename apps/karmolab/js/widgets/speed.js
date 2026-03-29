@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '속도측정', build: function(container) {
-            Mdd.setMood('cheer'); Mdd.say('속도 측정이에요! 빨리 드래그하세요!');
+            Mdd.linePreset('tool_run', { msg: '속도 측정이에요! 빨리 드래그하세요!' });
             container.innerHTML = `
                 <div style="display:flex; flex-direction:column; padding:20px; height:380px; box-sizing:border-box; text-align:center;">
                     <div style="font-size:14px; color:var(--text-secondary); margin-bottom:10px;">💾 [1MB] 블럭을 마우스로 잡고 골인 지점까지 끌고 가세요!</div>

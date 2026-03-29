@@ -24,7 +24,7 @@
             const timeEl = container.querySelector('#stoneTime');
             let seconds = 0;
 
-            Mdd.setMood('sleep'); Mdd.say('돌이에요... 반응이 없는 게 정상이에요.');
+            Mdd.linePreset('idle_sleep', { msg: '돌이에요... 반응이 없는 게 정상이에요.' });
 
             const reactions = {
                 feed: ['...미동조차 하지 않아요.', '...씹지도 않아요.', '...소화기관이 없어요.'],
@@ -39,9 +39,9 @@
                 stoneEmoji.style.transform = 'rotate(3deg)';
                 setTimeout(() => stoneEmoji.style.transform = 'rotate(0deg)', 200);
 
-                if (type === 'feed') { Mdd.setMood('eating'); Mdd.say('밥을 줬는데... 반응이 없어요...'); }
-                else if (type === 'walk') { Mdd.setMood('sad'); Mdd.say('산책 시켰는데... 꿈쩍도 안 해요...'); }
-                else { Mdd.setMood('idle'); Mdd.say('칭찬해도 소용없어요... 돌이니까요.'); }
+                if (type === 'feed') { Mdd.linePreset('tool_run', { mood: 'eating', msg: '밥을 줬는데... 반응이 없어요...' }); }
+                else if (type === 'walk') { Mdd.linePreset('error', { msg: '산책 시켰는데... 꿈쩍도 안 해요...' }); }
+                else { Mdd.linePreset('tool_run', { mood: 'idle', msg: '칭찬해도 소용없어요... 돌이니까요.' }); }
 
                 setTimeout(() => Mdd.setMood('sleep'), 2000);
             }

@@ -36,7 +36,7 @@
         function createMemo() {
             const newMemo = { id: Date.now().toString(), title: '새 메모', body: '', updatedAt: Date.now() };
             memos.unshift(newMemo); saveMemos(); currentId = newMemo.id; render();
-            Mdd.setMood('happy'); Mdd.say('새 메모 생성이에요!');
+            Mdd.linePreset('success', { mood: 'happy', msg: '새 메모 생성이에요!' });
         }
 
         function deleteMemo(id) {
@@ -45,7 +45,7 @@
             if (currentId === id) currentId = memos.length > 0 ? memos[0].id : null;
             saveMemos(); render();
             Toolbox.showToast('삭제되었습니다.');
-            Mdd.setMood('shock'); Mdd.say('지워버렸어요... 안녕...');
+            Mdd.linePreset('idle_wake', { msg: '지워버렸어요... 안녕...' });
         }
 
         function updateMemo(updates) {
@@ -63,7 +63,7 @@
             clearTimeout(saveTimeout);
             saveTimeout = setTimeout(() => {
                 updateMemo({ title: document.getElementById('memoTitleInput').value.trim() || '제목 없음', body: document.getElementById('memoBodyInput').value });
-                Mdd.setMood('happy'); Mdd.say('기억해둘게요!');
+                Mdd.linePreset('success', { mood: 'happy', msg: '기억해둘게요!' });
             }, 500);
         }
 
@@ -153,7 +153,7 @@
                         <div class="memo-editor" id="memoEditor"></div>
                     </div>
                 `;
-                Mdd.setMood('idle'); Mdd.say('메모할 거 있어요?');
+                Mdd.linePreset('tool_run', { mood: 'idle', msg: '메모할 거 있어요?' });
                 requestAnimationFrame(() => {
                     const addBtn = document.getElementById('memoAddBtn'); if(addBtn) addBtn.onclick = createMemo;
                     const exportBtn = document.getElementById('memoExportBtn'); if(exportBtn) exportBtn.onclick = exportMemos;

@@ -1119,7 +1119,7 @@
         };
         img.onerror = () => {
             Toolbox.showToast('이미지를 불러올 수 없습니다.', 'error');
-            Mdd.setMood('sad'); Mdd.say('이미지 로드 실패했어요...');
+            Mdd.linePreset('error', { msg: '이미지 로드 실패했어요...' });
         };
         img.src = src;
     }
@@ -1138,7 +1138,7 @@
         hidePlaceholder();
         resetImageView();
         selectTool(activeTool);
-        Mdd.setMood('happy'); Mdd.say('이미지 불러왔어요!');
+        Mdd.linePreset('success', { mood: 'happy', msg: '이미지 불러왔어요!' });
     }
 
     function commitImageLoadDownscaled(img, targetW, targetH) {
@@ -1155,7 +1155,7 @@
         hidePlaceholder();
         resetImageView();
         selectTool(activeTool);
-        Mdd.setMood('happy'); Mdd.say('이미지를 축소해서 불러왔어요!');
+        Mdd.linePreset('success', { mood: 'happy', msg: '이미지를 축소해서 불러왔어요!' });
     }
 
     function showSizeWarning(img, forceDownscale) {
@@ -1828,7 +1828,7 @@
         pushHistory();
         updateSizeLabel();
         Toolbox.showToast('크로마키 적용 완료');
-        Mdd.setMood('happy'); Mdd.say('배경 날렸어요!');
+        Mdd.linePreset('success', { mood: 'happy', msg: '배경 날렸어요!' });
     }
 
     /* ===== Mode 2 — Brush ===== */
@@ -1937,7 +1937,7 @@
         pushHistory();
         updateSizeLabel();
         Toolbox.showToast('브러시 분류 적용 완료');
-        Mdd.setMood('happy'); Mdd.say('누끼 작업 완료했어요!');
+        Mdd.linePreset('success', { mood: 'happy', msg: '누끼 작업 완료했어요!' });
     }
 
     /* ===== Mode 3 — AI (ONNX) ===== */
@@ -2106,7 +2106,7 @@
             URL.revokeObjectURL(u);
             pushHistory(); updateSizeLabel(); cleanupOverlay(ui);
             Toolbox.showToast('배경 제거 완료!');
-            Mdd.setMood('cheer'); Mdd.say('누끼 완성이에요!');
+            Mdd.linePreset('success', { msg: '누끼 완성이에요!' });
         } catch (e) {
             console.error('BG removal error:', e);
             cleanupOverlay(ui);
@@ -2218,12 +2218,12 @@
 
             pushHistory(); updateSizeLabel(); cleanupOverlay(ui);
             Toolbox.showToast('Gemini 마스크 적용 완료!');
-            Mdd.setMood('cheer'); Mdd.say('Gemini가 마스크 만들어줬어요!');
+            Mdd.linePreset('success', { msg: 'Gemini가 마스크 만들어줬어요!' });
         } catch (e) {
             console.error('Gemini mask error:', e);
             cleanupOverlay(ui);
             Toolbox.showToast('Gemini 실패: ' + (e.message || e), 'error');
-            Mdd.setMood('sad'); Mdd.say('Gemini 실패했어요...');
+            Mdd.linePreset('error', { msg: 'Gemini 실패했어요...' });
         }
     }
 
@@ -2311,8 +2311,7 @@
         pushHistory();
         updateSizeLabel();
         Toolbox.showToast(`${factor}× 로컬 확대 완료`);
-        Mdd.setMood('happy');
-        Mdd.say('로컬에서 키웠어요!');
+        Mdd.linePreset('success', { mood: 'happy', msg: '로컬에서 키웠어요!' });
     }
 
     async function applyGeminiUpscale() {
@@ -2384,14 +2383,12 @@
             updateSizeLabel();
             cleanupOverlay(ui);
             Toolbox.showToast(`${factor}× AI 업스케일 완료`);
-            Mdd.setMood('cheer');
-            Mdd.say('이미지 키워줬어요!');
+            Mdd.linePreset('success', { msg: '이미지 키워줬어요!' });
         } catch (e) {
             console.error('Gemini upscale error:', e);
             cleanupOverlay(ui);
             Toolbox.showToast('업스케일 실패: ' + (e.message || e), 'error');
-            Mdd.setMood('sad');
-            Mdd.say('업스케일 실패했어요...');
+            Mdd.linePreset('error', { msg: '업스케일 실패했어요...' });
         } finally {
             upscaleBusy = false;
         }
@@ -2468,12 +2465,12 @@
             ctx.drawImage(img, 0, 0);
             pushHistory(); updateSizeLabel(); cleanupOverlay(ui);
             Toolbox.showToast('배경색 변경 완료!');
-            Mdd.setMood('cheer'); Mdd.say('배경색 바꿔줬어요!');
+            Mdd.linePreset('success', { msg: '배경색 바꿔줬어요!' });
         } catch (e) {
             console.error('Gemini BGG error:', e);
             cleanupOverlay(ui);
             Toolbox.showToast('Gemini 실패: ' + (e.message || e), 'error');
-            Mdd.setMood('sad'); Mdd.say('Gemini 실패했어요...');
+            Mdd.linePreset('error', { msg: 'Gemini 실패했어요...' });
         } finally {
             bggBusy = false;
         }
@@ -3151,7 +3148,7 @@
         destroyMaskPreview();
         pushHistory(); updateSizeLabel();
         Toolbox.showToast('마스크 적용 완료!');
-        Mdd.setMood('cheer'); Mdd.say('마스크 적용했어요!');
+        Mdd.linePreset('success', { msg: '마스크 적용했어요!' });
     }
 
     function applySelfMask() {
@@ -3184,7 +3181,7 @@
         pushHistory(); updateSizeLabel();
         const label = target === 'dark' ? '어두운' : '밝은';
         Toolbox.showToast(`${label} 영역 제거 완료!`);
-        Mdd.setMood('cheer'); Mdd.say('깔끔하게 날렸어요!');
+        Mdd.linePreset('success', { msg: '깔끔하게 날렸어요!' });
     }
 
     /* ===== Crop ===== */
@@ -3424,7 +3421,7 @@
                 elapsed: null
             });
             Toolbox.showToast('라이브러리에 저장됨');
-            Mdd.setMood('cheer'); Mdd.say('라이브러리에 저장했어요!');
+            Mdd.linePreset('success', { msg: '라이브러리에 저장했어요!' });
         } catch (e) {
             Toolbox.showToast('저장 실패', 'error', e);
         }
@@ -3955,8 +3952,7 @@
                                 }
                             });
                             Toolbox.showToast('미리보기 — 화면을 눌러 닫기');
-                            Mdd.setMood('happy');
-                            Mdd.say('이렇게 저장돼요');
+                            Mdd.linePreset('success', { mood: 'happy', msg: '이렇게 저장돼요' });
                         });
                     })
                     .catch(() => {
@@ -3984,8 +3980,7 @@
                 a.click();
                 setTimeout(() => URL.revokeObjectURL(url), 2000);
                 Toolbox.showToast('저장했어요');
-                Mdd.setMood('happy');
-                Mdd.say('내려받기 완료!');
+                Mdd.linePreset('success', { mood: 'happy', msg: '내려받기 완료!' });
             };
 
             if (convertPreviewBlob && convertPreviewKey === key) {
@@ -4078,8 +4073,7 @@
                         }
                         return Batch.downloadResultsSequential(results, IC, mime).then(() => {
                             Toolbox.showToast('일괄 저장 요청을 마쳤어요');
-                            Mdd.setMood('happy');
-                            Mdd.say('모두 저장했어요!');
+                            Mdd.linePreset('success', { mood: 'happy', msg: '모두 저장했어요!' });
                         });
                     })
                     .catch(() => {
@@ -4092,8 +4086,7 @@
             };
         }
 
-        Mdd.setMood('idle');
-        Mdd.say('캔버스 그대로 두고 형식만 바꿔요');
+        Mdd.linePreset('tool_run', { mood: 'idle', msg: '캔버스 그대로 두고 형식만 바꿔요' });
     }
 
     /* ===== Tool Switching ===== */
@@ -4219,7 +4212,7 @@
 
     /* ===== Build ===== */
     function buildEditor(container) {
-        Mdd.setMood('happy'); Mdd.say('이미지 편집이에요!');
+        Mdd.linePreset('tool_run', { mood: 'happy', msg: '이미지 편집이에요!' });
 
         container.innerHTML = `
             <div class="ie-layout">

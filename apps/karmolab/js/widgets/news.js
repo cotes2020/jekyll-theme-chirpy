@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<rect x="4" y="4" width="16" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M4 8h16 M8 4v4" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 12h8 M8 16h6" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '뉴스', build: function(container) {
-            Mdd.setMood('think'); Mdd.say('뉴스를 읽고 있어요... 어디서 봤어요?');
+            Mdd.linePreset('tool_run', { msg: '뉴스를 읽고 있어요... 어디서 봤어요?' });
                 container.innerHTML = `
                     <div style="height:350px; background:#111; border:4px solid #333; border-radius:12px; overflow:hidden; display:flex; flex-direction:column; position:relative;">
                         <div style="background:var(--error); color:#fff; font-weight:bold; padding:10px; text-align:center; letter-spacing:2px; z-index:10; box-shadow:0 2px 10px rgba(0,0,0,0.5);">🚨 긴급 속보 🚨</div>

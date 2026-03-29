@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 3v18 M3 12h18" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '다크룸', build: function(container) {
-            Mdd.setMood('shock'); Mdd.say('깜깜해요... 무서워요...');
+            Mdd.linePreset('idle_wake', { msg: '깜깜해요... 무서워요...' });
                 container.innerHTML = `
                     <div style="position:relative; width:100%; flex:1; min-height:300px; background:#000; overflow:hidden; border-radius:var(--radius-lg); cursor:none;" id="darkArea">
                         <canvas id="darkCanvas" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;"></canvas>

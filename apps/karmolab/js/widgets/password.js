@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="16" r="1" fill="currentColor"/>',
         tabs: [{ id: 'app', label: '비번', build: function(container) {
-            Mdd.setMood('smug'); Mdd.say('비밀번호 맞춰볼래요?');
+            Mdd.linePreset('meme_done', { msg: '비밀번호 맞춰볼래요?' });
                 container.innerHTML = `
                     <div style="display:flex; flex-direction:column; padding:20px; height:100%; box-sizing:border-box;">
                         <div style="font-size:18px; font-weight:bold; color:var(--text-primary); margin-bottom:8px;">비밀번호 야구 ⚾</div>

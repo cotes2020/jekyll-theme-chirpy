@@ -17,7 +17,7 @@
             const canvas = container.querySelector('#particleCanvas');
             const ctx = canvas.getContext('2d');
 
-            Mdd.setMood('idle'); Mdd.say('파티클 놀이터예요~');
+            Mdd.linePreset('tool_run', { mood: 'idle', msg: '파티클 놀이터예요~' });
 
             function resize() {
                 const rect = canvas.parentElement.getBoundingClientRect();
@@ -36,7 +36,7 @@
 
             canvas.onclick = (e) => {
                 for (let i = 0; i < 40; i++) particles.push(new Particle(e.offsetX, e.offsetY, true));
-                Mdd.setMood('shock'); Mdd.bounce(); Mdd.say('폭발이에요!!');
+                Mdd.linePreset('idle_wake', { msg: '폭발이에요!!' }); Mdd.bounce();
                 setTimeout(() => Mdd.setMood('happy'), 1500);
             };
 

@@ -58,8 +58,7 @@
       })();
 
       if (typeof Mdd !== 'undefined') {
-        Mdd.setMood('idle');
-        Mdd.say('포스트 링크 관계예요. 노드를 누르면 글이 새 탭에서 열려요.');
+        Mdd.linePreset('tool_run', { mood: 'idle', msg: '포스트 링크 관계예요. 노드를 누르면 글이 새 탭에서 열려요.' });
       }
     }
   };

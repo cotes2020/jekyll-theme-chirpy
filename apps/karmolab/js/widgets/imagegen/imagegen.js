@@ -650,7 +650,7 @@
         if (running) {
             cancelQueueItem(running.id);
             Toolbox.showToast('현재 생성 취소됨');
-            Mdd.setMood('idle'); Mdd.say('취소했어요!');
+            Mdd.linePreset('tool_run', { mood: 'idle', msg: '취소했어요!' });
         }
     }
 
@@ -754,7 +754,7 @@
 
     /* ===== buildMain ===== */
     function buildMain(container) {
-        Mdd.setMood('happy'); Mdd.say('이미지 만들어볼까요?');
+        Mdd.linePreset('daily_start', { msg: '이미지 만들어볼까요?' });
 
         container.innerHTML = `
             <div class="ig-layout">

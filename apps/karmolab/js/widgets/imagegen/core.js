@@ -187,10 +187,10 @@
             const remaining = queue.filter(q => q.status === 'pending').length;
             const doneCount = queue.filter(q => q.status === 'done').length;
             if (remaining > 0) {
-                Mdd.setMood('think'); Mdd.say(`다음 이미지 시작! (${remaining}개 남음)`);
+                Mdd.linePreset('tool_run', { msg: `다음 이미지 시작! (${remaining}개 남음)` });
                 processQueue();
             } else if (doneCount > 0) {
-                Mdd.setMood('cheer'); Mdd.say('큐 작업 모두 완료!');
+                Mdd.linePreset('success', { msg: '큐 작업 모두 완료!' });
                 Toolbox.showToast(`큐 완료: ${doneCount}장 생성됨`);
                 _deps.hideMainLoading();
             }

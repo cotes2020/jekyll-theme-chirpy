@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M2 12h4 M8 12h8 M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
         tabs: [{ id: 'app', label: '모스', build: function(container) {
-            Mdd.setMood('think'); Mdd.say('모르스 부호... 삐삐빗!');
+            Mdd.linePreset('tool_run', { msg: '모르스 부호... 삐삐빗!' });
                 container.innerHTML = `
                     <div class="field-group">
                         <label class="field-label">텍스트 입력 (영문/숫자/공백)</label>

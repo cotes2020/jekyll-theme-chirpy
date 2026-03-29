@@ -31,7 +31,7 @@
             let count = Toolbox.getProgress(PROGRESS_KEY);
             countLabel.textContent = count.toLocaleString();
 
-            Mdd.setMood('love'); Mdd.say('쓰다듬어달라요~');
+            Mdd.linePreset('achievement', { msg: '쓰다듬어달라요~' });
 
             let isDragging = false;
             petArea.addEventListener('mousedown', () => isDragging = true);
@@ -53,13 +53,13 @@
                     }
                     if (m.msg) {
                         milestone.textContent = m.msg;
-                        Mdd.setMood(m.mood); Mdd.bounce(); Mdd.say(m.msg);
+                        Mdd.linePreset('achievement', { mood: m.mood, msg: m.msg }); Mdd.bounce();
                     }
                 }
             });
 
             function showMarriagePopup() {
-                Mdd.setMood('love'); Mdd.say('결혼합시다!!! 💖💍');
+                Mdd.linePreset('achievement', { msg: '결혼합시다!!! 💖💍' });
                 const overlay = document.createElement('div');
                 overlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#fff;';
                 overlay.innerHTML = `

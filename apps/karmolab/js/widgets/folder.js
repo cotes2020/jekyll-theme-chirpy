@@ -6,7 +6,7 @@
         layout: 'form',
         icon: '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
         tabs: [{ id: 'app', label: '에러', build: function(container) {
-            Mdd.setMood('shock'); Mdd.say('폴더가 무한 증식해요?!');
+            Mdd.linePreset('idle_wake', { msg: '폴더가 무한 증식해요?!' });
                 container.innerHTML = `
                     <div style="position:relative; width:100%; height:450px; background:#008080; overflow:hidden; border-radius:var(--radius-lg); font-family:sans-serif; cursor:default; user-select:none;" id="desktop">
                     </div>

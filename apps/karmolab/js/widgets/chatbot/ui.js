@@ -201,7 +201,7 @@
     }
 
     function buildChat(container) {
-        if (typeof Mdd !== 'undefined') { Mdd.setMood('think'); Mdd.say('대화 상대가 필요해요?'); }
+        if (typeof Mdd !== 'undefined') { Mdd.linePreset('tool_run', { msg: '대화 상대가 필요해요?' }); }
 
         var presets = window.Chatbot.presets || [];
         var defaultText = '당신은 친절하고 유용한 AI 어시스턴트입니다. 한국어로 답변해주세요.';
