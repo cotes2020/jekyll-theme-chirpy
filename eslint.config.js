@@ -4,11 +4,12 @@ import globals from 'globals';
 
 export default defineConfig([
   globalIgnores([
-    'assets/*',
-    'node_modules/*',
-    '_site/*',
-    // Own deps in apps/karmolab-react-src; root npm i does not install them.
-    'apps/karmolab-react-src/**',
+    '**/node_modules/**',
+    '_site/**',
+    'assets/**',
+    'apps/**',
+    'scripts/**',
+    '.cursor/**',
   ]),
   js.configs.recommended,
   {
