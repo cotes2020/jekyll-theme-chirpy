@@ -17,7 +17,8 @@ date: 2022-07-08. 14:31
 # last_modified_at: 2024-04-09. 13:44
 # last_modified_at: 2024-08-19. 15:24
 # last_modified_at: 2024-08-19. 16:54
-last_modified_at: 2024-11-12. 11:44 # 라이브 스트리밍 ~
+# last_modified_at: 2024-11-12. 11:44 # 라이브 스트리밍 ~
+last_modified_at: 2026-02-22. 22:56 # E +status.vrchat
 ---
 
 2024-04-09. 02:28: 글 계승  
@@ -95,7 +96,7 @@ last_modified_at: 2024-11-12. 11:44 # 라이브 스트리밍 ~
 
 - 프로젝트 후기는 바로바로 작성
 
-## � 팁
+## 팁
 
 ---
 
@@ -104,7 +105,7 @@ last_modified_at: 2024-11-12. 11:44 # 라이브 스트리밍 ~
 코드 잘못짜서 생긴 논리 오류를 제외하고,  
 
 1. 호출하고자하는 CustomEvent가 Public 접근 제한자인지 확인한다
-2. 똑같은 UdonBehaiviour가 여러 개 들어가있는지 확인한다 (프리팹에 Udon 추가하는 과정에서 주로 발생)
+2. 똑같은 UdonBehaviour가 여러 개 들어가있는지 확인한다 (프리팹에 Udon 추가하는 과정에서 주로 발생)
 
 ### Udon 싱크 크기
 
@@ -175,7 +176,8 @@ Overlay 캔버스로 만들어도 되지만, VRChat에서 메뉴(R키)를 조작
 ### 메모
 
 - [VRC, 영화 자막](https://x.com/vr_hai/status/1495774702521958407?s=20)
-- Light Probes Volme Settings
+- Light Probes Volume Settings
 - Light Probe Group
 - Occlusion Area
 - Editor Only 태그 활용
+- [https://status.vrchat.com/](https://status.vrchat.com/)

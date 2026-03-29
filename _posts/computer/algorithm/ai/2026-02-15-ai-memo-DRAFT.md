@@ -41,3 +41,28 @@ date: 2026-02-15. 15:42 # Init
 명령을 잘 내려ㅎ야 할 듯  
 명령 조각을 만들어서 블럭 조립하듯  
 기억 조가  
+
+### Cursor Q&A 요약 (2026년 3월 기준)
+
+- **Pro 사용 방법**
+  - Chat: `Ctrl+L` / 인라인 편집: `Ctrl+K` / Composer: `Ctrl+I` / Tab 자동완성: `Tab`
+  - 사용량: Settings → General → Account (또는 [usage dashboard](https://cursor.com/dashboard?tab=usage))
+
+- **Fast Premium vs Slow Premium**
+  - Fast: 우선 처리·즉시 응답, 월 한도(예: Pro 500회). 특정 모델 선택 또는 Premium 선택 시.
+  - Slow: Fast 한도 소진 후 같은 프리미엄 모델 사용 시. 무제한이지만 피크 시 대기열(5~60초~수 분).
+
+- **사용량 풀 (현재 정책)**
+  - **API 풀**: 특정 모델 또는 Premium 선택 시 차감. Pro는 월 $20 포함.
+  - **Auto + Composer 풀**: Auto 또는 Composer 1.5 선택 시 차감. 별도 풀, "넉넉한 포함량".
+  - Auto 사용 시 **500회가 아닌** Auto+Composer 풀에서 차감됨.
+
+- **무제한·대기열 없는 모델**
+  - 예전에 알려진 cursor-small, cursor-fast, gpt-4o-mini 등은 **2026년 3월 기준 Models UI/공식 목록에 없음**. (레거시/내부 이름 또는 정책 변경.)
+  - Auto 선택 시 Cursor가 내부적으로 저렴·빠른 모델을 골라 씀. 직접 선택 메뉴에는 없음.
+
+- **모델 옆 뇌 아이콘**
+  - **Thinking / Reasoning** 지원 모델. 추론 단계(chain-of-thought) 후 응답. 복잡한 추론에 유리, 비용·토큰 더 소모 가능.
+
+- **효율적 사용**
+  - 계획 먼저(Plan 모드), 컨텍스트는 필요한 만큼만, 프롬프트 구조화(맥락·의도·제약·형식), 간단한 작업은 Auto·무제한 계열 위주로.
