@@ -3,11 +3,37 @@ use tauri::tray::{MouseButton, TrayIconBuilder, TrayIconEvent};
 use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
 use tauri::Manager;
 use tauri::Url;
-
-/// Injected before page scripts; KarmoLab reads `window.__KARMOLAB_DESKTOP__`.
-const INIT_DESKTOP: &str = r#"window.__KARMOLAB_DESKTOP__=!0;"#;
+use tauri::WindowEvent;
 
 const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
+
+/// `window.__KARMOLAB_DESKTOP__` + WebView가 오래된 `toolbox.js`를 캐시해도 디버그 위젯이 빠지지 않도록
+/// `apps/karmolab/js/widgets/devtools.js`를 바이너리에 넣어 `Toolbox.init` 직전에 실행합니다.
+fn karmolab_desktop_init_script() -> String {
+    fn escape_js_string_literal(s: &str) -> String {
+        let mut out = String::with_capacity(s.len() + 16);
+        out.push('"');
+        for c in s.chars() {
+            match c {
+                '\\' => out.push_str("\\\\"),
+                '"' => out.push_str("\\\""),
+                '\n' => out.push_str("\\n"),
+                '\r' => out.push_str("\\r"),
+                '\0' => out.push_str("\\0"),
+                c => out.push(c),
+            }
+        }
+        out.push('"');
+        out
+    }
+
+    let devtools = include_str!("../../../../apps/karmolab/js/widgets/devtools.js");
+    let lit = escape_js_string_literal(devtools);
+    format!(
+        r#"window.__KARMOLAB_DESKTOP__=!0;(function(){{function k(){{if(typeof Toolbox==='undefined'||!Toolbox.init||Toolbox.__karmolabDevtoolsInjected)return;Toolbox.__karmolabDevtoolsInjected=1;var i=Toolbox.init;Toolbox.init=function(){{try{{if(typeof Toolbox.getTools==='function'&&!Toolbox.getTools().some(function(t){{return t.id==='devtools'}})){{var n=document.createElement('script');n.textContent={lit};document.documentElement.appendChild(n);n.remove();}}}}catch(e){{}}return i.apply(this,arguments)}}}}document.addEventListener('DOMContentLoaded',k);k();setTimeout(k,0)}})();"#,
+        lit = lit
+    )
+}
 
 fn allow_in_webview(url: &Url) -> bool {
     match url.scheme() {
@@ -28,9 +54,27 @@ fn allow_in_webview(url: &Url) -> bool {
     }
 }
 
+#[tauri::command]
+fn desktop_notify(title: String, body: String) -> Result<(), String> {
+    let summary = title.trim();
+    if summary.is_empty() {
+        return Ok(());
+    }
+    let text = body.trim();
+    let body_line = if text.is_empty() { "KarmoLab" } else { text };
+    notify_rust::Notification::new()
+        .summary(summary)
+        .body(body_line)
+        .appname("KarmoLab")
+        .show()
+        .map_err(|e| e.to_string())?;
+    Ok(())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .invoke_handler(tauri::generate_handler![desktop_notify])
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
             if let Some(w) = app.get_webview_window("main") {
                 let _ = w.unminimize();
@@ -39,6 +83,7 @@ pub fn run() {
             }
         }))
         .setup(|app| {
+            let handle = app.handle().clone();
             let window_conf = app
                 .config()
                 .app
@@ -47,8 +92,8 @@ pub fn run() {
                 .find(|w| w.label == "main")
                 .expect(r#"tauri.conf.json must include a window with label "main""#);
 
-            WebviewWindowBuilder::from_config(app, window_conf)?
-                .initialization_script(INIT_DESKTOP)
+            let main_window = WebviewWindowBuilder::from_config(app, window_conf)?
+                .initialization_script(karmolab_desktop_init_script())
                 .on_navigation(|url| {
                     if allow_in_webview(url) {
                         true
@@ -65,6 +110,15 @@ pub fn run() {
                 })
                 .build()?;
 
+            main_window.on_window_event(move |event| {
+                if let WindowEvent::CloseRequested { api, .. } = event {
+                    api.prevent_close();
+                    if let Some(w) = handle.get_webview_window("main") {
+                        let _ = w.hide();
+                    }
+                }
+            });
+
             #[cfg(not(any(target_os = "android", target_os = "ios")))]
             {
                 let show_i =
@@ -78,7 +132,7 @@ pub fn run() {
                     let _ = TrayIconBuilder::new()
                         .icon(icon)
                         .menu(&menu)
-                        .tooltip("KarmoLab — 왼쪽 클릭: 메뉴 · Windows: 왼쪽 더블클릭: 창만")
+                        .tooltip("KarmoLab — 닫기는 트레이로 숨김 · 왼쪽 클릭: 메뉴 · Windows: 더블클릭: 창")
                         .show_menu_on_left_click(true)
                         .on_menu_event(|app, event| {
                             if event.id == "tray_show" {

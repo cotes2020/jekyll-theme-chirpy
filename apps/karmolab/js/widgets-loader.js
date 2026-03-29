@@ -63,6 +63,7 @@
 
     list.forEach(function (path) {
         var s = document.createElement('script');
+        s.async = false;
         s.src = base + path + '.js';
         s.onload = done;
         s.onerror = done;

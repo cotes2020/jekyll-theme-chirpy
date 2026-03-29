@@ -8,7 +8,7 @@
     "frontendDist": "https://mascari4615.github.io/karmolab/"
   },
   "app": {
-    "withGlobalTauri": false,
+    "withGlobalTauri": true,
     "windows": [
       {
         "create": false,
