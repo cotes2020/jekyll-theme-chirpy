@@ -3,6 +3,8 @@
  */
 (function () {
     const PROGRESS_KEY = 'pet_strokes';
+    /** [karmolab-react-src DEFAULT_TRACKS] id → 표시 이름 */
+    const STREAK_TRACK_LABELS = { daily_review: '일일 리뷰', exercise: '운동' };
 
     const DEFS = {
         achievements: [
@@ -13,6 +15,10 @@
             { id: 'pet_500000', title: '500,000번 쓰다듬기', desc: '반이에요... 설마 진심이에요?!', icon: '🐱', source: 'pet' },
             { id: 'first_chat', title: '첫 대화', desc: '챗봇과 첫 대화를 나눴다', icon: '💬', source: 'chatbot' },
             { id: 'first_image', title: '첫 이미지 생성', desc: '첫 이미지를 생성했다', icon: '🎨', source: 'imagegen' },
+            { id: 'streak_first', title: '첫 줄기', desc: '처음으로 스트릭 하루를 채웠다', icon: '🌱', source: 'streak' },
+            { id: 'streak_7', title: '7일 연속', desc: '어느 트랙이든 7일 연속 달성', icon: '🔥', source: 'streak' },
+            { id: 'streak_30', title: '30일 연속', desc: '어느 트랙이든 30일 연속 달성', icon: '🔥', source: 'streak' },
+            { id: 'streak_100', title: '100일 연속', desc: '어느 트랙이든 100일 연속 달성', icon: '🔥', source: 'streak' },
             { id: 'reaction_200', title: '초고속 반응 200ms', desc: '번개같은 반사신경', icon: '⚡', source: 'reaction' },
             { id: 'reaction_150', title: '번개 반응 150ms', desc: '인간의 한계를 넘었다', icon: '⚡', source: 'reaction' },
         ],
@@ -84,6 +90,13 @@
         const badgeCount = badges.length;
         const totalA = DEFS.achievements.length;
         const totalB = DEFS.badges.length;
+        const streaks = data.streaks || {};
+        const streakIds = Object.keys(streaks);
+        let maxStreakCurrent = 0;
+        streakIds.forEach((id) => {
+            const sc = streaks[id] && streaks[id].current;
+            if (typeof sc === 'number' && sc > maxStreakCurrent) maxStreakCurrent = sc;
+        });
 
         container.innerHTML = `
             <div class="user-layout">
@@ -95,6 +108,8 @@
                         <div class="user-quick-stats">
                             <span class="user-quick-stat"><strong>${achCount}/${totalA}</strong> 도전과제</span>
                             <span class="user-quick-stat"><strong>${badgeCount}/${totalB}</strong> 뱃지</span>
+                            <span class="user-quick-stat"><strong>${streakIds.length}</strong> 스트릭 트랙</span>
+                            <span class="user-quick-stat"><strong>${maxStreakCurrent}</strong> 최고 연속(일)</span>
                             <span class="user-quick-stat"><strong>${petStrokes.toLocaleString()}</strong> 쓰담</span>
                             <span class="user-quick-stat"><strong>${totalChat}</strong> 채팅</span>
                             <span class="user-quick-stat"><strong>${totalImage}</strong> 이미지</span>
@@ -131,6 +146,40 @@
                                 <div class="user-item-icon">${unlocked ? a.icon : '🔒'}</div>
                                 <div class="user-item-title">${a.title}</div>
                                 <div class="user-item-desc">${a.desc}</div>
+                            </div>`;
+                        }).join('')}
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    function buildStreaks(container) {
+        Mdd.setMood('happy'); Mdd.say('스트릭 현황이에요~');
+        renderStreaks(container);
+    }
+
+    function renderStreaks(container) {
+        const data = Toolbox.getUserData();
+        const streaks = data.streaks || {};
+        const ids = Object.keys(streaks);
+        const labels = STREAK_TRACK_LABELS;
+
+        container.innerHTML = `
+            <div class="user-layout">
+                <div class="user-section">
+                    <h3>🔥 스트릭 (${ids.length} 트랙)</h3>
+                    ${ids.length === 0 ? '<p style="font-size:var(--font-size-sm);color:var(--text-secondary);margin:0 0 12px 0;">아직 기록이 없어요. 플래너(React)에서 오늘 완료를 눌러보세요.</p>' : ''}
+                    <div class="user-grid">
+                        ${ids.map(id => {
+                            const s = streaks[id];
+                            if (!s) return '';
+                            const label = labels[id] || id;
+                            const safeLabel = Toolbox.escapeHtml(label);
+                            const safeId = Toolbox.escapeHtml(id);
+                            return `<div class="user-item" title="${safeId}">
+                                <div class="user-item-icon">🔥</div>
+                                <div class="user-item-title">${safeLabel}</div>
+                                <div class="user-item-desc">현재 ${s.current}일 · 최장 ${s.longest}일 · ${Toolbox.escapeHtml(s.lastActivityDate || '—')}</div>
                             </div>`;
                         }).join('')}
                     </div>
@@ -402,6 +451,7 @@
             { id: 'user-overview', label: '요약', build: buildOverview },
             { id: 'user-usage', label: '사용량', build: buildUsage },
             { id: 'user-achievements', label: '도전과제', build: buildAchievements },
+            { id: 'user-streaks', label: '스트릭', build: buildStreaks },
             { id: 'user-badges', label: '뱃지', build: buildBadges },
             { id: 'user-storage', label: '저장소', build: buildStorage },
             { id: 'user-settings', label: '설정', build: buildSettings },

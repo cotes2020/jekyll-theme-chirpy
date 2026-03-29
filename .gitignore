@@ -23,3 +23,7 @@ node_modules
 !.vscode/blog.code-snippets
 
 # Misc
+.env
+.env.*
+!.env.example
+!.env.template

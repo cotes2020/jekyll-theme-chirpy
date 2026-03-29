@@ -679,6 +679,17 @@ html[data-bg="minimal"] body {
     padding-top: calc(52px + var(--space-lg));
 }
 
+/* layout-full 페이지가 활성화되면 스크롤 비활성화 및 flex fill 모드로 전환 */
+.main-content:has(.tool-page.layout-full.active) {
+    overflow: hidden;
+}
+.content-body:has(.tool-page.layout-full.active) {
+    flex: 1;
+    min-height: 0;
+    padding: 0;
+    padding-top: 52px; /* 헤더바 높이만 */
+}
+
 /* ═══════════════════════════════════════
    LANDING PAGE
    ═══════════════════════════════════════ */

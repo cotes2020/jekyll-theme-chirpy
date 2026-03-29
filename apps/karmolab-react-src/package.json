@@ -1,0 +1,44 @@
+{
+  "name": "karmolab-react-src",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.20",
+    "@fullcalendar/daygrid": "^6.1.20",
+    "@fullcalendar/interaction": "^6.1.20",
+    "@fullcalendar/react": "^6.1.20",
+    "@fullcalendar/timegrid": "^6.1.20",
+    "@hello-pangea/dnd": "^18.0.1",
+    "@react-oauth/google": "^0.13.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "lucide-react": "^1.0.1",
+    "react": "^19.2.4",
+    "react-big-calendar": "^1.19.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.12.0",
+    "@types/react": "^19.2.14",
+    "@types/react-big-calendar": "^1.16.3",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vite": "^8.0.1"
+  }
+}

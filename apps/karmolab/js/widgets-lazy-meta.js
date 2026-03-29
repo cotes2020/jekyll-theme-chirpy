@@ -103,4 +103,13 @@ window.KARMOLAB_LAZY_META = [
         icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
         lazyScriptPaths: ['gacha'],
     },
+    {
+        id: 'planner',
+        title: '플래너',
+        category: 'tool',
+        desc: '나만의 일정 동기화 및 스트릭 칸반 보드',
+        layout: 'full',
+        icon: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>',
+        lazyScriptPaths: ['planner/planner'],
+    },
 ];
