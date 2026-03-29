@@ -1,0 +1,31 @@
+name: KarmoLab Tauri
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "apps/karmolab-tauri/**"
+      - ".github/workflows/karmolab-tauri.yml"
+  pull_request:
+    paths:
+      - "apps/karmolab-tauri/**"
+      - ".github/workflows/karmolab-tauri.yml"
+
+jobs:
+  cargo-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/karmolab-tauri/src-tauri
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux dependencies (Tauri / WebKit)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: cargo check
+        run: cargo check --all-targets

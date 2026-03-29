@@ -29,6 +29,13 @@ npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 
 - **한계**: (1) 최초 실행부터 오프라인이면 캐시가 없어 빈 화면/실패할 수 있습니다. (2) 브라우저·WebView2가 디스크를 비우면 캐시가 사라집니다. (3) **다른 도메인 CDN**은 CORS·opaque 응답 때문에 SW에 안 남거나 불완전할 수 있어, 일부 스크립트/폰트는 여전히 온라인이 필요할 수 있습니다.
 - 로컬에서 앱으로 확인할 때는 위 **`npm run dev`** 흐름을 쓰면 됩니다. 배포본·서비스 워커·원격 캐시를 **개발 빌드(Rust 디버그)** 로만 검증하려면 **`npm run dev:remote`** (`src-tauri/tauri.dev-remote.conf.json`이 `devUrl`만 GitHub Pages로 덮어씀).
 
+## 배포·원격 검증(짧은 체크리스트)
+
+1. **`npm run dev:remote`** 로 WebView가 GitHub Pages `karmolab` 을 띄우는지.
+2. **사이드바 → 기타 → 디버그** 에서 OS 알림 테스트(성공/에러 로그).
+3. **트레이**: 창 숨김, 다시 실행 시 단일 인스턴스로 앞으로 오는지.
+4. **서비스 워커**: `index.html` 의 SW 등록은 **프로덕션 Jekyll** 에만 들어갑니다. 로컬 `jekyll serve`(기본 development)로는 해당 스크립트가 빠지므로, SW·오프라인 캐시는 **배포 URL** 또는 `JEKYLL_ENV=production` 으로 빌드한 `_site` 로 확인하세요.
+
 ## 데스크톱 전용
 
 - Tauri가 주입: `window.__KARMOLAB_DESKTOP__ === true` (웹 브라우저에는 없음)
