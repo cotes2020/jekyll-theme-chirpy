@@ -10,5 +10,5 @@
       "http://127.0.0.1:*/*"
     ]
   },
-  "permissions": ["core:default", "allow-desktop-notify"]
+  "permissions": ["core:default", "allow-desktop-notify", "updater:default"]
 }

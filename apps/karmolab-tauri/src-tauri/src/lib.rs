@@ -4,6 +4,7 @@ use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
 use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
+use tauri_plugin_updater::UpdaterExt;
 
 #[cfg(windows)]
 #[link(name = "user32")]
@@ -13,6 +14,36 @@ extern "system" {
 }
 
 const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
+
+fn spawn_tray_update_check(handle: tauri::AppHandle) {
+    tauri::async_runtime::spawn(async move {
+        let msg = match handle.updater() {
+            Ok(updater) => match updater.check().await {
+                Ok(Some(update)) => {
+                    let ver = update.version.clone();
+                    match update
+                        .download_and_install(|_chunk, _total| {}, || {})
+                        .await
+                    {
+                        Ok(()) => format!(
+                            "{} 설치됨. 앱을 완전히 종료한 뒤 다시 실행해 주세요.",
+                            ver
+                        ),
+                        Err(e) => format!("업데이트 설치 실패: {}", e),
+                    }
+                }
+                Ok(None) => "현재 버전이 최신입니다.".to_string(),
+                Err(e) => format!("업데이트 확인 실패: {}", e),
+            },
+            Err(e) => format!("업데이터 초기화 실패: {}", e),
+        };
+        let _ = notify_rust::Notification::new()
+            .summary("KarmoLab 업데이트")
+            .body(&msg)
+            .appname("KarmoLab")
+            .show();
+    });
+}
 
 /// 데스크톱 앱 플래그만 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
 fn karmolab_desktop_init_script() -> &'static str {
@@ -133,6 +164,7 @@ fn desktop_notify(
 pub fn run() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![desktop_notify])
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
             if let Some(w) = app.get_webview_window("main") {
                 let _ = w.unminimize();
@@ -183,14 +215,16 @@ pub fn run() {
                     MenuItem::with_id(app, "tray_show", "KarmoLab 창 보이기", true, None::<&str>)?;
                 let browser_i =
                     MenuItem::with_id(app, "tray_browser", "브라우저에서 열기", true, None::<&str>)?;
+                let update_i =
+                    MenuItem::with_id(app, "tray_update", "업데이트 확인…", true, None::<&str>)?;
                 let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
-                let menu = Menu::with_items(app, &[&show_i, &browser_i, &quit_i])?;
+                let menu = Menu::with_items(app, &[&show_i, &browser_i, &update_i, &quit_i])?;
 
                 if let Some(icon) = app.default_window_icon().cloned() {
                     let _ = TrayIconBuilder::new()
                         .icon(icon)
                         .menu(&menu)
-                        .tooltip("KarmoLab — 닫기는 트레이로 숨김 · 왼쪽 클릭: 메뉴 · Windows: 더블클릭: 창")
+                        .tooltip("KarmoLab — 트레이 메뉴에서 업데이트 확인 · 닫기(X)는 숨김")
                         .show_menu_on_left_click(true)
                         .on_menu_event(|app, event| {
                             if event.id == "tray_show" {
@@ -201,6 +235,8 @@ pub fn run() {
                                 }
                             } else if event.id == "tray_browser" {
                                 let _ = open::that(KARMOLAB_WEB_URL);
+                            } else if event.id == "tray_update" {
+                                spawn_tray_update_check(app.clone());
                             } else if event.id == "tray_quit" {
                                 app.exit(0);
                             }

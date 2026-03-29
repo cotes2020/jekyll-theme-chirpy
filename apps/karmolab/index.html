@@ -26,33 +26,39 @@ permalink: /karmolab/
     <meta name="twitter:title" content="KarmoLab">
     <meta name="twitter:description" content="AI 챗봇, 이미지 생성·편집, 암호화, 랜덤 생성기 등 유틸리티와 미니게임을 모은 KarmoLab. 삶을 섞고 술을 바꿀 시간.">
     <link rel="icon" href="/apps/karmolab/img/favicon.ico">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha384-S3wQ/l0OsbJoFeJC81UIr3JOlx/OzNJpRt1bV+yhpWQxPAahfpQtpxBSfn+Isslc" crossorigin="anonymous" defer></script>
+    <script src="/apps/karmolab/js/vendor/crypto-js.min.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="/apps/karmolab/css/toolbox.css">
     <link rel="stylesheet" href="/apps/karmolab/css/randomgen.css">
-    <link id="prism-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link id="prism-css" rel="stylesheet" href="/apps/karmolab/js/vendor/prism/themes-cdn/prism-tomorrow.min.css">
     <script>
 (function(){
   var t=localStorage.getItem('toolbox_theme')||'dark';
-  var b=localStorage.getItem('toolbox_bg_theme')||'blue-magenta';
+  var bg=localStorage.getItem('toolbox_bg_theme')||'blue-magenta';
   document.documentElement.setAttribute('data-theme',t);
-  document.documentElement.setAttribute('data-bg',b);
+  document.documentElement.setAttribute('data-bg',bg);
   var pt=localStorage.getItem('toolbox_prism_theme');
-  var b='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/',e='https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/';
-  var m={tomorrow:b+'prism-tomorrow.min.css',okaidia:b+'prism-okaidia.min.css',twilight:b+'prism-twilight.min.css',prism:b+'prism.min.css',coy:b+'prism-coy.min.css',dracula:e+'prism-dracula.min.css','one-dark':e+'prism-one-dark.min.css',nord:e+'prism-nord.min.css','material-dark':e+'prism-material-dark.min.css','vsc-dark-plus':e+'prism-vsc-dark-plus.min.css',ghcolors:e+'prism-ghcolors.min.css','one-light':e+'prism-one-light.min.css','material-light':e+'prism-material-light.min.css'};
+  var pb='/apps/karmolab/js/vendor/prism/themes-cdn/',pe='/apps/karmolab/js/vendor/prism/themes-ext/';
+  var m={tomorrow:pb+'prism-tomorrow.min.css',okaidia:pb+'prism-okaidia.min.css',twilight:pb+'prism-twilight.min.css',prism:pb+'prism.min.css',coy:pb+'prism-coy.min.css',dracula:pe+'prism-dracula.min.css','one-dark':pe+'prism-one-dark.min.css',nord:pe+'prism-nord.min.css','material-dark':pe+'prism-material-dark.min.css','vsc-dark-plus':pe+'prism-vsc-dark-plus.min.css',ghcolors:pe+'prism-ghcolors.min.css','one-light':pe+'prism-one-light.min.css','material-light':pe+'prism-material-light.min.css'};
   var url=(pt&&m[pt])?m[pt]:(t==='light'?m.ghcolors:m.tomorrow);
   var el=document.getElementById('prism-css');
   if(el&&url)el.href=url;
 })();
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.1.4/marked.min.js" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha384-06z5D//U/xpvxZHuUz92xBvq3DqBBFi7Up53HRrbV7Jlv7Yvh/MZ7oenfUe9iCEt" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha384-Uq05+JLko69eOiPr39ta9bh7kld5PKZoU+fF7g0EXTAriEollhZ+DrN8Q/Oi8J2Q" crossorigin="anonymous" defer></script>
+    <script src="/apps/karmolab/js/vendor/marked.min.js" defer></script>
+    <script src="/apps/karmolab/js/vendor/prism.min.js" defer></script>
+    <script src="/apps/karmolab/js/vendor/prism-autoloader.min.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.Prism && Prism.plugins && Prism.plugins.autoloader) {
+        Prism.plugins.autoloader.languages_path = '/apps/karmolab/js/vendor/prism/components/';
+      }
+    });
+    </script>
 </head>
 <body>
     <div class="status-toast" id="statusToast"></div>

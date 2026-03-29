@@ -782,8 +782,8 @@ const Toolbox = (() => {
 
     /* ===== Prism 코드 테마 ===== */
     const PRISM_THEME_KEY = 'toolbox_prism_theme';
-    const PRISM_BASE = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes';
-    const PRISM_EXT = 'https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0';
+    const PRISM_BASE = '/apps/karmolab/js/vendor/prism/themes-cdn';
+    const PRISM_EXT = '/apps/karmolab/js/vendor/prism/themes-ext';
 
     const PRISM_THEMES = [
         { id: 'tomorrow', label: 'Tomorrow Night', url: `${PRISM_BASE}/prism-tomorrow.min.css` },
