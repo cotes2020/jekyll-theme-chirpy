@@ -119,6 +119,28 @@ date: 2023-04-11. 11:01
 last_modified_at: 2025-05-02. 01:27 # 내 작업물에 대한 공격은 나에 대한 공격으로 간주한다
 ```
 
+```yml
+date: 2025-04-25. 06:38 # Init
+# last_modified_at: 2025-04-27. 06:11 # 작업
+# last_modified_at: 2025-04-29. 05:49 # 전략
+# last_modified_at: 2025-05-01. 13:29 # 메모
+# last_modified_at: 2025-05-01. 15:00 # todo
+# last_modified_at: 2025-05-02. 12:15 # 시작점
+# last_modified_at: 2025-05-05. 19:52 # +library.md, memo.md
+# last_modified_at: 2025-05-14. 00:50 # +editor-time shortcut, -library/memo.md, +시시콜콜한 이야기의 위로
+# last_modified_at: 2025-05-14. 07:17 # ~즐겨찾기 정리
+# last_modified_at: 2025-05-20. 00:04 # +음악
+# last_modified_at: 2025-05-26. 06:11 # +이끔 learning
+# last_modified_at: 2025-06-11. 22:53 # -이끔: 404 링크, +이끔: '전략: 테크'
+# last_modified_at: 2025-06-23. 22:47 # +이끔: 일기
+# last_modified_at: 2025-08-11. 00:09 # ~이끔: 일기, -todo
+# last_modified_at: 2025-09-24. 21:13 # E ~이끔: 일기, +ps-algorithm
+# last_modified_at: 2025-10-04. 15:35 # -E ~이끔: 일기
+# last_modified_at: 2025-10-08. 16:48 # E ~이끔: 음악 -> 플레이리스트
+# last_modified_at: 2025-10-20. 06:58 # E ~제목/설명: Maid -> 메이드 ~즐겨찾기: 주
+last_modified_at: 2025-10-20. 07:21 # E +메모: 작업대
+```
+
 2023-12-15. 12:57: 글 계승.  
 `2023-04-11-BookMark-Dev: 🌑 개발 관련 즐겨찾기/북마크`,  
 `2023-04-17-Web-Study: 🌘 Web 공부 북마크`  
