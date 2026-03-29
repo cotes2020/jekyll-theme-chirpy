@@ -53,6 +53,9 @@ jobs:
           node-version: '20'
           cache: npm
 
+      - name: Build post graph data
+        run: npm ci && npm run build:graph
+
       - name: Build KarmoLab React App
         working-directory: apps/karmolab-react-src
         run: |
