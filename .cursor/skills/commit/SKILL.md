@@ -1,85 +1,93 @@
 ---
 name: commit
 description: >-
-  Stages and commits ONLY paths the agent actually edited in THIS chat (tools:
-  write, search_replace, etc.). Never stage a whole folder or "coherent app
-  slice" to fix build—no exceptions unless the user names paths or says to
-  commit an entire directory. Split into multiple commits per topic within that
-  session set. Never push unless explicitly asked.
+  Git commit discipline: default = only paths edited via agent tools in THIS
+  chat; user override = explicit paths, whole-directory permission, or branch
+  curation when the user says so. Never git add -A / git add . for unrelated
+  files. Split commits by topic (no mega-blobs). Never push unless explicitly
+  asked. Prefer English in this doc; follow repo git log style for messages.
 ---
 
-# /commit (세션 변경만 커밋)
+# Commit skill (strict)
 
-## 철칙 (이것보다 위에 없음)
+## Rule priority (read first — conflicts resolved here)
 
-**커밋에 들어갈 수 있는 파일은 오직 이것뿐이다:** 이번 대화에서 에이전트가 **도구로 실제로 생성·수정·삭제한 경로**(Write / StrReplace / Delete / EditNotebook 등). 읽기·검색만 한 파일은 **절대** 넣지 않는다.
+1. **Explicit user instructions win.** If the user lists paths, says “commit everything under `apps/foo/`”, “stage only KarmoLab”, “do **not** commit `_posts`”, “split this into N commits”, or “squash into one commit”, follow that even if it differs from the defaults below.
+2. **Default when the user does *not* narrow or expand scope:** commit **only** paths the agent **created, modified, or deleted with tools** in **this conversation** (Write, StrReplace, Delete, EditNotebook, etc.). **Never** include files the agent only read or searched.
+3. **Phrases like “related”, “sensible for this branch”, “fix the build”, “keep it consistent”** do **not** widen the default set. They are **not** permission to stage other dirty or untracked files.
+4. **Never `git push`** unless the user clearly asks (e.g. “push”, “push to origin”). “Commit only”, “no push”, “do not push” ⇒ **no push**.
 
-- 사용자가 **「여기서 수정한 것만」「이번에 고친 것만」「관련만」「브랜치에 맞게」「알맞은 것만」**이라고 해도, **「관련」의 의미는 위 세션 집합과 같다.** 워킹트리에 같이 떠 있는 다른 변경·미추적 파일을 **관련 있다고 스테이징하지 않는다.**
-- **앱이 깨질 것 같다, 한 덩어리가 논리적으로 맞다, 빌드 일관성** 같은 이유로 **`git add <상위 폴더>` / `git add apps/.../` 전체**를 하지 않는다. 그건 **금지**다. 필요하면 사용자에게 **「이 경로들도 포함할까요?」**로 묻거나, 사용자가 **구체 경로** 또는 **「X 폴더 전부 커밋」**을 말한 뒤에만 확장한다.
-- 대화 맥락에 **어떤 파일을 손댔는지** 불확실하면: `git status`만 보고 추측해 넓히지 말고, **대화 기록에서 편집한 경로를 다시 짚거나 사용자에게 확인**한다.
+If anything is ambiguous, **ask once** with concrete options; do not guess by staging extra paths.
 
-**주제 분할**은 위 **세션 집합 안에서만** 적용한다. 주제 A에 안 쓴 파일을 「같은 기능 덩어리」라며 넣지 않는다.
+---
 
-## 목표
+## Two modes (pick one per request)
 
-세션에서 **실제로 바꾼 파일만** 스테이징·커밋한다. 커밋 제목·본문은 **짧게**, `git log` 최근 몇 개 톤에 맞춘다.
+### Mode A — Session-only (default)
 
-**우선순위:** 브랜치·관련·알맞음 같은 표현은 **세션 편집 경로를 좁히지도 넓히지도 않는다.** 디렉터리 전체 커밋은 사용자가 **경로를 나열**하거나 **「X 폴더 전부」**처럼 **명시**한 경우에만 한다.
+- **Eligible paths:** tool-touched paths in **this chat** only.
+- **Topic split:** If those paths span **multiple unrelated concerns** (e.g. feature + unrelated docs + config), use **multiple commits**—one topic per commit. Exception: user says to use a **single** commit.
+- **Forbidden:** `git add -A`, `git add .`, `git add some/dir/` **unless** that directory was **only** touched in-session **and** contains no extra untracked/unrelated files—or the user explicitly allowed the directory add.
 
-**푸시:** **`git push`는 하지 않는다.** 사용자가 **「푸시해 줘」「push」「원격에 올려」**처럼 **푸시를 명시적으로 요청한 경우에만** 실행한다. 「커밋만」「푸시 금지」「절대 푸시하지 않음」은 푸시 금지로 해석한다.
+### Mode B — User-directed
 
-**주제 분할:** **같은 대화 세션이라도** 서로 다른 목적의 변경(예: 기능 A + 문서 B + 설정 C)이면 **한 커밋에 몰아넣지 않고**, 논리적 주제마다 **커밋을 나눈다**. 각 커밋에는 그 주제에 속한 파일만 스테이징하고, 메시지도 주제에 맞게 짧게 쓴다. 사용자가 「한 번에 다 커밋」「하나로 묶어」처럼 **단일 커밋을 명시**한 경우에만 예외로 묶는다.
+- **Eligible paths:** exactly what the user specified (listed paths, glob as given, or “entire directory X” when they say so).
+- **Topic split:** If the user asks to “commit the right things for this branch” **without** listing files, infer **logical topics** (e.g. app vs blog vs tooling) and **separate commits per topic**. Do **not** ship one giant commit that mixes unrelated areas unless they ask for one commit.
+- **User exclusions:** Permanent or stated exclusions (e.g. “never commit blog `_posts`”) **must** be respected: leave those paths unstaged and **do not** put them in any commit.
 
-## 절차
+---
 
-1. **세션 변경 목록 확정 (열거)**  
-   이번 대화에서 도구로 편집·추가·삭제한 경로만 후보로 쓴다. (읽기만 한 파일은 제외.)  
-   커밋 직전에 **후보 목록이 `git add` 인자와 일치하는지** 스스로 대조한다. 목록 밖 경로가 스테이징되면 **즉시 `git restore --staged`로 빼고** 다시 한다.
+## Anti-patterns (do not do this)
 
-1b. **주제별로 묶기 (필수)**  
-   **1번 목록 안의 파일만** 논리적 주제별로 나눈다. 주제가 **둘 이상**이면 **커밋도 그만큼** 만든다. 애매하면 `git diff <파일>`로 성격을 보고 나눈다.
+- Staging “the whole app” or “everything under `apps/…`” to be helpful when only a few files were edited in-session.
+- One commit titled like “refactor + lazy load + new widget + docs” when those are **separate** concerns—**split** unless the user asked for one commit.
+- Interpreting “commit what’s relevant to the branch” as “add all unstaged files in the repo.”
+- Running `git commit` without checking `git diff --cached` / `git status` for stray paths.
+- Pushing after commit without an explicit push request.
 
-2. **저장소 상태 확인**  
-   `git status`, 필요 시 `git diff`로 워킹트리를 본다.
+---
 
-3. **겹침 검사 (필수)**  
-   후보 파일이 `git status`에 **수정됨(M)** 등으로 잡혀 있을 때:
-   - 이 세션에서만 건드린 파일 → 그대로 진행.
-   - **같은 파일에** 이 세션 바깥 변경(다른 에이전트·수동 편집)이 **같이 섞여** 있을 가능성이 있으면 **커밋하지 말고** 사용자에게 먼저 묻는다.
+## Procedure (execute in order)
 
-   **질문 예시 (한 번에 제시):**
-   - `path/to/File.cs`에 이번 세션 변경 외에 다른 변경이 같이 있습니다. 어떻게 할까요?
-     - **A)** 이 파일은 이번 커밋에서 빼기  
-     - **B)** 전부 함께 커밋하기  
-     - **C)** 중단 (직접 정리 후 다시)
+1. **Classify the request**  
+   Session-only (Mode A) vs user-directed (Mode B). If mixed, **B overrides** for scope; still apply topic splitting unless user wants one commit.
 
-   판단이 애매하면 `git diff <file>`로 범위를 보고, 여전히 세션만 분리하기 어렵면 **반드시 C 또는 사용자 지시**를 받는다.
+2. **Enumerate candidate paths**  
+   Write the list explicitly (mental or brief note). Mode A: from chat tool edits only. Mode B: from user text only.
 
-4. **이전 커밋 스타일**  
-   `git log -5 --oneline` (또는 `--format=...`)로 제목 패턴(접두어, 영/한, 길이)을 보고 **같은 스타일**로 짧게 쓴다.
+3. **`git status` and optional `git diff`**  
+   Confirm candidates exist and match intent.
 
-5. **스테이징·커밋 (주제마다 반복)**  
-   주제 그룹마다 다음을 **순서대로** 반복한다.  
-   - `git add -- <해당 주제의 세션 파일만>`  
-   - `git commit -m "제목"` — 본문이 필요하면 `-m "제목" -m "한두 문장"` 정도만. 제목은 **그 주제**만 반영한다.  
-   다음 주제로 넘어가기 전에 스테이징을 비운 상태에서(또는 다음 그룹만 추가해서) 다시 `git add`한다.
+4. **Mixed-change / overlap check**  
+   If a candidate file likely contains **non-session** edits and the user did not say “commit all changes in this file”, **stop** and ask: (A) omit file, (B) commit whole file, (C) user will split manually.
 
-6. **스테이징에 다른 파일이 섞이지 않게** 한다. `git add -A` / `git add .` 로 세션 무관 파일을 넣지 않는다. 주제 분할 시에도 **한 번에 한 주제**만 스테이징한다.
+5. **Topic grouping (required if >1 topic)**  
+   Group candidates by purpose. **Each commit** gets one group. Message must match **that group only**.
 
-## 하지 말 것
+6. **Stage narrowly**  
+   `git add -- <path1> <path2> …` per topic. After each `git add`, run `git status` or `git diff --cached --stat` and **remove** wrong paths with `git restore --staged -- <path>`.
 
-- **`git push`를 기본으로 실행하지 않는다.** (명시적 푸시 요청이 있을 때만.)
-- 세션에서 수정하지 않은 파일·미추적 파일을 **어떤 이유로도** 포함하지 않는다. (동작 보장·일관성·「이 브랜치 작업」 모두 **사유가 되지 않음**.)
-- **`git add <디렉터리>/`** 로 세션 밖 파일을 한꺼번에 넣지 않는다.
-- 겹침이 있는데 사용자 답 없이 mixed 파일을 커밋하지 않는다.
-- 불필요하게 긴 본문·장황한 설명을 쓰지 않는다.
-- `git add -A` / `git add .` 로 세션과 무관한 변경을 섞지 않는다.
-- 서로 다른 주제를 한 커밋에 합치지 않는다. (사용자가 단일 커밋을 명시한 경우만 예외.)
+7. **Pre-commit checklist (mandatory)**  
+   - [ ] Staged paths ⊆ allowed set for this mode.  
+   - [ ] No accidental `git add -A` / `git add .`.  
+   - [ ] User-excluded paths (e.g. `_posts`) are **not** staged.  
+   - [ ] Commit message matches **this** topic only.
 
-## 트리거
+8. **Commit message**  
+   Short subject; match recent repo style (`git log -5 --oneline`). Body only if needed (one or two lines).
 
-사용자가 **`/commit`**, **「커밋」**, **「여기서 수정한 것만」**, **「관련만」**, **「브랜치에 맞게」** 등으로 커밋을 요청할 때 이 스킬을 따른다. **그 문구들은 세션 편집 집합을 넓히는 허가가 아니다.**
+9. **Repeat** for remaining topic groups (clear staging between groups if needed).
 
-## 셸 (Windows)
+10. **Do not push** unless asked.
 
-PowerShell에서는 `cd ... && git status`가 실패할 수 있으므로 **`;`로 명령을 이을 것** (예: `cd path; git status`).
+---
+
+## Shell: Windows / PowerShell
+
+`cd … && git …` often **fails** in PowerShell. Chain with **`;`** instead, e.g. `cd path; git status`.
+
+---
+
+## Triggers
+
+Apply this skill when the user asks to commit, `/commit`, stage, split commits, or “commit related / branch-appropriate” changes. **Those words do not expand Mode A** unless the user also gives paths or explicit directory permission.
