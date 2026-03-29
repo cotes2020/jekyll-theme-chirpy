@@ -13,7 +13,6 @@ _site
 
 # NPM dependencies
 node_modules
-package-lock.json
 
 # IDE configurations
 .idea
