@@ -37,6 +37,7 @@ declare global {
   /** toolbox.js — global lexical binding (not necessarily window.Toolbox) */
   var Toolbox: {
     registerDeferred?: (stub: KarmoLabLazyWidgetStub) => void;
+    getLazyWidgetPublicMeta?: (id: string) => Record<string, unknown>;
     register: (config: {
       id: string;
       title: string;
@@ -51,7 +52,7 @@ declare global {
         label: string;
         build: (container: HTMLElement) => void;
       }>;
-    }) => void;
+    } & Record<string, unknown>) => void;
     initTheme: () => void;
     init: () => void;
     getTools: () => Array<{ id: string }>;
