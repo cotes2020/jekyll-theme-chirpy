@@ -12,6 +12,7 @@
  * - 이미지: https://ai.google.dev/gemini-api/docs/image-generation
  * - Imagen: https://ai.google.dev/gemini-api/docs/imagen
  */
+// @ts-nocheck — large API surface; narrow types incrementally later (Toolbox/Gemini shapes)
 const Gemini = (() => {
     /* ===== 모델 정의 (API ListModels 2026-03-18 조회 기준, .cursor/rules/google-ai-models.mdc 참조) ===== */
     const MODELS = {

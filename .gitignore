@@ -50,6 +50,7 @@ node_modules
 apps/karmolab/react-dist/
 # KarmoLab TS build output (apps/karmolab: npm run build)
 apps/karmolab/js/mdd.js
+apps/karmolab/js/gemini.js
 apps/karmolab/js/widgets/imageconvert/core.js
 apps/karmolab/js/widgets/imageconvert/batch-pipeline.js
 apps/karmolab/js/widgets/randomgen/randomgen-color.js
