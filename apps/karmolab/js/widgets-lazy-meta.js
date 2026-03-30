@@ -67,7 +67,7 @@ window.KARMOLAB_LAZY_META = [
     {
         id: 'worldwiki',
         title: '세계관 위키',
-        category: 'tool',
+        category: null,
         desc: '세계관(캐릭터·아티팩트) 문서를 앱 안에서 봅니다',
         layout: 'full',
         icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
