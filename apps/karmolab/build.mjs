@@ -1,5 +1,5 @@
 /**
- * Emit browser scripts from src/ into js/ (mirrors paths under src/).
+ * Emit browser scripts from src/ into js/ (mirrors paths under src/), and src/world → ../world/ (wiki loaders).
  * - Most entries: bundle + iife (type-only imports resolve).
  * - mdd.ts / gemini.ts / toolbox.ts: bundle false + esm so top-level globals stay visible (no extra IIFE).
  */
@@ -117,6 +117,24 @@ const entryPoints = [
 
 for (const rel of entryPoints) {
   const outfile = rel.replace(/^src\//, 'js/').replace(/\.ts$/, '.js');
+  await esbuild.build({
+    entryPoints: [join(root, rel)],
+    outfile: join(root, outfile),
+    bundle: true,
+    format: 'iife',
+    platform: 'browser',
+    target: ['es2020'],
+    logLevel: 'info'
+  });
+}
+
+const worldEntryPoints = [
+  'src/world/world.ts',
+  'src/world/parse-md.ts',
+  'src/world/load-characters-from-wiki.ts'
+];
+for (const rel of worldEntryPoints) {
+  const outfile = rel.replace(/^src\/world\//, 'world/').replace(/\.ts$/, '.js');
   await esbuild.build({
     entryPoints: [join(root, rel)],
     outfile: join(root, outfile),

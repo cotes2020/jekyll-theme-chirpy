@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * KarmoWorld — Markdown frontmatter YAML (제한된 부분집합) 파싱
  * - 본문과 분리: YAML --- ... ---

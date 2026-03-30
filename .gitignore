@@ -48,6 +48,8 @@ node_modules
 
 # Build artifacts
 apps/karmolab/react-dist/
+# KarmoWorld scripts (built from src/world/*.ts; wiki *.md stay tracked)
+apps/karmolab/world/*.js
 # KarmoLab TS build output (apps/karmolab: npm run build)
 # Root scripts + widgets/**/*.js = esbuild output. Tracked legacy .js under widgets/ is unchanged
 # until migrated (gitignore does not apply to already-tracked files). json/md under js/ stay visible.

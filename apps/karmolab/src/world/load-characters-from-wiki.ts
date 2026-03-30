@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * wiki/entities/characters/*.md 를 fetch → 파싱 → KarmoWorld.entities + bindings 채움
  * imagegen/chatbot 스크립트보다 먼저 실행되며, Toolbox 지연 로더가 Promise 완료까지 대기합니다.
