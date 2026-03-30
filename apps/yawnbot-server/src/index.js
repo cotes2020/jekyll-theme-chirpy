@@ -14,6 +14,7 @@ const { RaidService } = require('./services/raid');
 
 const fs = require('fs');
 const path = require('path');
+const { spawn, execFile } = require('child_process');
 const ENHANCEMENT_DIR = path.join(__dirname, '..', 'resources', 'img', 'enhancement');
 
 function getImageAttachment(imageRelativePath) {
@@ -45,6 +46,291 @@ const raid = new RaidService(gameData);
 const ADMIN_IDS = (process.env.ADMIN_IDS || '').split(',').map(s => s.trim()).filter(Boolean);
 
 function isAdmin(userId) { return ADMIN_IDS.includes(String(userId)); }
+
+/** Cursor 로컬 에이전트 동시 실행 방지 */
+let cursorEditInFlight = false;
+
+const CURSOR_RUNNER_PATH = path.join(__dirname, '..', 'cli', 'cursor-local-runner.js');
+
+function getCursorMaxPromptChars() {
+    return parseInt(process.env.CURSOR_MAX_PROMPT_CHARS || '2000', 10);
+}
+
+/**
+ * @param {string} cwd
+ * @param {string} prompt
+ * @param {string} mode
+ * @returns {Promise<object>}
+ */
+function runCursorLocalRunner(cwd, prompt, mode, onProgress) {
+    const innerTimeoutMs = parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10);
+    /** 러너(자식 node)가 안 끝나도 봇이 영원히 멈추지 않도록 여유(ms) */
+    const outerGraceMs = parseInt(process.env.CURSOR_RUNNER_GRACE_MS || '120000', 10);
+    const hardCapMs = Math.max(60000, innerTimeoutMs + outerGraceMs);
+
+    return new Promise((resolve, reject) => {
+        const args = [
+            CURSOR_RUNNER_PATH,
+            '--cwd',
+            cwd,
+            '--prompt',
+            prompt,
+            '--mode',
+            mode || 'agent',
+            '--timeoutMs',
+            String(innerTimeoutMs),
+        ];
+        const child = spawn(process.execPath, args, {
+            env: {
+                ...process.env,
+                CURSOR_LOCAL_REPO_DIR: process.env.CURSOR_LOCAL_REPO_DIR || cwd,
+                CURSOR_GIT_SNAPSHOT: process.env.CURSOR_GIT_SNAPSHOT || 'baseline',
+            },
+            windowsHide: true,
+        });
+        let out = '';
+        let err = '';
+        const maxOut = 12 * 1024 * 1024;
+        let settled = false;
+        let resultJson = null;
+        let outBuf = '';
+
+        const killTree = () => {
+            if (!child.pid) return;
+            try {
+                if (process.platform === 'win32') {
+                    execFile('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true }, () => {});
+                } else {
+                    child.kill('SIGKILL');
+                }
+            } catch {
+                try {
+                    child.kill('SIGKILL');
+                } catch {
+                    /* ignore */
+                }
+            }
+        };
+
+        const hardTimer = setTimeout(() => {
+            if (settled) return;
+            settled = true;
+            killTree();
+            reject(new Error(`러너 시간 초과 (${Math.round(hardCapMs / 1000)}초). Cursor 에이전트가 멈췄거나 종료되지 않았습니다.`));
+        }, hardCapMs);
+
+        child.stdout.on('data', chunk => {
+            const s = chunk.toString();
+            if (out.length < maxOut) out += s;
+            outBuf += s;
+            // NDJSON parsing: each line is one JSON object
+            while (true) {
+                const idx = outBuf.indexOf('\n');
+                if (idx === -1) break;
+                const line = outBuf.slice(0, idx).trim();
+                outBuf = outBuf.slice(idx + 1);
+                if (!line) continue;
+                try {
+                    const msg = JSON.parse(line);
+                    if (msg && msg.type === 'assistant_chunk' && typeof msg.text === 'string') {
+                        if (typeof onProgress === 'function') onProgress(msg.text);
+                    } else if (msg && typeof msg.ok === 'boolean') {
+                        resultJson = msg;
+                    }
+                } catch {
+                    // ignore non-JSON lines
+                }
+            }
+        });
+        child.stderr.on('data', chunk => {
+            if (err.length < 256 * 1024) err += chunk.toString();
+        });
+        child.on('error', e => {
+            if (settled) return;
+            settled = true;
+            clearTimeout(hardTimer);
+            reject(e);
+        });
+        child.on('close', code => {
+            if (settled) return;
+            settled = true;
+            clearTimeout(hardTimer);
+            try {
+                // 마지막 NDJSON 줄에 \\n이 없으면 outBuf에만 남아 있음
+                const tail = outBuf.trim();
+                if (tail) {
+                    try {
+                        const msg = JSON.parse(tail);
+                        if (msg && typeof msg.ok === 'boolean') resultJson = msg;
+                    } catch {
+                        /* ignore */
+                    }
+                }
+                if (resultJson && typeof resultJson.ok === 'boolean') {
+                    resolve({ json: resultJson, code, err });
+                    return;
+                }
+                const trimmed = out.trim();
+                const lastLine = trimmed.includes('\n') ? trimmed.split('\n').pop().trim() : trimmed;
+                const json = JSON.parse(lastLine);
+                resolve({ json, code, err });
+            } catch (e) {
+                reject(new Error(`runner JSON parse: ${e.message}; exit=${code}; stderr=${err.slice(0, 2000)}`));
+            }
+        });
+    });
+}
+
+/** Discord embed field 값 상한(1024) 고려 */
+function truncateEmbedField(str, max = 1000) {
+    if (str == null || str === '') return '';
+    const t = String(str);
+    if (t.length <= max) return t;
+    return `${t.slice(0, max - 1)}…`;
+}
+
+/** Discord embed description 상한(4096) */
+function truncateDiscordDescription(str, max = 4090) {
+    if (str == null || str === '') return '';
+    const t = String(str);
+    if (t.length <= max) return t;
+    return `${t.slice(0, max - 1)}…`;
+}
+
+/** 로컬 작업으로 보이는 Git 변경이 있을 때만 diff/status 필드를 보여줌 */
+function hasGitWorkingChanges(g) {
+    if (!g || !g.isRepo) return false;
+    const st = String(g.statusPorcelain || '').trim();
+    const ds = String(g.diffStat || '').trim();
+    const dp = String(g.diffPreview || '').trim();
+    return st.length > 0 || ds.length > 0 || dp.length > 0;
+}
+
+/** 무대 효과용 인디터미넌트 바 (틱마다 움직임) */
+function indeterminateProgressBar(tick, width = 14) {
+    let s = '';
+    for (let i = 0; i < width; i++) {
+        const v = (tick + i) % 6;
+        s += v < 3 ? '▓' : '░';
+    }
+    return s;
+}
+
+/**
+ * @param {'cursor'|'gemini'} kind
+ * @param {{ elapsedSec: number, tick: number, spinner: string, startedStr: string, progressMin: number, requestText?: string, modeLabel?: string }} s
+ */
+function buildDeferProgressEmbed(kind, s) {
+    const mm = Math.floor(s.elapsedSec / 60);
+    const ss = String(s.elapsedSec % 60).padStart(2, '0');
+    const dots = '.'.repeat((s.elapsedSec % 3) + 1);
+    const bar = indeterminateProgressBar(s.tick);
+    const wave = `\`\`\`\n${bar}\n\`\`\``;
+    const reqSnippet = s.requestText ? truncateEmbedField(s.requestText, 700) : '';
+    const liveSnippet = s.liveAssistantText ? truncateEmbedField(s.liveAssistantText, 700) : '';
+
+    if (kind === 'cursor') {
+        const descLines = [
+            reqSnippet ? `**📝 요청**\n\`\`\`\n${reqSnippet}\n\`\`\`` : null,
+            liveSnippet ? `**💬 진행 중(실시간)**\n\`\`\`\n${liveSnippet}\n\`\`\`` : null,
+            s.modeLabel ? `**모드** \`${s.modeLabel}\`` : null,
+            `**Yawn**이 로컬 저장소에서 에이전트를 돌리고 있어요${dots}`,
+            wave,
+        ].filter(Boolean);
+        return new EmbedBuilder()
+            .setAuthor({ name: '🛠️ Cursor · 로컬 에이전트' })
+            .setTitle(`${s.spinner} 작업 진행 중`)
+            .setDescription(descLines.join('\n\n'))
+            .setColor(0x5865F2)
+            .addFields(
+                { name: '⏱ 경과', value: `\`${mm}:${ss}\``, inline: true },
+                { name: '📌 요청 시각', value: `\`${s.startedStr}\``, inline: true },
+                { name: '⏳ 최대 대기', value: `\`~${s.progressMin}분\``, inline: true },
+            )
+            .setFooter({ text: '완료되면 이 카드가 결과로 바뀝니다 · agent acp' });
+    }
+    const descLines = [
+        reqSnippet ? `**📝 질문**\n\`\`\`\n${reqSnippet}\n\`\`\`` : null,
+        `**Yawn**이 Gemini에 질문을 보냈어요${dots}`,
+        wave,
+    ].filter(Boolean);
+    return new EmbedBuilder()
+        .setAuthor({ name: '✨ Gemini' })
+        .setTitle(`${s.spinner} 응답 생성 중`)
+        .setDescription(descLines.join('\n\n'))
+        .setColor(0x4285F4)
+        .addFields(
+            { name: '⏱ 경과', value: `\`${mm}:${ss}\``, inline: true },
+            { name: '📌 요청 시각', value: `\`${s.startedStr}\``, inline: true },
+        )
+        .setFooter({ text: '완료되면 이 카드가 결과로 바뀝니다' });
+}
+
+/**
+ * defer 직후 embed를 주기적으로 갱신 (경과·시각·웨이브 바).
+ * @param {'cursor'|'gemini'} kind
+ * @param {{ progressMin?: number, requestText?: string, modeLabel?: string }} [extra]
+ */
+async function startDeferElapsedTicker(interaction, kind, extra = {}) {
+    const tickMs = Math.max(1500, parseInt(process.env.DEFER_TICK_MS || '2500', 10));
+    const t0 = Date.now();
+    const startedStr = new Date(t0).toLocaleString('ko-KR', { hour12: false });
+    const SPINNER = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+    const progressMin = typeof extra.progressMin === 'number' ? extra.progressMin : 10;
+    let tick = 0;
+    const run = async () => {
+        const elapsedSec = Math.floor((Date.now() - t0) / 1000);
+        const spinner = SPINNER[tick % SPINNER.length];
+        tick += 1;
+        const liveAssistantText =
+            typeof extra.liveAssistantText === 'function' ? extra.liveAssistantText() : extra.liveAssistantText;
+        const embed = buildDeferProgressEmbed(kind, {
+            elapsedSec,
+            tick,
+            spinner,
+            startedStr,
+            progressMin,
+            requestText: extra.requestText || '',
+            modeLabel: extra.modeLabel || '',
+            liveAssistantText: liveAssistantText || '',
+        });
+        try {
+            await interaction.editReply({ content: null, embeds: [embed] });
+        } catch (e) {
+            if (e.code !== 50006) console.error('[defer ticker] editReply 실패:', e.message);
+        }
+    };
+    const id = setInterval(run, tickMs);
+    await run();
+    return () => clearInterval(id);
+}
+
+/**
+ * editReply는 ‘수정’이라 디스코드가 새 메시지처럼 알림을 주지 않는 경우가 많음.
+ * 완료 시 followUp으로 짧은 **새 메시지**를 보내 알림을 받기 쉽게 함.
+ * DEFER_COMPLETION_NOTIFY: off | ephemeral | mention (기본 ephemeral)
+ */
+async function notifyDeferCompletion(interaction, { ok, kind }) {
+    const mode = (process.env.DEFER_COMPLETION_NOTIFY || 'ephemeral').toLowerCase().trim();
+    if (mode === 'off' || mode === 'false' || mode === '0') return;
+    const uid = interaction.user.id;
+    const label = kind === 'cursor' ? 'Cursor' : kind === 'gemini' ? 'Gemini' : '작업';
+    const line = ok
+        ? `✅ **${label}** 작업이 완료되었습니다. 위 응답 메시지를 확인하세요.`
+        : `❌ **${label}** 처리가 끝났습니다(실패 또는 오류). 위 메시지를 확인하세요.`;
+    try {
+        if (mode === 'mention') {
+            await interaction.followUp({
+                content: `<@${uid}> ${line}`,
+                allowedMentions: { users: [uid] },
+            });
+        } else {
+            await interaction.followUp({ content: line, ephemeral: true });
+        }
+    } catch (e) {
+        console.error('[notifyDeferCompletion] followUp 실패:', e.message);
+    }
+}
 
 /* ── Gemini AI (Optional) ── */
 let geminiModel = null;
@@ -621,6 +907,138 @@ client.on('interactionCreate', async interaction => {
         }
 
         /* ── yawn (Gemini AI) ── */
+        /* ── cursor-edit (Cursor 로컬 CLI / agent acp) ── */
+        case 'cursor-edit': {
+            if (!isAdmin(userId)) {
+                await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), ephemeral: true });
+                break;
+            }
+            const repoDir = process.env.CURSOR_LOCAL_REPO_DIR;
+            if (!repoDir || !String(repoDir).trim()) {
+                await interaction.reply({ content: '`.env`에 `CURSOR_LOCAL_REPO_DIR`(작업할 로컬 git 폴더 절대 경로)을 설정하세요.', ephemeral: true });
+                break;
+            }
+            const promptText = interaction.options.getString('prompt');
+            const modeOpt = interaction.options.getString('mode');
+            const maxChars = getCursorMaxPromptChars();
+            if (promptText.length > maxChars) {
+                await interaction.reply({ content: `프롬프트가 너무 깁니다. 최대 ${maxChars}자까지입니다.`, ephemeral: true });
+                break;
+            }
+            if (cursorEditInFlight) {
+                await interaction.reply({ content: '이미 Cursor 로컬 작업이 실행 중입니다. 잠시 후 다시 시도하세요.', ephemeral: true });
+                break;
+            }
+            await interaction.deferReply();
+            const progressMin = Math.ceil(parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10) / 60000);
+            cursorEditInFlight = true;
+            let stopDeferTicker = () => {};
+            try {
+                let liveAssistant = '';
+                stopDeferTicker = await startDeferElapsedTicker(interaction, 'cursor', {
+                    progressMin,
+                    requestText: promptText,
+                    modeLabel: modeOpt || 'agent',
+                    liveAssistantText: () => liveAssistant,
+                });
+                const { json, code, err } = await runCursorLocalRunner(
+                    repoDir,
+                    promptText,
+                    modeOpt || 'agent',
+                    chunk => {
+                        liveAssistant += chunk;
+                        // keep last N chars
+                        const maxLive = parseInt(process.env.CURSOR_LIVE_PREVIEW_CHARS || '700', 10);
+                        if (liveAssistant.length > maxLive) liveAssistant = liveAssistant.slice(-maxLive);
+                    },
+                );
+                /** 러너 종료 직후 즉시 틱 중지 — 안 하면 interval이 최종 editReply 직후에 진행 카드로 다시 덮어씀 */
+                stopDeferTicker();
+                stopDeferTicker = () => {};
+                if (!json.ok) {
+                    const git = json.git || {};
+                    const embed = new EmbedBuilder()
+                        .setTitle('Cursor 로컬 실행 실패')
+                        .setDescription(truncateDiscordDescription(
+                            `**📝 요청**\n\`\`\`\n${truncateEmbedField(promptText, 900)}\n\`\`\`\n\n` +
+                            `**오류**\n${String(json.error || 'unknown').slice(0, 2800)}`,
+                        ))
+                        .setColor(0xF44336)
+                        .addFields(
+                            { name: 'exit', value: String(code), inline: true },
+                            { name: 'git repo', value: git.isRepo ? 'yes' : 'no', inline: true },
+                            { name: 'mode', value: `\`${modeOpt || 'agent'}\``, inline: true },
+                        );
+                    if (hasGitWorkingChanges(git)) {
+                        if (String(git.statusPorcelain || '').trim()) {
+                            embed.addFields({
+                                name: '변경 파일 (status)',
+                                value: `\`\`\`\n${String(git.statusPorcelain).slice(0, 900)}\n\`\`\``,
+                            });
+                        }
+                        if (String(git.diffStat || '').trim()) {
+                            embed.addFields({ name: 'diff --stat', value: `\`\`\`\n${String(git.diffStat).slice(0, 900)}\n\`\`\`` });
+                        }
+                        if (String(git.diffPreview || '').trim()) {
+                            embed.addFields({ name: 'diffPreview', value: `\`\`\`\n${String(git.diffPreview).slice(0, 900)}\n\`\`\`` });
+                        }
+                    }
+                    if (err) embed.setFooter({ text: err.slice(0, 500) });
+                    await interaction.editReply({ content: null, embeds: [embed] });
+                    await notifyDeferCompletion(interaction, { ok: false, kind: 'cursor' });
+                    break;
+                }
+                const g = json.git || {};
+                const descParts = [];
+                if (json.stopReason != null) descParts.push(`**stopReason:** ${json.stopReason}`);
+                if (json.assistantPreview) descParts.push(json.assistantPreview.slice(0, 2600));
+                const embed = new EmbedBuilder()
+                    .setTitle('Cursor 로컬 실행 완료')
+                    .setDescription(truncateDiscordDescription(
+                        `**📝 요청**\n\`\`\`\n${truncateEmbedField(promptText, 900)}\n\`\`\`\n\n` +
+                            `**에이전트 응답**\n${descParts.join('\n\n') || '(응답 본문 없음)'}`,
+                    ))
+                    .setColor(0x4CAF50)
+                    .addFields(
+                        { name: '모드', value: `\`${modeOpt || 'agent'}\``, inline: true },
+                        { name: '작업 경로', value: `\`${String(json.cwd || repoDir).slice(0, 900)}\`` },
+                    );
+                if (hasGitWorkingChanges(g)) {
+                    if (String(g.statusPorcelain || '').trim()) {
+                        embed.addFields({
+                            name: '변경 파일 (status)',
+                            value: `\`\`\`\n${String(g.statusPorcelain).slice(0, 900)}\n\`\`\``,
+                        });
+                    }
+                    if (String(g.diffStat || '').trim()) {
+                        embed.addFields({ name: 'diff --stat', value: `\`\`\`\n${String(g.diffStat).slice(0, 900)}\n\`\`\`` });
+                    }
+                    if (String(g.diffPreview || '').trim()) {
+                        embed.addFields({ name: 'diffPreview', value: `\`\`\`\n${String(g.diffPreview).slice(0, 900)}\n\`\`\`` });
+                    }
+                }
+                if (json.stderrTail) embed.addFields({ name: 'agent stderr (tail)', value: `\`\`\`\n${String(json.stderrTail).slice(0, 800)}\n\`\`\`` });
+                await interaction.editReply({ content: null, embeds: [embed] });
+                await notifyDeferCompletion(interaction, { ok: true, kind: 'cursor' });
+            } catch (e) {
+                await interaction.editReply({
+                    content: null,
+                    embeds: [new EmbedBuilder()
+                        .setTitle('Cursor 로컬 실행 예외')
+                        .setDescription(truncateDiscordDescription(
+                            `**📝 요청**\n\`\`\`\n${truncateEmbedField(promptText, 900)}\n\`\`\`\n\n` +
+                            `**오류**\n${String(e.message).slice(0, 1800)}`,
+                        ))
+                        .setColor(0xF44336)],
+                });
+                await notifyDeferCompletion(interaction, { ok: false, kind: 'cursor' });
+            } finally {
+                stopDeferTicker();
+                cursorEditInFlight = false;
+            }
+            break;
+        }
+
         case 'yawn': {
             if (!geminiModel) {
                 await interaction.reply({ content: 'Gemini API가 설정되지 않았습니다.', ephemeral: true });
@@ -628,23 +1046,43 @@ client.on('interactionCreate', async interaction => {
             }
             const prompt = interaction.options.getString('질문');
             await interaction.deferReply();
+            let stopGeminiTicker = () => {};
             try {
+                stopGeminiTicker = await startDeferElapsedTicker(interaction, 'gemini', { requestText: prompt });
                 const result = await geminiModel.generateContent({
                     contents: [{
                         role: 'user',
                         parts: [{ text: `시스템: 너는 'YawnBot'이라는 이름의 활기차고 재치 있는 디스코드 봇이야. 사용자의 질문에 친절하고 유머러스하게 대답해줘.\n\n사용자: ${prompt}` }],
                     }],
                 });
+                stopGeminiTicker();
+                stopGeminiTicker = () => {};
                 const response = result.response.text();
                 const embed = new EmbedBuilder()
                     .setTitle('YawnBot AI Response')
-                    .setDescription(response.slice(0, 4000))
+                    .setDescription(truncateDiscordDescription(
+                        `**📝 질문**\n\`\`\`\n${truncateEmbedField(prompt, 800)}\n\`\`\`\n\n` +
+                        `**💬 답변**\n${response.slice(0, 3000)}`,
+                    ))
                     .setColor(0x4285F4)
                     .setFooter({ text: 'Powered by Google Gemini' })
                     .setTimestamp();
-                await interaction.editReply({ embeds: [embed] });
+                await interaction.editReply({ content: null, embeds: [embed] });
+                await notifyDeferCompletion(interaction, { ok: true, kind: 'gemini' });
             } catch (e) {
-                await interaction.editReply(`오류가 발생했습니다: ${e.message}`);
+                await interaction.editReply({
+                    content: null,
+                    embeds: [new EmbedBuilder()
+                        .setTitle('Gemini 오류')
+                        .setDescription(truncateDiscordDescription(
+                            `**📝 질문**\n\`\`\`\n${truncateEmbedField(prompt, 800)}\n\`\`\`\n\n` +
+                            `**오류**\n${String(e.message).slice(0, 1800)}`,
+                        ))
+                        .setColor(0xF44336)],
+                });
+                await notifyDeferCompletion(interaction, { ok: false, kind: 'gemini' });
+            } finally {
+                stopGeminiTicker();
             }
             break;
         }

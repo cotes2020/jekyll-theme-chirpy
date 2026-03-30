@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "deploy": "node src/deploy-commands.js",
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch --watch-path=./src --watch-path=./cli src/index.js"
   },
   "dependencies": {
     "discord.js": "^14.16.0",
