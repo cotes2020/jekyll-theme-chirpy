@@ -4,7 +4,16 @@
  */
 require('dotenv').config();
 
-const { Client, GatewayIntentBits, EmbedBuilder, Collection, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const {
+    Client,
+    GatewayIntentBits,
+    EmbedBuilder,
+    Collection,
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    StringSelectMenuBuilder,
+} = require('discord.js');
 const express = require('express');
 
 const { GameDataService, formatMoney, getLevelColor, getWeaponLore, getRandomImage } = require('./services/gamedata');
@@ -57,12 +66,68 @@ function getCursorMaxPromptChars() {
 }
 
 /**
+ * Cursor `cursor/ask_question` → 디스코드 셀렉트(최대 25개). 여러 번 연속으로 올 수 있음(순차 처리).
+ */
+async function discordAnswerCursorQuestion(interaction, payload) {
+    const params = payload.params || {};
+    const raw = params.options ?? params.choices ?? [];
+    const lines = Array.isArray(raw) ? raw : [];
+    const selectOptions = lines.slice(0, 25).map((o, i) => {
+        if (typeof o === 'string') {
+            return { label: o.slice(0, 100), value: String(i) };
+        }
+        const label = String(o.label ?? o.title ?? o.text ?? `선택 ${i + 1}`).slice(0, 100);
+        const out = { label, value: String(i) };
+        if (o.description != null) out.description = String(o.description).slice(0, 100);
+        return out;
+    });
+    if (selectOptions.length === 0) {
+        return { cancelled: true };
+    }
+    const heading = params.title || params.question || '에이전트 질문';
+    const embed = new EmbedBuilder()
+        .setTitle('에이전트 질문')
+        .setDescription(truncateDiscordDescription(String(heading)))
+        .setColor(0x5865F2);
+    const customId = `cursor_q_${String(payload.rpcId)}`;
+    const menu = new StringSelectMenuBuilder()
+        .setCustomId(customId)
+        .setPlaceholder('답을 선택하세요')
+        .addOptions(selectOptions);
+    const row = new ActionRowBuilder().addComponents(menu);
+    const reply = await interaction.followUp({
+        embeds: [embed],
+        components: [row],
+        ephemeral: true,
+        fetchReply: true,
+    });
+    const uid = interaction.user.id;
+    try {
+        const comp = await reply.awaitMessageComponent({
+            filter: i => i.user.id === uid && i.customId === customId,
+            time: 600_000,
+        });
+        const idx = parseInt(comp.values[0], 10);
+        await comp.update({ components: [] });
+        return { selectedIndex: idx };
+    } catch {
+        try {
+            await reply.edit({ components: [] });
+        } catch {
+            /* ignore */
+        }
+        return { cancelled: true };
+    }
+}
+
+/**
  * @param {string} cwd
  * @param {string} prompt
  * @param {string} mode
+ * @param {(payload: { type: string, rpcId: unknown, params: object }) => Promise<{ selectedIndex?: number, cancelled?: boolean }>} [onQuestion]
  * @returns {Promise<object>}
  */
-function runCursorLocalRunner(cwd, prompt, mode, onProgress) {
+function runCursorLocalRunner(cwd, prompt, mode, onProgress, onQuestion) {
     const innerTimeoutMs = parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10);
     /** 러너(자식 node)가 안 끝나도 봇이 영원히 멈추지 않도록 여유(ms) */
     const outerGraceMs = parseInt(process.env.CURSOR_RUNNER_GRACE_MS || '120000', 10);
@@ -87,6 +152,7 @@ function runCursorLocalRunner(cwd, prompt, mode, onProgress) {
                 CURSOR_GIT_SNAPSHOT: process.env.CURSOR_GIT_SNAPSHOT || 'baseline',
             },
             windowsHide: true,
+            stdio: ['pipe', 'pipe', 'pipe'],
         });
         let out = '';
         let err = '';
@@ -134,6 +200,25 @@ function runCursorLocalRunner(cwd, prompt, mode, onProgress) {
                     const msg = JSON.parse(line);
                     if (msg && msg.type === 'assistant_chunk' && typeof msg.text === 'string') {
                         if (typeof onProgress === 'function') onProgress(msg.text);
+                    } else if (msg && msg.type === 'cursor_question' && typeof onQuestion === 'function') {
+                        void (async () => {
+                            try {
+                                const ans = await onQuestion(msg);
+                                const rid = msg.rpcId;
+                                const payload =
+                                    ans && ans.cancelled === true
+                                        ? { rpcId: rid, cancelled: true }
+                                        : { rpcId: rid, selectedIndex: ans.selectedIndex };
+                                if (child.stdin && !child.stdin.destroyed) {
+                                    child.stdin.write(`${JSON.stringify(payload)}\n`);
+                                }
+                            } catch (e) {
+                                console.error('[cursor question]', e.message || e);
+                                if (child.stdin && !child.stdin.destroyed) {
+                                    child.stdin.write(`${JSON.stringify({ rpcId: msg.rpcId, cancelled: true })}\n`);
+                                }
+                            }
+                        })();
                     } else if (msg && typeof msg.ok === 'boolean') {
                         resultJson = msg;
                     }
@@ -206,75 +291,67 @@ function hasGitWorkingChanges(g) {
     return st.length > 0 || ds.length > 0 || dp.length > 0;
 }
 
-/** 무대 효과용 인디터미넌트 바 (틱마다 움직임) */
-function indeterminateProgressBar(tick, width = 14) {
-    let s = '';
-    for (let i = 0; i < width; i++) {
-        const v = (tick + i) % 6;
-        s += v < 3 ? '▓' : '░';
-    }
-    return s;
+/**
+ * Cursor 완료 임베드: 에이전트가 cursor/ask_question·cursor/create_plan을 호출했는지 안내
+ * @param {{ askQuestionCount?: number, createPlanCount?: number }|null|undefined} s
+ */
+function formatCursorAcpRpcSummaryField(s) {
+    const q = typeof s?.askQuestionCount === 'number' ? s.askQuestionCount : 0;
+    const p = typeof s?.createPlanCount === 'number' ? s.createPlanCount : 0;
+    const lineAsk =
+        q === 0
+            ? '**cursor/ask_question** · 호출 없음 — 디스코드 선택 메뉴는 이 RPC가 있을 때만 뜹니다.'
+            : `**cursor/ask_question** · ${q}회 호출됨 (디스코드에서 선택 연동).`;
+    const linePlan =
+        p === 0
+            ? '**cursor/create_plan** · 호출 없음.'
+            : `**cursor/create_plan** · ${p}회 요청됨 (러너 자동 승인, 별도 디스코드 UI 없음).`;
+    return truncateEmbedField(`${lineAsk}\n${linePlan}`, 1020);
 }
 
 /**
  * @param {'cursor'|'gemini'} kind
- * @param {{ elapsedSec: number, tick: number, spinner: string, startedStr: string, progressMin: number, requestText?: string, modeLabel?: string }} s
+ * @param {{ elapsedSec: number, spinner: string, progressMin: number, requestText?: string, modeLabel?: string, liveAssistantText?: string }} s
  */
 function buildDeferProgressEmbed(kind, s) {
     const mm = Math.floor(s.elapsedSec / 60);
     const ss = String(s.elapsedSec % 60).padStart(2, '0');
-    const dots = '.'.repeat((s.elapsedSec % 3) + 1);
-    const bar = indeterminateProgressBar(s.tick);
-    const wave = `\`\`\`\n${bar}\n\`\`\``;
-    const reqSnippet = s.requestText ? truncateEmbedField(s.requestText, 700) : '';
-    const liveSnippet = s.liveAssistantText ? truncateEmbedField(s.liveAssistantText, 700) : '';
+    const reqSnippet = s.requestText ? truncateEmbedField(s.requestText, 350) : '';
+    const liveSnippet = s.liveAssistantText ? truncateEmbedField(s.liveAssistantText, 450) : '';
 
     if (kind === 'cursor') {
-        const descLines = [
-            reqSnippet ? `**📝 요청**\n\`\`\`\n${reqSnippet}\n\`\`\`` : null,
-            liveSnippet ? `**💬 진행 중(실시간)**\n\`\`\`\n${liveSnippet}\n\`\`\`` : null,
-            s.modeLabel ? `**모드** \`${s.modeLabel}\`` : null,
-            `**Yawn**이 로컬 저장소에서 에이전트를 돌리고 있어요${dots}`,
-            wave,
-        ].filter(Boolean);
+        const mode = s.modeLabel ? String(s.modeLabel) : 'agent';
+        const parts = [];
+        if (reqSnippet) parts.push(`**요청** ${reqSnippet}`);
+        if (liveSnippet) parts.push(`**스트림** ${liveSnippet}`);
+        const desc = parts.length ? parts.join('\n') : '처리 중…';
         return new EmbedBuilder()
-            .setAuthor({ name: '🛠️ Cursor · 로컬 에이전트' })
-            .setTitle(`${s.spinner} 작업 진행 중`)
-            .setDescription(descLines.join('\n\n'))
+            .setTitle(`${s.spinner} Cursor (${mode})`)
+            .setDescription(desc)
             .setColor(0x5865F2)
             .addFields(
-                { name: '⏱ 경과', value: `\`${mm}:${ss}\``, inline: true },
-                { name: '📌 요청 시각', value: `\`${s.startedStr}\``, inline: true },
-                { name: '⏳ 최대 대기', value: `\`~${s.progressMin}분\``, inline: true },
+                { name: '경과', value: `${mm}:${ss}`, inline: true },
+                { name: '한도', value: `~${s.progressMin}분`, inline: true },
             )
-            .setFooter({ text: '완료되면 이 카드가 결과로 바뀝니다 · agent acp' });
+            .setFooter({ text: '완료 시 이 메시지가 결과로 바뀝니다' });
     }
-    const descLines = [
-        reqSnippet ? `**📝 질문**\n\`\`\`\n${reqSnippet}\n\`\`\`` : null,
-        `**Yawn**이 Gemini에 질문을 보냈어요${dots}`,
-        wave,
-    ].filter(Boolean);
+    const desc = reqSnippet ? `**질문** ${reqSnippet}` : 'Gemini 호출 중…';
     return new EmbedBuilder()
-        .setAuthor({ name: '✨ Gemini' })
-        .setTitle(`${s.spinner} 응답 생성 중`)
-        .setDescription(descLines.join('\n\n'))
+        .setTitle(`${s.spinner} Gemini`)
+        .setDescription(desc)
         .setColor(0x4285F4)
-        .addFields(
-            { name: '⏱ 경과', value: `\`${mm}:${ss}\``, inline: true },
-            { name: '📌 요청 시각', value: `\`${s.startedStr}\``, inline: true },
-        )
-        .setFooter({ text: '완료되면 이 카드가 결과로 바뀝니다' });
+        .addFields({ name: '경과', value: `${mm}:${ss}`, inline: true })
+        .setFooter({ text: '완료 시 이 메시지가 결과로 바뀝니다' });
 }
 
 /**
- * defer 직후 embed를 주기적으로 갱신 (경과·시각·웨이브 바).
+ * defer 직후 embed를 주기적으로 갱신 (경과·짧은 요약).
  * @param {'cursor'|'gemini'} kind
  * @param {{ progressMin?: number, requestText?: string, modeLabel?: string }} [extra]
  */
 async function startDeferElapsedTicker(interaction, kind, extra = {}) {
     const tickMs = Math.max(1500, parseInt(process.env.DEFER_TICK_MS || '2500', 10));
     const t0 = Date.now();
-    const startedStr = new Date(t0).toLocaleString('ko-KR', { hour12: false });
     const SPINNER = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
     const progressMin = typeof extra.progressMin === 'number' ? extra.progressMin : 10;
     let tick = 0;
@@ -286,9 +363,7 @@ async function startDeferElapsedTicker(interaction, kind, extra = {}) {
             typeof extra.liveAssistantText === 'function' ? extra.liveAssistantText() : extra.liveAssistantText;
         const embed = buildDeferProgressEmbed(kind, {
             elapsedSec,
-            tick,
             spinner,
-            startedStr,
             progressMin,
             requestText: extra.requestText || '',
             modeLabel: extra.modeLabel || '',
@@ -951,6 +1026,7 @@ client.on('interactionCreate', async interaction => {
                         const maxLive = parseInt(process.env.CURSOR_LIVE_PREVIEW_CHARS || '700', 10);
                         if (liveAssistant.length > maxLive) liveAssistant = liveAssistant.slice(-maxLive);
                     },
+                    q => discordAnswerCursorQuestion(interaction, q),
                 );
                 /** 러너 종료 직후 즉시 틱 중지 — 안 하면 interval이 최종 editReply 직후에 진행 카드로 다시 덮어씀 */
                 stopDeferTicker();
@@ -1002,6 +1078,11 @@ client.on('interactionCreate', async interaction => {
                     .addFields(
                         { name: '모드', value: `\`${modeOpt || 'agent'}\``, inline: true },
                         { name: '작업 경로', value: `\`${String(json.cwd || repoDir).slice(0, 900)}\`` },
+                        {
+                            name: '질문·플랜 (ACP)',
+                            value: formatCursorAcpRpcSummaryField(json.acpRpcSummary),
+                            inline: false,
+                        },
                     );
                 if (hasGitWorkingChanges(g)) {
                     if (String(g.statusPorcelain || '').trim()) {

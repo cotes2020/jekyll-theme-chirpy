@@ -4,6 +4,8 @@
  * Env: CURSOR_LOCAL_REPO_DIR (optional whitelist), CURSOR_AGENT_COMMAND (default: agent),
  *      CURSOR_MAX_PROMPT_CHARS, CURSOR_DIFF_PREVIEW_CHARS,
  *      CURSOR_GIT_SNAPSHOT=baseline|off (baseline = git stash create -u, 작업 트리 유지)
+ *      CURSOR_PROMPT_IDLE_MS — (선택) 마지막 청크 후 침묵 시 완료로 간주(ms). 근본 해결은 아님. 0=비활성(기본)
+ *      CURSOR_INTERACTIVE_QUESTIONS=0 — cursor/ask_question 을 부모(stdin) 없이 자동 선택(첫 옵션 등)으로 처리
  *
  * Prints a single JSON object to stdout (logs go to stderr).
  */
@@ -13,6 +15,7 @@ const path = require('path');
 const fs = require('fs');
 const { execFile } = require('child_process');
 const { promisify } = require('util');
+const readline = require('readline');
 const execFileAsync = promisify(execFile);
 
 function parseArgs(argv) {
@@ -198,6 +201,9 @@ async function runAcp(opts) {
     let nextId = 1;
     const pending = new Map();
     const collectedText = [];
+    /** 완료 JSON·디스코드 임베드용: 에이전트→클라이언트 RPC 호출 횟수 */
+    let askQuestionRpcCount = 0;
+    let createPlanRpcCount = 0;
 
     function takePending(id) {
         const candidates = [id];
@@ -213,12 +219,18 @@ async function runAcp(opts) {
         return null;
     }
 
-    function send(method, params) {
+    function beginSend(method, params) {
         const id = nextId++;
-        child.stdin.write(JSON.stringify({ jsonrpc: '2.0', id, method, params }) + '\n');
-        return new Promise((resolve, reject) => {
+        const promise = new Promise((resolve, reject) => {
             pending.set(id, { resolve, reject });
         });
+        child.stdin.write(JSON.stringify({ jsonrpc: '2.0', id, method, params }) + '\n');
+        return { id, promise };
+    }
+
+    async function send(method, params) {
+        const { promise } = beginSend(method, params);
+        return promise;
     }
 
     function respondRequest(requestId, result) {
@@ -228,6 +240,170 @@ async function runAcp(opts) {
     const spawnError = new Promise((_, reject) => {
         child.once('error', err => reject(err));
     });
+
+    /**
+     * (선택) 마지막 스트림 청크 이후 이 ms 동안 session/prompt JSON-RPC가 없으면 완료로 간주.
+     * 기본 120000(2분): 짧은 간격(8초 등)은 긴 추론 구간에서 오탐이 나기 쉬움. 0=끔(진단용).
+     */
+    let promptTurnId = null;
+    let idleTimer = null;
+    const idleMs = parseInt(process.env.CURSOR_PROMPT_IDLE_MS || '120000', 10);
+
+    function bumpIdle() {
+        if (promptTurnId == null || idleMs <= 0) return;
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+            if (promptTurnId != null && pending.has(promptTurnId)) {
+                const waiter = pending.get(promptTurnId);
+                pending.delete(promptTurnId);
+                promptTurnId = null;
+                console.error(
+                    '[cursor-local-runner] session/prompt: JSON-RPC 응답 없음 → idle 완료 처리 (CURSOR_PROMPT_IDLE_MS=' +
+                        idleMs +
+                        'ms)',
+                );
+                waiter.resolve({ stopReason: 'idle_inferred' });
+            }
+        }, idleMs);
+    }
+
+    function rpcIdMatchesPrompt(msgId) {
+        if (promptTurnId == null) return false;
+        return msgId === promptTurnId || String(msgId) === String(promptTurnId);
+    }
+
+    /**
+     * Cursor가 클라이언트로 보내는 JSON-RPC 요청(cursor/…)에 대한 최소 응답 (비대화형 폴백).
+     * @see https://cursor.com/docs/cli/acp (Cursor extension methods)
+     */
+    function defaultCursorExtensionResult(method, params) {
+        const p = params && typeof params === 'object' ? params : {};
+        switch (method) {
+            case 'cursor/ask_question': {
+                const choices = p.choices ?? p.options;
+                if (Array.isArray(choices) && choices.length > 0) {
+                    return { selectedIndex: 0 };
+                }
+                return { cancelled: true };
+            }
+            case 'cursor/create_plan':
+                return { approved: true };
+            case 'cursor/update_todos':
+            case 'cursor/task':
+            case 'cursor/generate_image':
+                return { acknowledged: true };
+            default:
+                return { acknowledged: true };
+        }
+    }
+
+    let stdinRl = null;
+    /** 부모(디스코드 봇)가 한 줄 JSON을 쓰지 않으면 영구 대기하므로 타임아웃으로 해제. 0=무제한 */
+    const questionStdinMs = parseInt(process.env.CURSOR_QUESTION_STDIN_MS || '600000', 10);
+    function readStdinAnswerLine() {
+        return new Promise((resolve, reject) => {
+            if (!process.stdin.readable) {
+                reject(new Error('stdin not readable'));
+                return;
+            }
+            if (!stdinRl) {
+                stdinRl = readline.createInterface({ input: process.stdin, terminal: false });
+            }
+            let tid = null;
+            const onLine = line => {
+                if (tid) clearTimeout(tid);
+                stdinRl.off('line', onLine);
+                try {
+                    resolve(JSON.parse(line));
+                } catch (e) {
+                    reject(e);
+                }
+            };
+            stdinRl.on('line', onLine);
+            if (questionStdinMs > 0) {
+                tid = setTimeout(() => {
+                    stdinRl.off('line', onLine);
+                    reject(
+                        new Error(
+                            `stdin answer timeout after ${questionStdinMs}ms (CURSOR_QUESTION_STDIN_MS)`,
+                        ),
+                    );
+                }, questionStdinMs);
+            }
+        });
+    }
+
+    /** ask_question 은 순차 처리 (여러 개가 줄을 서서 올 수 있음) */
+    let askQuestionChain = Promise.resolve();
+    function handleAskQuestionInteractive(msg) {
+        const interactiveOff = String(process.env.CURSOR_INTERACTIVE_QUESTIONS || '').toLowerCase() === '0';
+        if (interactiveOff) {
+            respondRequest(msg.id, defaultCursorExtensionResult('cursor/ask_question', msg.params));
+            return;
+        }
+        // 터미널에서 직접 실행(stdin=TTY)이면 부모 파이프가 없음 → 자동 폴백
+        if (process.stdin.isTTY) {
+            respondRequest(msg.id, defaultCursorExtensionResult('cursor/ask_question', msg.params));
+            return;
+        }
+
+        askQuestionChain = askQuestionChain
+            .then(async () => {
+                emitJsonLine({
+                    type: 'cursor_question',
+                    rpcId: msg.id,
+                    params: msg.params,
+                });
+                try {
+                    const answer = await readStdinAnswerLine();
+                    const rid = answer.rpcId;
+                    if (rid != null && rid !== msg.id && String(rid) !== String(msg.id)) {
+                        console.error('[cursor-local-runner] stdin 응답 rpcId 불일치:', rid, '기대:', msg.id);
+                    }
+                    if (answer.cancelled === true) {
+                        respondRequest(msg.id, { cancelled: true });
+                        return;
+                    }
+                    const idx = answer.selectedIndex;
+                    const n = typeof idx === 'number' ? idx : parseInt(String(idx), 10);
+                    if (Number.isNaN(n)) {
+                        respondRequest(msg.id, { cancelled: true });
+                        return;
+                    }
+                    respondRequest(msg.id, { selectedIndex: n });
+                } catch (e) {
+                    console.error(
+                        '[cursor-local-runner] ask_question stdin 처리 실패:',
+                        e.message || e,
+                    );
+                    respondRequest(msg.id, { cancelled: true });
+                    bumpIdle();
+                }
+            })
+            .catch(e => console.error('[cursor-local-runner] ask_question queue:', e.message || e));
+    }
+
+    function handleAgentToClientRequest(msg) {
+        if (msg.method === 'session/request_permission') {
+            respondRequest(msg.id, { outcome: { outcome: 'selected', optionId: 'allow-once' } });
+            return;
+        }
+        if (msg.method === 'cursor/ask_question') {
+            askQuestionRpcCount++;
+            handleAskQuestionInteractive(msg);
+            return;
+        }
+        if (msg.method === 'cursor/create_plan') {
+            createPlanRpcCount++;
+        }
+        if (typeof msg.method === 'string' && msg.method.startsWith('cursor/')) {
+            console.error('[cursor-local-runner] 에이전트→클라이언트 요청', msg.method, '→ 자동 result');
+            respondRequest(msg.id, defaultCursorExtensionResult(msg.method, msg.params));
+            return;
+        }
+        console.error('[cursor-local-runner] 미처리 에이전트→클라이언트 요청:', msg.method, JSON.stringify(msg).slice(0, 400));
+        respondRequest(msg.id, { acknowledged: true });
+    }
 
     /** readline은 마지막 줄에 \\n이 없으면 영원히 안 올라옴 → 버퍼로 NDJSON 파싱 */
     let stdoutBuf = '';
@@ -241,6 +417,10 @@ async function runAcp(opts) {
         }
 
         if (msg.id != null && (msg.result !== undefined || msg.error !== undefined)) {
+            if (rpcIdMatchesPrompt(msg.id)) {
+                clearTimeout(idleTimer);
+                promptTurnId = null;
+            }
             const waiter = takePending(msg.id);
             if (!waiter) {
                 console.error('[cursor-local-runner] JSON-RPC 응답 id를 pending에서 찾지 못함:', msg.id);
@@ -256,12 +436,19 @@ async function runAcp(opts) {
             if (u?.sessionUpdate === 'agent_message_chunk' && u.content?.text) {
                 collectedText.push(u.content.text);
                 emitJsonLine({ type: 'assistant_chunk', text: u.content.text });
+                bumpIdle();
             }
             return;
         }
 
-        if (msg.method === 'session/request_permission' && msg.id != null) {
-            respondRequest(msg.id, { outcome: { outcome: 'selected', optionId: 'allow-once' } });
+        // 에이전트가 클라이언트로 보내는 JSON-RPC 요청 (응답 필요): session/request_permission, cursor/* …
+        if (
+            msg.method &&
+            msg.id != null &&
+            msg.result === undefined &&
+            msg.error === undefined
+        ) {
+            handleAgentToClientRequest(msg);
         }
     }
 
@@ -318,10 +505,13 @@ async function runAcp(opts) {
                     const newSession = await send('session/new', sessionParams);
                     const sessionId = newSession.sessionId;
 
-                    const promptResult = await send('session/prompt', {
+                    const pr = beginSend('session/prompt', {
                         sessionId,
                         prompt: [{ type: 'text', text: opts.prompt }],
                     });
+                    promptTurnId = pr.id;
+                    bumpIdle();
+                    const promptResult = await pr.promise;
 
                     return {
                         stopReason: promptResult?.stopReason ?? null,
@@ -335,6 +525,8 @@ async function runAcp(opts) {
         ]);
     } finally {
         clearTimeout(timeoutId);
+        clearTimeout(idleTimer);
+        promptTurnId = null;
         try {
             child.stdin.end();
         } catch {
@@ -348,6 +540,10 @@ async function runAcp(opts) {
         stopReason: acpOutcome?.stopReason ?? null,
         assistantText: acpOutcome?.assistantText ?? collectedText.join(''),
         stderrTail: stderrChunks.join('').slice(-4000),
+        acpRpcSummary: {
+            askQuestionCount: askQuestionRpcCount,
+            createPlanCount: createPlanRpcCount,
+        },
     };
 }
 
@@ -420,6 +616,10 @@ async function main() {
         stopReason: acpResult.stopReason,
         assistantPreview: (acpResult.assistantText || '').slice(0, 4000),
         stderrTail: acpResult.stderrTail || '',
+        acpRpcSummary: acpResult.acpRpcSummary || {
+            askQuestionCount: 0,
+            createPlanCount: 0,
+        },
         git,
         snapshot: { baseline },
     });
