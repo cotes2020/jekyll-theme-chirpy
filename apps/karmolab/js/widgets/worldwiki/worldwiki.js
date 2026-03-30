@@ -5,21 +5,52 @@
  */
 (function () {
     Mdd.injectCSS('worldwiki', `
-        .ww-wrap { display:grid; grid-template-columns: 280px 1fr; gap:16px; height:100%; }
-        .ww-left { background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-lg); padding:12px; overflow:auto; }
-        .ww-right { background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px; overflow:auto; }
+        .ww-wrap { display:grid; grid-template-columns: 280px minmax(0, 1fr) 260px; gap:16px; height:100%; }
+        .ww-left, .ww-mid, .ww-toc { background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:auto; }
+        .ww-left { padding:12px; }
+        .ww-mid { padding:18px 20px; }
+        .ww-toc { padding:12px; }
+
         .ww-title { font-size:var(--font-size-md); font-weight:800; margin:0 0 10px; }
         .ww-search { width:100%; padding:8px 10px; border-radius:10px; border:1px solid var(--border); background:var(--bg-tertiary); color:var(--text-primary); font-size:var(--font-size-xs); }
         .ww-list { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
         .ww-item { width:100%; text-align:left; padding:10px 10px; border-radius:12px; border:1px solid var(--border); background:var(--bg-tertiary); color:var(--text-primary); cursor:pointer; font-size:var(--font-size-xs); }
         .ww-item:hover { border-color:var(--accent); }
         .ww-item.active { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-subtle); }
-        .ww-md h1 { font-size:22px; margin:0 0 14px; padding-bottom:12px; border-bottom:1px solid var(--border); }
-        .ww-md h2 { font-size:16px; margin:22px 0 10px; color:var(--accent); }
-        .ww-md p, .ww-md li { color:var(--text-secondary); line-height:1.8; font-size:14px; }
-        .ww-md code { font-family:var(--font-mono); font-size:var(--font-size-xs); background:var(--bg-tertiary); padding:2px 6px; border-radius:4px; color:var(--accent); }
-        .ww-md pre { border:1px solid var(--border); border-radius:var(--radius-md); overflow:auto; }
-        .ww-md pre code { display:block; padding:14px; }
+
+        .ww-doc { max-width:860px; margin:0 auto; }
+        .ww-doc .ww-md { font-size:14px; line-height:1.85; }
+        .ww-md h1 { font-size:26px; font-weight:900; letter-spacing:-0.03em; margin:0 0 14px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+        .ww-md h2 { font-size:18px; font-weight:800; margin:30px 0 10px; color:var(--accent); letter-spacing:-0.02em; }
+        .ww-md h3 { font-size:15px; font-weight:800; margin:22px 0 8px; }
+        .ww-md p { margin:0 0 12px; color:var(--text-secondary); }
+        .ww-md ul, .ww-md ol { margin:0 0 14px; padding-left:22px; color:var(--text-secondary); }
+        .ww-md li { margin:4px 0; }
+        .ww-md a { color:var(--accent); text-decoration:none; }
+        .ww-md a:hover { text-decoration:underline; }
+        .ww-md hr { border:none; border-top:1px solid var(--border); margin:22px 0; }
+        .ww-md blockquote { margin:14px 0; padding:10px 14px; border-left:3px solid var(--accent); background:var(--accent-subtle); border-radius:0 var(--radius-sm) var(--radius-sm) 0; color:var(--text-secondary); }
+
+        .ww-heading { position:relative; scroll-margin-top:16px; }
+        .ww-heading:hover .ww-anchor { opacity:1; }
+        .ww-anchor { opacity:0; position:absolute; left:-22px; top:50%; transform:translateY(-50%); font-size:14px; color:var(--text-tertiary); cursor:pointer; user-select:none; }
+        .ww-anchor:focus { opacity:1; outline:2px solid var(--accent-subtle); outline-offset:2px; border-radius:6px; }
+
+        .ww-callout { border:1px solid var(--border); border-radius:14px; padding:12px 14px; margin:14px 0; background:var(--bg-tertiary); }
+        .ww-callout-title { font-weight:900; margin:0 0 6px; font-size:13px; letter-spacing:-0.01em; }
+        .ww-callout-body { color:var(--text-secondary); }
+        .ww-callout-tip .ww-callout-title { color:var(--accent); }
+        .ww-callout-note .ww-callout-title { color:var(--text-primary); }
+        .ww-callout-warning .ww-callout-title { color:var(--warn, var(--error)); }
+
+        .ww-toc-title { font-size:var(--font-size-xs); font-weight:900; color:var(--text-secondary); margin:2px 0 10px; }
+        .ww-toc-list { display:flex; flex-direction:column; gap:6px; }
+        .ww-toc-a { font-size:12px; color:var(--text-tertiary); text-decoration:none; line-height:1.45; padding:6px 8px; border-radius:10px; border:1px solid transparent; }
+        .ww-toc-a:hover { color:var(--text-secondary); border-color:var(--border); background:var(--bg-tertiary); }
+        .ww-toc-a.active { color:var(--text-primary); border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-subtle); }
+        .ww-toc-l2 { padding-left:18px; }
+        .ww-toc-l3 { padding-left:28px; }
+
         .ww-hint { color:var(--text-tertiary); font-size:var(--font-size-xs); margin:8px 0 0; }
     `);
 
@@ -57,23 +88,135 @@
         return md;
     }
 
-    function renderWikiMarkdown(container, md) {
+    function slugify(s) {
+        return String(s || '')
+            .trim()
+            .toLowerCase()
+            .replace(/[\s]+/g, '-')
+            .replace(/[^\w\-가-힣]+/g, '')
+            .replace(/\-+/g, '-')
+            .replace(/^\-+|\-+$/g, '');
+    }
+
+    function ensureUniqueId(base, used) {
+        let id = base || 'section';
+        if (!used.has(id)) { used.add(id); return id; }
+        let i = 2;
+        while (used.has(`${id}-${i}`)) i++;
+        const out = `${id}-${i}`;
+        used.add(out);
+        return out;
+    }
+
+    function applyCallouts(root) {
+        root.querySelectorAll('blockquote').forEach(bq => {
+            const p = bq.querySelector(':scope > p');
+            if (!p) return;
+            const raw = (p.textContent || '').trim();
+            const m = raw.match(/^\[!(tip|note|warning)\]\s*(.*)$/i);
+            if (!m) return;
+            const kind = m[1].toLowerCase();
+            const title = m[2] || (kind === 'tip' ? '팁' : kind === 'warning' ? '주의' : '노트');
+            // remove marker from first paragraph
+            p.textContent = p.textContent.replace(/^\[!(tip|note|warning)\]\s*/i, '');
+
+            const box = document.createElement('div');
+            box.className = `ww-callout ww-callout-${kind}`;
+            const h = document.createElement('div');
+            h.className = 'ww-callout-title';
+            h.textContent = title;
+            const body = document.createElement('div');
+            body.className = 'ww-callout-body';
+            while (bq.firstChild) body.appendChild(bq.firstChild);
+            box.appendChild(h);
+            box.appendChild(body);
+            bq.replaceWith(box);
+        });
+    }
+
+    function applyAnchors(root, tocEl) {
+        const used = new Set();
+        const headings = Array.from(root.querySelectorAll('h1, h2, h3'));
+        const toc = [];
+
+        headings.forEach(h => {
+            const level = h.tagName === 'H1' ? 1 : h.tagName === 'H2' ? 2 : 3;
+            const text = (h.textContent || '').trim();
+            if (!text) return;
+            const id = ensureUniqueId(slugify(text), used);
+            h.id = h.id || id;
+            h.classList.add('ww-heading');
+
+            const a = document.createElement('span');
+            a.className = 'ww-anchor';
+            a.tabIndex = 0;
+            a.setAttribute('role', 'button');
+            a.setAttribute('aria-label', '링크 복사');
+            a.textContent = '#';
+            const copy = async () => {
+                const url = location.origin + location.pathname + '#' + h.id;
+                try {
+                    await navigator.clipboard.writeText(url);
+                    Toolbox.showToast('링크 복사됨');
+                } catch (_) {
+                    location.hash = h.id;
+                    Toolbox.showToast('링크를 복사하지 못했습니다.', 'error');
+                }
+            };
+            a.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); location.hash = h.id; void copy(); });
+            a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); location.hash = h.id; void copy(); } });
+            h.prepend(a);
+
+            toc.push({ id: h.id, text, level });
+        });
+
+        if (tocEl) {
+            tocEl.innerHTML = `
+                <div class="ww-toc-title">이 문서 목차</div>
+                <nav class="ww-toc-list">
+                    ${toc.map(x => `<a class="ww-toc-a ww-toc-l${x.level}" href="#${Toolbox.escapeHtml(x.id)}">${Toolbox.escapeHtml(x.text)}</a>`).join('')}
+                </nav>
+            `;
+        }
+
+        return toc;
+    }
+
+    function wireTocActive(tocWrap, docWrap) {
+        const links = Array.from(tocWrap.querySelectorAll('.ww-toc-a'));
+        if (!links.length) return;
+
+        const byId = new Map(links.map(a => [a.getAttribute('href')?.slice(1), a]));
+        const headings = Array.from(docWrap.querySelectorAll('h1, h2, h3')).filter(h => h.id);
+        const obs = new IntersectionObserver(entries => {
+            const visible = entries.filter(e => e.isIntersecting).sort((a, b) => (a.boundingClientRect.top - b.boundingClientRect.top));
+            if (!visible.length) return;
+            const id = visible[0].target.id;
+            links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+        }, { root: docWrap, threshold: [0.2, 0.5, 0.8] });
+        headings.forEach(h => obs.observe(h));
+
+        links.forEach(a => a.addEventListener('click', () => {
+            const id = a.getAttribute('href')?.slice(1);
+            const h = id ? docWrap.querySelector(`#${CSS.escape(id)}`) : null;
+            if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }));
+    }
+
+    function renderWikiMarkdown(container, md, tocContainer) {
         const wrap = document.createElement('div');
         wrap.className = 'ww-md';
         md = stripYamlFrontMatter(md);
-        if (window.ChatbotMarkdown?.renderMarkdown) {
-            wrap.innerHTML = window.ChatbotMarkdown.renderMarkdown(md);
-        } else if (typeof marked !== 'undefined') {
+        if (typeof marked !== 'undefined') {
             marked.setOptions({ breaks: true, gfm: true });
             wrap.innerHTML = marked.parse(md);
         } else {
-            wrap.innerHTML = '<p style="color:var(--error)">마크다운 렌더러가 없습니다.</p>';
+            wrap.innerHTML = '<p style="color:var(--error)">marked.js가 없어 위키를 렌더링할 수 없습니다.</p>';
         }
         container.innerHTML = '';
         container.appendChild(wrap);
-        if (typeof Prism !== 'undefined') {
-            wrap.querySelectorAll('pre code').forEach(el => Prism.highlightElement(el));
-        }
+        applyCallouts(wrap);
+        applyAnchors(wrap, tocContainer);
     }
 
     function getCharacterIndex() {
@@ -94,16 +237,22 @@
                     <div class="ww-list" id="wwList"></div>
                     <p class="ww-hint">초기 버전: 캐릭터 문서만 표시합니다.</p>
                 </aside>
-                <section class="ww-right">
-                    <div id="wwDoc" class="ww-md" style="color:var(--text-secondary)">왼쪽에서 항목을 선택하세요.</div>
+                <section class="ww-mid">
+                    <div class="ww-doc">
+                        <div id="wwDoc" class="ww-md" style="color:var(--text-secondary)">왼쪽에서 항목을 선택하세요.</div>
+                    </div>
                 </section>
+                <aside class="ww-toc">
+                    <div id="wwToc" class="ww-toc-list"></div>
+                </aside>
             </div>
         `;
 
         const listEl = container.querySelector('#wwList');
         const searchEl = container.querySelector('#wwSearch');
         const docEl = container.querySelector('#wwDoc');
-        if (!listEl || !searchEl || !docEl) return;
+        const tocEl = container.querySelector('#wwToc');
+        if (!listEl || !searchEl || !docEl || !tocEl) return;
 
         const all = getCharacterIndex();
         let activeSlug = '';
@@ -112,9 +261,13 @@
             activeSlug = slug;
             listEl.querySelectorAll('.ww-item').forEach(b => b.classList.toggle('active', b.dataset.slug === slug));
             docEl.textContent = '문서 불러오는 중...';
+            tocEl.innerHTML = '';
             try {
                 const md = await loadWikiText(wikiUrlForCharacter(slug));
-                renderWikiMarkdown(docEl, md);
+                renderWikiMarkdown(docEl, md, tocEl);
+                // TOC active tracking needs scroll container (.ww-mid) to be root
+                const mid = container.querySelector('.ww-mid');
+                if (mid) wireTocActive(tocEl, mid);
             } catch (e) {
                 docEl.innerHTML = '<p style="color:var(--error)">문서를 불러오지 못했습니다.</p>';
             }
