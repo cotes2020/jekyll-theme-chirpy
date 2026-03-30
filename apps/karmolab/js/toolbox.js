@@ -15,7 +15,7 @@
  * │               ─→ gemini.js (AI API)                        │
  * │               ─→ widgets/*.js (개별 도구)                   │
  * │                                                            │
- * │  카테고리:  tool (도구)  /  play (놀이)  /  null (기타)  │
+ * │  카테고리:  tool (도구)  /  play (놀이)  /  lab (실험실·개발중)  /  null (기타)  │
  * └────────────────────────────────────────────────────────────┘
  *
  * 새 도구 추가 방법:
@@ -23,7 +23,7 @@
  * 2. widgets-manifest.js(boot) + widgets-lazy-meta.js(지연 메타 단일 출처)
  * 3. Toolbox.register({ id, title, icon, category, desc, hidden?, tabs }) 호출
  *    - icon: SVG path 문자열 (viewBox 0 0 24 24 기준)
- *    - category: 'tool' | 'play' | null
+ *    - category: 'tool' | 'play' | 'lab' | null
  *    - desc: 한 줄 설명 (검색·즐겨찾기용)
  *    - hidden: true면 사이드바 비표시 (user 등)
  *    - tabs: [{ id, label, build(container) }]
@@ -44,6 +44,7 @@ const Toolbox = (() => {
     const CATEGORIES = [
         { id: 'tool', label: '도구', icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94L6.73 20.15a2.1 2.1 0 0 1-3-3l6.72-6.72a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>' },
         { id: 'play', label: '놀이', icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/>' },
+        { id: 'lab', label: '실험실 · 개발중', icon: '<path d="M9 3h6v5l4 4v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7l4-4V3z"/><path d="M9 3h6"/>' },
     ];
 
     /** 위젯별 메타데이터 (category, desc, hidden 등) — 각 위젯 register에서 정의 */
@@ -60,7 +61,7 @@ const Toolbox = (() => {
             const raw = localStorage.getItem(SIDEBAR_GROUP_KEY);
             if (raw) return JSON.parse(raw);
         } catch (_) {}
-        return { tool: true, play: false };
+        return { tool: true, play: false, lab: false };
     }
 
     function setGroupState(state) {

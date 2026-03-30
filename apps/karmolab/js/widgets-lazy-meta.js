@@ -63,8 +63,8 @@ window.KARMOLAB_LAZY_META = [
     {
         id: 'worldwiki',
         title: '세계관 위키',
-        category: null,
-        desc: '세계관(캐릭터·아티팩트) 문서를 앱 안에서 봅니다',
+        category: 'lab',
+        desc: '세계관(캐릭터·아티팩트) 문서를 앱 안에서 봅니다 (개발 중)',
         layout: 'full',
         icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
         lazyScriptPaths: [
@@ -96,8 +96,8 @@ window.KARMOLAB_LAZY_META = [
     {
         id: 'tierlist',
         title: '티어리스트',
-        category: 'tool',
-        desc: '후보 풀(주제별 요소)에서 순위 인스턴스를 만들고, 블로그·로컬 JSON으로 주고받기',
+        category: 'lab',
+        desc: '후보 풀(주제별 요소)에서 순위 인스턴스를 만들고, 블로그·로컬 JSON으로 주고받기 (개발 중)',
         layout: 'form',
         icon: '<path d="M3 3h18v4H3zM3 9h14v4H3zM3 15h10v4H3z"/>',
         lazyScriptPaths: ['tierlist/tierlist'],
@@ -105,8 +105,8 @@ window.KARMOLAB_LAZY_META = [
     {
         id: 'postgraph',
         title: '글 그래프',
-        category: null,
-        desc: '블로그 포스트 간 내부 링크 관계를 그래프로 봅니다',
+        category: 'lab',
+        desc: '블로그 포스트 간 내부 링크 관계를 그래프로 봅니다 (개발 중)',
         layout: 'full',
         icon: '<circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="10.2" y1="10.2" x2="13.8" y2="13.8" stroke="currentColor" stroke-width="1.5"/>',
         lazyScriptPaths: ['postgraph'],
@@ -141,8 +141,8 @@ window.KARMOLAB_LAZY_META = [
     {
         id: 'planner',
         title: '플래너',
-        category: 'tool',
-        desc: '나만의 일정 동기화 및 스트릭 칸반 보드',
+        category: 'lab',
+        desc: '나만의 일정 동기화 및 스트릭 칸반 보드 (개발 중)',
         layout: 'full',
         icon: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>',
         lazyScriptPaths: ['planner/planner'],
