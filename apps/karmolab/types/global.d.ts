@@ -32,6 +32,9 @@ declare global {
 
     /** apps/karmolab-react-src 내 React 마운트 */
     mountKarmoPlanner?: (rootId: string) => void;
+
+    /** dashboard.ts — 내 정보 탭에서 호출 */
+    DashboardBuild?: (container: HTMLElement) => void;
   }
 
   /** toolbox.js — global lexical binding (not necessarily window.Toolbox) */
@@ -60,6 +63,15 @@ declare global {
     getProgress?: (key: string) => number;
     setProgress?: (key: string, value: number) => void;
     completeAchievement?: (id: string, meta?: { title?: string } & Record<string, unknown>) => void;
+    incrementProgress?: (key: string, amount?: number) => number;
+    unlockBadge?: (id: string, meta?: { title?: string } & Record<string, unknown>) => boolean | void;
+    getUsageStats?: () => Record<
+      string,
+      { chatCount?: number; imageCount?: number; chatTokens?: number; imageTokens?: number }
+    >;
+    getPref?: (key: string, fallback?: string) => string;
+    setPref?: (key: string, value: string) => void;
+    field?: (container: HTMLElement, opts: Record<string, unknown>) => HTMLElement;
   };
 
 }

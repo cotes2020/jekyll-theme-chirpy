@@ -1,9 +1,7 @@
-// @ts-nocheck
-/* global Toolbox, Mdd */
-(function () {
-  let lastDestroy = null;
+(function (): void {
+  let lastDestroy: (() => void) | null = null;
 
-  function karmoPalette() {
+  function karmoPalette(): Record<string, string> {
     const theme = document.documentElement.getAttribute('data-theme');
     const dark = theme !== 'light';
     return {
@@ -16,8 +14,10 @@
     };
   }
 
+  type GraphNode = { href?: string };
+
   const PostGraph = {
-    build(container) {
+    build(container: HTMLElement): void {
       if (typeof lastDestroy === 'function') {
         try {
           lastDestroy();
@@ -38,14 +38,22 @@
       const dataUrl = new URL('/assets/js/data/post-graph.json', origin || 'http://localhost').href;
       const moduleUrl = new URL('/assets/js/graph-view/graph-view.js', origin || 'http://localhost').href;
 
-      (async () => {
+      void (async () => {
         try {
-          const { createGraphView } = await import(moduleUrl);
+          const mod = (await import(moduleUrl)) as {
+            createGraphView: (opts: {
+              container: HTMLElement;
+              dataUrl: string;
+              getPalette: () => Record<string, string>;
+              onNodeOpen: (node: GraphNode) => void;
+            }) => Promise<{ destroy?: () => void }>;
+          };
+          const { createGraphView } = mod;
           const api = await createGraphView({
             container: wrap,
             dataUrl,
             getPalette: karmoPalette,
-            onNodeOpen(node) {
+            onNodeOpen(node: GraphNode) {
               if (node.href) {
                 window.open(new URL(node.href, origin || 'http://localhost').href, '_blank', 'noopener,noreferrer');
               }
@@ -54,7 +62,8 @@
           lastDestroy = typeof api.destroy === 'function' ? api.destroy.bind(api) : null;
         } catch (e) {
           console.error(e);
-          wrap.textContent = '그래프를 불러오지 못했습니다. (배포된 사이트에서 /assets/js/data/post-graph.json 확인)';
+          wrap.textContent =
+            '그래프를 불러오지 못했습니다. (배포된 사이트에서 /assets/js/data/post-graph.json 확인)';
         }
       })();
 
@@ -65,7 +74,7 @@
   };
 
   Toolbox.register({
-    ...Toolbox.getLazyWidgetPublicMeta('postgraph'),
+    ...(Toolbox.getLazyWidgetPublicMeta?.('postgraph') ?? {}),
     tabs: [{ id: 'graph', label: '그래프', build: PostGraph.build }]
   });
 })();
