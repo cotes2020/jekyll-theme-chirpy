@@ -1,5 +1,3 @@
-// @ts-nocheck
-(function () {
-    window.Tierlist = window.Tierlist || {};
+(function (): void {
+  window.Tierlist = window.Tierlist || {};
 })();
-

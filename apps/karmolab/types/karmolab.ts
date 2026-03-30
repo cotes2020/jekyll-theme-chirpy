@@ -60,6 +60,24 @@ export interface KarmoLabImageBatchHooks {
   onItemError?: (i: number, file: File, err: Error, total: number) => void;
 }
 
+/** KarmoWorld — `world.js` / `parse-md.js` / `load-characters-from-wiki.js` */
+export interface KarmoWorldParseMdAPI {
+  splitFrontmatter: (md: string) => { frontmatter: string; body: string };
+  parseYamlSimple: (yaml: string) => Record<string, unknown>;
+  parseCharacterWikiMarkdown: (md: string) => { meta: Record<string, unknown>; body: string };
+}
+
+export interface KarmoWorldNamespace {
+  parseMd?: KarmoWorldParseMdAPI;
+  entities?: {
+    characters?: Record<string, Record<string, unknown>>;
+  };
+  bindings?: {
+    imagegen?: Record<string, unknown> & { characters?: unknown };
+    chatbot?: Record<string, unknown> & { characters?: unknown };
+  };
+}
+
 export interface KarmoLabImageBatchAPI {
   StepType: { CONVERT: string };
   recipeConvert: (opts: ImageConvertOptions) => KarmoLabImageBatchRecipe;
