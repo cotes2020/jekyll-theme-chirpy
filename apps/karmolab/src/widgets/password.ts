@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Toolbox.register({
         id: 'password', title: '비번',

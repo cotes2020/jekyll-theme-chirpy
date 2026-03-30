@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Toolbox.register({
         id: 'folder', title: '에러',

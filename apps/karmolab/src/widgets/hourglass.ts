@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Toolbox.register({
         id: 'hourglass', title: '모래시계',

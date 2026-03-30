@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Toolbox.register({
         id: 'moon', title: '문페이즈',

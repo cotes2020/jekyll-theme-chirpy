@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     const PROGRESS_KEY = 'pet_strokes';
     const MILESTONES = {

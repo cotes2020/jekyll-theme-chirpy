@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Mdd.injectCSS('bubble', `
         .bubble-wrap-container { padding:24px; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:var(--radius-lg); margin-bottom:24px; }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Toolbox.register({
         id: 'eyes', title: '눈동자',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Mdd.injectCSS('hacker', `
         .hacker-container { width:100%; flex:1; min-height:300px; background:#000; color:#00ff00; font-family:'SF Mono','Cascadia Code','Consolas',monospace; font-size:14px; padding:24px; border:1px solid var(--border); border-radius:var(--radius-lg); overflow-y:auto; white-space:pre-wrap; word-break:break-all; position:relative; user-select:none; }

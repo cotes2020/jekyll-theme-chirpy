@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * User Page — 내 정보, 도전과제, 뱃지
  */

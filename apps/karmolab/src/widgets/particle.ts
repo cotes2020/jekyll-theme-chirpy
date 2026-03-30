@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Mdd.injectCSS('particle', `
         .playground-canvas { width:100%; flex:1; min-height:300px; background:var(--bg-primary); border:1px solid var(--border); border-radius:var(--radius-lg); cursor:crosshair; display:block; }

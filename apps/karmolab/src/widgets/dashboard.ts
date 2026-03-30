@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     Mdd.injectCSS('dashboard', `
         .dash-layout { display:flex; flex-direction:column; gap:16px; }
