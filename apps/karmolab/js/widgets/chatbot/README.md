@@ -1,16 +1,21 @@
 # chatbot 위젯
 
-AI 채팅 UI는 **`chatbot.js` 단일 파일**로 동작합니다. CSS는 `Mdd.injectCSS('chatbot', ...)`로 같은 파일에서 주입하고, 세션·마크다운·전송 로직도 모두 여기에 있습니다.
+AI 채팅 UI는 여러 스크립트로 나뉘어 지연 로드되며, **`chatbot.js`** 가 세션·전송·`window._cb` 를 담당합니다.
 
 ## 로드
 
 `apps/karmolab/js/widgets-lazy-meta.js` 에서:
 
 ```text
-lazyScriptPaths: ['chatbot/chatbot']
+lazyScriptPaths: ['chatbot/styles', 'chatbot/markdown', 'chatbot/characters', 'chatbot/karmo-image', 'chatbot/prompt', 'chatbot/chatbot']
 ```
 
-다른 `widgets/chatbot/*.js` 파일은 로드되지 않습니다.
+- `styles.js` — `Mdd.injectCSS('chatbot', …)`
+- `markdown.js` — `window.ChatbotMarkdown.renderMarkdown`
+- `characters.js` — `window.ChatbotCharacters` (캐릭터 저장·PNG/JSON 가져오기·모달 UI)
+- `karmo-image.js` — `window.ChatbotKarmoImage` (KARMO_IMAGE 태그·캐릭터 이미지 생성)
+- `prompt.js` — `window.ChatbotPrompt` (`SYSTEM_PROMPT_PRESETS`, `assembleSystemPrompt`)
+- `chatbot.js` — 메인 로직
 
 ## 공개 API
 
@@ -21,6 +26,6 @@ lazyScriptPaths: ['chatbot/chatbot']
 
 첫 실행 시 `카레 (비서)` 한 명만 넣고, 이후 로드마다 id 기준으로 없으면 병합: `c_mascot_yon`(욘), `c_mascot_alisa`(알리사), `c_mascot_ling`(링). 컨셉은 이미지 생성 [`imagegen/presets.js`](../imagegen/presets.js) 의 `CHARACTER_PRESETS`(마녀 욘·메이드 알리사·강시 링)와 맞춤.
 
-## 과거 분리 모듈
+## 프리셋 문구
 
-예전에 `session.js`, `ui.js`, `actions.js`, `styles.js`, `markdown.js`, `presets.json` 등으로 나뉘어 있었으나, 실제 번들에 포함되지 않아 유지보수 혼선만 주므로 제거되었습니다. 프리셋 문구는 `chatbot.js` 내 `SYSTEM_PROMPT_PRESETS` 를 수정합니다.
+역할·톤 프리셋은 `prompt.js` 의 `SYSTEM_PROMPT_PRESETS` 를 수정합니다.
