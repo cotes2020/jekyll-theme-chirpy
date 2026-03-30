@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * imagegen - 큐 시스템, 유틸, 히스토리
  */

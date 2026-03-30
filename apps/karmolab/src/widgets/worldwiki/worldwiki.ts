@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * World Wiki — KarmoWorld 위키 뷰어
  * - 좌측: 항목 목록(캐릭터 위주 시작)

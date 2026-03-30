@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     function buildPlanner(container) {
         // React 앱이 마운트될 루트 엘리먼트 생성

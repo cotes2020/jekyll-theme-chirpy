@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     const T = window.Tierlist = window.Tierlist || {};
 

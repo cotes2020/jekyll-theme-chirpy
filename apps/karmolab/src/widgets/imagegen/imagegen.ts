@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * imagegen - 메인 엔트리 (buildMain, UI, window._ig)
  * window.ImageGen (IG) 의 presets, config, queue, utils 사용

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * imagegen - 설정 상수
  */

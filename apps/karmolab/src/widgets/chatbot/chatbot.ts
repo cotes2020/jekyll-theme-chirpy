@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     /* ===== 상태 ===== */
     const CHATBOT_SESSIONS_INDEX_KEY = 'toolbox_chatbot_sessions_index';

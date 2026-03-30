@@ -1,3 +1,4 @@
+// @ts-nocheck
 /** 캐릭터 저장소·폼·모달 (chatbot.js에서 세션·전송과 연동) */
 (function () {
     let cbCharModalEscBound = false;

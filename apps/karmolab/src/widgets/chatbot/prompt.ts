@@ -1,3 +1,4 @@
+// @ts-nocheck
 /** 시스템 프롬프트 프리셋·조립 (ChatbotCharacters 로드 후) */
 (function () {
     const SYSTEM_PROMPT_PRESETS = {

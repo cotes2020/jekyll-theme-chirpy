@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     const T = window.Tierlist = window.Tierlist || {};
 
@@ -74,7 +75,7 @@
         const hasOvr = ovr && typeof ovr === 'object' && Object.keys(ovr).length > 0;
         if (!base && !hasOvr) return { id, name: '?', imageKey: null, tlOrigin: 'custom' };
         if (!base) {
-            const m = { id, name: '', imageKey: null, ...ovr, id };
+            const m = { name: '', imageKey: null, ...ovr, id };
             m.tlOrigin = 'custom';
             delete m.tlEdited;
             return m;

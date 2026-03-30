@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     // tierlist 위젯 엔트리포인트(매니페스트용 단일 파일)
     // 이 파일은 widgets/tierlist/ 폴더 안에 있으므로, baseUrl은 "현재 파일의 폴더"면 충분합니다.

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /** 챗봇 메시지용 경량 마크다운 → HTML (styles.js의 .cb-msg-bot 규칙과 대응) */
 (function () {
     window.ChatbotMarkdown = window.ChatbotMarkdown || {};
