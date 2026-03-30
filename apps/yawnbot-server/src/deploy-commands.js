@@ -75,6 +75,16 @@ const commands = [
     new SlashCommandBuilder().setName('yawn').setDescription('Gemini AI에게 무엇이든 물어보세요!')
         .addStringOption(opt => opt.setName('질문').setDescription('AI에게 전달할 메시지').setRequired(true)),
 
+    // ── Cursor 로컬 에이전트 (CLI) ──
+    new SlashCommandBuilder().setName('cursor-edit').setDescription('[관리자] 로컬 저장소에서 Cursor agent(acp)로 프롬프트 실행')
+        .addStringOption(opt => opt.setName('prompt').setDescription('에이전트에 전달할 지시').setRequired(true))
+        .addStringOption(opt => opt.setName('mode').setDescription('세션 모드')
+            .addChoices(
+                { name: 'agent', value: 'agent' },
+                { name: 'ask', value: 'ask' },
+                { name: 'plan', value: 'plan' },
+            )),
+
     // ── 관리자 ──
     new SlashCommandBuilder().setName('admin-reload').setDescription('[관리자] 데이터를 다시 불러옵니다.'),
     new SlashCommandBuilder().setName('admin-save').setDescription('[관리자] 데이터를 저장합니다.'),
