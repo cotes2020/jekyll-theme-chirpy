@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     async function loadFromTxt() {
         try {

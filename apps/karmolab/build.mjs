@@ -53,6 +53,8 @@ const entryPoints = [
   'src/widgets/randomgen/randomgen.ts',
   'src/widgets/toast.ts',
   'src/widgets/imageedit.ts',
+  'src/widgets/crypto.ts',
+  'src/widgets/memo.ts',
   'src/widgets-manifest.ts',
   'src/widgets-lazy-meta.ts',
   'src/widgets-loader.ts'

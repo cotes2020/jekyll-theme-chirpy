@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Mdd.injectCSS('memo', `
         .memo-container { display:flex; flex:1; min-height:400px; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
