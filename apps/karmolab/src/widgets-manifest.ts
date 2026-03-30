@@ -9,12 +9,12 @@
  *   Toolbox.register({ ...Toolbox.getLazyWidgetPublicMeta('id'), tabs: [...] })
  */
 window.KARMOLAB_WIDGETS_BOOT = [
-    'favorites',
-    'linktree/linktree',
-    'user',
-    'dashboard',
-    'docs/docs',
-    'servermonitor',
-    'devtools',
-    'randomgen/randomgen',
+  'favorites',
+  'linktree/linktree',
+  'user',
+  'dashboard',
+  'docs/docs',
+  'servermonitor',
+  'devtools',
+  'randomgen/randomgen'
 ];

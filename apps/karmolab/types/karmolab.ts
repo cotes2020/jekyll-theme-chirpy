@@ -38,6 +38,17 @@ export interface RandomGenTopic {
   generator?: () => string | { name: string; sub?: string };
 }
 
+/** Lazy-load sidebar stub; paths are under `widgets/` without `.js` */
+export interface KarmoLabLazyWidgetStub {
+  id: string;
+  title: string;
+  category: string;
+  desc: string;
+  layout: string;
+  icon: string;
+  lazyScriptPaths?: string[];
+}
+
 export interface KarmoLabImageBatchRecipe {
   steps: Array<{ type: string; opts?: ImageConvertOptions }>;
 }

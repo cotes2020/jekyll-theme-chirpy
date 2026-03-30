@@ -15,7 +15,11 @@ const entryPoints = [
   'src/widgets/randomgen/randomgen-color.ts',
   'src/widgets/randomgen/randomgen-time.ts',
   'src/widgets/randomgen/randomgen-number.ts',
-  'src/widgets/randomgen/randomgen-name.ts'
+  'src/widgets/randomgen/randomgen-name.ts',
+  'src/widgets/randomgen/randomgen-topics.ts',
+  'src/widgets-manifest.ts',
+  'src/widgets-lazy-meta.ts',
+  'src/widgets-loader.ts'
 ];
 
 for (const rel of entryPoints) {

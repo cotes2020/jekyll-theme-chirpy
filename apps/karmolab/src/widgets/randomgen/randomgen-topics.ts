@@ -11,28 +11,32 @@
  * - 단순: topics.json에 { id, label, group, items: ["a","b",...] } 추가
  * - 커스텀: 각 모듈에서 topics.push({ id, label, group, generator: () => string | { name, sub } })
  */
+import type { RandomGenTopic } from '../../../types/karmolab';
+
 (function () {
-    var base = (function () {
-        var s = document.currentScript;
-        if (s && s.src) {
-            try {
-                return s.src.replace(/[^/]+$/, '');
-            } catch (_) {}
-        }
-        return (location.origin || '') + '/apps/karmolab/js/widgets/randomgen/';
-    })();
-
-    var data = [];
-    try {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', base + 'topics.json', false);
-        xhr.send(null);
-        if (xhr.status === 200) {
-            data = JSON.parse(xhr.responseText);
-        }
-    } catch (e) {
-        console.warn('randomgen: topics.json 로드 실패', e);
+  const base = (function () {
+    const s = document.currentScript as HTMLScriptElement | null;
+    if (s && s.src) {
+      try {
+        return s.src.replace(/[^/]+$/, '');
+      } catch {
+        /* noop */
+      }
     }
+    return (location.origin || '') + '/apps/karmolab/js/widgets/randomgen/';
+  })();
 
-    window.RANDOMGEN_TOPICS = data;
+  let data: RandomGenTopic[] = [];
+  try {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', base + 'topics.json', false);
+    xhr.send(null);
+    if (xhr.status === 200) {
+      data = JSON.parse(xhr.responseText) as RandomGenTopic[];
+    }
+  } catch (e) {
+    console.warn('randomgen: topics.json 로드 실패', e);
+  }
+
+  window.RANDOMGEN_TOPICS = data;
 })();

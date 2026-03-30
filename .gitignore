@@ -55,6 +55,10 @@ apps/karmolab/js/widgets/randomgen/randomgen-color.js
 apps/karmolab/js/widgets/randomgen/randomgen-time.js
 apps/karmolab/js/widgets/randomgen/randomgen-number.js
 apps/karmolab/js/widgets/randomgen/randomgen-name.js
+apps/karmolab/js/widgets/randomgen/randomgen-topics.js
+apps/karmolab/js/widgets-manifest.js
+apps/karmolab/js/widgets-lazy-meta.js
+apps/karmolab/js/widgets-loader.js
 _site/
 .jekyll-cache/
 .jekyll-metadata/
