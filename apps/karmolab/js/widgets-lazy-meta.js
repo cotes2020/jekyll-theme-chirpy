@@ -30,7 +30,19 @@ window.KARMOLAB_LAZY_META = [
         layout: 'full',
         icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>',
         /** load order matters; see widgets/chatbot/README.md */
-        lazyScriptPaths: ['chatbot/styles', 'chatbot/markdown', 'chatbot/characters', 'chatbot/karmo-image', 'chatbot/prompt', 'chatbot/chatbot'],
+        lazyScriptPaths: [
+            'world/world',
+            'world/entities/characters/yon',
+            'world/entities/characters/alisa',
+            'world/entities/characters/ling',
+            'world/bindings/chatbot/characters',
+            'chatbot/styles',
+            'chatbot/markdown',
+            'chatbot/characters',
+            'chatbot/karmo-image',
+            'chatbot/prompt',
+            'chatbot/chatbot'
+        ],
     },
     {
         id: 'imagegen',
@@ -39,7 +51,34 @@ window.KARMOLAB_LAZY_META = [
         desc: 'AI로 이미지를 생성합니다',
         layout: 'full',
         icon: '<circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/>',
-        lazyScriptPaths: ['imagegen/presets', 'imagegen/config', 'imagegen/styles', 'imagegen/core', 'imagegen/imagegen'],
+        lazyScriptPaths: [
+            'world/world',
+            'world/entities/characters/yon',
+            'world/entities/characters/alisa',
+            'world/entities/characters/ling',
+            'world/bindings/imagegen/characters',
+            'imagegen/presets',
+            'imagegen/config',
+            'imagegen/styles',
+            'imagegen/core',
+            'imagegen/imagegen'
+        ],
+    },
+    {
+        id: 'worldwiki',
+        title: '세계관 위키',
+        category: 'tool',
+        desc: '세계관(캐릭터·아티팩트) 문서를 앱 안에서 봅니다',
+        layout: 'full',
+        icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+        lazyScriptPaths: [
+            'world/world',
+            'world/entities/characters/yon',
+            'world/entities/characters/alisa',
+            'world/entities/characters/ling',
+            'chatbot/markdown',
+            'worldwiki/worldwiki'
+        ],
     },
     {
         id: 'imageedit',

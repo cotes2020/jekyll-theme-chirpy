@@ -67,6 +67,20 @@
         ]
     };
 
+    // Optional SSoT override (KarmoWorld bindings) — keep builtin as fallback
+    try {
+        const b = window.KarmoWorld?.bindings?.imagegen?.characters;
+        if (Array.isArray(b) && b.length) {
+            CHARACTER_PRESETS.char = b.map(x => ({
+                id: x.imagegenPresetId,
+                icon: x.icon,
+                label: x.label,
+                shortLabel: x.shortLabel || '',
+                prompt: x.prompt || ''
+            })).filter(x => x.id && x.prompt);
+        }
+    } catch (_) {}
+
     const CUSTOM_INPUT_ID = '_custom';
     const CUSTOM_PRESETS_KEY = 'toolbox_imagegen_custom_presets';
     const CUSTOM_CHARACTERS_KEY = 'toolbox_imagegen_custom_characters';

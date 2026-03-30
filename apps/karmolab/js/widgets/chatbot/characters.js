@@ -195,6 +195,24 @@
 
     /** imagegen CHARACTER_PRESETS(witch / alisa / ling)와 동일 컨셉 — id 기준으로 없을 때만 병합 */
     function getBuiltinMascotCharacters() {
+        try {
+            const b = window.KarmoWorld?.bindings?.chatbot?.characters;
+            if (Array.isArray(b) && b.length) {
+                const out = b.map(x => ({
+                    id: x.chatbotId,
+                    name: x.name,
+                    userName: x.userName,
+                    userNote: x.userNote,
+                    visualDescription: x.visualDescription,
+                    description: x.description,
+                    personality: x.personality,
+                    scenario: x.scenario,
+                    firstMes: x.firstMes,
+                    referenceImageDataUrl: ''
+                })).filter(x => x.id && x.name);
+                if (out.length) return out;
+            }
+        } catch (_) {}
         return [
             {
                 id: 'c_mascot_yon',

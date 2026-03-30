@@ -123,6 +123,17 @@ const Toolbox = (() => {
         }
     }
 
+    function getWorldScriptBase() {
+        const b = typeof window !== 'undefined' && window.KARMOLAB_WORLD_SCRIPT_BASE;
+        if (b) return b;
+        try {
+            const origin = location.origin || '';
+            return origin + '/apps/karmolab/world/';
+        } catch (_) {
+            return '/apps/karmolab/world/';
+        }
+    }
+
     const widgetScriptsLoaded = new Set();
     const widgetScriptsLoading = new Map();
 
@@ -159,10 +170,13 @@ const Toolbox = (() => {
         }
 
         const base = getWidgetScriptBase();
+        const worldBase = getWorldScriptBase();
         const p = (async () => {
             let waitIdx = (window.KARMOLAB_WIDGET_LOADER_WAIT || []).length;
             for (let i = 0; i < paths.length; i++) {
-                const url = base + paths[i] + '.js';
+                const rawPath = paths[i];
+                const isWorld = typeof rawPath === 'string' && rawPath.startsWith('world/');
+                const url = (isWorld ? worldBase : base) + (isWorld ? rawPath.slice('world/'.length) : rawPath) + '.js';
                 await loadScriptOnce(url);
                 const w = window.KARMOLAB_WIDGET_LOADER_WAIT || [];
                 if (w.length > waitIdx) {
