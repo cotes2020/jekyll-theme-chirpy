@@ -62,6 +62,7 @@ apps/karmolab/js/widgets/randomgen/randomgen-number.js
 apps/karmolab/js/widgets/randomgen/randomgen-name.js
 apps/karmolab/js/widgets/randomgen/randomgen.js
 apps/karmolab/js/widgets/toast.js
+apps/karmolab/js/widgets/imageedit.js
 apps/karmolab/js/widgets/randomgen/randomgen-topics.js
 apps/karmolab/js/widgets-manifest.js
 apps/karmolab/js/widgets-lazy-meta.js

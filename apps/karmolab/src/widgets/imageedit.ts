@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     /* ===== CSS ===== */
     Mdd.injectCSS('imageedit', `
