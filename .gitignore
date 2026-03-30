@@ -49,31 +49,15 @@ node_modules
 # Build artifacts
 apps/karmolab/react-dist/
 # KarmoLab TS build output (apps/karmolab: npm run build)
+# Root scripts + widgets/**/*.js = esbuild output. Tracked legacy .js under widgets/ is unchanged
+# until migrated (gitignore does not apply to already-tracked files). json/md under js/ stay visible.
 apps/karmolab/js/mdd.js
 apps/karmolab/js/gemini.js
 apps/karmolab/js/toolbox.js
-apps/karmolab/js/widgets/imageconvert/core.js
-apps/karmolab/js/widgets/imageconvert/batch-pipeline.js
-apps/karmolab/js/widgets/imageconvert/imageconvert.js
-apps/karmolab/js/widgets/imageconvert/widget.js
-apps/karmolab/js/widgets/randomgen/randomgen-color.js
-apps/karmolab/js/widgets/randomgen/randomgen-time.js
-apps/karmolab/js/widgets/randomgen/randomgen-number.js
-apps/karmolab/js/widgets/randomgen/randomgen-name.js
-apps/karmolab/js/widgets/randomgen/randomgen.js
-apps/karmolab/js/widgets/toast.js
-apps/karmolab/js/widgets/imageedit.js
-apps/karmolab/js/widgets/crypto.js
-apps/karmolab/js/widgets/memo.js
-apps/karmolab/js/widgets/imagelib.js
-apps/karmolab/js/widgets/conch.js
-apps/karmolab/js/widgets/postgraph.js
-apps/karmolab/js/widgets/fortune.js
-apps/karmolab/js/widgets/gacha.js
-apps/karmolab/js/widgets/randomgen/randomgen-topics.js
 apps/karmolab/js/widgets-manifest.js
 apps/karmolab/js/widgets-lazy-meta.js
 apps/karmolab/js/widgets-loader.js
+apps/karmolab/js/widgets/**/*.js
 _site/
 .jekyll-cache/
 .jekyll-metadata/
