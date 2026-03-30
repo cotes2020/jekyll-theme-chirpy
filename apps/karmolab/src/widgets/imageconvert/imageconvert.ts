@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     function baseUrl() {
         var s = document.currentScript || [].slice.call(document.scripts).pop();

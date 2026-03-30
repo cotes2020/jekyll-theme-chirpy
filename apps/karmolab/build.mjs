@@ -43,6 +43,8 @@ await esbuild.build({
 const entryPoints = [
   'src/widgets/imageconvert/core.ts',
   'src/widgets/imageconvert/batch-pipeline.ts',
+  'src/widgets/imageconvert/imageconvert.ts',
+  'src/widgets/imageconvert/widget.ts',
   'src/widgets/randomgen/randomgen-color.ts',
   'src/widgets/randomgen/randomgen-time.ts',
   'src/widgets/randomgen/randomgen-number.ts',

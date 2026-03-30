@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     var IC = window.KarmoLabImageConvert;
     if (!IC) {
