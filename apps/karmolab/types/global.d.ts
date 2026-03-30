@@ -2,6 +2,7 @@ import type {
   KarmoLabImageBatchAPI,
   KarmoLabImageConvertAPI,
   KarmoLabLazyWidgetStub,
+  KarmoWorldNamespace,
   RandomGenTopic
 } from './karmolab';
 
@@ -11,6 +12,9 @@ declare global {
   interface Window {
     KarmoLabImageConvert?: KarmoLabImageConvertAPI;
     KarmoLabImageBatch?: KarmoLabImageBatchAPI;
+    KarmoWorld?: KarmoWorldNamespace;
+    /** tierlist 네임스페이스 — `namespace.js` */
+    Tierlist?: Record<string, unknown>;
     RANDOMGEN_TOPICS?: RandomGenTopic[];
     KARMOLAB_WIDGET_LOADER_WAIT?: Promise<unknown>[];
     KARMOLAB_WIDGET_SCRIPT_BASE?: string;
@@ -25,6 +29,7 @@ declare global {
     initTheme: () => void;
     init: () => void;
     getTools: () => Array<{ id: string }>;
+    showToast?: (msg: string, type?: string, detail?: unknown) => void;
   };
 
 }
