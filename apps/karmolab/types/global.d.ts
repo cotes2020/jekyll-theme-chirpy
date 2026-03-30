@@ -57,6 +57,9 @@ declare global {
     init: () => void;
     getTools: () => Array<{ id: string }>;
     showToast?: (msg: string, type?: string, detail?: unknown) => void;
+    getProgress?: (key: string) => number;
+    setProgress?: (key: string, value: number) => void;
+    completeAchievement?: (id: string, meta?: { title?: string } & Record<string, unknown>) => void;
   };
 
 }
