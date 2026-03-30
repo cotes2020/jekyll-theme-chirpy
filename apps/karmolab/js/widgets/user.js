@@ -241,6 +241,7 @@
         'toolbox_imagegen_custom_presets': '이미지 생성 커스텀 프리셋',
         'toolbox_ig_prompt_history': '이미지 생성 프롬프트 기록',
         'toolbox_chatbot_sessions_index': '챗봇 세션 인덱스',
+        'karmolab_chatbot_characters_v1': '챗봇 캐릭터 카드 목록 (JSON 배열; karmochat_character_v1 내보내기와 별개로 localStorage에 저장)',
         'mdd_affection': '마스코트 호감도',
         'mdd_story_progress': '마스코트 스토리 진행',
     };

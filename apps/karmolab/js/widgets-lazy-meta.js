@@ -29,6 +29,7 @@ window.KARMOLAB_LAZY_META = [
         desc: 'AI와 대화합니다',
         layout: 'full',
         icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>',
+        /** 단일 엔트리 — widgets/chatbot/README.md 참고 */
         lazyScriptPaths: ['chatbot/chatbot'],
     },
     {
