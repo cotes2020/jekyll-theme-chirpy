@@ -11,23 +11,23 @@ const Mdd = (() => {
     const IDLE_TIMEOUT = 30000;
 
     let currentMood = 'idle';
-    let idleTimer = null;
-    let container = null;
-    let charEl = null;
-    let bubbleEl = null;
-    let bubbleTimer = null;
+    let idleTimer: ReturnType<typeof setTimeout> | null = null;
+    let container: HTMLDivElement | null = null;
+    let charEl: HTMLDivElement | null = null;
+    let bubbleEl: HTMLDivElement | null = null;
+    let bubbleTimer: ReturnType<typeof setTimeout> | null = null;
     let _ready = false;
 
     /* ===== 이미지 마스코트 ===== */
 
-    function getMascotImgSrc(mood) {
+    function getMascotImgSrc(mood: string): string {
         const valid = POSES.includes(mood) ? mood : 'idle';
         return `${MASCOT_BASE}/${valid}.png`;
     }
 
     /* ===== CSS 주입 ===== */
 
-    function injectCSS(id, css) {
+    function injectCSS(id: string, css: string): void {
         if (document.getElementById('mdd-css-' + id)) return;
         const style = document.createElement('style');
         style.id = 'mdd-css-' + id;
@@ -37,7 +37,7 @@ const Mdd = (() => {
 
     /* ===== 감정/포즈 전환 ===== */
 
-    function setMood(poseId) {
+    function setMood(poseId: string): void {
         if (!POSES.includes(poseId)) poseId = 'idle';
         currentMood = poseId;
         if (!charEl) return;
@@ -48,17 +48,20 @@ const Mdd = (() => {
 
     /* ===== 말풍선 ===== */
 
-    function say(message, duration = 3000) {
-        if (!bubbleEl) return;
-        bubbleEl.textContent = message;
-        bubbleEl.classList.add('visible');
-        clearTimeout(bubbleTimer);
-        bubbleTimer = setTimeout(() => bubbleEl.classList.remove('visible'), duration);
+    function say(message: string, duration = 3000): void {
+        const el = bubbleEl;
+        if (!el) return;
+        el.textContent = message;
+        el.classList.add('visible');
+        if (bubbleTimer !== null) clearTimeout(bubbleTimer);
+        bubbleTimer = setTimeout(() => {
+            el.classList.remove('visible');
+        }, duration);
     }
 
     /* ===== 바운스 ===== */
 
-    function bounce() {
+    function bounce(): void {
         if (!charEl) return;
         charEl.classList.remove('mdd-bounce');
         void charEl.offsetWidth;
@@ -85,8 +88,8 @@ const Mdd = (() => {
      * 프리셋 대사 + 포즈. opts.msg / opts.mood / opts.duration 으로 덮어쓸 수 있음.
      * @returns {boolean} 알려진 id면 true
      */
-    function linePreset(id, opts) {
-        const base = LINE_PRESETS[id];
+    function linePreset(id: string, opts?: { msg?: string; mood?: string; duration?: number }): boolean {
+        const base = (LINE_PRESETS as Record<string, { mood: string; msg: string } | undefined>)[id];
         if (!base) return false;
         const mood = (opts && opts.mood) || base.mood;
         const msg = (opts && opts.msg != null) ? opts.msg : base.msg;
@@ -107,9 +110,9 @@ const Mdd = (() => {
         '연구소 안전 점검... 통과예요!',
     ];
 
-    function resetIdleTimer() {
+    function resetIdleTimer(): void {
         if (currentMood === 'sleep') return;
-        clearTimeout(idleTimer);
+        if (idleTimer !== null) clearTimeout(idleTimer);
         idleTimer = setTimeout(() => { linePreset('idle_sleep', { duration: 4000 }); }, IDLE_TIMEOUT);
     }
 
@@ -121,23 +124,23 @@ const Mdd = (() => {
     const GUIDE_SEEN_KEY = 'mdd_guide_seen';
     const POSITION_KEY = 'mdd_position';
 
-    function getAffection() {
-        try { return parseInt(localStorage.getItem(AFFECTION_KEY)) || 0; } catch (_) { return 0; }
+    function getAffection(): number {
+        try { return parseInt(localStorage.getItem(AFFECTION_KEY) || '0', 10) || 0; } catch (_) { return 0; }
     }
 
-    function addAffection(amount) {
+    function addAffection(amount: number): number {
         const current = getAffection() + amount;
-        try { localStorage.setItem(AFFECTION_KEY, current); } catch (_) {}
+        try { localStorage.setItem(AFFECTION_KEY, String(current)); } catch (_) {}
         checkStoryMilestone(current);
         return current;
     }
 
-    function getStoryProgress() {
-        try { return JSON.parse(localStorage.getItem(STORY_KEY)) || { seen: [], chapter: 0 }; }
+    function getStoryProgress(): { seen: string[]; chapter: number } {
+        try { return JSON.parse(localStorage.getItem(STORY_KEY) as string) || { seen: [], chapter: 0 }; }
         catch (_) { return { seen: [], chapter: 0 }; }
     }
 
-    function saveStoryProgress(data) {
+    function saveStoryProgress(data: { seen: string[]; chapter: number }): void {
         try { localStorage.setItem(STORY_KEY, JSON.stringify(data)); } catch (_) {}
     }
 
@@ -158,7 +161,7 @@ const Mdd = (() => {
         { threshold: 500,  id: 'soulmate',  mood: 'love',      msg: '연구소가 집 같아요. 조수님이 계셔서 그래요.' },
     ];
 
-    function appendStoryLog(entry) {
+    function appendStoryLog(entry: { id: string; msg: string; mood: string; ts: number }): void {
         try {
             const log = getStoryLog();
             log.push(entry);
@@ -166,12 +169,12 @@ const Mdd = (() => {
         } catch (_) {}
     }
 
-    function getStoryLog() {
-        try { return JSON.parse(localStorage.getItem(STORY_LOG_KEY)) || []; }
+    function getStoryLog(): Array<{ id?: string; msg: string; mood?: string; ts?: number }> {
+        try { return JSON.parse(localStorage.getItem(STORY_LOG_KEY) as string) || []; }
         catch (_) { return []; }
     }
 
-    function checkStoryMilestone(affection) {
+    function checkStoryMilestone(affection: number): void {
         const progress = getStoryProgress();
         for (const event of STORY_EVENTS) {
             if (affection >= event.threshold && !progress.seen.includes(event.id)) {
@@ -191,7 +194,7 @@ const Mdd = (() => {
     }
 
     /* 안내 대사 표시 (최소 세트) */
-    function showGuide(id) {
+    function showGuide(id: string): void {
         const g = GUIDE_MESSAGES.find(x => x.id === id);
         if (!g) return;
         if (id === 'welcome') {
@@ -201,9 +204,9 @@ const Mdd = (() => {
         linePreset('tool_run', { msg: g.msg, duration: 4000 });
     }
 
-    function showNextGuide() {
+    function showNextGuide(): void {
         try {
-            const seen = JSON.parse(localStorage.getItem(GUIDE_SEEN_KEY)) || [];
+            const seen = JSON.parse(localStorage.getItem(GUIDE_SEEN_KEY) as string) || [];
             const next = GUIDE_MESSAGES.find(g => !seen.includes(g.id));
             if (next) {
                 seen.push(next.id);
@@ -213,7 +216,7 @@ const Mdd = (() => {
         } catch (_) {}
     }
 
-    function getRelationshipTitle() {
+    function getRelationshipTitle(): string {
         const affection = getAffection();
         if (affection >= 500) return '소울메이트';
         if (affection >= 200) return '파트너';
@@ -226,11 +229,12 @@ const Mdd = (() => {
 
     /* ===== 드래그 ===== */
 
-    function loadPosition() {
+    function loadPosition(): void {
+        if (!container) return;
         try {
             const s = localStorage.getItem(POSITION_KEY);
             if (s) {
-                const { left, top } = JSON.parse(s);
+                const { left, top } = JSON.parse(s) as { left: number; top: number };
                 if (typeof left === 'number' && typeof top === 'number') {
                     container.style.left = left + 'px';
                     container.style.top = top + 'px';
@@ -241,7 +245,7 @@ const Mdd = (() => {
         } catch (_) {}
     }
 
-    function savePosition() {
+    function savePosition(): void {
         if (!container) return;
         const rect = container.getBoundingClientRect();
         try {
@@ -249,44 +253,47 @@ const Mdd = (() => {
         } catch (_) {}
     }
 
-    function initDrag() {
-        let dragStart = null;
+    function initDrag(): void {
+        if (!charEl || !container) return;
+        const el = charEl;
+        const box = container;
+        let dragStart: { x: number; y: number; left: number; top: number } | null = null;
         const DRAG_THRESHOLD = 8;
 
-        const onDown = (e) => {
-            dragStart = { x: e.clientX, y: e.clientY, left: container.offsetLeft, top: container.offsetTop };
-            const rect = container.getBoundingClientRect();
-            if (container.style.left) {
+        const onDown = (e: PointerEvent) => {
+            dragStart = { x: e.clientX, y: e.clientY, left: box.offsetLeft, top: box.offsetTop };
+            const rect = box.getBoundingClientRect();
+            if (box.style.left) {
                 dragStart.left = rect.left;
                 dragStart.top = rect.top;
             } else {
                 dragStart.left = window.innerWidth - rect.width - 16;
                 dragStart.top = window.innerHeight - rect.height - 16;
             }
-            container.style.left = dragStart.left + 'px';
-            container.style.top = dragStart.top + 'px';
-            container.style.bottom = 'auto';
-            container.style.right = 'auto';
+            box.style.left = dragStart.left + 'px';
+            box.style.top = dragStart.top + 'px';
+            box.style.bottom = 'auto';
+            box.style.right = 'auto';
             document.addEventListener('pointermove', onMove);
             document.addEventListener('pointerup', onUp, { once: true });
             document.addEventListener('pointercancel', onUp, { once: true });
         };
 
-        const onMove = (e) => {
+        const onMove = (e: PointerEvent) => {
             if (!dragStart) return;
             const dx = e.clientX - dragStart.x;
             const dy = e.clientY - dragStart.y;
             let left = dragStart.left + dx;
             let top = dragStart.top + dy;
-            const maxLeft = window.innerWidth - container.offsetWidth;
-            const maxTop = window.innerHeight - container.offsetHeight;
+            const maxLeft = window.innerWidth - box.offsetWidth;
+            const maxTop = window.innerHeight - box.offsetHeight;
             left = Math.max(0, Math.min(left, maxLeft));
             top = Math.max(0, Math.min(top, maxTop));
-            container.style.left = left + 'px';
-            container.style.top = top + 'px';
+            box.style.left = left + 'px';
+            box.style.top = top + 'px';
         };
 
-        const onUp = (e) => {
+        const onUp = (e: PointerEvent) => {
             document.removeEventListener('pointermove', onMove);
             document.removeEventListener('pointerup', onUp);
             document.removeEventListener('pointercancel', onUp);
@@ -304,17 +311,17 @@ const Mdd = (() => {
             dragStart = null;
         };
 
-        charEl.addEventListener('pointerdown', (e) => { e.preventDefault(); onDown(e); });
-        charEl.addEventListener('dragstart', (e) => e.preventDefault());
-        charEl.querySelector('img')?.addEventListener('dragstart', (e) => e.preventDefault());
-        charEl.addEventListener('contextmenu', (e) => {
+        el.addEventListener('pointerdown', (e) => { e.preventDefault(); onDown(e); });
+        el.addEventListener('dragstart', (e) => e.preventDefault());
+        el.querySelector('img')?.addEventListener('dragstart', (e) => e.preventDefault());
+        el.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             openStoryLog();
         });
     }
 
     /* ===== 스토리 로그 (미연시) ===== */
-    function openStoryLog() {
+    function openStoryLog(): void {
         const log = getStoryLog();
         const overlay = document.createElement('div');
         overlay.className = 'mdd-log-overlay';
@@ -325,7 +332,7 @@ const Mdd = (() => {
                     <button class="mdd-log-close" type="button" aria-label="닫기">×</button>
                 </div>
                 <div class="mdd-log-body">
-                    ${log.length ? log.map(e => `
+                    ${log.length ? log.map((e: { msg: string }) => `
                         <div class="mdd-log-entry">
                             <span class="mdd-log-msg">${escapeHtml(e.msg)}</span>
                         </div>
@@ -350,15 +357,17 @@ const Mdd = (() => {
             overlay.remove();
             document.removeEventListener('keydown', onEsc);
         };
-        const onEsc = (e) => { if (e.key === 'Escape') close(); };
-        overlay.querySelector('.mdd-log-close').onclick = close;
-        overlay.onclick = (e) => { if (e.target === overlay) close(); };
-        overlay.querySelector('.mdd-log-panel').onclick = (e) => e.stopPropagation();
+        const onEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
+        const closeBtn = overlay.querySelector('.mdd-log-close');
+        if (closeBtn) (closeBtn as HTMLElement).onclick = close;
+        overlay.onclick = (e: MouseEvent) => { if (e.target === overlay) close(); };
+        const panel = overlay.querySelector('.mdd-log-panel');
+        if (panel) (panel as HTMLElement).onclick = (e: MouseEvent) => e.stopPropagation();
         document.addEventListener('keydown', onEsc);
         document.body.appendChild(overlay);
     }
 
-    function escapeHtml(s) {
+    function escapeHtml(s: string): string {
         const d = document.createElement('div');
         d.textContent = s;
         return d.innerHTML;
@@ -366,7 +375,7 @@ const Mdd = (() => {
 
     /* ===== DOM 초기화 ===== */
 
-    function init() {
+    function init(): void {
         if (_ready) return;
         _ready = true;
 

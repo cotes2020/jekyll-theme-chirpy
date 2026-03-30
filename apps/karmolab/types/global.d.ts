@@ -26,4 +26,5 @@ declare global {
     init: () => void;
     getTools: () => Array<{ id: string }>;
   };
+
 }

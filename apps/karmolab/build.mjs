@@ -1,6 +1,7 @@
 /**
- * Emit browser IIFE scripts from src/ into js/ (mirrors paths under src/).
- * bundle: true so type-only imports resolve and shared types from types/ are inlined/erased.
+ * Emit browser scripts from src/ into js/ (mirrors paths under src/).
+ * - Most entries: bundle + iife (type-only imports resolve).
+ * - mdd.ts: bundle false + esm so output stays top-level `const Mdd = ...` (global lexical, like legacy mdd.js).
  */
 import * as esbuild from 'esbuild';
 import { fileURLToPath } from 'url';
@@ -8,6 +9,16 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = __dirname;
+
+await esbuild.build({
+  entryPoints: [join(root, 'src/mdd.ts')],
+  outfile: join(root, 'js/mdd.js'),
+  bundle: false,
+  format: 'esm',
+  platform: 'browser',
+  target: ['es2020'],
+  logLevel: 'info'
+});
 
 const entryPoints = [
   'src/widgets/imageconvert/core.ts',
