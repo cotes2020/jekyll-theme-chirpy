@@ -42,9 +42,25 @@
         return await r.text();
     }
 
+    function stripYamlFrontMatter(md) {
+        if (typeof md !== 'string') return '';
+        // YAML frontmatter: starts with --- on first line and ends with --- (or ...).
+        if (!md.startsWith('---\n') && !md.startsWith('---\r\n')) return md;
+        const lines = md.split(/\r?\n/);
+        if (lines[0].trim() !== '---') return md;
+        for (let i = 1; i < lines.length; i++) {
+            const t = lines[i].trim();
+            if (t === '---' || t === '...') {
+                return lines.slice(i + 1).join('\n').replace(/^\n+/, '');
+            }
+        }
+        return md;
+    }
+
     function renderWikiMarkdown(container, md) {
         const wrap = document.createElement('div');
         wrap.className = 'ww-md';
+        md = stripYamlFrontMatter(md);
         if (window.ChatbotMarkdown?.renderMarkdown) {
             wrap.innerHTML = window.ChatbotMarkdown.renderMarkdown(md);
         } else if (typeof marked !== 'undefined') {
