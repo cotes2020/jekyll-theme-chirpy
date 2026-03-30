@@ -38,6 +38,8 @@ const entryPoints = [
   'src/widgets/randomgen/randomgen-number.ts',
   'src/widgets/randomgen/randomgen-name.ts',
   'src/widgets/randomgen/randomgen-topics.ts',
+  'src/widgets/randomgen/randomgen.ts',
+  'src/widgets/toast.ts',
   'src/widgets-manifest.ts',
   'src/widgets-lazy-meta.ts',
   'src/widgets-loader.ts'

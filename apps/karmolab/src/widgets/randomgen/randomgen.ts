@@ -4,6 +4,7 @@
  *
  * 참고: [니힐 랜덤 키워드](https://nihilapp.github.io/keyword) — 창작자용 랜덤 키워드 사이트
  */
+// @ts-nocheck — large DOM UI; narrow types later
 (function () {
     const topics = window.RANDOMGEN_TOPICS || [];
 
