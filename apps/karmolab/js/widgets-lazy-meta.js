@@ -32,10 +32,8 @@ window.KARMOLAB_LAZY_META = [
         /** load order matters; see widgets/chatbot/README.md */
         lazyScriptPaths: [
             'world/world',
-            'world/entities/characters/yon',
-            'world/entities/characters/alisa',
-            'world/entities/characters/ling',
-            'world/bindings/chatbot/characters',
+            'world/parse-md',
+            'world/load-characters-from-wiki',
             'chatbot/styles',
             'chatbot/markdown',
             'chatbot/characters',
@@ -53,10 +51,8 @@ window.KARMOLAB_LAZY_META = [
         icon: '<circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/>',
         lazyScriptPaths: [
             'world/world',
-            'world/entities/characters/yon',
-            'world/entities/characters/alisa',
-            'world/entities/characters/ling',
-            'world/bindings/imagegen/characters',
+            'world/parse-md',
+            'world/load-characters-from-wiki',
             'imagegen/presets',
             'imagegen/config',
             'imagegen/styles',
@@ -73,9 +69,8 @@ window.KARMOLAB_LAZY_META = [
         icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
         lazyScriptPaths: [
             'world/world',
-            'world/entities/characters/yon',
-            'world/entities/characters/alisa',
-            'world/entities/characters/ling',
+            'world/parse-md',
+            'world/load-characters-from-wiki',
             'chatbot/markdown',
             'worldwiki/worldwiki'
         ],

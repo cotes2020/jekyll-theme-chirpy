@@ -1,20 +1,21 @@
 ## KarmoWorld (세계관 SSoT)
 
-이 디렉터리는 KarmoLab 세계관 데이터를 **종류(kind)**와 **쓰임세(purpose)**로 나눠 관리하기 위한 단일 출처입니다.
+캐릭터 등 개체는 **`wiki/` 아래 Markdown 한 파일**에 사람이 읽는 본문과, 도구가 쓰는 필드를 **같은 파일의 YAML frontmatter**에 둡니다. 이미지 생성·챗봇은 앱이 로드할 때 `load-characters-from-wiki.js`가 MD를 가져와 파싱해 `KarmoWorld.bindings`에 채웁니다.
 
 ### 구조
 
-- `entities/`: 인물·세력·장소 등 **개체(entity)** 정의(코어 사실, 관계 포인터 위주)
-- `artifacts/`: 아이템·문헌·부적 등 **아티팩트(artifact)** 정의(코어 사실, 관계 포인터 위주)
-- `bindings/`: 도구별 **투영(binding)** 레이어
-  - `bindings/imagegen/`: 이미지 생성 프리셋에 필요한 프롬프트 조각 및 매핑
-  - `bindings/chatbot/`: 챗봇 캐릭터 카드 필드 및 매핑
-- `wiki/`: 사람이 읽고 쓰는 장문 위키(Markdown)
-  - `wiki/entities/...`
-  - `wiki/artifacts/...`
+- `wiki/entities/characters/*.md` — 캐릭터 문서 + 메타(frontmatter)
+- `parse-md.js` — frontmatter 분리, 제한된 YAML 파싱
+- `load-characters-from-wiki.js` — 위 MD fetch → `entities.characters`, `bindings.imagegen`, `bindings.chatbot` 구성
+- `artifacts/` — 향후 아이템·문헌 등 (위키 경로 `wiki/artifacts/...` 예정)
+
+### Frontmatter 키 (캐릭터)
+
+- 공통: `entityId`, `slug`, `nameKo`, `nameEn`, `oneLine`, `aliases`, `tags`, `title`, `kind`, `type`
+- 이미지: `imagegen_presetId`, `imagegen_icon`, `imagegen_label`, `imagegen_shortLabel`, `imagegen_prompt` (`|` 블록)
+- 챗봇: `chatbot_id`, `chatbot_name`, `chatbot_userName`, `chatbot_userNote`, `chatbot_visualDescription`, `chatbot_description`, `chatbot_personality`, `chatbot_scenario`, `chatbot_firstMes`
 
 ### 원칙
 
-- 코어(entities/artifacts)는 길어져도 “세계 안에서의 사실”을 중심으로 유지합니다.
-- 도구별 문구/프롬프트는 bindings로 분리해, 같은 개체를 여러 도구가 각자 필요한 형태로 소비합니다.
-
+- 문서와 데이터를 **한 파일**에서 맞추고, 도구 전용 JS에 같은 문구를 복제하지 않습니다.
+- 로컬에서 `file://` 로 열면 fetch가 막힐 수 있으므로, 개발 시에는 정적 서버나 GitHub Pages 경로로 확인합니다.

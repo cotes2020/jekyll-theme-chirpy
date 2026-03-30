@@ -7,7 +7,7 @@ AI 채팅 UI는 여러 스크립트로 나뉘어 지연 로드되며, **`chatbot
 `apps/karmolab/js/widgets-lazy-meta.js` 에서:
 
 ```text
-lazyScriptPaths: ['chatbot/styles', 'chatbot/markdown', 'chatbot/characters', 'chatbot/karmo-image', 'chatbot/prompt', 'chatbot/chatbot']
+lazyScriptPaths: ['world/world', 'world/parse-md', 'world/load-characters-from-wiki', 'chatbot/styles', 'chatbot/markdown', 'chatbot/characters', 'chatbot/karmo-image', 'chatbot/prompt', 'chatbot/chatbot']
 ```
 
 - `styles.js` — `Mdd.injectCSS('chatbot', …)`
@@ -24,7 +24,7 @@ lazyScriptPaths: ['chatbot/styles', 'chatbot/markdown', 'chatbot/characters', 'c
 
 ## 기본 캐릭터 시드
 
-첫 실행 시 `카레 (비서)` 한 명만 넣고, 이후 로드마다 id 기준으로 없으면 병합: `c_mascot_yon`(욘), `c_mascot_alisa`(알리사), `c_mascot_ling`(링). 컨셉은 이미지 생성 [`imagegen/presets.js`](../imagegen/presets.js) 의 `CHARACTER_PRESETS`(마녀 욘·메이드 알리사·강시 링)와 맞춤.
+첫 실행 시 `카레 (비서)` 한 명만 넣고, 이후 로드마다 id 기준으로 없으면 병합: `c_mascot_yon`(욘), `c_mascot_alisa`(알리사), `c_mascot_ling`(링). 문구·프롬프트 단일 출처는 [`world/wiki/entities/characters/`](../../../world/wiki/entities/characters/) Markdown frontmatter이며, 로드 시 `load-characters-from-wiki.js`가 `KarmoWorld.bindings.chatbot`에 넣습니다. 실패 시 `characters.js`의 내장 기본값을 씁니다.
 
 ## 프리셋 문구
 

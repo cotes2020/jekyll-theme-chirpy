@@ -67,17 +67,22 @@
         ]
     };
 
-    // Optional SSoT override (KarmoWorld bindings) — keep builtin as fallback
+    // Optional SSoT (wiki MD → load-characters-from-wiki): 동일 preset id만 덮어쓰고 나머지(예: timeto) 유지
     try {
         const b = window.KarmoWorld?.bindings?.imagegen?.characters;
         if (Array.isArray(b) && b.length) {
-            CHARACTER_PRESETS.char = b.map(x => ({
-                id: x.imagegenPresetId,
-                icon: x.icon,
-                label: x.label,
-                shortLabel: x.shortLabel || '',
-                prompt: x.prompt || ''
-            })).filter(x => x.id && x.prompt);
+            const byId = new Map(CHARACTER_PRESETS.char.map(row => [row.id, { ...row }]));
+            b.forEach(x => {
+                if (!x.imagegenPresetId || !x.prompt) return;
+                byId.set(x.imagegenPresetId, {
+                    id: x.imagegenPresetId,
+                    icon: x.icon,
+                    label: x.label,
+                    shortLabel: x.shortLabel || '',
+                    prompt: x.prompt || ''
+                });
+            });
+            CHARACTER_PRESETS.char = Array.from(byId.values());
         }
     } catch (_) {}
 
