@@ -35,7 +35,7 @@
  *   Mdd.bounce()           — 바운스 애니메이션
  *   Mdd.addAffection(n)    — 호감도 증가 (스토리 해금 트리거)
  */
-
+// @ts-nocheck — core shell; narrow types incrementally
 const Toolbox = (() => {
     const tools = [];
 

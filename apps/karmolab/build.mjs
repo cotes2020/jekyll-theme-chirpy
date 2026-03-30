@@ -1,7 +1,7 @@
 /**
  * Emit browser scripts from src/ into js/ (mirrors paths under src/).
  * - Most entries: bundle + iife (type-only imports resolve).
- * - mdd.ts / gemini.ts: bundle false + esm so top-level `const Mdd` / `const Gemini` + `const ImageDB` stay global (no extra IIFE).
+ * - mdd.ts / gemini.ts / toolbox.ts: bundle false + esm so top-level globals stay visible (no extra IIFE).
  */
 import * as esbuild from 'esbuild';
 import { fileURLToPath } from 'url';
@@ -23,6 +23,16 @@ await esbuild.build({
 await esbuild.build({
   entryPoints: [join(root, 'src/gemini.ts')],
   outfile: join(root, 'js/gemini.js'),
+  bundle: false,
+  format: 'esm',
+  platform: 'browser',
+  target: ['es2020'],
+  logLevel: 'info'
+});
+
+await esbuild.build({
+  entryPoints: [join(root, 'src/toolbox.ts')],
+  outfile: join(root, 'js/toolbox.js'),
   bundle: false,
   format: 'esm',
   platform: 'browser',
