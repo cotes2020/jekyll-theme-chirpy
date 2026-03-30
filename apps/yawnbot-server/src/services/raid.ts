@@ -2,24 +2,33 @@
  * RaidService — C# RaidService → Node.js 이식
  * 레이드 보스 관리 (소환, 공격, 보상)
  */
-const { formatMoney } = require('./gamedata');
+import { GameDataService } from './gamedata';
 
-const BOSSES = [
+export const BOSSES = [
     { name: '고대 드래곤', hp: 50000, reward: 10000, emoji: '🐉' },
     { name: '마왕 데스나이트', hp: 100000, reward: 25000, emoji: '💀' },
     { name: '어둠의 군주', hp: 200000, reward: 50000, emoji: '👹' },
     { name: '혼돈의 신', hp: 500000, reward: 100000, emoji: '🌑' },
 ];
 
-class RaidService {
-    /** @param {import('./gamedata').GameDataService} gameData */
-    constructor(gameData) {
+interface RaidState {
+    boss: string;
+    emoji: string;
+    currentHp: number;
+    maxHp: number;
+    reward: number;
+    participants: Record<string, number>;
+}
+
+export class RaidService {
+    gameData: GameDataService;
+    currentRaid: RaidState | null = null;
+
+    constructor(gameData: GameDataService) {
         this.gameData = gameData;
-        this.currentRaid = null; // { boss, currentHp, maxHp, reward, participants: { userId: damage } }
     }
 
-    /** 레이드 소환 */
-    spawnRaid(bossIndex) {
+    spawnRaid(bossIndex?: number) {
         const idx = bossIndex ?? Math.floor(Math.random() * BOSSES.length);
         const boss = BOSSES[idx] || BOSSES[0];
         this.currentRaid = {
@@ -33,9 +42,8 @@ class RaidService {
         return this.currentRaid;
     }
 
-    /** 공격 */
-    attack(userId) {
-        if (!this.currentRaid) return { type: 'no_raid' };
+    attack(userId: string) {
+        if (!this.currentRaid) return { type: 'no_raid' as const };
 
         const user = this.gameData.getUser(userId);
         const baseDamage = 500;
@@ -48,12 +56,14 @@ class RaidService {
         this.currentRaid.participants[userId] += damage;
 
         if (this.currentRaid.currentHp <= 0) {
-            // 보스 처치 → 보상 배분
             this.currentRaid.currentHp = 0;
             const rewards = this._distributeRewards();
             const result = {
-                type: 'cleared', damage, crit: crit > 1,
-                boss: this.currentRaid.boss, emoji: this.currentRaid.emoji,
+                type: 'cleared' as const,
+                damage,
+                crit: crit > 1,
+                boss: this.currentRaid.boss,
+                emoji: this.currentRaid.emoji,
                 rewards,
             };
             this.currentRaid = null;
@@ -61,33 +71,34 @@ class RaidService {
         }
 
         return {
-            type: 'hit', damage, crit: crit > 1,
-            boss: this.currentRaid.boss, emoji: this.currentRaid.emoji,
+            type: 'hit' as const,
+            damage,
+            crit: crit > 1,
+            boss: this.currentRaid.boss,
+            emoji: this.currentRaid.emoji,
             currentHp: this.currentRaid.currentHp,
             maxHp: this.currentRaid.maxHp,
             hpPct: ((this.currentRaid.currentHp / this.currentRaid.maxHp) * 100).toFixed(1),
         };
     }
 
-    /** 보상 배분 (기여도 비례) */
-    _distributeRewards() {
-        const raid = this.currentRaid;
+    private _distributeRewards(): { userId: string; damage: number; reward: number; share: number }[] {
+        const raid = this.currentRaid!;
         const totalDamage = Object.values(raid.participants).reduce((s, d) => s + d, 0);
-        const rewards = [];
+        const rewards: { userId: string; damage: number; reward: number; share: number }[] = [];
 
         const sorted = Object.entries(raid.participants).sort((a, b) => b[1] - a[1]);
-        for (const [userId, damage] of sorted) {
-            const share = totalDamage > 0 ? (damage / totalDamage) : (1 / sorted.length);
+        for (const [uid, dmg] of sorted) {
+            const share = totalDamage > 0 ? dmg / totalDamage : 1 / sorted.length;
             const reward = Math.round(raid.reward * share);
-            const user = this.gameData.getUser(userId);
+            const user = this.gameData.getUser(uid);
             user.money += reward;
-            rewards.push({ userId, damage, reward, share });
+            rewards.push({ userId: uid, damage: dmg, reward, share });
         }
         this.gameData.saveGameData();
         return rewards;
     }
 
-    /** 레이드 정보 */
     getRaidInfo() {
         if (!this.currentRaid) return null;
         return {
@@ -100,5 +111,3 @@ class RaidService {
         };
     }
 }
-
-module.exports = { RaidService, BOSSES };

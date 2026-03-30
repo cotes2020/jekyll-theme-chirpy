@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Cursor local runner — `agent acp` JSON-RPC over stdio, then git summary.
  * Usage: node cli/cursor-local-runner.js --cwd <dir> --prompt "<text>" [--mode agent|ask] [--timeoutMs N]
@@ -10,12 +11,12 @@
  * Prints a single JSON object to stdout (logs go to stderr).
  */
 /* eslint-disable no-console */
-const { spawn } = require('child_process');
-const path = require('path');
-const fs = require('fs');
-const { execFile } = require('child_process');
-const { promisify } = require('util');
-const readline = require('readline');
+import { spawn, execFile, ChildProcess } from 'child_process';
+import path from 'path';
+import fs from 'fs';
+import { promisify } from 'util';
+import readline from 'readline';
+
 const execFileAsync = promisify(execFile);
 
 function parseArgs(argv) {
