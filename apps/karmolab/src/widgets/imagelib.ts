@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function () {
     /* ===== 유틸 ===== */
     function getModelDisplayName(modelId) {

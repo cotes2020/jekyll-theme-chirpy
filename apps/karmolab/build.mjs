@@ -55,6 +55,11 @@ const entryPoints = [
   'src/widgets/imageedit.ts',
   'src/widgets/crypto.ts',
   'src/widgets/memo.ts',
+  'src/widgets/imagelib.ts',
+  'src/widgets/conch.ts',
+  'src/widgets/postgraph.ts',
+  'src/widgets/fortune.ts',
+  'src/widgets/gacha.ts',
   'src/widgets-manifest.ts',
   'src/widgets-lazy-meta.ts',
   'src/widgets-loader.ts'

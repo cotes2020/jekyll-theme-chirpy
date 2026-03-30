@@ -65,6 +65,11 @@ apps/karmolab/js/widgets/toast.js
 apps/karmolab/js/widgets/imageedit.js
 apps/karmolab/js/widgets/crypto.js
 apps/karmolab/js/widgets/memo.js
+apps/karmolab/js/widgets/imagelib.js
+apps/karmolab/js/widgets/conch.js
+apps/karmolab/js/widgets/postgraph.js
+apps/karmolab/js/widgets/fortune.js
+apps/karmolab/js/widgets/gacha.js
 apps/karmolab/js/widgets/randomgen/randomgen-topics.js
 apps/karmolab/js/widgets-manifest.js
 apps/karmolab/js/widgets-lazy-meta.js

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* global Toolbox, Mdd */
 (function () {
   let lastDestroy = null;

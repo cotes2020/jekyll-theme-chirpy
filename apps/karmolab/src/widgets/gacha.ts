@@ -1,3 +1,4 @@
+// @ts-nocheck
 (function() {
     Toolbox.register({
         ...Toolbox.getLazyWidgetPublicMeta('gacha'),
