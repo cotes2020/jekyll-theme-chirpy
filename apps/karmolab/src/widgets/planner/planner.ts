@@ -1,6 +1,5 @@
-// @ts-nocheck
-(function () {
-    function buildPlanner(container) {
+(function (): void {
+    function buildPlanner(container: HTMLElement): void {
         // React 앱이 마운트될 루트 엘리먼트 생성
         // container와 root 모두 full-height로 설정해야 height: 100% 체인이 동작함
         Object.assign(container.style, { height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden', padding: '0' });
