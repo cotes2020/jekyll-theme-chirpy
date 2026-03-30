@@ -48,6 +48,13 @@ node_modules
 
 # Build artifacts
 apps/karmolab/react-dist/
+# KarmoLab TS build output (apps/karmolab: npm run build)
+apps/karmolab/js/widgets/imageconvert/core.js
+apps/karmolab/js/widgets/imageconvert/batch-pipeline.js
+apps/karmolab/js/widgets/randomgen/randomgen-color.js
+apps/karmolab/js/widgets/randomgen/randomgen-time.js
+apps/karmolab/js/widgets/randomgen/randomgen-number.js
+apps/karmolab/js/widgets/randomgen/randomgen-name.js
 _site/
 .jekyll-cache/
 .jekyll-metadata/

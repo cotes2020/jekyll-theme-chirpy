@@ -1,0 +1,27 @@
+name: KarmoLab TypeScript
+
+on:
+  push:
+    paths:
+      - 'apps/karmolab/**'
+  pull_request:
+    paths:
+      - 'apps/karmolab/**'
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: apps/karmolab/package-lock.json
+
+      - name: Typecheck
+        working-directory: apps/karmolab
+        run: |
+          npm ci
+          npm run typecheck

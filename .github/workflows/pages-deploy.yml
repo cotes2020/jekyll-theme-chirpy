@@ -64,6 +64,12 @@ jobs:
         env:
           VITE_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
 
+      - name: Build KarmoLab JavaScript (TypeScript)
+        working-directory: apps/karmolab
+        run: |
+          npm ci
+          npm run build
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:

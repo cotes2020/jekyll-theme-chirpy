@@ -1,0 +1,15 @@
+{
+  "name": "karmolab-js",
+  "private": true,
+  "version": "1.0.0",
+  "description": "KarmoLab TypeScript sources; build emits to js/ for Jekyll/GitHub Pages",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "~5.9.0"
+  }
+}
