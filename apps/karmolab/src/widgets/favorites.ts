@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * 즐겨찾기 모음 — 사이트 파비콘/아이콘으로 빠른 접속
  * - icon 미지정: 공개 URL은 Google s2/favicons / 로컬·사설은 지구본만(요청 없음)
@@ -6,7 +5,7 @@
  * - 그 외 명시 icon(Simple Icons 등): 그대로 사용
  * - 사용자 추가/삭제 (localStorage)
  */
-(function () {
+(function (): void {
     const STORAGE_KEY = 'toolbox_favorites';
     const VIEW_KEY = 'toolbox_fav_view';
     const FAVICON_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent(
@@ -18,7 +17,21 @@
     const FAVICON_API = 'https://www.google.com/s2/favicons?domain=';
     const FAVICON_SZ = '64';
 
-    function isPrivateOrLocalHostname(host) {
+    type FavoriteItem = {
+        url?: string;
+        label: string;
+        icon?: string | null;
+        type?: 'tool';
+        toolId?: string;
+        isCustom?: boolean;
+    };
+
+    type FavoriteGroup = {
+        group: string;
+        items: FavoriteItem[];
+    };
+
+    function isPrivateOrLocalHostname(host: string | null | undefined): boolean {
         if (!host) return true;
         const h = host.toLowerCase();
         if (h === 'localhost' || h === '::1' || h.endsWith('.localhost')) return true;
@@ -33,7 +46,7 @@
         return false;
     }
 
-    const DEFAULT_ITEMS = [
+    const DEFAULT_ITEMS: FavoriteGroup[] = [
         { group: '개발', items: [
             { url: 'https://github.com', label: 'GitHub', icon: 'https://cdn.simpleicons.org/github' },
             { url: 'https://discord.com/developers/applications/', label: 'Discord Developer', icon: 'https://cdn.simpleicons.org/discord' },
@@ -125,20 +138,20 @@
         ]},
     ];
 
-    function getToolboxToolsGroup() {
+    function getToolboxToolsGroup(): FavoriteGroup | null {
         const tools = typeof Toolbox !== 'undefined' && Toolbox.getTools ? Toolbox.getTools() : [];
-        const items = tools
-            .filter(t => !t.hidden)
-            .map(t => ({ type: 'tool', toolId: t.id, label: t.title, icon: t.icon }));
+        const items: FavoriteItem[] = tools
+            .filter((t: any) => !t.hidden)
+            .map((t: any) => ({ type: 'tool', toolId: t.id, label: t.title, icon: t.icon }));
         return items.length ? { group: 'Toolbox', items } : null;
     }
 
-    function getFaviconUrl(item) {
+    function getFaviconUrl(item: FavoriteItem): string {
         if (item.icon) return item.icon;
         const base = typeof location !== 'undefined' ? location.href : 'https://example.org/';
-        let u;
+        let u: URL;
         try {
-            u = new URL(item.url, base);
+            u = new URL(item.url ?? '', base);
         } catch (_) {
             return FAVICON_FALLBACK;
         }
@@ -148,29 +161,29 @@
         return FAVICON_API + encodeURIComponent(host) + '&sz=' + FAVICON_SZ;
     }
 
-    function loadFavorites() {
+    function loadFavorites(): FavoriteGroup[] | null {
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
-            if (raw) return JSON.parse(raw);
+            if (raw) return JSON.parse(raw) as FavoriteGroup[];
         } catch (_) {}
         return null;
     }
 
-    function saveFavorites(data) {
+    function saveFavorites(data: FavoriteGroup[]): void {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         } catch (_) {}
     }
 
-    function getViewMode() {
-        try { return localStorage.getItem(VIEW_KEY) || 'icon'; } catch (_) { return 'icon'; }
+    function getViewMode(): 'icon' | 'card' {
+        try { return (localStorage.getItem(VIEW_KEY) as 'icon' | 'card') || 'icon'; } catch (_) { return 'icon'; }
     }
-    function setViewMode(mode) {
+    function setViewMode(mode: 'icon' | 'card'): void {
         try { localStorage.setItem(VIEW_KEY, mode); } catch (_) {}
     }
 
-    function buildGroups(defaultGroups, customGroups) {
-        const merged = [];
+    function buildGroups(defaultGroups: FavoriteGroup[], customGroups: FavoriteGroup[] | null): FavoriteGroup[] {
+        const merged: FavoriteGroup[] = [];
         const toolboxGroup = getToolboxToolsGroup();
         if (toolboxGroup) merged.push(toolboxGroup);
         defaultGroups.forEach(g => merged.push({
@@ -178,9 +191,9 @@
             items: g.items.map(it => ({ ...it, isCustom: false }))
         }));
         if (customGroups && Array.isArray(customGroups)) {
-            customGroups.forEach(cg => {
-                const existing = merged.find(m => m.group === cg.group);
-                const customItems = (cg.items || []).map(it => ({ ...it, isCustom: true }));
+            customGroups.forEach((cg) => {
+                const existing = merged.find((m) => m.group === cg.group);
+                const customItems = (cg.items || []).map((it) => ({ ...it, isCustom: true }));
                 if (existing) {
                     existing.items.push(...customItems);
                 } else {
@@ -247,13 +260,13 @@
         .fav-grid.fav-grid-card .fav-label { font-size:var(--font-size-xs); }
     `);
 
-    function buildFavorites(container) {
+    function buildFavorites(container: HTMLElement): void {
         Mdd.linePreset('home_hub', { msg: '자주 가는 곳을 모아뒀어요~ 클릭해서 가봐요!' });
 
-        function render() {
+        function render(): void {
             const customNow = loadFavorites();
             const groupsNow = buildGroups(DEFAULT_ITEMS, customNow);
-            const esc = Toolbox.escapeHtml;
+            const esc = Toolbox.escapeHtml ?? ((s: string) => s);
             const viewMode = getViewMode();
             const isCard = viewMode === 'card';
 
@@ -274,15 +287,17 @@
                             </button>
                         </div>
                     </div>
-                    ${groupsNow.map(g => `
+                    ${groupsNow.map((g) => `
                         <div class="fav-group" data-fav-group="${esc(g.group)}">
                             <div class="fav-group-title">${esc(g.group)}</div>
                             <div class="fav-grid ${isCard ? 'fav-grid-card' : ''}">
-                                ${g.items.map(it => {
+                                ${g.items.map((it) => {
                                     const isTool = it.type === 'tool';
-                                    const metaDesc = (it.toolId && Toolbox.getToolMeta && Toolbox.getToolMeta(it.toolId)?.desc) || '';
+                                    const metaDesc = (it.toolId && (Toolbox as any).getToolMeta && (Toolbox as any).getToolMeta(it.toolId)?.desc) || '';
                                     const searchable = [it.label, g.group, it.url || '', it.toolId || '', metaDesc].join(' ').toLowerCase();
-                                    const removeBtn = it.isCustom ? `<button type="button" class="fav-remove" data-group="${esc(g.group)}" data-url="${esc(it.url)}" title="삭제">×</button>` : '';
+                                    const removeBtn = it.isCustom && it.url
+                                        ? `<button type="button" class="fav-remove" data-group="${esc(g.group)}" data-url="${esc(it.url)}" title="삭제">×</button>`
+                                        : '';
                                     const iconHtml = isTool
                                         ? `<div class="fav-icon fav-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${it.icon || ''}</svg></div>`
                                         : `<img class="fav-icon" src="${esc(getFaviconUrl(it))}" alt="" loading="lazy" onerror="${FAVICON_IMG_ONERROR.replace(/"/g, '&quot;')}">`;
@@ -339,8 +354,8 @@
                     </div>
                 </div>`;
 
-            const modal = container.querySelector('#fav-add-modal');
-            const openAddBtn = container.querySelector('#fav-add-open');
+            const modal = container.querySelector<HTMLElement>('#fav-add-modal');
+            const openAddBtn = container.querySelector<HTMLButtonElement>('#fav-add-open');
             if (openAddBtn) {
                 openAddBtn.onclick = () => modal?.classList.add('open');
             }
@@ -348,14 +363,15 @@
                 modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('open'); };
             }
 
-            container.querySelector('#fav-add-btn').onclick = () => {
-                const urlInput = container.querySelector('#fav-url');
-                const labelInput = container.querySelector('#fav-label');
-                const iconInput = container.querySelector('#fav-icon');
-                const groupSelect = container.querySelector('#fav-group');
+            container.querySelector<HTMLButtonElement>('#fav-add-btn')!.onclick = () => {
+                const urlInput = container.querySelector<HTMLInputElement>('#fav-url');
+                const labelInput = container.querySelector<HTMLInputElement>('#fav-label');
+                const iconInput = container.querySelector<HTMLInputElement>('#fav-icon');
+                const groupSelect = container.querySelector<HTMLSelectElement>('#fav-group');
+                if (!urlInput || !labelInput || !groupSelect) return;
                 const url = (urlInput.value || '').trim();
                 if (!url) {
-                    Toolbox.showToast('URL을 입력해주세요', 'error');
+                    (Toolbox as any).showToast?.('URL을 입력해주세요', 'error');
                     return;
                 }
                 let label = (labelInput.value || '').trim();
@@ -369,7 +385,7 @@
                 const iconUrl = (iconInput?.value || '').trim() || null;
                 const group = groupSelect.value || '기타';
                 const data = loadFavorites() || [];
-                let g = data.find(d => d.group === group);
+                let g = data.find((d) => d.group === group);
                 if (!g) {
                     g = { group, items: [] };
                     data.push(g);
@@ -380,60 +396,62 @@
                 labelInput.value = '';
                 if (iconInput) iconInput.value = '';
                 modal?.classList.remove('open');
-                Toolbox.showToast('추가되었습니다');
+                (Toolbox as any).showToast?.('추가되었습니다');
                 render();
             };
 
-            container.querySelectorAll('.fav-remove').forEach(btn => {
-                btn.onclick = (e) => {
+            container.querySelectorAll<HTMLButtonElement>('.fav-remove').forEach((btn) => {
+                btn.onclick = (e: MouseEvent) => {
                     e.preventDefault();
                     e.stopPropagation();
                     const group = btn.dataset.group;
                     const url = btn.dataset.url;
                     const data = loadFavorites() || [];
-                    const g = data.find(d => d.group === group);
+                    const g = data.find((d) => d.group === group);
                     if (g) {
-                        g.items = g.items.filter(it => it.url !== url);
+                        g.items = g.items.filter((it) => it.url !== url);
                         if (!g.items.length) data.splice(data.indexOf(g), 1);
                         saveFavorites(data);
-                        Toolbox.showToast('삭제되었습니다');
+                        (Toolbox as any).showToast?.('삭제되었습니다');
                         render();
                     }
                 };
             });
 
-            container.querySelectorAll('.fav-item[data-tool-id]').forEach(a => {
-                a.onclick = (e) => {
+            container.querySelectorAll<HTMLAnchorElement>('.fav-item[data-tool-id]').forEach((a) => {
+                a.onclick = (e: MouseEvent) => {
                     e.preventDefault();
                     const id = a.dataset.toolId;
-                    if (id && typeof Toolbox !== 'undefined' && Toolbox.switchPage) Toolbox.switchPage(id);
+                    if (id && typeof Toolbox !== 'undefined' && (Toolbox as any).switchPage) (Toolbox as any).switchPage(id);
                 };
             });
 
-            const searchInput = container.querySelector('#favSearch');
+            const searchInput = container.querySelector<HTMLInputElement>('#favSearch');
             if (searchInput) {
                 searchInput.oninput = () => {
                     const q = searchInput.value.toLowerCase().trim();
-                    container.querySelectorAll('.fav-item-wrap').forEach(wrap => {
-                        const match = !q || (wrap.dataset.searchable || '').includes(q);
+                    container.querySelectorAll<HTMLElement>('.fav-item-wrap').forEach((wrap) => {
+                        const searchable = wrap.dataset.searchable ?? '';
+                        const match = !q || searchable.includes(q);
                         wrap.style.display = match ? '' : 'none';
                     });
-                    container.querySelectorAll('.fav-group').forEach(grp => {
+                    container.querySelectorAll<HTMLElement>('.fav-group').forEach((grp) => {
                         const visible = grp.querySelectorAll('.fav-item-wrap:not([style*="display: none"])');
                         grp.style.display = visible.length ? '' : 'none';
                     });
                 };
             }
 
-            const viewToggleBtn = container.querySelector('.fav-view-toggle-btn');
+            const viewToggleBtn = container.querySelector<HTMLButtonElement>('.fav-view-toggle-btn');
             if (viewToggleBtn) {
                 viewToggleBtn.onclick = () => {
-                    const next = viewToggleBtn.dataset.view === 'card' ? 'icon' : 'card';
+                    const current = (viewToggleBtn.dataset.view as 'icon' | 'card' | undefined) ?? 'icon';
+                    const next: 'icon' | 'card' = current === 'card' ? 'icon' : 'card';
                     setViewMode(next);
                     viewToggleBtn.dataset.view = next;
                     viewToggleBtn.title = next === 'card' ? '작게 보기' : '크게 보기';
                     viewToggleBtn.classList.toggle('active', next === 'card');
-                    container.querySelectorAll('.fav-grid').forEach(grid => {
+                    container.querySelectorAll<HTMLElement>('.fav-grid').forEach((grid) => {
                         grid.classList.toggle('fav-grid-card', next === 'card');
                     });
                 };
