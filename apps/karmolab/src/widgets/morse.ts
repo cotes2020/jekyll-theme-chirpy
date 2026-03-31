@@ -1,14 +1,17 @@
-// @ts-nocheck
-(function() {
-    Toolbox.register({
-        id: 'morse', title: '모스',
-        category: null,
-        desc: '모스 부호로 인코딩·디코딩합니다',
-        layout: 'form',
-        icon: '<path d="M2 12h4 M8 12h8 M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
-        tabs: [{ id: 'app', label: '모스', build: function(container) {
-            Mdd.linePreset('tool_run', { msg: '모르스 부호... 삐삐빗!' });
-                container.innerHTML = `
+(function (): void {
+  Toolbox.register({
+    id: 'morse',
+    title: '모스',
+    desc: '모스 부호로 인코딩·디코딩합니다',
+    layout: 'form',
+    icon: '<path d="M2 12h4 M8 12h8 M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    tabs: [
+      {
+        id: 'app',
+        label: '모스',
+        build: function (container: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '모르스 부호... 삐삐빗!' });
+          container.innerHTML = `
                     <div class="field-group">
                         <label class="field-label">텍스트 입력 (영문/숫자/공백)</label>
                         <input type="text" id="morseInput" class="input-field" placeholder="예: SOS / HELLO" style="text-transform:uppercase;">
@@ -26,77 +29,133 @@
                     </div>
                 `;
 
-                const input = container.querySelector('#morseInput');
-                const output = container.querySelector('#morseOutput');
-                const playBtn = container.querySelector('#morsePlayBtn');
-                const led = container.querySelector('#morseLed');
+          const inputEl = container.querySelector('#morseInput') as HTMLInputElement | null;
+          const outputEl = container.querySelector('#morseOutput') as HTMLElement | null;
+          const playBtnEl = container.querySelector('#morsePlayBtn') as HTMLButtonElement | null;
+          const ledEl = container.querySelector('#morseLed') as HTMLElement | null;
+          if (!inputEl || !outputEl || !playBtnEl || !ledEl) return;
 
-                const MORSE_MAP = {
-                    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
-                    'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
-                    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
-                    'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-                    'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
-                    '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-                    '9': '----.', '0': '-----', ' ': ' '
-                };
+          const input = inputEl;
+          const output = outputEl;
+          const playBtn = playBtnEl;
+          const led = ledEl;
 
-                input.addEventListener('input', (e) => {
-                    const text = e.target.value.toUpperCase();
-                    let result = [];
-                    for (let char of text) {
-                        if (MORSE_MAP[char] !== undefined) result.push(char === ' ' ? '/' : MORSE_MAP[char]);
-                    }
-                    output.textContent = result.join(' '); 
-                });
+          const MORSE_MAP: Record<string, string> = {
+            A: '.-',
+            B: '-...',
+            C: '-.-.',
+            D: '-..',
+            E: '.',
+            F: '..-.',
+            G: '--.',
+            H: '....',
+            I: '..',
+            J: '.---',
+            K: '-.-',
+            L: '.-..',
+            M: '--',
+            N: '-.',
+            O: '---',
+            P: '.--.',
+            Q: '--.-',
+            R: '.-.',
+            S: '...',
+            T: '-',
+            U: '..-',
+            V: '...-',
+            W: '.--',
+            X: '-..-',
+            Y: '-.--',
+            Z: '--..',
+            '1': '.----',
+            '2': '..---',
+            '3': '...--',
+            '4': '....-',
+            '5': '.....',
+            '6': '-....',
+            '7': '--...',
+            '8': '---..',
+            '9': '----.',
+            '0': '-----',
+            ' ': ' '
+          };
 
-                let isPlaying = false;
-                playBtn.onclick = async function() {
-                    if (isPlaying) return;
-                    const morseStr = output.textContent;
-                    if (!morseStr) { Toolbox.showToast('변환된 모스 부호가 없습니다.', 'error'); return; }
+          input.addEventListener('input', (e: Event) => {
+            const text = (e.target as HTMLInputElement).value.toUpperCase();
+            const result: string[] = [];
+            for (const char of text) {
+              if (MORSE_MAP[char] !== undefined) result.push(char === ' ' ? '/' : MORSE_MAP[char]);
+            }
+            output.textContent = result.join(' ');
+          });
 
-                    isPlaying = true;
-                    playBtn.disabled = true; playBtn.textContent = '재생 중...';
+          let isPlaying = false;
+          playBtn.onclick = async function (): Promise<void> {
+            if (isPlaying) return;
+            const morseStr = output.textContent ?? '';
+            if (!morseStr) {
+              Toolbox.showToast('변환된 모스 부호가 없습니다.', 'error', undefined);
+              return;
+            }
 
-                    try {
-                        const actx = new (window.AudioContext || window.webkitAudioContext)();
-                        const dotTime = 120; // 1도트 재생 시간(ms)
+            isPlaying = true;
+            playBtn.disabled = true;
+            playBtn.textContent = '재생 중...';
 
-                        for (let char of morseStr) {
-                            if (char === '.') {
-                                triggerLed(true); playBeep(actx, dotTime); await sleep(dotTime); triggerLed(false);
-                            } else if (char === '-') {
-                                triggerLed(true); playBeep(actx, dotTime * 3); await sleep(dotTime * 3); triggerLed(false);
-                            } else if (char === ' ') {
-                                await sleep(dotTime); // 글자 내 간격
-                            } else if (char === '/') {
-                                await sleep(dotTime * 4); // 단어 간 공백
-                            }
-                            await sleep(dotTime); // 기본 딜레이
-                        }
-                        setTimeout(() => actx.close(), 100);
-                    } catch (e) {}
+            try {
+              const AC = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+              if (!AC) return;
+              const actx = new AC();
+              const dotTime = 120;
 
-                    isPlaying = false;
-                    playBtn.disabled = false; playBtn.textContent = '소리 재생';
-                };
-
-                function triggerLed(on) {
-                    led.style.background = on ? 'var(--accent)' : '#2a2a2e';
-                    led.style.boxShadow = on ? '0 0 10px var(--accent)' : 'none';
+              for (const char of morseStr) {
+                if (char === '.') {
+                  triggerLed(true);
+                  playBeep(actx, dotTime);
+                  await sleep(dotTime);
+                  triggerLed(false);
+                } else if (char === '-') {
+                  triggerLed(true);
+                  playBeep(actx, dotTime * 3);
+                  await sleep(dotTime * 3);
+                  triggerLed(false);
+                } else if (char === ' ') {
+                  await sleep(dotTime);
+                } else if (char === '/') {
+                  await sleep(dotTime * 4);
                 }
+                await sleep(dotTime);
+              }
+              setTimeout(() => void actx.close(), 100);
+            } catch {
+              /* ignore */
+            }
 
-                function playBeep(ctx, duration) {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.connect(gain); gain.connect(ctx.destination);
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(600, ctx.currentTime);
-                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
-                    osc.start(); osc.stop(ctx.currentTime + (duration / 1000));
-                }
+            isPlaying = false;
+            playBtn.disabled = false;
+            playBtn.textContent = '소리 재생';
+          };
 
-                const sleep = ms => new Promise(res => setTimeout(res, ms));
-            } }]
-    });
+          function triggerLed(on: boolean): void {
+            led.style.background = on ? 'var(--accent)' : '#2a2a2e';
+            led.style.boxShadow = on ? '0 0 10px var(--accent)' : 'none';
+          }
+
+          function playBeep(ctx: AudioContext, duration: number): void {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, ctx.currentTime);
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            osc.start();
+            osc.stop(ctx.currentTime + duration / 1000);
+          }
+
+          const sleep = (ms: number): Promise<void> => new Promise((res) => setTimeout(res, ms));
+        }
+      }
+    ]
+  });
 })();

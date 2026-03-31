@@ -1,14 +1,62 @@
-// @ts-nocheck
-(function () {
-    var IC = window.KarmoLabImageConvert;
+type ImageConvertOutputMime = string;
+
+type ImageConvertSettings = {
+    outFmt: 'png' | 'jpeg' | 'webp';
+    quality: number; // 5..100
+    maxPreset: '' | 'custom' | string;
+    maxCustom: number; // 64..16384
+    bg: string; // #RRGGBB
+    fillAlpha: boolean;
+    smoothing: 'high' | 'medium' | 'low';
+};
+
+type ImageConvertConvertOpts = {
+    outputMime: ImageConvertOutputMime;
+    quality: number; // 0..1
+    maxLongSide: number; // 0 => keep
+    background: string; // #RRGGBB
+    fillAlpha: boolean;
+    smoothing: 'high' | 'medium' | 'low';
+};
+
+type ImageConvertLoadResult = { img: HTMLImageElement; objectUrl: string; file: File };
+
+type ImageConvertCore = {
+    MIME_JPEG: ImageConvertOutputMime;
+    MIME_PNG: ImageConvertOutputMime;
+    MIME_WEBP: ImageConvertOutputMime;
+    supportsWebpOutput: () => boolean;
+    extFromMime: (mime: ImageConvertOutputMime) => string;
+    baseNameFromFile: (file: File) => string;
+    loadImageFromFile: (file: File) => Promise<ImageConvertLoadResult>;
+    convertImage: (img: HTMLImageElement, opts: ImageConvertConvertOpts) => Promise<Blob>;
+    revokeObjectUrl: (url: string | null) => void;
+};
+
+type ImageBatchResultItem = { ok: boolean; file?: File; error?: unknown; blob?: Blob; name?: string };
+type ImageBatchProcessOutput = { results: ImageBatchResultItem[]; aborted: boolean };
+type ImageBatch = {
+    recipeConvert: (opts: ImageConvertConvertOpts) => unknown;
+    processFilesSequential: (
+        ic: ImageConvertCore,
+        files: File[],
+        recipe: unknown,
+        opts: { signal: AbortSignal; onItemStart?: (idx: number, file: File, total: number) => void }
+    ) => Promise<ImageBatchProcessOutput>;
+    downloadResultsSequential: (results: ImageBatchResultItem[], ic: ImageConvertCore, mime: ImageConvertOutputMime) => Promise<void>;
+};
+
+(function (): void {
+    const IC = (window as unknown as { KarmoLabImageConvert?: ImageConvertCore }).KarmoLabImageConvert;
     if (!IC) {
         console.error('KarmoLabImageConvert missing');
         return;
     }
+    const core: ImageConvertCore = IC;
 
-    var STORAGE_KEY = 'karmolab_imageconvert_settings_v1';
+    const STORAGE_KEY = 'karmolab_imageconvert_settings_v1';
 
-    var DEFAULTS = {
+    const DEFAULTS: ImageConvertSettings = {
         outFmt: 'png',
         quality: 92,
         maxPreset: '',
@@ -18,38 +66,38 @@
         smoothing: 'high'
     };
 
-    function loadSettings() {
-        var o = {};
+    function loadSettings(): ImageConvertSettings {
+        let o: Record<string, unknown> = {};
         try {
             o = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {};
         } catch (_) {}
         return {
-            outFmt: o.outFmt === 'jpeg' || o.outFmt === 'webp' || o.outFmt === 'png' ? o.outFmt : DEFAULTS.outFmt,
-            quality: Math.min(100, Math.max(5, parseInt(o.quality, 10) || DEFAULTS.quality)),
+            outFmt: (o.outFmt === 'jpeg' || o.outFmt === 'webp' || o.outFmt === 'png') ? o.outFmt : DEFAULTS.outFmt,
+            quality: Math.min(100, Math.max(5, parseInt(String(o.quality ?? ''), 10) || DEFAULTS.quality)),
             maxPreset: typeof o.maxPreset === 'string' ? o.maxPreset : DEFAULTS.maxPreset,
-            maxCustom: Math.min(16384, Math.max(64, parseInt(o.maxCustom, 10) || DEFAULTS.maxCustom)),
+            maxCustom: Math.min(16384, Math.max(64, parseInt(String(o.maxCustom ?? ''), 10) || DEFAULTS.maxCustom)),
             bg: typeof o.bg === 'string' && /^#[0-9a-fA-F]{6}$/.test(o.bg) ? o.bg : DEFAULTS.bg,
             fillAlpha: !!o.fillAlpha,
-            smoothing: o.smoothing === 'low' || o.smoothing === 'medium' ? o.smoothing : DEFAULTS.smoothing
+            smoothing: (o.smoothing === 'low' || o.smoothing === 'medium') ? o.smoothing : DEFAULTS.smoothing
         };
     }
 
-    function saveSettings(s) {
+    function saveSettings(s: ImageConvertSettings): void {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
         } catch (_) {}
     }
 
-    function mimeForFmt(fmt) {
-        if (fmt === 'jpeg') return IC.MIME_JPEG;
-        if (fmt === 'webp') return IC.MIME_WEBP;
-        return IC.MIME_PNG;
+    function mimeForFmt(fmt: ImageConvertSettings['outFmt']): ImageConvertOutputMime {
+        if (fmt === 'jpeg') return core.MIME_JPEG;
+        if (fmt === 'webp') return core.MIME_WEBP;
+        return core.MIME_PNG;
     }
 
-    function maxLongFromUI(preset, customVal) {
+    function maxLongFromUI(preset: ImageConvertSettings['maxPreset'], customVal: number): number {
         if (preset === 'custom') return customVal > 0 ? customVal : 0;
         if (!preset) return 0;
-        var n = parseInt(preset, 10);
+        const n = parseInt(preset, 10);
         return n > 0 ? n : 0;
     }
 
@@ -173,11 +221,13 @@
         }
     `);
 
-    var ImageConvertApp = {
-        build: function (container, opts) {
-            opts = opts || {};
-            var embed = !!opts.embed;
-            var webpOk = IC.supportsWebpOutput();
+    type BuildOptions = { embed?: boolean; onSyncCanvas?: () => void };
+
+    const ImageConvertApp = {
+        build: function (container: HTMLElement, opts?: BuildOptions) {
+            const o = opts || {};
+            const embed = !!o.embed;
+            const webpOk = core.supportsWebpOutput();
             var dropBlock = embed
                 ? '<div class="imc-embed-bar" id="imcEmbedBar">' +
                   '<span class="imc-embed-bar-text">편집 캔버스가 원본입니다. 캔버스를 수정한 뒤 여기에 반영하려면 버튼을 누르세요.</span>' +
@@ -280,41 +330,41 @@
                 '</div>' +
                 '</div>';
 
-            var drop = container.querySelector('#imcDrop');
-            var input = container.querySelector('#imcInput');
-            var panel = container.querySelector('#imcPanel');
-            var preview = container.querySelector('#imcPreview');
-            var meta = container.querySelector('#imcMeta');
-            var quality = container.querySelector('#imcQuality');
-            var qualityVal = container.querySelector('#imcQualityVal');
-            var qlLabel = container.querySelector('#imcQlLabel');
-            var maxPreset = container.querySelector('#imcMaxPreset');
-            var maxCustom = container.querySelector('#imcMaxCustom');
-            var bgInput = container.querySelector('#imcBg');
-            var fillAlpha = container.querySelector('#imcFillAlpha');
-            var smoothSel = container.querySelector('#imcSmooth');
-            var resampleBlock = container.querySelector('#imcResampleBlock');
-            var previewBtn = container.querySelector('#imcPreviewBtn');
-            var downloadBtn = container.querySelector('#imcDownload');
-            var clearBtn = container.querySelector('#imcClear');
-            var foot = container.querySelector('#imcFootNote');
-            var outEmpty = container.querySelector('#imcOutEmpty');
-            var previewOut = container.querySelector('#imcPreviewOut');
-            var outMeta = container.querySelector('#imcOutMeta');
-            var lightbox = container.querySelector('#imcLightbox');
-            var lightboxImg = container.querySelector('#imcLightboxImg');
+            const drop = container.querySelector<HTMLElement>('#imcDrop');
+            const input = container.querySelector<HTMLInputElement>('#imcInput')!;
+            const panel = container.querySelector<HTMLElement>('#imcPanel')!;
+            const preview = container.querySelector<HTMLImageElement>('#imcPreview')!;
+            const meta = container.querySelector<HTMLElement>('#imcMeta')!;
+            const quality = container.querySelector<HTMLInputElement>('#imcQuality')!;
+            const qualityVal = container.querySelector<HTMLElement>('#imcQualityVal')!;
+            const qlLabel = container.querySelector<HTMLElement>('#imcQlLabel')!;
+            const maxPreset = container.querySelector<HTMLSelectElement>('#imcMaxPreset')!;
+            const maxCustom = container.querySelector<HTMLInputElement>('#imcMaxCustom')!;
+            const bgInput = container.querySelector<HTMLInputElement>('#imcBg')!;
+            const fillAlpha = container.querySelector<HTMLInputElement>('#imcFillAlpha')!;
+            const smoothSel = container.querySelector<HTMLSelectElement>('#imcSmooth')!;
+            const resampleBlock = container.querySelector<HTMLElement>('#imcResampleBlock');
+            const previewBtn = container.querySelector<HTMLButtonElement>('#imcPreviewBtn')!;
+            const downloadBtn = container.querySelector<HTMLButtonElement>('#imcDownload')!;
+            const clearBtn = container.querySelector<HTMLButtonElement>('#imcClear')!;
+            const foot = container.querySelector<HTMLElement>('#imcFootNote')!;
+            const outEmpty = container.querySelector<HTMLElement>('#imcOutEmpty')!;
+            const previewOut = container.querySelector<HTMLImageElement>('#imcPreviewOut')!;
+            const outMeta = container.querySelector<HTMLElement>('#imcOutMeta')!;
+            const lightbox = container.querySelector<HTMLElement>('#imcLightbox')!;
+            const lightboxImg = container.querySelector<HTMLImageElement>('#imcLightboxImg')!;
 
-            var st = loadSettings();
-            var current = { img: null, objectUrl: null, file: null, baseName: 'image' };
-            var outBlob = null;
-            var outPreviewUrl = null;
-            var lastPreviewKey = null;
+            let st = loadSettings();
+            let current: { img: HTMLImageElement | null; objectUrl: string | null; file: File | null; baseName: string } = { img: null, objectUrl: null, file: null, baseName: 'image' };
+            let outBlob: Blob | null = null;
+            let outPreviewUrl: string | null = null;
+            let lastPreviewKey: string | null = null;
 
             var EMPTY_OUT =
                 '옵션을 맞춘 뒤 「변환 미리보기」를 누르면 여기에 표시됩니다.';
             var STALE_OUT = '설정이 바뀌었어요. 「변환 미리보기」를 다시 눌러 주세요.';
 
-            function revokeOutPreview() {
+            function revokeOutPreview(): void {
                 if (outPreviewUrl) {
                     try {
                         URL.revokeObjectURL(outPreviewUrl);
@@ -325,7 +375,7 @@
                 lastPreviewKey = null;
             }
 
-            function closeLightbox() {
+            function closeLightbox(): void {
                 if (!lightbox.classList.contains('imc-open')) return;
                 lightbox.classList.remove('imc-open');
                 lightbox.setAttribute('aria-hidden', 'true');
@@ -335,11 +385,11 @@
                 document.body.style.overflow = '';
             }
 
-            function onLightboxEscape(e) {
+            function onLightboxEscape(e: KeyboardEvent): void {
                 if (e.key === 'Escape') closeLightbox();
             }
 
-            function openLightbox(src, altText) {
+            function openLightbox(src: string, altText?: string): void {
                 if (!src || !lightbox || !lightboxImg) return;
                 lightboxImg.src = src;
                 lightboxImg.alt = altText || '';
@@ -352,7 +402,7 @@
                 } catch (_) {}
             }
 
-            function invalidateOutPreview(stale) {
+            function invalidateOutPreview(stale: boolean): void {
                 closeLightbox();
                 revokeOutPreview();
                 outEmpty.textContent = stale ? STALE_OUT : EMPTY_OUT;
@@ -362,7 +412,7 @@
                 outMeta.textContent = '';
             }
 
-            function settingsKey() {
+            function settingsKey(): string {
                 return JSON.stringify({
                     f: st.outFmt,
                     q: st.quality,
@@ -374,7 +424,7 @@
                 });
             }
 
-            function getConvertOptsFromSt() {
+            function getConvertOptsFromSt(): ImageConvertConvertOpts {
                 return {
                     outputMime: mimeForFmt(st.outFmt),
                     quality: st.quality / 100,
@@ -385,39 +435,40 @@
                 };
             }
 
-            function triggerDownloadBlob(blob, mime) {
+            function triggerDownloadBlob(blob: Blob, mime: ImageConvertOutputMime): void {
                 var url = URL.createObjectURL(blob);
                 var a = document.createElement('a');
                 a.href = url;
-                a.download = current.baseName + '.' + IC.extFromMime(mime);
+                a.download = current.baseName + '.' + core.extFromMime(mime);
                 a.click();
                 setTimeout(function () {
                     URL.revokeObjectURL(url);
                 }, 2000);
             }
 
-            function onSettingsChanged() {
+            function onSettingsChanged(): void {
                 persistFromForm();
                 if (lastPreviewKey !== null) invalidateOutPreview(true);
             }
 
-            function persistFromForm() {
-                st.outFmt = container.querySelector('input[name="imcFmt"]:checked').value;
+            function persistFromForm(): void {
+                st.outFmt = (container.querySelector<HTMLInputElement>('input[name="imcFmt"]:checked')!.value as ImageConvertSettings['outFmt']);
                 st.quality = parseInt(quality.value, 10);
                 st.maxPreset = maxPreset.value;
                 st.maxCustom = parseInt(maxCustom.value, 10) || DEFAULTS.maxCustom;
                 st.bg = bgInput.value;
                 st.fillAlpha = fillAlpha.checked;
-                st.smoothing = smoothSel.value;
+                st.smoothing = (smoothSel.value as ImageConvertSettings['smoothing']);
                 saveSettings(st);
             }
 
-            function applySettingsToForm() {
-                container.querySelectorAll('input[name="imcFmt"]').forEach(function (r) {
+            function applySettingsToForm(): void {
+                container.querySelectorAll<HTMLInputElement>('input[name="imcFmt"]').forEach(function (r) {
                     r.checked = r.value === st.outFmt;
                 });
                 if (st.outFmt === 'webp' && !webpOk) {
-                    container.querySelector('input[name="imcFmt"][value="png"]').checked = true;
+                    const png = container.querySelector<HTMLInputElement>('input[name="imcFmt"][value="png"]');
+                    if (png) png.checked = true;
                     st.outFmt = 'png';
                     saveSettings(st);
                 }
@@ -433,18 +484,18 @@
                 updateQualityRow();
             }
 
-            function syncMaxCustomVis() {
+            function syncMaxCustomVis(): void {
                 maxCustom.style.display = maxPreset.value === 'custom' ? 'inline-block' : 'none';
             }
 
-            function syncResampleVis() {
+            function syncResampleVis(): void {
                 if (!resampleBlock) return;
                 var resizing = maxPreset.value !== '';
                 resampleBlock.classList.toggle('imc-off', !resizing);
             }
 
-            function updateQualityRow() {
-                var fmt = container.querySelector('input[name="imcFmt"]:checked').value;
+            function updateQualityRow(): void {
+                const fmt = container.querySelector<HTMLInputElement>('input[name="imcFmt"]:checked')!.value as ImageConvertSettings['outFmt'];
                 var lossy = fmt === 'jpeg' || fmt === 'webp';
                 qlLabel.style.opacity = lossy ? '1' : '0.45';
                 quality.disabled = !lossy;
@@ -463,25 +514,25 @@
                 }
             }
 
-            function showError(msg) {
-                Toolbox.showToast(msg, 'error');
+            function showError(msg: string): void {
+                Toolbox.showToast(msg, 'error', undefined);
                 Mdd.linePreset('error', { msg: msg });
             }
 
-            function revokeCurrent() {
-                IC.revokeObjectUrl(current.objectUrl);
+            function revokeCurrent(): void {
+                core.revokeObjectUrl(current.objectUrl);
                 current = { img: null, objectUrl: null, file: null, baseName: 'image' };
             }
 
-            function applyFile(file) {
-                IC.loadImageFromFile(file).then(
+            function applyFile(file: File): void {
+                core.loadImageFromFile(file).then(
                     function (res) {
                         revokeCurrent();
                         invalidateOutPreview(false);
                         current.img = res.img;
                         current.objectUrl = res.objectUrl;
                         current.file = res.file;
-                        current.baseName = IC.baseNameFromFile(res.file);
+                        current.baseName = core.baseNameFromFile(res.file);
                         preview.src = res.objectUrl;
                         var w = res.img.naturalWidth;
                         var h = res.img.naturalHeight;
@@ -496,55 +547,56 @@
                         panel.classList.add('imc-visible');
                         Mdd.linePreset('success', { mood: 'happy', msg: '설정 맞추고 저장해요' });
                     },
-                    function (err) {
-                        showError(err.message || '오류');
+                    function (err: unknown) {
+                        const e = err as { message?: string } | null;
+                        showError(e?.message || '오류');
                     }
                 );
             }
 
-            function pick() {
+            function pick(): void {
                 input.click();
             }
 
             if (drop) {
                 drop.addEventListener('click', pick);
-                drop.addEventListener('keydown', function (e) {
+                drop.addEventListener('keydown', function (e: KeyboardEvent) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
                         pick();
                     }
                 });
-                ['dragenter', 'dragover'].forEach(function (ev) {
-                    drop.addEventListener(ev, function (e) {
+                (['dragenter', 'dragover'] as const).forEach(function (ev) {
+                    drop.addEventListener(ev, function (e: Event) {
                         e.preventDefault();
                         e.stopPropagation();
                         drop.classList.add('imc-drag');
                     });
                 });
-                ['dragleave', 'drop'].forEach(function (ev) {
-                    drop.addEventListener(ev, function (e) {
+                (['dragleave', 'drop'] as const).forEach(function (ev) {
+                    drop.addEventListener(ev, function (e: Event) {
                         e.preventDefault();
                         e.stopPropagation();
                         drop.classList.remove('imc-drag');
                     });
                 });
-                drop.addEventListener('drop', function (e) {
-                    var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+                drop.addEventListener('drop', function (e: DragEvent) {
+                    const f = e.dataTransfer?.files?.[0];
                     if (f) applyFile(f);
                 });
             }
-            var syncBtn = container.querySelector('#imcSyncCanvas');
+            const syncBtn = container.querySelector<HTMLButtonElement>('#imcSyncCanvas');
             if (syncBtn) {
-                if (embed && typeof opts.onSyncCanvas === 'function') {
+                if (embed && typeof o.onSyncCanvas === 'function') {
                     syncBtn.onclick = function () {
-                        opts.onSyncCanvas();
+                        o.onSyncCanvas?.();
                     };
                 } else {
                     syncBtn.style.display = 'none';
                 }
             }
             input.addEventListener('change', function () {
-                var f = input.files && input.files[0];
+                const f = input.files?.[0];
                 if (f) applyFile(f);
                 input.value = '';
             });
@@ -560,7 +612,7 @@
                 closeLightbox();
             });
 
-            container.querySelectorAll('input[name="imcFmt"]').forEach(function (r) {
+            container.querySelectorAll<HTMLInputElement>('input[name="imcFmt"]').forEach(function (r) {
                 r.addEventListener('change', function () {
                     updateQualityRow();
                     onSettingsChanged();
@@ -586,7 +638,7 @@
                 var key = settingsKey();
                 var opts = getConvertOptsFromSt();
                 previewBtn.disabled = true;
-                IC.convertImage(current.img, opts)
+                core.convertImage(current.img, opts)
                     .then(function (blob) {
                         revokeOutPreview();
                         outBlob = blob;
@@ -606,7 +658,7 @@
                                 ' KB';
                         };
                         im.src = outPreviewUrl;
-                        Toolbox.showToast('미리보기를 갱신했어요');
+                        Toolbox.showToast('미리보기를 갱신했어요', undefined, undefined);
                         Mdd.linePreset('success', { mood: 'happy', msg: '이렇게 나와요!' });
                     })
                     .catch(function () {
@@ -624,14 +676,14 @@
                 var mime = mimeForFmt(st.outFmt);
                 if (outBlob && lastPreviewKey === key) {
                     triggerDownloadBlob(outBlob, mime);
-                    Toolbox.showToast('저장했어요');
+                    Toolbox.showToast('저장했어요', undefined, undefined);
                     Mdd.linePreset('success', { mood: 'happy', msg: '내려받기 완료!' });
                     return;
                 }
-                IC.convertImage(current.img, getConvertOptsFromSt()).then(
+                core.convertImage(current.img, getConvertOptsFromSt()).then(
                     function (blob) {
                         triggerDownloadBlob(blob, mime);
-                        Toolbox.showToast('저장했어요');
+                        Toolbox.showToast('저장했어요', undefined, undefined);
                         Mdd.linePreset('success', { mood: 'happy', msg: '내려받기 완료!' });
                     },
                     function () {
@@ -650,17 +702,17 @@
                 Mdd.linePreset('tool_run', { mood: 'idle', msg: '다른 이미지를 골라요' });
             });
 
-            var Batch = window.KarmoLabImageBatch;
-            var batchRoot = container.querySelector('#imcBatchRoot');
-            var batchInput = container.querySelector('#imcBatchInput');
-            var batchPick = container.querySelector('#imcBatchPick');
-            var batchRun = container.querySelector('#imcBatchRun');
-            var batchCancel = container.querySelector('#imcBatchCancel');
-            var batchStatus = container.querySelector('#imcBatchStatus');
-            var batchFiles = [];
-            var batchAbort = null;
+            const Batch = (window as unknown as { KarmoLabImageBatch?: ImageBatch }).KarmoLabImageBatch;
+            const batchRoot = container.querySelector<HTMLElement>('#imcBatchRoot');
+            const batchInput = container.querySelector<HTMLInputElement>('#imcBatchInput');
+            const batchPick = container.querySelector<HTMLButtonElement>('#imcBatchPick');
+            const batchRun = container.querySelector<HTMLButtonElement>('#imcBatchRun');
+            const batchCancel = container.querySelector<HTMLButtonElement>('#imcBatchCancel');
+            const batchStatus = container.querySelector<HTMLElement>('#imcBatchStatus');
+            let batchFiles: File[] = [];
+            let batchAbort: AbortController | null = null;
 
-            function batchUiIdle() {
+            function batchUiIdle(): void {
                 batchAbort = null;
                 if (batchRun) batchRun.disabled = batchFiles.length === 0;
                 if (batchPick) batchPick.disabled = false;
@@ -672,7 +724,7 @@
                 downloadBtn.disabled = false;
             }
 
-            function batchStatusLine() {
+            function batchStatusLine(): void {
                 if (!batchStatus) return;
                 batchStatus.textContent =
                     batchFiles.length === 0
@@ -687,7 +739,7 @@
                     batchInput.click();
                 });
                 batchInput.addEventListener('change', function () {
-                    batchFiles = batchInput.files ? Array.prototype.slice.call(batchInput.files) : [];
+                    batchFiles = batchInput.files ? Array.from(batchInput.files) : [];
                     batchStatusLine();
                     batchRun.disabled = batchFiles.length === 0;
                     if (batchFiles.length) panel.classList.add('imc-visible');
@@ -709,7 +761,7 @@
                     previewBtn.disabled = true;
                     downloadBtn.disabled = true;
                     batchStatus.textContent = '변환 중… 0 / ' + batchFiles.length;
-                    Batch.processFilesSequential(IC, batchFiles, recipe, {
+                    Batch.processFilesSequential(core, batchFiles, recipe, {
                         signal: batchAbort.signal,
                         onItemStart: function (idx, file, total) {
                             batchStatus.textContent =
@@ -723,7 +775,7 @@
                             }).length;
                             var failed = results.length - okc;
                             if (out.aborted) {
-                                Toolbox.showToast('일괄 변환을 취소했어요.');
+                                Toolbox.showToast('일괄 변환을 취소했어요.', undefined, undefined);
                                 batchStatus.textContent =
                                     '취소됨 · 처리 ' + results.length + ' · 성공 ' + okc + ' · 실패 ' + failed;
                                 return;
@@ -731,11 +783,11 @@
                             batchStatus.textContent =
                                 '완료 · 성공 ' + okc + ' · 실패 ' + failed + (okc ? ' · 저장 창이 순서대로 열립니다' : '');
                             if (!okc) {
-                                Toolbox.showToast('변환에 성공한 파일이 없어요.');
+                                Toolbox.showToast('변환에 성공한 파일이 없어요.', undefined, undefined);
                                 return;
                             }
-                            return Batch.downloadResultsSequential(results, IC, mime).then(function () {
-                                Toolbox.showToast('일괄 저장 요청을 마쳤어요');
+                            return Batch.downloadResultsSequential(results, core, mime).then(function () {
+                                Toolbox.showToast('일괄 저장 요청을 마쳤어요', undefined, undefined);
                                 Mdd.linePreset('success', { mood: 'happy', msg: '모두 저장했어요!' });
                             });
                         })
@@ -759,5 +811,5 @@
         }
     };
 
-    window.KarmoLabImageConvertUI = ImageConvertApp;
+    (window as unknown as { KarmoLabImageConvertUI?: typeof ImageConvertApp }).KarmoLabImageConvertUI = ImageConvertApp;
 })();

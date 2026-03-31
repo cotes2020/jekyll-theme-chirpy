@@ -1,14 +1,18 @@
-// @ts-nocheck
-(function() {
-    Toolbox.register({
-        id: 'speed', title: '속도측정',
-        category: 'play',
-        desc: '드래그 속도를 측정합니다',
-        layout: 'form',
-        icon: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
-        tabs: [{ id: 'app', label: '속도측정', build: function(container) {
-            Mdd.linePreset('tool_run', { msg: '속도 측정이에요! 빨리 드래그하세요!' });
-            container.innerHTML = `
+(function (): void {
+  Toolbox.register({
+    id: 'speed',
+    title: '속도측정',
+    category: 'play',
+    desc: '드래그 속도를 측정합니다',
+    layout: 'form',
+    icon: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
+    tabs: [
+      {
+        id: 'app',
+        label: '속도측정',
+        build: function (container: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '속도 측정이에요! 빨리 드래그하세요!' });
+          container.innerHTML = `
                 <div style="display:flex; flex-direction:column; padding:20px; height:380px; box-sizing:border-box; text-align:center;">
                     <div style="font-size:14px; color:var(--text-secondary); margin-bottom:10px;">💾 [1MB] 블럭을 마우스로 잡고 골인 지점까지 끌고 가세요!</div>
                     <div id="dropZone" style="flex:1; background:rgba(0,0,0,0.3); border:2px dashed #444; border-radius:8px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
@@ -18,64 +22,72 @@
                     <div id="speedResult" style="margin-top:15px; font-size:15px; font-weight:bold; color:var(--text-primary); min-height:20px;"></div>
                 </div>
             `;
-            const dragBlock = container.querySelector('#dragBlock');
-            const targetArea = container.querySelector('#targetArea');
-            const dropZone = container.querySelector('#dropZone');
-            const result = container.querySelector('#speedResult');
+          const dragBlockEl = container.querySelector('#dragBlock') as HTMLElement | null;
+          const targetAreaEl = container.querySelector('#targetArea') as HTMLElement | null;
+          const dropZoneEl = container.querySelector('#dropZone') as HTMLElement | null;
+          const resultEl = container.querySelector('#speedResult') as HTMLElement | null;
+          if (!dragBlockEl || !targetAreaEl || !dropZoneEl || !resultEl) return;
 
-            let startTime = null;
-            let isDragging = false;
+          const dragBlock = dragBlockEl;
+          const targetArea = targetAreaEl;
+          const dropZone = dropZoneEl;
+          const result = resultEl;
 
-            dragBlock.onmousedown = (e) => {
-                isDragging = true;
-                if (!startTime) startTime = performance.now();
-                dragBlock.style.cursor = 'grabbing';
-                
-                const offsetX = e.clientX - dragBlock.getBoundingClientRect().left;
-                const offsetY = e.clientY - dragBlock.getBoundingClientRect().top;
+          let startTime: number | null = null;
+          let isDragging = false;
 
-                function onMouseMove(moveEvent) {
-                    if (!isDragging) return;
-                    const r = dropZone.getBoundingClientRect();
-                    let x = moveEvent.clientX - r.left - offsetX;
-                    let y = moveEvent.clientY - r.top - offsetY;
+          dragBlock.onmousedown = (e: MouseEvent) => {
+            isDragging = true;
+            if (startTime === null) startTime = performance.now();
+            dragBlock.style.cursor = 'grabbing';
 
-                    // 범위 제한
-                    x = Math.max(0, Math.min(x, r.width - 60));
-                    y = Math.max(0, Math.min(y, r.height - 60));
+            const offsetX = e.clientX - dragBlock.getBoundingClientRect().left;
+            const offsetY = e.clientY - dragBlock.getBoundingClientRect().top;
 
-                    dragBlock.style.left = `${x}px`;
-                    dragBlock.style.top = `${y}px`;
+            function onMouseMove(moveEvent: MouseEvent): void {
+              if (!isDragging) return;
+              const r = dropZone.getBoundingClientRect();
+              let x = moveEvent.clientX - r.left - offsetX;
+              let y = moveEvent.clientY - r.top - offsetY;
 
-                    // Goal 충돌 검사
-                    const tr = targetArea.getBoundingClientRect();
-                    const br = dragBlock.getBoundingClientRect();
+              x = Math.max(0, Math.min(x, r.width - 60));
+              y = Math.max(0, Math.min(y, r.height - 60));
 
-                    if (br.right > tr.left && br.left < tr.right && br.bottom > tr.top && br.top < tr.bottom) {
-                        isDragging = false;
-                        dragBlock.style.cursor = 'default';
-                        document.removeEventListener('mousemove', onMouseMove);
-                        document.removeEventListener('mouseup', onMouseUp);
+              dragBlock.style.left = `${x}px`;
+              dragBlock.style.top = `${y}px`;
 
-                        const endTime = performance.now();
-                        const tookMs = endTime - startTime;
-                        const speed = 1000 / tookMs; // 1MB / sec
-                        
-                        result.innerHTML = `이동 시간: 무려 <span style="color:var(--warning)">${tookMs.toFixed(0)} ms</span>!<br>당신의 수동 손목 속도는 <span style="color:var(--success)">${speed.toFixed(2)} MB/s</span> 이에요!`;
-                        startTime = null; // 리셋
-                    }
-                }
+              const tr = targetArea.getBoundingClientRect();
+              const br = dragBlock.getBoundingClientRect();
 
-                function onMouseUp() {
-                    isDragging = false;
-                    dragBlock.style.cursor = 'grab';
-                    document.removeEventListener('mousemove', onMouseMove);
-                    document.removeEventListener('mouseup', onMouseUp);
-                }
+              if (br.right > tr.left && br.left < tr.right && br.bottom > tr.top && br.top < tr.bottom) {
+                isDragging = false;
+                dragBlock.style.cursor = 'default';
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
 
-                document.addEventListener('mousemove', onMouseMove);
-                document.addEventListener('mouseup', onMouseUp);
-            };
-        } }]
-    });
+                const endTime = performance.now();
+                const st = startTime;
+                if (st === null) return;
+                const tookMs = endTime - st;
+                const speed = 1000 / tookMs;
+
+                result.innerHTML = `이동 시간: 무려 <span style="color:var(--warning)">${tookMs.toFixed(0)} ms</span>!<br>당신의 수동 손목 속도는 <span style="color:var(--success)">${speed.toFixed(2)} MB/s</span> 이에요!`;
+                startTime = null;
+              }
+            }
+
+            function onMouseUp(): void {
+              isDragging = false;
+              dragBlock.style.cursor = 'grab';
+              document.removeEventListener('mousemove', onMouseMove);
+              document.removeEventListener('mouseup', onMouseUp);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+          };
+        }
+      }
+    ]
+  });
 })();
