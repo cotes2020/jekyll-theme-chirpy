@@ -9,9 +9,11 @@
     "dev": "node --watch --watch-path=./src --watch-path=./cli src/index.js"
   },
   "dependencies": {
-    "discord.js": "^14.16.0",
-    "dotenv": "^16.4.0",
-    "express": "^4.21.0",
-    "@google/generative-ai": "^0.21.0"
+    "@google/generative-ai": "^0.21.0",
+    "cheerio": "^1.2.0",
+    "discord.js": "^14.26.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "node-fetch": "^3.3.2"
   }
 }
