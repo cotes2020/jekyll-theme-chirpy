@@ -35,7 +35,15 @@ declare global {
 
     /** dashboard.ts — 내 정보 탭에서 호출 */
     DashboardBuild?: (container: HTMLElement) => void;
+
+    /** Tauri 데스크톱 셸 (devtools 알림 테스트) */
+    __TAURI__?: { core?: { invoke?: (cmd: string, args?: unknown) => Promise<unknown> } };
+    __karmolabSetNotifyInvokeDebug?: (payload: unknown) => void;
   }
+
+  /** 페이지 스크립트로 주입된 marked / Prism */
+  var marked: { parse: (src: string) => string; setOptions: (opts: Record<string, unknown>) => void } | undefined;
+  var Prism: { highlightElement: (el: Element) => void } | undefined;
 
   /** toolbox.js — global lexical binding (not necessarily window.Toolbox) */
   var Toolbox: {
@@ -72,6 +80,8 @@ declare global {
     getPref?: (key: string, fallback?: string) => string;
     setPref?: (key: string, value: string) => void;
     field?: (container: HTMLElement, opts: Record<string, unknown>) => HTMLElement;
+    isDesktopApp?: () => boolean;
+    escapeHtml?: (s: string) => string;
   };
 
 }

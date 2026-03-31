@@ -1,13 +1,13 @@
-// @ts-nocheck
 /**
  * Docs — 소개, 로드맵·기획, 가이드
  *
  * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅.
  * 탭: 소개 | 로드맵 & 기획 | 가이드
  */
-(function () {
-
-    Mdd.injectCSS('docs', `
+(function (): void {
+  Mdd.injectCSS(
+    'docs',
+    `
         .docs-body { font-size:14px; line-height:1.8; color:var(--text-primary); max-width:800px; }
         .docs-body h1 { font-size:24px; font-weight:800; letter-spacing:-0.03em; margin:0 0 16px; padding-bottom:12px; border-bottom:2px solid var(--border); }
         .docs-body h2 { font-size:18px; font-weight:700; letter-spacing:-0.02em; margin:32px 0 12px; color:var(--accent); }
@@ -31,67 +31,105 @@
         .docs-toc-list { display:flex; flex-wrap:wrap; gap:6px; }
         .docs-toc-item { font-size:var(--font-size-xs); padding:4px 12px; border-radius:100px; background:var(--bg-tertiary); color:var(--text-secondary); cursor:pointer; border:1px solid var(--border); transition:all 0.15s; text-decoration:none; }
         .docs-toc-item:hover { color:var(--text-primary); border-color:var(--accent); }
-    `);
+    `
+  );
 
-    /* ===== 문서 경로 (스크립트 위치 기준) ===== */
-    const DOCS_BASE = (function () {
-        const script = document.currentScript;
-        if (script && script.src) {
-            const url = new URL(script.src);
-            return url.origin + url.pathname.replace(/\/[^/]+$/, '/');
-        }
-        return './js/widgets/docs/';
-    })();
-
-    function getDocUrl(filename) {
-        return DOCS_BASE + filename;
+  const DOCS_BASE = (function (): string {
+    const script = document.currentScript;
+    if (script && 'src' in script && script.src) {
+      const url = new URL(script.src);
+      return url.origin + url.pathname.replace(/\/[^/]+$/, '/');
     }
+    return './js/widgets/docs/';
+  })();
 
-    function loadDoc(filename) {
-        return fetch(getDocUrl(filename)).then(function (r) {
-            if (!r.ok) throw new Error('문서 로드 실패: ' + filename);
-            return r.text();
-        });
-    }
+  function getDocUrl(filename: string): string {
+    return DOCS_BASE + filename;
+  }
 
-    /* ===== 렌더러 ===== */
-    function renderMarkdown(container, md) {
-        const body = document.createElement('div');
-        body.className = 'docs-body';
-
-        if (typeof marked !== 'undefined') {
-            marked.setOptions({ breaks: true, gfm: true });
-            body.innerHTML = marked.parse(md);
-        } else {
-            body.innerHTML = '<p style="color:var(--error)">marked.js 로드 실패. 새로고침해주세요.</p>';
-            return;
-        }
-
-        container.innerHTML = '';
-        container.appendChild(body);
-
-        body.querySelectorAll('pre code').forEach(block => {
-            const text = block.textContent;
-            const lang = block.className.match(/language-(\w+)/)?.[1] || 'javascript';
-            block.className = 'language-' + lang;
-            if (typeof Prism !== 'undefined') {
-                Prism.highlightElement(block);
-            }
-        });
-    }
-
-    /* ===== 위젯 등록 ===== */
-    Toolbox.register({
-        id: 'docs',
-        title: '문서',
-        category: null,  // 기타
-        desc: 'KarmoLab 소개, 로드맵·기획, 가이드',
-        layout: 'wide',
-        icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
-        tabs: [
-            { id: 'docs-intro', label: '소개', build: function (c) { Mdd.linePreset('tool_run', { msg: '문서 페이지예요!' }); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('intro.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-            { id: 'docs-roadmap', label: '로드맵', build: function (c) { Mdd.linePreset('daily_start', { msg: '로드맵이랑 기획이에요~' }); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('roadmap.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-            { id: 'docs-guide', label: '가이드', build: function (c) { Mdd.linePreset('tool_run', { msg: '사용법을 알려줄게요~' }); c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>'; loadDoc('guide.md').then(function (md) { renderMarkdown(c, md); }).catch(function () { renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*'); }); } },
-        ]
+  function loadDoc(filename: string): Promise<string> {
+    return fetch(getDocUrl(filename)).then(function (r: Response) {
+      if (!r.ok) throw new Error('문서 로드 실패: ' + filename);
+      return r.text();
     });
+  }
+
+  function renderMarkdown(container: HTMLElement, md: string): void {
+    const body = document.createElement('div');
+    body.className = 'docs-body';
+
+    if (typeof marked !== 'undefined') {
+      marked.setOptions({ breaks: true, gfm: true });
+      body.innerHTML = marked.parse(md);
+    } else {
+      body.innerHTML = '<p style="color:var(--error)">marked.js 로드 실패. 새로고침해주세요.</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+    container.appendChild(body);
+
+    body.querySelectorAll('pre code').forEach((block: Element) => {
+      const lang = block.className.match(/language-(\w+)/)?.[1] || 'javascript';
+      block.className = 'language-' + lang;
+      if (typeof Prism !== 'undefined') {
+        Prism.highlightElement(block);
+      }
+    });
+  }
+
+  Toolbox.register({
+    id: 'docs',
+    title: '문서',
+    desc: 'KarmoLab 소개, 로드맵·기획, 가이드',
+    layout: 'wide',
+    icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+    tabs: [
+      {
+        id: 'docs-intro',
+        label: '소개',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '문서 페이지예요!' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('intro.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-roadmap',
+        label: '로드맵',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('daily_start', { msg: '로드맵이랑 기획이에요~' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('roadmap.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-guide',
+        label: '가이드',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '사용법을 알려줄게요~' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('guide.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      }
+    ]
+  });
 })();
