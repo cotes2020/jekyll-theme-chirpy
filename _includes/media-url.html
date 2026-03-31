@@ -18,12 +18,16 @@
   - treat "/" as empty (common misconfiguration)
   - remove trailing slash for other non-empty values
 {%- endcomment -%}
+
 {%- assign b_url = site.baseurl | default: '' | strip -%}
+{%- assign last_base_char = b_url | slice: -1, 1 -%}
 {%- if b_url == '/' -%}
   {%- assign b_url = '' -%}
-{%- elsif (b_url | slice: -1, 1) == '/' -%}
-  {%- assign b_url = b_url | remove_last: '/' -%}
+{%- elsif last_base_char == '/' -%}
+  {%- assign trimmed_length = b_url | size | minus: 1 -%}
+  {%- assign b_url = b_url | slice: 0, trimmed_length -%}
 {%- endif -%}
+
 
 {%- comment -%}
   Normalize CDN:
@@ -31,57 +35,51 @@
   - remove trailing slash
 {%- endcomment -%}
 {%- assign cdn = site.cdn | default: '' | strip -%}
-{%- if cdn != '' and (cdn | slice: -1, 1) == '/' -%}
-  {%- assign cdn = cdn | remove_last: '/' -%}
+{%- assign last_cdn_char = cdn | slice: -1, 1 -%}
+{%- if cdn != '' and last_cdn_char == '/' -%}
+  {%- assign trimmed_cdn_length = cdn | size | minus: 1 -%}
+  {%- assign cdn = cdn | slice: 0, trimmed_cdn_length -%}
 {%- endif -%}
 
-{%- comment -%}
-  Only process non-absolute URLs
-{%- endcomment -%}
-{%- unless url contains '://' -%}
+{%- if url -%}
+  {%- unless url contains '://' -%}
 
-  {%- comment -%}Apply optional subpath{%- endcomment -%}
-  {%- assign url = include.subpath | default: '' | append: '/' | append: url -%}
+    {%- comment -%}Apply optional subpath{%- endcomment -%}
+    {%- assign url = include.subpath | default: '' | append: '/' | append: url -%}
 
-  {%- comment -%}Apply CDN if present{%- endcomment -%}
-  {%- if cdn != '' -%}
-    {%- assign url = cdn | append: '/' | append: url -%}
-  {%- endif -%}
-
-  {%- comment -%}Cleanup duplicate slashes{%- endcomment -%}
-  {%- assign url = url
-    | replace: '///', '/'
-    | replace: '//', '/'
-    | replace: ':/', '://'
-  -%}
-
-  {%- comment -%}
-    Detect whether URL already has baseurl (boundary-aware).
-    We only consider it "already prefixed" if:
-      - url starts with b_url, AND
-      - the next character is end-of-string or one of "/ # ?"
-    This avoids false matches like "/blogerati" when b_url is "/blog".
-  {%- endcomment -%}
-  {%- assign has_baseurl = false -%}
-  {%- if b_url != '' -%}
-    {%- assign b_url_size = b_url | size -%}
-    {%- assign url_prefix = url | slice: 0, b_url_size -%}
-    {%- assign next_char  = url | slice: b_url_size, 1 -%}
-    {%- if url_prefix == b_url and (next_char == '' or '/#?' contains next_char) -%}
-      {%- assign has_baseurl = true -%}
+    {%- comment -%}Apply CDN if present{%- endcomment -%}
+    {%- if cdn != '' -%}
+      {%- assign url = cdn | append: '/' | append: url -%}
     {%- endif -%}
-  {%- endif -%}
 
-  {%- comment -%}Prepend baseurl if needed{%- endcomment -%}
-  {%- if b_url != '' and has_baseurl == false -%}
-    {%- assign url = b_url | append: url -%}
-  {%- endif -%}
+    {%- comment -%}Cleanup duplicate slashes{%- endcomment -%}
+    {%- assign url = url
+      | replace: '///', '/'
+      | replace: '//', '/'
+      | replace: ':/', '://'
+    -%}
 
-  {%- comment -%}Make absolute if requested{%- endcomment -%}
-  {%- if include.absolute -%}
-    {%- assign url = site.url | append: url -%}
-  {%- endif -%}
+  {%- endunless -%}
 
-{%- endunless -%}
+  {%- unless url contains '://' -%}
+    {%- assign has_baseurl = false -%}
+    {%- if b_url != '' -%}
+      {%- assign b_url_size = b_url | size -%}
+      {%- assign url_prefix = url | slice: 0, b_url_size -%}
+      {%- assign next_char  = url | slice: b_url_size, 1 -%}
+      {%- if url_prefix == b_url and (next_char == '' or '/#?' contains next_char) -%}
+        {%- assign has_baseurl = true -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if b_url != '' and has_baseurl == false -%}
+      {%- assign url = b_url | append: url -%}
+    {%- endif -%}
+
+    {%- if include.absolute -%}
+      {%- assign url = site.url | append: url -%}
+    {%- endif -%}
+  {%- endunless -%}
+{%- endif -%}
 
 {{- url -}}
