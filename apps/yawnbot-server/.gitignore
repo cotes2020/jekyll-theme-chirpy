@@ -1,5 +1,2 @@
 node_modules/
-.env
-data/gamedata.json
-data/config.json
-data/error_logs.json
+dist/

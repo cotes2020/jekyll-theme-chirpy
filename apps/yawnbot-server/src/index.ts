@@ -1,10 +1,10 @@
+// @ts-nocheck
 /**
  * YawnBot — Node.js Discord Bot Server
  * C# YawnBot → discord.js v14 이식
  */
-require('dotenv').config();
-
-const {
+import 'dotenv/config';
+import {
     Client,
     GatewayIntentBits,
     EmbedBuilder,
@@ -13,18 +13,21 @@ const {
     ButtonBuilder,
     ButtonStyle,
     StringSelectMenuBuilder,
-} = require('discord.js');
-const express = require('express');
+} from 'discord.js';
+import type { ChatInputCommandInteraction, Message, StringSelectMenuInteraction } from 'discord.js';
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { spawn, execFile } from 'child_process';
+import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai';
 
-const { GameDataService, formatMoney, getLevelColor, getWeaponLore, getRandomImage } = require('./services/gamedata');
-const { EnhancementService } = require('./services/enhancement');
-const { StockService } = require('./services/stock');
-const { RaidService } = require('./services/raid');
+import { GameDataService, formatMoney, getLevelColor, getWeaponLore, getRandomImage } from './services/gamedata';
+import { EnhancementService } from './services/enhancement';
+import { StockService } from './services/stock';
+import { RaidService } from './services/raid';
+import { enhancementImgDir, memeImgDir, cursorRunnerScript } from './paths';
 
-const fs = require('fs');
-const path = require('path');
-const { spawn, execFile } = require('child_process');
-const ENHANCEMENT_DIR = path.join(__dirname, '..', 'resources', 'img', 'enhancement');
+const ENHANCEMENT_DIR = enhancementImgDir();
 
 function getImageAttachment(imageRelativePath) {
     if (!imageRelativePath) return null;
@@ -59,7 +62,7 @@ function isAdmin(userId) { return ADMIN_IDS.includes(String(userId)); }
 /** Cursor 로컬 에이전트 동시 실행 방지 */
 let cursorEditInFlight = false;
 
-const CURSOR_RUNNER_PATH = path.join(__dirname, '..', 'cli', 'cursor-local-runner.js');
+const CURSOR_RUNNER_PATH = cursorRunnerScript();
 
 function getCursorMaxPromptChars() {
     return parseInt(process.env.CURSOR_MAX_PROMPT_CHARS || '2000', 10);
@@ -68,9 +71,12 @@ function getCursorMaxPromptChars() {
 /**
  * Cursor `cursor/ask_question` → 디스코드 셀렉트(최대 25개). 여러 번 연속으로 올 수 있음(순차 처리).
  */
-async function discordAnswerCursorQuestion(interaction, payload) {
+async function discordAnswerCursorQuestion(
+    interaction: ChatInputCommandInteraction,
+    payload: { rpcId?: unknown; params?: Record<string, unknown> },
+) {
     const params = payload.params || {};
-    const raw = params.options ?? params.choices ?? [];
+    const raw = (params.options ?? params.choices ?? []) as unknown[];
     const lines = Array.isArray(raw) ? raw : [];
     const selectOptions = lines.slice(0, 25).map((o, i) => {
         if (typeof o === 'string') {
@@ -103,10 +109,11 @@ async function discordAnswerCursorQuestion(interaction, payload) {
     });
     const uid = interaction.user.id;
     try {
-        const comp = await reply.awaitMessageComponent({
-            filter: i => i.user.id === uid && i.customId === customId,
+        const comp = (await reply.awaitMessageComponent({
+            filter: (i): i is StringSelectMenuInteraction =>
+                i.user.id === uid && i.customId === customId,
             time: 600_000,
-        });
+        })) as StringSelectMenuInteraction;
         const idx = parseInt(comp.values[0], 10);
         await comp.update({ components: [] });
         return { selectedIndex: idx };
@@ -127,7 +134,16 @@ async function discordAnswerCursorQuestion(interaction, payload) {
  * @param {(payload: { type: string, rpcId: unknown, params: object }) => Promise<{ selectedIndex?: number, cancelled?: boolean }>} [onQuestion]
  * @returns {Promise<object>}
  */
-function runCursorLocalRunner(cwd, prompt, mode, onProgress, onQuestion) {
+function runCursorLocalRunner(
+    cwd: string,
+    prompt: string,
+    mode: string,
+    onProgress?: (chunk: string) => void,
+    onQuestion?: (msg: { type: string; rpcId: unknown; params: object }) => Promise<{
+        selectedIndex?: number;
+        cancelled?: boolean;
+    }>,
+) {
     const innerTimeoutMs = parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10);
     /** 러너(자식 node)가 안 끝나도 봇이 영원히 멈추지 않도록 여유(ms) */
     const outerGraceMs = parseInt(process.env.CURSOR_RUNNER_GRACE_MS || '120000', 10);
@@ -158,7 +174,7 @@ function runCursorLocalRunner(cwd, prompt, mode, onProgress, onQuestion) {
         let err = '';
         const maxOut = 12 * 1024 * 1024;
         let settled = false;
-        let resultJson = null;
+        let resultJson: Record<string, unknown> | null = null;
         let outBuf = '';
 
         const killTree = () => {
@@ -295,7 +311,7 @@ function hasGitWorkingChanges(g) {
  * Cursor 완료 임베드: 에이전트가 cursor/ask_question·cursor/create_plan을 호출했는지 안내
  * @param {{ askQuestionCount?: number, createPlanCount?: number }|null|undefined} s
  */
-function formatCursorAcpRpcSummaryField(s) {
+function formatCursorAcpRpcSummaryField(s: { askQuestionCount?: number; createPlanCount?: number } | null | undefined) {
     const q = typeof s?.askQuestionCount === 'number' ? s.askQuestionCount : 0;
     const p = typeof s?.createPlanCount === 'number' ? s.createPlanCount : 0;
     const lineAsk =
@@ -371,8 +387,9 @@ async function startDeferElapsedTicker(interaction, kind, extra = {}) {
         });
         try {
             await interaction.editReply({ content: null, embeds: [embed] });
-        } catch (e) {
-            if (e.code !== 50006) console.error('[defer ticker] editReply 실패:', e.message);
+        } catch (e: unknown) {
+            const code = e && typeof e === 'object' && 'code' in e ? (e as { code?: number }).code : undefined;
+            if (code !== 50006) console.error('[defer ticker] editReply 실패:', e instanceof Error ? e.message : e);
         }
     };
     const id = setInterval(run, tickMs);
@@ -408,22 +425,21 @@ async function notifyDeferCompletion(interaction, { ok, kind }) {
 }
 
 /* ── Gemini AI (Optional) ── */
-let geminiModel = null;
+let geminiModel: GenerativeModel | null = null;
 try {
     if (process.env.GEMINI_API_KEY) {
-        const { GoogleGenerativeAI } = require('@google/generative-ai');
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         geminiModel = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || 'gemini-2.0-flash' });
         console.log('[Gemini] AI 모델 초기화 완료');
     }
-} catch (e) {
-    console.warn('[Gemini] 초기화 실패 (선택 기능):', e.message);
+} catch (e: unknown) {
+    console.warn('[Gemini] 초기화 실패 (선택 기능):', e instanceof Error ? e.message : e);
 }
 
 /* ── Meme 서비스 (메시지에 해당하는 이미지 파일 전송) ── */
-const MEME_DIR = path.join(__dirname, '..', 'resources', 'img', 'meme');
+const MEME_DIR = memeImgDir();
 
-async function handleMeme(message) {
+async function handleMeme(message: Message): Promise<boolean> {
     if (message.author.bot || message.content.startsWith('!') || message.content.startsWith('/')) return false;
     const query = message.content.trim().toLowerCase();
     if (!query) return false;
@@ -660,7 +676,7 @@ client.on('interactionCreate', async interaction => {
         /* ── 정보 ── */
         case '정보': {
             const user = gameData.getUser(userId);
-            if (!user.sword.weaponType || !user.sword.imageName) enhancement._ensureSword(user);
+            if (!user.sword.weaponType || !user.sword.imageName) enhancement.ensureSword(user);
 
             const swordName = user.sword.name || gameData.getMessage('Info_NoName');
             const embed = new EmbedBuilder()
@@ -755,7 +771,7 @@ client.on('interactionCreate', async interaction => {
             if (target.bot) { await interaction.reply({ content: gameData.getMessage('Battle_Bot_Desc'), ephemeral: true }); break; }
 
             const targetUser = gameData.getUser(target.id);
-            if (!targetUser.sword.weaponType) enhancement._ensureSword(targetUser);
+            if (!targetUser.sword.weaponType) enhancement.ensureSword(targetUser);
 
             const r = enhancement.battle(userId, target.id);
             const embed = new EmbedBuilder();
