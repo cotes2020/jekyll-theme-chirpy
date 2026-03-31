@@ -1,1 +1,7 @@
-npx --no -- commitlint --edit $1
+#!/usr/bin/env sh
+# git pull 등으로 생기는 merge 커밋은 메시지가 "Merge branch ..." 형태라
+# @commitlint/config-conventional 검사에 걸립니다. 이때는 훅을 건너뜁니다.
+if [ -f "$(git rev-parse --git-dir)/MERGE_HEAD" ]; then
+  exit 0
+fi
+npx --no -- commitlint --edit "$1"
