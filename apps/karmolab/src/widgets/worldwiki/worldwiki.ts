@@ -205,6 +205,11 @@
         }));
     }
 
+    declare const marked: {
+        setOptions: (opts: { breaks?: boolean; gfm?: boolean }) => void;
+        parse: (src: string) => string;
+    } | undefined;
+
     function renderWikiMarkdown(container: HTMLElement, md: string, tocContainer: HTMLElement | null): void {
         const wrap = document.createElement('div');
         wrap.className = 'ww-md';
