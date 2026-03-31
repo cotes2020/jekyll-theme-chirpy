@@ -1,0 +1,47 @@
+// @ts-nocheck
+import { EmbedBuilder } from 'discord.js';
+import { getRandomImage } from '../services/gamedata';
+import { showHelpPage, handleEnhance, handleSell } from './game-ui';
+
+export async function handleButtonInteraction(ctx, interaction) {
+    if (!interaction.isButton()) return;
+    const customId = interaction.customId;
+    const userId = interaction.user.id;
+    const userName = interaction.user.displayName || interaction.user.username;
+    const { gameData, getImageAttachment } = ctx;
+
+    try {
+        if (customId.startsWith('help_page:')) {
+            const pageIndex = parseInt(customId.split(':')[1], 10);
+            await showHelpPage(ctx, interaction, pageIndex, true);
+            return;
+        }
+
+        if (customId === 'consolation') {
+            const imageName = getRandomImage('위로(놀림)_');
+            const wImg = getImageAttachment(imageName);
+            const embed = new EmbedBuilder()
+                .setTitle(gameData.getMessage('Consolation_Title'))
+                .setDescription(gameData.getMessage('Consolation_Desc', `<@${userId}>`))
+                .setColor(0xff00ff);
+            let payload = { embeds: [embed] };
+            if (wImg) Object.assign(payload, { files: [wImg.file], embeds: [embed.setImage(`attachment://${wImg.name}`)] });
+
+            await interaction.channel.send(payload);
+            await interaction.deferUpdate();
+            return;
+        }
+
+        if (customId === 'enhance_retry') {
+            await handleEnhance(ctx, interaction, userId, userName, true);
+            return;
+        }
+        if (customId === 'sell_sword') {
+            await handleSell(ctx, interaction, userId, true);
+            return;
+        }
+    } catch (err) {
+        console.error('[Button Error]', err);
+        await interaction.reply({ content: '오류가 발생했습니다.', ephemeral: true }).catch(() => {});
+    }
+}
