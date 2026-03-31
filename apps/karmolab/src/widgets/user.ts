@@ -1,13 +1,46 @@
-// @ts-nocheck
 /**
  * User Page — 내 정보, 도전과제, 뱃지
  */
-(function () {
+(function (): void {
     const PROGRESS_KEY = 'pet_strokes';
     /** [karmolab-react-src DEFAULT_TRACKS] id → 표시 이름 */
-    const STREAK_TRACK_LABELS = { daily_review: '일일 리뷰', exercise: '운동' };
+    const STREAK_TRACK_LABELS: Record<string, string> = { daily_review: '일일 리뷰', exercise: '운동' };
 
-    const DEFS = {
+    type UserAchievement = {
+        id: string;
+        title: string;
+        desc: string;
+        icon: string;
+        source: string;
+    };
+
+    type UserBadge = {
+        id: string;
+        title: string;
+        desc: string;
+        icon: string;
+        source: string;
+    };
+
+    type UserStreak = {
+        current?: number;
+        longest?: number;
+        lastActivityDate?: string;
+    };
+
+    type UserData = {
+        achievements?: string[];
+        badges?: string[];
+        progress?: Record<string, number>;
+        streaks?: Record<string, UserStreak>;
+    };
+
+    type StorageItemStat = { key: string; bytes: number; valLen: number };
+
+    const DEFS: {
+        achievements: UserAchievement[];
+        badges: UserBadge[];
+    } = {
         achievements: [
             { id: 'pet_100', title: '100번 쓰다듬기', desc: '고양이를 100번 쓰다듬었다', icon: '🐱', source: 'pet' },
             { id: 'pet_1000', title: '1,000번 쓰다듬기', desc: '고양이를 1,000번 쓰다듬었다', icon: '🐱', source: 'pet' },
@@ -29,8 +62,8 @@
         ],
     };
 
-    DEFS.achievements.forEach(a => Toolbox.registerAchievement(a.id, a));
-    DEFS.badges.forEach(b => Toolbox.registerBadge(b.id, b));
+    DEFS.achievements.forEach((a) => Toolbox.registerAchievement?.(a.id, a));
+    DEFS.badges.forEach((b) => Toolbox.unlockBadge?.(b.id, b));
 
     Mdd.injectCSS('user-page', `
         .user-layout { display:flex; flex-direction:column; gap:24px; }
@@ -74,24 +107,25 @@
         .storage-table .storage-desc { font-size:var(--font-size-xs); color:var(--text-tertiary); max-width:200px; }
     `);
 
-    function buildOverview(container) {
-        const data = Toolbox.getUserData();
-        const achievements = data.achievements || [];
-        const badges = data.badges || [];
-        const progress = data.progress || {};
-        const petStrokes = progress[PROGRESS_KEY] || 0;
-        const usageStats = Toolbox.getUsageStats();
+    function buildOverview(container: HTMLElement): void {
+        const data = (Toolbox.getUserData?.() as UserData | undefined) ?? {};
+        const achievements = data.achievements ?? [];
+        const badges = data.badges ?? [];
+        const progress = data.progress ?? {};
+        const petStrokes = progress[PROGRESS_KEY] ?? 0;
+        const usageStats = Toolbox.getUsageStats?.() ?? {};
         let totalChat = 0, totalImage = 0;
-        Object.values(usageStats).forEach(s => {
-            totalChat += s.chatCount || 0;
-            totalImage += s.imageCount || 0;
+        const usageValues = Object.values(usageStats) as Array<{ chatCount?: number; imageCount?: number }>;
+        usageValues.forEach((s) => {
+            totalChat += s.chatCount ?? 0;
+            totalImage += s.imageCount ?? 0;
         });
 
         const achCount = achievements.length;
         const badgeCount = badges.length;
         const totalA = DEFS.achievements.length;
         const totalB = DEFS.badges.length;
-        const streaks = data.streaks || {};
+        const streaks = data.streaks ?? {};
         const streakIds = Object.keys(streaks);
         let maxStreakCurrent = 0;
         streakIds.forEach((id) => {
@@ -120,20 +154,20 @@
             </div>`;
     }
 
-    function buildUsage(container) {
+    function buildUsage(container: HTMLElement): void {
         if (typeof window.DashboardBuild === 'function') {
             window.DashboardBuild(container);
         }
     }
 
-    function buildAchievements(container) {
+    function buildAchievements(container: HTMLElement): void {
         Mdd.linePreset('achievement', { msg: '도전과제 보여줄게요~' });
         renderAchievements(container);
     }
 
-    function renderAchievements(container) {
-        const data = Toolbox.getUserData();
-        const achievements = data.achievements || [];
+    function renderAchievements(container: HTMLElement): void {
+        const data = (Toolbox.getUserData?.() as UserData | undefined) ?? {};
+        const achievements = data.achievements ?? [];
         const all = [...DEFS.achievements];
 
         container.innerHTML = `
@@ -154,14 +188,14 @@
             </div>`;
     }
 
-    function buildStreaks(container) {
+    function buildStreaks(container: HTMLElement): void {
         Mdd.linePreset('daily_start', { msg: '스트릭 현황이에요~' });
         renderStreaks(container);
     }
 
-    function renderStreaks(container) {
-        const data = Toolbox.getUserData();
-        const streaks = data.streaks || {};
+    function renderStreaks(container: HTMLElement): void {
+        const data = (Toolbox.getUserData?.() as UserData | undefined) ?? {};
+        const streaks = data.streaks ?? {};
         const ids = Object.keys(streaks);
         const labels = STREAK_TRACK_LABELS;
 
@@ -171,16 +205,16 @@
                     <h3>🔥 스트릭 (${ids.length} 트랙)</h3>
                     ${ids.length === 0 ? '<p style="font-size:var(--font-size-sm);color:var(--text-secondary);margin:0 0 12px 0;">아직 기록이 없어요. 플래너(React)에서 오늘 완료를 눌러보세요.</p>' : ''}
                     <div class="user-grid">
-                        ${ids.map(id => {
+                        ${ids.map((id) => {
                             const s = streaks[id];
                             if (!s) return '';
                             const label = labels[id] || id;
-                            const safeLabel = Toolbox.escapeHtml(label);
-                            const safeId = Toolbox.escapeHtml(id);
+                            const safeLabel = Toolbox.escapeHtml ? Toolbox.escapeHtml(label) : label;
+                            const safeId = Toolbox.escapeHtml ? Toolbox.escapeHtml(id) : id;
                             return `<div class="user-item" title="${safeId}">
                                 <div class="user-item-icon">🔥</div>
                                 <div class="user-item-title">${safeLabel}</div>
-                                <div class="user-item-desc">현재 ${s.current}일 · 최장 ${s.longest}일 · ${Toolbox.escapeHtml(s.lastActivityDate || '—')}</div>
+                                <div class="user-item-desc">현재 ${s.current ?? 0}일 · 최장 ${s.longest ?? 0}일 · ${Toolbox.escapeHtml ? Toolbox.escapeHtml(s.lastActivityDate || '—') : (s.lastActivityDate || '—')}</div>
                             </div>`;
                         }).join('')}
                     </div>
@@ -188,14 +222,14 @@
             </div>`;
     }
 
-    function buildBadges(container) {
+    function buildBadges(container: HTMLElement): void {
         Mdd.linePreset('tool_run', { msg: '뱃지 보여줄게요~' });
         renderBadges(container);
     }
 
-    function renderBadges(container) {
-        const data = Toolbox.getUserData();
-        const badges = data.badges || [];
+    function renderBadges(container: HTMLElement): void {
+        const data = (Toolbox.getUserData?.() as UserData | undefined) ?? {};
+        const badges = data.badges ?? [];
         const all = [...DEFS.badges];
 
         container.innerHTML = `
@@ -218,16 +252,16 @@
                 </div>
             </div>`;
 
-        container.querySelector('#userReset')?.addEventListener('click', () => {
+        container.querySelector<HTMLButtonElement>('#userReset')?.addEventListener('click', () => {
             if (!confirm('모든 도전과제, 뱃지, 진행도를 초기화합니다. 계속할까요?')) return;
             localStorage.removeItem('toolbox_user_data');
             renderBadges(container);
-            Toolbox.showToast('유저 데이터 초기화 완료');
+            (Toolbox as any).showToast?.('유저 데이터 초기화 완료');
         });
     }
 
     /** 키별 용도 설명 (Toolbox 관련) */
-    const STORAGE_DESC = {
+    const STORAGE_DESC: Record<string, string> = {
         'toolbox_theme': '테마 (라이트/다크)',
         'toolbox_prism_theme': '코드 하이라이트 테마',
         'toolbox-sidebar-groups': '사이드바 접기 상태',
@@ -247,13 +281,14 @@
         'mdd_story_progress': '마스코트 스토리 진행',
     };
 
-    function getStorageStats(storage) {
+    function getStorageStats(storage: Storage): { totalBytes: number; items: StorageItemStat[] } {
         let totalBytes = 0;
-        const items = [];
+        const items: StorageItemStat[] = [];
         try {
             for (let i = 0; i < storage.length; i++) {
                 const key = storage.key(i);
-                const val = storage.getItem(key) || '';
+                if (key == null) continue;
+                const val = storage.getItem(key) ?? '';
                 const bytes = (key.length + val.length) * 2;
                 totalBytes += bytes;
                 items.push({ key, bytes, valLen: val.length });
@@ -263,24 +298,24 @@
         return { totalBytes, items };
     }
 
-    function formatBytes(bytes) {
+    function formatBytes(bytes: number): string {
         if (bytes >= 1048576) return (bytes / 1048576).toFixed(2) + ' MB';
         if (bytes >= 1024) return (bytes / 1024).toFixed(2) + ' KB';
         return bytes + ' B';
     }
 
-    function buildStorage(container) {
+    function buildStorage(container: HTMLElement): void {
         Mdd.linePreset('tool_run', { msg: '저장소 상태 보여줄게요~' });
         renderStorage(container);
     }
 
-    function renderStorage(container) {
+    function renderStorage(container: HTMLElement): void {
         const ls = getStorageStats(localStorage);
         const ss = getStorageStats(sessionStorage);
         const totalBytes = ls.totalBytes + ss.totalBytes;
 
-        function getDesc(key) {
-            if (STORAGE_DESC[key]) return STORAGE_DESC[key];
+        function getDesc(key: string): string {
+            if (STORAGE_DESC[key]) return STORAGE_DESC[key] ?? '';
             if (key.startsWith('toolbox_chatbot_session')) return '챗봇 대화 내용';
             if (key.startsWith('toolbox_')) return 'KarmoLab';
             if (key.startsWith('mdd_')) return '마스코트';
@@ -337,25 +372,29 @@
                 </div>
             </div>`;
 
-        container.querySelector('#storageRefresh')?.addEventListener('click', () => renderStorage(container));
+        container.querySelector<HTMLButtonElement>('#storageRefresh')?.addEventListener('click', () => renderStorage(container));
     }
 
-    function escapeHtml(s) {
+    function escapeHtml(s: string | null | undefined): string {
         if (!s) return '';
-        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 
-    function buildSettings(container) {
+    function buildSettings(container: HTMLElement): void {
         Mdd.linePreset('tool_run', { msg: '설정 바꿀 거야?' });
         renderSettings(container);
     }
 
-    function renderSettings(container) {
-        const theme = Toolbox.getTheme();
-        const prismTheme = Toolbox.getPrismTheme();
-        const prismThemes = Toolbox.getPrismThemes();
-        const bgTheme = Toolbox.getBgTheme();
-        const bgThemes = Toolbox.getBgThemes();
+    function renderSettings(container: HTMLElement): void {
+        const theme = Toolbox.getTheme?.() ?? 'dark';
+        const prismTheme = Toolbox.getPrismTheme?.() ?? '';
+        const prismThemes = Toolbox.getPrismThemes?.() ?? [];
+        const bgTheme = Toolbox.getBgTheme?.() ?? '';
+        const bgThemes = Toolbox.getBgThemes?.() ?? [];
         const apiUI = typeof Gemini !== 'undefined' ? Gemini.buildApiKeyUI('set') : { html: '' };
 
         container.innerHTML = `
@@ -372,13 +411,13 @@
                     <div class="settings-row">
                         <label for="setPrism">코드 하이라이트</label>
                         <select id="setPrism" class="settings-control">
-                            ${prismThemes.map(t => `<option value="${t.id}" ${t.id === prismTheme ? 'selected' : ''}>${t.label}</option>`).join('')}
+                            ${prismThemes.map((t) => `<option value="${t.id}" ${t.id === prismTheme ? 'selected' : ''}>${t.label}</option>`).join('')}
                         </select>
                     </div>
                     <div class="settings-row">
                         <label for="setBgTheme">배경 테마</label>
                         <select id="setBgTheme" class="settings-control">
-                            ${bgThemes.map(t => `<option value="${t.id}" ${t.id === bgTheme ? 'selected' : ''}>${t.label}</option>`).join('')}
+                            ${bgThemes.map((t) => `<option value="${t.id}" ${t.id === bgTheme ? 'selected' : ''}>${t.label}</option>`).join('')}
                         </select>
                     </div>
                     <div class="settings-code-preview">
@@ -405,39 +444,45 @@
                 </div>
             </div>`;
 
-        container.querySelector('#setTheme').addEventListener('change', (e) => {
-            Toolbox.setTheme(e.target.value);
-            Toolbox.showToast('테마: ' + (e.target.value === 'dark' ? '다크' : '라이트'));
+        container.querySelector<HTMLSelectElement>('#setTheme')?.addEventListener('change', (e: Event) => {
+            const target = e.target as HTMLSelectElement | null;
+            if (!target) return;
+            (Toolbox as any).setTheme?.(target.value);
+            (Toolbox as any).showToast?.('테마: ' + (target.value === 'dark' ? '다크' : '라이트'));
         });
 
-        container.querySelector('#setPrism').addEventListener('change', (e) => {
-            Toolbox.setPrismTheme(e.target.value);
+        container.querySelector<HTMLSelectElement>('#setPrism')?.addEventListener('change', (e: Event) => {
+            const target = e.target as HTMLSelectElement | null;
+            if (!target) return;
+            (Toolbox as any).setPrismTheme?.(target.value);
         });
 
-        container.querySelector('#setBgTheme').addEventListener('change', (e) => {
-            Toolbox.setBgTheme(e.target.value);
-            const label = bgThemes.find(t => t.id === e.target.value)?.label || e.target.value;
-            Toolbox.showToast('배경: ' + label);
+        container.querySelector<HTMLSelectElement>('#setBgTheme')?.addEventListener('change', (e: Event) => {
+            const target = e.target as HTMLSelectElement | null;
+            if (!target) return;
+            (Toolbox as any).setBgTheme?.(target.value);
+            const label = bgThemes.find((t) => t.id === target.value)?.label || target.value;
+            (Toolbox as any).showToast?.('배경: ' + label);
         });
 
-        const previewCode = container.querySelector('.settings-code-preview code[class*="language-"]');
+        const previewCode = container.querySelector<HTMLElement>('.settings-code-preview code[class*="language-"]');
         if (previewCode && typeof Prism !== 'undefined') Prism.highlightElement(previewCode);
 
         if (typeof Gemini !== 'undefined') {
             Gemini.buildApiKeyUI('set').init(container);
         }
 
-        container.querySelector('#setResetUser')?.addEventListener('click', () => {
+        container.querySelector<HTMLButtonElement>('#setResetUser')?.addEventListener('click', () => {
             if (!confirm('모든 도전과제, 뱃지, 진행도를 초기화합니다. 계속할까요?')) return;
             localStorage.removeItem('toolbox_user_data');
-            Toolbox.showToast('유저 데이터 초기화 완료');
+            (Toolbox as any).showToast?.('유저 데이터 초기화 완료');
             renderSettings(container);
         });
 
-        container.querySelector('#setResetUsage')?.addEventListener('click', () => {
+        container.querySelector<HTMLButtonElement>('#setResetUsage')?.addEventListener('click', () => {
             if (!confirm('모든 사용량 기록을 삭제합니다. 계속할까요?')) return;
             localStorage.removeItem('toolbox_usage_stats');
-            Toolbox.showToast('사용량 기록 초기화 완료');
+            (Toolbox as any).showToast?.('사용량 기록 초기화 완료');
         });
     }
 

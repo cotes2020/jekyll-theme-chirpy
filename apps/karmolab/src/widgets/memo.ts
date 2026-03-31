@@ -1,6 +1,7 @@
-// @ts-nocheck
-(function() {
-    Mdd.injectCSS('memo', `
+;(function (): void {
+  Mdd.injectCSS(
+    'memo',
+    `
         .memo-container { display:flex; flex:1; min-height:400px; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
         .memo-sidebar { width:250px; background:var(--bg-secondary); border-right:1px solid var(--border); display:flex; flex-direction:column; }
         .memo-sidebar-header { padding:16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
@@ -21,124 +22,212 @@
         .memo-body-input::placeholder { color:var(--text-tertiary); }
         .memo-status-indicator { padding:8px 24px; font-size:var(--font-size-xs); color:var(--text-tertiary); text-align:right; border-top:1px solid var(--border); background:var(--bg-secondary); }
         @media (max-width:768px) { .memo-container { flex-direction:column; min-height:500px; } .memo-sidebar { width:100%; height:200px; flex:none; border-right:none; border-bottom:1px solid var(--border); } }
-    `);
+    `
+  )
 
-    const MemoApp = (() => {
-        function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-        const STORAGE_KEY = 'toolbox_memos';
-        let memos = [];
-        let currentId = null;
+  interface StoredMemo {
+    id: string
+    title: string
+    body: string
+    updatedAt: number
+  }
 
-        function loadMemos() {
-            try { memos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { memos = []; }
+  const MemoApp = (() => {
+    const STORAGE_KEY = 'toolbox_memos'
+    let memos: StoredMemo[] = []
+    let currentId: string | null = null
+
+    function esc(s: unknown): string {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+    }
+
+    function loadMemos(): void {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY)
+        memos = raw ? (JSON.parse(raw) as StoredMemo[]) : []
+      } catch {
+        memos = []
+      }
+    }
+
+    function saveMemos(): void {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(memos))
+    }
+
+    function createMemo(): void {
+      const newMemo: StoredMemo = {
+        id: Date.now().toString(),
+        title: '새 메모',
+        body: '',
+        updatedAt: Date.now()
+      }
+      memos.unshift(newMemo)
+      saveMemos()
+      currentId = newMemo.id
+      render()
+      Mdd.linePreset('success', { mood: 'happy', msg: '새 메모 생성이에요!' })
+    }
+
+    function deleteMemo(id: string): void {
+      if (!confirm('이 메모를 삭제하시겠습니까?')) return
+      memos = memos.filter((m) => m.id !== id)
+      if (currentId === id) currentId = memos.length > 0 ? memos[0].id : null
+      saveMemos()
+      render()
+      Toolbox.showToast?.('삭제되었습니다.')
+      Mdd.linePreset('idle_wake', { msg: '지워버렸어요... 안녕...' })
+    }
+
+    function updateMemo(updates: Partial<Pick<StoredMemo, 'title' | 'body'>>): void {
+      const msg = memos.find((m) => m.id === currentId)
+      if (!msg) return
+      Object.assign(msg, updates)
+      msg.updatedAt = Date.now()
+      saveMemos()
+      renderList()
+      const status = document.getElementById('memoStatus')
+      if (status) status.textContent = '저장됨 (' + new Date().toLocaleTimeString() + ')'
+    }
+
+    let saveTimeout: number | undefined
+
+    function handleInput(): void {
+      const status = document.getElementById('memoStatus')
+      if (status) status.textContent = '저장 중...'
+      if (saveTimeout !== undefined) {
+        window.clearTimeout(saveTimeout)
+      }
+      saveTimeout = window.setTimeout(() => {
+        const titleInput = document.getElementById('memoTitleInput') as HTMLInputElement | null
+        const bodyInput = document.getElementById('memoBodyInput') as HTMLTextAreaElement | null
+        if (!titleInput || !bodyInput) return
+        updateMemo({
+          title: titleInput.value.trim() || '제목 없음',
+          body: bodyInput.value
+        })
+        Mdd.linePreset('success', { mood: 'happy', msg: '기억해둘게요!' })
+      }, 500)
+    }
+
+    function renderList(): void {
+      const list = document.getElementById('memoList')
+      if (!list) return
+      if (memos.length === 0) {
+        list.innerHTML =
+          '<div class="memo-empty-state">메모가 없습니다.<br>새 메모를 추가해보세요.</div>'
+        return
+      }
+      list.innerHTML = ''
+      memos.forEach((m) => {
+        const d = new Date(m.updatedAt)
+        const dateStr =
+          d.toLocaleDateString() +
+          ' ' +
+          d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        const item = document.createElement('div')
+        item.className = 'memo-item' + (m.id === currentId ? ' active' : '')
+        item.onclick = () => {
+          currentId = m.id
+          render()
         }
-        function saveMemos() { localStorage.setItem(STORAGE_KEY, JSON.stringify(memos)); }
+        item.innerHTML = `<div class="memo-item-title">${esc(m.title)}</div><div class="memo-item-date">${dateStr}</div>`
+        list.appendChild(item)
+      })
+    }
 
-        function createMemo() {
-            const newMemo = { id: Date.now().toString(), title: '새 메모', body: '', updatedAt: Date.now() };
-            memos.unshift(newMemo); saveMemos(); currentId = newMemo.id; render();
-            Mdd.linePreset('success', { mood: 'happy', msg: '새 메모 생성이에요!' });
-        }
-
-        function deleteMemo(id) {
-            if (!confirm('이 메모를 삭제하시겠습니까?')) return;
-            memos = memos.filter(m => m.id !== id);
-            if (currentId === id) currentId = memos.length > 0 ? memos[0].id : null;
-            saveMemos(); render();
-            Toolbox.showToast('삭제되었습니다.');
-            Mdd.linePreset('idle_wake', { msg: '지워버렸어요... 안녕...' });
-        }
-
-        function updateMemo(updates) {
-            const msg = memos.find(m => m.id === currentId);
-            if (!msg) return;
-            Object.assign(msg, updates); msg.updatedAt = Date.now(); saveMemos(); renderList();
-            const status = document.getElementById('memoStatus');
-            if(status) status.textContent = '저장됨 (' + new Date().toLocaleTimeString() + ')';
-        }
-
-        let saveTimeout = null;
-        function handleInput() {
-            const status = document.getElementById('memoStatus');
-            if (status) status.textContent = '저장 중...';
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(() => {
-                updateMemo({ title: document.getElementById('memoTitleInput').value.trim() || '제목 없음', body: document.getElementById('memoBodyInput').value });
-                Mdd.linePreset('success', { mood: 'happy', msg: '기억해둘게요!' });
-            }, 500);
-        }
-
-        function renderList() {
-            const list = document.getElementById('memoList');
-            if (!list) return;
-            if (memos.length === 0) { list.innerHTML = '<div class="memo-empty-state">메모가 없습니다.<br>새 메모를 추가해보세요.</div>'; return; }
-            list.innerHTML = '';
-            memos.forEach(m => {
-                const d = new Date(m.updatedAt);
-                const dateStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-                const item = document.createElement('div');
-                item.className = 'memo-item' + (m.id === currentId ? ' active' : '');
-                item.onclick = () => { currentId = m.id; render(); };
-                item.innerHTML = `<div class="memo-item-title">${esc(m.title)}</div><div class="memo-item-date">${dateStr}</div>`;
-                list.appendChild(item);
-            });
-        }
-
-        function renderEditor() {
-            const editor = document.getElementById('memoEditor');
-            if (!editor) return;
-            if (!currentId || memos.length === 0) { editor.innerHTML = '<div style="margin:auto; color:var(--text-tertiary); font-size:var(--font-size-sm);">리스트에서 메모를 선택하거나 새 메모를 만드세요.</div>'; return; }
-            const m = memos.find(x => x.id === currentId);
-            if (!m) return;
-            editor.innerHTML = `
+    function renderEditor(): void {
+      const editor = document.getElementById('memoEditor')
+      if (!editor) return
+      if (!currentId || memos.length === 0) {
+        editor.innerHTML =
+          '<div style="margin:auto; color:var(--text-tertiary); font-size:var(--font-size-sm);">리스트에서 메모를 선택하거나 새 메모를 만드세요.</div>'
+        return
+      }
+      const m = memos.find((x) => x.id === currentId)
+      if (!m) return
+      editor.innerHTML = `
                 <div class="memo-editor-header">
                     <input type="text" id="memoTitleInput" class="memo-title-input" placeholder="메모 제목" value="${esc(m.title)}">
                     <button class="btn btn-danger" id="memoDeleteBtn">삭제</button>
                 </div>
                 <textarea id="memoBodyInput" class="memo-body-input" placeholder="여기에 내용을 입력하세요...">${esc(m.body)}</textarea>
                 <div class="memo-status-indicator" id="memoStatus">자동 저장 대기 중</div>
-            `;
-            document.getElementById('memoTitleInput').oninput = handleInput;
-            document.getElementById('memoBodyInput').oninput = handleInput;
-            document.getElementById('memoDeleteBtn').onclick = () => deleteMemo(m.id);
+            `
+      const titleInput = document.getElementById('memoTitleInput') as HTMLInputElement | null
+      const bodyInput = document.getElementById('memoBodyInput') as HTMLTextAreaElement | null
+      const deleteBtn = document.getElementById('memoDeleteBtn') as HTMLButtonElement | null
+      if (titleInput) titleInput.oninput = handleInput
+      if (bodyInput) bodyInput.oninput = handleInput
+      if (deleteBtn)
+        deleteBtn.onclick = () => {
+          deleteMemo(m.id)
         }
+    }
 
-        function render() { renderList(); renderEditor(); }
+    function render(): void {
+      renderList()
+      renderEditor()
+    }
 
-        function exportMemos() {
-            if (memos.length === 0) { Toolbox.showToast('내보낼 메모가 없습니다.', 'error'); return; }
-            const a = document.createElement('a');
-            a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(memos, null, 2));
-            a.download = `toolbox_memos_${Date.now()}.json`;
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            Toolbox.showToast('메모를 내보냈습니다.');
+    function exportMemos(): void {
+      if (memos.length === 0) {
+        Toolbox.showToast?.('내보낼 메모가 없습니다.', 'error')
+        return
+      }
+      const a = document.createElement('a')
+      a.href =
+        'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(memos, null, 2))
+      a.download = `toolbox_memos_${Date.now()}.json`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      Toolbox.showToast?.('메모를 내보냈습니다.')
+    }
+
+    function importMemos(): void {
+      const input = document.createElement('input')
+      input.type = 'file'
+      input.accept = 'application/json'
+      input.onchange = (e: Event) => {
+        const target = e.target as HTMLInputElement | null
+        const file = target?.files?.[0]
+        if (!file) return
+        const reader = new FileReader()
+        reader.onload = (ev: ProgressEvent<FileReader>) => {
+          try {
+            const text = ev.target?.result
+            const imported = typeof text === 'string' ? JSON.parse(text) : null
+            if (!Array.isArray(imported)) throw new Error('Invalid format')
+            if (
+              confirm(
+                `기존 메모에 덮어씌워집니다. 진행하시겠습니까? (불러올 메모 수: ${imported.length}개)`
+              )
+            ) {
+              memos = imported as StoredMemo[]
+              saveMemos()
+              currentId = memos.length > 0 ? memos[0].id : null
+              render()
+              Toolbox.showToast?.('메모를 불러왔습니다.')
+            }
+          } catch {
+            Toolbox.showToast?.('올바르지 않은 백업 파일입니다.', 'error')
+          }
         }
+        reader.readAsText(file)
+      }
+      input.click()
+    }
 
-        function importMemos() {
-            const input = document.createElement('input'); input.type = 'file'; input.accept = 'application/json';
-            input.onchange = e => {
-                const file = e.target.files[0]; if (!file) return;
-                const reader = new FileReader();
-                reader.onload = e => {
-                    try {
-                        const imported = JSON.parse(e.target.result);
-                        if (!Array.isArray(imported)) throw new Error('Invalid format');
-                        if (confirm(`기존 메모에 덮어씌워집니다. 진행하시겠습니까? (불러올 메모 수: ${imported.length}개)`)) {
-                            memos = imported; saveMemos(); currentId = memos.length > 0 ? memos[0].id : null; render();
-                            Toolbox.showToast('메모를 불러왔습니다.');
-                        }
-                    } catch(err) { Toolbox.showToast('올바르지 않은 백업 파일입니다.', 'error'); }
-                };
-                reader.readAsText(file);
-            };
-            input.click();
-        }
-
-        return {
-            build(container) {
-                loadMemos();
-                if (memos.length > 0 && !currentId) currentId = memos[0].id;
-                container.innerHTML = `
+    return {
+      build(container: HTMLElement): void {
+        loadMemos()
+        if (memos.length > 0 && !currentId) currentId = memos[0].id
+        container.innerHTML = `
                     <div class="memo-container">
                         <div class="memo-sidebar">
                             <div class="memo-sidebar-header">
@@ -153,20 +242,23 @@
                         </div>
                         <div class="memo-editor" id="memoEditor"></div>
                     </div>
-                `;
-                Mdd.linePreset('tool_run', { mood: 'idle', msg: '메모할 거 있어요?' });
-                requestAnimationFrame(() => {
-                    const addBtn = document.getElementById('memoAddBtn'); if(addBtn) addBtn.onclick = createMemo;
-                    const exportBtn = document.getElementById('memoExportBtn'); if(exportBtn) exportBtn.onclick = exportMemos;
-                    const importBtn = document.getElementById('memoImportBtn'); if(importBtn) importBtn.onclick = importMemos;
-                    render();
-                });
-            }
-        };
-    })();
+                `
+        Mdd.linePreset('tool_run', { mood: 'idle', msg: '메모할 거 있어요?' })
+        requestAnimationFrame(() => {
+          const addBtn = document.getElementById('memoAddBtn') as HTMLButtonElement | null
+          if (addBtn) addBtn.onclick = createMemo
+          const exportBtn = document.getElementById('memoExportBtn') as HTMLButtonElement | null
+          if (exportBtn) exportBtn.onclick = exportMemos
+          const importBtn = document.getElementById('memoImportBtn') as HTMLButtonElement | null
+          if (importBtn) importBtn.onclick = importMemos
+          render()
+        })
+      }
+    }
+  })()
 
-    Toolbox.register({
-        ...Toolbox.getLazyWidgetPublicMeta('memo'),
-        tabs: [{ id: 'editor', label: '에디터', build: MemoApp.build }]
-    });
-})();
+  Toolbox.register({
+    ...Toolbox.getLazyWidgetPublicMeta?.('memo'),
+    tabs: [{ id: 'editor', label: '에디터', build: MemoApp.build }]
+  })
+})()
