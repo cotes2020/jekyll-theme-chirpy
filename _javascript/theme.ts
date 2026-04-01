@@ -9,18 +9,18 @@ class Theme {
   static #darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
   static switchable = !document.documentElement.hasAttribute(this.#modeAttr);
 
-  static get DARK() {
+  static get DARK(): string {
     return 'dark';
   }
 
-  static get LIGHT() {
+  static get LIGHT(): string {
     return 'light';
   }
 
   /**
    * @returns {string} Theme mode identifier
    */
-  static get ID() {
+  static get ID(): string {
     return 'theme-mode';
   }
 
@@ -30,30 +30,30 @@ class Theme {
    * @returns {string} The current visual state, either the mode if it exists,
    *                   or the system dark mode state ('dark' or 'light').
    */
-  static get visualState() {
+  static get visualState(): string {
     if (this.#hasMode) {
-      return this.#mode;
+      return this.#mode as string;
     } else {
       return this.#sysDark ? this.DARK : this.LIGHT;
     }
   }
 
-  static get #mode() {
+  static get #mode(): string | null {
     return (
       sessionStorage.getItem(this.#modeKey) ||
       document.documentElement.getAttribute(this.#modeAttr)
     );
   }
 
-  static get #isDarkMode() {
+  static get #isDarkMode(): boolean {
     return this.#mode === this.DARK;
   }
 
-  static get #hasMode() {
+  static get #hasMode(): boolean {
     return this.#mode !== null;
   }
 
-  static get #sysDark() {
+  static get #sysDark(): boolean {
     return this.#darkMedia.matches;
   }
 
@@ -63,7 +63,7 @@ class Theme {
    * @param {string} dark Value for dark mode
    * @returns {Object} Mapped values
    */
-  static getThemeMapper(light, dark) {
+  static getThemeMapper(light: string, dark: string): Record<string, string> {
     return {
       [this.LIGHT]: light,
       [this.DARK]: dark
@@ -73,7 +73,7 @@ class Theme {
   /**
    * Initializes the theme based on system preferences or stored mode
    */
-  static init() {
+  static init(): void {
     if (!this.switchable) {
       return;
     }
@@ -101,7 +101,7 @@ class Theme {
   /**
    * Flips the current theme mode
    */
-  static flip() {
+  static flip(): void {
     if (this.#hasMode) {
       this.#clearMode();
     } else {
@@ -110,17 +110,17 @@ class Theme {
     this.#notify();
   }
 
-  static #setDark() {
+  static #setDark(): void {
     document.documentElement.setAttribute(this.#modeAttr, this.DARK);
     sessionStorage.setItem(this.#modeKey, this.DARK);
   }
 
-  static #setLight() {
+  static #setLight(): void {
     document.documentElement.setAttribute(this.#modeAttr, this.LIGHT);
     sessionStorage.setItem(this.#modeKey, this.LIGHT);
   }
 
-  static #clearMode() {
+  static #clearMode(): void {
     document.documentElement.removeAttribute(this.#modeAttr);
     sessionStorage.removeItem(this.#modeKey);
   }
@@ -128,7 +128,7 @@ class Theme {
   /**
    * Notifies other plugins that the theme mode has changed
    */
-  static #notify() {
+  static #notify(): void {
     window.postMessage({ id: this.ID }, '*');
   }
 }

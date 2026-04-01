@@ -1,5 +1,6 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import fs from 'fs';
 import pkg from './package.json';
@@ -38,7 +39,10 @@ function build(
   filename,
   { src = SRC_DEFAULT, jekyll = false, outputName = null } = {}
 ) {
-  const input = `${src}/${filename}.js`;
+  const tsFile = `${src}/${filename}.ts`;
+  const jsFile = `${src}/${filename}.js`;
+  const input = fs.existsSync(tsFile) ? tsFile : jsFile;
+
   const shouldWatch = hasWatched ? false : true;
 
   if (!hasWatched) {
@@ -54,15 +58,17 @@ function build(
       banner,
       sourcemap: !isProd && !jekyll
     },
-    ...(shouldWatch && { watch: { include: `${SRC_DEFAULT}/**/*.js` } }),
+    ...(shouldWatch && { watch: { include: `${SRC_DEFAULT}/**/*.{js,ts}` } }),
     plugins: [
+      typescript(),
       babel({
         babelHelpers: 'bundled',
         presets: ['@babel/env'],
         plugins: [
           '@babel/plugin-transform-class-properties',
           '@babel/plugin-transform-private-methods'
-        ]
+        ],
+        extensions: ['.js', '.ts']
       }),
       nodeResolve(),
       isProd && terser(),

@@ -2,8 +2,12 @@
  * Reference: https://bootsnipp.com/snippets/featured/link-to-top-page
  */
 
-export function back2top() {
+export function back2top(): void {
   const btn = document.getElementById('back-to-top');
+
+  if (!btn) {
+    return;
+  }
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {

@@ -6,14 +6,16 @@ const $mask = document.getElementById('mask');
 class SidebarUtil {
   static #isExpanded = false;
 
-  static toggle() {
+  static toggle(): void {
     this.#isExpanded = !this.#isExpanded;
     document.body.toggleAttribute(ATTR_DISPLAY, this.#isExpanded);
-    $sidebar.classList.toggle('z-2', this.#isExpanded);
-    $mask.classList.toggle('d-none', !this.#isExpanded);
+    $sidebar?.classList.toggle('z-2', this.#isExpanded);
+    $mask?.classList.toggle('d-none', !this.#isExpanded);
   }
 }
 
-export function initSidebar() {
-  $trigger.onclick = $mask.onclick = () => SidebarUtil.toggle();
+export function initSidebar(): void {
+  if ($trigger && $mask) {
+    $trigger.onclick = $mask.onclick = () => SidebarUtil.toggle();
+  }
 }

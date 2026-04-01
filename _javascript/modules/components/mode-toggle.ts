@@ -2,9 +2,11 @@
  * Add listener for theme mode toggle
  */
 
-const $toggle = document.getElementById('mode-toggle');
+import Theme from '../../theme';
 
-export function modeWatcher() {
+export function modeWatcher(): void {
+  const $toggle = document.getElementById('mode-toggle');
+
   if (!$toggle) {
     return;
   }
