@@ -10,17 +10,21 @@
 
 ### 1️⃣ 패키지 설치
 
-봇을 실행하기 전, 필요한 패키지를 설치해야 합니다. CMD나 터미널에서 다음 명령어를 실행하세요:
+실제 코드는 `apps/discord-bots` 워크스페이스에 있습니다. 이 폴더에서 `npm run start` 등은 그쪽으로 **위임**되므로, **먼저** 아래를 실행하세요:
 
 ```bash
+cd ../discord-bots
 npm install
 ```
 
+(이후 `apps/yawnbot-server`에서 `npm run build` / `npm start`를 써도 됩니다.)
+
 ### 2️⃣ 환경 변수 설정
 
-최상위 폴더에 있는 `.env.template` 파일을 복사하여 `.env` 파일을 생성합니다.
+YawnBot용 `.env`는 **`apps/discord-bots/apps/yawnbot`** 기준입니다. 해당 폴더의 `.env.template`을 복사해 `.env`를 만듭니다.
 
 ```bash
+cd apps/discord-bots/apps/yawnbot
 cp .env.template .env
 ```
 

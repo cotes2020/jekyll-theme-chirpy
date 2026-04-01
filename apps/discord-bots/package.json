@@ -7,9 +7,17 @@
   ],
   "scripts": {
     "build": "npm -ws run build",
+    "build:yawnbot": "npm -w apps/yawnbot run build",
+    "build:unityfree": "npm -w apps/unityfree-bot run build",
     "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/unityfree-bot run dev\"",
+    "dev:yawnbot": "npm -w apps/yawnbot run dev",
+    "dev:unityfree": "npm -w apps/unityfree-bot run dev",
     "start": "concurrently -k \"npm -w apps/yawnbot run start\" \"npm -w apps/unityfree-bot run start\"",
-    "deploy": "concurrently -k \"npm -w apps/yawnbot run deploy\" \"npm -w apps/unityfree-bot run deploy\""
+    "start:yawnbot": "npm -w apps/yawnbot run start",
+    "start:unityfree": "npm -w apps/unityfree-bot run start",
+    "deploy": "concurrently -k \"npm -w apps/yawnbot run deploy\" \"npm -w apps/unityfree-bot run deploy\"",
+    "deploy:yawnbot": "npm -w apps/yawnbot run deploy",
+    "deploy:unityfree": "npm -w apps/unityfree-bot run deploy"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
