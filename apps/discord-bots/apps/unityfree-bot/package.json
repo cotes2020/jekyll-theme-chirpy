@@ -1,0 +1,24 @@
+{
+  "name": "unityfree-bot",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "deploy": "node dist/deploy-commands.js",
+    "dev": "npm run build && concurrently -k \"tsc -w --preserveWatchOutput\" \"node --watch dist/main.js\""
+  },
+  "dependencies": {
+    "@discord-bots/common": "*",
+    "cheerio": "^1.2.0",
+    "discord.js": "^14.26.0",
+    "dotenv": "^16.6.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "concurrently": "^9.2.1",
+    "typescript": "^6.0.2"
+  }
+}
+
