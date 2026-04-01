@@ -1,3 +1,5 @@
+import { tocbot } from '../../globals';
+
 export class TocDesktop {
   /* Tocbot options Ref: https://github.com/tscanlin/tocbot#usage */
   static options = {
@@ -10,11 +12,11 @@ export class TocDesktop {
     headingsOffset: 16 * 2 // 2rem
   };
 
-  static refresh() {
+  static refresh(): void {
     tocbot.refresh(this.options);
   }
 
-  static init() {
+  static init(): void {
     tocbot.init(this.options);
   }
 }

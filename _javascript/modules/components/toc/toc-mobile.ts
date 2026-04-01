@@ -2,6 +2,8 @@
  * TOC button, topbar and popup for mobile devices
  */
 
+import { tocbot } from '../../globals';
+
 const $tocBar = document.getElementById('toc-bar');
 const $soloTrigger = document.getElementById('toc-solo-trigger');
 const $triggers = document.getElementsByClassName('toc-trigger');
@@ -26,7 +28,8 @@ export class TocMobile {
     headingsOffset: this.#barHeight
   };
 
-  static initBar() {
+  static initBar(): void {
+    if (!$tocBar || !$soloTrigger) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -40,14 +43,14 @@ export class TocMobile {
     this.#invisible = false;
   }
 
-  static listenAnchors() {
+  static listenAnchors(): void {
     const $anchors = document.getElementsByClassName('toc-link');
     [...$anchors].forEach((anchor) => {
-      anchor.onclick = () => this.hidePopup();
+      (anchor as HTMLElement).onclick = () => this.hidePopup();
     });
   }
 
-  static refresh() {
+  static refresh(): void {
     if (this.#invisible) {
       this.initComponents();
     }
@@ -55,25 +58,27 @@ export class TocMobile {
     this.listenAnchors();
   }
 
-  static get popupOpened() {
-    return $popup.open;
+  static get popupOpened(): boolean {
+    return ($popup as HTMLDialogElement | null)?.open ?? false;
   }
 
-  static showPopup() {
+  static showPopup(): void {
+    if (!$popup) return;
     this.lockScroll(true);
-    $popup.showModal();
-    const activeItem = $popup.querySelector('li.is-active-li');
-    activeItem.scrollIntoView({ block: 'center' });
+    ($popup as HTMLDialogElement).showModal();
+    const activeItem = $popup.querySelector<HTMLElement>('li.is-active-li');
+    activeItem?.scrollIntoView({ block: 'center' });
   }
 
-  static hidePopup() {
+  static hidePopup(): void {
+    if (!$popup) return;
     $popup.toggleAttribute(CLOSING);
 
     $popup.addEventListener(
       'animationend',
       () => {
         $popup.toggleAttribute(CLOSING);
-        $popup.close();
+        ($popup as HTMLDialogElement).close();
       },
       { once: true }
     );
@@ -81,17 +86,17 @@ export class TocMobile {
     this.lockScroll(false);
   }
 
-  static lockScroll(enable) {
+  static lockScroll(enable: boolean): void {
     document.documentElement.classList.toggle(SCROLL_LOCK, enable);
     document.body.classList.toggle(SCROLL_LOCK, enable);
   }
 
-  static clickBackdrop(event) {
-    if ($popup.hasAttribute(CLOSING)) {
+  static clickBackdrop(event: MouseEvent): void {
+    if (!$popup || $popup.hasAttribute(CLOSING)) {
       return;
     }
 
-    const rect = event.target.getBoundingClientRect();
+    const rect = ($popup as HTMLElement).getBoundingClientRect();
     if (
       event.clientX < rect.left ||
       event.clientX > rect.right ||
@@ -102,22 +107,24 @@ export class TocMobile {
     }
   }
 
-  static initComponents() {
+  static initComponents(): void {
     this.initBar();
 
     [...$triggers].forEach((trigger) => {
-      trigger.onclick = () => this.showPopup();
+      (trigger as HTMLElement).onclick = () => this.showPopup();
     });
 
-    $popup.onclick = (e) => this.clickBackdrop(e);
-    $btnClose.onclick = () => this.hidePopup();
-    $popup.oncancel = (e) => {
+    if (!$popup || !$btnClose) return;
+
+    $popup.onclick = (e) => this.clickBackdrop(e as MouseEvent);
+    ($btnClose as HTMLElement).onclick = () => this.hidePopup();
+    ($popup as HTMLDialogElement).oncancel = (e) => {
       e.preventDefault();
       this.hidePopup();
     };
   }
 
-  static init() {
+  static init(): void {
     tocbot.init(this.options);
     this.listenAnchors();
     this.initComponents();

@@ -8,17 +8,22 @@ const childPrefix = 'l_';
 const parentPrefix = 'h_';
 const children = document.getElementsByClassName('collapse');
 
-export function categoryCollapse() {
+export function categoryCollapse(): void {
   [...children].forEach((elem) => {
+    if (!(elem instanceof HTMLElement)) return;
     const id = parentPrefix + elem.id.substring(childPrefix.length);
     const parent = document.getElementById(id);
 
     // collapse sub-categories
     elem.addEventListener('hide.bs.collapse', () => {
       if (parent) {
-        parent.querySelector('.far.fa-folder-open').className =
-          'far fa-folder fa-fw';
-        parent.querySelector('.fas.fa-angle-down').classList.add('rotate');
+        parent.querySelector<HTMLElement>('.far.fa-folder-open')?.setAttribute(
+          'class',
+          'far fa-folder fa-fw'
+        );
+        parent
+          .querySelector<HTMLElement>('.fas.fa-angle-down')
+          ?.classList.add('rotate');
         parent.classList.remove('hide-border-bottom');
       }
     });
@@ -26,9 +31,13 @@ export function categoryCollapse() {
     // expand sub-categories
     elem.addEventListener('show.bs.collapse', () => {
       if (parent) {
-        parent.querySelector('.far.fa-folder').className =
-          'far fa-folder-open fa-fw';
-        parent.querySelector('.fas.fa-angle-down').classList.remove('rotate');
+        parent.querySelector<HTMLElement>('.far.fa-folder')?.setAttribute(
+          'class',
+          'far fa-folder-open fa-fw'
+        );
+        parent
+          .querySelector<HTMLElement>('.fas.fa-angle-down')
+          ?.classList.remove('rotate');
         parent.classList.add('hide-border-bottom');
       }
     });

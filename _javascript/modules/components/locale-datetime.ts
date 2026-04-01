@@ -4,6 +4,8 @@
  * Requirement: <https://github.com/iamkun/dayjs>
  */
 
+import { dayjs, dayjsLocalizedFormatPlugin } from '../globals';
+
 /* A tool for locale datetime */
 class LocaleHelper {
   static get attrTimestamp() {
@@ -15,21 +17,22 @@ class LocaleHelper {
   }
 
   static get locale() {
-    return document.documentElement.getAttribute('lang').substring(0, 2);
+    const lang = document.documentElement.getAttribute('lang') ?? 'en';
+    return lang.substring(0, 2);
   }
 
-  static getTimestamp(elem) {
+  static getTimestamp(elem: Element): number {
     return Number(elem.getAttribute(this.attrTimestamp)); // unix timestamp
   }
 
-  static getDateFormat(elem) {
-    return elem.getAttribute(this.attrDateFormat);
+  static getDateFormat(elem: Element): string | undefined {
+    return elem.getAttribute(this.attrDateFormat) ?? undefined;
   }
 }
 
-export function initLocaleDatetime() {
+export function initLocaleDatetime(): void {
   dayjs.locale(LocaleHelper.locale);
-  dayjs.extend(window.dayjs_plugin_localizedFormat);
+  dayjs.extend(dayjsLocalizedFormatPlugin());
 
   document
     .querySelectorAll(`[${LocaleHelper.attrTimestamp}]`)

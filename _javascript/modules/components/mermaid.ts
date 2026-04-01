@@ -2,16 +2,20 @@
  * Mermaid-js loader
  */
 
+import { mermaid, Theme } from '../globals';
+
 const MERMAID = 'mermaid';
 const themeMapper = Theme.getThemeMapper('default', 'dark');
 
-function refreshTheme(event) {
+function refreshTheme(event: MessageEvent): void {
   if (event.source === window && event.data && event.data.id === Theme.ID) {
     // Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344>
     const mermaidList = document.getElementsByClassName(MERMAID);
 
     [...mermaidList].forEach((elem) => {
-      const svgCode = elem.previousSibling.children.item(0).textContent;
+      const prev = elem.previousSibling;
+      if (!(prev instanceof HTMLElement)) return;
+      const svgCode = prev.children.item(0)?.textContent ?? '';
       elem.textContent = svgCode;
       elem.removeAttribute('data-processed');
     });
@@ -23,19 +27,20 @@ function refreshTheme(event) {
   }
 }
 
-function setNode(elem) {
-  const svgCode = elem.textContent;
+function setNode(elem: Element): void {
+  const svgCode = elem.textContent ?? '';
   const backup = elem.parentElement;
+  if (!backup) return;
   backup.classList.add('d-none');
   // Create mermaid node
-  const mermaid = document.createElement('pre');
-  mermaid.classList.add(MERMAID);
+  const mermaidNode = document.createElement('pre');
+  mermaidNode.classList.add(MERMAID);
   const text = document.createTextNode(svgCode);
-  mermaid.appendChild(text);
-  backup.after(mermaid);
+  mermaidNode.appendChild(text);
+  backup.after(mermaidNode);
 }
 
-export function loadMermaid() {
+export function loadMermaid(): void {
   if (
     typeof mermaid === 'undefined' ||
     typeof mermaid.initialize !== 'function'
@@ -45,7 +50,7 @@ export function loadMermaid() {
 
   const initTheme = themeMapper[Theme.visualState];
 
-  let mermaidConf = {
+  const mermaidConf = {
     theme: initTheme
   };
 

@@ -1,9 +1,9 @@
 import { TocMobile as mobile } from './toc/toc-mobile';
 import { TocDesktop as desktop } from './toc/toc-desktop';
 
-const desktopMode = matchMedia('(min-width: 1200px)');
+const desktopMode = window.matchMedia('(min-width: 1200px)');
 
-function refresh(e) {
+function refresh(e: MediaQueryListEvent): void {
   if (e.matches) {
     if (mobile.popupOpened) {
       mobile.hidePopup();
@@ -15,7 +15,7 @@ function refresh(e) {
   }
 }
 
-function init() {
+function init(): void {
   if (document.querySelector('main>article[data-toc="true"]') === null) {
     return;
   }
@@ -28,7 +28,7 @@ function init() {
   }
 
   const $tocWrapper = document.getElementById('toc-wrapper');
-  $tocWrapper.classList.remove('invisible');
+  $tocWrapper?.classList.remove('invisible');
 
   desktopMode.onchange = refresh;
 }

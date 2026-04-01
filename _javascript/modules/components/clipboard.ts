@@ -6,6 +6,7 @@
  */
 
 import Tooltip from 'bootstrap/js/src/tooltip';
+import { ClipboardJS } from '../globals';
 
 const clipboardSelector = '.code-header>button';
 
@@ -17,9 +18,9 @@ const ATTR_TITLE_SUCCEED = 'data-title-succeed';
 const ATTR_TITLE_ORIGIN = 'data-bs-original-title';
 const TIMEOUT = 2000; // in milliseconds
 
-function isLocked(node) {
+function isLocked(node: Element): boolean {
   if (node.hasAttribute(ATTR_TIMEOUT)) {
-    let timeout = node.getAttribute(ATTR_TIMEOUT);
+    const timeout = node.getAttribute(ATTR_TIMEOUT);
     if (Number(timeout) > Date.now()) {
       return true;
     }
@@ -28,37 +29,41 @@ function isLocked(node) {
   return false;
 }
 
-function lock(node) {
-  node.setAttribute(ATTR_TIMEOUT, Date.now() + TIMEOUT);
+function lock(node: Element): void {
+  node.setAttribute(ATTR_TIMEOUT, String(Date.now() + TIMEOUT));
 }
 
-function unlock(node) {
+function unlock(node: Element): void {
   node.removeAttribute(ATTR_TIMEOUT);
 }
 
-function showTooltip(btn) {
+function showTooltip(btn: Element): void {
   const succeedTitle = btn.getAttribute(ATTR_TITLE_SUCCEED);
-  btn.setAttribute(ATTR_TITLE_ORIGIN, succeedTitle);
-  Tooltip.getInstance(btn).show();
+  if (succeedTitle) {
+    btn.setAttribute(ATTR_TITLE_ORIGIN, succeedTitle);
+  }
+  Tooltip.getOrCreateInstance(btn).show();
 }
 
-function hideTooltip(btn) {
-  Tooltip.getInstance(btn).hide();
+function hideTooltip(btn: Element): void {
+  Tooltip.getOrCreateInstance(btn).hide();
   btn.removeAttribute(ATTR_TITLE_ORIGIN);
 }
 
-function setSuccessIcon(btn) {
-  const icon = btn.children[0];
+function setSuccessIcon(btn: HTMLElement): void {
+  const icon = btn.children.item(0);
+  if (!icon) return;
   icon.setAttribute('class', ICON_SUCCESS);
 }
 
-function resumeIcon(btn) {
-  const icon = btn.children[0];
+function resumeIcon(btn: HTMLElement): void {
+  const icon = btn.children.item(0);
+  if (!icon) return;
   icon.setAttribute('class', ICON_DEFAULT);
 }
 
-function setCodeClipboard() {
-  const clipboardList = document.querySelectorAll(clipboardSelector);
+function setCodeClipboard(): void {
+  const clipboardList = document.querySelectorAll<HTMLElement>(clipboardSelector);
 
   if (clipboardList.length === 0) {
     return;
@@ -67,8 +72,13 @@ function setCodeClipboard() {
   // Initial the clipboard.js object
   const clipboard = new ClipboardJS(clipboardSelector, {
     target: (trigger) => {
-      const codeBlock = trigger.parentNode.nextElementSibling;
-      return codeBlock.querySelector('code .rouge-code');
+      const parent = trigger.parentElement;
+      const codeBlock = parent?.nextElementSibling;
+      const code = codeBlock?.querySelector<HTMLElement>('code .rouge-code');
+      if (!code) {
+        throw new Error('Cannot find code element for clipboard copy');
+      }
+      return code;
     }
   });
 
@@ -80,7 +90,7 @@ function setCodeClipboard() {
   );
 
   clipboard.on('success', (e) => {
-    const trigger = e.trigger;
+    const trigger = e.trigger as HTMLElement;
 
     e.clearSelection();
 
@@ -100,7 +110,7 @@ function setCodeClipboard() {
   });
 }
 
-function setLinkClipboard() {
+function setLinkClipboard(): void {
   const btnCopyLink = document.getElementById('copy-link');
 
   if (btnCopyLink === null) {
@@ -108,7 +118,8 @@ function setLinkClipboard() {
   }
 
   btnCopyLink.addEventListener('click', (e) => {
-    const target = e.target;
+    const target = e.currentTarget;
+    if (!(target instanceof HTMLElement)) return;
 
     if (isLocked(target)) {
       return;
@@ -120,24 +131,32 @@ function setLinkClipboard() {
       const succeedTitle = target.getAttribute(ATTR_TITLE_SUCCEED);
 
       // Switch tooltip title
-      target.setAttribute(ATTR_TITLE_ORIGIN, succeedTitle);
-      Tooltip.getInstance(target).show();
+      if (succeedTitle) {
+        target.setAttribute(ATTR_TITLE_ORIGIN, succeedTitle);
+      }
+      Tooltip.getOrCreateInstance(target).show();
 
       lock(target);
 
       setTimeout(() => {
-        target.setAttribute(ATTR_TITLE_ORIGIN, defaultTitle);
+        if (defaultTitle) {
+          target.setAttribute(ATTR_TITLE_ORIGIN, defaultTitle);
+        } else {
+          target.removeAttribute(ATTR_TITLE_ORIGIN);
+        }
         unlock(target);
       }, TIMEOUT);
     });
   });
 
   btnCopyLink.addEventListener('mouseleave', (e) => {
-    Tooltip.getInstance(e.target).hide();
+    const target = e.currentTarget;
+    if (!(target instanceof HTMLElement)) return;
+    Tooltip.getOrCreateInstance(target).hide();
   });
 }
 
-export function initClipboard() {
+export function initClipboard(): void {
   setCodeClipboard();
   setLinkClipboard();
 }

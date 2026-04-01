@@ -4,11 +4,16 @@
  * Dependencies: https://github.com/biati-digital/glightbox
  */
 
+import { GLightbox, type GLightboxInstance, Theme } from '../globals';
+
 const lightImages = '.popup:not(.dark)';
 const darkImages = '.popup:not(.light)';
 let selector = lightImages;
 
-function swapImages(current, reverse) {
+function swapImages(
+  current: GLightboxInstance,
+  reverse: GLightboxInstance | null
+): [GLightboxInstance, GLightboxInstance] {
   if (selector === lightImages) {
     selector = darkImages;
   } else {
@@ -22,7 +27,7 @@ function swapImages(current, reverse) {
   return [reverse, current];
 }
 
-export function imgPopup() {
+export function imgPopup(): void {
   if (document.querySelector('.popup') === null) {
     return;
   }
@@ -36,10 +41,10 @@ export function imgPopup() {
     selector = darkImages;
   }
 
-  let current = GLightbox({ selector: `${selector}` });
+  let current: GLightboxInstance = GLightbox({ selector: `${selector}` });
 
   if (hasDualImages && Theme.switchable) {
-    let reverse = null;
+    let reverse: GLightboxInstance | null = null;
 
     window.addEventListener('message', (event) => {
       if (event.source === window && event.data && event.data.id === Theme.ID) {

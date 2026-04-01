@@ -10,11 +10,11 @@ const cover = {
   BLUR: 'blur'
 };
 
-function removeCover(clzss) {
-  this.parentElement.classList.remove(clzss);
+function removeCover(this: HTMLImageElement, clzss: string): void {
+  this.parentElement?.classList.remove(clzss);
 }
 
-function handleImage() {
+function handleImage(this: HTMLImageElement): void {
   if (!this.complete) {
     return;
   }
@@ -29,14 +29,15 @@ function handleImage() {
 /**
  * Switches the LQIP with the real image URL.
  */
-function switchLQIP() {
+function switchLQIP(this: HTMLImageElement): void {
   const src = this.getAttribute(ATTR_DATA_SRC);
+  if (!src) return;
   this.setAttribute('src', encodeURI(src));
   this.removeAttribute(ATTR_DATA_SRC);
 }
 
-export function loadImg() {
-  const images = document.querySelectorAll('article img');
+export function loadImg(): void {
+  const images = document.querySelectorAll<HTMLImageElement>('article img');
 
   if (images.length === 0) {
     return;
@@ -47,7 +48,9 @@ export function loadImg() {
   });
 
   // Images loaded from the browser cache do not trigger the 'load' event
-  document.querySelectorAll('article img[loading="lazy"]').forEach((img) => {
+  document
+    .querySelectorAll<HTMLImageElement>('article img[loading="lazy"]')
+    .forEach((img) => {
     if (img.complete) {
       removeCover.call(img, cover.SHIMMER);
     }
@@ -61,6 +64,7 @@ export function loadImg() {
 
   if (lqips.length) {
     lqips.forEach((lqip) => {
+      if (!(lqip instanceof HTMLImageElement)) return;
       switchLQIP.call(lqip);
     });
   }
