@@ -1,115 +1,58 @@
-import { app, BrowserWindow, Menu, Tray, nativeImage } from "electron";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { chatFeedKindFromEnv, createChatFeed } from "./chat/createChatFeed";
+import type { ChatLine } from "./chat/types";
 
-import { chatFeedKindFromEnv, createChatFeed } from "./chat/createChatFeed.js";
-import type { ChatFeedSource } from "./chat/types.js";
+const MAX_LINES = 40;
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-let mainWindow: BrowserWindow | null = null;
-let tray: Tray | null = null;
-let activeFeed: ChatFeedSource | null = null;
-let unsubscribeFeed: (() => void) | null = null;
-
-function resolveRendererHtml(): string {
-  return path.join(__dirname, "renderer", "index.html");
-}
-
-function createTray(): void {
-  const icon = nativeImage.createFromDataURL(
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
-  );
-  tray = new Tray(icon);
-  tray.setToolTip("chat-overlay");
-  tray.setContextMenu(
-    Menu.buildFromTemplate([
-      {
-        label: "종료",
-        click: (): void => {
-          app.quit();
-        }
-      }
-    ])
-  );
-}
-
-function attachFeed(win: BrowserWindow): void {
-  if (unsubscribeFeed) {
-    unsubscribeFeed();
-    unsubscribeFeed = null;
+function authorHue(author: string): number {
+  let h = 0;
+  for (let i = 0; i < author.length; i += 1) {
+    h = (h * 31 + author.charCodeAt(i)) >>> 0;
   }
-  activeFeed?.destroy?.();
-  activeFeed = null;
+  return h % 360;
+}
 
-  const kind = chatFeedKindFromEnv();
-  activeFeed = createChatFeed(kind);
-  unsubscribeFeed = activeFeed.subscribe((line) => {
-    win.webContents.send("chat-line", line);
+function el<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  className?: string,
+  text?: string
+): HTMLElementTagNameMap[K] {
+  const node = document.createElement(tag);
+  if (className) {
+    node.className = className;
+  }
+  if (text !== undefined) {
+    node.textContent = text;
+  }
+  return node;
+}
+
+function appendLine(container: HTMLElement, line: ChatLine): void {
+  const row = el("div", "line line--enter");
+  row.style.setProperty("--author-hue", String(authorHue(line.author)));
+  const author = el("span", "author", line.author);
+  const text = el("span", "text", line.text);
+  row.appendChild(author);
+  row.appendChild(text);
+  container.appendChild(row);
+  while (container.children.length > MAX_LINES) {
+    container.removeChild(container.firstChild!);
+  }
+  requestAnimationFrame(() => {
+    row.classList.add("line--visible");
   });
 }
 
-function createWindow(): void {
-  mainWindow = new BrowserWindow({
-    width: 420,
-    height: 640,
-    x: 40,
-    y: 40,
-    show: true,
-    transparent: true,
-    frame: false,
-    hasShadow: false,
-    alwaysOnTop: true,
-    skipTaskbar: true,
-    resizable: true,
-    webPreferences: {
-      preload: path.join(__dirname, "preload.cjs"),
-      contextIsolation: true,
-      nodeIntegration: false
-    }
-  });
-
-  mainWindow.setMenuBarVisibility(false);
-  mainWindow.setAlwaysOnTop(true, "screen-saver");
-  mainWindow.setIgnoreMouseEvents(true);
-
-  void mainWindow.loadFile(resolveRendererHtml());
-
-  mainWindow.webContents.once("did-finish-load", () => {
-    if (mainWindow) {
-      attachFeed(mainWindow);
-    }
-  });
-
-  mainWindow.on("closed", () => {
-    mainWindow = null;
-  });
+const log = document.getElementById("log");
+if (!log) {
+  throw new Error("#log not found");
 }
 
-app.whenReady().then(() => {
-  createTray();
-  createWindow();
-
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
+const feed = createChatFeed(chatFeedKindFromEnv());
+const unsub = feed.subscribe((line) => {
+  appendLine(log, line);
 });
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
-app.on("before-quit", () => {
-  if (unsubscribeFeed) {
-    unsubscribeFeed();
-    unsubscribeFeed = null;
-  }
-  activeFeed?.destroy?.();
-  activeFeed = null;
-  tray?.destroy();
-  tray = null;
+window.addEventListener("beforeunload", () => {
+  unsub();
+  feed.destroy?.();
 });

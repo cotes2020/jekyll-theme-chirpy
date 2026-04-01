@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { ChzzkChatFeed, CHZZK_VIEWER_CHAT_CONSTRAINT_KO } from "./chzzkChatFeed.js";
+import { ChzzkChatFeed, CHZZK_VIEWER_CHAT_CONSTRAINT_KO } from "./chzzkChatFeed";
 
 describe("ChzzkChatFeed", () => {
   it("구독 시 안내 문구 한 줄을 내보낸다", () => {

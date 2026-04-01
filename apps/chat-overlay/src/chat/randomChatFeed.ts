@@ -1,6 +1,13 @@
-import { randomBytes } from "node:crypto";
+import type { ChatFeedSource, ChatLine, Unsubscribe } from "./types";
 
-import type { ChatFeedSource, ChatLine, Unsubscribe } from "./types.js";
+const SAMPLE_AUTHORS = [
+  "viewer1",
+  "다람쥐",
+  "stream_fan",
+  "guest",
+  "mod",
+  "봇테스트"
+];
 
 const SAMPLE_PARTS = [
   "안녕하세요",
@@ -18,7 +25,9 @@ const SAMPLE_PARTS = [
 ];
 
 function randomId(): string {
-  return randomBytes(8).toString("hex");
+  const buf = new Uint8Array(8);
+  crypto.getRandomValues(buf);
+  return Array.from(buf, (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 function randomSample(): string {
@@ -30,7 +39,7 @@ function randomSample(): string {
   return parts.join(" ");
 }
 
-/** MVP: 주기적으로 무작위 문자열을 채팅처럼 내보냄. */
+/** MVP: 주기적으로 무작위 문자열을 채팅처럼보냄. */
 export class RandomChatFeed implements ChatFeedSource {
   private timer: ReturnType<typeof setInterval> | undefined;
 
@@ -38,9 +47,11 @@ export class RandomChatFeed implements ChatFeedSource {
 
   subscribe(onLine: (line: ChatLine) => void): Unsubscribe {
     const tick = (): void => {
+      const author =
+        SAMPLE_AUTHORS[Math.floor(Math.random() * SAMPLE_AUTHORS.length)]!;
       onLine({
         id: randomId(),
-        author: "mock",
+        author,
         text: randomSample(),
         ts: Date.now()
       });

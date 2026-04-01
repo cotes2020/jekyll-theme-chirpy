@@ -1,21 +1,28 @@
 {
   "name": "chat-overlay",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Windows transparent always-on-top chat overlay (MVP)",
-  "main": "dist/main.js",
+  "description": "Windows transparent always-on-top chat overlay (Tauri)",
   "type": "module",
   "scripts": {
-    "build": "tsc && node scripts/copy-static.mjs",
-    "start": "npm run build && electron .",
-    "dev": "npm run build && electron .",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "icons": "tauri icon icon.png",
     "test": "vitest run",
     "test:watch": "vitest"
   },
+  "dependencies": {
+    "@tauri-apps/api": "^2.2.0"
+  },
   "devDependencies": {
+    "@tauri-apps/cli": "^2.2.0",
     "@types/node": "^22.10.2",
-    "electron": "^33.2.1",
     "typescript": "^5.7.2",
+    "vite": "^6.0.3",
     "vitest": "^2.1.8"
   }
 }

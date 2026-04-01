@@ -18,6 +18,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.drag-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  z-index: 2;
+}
+
 .log {
   display: flex;
   flex-direction: column;
@@ -42,12 +51,31 @@ body {
   font-size: 14px;
   line-height: 1.35;
   word-break: break-word;
+  overflow-wrap: anywhere;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.22s ease-out,
+    transform 0.22s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.line--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .author {
   flex: 0 0 auto;
   font-weight: 600;
-  color: rgba(180, 220, 255, 0.98);
+  color: hsl(var(--author-hue, 210) 62% 72%);
 }
 
 .text {

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { RandomChatFeed } from "./randomChatFeed.js";
+import { RandomChatFeed } from "./randomChatFeed";
 
 describe("RandomChatFeed", () => {
   afterEach(() => {

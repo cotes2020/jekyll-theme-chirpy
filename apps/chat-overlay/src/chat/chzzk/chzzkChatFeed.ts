@@ -1,11 +1,11 @@
-import type { ChatFeedSource, ChatLine, Unsubscribe } from "../types.js";
+import type { ChatFeedSource, ChatLine, Unsubscribe } from "../types";
 
 /**
  * 치지직(Chzzk) 공식 오픈 API는 방송·채널 연동 중심이며,
  * 시청자 채팅 실시간 수신용 공개 REST/WebSocket 스펙은 문서상 제공되지 않는 경우가 많습니다.
  * (최신 내용은 https://chzzk.gitbook.io/ 등 공식 GitBook 확인.)
  *
- * 이 구현은 공식으로 허용된 범위를 넘지 않도록, 채팅 대신 안내 메시지만 한 번 내보냅니다.
+ * 이 구현은 공식으로 허용된 범위를 넘지 않도록, 채팅 대신 안내 메시지만 한 번보냅니다.
  * 실시간 채팅이 필요하면 방송자용 도구·공식 위젯·또는 플랫폼이 허용하는 경로를 사용해야 합니다.
  */
 export const CHZZK_VIEWER_CHAT_CONSTRAINT_KO =
