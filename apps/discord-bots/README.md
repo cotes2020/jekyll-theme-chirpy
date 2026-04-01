@@ -4,7 +4,7 @@
 
 ## 앱 목록
 
-- `apps/yawnbot`: 게임/슬래시 커맨드 봇 (기존 YawnBot)
+- `apps/yawnbot`: 게임/슬래시 커맨드 봇 (기존 YawnBot) — 앱별 요약은 [`apps/yawnbot/README.md`](apps/yawnbot/README.md)
 - `apps/unityfree-bot`: Unity 무료 에셋 알림 봇 (별도 토큰/프로세스)
 
 ## 설치
