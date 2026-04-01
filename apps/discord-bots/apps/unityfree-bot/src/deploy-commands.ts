@@ -1,6 +1,9 @@
-import 'dotenv/config';
+import path from 'path';
+import { config } from 'dotenv';
 import { SlashCommandBuilder } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
+
+config({ path: path.join(__dirname, '..', '.env') });
 
 const commands = [
   new SlashCommandBuilder()

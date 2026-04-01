@@ -1,7 +1,11 @@
-import 'dotenv/config';
+import path from 'path';
+import { config } from 'dotenv';
 import { Client, EmbedBuilder, GatewayIntentBits } from 'discord.js';
 import type { UnityFreeAssetInfo } from './unity/fetchUnityFreeAssetInfo';
 import { fetchUnityFreeAssetInfo } from './unity/fetchUnityFreeAssetInfo';
+
+// cwd와 무관하게 이 패키지 루트의 .env만 사용 (yawnbot/.env와 분리)
+config({ path: path.join(__dirname, '..', '.env') });
 
 const TOKEN = process.env.UNITYFREE_DISCORD_TOKEN;
 const TARGET_CHANNEL_ID = process.env.UNITYFREE_TARGET_CHANNEL_ID;

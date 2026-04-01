@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm -ws run build",
+    "build": "npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build && npm -w apps/unityfree-bot run build",
     "build:yawnbot": "npm -w apps/yawnbot run build",
     "build:unityfree": "npm -w apps/unityfree-bot run build",
     "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/unityfree-bot run dev\"",

@@ -1,9 +1,12 @@
 /**
  * 슬래시 커맨드 등록 (Discord API에 등록하는 스크립트)
  */
-import 'dotenv/config';
+import path from 'path';
+import { config } from 'dotenv';
 import { SlashCommandBuilder } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
+
+config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const commands = [
   new SlashCommandBuilder().setName('강화').setDescription('검을 강화합니다. (확률 존재)'),

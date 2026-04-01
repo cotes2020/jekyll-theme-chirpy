@@ -2,7 +2,8 @@
  * YawnBot — Node.js Discord Bot (game bot)
  * 기존 apps/yawnbot-server/src/index.ts 기반
  */
-import 'dotenv/config';
+import path from 'path';
+import { config } from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
@@ -15,6 +16,8 @@ import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
 import { dispatchSlashCommand } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
+
+config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
