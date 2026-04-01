@@ -1,0 +1,14 @@
+{
+  "name": "@discord-bots/common",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "discord.js": "^14.26.0"
+  }
+}
+

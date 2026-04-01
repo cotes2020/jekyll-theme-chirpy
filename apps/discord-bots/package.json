@@ -1,0 +1,19 @@
+{
+  "name": "discord-bots",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm -ws run build",
+    "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/unityfree-bot run dev\"",
+    "start": "concurrently -k \"npm -w apps/yawnbot run start\" \"npm -w apps/unityfree-bot run start\"",
+    "deploy": "concurrently -k \"npm -w apps/yawnbot run deploy\" \"npm -w apps/unityfree-bot run deploy\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^6.0.2"
+  }
+}
+
