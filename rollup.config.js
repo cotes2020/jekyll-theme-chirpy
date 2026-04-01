@@ -7,7 +7,9 @@ import pkg from './package.json';
 
 const SRC_DEFAULT = '_javascript';
 const SRC_PWA = `${SRC_DEFAULT}/pwa`;
+const SRC_GRAPH = `${SRC_DEFAULT}/graph-view`;
 const DIST = 'assets/js/dist';
+const GRAPH_DIST = 'assets/js/graph-view';
 
 const banner = `/*!
  * ${pkg.name} v${pkg.version} | © ${pkg.since} ${pkg.author} | ${pkg.license} Licensed | ${pkg.homepage}
@@ -77,6 +79,38 @@ function build(
   };
 }
 
+/**
+ * Post graph tab: ES module bundle, d3 loaded from CDN (external URL).
+ */
+function buildPostGraph() {
+  return {
+    input: `${SRC_GRAPH}/bootstrap-post-graph.ts`,
+    output: {
+      file: `${GRAPH_DIST}/bootstrap-post-graph.js`,
+      format: 'es',
+      sourcemap: !isProd
+    },
+    watch: {
+      include: `${SRC_GRAPH}/**/*.{ts,js}`
+    },
+    plugins: [
+      typescript(),
+      babel({
+        babelHelpers: 'bundled',
+        presets: ['@babel/env'],
+        plugins: [
+          '@babel/plugin-transform-class-properties',
+          '@babel/plugin-transform-private-methods'
+        ],
+        extensions: ['.js', '.ts']
+      }),
+      nodeResolve(),
+      isProd && terser()
+    ],
+    external: (id) => /^https?:\/\//.test(id)
+  };
+}
+
 cleanup();
 
 export default [
@@ -88,5 +122,6 @@ export default [
   build('misc'),
   build('theme', { outputName: 'Theme' }),
   build('app', { src: SRC_PWA, jekyll: true }),
-  build('sw', { src: SRC_PWA, jekyll: true })
+  build('sw', { src: SRC_PWA, jekyll: true }),
+  buildPostGraph()
 ];

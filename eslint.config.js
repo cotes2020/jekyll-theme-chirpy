@@ -67,7 +67,8 @@ export default defineConfig([
     rules: {
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
-      ...tsPlugin.configs.recommended.rules
+      ...tsPlugin.configs.recommended.rules,
+      'no-undef': 'off'
     }
   }
 ]);

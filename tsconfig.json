@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "allowJs": true,
-    "outDir": "assets/js/dist",
+    "outDir": "assets/js",
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"]
