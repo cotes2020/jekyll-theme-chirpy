@@ -6,4 +6,5 @@ dist/
 
 .env
 .env.*
+!.env.template
 

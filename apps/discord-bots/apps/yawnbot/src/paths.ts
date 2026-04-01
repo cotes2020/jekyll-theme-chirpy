@@ -7,7 +7,8 @@
 import fs from 'fs';
 import path from 'path';
 
-export const PKG_ROOT = path.resolve(__dirname, '..');
+// Compiled to dist/src/*.js → two levels up to package root (apps/discord-bots/apps/yawnbot)
+export const PKG_ROOT = path.resolve(__dirname, '..', '..');
 
 export function enhancementImgDir(): string {
   return path.join(PKG_ROOT, 'resources', 'img', 'enhancement');
