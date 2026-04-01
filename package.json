@@ -47,6 +47,8 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
     "concurrently": "^9.2.1",
     "conventional-changelog-conventionalcommits": "^9.3.0",
     "eslint": "^10.0.3",

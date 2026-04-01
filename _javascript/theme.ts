@@ -104,8 +104,10 @@ class Theme {
   static flip(): void {
     if (this.#hasMode) {
       this.#clearMode();
+    } else if (this.#sysDark) {
+      this.#setLight();
     } else {
-      this.#sysDark ? this.#setLight() : this.#setDark();
+      this.#setDark();
     }
     this.#notify();
   }

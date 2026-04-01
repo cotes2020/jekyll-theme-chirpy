@@ -1,29 +1,38 @@
 import Toast from 'bootstrap/js/src/toast';
 
 if ('serviceWorker' in navigator) {
-  // Get Jekyll config from URL parameters
-  const src = new URL(document.currentScript.src);
+  const script = document.currentScript;
+  if (!(script instanceof HTMLScriptElement)) {
+    throw new Error('PWA bootstrap: expected HTMLScriptElement as currentScript');
+  }
+
+  const src = new URL(script.src);
   const register = src.searchParams.get('register');
   const baseUrl = src.searchParams.get('baseurl');
 
   if (register) {
     const swUrl = `${baseUrl}/sw.min.js`;
     const notification = document.getElementById('notification');
-    const btnRefresh = notification.querySelector('.toast-body>button');
+    if (!notification) {
+      throw new Error('PWA bootstrap: missing #notification element');
+    }
+    const btnRefresh = notification.querySelector<HTMLButtonElement>(
+      '.toast-body>button'
+    );
+    if (!btnRefresh) {
+      throw new Error('PWA bootstrap: missing refresh button in notification toast');
+    }
     const popupWindow = Toast.getOrCreateInstance(notification);
 
     navigator.serviceWorker.register(swUrl).then((registration) => {
-      // Restore the update window that was last manually closed by the user
       if (registration.waiting) {
         popupWindow.show();
       }
 
       registration.addEventListener('updatefound', () => {
-        registration.installing.addEventListener('statechange', () => {
-          if (registration.waiting) {
-            if (navigator.serviceWorker.controller) {
-              popupWindow.show();
-            }
+        registration.installing?.addEventListener('statechange', () => {
+          if (registration.waiting && navigator.serviceWorker.controller) {
+            popupWindow.show();
           }
         });
       });
@@ -38,7 +47,6 @@ if ('serviceWorker' in navigator) {
 
     let refreshing = false;
 
-    // Detect controller change and refresh all the opened tabs
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (!refreshing) {
         window.location.reload();
@@ -46,9 +54,9 @@ if ('serviceWorker' in navigator) {
       }
     });
   } else {
-    navigator.serviceWorker.getRegistrations().then(function (registrations) {
-      for (let registration of registrations) {
-        registration.unregister();
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (const registration of registrations) {
+        void registration.unregister();
       }
     });
   }

@@ -1,14 +1,21 @@
-importScripts('./assets/js/data/swconf.js');
+/// <reference lib="webworker" />
+
+const ctx = self as unknown as ServiceWorkerGlobalScope;
+ctx.importScripts('./assets/js/data/swconf.js');
 
 const purge = swconf.purge;
 const interceptor = swconf.interceptor;
 
-function verifyUrl(url) {
+function verifyUrl(url: string): boolean {
   const requestUrl = new URL(url);
   const requestPath = requestUrl.pathname;
 
   if (!requestUrl.protocol.startsWith('http')) {
     return false;
+  }
+
+  if (!interceptor) {
+    return true;
   }
 
   for (const prefix of interceptor.urlPrefixes) {
@@ -25,43 +32,50 @@ function verifyUrl(url) {
   return true;
 }
 
-self.addEventListener('install', (event) => {
+ctx.addEventListener('install', (event: ExtendableEvent) => {
   if (purge) {
     return;
   }
 
+  const cacheName = swconf.cacheName;
+  const resources = swconf.resources;
+  if (!cacheName || !resources) {
+    return;
+  }
+
   event.waitUntil(
-    caches.open(swconf.cacheName).then((cache) => {
-      return cache.addAll(swconf.resources);
+    caches.open(cacheName).then((cache) => {
+      return cache.addAll(resources);
     })
   );
 });
 
-self.addEventListener('activate', (event) => {
+ctx.addEventListener('activate', (event: ExtendableEvent) => {
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
         keyList.map((key) => {
           if (purge) {
             return caches.delete(key);
-          } else {
-            if (key !== swconf.cacheName) {
-              return caches.delete(key);
-            }
           }
+          const cacheName = swconf.cacheName;
+          if (cacheName && key !== cacheName) {
+            return caches.delete(key);
+          }
+          return Promise.resolve();
         })
       );
     })
   );
 });
 
-self.addEventListener('message', (event) => {
+ctx.addEventListener('message', (event: ExtendableMessageEvent) => {
   if (event.data === 'SKIP_WAITING') {
-    self.skipWaiting();
+    ctx.skipWaiting();
   }
 });
 
-self.addEventListener('fetch', (event) => {
+ctx.addEventListener('fetch', (event: FetchEvent) => {
   if (event.request.headers.has('range')) {
     return;
   }
@@ -79,11 +93,15 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        // See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
-        let responseToCache = response.clone();
+        const cacheName = swconf.cacheName;
+        if (!cacheName) {
+          return response;
+        }
 
-        caches.open(swconf.cacheName).then((cache) => {
-          cache.put(event.request, responseToCache);
+        const responseToCache = response.clone();
+
+        void caches.open(cacheName).then((cache) => {
+          void cache.put(event.request, responseToCache);
         });
         return response;
       });
