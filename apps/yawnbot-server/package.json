@@ -2,7 +2,8 @@
   "name": "yawnbot-server",
   "version": "1.0.0",
   "description": "Deprecated shim — use apps/discord-bots (see README). Scripts delegate to that workspace.",
-  "main": "dist/src/index.js",
+  "private": true,
+  "main": "package.json",
   "scripts": {
     "build": "npm --prefix ../discord-bots run build:yawnbot",
     "start": "npm --prefix ../discord-bots run start:yawnbot",
@@ -11,19 +12,5 @@
     "dev": "npm --prefix ../discord-bots run dev:yawnbot",
     "start:unityfree": "npm --prefix ../discord-bots run start:unityfree",
     "start:all": "npm --prefix ../discord-bots run start"
-  },
-  "dependencies": {
-    "@google/generative-ai": "^0.21.0",
-    "cheerio": "^1.2.0",
-    "discord.js": "^14.26.0",
-    "dotenv": "^16.6.1",
-    "express": "^4.22.1",
-    "node-fetch": "^3.3.2"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.5.0",
-    "concurrently": "^9.2.1",
-    "typescript": "^6.0.2"
   }
 }
