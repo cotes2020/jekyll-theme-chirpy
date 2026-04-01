@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family:
+    "Malgun Gothic",
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  height: 100%;
+  padding: 12px 14px 16px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  max-width: 100%;
+  padding: 4px 0;
+  color: rgba(245, 245, 250, 0.95);
+  text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.85),
+    0 1px 2px rgba(0, 0, 0, 0.9);
+  font-size: 14px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.author {
+  flex: 0 0 auto;
+  font-weight: 600;
+  color: rgba(180, 220, 255, 0.98);
+}
+
+.text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
