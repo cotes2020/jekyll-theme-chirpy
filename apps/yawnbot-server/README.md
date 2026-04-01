@@ -1,5 +1,7 @@
 # YawnBot - Node.js Server
 
+> **Deprecated (migration):** 새 코드는 `apps/discord-bots/` 워크스페이스로 옮겼습니다. 게임 봇은 `apps/discord-bots/apps/yawnbot`, Unity 무료 에셋 봇은 `apps/discord-bots/apps/unityfree-bot`에서 빌드·실행하세요. 이 폴더(`apps/yawnbot-server`)는 호환을 위해 남겨 둘 수 있으나, 변경은 위 경로를 기준으로 합니다.
+
 이 프로젝트는 KarmoLab에 있던 C# Discord 봇(YawnBot)의 핵심 게임/상호작용 기능들을 Node.js 환경(`discord.js v14`)으로 완벽하게 이식한 서버 애플리케이션입니다.
 
 ## 🚀 시작하기
