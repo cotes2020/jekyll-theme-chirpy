@@ -79,7 +79,7 @@
       if (currentId === id) currentId = memos.length > 0 ? memos[0].id : null
       saveMemos()
       render()
-      Toolbox.showToast?.('삭제되었습니다.')
+      Toolbox.showToast?.('삭제되었습니다.', 'info', undefined)
       Mdd.linePreset('idle_wake', { msg: '지워버렸어요... 안녕...' })
     }
 
@@ -176,7 +176,7 @@
 
     function exportMemos(): void {
       if (memos.length === 0) {
-        Toolbox.showToast?.('내보낼 메모가 없습니다.', 'error')
+        Toolbox.showToast?.('내보낼 메모가 없습니다.', 'error', undefined)
         return
       }
       const a = document.createElement('a')
@@ -186,7 +186,7 @@
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
-      Toolbox.showToast?.('메모를 내보냈습니다.')
+      Toolbox.showToast?.('메모를 내보냈습니다.', 'success', undefined)
     }
 
     function importMemos(): void {
@@ -212,10 +212,10 @@
               saveMemos()
               currentId = memos.length > 0 ? memos[0].id : null
               render()
-              Toolbox.showToast?.('메모를 불러왔습니다.')
+              Toolbox.showToast?.('메모를 불러왔습니다.', 'success', undefined)
             }
           } catch {
-            Toolbox.showToast?.('올바르지 않은 백업 파일입니다.', 'error')
+            Toolbox.showToast?.('올바르지 않은 백업 파일입니다.', 'error', undefined)
           }
         }
         reader.readAsText(file)
