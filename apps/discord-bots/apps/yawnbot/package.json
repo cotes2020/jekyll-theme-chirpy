@@ -1,0 +1,25 @@
+{
+  "name": "yawnbot",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "deploy": "node dist/deploy-commands.js",
+    "dev": "npm run build && concurrently -k \"tsc -w --preserveWatchOutput\" \"node --watch dist/main.js\""
+  },
+  "dependencies": {
+    "@discord-bots/common": "*",
+    "@google/generative-ai": "^0.21.0",
+    "discord.js": "^14.26.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "concurrently": "^9.2.1",
+    "typescript": "^6.0.2"
+  }
+}
+
