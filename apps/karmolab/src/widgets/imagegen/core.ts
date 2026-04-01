@@ -74,14 +74,18 @@
         const ratioSel = document.getElementById('igAspectRatio');
         const safetySel = document.getElementById('igSafety');
         const vibeSel = document.getElementById('igVibe');
+        const apiSel = document.getElementById('igApiRoute');
         const vibeId = vibeSel?.value || 'none';
         const vibeSuffix = (VIBE_OPTIONS.find(v => v.id === vibeId) || VIBE_OPTIONS[0]).suffix;
         const modelId = modelSel?.value || Gemini.getDefaultModel('geminiImage');
         const opts = {
+            apiRoute: apiSel?.value || Toolbox.getPref('ig_api_route') || 'aiStudio',
             modelId,
             aspectRatio: ratioSel?.value || '16:9',
             safetyThreshold: safetySel?.value || 'BLOCK_ONLY_HIGH',
-            vibeSuffix
+            vibeSuffix,
+            vertexProjectId: (document.getElementById('igVertexProjectId')?.value || Toolbox.getPref('ig_vertex_project_id') || '').trim(),
+            vertexLocation: (document.getElementById('igVertexLocation')?.value || Toolbox.getPref('ig_vertex_location') || 'us-central1').trim() || 'us-central1'
         };
         if (modelId.startsWith('imagen')) {
             opts.negativePrompt = document.getElementById('igNegPrompt')?.value.trim() || '';
@@ -128,17 +132,46 @@
             const signal = next.abortController.signal;
 
             if (modelId.startsWith('gemini')) {
-                const result = await Gemini.callGeminiImage(next.finalPrompt, modelId, { signal, aspectRatio, safetyThreshold });
-                imageUrl = result.dataUrl;
-                usage = result.usage;
+                const route = next.options.apiRoute || 'aiStudio';
+                if (route === 'vertex') {
+                    if (!Gemini.requireVertexApiKey()) throw new Error('Vertex API 키가 필요합니다.');
+                    const result = await Gemini.callVertexGeminiImage(next.finalPrompt, modelId, {
+                        signal,
+                        aspectRatio,
+                        safetyThreshold,
+                        projectId: next.options.vertexProjectId,
+                        location: next.options.vertexLocation
+                    });
+                    imageUrl = result.dataUrl;
+                    usage = result.usage;
+                } else {
+                    const result = await Gemini.callGeminiImage(next.finalPrompt, modelId, { signal, aspectRatio, safetyThreshold });
+                    imageUrl = result.dataUrl;
+                    usage = result.usage;
+                }
             } else {
                 const imgSafety = safetyThreshold === 'OFF' ? 'block_none' : safetyThreshold.toLowerCase();
-                const images = await Gemini.callImagen(next.finalPrompt, modelId, 1, {
-                    signal, aspectRatio, safetyFilterLevel: imgSafety,
-                    negativePrompt: next.options.negativePrompt || undefined,
-                    personGeneration: next.options.personGeneration
-                });
-                imageUrl = images[0];
+                const route = next.options.apiRoute || 'aiStudio';
+                if (route === 'vertex') {
+                    if (!Gemini.requireVertexApiKey()) throw new Error('Vertex API 키가 필요합니다.');
+                    const images = await Gemini.callVertexImagen(next.finalPrompt, modelId, 1, {
+                        signal,
+                        aspectRatio,
+                        safetyFilterLevel: imgSafety,
+                        negativePrompt: next.options.negativePrompt || undefined,
+                        personGeneration: next.options.personGeneration,
+                        projectId: next.options.vertexProjectId,
+                        location: next.options.vertexLocation
+                    });
+                    imageUrl = images[0];
+                } else {
+                    const images = await Gemini.callImagen(next.finalPrompt, modelId, 1, {
+                        signal, aspectRatio, safetyFilterLevel: imgSafety,
+                        negativePrompt: next.options.negativePrompt || undefined,
+                        personGeneration: next.options.personGeneration
+                    });
+                    imageUrl = images[0];
+                }
             }
 
             const elapsed = ((Date.now() - start) / 1000).toFixed(1);

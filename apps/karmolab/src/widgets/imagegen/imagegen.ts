@@ -213,6 +213,15 @@
     }
 
     /* ===== updateImagenOptionsVisibility, updateVibeInfo ===== */
+    function updateVertexImagenFieldsVisibility() {
+        const modelSel = document.getElementById('igModelSelect');
+        const apiSel = document.getElementById('igApiRoute');
+        const group = document.getElementById('igVertexImagenGroup');
+        if (!group) return;
+        const show = (apiSel?.value === 'vertex') && (modelSel?.value?.startsWith('imagen') || false);
+        group.style.display = show ? '' : 'none';
+    }
+
     function updateImagenOptionsVisibility() {
         const modelSel = document.getElementById('igModelSelect');
         const isImagen = modelSel?.value?.startsWith('imagen') || false;
@@ -220,6 +229,7 @@
         const personGroup = document.getElementById('igPersonGenGroup');
         if (negGroup) negGroup.style.display = isImagen ? '' : 'none';
         if (personGroup) personGroup.style.display = isImagen ? '' : 'none';
+        updateVertexImagenFieldsVisibility();
     }
 
     function updateVibeInfo() {
@@ -774,6 +784,32 @@
                         <select id="igModelSelect"></select>
                     </div>
                     <div class="field-group">
+                        <label class="field-label">🌐 호출</label>
+                        <select id="igApiRoute">
+                            <option value="aiStudio">AI Studio (기존)</option>
+                            <option value="vertex">Vertex AI</option>
+                        </select>
+                        <div style="font-size:var(--font-size-2xs);color:var(--text-tertiary);margin-top:6px;line-height:1.4;">
+                            Gemini 이미지: Vertex는 <code>generateContent</code>, Imagen은 Vertex <code>predict</code>(참고 스크립트와 동일 계열)입니다. Imagen+Vertex일 때 GCP 프로젝트·리전이 필요합니다.
+                        </div>
+                    </div>
+                    <div class="field-group" id="igVertexImagenGroup" style="display:none">
+                        <label class="field-label">☁️ Vertex Imagen (GCP)</label>
+                        <p style="font-size:var(--font-size-2xs);color:var(--text-tertiary);margin:0 0 8px 0;line-height:1.4;">
+                            <code>projects/…/locations/…/publishers/google/models/…:predict</code> 호출에 사용합니다. (예: 스크립트의 <code>PROJECT_ID</code>, <code>LOCATION</code>)
+                        </p>
+                        <div style="display:flex;flex-direction:column;gap:8px;">
+                            <div>
+                                <label class="field-label" for="igVertexProjectId" style="font-size:var(--font-size-xs);">프로젝트 ID</label>
+                                <input type="text" id="igVertexProjectId" class="settings-control" style="width:100%;box-sizing:border-box;" placeholder="my-gcp-project-id" autocomplete="off">
+                            </div>
+                            <div>
+                                <label class="field-label" for="igVertexLocation" style="font-size:var(--font-size-xs);">리전</label>
+                                <input type="text" id="igVertexLocation" class="settings-control" style="width:100%;box-sizing:border-box;" placeholder="us-central1" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-group">
                         <label class="field-label">📐 비율</label>
                         <select id="igAspectRatio">
                             ${ASPECT_RATIOS.map(r => `<option value="${r.value}"${r.value === '16:9' ? ' selected' : ''}>${r.label}</option>`).join('')}
@@ -881,9 +917,46 @@
             }
 
             const ratioSel = document.getElementById('igAspectRatio');
+            const apiSel = document.getElementById('igApiRoute');
             const vibeSel = document.getElementById('igVibe');
             const safetySel = document.getElementById('igSafety');
             if (ratioSel) { const sr = Toolbox.getPref('ig_ratio'); if (sr) ratioSel.value = sr; ratioSel.addEventListener('change', () => Toolbox.setPref('ig_ratio', ratioSel.value)); }
+            if (apiSel) {
+                const savedApi = Toolbox.getPref('ig_api_route');
+                if (savedApi) apiSel.value = savedApi;
+                apiSel.addEventListener('change', () => {
+                    Toolbox.setPref('ig_api_route', apiSel.value);
+                    updateVertexImagenFieldsVisibility();
+                });
+            }
+
+            const vProj = document.getElementById('igVertexProjectId');
+            const vLoc = document.getElementById('igVertexLocation');
+            if (vLoc) {
+                const sl = Toolbox.getPref('ig_vertex_location');
+                if (sl) vLoc.value = sl;
+                else vLoc.value = 'us-central1';
+                vLoc.addEventListener('change', () => Toolbox.setPref('ig_vertex_location', vLoc.value.trim() || 'us-central1'));
+            }
+            if (vProj) {
+                const sp = Toolbox.getPref('ig_vertex_project_id');
+                if (sp) vProj.value = sp;
+                vProj.addEventListener('change', () => Toolbox.setPref('ig_vertex_project_id', vProj.value.trim()));
+            }
+            function syncIgVertexFieldsFromPrefs() {
+                const p = document.getElementById('igVertexProjectId');
+                const l = document.getElementById('igVertexLocation');
+                if (p instanceof HTMLInputElement) {
+                    const v = Toolbox.getPref('ig_vertex_project_id');
+                    if (typeof v === 'string') p.value = v;
+                }
+                if (l instanceof HTMLInputElement) {
+                    const v = Toolbox.getPref('ig_vertex_location');
+                    l.value = (typeof v === 'string' && v.trim()) ? v.trim() : 'us-central1';
+                }
+            }
+            window.addEventListener('vertex-context-changed', syncIgVertexFieldsFromPrefs);
+            updateVertexImagenFieldsVisibility();
             if (vibeSel) { const sv = Toolbox.getPref('ig_vibe'); if (sv) vibeSel.value = sv; vibeSel.addEventListener('change', () => { Toolbox.setPref('ig_vibe', vibeSel.value); updateVibeInfo(); }); updateVibeInfo(); }
             if (safetySel) { const ss = Toolbox.getPref('ig_safety'); if (ss) safetySel.value = ss; safetySel.addEventListener('change', () => Toolbox.setPref('ig_safety', safetySel.value)); }
 

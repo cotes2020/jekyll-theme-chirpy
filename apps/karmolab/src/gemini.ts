@@ -6,6 +6,7 @@
  * - 모델 목록 정의
  * - fetchWithRetry, callText, callChat, callChatStream, callGeminiImage (선택: referenceImage), callImagen
  * - enhancePrompt, buildApiKeyUI
+ * - Vertex AI용 Google Cloud API 키 (별도 localStorage, AI Studio 키와 독립)
  *
  * 모델 목록 출처: Google AI Studio (aistudio.google.com) 확인 목록 기준.
  * - 문서: https://ai.google.dev/gemini-api/docs/models
@@ -43,6 +44,8 @@ const Gemini = (() => {
 
     const STORAGE_KEY = 'toolbox_gemini_api_key'; // legacy single-key
     const KEYS_STORE_KEY = 'toolbox_gemini_api_keys_v2';
+    /** Vertex AI (Google Cloud API 키 / Express 모드 등) — AI Studio 키와 별도 */
+    const VERTEX_API_KEY_STORAGE = 'toolbox_vertex_api_key';
 
     /* ===== API 키 관리 (다중 프로필) ===== */
     function getKeyStore() {
@@ -138,6 +141,31 @@ const Gemini = (() => {
         const key = getApiKey();
         if (!key) {
             Toolbox.showToast('API 키를 먼저 설정해주세요.', 'error');
+            return null;
+        }
+        return key;
+    }
+
+    function getVertexApiKey() {
+        try {
+            return localStorage.getItem(VERTEX_API_KEY_STORAGE) || '';
+        } catch (_) {
+            return '';
+        }
+    }
+
+    function setVertexApiKey(key) {
+        try {
+            if (key) localStorage.setItem(VERTEX_API_KEY_STORAGE, key);
+            else localStorage.removeItem(VERTEX_API_KEY_STORAGE);
+            window.dispatchEvent(new CustomEvent('vertex-api-key-changed'));
+        } catch (_) {}
+    }
+
+    function requireVertexApiKey() {
+        const key = getVertexApiKey();
+        if (!key) {
+            Toolbox.showToast('Vertex AI API 키를 설정에서 먼저 입력해주세요.', 'error');
             return null;
         }
         return key;
@@ -466,6 +494,107 @@ const Gemini = (() => {
         };
     }
 
+    /* ===== Vertex Gemini 이미지 생성 (generateContent on Vertex) ===== */
+    /**
+     * Vertex AI Gemini 이미지 생성.
+     * - 인증: Vertex용 Google Cloud API 키 (toolbox_vertex_api_key)
+     * - 엔드포인트: https://aiplatform.googleapis.com/v1/publishers/google/models/${model}:generateContent?key=...
+     * - Imagen 이미지는 callVertexImagen(:predict) 사용.
+     */
+    async function callVertexGeminiImage(prompt, modelId, options = {}) {
+        const key = requireVertexApiKey();
+        if (!key) throw new Error('Vertex API 키가 설정되지 않았습니다.');
+
+        const model = modelId || getDefaultModel('geminiImage');
+        const projectId = (options.projectId || '').trim();
+        if (!projectId) {
+            throw new Error('Vertex Gemini 이미지에는 GCP 프로젝트 ID가 필요합니다. 위젯에 프로젝트 ID를 입력하세요.');
+        }
+        const location = (options.location || 'us-central1').trim() || 'us-central1';
+
+        // Vertex AI REST: projects.locations.publishers.models.generateContent
+        // https://aiplatform.googleapis.com/v1/{model}:generateContent
+        // where {model} = projects/{project}/locations/{location}/publishers/google/models/{modelId}
+        const url =
+            `https://${encodeURIComponent(location)}-aiplatform.googleapis.com/v1/projects/${encodeURIComponent(projectId)}` +
+            `/locations/${encodeURIComponent(location)}/publishers/google/models/${encodeURIComponent(model)}:generateContent?key=${key}`;
+
+        const genConfig = {
+            maxOutputTokens: 8192,
+            responseModalities: ['TEXT', 'IMAGE']
+        };
+        if (options.aspectRatio) {
+            genConfig.imageConfig = { aspectRatio: options.aspectRatio };
+        }
+
+        const parts = [{ text: prompt }];
+        if (options.referenceImage) {
+            let b64 = options.referenceImage;
+            if (typeof b64 === 'string' && b64.includes(',')) b64 = b64.split(',')[1];
+            if (typeof b64 !== 'string' || !b64.length) throw new Error('참조 이미지(base64)가 비어 있습니다.');
+            parts.push({
+                inlineData: {
+                    mimeType: options.referenceMimeType || 'image/png',
+                    data: b64
+                }
+            });
+        }
+
+        const threshold = options.safetyThreshold || 'BLOCK_ONLY_HIGH';
+        const body = {
+            contents: [{ parts }],
+            generationConfig: genConfig,
+            safetySettings: [
+                { category: 'HARM_CATEGORY_HARASSMENT', threshold },
+                { category: 'HARM_CATEGORY_HATE_SPEECH', threshold },
+                { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold },
+                { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold },
+                { category: 'HARM_CATEGORY_CIVIC_INTEGRITY', threshold }
+            ]
+        };
+
+        const res = await fetchWithRetry(url, body, { signal: options.signal });
+        const data = await res.json();
+
+        recordApiCall({
+            type: 'vertexGeminiImage',
+            url,
+            method: 'POST',
+            requestBody: body,
+            responseBody: data,
+            status: res.status
+        });
+
+        if (data.error) {
+            const msg = data.error.message || data.error.status || 'API 오류';
+            throw new Error(msg);
+        }
+        if (data.candidates && data.candidates[0]?.finishReason === 'SAFETY') {
+            throw new Error('안전 필터에 의해 차단되었습니다.');
+        }
+        if (!data.candidates || data.candidates.length === 0) {
+            throw new Error('이미지 데이터가 없습니다. (API가 candidates를 반환하지 않음)');
+        }
+        const cand = data.candidates[0];
+        if (!cand.content || !cand.content.parts?.length) {
+            const reason = cand.finishReason || 'content 없음';
+            throw new Error(`이미지 데이터가 없습니다. (finishReason: ${reason})`);
+        }
+
+        const imageData = cand.content.parts.find(p => p.inlineData);
+        if (!imageData) {
+            const hasText = cand.content.parts.some(p => p.text);
+            throw new Error(hasText
+                ? '이미지 대신 텍스트만 반환되었습니다. 이 모델은 이미지 생성이 제한되거나, 프롬프트/안전 필터로 인해 이미지가 생성되지 않았을 수 있습니다.'
+                : '이미지를 찾을 수 없습니다.');
+        }
+
+        return {
+            dataUrl: `data:image/png;base64,${imageData.inlineData.data}`,
+            usage: data.usageMetadata || null
+        };
+    }
+
     /* ===== Imagen 이미지 생성 ===== */
     /**
      * options: { signal, aspectRatio, safetyFilterLevel, negativePrompt, personGeneration }
@@ -513,8 +642,77 @@ const Gemini = (() => {
         });
     }
 
+    /** Vertex predict 응답의 이미지 base64 추출 (JSON 또는 protobuf Struct JSON) */
+    function extractImagenPredictionBase64(p) {
+        if (!p) return null;
+        if (p.bytesBase64Encoded) return p.bytesBase64Encoded;
+        const fields = p.structValue?.fields;
+        const b64 = fields?.bytesBase64Encoded?.stringValue;
+        return b64 || null;
+    }
+
+    /**
+     * Vertex AI Imagen — Prediction API `:predict` (scripts/generate-image.cjs 와 동일 계열)
+     * - 인증: Vertex용 Google Cloud API 키
+     * - 엔드포인트: https://{location}-aiplatform.googleapis.com/v1/projects/.../models/...:predict?key=...
+     * options: { signal, projectId, location, aspectRatio, safetyFilterLevel, negativePrompt, personGeneration }
+     */
+    async function callVertexImagen(prompt, modelId, count = 1, options = {}) {
+        const key = requireVertexApiKey();
+        if (!key) throw new Error('Vertex API 키가 설정되지 않았습니다.');
+
+        const projectId = (options.projectId || '').trim();
+        if (!projectId) {
+            throw new Error('Vertex Imagen에는 GCP 프로젝트 ID가 필요합니다. 위젯에 프로젝트 ID를 입력하세요.');
+        }
+
+        const location = (options.location || 'us-central1').trim() || 'us-central1';
+        const model = modelId || getDefaultModel('imagen');
+
+        const url =
+            `https://${encodeURIComponent(location)}-aiplatform.googleapis.com/v1/projects/${encodeURIComponent(projectId)}` +
+            `/locations/${encodeURIComponent(location)}/publishers/google/models/${encodeURIComponent(model)}:predict?key=${key}`;
+
+        const params = { sampleCount: count };
+        if (options.aspectRatio) params.aspectRatio = options.aspectRatio;
+        if (options.safetyFilterLevel) params.safetyFilterLevel = options.safetyFilterLevel;
+        if (options.personGeneration) params.personGeneration = options.personGeneration;
+
+        const instance = { prompt };
+        if (options.negativePrompt) instance.negativePrompt = options.negativePrompt;
+
+        const body = { instances: [instance], parameters: params };
+
+        const res = await fetchWithRetry(url, body, { signal: options.signal });
+        const data = await res.json();
+
+        recordApiCall({
+            type: 'vertexImagen',
+            url,
+            method: 'POST',
+            requestBody: body,
+            responseBody: data,
+            status: res.status
+        });
+
+        if (data.error) {
+            const msg = data.error.message || data.error.status || 'API 오류';
+            throw new Error(msg);
+        }
+        if (!data.predictions || data.predictions.length === 0) {
+            throw new Error('이미지 생성 결과가 없습니다.');
+        }
+
+        return data.predictions.map((p) => {
+            const b64 = extractImagenPredictionBase64(p);
+            if (!b64) throw new Error('base64 이미지 데이터 없음 (필터 차단 또는 응답 형식 불일치)');
+            return `data:image/png;base64,${b64}`;
+        });
+    }
+
     /* ===== 공통 API 키 UI 빌더 (프로필 리스트) ===== */
     const AI_STUDIO_API_KEY_URL = 'https://aistudio.google.com/app/apikey';
+    const VERTEX_API_KEY_HELP_URL = 'https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys';
 
     function buildApiKeyUI(idPrefix) {
         const store = getKeyStore();
@@ -522,7 +720,7 @@ const Gemini = (() => {
         const activeId = store.activeId;
         const html = `
             <div class="field-group">
-                <label class="field-label">🔑 Gemini API 키 프로필</label>
+                <label class="field-label">🔑 Google AI Studio (Gemini API) — 프로필</label>
                 <div id="${idPrefix}ApiProfileList" style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;"></div>
                 <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
                     <button type="button" class="btn btn-ghost" id="${idPrefix}ApiAdd" style="font-size:var(--font-size-xs);padding:4px 10px;">+ 프로필 추가</button>
@@ -534,6 +732,33 @@ const Gemini = (() => {
                 <div style="font-size:var(--font-size-2xs);margin-top:4px;color:#facc15;">
                     ⚠️ API 키는 브라우저 localStorage에 평문 저장됩니다. 공용 PC에서는 사용 후 반드시 삭제하세요.
                 </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">☁️ Vertex AI (Google Cloud API 키)</label>
+                <p style="font-size:var(--font-size-2xs);color:var(--text-tertiary);margin:0 0 8px 0;">
+                    AI Studio 키와는 <strong>별도</strong>입니다. Vertex / Express 모드 등에서 발급한 Google Cloud API 키를 넣습니다. (접두사는 <code>AIza</code>가 아닐 수 있어 형식 검증은 하지 않습니다.)
+                </p>
+                <div id="${idPrefix}VertexKeyRow" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:8px;">
+                    <span id="${idPrefix}VertexKeyStatus" style="font-size:var(--font-size-2xs);flex:1;min-width:120px;"></span>
+                    <button type="button" class="btn btn-ghost" id="${idPrefix}VertexKeyEdit" style="font-size:var(--font-size-2xs);padding:3px 10px;">키 변경</button>
+                    <button type="button" class="btn btn-ghost" id="${idPrefix}VertexKeyClear" style="font-size:var(--font-size-2xs);padding:3px 10px;color:var(--error);">삭제</button>
+                </div>
+                <div style="font-size:var(--font-size-2xs);color:var(--text-tertiary);">
+                    안내: <a href="${VERTEX_API_KEY_HELP_URL}" target="_blank" rel="noopener" style="color:var(--accent);">Vertex AI — API 키</a>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+                    <div>
+                        <label class="field-label" for="${idPrefix}VertexProjectId" style="font-size:var(--font-size-xs);">GCP 프로젝트 ID</label>
+                        <input type="text" id="${idPrefix}VertexProjectId" class="settings-control" style="width:100%;box-sizing:border-box;" placeholder="my-gcp-project-id" autocomplete="off">
+                    </div>
+                    <div>
+                        <label class="field-label" for="${idPrefix}VertexLocation" style="font-size:var(--font-size-xs);">리전</label>
+                        <input type="text" id="${idPrefix}VertexLocation" class="settings-control" style="width:100%;box-sizing:border-box;" placeholder="us-central1" autocomplete="off">
+                    </div>
+                </div>
+                <p style="font-size:var(--font-size-2xs);color:var(--text-tertiary);margin:8px 0 0 0;line-height:1.4;">
+                    Vertex 호출(이미지 생성 등)에 공통으로 쓰입니다. 이미지 생성 위젯의 입력란과 같은 값을 공유합니다.
+                </p>
             </div>`;
         return {
             html,
@@ -541,6 +766,33 @@ const Gemini = (() => {
                 const root = container || document;
                 const listEl = root.querySelector ? root.querySelector(`#${idPrefix}ApiProfileList`) : document.getElementById(`${idPrefix}ApiProfileList`);
                 const addBtn = root.querySelector ? root.querySelector(`#${idPrefix}ApiAdd`) : document.getElementById(`${idPrefix}ApiAdd`);
+
+                const vertexStatusEl = root.querySelector(`#${idPrefix}VertexKeyStatus`);
+                const vertexEditBtn = root.querySelector(`#${idPrefix}VertexKeyEdit`);
+                const vertexClearBtn = root.querySelector(`#${idPrefix}VertexKeyClear`);
+                const vertexProjectEl = root.querySelector(`#${idPrefix}VertexProjectId`);
+                const vertexLocationEl = root.querySelector(`#${idPrefix}VertexLocation`);
+
+                const VERTEX_PREF_PROJECT = 'ig_vertex_project_id';
+                const VERTEX_PREF_LOCATION = 'ig_vertex_location';
+
+                function syncVertexContextInputs() {
+                    if (vertexProjectEl instanceof HTMLInputElement) {
+                        const v = Toolbox.getPref(VERTEX_PREF_PROJECT) || '';
+                        vertexProjectEl.value = typeof v === 'string' ? v : '';
+                    }
+                    if (vertexLocationEl instanceof HTMLInputElement) {
+                        const v = Toolbox.getPref(VERTEX_PREF_LOCATION) || 'us-central1';
+                        vertexLocationEl.value = (typeof v === 'string' && v.trim()) ? v.trim() : 'us-central1';
+                    }
+                }
+
+                function renderVertexRow() {
+                    if (!vertexStatusEl) return;
+                    const has = !!getVertexApiKey();
+                    vertexStatusEl.textContent = has ? '키 저장됨' : '키 없음';
+                    vertexStatusEl.style.color = has ? 'var(--success)' : 'var(--text-tertiary)';
+                }
 
                 function render() {
                     const store = getKeyStore();
@@ -561,6 +813,53 @@ const Gemini = (() => {
                 }
 
                 render();
+                renderVertexRow();
+                syncVertexContextInputs();
+
+                if (vertexProjectEl instanceof HTMLInputElement) {
+                    vertexProjectEl.addEventListener('change', () => {
+                        Toolbox.setPref(VERTEX_PREF_PROJECT, vertexProjectEl.value.trim());
+                        window.dispatchEvent(new CustomEvent('vertex-context-changed'));
+                    });
+                }
+                if (vertexLocationEl instanceof HTMLInputElement) {
+                    vertexLocationEl.addEventListener('change', () => {
+                        const loc = vertexLocationEl.value.trim() || 'us-central1';
+                        Toolbox.setPref(VERTEX_PREF_LOCATION, loc);
+                        window.dispatchEvent(new CustomEvent('vertex-context-changed'));
+                    });
+                }
+
+                if (vertexEditBtn) {
+                    vertexEditBtn.addEventListener('click', () => {
+                        const current = getVertexApiKey();
+                        const val = prompt(
+                            'Vertex AI용 Google Cloud API 키를 입력하세요 (빈 값이면 취소)',
+                            current ? '••••••••••' : ''
+                        );
+                        if (val === null) return;
+                        const trimmed = val.trim();
+                        if (!trimmed || trimmed === '••••••••••') {
+                            if (!current) return;
+                            setVertexApiKey('');
+                            Toolbox.showToast('Vertex API 키가 삭제되었습니다.');
+                            renderVertexRow();
+                            return;
+                        }
+                        setVertexApiKey(trimmed);
+                        Toolbox.showToast('Vertex API 키 저장 완료');
+                        renderVertexRow();
+                    });
+                }
+                if (vertexClearBtn) {
+                    vertexClearBtn.addEventListener('click', () => {
+                        if (!getVertexApiKey()) return;
+                        if (!confirm('저장된 Vertex API 키를 삭제할까요?')) return;
+                        setVertexApiKey('');
+                        Toolbox.showToast('Vertex API 키가 삭제되었습니다.');
+                        renderVertexRow();
+                    });
+                }
 
                 if (addBtn) {
                     addBtn.addEventListener('click', () => {
@@ -667,8 +966,11 @@ Reply ONLY with the enhanced prompt in English, nothing else. Do not add any exp
     /* ===== Public API ===== */
     return {
         MODELS,
-        getApiKey, setApiKey, getProfiles, getActiveProfileId, setActiveProfileId, getActiveProfileName, requireApiKey, getDefaultModel,
-        fetchWithRetry, callText, callChat, callChatStream, callGeminiImage, callImagen,
+        getApiKey, setApiKey, getProfiles, getActiveProfileId, setActiveProfileId, getActiveProfileName, requireApiKey,
+        getVertexApiKey, setVertexApiKey, requireVertexApiKey,
+        getDefaultModel,
+        fetchWithRetry, callText, callChat, callChatStream, callGeminiImage, callImagen, callVertexImagen,
+        callVertexGeminiImage,
         getApiHistory, clearApiHistory,
         buildApiKeyUI, enhancePrompt
     };
