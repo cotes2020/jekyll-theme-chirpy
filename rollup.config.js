@@ -22,6 +22,10 @@ let hasWatched = false;
 function cleanup() {
   fs.rmSync(DIST, { recursive: true, force: true });
   console.log(`> Directory "${DIST}" has been cleaned.`);
+
+  // Keep graph-view output in sync with build inputs.
+  fs.rmSync(`${GRAPH_DIST}/bootstrap-post-graph.js`, { force: true });
+  fs.rmSync(`${GRAPH_DIST}/bootstrap-post-graph.js.map`, { force: true });
 }
 
 function insertFrontmatter() {
