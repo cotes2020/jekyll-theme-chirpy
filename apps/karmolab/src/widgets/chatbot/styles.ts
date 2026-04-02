@@ -4,7 +4,7 @@
         .cb-outer { display:flex; flex-direction:column; flex:1; min-height:0; min-width:0; width:100%; position:relative; }
         .cb-layout { display:flex; gap:14px; flex:1; min-height:0; align-items:stretch; }
 
-        /* 좌·우 패널 공통 */
+        /* 좌·우 사이드바 공통 */
         .cb-sidebar { display:flex; flex-direction:column; min-height:0; border:1px solid var(--border); background:var(--bg-secondary); border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 1px 0 rgba(0,0,0,0.04); }
         .cb-sidebar-left { width:220px; flex-shrink:0; }
         .cb-sidebar-right { width:292px; flex-shrink:0; }

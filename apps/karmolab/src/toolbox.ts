@@ -108,7 +108,7 @@ const Toolbox = (() => {
         tools.push(config);
     }
 
-    /** 사이드바·초기화용 — 스크립트는 첫 방문 시 loadDeferredWidget에서 로드 */
+    /** 레지스트리·초기화용 — 스크립트는 첫 방문 시 loadDeferredWidget에서 로드 */
     function registerDeferred(stub) {
         const { lazyScriptPaths, ...rest } = stub;
         tools.push({
@@ -487,9 +487,6 @@ const Toolbox = (() => {
         }
     }
 
-    /** 레이아웃이 상단 메뉴로 바뀌기 전 호환용 */
-    function toggleSidebar() {}
-
     /* ===== Landing Page Builder ===== */
 
     function buildLanding() {
@@ -546,7 +543,7 @@ const Toolbox = (() => {
         const landing = document.getElementById('page-home');
         const allPages = document.querySelectorAll('.tool-page');
         const allNav = document.querySelectorAll('.nav-item');
-        const sidebarHome = document.getElementById('sidebarHome');
+        const headerHomeBtn = document.getElementById('headerHomeBtn');
         const breadcrumb = document.getElementById('breadcrumb');
 
         const toolForPage = tools.find(t => t.id === pageId);
@@ -556,12 +553,12 @@ const Toolbox = (() => {
 
         allPages.forEach(p => p.classList.remove('active'));
         allNav.forEach(n => n.classList.remove('active'));
-        if (sidebarHome) sidebarHome.classList.remove('active');
+        if (headerHomeBtn) headerHomeBtn.classList.remove('active');
         if (landing) landing.classList.remove('active');
 
         if (pageId === 'home') {
             if (landing) landing.classList.add('active');
-            if (sidebarHome) sidebarHome.classList.add('active');
+            if (headerHomeBtn) headerHomeBtn.classList.add('active');
             document.querySelectorAll('[data-page="home"]').forEach(n => n.classList.add('active'));
             document.getElementById('pageTitle').textContent = 'KarmoLab';
             if (breadcrumb) breadcrumb.innerHTML = '';
@@ -1044,7 +1041,7 @@ const Toolbox = (() => {
     function getTools() { return [...tools]; }
 
     return {
-        register, registerDeferred, init, initTheme, switchPage, switchTab, toggleSidebar, getTools,
+        register, registerDeferred, init, initTheme, switchPage, switchTab, getTools,
         isDesktopApp,
         kickLazyLoad, getLazyWidgetPublicMeta,
         showToast, displayResult, copyResult, toggleCollapsible,

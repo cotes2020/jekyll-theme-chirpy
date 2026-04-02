@@ -66,6 +66,7 @@
     --space-xl: 32px;
     --space-2xl: 48px;
 
+    /* 위젯 내부 툴 사이드바 폭 (이미지 편집 등; 앱 메인 내비와 무관) */
     --sidebar-width: 224px;
     --sidebar-collapsed-width: 56px;
     --transition: 180ms ease;

@@ -1,6 +1,6 @@
 /**
  * 지연 로드 위젯 공통 메타 (단일 출처)
- * - 사이드바 stub + 각 위젯 Toolbox.register 시 ...getLazyWidgetPublicMeta(id) 로 재사용
+ * - 지연 등록 stub + 각 위젯 Toolbox.register 시 ...getLazyWidgetPublicMeta(id) 로 재사용
  * - lazyScriptPaths: 로더가 순서대로 불러올 스크립트 경로(widgets/ 기준, .js 제외)
  */
 import type { KarmoLabLazyWidgetStub } from '../types/karmolab';
