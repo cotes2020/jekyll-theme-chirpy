@@ -1,6 +1,7 @@
 /**
  * KarmoWorld — Markdown frontmatter YAML (제한된 부분집합) 파싱
- * - 본문과 분리: YAML --- ... ---
+ * - 단일 파일: front matter --- ... --- + 본문 (`parseCharacterWikiMarkdown`)
+ * - 분리 파일: `*.yaml`(메타) + `*.md`(본문만, `---` 없음) (`parseCharacterWikiFromSplitFiles`)
  * - 스칼라: key: value
  * - 블록 스칼라: key: | 다음 들여쓴 줄
  * - 목록: key: 다음 줄에 - item
@@ -108,9 +109,17 @@
     return { meta, body };
   }
 
+  function parseCharacterWikiFromSplitFiles(
+    yamlText: string,
+    mdText: string
+  ): { meta: Record<string, unknown>; body: string } {
+    return { meta: parseYamlSimple(yamlText), body: mdText.trim() };
+  }
+
   K.parseMd = {
     splitFrontmatter,
     parseYamlSimple,
-    parseCharacterWikiMarkdown
+    parseCharacterWikiMarkdown,
+    parseCharacterWikiFromSplitFiles
   };
 })();

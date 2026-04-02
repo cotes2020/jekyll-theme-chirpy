@@ -65,6 +65,10 @@ export interface KarmoWorldParseMdAPI {
   splitFrontmatter: (md: string) => { frontmatter: string; body: string };
   parseYamlSimple: (yaml: string) => Record<string, unknown>;
   parseCharacterWikiMarkdown: (md: string) => { meta: Record<string, unknown>; body: string };
+  parseCharacterWikiFromSplitFiles: (
+    yamlText: string,
+    mdText: string
+  ) => { meta: Record<string, unknown>; body: string };
 }
 
 export interface KarmoWorldNamespace {

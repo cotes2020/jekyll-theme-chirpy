@@ -1,5 +1,5 @@
 /**
- * wiki/entities/characters/*.md 를 fetch → 파싱 → KarmoWorld.entities + bindings 채움
+ * wiki/entities/characters/{slug}.yaml + {slug}.md 를 fetch → 파싱 → KarmoWorld.entities + bindings 채움
  * imagegen/chatbot 스크립트보다 먼저 실행되며, Toolbox 지연 로더가 Promise 완료까지 대기합니다.
  */
 (function (): void {
@@ -18,6 +18,10 @@
 
   function wikiUrl(base: string, slug: string): string {
     return base + 'wiki/entities/characters/' + slug + '.md';
+  }
+
+  function wikiYamlUrl(base: string, slug: string): string {
+    return base + 'wiki/entities/characters/' + slug + '.yaml';
   }
 
   function str(v: unknown): string {
@@ -71,8 +75,10 @@
   }
 
   async function loadAll(): Promise<void> {
-    const parse = window.KarmoWorld?.parseMd?.parseCharacterWikiMarkdown;
-    if (typeof parse !== 'function') throw new Error('KarmoWorld.parseMd.parseCharacterWikiMarkdown 없음');
+    const parseSplit = window.KarmoWorld?.parseMd?.parseCharacterWikiFromSplitFiles;
+    if (typeof parseSplit !== 'function') {
+      throw new Error('KarmoWorld.parseMd.parseCharacterWikiFromSplitFiles 없음');
+    }
 
     const base = worldBaseUrl();
     const imagegen: ReturnType<typeof metaToImagegen>[] = [];
@@ -80,11 +86,14 @@
     const characters: Record<string, ReturnType<typeof metaToEntity>> = {};
 
     for (const slug of SLUGS) {
-      const url = wikiUrl(base, slug);
-      const r = await fetch(url);
-      if (!r.ok) throw new Error('wiki 로드 실패: ' + url);
-      const text = await r.text();
-      const { meta } = parse(text);
+      const mdUrl = wikiUrl(base, slug);
+      const yUrl = wikiYamlUrl(base, slug);
+      const [rm, ry] = await Promise.all([fetch(mdUrl), fetch(yUrl)]);
+      if (!rm.ok) throw new Error('wiki 로드 실패: ' + mdUrl);
+      if (!ry.ok) throw new Error('wiki 로드 실패: ' + yUrl);
+      const mdText = await rm.text();
+      const yamlText = await ry.text();
+      const { meta } = parseSplit(yamlText, mdText);
       if (meta.entityId == null || meta.entityId === '') throw new Error('entityId 없음: ' + slug);
       characters[slug] = metaToEntity(slug, meta);
       imagegen.push(metaToImagegen(meta));
