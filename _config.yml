@@ -222,6 +222,10 @@ exclude:
   - "*-template.md"
   - "*-TEMPLATE.md"
   - "**/ticket/*.md"
+  # Rust/Cargo + Tauri: local `target/` can be multi‑GB; never needed in static site output
+  - "**/src-tauri/target"
+  - apps/karmolab-tauri/src-tauri/target
+  - apps/chat-overlay/src-tauri/target
 
 jekyll-archives:
   enabled: [categories, tags]
