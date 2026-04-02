@@ -56,6 +56,7 @@
             { url: 'https://solved.ac', label: 'solved.ac', icon: null },
             { url: 'https://assetstore.unity.com/ko-KR/publisher-sale', label: 'Unity Asset Store - Publisher Sale', icon: null },
             { url: 'http://127.0.0.1:4000/', label: 'Local', icon: null },
+            { url: 'http://localhost:8899/apps/karmolab/index.html', label: 'Karmolab', icon: null },
             { url: 'https://wrchat.github.io/Woodon/', label: 'WRChat VCC Listing', icon: FAVICON_FALLBACK },
             { url: 'https://wrchat.github.io/Woodon/index.json', label: 'WRChat index.json', icon: FAVICON_FALLBACK },
             { url: 'https://status.vrchat.com/', label: 'VRChat Status', icon: 'https://cdn.simpleicons.org/vrchat' },
