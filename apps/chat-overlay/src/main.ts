@@ -49,6 +49,19 @@ if (!log) {
   throw new Error("#log not found");
 }
 
+/** KarmoWebExtension 등 → Tauri `POST /ingest` → `extension-ingest` */
+void listen<{ author: string; text: string; ts: number }>("extension-ingest", (event) => {
+  const p = event.payload;
+  appendLine(log, {
+    id: `ext-${p.ts}-${Math.random().toString(36).slice(2, 10)}`,
+    author: p.author,
+    text: p.text,
+    ts: p.ts
+  });
+}).catch(() => {
+  /* Vite 미리보기 등 Tauri 없음 */
+});
+
 const moveHandle = document.querySelector<HTMLButtonElement>(".move-handle");
 const resizeHandle = document.querySelector<HTMLButtonElement>(".resize-handle");
 

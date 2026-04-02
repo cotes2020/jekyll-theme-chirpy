@@ -1,8 +1,10 @@
+mod ingest_server;
+
 use serde::{Deserialize, Serialize};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
-use tauri::menu::{Menu, MenuItem};
+use tauri::menu::{Menu, MenuItem, PredefinedMenuItem};
 use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
 use tauri::tray::{MouseButton, TrayIconEvent};
@@ -14,6 +16,33 @@ struct WindowState {
     y: i32,
     width: u32,
     height: u32,
+}
+
+/** `apps/chat-overlay` ( `src-tauri` 의 부모 ). `.env` · Vite 루트. */
+fn chat_overlay_workspace_dir() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .map(Path::to_path_buf)
+        .unwrap_or_else(|| PathBuf::from("."))
+}
+
+fn open_chat_overlay_folder() {
+    let p = chat_overlay_workspace_dir();
+    if let Err(e) = open::that(&p) {
+        eprintln!("[chat-overlay] 폴더 열기 실패: {e}");
+    }
+}
+
+fn open_dotenv_file() {
+    let dir = chat_overlay_workspace_dir();
+    let env_path = dir.join(".env");
+    if env_path.exists() {
+        if let Err(e) = open::that(&env_path) {
+            eprintln!("[chat-overlay] .env 열기 실패: {e}");
+        }
+    } else if let Err(e) = open::that(&dir) {
+        eprintln!("[chat-overlay] 폴더 열기 실패: {e}");
+    }
 }
 
 fn overlay_state_dir(app: &tauri::AppHandle) -> Option<PathBuf> {
@@ -190,6 +219,8 @@ pub fn run() {
                      창이 안 보이면 Ctrl+Shift+0(위치 초기화) 또는 트레이 아이콘 더블클릭."
                 );
 
+                ingest_server::spawn_ingest_server(handle.clone());
+
                 #[cfg(not(any(target_os = "android", target_os = "ios")))]
                 {
                     let vis_toggle_i = MenuItem::with_id(
@@ -220,10 +251,36 @@ pub fn run() {
                         true,
                         None::<&str>,
                     )?;
+                    let sep_before_dev = PredefinedMenuItem::separator(app)?;
+                    let open_folder_i = MenuItem::with_id(
+                        app,
+                        "tray_open_overlay_folder",
+                        "chat-overlay 폴더 열기",
+                        true,
+                        None::<&str>,
+                    )?;
+                    let open_env_i = MenuItem::with_id(
+                        app,
+                        "tray_open_env",
+                        ".env 파일 열기",
+                        true,
+                        None::<&str>,
+                    )?;
+                    let sep_before_quit = PredefinedMenuItem::separator(app)?;
                     let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
                     let menu = Menu::with_items(
                         app,
-                        &[&vis_toggle_i, &toggle_i, &layout_edit_i, &reset_i, &quit_i],
+                        &[
+                            &vis_toggle_i,
+                            &toggle_i,
+                            &layout_edit_i,
+                            &reset_i,
+                            &sep_before_dev,
+                            &open_folder_i,
+                            &open_env_i,
+                            &sep_before_quit,
+                            &quit_i,
+                        ],
                     )?;
 
                     let ig = ignore_mouse.clone();
@@ -260,6 +317,10 @@ pub fn run() {
                                     apply_layout_edit(app, &le, &ig, v);
                                 } else if event.id == "tray_reset" {
                                     reset_window_layout(app);
+                                } else if event.id == "tray_open_overlay_folder" {
+                                    open_chat_overlay_folder();
+                                } else if event.id == "tray_open_env" {
+                                    open_dotenv_file();
                                 } else if event.id == "tray_quit" {
                                     if let Some(w) = app.get_webview_window("main") {
                                         save_window_state_webview(&w, app);

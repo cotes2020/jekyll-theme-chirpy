@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "KarmoWebExtension",
+  "short_name": "Karmo",
+  "version": "0.1.0",
+  "description": "방송·시청 페이지와 로컬 앱(chat-overlay 등)을 연결합니다. 기능은 계속 추가 예정입니다.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://chzzk.naver.com/*",
+    "https://*.chzzk.naver.com/*",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chzzk.naver.com/*",
+        "https://*.chzzk.naver.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "KarmoWebExtension"
+  }
+}

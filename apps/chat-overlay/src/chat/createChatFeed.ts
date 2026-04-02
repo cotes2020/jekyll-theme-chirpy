@@ -1,14 +1,18 @@
 import type { ChatFeedSource } from "./types";
 import { ChzzkChatFeed } from "./chzzk/chzzkChatFeed";
 import { ChzzkSessionChatFeed } from "./chzzk/chzzkSessionChatFeed";
+import { ExtensionIngestFeed } from "./extensionIngestFeed";
 import { RandomChatFeed } from "./randomChatFeed";
 
-export type ChatFeedKind = "random" | "chzzk";
+export type ChatFeedKind = "random" | "chzzk" | "extension";
 
 export function parseChatFeedKind(raw: string | undefined): ChatFeedKind {
   const t = (raw ?? "").trim().toLowerCase();
   if (t === "chzzk") {
     return "chzzk";
+  }
+  if (t === "extension") {
+    return "extension";
   }
   return "random";
 }
@@ -62,6 +66,9 @@ export function chatFeedKindFromEnv(): ChatFeedKind {
 }
 
 export function createChatFeed(kind: ChatFeedKind = "random"): ChatFeedSource {
+  if (kind === "extension") {
+    return new ExtensionIngestFeed();
+  }
   if (kind === "chzzk") {
     const token = rawChzzkAccessToken();
     if (token !== "" && chzzkSessionFeedEnabled()) {
