@@ -7,7 +7,24 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div class="drag-strip" data-tauri-drag-region aria-hidden="true"></div>
+    <div class="ui">
+      <button
+        class="move-handle"
+        type="button"
+        aria-label="창 이동"
+        title="창 이동"
+      >
+        move
+      </button>
+      <button
+        class="resize-handle"
+        type="button"
+        aria-label="크기 조정"
+        title="크기 조정"
+      >
+        resize
+      </button>
+    </div>
     <div id="log" class="log" aria-live="polite"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

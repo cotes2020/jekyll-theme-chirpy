@@ -1,12 +1,11 @@
 import type { ChatFeedSource, ChatLine, Unsubscribe } from "../types";
 
 /**
- * 치지직(Chzzk) 공식 오픈 API는 방송·채널 연동 중심이며,
- * 시청자 채팅 실시간 수신용 공개 REST/WebSocket 스펙은 문서상 제공되지 않는 경우가 많습니다.
- * (최신 내용은 https://chzzk.gitbook.io/ 등 공식 GitBook 확인.)
+ * 토큰·`VITE_CHZZK_SESSION` 없이 `chzzk` 피드를 켰을 때의 안내용 피드.
  *
- * 이 구현은 공식으로 허용된 범위를 넘지 않도록, 채팅 대신 안내 메시지만 한 번보냅니다.
- * 실시간 채팅이 필요하면 방송자용 도구·공식 위젯·또는 플랫폼이 허용하는 경로를 사용해야 합니다.
+ * 실시간 수신은 공식 Session API(https://chzzk.gitbook.io/chzzk/chzzk-api/session)로:
+ * 세션 URL → Socket.IO → `SYSTEM` connected의 sessionKey → POST 구독 → `CHAT`.
+ * 해당 경로는 `ChzzkSessionChatFeed` + `VITE_CHZZK_ACCESS_TOKEN` + `VITE_CHZZK_SESSION=1`로 활성화.
  */
 export const CHZZK_VIEWER_CHAT_CONSTRAINT_KO =
   "[치지직] 공개 API만으로는 시청 채팅 실시간 수신이 어려울 수 있습니다. " +

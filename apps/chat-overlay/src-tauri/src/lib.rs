@@ -184,6 +184,12 @@ pub fn run() {
                 let _ = window.set_always_on_top(true);
                 let _ = window.set_ignore_cursor_events(ignore_mouse.load(Ordering::SeqCst));
 
+                #[cfg(debug_assertions)]
+                eprintln!(
+                    "chat-overlay: 실행 중입니다. 작업 표시줄에는 안 보일 수 있습니다(트레이·투명 창). \
+                     창이 안 보이면 Ctrl+Shift+0(위치 초기화) 또는 트레이 아이콘 더블클릭."
+                );
+
                 #[cfg(not(any(target_os = "android", target_os = "ios")))]
                 {
                     let vis_toggle_i = MenuItem::with_id(
