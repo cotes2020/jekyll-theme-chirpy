@@ -58,7 +58,9 @@ export async function fetchUnityFreeAssetInfo(): Promise<UnityFreeAssetInfo | nu
   let assetUrl: string | null = null;
   $('a').each((_, el) => {
     const text = $(el).text().trim().toLowerCase();
-    if (text.includes('get your gift')) {
+    // Unity 문구가 "Get your gift" → "Get your free gift"로 바뀌면
+    // includes('get your gift')는 "free" 때문에 false가 되므로 (free )? 로 둘 다 허용
+    if (/get your (free )?gift/.test(text)) {
       const href = $(el).attr('href');
       if (href) {
         assetUrl = href.startsWith('http') ? href : `https://assetstore.unity.com${href}`;
