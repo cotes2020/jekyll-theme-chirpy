@@ -1,0 +1,17 @@
+/**
+ * 채팅 모양·폰트 커스텀 — 여기만 수정하세요.
+ * 기본값은 style.css 의 :root 와 같습니다.
+ * 채팅 폰트는 body가 아니라 #log(.log)에만 쓰입니다.
+ */
+
+:root {
+  /* 예시 (주석 해제 후 수정)
+  --chat-font-family: "Pretendard", "Malgun Gothic", sans-serif;
+  --chat-font-size: 15px;
+  --chat-font-weight: 500;
+  --chat-line-height: 1.4;
+  --chat-text-color: rgba(255, 255, 255, 0.98);
+  --author-saturation: 55%;
+  --author-lightness: 78%;
+  */
+}

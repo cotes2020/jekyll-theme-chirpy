@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chat-overlay</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/chat-theme.css" />
+  </head>
+  <body>
+    <div class="ui">
+      <div class="ui-handles">
+        <button
+          class="move-handle"
+          type="button"
+          aria-label="창 이동"
+          title="창 이동"
+        >
+          move
+        </button>
+        <button
+          class="resize-handle"
+          type="button"
+          aria-label="크기 조정"
+          title="크기 조정"
+        >
+          resize
+        </button>
+      </div>
+    </div>
+    <div id="log" class="log" aria-live="polite"></div>
+
+    <div id="theme-editor" class="theme-editor" hidden>
+      <div id="theme-editor-backdrop" class="theme-editor__backdrop" aria-hidden="true"></div>
+      <div
+        class="theme-editor__panel"
+        role="dialog"
+        aria-labelledby="theme-editor-title"
+        aria-modal="true"
+      >
+        <header class="theme-editor__head">
+          <h2 id="theme-editor-title">채팅 스타일</h2>
+          <p class="theme-editor__hint">
+            Ctrl+Shift+, 로 열기 · Esc 닫기 · 저장 시 다음 실행까지 유지
+          </p>
+        </header>
+        <div class="theme-editor__preview" aria-hidden="true">
+          <div class="theme-editor__preview-inner">
+            <div class="line line--visible">
+              <span class="author">미리보기닉</span>
+              <span class="text">이렇게 보입니다</span>
+            </div>
+          </div>
+        </div>
+        <div class="theme-editor__fields">
+          <label class="theme-editor__row">
+            <span>프리셋</span>
+            <select id="theme-preset">
+              <option value="default">기본 (현재 스타일)</option>
+              <option value="dark_chat_only">검정 줄배경 · 채팅만 (단축)</option>
+            </select>
+          </label>
+          <label class="theme-editor__row theme-editor__row--check">
+            <input type="checkbox" id="theme-opt-hide-author" />
+            <span>닉네임 숨기기 (채팅만 표시)</span>
+          </label>
+          <label class="theme-editor__row theme-editor__row--check">
+            <input type="checkbox" id="theme-opt-line-dark-bg" />
+            <span>줄마다 검정 배경 (글자 크기에 맞춤)</span>
+          </label>
+          <label class="theme-editor__row theme-editor__row--check">
+            <input type="checkbox" id="theme-opt-text-center" />
+            <span>텍스트 중앙 정렬</span>
+          </label>
+          <label class="theme-editor__row">
+            <span>글꼴</span>
+            <input type="text" data-theme-slug="family" spellcheck="false" />
+          </label>
+          <label class="theme-editor__row">
+            <span>글자 크기</span>
+            <input type="text" data-theme-slug="size" placeholder="14px" />
+          </label>
+          <label class="theme-editor__row">
+            <span>굵기</span>
+            <select data-theme-slug="weight">
+              <option value="400">400</option>
+              <option value="500">500</option>
+              <option value="600">600</option>
+              <option value="700">700</option>
+            </select>
+          </label>
+          <label class="theme-editor__row">
+            <span>줄 간격 (줄 높이)</span>
+            <input type="text" data-theme-slug="lineHeight" placeholder="1.35" />
+          </label>
+          <label class="theme-editor__row">
+            <span>본문 색</span>
+            <input type="text" data-theme-slug="textColor" placeholder="rgba(...)" />
+          </label>
+          <label class="theme-editor__row">
+            <span>닉 채도 %</span>
+            <input type="text" data-theme-slug="authorSat" placeholder="62%" />
+          </label>
+          <label class="theme-editor__row">
+            <span>닉 밝기 %</span>
+            <input type="text" data-theme-slug="authorLight" placeholder="72%" />
+          </label>
+          <label class="theme-editor__row">
+            <span>줄 사이 간격</span>
+            <input type="text" data-theme-slug="lineGap" placeholder="6px" />
+          </label>
+          <label class="theme-editor__row">
+            <span>바깥 여백</span>
+            <input type="text" data-theme-slug="logPadding" placeholder="12px 14px 16px" />
+          </label>
+        </div>
+        <footer class="theme-editor__foot">
+          <button type="button" id="theme-reset" class="theme-editor__btn theme-editor__btn--ghost">
+            초기화
+          </button>
+          <div class="theme-editor__foot-right">
+            <button type="button" id="theme-close" class="theme-editor__btn theme-editor__btn--ghost">
+              닫기
+            </button>
+            <button type="button" id="theme-save" class="theme-editor__btn theme-editor__btn--primary">
+              저장
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+[package]
+name = "chat_overlay"
+version = "0.2.0"
+description = "Transparent chat overlay (Tauri)"
+authors = ["mascari4615"]
+edition = "2021"
+
+[lib]
+name = "chat_overlay_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+axum = "0.7"
+dotenvy = "0.15"
+open = "5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-single-instance = "2"
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread"] }
+tower-http = { version = "0.5", features = ["cors"] }
+
+[target."cfg(not(any(target_os = \"android\", target_os = \"ios\")))".dependencies]
+tauri-plugin-global-shortcut = "2"
