@@ -186,8 +186,13 @@ pub fn run() {
 
                 #[cfg(not(any(target_os = "android", target_os = "ios")))]
                 {
-                    let show_i = MenuItem::with_id(app, "tray_show", "창 보이기", true, None::<&str>)?;
-                    let hide_i = MenuItem::with_id(app, "tray_hide", "창 숨기기", true, None::<&str>)?;
+                    let vis_toggle_i = MenuItem::with_id(
+                        app,
+                        "tray_toggle_visible",
+                        "창 표시 전환",
+                        true,
+                        None::<&str>,
+                    )?;
                     let toggle_i = MenuItem::with_id(
                         app,
                         "tray_toggle_ct",
@@ -212,7 +217,7 @@ pub fn run() {
                     let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
                     let menu = Menu::with_items(
                         app,
-                        &[&show_i, &hide_i, &toggle_i, &layout_edit_i, &reset_i, &quit_i],
+                        &[&vis_toggle_i, &toggle_i, &layout_edit_i, &reset_i, &quit_i],
                     )?;
 
                     let ig = ignore_mouse.clone();
@@ -226,14 +231,15 @@ pub fn run() {
                             )
                             .show_menu_on_left_click(true)
                             .on_menu_event(move |app, event| {
-                                if event.id == "tray_show" {
+                                if event.id == "tray_toggle_visible" {
                                     if let Some(w) = app.get_webview_window("main") {
-                                        let _ = w.show();
-                                        let _ = w.set_focus();
-                                    }
-                                } else if event.id == "tray_hide" {
-                                    if let Some(w) = app.get_webview_window("main") {
-                                        let _ = w.hide();
+                                        if w.is_visible().unwrap_or(true) {
+                                            let _ = w.hide();
+                                        } else {
+                                            let _ = w.unminimize();
+                                            let _ = w.show();
+                                            let _ = w.set_focus();
+                                        }
                                     }
                                 } else if event.id == "tray_toggle_ct" {
                                     let v = !ig.load(Ordering::SeqCst);
