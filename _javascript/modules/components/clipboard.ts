@@ -6,7 +6,7 @@
  */
 
 import Tooltip from 'bootstrap/js/src/tooltip';
-import { ClipboardJS } from '../globals';
+import { ClipboardJS } from '../globals-clipboard';
 
 const clipboardSelector = '.code-header>button';
 

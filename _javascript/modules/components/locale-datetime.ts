@@ -4,7 +4,7 @@
  * Requirement: <https://github.com/iamkun/dayjs>
  */
 
-import { dayjs, dayjsLocalizedFormatPlugin } from '../globals';
+import { dayjs, dayjsLocalizedFormatPlugin } from '../globals-dayjs';
 
 /* A tool for locale datetime */
 class LocaleHelper {

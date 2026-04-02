@@ -4,7 +4,8 @@
  * Dependencies: https://github.com/biati-digital/glightbox
  */
 
-import { GLightbox, type GLightboxInstance, Theme } from '../globals';
+import { GLightbox, type GLightboxInstance } from '../globals-glightbox';
+import { Theme } from '../globals-theme';
 
 const lightImages = '.popup:not(.dark)';
 const darkImages = '.popup:not(.light)';

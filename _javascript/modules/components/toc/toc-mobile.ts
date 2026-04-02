@@ -2,7 +2,7 @@
  * TOC button, topbar and popup for mobile devices
  */
 
-import { tocbot } from '../../globals';
+import { tocbot } from '../../globals-tocbot';
 
 const $tocBar = document.getElementById('toc-bar');
 const $soloTrigger = document.getElementById('toc-solo-trigger');

@@ -1,4 +1,4 @@
-import { tocbot } from '../../globals';
+import { tocbot } from '../../globals-tocbot';
 
 export class TocDesktop {
   /* Tocbot options Ref: https://github.com/tscanlin/tocbot#usage */

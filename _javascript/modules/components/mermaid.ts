@@ -2,7 +2,8 @@
  * Mermaid-js loader
  */
 
-import { mermaid, Theme } from '../globals';
+import { mermaid } from '../globals-mermaid';
+import { Theme } from '../globals-theme';
 
 const MERMAID = 'mermaid';
 const themeMapper = Theme.getThemeMapper('default', 'dark');

@@ -32,22 +32,10 @@ export type ClipboardJSGlobal = new (
   options: { target: (trigger: Element) => Element }
 ) => { on(event: 'success', callback: (e: ClipboardJSEvent) => void): void };
 
-function requiredGlobal<T>(name: string): T {
+export function requiredGlobal<T>(name: string): T {
   const value = (window as unknown as Record<string, unknown>)[name];
   if (!value) {
     throw new Error(`Missing required global: ${name}`);
   }
   return value as T;
-}
-
-export const Theme = requiredGlobal<ThemeGlobal>('Theme');
-export const tocbot = requiredGlobal<TocbotGlobal>('tocbot');
-export const mermaid = requiredGlobal<MermaidGlobal>('mermaid');
-export const GLightbox = requiredGlobal<GLightboxGlobal>('GLightbox');
-export const dayjs = requiredGlobal<DayjsGlobal>('dayjs');
-export const ClipboardJS = requiredGlobal<ClipboardJSGlobal>('ClipboardJS');
-
-export function dayjsLocalizedFormatPlugin(): unknown {
-  return (window as Window & { dayjs_plugin_localizedFormat?: unknown })
-    .dayjs_plugin_localizedFormat;
 }
