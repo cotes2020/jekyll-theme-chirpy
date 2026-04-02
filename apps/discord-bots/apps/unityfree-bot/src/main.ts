@@ -36,6 +36,7 @@ function buildUnityFreeEmbed(info: UnityFreeAssetInfo) {
   if (info.promoText) lines.push(`ℹ️ ${info.promoText}`);
 
   const embed = new EmbedBuilder().setTitle(title).setDescription(lines.join('\n')).setColor(0x00bcd4);
+  if (info.assetUrl) embed.setURL(info.assetUrl);
   if (info.imageUrl) embed.setImage(info.imageUrl);
   return embed;
 }

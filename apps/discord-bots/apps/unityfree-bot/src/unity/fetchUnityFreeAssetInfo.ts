@@ -13,6 +13,52 @@ async function ensureFetch(): Promise<typeof fetch> {
 
 const PUBLISHER_SALE_URL = 'https://assetstore.unity.com/ko-KR/publisher-sale';
 
+function normalizeAssetStoreHref(href: string): string {
+  return href.startsWith('http') ? href : `https://assetstore.unity.com${href}`;
+}
+
+/** 선물 CTA 문구(본문·접근성 라벨·툴팁 등)에 무료 에셋 링크가 있는지 */
+function textLooksLikeGiftCta(blob: string): boolean {
+  const lower = blob.toLowerCase();
+  if (/get your (free )?gift/.test(lower)) return true;
+  if (/\bfree gift\b/.test(lower)) return true;
+  // 한국어 페이지 대비
+  if (/무료\s*선물|선물\s*받기|무료\s*받기/.test(blob)) return true;
+  return false;
+}
+
+/**
+ * HTML이 바뀌어도 선물 버튼은 보통 /packages/ + aria-label(gift) 조합으로 남는다.
+ */
+function extractGiftPackageHrefFromRawHtml(html: string): string | null {
+  const hrefFirst = /<a\b[^>]*\bhref="(\/packages\/[^"]+)"[^>]*\baria-label="[^"]*(?:gift|선물)[^"]*"/i;
+  const ariaFirst = /<a\b[^>]*\baria-label="[^"]*(?:gift|선물)[^"]*"[^>]*\bhref="(\/packages\/[^"]+)"/i;
+  const m = html.match(hrefFirst) || html.match(ariaFirst);
+  return m ? m[1] : null;
+}
+
+function findGiftAssetUrl($: ReturnType<typeof cheerio.load>, html: string): string | null {
+  let found: string | null = null;
+  $('a[href*="/packages/"]').each((_, el) => {
+    if (found) return;
+    const $a = $(el);
+    const href = $a.attr('href');
+    if (!href || !href.includes('/packages/')) return;
+    const blob = [
+      $a.text(),
+      $a.attr('aria-label') ?? '',
+      $a.attr('title') ?? '',
+    ].join(' ');
+    if (textLooksLikeGiftCta(blob)) {
+      found = normalizeAssetStoreHref(href);
+    }
+  });
+  if (found) return found;
+
+  const fallback = extractGiftPackageHrefFromRawHtml(html);
+  return fallback ? normalizeAssetStoreHref(fallback) : null;
+}
+
 export type UnityFreeAssetInfo = {
   couponCode: string | null;
   assetName: string | null;
@@ -54,19 +100,8 @@ export async function fetchUnityFreeAssetInfo(): Promise<UnityFreeAssetInfo | nu
   const nameMatch = bodyText.match(/Add\s+(.+?)\s+to your cart/i);
   const assetName = nameMatch ? nameMatch[1].trim() : null;
 
-  // "Get your gift" 링크(버튼)의 href 탐색
-  let assetUrl: string | null = null;
-  $('a').each((_, el) => {
-    const text = $(el).text().trim().toLowerCase();
-    // Unity 문구가 "Get your gift" → "Get your free gift"로 바뀌면
-    // includes('get your gift')는 "free" 때문에 false가 되므로 (free )? 로 둘 다 허용
-    if (/get your (free )?gift/.test(text)) {
-      const href = $(el).attr('href');
-      if (href) {
-        assetUrl = href.startsWith('http') ? href : `https://assetstore.unity.com${href}`;
-      }
-    }
-  });
+  // 무료 에셋 상세 링크: 본문이 비어 있고 aria-label만 있는 경우가 있어 DOM + 원본 HTML 폴백
+  const assetUrl = findGiftAssetUrl($, html);
 
   // 기간/안내 문구(“promotion end …” 같은 문자열) 추출
   let promoText: string | null = null;
@@ -108,10 +143,23 @@ async function fetchUnityAssetImage(assetUrl: string): Promise<string | null> {
     const $ = cheerio.load(html);
 
     const ogImage = $('meta[property="og:image"]').attr('content');
-    if (ogImage) return ogImage;
+    if (ogImage) {
+      try {
+        return new URL(ogImage, assetUrl).href;
+      } catch {
+        return ogImage.startsWith('http') ? ogImage : null;
+      }
+    }
 
     const firstImg = $('img').first().attr('src');
-    return firstImg || null;
+    if (firstImg) {
+      try {
+        return new URL(firstImg, assetUrl).href;
+      } catch {
+        return firstImg.startsWith('http') ? firstImg : null;
+      }
+    }
+    return null;
   } catch {
     return null;
   }
