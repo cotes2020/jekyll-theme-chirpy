@@ -1,5 +1,5 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { initLocaleDatetime } from './modules/components';
+import { initLocaleDatetime } from './modules/components/locale-datetime';
 
 initSidebar();
 initTopbar();

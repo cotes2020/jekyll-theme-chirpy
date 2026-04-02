@@ -26,6 +26,8 @@ function cleanup() {
   // Keep graph-view output in sync with build inputs.
   fs.rmSync(`${GRAPH_DIST}/bootstrap-post-graph.js`, { force: true });
   fs.rmSync(`${GRAPH_DIST}/bootstrap-post-graph.js.map`, { force: true });
+  fs.rmSync(`${GRAPH_DIST}/graph-view.js`, { force: true });
+  fs.rmSync(`${GRAPH_DIST}/graph-view.js.map`, { force: true });
 }
 
 function insertFrontmatter() {
@@ -83,8 +85,47 @@ function build(
   };
 }
 
+const graphEsmExternal = (id) => /^https?:\/\//.test(id);
+
+const graphWatch = { include: `${SRC_GRAPH}/**/*.{ts,js}` };
+
+function graphEsmPlugins() {
+  return [
+    typescript(),
+    babel({
+      babelHelpers: 'bundled',
+      presets: ['@babel/env'],
+      plugins: [
+        '@babel/plugin-transform-class-properties',
+        '@babel/plugin-transform-private-methods'
+      ],
+      extensions: ['.js', '.ts']
+    }),
+    nodeResolve(),
+    isProd && terser()
+  ];
+}
+
 /**
- * Post graph tab: ES module bundle, d3 loaded from CDN (external URL).
+ * Shared graph module (KarmoLab widget dynamic import + tab bootstrap imports this).
+ * d3 is loaded from CDN (external URL).
+ */
+function buildGraphViewModule() {
+  return {
+    input: `${SRC_GRAPH}/graph-view.ts`,
+    output: {
+      file: `${GRAPH_DIST}/graph-view.js`,
+      format: 'es',
+      sourcemap: !isProd
+    },
+    watch: graphWatch,
+    plugins: graphEsmPlugins(),
+    external: graphEsmExternal
+  };
+}
+
+/**
+ * Post graph tab: mounts graph when #post-graph-root exists.
  */
 function buildPostGraph() {
   return {
@@ -94,24 +135,9 @@ function buildPostGraph() {
       format: 'es',
       sourcemap: !isProd
     },
-    watch: {
-      include: `${SRC_GRAPH}/**/*.{ts,js}`
-    },
-    plugins: [
-      typescript(),
-      babel({
-        babelHelpers: 'bundled',
-        presets: ['@babel/env'],
-        plugins: [
-          '@babel/plugin-transform-class-properties',
-          '@babel/plugin-transform-private-methods'
-        ],
-        extensions: ['.js', '.ts']
-      }),
-      nodeResolve(),
-      isProd && terser()
-    ],
-    external: (id) => /^https?:\/\//.test(id)
+    watch: graphWatch,
+    plugins: graphEsmPlugins(),
+    external: graphEsmExternal
   };
 }
 
@@ -127,5 +153,6 @@ export default [
   build('theme', { outputName: 'Theme' }),
   build('app', { src: SRC_PWA, jekyll: true }),
   build('sw', { src: SRC_PWA, jekyll: true }),
+  buildGraphViewModule(),
   buildPostGraph()
 ];

@@ -7,6 +7,8 @@ Gemfile.lock
 .jekyll-cache
 .jekyll-metadata
 _site
+# ad-hoc Jekyll output (e.g. jekyll build -d _site_test)
+_site_test
 
 # RubyGems
 *.gem

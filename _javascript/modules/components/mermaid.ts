@@ -42,10 +42,8 @@ function setNode(elem: Element): void {
 }
 
 export function loadMermaid(): void {
-  if (
-    typeof mermaid === 'undefined' ||
-    typeof mermaid.initialize !== 'function'
-  ) {
+  const globalMermaid = (window as Window & { mermaid?: unknown }).mermaid;
+  if (typeof globalMermaid === 'undefined') {
     return;
   }
 
