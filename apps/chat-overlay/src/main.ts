@@ -1,5 +1,6 @@
 import { chatFeedKindFromEnv, createChatFeed } from "./chat/createChatFeed";
 import type { ChatLine } from "./chat/types";
+import { getCurrentWindow } from "@tauri-apps/api/window";
 
 const MAX_LINES = 40;
 
@@ -45,6 +46,31 @@ function appendLine(container: HTMLElement, line: ChatLine): void {
 const log = document.getElementById("log");
 if (!log) {
   throw new Error("#log not found");
+}
+
+const moveHandle = document.querySelector<HTMLButtonElement>(".move-handle");
+const resizeHandle = document.querySelector<HTMLButtonElement>(".resize-handle");
+
+const appWindow = getCurrentWindow();
+
+if (moveHandle) {
+  moveHandle.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    void appWindow.startDragging().catch((err) => {
+      console.error("[chat-overlay] startDragging 실패:", err);
+    });
+  });
+}
+
+if (resizeHandle) {
+  resizeHandle.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    void appWindow.startResizeDragging("SouthEast").catch((err) => {
+      console.error("[chat-overlay] startResizeDragging 실패:", err);
+    });
+  });
 }
 
 const feed = createChatFeed(chatFeedKindFromEnv());

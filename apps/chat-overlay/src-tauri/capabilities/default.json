@@ -3,5 +3,12 @@
   "identifier": "default",
   "description": "chat-overlay: tray, transparent main window",
   "windows": ["main"],
-  "permissions": ["core:default"]
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-start-resize-dragging",
+    "global-shortcut:allow-register",
+    "global-shortcut:allow-unregister",
+    "global-shortcut:allow-is-registered"
+  ]
 }
