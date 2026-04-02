@@ -5,7 +5,7 @@
  * │                                                            │
  * │  index.html ─→ toolbox.js (코어)                           │
  * │                  ├─ 랜딩 페이지 (히어로 + 즐겨찾기 CTA)       │
- * │                  ├─ 사이드바 (도구/놀이/기타)               │
+ * │                  ├─ 상단 메뉴 (카테고리별 드롭다운)          │
  * │                  ├─ 검색, breadcrumb, 테마, 사용량 추적      │
  * │                  └─ 도전과제/뱃지/진행도 시스템              │
  * │               ─→ mdd.js (마스코트)                          │
@@ -25,7 +25,7 @@
  *    - icon: SVG path 문자열 (viewBox 0 0 24 24 기준)
  *    - category: 'tool' | 'play' | 'lab' | null
  *    - desc: 한 줄 설명 (검색·즐겨찾기용)
- *    - hidden: true면 사이드바 비표시 (user 등)
+ *    - hidden: true면 메뉴에 비표시 (user 등)
  *    - tabs: [{ id, label, build(container) }]
  *
  * 마스코트 연동:
@@ -52,20 +52,45 @@ const Toolbox = (() => {
         const t = tools.find(x => x.id === id);
         return t ? { category: t.category, desc: t.desc, hidden: t.hidden } : null;
     }
-    const SIDEBAR_GROUP_KEY = 'toolbox-sidebar-groups';
-    const SIDEBAR_COLLAPSED_KEY = 'toolbox_sidebar_collapsed';
     const LAST_PAGE_KEY = 'toolbox_last_page';
 
-    function getGroupState() {
-        try {
-            const raw = localStorage.getItem(SIDEBAR_GROUP_KEY);
-            if (raw) return JSON.parse(raw);
-        } catch (_) {}
-        return { tool: true, play: false, lab: false, misc: true };
+    let megaMenuCloseTimer = null;
+
+    function clearMegaMenuTimer() {
+        if (megaMenuCloseTimer) {
+            clearTimeout(megaMenuCloseTimer);
+            megaMenuCloseTimer = null;
+        }
     }
 
-    function setGroupState(state) {
-        try { localStorage.setItem(SIDEBAR_GROUP_KEY, JSON.stringify(state)); } catch (_) {}
+    function scheduleMegaMenuClose() {
+        clearMegaMenuTimer();
+        megaMenuCloseTimer = setTimeout(() => {
+            megaMenuCloseTimer = null;
+            closeAllHeaderNav();
+        }, 220);
+    }
+
+    function closeAllHeaderNav() {
+        clearMegaMenuTimer();
+        document.querySelectorAll('.header-nav-group.is-open').forEach((wrap) => {
+            wrap.classList.remove('is-open');
+            const tr = wrap.querySelector('.header-nav-trigger');
+            if (tr) tr.setAttribute('aria-expanded', 'false');
+            const p = wrap.querySelector('.header-nav-panel');
+            if (p) p.hidden = true;
+        });
+    }
+
+    function closeAllHeaderNavExcept(except) {
+        document.querySelectorAll('.header-nav-group.is-open').forEach((w) => {
+            if (w === except) return;
+            w.classList.remove('is-open');
+            const tr = w.querySelector('.header-nav-trigger');
+            if (tr) tr.setAttribute('aria-expanded', 'false');
+            const p = w.querySelector('.header-nav-panel');
+            if (p) p.hidden = true;
+        });
     }
 
     /* ===== Public API ===== */
@@ -277,19 +302,23 @@ const Toolbox = (() => {
     }
 
     function init() {
-        const sidebarNav = document.getElementById('sidebar-nav');
+        const headerNav = document.getElementById('header-nav');
         const mobileNav = document.getElementById('mobile-nav');
         const toolPages = document.getElementById('tool-pages');
         const hiddenSet = new Set(tools.filter(t => t.hidden).map(t => t.id));
-        const groupState = getGroupState();
 
         function addNavItem(container, tool) {
             const a = document.createElement('a');
             a.className = 'nav-item';
+            a.href = '#';
             a.dataset.page = tool.id;
             a.title = tool.title;
             a.innerHTML = `<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${tool.icon}</svg><span class="nav-item-text">${tool.title}</span>`;
-            a.onclick = () => switchPage(tool.id);
+            a.onclick = (e) => {
+                e.preventDefault();
+                closeAllHeaderNav();
+                switchPage(tool.id);
+            };
             container.appendChild(a);
         }
 
@@ -310,63 +339,89 @@ const Toolbox = (() => {
         mHome.onclick = () => switchPage('home');
         mobileNav.appendChild(mHome);
 
-        function buildSidebarGroup(cat) {
-            const catTools = tools
-                .filter(t => !hiddenSet.has(t.id) && t.category === cat.id)
-                .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
+        function buildHeaderNavGroup(label, catTools, navParent) {
             if (!catTools.length) return;
 
-            const isOpen = groupState[cat.id] !== undefined ? groupState[cat.id] : (cat.id === 'tool');
+            const canHover = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches;
+
             const wrap = document.createElement('div');
-            wrap.className = 'sidebar-group';
+            wrap.className = 'header-nav-group';
             const trigger = document.createElement('button');
             trigger.type = 'button';
-            trigger.className = 'sidebar-group-trigger' + (isOpen ? ' open' : '');
-            trigger.setAttribute('aria-expanded', isOpen);
-            trigger.innerHTML = '<span class="chevron" aria-hidden="true"></span><span class="sidebar-group-label">' + cat.label + '</span>';
-            const body = document.createElement('div');
-            body.className = 'sidebar-group-body' + (isOpen ? ' open' : '');
-            catTools.forEach(tool => addNavItem(body, tool));
-            trigger.onclick = () => {
-                const open = body.classList.toggle('open');
-                trigger.classList.toggle('open', open);
-                trigger.setAttribute('aria-expanded', open);
-                setGroupState({ ...getGroupState(), [cat.id]: open });
-            };
+            trigger.className = 'header-nav-trigger';
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.setAttribute('aria-haspopup', 'true');
+            const labelSpan = document.createElement('span');
+            labelSpan.className = 'header-nav-trigger-label';
+            labelSpan.textContent = label;
+
+            const panel = document.createElement('div');
+            panel.className = 'header-nav-panel header-nav-panel--mega';
+            panel.hidden = true;
+            const inner = document.createElement('div');
+            inner.className = 'header-nav-panel-inner';
+            catTools.forEach(tool => addNavItem(inner, tool));
+            panel.appendChild(inner);
+
+            trigger.appendChild(labelSpan);
+
+            function openThis() {
+                clearMegaMenuTimer();
+                closeAllHeaderNavExcept(wrap);
+                wrap.classList.add('is-open');
+                panel.hidden = false;
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+
+            function toggleClick(e) {
+                e.stopPropagation();
+                const wasOpen = wrap.classList.contains('is-open');
+                if (wasOpen) {
+                    wrap.classList.remove('is-open');
+                    panel.hidden = true;
+                    trigger.setAttribute('aria-expanded', 'false');
+                } else {
+                    openThis();
+                }
+            }
+
+            if (canHover) {
+                wrap.addEventListener('mouseenter', openThis);
+                wrap.addEventListener('mouseleave', scheduleMegaMenuClose);
+            } else {
+                trigger.addEventListener('click', toggleClick);
+            }
+
             wrap.appendChild(trigger);
-            wrap.appendChild(body);
-            sidebarNav.appendChild(wrap);
+            wrap.appendChild(panel);
+            navParent.appendChild(wrap);
         }
 
-        CATEGORIES.forEach(cat => buildSidebarGroup(cat));
+        if (headerNav) {
+            const headerNavScroll = document.createElement('div');
+            headerNavScroll.className = 'header-nav-scroll';
+            headerNav.appendChild(headerNavScroll);
 
-        // Uncategorized tools
-        const uncategorized = tools
-            .filter(t => !hiddenSet.has(t.id) && !t.category)
-            .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
-        if (uncategorized.length) {
-            const isOpenMisc =
-                groupState.misc !== undefined ? groupState.misc : true;
-            const wrap = document.createElement('div');
-            wrap.className = 'sidebar-group';
-            const trigger = document.createElement('button');
-            trigger.type = 'button';
-            trigger.className = 'sidebar-group-trigger' + (isOpenMisc ? ' open' : '');
-            trigger.setAttribute('aria-expanded', isOpenMisc);
-            trigger.innerHTML =
-                '<span class="chevron" aria-hidden="true"></span><span class="sidebar-group-label">기타</span>';
-            const body = document.createElement('div');
-            body.className = 'sidebar-group-body' + (isOpenMisc ? ' open' : '');
-            uncategorized.forEach(tool => addNavItem(body, tool));
-            trigger.onclick = () => {
-                const open = body.classList.toggle('open');
-                trigger.classList.toggle('open', open);
-                trigger.setAttribute('aria-expanded', open);
-                setGroupState({ ...getGroupState(), misc: open });
-            };
-            wrap.appendChild(trigger);
-            wrap.appendChild(body);
-            sidebarNav.appendChild(wrap);
+            CATEGORIES.forEach(cat => {
+                const catTools = tools
+                    .filter(t => !hiddenSet.has(t.id) && t.category === cat.id)
+                    .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
+                buildHeaderNavGroup(cat.label, catTools, headerNavScroll);
+            });
+
+            const uncategorized = tools
+                .filter(t => !hiddenSet.has(t.id) && !t.category)
+                .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
+            if (uncategorized.length) {
+                buildHeaderNavGroup('기타', uncategorized, headerNavScroll);
+            }
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.header-nav')) closeAllHeaderNav();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeAllHeaderNav();
+            });
         }
 
         // Build landing page
@@ -404,8 +459,6 @@ const Toolbox = (() => {
             if (isValidPage(pageId)) switchPage(pageId, { pushHistory: false });
         });
 
-        document.getElementById('sidebar')?.classList.add('collapsed');
-
         injectDesktopBadge();
 
         const serverDot = document.getElementById('server-status-dot');
@@ -434,17 +487,8 @@ const Toolbox = (() => {
         }
     }
 
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        if (!sidebar) return;
-        const collapsed = sidebar.classList.toggle('collapsed');
-        try { localStorage.setItem(SIDEBAR_COLLAPSED_KEY, collapsed ? '1' : '0'); } catch (_) {}
-        const btn = document.getElementById('sidebarToggle');
-        if (btn) {
-            btn.setAttribute('aria-label', collapsed ? '사이드바 펼치기' : '사이드바 접기');
-            btn.title = collapsed ? '사이드바 펼치기' : '사이드바 접기';
-        }
-    }
+    /** 레이아웃이 상단 메뉴로 바뀌기 전 호환용 */
+    function toggleSidebar() {}
 
     /* ===== Landing Page Builder ===== */
 
@@ -477,7 +521,7 @@ const Toolbox = (() => {
                     <div class="landing-cta-card-desc">API 레퍼런스 & 가이드</div>
                 </button>
             </div>
-            <p class="landing-cta-hint">왼쪽 사이드바에서 도구를 선택하세요</p>
+            <p class="landing-cta-hint">상단 메뉴에서 카테고리를 열고 도구를 선택하세요</p>
         `;
         landing.appendChild(cta);
 
@@ -492,6 +536,7 @@ const Toolbox = (() => {
     }
 
     function switchPage(pageId, opts = {}) {
+        closeAllHeaderNav();
         const { pushHistory = true } = opts;
         const base = location.pathname + (location.search || '');
         const urlWithHash = base + '#' + pageId;

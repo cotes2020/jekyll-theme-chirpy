@@ -65,7 +65,9 @@ permalink: /karmolab/
             <div class="header-bar-left">
                 <button type="button" class="header-logo" id="sidebarHome" data-page="home" onclick="Toolbox.switchPage('home')" title="홈으로"><span class="header-logo-text">KarmoLab</span></button>
             </div>
+            <nav class="header-nav" id="header-nav" role="navigation" aria-label="도구 카테고리"></nav>
             <div class="header-bar-right">
+                <a href="#linktree" class="header-dev-link" onclick="if(typeof Toolbox!=='undefined'){Toolbox.switchPage('linktree');return false}" title="개발자 연락처 · 링크">누가 만들었나요?</a>
                 <span id="server-status-dot" class="server-status-dot" role="button" tabindex="0" title="서버 상태 (클릭: 서버 모니터)" aria-label="서버 상태"></span>
                 <button type="button" class="header-btn user-btn" id="userPageBtn" title="내 정보" aria-label="내 정보">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
@@ -77,17 +79,6 @@ permalink: /karmolab/
             </div>
         </header>
         <div class="app-body">
-            <aside class="sidebar" id="sidebar">
-                <nav class="sidebar-nav" role="navigation" aria-label="도구 목록">
-                    <div id="sidebar-nav"></div>
-                </nav>
-                <div class="sidebar-footer">
-                    <a href="#linktree" class="sidebar-dev-links" onclick="if(typeof Toolbox!=='undefined'){Toolbox.switchPage('linktree');return false}" title="개발자 연락처 · 링크" aria-label="누가 만들었나요">
-                    <span class="sidebar-dev-links-icon" aria-hidden="true">i</span>
-                    <span class="sidebar-dev-links-text">누가 만들었나요?</span>
-                </a>
-                </div>
-            </aside>
             <main class="main-content" role="main">
                 <div class="intro-overlay hidden" id="introOverlay" aria-hidden="true">
                     <h1 class="intro-title">KarmoLab</h1>
