@@ -49,6 +49,7 @@
     const DEFAULT_ITEMS: FavoriteGroup[] = [
         { group: '개발', items: [
             { url: 'https://github.com', label: 'GitHub', icon: 'https://cdn.simpleicons.org/github' },
+            { url: 'https://www.postman.com/', label: 'Postman', icon: 'https://cdn.simpleicons.org/postman' },
             { url: 'https://discord.com/developers/applications/', label: 'Discord Developer', icon: 'https://cdn.simpleicons.org/discord' },
             { url: 'https://my.vultr.com', label: 'Vultr', icon: 'https://cdn.simpleicons.org/vultr' },
             { url: 'https://solved.ac/class?class=5', label: 'solved.ac CLASS', icon: null },

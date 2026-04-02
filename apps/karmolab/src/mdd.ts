@@ -381,7 +381,7 @@ const Mdd = (() => {
 
         injectCSS('mdd-core', `
             .mdd-container { position:fixed; bottom:16px; right:16px; z-index:900; display:flex; flex-direction:column; align-items:flex-end; pointer-events:none; }
-            .mdd-bubble { background:rgba(8,16,30,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(0,229,255,0.12); color:var(--text-primary,#e4eaf6); padding:6px 10px; font-size:var(--font-size-xs); max-width:180px; text-align:left; line-height:1.4; margin-bottom:6px; opacity:0; transform:translateY(4px); transition:opacity 0.2s,transform 0.2s; pointer-events:auto; font-family:var(--font-sans,'Pretendard',sans-serif); box-shadow:0 0 12px rgba(0,229,255,0.06),0 4px 16px rgba(0,0,0,0.3); border-radius:var(--radius-md,8px); }
+            .mdd-bubble { background:rgba(8,16,30,0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(0,229,255,0.12); color:var(--text-primary,#e4eaf6); padding:6px 10px; font-size:var(--font-size-xs); max-width:180px; text-align:left; line-height:1.4; margin-bottom:6px; opacity:0; transform:translateY(4px); transition:opacity 0.2s,transform 0.2s; pointer-events:auto; font-family:var(--font-sans,'Inter',sans-serif); box-shadow:0 0 12px rgba(0,229,255,0.06),0 4px 16px rgba(0,0,0,0.3); border-radius:var(--radius-md,8px); }
             .mdd-bubble.visible { opacity:1; transform:translateY(0); }
             .mdd-char { width:96px; height:105px; pointer-events:auto; cursor:grab; touch-action:none; transition:transform 0.15s,filter 0.3s; user-select:none; -webkit-user-select:none; opacity:0.85; }
             .mdd-char:active { cursor:grabbing; }

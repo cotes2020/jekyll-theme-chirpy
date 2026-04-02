@@ -61,7 +61,7 @@ const Toolbox = (() => {
             const raw = localStorage.getItem(SIDEBAR_GROUP_KEY);
             if (raw) return JSON.parse(raw);
         } catch (_) {}
-        return { tool: true, play: false, lab: false };
+        return { tool: true, play: false, lab: false, misc: true };
     }
 
     function setGroupState(state) {
@@ -345,18 +345,24 @@ const Toolbox = (() => {
             .filter(t => !hiddenSet.has(t.id) && !t.category)
             .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
         if (uncategorized.length) {
+            const isOpenMisc =
+                groupState.misc !== undefined ? groupState.misc : true;
             const wrap = document.createElement('div');
             wrap.className = 'sidebar-group';
             const trigger = document.createElement('button');
             trigger.type = 'button';
-            trigger.className = 'sidebar-group-trigger';
-            trigger.innerHTML = '<span class="chevron" aria-hidden="true"></span><span class="sidebar-group-label">기타</span>';
+            trigger.className = 'sidebar-group-trigger' + (isOpenMisc ? ' open' : '');
+            trigger.setAttribute('aria-expanded', isOpenMisc);
+            trigger.innerHTML =
+                '<span class="chevron" aria-hidden="true"></span><span class="sidebar-group-label">기타</span>';
             const body = document.createElement('div');
-            body.className = 'sidebar-group-body';
+            body.className = 'sidebar-group-body' + (isOpenMisc ? ' open' : '');
             uncategorized.forEach(tool => addNavItem(body, tool));
             trigger.onclick = () => {
                 const open = body.classList.toggle('open');
                 trigger.classList.toggle('open', open);
+                trigger.setAttribute('aria-expanded', open);
+                setGroupState({ ...getGroupState(), misc: open });
             };
             wrap.appendChild(trigger);
             wrap.appendChild(body);
