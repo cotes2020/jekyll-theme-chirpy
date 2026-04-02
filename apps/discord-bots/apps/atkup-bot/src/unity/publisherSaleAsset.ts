@@ -59,7 +59,7 @@ function findGiftAssetUrl($: ReturnType<typeof cheerio.load>, html: string): str
   return fallback ? normalizeAssetStoreHref(fallback) : null;
 }
 
-export type UnityFreeAssetInfo = {
+export type PublisherSaleAssetInfo = {
   couponCode: string | null;
   assetName: string | null;
   assetUrl: string | null;
@@ -74,7 +74,7 @@ export type UnityFreeAssetInfo = {
  * - 에셋 상세 페이지 링크
  * - 안내 문구/기간 텍스트
  */
-export async function fetchUnityFreeAssetInfo(): Promise<UnityFreeAssetInfo | null> {
+export async function fetchPublisherSaleAssetInfo(): Promise<PublisherSaleAssetInfo | null> {
   const fetch = await ensureFetch();
   const res = await fetch(PUBLISHER_SALE_URL, {
     headers: {

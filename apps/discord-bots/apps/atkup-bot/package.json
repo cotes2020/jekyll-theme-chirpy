@@ -1,5 +1,6 @@
 {
-  "name": "unityfree-bot",
+  "name": "atkup-bot",
+  "description": "ATKUp — Unity 무료 에셋 알림 · HN 긱 뉴스 (Discord)",
   "private": true,
   "main": "dist/main.js",
   "scripts": {

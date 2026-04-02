@@ -6,18 +6,18 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build && npm -w apps/unityfree-bot run build",
+    "build": "npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build && npm -w apps/atkup-bot run build",
     "build:yawnbot": "npm -w apps/yawnbot run build",
-    "build:unityfree": "npm -w apps/unityfree-bot run build",
-    "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/unityfree-bot run dev\"",
+    "build:atkup": "npm -w apps/atkup-bot run build",
+    "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/atkup-bot run dev\"",
     "dev:yawnbot": "npm -w apps/yawnbot run dev",
-    "dev:unityfree": "npm -w apps/unityfree-bot run dev",
-    "start": "concurrently -k \"npm -w apps/yawnbot run start\" \"npm -w apps/unityfree-bot run start\"",
+    "dev:atkup": "npm -w apps/atkup-bot run dev",
+    "start": "concurrently -k \"npm -w apps/yawnbot run start\" \"npm -w apps/atkup-bot run start\"",
     "start:yawnbot": "npm -w apps/yawnbot run start",
-    "start:unityfree": "npm -w apps/unityfree-bot run start",
-    "deploy": "concurrently -k \"npm -w apps/yawnbot run deploy\" \"npm -w apps/unityfree-bot run deploy\"",
+    "start:atkup": "npm -w apps/atkup-bot run start",
+    "deploy": "concurrently -k \"npm -w apps/yawnbot run deploy\" \"npm -w apps/atkup-bot run deploy\"",
     "deploy:yawnbot": "npm -w apps/yawnbot run deploy",
-    "deploy:unityfree": "npm -w apps/unityfree-bot run deploy"
+    "deploy:atkup": "npm -w apps/atkup-bot run deploy"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",

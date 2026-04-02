@@ -5,7 +5,7 @@
 ## 앱 목록
 
 - `apps/yawnbot`: 게임/슬래시 커맨드 봇 (기존 YawnBot) — 앱별 요약은 [`apps/yawnbot/README.md`](apps/yawnbot/README.md)
-- `apps/unityfree-bot`: Unity 무료 에셋 알림 봇 (별도 토큰/프로세스) — 앱별 요약은 [`apps/unityfree-bot/README.md`](apps/unityfree-bot/README.md)
+- `apps/atkup-bot`: **ATKUp** (Unity 무료·긱 뉴스 알림, 별도 토큰/프로세스) — [`apps/atkup-bot/README.md`](apps/atkup-bot/README.md)
 
 ## 설치
 
@@ -28,7 +28,7 @@ npm run start
 
 ```bash
 npm run start:yawnbot
-npm run start:unityfree
+npm run start:atkup
 ```
 
 ### 앱 단위(직접 `-w`)
@@ -40,11 +40,11 @@ npm -w apps/yawnbot run build
 npm -w apps/yawnbot run start
 ```
 
-#### UnityFree Bot
+#### ATKUp (`atkup-bot`)
 
 ```bash
-npm -w apps/unityfree-bot run build
-npm -w apps/unityfree-bot run start
+npm -w apps/atkup-bot run build
+npm -w apps/atkup-bot run start
 ```
 
 ## 커맨드 배포
@@ -59,7 +59,7 @@ npm run deploy
 
 ```bash
 npm run deploy:yawnbot
-npm run deploy:unityfree
+npm run deploy:atkup
 ```
 
 ### 앱 단위(직접 `-w`)
@@ -70,13 +70,12 @@ npm run deploy:unityfree
 npm -w apps/yawnbot run deploy
 ```
 
-#### UnityFree Bot
+#### ATKUp (`atkup-bot`)
 
 ```bash
-npm -w apps/unityfree-bot run deploy
+npm -w apps/atkup-bot run deploy
 ```
 
 ## 레거시 `apps/yawnbot-server`
 
 이 폴더의 `npm run start` / `build` / `deploy` 는 위 `apps/discord-bots` 워크스페이스로 **위임**됩니다. 최초 1회는 `apps/discord-bots`에서 `npm install`이 필요합니다.
-
