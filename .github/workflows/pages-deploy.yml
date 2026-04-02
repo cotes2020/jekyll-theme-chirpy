@@ -53,8 +53,15 @@ jobs:
           node-version: '20'
           cache: npm
 
+      # Root package.json: build = PurgeCSS + Rollup (_javascript → assets/js/dist, etc.)
+      - name: Install root npm dependencies
+        run: npm ci
+
+      - name: Build theme assets (CSS and JS)
+        run: npm run build
+
       - name: Build post graph data
-        run: npm ci && npm run build:graph
+        run: npm run build:graph
 
       - name: Build KarmoLab React App
         working-directory: apps/karmolab-react-src

@@ -66,7 +66,10 @@ _site/
 node_modules/
 vendor/
 _sass/vendors
+# Theme JS/CSS bundles (Rollup + PurgeCSS: `npm run build`)
 assets/js/dist
+# Post graph tab bundle (Rollup: `npm run build`)
+assets/js/graph-view/
 
 # Hidden system files
 *~

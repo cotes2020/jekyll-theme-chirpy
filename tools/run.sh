@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
 # Run jekyll serve and then launch the site
+#
+# Fresh clone: run `npm ci && npm run site:prep` once so assets/js/dist exists
+# (same outputs as GitHub Actions before `jekyll build`).
 
 prod=false
 command="bundle exec jekyll s -l --incremental"

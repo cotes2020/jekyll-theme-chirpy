@@ -24,7 +24,8 @@
     "lint:fix:scss": "npm run lint:scss -- --fix",
     "test": "npm run lint:js && npm run lint:scss",
     "prepare": "husky",
-    "build:graph": "node scripts/build-post-graph.cjs"
+    "build:graph": "node scripts/build-post-graph.cjs",
+    "site:prep": "npm run build && npm run build:graph"
   },
   "dependencies": {
     "@google-cloud/aiplatform": "^6.5.0",
