@@ -6,7 +6,7 @@ use tauri::menu::{Menu, MenuItem};
 use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
 use tauri::tray::{MouseButton, TrayIconEvent};
-use tauri::{Manager, PhysicalPosition, PhysicalSize, RunEvent, WindowEvent};
+use tauri::{Emitter, Manager, PhysicalPosition, PhysicalSize, RunEvent, WindowEvent};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct WindowState {
@@ -75,9 +75,54 @@ fn save_window_state_webview(window: &tauri::WebviewWindow, app: &tauri::AppHand
     persist_window_state(pos, size, app);
 }
 
+/// 전체화면/최대화에 빠졌을 때 복구 + 기본 크기로 되돌림 (단축키·트레이에서 공통 사용).
+/// move/resize 손잡이 표시 여부. 켜면 마우스 이벤트를 받아야 하므로 클릭 통과는 잠시 끔.
+fn apply_layout_edit(
+    app: &tauri::AppHandle,
+    layout_edit: &Arc<AtomicBool>,
+    ignore_mouse: &Arc<AtomicBool>,
+    visible: bool,
+) {
+    layout_edit.store(visible, Ordering::SeqCst);
+    if let Some(w) = app.get_webview_window("main") {
+        if visible {
+            let _ = w.set_ignore_cursor_events(false);
+        } else {
+            let _ = w.set_ignore_cursor_events(ignore_mouse.load(Ordering::SeqCst));
+        }
+    }
+    let _ = app.emit(
+        "layout-edit",
+        serde_json::json!({ "visible": visible }),
+    );
+}
+
+fn reset_window_layout(app: &tauri::AppHandle) {
+    let Some(w) = app.get_webview_window("main") else {
+        return;
+    };
+    const DEFAULT_X: i32 = 40;
+    const DEFAULT_Y: i32 = 40;
+    const DEFAULT_W: u32 = 420;
+    const DEFAULT_H: u32 = 640;
+
+    let _ = w.set_fullscreen(false);
+    let _ = w.unmaximize();
+    let _ = w.set_size(PhysicalSize::new(DEFAULT_W, DEFAULT_H));
+    let _ = w.set_position(PhysicalPosition::new(DEFAULT_X, DEFAULT_Y));
+    let _ = w.show();
+    let _ = w.set_focus();
+
+    if let (Ok(pos), Ok(size)) = (w.outer_position(), w.outer_size()) {
+        persist_window_state(pos, size, app);
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    let ignore_mouse = Arc::new(AtomicBool::new(true));
+    // 기본은 "이동/설정 가능" 상태로 시작: 클릭 통과를 켜면 드래그 영역도 함께 막히기 때문.
+    let ignore_mouse = Arc::new(AtomicBool::new(false));
+    let layout_edit = Arc::new(AtomicBool::new(false));
 
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
@@ -89,7 +134,48 @@ pub fn run() {
         }))
         .setup({
             let ignore_mouse = ignore_mouse.clone();
+            let layout_edit = layout_edit.clone();
             move |app| {
+                #[cfg(not(any(target_os = "android", target_os = "ios")))]
+                {
+                    use tauri_plugin_global_shortcut::{Code, Modifiers, ShortcutState};
+
+                    app.handle().plugin(
+                        tauri_plugin_global_shortcut::Builder::new()
+                            .with_shortcuts([
+                                "ctrl+shift+0",
+                                "ctrl+shift+t",
+                                "ctrl+shift+e",
+                            ])?
+                            .with_handler({
+                                let ig = ignore_mouse.clone();
+                                let le = layout_edit.clone();
+                                move |app, shortcut, event| {
+                                    if event.state != ShortcutState::Pressed {
+                                        return;
+                                    }
+                                    let ctrl_shift =
+                                        Modifiers::CONTROL.union(Modifiers::SHIFT);
+                                    if shortcut.matches(ctrl_shift, Code::Digit0) {
+                                        reset_window_layout(app);
+                                    } else if shortcut.matches(ctrl_shift, Code::KeyT) {
+                                        let v = !ig.load(Ordering::SeqCst);
+                                        ig.store(v, Ordering::SeqCst);
+                                        if !le.load(Ordering::SeqCst) {
+                                            if let Some(w) = app.get_webview_window("main") {
+                                                let _ = w.set_ignore_cursor_events(v);
+                                            }
+                                        }
+                                    } else if shortcut.matches(ctrl_shift, Code::KeyE) {
+                                        let v = !le.load(Ordering::SeqCst);
+                                        apply_layout_edit(app, &le, &ig, v);
+                                    }
+                                }
+                            })
+                            .build(),
+                    )?;
+                }
+
                 let handle = app.handle().clone();
                 let window = app
                     .get_webview_window("main")
@@ -109,15 +195,35 @@ pub fn run() {
                         true,
                         None::<&str>,
                     )?;
+                    let reset_i = MenuItem::with_id(
+                        app,
+                        "tray_reset",
+                        "창 크기 초기화 (Ctrl+Shift+0)",
+                        true,
+                        None::<&str>,
+                    )?;
+                    let layout_edit_i = MenuItem::with_id(
+                        app,
+                        "tray_layout_edit",
+                        "편집 모드 (손잡이) — Ctrl+Shift+E",
+                        true,
+                        None::<&str>,
+                    )?;
                     let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
-                    let menu = Menu::with_items(app, &[&show_i, &hide_i, &toggle_i, &quit_i])?;
+                    let menu = Menu::with_items(
+                        app,
+                        &[&show_i, &hide_i, &toggle_i, &layout_edit_i, &reset_i, &quit_i],
+                    )?;
 
                     let ig = ignore_mouse.clone();
+                    let le = layout_edit.clone();
                     if let Some(icon) = app.default_window_icon().cloned() {
                         let _ = TrayIconBuilder::new()
                             .icon(icon)
                             .menu(&menu)
-                            .tooltip("chat-overlay — 트레이에서 종료·클릭 통과 전환")
+                            .tooltip(
+                                "chat-overlay — E:손잡이 0:초기화 T:클릭통과",
+                            )
                             .show_menu_on_left_click(true)
                             .on_menu_event(move |app, event| {
                                 if event.id == "tray_show" {
@@ -132,9 +238,16 @@ pub fn run() {
                                 } else if event.id == "tray_toggle_ct" {
                                     let v = !ig.load(Ordering::SeqCst);
                                     ig.store(v, Ordering::SeqCst);
-                                    if let Some(w) = app.get_webview_window("main") {
-                                        let _ = w.set_ignore_cursor_events(v);
+                                    if !le.load(Ordering::SeqCst) {
+                                        if let Some(w) = app.get_webview_window("main") {
+                                            let _ = w.set_ignore_cursor_events(v);
+                                        }
                                     }
+                                } else if event.id == "tray_layout_edit" {
+                                    let v = !le.load(Ordering::SeqCst);
+                                    apply_layout_edit(app, &le, &ig, v);
+                                } else if event.id == "tray_reset" {
+                                    reset_window_layout(app);
                                 } else if event.id == "tray_quit" {
                                     if let Some(w) = app.get_webview_window("main") {
                                         save_window_state_webview(&w, app);

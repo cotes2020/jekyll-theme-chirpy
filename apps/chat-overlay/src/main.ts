@@ -1,3 +1,4 @@
+import { listen } from "@tauri-apps/api/event";
 import { chatFeedKindFromEnv, createChatFeed } from "./chat/createChatFeed";
 import type { ChatLine } from "./chat/types";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -52,6 +53,12 @@ const moveHandle = document.querySelector<HTMLButtonElement>(".move-handle");
 const resizeHandle = document.querySelector<HTMLButtonElement>(".resize-handle");
 
 const appWindow = getCurrentWindow();
+
+void listen<{ visible: boolean }>("layout-edit", (e) => {
+  document.body.classList.toggle("layout-edit", e.payload.visible);
+}).catch(() => {
+  /* Tauri 밖 미리보기 */
+});
 
 if (moveHandle) {
   moveHandle.addEventListener("pointerdown", (e) => {

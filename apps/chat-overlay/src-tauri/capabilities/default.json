@@ -7,6 +7,7 @@
     "core:default",
     "core:window:allow-start-dragging",
     "core:window:allow-start-resize-dragging",
+    "core:event:allow-listen",
     "global-shortcut:allow-register",
     "global-shortcut:allow-unregister",
     "global-shortcut:allow-is-registered"

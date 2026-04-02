@@ -18,13 +18,56 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.drag-strip {
+.ui {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 12px;
+  inset: 0;
   z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.18s ease,
+    visibility 0.18s ease;
+}
+
+body.layout-edit .ui {
+  opacity: 1;
+  visibility: visible;
+}
+
+.move-handle,
+.resize-handle {
+  pointer-events: none;
+  border: 0;
+  background: rgba(20, 22, 28, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  user-select: none;
+}
+
+body.layout-edit .move-handle,
+body.layout-edit .resize-handle {
+  pointer-events: auto;
+}
+
+.move-handle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: move;
+}
+
+.resize-handle {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  cursor: nwse-resize;
 }
 
 .log {
