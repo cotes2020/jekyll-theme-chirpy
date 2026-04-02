@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KarmoWebExtension 설정</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+      }
+      input[type="url"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem 0.6rem;
+        font-size: 1rem;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        align-items: center;
+      }
+      button {
+        padding: 0.45rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      button.secondary {
+        background: #f0f0f0;
+        border: 1px solid #ccc;
+      }
+      #status {
+        margin-top: 0.75rem;
+        min-height: 1.25rem;
+        color: #0a0;
+      }
+      p.hint {
+        font-size: 0.9rem;
+        color: #444;
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>KarmoWebExtension</h1>
+    <p class="hint">chat-overlay(Tauri) ingest 주소. 포트를 바꿨으면 여기도 맞춥니다.</p>
+    <label for="ingestUrl">Ingest URL</label>
+    <input
+      id="ingestUrl"
+      type="url"
+      spellcheck="false"
+      autocomplete="off"
+      placeholder="http://127.0.0.1:17376/ingest"
+      autofocus
+    />
+    <div class="row">
+      <button type="button" id="save">저장</button>
+      <button type="button" id="resetDefault" class="secondary">기본 주소로 저장</button>
+    </div>
+    <p id="status" aria-live="polite"></p>
+    <script src="options.js"></script>
+  </body>
+</html>

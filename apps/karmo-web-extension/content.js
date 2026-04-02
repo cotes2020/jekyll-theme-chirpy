@@ -3,7 +3,9 @@
  * (치지직) 중첩 span을 전부 긁으면 같은 말이 반복·누적되어 보이므로 줄 단위 innerText만 사용.
  */
 
-const DEFAULT_INGEST_URL = "http://127.0.0.1:17376/ingest";
+/** Tauri `CHAT_OVERLAY_INGEST_PORT` 와 동일해야 함 */
+const INGEST_PORT = 17376;
+const DEFAULT_INGEST_URL = `http://127.0.0.1:${INGEST_PORT}/ingest`;
 
 function getIngestUrl() {
   return new Promise((resolve) => {

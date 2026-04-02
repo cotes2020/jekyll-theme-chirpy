@@ -1,6 +1,7 @@
 import { listen } from "@tauri-apps/api/event";
 import { chatFeedKindFromEnv, createChatFeed } from "./chat/createChatFeed";
 import type { ChatLine } from "./chat/types";
+import { initThemeEditor } from "./themeEditor";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 
 const MAX_LINES = 40;
@@ -49,9 +50,25 @@ if (!log) {
   throw new Error("#log not found");
 }
 
+initThemeEditor();
+
+/** 짧은 시간에 같은 닉+본문이 연달아 오면 한 줄만 (확장 중복 전송 완화) */
+let lastIngestDup: { key: string; at: number } | null = null;
+const INGEST_DEDUP_MS = 120;
+
 /** KarmoWebExtension 등 → Tauri `POST /ingest` → `extension-ingest` */
 void listen<{ author: string; text: string; ts: number }>("extension-ingest", (event) => {
   const p = event.payload;
+  const key = `${p.author}\u0000${p.text}`;
+  const now = Date.now();
+  if (
+    lastIngestDup &&
+    lastIngestDup.key === key &&
+    now - lastIngestDup.at < INGEST_DEDUP_MS
+  ) {
+    return;
+  }
+  lastIngestDup = { key, at: now };
   appendLine(log, {
     id: `ext-${p.ts}-${Math.random().toString(36).slice(2, 10)}`,
     author: p.author,

@@ -4,17 +4,41 @@
   box-sizing: border-box;
 }
 
+/**
+ * 채팅 스타일 변수 — chat-theme.css 에서 덮어쓸 수 있음.
+ */
+:root {
+  --chat-font-family:
+    "Malgun Gothic", "Segoe UI", system-ui, sans-serif;
+  --chat-font-size: 14px;
+  --chat-font-weight: 400;
+  --chat-line-height: 1.35;
+
+  --chat-log-padding: 12px 14px 16px;
+  --chat-line-gap: 6px;
+  --chat-line-padding-block: 4px;
+  --chat-column-gap: 8px;
+
+  --chat-text-color: rgba(245, 245, 250, 0.95);
+  --chat-text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.85),
+    0 1px 2px rgba(0, 0, 0, 0.9);
+
+  --author-font-weight: 600;
+  --author-saturation: 62%;
+  --author-lightness: 72%;
+
+  --chat-line-enter-y: 6px;
+}
+
 html,
 body {
   margin: 0;
   height: 100%;
   overflow: hidden;
   background: transparent;
-  font-family:
-    "Malgun Gothic",
-    "Segoe UI",
-    system-ui,
-    sans-serif;
+  /* 채팅용 변수(--chat-font-*)는 .log 에만 적용 — body에 두면 스타일 패널·손잡이까지 깨짐 */
+  font-family: system-ui, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -33,6 +57,11 @@ body {
 body.layout-edit .ui {
   opacity: 1;
   visibility: visible;
+}
+
+/* 편집 모드: 창 전체 노란 테두리 (투명 오버레이에서 영역이 보이도록) */
+body.layout-edit {
+  box-shadow: inset 0 0 0 3px rgba(255, 214, 0, 0.95);
 }
 
 .move-handle,
@@ -56,17 +85,22 @@ body.layout-edit .resize-handle {
   pointer-events: auto;
 }
 
-.move-handle {
+.ui-handles {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.move-handle {
   cursor: move;
 }
 
 .resize-handle {
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
   cursor: nwse-resize;
 }
 
@@ -74,29 +108,29 @@ body.layout-edit .resize-handle {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 6px;
+  gap: var(--chat-line-gap);
   height: 100%;
-  padding: 12px 14px 16px;
+  padding: var(--chat-log-padding);
   overflow: hidden;
   pointer-events: none;
+  font-family: var(--chat-font-family);
+  font-size: var(--chat-font-size);
 }
 
 .line {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: var(--chat-column-gap);
   max-width: 100%;
-  padding: 4px 0;
-  color: rgba(245, 245, 250, 0.95);
-  text-shadow:
-    0 0 4px rgba(0, 0, 0, 0.85),
-    0 1px 2px rgba(0, 0, 0, 0.9);
-  font-size: 14px;
-  line-height: 1.35;
+  padding: var(--chat-line-padding-block) 0;
+  color: var(--chat-text-color);
+  text-shadow: var(--chat-text-shadow);
+  font-weight: var(--chat-font-weight);
+  line-height: var(--chat-line-height);
   word-break: break-word;
   overflow-wrap: anywhere;
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(var(--chat-line-enter-y));
   transition:
     opacity 0.22s ease-out,
     transform 0.22s ease-out;
@@ -117,11 +151,296 @@ body.layout-edit .resize-handle {
 
 .author {
   flex: 0 0 auto;
-  font-weight: 600;
-  color: hsl(var(--author-hue, 210) 62% 72%);
+  font-weight: var(--author-font-weight);
+  color: hsl(var(--author-hue, 210) var(--author-saturation) var(--author-lightness));
 }
 
 .text {
   flex: 1 1 auto;
   min-width: 0;
+}
+
+/* ---------- 옵션: 닉 숨김 / 줄마다 검정 배경 (em → 글자 크기에 비례) ----------
+   반드시 #log 안만 — body 전역 .line 에 걸리면 스타일 패널 미리보기가 깨짐 */
+body.chat-opt-hide-author #log .author {
+  display: none !important;
+}
+
+body.chat-opt-line-dark-bg #log {
+  background: transparent;
+}
+
+body.chat-opt-line-dark-bg #log .line {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.22em 0.5em 0.28em;
+  border-radius: 0.35em;
+  background: rgba(0, 0, 0, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  gap: var(--chat-column-gap);
+  box-sizing: border-box;
+}
+
+body.chat-opt-line-dark-bg.chat-opt-hide-author #log .line {
+  gap: 0;
+}
+
+body.chat-opt-line-dark-bg #log .text {
+  flex: 0 1 auto;
+  min-width: 0;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+body.chat-opt-text-center #log {
+  align-items: center;
+}
+
+body.chat-opt-text-center #log .line {
+  justify-content: center;
+  text-align: center;
+}
+
+body.chat-opt-text-center:not(.chat-opt-line-dark-bg) #log .line {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+body.chat-opt-text-center #log .text {
+  flex: 0 1 auto;
+  text-align: center;
+}
+
+body.chat-opt-text-center.chat-opt-line-dark-bg #log .line {
+  align-self: center;
+}
+
+/* 미리보기 패널 (에디터) */
+.theme-editor__preview--line-dark-bg .theme-editor__preview-inner {
+  background: transparent;
+  padding: 0;
+  font-size: var(--chat-font-size);
+}
+
+.theme-editor__preview--hide-author .theme-editor__preview-inner .author {
+  display: none !important;
+}
+
+.theme-editor__preview--line-dark-bg .theme-editor__preview-inner .line {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.22em 0.5em 0.28em;
+  border-radius: 0.35em;
+  background: rgba(0, 0, 0, 0.88);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  gap: var(--chat-column-gap);
+  box-sizing: border-box;
+}
+
+.theme-editor__preview--line-dark-bg.theme-editor__preview--hide-author
+  .theme-editor__preview-inner
+  .line {
+  gap: 0;
+}
+
+.theme-editor__preview--line-dark-bg .theme-editor__preview-inner .text {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.theme-editor__preview--text-center .theme-editor__preview-inner {
+  align-items: center;
+}
+
+.theme-editor__preview--text-center .theme-editor__preview-inner .line {
+  justify-content: center;
+  text-align: center;
+}
+
+.theme-editor__preview--text-center:not(.theme-editor__preview--line-dark-bg)
+  .theme-editor__preview-inner
+  .line {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-editor__preview--text-center .theme-editor__preview-inner .text {
+  flex: 0 1 auto;
+  text-align: center;
+}
+
+.theme-editor__preview--text-center.theme-editor__preview--line-dark-bg
+  .theme-editor__preview-inner
+  .line {
+  align-self: center;
+}
+
+/* ---------- 채팅 스타일 GUI ---------- */
+.theme-editor[hidden] {
+  display: none !important;
+}
+
+.theme-editor {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.theme-editor:not([hidden]) {
+  pointer-events: auto;
+}
+
+.theme-editor__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.theme-editor__panel {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: min(420px, calc(100vw - 24px));
+  max-height: min(85vh, 640px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(22, 24, 32, 0.96);
+  color: #e8e8ee;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  /* 루트 채팅 변수와 분리 */
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+.theme-editor__head {
+  padding: 14px 16px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.theme-editor__head h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.theme-editor__hint {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.35;
+}
+
+.theme-editor__preview {
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.theme-editor__preview-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 72px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.theme-editor__preview-inner .line {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  padding: 2px 0;
+}
+
+.theme-editor__fields {
+  padding: 10px 16px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.theme-editor__row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+}
+
+.theme-editor__row--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.theme-editor__row--check input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin: 2px 0 0;
+  accent-color: #6b8cff;
+}
+
+.theme-editor__row--check span {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.4;
+}
+
+/* 체크박스 행은 span 이 두 번째(라벨) — :first-child 로 잡으면 안 됨 */
+.theme-editor__row:not(.theme-editor__row--check) > span:first-of-type {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.theme-editor__row input,
+.theme-editor__row select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+.theme-editor__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.theme-editor__foot-right {
+  display: flex;
+  gap: 8px;
+}
+
+.theme-editor__btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.theme-editor__btn--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e0e0e8;
+}
+
+.theme-editor__btn--primary {
+  background: #3b6cff;
+  color: #fff;
+  border-color: #3b6cff;
 }

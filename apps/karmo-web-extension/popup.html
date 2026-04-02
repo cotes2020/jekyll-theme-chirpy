@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        width: 240px;
+        margin: 0;
+        padding: 12px;
+        font-family: system-ui, sans-serif;
+        font-size: 13px;
+      }
+      p {
+        margin: 0 0 10px;
+        line-height: 1.45;
+        color: #222;
+      }
+      button {
+        width: 100%;
+        padding: 8px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .hint {
+        font-size: 12px;
+        color: #666;
+        margin-top: 10px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <p>채팅을 PC의 chat-overlay로 보내는 주소를 바꾸려면 아래를 누르세요.</p>
+    <button type="button" id="open">설정(옵션) 열기</button>
+    <p class="hint">먼저 PC에서 chat-overlay(Tauri)를 켜 두세요.</p>
+    <script src="popup.js"></script>
+  </body>
+</html>

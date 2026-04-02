@@ -7,6 +7,14 @@ use axum::{Json, Router};
 use serde::Deserialize;
 use serde_json::json;
 use std::net::SocketAddr;
+
+/// `CHAT_OVERLAY_INGEST_PORT` (기본 17376). 확장 `DEFAULT_INGEST_URL` 과 맞출 것.
+pub fn ingest_port() -> u16 {
+    std::env::var("CHAT_OVERLAY_INGEST_PORT")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(17376)
+}
 use tauri::{AppHandle, Emitter};
 use tower_http::cors::{Any, CorsLayer};
 
@@ -55,6 +63,7 @@ pub fn spawn_ingest_server(app: AppHandle) {
             }
         };
         rt.block_on(async move {
+            let port = ingest_port();
             let router = Router::new()
                 .route("/ingest", post(ingest_handler))
                 .layer(
@@ -64,15 +73,17 @@ pub fn spawn_ingest_server(app: AppHandle) {
                         .allow_headers(Any),
                 )
                 .with_state(app);
-            let addr = SocketAddr::from(([127, 0, 0, 1], 17376));
+            let addr = SocketAddr::from(([127, 0, 0, 1], port));
             let listener = match tokio::net::TcpListener::bind(addr).await {
                 Ok(l) => l,
                 Err(e) => {
-                    eprintln!("[ingest] 127.0.0.1:17376 바인드 실패 (다른 프로세스가 쓰는지 확인): {e}");
+                    eprintln!(
+                        "[ingest] 127.0.0.1:{port} 바인드 실패 (CHAT_OVERLAY_INGEST_PORT·다른 프로세스 확인): {e}"
+                    );
                     return;
                 }
             };
-            eprintln!("[ingest] http://127.0.0.1:17376/ingest 대기 중 (KarmoWebExtension)");
+            eprintln!("[ingest] http://127.0.0.1:{port}/ingest 대기 중 (KarmoWebExtension)");
             if let Err(e) = axum::serve(listener, router).await {
                 eprintln!("[ingest] 서버 오류: {e}");
             }

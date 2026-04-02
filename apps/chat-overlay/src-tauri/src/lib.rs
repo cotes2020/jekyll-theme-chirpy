@@ -5,10 +5,10 @@ use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use tauri::menu::{Menu, MenuItem, PredefinedMenuItem};
-use tauri::tray::TrayIconBuilder;
+use tauri::tray::{TrayIcon, TrayIconBuilder};
 #[cfg(windows)]
 use tauri::tray::{MouseButton, TrayIconEvent};
-use tauri::{Emitter, Manager, PhysicalPosition, PhysicalSize, RunEvent, WindowEvent};
+use tauri::{Emitter, Manager, PhysicalPosition, PhysicalSize, RunEvent, WindowEvent, Wry};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct WindowState {
@@ -104,6 +104,74 @@ fn save_window_state_webview(window: &tauri::WebviewWindow, app: &tauri::AppHand
     persist_window_state(pos, size, app);
 }
 
+fn now_ms() -> i64 {
+    use std::time::{SystemTime, UNIX_EPOCH};
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_millis() as i64)
+        .unwrap_or(0)
+}
+
+fn emit_test_chat(app: &tauri::AppHandle) {
+    let ts = now_ms();
+    let _ = app.emit(
+        "extension-ingest",
+        serde_json::json!({
+            "author": "테스트",
+            "text": format!("테스트 메시지 ({ts})"),
+            "ts": ts,
+        }),
+    );
+}
+
+/// 트레이 메뉴 문구·툴팁을 `창 / 클릭통과 / 편집모드` 상태에 맞춤
+struct TrayMenuSync {
+    tray: TrayIcon<Wry>,
+    item_window: MenuItem<Wry>,
+    item_ct: MenuItem<Wry>,
+    item_layout: MenuItem<Wry>,
+    ig: Arc<AtomicBool>,
+    le: Arc<AtomicBool>,
+}
+
+impl TrayMenuSync {
+    fn refresh(&self, app: &tauri::AppHandle<Wry>) {
+        let win_visible = app
+            .get_webview_window("main")
+            .and_then(|w| w.is_visible().ok())
+            .unwrap_or(true);
+        let ct = self.ig.load(Ordering::SeqCst);
+        let layout_on = self.le.load(Ordering::SeqCst);
+
+        let _ = self.item_window.set_text(format!(
+            "창: {} · 클릭 시 전환",
+            if win_visible { "보임" } else { "숨김" }
+        ));
+        let _ = self.item_ct.set_text(format!(
+            "클릭 통과: {} · Ctrl+Shift+T",
+            if ct { "켜짐" } else { "꺼짐" }
+        ));
+        let _ = self.item_layout.set_text(format!(
+            "편집 모드: {} · Ctrl+Shift+E",
+            if layout_on { "켜짐" } else { "꺼짐" }
+        ));
+
+        let tip = format!(
+            "chat-overlay — 창:{} · 통과:{} · 편집:{}",
+            if win_visible { "보임" } else { "숨김" },
+            if ct { "켜짐" } else { "꺼짐" },
+            if layout_on { "켜짐" } else { "꺼짐" }
+        );
+        let _ = self.tray.set_tooltip(Some(tip));
+    }
+}
+
+fn tray_refresh(app: &tauri::AppHandle<Wry>) {
+    if let Some(sync) = app.try_state::<TrayMenuSync>() {
+        sync.refresh(app);
+    }
+}
+
 /// 전체화면/최대화에 빠졌을 때 복구 + 기본 크기로 되돌림 (단축키·트레이에서 공통 사용).
 /// move/resize 손잡이 표시 여부. 켜면 마우스 이벤트를 받아야 하므로 클릭 통과는 잠시 끔.
 fn apply_layout_edit(
@@ -124,6 +192,7 @@ fn apply_layout_edit(
         "layout-edit",
         serde_json::json!({ "visible": visible }),
     );
+    tray_refresh(app);
 }
 
 fn reset_window_layout(app: &tauri::AppHandle) {
@@ -145,10 +214,20 @@ fn reset_window_layout(app: &tauri::AppHandle) {
     if let (Ok(pos), Ok(size)) = (w.outer_position(), w.outer_size()) {
         persist_window_state(pos, size, app);
     }
+    tray_refresh(app);
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    if let Some(p) = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .map(|d| d.join(".env"))
+    {
+        if p.exists() {
+            let _ = dotenvy::from_path(&p);
+        }
+    }
+
     // 기본은 "이동/설정 가능" 상태로 시작: 클릭 통과를 켜면 드래그 영역도 함께 막히기 때문.
     let ignore_mouse = Arc::new(AtomicBool::new(false));
     let layout_edit = Arc::new(AtomicBool::new(false));
@@ -160,6 +239,7 @@ pub fn run() {
                 let _ = w.show();
                 let _ = w.set_focus();
             }
+            tray_refresh(app);
         }))
         .setup({
             let ignore_mouse = ignore_mouse.clone();
@@ -175,6 +255,7 @@ pub fn run() {
                                 "ctrl+shift+0",
                                 "ctrl+shift+t",
                                 "ctrl+shift+e",
+                                "ctrl+shift+comma",
                             ])?
                             .with_handler({
                                 let ig = ignore_mouse.clone();
@@ -195,9 +276,12 @@ pub fn run() {
                                                 let _ = w.set_ignore_cursor_events(v);
                                             }
                                         }
+                                        tray_refresh(app);
                                     } else if shortcut.matches(ctrl_shift, Code::KeyE) {
                                         let v = !le.load(Ordering::SeqCst);
                                         apply_layout_edit(app, &le, &ig, v);
+                                    } else if shortcut.matches(ctrl_shift, Code::Comma) {
+                                        let _ = app.emit("theme-editor-toggle", serde_json::json!({}));
                                     }
                                 }
                             })
@@ -251,6 +335,20 @@ pub fn run() {
                         true,
                         None::<&str>,
                     )?;
+                    let theme_editor_i = MenuItem::with_id(
+                        app,
+                        "tray_theme_editor",
+                        "채팅 스타일… (Ctrl+Shift+,)",
+                        true,
+                        None::<&str>,
+                    )?;
+                    let test_chat_i = MenuItem::with_id(
+                        app,
+                        "tray_test_chat",
+                        "테스트 채팅 보내기",
+                        true,
+                        None::<&str>,
+                    )?;
                     let sep_before_dev = PredefinedMenuItem::separator(app)?;
                     let open_folder_i = MenuItem::with_id(
                         app,
@@ -275,6 +373,8 @@ pub fn run() {
                             &toggle_i,
                             &layout_edit_i,
                             &reset_i,
+                            &theme_editor_i,
+                            &test_chat_i,
                             &sep_before_dev,
                             &open_folder_i,
                             &open_env_i,
@@ -286,12 +386,10 @@ pub fn run() {
                     let ig = ignore_mouse.clone();
                     let le = layout_edit.clone();
                     if let Some(icon) = app.default_window_icon().cloned() {
-                        let _ = TrayIconBuilder::new()
+                        let tray = TrayIconBuilder::new()
                             .icon(icon)
                             .menu(&menu)
-                            .tooltip(
-                                "chat-overlay — E:손잡이 0:초기화 T:클릭통과",
-                            )
+                            .tooltip("chat-overlay")
                             .show_menu_on_left_click(true)
                             .on_menu_event(move |app, event| {
                                 if event.id == "tray_toggle_visible" {
@@ -304,6 +402,7 @@ pub fn run() {
                                             let _ = w.set_focus();
                                         }
                                     }
+                                    tray_refresh(app);
                                 } else if event.id == "tray_toggle_ct" {
                                     let v = !ig.load(Ordering::SeqCst);
                                     ig.store(v, Ordering::SeqCst);
@@ -312,11 +411,16 @@ pub fn run() {
                                             let _ = w.set_ignore_cursor_events(v);
                                         }
                                     }
+                                    tray_refresh(app);
                                 } else if event.id == "tray_layout_edit" {
                                     let v = !le.load(Ordering::SeqCst);
                                     apply_layout_edit(app, &le, &ig, v);
                                 } else if event.id == "tray_reset" {
                                     reset_window_layout(app);
+                                } else if event.id == "tray_theme_editor" {
+                                    let _ = app.emit("theme-editor-toggle", serde_json::json!({}));
+                                } else if event.id == "tray_test_chat" {
+                                    emit_test_chat(app);
                                 } else if event.id == "tray_open_overlay_folder" {
                                     open_chat_overlay_folder();
                                 } else if event.id == "tray_open_env" {
@@ -340,11 +444,23 @@ pub fn run() {
                                         let _ = w.show();
                                         let _ = w.set_focus();
                                     }
+                                    tray_refresh(app);
                                 }
                                 #[cfg(not(windows))]
                                 let _ = (tray, event);
                             })
                             .build(app)?;
+
+                        let tray_sync = TrayMenuSync {
+                            tray,
+                            item_window: vis_toggle_i.clone(),
+                            item_ct: toggle_i.clone(),
+                            item_layout: layout_edit_i.clone(),
+                            ig: ignore_mouse.clone(),
+                            le: layout_edit.clone(),
+                        };
+                        tray_sync.refresh(app.handle());
+                        app.manage(tray_sync);
                     }
                 }
 
@@ -356,6 +472,7 @@ pub fn run() {
                 api.prevent_close();
                 save_window_state(window, &window.app_handle());
                 let _ = window.hide();
+                tray_refresh(&window.app_handle());
             }
         })
         .build(tauri::generate_context!())
