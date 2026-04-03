@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags } from 'discord.js';
 import { formatMoney } from '../../services/gamedata';
 
 export async function handleStockList(ctx, interaction) {
@@ -23,7 +23,7 @@ export async function handleStockChart(ctx, interaction) {
   const symbol = interaction.options.getString('종목');
   const url = stock.getChartUrl(symbol);
   if (!url) {
-    await interaction.reply({ content: '존재하지 않는 종목입니다.', ephemeral: true });
+    await interaction.reply({ content: '존재하지 않는 종목입니다.', flags: MessageFlags.Ephemeral });
     return;
   }
   const embed = new EmbedBuilder().setTitle(`📈 ${symbol.toUpperCase()} 차트`).setImage(url).setColor(0x00bcd4);
@@ -36,7 +36,7 @@ export async function handleBuy(ctx, interaction, userId) {
   const amount = interaction.options.getInteger('수량');
   const r = stock.buy(userId, symbol, amount);
   if (!r.ok) {
-    await interaction.reply({ content: r.msg, ephemeral: true });
+    await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
     return;
   }
   const embed = new EmbedBuilder()
@@ -53,7 +53,7 @@ export async function handleSellStock(ctx, interaction, userId) {
   const amount = interaction.options.getInteger('수량');
   const r = stock.sell(userId, symbol, amount);
   if (!r.ok) {
-    await interaction.reply({ content: r.msg, ephemeral: true });
+    await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
     return;
   }
   const profitStr = r.profit > 0 ? `🔺 +${formatMoney(r.profit)}` : r.profit < 0 ? `🔻 ${formatMoney(r.profit)}` : '➖ 0';

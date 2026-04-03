@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags } from 'discord.js';
 import {
   formatCursorAcpRpcSummaryField,
   hasGitWorkingChanges,
@@ -14,7 +14,7 @@ import { resolveCursorRepoDirForSlash } from '../../paths';
 export async function handleCursorEdit(ctx, interaction, userId) {
   const { gameData, isAdmin, cursorState } = ctx;
   if (!isAdmin(userId)) {
-    await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), flags: MessageFlags.Ephemeral });
     return;
   }
   const repoDir = resolveCursorRepoDirForSlash();
@@ -24,7 +24,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
       content: triedEnv
         ? '`CURSOR_LOCAL_REPO_DIR`이 가리키는 폴더가 없습니다. .env 경로를 고치거나, 비우면 이 레포 루트(자동)를 씁니다.'
         : 'Cursor 작업 폴더를 찾을 수 없습니다. yawnbot이 이 레포의 `apps/discord-bots/apps/yawnbot` 아래에 있어야 하거나, `.env`에 `CURSOR_LOCAL_REPO_DIR`을 직접 지정하세요.',
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
     return;
   }
@@ -32,11 +32,11 @@ export async function handleCursorEdit(ctx, interaction, userId) {
   const modeOpt = interaction.options.getString('mode');
   const maxChars = getCursorMaxPromptChars();
   if (promptText.length > maxChars) {
-    await interaction.reply({ content: `프롬프트가 너무 깁니다. 최대 ${maxChars}자까지입니다.`, ephemeral: true });
+    await interaction.reply({ content: `프롬프트가 너무 깁니다. 최대 ${maxChars}자까지입니다.`, flags: MessageFlags.Ephemeral });
     return;
   }
   if (cursorState.inFlight) {
-    await interaction.reply({ content: '이미 Cursor 로컬 작업이 실행 중입니다. 잠시 후 다시 시도하세요.', ephemeral: true });
+    await interaction.reply({ content: '이미 Cursor 로컬 작업이 실행 중입니다. 잠시 후 다시 시도하세요.', flags: MessageFlags.Ephemeral });
     return;
   }
   await interaction.deferReply();
@@ -164,7 +164,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
 export async function handleYawn(ctx, interaction) {
   const { geminiModel } = ctx;
   if (!geminiModel) {
-    await interaction.reply({ content: 'Gemini API가 설정되지 않았습니다.', ephemeral: true });
+    await interaction.reply({ content: 'Gemini API가 설정되지 않았습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
   const prompt = interaction.options.getString('질문');

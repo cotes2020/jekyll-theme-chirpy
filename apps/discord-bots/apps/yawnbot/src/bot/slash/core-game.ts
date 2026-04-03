@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags } from 'discord.js';
 import { formatMoney, getLevelColor } from '../../services/gamedata';
 import { handleEnhance, handleSell } from '../game-ui';
 
@@ -108,15 +108,15 @@ export async function handleBattle(ctx, interaction, userId, userName) {
   const { gameData, enhancement, getImageAttachment } = ctx;
   const target = interaction.options.getUser('상대');
   if (!target) {
-    await interaction.reply({ content: gameData.getMessage('Battle_NoTarget_Desc'), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Battle_NoTarget_Desc'), flags: MessageFlags.Ephemeral });
     return;
   }
   if (target.id === userId) {
-    await interaction.reply({ content: gameData.getMessage('Battle_Self_Desc'), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Battle_Self_Desc'), flags: MessageFlags.Ephemeral });
     return;
   }
   if (target.bot) {
-    await interaction.reply({ content: gameData.getMessage('Battle_Bot_Desc'), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Battle_Bot_Desc'), flags: MessageFlags.Ephemeral });
     return;
   }
 
@@ -161,11 +161,11 @@ export async function handleSlot(ctx, interaction, userId) {
   const r = enhancement.slot(userId, bet);
   const embed = new EmbedBuilder();
   if (r.type === 'error') {
-    await interaction.reply({ content: r.msg, ephemeral: true });
+    await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
     return;
   }
   if (r.type === 'no_money') {
-    await interaction.reply({ content: gameData.getMessage('Game_NoMoney', formatMoney(r.balance)), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Game_NoMoney', formatMoney(r.balance)), flags: MessageFlags.Ephemeral });
     return;
   }
 
@@ -187,11 +187,11 @@ export async function handleOddEven(ctx, interaction, userId) {
   const bet = interaction.options.getInteger('금액');
   const r = enhancement.oddEven(userId, choice, bet);
   if (r.type === 'error') {
-    await interaction.reply({ content: r.msg, ephemeral: true });
+    await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
     return;
   }
   if (r.type === 'no_money') {
-    await interaction.reply({ content: gameData.getMessage('Game_NoMoney', formatMoney(r.balance)), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Game_NoMoney', formatMoney(r.balance)), flags: MessageFlags.Ephemeral });
     return;
   }
 
@@ -218,11 +218,11 @@ export async function handleRps(ctx, interaction, userId) {
   const bet = interaction.options.getInteger('금액');
   const r = enhancement.rps(userId, choice, bet);
   if (r.type === 'error') {
-    await interaction.reply({ content: r.msg, ephemeral: true });
+    await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
     return;
   }
   if (r.type === 'no_money') {
-    await interaction.reply({ content: gameData.getMessage('Game_NoMoney', formatMoney(r.balance)), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Game_NoMoney', formatMoney(r.balance)), flags: MessageFlags.Ephemeral });
     return;
   }
 

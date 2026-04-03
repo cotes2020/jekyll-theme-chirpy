@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { spawn, execFile } from 'child_process';
 import type { ChatInputCommandInteraction, StringSelectMenuInteraction } from 'discord.js';
-import { ActionRowBuilder, EmbedBuilder, StringSelectMenuBuilder } from 'discord.js';
+import { ActionRowBuilder, EmbedBuilder, MessageFlags, StringSelectMenuBuilder } from 'discord.js';
 import { cursorRunnerScript, resolveCursorRepoDir } from '../paths';
 import { truncateDiscordDescription } from '@discord-bots/common';
 
@@ -38,7 +38,7 @@ export async function discordAnswerCursorQuestion(
   const reply: any = await (interaction as any).followUp({
     embeds: [embed],
     components: [row],
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
     fetchReply: true,
   });
   const uid = interaction.user.id;

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags } from 'discord.js';
 import { getRandomImage } from '../services/gamedata';
 import { showHelpPage, handleEnhance, handleSell } from './game-ui';
 
@@ -42,7 +42,7 @@ export async function handleButtonInteraction(ctx, interaction) {
     }
   } catch (err) {
     console.error('[Button Error]', err);
-    await interaction.reply({ content: '오류가 발생했습니다.', ephemeral: true }).catch(() => {});
+    await interaction.reply({ content: '오류가 발생했습니다.', flags: MessageFlags.Ephemeral }).catch(() => {});
   }
 }
 

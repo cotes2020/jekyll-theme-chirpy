@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags } from 'discord.js';
 import type { ChatInputCommandInteraction } from 'discord.js';
 import { truncateEmbedField } from './embeds';
 
@@ -123,7 +123,7 @@ export async function notifyDeferCompletion(
         allowedMentions: { users: [uid] },
       } as any);
     } else {
-      await interaction.followUp({ content: line, ephemeral: true } as any);
+      await interaction.followUp({ content: line, flags: MessageFlags.Ephemeral } as any);
     }
   } catch (e: any) {
     console.error('[notifyDeferCompletion] followUp 실패:', e?.message ?? e);

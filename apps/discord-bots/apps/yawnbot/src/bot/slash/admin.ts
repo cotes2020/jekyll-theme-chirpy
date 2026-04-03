@@ -1,10 +1,10 @@
 // @ts-nocheck
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, MessageFlags } from 'discord.js';
 
 export async function handleAdminReload(ctx, interaction, userId) {
   const { gameData, isAdmin } = ctx;
   if (!isAdmin(userId)) {
-    await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), flags: MessageFlags.Ephemeral });
     return;
   }
   await gameData.initialize();
@@ -12,13 +12,13 @@ export async function handleAdminReload(ctx, interaction, userId) {
     .setTitle(gameData.getMessage('Admin_Reload_Title'))
     .setDescription(gameData.getMessage('Admin_Reload_Desc'))
     .setColor(0x4caf50);
-  await interaction.reply({ embeds: [embed], ephemeral: true });
+  await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
 export async function handleAdminSave(ctx, interaction, userId) {
   const { gameData, isAdmin } = ctx;
   if (!isAdmin(userId)) {
-    await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), ephemeral: true });
+    await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), flags: MessageFlags.Ephemeral });
     return;
   }
   gameData.saveGameData();
@@ -26,6 +26,6 @@ export async function handleAdminSave(ctx, interaction, userId) {
     .setTitle(gameData.getMessage('Admin_Save_Title'))
     .setDescription(gameData.getMessage('Admin_Save_Desc'))
     .setColor(0x4caf50);
-  await interaction.reply({ embeds: [embed], ephemeral: true });
+  await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
