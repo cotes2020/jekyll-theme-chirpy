@@ -264,7 +264,6 @@
     const STORAGE_DESC: Record<string, string> = {
         'toolbox_theme': '테마 (라이트/다크)',
         'toolbox_prism_theme': '코드 하이라이트 테마',
-        'toolbox-sidebar-groups': '사이드바 접기 상태',
         'toolbox_last_page': '마지막 접속 페이지',
         'toolbox_widget_prefs': '위젯별 설정 (모델, 프리셋 등)',
         'toolbox_usage_stats': 'AI 사용량 통계 (채팅/이미지)',

@@ -66,6 +66,7 @@
     --space-xl: 32px;
     --space-2xl: 48px;
 
+    /* 위젯 내부 툴 사이드바 폭 (이미지 편집 등; 앱 메인 내비와 무관) */
     --sidebar-width: 224px;
     --sidebar-collapsed-width: 56px;
     --transition: 180ms ease;
@@ -79,6 +80,11 @@
     --glow-text: none;
     --glow-box: none;
     --shadow-float: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.25);
+
+    /* 헤더 줄 + 메가메뉴 패널 동일 표면 (토스형: 위아래 한 장의 글래스) */
+    --header-shell-glass: color-mix(in srgb, var(--glass) 35%, transparent);
+    /* 메가 패널 max-height와 헤더 ::after 확장 높이를 반드시 동일하게 */
+    --header-mega-max-h: min(44vh, 320px);
 }
 
 /* ── Light Theme ── */
@@ -124,6 +130,8 @@
     --glow-text: none;
     --glow-box: none;
     --shadow-float: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+
+    --header-shell-glass: color-mix(in srgb, var(--glass) 35%, transparent);
 }
 [data-theme="light"] .spinner { border-color: rgba(0,0,0,0.08); border-top-color: var(--accent); }
 [data-theme="light"] select {
@@ -200,7 +208,7 @@ html[data-bg="minimal"] body {
     z-index: 1;
 }
 .app-body { flex: 1; display: flex; min-height: 0; overflow: hidden; }
-.main-content { margin-left: var(--sidebar-collapsed-width); }
+.main-content { margin-left: 0; }
 
 /* ═══════════════════════════════════════
    INTRO OVERLAY
@@ -246,126 +254,156 @@ html[data-bg="minimal"] body {
 }
 
 /* ═══════════════════════════════════════
-   SIDEBAR
+   HEADER NAV — 토스/금융앱형 상단 메가메뉴 (호버로 전체 폭 패널)
    ═══════════════════════════════════════ */
 
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: var(--sidebar-width);
-    background: var(--glass-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: blur(14px);
-    border-right: 1px solid var(--border);
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.25);
+.header-bar-left {
     display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    overflow: hidden;
-    transition: width var(--transition-slow);
-    z-index: 50;
-}
-.sidebar.collapsed {
-    width: var(--sidebar-collapsed-width);
-}
-.sidebar.collapsed:hover {
-    width: var(--sidebar-width);
-}
-
-.sidebar-nav {
-    padding: var(--space-md) var(--space-sm);
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-}
-
-.sidebar-footer {
-    flex-shrink: 0;
-    padding: var(--space-sm);
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: var(--space-sm);
-    background: var(--bg-primary);
-    position: relative;
-    min-height: 40px;
+    justify-self: start;
+    min-width: 0;
 }
-/* 아이콘 위치 고정: 접힌 상태 중앙 = (56 - 16) / 2 - 22/2 ≈ 9px */
-.sidebar-dev-links {
+
+/* overflow-x: auto는 세로 overflow까지 잘라 드롭다운이 안 보임 → 스크롤은 .header-nav-scroll에서만 (또는 생략) */
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+    overflow: visible;
+    position: relative;
+    z-index: 120;
+}
+
+.header-nav-scroll {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+    max-width: min(100vw - 240px, 720px);
+    overflow: visible;
+}
+
+.header-nav-group {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.header-nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 100%;
+    min-height: 32px;
+    padding: 4px 10px;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: -0.02em;
+    background: none;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: color var(--transition), background var(--transition);
+    white-space: nowrap;
+}
+.header-nav-trigger:hover,
+.header-nav-group.is-open .header-nav-trigger {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+.header-nav-trigger-label { pointer-events: none; }
+
+.header-nav-panel {
+    z-index: 200;
+}
+.header-nav-panel[hidden] {
+    display: none !important;
+}
+.header-nav-panel:not([hidden]) {
+    display: block;
+}
+
+/*
+ * 메가 패널: 배경·블러 없음 — 실제 글래스는 .header-bar::after 한 겹만 (뒤 픽셀이 달라도 색이 같게 보임)
+ */
+.header-nav-panel--mega {
+    position: fixed;
+    top: 52px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    max-height: var(--header-mega-max-h);
+    overflow: hidden auto;
+    padding: var(--space-sm) var(--space-lg) var(--space-md);
+    margin: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.header-nav-panel-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    gap: 4px 10px;
+    align-content: start;
+}
+
+.header-nav-panel--mega .nav-item {
+    padding: 7px 8px 7px 28px;
+    border-left: none;
+    border-radius: var(--radius-sm);
+    margin: 0;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: background var(--transition), color var(--transition);
+}
+.header-nav-panel--mega .nav-item:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+    box-shadow: none;
+}
+.header-nav-panel--mega .nav-item.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+    box-shadow: none;
+}
+.header-nav-panel--mega .nav-icon {
+    left: 8px;
+    width: 15px;
+    height: 15px;
+}
+
+.header-dev-link {
     font-size: var(--font-size-2xs);
     color: var(--text-tertiary);
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
     white-space: nowrap;
-    position: absolute;
-    left: 9px;
-    top: 50%;
-    transform: translateY(-50%);
+    padding: 4px 6px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
 }
-.sidebar-dev-links:hover {
+.header-dev-link:hover {
     color: var(--accent);
-    text-decoration: underline;
+    background: var(--accent-subtle);
 }
-.sidebar-dev-links-icon {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: var(--bg-tertiary);
-    font-size: 11px;
-    font-weight: 700;
-    font-style: italic;
-    color: var(--text-tertiary);
-}
-
-.sidebar-group { margin-top: var(--space-sm); }
-
-.sidebar-group-trigger {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    width: 100%;
-    padding: 6px 10px 6px 30px;
-    font-size: var(--font-size-2xs);
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-sans);
-    transition: color var(--transition);
-    text-align: left;
-    position: relative;
-}
-.sidebar-group-trigger:hover { color: var(--text-secondary); }
-.sidebar-group-trigger .chevron {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: inline-block; width: 8px; height: 8px;
-    transition: transform var(--transition);
-}
-.sidebar-group-trigger .chevron::before {
-    content: ''; position: absolute; left: 1px; top: 2px;
-    width: 4px; height: 4px;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: rotate(-45deg);
-}
-.sidebar-group-trigger.open .chevron { transform: translateY(-50%) rotate(90deg); }
-.sidebar-group-body { display: none; overflow: hidden; }
-.sidebar-group-body.open { display: block; }
 
 .nav-item {
     display: flex;
@@ -406,76 +444,10 @@ html[data-bg="minimal"] body {
 }
 .nav-item:hover .nav-icon,
 .nav-item.active .nav-icon { opacity: 1; }
-.nav-item-text,
-.sidebar-group-label {
+.nav-item-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-/* ── Sidebar Collapsed ── */
-.sidebar.collapsed .sidebar-logo-text,
-.sidebar.collapsed .sidebar-group-label,
-.sidebar.collapsed .nav-item-text {
-    overflow: hidden;
-    width: 0;
-    max-width: 0;
-    opacity: 0;
-    white-space: nowrap;
-    pointer-events: none;
-}
-.sidebar.collapsed .sidebar-header {
-    padding: var(--space-md);
-    justify-content: center;
-}
-.sidebar.collapsed .sidebar-logo {
-    display: none;
-}
-.sidebar.collapsed .nav-item {
-    padding: 7px 12px;
-}
-.sidebar.collapsed .sidebar-group-trigger {
-    padding: 6px 16px;
-}
-.sidebar.collapsed .nav-item {
-    border-left: none;
-    border-radius: 6px;
-}
-.sidebar.collapsed .sidebar-dev-links-icon {
-    display: flex;
-}
-.sidebar.collapsed .sidebar-dev-links-text {
-    display: none;
-}
-
-/* ── Collapsed + Hover: 텍스트 등 표시 (버튼으로 펼쳤을 때와 동일) ── */
-.sidebar.collapsed:hover .sidebar-logo-text,
-.sidebar.collapsed:hover .sidebar-group-label,
-.sidebar.collapsed:hover .nav-item-text {
-    overflow: visible;
-    width: auto;
-    max-width: none;
-    opacity: 1;
-    pointer-events: auto;
-}
-.sidebar.collapsed:hover .sidebar-header {
-    justify-content: flex-start;
-}
-.sidebar.collapsed:hover .sidebar-logo {
-    display: flex;
-}
-.sidebar.collapsed:hover .nav-item {
-    padding: 7px 10px 7px 34px;
-    border-left: 2px solid transparent;
-}
-.sidebar.collapsed:hover .sidebar-group-trigger {
-    padding: 6px 10px 6px 30px;
-}
-.sidebar.collapsed:hover .sidebar-dev-links-icon {
-    display: flex;
-}
-.sidebar.collapsed:hover .sidebar-dev-links-text {
-    display: inline;
 }
 
 /* ═══════════════════════════════════════
@@ -485,29 +457,44 @@ html[data-bg="minimal"] body {
 .header-bar {
     position: fixed;
     top: 0;
-    left: var(--sidebar-collapsed-width);
+    left: 0;
     right: 0;
     z-index: 100;
-    transition: left var(--transition-slow);
     flex-shrink: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
+    gap: var(--space-md);
     padding: 0 var(--space-lg);
     height: 52px;
-    background: color-mix(in srgb, var(--glass) 35%, transparent);
+    overflow: visible;
+    isolation: isolate;
+    background: transparent;
+    border-bottom: none;
+}
+
+/* 단일 글래스 레이어: 헤더 줄 + 열린 메가 영역까지 동일 backdrop (패널에 또 깔면 뒤가 달라져 색이 어긋남) */
+.header-bar::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 52px;
+    z-index: 0;
+    background: var(--header-shell-glass);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
+    pointer-events: none;
 }
-.app-layout:has(.sidebar.collapsed:hover) .header-bar {
-    left: var(--sidebar-width);
+.header-bar:has(.header-nav-group.is-open)::after {
+    height: calc(52px + var(--header-mega-max-h));
 }
 
-.header-bar-left {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
+.header-bar > * {
+    position: relative;
+    z-index: 1;
 }
 
 .karmolab-desktop-chrome {
@@ -554,6 +541,7 @@ html[data-bg="minimal"] body {
     padding: 0;
     cursor: pointer;
     transition: color var(--transition);
+    flex-shrink: 0;
 }
 .header-logo:hover {
     color: var(--accent);
@@ -565,7 +553,10 @@ html[data-bg="minimal"] body {
 .header-bar-right {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    justify-self: end;
     gap: 4px;
+    flex-shrink: 0;
 }
 
 .server-status-dot {
@@ -1225,9 +1216,14 @@ input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer;
    ═══════════════════════════════════════ */
 
 @media (max-width: 768px) {
-    .sidebar { display: none; }
+    .header-nav { display: none !important; }
     .main-content { margin-left: 0; }
-    .header-bar { left: 0; padding: 0 var(--space-md); }
+    .header-bar {
+        left: 0;
+        padding: 0 var(--space-md);
+        grid-template-columns: auto 1fr;
+        gap: var(--space-sm);
+    }
     .mobile-nav { display: flex !important; }
     .content-body { padding: var(--space-md); }
     .landing-page { padding: var(--space-md); }

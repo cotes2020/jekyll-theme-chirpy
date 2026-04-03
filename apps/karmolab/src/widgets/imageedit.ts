@@ -44,7 +44,7 @@
         /* Body (tool sidebar + canvas) */
         .ie-body { display:flex; flex:1; overflow:hidden; }
 
-        /* Tool sidebar — 기본 접힘, 호버·포커스 시 라벨 펼침 (메인 사이드바와 동일 UX) */
+        /* Tool sidebar — 기본 접힘, 호버·포커스 시 라벨 펼침 (메인 앱 헤더 메뉴와 비슷한 접힘 UX) */
         .ie-tools {
             width:var(--sidebar-collapsed-width, 56px); flex-shrink:0; display:flex; flex-direction:column; gap:2px;
             padding:8px 6px; border-right:1px solid var(--border); background:var(--bg-secondary);
