@@ -5,6 +5,7 @@
 import path from 'path';
 import { config } from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
+import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
@@ -34,10 +35,7 @@ const enhancement = new EnhancementService(gameData);
 const stock = new StockService(gameData);
 const raid = new RaidService(gameData);
 
-const ADMIN_IDS = (process.env.ADMIN_IDS || '')
-  .split(',')
-  .map((s) => s.trim())
-  .filter(Boolean);
+const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 
 function isAdmin(userId: unknown) {
   return ADMIN_IDS.includes(String(userId));
@@ -98,8 +96,8 @@ client.once('clientReady', async () => {
 
   stock.startMarket();
 
-  const channelId = process.env.GITHUB_WEBHOOK_CHANNEL_ID;
-  if (channelId) {
+  const webhookChannelIds = parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID);
+  for (const channelId of webhookChannelIds) {
     const channel = await client.channels.fetch(channelId).catch(() => null);
     if (channel && channel.isTextBased()) {
       const version = process.env.npm_package_version || '1.0.0';
