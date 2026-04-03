@@ -3,12 +3,41 @@
  */
 import path from 'path';
 import { config } from 'dotenv';
-import { SlashCommandBuilder } from 'discord.js';
+import { SlashCommandBuilder, ChannelType } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
 
 config({ path: path.join(__dirname, '..', '..', '.env') });
 
+const voiceJoin = () =>
+  new SlashCommandBuilder()
+    .setName('voice-join')
+    .setDescription('봇을 음성·스테이지 채널에 연결 (/음성입장 과 동일)')
+    .addChannelOption((opt) =>
+      opt
+        .setName('channel')
+        .setDescription('입장할 채널 (비우면 본인이 있는 음성 채널)')
+        .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
+        .setRequired(false),
+    );
+
+const voiceLeave = () =>
+  new SlashCommandBuilder().setName('voice-leave').setDescription('봇 음성 연결 해제 (/음성퇴장 과 동일)');
+
 const commands = [
+  new SlashCommandBuilder()
+    .setName('음성입장')
+    .setDescription('봇을 음성 또는 스테이지 채널에 연결합니다.')
+    .addChannelOption((opt) =>
+      opt
+        .setName('채널')
+        .setDescription('입장할 채널 (비우면 본인이 있는 음성 채널)')
+        .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
+        .setRequired(false),
+    ),
+  new SlashCommandBuilder().setName('음성퇴장').setDescription('봇을 음성 채널 연결에서 끊습니다.'),
+  voiceJoin(),
+  voiceLeave(),
+
   new SlashCommandBuilder().setName('강화').setDescription('검을 강화합니다. (확률 존재)'),
   new SlashCommandBuilder().setName('판매').setDescription('검을 판매하여 돈을 얻습니다.'),
   new SlashCommandBuilder().setName('정보').setDescription('내 검과 재산 정보를 확인합니다.'),
@@ -136,7 +165,8 @@ async function main(): Promise<void> {
     process.exitCode = 1;
     return;
   }
-  await deployApplicationCommands({ token, clientId, commands, logPrefix: '[Deploy]' });
+  const guildId = process.env.DISCORD_GUILD_ID?.trim();
+  await deployApplicationCommands({ token, clientId, commands, logPrefix: '[Deploy]', guildId });
 }
 
 void main();

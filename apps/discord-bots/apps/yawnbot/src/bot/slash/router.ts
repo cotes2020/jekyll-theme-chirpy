@@ -16,6 +16,7 @@ import {
 import { handleStockList, handleStockChart, handleBuy, handleSellStock, handleMyStock } from './stock';
 import { handleRaidInfo, handleRaidSpawn, handleRaidAttack } from './raid';
 import { handleCursorEdit, handleYawn } from './ai';
+import { handleVoiceJoin, handleVoiceLeave } from './voice';
 import { handleAdminReload, handleAdminSave } from './admin';
 
 export async function dispatchSlashCommand(ctx, interaction) {
@@ -94,6 +95,14 @@ export async function dispatchSlashCommand(ctx, interaction) {
         break;
       case 'yawn':
         await handleYawn(ctx, interaction);
+        break;
+      case '음성입장':
+      case 'voice-join':
+        await handleVoiceJoin(ctx, interaction);
+        break;
+      case '음성퇴장':
+      case 'voice-leave':
+        await handleVoiceLeave(ctx, interaction);
         break;
       case 'admin-reload':
         await handleAdminReload(ctx, interaction, userId);

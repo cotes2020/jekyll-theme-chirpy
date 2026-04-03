@@ -18,22 +18,6 @@ const TOKEN = process.env.ATKUP_DISCORD_TOKEN;
 const TARGET_CHANNEL_ID = process.env.ATKUP_TARGET_CHANNEL_ID;
 const CHECK_INTERVAL_MIN = parseInt(process.env.ATKUP_CHECK_INTERVAL_MIN || '60', 10);
 
-if (!TOKEN) {
-  console.error('[ATKUp] ATKUP_DISCORD_TOKEN이 없습니다. (YawnBot 토큰과 분리)');
-  process.exit(1);
-}
-
-if (!TARGET_CHANNEL_ID) {
-  console.error('[ATKUp] 알림을 보낼 채널 ID가 없습니다. .env의 ATKUP_TARGET_CHANNEL_ID를 설정하세요.');
-  process.exit(1);
-}
-
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds],
-});
-
-let lastSentCoupon: string | null = null;
-
 const HN_COLOR = 0xff6600;
 
 /** 마크다운 링크용: 제목에 [ ] 가 있으면 깨지므로 제거 */
@@ -130,123 +114,143 @@ async function sendPublisherSaleToChannel(channel: SendableChannels, info: Publi
   }
 }
 
-async function pollPublisherSaleOnce({ force = false }: { force?: boolean } = {}) {
-  console.log('[ATKUp] Unity 무료 에셋 정보 확인 중...');
+function startAtkupBot() {
+  const client = new Client({
+    intents: [GatewayIntentBits.Guilds],
+  });
 
-  let info: PublisherSaleAssetInfo | null;
-  try {
-    info = await fetchPublisherSaleAssetInfo();
-  } catch (err: any) {
-    console.error('[ATKUp] Unity 페이지 요청/파싱 실패:', err?.message ?? err);
-    return;
-  }
+  let lastSentCoupon: string | null = null;
 
-  if (!info) {
-    console.log('[ATKUp] 현재 활성화된 무료 에셋 증정이 없는 것 같습니다.');
-    return;
-  }
-
-  if (!force && info.couponCode && lastSentCoupon === info.couponCode) {
-    console.log('[ATKUp] 이미 전송했던 쿠폰 코드입니다. 건너뜀:', info.couponCode);
-    return;
-  }
-
-  const channel = await client.channels.fetch(TARGET_CHANNEL_ID!).catch(() => null);
-  if (!channel?.isSendable()) {
-    console.error('[ATKUp] 채널을 찾을 수 없거나 메시지를 보낼 수 없습니다:', TARGET_CHANNEL_ID);
-    return;
-  }
-
-  await sendPublisherSaleToChannel(channel, info);
-  console.log('[ATKUp] 무료 에셋 알림 전송 완료.');
-
-  if (info.couponCode) {
-    lastSentCoupon = info.couponCode;
-  }
-}
-
-client.once('clientReady', async () => {
-  console.log(`\n  🎁  ATKUp`);
-  console.log('  ─────────────────────────');
-  console.log(`  로그인: ${client.user?.tag}`);
-  console.log('');
-
-  await pollPublisherSaleOnce();
-
-  const intervalMs = Math.max(5, CHECK_INTERVAL_MIN) * 60 * 1000;
-  setInterval(() => {
-    void pollPublisherSaleOnce();
-  }, intervalMs);
-});
-
-client.on('interactionCreate', async (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
-  if (interaction.commandName !== 'atkup') return;
-
-  const sub = interaction.options.getSubcommand(true);
-
-  if (sub === 'news') {
-    await interaction.deferReply({ ephemeral: true });
-    const count = interaction.options.getInteger('count') ?? 10;
-
-    const channel = await client.channels.fetch(TARGET_CHANNEL_ID!).catch(() => null);
-    if (!channel?.isSendable()) {
-      await interaction.editReply(`채널을 찾을 수 없거나 메시지를 보낼 수 없습니다: ${TARGET_CHANNEL_ID}`);
-      return;
-    }
-
-    let n: number;
-    try {
-      n = await sendGeekNewsToChannel(channel, count);
-    } catch (err: any) {
-      await interaction.editReply(`긱 뉴스 가져오기 실패: ${err?.message ?? err}`);
-      return;
-    }
-
-    await interaction.editReply(`ATKUp · Hacker News 글 ${n}개를 알림 채널에 보냈습니다.`);
-    return;
-  }
-
-  if (sub === 'unity') {
-    const force = interaction.options.getBoolean('force') || false;
-    await interaction.deferReply({ ephemeral: true });
+  async function pollPublisherSaleOnce({ force = false }: { force?: boolean } = {}) {
+    console.log('[ATKUp] Unity 무료 에셋 정보 확인 중...');
 
     let info: PublisherSaleAssetInfo | null;
     try {
       info = await fetchPublisherSaleAssetInfo();
     } catch (err: any) {
-      await interaction.editReply(`가져오기 실패: ${err?.message ?? err}`);
+      console.error('[ATKUp] Unity 페이지 요청/파싱 실패:', err?.message ?? err);
       return;
     }
 
     if (!info) {
-      await interaction.editReply('현재 활성화된 무료 에셋 증정이 없는 것 같습니다.');
+      console.log('[ATKUp] 현재 활성화된 무료 에셋 증정이 없는 것 같습니다.');
       return;
     }
 
-    const coupon = info.couponCode || '(쿠폰 없음)';
     if (!force && info.couponCode && lastSentCoupon === info.couponCode) {
-      await interaction.editReply(
-        `이미 전송했던 쿠폰 코드라서 건너뜁니다: \`${coupon}\` (/atkup unity 명령에서 force 옵션을 켜면 강제 전송)`,
-      );
+      console.log('[ATKUp] 이미 전송했던 쿠폰 코드입니다. 건너뜀:', info.couponCode);
       return;
     }
 
     const channel = await client.channels.fetch(TARGET_CHANNEL_ID!).catch(() => null);
     if (!channel?.isSendable()) {
-      await interaction.editReply(`채널을 찾을 수 없거나 메시지를 보낼 수 없습니다: ${TARGET_CHANNEL_ID}`);
+      console.error('[ATKUp] 채널을 찾을 수 없거나 메시지를 보낼 수 없습니다:', TARGET_CHANNEL_ID);
       return;
     }
 
     await sendPublisherSaleToChannel(channel, info);
-    if (info.couponCode) lastSentCoupon = info.couponCode;
+    console.log('[ATKUp] 무료 에셋 알림 전송 완료.');
 
-    await interaction.editReply(`ATKUp · 전송 완료: \`${coupon}\``);
+    if (info.couponCode) {
+      lastSentCoupon = info.couponCode;
+    }
   }
-});
 
-client.login(TOKEN).catch((err) => {
-  console.error('[ATKUp] 로그인 실패:', err);
+  client.once('clientReady', async () => {
+    console.log(`\n  🎁  ATKUp`);
+    console.log('  ─────────────────────────');
+    console.log(`  로그인: ${client.user?.tag}`);
+    console.log('');
+
+    await pollPublisherSaleOnce();
+
+    const intervalMs = Math.max(5, CHECK_INTERVAL_MIN) * 60 * 1000;
+    setInterval(() => {
+      void pollPublisherSaleOnce();
+    }, intervalMs);
+  });
+
+  client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
+    if (interaction.commandName !== 'atkup') return;
+
+    const sub = interaction.options.getSubcommand(true);
+
+    if (sub === 'news') {
+      await interaction.deferReply({ ephemeral: true });
+      const count = interaction.options.getInteger('count') ?? 10;
+
+      const channel = await client.channels.fetch(TARGET_CHANNEL_ID!).catch(() => null);
+      if (!channel?.isSendable()) {
+        await interaction.editReply(`채널을 찾을 수 없거나 메시지를 보낼 수 없습니다: ${TARGET_CHANNEL_ID}`);
+        return;
+      }
+
+      let n: number;
+      try {
+        n = await sendGeekNewsToChannel(channel, count);
+      } catch (err: any) {
+        await interaction.editReply(`긱 뉴스 가져오기 실패: ${err?.message ?? err}`);
+        return;
+      }
+
+      await interaction.editReply(`ATKUp · Hacker News 글 ${n}개를 알림 채널에 보냈습니다.`);
+      return;
+    }
+
+    if (sub === 'unity') {
+      const force = interaction.options.getBoolean('force') || false;
+      await interaction.deferReply({ ephemeral: true });
+
+      let info: PublisherSaleAssetInfo | null;
+      try {
+        info = await fetchPublisherSaleAssetInfo();
+      } catch (err: any) {
+        await interaction.editReply(`가져오기 실패: ${err?.message ?? err}`);
+        return;
+      }
+
+      if (!info) {
+        await interaction.editReply('현재 활성화된 무료 에셋 증정이 없는 것 같습니다.');
+        return;
+      }
+
+      const coupon = info.couponCode || '(쿠폰 없음)';
+      if (!force && info.couponCode && lastSentCoupon === info.couponCode) {
+        await interaction.editReply(
+          `이미 전송했던 쿠폰 코드라서 건너뜁니다: \`${coupon}\` (/atkup unity 명령에서 force 옵션을 켜면 강제 전송)`,
+        );
+        return;
+      }
+
+      const channel = await client.channels.fetch(TARGET_CHANNEL_ID!).catch(() => null);
+      if (!channel?.isSendable()) {
+        await interaction.editReply(`채널을 찾을 수 없거나 메시지를 보낼 수 없습니다: ${TARGET_CHANNEL_ID}`);
+        return;
+      }
+
+      await sendPublisherSaleToChannel(channel, info);
+      if (info.couponCode) lastSentCoupon = info.couponCode;
+
+      await interaction.editReply(`ATKUp · 전송 완료: \`${coupon}\``);
+    }
+  });
+
+  client.login(TOKEN!).catch((err) => {
+    console.error('[ATKUp] 로그인 실패:', err);
+    process.exit(1);
+  });
+}
+
+if (!TOKEN) {
+  console.warn(
+    '[ATKUp] ATKUP_DISCORD_TOKEN 없음 — ATKUp 비활성. apps/atkup-bot/.env 를 설정하세요. (YawnBot과 별도 토큰)',
+  );
+  console.warn('[ATKUp] `npm run dev` 만 쓸 때는 이 경고는 무시해도 됩니다. YawnBot만 개발하려면: npm run dev:yawnbot');
+  setInterval(() => {}, 60 * 60 * 1000);
+} else if (!TARGET_CHANNEL_ID) {
+  console.error('[ATKUp] 알림을 보낼 채널 ID가 없습니다. .env의 ATKUP_TARGET_CHANNEL_ID를 설정하세요.');
   process.exit(1);
-});
-
+} else {
+  startAtkupBot();
+}

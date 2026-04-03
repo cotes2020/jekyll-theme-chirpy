@@ -5,6 +5,7 @@
 import path from 'path';
 import { config } from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
+import { destroyAllVoiceConnections } from './bot/voice-connection';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 import { GameDataService } from './services/gamedata';
@@ -20,7 +21,12 @@ import { createGithubWebhookApp } from './bot/webhook';
 config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildVoiceStates,
+  ],
 });
 
 const gameData = new GameDataService();
@@ -111,13 +117,31 @@ async function main() {
     console.log(`[Webhook] GitHub Webhook 서버 시작: http://0.0.0.0:${WEBHOOK_PORT}/webhook/github`);
   });
 
-  await client.login(process.env.DISCORD_TOKEN);
+  const token = process.env.DISCORD_TOKEN?.trim();
+  if (!token) {
+    console.error(
+      '[YawnBot] DISCORD_TOKEN이 비어 있습니다. apps/yawnbot/.env 에 봇 토큰을 넣으세요. (Discord Developer Portal → 앱 → Bot → Token)',
+    );
+    process.exit(1);
+  }
+
+  try {
+    await client.login(token);
+  } catch (e: any) {
+    if (e?.code === 'TokenInvalid') {
+      console.error(
+        '[YawnBot] TokenInvalid — 토큰이 만료되었거나 잘못되었습니다. Discord Developer Portal에서 Bot Token을 재발급하고 apps/yawnbot/.env 의 DISCORD_TOKEN을 갱신하세요.',
+      );
+    }
+    throw e;
+  }
 }
 
 process.on('SIGINT', () => {
   console.log('\n[Shutdown] 종료 중...');
   stock.stopMarket();
   gameData.destroy();
+  destroyAllVoiceConnections();
   client.destroy();
   process.exit(0);
 });
@@ -125,6 +149,7 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
   stock.stopMarket();
   gameData.destroy();
+  destroyAllVoiceConnections();
   client.destroy();
   process.exit(0);
 });
