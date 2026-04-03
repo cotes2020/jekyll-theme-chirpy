@@ -5,10 +5,55 @@
  * 실행 위치에 흔들리지 않도록 기본값을 "현재 패키지 루트"로 고정합니다.
  */
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
+
+/**
+ * `.env`의 CURSOR_LOCAL_REPO_DIR — `~`·`%NAME%`(Windows)만 풀어서 절대 경로로 만듭니다.
+ */
+export function resolveCursorRepoDir(raw: string | undefined | null): string {
+  if (raw == null) return '';
+  let s = String(raw).trim();
+  if (!s) return '';
+  if (s[0] === '~' && (s.length === 1 || s[1] === '/' || s[1] === '\\')) {
+    s = path.join(os.homedir(), s.slice(1));
+  }
+  if (process.platform === 'win32') {
+    s = s.replace(/%([^%]+)%/g, (_, name: string) => process.env[name] ?? '');
+  }
+  return path.resolve(s);
+}
 
 // Compiled to dist/src/*.js → two levels up to package root (apps/discord-bots/apps/yawnbot)
 export const PKG_ROOT = path.resolve(__dirname, '..', '..');
+
+/**
+ * 이 패키지가 `…/apps/discord-bots/apps/yawnbot`에 있다고 가정할 때의 git 워크스페이스 루트(레포 최상위).
+ * 클론을 어디에 두었는지(`source\repos` 등)와 무관합니다.
+ */
+export function defaultCursorRepoRoot(): string {
+  return path.resolve(PKG_ROOT, '..', '..', '..', '..');
+}
+
+/**
+ * `/cursor-edit`: `CURSOR_LOCAL_REPO_DIR`이 비어 있으면 위 기본 루트를 씁니다.
+ * env를 썼는데 경로가 틀리면 빈 문자열(호출부에서 오류 처리).
+ */
+export function resolveCursorRepoDirForSlash(): string {
+  const raw = process.env.CURSOR_LOCAL_REPO_DIR;
+  if (raw != null && String(raw).trim()) {
+    const resolved = resolveCursorRepoDir(raw);
+    if (resolved && fs.existsSync(resolved) && fs.statSync(resolved).isDirectory()) {
+      return resolved;
+    }
+    return '';
+  }
+  const fallback = defaultCursorRepoRoot();
+  if (fallback && fs.existsSync(fallback) && fs.statSync(fallback).isDirectory()) {
+    return fallback;
+  }
+  return '';
+}
 
 export function enhancementImgDir(): string {
   return path.join(PKG_ROOT, 'resources', 'img', 'enhancement');

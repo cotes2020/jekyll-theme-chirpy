@@ -9,6 +9,7 @@ import {
   startDeferElapsedTicker,
 } from '@discord-bots/common';
 import { discordAnswerCursorQuestion, getCursorMaxPromptChars, runCursorLocalRunner } from '../cursor-local';
+import { resolveCursorRepoDirForSlash } from '../../paths';
 
 export async function handleCursorEdit(ctx, interaction, userId) {
   const { gameData, isAdmin, cursorState } = ctx;
@@ -16,10 +17,13 @@ export async function handleCursorEdit(ctx, interaction, userId) {
     await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), ephemeral: true });
     return;
   }
-  const repoDir = process.env.CURSOR_LOCAL_REPO_DIR;
-  if (!repoDir || !String(repoDir).trim()) {
+  const repoDir = resolveCursorRepoDirForSlash();
+  if (!repoDir) {
+    const triedEnv = process.env.CURSOR_LOCAL_REPO_DIR != null && String(process.env.CURSOR_LOCAL_REPO_DIR).trim();
     await interaction.reply({
-      content: '`.env`에 `CURSOR_LOCAL_REPO_DIR`(작업할 로컬 git 폴더 절대 경로)을 설정하세요.',
+      content: triedEnv
+        ? '`CURSOR_LOCAL_REPO_DIR`이 가리키는 폴더가 없습니다. .env 경로를 고치거나, 비우면 이 레포 루트(자동)를 씁니다.'
+        : 'Cursor 작업 폴더를 찾을 수 없습니다. yawnbot이 이 레포의 `apps/discord-bots/apps/yawnbot` 아래에 있어야 하거나, `.env`에 `CURSOR_LOCAL_REPO_DIR`을 직접 지정하세요.',
       ephemeral: true,
     });
     return;

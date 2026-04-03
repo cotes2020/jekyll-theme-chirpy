@@ -17,6 +17,8 @@ import fs from 'fs';
 import { promisify } from 'util';
 import readline from 'readline';
 
+import { resolveCursorRepoDir } from '../src/paths';
+
 const execFileAsync = promisify(execFile);
 
 function parseArgs(argv) {
@@ -568,13 +570,18 @@ async function main() {
         return;
     }
 
-    const resolvedCwd = path.resolve(args.cwd);
-    if (!fs.existsSync(resolvedCwd) || !fs.statSync(resolvedCwd).isDirectory()) {
-        emitJsonLine({ ok: false, error: `cwd is not a directory: ${resolvedCwd}` });
+    const resolvedCwd = resolveCursorRepoDir(args.cwd);
+    if (!resolvedCwd || !fs.existsSync(resolvedCwd) || !fs.statSync(resolvedCwd).isDirectory()) {
+        emitJsonLine({
+            ok: false,
+            error: `cwd is not a directory: ${resolvedCwd || args.cwd}`,
+        });
         return;
     }
 
-    const allowed = process.env.CURSOR_LOCAL_REPO_DIR;
+    const allowed = process.env.CURSOR_LOCAL_REPO_DIR
+        ? resolveCursorRepoDir(process.env.CURSOR_LOCAL_REPO_DIR)
+        : '';
     if (!isWithinAllowedBase(resolvedCwd, allowed)) {
         emitJsonLine({
             ok: false,

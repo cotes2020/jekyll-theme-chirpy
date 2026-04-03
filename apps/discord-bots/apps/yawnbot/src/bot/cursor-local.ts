@@ -2,7 +2,7 @@
 import { spawn, execFile } from 'child_process';
 import type { ChatInputCommandInteraction, StringSelectMenuInteraction } from 'discord.js';
 import { ActionRowBuilder, EmbedBuilder, StringSelectMenuBuilder } from 'discord.js';
-import { cursorRunnerScript } from '../paths';
+import { cursorRunnerScript, resolveCursorRepoDir } from '../paths';
 import { truncateDiscordDescription } from '@discord-bots/common';
 
 const CURSOR_RUNNER_PATH = cursorRunnerScript();
@@ -64,12 +64,16 @@ export function runCursorLocalRunner(cwd, prompt, mode, onProgress, onQuestion) 
   const innerTimeoutMs = parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10);
   const outerGraceMs = parseInt(process.env.CURSOR_RUNNER_GRACE_MS || '120000', 10);
   const hardCapMs = Math.max(60000, innerTimeoutMs + outerGraceMs);
+  const resolvedCwd = resolveCursorRepoDir(cwd);
+  const resolvedAllow = process.env.CURSOR_LOCAL_REPO_DIR
+    ? resolveCursorRepoDir(process.env.CURSOR_LOCAL_REPO_DIR)
+    : resolvedCwd;
 
   return new Promise((resolve, reject) => {
     const args = [
       CURSOR_RUNNER_PATH,
       '--cwd',
-      cwd,
+      resolvedCwd,
       '--prompt',
       prompt,
       '--mode',
@@ -80,7 +84,7 @@ export function runCursorLocalRunner(cwd, prompt, mode, onProgress, onQuestion) 
     const child = spawn(process.execPath, args, {
       env: {
         ...process.env,
-        CURSOR_LOCAL_REPO_DIR: process.env.CURSOR_LOCAL_REPO_DIR || cwd,
+        CURSOR_LOCAL_REPO_DIR: resolvedAllow,
         CURSOR_GIT_SNAPSHOT: process.env.CURSOR_GIT_SNAPSHOT || 'baseline',
       },
       windowsHide: true,
