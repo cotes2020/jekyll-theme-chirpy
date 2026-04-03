@@ -32,12 +32,28 @@ async function resolveYouTube(query: string) {
 }
 
 export async function handlePlay(ctx, interaction) {
-  if (!interaction.guild || !interaction.member) {
+  if (!interaction.inGuild()) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
-  /** 느린 네트워크(핫스팟 등)에서 3초 ACK 제한 — 검증보다 먼저 defer 해 10062(Unknown interaction) 완화 */
-  await interaction.deferReply();
+  /** 3초 내 첫 ACK 필수. 동기 검사만 하고 바로 defer (member 접근은 그 다음). */
+  try {
+    await interaction.deferReply();
+  } catch (e) {
+    const code = e && typeof e === 'object' && 'code' in e ? (e as { code: unknown }).code : undefined;
+    if (code === 10062) {
+      console.warn(
+        '[play] deferReply 10062 (Unknown interaction): 인터랙션 만료 — 게이트웨이/회선 지연이 크거나 봇이 바쁩니다. 같은 명령을 다시 시도하거나 네트워크·호스트를 바꿔 보세요.',
+      );
+      return;
+    }
+    throw e;
+  }
+
+  if (!interaction.member) {
+    await interaction.editReply({ content: '멤버 정보를 불러올 수 없습니다. 잠시 후 다시 시도하세요.' });
+    return;
+  }
 
   const vc = interaction.member.voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
