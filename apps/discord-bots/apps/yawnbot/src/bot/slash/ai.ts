@@ -42,7 +42,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
   await interaction.deferReply();
   const progressMin = Math.ceil(parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10) / 60000);
   cursorState.inFlight = true;
-  let stopDeferTicker = () => {};
+  let stopDeferTicker: () => Promise<void> = async () => {};
   try {
     let liveAssistant = '';
     stopDeferTicker = await startDeferElapsedTicker(interaction, 'cursor', {
@@ -62,8 +62,8 @@ export async function handleCursorEdit(ctx, interaction, userId) {
       },
       (q) => discordAnswerCursorQuestion(interaction, q),
     );
-    stopDeferTicker();
-    stopDeferTicker = () => {};
+    await stopDeferTicker();
+    stopDeferTicker = async () => {};
     if (!json.ok) {
       const git = json.git || {};
       const embed = new EmbedBuilder()
@@ -139,6 +139,8 @@ export async function handleCursorEdit(ctx, interaction, userId) {
     await interaction.editReply({ content: null, embeds: [embed] });
     await notifyDeferCompletion(interaction, { ok: true, kind: 'cursor' });
   } catch (e) {
+    await stopDeferTicker();
+    stopDeferTicker = async () => {};
     await interaction.editReply({
       content: null,
       embeds: [
@@ -154,7 +156,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
     });
     await notifyDeferCompletion(interaction, { ok: false, kind: 'cursor' });
   } finally {
-    stopDeferTicker();
+    await stopDeferTicker();
     cursorState.inFlight = false;
   }
 }
@@ -167,7 +169,7 @@ export async function handleYawn(ctx, interaction) {
   }
   const prompt = interaction.options.getString('질문');
   await interaction.deferReply();
-  let stopGeminiTicker = () => {};
+  let stopGeminiTicker: () => Promise<void> = async () => {};
   try {
     stopGeminiTicker = await startDeferElapsedTicker(interaction, 'gemini', { requestText: prompt });
     const result = await geminiModel.generateContent({
@@ -182,8 +184,8 @@ export async function handleYawn(ctx, interaction) {
         },
       ],
     });
-    stopGeminiTicker();
-    stopGeminiTicker = () => {};
+    await stopGeminiTicker();
+    stopGeminiTicker = async () => {};
     const response = result.response.text();
     const embed = new EmbedBuilder()
       .setTitle('YawnBot AI Response')
@@ -198,6 +200,8 @@ export async function handleYawn(ctx, interaction) {
     await interaction.editReply({ content: null, embeds: [embed] });
     await notifyDeferCompletion(interaction, { ok: true, kind: 'gemini' });
   } catch (e) {
+    await stopGeminiTicker();
+    stopGeminiTicker = async () => {};
     await interaction.editReply({
       content: null,
       embeds: [
@@ -213,7 +217,7 @@ export async function handleYawn(ctx, interaction) {
     });
     await notifyDeferCompletion(interaction, { ok: false, kind: 'gemini' });
   } finally {
-    stopGeminiTicker();
+    await stopGeminiTicker();
   }
 }
 

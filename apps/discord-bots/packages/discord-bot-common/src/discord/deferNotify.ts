@@ -55,14 +55,17 @@ export async function startDeferElapsedTicker(
     modeLabel?: string;
     liveAssistantText?: string | (() => string);
   } = {},
-): Promise<() => void> {
+): Promise<() => Promise<void>> {
   const tickMs = Math.max(1500, parseInt(process.env.DEFER_TICK_MS || '2500', 10));
   const t0 = Date.now();
   const SPINNER = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
   const progressMin = typeof extra.progressMin === 'number' ? extra.progressMin : 10;
   let tick = 0;
+  let cancelled = false;
+  let inFlight = 0;
 
   const run = async () => {
+    if (cancelled) return;
     const elapsedSec = Math.floor((Date.now() - t0) / 1000);
     const spinner = SPINNER[tick % SPINNER.length];
     tick += 1;
@@ -76,17 +79,30 @@ export async function startDeferElapsedTicker(
       modeLabel: extra.modeLabel || '',
       liveAssistantText: liveAssistantText || '',
     });
+    if (cancelled) return;
+    inFlight++;
     try {
+      if (cancelled) return;
       await interaction.editReply({ content: null as any, embeds: [embed] } as any);
     } catch (e: any) {
       const code = e && typeof e === 'object' && 'code' in e ? (e as any).code : undefined;
       if (code !== 50006) console.error('[defer ticker] editReply 실패:', e?.message ?? e);
+    } finally {
+      inFlight--;
     }
   };
 
   const id = setInterval(run, tickMs);
   await run();
-  return () => clearInterval(id);
+  return async () => {
+    if (!cancelled) {
+      cancelled = true;
+      clearInterval(id);
+    }
+    while (inFlight > 0) {
+      await new Promise<void>((r) => setTimeout(r, 50));
+    }
+  };
 }
 
 export async function notifyDeferCompletion(
