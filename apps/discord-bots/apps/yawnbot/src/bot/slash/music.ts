@@ -36,27 +36,28 @@ export async function handlePlay(ctx, interaction) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
+  /** 느린 네트워크(핫스팟 등)에서 3초 ACK 제한 — 검증보다 먼저 defer 해 10062(Unknown interaction) 완화 */
+  await interaction.deferReply();
+
   const vc = interaction.member.voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
-    await interaction.reply({ content: '음성 채널에 들어간 뒤 `/play`를 사용하세요.', flags: MessageFlags.Ephemeral });
+    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/play`를 사용하세요.' });
     return;
   }
   const botMember = interaction.guild.members.me;
   if (!botMember) {
-    await interaction.reply({ content: '봇 멤버 정보를 불러올 수 없습니다.', flags: MessageFlags.Ephemeral });
+    await interaction.editReply({ content: '봇 멤버 정보를 불러올 수 없습니다.' });
     return;
   }
   const perms = vc.permissionsFor(botMember);
   if (!perms?.has([PermissionFlagsBits.Connect, PermissionFlagsBits.Speak, PermissionFlagsBits.ViewChannel])) {
-    await interaction.reply({
+    await interaction.editReply({
       content: '봇에게 해당 음성 채널 **보기·연결·말하기(Speak)** 권한이 필요합니다.',
-      flags: MessageFlags.Ephemeral,
     });
     return;
   }
 
   const query = interaction.options.getString('query') ?? '';
-  await interaction.deferReply();
   await interaction.editReply({ content: 'YouTube에서 곡 정보를 확인하는 중…' });
   console.log('[play] deferred, query=', query.slice(0, 120));
 
