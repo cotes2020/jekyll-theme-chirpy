@@ -1,12 +1,9 @@
 /**
  * 슬래시 커맨드 등록 (Discord API에 등록하는 스크립트)
  */
-import path from 'path';
-import { config } from 'dotenv';
+import './load-env';
 import { SlashCommandBuilder, ChannelType } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
-
-config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const voiceJoin = () =>
   new SlashCommandBuilder()
@@ -37,6 +34,16 @@ const commands = [
   new SlashCommandBuilder().setName('음성퇴장').setDescription('봇을 음성 채널 연결에서 끊습니다.'),
   voiceJoin(),
   voiceLeave(),
+
+  new SlashCommandBuilder()
+    .setName('play')
+    .setDescription('YouTube URL 또는 검색어로 재생 (음성 채널에 있어야 함)')
+    .addStringOption((opt) =>
+      opt.setName('query').setDescription('YouTube 동영상 URL 또는 검색어').setRequired(true),
+    ),
+  new SlashCommandBuilder().setName('skip').setDescription('지금 재생 중인 곡 건너뛰기'),
+  new SlashCommandBuilder().setName('stop').setDescription('재생 중지 및 대기열 비우기'),
+  new SlashCommandBuilder().setName('queue').setDescription('대기열 확인'),
 
   new SlashCommandBuilder().setName('강화').setDescription('검을 강화합니다. (확률 존재)'),
   new SlashCommandBuilder().setName('판매').setDescription('검을 판매하여 돈을 얻습니다.'),

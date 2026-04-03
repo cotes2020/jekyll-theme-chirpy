@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { MessageFlags } from 'discord.js';
 import { handlePing, handleHelp } from './general';
 import {
   handleEnhanceSlash,
@@ -17,6 +18,7 @@ import { handleStockList, handleStockChart, handleBuy, handleSellStock, handleMy
 import { handleRaidInfo, handleRaidSpawn, handleRaidAttack } from './raid';
 import { handleCursorEdit, handleYawn } from './ai';
 import { handleVoiceJoin, handleVoiceLeave } from './voice';
+import { handlePlay, handleSkip, handleStopMusic, handleQueue } from './music';
 import { handleAdminReload, handleAdminSave } from './admin';
 
 export async function dispatchSlashCommand(ctx, interaction) {
@@ -104,6 +106,18 @@ export async function dispatchSlashCommand(ctx, interaction) {
       case 'voice-leave':
         await handleVoiceLeave(ctx, interaction);
         break;
+      case 'play':
+        await handlePlay(ctx, interaction);
+        break;
+      case 'skip':
+        await handleSkip(ctx, interaction);
+        break;
+      case 'stop':
+        await handleStopMusic(ctx, interaction);
+        break;
+      case 'queue':
+        await handleQueue(ctx, interaction);
+        break;
       case 'admin-reload':
         await handleAdminReload(ctx, interaction, userId);
         break;
@@ -111,12 +125,15 @@ export async function dispatchSlashCommand(ctx, interaction) {
         await handleAdminSave(ctx, interaction, userId);
         break;
       default:
-        await interaction.reply({ content: '알 수 없는 명령어입니다.', ephemeral: true });
+        await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }
   } catch (err) {
     console.error(`[Error] ${interaction.commandName}:`, err);
+    const msg = err instanceof Error ? err.message : String(err);
     const reply = interaction.replied || interaction.deferred ? interaction.editReply : interaction.reply;
-    await reply.call(interaction, { content: `오류가 발생했습니다: ${err.message}`, ephemeral: true }).catch(() => {});
+    await reply
+      .call(interaction, { content: `오류가 발생했습니다: ${msg}`, flags: MessageFlags.Ephemeral })
+      .catch(() => {});
   }
 }
 

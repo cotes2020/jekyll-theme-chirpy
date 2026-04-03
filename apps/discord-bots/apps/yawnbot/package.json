@@ -6,22 +6,28 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/src/main.js",
     "deploy": "node dist/src/deploy-commands.js",
-    "dev": "npm run build && concurrently -k \"tsc -w --preserveWatchOutput\" \"nodemon -q -w dist -e js -d 1.5 dist/src/main.js\""
+    "dev": "tsc-watch -p tsconfig.json --preserveWatchOutput --onSuccess \"node dist/src/main.js\""
   },
   "dependencies": {
     "@discord-bots/common": "*",
-    "@discordjs/voice": "^0.18.0",
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.19.2",
+    "@distube/ytdl-core": "^4.16.12",
     "@google/generative-ai": "^0.21.0",
     "discord.js": "^14.26.0",
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
-    "libsodium-wrappers": "^0.8.2"
+    "ffmpeg-static": "^5.3.0",
+    "libsodium-wrappers": "^0.8.2",
+    "opusscript": "^0.0.8",
+    "play-dl": "^1.9.7",
+    "youtube-dl-exec": "^3.1.4",
+    "youtubei.js": "^17.0.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.5.0",
-    "concurrently": "^9.2.1",
-    "nodemon": "^3.1.14",
+    "tsc-watch": "^7.2.0",
     "typescript": "^6.0.2"
   }
 }

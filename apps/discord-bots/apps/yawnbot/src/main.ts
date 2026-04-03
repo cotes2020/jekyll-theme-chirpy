@@ -2,11 +2,14 @@
  * YawnBot — Node.js Discord Bot (game bot)
  * 기존 apps/yawnbot-server/src/index.ts 기반
  */
-import path from 'path';
-import { config } from 'dotenv';
+import './load-env';
+import dns from 'node:dns';
+import { generateDependencyReport } from '@discordjs/voice';
+import sodium from 'libsodium-wrappers';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
+import { destroyAllMusicPlayers } from './bot/music-player';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 import { GameDataService } from './services/gamedata';
@@ -18,8 +21,6 @@ import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
 import { dispatchSlashCommand } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
-
-config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const client = new Client({
   intents: [
@@ -108,7 +109,21 @@ client.once('clientReady', async () => {
 });
 
 async function main() {
+  /** Discord 음성 UDP가 IPv6 경로에서만 막히는 환경 완화 (Node 17+) */
+  if (typeof dns.setDefaultResultOrder === 'function') {
+    dns.setDefaultResultOrder('ipv4first');
+    console.log('[voice] DNS: IPv4 우선 (음성 연결 안정화)');
+  }
+  if (process.env.VOICE_DEBUG === '1') {
+    console.log('[voice] VOICE_DEBUG=1 — join 시 [voice] 디버그 로그 출력');
+  }
+
   await gameData.initialize();
+
+  /** 음성 암호화(sodium) 준비 전에 join하면 signalling↔connecting만 반복되는 경우가 많음 */
+  console.log('[voice] dependency report:\n' + generateDependencyReport());
+  await sodium.ready;
+  console.log('[voice] libsodium 준비 완료');
 
   const WEBHOOK_PORT = process.env.WEBHOOK_PORT || 8080;
   app.listen(WEBHOOK_PORT, () => {
@@ -139,6 +154,7 @@ process.on('SIGINT', () => {
   console.log('\n[Shutdown] 종료 중...');
   stock.stopMarket();
   gameData.destroy();
+  destroyAllMusicPlayers();
   destroyAllVoiceConnections();
   client.destroy();
   process.exit(0);
@@ -147,6 +163,7 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
   stock.stopMarket();
   gameData.destroy();
+  destroyAllMusicPlayers();
   destroyAllVoiceConnections();
   client.destroy();
   process.exit(0);

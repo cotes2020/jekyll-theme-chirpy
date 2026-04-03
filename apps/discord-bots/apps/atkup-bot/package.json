@@ -7,7 +7,7 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/main.js",
     "deploy": "node dist/deploy-commands.js",
-    "dev": "npm run build && concurrently -k \"tsc -w --preserveWatchOutput\" \"nodemon -q -w dist -e js -d 1.5 dist/main.js\""
+    "dev": "tsc-watch -p tsconfig.json --preserveWatchOutput --onSuccess \"node dist/main.js\""
   },
   "dependencies": {
     "@discord-bots/common": "*",
@@ -18,8 +18,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
-    "concurrently": "^9.2.1",
-    "nodemon": "^3.1.14",
+    "tsc-watch": "^7.2.0",
     "typescript": "^6.0.2"
   }
 }
