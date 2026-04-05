@@ -7,7 +7,7 @@
     "tauri": "tauri",
     "dev": "concurrently -k -s first -n jekyll,tauri \"npm run dev:jekyll\" \"npm run dev:tauri\"",
     "dev:jekyll": "cd ../.. && bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload --incremental",
-    "dev:tauri": "wait-on http-get://127.0.0.1:4000/karmolab/ -t 120000 -i 500 && tauri dev",
+    "dev:tauri": "wait-on http-get://127.0.0.1:4000/karmolab/ -t 600000 -i 500 && tauri dev",
     "dev:app": "tauri dev",
     "dev:remote": "tauri dev --config src-tauri/tauri.dev-remote.conf.json",
     "build": "tauri build"

@@ -12,7 +12,7 @@
 ```bash
 cd apps/karmolab-tauri
 npm install
-npm run dev    # Jekyll serve(4000) + 준비될 때까지 대기 후 tauri dev — 로컬 수정이 곧바로 반영
+npm run dev    # Jekyll serve(4000) + /karmolab/ 응답까지 대기(최대 ~10분) 후 tauri dev — 첫 생성이 길면 잠깐 기다리면 됨
 npm run dev:app  # 이미 다른 터미널에서 jekyll serve 중일 때만 Tauri만 실행
 npm run dev:remote  # 개발 모드(tauri dev)인데 WebView만 배포본 URL로 — Jekyll 없이 원격 동작 테스트
 npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 씀)
@@ -38,15 +38,7 @@ npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 
 
 ## 로컬 데브 러너
 
-KarmoLab **데스크톱 앱**에서만 동작합니다(브라우저 탭에서는 `서버 모니터`에 **로컬 실행** 탭이 나오지 않음).
-
-1. 앱에서 **서버 모니터 → 로컬 실행**으로 이동합니다.
-2. **프로젝트(저장소) 루트 경로**에 이 레포 루트(예: `…\Mascari4615.github.io`)를 넣고 **루트 저장**을 누릅니다. 값은 WebView `localStorage`와 Rust 쪽 상태에 같이 반영됩니다.
-3. 프로필 목록은 **`apps/karmolab/data/servermonitor-config.json`** 의 **`devProfiles`** 만 읽습니다. 앱은 `profile id`만 넘기고, 실제 `program`·`args`·`cwd`는 Rust가 그 파일에서 다시 읽어 검증합니다(허용 program: `npm`, `npx`, `bundle`, `ruby`, `node`).
-4. **시작**은 백그라운드 프로세스로 띄우고, **종료**는 Windows에서 `taskkill /T /F`로 트리를 끊습니다. **앱을 완전히 종료하면 PID 추적은 초기화**되므로, 그때는 작업 관리자 등으로 남은 프로세스를 확인하세요.
-5. **`npm install`** 버튼은 `npmInstall: true`인 프로필만 표시되며, 해당 프로필의 `cwd`(레포 기준 상대 경로)에서 동기 실행됩니다.
-6. **Windows**: `npm`/`npx`는 내부적으로 `cmd /C`로 호출합니다. **Ruby `bundle`·Node `npm`** 이 사용자 PATH에 있어야 합니다.
-7. **Linux/macOS**: 종료는 부모 PID에 `kill`을 보내는 수준이라, 자식 프로세스가 남을 수 있습니다. 필요하면 `pkill` 등으로 정리하세요.
+사용 방법·`devProfiles` 설정·플랫폼별 제한은 **KarmoLab 웹앱 → 문서 → 데스크톱·로컬** 탭(원본 `apps/karmolab/js/widgets/docs/local-dev-runner.md`)에 모아 두었습니다.
 
 ## 앱 내 업데이트 (`tauri-plugin-updater`)
 
