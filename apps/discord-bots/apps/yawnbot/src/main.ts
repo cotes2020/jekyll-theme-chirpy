@@ -22,6 +22,7 @@ import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
 import { dispatchSlashCommand } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
+import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 
 const client = new Client({
   intents: [
@@ -120,6 +121,8 @@ client.once('clientReady', async () => {
       await channel.send(greeting).catch((e: any) => console.error('[Startup] 인사 메시지 전송 실패:', e?.message ?? e));
     }
   }
+
+  startPresenceRotation(client);
 });
 
 async function main() {
@@ -166,6 +169,7 @@ async function main() {
 
 process.on('SIGINT', () => {
   console.log('\n[Shutdown] 종료 중...');
+  stopPresenceRotation();
   stock.stopMarket();
   gameData.destroy();
   destroyAllMusicPlayers();
@@ -175,6 +179,7 @@ process.on('SIGINT', () => {
 });
 
 process.on('SIGTERM', () => {
+  stopPresenceRotation();
   stock.stopMarket();
   gameData.destroy();
   destroyAllMusicPlayers();

@@ -21,6 +21,8 @@ npm run deploy:yawnbot
 
 전체 워크스페이스 설명은 [apps/discord-bots/README.md](../../README.md)를 참고하세요.
 
+로그인 후 **프로필 활동(Playing …)** 은 기본으로 **약 3초마다** 순환합니다. 끄려면 `.env`에 `BOT_PRESENCE_INTERVAL_SEC=0`, 문구·간격은 `BOT_PRESENCE_LINES`·`BOT_PRESENCE_INTERVAL_SEC`로 바꿀 수 있습니다(`.env.template` 주석).
+
 ---
 
 ## 슬래시 명령어 요약
