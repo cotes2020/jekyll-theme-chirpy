@@ -254,7 +254,7 @@
   Toolbox.register({
     id: 'docs',
     title: '문서',
-    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, KarmoLabAI, Discord 봇 문서, 레포 명령',
+    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, KarmoLabAI, Discord 봇 문서, 레포 명령, 데스크톱 로컬 실행',
     layout: 'wide',
     icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
     tabs: [
@@ -355,6 +355,21 @@
           Mdd.linePreset('tool_run', { msg: '블로그·KarmoLab·앱 전체 명령을 모아 뒀어요. 복사해서 쓰기 좋게!' });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
           loadDoc('project-commands-guide.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-local-dev',
+        label: '데스크톱·로컬',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: 'Tauri 앱에서만 쓰는 로컬 데브 러너 안내예요.' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('local-dev-runner.md')
             .then(function (md: string) {
               renderMarkdown(c, md);
             })

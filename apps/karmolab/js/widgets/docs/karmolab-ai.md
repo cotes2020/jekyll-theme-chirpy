@@ -79,11 +79,16 @@ flowchart TB
 
 - **`apps/discord-bots/apps/yawnbot`** 에 `karmolab-ai`가 `file:../../../../packages/karmolab-ai` 로 연결되어 있습니다.
 - 루트에서 봇 빌드할 때 `packages/karmolab-ai`가 먼저 `tsc` 됩니다 (`apps/discord-bots`의 `npm run build` / `build:yawnbot`).
+- **엔트리 분리:** 루트 `karmolab-ai`는 계약(URL·카탈로그)만, Node에서 `@google/generative-ai`로 실제 호출까지 맞출 때는 **`karmolab-ai/node`** 를 씁니다. (`peerDependencies`: `@google/generative-ai` — 욘봇이 이미 의존)
+- **`karmolab-ai/node` API (요약):**
+  - `createAiStudioTextModel(apiKey, modelId?)` — `GEMINI_MODEL` 미설정 시 패키지 기본 텍스트 모델
+  - `generateAiStudioText({ apiKey, modelId?, prompt })` — 단일 문자열 프롬프트 한 번 호출
+  - `resolveAiStudioTextModelId(envValue?)` — env 문자열만 정규화
 - 예시:
-  - `main.ts`: `import { DEFAULT_TEXT_MODEL_ID } from 'karmolab-ai'` 후 `GEMINI_MODEL` 미설정 시 기본 모델로 사용
-  - `kakao-export.mjs`: `createRequire`로 `DEFAULT_TEXT_MODEL_ID` 로드
+  - `main.ts`: `import { createAiStudioTextModel } from 'karmolab-ai/node'` 로 `/ai` 등에 쓰는 모델 생성
+  - `kakao-export.mjs`(ESM): `createRequire`로 `require('karmolab-ai/node').generateAiStudioText` 사용
 
-새 스크립트에서 모델 ID만 맞추고 싶다면 `MODEL_CATALOG`, `getDefaultModelId('gemini' | 'geminiImage' | 'imagen')` 를 import 해 사용하면 됩니다.
+모델 ID·카탈로그만 쓰려면 기존처럼 `karmolab-ai`에서 `DEFAULT_TEXT_MODEL_ID`, `MODEL_CATALOG`, `getDefaultModelId` 를 import 하면 됩니다.
 
 ---
 
