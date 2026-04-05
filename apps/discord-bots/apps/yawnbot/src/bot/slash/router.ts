@@ -19,6 +19,8 @@ import { handleRaidInfo, handleRaidSpawn, handleRaidAttack } from './raid';
 import { handleCursorEdit, handleYawn } from './ai';
 import { handleVoiceJoin, handleVoiceLeave } from './voice';
 import { handlePlay, handleSkip, handleStopMusic, handleQueue } from './music';
+import { handleSpeak } from './speak';
+import { handleSound } from './sound';
 import { handleAdminReload, handleAdminSave } from './admin';
 
 export async function dispatchSlashCommand(ctx, interaction) {
@@ -108,6 +110,12 @@ export async function dispatchSlashCommand(ctx, interaction) {
         break;
       case 'play':
         await handlePlay(ctx, interaction);
+        break;
+      case 'speak':
+        await handleSpeak(ctx, interaction);
+        break;
+      case 'sound':
+        await handleSound(ctx, interaction);
         break;
       case 'skip':
         await handleSkip(ctx, interaction);

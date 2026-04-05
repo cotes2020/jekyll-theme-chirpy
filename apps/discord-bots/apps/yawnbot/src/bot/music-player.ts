@@ -1,6 +1,17 @@
-/** 네이티브 Opus — opusscript만 쓰면 연결은 되는데 무음인 경우가 많음 */
-import '@discordjs/opus';
+/**
+ * 네이티브 Opus — 있으면 우선 사용.
+ * Node Current(예: 25)처럼 @discordjs/opus prebuild가 아직 없는 ABI면 require 실패 → opusscript만 씀.
+ */
 import 'opusscript';
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  require('@discordjs/opus');
+} catch {
+  console.warn(
+    '[music] @discordjs/opus 네이티브 바이너리를 불러오지 못했습니다. opusscript로 진행합니다. ' +
+      '네이티브 Opus를 쓰려면 Node.js LTS(22·24)로 맞추거나, Visual Studio Build Tools 설치 후 `npm rebuild @discordjs/opus`를 실행하세요.',
+  );
+}
 import ffmpegPath from 'ffmpeg-static';
 import {
   createAudioPlayer,
@@ -26,6 +37,7 @@ import {
   waitForVoiceReady,
 } from './voice-connection';
 import type { VoiceBasedChannel } from 'discord.js';
+import { createEdgeTtsAudioResource } from './edge-tts-speak';
 
 /** play-dl / YouTube 조회·스트림이 끝없이 걸리면 `/play`가 생각 중에서 안 풀림 */
 export const YOUTUBE_RESOLVE_TIMEOUT_MS = 45_000;
@@ -145,7 +157,9 @@ if (typeof ffmpegPath === 'string' && ffmpegPath.length > 0) {
   process.env.FFMPEG_PATH = ffmpegPath;
 }
 
-type QueueItem = { title: string; url: string };
+type QueueItem =
+  | { kind: 'youtube'; title: string; url: string }
+  | { kind: 'custom'; title: string; load: () => Promise<AudioResource> };
 
 type GuildMusicState = {
   player: AudioPlayer;
@@ -270,6 +284,42 @@ function getInnertubeSingleton() {
 }
 
 /**
+ * play-dl `search()` 가 YouTube 응답 변경으로 실패할 때(예: `browseId` 접근 오류) InnerTube 검색으로 첫 동영상만 고름.
+ */
+export async function searchYoutubeFirstVideoViaYoutubei(
+  query: string,
+): Promise<{ title: string; url: string } | null> {
+  const q = (query ?? '').trim();
+  if (!q) return null;
+  try {
+    const innertube = await getInnertubeSingleton();
+    const search = await innertube.search(q, { type: 'video' });
+    const vids = search.videos;
+    if (!vids?.length) return null;
+    const v = vids[0] as { video_id?: string; id?: string; title?: { toString(): string; text?: string } };
+    const vid =
+      typeof v.video_id === 'string' && v.video_id.length > 0
+        ? v.video_id
+        : typeof v.id === 'string' && v.id.length > 0
+          ? v.id
+          : null;
+    if (!vid) return null;
+    let titleStr = q;
+    if (v.title) {
+      const t = v.title as { toString?: () => string; text?: string };
+      titleStr = typeof t.toString === 'function' ? String(t.toString()) : String(t.text ?? q);
+    }
+    return {
+      title: titleStr.trim() || 'YouTube',
+      url: `https://www.youtube.com/watch?v=${vid}`,
+    };
+  } catch (e) {
+    console.warn('[music] youtubei.js 검색 폴백 실패:', e instanceof Error ? e.message : e);
+    return null;
+  }
+}
+
+/**
  * ytdl-core까지 실패 시 youtubei.js (InnerTube 전용 클라이언트) — 포맷/서명 변경에 더 잘 버팀.
  */
 async function resourceFromYoutubei(videoId: string): Promise<AudioResource> {
@@ -357,24 +407,25 @@ async function playNext(guildId: string): Promise<void> {
   if (!s) return;
   const item = s.queue.shift();
   if (!item) return;
-  console.log('[music] playNext:', item.title?.slice(0, 60) ?? item.url);
+  console.log(
+    '[music] playNext:',
+    item.title.slice(0, 60),
+    item.kind === 'youtube' ? item.url.slice(0, 48) : '(custom)',
+  );
   try {
-    const resource = await createYoutubeAudioResource(item.url);
+    const resource =
+      item.kind === 'youtube' ? await createYoutubeAudioResource(item.url) : await item.load();
     s.player.play(resource);
   } catch (e: any) {
-    console.error('[music] 재생 실패:', item.url, e?.message ?? e);
+    console.error('[music] 재생 실패:', item.kind === 'youtube' ? item.url : item.title, e?.message ?? e);
     await playNext(guildId);
   }
 }
 
-/** 음성 채널에 연결하고 큐에 추가한 뒤 재생 시작(또는 대기열에만 추가). */
-export async function enqueueYouTube(
+async function appendToMusicQueue(
   channel: VoiceBasedChannel,
-  title: string,
-  url: string,
-): Promise<
-  { ok: true; position: number; started: boolean } | { ok: false; error: string }
-> {
+  item: QueueItem,
+): Promise<{ ok: true; position: number; started: boolean } | { ok: false; error: string }> {
   try {
     console.log('[music] 음성 연결 대기(Ready)...', channel.guild.id);
     const connection = await joinAndWaitUntilVoiceReady(channel);
@@ -383,7 +434,7 @@ export async function enqueueYouTube(
     const guildId = channel.guild.id;
     const s = getOrCreatePlayer(guildId);
     const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
-    s.queue.push({ title, url });
+    s.queue.push(item);
     const position = s.queue.length;
 
     if (!s.subscribed) {
@@ -404,6 +455,26 @@ export async function enqueueYouTube(
     }
     return { ok: false, error: e?.message || String(e) };
   }
+}
+
+/** 음성 채널에 연결하고 큐에 추가한 뒤 재생 시작(또는 대기열에만 추가). */
+export async function enqueueYouTube(
+  channel: VoiceBasedChannel,
+  title: string,
+  url: string,
+): Promise<
+  { ok: true; position: number; started: boolean } | { ok: false; error: string }
+> {
+  return appendToMusicQueue(channel, { kind: 'youtube', title, url });
+}
+
+/** TTS·URL·파일 등 임의 오디오 소스를 `/play`와 같은 대기열에 넣습니다. */
+export async function enqueueCustomTrack(
+  channel: VoiceBasedChannel,
+  title: string,
+  load: () => Promise<AudioResource>,
+): Promise<{ ok: true; position: number; started: boolean } | { ok: false; error: string }> {
+  return appendToMusicQueue(channel, { kind: 'custom', title, load });
 }
 
 export function skipTrack(guildId: string): boolean {
@@ -447,5 +518,16 @@ export function getQueueSummary(guildId: string): string[] {
   const s = states.get(guildId);
   if (!s || s.queue.length === 0) return [];
   return s.queue.map((q) => q.title);
+}
+
+/** Edge TTS 문장을 `/play`와 동일한 대기열에 넣어 재생합니다. */
+export async function enqueueSpokenText(
+  channel: VoiceBasedChannel,
+  title: string,
+  text: string,
+): Promise<
+  { ok: true; position: number; started: boolean } | { ok: false; error: string }
+> {
+  return enqueueCustomTrack(channel, title, () => createEdgeTtsAudioResource(text));
 }
 

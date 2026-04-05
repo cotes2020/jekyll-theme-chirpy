@@ -41,6 +41,23 @@ const commands = [
     .addStringOption((opt) =>
       opt.setName('query').setDescription('YouTube 동영상 URL 또는 검색어').setRequired(true),
     ),
+  new SlashCommandBuilder()
+    .setName('speak')
+    .setDescription('Edge TTS로 문장을 읽어 재생 (/play 과 같은 대기열, 디스코드 내장 TTS 아님)')
+    .addStringOption((opt) =>
+      opt.setName('text').setDescription('읽을 문장 (비우면 데모 문장)').setRequired(false),
+    ),
+  new SlashCommandBuilder()
+    .setName('sound')
+    .setDescription('첨부·URL·로컬 클립 오디오 재생 (/play 과 같은 대기열, file/url/clip 중 하나)')
+    .addAttachmentOption((opt) => opt.setName('file').setDescription('오디오 첨부 (mp3, wav, ogg 등)').setRequired(false))
+    .addStringOption((opt) => opt.setName('url').setDescription('직접 링크 (http(s) 오디오 파일)').setRequired(false))
+    .addStringOption((opt) =>
+      opt
+        .setName('clip')
+        .setDescription('봇 패키지 resources/audio/ 안의 파일명만 (예: hello.mp3)')
+        .setRequired(false),
+    ),
   new SlashCommandBuilder().setName('skip').setDescription('지금 재생 중인 곡 건너뛰기'),
   new SlashCommandBuilder().setName('stop').setDescription('재생 중지 및 대기열 비우기'),
   new SlashCommandBuilder().setName('queue').setDescription('대기열 확인'),
