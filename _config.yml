@@ -226,6 +226,11 @@ exclude:
   - "**/src-tauri/target"
   - apps/karmolab-tauri/src-tauri/target
   - apps/chat-overlay/src-tauri/target
+  # Monorepo npm workspaces: symlinks under node_modules point at apps/packages; Listen would watch the same dir twice (Windows errors).
+  - "**/node_modules"
+  # Not part of the static site; watching them duplicates apps/*/node_modules symlinks on Windows (Listen "already being watched").
+  - apps/discord-bots
+  - packages
 
 jekyll-archives:
   enabled: [categories, tags]
