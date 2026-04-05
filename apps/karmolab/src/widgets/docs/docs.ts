@@ -362,21 +362,6 @@
               renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
             });
         }
-      },
-      {
-        id: 'docs-ai-commonization',
-        label: 'AI 공통화',
-        build: function (c: HTMLElement): void {
-          Mdd.linePreset('tool_run', { msg: 'Gemini·봇·카카오 스크립트 공통화 기획이에요.' });
-          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
-          loadDoc('ai-commonization-plan.md')
-            .then(function (md: string) {
-              renderMarkdown(c, md);
-            })
-            .catch(function () {
-              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
-            });
-        }
       }
     ]
   });

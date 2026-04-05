@@ -5,6 +5,45 @@
 
 ---
 
+## 왜 패키지로 나눴나
+
+KarmoLab 브라우저 앱과 yawnbot·`kakao-export.mjs` 등 Node 쪽은 **같은 모델 ID·프로바이더 규칙**을 쓰지만, 호출 코드를 **한 파일**로 합치기는 어렵습니다.
+
+- **브라우저:** CORS, `fetch`, localStorage, UI와 결합된 **`apps/karmolab/src/gemini.ts`**가 실제 REST 호출을 담당합니다.
+- **Node:** `.env`와 `@google/generative-ai` 같은 SDK가 자연스럽습니다.
+
+그래서 **DOM·네트워크·키 저장 없이** 모델 카탈로그·기본 ID·AI Studio/Vertex URL 조립만 **`packages/karmolab-ai`**에 두고, KarmoLab과 봇이 같은 패키지를 의존합니다. (`apps/discord-bots/packages/discord-bot-common`에는 AI 코드가 없습니다.)
+
+### 소비자 (요약)
+
+| 구역 | 역할 |
+|------|------|
+| KarmoLab | `gemini.ts`가 `karmolab-ai`를 import해 URL·모델을 맞추고, `fetch`·UI·키는 여기서 |
+| yawnbot `/ai` 등 | 패키지에서 기본 모델·카탈로그를 가져오고, 호출은 SDK·스크립트 각자 |
+| 카카오 파이프라인 | `yawnbot/scripts/kakao-export.mjs` — 동일 |
+
+```mermaid
+flowchart TB
+  PKG["packages/karmolab-ai"]
+  subgraph kl["브라우저 KarmoLab"]
+    GT["gemini.ts"]
+  end
+  subgraph node["Node"]
+    YB["yawnbot"]
+    KAK["kakao-export.mjs"]
+  end
+  GT --> PKG
+  YB --> PKG
+  KAK --> PKG
+```
+
+### 구현·유지보수 체크리스트
+
+- [ ] `MODEL_CATALOG` / 기본 모델을 바꾼 뒤 패키지·KarmoLab·봇을 각각 빌드했는지
+- [ ] (선택) Node에서 Vertex를 쓸 때 KarmoLab과 동일 REST를 맞출지, `@google-cloud/vertexai`·ADC를 쓸지 결정을 문서에 남겼는지
+
+---
+
 ## 무엇이 들어 있나
 
 | 구분 | 설명 |
@@ -78,8 +117,9 @@ npm run build
 
 ## 관련 문서
 
-- Toolbox **문서 → AI 공통화** 탭: 레포 전반에서 AI 코드를 어떻게 나눌지 기획 메모  
 - 사용자 **가이드** 탭: API 키 입력 위치 등 기본 사용법  
+- [google_api_setup_for_planner.md](google_api_setup_for_planner.md): 플래너용 Google API 설정 메모  
+- **로드맵** 탭: [roadmap.md](roadmap.md)  
 
 ---
 
