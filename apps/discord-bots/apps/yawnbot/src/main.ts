@@ -11,7 +11,8 @@ import { Client, GatewayIntentBits } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
 import { destroyAllMusicPlayers, setMusicPlayFailureReporter } from './bot/music-player';
-import { createAiStudioTextModel } from 'karmolab-ai/node';
+import type { GenerativeTextClient } from 'karmolab-ai/node';
+import { tryCreateGenerativeTextFromEnv } from 'karmolab-ai/node';
 
 import { GameDataService } from './services/gamedata';
 import { EnhancementService } from './services/enhancement';
@@ -60,11 +61,11 @@ function isAdmin(userId: unknown) {
 
 const cursorState = { inFlight: false };
 
-let geminiModel: ReturnType<typeof createAiStudioTextModel> | null = null;
+let generativeText: GenerativeTextClient | null = null;
 try {
-  if (process.env.GEMINI_API_KEY) {
-    geminiModel = createAiStudioTextModel(process.env.GEMINI_API_KEY, process.env.GEMINI_MODEL);
-    console.log('[Gemini] AI 모델 초기화 완료');
+  generativeText = tryCreateGenerativeTextFromEnv();
+  if (generativeText) {
+    console.log(`[Gemini] AI 초기화 완료 (surface=${generativeText.surface})`);
   }
 } catch (e: any) {
   console.warn('[Gemini] 초기화 실패 (선택 기능):', e?.message ?? e);
@@ -79,7 +80,7 @@ function buildCtx() {
     raid,
     getImageAttachment,
     isAdmin,
-    geminiModel,
+    generativeText,
     cursorState,
   };
 }

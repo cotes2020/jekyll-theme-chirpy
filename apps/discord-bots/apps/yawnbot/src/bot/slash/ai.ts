@@ -162,9 +162,9 @@ export async function handleCursorEdit(ctx, interaction, userId) {
 }
 
 export async function handleYawn(ctx, interaction) {
-  const { geminiModel } = ctx;
-  if (!geminiModel) {
-    await interaction.reply({ content: 'Gemini API가 설정되지 않았습니다.', flags: MessageFlags.Ephemeral });
+  const { generativeText } = ctx;
+  if (!generativeText) {
+    await interaction.reply({ content: 'Gemini/Vertex AI가 설정되지 않았습니다 (.env 확인).', flags: MessageFlags.Ephemeral });
     return;
   }
   const prompt = interaction.options.getString('질문');
@@ -172,21 +172,10 @@ export async function handleYawn(ctx, interaction) {
   let stopGeminiTicker: () => Promise<void> = async () => {};
   try {
     stopGeminiTicker = await startDeferElapsedTicker(interaction, 'gemini', { requestText: prompt });
-    const result = await geminiModel.generateContent({
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            {
-              text: `시스템: 너는 'YawnBot'이라는 이름의 활기차고 재치 있는 디스코드 봇이야. 사용자의 질문에 친절하고 유머러스하게 대답해줘.\n\n사용자: ${prompt}`,
-            },
-          ],
-        },
-      ],
-    });
+    const wrapped = `시스템: 너는 'YawnBot'이라는 이름의 활기차고 재치 있는 디스코드 봇이야. 사용자의 질문에 친절하고 유머러스하게 대답해줘.\n\n사용자: ${prompt}`;
+    const response = await generativeText.generateFromPrompt(wrapped);
     await stopGeminiTicker();
     stopGeminiTicker = async () => {};
-    const response = result.response.text();
     const embed = new EmbedBuilder()
       .setTitle('YawnBot AI Response')
       .setDescription(
