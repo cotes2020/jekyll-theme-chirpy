@@ -1,6 +1,7 @@
 /**
  * KarmoLabAI — Google Generative AI 공통 계약 (AI Studio + Vertex AI).
  * 브라우저/Node 공통: 모델 카탈로그, REST URL 조립, 문서·기본 리전 등. fetch·키 저장 없음.
+ * Node에서 `@google/generative-ai` 호출까지 맞출 때는 서브패스 `karmolab-ai/node` 참고.
  */
 
 // ─── 서피스 구분 (문서·타입용) ─────────────────────────────────────────

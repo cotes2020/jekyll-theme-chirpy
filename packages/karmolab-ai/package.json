@@ -5,10 +5,24 @@
   "description": "KarmoLabAI — Google Generative AI SSOT (AI Studio + Vertex): model catalog, REST URLs, docs links",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "default": "./dist/node.js"
+    }
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
+  "peerDependencies": {
+    "@google/generative-ai": "^0.21.0"
+  },
   "devDependencies": {
+    "@google/generative-ai": "^0.21.0",
     "typescript": "~5.9.0"
   }
 }
