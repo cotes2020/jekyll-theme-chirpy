@@ -144,11 +144,6 @@ async function main() {
   await sodium.ready;
   console.log('[voice] libsodium 준비 완료');
 
-  const WEBHOOK_PORT = process.env.WEBHOOK_PORT || 8080;
-  app.listen(WEBHOOK_PORT, () => {
-    console.log(`[Webhook] GitHub Webhook 서버 시작: http://0.0.0.0:${WEBHOOK_PORT}/webhook/github`);
-  });
-
   const token = process.env.DISCORD_TOKEN?.trim();
   if (!token) {
     console.error(
@@ -167,6 +162,17 @@ async function main() {
     }
     throw e;
   }
+
+  /** GitHub POST 시 client.channels.fetch 를 쓰므로, Discord 준비 후에 HTTP 서버를 연다 */
+  const WEBHOOK_PORT = process.env.WEBHOOK_PORT || 8080;
+  app.listen(WEBHOOK_PORT, () => {
+    console.log(`[Webhook] GitHub Webhook 서버 시작: http://0.0.0.0:${WEBHOOK_PORT}/webhook/github`);
+    if (!parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID).length) {
+      console.warn(
+        '[Webhook] GITHUB_WEBHOOK_CHANNEL_ID 가 비어 있으면 수신해도 디스코드로 보내지 않습니다. .env 를 확인하세요.',
+      );
+    }
+  });
 }
 
 process.on('SIGINT', () => {

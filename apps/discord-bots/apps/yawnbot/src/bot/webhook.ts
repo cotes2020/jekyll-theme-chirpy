@@ -17,6 +17,7 @@ export function createGithubWebhookApp(client: Client, gameData: GameDataService
 
       const channelIds = parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID);
       if (channelIds.length === 0) {
+        console.warn('[Webhook] GITHUB_WEBHOOK_CHANNEL_ID 없음 — 디스코드 전송 생략 (200 응답)');
         res.sendStatus(200);
         return;
       }
@@ -46,6 +47,7 @@ export function createGithubWebhookApp(client: Client, gameData: GameDataService
           .setDescription(gameData.getMessage('Webhook_Issue_Desc', payload.issue?.title, payload.issue?.html_url))
           .setColor(payload.action === 'opened' ? 0xff9800 : 0x4285f4);
       } else {
+        console.log(`[Webhook] 처리 안 함(디스코드 미전송): ${String(event)} — push|issues|ping 만 임베드`);
         res.sendStatus(200);
         return;
       }
