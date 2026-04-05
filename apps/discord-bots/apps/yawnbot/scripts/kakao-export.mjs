@@ -11,7 +11,7 @@
  *   --scan [epochMs]     .txt 한 번만 처리 (생략 시 전체, 숫자면 mtime 기준)
  *   --trigger-only       저장만 하고 요약 안 함 (테스트: npm run kakao-export-save). 후보 없음이면 스냅샷 직후 exit 0(카운트다운·저장 PS 생략)
  *
- * 환경 변수: 레이어드 dotenv — `.karmolab.common.env`·`.discord-bots.env`·`.yawnbot.env`·`.yawnbot.kakao.env`·`.env`
+ * 환경 변수: 레이어드 dotenv — `config/yawnbot-defaults.txt`·`.karmolab.common.env`·`.discord-bots.env`·`.yawnbot.env`·`.yawnbot.kakao.env`·`.env`
  *   KAKAO_EXPORT_WATCH_DIR,
  *   AI: GEMINI_* / VERTEX_* (`.yawnbot.env` 등). 카카오만 다른 키면 `.yawnbot.kakao.env`에서 덮어쓰기
  *   DISCORD_SUMMARY_WEBHOOK_URL, KAKAO_EXPORT_MAX_ROUNDS,

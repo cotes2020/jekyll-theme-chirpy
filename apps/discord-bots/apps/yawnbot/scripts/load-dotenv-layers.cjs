@@ -10,7 +10,7 @@ const dotenv = require('dotenv');
  * - 이후: override:true
  * - 마지막 `.env` 가 가장 높은 우선순위
  *
- * 파일: `.karmolab.common.env` → `.discord-bots.env` → `.yawnbot.env` → (카카오만) `.yawnbot.kakao.env` → `.env`
+ * 파일: `config/yawnbot-defaults.txt`(커밋 기본값) → `.karmolab.common.env` → `.discord-bots.env` → `.yawnbot.env` → (카카오만) `.yawnbot.kakao.env` → `.env`
  *
  * @param {string} yawnbotRoot - `apps/discord-bots/apps/yawnbot` 절대 경로
  * @param {{ includeKakaoLayer?: boolean }} [opts]
@@ -20,6 +20,7 @@ function applyYawnbotDotenvLayers(yawnbotRoot, opts) {
   const repoRoot = path.join(discordBotsRoot, '..', '..');
 
   const files = [
+    path.join(yawnbotRoot, 'config', 'yawnbot-defaults.txt'),
     path.join(repoRoot, '.karmolab.common.env'),
     path.join(discordBotsRoot, '.discord-bots.env'),
     path.join(yawnbotRoot, '.yawnbot.env'),

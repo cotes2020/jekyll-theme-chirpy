@@ -14,7 +14,7 @@ npm install
 npm run build:yawnbot
 ```
 
-환경 변수는 **레이어드 dotenv**를 지원합니다. 요약은 [.env.template](./.env.template)를 보고, 키 목록은 `.yawnbot.env.template`·`.yawnbot.kakao.env.template` 등을 각각 `.yawnbot.env`·`.yawnbot.kakao.env` 로 복사해 쓰면 됩니다. **`.env` 하나만** 있어도 마지막에 로드되어 동작합니다.
+환경 변수는 **레이어드 dotenv**를 지원합니다. 비밀이 아닌 기본값(모델명·타임아웃·Playing 문구 등)은 커밋된 [`config/yawnbot-defaults.txt`](./config/yawnbot-defaults.txt)에서 먼저 읽고, 토큰·API 키·채널 ID 등은 `.yawnbot.env` / `.env`에서 덮어씁니다. 요약은 [.env.template](./.env.template), 키 목록은 `.yawnbot.env.template`·`.yawnbot.kakao.env.template`를 참고하세요. **`.env` 하나만** 있어도 마지막에 로드되어 동작합니다.
 
 ```bash
 npm run start:yawnbot
