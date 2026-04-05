@@ -132,7 +132,8 @@ fn spawn_detached_process(program: &str, args: &[String], cwd: &Path) -> Result<
             .trim_end_matches(".exe")
             .trim_end_matches(".cmd")
             .trim_end_matches(".bat");
-        if base == "npm" || base == "npx" {
+        // .bat/.cmd 런처(bundle, 일부 ruby 설치)는 CreateProcess로 직접 실행하면 실패하는 경우가 많음
+        if matches!(base, "npm" | "npx" | "bundle" | "ruby") {
             let mut c = Command::new("cmd.exe");
             c.arg("/C").arg(program).args(args);
             cmd = c;
