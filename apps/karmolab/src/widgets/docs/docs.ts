@@ -254,7 +254,7 @@
   Toolbox.register({
     id: 'docs',
     title: '문서',
-    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, Discord 봇 문서, 레포 명령',
+    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, KarmoLabAI, Discord 봇 문서, 레포 명령',
     layout: 'wide',
     icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
     tabs: [
@@ -295,6 +295,21 @@
           Mdd.linePreset('tool_run', { msg: '사용법을 알려줄게요~' });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
           loadDoc('guide.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-karmolab-ai',
+        label: 'KarmoLabAI',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: 'karmolab-ai 패키지 쓰는 법이에요.' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('karmolab-ai.md')
             .then(function (md: string) {
               renderMarkdown(c, md);
             })

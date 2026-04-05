@@ -35,6 +35,8 @@
 
 > API 키는 브라우저 localStorage에만 저장돼요.
 
+개발자용으로 모델 ID·AI Studio/Vertex URL 등을 레포 한곳에서 맞추는 **`karmolab-ai`** 패키지가 있습니다. Toolbox **문서 → KarmoLabAI** 탭에서 쓰는 법을 정리해 두었어요.
+
 ## 데이터
 
 모든 데이터(설정, 진행도, 도전과제)는 **브라우저 localStorage**에 저장돼요.

@@ -1,0 +1,52 @@
+---
+description: Keep KarmoLab Docs in sync with apps/features; include markdown Todo checklists in the relevant doc while developing.
+alwaysApply: true
+---
+
+# KarmoLab Docs 유지 (프로젝트 지침)
+
+## 적용 시점
+
+다음을 **추가·변경·제거**할 때, 사용자에게 보이는 동작·설정·빌드 절차가 바뀌면 **KarmoLab 문서 위젯**을 함께 갱신한다.
+
+- `apps/karmolab` 위젯·페이지·설정 흐름
+- `apps/discord-bots`, `apps/chat-overlay`, `apps/karmolab-tauri` 등 동일 레포 앱
+- 레포 루트 패키지(`packages/*`)로 공개 계약이 바뀔 때
+- 사용자가 따라야 할 환경 변수·CLI·배포 단계
+
+에이전트가 코드만 고치고 문서를 비우지 않는다. **변경 범위에 맞는 최소한의 문서 수정**은 같은 작업(또는 직후 커밋)에 포함한다.
+
+## 문서 위치
+
+| 용도 | 경로 |
+|------|------|
+| Toolbox **문서** 탭 본문 | `apps/karmolab/js/widgets/docs/*.md` |
+| 새 탭/섹션 | `apps/karmolab/src/widgets/docs/docs.ts`의 `Toolbox.register` → `tabs`에 `loadDoc('파일명.md')` 추가 |
+| 짧은 사용자 안내 | 기존 `intro.md` / `guide.md` 등 **해당 주제에 맞는 파일**을 편집 |
+
+새 기능이 큰 주제면 **전용 `.md` + 탭**을 우선한다. 작은 옵션 추가는 **가이드·소개** 등 기존 문서에 bullet로 보강해도 된다.
+
+## 문서 안에 Todo 리스트
+
+프로젝트·앱·기능을 **개발하는 동안** 해당 주제의 **문서 파일(`.md`)**에 할 일을 남긴다.
+
+- **형식:** 마크다운 체크리스트 `- [ ]` / `- [x]` 권장. 섹션 제목 예: `## 남은 작업`, `## 문서 보완`, `## 배포·검증`.
+- **내용 예:** 문서에 아직 안 적은 옵션, 스크린샷·링크 추가, 다른 탭과 교차 링크, 릴리스 후 확인할 항목, 알려진 제한 사항 정리.
+- 기능이 완료되면 항목을 **완료 처리하거나 삭제**해 두고, 독자에게 혼란만 주는 빈 목록은 남기지 않는다.
+- 세션에서 문서 후속이 많으면 Cursor **Todo**에도 같은 항목을 옮겨 두어도 좋다(문서가 SSOT, Todo는 진행용).
+
+## 빌드
+
+`docs.ts` 또는 `js/widgets/docs/*.md`를 바꾼 뒤에는 `apps/karmolab`에서 **`npm run build`**로 `js/widgets/docs/docs.js` 등을 갱신한다.
+
+## 스코프
+
+- Jekyll 블로그 본문 `_posts/`는 이 규칙과 별개(사용자가 포스트 커밋을 명시하지 않으면 커밋 스킬과 동일하게 제외).
+- **KarmoLab Toolbox 문서 위젯**이 대상이다.
+
+## 체크리스트 (기능 작업 마무리 시)
+
+1. 관련 `.md`에 **무엇이 바뀌었는지·어떻게 쓰는지** 한 번에 이해되게 적었는가  
+2. 해당 문서에 **Todo 체크리스트**를 두었는가(진행 중이면 남은 일, 완료면 정리·삭제)  
+3. 필요 시 `docs.ts` 탭·`desc` 갱신 여부  
+4. `npm run build` (karmolab) 실행 여부  
