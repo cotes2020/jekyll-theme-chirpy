@@ -152,7 +152,7 @@ async function main() {
   const token = process.env.DISCORD_TOKEN?.trim();
   if (!token) {
     console.error(
-      '[YawnBot] DISCORD_TOKEN이 비어 있습니다. apps/yawnbot/.env 에 봇 토큰을 넣으세요. (Discord Developer Portal → 앱 → Bot → Token)',
+        '[YawnBot] DISCORD_TOKEN이 비어 있습니다. apps/yawnbot/.env.yawnbot 또는 .env 에 봇 토큰을 넣으세요. (Discord Developer Portal → 앱 → Bot → Token)',
     );
     process.exit(1);
   }
@@ -162,7 +162,7 @@ async function main() {
   } catch (e: any) {
     if (e?.code === 'TokenInvalid') {
       console.error(
-        '[YawnBot] TokenInvalid — 토큰이 만료되었거나 잘못되었습니다. Discord Developer Portal에서 Bot Token을 재발급하고 apps/yawnbot/.env 의 DISCORD_TOKEN을 갱신하세요.',
+        '[YawnBot] TokenInvalid — 토큰이 만료되었거나 잘못되었습니다. Discord Developer Portal에서 Bot Token을 재발급하고 .env.yawnbot/.env 의 DISCORD_TOKEN을 갱신하세요.',
       );
     }
     throw e;

@@ -47,6 +47,10 @@ node_modules
 .env.*
 !.env.example
 !.env.template
+!.env.karmolab.common.template
+!.env.discord-bots.template
+!.env.yawnbot.template
+!.env.yawnbot.kakao.template
 
 # Build artifacts
 apps/karmolab/react-dist/
