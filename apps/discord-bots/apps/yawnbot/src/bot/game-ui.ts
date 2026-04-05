@@ -1,9 +1,10 @@
 // @ts-nocheck
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } from 'discord.js';
 import { formatMoney } from '../services/gamedata';
 
-/** 강화/판매/도움말 카드 — 버튼·슬래시 공용 */
-export async function showHelpPage(ctx, interaction, pageIndex, isUpdate = false) {
+/** 강화/판매/도움말 카드 — 버튼·슬래시 공용 (`ephemeral`: 나만 보기, `/도움말` 주제·게임 등) */
+export async function showHelpPage(ctx, interaction, pageIndex, isUpdate = false, options = {}) {
+  const { ephemeral = false } = options;
   const { gameData } = ctx;
   const pages = [
     {
@@ -51,6 +52,9 @@ export async function showHelpPage(ctx, interaction, pageIndex, isUpdate = false
   );
 
   const payload = { embeds: [embed], components: [row] };
+  if (!isUpdate && ephemeral) {
+    payload.flags = MessageFlags.Ephemeral;
+  }
   if (isUpdate) await interaction.update(payload);
   else await interaction.reply(payload);
 }

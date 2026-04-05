@@ -1,1 +1,38 @@
-{}
+{
+  "332838413579321354": {
+    "money": 19576,
+    "sword": {
+      "level": 0,
+      "name": "이름 없는 검",
+      "weaponType": "",
+      "imageName": ""
+    },
+    "maxLevel": 0,
+    "lastAttendance": null,
+    "lastGiveMeMoney": null,
+    "dailyBattleCount": 0,
+    "dailyBattleDate": null,
+    "stocks": {},
+    "totalEnhanceCount": 0,
+    "totalDestroyCount": 0,
+    "totalMoneySpent": 0
+  },
+  "391805564616704002": {
+    "money": 100100,
+    "sword": {
+      "level": 0,
+      "name": "이름 없는 검",
+      "weaponType": "",
+      "imageName": ""
+    },
+    "maxLevel": 0,
+    "lastAttendance": null,
+    "lastGiveMeMoney": null,
+    "dailyBattleCount": 0,
+    "dailyBattleDate": null,
+    "stocks": {},
+    "totalEnhanceCount": 0,
+    "totalDestroyCount": 0,
+    "totalMoneySpent": 0
+  }
+}
