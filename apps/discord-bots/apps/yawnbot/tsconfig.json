@@ -3,7 +3,11 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "declaration": false
+    "declaration": false,
+    "baseUrl": ".",
+    "paths": {
+      "karmolab-ai/node": ["../../../../packages/karmolab-ai/dist/node"]
+    }
   },
   "include": ["src/**/*.ts", "cli/**/*.ts"],
   "exclude": ["node_modules", "dist"]

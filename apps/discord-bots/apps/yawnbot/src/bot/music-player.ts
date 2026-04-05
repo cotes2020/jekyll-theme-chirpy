@@ -177,6 +177,11 @@ type QueueItem =
 
 export type MusicLoopMode = 'off' | 'track' | 'queue';
 
+/** enqueue 시 넘기면 재생 실패 알림을 이 텍스트 채널로 보냄(쿨다운 적용) */
+export type MusicEnqueueOptions = {
+  notifyTextChannelId?: string;
+};
+
 type GuildMusicState = {
   player: AudioPlayer;
   queue: QueueItem[];
@@ -188,7 +193,24 @@ type GuildMusicState = {
   loopMode: MusicLoopMode;
   /** 대기열 반복 — `/music loop queue` 시점의 대기 스냅샷 */
   loopRing: QueueItem[];
+  notifyTextChannelId: string | null;
+  lastPlayFailureNoticeAt: number;
 };
+
+const PLAY_FAILURE_NOTIFY_COOLDOWN_MS = 15_000;
+
+export type MusicPlayFailurePayload = {
+  textChannelId: string;
+  title: string;
+  reason: string;
+};
+
+let playFailureReporter: ((p: MusicPlayFailurePayload) => Promise<void>) | null = null;
+
+/** `main` 등에서 등록 — 재생 실패 시 텍스트 채널 한 줄 알림 */
+export function setMusicPlayFailureReporter(fn: (p: MusicPlayFailurePayload) => Promise<void>): void {
+  playFailureReporter = fn;
+}
 
 function cloneQueueItem(item: QueueItem): QueueItem {
   if (item.kind === 'youtube') {
@@ -259,6 +281,8 @@ function getOrCreatePlayer(guildId: string): GuildMusicState {
     nowPlayingItem: null,
     loopMode: 'off',
     loopRing: [],
+    notifyTextChannelId: null,
+    lastPlayFailureNoticeAt: 0,
   };
   player.on(AudioPlayerStatus.Idle, () => {
     void playNext(guildId);
@@ -499,6 +523,20 @@ async function playNext(guildId: string): Promise<void> {
     }
   } catch (e: any) {
     console.error('[music] 재생 실패:', item.kind === 'youtube' ? item.url : item.title, e?.message ?? e);
+    const reason = e instanceof Error ? e.message : String(e);
+    const ch = s.notifyTextChannelId;
+    if (
+      ch &&
+      playFailureReporter &&
+      Date.now() - s.lastPlayFailureNoticeAt >= PLAY_FAILURE_NOTIFY_COOLDOWN_MS
+    ) {
+      s.lastPlayFailureNoticeAt = Date.now();
+      void playFailureReporter({
+        textChannelId: ch,
+        title: item.title.slice(0, 100),
+        reason: reason.slice(0, 200),
+      }).catch(() => {});
+    }
     if (s.loopMode === 'track') {
       s.loopMode = 'off';
       s.nowPlayingItem = null;
@@ -510,6 +548,7 @@ async function playNext(guildId: string): Promise<void> {
 async function appendToMusicQueue(
   channel: VoiceBasedChannel,
   item: QueueItem,
+  opts?: MusicEnqueueOptions,
 ): Promise<{ ok: true; position: number; started: boolean } | { ok: false; error: string }> {
   try {
     console.log('[music] 음성 연결 대기(Ready)...', channel.guild.id);
@@ -518,6 +557,9 @@ async function appendToMusicQueue(
 
     const guildId = channel.guild.id;
     const s = getOrCreatePlayer(guildId);
+    if (opts?.notifyTextChannelId) {
+      s.notifyTextChannelId = opts.notifyTextChannelId;
+    }
     const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
     s.queue.push(item);
     if (s.loopMode === 'queue') {
@@ -550,20 +592,23 @@ export async function enqueueYouTube(
   channel: VoiceBasedChannel,
   title: string,
   url: string,
+  opts?: MusicEnqueueOptions,
 ): Promise<
   { ok: true; position: number; started: boolean } | { ok: false; error: string }
 > {
-  return appendToMusicQueue(channel, { kind: 'youtube', title, url });
+  return appendToMusicQueue(channel, { kind: 'youtube', title, url }, opts);
 }
 
 /** 여러 YouTube 곡을 한 번에 같은 대기열에 넣습니다 (플레이리스트용). */
 export async function enqueueYouTubeTracks(
   channel: VoiceBasedChannel,
   tracks: { title: string; url: string }[],
+  opts?: MusicEnqueueOptions,
 ): Promise<
-  | { ok: true; added: number; started: boolean; skipped: number }
+  | { ok: true; added: number; started: boolean; skipped: number; totalListed: number }
   | { ok: false; error: string }
 > {
+  const totalListed = tracks.length;
   const valid: { title: string; url: string }[] = [];
   let skipped = 0;
   for (const t of tracks) {
@@ -581,6 +626,9 @@ export async function enqueueYouTubeTracks(
     const connection = await joinAndWaitUntilVoiceReady(channel);
     const guildId = channel.guild.id;
     const s = getOrCreatePlayer(guildId);
+    if (opts?.notifyTextChannelId) {
+      s.notifyTextChannelId = opts.notifyTextChannelId;
+    }
     const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
     for (const t of valid) {
       const qi: QueueItem = { kind: 'youtube', title: t.title, url: t.url };
@@ -596,7 +644,7 @@ export async function enqueueYouTubeTracks(
     if (wasIdle) {
       await playNext(guildId);
     }
-    return { ok: true, added: valid.length, started: wasIdle, skipped };
+    return { ok: true, added: valid.length, started: wasIdle, skipped, totalListed };
   } catch (e: unknown) {
     try {
       leaveVoiceChannel(channel.guild.id);
@@ -613,8 +661,9 @@ export async function enqueueCustomTrack(
   channel: VoiceBasedChannel,
   title: string,
   load: () => Promise<AudioResource>,
+  opts?: MusicEnqueueOptions,
 ): Promise<{ ok: true; position: number; started: boolean } | { ok: false; error: string }> {
-  return appendToMusicQueue(channel, { kind: 'custom', title, load });
+  return appendToMusicQueue(channel, { kind: 'custom', title, load }, opts);
 }
 
 export function skipTrack(guildId: string): boolean {
@@ -770,9 +819,10 @@ export async function enqueueSpokenText(
   channel: VoiceBasedChannel,
   title: string,
   text: string,
+  opts?: MusicEnqueueOptions,
 ): Promise<
   { ok: true; position: number; started: boolean } | { ok: false; error: string }
 > {
-  return enqueueCustomTrack(channel, title, () => createEdgeTtsAudioResource(text));
+  return enqueueCustomTrack(channel, title, () => createEdgeTtsAudioResource(text), opts);
 }
 

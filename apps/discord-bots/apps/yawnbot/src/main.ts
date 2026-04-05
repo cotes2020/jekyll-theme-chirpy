@@ -10,9 +10,8 @@ import sodium from 'libsodium-wrappers';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
-import { destroyAllMusicPlayers } from './bot/music-player';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { DEFAULT_TEXT_MODEL_ID } from 'karmolab-ai';
+import { destroyAllMusicPlayers, setMusicPlayFailureReporter } from './bot/music-player';
+import { createAiStudioTextModel } from 'karmolab-ai/node';
 
 import { GameDataService } from './services/gamedata';
 import { EnhancementService } from './services/enhancement';
@@ -33,6 +32,20 @@ const client = new Client({
   ],
 });
 
+setMusicPlayFailureReporter(async ({ textChannelId, title, reason }) => {
+  try {
+    const safeTitle = title.replace(/\*\*/g, '').slice(0, 100);
+    const raw = reason.replace(/\s+/g, ' ').trim().slice(0, 180);
+    const ch = await client.channels.fetch(textChannelId);
+    if (!ch?.isTextBased() || ch.isDMBased()) return;
+    await ch.send({
+      content: `건너뜀(재생 실패): **${safeTitle}** — ${raw}`.slice(0, 500),
+    });
+  } catch {
+    /* ignore */
+  }
+});
+
 const gameData = new GameDataService();
 const enhancement = new EnhancementService(gameData);
 const stock = new StockService(gameData);
@@ -46,11 +59,10 @@ function isAdmin(userId: unknown) {
 
 const cursorState = { inFlight: false };
 
-let geminiModel: any = null;
+let geminiModel: ReturnType<typeof createAiStudioTextModel> | null = null;
 try {
   if (process.env.GEMINI_API_KEY) {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    geminiModel = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || DEFAULT_TEXT_MODEL_ID });
+    geminiModel = createAiStudioTextModel(process.env.GEMINI_API_KEY, process.env.GEMINI_MODEL);
     console.log('[Gemini] AI 모델 초기화 완료');
   }
 } catch (e: any) {

@@ -142,7 +142,13 @@ export async function handleSound(ctx, interaction) {
 
   let result;
   try {
-    result = await withTimeout(enqueueCustomTrack(vc, title, load), SOUND_PREPARE_TIMEOUT_MS, '오디오 준비·재생');
+    result = await withTimeout(
+      enqueueCustomTrack(vc, title, load, {
+        notifyTextChannelId: interaction.channelId ?? undefined,
+      }),
+      SOUND_PREPARE_TIMEOUT_MS,
+      '오디오 준비·재생',
+    );
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     await interaction.editReply({ content: `실패: ${msg}` });

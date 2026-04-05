@@ -57,7 +57,9 @@ export async function handleSpeak(ctx, interaction) {
   let result;
   try {
     result = await withTimeout(
-      enqueueSpokenText(vc, queueTitle, text),
+      enqueueSpokenText(vc, queueTitle, text, {
+        notifyTextChannelId: interaction.channelId ?? undefined,
+      }),
       SYNTH_TIMEOUT_MS,
       'TTS 합성·재생 준비',
     );

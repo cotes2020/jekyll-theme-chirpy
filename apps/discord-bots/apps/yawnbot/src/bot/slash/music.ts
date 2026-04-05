@@ -3,6 +3,7 @@
  * 음성 재생 명령 응답 정책(요약)
  * - 성공 알림: 채널에 보이게(public) — `/music queue`·`/music skip`·`/music stop`·`/music play`·`/music shuffle`·`/music remove`·`/music loop` 완료
  * - 조용한 거절: ephemeral — 길드 밖, skip/stop 무동작
+ * - 재생 실패: 로그 + 슬래시 친 텍스트 채널에 짧은 한 줄(약 15초 쿨다운)
  */
 import {
   ActionRowBuilder,
@@ -269,8 +270,9 @@ export async function handlePlay(ctx, interaction) {
         .catch(() => {});
     }, 15_000);
     let result;
+    const notify = interaction.channelId ? { notifyTextChannelId: interaction.channelId } : undefined;
     try {
-      result = await enqueueYouTubeTracks(vc, resolved.tracks);
+      result = await enqueueYouTubeTracks(vc, resolved.tracks, notify);
     } finally {
       clearInterval(progress);
     }
@@ -279,11 +281,11 @@ export async function handlePlay(ctx, interaction) {
       await interaction.editReply({ content: `재생 준비 실패: ${result.error}` });
       return;
     }
-    const skipHint = result.skipped > 0 ? ` (URL 스킵 ${result.skipped}곡)` : '';
+    const tl = result.totalListed;
+    const summary = `목록 **${tl}곡** 중 대기열 추가 **${result.added}곡** · URL·형식 제외 **${result.skipped}곡**`;
+    const action = result.started ? '첫 곡 재생을 시작했습니다.' : '대기열에 반영했습니다.';
     await interaction.editReply({
-      content: result.started
-        ? `**${resolved.playlistTitle}** — ${result.added}곡 재생을 시작합니다.${skipHint}`
-        : `**${resolved.playlistTitle}** — 대기열에 ${result.added}곡 추가했습니다.${skipHint}`,
+      content: `**${resolved.playlistTitle.slice(0, 80)}**\n${summary}\n${action}`.slice(0, 2000),
     });
     return;
   }
@@ -302,8 +304,9 @@ export async function handlePlay(ctx, interaction) {
       .catch(() => {});
   }, 15_000);
   let result;
+  const notifySingle = interaction.channelId ? { notifyTextChannelId: interaction.channelId } : undefined;
   try {
-    result = await enqueueYouTube(vc, resolved.title, resolved.url);
+    result = await enqueueYouTube(vc, resolved.title, resolved.url, notifySingle);
   } finally {
     clearInterval(progress);
   }

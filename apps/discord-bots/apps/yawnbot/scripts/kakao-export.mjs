@@ -27,17 +27,14 @@ import { fileURLToPath } from 'url';
 import { createRequire } from 'node:module';
 import { config } from 'dotenv';
 import { setTimeout as delay } from 'node:timers/promises';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-const { DEFAULT_TEXT_MODEL_ID } = require('karmolab-ai');
+const { generateAiStudioText } = require('karmolab-ai/node');
 config({ path: path.join(__dirname, '..', '.env') });
 
 const DEFAULT_EXPORT_DIR = path.join(os.homedir(), 'Documents', '카카오톡 받은 파일');
 const WATCH_DIR = process.env.KAKAO_EXPORT_WATCH_DIR?.trim() || DEFAULT_EXPORT_DIR;
 const WEBHOOK = process.env.DISCORD_SUMMARY_WEBHOOK_URL?.trim() || '';
-const MODEL = process.env.GEMINI_MODEL?.trim() || DEFAULT_TEXT_MODEL_ID;
 
 const STATE_ROOT = path.join(os.homedir(), '.karmolab');
 const watchKey = crypto.createHash('sha256').update(WATCH_DIR).digest('hex').slice(0, 16);
@@ -566,8 +563,6 @@ async function summarizeChunk(text) {
   const key = process.env.GEMINI_API_KEY?.trim();
   if (!key) throw new Error('GEMINI_API_KEY 가 비어 있습니다 (.env)');
 
-  const genAI = new GoogleGenerativeAI(key);
-  const model = genAI.getGenerativeModel({ model: MODEL });
   const prompt = `다음은 카카오톡 채팅 로그의 일부(또는 전체)입니다. 한국어로 간결하게 정리하세요.
 
 형식:
@@ -581,8 +576,11 @@ async function summarizeChunk(text) {
 ${text.slice(0, 120_000)}
 ---
 `;
-  const res = await model.generateContent(prompt);
-  return res.response.text();
+  return generateAiStudioText({
+    apiKey: key,
+    modelId: process.env.GEMINI_MODEL,
+    prompt,
+  });
 }
 
 async function postDiscordWebhook(content) {
