@@ -20,10 +20,10 @@
 
 - [x] **지금 재생 표시** — `/music queue` 상단에 **재생 중** 제목 표시 (`currentTrack`)
 - [x] **상태 보관** — `GuildMusicState.currentTrack` (재생 성공 시 설정, 대기열 비움·정지 시 해제)
-- [ ] **대기열 삭제** — `/music queue remove` 또는 `/remove` 로 번호·범위 삭제
+- [x] **대기열 삭제** — `/music remove index` (대기 곡만, `/music queue` 번호와 동일; 범위 삭제는 미구현)
 - [ ] **대기열 이동** — 항목 순서 바꾸기 (옵션)
-- [ ] **`/shuffle`** — 대기열 무작위 섞기 (재생 중 트랙은 그대로 두고 뒤만)
-- [ ] **`/loop`** — 한 곡 / 전체 루프 모드 (플래그 + `playNext` 동작 연동)
+- [x] **`/music shuffle`** — 대기열 무작위 섞기 (재생 중 트랙은 그대로, 대기만 Fisher–Yates)
+- [x] **`/music loop`** — `off` / `track`(한 곡) / `queue`(대기 순환); `playNext`·skip/stop 연동
 
 ---
 

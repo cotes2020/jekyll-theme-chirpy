@@ -21,7 +21,7 @@ const voiceJoin = () =>
 const voiceLeave = () =>
   new SlashCommandBuilder().setName('voice-leave').setDescription('봇 음성 연결 해제 (/음성퇴장 과 동일)');
 
-/** 음성 재생·대기열 — YouTube·TTS·클립·skip/stop/queue 를 서브커맨드로 묶음 */
+/** 음성 재생·대기열 — YouTube·TTS·클립·skip/stop/shuffle/remove/loop/queue 서브커맨드 */
 const musicCommandGroup = () =>
   new SlashCommandBuilder()
     .setName('music')
@@ -58,6 +58,38 @@ const musicCommandGroup = () =>
     )
     .addSubcommand((sc) => sc.setName('skip').setDescription('지금 재생 중인 곡 건너뛰기'))
     .addSubcommand((sc) => sc.setName('stop').setDescription('재생 중지 및 대기열 비우기'))
+    .addSubcommand((sc) =>
+      sc.setName('shuffle').setDescription('대기 중인 곡 순서만 무작위로 섞기 (지금 재생 곡은 유지)'),
+    )
+    .addSubcommand((sc) =>
+      sc
+        .setName('remove')
+        .setDescription('대기열에서 번호로 곡 제거 (/music queue 목록의 1·2·3… 과 동일)')
+        .addIntegerOption((opt) =>
+          opt
+            .setName('index')
+            .setDescription('제거할 대기 곡 번호 (1부터, queue 목록과 같음)')
+            .setRequired(true)
+            .setMinValue(1)
+            .setMaxValue(9999),
+        ),
+    )
+    .addSubcommand((sc) =>
+      sc
+        .setName('loop')
+        .setDescription('반복: 끔 / 지금 곡 한 곡 / 대기열 순환')
+        .addStringOption((opt) =>
+          opt
+            .setName('mode')
+            .setDescription('off=끔, track=한 곡, queue=대기열 끝나면 처음부터')
+            .setRequired(true)
+            .addChoices(
+              { name: '끔', value: 'off' },
+              { name: '한 곡 (지금 재생)', value: 'track' },
+              { name: '대기열 순환', value: 'queue' },
+            ),
+        ),
+    )
     .addSubcommand((sc) =>
       sc
         .setName('queue')

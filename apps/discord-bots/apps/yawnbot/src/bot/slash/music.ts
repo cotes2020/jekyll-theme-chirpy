@@ -1,7 +1,7 @@
 // @ts-nocheck
 /**
  * 음성 재생 명령 응답 정책(요약)
- * - 성공 알림: 채널에 보이게(public) — `/music queue`·`/music skip`·`/music stop`·`/music play` 완료
+ * - 성공 알림: 채널에 보이게(public) — `/music queue`·`/music skip`·`/music stop`·`/music play`·`/music shuffle`·`/music remove`·`/music loop` 완료
  * - 조용한 거절: ephemeral — 길드 밖, skip/stop 무동작
  */
 import {
@@ -18,6 +18,9 @@ import {
   fetchYoutubePlaylistEntries,
   skipTrack,
   stopMusic,
+  shuffleWaitingQueue,
+  removeWaitingTrackAt,
+  setMusicLoopMode,
   getMusicQueuePage,
   withTimeout,
   YOUTUBE_RESOLVE_TIMEOUT_MS,
@@ -37,6 +40,7 @@ function buildQueuePayload(guildId: string, page: number) {
   if (q.nowPlaying) {
     parts.push(`**재생 중:** ${q.nowPlaying}`);
   }
+  parts.push(`**반복:** ${q.loopLabel}`);
   if (q.totalWaiting === 0) {
     parts.push(q.nowPlaying ? '대기열이 비어 있습니다.' : '재생 중인 곡과 대기열이 없습니다.');
   } else {
@@ -340,6 +344,72 @@ export async function handleStopMusic(ctx, interaction) {
   } else {
     await interaction.reply({ content: '멈출 재생이 없습니다.', flags: MessageFlags.Ephemeral });
   }
+}
+
+export async function handleShuffle(ctx, interaction) {
+  if (!interaction.guildId) {
+    await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+  const r = shuffleWaitingQueue(interaction.guildId);
+  if (!r.ok) {
+    const msg =
+      r.reason === 'single'
+        ? '대기열이 한 곡뿐이라 섞을 수 없습니다.'
+        : '대기 중인 곡이 없습니다. (재생 중인 곡만 있으면 `/music skip` 후 다시 시도하세요.)';
+    await interaction.reply({ content: msg, flags: MessageFlags.Ephemeral });
+    return;
+  }
+  await interaction.reply({ content: `대기 중 **${r.shuffled}곡** 순서를 섞었습니다.` });
+}
+
+export async function handleRemove(ctx, interaction) {
+  if (!interaction.guildId) {
+    await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+  const raw = interaction.options.getInteger('index');
+  if (raw == null) {
+    await interaction.reply({ content: '제거할 번호(`index`)가 필요합니다.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+  const r = removeWaitingTrackAt(interaction.guildId, raw);
+  if (!r.ok) {
+    if (r.reason === 'empty') {
+      await interaction.reply({
+        content: '대기 중인 곡이 없습니다. (`/music queue`에 번호가 보일 때만 제거할 수 있습니다. 지금 재생 중인 곡은 `/music skip`으로 건너뜁니다.)',
+        flags: MessageFlags.Ephemeral,
+      });
+      return;
+    }
+    await interaction.reply({
+      content: `번호는 **1~${r.max}** 사이로 입력하세요. (/music queue 목록과 같은 번호)`,
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+  const label = r.title.slice(0, 120);
+  await interaction.reply({ content: `대기열에서 제거했습니다: **${label}**` });
+}
+
+export async function handleLoop(ctx, interaction) {
+  if (!interaction.guildId) {
+    await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+  const raw = interaction.options.getString('mode');
+  const mode = raw === 'off' || raw === 'track' || raw === 'queue' ? raw : null;
+  if (!mode) {
+    await interaction.reply({ content: 'mode는 off / track / queue 중 하나여야 합니다.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+  const r = setMusicLoopMode(interaction.guildId, mode);
+  if (!r.ok) {
+    await interaction.reply({ content: r.error, flags: MessageFlags.Ephemeral });
+    return;
+  }
+  const label = r.mode === 'track' ? '**한 곡** (지금 재생)' : r.mode === 'queue' ? '**대기열 순환**' : '**끔**';
+  await interaction.reply({ content: `반복: ${label}` });
 }
 
 export async function handleQueue(ctx, interaction) {

@@ -175,13 +175,33 @@ type QueueItem =
   | { kind: 'youtube'; title: string; url: string }
   | { kind: 'custom'; title: string; load: () => Promise<AudioResource> };
 
+export type MusicLoopMode = 'off' | 'track' | 'queue';
+
 type GuildMusicState = {
   player: AudioPlayer;
   queue: QueueItem[];
   subscribed: boolean;
   /** 지금 스피커로 나가는 트랙 (대기열에서 이미 빠진 항목) */
   currentTrack: { title: string } | null;
+  /** 한 곡 반복용 — 재생에 쓴 항목의 복제본 */
+  nowPlayingItem: QueueItem | null;
+  loopMode: MusicLoopMode;
+  /** 대기열 반복 — `/music loop queue` 시점의 대기 스냅샷 */
+  loopRing: QueueItem[];
 };
+
+function cloneQueueItem(item: QueueItem): QueueItem {
+  if (item.kind === 'youtube') {
+    return { kind: 'youtube', title: item.title, url: item.url };
+  }
+  return { kind: 'custom', title: item.title, load: item.load };
+}
+
+function syncLoopRingFromQueue(s: GuildMusicState): void {
+  if (s.loopMode === 'queue' && s.loopRing.length > 0) {
+    s.loopRing = s.queue.map(cloneQueueItem);
+  }
+}
 
 const states = new Map<string, GuildMusicState>();
 
@@ -231,7 +251,15 @@ function getOrCreatePlayer(guildId: string): GuildMusicState {
       console.log('[music] player state:', oldState.status, '->', newState.status);
     }
   });
-  const state: GuildMusicState = { player, queue: [], subscribed: false, currentTrack: null };
+  const state: GuildMusicState = {
+    player,
+    queue: [],
+    subscribed: false,
+    currentTrack: null,
+    nowPlayingItem: null,
+    loopMode: 'off',
+    loopRing: [],
+  };
   player.on(AudioPlayerStatus.Idle, () => {
     void playNext(guildId);
   });
@@ -435,11 +463,27 @@ function createYoutubeAudioResource(url: string): Promise<AudioResource> {
 async function playNext(guildId: string): Promise<void> {
   const s = states.get(guildId);
   if (!s) return;
-  const item = s.queue.shift();
-  if (!item) {
-    s.currentTrack = null;
-    return;
+
+  const repeatTrack = s.loopMode === 'track' && s.nowPlayingItem != null;
+  let item: QueueItem | undefined;
+
+  if (repeatTrack) {
+    item = cloneQueueItem(s.nowPlayingItem!);
+  } else {
+    item = s.queue.shift();
+    if (!item && s.loopMode === 'queue' && s.loopRing.length > 0) {
+      for (const q of s.loopRing) {
+        s.queue.push(cloneQueueItem(q));
+      }
+      item = s.queue.shift();
+    }
+    if (!item) {
+      s.currentTrack = null;
+      s.nowPlayingItem = null;
+      return;
+    }
   }
+
   console.log(
     '[music] playNext:',
     item.title.slice(0, 60),
@@ -450,8 +494,15 @@ async function playNext(guildId: string): Promise<void> {
       item.kind === 'youtube' ? await createYoutubeAudioResource(item.url) : await item.load();
     s.player.play(resource);
     s.currentTrack = { title: item.title };
+    if (!repeatTrack) {
+      s.nowPlayingItem = cloneQueueItem(item);
+    }
   } catch (e: any) {
     console.error('[music] 재생 실패:', item.kind === 'youtube' ? item.url : item.title, e?.message ?? e);
+    if (s.loopMode === 'track') {
+      s.loopMode = 'off';
+      s.nowPlayingItem = null;
+    }
     await playNext(guildId);
   }
 }
@@ -469,6 +520,9 @@ async function appendToMusicQueue(
     const s = getOrCreatePlayer(guildId);
     const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
     s.queue.push(item);
+    if (s.loopMode === 'queue') {
+      s.loopRing.push(cloneQueueItem(item));
+    }
     const position = s.queue.length;
 
     if (!s.subscribed) {
@@ -529,7 +583,11 @@ export async function enqueueYouTubeTracks(
     const s = getOrCreatePlayer(guildId);
     const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
     for (const t of valid) {
-      s.queue.push({ kind: 'youtube', title: t.title, url: t.url });
+      const qi: QueueItem = { kind: 'youtube', title: t.title, url: t.url };
+      s.queue.push(qi);
+      if (s.loopMode === 'queue') {
+        s.loopRing.push(cloneQueueItem(qi));
+      }
     }
     if (!s.subscribed) {
       connection.subscribe(s.player);
@@ -563,6 +621,10 @@ export function skipTrack(guildId: string): boolean {
   const s = states.get(guildId);
   if (!s) return false;
   if (s.player.state.status === AudioPlayerStatus.Playing || s.player.state.status === AudioPlayerStatus.Buffering) {
+    s.nowPlayingItem = null;
+    if (s.loopMode === 'track') {
+      s.loopMode = 'off';
+    }
     s.player.stop(true);
     return true;
   }
@@ -574,8 +636,79 @@ export function stopMusic(guildId: string): boolean {
   if (!s) return false;
   s.queue.length = 0;
   s.currentTrack = null;
+  s.nowPlayingItem = null;
+  s.loopMode = 'off';
+  s.loopRing = [];
   s.player.stop(true);
   return true;
+}
+
+/**
+ * 재생 중인 곡은 그대로 두고, **대기열(다음 곡들)** 순서만 무작위로 섞습니다.
+ * @returns `empty` — 대기열 없음 · `single` — 1곡뿐
+ */
+export function shuffleWaitingQueue(
+  guildId: string,
+): { ok: true; shuffled: number } | { ok: false; reason: 'empty' | 'single' } {
+  const s = states.get(guildId);
+  if (!s || s.queue.length === 0) return { ok: false, reason: 'empty' };
+  if (s.queue.length === 1) return { ok: false, reason: 'single' };
+  const q = s.queue;
+  for (let i = q.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const a = q[i]!;
+    q[i] = q[j]!;
+    q[j] = a;
+  }
+  syncLoopRingFromQueue(s);
+  return { ok: true, shuffled: q.length };
+}
+
+/**
+ * 대기열에서 **1번부터** 매긴 번호의 곡을 제거합니다. (`/music queue` 목록 번호와 동일. 재생 중 곡은 제거하지 않음.)
+ */
+export function removeWaitingTrackAt(
+  guildId: string,
+  oneBasedIndex: number,
+):
+  | { ok: true; title: string }
+  | { ok: false; reason: 'empty' | 'out_of_range'; max: number } {
+  const s = states.get(guildId);
+  const max = s?.queue.length ?? 0;
+  if (!s || max === 0) return { ok: false, reason: 'empty', max: 0 };
+  const idx = Math.trunc(oneBasedIndex);
+  if (idx < 1 || idx > max) return { ok: false, reason: 'out_of_range', max };
+  const [removed] = s.queue.splice(idx - 1, 1);
+  syncLoopRingFromQueue(s);
+  return { ok: true, title: removed.title };
+}
+
+/**
+ * `off` | `track`(한 곡) | `queue`(대기 스냅샷 순환). 세션 없으면 실패.
+ */
+export function setMusicLoopMode(
+  guildId: string,
+  mode: MusicLoopMode,
+): { ok: true; mode: MusicLoopMode } | { ok: false; error: string } {
+  const s = states.get(guildId);
+  if (!s) {
+    return { ok: false, error: '이 서버에 음악 플레이어가 없습니다. 먼저 `/music play` 등으로 재생을 시작하세요.' };
+  }
+  if (mode === 'queue') {
+    if (s.queue.length === 0) {
+      return { ok: false, error: '대기열이 비어 있으면 대기열 반복을 켤 수 없습니다.' };
+    }
+    s.loopRing = s.queue.map(cloneQueueItem);
+    s.loopMode = 'queue';
+    return { ok: true, mode: 'queue' };
+  }
+  if (mode === 'track') {
+    s.loopMode = 'track';
+    return { ok: true, mode: 'track' };
+  }
+  s.loopMode = 'off';
+  s.loopRing = [];
+  return { ok: true, mode: 'off' };
 }
 
 export function destroyMusicForGuild(guildId: string): void {
@@ -617,6 +750,7 @@ export function getMusicQueuePage(
   perPage: number;
   totalWaiting: number;
   totalPages: number;
+  loopLabel: string;
 } {
   const s = states.get(guildId);
   const titles = s ? s.queue.map((q) => q.title) : [];
@@ -626,7 +760,9 @@ export function getMusicQueuePage(
   const p = Math.min(Math.max(1, page), totalPages);
   const start = (p - 1) * perPage;
   const lines = titles.slice(start, start + perPage).map((t, i) => `${start + i + 1}. ${t}`);
-  return { nowPlaying, lines, page: p, perPage, totalWaiting, totalPages };
+  const lm = s?.loopMode ?? 'off';
+  const loopLabel = lm === 'track' ? '한 곡' : lm === 'queue' ? '대기열' : '끔';
+  return { nowPlaying, lines, page: p, perPage, totalWaiting, totalPages, loopLabel };
 }
 
 /** Edge TTS 문장을 `/music play`와 동일한 대기열에 넣어 재생합니다. */

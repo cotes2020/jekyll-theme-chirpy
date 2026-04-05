@@ -18,7 +18,15 @@ import { handleStockList, handleStockChart, handleBuy, handleSellStock, handleMy
 import { handleRaidInfo, handleRaidSpawn, handleRaidAttack } from './raid';
 import { handleCursorEdit, handleYawn } from './ai';
 import { handleVoiceJoin, handleVoiceLeave } from './voice';
-import { handlePlay, handleSkip, handleStopMusic, handleQueue } from './music';
+import {
+  handlePlay,
+  handleSkip,
+  handleStopMusic,
+  handleQueue,
+  handleShuffle,
+  handleRemove,
+  handleLoop,
+} from './music';
 import { handleSpeak } from './speak';
 import { handleSound } from './sound';
 import { handleAdminReload, handleAdminSave } from './admin';
@@ -125,6 +133,15 @@ export async function dispatchSlashCommand(ctx, interaction) {
             break;
           case 'stop':
             await handleStopMusic(ctx, interaction);
+            break;
+          case 'shuffle':
+            await handleShuffle(ctx, interaction);
+            break;
+          case 'remove':
+            await handleRemove(ctx, interaction);
+            break;
+          case 'loop':
+            await handleLoop(ctx, interaction);
             break;
           case 'queue':
             await handleQueue(ctx, interaction);
