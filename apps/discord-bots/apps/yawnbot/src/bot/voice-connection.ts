@@ -68,12 +68,14 @@ function isVoiceDebug(): boolean {
 }
 
 /**
- * Discord DAVE(E2E) 음성 암호화 — 일부 환경에서 signalling↔connecting 루프·무음 유발 보고됨.
- * `DISCORD_VOICE_DAVE=1` 이면 DAVE 사용(기본은 끔).
+ * Discord DAVE(E2E) 음성 암호화 — E2EE 필수 채널(음성 close 4017)에 대응하려면 켜 두는 편이 안전함.
+ * 기본값 **켬**. 끄려면 `DISCORD_VOICE_DAVE=0` / `false` / `off` / `no` (대소문자 무시).
  * @see https://github.com/discordjs/discord.js/issues/11419
  */
 function useDaveEncryptionFromEnv(): boolean {
-  return process.env.DISCORD_VOICE_DAVE === '1';
+  const v = process.env.DISCORD_VOICE_DAVE?.trim().toLowerCase();
+  if (v === '0' || v === 'false' || v === 'off' || v === 'no') return false;
+  return true;
 }
 
 const voiceJoinErrorHooked = new WeakSet<VoiceConnection>();
@@ -93,7 +95,7 @@ function wireVoiceJoinErrorOnce(connection: VoiceConnection): void {
 /** Voice Close Event Codes — @discordjs/voice 는 4014만 Disconnected 로 두고, 그 외 코드는 바로 signalling 으로 돌려 closeCode 가 상태에 안 남음 */
 function voiceCloseCodeHint(code: number): string {
   const table: Record<number, string> = {
-    4017: '이 채널은 DAVE(E2EE) 지원 클라이언트 필요 — `.env`에 DISCORD_VOICE_DAVE=1 시도',
+    4017: 'DAVE(E2EE) 필수 채널 — 기본은 DAVE 켬; 여전히 4017이면 @discordjs/voice·davey 버전 확인',
     4016: '암호화 모드 불일치 — @discordjs/voice·의존성 버전 확인',
     4014: '개별 연결 종료(킥 등) — 재연결하지 말 것(문서)',
     4012: 'Select Protocol 에서 보낸 protocol 미인식',
