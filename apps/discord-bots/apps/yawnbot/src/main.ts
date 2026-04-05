@@ -3,6 +3,7 @@
  * 기존 apps/yawnbot-server/src/index.ts 기반
  */
 import './load-env';
+import './install-console-timestamps';
 import dns from 'node:dns';
 import { generateDependencyReport } from '@discordjs/voice';
 import sodium from 'libsodium-wrappers';

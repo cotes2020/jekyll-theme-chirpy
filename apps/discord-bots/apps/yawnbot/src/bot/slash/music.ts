@@ -1,5 +1,16 @@
 // @ts-nocheck
-import { MessageFlags, PermissionFlagsBits } from 'discord.js';
+/**
+ * 음성 재생 명령 응답 정책(요약)
+ * - 성공 알림: 채널에 보이게(public) — `/queue`, `/skip` 성공, `/stop` 성공, `/play` 완료
+ * - 조용한 거절: ephemeral — 길드 밖, `/skip`·`/stop` 무동작
+ */
+import {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  MessageFlags,
+  PermissionFlagsBits,
+} from 'discord.js';
 import play from 'play-dl';
 import {
   enqueueYouTube,
@@ -7,7 +18,7 @@ import {
   fetchYoutubePlaylistEntries,
   skipTrack,
   stopMusic,
-  getQueueSummary,
+  getMusicQueuePage,
   withTimeout,
   YOUTUBE_RESOLVE_TIMEOUT_MS,
   getYoutubePlaylistMaxTracks,
@@ -17,6 +28,67 @@ import {
 
 /** 플레이리스트 메타(항목 수)만 가져올 때는 검색 단일 곡보다 여유 있게 */
 const YOUTUBE_PLAYLIST_RESOLVE_MS = 90_000;
+
+const QUEUE_BTN_PREFIX = 'music_queue:';
+
+function buildQueuePayload(guildId: string, page: number) {
+  const q = getMusicQueuePage(guildId, page);
+  const parts = [];
+  if (q.nowPlaying) {
+    parts.push(`**재생 중:** ${q.nowPlaying}`);
+  }
+  if (q.totalWaiting === 0) {
+    parts.push(q.nowPlaying ? '대기열이 비어 있습니다.' : '재생 중인 곡과 대기열이 없습니다.');
+  } else {
+    parts.push(`**대기열** ${q.page}/${q.totalPages}페이지 · 총 ${q.totalWaiting}곡`);
+    parts.push(q.lines.join('\n') || '…');
+  }
+  const content = parts.join('\n\n').slice(0, 1900);
+  const components = [];
+  if (q.totalPages > 1) {
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId(`${QUEUE_BTN_PREFIX}${q.page - 1}`)
+        .setLabel('이전')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(q.page <= 1),
+      new ButtonBuilder()
+        .setCustomId(`${QUEUE_BTN_PREFIX}${q.page + 1}`)
+        .setLabel('다음')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(q.page >= q.totalPages),
+    );
+    components.push(row);
+  }
+  return { content, components };
+}
+
+/**
+ * 대기열 페이지 버튼. 처리했으면 true.
+ */
+export async function tryHandleMusicQueueButton(interaction) {
+  if (!interaction.isButton() || !interaction.customId?.startsWith(QUEUE_BTN_PREFIX)) {
+    return false;
+  }
+  if (!interaction.guildId) {
+    await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
+    return true;
+  }
+  const raw = interaction.customId.slice(QUEUE_BTN_PREFIX.length);
+  const page = parseInt(raw, 10);
+  if (Number.isNaN(page) || page < 1) {
+    await interaction.reply({ content: '잘못된 페이지입니다.', flags: MessageFlags.Ephemeral });
+    return true;
+  }
+  try {
+    const payload = buildQueuePayload(interaction.guildId, page);
+    await interaction.update(payload);
+  } catch (e) {
+    console.error('[queue button]', e);
+    await interaction.reply({ content: '대기열을 갱신하지 못했습니다.', flags: MessageFlags.Ephemeral }).catch(() => {});
+  }
+  return true;
+}
 
 /**
  * `playlist?list=` / `watch?…&list=` / `youtu.be/…?list=` → 정규화된 playlist URL.
@@ -250,10 +322,11 @@ export async function handleSkip(ctx, interaction) {
     return;
   }
   const ok = skipTrack(interaction.guildId);
-  await interaction.reply({
-    content: ok ? '다음 곡으로 넘깁니다.' : '건너뛸 재생이 없습니다.',
-    flags: MessageFlags.Ephemeral,
-  });
+  if (ok) {
+    await interaction.reply({ content: '다음 곡으로 넘깁니다.' });
+  } else {
+    await interaction.reply({ content: '건너뛸 재생이 없습니다.', flags: MessageFlags.Ephemeral });
+  }
 }
 
 export async function handleStopMusic(ctx, interaction) {
@@ -262,10 +335,11 @@ export async function handleStopMusic(ctx, interaction) {
     return;
   }
   const ok = stopMusic(interaction.guildId);
-  await interaction.reply({
-    content: ok ? '재생을 멈추고 대기열을 비웠습니다.' : '멈출 재생이 없습니다.',
-    flags: MessageFlags.Ephemeral,
-  });
+  if (ok) {
+    await interaction.reply({ content: '재생을 멈추고 대기열을 비웠습니다.' });
+  } else {
+    await interaction.reply({ content: '멈출 재생이 없습니다.', flags: MessageFlags.Ephemeral });
+  }
 }
 
 export async function handleQueue(ctx, interaction) {
@@ -273,9 +347,8 @@ export async function handleQueue(ctx, interaction) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
-  const list = getQueueSummary(interaction.guildId);
-  await interaction.reply({
-    content: list.length ? `대기열:\n${list.map((t, i) => `${i + 1}. ${t}`).join('\n')}`.slice(0, 1900) : '대기열이 비어 있습니다.',
-    flags: MessageFlags.Ephemeral,
-  });
+  const raw = interaction.options.getInteger('page');
+  const page = raw != null && raw >= 1 ? raw : 1;
+  const payload = buildQueuePayload(interaction.guildId, page);
+  await interaction.reply(payload);
 }

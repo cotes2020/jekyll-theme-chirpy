@@ -2,9 +2,11 @@
 import { EmbedBuilder, MessageFlags } from 'discord.js';
 import { getRandomImage } from '../services/gamedata';
 import { showHelpPage, handleEnhance, handleSell } from './game-ui';
+import { tryHandleMusicQueueButton } from './slash/music';
 
 export async function handleButtonInteraction(ctx, interaction) {
   if (!interaction.isButton()) return;
+  if (await tryHandleMusicQueueButton(interaction)) return;
   const customId = interaction.customId;
   const userId = interaction.user.id;
   const userName = interaction.user.displayName || interaction.user.username;

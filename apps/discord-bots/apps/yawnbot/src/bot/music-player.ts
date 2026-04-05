@@ -179,6 +179,8 @@ type GuildMusicState = {
   player: AudioPlayer;
   queue: QueueItem[];
   subscribed: boolean;
+  /** 지금 스피커로 나가는 트랙 (대기열에서 이미 빠진 항목) */
+  currentTrack: { title: string } | null;
 };
 
 const states = new Map<string, GuildMusicState>();
@@ -229,7 +231,7 @@ function getOrCreatePlayer(guildId: string): GuildMusicState {
       console.log('[music] player state:', oldState.status, '->', newState.status);
     }
   });
-  const state: GuildMusicState = { player, queue: [], subscribed: false };
+  const state: GuildMusicState = { player, queue: [], subscribed: false, currentTrack: null };
   player.on(AudioPlayerStatus.Idle, () => {
     void playNext(guildId);
   });
@@ -434,7 +436,10 @@ async function playNext(guildId: string): Promise<void> {
   const s = states.get(guildId);
   if (!s) return;
   const item = s.queue.shift();
-  if (!item) return;
+  if (!item) {
+    s.currentTrack = null;
+    return;
+  }
   console.log(
     '[music] playNext:',
     item.title.slice(0, 60),
@@ -444,6 +449,7 @@ async function playNext(guildId: string): Promise<void> {
     const resource =
       item.kind === 'youtube' ? await createYoutubeAudioResource(item.url) : await item.load();
     s.player.play(resource);
+    s.currentTrack = { title: item.title };
   } catch (e: any) {
     console.error('[music] 재생 실패:', item.kind === 'youtube' ? item.url : item.title, e?.message ?? e);
     await playNext(guildId);
@@ -567,6 +573,7 @@ export function stopMusic(guildId: string): boolean {
   const s = states.get(guildId);
   if (!s) return false;
   s.queue.length = 0;
+  s.currentTrack = null;
   s.player.stop(true);
   return true;
 }
@@ -594,6 +601,32 @@ export function getQueueSummary(guildId: string): string[] {
   const s = states.get(guildId);
   if (!s || s.queue.length === 0) return [];
   return s.queue.map((q) => q.title);
+}
+
+/** `/queue` 한 페이지당 대기 항목 수 */
+export const MUSIC_QUEUE_PAGE_SIZE = 12;
+
+export function getMusicQueuePage(
+  guildId: string,
+  page: number,
+  perPage: number = MUSIC_QUEUE_PAGE_SIZE,
+): {
+  nowPlaying: string | null;
+  lines: string[];
+  page: number;
+  perPage: number;
+  totalWaiting: number;
+  totalPages: number;
+} {
+  const s = states.get(guildId);
+  const titles = s ? s.queue.map((q) => q.title) : [];
+  const nowPlaying = s?.currentTrack?.title ?? null;
+  const totalWaiting = titles.length;
+  const totalPages = Math.max(1, Math.ceil(totalWaiting / perPage));
+  const p = Math.min(Math.max(1, page), totalPages);
+  const start = (p - 1) * perPage;
+  const lines = titles.slice(start, start + perPage).map((t, i) => `${start + i + 1}. ${t}`);
+  return { nowPlaying, lines, page: p, perPage, totalWaiting, totalPages };
 }
 
 /** Edge TTS 문장을 `/play`와 동일한 대기열에 넣어 재생합니다. */

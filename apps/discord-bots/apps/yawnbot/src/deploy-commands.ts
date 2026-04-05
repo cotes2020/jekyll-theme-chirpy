@@ -2,6 +2,7 @@
  * 슬래시 커맨드 등록 (Discord API에 등록하는 스크립트)
  */
 import './load-env';
+import './install-console-timestamps';
 import { SlashCommandBuilder, ChannelType } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
 
@@ -63,7 +64,12 @@ const commands = [
     ),
   new SlashCommandBuilder().setName('skip').setDescription('지금 재생 중인 곡 건너뛰기'),
   new SlashCommandBuilder().setName('stop').setDescription('재생 중지 및 대기열 비우기'),
-  new SlashCommandBuilder().setName('queue').setDescription('대기열 확인'),
+  new SlashCommandBuilder()
+    .setName('queue')
+    .setDescription('대기열 확인 (페이지·이전/다음 버튼)')
+    .addIntegerOption((opt) =>
+      opt.setName('page').setDescription('페이지 번호 (기본 1)').setRequired(false).setMinValue(1),
+    ),
 
   new SlashCommandBuilder().setName('강화').setDescription('검을 강화합니다. (확률 존재)'),
   new SlashCommandBuilder().setName('판매').setDescription('검을 판매하여 돈을 얻습니다.'),

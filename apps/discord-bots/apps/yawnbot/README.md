@@ -32,7 +32,7 @@ npm run deploy:yawnbot
 | `/play` `query` | YouTube **동영상**·**플레이리스트** URL 또는 검색어. `playlist?list=` / `watch?…&list=` 지원. 플레이리스트 곡 수 상한은 환경 변수로 조절(기본 40, `0`이면 끝까지). 음성 채널 필수. |
 | `/skip` | 현재 재생 건너뛰기 |
 | `/stop` | 재생 중지·대기열 비우기 |
-| `/queue` | 대기열 목록 |
+| `/queue` `page?` | 대기열·**재생 중** 표시, `page` 옵션·**이전/다음** 버튼으로 페이지 이동 (12곡/페이지) |
 | `/음성입장` / `/voice-join` | 봇을 음성·스테이지 채널에 연결 |
 | `/음성퇴장` / `/voice-leave` | 음성 연결 해제 |
 | `/speak` `text?` | **Edge 온라인 TTS**로 읽기 (디스코드 내장 TTS 아님). `text` 비우면 데모 문장. |
