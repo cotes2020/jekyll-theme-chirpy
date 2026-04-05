@@ -16,15 +16,25 @@ alwaysApply: true
 
 에이전트가 코드만 고치고 문서를 비우지 않는다. **변경 범위에 맞는 최소한의 문서 수정**은 같은 작업(또는 직후 커밋)에 포함한다.
 
-## 문서 위치
+## 문서 위치 (로컬 `.md` vs 레포 README)
 
-| 용도 | 경로 |
-|------|------|
-| Toolbox **문서** 탭 본문 | `apps/karmolab/js/widgets/docs/*.md` |
-| 새 탭/섹션 | `apps/karmolab/src/widgets/docs/docs.ts`의 `Toolbox.register` → `tabs`에 `loadDoc('파일명.md')` 추가 |
-| 짧은 사용자 안내 | 기존 `intro.md` / `guide.md` 등 **해당 주제에 맞는 파일**을 편집 |
+| 용도 | 경로 / 방법 |
+|------|----------------|
+| Toolbox **문서** 탭 — 위젯 전용 본문 | `apps/karmolab/js/widgets/docs/*.md` — `loadDoc('파일명.md')` 로 로드 (배포 사이트와 같은 출처에서 `fetch`) |
+| Toolbox **문서** 탭 — **레포 README 연동** | `apps/karmolab/src/widgets/docs/docs.ts`에서 `renderRepoMarkdownInContainer(c, '레포/상대/경로.md')` 로 탭 추가. 런타임에 GitHub **raw**에서 가져옴 (기본 브랜치 `master`) |
+| 새 탭/섹션 등록 | `docs.ts`의 `Toolbox.register` → `tabs`에 `build` 핸들러 추가. 문서 위젯은 `tabLayout: 'sidebar'`(왼쪽 세로 목록) 유지. Discord 봇 통합 본문은 **`discord-yawnbot.md`** 한 파일로 유지(음성·백로그 분리 탭 금지) |
+| 짧은 사용자 안내 | `intro.md` / `guide.md` 등 **해당 주제에 맞는 파일** |
 
-새 기능이 큰 주제면 **전용 `.md` + 탭**을 우선한다. 작은 옵션 추가는 **가이드·소개** 등 기존 문서에 bullet로 보강해도 된다.
+### 로컬 `.md`를 쓸 때 vs README를 쓸 때
+
+- **위젯 전용** (로드맵, **Discord·욘봇** `discord-yawnbot.md`, Mermaid 다이어그램, KarmoLab UI 설명): `js/widgets/docs/*.md` 가 적합.
+- **앱 폴더 README가 이미 SSOT** (명령어·`.env`·개발 절차): README를 고치고, 필요하면 위젯 본문에 **GitHub blob/raw 링크**로 연결한다. 욘봇(`yawnbot`)은 **Discord·욘봇** 탭 하나만 두고 README는 별도 raw 탭으로 두지 않는다. README에 없는 내용만 위젯 `.md`에 둔다.
+- README 연동 탭에 보이는 내용은 **GitHub에 push된 `master`** 기준이므로, 로컬만 수정하고 push 전이면 탭과 불일치할 수 있다.
+
+### `window.KARMOLAB_DOCS_RAW_BASE`
+
+- 기본 raw 베이스: `https://raw.githubusercontent.com/mascari4615/mascari4615.github.io/master/`
+- 포크·`main` 브랜치 등: 브라우저 콘솔에서 `window.KARMOLAB_DOCS_RAW_BASE = 'https://raw.githubusercontent.com/USER/REPO/BRANCH/'` (끝 `/` 필수) 후 탭을 다시 연다.
 
 ## 문서 안에 Todo 리스트
 
@@ -37,7 +47,11 @@ alwaysApply: true
 
 ## 빌드
 
-`docs.ts` 또는 `js/widgets/docs/*.md`를 바꾼 뒤에는 `apps/karmolab`에서 **`npm run build`**로 `js/widgets/docs/docs.js` 등을 갱신한다.
+| 바꾼 것 | 할 일 |
+|---------|--------|
+| `docs.ts` (탭·`loadDocFromRepo`·`desc` 등) | `apps/karmolab`에서 **`npm run build`** 로 `js/widgets/docs/docs.js` 갱신 |
+| `js/widgets/docs/*.md`만 (로컬 문서) | Jekyll/정적 배포에 포함되면 **빌드 없이**도 반영되는 경우가 많음. `docs.ts`를 건드리지 않았으면 esbuild 생략 가능 |
+| **레포 README만** (연동 탭 대상) | Karmolab 빌드 불필요. **GitHub에 push**해야 탭 내용이 갱신됨 |
 
 ## 스코프
 
@@ -46,7 +60,7 @@ alwaysApply: true
 
 ## 체크리스트 (기능 작업 마무리 시)
 
-1. 관련 `.md`에 **무엇이 바뀌었는지·어떻게 쓰는지** 한 번에 이해되게 적었는가  
+1. 관련 `.md` 또는 **README**에 **무엇이 바뀌었는지·어떻게 쓰는지** 한 번에 이해되게 적었는가  
 2. 해당 문서에 **Todo 체크리스트**를 두었는가(진행 중이면 남은 일, 완료면 정리·삭제)  
-3. 필요 시 `docs.ts` 탭·`desc` 갱신 여부  
-4. `npm run build` (karmolab) 실행 여부  
+3. 필요 시 `docs.ts` 탭·`desc`·**README raw 탭** 경로 갱신 여부  
+4. `docs.ts`를 수정했다면 `npm run build` (karmolab) 실행 여부  

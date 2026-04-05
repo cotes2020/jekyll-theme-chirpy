@@ -38,6 +38,20 @@
 
 개발자용으로 모델 ID·REST URL 등을 레포 한곳에서 맞추는 **`karmolab-ai`** 패키지가 있고, 브라우저는 루트 엔트리만 번들에 포함됩니다. **Discord 봇·카카오보내기**는 **`karmolab-ai/node`** 와 `.env`로 **AI Studio**(`GEMINI_API_KEY`) 또는 **Vertex**(`KARMOLAB_AI_SURFACE=vertex` + `VERTEX_*`)를 고를 수 있어요. Toolbox **문서 → KarmoLabAI** 탭을 보세요.
 
+## 문서 위젯
+
+**문서** 도구 안에서는 왼쪽에 **세로 목록**으로 문서 제목을 고르고, 오른쪽에 본문이 나와요(탭이 많아서 가로로 두지 않음).
+
+소개·로드맵·가이드·**Discord·욘봇**(`discord-yawnbot.md`) 등은 `apps/karmolab/js/widgets/docs/` 안 Markdown이에요. **discord-bots · README** / **Tauri · README** 탭만 GitHub **raw**로 레포 파일을 불러와요 (`master` push 기준).
+
+| 탭 이름 | 출처 |
+|---------|------|
+| Discord·욘봇 | `discord-yawnbot.md` — 욘봇은 **탭 하나**; 명령·env는 본문의 GitHub README 링크 |
+| discord-bots · README | `apps/discord-bots/README.md` (raw) |
+| Tauri · README | `apps/karmolab-tauri/README.md` (raw) |
+
+다른 브랜치·포크를 보려면 개발자 도구 콘솔에서 `window.KARMOLAB_DOCS_RAW_BASE`에 `https://raw.githubusercontent.com/사용자/저장소/브랜치/` 형태(끝에 `/`)를 넣은 뒤 탭을 다시 열면 됩니다.
+
 ## 데이터
 
 모든 데이터(설정, 진행도, 도전과제)는 **브라우저 localStorage**에 저장돼요.

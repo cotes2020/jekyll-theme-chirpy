@@ -191,6 +191,55 @@
     });
   }
 
+  /**
+   * GitHub `raw.githubusercontent.com` 등 — 레포 루트 기준 상대 경로 Markdown.
+   * 기본: 이 사이트 레포 `master`. 포크·다른 브랜치는 `window.KARMOLAB_DOCS_RAW_BASE`로 덮어쓰기
+   * (끝에 `/` 포함한 전체 prefix, 예: https://raw.githubusercontent.com/you/repo/main/)
+   */
+  function getDocsRepoRawBase(): string {
+    const w = window as unknown as { KARMOLAB_DOCS_RAW_BASE?: string };
+    const custom = (w.KARMOLAB_DOCS_RAW_BASE ?? '').trim();
+    if (custom) {
+      return custom.replace(/\/?$/, '/');
+    }
+    return 'https://raw.githubusercontent.com/mascari4615/mascari4615.github.io/master/';
+  }
+
+  function normalizeRepoDocPath(path: string): string {
+    return path
+      .trim()
+      .replace(/^\/+/, '')
+      .replace(/\/{2,}/g, '/');
+  }
+
+  function loadDocFromRepo(repoRelativePath: string): Promise<string> {
+    const url = getDocsRepoRawBase() + normalizeRepoDocPath(repoRelativePath);
+    return fetch(url).then(function (r: Response) {
+      if (!r.ok) throw new Error('레포 문서 로드 실패: ' + repoRelativePath + ' (' + r.status + ')');
+      return r.text();
+    });
+  }
+
+  /** 레포 루트 기준 Markdown 경로를 GitHub raw로 불러와 본문 위에 출처 블록을 붙여 렌더 */
+  function renderRepoMarkdownInContainer(container: HTMLElement, repoRelativePath: string): void {
+    container.innerHTML =
+      '<p class="docs-body" style="color:var(--text-secondary)">GitHub에서 문서 불러오는 중...</p>';
+    loadDocFromRepo(repoRelativePath)
+      .then(function (md: string) {
+        const banner =
+          '> **원본:** `' +
+          repoRelativePath +
+          '` — GitHub **raw** (`master` 기본). `window.KARMOLAB_DOCS_RAW_BASE` 에 끝이 `/`인 URL을 넣으면 다른 브랜치·포크를 볼 수 있어요.\n\n---\n\n';
+        renderMarkdown(container, banner + md);
+      })
+      .catch(function () {
+        renderMarkdown(
+          container,
+          '*문서를 불러오지 못했어요. 네트워크·브랜치(`master`)·`window.KARMOLAB_DOCS_RAW_BASE` 를 확인한 뒤 탭을 다시 열어 주세요.*',
+        );
+      });
+  }
+
   function renderMarkdown(container: HTMLElement, md: string): void {
     const body = document.createElement('div');
     body.className = 'docs-body';
@@ -254,7 +303,9 @@
   Toolbox.register({
     id: 'docs',
     title: '문서',
-    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, KarmoLabAI, Discord 봇 문서, 레포 명령, 데스크톱 로컬 실행',
+    /** 탭이 많아서 가로 탭 대신 왼쪽 세로 목록 */
+    tabLayout: 'sidebar',
+    desc: 'KarmoLab 소개, 로드맵·가이드, KarmoLabAI, Discord·욘봇(음성+백로그), README(raw), 프로젝트 명령, 데스크톱 로컬',
     layout: 'wide',
     icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
     tabs: [
@@ -319,12 +370,12 @@
         }
       },
       {
-        id: 'docs-discord-voice',
-        label: 'Discord·음성',
+        id: 'docs-discord-yawnbot',
+        label: 'Discord·욘봇',
         build: function (c: HTMLElement): void {
-          Mdd.linePreset('tool_run', { msg: '욘 봇 `/sound`·음성·DAVE 트러블슈팅 정리예요.' });
+          Mdd.linePreset('tool_run', { msg: '욘 봇 음성·DAVE·백로그 한곳이에요.' });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
-          loadDoc('discord-voice-dave-troubleshooting.md')
+          loadDoc('discord-yawnbot.md')
             .then(function (md: string) {
               renderMarkdown(c, md);
             })
@@ -334,18 +385,19 @@
         }
       },
       {
-        id: 'docs-discord-improvements',
-        label: 'Discord·개선',
+        id: 'docs-discord-bots-readme',
+        label: 'discord-bots · README',
         build: function (c: HTMLElement): void {
-          Mdd.linePreset('tool_run', { msg: '욘 봇 개선 아이디어 백로그예요.' });
-          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
-          loadDoc('discord-bot-improvements.md')
-            .then(function (md: string) {
-              renderMarkdown(c, md);
-            })
-            .catch(function () {
-              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
-            });
+          Mdd.linePreset('tool_run', { msg: 'discord-bots 워크스페이스 README (GitHub).' });
+          renderRepoMarkdownInContainer(c, 'apps/discord-bots/README.md');
+        }
+      },
+      {
+        id: 'docs-tauri-readme',
+        label: 'Tauri · README',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '데스크톱 앱 폴더 README (GitHub).' });
+          renderRepoMarkdownInContainer(c, 'apps/karmolab-tauri/README.md');
         }
       },
       {
