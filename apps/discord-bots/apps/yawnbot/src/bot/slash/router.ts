@@ -134,24 +134,6 @@ export async function dispatchSlashCommand(ctx, interaction) {
         }
         break;
       }
-      case 'play':
-        await handlePlay(ctx, interaction);
-        break;
-      case 'speak':
-        await handleSpeak(ctx, interaction);
-        break;
-      case 'sound':
-        await handleSound(ctx, interaction);
-        break;
-      case 'skip':
-        await handleSkip(ctx, interaction);
-        break;
-      case 'stop':
-        await handleStopMusic(ctx, interaction);
-        break;
-      case 'queue':
-        await handleQueue(ctx, interaction);
-        break;
       case 'admin-reload':
         await handleAdminReload(ctx, interaction, userId);
         break;

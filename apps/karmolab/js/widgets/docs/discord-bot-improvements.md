@@ -16,11 +16,11 @@
 
 ---
 
-## 1. `/play` · 지금 재생 · 대기열 편집
+## 1. `/music play` · 지금 재생 · 대기열 편집
 
-- [x] **지금 재생 표시** — `/queue` 상단에 **재생 중** 제목 표시 (`currentTrack`)
+- [x] **지금 재생 표시** — `/music queue` 상단에 **재생 중** 제목 표시 (`currentTrack`)
 - [x] **상태 보관** — `GuildMusicState.currentTrack` (재생 성공 시 설정, 대기열 비움·정지 시 해제)
-- [ ] **대기열 삭제** — `/queue remove` 또는 `/remove` 로 번호·범위 삭제
+- [ ] **대기열 삭제** — `/music queue remove` 또는 `/remove` 로 번호·범위 삭제
 - [ ] **대기열 이동** — 항목 순서 바꾸기 (옵션)
 - [ ] **`/shuffle`** — 대기열 무작위 섞기 (재생 중 트랙은 그대로 두고 뒤만)
 - [ ] **`/loop`** — 한 곡 / 전체 루프 모드 (플래그 + `playNext` 동작 연동)
@@ -29,11 +29,11 @@
 
 ## 2. 대기열 UX — 긴 플레이리스트 · 응답 정책
 
-- [ ] **긴 플레이리스트 요약** — `/play` 완료 메시지에 “추가 N곡, 스킵 M곡” 등 embed 한 줄 요약
+- [ ] **긴 플레이리스트 요약** — `/music play` 완료 메시지에 “추가 N곡, 스킵 M곡” 등 embed 한 줄 요약
 - [ ] **실패 곡 사용자 안내** — 스트림 실패 시 로그 + 채널/ephemeral 한 줄 (스팸 방지 규칙과 함께)
-- [x] **`/queue` 페이지** — 12곡/페이지, `/queue page` 옵션 + **이전·다음** 버튼
-- [x] **응답 정책 (음악 일부)** — `music.ts` 주석 + `/queue`·`/skip`·`/stop` 성공은 채널 공개, 무동작·길드 밖은 ephemeral
-- [ ] **DJ 권한 (옵션)** — 역할 기반 `/skip`·`/stop` 제한
+- [x] **`/music queue` 페이지** — 12곡/페이지, `page` 옵션 + **이전·다음** 버튼
+- [x] **응답 정책 (음악 일부)** — `music.ts` 주석 + `/music queue`·`/music skip`·`/music stop` 성공은 채널 공개, 무동작·길드 밖은 ephemeral
+- [ ] **DJ 권한 (옵션)** — 역할 기반 `/music skip`·`/music stop` 제한
 
 ---
 
@@ -48,7 +48,7 @@
 
 ## 4. 슬래시 · 명령 · 배포
 
-- [ ] **명령 그룹** — 예: `/music play|skip|stop|queue` 식으로 묶기 (`deploy-commands` + 라우터 마이그레이션)
+- [x] **명령 그룹** — `/music play|speak|sound|skip|stop|queue` (`deploy-commands` + 라우터; 구 `/play` 등 최상위 명령 제거)
 - [ ] **한영 병기** — 한글 표시명 유지 + `setDescription` / 옵션 설명에 짧은 영문 보조
 - [ ] **`/help` 세분화** — 음성·게임·AI 등 카테고리별 ephemeral (또는 embed 필드)
 - [ ] **등록 문서** — 글로벌 vs 길드 배포, `npm run deploy` 절차를 README에 한 블록으로 고정

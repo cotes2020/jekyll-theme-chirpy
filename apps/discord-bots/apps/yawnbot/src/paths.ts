@@ -63,7 +63,7 @@ export function memeImgDir(): string {
   return path.join(PKG_ROOT, 'resources', 'img', 'meme');
 }
 
-/** `/sound clip:` — 이 폴더 안의 파일명만 허용 (경로 조작 방지) */
+/** `/music sound clip:` — 이 폴더 안의 파일명만 허용 (경로 조작 방지) */
 export function packagedAudioDir(): string {
   return path.join(PKG_ROOT, 'resources', 'audio');
 }

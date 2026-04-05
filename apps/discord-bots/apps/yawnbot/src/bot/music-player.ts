@@ -38,12 +38,12 @@ import {
 import type { VoiceBasedChannel } from 'discord.js';
 import { createEdgeTtsAudioResource } from './edge-tts-speak';
 
-/** play-dl / YouTube 조회·스트림이 끝없이 걸리면 `/play`가 생각 중에서 안 풀림 */
+/** play-dl / YouTube 조회·스트림이 끝없이 걸리면 `/music play`가 생각 중에서 안 풀림 */
 export const YOUTUBE_RESOLVE_TIMEOUT_MS = 45_000;
 export const YOUTUBE_STREAM_TIMEOUT_MS = 90_000;
 
 /**
- * `/play` 플레이리스트에서 큐에 넣을 곡 수 상한.
+ * `/music play` 플레이리스트에서 큐에 넣을 곡 수 상한.
  * - 비우거나 잘못된 값: 기본 40
  * - `0` 이하: **한도 없음** (목록 끝까지 페이징; 시간·메모리·디스코드 인터랙션 제한에 유의)
  * - 양수: 그 개수만큼만
@@ -550,7 +550,7 @@ export async function enqueueYouTubeTracks(
   }
 }
 
-/** TTS·URL·파일 등 임의 오디오 소스를 `/play`와 같은 대기열에 넣습니다. */
+/** TTS·URL·파일 등 임의 오디오 소스를 `/music play`와 같은 대기열에 넣습니다. */
 export async function enqueueCustomTrack(
   channel: VoiceBasedChannel,
   title: string,
@@ -603,7 +603,7 @@ export function getQueueSummary(guildId: string): string[] {
   return s.queue.map((q) => q.title);
 }
 
-/** `/queue` 한 페이지당 대기 항목 수 */
+/** `/music queue` 한 페이지당 대기 항목 수 */
 export const MUSIC_QUEUE_PAGE_SIZE = 12;
 
 export function getMusicQueuePage(
@@ -629,7 +629,7 @@ export function getMusicQueuePage(
   return { nowPlaying, lines, page: p, perPage, totalWaiting, totalPages };
 }
 
-/** Edge TTS 문장을 `/play`와 동일한 대기열에 넣어 재생합니다. */
+/** Edge TTS 문장을 `/music play`와 동일한 대기열에 넣어 재생합니다. */
 export async function enqueueSpokenText(
   channel: VoiceBasedChannel,
   title: string,

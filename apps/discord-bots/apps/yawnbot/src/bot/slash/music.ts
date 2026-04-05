@@ -1,7 +1,7 @@
 // @ts-nocheck
 /**
  * 음성 재생 명령 응답 정책(요약)
- * - 성공 알림: 채널에 보이게(public) — `/queue`·`/music queue`, `/skip`·`/music skip`, `/stop`·`/music stop`, `/play`·`/music play` 완료
+ * - 성공 알림: 채널에 보이게(public) — `/music queue`·`/music skip`·`/music stop`·`/music play` 완료
  * - 조용한 거절: ephemeral — 길드 밖, skip/stop 무동작
  */
 import {
@@ -200,7 +200,7 @@ export async function handlePlay(ctx, interaction) {
 
   const vc = interaction.member.voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
-    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/play` 또는 `/music play`를 사용하세요.' });
+    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/music play`를 사용하세요.' });
     return;
   }
   const botMember = interaction.guild.members.me;

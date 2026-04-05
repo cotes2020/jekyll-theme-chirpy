@@ -30,7 +30,7 @@ export async function handleSpeak(ctx, interaction) {
 
   const vc = interaction.member.voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
-    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/speak` 또는 `/music speak`를 사용하세요.' });
+    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/music speak`를 사용하세요.' });
     return;
   }
 
