@@ -139,6 +139,65 @@
   Mdd.injectCSS(
     'docs',
     `
+        /* 본문 + 목차 (세계관 위키 위젯과 같은 패턴: 슬러그 앵커, 측면 nav, IntersectionObserver) */
+        .docs-md-layout {
+          display:grid;
+          grid-template-columns:minmax(0,1fr) 220px;
+          grid-template-areas:'main toc';
+          gap:16px;
+          align-items:start;
+        }
+        .docs-md-layout--no-toc { grid-template-columns:1fr; grid-template-areas:'main'; }
+        .docs-md-layout--no-toc .docs-md-toc { display:none; }
+        .docs-md-main { grid-area:main; min-width:0; }
+        .docs-md-toc {
+          grid-area:toc;
+          position:sticky;
+          top:12px;
+          align-self:start;
+          max-height:min(72vh, 640px);
+          overflow:auto;
+          padding:12px;
+          background:var(--bg-secondary);
+          border:1px solid var(--border);
+          border-radius:var(--radius-lg);
+        }
+        .docs-toc-title { font-size:var(--font-size-xs); font-weight:900; color:var(--text-secondary); margin:2px 0 10px; }
+        .docs-toc-listnav { display:flex; flex-direction:column; gap:6px; }
+        .docs-toc-a {
+          font-size:12px;
+          color:var(--text-tertiary);
+          text-decoration:none;
+          line-height:1.45;
+          padding:6px 8px;
+          border-radius:10px;
+          border:1px solid transparent;
+        }
+        .docs-toc-a:hover { color:var(--text-secondary); border-color:var(--border); background:var(--bg-tertiary); }
+        .docs-toc-a.active { color:var(--text-primary); border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-subtle); }
+        .docs-toc-l2 { padding-left:18px; }
+        .docs-toc-l3 { padding-left:28px; }
+        .docs-heading { position:relative; scroll-margin-top:16px; }
+        .docs-heading:hover .docs-anchor { opacity:1; }
+        .docs-anchor {
+          opacity:0;
+          position:absolute;
+          left:-22px;
+          top:50%;
+          transform:translateY(-50%);
+          font-size:14px;
+          color:var(--text-tertiary);
+          cursor:pointer;
+          user-select:none;
+        }
+        .docs-anchor:focus { opacity:1; outline:2px solid var(--accent-subtle); outline-offset:2px; border-radius:6px; }
+        @media (max-width:920px) {
+          .docs-md-layout:not(.docs-md-layout--no-toc) {
+            grid-template-columns:1fr;
+            grid-template-areas:'toc' 'main';
+          }
+          .docs-md-toc { max-height:min(38vh, 280px); top:0; z-index:3; }
+        }
         .docs-body { font-size:14px; line-height:1.8; color:var(--text-primary); max-width:800px; }
         .docs-body h1 { font-size:24px; font-weight:800; letter-spacing:-0.03em; margin:0 0 16px; padding-bottom:12px; border-bottom:2px solid var(--border); }
         .docs-body h2 { font-size:18px; font-weight:700; letter-spacing:-0.02em; margin:32px 0 12px; color:var(--accent); }
@@ -158,10 +217,6 @@
         .docs-body a { color:var(--accent); text-decoration:none; }
         .docs-body a:hover { text-decoration:underline; }
         .docs-body strong { color:var(--text-primary); }
-        .docs-toc { position:sticky; top:0; background:var(--bg-secondary); padding:12px 0; margin-bottom:16px; z-index:2; }
-        .docs-toc-list { display:flex; flex-wrap:wrap; gap:6px; }
-        .docs-toc-item { font-size:var(--font-size-xs); padding:4px 12px; border-radius:100px; background:var(--bg-tertiary); color:var(--text-secondary); cursor:pointer; border:1px solid var(--border); transition:all 0.15s; text-decoration:none; }
-        .docs-toc-item:hover { color:var(--text-primary); border-color:var(--accent); }
         .docs-body .mermaid { margin:0 0 16px; padding:12px; border-radius:var(--radius-md); border:1px solid var(--border); background:var(--bg-tertiary); overflow-x:auto; text-align:center; }
         .docs-body .mermaid svg { max-width:100%; height:auto; }
     `
@@ -220,6 +275,174 @@
     });
   }
 
+  /** worldwiki 위젯과 동일한 슬러그·앵커·목차 패턴 */
+  function docsEsc(s: string): string {
+    return typeof Toolbox !== 'undefined' && Toolbox.escapeHtml ? Toolbox.escapeHtml(s) : s;
+  }
+
+  function docsSlugify(s: string): string {
+    return String(s || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[\s]+/g, '-')
+      .replace(/[^\w\-가-힣]+/g, '')
+      .replace(/\-+/g, '-')
+      .replace(/^\-+|\-+$/g, '');
+  }
+
+  function docsEnsureUniqueId(base: string, used: Set<string>): string {
+    let id = base || 'section';
+    if (!used.has(id)) {
+      used.add(id);
+      return id;
+    }
+    let i = 2;
+    while (used.has(`${id}-${i}`)) i++;
+    const out = `${id}-${i}`;
+    used.add(out);
+    return out;
+  }
+
+  function findDocsScrollRoot(from: HTMLElement): Element | null {
+    let el: HTMLElement | null = from.parentElement;
+    for (let i = 0; i < 16 && el; i++) {
+      const st = window.getComputedStyle(el);
+      const oy = st.overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 4) {
+        return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  function applyDocsAnchors(
+    root: HTMLElement,
+    tocEl: HTMLElement | null
+  ): Array<{ id: string; text: string; level: number }> {
+    const used = new Set<string>();
+    const headings = Array.from(root.querySelectorAll('h1, h2, h3'));
+    const toc: Array<{ id: string; text: string; level: number }> = [];
+
+    headings.forEach(function (h) {
+      const el = h as HTMLElement;
+      const level = el.tagName === 'H1' ? 1 : el.tagName === 'H2' ? 2 : 3;
+      const text = (el.textContent || '').trim();
+      if (!text) return;
+      const id = docsEnsureUniqueId(docsSlugify(text), used);
+      el.id = el.id || id;
+      el.classList.add('docs-heading');
+
+      const a = document.createElement('span');
+      a.className = 'docs-anchor';
+      a.tabIndex = 0;
+      a.setAttribute('role', 'button');
+      a.setAttribute('aria-label', '링크 복사');
+      a.textContent = '#';
+      const copy = async function () {
+        const url = location.origin + location.pathname + location.search + '#' + el.id;
+        try {
+          await navigator.clipboard.writeText(url);
+          Toolbox.showToast?.('링크 복사됨', undefined, undefined);
+        } catch {
+          location.hash = el.id;
+          Toolbox.showToast?.('링크를 복사하지 못했습니다.', 'error', undefined);
+        }
+      };
+      a.addEventListener('click', function (e: MouseEvent) {
+        e.preventDefault();
+        e.stopPropagation();
+        location.hash = el.id;
+        void copy();
+      });
+      a.addEventListener('keydown', function (e: KeyboardEvent) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          location.hash = el.id;
+          void copy();
+        }
+      });
+      el.prepend(a);
+
+      toc.push({ id: el.id, text, level });
+    });
+
+    if (tocEl && toc.length >= 2) {
+      tocEl.innerHTML =
+        '<div class="docs-toc-title">이 문서 목차</div>' +
+        '<nav class="docs-toc-listnav" aria-label="목차">' +
+        toc
+          .map(function (x) {
+            return (
+              '<a class="docs-toc-a docs-toc-l' +
+              x.level +
+              '" href="#' +
+              docsEsc(x.id) +
+              '">' +
+              docsEsc(x.text) +
+              '</a>'
+            );
+          })
+          .join('') +
+        '</nav>';
+    } else if (tocEl) {
+      tocEl.innerHTML = '';
+    }
+
+    return toc;
+  }
+
+  function wireDocsTocActive(tocWrap: HTMLElement, docWrap: HTMLElement, scrollRoot: Element | null): void {
+    const links = Array.from(tocWrap.querySelectorAll('.docs-toc-a'));
+    if (!links.length) return;
+
+    const headings = Array.from(docWrap.querySelectorAll('h1, h2, h3')).filter(function (h) {
+      return !!h.id;
+    });
+    const ioRoot = scrollRoot ?? null;
+    const obs = new IntersectionObserver(
+      function (entries) {
+        const visible = entries
+          .filter(function (e) {
+            return e.isIntersecting;
+          })
+          .sort(function (a, b) {
+            return a.boundingClientRect.top - b.boundingClientRect.top;
+          });
+        if (!visible.length) return;
+        const id = visible[0].target.id;
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      },
+      { root: ioRoot, threshold: [0.12, 0.35, 0.55] }
+    );
+    headings.forEach(function (h) {
+      obs.observe(h);
+    });
+
+    links.forEach(function (a) {
+      a.addEventListener('click', function () {
+        const href = a.getAttribute('href');
+        const id = href && href.startsWith('#') ? href.slice(1) : '';
+        let target: HTMLElement | null = null;
+        try {
+          target = id ? (docWrap.querySelector('#' + CSS.escape(id)) as HTMLElement | null) : null;
+        } catch {
+          target = null;
+        }
+        if (!target) return;
+        const root = scrollRoot;
+        if (root instanceof HTMLElement) {
+          const top = target.getBoundingClientRect().top - root.getBoundingClientRect().top + root.scrollTop - 10;
+          root.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
   /** 레포 루트 기준 Markdown 경로를 GitHub raw로 불러와 본문 위에 출처 블록을 붙여 렌더 */
   function renderRepoMarkdownInContainer(container: HTMLElement, repoRelativePath: string): void {
     container.innerHTML =
@@ -245,17 +468,34 @@
     body.className = 'docs-body';
     md = md.replace(/^\uFEFF/, '');
 
-    if (typeof marked !== 'undefined') {
-      registerMarkedMermaid();
-      marked.setOptions({ breaks: true, gfm: true });
-      body.innerHTML = marked.parse(md);
-    } else {
-      body.innerHTML = '<p style="color:var(--error)">marked.js 로드 실패. 새로고침해주세요.</p>';
+    if (typeof marked === 'undefined') {
+      container.innerHTML = '<p class="docs-body" style="color:var(--error)">marked.js 로드 실패. 새로고침해주세요.</p>';
       return;
     }
 
+    registerMarkedMermaid();
+    marked.setOptions({ breaks: true, gfm: true });
+    body.innerHTML = marked.parse(md);
+
+    const layout = document.createElement('div');
+    layout.className = 'docs-md-layout';
+
+    const main = document.createElement('div');
+    main.className = 'docs-md-main';
+    main.appendChild(body);
+
+    const aside = document.createElement('aside');
+    aside.className = 'docs-md-toc';
+    aside.setAttribute('aria-label', '문서 목차');
+    const tocNav = document.createElement('div');
+    tocNav.className = 'docs-toc-nav-host';
+    aside.appendChild(tocNav);
+
+    layout.appendChild(main);
+    layout.appendChild(aside);
+
     container.innerHTML = '';
-    container.appendChild(body);
+    container.appendChild(layout);
 
     replaceMermaidCodeBlocksFallback(body);
 
@@ -266,6 +506,13 @@
         Prism.highlightElement(block);
       }
     });
+
+    const tocMeta = applyDocsAnchors(body, tocNav);
+    if (tocMeta.length < 2) {
+      layout.classList.add('docs-md-layout--no-toc');
+    } else {
+      wireDocsTocActive(tocNav, body, findDocsScrollRoot(layout));
+    }
 
     const mermaidEls = body.querySelectorAll('.mermaid');
     if (mermaidEls.length > 0) {
@@ -305,7 +552,7 @@
     title: '문서',
     /** 탭이 많아서 가로 탭 대신 왼쪽 세로 목록 */
     tabLayout: 'sidebar',
-    desc: 'KarmoLab 소개, 로드맵·가이드, KarmoLabAI, Discord·욘봇(음성+백로그), README(raw), 프로젝트 명령, 데스크톱 로컬',
+    desc: 'KarmoLab 소개, 로드맵·가이드, KarmoLabAI, Discord·욘봇(음성·기능·TODO), README(raw), 프로젝트 명령, 데스크톱 로컬 — 탭마다 목차(제목 h1–h3)',
     layout: 'wide',
     icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
     tabs: [
@@ -373,7 +620,7 @@
         id: 'docs-discord-yawnbot',
         label: 'Discord·욘봇',
         build: function (c: HTMLElement): void {
-          Mdd.linePreset('tool_run', { msg: '욘 봇 음성·DAVE·백로그 한곳이에요.' });
+          Mdd.linePreset('tool_run', { msg: '욘 봇 음성·DAVE·기능 요약·TODO 한곳이에요.' });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
           loadDoc('discord-yawnbot.md')
             .then(function (md: string) {

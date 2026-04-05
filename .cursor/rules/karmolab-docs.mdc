@@ -22,7 +22,7 @@ alwaysApply: true
 |------|----------------|
 | Toolbox **문서** 탭 — 위젯 전용 본문 | `apps/karmolab/js/widgets/docs/*.md` — `loadDoc('파일명.md')` 로 로드 (배포 사이트와 같은 출처에서 `fetch`) |
 | Toolbox **문서** 탭 — **레포 README 연동** | `apps/karmolab/src/widgets/docs/docs.ts`에서 `renderRepoMarkdownInContainer(c, '레포/상대/경로.md')` 로 탭 추가. 런타임에 GitHub **raw**에서 가져옴 (기본 브랜치 `master`) |
-| 새 탭/섹션 등록 | `docs.ts`의 `Toolbox.register` → `tabs`에 `build` 핸들러 추가. 문서 위젯은 `tabLayout: 'sidebar'`(왼쪽 세로 목록) 유지. Discord 봇 통합 본문은 **`discord-yawnbot.md`** 한 파일로 유지(음성·백로그 분리 탭 금지) |
+| 새 탭/섹션 등록 | `docs.ts`의 `Toolbox.register` → `tabs`에 `build` 핸들러 추가. 문서 위젯은 `tabLayout: 'sidebar'`(왼쪽 세로 목록) 유지. 본문은 `renderMarkdown`이 h1–h3 기준 **목차·앵커**를 붙임(worldwiki와 동일 패턴). Discord 봇 통합 본문은 **`discord-yawnbot.md`** 한 파일로 유지(음성·TODO 등 분리 탭 금지) |
 | 짧은 사용자 안내 | `intro.md` / `guide.md` 등 **해당 주제에 맞는 파일** |
 
 ### 로컬 `.md`를 쓸 때 vs README를 쓸 때

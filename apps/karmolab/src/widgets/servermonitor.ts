@@ -162,7 +162,7 @@
     const hint = document.createElement('p');
     hint.className = 'sm-dev-hint';
     hint.textContent =
-      '위에서 저장소 루트를 먼저 저장하세요. 경로는 servermonitor-config.json → envFiles 입니다. 비밀 값은 화면 공유에 주의하세요.';
+      '페이지 하단에서 저장소 루트를 저장한 뒤 쓰세요. 경로는 servermonitor-config.json → envFiles 입니다. 비밀 값은 화면 공유에 주의하세요.';
 
     const grid = document.createElement('div');
     grid.className = 'sm-env-cards';
@@ -311,27 +311,26 @@
    */
   function mountDesktopLocalDev(
     section: HTMLElement,
+    rootFooter: HTMLElement,
     pingState: { byId: Record<string, LocalCardState> },
     registerRefresh: (fn: () => Promise<void>) => void
   ): HTMLElement {
     const invoke = window.__TAURI__?.core?.invoke;
 
-    const rootLabel = document.createElement('label');
-    rootLabel.className = 'field-label';
-    rootLabel.textContent = '프로젝트(저장소) 루트 경로';
+    const rootLabel = document.createElement('div');
+    rootLabel.className = 'sm-root-footer-label';
+    rootLabel.textContent = '저장소 루트 (레포 최상위)';
 
     const rootInput = document.createElement('input');
     rootInput.type = 'text';
-    rootInput.className = 'mono-input';
-    rootInput.style.width = '100%';
-    rootInput.style.marginBottom = '8px';
+    rootInput.className = 'mono-input sm-root-footer-input';
     rootInput.placeholder = '예: C:\\Users\\…\\Mascari4615.github.io';
     rootInput.value = Toolbox.getPref?.(REPO_ROOT_PREF, '') ?? '';
 
     const saveRootBtn = document.createElement('button');
-    saveRootBtn.className = 'btn btn-primary';
-    saveRootBtn.textContent = '루트 저장';
-    saveRootBtn.style.marginRight = '8px';
+    saveRootBtn.className = 'btn btn-ghost btn-sm';
+    saveRootBtn.type = 'button';
+    saveRootBtn.textContent = '저장';
     saveRootBtn.onclick = () => {
       void (async () => {
         const v = rootInput.value.trim();
@@ -352,7 +351,11 @@
 
     const refreshListBtn = document.createElement('button');
     refreshListBtn.className = 'btn btn-ghost';
+    refreshListBtn.type = 'button';
     refreshListBtn.textContent = '목록 새로고침';
+
+    const listRow = document.createElement('div');
+    listRow.className = 'sm-list-refresh-row';
 
     const servicesWrap = document.createElement('div');
     servicesWrap.className = 'sm-local-services';
@@ -486,14 +489,17 @@
     registerRefresh(renderMergedServices);
     refreshListBtn.onclick = () => void renderMergedServices();
 
-    section.appendChild(rootLabel);
-    section.appendChild(rootInput);
-    const rootRow = document.createElement('div');
-    rootRow.style.marginBottom = '12px';
-    rootRow.appendChild(saveRootBtn);
-    rootRow.appendChild(refreshListBtn);
-    section.appendChild(rootRow);
+    listRow.appendChild(refreshListBtn);
+    section.appendChild(listRow);
     section.appendChild(servicesWrap);
+
+    const rootRow = document.createElement('div');
+    rootRow.className = 'sm-root-footer-row';
+    rootRow.appendChild(rootInput);
+    rootRow.appendChild(saveRootBtn);
+    rootFooter.className = 'sm-root-footer';
+    rootFooter.appendChild(rootLabel);
+    rootFooter.appendChild(rootRow);
 
     void (async () => {
       if (typeof invoke === 'function' && rootInput.value.trim()) {
@@ -511,7 +517,6 @@
           /* ignore */
         }
       }
-      await renderMergedServices();
     })();
 
     return servicesWrap;
@@ -568,6 +573,12 @@
             .sm-env-editor-wrap { margin-top: 10px; }
             .sm-env-ta { width: 100%; min-height: 140px; margin-top: 8px; font-size: var(--font-size-xs); resize: vertical; box-sizing: border-box; }
             .sm-env-editor-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+            .sm-list-refresh-row { margin-bottom: 10px; }
+            .sm-root-footer { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
+            .sm-root-footer-label { font-size: var(--font-size-2xs); color: var(--text-tertiary); margin-bottom: 6px; letter-spacing: 0.02em; }
+            .sm-root-footer-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+            .sm-root-footer-input { flex: 1; min-width: 140px; margin-bottom: 0 !important; }
+            .btn-sm { padding: 4px 10px; font-size: var(--font-size-xs); }
         `
     );
 
@@ -592,7 +603,8 @@
 
       localSection.appendChild(localTitle);
       localSection.appendChild(localHint);
-      mergedServicesEl = mountDesktopLocalDev(localSection, pingState, (fn) => {
+      const rootFooter = document.createElement('div');
+      mergedServicesEl = mountDesktopLocalDev(localSection, rootFooter, pingState, (fn) => {
         refreshDevTable = fn;
       });
 
@@ -601,6 +613,8 @@
       const envHost = document.createElement('div');
       mountEnvFilesPanel(envHost);
       container.appendChild(envHost);
+
+      container.appendChild(rootFooter);
     } else {
       container.appendChild(statusBox);
     }
@@ -608,9 +622,11 @@
     async function fetchStatus(): Promise<void> {
       refreshBtn.disabled = true;
       if (mergedServicesEl) {
-        mergedServicesEl.innerHTML =
-          '<p class="sm-card-sub" style="grid-column:1/-1;padding:12px 4px">조회 중…</p>';
-      } else {
+        if (!mergedServicesEl.querySelector('.sm-card')) {
+          mergedServicesEl.innerHTML =
+            '<p class="sm-card-sub" style="grid-column:1/-1;padding:12px 4px">조회 중…</p>';
+        }
+      } else if (!statusBox.querySelector('.sm-cards .sm-card')) {
         statusBox.innerHTML = '조회 중…';
         statusBox.className = 'sm-status-wrap loading';
       }
@@ -659,7 +675,7 @@
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : '알 수 없는 오류';
         if (mergedServicesEl) {
-          mergedServicesEl.innerHTML = `<p class="sm-card-sub" style="padding:12px 4px;color:var(--error,#e74c3c)">조회 실패: ${esc(msg)}</p>`;
+          Toolbox.showToast?.(`조회 실패: ${msg}`, 'error', undefined);
           skipFinalMergeRefresh = true;
         } else {
           statusBox.innerHTML = `조회 실패: ${esc(msg)}`;
@@ -678,6 +694,8 @@
     }
 
     refreshBtn.onclick = () => void fetchStatus();
+
+    void fetchStatus();
   }
 
   Toolbox.register({
