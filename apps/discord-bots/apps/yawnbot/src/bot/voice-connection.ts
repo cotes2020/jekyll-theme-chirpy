@@ -8,6 +8,7 @@ import {
   type VoiceConnectionState,
 } from '@discordjs/voice';
 import type { VoiceBasedChannel } from 'discord.js';
+import { inspect } from 'node:util';
 
 /** `entersState` 대기 — 일부 환경에서 내부 타임아웃만으로는 끝나지 않을 수 있어 외부 watchdog과 함께 씀 */
 export const VOICE_READY_TIMEOUT_MS = 60_000;
@@ -19,8 +20,17 @@ export const VOICE_READY_TIMEOUT_MS = 60_000;
 export async function waitForVoiceReady(connection: VoiceConnection, timeoutMs: number): Promise<void> {
   const onState = (oldState: VoiceConnectionState, newState: VoiceConnectionState) => {
     console.log('[voice] state:', oldState.status, '->', newState.status);
-    if (newState.status === VoiceConnectionStatus.Disconnected && 'reason' in newState) {
-      console.warn('[voice] disconnected, reason:', (newState as { reason?: unknown }).reason);
+    if (
+      oldState.status === VoiceConnectionStatus.Connecting &&
+      newState.status === VoiceConnectionStatus.Signalling
+    ) {
+      console.warn(
+        '[voice] connecting → signalling: 음성 WS가 Ready(UDP 정보) 전에 끊긴 뒤 @discordjs/voice 가 자동 재접속 중입니다. ' +
+          '직전 줄의 `[voice] [NW] Discord 음성 WebSocket close code:` 숫자를 확인하세요 (4014만 Disconnected·full state 로 남음).',
+      );
+    }
+    if (newState.status === VoiceConnectionStatus.Disconnected) {
+      console.warn('[voice] disconnected, full state:', inspect(newState, { depth: 8, colors: false }));
     }
   };
   connection.on('stateChange', onState);
@@ -72,13 +82,43 @@ const voiceDebugHooked = new WeakSet<VoiceConnection>();
 function wireVoiceJoinErrorOnce(connection: VoiceConnection): void {
   if (voiceJoinErrorHooked.has(connection)) return;
   voiceJoinErrorHooked.add(connection);
-  connection.on('error', (e) => console.error('[voice connection]', e));
+  connection.on('error', (e) => {
+    console.error('[voice connection]', e);
+    if (e && typeof e === 'object' && 'code' in e) {
+      console.error('[voice connection] .code:', (e as { code: unknown }).code);
+    }
+  });
+}
+
+/** Voice Close Event Codes — @discordjs/voice 는 4014만 Disconnected 로 두고, 그 외 코드는 바로 signalling 으로 돌려 closeCode 가 상태에 안 남음 */
+function voiceCloseCodeHint(code: number): string {
+  const table: Record<number, string> = {
+    4017: '이 채널은 DAVE(E2EE) 지원 클라이언트 필요 — `.env`에 DISCORD_VOICE_DAVE=1 시도',
+    4016: '암호화 모드 불일치 — @discordjs/voice·의존성 버전 확인',
+    4014: '개별 연결 종료(킥 등) — 재연결하지 말 것(문서)',
+    4012: 'Select Protocol 에서 보낸 protocol 미인식',
+    4006: '세션 무효 — 잠시 후 재시도·길드 음성 상태 동기화',
+    4004: 'Identify 토큰/인증 실패',
+  };
+  return table[code] ? ` — ${table[code]}` : '';
 }
 
 function wireVoiceDebugOnce(connection: VoiceConnection): void {
   if (!isVoiceDebug() || voiceDebugHooked.has(connection)) return;
   voiceDebugHooked.add(connection);
   connection.on('debug', (msg) => console.log('[voice]', msg));
+
+  const hookNetworkingClose = (_old: VoiceConnectionState, neu: VoiceConnectionState) => {
+    if (neu.status !== VoiceConnectionStatus.Connecting) return;
+    const nw = Reflect.get(neu, 'networking') as
+      | { once(event: 'close', listener: (code: number) => void): void }
+      | undefined;
+    nw?.once('close', (code: number) => {
+      console.warn(`[voice] [NW] Discord 음성 WebSocket close code: ${code}${voiceCloseCodeHint(code)}`);
+    });
+  };
+  connection.on('stateChange', hookNetworkingClose);
+  hookNetworkingClose(connection.state, connection.state);
 }
 
 function joinVoiceChannelOpts(
@@ -131,6 +171,7 @@ export function joinVoiceChannelForMusic(channel: VoiceBasedChannel): VoiceConne
       selfMute: false,
     }),
   );
+  wireVoiceJoinErrorOnce(connection);
   wireVoiceDebugOnce(connection);
   return connection;
 }
