@@ -1,0 +1,4 @@
+# Windows ARM64: ring skips forcing "clang" on PATH when CC is already clang-like.
+# Point CC at LLVM so build scripts find the compiler without relying on PATH.
+[env]
+CC = { value = "C:\\Program Files\\LLVM\\bin\\clang.exe", force = true }
