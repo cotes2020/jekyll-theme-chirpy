@@ -66,7 +66,8 @@
             "program": "npm",
             "args": ["run", "start:yawnbot"],
             "healthUrl": "http://localhost:8080/webhook/github",
-            "npmInstall": true
+            "npmInstall": true,
+            "deployArgs": ["run", "deploy:yawnbot"]
         },
         {
             "id": "atkup",
@@ -75,7 +76,8 @@
             "program": "npm",
             "args": ["run", "start:atkup"],
             "healthUrl": "http://127.0.0.1:8081/health",
-            "npmInstall": true
+            "npmInstall": true,
+            "deployArgs": ["run", "deploy:atkup"]
         }
     ]
 }
