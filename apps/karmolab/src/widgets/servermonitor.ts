@@ -1,7 +1,6 @@
 (function (): void {
   'use strict';
 
-  const PREFS_KEY = 'servermonitor_base';
   const REPO_ROOT_PREF = 'karmolab_repo_root';
 
   type DevProfile = {
@@ -14,19 +13,29 @@
     npmInstall?: boolean;
   };
 
+  type RawLocalMonitor = {
+    id: string;
+    title?: string;
+    subtitle?: string;
+    label?: string;
+    url?: string;
+    noHealthUrl?: boolean;
+  };
+
+  type EnvFileEntry = {
+    id: string;
+    label?: string;
+    relPath: string;
+    hint?: string;
+  };
+
   type ServerMonitorConfig = {
-    localMonitors?: Array<{ label: string; url: string }>;
+    localMonitors?: RawLocalMonitor[];
+    envFiles?: EnvFileEntry[];
     devProfiles?: DevProfile[];
   };
 
-  type RemoteStatusData = {
-    error?: string;
-    cpu?: number;
-    memory?: { used_gb?: number; total_gb?: number; percent?: number };
-    disk?: { used_gb?: number; total_gb?: number; percent?: number };
-    uptime?: string;
-    services?: Record<string, string>;
-  };
+  type LocalCardState = 'online' | 'offline' | 'na';
 
   function isKarmolabDesktop(): boolean {
     return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
@@ -39,6 +48,20 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  function normalizeLocalMonitor(m: RawLocalMonitor): {
+    id: string;
+    title: string;
+    subtitle: string;
+    url?: string;
+    canPing: boolean;
+  } {
+    const title = (m.title || m.label || m.id || '').trim();
+    const subtitle = (m.subtitle || '').trim();
+    const url = m.url?.trim();
+    const canPing = !m.noHealthUrl && !!url;
+    return { id: m.id, title, subtitle, url, canPing };
   }
 
   async function pingLocal(url: string): Promise<'online' | 'offline'> {
@@ -66,38 +89,232 @@
     }
   }
 
-  /** 데스크톱: 상태 화면 하단에 프로필 시작·종료 UI. `registerRefresh`로 테이블 갱신 함수를 넘깁니다. */
-  function mountDesktopLocalDev(
-    container: HTMLElement,
-    registerRefresh: (fn: () => Promise<void>) => void
-  ): void {
-    Mdd.injectCSS(
-      'servermonitor-localdev',
-      `
-            .sm-dev-wrap { margin-top: 12px; overflow-x: auto; }
-            .sm-dev-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
-            .sm-dev-table th, .sm-dev-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
-            .sm-dev-table th { color: var(--text-tertiary); font-weight: 600; }
-            .sm-dev-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
-            .sm-dev-hint { font-size: var(--font-size-sm); color: var(--text-tertiary); margin-bottom: 12px; line-height: 1.5; }
-            .sm-desktop-section { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
-            .sm-desktop-section-title { font-weight: 700; margin-bottom: 10px; color: var(--accent); }
-        `
-    );
+  function localCardClass(state: LocalCardState): string {
+    if (state === 'online') return 'sm-card sm-card--up';
+    if (state === 'offline') return 'sm-card sm-card--down';
+    return 'sm-card sm-card--na';
+  }
 
+  function localStatusLabel(state: LocalCardState): string {
+    if (state === 'online') return '응답';
+    if (state === 'offline') return '무응답';
+    return 'HTTP 체크 없음';
+  }
+
+  type MergedServiceRow = {
+    id: string;
+    monitor?: ReturnType<typeof normalizeLocalMonitor>;
+    profile?: DevProfile;
+  };
+
+  /** devProfiles 순서 우선, localMonitors만 있는 항목은 뒤에 붙임 */
+  function mergeServiceRows(config: ServerMonitorConfig): MergedServiceRow[] {
+    const profiles = config.devProfiles ?? [];
+    const rawLocals = config.localMonitors ?? [];
+    const monById = new Map<string, ReturnType<typeof normalizeLocalMonitor>>();
+    for (const m of rawLocals) {
+      monById.set(m.id, normalizeLocalMonitor(m));
+    }
+    const seen = new Set<string>();
+    const rows: MergedServiceRow[] = [];
+    for (const p of profiles) {
+      rows.push({ id: p.id, profile: p, monitor: monById.get(p.id) });
+      seen.add(p.id);
+    }
+    for (const m of rawLocals) {
+      if (!seen.has(m.id)) {
+        rows.push({ id: m.id, monitor: normalizeLocalMonitor(m) });
+      }
+    }
+    return rows;
+  }
+
+  function mergedPingRowClass(
+    monitor: MergedServiceRow['monitor'],
+    raw: LocalCardState | undefined
+  ): string {
+    if (!monitor) return 'sm-card sm-card--na';
+    if (!monitor.canPing) return 'sm-card sm-card--na';
+    if (raw === undefined) return 'sm-card sm-card--na';
+    return localCardClass(raw);
+  }
+
+  function mergedPingRowText(
+    monitor: MergedServiceRow['monitor'],
+    raw: LocalCardState | undefined
+  ): string {
+    if (!monitor) return 'URL 모니터 없음';
+    if (!monitor.canPing) return 'HTTP 체크 없음';
+    if (raw === undefined) return '조회 전';
+    return localStatusLabel(raw);
+  }
+
+  /** 데스크톱: 저장소 기준 .env 바로가기(탐색기 / 기본 앱 / 인앱 편집) */
+  function mountEnvFilesPanel(host: HTMLElement): void {
     const invoke = window.__TAURI__?.core?.invoke;
 
-    const section = document.createElement('div');
-    section.className = 'sm-desktop-section';
+    host.className = 'sm-env-section';
 
     const title = document.createElement('div');
     title.className = 'sm-desktop-section-title';
-    title.textContent = '로컬 프로세스 (데스크톱)';
+    title.textContent = '환경 변수 (.env)';
 
     const hint = document.createElement('p');
     hint.className = 'sm-dev-hint';
     hint.textContent =
-      '저장소 루트를 저장한 뒤 프로필을 시작·종료합니다. 명령은 apps/karmolab/data/servermonitor-config.json의 devProfiles에서 읽습니다. 위의 상태 조회로 URL 응답을 확인하세요. Node·Ruby 등은 PATH에 있어야 합니다.';
+      '위에서 저장소 루트를 먼저 저장하세요. 경로는 servermonitor-config.json → envFiles 입니다. 비밀 값은 화면 공유에 주의하세요.';
+
+    const grid = document.createElement('div');
+    grid.className = 'sm-env-cards';
+
+    host.appendChild(title);
+    host.appendChild(hint);
+    host.appendChild(grid);
+
+    void loadConfig().then((cfg) => {
+      const files = cfg.envFiles ?? [];
+      if (files.length === 0) {
+        grid.textContent = 'envFiles 항목이 없습니다.';
+        return;
+      }
+      if (typeof invoke !== 'function') {
+        grid.textContent = 'Tauri invoke를 사용할 수 없습니다.';
+        return;
+      }
+
+      for (const f of files) {
+        const rel = (f.relPath || '').trim();
+        if (!rel) continue;
+
+        const card = document.createElement('div');
+        card.className = 'sm-card sm-card--env';
+
+        const t = document.createElement('div');
+        t.className = 'sm-card-title';
+        t.textContent = f.label?.trim() || f.id;
+
+        const pathEl = document.createElement('div');
+        pathEl.className = 'sm-env-path mono';
+        pathEl.textContent = rel;
+
+        card.appendChild(t);
+        card.appendChild(pathEl);
+
+        if (f.hint?.trim()) {
+          const h = document.createElement('div');
+          h.className = 'sm-card-sub';
+          h.textContent = f.hint.trim();
+          card.appendChild(h);
+        }
+
+        const actions = document.createElement('div');
+        actions.className = 'sm-card-actions';
+
+        const mk = (label: string, fn: () => void): HTMLButtonElement => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'btn btn-ghost';
+          b.textContent = label;
+          b.onclick = () => fn();
+          return b;
+        };
+
+        actions.appendChild(
+          mk('탐색기', () => {
+            void (async () => {
+              try {
+                await invoke('repofile_reveal', { relPath: rel });
+              } catch (e: unknown) {
+                Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+              }
+            })();
+          })
+        );
+        actions.appendChild(
+          mk('앱으로 열기', () => {
+            void (async () => {
+              try {
+                await invoke('repofile_open_default', { relPath: rel });
+              } catch (e: unknown) {
+                Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+              }
+            })();
+          })
+        );
+
+        const editorWrap = document.createElement('div');
+        editorWrap.className = 'sm-env-editor-wrap';
+        editorWrap.hidden = true;
+        const ta = document.createElement('textarea');
+        ta.className = 'mono-input sm-env-ta';
+        ta.spellcheck = false;
+        ta.setAttribute('aria-label', `${f.label || f.id} 환경 변수 내용`);
+
+        let loaded = false;
+        const btnEdit = mk('편집', () => {
+          void (async () => {
+            if (!editorWrap.hidden) {
+              editorWrap.hidden = true;
+              btnEdit.textContent = '편집';
+              return;
+            }
+            editorWrap.hidden = false;
+            btnEdit.textContent = '접기';
+            if (loaded) return;
+            try {
+              const text = (await invoke('repofile_read', { relPath: rel })) as string;
+              ta.value = text;
+              loaded = true;
+            } catch (e: unknown) {
+              const msg = typeof e === 'string' ? e : e instanceof Error ? e.message : String(e);
+              if (msg.includes('FILE_NOT_FOUND')) {
+                ta.value = '';
+                loaded = true;
+                Toolbox.showToast?.('새 파일입니다. 저장 시 생성됩니다.', undefined, undefined);
+              } else {
+                Toolbox.showToast?.(msg, 'error', undefined);
+              }
+            }
+          })();
+        });
+
+        const btnSave = mk('저장', () => {
+          void (async () => {
+            try {
+              await invoke('repofile_write', { relPath: rel, content: ta.value });
+              loaded = true;
+              Toolbox.showToast?.('저장됨', undefined, undefined);
+            } catch (e: unknown) {
+              Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+            }
+          })();
+        });
+        btnSave.className = 'btn btn-primary';
+
+        const saveRow = document.createElement('div');
+        saveRow.className = 'sm-env-editor-actions';
+        saveRow.appendChild(btnSave);
+        editorWrap.appendChild(ta);
+        editorWrap.appendChild(saveRow);
+
+        actions.appendChild(btnEdit);
+        card.appendChild(actions);
+        card.appendChild(editorWrap);
+        grid.appendChild(card);
+      }
+    });
+  }
+
+  /**
+   * 데스크톱: 루트 + 서비스당 카드 1장(localMonitors URL 응답 + devProfiles 프로세스 병합).
+   * `pingState.byId`는 새로고침 시 갱신되고, 이 함수가 DOM을 다시 그립니다.
+   */
+  function mountDesktopLocalDev(
+    section: HTMLElement,
+    pingState: { byId: Record<string, LocalCardState> },
+    registerRefresh: (fn: () => Promise<void>) => void
+  ): HTMLElement {
+    const invoke = window.__TAURI__?.core?.invoke;
 
     const rootLabel = document.createElement('label');
     rootLabel.className = 'field-label';
@@ -135,14 +352,14 @@
 
     const refreshListBtn = document.createElement('button');
     refreshListBtn.className = 'btn btn-ghost';
-    refreshListBtn.textContent = '프로필 목록 새로고침';
+    refreshListBtn.textContent = '목록 새로고침';
 
-    const tableWrap = document.createElement('div');
-    tableWrap.className = 'sm-dev-wrap';
+    const servicesWrap = document.createElement('div');
+    servicesWrap.className = 'sm-local-services';
 
-    async function refreshTable(): Promise<void> {
+    async function renderMergedServices(): Promise<void> {
       const config = await loadConfig();
-      const profiles = config.devProfiles ?? [];
+      const rows = mergeServiceRows(config);
       let tracked: string[] = [];
       if (typeof invoke === 'function') {
         try {
@@ -152,108 +369,123 @@
         }
       }
 
-      tableWrap.innerHTML = '';
-      if (profiles.length === 0) {
-        tableWrap.textContent = 'devProfiles가 비어 있거나 설정을 불러오지 못했습니다.';
+      servicesWrap.replaceChildren();
+      if (rows.length === 0) {
+        servicesWrap.textContent = 'localMonitors·devProfiles가 비어 있거나 설정을 불러오지 못했습니다.';
         return;
       }
 
-      const tbl = document.createElement('table');
-      tbl.className = 'sm-dev-table';
-      const thead = document.createElement('thead');
-      thead.innerHTML =
-        '<tr><th>프로필</th><th>앱 추적</th><th style="text-align:right">동작</th></tr>';
-      tbl.appendChild(thead);
-      const tb = document.createElement('tbody');
+      const mkBtn = (label: string, onClick: () => void): HTMLButtonElement => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'btn btn-ghost';
+        b.textContent = label;
+        b.onclick = () => onClick();
+        return b;
+      };
 
-      for (const p of profiles) {
-        const tr = document.createElement('tr');
-        const tdName = document.createElement('td');
-        tdName.innerHTML = `<strong>${esc(p.label)}</strong><div class="mono" style="opacity:0.85;font-size:0.9em">${esc(p.id)}</div>`;
+      for (const row of rows) {
+        const p = row.profile;
+        const mon = row.monitor;
+        const rawPing = mon ? pingState.byId[mon.id] : undefined;
+        const cardClass = mergedPingRowClass(mon, rawPing).replace(/^sm-card\s+/, 'sm-card sm-card--merged ');
 
-        const tdTrack = document.createElement('td');
-        tdTrack.textContent = tracked.includes(p.id) ? '추적 중' : '없음';
+        const card = document.createElement('div');
+        card.className = cardClass;
 
-        const tdAct = document.createElement('td');
-        tdAct.style.textAlign = 'right';
-        const actions = document.createElement('div');
-        actions.className = 'sm-dev-actions';
+        const head = document.createElement('div');
+        head.className = 'sm-card-head';
+        const t = document.createElement('div');
+        t.className = 'sm-card-title';
+        t.textContent = p?.label || mon?.title || row.id;
+        const sub = document.createElement('div');
+        sub.className = 'sm-card-sub mono';
+        sub.style.opacity = '0.85';
+        const subParts: string[] = [];
+        if (p) subParts.push(p.id);
+        if (mon?.subtitle) subParts.push(mon.subtitle);
+        sub.textContent = subParts.join(' · ') || row.id;
+        head.appendChild(t);
+        head.appendChild(sub);
 
-        const btnStart = document.createElement('button');
-        btnStart.className = 'btn btn-ghost';
-        btnStart.type = 'button';
-        btnStart.textContent = '시작';
-        btnStart.onclick = () => {
-          void (async () => {
-            if (typeof invoke !== 'function') return;
-            try {
-              await invoke('localdev_start', { profileId: p.id });
-              Toolbox.showToast?.(`${p.label} 시작됨 (백그라운드)`, undefined, undefined);
-              await refreshTable();
-            } catch (e: unknown) {
-              Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-            }
-          })();
-        };
+        const pingRow = document.createElement('div');
+        pingRow.className = 'sm-card-status';
+        const dot = document.createElement('span');
+        dot.className = 'sm-card-status-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        const pingLabel = document.createElement('span');
+        pingLabel.textContent = mergedPingRowText(mon, rawPing);
+        pingRow.appendChild(dot);
+        pingRow.appendChild(pingLabel);
+        card.appendChild(head);
+        card.appendChild(pingRow);
 
-        const btnStop = document.createElement('button');
-        btnStop.className = 'btn btn-ghost';
-        btnStop.type = 'button';
-        btnStop.textContent = '종료';
-        btnStop.onclick = () => {
-          void (async () => {
-            if (typeof invoke !== 'function') return;
-            try {
-              await invoke('localdev_stop', { profileId: p.id });
-              Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
-              await refreshTable();
-            } catch (e: unknown) {
-              Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-            }
-          })();
-        };
+        if (p) {
+          const track = document.createElement('div');
+          track.className = 'sm-card-track';
+          track.textContent = tracked.includes(p.id) ? '앱 추적 중' : '미실행';
+          card.appendChild(track);
 
-        actions.appendChild(btnStart);
-        actions.appendChild(btnStop);
+          const actions = document.createElement('div');
+          actions.className = 'sm-card-actions';
 
-        if (p.npmInstall) {
-          const btnInstall = document.createElement('button');
-          btnInstall.className = 'btn btn-ghost';
-          btnInstall.type = 'button';
-          btnInstall.textContent = 'npm install';
-          btnInstall.onclick = () => {
-            void (async () => {
-              if (typeof invoke !== 'function') return;
-              btnInstall.disabled = true;
-              try {
-                const msg = (await invoke('localdev_npm_install', { profileId: p.id })) as string;
-                Toolbox.showToast?.(msg || 'npm install 완료', undefined, undefined);
-              } catch (e: unknown) {
-                Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-              } finally {
-                btnInstall.disabled = false;
-              }
-            })();
-          };
-          actions.appendChild(btnInstall);
+          actions.appendChild(
+            mkBtn('시작', () => {
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                try {
+                  await invoke('localdev_start', { profileId: p.id });
+                  Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
+                  await renderMergedServices();
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                }
+              })();
+            })
+          );
+          actions.appendChild(
+            mkBtn('종료', () => {
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                try {
+                  await invoke('localdev_stop', { profileId: p.id });
+                  Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
+                  await renderMergedServices();
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                }
+              })();
+            })
+          );
+
+          if (p.npmInstall) {
+            const btnInstall = mkBtn('npm i', () => {
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                btnInstall.disabled = true;
+                try {
+                  const msg = (await invoke('localdev_npm_install', { profileId: p.id })) as string;
+                  Toolbox.showToast?.(msg || 'npm install 완료', undefined, undefined);
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                } finally {
+                  btnInstall.disabled = false;
+                }
+              })();
+            });
+            actions.appendChild(btnInstall);
+          }
+
+          card.appendChild(actions);
         }
 
-        tdAct.appendChild(actions);
-        tr.appendChild(tdName);
-        tr.appendChild(tdTrack);
-        tr.appendChild(tdAct);
-        tb.appendChild(tr);
+        servicesWrap.appendChild(card);
       }
-
-      tbl.appendChild(tb);
-      tableWrap.appendChild(tbl);
     }
 
-    registerRefresh(refreshTable);
-    refreshListBtn.onclick = () => void refreshTable();
+    registerRefresh(renderMergedServices);
+    refreshListBtn.onclick = () => void renderMergedServices();
 
-    section.appendChild(title);
-    section.appendChild(hint);
     section.appendChild(rootLabel);
     section.appendChild(rootInput);
     const rootRow = document.createElement('div');
@@ -261,15 +493,14 @@
     rootRow.appendChild(saveRootBtn);
     rootRow.appendChild(refreshListBtn);
     section.appendChild(rootRow);
-    section.appendChild(tableWrap);
-    container.appendChild(section);
+    section.appendChild(servicesWrap);
 
     void (async () => {
       if (typeof invoke === 'function' && rootInput.value.trim()) {
         try {
           await invoke('localdev_set_repo_root', { path: rootInput.value.trim() });
         } catch {
-          /* Rust 쪽 검증 실패 시 무시 — 사용자가 다시 저장 */
+          /* ignore */
         }
       }
       if (typeof invoke === 'function') {
@@ -280,169 +511,168 @@
           /* ignore */
         }
       }
-      await refreshTable();
+      await renderMergedServices();
     })();
+
+    return servicesWrap;
   }
 
   function build(container: HTMLElement): void {
-    const baseInput = document.createElement('input');
-    baseInput.type = 'url';
-    baseInput.id = 'smBaseUrl';
-    baseInput.className = 'mono-input';
-    baseInput.placeholder = 'http://서버IP:5000';
-    baseInput.style.width = '100%';
-    baseInput.style.marginBottom = '12px';
-    if (Toolbox.getPref) {
-      baseInput.value = Toolbox.getPref(PREFS_KEY, '') || Toolbox.getPref('ytdl_cobalt_base', '') || '';
-    }
-
-    const saveBtn = document.createElement('button');
-    saveBtn.className = 'btn btn-ghost';
-    saveBtn.textContent = '저장';
-    saveBtn.style.marginBottom = '16px';
-    saveBtn.onclick = function (): void {
-      const v = baseInput.value.trim();
-      if (Toolbox.setPref) Toolbox.setPref(PREFS_KEY, v);
-      Toolbox.showToast?.('저장됨', undefined, undefined);
-    };
-
     const refreshBtn = document.createElement('button');
     refreshBtn.className = 'btn btn-primary';
-    refreshBtn.textContent = '상태 조회';
-    refreshBtn.style.marginLeft = '8px';
+    refreshBtn.textContent = '새로고침';
 
     const statusBox = document.createElement('div');
     statusBox.id = 'smStatusBox';
-    statusBox.className = 'sm-status-box';
+    statusBox.className = 'sm-status-wrap';
 
     let refreshDevTable: (() => Promise<void>) | null = null;
+    const pingState: { byId: Record<string, LocalCardState> } = { byId: {} };
+    let mergedServicesEl: HTMLElement | null = null;
 
     Mdd.injectCSS(
       'servermonitor',
       `
-            .sm-status-box { margin-top:16px; padding:16px; border-radius:var(--radius-md); background:var(--bg-tertiary); border:1px solid var(--border); font-size:var(--font-size-sm); }
-            .sm-status-box.loading { color:var(--text-tertiary); }
-            .sm-status-box.error { color:var(--error, #e74c3c); border-color:var(--error, #e74c3c); }
-            .sm-row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border); }
-            .sm-row:last-child { border-bottom:none; }
-            .sm-services { display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:8px; margin-top:12px; }
-            .sm-service { padding:8px 12px; border-radius:var(--radius-sm); background:var(--bg-secondary); text-align:center; }
-            .sm-service.ok { border-left:3px solid var(--success, #22c55e); }
-            .sm-service.running { border-left:3px solid var(--success, #22c55e); }
-            .sm-service.unknown { border-left:3px solid var(--text-tertiary); }
-            .sm-service.offline { border-left:3px solid var(--error, #e74c3c); }
+            .sm-status-wrap { margin-top: 16px; font-size: var(--font-size-sm); }
+            .sm-status-wrap.loading { color: var(--text-tertiary); padding: 16px; }
+            .sm-status-wrap.error { color: var(--error, #e74c3c); padding: 16px; border: 1px solid var(--error); border-radius: var(--radius-md); }
+            .sm-section-label { font-weight: 700; margin: 0 0 10px 0; color: var(--accent); font-size: var(--font-size-sm); letter-spacing: 0.02em; }
+            .sm-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; margin-bottom: 20px; }
+            .sm-card { border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg-secondary); padding: 14px 16px; min-height: 108px; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
+            .sm-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-sm, 0 1px 4px rgba(0,0,0,.08)); }
+            .sm-card--up { border-left: 4px solid var(--success, #22c55e); }
+            .sm-card--down { border-left: 4px solid var(--error, #e74c3c); }
+            .sm-card--na { border-left: 4px solid var(--text-tertiary); }
+            .sm-card-title { font-weight: 700; font-size: var(--font-size-md); color: var(--text-primary); line-height: 1.25; }
+            .sm-card-sub { font-size: var(--font-size-xs); color: var(--text-tertiary); margin-top: 6px; line-height: 1.35; }
+            .sm-card-status { margin-top: auto; padding-top: 12px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: var(--font-size-xs); }
+            .sm-card-status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+            .sm-card--up .sm-card-status-dot { background: var(--success, #22c55e); box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25); }
+            .sm-card--down .sm-card-status-dot { background: var(--error, #e74c3c); }
+            .sm-card--na .sm-card-status-dot { background: var(--text-tertiary); }
+            .sm-local-section { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+            .sm-desktop-section-title { font-weight: 700; margin-bottom: 10px; color: var(--accent); }
+            .sm-local-services { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 4px; }
+            .sm-card--merged { min-height: auto; }
+            .sm-card--merged .sm-card-status { margin-top: 10px; padding-top: 0; }
+            .sm-dev-hint { font-size: var(--font-size-sm); color: var(--text-tertiary); margin-bottom: 12px; line-height: 1.5; }
+            .sm-dev-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+            .sm-card--dev { min-height: auto; }
+            .sm-card-head { margin-bottom: 10px; }
+            .sm-card-track { font-size: var(--font-size-2xs); color: var(--text-secondary); margin-top: 6px; }
+            .sm-card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+            .sm-env-section { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+            .sm-env-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+            .sm-card--env { min-height: auto; }
+            .sm-env-path { font-size: var(--font-size-2xs); color: var(--text-secondary); margin-top: 4px; word-break: break-all; line-height: 1.35; }
+            .sm-env-editor-wrap { margin-top: 10px; }
+            .sm-env-ta { width: 100%; min-height: 140px; margin-top: 8px; font-size: var(--font-size-xs); resize: vertical; box-sizing: border-box; }
+            .sm-env-editor-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
         `
     );
 
     container.innerHTML = '';
-    const label = document.createElement('label');
-    label.className = 'field-label';
-    label.textContent = '서버 URL (yt-api 배포 주소)';
-    container.appendChild(label);
-    container.appendChild(baseInput);
     const btnRow = document.createElement('div');
-    btnRow.appendChild(saveBtn);
+    btnRow.style.marginBottom = '8px';
     btnRow.appendChild(refreshBtn);
     container.appendChild(btnRow);
-    container.appendChild(statusBox);
 
     if (isKarmolabDesktop()) {
-      mountDesktopLocalDev(container, (fn) => {
+      const localSection = document.createElement('div');
+      localSection.className = 'sm-local-section';
+
+      const localTitle = document.createElement('div');
+      localTitle.className = 'sm-desktop-section-title';
+      localTitle.textContent = '로컬';
+
+      const localHint = document.createElement('p');
+      localHint.className = 'sm-dev-hint';
+      localHint.textContent =
+        '같은 id의 localMonitors·devProfiles는 카드 한 장에 묶입니다. 새로고침으로 URL 응답·프로세스 추적을 갱신합니다.';
+
+      localSection.appendChild(localTitle);
+      localSection.appendChild(localHint);
+      mergedServicesEl = mountDesktopLocalDev(localSection, pingState, (fn) => {
         refreshDevTable = fn;
       });
+
+      container.appendChild(localSection);
+
+      const envHost = document.createElement('div');
+      mountEnvFilesPanel(envHost);
+      container.appendChild(envHost);
+    } else {
+      container.appendChild(statusBox);
     }
 
     async function fetchStatus(): Promise<void> {
-      let base =
-        baseInput.value.trim() || (Toolbox.getPref && Toolbox.getPref(PREFS_KEY, '')) || '';
-      if (!base && Toolbox.getPref) base = Toolbox.getPref('ytdl_cobalt_base', '') || '';
-
-      statusBox.innerHTML = '조회 중...';
-      statusBox.className = 'sm-status-box loading';
       refreshBtn.disabled = true;
+      if (mergedServicesEl) {
+        mergedServicesEl.innerHTML =
+          '<p class="sm-card-sub" style="grid-column:1/-1;padding:12px 4px">조회 중…</p>';
+      } else {
+        statusBox.innerHTML = '조회 중…';
+        statusBox.className = 'sm-status-wrap loading';
+      }
 
+      let skipFinalMergeRefresh = false;
       try {
         const config = await loadConfig();
-        const localTargets = config.localMonitors ?? [];
+        const rawLocals = config.localMonitors ?? [];
+        const normalized = rawLocals.map(normalizeLocalMonitor);
 
-        const localResults = await Promise.all(
-          localTargets.map(async (m) => {
-            const status = await pingLocal(m.url);
-            return { ...m, status };
-          })
-        );
-
-        let remoteHtml = '';
-        if (base) {
-          try {
-            const url = base.replace(/\/$/, '');
-            const res = await fetch(`${url}/api/status`);
-            const data = (await res.json().catch(() => ({}))) as RemoteStatusData;
-
-            if (data.error) {
-              remoteHtml = `<div class="sm-row"><span style="color:var(--error)">원격 서버 오류: ${data.error}</span></div>`;
-            } else {
-              const m = data.memory ?? {};
-              const d = data.disk ?? {};
-              const svc = data.services ?? {};
-              const ytStatus = svc['yt-api'] === 'ok' ? 'ok' : 'offline';
-              const dcStatus =
-                svc['discord-bot'] === 'running'
-                  ? 'running'
-                  : svc['discord-bot'] === 'unknown'
-                    ? 'unknown'
-                    : 'offline';
-
-              remoteHtml = `
-                                <div class="sm-row"><span>원격 서버</span><span style="color:var(--success)">● 온라인</span></div>
-                                <div class="sm-row"><span>CPU</span><span>${data.cpu ?? '-'}%</span></div>
-                                <div class="sm-row"><span>메모리</span><span>${m.used_gb}/${m.total_gb} GB (${m.percent}%)</span></div>
-                                <div class="sm-row"><span>디스크</span><span>${d.used_gb}/${d.total_gb} GB (${d.percent}%)</span></div>
-                                <div class="sm-row"><span>가동시간</span><span>${data.uptime ?? '-'}</span></div>
-                                <div class="sm-services">
-                                    <div class="sm-service ${ytStatus}"><strong>yt-api</strong><br>${ytStatus === 'ok' ? '정상' : '오프라인'}</div>
-                                    <div class="sm-service ${dcStatus}"><strong>봇 서버</strong><br>${dcStatus === 'running' ? '실행 중' : dcStatus === 'unknown' ? '확인 불가' : '오프라인'}</div>
-                                </div>
-                            `;
-            }
-          } catch (e: unknown) {
-            const msg = e instanceof Error ? e.message : 'Error';
-            remoteHtml = `<div class="sm-row"><span style="color:var(--error)">원격 연결 실패: ${msg}</span></div>`;
+        const localResults: Array<{ meta: (typeof normalized)[0]; state: LocalCardState }> = [];
+        for (const meta of normalized) {
+          if (!meta.canPing || !meta.url) {
+            localResults.push({ meta, state: 'na' });
+          } else {
+            const s = await pingLocal(meta.url);
+            localResults.push({ meta, state: s });
           }
-        } else {
-          remoteHtml = `<div class="sm-row"><span style="color:var(--text-tertiary)">원격 서버가 설정되지 않았습니다.</span></div>`;
         }
 
-        const localHtml = localResults
-          .map(
-            (r) => `
-                    <div class="sm-row">
-                        <span>${r.label}</span>
-                        <span style="color:${r.status === 'online' ? 'var(--success)' : 'var(--error)'}">
-                            ● ${r.status === 'online' ? 'Run' : 'Down'}
-                        </span>
-                    </div>
-                `
-          )
+        for (const { meta, state } of localResults) {
+          pingState.byId[meta.id] = state;
+        }
+
+        const localCardsHtml = localResults
+          .map(({ meta, state }) => {
+            const cls = localCardClass(state);
+            const sub = meta.subtitle
+              ? `<div class="sm-card-sub">${esc(meta.subtitle)}</div>`
+              : '';
+            return `<div class="${cls}">
+              <div class="sm-card-title">${esc(meta.title)}</div>
+              ${sub}
+              <div class="sm-card-status"><span class="sm-card-status-dot" aria-hidden="true"></span><span>${esc(localStatusLabel(state))}</span></div>
+            </div>`;
+          })
           .join('');
 
-        statusBox.innerHTML = `
-                    <div style="font-weight:700; margin-bottom:10px; color:var(--accent)">내 컴퓨터 서버 상태</div>
-                    ${localHtml}
-                    <div style="font-weight:700; margin-top:20px; margin-bottom:10px; color:var(--accent)">원격 서버 상태</div>
-                    ${remoteHtml}
-                `;
-        statusBox.className = 'sm-status-box';
+        if (!mergedServicesEl) {
+          statusBox.innerHTML = `
+          <div class="sm-section-label">로컬</div>
+          <div class="sm-cards">${localCardsHtml || '<p class="sm-card-sub" style="grid-column:1/-1">localMonitors가 비어 있습니다.</p>'}</div>
+        `;
+          statusBox.className = 'sm-status-wrap';
+        }
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : '알 수 없는 오류';
-        statusBox.innerHTML = `조회 실패: ${msg}`;
-        statusBox.className = 'sm-status-box error';
+        if (mergedServicesEl) {
+          mergedServicesEl.innerHTML = `<p class="sm-card-sub" style="padding:12px 4px;color:var(--error,#e74c3c)">조회 실패: ${esc(msg)}</p>`;
+          skipFinalMergeRefresh = true;
+        } else {
+          statusBox.innerHTML = `조회 실패: ${esc(msg)}`;
+          statusBox.className = 'sm-status-wrap error';
+        }
       } finally {
         refreshBtn.disabled = false;
-        try {
-          await refreshDevTable?.();
-        } catch {
-          /* 프로필 표 갱신 실패는 치명적이지 않음 */
+        if (!skipFinalMergeRefresh) {
+          try {
+            await refreshDevTable?.();
+          } catch {
+            /* ignore */
+          }
         }
       }
     }
@@ -454,7 +684,7 @@
     id: 'servermonitor',
     title: '서버 모니터',
     category: 'desktop',
-    desc: '로컬·원격 서버 상태를 확인하고(데스크톱) dev 프로필을 실행합니다',
+    desc: '로컬 URL·프로세스·.env (데스크톱)',
     layout: 'form',
     icon: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
     tabs: [{ id: 'main', label: '상태', build }]

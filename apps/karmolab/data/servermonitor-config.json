@@ -2,25 +2,41 @@
     "localMonitors": [
         {
             "id": "yawnbot",
-            "label": "YawnBot (8080)",
+            "title": "YawnBot",
+            "subtitle": "디스코드 봇",
             "url": "http://localhost:8080/webhook/github"
         },
         {
             "id": "jekyll",
-            "label": "Jekyll Blog (4000)",
-            "url": "http://localhost:4000"
+            "title": "Jekyll Blog",
+            "subtitle": "블로그 로컬",
+            "url": "http://127.0.0.1:4000/"
         },
         {
-            "id": "react",
-            "label": "React Dev (5173)",
-            "url": "http://localhost:5173"
+            "id": "atkup",
+            "title": "ATKUp",
+            "subtitle": "디스코드 봇",
+            "noHealthUrl": true
         }
     ],
-    "remotePresets": [
+    "envFiles": [
         {
-            "id": "main-api",
-            "label": "Main API Server",
-            "url": "https://yt-api.example.com"
+            "id": "yawnbot-env",
+            "label": "YawnBot .env",
+            "relPath": "apps/discord-bots/apps/yawnbot/.env",
+            "hint": "템플릿: .env.yawnbot.template"
+        },
+        {
+            "id": "atkup-env",
+            "label": "ATKUp .env",
+            "relPath": "apps/discord-bots/apps/atkup-bot/.env",
+            "hint": "템플릿: .env.template"
+        },
+        {
+            "id": "discord-bots-env",
+            "label": "discord-bots 공통",
+            "relPath": "apps/discord-bots/.env",
+            "hint": "워크스페이스 루트(있을 때)"
         }
     ],
     "devProfiles": [
@@ -50,6 +66,14 @@
             "program": "npm",
             "args": ["run", "start:yawnbot"],
             "healthUrl": "http://localhost:8080/webhook/github",
+            "npmInstall": true
+        },
+        {
+            "id": "atkup",
+            "label": "ATKUp 봇",
+            "cwd": "apps/discord-bots",
+            "program": "npm",
+            "args": ["run", "start:atkup"],
             "npmInstall": true
         }
     ]

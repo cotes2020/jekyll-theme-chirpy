@@ -1,0 +1,9 @@
+[[permission]]
+identifier = "allow-repofile"
+description = "Open/read/write repo-relative .env files under the configured repo root (server monitor shortcuts)."
+commands.allow = [
+  "repofile_open_default",
+  "repofile_reveal",
+  "repofile_read",
+  "repofile_write",
+]

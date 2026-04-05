@@ -16,8 +16,10 @@ npm install
 npm run dev
 ```
 
-- `npm run dev`: 저장소 루트에서 Jekyll(포트 4000)을 띄운 뒤, **`/karmolab/` 가 HTTP로 응답할 때까지** 기다렸다가 Tauri가 같은 URL을 엽니다. 사이트가 크면 **첫 `jekyll serve` 생성에 수 분** 걸릴 수 있어요(스크립트는 최대 약 10분까지 대기).
-- 이미 Jekyll만 다른 터미널에서 돌리고 있으면: `npm run dev:app` (Tauri만).
+- `npm run dev`: 저장소 루트에서 **`python -m http.server 8899`** 로 정적 서버를 띄운 뒤 **`http://127.0.0.1:8899/apps/karmolab/`** 가 응답할 때까지 기다렸다가 Tauri가 그 URL을 엽니다(KarmoLab만; Jekyll 없음). **데스크톱 창만 닫아도 정적 서버는 그대로** 둡니다(다시 `npm run dev:app`만 실행하면 됨). 둘 다 끄려면 터미널에서 **Ctrl+C** 하세요.
+- 이미 **8899**에 같은 방식으로 서버가 떠 있으면: `npm run dev:app` (Tauri만).
+- **블로그·Jekyll까지** 로컬로 쓰려면: `npm run dev:with-jekyll` (4000번 Jekyll + 별도 `devUrl` 설정).
+- Windows에서 Jekyll을 쓸 때 Listen이 **같은 폴더를 두 경로로 감시**한다고 에러를 내면, `_config.yml`의 `exclude`와 `dev:jekyll`의 **`--force_polling`** 을 참고하세요.
 
 빌드·원격 URL 등은 **문서 → 프로젝트 명령** 탭과 `apps/karmolab-tauri/README.md` 를 참고하세요.
 
@@ -26,9 +28,17 @@ npm run dev
 ## 위젯에서 쓰는 법
 
 1. 앱에서 상단 **데스크톱 앱** 메뉴 → **서버 모니터**를 엽니다.
-2. 아래쪽 **로컬 프로세스 (데스크톱)** 영역에서 **프로젝트(저장소) 루트 경로**에 이 레포의 최상위 폴더를 넣습니다. (예: Windows `C:\Users\…\Mascari4615.github.io`)
+2. **로컬** 블록에서 **프로젝트(저장소) 루트 경로**에 이 레포의 최상위 폴더를 넣습니다. (예: Windows `C:\Users\…\Mascari4615.github.io`)
 3. **루트 저장**을 누릅니다. 값은 WebView `localStorage`와 Rust 쪽 상태에 같이 반영됩니다.
-4. 위의 **상태 조회**로 `localMonitors` URL 응답을 확인하고, 표에서 **시작** / **종료** / (해당 시) **npm install** 을 사용합니다.
+4. **새로고침**으로 **로컬** 카드(같은 **`id`** 의 `localMonitors` URL 응답 + `devProfiles` 프로세스가 **한 장**에 묶임)를 갱신합니다. **목록 새로고침**은 설정·추적 상태만 다시 읽고 URL ping은 하지 않습니다.
+5. **환경 변수(.env):** **로컬** 아래 **환경 변수**에서 `servermonitor-config.json`의 **`envFiles`**에 적은 파일을 탐색기로 열거나, 앱 안에서 편집·저장할 수 있습니다. **저장소 루트**는 같은 **로컬** 블록 상단에서 먼저 저장해야 합니다.
+
+---
+
+## envFiles (선택)
+
+- **`apps/karmolab/data/servermonitor-config.json`** 의 **`envFiles`** 배열에 `{ "label", "path", "hint?" }` 를 둡니다. `path`는 레포 루트 기준 **상대 경로**만 됩니다(상위 폴더 `..` 불가).
+- 데스크톱 앱에서 **탐색기에서 표시**, 기본 앱으로 열기, **편집·저장**(임시 파일 후 이름 바꿈, 최대 512KB)을 제공합니다. 파일이 없으면 빈 편집기로 시작해 저장 시 새로 만들 수 있습니다.
 
 ---
 
@@ -39,7 +49,8 @@ npm run dev
 - **허용 `program`:** `npm`, `npx`, `bundle`, `ruby`, `node` (및 확장자 변형).
 - **`cwd`:** 레포 루트 기준 상대 경로(예: `.`, `apps/discord-bots`). 반드시 루트 **아래** 실제 폴더여야 합니다.
 - **`npmInstall: true`:** 그 프로필에 **npm install** 버튼이 보이고, 해당 `cwd`에서 동기 실행됩니다.
-- **`healthUrl`:** (선택) 설정·디버깅용으로 두면 좋습니다. UI에서는 **상태 조회**가 `localMonitors` URL을 ping 하므로, 같은 주소를 `localMonitors`에 넣어 두면 한 화면에서 확인하기 좋아요.
+- **`localMonitors`:** 항목마다 `title`·`subtitle`(선택)·`url`(선택)·`noHealthUrl`(HTTP 헬스 없음, 예: ATKUp) 등을 둘 수 있습니다. 예전처럼 `label`만 있어도 됩니다. 데스크톱에서는 **`devProfiles` 항목과 `id`가 같으면 카드 한 장**에 URL 상태와 시작·종료가 같이 나옵니다.
+- **`healthUrl`:** (선택) `devProfiles` 전용. `localMonitors`와 주소를 맞춰 두면 카드 ping과 의미가 같아집니다.
 
 ---
 

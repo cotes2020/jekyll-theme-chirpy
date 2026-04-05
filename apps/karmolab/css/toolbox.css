@@ -559,25 +559,6 @@ html[data-bg="minimal"] body {
     flex-shrink: 0;
 }
 
-.server-status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    cursor: pointer;
-    margin-right: 4px;
-}
-.server-status-dot.server-status-none {
-    background: var(--text-tertiary);
-    opacity: 0.5;
-}
-.server-status-dot.server-status-ok {
-    background: var(--success, #22c55e);
-}
-.server-status-dot.server-status-offline {
-    background: var(--error, #e74c3c);
-}
-
 .content-header {
     padding: 0;
     min-height: 0;
@@ -966,6 +947,95 @@ body:has(#page-home.active) .mdd-container .mdd-char {
 
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
+
+/* ── 탭 다수: 세로 목록 (문서 위젯 `tabLayout: 'sidebar'`) ── */
+.tool-tab-sidebar-layout {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+    width: 100%;
+}
+.tool-page.layout-wide .tool-tab-sidebar-layout {
+    max-width: 100%;
+}
+.tool-page.layout-wide .tab-row.tab-row--sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+    padding: 0 var(--space-md) 0 0;
+    margin-bottom: 0;
+    min-width: min(200px, 30vw);
+    max-width: 260px;
+    flex-shrink: 0;
+    max-height: min(72vh, 640px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 4px;
+    align-items: stretch;
+}
+.tool-page.layout-wide .tab-row--sidebar .tab-btn {
+    text-align: left;
+    justify-content: flex-start;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    margin-bottom: 0;
+    text-transform: none;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+    font-size: var(--font-size-2xs);
+    width: 100%;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    white-space: normal;
+    word-break: break-word;
+}
+.tool-page.layout-wide .tab-row--sidebar .tab-btn.active {
+    border-left-color: var(--accent);
+    border-bottom-color: transparent;
+}
+.tool-tab-sidebar-layout .tab-panels-column {
+    flex: 1;
+    min-width: 0;
+}
+.tool-page.layout-wide .tool-tab-sidebar-layout .tab-panel.active {
+    overflow-x: auto;
+}
+
+@media (max-width: 720px) {
+    .tool-tab-sidebar-layout {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    .tool-page.layout-wide .tab-row.tab-row--sidebar {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        max-width: none;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0 0 var(--space-sm) 0;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tool-page.layout-wide .tab-row--sidebar .tab-btn {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 11rem;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tool-page.layout-wide .tab-row--sidebar .tab-btn.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--accent);
+    }
+}
 
 /* ═══════════════════════════════════════
    FORMS

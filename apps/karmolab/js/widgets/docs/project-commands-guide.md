@@ -12,7 +12,7 @@
 |------|------|
 | 루트 `/` | **Jekyll + Chirpy** 블로그, 테마용 `npm`(Rollup·PurgeCSS 등) |
 | `apps/karmolab/` | **KarmoLab** 웹앱(TypeScript → `js/` 빌드 산출) |
-| `apps/karmolab-tauri/` | KarmoLab **데스크톱**(Tauri + 로컬 Jekyll 연동) |
+| `apps/karmolab-tauri/` | KarmoLab **데스크톱**(Tauri + 로컬 정적 서버 또는 선택 시 Jekyll) |
 | `apps/discord-bots/` | Discord 봇 워크스페이스(여러 패키지) |
 | `apps/chat-overlay/` | 방송용 오버레이(Tauri + Vite) |
 | `apps/karmo-web-extension/` | Chrome 확장(MV3) |
@@ -39,8 +39,9 @@ bundle install
 bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload --incremental
 ```
 
+- **Windows(PowerShell)에서 Listen 오류**(`directory is already being watched`)가 나면 위 명령 끝에 **`--force_polling`** 을 붙이세요.
 - 사이트 루트: **http://127.0.0.1:4000/**
-- KarmoLab: **http://127.0.0.1:4000/karmolab/**
+- KarmoLab(Jekyll 경로): **http://127.0.0.1:4000/karmolab/** — Tauri만 빠르게 볼 때는 **`apps/karmolab-tauri`의 `npm run dev`**(Python 8899 + `/apps/karmolab/`)를 쓰는 편이 Listen 이슈가 없습니다.
 
 **래퍼 스크립트** (Git Bash / WSL / macOS / Linux):
 
@@ -139,11 +140,12 @@ npm install
 npm run dev
 ```
 
-- Jekyll을 **4000**에서 띄운 뒤 Tauri가 **http://127.0.0.1:4000/karmolab/** 를 연다.
-- 이미 Jekyll이 돌아가 중이면: `npm run dev:app`
+- 기본: 레포 루트에서 **Python `http.server` 8899** + Tauri가 **http://127.0.0.1:8899/apps/karmolab/** 를 연다(KarmoLab만).
+- 블로그까지 Jekyll이 필요하면 **`npm run dev:with-jekyll`** → **4000** + **http://127.0.0.1:4000/karmolab/** (`tauri.dev-jekyll.conf.json`).
+- 이미 **8899**에 레포 루트 정적 서버가 떠 있으면: `npm run dev:app`
 - WebView만 **배포 URL**로 테스트: `npm run dev:remote`
 - 설치 패키지 빌드: `npm run build`
-- 데스크톱 앱에서 **KarmoLab → 데스크톱 앱 → 서버 모니터** 화면 아래 **로컬 프로세스** 영역에서 Jekyll·Discord 봇 등 프로필 시작·종료·`npm install`: **문서 → 데스크톱·로컬** 탭 (`apps/karmolab/js/widgets/docs/local-dev-runner.md`).
+- 데스크톱 앱에서 **KarmoLab → 데스크톱 앱 → 서버 모니터**의 **로컬** 블록에서 Jekyll·Discord 봇 등 프로필 시작·종료·`npm install`: **문서 → 데스크톱·로컬** 탭 (`apps/karmolab/js/widgets/docs/local-dev-runner.md`).
 
 ---
 

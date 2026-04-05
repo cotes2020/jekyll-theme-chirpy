@@ -27,6 +27,7 @@
  *    - desc: 한 줄 설명 (검색·즐겨찾기용)
  *    - hidden: true면 메뉴에 비표시 (user 등)
  *    - tabs: [{ id, label, build(container) }]
+ *    - tabLayout: (선택) `'sidebar'` — 탭이 많을 때 왼쪽 세로 목록 + 오른쪽 패널 (문서 위젯 등)
  *
  * 마스코트 연동:
  *   Mdd.setMood('happy')   — 감정 변경
@@ -472,36 +473,6 @@ const Toolbox = (() => {
         });
 
         injectDesktopBadge();
-
-        const serverDot = document.getElementById('server-status-dot');
-        if (serverDot && typeof getServerBase === 'function') {
-            function updateServerDot() {
-                const base = getServerBase();
-                const clickHint = isDesktopApp() ? '클릭: 서버 모니터' : '서버 모니터는 데스크톱 앱 전용';
-                serverDot.classList.remove('server-status-ok', 'server-status-offline', 'server-status-none');
-                if (!base) {
-                    serverDot.classList.add('server-status-none');
-                    serverDot.title = isDesktopApp()
-                        ? '서버 미설정 (서버 모니터에서 URL 입력)'
-                        : '서버 미설정 (' + clickHint + ')';
-                    return;
-                }
-                const url = base.replace(/\/$/, '') + '/api/status';
-                fetch(url).then(r => r.ok ? r.json() : Promise.reject()).then(() => {
-                    serverDot.classList.add('server-status-ok');
-                    serverDot.title = '서버 연결됨' + (isDesktopApp() ? ' (' + clickHint + ')' : ' · ' + clickHint);
-                }).catch(() => {
-                    serverDot.classList.add('server-status-offline');
-                    serverDot.title = '서버 연결 실패' + (isDesktopApp() ? ' (' + clickHint + ')' : ' · ' + clickHint);
-                });
-            }
-            updateServerDot();
-            const serverPollInterval = setInterval(updateServerDot, 60000);
-            serverDot.addEventListener('click', () => {
-                if (isDesktopApp() && tools.some(t => t.id === 'servermonitor')) switchPage('servermonitor');
-            });
-            serverDot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); serverDot.click(); } });
-        }
     }
 
     /* ===== Landing Page Builder ===== */
@@ -626,9 +597,13 @@ const Toolbox = (() => {
         }
         const tabRow = btn.closest('.tab-row');
         const page = btn.closest('.tool-page');
-        tabRow.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        tabRow.querySelectorAll('.tab-btn').forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+        });
         page.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
         document.getElementById('panel-' + tabId)?.classList.add('active');
     }
 
@@ -649,26 +624,49 @@ const Toolbox = (() => {
             div.appendChild(hero);
         }
 
+        let panelsHost: HTMLElement = div;
+
         if (tool.tabs.length > 1) {
             const tabRow = document.createElement('div');
             tabRow.className = 'tab-row';
+            if (tool.tabLayout === 'sidebar') {
+                tabRow.classList.add('tab-row--sidebar');
+                tabRow.setAttribute('role', 'tablist');
+                tabRow.setAttribute('aria-orientation', 'vertical');
+            }
             tool.tabs.forEach((tab, i) => {
                 const btn = document.createElement('button');
+                btn.type = 'button';
                 btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
                 btn.dataset.tabId = tab.id;
                 btn.textContent = tab.label;
+                btn.setAttribute('role', 'tab');
+                btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
                 btn.onclick = function () { switchTab(this, tab.id); };
                 tabRow.appendChild(btn);
             });
-            div.appendChild(tabRow);
+
+            if (tool.tabLayout === 'sidebar') {
+                const wrap = document.createElement('div');
+                wrap.className = 'tool-tab-sidebar-layout';
+                wrap.appendChild(tabRow);
+                const col = document.createElement('div');
+                col.className = 'tab-panels-column';
+                wrap.appendChild(col);
+                div.appendChild(wrap);
+                panelsHost = col;
+            } else {
+                div.appendChild(tabRow);
+            }
         }
 
         tool.tabs.forEach((tab, i) => {
             const panel = document.createElement('div');
             panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
             panel.id = 'panel-' + tab.id;
+            panel.setAttribute('role', 'tabpanel');
             tab.build(panel);
-            div.appendChild(panel);
+            panelsHost.appendChild(panel);
         });
 
         return div;
@@ -943,12 +941,6 @@ const Toolbox = (() => {
         return v !== undefined ? v : fallback;
     }
 
-    /** 사이트 공용 "내 서버" 주소. servermonitor_base → ytdl_api_base 순으로 fallback */
-    function getServerBase() {
-        const base = getPref('servermonitor_base', '') || getPref('ytdl_api_base', '');
-        return typeof base === 'string' ? base.trim() : '';
-    }
-
     /* ===== 사용량 추적 ===== */
     const USAGE_KEY = 'toolbox_usage_stats';
 
@@ -1071,7 +1063,7 @@ const Toolbox = (() => {
         field, resultBox, button, select,
         escapeHtml, formatTimestamp, showLightbox,
         recordUsage, getUsageStats,
-        getPref, setPref, getServerBase,
+        getPref, setPref,
         getTheme, setTheme, toggleTheme,
         getBgTheme, setBgTheme, getBgThemes,
         getPrismTheme, setPrismTheme, getPrismThemes: () => [...PRISM_THEMES],
