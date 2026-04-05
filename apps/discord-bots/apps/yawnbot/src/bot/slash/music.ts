@@ -3,27 +3,81 @@ import { MessageFlags, PermissionFlagsBits } from 'discord.js';
 import play from 'play-dl';
 import {
   enqueueYouTube,
+  enqueueYouTubeTracks,
+  fetchYoutubePlaylistEntries,
   skipTrack,
   stopMusic,
   getQueueSummary,
   withTimeout,
   YOUTUBE_RESOLVE_TIMEOUT_MS,
+  getYoutubePlaylistMaxTracks,
   canonicalYoutubeWatchUrl,
   searchYoutubeFirstVideoViaYoutubei,
 } from '../music-player';
 
+/** 플레이리스트 메타(항목 수)만 가져올 때는 검색 단일 곡보다 여유 있게 */
+const YOUTUBE_PLAYLIST_RESOLVE_MS = 90_000;
+
+/**
+ * `playlist?list=` / `watch?…&list=` / `youtu.be/…?list=` → 정규화된 playlist URL.
+ * 그 외 `yt_validate === 'playlist'` 인 입력은 그대로 반환.
+ */
+function tryYoutubePlaylistPageUrl(query: string): string | null {
+  const q = query.trim();
+  if (!q) return null;
+  if (play.yt_validate(q) === 'playlist') return q;
+  if (!q.includes('list=')) return null;
+  try {
+    const u = q.includes('://') ? new URL(q) : new URL(`https://www.youtube.com/watch?v=0&${q.replace(/^\?/, '')}`);
+    const list = u.searchParams.get('list');
+    if (!list) return null;
+    return `https://www.youtube.com/playlist?list=${encodeURIComponent(list)}`;
+  } catch {
+    return null;
+  }
+}
+
 async function resolveYouTube(query: string) {
   const q = (query ?? '').trim();
   if (!q) return { error: 'empty' };
+
+  const plUrl = tryYoutubePlaylistPageUrl(q);
+  if (plUrl) {
+    try {
+      const { title, entries } = await withTimeout(
+        fetchYoutubePlaylistEntries(plUrl),
+        YOUTUBE_PLAYLIST_RESOLVE_MS,
+        '플레이리스트 로드',
+      );
+      return { kind: 'playlist', playlistTitle: title, tracks: entries };
+    } catch (e) {
+      console.warn('[play] 플레이리스트 로드 실패:', e instanceof Error ? e.message : e);
+      if (play.yt_validate(q) !== 'video') {
+        return { error: 'playlist_unavailable' };
+      }
+      /* watch URL에 list=만 붙은 경우 등: 단일 동영상으로 폴백 */
+    }
+  }
+
   const v = play.yt_validate(q);
   if (v === 'video') {
     const info = await play.video_info(q);
     const title = info.video_details?.title || 'YouTube';
     const url = canonicalYoutubeWatchUrl(info.video_details?.url || q);
-    return { title, url };
+    return { kind: 'single', title, url };
   }
   if (v === 'playlist') {
-    return { error: 'playlist' };
+    try {
+      const { title, entries } = await withTimeout(
+        fetchYoutubePlaylistEntries(q),
+        YOUTUBE_PLAYLIST_RESOLVE_MS,
+        '플레이리스트 로드',
+      );
+      return { kind: 'playlist', playlistTitle: title, tracks: entries };
+    } catch (e) {
+      console.warn('[play] 플레이리스트(직접 URL) 로드 실패:', e instanceof Error ? e.message : e);
+      return { error: 'playlist_unavailable' };
+    }
   }
   let results;
   try {
@@ -31,21 +85,21 @@ async function resolveYouTube(query: string) {
   } catch (e) {
     console.warn('[play] play-dl 검색 실패, youtubei.js 폴백:', e instanceof Error ? e.message : e);
     const fb = await searchYoutubeFirstVideoViaYoutubei(q);
-    if (fb) return { title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
+    if (fb) return { kind: 'single', title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
     throw e;
   }
   if (!results.length) {
     const fb = await searchYoutubeFirstVideoViaYoutubei(q);
-    if (fb) return { title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
+    if (fb) return { kind: 'single', title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
     return { error: 'notfound' };
   }
   const first = results[0];
   if (first.type !== 'video') {
     const fb = await searchYoutubeFirstVideoViaYoutubei(q);
-    if (fb) return { title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
+    if (fb) return { kind: 'single', title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
     return { error: 'notfound' };
   }
-  return { title: first.title || q, url: canonicalYoutubeWatchUrl(first.url) };
+  return { kind: 'single', title: first.title || q, url: canonicalYoutubeWatchUrl(first.url) };
 }
 
 export async function handlePlay(ctx, interaction) {
@@ -97,19 +151,64 @@ export async function handlePlay(ctx, interaction) {
   let resolved;
   try {
     console.log('[play] YouTube 검색/조회 시작...');
-    resolved = await withTimeout(resolveYouTube(query), YOUTUBE_RESOLVE_TIMEOUT_MS, 'YouTube 검색/조회');
+    const resolveMs =
+      tryYoutubePlaylistPageUrl(query) || play.yt_validate(query) === 'playlist'
+        ? YOUTUBE_PLAYLIST_RESOLVE_MS
+        : YOUTUBE_RESOLVE_TIMEOUT_MS;
+    resolved = await withTimeout(resolveYouTube(query), resolveMs, 'YouTube 검색/조회');
     console.log('[play] YouTube 조회 완료');
   } catch (e: any) {
     console.error('[play] YouTube 조회 실패:', e?.message ?? e);
     await interaction.editReply({ content: `검색/조회 실패: ${e?.message || String(e)}` });
     return;
   }
-  if (resolved.error === 'playlist') {
-    await interaction.editReply({ content: '플레이리스트는 지원하지 않습니다. 동영상 하나의 URL을 넣어주세요.' });
+  if (resolved.error === 'playlist_unavailable') {
+    await interaction.editReply({
+      content:
+        '플레이리스트를 불러오지 못했습니다. 공개 목록인지, `youtube.com/playlist?list=` 링크인지 확인해 주세요. (비공개·삭제된 목록은 불가)',
+    });
     return;
   }
   if (resolved.error === 'notfound' || resolved.error === 'empty') {
     await interaction.editReply({ content: 'YouTube에서 결과를 찾지 못했습니다.' });
+    return;
+  }
+
+  if (resolved.kind === 'playlist') {
+    const pt = resolved.playlistTitle.slice(0, 80);
+    const n = resolved.tracks.length;
+    const cap = getYoutubePlaylistMaxTracks();
+    const policy = Number.isFinite(cap) ? `상한 ${cap}곡` : '무제한(목록 끝까지)';
+    await interaction.editReply({
+      content: `**${pt}** — ${n}곡을 대기열에 넣는 중… (${policy})`,
+    });
+    console.log('[play] enqueue playlist 시작...', n);
+    let tick = 0;
+    const progress = setInterval(() => {
+      tick += 15;
+      void interaction
+        .editReply({
+          content: `**${pt}** — 음성 연결·대기열 추가 중… (${tick}초 경과)`,
+        })
+        .catch(() => {});
+    }, 15_000);
+    let result;
+    try {
+      result = await enqueueYouTubeTracks(vc, resolved.tracks);
+    } finally {
+      clearInterval(progress);
+    }
+    console.log('[play] enqueue playlist 결과:', result);
+    if (!result.ok) {
+      await interaction.editReply({ content: `재생 준비 실패: ${result.error}` });
+      return;
+    }
+    const skipHint = result.skipped > 0 ? ` (URL 스킵 ${result.skipped}곡)` : '';
+    await interaction.editReply({
+      content: result.started
+        ? `**${resolved.playlistTitle}** — ${result.added}곡 재생을 시작합니다.${skipHint}`
+        : `**${resolved.playlistTitle}** — 대기열에 ${result.added}곡 추가했습니다.${skipHint}`,
+    });
     return;
   }
 

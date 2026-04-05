@@ -24,7 +24,6 @@ import {
   type AudioResource,
   type VoiceConnection,
 } from '@discordjs/voice';
-import ytdl from '@distube/ytdl-core';
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { Readable } from 'node:stream';
@@ -42,6 +41,21 @@ import { createEdgeTtsAudioResource } from './edge-tts-speak';
 /** play-dl / YouTube 조회·스트림이 끝없이 걸리면 `/play`가 생각 중에서 안 풀림 */
 export const YOUTUBE_RESOLVE_TIMEOUT_MS = 45_000;
 export const YOUTUBE_STREAM_TIMEOUT_MS = 90_000;
+
+/**
+ * `/play` 플레이리스트에서 큐에 넣을 곡 수 상한.
+ * - 비우거나 잘못된 값: 기본 40
+ * - `0` 이하: **한도 없음** (목록 끝까지 페이징; 시간·메모리·디스코드 인터랙션 제한에 유의)
+ * - 양수: 그 개수만큼만
+ */
+export function getYoutubePlaylistMaxTracks(): number {
+  const raw = process.env.YAWNBOT_PLAYLIST_MAX_TRACKS;
+  if (raw === undefined || String(raw).trim() === '') return 40;
+  const n = parseInt(String(raw).trim(), 10);
+  if (Number.isNaN(n)) return 40;
+  if (n <= 0) return Number.POSITIVE_INFINITY;
+  return n;
+}
 
 /**
  * 2025–2026 권장: 순수 JS 추출기보다 yt-dlp 바이너리가 YouTube 변경에 가장 빨리 따라감.
@@ -118,7 +132,7 @@ async function resourceFromYtDlpExec(url: string): Promise<AudioResource> {
 }
 
 /**
- * play-dl / ytdl 이 기대하는 표준 watch URL로 맞춤 (검색 결과·단축 URL 등).
+ * play-dl이 기대하는 표준 watch URL로 맞춤 (검색 결과·단축 URL 등).
  * 내부 스트림 URL이 비어 Invalid URL 이 나는 경우를 줄입니다.
  */
 export function canonicalYoutubeWatchUrl(input: string): string {
@@ -234,41 +248,12 @@ function mapPlayDlTypeToStreamType(t: unknown): StreamType | undefined {
   return undefined;
 }
 
-/** ytdl-core 기본 playerClients 에 WEB 이 없으면 playable formats 가 0개로 떨어질 수 있음 */
-const YTDL_STREAM_OPTIONS: ytdl.downloadOptions = {
-  filter: 'audioonly',
-  /** highestaudio 는 포맷 메타가 비정상일 때 chooseFormat 에서 실패하는 경우가 있음 */
-  quality: 'best',
-  highWaterMark: 1 << 25,
-  playerClients: ['WEB', 'WEB_EMBEDDED', 'IOS', 'ANDROID', 'TV'],
-  requestOptions: {
-    headers: {
-      'User-Agent':
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-    },
-  },
-};
-
 /**
  * TS `module: CommonJS` 이면 `import('youtubei.js')` 가 `require()` 로 바뀌어 ESM 전용 패키지가 깨짐.
  * 문자열로만 `import()` 를 호출해 Node 네이티브 동적 import 를 쓴다.
  */
 function importYoutubeiModule(): Promise<typeof import('youtubei.js')> {
   return new Function('return import("youtubei.js")')() as Promise<typeof import('youtubei.js')>;
-}
-
-/**
- * play-dl이 실패할 때 @distube/ytdl-core (InnerTube 다중 클라이언트).
- */
-async function resourceFromYtdlCore(url: string): Promise<AudioResource> {
-  const stream = ytdl(url, YTDL_STREAM_OPTIONS);
-  try {
-    const probe = await demuxProbe(stream as any);
-    return createAudioResource(probe.stream, { inputType: probe.type, silencePaddingFrames: 5 });
-  } catch (e) {
-    stream.destroy();
-    throw e;
-  }
 }
 
 let innertubePromise: Promise<any> | null = null;
@@ -319,9 +304,69 @@ export async function searchYoutubeFirstVideoViaYoutubei(
   }
 }
 
+function extractYoutubePlaylistId(normalized: string): string {
+  try {
+    return play.extractID(normalized);
+  } catch {
+    const u = new URL(normalized);
+    const list = u.searchParams.get('list');
+    if (list) return list;
+  }
+  throw new Error('플레이리스트 ID를 찾을 수 없습니다.');
+}
+
+async function fetchPlaylistViaYoutubei(
+  listId: string,
+  max: number,
+): Promise<{ title: string; entries: { title: string; url: string }[] }> {
+  const innertube = await getInnertubeSingleton();
+  let feed: Awaited<ReturnType<typeof innertube.getPlaylist>> = await innertube.getPlaylist(listId);
+  const title = (feed.info.title || '플레이리스트').slice(0, 120);
+  const entries: { title: string; url: string }[] = [];
+
+  while (feed && entries.length < max) {
+    for (const raw of feed.items) {
+      if (entries.length >= max) break;
+      if (raw.type !== 'PlaylistVideo') continue;
+      const item = raw as {
+        id: string;
+        title: { toString(): string };
+        is_playable: boolean;
+        is_live: boolean;
+        is_upcoming: boolean;
+      };
+      if (!item.is_playable || item.is_live || item.is_upcoming) continue;
+      entries.push({
+        title: item.title.toString().slice(0, 200),
+        url: canonicalYoutubeWatchUrl(`https://www.youtube.com/watch?v=${item.id}`),
+      });
+    }
+    if (entries.length >= max || !feed.has_continuation) break;
+    feed = await feed.getContinuation();
+  }
+
+  return { title, entries };
+}
+
 /**
- * ytdl-core까지 실패 시 youtubei.js (InnerTube 전용 클라이언트) — 포맷/서명 변경에 더 잘 버팀.
+ * YouTube 플레이리스트 URL(`playlist?list=` 또는 `watch?…&list=`)에서 재생 가능한 동영상 목록.
+ * **youtubei.js(Innertube)만 사용** — play-dl `playlist_info`는 YouTube 마크업 변경에 취약해 제거함.
  */
+export async function fetchYoutubePlaylistEntries(playlistUrl: string): Promise<{
+  title: string;
+  entries: { title: string; url: string }[];
+}> {
+  const max = getYoutubePlaylistMaxTracks();
+  const normalized = playlistUrl.trim();
+  const listId = extractYoutubePlaylistId(normalized);
+  const yi = await fetchPlaylistViaYoutubei(listId, max);
+  if (yi.entries.length === 0) {
+    throw new Error('플레이리스트에서 재생 가능한 동영상이 없습니다.');
+  }
+  return yi;
+}
+
+/** youtubei.js InnerTube 오디오 스트림 */
 async function resourceFromYoutubei(videoId: string): Promise<AudioResource> {
   const innertube = await getInnertubeSingleton();
   const webStream = await innertube.download(videoId, { type: 'audio', quality: 'best' });
@@ -358,38 +403,21 @@ async function createYoutubeAudioResourceInner(url: string): Promise<AudioResour
     return await resourceFromYtDlpExec(canonical);
   } catch (e: any) {
     lastErrors.push(`yt-dlp: ${e?.message ?? e}`);
-    console.warn('[music] yt-dlp 실패, play-dl·JS 추출기 폴백:', e instanceof Error ? e.message : e);
+    console.warn('[music] yt-dlp 실패, youtubei·play-dl 폴백:', e instanceof Error ? e.message : e);
   }
 
-  try {
-    const info = await play.video_info(canonical);
-    const yt = await play.stream_from_info(info, { discordPlayerCompatibility: true });
-    return resourceFromPlayDlStream(yt);
-  } catch (e: any) {
-    lastErrors.push(`stream_from_info: ${e?.message ?? e}`);
-  }
-  try {
-    const yt = await play.stream(canonical, { discordPlayerCompatibility: true });
-    return resourceFromPlayDlStream(yt);
-  } catch (e: any) {
-    lastErrors.push(`stream(compat): ${e?.message ?? e}`);
-  }
-  try {
-    const yt = await play.stream(canonical);
-    return resourceFromPlayDlStream(yt);
-  } catch (e: any) {
-    lastErrors.push(`stream: ${e?.message ?? e}`);
-  }
-  try {
-    return await resourceFromYtdlCore(canonical);
-  } catch (e: any) {
-    lastErrors.push(`ytdl-core: ${e?.message ?? e}`);
-  }
   try {
     const id = play.extractID(canonical);
     return await resourceFromYoutubei(id);
   } catch (e: any) {
     lastErrors.push(`youtubei.js: ${e?.message ?? e}`);
+  }
+
+  try {
+    const yt = await play.stream(canonical, { discordPlayerCompatibility: true });
+    return resourceFromPlayDlStream(yt);
+  } catch (e: any) {
+    lastErrors.push(`play-dl: ${e?.message ?? e}`);
     throw new Error(lastErrors.join(' | '));
   }
 }
@@ -466,6 +494,54 @@ export async function enqueueYouTube(
   { ok: true; position: number; started: boolean } | { ok: false; error: string }
 > {
   return appendToMusicQueue(channel, { kind: 'youtube', title, url });
+}
+
+/** 여러 YouTube 곡을 한 번에 같은 대기열에 넣습니다 (플레이리스트용). */
+export async function enqueueYouTubeTracks(
+  channel: VoiceBasedChannel,
+  tracks: { title: string; url: string }[],
+): Promise<
+  | { ok: true; added: number; started: boolean; skipped: number }
+  | { ok: false; error: string }
+> {
+  const valid: { title: string; url: string }[] = [];
+  let skipped = 0;
+  for (const t of tracks) {
+    const url = canonicalYoutubeWatchUrl(t.url.trim());
+    if (play.yt_validate(url) !== 'video') {
+      skipped++;
+      continue;
+    }
+    valid.push({ title: (t.title || 'YouTube').slice(0, 200), url });
+  }
+  if (valid.length === 0) {
+    return { ok: false, error: '대기열에 넣을 수 있는 동영상이 없습니다.' };
+  }
+  try {
+    const connection = await joinAndWaitUntilVoiceReady(channel);
+    const guildId = channel.guild.id;
+    const s = getOrCreatePlayer(guildId);
+    const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
+    for (const t of valid) {
+      s.queue.push({ kind: 'youtube', title: t.title, url: t.url });
+    }
+    if (!s.subscribed) {
+      connection.subscribe(s.player);
+      s.subscribed = true;
+    }
+    if (wasIdle) {
+      await playNext(guildId);
+    }
+    return { ok: true, added: valid.length, started: wasIdle, skipped };
+  } catch (e: unknown) {
+    try {
+      leaveVoiceChannel(channel.guild.id);
+    } catch {
+      /* ignore */
+    }
+    const msg = e instanceof Error ? e.message : String(e);
+    return { ok: false, error: msg };
+  }
 }
 
 /** TTS·URL·파일 등 임의 오디오 소스를 `/play`와 같은 대기열에 넣습니다. */

@@ -37,9 +37,12 @@ const commands = [
 
   new SlashCommandBuilder()
     .setName('play')
-    .setDescription('YouTube URL 또는 검색어로 재생 (음성 채널에 있어야 함)')
+    .setDescription('YouTube 동영상·플레이리스트 URL 또는 검색어로 재생 (음성 채널 필수)')
     .addStringOption((opt) =>
-      opt.setName('query').setDescription('YouTube 동영상 URL 또는 검색어').setRequired(true),
+      opt
+        .setName('query')
+        .setDescription('동영상/playlist?list= URL, watch?…&list=, 또는 검색어')
+        .setRequired(true),
     ),
   new SlashCommandBuilder()
     .setName('speak')
