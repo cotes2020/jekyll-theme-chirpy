@@ -5,6 +5,7 @@ exports.createAiStudioTextModel = createAiStudioTextModel;
 exports.generateAiStudioText = generateAiStudioText;
 exports.generateVertexText = generateVertexText;
 exports.parseGenerativeSurfaceFromEnv = parseGenerativeSurfaceFromEnv;
+exports.generateBlobTextFromEnvWithOptions = generateBlobTextFromEnvWithOptions;
 exports.tryCreateGenerativeTextFromEnv = tryCreateGenerativeTextFromEnv;
 exports.generativeEnvHint = generativeEnvHint;
 /**
@@ -90,11 +91,43 @@ function parseGenerativeSurfaceFromEnv(env = process.env) {
     return 'aiStudio';
 }
 /**
- * `.env` 기준으로 호출 가능한 텍스트 클라이언트를 만듦. 자격이 없으면 `null`.
- *
- * - **AI Studio (기본):** `GEMINI_API_KEY` 필수, `GEMINI_MODEL` 선택
- * - **Vertex:** `KARMOLAB_AI_SURFACE=vertex`(또는 `GEMINI_SURFACE`) + `VERTEX_API_KEY`, `VERTEX_PROJECT_ID` 필수, `VERTEX_LOCATION`·`GEMINI_MODEL` 선택
+ * 시스템+맥락+질문을 한 문자열로 묶어 보낼 때(AI Studio `generateContent` / Vertex `generateContent` REST).
+ * `surface: inherit` 이면 `KARMOLAB_AI_SURFACE` 등과 동일 규칙.
  */
+async function generateBlobTextFromEnvWithOptions(env, blobPrompt, options = {}) {
+    const surfaceChoice = options.surface ?? 'inherit';
+    const surface = surfaceChoice === 'inherit' ? parseGenerativeSurfaceFromEnv(env) : surfaceChoice;
+    const modelOverride = options.modelId != null ? String(options.modelId).trim() : '';
+    const effectiveModelId = resolveAiStudioTextModelId(modelOverride ? modelOverride : env.GEMINI_MODEL);
+    if (surface === 'vertex') {
+        const apiKey = env.VERTEX_API_KEY?.trim();
+        const projectId = env.VERTEX_PROJECT_ID?.trim();
+        if (!apiKey || !projectId) {
+            throw new Error('Vertex API: .env에 VERTEX_API_KEY와 VERTEX_PROJECT_ID가 필요합니다.');
+        }
+        const location = env.VERTEX_LOCATION?.trim() || undefined;
+        const text = await generateVertexText({
+            apiKey,
+            projectId,
+            location,
+            modelId: effectiveModelId,
+            userText: blobPrompt,
+            signal: options.signal,
+        });
+        return { text, surface: 'vertex', modelId: effectiveModelId };
+    }
+    const apiKey = env.GEMINI_API_KEY?.trim();
+    if (!apiKey) {
+        throw new Error('AI Studio API: .env에 GEMINI_API_KEY가 필요합니다.');
+    }
+    const text = await generateAiStudioText({
+        apiKey,
+        modelId: effectiveModelId,
+        prompt: blobPrompt,
+        signal: options.signal,
+    });
+    return { text, surface: 'aiStudio', modelId: effectiveModelId };
+}
 function tryCreateGenerativeTextFromEnv(env = process.env) {
     const surface = parseGenerativeSurfaceFromEnv(env);
     if (surface === 'vertex') {

@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@types/node": "^22.0.0",
     "typescript": "~5.9.0"
   }
 }

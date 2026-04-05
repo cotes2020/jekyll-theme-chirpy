@@ -35,6 +35,21 @@ export type GenerativeTextClient = {
  * - **AI Studio (기본):** `GEMINI_API_KEY` 필수, `GEMINI_MODEL` 선택
  * - **Vertex:** `KARMOLAB_AI_SURFACE=vertex`(또는 `GEMINI_SURFACE`) + `VERTEX_API_KEY`, `VERTEX_PROJECT_ID` 필수, `VERTEX_LOCATION`·`GEMINI_MODEL` 선택
  */
+/** `/yawn` 슬래시: `.env` 기본 vs `aiStudio` / `vertex` 강제 */
+export type GenerativeSurfaceOverride = 'inherit' | 'aiStudio' | 'vertex';
+/**
+ * 시스템+맥락+질문을 한 문자열로 묶어 보낼 때(AI Studio `generateContent` / Vertex `generateContent` REST).
+ * `surface: inherit` 이면 `KARMOLAB_AI_SURFACE` 등과 동일 규칙.
+ */
+export declare function generateBlobTextFromEnvWithOptions(env: NodeJS.ProcessEnv, blobPrompt: string, options?: {
+    surface?: GenerativeSurfaceOverride;
+    modelId?: string | null;
+    signal?: AbortSignal;
+}): Promise<{
+    text: string;
+    surface: GoogleGenerativeSurface;
+    modelId: string;
+}>;
 export declare function tryCreateGenerativeTextFromEnv(env?: NodeJS.ProcessEnv): GenerativeTextClient | null;
 /** `tryCreateGenerativeTextFromEnv`가 `null`일 때 안내용 */
 export declare function generativeEnvHint(env?: NodeJS.ProcessEnv): string;
