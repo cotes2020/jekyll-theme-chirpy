@@ -8,4 +8,5 @@ commands.allow = [
   "localdev_start",
   "localdev_stop",
   "localdev_npm_install",
+  "localdev_deploy",
 ]

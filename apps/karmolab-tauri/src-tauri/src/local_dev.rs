@@ -30,6 +30,9 @@ struct DevProfile {
     args: Vec<String>,
     #[serde(default)]
     npm_install: bool,
+    /// e.g. `["run", "deploy:yawnbot"]` — optional **Deploy** button in Server Monitor
+    #[serde(default)]
+    deploy_args: Option<Vec<String>>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -195,6 +198,46 @@ fn run_npm_install_blocking(cwd: &Path) -> Result<String, String> {
     Ok("npm install 완료".into())
 }
 
+fn run_npm_deploy_blocking(cwd: &Path, deploy_args: &[String]) -> Result<String, String> {
+    if deploy_args.is_empty() {
+        return Err("deploy_args가 비어 있습니다.".into());
+    }
+    if !args_are_safe(deploy_args) {
+        return Err("deploy 인자에 허용되지 않은 문자가 있습니다.".into());
+    }
+
+    let mut cmd;
+    #[cfg(windows)]
+    {
+        let mut c = Command::new("cmd.exe");
+        c.arg("/C").arg("npm").args(deploy_args);
+        cmd = c;
+    }
+    #[cfg(not(windows))]
+    {
+        cmd = Command::new("npm");
+        cmd.args(deploy_args);
+    }
+    cmd.current_dir(cwd);
+    cmd.stdin(Stdio::null());
+    apply_no_window(&mut cmd);
+
+    let output = cmd
+        .output()
+        .map_err(|e| format!("npm deploy 스크립트 실행 실패: {}", e))?;
+    if !output.status.success() {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        return Err(format!(
+            "deploy 실패 (exit {})\n{}\n{}",
+            output.status,
+            stderr.trim(),
+            stdout.trim()
+        ));
+    }
+    Ok("deploy 완료".into())
+}
+
 #[cfg(windows)]
 fn kill_process_tree(pid: u32) -> Result<(), String> {
     let status = Command::new("taskkill.exe")
@@ -308,4 +351,23 @@ pub fn localdev_npm_install(profile_id: String, state: State<'_, LocalDevState>)
 
     let cwd = resolve_cwd(&repo, profile)?;
     run_npm_install_blocking(&cwd)
+}
+
+#[tauri::command]
+pub fn localdev_deploy(profile_id: String, state: State<'_, LocalDevState>) -> Result<String, String> {
+    let repo_str = {
+        let g = state.repo_root.lock().map_err(|e| e.to_string())?;
+        g.clone()
+            .ok_or_else(|| "저장소 루트를 먼저 설정하세요.".to_string())?
+    };
+    let repo = PathBuf::from(&repo_str);
+
+    let profiles = read_profiles(&repo)?;
+    let profile = profile_by_id(&profiles, &profile_id)?;
+    let Some(ref da) = profile.deploy_args else {
+        return Err("이 프로필에 deploy가 설정되어 있지 않습니다.".into());
+    };
+
+    let cwd = resolve_cwd(&repo, profile)?;
+    run_npm_deploy_blocking(&cwd, da)
 }

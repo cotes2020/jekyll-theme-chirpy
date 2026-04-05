@@ -2,8 +2,8 @@ mod local_dev;
 mod repo_file;
 
 use local_dev::{
-    localdev_get_repo_root, localdev_list_tracked, localdev_npm_install, localdev_set_repo_root,
-    localdev_start, localdev_stop, LocalDevState,
+    localdev_deploy, localdev_get_repo_root, localdev_list_tracked, localdev_npm_install,
+    localdev_set_repo_root, localdev_start, localdev_stop, LocalDevState,
 };
 use repo_file::{repofile_open_default, repofile_read, repofile_reveal, repofile_write};
 use tauri::menu::{Menu, MenuItem};
@@ -183,6 +183,7 @@ pub fn run() {
             localdev_start,
             localdev_stop,
             localdev_npm_install,
+            localdev_deploy,
             repofile_open_default,
             repofile_reveal,
             repofile_read,

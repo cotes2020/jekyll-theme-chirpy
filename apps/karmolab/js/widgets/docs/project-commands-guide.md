@@ -145,7 +145,7 @@ npm run dev
 - 이미 **8899**에 레포 루트 정적 서버가 떠 있으면: `npm run dev:app`
 - WebView만 **배포 URL**로 테스트: `npm run dev:remote`
 - 설치 패키지 빌드: `npm run build`
-- 데스크톱 앱에서 **KarmoLab → 데스크톱 앱 → 서버 모니터**의 **로컬** 블록에서 Jekyll·Discord 봇 등 프로필 시작·종료·`npm install`: **문서 → 데스크톱·로컬** 탭 (`apps/karmolab/js/widgets/docs/local-dev-runner.md`).
+- 데스크톱 앱에서 **KarmoLab → 데스크톱 앱 → 서버 모니터**의 **로컬** 블록에서 Jekyll·Discord 봇 등 프로필 시작·종료·`npm install`·(설정 시) **deploy**: **문서 → 데스크톱·로컬** 탭 (`apps/karmolab/js/widgets/docs/local-dev-runner.md`).
 
 ---
 

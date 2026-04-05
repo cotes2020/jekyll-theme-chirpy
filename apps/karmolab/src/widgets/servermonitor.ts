@@ -11,6 +11,8 @@
     args: string[];
     healthUrl?: string;
     npmInstall?: boolean;
+    /** `npm` + these args in profile `cwd` (e.g. Discord slash deploy) */
+    deployArgs?: string[];
   };
 
   type RawLocalMonitor = {
@@ -147,6 +149,56 @@
     if (!monitor.canPing) return 'HTTP 체크 없음';
     if (raw === undefined) return '조회 전';
     return localStatusLabel(raw);
+  }
+
+  type NormalizedMonitor = ReturnType<typeof normalizeLocalMonitor>;
+
+  function mergedCardShellClass(
+    monitor: MergedServiceRow['monitor'],
+    raw: LocalCardState | undefined
+  ): string {
+    return mergedPingRowClass(monitor, raw).replace(/^sm-card\s+/, 'sm-card sm-card--merged ');
+  }
+
+  function smEscapeAttr(id: string): string {
+    if (typeof CSS !== 'undefined' && typeof CSS.escape === 'function') return CSS.escape(id);
+    return id.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  }
+
+  const smPingFlashTimers = new WeakMap<HTMLElement, number>();
+
+  function patchMergedCardPingUi(
+    card: HTMLElement,
+    monitor: NormalizedMonitor | undefined,
+    raw: LocalCardState
+  ): void {
+    card.className = mergedCardShellClass(monitor, raw);
+    const statusRow = card.querySelector('.sm-card-status');
+    const spans = statusRow?.querySelectorAll('span');
+    if (spans && spans.length >= 2) {
+      spans[spans.length - 1].textContent = mergedPingRowText(monitor, raw);
+    }
+  }
+
+  /** ping 직후: 연두 플래시 + ✓가 잠깐 나타났다 사라짐 */
+  function flashMergedCardPingDone(card: HTMLElement): void {
+    const prev = smPingFlashTimers.get(card);
+    if (prev !== undefined) window.clearTimeout(prev);
+    card.querySelectorAll('.sm-card-ping-check').forEach((n) => n.remove());
+    card.classList.remove('sm-card--ping-flash');
+    void card.offsetWidth;
+    card.classList.add('sm-card--ping-flash');
+    const check = document.createElement('span');
+    check.className = 'sm-card-ping-check';
+    check.textContent = '✓';
+    check.setAttribute('aria-hidden', 'true');
+    card.appendChild(check);
+    const tid = window.setTimeout(() => {
+      check.remove();
+      card.classList.remove('sm-card--ping-flash');
+      smPingFlashTimers.delete(card);
+    }, 900);
+    smPingFlashTimers.set(card, tid);
   }
 
   /** 데스크톱: 저장소 기준 .env 바로가기(탐색기 / 기본 앱 / 인앱 편집) */
@@ -395,6 +447,7 @@
 
         const card = document.createElement('div');
         card.className = cardClass;
+        card.dataset.smServiceId = row.id;
 
         const head = document.createElement('div');
         head.className = 'sm-card-head';
@@ -479,6 +532,26 @@
             actions.appendChild(btnInstall);
           }
 
+          const deployArgs = p.deployArgs?.filter((a) => (a || '').trim().length > 0) ?? [];
+          if (deployArgs.length > 0) {
+            const btnDeploy = mkBtn('deploy', () => {
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                btnDeploy.disabled = true;
+                try {
+                  const msg = (await invoke('localdev_deploy', { profileId: p.id })) as string;
+                  Toolbox.showToast?.(msg || 'deploy 완료', undefined, undefined);
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                } finally {
+                  btnDeploy.disabled = false;
+                }
+              })();
+            });
+            btnDeploy.title = `npm ${deployArgs.join(' ')} (${p.cwd})`;
+            actions.appendChild(btnDeploy);
+          }
+
           card.appendChild(actions);
         }
 
@@ -523,10 +596,6 @@
   }
 
   function build(container: HTMLElement): void {
-    const refreshBtn = document.createElement('button');
-    refreshBtn.className = 'btn btn-primary';
-    refreshBtn.textContent = '새로고침';
-
     const statusBox = document.createElement('div');
     statusBox.id = 'smStatusBox';
     statusBox.className = 'sm-status-wrap';
@@ -534,6 +603,47 @@
     let refreshDevTable: (() => Promise<void>) | null = null;
     const pingState: { byId: Record<string, LocalCardState> } = { byId: {} };
     let mergedServicesEl: HTMLElement | null = null;
+
+    const refreshWrap = document.createElement('div');
+    refreshWrap.className = 'sm-refresh-wrap';
+
+    const refreshBtn = document.createElement('button');
+    refreshBtn.type = 'button';
+    refreshBtn.className = 'sm-refresh-icon-btn';
+    refreshBtn.title = '새로고침 (URL ping·프로세스 추적)';
+    refreshBtn.setAttribute('aria-label', '새로고침');
+    refreshBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>';
+
+    const refreshProgressEl = document.createElement('span');
+    refreshProgressEl.className = 'sm-refresh-progress';
+    refreshProgressEl.setAttribute('aria-live', 'polite');
+    refreshProgressEl.hidden = true;
+
+    refreshWrap.appendChild(refreshBtn);
+    refreshWrap.appendChild(refreshProgressEl);
+
+    function setRefreshBusy(busy: boolean, progressLabel = ''): void {
+      refreshBtn.disabled = busy;
+      refreshBtn.setAttribute('aria-busy', busy ? 'true' : 'false');
+      if (!busy) {
+        refreshProgressEl.hidden = true;
+        refreshProgressEl.replaceChildren();
+        return;
+      }
+      refreshProgressEl.hidden = false;
+      refreshProgressEl.replaceChildren();
+      const spin = document.createElement('span');
+      spin.className = 'sm-spinner';
+      spin.setAttribute('aria-hidden', 'true');
+      refreshProgressEl.appendChild(spin);
+      if (progressLabel) {
+        const lab = document.createElement('span');
+        lab.className = 'sm-refresh-progress-text';
+        lab.textContent = progressLabel;
+        refreshProgressEl.appendChild(lab);
+      }
+    }
 
     Mdd.injectCSS(
       'servermonitor',
@@ -556,10 +666,44 @@
             .sm-card--down .sm-card-status-dot { background: var(--error, #e74c3c); }
             .sm-card--na .sm-card-status-dot { background: var(--text-tertiary); }
             .sm-local-section { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+            .sm-local-header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+            .sm-browser-local-header { margin-top: 12px; }
+            .sm-local-title-text { margin-bottom: 0 !important; flex: 1; min-width: 0; }
+            .sm-refresh-wrap { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+            .sm-refresh-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+            .sm-refresh-icon-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+            .sm-refresh-icon-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+            .sm-refresh-icon-btn svg { width: 16px; height: 16px; }
+            .sm-refresh-progress { display: inline-flex; align-items: center; gap: 6px; font-size: var(--font-size-2xs); color: var(--text-tertiary); min-height: 16px; }
+            .sm-spinner { width: 14px; height: 14px; flex-shrink: 0; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: sm-spin 0.7s linear infinite; }
+            @keyframes sm-spin { to { transform: rotate(360deg); } }
             .sm-desktop-section-title { font-weight: 700; margin-bottom: 10px; color: var(--accent); }
             .sm-local-services { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 4px; }
-            .sm-card--merged { min-height: auto; }
+            .sm-card--merged { min-height: auto; position: relative; }
             .sm-card--merged .sm-card-status { margin-top: 10px; padding-top: 0; }
+            .sm-card--ping-flash { animation: sm-ping-flash-bg 0.95s ease forwards; }
+            @keyframes sm-ping-flash-bg {
+              0%, 100% { box-shadow: none; }
+              12% { box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.45), 0 4px 14px rgba(34, 197, 94, 0.12); background-color: rgba(34, 197, 94, 0.1); }
+              40% { box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2); background-color: rgba(34, 197, 94, 0.05); }
+            }
+            .sm-card-ping-check {
+              position: absolute;
+              top: 10px;
+              right: 11px;
+              font-size: 1.1rem;
+              line-height: 1;
+              pointer-events: none;
+              color: var(--success, #22c55e);
+              animation: sm-ping-check-pop 0.88s ease forwards;
+              text-shadow: 0 0 6px var(--bg-secondary, #1a1a1a);
+            }
+            @keyframes sm-ping-check-pop {
+              0% { opacity: 0; transform: scale(0.45); }
+              22% { opacity: 1; transform: scale(1.12); }
+              50% { opacity: 1; transform: scale(1); }
+              100% { opacity: 0; transform: scale(0.88); }
+            }
             .sm-dev-hint { font-size: var(--font-size-sm); color: var(--text-tertiary); margin-bottom: 12px; line-height: 1.5; }
             .sm-dev-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
             .sm-card--dev { min-height: auto; }
@@ -583,25 +727,27 @@
     );
 
     container.innerHTML = '';
-    const btnRow = document.createElement('div');
-    btnRow.style.marginBottom = '8px';
-    btnRow.appendChild(refreshBtn);
-    container.appendChild(btnRow);
 
     if (isKarmolabDesktop()) {
       const localSection = document.createElement('div');
       localSection.className = 'sm-local-section';
 
+      const localHeaderRow = document.createElement('div');
+      localHeaderRow.className = 'sm-local-header-row';
+
       const localTitle = document.createElement('div');
-      localTitle.className = 'sm-desktop-section-title';
+      localTitle.className = 'sm-desktop-section-title sm-local-title-text';
       localTitle.textContent = '로컬';
+
+      localHeaderRow.appendChild(localTitle);
+      localHeaderRow.appendChild(refreshWrap);
 
       const localHint = document.createElement('p');
       localHint.className = 'sm-dev-hint';
       localHint.textContent =
-        '같은 id의 localMonitors·devProfiles는 카드 한 장에 묶입니다. 새로고침으로 URL 응답·프로세스 추적을 갱신합니다.';
+        '같은 id의 localMonitors·devProfiles는 카드 한 장에 묶입니다. 오른쪽 버튼으로 URL 응답·프로세스 추적을 갱신합니다.';
 
-      localSection.appendChild(localTitle);
+      localSection.appendChild(localHeaderRow);
       localSection.appendChild(localHint);
       const rootFooter = document.createElement('div');
       mergedServicesEl = mountDesktopLocalDev(localSection, rootFooter, pingState, (fn) => {
@@ -616,19 +762,25 @@
 
       container.appendChild(rootFooter);
     } else {
+      const browserHeader = document.createElement('div');
+      browserHeader.className = 'sm-local-header-row sm-browser-local-header';
+      const bt = document.createElement('div');
+      bt.className = 'sm-desktop-section-title sm-local-title-text';
+      bt.textContent = '로컬';
+      browserHeader.appendChild(bt);
+      browserHeader.appendChild(refreshWrap);
+      container.appendChild(browserHeader);
       container.appendChild(statusBox);
     }
 
     async function fetchStatus(): Promise<void> {
-      refreshBtn.disabled = true;
-      if (mergedServicesEl) {
-        if (!mergedServicesEl.querySelector('.sm-card')) {
-          mergedServicesEl.innerHTML =
-            '<p class="sm-card-sub" style="grid-column:1/-1;padding:12px 4px">조회 중…</p>';
+      setRefreshBusy(true, '불러오는 중');
+      /* 데스크톱: 카드 영역은 비우지 않음(첫 접속도 골격 카드 먼저 그린 뒤 이 함수로 ping만 갱신) */
+      if (!mergedServicesEl) {
+        if (!statusBox.querySelector('.sm-cards .sm-card')) {
+          statusBox.innerHTML = '조회 중…';
+          statusBox.className = 'sm-status-wrap loading';
         }
-      } else if (!statusBox.querySelector('.sm-cards .sm-card')) {
-        statusBox.innerHTML = '조회 중…';
-        statusBox.className = 'sm-status-wrap loading';
       }
 
       let skipFinalMergeRefresh = false;
@@ -637,19 +789,40 @@
         const rawLocals = config.localMonitors ?? [];
         const normalized = rawLocals.map(normalizeLocalMonitor);
 
+        const totalPings = normalized.filter((m) => m.canPing && m.url).length;
+        let pingDone = 0;
+
         const localResults: Array<{ meta: (typeof normalized)[0]; state: LocalCardState }> = [];
         for (const meta of normalized) {
           if (!meta.canPing || !meta.url) {
-            localResults.push({ meta, state: 'na' });
+            const state: LocalCardState = 'na';
+            localResults.push({ meta, state });
+            pingState.byId[meta.id] = state;
+            if (mergedServicesEl) {
+              const card = mergedServicesEl.querySelector(
+                `[data-sm-service-id="${smEscapeAttr(meta.id)}"]`
+              ) as HTMLElement | null;
+              if (card) patchMergedCardPingUi(card, meta, state);
+            }
           } else {
-            const s = await pingLocal(meta.url);
+            setRefreshBusy(true, totalPings ? `URL ${pingDone + 1}/${totalPings}` : '확인 중');
+            const s = await pingLocal(meta.url!);
+            pingDone++;
             localResults.push({ meta, state: s });
+            pingState.byId[meta.id] = s;
+            if (mergedServicesEl) {
+              const card = mergedServicesEl.querySelector(
+                `[data-sm-service-id="${smEscapeAttr(meta.id)}"]`
+              ) as HTMLElement | null;
+              if (card) {
+                patchMergedCardPingUi(card, meta, s);
+                flashMergedCardPingDone(card);
+              }
+            }
           }
         }
 
-        for (const { meta, state } of localResults) {
-          pingState.byId[meta.id] = state;
-        }
+        setRefreshBusy(true, '동기화 중');
 
         const localCardsHtml = localResults
           .map(({ meta, state }) => {
@@ -682,7 +855,6 @@
           statusBox.className = 'sm-status-wrap error';
         }
       } finally {
-        refreshBtn.disabled = false;
         if (!skipFinalMergeRefresh) {
           try {
             await refreshDevTable?.();
@@ -690,12 +862,22 @@
             /* ignore */
           }
         }
+        setRefreshBusy(false);
       }
     }
 
     refreshBtn.onclick = () => void fetchStatus();
 
-    void fetchStatus();
+    void (async () => {
+      if (mergedServicesEl) {
+        try {
+          await refreshDevTable?.();
+        } catch {
+          /* ignore */
+        }
+      }
+      await fetchStatus();
+    })();
   }
 
   Toolbox.register({
