@@ -27,6 +27,8 @@ npm run deploy:yawnbot
 
 ### 음성·미디어 (같은 재생 대기열)
 
+같은 기능을 **`/music` 그룹**으로도 쓸 수 있습니다: `/music play`, `/music skip`, `/music stop`, `/music queue`, `/music speak`, `/music sound`. 아래 최상위 명령(`/play` 등)과 **동작이 같습니다**. 명령 목록을 정리해 두고 싶을 때 `/music` 쪽을 쓰면 됩니다.
+
 | 명령 | 설명 |
 |------|------|
 | `/play` `query` | YouTube **동영상**·**플레이리스트** URL 또는 검색어. `playlist?list=` / `watch?…&list=` 지원. 플레이리스트 곡 수 상한은 환경 변수로 조절(기본 40, `0`이면 끝까지). 음성 채널 필수. |

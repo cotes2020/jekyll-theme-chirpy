@@ -55,7 +55,7 @@ export async function handleSound(ctx, interaction) {
 
   const vc = interaction.member.voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
-    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/sound`를 사용하세요.' });
+    await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/sound` 또는 `/music sound`를 사용하세요.' });
     return;
   }
 
@@ -81,7 +81,7 @@ export async function handleSound(ctx, interaction) {
   if (sources.length === 0) {
     await interaction.editReply({
       content:
-        '`file`(첨부)·`url`·`clip` 중 **하나**만 지정하세요. 서버에 넣은 파일은 `resources/audio/` 에 두고 `/sound clip:파일명.mp3` 로 재생할 수 있습니다.',
+        '`file`(첨부)·`url`·`clip` 중 **하나**만 지정하세요. 서버에 넣은 파일은 `resources/audio/` 에 두고 `/sound clip:파일명.mp3` 또는 `/music sound clip:파일명.mp3` 로 재생할 수 있습니다.',
     });
     return;
   }

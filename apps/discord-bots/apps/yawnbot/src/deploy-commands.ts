@@ -21,6 +21,52 @@ const voiceJoin = () =>
 const voiceLeave = () =>
   new SlashCommandBuilder().setName('voice-leave').setDescription('봇 음성 연결 해제 (/음성퇴장 과 동일)');
 
+/** `/play`·`/queue` 등과 동일 동작 — 디스코드에서 음악 명령을 한 묶음으로 쓰기 위한 그룹 */
+const musicCommandGroup = () =>
+  new SlashCommandBuilder()
+    .setName('music')
+    .setDescription('음성 채널 YouTube·TTS·클립 재생 및 대기열 (/play·/queue 등과 동일)')
+    .addSubcommand((sc) =>
+      sc
+        .setName('play')
+        .setDescription('YouTube 동영상·플레이리스트 URL 또는 검색어로 재생 (음성 채널 필수)')
+        .addStringOption((opt) =>
+          opt
+            .setName('query')
+            .setDescription('동영상/playlist?list= URL, watch?…&list=, 또는 검색어')
+            .setRequired(true),
+        ),
+    )
+    .addSubcommand((sc) =>
+      sc
+        .setName('speak')
+        .setDescription('Edge TTS로 문장을 읽어 재생 (/play 과 같은 대기열, 디스코드 내장 TTS 아님)')
+        .addStringOption((opt) => opt.setName('text').setDescription('읽을 문장 (비우면 데모 문장)').setRequired(false)),
+    )
+    .addSubcommand((sc) =>
+      sc
+        .setName('sound')
+        .setDescription('첨부·URL·로컬 클립 오디오 재생 (/play 과 같은 대기열, file/url/clip 중 하나)')
+        .addAttachmentOption((opt) => opt.setName('file').setDescription('오디오 첨부 (mp3, wav, ogg 등)').setRequired(false))
+        .addStringOption((opt) => opt.setName('url').setDescription('직접 링크 (http(s) 오디오 파일)').setRequired(false))
+        .addStringOption((opt) =>
+          opt
+            .setName('clip')
+            .setDescription('봇 패키지 resources/audio/ 안의 파일명만 (예: hello.mp3)')
+            .setRequired(false),
+        ),
+    )
+    .addSubcommand((sc) => sc.setName('skip').setDescription('지금 재생 중인 곡 건너뛰기'))
+    .addSubcommand((sc) => sc.setName('stop').setDescription('재생 중지 및 대기열 비우기'))
+    .addSubcommand((sc) =>
+      sc
+        .setName('queue')
+        .setDescription('대기열 확인 (페이지·이전/다음 버튼)')
+        .addIntegerOption((opt) =>
+          opt.setName('page').setDescription('페이지 번호 (기본 1)').setRequired(false).setMinValue(1),
+        ),
+    );
+
 const commands = [
   new SlashCommandBuilder()
     .setName('음성입장')
@@ -35,6 +81,8 @@ const commands = [
   new SlashCommandBuilder().setName('음성퇴장').setDescription('봇을 음성 채널 연결에서 끊습니다.'),
   voiceJoin(),
   voiceLeave(),
+
+  musicCommandGroup(),
 
   new SlashCommandBuilder()
     .setName('play')

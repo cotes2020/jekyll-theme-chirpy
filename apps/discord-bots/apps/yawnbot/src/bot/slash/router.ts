@@ -108,6 +108,32 @@ export async function dispatchSlashCommand(ctx, interaction) {
       case 'voice-leave':
         await handleVoiceLeave(ctx, interaction);
         break;
+      case 'music': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case 'play':
+            await handlePlay(ctx, interaction);
+            break;
+          case 'speak':
+            await handleSpeak(ctx, interaction);
+            break;
+          case 'sound':
+            await handleSound(ctx, interaction);
+            break;
+          case 'skip':
+            await handleSkip(ctx, interaction);
+            break;
+          case 'stop':
+            await handleStopMusic(ctx, interaction);
+            break;
+          case 'queue':
+            await handleQueue(ctx, interaction);
+            break;
+          default:
+            await interaction.reply({ content: '알 수 없는 music 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+        }
+        break;
+      }
       case 'play':
         await handlePlay(ctx, interaction);
         break;
