@@ -30,12 +30,13 @@
 ## AI 기능
 
 1. [Google AI Studio](https://aistudio.google.com/apikey)에서 API 키 발급
-2. 내 정보 → 설정 → Gemini API 키 입력
-3. 저장 후 AI 도구 사용 가능
+2. **내 정보 → 설정**에서 **Gemini(AI Studio) 프로필·키** 입력 (여러 프로필·활성 프로필 전환 가능)
+3. **이미지 생성·챗봇** 등에서 Vertex 경로를 쓰려면 같은 설정 화면의 **Vertex AI(API 키·GCP 프로젝트 ID·리전)** 도 채웁니다
+4. 저장 후 AI 도구 사용 가능
 
-> API 키는 브라우저 localStorage에만 저장돼요.
+> API 키·Vertex 설정은 브라우저 **localStorage**에만 저장돼요.
 
-개발자용으로 모델 ID·AI Studio/Vertex URL 등을 레포 한곳에서 맞추는 **`karmolab-ai`** 패키지가 있습니다. Toolbox **문서 → KarmoLabAI** 탭에서 쓰는 법을 정리해 두었어요.
+개발자용으로 모델 ID·REST URL 등을 레포 한곳에서 맞추는 **`karmolab-ai`** 패키지가 있고, 브라우저는 루트 엔트리만 번들에 포함됩니다. **Discord 봇·카카오보내기 스크립트**처럼 Node에서는 **`karmolab-ai/node`** 로 기본 모델·SDK 호출을 맞춥니다. Toolbox **문서 → KarmoLabAI** 탭에 최신 구조를 정리해 두었어요.
 
 ## 데이터
 
