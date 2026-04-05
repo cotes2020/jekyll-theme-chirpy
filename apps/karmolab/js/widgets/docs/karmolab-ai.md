@@ -81,15 +81,17 @@ flowchart TB
 
 - **`apps/discord-bots/apps/yawnbot`** 에 `karmolab-ai`가 `file:../../../../packages/karmolab-ai` 로 연결되어 있습니다.
 - 루트에서 봇 빌드할 때 `packages/karmolab-ai`가 먼저 `tsc` 됩니다 (`apps/discord-bots`의 `npm run build` / `build:yawnbot`).
-- **엔트리 분리:** 루트 `karmolab-ai`는 계약(URL·카탈로그)만, Node에서 `@google/generative-ai`로 실제 호출까지 맞출 때는 **`karmolab-ai/node`** 를 씁니다. (`peerDependencies`: `@google/generative-ai` — 욘봇이 이미 의존)
+- **엔트리 분리:** 루트 `karmolab-ai`는 계약(URL·카탈로그)만, **`karmolab-ai/node`** 에서 AI Studio(SDK) 또는 Vertex(REST) 텍스트 호출을 제공합니다. (`peerDependencies`: `@google/generative-ai` — AI Studio 경로에만 사용)
+- **호출 표면 전환 (`.env`):**
+  - **기본 AI Studio:** `GEMINI_API_KEY` 필수, `GEMINI_MODEL` 선택
+  - **Vertex:** `KARMOLAB_AI_SURFACE=vertex` (또는 `GEMINI_SURFACE=vertex`) + `VERTEX_API_KEY`, `VERTEX_PROJECT_ID` 필수, `VERTEX_LOCATION`·`GEMINI_MODEL` 선택  
+  - env 키 이름 참고: 루트 패키지 `ENV_GOOGLE_AI`
 - **`karmolab-ai/node` API (요약):**
-  - `createAiStudioTextModel(apiKey, modelId?)` — `GEMINI_MODEL` 미설정 시 패키지 기본 텍스트 모델
-  - `generateAiStudioText({ apiKey, modelId?, prompt })` — 단일 문자열 프롬프트 한 번 호출
-  - `resolveAiStudioTextModelId(envValue?)` — env 문자열만 정규화
-- 예시:
-  - `main.ts`: `import { createAiStudioTextModel } from 'karmolab-ai/node'` 로 `/ai` 등에 쓰는 모델 생성
-  - `kakao-export.mjs`(ESM): `createRequire`로 `require('karmolab-ai/node').generateAiStudioText` 사용
-- **TypeScript(욘봇):** 워크스페이스가 `moduleResolution: node`(classic)이면 `package.json` `exports` 서브패스 타입을 못 잡을 수 있어, `apps/yawnbot/tsconfig.json`에 `paths`로 `karmolab-ai/node` → `packages/karmolab-ai/dist/node` 를 두었습니다.
+  - `tryCreateGenerativeTextFromEnv()` → `{ surface, generateFromPrompt }` 또는 `null` — 욘봇 `/ai`·카카오 요약 공통
+  - `generateVertexText({ apiKey, projectId, location?, modelId?, userText, systemInstruction? })` — Vertex 단발
+  - `generateAiStudioText({ apiKey, modelId?, prompt, signal? })` — AI Studio 단발
+  - `createAiStudioTextModel` / `resolveAiStudioTextModelId` / `parseGenerativeSurfaceFromEnv` — 필요 시 저수준 조합
+- **TypeScript(욘봇):** `moduleResolution: node`(classic) 대비 `apps/yawnbot/tsconfig.json`의 `paths`로 `karmolab-ai/node` → `packages/karmolab-ai/dist/node` 연결
 
 모델 ID·카탈로그만 쓰려면 루트 `karmolab-ai`에서 `DEFAULT_TEXT_MODEL_ID`, `MODEL_CATALOG`, `getDefaultModelId` 를 import 하면 됩니다.
 
