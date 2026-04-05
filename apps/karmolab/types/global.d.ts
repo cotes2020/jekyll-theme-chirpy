@@ -47,6 +47,19 @@ declare global {
   var marked: { parse: (src: string) => string; setOptions: (opts: Record<string, unknown>) => void } | undefined;
   var Prism: { highlightElement: (el: Element) => void } | undefined;
 
+  /**
+   * `gemini.js` 번들이 노출하는 전역 — `user.ts` 설정 탭 등에서 `typeof Gemini` 가드와 함께 사용.
+   * (전체 API는 `gemini.ts`가 크므로 필요한 면만 점진적으로 확장)
+   */
+  var Gemini:
+    | undefined
+    | {
+        buildApiKeyUI: (idPrefix: string) => {
+          html: string;
+          init: (container?: HTMLElement | Document | null) => void;
+        };
+      };
+
   /** toolbox.js — global lexical binding (not necessarily window.Toolbox) */
   var Toolbox: {
     registerDeferred?: (stub: KarmoLabLazyWidgetStub) => void;
