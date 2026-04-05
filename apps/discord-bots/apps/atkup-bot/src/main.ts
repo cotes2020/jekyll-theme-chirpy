@@ -1,4 +1,5 @@
 import path from 'path';
+import http from 'node:http';
 import { config } from 'dotenv';
 import {
   AttachmentBuilder,
@@ -114,7 +115,44 @@ async function sendPublisherSaleToChannel(channel: SendableChannels, info: Publi
   }
 }
 
+/** KarmoLab 서버 모니터 등에서 프로세스 생존 확인용 (127.0.0.1만). `ATKUP_HEALTH_PORT=0` 이면 끔 */
+function startHealthServer(): void {
+  const raw = (process.env.ATKUP_HEALTH_PORT ?? '').trim().toLowerCase();
+  if (raw === '0' || raw === 'off' || raw === 'false') return;
+
+  const port = parseInt(process.env.ATKUP_HEALTH_PORT || '8081', 10);
+  if (!Number.isFinite(port) || port < 1 || port > 65535) {
+    console.warn('[ATKUp] ATKUP_HEALTH_PORT가 올바르지 않아 헬스 HTTP를 켜지 않습니다.');
+    return;
+  }
+
+  const server = http.createServer((req, res) => {
+    const u = req.url?.split('?')[0] ?? '';
+    if (req.method === 'GET' && u === '/health') {
+      res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('ok');
+      return;
+    }
+    res.writeHead(404);
+    res.end();
+  });
+
+  server.on('error', (err: NodeJS.ErrnoException) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`[ATKUp] 헬스 포트 ${port} 사용 중 — ATKUP_HEALTH_PORT를 바꾸거나 충돌 프로세스를 종료하세요.`);
+    } else {
+      console.error('[ATKUp] 헬스 HTTP 서버 오류:', err.message);
+    }
+  });
+
+  server.listen(port, '127.0.0.1', () => {
+    console.log(`[ATKUp] 헬스: http://127.0.0.1:${port}/health`);
+  });
+}
+
 function startAtkupBot() {
+  startHealthServer();
+
   const client = new Client({
     intents: [GatewayIntentBits.Guilds],
   });

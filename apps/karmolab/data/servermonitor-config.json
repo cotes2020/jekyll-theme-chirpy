@@ -16,7 +16,7 @@
             "id": "atkup",
             "title": "ATKUp",
             "subtitle": "디스코드 봇",
-            "noHealthUrl": true
+            "url": "http://127.0.0.1:8081/health"
         }
     ],
     "envFiles": [
@@ -74,6 +74,7 @@
             "cwd": "apps/discord-bots",
             "program": "npm",
             "args": ["run", "start:atkup"],
+            "healthUrl": "http://127.0.0.1:8081/health",
             "npmInstall": true
         }
     ]

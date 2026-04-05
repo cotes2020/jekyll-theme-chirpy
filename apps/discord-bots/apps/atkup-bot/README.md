@@ -22,6 +22,10 @@ npm run build:atkup
 - `ATKUP_CLIENT_ID`
 - `ATKUP_TARGET_CHANNEL_ID`
 
+선택:
+
+- `ATKUP_HEALTH_PORT` — 봇 기동 시 `127.0.0.1`에서 `GET /health` 로 `ok` 응답(기본 **8081**). YawnBot 웹훅(8080)과 겹치지 않게 둡니다. 끄려면 `0`.
+
 실행/배포:
 
 ```bash
