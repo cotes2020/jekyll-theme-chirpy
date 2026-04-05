@@ -6,7 +6,12 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/src/main.js",
     "deploy": "node dist/src/deploy-commands.js",
-    "dev": "tsc-watch -p tsconfig.json --preserveWatchOutput --onSuccess \"node dist/src/main.js\""
+    "dev": "tsc-watch -p tsconfig.json --preserveWatchOutput --onSuccess \"node dist/src/main.js\"",
+    "kakao-export": "node scripts/kakao-export.mjs",
+    "kakao-export-save": "node scripts/kakao-export.mjs --trigger-only",
+    "kakao-export-watch": "node scripts/kakao-export.mjs --watch",
+    "kakao-export-watch-bg": "node scripts/kakao-export-watch-background.mjs",
+    "kakao-export-watch-stop": "node scripts/kakao-export-watch-stop.mjs"
   },
   "dependencies": {
     "@discord-bots/common": "*",
