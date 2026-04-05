@@ -67,5 +67,6 @@ npm run dev
 ## 관련 문서
 
 - 터미널 명령 모음: **문서 → 프로젝트 명령**
+- **Deploy 로그를 카드 아래에 실시간 스트림**하는 기능은 아직 없고, 설계만 **문서 → 로컬 · deploy 로그(설계)** (`servermonitor-deploy-log-stream.md`)에 적어 두었습니다.
 - Tauri 앱 빌드·업데이트·트레이: `apps/karmolab-tauri/README.md`
 - Tauri 업데이트·릴리스 체크리스트: **문서 → 로드맵** (`roadmap.md` 의 「Tauri 데스크톱 · 자동 업데이트」)

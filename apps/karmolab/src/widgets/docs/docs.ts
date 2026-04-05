@@ -676,6 +676,23 @@
               renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
             });
         }
+      },
+      {
+        id: 'docs-servermonitor-deploy-log-design',
+        label: '로컬 · deploy 로그(설계)',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', {
+            msg: '서버 모니터 deploy 로그 스트림 — 미구현 설계 초안.'
+          });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('servermonitor-deploy-log-stream.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
       }
     ]
   });
