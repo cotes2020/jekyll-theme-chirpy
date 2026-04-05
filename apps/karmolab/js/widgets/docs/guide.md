@@ -36,7 +36,7 @@
 
 > API 키·Vertex 설정은 브라우저 **localStorage**에만 저장돼요.
 
-개발자용으로 모델 ID·REST URL 등을 레포 한곳에서 맞추는 **`karmolab-ai`** 패키지가 있고, 브라우저는 루트 엔트리만 번들에 포함됩니다. **Discord 봇·카카오보내기 스크립트**처럼 Node에서는 **`karmolab-ai/node`** 로 기본 모델·SDK 호출을 맞춥니다. Toolbox **문서 → KarmoLabAI** 탭에 최신 구조를 정리해 두었어요.
+개발자용으로 모델 ID·REST URL 등을 레포 한곳에서 맞추는 **`karmolab-ai`** 패키지가 있고, 브라우저는 루트 엔트리만 번들에 포함됩니다. **Discord 봇·카카오보내기**는 **`karmolab-ai/node`** 와 `.env`로 **AI Studio**(`GEMINI_API_KEY`) 또는 **Vertex**(`KARMOLAB_AI_SURFACE=vertex` + `VERTEX_*`)를 고를 수 있어요. Toolbox **문서 → KarmoLabAI** 탭을 보세요.
 
 ## 데이터
 
