@@ -41,6 +41,7 @@ flowchart TB
 
 - [ ] `MODEL_CATALOG` / 기본 모델을 바꾼 뒤 패키지·KarmoLab·봇을 각각 빌드했는지
 - [ ] (선택) Node에서 Vertex를 쓸 때 KarmoLab과 동일 REST를 맞출지, `@google-cloud/vertexai`·ADC를 쓸지 결정을 문서에 남겼는지
+- [ ] 챗봇 `cb_model` / `cb_api_surface`·`api-surface.ts`·캐릭터 이미지 Vertex 분기를 바꾼 뒤 이 절과 맞는지 확인
 
 ---
 
@@ -70,8 +71,15 @@ flowchart TB
 - 페이지 스크립트에서는 전역 **`Gemini`** 객체로 기능을 씁니다. 예:
   - **AI Studio:** `callText`, `callChat`, `callChatStream`, `callGeminiImage`, `callImagen`
   - **Vertex:** `callVertexText`, `callVertexChat`, `callVertexChatStream`, `callVertexGeminiImage`, `callVertexImagen`
-- Vertex 텍스트/채팅은 사용자 설정의 **Vertex API 키**, **`ig_vertex_project_id`**, **`ig_vertex_location`**(이미지 위젯과 동일)을 사용합니다.
-- **챗봇** 위젯: 사이드바 **API**에서 `Vertex AI`를 고르면 스트리밍이 Vertex 경로로 갑니다. (웹 검색은 AI Studio 전용.)
+- Vertex 텍스트/채팅·이미지는 사용자 설정의 **Vertex API 키**, **`ig_vertex_project_id`**, **`ig_vertex_location`**(이미지 위젯과 동일)을 사용합니다.
+
+### 챗봇 위젯 (런타임 AI Studio / Vertex)
+
+- **모델** (`#cbModelSelect`): `karmolab-ai`의 **`MODEL_CATALOG.gemini`** 와 동일 목록. 선택 값은 `Toolbox` 프리픽 **`cb_model`** 에 저장됩니다.
+- **API** (`#cbApiSurfaceSelect`): **Google AI Studio** ↔ **Vertex AI**. 저장 키 **`cb_api_surface`**, 값은 UI상 `studio` \| `vertex` 이며, 패키지 타입 **`GoogleGenerativeSurface`** 의 `aiStudio` \| `vertex` 와 대응합니다. 매핑·헬퍼: **`apps/karmolab/src/widgets/chatbot/api-surface.ts`** (`getChatbotApiSurfaceUi`, `chatbotUiSurfaceToPackage`).
+- **텍스트 스트리밍:** Studio → `Gemini.callChatStream`, Vertex → `Gemini.callVertexChatStream`. **웹 검색** 옵션은 **AI Studio 전용**(Vertex 선택 시 비활성화).
+- **Vertex 사용 시:** **내 정보 → 설정**에 Vertex API 키, **GCP 프로젝트 ID**(`ig_vertex_project_id`), 리전(`ig_vertex_location`, 비우면 `karmolab-ai`의 `DEFAULT_VERTEX_LOCATION`)이 필요합니다.
+- **캐릭터 이미지 자동 생성** (`KARMO_IMAGE`): 챗봇과 동일한 **`cb_api_surface`** 를 따릅니다. Vertex면 `callVertexGeminiImage`, Studio면 `callGeminiImage`.
 
 키 입력·프로필 UI는 **내 정보 → 설정**의 Gemini/Vertex 항목을 사용하세요.
 

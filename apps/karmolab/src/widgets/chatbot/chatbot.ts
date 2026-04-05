@@ -1,4 +1,11 @@
 // @ts-nocheck
+import {
+    CB_API_SURFACE_PREF_KEY,
+    ChatbotApiSurfaceUi,
+    chatbotUiSurfaceToPackage,
+    getChatbotApiSurfaceUi,
+} from './api-surface';
+
 (function () {
     /* ===== 상태 ===== */
     const CHATBOT_SESSIONS_INDEX_KEY = 'toolbox_chatbot_sessions_index';
@@ -430,11 +437,11 @@
 
             const surfaceSel = document.getElementById('cbApiSurfaceSelect');
             function syncWebSearchForApiSurface() {
-                const v = surfaceSel instanceof HTMLSelectElement ? surfaceSel.value : 'studio';
+                const v = surfaceSel instanceof HTMLSelectElement ? surfaceSel.value : ChatbotApiSurfaceUi.studio;
                 const ws = document.getElementById('cbWebSearch');
                 const row = ws?.closest('.cb-option-row');
                 if (ws instanceof HTMLInputElement) {
-                    if (v === 'vertex') {
+                    if (v === ChatbotApiSurfaceUi.vertex) {
                         ws.checked = false;
                         ws.disabled = true;
                         if (row instanceof HTMLElement) row.style.opacity = '0.45';
@@ -445,10 +452,12 @@
                 }
             }
             if (surfaceSel instanceof HTMLSelectElement) {
-                const savedSurface = Toolbox.getPref('cb_api_surface');
-                if (savedSurface === 'vertex' || savedSurface === 'studio') surfaceSel.value = savedSurface;
+                const savedSurface = Toolbox.getPref(CB_API_SURFACE_PREF_KEY);
+                if (savedSurface === ChatbotApiSurfaceUi.vertex || savedSurface === ChatbotApiSurfaceUi.studio) {
+                    surfaceSel.value = savedSurface;
+                }
                 surfaceSel.addEventListener('change', () => {
-                    Toolbox.setPref('cb_api_surface', surfaceSel.value);
+                    Toolbox.setPref(CB_API_SURFACE_PREF_KEY, surfaceSel.value);
                     syncWebSearchForApiSurface();
                 });
                 syncWebSearchForApiSurface();
@@ -895,8 +904,8 @@
             const text = input?.value.trim();
             if (!text) return;
 
-            const apiSurface = Toolbox.getPref('cb_api_surface') || 'studio';
-            if (apiSurface === 'vertex') {
+            const apiSurface = getChatbotApiSurfaceUi();
+            if (chatbotUiSurfaceToPackage(apiSurface) === 'vertex') {
                 if (!Gemini.requireVertexApiKey()) return;
                 if (!(Toolbox.getPref('ig_vertex_project_id') || '').trim()) {
                     Toolbox.showToast('Vertex 채팅: 사용자 설정에 GCP 프로젝트 ID를 입력하세요.', 'error');
@@ -935,7 +944,7 @@
 
             try {
                 const stream =
-                    apiSurface === 'vertex'
+                    chatbotUiSurfaceToPackage(apiSurface) === 'vertex'
                         ? await Gemini.callVertexChatStream(chatHistory, systemPrompt, modelId, {
                               temperature,
                               signal: currentStreamAbort.signal
@@ -1023,8 +1032,8 @@
             const lastUser = chatHistory[chatHistory.length - 1];
             if (!lastUser || lastUser.role !== 'user') return;
 
-            const apiSurface = Toolbox.getPref('cb_api_surface') || 'studio';
-            if (apiSurface === 'vertex') {
+            const apiSurface = getChatbotApiSurfaceUi();
+            if (chatbotUiSurfaceToPackage(apiSurface) === 'vertex') {
                 if (!Gemini.requireVertexApiKey()) return;
                 if (!(Toolbox.getPref('ig_vertex_project_id') || '').trim()) {
                     Toolbox.showToast('Vertex 채팅: 사용자 설정에 GCP 프로젝트 ID를 입력하세요.', 'error');
@@ -1052,7 +1061,7 @@
 
             try {
                 const stream =
-                    apiSurface === 'vertex'
+                    chatbotUiSurfaceToPackage(apiSurface) === 'vertex'
                         ? await Gemini.callVertexChatStream(chatHistory, systemPrompt, modelId, {
                               temperature,
                               signal: currentStreamAbort.signal
