@@ -1,8 +1,12 @@
 use serde::Deserialize;
-use std::collections::HashMap;
+use serde::Serialize;
+use std::collections::{HashMap, HashSet};
+use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 use std::sync::Mutex;
+use std::thread;
+use tauri::Emitter;
 use tauri::State;
 
 #[cfg(windows)]
@@ -17,6 +21,8 @@ const CONFIG_REL_PATH: &str = "apps/karmolab/data/servermonitor-config.json";
 pub struct LocalDevState {
     pub repo_root: Mutex<Option<String>>,
     pub pids: Mutex<HashMap<String, u32>>,
+    /// 프로필당 동시에 하나의 스트리밍 npm/deploy 작업만 허용
+    stream_busy: Mutex<HashSet<String>>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -238,6 +244,163 @@ fn run_npm_deploy_blocking(cwd: &Path, deploy_args: &[String]) -> Result<String,
     Ok("deploy 완료".into())
 }
 
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct LocaldevLogLineEvt {
+    run_id: String,
+    profile_id: String,
+    stream: String,
+    line: String,
+}
+
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct LocaldevLogDoneEvt {
+    run_id: String,
+    profile_id: String,
+    kind: String,
+    success: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    code: Option<i32>,
+}
+
+fn pipe_reader_thread(
+    pipe: impl std::io::Read + Send + 'static,
+    app: tauri::AppHandle,
+    run_id: String,
+    profile_id: String,
+    stream: &'static str,
+) -> thread::JoinHandle<()> {
+    thread::spawn(move || {
+        let mut reader = BufReader::new(pipe);
+        let mut buf = String::new();
+        loop {
+            buf.clear();
+            match reader.read_line(&mut buf) {
+                Ok(0) => break,
+                Ok(_) => {
+                    let line = buf.trim_end_matches(['\r', '\n']).to_string();
+                    let payload = LocaldevLogLineEvt {
+                        run_id: run_id.clone(),
+                        profile_id: profile_id.clone(),
+                        stream: stream.to_string(),
+                        line,
+                    };
+                    let _ = app.emit("localdev-log", &payload);
+                }
+                Err(_) => break,
+            }
+        }
+    })
+}
+
+fn npm_install_piped_command(cwd: &Path) -> Command {
+    let mut cmd;
+    #[cfg(windows)]
+    {
+        let mut c = Command::new("cmd.exe");
+        c.arg("/C").arg("npm").arg("install");
+        cmd = c;
+    }
+    #[cfg(not(windows))]
+    {
+        cmd = Command::new("npm");
+        cmd.arg("install");
+    }
+    cmd.current_dir(cwd);
+    cmd.stdin(Stdio::null());
+    cmd.stdout(Stdio::piped());
+    cmd.stderr(Stdio::piped());
+    apply_no_window(&mut cmd);
+    cmd
+}
+
+fn npm_deploy_piped_command(cwd: &Path, deploy_args: &[String]) -> Command {
+    let mut cmd;
+    #[cfg(windows)]
+    {
+        let mut c = Command::new("cmd.exe");
+        c.arg("/C").arg("npm").args(deploy_args);
+        cmd = c;
+    }
+    #[cfg(not(windows))]
+    {
+        cmd = Command::new("npm");
+        cmd.args(deploy_args);
+    }
+    cmd.current_dir(cwd);
+    cmd.stdin(Stdio::null());
+    cmd.stdout(Stdio::piped());
+    cmd.stderr(Stdio::piped());
+    apply_no_window(&mut cmd);
+    cmd
+}
+
+fn run_npm_command_streamed(
+    app: tauri::AppHandle,
+    profile_id: String,
+    kind: &'static str,
+    ok_msg: &'static str,
+    err_label: &'static str,
+    mut cmd: Command,
+) -> Result<String, String> {
+    let run_id = uuid::Uuid::new_v4().to_string();
+    let mut child = cmd
+        .spawn()
+        .map_err(|e| format!("{err_label} 실행 실패: {e}", err_label = err_label))?;
+
+    let stdout = child
+        .stdout
+        .take()
+        .ok_or_else(|| format!("{err_label}: stdout 파이프 없음"))?;
+    let stderr = child
+        .stderr
+        .take()
+        .ok_or_else(|| format!("{err_label}: stderr 파이프 없음"))?;
+
+    let h_out = pipe_reader_thread(
+        stdout,
+        app.clone(),
+        run_id.clone(),
+        profile_id.clone(),
+        "out",
+    );
+    let h_err = pipe_reader_thread(
+        stderr,
+        app.clone(),
+        run_id.clone(),
+        profile_id.clone(),
+        "err",
+    );
+
+    let status = child
+        .wait()
+        .map_err(|e| format!("{err_label} 대기 실패: {e}", err_label = err_label))?;
+
+    let _ = h_out.join();
+    let _ = h_err.join();
+
+    let success = status.success();
+    let code = status.code();
+    let done = LocaldevLogDoneEvt {
+        run_id: run_id.clone(),
+        profile_id: profile_id.clone(),
+        kind: kind.to_string(),
+        success,
+        code,
+    };
+    let _ = app.emit("localdev-log-done", &done);
+
+    if success {
+        Ok(ok_msg.into())
+    } else {
+        Err(format!(
+            "{err_label} 실패 (exit {})\n로그는 카드 패널을 확인하세요.",
+            status,
+        ))
+    }
+}
+
 #[cfg(windows)]
 fn kill_process_tree(pid: u32) -> Result<(), String> {
     let status = Command::new("taskkill.exe")
@@ -370,4 +533,117 @@ pub fn localdev_deploy(profile_id: String, state: State<'_, LocalDevState>) -> R
 
     let cwd = resolve_cwd(&repo, profile)?;
     run_npm_deploy_blocking(&cwd, da)
+}
+
+#[tauri::command]
+pub async fn localdev_deploy_stream(
+    profile_id: String,
+    app: tauri::AppHandle,
+    state: State<'_, LocalDevState>,
+) -> Result<String, String> {
+    let repo_str = {
+        let g = state.repo_root.lock().map_err(|e| e.to_string())?;
+        g.clone()
+            .ok_or_else(|| "저장소 루트를 먼저 설정하세요.".to_string())?
+    };
+    let repo = PathBuf::from(&repo_str);
+
+    let profiles = read_profiles(&repo)?;
+    let profile = profile_by_id(&profiles, &profile_id)?;
+    let Some(ref da) = profile.deploy_args else {
+        return Err("이 프로필에 deploy가 설정되어 있지 않습니다.".into());
+    };
+    if da.is_empty() {
+        return Err("deploy_args가 비어 있습니다.".into());
+    }
+    if !args_are_safe(da) {
+        return Err("deploy 인자에 허용되지 않은 문자가 있습니다.".into());
+    }
+    let cwd = resolve_cwd(&repo, profile)?;
+
+    {
+        let mut busy = state.stream_busy.lock().map_err(|e| e.to_string())?;
+        if !busy.insert(profile_id.clone()) {
+            return Err("이 프로필에서 deploy 또는 npm install이 이미 실행 중입니다.".into());
+        }
+    }
+
+    let cmd = npm_deploy_piped_command(&cwd, da);
+    let app2 = app.clone();
+    let pid = profile_id.clone();
+    let join = tauri::async_runtime::spawn_blocking(move || {
+        run_npm_command_streamed(app2, pid, "deploy", "deploy 완료", "deploy", cmd)
+    });
+    let out = match join.await {
+        Ok(r) => r,
+        Err(e) => {
+            let mut busy = state.stream_busy.lock().map_err(|e2| e2.to_string())?;
+            busy.remove(&profile_id);
+            return Err(format!("deploy 작업 스레드 실패: {}", e));
+        }
+    };
+
+    {
+        let mut busy = state.stream_busy.lock().map_err(|e| e.to_string())?;
+        busy.remove(&profile_id);
+    }
+
+    out
+}
+
+#[tauri::command]
+pub async fn localdev_npm_install_stream(
+    profile_id: String,
+    app: tauri::AppHandle,
+    state: State<'_, LocalDevState>,
+) -> Result<String, String> {
+    let repo_str = {
+        let g = state.repo_root.lock().map_err(|e| e.to_string())?;
+        g.clone()
+            .ok_or_else(|| "저장소 루트를 먼저 설정하세요.".to_string())?
+    };
+    let repo = PathBuf::from(&repo_str);
+
+    let profiles = read_profiles(&repo)?;
+    let profile = profile_by_id(&profiles, &profile_id)?;
+    if !profile.npm_install {
+        return Err("이 프로필은 npm install이 비활성화되어 있습니다.".into());
+    }
+    let cwd = resolve_cwd(&repo, profile)?;
+
+    {
+        let mut busy = state.stream_busy.lock().map_err(|e| e.to_string())?;
+        if !busy.insert(profile_id.clone()) {
+            return Err("이 프로필에서 deploy 또는 npm install이 이미 실행 중입니다.".into());
+        }
+    }
+
+    let cmd = npm_install_piped_command(&cwd);
+    let app2 = app.clone();
+    let pid = profile_id.clone();
+    let join = tauri::async_runtime::spawn_blocking(move || {
+        run_npm_command_streamed(
+            app2,
+            pid,
+            "npm_install",
+            "npm install 완료",
+            "npm install",
+            cmd,
+        )
+    });
+    let out = match join.await {
+        Ok(r) => r,
+        Err(e) => {
+            let mut busy = state.stream_busy.lock().map_err(|e2| e2.to_string())?;
+            busy.remove(&profile_id);
+            return Err(format!("npm install 작업 스레드 실패: {}", e));
+        }
+    };
+
+    {
+        let mut busy = state.stream_busy.lock().map_err(|e| e.to_string())?;
+        busy.remove(&profile_id);
+    }
+
+    out
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "tauri": "tauri",
     "dev": "concurrently -n static,tauri \"npm run dev:static\" \"npm run dev:tauri\"",
-    "dev:static": "cd ../.. && python -m http.server 8899 --bind 127.0.0.1",
+    "dev:static": "node ./scripts/dev-static.mjs",
     "dev:tauri": "wait-on http-get://127.0.0.1:8899/apps/karmolab/ -t 120000 -i 250 && tauri dev",
     "dev:jekyll": "cd ../.. && bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload --incremental --force_polling",
     "dev:tauri:jekyll": "wait-on http-get://127.0.0.1:4000/karmolab/ -t 600000 -i 500 && tauri dev --config src-tauri/tauri.dev-jekyll.conf.json",

@@ -5,7 +5,7 @@
 ## 준비물
 
 - [Rust](https://www.rust-lang.org/learn/get-started) + [Tauri 사전 요구사항](https://v2.tauri.app/start/prerequisites/) (Windows: Visual Studio Build Tools, WebView2)
-- **로컬 개발(기본)**: **Python 3** (`python -m http.server` — 레포 루트에서 정적 서빙)
+- **로컬 개발(기본)**: **Node.js**(필수, Tauri와 동일) — `npm run dev` 시 정적 서버는 **`scripts/dev-static.mjs`** 가 띄웁니다. **Python 3** 이 PATH에 있으면 `http.server`를 쓰고, 없으면 **Node 내장 http**로 8899를 서빙합니다.
 - **블로그까지 Jekyll로 보려면**(선택): Ruby/Jekyll(`Gemfile` 기준) — `npm run dev:with-jekyll`
 
 ## 명령
@@ -13,14 +13,14 @@
 ```bash
 cd apps/karmolab-tauri
 npm install
-npm run dev    # 레포 루트에서 python http.server(8899) + /apps/karmolab/ 응답 대기 후 tauri dev (KarmoLab만; Jekyll 없음)
+npm run dev    # 정적 서버(8899): Python http.server 우선, 없으면 Node — /apps/karmolab/ 응답 대기 후 tauri dev (KarmoLab만; Jekyll 없음)
 npm run dev:app  # 이미 8899에 정적 서버가 떠 있을 때 Tauri만
 npm run dev:with-jekyll   # 예전 방식: Jekyll(4000) + devUrl 4000/karmolab/ (블로그·Liquid 포함 로컬)
 npm run dev:remote  # 개발 모드(tauri dev)인데 WebView만 배포본 URL로
 npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 씀)
 ```
 
-`tauri.conf.json`의 **`build.devUrl`** 은 **`http://127.0.0.1:8899/apps/karmolab/`** — 저장소 루트에서 `python -m http.server 8899`로 띄운 정적 서버의 KarmoLab 경로입니다. 자산 경로가 `/apps/karmolab/...` 이므로 **문서 루트는 반드시 레포 최상위**여야 합니다. **`build.frontendDist`** 는 배포용으로 **GitHub Pages URL**을 유지합니다.
+`tauri.conf.json`의 **`build.devUrl`** 은 **`http://127.0.0.1:8899/apps/karmolab/`** — 문서 루트는 **레포 최상위**여야 합니다(`dev:static` → `scripts/dev-static.mjs`: Python `http.server` 또는 Node 폴백). 자산 경로가 `/apps/karmolab/...` 이므로 이 구조를 유지합니다. **`build.frontendDist`** 는 배포용으로 **GitHub Pages URL**을 유지합니다.
 
 **Jekyll 없이**: `index.html` 상단에 프론트매터(`---`)가 그대로 보일 수 있습니다. 치우려면 `bundle exec jekyll build` 후 `_site`를 서빙하거나 `dev:with-jekyll`을 쓰세요.
 
@@ -33,7 +33,7 @@ npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 
 - KarmoLab 페이지(`apps/karmolab/index.html`)는 **프로덕션 빌드에서** 사이트 루트의 **`/sw.min.js`(Chirpy 서비스 워커)** 를 등록합니다. 본문 레이아웃을 쓰지 않던 페이지라 기존에는 SW가 붙지 않았습니다.
 - 그 SW는 설정상 **거부 경로가 아닌 GET 요청**을 네트워크로 받은 뒤 **Cache Storage에 넣습니다**. 그래서 **같은 출처**(`/karmolab/`, `/apps/karmolab/…` 등)는 방문·로드된 범위에서 캐시에 쌓일 수 있습니다.
 - **한계**: (1) 최초 실행부터 오프라인이면 캐시가 없어 빈 화면/실패할 수 있습니다. (2) 브라우저·WebView2가 디스크를 비우면 캐시가 사라집니다. (3) **폰트(Inter, Pretendard)·일부 위젯 전용 CDN** 등은 여전히 외부망이 필요할 수 있습니다. KarmoLab 본문은 `crypto-js`·`marked`·`prism`(테마·자주 쓰는 언어 컴포넌트)을 `apps/karmolab/js/vendor`에 두어 같은 출처로 제공합니다.
-- 로컬에서 앱으로 확인할 때는 기본 **`npm run dev`**(Python 정적 서버 + KarmoLab)를 쓰면 됩니다. 배포본·서비스 워커·원격 캐시를 **개발 빌드(Rust 디버그)** 로만 검증하려면 **`npm run dev:remote`** (`src-tauri/tauri.dev-remote.conf.json`이 `devUrl`만 GitHub Pages로 덮어씀).
+- 로컬에서 앱으로 확인할 때는 기본 **`npm run dev`**(8899 정적 서버 + KarmoLab)를 쓰면 됩니다. 배포본·서비스 워커·원격 캐시를 **개발 빌드(Rust 디버그)** 로만 검증하려면 **`npm run dev:remote`** (`src-tauri/tauri.dev-remote.conf.json`이 `devUrl`만 GitHub Pages로 덮어씀).
 
 ## 배포·원격 검증(짧은 체크리스트)
 

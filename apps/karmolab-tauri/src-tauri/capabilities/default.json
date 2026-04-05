@@ -12,6 +12,7 @@
   },
   "permissions": [
     "core:default",
+    "core:event:allow-listen",
     "allow-desktop-notify",
     "allow-localdev",
     "allow-repofile",
