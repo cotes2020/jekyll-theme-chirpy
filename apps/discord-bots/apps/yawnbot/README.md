@@ -2,7 +2,7 @@
 
 Discord 슬래시 봇입니다. **표시 이름은「욘」**, npm·폴더명은 `yawnbot` 입니다. 소스·데이터·이미지 기준 경로는 이 디렉터리입니다.
 
-음성(DAVE) 참고·구현 기능 요약·남은 TODO·향후 아이디어는 KarmoLab **문서** 위젯 **「Discord·욘봇」** 탭(`apps/karmolab/js/widgets/docs/discord-yawnbot.md`)에서 봅니다.
+음성(DAVE) 참고·구현 요약·TODO·향후 검토·아이디어 구상은 KarmoLab **문서** 위젯 **「Discord·욘봇」** 탭(`apps/karmolab/js/widgets/docs/discord-yawnbot.md`)에서 봅니다.
 
 ## 빠른 시작
 
