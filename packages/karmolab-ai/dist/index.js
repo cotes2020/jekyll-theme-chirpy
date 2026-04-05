@@ -2,6 +2,7 @@
 /**
  * KarmoLabAI — Google Generative AI 공통 계약 (AI Studio + Vertex AI).
  * 브라우저/Node 공통: 모델 카탈로그, REST URL 조립, 문서·기본 리전 등. fetch·키 저장 없음.
+ * Node에서 `@google/generative-ai` 호출까지 맞출 때는 서브패스 `karmolab-ai/node` 참고.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DEFAULT_GEMINI_TEXT_MODEL_ID = exports.DEFAULT_TEXT_MODEL_ID = exports.MODEL_CATALOG = exports.ENV_GOOGLE_AI = exports.DOC_URL_VERTEX_API_KEYS = exports.DOC_URL_AI_STUDIO_API_KEY = exports.DEFAULT_VERTEX_LOCATION = exports.AI_STUDIO_GENERATIVE_BASE = exports.AI_STUDIO_GENERATIVE_HOST = void 0;
@@ -48,6 +49,12 @@ exports.ENV_GOOGLE_AI = {
     /** AI Studio 스타일 API 키 (욘봇·카카오 스크립트 등) */
     apiKey: 'GEMINI_API_KEY',
     modelOverride: 'GEMINI_MODEL',
+    /** `aiStudio`(기본) 또는 `vertex` — `KARMOLAB_AI_SURFACE` 우선, 없으면 `GEMINI_SURFACE` */
+    surfacePrimary: 'KARMOLAB_AI_SURFACE',
+    surfaceAlt: 'GEMINI_SURFACE',
+    vertexApiKey: 'VERTEX_API_KEY',
+    vertexProjectId: 'VERTEX_PROJECT_ID',
+    vertexLocation: 'VERTEX_LOCATION',
 };
 exports.MODEL_CATALOG = {
     gemini: [
