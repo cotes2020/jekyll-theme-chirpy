@@ -9,6 +9,7 @@ import {
   withTimeout,
   YOUTUBE_RESOLVE_TIMEOUT_MS,
   canonicalYoutubeWatchUrl,
+  searchYoutubeFirstVideoViaYoutubei,
 } from '../music-player';
 
 async function resolveYouTube(query: string) {
@@ -24,10 +25,26 @@ async function resolveYouTube(query: string) {
   if (v === 'playlist') {
     return { error: 'playlist' };
   }
-  const results = await play.search(q, { limit: 1, source: { youtube: 'video' } });
-  if (!results.length) return { error: 'notfound' };
+  let results;
+  try {
+    results = await play.search(q, { limit: 1, source: { youtube: 'video' } });
+  } catch (e) {
+    console.warn('[play] play-dl 검색 실패, youtubei.js 폴백:', e instanceof Error ? e.message : e);
+    const fb = await searchYoutubeFirstVideoViaYoutubei(q);
+    if (fb) return { title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
+    throw e;
+  }
+  if (!results.length) {
+    const fb = await searchYoutubeFirstVideoViaYoutubei(q);
+    if (fb) return { title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
+    return { error: 'notfound' };
+  }
   const first = results[0];
-  if (first.type !== 'video') return { error: 'notfound' };
+  if (first.type !== 'video') {
+    const fb = await searchYoutubeFirstVideoViaYoutubei(q);
+    if (fb) return { title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
+    return { error: 'notfound' };
+  }
   return { title: first.title || q, url: canonicalYoutubeWatchUrl(first.url) };
 }
 
