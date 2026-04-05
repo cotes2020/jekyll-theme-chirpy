@@ -12,7 +12,7 @@ import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
 import { destroyAllMusicPlayers } from './bot/music-player';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { DEFAULT_GEMINI_TEXT_MODEL_ID } from 'karmolab-ai';
+import { DEFAULT_TEXT_MODEL_ID } from 'karmolab-ai';
 
 import { GameDataService } from './services/gamedata';
 import { EnhancementService } from './services/enhancement';
@@ -50,7 +50,7 @@ let geminiModel: any = null;
 try {
   if (process.env.GEMINI_API_KEY) {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    geminiModel = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || DEFAULT_GEMINI_TEXT_MODEL_ID });
+    geminiModel = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || DEFAULT_TEXT_MODEL_ID });
     console.log('[Gemini] AI 모델 초기화 완료');
   }
 } catch (e: any) {

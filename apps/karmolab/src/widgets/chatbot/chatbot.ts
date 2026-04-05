@@ -235,6 +235,12 @@
                         </div>
                         <label class="cb-model-label">모델</label>
                         <select id="cbModelSelect" style="font-size:var(--font-size-xs);padding:6px 8px;width:100%;"></select>
+                        <label class="cb-model-label" style="margin-top:8px;">API</label>
+                        <select id="cbApiSurfaceSelect" style="font-size:var(--font-size-xs);padding:6px 8px;width:100%;">
+                            <option value="studio">Google AI Studio (프로필 API 키)</option>
+                            <option value="vertex">Vertex AI (Cloud 키 + GCP 프로젝트)</option>
+                        </select>
+                        <p class="cb-mini" style="font-size:var(--font-size-2xs);color:var(--text-tertiary);margin:6px 0 0;line-height:1.45;">Vertex는 사용자 설정의 Vertex 키·프로젝트 ID·리전(<code style="font-size:1em;">ig_vertex_*</code>)을 씁니다. 웹 검색은 Studio 전용입니다.</p>
                     </div>
 
                     <div class="cb-options">
@@ -421,6 +427,32 @@
             const savedModel = Toolbox.getPref('cb_model');
             if (savedModel && sel) { sel.value = savedModel; }
             if (sel) sel.addEventListener('change', () => Toolbox.setPref('cb_model', sel.value));
+
+            const surfaceSel = document.getElementById('cbApiSurfaceSelect');
+            function syncWebSearchForApiSurface() {
+                const v = surfaceSel instanceof HTMLSelectElement ? surfaceSel.value : 'studio';
+                const ws = document.getElementById('cbWebSearch');
+                const row = ws?.closest('.cb-option-row');
+                if (ws instanceof HTMLInputElement) {
+                    if (v === 'vertex') {
+                        ws.checked = false;
+                        ws.disabled = true;
+                        if (row instanceof HTMLElement) row.style.opacity = '0.45';
+                    } else {
+                        ws.disabled = false;
+                        if (row instanceof HTMLElement) row.style.opacity = '';
+                    }
+                }
+            }
+            if (surfaceSel instanceof HTMLSelectElement) {
+                const savedSurface = Toolbox.getPref('cb_api_surface');
+                if (savedSurface === 'vertex' || savedSurface === 'studio') surfaceSel.value = savedSurface;
+                surfaceSel.addEventListener('change', () => {
+                    Toolbox.setPref('cb_api_surface', surfaceSel.value);
+                    syncWebSearchForApiSurface();
+                });
+                syncWebSearchForApiSurface();
+            }
 
             // 시스템 프롬프트 프리셋 (__none__ / 직접입력 / 명명 프리셋)
             const presetSel = document.getElementById('cbSystemPreset');
@@ -862,7 +894,17 @@
             const input = document.getElementById('cbInput');
             const text = input?.value.trim();
             if (!text) return;
-            if (!Gemini.requireApiKey()) return;
+
+            const apiSurface = Toolbox.getPref('cb_api_surface') || 'studio';
+            if (apiSurface === 'vertex') {
+                if (!Gemini.requireVertexApiKey()) return;
+                if (!(Toolbox.getPref('ig_vertex_project_id') || '').trim()) {
+                    Toolbox.showToast('Vertex 채팅: 사용자 설정에 GCP 프로젝트 ID를 입력하세요.', 'error');
+                    return;
+                }
+            } else if (!Gemini.requireApiKey()) {
+                return;
+            }
 
             appendMsg('user', text + (pendingImages.length ? ` [📎 이미지 ${pendingImages.length}장]` : ''));
             input.value = '';
@@ -892,11 +934,17 @@
             if (stopBtn) stopBtn.style.display = '';
 
             try {
-                const stream = await Gemini.callChatStream(chatHistory, systemPrompt, modelId, {
-                    webSearch: useWebSearch,
-                    temperature,
-                    signal: currentStreamAbort.signal
-                });
+                const stream =
+                    apiSurface === 'vertex'
+                        ? await Gemini.callVertexChatStream(chatHistory, systemPrompt, modelId, {
+                              temperature,
+                              signal: currentStreamAbort.signal
+                          })
+                        : await Gemini.callChatStream(chatHistory, systemPrompt, modelId, {
+                              webSearch: useWebSearch,
+                              temperature,
+                              signal: currentStreamAbort.signal
+                          });
 
                 let fullText = '';
                 let lastUsage = null;
@@ -975,6 +1023,17 @@
             const lastUser = chatHistory[chatHistory.length - 1];
             if (!lastUser || lastUser.role !== 'user') return;
 
+            const apiSurface = Toolbox.getPref('cb_api_surface') || 'studio';
+            if (apiSurface === 'vertex') {
+                if (!Gemini.requireVertexApiKey()) return;
+                if (!(Toolbox.getPref('ig_vertex_project_id') || '').trim()) {
+                    Toolbox.showToast('Vertex 채팅: 사용자 설정에 GCP 프로젝트 ID를 입력하세요.', 'error');
+                    return;
+                }
+            } else if (!Gemini.requireApiKey()) {
+                return;
+            }
+
             const useMemory = document.getElementById('cbMemory')?.checked;
             const useWebSearch = document.getElementById('cbWebSearch')?.checked;
             const systemPrompt = window.ChatbotPrompt.assembleSystemPrompt({ useMemory, conversationSummary });
@@ -992,9 +1051,17 @@
             if (stopBtn) stopBtn.style.display = '';
 
             try {
-                const stream = await Gemini.callChatStream(chatHistory, systemPrompt, modelId, {
-                    webSearch: useWebSearch, temperature, signal: currentStreamAbort.signal
-                });
+                const stream =
+                    apiSurface === 'vertex'
+                        ? await Gemini.callVertexChatStream(chatHistory, systemPrompt, modelId, {
+                              temperature,
+                              signal: currentStreamAbort.signal
+                          })
+                        : await Gemini.callChatStream(chatHistory, systemPrompt, modelId, {
+                              webSearch: useWebSearch,
+                              temperature,
+                              signal: currentStreamAbort.signal
+                          });
                 let fullText = '';
                 let lastUsage = null;
                 let renderPending2 = false;

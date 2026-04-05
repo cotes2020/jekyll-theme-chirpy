@@ -1,18 +1,76 @@
 /**
- * KarmoLabAI — SSOT for Gemini-related model IDs and display catalog.
- * No browser, no fetch, no SDK: safe for KarmoLab (esbuild → browser) and Node (yawnbot, scripts).
+ * KarmoLabAI — Google Generative AI 공통 계약 (AI Studio + Vertex AI).
+ * 브라우저/Node 공통: 모델 카탈로그, REST URL 조립, 문서·기본 리전 등. fetch·키 저장 없음.
  */
 
+// ─── 서피스 구분 (문서·타입용) ─────────────────────────────────────────
+export type GoogleGenerativeSurface = 'aiStudio' | 'vertex';
+
+// ─── AI Studio (Generative Language API, API 키 = AI Studio / Google AI) ─
+export const AI_STUDIO_GENERATIVE_HOST = 'generativelanguage.googleapis.com';
+export const AI_STUDIO_GENERATIVE_BASE = `https://${AI_STUDIO_GENERATIVE_HOST}/v1beta`;
+
+export function buildAiStudioGenerateContentUrl(modelId: string, apiKey: string): string {
+  return `${AI_STUDIO_GENERATIVE_BASE}/models/${encodeURIComponent(modelId)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+}
+
+export function buildAiStudioStreamGenerateContentUrl(modelId: string, apiKey: string): string {
+  return `${AI_STUDIO_GENERATIVE_BASE}/models/${encodeURIComponent(modelId)}:streamGenerateContent?alt=sse&key=${encodeURIComponent(apiKey)}`;
+}
+
+/** Imagen 등 `:predict` RPC (AI Studio) */
+export function buildAiStudioPredictUrl(modelId: string, apiKey: string): string {
+  return `${AI_STUDIO_GENERATIVE_BASE}/models/${encodeURIComponent(modelId)}:predict?key=${encodeURIComponent(apiKey)}`;
+}
+
+// ─── Vertex AI (regional aiplatform, GCP 프로젝트 + 리전 + API 키) ───────
+export const DEFAULT_VERTEX_LOCATION = 'us-central1';
+
+/**
+ * Vertex: `projects/.../locations/.../publishers/google/models/{modelId}:{method}`
+ * `streamGenerateContent` → `?alt=sse` (AI Studio와 동일 패턴)
+ * @see https://cloud.google.com/vertex-ai/docs/reference/rest
+ */
+export function buildVertexPublisherModelUrl(opts: {
+  projectId: string;
+  location?: string;
+  modelId: string;
+  method: 'generateContent' | 'streamGenerateContent' | 'predict';
+  apiKey: string;
+}): string {
+  const loc = (opts.location || DEFAULT_VERTEX_LOCATION).trim() || DEFAULT_VERTEX_LOCATION;
+  const pid = encodeURIComponent(opts.projectId.trim());
+  const locEnc = encodeURIComponent(loc);
+  const mid = encodeURIComponent(opts.modelId);
+  const key = encodeURIComponent(opts.apiKey);
+  const q = opts.method === 'streamGenerateContent' ? `?alt=sse&key=${key}` : `?key=${key}`;
+  return (
+    `https://${locEnc}-aiplatform.googleapis.com/v1/projects/${pid}` +
+    `/locations/${locEnc}/publishers/google/models/${mid}:${opts.method}${q}`
+  );
+}
+
+// ─── 문서 / 온보딩 URL ───────────────────────────────────────────────────
+export const DOC_URL_AI_STUDIO_API_KEY = 'https://aistudio.google.com/app/apikey';
+export const DOC_URL_VERTEX_API_KEYS =
+  'https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys';
+
+/** 스크립트·봇 env 이름 (참고용, 런타임 읽기 없음) */
+export const ENV_GOOGLE_AI = {
+  /** AI Studio 스타일 API 키 (욘봇·카카오 스크립트 등) */
+  apiKey: 'GEMINI_API_KEY',
+  modelOverride: 'GEMINI_MODEL',
+} as const;
+
+// ─── 모델 카탈로그 (텍스트 Gemini / Nano Banana / Imagen) ────────────────
 export type ModelProvider = 'gemini' | 'geminiImage' | 'imagen';
 
 export interface ModelEntry {
   id: string;
   name: string;
-  /** When true, used as UI/API default for that provider bucket */
   isDefault?: boolean;
 }
 
-/** Mirrors former `MODELS` in apps/karmolab/src/gemini.ts */
 export const MODEL_CATALOG: Record<ModelProvider, ModelEntry[]> = {
   gemini: [
     { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', isDefault: true },
@@ -43,5 +101,8 @@ export function getDefaultModelId(provider: ModelProvider): string {
   return def ? def.id : models[0].id;
 }
 
-/** Text Gemini when `GEMINI_MODEL` / UI does not override (matches catalog default). */
-export const DEFAULT_GEMINI_TEXT_MODEL_ID = getDefaultModelId('gemini');
+/** 텍스트 generateContent 기본 모델 (AI Studio·Vertex 동일 모델 ID 문자열) */
+export const DEFAULT_TEXT_MODEL_ID = getDefaultModelId('gemini');
+
+/** @deprecated `DEFAULT_TEXT_MODEL_ID` 사용 권장 */
+export const DEFAULT_GEMINI_TEXT_MODEL_ID = DEFAULT_TEXT_MODEL_ID;

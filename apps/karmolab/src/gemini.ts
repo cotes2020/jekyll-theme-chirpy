@@ -4,7 +4,7 @@
  * Toolbox 전역에서 사용하는 Gemini/Imagen API 헬퍼.
  * - API 키 관리 (localStorage)
  * - 모델 목록 정의
- * - fetchWithRetry, callText, callChat, callChatStream, callGeminiImage (선택: referenceImage), callImagen
+ * - fetchWithRetry, callText, callChat, callChatStream, callVertexText, callVertexChat, callVertexChatStream, callGeminiImage (선택: referenceImage), callImagen
  * - enhancePrompt, buildApiKeyUI
  * - Vertex AI용 Google Cloud API 키 (별도 localStorage, AI Studio 키와 독립)
  *
@@ -13,10 +13,20 @@
  * - 이미지: https://ai.google.dev/gemini-api/docs/image-generation
  * - Imagen: https://ai.google.dev/gemini-api/docs/imagen
  *
- * 모델 ID·목록 SSOT: packages/karmolab-ai (KarmoLabAI)
+ * 모델·URL·Vertex 기본값 SSOT: packages/karmolab-ai (KarmoLabAI — AI Studio + Vertex)
  */
 // @ts-nocheck — large API surface; narrow types incrementally later (Toolbox/Gemini shapes)
-import { MODEL_CATALOG as MODELS, getDefaultModelId } from 'karmolab-ai';
+import {
+  MODEL_CATALOG as MODELS,
+  getDefaultModelId,
+  buildAiStudioGenerateContentUrl,
+  buildAiStudioStreamGenerateContentUrl,
+  buildAiStudioPredictUrl,
+  buildVertexPublisherModelUrl,
+  DEFAULT_VERTEX_LOCATION,
+  DOC_URL_AI_STUDIO_API_KEY,
+  DOC_URL_VERTEX_API_KEYS,
+} from 'karmolab-ai';
 
 const Gemini = (() => {
     const STORAGE_KEY = 'toolbox_gemini_api_key'; // legacy single-key
@@ -153,6 +163,20 @@ const Gemini = (() => {
         return getDefaultModelId(provider);
     }
 
+    /** 이미지 위젯·챗봇 Vertex 경로와 동일 prefs */
+    const VERTEX_CHAT_PROJECT_PREF = 'ig_vertex_project_id';
+    const VERTEX_CHAT_LOCATION_PREF = 'ig_vertex_location';
+
+    function getVertexChatContext(options = {}) {
+        const projectId = String(
+            options.projectId != null ? options.projectId : Toolbox.getPref(VERTEX_CHAT_PROJECT_PREF) || ''
+        ).trim();
+        const locRaw =
+            options.location != null ? options.location : Toolbox.getPref(VERTEX_CHAT_LOCATION_PREF) || DEFAULT_VERTEX_LOCATION;
+        const location = String(locRaw || DEFAULT_VERTEX_LOCATION).trim() || DEFAULT_VERTEX_LOCATION;
+        return { projectId, location };
+    }
+
     /* ===== API 요청/응답 히스토리 (디버깅용, 메모리만) ===== */
     const apiHistory = [];
     const API_HISTORY_MAX = 20;
@@ -267,7 +291,7 @@ const Gemini = (() => {
         if (!key) return null;
 
         const model = modelId || getDefaultModel('gemini');
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+        const url = buildAiStudioGenerateContentUrl(model, key);
         const body = {
             contents: [{ parts: [{ text: userText }] }],
             systemInstruction: { parts: [{ text: systemPrompt }] },
@@ -293,7 +317,7 @@ const Gemini = (() => {
         if (!key) return null;
 
         const model = modelId || getDefaultModel('gemini');
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+        const url = buildAiStudioGenerateContentUrl(model, key);
         const body = {
             contents: history,
             systemInstruction: { parts: [{ text: systemPrompt }] },
@@ -326,7 +350,7 @@ const Gemini = (() => {
         if (!key) return null;
 
         const model = modelId || getDefaultModel('gemini');
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?alt=sse&key=${key}`;
+        const url = buildAiStudioStreamGenerateContentUrl(model, key);
         const body = {
             contents: history,
             systemInstruction: { parts: [{ text: systemPrompt }] },
@@ -377,6 +401,157 @@ const Gemini = (() => {
         };
     }
 
+    /* ===== Vertex — 텍스트 / 채팅 / 스트리밍 (generateContent·streamGenerateContent) ===== */
+    async function callVertexText(userText, systemPrompt, modelId, options = {}) {
+        const key = requireVertexApiKey();
+        if (!key) return null;
+
+        const { projectId, location } = getVertexChatContext(options);
+        if (!projectId) {
+            throw new Error('Vertex 채팅·텍스트에는 GCP 프로젝트 ID가 필요합니다. 사용자 설정에서 프로젝트 ID를 입력하세요.');
+        }
+
+        const model = modelId || getDefaultModel('gemini');
+        const url = buildVertexPublisherModelUrl({
+            projectId,
+            location,
+            modelId: model,
+            method: 'generateContent',
+            apiKey: key,
+        });
+        const body = {
+            contents: [{ parts: [{ text: userText }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            generationConfig: { maxOutputTokens: 8192 },
+        };
+
+        const res = await fetchWithRetry(url, body, { signal: options.signal });
+        const data = await res.json();
+
+        if (data.error) {
+            throw new Error(data.error.message || data.error.status || 'Vertex API 오류');
+        }
+        if (!data.candidates || !data.candidates[0]) {
+            throw new Error('응답에 결과가 없습니다: ' + JSON.stringify(data));
+        }
+
+        return {
+            text: data.candidates[0].content.parts[0].text,
+            usage: data.usageMetadata,
+        };
+    }
+
+    async function callVertexChat(history, systemPrompt, modelId, options = {}) {
+        const key = requireVertexApiKey();
+        if (!key) return null;
+
+        const { projectId, location } = getVertexChatContext(options);
+        if (!projectId) {
+            throw new Error('Vertex 채팅·텍스트에는 GCP 프로젝트 ID가 필요합니다. 사용자 설정에서 프로젝트 ID를 입력하세요.');
+        }
+
+        const model = modelId || getDefaultModel('gemini');
+        const url = buildVertexPublisherModelUrl({
+            projectId,
+            location,
+            modelId: model,
+            method: 'generateContent',
+            apiKey: key,
+        });
+        const body = {
+            contents: history,
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            generationConfig: {
+                temperature: options.temperature || 0.8,
+                maxOutputTokens: options.maxTokens || 8192,
+            },
+        };
+
+        const res = await fetchWithRetry(url, body, { signal: options.signal });
+        const data = await res.json();
+
+        if (data.error) {
+            throw new Error(data.error.message || data.error.status || 'Vertex API 오류');
+        }
+        if (!data.candidates || !data.candidates[0]?.content) {
+            throw new Error('응답에 결과가 없습니다.');
+        }
+
+        return {
+            text: data.candidates[0].content.parts[0].text,
+            usage: data.usageMetadata,
+        };
+    }
+
+    async function callVertexChatStream(history, systemPrompt, modelId, options = {}) {
+        const key = requireVertexApiKey();
+        if (!key) return null;
+
+        const { projectId, location } = getVertexChatContext(options);
+        if (!projectId) {
+            throw new Error('Vertex 채팅·텍스트에는 GCP 프로젝트 ID가 필요합니다. 사용자 설정에서 프로젝트 ID를 입력하세요.');
+        }
+
+        const model = modelId || getDefaultModel('gemini');
+        const url = buildVertexPublisherModelUrl({
+            projectId,
+            location,
+            modelId: model,
+            method: 'streamGenerateContent',
+            apiKey: key,
+        });
+        const body = {
+            contents: history,
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            generationConfig: {
+                temperature: options.temperature || 0.8,
+                maxOutputTokens: options.maxTokens || 8192,
+            },
+        };
+
+        const fetchOpts = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        };
+        if (options.signal) fetchOpts.signal = options.signal;
+
+        const response = await fetch(url, fetchOpts);
+        if (!response.ok) {
+            let msg = `[HTTP ${response.status}]`;
+            try {
+                const e = await response.json();
+                msg += ' ' + (e.error?.message || JSON.stringify(e));
+            } catch (_) {}
+            throw new Error(msg);
+        }
+
+        return {
+            async *chunks() {
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop();
+                    for (const line of lines) {
+                        if (!line.startsWith('data: ')) continue;
+                        const jsonStr = line.slice(6).trim();
+                        if (!jsonStr || jsonStr === '[DONE]') continue;
+                        try {
+                            const parsed = JSON.parse(jsonStr);
+                            const text = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+                            if (text) yield { text, usage: parsed.usageMetadata || null };
+                        } catch (_) {}
+                    }
+                }
+            },
+        };
+    }
+
     /* ===== Gemini 이미지 생성 (NanoBanana) ===== */
     /**
      * options: { signal, aspectRatio, safetyThreshold, referenceImage, referenceMimeType }
@@ -390,7 +565,7 @@ const Gemini = (() => {
         if (!key) throw new Error('API 키가 설정되지 않았습니다.');
 
         const model = modelId || getDefaultModel('geminiImage');
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+        const url = buildAiStudioGenerateContentUrl(model, key);
 
         const genConfig = {
             maxOutputTokens: 8192,
@@ -484,14 +659,15 @@ const Gemini = (() => {
         if (!projectId) {
             throw new Error('Vertex Gemini 이미지에는 GCP 프로젝트 ID가 필요합니다. 위젯에 프로젝트 ID를 입력하세요.');
         }
-        const location = (options.location || 'us-central1').trim() || 'us-central1';
+        const location = (options.location || DEFAULT_VERTEX_LOCATION).trim() || DEFAULT_VERTEX_LOCATION;
 
-        // Vertex AI REST: projects.locations.publishers.models.generateContent
-        // https://aiplatform.googleapis.com/v1/{model}:generateContent
-        // where {model} = projects/{project}/locations/{location}/publishers/google/models/{modelId}
-        const url =
-            `https://${encodeURIComponent(location)}-aiplatform.googleapis.com/v1/projects/${encodeURIComponent(projectId)}` +
-            `/locations/${encodeURIComponent(location)}/publishers/google/models/${encodeURIComponent(model)}:generateContent?key=${key}`;
+        const url = buildVertexPublisherModelUrl({
+            projectId,
+            location,
+            modelId: model,
+            method: 'generateContent',
+            apiKey: key,
+        });
 
         const genConfig = {
             maxOutputTokens: 8192,
@@ -582,7 +758,7 @@ const Gemini = (() => {
         if (!key) throw new Error('API 키가 설정되지 않았습니다.');
 
         const model = modelId || getDefaultModel('imagen');
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:predict?key=${key}`;
+        const url = buildAiStudioPredictUrl(model, key);
 
         const params = { sampleCount: count };
         if (options.aspectRatio) params.aspectRatio = options.aspectRatio;
@@ -640,12 +816,16 @@ const Gemini = (() => {
             throw new Error('Vertex Imagen에는 GCP 프로젝트 ID가 필요합니다. 위젯에 프로젝트 ID를 입력하세요.');
         }
 
-        const location = (options.location || 'us-central1').trim() || 'us-central1';
+        const location = (options.location || DEFAULT_VERTEX_LOCATION).trim() || DEFAULT_VERTEX_LOCATION;
         const model = modelId || getDefaultModel('imagen');
 
-        const url =
-            `https://${encodeURIComponent(location)}-aiplatform.googleapis.com/v1/projects/${encodeURIComponent(projectId)}` +
-            `/locations/${encodeURIComponent(location)}/publishers/google/models/${encodeURIComponent(model)}:predict?key=${key}`;
+        const url = buildVertexPublisherModelUrl({
+            projectId,
+            location,
+            modelId: model,
+            method: 'predict',
+            apiKey: key,
+        });
 
         const params = { sampleCount: count };
         if (options.aspectRatio) params.aspectRatio = options.aspectRatio;
@@ -685,9 +865,6 @@ const Gemini = (() => {
     }
 
     /* ===== 공통 API 키 UI 빌더 (프로필 리스트) ===== */
-    const AI_STUDIO_API_KEY_URL = 'https://aistudio.google.com/app/apikey';
-    const VERTEX_API_KEY_HELP_URL = 'https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys';
-
     function buildApiKeyUI(idPrefix) {
         const store = getKeyStore();
         const profiles = store.profiles || [];
@@ -701,7 +878,7 @@ const Gemini = (() => {
                     <span style="font-size:var(--font-size-2xs);color:var(--text-tertiary);">여러 개의 키를 저장해두고 상황에 따라 활성 프로필을 선택할 수 있습니다.</span>
                 </div>
                 <div style="font-size:var(--font-size-2xs);margin-top:4px;color:var(--text-tertiary);">
-                    Google AI Studio에서 발급: <a href="${AI_STUDIO_API_KEY_URL}" target="_blank" rel="noopener" style="color:var(--accent);">API 키 발급 페이지</a>
+                    Google AI Studio에서 발급: <a href="${DOC_URL_AI_STUDIO_API_KEY}" target="_blank" rel="noopener" style="color:var(--accent);">API 키 발급 페이지</a>
                 </div>
                 <div style="font-size:var(--font-size-2xs);margin-top:4px;color:#facc15;">
                     ⚠️ API 키는 브라우저 localStorage에 평문 저장됩니다. 공용 PC에서는 사용 후 반드시 삭제하세요.
@@ -718,7 +895,7 @@ const Gemini = (() => {
                     <button type="button" class="btn btn-ghost" id="${idPrefix}VertexKeyClear" style="font-size:var(--font-size-2xs);padding:3px 10px;color:var(--error);">삭제</button>
                 </div>
                 <div style="font-size:var(--font-size-2xs);color:var(--text-tertiary);">
-                    안내: <a href="${VERTEX_API_KEY_HELP_URL}" target="_blank" rel="noopener" style="color:var(--accent);">Vertex AI — API 키</a>
+                    안내: <a href="${DOC_URL_VERTEX_API_KEYS}" target="_blank" rel="noopener" style="color:var(--accent);">Vertex AI — API 키</a>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
                     <div>
@@ -727,7 +904,7 @@ const Gemini = (() => {
                     </div>
                     <div>
                         <label class="field-label" for="${idPrefix}VertexLocation" style="font-size:var(--font-size-xs);">리전</label>
-                        <input type="text" id="${idPrefix}VertexLocation" class="settings-control" style="width:100%;box-sizing:border-box;" placeholder="us-central1" autocomplete="off">
+                        <input type="text" id="${idPrefix}VertexLocation" class="settings-control" style="width:100%;box-sizing:border-box;" placeholder="${DEFAULT_VERTEX_LOCATION}" autocomplete="off">
                     </div>
                 </div>
                 <p style="font-size:var(--font-size-2xs);color:var(--text-tertiary);margin:8px 0 0 0;line-height:1.4;">
@@ -756,8 +933,8 @@ const Gemini = (() => {
                         vertexProjectEl.value = typeof v === 'string' ? v : '';
                     }
                     if (vertexLocationEl instanceof HTMLInputElement) {
-                        const v = Toolbox.getPref(VERTEX_PREF_LOCATION) || 'us-central1';
-                        vertexLocationEl.value = (typeof v === 'string' && v.trim()) ? v.trim() : 'us-central1';
+                        const v = Toolbox.getPref(VERTEX_PREF_LOCATION) || DEFAULT_VERTEX_LOCATION;
+                        vertexLocationEl.value = (typeof v === 'string' && v.trim()) ? v.trim() : DEFAULT_VERTEX_LOCATION;
                     }
                 }
 
@@ -798,7 +975,7 @@ const Gemini = (() => {
                 }
                 if (vertexLocationEl instanceof HTMLInputElement) {
                     vertexLocationEl.addEventListener('change', () => {
-                        const loc = vertexLocationEl.value.trim() || 'us-central1';
+                        const loc = vertexLocationEl.value.trim() || DEFAULT_VERTEX_LOCATION;
                         Toolbox.setPref(VERTEX_PREF_LOCATION, loc);
                         window.dispatchEvent(new CustomEvent('vertex-context-changed'));
                     });
@@ -943,7 +1120,8 @@ Reply ONLY with the enhanced prompt in English, nothing else. Do not add any exp
         getApiKey, setApiKey, getProfiles, getActiveProfileId, setActiveProfileId, getActiveProfileName, requireApiKey,
         getVertexApiKey, setVertexApiKey, requireVertexApiKey,
         getDefaultModel,
-        fetchWithRetry, callText, callChat, callChatStream, callGeminiImage, callImagen, callVertexImagen,
+        fetchWithRetry, callText, callChat, callChatStream, callVertexText, callVertexChat, callVertexChatStream,
+        callGeminiImage, callImagen, callVertexImagen,
         callVertexGeminiImage,
         getApiHistory, clearApiHistory,
         buildApiKeyUI, enhancePrompt
