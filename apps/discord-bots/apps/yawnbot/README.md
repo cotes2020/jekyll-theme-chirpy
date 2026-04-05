@@ -1,6 +1,6 @@
-# YawnBot
+# 욘 (yawnbot)
 
-게임/슬래시 커맨드 Discord 봇. 소스·데이터·이미지는 이 디렉터리가 기준입니다.
+Discord 슬래시 봇입니다. **표시 이름은「욘」**, npm·폴더명은 `yawnbot` 입니다. 소스·데이터·이미지 기준 경로는 이 디렉터리입니다.
 
 ## 빠른 시작
 
@@ -19,4 +19,87 @@ npm run start:yawnbot
 npm run deploy:yawnbot
 ```
 
-전체 워크스페이스 설명은 `apps/discord-bots/README.md`를 참고하세요.
+전체 워크스페이스 설명은 [apps/discord-bots/README.md](../../README.md)를 참고하세요.
+
+---
+
+## 슬래시 명령어 요약
+
+### 음성·미디어 (같은 재생 대기열)
+
+| 명령 | 설명 |
+|------|------|
+| `/play` `query` | YouTube URL 또는 검색어. 음성 채널에 있어야 함. |
+| `/skip` | 현재 재생 건너뛰기 |
+| `/stop` | 재생 중지·대기열 비우기 |
+| `/queue` | 대기열 목록 |
+| `/음성입장` / `/voice-join` | 봇을 음성·스테이지 채널에 연결 |
+| `/음성퇴장` / `/voice-leave` | 음성 연결 해제 |
+| `/speak` `text?` | **Edge 온라인 TTS**로 읽기 (디스코드 내장 TTS 아님). `text` 비우면 데모 문장. |
+| `/sound` | **오디오 파일 재생**. `file`·`url`·`clip` 중 **하나만** 지정. |
+
+`/sound` 옵션:
+
+| 옵션 | 설명 |
+|------|------|
+| `file` | 명령에 오디오 첨부 (mp3, wav, ogg 등) |
+| `url` | 직접 다운로드 가능한 `http(s)` 오디오 주소 (YouTube **페이지** URL은 `/play` 사용) |
+| `clip` | 봇 패키지 내 `resources/audio/`에 넣은 파일의 **파일명만** (기본 샘플: `demo.wav`) |
+
+### AI·관리
+
+| 명령 | 설명 |
+|------|------|
+| `/yawn` `질문` | Gemini AI (`.env`에 `GEMINI_API_KEY` 필요) |
+| `/cursor-edit` | [관리자] 로컬 Cursor 에이전트 |
+| `/admin-reload` / `/admin-save` | [관리자] 데이터 리로드·저장 |
+
+### 게임·주식·레이드·기타
+
+`/강화`, `/판매`, `/정보`, `/돈`, `/랭킹`, `/출첵`, `/돈내놔`, `/배틀`, `/슬롯`, `/홀짝`, `/가위바위보`, `/주식목록`, `/주식차트`, `/매수`, `/매도`, `/내주식`, `/레이드정보`, `/공격`, `/레이드소환`, `/ping`, `/도움말`
+
+---
+
+## 환경 변수 (음성·TTS·YouTube)
+
+Discord·Gemini·Cursor 등 공통 항목은 [.env.template](./.env.template) 주석을 참고하세요.
+
+### `/speak` (Edge TTS)
+
+| 변수 | 설명 |
+|------|------|
+| `SPEAK_VOICE` | 기본 `ko-KR-SunHiNeural`. 다른 보이스는 [Azure Speech — 언어 및 음성 지원 (TTS)](https://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts) 목록의 **신경망 보이스 이름**을 참고. |
+| `SPEAK_LANG` | 기본 `ko-KR` |
+| `SPEAK_TTS_PROXY` | TTS 요청만 프록시할 때. 비우면 `HTTPS_PROXY`를 사용. |
+| `SPEAK_TTS_TIMEOUT_MS` | Edge TTS WebSocket 타임아웃(ms). 코드에서 **최소 5초·최대 120초**로 잘림. |
+
+구현은 npm 패키지 [node-edge-tts](https://www.npmjs.com/package/node-edge-tts) (Microsoft Edge 온라인 TTS)를 사용합니다. 서비스 변경 시 동작이 깨질 수 있습니다.
+
+### `/play` (YouTube)
+
+| 변수 | 설명 |
+|------|------|
+| `YT_DLP_PATH` / `YAWNBOT_YT_DLP_PATH` | `yt-dlp` 실행 파일 직접 지정 |
+| `YT_DLP_COOKIES_PATH` / `YAWNBOT_YOUTUBE_COOKIES_PATH` | Netscape `cookies.txt` (연령·로그인 제한 완화) |
+
+내장 `ffmpeg-static`이 `FFMPEG_PATH`를 잡습니다. 무음이면 봇이 음성 채널에서 음소거되지 않았는지 확인하세요.
+
+### 음성 연결·DAVE(E2EE)
+
+일부 음성·스테이지 채널은 Discord 쪽에서 **DAVE(E2EE)를 지원하는 클라이언트만** 허용합니다. 이 경우 음성 WebSocket이 Hello 직후 끊기고, 로그에 Discord 음성 **close code `4017`**이 찍힐 수 있습니다([Voice Close Event Codes](https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-close-event-codes)).
+
+| 변수 | 설명 |
+|------|------|
+| `DISCORD_VOICE_DAVE` | `1`이면 DAVE 사용(`daveEncryption: true`). **4017·E2EE 필수 채널에서는 켜야** 음성에 붙을 수 있습니다. E2EE가 없는 일반 채널에서도 대개 동작하며, 잘 되면 계속 켜 둬도 됩니다. 특정 환경에서만 문제가 나면 끄고 `@discordjs/voice`/Discord 쪽 이슈를 확인하세요. |
+| `VOICE_DEBUG` | `1`이면 `@discordjs/voice` 네트워킹 디버그와 상태 전이 로그가 나옵니다. `4014`가 아닌 close는 라이브러리가 곧바로 `signalling`으로 돌리므로, 원인 파악 시 **`[voice] [NW] Discord 음성 WebSocket close code:`** 줄을 보면 됩니다. 민감 정보(세션·키·IP)가 섞이므로 상시 켜두지 말 것. |
+
+---
+
+## 자주 쓰는 링크
+
+| 용도 | URL |
+|------|-----|
+| Discord 앱·봇 토큰 | https://discord.com/developers/applications |
+| Google AI Studio (Gemini 키) | https://aistudio.google.com/app/apikey |
+| Azure / Speech — TTS 보이스 목록 | https://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts |
+| node-edge-tts (npm) | https://www.npmjs.com/package/node-edge-tts |
