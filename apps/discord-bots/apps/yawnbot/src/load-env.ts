@@ -3,12 +3,9 @@
  * (그렇지 않으면 voice-connection 등이 모듈 로드 시점에 VOICE_DEBUG 를 읽어 항상 꺼짐)
  *
  * 로드 순서(존재하는 파일만):
- *   1) 레포 루트 `.env.karmolab.common`
- *   2) `apps/discord-bots/.env.discord-bots`
- *   3) `apps/yawnbot/.env.yawnbot`
- *   4) `apps/yawnbot/.env` (하위 호환 단일 파일)
+ *   1) `.karmolab.common.env`  2) `.discord-bots.env`  3) `.yawnbot.env`  4) `.env` (맨 마지막)
  *
- * 카카오 스크립트는 추가로 `.env.yawnbot.kakao` 를 읽음 → `scripts/load-dotenv-layers.cjs` 참고.
+ * 카카오 스크립트는 3) 다음에 `.yawnbot.kakao.env` 추가 → `scripts/load-dotenv-layers.cjs` 참고.
  */
 import path from 'path';
 import { createRequire } from 'node:module';

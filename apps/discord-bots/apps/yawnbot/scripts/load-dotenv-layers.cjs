@@ -6,24 +6,26 @@ const dotenv = require('dotenv');
 
 /**
  * 욘봇·카카오 스크립트 공통: 상위 레이어 → 하위 레이어 순으로 로드.
- * - 첫 번째로 실제로 존재하는 파일은 override:false (이미 process.env에 있는 값·OS 환경 유지)
- * - 이후 파일은 override:true (앞선 파일에서 넣은 키도 덮어씀)
- * - 마지막 `.env` 는 기존 단일 파일 사용자용 (가장 높은 우선순위)
+ * - 첫 로드: override:false (이미 process.env·OS 값 유지)
+ * - 이후: override:true
+ * - 마지막 `.env` 가 가장 높은 우선순위
+ *
+ * 파일: `.karmolab.common.env` → `.discord-bots.env` → `.yawnbot.env` → (카카오만) `.yawnbot.kakao.env` → `.env`
  *
  * @param {string} yawnbotRoot - `apps/discord-bots/apps/yawnbot` 절대 경로
- * @param {{ includeKakaoLayer?: boolean }} [opts] - 카카오 스크립트만 true
+ * @param {{ includeKakaoLayer?: boolean }} [opts]
  */
 function applyYawnbotDotenvLayers(yawnbotRoot, opts) {
   const discordBotsRoot = path.join(yawnbotRoot, '..', '..');
   const repoRoot = path.join(discordBotsRoot, '..', '..');
 
   const files = [
-    path.join(repoRoot, '.env.karmolab.common'),
-    path.join(discordBotsRoot, '.env.discord-bots'),
-    path.join(yawnbotRoot, '.env.yawnbot'),
+    path.join(repoRoot, '.karmolab.common.env'),
+    path.join(discordBotsRoot, '.discord-bots.env'),
+    path.join(yawnbotRoot, '.yawnbot.env'),
   ];
   if (opts && opts.includeKakaoLayer) {
-    files.push(path.join(yawnbotRoot, '.env.yawnbot.kakao'));
+    files.push(path.join(yawnbotRoot, '.yawnbot.kakao.env'));
   }
   files.push(path.join(yawnbotRoot, '.env'));
 
