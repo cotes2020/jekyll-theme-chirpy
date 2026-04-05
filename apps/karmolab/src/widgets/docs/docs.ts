@@ -1,8 +1,7 @@
 /**
- * Docs — 소개, 로드맵·기획, 가이드
+ * Docs — 소개, 로드맵·기획, 가이드, 프로젝트 통합 명령
  *
  * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅.
- * 탭: 소개 | 로드맵 & 기획 | 가이드
  */
 (function (): void {
   Mdd.injectCSS(
@@ -81,7 +80,7 @@
   Toolbox.register({
     id: 'docs',
     title: '문서',
-    desc: 'KarmoLab 소개, 로드맵·기획, 가이드',
+    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, 레포 전체 명령·경로',
     layout: 'wide',
     icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
     tabs: [
@@ -122,6 +121,36 @@
           Mdd.linePreset('tool_run', { msg: '사용법을 알려줄게요~' });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
           loadDoc('guide.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-discord-voice',
+        label: 'Discord·음성',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '욘 봇 `/sound`·음성·DAVE 트러블슈팅 정리예요.' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('discord-voice-dave-troubleshooting.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-project-commands',
+        label: '프로젝트 명령',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '블로그·KarmoLab·앱 전체 명령을 모아 뒀어요. 복사해서 쓰기 좋게!' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('project-commands-guide.md')
             .then(function (md: string) {
               renderMarkdown(c, md);
             })
