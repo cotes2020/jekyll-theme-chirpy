@@ -41,7 +41,7 @@ bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload --incremental
 
 - **Windows(PowerShell)에서 Listen 오류**(`directory is already being watched`)가 나면 위 명령 끝에 **`--force_polling`** 을 붙이세요.
 - 사이트 루트: **http://127.0.0.1:4000/**
-- KarmoLab(Jekyll 경로): **http://127.0.0.1:4000/karmolab/** — Tauri만 빠르게 볼 때는 **`apps/karmolab-tauri`의 `npm run dev`**(Python 8899 + `/apps/karmolab/`)를 쓰는 편이 Listen 이슈가 없습니다.
+- KarmoLab(Jekyll 경로): **http://127.0.0.1:4000/karmolab/** — Tauri만 빠르게 볼 때는 **`apps/karmolab-tauri`의 `npm run dev`**(8899 정적 서버 + `/apps/karmolab/`; Python 또는 Node)를 쓰는 편이 Listen 이슈가 없습니다.
 
 **래퍼 스크립트** (Git Bash / WSL / macOS / Linux):
 
@@ -140,7 +140,7 @@ npm install
 npm run dev
 ```
 
-- 기본: 레포 루트에서 **Python `http.server` 8899** + Tauri가 **http://127.0.0.1:8899/apps/karmolab/** 를 연다(KarmoLab만).
+- 기본: **`dev-static.mjs`** 가 레포 루트를 **8899**에 서빙(Python 우선, 없으면 Node) + Tauri가 **http://127.0.0.1:8899/apps/karmolab/** 를 연다(KarmoLab만).
 - 블로그까지 Jekyll이 필요하면 **`npm run dev:with-jekyll`** → **4000** + **http://127.0.0.1:4000/karmolab/** (`tauri.dev-jekyll.conf.json`).
 - 이미 **8899**에 레포 루트 정적 서버가 떠 있으면: `npm run dev:app`
 - WebView만 **배포 URL**로 테스트: `npm run dev:remote`

@@ -679,10 +679,10 @@
       },
       {
         id: 'docs-servermonitor-deploy-log-design',
-        label: '로컬 · deploy 로그(설계)',
+        label: '로컬 · deploy 로그',
         build: function (c: HTMLElement): void {
           Mdd.linePreset('tool_run', {
-            msg: '서버 모니터 deploy 로그 스트림 — 미구현 설계 초안.'
+            msg: '서버 모니터 deploy·npm i 로그 스트림 — 이벤트·커맨드는 본문 참고.'
           });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
           loadDoc('servermonitor-deploy-log-stream.md')

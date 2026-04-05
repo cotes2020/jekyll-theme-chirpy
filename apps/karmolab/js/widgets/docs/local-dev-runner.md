@@ -16,7 +16,7 @@ npm install
 npm run dev
 ```
 
-- `npm run dev`: 저장소 루트에서 **`python -m http.server 8899`** 로 정적 서버를 띄운 뒤 **`http://127.0.0.1:8899/apps/karmolab/`** 가 응답할 때까지 기다렸다가 Tauri가 그 URL을 엽니다(KarmoLab만; Jekyll 없음). **데스크톱 창만 닫아도 정적 서버는 그대로** 둡니다(다시 `npm run dev:app`만 실행하면 됨). 둘 다 끄려면 터미널에서 **Ctrl+C** 하세요.
+- `npm run dev`: **`scripts/dev-static.mjs`** 가 레포 루트를 8899에 서빙합니다(Python `http.server` 우선, 없으면 Node). **`http://127.0.0.1:8899/apps/karmolab/`** 가 응답할 때까지 기다렸다가 Tauri가 그 URL을 엽니다(KarmoLab만; Jekyll 없음). **데스크톱 창만 닫아도 정적 서버는 그대로** 둡니다(다시 `npm run dev:app`만 실행하면 됨). 둘 다 끄려면 터미널에서 **Ctrl+C** 하세요.
 - 이미 **8899**에 같은 방식으로 서버가 떠 있으면: `npm run dev:app` (Tauri만).
 - **블로그·Jekyll까지** 로컬로 쓰려면: `npm run dev:with-jekyll` (4000번 Jekyll + 별도 `devUrl` 설정).
 - Windows에서 Jekyll을 쓸 때 Listen이 **같은 폴더를 두 경로로 감시**한다고 에러를 내면, `_config.yml`의 `exclude`와 `dev:jekyll`의 **`--force_polling`** 을 참고하세요.
@@ -47,8 +47,8 @@ npm run dev
 - UI는 **프로필 `id`** 만 Rust에 넘기고, `program`·`args`·`cwd`는 Rust가 그 JSON에서 다시 읽어 검증합니다.
 - **허용 `program`:** `npm`, `npx`, `bundle`, `ruby`, `node` (및 확장자 변형).
 - **`cwd`:** 레포 루트 기준 상대 경로(예: `.`, `apps/discord-bots`). 반드시 루트 **아래** 실제 폴더여야 합니다.
-- **`npmInstall: true`:** 그 프로필에 **npm install** 버튼이 보이고, 해당 `cwd`에서 동기 실행됩니다.
-- **`deployArgs`:** (선택) 예: `["run", "deploy:yawnbot"]` — 카드에 **deploy** 버튼이 생기고, 같은 `cwd`에서 `npm` + 이 인자를 **동기** 실행합니다(Discord 슬래시 등록 스크립트 등). 실패 시 토스트에 stdout/stderr 요약이 붙습니다.
+- **`npmInstall: true`:** 그 프로필에 **npm i** 버튼이 보이고, 해당 `cwd`에서 **`localdev_npm_install_stream`** 으로 실행됩니다. stdout/stderr는 카드 아래 **로그 패널**에 줄 단위로 스트림되고, 끝나면 토스트로 성공/실패가 뜹니다.
+- **`deployArgs`:** (선택) 예: `["run", "deploy:yawnbot"]` — 카드에 **deploy** 버튼이 생기고, 같은 `cwd`에서 **`localdev_deploy_stream`** 으로 `npm` + 인자를 실행합니다. 로그 패널·토스트 동작은 npm i와 같습니다.
 - **`localMonitors`:** 항목마다 `title`·`subtitle`(선택)·`url`(선택)·`noHealthUrl`(의도적으로 ping 안 함) 등을 둘 수 있습니다. 예전처럼 `label`만 있어도 됩니다. **ATKUp** 봇은 기본 **`http://127.0.0.1:8081/health`** (`ATKUP_HEALTH_PORT`, 끄려면 `0`). 데스크톱에서는 **`devProfiles` 항목과 `id`가 같으면 카드 한 장**에 URL 상태와 시작·종료가 같이 나옵니다.
 - **`healthUrl`:** (선택) `devProfiles` 전용. `localMonitors`와 주소를 맞춰 두면 카드 ping과 의미가 같아집니다.
 
@@ -67,6 +67,6 @@ npm run dev
 ## 관련 문서
 
 - 터미널 명령 모음: **문서 → 프로젝트 명령**
-- **Deploy 로그를 카드 아래에 실시간 스트림**하는 기능은 아직 없고, 설계만 **문서 → 로컬 · deploy 로그(설계)** (`servermonitor-deploy-log-stream.md`)에 적어 두었습니다.
+- **Deploy·npm i 로그 스트림**(카드 아래 패널)은 구현되어 있으며, 상세는 **문서 → 로컬 · deploy 로그** (`servermonitor-deploy-log-stream.md`)를 참고하세요.
 - Tauri 앱 빌드·업데이트·트레이: `apps/karmolab-tauri/README.md`
 - Tauri 업데이트·릴리스 체크리스트: **문서 → 로드맵** (`roadmap.md` 의 「Tauri 데스크톱 · 자동 업데이트」)

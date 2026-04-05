@@ -39,6 +39,21 @@
 
   type LocalCardState = 'online' | 'offline' | 'na';
 
+  type LocaldevLogPayload = {
+    runId: string;
+    profileId: string;
+    stream: string;
+    line: string;
+  };
+
+  type LocaldevDonePayload = {
+    runId: string;
+    profileId: string;
+    kind: string;
+    success: boolean;
+    code?: number;
+  };
+
   function isKarmolabDesktop(): boolean {
     return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
   }
@@ -50,6 +65,12 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  /** `localdev_list_tracked` 반환값이 배열이 아니거나 섞여 있을 때 대비 */
+  function normalizeLocaldevTrackedIds(raw: unknown): string[] {
+    if (!Array.isArray(raw)) return [];
+    return raw.filter((x): x is string => typeof x === 'string');
   }
 
   function normalizeLocalMonitor(m: RawLocalMonitor): {
@@ -369,6 +390,73 @@
   ): HTMLElement {
     const invoke = window.__TAURI__?.core?.invoke;
 
+    const SM_LOG_MAX_LINES = 500;
+    const SM_LOG_MAX_BYTES = 256 * 1024;
+
+    function appendSmLogLine(panel: HTMLElement, stream: string, line: string): void {
+      const row = document.createElement('div');
+      row.className =
+        stream === 'err' ? 'sm-log-line sm-log-line-err' : 'sm-log-line sm-log-line-out';
+      row.textContent = line;
+      panel.appendChild(row);
+      while (panel.childElementCount > SM_LOG_MAX_LINES) {
+        panel.removeChild(panel.firstElementChild!);
+      }
+      let bytes = 0;
+      for (let i = 0; i < panel.children.length; i++) {
+        bytes += (panel.children[i].textContent || '').length + 1;
+      }
+      while (bytes > SM_LOG_MAX_BYTES && panel.firstElementChild) {
+        panel.removeChild(panel.firstElementChild);
+        bytes = 0;
+        for (let j = 0; j < panel.children.length; j++) {
+          bytes += (panel.children[j].textContent || '').length + 1;
+        }
+      }
+      panel.scrollTop = panel.scrollHeight;
+    }
+
+    async function runStreamedNpmOp(
+      cmd: 'localdev_deploy_stream' | 'localdev_npm_install_stream',
+      profileId: string,
+      logPanel: HTMLElement,
+      disableBtns: HTMLButtonElement[],
+      okFallback: string
+    ): Promise<void> {
+      const inv = window.__TAURI__?.core?.invoke;
+      const listen = window.__TAURI__?.event?.listen as
+        | ((event: string, cb: (e: { payload: unknown }) => void) => Promise<() => void>)
+        | undefined;
+      if (typeof inv !== 'function') return;
+      if (typeof listen !== 'function') {
+        Toolbox.showToast?.('Tauri event.listen을 쓸 수 없습니다.', 'error', undefined);
+        return;
+      }
+      for (const b of disableBtns) b.disabled = true;
+      logPanel.replaceChildren();
+      let unLog: (() => void) | undefined;
+      let unDone: (() => void) | undefined;
+      try {
+        unLog = await listen('localdev-log', (e: { payload: unknown }) => {
+          const pl = e.payload as LocaldevLogPayload;
+          if (pl.profileId !== profileId) return;
+          appendSmLogLine(logPanel, pl.stream, pl.line);
+        });
+        unDone = await listen('localdev-log-done', (e: { payload: unknown }) => {
+          const pl = e.payload as LocaldevDonePayload;
+          if (pl.profileId !== profileId) return;
+        });
+        const msg = (await inv(cmd, { profileId })) as string;
+        Toolbox.showToast?.(msg || okFallback, undefined, undefined);
+      } catch (e: unknown) {
+        Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+      } finally {
+        unLog?.();
+        unDone?.();
+        for (const b of disableBtns) b.disabled = false;
+      }
+    }
+
     const rootLabel = document.createElement('div');
     rootLabel.className = 'sm-root-footer-label';
     rootLabel.textContent = '저장소 루트 (레포 최상위)';
@@ -412,14 +500,32 @@
     const servicesWrap = document.createElement('div');
     servicesWrap.className = 'sm-local-services';
 
+    /** DOM에 이미 그려진 카드의 추적 라벨만 Rust 상태와 다시 맞춤(시작/종료 직후 이중 확인용) */
+    async function refreshTrackLabelsFromRust(): Promise<void> {
+      if (typeof invoke !== 'function') return;
+      try {
+        const tracked = normalizeLocaldevTrackedIds(await invoke('localdev_list_tracked'));
+        for (const card of servicesWrap.querySelectorAll<HTMLElement>('[data-sm-service-id]')) {
+          const id = card.dataset.smServiceId;
+          if (!id) continue;
+          const trackEl = card.querySelector('.sm-card-track');
+          if (!trackEl) continue;
+          trackEl.textContent = tracked.includes(id) ? '앱 추적 중' : '미실행';
+        }
+      } catch (e) {
+        console.warn('[ServerMonitor] 추적 목록 재조회 실패 — 카드의 「앱 추적 중」이 어긋날 수 있음', e);
+      }
+    }
+
     async function renderMergedServices(): Promise<void> {
       const config = await loadConfig();
       const rows = mergeServiceRows(config);
       let tracked: string[] = [];
       if (typeof invoke === 'function') {
         try {
-          tracked = (await invoke('localdev_list_tracked')) as string[];
-        } catch {
+          tracked = normalizeLocaldevTrackedIds(await invoke('localdev_list_tracked'));
+        } catch (e) {
+          console.warn('[ServerMonitor] localdev_list_tracked 실패 — 추적 상태를 표시할 수 없음', e);
           tracked = [];
         }
       }
@@ -477,6 +583,11 @@
         card.appendChild(pingRow);
 
         if (p) {
+          const deployArgsFiltered =
+            p.deployArgs?.filter((a) => (a || '').trim().length > 0) ?? [];
+          const streamActionBtns: HTMLButtonElement[] = [];
+          let logPanelEl: HTMLElement | null = null;
+
           const track = document.createElement('div');
           track.className = 'sm-card-track';
           track.textContent = tracked.includes(p.id) ? '앱 추적 중' : '미실행';
@@ -493,6 +604,7 @@
                   await invoke('localdev_start', { profileId: p.id });
                   Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
                   await renderMergedServices();
+                  await refreshTrackLabelsFromRust();
                 } catch (e: unknown) {
                   Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
                 }
@@ -507,6 +619,7 @@
                   await invoke('localdev_stop', { profileId: p.id });
                   Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
                   await renderMergedServices();
+                  await refreshTrackLabelsFromRust();
                 } catch (e: unknown) {
                   Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
                 }
@@ -516,43 +629,52 @@
 
           if (p.npmInstall) {
             const btnInstall = mkBtn('npm i', () => {
-              void (async () => {
-                if (typeof invoke !== 'function') return;
-                btnInstall.disabled = true;
-                try {
-                  const msg = (await invoke('localdev_npm_install', { profileId: p.id })) as string;
-                  Toolbox.showToast?.(msg || 'npm install 완료', undefined, undefined);
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-                } finally {
-                  btnInstall.disabled = false;
-                }
-              })();
+              if (!logPanelEl) return;
+              void runStreamedNpmOp(
+                'localdev_npm_install_stream',
+                p.id,
+                logPanelEl,
+                streamActionBtns,
+                'npm install 완료'
+              );
             });
+            streamActionBtns.push(btnInstall);
             actions.appendChild(btnInstall);
           }
 
-          const deployArgs = p.deployArgs?.filter((a) => (a || '').trim().length > 0) ?? [];
-          if (deployArgs.length > 0) {
+          if (deployArgsFiltered.length > 0) {
             const btnDeploy = mkBtn('deploy', () => {
-              void (async () => {
-                if (typeof invoke !== 'function') return;
-                btnDeploy.disabled = true;
-                try {
-                  const msg = (await invoke('localdev_deploy', { profileId: p.id })) as string;
-                  Toolbox.showToast?.(msg || 'deploy 완료', undefined, undefined);
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-                } finally {
-                  btnDeploy.disabled = false;
-                }
-              })();
+              if (!logPanelEl) return;
+              void runStreamedNpmOp(
+                'localdev_deploy_stream',
+                p.id,
+                logPanelEl,
+                streamActionBtns,
+                'deploy 완료'
+              );
             });
-            btnDeploy.title = `npm ${deployArgs.join(' ')} (${p.cwd})`;
+            btnDeploy.title = `npm ${deployArgsFiltered.join(' ')} (${p.cwd})`;
+            streamActionBtns.push(btnDeploy);
             actions.appendChild(btnDeploy);
           }
 
           card.appendChild(actions);
+
+          if (streamActionBtns.length > 0) {
+            const logWrap = document.createElement('div');
+            logWrap.className = 'sm-log-wrap';
+            const hint = document.createElement('p');
+            hint.className = 'sm-log-hint';
+            hint.textContent =
+              '로그에 토큰·경로 등이 섞일 수 있습니다. 화면 공유·녹화 시 주의하세요.';
+            logPanelEl = document.createElement('div');
+            logPanelEl.className = 'sm-log-panel mono';
+            logPanelEl.setAttribute('role', 'log');
+            logPanelEl.setAttribute('aria-live', 'polite');
+            logWrap.appendChild(hint);
+            logWrap.appendChild(logPanelEl);
+            card.appendChild(logWrap);
+          }
         }
 
         servicesWrap.appendChild(card);
@@ -723,6 +845,24 @@
             .sm-root-footer-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
             .sm-root-footer-input { flex: 1; min-width: 140px; margin-bottom: 0 !important; }
             .btn-sm { padding: 4px 10px; font-size: var(--font-size-xs); }
+            .sm-log-wrap { margin-top: 10px; width: 100%; min-width: 0; }
+            .sm-log-hint { margin: 0 0 6px 0; font-size: var(--font-size-2xs); color: var(--text-tertiary); line-height: 1.4; }
+            .sm-log-panel {
+              max-height: 200px;
+              overflow: auto;
+              padding: 8px 10px;
+              border-radius: var(--radius-md);
+              border: 1px solid var(--border);
+              background: var(--bg-primary, #0f0f12);
+              font-size: var(--font-size-2xs);
+              line-height: 1.45;
+              text-align: left;
+              white-space: pre-wrap;
+              word-break: break-word;
+            }
+            .sm-log-line { margin: 0; padding: 0; }
+            .sm-log-line-err { color: var(--error, #e74c3c); }
+            .sm-log-line-out { color: var(--text-secondary, #94a3b8); }
         `
     );
 

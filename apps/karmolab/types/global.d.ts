@@ -39,7 +39,15 @@ declare global {
     /** KarmoLab Tauri 셸에서 주입 */
     __KARMOLAB_DESKTOP__?: boolean;
     /** Tauri 데스크톱 셸 (devtools 알림 테스트) */
-    __TAURI__?: { core?: { invoke?: (cmd: string, args?: unknown) => Promise<unknown> } };
+    __TAURI__?: {
+      core?: { invoke?: (cmd: string, args?: unknown) => Promise<unknown> };
+      event?: {
+        listen?: (
+          event: string,
+          cb: (e: { payload: unknown }) => void
+        ) => Promise<() => void>;
+      };
+    };
     __karmolabSetNotifyInvokeDebug?: (payload: unknown) => void;
   }
 
