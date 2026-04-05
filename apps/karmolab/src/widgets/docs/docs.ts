@@ -27,11 +27,17 @@
 
   type MermaidApi = {
     initialize: (config: Record<string, unknown>) => void;
-    run: (opts?: { nodes?: Iterable<Element> | null }) => Promise<unknown>;
+    run: (opts?: { nodes?: Iterable<Element> | null; suppressErrors?: boolean }) => Promise<unknown>;
+    render?: (
+      id: string,
+      text: string
+    ) => Promise<{ svg: string; bindFunctions?: (element: Element) => void }>;
   };
 
   let mermaidScriptPromise: Promise<void> | null = null;
   let markedMermaidRegistered = false;
+  /** 마지막으로 적용한 Mermaid 설정(불필요한 재초기화 방지) */
+  let mermaidInitKey: string | null = null;
 
   /** UMD/ESM 번들 모두: default 또는 루트에 API 가 올 수 있음 */
   function getMermaidApi(): MermaidApi | null {
@@ -42,6 +48,25 @@
     const d = root.default;
     if (d && typeof d.initialize === 'function' && typeof d.run === 'function') return d;
     return null;
+  }
+
+  /** `run()`이 조용히 실패하는 환경 대비: `render`로 SVG를 대상 요소에 직접 넣음 */
+  async function paintMermaidElements(mm: MermaidApi, elements: Element[]): Promise<void> {
+    const render = mm.render;
+    if (typeof render === 'function') {
+      let n = 0;
+      for (const el of elements) {
+        if (!(el instanceof HTMLElement)) continue;
+        const text = (el.textContent || '').replace(/\uFEFF/g, '').trim();
+        if (!text) continue;
+        const id = 'kl-mmd-' + Date.now() + '-' + ++n;
+        const { svg, bindFunctions } = await render.call(mm, id, text);
+        el.innerHTML = svg;
+        bindFunctions?.(el);
+      }
+      return;
+    }
+    await mm.run({ nodes: elements, suppressErrors: false });
   }
 
   function loadMermaidScript(): Promise<void> {
@@ -169,6 +194,7 @@
   function renderMarkdown(container: HTMLElement, md: string): void {
     const body = document.createElement('div');
     body.className = 'docs-body';
+    md = md.replace(/^\uFEFF/, '');
 
     if (typeof marked !== 'undefined') {
       registerMarkedMermaid();
@@ -203,12 +229,17 @@
             return;
           }
           const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-          mm.initialize({
-            startOnLoad: false,
-            theme: isDark ? 'dark' : 'default',
-            securityLevel: 'loose',
-          });
-          await mm.run({ nodes: Array.from(mermaidEls) });
+          const theme = isDark ? 'dark' : 'default';
+          const initKey = theme + '|loose';
+          if (mermaidInitKey !== initKey) {
+            mermaidInitKey = initKey;
+            mm.initialize({
+              startOnLoad: false,
+              theme,
+              securityLevel: 'loose',
+            });
+          }
+          await paintMermaidElements(mm, Array.from(mermaidEls));
         } catch (e) {
           console.error('[docs mermaid]', e);
           body.insertAdjacentHTML(
