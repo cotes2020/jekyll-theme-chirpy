@@ -3,9 +3,7 @@
  * (그렇지 않으면 voice-connection 등이 모듈 로드 시점에 VOICE_DEBUG 를 읽어 항상 꺼짐)
  *
  * 로드 순서(존재하는 파일만):
- *   0) `config/yawnbot-defaults.txt`(커밋 기본값) → 1) `.karmolab.common.env` → 2) `.discord-bots.env` → 3) `.yawnbot.env` → 4) `.env` (맨 마지막)
- *
- * 카카오 스크립트는 3) 다음에 `.yawnbot.kakao.env` 추가 → `scripts/load-dotenv-layers.cjs` 참고.
+ *   1) `config/yawnbot-defaults.txt`(커밋 기본값)  2) `.env`(맨 마지막, 최우선)
  */
 import path from 'path';
 import { createRequire } from 'node:module';
@@ -13,7 +11,7 @@ import { createRequire } from 'node:module';
 const nodeRequire = createRequire(__filename);
 const { applyYawnbotDotenvLayers } = nodeRequire(
   path.join(__dirname, '..', '..', 'scripts', 'load-dotenv-layers.cjs'),
-) as { applyYawnbotDotenvLayers: (root: string, opts?: { includeKakaoLayer?: boolean }) => void };
+) as { applyYawnbotDotenvLayers: (root: string) => void };
 
 const yawnbotRoot = path.join(__dirname, '..', '..');
-applyYawnbotDotenvLayers(yawnbotRoot, { includeKakaoLayer: false });
+applyYawnbotDotenvLayers(yawnbotRoot);

@@ -2,7 +2,7 @@
 
 Discord 슬래시 봇입니다. **표시 이름은「욘」**, npm·폴더명은 `yawnbot` 입니다. 소스·데이터·이미지 기준 경로는 이 디렉터리입니다.
 
-개선·할 일·아이디어 백로그는 KarmoLab **문서** 위젯의 **「Discord·개선」** 탭(`apps/karmolab/js/widgets/docs/discord-bot-improvements.md`)에서 봅니다.
+개선·할 일·아이디어·음성(DAVE) 트러블슈팅은 KarmoLab **문서** 위젯 **「Discord·욘봇」** 탭(`apps/karmolab/js/widgets/docs/discord-yawnbot.md`)에서 봅니다.
 
 ## 빠른 시작
 
@@ -14,7 +14,7 @@ npm install
 npm run build:yawnbot
 ```
 
-환경 변수는 **레이어드 dotenv**를 지원합니다. 비밀이 아닌 기본값(모델명·타임아웃·Playing 문구 등)은 커밋된 [`config/yawnbot-defaults.txt`](./config/yawnbot-defaults.txt)에서 먼저 읽고, 토큰·API 키·채널 ID 등은 `.yawnbot.env` / `.env`에서 덮어씁니다. 요약은 [.env.template](./.env.template), 키 목록은 `.yawnbot.env.template`·`.yawnbot.kakao.env.template`를 참고하세요. **`.env` 하나만** 있어도 마지막에 로드되어 동작합니다.
+환경 변수는 **`config/yawnbot-defaults.txt`(커밋)** 에서 비밀이 아닌 기본값(모델명·타임아웃·Playing 문구·`kakao-export` 폴링·라운드 등)을 읽은 뒤, 같은 디렉터리의 **`.env`**(gitignore)가 있으면 그걸로 덮어씁니다. 키 목록·예시는 [.env.template](./.env.template)를 복사해 `.env`로 쓰면 됩니다.
 
 ```bash
 npm run start:yawnbot
@@ -23,7 +23,7 @@ npm run deploy:yawnbot
 
 전체 워크스페이스 설명은 [apps/discord-bots/README.md](../../README.md)를 참고하세요.
 
-로그인 후 **프로필 활동(Playing …)** 은 기본으로 **약 3초마다** 순환합니다. 끄려면 `.yawnbot.env` 또는 `.env`에 `BOT_PRESENCE_INTERVAL_SEC=0`, 문구·간격은 `BOT_PRESENCE_LINES`·`BOT_PRESENCE_INTERVAL_SEC`로 바꿀 수 있습니다(`.yawnbot.env.template` 주석).
+로그인 후 **프로필 활동(Playing …)** 은 기본으로 **약 3초마다** 순환합니다. 끄려면 `.env`에 `BOT_PRESENCE_INTERVAL_SEC=0`, 문구·간격은 `BOT_PRESENCE_LINES`·`BOT_PRESENCE_INTERVAL_SEC`로 바꿀 수 있습니다([.env.template](./.env.template)·`yawnbot-defaults.txt` 참고).
 
 ---
 
@@ -59,7 +59,7 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 
 | 명령 | 설명 |
 |------|------|
-| `/yawn` `질문` | Gemini / Vertex (`.yawnbot.env` / `.env` — AI Studio 또는 Vertex). 채널 **최근 메시지**를 맥락으로 붙일 수 있음(`YAWN_CONTEXT_MESSAGES`). 시스템 톤은 `YAWN_SYSTEM_PROMPT`로 조절 |
+| `/yawn` `질문` | Gemini / Vertex (`.env` — AI Studio 또는 Vertex). 채널 **최근 메시지**를 맥락으로 붙일 수 있음(`YAWN_CONTEXT_MESSAGES`). 시스템 톤은 `YAWN_SYSTEM_PROMPT`로 조절 |
 | `/cursor-edit` | [관리자] 로컬 Cursor 에이전트 |
 | `/admin-reload` / `/admin-save` | [관리자] 데이터 리로드·저장 |
 
@@ -88,7 +88,7 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 
 ## 환경 변수 (음성·TTS·YouTube)
 
-Discord·Gemini·Cursor 등 키 목록은 [.yawnbot.env.template](./.yawnbot.env.template) 주석을 참고하세요. 로드 순서·파일 이름은 [.env.template](./.env.template)에 정리되어 있습니다.
+Discord·Gemini·Cursor·카카오 익스포트 키 목록은 [.env.template](./.env.template) 주석을 참고하세요.
 
 ### `/music speak` (Edge TTS)
 

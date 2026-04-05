@@ -1,34 +1,82 @@
 # 비밀·호스트 경로가 아닌 기본값만 (레포에 커밋).
-# dotenv와 동일한 KEY=value 형식. 덮어쓰려면 .yawnbot.env / .env 등 상위 레이어에 적으면 됩니다.
+# dotenv와 동일한 KEY=value 형식. 덮어쓰려면 apps/yawnbot/.env 에 같은 키를 적으면 됩니다.
 
+# ── Google 생성형 (/yawn, 카카오 요약 등) ──
+# AI Studio 기본 모델. Vertex 쓰면 .env 에서 GEMINI_MODEL 또는 VERTEX_* 로 조정.
 GEMINI_MODEL=gemini-2.5-flash
 
+# ── 프로필 활동(Playing …) 순환 ──
+# 초 단위 간격. 0 이면 순환 끔(.env 에서 덮어쓰기).
 BOT_PRESENCE_INTERVAL_SEC=3
+# 파이프(|)로 문구 구분. {guilds} 는 서버 개수로 치환됨.
 BOT_PRESENCE_LINES=욘입니다|/music queue|{guilds} servers
 
+# ── /music 재생·큐 UI ──
+# 플레이리스트에서 큐에 넣을 곡 수 상한. 0 이면 상한 없음(코드 동작은 README 참고).
 YAWNBOT_PLAYLIST_MAX_TRACKS=40
+# play 직후「지금 재생」임베드 보낼지. 0/끔 으로 끄려면 .env 에서.
 YAWNBOT_NOW_PLAYING_MESSAGE=1
+# 위 임베드 자동 갱신 주기(초). 0 이면 첫 메시지만.
 YAWNBOT_NOW_PLAYING_REFRESH_SEC=45
 
+# ── /music speak (Edge 온라인 TTS) ──
+# Azure/Edge 신경망 보이스 이름. 목록은 MS 문서「언어 및 음성 지원」참고.
 SPEAK_VOICE=ko-KR-SunHiNeural
 SPEAK_LANG=ko-KR
+# Edge TTS WebSocket 타임아웃(ms). 코드에서 최소 5초·최대 120초로 잘림.
 SPEAK_TTS_TIMEOUT_MS=30000
 
+# ── /yawn 맥락·비용 완화 ──
+# 사용자 질문 최대 글자 수.
 YAWN_MAX_QUESTION_CHARS=1500
+# 시스템+맥락+질문 포함 전체 프롬프트 상한.
 YAWN_MAX_PROMPT_CHARS=12000
+# 채널에서 가져올 최근 사용자 메시지 개수(0~30 권장).
 YAWN_CONTEXT_MESSAGES=10
 
+# ── /cursor-edit 로컬 에이전트 ──
+# Cursor CLI 실행 파일 이름( PATH 상 ).
 CURSOR_AGENT_COMMAND=agent
+# 에이전트 한 번 실행에 허용하는 시간(ms). 분 단위 안내는 이 값/60000.
 CURSOR_TIMEOUT_MS=600000
+# 프롬프트 입력 후 idle 로 간주하기까지(ms).
 CURSOR_PROMPT_IDLE_MS=120000
+# 질문 stdin 대기(ms).
 CURSOR_QUESTION_STDIN_MS=600000
+# 러너 종료 유예(ms).
 CURSOR_RUNNER_GRACE_MS=120000
+# 디스코드 defer 갱신 간격(ms).
 DEFER_TICK_MS=2500
+# 완료 알림 방식. ephemeral 등 slash 응답 정책.
 DEFER_COMPLETION_NOTIFY=ephemeral
+# 사용자에게 보내는 프롬프트 최대 글자.
 CURSOR_MAX_PROMPT_CHARS=2000
+# diff 미리보기 최대 글자.
 CURSOR_DIFF_PREVIEW_CHARS=8000
+# git 스냅샷 모드(baseline 등). runner 와 공유.
 CURSOR_GIT_SNAPSHOT=baseline
+# 대화형 질문 허용. 0 이면 끔.
 CURSOR_INTERACTIVE_QUESTIONS=1
+# 라이브 미리보기 잘림 글자 수.
 CURSOR_LIVE_PREVIEW_CHARS=700
 
+# ── kakao-export (npm run kakao-export / kakao-export-save / --watch) ──
+# 저장·요약 루프 한 번에 처리할 채팅 수 상한. 무한에 가깝게 돌리면 이 값을 올리기.
+KAKAO_EXPORT_MAX_ROUNDS=80
+# PowerShell 저장 완료까지 기다리는 타임아웃(초). 느린 PC면 늘리기.
+KAKAO_EXPORT_SAVE_WAIT_TIMEOUT_SEC=90
+# 저장 파일 나타남·크기 안정화를 폴링하는 간격(ms). 최소 50 으로 잘림(코드).
+KAKAO_EXPORT_SAVE_POLL_MS=200
+# 파일 크기가 연속으로 같은 횟수만큼 확인되면「쓰기 끝」으로 간주. 최소 2(코드).
+KAKAO_EXPORT_FILE_STABLE_CHECKS=3
+# 한 .txt 처리 직후 잠깐 쉬는 시간(ms). KAKAO_EXPORT_AFTER_SAVE_MS 예전 이름과 동일 의미.
+KAKAO_EXPORT_AFTER_FILE_MS=400
+# 채팅(창) 하나 끝난 뒤 다음으로 넘어가기 전 대기(ms).
+KAKAO_EXPORT_BETWEEN_CHATS_MS=500
+# 창 제목 스킵 목록(정확 일치·대소문자 무시·| 구분). 메인·로그인 창 등 후보에서 빼기. 스킵 끄려면 OFF 또는 0.
+KAKAO_EXPORT_SKIP_WINDOW_TITLES=카카오톡|KakaoTalk
+# 감시 폴더는 PC마다 다름 → .env 에 KAKAO_EXPORT_WATCH_DIR 만 두면 됨.
+
+# ── GitHub 웹훅 HTTP 서버(욘봇 프로세스 안) ──
+# 리스닝 포트. 호스트·방화벽은 배포 환경에서 따로 설정.
 WEBHOOK_PORT=8080

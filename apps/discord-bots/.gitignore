@@ -7,7 +7,5 @@ dist/
 .env
 .env.*
 !.env.template
-!.discord-bots.env.template
-!apps/yawnbot/.yawnbot.env.template
-!apps/yawnbot/.yawnbot.kakao.env.template
+!apps/yawnbot/.env.template
 

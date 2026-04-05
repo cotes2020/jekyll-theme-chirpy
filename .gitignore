@@ -51,10 +51,6 @@ node_modules
 .discord-bots.env
 .yawnbot.env
 .yawnbot.kakao.env
-!.karmolab.common.env.template
-!**/.discord-bots.env.template
-!**/.yawnbot.env.template
-!**/.yawnbot.kakao.env.template
 
 # Build artifacts
 apps/karmolab/react-dist/

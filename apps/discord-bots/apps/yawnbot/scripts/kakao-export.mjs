@@ -11,9 +11,9 @@
  *   --scan [epochMs]     .txt 한 번만 처리 (생략 시 전체, 숫자면 mtime 기준)
  *   --trigger-only       저장만 하고 요약 안 함 (테스트: npm run kakao-export-save). 후보 없음이면 스냅샷 직후 exit 0(카운트다운·저장 PS 생략)
  *
- * 환경 변수: 레이어드 dotenv — `config/yawnbot-defaults.txt`·`.karmolab.common.env`·`.discord-bots.env`·`.yawnbot.env`·`.yawnbot.kakao.env`·`.env`
+ * 환경 변수: `config/yawnbot-defaults.txt` → 앱 루트 `.env`
  *   KAKAO_EXPORT_WATCH_DIR,
- *   AI: GEMINI_* / VERTEX_* (`.yawnbot.env` 등). 카카오만 다른 키면 `.yawnbot.kakao.env`에서 덮어쓰기
+ *   AI: GEMINI_* / VERTEX_* (`.env`). 숫자·폴링 기본값은 defaults.txt
  *   DISCORD_SUMMARY_WEBHOOK_URL, KAKAO_EXPORT_MAX_ROUNDS,
  *   KAKAO_EXPORT_SKIP_WINDOW_TITLES — 제외할 창 제목(정확 일치·대소문자 무시·| 구분). 남는 창이 전부 스킵이면 창 없음으로 종료(메인에 Ctrl+S 안 보냄). 비우려면 OFF
  *   KAKAO_EXPORT_SAVE_WAIT_TIMEOUT_SEC, KAKAO_EXPORT_SAVE_POLL_MS, KAKAO_EXPORT_AFTER_FILE_MS,
@@ -31,7 +31,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 const { applyYawnbotDotenvLayers } = require('./load-dotenv-layers.cjs');
-applyYawnbotDotenvLayers(path.join(__dirname, '..'), { includeKakaoLayer: true });
+applyYawnbotDotenvLayers(path.join(__dirname, '..'));
 const { tryCreateGenerativeTextFromEnv, generativeEnvHint } = require('karmolab-ai/node');
 
 const DEFAULT_EXPORT_DIR = path.join(os.homedir(), 'Documents', '카카오톡 받은 파일');

@@ -35,7 +35,7 @@ function friendlyYawnErrorMessage(err: unknown): string {
     lower.includes('401') ||
     lower.includes('403')
   ) {
-    return 'API 인증에 문제가 있습니다. 서버 `.yawnbot.env`/`.env`의 키·프로젝트 설정을 확인해 주세요.';
+    return 'API 인증에 문제가 있습니다. 서버 `.env`의 키·프로젝트 설정을 확인해 주세요.';
   }
   if (lower.includes('fetch') || lower.includes('network') || lower.includes('econnreset')) {
     return '네트워크 오류로 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.';
