@@ -143,6 +143,7 @@ npm run dev
 - 이미 Jekyll이 돌아가 중이면: `npm run dev:app`
 - WebView만 **배포 URL**로 테스트: `npm run dev:remote`
 - 설치 패키지 빌드: `npm run build`
+- 데스크톱 앱에서 **KarmoLab → 서버 모니터 → 로컬 실행** 탭으로 Jekyll·Discord 봇 등 프로필 시작·종료·`npm install`(저장소 루트·`devProfiles` 설정): **`apps/karmolab-tauri/README.md`** 「로컬 데브 러너」.
 
 ---
 

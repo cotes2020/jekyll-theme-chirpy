@@ -1,3 +1,9 @@
+mod local_dev;
+
+use local_dev::{
+    localdev_get_repo_root, localdev_list_tracked, localdev_npm_install, localdev_set_repo_root,
+    localdev_start, localdev_stop, LocalDevState,
+};
 use tauri::menu::{Menu, MenuItem};
 use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
@@ -166,7 +172,16 @@ fn desktop_notify(
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![desktop_notify])
+        .manage(LocalDevState::default())
+        .invoke_handler(tauri::generate_handler![
+            desktop_notify,
+            localdev_set_repo_root,
+            localdev_get_repo_root,
+            localdev_list_tracked,
+            localdev_start,
+            localdev_stop,
+            localdev_npm_install
+        ])
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
             if let Some(w) = app.get_webview_window("main") {

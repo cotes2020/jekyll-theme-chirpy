@@ -1,0 +1,11 @@
+[[permission]]
+identifier = "allow-localdev"
+description = "Enables localdev repo-root and process helper commands for the KarmoLab desktop shell."
+commands.allow = [
+  "localdev_set_repo_root",
+  "localdev_get_repo_root",
+  "localdev_list_tracked",
+  "localdev_start",
+  "localdev_stop",
+  "localdev_npm_install",
+]

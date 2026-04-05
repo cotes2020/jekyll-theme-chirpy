@@ -22,5 +22,35 @@
             "label": "Main API Server",
             "url": "https://yt-api.example.com"
         }
+    ],
+    "devProfiles": [
+        {
+            "id": "jekyll",
+            "label": "Jekyll 블로그 (4000)",
+            "cwd": ".",
+            "program": "bundle",
+            "args": [
+                "exec",
+                "jekyll",
+                "serve",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "4000",
+                "--livereload",
+                "--incremental"
+            ],
+            "healthUrl": "http://127.0.0.1:4000/",
+            "npmInstall": false
+        },
+        {
+            "id": "yawnbot",
+            "label": "Discord YawnBot",
+            "cwd": "apps/discord-bots",
+            "program": "npm",
+            "args": ["run", "start:yawnbot"],
+            "healthUrl": "http://localhost:8080/webhook/github",
+            "npmInstall": true
+        }
     ]
 }

@@ -36,6 +36,18 @@ npm run build    # 설치 패키지 빌드(웹은 GitHub Pages URL을 그대로 
 3. **트레이**: 창 숨김, 다시 실행 시 단일 인스턴스로 앞으로 오는지.
 4. **서비스 워커**: `index.html` 의 SW 등록은 **프로덕션 Jekyll** 에만 들어갑니다. 로컬 `jekyll serve`(기본 development)로는 해당 스크립트가 빠지므로, SW·오프라인 캐시는 **배포 URL** 또는 `JEKYLL_ENV=production` 으로 빌드한 `_site` 로 확인하세요.
 
+## 로컬 데브 러너
+
+KarmoLab **데스크톱 앱**에서만 동작합니다(브라우저 탭에서는 `서버 모니터`에 **로컬 실행** 탭이 나오지 않음).
+
+1. 앱에서 **서버 모니터 → 로컬 실행**으로 이동합니다.
+2. **프로젝트(저장소) 루트 경로**에 이 레포 루트(예: `…\Mascari4615.github.io`)를 넣고 **루트 저장**을 누릅니다. 값은 WebView `localStorage`와 Rust 쪽 상태에 같이 반영됩니다.
+3. 프로필 목록은 **`apps/karmolab/data/servermonitor-config.json`** 의 **`devProfiles`** 만 읽습니다. 앱은 `profile id`만 넘기고, 실제 `program`·`args`·`cwd`는 Rust가 그 파일에서 다시 읽어 검증합니다(허용 program: `npm`, `npx`, `bundle`, `ruby`, `node`).
+4. **시작**은 백그라운드 프로세스로 띄우고, **종료**는 Windows에서 `taskkill /T /F`로 트리를 끊습니다. **앱을 완전히 종료하면 PID 추적은 초기화**되므로, 그때는 작업 관리자 등으로 남은 프로세스를 확인하세요.
+5. **`npm install`** 버튼은 `npmInstall: true`인 프로필만 표시되며, 해당 프로필의 `cwd`(레포 기준 상대 경로)에서 동기 실행됩니다.
+6. **Windows**: `npm`/`npx`는 내부적으로 `cmd /C`로 호출합니다. **Ruby `bundle`·Node `npm`** 이 사용자 PATH에 있어야 합니다.
+7. **Linux/macOS**: 종료는 부모 PID에 `kill`을 보내는 수준이라, 자식 프로세스가 남을 수 있습니다. 필요하면 `pkill` 등으로 정리하세요.
+
 ## 앱 내 업데이트 (`tauri-plugin-updater`)
 
 - 트레이 메뉴 **「업데이트 확인…」** 이 GitHub Releases의 정적 manifest를 조회한 뒤, 새 버전이 있으면 내려받아 설치합니다(Windows는 passive 설치 모드). 결과는 OS 알림으로 짧게 알립니다.
