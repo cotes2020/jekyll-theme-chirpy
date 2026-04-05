@@ -1,9 +1,116 @@
 /**
  * Docs — 소개, 로드맵·기획, 가이드, 프로젝트 통합 명령
  *
- * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅.
+ * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅, ```mermaid 는 Mermaid 렌더.
  */
 (function (): void {
+  /** 동일 출처(Tracking Prevention 회피). CDN 금지 — `js/vendor/mermaid.min.js` */
+  function getMermaidScriptUrl(): string {
+    const w = window as unknown as { KARMOLAB_WIDGET_SCRIPT_BASE?: string };
+    if (w.KARMOLAB_WIDGET_SCRIPT_BASE) {
+      try {
+        return new URL('../vendor/mermaid.min.js', w.KARMOLAB_WIDGET_SCRIPT_BASE).href;
+      } catch {
+        /* noop */
+      }
+    }
+    const cur = document.currentScript as HTMLScriptElement | null;
+    if (cur?.src) {
+      try {
+        return new URL('../vendor/mermaid.min.js', cur.src).href;
+      } catch {
+        /* noop */
+      }
+    }
+    return (typeof location !== 'undefined' ? location.origin : '') + '/apps/karmolab/js/vendor/mermaid.min.js';
+  }
+
+  type MermaidApi = {
+    initialize: (config: Record<string, unknown>) => void;
+    run: (opts?: { nodes?: Iterable<Element> | null }) => Promise<unknown>;
+  };
+
+  let mermaidScriptPromise: Promise<void> | null = null;
+  let markedMermaidRegistered = false;
+
+  /** UMD/ESM 번들 모두: default 또는 루트에 API 가 올 수 있음 */
+  function getMermaidApi(): MermaidApi | null {
+    const w = window as unknown as { mermaid?: MermaidApi & { default?: MermaidApi } };
+    const root = w.mermaid;
+    if (!root) return null;
+    if (typeof root.initialize === 'function' && typeof root.run === 'function') return root;
+    const d = root.default;
+    if (d && typeof d.initialize === 'function' && typeof d.run === 'function') return d;
+    return null;
+  }
+
+  function loadMermaidScript(): Promise<void> {
+    if (getMermaidApi()) return Promise.resolve();
+    if (mermaidScriptPromise) return mermaidScriptPromise;
+    mermaidScriptPromise = new Promise(function (resolve, reject) {
+      const s = document.createElement('script');
+      s.src = getMermaidScriptUrl();
+      s.async = true;
+      s.onload = function () {
+        resolve();
+      };
+      s.onerror = function () {
+        mermaidScriptPromise = null;
+        reject(new Error('Mermaid 스크립트 로드 실패'));
+      };
+      document.head.appendChild(s);
+    });
+    return mermaidScriptPromise;
+  }
+
+  /** marked 기본 코드 블록(HTML 이스케이프)을 거치지 않고 ```mermaid 원문을 div 에 넣음 */
+  function registerMarkedMermaid(): void {
+    if (markedMermaidRegistered) return;
+    markedMermaidRegistered = true;
+    const mk = typeof marked !== 'undefined' ? (marked as { use?: (opts: unknown) => void }) : null;
+    if (!mk || typeof mk.use !== 'function') return;
+    mk.use({
+      extensions: [
+        {
+          name: 'mermaid',
+          level: 'block',
+          start(src: string) {
+            const m = /^```mermaid[ \t]*(?:\r?\n|$)/m.exec(src);
+            return m ? m.index : undefined;
+          },
+          tokenizer(src: string) {
+            const r = /^```mermaid[ \t]*\r?\n([\s\S]*?)\r?\n```/;
+            const m = r.exec(src);
+            if (!m) return undefined;
+            return {
+              type: 'mermaid',
+              raw: m[0],
+              text: m[1].replace(/\r\n/g, '\n').trim(),
+            };
+          },
+          renderer(token: { text: string }) {
+            const safe = token.text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+            return '<div class="mermaid">' + safe + '</div>\n';
+          },
+        },
+      ],
+    });
+  }
+
+  /** 펜스가 marked 확장을 타지 않았을 때(구버전 등) 대비 */
+  function replaceMermaidCodeBlocksFallback(body: HTMLElement): number {
+    let n = 0;
+    body.querySelectorAll('pre > code.language-mermaid, pre > code[class*="language-mermaid"]').forEach(function (code) {
+      const pre = code.parentElement;
+      if (!pre) return;
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = (code.textContent || '').replace(/\r\n/g, '\n').trim();
+      pre.replaceWith(div);
+      n++;
+    });
+    return n;
+  }
   Mdd.injectCSS(
     'docs',
     `
@@ -30,16 +137,22 @@
         .docs-toc-list { display:flex; flex-wrap:wrap; gap:6px; }
         .docs-toc-item { font-size:var(--font-size-xs); padding:4px 12px; border-radius:100px; background:var(--bg-tertiary); color:var(--text-secondary); cursor:pointer; border:1px solid var(--border); transition:all 0.15s; text-decoration:none; }
         .docs-toc-item:hover { color:var(--text-primary); border-color:var(--accent); }
+        .docs-body .mermaid { margin:0 0 16px; padding:12px; border-radius:var(--radius-md); border:1px solid var(--border); background:var(--bg-tertiary); overflow-x:auto; text-align:center; }
+        .docs-body .mermaid svg { max-width:100%; height:auto; }
     `
   );
 
   const DOCS_BASE = (function (): string {
+    const w = window as unknown as { KARMOLAB_WIDGET_SCRIPT_BASE?: string };
+    if (w.KARMOLAB_WIDGET_SCRIPT_BASE) {
+      return w.KARMOLAB_WIDGET_SCRIPT_BASE + 'docs/';
+    }
     const script = document.currentScript;
     if (script && 'src' in script && script.src) {
       const url = new URL(script.src);
       return url.origin + url.pathname.replace(/\/[^/]+$/, '/');
     }
-    return './js/widgets/docs/';
+    return (typeof location !== 'undefined' ? location.origin : '') + '/apps/karmolab/js/widgets/docs/';
   })();
 
   function getDocUrl(filename: string): string {
@@ -58,6 +171,7 @@
     body.className = 'docs-body';
 
     if (typeof marked !== 'undefined') {
+      registerMarkedMermaid();
       marked.setOptions({ breaks: true, gfm: true });
       body.innerHTML = marked.parse(md);
     } else {
@@ -68,6 +182,8 @@
     container.innerHTML = '';
     container.appendChild(body);
 
+    replaceMermaidCodeBlocksFallback(body);
+
     body.querySelectorAll('pre code').forEach((block: Element) => {
       const lang = block.className.match(/language-(\w+)/)?.[1] || 'javascript';
       block.className = 'language-' + lang;
@@ -75,12 +191,39 @@
         Prism.highlightElement(block);
       }
     });
+
+    const mermaidEls = body.querySelectorAll('.mermaid');
+    if (mermaidEls.length > 0) {
+      void (async function () {
+        try {
+          await loadMermaidScript();
+          const mm = getMermaidApi();
+          if (!mm) {
+            console.error('[docs mermaid] window.mermaid API 없음');
+            return;
+          }
+          const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+          mm.initialize({
+            startOnLoad: false,
+            theme: isDark ? 'dark' : 'default',
+            securityLevel: 'loose',
+          });
+          await mm.run({ nodes: Array.from(mermaidEls) });
+        } catch (e) {
+          console.error('[docs mermaid]', e);
+          body.insertAdjacentHTML(
+            'beforeend',
+            '<p class="docs-body" style="color:var(--error)">다이어그램(Mermaid)을 그리지 못했습니다. 콘솔(F12)에 오류가 있는지, CDN·문법을 확인해 주세요.</p>',
+          );
+        }
+      })();
+    }
   }
 
   Toolbox.register({
     id: 'docs',
     title: '문서',
-    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, 레포 전체 명령·경로',
+    desc: 'KarmoLab 소개, 로드맵·기획, 가이드, Discord 봇 문서, 레포 명령',
     layout: 'wide',
     icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
     tabs: [
@@ -145,12 +288,42 @@
         }
       },
       {
+        id: 'docs-discord-improvements',
+        label: 'Discord·개선',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: '욘 봇 개선 아이디어 백로그예요.' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('discord-bot-improvements.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
         id: 'docs-project-commands',
         label: '프로젝트 명령',
         build: function (c: HTMLElement): void {
           Mdd.linePreset('tool_run', { msg: '블로그·KarmoLab·앱 전체 명령을 모아 뒀어요. 복사해서 쓰기 좋게!' });
           c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
           loadDoc('project-commands-guide.md')
+            .then(function (md: string) {
+              renderMarkdown(c, md);
+            })
+            .catch(function () {
+              renderMarkdown(c, '*문서를 불러오지 못했어요. 새로고침해 주세요.*');
+            });
+        }
+      },
+      {
+        id: 'docs-ai-commonization',
+        label: 'AI 공통화',
+        build: function (c: HTMLElement): void {
+          Mdd.linePreset('tool_run', { msg: 'Gemini·봇·카카오 스크립트 공통화 기획이에요.' });
+          c.innerHTML = '<p class="docs-body" style="color:var(--text-secondary)">문서 불러오는 중...</p>';
+          loadDoc('ai-commonization-plan.md')
             .then(function (md: string) {
               renderMarkdown(c, md);
             })
