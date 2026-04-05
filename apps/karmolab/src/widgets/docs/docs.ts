@@ -4,12 +4,12 @@
  * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅, ```mermaid 는 Mermaid 렌더.
  */
 (function (): void {
-  /** 동일 출처(Tracking Prevention 회피). CDN 금지 — `js/vendor/mermaid.min.js` */
+  /** 동일 출처(Tracking Prevention 회피). CDN 금지 — Jekyll 블로그 `assets/lib/mermaid/mermaid.min.js` 와 공유 */
   function getMermaidScriptUrl(): string {
     const w = window as unknown as { KARMOLAB_WIDGET_SCRIPT_BASE?: string };
     if (w.KARMOLAB_WIDGET_SCRIPT_BASE) {
       try {
-        return new URL('../vendor/mermaid.min.js', w.KARMOLAB_WIDGET_SCRIPT_BASE).href;
+        return new URL('../../../../assets/lib/mermaid/mermaid.min.js', w.KARMOLAB_WIDGET_SCRIPT_BASE).href;
       } catch {
         /* noop */
       }
@@ -17,12 +17,12 @@
     const cur = document.currentScript as HTMLScriptElement | null;
     if (cur?.src) {
       try {
-        return new URL('../vendor/mermaid.min.js', cur.src).href;
+        return new URL('../../../../../assets/lib/mermaid/mermaid.min.js', cur.src).href;
       } catch {
         /* noop */
       }
     }
-    return (typeof location !== 'undefined' ? location.origin : '') + '/apps/karmolab/js/vendor/mermaid.min.js';
+    return (typeof location !== 'undefined' ? location.origin : '') + '/assets/lib/mermaid/mermaid.min.js';
   }
 
   type MermaidApi = {
