@@ -432,6 +432,24 @@ const commands = [
         .setDescription('AI에게 전달할 메시지')
         .setDescriptionLocalizations(enUS('Message for the AI'))
         .setRequired(true),
+    )
+    .addStringOption((opt) =>
+      opt
+        .setName('api')
+        .setDescription('호출 API (비우면 .env의 KARMOLAB_AI_SURFACE 등 기본)')
+        .setDescriptionLocalizations(enUS('API surface (default: .env KARMOLAB_AI_SURFACE / GEMINI_SURFACE)'))
+        .addChoices(
+          { name: '기본 (.env)', name_localizations: enUS('Default (.env)'), value: 'inherit' },
+          { name: 'Google AI Studio', name_localizations: enUS('Google AI Studio'), value: 'ai_studio' },
+          { name: 'Vertex AI', name_localizations: enUS('Vertex AI'), value: 'vertex' },
+        ),
+    )
+    .addStringOption((opt) =>
+      opt
+        .setName('model')
+        .setDescription('모델 ID (예: gemini-2.5-flash). 비우면 GEMINI_MODEL·패키지 기본')
+        .setDescriptionLocalizations(enUS('Model id; empty = GEMINI_MODEL / package default'))
+        .setMaxLength(64),
     ),
 
   new SlashCommandBuilder()

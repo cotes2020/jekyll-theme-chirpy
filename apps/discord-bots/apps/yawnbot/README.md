@@ -59,7 +59,7 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 
 | 명령 | 설명 |
 |------|------|
-| `/yawn` `질문` | Gemini / Vertex (`.env` — AI Studio 또는 Vertex). 채널 **최근 메시지**를 맥락으로 붙일 수 있음(`YAWN_CONTEXT_MESSAGES`). 시스템 톤은 `YAWN_SYSTEM_PROMPT`로 조절 |
+| `/yawn` `질문` | **필수** 질문 문자열. **선택** `api`: 기본(.env) / Google AI Studio / Vertex AI — 런타임에 호출 도메인 고름(각각에 맞는 키가 `.env`에 있어야 함). **선택** `model`: 모델 ID(예 `gemini-2.5-pro`); 비우면 `GEMINI_MODEL`·패키지 기본. 구현: `karmolab-ai/node`의 `generateBlobTextFromEnvWithOptions`. 채널 **최근 메시지** 맥락(`YAWN_CONTEXT_MESSAGES`), 시스템 톤(`YAWN_SYSTEM_PROMPT`) |
 | `/cursor-edit` | [관리자] 로컬 Cursor 에이전트 |
 | `/admin-reload` / `/admin-save` | [관리자] 데이터 리로드·저장 |
 

@@ -94,8 +94,10 @@ flowchart TB
   - **기본 AI Studio:** `GEMINI_API_KEY` 필수, `GEMINI_MODEL` 선택
   - **Vertex:** `KARMOLAB_AI_SURFACE=vertex` (또는 `GEMINI_SURFACE=vertex`) + `VERTEX_API_KEY`, `VERTEX_PROJECT_ID` 필수, `VERTEX_LOCATION`·`GEMINI_MODEL` 선택  
   - env 키 이름 참고: 루트 패키지 `ENV_GOOGLE_AI`
+- **욘봇 `/yawn`:** 슬래시 옵션 `api`·`model`로 **이번 호출만** Studio/Vertex·모델 ID를 고를 수 있음(각 API에 맞는 키는 `.env`에 미리 있어야 함). 구현은 `generateBlobTextFromEnvWithOptions` (`karmolab-ai/node`).
 - **`karmolab-ai/node` API (요약):**
-  - `tryCreateGenerativeTextFromEnv()` → `{ surface, generateFromPrompt }` 또는 `null` — 욘봇 `/ai`·카카오 요약 공통
+  - `generateBlobTextFromEnvWithOptions(env, blobPrompt, { surface?, modelId?, signal? })` — `/yawn` 단발(시스템+맥락+질문 한 덩어리)
+  - `tryCreateGenerativeTextFromEnv()` → `{ surface, generateFromPrompt }` 또는 `null` — 봇 기동 로그·카카오 요약 등
   - `generateVertexText({ apiKey, projectId, location?, modelId?, userText, systemInstruction? })` — Vertex 단발
   - `generateAiStudioText({ apiKey, modelId?, prompt, signal? })` — AI Studio 단발
   - `createAiStudioTextModel` / `resolveAiStudioTextModelId` / `parseGenerativeSurfaceFromEnv` — 필요 시 저수준 조합

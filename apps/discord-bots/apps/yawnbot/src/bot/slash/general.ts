@@ -34,7 +34,7 @@ export async function handleHelp(ctx, interaction) {
         },
         {
           name: '✨ 기타',
-          value: '`/yawn` (Gemini) · `/ping` · `/음성입장`·`/voice-join` · `/음성퇴장`·`/voice-leave`',
+          value: '`/yawn` (Gemini/Vertex) · `/ping` · `/음성입장`·`/voice-join` · `/음성퇴장`·`/voice-leave`',
         },
       )
       .setFooter({ text: '관리자: /cursor-edit, /admin-reload, /admin-save' })
@@ -65,7 +65,10 @@ export async function handleHelp(ctx, interaction) {
     const embed = new EmbedBuilder()
       .setTitle('AI · 유틸 · 음성')
       .addFields(
-        { name: '/yawn', value: '`질문` — 채널 최근 메시지 맥락 + Gemini.' },
+        {
+          name: '/yawn',
+          value: '`질문` + 선택 `api`(기본·AI Studio·Vertex), `model` — KarmoLabAI(`karmolab-ai/node`).',
+        },
         { name: '/ping', value: '웹소켓 지연(ms).' },
         {
           name: '음성',

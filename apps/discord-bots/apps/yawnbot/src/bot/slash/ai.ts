@@ -8,6 +8,10 @@ import {
   notifyDeferCompletion,
   startDeferElapsedTicker,
 } from '@discord-bots/common';
+import {
+  generateBlobTextFromEnvWithOptions,
+  parseGenerativeSurfaceFromEnv,
+} from 'karmolab-ai/node';
 import { discordAnswerCursorQuestion, getCursorMaxPromptChars, runCursorLocalRunner } from '../cursor-local';
 import { resolveCursorRepoDirForSlash } from '../../paths';
 
@@ -18,6 +22,19 @@ function yawnSystemPromptFromEnv(): string {
   const t = String(raw).trim();
   if (!t) return DEFAULT_YAWN_SYSTEM;
   return t.replace(/\\n/g, '\n');
+}
+
+/** @param {import('karmolab-ai/node').GenerativeSurfaceOverride} surfaceOverride */
+function yawnEnvPrecheckError(env, surfaceOverride) {
+  const eff = surfaceOverride === 'inherit' ? parseGenerativeSurfaceFromEnv(env) : surfaceOverride;
+  if (eff === 'vertex') {
+    if (!env.VERTEX_API_KEY?.trim() || !env.VERTEX_PROJECT_ID?.trim()) {
+      return 'Vertex에는 .env의 VERTEX_API_KEY, VERTEX_PROJECT_ID가 필요합니다.';
+    }
+  } else if (!env.GEMINI_API_KEY?.trim()) {
+    return 'AI Studio에는 .env의 GEMINI_API_KEY가 필요합니다.';
+  }
+  return null;
 }
 
 function friendlyYawnErrorMessage(err: unknown): string {
@@ -213,15 +230,35 @@ export async function handleCursorEdit(ctx, interaction, userId) {
 }
 
 export async function handleYawn(ctx, interaction) {
-  const { generativeText } = ctx;
-  if (!generativeText) {
-    await interaction.reply({ content: 'Gemini/Vertex AI가 설정되지 않았습니다 (.env 확인).', flags: MessageFlags.Ephemeral });
-    return;
-  }
   const rawPrompt = interaction.options.getString('질문');
   const prompt = (rawPrompt ?? '').trim();
   if (!prompt) {
     await interaction.reply({ content: '질문 내용을 입력해 주세요.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+
+  const apiRaw = interaction.options.getString('api');
+  let surfaceOverride = 'inherit';
+  if (apiRaw === 'ai_studio') surfaceOverride = 'aiStudio';
+  else if (apiRaw === 'vertex') surfaceOverride = 'vertex';
+
+  const rawModelOpt = interaction.options.getString('model');
+  let modelOpt = null;
+  if (rawModelOpt != null && String(rawModelOpt).trim()) {
+    const t = String(rawModelOpt).trim();
+    if (t.length > 64 || !/^[a-zA-Z0-9._-]+$/.test(t)) {
+      await interaction.reply({
+        content: '`model` 옵션은 `a-zA-Z0-9._-` 만 허용, 최대 64자입니다.',
+        flags: MessageFlags.Ephemeral,
+      });
+      return;
+    }
+    modelOpt = t;
+  }
+
+  const envErr = yawnEnvPrecheckError(process.env, surfaceOverride);
+  if (envErr) {
+    await interaction.reply({ content: envErr, flags: MessageFlags.Ephemeral });
     return;
   }
 
@@ -251,9 +288,14 @@ export async function handleYawn(ctx, interaction) {
     if (fullPrompt.length > maxFullClamped) {
       fullPrompt = fullPrompt.slice(0, maxFullClamped) + '\n\n…(앞부분·맥락이 잘렸습니다)';
     }
-    const response = await generativeText.generateFromPrompt(fullPrompt);
+    const { text: response, surface: usedSurface, modelId: usedModelId } =
+      await generateBlobTextFromEnvWithOptions(process.env, fullPrompt, {
+        surface: surfaceOverride,
+        modelId: modelOpt,
+      });
     await stopGeminiTicker();
     stopGeminiTicker = async () => {};
+    const apiLabel = usedSurface === 'vertex' ? 'Vertex AI' : 'Google AI Studio';
     const embed = new EmbedBuilder()
       .setTitle('YawnBot AI Response')
       .setDescription(
@@ -262,7 +304,7 @@ export async function handleYawn(ctx, interaction) {
         ),
       )
       .setColor(0x4285f4)
-      .setFooter({ text: 'Powered by Google Gemini' })
+      .setFooter({ text: `${apiLabel} · ${usedModelId}` })
       .setTimestamp();
     await interaction.editReply({ content: null, embeds: [embed] });
     await notifyDeferCompletion(interaction, { ok: true, kind: 'gemini' });
