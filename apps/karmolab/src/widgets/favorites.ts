@@ -33,7 +33,11 @@ import { DEFAULT_ITEMS, FAVICON_FALLBACK, type FavoriteGroup, type FavoriteItem 
     function getToolboxToolsGroup(): FavoriteGroup | null {
         const tools = typeof Toolbox !== 'undefined' && Toolbox.getTools ? Toolbox.getTools() : [];
         const items: FavoriteItem[] = tools
-            .filter((t: any) => !t.hidden)
+            .filter((t: any) => {
+                if (t.hidden) return false;
+                if (t.category === 'desktop' && !(Toolbox as any).isDesktopApp?.()) return false;
+                return true;
+            })
             .map((t: any) => ({ type: 'tool', toolId: t.id, label: t.title, icon: t.icon }));
         return items.length ? { group: 'Toolbox', items } : null;
     }

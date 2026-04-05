@@ -15,7 +15,7 @@
  * │               ─→ gemini.js (AI API)                        │
  * │               ─→ widgets/*.js (개별 도구)                   │
  * │                                                            │
- * │  카테고리:  tool (도구)  /  play (놀이)  /  lab (실험실·개발중)  /  null (기타)  │
+ * │  카테고리:  tool (도구)  /  play (놀이)  /  lab (실험실·개발중)  /  desktop (데스크톱 앱 전용)  /  null (기타)  │
  * └────────────────────────────────────────────────────────────┘
  *
  * 새 도구 추가 방법:
@@ -23,7 +23,7 @@
  * 2. widgets-manifest.js(boot) + widgets-lazy-meta.js(지연 메타 단일 출처)
  * 3. Toolbox.register({ id, title, icon, category, desc, hidden?, tabs }) 호출
  *    - icon: SVG path 문자열 (viewBox 0 0 24 24 기준)
- *    - category: 'tool' | 'play' | 'lab' | null
+ *    - category: 'tool' | 'play' | 'lab' | 'desktop' | null  ('desktop'은 Tauri 앱에서만 메뉴·페이지에 표시)
  *    - desc: 한 줄 설명 (검색·즐겨찾기용)
  *    - hidden: true면 메뉴에 비표시 (user 등)
  *    - tabs: [{ id, label, build(container) }]
@@ -45,6 +45,7 @@ const Toolbox = (() => {
         { id: 'tool', label: '도구', icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94L6.73 20.15a2.1 2.1 0 0 1-3-3l6.72-6.72a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>' },
         { id: 'play', label: '놀이', icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/>' },
         { id: 'lab', label: '실험실 · 개발중', icon: '<path d="M9 3h6v5l4 4v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7l4-4V3z"/><path d="M9 3h6"/>' },
+        { id: 'desktop', label: '데스크톱 앱', icon: '<rect x="2" y="4" width="20" height="14" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="8" y1="20" x2="16" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' },
     ];
 
     /** 위젯별 메타데이터 (category, desc, hidden 등) — 각 위젯 register에서 정의 */
@@ -282,6 +283,11 @@ const Toolbox = (() => {
         return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
     }
 
+    /** 데스크톱 전용(category desktop) 도구는 일반 브라우저에서 메뉴·페이지에 넣지 않음 */
+    function isDesktopOnlyTool(tool) {
+        return tool && tool.category === 'desktop';
+    }
+
     function mirrorToastToDesktop(msg, type, detailText) {
         if (!isDesktopApp()) return;
         if (type !== 'error' && type !== 'success') return;
@@ -404,7 +410,7 @@ const Toolbox = (() => {
 
             CATEGORIES.forEach(cat => {
                 const catTools = tools
-                    .filter(t => !hiddenSet.has(t.id) && t.category === cat.id)
+                    .filter(t => !hiddenSet.has(t.id) && t.category === cat.id && (cat.id !== 'desktop' || isDesktopApp()))
                     .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
                 buildHeaderNavGroup(cat.label, catTools, headerNavScroll);
             });
@@ -430,8 +436,8 @@ const Toolbox = (() => {
         // Build tool pages (가나다순)
         const sortedTools = [...tools].sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
         sortedTools.forEach(tool => {
-            if (!hiddenSet.has(tool.id)) addMobileNavItem(tool);
-            toolPages.appendChild(buildToolPage(tool));
+            if (!hiddenSet.has(tool.id) && (!isDesktopOnlyTool(tool) || isDesktopApp())) addMobileNavItem(tool);
+            if (!isDesktopOnlyTool(tool) || isDesktopApp()) toolPages.appendChild(buildToolPage(tool));
         });
 
         document.getElementById('userPageBtn')?.addEventListener('click', () => switchPage('user'));
@@ -446,7 +452,13 @@ const Toolbox = (() => {
 
         const hashPage = location.hash ? location.hash.slice(1) : null;
         const lastPage = (() => { try { return localStorage.getItem(LAST_PAGE_KEY); } catch (_) { return null; } })();
-        const isValidPage = (id) => id === 'home' || id === 'user' || tools.some(t => t.id === id);
+        const isValidPage = (id) => {
+            if (id === 'home' || id === 'user') return true;
+            const t = tools.find(x => x.id === id);
+            if (!t) return false;
+            if (isDesktopOnlyTool(t) && !isDesktopApp()) return false;
+            return true;
+        };
         const initialPage = (hashPage && isValidPage(hashPage))
             ? hashPage
             : (lastPage && isValidPage(lastPage) ? lastPage : 'home');
@@ -465,24 +477,29 @@ const Toolbox = (() => {
         if (serverDot && typeof getServerBase === 'function') {
             function updateServerDot() {
                 const base = getServerBase();
+                const clickHint = isDesktopApp() ? '클릭: 서버 모니터' : '서버 모니터는 데스크톱 앱 전용';
                 serverDot.classList.remove('server-status-ok', 'server-status-offline', 'server-status-none');
                 if (!base) {
                     serverDot.classList.add('server-status-none');
-                    serverDot.title = '서버 미설정 (서버 모니터에서 URL 입력)';
+                    serverDot.title = isDesktopApp()
+                        ? '서버 미설정 (서버 모니터에서 URL 입력)'
+                        : '서버 미설정 (' + clickHint + ')';
                     return;
                 }
                 const url = base.replace(/\/$/, '') + '/api/status';
                 fetch(url).then(r => r.ok ? r.json() : Promise.reject()).then(() => {
                     serverDot.classList.add('server-status-ok');
-                    serverDot.title = '서버 연결됨 (클릭: 서버 모니터)';
+                    serverDot.title = '서버 연결됨' + (isDesktopApp() ? ' (' + clickHint + ')' : ' · ' + clickHint);
                 }).catch(() => {
                     serverDot.classList.add('server-status-offline');
-                    serverDot.title = '서버 연결 실패 (클릭: 서버 모니터)';
+                    serverDot.title = '서버 연결 실패' + (isDesktopApp() ? ' (' + clickHint + ')' : ' · ' + clickHint);
                 });
             }
             updateServerDot();
             const serverPollInterval = setInterval(updateServerDot, 60000);
-            serverDot.addEventListener('click', () => { if (tools.some(t => t.id === 'servermonitor')) switchPage('servermonitor'); });
+            serverDot.addEventListener('click', () => {
+                if (isDesktopApp() && tools.some(t => t.id === 'servermonitor')) switchPage('servermonitor');
+            });
             serverDot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); serverDot.click(); } });
         }
     }
@@ -534,8 +551,14 @@ const Toolbox = (() => {
 
     function switchPage(pageId, opts = {}) {
         closeAllHeaderNav();
-        const { pushHistory = true } = opts;
+        let { pushHistory = true } = opts;
         const base = location.pathname + (location.search || '');
+        const denied = tools.find(t => t.id === pageId);
+        if (denied && isDesktopOnlyTool(denied) && !isDesktopApp()) {
+            history.replaceState({ pageId: 'home' }, '', base + '#home');
+            pageId = 'home';
+            pushHistory = false;
+        }
         const urlWithHash = base + '#' + pageId;
         if (pushHistory) {
             history.pushState({ pageId }, '', urlWithHash);

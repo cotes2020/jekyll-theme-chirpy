@@ -67,6 +67,7 @@ declare global {
     register: (config: {
       id: string;
       title: string;
+      /** tool | play | lab | desktop | undefined(기타) */
       category?: string;
       desc?: string;
       layout?: string;

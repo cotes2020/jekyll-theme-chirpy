@@ -1,6 +1,6 @@
 # 로컬 데브 러너 (Tauri 전용)
 
-KarmoLab **데스크톱 앱**(Tauri) 안에서만 쓰는 기능이에요. 브라우저로 GitHub Pages만 열면 `서버 모니터`에 **로컬 프로세스** 블록이 나오지 않아요.
+KarmoLab **데스크톱 앱**(Tauri) 안에서만 쓰는 기능이에요. 일반 브라우저로 GitHub Pages만 열면 **서버 모니터** 위젯 자체가 메뉴에 없습니다.
 
 > **원본 파일:** `apps/karmolab/js/widgets/docs/local-dev-runner.md` (GitHub에서 직접 열어도 동일)
 
@@ -25,7 +25,7 @@ npm run dev
 
 ## 위젯에서 쓰는 법
 
-1. 앱에서 **서버 모니터** 위젯을 엽니다.
+1. 앱에서 상단 **데스크톱 앱** 메뉴 → **서버 모니터**를 엽니다.
 2. 아래쪽 **로컬 프로세스 (데스크톱)** 영역에서 **프로젝트(저장소) 루트 경로**에 이 레포의 최상위 폴더를 넣습니다. (예: Windows `C:\Users\…\Mascari4615.github.io`)
 3. **루트 저장**을 누릅니다. 값은 WebView `localStorage`와 Rust 쪽 상태에 같이 반영됩니다.
 4. 위의 **상태 조회**로 `localMonitors` URL 응답을 확인하고, 표에서 **시작** / **종료** / (해당 시) **npm install** 을 사용합니다.
