@@ -14,6 +14,7 @@
     "kakao-export-watch-stop": "node scripts/kakao-export-watch-stop.mjs"
   },
   "dependencies": {
+    "karmolab-ai": "file:../../../../packages/karmolab-ai",
     "@discord-bots/common": "*",
     "@discordjs/opus": "^0.10.0",
     "@discordjs/voice": "^0.19.2",

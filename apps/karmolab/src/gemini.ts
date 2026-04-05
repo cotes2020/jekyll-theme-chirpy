@@ -12,36 +12,13 @@
  * - 문서: https://ai.google.dev/gemini-api/docs/models
  * - 이미지: https://ai.google.dev/gemini-api/docs/image-generation
  * - Imagen: https://ai.google.dev/gemini-api/docs/imagen
+ *
+ * 모델 ID·목록 SSOT: packages/karmolab-ai (KarmoLabAI)
  */
 // @ts-nocheck — large API surface; narrow types incrementally later (Toolbox/Gemini shapes)
-const Gemini = (() => {
-    /* ===== 모델 정의 (API ListModels 2026-03-18 조회 기준, .cursor/rules/google-ai-models.mdc 참조) ===== */
-    const MODELS = {
-        /* Gemini 시리즈: 채팅/텍스트 (generateContent 지원) */
-        gemini: [
-            { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', isDefault: true },
-            { id: 'gemini-2.5-pro', name: 'Gemini 2.5 Pro' },
-            { id: 'gemini-2.0-flash', name: 'Gemini 2 Flash' },
-            { id: 'gemini-2.0-flash-lite', name: 'Gemini 2 Flash Lite' },
-            { id: 'gemini-2.5-flash-lite', name: 'Gemini 2.5 Flash Lite' },
-            { id: 'gemini-3-flash-preview', name: 'Gemini 3 Flash' },
-            { id: 'gemini-3.1-pro-preview', name: 'Gemini 3.1 Pro' },
-            { id: 'gemini-3.1-flash-lite-preview', name: 'Gemini 3.1 Flash Lite' }
-        ],
-        /* Nano Banana 시리즈: 이미지 생성 (generateContent + responseModalities: IMAGE) */
-        geminiImage: [
-            { id: 'gemini-2.5-flash-image', name: 'Nano Banana (Gemini 2.5 Flash Image)', isDefault: true },
-            { id: 'gemini-3-pro-image-preview', name: 'Nano Banana Pro (Gemini 3 Pro Image)' },
-            { id: 'gemini-3.1-flash-image-preview', name: 'Nano Banana 2 (Gemini 3.1 Flash Image)' }
-        ],
-        /* Imagen 시리즈 (predict 엔드포인트) */
-        imagen: [
-            { id: 'imagen-4.0-generate-001', name: 'Imagen 4 Generate', isDefault: true },
-            { id: 'imagen-4.0-ultra-generate-001', name: 'Imagen 4 Ultra Generate' },
-            { id: 'imagen-4.0-fast-generate-001', name: 'Imagen 4 Fast Generate' }
-        ]
-    };
+import { MODEL_CATALOG as MODELS, getDefaultModelId } from 'karmolab-ai';
 
+const Gemini = (() => {
     const STORAGE_KEY = 'toolbox_gemini_api_key'; // legacy single-key
     const KEYS_STORE_KEY = 'toolbox_gemini_api_keys_v2';
     /** Vertex AI (Google Cloud API 키 / Express 모드 등) — AI Studio 키와 별도 */
@@ -171,12 +148,9 @@ const Gemini = (() => {
         return key;
     }
 
-    /* ===== 기본 모델 ===== */
+    /* ===== 기본 모델 (catalog: karmolab-ai) ===== */
     function getDefaultModel(provider = 'gemini') {
-        const models = MODELS[provider];
-        if (!models || models.length === 0) return '';
-        const def = models.find(m => m.isDefault);
-        return def ? def.id : models[0].id;
+        return getDefaultModelId(provider);
     }
 
     /* ===== API 요청/응답 히스토리 (디버깅용, 메모리만) ===== */

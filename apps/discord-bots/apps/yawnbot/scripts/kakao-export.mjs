@@ -24,17 +24,20 @@ import path from 'path';
 import os from 'os';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'node:module';
 import { config } from 'dotenv';
 import { setTimeout as delay } from 'node:timers/promises';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+const { DEFAULT_GEMINI_TEXT_MODEL_ID } = require('karmolab-ai');
 config({ path: path.join(__dirname, '..', '.env') });
 
 const DEFAULT_EXPORT_DIR = path.join(os.homedir(), 'Documents', '카카오톡 받은 파일');
 const WATCH_DIR = process.env.KAKAO_EXPORT_WATCH_DIR?.trim() || DEFAULT_EXPORT_DIR;
 const WEBHOOK = process.env.DISCORD_SUMMARY_WEBHOOK_URL?.trim() || '';
-const MODEL = process.env.GEMINI_MODEL?.trim() || 'gemini-2.5-flash';
+const MODEL = process.env.GEMINI_MODEL?.trim() || DEFAULT_GEMINI_TEXT_MODEL_ID;
 
 const STATE_ROOT = path.join(os.homedir(), '.karmolab');
 const watchKey = crypto.createHash('sha256').update(WATCH_DIR).digest('hex').slice(0, 16);

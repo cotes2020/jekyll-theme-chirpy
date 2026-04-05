@@ -23,11 +23,13 @@ await esbuild.build({
 await esbuild.build({
   entryPoints: [join(root, 'src/gemini.ts')],
   outfile: join(root, 'js/gemini.js'),
-  bundle: false,
+  bundle: true,
   format: 'esm',
   platform: 'browser',
   target: ['es2020'],
-  logLevel: 'info'
+  logLevel: 'info',
+  // Entry has no exports; tree-shaking can strip the Gemini/ImageDB IIFEs after adding an import.
+  treeShaking: false
 });
 
 await esbuild.build({

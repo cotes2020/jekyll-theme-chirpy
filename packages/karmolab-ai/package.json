@@ -1,0 +1,14 @@
+{
+  "name": "karmolab-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "KarmoLabAI — shared Gemini/model catalog SSOT for KarmoLab and Node consumers (yawnbot, scripts)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.0"
+  }
+}

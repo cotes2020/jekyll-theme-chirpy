@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "KarmoLab TypeScript sources; build emits to js/ for Jekyll/GitHub Pages",
   "type": "module",
+  "dependencies": {
+    "karmolab-ai": "file:../../packages/karmolab-ai"
+  },
   "scripts": {
     "build": "node build.mjs",
     "typecheck": "tsc --noEmit"
