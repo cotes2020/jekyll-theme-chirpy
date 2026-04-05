@@ -1,15 +1,28 @@
-import { Planner } from './components/Planner';
-import { HeroPanel } from './components/HeroPanel';
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import './App.css';
 
-const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
+const Planner = lazy(() =>
+  import('./components/Planner').then((m) => ({ default: m.Planner }))
+);
+const HeroPanel = lazy(() =>
+  import('./components/HeroPanel').then((m) => ({ default: m.HeroPanel }))
+);
+
+const CLIENT_ID = (import.meta.env.VITE_GOOGLE_CLIENT_ID ?? '').trim();
 const STORAGE_KEY = 'karmolab_google_token';
 
 interface TokenData {
   access_token: string;
   expires_at: number;
+}
+
+function PlannerLoadFallback() {
+  return (
+    <div className="app-login-prompt" aria-busy="true">
+      <p className="app-login-desc">플래너를 불러오는 중…</p>
+    </div>
+  );
 }
 
 function AppContent() {
@@ -91,14 +104,18 @@ function AppContent() {
       {/* 히어로 패널 (토글) */}
       {showHero && (
         <div className="app-hero-drawer">
-          <HeroPanel />
+          <Suspense fallback={<p className="app-login-desc">패널 로드 중…</p>}>
+            <HeroPanel />
+          </Suspense>
         </div>
       )}
 
       {/* 메인 영역 */}
       <div className="app-main">
         {accessToken ? (
-          <Planner accessToken={accessToken} />
+          <Suspense fallback={<PlannerLoadFallback />}>
+            <Planner accessToken={accessToken} />
+          </Suspense>
         ) : (
           <div className="app-login-prompt">
             <div className="app-login-icon">🗓</div>
@@ -115,7 +132,36 @@ function AppContent() {
   );
 }
 
+/** OAuth Provider는 유효한 client_id가 있을 때만 마운트 (없으면 GIS가 즉시 예외 throw) */
+function AppMissingGoogleClientId() {
+  return (
+    <div className="app-dashboard">
+      <div className="app-topbar">
+        <div className="app-topbar-left">
+          <span className="app-topbar-brand">🗓 KarmoLab Planner</span>
+        </div>
+      </div>
+      <div className="app-main">
+        <div className="app-login-prompt">
+          <div className="app-login-icon">⚙️</div>
+          <h2 className="app-login-title">Google 클라이언트 ID 필요</h2>
+          <p className="app-login-desc">
+            캘린더·할 일 연동을 쓰려면 빌드 시 환경 변수 <code>VITE_GOOGLE_CLIENT_ID</code>를 설정하세요.
+          </p>
+          <p className="app-login-desc" style={{ fontSize: '0.9rem', opacity: 0.85 }}>
+            로컬: <code>apps/karmolab-react-src/.env</code>에 OAuth 클라이언트 ID를 넣은 뒤{' '}
+            <code>npm run build</code>를 다시 실행합니다. 템플릿은 <code>.env.template</code>를 참고하세요.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
+  if (!CLIENT_ID) {
+    return <AppMissingGoogleClientId />;
+  }
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID}>
       <AppContent />

@@ -1,6 +1,11 @@
-import { useState } from 'react';
-import { CalendarView } from './CalendarView';
-import { KanbanView } from './KanbanView';
+import { useState, lazy, Suspense } from 'react';
+
+const CalendarView = lazy(() =>
+  import('./CalendarView').then((m) => ({ default: m.CalendarView }))
+);
+const KanbanView = lazy(() =>
+  import('./KanbanView').then((m) => ({ default: m.KanbanView }))
+);
 
 interface PlannerProps {
   accessToken: string;
@@ -27,8 +32,10 @@ export function Planner({ accessToken }: PlannerProps) {
       </div>
 
       <div className="planner-content">
-        {activeTab === 'calendar' && <CalendarView accessToken={accessToken} />}
-        {activeTab === 'tasks' && <KanbanView accessToken={accessToken} />}
+        <Suspense fallback={<p className="planner-tab-loading">탭을 불러오는 중…</p>}>
+          {activeTab === 'calendar' && <CalendarView accessToken={accessToken} />}
+          {activeTab === 'tasks' && <KanbanView accessToken={accessToken} />}
+        </Suspense>
       </div>
     </div>
   );

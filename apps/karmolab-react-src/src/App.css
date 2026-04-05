@@ -141,6 +141,14 @@
   flex-direction: column;
 }
 
+.planner-tab-loading {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted-foreground, #64748b);
+  font-size: 0.9rem;
+}
+
 /* Container and legacy styles */
 .app-container {
   padding: 0;

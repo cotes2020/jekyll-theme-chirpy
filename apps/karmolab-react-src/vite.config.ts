@@ -10,6 +10,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         entryFileNames: 'assets/planner.js',
+        chunkFileNames: 'assets/planner-[name]-[hash].js',
         assetFileNames: 'assets/planner.[ext]',
       }
     }
