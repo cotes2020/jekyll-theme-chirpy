@@ -6,9 +6,10 @@
     "packages/*"
   ],
   "scripts": {
+    "install:deps": "node -e \"require('child_process').execSync('npm install', { stdio: 'inherit', env: { ...process.env, YOUTUBE_DL_SKIP_PYTHON_CHECK: '1' } })\"",
     "build": "npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build && npm -w apps/atkup-bot run build",
-    "build:yawnbot": "npm -w apps/yawnbot run build",
-    "build:atkup": "npm -w apps/atkup-bot run build",
+    "build:yawnbot": "npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build",
+    "build:atkup": "npm -w packages/discord-bot-common run build && npm -w apps/atkup-bot run build",
     "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/atkup-bot run dev\"",
     "dev:yawnbot": "npm -w apps/yawnbot run dev",
     "dev:atkup": "npm -w apps/atkup-bot run dev",
