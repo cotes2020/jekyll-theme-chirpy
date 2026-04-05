@@ -11,6 +11,57 @@ import {
 import { discordAnswerCursorQuestion, getCursorMaxPromptChars, runCursorLocalRunner } from '../cursor-local';
 import { resolveCursorRepoDirForSlash } from '../../paths';
 
+const DEFAULT_YAWN_SYSTEM = `시스템: 너는 'YawnBot'이라는 이름의 활기차고 재치 있는 디스코드 봇이야. 사용자의 질문에 친절하고 유머러스하게 대답해줘.`;
+
+function yawnSystemPromptFromEnv(): string {
+  const raw = process.env.YAWN_SYSTEM_PROMPT ?? process.env.BOT_YAWN_SYSTEM_PROMPT ?? '';
+  const t = String(raw).trim();
+  if (!t) return DEFAULT_YAWN_SYSTEM;
+  return t.replace(/\\n/g, '\n');
+}
+
+function friendlyYawnErrorMessage(err: unknown): string {
+  const msg = err instanceof Error ? err.message : String(err);
+  const lower = msg.toLowerCase();
+  if (lower.includes('429') || lower.includes('resource exhausted') || lower.includes('quota')) {
+    return '요청이 많아 잠시 후 다시 시도해 주세요. (한도/속도 제한)';
+  }
+  if (lower.includes('safety') || lower.includes('blocked') || lower.includes('block_reason')) {
+    return '안전 정책 때문에 응답할 수 없습니다. 질문을 바꿔 보세요.';
+  }
+  if (
+    lower.includes('api key') ||
+    lower.includes('permission denied') ||
+    lower.includes('401') ||
+    lower.includes('403')
+  ) {
+    return 'API 인증에 문제가 있습니다. 서버 `.env`의 키·프로젝트 설정을 확인해 주세요.';
+  }
+  if (lower.includes('fetch') || lower.includes('network') || lower.includes('econnreset')) {
+    return '네트워크 오류로 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+  }
+  return 'AI 응답을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.';
+}
+
+async function buildYawnChannelContext(interaction, maxMessages: number): Promise<string> {
+  if (maxMessages <= 0) return '';
+  try {
+    const ch = interaction.channel;
+    if (!ch || !ch.isTextBased() || ch.isDMBased()) return '';
+    const limit = Math.min(maxMessages + 8, 50);
+    const fetched = await ch.messages.fetch({ limit });
+    const sorted = [...fetched.values()].sort((a, b) => a.createdTimestamp - b.createdTimestamp);
+    const lines = sorted
+      .filter((m) => !m.author.bot && typeof m.content === 'string' && m.content.trim().length > 0)
+      .slice(-maxMessages)
+      .map((m) => `${m.author.username}: ${m.content.trim().slice(0, 400)}`);
+    if (!lines.length) return '';
+    return `\n\n[최근 이 채널 대화(참고용)]\n${lines.join('\n')}`;
+  } catch {
+    return '';
+  }
+}
+
 export async function handleCursorEdit(ctx, interaction, userId) {
   const { gameData, isAdmin, cursorState } = ctx;
   if (!isAdmin(userId)) {
@@ -167,13 +218,40 @@ export async function handleYawn(ctx, interaction) {
     await interaction.reply({ content: 'Gemini/Vertex AI가 설정되지 않았습니다 (.env 확인).', flags: MessageFlags.Ephemeral });
     return;
   }
-  const prompt = interaction.options.getString('질문');
+  const rawPrompt = interaction.options.getString('질문');
+  const prompt = (rawPrompt ?? '').trim();
+  if (!prompt) {
+    await interaction.reply({ content: '질문 내용을 입력해 주세요.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+
+  const maxQ = parseInt(process.env.YAWN_MAX_QUESTION_CHARS || '1500', 10);
+  const maxQuestion = Math.min(Math.max(200, Number.isFinite(maxQ) ? maxQ : 1500), 8000);
+  if (prompt.length > maxQuestion) {
+    await interaction.reply({
+      content: `질문이 너무 깁니다. 최대 **${maxQuestion}**자까지입니다. (조절: \`YAWN_MAX_QUESTION_CHARS\`)`,
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  const ctxN = parseInt(process.env.YAWN_CONTEXT_MESSAGES || '10', 10);
+  const contextCount = Math.min(Math.max(0, Number.isFinite(ctxN) ? ctxN : 10), 30);
+
   await interaction.deferReply();
   let stopGeminiTicker: () => Promise<void> = async () => {};
   try {
     stopGeminiTicker = await startDeferElapsedTicker(interaction, 'gemini', { requestText: prompt });
-    const wrapped = `시스템: 너는 'YawnBot'이라는 이름의 활기차고 재치 있는 디스코드 봇이야. 사용자의 질문에 친절하고 유머러스하게 대답해줘.\n\n사용자: ${prompt}`;
-    const response = await generativeText.generateFromPrompt(wrapped);
+    const contextBlock = await buildYawnChannelContext(interaction, contextCount);
+    const system = yawnSystemPromptFromEnv();
+    const userBlock = `사용자 질문:\n${prompt}`;
+    let fullPrompt = `${system}${contextBlock}\n\n${userBlock}`;
+    const maxFull = parseInt(process.env.YAWN_MAX_PROMPT_CHARS || '12000', 10);
+    const maxFullClamped = Math.min(Math.max(2000, Number.isFinite(maxFull) ? maxFull : 12000), 32000);
+    if (fullPrompt.length > maxFullClamped) {
+      fullPrompt = fullPrompt.slice(0, maxFullClamped) + '\n\n…(앞부분·맥락이 잘렸습니다)';
+    }
+    const response = await generativeText.generateFromPrompt(fullPrompt);
     await stopGeminiTicker();
     stopGeminiTicker = async () => {};
     const embed = new EmbedBuilder()
@@ -189,16 +267,18 @@ export async function handleYawn(ctx, interaction) {
     await interaction.editReply({ content: null, embeds: [embed] });
     await notifyDeferCompletion(interaction, { ok: true, kind: 'gemini' });
   } catch (e) {
+    console.warn('[yawn]', e instanceof Error ? e.message : e);
     await stopGeminiTicker();
     stopGeminiTicker = async () => {};
+    const shortMsg = friendlyYawnErrorMessage(e);
     await interaction.editReply({
       content: null,
       embeds: [
         new EmbedBuilder()
-          .setTitle('Gemini 오류')
+          .setTitle('AI 응답 실패')
           .setDescription(
             truncateDiscordDescription(
-              `**📝 질문**\n\`\`\`\n${truncateEmbedField(prompt, 800)}\n\`\`\`\n\n` + `**오류**\n${String(e.message).slice(0, 1800)}`,
+              `**📝 질문**\n\`\`\`\n${truncateEmbedField(prompt, 800)}\n\`\`\`\n\n**안내**\n${shortMsg}`,
             ),
           )
           .setColor(0xf44336),

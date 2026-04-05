@@ -39,7 +39,7 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 | `/music` `shuffle` | **대기 중인 곡만** 순서 무작위 섞기 (지금 재생 곡은 그대로) |
 | `/music` `remove` `index` | 대기열 **번호** 곡 제거 (`/music queue`에 나온 1·2·3…과 동일. **지금 재생 중**인 곡은 `skip`으로만 건너뜀) |
 | `/music` `loop` `mode` | `off` 끔 · `track` 지금 곡만 반복 · `queue` 대기열 끝나면 같은 목록 다시 (빈 대기열이면 `queue` 불가) |
-| `/music` `queue` `page?` | 대기열·**재생 중**·**반복** 표시, `page` 옵션·**이전/다음** 버튼 (12곡/페이지) |
+| `/music` `queue` `page?` | 대기열·**재생 중**(경과/전체 길이·남은 시간, 알 수 있을 때)·**반복** 표시, `page` 옵션·**이전/다음** 버튼 (12곡/페이지) |
 | `/음성입장` / `/voice-join` | 봇을 음성·스테이지 채널에 연결 |
 | `/음성퇴장` / `/voice-leave` | 음성 연결 해제 |
 | `/music` `speak` `text?` | **Edge 온라인 TTS**로 읽기 (디스코드 내장 TTS 아님). `text` 비우면 데모 문장. |
@@ -57,13 +57,30 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 
 | 명령 | 설명 |
 |------|------|
-| `/yawn` `질문` | Gemini AI (`.env`에 `GEMINI_API_KEY` 필요) |
+| `/yawn` `질문` | Gemini / Vertex (`.env` — AI Studio 또는 Vertex). 채널 **최근 메시지**를 맥락으로 붙일 수 있음(`YAWN_CONTEXT_MESSAGES`). 시스템 톤은 `YAWN_SYSTEM_PROMPT`로 조절 |
 | `/cursor-edit` | [관리자] 로컬 Cursor 에이전트 |
 | `/admin-reload` / `/admin-save` | [관리자] 데이터 리로드·저장 |
 
 ### 게임·주식·레이드·기타
 
 `/강화`, `/판매`, `/정보`, `/돈`, `/랭킹`, `/출첵`, `/돈내놔`, `/배틀`, `/슬롯`, `/홀짝`, `/가위바위보`, `/주식목록`, `/주식차트`, `/매수`, `/매도`, `/내주식`, `/레이드정보`, `/공격`, `/레이드소환`, `/ping`, `/도움말`
+
+---
+
+### 운영·제한 (선택)
+
+| 변수 | 설명 |
+|------|------|
+| `YAWNBOT_ALLOWED_GUILD_IDS` | (선택) 허용 길드 ID만 슬래시 사용. 비우면 제한 없음. 예전 이름 `YAWNBOT_SLASH_GUILD_IDS`도 동일 |
+| `YAWNBOT_ALLOWED_SLASH_CHANNEL_IDS` | (선택) 슬래시를 칠 수 있는 텍스트 채널 ID만 허용 |
+| `YAWNBOT_SLASH_USAGE_LOG` | `1` 등 — 슬래시 사용을 콘솔에 한 줄로 기록 |
+| `YAWN_CONTEXT_MESSAGES` | `/yawn`에 붙일 최근 **사용자** 메시지 개수(0~30, 기본 10). `Message Content` 인텐트·채널 읽기 권한 필요 |
+| `YAWN_SYSTEM_PROMPT` | `/yawn` 시스템 역할(비우면 기본 톤). `\n` 이스케이프 가능 |
+| `YAWN_MAX_QUESTION_CHARS` / `YAWN_MAX_PROMPT_CHARS` | 질문 길이·전체 프롬프트 상한(비용·토큰 완화) |
+| `YAWNBOT_NOW_PLAYING_MESSAGE` | `0` 등으로 끄면 `/music play` 알림 채널의「지금 재생」임베드를 보내지 않음 |
+| `YAWNBOT_NOW_PLAYING_REFRESH_SEC` | 위 임베드 자동 수정 주기(초). `0`이면 첫 메시지만 |
+
+플레이리스트를 큐에 넣는 동안 `/music play` 응답에 **몇 곡/전체** 진행이 간헐적으로 갱신됩니다.
 
 ---
 

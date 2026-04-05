@@ -30,9 +30,13 @@ import {
 import { handleSpeak } from './speak';
 import { handleSound } from './sound';
 import { handleAdminReload, handleAdminSave } from './admin';
+import { guardSlashInteraction } from './slash-guard';
+import { logSlashUsage } from './usage-log';
 
 export async function dispatchSlashCommand(ctx, interaction) {
   if (!interaction.isChatInputCommand()) return;
+  if (!(await guardSlashInteraction(interaction))) return;
+  logSlashUsage(interaction);
 
   const userId = interaction.user.id;
   const userName = interaction.user.displayName || interaction.user.username;

@@ -24,6 +24,7 @@ import {
   type AudioResource,
   type VoiceConnection,
 } from '@discordjs/voice';
+import { EmbedBuilder, type Client } from 'discord.js';
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { Readable } from 'node:stream';
@@ -180,6 +181,8 @@ export type MusicLoopMode = 'off' | 'track' | 'queue';
 /** enqueue 시 넘기면 재생 실패 알림을 이 텍스트 채널로 보냄(쿨다운 적용) */
 export type MusicEnqueueOptions = {
   notifyTextChannelId?: string;
+  /** 플레이리스트 등 다건 추가 시 진행률(1-based done / total) */
+  onEnqueueProgress?: (done: number, total: number) => void;
 };
 
 type GuildMusicState = {
@@ -195,9 +198,136 @@ type GuildMusicState = {
   loopRing: QueueItem[];
   notifyTextChannelId: string | null;
   lastPlayFailureNoticeAt: number;
+  /** play-dl 등으로 조회한 현재 트랙 길이(초), 없으면 null */
+  nowPlayingDurationSec: number | null;
+  /** 지금 재생 안내 임베드 메시지 ID */
+  nowPlayingMessageId: string | null;
 };
 
 const PLAY_FAILURE_NOTIFY_COOLDOWN_MS = 15_000;
+
+/** `/music play`로 알림 채널이 잡힌 뒤 임베드 주기 갱신(초). 0이면 첫 메시지만 보내고 자동 갱신 안 함. 기본 45. 최소 15. */
+function nowPlayingRefreshIntervalMs(): number {
+  const sec = parseInt(process.env.YAWNBOT_NOW_PLAYING_REFRESH_SEC || '45', 10);
+  if (!Number.isFinite(sec) || sec <= 0) return 0;
+  return Math.min(Math.max(sec, 15), 600) * 1000;
+}
+
+function nowPlayingMessageEnabled(): boolean {
+  const raw = process.env.YAWNBOT_NOW_PLAYING_MESSAGE;
+  if (raw === undefined || String(raw).trim() === '') return true;
+  const s = String(raw).trim().toLowerCase();
+  return !(s === '0' || s === 'false' || s === 'off' || s === 'no');
+}
+
+let musicDiscordClient: Client | null = null;
+const nowPlayingIntervals = new Map<string, NodeJS.Timeout>();
+
+export function setMusicDiscordClient(client: Client | null): void {
+  musicDiscordClient = client;
+}
+
+function clearNowPlayingInterval(guildId: string): void {
+  const t = nowPlayingIntervals.get(guildId);
+  if (t) clearInterval(t);
+  nowPlayingIntervals.delete(guildId);
+}
+
+function formatMmSs(totalSec: number): string {
+  const sec = Math.max(0, totalSec);
+  const m = Math.floor(sec / 60);
+  const s2 = Math.floor(sec % 60);
+  return `${m}:${String(s2).padStart(2, '0')}`;
+}
+
+function getElapsedPlaybackMs(s: GuildMusicState): number | null {
+  const st = s.player.state;
+  if (st.status === AudioPlayerStatus.Playing) return st.playbackDuration;
+  if (st.status === AudioPlayerStatus.Paused || st.status === AudioPlayerStatus.AutoPaused) return st.playbackDuration;
+  if (st.status === AudioPlayerStatus.Buffering) return 0;
+  return null;
+}
+
+function buildNowPlayingEmbedForGuild(guildId: string): EmbedBuilder | null {
+  const s = states.get(guildId);
+  if (!s?.currentTrack) return null;
+  const elapsedMs = getElapsedPlaybackMs(s);
+  const elapsedSec = elapsedMs != null ? elapsedMs / 1000 : null;
+  const total = s.nowPlayingDurationSec;
+  let timeLine = '—';
+  if (elapsedSec != null) {
+    if (total != null && total > 0) {
+      const rem = Math.max(0, total - elapsedSec);
+      timeLine = `${formatMmSs(elapsedSec)} / ${formatMmSs(total)} · 남음 ~${formatMmSs(rem)}`;
+    } else {
+      timeLine = `재생 ${formatMmSs(elapsedSec)}`;
+    }
+  } else if (total != null && total > 0) {
+    timeLine = `길이 약 ${formatMmSs(total)}`;
+  }
+  return new EmbedBuilder()
+    .setTitle('지금 재생')
+    .setDescription(`**${s.currentTrack.title.slice(0, 250)}**\n${timeLine}`)
+    .setColor(0x5865f2);
+}
+
+async function pushOrEditNowPlayingMessage(guildId: string): Promise<void> {
+  if (!nowPlayingMessageEnabled()) return;
+  const s = states.get(guildId);
+  const client = musicDiscordClient;
+  if (!s?.notifyTextChannelId || !client) return;
+  const embed = buildNowPlayingEmbedForGuild(guildId);
+  if (!embed) return;
+  try {
+    const ch = await client.channels.fetch(s.notifyTextChannelId);
+    if (!ch?.isTextBased() || ch.isDMBased()) return;
+    if (s.nowPlayingMessageId) {
+      try {
+        await ch.messages.edit(s.nowPlayingMessageId, { embeds: [embed] });
+        return;
+      } catch {
+        s.nowPlayingMessageId = null;
+      }
+    }
+    const msg = await ch.send({ embeds: [embed] });
+    s.nowPlayingMessageId = msg.id;
+  } catch (e) {
+    console.warn('[music] now playing 메시지 실패:', e instanceof Error ? e.message : e);
+  }
+}
+
+async function clearNowPlayingDiscordMessage(guildId: string): Promise<void> {
+  const s = states.get(guildId);
+  const client = musicDiscordClient;
+  if (!s?.nowPlayingMessageId || !s.notifyTextChannelId || !client) {
+    if (s) s.nowPlayingMessageId = null;
+    return;
+  }
+  try {
+    const ch = await client.channels.fetch(s.notifyTextChannelId);
+    if (ch?.isTextBased() && !ch.isDMBased()) {
+      await ch.messages.delete(s.nowPlayingMessageId).catch(() => {});
+    }
+  } catch {
+    /* ignore */
+  }
+  s.nowPlayingMessageId = null;
+}
+
+function scheduleNowPlayingRefreshes(guildId: string): void {
+  clearNowPlayingInterval(guildId);
+  const ms = nowPlayingRefreshIntervalMs();
+  if (ms <= 0) return;
+  const t = setInterval(() => {
+    void pushOrEditNowPlayingMessage(guildId);
+  }, ms);
+  nowPlayingIntervals.set(guildId, t);
+}
+
+async function syncNowPlayingUi(guildId: string): Promise<void> {
+  await pushOrEditNowPlayingMessage(guildId);
+  scheduleNowPlayingRefreshes(guildId);
+}
 
 export type MusicPlayFailurePayload = {
   textChannelId: string;
@@ -283,6 +413,8 @@ function getOrCreatePlayer(guildId: string): GuildMusicState {
     loopRing: [],
     notifyTextChannelId: null,
     lastPlayFailureNoticeAt: 0,
+    nowPlayingDurationSec: null,
+    nowPlayingMessageId: null,
   };
   player.on(AudioPlayerStatus.Idle, () => {
     void playNext(guildId);
@@ -504,6 +636,9 @@ async function playNext(guildId: string): Promise<void> {
     if (!item) {
       s.currentTrack = null;
       s.nowPlayingItem = null;
+      s.nowPlayingDurationSec = null;
+      clearNowPlayingInterval(guildId);
+      void clearNowPlayingDiscordMessage(guildId);
       return;
     }
   }
@@ -518,9 +653,27 @@ async function playNext(guildId: string): Promise<void> {
       item.kind === 'youtube' ? await createYoutubeAudioResource(item.url) : await item.load();
     s.player.play(resource);
     s.currentTrack = { title: item.title };
+    s.nowPlayingDurationSec = null;
     if (!repeatTrack) {
       s.nowPlayingItem = cloneQueueItem(item);
     }
+    if (item.kind === 'youtube') {
+      const url = item.url;
+      void (async () => {
+        try {
+          const info = await withTimeout(play.video_basic_info(url), 12_000, '길이 조회');
+          const sec = info?.video_details?.durationInSec;
+          const cur = states.get(guildId);
+          if (cur && cur.currentTrack?.title === item.title) {
+            cur.nowPlayingDurationSec = typeof sec === 'number' && sec > 0 ? sec : null;
+            void pushOrEditNowPlayingMessage(guildId);
+          }
+        } catch {
+          /* ignore */
+        }
+      })();
+    }
+    void syncNowPlayingUi(guildId);
   } catch (e: any) {
     console.error('[music] 재생 실패:', item.kind === 'youtube' ? item.url : item.title, e?.message ?? e);
     const reason = e instanceof Error ? e.message : String(e);
@@ -630,12 +783,14 @@ export async function enqueueYouTubeTracks(
       s.notifyTextChannelId = opts.notifyTextChannelId;
     }
     const wasIdle = s.player.state.status === AudioPlayerStatus.Idle;
-    for (const t of valid) {
+    for (let i = 0; i < valid.length; i++) {
+      const t = valid[i]!;
       const qi: QueueItem = { kind: 'youtube', title: t.title, url: t.url };
       s.queue.push(qi);
       if (s.loopMode === 'queue') {
         s.loopRing.push(cloneQueueItem(qi));
       }
+      opts?.onEnqueueProgress?.(i + 1, valid.length);
     }
     if (!s.subscribed) {
       connection.subscribe(s.player);
@@ -686,8 +841,11 @@ export function stopMusic(guildId: string): boolean {
   s.queue.length = 0;
   s.currentTrack = null;
   s.nowPlayingItem = null;
+  s.nowPlayingDurationSec = null;
   s.loopMode = 'off';
   s.loopRing = [];
+  clearNowPlayingInterval(guildId);
+  void clearNowPlayingDiscordMessage(guildId);
   s.player.stop(true);
   return true;
 }
@@ -763,6 +921,8 @@ export function setMusicLoopMode(
 export function destroyMusicForGuild(guildId: string): void {
   const s = states.get(guildId);
   if (!s) return;
+  clearNowPlayingInterval(guildId);
+  void clearNowPlayingDiscordMessage(guildId);
   try {
     s.queue.length = 0;
     s.player.stop(true);
@@ -803,7 +963,20 @@ export function getMusicQueuePage(
 } {
   const s = states.get(guildId);
   const titles = s ? s.queue.map((q) => q.title) : [];
-  const nowPlaying = s?.currentTrack?.title ?? null;
+  let nowPlaying: string | null = null;
+  if (s?.currentTrack) {
+    nowPlaying = s.currentTrack.title;
+    const elapsedMs = getElapsedPlaybackMs(s);
+    const elapsedSec = elapsedMs != null ? elapsedMs / 1000 : null;
+    const total = s.nowPlayingDurationSec;
+    if (elapsedSec != null && total != null && total > 0) {
+      nowPlaying += ` · ${formatMmSs(elapsedSec)}/${formatMmSs(total)}`;
+    } else if (elapsedSec != null) {
+      nowPlaying += ` · ${formatMmSs(elapsedSec)}`;
+    } else if (total != null && total > 0) {
+      nowPlaying += ` · ~${formatMmSs(total)}`;
+    }
+  }
   const totalWaiting = titles.length;
   const totalPages = Math.max(1, Math.ceil(totalWaiting / perPage));
   const p = Math.min(Math.max(1, page), totalPages);

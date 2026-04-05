@@ -10,7 +10,7 @@ import sodium from 'libsodium-wrappers';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
-import { destroyAllMusicPlayers, setMusicPlayFailureReporter } from './bot/music-player';
+import { destroyAllMusicPlayers, setMusicDiscordClient, setMusicPlayFailureReporter } from './bot/music-player';
 import type { GenerativeTextClient } from 'karmolab-ai/node';
 import { tryCreateGenerativeTextFromEnv } from 'karmolab-ai/node';
 
@@ -104,6 +104,7 @@ client.on('messageCreate', async (message) => {
 const app = createGithubWebhookApp(client as any, gameData as any);
 
 client.once('clientReady', async () => {
+  setMusicDiscordClient(client);
   console.log(`\n  ⚔️  YawnBot (Node.js)`);
   console.log(`  ─────────────────────────`);
   console.log(`  로그인: ${client.user?.tag}`);
@@ -170,6 +171,7 @@ async function main() {
 
 process.on('SIGINT', () => {
   console.log('\n[Shutdown] 종료 중...');
+  setMusicDiscordClient(null);
   stopPresenceRotation();
   stock.stopMarket();
   gameData.destroy();
@@ -180,6 +182,7 @@ process.on('SIGINT', () => {
 });
 
 process.on('SIGTERM', () => {
+  setMusicDiscordClient(null);
   stopPresenceRotation();
   stock.stopMarket();
   gameData.destroy();

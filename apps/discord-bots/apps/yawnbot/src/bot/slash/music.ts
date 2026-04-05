@@ -270,7 +270,22 @@ export async function handlePlay(ctx, interaction) {
         .catch(() => {});
     }, 15_000);
     let result;
-    const notify = interaction.channelId ? { notifyTextChannelId: interaction.channelId } : undefined;
+    let lastEnqueueProgAt = 0;
+    const notify = interaction.channelId
+      ? {
+          notifyTextChannelId: interaction.channelId,
+          onEnqueueProgress: (done: number, total: number) => {
+            const now = Date.now();
+            if (done < total && now - lastEnqueueProgAt < 2500) return;
+            lastEnqueueProgAt = now;
+            void interaction
+              .editReply({
+                content: `**${pt}** — 대기열에 **${done}/${total}**곡 반영 중… (${policy})`.slice(0, 2000),
+              })
+              .catch(() => {});
+          },
+        }
+      : undefined;
     try {
       result = await enqueueYouTubeTracks(vc, resolved.tracks, notify);
     } finally {
