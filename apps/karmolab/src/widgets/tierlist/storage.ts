@@ -399,10 +399,11 @@
                 source: 'published-catalog',
                 dirty: false,
                 url: publishedCurrent.meta?.url || '',
+                catalogUrl: d.meta?.catalogUrl || '',
                 tierlistGroup: String(publishedCurrent.meta?.tierlistGroup || publishedCurrent.meta?.group || 'catalog'),
             };
         }
-        if (!list) return { title: '', id: '', source: 'none', dirty: false, tierlistGroup: '' };
+        if (!list) return { title: '', id: '', source: 'none', dirty: false, url: '', catalogUrl: '', tierlistGroup: '' };
         if (publishedCurrent?.data?.list) {
             return {
                 id: publishedCurrent.meta?.id || list.id,
@@ -410,6 +411,7 @@
                 source: 'published',
                 dirty: false,
                 url: publishedCurrent.meta?.url || '',
+                catalogUrl: publishedCurrent.data.list.meta?.catalogUrl || '',
                 tierlistGroup: String(publishedCurrent.meta?.tierlistGroup || publishedCurrent.meta?.group || ''),
             };
         }
@@ -420,6 +422,7 @@
             source: local?.meta?.source || 'local',
             dirty: !!local?.meta?.dirty,
             url: local?.meta?.publishedUrl || '',
+            catalogUrl: local?.meta?.catalogUrl || '',
             tierlistGroup: '',
         };
     }
@@ -454,6 +457,7 @@
             createdAt: now,
             updatedAt: now,
             meta: {
+                ...(src.meta || {}),
                 source: 'published-draft',
                 publishedId: publishedCurrent.meta?.id || '',
                 publishedUrl: publishedCurrent.meta?.url || '',

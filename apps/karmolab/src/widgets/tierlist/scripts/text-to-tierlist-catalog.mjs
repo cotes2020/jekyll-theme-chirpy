@@ -2,7 +2,7 @@
 /**
  * 텍스트 파일(한 줄 = 한 후보 이름) → 티어리스트 후보 풀 catalog JSON (version 2).
  *
- *   node apps/karmolab/scripts/text-to-tierlist-catalog.mjs -i titles.txt -o my-catalog.json -t my-anime
+ *   node apps/karmolab/scripts/text-to-tierlist-catalog.mjs -i .\apps\karmolab\data\tierlists\anime-titles-ko-edit-karmoddrine.txt -o .\apps\karmolab\data\tierlists\karmo-anime.json -t karmo-anime --sync .\apps\karmolab\data\tierlists\karmo-anime.json 
  *   type titles.txt | node apps/karmolab/scripts/text-to-tierlist-catalog.mjs -o out.json -t my-anime
  *
  * -t / --title: catalog title (생략 시 --sync 는 기존 JSON 제목 유지, 그 외 imported-catalog)
