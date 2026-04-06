@@ -44,6 +44,7 @@ last_modified_at: 2025-11-02. 23:45 # E ~정리
 
 ---
 
+- [彩りキャンバス](https://youtu.be/v6xUYqazVA0) 블아 방디부 노래
 - [Snail's House - Penguin Dream](https://youtu.be/v6xUYqazVA0)
 - [[블루 아카이브] 메인 OST 'Target for love' Full ver.](https://youtu.be/3nAs-iAPoeM)
 - [Samurai Champloo OST Study/Chill Mix](https://youtu.be/9xnG75Vcw5k)
