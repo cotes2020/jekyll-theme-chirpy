@@ -1274,6 +1274,178 @@ input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer;
     animation: spin 0.7s linear infinite;
 }
 
+/* ═══════════════════════════════════════
+   SIDEBAR NAV (data-nav="sidebar" 모드)
+   ═══════════════════════════════════════ */
+
+.sidebar { display: none; }
+
+html[data-nav="sidebar"] .header-nav { display: none !important; }
+html[data-nav="sidebar"] .header-bar-right { grid-column: 3; }
+
+html[data-nav="sidebar"] .sidebar {
+    display: flex;
+    position: fixed;
+    top: 52px; /* header-bar 높이 */
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-collapsed-width);
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: blur(14px);
+    border-right: 1px solid var(--border);
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width var(--transition-slow);
+    z-index: 50;
+}
+
+html[data-nav="sidebar"] .sidebar:hover {
+    width: var(--sidebar-width);
+}
+
+html[data-nav="sidebar"] .main-content {
+    margin-left: var(--sidebar-collapsed-width);
+    transition: margin-left var(--transition-slow);
+}
+
+html[data-nav="sidebar"]:has(.sidebar:hover) .main-content {
+    margin-left: var(--sidebar-width);
+}
+
+.sidebar-nav {
+    padding: var(--space-md) var(--space-sm);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar-footer {
+    flex-shrink: 0;
+    padding: var(--space-sm);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    position: relative;
+}
+
+.sidebar-dev-links {
+    font-size: var(--font-size-2xs);
+    color: var(--text-tertiary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sidebar-dev-links:hover { color: var(--accent); }
+
+.sidebar-dev-links-icon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    font-size: 11px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--text-tertiary);
+}
+
+.sidebar-group { margin-top: var(--space-sm); }
+
+.sidebar-group-trigger {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    padding: 6px 10px 6px 30px;
+    font-size: var(--font-size-2xs);
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color var(--transition);
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.sidebar-group-trigger:hover { color: var(--text-secondary); }
+
+.sidebar-group-trigger .chevron {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    transition: transform var(--transition);
+}
+
+.sidebar-group-trigger .chevron::before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 2px;
+    width: 4px;
+    height: 4px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(-45deg);
+}
+
+.sidebar-group-trigger.open .chevron { transform: translateY(-50%) rotate(90deg); }
+
+.sidebar-group-body { display: none; overflow: hidden; }
+.sidebar-group-body.open { display: block; }
+
+/* 텍스트는 항상 한 줄 — 사이드바 overflow:hidden 이 클리핑 담당 */
+html[data-nav="sidebar"] .sidebar .nav-item-text,
+html[data-nav="sidebar"] .sidebar .sidebar-group-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    flex-shrink: 0;
+    transition: opacity var(--transition-slow);
+}
+
+/* 접힌 상태: opacity로만 숨김 (width 조작 없음 → reflow/줄바꿈 없음) */
+html[data-nav="sidebar"] .sidebar:not(:hover) .sidebar-group-label,
+html[data-nav="sidebar"] .sidebar:not(:hover) .nav-item-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 펼친 상태: 텍스트 페이드인 */
+html[data-nav="sidebar"] .sidebar:hover .sidebar-group-label,
+html[data-nav="sidebar"] .sidebar:hover .nav-item-text {
+    opacity: 1;
+}
+
+html[data-nav="sidebar"] .sidebar:not(:hover) .sidebar-dev-links-icon { display: flex; }
+html[data-nav="sidebar"] .sidebar:not(:hover) .sidebar-dev-links-text { display: none; }
+html[data-nav="sidebar"] .sidebar:hover .sidebar-dev-links-icon { display: flex; }
+html[data-nav="sidebar"] .sidebar:hover .sidebar-dev-links-text { display: inline; }
+
+@media (max-width: 768px) {
+    html[data-nav="sidebar"] .sidebar { display: none; }
+    html[data-nav="sidebar"] .main-content { margin-left: 0; }
+}
+
 /* ── Scrollbar ── */
 
 ::-webkit-scrollbar { width: 4px; }

@@ -37,8 +37,10 @@ permalink: /karmolab/
 (function(){
   var t=localStorage.getItem('toolbox_theme')||'dark';
   var bg=localStorage.getItem('toolbox_bg_theme')||'blue-magenta';
+  var nav=localStorage.getItem('toolbox_nav_layout')||'header';
   document.documentElement.setAttribute('data-theme',t);
   document.documentElement.setAttribute('data-bg',bg);
+  document.documentElement.setAttribute('data-nav',nav);
   var pt=localStorage.getItem('toolbox_prism_theme');
   var pb='/apps/karmolab/js/vendor/prism/themes-cdn/',pe='/apps/karmolab/js/vendor/prism/themes-ext/';
   var m={tomorrow:pb+'prism-tomorrow.min.css',okaidia:pb+'prism-okaidia.min.css',twilight:pb+'prism-twilight.min.css',prism:pb+'prism.min.css',coy:pb+'prism-coy.min.css',dracula:pe+'prism-dracula.min.css','one-dark':pe+'prism-one-dark.min.css',nord:pe+'prism-nord.min.css','material-dark':pe+'prism-material-dark.min.css','vsc-dark-plus':pe+'prism-vsc-dark-plus.min.css',ghcolors:pe+'prism-ghcolors.min.css','one-light':pe+'prism-one-light.min.css','material-light':pe+'prism-material-light.min.css'};
@@ -78,6 +80,17 @@ permalink: /karmolab/
             </div>
         </header>
         <div class="app-body">
+            <aside class="sidebar" id="sidebar">
+                <nav class="sidebar-nav" role="navigation" aria-label="도구 목록">
+                    <div id="sidebar-nav"></div>
+                </nav>
+                <div class="sidebar-footer">
+                    <a href="#linktree" class="sidebar-dev-links" onclick="if(typeof Toolbox!=='undefined'){Toolbox.switchPage('linktree');return false}" title="개발자 연락처 · 링크" aria-label="누가 만들었나요">
+                        <span class="sidebar-dev-links-icon" aria-hidden="true">i</span>
+                        <span class="sidebar-dev-links-text">누가 만들었나요?</span>
+                    </a>
+                </div>
+            </aside>
             <main class="main-content" role="main">
                 <div class="intro-overlay hidden" id="introOverlay" aria-hidden="true">
                     <h1 class="intro-title">KarmoLab</h1>

@@ -997,7 +997,8 @@
       } finally {
         if (!skipFinalMergeRefresh) {
           try {
-            await refreshDevTable?.();
+            const doRefresh = refreshDevTable as (() => Promise<void>) | null;
+            if (doRefresh) await doRefresh();
           } catch {
             /* ignore */
           }
@@ -1011,7 +1012,8 @@
     void (async () => {
       if (mergedServicesEl) {
         try {
-          await refreshDevTable?.();
+          const doRefresh = refreshDevTable as (() => Promise<void>) | null;
+          if (doRefresh) await doRefresh();
         } catch {
           /* ignore */
         }

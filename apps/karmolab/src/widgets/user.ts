@@ -263,6 +263,8 @@
     /** 키별 용도 설명 (Toolbox 관련) */
     const STORAGE_DESC: Record<string, string> = {
         'toolbox_theme': '테마 (라이트/다크)',
+        'toolbox_nav_layout': '네비게이션 레이아웃 (상단/사이드바)',
+        'toolbox_sidebar_groups': '사이드바 그룹 접힘 상태',
         'toolbox_prism_theme': '코드 하이라이트 테마',
         'toolbox_last_page': '마지막 접속 페이지',
         'toolbox_widget_prefs': '위젯별 설정 (모델, 프리셋 등)',
@@ -395,12 +397,20 @@
         const prismThemes = Toolbox.getPrismThemes?.() ?? [];
         const bgTheme = Toolbox.getBgTheme?.() ?? '';
         const bgThemes = Toolbox.getBgThemes?.() ?? [];
+        const navLayout = (Toolbox as any).getNavLayout?.() ?? 'header';
         const apiUI = typeof Gemini !== 'undefined' ? Gemini.buildApiKeyUI('set') : { html: '' };
 
         container.innerHTML = `
             <div class="user-layout">
                 <div class="settings-section">
                     <h3>🎨 표시</h3>
+                    <div class="settings-row">
+                        <label for="setNavLayout">네비게이션</label>
+                        <select id="setNavLayout" class="settings-control">
+                            <option value="header" ${navLayout === 'header' ? 'selected' : ''}>상단 메뉴</option>
+                            <option value="sidebar" ${navLayout === 'sidebar' ? 'selected' : ''}>사이드바</option>
+                        </select>
+                    </div>
                     <div class="settings-row">
                         <label for="setTheme">테마</label>
                         <select id="setTheme" class="settings-control">
@@ -443,6 +453,14 @@
                     </div>
                 </div>
             </div>`;
+
+        container.querySelector<HTMLSelectElement>('#setNavLayout')?.addEventListener('change', (e: Event) => {
+            const target = e.target as HTMLSelectElement | null;
+            if (!target) return;
+            (Toolbox as any).setNavLayout?.(target.value);
+            const label = target.value === 'sidebar' ? '사이드바' : '상단 메뉴';
+            (Toolbox as any).showToast?.('네비게이션: ' + label);
+        });
 
         container.querySelector<HTMLSelectElement>('#setTheme')?.addEventListener('change', (e: Event) => {
             const target = e.target as HTMLSelectElement | null;

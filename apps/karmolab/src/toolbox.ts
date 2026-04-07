@@ -55,6 +55,30 @@ const Toolbox = (() => {
         return t ? { category: t.category, desc: t.desc, hidden: t.hidden } : null;
     }
     const LAST_PAGE_KEY = 'toolbox_last_page';
+    const NAV_LAYOUT_KEY = 'toolbox_nav_layout';
+    const SIDEBAR_GROUP_KEY = 'toolbox_sidebar_groups';
+
+    function getNavLayout() {
+        const v = localStorage.getItem(NAV_LAYOUT_KEY);
+        return (v === 'sidebar' || v === 'header') ? v : 'header';
+    }
+
+    function setNavLayout(layout) {
+        document.documentElement.setAttribute('data-nav', layout);
+        try { localStorage.setItem(NAV_LAYOUT_KEY, layout); } catch (_) {}
+    }
+
+    function getSidebarGroupState() {
+        try {
+            const raw = localStorage.getItem(SIDEBAR_GROUP_KEY);
+            if (raw) return JSON.parse(raw);
+        } catch (_) {}
+        return { tool: true, play: false, lab: false, misc: true };
+    }
+
+    function setSidebarGroupState(state) {
+        try { localStorage.setItem(SIDEBAR_GROUP_KEY, JSON.stringify(state)); } catch (_) {}
+    }
 
     let megaMenuCloseTimer = null;
 
@@ -429,6 +453,49 @@ const Toolbox = (() => {
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') closeAllHeaderNav();
             });
+        }
+
+        // Build sidebar nav groups
+        const sidebarNavEl = document.getElementById('sidebar-nav');
+        if (sidebarNavEl) {
+            function buildSidebarGroup(catId, label, catTools) {
+                if (!catTools.length) return;
+                const isOpen = getSidebarGroupState()[catId] !== undefined
+                    ? getSidebarGroupState()[catId]
+                    : (catId === 'tool');
+                const wrap = document.createElement('div');
+                wrap.className = 'sidebar-group';
+                const trigger = document.createElement('button');
+                trigger.type = 'button';
+                trigger.className = 'sidebar-group-trigger' + (isOpen ? ' open' : '');
+                trigger.setAttribute('aria-expanded', String(isOpen));
+                trigger.innerHTML = '<span class="chevron" aria-hidden="true"></span>'
+                    + '<span class="sidebar-group-label">' + label + '</span>';
+                const body = document.createElement('div');
+                body.className = 'sidebar-group-body' + (isOpen ? ' open' : '');
+                catTools.forEach(tool => addNavItem(body, tool));
+                trigger.onclick = () => {
+                    const open = body.classList.toggle('open');
+                    trigger.classList.toggle('open', open);
+                    trigger.setAttribute('aria-expanded', String(open));
+                    setSidebarGroupState({ ...getSidebarGroupState(), [catId]: open });
+                };
+                wrap.appendChild(trigger);
+                wrap.appendChild(body);
+                sidebarNavEl.appendChild(wrap);
+            }
+
+            CATEGORIES.forEach(cat => {
+                const catTools = tools
+                    .filter(t => !hiddenSet.has(t.id) && t.category === cat.id && (cat.id !== 'desktop' || isDesktopApp()))
+                    .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
+                buildSidebarGroup(cat.id, cat.label, catTools);
+            });
+
+            const sidebarUncategorized = tools
+                .filter(t => !hiddenSet.has(t.id) && !t.category)
+                .sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko-KR'));
+            buildSidebarGroup('misc', '기타', sidebarUncategorized);
         }
 
         // Build landing page
@@ -917,6 +984,7 @@ const Toolbox = (() => {
     function initTheme() {
         setTheme(getTheme());
         setBgTheme(getBgTheme());
+        setNavLayout(getNavLayout());
         const btn = document.getElementById('themeToggle');
         if (btn) btn.onclick = toggleTheme;
         setPrismTheme(getPrismTheme(), true);
@@ -1064,6 +1132,7 @@ const Toolbox = (() => {
         escapeHtml, formatTimestamp, showLightbox,
         recordUsage, getUsageStats,
         getPref, setPref,
+        getNavLayout, setNavLayout,
         getTheme, setTheme, toggleTheme,
         getBgTheme, setBgTheme, getBgThemes,
         getPrismTheme, setPrismTheme, getPrismThemes: () => [...PRISM_THEMES],
