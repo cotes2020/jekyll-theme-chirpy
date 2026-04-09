@@ -68,7 +68,7 @@
           {%- endunless -%}
           {%- assign email = site.social.email | split: '@' -%}
           {%- capture url -%}
-            mailto:{{ email[0] }}@{{ email[1] }}
+            javascript:void(location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))
           {%- endcapture -%}
         {% when 'rss' %}
           {% assign url = '/feed.xml' | relative_url %}
