@@ -250,8 +250,8 @@ export async function generateClaudeCliText(opts: {
     const fixedSessionId = 'yawnbot-assistant';
 
     const args = opts.cwd
-      ? ['--print', '--continue', '--session-id', fixedSessionId, '--dangerously-skip-permissions']
-      : ['--print', '--continue', '--session-id', fixedSessionId];
+      ? ['--print', '--resume', fixedSessionId, '--dangerously-skip-permissions']
+      : ['--print', '--resume', fixedSessionId];
     // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
     const child = spawn(cmd, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
