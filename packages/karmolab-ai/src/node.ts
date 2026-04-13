@@ -243,50 +243,69 @@ export async function generateClaudeCliText(opts: {
 }): Promise<string> {
   const cmd = process.env.CLAUDE_CLI_COMMAND?.trim() || 'claude';
   const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
+  const fixedSessionId = 'yawnbot-assistant';
 
-  return new Promise<string>((resolve, reject) => {
-    // 고정 세션: 항상 같은 세션 ID로 영구 세션 유지
-    // ~/.claude/projects/<encoded-cwd>/yawnbot-assistant.jsonl
-    const fixedSessionId = 'yawnbot-assistant';
+  const runClaude = (useResume: boolean): Promise<string> => {
+    return new Promise<string>((resolve, reject) => {
+      // 고정 세션: 항상 같은 세션 ID로 영구 세션 유지
+      // 첫 호출: --resume 실패 → --continue로 새 세션 생성
+      // 이후 호출: --resume으로 기존 세션 계속
+      const args = opts.cwd
+        ? useResume
+          ? ['--print', '--resume', fixedSessionId, '--dangerously-skip-permissions']
+          : ['--print', '--continue', '--dangerously-skip-permissions']
+        : useResume
+          ? ['--print', '--resume', fixedSessionId]
+          : ['--print', '--continue'];
 
-    const args = opts.cwd
-      ? ['--print', '--resume', fixedSessionId, '--dangerously-skip-permissions']
-      : ['--print', '--resume', fixedSessionId];
-    // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
-    const child = spawn(cmd, args, {
-      stdio: ['pipe', 'pipe', 'pipe'],
-      windowsHide: true,
-      ...(opts.cwd ? { cwd: opts.cwd } : {}),
+      const child = spawn(cmd, args, {
+        stdio: ['pipe', 'pipe', 'pipe'],
+        windowsHide: true,
+        ...(opts.cwd ? { cwd: opts.cwd } : {}),
+      });
+
+      let stdout = '';
+      let stderr = '';
+
+      child.stdout.on('data', (data: Buffer) => { stdout += data.toString(); });
+      child.stderr.on('data', (data: Buffer) => { stderr += data.toString(); });
+
+      const timer = setTimeout(() => {
+        child.kill();
+        reject(new Error(`Claude CLI 타임아웃 (${timeout}ms)`));
+      }, timeout);
+
+      child.on('close', (code: number | null) => {
+        clearTimeout(timer);
+        if (code === 0 && stdout.trim()) {
+          resolve(stdout.trim());
+        } else {
+          reject(new Error(`Claude CLI 종료 코드 ${code}: ${stderr.slice(0, 400)}`));
+        }
+      });
+
+      child.on('error', (err: Error) => {
+        clearTimeout(timer);
+        reject(new Error(`Claude CLI 실행 실패: ${err.message} (PATH에 '${cmd}'이 있는지 확인)`));
+      });
+
+      child.stdin.write(opts.prompt);
+      child.stdin.end();
     });
+  };
 
-    let stdout = '';
-    let stderr = '';
-
-    child.stdout.on('data', (data: Buffer) => { stdout += data.toString(); });
-    child.stderr.on('data', (data: Buffer) => { stderr += data.toString(); });
-
-    const timer = setTimeout(() => {
-      child.kill();
-      reject(new Error(`Claude CLI 타임아웃 (${timeout}ms)`));
-    }, timeout);
-
-    child.on('close', (code: number | null) => {
-      clearTimeout(timer);
-      if (code === 0 && stdout.trim()) {
-        resolve(stdout.trim());
-      } else {
-        reject(new Error(`Claude CLI 종료 코드 ${code}: ${stderr.slice(0, 400)}`));
-      }
-    });
-
-    child.on('error', (err: Error) => {
-      clearTimeout(timer);
-      reject(new Error(`Claude CLI 실행 실패: ${err.message} (PATH에 '${cmd}'이 있는지 확인)`));
-    });
-
-    child.stdin.write(opts.prompt);
-    child.stdin.end();
-  });
+  // 첫 시도: 기존 세션 재개 (--resume)
+  try {
+    return await runClaude(true);
+  } catch (e) {
+    // 세션이 없으면 새로 생성 (--continue)
+    const err = e instanceof Error ? e.message : String(e);
+    if (err.includes('not found') || err.includes('No session')) {
+      console.log(`[Claude CLI] 기존 세션 없음, 새 세션 생성...`);
+      return await runClaude(false);
+    }
+    throw e;
+  }
 }
 
 // ─── 통합 프로바이더 (ASSISTANT_AI_PROVIDER 로 선택) ────────────────────────
