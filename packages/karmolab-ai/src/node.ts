@@ -245,11 +245,13 @@ export async function generateClaudeCliText(opts: {
   const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
 
   return new Promise<string>((resolve, reject) => {
-    // 세션 계속 유지: --continue 플래그로 같은 세션에서 대화 이어가기
-    // (첫 호출은 새 세션 생성, 이후는 기존 세션 계속)
+    // 고정 세션: 항상 같은 세션 ID로 영구 세션 유지
+    // ~/.claude/projects/<encoded-cwd>/yawnbot-assistant.jsonl
+    const fixedSessionId = 'yawnbot-assistant';
+
     const args = opts.cwd
-      ? ['--print', '--continue', '--dangerously-skip-permissions']
-      : ['--print', '--continue'];
+      ? ['--print', '--continue', '--session-id', fixedSessionId, '--dangerously-skip-permissions']
+      : ['--print', '--continue', '--session-id', fixedSessionId];
     // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
     const child = spawn(cmd, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
