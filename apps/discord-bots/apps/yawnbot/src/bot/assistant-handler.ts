@@ -1,90 +1,44 @@
 /**
  * AssistantHandler — DM 및 전용 채널에서 AI 비서와 대화
  * - ASSISTANT_USER_ID의 메시지에만 응답
- * - DM: 사적 대화
- * - ASSISTANT_PUBLIC_CHANNEL_ID: 공개 대화
- * - 인메모리 최근 20턴 + diary 컨텍스트를 Gemini에 전달
+ * - 컨텍스트: user.md + self.md + 주간요약 + 어제요약 + 오늘 전체 로그
+ * - 메시지는 logs/에 즉시 기록 (손실 없음)
  */
 import { Message, DMChannel, TextChannel } from 'discord.js';
 import { generateBlobTextFromEnvWithOptions } from 'karmolab-ai/node';
 import type { MemoryService, ConversationEntry } from '../services/memory-service';
 
-const MAX_HISTORY_TURNS = 20;
 const MAX_RESPONSE_LENGTH = 1900;
+const MAX_PROMPT_CHARS = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
 
-interface HistoryEntry {
-  role: 'user' | 'assistant';
-  content: string;
-}
-
-// 채널별 인메모리 히스토리 (DM channelId → 배열, public channelId → 배열)
-const historyMap = new Map<string, HistoryEntry[]>();
-
-function getHistory(channelId: string): HistoryEntry[] {
-  if (!historyMap.has(channelId)) {
-    historyMap.set(channelId, []);
-  }
-  return historyMap.get(channelId)!;
-}
-
-function pushHistory(channelId: string, entry: HistoryEntry): void {
-  const hist = getHistory(channelId);
-  hist.push(entry);
-  if (hist.length > MAX_HISTORY_TURNS * 2) {
-    hist.splice(0, 2);
-  }
-}
-
-function buildSystemPrompt(memory: MemoryService, channelType: 'dm' | 'public'): string {
-  const profile = memory.getProfile();
-  const recentDiaries = memory.getRecentDiaries(3);
-
-  const channelDesc = channelType === 'dm'
-    ? '지금은 DM으로 사적인 대화 중이야.'
-    : '지금은 공개 채널에서 대화 중이야.';
-
-  const profileSection = profile
-    ? `\n\n[사용자 정보]\n${profile}`
-    : '';
-
-  const diarySection = recentDiaries
-    ? `\n\n[최근 대화 기록 (참고)]\n${recentDiaries}`
-    : '';
-
+function buildSystemPrompt(channelType: 'dm' | 'public'): string {
+  const channelDesc =
+    channelType === 'dm' ? '지금은 DM으로 사적인 대화 중이야.' : '지금은 공개 채널에서 대화 중이야.';
   return (
-    `너는 mascari4615의 개인 AI 비서야. 이름은 아직 없어.\n` +
-    `한국어로 대화해. 짧고 자연스럽게 말해. 딱딱하지 않게.\n` +
+    `너는 mascari4615의 개인 AI 비서야.\n` +
+    `한국어로 대화해. 짧고 자연스럽게, 딱딱하지 않게.\n` +
     `사용자가 힘들 때 공감해주고, 기쁠 때 같이 기뻐해줘.\n` +
-    `중요한 정보는 기억해뒀다가 나중에 자연스럽게 언급해줘.\n` +
-    `${channelDesc}` +
-    profileSection +
-    diarySection
+    `이전 대화와 기억을 바탕으로 자연스럽게 연결해줘.\n` +
+    `${channelDesc}`
   );
 }
 
 function buildFullPrompt(
   memory: MemoryService,
-  channelId: string,
   channelType: 'dm' | 'public',
   userMessage: string,
 ): string {
-  const system = buildSystemPrompt(memory, channelType);
-  const history = getHistory(channelId);
+  const system = buildSystemPrompt(channelType);
+  const context = memory.buildContext();
 
-  let historyBlock = '';
-  if (history.length > 0) {
-    const lines = history.map((h) => {
-      const label = h.role === 'user' ? '나' : 'YawnBot';
-      return `${label}: ${h.content}`;
-    });
-    historyBlock = `\n\n[이번 대화]\n${lines.join('\n')}`;
-  }
+  const contextBlock = context ? `\n\n${context}` : '';
+  let full = `${system}${contextBlock}\n\n나: ${userMessage}`;
 
-  const maxTotal = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
-  let full = `${system}${historyBlock}\n\n나: ${userMessage}`;
-
-  if (full.length > maxTotal) {
-    full = full.slice(-maxTotal) + '\n(앞부분 잘림)';
+  if (full.length > MAX_PROMPT_CHARS) {
+    // 시스템 프롬프트는 보존, 컨텍스트 앞부분을 잘라냄
+    const budget = MAX_PROMPT_CHARS - system.length - userMessage.length - 50;
+    const trimmedContext = budget > 0 ? context.slice(-budget) : '';
+    full = `${system}\n\n${trimmedContext}\n\n나: ${userMessage}`;
   }
 
   return full;
@@ -94,10 +48,10 @@ function friendlyError(err: unknown): string {
   const msg = err instanceof Error ? err.message : String(err);
   const lower = msg.toLowerCase();
   if (lower.includes('429') || lower.includes('quota') || lower.includes('resource exhausted')) {
-    return '잠깐, 요청이 너무 많아서 잠시 후에 다시 말해줘요. (할당량 초과)';
+    return '잠깐, 요청이 너무 많아서 잠시 후에 다시 말해줘요.';
   }
   if (lower.includes('safety') || lower.includes('blocked')) {
-    return '그 질문은 대답하기 어렵네요. 다른 방식으로 물어봐 줄 수 있어요?';
+    return '그 질문은 대답하기 어렵네요. 다르게 물어봐줄 수 있어요?';
   }
   if (lower.includes('api key') || lower.includes('401') || lower.includes('403')) {
     return 'API 인증 문제가 생겼어요. 잠시 후 다시 시도해줘요.';
@@ -117,14 +71,12 @@ export async function handleAssistantMessage(
   if (message.author.bot) return;
 
   const isDM = message.channel instanceof DMChannel || message.channel.isDMBased();
-  const isPublicChannel = !isDM && publicChannelId && message.channel.id === publicChannelId;
+  const isPublicChannel = !isDM && !!publicChannelId && message.channel.id === publicChannelId;
 
   if (!isDM && !isPublicChannel) return;
 
   const channelType: 'dm' | 'public' = isDM ? 'dm' : 'public';
-  const channelId = message.channel.id;
   const userContent = message.content.trim();
-
   if (!userContent) return;
 
   if (!process.env.GEMINI_API_KEY?.trim()) {
@@ -132,16 +84,19 @@ export async function handleAssistantMessage(
     return;
   }
 
-  // 사용자 메시지 히스토리에 추가
-  pushHistory(channelId, { role: 'user', content: userContent });
-
-  // 기억 서비스에 저장
-  memory.addEntry({
+  // 사용자 메시지 즉시 로그에 기록
+  const userEntry: ConversationEntry = {
     timestamp: new Date().toISOString(),
     role: 'user',
     content: userContent,
     channel: channelType,
-  });
+  };
+  memory.appendToLog(userEntry);
+
+  // 오늘 처음 대화라면 어제/지난주 요약 생성 (비동기, 응답 막지 않음)
+  memory.checkAndGenerateSummaries().catch((e) =>
+    console.error('[Assistant] 요약 생성 오류:', e instanceof Error ? e.message : e),
+  );
 
   // 타이핑 표시
   try {
@@ -150,7 +105,7 @@ export async function handleAssistantMessage(
     }
   } catch { /* ignore */ }
 
-  const fullPrompt = buildFullPrompt(memory, channelId, channelType, userContent);
+  const fullPrompt = buildFullPrompt(memory, channelType, userContent);
 
   try {
     const { text: response } = await generateBlobTextFromEnvWithOptions(
@@ -159,13 +114,10 @@ export async function handleAssistantMessage(
       { surface: 'inherit' },
     );
 
-    const reply = response.slice(0, MAX_RESPONSE_LENGTH);
+    const reply = response.trim().slice(0, MAX_RESPONSE_LENGTH);
 
-    // 응답 히스토리에 추가
-    pushHistory(channelId, { role: 'assistant', content: reply });
-
-    // 기억 서비스에 저장
-    memory.addEntry({
+    // 봇 응답도 즉시 로그에 기록
+    memory.appendToLog({
       timestamp: new Date().toISOString(),
       role: 'assistant',
       content: reply,
