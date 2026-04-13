@@ -516,6 +516,13 @@ const commands = [
             .setDescriptionLocalizations({ 'en-US': 'What to add or modify' })
             .setRequired(true),
         ),
+    )
+    .addSubcommand((sub) =>
+      sub
+        .setName('핫로그')
+        .setNameLocalizations({ 'en-US': 'hotlog' })
+        .setDescription('최근 중요 기억들을 확인합니다.')
+        .setDescriptionLocalizations({ 'en-US': 'View recent important memories' }),
     ),
 ].map((cmd) => cmd.toJSON());
 

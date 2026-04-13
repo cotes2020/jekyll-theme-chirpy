@@ -175,6 +175,22 @@ export class MemoryService {
     return this._read(path.join(this.memoryDir, 'self.md'));
   }
 
+  getHotMemoryLog(limit: number = 20): string {
+    const userMd = this.getUserMd();
+    const lines = userMd.split('\n');
+    const hotMemories: string[] = [];
+
+    for (const line of lines) {
+      const match = line.match(/^- \[(\d{4}-\d{2}-\d{2})\]\s+(.+)$/);
+      if (match) {
+        hotMemories.push(line.trim());
+      }
+      if (hotMemories.length >= limit) break;
+    }
+
+    return hotMemories.length > 0 ? hotMemories.join('\n') : '(기록 없음)';
+  }
+
   // ── 요약 생성 (필요할 때만) ───────────────────────────────────────────────
 
   async checkAndGenerateSummaries(): Promise<void> {

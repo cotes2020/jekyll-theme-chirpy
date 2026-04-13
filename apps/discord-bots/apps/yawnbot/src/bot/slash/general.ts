@@ -93,9 +93,10 @@ export async function handleHelp(ctx, interaction) {
       .setTitle('🧠 기억 커맨드')
       .setDescription('대화 기록 및 프로필을 관리해요. 모든 정보는 MEMO_REPO_PATH에 자동으로 git commit됩니다.')
       .addFields(
-        { name: '/기억 확인', value: '저장된 나에 대한 정보와 봇 자신에 대한 정보를 출력해요.' },
+        { name: '/기억 확인', value: '저장된 나에 대한 정보와 봇 자신에 대한 정보를 출력해요. (용량 정보 포함)' },
         { name: '/기억 저장', value: '대화 기록을 memo 레포에 즉시 커밋해요.' },
         { name: '/기억 수정 [내용]', value: 'AI 도움으로 user.md를 수정해요. 예: `/기억 수정 새로운 취미는 게임` ' },
+        { name: '/기억 핫로그', value: '최근 중요 기억들을 확인해요. (최대 20개)' },
       )
       .setColor(0x7c4dff);
     await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });

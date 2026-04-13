@@ -174,12 +174,28 @@ export async function dispatchSlashCommand(ctx, interaction) {
             try {
               const userMd = memory.getUserMd();
               const selfMd = memory.getSelfMd();
+
+              // Discord embed 필드는 1024자 제한
+              const userContent = userMd.slice(0, 1024) || '(없음)';
+              const selfContent = selfMd.slice(0, 1024) || '(없음)';
+
+              // 용량 정보
+              const userSize = Buffer.byteLength(userMd, 'utf-8');
+              const selfSize = Buffer.byteLength(selfMd, 'utf-8');
+
               const embed = new EmbedBuilder()
                 .setTitle('🧠 YawnBot 메모리')
                 .addFields(
-                  { name: '나에 대한 정보', value: userMd.slice(0, 1000) || '(없음)' },
-                  { name: '봇 자신에 대한 정보', value: selfMd.slice(0, 500) || '(없음)' },
+                  {
+                    name: `나에 대한 정보 (${(userSize / 1024).toFixed(1)}KB)`,
+                    value: userContent,
+                  },
+                  {
+                    name: `봇 자신에 대한 정보 (${(selfSize / 1024).toFixed(1)}KB)`,
+                    value: selfContent,
+                  },
                 )
+                .setFooter({ text: userSize > 1024 || selfSize > 1024 ? '⚠️ 전체 내용을 보려면 /기억 핫로그를 사용하세요' : undefined })
                 .setColor(0x7c4dff);
               await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
             } catch (e) {
@@ -219,9 +235,41 @@ export async function dispatchSlashCommand(ctx, interaction) {
               const fs = await import('fs');
               const userMdPath = path.default.join((memory as any).memoryDir, 'user.md');
               fs.default.writeFileSync(userMdPath, `# 나에 대한 정보\n\n${updatedUserMd.trim()}\n`, 'utf-8');
-              await interaction.editReply(`✅ user.md를 업데이트했습니다.\n\n수정 내용: ${content}`);
+
+              // 변경 내용 요약
+              const oldLines = currentUserMd.split('\n').length;
+              const newLines = updatedUserMd.split('\n').length;
+              const diff = `${oldLines}줄 → ${newLines}줄`;
+
+              const embed = new EmbedBuilder()
+                .setTitle('✅ user.md 업데이트 완료')
+                .addFields(
+                  { name: '요청', value: content.slice(0, 256) },
+                  { name: '변화', value: diff, inline: true },
+                  { name: '새 용량', value: `${(Buffer.byteLength(updatedUserMd, 'utf-8') / 1024).toFixed(1)}KB`, inline: true },
+                )
+                .setColor(0x4caf50);
+              await interaction.editReply({ embeds: [embed] });
             } catch (e) {
               await interaction.editReply(`수정 실패: ${e instanceof Error ? e.message : String(e)}`);
+            }
+            break;
+          }
+
+          case '핫로그': {
+            try {
+              const hotLog = memory.getHotMemoryLog(20);
+              const embed = new EmbedBuilder()
+                .setTitle('🔥 핫 메모리 로그')
+                .setDescription('최근 중요 기억들 (최대 20개)')
+                .addFields({
+                  name: '기록',
+                  value: `\`\`\`\n${hotLog}\n\`\`\``,
+                })
+                .setColor(0xff9800);
+              await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            } catch (e) {
+              await interaction.reply({ content: `핫로그 조회 실패: ${e instanceof Error ? e.message : String(e)}`, flags: MessageFlags.Ephemeral });
             }
             break;
           }
