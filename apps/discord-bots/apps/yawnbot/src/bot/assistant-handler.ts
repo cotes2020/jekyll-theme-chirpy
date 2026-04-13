@@ -16,6 +16,7 @@ async function detectAndSaveHotMemory(
   userMessage: string,
 ): Promise<void> {
   try {
+    console.log(`[Assistant] 핫메모리 감지 중...`);
     const { text } = await generateAssistantText(
       process.env,
       `다음 메시지에서 user.md에 즉시 저장할 중요한 사실이 있으면 한 줄로 작성해줘.\n` +
@@ -24,10 +25,17 @@ async function detectAndSaveHotMemory(
         `메시지: "${userMessage}"`,
     );
     const trimmed = text.trim();
-    if (trimmed === 'SKIP' || !trimmed) return;
+    if (trimmed === 'SKIP' || !trimmed) {
+      console.log(`[Assistant] 핫메모리: 저장할 정보 없음 (SKIP)`);
+      return;
+    }
     memory.appendHotMemory(trimmed);
-  } catch {
-    /* 실패해도 무시 */
+    console.log(`[Assistant] 핫메모리 저장: ${trimmed.slice(0, 60)}...`);
+  } catch (e) {
+    console.error(
+      `[Assistant] 핫메모리 감지 실패:`,
+      e instanceof Error ? e.message : String(e),
+    );
   }
 }
 
@@ -50,7 +58,13 @@ function buildFullPrompt(
 ): string {
   const system = buildSystemPrompt(channelType);
   const budget = MAX_PROMPT_CHARS - system.length - userMessage.length - 50;
-  const context = memory.buildContext(Math.max(2000, budget)); // 최소 2000자는 context 할당
+  const contextBudget = Math.max(2000, budget);
+  const context = memory.buildContext(contextBudget);
+
+  const contextSize = Buffer.byteLength(context, 'utf-8');
+  console.log(
+    `[Assistant] 컨텍스트 빌드: ${contextSize}바이트 (할당: ${contextBudget}자, 사용: ${context.length}자)`,
+  );
 
   const contextBlock = context ? `\n\n${context}` : '';
   return `${system}${contextBlock}\n\n나: ${userMessage}`;
@@ -91,8 +105,11 @@ export async function handleAssistantMessage(
   const userContent = message.content.trim();
   if (!userContent) return;
 
+  console.log(`[Assistant] 메시지 수신 [${channelType}] (${userContent.length}자): ${userContent.slice(0, 50)}`);
+
   const provider = (process.env.ASSISTANT_AI_PROVIDER || 'gemini').toLowerCase();
   if (provider !== 'claude-cli' && !process.env.GEMINI_API_KEY?.trim()) {
+    console.warn('[Assistant] API 키 없음:', provider);
     await message.reply('GEMINI_API_KEY가 설정되지 않아서 대화할 수 없어요.');
     return;
   }
@@ -118,10 +135,22 @@ export async function handleAssistantMessage(
     }
   } catch { /* ignore */ }
 
+  const startTime = Date.now();
+  console.log(`[Assistant] 프롬프트 빌드 시작...`);
   const fullPrompt = buildFullPrompt(memory, channelType, userContent);
+  const promptSize = Buffer.byteLength(fullPrompt, 'utf-8');
+  console.log(
+    `[Assistant] 프롬프트 준비 완료: ${promptSize}바이트, ${fullPrompt.length}자 (빌드 소요: ${Date.now() - startTime}ms)`,
+  );
 
   try {
+    const aiStartTime = Date.now();
+    console.log(`[Assistant] AI 호출 시작 (${provider})...`);
     const { text: response } = await generateAssistantText(process.env, fullPrompt);
+    const aiDuration = Date.now() - aiStartTime;
+    console.log(
+      `[Assistant] AI 응답 수신 (${aiDuration}ms): ${response.length}자 -> 응답 중...`,
+    );
 
     const reply = response.trim().slice(0, MAX_RESPONSE_LENGTH);
 
@@ -136,9 +165,16 @@ export async function handleAssistantMessage(
     // hot path — 중요 정보 즉시 저장 (비동기, 응답 블로킹 없음)
     detectAndSaveHotMemory(memory, userContent).catch(() => {});
 
+    const sentTime = Date.now();
     await message.reply(reply);
+    const totalDuration = Date.now() - startTime;
+    console.log(`[Assistant] 완료 (총 ${totalDuration}ms, 응답크기: ${reply.length}자)`);
   } catch (e: unknown) {
-    console.error('[Assistant] 응답 실패:', e instanceof Error ? e.message : e);
+    const totalDuration = Date.now() - startTime;
+    console.error(
+      `[Assistant] 응답 실패 (${totalDuration}ms):`,
+      e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+    );
     await message.reply(friendlyError(e));
   }
 }
