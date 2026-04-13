@@ -26,7 +26,7 @@ import { dispatchSlashCommand } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 import { handleAssistantMessage } from './bot/assistant-handler';
-import { startProactive, stopProactive } from './bot/proactive';
+import { startProactive, stopProactive, sendStartupGreeting } from './bot/proactive';
 
 const client = new Client({
   intents: [
@@ -141,6 +141,7 @@ client.once('clientReady', async () => {
   if (memory) {
     memory.initialize();
     startProactive(client);
+    await sendStartupGreeting(client, memory);
     console.log('[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:', process.env.ASSISTANT_USER_ID, ')');
   } else {
     console.warn('[Assistant] MEMO_REPO_PATH 미설정 — AI 비서 비활성화');

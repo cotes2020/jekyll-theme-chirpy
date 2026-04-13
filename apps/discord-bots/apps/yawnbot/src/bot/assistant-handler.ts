@@ -11,6 +11,26 @@ import type { MemoryService, ConversationEntry } from '../services/memory-servic
 const MAX_RESPONSE_LENGTH = 1900;
 const MAX_PROMPT_CHARS = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
 
+async function detectAndSaveHotMemory(
+  memory: MemoryService,
+  userMessage: string,
+): Promise<void> {
+  try {
+    const { text } = await generateAssistantText(
+      process.env,
+      `다음 메시지에서 user.md에 즉시 저장할 중요한 사실이 있으면 한 줄로 작성해줘.\n` +
+        `중요한 사실: 새로운 프로젝트/계획, 감정 변화, 중요한 결정, 인생 이벤트.\n` +
+        `없으면 정확히 "SKIP"이라고만 반환.\n\n` +
+        `메시지: "${userMessage}"`,
+    );
+    const trimmed = text.trim();
+    if (trimmed === 'SKIP' || !trimmed) return;
+    memory.appendHotMemory(trimmed);
+  } catch {
+    /* 실패해도 무시 */
+  }
+}
+
 function buildSystemPrompt(channelType: 'dm' | 'public'): string {
   const channelDesc =
     channelType === 'dm' ? '지금은 DM으로 사적인 대화 중이야.' : '지금은 공개 채널에서 대화 중이야.';
@@ -120,6 +140,9 @@ export async function handleAssistantMessage(
       content: reply,
       channel: channelType,
     });
+
+    // hot path — 중요 정보 즉시 저장 (비동기, 응답 블로킹 없음)
+    detectAndSaveHotMemory(memory, userContent).catch(() => {});
 
     await message.reply(reply);
   } catch (e: unknown) {

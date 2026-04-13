@@ -1,9 +1,11 @@
 /**
  * proactive.ts — 먼저 말 걸기
+ * - 봇 시작 시 DM으로 기상 메시지
  * - 매일 아침 ASSISTANT_MORNING_HOUR 시 (KST) DM으로 인사
  */
 import type { Client, DMChannel } from 'discord.js';
 import { generateAssistantText } from 'karmolab-ai/node';
+import type { MemoryService } from '../services/memory-service';
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -66,6 +68,36 @@ function scheduleMorning(client: Client, targetHour: number): void {
     // 다음 날 같은 시각 예약
     scheduleMorning(client, targetHour);
   }, delay);
+}
+
+export async function sendStartupGreeting(client: Client, memory: MemoryService): Promise<void> {
+  const userId = process.env.ASSISTANT_USER_ID?.trim();
+  if (!userId) return;
+
+  try {
+    const user = await client.users.fetch(userId);
+    const dmChannel = await user.createDM() as DMChannel;
+
+    const context = memory.buildContext();
+    const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+    const dateStr = `${kstNow.getFullYear()}년 ${kstNow.getMonth() + 1}월 ${kstNow.getDate()}일`;
+    const timeStr = `${String(kstNow.getHours()).padStart(2, '0')}:${String(kstNow.getMinutes()).padStart(2, '0')}`;
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayStr = dayNames[kstNow.getDay()] + '요일';
+
+    const prompt =
+      `너는 mascari4615의 개인 AI 비서야.\n` +
+      `방금 봇이 시작됐어. ${dateStr} ${dayStr} ${timeStr}.\n` +
+      `마치 잠에서 깨어난 것처럼, 짧고 자연스럽게 기상 메시지를 보내줘.\n` +
+      `2-3문장 이내로. 한국어로.\n` +
+      (context ? `\n[기억]\n${context}` : '');
+
+    const { text } = await generateAssistantText(process.env, prompt);
+    await dmChannel.send(text.slice(0, 1900));
+    console.log('[Proactive] 기상 메시지 전송 완료');
+  } catch (e: unknown) {
+    console.error('[Proactive] 기상 메시지 실패:', e instanceof Error ? e.message : e);
+  }
 }
 
 export function startProactive(client: Client): void {

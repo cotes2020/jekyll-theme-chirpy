@@ -154,11 +154,26 @@ export class MemoryService {
     this.dirty = true;
   }
 
+  appendHotMemory(fact: string): void {
+    const userMdPath = path.join(this.memoryDir, 'user.md');
+    const today = kstDateStr();
+    const line = `\n- [${today}] ${fact}`;
+    try {
+      fs.appendFileSync(userMdPath, line, 'utf-8');
+      this.dirty = true;
+      console.log(`[Memory] Hot memory 저장: ${fact}`);
+    } catch (e: unknown) {
+      console.error('[Memory] hot memory 저장 실패:', e instanceof Error ? e.message : e);
+    }
+  }
+
   // ── 요약 생성 (필요할 때만) ───────────────────────────────────────────────
 
   async checkAndGenerateSummaries(): Promise<void> {
     await this._generateDailySummaryIfNeeded();
     await this._generateWeeklySummaryIfNeeded();
+    await this._updateUserAndSelfMemoryIfNeeded();
+    this._cleanupOldMemories();
   }
 
   private async _generateDailySummaryIfNeeded(): Promise<void> {
@@ -221,6 +236,102 @@ export class MemoryService {
       console.log(`[Memory] ${weekKey} 주간 요약 저장 완료`);
     } catch (e: unknown) {
       console.error('[Memory] 주간 요약 생성 실패:', e instanceof Error ? e.message : e);
+    }
+  }
+
+  private async _updateUserAndSelfMemoryIfNeeded(): Promise<void> {
+    // 오늘 이미 갱신했으면 스킵 (중복 방지)
+    const markerPath = path.join(this.memoryDir, '.user-self-updated');
+    const today = kstDateStr();
+    if (fs.existsSync(markerPath)) {
+      const lastUpdated = fs.readFileSync(markerPath, 'utf-8').trim();
+      if (lastUpdated === today) return;
+    }
+
+    const yesterday = kstDateStr(daysAgo(1));
+    const dailySummaryPath = path.join(this.memoryDir, 'daily', `${yesterday}.md`);
+
+    // 어제 요약이 없으면 갱신 스킵
+    if (!fs.existsSync(dailySummaryPath)) return;
+
+    try {
+      const dailySummary = fs.readFileSync(dailySummaryPath, 'utf-8').trim();
+      const currentUserMd = this._read(path.join(this.memoryDir, 'user.md'));
+      const currentSelfMd = this._read(path.join(this.memoryDir, 'self.md'));
+
+      console.log(`[Memory] user.md / self.md 갱신 중...`);
+      const { text: updatedMemory } = await generateAssistantText(
+        process.env,
+        `너는 mascari4615의 개인 AI 비서야.\n` +
+          `다음은 어제(${yesterday})의 대화 요약이야:\n\n${dailySummary}\n\n` +
+          `이를 바탕으로 두 가지를 작성해줘:\n\n` +
+          `## [나에 대한 정보]\n` +
+          `mascari4615의 성격, 특징, 최근 상태, 관심사, 감정 등을 누적으로 정리해줘.\n` +
+          `(기존 정보가 있으면 유지하면서 어제 대화로부터 새로운 정보를 추가/갱신)\n` +
+          `기존 정보:\n${currentUserMd || '(아직 기록 없음)'}\n\n` +
+          `## [봇 자신에 대한 정보]\n` +
+          `어제 대화를 통해 내가 얼마나 도움이 되었는지, 어떤 역할을 하고 있는지 정리해줘.\n` +
+          `(기존 정보가 있으면 유지하면서 어제 상황을 반영)\n` +
+          `기존 정보:\n${currentSelfMd || '(아직 기록 없음)'}\n\n` +
+          `마크다운 형식으로, 간결하게 작성해줘.`,
+      );
+
+      // "## [나에 대한 정보]"와 "## [봇 자신에 대한 정보]" 섹션으로 분리
+      const userMatch = updatedMemory.match(/##\s*\[나에\s*대한\s*정보\]([\s\S]*?)(?=##\s*\[봇|$)/);
+      const selfMatch = updatedMemory.match(/##\s*\[봇\s*자신에\s*대한\s*정보\]([\s\S]*?)$/);
+
+      if (userMatch) {
+        const userContent = userMatch[1].trim();
+        fs.writeFileSync(
+          path.join(this.memoryDir, 'user.md'),
+          `# 나에 대한 정보\n\n${userContent}\n`,
+          'utf-8',
+        );
+        this.dirty = true;
+      }
+
+      if (selfMatch) {
+        const selfContent = selfMatch[1].trim();
+        fs.writeFileSync(
+          path.join(this.memoryDir, 'self.md'),
+          `# 봇 자신에 대한 정보\n\n${selfContent}\n`,
+          'utf-8',
+        );
+        this.dirty = true;
+      }
+
+      // 중복 방지 마커 파일 기록
+      fs.writeFileSync(markerPath, today, 'utf-8');
+
+      console.log(`[Memory] user.md / self.md 갱신 완료`);
+    } catch (e: unknown) {
+      console.error('[Memory] user/self 메모리 갱신 실패:', e instanceof Error ? e.message : e);
+    }
+  }
+
+  private _cleanupOldMemories(): void {
+    const cutoffs = [
+      { dir: this.logsDir, days: 60 },
+      { dir: path.join(this.memoryDir, 'daily'), days: 30 },
+      { dir: path.join(this.memoryDir, 'weekly'), days: 84 },
+    ];
+    for (const { dir, days } of cutoffs) {
+      if (!fs.existsSync(dir)) continue;
+      try {
+        const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+        for (const file of files) {
+          const filePath = path.join(dir, file);
+          const stat = fs.statSync(filePath);
+          const ageMs = Date.now() - stat.mtimeMs;
+          if (ageMs > days * 24 * 60 * 60 * 1000) {
+            fs.unlinkSync(filePath);
+            console.log(`[Memory] 오래된 파일 삭제: ${file}`);
+            this.dirty = true;
+          }
+        }
+      } catch (e: unknown) {
+        console.warn(`[Memory] cleanup 실패 (${dir}):`, e instanceof Error ? e.message : e);
+      }
     }
   }
 
