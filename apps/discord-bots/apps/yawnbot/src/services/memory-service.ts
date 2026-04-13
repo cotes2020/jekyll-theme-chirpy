@@ -167,6 +167,14 @@ export class MemoryService {
     }
   }
 
+  getUserMd(): string {
+    return this._read(path.join(this.memoryDir, 'user.md'));
+  }
+
+  getSelfMd(): string {
+    return this._read(path.join(this.memoryDir, 'self.md'));
+  }
+
   // ── 요약 생성 (필요할 때만) ───────────────────────────────────────────────
 
   async checkAndGenerateSummaries(): Promise<void> {

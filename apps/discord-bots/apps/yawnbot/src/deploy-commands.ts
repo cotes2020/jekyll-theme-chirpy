@@ -485,21 +485,37 @@ const commands = [
     .setDescriptionLocalizations(enUS('[Admin] Save data to disk')),
 
   new SlashCommandBuilder()
-    .setName('기억저장')
-    .setDescription('지금까지의 대화를 memo 레포에 즉시 커밋합니다.')
-    .setDescriptionLocalizations(enUS('Immediately commit current conversation to memo repo')),
-
-  new SlashCommandBuilder()
-    .setName('기억수정')
-    .setDescription('user.md를 AI 도움으로 수정합니다.')
-    .setDescriptionLocalizations(enUS('Edit user.md with AI assistance'))
-    .addStringOption((opt) =>
-      opt
-        .setName('내용')
-        .setNameLocalizations({ 'en-US': 'content' })
-        .setDescription('추가하거나 수정할 사항')
-        .setDescriptionLocalizations({ 'en-US': 'What to add or modify' })
-        .setRequired(true),
+    .setName('기억')
+    .setDescription('YawnBot 메모리 관리')
+    .setDescriptionLocalizations(enUS('Manage YawnBot memory'))
+    .addSubcommand((sub) =>
+      sub
+        .setName('확인')
+        .setNameLocalizations({ 'en-US': 'view' })
+        .setDescription('저장된 나에 대한 정보를 출력합니다.')
+        .setDescriptionLocalizations({ 'en-US': 'View saved information about you' }),
+    )
+    .addSubcommand((sub) =>
+      sub
+        .setName('저장')
+        .setNameLocalizations({ 'en-US': 'save' })
+        .setDescription('지금까지의 대화를 memo 레포에 즉시 커밋합니다.')
+        .setDescriptionLocalizations({ 'en-US': 'Immediately commit current conversation to memo repo' }),
+    )
+    .addSubcommand((sub) =>
+      sub
+        .setName('수정')
+        .setNameLocalizations({ 'en-US': 'edit' })
+        .setDescription('user.md를 AI 도움으로 수정합니다.')
+        .setDescriptionLocalizations({ 'en-US': 'Edit user.md with AI assistance' })
+        .addStringOption((opt) =>
+          opt
+            .setName('내용')
+            .setNameLocalizations({ 'en-US': 'content' })
+            .setDescription('추가하거나 수정할 사항')
+            .setDescriptionLocalizations({ 'en-US': 'What to add or modify' })
+            .setRequired(true),
+        ),
     ),
 ].map((cmd) => cmd.toJSON());
 
