@@ -247,16 +247,16 @@ export async function generateClaudeCliText(opts: {
 
   const runClaude = (useResume: boolean): Promise<string> => {
     return new Promise<string>((resolve, reject) => {
-      // 고정 세션: 항상 같은 세션 ID로 영구 세션 유지
-      // 첫 호출: --resume 실패 → --continue로 새 세션 생성
-      // 이후 호출: --resume으로 기존 세션 계속
+      // 고정 세션: 항상 같은 세션 이름으로 영구 세션 유지
+      // 첫 호출: --continue --name yawnbot-assistant (세션 생성 + 이름 지정)
+      // 이후 호출: --resume yawnbot-assistant (이름으로 재개)
       const args = opts.cwd
         ? useResume
           ? ['--print', '--resume', fixedSessionId, '--dangerously-skip-permissions']
-          : ['--print', '--continue', '--dangerously-skip-permissions']
+          : ['--print', '--continue', '--name', fixedSessionId, '--dangerously-skip-permissions']
         : useResume
           ? ['--print', '--resume', fixedSessionId]
-          : ['--print', '--continue'];
+          : ['--print', '--continue', '--name', fixedSessionId];
 
       const child = spawn(cmd, args, {
         stdio: ['pipe', 'pipe', 'pipe'],
