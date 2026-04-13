@@ -91,12 +91,40 @@ export class MemoryService {
       '# 봇 자신에 대한 정보\n\n(아직 기록된 정보 없음)\n',
     );
 
+    this._ensureAgentClaudeMd();
+
     const intervalMs = parseInt(
       process.env.ASSISTANT_MEMORY_COMMIT_INTERVAL_MS || '3600000',
       10,
     );
     this.commitTimer = setInterval(() => this.commitIfDirty(), intervalMs);
     console.log(`[Memory] 초기화 완료 (커밋 주기: ${intervalMs / 60000}분)`);
+  }
+
+  /**
+   * ASSISTANT_AGENT_REPO_PATH 루트에 CLAUDE.md 심볼릭 링크가 없으면 생성.
+   * memo/CLAUDE-karmoddrine.md → {agentRepoPath}/CLAUDE.md
+   * Windows Developer Mode 또는 관리자 권한이 있을 때만 성공.
+   */
+  private _ensureAgentClaudeMd(): void {
+    const agentPath = process.env.ASSISTANT_AGENT_REPO_PATH?.trim();
+    if (!agentPath) return;
+
+    const linkPath = path.join(agentPath, 'CLAUDE.md');
+    if (fs.existsSync(linkPath)) return;
+
+    const sourcePath = path.join(this.memoRepoPath, 'CLAUDE-karmoddrine.md');
+    if (!fs.existsSync(sourcePath)) {
+      console.warn('[Memory] CLAUDE-karmoddrine.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀');
+      return;
+    }
+
+    try {
+      fs.symlinkSync(sourcePath, linkPath);
+      console.log(`[Memory] CLAUDE.md 심볼릭 링크 생성: ${linkPath}`);
+    } catch (e: unknown) {
+      console.warn(`[Memory] CLAUDE.md 심볼릭 링크 생성 실패 (Developer Mode 또는 관리자 권한 필요): ${e instanceof Error ? e.message : e}`);
+    }
   }
 
   private _initFile(filePath: string, content: string): void {
