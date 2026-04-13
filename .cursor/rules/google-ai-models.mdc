@@ -68,9 +68,7 @@ alwaysApply: false
 | `veo-3.0-generate-001` | Veo 3 Generate | 영상 생성 (predictLongRunning) |
 | `veo-3.0-fast-generate-001` | Veo 3 Fast Generate | 영상 생성 (predictLongRunning) |
 
-
 ## 이미지 생성 API 옵션
-
 
 ### Gemini (Nano Banana) — generateContent
 

@@ -38,8 +38,6 @@ declare global {
 
     /** KarmoLab Tauri 셸에서 주입 */
     __KARMOLAB_DESKTOP__?: boolean;
-    /** Tauri 앱 바이너리 빌드 종류(웹/GitHub Pages에서는 없음) */
-    __KARMOLAB_DESKTOP_BUILD__?: 'debug' | 'release';
     /** Tauri 데스크톱 셸 (devtools 알림 테스트) */
     __TAURI__?: {
       core?: { invoke?: (cmd: string, args?: unknown) => Promise<unknown> };
@@ -107,8 +105,6 @@ declare global {
     setPref?: (key: string, value: string) => void;
     field?: (container: HTMLElement, opts: Record<string, unknown>) => HTMLElement;
     isDesktopApp?: () => boolean;
-    /** 데스크톱이고 `__KARMOLAB_DESKTOP_BUILD__ === 'debug'` */
-    isDesktopDebugBuild?: () => boolean;
     escapeHtml?: (s: string) => string;
   };
 

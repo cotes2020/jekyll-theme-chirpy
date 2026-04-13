@@ -14,9 +14,6 @@ use std::os::windows::process::CommandExt;
 
 #[cfg(windows)]
 const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-/// GUI 부모(Tauri)에는 콘솔이 없어 `inherit`만으로는 창·출력이 안 보임 → 자식에 새 콘솔 할당
-#[cfg(windows)]
-const CREATE_NEW_CONSOLE: u32 = 0x0000_0010;
 
 const CONFIG_REL_PATH: &str = "apps/karmolab/data/servermonitor-config.json";
 
@@ -42,9 +39,6 @@ struct DevProfile {
     /// e.g. `["run", "deploy:yawnbot"]` — optional **Deploy** button in Server Monitor
     #[serde(default)]
     deploy_args: Option<Vec<String>>,
-    /// `true`: Windows에서 콘솔 창을 띄움(로그 확인). 기본은 숨김(CREATE_NO_WINDOW).
-    #[serde(default)]
-    show_console: bool,
 }
 
 #[derive(Debug, Deserialize)]
@@ -131,13 +125,7 @@ fn apply_no_window(cmd: &mut Command) {
 }
 
 /// Windows에서 `npm`/`npx`는 `cmd /C`로 실행해 PATH의 `.cmd` 런처와 맞춘다.
-/// `hide_window`: Windows에서 `CREATE_NO_WINDOW` 적용(콘솔 숨김).
-fn spawn_detached_process(
-    program: &str,
-    args: &[String],
-    cwd: &Path,
-    hide_window: bool,
-) -> Result<u32, String> {
+fn spawn_detached_process(program: &str, args: &[String], cwd: &Path) -> Result<u32, String> {
     if !program_allowed(program) {
         return Err(format!("허용되지 않은 program: {}", program));
     }
@@ -171,16 +159,9 @@ fn spawn_detached_process(
 
     cmd.current_dir(cwd);
     cmd.stdin(Stdio::null());
-    if hide_window {
-        cmd.stdout(Stdio::null());
-        cmd.stderr(Stdio::null());
-        apply_no_window(&mut cmd);
-    } else {
-        cmd.stdout(Stdio::inherit());
-        cmd.stderr(Stdio::inherit());
-        #[cfg(windows)]
-        cmd.creation_flags(CREATE_NEW_CONSOLE);
-    }
+    cmd.stdout(Stdio::null());
+    cmd.stderr(Stdio::null());
+    apply_no_window(&mut cmd);
 
     let mut child = cmd.spawn().map_err(|e| format!("실행 실패: {}", e))?;
     let pid = child.id();
@@ -496,8 +477,7 @@ pub fn localdev_start(profile_id: String, state: State<'_, LocalDevState>) -> Re
     }
 
     let cwd = resolve_cwd(&repo, profile)?;
-    let hide_window = !profile.show_console;
-    let pid = spawn_detached_process(&profile.program, &profile.args, &cwd, hide_window)?;
+    let pid = spawn_detached_process(&profile.program, &profile.args, &cwd)?;
 
     let mut pids = state.pids.lock().map_err(|e| e.to_string())?;
     pids.insert(profile_id, pid);

@@ -393,7 +393,6 @@
 
     function renderSettings(container: HTMLElement): void {
         const theme = Toolbox.getTheme?.() ?? 'dark';
-        const navLayout = Toolbox.getNavLayout?.() ?? 'header';
         const prismTheme = Toolbox.getPrismTheme?.() ?? '';
         const prismThemes = Toolbox.getPrismThemes?.() ?? [];
         const bgTheme = Toolbox.getBgTheme?.() ?? '';
@@ -417,13 +416,6 @@
                         <select id="setTheme" class="settings-control">
                             <option value="dark" ${theme === 'dark' ? 'selected' : ''}>다크</option>
                             <option value="light" ${theme === 'light' ? 'selected' : ''}>라이트</option>
-                        </select>
-                    </div>
-                    <div class="settings-row">
-                        <label for="setNavLayout">네비게이션 레이아웃</label>
-                        <select id="setNavLayout" class="settings-control">
-                            <option value="header" ${navLayout === 'header' ? 'selected' : ''}>상단 (Header)</option>
-                            <option value="sidebar" ${navLayout === 'sidebar' ? 'selected' : ''}>좌측 (Sidebar)</option>
                         </select>
                     </div>
                     <div class="settings-row">
@@ -475,13 +467,6 @@
             if (!target) return;
             (Toolbox as any).setTheme?.(target.value);
             (Toolbox as any).showToast?.('테마: ' + (target.value === 'dark' ? '다크' : '라이트'));
-        });
-
-        container.querySelector<HTMLSelectElement>('#setNavLayout')?.addEventListener('change', (e: Event) => {
-            const target = e.target as HTMLSelectElement | null;
-            if (!target) return;
-            (Toolbox as any).setNavLayout?.(target.value);
-            (Toolbox as any).showToast?.('네비게이션: ' + (target.value === 'sidebar' ? '좌측' : '상단'));
         });
 
         container.querySelector<HTMLSelectElement>('#setPrism')?.addEventListener('change', (e: Event) => {

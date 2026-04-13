@@ -61,8 +61,6 @@ export const DEFAULT_ITEMS: FavoriteGroup[] = [
         { url: 'https://aistudio.google.com', label: 'AI Studio', icon: 'https://cdn.simpleicons.org/google' },
         { url: 'https://notebooklm.google.com/', label: 'NotebookLM', icon: 'https://cdn.simpleicons.org/google' },
         { url: 'https://cursor.com/dashboard/spending', label: 'Cursor Spending', icon: 'https://cdn.simpleicons.org/cursor' },
-        { url: 'https://console.anthropic.com/settings/billing', label: 'Anthropic Billing', icon: 'https://cdn.simpleicons.org/anthropic' },
-        { url: 'https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview', label: 'Claude Code', icon: 'https://cdn.simpleicons.org/anthropic' },
     ]},
     { group: 'AI 아트', items: [
         { url: 'https://pixai.art/', label: 'PixAI', icon: null },

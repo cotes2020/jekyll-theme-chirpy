@@ -20,7 +20,6 @@ npm run dev
 - 이미 **8899**에 같은 방식으로 서버가 떠 있으면: `npm run dev:app` (Tauri만).
 - **블로그·Jekyll까지** 로컬로 쓰려면: `npm run dev:with-jekyll` (4000번 Jekyll + 별도 `devUrl` 설정).
 - Windows에서 Jekyll을 쓸 때 Listen이 **같은 폴더를 두 경로로 감시**한다고 에러를 내면, `_config.yml`의 `exclude`와 `dev:jekyll`의 **`--force_polling`** 을 참고하세요.
-- **트레이 메뉴**에서 **페이지: 배포 (GitHub)** / **페이지: 로컬 (8899)** 로 WebView 주소를 바꿀 수 있습니다(웹이 안 떠도 동작). 한 번 고르면 `karmolab-origin.json`에 저장되어 다음 실행에도 반영됩니다. 자세한 건 `apps/karmolab-tauri/README.md` 데스크톱 전용 절.
 
 빌드·원격 URL 등은 **문서 → 프로젝트 명령** 탭과 `apps/karmolab-tauri/README.md` 를 참고하세요.
 
@@ -52,13 +51,12 @@ npm run dev
 - **`deployArgs`:** (선택) 예: `["run", "deploy:yawnbot"]` — 카드에 **deploy** 버튼이 생기고, 같은 `cwd`에서 **`localdev_deploy_stream`** 으로 `npm` + 인자를 실행합니다. 로그 패널·토스트 동작은 npm i와 같습니다.
 - **`localMonitors`:** 항목마다 `title`·`subtitle`(선택)·`url`(선택)·`noHealthUrl`(의도적으로 ping 안 함) 등을 둘 수 있습니다. 예전처럼 `label`만 있어도 됩니다. **ATKUp** 봇은 기본 **`http://127.0.0.1:8081/health`** (`ATKUP_HEALTH_PORT`, 끄려면 `0`). 데스크톱에서는 **`devProfiles` 항목과 `id`가 같으면 카드 한 장**에 URL 상태와 시작·종료가 같이 나옵니다.
 - **`healthUrl`:** (선택) `devProfiles` 전용. `localMonitors`와 주소를 맞춰 두면 카드 ping과 의미가 같아집니다.
-- **`showConsole: true`:** (선택, Windows 권장) **시작** 시 새 콘솔 창을 띄웁니다. 데스크톱 앱은 GUI라 부모에 콘솔이 없어, Rust 쪽에서 `CREATE_NEW_CONSOLE`으로 자식 프로세스에 콘솔을 따로 붙입니다. 생략·`false`면 창 없이 백그라운드(`CREATE_NO_WINDOW`)로만 실행됩니다.
 
 ---
 
 ## 동작·제한
 
-- **시작:** 기본은 백그라운드(콘솔 숨김). `showConsole: true`이면 Windows에서 콘솔 창이 열립니다. **「시작」은 KarmoLab 데스크톱(Tauri) 앱에서만** 동작합니다(일반 브라우저의 GitHub Pages에서는 `invoke`가 없어 토스트로 안내합니다).
+- **시작:** 백그라운드 프로세스로 실행합니다(표준 출력은 숨깁니다).
 - **종료 (Windows):** `taskkill /T /F` 로 프로세스 트리를 끊습니다.
 - **종료 (Linux/macOS):** 부모 PID에 `kill`을 보내는 수준이라, 자식이 남을 수 있어요. 필요하면 `pkill` 등으로 정리하세요.
 - **앱 완전 종료:** Rust 쪽 PID 추적이 초기화됩니다. 남은 프로세스는 작업 관리자 등으로 확인하세요.

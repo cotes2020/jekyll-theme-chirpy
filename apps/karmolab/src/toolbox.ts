@@ -286,29 +286,11 @@ const Toolbox = (() => {
         if (left && !left.querySelector('.karmolab-desktop-chrome')) {
             const row = document.createElement('span');
             row.className = 'karmolab-desktop-chrome';
-            const build = window.__KARMOLAB_DESKTOP_BUILD__;
-            const buildLabel =
-                build === 'release' ? '배포' : build === 'debug' ? '개발' : '';
-            row.setAttribute(
-                'aria-label',
-                buildLabel ? `데스크톱 앱 · ${buildLabel} 빌드` : '데스크톱 앱 모드'
-            );
+            row.setAttribute('aria-label', '데스크톱 앱 모드');
             const span = document.createElement('span');
             span.className = 'karmolab-desktop-badge';
             span.textContent = '앱';
             span.title = 'Tauri 데스크톱 앱에서 실행 중입니다. 웹에서는 이 배지가 보이지 않습니다.';
-            row.appendChild(span);
-            if (build === 'debug' || build === 'release') {
-                const buildSpan = document.createElement('span');
-                buildSpan.className =
-                    'karmolab-desktop-build-badge karmolab-desktop-build-badge--' + build;
-                buildSpan.textContent = buildLabel;
-                buildSpan.title =
-                    build === 'release'
-                        ? '릴리스(프로덕션) 바이너리입니다.'
-                        : '개발 빌드(tauri dev 등)입니다.';
-                row.appendChild(buildSpan);
-            }
             const browserA = document.createElement('a');
             browserA.className = 'karmolab-open-browser';
             browserA.href = 'https://mascari4615.github.io/karmolab/';
@@ -316,6 +298,7 @@ const Toolbox = (() => {
             browserA.rel = 'noopener noreferrer';
             browserA.textContent = '브라우저';
             browserA.title = '기본 브라우저에서 KarmoLab 열기';
+            row.appendChild(span);
             row.appendChild(browserA);
             left.appendChild(row);
         }
@@ -323,10 +306,6 @@ const Toolbox = (() => {
 
     function isDesktopApp() {
         return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
-    }
-
-    function isDesktopDebugBuild() {
-        return isDesktopApp() && window.__KARMOLAB_DESKTOP_BUILD__ === 'debug';
     }
 
     /** 데스크톱 전용(category desktop) 도구는 일반 브라우저에서 메뉴·페이지에 넣지 않음 */
@@ -358,20 +337,6 @@ const Toolbox = (() => {
         const mobileNav = document.getElementById('mobile-nav');
         const toolPages = document.getElementById('tool-pages');
         const hiddenSet = new Set(tools.filter(t => t.hidden).map(t => t.id));
-        const sidebarGroupStateKey = 'toolbox_sidebar_groups';
-
-        function getSidebarGroupState(): Record<string, boolean> {
-            try {
-                const raw = localStorage.getItem(sidebarGroupStateKey);
-                return raw ? JSON.parse(raw) : {};
-            } catch {
-                return {};
-            }
-        }
-
-        function setSidebarGroupState(state: Record<string, boolean>) {
-            localStorage.setItem(sidebarGroupStateKey, JSON.stringify(state));
-        }
 
         function addNavItem(container, tool) {
             const a = document.createElement('a');
@@ -431,15 +396,6 @@ const Toolbox = (() => {
 
             trigger.appendChild(labelSpan);
 
-            const sidebarState = getSidebarGroupState();
-            const isSidebar = getNavLayout() === 'sidebar';
-            const isOpenByDefault = sidebarState[label] !== false;
-            if (isSidebar && isOpenByDefault) {
-                wrap.classList.add('is-open');
-                panel.hidden = false;
-                trigger.setAttribute('aria-expanded', 'true');
-            }
-
             function openThis() {
                 clearMegaMenuTimer();
                 closeAllHeaderNavExcept(wrap);
@@ -448,22 +404,8 @@ const Toolbox = (() => {
                 trigger.setAttribute('aria-expanded', 'true');
             }
 
-            function toggleGroup() {
-                const nextOpen = !wrap.classList.contains('is-open');
-                wrap.classList.toggle('is-open', nextOpen);
-                panel.hidden = !nextOpen;
-                trigger.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
-                const nextState = getSidebarGroupState();
-                nextState[label] = nextOpen;
-                setSidebarGroupState(nextState);
-            }
-
             function toggleClick(e) {
                 e.stopPropagation();
-                if (getNavLayout() === 'sidebar') {
-                    toggleGroup();
-                    return;
-                }
                 const wasOpen = wrap.classList.contains('is-open');
                 if (wasOpen) {
                     wrap.classList.remove('is-open');
@@ -475,17 +417,11 @@ const Toolbox = (() => {
             }
 
             if (canHover) {
-                wrap.addEventListener('mouseenter', () => {
-                    if (getNavLayout() === 'sidebar') return;
-                    openThis();
-                });
-                wrap.addEventListener('mouseleave', () => {
-                    if (getNavLayout() === 'sidebar') return;
-                    scheduleMegaMenuClose();
-                });
+                wrap.addEventListener('mouseenter', openThis);
+                wrap.addEventListener('mouseleave', scheduleMegaMenuClose);
+            } else {
+                trigger.addEventListener('click', toggleClick);
             }
-
-            trigger.addEventListener('click', toggleClick);
 
             wrap.appendChild(trigger);
             wrap.appendChild(panel);
@@ -972,23 +908,6 @@ const Toolbox = (() => {
         setTheme(next);
     }
 
-    /* ===== 네비게이션 레이아웃 ===== */
-    const NAV_LAYOUT_KEY = 'toolbox_nav_layout';
-    const NAV_LAYOUT_HEADER = 'header';
-    const NAV_LAYOUT_SIDEBAR = 'sidebar';
-
-    function getNavLayout() {
-        const saved = localStorage.getItem(NAV_LAYOUT_KEY);
-        return saved === NAV_LAYOUT_SIDEBAR ? NAV_LAYOUT_SIDEBAR : NAV_LAYOUT_HEADER;
-    }
-
-    function setNavLayout(layout) {
-        const next = layout === NAV_LAYOUT_SIDEBAR ? NAV_LAYOUT_SIDEBAR : NAV_LAYOUT_HEADER;
-        document.documentElement.setAttribute('data-nav-layout', next);
-        localStorage.setItem(NAV_LAYOUT_KEY, next);
-        closeAllHeaderNav();
-    }
-
     /* ===== 배경 테마 (mesh/gradient) ===== */
     const BG_THEME_KEY = 'toolbox_bg_theme';
     const BG_THEMES = [
@@ -1207,7 +1126,6 @@ const Toolbox = (() => {
     return {
         register, registerDeferred, init, initTheme, switchPage, switchTab, getTools,
         isDesktopApp,
-        isDesktopDebugBuild,
         kickLazyLoad, getLazyWidgetPublicMeta,
         showToast, displayResult, copyResult, toggleCollapsible,
         field, resultBox, button, select,
@@ -1216,7 +1134,6 @@ const Toolbox = (() => {
         getPref, setPref,
         getNavLayout, setNavLayout,
         getTheme, setTheme, toggleTheme,
-        getNavLayout, setNavLayout,
         getBgTheme, setBgTheme, getBgThemes,
         getPrismTheme, setPrismTheme, getPrismThemes: () => [...PRISM_THEMES],
         getUserData, getStreaks, getProgress, setProgress, incrementProgress,
