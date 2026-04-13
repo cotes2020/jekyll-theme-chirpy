@@ -337,31 +337,41 @@ export class MemoryService {
 
   // ── 컨텍스트 빌드 ─────────────────────────────────────────────────────────
 
-  buildContext(): string {
-    const parts: string[] = [];
+  buildContext(maxChars = 8000): string {
+    // 반드시 포함 (핵심 프로필)
+    const fixed: string[] = [];
 
     const userMd = this._read(path.join(this.memoryDir, 'user.md'));
-    if (userMd) parts.push(`[나에 대한 정보]\n${userMd}`);
+    if (userMd) fixed.push(`[나에 대한 정보]\n${userMd}`);
 
     const selfMd = this._read(path.join(this.memoryDir, 'self.md'));
-    if (selfMd) parts.push(`[봇 자신에 대한 정보]\n${selfMd}`);
+    if (selfMd) fixed.push(`[봇 자신에 대한 정보]\n${selfMd}`);
 
-    // 주간 요약: 이번 주 or 지난 주
-    const weeklyDir = path.join(this.memoryDir, 'weekly');
-    const latestWeekly = this._latestFile(weeklyDir);
-    if (latestWeekly) parts.push(`[최근 주간 요약]\n${latestWeekly}`);
+    // 선택적 포함 (최신 → 오래된 순으로 우선순위)
+    const optional: string[] = [];
 
-    // 어제 일간 요약
+    const todayLog = this._read(path.join(this.logsDir, `${kstDateStr()}.md`));
+    if (todayLog) optional.push(`[오늘 대화 기록]\n${todayLog}`);
+
     const yesterdaySummary = this._read(
       path.join(this.memoryDir, 'daily', `${kstDateStr(daysAgo(1))}.md`),
     );
-    if (yesterdaySummary) parts.push(`[어제 요약]\n${yesterdaySummary}`);
+    if (yesterdaySummary) optional.push(`[어제 요약]\n${yesterdaySummary}`);
 
-    // 오늘 전체 로그
-    const todayLog = this._read(path.join(this.logsDir, `${kstDateStr()}.md`));
-    if (todayLog) parts.push(`[오늘 대화 기록]\n${todayLog}`);
+    const weeklyDir = path.join(this.memoryDir, 'weekly');
+    const latestWeekly = this._latestFile(weeklyDir);
+    if (latestWeekly) optional.push(`[최근 주간 요약]\n${latestWeekly}`);
 
-    return parts.join('\n\n');
+    // 합치기: fixed는 무조건 포함, optional은 길이 여유 있을 때만
+    let result = fixed.join('\n\n');
+    for (const part of optional) {
+      const candidate = result ? result + '\n\n' + part : part;
+      if (candidate.length <= maxChars) {
+        result = candidate;
+      }
+    }
+
+    return result;
   }
 
   private _read(filePath: string): string {

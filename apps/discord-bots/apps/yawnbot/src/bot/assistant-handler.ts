@@ -49,19 +49,11 @@ function buildFullPrompt(
   userMessage: string,
 ): string {
   const system = buildSystemPrompt(channelType);
-  const context = memory.buildContext();
+  const budget = MAX_PROMPT_CHARS - system.length - userMessage.length - 50;
+  const context = memory.buildContext(Math.max(2000, budget)); // 최소 2000자는 context 할당
 
   const contextBlock = context ? `\n\n${context}` : '';
-  let full = `${system}${contextBlock}\n\n나: ${userMessage}`;
-
-  if (full.length > MAX_PROMPT_CHARS) {
-    // 시스템 프롬프트는 보존, 컨텍스트 앞부분을 잘라냄
-    const budget = MAX_PROMPT_CHARS - system.length - userMessage.length - 50;
-    const trimmedContext = budget > 0 ? context.slice(-budget) : '';
-    full = `${system}\n\n${trimmedContext}\n\n나: ${userMessage}`;
-  }
-
-  return full;
+  return `${system}${contextBlock}\n\n나: ${userMessage}`;
 }
 
 function friendlyError(err: unknown): string {

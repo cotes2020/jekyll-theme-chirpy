@@ -176,6 +176,37 @@ export async function dispatchSlashCommand(ctx, interaction) {
         }
         break;
       }
+      case '기억수정': {
+        const memory = ctx.memory;
+        if (!memory) {
+          await interaction.reply({ content: 'MEMO_REPO_PATH가 설정되지 않아 기억 기능이 비활성화되어 있습니다.', flags: MessageFlags.Ephemeral });
+          break;
+        }
+        const content = interaction.options.getString('내용');
+        if (!content) {
+          await interaction.reply({ content: '내용을 입력해주세요.', flags: MessageFlags.Ephemeral });
+          break;
+        }
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+        try {
+          const { generateAssistantText } = await import('karmolab-ai/node');
+          const currentUserMd = memory.buildContext(10000).match(/\[나에 대한 정보\]([\s\S]*?)(?=\[|$)/)?.[1] || '(기존 정보 없음)';
+          const { text: updatedUserMd } = await generateAssistantText(
+            process.env,
+            `너는 mascari4615의 개인 AI 비서야.\n다음은 현재 user.md의 내용이야:\n${currentUserMd}\n\n사용자가 요청한 수정 사항:\n${content}\n\n이를 반영해서 업데이트된 user.md 내용을 마크다운 형식으로 작성해줘. 기존 정보는 유지하면서 새로운 정보를 추가/수정해.`,
+          );
+          memory.appendHotMemory(`[기억수정] ${content.slice(0, 50)}`);
+          // user.md 파일 직접 업데이트
+          const path = await import('path');
+          const fs = await import('fs');
+          const userMdPath = path.default.join((memory as any).memoryDir, 'user.md');
+          fs.default.writeFileSync(userMdPath, `# 나에 대한 정보\n\n${updatedUserMd.trim()}\n`, 'utf-8');
+          await interaction.editReply(`✅ user.md를 업데이트했습니다.\n\n수정 내용: ${content}`);
+        } catch (e) {
+          await interaction.editReply(`수정 실패: ${e instanceof Error ? e.message : String(e)}`);
+        }
+        break;
+      }
       default:
         await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }
