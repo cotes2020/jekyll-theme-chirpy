@@ -12,7 +12,7 @@
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { generateBlobTextFromEnvWithOptions } from 'karmolab-ai/node';
+import { generateAssistantText } from 'karmolab-ai/node';
 
 export interface ConversationEntry {
   timestamp: string;
@@ -146,11 +146,10 @@ export class MemoryService {
       if (!log) return;
 
       console.log(`[Memory] ${yesterday} 일간 요약 생성 중...`);
-      const { text } = await generateBlobTextFromEnvWithOptions(
+      const { text } = await generateAssistantText(
         process.env,
         `다음은 ${yesterday}의 대화 기록이야. 핵심 내용을 간결하게 요약해줘. ` +
           `어떤 주제로 대화했는지, 중요한 정보나 감정, 결정된 것들 위주로:\n\n${log.slice(0, 8000)}`,
-        { surface: 'inherit' },
       );
 
       fs.writeFileSync(summaryPath, `# ${yesterday} 일간 요약\n\n${text.trim()}\n`, 'utf-8');
@@ -181,13 +180,12 @@ export class MemoryService {
 
     try {
       console.log(`[Memory] ${weekKey} 주간 요약 생성 중...`);
-      const { text } = await generateBlobTextFromEnvWithOptions(
+      const { text } = await generateAssistantText(
         process.env,
         `다음은 ${weekKey} 한 주간의 일별 대화 요약이야. ` +
           `일주일 전체를 아우르는 주간 요약을 만들어줘. ` +
           `반복된 주제, 중요한 변화, 감정 흐름, 결정된 것들 위주로:\n\n` +
           dailies.join('\n\n---\n\n').slice(0, 10000),
-        { surface: 'inherit' },
       );
 
       fs.writeFileSync(summaryPath, `# ${weekKey} 주간 요약\n\n${text.trim()}\n`, 'utf-8');

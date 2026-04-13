@@ -53,3 +53,27 @@ export declare function generateBlobTextFromEnvWithOptions(env: NodeJS.ProcessEn
 export declare function tryCreateGenerativeTextFromEnv(env?: NodeJS.ProcessEnv): GenerativeTextClient | null;
 /** `tryCreateGenerativeTextFromEnv`가 `null`일 때 안내용 */
 export declare function generativeEnvHint(env?: NodeJS.ProcessEnv): string;
+/**
+ * 로컬에 설치된 `claude` CLI (`claude --print`)로 텍스트 생성.
+ * Claude Max 구독으로 인증된 환경에서 API 키 없이 사용 가능.
+ *
+ * 환경 변수:
+ *   CLAUDE_CLI_COMMAND  : CLI 실행 파일 이름 (기본: claude)
+ *   CLAUDE_CLI_TIMEOUT_MS : 타임아웃 ms (기본: 60000)
+ */
+export declare function generateClaudeCliText(opts: {
+    prompt: string;
+    timeoutMs?: number;
+}): Promise<string>;
+export type AssistantAiProvider = 'gemini' | 'claude-cli';
+export declare function resolveAssistantProvider(env?: NodeJS.ProcessEnv): AssistantAiProvider;
+/**
+ * ASSISTANT_AI_PROVIDER 에 따라 Gemini 또는 Claude CLI로 텍스트 생성.
+ * assistant-handler, memory-service 등에서 공통으로 사용.
+ */
+export declare function generateAssistantText(env: NodeJS.ProcessEnv, prompt: string, opts?: {
+    timeoutMs?: number;
+}): Promise<{
+    text: string;
+    provider: AssistantAiProvider;
+}>;

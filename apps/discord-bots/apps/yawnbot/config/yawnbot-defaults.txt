@@ -82,6 +82,12 @@ KAKAO_EXPORT_SKIP_WINDOW_TITLES=카카오톡|KakaoTalk
 WEBHOOK_PORT=8080
 
 # ── AI 비서 ──
+# AI 프로바이더: gemini (기본) 또는 claude-cli (로컬 Claude Code 사용)
+ASSISTANT_AI_PROVIDER=gemini
+# Claude CLI 실행 파일 이름 (PATH에 있어야 함, claude-cli 프로바이더 사용 시)
+CLAUDE_CLI_COMMAND=claude
+# Claude CLI 타임아웃 (ms)
+CLAUDE_CLI_TIMEOUT_MS=60000
 # memo 레포 로컬 경로
 MEMO_REPO_PATH=C:/Users/masca/repos/karmoddrine/memo
 # 아침 인사 시각 (KST 시 단위, 0-23)

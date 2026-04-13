@@ -222,3 +222,89 @@ export function generativeEnvHint(env: NodeJS.ProcessEnv = process.env): string 
   }
   return 'AI Studio 모드: .env에 GEMINI_API_KEY 가 필요합니다. (선택: GEMINI_MODEL, 또는 KARMOLAB_AI_SURFACE=vertex 로 전환)';
 }
+
+// ─── Claude CLI 프로바이더 ─────────────────────────────────────────────────
+
+import { spawn } from 'child_process';
+
+/**
+ * 로컬에 설치된 `claude` CLI (`claude --print`)로 텍스트 생성.
+ * Claude Max 구독으로 인증된 환경에서 API 키 없이 사용 가능.
+ *
+ * 환경 변수:
+ *   CLAUDE_CLI_COMMAND  : CLI 실행 파일 이름 (기본: claude)
+ *   CLAUDE_CLI_TIMEOUT_MS : 타임아웃 ms (기본: 60000)
+ */
+export async function generateClaudeCliText(opts: {
+  prompt: string;
+  timeoutMs?: number;
+}): Promise<string> {
+  const cmd = process.env.CLAUDE_CLI_COMMAND?.trim() || 'claude';
+  const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
+
+  return new Promise<string>((resolve, reject) => {
+    // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
+    const child = spawn(cmd, ['--print'], {
+      stdio: ['pipe', 'pipe', 'pipe'],
+      windowsHide: true,
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    child.stdout.on('data', (data: Buffer) => { stdout += data.toString(); });
+    child.stderr.on('data', (data: Buffer) => { stderr += data.toString(); });
+
+    const timer = setTimeout(() => {
+      child.kill();
+      reject(new Error(`Claude CLI 타임아웃 (${timeout}ms)`));
+    }, timeout);
+
+    child.on('close', (code: number | null) => {
+      clearTimeout(timer);
+      if (code === 0 && stdout.trim()) {
+        resolve(stdout.trim());
+      } else {
+        reject(new Error(`Claude CLI 종료 코드 ${code}: ${stderr.slice(0, 400)}`));
+      }
+    });
+
+    child.on('error', (err: Error) => {
+      clearTimeout(timer);
+      reject(new Error(`Claude CLI 실행 실패: ${err.message} (PATH에 '${cmd}'이 있는지 확인)`));
+    });
+
+    child.stdin.write(opts.prompt);
+    child.stdin.end();
+  });
+}
+
+// ─── 통합 프로바이더 (ASSISTANT_AI_PROVIDER 로 선택) ────────────────────────
+
+export type AssistantAiProvider = 'gemini' | 'claude-cli';
+
+export function resolveAssistantProvider(env: NodeJS.ProcessEnv = process.env): AssistantAiProvider {
+  const raw = (env.ASSISTANT_AI_PROVIDER ?? '').trim().toLowerCase();
+  if (raw === 'claude-cli' || raw === 'claude') return 'claude-cli';
+  return 'gemini';
+}
+
+/**
+ * ASSISTANT_AI_PROVIDER 에 따라 Gemini 또는 Claude CLI로 텍스트 생성.
+ * assistant-handler, memory-service 등에서 공통으로 사용.
+ */
+export async function generateAssistantText(
+  env: NodeJS.ProcessEnv,
+  prompt: string,
+  opts: { timeoutMs?: number } = {},
+): Promise<{ text: string; provider: AssistantAiProvider }> {
+  const provider = resolveAssistantProvider(env);
+
+  if (provider === 'claude-cli') {
+    const text = await generateClaudeCliText({ prompt, timeoutMs: opts.timeoutMs });
+    return { text, provider: 'claude-cli' };
+  }
+
+  const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'inherit' });
+  return { text, provider: 'gemini' };
+}

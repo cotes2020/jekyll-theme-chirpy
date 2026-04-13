@@ -8,6 +8,9 @@ exports.parseGenerativeSurfaceFromEnv = parseGenerativeSurfaceFromEnv;
 exports.generateBlobTextFromEnvWithOptions = generateBlobTextFromEnvWithOptions;
 exports.tryCreateGenerativeTextFromEnv = tryCreateGenerativeTextFromEnv;
 exports.generativeEnvHint = generativeEnvHint;
+exports.generateClaudeCliText = generateClaudeCliText;
+exports.resolveAssistantProvider = resolveAssistantProvider;
+exports.generateAssistantText = generateAssistantText;
 /**
  * Node 전용: AI Studio(`@google/generative-ai`) 또는 Vertex REST(`fetch`)로 텍스트 생성.
  * 브라우저 번들에 포함하지 말 것 — `import 'karmolab-ai/node'`.
@@ -168,4 +171,67 @@ function generativeEnvHint(env = process.env) {
         return 'Vertex 모드: .env에 VERTEX_API_KEY, VERTEX_PROJECT_ID 가 필요합니다. (선택: VERTEX_LOCATION, GEMINI_MODEL)';
     }
     return 'AI Studio 모드: .env에 GEMINI_API_KEY 가 필요합니다. (선택: GEMINI_MODEL, 또는 KARMOLAB_AI_SURFACE=vertex 로 전환)';
+}
+// ─── Claude CLI 프로바이더 ─────────────────────────────────────────────────
+const child_process_1 = require("child_process");
+/**
+ * 로컬에 설치된 `claude` CLI (`claude --print`)로 텍스트 생성.
+ * Claude Max 구독으로 인증된 환경에서 API 키 없이 사용 가능.
+ *
+ * 환경 변수:
+ *   CLAUDE_CLI_COMMAND  : CLI 실행 파일 이름 (기본: claude)
+ *   CLAUDE_CLI_TIMEOUT_MS : 타임아웃 ms (기본: 60000)
+ */
+async function generateClaudeCliText(opts) {
+    const cmd = process.env.CLAUDE_CLI_COMMAND?.trim() || 'claude';
+    const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
+    return new Promise((resolve, reject) => {
+        // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
+        const child = (0, child_process_1.spawn)(cmd, ['--print'], {
+            stdio: ['pipe', 'pipe', 'pipe'],
+            windowsHide: true,
+        });
+        let stdout = '';
+        let stderr = '';
+        child.stdout.on('data', (data) => { stdout += data.toString(); });
+        child.stderr.on('data', (data) => { stderr += data.toString(); });
+        const timer = setTimeout(() => {
+            child.kill();
+            reject(new Error(`Claude CLI 타임아웃 (${timeout}ms)`));
+        }, timeout);
+        child.on('close', (code) => {
+            clearTimeout(timer);
+            if (code === 0 && stdout.trim()) {
+                resolve(stdout.trim());
+            }
+            else {
+                reject(new Error(`Claude CLI 종료 코드 ${code}: ${stderr.slice(0, 400)}`));
+            }
+        });
+        child.on('error', (err) => {
+            clearTimeout(timer);
+            reject(new Error(`Claude CLI 실행 실패: ${err.message} (PATH에 '${cmd}'이 있는지 확인)`));
+        });
+        child.stdin.write(opts.prompt);
+        child.stdin.end();
+    });
+}
+function resolveAssistantProvider(env = process.env) {
+    const raw = (env.ASSISTANT_AI_PROVIDER ?? '').trim().toLowerCase();
+    if (raw === 'claude-cli' || raw === 'claude')
+        return 'claude-cli';
+    return 'gemini';
+}
+/**
+ * ASSISTANT_AI_PROVIDER 에 따라 Gemini 또는 Claude CLI로 텍스트 생성.
+ * assistant-handler, memory-service 등에서 공통으로 사용.
+ */
+async function generateAssistantText(env, prompt, opts = {}) {
+    const provider = resolveAssistantProvider(env);
+    if (provider === 'claude-cli') {
+        const text = await generateClaudeCliText({ prompt, timeoutMs: opts.timeoutMs });
+        return { text, provider: 'claude-cli' };
+    }
+    const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'inherit' });
+    return { text, provider: 'gemini' };
 }

@@ -3,7 +3,7 @@
  * - 매일 아침 ASSISTANT_MORNING_HOUR 시 (KST) DM으로 인사
  */
 import type { Client, DMChannel } from 'discord.js';
-import { generateBlobTextFromEnvWithOptions } from 'karmolab-ai/node';
+import { generateAssistantText } from 'karmolab-ai/node';
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -48,9 +48,7 @@ async function sendMorningGreeting(client: Client): Promise<void> {
       `날짜와 요일을 자연스럽게 언급하고, 오늘 하루도 잘 보내길 바란다는 마음을 담아줘.\n` +
       `2-3문장 이내로.`;
 
-    const { text } = await generateBlobTextFromEnvWithOptions(process.env, prompt, {
-      surface: 'inherit',
-    });
+    const { text } = await generateAssistantText(process.env, prompt);
 
     await dmChannel.send(text.slice(0, 1900));
     console.log('[Proactive] 아침 인사 전송 완료');

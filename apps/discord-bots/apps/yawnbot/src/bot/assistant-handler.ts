@@ -5,7 +5,7 @@
  * - 메시지는 logs/에 즉시 기록 (손실 없음)
  */
 import { Message, DMChannel, TextChannel } from 'discord.js';
-import { generateBlobTextFromEnvWithOptions } from 'karmolab-ai/node';
+import { generateAssistantText } from 'karmolab-ai/node';
 import type { MemoryService, ConversationEntry } from '../services/memory-service';
 
 const MAX_RESPONSE_LENGTH = 1900;
@@ -79,7 +79,8 @@ export async function handleAssistantMessage(
   const userContent = message.content.trim();
   if (!userContent) return;
 
-  if (!process.env.GEMINI_API_KEY?.trim()) {
+  const provider = (process.env.ASSISTANT_AI_PROVIDER || 'gemini').toLowerCase();
+  if (provider !== 'claude-cli' && !process.env.GEMINI_API_KEY?.trim()) {
     await message.reply('GEMINI_API_KEY가 설정되지 않아서 대화할 수 없어요.');
     return;
   }
@@ -108,11 +109,7 @@ export async function handleAssistantMessage(
   const fullPrompt = buildFullPrompt(memory, channelType, userContent);
 
   try {
-    const { text: response } = await generateBlobTextFromEnvWithOptions(
-      process.env,
-      fullPrompt,
-      { surface: 'inherit' },
-    );
+    const { text: response } = await generateAssistantText(process.env, fullPrompt);
 
     const reply = response.trim().slice(0, MAX_RESPONSE_LENGTH);
 
