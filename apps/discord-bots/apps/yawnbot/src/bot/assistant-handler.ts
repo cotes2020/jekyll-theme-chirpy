@@ -145,12 +145,42 @@ export async function handleAssistantMessage(
 
   try {
     const aiStartTime = Date.now();
-    console.log(`[Assistant] AI 호출 시작 (${provider})...`);
-    const { text: response } = await generateAssistantText(process.env, fullPrompt);
-    const aiDuration = Date.now() - aiStartTime;
-    console.log(
-      `[Assistant] AI 응답 수신 (${aiDuration}ms): ${response.length}자 -> 응답 중...`,
-    );
+    let response: string | null = null;
+    let lastError: Error | null = null;
+
+    // 재시도 로직: 최대 2회 시도 (총 3회)
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        console.log(`[Assistant] AI 호출 시작 (${provider}, 시도 ${attempt}/3, 타임아웃 20초)...`);
+        const { text } = await generateAssistantText(process.env, fullPrompt, {
+          timeoutMs: 20000, // 20초
+        });
+        response = text;
+        const aiDuration = Date.now() - aiStartTime;
+        console.log(
+          `[Assistant] AI 응답 수신 (${aiDuration}ms, 시도 ${attempt}/3): ${response.length}자 -> 응답 중...`,
+        );
+        break; // 성공하면 루프 탈출
+      } catch (e: unknown) {
+        lastError = e instanceof Error ? e : new Error(String(e));
+        const attemptDuration = Date.now() - aiStartTime;
+        console.warn(
+          `[Assistant] 시도 ${attempt}/3 실패 (${attemptDuration}ms): ${lastError.message}`,
+        );
+
+        if (attempt < 3) {
+          const waitMs = Math.min(1000 * attempt, 3000); // 1s, 2s, 3s
+          console.log(`[Assistant] ${waitMs}ms 후 재시도...`);
+          await new Promise((resolve) => setTimeout(resolve, waitMs));
+        }
+      }
+    }
+
+    if (!response) {
+      throw (
+        lastError || new Error('[Assistant] 최대 재시도 횟수 초과 (응답 없음)')
+      );
+    }
 
     const reply = response.trim().slice(0, MAX_RESPONSE_LENGTH);
 
