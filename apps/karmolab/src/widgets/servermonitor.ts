@@ -13,6 +13,8 @@
     npmInstall?: boolean;
     /** `npm` + these args in profile `cwd` (e.g. Discord slash deploy) */
     deployArgs?: string[];
+    /** 데스크톱 Windows: 시작 시 콘솔 창·로그 표시(기본은 숨김) */
+    showConsole?: boolean;
   };
 
   type RawLocalMonitor = {
@@ -71,6 +73,22 @@
   function normalizeLocaldevTrackedIds(raw: unknown): string[] {
     if (!Array.isArray(raw)) return [];
     return raw.filter((x): x is string => typeof x === 'string');
+  }
+
+  /** Tauri `invoke` 거부 값이 `Error`가 아닐 때 메시지 추출 */
+  function tauriInvokeErrorMessage(e: unknown): string {
+    if (e instanceof Error) return e.message;
+    if (typeof e === 'string') return e;
+    if (e && typeof e === 'object') {
+      const o = e as Record<string, unknown>;
+      if (typeof o.message === 'string') return o.message;
+      if (typeof o.error === 'string') return o.error;
+    }
+    try {
+      return JSON.stringify(e);
+    } catch {
+      return String(e);
+    }
   }
 
   function normalizeLocalMonitor(m: RawLocalMonitor): {
@@ -449,7 +467,7 @@
         const msg = (await inv(cmd, { profileId })) as string;
         Toolbox.showToast?.(msg || okFallback, undefined, undefined);
       } catch (e: unknown) {
-        Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+        Toolbox.showToast?.(tauriInvokeErrorMessage(e), 'error', undefined);
       } finally {
         unLog?.();
         unDone?.();
@@ -596,36 +614,61 @@
           const actions = document.createElement('div');
           actions.className = 'sm-card-actions';
 
-          actions.appendChild(
-            mkBtn('시작', () => {
-              void (async () => {
-                if (typeof invoke !== 'function') return;
-                try {
-                  await invoke('localdev_start', { profileId: p.id });
-                  Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
-                  await renderMergedServices();
-                  await refreshTrackLabelsFromRust();
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-                }
-              })();
-            })
-          );
-          actions.appendChild(
-            mkBtn('종료', () => {
-              void (async () => {
-                if (typeof invoke !== 'function') return;
-                try {
-                  await invoke('localdev_stop', { profileId: p.id });
-                  Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
-                  await renderMergedServices();
-                  await refreshTrackLabelsFromRust();
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-                }
-              })();
-            })
-          );
+          const btnStart = mkBtn('시작', () => {
+            void (async () => {
+              if (typeof invoke !== 'function') {
+                Toolbox.showToast?.(
+                  '「시작」은 KarmoLab 데스크톱(Tauri) 앱에서만 동작합니다. 브라우저만 연 경우 버튼이 아무 일도 하지 않습니다.',
+                  'error',
+                  undefined
+                );
+                return;
+              }
+              btnStart.disabled = true;
+              try {
+                await invoke('localdev_start', { profileId: p.id });
+                Toolbox.showToast?.(
+                  p.showConsole
+                    ? `${p.label} 시작됨 — 콘솔 창에서 로그를 확인하세요.`
+                    : `${p.label} 시작됨 (백그라운드)`,
+                  undefined,
+                  undefined
+                );
+                await renderMergedServices();
+                await refreshTrackLabelsFromRust();
+              } catch (e: unknown) {
+                Toolbox.showToast?.(tauriInvokeErrorMessage(e), 'error', undefined);
+              } finally {
+                btnStart.disabled = false;
+              }
+            })();
+          });
+          actions.appendChild(btnStart);
+
+          const btnStop = mkBtn('종료', () => {
+            void (async () => {
+              if (typeof invoke !== 'function') {
+                Toolbox.showToast?.(
+                  '「종료」는 KarmoLab 데스크톱 앱에서만 동작합니다.',
+                  'error',
+                  undefined
+                );
+                return;
+              }
+              btnStop.disabled = true;
+              try {
+                await invoke('localdev_stop', { profileId: p.id });
+                Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
+                await renderMergedServices();
+                await refreshTrackLabelsFromRust();
+              } catch (e: unknown) {
+                Toolbox.showToast?.(tauriInvokeErrorMessage(e), 'error', undefined);
+              } finally {
+                btnStop.disabled = false;
+              }
+            })();
+          });
+          actions.appendChild(btnStop);
 
           if (p.npmInstall) {
             const btnInstall = mkBtn('npm i', () => {
@@ -831,7 +874,35 @@
             .sm-card--dev { min-height: auto; }
             .sm-card-head { margin-bottom: 10px; }
             .sm-card-track { font-size: var(--font-size-2xs); color: var(--text-secondary); margin-top: 6px; }
-            .sm-card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+            /* ghost 단추는 카드 배경과 묻히기 쉬움 + ping 플래시 등 위에 확실히 클릭 가능하도록 */
+            .sm-card-actions {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin-top: 8px;
+              position: relative;
+              z-index: 2;
+              flex-shrink: 0;
+              pointer-events: auto;
+            }
+            .sm-card-actions .btn.btn-ghost {
+              border: 1px solid var(--border);
+              border-radius: var(--radius-sm);
+              background: var(--bg-tertiary, rgba(148, 163, 184, 0.12));
+              color: var(--text-primary);
+              min-height: 32px;
+              padding: 6px 12px;
+              font-weight: 600;
+            }
+            .sm-card-actions .btn.btn-ghost:hover:not(:disabled) {
+              border-color: var(--accent);
+              color: var(--accent);
+              background: var(--accent-subtle);
+            }
+            .sm-card-actions .btn.btn-ghost:disabled {
+              opacity: 0.45;
+              cursor: not-allowed;
+            }
             .sm-env-section { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
             .sm-env-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
             .sm-card--env { min-height: auto; }

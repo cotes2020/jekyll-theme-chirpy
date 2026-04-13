@@ -1,0 +1,30 @@
+---
+description: Guidelines for minimizing token costs when using Google AI models for internal AI agent use.
+globs:
+  - apps/karmolab/js/gemini.js
+  - apps/karmolab/src/**/*.ts # AI related source code files
+alwaysApply: true
+---
+
+# Token Cost Minimization Guidelines
+
+## Overview
+This guideline provides methods for efficiently managing and optimizing token costs when using Google AI models.
+
+## Detailed Guidelines
+
+*   **Prompt Optimization**:
+    *   **Remove Unnecessary Information**: Eliminate irrelevant words, sentences, and background information from prompts to the model.
+    *   **Concise and Clear Instructions**: Provide clear and concise instructions for the model to perform tasks, reducing ambiguity.
+    *   **Use Examples**: Where necessary, provide a few examples to help the model understand the desired response format.
+*   **Input Length Limitation**:
+    *   **Consider Model's Max Tokens**: Limit the input text length to avoid exceeding the maximum token count of the model being used.
+    *   **Condense Long Texts**: Summarize long documents or extract only necessary parts for use.
+*   **Response Length Control**:
+    *   **Utilize `maxOutputTokens` Parameter**: Explicitly set the maximum length of model responses to prevent unnecessarily long outputs.
+*   **Streaming Usage**:
+    *   **Process Partial Responses in Real-time**: Process partial responses as the model generates them to improve user experience and, if necessary, terminate early to save tokens.
+*   **Caching Strategy**:
+    *   **Cache Responses for Repeated Requests**: For repeated or similar prompts, cache and reuse previously generated responses to reduce unnecessary API calls and save token costs.
+*   **Appropriate Model Selection**:
+    *   **Choose the Minimum Spec Model for the Task**: It's not always necessary to use the most powerful model for every task. Prioritize cost-effective models like `gemini-2.5-flash` based on task complexity and requirements.

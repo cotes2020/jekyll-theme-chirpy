@@ -35,18 +35,48 @@ permalink: /karmolab/
     <link id="prism-css" rel="stylesheet" href="/apps/karmolab/js/vendor/prism/themes-cdn/prism-tomorrow.min.css">
     <script>
 (function(){
+    function scrubTopText() {
+        function clean(parent) {
+            if (!parent || !parent.childNodes) return;
+            var list = Array.prototype.slice.call(parent.childNodes);
+            for (var i = 0; i < list.length; i++) {
+                var n = list[i];
+                if (n.nodeType !== 3) continue;
+                var t = (n.nodeValue || '').trim();
+                if (!t) {
+                    parent.removeChild(n);
+                    continue;
+                }
+                if (
+                    t.indexOf('layout:') !== -1 ||
+                    t.indexOf('permalink:') !== -1 ||
+                    t.indexOf('jekyll.environment') !== -1 ||
+                    t.indexOf('{%') !== -1 ||
+                    t.indexOf('%}') !== -1 ||
+                    t === '---'
+                ) {
+                    parent.removeChild(n);
+                }
+            }
+        }
+        clean(document.documentElement);
+        clean(document.body);
+    }
+
   var t=localStorage.getItem('toolbox_theme')||'dark';
   var bg=localStorage.getItem('toolbox_bg_theme')||'blue-magenta';
   var nav=localStorage.getItem('toolbox_nav_layout')||'header';
   document.documentElement.setAttribute('data-theme',t);
   document.documentElement.setAttribute('data-bg',bg);
   document.documentElement.setAttribute('data-nav',nav);
+  scrubTopText();
   var pt=localStorage.getItem('toolbox_prism_theme');
   var pb='/apps/karmolab/js/vendor/prism/themes-cdn/',pe='/apps/karmolab/js/vendor/prism/themes-ext/';
   var m={tomorrow:pb+'prism-tomorrow.min.css',okaidia:pb+'prism-okaidia.min.css',twilight:pb+'prism-twilight.min.css',prism:pb+'prism.min.css',coy:pb+'prism-coy.min.css',dracula:pe+'prism-dracula.min.css','one-dark':pe+'prism-one-dark.min.css',nord:pe+'prism-nord.min.css','material-dark':pe+'prism-material-dark.min.css','vsc-dark-plus':pe+'prism-vsc-dark-plus.min.css',ghcolors:pe+'prism-ghcolors.min.css','one-light':pe+'prism-one-light.min.css','material-light':pe+'prism-material-light.min.css'};
   var url=(pt&&m[pt])?m[pt]:(t==='light'?m.ghcolors:m.tomorrow);
   var el=document.getElementById('prism-css');
   if(el&&url)el.href=url;
+    document.addEventListener('DOMContentLoaded', scrubTopText);
 })();
     </script>
     <script src="/apps/karmolab/js/vendor/marked.min.js" defer></script>
@@ -78,6 +108,7 @@ permalink: /karmolab/
                     <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
             </div>
+            <a href="#linktree" class="sidebar-footer-link" onclick="if(typeof Toolbox!=='undefined'){Toolbox.switchPage('linktree');return false}" title="개발자 연락처 · 링크">누가 만들었나요?</a>
         </header>
         <div class="app-body">
             <aside class="sidebar" id="sidebar">
@@ -114,13 +145,10 @@ permalink: /karmolab/
     <script defer src="/apps/karmolab/js/widgets-lazy-meta.js"></script>
     <script defer src="/apps/karmolab/js/widgets-manifest.js"></script>
     <script defer src="/apps/karmolab/js/widgets-loader.js"></script>
-    {% if jekyll.environment == 'production' and site.pwa.enabled and site.pwa.cache.enabled %}
-    <!-- Chirpy SW는 루트(/sw.min.js)에 있으나 layout:none 페이지는 app.min.js를 쓰지 않아 등록되지 않았음 → 방문 시 동일 출처·허용 URL을 런타임 캐시(오프라인/앱용). -->
     <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('{{ "/sw.min.js" | relative_url }}').catch(function () {});
+            navigator.serviceWorker.register('/sw.min.js').catch(function () {});
     }
     </script>
-    {% endif %}
 </body>
 </html>

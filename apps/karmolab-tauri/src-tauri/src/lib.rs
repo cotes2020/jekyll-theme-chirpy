@@ -1,4 +1,5 @@
 mod local_dev;
+mod origin_pref;
 mod repo_file;
 
 use local_dev::{
@@ -7,7 +8,7 @@ use local_dev::{
     localdev_stop, LocalDevState,
 };
 use repo_file::{repofile_open_default, repofile_read, repofile_reveal, repofile_write};
-use tauri::menu::{Menu, MenuItem};
+use tauri::menu::{Menu, MenuItem, PredefinedMenuItem};
 use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
 use tauri::tray::{MouseButton, TrayIconEvent};
@@ -56,9 +57,15 @@ fn spawn_tray_update_check(handle: tauri::AppHandle) {
     });
 }
 
-/// 데스크톱 앱 플래그만 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
+/// 데스크톱 플래그 + 빌드 종류(`debug` | `release`) 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용.
+#[cfg(debug_assertions)]
 fn karmolab_desktop_init_script() -> &'static str {
-    r#"window.__KARMOLAB_DESKTOP__=!0;window.__karmolabSetNotifyInvokeDebug=function(){};"#
+    r#"window.__KARMOLAB_DESKTOP__=!0;window.__KARMOLAB_DESKTOP_BUILD__="debug";window.__karmolabSetNotifyInvokeDebug=function(){};"#
+}
+
+#[cfg(not(debug_assertions))]
+fn karmolab_desktop_init_script() -> &'static str {
+    r#"window.__KARMOLAB_DESKTOP__=!0;window.__KARMOLAB_DESKTOP_BUILD__="release";window.__karmolabSetNotifyInvokeDebug=function(){};"#
 }
 
 fn allow_in_webview(url: &Url) -> bool {
@@ -70,7 +77,7 @@ fn allow_in_webview(url: &Url) -> bool {
             if host == "mascari4615.github.io" {
                 return true;
             }
-            if cfg!(debug_assertions) && (host == "localhost" || host == "127.0.0.1") {
+            if host == "localhost" || host == "127.0.0.1" {
                 return true;
             }
             false
@@ -228,6 +235,10 @@ pub fn run() {
                 })
                 .build()?;
 
+            if let Err(e) = origin_pref::apply_if_needed(app.handle(), &main_window) {
+                eprintln!("[KarmoLab] 저장된 페이지 주소 적용 실패: {}", e);
+            }
+
             main_window.on_window_event(move |event| {
                 if let WindowEvent::CloseRequested { api, .. } = event {
                     api.prevent_close();
@@ -243,10 +254,38 @@ pub fn run() {
                     MenuItem::with_id(app, "tray_show", "KarmoLab 창 보이기", true, None::<&str>)?;
                 let browser_i =
                     MenuItem::with_id(app, "tray_browser", "브라우저에서 열기", true, None::<&str>)?;
+                let sep_addr = PredefinedMenuItem::separator(app)?;
+                let origin_remote_i = MenuItem::with_id(
+                    app,
+                    "tray_origin_remote",
+                    "페이지: 배포 (GitHub)",
+                    true,
+                    None::<&str>,
+                )?;
+                let origin_local_i = MenuItem::with_id(
+                    app,
+                    "tray_origin_local",
+                    "페이지: 로컬 (8899)",
+                    true,
+                    None::<&str>,
+                )?;
+                let sep_up = PredefinedMenuItem::separator(app)?;
                 let update_i =
                     MenuItem::with_id(app, "tray_update", "업데이트 확인…", true, None::<&str>)?;
                 let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
-                let menu = Menu::with_items(app, &[&show_i, &browser_i, &update_i, &quit_i])?;
+                let menu = Menu::with_items(
+                    app,
+                    &[
+                        &show_i,
+                        &browser_i,
+                        &sep_addr,
+                        &origin_remote_i,
+                        &origin_local_i,
+                        &sep_up,
+                        &update_i,
+                        &quit_i,
+                    ],
+                )?;
 
                 if let Some(icon) = app.default_window_icon().cloned() {
                     let _ = TrayIconBuilder::new()
@@ -262,7 +301,16 @@ pub fn run() {
                                     let _ = w.set_focus();
                                 }
                             } else if event.id == "tray_browser" {
-                                let _ = open::that(KARMOLAB_WEB_URL);
+                                let url = app
+                                    .get_webview_window("main")
+                                    .and_then(|w| w.url().ok())
+                                    .map(|u| u.to_string())
+                                    .unwrap_or_else(|| KARMOLAB_WEB_URL.to_string());
+                                let _ = open::that(url);
+                            } else if event.id == "tray_origin_remote" {
+                                origin_pref::persist_and_navigate(app, origin_pref::KarmolabOrigin::Remote);
+                            } else if event.id == "tray_origin_local" {
+                                origin_pref::persist_and_navigate(app, origin_pref::KarmolabOrigin::Local);
                             } else if event.id == "tray_update" {
                                 spawn_tray_update_check(app.clone());
                             } else if event.id == "tray_quit" {

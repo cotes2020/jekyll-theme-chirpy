@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Jekyll (루트 블로그)",
+      "runtimeExecutable": "bundle",
+      "runtimeArgs": ["exec", "jekyll", "serve", "--host", "127.0.0.1", "--port", "4000", "--livereload", "--incremental"],
+      "port": 4000
+    },
+    {
+      "name": "KarmoLab Static (Python)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8899", "--bind", "127.0.0.1"],
+      "port": 8899
+    },
+    {
+      "name": "Chat Overlay (Vite)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/chat-overlay"],
+      "port": 1420
+    },
+    {
+      "name": "KarmoLab React Src (Vite)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/karmolab-react-src"],
+      "port": 5173
+    }
+  ]
+}
