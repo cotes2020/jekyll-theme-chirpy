@@ -300,7 +300,7 @@ export async function generateClaudeCliText(opts: {
   } catch (e) {
     // 세션이 없으면 새로 생성 (--continue)
     const err = e instanceof Error ? e.message : String(e);
-    if (err.includes('not found') || err.includes('No session')) {
+    if (err.includes('not found') || err.includes('No session') || err.includes('does not match') || err.includes('not a UUID')) {
       console.log(`[Claude CLI] 기존 세션 없음, 새 세션 생성...`);
       return await runClaude(false);
     }
