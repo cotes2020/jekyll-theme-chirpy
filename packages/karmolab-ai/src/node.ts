@@ -245,10 +245,11 @@ export async function generateClaudeCliText(opts: {
   const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
 
   return new Promise<string>((resolve, reject) => {
-    // cwd가 있으면 에이전트 모드 (파일 접근 허용), 없으면 단순 텍스트 생성
+    // 세션 계속 유지: --continue 플래그로 같은 세션에서 대화 이어가기
+    // (첫 호출은 새 세션 생성, 이후는 기존 세션 계속)
     const args = opts.cwd
-      ? ['--print', '--dangerously-skip-permissions']
-      : ['--print'];
+      ? ['--print', '--continue', '--dangerously-skip-permissions']
+      : ['--print', '--continue'];
     // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
     const child = spawn(cmd, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
