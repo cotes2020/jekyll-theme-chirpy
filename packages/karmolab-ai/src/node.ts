@@ -238,15 +238,22 @@ import { spawn } from 'child_process';
 export async function generateClaudeCliText(opts: {
   prompt: string;
   timeoutMs?: number;
+  /** 에이전트 모드: cwd 지정 시 파일 읽기/편집/명령 실행 가능 */
+  cwd?: string;
 }): Promise<string> {
   const cmd = process.env.CLAUDE_CLI_COMMAND?.trim() || 'claude';
   const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
 
   return new Promise<string>((resolve, reject) => {
+    // cwd가 있으면 에이전트 모드 (파일 접근 허용), 없으면 단순 텍스트 생성
+    const args = opts.cwd
+      ? ['--print', '--dangerously-skip-permissions']
+      : ['--print'];
     // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
-    const child = spawn(cmd, ['--print'], {
+    const child = spawn(cmd, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
       windowsHide: true,
+      ...(opts.cwd ? { cwd: opts.cwd } : {}),
     });
 
     let stdout = '';
@@ -292,6 +299,9 @@ export function resolveAssistantProvider(env: NodeJS.ProcessEnv = process.env): 
 /**
  * ASSISTANT_AI_PROVIDER 에 따라 Gemini 또는 Claude CLI로 텍스트 생성.
  * assistant-handler, memory-service 등에서 공통으로 사용.
+ *
+ * claude-cli 프로바이더일 때 env.ASSISTANT_AGENT_REPO_PATH 가 설정돼 있으면
+ * 해당 경로를 cwd로 설정해 에이전트 모드(파일 읽기/편집/명령 실행)로 실행.
  */
 export async function generateAssistantText(
   env: NodeJS.ProcessEnv,
@@ -301,7 +311,8 @@ export async function generateAssistantText(
   const provider = resolveAssistantProvider(env);
 
   if (provider === 'claude-cli') {
-    const text = await generateClaudeCliText({ prompt, timeoutMs: opts.timeoutMs });
+    const cwd = env.ASSISTANT_AGENT_REPO_PATH?.trim() || undefined;
+    const text = await generateClaudeCliText({ prompt, timeoutMs: opts.timeoutMs, cwd });
     return { text, provider: 'claude-cli' };
   }
 

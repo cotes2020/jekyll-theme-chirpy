@@ -88,6 +88,9 @@ ASSISTANT_AI_PROVIDER=gemini
 CLAUDE_CLI_COMMAND=claude
 # Claude CLI 타임아웃 (ms)
 CLAUDE_CLI_TIMEOUT_MS=60000
+# 에이전트 모드에서 Claude가 접근할 작업 디렉토리. 설정 시 파일 읽기/편집/명령 실행 가능.
+# 비워두면 단순 텍스트 생성만. PC마다 다르면 .env 에 덮어쓰기.
+ASSISTANT_AGENT_REPO_PATH=C:/Users/masca/repos/karmoddrine/Mascari4615.github.io
 # memo 레포 로컬 경로
 MEMO_REPO_PATH=C:/Users/masca/repos/karmoddrine/memo
 # 아침 인사 시각 (KST 시 단위, 0-23)
