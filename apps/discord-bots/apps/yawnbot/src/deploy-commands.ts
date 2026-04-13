@@ -483,6 +483,11 @@ const commands = [
     .setName('admin-save')
     .setDescription('[관리자] 데이터를 저장합니다.')
     .setDescriptionLocalizations(enUS('[Admin] Save data to disk')),
+
+  new SlashCommandBuilder()
+    .setName('기억저장')
+    .setDescription('지금까지의 대화를 memo 레포에 즉시 커밋합니다.')
+    .setDescriptionLocalizations(enUS('Immediately commit current conversation to memo repo')),
 ].map((cmd) => cmd.toJSON());
 
 async function main(): Promise<void> {

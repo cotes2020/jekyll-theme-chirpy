@@ -80,3 +80,13 @@ KAKAO_EXPORT_SKIP_WINDOW_TITLES=카카오톡|KakaoTalk
 # ── GitHub 웹훅 HTTP 서버(욘봇 프로세스 안) ──
 # 리스닝 포트. 호스트·방화벽은 배포 환경에서 따로 설정.
 WEBHOOK_PORT=8080
+
+# ── AI 비서 ──
+# memo 레포 로컬 경로
+MEMO_REPO_PATH=C:/Users/masca/repos/karmoddrine/memo
+# 아침 인사 시각 (KST 시 단위, 0-23)
+ASSISTANT_MORNING_HOUR=8
+# 대화 기억 커밋 주기 (ms). 기본 1시간.
+ASSISTANT_MEMORY_COMMIT_INTERVAL_MS=3600000
+# AI에 전달할 최대 프롬프트 길이
+ASSISTANT_MAX_PROMPT_CHARS=12000

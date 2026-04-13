@@ -161,6 +161,21 @@ export async function dispatchSlashCommand(ctx, interaction) {
       case 'admin-save':
         await handleAdminSave(ctx, interaction, userId);
         break;
+      case '기억저장': {
+        const memory = ctx.memory;
+        if (!memory) {
+          await interaction.reply({ content: 'MEMO_REPO_PATH가 설정되지 않아 기억 기능이 비활성화되어 있습니다.', flags: MessageFlags.Ephemeral });
+          break;
+        }
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+        try {
+          memory.commitIfDirty();
+          await interaction.editReply('대화 기록을 memo 레포에 저장했습니다.');
+        } catch (e) {
+          await interaction.editReply(`저장 실패: ${e instanceof Error ? e.message : String(e)}`);
+        }
+        break;
+      }
       default:
         await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }

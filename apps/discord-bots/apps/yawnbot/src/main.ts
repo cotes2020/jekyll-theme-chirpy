@@ -7,7 +7,7 @@ import './install-console-timestamps';
 import dns from 'node:dns';
 import { generateDependencyReport } from '@discordjs/voice';
 import sodium from 'libsodium-wrappers';
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
 import { destroyAllMusicPlayers, setMusicDiscordClient, setMusicPlayFailureReporter } from './bot/music-player';
@@ -18,12 +18,15 @@ import { GameDataService } from './services/gamedata';
 import { EnhancementService } from './services/enhancement';
 import { StockService } from './services/stock';
 import { RaidService } from './services/raid';
+import { MemoryService } from './services/memory-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
 import { dispatchSlashCommand } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
+import { handleAssistantMessage } from './bot/assistant-handler';
+import { startProactive, stopProactive } from './bot/proactive';
 
 const client = new Client({
   intents: [
@@ -31,7 +34,9 @@ const client = new Client({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.DirectMessages,
   ],
+  partials: [Partials.Channel, Partials.Message],
 });
 
 setMusicPlayFailureReporter(async ({ textChannelId, title, reason }) => {
@@ -52,6 +57,9 @@ const gameData = new GameDataService();
 const enhancement = new EnhancementService(gameData);
 const stock = new StockService(gameData);
 const raid = new RaidService(gameData);
+
+const memoRepoPath = process.env.MEMO_REPO_PATH?.trim() || '';
+const memory = memoRepoPath ? new MemoryService(memoRepoPath) : null;
 
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 
@@ -78,6 +86,7 @@ function buildCtx() {
     enhancement,
     stock,
     raid,
+    memory,
     getImageAttachment,
     isAdmin,
     generativeText,
@@ -98,6 +107,9 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
+  if (memory) {
+    await handleAssistantMessage(message as any, memory);
+  }
   await handleMeme(message as any);
 });
 
@@ -125,6 +137,14 @@ client.once('clientReady', async () => {
   }
 
   startPresenceRotation(client);
+
+  if (memory) {
+    memory.initialize();
+    startProactive(client);
+    console.log('[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:', process.env.ASSISTANT_USER_ID, ')');
+  } else {
+    console.warn('[Assistant] MEMO_REPO_PATH 미설정 — AI 비서 비활성화');
+  }
 });
 
 async function main() {
@@ -179,8 +199,10 @@ process.on('SIGINT', () => {
   console.log('\n[Shutdown] 종료 중...');
   setMusicDiscordClient(null);
   stopPresenceRotation();
+  stopProactive();
   stock.stopMarket();
   gameData.destroy();
+  memory?.destroy();
   destroyAllMusicPlayers();
   destroyAllVoiceConnections();
   client.destroy();
@@ -190,8 +212,10 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
   setMusicDiscordClient(null);
   stopPresenceRotation();
+  stopProactive();
   stock.stopMarket();
   gameData.destroy();
+  memory?.destroy();
   destroyAllMusicPlayers();
   destroyAllVoiceConnections();
   client.destroy();
