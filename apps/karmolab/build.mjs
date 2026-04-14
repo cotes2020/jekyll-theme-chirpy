@@ -60,8 +60,6 @@ const entryPoints = [
   'src/widgets/imagelib.ts',
   'src/widgets/conch.ts',
   'src/widgets/postgraph.ts',
-  'src/widgets/fortune.ts',
-  'src/widgets/gacha.ts',
   'src/widgets/bounce.ts',
   'src/widgets/bubble.ts',
   'src/widgets/countdown.ts',
