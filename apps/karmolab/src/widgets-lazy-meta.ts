@@ -123,24 +123,6 @@ window.KARMOLAB_LAZY_META = [
     lazyScriptPaths: ['conch']
   },
   {
-    id: 'fortune',
-    title: '운세',
-    category: 'play',
-    desc: '오늘의 운세를 봅니다',
-    layout: 'form',
-    icon: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
-    lazyScriptPaths: ['fortune']
-  },
-  {
-    id: 'gacha',
-    title: '시뮬레이터',
-    category: 'play',
-    desc: '가챠 시뮬레이터를 돌립니다',
-    layout: 'form',
-    icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
-    lazyScriptPaths: ['gacha']
-  },
-  {
     id: 'planner',
     title: '플래너',
     category: 'lab',
