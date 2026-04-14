@@ -49,6 +49,7 @@ export async function generateVertexText(opts: {
   modelId?: string | null;
   userText: string;
   systemInstruction?: string | null;
+  safetyThreshold?: string | null;
   signal?: AbortSignal;
 }): Promise<string> {
   const model = resolveAiStudioTextModelId(opts.modelId);
@@ -67,6 +68,15 @@ export async function generateVertexText(opts: {
   const sys = opts.systemInstruction?.trim();
   if (sys) {
     body.systemInstruction = { parts: [{ text: sys }] };
+  }
+  const threshold = opts.safetyThreshold?.trim();
+  if (threshold) {
+    body.safetySettings = [
+      { category: 'HARM_CATEGORY_HARASSMENT', threshold },
+      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold },
+      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold },
+      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold },
+    ];
   }
   const res = await fetch(url, {
     method: 'POST',
@@ -162,6 +172,7 @@ export async function generateBlobTextFromEnvWithOptions(
       location,
       modelId: effectiveModelId,
       userText: blobPrompt,
+      safetyThreshold: env.VERTEX_SAFETY_THRESHOLD?.trim() || null,
       signal: options.signal,
     });
     return { text, surface: 'vertex', modelId: effectiveModelId };

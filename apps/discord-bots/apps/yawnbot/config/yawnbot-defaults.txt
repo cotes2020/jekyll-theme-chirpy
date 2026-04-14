@@ -81,6 +81,11 @@ KAKAO_EXPORT_SKIP_WINDOW_TITLES=카카오톡|KakaoTalk
 # 리스닝 포트. 호스트·방화벽은 배포 환경에서 따로 설정.
 WEBHOOK_PORT=8080
 
+# ── Vertex AI 안전 필터 ──
+# 전체 카테고리에 적용할 임계값. 비워두면 Vertex 기본 필터 사용.
+# 옵션: BLOCK_NONE | BLOCK_ONLY_HIGH | BLOCK_MEDIUM_AND_ABOVE | BLOCK_LOW_AND_ABOVE
+# VERTEX_SAFETY_THRESHOLD=BLOCK_NONE
+
 # ── AI 비서 ──
 # AI 프로바이더: gemini (기본) 또는 claude-cli (로컬 Claude Code 사용)
 ASSISTANT_AI_PROVIDER=gemini
