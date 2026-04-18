@@ -73,6 +73,9 @@ analytics:
     id: # fill in your Cloudflare Web Analytics token
   fathom:
     id: # fill in your Fathom Site ID
+  posthog:
+    api_key: # fill in your PostHog API key
+    api_host: https://us.i.posthog.com # or your self-hosted URL
 
 # Page views settings
 pageviews:
