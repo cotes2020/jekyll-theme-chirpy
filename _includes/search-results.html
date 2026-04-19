@@ -6,5 +6,9 @@
       {% include_cached trending-tags.html lang=include.lang %}
     </div>
     <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+    <nav id="search-pagination" class="d-none" aria-label="Search Page Navigation">
+      <ul class="pagination align-items-center mt-4 mb-0"></ul>
+    </nav>
+    <div id="search-results-cache" class="d-none" aria-hidden="true"></div>
   </div>
 </div>

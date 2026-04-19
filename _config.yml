@@ -150,6 +150,11 @@ pwa:
 
 paginate: 10
 
+# Search result controls
+search:
+  limit:
+  per_page: 10
+
 # The base URL of your site
 baseurl: ""
 
