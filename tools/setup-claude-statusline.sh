@@ -22,12 +22,13 @@ help() {
   echo "Options:"
   echo "     -h, --help    Print this help information"
   echo
-  echo "Output format:"
-  echo "   Sonnet 4.6 (master) | [███░░░░░░░] 65,847/200,000 (33%) | Cost \$0.2699 (\$6.20/hr) | 2m36s | 5h 16% 7d 30%"
+  echo "Output (2 lines):"
+  echo "   Sonnet 4.6 (master) | 2m36s | Cost \$0.2699 (\$6.20/hr)"
+  echo "   [███░░░░░░░] 65,847/200,000 (33%) | 5h 16% (3h51m후) | 7d 30% (4d19h후)"
   echo
   echo "  - Progress bar is color-coded: green < 80%, yellow < 90%, red >= 90%"
   echo "  - Git branch shown when running inside a git repo"
-  echo "  - Rate limits: 5-hour and 7-day usage percentages (Claude Pro/Max)"
+  echo "  - Rate limits: 5-hour and 7-day usage % with time until reset"
 }
 
 while (($#)); do
@@ -71,10 +72,30 @@ USED=$((T_INPUT + T_CC + T_CR))
 COST=$(grep_num "total_cost_usd");               COST=${COST:-0}
 DURATION_MS=$(grep_num "total_duration_ms");     DURATION_MS=${DURATION_MS:-0}
 
-# Rate limits
+# Rate limits + reset times
 RATE_5H=$(echo "$input" | grep -oE '"five_hour":\{"used_percentage":[0-9]+' | grep -oE '[0-9]+$')
 RATE_7D=$(echo "$input" | grep -oE '"seven_day":\{"used_percentage":[0-9]+' | grep -oE '[0-9]+$')
+RESET_5H=$(echo "$input" | grep -oE '"five_hour":\{[^}]+' | grep -oE '"resets_at":[0-9]+' | grep -oE '[0-9]+')
+RESET_7D=$(echo "$input" | grep -oE '"seven_day":\{[^}]+' | grep -oE '"resets_at":[0-9]+' | grep -oE '[0-9]+')
 RATE_5H=${RATE_5H:-0}; RATE_7D=${RATE_7D:-0}
+
+fmt_remain() {
+  local ts=$1
+  if [ -z "$ts" ] || [ "$ts" -eq 0 ]; then echo "?"; return; fi
+  local now; now=$(date +%s)
+  local diff=$((ts - now))
+  if [ "$diff" -le 0 ]; then echo "곧"; return; fi
+  local d=$((diff / 86400))
+  local h=$(( (diff % 86400) / 3600 ))
+  local m=$(( (diff % 3600) / 60 ))
+  if   [ "$d" -gt 0 ]; then printf "%dd%02dh후" "$d" "$h"
+  elif [ "$h" -gt 0 ]; then printf "%dh%02dm후" "$h" "$m"
+  else printf "%dm후" "$m"
+  fi
+}
+
+REMAIN_5H=$(fmt_remain "${RESET_5H:-0}")
+REMAIN_7D=$(fmt_remain "${RESET_7D:-0}")
 
 # Model & git branch
 MODEL=$(grep_str "display_name"); MODEL=${MODEL:-"Claude"}
@@ -82,10 +103,8 @@ CWD=$(grep_str "cwd")
 CWD_UNIX=$(echo "$CWD" | sed 's/\\/\//g; s/^C:/\/c/')
 BRANCH=$(cd "$CWD_UNIX" 2>/dev/null && git branch --show-current 2>/dev/null || echo "")
 
-# Burn rate ($/hr)
+# Burn rate & elapsed
 BURN=$(awk "BEGIN{if($DURATION_MS>0) printf \"%.4f\", $COST/($DURATION_MS/3600000); else print \"0.0000\"}")
-
-# Elapsed time
 ELAPSED_S=$((DURATION_MS / 1000))
 ELAPSED_H=$((ELAPSED_S / 3600))
 ELAPSED_M=$(( (ELAPSED_S % 3600) / 60 ))
@@ -113,8 +132,14 @@ fmt() { printf "%d" "$1" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'; }
 BRANCH_PART=${BRANCH:+" ($BRANCH)"}
 COST_FMT=$(awk "BEGIN{printf \"%.4f\", $COST}")
 
-printf "${MODEL}${BRANCH_PART} | [${C}%s${R}] %s/%s (%s%%) | Cost \$%s (\$%s/hr) | %s | 5h %s%% 7d %s%%\n" \
-  "$BAR" "$(fmt $USED)" "$(fmt $MAX)" "$PCT" "$COST_FMT" "$BURN" "$ELAPSED" "$RATE_5H" "$RATE_7D"
+# Line 1: 모델 / 브랜치 / 경과 시간 / 비용
+printf "${MODEL}${BRANCH_PART} | %s | Cost \$%s (\$%s/hr)\n" \
+  "$ELAPSED" "$COST_FMT" "$BURN"
+
+# Line 2: 컨텍스트 바 / 할당량 + 리셋
+printf "[${C}%s${R}] %s/%s (%s%%) | 5h %s%% (%s) | 7d %s%% (%s)\n" \
+  "$BAR" "$(fmt $USED)" "$(fmt $MAX)" "$PCT" \
+  "$RATE_5H" "$REMAIN_5H" "$RATE_7D" "$REMAIN_7D"
 EOF
 
 chmod +x "$STATUSLINE_SCRIPT"
@@ -131,7 +156,6 @@ if command -v jq &>/dev/null; then
     "$SETTINGS_FILE")
   echo "$PATCHED" > "$SETTINGS_FILE"
 else
-  # Fallback: sed-based patch
   if grep -q '"statusLine"' "$SETTINGS_FILE"; then
     sed -i "s|\"statusLine\".*|\"statusLine\": {\"type\": \"command\", \"command\": \"bash $STATUSLINE_SCRIPT\"},|" "$SETTINGS_FILE"
   else
