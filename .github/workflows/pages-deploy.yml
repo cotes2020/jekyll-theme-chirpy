@@ -81,6 +81,11 @@ jobs:
           npm ci
           npm run build
 
+      - name: Prepare KarmoLab Jekyll page
+        run: |
+          mkdir -p apps/blog/karmolab
+          cp apps/karmolab/index.html apps/blog/karmolab/index.html
+
       - name: Build site
         working-directory: apps/blog
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
