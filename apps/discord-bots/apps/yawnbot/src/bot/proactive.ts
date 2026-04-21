@@ -2,6 +2,8 @@
  * proactive.ts — 먼저 말 걸기
  * - 봇 시작 시 DM으로 기상 메시지 (해당 DM의 활성 캐릭터 카드로)
  * - 매일 아침 ASSISTANT_MORNING_HOUR 시 (KST) DM으로 인사
+ * - 매일 저녁 ASSISTANT_EVENING_HOUR 시 (KST) 체크인
+ * - 자발적 메시지: 랜덤 인터벌로 활성 시간대에 먼저 말 걸기
  *
  * 시스템 프롬프트는 캐릭터 카드 본문. 페르소나 하드코딩 없음.
  */
@@ -15,6 +17,7 @@ import type { ScheduleService } from '../services/schedule-service';
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 let eveningTimer: ReturnType<typeof setTimeout> | null = null;
 let reminderTimer: ReturnType<typeof setInterval> | null = null;
+let spontaneousTimer: ReturnType<typeof setTimeout> | null = null;
 
 function msUntilNextKSTHour(targetHour: number): number {
   const now = new Date();
@@ -29,6 +32,41 @@ function msUntilNextKSTHour(targetHour: number): number {
   const minsUntil = hoursUntil * 60 - kstMin;
   const secsUntil = minsUntil * 60 - kstSec;
   return secsUntil * 1000;
+}
+
+/**
+ * 랜덤 인터벌 후 목표 시각이 KST 활성 시간대(activeStart~activeEnd)에 들어오도록 ms를 반환.
+ * 활성 시간대 밖으로 벗어나면 다음 activeStart + 랜덤 오프셋으로 밀어줌.
+ */
+function msUntilNextSpontaneous(
+  activeStart: number,
+  activeEnd: number,
+  minMs: number,
+  maxMs: number,
+): number {
+  const randomMs = minMs + Math.random() * (maxMs - minMs);
+  const targetUTC = new Date(Date.now() + randomMs);
+  const targetKST = new Date(targetUTC.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  const targetHour = targetKST.getHours();
+
+  if (targetHour >= activeStart && targetHour < activeEnd) {
+    return randomMs;
+  }
+
+  // 활성 시간대 밖 → 다음 activeStart까지 남은 ms + 활성 창 안 랜덤 오프셋
+  const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  let hoursUntilActive = activeStart - kstNow.getHours();
+  if (hoursUntilActive <= 0) hoursUntilActive += 24;
+
+  const msUntilActive =
+    hoursUntilActive * 3600_000 -
+    kstNow.getMinutes() * 60_000 -
+    kstNow.getSeconds() * 1000;
+
+  const windowMs = (activeEnd - activeStart) * 3600_000;
+  const offsetMs = Math.random() * windowMs;
+
+  return msUntilActive + offsetMs;
 }
 
 function dmChannelKey(userId: string): string {
@@ -246,8 +284,90 @@ export function startScheduleReminder(
   }, 60_000);
 }
 
+async function sendSpontaneousMessage(
+  client: Client,
+  characterService: CharacterService,
+  getMemory: (slug: string) => MemoryService,
+): Promise<void> {
+  const userId = process.env.ASSISTANT_USER_ID?.trim();
+  if (!userId) return;
+
+  const card = resolveDMCard(characterService, userId);
+  if (!card) return;
+
+  try {
+    const user = await client.users.fetch(userId);
+    const dmChannel = (await user.createDM()) as DMChannel;
+
+    const memory = getMemory(card.slug);
+    const context = memory.buildContext(2000);
+    const { dateStr, dayStr, timeStr } = formatKSTDate();
+
+    const prompt =
+      `${card.body}\n\n` +
+      `지금은 ${dateStr} ${dayStr} ${timeStr}이야.\n` +
+      `너는 지금 혼자 있다가 갑자기 말을 걸고 싶어졌어.\n` +
+      `안부, 문득 떠오른 생각, 궁금한 것, 하고 싶은 말 등 자유롭게 자연스럽게 짧게 한마디 건네줘.\n` +
+      `1-2문장 이내로. 한국어로.\n` +
+      (context ? `\n[최근 기억]\n${context}` : '');
+
+    const { text } = await generateAssistantText(process.env, prompt);
+    await dmChannel.send(text.slice(0, 1900));
+    console.log(`[Proactive:${card.slug}] 자발적 메시지 전송 완료`);
+  } catch (e: unknown) {
+    console.error(
+      `[Proactive] 자발적 메시지 실패:`,
+      e instanceof Error ? e.message : e,
+    );
+  }
+}
+
+function scheduleSpontaneous(
+  client: Client,
+  characterService: CharacterService,
+  getMemory: (slug: string) => MemoryService,
+  activeStart: number,
+  activeEnd: number,
+  minMs: number,
+  maxMs: number,
+): void {
+  const delay = msUntilNextSpontaneous(activeStart, activeEnd, minMs, maxMs);
+  console.log(`[Proactive] 다음 자발적 메시지까지 ${Math.round(delay / 60000)}분 대기`);
+
+  spontaneousTimer = setTimeout(async () => {
+    await sendSpontaneousMessage(client, characterService, getMemory);
+    scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs);
+  }, delay);
+}
+
+export function startSpontaneous(
+  client: Client,
+  characterService: CharacterService,
+  getMemory: (slug: string) => MemoryService,
+): void {
+  const userId = process.env.ASSISTANT_USER_ID?.trim();
+  if (!userId) return;
+
+  const enabled = process.env.ASSISTANT_SPONTANEOUS_ENABLED;
+  if (enabled === '0' || enabled === '끔') return;
+
+  const activeStart = parseInt(process.env.ASSISTANT_SPONTANEOUS_ACTIVE_START || '10', 10);
+  const activeEnd = parseInt(process.env.ASSISTANT_SPONTANEOUS_ACTIVE_END || '22', 10);
+  const minMs = parseInt(
+    process.env.ASSISTANT_SPONTANEOUS_MIN_MS || String(3 * 3600_000),
+    10,
+  );
+  const maxMs = parseInt(
+    process.env.ASSISTANT_SPONTANEOUS_MAX_MS || String(6 * 3600_000),
+    10,
+  );
+
+  scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs);
+}
+
 export function stopProactive(): void {
   if (morningTimer) { clearTimeout(morningTimer); morningTimer = null; }
   if (eveningTimer) { clearTimeout(eveningTimer); eveningTimer = null; }
   if (reminderTimer) { clearInterval(reminderTimer); reminderTimer = null; }
+  if (spontaneousTimer) { clearTimeout(spontaneousTimer); spontaneousTimer = null; }
 }

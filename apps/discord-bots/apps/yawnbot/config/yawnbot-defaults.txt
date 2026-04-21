@@ -111,6 +111,16 @@ ASSISTANT_MAX_PROMPT_CHARS=12000
 # .active.json 에 default 필드가 없거나 characters/ 가 비어 있을 때 폴백 슬러그.
 ASSISTANT_DEFAULT_CHARACTER=yawn
 
+# ── 자발적 메시지 (봇이 먼저 말 걸기) ──
+# 0 또는 끔으로 비활성화. 기본 활성화.
+ASSISTANT_SPONTANEOUS_ENABLED=1
+# 활성 시간대 (KST 시 단위). 이 범위 밖에는 보내지 않음.
+ASSISTANT_SPONTANEOUS_ACTIVE_START=10
+ASSISTANT_SPONTANEOUS_ACTIVE_END=22
+# 다음 메시지까지 랜덤 대기 범위 (ms). 기본 3~6시간.
+ASSISTANT_SPONTANEOUS_MIN_MS=10800000
+ASSISTANT_SPONTANEOUS_MAX_MS=21600000
+
 # ── 이미지 생성 (/이미지, Vertex Imagen) ──
 # Imagen 모델 ID. MODEL_CATALOG.imagen 의 ID 중 하나. 슬래시 옵션에서 덮어쓸 수 있음.
 IMAGE_MODEL_ID=imagen-4.0-generate-001

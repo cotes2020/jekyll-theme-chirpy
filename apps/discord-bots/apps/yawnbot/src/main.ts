@@ -28,7 +28,7 @@ import { dispatchSlashCommand, dispatchAutocomplete } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 import { handleAssistantMessage } from './bot/assistant-handler';
-import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder } from './bot/proactive';
+import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder, startSpontaneous } from './bot/proactive';
 
 const client = new Client({
   intents: [
@@ -179,6 +179,7 @@ client.once('clientReady', async () => {
     getMemory(characterService.getDefaultSlug());
     startProactive(client, characterService, getMemory);
     startScheduleReminder(client, characterService, getSchedule);
+    startSpontaneous(client, characterService, getMemory);
     await sendStartupGreeting(client, characterService, getMemory);
     console.log(
       '[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:',
