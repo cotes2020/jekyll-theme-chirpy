@@ -107,25 +107,35 @@ async function updateMoodAfterConversation(
   }
 }
 
+interface SceneDetection {
+  tags: string[];       // 캐시 키용 짧은 태그
+  sceneDesc: string;    // 이미지 프롬프트용 상세 묘사
+}
+
 /**
- * 대화 맥락에서 이미지 생성이 필요한지 판단 후 영어 태그 반환.
+ * 대화 맥락에서 이미지 씬을 감지. 태그(캐시용) + 상세 묘사(프롬프트용) 반환.
  * LLM이 "SKIP" 반환하거나 에러나면 null.
  */
 async function detectSceneTags(
   slug: string,
   userMsg: string,
   aiResponse: string,
-): Promise<string[] | null> {
+): Promise<SceneDetection | null> {
   try {
     console.log(`[Assistant:${slug}] 씬 감지 중...`);
     const { text } = await generateAssistantText(
       process.env,
-      `다음 대화 장면에서 캐릭터 이미지를 자동 생성해야 하는지 판단해줘.\n` +
-        `생성해야 한다면: 장면을 설명하는 영어 태그 5개 이내를 쉼표로 구분해서만 반환 (예: "smiling, outdoor, casual")\n` +
-        `생성하지 않아도 된다면: 정확히 "SKIP" 반환.\n\n` +
+      `다음 대화 장면에서 캐릭터 일러스트를 자동 생성해야 하는지 판단해줘.\n` +
+        `생성하지 않아도 된다면: 정확히 "SKIP" 반환.\n` +
+        `생성해야 한다면: 아래 형식 그대로 반환 (다른 텍스트 없이):\n` +
+        `TAGS: <캐시용 영어 키워드 3~5개, 쉼표 구분>\n` +
+        `SCENE: <Imagen 프롬프트용 상세 영어 묘사 1~2문장. 표정·포즈·행동·배경을 구체적으로. dynamic and expressive 강조>\n\n` +
+        `예시:\n` +
+        `TAGS: laughing, mischievous, indoor\n` +
+        `SCENE: playfully sticking out tongue with a wide mischievous grin, hands on hips, dynamic leaning pose, cozy indoor room background, expressive and energetic\n\n` +
         `기준:\n` +
-        `- 감정 변화나 상황 전환이 뚜렷하면 생성\n` +
-        `- 대화가 평범하게 이어지는 경우 SKIP\n\n` +
+        `- 외형 질문, 감정 변화, 행동 묘사, 시각 요청이 있으면 생성\n` +
+        `- 단순 정보 교환이면 SKIP\n\n` +
         `유저: "${userMsg}"\n` +
         `캐릭터: "${aiResponse}"`,
     );
@@ -134,13 +144,16 @@ async function detectSceneTags(
       console.log(`[Assistant:${slug}] 씬 감지: SKIP`);
       return null;
     }
-    const tags = trimmed
-      .split(',')
-      .map((t) => t.trim().toLowerCase())
-      .filter(Boolean)
-      .slice(0, 5);
-    console.log(`[Assistant:${slug}] 씬 감지: 태그=[${tags.join(', ')}]`);
-    return tags.length > 0 ? tags : null;
+    const tagsMatch = trimmed.match(/TAGS:\s*(.+)/i);
+    const sceneMatch = trimmed.match(/SCENE:\s*(.+)/i);
+    if (!tagsMatch || !sceneMatch) {
+      console.log(`[Assistant:${slug}] 씬 감지: 형식 불일치 → SKIP`);
+      return null;
+    }
+    const tags = tagsMatch[1].split(',').map((t) => t.trim().toLowerCase()).filter(Boolean).slice(0, 5);
+    const sceneDesc = sceneMatch[1].trim();
+    console.log(`[Assistant:${slug}] 씬 감지: 태그=[${tags.join(', ')}] / 묘사="${sceneDesc}"`);
+    return tags.length > 0 ? { tags, sceneDesc } : null;
   } catch (e) {
     console.error(
       `[Assistant:${slug}] 씬 감지 실패:`,
@@ -198,8 +211,9 @@ async function resolveSceneImage(
     return null;
   }
 
-  const tags = await detectSceneTags(slug, userMsg, aiResponse);
-  if (!tags) return null;
+  const scene = await detectSceneTags(slug, userMsg, aiResponse);
+  if (!scene) return null;
+  const { tags, sceneDesc } = scene;
 
   const cacheService = getImageCacheService(card);
   const cached = cacheService.findSimilar(tags);
@@ -217,8 +231,8 @@ async function resolveSceneImage(
 
   // 캐시 미스 → 새 이미지 생성 (이 시점에만 쿨다운 소모)
   lastImageAt.set(slug, Date.now());
-  const finalPrompt = buildCharacterImagePrompt(card, tags.join(', '));
-  console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}])`);
+  const finalPrompt = buildCharacterImagePrompt(card, sceneDesc);
+  console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}], 묘사="${sceneDesc}")`);
 
   const { images, modelId } = await generateImageFromEnvWithOptions(process.env, finalPrompt, {
     sampleCount: 1,
