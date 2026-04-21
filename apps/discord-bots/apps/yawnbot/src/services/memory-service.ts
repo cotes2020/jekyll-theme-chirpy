@@ -109,11 +109,6 @@ export class MemoryService {
     );
   }
 
-  /**
-   * ASSISTANT_AGENT_REPO_PATH 루트에 CLAUDE.md 심볼릭 링크가 없으면 생성.
-   * memo/CLAUDE-karmoddrine.md → {agentRepoPath}/CLAUDE.md
-   * Windows Developer Mode 또는 관리자 권한이 있을 때만 성공.
-   */
   private _ensureAgentClaudeMd(): void {
     const agentPath = process.env.ASSISTANT_AGENT_REPO_PATH?.trim();
     if (!agentPath) return;
@@ -123,9 +118,7 @@ export class MemoryService {
 
     const sourcePath = path.join(this.memoRepoPath, 'CLAUDE-karmoddrine.md');
     if (!fs.existsSync(sourcePath)) {
-      console.warn(
-        '[Memory] CLAUDE-karmoddrine.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀',
-      );
+      console.warn('[Memory] CLAUDE-karmoddrine.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀');
       return;
     }
 
@@ -134,9 +127,7 @@ export class MemoryService {
       console.log(`[Memory] CLAUDE.md 심볼릭 링크 생성: ${linkPath}`);
     } catch (e: unknown) {
       console.warn(
-        `[Memory] CLAUDE.md 심볼릭 링크 생성 실패 (Developer Mode 또는 관리자 권한 필요): ${
-          e instanceof Error ? e.message : e
-        }`,
+        `[Memory] CLAUDE.md 심볼릭 링크 생성 실패: ${e instanceof Error ? e.message : e}`,
       );
     }
   }
@@ -170,7 +161,27 @@ export class MemoryService {
 
   appendHotMemory(fact: string): void {
     const userMdPath = path.join(this.memoryDir, 'user.md');
+    const existing = this._read(userMdPath);
     const today = kstDateStr();
+
+    // 기존 핫메모리 라인과 내용이 유사하면 스킵
+    const existingLines = existing.split('\n').filter((l) => /^- \[/.test(l));
+    const factNorm = fact.toLowerCase().trim();
+    if (factNorm.length < 2) {
+      console.log(`[Memory:${this.slug}] Hot memory 빈 내용 스킵`);
+      return;
+    }
+    const isDuplicate = existingLines.some((line) => {
+      const lineContent = line.replace(/^- \[\d{4}-\d{2}-\d{2}\]\s*/, '').toLowerCase().trim();
+      if (lineContent.length < 2) return false;
+      return lineContent.includes(factNorm) || factNorm.includes(lineContent);
+    });
+
+    if (isDuplicate) {
+      console.log(`[Memory:${this.slug}] Hot memory 중복 스킵: ${fact.slice(0, 60)}`);
+      return;
+    }
+
     const line = `\n- [${today}] ${fact}`;
     try {
       fs.appendFileSync(userMdPath, line, 'utf-8');
@@ -208,7 +219,6 @@ export class MemoryService {
     return hotMemories.length > 0 ? hotMemories.join('\n') : '(기록 없음)';
   }
 
-  /** 슬래시 `/기억 수정` 등 외부에서 user.md를 통째로 덮어쓸 때 사용 */
   getUserMdPath(): string {
     return path.join(this.memoryDir, 'user.md');
   }
@@ -299,7 +309,6 @@ export class MemoryService {
 
     const yesterday = kstDateStr(daysAgo(1));
     const dailySummaryPath = path.join(this.memoryDir, 'daily', `${yesterday}.md`);
-
     if (!fs.existsSync(dailySummaryPath)) return;
 
     try {
@@ -328,27 +337,24 @@ export class MemoryService {
       const selfMatch = updatedMemory.match(/##\s*\[봇\s*자신에\s*대한\s*정보\]([\s\S]*?)$/);
 
       if (userMatch) {
-        const userContent = userMatch[1].trim();
         fs.writeFileSync(
           path.join(this.memoryDir, 'user.md'),
-          `# 나에 대한 정보\n\n${userContent}\n`,
+          `# 나에 대한 정보\n\n${userMatch[1].trim()}\n`,
           'utf-8',
         );
         this.dirty = true;
       }
 
       if (selfMatch) {
-        const selfContent = selfMatch[1].trim();
         fs.writeFileSync(
           path.join(this.memoryDir, 'self.md'),
-          `# 봇 자신에 대한 정보\n\n${selfContent}\n`,
+          `# 봇 자신에 대한 정보\n\n${selfMatch[1].trim()}\n`,
           'utf-8',
         );
         this.dirty = true;
       }
 
       fs.writeFileSync(markerPath, today, 'utf-8');
-
       console.log(`[Memory:${this.slug}] user.md / self.md 갱신 완료`);
     } catch (e: unknown) {
       console.error(
@@ -371,8 +377,7 @@ export class MemoryService {
         for (const file of files) {
           const filePath = path.join(dir, file);
           const stat = fs.statSync(filePath);
-          const ageMs = Date.now() - stat.mtimeMs;
-          if (ageMs > days * 24 * 60 * 60 * 1000) {
+          if (Date.now() - stat.mtimeMs > days * 24 * 60 * 60 * 1000) {
             fs.unlinkSync(filePath);
             console.log(`[Memory:${this.slug}] 오래된 파일 삭제: ${file}`);
             this.dirty = true;
@@ -389,9 +394,28 @@ export class MemoryService {
 
   // ── 컨텍스트 빌드 ─────────────────────────────────────────────────────────
 
+  /** 오늘 로그에서 최근 maxEntries개 메시지 라인만 추출 */
+  private _getRecentLog(maxEntries: number = 30): string {
+    const filePath = path.join(this.logsDir, `${kstDateStr()}.md`);
+    if (!fs.existsSync(filePath)) return '';
+    try {
+      const lines = fs.readFileSync(filePath, 'utf-8').split('\n');
+      const entryLines = lines.filter((l) => /^\[\d{2}:\d{2}/.test(l.trim()));
+      if (entryLines.length === 0) return '';
+      const recent = entryLines.slice(-maxEntries);
+      const truncated = entryLines.length > maxEntries;
+      const header = truncated
+        ? `# ${kstDateStr()} 대화 로그 (최근 ${recent.length}개 / 전체 ${entryLines.length}개)`
+        : `# ${kstDateStr()} 대화 로그`;
+      return `${header}\n\n${recent.join('\n')}`;
+    } catch {
+      return '';
+    }
+  }
+
   /**
-   * 시스템 프롬프트(card.md 본문)는 이 함수가 포함하지 않는다 — 호출자가 앞에 붙인다.
-   * 여기선 user.md / self.md / 주간·어제 요약 / 오늘 로그만 반환.
+   * 시스템 프롬프트(card.md 본문)는 포함하지 않음 — 호출자가 앞에 붙인다.
+   * user.md / self.md / 오늘 로그(최근 N개) / 최근 7일 daily 요약 / weekly 요약 반환.
    */
   buildContext(maxChars = 8000): string {
     const fixed: string[] = [];
@@ -404,24 +428,28 @@ export class MemoryService {
 
     const optional: string[] = [];
 
-    const todayLog = this._read(path.join(this.logsDir, `${kstDateStr()}.md`));
+    // 오늘 로그: 최근 N개만
+    const parsed = parseInt(process.env.ASSISTANT_RECENT_LOG_ENTRIES || '', 10);
+    const recentLogEntries = Number.isFinite(parsed) ? Math.min(200, Math.max(1, parsed)) : 30;
+    const todayLog = this._getRecentLog(recentLogEntries);
     if (todayLog) optional.push(`[오늘 대화 기록]\n${todayLog}`);
 
-    const yesterdaySummary = this._read(
-      path.join(this.memoryDir, 'daily', `${kstDateStr(daysAgo(1))}.md`),
-    );
-    if (yesterdaySummary) optional.push(`[어제 요약]\n${yesterdaySummary}`);
+    // 최근 7일치 daily 요약 (최신순)
+    const MAX_DAILY_DAYS = 7;
+    for (let i = 1; i <= MAX_DAILY_DAYS; i++) {
+      const dateStr = kstDateStr(daysAgo(i));
+      const summary = this._read(path.join(this.memoryDir, 'daily', `${dateStr}.md`));
+      if (summary) optional.push(`[${dateStr} 요약]\n${summary}`);
+    }
 
-    const weeklyDir = path.join(this.memoryDir, 'weekly');
-    const latestWeekly = this._latestFile(weeklyDir);
-    if (latestWeekly) optional.push(`[최근 주간 요약]\n${latestWeekly}`);
+    // weekly 요약 (7일 이전 장기 기억)
+    const latestWeekly = this._latestFile(path.join(this.memoryDir, 'weekly'));
+    if (latestWeekly) optional.push(`[주간 요약]\n${latestWeekly}`);
 
     let result = fixed.join('\n\n');
     for (const part of optional) {
       const candidate = result ? result + '\n\n' + part : part;
-      if (candidate.length <= maxChars) {
-        result = candidate;
-      }
+      if (candidate.length <= maxChars) result = candidate;
     }
 
     return result;

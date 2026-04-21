@@ -8,11 +8,29 @@
  */
 import { Message, DMChannel, TextChannel } from 'discord.js';
 import { generateAssistantText } from 'karmolab-ai/node';
+import type { ChatContent } from 'karmolab-ai/node';
 import type { MemoryService, ConversationEntry } from '../services/memory-service';
 import { CharacterService, type CharacterCard } from '../services/character-service';
 
 const MAX_RESPONSE_LENGTH = 1900;
 const MAX_PROMPT_CHARS = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
+const MAX_HISTORY_TURNS = 20;
+
+const chatHistories = new Map<string, ChatContent[]>();
+
+function getHistory(slug: string): ChatContent[] {
+  if (!chatHistories.has(slug)) chatHistories.set(slug, []);
+  return chatHistories.get(slug)!;
+}
+
+function appendHistory(slug: string, userMsg: string, assistantMsg: string): void {
+  const history = getHistory(slug);
+  history.push({ role: 'user', parts: [{ text: userMsg }] });
+  history.push({ role: 'model', parts: [{ text: assistantMsg }] });
+  if (history.length > MAX_HISTORY_TURNS * 2) {
+    history.splice(0, history.length - MAX_HISTORY_TURNS * 2);
+  }
+}
 
 async function detectAndSaveHotMemory(
   memory: MemoryService,
@@ -53,7 +71,7 @@ function buildSystemPrompt(card: CharacterCard, channelType: 'dm' | 'public'): s
   return `${card.body}\n\n${channelDesc}`;
 }
 
-function buildFullPrompt(
+function buildSystemInstruction(
   card: CharacterCard,
   memory: MemoryService,
   channelType: 'dm' | 'public',
@@ -70,7 +88,16 @@ function buildFullPrompt(
   );
 
   const contextBlock = context ? `\n\n${context}` : '';
-  return `${system}${contextBlock}\n\n나: ${userMessage}`;
+  return `${system}${contextBlock}`;
+}
+
+function buildFullPrompt(
+  card: CharacterCard,
+  memory: MemoryService,
+  channelType: 'dm' | 'public',
+  userMessage: string,
+): string {
+  return `${buildSystemInstruction(card, memory, channelType, userMessage)}\n\n나: ${userMessage}`;
 }
 
 function friendlyError(err: unknown): string {
@@ -159,11 +186,30 @@ export async function handleAssistantMessage(
 
   const startTime = Date.now();
   console.log(`[Assistant:${card.slug}] 프롬프트 빌드 시작...`);
-  const fullPrompt = buildFullPrompt(card, memory, channelType, userContent);
+
+  const isGemini = provider !== 'claude-cli';
+  const systemInstruction = isGemini
+    ? buildSystemInstruction(card, memory, channelType, userContent)
+    : undefined;
+  const fullPrompt = isGemini
+    ? userContent
+    : buildFullPrompt(card, memory, channelType, userContent);
   const promptSize = Buffer.byteLength(fullPrompt, 'utf-8');
-  console.log(
-    `[Assistant:${card.slug}] 프롬프트 준비 완료: ${promptSize}바이트, ${fullPrompt.length}자 (빌드 소요: ${Date.now() - startTime}ms)`,
-  );
+  const history = isGemini ? getHistory(card.slug) : undefined;
+
+  if (isGemini && systemInstruction != null) {
+    const sysSize = Buffer.byteLength(systemInstruction, 'utf-8');
+    const histSize = history
+      ? history.reduce((sum, e) => sum + Buffer.byteLength(JSON.stringify(e), 'utf-8'), 0)
+      : 0;
+    console.log(
+      `[Assistant:${card.slug}] 프롬프트 준비 완료: 메시지 ${promptSize}B / systemInstruction ${sysSize}B / history ${histSize}B / 합계 ${promptSize + sysSize + histSize}B / 히스토리 ${(history?.length ?? 0) / 2}턴 (빌드 소요: ${Date.now() - startTime}ms)`,
+    );
+  } else {
+    console.log(
+      `[Assistant:${card.slug}] 프롬프트 준비 완료: ${promptSize}바이트, ${fullPrompt.length}자 (빌드 소요: ${Date.now() - startTime}ms)`,
+    );
+  }
 
   try {
     const aiStartTime = Date.now();
@@ -177,6 +223,8 @@ export async function handleAssistantMessage(
         );
         const { text } = await generateAssistantText(process.env, fullPrompt, {
           timeoutMs: 20000,
+          history,
+          systemInstruction,
         });
         response = text;
         const aiDuration = Date.now() - aiStartTime;
@@ -211,6 +259,8 @@ export async function handleAssistantMessage(
       content: reply,
       channel: channelType,
     });
+
+    if (isGemini) appendHistory(card.slug, userContent, reply);
 
     detectAndSaveHotMemory(memory, userContent).catch(() => {});
 

@@ -13,6 +13,8 @@ import {
 
 export type { GoogleGenerativeSurface };
 
+export type ChatContent = { role: 'user' | 'model'; parts: [{ text: string }] };
+
 export function resolveAiStudioTextModelId(modelFromEnv?: string | null): string {
   const t = modelFromEnv?.trim();
   return t || DEFAULT_TEXT_MODEL_ID;
@@ -34,6 +36,25 @@ export async function generateAiStudioText(opts: {
   const model = createAiStudioTextModel(opts.apiKey, opts.modelId);
   const ro = opts.signal ? { signal: opts.signal } : undefined;
   const res = await model.generateContent(opts.prompt, ro);
+  return res.response.text();
+}
+
+/** 멀티턴 대화 히스토리 + 현재 메시지 → 응답 텍스트 (AI Studio Chat) */
+async function generateAiStudioChatText(opts: {
+  apiKey: string;
+  modelId?: string | null;
+  systemInstruction?: string;
+  history: ChatContent[];
+  message: string;
+  signal?: AbortSignal;
+}): Promise<string> {
+  const model = createAiStudioTextModel(opts.apiKey, opts.modelId);
+  const chat = model.startChat({
+    history: opts.history,
+    ...(opts.systemInstruction ? { systemInstruction: { parts: [{ text: opts.systemInstruction }] } } : {}),
+  });
+  const ro = opts.signal ? { signal: opts.signal } : undefined;
+  const res = await chat.sendMessage(opts.message, ro);
   return res.response.text();
 }
 
@@ -340,7 +361,7 @@ export function resolveAssistantProvider(env: NodeJS.ProcessEnv = process.env): 
 export async function generateAssistantText(
   env: NodeJS.ProcessEnv,
   prompt: string,
-  opts: { timeoutMs?: number } = {},
+  opts: { timeoutMs?: number; history?: ChatContent[]; systemInstruction?: string } = {},
 ): Promise<{ text: string; provider: AssistantAiProvider }> {
   const provider = resolveAssistantProvider(env);
 
@@ -348,6 +369,26 @@ export async function generateAssistantText(
     const cwd = env.ASSISTANT_AGENT_REPO_PATH?.trim() || undefined;
     const text = await generateClaudeCliText({ prompt, timeoutMs: opts.timeoutMs, cwd });
     return { text, provider: 'claude-cli' };
+  }
+
+  if (opts.systemInstruction || (opts.history && opts.history.length > 0)) {
+    const surface = parseGenerativeSurfaceFromEnv(env);
+    if (surface === 'vertex') {
+      console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 single-turn으로 fallback합니다.');
+      const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'vertex' });
+      return { text, provider: 'gemini' };
+    }
+    const apiKey = env.GEMINI_API_KEY?.trim();
+    if (!apiKey) throw new Error('AI Studio API: .env에 GEMINI_API_KEY가 필요합니다.');
+    const modelId = resolveAiStudioTextModelId(env.GEMINI_MODEL);
+    const text = await generateAiStudioChatText({
+      apiKey,
+      modelId,
+      systemInstruction: opts.systemInstruction,
+      history: opts.history ?? [],
+      message: prompt,
+    });
+    return { text, provider: 'gemini' };
   }
 
   const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'inherit' });
