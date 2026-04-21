@@ -7,6 +7,29 @@ import type { CharacterCard } from '../../services/character-service';
 
 const MAX_PROMPT_CHARS = 1500;
 
+/**
+ * Vertex Imagen 이미지당 단가 (USD, 2026-04 기준 공개 가격).
+ * 알 수 없는 모델은 null — embed에서 "비용" 필드 생략.
+ * 가격 변경 시 업데이트.
+ */
+const IMAGEN_PRICE_PER_IMAGE: Record<string, number> = {
+  // Imagen 4
+  'imagen-4.0-fast-generate-001': 0.02,
+  'imagen-4.0-generate-001': 0.04,
+  'imagen-4.0-ultra-generate-001': 0.06,
+  // Imagen 3 (참고용)
+  'imagen-3.0-fast-generate-001': 0.02,
+  'imagen-3.0-generate-001': 0.04,
+  'imagen-3.0-generate-002': 0.04,
+};
+
+function estimateCost(modelId: string, count: number): string | null {
+  const price = IMAGEN_PRICE_PER_IMAGE[modelId];
+  if (price == null) return null;
+  const total = price * count;
+  return `$${total.toFixed(3)} (${count}장 × $${price.toFixed(2)})`;
+}
+
 /** card.dir/appearance.md 본문 (frontmatter 제거). 없으면 card.imageStyle 폴백. */
 export function loadAppearance(card: CharacterCard): string {
   const appearancePath = path.join(card.dir, 'appearance.md');
@@ -76,6 +99,8 @@ export async function runImageGeneration(
     });
 
     const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
+    const cost = estimateCost(effectiveModelId, images.length);
+
     const embed = new EmbedBuilder()
       .setTitle('🎨 이미지 생성')
       .setDescription((opts.displayPrompt || finalPrompt).slice(0, 400))
@@ -88,6 +113,9 @@ export async function runImageGeneration(
       )
       .setColor(0x7c4dff);
 
+    if (cost) {
+      embed.addFields({ name: '예상 비용', value: cost, inline: true });
+    }
     if (opts.negativePrompt) {
       embed.addFields({ name: '네거티브', value: opts.negativePrompt.slice(0, 256) });
     }
