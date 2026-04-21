@@ -280,18 +280,19 @@ export async function handleYawn(ctx, interaction) {
   try {
     stopGeminiTicker = await startDeferElapsedTicker(interaction, 'gemini', { requestText: prompt });
     const contextBlock = await buildYawnChannelContext(interaction, contextCount);
-    const system = yawnSystemPromptFromEnv();
+    const systemInstruction = yawnSystemPromptFromEnv();
     const userBlock = `사용자 질문:\n${prompt}`;
-    let fullPrompt = `${system}${contextBlock}\n\n${userBlock}`;
+    let blobPrompt = `${contextBlock}\n\n${userBlock}`.trim();
     const maxFull = parseInt(process.env.YAWN_MAX_PROMPT_CHARS || '12000', 10);
     const maxFullClamped = Math.min(Math.max(2000, Number.isFinite(maxFull) ? maxFull : 12000), 32000);
-    if (fullPrompt.length > maxFullClamped) {
-      fullPrompt = fullPrompt.slice(0, maxFullClamped) + '\n\n…(앞부분·맥락이 잘렸습니다)';
+    if (blobPrompt.length > maxFullClamped) {
+      blobPrompt = blobPrompt.slice(0, maxFullClamped) + '\n\n…(앞부분·맥락이 잘렸습니다)';
     }
     const { text: response, surface: usedSurface, modelId: usedModelId } =
-      await generateBlobTextFromEnvWithOptions(process.env, fullPrompt, {
+      await generateBlobTextFromEnvWithOptions(process.env, blobPrompt, {
         surface: surfaceOverride,
         modelId: modelOpt,
+        systemInstruction,
       });
     await stopGeminiTicker();
     stopGeminiTicker = async () => {};

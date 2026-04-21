@@ -176,6 +176,7 @@ export async function generateBlobTextFromEnvWithOptions(
   options: {
     surface?: GenerativeSurfaceOverride;
     modelId?: string | null;
+    systemInstruction?: string;
     signal?: AbortSignal;
   } = {},
 ): Promise<{ text: string; surface: GoogleGenerativeSurface; modelId: string }> {
@@ -199,6 +200,7 @@ export async function generateBlobTextFromEnvWithOptions(
       location,
       modelId: effectiveModelId,
       userText: blobPrompt,
+      systemInstruction: options.systemInstruction,
       safetyThreshold: env.VERTEX_SAFETY_THRESHOLD?.trim() || null,
       signal: options.signal,
     });
@@ -213,6 +215,7 @@ export async function generateBlobTextFromEnvWithOptions(
     apiKey,
     modelId: effectiveModelId,
     prompt: blobPrompt,
+    systemInstruction: options.systemInstruction,
     signal: options.signal,
   });
   return { text, surface: 'aiStudio', modelId: effectiveModelId };
