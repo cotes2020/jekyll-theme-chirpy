@@ -36,6 +36,7 @@ import {
   handleCharacterSwitch,
   handleCharacterInfo,
   handleCharacterReset,
+  handleCharacterImage,
 } from './character';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
@@ -246,6 +247,9 @@ export async function dispatchSlashCommand(ctx, interaction) {
             break;
           case 'reset':
             await handleCharacterReset(ctx, interaction);
+            break;
+          case 'image':
+            await handleCharacterImage(ctx, interaction);
             break;
           default:
             await interaction.reply({ content: '알 수 없는 character 하위 명령입니다.', flags: MessageFlags.Ephemeral });
