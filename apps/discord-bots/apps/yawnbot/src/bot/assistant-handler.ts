@@ -117,50 +117,62 @@ async function detectSceneTags(
   }
 }
 
+type SceneImageResult =
+  | { type: 'cache_hit'; tags: string[]; buffer: Buffer; mimeType: string; entryId: string }
+  | { type: 'cache_miss'; tags: string[] }
+  | null;
+
 /**
- * AI 응답 후 호출. 씬 감지 → 캐시 조회 → 필요 시 이미지 생성 → 채널에 전송.
- * 실패해도 조용히 로그만 남김 (대화 흐름에 영향 없음).
+ * 씬 감지 → 캐시 조회까지만 수행. 텍스트 전송 전에 await해서 결과를 반환.
+ * - cache_hit: 캐시 이미지를 텍스트와 함께 보낼 수 있음
+ * - cache_miss: 텍스트 먼저 보내고 이미지는 별도 생성
+ * - null: 이미지 불필요 (SKIP 또는 쿨다운)
  */
-async function autoGenerateSceneImage(
-  message: Message,
+async function checkSceneImage(
   card: CharacterCard,
   userMsg: string,
   aiResponse: string,
-): Promise<void> {
+): Promise<SceneImageResult> {
   const slug = card.slug;
 
-  // 쿨다운 체크
   const last = lastImageAt.get(slug) ?? 0;
   const remaining = IMAGE_COOLDOWN_MS - (Date.now() - last);
   if (remaining > 0) {
     console.log(`[Assistant:${slug}] 자동 이미지 쿨다운 (${Math.round(remaining / 1000)}초 남음)`);
-    return;
+    return null;
   }
 
   const tags = await detectSceneTags(slug, userMsg, aiResponse);
-  if (!tags) return;
+  if (!tags) return null;
+
+  // 쿨다운 선점 (생성 실패해도 중복 방지)
+  lastImageAt.set(slug, Date.now());
 
   const cacheService = getImageCacheService(card);
   const cached = cacheService.findSimilar(tags);
 
   if (cached) {
     cacheService.incrementHit(cached);
-    lastImageAt.set(slug, Date.now());
     const buffer = fs.readFileSync(cached.filePath);
-    const ext = (cached.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
-    const attachment = new AttachmentBuilder(buffer, { name: `scene.${ext}` });
-    await (message.channel as TextChannel | DMChannel).send({
-      content: `*${tags.join(', ')}*`,
-      files: [attachment],
-    });
-    console.log(`[Assistant:${slug}] 자동 이미지: 캐시 재사용 (id=${cached.id})`);
-    return;
+    console.log(`[Assistant:${slug}] 자동 이미지: 캐시 히트 (id=${cached.id})`);
+    return { type: 'cache_hit', tags, buffer, mimeType: cached.mimeType, entryId: cached.id };
   }
 
-  // 캐시 미스 → 새 이미지 생성
+  return { type: 'cache_miss', tags };
+}
+
+/**
+ * 캐시 미스 시 호출. 이미지 생성 후 채널에 별도 전송 (텍스트 이후).
+ */
+async function generateAndSendNewImage(
+  message: Message,
+  card: CharacterCard,
+  tags: string[],
+): Promise<void> {
+  const slug = card.slug;
+  const cacheService = getImageCacheService(card);
   const finalPrompt = buildCharacterImagePrompt(card, tags.join(', '));
   console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}])`);
-  lastImageAt.set(slug, Date.now()); // 생성 실패해도 쿨다운 적용
 
   const { images, modelId } = await generateImageFromEnvWithOptions(process.env, finalPrompt, {
     sampleCount: 1,
@@ -382,14 +394,30 @@ export async function handleAssistantMessage(
     if (isGemini) appendHistory(card.slug, userContent, reply);
 
     detectAndSaveHotMemory(memory, userContent).catch(() => {});
-    autoGenerateSceneImage(message, card, userContent, reply).catch((e) =>
-      console.error(
-        `[Assistant:${card.slug}] 자동 이미지 실패:`,
-        e instanceof Error ? e.message : String(e),
-      ),
-    );
 
-    await message.reply(reply);
+    // 씬 감지 + 캐시 조회 (텍스트 전송 전에 await — 캐시 히트면 함께 보냄)
+    const sceneResult = await checkSceneImage(card, userContent, reply).catch((e) => {
+      console.error(`[Assistant:${card.slug}] 씬 체크 실패:`, e instanceof Error ? e.message : String(e));
+      return null;
+    });
+
+    if (sceneResult?.type === 'cache_hit') {
+      const ext = (sceneResult.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+      const attachment = new AttachmentBuilder(sceneResult.buffer, { name: `scene.${ext}` });
+      await message.reply({
+        content: reply,
+        files: [attachment],
+      });
+      console.log(`[Assistant:${card.slug}] 텍스트+이미지 함께 전송 (캐시 id=${sceneResult.entryId})`);
+    } else {
+      await message.reply(reply);
+      if (sceneResult?.type === 'cache_miss') {
+        generateAndSendNewImage(message, card, sceneResult.tags).catch((e) =>
+          console.error(`[Assistant:${card.slug}] 이미지 생성 실패:`, e instanceof Error ? e.message : String(e)),
+        );
+      }
+    }
+
     const totalDuration = Date.now() - startTime;
     console.log(
       `[Assistant:${card.slug}] 완료 (총 ${totalDuration}ms, 응답크기: ${reply.length}자)`,
