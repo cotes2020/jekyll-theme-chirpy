@@ -17,7 +17,7 @@ import type { MoodService } from '../services/mood-service';
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 let eveningTimer: ReturnType<typeof setTimeout> | null = null;
-let reminderTimer: ReturnType<typeof setInterval> | null = null;
+let reminderTimer: ReturnType<typeof setTimeout> | null = null;
 let spontaneousTimer: ReturnType<typeof setTimeout> | null = null;
 
 function msUntilNextKSTHour(targetHour: number): number {
@@ -261,8 +261,10 @@ export function startScheduleReminder(
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
 
-  reminderTimer = setInterval(async () => {
+  const tick = async () => {
     const slugs = characterService.listCharacters();
+    const now = Date.now();
+
     for (const slug of slugs) {
       try {
         const schedule = getSchedule(slug);
@@ -279,7 +281,25 @@ export function startScheduleReminder(
         console.error(`[Reminder:${slug}]`, e instanceof Error ? e.message : e);
       }
     }
-  }, 60_000);
+
+    // 다음 알림 시각까지 남은 ms 계산 — 최소 5초, 최대 60초
+    let nextMs = 60_000;
+    for (const slug of slugs) {
+      try {
+        for (const entry of getSchedule(slug).list()) {
+          if (entry.notified) continue;
+          const fireAt = new Date(entry.datetime).getTime() - entry.notifyMinutes * 60_000;
+          const msUntil = fireAt - now;
+          if (msUntil > 0) nextMs = Math.min(nextMs, msUntil + 1_000);
+        }
+      } catch { /* ignore */ }
+    }
+
+    const delay = Math.min(Math.max(5_000, nextMs), 60_000);
+    reminderTimer = setTimeout(tick, delay);
+  };
+
+  reminderTimer = setTimeout(tick, 5_000);
 }
 
 function buildTimeOfDayHint(kstHour: number): string {
@@ -399,6 +419,6 @@ export function startSpontaneous(
 export function stopProactive(): void {
   if (morningTimer) { clearTimeout(morningTimer); morningTimer = null; }
   if (eveningTimer) { clearTimeout(eveningTimer); eveningTimer = null; }
-  if (reminderTimer) { clearInterval(reminderTimer); reminderTimer = null; }
+  if (reminderTimer) { clearTimeout(reminderTimer); reminderTimer = null; }
   if (spontaneousTimer) { clearTimeout(spontaneousTimer); spontaneousTimer = null; }
 }

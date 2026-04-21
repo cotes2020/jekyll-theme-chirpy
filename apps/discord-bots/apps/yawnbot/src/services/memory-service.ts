@@ -447,6 +447,10 @@ export class MemoryService {
     if (latestWeekly) optional.push(`[주간 요약]\n${latestWeekly}`);
 
     let result = fixed.join('\n\n');
+    if (result.length > maxChars) {
+      console.warn(`[Memory:${this.slug}] buildContext: fixed 블록 ${result.length}자 > maxChars ${maxChars}, 잘림`);
+      return result.slice(0, maxChars);
+    }
     for (const part of optional) {
       const candidate = result ? result + '\n\n' + part : part;
       if (candidate.length <= maxChars) result = candidate;

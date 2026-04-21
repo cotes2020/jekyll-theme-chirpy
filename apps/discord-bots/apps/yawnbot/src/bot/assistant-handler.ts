@@ -150,6 +150,18 @@ async function detectSceneTags(
   }
 }
 
+const SCENE_KEYWORDS = [
+  '웃', '울', '화나', '슬프', '기쁘', '행복', '놀라', '두려', '부끄', '설레', '그리워', '따뜻', '차갑',
+  '안아', '손잡', '쓰다듬', '포옹', '키스',
+  'smil', 'laugh', 'cry', 'sad', 'happy', 'angry', 'fear', 'blush', 'hug', 'touch', 'kiss',
+];
+
+function hasVisualScenePotential(userMsg: string, aiResponse: string): boolean {
+  if (aiResponse.length < 30) return false;
+  const text = (userMsg + ' ' + aiResponse).toLowerCase();
+  return SCENE_KEYWORDS.some((kw) => text.includes(kw));
+}
+
 interface SceneImage {
   id: string;
   tags: string[];
@@ -172,6 +184,11 @@ async function resolveSceneImage(
   const remaining = IMAGE_COOLDOWN_MS - (Date.now() - last);
   if (remaining > 0) {
     console.log(`[Assistant:${slug}] 자동 이미지 쿨다운 (${Math.round(remaining / 1000)}초 남음)`);
+    return null;
+  }
+
+  if (!hasVisualScenePotential(userMsg, aiResponse)) {
+    console.log(`[Assistant:${slug}] 자동 이미지: 씬 없음 (휴리스틱 스킵)`);
     return null;
   }
 
@@ -421,8 +438,12 @@ export async function handleAssistantMessage(
 
     if (isGemini) appendHistory(card.slug, userContent, reply);
 
-    detectAndSaveHotMemory(memory, userContent).catch(() => {});
-    if (mood) updateMoodAfterConversation(mood, card.slug, userContent, reply).catch(() => {});
+    detectAndSaveHotMemory(memory, userContent).catch((e: unknown) => {
+      console.error(`[Assistant:${card.slug}] 핫메모리 에러:`, e instanceof Error ? e.message : e);
+    });
+    if (mood) updateMoodAfterConversation(mood, card.slug, userContent, reply).catch((e: unknown) => {
+      console.error(`[Assistant:${card.slug}] 기분 업데이트 에러:`, e instanceof Error ? e.message : e);
+    });
 
     // 씬 감지 → 캐시 조회 → 이미지 생성까지 완료 후 텍스트와 함께 전송
     const sceneImage = await resolveSceneImage(card, userContent, reply).catch((e) => {
