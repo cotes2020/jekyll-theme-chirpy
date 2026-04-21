@@ -1,0 +1,54 @@
+name: 🐛 버그 리포트
+description: 사이트나 앱에서 예상과 다르게 동작하는 것을 발견했을 때
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        버그를 리포트해 주셔서 감사합니다.  
+        아래 항목을 최대한 채워 주시면 빠른 해결에 도움이 됩니다.
+
+  - type: input
+    id: summary
+    attributes:
+      label: 한 줄 요약
+      placeholder: "예: 모바일에서 다크모드 전환 시 레이아웃이 깨짐"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법
+      description: 번호 순서대로 작성해 주세요.
+      placeholder: |
+        1. '...' 페이지로 이동
+        2. '...' 버튼 클릭
+        3. 오류 발생
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 동작
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 동작 (에러 메시지 포함)
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 환경
+      placeholder: "예: Chrome 124 / Windows 11, iOS 17 / Safari"
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 스크린샷 / 로그 (선택)

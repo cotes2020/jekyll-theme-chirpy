@@ -1,0 +1,48 @@
+name: ✨ 기능 요청
+description: 새 기능이나 개선 사항을 제안할 때
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        아이디어를 공유해 주셔서 감사합니다!
+
+  - type: input
+    id: summary
+    attributes:
+      label: 한 줄 요약
+      placeholder: "예: 포스트 목록에 읽기 시간 표시"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 어떤 문제가 있나요? (또는 불편한 점)
+      placeholder: "지금은 ___ 때문에 불편합니다…"
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 원하는 해결 방법
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 대안으로 고려한 것들 (선택)
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 해당 영역
+      options:
+        - Jekyll 블로그
+        - KarmoLab 앱
+        - KarmoLab React
+        - Discord 봇
+        - Chat Overlay
+        - 기타
+    validations:
+      required: true
