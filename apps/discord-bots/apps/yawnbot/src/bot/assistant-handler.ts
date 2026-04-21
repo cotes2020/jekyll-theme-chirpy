@@ -190,7 +190,7 @@ function buildSystemPrompt(card: CharacterCard, channelType: 'dm' | 'public'): s
   return `${card.body}\n\n${channelDesc}`;
 }
 
-function buildSystemInstruction(
+function buildFullPrompt(
   card: CharacterCard,
   memory: MemoryService,
   channelType: 'dm' | 'public',
@@ -198,30 +198,14 @@ function buildSystemInstruction(
 ): string {
   const system = buildSystemPrompt(card, channelType);
   const budget = MAX_PROMPT_CHARS - system.length - userMessage.length - 50;
-  const contextBudget = Math.max(2000, budget);
-  const context = memory.buildContext(contextBudget);
-
-  const contextSize = Buffer.byteLength(context, 'utf-8');
-  console.log(
-    `[Assistant:${memory.slug}] 컨텍스트 빌드: ${contextSize}바이트 (할당: ${contextBudget}자, 사용: ${context.length}자)`,
-  );
-
+  const context = memory.buildContext(Math.max(2000, budget));
   const nowKST = new Date().toLocaleString('ko-KR', {
     timeZone: 'Asia/Seoul',
     year: 'numeric', month: '2-digit', day: '2-digit',
     hour: '2-digit', minute: '2-digit', hour12: false,
   });
   const contextBlock = context ? `\n\n${context}` : '';
-  return `${system}\n\n[현재 시각] ${nowKST}${contextBlock}`;
-}
-
-function buildFullPrompt(
-  card: CharacterCard,
-  memory: MemoryService,
-  channelType: 'dm' | 'public',
-  userMessage: string,
-): string {
-  return `${buildSystemInstruction(card, memory, channelType, userMessage)}\n\n나: ${userMessage}`;
+  return `${system}\n\n[현재 시각] ${nowKST}${contextBlock}\n\n나: ${userMessage}`;
 }
 
 function friendlyError(err: unknown): string {

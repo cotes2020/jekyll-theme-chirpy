@@ -110,13 +110,12 @@ async function sendMorningGreeting(
     const { dateStr, dayStr } = formatKSTDate();
 
     const prompt =
-      `${card.body}\n\n` +
       `오늘은 ${dateStr} ${dayStr}이야.\n` +
       `아침 인사 메시지를 한국어로, 짧고 따뜻하게 보내줘.\n` +
       `날짜와 요일을 자연스럽게 언급하고, 오늘 하루도 잘 보내길 바란다는 마음을 담아줘.\n` +
       `2-3문장 이내로.`;
 
-    const { text } = await generateAssistantText(process.env, prompt);
+    const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
 
     await dmChannel.send(text.slice(0, 1900));
     console.log(`[Proactive:${card.slug}] 아침 인사 전송 완료`);
@@ -165,13 +164,12 @@ async function sendEveningCheckin(
     const { dateStr, dayStr } = formatKSTDate();
 
     const prompt =
-      `${card.body}\n\n` +
       `오늘은 ${dateStr} ${dayStr}이야.\n` +
       `저녁 체크인 시간이야. 오늘 하루 어땠는지 가볍게 물어봐줘.\n` +
       `따뜻하고 편안한 말투로, 2-3문장 이내로. 한국어로.\n` +
       (context ? `\n[오늘 기억]\n${context}` : '');
 
-    const { text } = await generateAssistantText(process.env, prompt);
+    const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
     await dmChannel.send(text.slice(0, 1900));
     console.log(`[Proactive:${card.slug}] 저녁 체크인 전송 완료`);
   } catch (e: unknown) {
@@ -220,13 +218,12 @@ export async function sendStartupGreeting(
     const { dateStr, dayStr, timeStr } = formatKSTDate();
 
     const prompt =
-      `${card.body}\n\n` +
       `방금 봇이 시작됐어. ${dateStr} ${dayStr} ${timeStr}.\n` +
       `마치 잠에서 깨어난 것처럼, 짧고 자연스럽게 기상 메시지를 보내줘.\n` +
       `2-3문장 이내로. 한국어로.\n` +
       (context ? `\n[기억]\n${context}` : '');
 
-    const { text } = await generateAssistantText(process.env, prompt);
+    const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
     await dmChannel.send(text.slice(0, 1900));
     console.log(`[Proactive:${card.slug}] 기상 메시지 전송 완료`);
   } catch (e: unknown) {
@@ -304,14 +301,13 @@ async function sendSpontaneousMessage(
     const { dateStr, dayStr, timeStr } = formatKSTDate();
 
     const prompt =
-      `${card.body}\n\n` +
       `지금은 ${dateStr} ${dayStr} ${timeStr}이야.\n` +
       `너는 지금 혼자 있다가 갑자기 말을 걸고 싶어졌어.\n` +
       `안부, 문득 떠오른 생각, 궁금한 것, 하고 싶은 말 등 자유롭게 자연스럽게 짧게 한마디 건네줘.\n` +
       `1-2문장 이내로. 한국어로.\n` +
       (context ? `\n[최근 기억]\n${context}` : '');
 
-    const { text } = await generateAssistantText(process.env, prompt);
+    const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
     await dmChannel.send(text.slice(0, 1900));
     console.log(`[Proactive:${card.slug}] 자발적 메시지 전송 완료`);
   } catch (e: unknown) {
