@@ -35,14 +35,6 @@ memo/characters/
 
 ---
 
-## 레거시 자동 이관
-
-봇 첫 실행 시(정확히는 `MEMO_REPO_PATH/assistant/.legacy/` 가 없을 때) 기존 `assistant/{logs,memory}` 가 `characters/<slug>/memory/` 로 자동 복사되고, 원본은 `assistant/.legacy/{logs,memory}/` 로 rename되어 백업된다. 이관 후 memo 레포에서 자동 커밋(push 없음).
-
-이관 대상 슬러그: `ASSISTANT_LEGACY_MIGRATE_SLUG` (없으면 `ASSISTANT_DEFAULT_CHARACTER`, 기본 `yawn`).
-
----
-
 ## 슬래시 명령어
 
 ### `/character` — 캐릭터 관리
@@ -103,7 +95,6 @@ AI 호출 시 프롬프트는 다음 순서로 조립된다 (`ASSISTANT_MAX_PROM
 | `ASSISTANT_AI_PROVIDER` | `gemini` | `gemini` 또는 `claude-cli` |
 | `ASSISTANT_AGENT_REPO_PATH` | — | (`claude-cli`일 때) Claude가 작업할 cwd. 비우면 텍스트 생성만 |
 | `ASSISTANT_DEFAULT_CHARACTER` | `yawn` | `.active.json.default` 가 없을 때 폴백 슬러그 |
-| `ASSISTANT_LEGACY_MIGRATE_SLUG` | = `ASSISTANT_DEFAULT_CHARACTER` | 레거시 이관 대상 슬러그 |
 | `ASSISTANT_MORNING_HOUR` | `8` | 아침 인사 시각 (KST, 0–23) |
 | `ASSISTANT_MEMORY_COMMIT_INTERVAL_MS` | `3600000` | 기억 자동 커밋 주기(ms). 기본 1시간 |
 | `ASSISTANT_MAX_PROMPT_CHARS` | `12000` | AI 프롬프트 상한 (시스템+컨텍스트+질문 포함) |
@@ -143,8 +134,7 @@ relationship: 연인 같은 비서
 apps/discord-bots/apps/yawnbot/src/
 ├── services/
 │   ├── character-service.ts     ← 카드 로드·캐시, .active.json, channelKey helper
-│   ├── memory-service.ts        ← 슬러그별 계층형 기억, git commit
-│   └── legacy-migration.ts      ← assistant/ → characters/<slug>/memory/ 1회 이관
+│   └── memory-service.ts        ← 슬러그별 계층형 기억, git commit
 └── bot/
     ├── assistant-handler.ts     ← DM/채널 메시지 → 활성 카드 + 메모리로 AI 대화
     ├── proactive.ts             ← 기상·아침 인사 (기본 캐릭터 기준)
@@ -153,4 +143,4 @@ apps/discord-bots/apps/yawnbot/src/
         └── router.ts            ← /character, /기억 디스패치
 ```
 
-`main.ts` 에서 `characterService.initialize()` → `migrateLegacyAssistant(...)` → default 슬러그 `getMemory(...)` 선-초기화 순으로 호출한다.
+`main.ts` 에서 `characterService.initialize()` → default 슬러그 `getMemory(...)` 선-초기화 순으로 호출한다. 종료(SIGINT/SIGTERM) 시 `characterService.commitIfDirty()` 로 `.active.json` 변경분을 자동 커밋한다.
