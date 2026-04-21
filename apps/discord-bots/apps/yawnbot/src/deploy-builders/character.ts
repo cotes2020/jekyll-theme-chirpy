@@ -61,17 +61,18 @@ export const characterCommand = () =>
     .addSubcommand((sub) =>
       sub
         .setName('image')
-        .setDescription('현재 활성 캐릭터의 외형으로 이미지 생성')
+        .setDescription('현재 활성 캐릭터의 외형으로 이미지 생성 (상황 비우면 기본 외형)')
         .setDescriptionLocalizations(
-          enUS('Generate image using current active character appearance'),
+          enUS('Generate character image (empty scene = default appearance)'),
         )
         .addStringOption((opt) =>
           opt
             .setName('상황')
             .setNameLocalizations(enUS('scene'))
-            .setDescription('상황 · 포즈 · 배경 설명 (영어 권장)')
-            .setDescriptionLocalizations(enUS('Scene · pose · background (English recommended)'))
-            .setRequired(true)
+            .setDescription('상황 · 포즈 · 배경 (비우면 외형만, 영어 권장)')
+            .setDescriptionLocalizations(
+              enUS('Scene · pose · background (empty=appearance only, English recommended)'),
+            )
             .setMaxLength(1500),
         )
         .addStringOption((opt) =>
