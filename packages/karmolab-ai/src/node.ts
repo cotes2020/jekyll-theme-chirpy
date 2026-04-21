@@ -374,8 +374,11 @@ export async function generateAssistantText(
   if (opts.systemInstruction || (opts.history && opts.history.length > 0)) {
     const surface = parseGenerativeSurfaceFromEnv(env);
     if (surface === 'vertex') {
-      console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 single-turn으로 fallback합니다.');
-      const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'vertex' });
+      console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 single-turn으로 fallback합니다. systemInstruction을 prompt 앞에 합침.');
+      const combined = opts.systemInstruction
+        ? `${opts.systemInstruction}\n\n${prompt}`
+        : prompt;
+      const { text } = await generateBlobTextFromEnvWithOptions(env, combined, { surface: 'vertex' });
       return { text, provider: 'gemini' };
     }
     const apiKey = env.GEMINI_API_KEY?.trim();
