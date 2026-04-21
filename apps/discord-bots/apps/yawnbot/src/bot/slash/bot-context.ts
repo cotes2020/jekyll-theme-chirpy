@@ -25,6 +25,7 @@ export interface BotContext {
   getMood: ((slug: string) => MoodService) | null;
   getImageAttachment: (imageRelativePath: string) => { file: string; name: string } | null;
   isAdmin: (userId: unknown) => boolean;
+  isOwner: (userId: unknown) => boolean;
   generativeText: GenerativeTextClient | null;
   cursorState: { inFlight: boolean };
 }

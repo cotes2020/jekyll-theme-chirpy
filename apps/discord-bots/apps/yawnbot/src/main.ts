@@ -102,9 +102,14 @@ function getMood(slug: string): MoodService {
 }
 
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
+const OWNER_ID = process.env.ASSISTANT_USER_ID?.trim() || '';
 
 function isAdmin(userId: unknown) {
   return ADMIN_IDS.includes(String(userId));
+}
+
+function isOwner(userId: unknown) {
+  return !!OWNER_ID && String(userId) === OWNER_ID;
 }
 
 const cursorState = { inFlight: false };
@@ -132,6 +137,7 @@ function buildCtx() {
     getMood: memoRepoPath ? getMood : null,
     getImageAttachment,
     isAdmin,
+    isOwner,
     generativeText,
     cursorState,
   };

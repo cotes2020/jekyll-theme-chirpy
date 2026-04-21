@@ -45,6 +45,13 @@ import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
 
+/** owner 전용 커맨드 가드. 비인가 사용자면 ephemeral 응답 후 false 반환. */
+async function guardOwner(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<boolean> {
+  if (ctx.isOwner(interaction.user.id)) return true;
+  await interaction.reply({ content: '이 명령어는 봇 소유자만 사용할 수 있어요.', flags: MessageFlags.Ephemeral });
+  return false;
+}
+
 /** 현재 /기억 호출 컨텍스트의 활성 슬러그 memory 를 돌려준다. 없으면 null + 안내. */
 async function resolveMemoryForInteraction(
   ctx: BotContext,
@@ -237,14 +244,19 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         if (group === '카드') {
           switch (sub) {
             case 'list': await handleCharacterList(ctx, interaction); break;
-            case 'switch': await handleCharacterSwitch(ctx, interaction); break;
+            case 'switch':
+              if (!(await guardOwner(ctx, interaction))) break;
+              await handleCharacterSwitch(ctx, interaction); break;
             case 'info': await handleCharacterInfo(ctx, interaction); break;
-            case 'reset': await handleCharacterReset(ctx, interaction); break;
+            case 'reset':
+              if (!(await guardOwner(ctx, interaction))) break;
+              await handleCharacterReset(ctx, interaction); break;
             case 'image': await handleCharacterImage(ctx, interaction); break;
             case 'history': await handleCharacterImageHistory(ctx, interaction); break;
             default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
           }
         } else if (group === '기억') {
+          if (!(await guardOwner(ctx, interaction))) break;
           const resolved = await resolveMemoryForInteraction(ctx, interaction);
           if (!resolved) break;
           const { card, memory } = resolved;
@@ -360,6 +372,7 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         break;
       }
       case '일정': {
+        if (!(await guardOwner(ctx, interaction))) break;
         const sub = interaction.options.getSubcommand();
         switch (sub) {
           case '추가': await handleScheduleAdd(ctx, interaction); break;
