@@ -23,6 +23,7 @@ const IMAGE_COOLDOWN_MS = 2 * 60 * 1000;
 const chatHistories = new Map<string, ChatContent[]>();
 const imageCacheServices = new Map<string, ImageCacheService>();
 const lastImageAt = new Map<string, number>();
+const lastSentImageId = new Map<string, string>();
 
 function getImageCacheService(card: CharacterCard): ImageCacheService {
   if (!imageCacheServices.has(card.slug)) {
@@ -118,6 +119,7 @@ async function detectSceneTags(
 }
 
 interface SceneImage {
+  id: string;
   tags: string[];
   buffer: Buffer;
   mimeType: string;
@@ -148,10 +150,14 @@ async function resolveSceneImage(
   const cached = cacheService.findSimilar(tags);
 
   if (cached) {
+    if (lastSentImageId.get(slug) === cached.id) {
+      console.log(`[Assistant:${slug}] 자동 이미지: 직전과 동일 이미지 (id=${cached.id}), 텍스트만 전송`);
+      return null;
+    }
     cacheService.incrementHit(cached);
     const buffer = fs.readFileSync(cached.filePath);
     console.log(`[Assistant:${slug}] 자동 이미지: 캐시 히트 (id=${cached.id})`);
-    return { tags, buffer, mimeType: cached.mimeType };
+    return { tags, buffer, mimeType: cached.mimeType, id: cached.id };
   }
 
   // 캐시 미스 → 새 이미지 생성 (이 시점에만 쿨다운 소모)
@@ -167,7 +173,7 @@ async function resolveSceneImage(
   const img = images[0];
   const entry = cacheService.add(tags, finalPrompt, img.buffer, img.mimeType, modelId);
   console.log(`[Assistant:${slug}] 자동 이미지: 완료 (id=${entry.id}, 모델=${modelId})`);
-  return { tags, buffer: img.buffer, mimeType: img.mimeType };
+  return { id: entry.id, tags, buffer: img.buffer, mimeType: img.mimeType };
 }
 
 /**
@@ -384,6 +390,7 @@ export async function handleAssistantMessage(
       const ext = (sceneImage.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
       const attachment = new AttachmentBuilder(sceneImage.buffer, { name: `scene.${ext}` });
       await message.reply({ content: reply, files: [attachment] });
+      lastSentImageId.set(card.slug, sceneImage.id);
     } else {
       await message.reply(reply);
     }
