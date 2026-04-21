@@ -203,8 +203,13 @@ function buildSystemInstruction(
     `[Assistant:${memory.slug}] 컨텍스트 빌드: ${contextSize}바이트 (할당: ${contextBudget}자, 사용: ${context.length}자)`,
   );
 
+  const nowKST = new Date().toLocaleString('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false,
+  });
   const contextBlock = context ? `\n\n${context}` : '';
-  return `${system}${contextBlock}`;
+  return `${system}\n\n[현재 시각] ${nowKST}${contextBlock}`;
 }
 
 function buildFullPrompt(

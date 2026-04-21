@@ -14,6 +14,7 @@ export declare function generateAiStudioText(opts: {
     apiKey: string;
     modelId?: string | null;
     prompt: string;
+    systemInstruction?: string;
     signal?: AbortSignal;
 }): Promise<string>;
 /** Vertex Publisher `generateContent` (API 키 인증, 브라우저 `gemini.ts`와 동일 REST 형태) */

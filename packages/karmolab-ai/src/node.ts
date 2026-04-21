@@ -31,9 +31,14 @@ export async function generateAiStudioText(opts: {
   apiKey: string;
   modelId?: string | null;
   prompt: string;
+  systemInstruction?: string;
   signal?: AbortSignal;
 }): Promise<string> {
-  const model = createAiStudioTextModel(opts.apiKey, opts.modelId);
+  const genAI = new GoogleGenerativeAI(opts.apiKey.trim());
+  const model = genAI.getGenerativeModel({
+    model: resolveAiStudioTextModelId(opts.modelId),
+    ...(opts.systemInstruction ? { systemInstruction: opts.systemInstruction } : {}),
+  });
   const ro = opts.signal ? { signal: opts.signal } : undefined;
   const res = await model.generateContent(opts.prompt, ro);
   return res.response.text();

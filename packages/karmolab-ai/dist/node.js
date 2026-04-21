@@ -30,7 +30,11 @@ function createAiStudioTextModel(apiKey, modelId) {
 }
 /** 단일 문자열 프롬프트 → 응답 텍스트 (AI Studio) */
 async function generateAiStudioText(opts) {
-    const model = createAiStudioTextModel(opts.apiKey, opts.modelId);
+    const genAI = new generative_ai_1.GoogleGenerativeAI(opts.apiKey.trim());
+    const model = genAI.getGenerativeModel({
+        model: resolveAiStudioTextModelId(opts.modelId),
+        ...(opts.systemInstruction ? { systemInstruction: opts.systemInstruction } : {}),
+    });
     const ro = opts.signal ? { signal: opts.signal } : undefined;
     const res = await model.generateContent(opts.prompt, ro);
     return res.response.text();
