@@ -100,6 +100,8 @@ ASSISTANT_AGENT_REPO_PATH=C:/Users/masca/repos/karmoddrine/Mascari4615.github.io
 MEMO_REPO_PATH=C:/Users/masca/repos/karmoddrine/memo
 # 아침 인사 시각 (KST 시 단위, 0-23)
 ASSISTANT_MORNING_HOUR=8
+# 저녁 체크인 시각 (KST 시 단위, 0-23)
+ASSISTANT_EVENING_HOUR=21
 # 대화 기억 커밋 주기 (ms). 기본 1시간.
 ASSISTANT_MEMORY_COMMIT_INTERVAL_MS=3600000
 # AI에 전달할 최대 프롬프트 길이
