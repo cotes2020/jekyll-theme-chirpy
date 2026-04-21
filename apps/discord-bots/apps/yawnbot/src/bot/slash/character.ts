@@ -171,7 +171,10 @@ export async function handleCharacterReset(ctx, interaction) {
   });
 }
 
-/** /character image — 현재 채널 활성 캐릭터의 외형(appearance.md) + 상황으로 이미지 생성 */
+/**
+ * /character image — 현재 채널 활성 캐릭터의 외형(appearance.md)으로 이미지 생성.
+ * 상황 비우면 외형만 써서 기본 포즈/프로필 이미지.
+ */
 export async function handleCharacterImage(ctx, interaction) {
   const cs: CharacterService | null = ctx.characterService;
   if (!cs) {
@@ -182,17 +185,9 @@ export async function handleCharacterImage(ctx, interaction) {
     return;
   }
 
-  const situation = (interaction.options.getString('상황', true) || '').trim();
+  const situation = (interaction.options.getString('상황') || '').trim();
   const aspectRatio = interaction.options.getString('비율') || undefined;
   const count = interaction.options.getInteger('개수') ?? 1;
-
-  if (!situation) {
-    await interaction.reply({
-      content: '상황을 입력해주세요.',
-      flags: MessageFlags.Ephemeral,
-    });
-    return;
-  }
 
   const channelKey = getChannelKey(interaction);
   const card = cs.resolveCard(channelKey);
@@ -214,11 +209,11 @@ export async function handleCharacterImage(ctx, interaction) {
     throw e;
   }
 
-  const finalPrompt = buildCharacterImagePrompt(card, situation);
+  const finalPrompt = buildCharacterImagePrompt(card, situation || undefined);
   await runImageGeneration(interaction, finalPrompt, {
     aspectRatio,
     sampleCount: count,
-    displayPrompt: situation,
+    displayPrompt: situation || `${card.displayName} 기본 외형`,
     characterLabel: card.slug,
   });
 }
