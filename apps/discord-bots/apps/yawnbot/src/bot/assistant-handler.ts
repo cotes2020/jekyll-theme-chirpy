@@ -149,7 +149,10 @@ async function autoGenerateSceneImage(
     const buffer = fs.readFileSync(cached.filePath);
     const ext = (cached.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
     const attachment = new AttachmentBuilder(buffer, { name: `scene.${ext}` });
-    await (message.channel as TextChannel | DMChannel).send({ files: [attachment] });
+    await (message.channel as TextChannel | DMChannel).send({
+      content: `*${tags.join(', ')}*`,
+      files: [attachment],
+    });
     console.log(`[Assistant:${slug}] 자동 이미지: 캐시 재사용 (id=${cached.id})`);
     return;
   }
@@ -165,12 +168,15 @@ async function autoGenerateSceneImage(
 
   if (images.length === 0) return;
   const img = images[0];
-  const entry = cacheService.add(tags, finalPrompt, img.buffer, img.mimeType);
+  const entry = cacheService.add(tags, finalPrompt, img.buffer, img.mimeType, modelId);
   console.log(`[Assistant:${slug}] 자동 이미지: 완료 (id=${entry.id}, 모델=${modelId})`);
 
   const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
   const attachment = new AttachmentBuilder(img.buffer, { name: `scene.${ext}` });
-  await (message.channel as TextChannel | DMChannel).send({ files: [attachment] });
+  await (message.channel as TextChannel | DMChannel).send({
+    content: `*${tags.join(', ')}*`,
+    files: [attachment],
+  });
 }
 
 /**

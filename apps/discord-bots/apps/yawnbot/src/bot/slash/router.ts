@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { MessageFlags, EmbedBuilder } from 'discord.js';
+import type { AutocompleteInteraction } from 'discord.js';
 import { handlePing, handleHelp } from './general';
 import {
   handleEnhanceSlash,
@@ -37,6 +38,7 @@ import {
   handleCharacterInfo,
   handleCharacterReset,
   handleCharacterImage,
+  handleCharacterImageHistory,
 } from './character';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
@@ -68,6 +70,33 @@ async function resolveMemoryForInteraction(ctx, interaction) {
     return null;
   }
   return { card, memory: getMem(card.slug) };
+}
+
+/**
+ * Autocomplete 요청 처리.
+ * - /이미지 캐릭터: 슬러그 목록 반환
+ * - /character switch slug: 슬러그 목록 반환
+ */
+export async function dispatchAutocomplete(ctx, interaction: AutocompleteInteraction): Promise<void> {
+  const focused = interaction.options.getFocused(true);
+  const cs = ctx.characterService;
+  const slugs: string[] = cs ? cs.listCharacters() : [];
+
+  const isCharacterSlug =
+    (interaction.commandName === '이미지' && focused.name === '캐릭터') ||
+    (interaction.commandName === 'character' && focused.name === 'slug');
+
+  if (isCharacterSlug) {
+    const query = String(focused.value).toLowerCase();
+    const choices = slugs
+      .filter((s) => s.includes(query))
+      .slice(0, 25)
+      .map((s) => ({ name: s, value: s }));
+    await interaction.respond(choices);
+    return;
+  }
+
+  await interaction.respond([]);
 }
 
 export async function dispatchSlashCommand(ctx, interaction) {
@@ -250,6 +279,9 @@ export async function dispatchSlashCommand(ctx, interaction) {
             break;
           case 'image':
             await handleCharacterImage(ctx, interaction);
+            break;
+          case 'image-history':
+            await handleCharacterImageHistory(ctx, interaction);
             break;
           default:
             await interaction.reply({ content: '알 수 없는 character 하위 명령입니다.', flags: MessageFlags.Ephemeral });

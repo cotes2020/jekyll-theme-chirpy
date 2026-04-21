@@ -1,9 +1,10 @@
-// @ts-nocheck
 import fs from 'fs';
 import path from 'path';
 import { MessageFlags, AttachmentBuilder, EmbedBuilder } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import { generateImageFromEnvWithOptions } from 'karmolab-ai/node';
 import type { CharacterCard } from '../../services/character-service';
+import type { BotContext } from './bot-context';
 
 const MAX_PROMPT_CHARS = 1500;
 
@@ -12,7 +13,7 @@ const MAX_PROMPT_CHARS = 1500;
  * 알 수 없는 모델은 null — embed에서 "비용" 필드 생략.
  * 가격 변경 시 업데이트.
  */
-const IMAGEN_PRICE_PER_IMAGE: Record<string, number> = {
+export const IMAGEN_PRICE_PER_IMAGE: Record<string, number> = {
   // Imagen 4
   'imagen-4.0-fast-generate-001': 0.02,
   'imagen-4.0-generate-001': 0.04,
@@ -67,7 +68,7 @@ export function buildCharacterImagePrompt(card: CharacterCard, situation?: strin
  * 호출 전에 interaction.deferReply() 가 완료돼있어야 함 (editReply 로 응답하므로).
  */
 export async function runImageGeneration(
-  interaction,
+  interaction: Pick<ChatInputCommandInteraction, 'editReply'>,
   finalPrompt: string,
   opts: {
     modelId?: string | null;
@@ -88,7 +89,7 @@ export async function runImageGeneration(
       {
         modelId: opts.modelId,
         sampleCount: Math.max(1, Math.min(4, opts.sampleCount ?? 1)),
-        aspectRatio: opts.aspectRatio,
+        aspectRatio: opts.aspectRatio as Parameters<typeof generateImageFromEnvWithOptions>[2]['aspectRatio'],
         negativePrompt: opts.negativePrompt,
       },
     );
@@ -127,7 +128,7 @@ export async function runImageGeneration(
   }
 }
 
-export async function handleImage(ctx, interaction) {
+export async function handleImage(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const prompt = (interaction.options.getString('프롬프트', true) || '').trim();
   const modelId = interaction.options.getString('모델') || null;
   const aspectRatio = interaction.options.getString('비율') || undefined;
@@ -177,7 +178,7 @@ export async function handleImage(ctx, interaction) {
   try {
     await interaction.deferReply();
   } catch (e) {
-    if (e && typeof e === 'object' && 'code' in e && e.code === 10062) {
+    if (e && typeof e === 'object' && 'code' in e && (e as { code: unknown }).code === 10062) {
       console.warn('[image] deferReply 10062 (Unknown interaction)');
       return;
     }

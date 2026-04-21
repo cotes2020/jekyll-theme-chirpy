@@ -129,7 +129,8 @@ const commands = [
         .setDescriptionLocalizations(
           enUS('Character slug (empty=active, "none"=no character)'),
         )
-        .setMaxLength(64),
+        .setMaxLength(64)
+        .setAutocomplete(true),
     )
     .addStringOption((opt) =>
       opt

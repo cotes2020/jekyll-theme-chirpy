@@ -23,7 +23,7 @@ import { CharacterService } from './services/character-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
-import { dispatchSlashCommand } from './bot/slash/router';
+import { dispatchSlashCommand, dispatchAutocomplete } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 import { handleAssistantMessage } from './bot/assistant-handler';
@@ -117,6 +117,10 @@ client.on('interactionCreate', async (interaction) => {
   const ctx = buildCtx();
   if (interaction.isButton()) {
     await handleButtonInteraction(ctx as any, interaction as any);
+    return;
+  }
+  if (interaction.isAutocomplete()) {
+    await dispatchAutocomplete(ctx as any, interaction as any);
     return;
   }
   if (interaction.isChatInputCommand()) {

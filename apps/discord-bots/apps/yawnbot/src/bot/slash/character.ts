@@ -1,14 +1,15 @@
-// @ts-nocheck
 /**
  * /character 슬래시 — DM/채널별 활성 캐릭터 관리
  */
-import { EmbedBuilder, MessageFlags } from 'discord.js';
+import { EmbedBuilder, MessageFlags, AttachmentBuilder } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import type { CharacterService, CharacterCard } from '../../services/character-service';
 import { CharacterService as CSHelper } from '../../services/character-service';
 import { buildCharacterImagePrompt, runImageGeneration } from './image';
+import { ImageCacheService } from '../../services/image-cache-service';
+import type { BotContext } from './bot-context';
 
-function getChannelKey(interaction): string {
-  // 길드 채널이 아니면 DM 으로 간주 (interaction 의 channel 이 DM 이거나 guildId 없음)
+function getChannelKey(interaction: ChatInputCommandInteraction): string {
   const isDM = !interaction.guildId;
   return CSHelper.channelKey({
     isDM,
@@ -25,7 +26,7 @@ function summarizeCard(card: CharacterCard): string {
   return parts.join(' · ') || '(frontmatter 없음)';
 }
 
-export async function handleCharacterList(ctx, interaction) {
+export async function handleCharacterList(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const cs: CharacterService | null = ctx.characterService;
   if (!cs) {
     await interaction.reply({
@@ -59,10 +60,7 @@ export async function handleCharacterList(ctx, interaction) {
   for (const slug of slugs) {
     const card = cs.loadCard(slug);
     if (!card) {
-      embed.addFields({
-        name: `${slug} ⚠️`,
-        value: 'card.md 로드 실패',
-      });
+      embed.addFields({ name: `${slug} ⚠️`, value: 'card.md 로드 실패' });
       continue;
     }
     const marker = slug === activeSlug ? ' ✅' : '';
@@ -75,7 +73,7 @@ export async function handleCharacterList(ctx, interaction) {
   await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
-export async function handleCharacterSwitch(ctx, interaction) {
+export async function handleCharacterSwitch(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const cs: CharacterService | null = ctx.characterService;
   if (!cs) {
     await interaction.reply({
@@ -111,7 +109,7 @@ export async function handleCharacterSwitch(ctx, interaction) {
   await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
-export async function handleCharacterInfo(ctx, interaction) {
+export async function handleCharacterInfo(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const cs: CharacterService | null = ctx.characterService;
   if (!cs) {
     await interaction.reply({
@@ -143,7 +141,7 @@ export async function handleCharacterInfo(ctx, interaction) {
   await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
-export async function handleCharacterReset(ctx, interaction) {
+export async function handleCharacterReset(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const cs: CharacterService | null = ctx.characterService;
   if (!cs) {
     await interaction.reply({
@@ -173,9 +171,9 @@ export async function handleCharacterReset(ctx, interaction) {
 
 /**
  * /character image — 현재 채널 활성 캐릭터의 외형(appearance.md)으로 이미지 생성.
- * 상황 비우면 외형만 써서 기본 포즈/프로필 이미지.
+ * 상황 비우면 외형만 써서 기본 포즈·프로필 이미지.
  */
-export async function handleCharacterImage(ctx, interaction) {
+export async function handleCharacterImage(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const cs: CharacterService | null = ctx.characterService;
   if (!cs) {
     await interaction.reply({
@@ -202,7 +200,7 @@ export async function handleCharacterImage(ctx, interaction) {
   try {
     await interaction.deferReply();
   } catch (e) {
-    if (e && typeof e === 'object' && 'code' in e && e.code === 10062) {
+    if (e && typeof e === 'object' && 'code' in e && (e as { code: unknown }).code === 10062) {
       console.warn('[character.image] deferReply 10062');
       return;
     }
@@ -216,4 +214,76 @@ export async function handleCharacterImage(ctx, interaction) {
     displayPrompt: situation || `${card.displayName} 기본 외형`,
     characterLabel: card.slug,
   });
+}
+
+/**
+ * /character image-history — 자동 생성된 씬 이미지 캐시 목록 조회.
+ */
+export async function handleCharacterImageHistory(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
+  const cs: CharacterService | null = ctx.characterService;
+  if (!cs) {
+    await interaction.reply({
+      content: 'MEMO_REPO_PATH가 설정되지 않아 캐릭터 시스템이 비활성화돼 있어요.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  const channelKey = getChannelKey(interaction);
+  const card = cs.resolveCard(channelKey);
+  if (!card) {
+    await interaction.reply({
+      content: '활성 캐릭터 카드가 없어요. `/character list` 로 확인해봐요.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  const memoRepoPath = process.env.MEMO_REPO_PATH?.trim() || '';
+  const cacheService = new ImageCacheService(card.dir, memoRepoPath, card.slug);
+  const scenes = cacheService.listScenes();
+
+  if (scenes.length === 0) {
+    await interaction.reply({
+      content: `${card.displayName}의 이미지 캐시가 없어요. 대화하다 보면 자동으로 생성됩니다.`,
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  // 최신순 정렬, 최대 10개
+  const sorted = [...scenes].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  ).slice(0, 10);
+
+  const embed = new EmbedBuilder()
+    .setTitle(`🖼️ ${card.displayName} 씬 이미지 캐시 (${scenes.length}개)`)
+    .setDescription('최근 10개. 재사용 횟수 높을수록 자주 매칭된 장면.')
+    .setColor(0x7c4dff);
+
+  for (const entry of sorted) {
+    const date = new Date(entry.createdAt).toLocaleDateString('ko-KR');
+    embed.addFields({
+      name: entry.tags.join(', '),
+      value: `히트: ${entry.hitCount}회 · ${date} · \`${entry.id.slice(0, 8)}\``,
+      inline: false,
+    });
+  }
+
+  // 가장 최근 이미지 첨부
+  const latest = sorted[0];
+  let files: AttachmentBuilder[] = [];
+  try {
+    const fs = await import('fs');
+    if (fs.existsSync(latest.filePath)) {
+      const buffer = fs.readFileSync(latest.filePath);
+      const ext = (latest.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+      files = [new AttachmentBuilder(buffer, { name: `latest.${ext}` })];
+      embed.setImage(`attachment://latest.${ext}`);
+    }
+  } catch {
+    /* ignore */
+  }
+
+  await interaction.reply({ embeds: [embed], files, flags: MessageFlags.Ephemeral });
 }

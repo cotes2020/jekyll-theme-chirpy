@@ -31,7 +31,8 @@ export const characterCommand = () =>
             .setDescriptionLocalizations(
               enUS('Character slug (e.g. yawn, timeto)'),
             )
-            .setRequired(true),
+            .setRequired(true)
+            .setAutocomplete(true),
         ),
     )
     .addSubcommand((sub) =>
@@ -57,6 +58,12 @@ export const characterCommand = () =>
         .setDescriptionLocalizations(
           enUS('Remove mapping for this DM/channel → fall back to default'),
         ),
+    )
+    .addSubcommand((sub) =>
+      sub
+        .setName('image-history')
+        .setDescription('자동 생성된 씬 이미지 캐시 조회 (최근 10개)')
+        .setDescriptionLocalizations(enUS('View auto-generated scene image cache (last 10)')),
     )
     .addSubcommand((sub) =>
       sub
