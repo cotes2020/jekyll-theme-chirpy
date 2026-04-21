@@ -13,6 +13,7 @@ import type { CharacterService, CharacterCard } from '../services/character-serv
 import { CharacterService as CSHelper } from '../services/character-service';
 import type { MemoryService } from '../services/memory-service';
 import type { ScheduleService } from '../services/schedule-service';
+import type { MoodService } from '../services/mood-service';
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 let eveningTimer: ReturnType<typeof setTimeout> | null = null;
@@ -281,10 +282,20 @@ export function startScheduleReminder(
   }, 60_000);
 }
 
+function buildTimeOfDayHint(kstHour: number): string {
+  if (kstHour < 12) return '오전이라 조금 맑은 기분이야.';
+  if (kstHour < 15) return '점심 먹고 약간 나른한 시간이야.';
+  if (kstHour < 18) return '오후 시간, 하루가 슬슬 기울어 가고 있어.';
+  if (kstHour < 21) return '저녁 시간이야. 하루가 거의 끝나가고 있어.';
+  return '밤이 깊어가고 있어. 조용하고 느긋한 시간이야.';
+}
+
 async function sendSpontaneousMessage(
   client: Client,
   characterService: CharacterService,
   getMemory: (slug: string) => MemoryService,
+  getMood?: (slug: string) => MoodService,
+  getSchedule?: (slug: string) => ScheduleService,
 ): Promise<void> {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
@@ -299,12 +310,32 @@ async function sendSpontaneousMessage(
     const memory = getMemory(card.slug);
     const context = memory.buildContext(2000);
     const { dateStr, dayStr, timeStr } = formatKSTDate();
+    const kstHour = parseInt(timeStr.split(':')[0], 10);
+    const timeHint = buildTimeOfDayHint(kstHour);
+
+    // 기분 라인
+    const moodLine = getMood ? (getMood(card.slug).toContextLine() || '') : '';
+
+    // 다가오는 일정 (24시간 이내)
+    let scheduleHint = '';
+    if (getSchedule) {
+      try {
+        const pending = getSchedule(card.slug).getPendingReminders();
+        if (pending.length > 0) {
+          const next = pending[0];
+          const unixSec = Math.floor(new Date(next.datetime).getTime() / 1000);
+          scheduleHint = `\n곧 일정이 있어: "${next.title}" (<t:${unixSec}:R>)`;
+        }
+      } catch { /* ignore */ }
+    }
 
     const prompt =
-      `지금은 ${dateStr} ${dayStr} ${timeStr}이야.\n` +
-      `너는 지금 혼자 있다가 갑자기 말을 걸고 싶어졌어.\n` +
-      `안부, 문득 떠오른 생각, 궁금한 것, 하고 싶은 말 등 자유롭게 자연스럽게 짧게 한마디 건네줘.\n` +
-      `1-2문장 이내로. 한국어로.\n` +
+      `지금은 ${dateStr} ${dayStr} ${timeStr}이야. ${timeHint}\n` +
+      (moodLine ? `${moodLine}\n` : '') +
+      `너는 갑자기 말을 걸고 싶어졌어.\n` +
+      `최근 기억을 참고해서 자연스럽게 한마디 건네줘 — 최근 대화 주제 후속, 오늘 하루 어떤지, 문득 떠오른 생각, 궁금한 것 등.\n` +
+      `1-2문장, 한국어로.\n` +
+      (scheduleHint ? `${scheduleHint}\n` : '') +
       (context ? `\n[최근 기억]\n${context}` : '');
 
     const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
@@ -326,13 +357,15 @@ function scheduleSpontaneous(
   activeEnd: number,
   minMs: number,
   maxMs: number,
+  getMood?: (slug: string) => MoodService,
+  getSchedule?: (slug: string) => ScheduleService,
 ): void {
   const delay = msUntilNextSpontaneous(activeStart, activeEnd, minMs, maxMs);
   console.log(`[Proactive] 다음 자발적 메시지까지 ${Math.round(delay / 60000)}분 대기`);
 
   spontaneousTimer = setTimeout(async () => {
-    await sendSpontaneousMessage(client, characterService, getMemory);
-    scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs);
+    await sendSpontaneousMessage(client, characterService, getMemory, getMood, getSchedule);
+    scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs, getMood, getSchedule);
   }, delay);
 }
 
@@ -340,6 +373,8 @@ export function startSpontaneous(
   client: Client,
   characterService: CharacterService,
   getMemory: (slug: string) => MemoryService,
+  getMood?: (slug: string) => MoodService,
+  getSchedule?: (slug: string) => ScheduleService,
 ): void {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
@@ -358,7 +393,7 @@ export function startSpontaneous(
     10,
   );
 
-  scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs);
+  scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs, getMood, getSchedule);
 }
 
 export function stopProactive(): void {

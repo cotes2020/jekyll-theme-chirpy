@@ -13,6 +13,7 @@ import type { ChatContent } from 'karmolab-ai/node';
 import type { MemoryService, ConversationEntry } from '../services/memory-service';
 import { CharacterService, type CharacterCard } from '../services/character-service';
 import { ImageCacheService } from '../services/image-cache-service';
+import type { MoodService } from '../services/mood-service';
 import { buildCharacterImagePrompt } from './slash/image';
 
 const MAX_RESPONSE_LENGTH = 1900;
@@ -73,6 +74,34 @@ async function detectAndSaveHotMemory(
   } catch (e) {
     console.error(
       `[Assistant:${memory.slug}] 핫메모리 감지 실패:`,
+      e instanceof Error ? e.message : String(e),
+    );
+  }
+}
+
+async function updateMoodAfterConversation(
+  mood: MoodService,
+  slug: string,
+  userMsg: string,
+  aiResponse: string,
+): Promise<void> {
+  try {
+    const { text } = await generateAssistantText(
+      process.env,
+      `다음 대화 이후 캐릭터의 현재 기분을 한국어로 2~4단어로 표현해줘.\n` +
+        `예시: "신나고 활기참", "차분하고 집중", "피곤하고 졸림", "호기심 가득", "뿌듯하고 따뜻함"\n` +
+        `기분 단어만 반환, 다른 말 없이.\n\n` +
+        `유저: "${userMsg.slice(0, 200)}"\n` +
+        `캐릭터: "${aiResponse.slice(0, 200)}"`,
+    );
+    const trimmed = text.trim().slice(0, 50);
+    if (trimmed) {
+      mood.set(trimmed);
+      console.log(`[Assistant:${slug}] 기분 업데이트: ${trimmed}`);
+    }
+  } catch (e) {
+    console.error(
+      `[Assistant:${slug}] 기분 업데이트 실패:`,
       e instanceof Error ? e.message : String(e),
     );
   }
@@ -227,6 +256,7 @@ export async function handleAssistantMessage(
   message: Message,
   characterService: CharacterService,
   getMemory: (slug: string) => MemoryService,
+  getMood?: (slug: string) => MoodService,
 ): Promise<void> {
   const assistantUserId = process.env.ASSISTANT_USER_ID?.trim();
   const publicChannelId = process.env.ASSISTANT_PUBLIC_CHANNEL_ID?.trim();
@@ -300,10 +330,12 @@ export async function handleAssistantMessage(
   let fullPrompt: string;
   const history = isGemini ? getHistory(card.slug) : undefined;
 
+  const mood = getMood ? getMood(card.slug) : null;
+
   if (isGemini) {
     // systemInstruction = 캐릭터 카드 + 채널 타입만 (안정적 → Gemini implicit cache 활성화)
     systemInstruction = buildSystemPrompt(card, channelType);
-    // 가변 부분(시각, 메모리 컨텍스트, 오늘 로그)은 user message에 포함
+    // 가변 부분(시각, 기분, 메모리 컨텍스트, 오늘 로그)은 user message에 포함
     const nowKST = new Date().toLocaleString('ko-KR', {
       timeZone: 'Asia/Seoul',
       year: 'numeric', month: '2-digit', day: '2-digit',
@@ -316,8 +348,9 @@ export async function handleAssistantMessage(
     console.log(
       `[Assistant:${memory.slug}] 컨텍스트 빌드: ${contextSize}바이트 (할당: ${contextBudget}자, 사용: ${context.length}자)`,
     );
+    const moodLine = mood?.toContextLine() ? `\n${mood.toContextLine()}` : '';
     const contextBlock = context ? `\n\n${context}` : '';
-    fullPrompt = `[현재 시각] ${nowKST}${contextBlock}\n\n나: ${userContent}`;
+    fullPrompt = `[현재 시각] ${nowKST}${moodLine}${contextBlock}\n\n나: ${userContent}`;
   } else {
     fullPrompt = buildFullPrompt(card, memory, channelType, userContent);
   }
@@ -389,6 +422,7 @@ export async function handleAssistantMessage(
     if (isGemini) appendHistory(card.slug, userContent, reply);
 
     detectAndSaveHotMemory(memory, userContent).catch(() => {});
+    if (mood) updateMoodAfterConversation(mood, card.slug, userContent, reply).catch(() => {});
 
     // 씬 감지 → 캐시 조회 → 이미지 생성까지 완료 후 텍스트와 함께 전송
     const sceneImage = await resolveSceneImage(card, userContent, reply).catch((e) => {

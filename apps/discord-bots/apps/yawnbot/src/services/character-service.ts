@@ -17,6 +17,7 @@ export interface CharacterCard {
   tone?: string;
   speechStyle?: string;
   imageStyle?: string;
+  negativePrompt?: string;
   relationship?: string;
   frontmatter: Record<string, string>;
   body: string;
@@ -124,6 +125,7 @@ export class CharacterService {
         tone: data.tone,
         speechStyle: data.speech_style,
         imageStyle: data.image_style,
+        negativePrompt: data.negative_prompt || undefined,
         relationship: data.relationship,
         frontmatter: data,
         body: body.trim(),

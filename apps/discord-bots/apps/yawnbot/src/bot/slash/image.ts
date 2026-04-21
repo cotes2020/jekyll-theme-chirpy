@@ -187,11 +187,16 @@ export async function handleImage(ctx: BotContext, interaction: ChatInputCommand
 
   const finalPrompt = card ? buildCharacterImagePrompt(card, prompt) : prompt;
 
+  // 카드에 negative_prompt가 있으면 사용자 입력 앞에 붙임
+  const mergedNegativePrompt = [card?.negativePrompt, negativePrompt]
+    .filter(Boolean)
+    .join(', ') || undefined;
+
   await runImageGeneration(interaction, finalPrompt, {
     modelId,
     aspectRatio,
     sampleCount: count,
-    negativePrompt,
+    negativePrompt: mergedNegativePrompt,
     displayPrompt: prompt,
     characterLabel,
   });

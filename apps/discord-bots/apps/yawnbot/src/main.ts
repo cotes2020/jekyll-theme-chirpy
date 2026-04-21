@@ -21,6 +21,7 @@ import { RaidService } from './services/raid';
 import { MemoryService } from './services/memory-service';
 import { CharacterService } from './services/character-service';
 import { ScheduleService } from './services/schedule-service';
+import { MoodService } from './services/mood-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -90,6 +91,16 @@ function getSchedule(slug: string): ScheduleService {
   return scheduleMap.get(slug)!;
 }
 
+/** 슬러그별 MoodService 캐시 (lazy init). */
+const moodMap = new Map<string, MoodService>();
+function getMood(slug: string): MoodService {
+  if (!moodMap.has(slug)) {
+    if (!memoRepoPath) throw new Error('MEMO_REPO_PATH 미설정 — MoodService 생성 불가');
+    moodMap.set(slug, new MoodService(memoRepoPath, slug));
+  }
+  return moodMap.get(slug)!;
+}
+
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 
 function isAdmin(userId: unknown) {
@@ -118,6 +129,7 @@ function buildCtx() {
     characterService,
     getMemory: memoRepoPath ? getMemory : null,
     getSchedule: memoRepoPath ? getSchedule : null,
+    getMood: memoRepoPath ? getMood : null,
     getImageAttachment,
     isAdmin,
     generativeText,
@@ -143,7 +155,7 @@ client.on('interactionCreate', async (interaction) => {
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   if (characterService) {
-    await handleAssistantMessage(message as any, characterService, getMemory);
+    await handleAssistantMessage(message as any, characterService, getMemory, memoRepoPath ? getMood : undefined);
   }
   await handleMeme(message as any);
 });
@@ -179,7 +191,7 @@ client.once('clientReady', async () => {
     getMemory(characterService.getDefaultSlug());
     startProactive(client, characterService, getMemory);
     startScheduleReminder(client, characterService, getSchedule);
-    startSpontaneous(client, characterService, getMemory);
+    startSpontaneous(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath ? getSchedule : undefined);
     await sendStartupGreeting(client, characterService, getMemory);
     console.log(
       '[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:',

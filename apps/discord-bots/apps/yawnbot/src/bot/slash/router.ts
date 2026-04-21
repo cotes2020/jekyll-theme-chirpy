@@ -1,6 +1,6 @@
-// @ts-nocheck
 import { MessageFlags, EmbedBuilder } from 'discord.js';
-import type { AutocompleteInteraction } from 'discord.js';
+import type { AutocompleteInteraction, ChatInputCommandInteraction } from 'discord.js';
+import type { BotContext } from './bot-context';
 import { handlePing, handleHelp } from './general';
 import {
   handleEnhanceSlash,
@@ -46,7 +46,10 @@ import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
 
 /** 현재 /기억 호출 컨텍스트의 활성 슬러그 memory 를 돌려준다. 없으면 null + 안내. */
-async function resolveMemoryForInteraction(ctx, interaction) {
+async function resolveMemoryForInteraction(
+  ctx: BotContext,
+  interaction: ChatInputCommandInteraction,
+): Promise<{ card: import('../../services/character-service').CharacterCard; memory: import('../../services/memory-service').MemoryService } | null> {
   const cs = ctx.characterService;
   const getMem = ctx.getMemory;
   if (!cs || !getMem) {
@@ -78,7 +81,7 @@ async function resolveMemoryForInteraction(ctx, interaction) {
  * - /이미지 캐릭터: 슬러그 목록 반환
  * - /character switch slug: 슬러그 목록 반환
  */
-export async function dispatchAutocomplete(ctx, interaction: AutocompleteInteraction): Promise<void> {
+export async function dispatchAutocomplete(ctx: BotContext, interaction: AutocompleteInteraction): Promise<void> {
   const focused = interaction.options.getFocused(true);
   const cs = ctx.characterService;
   const slugs: string[] = cs ? cs.listCharacters() : [];
@@ -100,7 +103,7 @@ export async function dispatchAutocomplete(ctx, interaction: AutocompleteInterac
   await interaction.respond([]);
 }
 
-export async function dispatchSlashCommand(ctx, interaction) {
+export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.isChatInputCommand()) return;
   if (!(await guardSlashInteraction(interaction))) return;
   logSlashUsage(interaction);
