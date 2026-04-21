@@ -23,7 +23,7 @@ help() {
   echo "     -h, --help    Print this help information"
   echo
   echo "Output (2 lines):"
-  echo "   Sonnet 4.6 | master ↑1 +2~3 | 세션 2m36s | Cost \$0.2699 (\$6.20/hr) | Cache 96%"
+  echo "   Sonnet 4.6 | master ↑1 +2~3 | 세션 2m36s | Cost \$0.2699 (\$6.20/hr) | Cache 96% | 09:41"
   echo "   [███░░░░░░░] 65,847in/216out (33%) | 5h 16% (리셋 09:00) | 7d 30% (리셋 04/26 20:00)"
   echo
   echo "  - Progress bar is color-coded: green < 80%, yellow < 90%, red >= 90%"
@@ -157,10 +157,11 @@ BAR="${F// /█}${P// /░}"
 fmt() { printf "%d" "$1" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'; }
 
 COST_FMT=$(awk "BEGIN{printf \"%.4f\", $COST}")
+NOW=$(date +"%H:%M")
 
-# Line 1: 모델 / git / 세션 시간 / 비용 / 캐시
-printf "${MODEL}${BRANCH_PART} | 세션 %s | Cost \$%s (\$%s/hr) | Cache %s%%\n" \
-  "$ELAPSED" "$COST_FMT" "$BURN" "$CACHE_HIT"
+# Line 1: 모델 / git / 세션 시간 / 비용 / 캐시 / 현재 시각
+printf "${MODEL}${BRANCH_PART} | 세션 %s | Cost \$%s (\$%s/hr) | Cache %s%% | %s\n" \
+  "$ELAPSED" "$COST_FMT" "$BURN" "$CACHE_HIT" "$NOW"
 
 # Line 2: 컨텍스트 바 / 토큰(in+out) / 할당량 + 리셋 시각
 printf "[${C}%s${R}] %sin/%sout (%s%%) | 5h %s%% (리셋 %s) | 7d %s%% (리셋 %s)\n" \
