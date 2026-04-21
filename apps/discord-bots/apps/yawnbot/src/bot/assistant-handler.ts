@@ -234,12 +234,16 @@ async function resolveSceneImage(
 /**
  * card.md 본문 자체가 시스템 프롬프트. 채널 타입 한 줄만 덧붙인다.
  */
+const IMAGE_HINT = `
+## 이미지 기능
+너는 대화에 이미지를 첨부할 수 있어. 사용자가 외모·모습·표정·포즈를 묻거나 시각적인 씬을 요청하면, 응답에 구체적인 시각 묘사(외형, 표정, 배경, 행동)를 자연스럽게 포함해줘. 이미지는 시스템이 자동으로 생성해서 첨부해 줄 거야.`.trim();
+
 function buildSystemPrompt(card: CharacterCard, channelType: 'dm' | 'public'): string {
   const channelDesc =
     channelType === 'dm'
       ? '지금은 DM으로 사적인 대화 중이야.'
       : '지금은 공개 채널에서 대화 중이야.';
-  return `${card.body}\n\n${channelDesc}`;
+  return `${card.body}\n\n${channelDesc}\n\n${IMAGE_HINT}`;
 }
 
 function buildFullPrompt(
