@@ -6,7 +6,7 @@
  */
 import './load-env';
 import './install-console-timestamps';
-import { SlashCommandBuilder, ChannelType, Locale } from 'discord.js';
+import { SlashCommandBuilder, Locale } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
 
 import { voiceJoin, voiceLeave, musicCommandGroup } from './deploy-builders/voice-music';
@@ -18,31 +18,12 @@ import {
 } from './deploy-builders/game-stock';
 import { characterCommand } from './deploy-builders/character';
 import { scheduleCommand } from './deploy-builders/schedule';
+import { adminCommand } from './deploy-builders/admin';
 
 const EN = Locale.EnglishUS;
 const enUS = (s: string): Record<string, string> => ({ [EN]: s });
 
 const commands = [
-  new SlashCommandBuilder()
-    .setName('음성입장')
-    .setDescription('봇을 음성 또는 스테이지 채널에 연결합니다.')
-    .setDescriptionLocalizations(enUS('Connect the bot to a voice or stage channel'))
-    .addChannelOption((opt) =>
-      opt
-        .setName('채널')
-        .setNameLocalizations(enUS('channel'))
-        .setDescription('입장할 채널 (비우면 본인이 있는 음성 채널)')
-        .setDescriptionLocalizations(
-          enUS('Channel to join (empty = your current voice channel)'),
-        )
-        .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
-        .setRequired(false),
-    ),
-  new SlashCommandBuilder()
-    .setName('음성퇴장')
-    .setDescription('봇을 음성 채널 연결에서 끊습니다.')
-    .setDescriptionLocalizations(enUS('Disconnect the bot from voice')),
-
   voiceJoin(),
   voiceLeave(),
   musicCommandGroup(),
@@ -51,10 +32,6 @@ const commands = [
   stockCommandGroup(),
   raidCommandGroup(),
 
-  new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('봇의 응답 속도를 확인합니다.')
-    .setDescriptionLocalizations(enUS('Check bot latency')),
   new SlashCommandBuilder()
     .setName('도움말')
     .setNameLocalizations(enUS('help'))
@@ -177,38 +154,7 @@ const commands = [
         .setMaxLength(500),
     ),
 
-  new SlashCommandBuilder()
-    .setName('cursor-edit')
-    .setDescription('[관리자] 로컬 저장소에서 Cursor agent(acp)로 프롬프트 실행')
-    .setDescriptionLocalizations(enUS('[Admin] Run a Cursor agent prompt on the local repo'))
-    .addStringOption((opt) =>
-      opt
-        .setName('prompt')
-        .setDescription('에이전트에 전달할 지시')
-        .setDescriptionLocalizations(enUS('Instructions for the agent'))
-        .setRequired(true),
-    )
-    .addStringOption((opt) =>
-      opt
-        .setName('mode')
-        .setDescription('세션 모드')
-        .setDescriptionLocalizations(enUS('Session mode'))
-        .addChoices(
-          { name: 'agent', value: 'agent' },
-          { name: 'ask', value: 'ask' },
-          { name: 'plan', value: 'plan' },
-        ),
-    ),
-
-  new SlashCommandBuilder()
-    .setName('admin-reload')
-    .setDescription('[관리자] 데이터를 다시 불러옵니다.')
-    .setDescriptionLocalizations(enUS('[Admin] Reload persisted data')),
-  new SlashCommandBuilder()
-    .setName('admin-save')
-    .setDescription('[관리자] 데이터를 저장합니다.')
-    .setDescriptionLocalizations(enUS('[Admin] Save data to disk')),
-
+  adminCommand(),
   characterCommand(),
   scheduleCommand(),
 

@@ -113,9 +113,26 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
 
   try {
     switch (interaction.commandName) {
-      case 'ping':
-        await handlePing(ctx, interaction);
+      case '관리자': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case '핑':
+            await handlePing(ctx, interaction);
+            break;
+          case '리로드':
+            await handleAdminReload(ctx, interaction, userId);
+            break;
+          case '저장':
+            await handleAdminSave(ctx, interaction, userId);
+            break;
+          case '에이전트':
+            await handleCursorEdit(ctx, interaction, userId);
+            break;
+          default:
+            await interaction.reply({ content: '알 수 없는 관리자 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+        }
         break;
+      }
       case '도움말':
         await handleHelp(ctx, interaction);
         break;
@@ -208,20 +225,15 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         }
         break;
       }
-      case 'cursor-edit':
-        await handleCursorEdit(ctx, interaction, userId);
-        break;
       case 'yawn':
         await handleYawn(ctx, interaction);
         break;
       case '이미지':
         await handleImage(ctx, interaction);
         break;
-      case '음성입장':
       case 'voice-join':
         await handleVoiceJoin(ctx, interaction);
         break;
-      case '음성퇴장':
       case 'voice-leave':
         await handleVoiceLeave(ctx, interaction);
         break;
@@ -260,12 +272,6 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         }
         break;
       }
-      case 'admin-reload':
-        await handleAdminReload(ctx, interaction, userId);
-        break;
-      case 'admin-save':
-        await handleAdminSave(ctx, interaction, userId);
-        break;
       case 'character': {
         const sub = interaction.options.getSubcommand();
         switch (sub) {
