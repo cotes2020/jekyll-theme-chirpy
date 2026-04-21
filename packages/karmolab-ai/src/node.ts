@@ -75,6 +75,7 @@ export async function generateVertexText(opts: {
   location?: string | null;
   modelId?: string | null;
   userText: string;
+  history?: ChatContent[];
   systemInstruction?: string | null;
   safetyThreshold?: string | null;
   signal?: AbortSignal;
@@ -88,8 +89,12 @@ export async function generateVertexText(opts: {
     method: 'generateContent',
     apiKey: opts.apiKey.trim(),
   });
+  const historyContents = (opts.history ?? []).map((h) => ({
+    role: h.role === 'model' ? 'model' : 'user',
+    parts: h.parts,
+  }));
   const body: Record<string, unknown> = {
-    contents: [{ role: 'user', parts: [{ text: opts.userText }] }],
+    contents: [...historyContents, { role: 'user', parts: [{ text: opts.userText }] }],
     generationConfig: { maxOutputTokens: 8192 },
   };
   const sys = opts.systemInstruction?.trim();
@@ -382,11 +387,6 @@ export async function generateAssistantText(
   if (opts.systemInstruction || (opts.history && opts.history.length > 0)) {
     const surface = parseGenerativeSurfaceFromEnv(env);
     if (surface === 'vertex') {
-      // Vertex REST API는 systemInstruction 필드를 지원하므로 직접 전달.
-      // history는 미지원 — 턴이 있으면 경고만 남김.
-      if (opts.history && opts.history.length > 0) {
-        console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 history를 무시합니다.');
-      }
       const apiKey = env.VERTEX_API_KEY?.trim();
       const projectId = env.VERTEX_PROJECT_ID?.trim();
       if (!apiKey || !projectId) {
@@ -399,6 +399,7 @@ export async function generateAssistantText(
         modelId: resolveAiStudioTextModelId(env.GEMINI_MODEL),
         userText: prompt,
         systemInstruction: opts.systemInstruction,
+        history: opts.history,
         safetyThreshold: env.VERTEX_SAFETY_THRESHOLD?.trim() || null,
       });
       return { text, provider: 'gemini' };

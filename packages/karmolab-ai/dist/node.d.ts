@@ -24,6 +24,7 @@ export declare function generateVertexText(opts: {
     location?: string | null;
     modelId?: string | null;
     userText: string;
+    history?: ChatContent[];
     systemInstruction?: string | null;
     safetyThreshold?: string | null;
     signal?: AbortSignal;
