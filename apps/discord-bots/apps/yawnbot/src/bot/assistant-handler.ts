@@ -117,22 +117,21 @@ async function detectSceneTags(
   }
 }
 
-type SceneImageResult =
-  | { type: 'cache_hit'; tags: string[]; buffer: Buffer; mimeType: string; entryId: string }
-  | { type: 'cache_miss'; tags: string[] }
-  | null;
+interface SceneImage {
+  tags: string[];
+  buffer: Buffer;
+  mimeType: string;
+}
 
 /**
- * 씬 감지 → 캐시 조회까지만 수행. 텍스트 전송 전에 await해서 결과를 반환.
- * - cache_hit: 캐시 이미지를 텍스트와 함께 보낼 수 있음
- * - cache_miss: 텍스트 먼저 보내고 이미지는 별도 생성
- * - null: 이미지 불필요 (SKIP 또는 쿨다운)
+ * 씬 감지 → 캐시 조회 → 필요 시 이미지 생성까지 모두 수행.
+ * 이미지가 있으면 { tags, buffer, mimeType } 반환, 없으면 null.
  */
-async function checkSceneImage(
+async function resolveSceneImage(
   card: CharacterCard,
   userMsg: string,
   aiResponse: string,
-): Promise<SceneImageResult> {
+): Promise<SceneImage | null> {
   const slug = card.slug;
 
   const last = lastImageAt.get(slug) ?? 0;
@@ -145,7 +144,6 @@ async function checkSceneImage(
   const tags = await detectSceneTags(slug, userMsg, aiResponse);
   if (!tags) return null;
 
-  // 쿨다운 선점 (생성 실패해도 중복 방지)
   lastImageAt.set(slug, Date.now());
 
   const cacheService = getImageCacheService(card);
@@ -155,22 +153,10 @@ async function checkSceneImage(
     cacheService.incrementHit(cached);
     const buffer = fs.readFileSync(cached.filePath);
     console.log(`[Assistant:${slug}] 자동 이미지: 캐시 히트 (id=${cached.id})`);
-    return { type: 'cache_hit', tags, buffer, mimeType: cached.mimeType, entryId: cached.id };
+    return { tags, buffer, mimeType: cached.mimeType };
   }
 
-  return { type: 'cache_miss', tags };
-}
-
-/**
- * 캐시 미스 시 호출. 이미지 생성 후 채널에 별도 전송 (텍스트 이후).
- */
-async function generateAndSendNewImage(
-  message: Message,
-  card: CharacterCard,
-  tags: string[],
-): Promise<void> {
-  const slug = card.slug;
-  const cacheService = getImageCacheService(card);
+  // 캐시 미스 → 새 이미지 생성
   const finalPrompt = buildCharacterImagePrompt(card, tags.join(', '));
   console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}])`);
 
@@ -178,17 +164,11 @@ async function generateAndSendNewImage(
     sampleCount: 1,
   });
 
-  if (images.length === 0) return;
+  if (images.length === 0) return null;
   const img = images[0];
   const entry = cacheService.add(tags, finalPrompt, img.buffer, img.mimeType, modelId);
   console.log(`[Assistant:${slug}] 자동 이미지: 완료 (id=${entry.id}, 모델=${modelId})`);
-
-  const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
-  const attachment = new AttachmentBuilder(img.buffer, { name: `scene.${ext}` });
-  await (message.channel as TextChannel | DMChannel).send({
-    content: `*${tags.join(', ')}*`,
-    files: [attachment],
-  });
+  return { tags, buffer: img.buffer, mimeType: img.mimeType };
 }
 
 /**
@@ -395,27 +375,18 @@ export async function handleAssistantMessage(
 
     detectAndSaveHotMemory(memory, userContent).catch(() => {});
 
-    // 씬 감지 + 캐시 조회 (텍스트 전송 전에 await — 캐시 히트면 함께 보냄)
-    const sceneResult = await checkSceneImage(card, userContent, reply).catch((e) => {
-      console.error(`[Assistant:${card.slug}] 씬 체크 실패:`, e instanceof Error ? e.message : String(e));
+    // 씬 감지 → 캐시 조회 → 이미지 생성까지 완료 후 텍스트와 함께 전송
+    const sceneImage = await resolveSceneImage(card, userContent, reply).catch((e) => {
+      console.error(`[Assistant:${card.slug}] 자동 이미지 실패:`, e instanceof Error ? e.message : String(e));
       return null;
     });
 
-    if (sceneResult?.type === 'cache_hit') {
-      const ext = (sceneResult.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
-      const attachment = new AttachmentBuilder(sceneResult.buffer, { name: `scene.${ext}` });
-      await message.reply({
-        content: reply,
-        files: [attachment],
-      });
-      console.log(`[Assistant:${card.slug}] 텍스트+이미지 함께 전송 (캐시 id=${sceneResult.entryId})`);
+    if (sceneImage) {
+      const ext = (sceneImage.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+      const attachment = new AttachmentBuilder(sceneImage.buffer, { name: `scene.${ext}` });
+      await message.reply({ content: reply, files: [attachment] });
     } else {
       await message.reply(reply);
-      if (sceneResult?.type === 'cache_miss') {
-        generateAndSendNewImage(message, card, sceneResult.tags).catch((e) =>
-          console.error(`[Assistant:${card.slug}] 이미지 생성 실패:`, e instanceof Error ? e.message : String(e)),
-        );
-      }
     }
 
     const totalDuration = Date.now() - startTime;
