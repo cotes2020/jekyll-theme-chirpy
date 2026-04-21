@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 일반 질문
+    url: https://github.com/mascari4615/mascari4615.github.io/discussions
+    about: 버그·기능 요청이 아닌 일반 질문은 Discussions에서 해 주세요.
