@@ -108,6 +108,3 @@ ASSISTANT_MAX_PROMPT_CHARS=12000
 # ── 캐릭터 시스템 (2026-04-20) ──
 # .active.json 에 default 필드가 없거나 characters/ 가 비어 있을 때 폴백 슬러그.
 ASSISTANT_DEFAULT_CHARACTER=yawn
-# 봇 첫 실행 시 레거시 assistant/{logs,memory} 를 characters/<slug>/memory/ 로 이관할 대상.
-# 비우면 ASSISTANT_DEFAULT_CHARACTER 를 사용.
-ASSISTANT_LEGACY_MIGRATE_SLUG=yawn
