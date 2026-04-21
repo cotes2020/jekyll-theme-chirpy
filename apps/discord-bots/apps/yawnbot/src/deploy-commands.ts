@@ -123,6 +123,16 @@ const commands = [
     )
     .addStringOption((opt) =>
       opt
+        .setName('캐릭터')
+        .setNameLocalizations(enUS('character'))
+        .setDescription('캐릭터 슬러그 (비우면 활성 캐릭터, "none"=캐릭터 없이)')
+        .setDescriptionLocalizations(
+          enUS('Character slug (empty=active, "none"=no character)'),
+        )
+        .setMaxLength(64),
+    )
+    .addStringOption((opt) =>
+      opt
         .setName('모델')
         .setNameLocalizations(enUS('model'))
         .setDescription('모델 ID (비우면 IMAGE_MODEL_ID 기본)')
