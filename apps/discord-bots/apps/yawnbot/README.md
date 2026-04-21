@@ -70,7 +70,6 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 DM·전용 채널에서 자유 대화하는 AI 비서 기능. 페르소나는 `memo/characters/<slug>/card.md` 본문을 시스템 프롬프트로 주입 — 봇 코드는 페르소나를 하드코딩하지 않는다. DM/채널별로 다른 캐릭터를 붙일 수 있다.
 
 - `MEMO_REPO_PATH` 가 설정돼야 활성화 (미설정 시 `/character`·`/기억`·자동 인사 전부 비활성)
-- 봇 첫 실행 시 레거시 `assistant/{logs,memory}` 는 `characters/<slug>/memory/` 로 자동 이관되고 원본은 `assistant/.legacy/` 로 백업
 - 매일 아침 `ASSISTANT_MORNING_HOUR` 시에 DM으로 인사, 봇 시작 시엔 기상 메시지
 - 상세 사용법·환경 변수·캐릭터 추가 절차는 **[docs/character-system.md](./docs/character-system.md)**
 
