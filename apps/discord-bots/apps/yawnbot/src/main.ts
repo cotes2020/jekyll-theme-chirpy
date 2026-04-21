@@ -140,6 +140,7 @@ function buildCtx() {
     isOwner,
     generativeText,
     cursorState,
+    memoRepoPath: memoRepoPath || null,
   };
 }
 

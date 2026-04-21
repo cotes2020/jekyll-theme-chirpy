@@ -1,6 +1,29 @@
 import fs from 'fs';
 import path from 'path';
 import { MessageFlags, AttachmentBuilder, EmbedBuilder } from 'discord.js';
+
+/** memo/image-log/{YYYY-MM-DD}/ に保存 */
+function saveImageLog(
+  saveDir: string,
+  images: { buffer: Buffer; mimeType: string }[],
+  meta: Record<string, unknown>,
+): void {
+  try {
+    fs.mkdirSync(saveDir, { recursive: true });
+    const base = Date.now();
+    const saved: string[] = [];
+    for (const [idx, img] of images.entries()) {
+      const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+      const filename = `${base}-${idx + 1}.${ext}`;
+      fs.writeFileSync(path.join(saveDir, filename), img.buffer);
+      saved.push(filename);
+    }
+    const entry = JSON.stringify({ ...meta, files: saved, savedAt: new Date().toISOString() });
+    fs.appendFileSync(path.join(saveDir, 'log.jsonl'), entry + '\n', 'utf-8');
+  } catch (e) {
+    console.warn('[image] 로그 저장 실패:', e instanceof Error ? e.message : String(e));
+  }
+}
 import type { ChatInputCommandInteraction } from 'discord.js';
 import { generateImageFromEnvWithOptions } from 'karmolab-ai/node';
 import type { CharacterCard } from '../../services/character-service';
@@ -79,6 +102,8 @@ export async function runImageGeneration(
     displayPrompt?: string;
     /** embed에 표시할 캐릭터 라벨 (slug 또는 "none") */
     characterLabel?: string;
+    /** 지정하면 생성된 이미지를 해당 디렉토리에 로그로 저장 */
+    saveDir?: string;
   } = {},
 ): Promise<void> {
   const startedAt = Date.now();
@@ -93,6 +118,17 @@ export async function runImageGeneration(
         negativePrompt: opts.negativePrompt,
       },
     );
+
+    if (opts.saveDir) {
+      saveImageLog(opts.saveDir, images, {
+        prompt: finalPrompt,
+        displayPrompt: opts.displayPrompt,
+        model: effectiveModelId,
+        aspectRatio: opts.aspectRatio || '1:1',
+        character: opts.characterLabel || 'none',
+        negativePrompt: opts.negativePrompt,
+      });
+    }
 
     const files = images.map((img, idx) => {
       const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
@@ -192,6 +228,14 @@ export async function handleImage(ctx: BotContext, interaction: ChatInputCommand
     .filter(Boolean)
     .join(', ') || undefined;
 
+  let saveDir: string | undefined;
+  if (ctx.memoRepoPath) {
+    const dateStr = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })
+      .replace(/\. /g, '-').replace('.', '');
+    const subdir = card ? card.slug : 'general';
+    saveDir = path.join(ctx.memoRepoPath, 'image-log', subdir, dateStr);
+  }
+
   await runImageGeneration(interaction, finalPrompt, {
     modelId,
     aspectRatio,
@@ -199,5 +243,6 @@ export async function handleImage(ctx: BotContext, interaction: ChatInputCommand
     negativePrompt: mergedNegativePrompt,
     displayPrompt: prompt,
     characterLabel,
+    saveDir,
   });
 }

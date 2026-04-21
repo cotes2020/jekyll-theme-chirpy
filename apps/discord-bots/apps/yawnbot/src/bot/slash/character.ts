@@ -1,6 +1,7 @@
 /**
  * /character 슬래시 — DM/채널별 활성 캐릭터 관리
  */
+import path from 'path';
 import { EmbedBuilder, MessageFlags, AttachmentBuilder } from 'discord.js';
 import type { ChatInputCommandInteraction } from 'discord.js';
 import type { CharacterService, CharacterCard } from '../../services/character-service';
@@ -208,11 +209,20 @@ export async function handleCharacterImage(ctx: BotContext, interaction: ChatInp
   }
 
   const finalPrompt = buildCharacterImagePrompt(card, situation || undefined);
+
+  let saveDir: string | undefined;
+  if (ctx.memoRepoPath) {
+    const dateStr = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })
+      .replace(/\. /g, '-').replace('.', '');
+    saveDir = path.join(ctx.memoRepoPath, 'image-log', card.slug, dateStr);
+  }
+
   await runImageGeneration(interaction, finalPrompt, {
     aspectRatio,
     sampleCount: count,
     displayPrompt: situation || `${card.displayName} 기본 외형`,
     characterLabel: card.slug,
+    saveDir,
   });
 }
 

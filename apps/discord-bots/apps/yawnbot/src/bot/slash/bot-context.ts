@@ -28,4 +28,5 @@ export interface BotContext {
   isOwner: (userId: unknown) => boolean;
   generativeText: GenerativeTextClient | null;
   cursorState: { inFlight: boolean };
+  memoRepoPath: string | null;
 }
