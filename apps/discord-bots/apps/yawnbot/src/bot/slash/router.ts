@@ -17,6 +17,7 @@ import {
 import { handleStockList, handleStockChart, handleBuy, handleSellStock, handleMyStock } from './stock';
 import { handleRaidInfo, handleRaidSpawn, handleRaidAttack } from './raid';
 import { handleCursorEdit, handleYawn } from './ai';
+import { handleImage } from './image';
 import { handleVoiceJoin, handleVoiceLeave } from './voice';
 import {
   handlePlay,
@@ -178,6 +179,9 @@ export async function dispatchSlashCommand(ctx, interaction) {
         break;
       case 'yawn':
         await handleYawn(ctx, interaction);
+        break;
+      case '이미지':
+        await handleImage(ctx, interaction);
         break;
       case '음성입장':
       case 'voice-join':
