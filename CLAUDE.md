@@ -198,6 +198,7 @@ cd apps/karmolab && npm ci && npm run build
 | `lint-scss.yml` | Changes to `_sass/` | Stylelint |
 | `karmolab-ts.yml` | Changes to `apps/karmolab/` | TypeScript typecheck |
 | `karmolab-tauri.yml` | Changes to `apps/karmolab-tauri/` | Tauri build/test |
+| `ai-quality.yml` | Changes to KarmoLab AI surfaces (`gemini.ts`, chatbot, `packages/karmolab-ai/`) | AI-related typecheck/build quality gate |
 
 ### Deployment Pipeline Steps
 
