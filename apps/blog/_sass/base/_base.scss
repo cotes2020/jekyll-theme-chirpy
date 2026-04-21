@@ -422,23 +422,13 @@ mjx-container {
     @include mx.slide;
   }
 
-  // [KarmoDDrine] sidebar hover-collapse — revert: uncomment original, delete 2 lines below
-  // @include bp.lg {
-  //   margin-left: v.$sidebar-width;
-  // }
-  //
-  // @include bp.xxxl {
-  //   margin-left: v.$sidebar-width-large;
-  // }
   @include bp.lg {
-    margin-left: v.$sidebar-collapsed-width;
-    transition: margin-left v.$sidebar-transition;
+    margin-left: v.$sidebar-width;
   }
 
   @include bp.xxxl {
-    margin-left: v.$sidebar-collapsed-width;
+    margin-left: v.$sidebar-width-large;
   }
-  // [/KarmoDDrine]
 
   > .container {
     min-height: 100vh;
@@ -473,18 +463,6 @@ mjx-container {
     }
   }
 }
-
-// [KarmoDDrine] sidebar push — revert: delete this block
-body:has(#sidebar:hover) #main-wrapper {
-  @include bp.lg {
-    margin-left: v.$sidebar-width;
-  }
-
-  @include bp.xxxl {
-    margin-left: v.$sidebar-width-large;
-  }
-}
-// [/KarmoDDrine]
 
 /* --- basic wrappers --- */
 
