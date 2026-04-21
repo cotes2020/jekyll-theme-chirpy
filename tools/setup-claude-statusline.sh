@@ -154,7 +154,13 @@ FILLED=$((PCT / 10)); EMPTY=$((10 - FILLED))
 printf -v F "%${FILLED}s"; printf -v P "%${EMPTY}s"
 BAR="${F// /█}${P// /░}"
 
-fmt() { printf "%d" "$1" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'; }
+fmt() {
+  local n=$1
+  if   [ "$n" -ge 1000000 ]; then awk "BEGIN{printf \"%.1fM\", $n/1000000}"
+  elif [ "$n" -ge 1000 ];    then awk "BEGIN{printf \"%.1fK\", $n/1000}"
+  else echo "$n"
+  fi
+}
 
 COST_FMT=$(awk "BEGIN{printf \"%.4f\", $COST}")
 NOW=$(date +"%H:%M")
@@ -164,8 +170,8 @@ printf "${MODEL}${BRANCH_PART} | 세션 %s | Cost \$%s (\$%s/hr) | Cache %s%% | 
   "$ELAPSED" "$COST_FMT" "$BURN" "$CACHE_HIT" "$NOW"
 
 # Line 2: 컨텍스트 바 / 토큰(in+out) / 할당량 + 리셋 시각
-printf "[${C}%s${R}] %sin/%sout (%s%%) | 5h %s%% (리셋 %s) | 7d %s%% (리셋 %s)\n" \
-  "$BAR" "$(fmt $USED)" "$(fmt $T_OUT)" "$PCT" \
+printf "[${C}%s${R}] %s/%s in | %s out (%s%%) | 5h %s%% (리셋 %s) | 7d %s%% (리셋 %s)\n" \
+  "$BAR" "$(fmt $USED)" "$(fmt $MAX)" "$(fmt $T_OUT)" "$PCT" \
   "$RATE_5H" "$RESET_5H_FMT" "$RATE_7D" "$RESET_7D_FMT"
 EOF
 
