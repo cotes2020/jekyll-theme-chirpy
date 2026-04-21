@@ -57,4 +57,44 @@ export const characterCommand = () =>
         .setDescriptionLocalizations(
           enUS('Remove mapping for this DM/channel → fall back to default'),
         ),
+    )
+    .addSubcommand((sub) =>
+      sub
+        .setName('image')
+        .setDescription('현재 활성 캐릭터의 외형으로 이미지 생성')
+        .setDescriptionLocalizations(
+          enUS('Generate image using current active character appearance'),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName('상황')
+            .setNameLocalizations(enUS('scene'))
+            .setDescription('상황 · 포즈 · 배경 설명 (영어 권장)')
+            .setDescriptionLocalizations(enUS('Scene · pose · background (English recommended)'))
+            .setRequired(true)
+            .setMaxLength(1500),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName('비율')
+            .setNameLocalizations(enUS('aspect'))
+            .setDescription('가로세로 비율 (기본 1:1)')
+            .setDescriptionLocalizations(enUS('Aspect ratio (default 1:1)'))
+            .addChoices(
+              { name: '1:1 (정사각)', value: '1:1' },
+              { name: '16:9 (가로)', value: '16:9' },
+              { name: '9:16 (세로)', value: '9:16' },
+              { name: '4:3', value: '4:3' },
+              { name: '3:4', value: '3:4' },
+            ),
+        )
+        .addIntegerOption((opt) =>
+          opt
+            .setName('개수')
+            .setNameLocalizations(enUS('count'))
+            .setDescription('생성할 이미지 개수 (1~4)')
+            .setDescriptionLocalizations(enUS('Number of images (1-4)'))
+            .setMinValue(1)
+            .setMaxValue(4),
+        ),
     );
