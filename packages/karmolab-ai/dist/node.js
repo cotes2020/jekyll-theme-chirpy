@@ -141,6 +141,7 @@ async function generateBlobTextFromEnvWithOptions(env, blobPrompt, options = {})
             location,
             modelId: effectiveModelId,
             userText: blobPrompt,
+            systemInstruction: options.systemInstruction,
             safetyThreshold: env.VERTEX_SAFETY_THRESHOLD?.trim() || null,
             signal: options.signal,
         });
@@ -154,6 +155,7 @@ async function generateBlobTextFromEnvWithOptions(env, blobPrompt, options = {})
         apiKey,
         modelId: effectiveModelId,
         prompt: blobPrompt,
+        systemInstruction: options.systemInstruction,
         signal: options.signal,
     });
     return { text, surface: 'aiStudio', modelId: effectiveModelId };

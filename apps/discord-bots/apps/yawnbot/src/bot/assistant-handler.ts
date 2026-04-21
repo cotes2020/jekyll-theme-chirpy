@@ -18,7 +18,10 @@ import { buildCharacterImagePrompt } from './slash/image';
 const MAX_RESPONSE_LENGTH = 1900;
 const MAX_PROMPT_CHARS = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
 const MAX_HISTORY_TURNS = 20;
-const IMAGE_COOLDOWN_MS = 2 * 60 * 1000;
+const IMAGE_COOLDOWN_MS = (() => {
+  const v = parseInt(process.env.ASSISTANT_IMAGE_COOLDOWN_MS || '', 10);
+  return Number.isFinite(v) && v >= 0 ? v : 2 * 60 * 1000;
+})();
 
 const chatHistories = new Map<string, ChatContent[]>();
 const imageCacheServices = new Map<string, ImageCacheService>();
@@ -309,15 +312,33 @@ export async function handleAssistantMessage(
   console.log(`[Assistant:${card.slug}] 프롬프트 빌드 시작...`);
 
   const isGemini = provider !== 'claude-cli';
-  const systemInstruction = isGemini
-    ? buildSystemInstruction(card, memory, channelType, userContent)
-    : undefined;
-  const fullPrompt = isGemini
-    ? userContent
-    : buildFullPrompt(card, memory, channelType, userContent);
-  const promptSize = Buffer.byteLength(fullPrompt, 'utf-8');
+  let systemInstruction: string | undefined;
+  let fullPrompt: string;
   const history = isGemini ? getHistory(card.slug) : undefined;
 
+  if (isGemini) {
+    // systemInstruction = 캐릭터 카드 + 채널 타입만 (안정적 → Gemini implicit cache 활성화)
+    systemInstruction = buildSystemPrompt(card, channelType);
+    // 가변 부분(시각, 메모리 컨텍스트, 오늘 로그)은 user message에 포함
+    const nowKST = new Date().toLocaleString('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false,
+    });
+    const budget = MAX_PROMPT_CHARS - systemInstruction.length - userContent.length - 50;
+    const contextBudget = Math.max(2000, budget);
+    const context = memory.buildContext(contextBudget);
+    const contextSize = Buffer.byteLength(context, 'utf-8');
+    console.log(
+      `[Assistant:${memory.slug}] 컨텍스트 빌드: ${contextSize}바이트 (할당: ${contextBudget}자, 사용: ${context.length}자)`,
+    );
+    const contextBlock = context ? `\n\n${context}` : '';
+    fullPrompt = `[현재 시각] ${nowKST}${contextBlock}\n\n나: ${userContent}`;
+  } else {
+    fullPrompt = buildFullPrompt(card, memory, channelType, userContent);
+  }
+
+  const promptSize = Buffer.byteLength(fullPrompt, 'utf-8');
   if (isGemini && systemInstruction != null) {
     const sysSize = Buffer.byteLength(systemInstruction, 'utf-8');
     const histSize = history

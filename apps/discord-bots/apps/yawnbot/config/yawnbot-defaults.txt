@@ -112,3 +112,5 @@ ASSISTANT_DEFAULT_CHARACTER=yawn
 # ── 이미지 생성 (/이미지, Vertex Imagen) ──
 # Imagen 모델 ID. MODEL_CATALOG.imagen 의 ID 중 하나. 슬래시 옵션에서 덮어쓸 수 있음.
 IMAGE_MODEL_ID=imagen-4.0-generate-001
+# 자동 씬 이미지 생성 쿨다운 (ms). 신규 생성 시에만 소모. 기본 2분.
+ASSISTANT_IMAGE_COOLDOWN_MS=120000

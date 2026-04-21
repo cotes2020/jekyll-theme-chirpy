@@ -52,6 +52,7 @@ export type GenerativeSurfaceOverride = 'inherit' | 'aiStudio' | 'vertex';
 export declare function generateBlobTextFromEnvWithOptions(env: NodeJS.ProcessEnv, blobPrompt: string, options?: {
     surface?: GenerativeSurfaceOverride;
     modelId?: string | null;
+    systemInstruction?: string;
     signal?: AbortSignal;
 }): Promise<{
     text: string;
