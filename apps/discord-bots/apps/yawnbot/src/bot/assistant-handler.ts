@@ -151,9 +151,15 @@ async function detectSceneTags(
 }
 
 const SCENE_KEYWORDS = [
+  // 외형·시각 요청
+  '모습', '보여', '이미지', '사진', '그림', '어때', '어떻게 생겼', '포즈', '복장', '옷',
+  // 감정
   '웃', '울', '화나', '슬프', '기쁘', '행복', '놀라', '두려', '부끄', '설레', '그리워', '따뜻', '차갑',
-  '안아', '손잡', '쓰다듬', '포옹', '키스',
+  // 행동
+  '안아', '손잡', '쓰다듬', '포옹', '키스', '장난', '골탕',
+  // 영어
   'smil', 'laugh', 'cry', 'sad', 'happy', 'angry', 'fear', 'blush', 'hug', 'touch', 'kiss',
+  'show', 'look', 'appear', 'image', 'photo', 'picture', 'pose',
 ];
 
 function hasVisualScenePotential(userMsg: string, aiResponse: string): boolean {
