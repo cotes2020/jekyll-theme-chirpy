@@ -6,17 +6,31 @@
  * - 컨텍스트: card 본문 + user.md + self.md + 주간요약 + 어제요약 + 오늘 로그
  * - 메시지는 슬러그별 logs/에 즉시 기록 (손실 없음)
  */
-import { Message, DMChannel, TextChannel } from 'discord.js';
-import { generateAssistantText } from 'karmolab-ai/node';
+import fs from 'fs';
+import { Message, DMChannel, TextChannel, AttachmentBuilder } from 'discord.js';
+import { generateAssistantText, generateImageFromEnvWithOptions } from 'karmolab-ai/node';
 import type { ChatContent } from 'karmolab-ai/node';
 import type { MemoryService, ConversationEntry } from '../services/memory-service';
 import { CharacterService, type CharacterCard } from '../services/character-service';
+import { ImageCacheService } from '../services/image-cache-service';
+import { buildCharacterImagePrompt } from './slash/image';
 
 const MAX_RESPONSE_LENGTH = 1900;
 const MAX_PROMPT_CHARS = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
 const MAX_HISTORY_TURNS = 20;
+const IMAGE_COOLDOWN_MS = 2 * 60 * 1000;
 
 const chatHistories = new Map<string, ChatContent[]>();
+const imageCacheServices = new Map<string, ImageCacheService>();
+const lastImageAt = new Map<string, number>();
+
+function getImageCacheService(card: CharacterCard): ImageCacheService {
+  if (!imageCacheServices.has(card.slug)) {
+    const memoRepoPath = process.env.MEMO_REPO_PATH?.trim() || '';
+    imageCacheServices.set(card.slug, new ImageCacheService(card.dir, memoRepoPath, card.slug));
+  }
+  return imageCacheServices.get(card.slug)!;
+}
 
 function getHistory(slug: string): ChatContent[] {
   if (!chatHistories.has(slug)) chatHistories.set(slug, []);
@@ -58,6 +72,105 @@ async function detectAndSaveHotMemory(
       e instanceof Error ? e.message : String(e),
     );
   }
+}
+
+/**
+ * 대화 맥락에서 이미지 생성이 필요한지 판단 후 영어 태그 반환.
+ * LLM이 "SKIP" 반환하거나 에러나면 null.
+ */
+async function detectSceneTags(
+  slug: string,
+  userMsg: string,
+  aiResponse: string,
+): Promise<string[] | null> {
+  try {
+    console.log(`[Assistant:${slug}] 씬 감지 중...`);
+    const { text } = await generateAssistantText(
+      process.env,
+      `다음 대화 장면에서 캐릭터 이미지를 자동 생성해야 하는지 판단해줘.\n` +
+        `생성해야 한다면: 장면을 설명하는 영어 태그 5개 이내를 쉼표로 구분해서만 반환 (예: "smiling, outdoor, casual")\n` +
+        `생성하지 않아도 된다면: 정확히 "SKIP" 반환.\n\n` +
+        `기준:\n` +
+        `- 감정 변화나 상황 전환이 뚜렷하면 생성\n` +
+        `- 대화가 평범하게 이어지는 경우 SKIP\n\n` +
+        `유저: "${userMsg}"\n` +
+        `캐릭터: "${aiResponse}"`,
+    );
+    const trimmed = text.trim();
+    if (!trimmed || trimmed.toUpperCase() === 'SKIP') {
+      console.log(`[Assistant:${slug}] 씬 감지: SKIP`);
+      return null;
+    }
+    const tags = trimmed
+      .split(',')
+      .map((t) => t.trim().toLowerCase())
+      .filter(Boolean)
+      .slice(0, 5);
+    console.log(`[Assistant:${slug}] 씬 감지: 태그=[${tags.join(', ')}]`);
+    return tags.length > 0 ? tags : null;
+  } catch (e) {
+    console.error(
+      `[Assistant:${slug}] 씬 감지 실패:`,
+      e instanceof Error ? e.message : String(e),
+    );
+    return null;
+  }
+}
+
+/**
+ * AI 응답 후 호출. 씬 감지 → 캐시 조회 → 필요 시 이미지 생성 → 채널에 전송.
+ * 실패해도 조용히 로그만 남김 (대화 흐름에 영향 없음).
+ */
+async function autoGenerateSceneImage(
+  message: Message,
+  card: CharacterCard,
+  userMsg: string,
+  aiResponse: string,
+): Promise<void> {
+  const slug = card.slug;
+
+  // 쿨다운 체크
+  const last = lastImageAt.get(slug) ?? 0;
+  const remaining = IMAGE_COOLDOWN_MS - (Date.now() - last);
+  if (remaining > 0) {
+    console.log(`[Assistant:${slug}] 자동 이미지 쿨다운 (${Math.round(remaining / 1000)}초 남음)`);
+    return;
+  }
+
+  const tags = await detectSceneTags(slug, userMsg, aiResponse);
+  if (!tags) return;
+
+  const cacheService = getImageCacheService(card);
+  const cached = cacheService.findSimilar(tags);
+
+  if (cached) {
+    cacheService.incrementHit(cached);
+    lastImageAt.set(slug, Date.now());
+    const buffer = fs.readFileSync(cached.filePath);
+    const ext = (cached.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+    const attachment = new AttachmentBuilder(buffer, { name: `scene.${ext}` });
+    await (message.channel as TextChannel | DMChannel).send({ files: [attachment] });
+    console.log(`[Assistant:${slug}] 자동 이미지: 캐시 재사용 (id=${cached.id})`);
+    return;
+  }
+
+  // 캐시 미스 → 새 이미지 생성
+  const finalPrompt = buildCharacterImagePrompt(card, tags.join(', '));
+  console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}])`);
+  lastImageAt.set(slug, Date.now()); // 생성 실패해도 쿨다운 적용
+
+  const { images, modelId } = await generateImageFromEnvWithOptions(process.env, finalPrompt, {
+    sampleCount: 1,
+  });
+
+  if (images.length === 0) return;
+  const img = images[0];
+  const entry = cacheService.add(tags, finalPrompt, img.buffer, img.mimeType);
+  console.log(`[Assistant:${slug}] 자동 이미지: 완료 (id=${entry.id}, 모델=${modelId})`);
+
+  const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+  const attachment = new AttachmentBuilder(img.buffer, { name: `scene.${ext}` });
+  await (message.channel as TextChannel | DMChannel).send({ files: [attachment] });
 }
 
 /**
@@ -263,6 +376,12 @@ export async function handleAssistantMessage(
     if (isGemini) appendHistory(card.slug, userContent, reply);
 
     detectAndSaveHotMemory(memory, userContent).catch(() => {});
+    autoGenerateSceneImage(message, card, userContent, reply).catch((e) =>
+      console.error(
+        `[Assistant:${card.slug}] 자동 이미지 실패:`,
+        e instanceof Error ? e.message : String(e),
+      ),
+    );
 
     await message.reply(reply);
     const totalDuration = Date.now() - startTime;
