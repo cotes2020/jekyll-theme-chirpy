@@ -20,6 +20,7 @@ import { StockService } from './services/stock';
 import { RaidService } from './services/raid';
 import { MemoryService } from './services/memory-service';
 import { CharacterService } from './services/character-service';
+import { ScheduleService } from './services/schedule-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -27,7 +28,7 @@ import { dispatchSlashCommand, dispatchAutocomplete } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 import { handleAssistantMessage } from './bot/assistant-handler';
-import { startProactive, stopProactive, sendStartupGreeting } from './bot/proactive';
+import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder } from './bot/proactive';
 
 const client = new Client({
   intents: [
@@ -79,6 +80,16 @@ function getMemory(slug: string): MemoryService {
   return m;
 }
 
+/** 슬러그별 ScheduleService 캐시 (lazy init). */
+const scheduleMap = new Map<string, ScheduleService>();
+function getSchedule(slug: string): ScheduleService {
+  if (!scheduleMap.has(slug)) {
+    if (!memoRepoPath) throw new Error('MEMO_REPO_PATH 미설정 — ScheduleService 생성 불가');
+    scheduleMap.set(slug, new ScheduleService(memoRepoPath, slug));
+  }
+  return scheduleMap.get(slug)!;
+}
+
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 
 function isAdmin(userId: unknown) {
@@ -106,6 +117,7 @@ function buildCtx() {
     raid,
     characterService,
     getMemory: memoRepoPath ? getMemory : null,
+    getSchedule: memoRepoPath ? getSchedule : null,
     getImageAttachment,
     isAdmin,
     generativeText,
@@ -165,7 +177,8 @@ client.once('clientReady', async () => {
     characterService.initialize();
     // default 슬러그 MemoryService 선-초기화 (stub 파일 준비)
     getMemory(characterService.getDefaultSlug());
-    startProactive(client, characterService);
+    startProactive(client, characterService, getMemory);
+    startScheduleReminder(client, characterService, getSchedule);
     await sendStartupGreeting(client, characterService, getMemory);
     console.log(
       '[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:',

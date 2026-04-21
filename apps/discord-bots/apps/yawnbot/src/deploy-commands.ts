@@ -17,6 +17,7 @@ import {
   raidCommandGroup,
 } from './deploy-builders/game-stock';
 import { characterCommand } from './deploy-builders/character';
+import { scheduleCommand } from './deploy-builders/schedule';
 
 const EN = Locale.EnglishUS;
 const enUS = (s: string): Record<string, string> => ({ [EN]: s });
@@ -209,6 +210,7 @@ const commands = [
     .setDescriptionLocalizations(enUS('[Admin] Save data to disk')),
 
   characterCommand(),
+  scheduleCommand(),
 
   new SlashCommandBuilder()
     .setName('기억')
