@@ -10,12 +10,7 @@ import { SlashCommandBuilder, Locale } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
 
 import { voiceJoin, voiceLeave, musicCommandGroup } from './deploy-builders/voice-music';
-import {
-  gameCommandGroup,
-  minigameCommandGroup,
-  stockCommandGroup,
-  raidCommandGroup,
-} from './deploy-builders/game-stock';
+import { gameCommandGroup } from './deploy-builders/game-stock';
 import { characterCommand } from './deploy-builders/character';
 import { scheduleCommand } from './deploy-builders/schedule';
 import { adminCommand } from './deploy-builders/admin';
@@ -28,9 +23,6 @@ const commands = [
   voiceLeave(),
   musicCommandGroup(),
   gameCommandGroup(),
-  minigameCommandGroup(),
-  stockCommandGroup(),
-  raidCommandGroup(),
 
   new SlashCommandBuilder()
     .setName('도움말')
@@ -158,46 +150,6 @@ const commands = [
   characterCommand(),
   scheduleCommand(),
 
-  new SlashCommandBuilder()
-    .setName('기억')
-    .setDescription('YawnBot 메모리 관리')
-    .setDescriptionLocalizations(enUS('Manage YawnBot memory'))
-    .addSubcommand((sub) =>
-      sub
-        .setName('확인')
-        .setNameLocalizations({ 'en-US': 'view' })
-        .setDescription('저장된 나에 대한 정보를 출력합니다.')
-        .setDescriptionLocalizations({ 'en-US': 'View saved information about you' }),
-    )
-    .addSubcommand((sub) =>
-      sub
-        .setName('저장')
-        .setNameLocalizations({ 'en-US': 'save' })
-        .setDescription('지금까지의 대화를 memo 레포에 즉시 커밋합니다.')
-        .setDescriptionLocalizations({ 'en-US': 'Immediately commit current conversation to memo repo' }),
-    )
-    .addSubcommand((sub) =>
-      sub
-        .setName('수정')
-        .setNameLocalizations({ 'en-US': 'edit' })
-        .setDescription('user.md를 AI 도움으로 수정합니다.')
-        .setDescriptionLocalizations({ 'en-US': 'Edit user.md with AI assistance' })
-        .addStringOption((opt) =>
-          opt
-            .setName('내용')
-            .setNameLocalizations({ 'en-US': 'content' })
-            .setDescription('추가하거나 수정할 사항')
-            .setDescriptionLocalizations({ 'en-US': 'What to add or modify' })
-            .setRequired(true),
-        ),
-    )
-    .addSubcommand((sub) =>
-      sub
-        .setName('핫로그')
-        .setNameLocalizations({ 'en-US': 'hotlog' })
-        .setDescription('최근 중요 기억들을 확인합니다.')
-        .setDescriptionLocalizations({ 'en-US': 'View recent important memories' }),
-    ),
 ].map((cmd) => cmd.toJSON());
 
 async function main(): Promise<void> {

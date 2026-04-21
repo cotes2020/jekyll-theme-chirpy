@@ -137,91 +137,50 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         await handleHelp(ctx, interaction);
         break;
       case '게임': {
+        const group = interaction.options.getSubcommandGroup(true);
         const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '강화':
-            await handleEnhanceSlash(ctx, interaction, userId, userName);
+        switch (group) {
+          case '검':
+            switch (sub) {
+              case '강화': await handleEnhanceSlash(ctx, interaction, userId, userName); break;
+              case '판매': await handleSellSlash(ctx, interaction, userId); break;
+              case '정보': await handleInfo(ctx, interaction, userId, userName); break;
+              case '돈': await handleMoney(ctx, interaction, userId, userName); break;
+              case '랭킹': await handleRank(ctx, interaction); break;
+              case '출첵': await handleAttendance(ctx, interaction, userId); break;
+              case '돈내놔': await handleGiveMeMoney(ctx, interaction, userId); break;
+              default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
             break;
-          case '판매':
-            await handleSellSlash(ctx, interaction, userId);
+          case '미니':
+            switch (sub) {
+              case '배틀': await handleBattle(ctx, interaction, userId, userName); break;
+              case '슬롯': await handleSlot(ctx, interaction, userId); break;
+              case '홀짝': await handleOddEven(ctx, interaction, userId); break;
+              case '가위바위보': await handleRps(ctx, interaction, userId); break;
+              default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
             break;
-          case '정보':
-            await handleInfo(ctx, interaction, userId, userName);
+          case '주식':
+            switch (sub) {
+              case '목록': await handleStockList(ctx, interaction); break;
+              case '차트': await handleStockChart(ctx, interaction); break;
+              case '매수': await handleBuy(ctx, interaction, userId); break;
+              case '매도': await handleSellStock(ctx, interaction, userId); break;
+              case '내꺼': await handleMyStock(ctx, interaction, userId, userName); break;
+              default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
             break;
-          case '돈':
-            await handleMoney(ctx, interaction, userId, userName);
-            break;
-          case '랭킹':
-            await handleRank(ctx, interaction);
-            break;
-          case '출첵':
-            await handleAttendance(ctx, interaction, userId);
-            break;
-          case '돈내놔':
-            await handleGiveMeMoney(ctx, interaction, userId);
+          case '레이드':
+            switch (sub) {
+              case '정보': await handleRaidInfo(ctx, interaction); break;
+              case '소환': await handleRaidSpawn(ctx, interaction); break;
+              case '공격': await handleRaidAttack(ctx, interaction, userId); break;
+              default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
             break;
           default:
-            await interaction.reply({ content: '알 수 없는 게임 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
-      case '미니게임': {
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '배틀':
-            await handleBattle(ctx, interaction, userId, userName);
-            break;
-          case '슬롯':
-            await handleSlot(ctx, interaction, userId);
-            break;
-          case '홀짝':
-            await handleOddEven(ctx, interaction, userId);
-            break;
-          case '가위바위보':
-            await handleRps(ctx, interaction, userId);
-            break;
-          default:
-            await interaction.reply({ content: '알 수 없는 미니게임 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
-      case '주식': {
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '목록':
-            await handleStockList(ctx, interaction);
-            break;
-          case '차트':
-            await handleStockChart(ctx, interaction);
-            break;
-          case '매수':
-            await handleBuy(ctx, interaction, userId);
-            break;
-          case '매도':
-            await handleSellStock(ctx, interaction, userId);
-            break;
-          case '내주식':
-            await handleMyStock(ctx, interaction, userId, userName);
-            break;
-          default:
-            await interaction.reply({ content: '알 수 없는 주식 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
-      case '레이드': {
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '정보':
-            await handleRaidInfo(ctx, interaction);
-            break;
-          case '소환':
-            await handleRaidSpawn(ctx, interaction);
-            break;
-          case '공격':
-            await handleRaidAttack(ctx, interaction, userId);
-            break;
-          default:
-            await interaction.reply({ content: '알 수 없는 레이드 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+            await interaction.reply({ content: '알 수 없는 게임 그룹입니다.', flags: MessageFlags.Ephemeral });
         }
         break;
       }
@@ -273,55 +232,23 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         break;
       }
       case 'character': {
+        const group = interaction.options.getSubcommandGroup(true);
         const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case 'list':
-            await handleCharacterList(ctx, interaction);
-            break;
-          case 'switch':
-            await handleCharacterSwitch(ctx, interaction);
-            break;
-          case 'info':
-            await handleCharacterInfo(ctx, interaction);
-            break;
-          case 'reset':
-            await handleCharacterReset(ctx, interaction);
-            break;
-          case 'image':
-            await handleCharacterImage(ctx, interaction);
-            break;
-          case 'image-history':
-            await handleCharacterImageHistory(ctx, interaction);
-            break;
-          default:
-            await interaction.reply({ content: '알 수 없는 character 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
-      case '일정': {
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '추가':
-            await handleScheduleAdd(ctx, interaction);
-            break;
-          case '목록':
-            await handleScheduleList(ctx, interaction);
-            break;
-          case '삭제':
-            await handleScheduleDelete(ctx, interaction);
-            break;
-          default:
-            await interaction.reply({ content: '알 수 없는 일정 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
-      case '기억': {
-        const resolved = await resolveMemoryForInteraction(ctx, interaction);
-        if (!resolved) break;
-        const { card, memory } = resolved;
-
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
+        if (group === '카드') {
+          switch (sub) {
+            case 'list': await handleCharacterList(ctx, interaction); break;
+            case 'switch': await handleCharacterSwitch(ctx, interaction); break;
+            case 'info': await handleCharacterInfo(ctx, interaction); break;
+            case 'reset': await handleCharacterReset(ctx, interaction); break;
+            case 'image': await handleCharacterImage(ctx, interaction); break;
+            case 'history': await handleCharacterImageHistory(ctx, interaction); break;
+            default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
+          }
+        } else if (group === '기억') {
+          const resolved = await resolveMemoryForInteraction(ctx, interaction);
+          if (!resolved) break;
+          const { card, memory } = resolved;
+          switch (sub) {
           case '확인': {
             try {
               const userMd = memory.getUserMd();
@@ -424,8 +351,21 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
             break;
           }
 
-          default:
-            await interaction.reply({ content: '알 수 없는 기억 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+            default:
+              await interaction.reply({ content: '알 수 없는 기억 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+          }
+        } else {
+          await interaction.reply({ content: '알 수 없는 character 그룹입니다.', flags: MessageFlags.Ephemeral });
+        }
+        break;
+      }
+      case '일정': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case '추가': await handleScheduleAdd(ctx, interaction); break;
+          case '목록': await handleScheduleList(ctx, interaction); break;
+          case '삭제': await handleScheduleDelete(ctx, interaction); break;
+          default: await interaction.reply({ content: '알 수 없는 일정 하위 명령입니다.', flags: MessageFlags.Ephemeral });
         }
         break;
       }
