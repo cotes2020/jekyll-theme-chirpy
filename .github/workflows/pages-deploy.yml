@@ -46,21 +46,25 @@ jobs:
         with:
           ruby-version: 3.4
           bundler-cache: true
+          working-directory: apps/blog
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: npm
+          cache-dependency-path: apps/blog/package-lock.json
 
-      # Root package.json: build = PurgeCSS + Rollup (_javascript → assets/js/dist, etc.)
-      - name: Install root npm dependencies
+      - name: Install blog dependencies
+        working-directory: apps/blog
         run: npm ci
 
       - name: Build theme assets (CSS and JS)
+        working-directory: apps/blog
         run: npm run build
 
       - name: Build post graph data
+        working-directory: apps/blog
         run: npm run build:graph
 
       - name: Build KarmoLab React App
@@ -78,11 +82,20 @@ jobs:
           npm run build
 
       - name: Build site
+        working-directory: apps/blog
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
 
+      - name: Merge KarmoLab output to site
+        run: |
+          mkdir -p apps/blog/_site/apps/karmolab
+          rsync -a --exclude 'node_modules' apps/karmolab/ apps/blog/_site/apps/karmolab/
+          mkdir -p apps/blog/_site/apps/karmolab-react-src
+          rsync -a --exclude 'node_modules' apps/karmolab-react-src/ apps/blog/_site/apps/karmolab-react-src/
+
       - name: Test site
+        working-directory: apps/blog
         run: |
         #    bundle exec htmlproofer _site \
         #      \-\-disable-external \
@@ -91,7 +104,7 @@ jobs:
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: "apps/blog/_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
     environment:
