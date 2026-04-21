@@ -51,7 +51,7 @@ async function generateAiStudioChatText(opts: {
   const model = createAiStudioTextModel(opts.apiKey, opts.modelId);
   const chat = model.startChat({
     history: opts.history,
-    ...(opts.systemInstruction ? { systemInstruction: { parts: [{ text: opts.systemInstruction }] } } : {}),
+    ...(opts.systemInstruction ? { systemInstruction: opts.systemInstruction } : {}),
   });
   const ro = opts.signal ? { signal: opts.signal } : undefined;
   const res = await chat.sendMessage(opts.message, ro);

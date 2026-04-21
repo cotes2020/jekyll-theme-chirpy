@@ -11,6 +11,8 @@ exports.generativeEnvHint = generativeEnvHint;
 exports.generateClaudeCliText = generateClaudeCliText;
 exports.resolveAssistantProvider = resolveAssistantProvider;
 exports.generateAssistantText = generateAssistantText;
+exports.generateVertexImage = generateVertexImage;
+exports.generateImageFromEnvWithOptions = generateImageFromEnvWithOptions;
 /**
  * Node 전용: AI Studio(`@google/generative-ai`) 또는 Vertex REST(`fetch`)로 텍스트 생성.
  * 브라우저 번들에 포함하지 말 것 — `import 'karmolab-ai/node'`.
@@ -33,6 +35,17 @@ async function generateAiStudioText(opts) {
     const res = await model.generateContent(opts.prompt, ro);
     return res.response.text();
 }
+/** 멀티턴 대화 히스토리 + 현재 메시지 → 응답 텍스트 (AI Studio Chat) */
+async function generateAiStudioChatText(opts) {
+    const model = createAiStudioTextModel(opts.apiKey, opts.modelId);
+    const chat = model.startChat({
+        history: opts.history,
+        ...(opts.systemInstruction ? { systemInstruction: opts.systemInstruction } : {}),
+    });
+    const ro = opts.signal ? { signal: opts.signal } : undefined;
+    const res = await chat.sendMessage(opts.message, ro);
+    return res.response.text();
+}
 /** Vertex Publisher `generateContent` (API 키 인증, 브라우저 `gemini.ts`와 동일 REST 형태) */
 async function generateVertexText(opts) {
     const model = resolveAiStudioTextModelId(opts.modelId);
@@ -51,6 +64,15 @@ async function generateVertexText(opts) {
     const sys = opts.systemInstruction?.trim();
     if (sys) {
         body.systemInstruction = { parts: [{ text: sys }] };
+    }
+    const threshold = opts.safetyThreshold?.trim();
+    if (threshold) {
+        body.safetySettings = [
+            { category: 'HARM_CATEGORY_HARASSMENT', threshold },
+            { category: 'HARM_CATEGORY_HATE_SPEECH', threshold },
+            { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold },
+            { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold },
+        ];
     }
     const res = await fetch(url, {
         method: 'POST',
@@ -115,6 +137,7 @@ async function generateBlobTextFromEnvWithOptions(env, blobPrompt, options = {})
             location,
             modelId: effectiveModelId,
             userText: blobPrompt,
+            safetyThreshold: env.VERTEX_SAFETY_THRESHOLD?.trim() || null,
             signal: options.signal,
         });
         return { text, surface: 'vertex', modelId: effectiveModelId };
@@ -185,41 +208,62 @@ const child_process_1 = require("child_process");
 async function generateClaudeCliText(opts) {
     const cmd = process.env.CLAUDE_CLI_COMMAND?.trim() || 'claude';
     const timeout = opts.timeoutMs ?? parseInt(process.env.CLAUDE_CLI_TIMEOUT_MS || '60000', 10);
-    return new Promise((resolve, reject) => {
-        // cwd가 있으면 에이전트 모드 (파일 접근 허용), 없으면 단순 텍스트 생성
-        const args = opts.cwd
-            ? ['--print', '--dangerously-skip-permissions']
-            : ['--print'];
-        // stdin으로 프롬프트 전달 (arg 길이 제한 우회)
-        const child = (0, child_process_1.spawn)(cmd, args, {
-            stdio: ['pipe', 'pipe', 'pipe'],
-            windowsHide: true,
-            ...(opts.cwd ? { cwd: opts.cwd } : {}),
+    const fixedSessionId = 'yawnbot-assistant';
+    const runClaude = (useResume) => {
+        return new Promise((resolve, reject) => {
+            // 고정 세션: 항상 같은 세션 이름으로 영구 세션 유지
+            // 첫 호출: --continue --name yawnbot-assistant (세션 생성 + 이름 지정)
+            // 이후 호출: --resume yawnbot-assistant (이름으로 재개)
+            const args = opts.cwd
+                ? useResume
+                    ? ['--print', '--resume', fixedSessionId, '--dangerously-skip-permissions']
+                    : ['--print', '--continue', '--name', fixedSessionId, '--dangerously-skip-permissions']
+                : useResume
+                    ? ['--print', '--resume', fixedSessionId]
+                    : ['--print', '--continue', '--name', fixedSessionId];
+            const child = (0, child_process_1.spawn)(cmd, args, {
+                stdio: ['pipe', 'pipe', 'pipe'],
+                windowsHide: true,
+                ...(opts.cwd ? { cwd: opts.cwd } : {}),
+            });
+            let stdout = '';
+            let stderr = '';
+            child.stdout.on('data', (data) => { stdout += data.toString(); });
+            child.stderr.on('data', (data) => { stderr += data.toString(); });
+            const timer = setTimeout(() => {
+                child.kill();
+                reject(new Error(`Claude CLI 타임아웃 (${timeout}ms)`));
+            }, timeout);
+            child.on('close', (code) => {
+                clearTimeout(timer);
+                if (code === 0 && stdout.trim()) {
+                    resolve(stdout.trim());
+                }
+                else {
+                    reject(new Error(`Claude CLI 종료 코드 ${code}: ${stderr.slice(0, 400)}`));
+                }
+            });
+            child.on('error', (err) => {
+                clearTimeout(timer);
+                reject(new Error(`Claude CLI 실행 실패: ${err.message} (PATH에 '${cmd}'이 있는지 확인)`));
+            });
+            child.stdin.write(opts.prompt);
+            child.stdin.end();
         });
-        let stdout = '';
-        let stderr = '';
-        child.stdout.on('data', (data) => { stdout += data.toString(); });
-        child.stderr.on('data', (data) => { stderr += data.toString(); });
-        const timer = setTimeout(() => {
-            child.kill();
-            reject(new Error(`Claude CLI 타임아웃 (${timeout}ms)`));
-        }, timeout);
-        child.on('close', (code) => {
-            clearTimeout(timer);
-            if (code === 0 && stdout.trim()) {
-                resolve(stdout.trim());
-            }
-            else {
-                reject(new Error(`Claude CLI 종료 코드 ${code}: ${stderr.slice(0, 400)}`));
-            }
-        });
-        child.on('error', (err) => {
-            clearTimeout(timer);
-            reject(new Error(`Claude CLI 실행 실패: ${err.message} (PATH에 '${cmd}'이 있는지 확인)`));
-        });
-        child.stdin.write(opts.prompt);
-        child.stdin.end();
-    });
+    };
+    // 첫 시도: 기존 세션 재개 (--resume)
+    try {
+        return await runClaude(true);
+    }
+    catch (e) {
+        // 세션이 없으면 새로 생성 (--continue)
+        const err = e instanceof Error ? e.message : String(e);
+        if (err.includes('not found') || err.includes('No session') || err.includes('does not match') || err.includes('not a UUID')) {
+            console.log(`[Claude CLI] 기존 세션 없음, 새 세션 생성...`);
+            return await runClaude(false);
+        }
+        throw e;
+    }
 }
 function resolveAssistantProvider(env = process.env) {
     const raw = (env.ASSISTANT_AI_PROVIDER ?? '').trim().toLowerCase();
@@ -241,6 +285,112 @@ async function generateAssistantText(env, prompt, opts = {}) {
         const text = await generateClaudeCliText({ prompt, timeoutMs: opts.timeoutMs, cwd });
         return { text, provider: 'claude-cli' };
     }
+    if (opts.systemInstruction || (opts.history && opts.history.length > 0)) {
+        const surface = parseGenerativeSurfaceFromEnv(env);
+        if (surface === 'vertex') {
+            console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 single-turn으로 fallback합니다.');
+            const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'vertex' });
+            return { text, provider: 'gemini' };
+        }
+        const apiKey = env.GEMINI_API_KEY?.trim();
+        if (!apiKey)
+            throw new Error('AI Studio API: .env에 GEMINI_API_KEY가 필요합니다.');
+        const modelId = resolveAiStudioTextModelId(env.GEMINI_MODEL);
+        const text = await generateAiStudioChatText({
+            apiKey,
+            modelId,
+            systemInstruction: opts.systemInstruction,
+            history: opts.history ?? [],
+            message: prompt,
+        });
+        return { text, provider: 'gemini' };
+    }
     const { text } = await generateBlobTextFromEnvWithOptions(env, prompt, { surface: 'inherit' });
     return { text, provider: 'gemini' };
+}
+/**
+ * Vertex Publisher `:predict` 로 Imagen 호출.
+ * `MODEL_CATALOG.imagen` 의 ID 중 하나를 `modelId`로 전달 (기본 `imagen-4.0-generate-001`).
+ */
+async function generateVertexImage(opts) {
+    const modelId = opts.modelId?.trim() || (0, index_1.getDefaultModelId)('imagen');
+    const loc = (opts.location?.trim() || index_1.DEFAULT_VERTEX_LOCATION).trim() || index_1.DEFAULT_VERTEX_LOCATION;
+    const url = (0, index_1.buildVertexPublisherModelUrl)({
+        projectId: opts.projectId.trim(),
+        location: loc,
+        modelId,
+        method: 'predict',
+        apiKey: opts.apiKey.trim(),
+    });
+    const parameters = {
+        sampleCount: Math.max(1, Math.min(4, opts.sampleCount ?? 1)),
+    };
+    if (opts.aspectRatio)
+        parameters.aspectRatio = opts.aspectRatio;
+    if (opts.personGeneration)
+        parameters.personGeneration = opts.personGeneration;
+    if (opts.safetySetting)
+        parameters.safetySetting = opts.safetySetting;
+    const instance = { prompt: opts.prompt };
+    if (opts.negativePrompt)
+        instance.negativePrompt = opts.negativePrompt;
+    const body = { instances: [instance], parameters };
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        signal: opts.signal,
+    });
+    const raw = await res.text();
+    let data;
+    try {
+        data = JSON.parse(raw);
+    }
+    catch {
+        throw new Error(`Imagen 응답 파싱 실패 HTTP ${res.status}: ${raw.slice(0, 400)}`);
+    }
+    if (!res.ok) {
+        throw new Error(data.error?.message || data.error?.status || `Imagen HTTP ${res.status}: ${raw.slice(0, 400)}`);
+    }
+    const preds = data.predictions;
+    if (!Array.isArray(preds) || preds.length === 0) {
+        throw new Error('Imagen 응답에 이미지가 없습니다: ' + raw.slice(0, 400));
+    }
+    return preds.map((p) => {
+        const b64 = p.bytesBase64Encoded;
+        if (!b64) {
+            throw new Error('Imagen 응답 prediction 에 bytesBase64Encoded 가 없음');
+        }
+        return {
+            buffer: Buffer.from(b64, 'base64'),
+            mimeType: p.mimeType || 'image/png',
+        };
+    });
+}
+/**
+ * `.env` 기반 이미지 생성. `VERTEX_API_KEY` + `VERTEX_PROJECT_ID` 필수.
+ * 모델 우선순위: `options.modelId` > `IMAGE_MODEL_ID` > `MODEL_CATALOG.imagen` 기본값
+ */
+async function generateImageFromEnvWithOptions(env, prompt, options = {}) {
+    const apiKey = env.VERTEX_API_KEY?.trim();
+    const projectId = env.VERTEX_PROJECT_ID?.trim();
+    if (!apiKey || !projectId) {
+        throw new Error('Imagen(Vertex): .env에 VERTEX_API_KEY와 VERTEX_PROJECT_ID가 필요합니다.');
+    }
+    const location = env.VERTEX_LOCATION?.trim() || undefined;
+    const modelId = options.modelId?.trim() || env.IMAGE_MODEL_ID?.trim() || (0, index_1.getDefaultModelId)('imagen');
+    const images = await generateVertexImage({
+        apiKey,
+        projectId,
+        location,
+        modelId,
+        prompt,
+        negativePrompt: options.negativePrompt,
+        sampleCount: options.sampleCount,
+        aspectRatio: options.aspectRatio,
+        personGeneration: options.personGeneration,
+        safetySetting: options.safetySetting,
+        signal: options.signal,
+    });
+    return { images, modelId };
 }
