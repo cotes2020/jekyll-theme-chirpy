@@ -108,6 +108,64 @@ const commands = [
     ),
 
   new SlashCommandBuilder()
+    .setName('이미지')
+    .setNameLocalizations(enUS('image'))
+    .setDescription('Vertex Imagen으로 이미지를 생성합니다.')
+    .setDescriptionLocalizations(enUS('Generate images via Vertex Imagen'))
+    .addStringOption((opt) =>
+      opt
+        .setName('프롬프트')
+        .setNameLocalizations(enUS('prompt'))
+        .setDescription('이미지 프롬프트 (영어 권장)')
+        .setDescriptionLocalizations(enUS('Image prompt (English recommended)'))
+        .setRequired(true)
+        .setMaxLength(1500),
+    )
+    .addStringOption((opt) =>
+      opt
+        .setName('모델')
+        .setNameLocalizations(enUS('model'))
+        .setDescription('모델 ID (비우면 IMAGE_MODEL_ID 기본)')
+        .setDescriptionLocalizations(enUS('Model id; empty = IMAGE_MODEL_ID default'))
+        .addChoices(
+          { name: 'Imagen 4 Generate', value: 'imagen-4.0-generate-001' },
+          { name: 'Imagen 4 Ultra', value: 'imagen-4.0-ultra-generate-001' },
+          { name: 'Imagen 4 Fast', value: 'imagen-4.0-fast-generate-001' },
+        ),
+    )
+    .addStringOption((opt) =>
+      opt
+        .setName('비율')
+        .setNameLocalizations(enUS('aspect'))
+        .setDescription('가로세로 비율 (기본 1:1)')
+        .setDescriptionLocalizations(enUS('Aspect ratio (default 1:1)'))
+        .addChoices(
+          { name: '1:1 (정사각)', value: '1:1' },
+          { name: '16:9 (가로)', value: '16:9' },
+          { name: '9:16 (세로)', value: '9:16' },
+          { name: '4:3', value: '4:3' },
+          { name: '3:4', value: '3:4' },
+        ),
+    )
+    .addIntegerOption((opt) =>
+      opt
+        .setName('개수')
+        .setNameLocalizations(enUS('count'))
+        .setDescription('생성할 이미지 개수 (1~4)')
+        .setDescriptionLocalizations(enUS('Number of images (1-4)'))
+        .setMinValue(1)
+        .setMaxValue(4),
+    )
+    .addStringOption((opt) =>
+      opt
+        .setName('네거티브')
+        .setNameLocalizations(enUS('negative'))
+        .setDescription('피하고 싶은 요소 (negative prompt)')
+        .setDescriptionLocalizations(enUS('Elements to avoid (negative prompt)'))
+        .setMaxLength(500),
+    ),
+
+  new SlashCommandBuilder()
     .setName('cursor-edit')
     .setDescription('[관리자] 로컬 저장소에서 Cursor agent(acp)로 프롬프트 실행')
     .setDescriptionLocalizations(enUS('[Admin] Run a Cursor agent prompt on the local repo'))
