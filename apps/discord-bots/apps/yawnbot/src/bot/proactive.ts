@@ -1,18 +1,17 @@
 /**
  * proactive.ts — 먼저 말 걸기
- * - 봇 시작 시 DM으로 기상 메시지
+ * - 봇 시작 시 DM으로 기상 메시지 (해당 DM의 활성 캐릭터 카드로)
  * - 매일 아침 ASSISTANT_MORNING_HOUR 시 (KST) DM으로 인사
+ *
+ * 시스템 프롬프트는 캐릭터 카드 본문. 페르소나 하드코딩 없음.
  */
 import type { Client, DMChannel } from 'discord.js';
 import { generateAssistantText } from 'karmolab-ai/node';
+import type { CharacterService, CharacterCard } from '../services/character-service';
+import { CharacterService as CSHelper } from '../services/character-service';
 import type { MemoryService } from '../services/memory-service';
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
-
-function getKSTHour(): number {
-  const kst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
-  return kst.getHours();
-}
 
 function msUntilNextKSTHour(targetHour: number): number {
   const now = new Date();
@@ -29,22 +28,48 @@ function msUntilNextKSTHour(targetHour: number): number {
   return secsUntil * 1000;
 }
 
-async function sendMorningGreeting(client: Client): Promise<void> {
+function dmChannelKey(userId: string): string {
+  return CSHelper.channelKey({ isDM: true, userId, channelId: '' });
+}
+
+function formatKSTDate(): { dateStr: string; dayStr: string; timeStr: string } {
+  const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  const dateStr = `${kstNow.getFullYear()}년 ${kstNow.getMonth() + 1}월 ${kstNow.getDate()}일`;
+  const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+  const dayStr = dayNames[kstNow.getDay()] + '요일';
+  const timeStr = `${String(kstNow.getHours()).padStart(2, '0')}:${String(kstNow.getMinutes()).padStart(2, '0')}`;
+  return { dateStr, dayStr, timeStr };
+}
+
+function resolveDMCard(
+  characterService: CharacterService,
+  userId: string,
+): CharacterCard | null {
+  return characterService.resolveCard(dmChannelKey(userId));
+}
+
+async function sendMorningGreeting(
+  client: Client,
+  characterService: CharacterService,
+): Promise<void> {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
   if (!process.env.GEMINI_API_KEY?.trim()) return;
 
+  const card = resolveDMCard(characterService, userId);
+  if (!card) {
+    console.warn('[Proactive] 활성 캐릭터 카드 없음 — 아침 인사 스킵');
+    return;
+  }
+
   try {
     const user = await client.users.fetch(userId);
-    const dmChannel = await user.createDM() as DMChannel;
+    const dmChannel = (await user.createDM()) as DMChannel;
 
-    const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
-    const dateStr = `${kstNow.getFullYear()}년 ${kstNow.getMonth() + 1}월 ${kstNow.getDate()}일`;
-    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayStr = dayNames[kstNow.getDay()] + '요일';
+    const { dateStr, dayStr } = formatKSTDate();
 
     const prompt =
-      `너는 mascari4615의 개인 AI 비서야.\n` +
+      `${card.body}\n\n` +
       `오늘은 ${dateStr} ${dayStr}이야.\n` +
       `아침 인사 메시지를 한국어로, 짧고 따뜻하게 보내줘.\n` +
       `날짜와 요일을 자연스럽게 언급하고, 오늘 하루도 잘 보내길 바란다는 마음을 담아줘.\n` +
@@ -53,40 +78,53 @@ async function sendMorningGreeting(client: Client): Promise<void> {
     const { text } = await generateAssistantText(process.env, prompt);
 
     await dmChannel.send(text.slice(0, 1900));
-    console.log('[Proactive] 아침 인사 전송 완료');
+    console.log(`[Proactive:${card.slug}] 아침 인사 전송 완료`);
   } catch (e: unknown) {
-    console.error('[Proactive] 아침 인사 실패:', e instanceof Error ? e.message : e);
+    console.error(
+      `[Proactive:${card.slug}] 아침 인사 실패:`,
+      e instanceof Error ? e.message : e,
+    );
   }
 }
 
-function scheduleMorning(client: Client, targetHour: number): void {
+function scheduleMorning(
+  client: Client,
+  characterService: CharacterService,
+  targetHour: number,
+): void {
   const delay = msUntilNextKSTHour(targetHour);
   console.log(`[Proactive] 다음 아침 인사까지 ${Math.round(delay / 60000)}분 대기`);
 
   morningTimer = setTimeout(async () => {
-    await sendMorningGreeting(client);
-    // 다음 날 같은 시각 예약
-    scheduleMorning(client, targetHour);
+    await sendMorningGreeting(client, characterService);
+    scheduleMorning(client, characterService, targetHour);
   }, delay);
 }
 
-export async function sendStartupGreeting(client: Client, memory: MemoryService): Promise<void> {
+export async function sendStartupGreeting(
+  client: Client,
+  characterService: CharacterService,
+  getMemory: (slug: string) => MemoryService,
+): Promise<void> {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
 
+  const card = resolveDMCard(characterService, userId);
+  if (!card) {
+    console.warn('[Proactive] 활성 캐릭터 카드 없음 — 기상 메시지 스킵');
+    return;
+  }
+
   try {
     const user = await client.users.fetch(userId);
-    const dmChannel = await user.createDM() as DMChannel;
+    const dmChannel = (await user.createDM()) as DMChannel;
 
+    const memory = getMemory(card.slug);
     const context = memory.buildContext();
-    const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
-    const dateStr = `${kstNow.getFullYear()}년 ${kstNow.getMonth() + 1}월 ${kstNow.getDate()}일`;
-    const timeStr = `${String(kstNow.getHours()).padStart(2, '0')}:${String(kstNow.getMinutes()).padStart(2, '0')}`;
-    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayStr = dayNames[kstNow.getDay()] + '요일';
+    const { dateStr, dayStr, timeStr } = formatKSTDate();
 
     const prompt =
-      `너는 mascari4615의 개인 AI 비서야.\n` +
+      `${card.body}\n\n` +
       `방금 봇이 시작됐어. ${dateStr} ${dayStr} ${timeStr}.\n` +
       `마치 잠에서 깨어난 것처럼, 짧고 자연스럽게 기상 메시지를 보내줘.\n` +
       `2-3문장 이내로. 한국어로.\n` +
@@ -94,13 +132,16 @@ export async function sendStartupGreeting(client: Client, memory: MemoryService)
 
     const { text } = await generateAssistantText(process.env, prompt);
     await dmChannel.send(text.slice(0, 1900));
-    console.log('[Proactive] 기상 메시지 전송 완료');
+    console.log(`[Proactive:${card.slug}] 기상 메시지 전송 완료`);
   } catch (e: unknown) {
-    console.error('[Proactive] 기상 메시지 실패:', e instanceof Error ? e.message : e);
+    console.error(
+      `[Proactive:${card.slug}] 기상 메시지 실패:`,
+      e instanceof Error ? e.message : e,
+    );
   }
 }
 
-export function startProactive(client: Client): void {
+export function startProactive(client: Client, characterService: CharacterService): void {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) {
     console.warn('[Proactive] ASSISTANT_USER_ID 미설정 — 아침 인사 비활성화');
@@ -108,7 +149,7 @@ export function startProactive(client: Client): void {
   }
 
   const morningHour = parseInt(process.env.ASSISTANT_MORNING_HOUR || '8', 10);
-  scheduleMorning(client, morningHour);
+  scheduleMorning(client, characterService, morningHour);
 }
 
 export function stopProactive(): void {

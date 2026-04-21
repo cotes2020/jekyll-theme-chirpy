@@ -1,13 +1,15 @@
 /**
- * MemoryService — 계층형 메모리 시스템
+ * MemoryService — 캐릭터별 계층형 메모리 시스템
  *
- * logs/YYYY-MM-DD.md      : 전체 대화 원본 (즉시 기록)
- * memory/daily/YYYY-MM-DD : 하루 요약 (AI 생성, 다음날 첫 대화 때)
- * memory/weekly/YYYY-WNN  : 주간 요약 (AI 생성, 다음주 첫 대화 때)
- * memory/user.md          : 나에 대한 누적 정보
- * memory/self.md          : 봇 자신에 대한 누적 정보
+ * 각 인스턴스는 하나의 캐릭터 slug 전용. 경로는 전부 characters/<slug>/memory/ 기준.
  *
- * git commit: 1시간마다 자동 (push 없음)
+ *   logs/YYYY-MM-DD.md      : 전체 대화 원본 (즉시 기록)
+ *   daily/YYYY-MM-DD.md     : 하루 요약 (AI 생성, 다음날 첫 대화 때)
+ *   weekly/YYYY-WNN.md      : 주간 요약 (AI 생성, 다음주 첫 대화 때)
+ *   user.md                 : 이 캐릭터가 아는 mascari4615
+ *   self.md                 : 이 캐릭터가 아는 자기 자신
+ *
+ * git commit: 1시간마다 자동 (push 없음). 한 인스턴스가 커밋하면 해당 슬러그 경로만 포함.
  */
 import fs from 'fs';
 import path from 'path';
@@ -60,16 +62,21 @@ function pad(n: number): string {
 // ── MemoryService ──────────────────────────────────────────────────────────
 
 export class MemoryService {
+  readonly slug: string;
   private memoRepoPath: string;
-  private logsDir: string;
+  private characterDir: string;
   private memoryDir: string;
+  private logsDir: string;
   private commitTimer: ReturnType<typeof setInterval> | null = null;
   private dirty = false;
 
-  constructor(memoRepoPath: string) {
+  constructor(memoRepoPath: string, slug: string) {
+    if (!slug) throw new Error('MemoryService: slug 필수');
     this.memoRepoPath = memoRepoPath;
-    this.logsDir = path.join(memoRepoPath, 'assistant', 'logs');
-    this.memoryDir = path.join(memoRepoPath, 'assistant', 'memory');
+    this.slug = slug;
+    this.characterDir = path.join(memoRepoPath, 'characters', slug);
+    this.memoryDir = path.join(this.characterDir, 'memory');
+    this.logsDir = path.join(this.memoryDir, 'logs');
   }
 
   initialize(): void {
@@ -81,7 +88,6 @@ export class MemoryService {
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     }
 
-    // user.md / self.md 없으면 초기 파일 생성
     this._initFile(
       path.join(this.memoryDir, 'user.md'),
       '# 나에 대한 정보\n\n(아직 기록된 정보 없음)\n',
@@ -98,7 +104,9 @@ export class MemoryService {
       10,
     );
     this.commitTimer = setInterval(() => this.commitIfDirty(), intervalMs);
-    console.log(`[Memory] 초기화 완료 (커밋 주기: ${intervalMs / 60000}분)`);
+    console.log(
+      `[Memory:${this.slug}] 초기화 완료 (커밋 주기: ${intervalMs / 60000}분)`,
+    );
   }
 
   /**
@@ -115,7 +123,9 @@ export class MemoryService {
 
     const sourcePath = path.join(this.memoRepoPath, 'CLAUDE-karmoddrine.md');
     if (!fs.existsSync(sourcePath)) {
-      console.warn('[Memory] CLAUDE-karmoddrine.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀');
+      console.warn(
+        '[Memory] CLAUDE-karmoddrine.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀',
+      );
       return;
     }
 
@@ -123,7 +133,11 @@ export class MemoryService {
       fs.symlinkSync(sourcePath, linkPath);
       console.log(`[Memory] CLAUDE.md 심볼릭 링크 생성: ${linkPath}`);
     } catch (e: unknown) {
-      console.warn(`[Memory] CLAUDE.md 심볼릭 링크 생성 실패 (Developer Mode 또는 관리자 권한 필요): ${e instanceof Error ? e.message : e}`);
+      console.warn(
+        `[Memory] CLAUDE.md 심볼릭 링크 생성 실패 (Developer Mode 또는 관리자 권한 필요): ${
+          e instanceof Error ? e.message : e
+        }`,
+      );
     }
   }
 
@@ -161,9 +175,12 @@ export class MemoryService {
     try {
       fs.appendFileSync(userMdPath, line, 'utf-8');
       this.dirty = true;
-      console.log(`[Memory] Hot memory 저장: ${fact}`);
+      console.log(`[Memory:${this.slug}] Hot memory 저장: ${fact}`);
     } catch (e: unknown) {
-      console.error('[Memory] hot memory 저장 실패:', e instanceof Error ? e.message : e);
+      console.error(
+        `[Memory:${this.slug}] hot memory 저장 실패:`,
+        e instanceof Error ? e.message : e,
+      );
     }
   }
 
@@ -191,6 +208,11 @@ export class MemoryService {
     return hotMemories.length > 0 ? hotMemories.join('\n') : '(기록 없음)';
   }
 
+  /** 슬래시 `/기억 수정` 등 외부에서 user.md를 통째로 덮어쓸 때 사용 */
+  getUserMdPath(): string {
+    return path.join(this.memoryDir, 'user.md');
+  }
+
   // ── 요약 생성 (필요할 때만) ───────────────────────────────────────────────
 
   async checkAndGenerateSummaries(): Promise<void> {
@@ -212,7 +234,7 @@ export class MemoryService {
       const log = fs.readFileSync(logPath, 'utf-8').trim();
       if (!log) return;
 
-      console.log(`[Memory] ${yesterday} 일간 요약 생성 중...`);
+      console.log(`[Memory:${this.slug}] ${yesterday} 일간 요약 생성 중...`);
       const { text } = await generateAssistantText(
         process.env,
         `다음은 ${yesterday}의 대화 기록이야. 핵심 내용을 간결하게 요약해줘. ` +
@@ -221,20 +243,21 @@ export class MemoryService {
 
       fs.writeFileSync(summaryPath, `# ${yesterday} 일간 요약\n\n${text.trim()}\n`, 'utf-8');
       this.dirty = true;
-      console.log(`[Memory] ${yesterday} 일간 요약 저장 완료`);
+      console.log(`[Memory:${this.slug}] ${yesterday} 일간 요약 저장 완료`);
     } catch (e: unknown) {
-      console.error('[Memory] 일간 요약 생성 실패:', e instanceof Error ? e.message : e);
+      console.error(
+        `[Memory:${this.slug}] 일간 요약 생성 실패:`,
+        e instanceof Error ? e.message : e,
+      );
     }
   }
 
   private async _generateWeeklySummaryIfNeeded(): Promise<void> {
-    // 이번 주가 아닌 지난 주 키
     const lastWeekDate = daysAgo(7);
     const weekKey = isoWeekKey(lastWeekDate);
     const summaryPath = path.join(this.memoryDir, 'weekly', `${weekKey}.md`);
     if (fs.existsSync(summaryPath)) return;
 
-    // 지난 주 일간 요약들 수집
     const dailies: string[] = [];
     for (let i = 7; i <= 13; i++) {
       const d = kstDateStr(daysAgo(i));
@@ -246,7 +269,7 @@ export class MemoryService {
     if (dailies.length === 0) return;
 
     try {
-      console.log(`[Memory] ${weekKey} 주간 요약 생성 중...`);
+      console.log(`[Memory:${this.slug}] ${weekKey} 주간 요약 생성 중...`);
       const { text } = await generateAssistantText(
         process.env,
         `다음은 ${weekKey} 한 주간의 일별 대화 요약이야. ` +
@@ -257,14 +280,16 @@ export class MemoryService {
 
       fs.writeFileSync(summaryPath, `# ${weekKey} 주간 요약\n\n${text.trim()}\n`, 'utf-8');
       this.dirty = true;
-      console.log(`[Memory] ${weekKey} 주간 요약 저장 완료`);
+      console.log(`[Memory:${this.slug}] ${weekKey} 주간 요약 저장 완료`);
     } catch (e: unknown) {
-      console.error('[Memory] 주간 요약 생성 실패:', e instanceof Error ? e.message : e);
+      console.error(
+        `[Memory:${this.slug}] 주간 요약 생성 실패:`,
+        e instanceof Error ? e.message : e,
+      );
     }
   }
 
   private async _updateUserAndSelfMemoryIfNeeded(): Promise<void> {
-    // 오늘 이미 갱신했으면 스킵 (중복 방지)
     const markerPath = path.join(this.memoryDir, '.user-self-updated');
     const today = kstDateStr();
     if (fs.existsSync(markerPath)) {
@@ -275,7 +300,6 @@ export class MemoryService {
     const yesterday = kstDateStr(daysAgo(1));
     const dailySummaryPath = path.join(this.memoryDir, 'daily', `${yesterday}.md`);
 
-    // 어제 요약이 없으면 갱신 스킵
     if (!fs.existsSync(dailySummaryPath)) return;
 
     try {
@@ -283,7 +307,7 @@ export class MemoryService {
       const currentUserMd = this._read(path.join(this.memoryDir, 'user.md'));
       const currentSelfMd = this._read(path.join(this.memoryDir, 'self.md'));
 
-      console.log(`[Memory] user.md / self.md 갱신 중...`);
+      console.log(`[Memory:${this.slug}] user.md / self.md 갱신 중...`);
       const { text: updatedMemory } = await generateAssistantText(
         process.env,
         `너는 mascari4615의 개인 AI 비서야.\n` +
@@ -300,7 +324,6 @@ export class MemoryService {
           `마크다운 형식으로, 간결하게 작성해줘.`,
       );
 
-      // "## [나에 대한 정보]"와 "## [봇 자신에 대한 정보]" 섹션으로 분리
       const userMatch = updatedMemory.match(/##\s*\[나에\s*대한\s*정보\]([\s\S]*?)(?=##\s*\[봇|$)/);
       const selfMatch = updatedMemory.match(/##\s*\[봇\s*자신에\s*대한\s*정보\]([\s\S]*?)$/);
 
@@ -324,12 +347,14 @@ export class MemoryService {
         this.dirty = true;
       }
 
-      // 중복 방지 마커 파일 기록
       fs.writeFileSync(markerPath, today, 'utf-8');
 
-      console.log(`[Memory] user.md / self.md 갱신 완료`);
+      console.log(`[Memory:${this.slug}] user.md / self.md 갱신 완료`);
     } catch (e: unknown) {
-      console.error('[Memory] user/self 메모리 갱신 실패:', e instanceof Error ? e.message : e);
+      console.error(
+        `[Memory:${this.slug}] user/self 메모리 갱신 실패:`,
+        e instanceof Error ? e.message : e,
+      );
     }
   }
 
@@ -349,20 +374,26 @@ export class MemoryService {
           const ageMs = Date.now() - stat.mtimeMs;
           if (ageMs > days * 24 * 60 * 60 * 1000) {
             fs.unlinkSync(filePath);
-            console.log(`[Memory] 오래된 파일 삭제: ${file}`);
+            console.log(`[Memory:${this.slug}] 오래된 파일 삭제: ${file}`);
             this.dirty = true;
           }
         }
       } catch (e: unknown) {
-        console.warn(`[Memory] cleanup 실패 (${dir}):`, e instanceof Error ? e.message : e);
+        console.warn(
+          `[Memory:${this.slug}] cleanup 실패 (${dir}):`,
+          e instanceof Error ? e.message : e,
+        );
       }
     }
   }
 
   // ── 컨텍스트 빌드 ─────────────────────────────────────────────────────────
 
+  /**
+   * 시스템 프롬프트(card.md 본문)는 이 함수가 포함하지 않는다 — 호출자가 앞에 붙인다.
+   * 여기선 user.md / self.md / 주간·어제 요약 / 오늘 로그만 반환.
+   */
   buildContext(maxChars = 8000): string {
-    // 반드시 포함 (핵심 프로필)
     const fixed: string[] = [];
 
     const userMd = this._read(path.join(this.memoryDir, 'user.md'));
@@ -371,7 +402,6 @@ export class MemoryService {
     const selfMd = this._read(path.join(this.memoryDir, 'self.md'));
     if (selfMd) fixed.push(`[봇 자신에 대한 정보]\n${selfMd}`);
 
-    // 선택적 포함 (최신 → 오래된 순으로 우선순위)
     const optional: string[] = [];
 
     const todayLog = this._read(path.join(this.logsDir, `${kstDateStr()}.md`));
@@ -386,7 +416,6 @@ export class MemoryService {
     const latestWeekly = this._latestFile(weeklyDir);
     if (latestWeekly) optional.push(`[최근 주간 요약]\n${latestWeekly}`);
 
-    // 합치기: fixed는 무조건 포함, optional은 길이 여유 있을 때만
     let result = fixed.join('\n\n');
     for (const part of optional) {
       const candidate = result ? result + '\n\n' + part : part;
@@ -423,18 +452,19 @@ export class MemoryService {
   commitIfDirty(): void {
     if (!this.dirty) return;
     const today = kstDateStr();
+    const rel = `characters/${this.slug}/memory/`;
     try {
-      execSync(`git -C "${this.memoRepoPath}" add assistant/`, { stdio: 'pipe' });
+      execSync(`git -C "${this.memoRepoPath}" add "${rel}"`, { stdio: 'pipe' });
       execSync(
-        `git -C "${this.memoRepoPath}" commit -m "chore: 대화 기록 자동 저장 ${today}"`,
+        `git -C "${this.memoRepoPath}" commit -m "chore(${this.slug}): 대화 기록 자동 저장 ${today}"`,
         { stdio: 'pipe' },
       );
       this.dirty = false;
-      console.log(`[Memory] git commit 완료 (${today})`);
+      console.log(`[Memory:${this.slug}] git commit 완료 (${today})`);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
       if (!msg.includes('nothing to commit')) {
-        console.error('[Memory] commit 실패:', msg);
+        console.error(`[Memory:${this.slug}] commit 실패:`, msg);
       }
     }
   }

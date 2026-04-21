@@ -19,6 +19,8 @@ import { EnhancementService } from './services/enhancement';
 import { StockService } from './services/stock';
 import { RaidService } from './services/raid';
 import { MemoryService } from './services/memory-service';
+import { CharacterService } from './services/character-service';
+import { migrateLegacyAssistant } from './services/legacy-migration';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -59,7 +61,24 @@ const stock = new StockService(gameData);
 const raid = new RaidService(gameData);
 
 const memoRepoPath = process.env.MEMO_REPO_PATH?.trim() || '';
-const memory = memoRepoPath ? new MemoryService(memoRepoPath) : null;
+const characterService = memoRepoPath
+  ? new CharacterService(
+      memoRepoPath,
+      process.env.ASSISTANT_DEFAULT_CHARACTER?.trim() || 'yawn',
+    )
+  : null;
+
+/** 슬러그별 MemoryService 캐시 (lazy init). initialize() 는 첫 호출 시 실행. */
+const memoryMap = new Map<string, MemoryService>();
+function getMemory(slug: string): MemoryService {
+  const existing = memoryMap.get(slug);
+  if (existing) return existing;
+  if (!memoRepoPath) throw new Error('MEMO_REPO_PATH 미설정 — MemoryService 생성 불가');
+  const m = new MemoryService(memoRepoPath, slug);
+  m.initialize();
+  memoryMap.set(slug, m);
+  return m;
+}
 
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 
@@ -86,7 +105,8 @@ function buildCtx() {
     enhancement,
     stock,
     raid,
-    memory,
+    characterService,
+    getMemory: memoRepoPath ? getMemory : null,
     getImageAttachment,
     isAdmin,
     generativeText,
@@ -107,8 +127,8 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
-  if (memory) {
-    await handleAssistantMessage(message as any, memory);
+  if (characterService) {
+    await handleAssistantMessage(message as any, characterService, getMemory);
   }
   await handleMeme(message as any);
 });
@@ -138,11 +158,22 @@ client.once('clientReady', async () => {
 
   startPresenceRotation(client);
 
-  if (memory) {
-    memory.initialize();
-    startProactive(client);
-    await sendStartupGreeting(client, memory);
-    console.log('[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:', process.env.ASSISTANT_USER_ID, ')');
+  if (characterService) {
+    characterService.initialize();
+    const migrateTarget =
+      process.env.ASSISTANT_LEGACY_MIGRATE_SLUG?.trim() || characterService.getDefaultSlug();
+    migrateLegacyAssistant(memoRepoPath, migrateTarget);
+    // default 슬러그 MemoryService 선-초기화 (CLAUDE.md 심볼릭 링크·stub 파일 준비)
+    getMemory(characterService.getDefaultSlug());
+    startProactive(client, characterService);
+    await sendStartupGreeting(client, characterService, getMemory);
+    console.log(
+      '[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:',
+      process.env.ASSISTANT_USER_ID,
+      ', default:',
+      characterService.getDefaultSlug(),
+      ')',
+    );
   } else {
     console.warn('[Assistant] MEMO_REPO_PATH 미설정 — AI 비서 비활성화');
   }
@@ -196,6 +227,17 @@ async function main() {
   });
 }
 
+function shutdownMemory(): void {
+  for (const m of memoryMap.values()) {
+    try {
+      m.destroy();
+    } catch (e: unknown) {
+      console.warn('[Shutdown] memory destroy 실패:', e instanceof Error ? e.message : e);
+    }
+  }
+  memoryMap.clear();
+}
+
 process.on('SIGINT', () => {
   console.log('\n[Shutdown] 종료 중...');
   setMusicDiscordClient(null);
@@ -203,7 +245,8 @@ process.on('SIGINT', () => {
   stopProactive();
   stock.stopMarket();
   gameData.destroy();
-  memory?.destroy();
+  characterService?.commitIfDirty();
+  shutdownMemory();
   destroyAllMusicPlayers();
   destroyAllVoiceConnections();
   client.destroy();
@@ -216,7 +259,8 @@ process.on('SIGTERM', () => {
   stopProactive();
   stock.stopMarket();
   gameData.destroy();
-  memory?.destroy();
+  characterService?.commitIfDirty();
+  shutdownMemory();
   destroyAllMusicPlayers();
   destroyAllVoiceConnections();
   client.destroy();
@@ -227,4 +271,3 @@ main().catch((err) => {
   console.error('[Fatal]', err);
   process.exit(1);
 });
-

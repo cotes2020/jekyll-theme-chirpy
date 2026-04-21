@@ -30,8 +30,43 @@ import {
 import { handleSpeak } from './speak';
 import { handleSound } from './sound';
 import { handleAdminReload, handleAdminSave } from './admin';
+import {
+  handleCharacterList,
+  handleCharacterSwitch,
+  handleCharacterInfo,
+  handleCharacterReset,
+} from './character';
+import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
+
+/** 현재 /기억 호출 컨텍스트의 활성 슬러그 memory 를 돌려준다. 없으면 null + 안내. */
+async function resolveMemoryForInteraction(ctx, interaction) {
+  const cs = ctx.characterService;
+  const getMem = ctx.getMemory;
+  if (!cs || !getMem) {
+    await interaction.reply({
+      content: 'MEMO_REPO_PATH가 설정되지 않아 기억 기능이 비활성화되어 있습니다.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return null;
+  }
+  const isDM = !interaction.guildId;
+  const channelKey = CharacterService.channelKey({
+    isDM,
+    userId: interaction.user.id,
+    channelId: interaction.channelId ?? '',
+  });
+  const card = cs.resolveCard(channelKey);
+  if (!card) {
+    await interaction.reply({
+      content: '활성 캐릭터 카드가 없어요. `/character list` 로 확인해봐요.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return null;
+  }
+  return { card, memory: getMem(card.slug) };
+}
 
 export async function dispatchSlashCommand(ctx, interaction) {
   if (!interaction.isChatInputCommand()) return;
@@ -193,12 +228,30 @@ export async function dispatchSlashCommand(ctx, interaction) {
       case 'admin-save':
         await handleAdminSave(ctx, interaction, userId);
         break;
-      case '기억': {
-        const memory = ctx.memory;
-        if (!memory) {
-          await interaction.reply({ content: 'MEMO_REPO_PATH가 설정되지 않아 기억 기능이 비활성화되어 있습니다.', flags: MessageFlags.Ephemeral });
-          break;
+      case 'character': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case 'list':
+            await handleCharacterList(ctx, interaction);
+            break;
+          case 'switch':
+            await handleCharacterSwitch(ctx, interaction);
+            break;
+          case 'info':
+            await handleCharacterInfo(ctx, interaction);
+            break;
+          case 'reset':
+            await handleCharacterReset(ctx, interaction);
+            break;
+          default:
+            await interaction.reply({ content: '알 수 없는 character 하위 명령입니다.', flags: MessageFlags.Ephemeral });
         }
+        break;
+      }
+      case '기억': {
+        const resolved = await resolveMemoryForInteraction(ctx, interaction);
+        if (!resolved) break;
+        const { card, memory } = resolved;
 
         const sub = interaction.options.getSubcommand();
         switch (sub) {
@@ -207,16 +260,14 @@ export async function dispatchSlashCommand(ctx, interaction) {
               const userMd = memory.getUserMd();
               const selfMd = memory.getSelfMd();
 
-              // Discord embed 필드는 1024자 제한
               const userContent = userMd.slice(0, 1024) || '(없음)';
               const selfContent = selfMd.slice(0, 1024) || '(없음)';
 
-              // 용량 정보
               const userSize = Buffer.byteLength(userMd, 'utf-8');
               const selfSize = Buffer.byteLength(selfMd, 'utf-8');
 
               const embed = new EmbedBuilder()
-                .setTitle('🧠 YawnBot 메모리')
+                .setTitle(`🧠 ${card.displayName} 메모리 (${card.slug})`)
                 .addFields(
                   {
                     name: `나에 대한 정보 (${(userSize / 1024).toFixed(1)}KB)`,
@@ -240,7 +291,7 @@ export async function dispatchSlashCommand(ctx, interaction) {
             await interaction.deferReply({ flags: MessageFlags.Ephemeral });
             try {
               memory.commitIfDirty();
-              await interaction.editReply('대화 기록을 memo 레포에 저장했습니다.');
+              await interaction.editReply(`${card.displayName}(${card.slug}) 대화 기록을 memo 레포에 저장했습니다.`);
             } catch (e) {
               await interaction.editReply(`저장 실패: ${e instanceof Error ? e.message : String(e)}`);
             }
@@ -262,19 +313,19 @@ export async function dispatchSlashCommand(ctx, interaction) {
                 `너는 mascari4615의 개인 AI 비서야.\n다음은 현재 user.md의 내용이야:\n${currentUserMd}\n\n사용자가 요청한 수정 사항:\n${content}\n\n이를 반영해서 업데이트된 user.md 내용을 마크다운 형식으로 작성해줘. 기존 정보는 유지하면서 새로운 정보를 추가/수정해.`,
               );
               memory.appendHotMemory(`[기억수정] ${content.slice(0, 50)}`);
-              // user.md 파일 직접 업데이트
-              const path = await import('path');
               const fs = await import('fs');
-              const userMdPath = path.default.join((memory as any).memoryDir, 'user.md');
-              fs.default.writeFileSync(userMdPath, `# 나에 대한 정보\n\n${updatedUserMd.trim()}\n`, 'utf-8');
+              fs.default.writeFileSync(
+                memory.getUserMdPath(),
+                `# 나에 대한 정보\n\n${updatedUserMd.trim()}\n`,
+                'utf-8',
+              );
 
-              // 변경 내용 요약
               const oldLines = currentUserMd.split('\n').length;
               const newLines = updatedUserMd.split('\n').length;
               const diff = `${oldLines}줄 → ${newLines}줄`;
 
               const embed = new EmbedBuilder()
-                .setTitle('✅ user.md 업데이트 완료')
+                .setTitle(`✅ ${card.displayName} user.md 업데이트 완료`)
                 .addFields(
                   { name: '요청', value: content.slice(0, 256) },
                   { name: '변화', value: diff, inline: true },
@@ -292,7 +343,7 @@ export async function dispatchSlashCommand(ctx, interaction) {
             try {
               const hotLog = memory.getHotMemoryLog(20);
               const embed = new EmbedBuilder()
-                .setTitle('🔥 핫 메모리 로그')
+                .setTitle(`🔥 ${card.displayName} 핫 메모리 로그`)
                 .setDescription('최근 중요 기억들 (최대 20개)')
                 .addFields({
                   name: '기록',
@@ -323,4 +374,3 @@ export async function dispatchSlashCommand(ctx, interaction) {
       .catch(() => {});
   }
 }
-

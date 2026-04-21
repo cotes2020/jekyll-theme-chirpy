@@ -60,8 +60,19 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 | 명령 | 설명 |
 |------|------|
 | `/yawn` `질문` | **필수** 질문 문자열. **선택** `api`: 기본(.env) / Google AI Studio / Vertex AI — 런타임에 호출 도메인 고름(각각에 맞는 키가 `.env`에 있어야 함). **선택** `model`: 모델 ID(예 `gemini-2.5-pro`); 비우면 `GEMINI_MODEL`·패키지 기본. 구현: `karmolab-ai/node`의 `generateBlobTextFromEnvWithOptions`. 채널 **최근 메시지** 맥락(`YAWN_CONTEXT_MESSAGES`), 시스템 톤(`YAWN_SYSTEM_PROMPT`) |
+| `/character` | DM/채널별 활성 캐릭터 관리 — `list` · `switch <slug>` · `info [slug]` · `reset`. [자세히](./docs/character-system.md) |
+| `/기억` | 활성 캐릭터의 메모리 관리 — `확인` · `저장` · `수정 <내용>` · `핫로그`. [자세히](./docs/character-system.md) |
 | `/cursor-edit` | [관리자] 로컬 Cursor 에이전트 |
 | `/admin-reload` / `/admin-save` | [관리자] 데이터 리로드·저장 |
+
+### AI 비서·캐릭터 시스템
+
+DM·전용 채널에서 자유 대화하는 AI 비서 기능. 페르소나는 `memo/characters/<slug>/card.md` 본문을 시스템 프롬프트로 주입 — 봇 코드는 페르소나를 하드코딩하지 않는다. DM/채널별로 다른 캐릭터를 붙일 수 있다.
+
+- `MEMO_REPO_PATH` 가 설정돼야 활성화 (미설정 시 `/character`·`/기억`·자동 인사 전부 비활성)
+- 봇 첫 실행 시 레거시 `assistant/{logs,memory}` 는 `characters/<slug>/memory/` 로 자동 이관되고 원본은 `assistant/.legacy/` 로 백업
+- 매일 아침 `ASSISTANT_MORNING_HOUR` 시에 DM으로 인사, 봇 시작 시엔 기상 메시지
+- 상세 사용법·환경 변수·캐릭터 추가 절차는 **[docs/character-system.md](./docs/character-system.md)**
 
 ### 게임·주식·레이드·기타
 
@@ -90,7 +101,7 @@ YouTube·TTS·클립·대기열은 **`/music`** 아래 **서브커맨드**로만
 
 ## 환경 변수 (음성·TTS·YouTube)
 
-Discord·Gemini·Cursor·카카오 익스포트 키 목록은 [.env.template](./.env.template) 주석을 참고하세요.
+Discord·Gemini·Cursor·카카오 익스포트 키 목록은 [.env.template](./.env.template) 주석을 참고하세요. **AI 비서·캐릭터 시스템 관련 환경 변수**(`MEMO_REPO_PATH`·`ASSISTANT_*`·`CLAUDE_CLI_*` 등)는 [docs/character-system.md](./docs/character-system.md) 의 "환경 변수" 표를 참고하세요.
 
 ### `/music speak` (Edge TTS)
 
