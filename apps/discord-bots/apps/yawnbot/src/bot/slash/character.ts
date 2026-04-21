@@ -5,6 +5,7 @@
 import { EmbedBuilder, MessageFlags } from 'discord.js';
 import type { CharacterService, CharacterCard } from '../../services/character-service';
 import { CharacterService as CSHelper } from '../../services/character-service';
+import { buildCharacterImagePrompt, runImageGeneration } from './image';
 
 function getChannelKey(interaction): string {
   // 길드 채널이 아니면 DM 으로 간주 (interaction 의 channel 이 DM 이거나 guildId 없음)
@@ -167,5 +168,57 @@ export async function handleCharacterReset(ctx, interaction) {
   await interaction.reply({
     content: `매핑을 제거했어요. 이제 default(**${defaultSlug}**) 가 응답합니다.`,
     flags: MessageFlags.Ephemeral,
+  });
+}
+
+/** /character image — 현재 채널 활성 캐릭터의 외형(appearance.md) + 상황으로 이미지 생성 */
+export async function handleCharacterImage(ctx, interaction) {
+  const cs: CharacterService | null = ctx.characterService;
+  if (!cs) {
+    await interaction.reply({
+      content: 'MEMO_REPO_PATH가 설정되지 않아 캐릭터 시스템이 비활성화돼 있어요.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  const situation = (interaction.options.getString('상황', true) || '').trim();
+  const aspectRatio = interaction.options.getString('비율') || undefined;
+  const count = interaction.options.getInteger('개수') ?? 1;
+
+  if (!situation) {
+    await interaction.reply({
+      content: '상황을 입력해주세요.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  const channelKey = getChannelKey(interaction);
+  const card = cs.resolveCard(channelKey);
+  if (!card) {
+    await interaction.reply({
+      content: '활성 캐릭터 카드가 없어요. `/character list` 로 확인해봐요.',
+      flags: MessageFlags.Ephemeral,
+    });
+    return;
+  }
+
+  try {
+    await interaction.deferReply();
+  } catch (e) {
+    if (e && typeof e === 'object' && 'code' in e && e.code === 10062) {
+      console.warn('[character.image] deferReply 10062');
+      return;
+    }
+    throw e;
+  }
+
+  const finalPrompt = buildCharacterImagePrompt(card, situation);
+  await runImageGeneration(interaction, finalPrompt, {
+    aspectRatio,
+    sampleCount: count,
+    displayPrompt: situation,
+    characterLabel: card.slug,
   });
 }
