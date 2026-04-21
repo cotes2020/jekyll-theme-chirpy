@@ -144,8 +144,6 @@ async function resolveSceneImage(
   const tags = await detectSceneTags(slug, userMsg, aiResponse);
   if (!tags) return null;
 
-  lastImageAt.set(slug, Date.now());
-
   const cacheService = getImageCacheService(card);
   const cached = cacheService.findSimilar(tags);
 
@@ -156,7 +154,8 @@ async function resolveSceneImage(
     return { tags, buffer, mimeType: cached.mimeType };
   }
 
-  // 캐시 미스 → 새 이미지 생성
+  // 캐시 미스 → 새 이미지 생성 (이 시점에만 쿨다운 소모)
+  lastImageAt.set(slug, Date.now());
   const finalPrompt = buildCharacterImagePrompt(card, tags.join(', '));
   console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}])`);
 
