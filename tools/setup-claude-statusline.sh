@@ -23,12 +23,13 @@ help() {
   echo "     -h, --help    Print this help information"
   echo
   echo "Output (2 lines):"
-  echo "   Sonnet 4.6 (master) | 2m36s | Cost \$0.2699 (\$6.20/hr)"
-  echo "   [███░░░░░░░] 65,847/200,000 (33%) | 5h 16% (3h51m후) | 7d 30% (4d19h후)"
+  echo "   Sonnet 4.6 | master ↑1 +2~3 | 세션 2m36s | Cost \$0.2699 (\$6.20/hr) | Cache 96%"
+  echo "   [███░░░░░░░] 65,847in/216out (33%) | 5h 16% (리셋 09:00) | 7d 30% (리셋 04/26 20:00)"
   echo
   echo "  - Progress bar is color-coded: green < 80%, yellow < 90%, red >= 90%"
-  echo "  - Git branch shown when running inside a git repo"
-  echo "  - Rate limits: 5-hour and 7-day usage % with time until reset"
+  echo "  - Git: branch, ahead/behind commits, staged/unstaged file counts"
+  echo "  - Cache hit rate: how much of context is served from cache (lower cost)"
+  echo "  - Rate limits: 5h/7d usage % with local reset time"
 }
 
 while (($#)); do
@@ -66,7 +67,16 @@ MAX=$(grep_num "context_window_size");           MAX=${MAX:-200000}
 T_INPUT=$(grep_num "input_tokens");              T_INPUT=${T_INPUT:-0}
 T_CC=$(grep_num "cache_creation_input_tokens");  T_CC=${T_CC:-0}
 T_CR=$(grep_num "cache_read_input_tokens");      T_CR=${T_CR:-0}
+T_OUT=$(grep_num "output_tokens");               T_OUT=${T_OUT:-0}
 USED=$((T_INPUT + T_CC + T_CR))
+
+# Cache hit rate
+CACHE_TOTAL=$((T_INPUT + T_CC + T_CR))
+if [ "$CACHE_TOTAL" -gt 0 ]; then
+  CACHE_HIT=$(awk "BEGIN{printf \"%d\", $T_CR/$CACHE_TOTAL*100}")
+else
+  CACHE_HIT=0
+fi
 
 # Cost & duration
 COST=$(grep_num "total_cost_usd");               COST=${COST:-0}
@@ -79,29 +89,46 @@ RESET_5H=$(echo "$input" | grep -oE '"five_hour":\{[^}]+' | grep -oE '"resets_at
 RESET_7D=$(echo "$input" | grep -oE '"seven_day":\{[^}]+' | grep -oE '"resets_at":[0-9]+' | grep -oE '[0-9]+')
 RATE_5H=${RATE_5H:-0}; RATE_7D=${RATE_7D:-0}
 
-fmt_remain() {
+fmt_reset() {
   local ts=$1
   if [ -z "$ts" ] || [ "$ts" -eq 0 ]; then echo "?"; return; fi
   local now; now=$(date +%s)
   local diff=$((ts - now))
   if [ "$diff" -le 0 ]; then echo "곧"; return; fi
-  local d=$((diff / 86400))
-  local h=$(( (diff % 86400) / 3600 ))
-  local m=$(( (diff % 3600) / 60 ))
-  if   [ "$d" -gt 0 ]; then printf "%dd%02dh후" "$d" "$h"
-  elif [ "$h" -gt 0 ]; then printf "%dh%02dm후" "$h" "$m"
-  else printf "%dm후" "$m"
+  if [ "$diff" -lt 86400 ]; then
+    date -d "@$ts" +"%H:%M" 2>/dev/null || echo "${diff}s"
+  else
+    date -d "@$ts" +"%m/%d %H:%M" 2>/dev/null || echo "${diff}s"
   fi
 }
 
-REMAIN_5H=$(fmt_remain "${RESET_5H:-0}")
-REMAIN_7D=$(fmt_remain "${RESET_7D:-0}")
+RESET_5H_FMT=$(fmt_reset "${RESET_5H:-0}")
+RESET_7D_FMT=$(fmt_reset "${RESET_7D:-0}")
 
-# Model & git branch
+# Model
 MODEL=$(grep_str "display_name"); MODEL=${MODEL:-"Claude"}
+
+# Git info
 CWD=$(grep_str "cwd")
 CWD_UNIX=$(echo "$CWD" | sed 's/\\/\//g; s/^C:/\/c/')
-BRANCH=$(cd "$CWD_UNIX" 2>/dev/null && git branch --show-current 2>/dev/null || echo "")
+BRANCH=""
+GIT_STAT=""
+if cd "$CWD_UNIX" 2>/dev/null && git rev-parse --git-dir &>/dev/null 2>&1; then
+  BRANCH=$(git branch --show-current 2>/dev/null || echo "")
+  STAGED=$(git diff --cached --name-only 2>/dev/null | wc -l | tr -d ' ')
+  UNSTAGED=$(git diff --name-only 2>/dev/null | wc -l | tr -d ' ')
+  AHEAD=$(git rev-list --count "@{u}..HEAD" 2>/dev/null || echo 0)
+  BEHIND=$(git rev-list --count "HEAD..@{u}" 2>/dev/null || echo 0)
+
+  [ "$AHEAD"    -gt 0 ] && GIT_STAT="${GIT_STAT}↑${AHEAD}"
+  [ "$BEHIND"   -gt 0 ] && GIT_STAT="${GIT_STAT}↓${BEHIND}"
+  [ "$STAGED"   -gt 0 ] && GIT_STAT="${GIT_STAT} +${STAGED}"
+  [ "$UNSTAGED" -gt 0 ] && GIT_STAT="${GIT_STAT} ~${UNSTAGED}"
+  GIT_STAT="${GIT_STAT# }"
+fi
+
+BRANCH_PART=""
+[ -n "$BRANCH" ] && BRANCH_PART=" | ${BRANCH}${GIT_STAT:+ ${GIT_STAT}}"
 
 # Burn rate & elapsed
 BURN=$(awk "BEGIN{if($DURATION_MS>0) printf \"%.4f\", $COST/($DURATION_MS/3600000); else print \"0.0000\"}")
@@ -129,17 +156,16 @@ BAR="${F// /█}${P// /░}"
 
 fmt() { printf "%d" "$1" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'; }
 
-BRANCH_PART=${BRANCH:+" ($BRANCH)"}
 COST_FMT=$(awk "BEGIN{printf \"%.4f\", $COST}")
 
-# Line 1: 모델 / 브랜치 / 경과 시간 / 비용
-printf "${MODEL}${BRANCH_PART} | %s | Cost \$%s (\$%s/hr)\n" \
-  "$ELAPSED" "$COST_FMT" "$BURN"
+# Line 1: 모델 / git / 세션 시간 / 비용 / 캐시
+printf "${MODEL}${BRANCH_PART} | 세션 %s | Cost \$%s (\$%s/hr) | Cache %s%%\n" \
+  "$ELAPSED" "$COST_FMT" "$BURN" "$CACHE_HIT"
 
-# Line 2: 컨텍스트 바 / 할당량 + 리셋
-printf "[${C}%s${R}] %s/%s (%s%%) | 5h %s%% (%s) | 7d %s%% (%s)\n" \
-  "$BAR" "$(fmt $USED)" "$(fmt $MAX)" "$PCT" \
-  "$RATE_5H" "$REMAIN_5H" "$RATE_7D" "$REMAIN_7D"
+# Line 2: 컨텍스트 바 / 토큰(in+out) / 할당량 + 리셋 시각
+printf "[${C}%s${R}] %sin/%sout (%s%%) | 5h %s%% (리셋 %s) | 7d %s%% (리셋 %s)\n" \
+  "$BAR" "$(fmt $USED)" "$(fmt $T_OUT)" "$PCT" \
+  "$RATE_5H" "$RESET_5H_FMT" "$RATE_7D" "$RESET_7D_FMT"
 EOF
 
 chmod +x "$STATUSLINE_SCRIPT"
