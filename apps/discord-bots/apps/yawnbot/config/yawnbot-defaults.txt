@@ -108,3 +108,7 @@ ASSISTANT_MAX_PROMPT_CHARS=12000
 # ── 캐릭터 시스템 (2026-04-20) ──
 # .active.json 에 default 필드가 없거나 characters/ 가 비어 있을 때 폴백 슬러그.
 ASSISTANT_DEFAULT_CHARACTER=yawn
+
+# ── 이미지 생성 (/이미지, Vertex Imagen) ──
+# Imagen 모델 ID. MODEL_CATALOG.imagen 의 ID 중 하나. 슬래시 옵션에서 덮어쓸 수 있음.
+IMAGE_MODEL_ID=imagen-4.0-generate-001
