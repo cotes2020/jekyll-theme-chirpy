@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import { MessageFlags, AttachmentBuilder, EmbedBuilder } from 'discord.js';
 import { generateImageFromEnvWithOptions } from 'karmolab-ai/node';
-import { CharacterService } from '../../services/character-service';
 import type { CharacterCard } from '../../services/character-service';
 
 const MAX_PROMPT_CHARS = 1500;
@@ -24,12 +23,20 @@ export function loadAppearance(card: CharacterCard): string {
   return card.imageStyle?.trim() || '';
 }
 
-/** appearance.md(또는 image_style) 본문 + 상황을 Scene 포맷으로 결합 */
-export function buildCharacterImagePrompt(card: CharacterCard, situation: string): string {
+/**
+ * appearance(+image_style) + 상황을 결합.
+ * - 상황 비어 있으면 외형만 (기본 포즈·프로필 이미지)
+ * - 외형만 있으면 외형
+ * - 상황만 있으면 상황
+ * - 둘 다 비면 "{name} portrait" 폴백
+ */
+export function buildCharacterImagePrompt(card: CharacterCard, situation?: string): string {
   const appearance = loadAppearance(card);
-  const s = situation.trim();
-  if (!appearance) return s;
-  return `${appearance}\n\nScene: ${s}`;
+  const s = (situation || '').trim();
+  if (appearance && s) return `${appearance}\n\nScene: ${s}`;
+  if (appearance) return appearance;
+  if (s) return s;
+  return `${card.displayName} portrait`;
 }
 
 /**
@@ -115,30 +122,27 @@ export async function handleImage(ctx, interaction) {
     return;
   }
 
-  // 캐릭터 해석: ''=활성, 'none'=캐릭터 없이, slug=지정 캐릭터
+  // 캐릭터 해석: 비었거나 'none' → 캐릭터 없이 raw prompt. slug 입력 시에만 캐릭터 적용.
   const cs = ctx.characterService;
   let card: CharacterCard | null = null;
   let characterLabel = 'none';
-  if (charOpt !== 'none' && cs) {
-    if (charOpt) {
-      const available = cs.listCharacters();
-      if (!available.includes(charOpt)) {
-        await interaction.reply({
-          content: `캐릭터 슬러그 없음: ${charOpt}. 사용 가능: ${available.join(', ') || '없음'}`,
-          flags: MessageFlags.Ephemeral,
-        });
-        return;
-      }
-      card = cs.loadCard(charOpt);
-    } else {
-      const isDM = !interaction.guildId;
-      const channelKey = CharacterService.channelKey({
-        isDM,
-        userId: interaction.user.id,
-        channelId: interaction.channelId ?? '',
+  if (charOpt && charOpt !== 'none') {
+    if (!cs) {
+      await interaction.reply({
+        content: 'MEMO_REPO_PATH가 설정되지 않아 캐릭터 기능이 비활성화돼 있어요.',
+        flags: MessageFlags.Ephemeral,
       });
-      card = cs.resolveCard(channelKey);
+      return;
     }
+    const available = cs.listCharacters();
+    if (!available.includes(charOpt)) {
+      await interaction.reply({
+        content: `캐릭터 슬러그 없음: ${charOpt}. 사용 가능: ${available.join(', ') || '없음'}`,
+        flags: MessageFlags.Ephemeral,
+      });
+      return;
+    }
+    card = cs.loadCard(charOpt);
     if (card) characterLabel = card.slug;
   }
 
