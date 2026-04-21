@@ -374,11 +374,25 @@ export async function generateAssistantText(
   if (opts.systemInstruction || (opts.history && opts.history.length > 0)) {
     const surface = parseGenerativeSurfaceFromEnv(env);
     if (surface === 'vertex') {
-      console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 single-turn으로 fallback합니다. systemInstruction을 prompt 앞에 합침.');
-      const combined = opts.systemInstruction
-        ? `${opts.systemInstruction}\n\n${prompt}`
-        : prompt;
-      const { text } = await generateBlobTextFromEnvWithOptions(env, combined, { surface: 'vertex' });
+      // Vertex REST API는 systemInstruction 필드를 지원하므로 직접 전달.
+      // history는 미지원 — 턴이 있으면 경고만 남김.
+      if (opts.history && opts.history.length > 0) {
+        console.warn('[karmolab-ai] Vertex는 chat history를 지원하지 않아 history를 무시합니다.');
+      }
+      const apiKey = env.VERTEX_API_KEY?.trim();
+      const projectId = env.VERTEX_PROJECT_ID?.trim();
+      if (!apiKey || !projectId) {
+        throw new Error('Vertex API: .env에 VERTEX_API_KEY와 VERTEX_PROJECT_ID가 필요합니다.');
+      }
+      const text = await generateVertexText({
+        apiKey,
+        projectId,
+        location: env.VERTEX_LOCATION?.trim() || null,
+        modelId: resolveAiStudioTextModelId(env.GEMINI_MODEL),
+        userText: prompt,
+        systemInstruction: opts.systemInstruction,
+        safetyThreshold: env.VERTEX_SAFETY_THRESHOLD?.trim() || null,
+      });
       return { text, provider: 'gemini' };
     }
     const apiKey = env.GEMINI_API_KEY?.trim();
