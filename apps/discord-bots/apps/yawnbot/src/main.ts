@@ -20,7 +20,6 @@ import { StockService } from './services/stock';
 import { RaidService } from './services/raid';
 import { MemoryService } from './services/memory-service';
 import { CharacterService } from './services/character-service';
-import { migrateLegacyAssistant } from './services/legacy-migration';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -160,10 +159,7 @@ client.once('clientReady', async () => {
 
   if (characterService) {
     characterService.initialize();
-    const migrateTarget =
-      process.env.ASSISTANT_LEGACY_MIGRATE_SLUG?.trim() || characterService.getDefaultSlug();
-    migrateLegacyAssistant(memoRepoPath, migrateTarget);
-    // default 슬러그 MemoryService 선-초기화 (CLAUDE.md 심볼릭 링크·stub 파일 준비)
+    // default 슬러그 MemoryService 선-초기화 (stub 파일 준비)
     getMemory(characterService.getDefaultSlug());
     startProactive(client, characterService);
     await sendStartupGreeting(client, characterService, getMemory);
