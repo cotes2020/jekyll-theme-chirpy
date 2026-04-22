@@ -18,6 +18,7 @@ import type { MemoryService } from '../services/memory-service';
 import type { ScheduleService } from '../services/schedule-service';
 import type { MoodService } from '../services/mood-service';
 import type { AnniversaryService } from '../services/anniversary-service';
+import type { NewsService } from '../services/news-service';
 import { buildCharacterImagePrompt, saveImageLog } from './slash/image';
 
 // WMO weather code → 한국어 설명 + 이미지 힌트
@@ -442,6 +443,7 @@ async function sendSpontaneousMessage(
   getMemory: (slug: string) => MemoryService,
   getMood?: (slug: string) => MoodService,
   getSchedule?: (slug: string) => ScheduleService,
+  getNews?: (slug: string) => NewsService,
 ): Promise<void> {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
@@ -475,6 +477,20 @@ async function sendSpontaneousMessage(
       } catch { /* ignore */ }
     }
 
+    // 뉴스 기사 조회 (30% 확률로 시도 — 너무 자주 뉴스만 얘기하지 않도록)
+    let newsHint = '';
+    if (getNews && Math.random() < 0.3) {
+      try {
+        const article = await getNews(card.slug).fetchFreshArticle(6);
+        if (article) {
+          newsHint = `\n관심사 키워드 "${article.keyword}"와 관련된 뉴스가 있어: "${article.title}". 이걸 자연스럽게 언급하거나 화제로 삼아도 좋아.`;
+          console.log(`[Proactive:${card.slug}] 뉴스 힌트 주입: ${article.title.slice(0, 50)}`);
+        }
+      } catch (e) {
+        console.warn(`[Proactive:${card.slug}] 뉴스 조회 실패:`, e instanceof Error ? e.message : String(e));
+      }
+    }
+
     const prompt =
       `지금은 ${dateStr} ${dayStr} ${timeStr}이야. ${timeHint}\n` +
       (moodLine ? `${moodLine}\n` : '') +
@@ -482,6 +498,7 @@ async function sendSpontaneousMessage(
       `최근 기억을 참고해서 자연스럽게 한마디 건네줘 — 최근 대화 주제 후속, 오늘 하루 어떤지, 문득 떠오른 생각, 궁금한 것 등.\n` +
       `1-2문장, 한국어로.\n` +
       (scheduleHint ? `${scheduleHint}\n` : '') +
+      (newsHint ? `${newsHint}\n` : '') +
       (context ? `\n[최근 기억]\n${context}` : '');
 
     const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
@@ -505,13 +522,14 @@ function scheduleSpontaneous(
   maxMs: number,
   getMood?: (slug: string) => MoodService,
   getSchedule?: (slug: string) => ScheduleService,
+  getNews?: (slug: string) => NewsService,
 ): void {
   const delay = msUntilNextSpontaneous(activeStart, activeEnd, minMs, maxMs);
   console.log(`[Proactive] 다음 자발적 메시지까지 ${Math.round(delay / 60000)}분 대기`);
 
   spontaneousTimer = setTimeout(async () => {
-    await sendSpontaneousMessage(client, characterService, getMemory, getMood, getSchedule);
-    scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs, getMood, getSchedule);
+    await sendSpontaneousMessage(client, characterService, getMemory, getMood, getSchedule, getNews);
+    scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs, getMood, getSchedule, getNews);
   }, delay);
 }
 
@@ -521,6 +539,7 @@ export function startSpontaneous(
   getMemory: (slug: string) => MemoryService,
   getMood?: (slug: string) => MoodService,
   getSchedule?: (slug: string) => ScheduleService,
+  getNews?: (slug: string) => NewsService,
 ): void {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
@@ -539,7 +558,7 @@ export function startSpontaneous(
     10,
   );
 
-  scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs, getMood, getSchedule);
+  scheduleSpontaneous(client, characterService, getMemory, activeStart, activeEnd, minMs, maxMs, getMood, getSchedule, getNews);
 }
 
 export function stopProactive(): void {

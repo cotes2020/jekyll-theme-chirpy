@@ -194,6 +194,26 @@ const commands = [
         .addStringOption((o) => o.setName('id').setDescription('목록에서 확인한 ID').setDescriptionLocalizations(enUS('ID from list')).setRequired(true)),
     ),
 
+  new SlashCommandBuilder()
+    .setName('뉴스키워드')
+    .setNameLocalizations(enUS('news-keywords'))
+    .setDescription('뉴스 관심사 키워드 관리 (자발적 메시지에서 관련 뉴스 언급)')
+    .setDescriptionLocalizations(enUS('Manage news interest keywords'))
+    .addSubcommand((sub) =>
+      sub.setName('목록').setNameLocalizations(enUS('list'))
+        .setDescription('키워드 목록').setDescriptionLocalizations(enUS('List keywords')),
+    )
+    .addSubcommand((sub) =>
+      sub.setName('추가').setNameLocalizations(enUS('add'))
+        .setDescription('키워드 추가').setDescriptionLocalizations(enUS('Add keyword'))
+        .addStringOption((o) => o.setName('키워드').setNameLocalizations(enUS('keyword')).setDescription('관심사 키워드').setDescriptionLocalizations(enUS('Interest keyword')).setRequired(true)),
+    )
+    .addSubcommand((sub) =>
+      sub.setName('삭제').setNameLocalizations(enUS('delete'))
+        .setDescription('키워드 삭제').setDescriptionLocalizations(enUS('Delete keyword'))
+        .addStringOption((o) => o.setName('id').setDescription('목록에서 확인한 ID').setDescriptionLocalizations(enUS('ID from list')).setRequired(true)),
+    ),
+
 ].map((cmd) => cmd.toJSON());
 
 async function main(): Promise<void> {

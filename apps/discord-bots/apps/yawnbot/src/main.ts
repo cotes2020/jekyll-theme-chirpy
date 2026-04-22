@@ -24,6 +24,7 @@ import { ScheduleService } from './services/schedule-service';
 import { MoodService } from './services/mood-service';
 import { AnniversaryService } from './services/anniversary-service';
 import { RelationshipService } from './services/relationship-service';
+import { NewsService } from './services/news-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -116,6 +117,17 @@ function getAnniversary(slug: string): AnniversaryService {
   return anniversaryMap.get(slug)!;
 }
 
+/** 슬러그별 NewsService 캐시 (lazy init). */
+const newsMap = new Map<string, NewsService>();
+function getNews(slug: string): NewsService {
+  if (!newsMap.has(slug)) {
+    if (!memoRepoPath) throw new Error('MEMO_REPO_PATH 미설정 — NewsService 생성 불가');
+    const charDir = `${memoRepoPath}/characters/${slug}`;
+    newsMap.set(slug, new NewsService(charDir));
+  }
+  return newsMap.get(slug)!;
+}
+
 /** 슬러그별 RelationshipService 캐시 (lazy init). */
 const relationshipMap = new Map<string, RelationshipService>();
 function getRelationship(slug: string): RelationshipService {
@@ -162,6 +174,7 @@ function buildCtx() {
     getSchedule: memoRepoPath ? getSchedule : null,
     getMood: memoRepoPath ? getMood : null,
     getRelationship: memoRepoPath ? getRelationship : null,
+    getNews: memoRepoPath ? getNews : null,
     getImageAttachment,
     isAdmin,
     isOwner,
@@ -231,7 +244,7 @@ client.once('clientReady', async () => {
     getMemory(characterService.getDefaultSlug());
     startProactive(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath || undefined, memoRepoPath ? getAnniversary : undefined);
     startScheduleReminder(client, characterService, getSchedule);
-    startSpontaneous(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath ? getSchedule : undefined);
+    startSpontaneous(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath ? getSchedule : undefined, memoRepoPath ? getNews : undefined);
     await sendStartupGreeting(client, characterService, getMemory);
     console.log(
       '[Assistant] AI 비서 활성화 (ASSISTANT_USER_ID:',

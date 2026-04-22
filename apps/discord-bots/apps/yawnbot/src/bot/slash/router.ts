@@ -44,6 +44,7 @@ import {
 import { handleScheduleAdd, handleScheduleList, handleScheduleDelete } from './schedule';
 import { handleCost } from './cost';
 import { handleAnniversaryList, handleAnniversaryAdd, handleAnniversaryDelete } from './anniversary';
+import { handleNewsKeywordList, handleNewsKeywordAdd, handleNewsKeywordDelete } from './news-keywords';
 import { handleGallery } from './gallery';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
@@ -400,6 +401,16 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
           case '추가': await handleAnniversaryAdd(ctx, interaction); break;
           case '삭제': await handleAnniversaryDelete(ctx, interaction); break;
           default: await interaction.reply({ content: '알 수 없는 기념일 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+        }
+        break;
+      }
+      case '뉴스키워드': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case '목록': await handleNewsKeywordList(ctx, interaction); break;
+          case '추가': await handleNewsKeywordAdd(ctx, interaction); break;
+          case '삭제': await handleNewsKeywordDelete(ctx, interaction); break;
+          default: await interaction.reply({ content: '알 수 없는 뉴스키워드 하위 명령입니다.', flags: MessageFlags.Ephemeral });
         }
         break;
       }
