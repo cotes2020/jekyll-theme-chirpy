@@ -14,6 +14,7 @@ import type { MemoryService, ConversationEntry } from '../services/memory-servic
 import { CharacterService, type CharacterCard } from '../services/character-service';
 import { ImageCacheService } from '../services/image-cache-service';
 import type { MoodService } from '../services/mood-service';
+import type { RelationshipService } from '../services/relationship-service';
 import { buildCharacterImagePrompt } from './slash/image';
 
 export const MOOD_REACTION_EMOJIS = ['👍', '❤️', '😂', '😢'] as const;
@@ -272,12 +273,13 @@ const IMAGE_HINT = `
 ## 이미지 기능
 너는 대화에 이미지를 첨부할 수 있어. 사용자가 외모·모습·표정·포즈를 묻거나 시각적인 씬을 요청하면, 응답에 구체적인 시각 묘사(외형, 표정, 배경, 행동)를 자연스럽게 포함해줘. 이미지는 시스템이 자동으로 생성해서 첨부해 줄 거야.`.trim();
 
-function buildSystemPrompt(card: CharacterCard, channelType: 'dm' | 'public'): string {
+function buildSystemPrompt(card: CharacterCard, channelType: 'dm' | 'public', relationship?: RelationshipService | null): string {
   const channelDesc =
     channelType === 'dm'
       ? '지금은 DM으로 사적인 대화 중이야.'
       : '지금은 공개 채널에서 대화 중이야.';
-  return `${card.body}\n\n${channelDesc}\n\n${IMAGE_HINT}`;
+  const relationshipHint = relationship ? `\n\n${relationship.buildRelationshipHint()}` : '';
+  return `${card.body}\n\n${channelDesc}${relationshipHint}\n\n${IMAGE_HINT}`;
 }
 
 function buildFullPrompt(
@@ -318,6 +320,7 @@ export async function handleAssistantMessage(
   characterService: CharacterService,
   getMemory: (slug: string) => MemoryService,
   getMood?: (slug: string) => MoodService,
+  getRelationship?: (slug: string) => RelationshipService,
 ): Promise<void> {
   const assistantUserId = process.env.ASSISTANT_USER_ID?.trim();
   const publicChannelId = process.env.ASSISTANT_PUBLIC_CHANNEL_ID?.trim();
@@ -348,6 +351,7 @@ export async function handleAssistantMessage(
     return;
   }
   const memory = getMemory(card.slug);
+  const relationship = getRelationship ? getRelationship(card.slug) : null;
 
   console.log(
     `[Assistant:${card.slug}] 메시지 수신 [${channelType}] (${userContent.length}자): ${userContent.slice(0, 50)}`,
@@ -395,7 +399,7 @@ export async function handleAssistantMessage(
 
   if (isGemini) {
     // systemInstruction = 캐릭터 카드 + 채널 타입만 (안정적 → Gemini implicit cache 활성화)
-    systemInstruction = buildSystemPrompt(card, channelType);
+    systemInstruction = buildSystemPrompt(card, channelType, relationship);
     // 가변 부분(시각, 기분, 메모리 컨텍스트, 오늘 로그)은 user message에 포함
     const nowKST = new Date().toLocaleString('ko-KR', {
       timeZone: 'Asia/Seoul',
@@ -414,6 +418,9 @@ export async function handleAssistantMessage(
     fullPrompt = `[현재 시각] ${nowKST}${moodLine}${contextBlock}\n\n나: ${userContent}`;
   } else {
     fullPrompt = buildFullPrompt(card, memory, channelType, userContent);
+    if (relationship) {
+      fullPrompt = `${relationship.buildRelationshipHint()}\n\n${fullPrompt}`;
+    }
   }
 
   const promptSize = Buffer.byteLength(fullPrompt, 'utf-8');
@@ -503,6 +510,11 @@ export async function handleAssistantMessage(
       lastSentImageId.set(card.slug, sceneImage.id);
     } else {
       await message.reply({ content: reply, components: [reactionRow] });
+    }
+
+    if (relationship) {
+      relationship.incrementConversation();
+      console.log(`[Assistant:${card.slug}] 친밀도: ${relationship.getSummary()}`);
     }
 
     const totalDuration = Date.now() - startTime;

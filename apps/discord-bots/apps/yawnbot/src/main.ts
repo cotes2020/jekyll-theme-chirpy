@@ -23,6 +23,7 @@ import { CharacterService } from './services/character-service';
 import { ScheduleService } from './services/schedule-service';
 import { MoodService } from './services/mood-service';
 import { AnniversaryService } from './services/anniversary-service';
+import { RelationshipService } from './services/relationship-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -115,6 +116,17 @@ function getAnniversary(slug: string): AnniversaryService {
   return anniversaryMap.get(slug)!;
 }
 
+/** 슬러그별 RelationshipService 캐시 (lazy init). */
+const relationshipMap = new Map<string, RelationshipService>();
+function getRelationship(slug: string): RelationshipService {
+  if (!relationshipMap.has(slug)) {
+    if (!memoRepoPath) throw new Error('MEMO_REPO_PATH 미설정 — RelationshipService 생성 불가');
+    const charDir = `${memoRepoPath}/characters/${slug}`;
+    relationshipMap.set(slug, new RelationshipService(charDir));
+  }
+  return relationshipMap.get(slug)!;
+}
+
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 const OWNER_ID = process.env.ASSISTANT_USER_ID?.trim() || '';
 
@@ -149,6 +161,7 @@ function buildCtx() {
     getMemory: memoRepoPath ? getMemory : null,
     getSchedule: memoRepoPath ? getSchedule : null,
     getMood: memoRepoPath ? getMood : null,
+    getRelationship: memoRepoPath ? getRelationship : null,
     getImageAttachment,
     isAdmin,
     isOwner,
@@ -182,7 +195,7 @@ client.on('messageReactionAdd', async (reaction: MessageReaction | PartialMessag
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   if (characterService) {
-    await handleAssistantMessage(message as any, characterService, getMemory, memoRepoPath ? getMood : undefined);
+    await handleAssistantMessage(message as any, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath ? getRelationship : undefined);
   }
   await handleMeme(message as any);
 });

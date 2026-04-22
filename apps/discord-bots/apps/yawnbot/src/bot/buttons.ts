@@ -82,9 +82,14 @@ export async function handleButtonInteraction(ctx: BotContext, interaction: Butt
     if (customId.startsWith('mood_reaction:')) {
       const [, emoji, slug] = customId.split(':');
       const moodDesc = MOOD_REACTION_MAP[emoji as MoodReactionEmoji];
-      if (moodDesc && slug && ctx.getMood) {
-        ctx.getMood(slug).set(moodDesc);
-        console.log(`[Button] 기분 반응 수신: ${emoji} → ${moodDesc} (slug=${slug})`);
+      if (moodDesc && slug) {
+        if (ctx.getMood) {
+          ctx.getMood(slug).set(moodDesc);
+          console.log(`[Button] 기분 반응 수신: ${emoji} → ${moodDesc} (slug=${slug})`);
+        }
+        if (ctx.getRelationship) {
+          ctx.getRelationship(slug).addMoodReaction(emoji);
+        }
       }
       await interaction.reply({ content: emoji, flags: MessageFlags.Ephemeral });
       return;
