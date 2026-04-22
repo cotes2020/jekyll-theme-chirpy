@@ -146,7 +146,7 @@ async function detectSceneTags(
     console.log(`[Assistant:${slug}] 씬 감지 중...`);
     const { text } = await generateAssistantText(
       process.env,
-      `다음 대화 장면에서 캐릭터 일러스트를 자동 생성해야 하는지 판단해줘.\n` +
+      `다음 대화에서 캐릭터 일러스트를 자동 생성해야 하는지 판단해줘.\n` +
         `생성하지 않아도 된다면: 정확히 "SKIP" 반환.\n` +
         `생성해야 한다면: 아래 형식 그대로 반환 (다른 텍스트 없이):\n` +
         `TAGS: <캐시용 영어 키워드 3~5개, 쉼표 구분>\n` +
@@ -154,9 +154,14 @@ async function detectSceneTags(
         `예시:\n` +
         `TAGS: laughing, mischievous, indoor\n` +
         `SCENE: playfully sticking out tongue with a wide mischievous grin, hands on hips, dynamic leaning pose, cozy indoor room background, expressive and energetic\n\n` +
-        `기준:\n` +
-        `- 외형 질문, 감정 변화, 행동 묘사, 시각 요청이 있으면 생성\n` +
-        `- 단순 정보 교환이면 SKIP\n\n` +
+        `[생성 기준] 다음 중 하나를 충족할 때만 생성:\n` +
+        `1. 유저가 외모·모습·표정·포즈·옷차림 등을 직접 묻거나 이미지를 요청함\n` +
+        `2. 캐릭터가 구체적인 행동(안기, 뛰기, 울기 등)을 하거나 뚜렷한 감정 변화(눈물, 홍조 등)를 묘사함\n` +
+        `3. 배경·장소·상황을 구체적으로 묘사해서 이미지화할 수 있는 씬이 뚜렷함\n\n` +
+        `[SKIP 기준] 다음이면 반드시 SKIP:\n` +
+        `- 정보 교환, 질문-답변, 설명, 조언\n` +
+        `- 감정 언급이어도 행동·표정 묘사 없이 단순 감정 표현만\n` +
+        `- 추상적 대화 (계획, 생각, 의견)\n\n` +
         `유저: "${userMsg}"\n` +
         `캐릭터: "${aiResponse}"`,
     );
@@ -185,19 +190,23 @@ async function detectSceneTags(
 }
 
 const SCENE_KEYWORDS = [
-  // 외형·시각 요청
-  '모습', '보여', '이미지', '사진', '그림', '어때', '어떻게 생겼', '포즈', '복장', '옷',
-  // 감정
-  '웃', '울', '화나', '슬프', '기쁘', '행복', '놀라', '두려', '부끄', '설레', '그리워', '따뜻', '차갑',
-  // 행동
-  '안아', '손잡', '쓰다듬', '포옹', '키스', '장난', '골탕',
-  // 영어
-  'smil', 'laugh', 'cry', 'sad', 'happy', 'angry', 'fear', 'blush', 'hug', 'touch', 'kiss',
-  'show', 'look', 'appear', 'image', 'photo', 'picture', 'pose',
+  // 외형·시각 직접 요청
+  '모습', '이미지', '사진', '그림', '어떻게 생겼', '포즈', '복장', '옷차림', '표정',
+  // 강한 감정 표현 (동사·형용사 결합형)
+  '웃고 있', '울고 있', '웃어', '울어', '울컥', '눈물', '화가 났', '화나 있', '부끄러',
+  '설레는', '두근', '심장', '얼굴 붉', '홍조',
+  // 물리적 행동 (시각화 가능)
+  '안아', '안겨', '손잡', '쓰다듬', '포옹', '키스', '엎드', '누워', '달려', '뛰어',
+  // 장면 묘사 (AI 응답이 씬을 그릴 때)
+  '~모습이야', '~있어', '~하고 있어', '~하는 중',
+  // 영어 (정확한 키워드만)
+  'smiling', 'laughing', 'crying', 'blushing', 'hugging', 'kissing', 'running', 'hiding',
+  'image', 'photo', 'picture', 'pose', 'appear', 'look like',
 ];
 
 function hasVisualScenePotential(userMsg: string, aiResponse: string): boolean {
-  if (aiResponse.length < 30) return false;
+  // AI 응답이 충분히 길어야 이미지화할 씬이 있을 가능성
+  if (aiResponse.length < 60) return false;
   const text = (userMsg + ' ' + aiResponse).toLowerCase();
   return SCENE_KEYWORDS.some((kw) => text.includes(kw));
 }
