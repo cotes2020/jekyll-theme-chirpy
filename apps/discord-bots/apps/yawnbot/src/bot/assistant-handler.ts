@@ -256,7 +256,7 @@ async function resolveSceneImage(
   const { tags, sceneDesc } = scene;
 
   const cacheService = getImageCacheService(card);
-  const cached = cacheService.findSimilar(tags);
+  const cached = await cacheService.findSimilar(tags, sceneDesc);
 
   if (cached) {
     if (lastSentImageId.get(slug) === cached.id) {
@@ -281,7 +281,7 @@ async function resolveSceneImage(
 
   if (images.length === 0) return null;
   const img = images[0];
-  const entry = cacheService.add(tags, finalPrompt, img.buffer, img.mimeType, modelId);
+  const entry = await cacheService.add(tags, finalPrompt, img.buffer, img.mimeType, modelId, sceneDesc);
   console.log(`[Assistant:${slug}] 자동 이미지: 완료 (id=${entry.id}, 모델=${modelId})`);
   return { id: entry.id, tags, buffer: img.buffer, mimeType: img.mimeType };
 }

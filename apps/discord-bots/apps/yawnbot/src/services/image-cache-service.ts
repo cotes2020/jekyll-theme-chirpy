@@ -3,11 +3,14 @@
  *
  * 구조:
  *   {characterDir}/image-cache/
- *     index.json        — 씬 메타데이터 목록
+ *     index.json        — 씬 메타데이터 목록 (embedding 포함)
  *     image-log.jsonl   — 생성/히트 로그 (JSON Lines)
  *     {id}.png          — 실제 이미지 파일
  *
- * 유사도: 태그 Jaccard similarity (|A∩B| / |A∪B|)
+ * 유사도:
+ *   1순위 — Gemini text-embedding-004 코사인 유사도 (GEMINI_API_KEY 있을 때)
+ *   폴백  — 태그 Jaccard similarity (|A∩B| / |A∪B|)
+ *
  * 캐시 최대: MAX_CACHE_ENTRIES개, 초과 시 hitCount 낮은 것 삭제
  */
 import fs from 'fs';
@@ -16,7 +19,10 @@ import crypto from 'crypto';
 import { execSync } from 'child_process';
 
 const MAX_CACHE_ENTRIES = 50;
-const DEFAULT_THRESHOLD = 0.4;
+const DEFAULT_JACCARD_THRESHOLD = 0.4;
+const DEFAULT_COSINE_THRESHOLD = 0.75;
+const EMBEDDING_MODEL = 'text-embedding-004';
+const EMBED_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 export interface CacheEntry {
   id: string;
@@ -26,6 +32,8 @@ export interface CacheEntry {
   mimeType: string;
   createdAt: string;
   hitCount: number;
+  /** Gemini text-embedding-004 벡터 (정규화됨). 없으면 Jaccard 폴백. */
+  embedding?: number[];
 }
 
 interface ImageCacheIndex {
@@ -41,6 +49,8 @@ interface ImageLogEntry {
   costUsd?: number;
 }
 
+// ─── 유사도 헬퍼 ──────────────────────────────────────────────────────────
+
 function jaccardSimilarity(a: string[], b: string[]): number {
   if (a.length === 0 && b.length === 0) return 1;
   const setA = new Set(a.map((t) => t.toLowerCase().trim()));
@@ -52,6 +62,44 @@ function jaccardSimilarity(a: string[], b: string[]): number {
   const union = setA.size + setB.size - intersection;
   return union === 0 ? 1 : intersection / union;
 }
+
+/** 정규화된 벡터의 dot product = cosine similarity */
+function cosineSimilarity(a: number[], b: number[]): number {
+  if (a.length !== b.length || a.length === 0) return 0;
+  let dot = 0;
+  for (let i = 0; i < a.length; i++) dot += a[i] * b[i];
+  return dot;
+}
+
+// ─── Gemini Embedding REST 호출 ──────────────────────────────────────────
+
+async function embedText(text: string, apiKey: string): Promise<number[] | null> {
+  try {
+    const url = `${EMBED_API_BASE}/${EMBEDDING_MODEL}:embedContent?key=${encodeURIComponent(apiKey)}`;
+    const body = JSON.stringify({
+      model: `models/${EMBEDDING_MODEL}`,
+      content: { parts: [{ text }] },
+    });
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+    });
+    if (!res.ok) {
+      console.warn(`[ImageCache] embedding API ${res.status}: ${await res.text().catch(() => '')}`);
+      return null;
+    }
+    const json = await res.json() as { embedding?: { values?: number[] } };
+    const values = json?.embedding?.values;
+    if (!Array.isArray(values) || values.length === 0) return null;
+    return values;
+  } catch (e) {
+    console.warn('[ImageCache] embedding 실패:', e instanceof Error ? e.message : String(e));
+    return null;
+  }
+}
+
+// ─── 서비스 ──────────────────────────────────────────────────────────────
 
 export class ImageCacheService {
   private cacheDir: string;
@@ -111,22 +159,58 @@ export class ImageCacheService {
     }
   }
 
-  /** tags와 유사도 ≥ threshold인 캐시 엔트리 반환 (가장 높은 유사도 우선). 없으면 null. */
-  findSimilar(tags: string[], threshold = DEFAULT_THRESHOLD): CacheEntry | null {
+  /**
+   * 씬과 유사한 캐시 엔트리 검색.
+   *
+   * - `sceneDesc`가 있고 `GEMINI_API_KEY`가 설정돼 있으면 임베딩 코사인 유사도 사용.
+   * - 그 외에는 태그 Jaccard 유사도로 폴백.
+   *
+   * 가장 높은 유사도 엔트리를 반환하며, 임계값 미만이면 null.
+   */
+  async findSimilar(
+    tags: string[],
+    sceneDesc?: string,
+    threshold?: number,
+  ): Promise<CacheEntry | null> {
     const index = this.readIndex();
+    if (index.scenes.length === 0) return null;
+
+    const apiKey = process.env.GEMINI_API_KEY?.trim();
+    const useEmbedding = !!(apiKey && sceneDesc);
+
+    let queryEmbedding: number[] | null = null;
+    if (useEmbedding) {
+      queryEmbedding = await embedText(sceneDesc!, apiKey!);
+    }
+
+    const cosineThreshold = threshold ?? DEFAULT_COSINE_THRESHOLD;
+    const jaccardThreshold = threshold ?? DEFAULT_JACCARD_THRESHOLD;
+
     let best: CacheEntry | null = null;
     let bestScore = 0;
+
     for (const entry of index.scenes) {
       if (!fs.existsSync(entry.filePath)) continue;
-      const score = jaccardSimilarity(tags, entry.tags);
-      if (score >= threshold && score > bestScore) {
+
+      let score: number;
+      if (queryEmbedding && entry.embedding) {
+        score = cosineSimilarity(queryEmbedding, entry.embedding);
+        if (score < cosineThreshold) continue;
+      } else {
+        score = jaccardSimilarity(tags, entry.tags);
+        if (score < jaccardThreshold) continue;
+      }
+
+      if (score > bestScore) {
         bestScore = score;
         best = entry;
       }
     }
+
     if (best) {
+      const method = queryEmbedding && best.embedding ? 'cosine' : 'jaccard';
       console.log(
-        `[ImageCache] 히트: id=${best.id}, 유사도=${bestScore.toFixed(2)}, 태그=${best.tags.join(',')}`,
+        `[ImageCache] 히트: id=${best.id}, 유사도=${bestScore.toFixed(3)} (${method}), 태그=${best.tags.join(',')}`,
       );
     }
     return best;
@@ -144,19 +228,32 @@ export class ImageCacheService {
     });
   }
 
-  /** 이미지 버퍼를 파일로 저장하고 인덱스에 추가 + 로그 기록 + git commit */
-  add(
+  /**
+   * 이미지 버퍼를 파일로 저장하고 인덱스에 추가 + 로그 기록 + git commit.
+   *
+   * `sceneDesc`가 있으면 Gemini 임베딩을 계산해서 `CacheEntry.embedding`에 저장한다.
+   */
+  async add(
     tags: string[],
     prompt: string,
     buffer: Buffer,
     mimeType: string,
     modelId?: string,
-  ): CacheEntry {
+    sceneDesc?: string,
+  ): Promise<CacheEntry> {
     this.ensureDir();
     const id = crypto.randomBytes(8).toString('hex');
     const ext = (mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
     const filePath = path.join(this.cacheDir, `${id}.${ext}`);
     fs.writeFileSync(filePath, buffer);
+
+    // 임베딩 계산 (실패해도 Jaccard 폴백 가능하므로 non-blocking)
+    let embedding: number[] | undefined;
+    const apiKey = process.env.GEMINI_API_KEY?.trim();
+    if (apiKey && sceneDesc) {
+      const vec = await embedText(sceneDesc, apiKey);
+      if (vec) embedding = vec;
+    }
 
     const entry: CacheEntry = {
       id,
@@ -166,6 +263,7 @@ export class ImageCacheService {
       mimeType,
       createdAt: new Date().toISOString(),
       hitCount: 0,
+      ...(embedding ? { embedding } : {}),
     };
 
     const index = this.readIndex();
@@ -194,7 +292,8 @@ export class ImageCacheService {
     }
     this.writeLog(logEntry);
 
-    console.log(`[ImageCache] 저장: id=${id}, 태그=${tags.join(',')}`);
+    const embeddingLabel = embedding ? `, embedding=${embedding.length}d` : '';
+    console.log(`[ImageCache] 저장: id=${id}, 태그=${tags.join(',')}${embeddingLabel}`);
     this.commitToGit(entry);
     return entry;
   }
