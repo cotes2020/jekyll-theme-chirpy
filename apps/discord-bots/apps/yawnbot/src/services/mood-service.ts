@@ -60,14 +60,27 @@ export class MoodService {
    * 어제 기분이 남아 있으면 carry-over 힌트 반환.
    * 오늘 이미 기분이 업데이트됐거나 48시간 이상 지났으면 null.
    */
-  getCarryOverHint(): string | null {
+  /**
+   * 어제 기분 캐리오버. 오늘 이미 업데이트됐거나 48시간 초과면 null.
+   * - `systemHint`: system prompt에 주입할 문자열
+   * - `displayMood`: /프로필 등 UI 표시용 기분 단어만
+   */
+  getCarryOver(): { systemHint: string; displayMood: string } | null {
     if (!this.state?.mood || !this.state?.updatedAt) return null;
     const KST_OFFSET = 9 * 60 * 60 * 1000;
     const todayStr = new Date(Date.now() + KST_OFFSET).toISOString().slice(0, 10);
     const updatedStr = new Date(new Date(this.state.updatedAt).getTime() + KST_OFFSET).toISOString().slice(0, 10);
-    if (updatedStr === todayStr) return null; // 오늘 이미 업데이트됨
+    if (updatedStr === todayStr) return null;
     const diffMs = Date.now() - new Date(this.state.updatedAt).getTime();
-    if (diffMs > 48 * 60 * 60 * 1000) return null; // 너무 오래됨
-    return `[어제 기분: ${this.state.mood}] 어제의 분위기가 오늘 대화 초반에 미묘하게 남아 있어.`;
+    if (diffMs > 48 * 60 * 60 * 1000) return null;
+    return {
+      systemHint: `[어제 기분: ${this.state.mood}] 어제의 분위기가 오늘 대화 초반에 미묘하게 남아 있어.`,
+      displayMood: this.state.mood,
+    };
+  }
+
+  /** @deprecated `getCarryOver().systemHint` 사용 */
+  getCarryOverHint(): string | null {
+    return this.getCarryOver()?.systemHint ?? null;
   }
 }

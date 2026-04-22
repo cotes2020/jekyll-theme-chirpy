@@ -440,7 +440,8 @@ export async function handleAssistantMessage(
     console.log(
       `[Assistant:${memory.slug}] 컨텍스트 빌드: ${contextSize}바이트 (할당: ${contextBudget}자, 사용: ${context.length}자)`,
     );
-    const moodLine = mood?.toContextLine() ? `\n${mood.toContextLine()}` : '';
+    const moodContextLine = mood?.toContextLine() ?? '';
+    const moodLine = moodContextLine ? `\n${moodContextLine}` : '';
     const contextBlock = context ? `\n\n${context}` : '';
     fullPrompt = `[현재 시각] ${nowKST}${moodLine}${contextBlock}\n\n나: ${userContent}`;
   } else {

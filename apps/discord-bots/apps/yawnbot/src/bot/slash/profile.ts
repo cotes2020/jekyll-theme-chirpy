@@ -48,9 +48,11 @@ export async function handleProfile(ctx: BotContext, interaction: ChatInputComma
 
   // ── 기분
   const mood = ctx.getMood ? ctx.getMood(card.slug) : null;
-  const moodLine = mood?.get()?.mood || '알 수 없음';
-  const carryOverHint = mood?.getCarryOverHint();
-  const moodField = carryOverHint ? `${moodLine}\n*${carryOverHint.replace(/^\[어제 기분: [^\]]+\]\s*/, '')}*` : moodLine;
+  const currentMood = mood?.get()?.mood || '알 수 없음';
+  const carryOver = mood?.getCarryOver();
+  const moodField = carryOver
+    ? `${currentMood}\n*어제 기분(${carryOver.displayMood})이 남아 있어요*`
+    : currentMood;
 
   // ── 오늘 일정
   const schedule = ctx.getSchedule ? ctx.getSchedule(card.slug) : null;
