@@ -1,5 +1,5 @@
-// @ts-nocheck
 import { MessageFlags } from 'discord.js';
+import type { Interaction } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 
 function allowedGuildIdSet(): Set<string> | null {
@@ -19,7 +19,7 @@ function allowedSlashChannelIdSet(): Set<string> | null {
  * 허용 목록이 비어 있으면 통과. 설정된 경우에만 길드·채널을 검사합니다.
  * @returns true면 계속 처리, false면 이미 reply 했음.
  */
-export async function guardSlashInteraction(interaction): Promise<boolean> {
+export async function guardSlashInteraction(interaction: Interaction): Promise<boolean> {
   if (!interaction.isChatInputCommand()) return true;
 
   const guildAllow = allowedGuildIdSet();

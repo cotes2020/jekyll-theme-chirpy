@@ -490,6 +490,42 @@ export class MemoryService {
   }
 
   /**
+   * 로그 파일에서 keyword를 포함하는 줄을 검색.
+   * maxResults: 반환할 최대 결과 수 (기본 10).
+   * maxDays: 검색 대상 최근 일수 (기본 60).
+   * 결과: [{date, line}] 최신순.
+   */
+  searchLogs(keyword: string, maxResults = 10, maxDays = 60): { date: string; line: string }[] {
+    const kwLower = keyword.toLowerCase().trim();
+    if (!kwLower) return [];
+
+    const results: { date: string; line: string }[] = [];
+    try {
+      const files = fs.readdirSync(this.logsDir)
+        .filter((f) => f.endsWith('.md'))
+        .sort()
+        .reverse()
+        .slice(0, maxDays);
+
+      for (const file of files) {
+        if (results.length >= maxResults) break;
+        const date = file.replace('.md', '');
+        const content = this._read(path.join(this.logsDir, file));
+        const lines = content.split('\n');
+        for (const line of lines) {
+          if (results.length >= maxResults) break;
+          if (line.toLowerCase().includes(kwLower)) {
+            results.push({ date, line: line.trim() });
+          }
+        }
+      }
+    } catch {
+      /* ignore read errors */
+    }
+    return results;
+  }
+
+  /**
    * 시스템 프롬프트(card.md 본문)는 포함하지 않음 — 호출자가 앞에 붙인다.
    * user.md / self.md / 오늘 로그(최근 N개) / 최근 7일 daily 요약 / weekly 요약 반환.
    */

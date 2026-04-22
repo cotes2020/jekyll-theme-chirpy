@@ -1,8 +1,9 @@
-// @ts-nocheck
 import { EmbedBuilder, MessageFlags } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import { showHelpPage } from '../game-ui';
+import type { BotContext } from './bot-context';
 
-export async function handlePing(ctx, interaction) {
+export async function handlePing(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const { gameData, client } = ctx;
   const embed = new EmbedBuilder()
     .setTitle(gameData.getMessage('General_Ping_Title'))
@@ -12,7 +13,7 @@ export async function handlePing(ctx, interaction) {
 }
 
 /** `/도움말` 주제: 개요 | music | game(페이지 임베드) | utility — 채널 스팸을 줄이려고 기본은 ephemeral */
-export async function handleHelp(ctx, interaction) {
+export async function handleHelp(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const topic = interaction.options.getString('주제');
 
   if (!topic || topic === 'overview') {

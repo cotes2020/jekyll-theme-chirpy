@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { spawn, execFile } from 'child_process';
 import type { ChatInputCommandInteraction, StringSelectMenuInteraction } from 'discord.js';
 import { ActionRowBuilder, EmbedBuilder, MessageFlags, StringSelectMenuBuilder } from 'discord.js';
@@ -60,7 +59,13 @@ export async function discordAnswerCursorQuestion(
   }
 }
 
-export function runCursorLocalRunner(cwd, prompt, mode, onProgress, onQuestion) {
+export function runCursorLocalRunner(
+  cwd: string,
+  prompt: string,
+  mode: string,
+  onProgress: (chunk: string) => void,
+  onQuestion: (msg: Record<string, unknown>) => Promise<{ selectedIndex?: number; cancelled?: boolean }>,
+): Promise<{ json: Record<string, unknown>; code: number | null; err: string }> {
   const innerTimeoutMs = parseInt(process.env.CURSOR_TIMEOUT_MS || '600000', 10);
   const outerGraceMs = parseInt(process.env.CURSOR_RUNNER_GRACE_MS || '120000', 10);
   const hardCapMs = Math.max(60000, innerTimeoutMs + outerGraceMs);

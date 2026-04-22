@@ -1,5 +1,5 @@
-// @ts-nocheck
 import { EmbedBuilder, MessageFlags } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import {
   formatCursorAcpRpcSummaryField,
   hasGitWorkingChanges,
@@ -11,9 +11,11 @@ import {
 import {
   generateBlobTextFromEnvWithOptions,
   parseGenerativeSurfaceFromEnv,
+  type GenerativeSurfaceOverride,
 } from 'karmolab-ai/node';
 import { discordAnswerCursorQuestion, getCursorMaxPromptChars, runCursorLocalRunner } from '../cursor-local';
 import { resolveCursorRepoDirForSlash } from '../../paths';
+import type { BotContext } from './bot-context';
 
 const DEFAULT_YAWN_SYSTEM = `시스템: 너는 'YawnBot'이라는 이름의 활기차고 재치 있는 디스코드 봇이야. 사용자의 질문에 친절하고 유머러스하게 대답해줘.`;
 
@@ -24,8 +26,7 @@ function yawnSystemPromptFromEnv(): string {
   return t.replace(/\\n/g, '\n');
 }
 
-/** @param {import('karmolab-ai/node').GenerativeSurfaceOverride} surfaceOverride */
-function yawnEnvPrecheckError(env, surfaceOverride) {
+function yawnEnvPrecheckError(env: NodeJS.ProcessEnv, surfaceOverride: string): string | null {
   const eff = surfaceOverride === 'inherit' ? parseGenerativeSurfaceFromEnv(env) : surfaceOverride;
   if (eff === 'vertex') {
     if (!env.VERTEX_API_KEY?.trim() || !env.VERTEX_PROJECT_ID?.trim()) {
@@ -60,7 +61,7 @@ function friendlyYawnErrorMessage(err: unknown): string {
   return 'AI 응답을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.';
 }
 
-async function buildYawnChannelContext(interaction, maxMessages: number): Promise<string> {
+async function buildYawnChannelContext(interaction: ChatInputCommandInteraction, maxMessages: number): Promise<string> {
   if (maxMessages <= 0) return '';
   try {
     const ch = interaction.channel;
@@ -79,7 +80,7 @@ async function buildYawnChannelContext(interaction, maxMessages: number): Promis
   }
 }
 
-export async function handleCursorEdit(ctx, interaction, userId) {
+export async function handleCursorEdit(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, isAdmin, cursorState } = ctx;
   if (!isAdmin(userId)) {
     await interaction.reply({ content: gameData.getMessage('Admin_AccessDenied_Desc'), flags: MessageFlags.Ephemeral });
@@ -96,7 +97,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
     });
     return;
   }
-  const promptText = interaction.options.getString('prompt');
+  const promptText = interaction.options.getString('prompt', true);
   const modeOpt = interaction.options.getString('mode');
   const maxChars = getCursorMaxPromptChars();
   if (promptText.length > maxChars) {
@@ -119,7 +120,9 @@ export async function handleCursorEdit(ctx, interaction, userId) {
       modeLabel: modeOpt || 'agent',
       liveAssistantText: () => liveAssistant,
     });
-    const { json, code, err } = await runCursorLocalRunner(
+    type GitState = { isRepo?: boolean; statusPorcelain?: string; diffStat?: string; diffPreview?: string };
+    type CursorResult = { json: { ok: boolean; error?: unknown; stopReason?: unknown; assistantPreview?: string; git?: GitState; acpRpc?: unknown; acpRpcSummary?: unknown; cwd?: string; stderrTail?: string }; code: number; err: string };
+    const { json, code, err } = await (runCursorLocalRunner(
       repoDir,
       promptText,
       modeOpt || 'agent',
@@ -129,11 +132,11 @@ export async function handleCursorEdit(ctx, interaction, userId) {
         if (liveAssistant.length > maxLive) liveAssistant = liveAssistant.slice(-maxLive);
       },
       (q) => discordAnswerCursorQuestion(interaction, q),
-    );
+    ) as Promise<CursorResult>);
     await stopDeferTicker();
     stopDeferTicker = async () => {};
     if (!json.ok) {
-      const git = json.git || {};
+      const git: GitState = json.git ?? {};
       const embed = new EmbedBuilder()
         .setTitle('Cursor 로컬 실행 실패')
         .setDescription(
@@ -167,10 +170,10 @@ export async function handleCursorEdit(ctx, interaction, userId) {
       await notifyDeferCompletion(interaction, { ok: false, kind: 'cursor' });
       return;
     }
-    const g = json.git || {};
+    const g: GitState = json.git ?? {};
     const descParts = [];
     if (json.stopReason != null) descParts.push(`**stopReason:** ${json.stopReason}`);
-    if (json.assistantPreview) descParts.push(json.assistantPreview.slice(0, 2600));
+    if (json.assistantPreview) descParts.push(String(json.assistantPreview).slice(0, 2600));
     const embed = new EmbedBuilder()
       .setTitle('Cursor 로컬 실행 완료')
       .setDescription(
@@ -216,7 +219,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
           .setTitle('Cursor 로컬 실행 예외')
           .setDescription(
             truncateDiscordDescription(
-              `**📝 요청**\n\`\`\`\n${truncateEmbedField(promptText, 900)}\n\`\`\`\n\n` + `**오류**\n${String(e.message).slice(0, 1800)}`,
+              `**📝 요청**\n\`\`\`\n${truncateEmbedField(promptText, 900)}\n\`\`\`\n\n` + `**오류**\n${String(e instanceof Error ? e.message : e).slice(0, 1800)}`,
             ),
           )
           .setColor(0xf44336),
@@ -229,7 +232,7 @@ export async function handleCursorEdit(ctx, interaction, userId) {
   }
 }
 
-export async function handleYawn(ctx, interaction) {
+export async function handleYawn(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const rawPrompt = interaction.options.getString('질문');
   const prompt = (rawPrompt ?? '').trim();
   if (!prompt) {
@@ -238,7 +241,7 @@ export async function handleYawn(ctx, interaction) {
   }
 
   const apiRaw = interaction.options.getString('api');
-  let surfaceOverride = 'inherit';
+  let surfaceOverride: GenerativeSurfaceOverride = 'inherit';
   if (apiRaw === 'ai_studio') surfaceOverride = 'aiStudio';
   else if (apiRaw === 'vertex') surfaceOverride = 'vertex';
 

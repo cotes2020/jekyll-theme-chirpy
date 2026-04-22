@@ -1,17 +1,18 @@
-// @ts-nocheck
 import { EmbedBuilder, MessageFlags } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import { formatMoney, getLevelColor } from '../../services/gamedata';
 import { handleEnhance, handleSell } from '../game-ui';
+import type { BotContext } from './bot-context';
 
-export async function handleEnhanceSlash(ctx, interaction, userId, userName) {
+export async function handleEnhanceSlash(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string, userName: string): Promise<void> {
   await handleEnhance(ctx, interaction, userId, userName);
 }
 
-export async function handleSellSlash(ctx, interaction, userId) {
+export async function handleSellSlash(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   await handleSell(ctx, interaction, userId);
 }
 
-export async function handleInfo(ctx, interaction, userId, userName) {
+export async function handleInfo(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string, userName: string): Promise<void> {
   const { gameData, enhancement, getImageAttachment } = ctx;
   const user = gameData.getUser(userId);
   if (!user.sword.weaponType || !user.sword.imageName) enhancement.ensureSword(user);
@@ -35,7 +36,7 @@ export async function handleInfo(ctx, interaction, userId, userName) {
   await interaction.reply(payload);
 }
 
-export async function handleMoney(ctx, interaction, userId, userName) {
+export async function handleMoney(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string, userName: string): Promise<void> {
   const { gameData } = ctx;
   const user = gameData.getUser(userId);
   const embed = new EmbedBuilder()
@@ -45,7 +46,7 @@ export async function handleMoney(ctx, interaction, userId, userName) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleRank(ctx, interaction) {
+export async function handleRank(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const { gameData, client } = ctx;
   const all = Object.entries(gameData.users)
     .map(([id, u]) => ({ id, money: (u as any).money, level: (u as any).sword?.level || 0 }))
@@ -71,7 +72,7 @@ export async function handleRank(ctx, interaction) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleAttendance(ctx, interaction, userId) {
+export async function handleAttendance(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, enhancement } = ctx;
   const r = enhancement.checkAttendance(userId);
   const embed = new EmbedBuilder();
@@ -90,7 +91,7 @@ export async function handleAttendance(ctx, interaction, userId) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleGiveMeMoney(ctx, interaction, userId) {
+export async function handleGiveMeMoney(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, enhancement } = ctx;
   const r = enhancement.giveMeMoney(userId);
   const embed = new EmbedBuilder()
@@ -104,7 +105,7 @@ export async function handleGiveMeMoney(ctx, interaction, userId) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleBattle(ctx, interaction, userId, userName) {
+export async function handleBattle(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string, userName: string): Promise<void> {
   const { gameData, enhancement, getImageAttachment } = ctx;
   const target = interaction.options.getUser('상대');
   if (!target) {
@@ -155,9 +156,9 @@ export async function handleBattle(ctx, interaction, userId, userName) {
   await interaction.reply(payload);
 }
 
-export async function handleSlot(ctx, interaction, userId) {
+export async function handleSlot(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, enhancement } = ctx;
-  const bet = interaction.options.getInteger('금액');
+  const bet = interaction.options.getInteger('금액', true);
   const r = enhancement.slot(userId, bet);
   const embed = new EmbedBuilder();
   if (r.type === 'error') {
@@ -181,10 +182,10 @@ export async function handleSlot(ctx, interaction, userId) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleOddEven(ctx, interaction, userId) {
+export async function handleOddEven(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, enhancement } = ctx;
-  const choice = interaction.options.getString('선택');
-  const bet = interaction.options.getInteger('금액');
+  const choice = interaction.options.getString('선택', true);
+  const bet = interaction.options.getInteger('금액', true);
   const r = enhancement.oddEven(userId, choice, bet);
   if (r.type === 'error') {
     await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
@@ -204,7 +205,7 @@ export async function handleOddEven(ctx, interaction, userId) {
       }`,
     )
     .addFields(
-      { name: gameData.getMessage('OddEven_Choice'), value: choice, inline: true },
+      { name: gameData.getMessage('OddEven_Choice'), value: String(choice), inline: true },
       { name: gameData.getMessage('OddEven_Bet'), value: `${formatMoney(r.bet)}원`, inline: true },
       { name: '잔액', value: `${formatMoney(r.balance)}원`, inline: true },
     )
@@ -212,10 +213,10 @@ export async function handleOddEven(ctx, interaction, userId) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleRps(ctx, interaction, userId) {
+export async function handleRps(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, enhancement } = ctx;
-  const choice = interaction.options.getString('선택');
-  const bet = interaction.options.getInteger('금액');
+  const choice = interaction.options.getString('선택', true);
+  const bet = interaction.options.getInteger('금액', true);
   const r = enhancement.rps(userId, choice, bet);
   if (r.type === 'error') {
     await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
@@ -226,7 +227,7 @@ export async function handleRps(ctx, interaction, userId) {
     return;
   }
 
-  const RPS_EMOJI = { 가위: '✌️', 바위: '✊', 보: '🖐️' };
+  const RPS_EMOJI: Record<string, string> = { 가위: '✌️', 바위: '✊', 보: '🖐️' };
   const result =
     r.type === 'win'
       ? gameData.getMessage('RPS_Win', formatMoney(r.payout))

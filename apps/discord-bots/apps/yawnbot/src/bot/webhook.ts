@@ -1,4 +1,3 @@
-// @ts-nocheck
 import express from 'express';
 import { EmbedBuilder } from 'discord.js';
 import type { Client } from 'discord.js';

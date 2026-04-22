@@ -1,8 +1,9 @@
-// @ts-nocheck
 import { EmbedBuilder, MessageFlags } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import { CharacterService } from '../../services/character-service';
+import type { BotContext } from './bot-context';
 
-function resolveScheduleForInteraction(ctx, interaction) {
+function resolveScheduleForInteraction(ctx: BotContext, interaction: ChatInputCommandInteraction) {
   const cs = ctx.characterService;
   const getSchedule = ctx.getSchedule;
   if (!cs || !getSchedule) {
@@ -36,7 +37,7 @@ function formatKST(iso: string): string {
   });
 }
 
-export async function handleScheduleAdd(ctx, interaction): Promise<void> {
+export async function handleScheduleAdd(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const resolved = resolveScheduleForInteraction(ctx, interaction);
   if (!resolved) {
     await interaction.reply({ content: '활성 캐릭터가 없어요. `/character list` 로 확인해봐요.', flags: MessageFlags.Ephemeral });
@@ -70,7 +71,7 @@ export async function handleScheduleAdd(ctx, interaction): Promise<void> {
   await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
-export async function handleScheduleList(ctx, interaction): Promise<void> {
+export async function handleScheduleList(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const resolved = resolveScheduleForInteraction(ctx, interaction);
   if (!resolved) {
     await interaction.reply({ content: '활성 캐릭터가 없어요. `/character list` 로 확인해봐요.', flags: MessageFlags.Ephemeral });
@@ -95,7 +96,7 @@ export async function handleScheduleList(ctx, interaction): Promise<void> {
   await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
 
-export async function handleScheduleDelete(ctx, interaction): Promise<void> {
+export async function handleScheduleDelete(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const resolved = resolveScheduleForInteraction(ctx, interaction);
   if (!resolved) {
     await interaction.reply({ content: '활성 캐릭터가 없어요. `/character list` 로 확인해봐요.', flags: MessageFlags.Ephemeral });
