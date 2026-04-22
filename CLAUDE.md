@@ -285,3 +285,4 @@ test: add or update tests
 7. **Apps in `apps/` are independent projects** with their own `package.json` and build processes. They are excluded from the main Jekyll build.
 8. **Commit messages must follow Conventional Commits** — the pre-commit hook (`husky`) will reject non-conforming messages.
 9. **The `production` branch** is for releases only; normal development goes to `master`/`main`.
+10. **No legacy or compatibility code** — when upgrading a feature, delete the old implementation entirely. No fallbacks, no deprecated wrappers, no runtime version branches. Always leave only the latest approach.
