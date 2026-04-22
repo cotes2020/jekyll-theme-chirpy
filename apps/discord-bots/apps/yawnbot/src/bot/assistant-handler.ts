@@ -256,7 +256,7 @@ async function resolveSceneImage(
   const { tags, sceneDesc } = scene;
 
   const cacheService = getImageCacheService(card);
-  const cached = await cacheService.findSimilar(tags, sceneDesc);
+  const cached = await cacheService.findSimilar(sceneDesc);
 
   if (cached) {
     if (lastSentImageId.get(slug) === cached.id) {

@@ -7,10 +7,7 @@
  *     image-log.jsonl   — 생성/히트 로그 (JSON Lines)
  *     {id}.png          — 실제 이미지 파일
  *
- * 유사도:
- *   1순위 — Gemini text-embedding-004 코사인 유사도 (GEMINI_API_KEY 있을 때)
- *   폴백  — 태그 Jaccard similarity (|A∩B| / |A∪B|)
- *
+ * 유사도: Gemini text-embedding-004 코사인 유사도
  * 캐시 최대: MAX_CACHE_ENTRIES개, 초과 시 hitCount 낮은 것 삭제
  */
 import fs from 'fs';
@@ -19,7 +16,6 @@ import crypto from 'crypto';
 import { execSync } from 'child_process';
 
 const MAX_CACHE_ENTRIES = 50;
-const DEFAULT_JACCARD_THRESHOLD = 0.4;
 const DEFAULT_COSINE_THRESHOLD = 0.75;
 const EMBEDDING_MODEL = 'text-embedding-004';
 const EMBED_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
@@ -50,18 +46,6 @@ interface ImageLogEntry {
 }
 
 // ─── 유사도 헬퍼 ──────────────────────────────────────────────────────────
-
-function jaccardSimilarity(a: string[], b: string[]): number {
-  if (a.length === 0 && b.length === 0) return 1;
-  const setA = new Set(a.map((t) => t.toLowerCase().trim()));
-  const setB = new Set(b.map((t) => t.toLowerCase().trim()));
-  let intersection = 0;
-  for (const tag of setA) {
-    if (setB.has(tag)) intersection++;
-  }
-  const union = setA.size + setB.size - intersection;
-  return union === 0 ? 1 : intersection / union;
-}
 
 /** 정규화된 벡터의 dot product = cosine similarity */
 function cosineSimilarity(a: number[], b: number[]): number {
@@ -160,57 +144,40 @@ export class ImageCacheService {
   }
 
   /**
-   * 씬과 유사한 캐시 엔트리 검색.
+   * 씬과 유사한 캐시 엔트리 검색 (Gemini 임베딩 코사인 유사도).
    *
-   * - `sceneDesc`가 있고 `GEMINI_API_KEY`가 설정돼 있으면 임베딩 코사인 유사도 사용.
-   * - 그 외에는 태그 Jaccard 유사도로 폴백.
-   *
+   * `sceneDesc`를 임베딩해서 저장된 벡터와 비교한다.
+   * 임베딩이 없는 엔트리는 건너뛴다.
    * 가장 높은 유사도 엔트리를 반환하며, 임계값 미만이면 null.
    */
   async findSimilar(
-    tags: string[],
-    sceneDesc?: string,
-    threshold?: number,
+    sceneDesc: string,
+    threshold = DEFAULT_COSINE_THRESHOLD,
   ): Promise<CacheEntry | null> {
     const index = this.readIndex();
     if (index.scenes.length === 0) return null;
 
     const apiKey = process.env.GEMINI_API_KEY?.trim();
-    const useEmbedding = !!(apiKey && sceneDesc);
+    if (!apiKey) return null;
 
-    let queryEmbedding: number[] | null = null;
-    if (useEmbedding) {
-      queryEmbedding = await embedText(sceneDesc!, apiKey!);
-    }
-
-    const cosineThreshold = threshold ?? DEFAULT_COSINE_THRESHOLD;
-    const jaccardThreshold = threshold ?? DEFAULT_JACCARD_THRESHOLD;
+    const queryEmbedding = await embedText(sceneDesc, apiKey);
+    if (!queryEmbedding) return null;
 
     let best: CacheEntry | null = null;
     let bestScore = 0;
 
     for (const entry of index.scenes) {
-      if (!fs.existsSync(entry.filePath)) continue;
-
-      let score: number;
-      if (queryEmbedding && entry.embedding) {
-        score = cosineSimilarity(queryEmbedding, entry.embedding);
-        if (score < cosineThreshold) continue;
-      } else {
-        score = jaccardSimilarity(tags, entry.tags);
-        if (score < jaccardThreshold) continue;
-      }
-
-      if (score > bestScore) {
+      if (!entry.embedding || !fs.existsSync(entry.filePath)) continue;
+      const score = cosineSimilarity(queryEmbedding, entry.embedding);
+      if (score >= threshold && score > bestScore) {
         bestScore = score;
         best = entry;
       }
     }
 
     if (best) {
-      const method = queryEmbedding && best.embedding ? 'cosine' : 'jaccard';
       console.log(
-        `[ImageCache] 히트: id=${best.id}, 유사도=${bestScore.toFixed(3)} (${method}), 태그=${best.tags.join(',')}`,
+        `[ImageCache] 히트: id=${best.id}, 유사도=${bestScore.toFixed(3)}, 태그=${best.tags.join(',')}`,
       );
     }
     return best;
