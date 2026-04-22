@@ -88,6 +88,35 @@ export class AnniversaryService {
     return false;
   }
 
+  /**
+   * 오늘 KST 기준 앞으로 N일 이내 다가오는 기념일 목록 반환 (D-day, 연 계산 포함).
+   * 오늘 포함. 정렬: 가까운 것 먼저.
+   */
+  getUpcoming(withinDays = 30): Array<Anniversary & { dDay: number; years?: number }> {
+    const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+    const year = kstNow.getFullYear();
+    const todayMs = new Date(year, kstNow.getMonth(), kstNow.getDate()).getTime();
+
+    return this.entries
+      .map((e) => {
+        // 올해 기준 날짜 계산 (12월 기념일이 1월 이전이면 내년으로)
+        let targetDate = new Date(year, e.month - 1, e.day);
+        if (targetDate.getTime() < todayMs) {
+          targetDate = new Date(year + 1, e.month - 1, e.day);
+        }
+        const dDay = Math.round((targetDate.getTime() - todayMs) / (1000 * 60 * 60 * 24));
+        if (dDay > withinDays) return null;
+        const targetYear = targetDate.getFullYear();
+        return {
+          ...e,
+          dDay,
+          ...(e.year != null ? { years: targetYear - e.year } : {}),
+        };
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null)
+      .sort((a, b) => a.dDay - b.dDay);
+  }
+
   /** 오늘 KST 기준 해당하는 기념일 목록 반환 */
   getTodayAnniversaries(): Array<Anniversary & { years?: number }> {
     const kst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));

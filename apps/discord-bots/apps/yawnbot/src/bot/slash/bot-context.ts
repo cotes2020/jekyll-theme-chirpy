@@ -13,6 +13,7 @@ import type { ScheduleService } from '../../services/schedule-service';
 import type { MoodService } from '../../services/mood-service';
 import type { RelationshipService } from '../../services/relationship-service';
 import type { NewsService } from '../../services/news-service';
+import type { AnniversaryService } from '../../services/anniversary-service';
 import type { GenerativeTextClient } from 'karmolab-ai/node';
 
 export interface BotContext {
@@ -27,6 +28,7 @@ export interface BotContext {
   getMood: ((slug: string) => MoodService) | null;
   getRelationship: ((slug: string) => RelationshipService) | null;
   getNews: ((slug: string) => NewsService) | null;
+  getAnniversary: ((slug: string) => AnniversaryService) | null;
   getImageAttachment: (imageRelativePath: string) => { file: string; name: string } | null;
   isAdmin: (userId: unknown) => boolean;
   isOwner: (userId: unknown) => boolean;

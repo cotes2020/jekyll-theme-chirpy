@@ -175,6 +175,7 @@ function buildCtx() {
     getMood: memoRepoPath ? getMood : null,
     getRelationship: memoRepoPath ? getRelationship : null,
     getNews: memoRepoPath ? getNews : null,
+    getAnniversary: memoRepoPath ? getAnniversary : null,
     getImageAttachment,
     isAdmin,
     isOwner,

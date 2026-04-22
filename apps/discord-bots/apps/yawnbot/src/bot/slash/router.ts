@@ -47,6 +47,7 @@ import { handleCost } from './cost';
 import { handleAnniversaryList, handleAnniversaryAdd, handleAnniversaryDelete } from './anniversary';
 import { handleNewsKeywordList, handleNewsKeywordAdd, handleNewsKeywordDelete } from './news-keywords';
 import { handleGallery } from './gallery';
+import { handleProfile } from './profile';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
@@ -392,6 +393,9 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
       }
       case '갤러리':
         await handleGallery(ctx, interaction);
+        break;
+      case '프로필':
+        await handleProfile(ctx, interaction);
         break;
       case '사용량':
         await handleCost(ctx, interaction);

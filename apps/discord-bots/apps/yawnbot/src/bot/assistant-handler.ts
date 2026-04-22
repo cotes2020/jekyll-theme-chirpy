@@ -72,10 +72,20 @@ function appendHistory(slug: string, userMsg: string, assistantMsg: string): voi
   }
 }
 
+const HOT_MEMORY_TRIGGERS = [
+  '시험', '면접', '수술', '졸업', '취직', '이직', '이사', '여행', '생일',
+  '좋아해', '싫어해', '알레르기', '직업', '학교', '학과', '사귀',
+  '프로젝트', '마감', '결정했', '계획이', '목표',
+];
+
 async function detectAndSaveHotMemory(
   memory: MemoryService,
   userMessage: string,
 ): Promise<void> {
+  // 휴리스틱 프리필터 — 트리거 키워드 없으면 LLM 호출 스킵
+  const lower = userMessage.toLowerCase();
+  if (!HOT_MEMORY_TRIGGERS.some((kw) => lower.includes(kw))) return;
+
   try {
     console.log(`[Assistant:${memory.slug}] 핫메모리 감지 중...`);
     const { text } = await generateAssistantText(
@@ -282,13 +292,20 @@ const IMAGE_HINT = `
 ## 이미지 기능
 너는 대화에 이미지를 첨부할 수 있어. 사용자가 외모·모습·표정·포즈를 묻거나 시각적인 씬을 요청하면, 응답에 구체적인 시각 묘사(외형, 표정, 배경, 행동)를 자연스럽게 포함해줘. 이미지는 시스템이 자동으로 생성해서 첨부해 줄 거야.`.trim();
 
-function buildSystemPrompt(card: CharacterCard, channelType: 'dm' | 'public', relationship?: RelationshipService | null): string {
+function buildSystemPrompt(
+  card: CharacterCard,
+  channelType: 'dm' | 'public',
+  relationship?: RelationshipService | null,
+  mood?: MoodService | null,
+): string {
   const channelDesc =
     channelType === 'dm'
       ? '지금은 DM으로 사적인 대화 중이야.'
       : '지금은 공개 채널에서 대화 중이야.';
   const relationshipHint = relationship ? `\n\n${relationship.buildRelationshipHint()}` : '';
-  return `${card.body}\n\n${channelDesc}${relationshipHint}\n\n${IMAGE_HINT}`;
+  const carryOverHint = mood ? (mood.getCarryOverHint() ?? '') : '';
+  const carryOverBlock = carryOverHint ? `\n\n${carryOverHint}` : '';
+  return `${card.body}\n\n${channelDesc}${relationshipHint}${carryOverBlock}\n\n${IMAGE_HINT}`;
 }
 
 function buildFullPrompt(
@@ -408,7 +425,7 @@ export async function handleAssistantMessage(
 
   if (isGemini) {
     // systemInstruction = 캐릭터 카드 + 채널 타입만 (안정적 → Gemini implicit cache 활성화)
-    systemInstruction = buildSystemPrompt(card, channelType, relationship);
+    systemInstruction = buildSystemPrompt(card, channelType, relationship, mood);
     // 가변 부분(시각, 기분, 메모리 컨텍스트, 오늘 로그)은 user message에 포함
     const nowKST = new Date().toLocaleString('ko-KR', {
       timeZone: 'Asia/Seoul',

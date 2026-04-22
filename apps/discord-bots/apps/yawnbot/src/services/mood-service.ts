@@ -55,4 +55,20 @@ export class MoodService {
     if (!this.state?.mood) return '';
     return `[현재 기분: ${this.state.mood}]`;
   }
+
+  /**
+   * 어제 기분이 남아 있으면 carry-over 힌트 반환.
+   * 오늘 이미 기분이 업데이트됐거나 48시간 이상 지났으면 null.
+   */
+  getCarryOverHint(): string | null {
+    if (!this.state?.mood || !this.state?.updatedAt) return null;
+    const kstNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+    const kstUpdated = new Date(new Date(this.state.updatedAt).toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+    const todayStr = `${kstNow.getFullYear()}-${String(kstNow.getMonth() + 1).padStart(2, '0')}-${String(kstNow.getDate()).padStart(2, '0')}`;
+    const updatedStr = `${kstUpdated.getFullYear()}-${String(kstUpdated.getMonth() + 1).padStart(2, '0')}-${String(kstUpdated.getDate()).padStart(2, '0')}`;
+    if (updatedStr === todayStr) return null; // 오늘 이미 업데이트됨
+    const diffMs = kstNow.getTime() - kstUpdated.getTime();
+    if (diffMs > 48 * 60 * 60 * 1000) return null; // 너무 오래됨
+    return `[어제 기분: ${this.state.mood}] 어제의 분위기가 오늘 대화 초반에 미묘하게 남아 있어.`;
+  }
 }

@@ -151,6 +151,12 @@ const commands = [
   scheduleCommand(),
 
   new SlashCommandBuilder()
+    .setName('프로필')
+    .setNameLocalizations(enUS('profile'))
+    .setDescription('친밀도·기분·일정·기념일·뉴스 키워드 대시보드')
+    .setDescriptionLocalizations(enUS('Your relationship & schedule dashboard')),
+
+  new SlashCommandBuilder()
     .setName('갤러리')
     .setNameLocalizations(enUS('gallery'))
     .setDescription('캐릭터 이미지 캐시 갤러리 (◀▶ 페이지 이동)')
