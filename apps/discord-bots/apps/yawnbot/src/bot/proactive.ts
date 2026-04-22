@@ -225,8 +225,7 @@ async function sendMorningGreeting(
         files.push(new AttachmentBuilder(img.buffer, { name: `morning-${idx + 1}.${ext}` }));
       }
       if (memoRepoPath) {
-        const dateKey = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })
-          .replace(/\. /g, '-').replace('.', '');
+        const dateKey = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
         const saveDir = path.join(memoRepoPath, 'image-log', card.slug, dateKey);
         saveImageLog(saveDir, images, {
           prompt: buildCharacterImagePrompt(card, `아침 인사`),
