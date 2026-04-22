@@ -232,6 +232,7 @@ export class MemoryService {
     await this._generateMonthlySummaryIfNeeded();
     await this._updateUserAndSelfMemoryIfNeeded();
     await this._appendGrowthJournalIfNeeded();
+    await this._compressUserMdIfNeeded();
     this._cleanupOldMemories();
   }
 
@@ -435,6 +436,40 @@ export class MemoryService {
     } catch (e: unknown) {
       console.error(
         `[Memory:${this.slug}] user/self 메모리 갱신 실패:`,
+        e instanceof Error ? e.message : e,
+      );
+    }
+  }
+
+  /**
+   * user.md가 임계값(기본 4000자)을 초과하면 LLM으로 압축해서 덮어씀.
+   * 중복·오래된 내용을 합치고 핵심 정보를 절반 이하 분량으로 유지.
+   */
+  private async _compressUserMdIfNeeded(): Promise<void> {
+    const userMdPath = path.join(this.memoryDir, 'user.md');
+    const content = this._read(userMdPath);
+    const threshold = parseInt(process.env.ASSISTANT_MEMORY_COMPRESS_THRESHOLD || '4000', 10);
+    if (content.length <= threshold) return;
+
+    console.log(`[Memory:${this.slug}] user.md 압축 시작 (${content.length}자)`);
+    try {
+      const { text } = await generateAssistantText(
+        process.env,
+        `다음은 사용자(mascari4615)에 대해 누적된 메모야.\n` +
+          `중복되거나 오래돼 의미가 줄어든 내용을 합치고,\n` +
+          `핵심 정보(성격, 현재 관심사, 최근 상태, 주요 사실)를 유지하면서 절반 이하 분량으로 압축해줘.\n` +
+          `마크다운 형식 유지. 날짜 태그(예: [2026-04-22])는 최근 것만 남겨:\n\n${content}`,
+      );
+      fs.writeFileSync(
+        userMdPath,
+        `# 나에 대한 정보\n\n${text.trim()}\n`,
+        'utf-8',
+      );
+      this.dirty = true;
+      console.log(`[Memory:${this.slug}] user.md 압축 완료 (${content.length}자 → ${text.length}자)`);
+    } catch (e: unknown) {
+      console.error(
+        `[Memory:${this.slug}] user.md 압축 실패:`,
         e instanceof Error ? e.message : e,
       );
     }
