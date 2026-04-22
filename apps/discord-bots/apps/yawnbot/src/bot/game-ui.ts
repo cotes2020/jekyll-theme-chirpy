@@ -1,9 +1,18 @@
-// @ts-nocheck
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags, type ButtonInteraction } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import { formatMoney } from '../services/gamedata';
+import type { BotContext } from './slash/bot-context';
+
+type AnyInteraction = ChatInputCommandInteraction | ButtonInteraction;
 
 /** 강화/판매/도움말 카드 — 버튼·슬래시 공용 (`ephemeral`: 나만 보기, `/도움말` 주제·게임 등) */
-export async function showHelpPage(ctx, interaction, pageIndex, isUpdate = false, options = {}) {
+export async function showHelpPage(
+  ctx: BotContext,
+  interaction: AnyInteraction,
+  pageIndex: number,
+  isUpdate = false,
+  options: { ephemeral?: boolean } = {},
+): Promise<void> {
   const { ephemeral = false } = options;
   const { gameData } = ctx;
   const pages = [
@@ -38,7 +47,7 @@ export async function showHelpPage(ctx, interaction, pageIndex, isUpdate = false
     .addFields({ name: page.title, value: page.content })
     .setColor(0x7c4dff);
 
-  const row = new ActionRowBuilder().addComponents(
+  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
     new ButtonBuilder()
       .setCustomId(`help_page:${pageIndex - 1}`)
       .setLabel('이전')
@@ -51,30 +60,39 @@ export async function showHelpPage(ctx, interaction, pageIndex, isUpdate = false
       .setDisabled(pageIndex === pages.length - 1),
   );
 
-  const payload = { embeds: [embed], components: [row] };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const payload: any = { embeds: [embed], components: [row] };
   if (!isUpdate && ephemeral) {
     payload.flags = MessageFlags.Ephemeral;
   }
-  if (isUpdate) await interaction.update(payload);
-  else await interaction.reply(payload);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (isUpdate && 'update' in interaction) await (interaction as any).update(payload);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  else await (interaction as any).reply(payload);
 }
 
-export async function handleEnhance(ctx, interaction, userId, userName, isUpdate = false) {
+export async function handleEnhance(
+  ctx: BotContext,
+  interaction: AnyInteraction,
+  userId: string,
+  userName: string,
+  isUpdate = false,
+): Promise<void> {
   const { gameData, enhancement, getImageAttachment } = ctx;
   const r = enhancement.enhance(userId);
   const embed = new EmbedBuilder();
-  let attachment = null;
+  let attachment: { file: string; name: string } | null = null;
 
-  const rowPrimary = new ActionRowBuilder().addComponents(
+  const rowPrimary = new ActionRowBuilder<ButtonBuilder>().addComponents(
     new ButtonBuilder().setCustomId('enhance_retry').setLabel('다시 강화하기').setStyle(ButtonStyle.Primary),
     new ButtonBuilder().setCustomId('sell_sword').setLabel('판매하기').setStyle(ButtonStyle.Secondary),
   );
-  const rowFail = new ActionRowBuilder().addComponents(
+  const rowFail = new ActionRowBuilder<ButtonBuilder>().addComponents(
     new ButtonBuilder().setCustomId('enhance_retry').setLabel('다시 강화하기').setStyle(ButtonStyle.Primary),
     new ButtonBuilder().setCustomId('consolation').setLabel('위로(놀림)').setStyle(ButtonStyle.Secondary),
   );
 
-  let components = [];
+  let components: ActionRowBuilder<ButtonBuilder>[] = [];
 
   if (r.type === 'max') {
     embed
@@ -142,20 +160,31 @@ export async function handleEnhance(ctx, interaction, userId, userName, isUpdate
     components = [rowFail];
   }
 
+  // Suppress unused variable warning
+  void userName;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const payload: any = { embeds: [embed], components };
   if (attachment) {
     embed.setThumbnail(`attachment://${attachment.name}`);
     payload.files = [attachment.file];
   }
-  if (isUpdate) await interaction.update(payload);
-  else await interaction.reply(payload);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (isUpdate && 'update' in interaction) await (interaction as any).update(payload);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  else await (interaction as any).reply(payload);
 }
 
-export async function handleSell(ctx, interaction, userId, isUpdate = false) {
+export async function handleSell(
+  ctx: BotContext,
+  interaction: AnyInteraction,
+  userId: string,
+  isUpdate = false,
+): Promise<void> {
   const { gameData, enhancement } = ctx;
   const r = enhancement.sell(userId);
   const embed = new EmbedBuilder();
-  let components = [];
+  let components: ActionRowBuilder<ButtonBuilder>[] = [];
   if (r.type === 'no_sword') {
     embed.setTitle(gameData.getMessage('Sell_NoSword_Title')).setDescription(gameData.getMessage('Sell_NoSword_Desc')).setColor(0xf44336);
   } else {
@@ -170,13 +199,15 @@ export async function handleSell(ctx, interaction, userId, isUpdate = false) {
       )
       .setColor(0x4caf50);
     components = [
-      new ActionRowBuilder().addComponents(
+      new ActionRowBuilder<ButtonBuilder>().addComponents(
         new ButtonBuilder().setCustomId('enhance_retry').setLabel('강화하기').setStyle(ButtonStyle.Primary),
       ),
     ];
   }
-  const payload = { embeds: [embed], components };
-  if (isUpdate) await interaction.update(payload);
-  else await interaction.reply(payload);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const payload: any = { embeds: [embed], components };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (isUpdate && 'update' in interaction) await (interaction as any).update(payload);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  else await (interaction as any).reply(payload);
 }
-
