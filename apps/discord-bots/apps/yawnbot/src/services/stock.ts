@@ -154,7 +154,7 @@ export class StockService {
   getPortfolio(userId: string) {
     const user = this.gameData.getUser(userId);
     if (!user.stocks)
-      return { entries: [] as unknown[], totalAsset: 0, totalInvested: 0, totalProfit: 0, totalProfitPct: 0 };
+      return { entries: [] as { symbol: string; name: string; amount: number; avgPrice: number; currentPrice: number; currentValue: number; profit: number; profitPct: number }[], totalAsset: 0, totalInvested: 0, totalProfit: 0, totalProfitPct: 0 };
 
     const entries: {
       symbol: string;

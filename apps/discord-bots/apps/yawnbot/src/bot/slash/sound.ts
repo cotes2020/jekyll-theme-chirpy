@@ -1,10 +1,11 @@
-// @ts-nocheck
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { MessageFlags, PermissionFlagsBits } from 'discord.js';
+import type { ChatInputCommandInteraction, GuildMember } from 'discord.js';
 import { packagedAudioDir } from '../../paths';
 import { createAudioResourceFromHttpUrl, createAudioResourceFromLocalFile } from '../playable-audio-resource';
 import { enqueueCustomTrack, withTimeout } from '../music-player';
+import type { BotContext } from './bot-context';
 
 const AUDIO_EXT = new Set(['.mp3', '.ogg', '.wav', '.m4a', '.opus', '.flac', '.webm']);
 const SOUND_PREPARE_TIMEOUT_MS = 120_000;
@@ -31,8 +32,8 @@ function resolvePackagedClip(raw: string): string | null {
   return full;
 }
 
-export async function handleSound(ctx, interaction) {
-  if (!interaction.inGuild()) {
+export async function handleSound(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
+  if (!interaction.guild) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
@@ -53,13 +54,13 @@ export async function handleSound(ctx, interaction) {
     return;
   }
 
-  const vc = interaction.member.voice?.channel;
+  const vc = (interaction.member as GuildMember).voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
     await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/music sound`를 사용하세요.' });
     return;
   }
 
-  const botMember = interaction.guild.members.me;
+  const botMember = interaction.guild?.members.me;
   if (!botMember) {
     await interaction.editReply({ content: '봇 멤버 정보를 불러올 수 없습니다.' });
     return;
@@ -90,8 +91,8 @@ export async function handleSound(ctx, interaction) {
     return;
   }
 
-  let title;
-  let load;
+  let title: string;
+  let load: () => Promise<import('@discordjs/voice').AudioResource>;
 
   if (attachment) {
     const ct = (attachment.contentType || '').toLowerCase();

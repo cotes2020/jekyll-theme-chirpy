@@ -1,9 +1,10 @@
-// @ts-nocheck
 import { MessageFlags, PermissionFlagsBits } from 'discord.js';
+import type { ChatInputCommandInteraction, GuildMember, VoiceBasedChannel, GuildChannel } from 'discord.js';
 import { joinVoiceChannelSafe, leaveVoiceChannel } from '../voice-connection';
 import { destroyMusicForGuild } from '../music-player';
+import type { BotContext } from './bot-context';
 
-export async function handleVoiceJoin(ctx, interaction) {
+export async function handleVoiceJoin(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guild || !interaction.member) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
@@ -11,7 +12,8 @@ export async function handleVoiceJoin(ctx, interaction) {
   const opt = interaction.options.getChannel('채널') ?? interaction.options.getChannel('channel');
   let target = opt;
   if (!target) {
-    const vc = interaction.member.voice?.channel;
+    const member = interaction.member as GuildMember;
+    const vc = member.voice?.channel;
     if (!vc || !vc.isVoiceBased()) {
       await interaction.reply({
         content: '음성 채널을 지정하거나, 명령을 실행할 때 음성 채널에 참가해 있어야 합니다.',
@@ -21,16 +23,18 @@ export async function handleVoiceJoin(ctx, interaction) {
     }
     target = vc;
   }
-  if (!target.isVoiceBased()) {
+  const guildChannel = target as GuildChannel;
+  if (!('isVoiceBased' in guildChannel) || !guildChannel.isVoiceBased()) {
     await interaction.reply({ content: '음성 채널이 아닙니다.', flags: MessageFlags.Ephemeral });
     return;
   }
+  const voiceChannel = guildChannel as unknown as VoiceBasedChannel;
   const botMember = interaction.guild.members.me;
   if (!botMember) {
     await interaction.reply({ content: '봇 멤버 정보를 불러올 수 없습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
-  const perms = target.permissionsFor(botMember);
+  const perms = voiceChannel.permissionsFor(botMember);
   if (!perms?.has([PermissionFlagsBits.Connect, PermissionFlagsBits.ViewChannel])) {
     await interaction.reply({
       content: '봇에게 해당 채널의 **보기**·**연결** 권한이 필요합니다.',
@@ -52,7 +56,7 @@ export async function handleVoiceJoin(ctx, interaction) {
   }, 15_000);
   let result;
   try {
-    result = await joinVoiceChannelSafe(target);
+    result = await joinVoiceChannelSafe(voiceChannel);
   } finally {
     clearInterval(progress);
   }
@@ -67,7 +71,7 @@ export async function handleVoiceJoin(ctx, interaction) {
   });
 }
 
-export async function handleVoiceLeave(ctx, interaction) {
+export async function handleVoiceLeave(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;

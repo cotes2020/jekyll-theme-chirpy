@@ -1,13 +1,14 @@
-// @ts-nocheck
 import { MessageFlags, PermissionFlagsBits } from 'discord.js';
+import type { ChatInputCommandInteraction, GuildMember } from 'discord.js';
 import { enqueueSpokenText, withTimeout } from '../music-player';
+import type { BotContext } from './bot-context';
 
 const SPEAK_MAX_CHARS = 500;
 const DEFAULT_LINE = 'Hello, world. 운이빈다 Edge TTS 테스트입니다.';
 const SYNTH_TIMEOUT_MS = 45_000;
 
-export async function handleSpeak(ctx, interaction) {
-  if (!interaction.inGuild()) {
+export async function handleSpeak(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
+  if (!interaction.guild) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
@@ -28,13 +29,13 @@ export async function handleSpeak(ctx, interaction) {
     return;
   }
 
-  const vc = interaction.member.voice?.channel;
+  const vc = (interaction.member as GuildMember).voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
     await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/music speak`를 사용하세요.' });
     return;
   }
 
-  const botMember = interaction.guild.members.me;
+  const botMember = interaction.guild?.members.me;
   if (!botMember) {
     await interaction.editReply({ content: '봇 멤버 정보를 불러올 수 없습니다.' });
     return;

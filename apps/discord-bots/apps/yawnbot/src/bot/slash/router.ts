@@ -40,6 +40,7 @@ import {
   handleCharacterReload,
   handleCharacterImage,
   handleCharacterImageHistory,
+  handleCharacterRelationship,
 } from './character';
 import { handleScheduleAdd, handleScheduleList, handleScheduleDelete } from './schedule';
 import { handleCost } from './cost';
@@ -259,6 +260,7 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
             case 'image': await handleCharacterImage(ctx, interaction); break;
             case 'history': await handleCharacterImageHistory(ctx, interaction); break;
             case 'reload': await handleCharacterReload(ctx, interaction); break;
+            case '친밀도': await handleCharacterRelationship(ctx, interaction); break;
             default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
           }
         } else if (group === '기억') {

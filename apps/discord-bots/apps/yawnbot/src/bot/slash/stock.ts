@@ -1,8 +1,9 @@
-// @ts-nocheck
 import { EmbedBuilder, MessageFlags } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 import { formatMoney } from '../../services/gamedata';
+import type { BotContext } from './bot-context';
 
-export async function handleStockList(ctx, interaction) {
+export async function handleStockList(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const { gameData, stock } = ctx;
   const list = stock.getStockList();
   const embed = new EmbedBuilder().setTitle(gameData.getMessage('Stock_List_Title')).setColor(0x00bcd4);
@@ -18,9 +19,9 @@ export async function handleStockList(ctx, interaction) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleStockChart(ctx, interaction) {
+export async function handleStockChart(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   const { stock } = ctx;
-  const symbol = interaction.options.getString('종목');
+  const symbol = interaction.options.getString('종목', true);
   const url = stock.getChartUrl(symbol);
   if (!url) {
     await interaction.reply({ content: '존재하지 않는 종목입니다.', flags: MessageFlags.Ephemeral });
@@ -30,10 +31,10 @@ export async function handleStockChart(ctx, interaction) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleBuy(ctx, interaction, userId) {
+export async function handleBuy(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, stock } = ctx;
-  const symbol = interaction.options.getString('종목');
-  const amount = interaction.options.getInteger('수량');
+  const symbol = interaction.options.getString('종목', true);
+  const amount = interaction.options.getInteger('수량', true);
   const r = stock.buy(userId, symbol, amount);
   if (!r.ok) {
     await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
@@ -47,10 +48,10 @@ export async function handleBuy(ctx, interaction, userId) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleSellStock(ctx, interaction, userId) {
+export async function handleSellStock(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string): Promise<void> {
   const { gameData, stock } = ctx;
-  const symbol = interaction.options.getString('종목');
-  const amount = interaction.options.getInteger('수량');
+  const symbol = interaction.options.getString('종목', true);
+  const amount = interaction.options.getInteger('수량', true);
   const r = stock.sell(userId, symbol, amount);
   if (!r.ok) {
     await interaction.reply({ content: r.msg, flags: MessageFlags.Ephemeral });
@@ -65,7 +66,7 @@ export async function handleSellStock(ctx, interaction, userId) {
   await interaction.reply({ embeds: [embed] });
 }
 
-export async function handleMyStock(ctx, interaction, userId, userName) {
+export async function handleMyStock(ctx: BotContext, interaction: ChatInputCommandInteraction, userId: string, userName: string): Promise<void> {
   const { gameData, stock } = ctx;
   const p = stock.getPortfolio(userId);
   const embed = new EmbedBuilder().setTitle(gameData.getMessage('Stock_MyStock_Header', userName)).setColor(0x00bcd4);

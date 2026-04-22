@@ -115,6 +115,13 @@ export const characterCommand = () =>
                 .setDescriptionLocalizations(enUS('Slug to reload (empty = current active)'))
                 .setAutocomplete(true),
             ),
+        )
+        .addSubcommand((sub) =>
+          sub
+            .setName('친밀도')
+            .setNameLocalizations(enUS('relationship'))
+            .setDescription('현재 캐릭터와의 친밀도 레벨 · 대화 횟수 · 호감도 확인')
+            .setDescriptionLocalizations(enUS('Check intimacy level, conversation count, and mood score')),
         ),
     )
 

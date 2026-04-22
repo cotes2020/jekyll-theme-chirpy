@@ -8,6 +8,7 @@ import type { CharacterService, CharacterCard } from '../../services/character-s
 import { CharacterService as CSHelper } from '../../services/character-service';
 import { buildCharacterImagePrompt, runImageGeneration } from './image';
 import { ImageCacheService } from '../../services/image-cache-service';
+import { RELATIONSHIP_LEVELS } from '../../services/relationship-service';
 import type { BotContext } from './bot-context';
 
 function getChannelKey(interaction: ChatInputCommandInteraction): string {
@@ -318,4 +319,47 @@ export async function handleCharacterImageHistory(ctx: BotContext, interaction: 
   }
 
   await interaction.reply({ embeds: [embed], files, flags: MessageFlags.Ephemeral });
+}
+
+export async function handleCharacterRelationship(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
+  const cs = ctx.characterService;
+  if (!cs) {
+    await interaction.reply({ content: 'MEMO_REPO_PATH가 설정되지 않아 캐릭터 시스템이 비활성화돼 있어요.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+  if (!ctx.getRelationship) {
+    await interaction.reply({ content: 'MEMO_REPO_PATH가 설정되지 않아 친밀도 시스템을 사용할 수 없어요.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+
+  const channelKey = getChannelKey(interaction);
+  const card = cs.resolveCard(channelKey);
+  if (!card) {
+    await interaction.reply({ content: '활성 캐릭터 카드가 없어요. `/character switch`로 캐릭터를 선택해주세요.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+
+  const rel = ctx.getRelationship(card.slug);
+  const info = rel.getLevelInfo();
+  const nextLevel = RELATIONSHIP_LEVELS.find((l) => l.level === info.level + 1);
+  const nextThreshold = nextLevel ? `${nextLevel.threshold}회` : '최대 레벨';
+  const progressToNext = nextLevel
+    ? `${rel.conversationCount} / ${nextLevel.threshold} (${Math.round(rel.conversationCount / nextLevel.threshold * 100)}%)`
+    : '최대 달성!';
+
+  const LEVEL_BARS = ['○○○○', '●○○○', '●●○○', '●●●○', '●●●●'];
+  const bar = LEVEL_BARS[info.level] ?? '●●●●';
+
+  const embed = new EmbedBuilder()
+    .setTitle(`💞 ${card.displayName}와의 친밀도`)
+    .setColor(0xe91e8c)
+    .addFields(
+      { name: '레벨', value: `Lv.${info.level} **${info.label}** ${bar}`, inline: true },
+      { name: '총 대화', value: `${rel.conversationCount}회`, inline: true },
+      { name: '호감도', value: `${rel.moodScore >= 0 ? '+' : ''}${rel.moodScore}`, inline: true },
+      { name: '다음 단계까지', value: nextLevel ? `${info.label} → **${nextLevel.label}** (${progressToNext})` : '이미 최고 레벨이에요!', inline: false },
+    )
+    .setFooter({ text: info.hint });
+
+  await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
 }
