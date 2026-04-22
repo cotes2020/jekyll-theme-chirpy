@@ -151,6 +151,21 @@ const commands = [
   scheduleCommand(),
 
   new SlashCommandBuilder()
+    .setName('갤러리')
+    .setNameLocalizations(enUS('gallery'))
+    .setDescription('캐릭터 이미지 캐시 갤러리 (◀▶ 페이지 이동)')
+    .setDescriptionLocalizations(enUS('Browse character image cache gallery'))
+    .addStringOption((opt) =>
+      opt.setName('정렬').setNameLocalizations(enUS('sort'))
+        .setDescription('정렬 기준 (기본: 최신순)')
+        .setDescriptionLocalizations(enUS('Sort order (default: recent)'))
+        .addChoices(
+          { name: '최신순', value: 'recent' },
+          { name: '인기순', value: 'popular' },
+        ),
+    ),
+
+  new SlashCommandBuilder()
     .setName('사용량')
     .setNameLocalizations(enUS('usage'))
     .setDescription('이미지 생성 비용 대시보드 (모델별/일별 집계)')

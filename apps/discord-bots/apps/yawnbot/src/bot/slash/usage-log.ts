@@ -1,14 +1,12 @@
-// @ts-nocheck
+import type { ChatInputCommandInteraction } from 'discord.js';
 
 function usageLogEnabled(): boolean {
   const s = String(process.env.YAWNBOT_SLASH_USAGE_LOG ?? '').trim().toLowerCase();
   return s === '1' || s === 'true' || s === 'yes' || s === 'on';
 }
 
-/**
- * 콘솔 한 줄: 명령·서브커맨드·길드·채널·유저
- */
-export function logSlashUsage(interaction): void {
+/** 콘솔 한 줄: 명령·서브커맨드·길드·채널·유저 */
+export function logSlashUsage(interaction: ChatInputCommandInteraction): void {
   if (!usageLogEnabled() || !interaction.isChatInputCommand()) return;
   let sub = '';
   try {

@@ -37,12 +37,14 @@ import {
   handleCharacterSwitch,
   handleCharacterInfo,
   handleCharacterReset,
+  handleCharacterReload,
   handleCharacterImage,
   handleCharacterImageHistory,
 } from './character';
 import { handleScheduleAdd, handleScheduleList, handleScheduleDelete } from './schedule';
 import { handleCost } from './cost';
 import { handleAnniversaryList, handleAnniversaryAdd, handleAnniversaryDelete } from './anniversary';
+import { handleGallery } from './gallery';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
@@ -255,6 +257,7 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
               await handleCharacterReset(ctx, interaction); break;
             case 'image': await handleCharacterImage(ctx, interaction); break;
             case 'history': await handleCharacterImageHistory(ctx, interaction); break;
+            case 'reload': await handleCharacterReload(ctx, interaction); break;
             default: await interaction.reply({ content: '알 수 없는 명령입니다.', flags: MessageFlags.Ephemeral });
           }
         } else if (group === '기억') {
@@ -384,6 +387,9 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         }
         break;
       }
+      case '갤러리':
+        await handleGallery(ctx, interaction);
+        break;
       case '사용량':
         await handleCost(ctx, interaction);
         break;

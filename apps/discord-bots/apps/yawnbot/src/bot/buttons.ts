@@ -4,6 +4,7 @@ import { showHelpPage, handleEnhance, handleSell } from './game-ui';
 import { tryHandleMusicQueueButton } from './slash/music';
 import type { BotContext } from './slash/bot-context';
 import { MOOD_REACTION_MAP, type MoodReactionEmoji } from './assistant-handler';
+import { handleGalleryButton } from './slash/gallery';
 
 export async function handleButtonInteraction(ctx: BotContext, interaction: ButtonInteraction): Promise<void> {
   if (!interaction.isButton()) return;
@@ -41,6 +42,11 @@ export async function handleButtonInteraction(ctx: BotContext, interaction: Butt
     }
     if (customId === 'sell_sword') {
       await handleSell(ctx, interaction, userId, true);
+      return;
+    }
+
+    if (customId.startsWith('gallery:')) {
+      await handleGalleryButton(ctx, interaction);
       return;
     }
 

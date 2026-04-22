@@ -170,6 +170,28 @@ export async function handleCharacterReset(ctx: BotContext, interaction: ChatInp
   });
 }
 
+export async function handleCharacterReload(ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
+  const cs: CharacterService | null = ctx.characterService;
+  if (!cs) {
+    await interaction.reply({ content: 'MEMO_REPO_PATH가 설정되지 않아 캐릭터 시스템이 비활성화돼 있어요.', flags: MessageFlags.Ephemeral });
+    return;
+  }
+
+  const slugOpt = (interaction.options.getString('slug') || '').trim();
+  const slug = slugOpt || cs.resolveSlug(getChannelKey(interaction));
+
+  const card = cs.reloadCard(slug);
+  if (!card) {
+    await interaction.reply({ content: `캐릭터를 찾을 수 없어요: \`${slug}\``, flags: MessageFlags.Ephemeral });
+    return;
+  }
+
+  await interaction.reply({
+    content: `🔄 **${card.displayName}** (\`${slug}\`) 카드 캐시 재로드 완료.`,
+    flags: MessageFlags.Ephemeral,
+  });
+}
+
 /**
  * /character image — 현재 채널 활성 캐릭터의 외형(appearance.md)으로 이미지 생성.
  * 상황 비우면 외형만 써서 기본 포즈·프로필 이미지.

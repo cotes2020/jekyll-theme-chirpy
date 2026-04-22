@@ -102,6 +102,19 @@ export const characterCommand = () =>
             .setName('history')
             .setDescription('자동 생성된 씬 이미지 캐시 조회 (최근 10개)')
             .setDescriptionLocalizations(enUS('View auto-generated scene image cache (last 10)')),
+        )
+        .addSubcommand((sub) =>
+          sub
+            .setName('reload')
+            .setDescription('캐릭터 카드 캐시 재로드 (재시작 없이 card.md 반영)')
+            .setDescriptionLocalizations(enUS('Reload character card cache without restart'))
+            .addStringOption((opt) =>
+              opt
+                .setName('slug')
+                .setDescription('재로드할 슬러그 (비우면 현재 활성)')
+                .setDescriptionLocalizations(enUS('Slug to reload (empty = current active)'))
+                .setAutocomplete(true),
+            ),
         ),
     )
 
