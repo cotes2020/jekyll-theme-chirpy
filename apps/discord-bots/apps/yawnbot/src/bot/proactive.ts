@@ -17,6 +17,7 @@ import { CharacterService as CSHelper } from '../services/character-service';
 import type { MemoryService } from '../services/memory-service';
 import type { ScheduleService } from '../services/schedule-service';
 import type { MoodService } from '../services/mood-service';
+import type { AnniversaryService } from '../services/anniversary-service';
 import { buildCharacterImagePrompt, saveImageLog } from './slash/image';
 
 // WMO weather code → 한국어 설명 + 이미지 힌트
@@ -159,6 +160,7 @@ async function sendMorningGreeting(
   characterService: CharacterService,
   getMood?: (slug: string) => MoodService,
   memoRepoPath?: string,
+  getAnniversary?: (slug: string) => AnniversaryService,
 ): Promise<void> {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
@@ -179,10 +181,16 @@ async function sendMorningGreeting(
     const weather = await fetchWeather();
     const weatherLine = weather ? `오늘 날씨: ${weather.text}` : '';
 
+    const todayAnniversaries = getAnniversary ? getAnniversary(card.slug).getTodayAnniversaries() : [];
+    const anniversaryLine = todayAnniversaries.length > 0
+      ? `오늘의 기념일: ${todayAnniversaries.map((a) => a.years != null ? `${a.label} (${a.years}주년)` : a.label).join(', ')}`
+      : '';
+
     const prompt =
       `오늘은 ${dateStr} ${dayStr}이야.\n` +
       (weatherLine ? `${weatherLine}\n` : '') +
       (moodLine ? `${moodLine}\n` : '') +
+      (anniversaryLine ? `${anniversaryLine} — 이 기념일을 꼭 언급해줘!\n` : '') +
       `아침 인사 메시지를 한국어로, 짧고 따뜻하게 보내줘.\n` +
       `날짜, 요일, 날씨를 자연스럽게 언급하고 오늘 하루를 응원해줘.\n` +
       `2-3문장 이내로.`;
@@ -246,13 +254,14 @@ function scheduleMorning(
   targetHour: number,
   getMood?: (slug: string) => MoodService,
   memoRepoPath?: string,
+  getAnniversary?: (slug: string) => AnniversaryService,
 ): void {
   const delay = msUntilNextKSTHour(targetHour);
   console.log(`[Proactive] 다음 아침 인사까지 ${Math.round(delay / 60000)}분 대기`);
 
   morningTimer = setTimeout(async () => {
-    await sendMorningGreeting(client, characterService, getMood, memoRepoPath);
-    scheduleMorning(client, characterService, targetHour, getMood, memoRepoPath);
+    await sendMorningGreeting(client, characterService, getMood, memoRepoPath, getAnniversary);
+    scheduleMorning(client, characterService, targetHour, getMood, memoRepoPath, getAnniversary);
   }, delay);
 }
 
@@ -355,6 +364,7 @@ export function startProactive(
   getMemory: (slug: string) => MemoryService,
   getMood?: (slug: string) => MoodService,
   memoRepoPath?: string,
+  getAnniversary?: (slug: string) => AnniversaryService,
 ): void {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) {
@@ -363,7 +373,7 @@ export function startProactive(
   }
 
   const morningHour = parseInt(process.env.ASSISTANT_MORNING_HOUR || '8', 10);
-  scheduleMorning(client, characterService, morningHour, getMood, memoRepoPath);
+  scheduleMorning(client, characterService, morningHour, getMood, memoRepoPath, getAnniversary);
 
   const eveningHour = parseInt(process.env.ASSISTANT_EVENING_HOUR || '21', 10);
   scheduleEvening(client, characterService, getMemory, eveningHour);

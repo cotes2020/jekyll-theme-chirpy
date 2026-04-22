@@ -22,6 +22,7 @@ import { MemoryService } from './services/memory-service';
 import { CharacterService } from './services/character-service';
 import { ScheduleService } from './services/schedule-service';
 import { MoodService } from './services/mood-service';
+import { AnniversaryService } from './services/anniversary-service';
 import { getImageAttachment } from './bot/attachments';
 import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
@@ -102,6 +103,16 @@ function getMood(slug: string): MoodService {
     moodMap.set(slug, new MoodService(memoRepoPath, slug));
   }
   return moodMap.get(slug)!;
+}
+
+/** 슬러그별 AnniversaryService 캐시 (lazy init). */
+const anniversaryMap = new Map<string, AnniversaryService>();
+function getAnniversary(slug: string): AnniversaryService {
+  if (!anniversaryMap.has(slug)) {
+    if (!memoRepoPath) throw new Error('MEMO_REPO_PATH 미설정 — AnniversaryService 생성 불가');
+    anniversaryMap.set(slug, new AnniversaryService(memoRepoPath, slug));
+  }
+  return anniversaryMap.get(slug)!;
 }
 
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
@@ -205,7 +216,7 @@ client.once('clientReady', async () => {
     characterService.initialize();
     // default 슬러그 MemoryService 선-초기화 (stub 파일 준비)
     getMemory(characterService.getDefaultSlug());
-    startProactive(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath || undefined);
+    startProactive(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath || undefined, memoRepoPath ? getAnniversary : undefined);
     startScheduleReminder(client, characterService, getSchedule);
     startSpontaneous(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath ? getSchedule : undefined);
     await sendStartupGreeting(client, characterService, getMemory);

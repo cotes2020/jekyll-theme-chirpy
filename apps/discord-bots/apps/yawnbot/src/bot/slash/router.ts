@@ -42,6 +42,7 @@ import {
 } from './character';
 import { handleScheduleAdd, handleScheduleList, handleScheduleDelete } from './schedule';
 import { handleCost } from './cost';
+import { handleAnniversaryList, handleAnniversaryAdd, handleAnniversaryDelete } from './anniversary';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
@@ -386,6 +387,16 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
       case '사용량':
         await handleCost(ctx, interaction);
         break;
+      case '기념일': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case '목록': await handleAnniversaryList(ctx, interaction); break;
+          case '추가': await handleAnniversaryAdd(ctx, interaction); break;
+          case '삭제': await handleAnniversaryDelete(ctx, interaction); break;
+          default: await interaction.reply({ content: '알 수 없는 기념일 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+        }
+        break;
+      }
       default:
         await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }
