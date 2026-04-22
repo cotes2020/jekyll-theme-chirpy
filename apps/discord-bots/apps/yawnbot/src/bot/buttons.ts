@@ -1,10 +1,11 @@
-import { EmbedBuilder, MessageFlags, ButtonInteraction } from 'discord.js';
+import { EmbedBuilder, MessageFlags, ButtonInteraction, AttachmentBuilder } from 'discord.js';
 import { getRandomImage } from '../services/gamedata';
 import { showHelpPage, handleEnhance, handleSell } from './game-ui';
 import { tryHandleMusicQueueButton } from './slash/music';
 import type { BotContext } from './slash/bot-context';
 import { MOOD_REACTION_MAP, type MoodReactionEmoji } from './assistant-handler';
 import { handleGalleryButton } from './slash/gallery';
+import { generateImageFromEnvWithOptions } from 'karmolab-ai/node';
 
 export async function handleButtonInteraction(ctx: BotContext, interaction: ButtonInteraction): Promise<void> {
   if (!interaction.isButton()) return;
@@ -42,6 +43,34 @@ export async function handleButtonInteraction(ctx: BotContext, interaction: Butt
     }
     if (customId === 'sell_sword') {
       await handleSell(ctx, interaction, userId, true);
+      return;
+    }
+
+    if (customId.startsWith('image_vary:')) {
+      const action = customId.split(':')[1];
+      const embed = interaction.message.embeds[0];
+      const basePrompt = embed?.description?.trim();
+      if (!basePrompt) { await interaction.reply({ content: '프롬프트를 찾을 수 없어요.', flags: MessageFlags.Ephemeral }); return; }
+
+      const aspectRatio = action === 'wide' ? '16:9' : action === 'portrait' ? '9:16' : undefined;
+      const finalPrompt = action === 'pose'
+        ? `${basePrompt}, different pose, different angle, dynamic composition`
+        : basePrompt;
+
+      await interaction.deferReply();
+      try {
+        const { images, modelId } = await generateImageFromEnvWithOptions(process.env, finalPrompt, {
+          sampleCount: 1,
+          aspectRatio: aspectRatio as Parameters<typeof generateImageFromEnvWithOptions>[2]['aspectRatio'],
+        });
+        if (!images.length) { await interaction.editReply('이미지 생성 결과 없음'); return; }
+        const img = images[0];
+        const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+        const attachment = new AttachmentBuilder(img.buffer, { name: `vary.${ext}` });
+        await interaction.editReply({ content: `🎨 변형 완료 (${modelId})`, files: [attachment] });
+      } catch (e) {
+        await interaction.editReply(`실패: ${e instanceof Error ? e.message : String(e)}`);
+      }
       return;
     }
 

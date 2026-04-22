@@ -84,6 +84,7 @@ export class MemoryService {
       this.logsDir,
       path.join(this.memoryDir, 'daily'),
       path.join(this.memoryDir, 'weekly'),
+      path.join(this.memoryDir, 'monthly'),
     ]) {
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     }
@@ -228,7 +229,9 @@ export class MemoryService {
   async checkAndGenerateSummaries(): Promise<void> {
     await this._generateDailySummaryIfNeeded();
     await this._generateWeeklySummaryIfNeeded();
+    await this._generateMonthlySummaryIfNeeded();
     await this._updateUserAndSelfMemoryIfNeeded();
+    await this._appendGrowthJournalIfNeeded();
     this._cleanupOldMemories();
   }
 
@@ -296,6 +299,79 @@ export class MemoryService {
         `[Memory:${this.slug}] 주간 요약 생성 실패:`,
         e instanceof Error ? e.message : e,
       );
+    }
+  }
+
+  private async _generateMonthlySummaryIfNeeded(): Promise<void> {
+    const kst = toKST();
+    // 매달 1일 첫 대화 때 지난달 요약 생성
+    if (kst.getDate() !== 1) return;
+
+    const lastMonth = new Date(kst.getFullYear(), kst.getMonth() - 1, 1);
+    const monthKey = `${lastMonth.getFullYear()}-${pad(lastMonth.getMonth() + 1)}`;
+    const summaryPath = path.join(this.memoryDir, 'monthly', `${monthKey}.md`);
+    if (fs.existsSync(summaryPath)) return;
+
+    // 지난달 주간 요약 수집
+    const weeklyDir = path.join(this.memoryDir, 'weekly');
+    if (!fs.existsSync(weeklyDir)) return;
+    const weeklies = fs.readdirSync(weeklyDir)
+      .filter((f) => f.startsWith(String(lastMonth.getFullYear())) && f.endsWith('.md'))
+      .map((f) => fs.readFileSync(path.join(weeklyDir, f), 'utf-8').trim())
+      .filter(Boolean);
+    if (!weeklies.length) return;
+
+    try {
+      console.log(`[Memory:${this.slug}] ${monthKey} 월간 요약 생성 중...`);
+      const { text } = await generateAssistantText(
+        process.env,
+        `다음은 ${monthKey} 한 달간의 주간 요약들이야.\n` +
+          `이 달 전체를 아우르는 월간 회고를 작성해줘.\n` +
+          `주요 주제, 감정 변화, 중요한 결정이나 사건, 성장한 점 위주로 풍부하게:\n\n` +
+          weeklies.join('\n\n---\n\n').slice(0, 12000),
+      );
+      fs.writeFileSync(summaryPath, `# ${monthKey} 월간 요약\n\n${text.trim()}\n`, 'utf-8');
+      this.dirty = true;
+      console.log(`[Memory:${this.slug}] ${monthKey} 월간 요약 저장 완료`);
+    } catch (e: unknown) {
+      console.error(`[Memory:${this.slug}] 월간 요약 실패:`, e instanceof Error ? e.message : e);
+    }
+  }
+
+  private async _appendGrowthJournalIfNeeded(): Promise<void> {
+    const markerPath = path.join(this.memoryDir, '.growth-updated');
+    const today = kstDateStr();
+    if (fs.existsSync(markerPath) && fs.readFileSync(markerPath, 'utf-8').trim() === today) return;
+
+    const yesterday = kstDateStr(daysAgo(1));
+    const dailyPath = path.join(this.memoryDir, 'daily', `${yesterday}.md`);
+    if (!fs.existsSync(dailyPath)) return;
+
+    const selfPath = path.join(this.memoryDir, 'self.md');
+
+    try {
+      const dailySummary = fs.readFileSync(dailyPath, 'utf-8').trim();
+      const { text } = await generateAssistantText(
+        process.env,
+        `다음은 어제(${yesterday})의 대화 요약이야.\n` +
+          `이 대화를 통해 캐릭터로서 새롭게 알게 된 것, 느낀 것, 기억하고 싶은 것을 1~2문장으로 써줘.\n` +
+          `"오늘 배운 것:" 으로 시작하는 짧은 성장 일지 형식으로:\n\n${dailySummary.slice(0, 3000)}`,
+      );
+      const entry = text.trim();
+      if (!entry) return;
+
+      const existing = fs.existsSync(selfPath) ? fs.readFileSync(selfPath, 'utf-8') : '';
+      const journalSection = `\n\n## 성장 일지\n\n- [${yesterday}] ${entry}`;
+      if (existing.includes('## 성장 일지')) {
+        fs.writeFileSync(selfPath, existing + `\n- [${yesterday}] ${entry}`, 'utf-8');
+      } else {
+        fs.writeFileSync(selfPath, existing + journalSection, 'utf-8');
+      }
+      fs.writeFileSync(markerPath, today, 'utf-8');
+      this.dirty = true;
+      console.log(`[Memory:${this.slug}] 성장 일지 추가: ${entry.slice(0, 60)}`);
+    } catch (e: unknown) {
+      console.error(`[Memory:${this.slug}] 성장 일지 실패:`, e instanceof Error ? e.message : e);
     }
   }
 

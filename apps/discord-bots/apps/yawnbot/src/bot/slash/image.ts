@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { MessageFlags, AttachmentBuilder, EmbedBuilder } from 'discord.js';
+import { MessageFlags, AttachmentBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 
 /** memo/image-log/{YYYY-MM-DD}/ に保存 */
 export function saveImageLog(
@@ -157,7 +157,14 @@ export async function runImageGeneration(
       embed.addFields({ name: '네거티브', value: opts.negativePrompt.slice(0, 256) });
     }
 
-    await interaction.editReply({ embeds: [embed], files });
+    const varyRow = new ActionRowBuilder<ButtonBuilder>().addComponents(
+      new ButtonBuilder().setCustomId('image_vary:regen').setLabel('🔄 재생성').setStyle(ButtonStyle.Secondary),
+      new ButtonBuilder().setCustomId('image_vary:pose').setLabel('🎭 다른 포즈').setStyle(ButtonStyle.Secondary),
+      new ButtonBuilder().setCustomId('image_vary:wide').setLabel('↔️ 16:9').setStyle(ButtonStyle.Secondary),
+      new ButtonBuilder().setCustomId('image_vary:portrait').setLabel('↕️ 9:16').setStyle(ButtonStyle.Secondary),
+    );
+
+    await interaction.editReply({ embeds: [embed], files, components: [varyRow] });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     await interaction.editReply({ content: `이미지 생성 실패: ${msg.slice(0, 800)}` });
