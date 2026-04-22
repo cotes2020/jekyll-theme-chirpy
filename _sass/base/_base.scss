@@ -4,6 +4,32 @@
 @use '../abstracts/placeholders';
 @use '../themes/light';
 @use '../themes/dark';
+@use 'sass:map';
+
+// Notebook paper style for description lists (i.e. `dl`)
+$dt-left-padding: 4rem;
+$dd-left-padding: calc($dt-left-padding + 1.75rem);
+$vertical-line-padding: calc($dt-left-padding - 1.25rem);
+$dl-right-padding: 2rem;
+$dl-line-spacing: 29px;
+
+// Holes in paper effect for description lists (i.e. `dl`)
+$hole-container-width: $vertical-line-padding;
+$hole-container-height: $dl-line-spacing;
+$hole-border-width: 1px;
+$hole-radius: 5px;
+$hole-cx: calc($hole-container-width / 2);
+$hole-cy: calc($hole-container-height / 2);
+
+// Manually set circle fill="var(--main-bg)" depending on theme since CSS variables don't work in SVG
+$hole-dark: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{$hole-container-width}" height="#{$hole-container-height}" viewBox="0 0 #{$hole-container-width} #{$hole-container-height}"><circle fill="rgb(27, 27, 30)" stroke="rgba(45, 45, 45, 0.5)" stroke-width="#{$hole-border-width}" cx="#{$hole-cx}" cy="#{$hole-cy}" r="#{$hole-radius}"/></svg>';
+$hole-light: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{$hole-container-width}" height="#{$hole-container-height}" viewBox="0 0 #{$hole-container-width} #{$hole-container-height}"><circle fill="white" stroke="rgb(235, 235, 235)" stroke-width="#{$hole-border-width}" cx="#{$hole-cx}" cy="#{$hole-cy}" r="#{$hole-radius}"/></svg>';
+
+// Theme: paper color + hole svg + hole position + add multiple holes vertically
+$hole-themes: (
+  dark: var(--desc-list-background) url("#{$hole-dark}") 0 0 repeat-y,
+  light: var(--desc-list-background) url("#{$hole-light}") 0 0 repeat-y
+);
 
 :root {
   font-size: 16px;
@@ -208,8 +234,59 @@ main {
     }
   } /* ul */
 
+  dl > dt {
+    padding-left: $dt-left-padding;
+  }
+
   dl > dd {
-    margin-left: 1rem;
+    padding-left: $dd-left-padding;
+  }
+
+  dl > dt, dd {
+    padding-right: $dl-right-padding;
+  }
+
+  dl {
+    position: relative;
+    border: 1px solid var(--desc-list-border);
+    box-shadow: 0 0 5px var(--desc-list-border);
+    border-radius: v.$radius-sm;
+    line-height: $dl-line-spacing;
+    background: map.get($hole-themes, light);
+
+    @each $theme, $bg in $hole-themes {
+      html[data-mode='#{$theme}'] & {
+        background: $bg;
+      }
+
+      html:not([data-mode]) & {
+        @media (prefers-color-scheme: #{$theme}) {
+          background: $bg;
+        }
+      }
+    }
+
+    & > :not(:first-child) {
+      background-size: 100% $dl-line-spacing;
+      background-image: linear-gradient(
+        var(--desc-list-horizontal-line-color) 1px,
+        transparent 0
+      );
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: $vertical-line-padding;
+      width: 1px;
+      background-color: var(--desc-list-vertical-line-color);
+    }
+  }
+
+  dd {
+    margin-bottom: 0;
   }
 
   ::marker {

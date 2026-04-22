@@ -110,6 +110,12 @@
   --code-header-icon-color: #565656;
   --clipboard-checked-color: #2bcc2b;
   --filepath-text-color: #cacaca;
+  
+  /* Description List (i.e. <dl>) */
+  --desc-list-background: #151515;
+  --desc-list-border: rgba(45, 45, 45, 0.5);
+  --desc-list-horizontal-line-color: #2d2d2d;
+  --desc-list-vertical-line-color: var(--desc-list-horizontal-line-color);
 
   .light {
     display: none;

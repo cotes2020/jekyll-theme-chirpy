@@ -105,6 +105,12 @@
   --code-header-muted-color: #e5e5e5;
   --code-header-icon-color: #c9c8c8;
   --clipboard-checked-color: #43c743;
+  
+  /* Description List (i.e. <dl>) */
+  --desc-list-background: #ffffff;
+  --desc-list-border: var(--main-border-color);
+  --desc-list-horizontal-line-color: #00b0d7;
+  --desc-list-vertical-line-color: #db4034;
 
   [class^='prompt-'] {
     --link-underline-color: rgb(219 216 216);
