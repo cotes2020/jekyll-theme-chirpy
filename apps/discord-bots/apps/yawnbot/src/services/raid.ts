@@ -5,19 +5,21 @@
 import { GameDataService } from './gamedata';
 
 export const BOSSES = [
-  { name: '고대 드래곤', hp: 50000, reward: 10000, emoji: '🐉' },
-  { name: '마왕 데스나이트', hp: 100000, reward: 25000, emoji: '💀' },
-  { name: '어둠의 군주', hp: 200000, reward: 50000, emoji: '👹' },
-  { name: '혼돈의 신', hp: 500000, reward: 100000, emoji: '🌑' },
+  { name: '고대 드래곤', hp: 50000, reward: 10000, emoji: '🐉', imagePrompt: 'ancient fire dragon, massive scale, glowing eyes, fantasy RPG boss monster, dramatic lighting, dark cave background, digital art' },
+  { name: '마왕 데스나이트', hp: 100000, reward: 25000, emoji: '💀', imagePrompt: 'dark knight boss, skeleton undead warrior, black armor with purple glow, fantasy RPG villain, ominous aura, dark castle background, digital art' },
+  { name: '어둠의 군주', hp: 200000, reward: 50000, emoji: '👹', imagePrompt: 'dark lord demon king, enormous horned figure, surrounded by dark energy, fantasy RPG final boss, apocalyptic background, epic digital art' },
+  { name: '혼돈의 신', hp: 500000, reward: 100000, emoji: '🌑', imagePrompt: 'chaos god, eldritch cosmic entity, swirling void and stars, tentacles of darkness, fantasy RPG ultimate boss, mind-bending scale, digital art' },
 ];
 
-interface RaidState {
+export interface RaidState {
   boss: string;
   emoji: string;
+  imagePrompt: string;
   currentHp: number;
   maxHp: number;
   reward: number;
   participants: Record<string, number>;
+  imageUrl?: string;
 }
 
 export class RaidService {
@@ -34,6 +36,7 @@ export class RaidService {
     this.currentRaid = {
       boss: boss.name,
       emoji: boss.emoji,
+      imagePrompt: boss.imagePrompt,
       currentHp: boss.hp,
       maxHp: boss.hp,
       reward: boss.reward,
@@ -108,6 +111,7 @@ export class RaidService {
       maxHp: this.currentRaid.maxHp,
       hpPct: ((this.currentRaid.currentHp / this.currentRaid.maxHp) * 100).toFixed(1),
       participantCount: Object.keys(this.currentRaid.participants).length,
+      imageUrl: this.currentRaid.imageUrl,
     };
   }
 }
