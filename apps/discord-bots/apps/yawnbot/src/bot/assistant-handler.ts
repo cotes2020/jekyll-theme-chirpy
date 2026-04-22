@@ -7,7 +7,7 @@
  * - 메시지는 슬러그별 logs/에 즉시 기록 (손실 없음)
  */
 import fs from 'fs';
-import { Message, DMChannel, TextChannel, AttachmentBuilder } from 'discord.js';
+import { Message, DMChannel, TextChannel, AttachmentBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import { generateAssistantText, generateImageFromEnvWithOptions } from 'karmolab-ai/node';
 import type { ChatContent } from 'karmolab-ai/node';
 import type { MemoryService, ConversationEntry } from '../services/memory-service';
@@ -15,6 +15,26 @@ import { CharacterService, type CharacterCard } from '../services/character-serv
 import { ImageCacheService } from '../services/image-cache-service';
 import type { MoodService } from '../services/mood-service';
 import { buildCharacterImagePrompt } from './slash/image';
+
+export const MOOD_REACTION_EMOJIS = ['👍', '❤️', '😂', '😢'] as const;
+export type MoodReactionEmoji = typeof MOOD_REACTION_EMOJIS[number];
+
+export const MOOD_REACTION_MAP: Record<MoodReactionEmoji, string> = {
+  '👍': '뿌듯하고 기분 좋음',
+  '❤️': '따뜻하고 행복함',
+  '😂': '신나고 유쾌함',
+  '😢': '슬프고 감동적',
+};
+
+export function buildReactionRow(slug: string): ActionRowBuilder<ButtonBuilder> {
+  const buttons = MOOD_REACTION_EMOJIS.map((emoji) =>
+    new ButtonBuilder()
+      .setCustomId(`mood_reaction:${emoji}:${slug}`)
+      .setLabel(emoji)
+      .setStyle(ButtonStyle.Secondary),
+  );
+  return new ActionRowBuilder<ButtonBuilder>().addComponents(...buttons);
+}
 
 const MAX_RESPONSE_LENGTH = 1900;
 const MAX_PROMPT_CHARS = parseInt(process.env.ASSISTANT_MAX_PROMPT_CHARS || '12000', 10);
@@ -475,13 +495,14 @@ export async function handleAssistantMessage(
       return null;
     });
 
+    const reactionRow = buildReactionRow(card.slug);
     if (sceneImage) {
       const ext = (sceneImage.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
       const attachment = new AttachmentBuilder(sceneImage.buffer, { name: `scene.${ext}` });
-      await message.reply({ content: reply, files: [attachment] });
+      await message.reply({ content: reply, files: [attachment], components: [reactionRow] });
       lastSentImageId.set(card.slug, sceneImage.id);
     } else {
-      await message.reply(reply);
+      await message.reply({ content: reply, components: [reactionRow] });
     }
 
     const totalDuration = Date.now() - startTime;
