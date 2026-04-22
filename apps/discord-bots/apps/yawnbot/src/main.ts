@@ -7,7 +7,7 @@ import './install-console-timestamps';
 import dns from 'node:dns';
 import { generateDependencyReport } from '@discordjs/voice';
 import sodium from 'libsodium-wrappers';
-import { Client, GatewayIntentBits, Partials } from 'discord.js';
+import { Client, GatewayIntentBits, Partials, type MessageReaction, type PartialMessageReaction, type User, type PartialUser } from 'discord.js';
 import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import { destroyAllVoiceConnections } from './bot/voice-connection';
 import { destroyAllMusicPlayers, setMusicDiscordClient, setMusicPlayFailureReporter } from './bot/music-player';
@@ -30,6 +30,7 @@ import { createGithubWebhookApp } from './bot/webhook';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 import { handleAssistantMessage } from './bot/assistant-handler';
 import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder, startSpontaneous } from './bot/proactive';
+import { handleReaction } from './bot/reactions';
 
 const client = new Client({
   intents: [
@@ -38,8 +39,10 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildVoiceStates,
     GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.DirectMessageReactions,
   ],
-  partials: [Partials.Channel, Partials.Message],
+  partials: [Partials.Channel, Partials.Message, Partials.Reaction],
 });
 
 setMusicPlayFailureReporter(async ({ textChannelId, title, reason }) => {
@@ -157,6 +160,12 @@ client.on('interactionCreate', async (interaction) => {
   if (interaction.isChatInputCommand()) {
     await dispatchSlashCommand(ctx as any, interaction as any);
   }
+});
+
+client.on('messageReactionAdd', async (reaction: MessageReaction | PartialMessageReaction, user: User | PartialUser) => {
+  await handleReaction(buildCtx(), reaction, user).catch((e) =>
+    console.error('[ReactionAdd]', e instanceof Error ? e.message : e),
+  );
 });
 
 client.on('messageCreate', async (message) => {

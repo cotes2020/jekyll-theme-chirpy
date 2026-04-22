@@ -821,6 +821,21 @@ export async function enqueueCustomTrack(
   return appendToMusicQueue(channel, { kind: 'custom', title, load }, opts);
 }
 
+export function pauseToggleMusic(guildId: string): 'paused' | 'resumed' | false {
+  const s = states.get(guildId);
+  if (!s) return false;
+  const status = s.player.state.status;
+  if (status === AudioPlayerStatus.Playing || status === AudioPlayerStatus.Buffering) {
+    s.player.pause();
+    return 'paused';
+  }
+  if (status === AudioPlayerStatus.Paused || status === AudioPlayerStatus.AutoPaused) {
+    s.player.unpause();
+    return 'resumed';
+  }
+  return false;
+}
+
 export function skipTrack(guildId: string): boolean {
   const s = states.get(guildId);
   if (!s) return false;
