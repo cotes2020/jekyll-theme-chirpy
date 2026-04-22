@@ -7,18 +7,19 @@
  *     image-log.jsonl   — 생성/히트 로그 (JSON Lines)
  *     {id}.png          — 실제 이미지 파일
  *
- * 유사도: Gemini text-embedding-004 코사인 유사도
+ * 유사도: Gemini 임베딩 코사인 유사도 (karmolab-ai generateEmbedding)
+ *   KARMOLAB_AI_SURFACE=vertex → Vertex text-embedding-004
+ *   기본 → AI Studio gemini-embedding-001
  * 캐시 최대: MAX_CACHE_ENTRIES개, 초과 시 hitCount 낮은 것 삭제
  */
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { execSync } from 'child_process';
+import { generateEmbedding } from 'karmolab-ai/node';
 
 const MAX_CACHE_ENTRIES = 50;
 const DEFAULT_COSINE_THRESHOLD = 0.75;
-const EMBEDDING_MODEL = 'text-embedding-004';
-const EMBED_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 export interface CacheEntry {
   id: string;
@@ -53,34 +54,6 @@ function cosineSimilarity(a: number[], b: number[]): number {
   let dot = 0;
   for (let i = 0; i < a.length; i++) dot += a[i] * b[i];
   return dot;
-}
-
-// ─── Gemini Embedding REST 호출 ──────────────────────────────────────────
-
-async function embedText(text: string, apiKey: string): Promise<number[] | null> {
-  try {
-    const url = `${EMBED_API_BASE}/${EMBEDDING_MODEL}:embedContent?key=${encodeURIComponent(apiKey)}`;
-    const body = JSON.stringify({
-      model: `models/${EMBEDDING_MODEL}`,
-      content: { parts: [{ text }] },
-    });
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body,
-    });
-    if (!res.ok) {
-      console.warn(`[ImageCache] embedding API ${res.status}: ${await res.text().catch(() => '')}`);
-      return null;
-    }
-    const json = await res.json() as { embedding?: { values?: number[] } };
-    const values = json?.embedding?.values;
-    if (!Array.isArray(values) || values.length === 0) return null;
-    return values;
-  } catch (e) {
-    console.warn('[ImageCache] embedding 실패:', e instanceof Error ? e.message : String(e));
-    return null;
-  }
 }
 
 // ─── 서비스 ──────────────────────────────────────────────────────────────
@@ -157,11 +130,13 @@ export class ImageCacheService {
     const index = this.readIndex();
     if (index.scenes.length === 0) return null;
 
-    const apiKey = process.env.GEMINI_API_KEY?.trim();
-    if (!apiKey) return null;
-
-    const queryEmbedding = await embedText(sceneDesc, apiKey);
-    if (!queryEmbedding) return null;
+    let queryEmbedding: number[];
+    try {
+      queryEmbedding = await generateEmbedding(process.env, sceneDesc);
+    } catch (e) {
+      console.warn('[ImageCache] embedding 실패:', e instanceof Error ? e.message : String(e));
+      return null;
+    }
 
     let best: CacheEntry | null = null;
     let bestScore = 0;
@@ -214,12 +189,13 @@ export class ImageCacheService {
     const filePath = path.join(this.cacheDir, `${id}.${ext}`);
     fs.writeFileSync(filePath, buffer);
 
-    // 임베딩 계산 (실패해도 Jaccard 폴백 가능하므로 non-blocking)
     let embedding: number[] | undefined;
-    const apiKey = process.env.GEMINI_API_KEY?.trim();
-    if (apiKey && sceneDesc) {
-      const vec = await embedText(sceneDesc, apiKey);
-      if (vec) embedding = vec;
+    if (sceneDesc) {
+      try {
+        embedding = await generateEmbedding(process.env, sceneDesc);
+      } catch (e) {
+        console.warn('[ImageCache] 저장 시 embedding 실패 (건너뜀):', e instanceof Error ? e.message : String(e));
+      }
     }
 
     const entry: CacheEntry = {
