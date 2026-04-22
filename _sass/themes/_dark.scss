@@ -118,6 +118,10 @@
   --desc-list-border-color: rgb(45 45 45 / 50%);
   --desc-list-horizontal-line-color: #2d2d2d;
   --desc-list-vertical-line-color: var(--desc-list-horizontal-line-color);
+  
+  .content dl {
+    @include mx.dl-holes(rgb(27 27 30), rgb(45 45 45 / 50%));
+  }
 
   .light {
     display: none;
@@ -307,10 +311,5 @@
 
   .highlight .ss {
     color: #90a959;
-  }
-
-  /* Description List (i.e. <dl>) */
-  .content dl {
-    @include mx.dl-holes(rgb(27 27 30), rgb(45 45 45 / 50%));
   }
 }
