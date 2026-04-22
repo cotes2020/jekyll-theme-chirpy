@@ -3,7 +3,7 @@ import path from 'path';
 import { MessageFlags, AttachmentBuilder, EmbedBuilder } from 'discord.js';
 
 /** memo/image-log/{YYYY-MM-DD}/ に保存 */
-function saveImageLog(
+export function saveImageLog(
   saveDir: string,
   images: { buffer: Buffer; mimeType: string }[],
   meta: Record<string, unknown>,

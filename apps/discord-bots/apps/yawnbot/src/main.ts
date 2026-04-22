@@ -196,7 +196,7 @@ client.once('clientReady', async () => {
     characterService.initialize();
     // default 슬러그 MemoryService 선-초기화 (stub 파일 준비)
     getMemory(characterService.getDefaultSlug());
-    startProactive(client, characterService, getMemory);
+    startProactive(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath || undefined);
     startScheduleReminder(client, characterService, getSchedule);
     startSpontaneous(client, characterService, getMemory, memoRepoPath ? getMood : undefined, memoRepoPath ? getSchedule : undefined);
     await sendStartupGreeting(client, characterService, getMemory);

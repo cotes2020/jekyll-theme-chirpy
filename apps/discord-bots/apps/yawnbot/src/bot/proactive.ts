@@ -7,13 +7,16 @@
  *
  * 시스템 프롬프트는 캐릭터 카드 본문. 페르소나 하드코딩 없음.
  */
+import path from 'path';
 import type { Client, DMChannel } from 'discord.js';
-import { generateAssistantText } from 'karmolab-ai/node';
+import { AttachmentBuilder } from 'discord.js';
+import { generateAssistantText, generateImageFromEnvWithOptions } from 'karmolab-ai/node';
 import type { CharacterService, CharacterCard } from '../services/character-service';
 import { CharacterService as CSHelper } from '../services/character-service';
 import type { MemoryService } from '../services/memory-service';
 import type { ScheduleService } from '../services/schedule-service';
 import type { MoodService } from '../services/mood-service';
+import { buildCharacterImagePrompt, saveImageLog } from './slash/image';
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 let eveningTimer: ReturnType<typeof setTimeout> | null = null;
@@ -93,6 +96,8 @@ function resolveDMCard(
 async function sendMorningGreeting(
   client: Client,
   characterService: CharacterService,
+  getMood?: (slug: string) => MoodService,
+  memoRepoPath?: string,
 ): Promise<void> {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) return;
@@ -109,16 +114,58 @@ async function sendMorningGreeting(
     const dmChannel = (await user.createDM()) as DMChannel;
 
     const { dateStr, dayStr } = formatKSTDate();
+    const moodLine = getMood ? (getMood(card.slug).toContextLine() || '') : '';
 
     const prompt =
       `오늘은 ${dateStr} ${dayStr}이야.\n` +
+      (moodLine ? `${moodLine}\n` : '') +
       `아침 인사 메시지를 한국어로, 짧고 따뜻하게 보내줘.\n` +
       `날짜와 요일을 자연스럽게 언급하고, 오늘 하루도 잘 보내길 바란다는 마음을 담아줘.\n` +
       `2-3문장 이내로.`;
 
-    const { text } = await generateAssistantText(process.env, prompt, { systemInstruction: card.body });
+    const generateImage = async () => {
+      if (process.env.ASSISTANT_MORNING_IMAGE_ENABLED === '0') return null;
+      const moodStr = getMood ? getMood(card.slug).get()?.mood : undefined;
+      const situation = `아침, 막 잠에서 깨어난 모습, 부드러운 아침 햇살${moodStr ? `, ${moodStr} 기분` : ''}`;
+      const imagePrompt = buildCharacterImagePrompt(card, situation);
+      return generateImageFromEnvWithOptions(process.env, imagePrompt, { sampleCount: 1 });
+    };
 
-    await dmChannel.send(text.slice(0, 1900));
+    const [textResult, imageSettled] = await Promise.allSettled([
+      generateAssistantText(process.env, prompt, { systemInstruction: card.body }),
+      generateImage(),
+    ]);
+
+    if (textResult.status === 'rejected') throw textResult.reason;
+    const { text } = textResult.value;
+    const imageResult = imageSettled.status === 'fulfilled' ? imageSettled.value : null;
+    if (imageSettled.status === 'rejected') {
+      console.warn(`[Proactive:${card.slug}] 아침 인사 이미지 생성 실패 (텍스트만 전송):`, imageSettled.reason instanceof Error ? imageSettled.reason.message : imageSettled.reason);
+    }
+
+    const files: AttachmentBuilder[] = [];
+    if (imageResult) {
+      const { images, modelId } = imageResult as Awaited<ReturnType<typeof generateImageFromEnvWithOptions>>;
+      for (const [idx, img] of images.entries()) {
+        const ext = (img.mimeType.split('/')[1] || 'png').replace(/[^a-z0-9]/gi, '');
+        files.push(new AttachmentBuilder(img.buffer, { name: `morning-${idx + 1}.${ext}` }));
+      }
+      if (memoRepoPath) {
+        const dateKey = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })
+          .replace(/\. /g, '-').replace('.', '');
+        const saveDir = path.join(memoRepoPath, 'image-log', card.slug, dateKey);
+        saveImageLog(saveDir, images, {
+          prompt: buildCharacterImagePrompt(card, `아침 인사`),
+          model: modelId,
+          aspectRatio: '1:1',
+          character: card.slug,
+          source: 'morning-greeting',
+        });
+      }
+      console.log(`[Proactive:${card.slug}] 아침 인사 이미지 생성 완료`);
+    }
+
+    await dmChannel.send({ content: text.slice(0, 1900), files });
     console.log(`[Proactive:${card.slug}] 아침 인사 전송 완료`);
   } catch (e: unknown) {
     console.error(
@@ -132,13 +179,15 @@ function scheduleMorning(
   client: Client,
   characterService: CharacterService,
   targetHour: number,
+  getMood?: (slug: string) => MoodService,
+  memoRepoPath?: string,
 ): void {
   const delay = msUntilNextKSTHour(targetHour);
   console.log(`[Proactive] 다음 아침 인사까지 ${Math.round(delay / 60000)}분 대기`);
 
   morningTimer = setTimeout(async () => {
-    await sendMorningGreeting(client, characterService);
-    scheduleMorning(client, characterService, targetHour);
+    await sendMorningGreeting(client, characterService, getMood, memoRepoPath);
+    scheduleMorning(client, characterService, targetHour, getMood, memoRepoPath);
   }, delay);
 }
 
@@ -239,6 +288,8 @@ export function startProactive(
   client: Client,
   characterService: CharacterService,
   getMemory: (slug: string) => MemoryService,
+  getMood?: (slug: string) => MoodService,
+  memoRepoPath?: string,
 ): void {
   const userId = process.env.ASSISTANT_USER_ID?.trim();
   if (!userId) {
@@ -247,7 +298,7 @@ export function startProactive(
   }
 
   const morningHour = parseInt(process.env.ASSISTANT_MORNING_HOUR || '8', 10);
-  scheduleMorning(client, characterService, morningHour);
+  scheduleMorning(client, characterService, morningHour, getMood, memoRepoPath);
 
   const eveningHour = parseInt(process.env.ASSISTANT_EVENING_HOUR || '21', 10);
   scheduleEvening(client, characterService, getMemory, eveningHour);
