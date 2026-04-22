@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * 음성 재생 명령 응답 정책(요약)
  * - 성공 알림: 채널에 보이게(public) — `/music queue`·`/music skip`·`/music stop`·`/music play`·`/music shuffle`·`/music remove`·`/music loop` 완료
@@ -9,9 +8,13 @@ import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
+  GuildMember,
   MessageFlags,
   PermissionFlagsBits,
+  type ChatInputCommandInteraction,
+  type Interaction,
 } from 'discord.js';
+import type { BotContext } from './bot-context';
 import play from 'play-dl';
 import {
   enqueueYouTube,
@@ -29,6 +32,12 @@ import {
   canonicalYoutubeWatchUrl,
   searchYoutubeFirstVideoViaYoutubei,
 } from '../music-player';
+
+type PlaylistTrack = { title: string; url: string };
+type ResolveResult =
+  | { error: 'empty' | 'playlist_unavailable' | 'notfound'; kind?: never }
+  | { kind: 'playlist'; playlistTitle: string; tracks: PlaylistTrack[]; error?: never }
+  | { kind: 'single'; title: string; url: string; error?: never };
 
 /** 플레이리스트 메타(항목 수)만 가져올 때는 검색 단일 곡보다 여유 있게 */
 const YOUTUBE_PLAYLIST_RESOLVE_MS = 90_000;
@@ -49,9 +58,9 @@ function buildQueuePayload(guildId: string, page: number) {
     parts.push(q.lines.join('\n') || '…');
   }
   const content = parts.join('\n\n').slice(0, 1900);
-  const components = [];
+  const components: ActionRowBuilder<ButtonBuilder>[] = [];
   if (q.totalPages > 1) {
-    const row = new ActionRowBuilder().addComponents(
+    const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
       new ButtonBuilder()
         .setCustomId(`${QUEUE_BTN_PREFIX}${q.page - 1}`)
         .setLabel('이전')
@@ -71,7 +80,7 @@ function buildQueuePayload(guildId: string, page: number) {
 /**
  * 대기열 페이지 버튼. 처리했으면 true.
  */
-export async function tryHandleMusicQueueButton(interaction) {
+export async function tryHandleMusicQueueButton(interaction: Interaction): Promise<boolean> {
   if (!interaction.isButton() || !interaction.customId?.startsWith(QUEUE_BTN_PREFIX)) {
     return false;
   }
@@ -114,7 +123,7 @@ function tryYoutubePlaylistPageUrl(query: string): string | null {
   }
 }
 
-async function resolveYouTube(query: string) {
+async function resolveYouTube(query: string): Promise<ResolveResult> {
   const q = (query ?? '').trim();
   if (!q) return { error: 'empty' };
 
@@ -170,17 +179,17 @@ async function resolveYouTube(query: string) {
     if (fb) return { kind: 'single', title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
     return { error: 'notfound' };
   }
-  const first = results[0];
+  const first = results[0]!;
   if (first.type !== 'video') {
     const fb = await searchYoutubeFirstVideoViaYoutubei(q);
     if (fb) return { kind: 'single', title: fb.title, url: canonicalYoutubeWatchUrl(fb.url) };
     return { error: 'notfound' };
   }
-  return { kind: 'single', title: first.title || q, url: canonicalYoutubeWatchUrl(first.url) };
+  return { kind: 'single', title: first.title || q, url: canonicalYoutubeWatchUrl(first.url ?? q) };
 }
 
-export async function handlePlay(ctx, interaction) {
-  if (!interaction.inGuild()) {
+export async function handlePlay(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
+  if (!interaction.guild) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
@@ -203,12 +212,13 @@ export async function handlePlay(ctx, interaction) {
     return;
   }
 
-  const vc = interaction.member.voice?.channel;
+  const guildMember = interaction.member as GuildMember;
+  const vc = guildMember.voice?.channel;
   if (!vc || !vc.isVoiceBased()) {
     await interaction.editReply({ content: '음성 채널에 들어간 뒤 `/music play`를 사용하세요.' });
     return;
   }
-  const botMember = interaction.guild.members.me;
+  const botMember = interaction.guild!.members.me;
   if (!botMember) {
     await interaction.editReply({ content: '봇 멤버 정보를 불러올 수 없습니다.' });
     return;
@@ -234,9 +244,10 @@ export async function handlePlay(ctx, interaction) {
         : YOUTUBE_RESOLVE_TIMEOUT_MS;
     resolved = await withTimeout(resolveYouTube(query), resolveMs, 'YouTube 검색/조회');
     console.log('[play] YouTube 조회 완료');
-  } catch (e: any) {
-    console.error('[play] YouTube 조회 실패:', e?.message ?? e);
-    await interaction.editReply({ content: `검색/조회 실패: ${e?.message || String(e)}` });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[play] YouTube 조회 실패:', msg);
+    await interaction.editReply({ content: `검색/조회 실패: ${msg}` });
     return;
   }
   if (resolved.error === 'playlist_unavailable') {
@@ -338,7 +349,7 @@ export async function handlePlay(ctx, interaction) {
   });
 }
 
-export async function handleSkip(ctx, interaction) {
+export async function handleSkip(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
@@ -351,7 +362,7 @@ export async function handleSkip(ctx, interaction) {
   }
 }
 
-export async function handleStopMusic(ctx, interaction) {
+export async function handleStopMusic(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
@@ -364,24 +375,26 @@ export async function handleStopMusic(ctx, interaction) {
   }
 }
 
-export async function handleShuffle(ctx, interaction) {
+export async function handleShuffle(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
   }
   const r = shuffleWaitingQueue(interaction.guildId);
-  if (!r.ok) {
+  if (r.ok) {
+    await interaction.reply({ content: `대기 중 **${r.shuffled}곡** 순서를 섞었습니다.` });
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const failR = r as any;
     const msg =
-      r.reason === 'single'
+      failR.reason === 'single'
         ? '대기열이 한 곡뿐이라 섞을 수 없습니다.'
         : '대기 중인 곡이 없습니다. (재생 중인 곡만 있으면 `/music skip` 후 다시 시도하세요.)';
     await interaction.reply({ content: msg, flags: MessageFlags.Ephemeral });
-    return;
   }
-  await interaction.reply({ content: `대기 중 **${r.shuffled}곡** 순서를 섞었습니다.` });
 }
 
-export async function handleRemove(ctx, interaction) {
+export async function handleRemove(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
@@ -392,25 +405,26 @@ export async function handleRemove(ctx, interaction) {
     return;
   }
   const r = removeWaitingTrackAt(interaction.guildId, raw);
-  if (!r.ok) {
-    if (r.reason === 'empty') {
+  if (r.ok) {
+    await interaction.reply({ content: `대기열에서 제거했습니다: **${r.title.slice(0, 120)}**` });
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const failR = r as any;
+    if (failR.reason === 'empty') {
       await interaction.reply({
         content: '대기 중인 곡이 없습니다. (`/music queue`에 번호가 보일 때만 제거할 수 있습니다. 지금 재생 중인 곡은 `/music skip`으로 건너뜁니다.)',
         flags: MessageFlags.Ephemeral,
       });
-      return;
+    } else {
+      await interaction.reply({
+        content: `번호는 **1~${failR.max}** 사이로 입력하세요. (/music queue 목록과 같은 번호)`,
+        flags: MessageFlags.Ephemeral,
+      });
     }
-    await interaction.reply({
-      content: `번호는 **1~${r.max}** 사이로 입력하세요. (/music queue 목록과 같은 번호)`,
-      flags: MessageFlags.Ephemeral,
-    });
-    return;
   }
-  const label = r.title.slice(0, 120);
-  await interaction.reply({ content: `대기열에서 제거했습니다: **${label}**` });
 }
 
-export async function handleLoop(ctx, interaction) {
+export async function handleLoop(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
@@ -422,15 +436,16 @@ export async function handleLoop(ctx, interaction) {
     return;
   }
   const r = setMusicLoopMode(interaction.guildId, mode);
-  if (!r.ok) {
-    await interaction.reply({ content: r.error, flags: MessageFlags.Ephemeral });
-    return;
+  if (r.ok) {
+    const label = r.mode === 'track' ? '**한 곡** (지금 재생)' : r.mode === 'queue' ? '**대기열 순환**' : '**끔**';
+    await interaction.reply({ content: `반복: ${label}` });
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await interaction.reply({ content: (r as any).error as string, flags: MessageFlags.Ephemeral });
   }
-  const label = r.mode === 'track' ? '**한 곡** (지금 재생)' : r.mode === 'queue' ? '**대기열 순환**' : '**끔**';
-  await interaction.reply({ content: `반복: ${label}` });
 }
 
-export async function handleQueue(ctx, interaction) {
+export async function handleQueue(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
   if (!interaction.guildId) {
     await interaction.reply({ content: '서버에서만 사용할 수 있습니다.', flags: MessageFlags.Ephemeral });
     return;
