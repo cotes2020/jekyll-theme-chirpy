@@ -8,6 +8,7 @@
  * 시스템 프롬프트는 캐릭터 카드 본문. 페르소나 하드코딩 없음.
  */
 import path from 'path';
+import https from 'https';
 import type { Client, DMChannel } from 'discord.js';
 import { AttachmentBuilder } from 'discord.js';
 import { generateAssistantText, generateImageFromEnvWithOptions } from 'karmolab-ai/node';
@@ -17,6 +18,66 @@ import type { MemoryService } from '../services/memory-service';
 import type { ScheduleService } from '../services/schedule-service';
 import type { MoodService } from '../services/mood-service';
 import { buildCharacterImagePrompt, saveImageLog } from './slash/image';
+
+// WMO weather code → 한국어 설명 + 이미지 힌트
+const WMO_DESCRIPTIONS: Record<number, { text: string; imageHint: string }> = {
+  0:  { text: '맑음 ☀️',         imageHint: 'bright sunny morning' },
+  1:  { text: '대체로 맑음 🌤️',  imageHint: 'mostly clear morning sky' },
+  2:  { text: '구름 조금 ⛅',    imageHint: 'partly cloudy morning' },
+  3:  { text: '흐림 ☁️',         imageHint: 'overcast cloudy morning' },
+  45: { text: '안개 🌫️',         imageHint: 'foggy misty morning' },
+  48: { text: '짙은 안개 🌫️',    imageHint: 'dense fog morning' },
+  51: { text: '이슬비 🌦️',       imageHint: 'light drizzle rainy morning' },
+  53: { text: '이슬비 🌦️',       imageHint: 'drizzle rainy morning' },
+  55: { text: '강한 이슬비 🌧️',  imageHint: 'heavy drizzle morning' },
+  61: { text: '약한 비 🌧️',      imageHint: 'light rain morning' },
+  63: { text: '비 🌧️',           imageHint: 'rainy morning' },
+  65: { text: '강한 비 🌧️',      imageHint: 'heavy rain morning' },
+  71: { text: '약한 눈 🌨️',      imageHint: 'light snow morning' },
+  73: { text: '눈 🌨️',           imageHint: 'snowy morning' },
+  75: { text: '강한 눈 ❄️',       imageHint: 'heavy snow morning' },
+  80: { text: '소나기 🌦️',       imageHint: 'rain shower morning' },
+  95: { text: '천둥번개 ⛈️',     imageHint: 'thunderstorm morning' },
+};
+
+interface WeatherInfo {
+  text: string;        // 한국어 날씨 설명 (e.g. "맑음 ☀️, 기온 18°C")
+  imageHint: string;   // 이미지 프롬프트용 영어 힌트
+}
+
+function fetchJson(url: string): Promise<unknown> {
+  return new Promise((resolve, reject) => {
+    https.get(url, (res) => {
+      let data = '';
+      res.on('data', (chunk) => { data += chunk; });
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(e); }
+      });
+    }).on('error', reject);
+  });
+}
+
+async function fetchWeather(): Promise<WeatherInfo | null> {
+  const lat  = process.env.WEATHER_LAT  || '37.5665';  // 기본: 서울
+  const lon  = process.env.WEATHER_LON  || '126.9780';
+  const url  = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode&timezone=Asia%2FSeoul`;
+  try {
+    const data = await fetchJson(url) as {
+      current: { temperature_2m: number; weathercode: number };
+    };
+    const code = data.current.weathercode;
+    const temp = Math.round(data.current.temperature_2m);
+    const desc = WMO_DESCRIPTIONS[code] ?? { text: `날씨 코드 ${code}`, imageHint: 'morning' };
+    return {
+      text: `${desc.text}, 기온 ${temp}°C`,
+      imageHint: desc.imageHint,
+    };
+  } catch (e) {
+    console.warn('[Proactive] 날씨 조회 실패:', e instanceof Error ? e.message : e);
+    return null;
+  }
+}
 
 let morningTimer: ReturnType<typeof setTimeout> | null = null;
 let eveningTimer: ReturnType<typeof setTimeout> | null = null;
@@ -115,18 +176,22 @@ async function sendMorningGreeting(
 
     const { dateStr, dayStr } = formatKSTDate();
     const moodLine = getMood ? (getMood(card.slug).toContextLine() || '') : '';
+    const weather = await fetchWeather();
+    const weatherLine = weather ? `오늘 날씨: ${weather.text}` : '';
 
     const prompt =
       `오늘은 ${dateStr} ${dayStr}이야.\n` +
+      (weatherLine ? `${weatherLine}\n` : '') +
       (moodLine ? `${moodLine}\n` : '') +
       `아침 인사 메시지를 한국어로, 짧고 따뜻하게 보내줘.\n` +
-      `날짜와 요일을 자연스럽게 언급하고, 오늘 하루도 잘 보내길 바란다는 마음을 담아줘.\n` +
+      `날짜, 요일, 날씨를 자연스럽게 언급하고 오늘 하루를 응원해줘.\n` +
       `2-3문장 이내로.`;
 
     const generateImage = async () => {
       if (process.env.ASSISTANT_MORNING_IMAGE_ENABLED === '0') return null;
       const moodStr = getMood ? getMood(card.slug).get()?.mood : undefined;
-      const situation = `아침, 막 잠에서 깨어난 모습, 부드러운 아침 햇살${moodStr ? `, ${moodStr} 기분` : ''}`;
+      const weatherHint = weather?.imageHint ?? 'soft morning light';
+      const situation = `아침, 막 잠에서 깨어난 모습, ${weatherHint}${moodStr ? `, ${moodStr} 기분` : ''}`;
       const imagePrompt = buildCharacterImagePrompt(card, situation);
       return generateImageFromEnvWithOptions(process.env, imagePrompt, { sampleCount: 1 });
     };
