@@ -69,8 +69,8 @@ export const ENV_GOOGLE_AI = {
   vertexLocation: 'VERTEX_LOCATION',
 } as const;
 
-// ─── 모델 카탈로그 (텍스트 Gemini / Nano Banana / Imagen) ────────────────
-export type ModelProvider = 'gemini' | 'geminiImage' | 'imagen';
+// ─── 모델 카탈로그 (텍스트 Gemini / Nano Banana / Imagen / Embedding) ────
+export type ModelProvider = 'gemini' | 'geminiImage' | 'imagen' | 'embedding';
 
 export interface ModelEntry {
   id: string;
@@ -99,6 +99,18 @@ export const MODEL_CATALOG: Record<ModelProvider, ModelEntry[]> = {
     { id: 'imagen-4.0-ultra-generate-001', name: 'Imagen 4 Ultra Generate' },
     { id: 'imagen-4.0-fast-generate-001', name: 'Imagen 4 Fast Generate' },
   ],
+  /**
+   * 임베딩 모델.
+   * - AI Studio 기본: gemini-embedding-001 (3072d)
+   * - Vertex 기본:    text-embedding-004 (768d, task-type 지원)
+   * `EMBEDDING_MODEL_ID` 환경변수로 오버라이드 가능.
+   */
+  embedding: [
+    { id: 'gemini-embedding-001', name: 'Gemini Embedding 001 (AI Studio)', isDefault: true },
+    { id: 'gemini-embedding-2-preview', name: 'Gemini Embedding 2 Preview (AI Studio)' },
+    { id: 'text-embedding-004', name: 'Text Embedding 004 (Vertex)' },
+    { id: 'text-embedding-005', name: 'Text Embedding 005 (Vertex)' },
+  ],
 };
 
 export function getDefaultModelId(provider: ModelProvider): string {
@@ -110,6 +122,3 @@ export function getDefaultModelId(provider: ModelProvider): string {
 
 /** 텍스트 generateContent 기본 모델 (AI Studio·Vertex 동일 모델 ID 문자열) */
 export const DEFAULT_TEXT_MODEL_ID = getDefaultModelId('gemini');
-
-/** @deprecated `DEFAULT_TEXT_MODEL_ID` 사용 권장 */
-export const DEFAULT_GEMINI_TEXT_MODEL_ID = DEFAULT_TEXT_MODEL_ID;

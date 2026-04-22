@@ -64,6 +64,33 @@ export declare function tryCreateGenerativeTextFromEnv(env?: NodeJS.ProcessEnv):
 /** `tryCreateGenerativeTextFromEnv`가 `null`일 때 안내용 */
 export declare function generativeEnvHint(env?: NodeJS.ProcessEnv): string;
 /**
+ * `packages/karmolab-ai/.env` (공통 AI 키)을 `process.env` 에 주입.
+ *
+ * - 이미 설정된 OS 환경 변수는 덮어쓰지 않음.
+ * - 앱별 `.env` 는 이 함수 호출 **이후** 에 로드하면 공통 값을 오버라이드할 수 있음.
+ *
+ * 관리 대상: `GEMINI_API_KEY`, `VERTEX_API_KEY`, `VERTEX_PROJECT_ID`,
+ *            `VERTEX_LOCATION`, `KARMOLAB_AI_SURFACE` 등 AI 자격증명.
+ *
+ * 사용 예:
+ * ```ts
+ * import { loadKarmoLabAIEnv } from 'karmolab-ai/node';
+ * loadKarmoLabAIEnv(); // 앱 진입점 최상단에서 호출
+ * ```
+ */
+export declare function loadKarmoLabAIEnv(): void;
+/**
+ * 텍스트 임베딩 벡터 반환.
+ *
+ * - `KARMOLAB_AI_SURFACE=vertex` + `VERTEX_API_KEY` + `VERTEX_PROJECT_ID` → Vertex `:predict`
+ * - 그 외 → AI Studio `embedContent` (`GEMINI_API_KEY` 필수)
+ *
+ * 모델 우선순위: `options.modelId` > `EMBEDDING_MODEL_ID` env > surface별 기본값
+ */
+export declare function generateEmbedding(env: NodeJS.ProcessEnv, text: string, options?: {
+    modelId?: string;
+}): Promise<number[]>;
+/**
  * 로컬에 설치된 `claude` CLI (`claude --print`)로 텍스트 생성.
  * Claude Max 구독으로 인증된 환경에서 API 키 없이 사용 가능.
  *

@@ -5,7 +5,7 @@
  * Node에서 `@google/generative-ai` 호출까지 맞출 때는 서브패스 `karmolab-ai/node` 참고.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DEFAULT_GEMINI_TEXT_MODEL_ID = exports.DEFAULT_TEXT_MODEL_ID = exports.MODEL_CATALOG = exports.ENV_GOOGLE_AI = exports.DOC_URL_VERTEX_API_KEYS = exports.DOC_URL_AI_STUDIO_API_KEY = exports.DEFAULT_VERTEX_LOCATION = exports.AI_STUDIO_GENERATIVE_BASE = exports.AI_STUDIO_GENERATIVE_HOST = void 0;
+exports.DEFAULT_TEXT_MODEL_ID = exports.MODEL_CATALOG = exports.ENV_GOOGLE_AI = exports.DOC_URL_VERTEX_API_KEYS = exports.DOC_URL_AI_STUDIO_API_KEY = exports.DEFAULT_VERTEX_LOCATION = exports.AI_STUDIO_GENERATIVE_BASE = exports.AI_STUDIO_GENERATIVE_HOST = void 0;
 exports.buildAiStudioGenerateContentUrl = buildAiStudioGenerateContentUrl;
 exports.buildAiStudioStreamGenerateContentUrl = buildAiStudioStreamGenerateContentUrl;
 exports.buildAiStudioPredictUrl = buildAiStudioPredictUrl;
@@ -77,6 +77,18 @@ exports.MODEL_CATALOG = {
         { id: 'imagen-4.0-ultra-generate-001', name: 'Imagen 4 Ultra Generate' },
         { id: 'imagen-4.0-fast-generate-001', name: 'Imagen 4 Fast Generate' },
     ],
+    /**
+     * 임베딩 모델.
+     * - AI Studio 기본: gemini-embedding-001 (3072d)
+     * - Vertex 기본:    text-embedding-004 (768d, task-type 지원)
+     * `EMBEDDING_MODEL_ID` 환경변수로 오버라이드 가능.
+     */
+    embedding: [
+        { id: 'gemini-embedding-001', name: 'Gemini Embedding 001 (AI Studio)', isDefault: true },
+        { id: 'gemini-embedding-2-preview', name: 'Gemini Embedding 2 Preview (AI Studio)' },
+        { id: 'text-embedding-004', name: 'Text Embedding 004 (Vertex)' },
+        { id: 'text-embedding-005', name: 'Text Embedding 005 (Vertex)' },
+    ],
 };
 function getDefaultModelId(provider) {
     const models = exports.MODEL_CATALOG[provider];
@@ -87,5 +99,3 @@ function getDefaultModelId(provider) {
 }
 /** 텍스트 generateContent 기본 모델 (AI Studio·Vertex 동일 모델 ID 문자열) */
 exports.DEFAULT_TEXT_MODEL_ID = getDefaultModelId('gemini');
-/** @deprecated `DEFAULT_TEXT_MODEL_ID` 사용 권장 */
-exports.DEFAULT_GEMINI_TEXT_MODEL_ID = exports.DEFAULT_TEXT_MODEL_ID;

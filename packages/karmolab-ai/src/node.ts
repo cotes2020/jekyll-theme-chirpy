@@ -2,6 +2,8 @@
  * Node 전용: AI Studio(`@google/generative-ai`) 또는 Vertex REST(`fetch`)로 텍스트 생성.
  * 브라우저 번들에 포함하지 말 것 — `import 'karmolab-ai/node'`.
  */
+import * as fs from 'fs';
+import * as path from 'path';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import {
   type GoogleGenerativeSurface,
@@ -267,6 +269,117 @@ export function generativeEnvHint(env: NodeJS.ProcessEnv = process.env): string 
     return 'Vertex 모드: .env에 VERTEX_API_KEY, VERTEX_PROJECT_ID 가 필요합니다. (선택: VERTEX_LOCATION, GEMINI_MODEL)';
   }
   return 'AI Studio 모드: .env에 GEMINI_API_KEY 가 필요합니다. (선택: GEMINI_MODEL, 또는 KARMOLAB_AI_SURFACE=vertex 로 전환)';
+}
+
+// ─── 환경 변수 로더 ──────────────────────────────────────────────────────────
+
+/**
+ * `packages/karmolab-ai/.env` (공통 AI 키)을 `process.env` 에 주입.
+ *
+ * - 이미 설정된 OS 환경 변수는 덮어쓰지 않음.
+ * - 앱별 `.env` 는 이 함수 호출 **이후** 에 로드하면 공통 값을 오버라이드할 수 있음.
+ *
+ * 관리 대상: `GEMINI_API_KEY`, `VERTEX_API_KEY`, `VERTEX_PROJECT_ID`,
+ *            `VERTEX_LOCATION`, `KARMOLAB_AI_SURFACE` 등 AI 자격증명.
+ *
+ * 사용 예:
+ * ```ts
+ * import { loadKarmoLabAIEnv } from 'karmolab-ai/node';
+ * loadKarmoLabAIEnv(); // 앱 진입점 최상단에서 호출
+ * ```
+ */
+export function loadKarmoLabAIEnv(): void {
+  // dist/node.js 기준으로 한 단계 위 = packages/karmolab-ai/
+  const pkgRoot = path.join(__dirname, '..');
+  _parseDotenvFile(path.join(pkgRoot, '.env'), false);
+}
+
+/** `.env` 파일을 파싱해 `process.env` 에 적용. `override=false` 면 기존 값 보존. */
+function _parseDotenvFile(filePath: string, override: boolean): void {
+  if (!fs.existsSync(filePath)) return;
+  const content = fs.readFileSync(filePath, 'utf-8');
+  for (const rawLine of content.split('\n')) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('#')) continue;
+    const eq = line.indexOf('=');
+    if (eq < 0) continue;
+    const key = line.slice(0, eq).trim();
+    if (!key) continue;
+    const raw = line.slice(eq + 1);
+    // 따옴표 벗기기 (첫·마지막 " 또는 ' 한 쌍만)
+    const val = raw.match(/^(['"])(.*)\1$/) ? raw.slice(1, -1) : raw;
+    if (override || !(key in process.env)) {
+      process.env[key] = val;
+    }
+  }
+}
+
+// ─── 텍스트 임베딩 ───────────────────────────────────────────────────────────
+
+const DEFAULT_EMBEDDING_MODEL_AISTUDIO = 'gemini-embedding-001';
+const DEFAULT_EMBEDDING_MODEL_VERTEX = 'text-embedding-004';
+
+/**
+ * 텍스트 임베딩 벡터 반환.
+ *
+ * - `KARMOLAB_AI_SURFACE=vertex` + `VERTEX_API_KEY` + `VERTEX_PROJECT_ID` → Vertex `:predict`
+ * - 그 외 → AI Studio `embedContent` (`GEMINI_API_KEY` 필수)
+ *
+ * 모델 우선순위: `options.modelId` > `EMBEDDING_MODEL_ID` env > surface별 기본값
+ */
+export async function generateEmbedding(
+  env: NodeJS.ProcessEnv,
+  text: string,
+  options: { modelId?: string } = {},
+): Promise<number[]> {
+  const surface = parseGenerativeSurfaceFromEnv(env);
+  const modelOverride = options.modelId?.trim() || env.EMBEDDING_MODEL_ID?.trim() || '';
+
+  if (surface === 'vertex') {
+    const apiKey = env.VERTEX_API_KEY?.trim();
+    const projectId = env.VERTEX_PROJECT_ID?.trim();
+    if (!apiKey || !projectId) {
+      throw new Error('Vertex 임베딩: VERTEX_API_KEY와 VERTEX_PROJECT_ID가 필요합니다.');
+    }
+    const modelId = modelOverride || DEFAULT_EMBEDDING_MODEL_VERTEX;
+    const url = buildVertexPublisherModelUrl({
+      projectId,
+      location: env.VERTEX_LOCATION?.trim() || undefined,
+      modelId,
+      method: 'predict',
+      apiKey,
+    });
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ instances: [{ content: text }] }),
+    });
+    const raw = await res.text();
+    let data: { predictions?: Array<{ embeddings?: { values?: number[] } }>; error?: { message?: string } };
+    try { data = JSON.parse(raw); } catch { throw new Error(`Vertex 임베딩 파싱 실패: ${raw.slice(0, 300)}`); }
+    if (!res.ok) throw new Error(data.error?.message || `Vertex 임베딩 HTTP ${res.status}`);
+    const values = data.predictions?.[0]?.embeddings?.values;
+    if (!Array.isArray(values) || values.length === 0) throw new Error('Vertex 임베딩 응답 비어있음');
+    return values;
+  }
+
+  // AI Studio
+  const apiKey = env.GEMINI_API_KEY?.trim();
+  if (!apiKey) throw new Error('AI Studio 임베딩: GEMINI_API_KEY가 필요합니다.');
+  const modelId = modelOverride || DEFAULT_EMBEDDING_MODEL_AISTUDIO;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:embedContent?key=${encodeURIComponent(apiKey)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: `models/${modelId}`, content: { parts: [{ text }] } }),
+  });
+  const raw = await res.text();
+  let data: { embedding?: { values?: number[] }; error?: { message?: string } };
+  try { data = JSON.parse(raw); } catch { throw new Error(`AI Studio 임베딩 파싱 실패: ${raw.slice(0, 300)}`); }
+  if (!res.ok) throw new Error(data.error?.message || `AI Studio 임베딩 HTTP ${res.status}`);
+  const values = data.embedding?.values;
+  if (!Array.isArray(values) || values.length === 0) throw new Error('AI Studio 임베딩 응답 비어있음');
+  return values;
 }
 
 // ─── Claude CLI 프로바이더 ─────────────────────────────────────────────────

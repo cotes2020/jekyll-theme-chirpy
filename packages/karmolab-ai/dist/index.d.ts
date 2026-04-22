@@ -37,7 +37,7 @@ export declare const ENV_GOOGLE_AI: {
     readonly vertexProjectId: "VERTEX_PROJECT_ID";
     readonly vertexLocation: "VERTEX_LOCATION";
 };
-export type ModelProvider = 'gemini' | 'geminiImage' | 'imagen';
+export type ModelProvider = 'gemini' | 'geminiImage' | 'imagen' | 'embedding';
 export interface ModelEntry {
     id: string;
     name: string;
@@ -47,5 +47,3 @@ export declare const MODEL_CATALOG: Record<ModelProvider, ModelEntry[]>;
 export declare function getDefaultModelId(provider: ModelProvider): string;
 /** 텍스트 generateContent 기본 모델 (AI Studio·Vertex 동일 모델 ID 문자열) */
 export declare const DEFAULT_TEXT_MODEL_ID: string;
-/** @deprecated `DEFAULT_TEXT_MODEL_ID` 사용 권장 */
-export declare const DEFAULT_GEMINI_TEXT_MODEL_ID: string;
