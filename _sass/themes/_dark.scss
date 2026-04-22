@@ -115,7 +115,7 @@
   
   /* Description List (i.e. <dl>) */
   --desc-list-bg: #151515;
-  --desc-list-border-color: rgba(45, 45, 45, 0.5);
+  --desc-list-border-color: rgb(45 45 45 / 50%);
   --desc-list-horizontal-line-color: #2d2d2d;
   --desc-list-vertical-line-color: var(--desc-list-horizontal-line-color);
 
@@ -311,6 +311,6 @@
 
   /* Description List (i.e. <dl>) */
   .content dl {
-    @include mx.dl-holes(rgb(27, 27, 30), rgba(45, 45, 45, 0.5));
+    @include mx.dl-holes(rgb(27 27 30), rgb(45 45 45 / 50%));
   }
 }
