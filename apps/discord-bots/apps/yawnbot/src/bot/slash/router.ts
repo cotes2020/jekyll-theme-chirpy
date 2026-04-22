@@ -204,42 +204,20 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
       case '이미지':
         await handleImage(ctx, interaction);
         break;
-      case 'voice-join':
-        await handleVoiceJoin(ctx, interaction);
-        break;
-      case 'voice-leave':
-        await handleVoiceLeave(ctx, interaction);
-        break;
       case 'music': {
         const sub = interaction.options.getSubcommand();
         switch (sub) {
-          case 'play':
-            await handlePlay(ctx, interaction);
-            break;
-          case 'speak':
-            await handleSpeak(ctx, interaction);
-            break;
-          case 'sound':
-            await handleSound(ctx, interaction);
-            break;
-          case 'skip':
-            await handleSkip(ctx, interaction);
-            break;
-          case 'stop':
-            await handleStopMusic(ctx, interaction);
-            break;
-          case 'shuffle':
-            await handleShuffle(ctx, interaction);
-            break;
-          case 'remove':
-            await handleRemove(ctx, interaction);
-            break;
-          case 'loop':
-            await handleLoop(ctx, interaction);
-            break;
-          case 'queue':
-            await handleQueue(ctx, interaction);
-            break;
+          case 'join':  await handleVoiceJoin(ctx, interaction); break;
+          case 'leave': await handleVoiceLeave(ctx, interaction); break;
+          case 'play':    await handlePlay(ctx, interaction); break;
+          case 'speak':   await handleSpeak(ctx, interaction); break;
+          case 'sound':   await handleSound(ctx, interaction); break;
+          case 'skip':    await handleSkip(ctx, interaction); break;
+          case 'stop':    await handleStopMusic(ctx, interaction); break;
+          case 'shuffle': await handleShuffle(ctx, interaction); break;
+          case 'remove':  await handleRemove(ctx, interaction); break;
+          case 'loop':    await handleLoop(ctx, interaction); break;
+          case 'queue':   await handleQueue(ctx, interaction); break;
           default:
             await interaction.reply({ content: '알 수 없는 music 하위 명령입니다.', flags: MessageFlags.Ephemeral });
         }
@@ -382,12 +360,35 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
       }
       case '일정': {
         if (!(await guardOwner(ctx, interaction))) break;
+        const group = interaction.options.getSubcommandGroup(true);
         const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '추가': await handleScheduleAdd(ctx, interaction); break;
-          case '목록': await handleScheduleList(ctx, interaction); break;
-          case '삭제': await handleScheduleDelete(ctx, interaction); break;
-          default: await interaction.reply({ content: '알 수 없는 일정 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+        switch (group) {
+          case '일정':
+            switch (sub) {
+              case '추가': await handleScheduleAdd(ctx, interaction); break;
+              case '목록': await handleScheduleList(ctx, interaction); break;
+              case '삭제': await handleScheduleDelete(ctx, interaction); break;
+              default: await interaction.reply({ content: '알 수 없는 일정 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
+            break;
+          case '기념일':
+            switch (sub) {
+              case '목록': await handleAnniversaryList(ctx, interaction); break;
+              case '추가': await handleAnniversaryAdd(ctx, interaction); break;
+              case '삭제': await handleAnniversaryDelete(ctx, interaction); break;
+              default: await interaction.reply({ content: '알 수 없는 기념일 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
+            break;
+          case '키워드':
+            switch (sub) {
+              case '목록': await handleNewsKeywordList(ctx, interaction); break;
+              case '추가': await handleNewsKeywordAdd(ctx, interaction); break;
+              case '삭제': await handleNewsKeywordDelete(ctx, interaction); break;
+              default: await interaction.reply({ content: '알 수 없는 키워드 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+            }
+            break;
+          default:
+            await interaction.reply({ content: '알 수 없는 일정 그룹입니다.', flags: MessageFlags.Ephemeral });
         }
         break;
       }
@@ -400,26 +401,6 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
       case '사용량':
         await handleCost(ctx, interaction);
         break;
-      case '기념일': {
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '목록': await handleAnniversaryList(ctx, interaction); break;
-          case '추가': await handleAnniversaryAdd(ctx, interaction); break;
-          case '삭제': await handleAnniversaryDelete(ctx, interaction); break;
-          default: await interaction.reply({ content: '알 수 없는 기념일 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
-      case '뉴스키워드': {
-        const sub = interaction.options.getSubcommand();
-        switch (sub) {
-          case '목록': await handleNewsKeywordList(ctx, interaction); break;
-          case '추가': await handleNewsKeywordAdd(ctx, interaction); break;
-          case '삭제': await handleNewsKeywordDelete(ctx, interaction); break;
-          default: await interaction.reply({ content: '알 수 없는 뉴스키워드 하위 명령입니다.', flags: MessageFlags.Ephemeral });
-        }
-        break;
-      }
       default:
         await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }

@@ -13,7 +13,7 @@ export async function handleNewsKeywordList(ctx: BotContext, interaction: ChatIn
     .setTitle('📰 관심사 키워드 목록')
     .setColor(0x2196f3);
   if (keywords.length === 0) {
-    embed.setDescription('등록된 키워드가 없어요. `/뉴스키워드 추가`로 키워드를 등록해봐요.');
+    embed.setDescription('등록된 키워드가 없어요. `/일정 키워드 추가`로 키워드를 등록해봐요.');
   } else {
     embed.setDescription(
       keywords.map((k, i) => `\`${k.id}\` **${i + 1}.** ${k.keyword}`).join('\n'),

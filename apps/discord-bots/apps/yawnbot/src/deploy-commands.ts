@@ -9,7 +9,7 @@ import './install-console-timestamps';
 import { SlashCommandBuilder, Locale } from 'discord.js';
 import { deployApplicationCommands } from '@discord-bots/common';
 
-import { voiceJoin, voiceLeave, musicCommandGroup } from './deploy-builders/voice-music';
+import { musicCommandGroup } from './deploy-builders/voice-music';
 import { gameCommandGroup } from './deploy-builders/game-stock';
 import { characterCommand } from './deploy-builders/character';
 import { scheduleCommand } from './deploy-builders/schedule';
@@ -19,8 +19,6 @@ const EN = Locale.EnglishUS;
 const enUS = (s: string): Record<string, string> => ({ [EN]: s });
 
 const commands = [
-  voiceJoin(),
-  voiceLeave(),
   musicCommandGroup(),
   gameCommandGroup(),
 
@@ -177,61 +175,24 @@ const commands = [
     .setDescription('이미지 생성 비용 대시보드 (모델별/일별 집계)')
     .setDescriptionLocalizations(enUS('Image generation cost dashboard')),
 
-  new SlashCommandBuilder()
-    .setName('기념일')
-    .setNameLocalizations(enUS('anniversary'))
-    .setDescription('기념일 관리')
-    .setDescriptionLocalizations(enUS('Manage anniversaries'))
-    .addSubcommand((sub) =>
-      sub.setName('목록').setNameLocalizations(enUS('list'))
-        .setDescription('기념일 목록 조회').setDescriptionLocalizations(enUS('List anniversaries')),
-    )
-    .addSubcommand((sub) =>
-      sub.setName('추가').setNameLocalizations(enUS('add'))
-        .setDescription('기념일 추가').setDescriptionLocalizations(enUS('Add anniversary'))
-        .addStringOption((o) => o.setName('이름').setNameLocalizations(enUS('label')).setDescription('기념일 이름').setDescriptionLocalizations(enUS('Label')).setRequired(true))
-        .addIntegerOption((o) => o.setName('월').setNameLocalizations(enUS('month')).setDescription('월 (1-12)').setDescriptionLocalizations(enUS('Month')).setRequired(true).setMinValue(1).setMaxValue(12))
-        .addIntegerOption((o) => o.setName('일').setNameLocalizations(enUS('day')).setDescription('일 (1-31)').setDescriptionLocalizations(enUS('Day')).setRequired(true).setMinValue(1).setMaxValue(31))
-        .addIntegerOption((o) => o.setName('연도').setNameLocalizations(enUS('year')).setDescription('시작 연도 (N주년 계산용)').setDescriptionLocalizations(enUS('Start year for anniversary count'))),
-    )
-    .addSubcommand((sub) =>
-      sub.setName('삭제').setNameLocalizations(enUS('delete'))
-        .setDescription('기념일 삭제').setDescriptionLocalizations(enUS('Delete anniversary'))
-        .addStringOption((o) => o.setName('id').setDescription('목록에서 확인한 ID').setDescriptionLocalizations(enUS('ID from list')).setRequired(true)),
-    ),
-
-  new SlashCommandBuilder()
-    .setName('뉴스키워드')
-    .setNameLocalizations(enUS('news-keywords'))
-    .setDescription('뉴스 관심사 키워드 관리 (자발적 메시지에서 관련 뉴스 언급)')
-    .setDescriptionLocalizations(enUS('Manage news interest keywords'))
-    .addSubcommand((sub) =>
-      sub.setName('목록').setNameLocalizations(enUS('list'))
-        .setDescription('키워드 목록').setDescriptionLocalizations(enUS('List keywords')),
-    )
-    .addSubcommand((sub) =>
-      sub.setName('추가').setNameLocalizations(enUS('add'))
-        .setDescription('키워드 추가').setDescriptionLocalizations(enUS('Add keyword'))
-        .addStringOption((o) => o.setName('키워드').setNameLocalizations(enUS('keyword')).setDescription('관심사 키워드').setDescriptionLocalizations(enUS('Interest keyword')).setRequired(true)),
-    )
-    .addSubcommand((sub) =>
-      sub.setName('삭제').setNameLocalizations(enUS('delete'))
-        .setDescription('키워드 삭제').setDescriptionLocalizations(enUS('Delete keyword'))
-        .addStringOption((o) => o.setName('id').setDescription('목록에서 확인한 ID').setDescriptionLocalizations(enUS('ID from list')).setRequired(true)),
-    ),
-
 ].map((cmd) => cmd.toJSON());
 
 async function main(): Promise<void> {
   const token = process.env.DISCORD_TOKEN;
   const clientId = process.env.CLIENT_ID;
+  const guildId = process.env.DISCORD_GUILD_ID?.trim();
   if (!token || !clientId) {
     console.error('[Deploy] DISCORD_TOKEN 또는 CLIENT_ID가 없습니다.');
     process.exitCode = 1;
     return;
   }
-  const guildId = process.env.DISCORD_GUILD_ID?.trim();
-  await deployApplicationCommands({ token, clientId, commands, logPrefix: '[Deploy]', guildId });
+  if (!guildId) {
+    console.error('[Deploy] DISCORD_GUILD_ID가 없습니다. 글로벌 배포를 방지하기 위해 길드 ID가 필요합니다.');
+    console.error('[Deploy] 글로벌 커맨드를 초기화하려면 npm run deploy:clear-global 을 사용하세요.');
+    process.exitCode = 1;
+    return;
+  }
+  await deployApplicationCommands({ token, clientId, commands, logPrefix: '[Deploy]', guildId, guildOnly: true });
 }
 
 void main();

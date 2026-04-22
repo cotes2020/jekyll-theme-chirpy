@@ -1,42 +1,45 @@
 /**
  * 음성·음악 관련 슬래시 빌더 — deploy-commands.ts 에서 분리.
+ *
+ * 서브커맨드 구조:
+ *   /music join   — 음성 채널 입장 (구 voice-join)
+ *   /music leave  — 음성 채널 퇴장 (구 voice-leave)
+ *   /music play, speak, sound, skip, stop, shuffle, remove, loop, queue
  */
 import { SlashCommandBuilder, ChannelType, Locale } from 'discord.js';
 
 const EN = Locale.EnglishUS;
 const enUS = (s: string): Record<string, string> => ({ [EN]: s });
 
-export const voiceJoin = () =>
-  new SlashCommandBuilder()
-    .setName('voice-join')
-    .setDescription('봇을 음성·스테이지 채널에 연결 (/음성입장 과 동일)')
-    .setDescriptionLocalizations(
-      enUS('Connect the bot to a voice/stage channel (same as /음성입장)'),
-    )
-    .addChannelOption((opt) =>
-      opt
-        .setName('channel')
-        .setDescription('입장할 채널 (비우면 본인이 있는 음성 채널)')
-        .setDescriptionLocalizations(
-          enUS('Channel to join (empty = your current voice channel)'),
-        )
-        .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
-        .setRequired(false),
-    );
-
-export const voiceLeave = () =>
-  new SlashCommandBuilder()
-    .setName('voice-leave')
-    .setDescription('봇 음성 연결 해제 (/음성퇴장 과 동일)')
-    .setDescriptionLocalizations(enUS('Disconnect the bot from voice (same as /음성퇴장)'));
-
-/** 음성 재생·대기열 — YouTube·TTS·클립·skip/stop/shuffle/remove/loop/queue 서브커맨드 */
+/** 음성 재생·대기열 — join/leave + YouTube·TTS·클립·skip/stop/shuffle/remove/loop/queue 서브커맨드 */
 export const musicCommandGroup = () =>
   new SlashCommandBuilder()
     .setName('music')
-    .setDescription('음성 채널 YouTube·TTS·클립 재생 및 대기열')
+    .setDescription('음성 채널 입퇴장 · YouTube·TTS·클립 재생 및 대기열')
     .setDescriptionLocalizations(
-      enUS('YouTube, TTS, and clip playback with a shared queue'),
+      enUS('Voice join/leave · YouTube, TTS, and clip playback with a shared queue'),
+    )
+    .addSubcommand((sc) =>
+      sc
+        .setName('join')
+        .setDescription('봇을 음성·스테이지 채널에 연결')
+        .setDescriptionLocalizations(enUS('Connect the bot to a voice/stage channel'))
+        .addChannelOption((opt) =>
+          opt
+            .setName('channel')
+            .setDescription('입장할 채널 (비우면 본인이 있는 음성 채널)')
+            .setDescriptionLocalizations(
+              enUS('Channel to join (empty = your current voice channel)'),
+            )
+            .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
+            .setRequired(false),
+        ),
+    )
+    .addSubcommand((sc) =>
+      sc
+        .setName('leave')
+        .setDescription('봇 음성 연결 해제')
+        .setDescriptionLocalizations(enUS('Disconnect the bot from voice')),
     )
     .addSubcommand((sc) =>
       sc
