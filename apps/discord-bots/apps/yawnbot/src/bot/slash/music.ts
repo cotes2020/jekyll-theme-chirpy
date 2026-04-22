@@ -383,15 +383,14 @@ export async function handleShuffle(_ctx: BotContext, interaction: ChatInputComm
   const r = shuffleWaitingQueue(interaction.guildId);
   if (r.ok) {
     await interaction.reply({ content: `대기 중 **${r.shuffled}곡** 순서를 섞었습니다.` });
-  } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const failR = r as any;
-    const msg =
-      failR.reason === 'single'
-        ? '대기열이 한 곡뿐이라 섞을 수 없습니다.'
-        : '대기 중인 곡이 없습니다. (재생 중인 곡만 있으면 `/music skip` 후 다시 시도하세요.)';
-    await interaction.reply({ content: msg, flags: MessageFlags.Ephemeral });
+    return;
   }
+  // TS6: boolean discriminant narrowing이 cross-module에서 동작하지 않아 구체 타입으로 캐스팅
+  const shuffleFail = r as { ok: false; reason: 'empty' | 'single' };
+  const msg = shuffleFail.reason === 'single'
+    ? '대기열이 한 곡뿐이라 섞을 수 없습니다.'
+    : '대기 중인 곡이 없습니다. (재생 중인 곡만 있으면 `/music skip` 후 다시 시도하세요.)';
+  await interaction.reply({ content: msg, flags: MessageFlags.Ephemeral });
 }
 
 export async function handleRemove(_ctx: BotContext, interaction: ChatInputCommandInteraction): Promise<void> {
@@ -407,20 +406,20 @@ export async function handleRemove(_ctx: BotContext, interaction: ChatInputComma
   const r = removeWaitingTrackAt(interaction.guildId, raw);
   if (r.ok) {
     await interaction.reply({ content: `대기열에서 제거했습니다: **${r.title.slice(0, 120)}**` });
+    return;
+  }
+  // TS6: boolean discriminant narrowing이 cross-module에서 동작하지 않아 구체 타입으로 캐스팅
+  const removeFail = r as { ok: false; reason: 'empty' | 'out_of_range'; max: number };
+  if (removeFail.reason === 'empty') {
+    await interaction.reply({
+      content: '대기 중인 곡이 없습니다. (`/music queue`에 번호가 보일 때만 제거할 수 있습니다. 지금 재생 중인 곡은 `/music skip`으로 건너뜁니다.)',
+      flags: MessageFlags.Ephemeral,
+    });
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const failR = r as any;
-    if (failR.reason === 'empty') {
-      await interaction.reply({
-        content: '대기 중인 곡이 없습니다. (`/music queue`에 번호가 보일 때만 제거할 수 있습니다. 지금 재생 중인 곡은 `/music skip`으로 건너뜁니다.)',
-        flags: MessageFlags.Ephemeral,
-      });
-    } else {
-      await interaction.reply({
-        content: `번호는 **1~${failR.max}** 사이로 입력하세요. (/music queue 목록과 같은 번호)`,
-        flags: MessageFlags.Ephemeral,
-      });
-    }
+    await interaction.reply({
+      content: `번호는 **1~${removeFail.max}** 사이로 입력하세요. (/music queue 목록과 같은 번호)`,
+      flags: MessageFlags.Ephemeral,
+    });
   }
 }
 
@@ -440,8 +439,8 @@ export async function handleLoop(_ctx: BotContext, interaction: ChatInputCommand
     const label = r.mode === 'track' ? '**한 곡** (지금 재생)' : r.mode === 'queue' ? '**대기열 순환**' : '**끔**';
     await interaction.reply({ content: `반복: ${label}` });
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await interaction.reply({ content: (r as any).error as string, flags: MessageFlags.Ephemeral });
+    // TS6: boolean discriminant narrowing이 cross-module에서 동작하지 않아 구체 타입으로 캐스팅
+    await interaction.reply({ content: (r as { ok: false; error: string }).error, flags: MessageFlags.Ephemeral });
   }
 }
 
