@@ -1,3 +1,5 @@
+@use 'variables' as v;
+
 @mixin text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -77,4 +79,9 @@
 
 @mixin max-w-100 {
   max-width: 100%;
+}
+
+@mixin dl-holes($hole-fill-default, $hole-border-default) {
+  // paper color + hole svg + hole position + add multiple holes vertically
+  background: var(--desc-list-bg) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{v.$hole-container-width}" height="#{v.$hole-container-height}" viewBox="0 0 #{v.$hole-container-width} #{v.$hole-container-height}"><circle fill="var(--main-bg, #{$hole-fill-default})" stroke="var(--desc-list-border-color, #{$hole-border-default}" stroke-width="#{v.$hole-border-width}" cx="#{v.$hole-cx}" cy="#{v.$hole-cy}" r="#{v.$hole-radius}"/></svg>') 0 0 repeat-y;
 }

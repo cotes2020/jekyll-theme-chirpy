@@ -28,3 +28,17 @@ $code-icon-width: 1.75rem !default;
 
 $font-family-base: 'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
 $font-family-heading: Lato, 'Microsoft Yahei', sans-serif !default;
+
+/* notebook paper style for description lists (i.e. `dl`) */
+
+$dt-left-padding: 4rem !default;
+$dd-left-padding: calc($dt-left-padding + 1.75rem) !default;
+$vertical-line-padding: calc($dt-left-padding - 1.25rem) !default;
+$dl-right-padding: 2rem !default;
+$dl-line-spacing: 29px !default;
+$hole-container-width: $vertical-line-padding !default;
+$hole-container-height: $dl-line-spacing !default;
+$hole-border-width: 1px !default;
+$hole-radius: 5px !default;
+$hole-cx: calc($hole-container-width / 2) !default;
+$hole-cy: calc($hole-container-height / 2) !default;
