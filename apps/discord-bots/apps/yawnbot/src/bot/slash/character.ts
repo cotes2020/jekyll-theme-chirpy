@@ -235,8 +235,7 @@ export async function handleCharacterImage(ctx: BotContext, interaction: ChatInp
 
   let saveDir: string | undefined;
   if (ctx.memoRepoPath) {
-    const dateStr = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })
-      .replace(/\. /g, '-').replace('.', '');
+    const dateStr = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
     saveDir = path.join(ctx.memoRepoPath, 'image-log', card.slug, dateStr);
   }
 

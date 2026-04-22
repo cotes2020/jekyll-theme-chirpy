@@ -261,6 +261,7 @@ async function resolveSceneImage(
   if (cached) {
     if (lastSentImageId.get(slug) === cached.id) {
       console.log(`[Assistant:${slug}] 자동 이미지: 직전과 동일 이미지 (id=${cached.id}), 텍스트만 전송`);
+      lastSentImageId.delete(slug); // 다음 번엔 같은 이미지도 다시 보여줄 수 있도록 리셋
       return null;
     }
     cacheService.incrementHit(cached);
