@@ -41,6 +41,7 @@ import {
   handleCharacterImageHistory,
 } from './character';
 import { handleScheduleAdd, handleScheduleList, handleScheduleDelete } from './schedule';
+import { handleCost } from './cost';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
@@ -382,6 +383,9 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
         }
         break;
       }
+      case '사용량':
+        await handleCost(ctx, interaction);
+        break;
       default:
         await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }

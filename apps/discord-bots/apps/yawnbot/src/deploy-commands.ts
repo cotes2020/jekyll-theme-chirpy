@@ -150,6 +150,12 @@ const commands = [
   characterCommand(),
   scheduleCommand(),
 
+  new SlashCommandBuilder()
+    .setName('사용량')
+    .setNameLocalizations(enUS('usage'))
+    .setDescription('이미지 생성 비용 대시보드 (모델별/일별 집계)')
+    .setDescriptionLocalizations(enUS('Image generation cost dashboard')),
+
 ].map((cmd) => cmd.toJSON());
 
 async function main(): Promise<void> {
