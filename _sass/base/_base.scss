@@ -209,15 +209,15 @@ main {
   } /* ul */
 
   dl > dt {
-    padding-left: v.$dt-left-padding;
+    padding-left: v.$desc-list-text-indent;
   }
 
   dl > dd {
-    padding-left: v.$dd-left-padding;
+    padding-left: calc(v.$desc-list-text-indent + (v.$desc-list-padding * 1.5));
   }
 
   dl > dt, dd {
-    padding-right: v.$dl-right-padding;
+    padding-right: v.$desc-list-padding;
   }
 
   dl {
@@ -225,12 +225,12 @@ main {
     border: 1px solid var(--desc-list-border-color);
     box-shadow: 0 0 5px var(--desc-list-border-color);
     border-radius: v.$radius-sm;
-    line-height: v.$dl-line-spacing;
+    line-height: v.$desc-list-line-height;
 
     & > :not(:first-child) {
-      background-size: 100% v.$dl-line-spacing;
+      background-size: 100% v.$desc-list-line-height;
       background-image: linear-gradient(
-        var(--desc-list-horizontal-line-color) 1px,
+        var(--desc-list-line-color) 1px,
         transparent 0
       );
     }
@@ -240,9 +240,9 @@ main {
       position: absolute;
       top: 0;
       bottom: 0;
-      left: v.$vertical-line-padding;
+      left: v.$margin-width;
       width: 1px;
-      background-color: var(--desc-list-vertical-line-color);
+      background-color: var(--desc-list-margin-color);
     }
   }
 

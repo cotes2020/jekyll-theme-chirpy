@@ -111,8 +111,8 @@
   /* Description List (i.e. <dl>) */
   --desc-list-bg: #ffffff;
   --desc-list-border-color: var(--main-border-color);
-  --desc-list-horizontal-line-color: #00b0d7;
-  --desc-list-vertical-line-color: #db4034;
+  --desc-list-line-color: #00b0d7;
+  --desc-list-margin-color: #db4034;
   
   .content dl {
     @include mx.dl-holes(white, rgb(235 235 235)); // rgb(243 243 243));
