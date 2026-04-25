@@ -12,13 +12,15 @@ use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
 use tauri::tray::{MouseButton, TrayIconEvent};
 use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
+use std::process::Command;
+use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::Arc;
 use tauri::Emitter;
 use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
 use tauri_plugin_dialog::{DialogExt, MessageDialogButtons};
 use tauri_plugin_updater::UpdaterExt;
-use std::process::Command;
 
 #[cfg(windows)]
 #[link(name = "user32")]
@@ -86,6 +88,7 @@ fn spawn_startup_update_check(handle: tauri::AppHandle) {
 }
 
 /// 배너 클릭 등 사용자가 명시적으로 동의한 후의 설치 흐름. 다이얼로그 없이 곧장 다운로드·설치.
+/// 진행률은 `karmolab://update-progress`, 다운로드 완료는 `karmolab://update-download-finished` 이벤트로 통지.
 #[tauri::command]
 async fn desktop_install_pending_update(handle: tauri::AppHandle) -> Result<String, String> {
     let current = env!("CARGO_PKG_VERSION");
@@ -98,14 +101,38 @@ async fn desktop_install_pending_update(handle: tauri::AppHandle) -> Result<Stri
         .map_err(|e| format!("업데이트 확인 실패: {}", e))?
         .ok_or_else(|| format!("이미 최신 버전({})입니다.", current))?;
     let new_ver = update.version.clone();
+
+    let downloaded = Arc::new(AtomicU64::new(0));
+    let downloaded_cb = downloaded.clone();
+    let handle_chunk = handle.clone();
+    let handle_finish = handle.clone();
+
     update
-        .download_and_install(|_, _| {}, || {})
+        .download_and_install(
+            move |chunk_size, total| {
+                let cur = downloaded_cb.fetch_add(chunk_size as u64, Ordering::Relaxed)
+                    + chunk_size as u64;
+                let _ = handle_chunk.emit(
+                    "karmolab://update-progress",
+                    serde_json::json!({
+                        "downloaded": cur,
+                        "total": total.unwrap_or(0),
+                    }),
+                );
+            },
+            move || {
+                let _ = handle_finish.emit("karmolab://update-download-finished", ());
+            },
+        )
         .await
         .map_err(|e| format!("업데이트 설치 실패: {}", e))?;
-    Ok(format!(
-        "{} 설치됨. 앱을 종료한 뒤 다시 실행해 주세요.",
-        new_ver
-    ))
+    Ok(format!("{} 설치됨. 앱 재시작이 필요합니다.", new_ver))
+}
+
+/// 배너의 "재시작" 버튼이 호출. 설치 후 새 바이너리로 곧장 재기동한다.
+#[tauri::command]
+fn desktop_restart_app(handle: tauri::AppHandle) {
+    handle.restart();
 }
 
 async fn ask_update_dialog(handle: &tauri::AppHandle, current: &str, new: &str) -> bool {
@@ -343,6 +370,7 @@ pub fn run() {
             desktop_notify,
             desktop_trigger_release_workflow,
             desktop_install_pending_update,
+            desktop_restart_app,
             localdev_set_repo_root,
             localdev_get_repo_root,
             localdev_list_tracked,

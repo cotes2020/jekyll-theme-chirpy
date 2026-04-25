@@ -2193,14 +2193,32 @@ html[data-nav="sidebar"] .sidebar:hover .sidebar-dev-links-text { display: inlin
     border-radius: var(--radius-md);
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     font-size: var(--font-size-sm);
-    max-width: 380px;
+    max-width: 420px;
 }
+.karmolab-update-banner-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
 .karmolab-update-banner-msg { line-height: 1.4; }
 .karmolab-update-banner-msg code {
     font-family: ui-monospace, monospace;
     background: var(--bg-tertiary); padding: 1px 5px; border-radius: 4px;
     font-size: 0.95em;
 }
+.karmolab-update-banner-notes {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+    text-decoration: none;
+    align-self: flex-start;
+}
+.karmolab-update-banner-notes:hover { color: var(--accent); text-decoration: underline; }
+.karmolab-update-banner-progress {
+    width: 100%; height: 6px;
+    -webkit-appearance: none; appearance: none;
+    border: none; border-radius: 3px;
+    background: var(--bg-tertiary);
+    overflow: hidden;
+}
+.karmolab-update-banner-progress::-webkit-progress-bar { background: var(--bg-tertiary); border-radius: 3px; }
+.karmolab-update-banner-progress::-webkit-progress-value { background: var(--accent); border-radius: 3px; transition: width 120ms linear; }
+.karmolab-update-banner-progress::-moz-progress-bar { background: var(--accent); border-radius: 3px; }
 .karmolab-update-banner-install {
     flex-shrink: 0;
     padding: 6px 12px;
@@ -2208,11 +2226,15 @@ html[data-nav="sidebar"] .sidebar:hover .sidebar-dev-links-text { display: inlin
     border: none; border-radius: var(--radius-sm);
     font-weight: 600; font-size: var(--font-size-xs);
     cursor: pointer;
+    min-width: 88px;
 }
 .karmolab-update-banner-install:hover { filter: brightness(1.1); }
-.karmolab-update-banner-install:disabled { opacity: 0.6; cursor: progress; }
+.karmolab-update-banner-install:disabled { opacity: 0.7; cursor: progress; }
+.karmolab-update-banner-restart {
+    background: var(--success, #22c55e);
+}
 .karmolab-update-banner-close {
-    flex-shrink: 0;
+    flex-shrink: 0; align-self: flex-start;
     width: 24px; height: 24px;
     background: transparent; color: var(--text-tertiary);
     border: none; border-radius: var(--radius-sm);

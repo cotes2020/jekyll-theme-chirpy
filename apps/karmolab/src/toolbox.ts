@@ -302,9 +302,29 @@ const Toolbox = (() => {
         const banner = document.createElement('div');
         banner.className = 'karmolab-update-banner';
 
-        const msg = document.createElement('span');
+        const body = document.createElement('div');
+        body.className = 'karmolab-update-banner-body';
+
+        const msg = document.createElement('div');
         msg.className = 'karmolab-update-banner-msg';
         msg.innerHTML = `새 버전: <code>${escapeHtml(current)}</code> → <code>${escapeHtml(newVer)}</code>`;
+
+        const notesA = document.createElement('a');
+        notesA.className = 'karmolab-update-banner-notes';
+        notesA.href = `https://github.com/mascari4615/mascari4615.github.io/releases/tag/karmolab-v${encodeURIComponent(newVer)}`;
+        notesA.target = '_blank';
+        notesA.rel = 'noopener noreferrer';
+        notesA.textContent = '변경사항 보기';
+
+        const progress = document.createElement('progress');
+        progress.className = 'karmolab-update-banner-progress';
+        progress.value = 0;
+        progress.max = 1;
+        progress.hidden = true;
+
+        body.appendChild(msg);
+        body.appendChild(notesA);
+        body.appendChild(progress);
 
         const installBtn = document.createElement('button');
         installBtn.type = 'button';
@@ -317,30 +337,84 @@ const Toolbox = (() => {
         closeBtn.setAttribute('aria-label', '닫기');
         closeBtn.textContent = '×';
 
-        banner.appendChild(msg);
+        banner.appendChild(body);
         banner.appendChild(installBtn);
         banner.appendChild(closeBtn);
         document.body.appendChild(banner);
 
+        const formatBytes = (n: number): string => {
+            if (n >= 1024 * 1024) return (n / (1024 * 1024)).toFixed(1) + ' MB';
+            if (n >= 1024) return (n / 1024).toFixed(0) + ' KB';
+            return n + ' B';
+        };
+
+        const listenFn = window.__TAURI__?.event?.listen;
+        let unlistenProgress: (() => void) | null = null;
+        let unlistenFinish: (() => void) | null = null;
+
+        const stopListeners = () => {
+            try { unlistenProgress?.(); } catch (_) { /* ignore */ }
+            try { unlistenFinish?.(); } catch (_) { /* ignore */ }
+            unlistenProgress = null;
+            unlistenFinish = null;
+        };
+
         closeBtn.addEventListener('click', () => {
             try { localStorage.setItem(UPDATE_DISMISS_KEY, newVer); } catch (_) { /* ignore */ }
+            stopListeners();
             banner.remove();
         });
 
         installBtn.addEventListener('click', () => {
-            installBtn.disabled = true;
-            installBtn.textContent = '설치 중…';
             const invoke = window.__TAURI__?.core?.invoke;
             if (typeof invoke !== 'function') {
                 msg.textContent = '설치 불가: Tauri invoke를 찾지 못했습니다.';
                 return;
             }
+
+            installBtn.disabled = true;
+            installBtn.textContent = '준비 중…';
+            progress.hidden = false;
+
+            if (typeof listenFn === 'function') {
+                listenFn('karmolab://update-progress', (e) => {
+                    const p = (e?.payload || {}) as { downloaded?: number; total?: number };
+                    if (typeof p.total === 'number' && p.total > 0 && typeof p.downloaded === 'number') {
+                        progress.value = Math.min(p.downloaded, p.total);
+                        progress.max = p.total;
+                        installBtn.textContent = `${formatBytes(p.downloaded)} / ${formatBytes(p.total)}`;
+                    } else if (typeof p.downloaded === 'number') {
+                        progress.removeAttribute('value'); // indeterminate
+                        installBtn.textContent = `${formatBytes(p.downloaded)} 받는 중`;
+                    }
+                }).then((un) => { unlistenProgress = un; }).catch(() => {});
+
+                listenFn('karmolab://update-download-finished', () => {
+                    progress.removeAttribute('value');
+                    installBtn.textContent = '설치 중…';
+                }).then((un) => { unlistenFinish = un; }).catch(() => {});
+            }
+
             invoke('desktop_install_pending_update', {})
                 .then((res) => {
-                    msg.textContent = typeof res === 'string' ? res : '설치 완료. 앱을 재시작하세요.';
-                    installBtn.remove();
+                    stopListeners();
+                    progress.hidden = true;
+                    msg.textContent = typeof res === 'string' ? res : '설치 완료.';
+                    installBtn.disabled = false;
+                    installBtn.textContent = '재시작';
+                    installBtn.classList.add('karmolab-update-banner-restart');
+                    installBtn.onclick = () => {
+                        installBtn.disabled = true;
+                        installBtn.textContent = '재시작 중…';
+                        void invoke('desktop_restart_app', {}).catch(() => {
+                            installBtn.disabled = false;
+                            installBtn.textContent = '재시작';
+                        });
+                    };
                 })
                 .catch((err) => {
+                    stopListeners();
+                    progress.hidden = true;
                     const errMsg = err instanceof Error ? err.message : String(err);
                     msg.textContent = `실패: ${errMsg}`;
                     installBtn.disabled = false;
