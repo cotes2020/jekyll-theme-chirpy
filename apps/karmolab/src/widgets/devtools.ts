@@ -173,9 +173,10 @@
 
     const p = document.createElement('p');
     const isApp = typeof Toolbox.isDesktopApp === 'function' && Toolbox.isDesktopApp();
+    const currentVersion = isApp ? window.__KARMOLAB_VERSION__ || '?' : '-';
     p.className = 'devtools-section-desc';
     p.innerHTML = isApp
-      ? 'GitHub CLI(<code>gh</code>)로 <code>KarmoLab Tauri Release</code> 워크플로를 원격 실행합니다. 이 PC에 <code>gh auth login</code>이 되어 있어야 합니다.'
+      ? `현재 설치 버전: <code>${currentVersion}</code><br>GitHub CLI(<code>gh</code>)로 <code>KarmoLab Tauri Release</code> 워크플로를 원격 실행합니다. 이 PC에 <code>gh auth login</code>이 되어 있어야 합니다.`
       : '웹 브라우저에서는 사용할 수 없습니다. KarmoLab Tauri 앱으로 열어 주세요.';
 
     const row = document.createElement('div');

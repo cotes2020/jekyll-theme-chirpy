@@ -57,9 +57,13 @@ fn spawn_tray_update_check(handle: tauri::AppHandle) {
     });
 }
 
-/// 데스크톱 앱 플래그만 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
+/// 데스크톱 앱 플래그·버전을 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
 fn karmolab_desktop_init_script() -> &'static str {
-    r#"window.__KARMOLAB_DESKTOP__=!0;window.__karmolabSetNotifyInvokeDebug=function(){};"#
+    concat!(
+        r#"window.__KARMOLAB_DESKTOP__=!0;window.__karmolabSetNotifyInvokeDebug=function(){};window.__KARMOLAB_VERSION__=""#,
+        env!("CARGO_PKG_VERSION"),
+        r#"";"#
+    )
 }
 
 fn allow_in_webview(url: &Url) -> bool {

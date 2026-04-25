@@ -38,6 +38,8 @@ declare global {
 
     /** KarmoLab Tauri 셸에서 주입 */
     __KARMOLAB_DESKTOP__?: boolean;
+    /** KarmoLab Tauri 셸에서 주입 — Cargo.toml 패키지 버전 */
+    __KARMOLAB_VERSION__?: string;
     /** Tauri 데스크톱 셸 (devtools 알림 테스트) */
     __TAURI__?: {
       core?: { invoke?: (cmd: string, args?: unknown) => Promise<unknown> };
