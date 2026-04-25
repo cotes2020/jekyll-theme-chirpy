@@ -173,6 +173,14 @@
                 border: 1px solid var(--border); background: var(--bg-primary);
                 color: var(--text-primary); font-size: var(--font-size-sm);
             }
+            .activity-nav-btn { min-width: 32px; padding: 6px 8px; }
+            .activity-filter-input {
+                flex: 1; min-width: 200px;
+                padding: 6px 10px; border-radius: var(--radius-md);
+                border: 1px solid var(--border); background: var(--bg-primary);
+                color: var(--text-primary); font-size: var(--font-size-sm);
+            }
+            .activity-meta { font-size: var(--font-size-xs); color: var(--text-tertiary); margin-bottom: 12px; }
             .activity-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
             .activity-stat {
                 padding: 14px 16px; border-radius: var(--radius-md);
@@ -235,17 +243,43 @@
     controls.className = 'activity-controls';
     const lab = document.createElement('label');
     lab.textContent = '날짜 (KST)';
+    const prevBtn = document.createElement('button');
+    prevBtn.type = 'button';
+    prevBtn.className = 'btn btn-secondary activity-nav-btn';
+    prevBtn.textContent = '◀';
+    prevBtn.title = '하루 전';
     const dateIn = document.createElement('input');
     dateIn.type = 'date';
     dateIn.value = todayKstDay();
+    const nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.className = 'btn btn-secondary activity-nav-btn';
+    nextBtn.textContent = '▶';
+    nextBtn.title = '하루 후';
+    const todayBtn = document.createElement('button');
+    todayBtn.type = 'button';
+    todayBtn.className = 'btn btn-secondary';
+    todayBtn.textContent = '오늘';
     const refreshBtn = document.createElement('button');
     refreshBtn.type = 'button';
     refreshBtn.className = 'btn btn-secondary';
     refreshBtn.textContent = '새로고침';
     controls.appendChild(lab);
+    controls.appendChild(prevBtn);
     controls.appendChild(dateIn);
+    controls.appendChild(nextBtn);
+    controls.appendChild(todayBtn);
     controls.appendChild(refreshBtn);
     root.appendChild(controls);
+
+    const filterRow = document.createElement('div');
+    filterRow.className = 'activity-controls';
+    const filterIn = document.createElement('input');
+    filterIn.type = 'search';
+    filterIn.placeholder = '앱 이름 / 윈도우 타이틀 검색…';
+    filterIn.className = 'activity-filter-input';
+    filterRow.appendChild(filterIn);
+    root.appendChild(filterRow);
 
     const summary = document.createElement('div');
     summary.className = 'activity-summary';
@@ -261,6 +295,11 @@
         `;
     root.appendChild(summary);
 
+    const meta = document.createElement('div');
+    meta.className = 'activity-meta';
+    meta.textContent = '';
+    root.appendChild(meta);
+
     const listWrap = document.createElement('div');
     listWrap.className = 'activity-list';
     root.appendChild(listWrap);
@@ -270,24 +309,68 @@
     const activeEl = summary.querySelector('[data-active]') as HTMLElement;
     const idleEl = summary.querySelector('[data-idle]') as HTMLElement;
 
+    let lastSamples: ActivitySample[] = [];
+    let currentFilter = '';
+    let refreshTimer: ReturnType<typeof setInterval> | null = null;
+    const REFRESH_INTERVAL_MS = 30_000;
+
+    function shiftKstDay(kstDay: string, delta: number): string {
+      const [y, m, d] = kstDay.split('-').map((s) => parseInt(s, 10));
+      const dt = new Date(Date.UTC(y, (m || 1) - 1, d || 1));
+      dt.setUTCDate(dt.getUTCDate() + delta);
+      const yy = dt.getUTCFullYear();
+      const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(dt.getUTCDate()).padStart(2, '0');
+      return `${yy}-${mm}-${dd}`;
+    }
+
+    function formatNow(): string {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      return `${hh}:${mm}:${ss}`;
+    }
+
     const render = (data: DayActivity): void => {
       const { apps, activeSecs, idleSecs } = aggregate(data.samples);
       activeEl.textContent = activeSecs > 0 ? formatDuration(activeSecs) : '—';
       idleEl.textContent = idleSecs > 0 ? formatDuration(idleSecs) : '—';
 
+      const totalSamples = data.samples.length;
+      const total = activeSecs + idleSecs;
+      const idlePct = total > 0 ? Math.round((idleSecs / total) * 100) : 0;
+      meta.textContent = `샘플 ${totalSamples}건 · idle ${idlePct}% · 마지막 갱신 ${formatNow()}`;
+
+      const filterTerm = currentFilter.trim().toLowerCase();
+      const filtered = filterTerm
+        ? apps.filter((a) => {
+            const labeled = readableProcessName(a.process).toLowerCase();
+            if (a.process.toLowerCase().includes(filterTerm) || labeled.includes(filterTerm)) return true;
+            for (const t of a.titles.keys()) {
+              if (t.toLowerCase().includes(filterTerm)) return true;
+            }
+            return false;
+          })
+        : apps;
+
       listWrap.innerHTML = '';
-      if (apps.length === 0) {
+      if (filtered.length === 0) {
         const empty = document.createElement('div');
         empty.className = 'activity-empty';
-        empty.textContent = data.samples.length === 0
-          ? '이 날짜의 샘플이 없습니다. 앱을 켜둔 시간대를 선택하세요.'
-          : '활성 샘플이 없습니다 (전부 idle).';
+        if (totalSamples === 0) {
+          empty.textContent = '이 날짜의 샘플이 없습니다. 앱이 시작된 후 5초 이상 기다리거나, 다른 날짜를 선택하세요.';
+        } else if (apps.length === 0) {
+          empty.textContent = '활성 샘플이 없습니다 (전부 idle 분류).';
+        } else {
+          empty.textContent = `"${currentFilter}"에 매칭되는 앱·창이 없습니다.`;
+        }
         listWrap.appendChild(empty);
         return;
       }
 
-      const max = apps[0].seconds;
-      for (const app of apps) {
+      const max = filtered[0].seconds;
+      for (const app of filtered) {
         const row = document.createElement('div');
         row.className = 'activity-row';
         const bar = document.createElement('div');
@@ -325,11 +408,13 @@
       }
     };
 
-    const load = (): void => {
+    const load = (silent = false): void => {
       const kstDay = dateIn.value || todayKstDay();
-      activeEl.textContent = '…';
-      idleEl.textContent = '…';
-      listWrap.innerHTML = '';
+      if (!silent) {
+        activeEl.textContent = '…';
+        idleEl.textContent = '…';
+        listWrap.innerHTML = '';
+      }
 
       // KST 자정 ~ 다음 KST 자정의 epoch 윈도우.
       const startEpoch = kstDayStartEpoch(kstDay);
@@ -350,6 +435,7 @@
               if (s.ts >= startEpoch && s.ts < endEpoch) merged.push(s);
             }
           }
+          lastSamples = merged;
           render({ day: kstDay, samples: merged });
         })
         .catch(function (err: unknown) {
@@ -364,9 +450,52 @@
         });
     };
 
-    refreshBtn.addEventListener('click', load);
-    dateIn.addEventListener('change', load);
+    function rerenderFromCache(): void {
+      const kstDay = dateIn.value || todayKstDay();
+      render({ day: kstDay, samples: lastSamples });
+    }
+
+    function setupAutoRefresh(): void {
+      if (refreshTimer) {
+        clearInterval(refreshTimer);
+        refreshTimer = null;
+      }
+      // 오늘 보고 있을 때만 주기적 새로고침. 위젯이 DOM에서 떨어지면 정리.
+      if (dateIn.value !== todayKstDay()) return;
+      refreshTimer = setInterval(() => {
+        if (!document.body.contains(root)) {
+          if (refreshTimer) clearInterval(refreshTimer);
+          refreshTimer = null;
+          return;
+        }
+        if (dateIn.value === todayKstDay()) load(true);
+      }, REFRESH_INTERVAL_MS);
+    }
+
+    refreshBtn.addEventListener('click', () => load());
+    dateIn.addEventListener('change', () => { load(); setupAutoRefresh(); });
+    prevBtn.addEventListener('click', () => {
+      dateIn.value = shiftKstDay(dateIn.value || todayKstDay(), -1);
+      load();
+      setupAutoRefresh();
+    });
+    nextBtn.addEventListener('click', () => {
+      dateIn.value = shiftKstDay(dateIn.value || todayKstDay(), 1);
+      load();
+      setupAutoRefresh();
+    });
+    todayBtn.addEventListener('click', () => {
+      dateIn.value = todayKstDay();
+      load();
+      setupAutoRefresh();
+    });
+    filterIn.addEventListener('input', () => {
+      currentFilter = filterIn.value || '';
+      rerenderFromCache();
+    });
+
     load();
+    setupAutoRefresh();
   }
 
   Toolbox.register({
