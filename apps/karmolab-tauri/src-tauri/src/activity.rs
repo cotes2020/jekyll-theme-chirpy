@@ -291,3 +291,25 @@ pub fn activity_status<R: Runtime>(app: AppHandle<R>) -> Result<serde_json::Valu
         "idle_threshold_secs": IDLE_THRESHOLD_SECS,
     }))
 }
+
+/// 저장된 일자(YYYY-MM-DD, UTC 기준 파일명) 목록 — 정렬된 채로.
+/// 위젯의 "전체" 기간 모드가 사용. 디렉토리가 없거나 비었으면 빈 배열.
+#[tauri::command]
+pub fn activity_list_days<R: Runtime>(app: AppHandle<R>) -> Result<Vec<String>, String> {
+    let state = app.state::<ActivityState>();
+    let dir = state.base_dir();
+    if !dir.exists() {
+        return Ok(Vec::new());
+    }
+    let mut days = Vec::new();
+    let entries = std::fs::read_dir(dir).map_err(|e| e.to_string())?;
+    for entry in entries.flatten() {
+        let name_os = entry.file_name();
+        let Some(name) = name_os.to_str() else { continue };
+        if let Some(stem) = name.strip_suffix(".jsonl") {
+            days.push(stem.to_string());
+        }
+    }
+    days.sort();
+    Ok(days)
+}

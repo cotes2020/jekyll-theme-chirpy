@@ -2,7 +2,7 @@ mod activity;
 mod local_dev;
 mod repo_file;
 
-use activity::{activity_query_day, activity_status, ActivityState};
+use activity::{activity_list_days, activity_query_day, activity_status, ActivityState};
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
     localdev_list_tracked, localdev_npm_install, localdev_npm_install_stream,
@@ -381,6 +381,7 @@ pub fn run() {
             repofile_read,
             repofile_write,
             activity_query_day,
+            activity_list_days,
             activity_status
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())

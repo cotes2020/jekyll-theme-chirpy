@@ -176,6 +176,11 @@
                 color: var(--text-primary); font-size: var(--font-size-sm);
             }
             .activity-nav-btn { min-width: 32px; padding: 6px 8px; }
+            .activity-period-select {
+                padding: 6px 8px; border-radius: var(--radius-md);
+                border: 1px solid var(--border); background: var(--bg-primary);
+                color: var(--text-primary); font-size: var(--font-size-sm);
+            }
             .activity-filter-input {
                 flex: 1; min-width: 200px;
                 padding: 6px 10px; border-radius: var(--radius-md);
@@ -244,12 +249,26 @@
     const controls = document.createElement('div');
     controls.className = 'activity-controls';
     const lab = document.createElement('label');
-    lab.textContent = '날짜 (KST)';
+    lab.textContent = '기간';
+    const periodSel = document.createElement('select');
+    periodSel.className = 'activity-period-select';
+    ([
+      ['day', '일'],
+      ['week', '주'],
+      ['month', '월'],
+      ['all', '전체']
+    ] as const).forEach(([v, t]) => {
+      const o = document.createElement('option');
+      o.value = v;
+      o.textContent = t;
+      periodSel.appendChild(o);
+    });
+    periodSel.value = 'day';
     const prevBtn = document.createElement('button');
     prevBtn.type = 'button';
     prevBtn.className = 'btn btn-secondary activity-nav-btn';
     prevBtn.textContent = '◀';
-    prevBtn.title = '하루 전';
+    prevBtn.title = '이전 구간';
     const dateIn = document.createElement('input');
     dateIn.type = 'date';
     dateIn.value = todayKstDay();
@@ -257,7 +276,7 @@
     nextBtn.type = 'button';
     nextBtn.className = 'btn btn-secondary activity-nav-btn';
     nextBtn.textContent = '▶';
-    nextBtn.title = '하루 후';
+    nextBtn.title = '다음 구간';
     const todayBtn = document.createElement('button');
     todayBtn.type = 'button';
     todayBtn.className = 'btn btn-secondary';
@@ -267,6 +286,7 @@
     refreshBtn.className = 'btn btn-secondary';
     refreshBtn.textContent = '새로고침';
     controls.appendChild(lab);
+    controls.appendChild(periodSel);
     controls.appendChild(prevBtn);
     controls.appendChild(dateIn);
     controls.appendChild(nextBtn);
@@ -311,6 +331,7 @@
     const activeEl = summary.querySelector('[data-active]') as HTMLElement;
     const idleEl = summary.querySelector('[data-idle]') as HTMLElement;
 
+    type Period = 'day' | 'week' | 'month' | 'all';
     let lastSamples: ActivitySample[] = [];
     let currentFilter = '';
     let refreshTimer: ReturnType<typeof setInterval> | null = null;
@@ -324,6 +345,76 @@
       const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
       const dd = String(dt.getUTCDate()).padStart(2, '0');
       return `${yy}-${mm}-${dd}`;
+    }
+
+    function shiftKstMonth(kstDay: string, delta: number): string {
+      const [y, m, d] = kstDay.split('-').map((s) => parseInt(s, 10));
+      const dt = new Date(Date.UTC(y, (m || 1) - 1, d || 1));
+      dt.setUTCMonth(dt.getUTCMonth() + delta);
+      const yy = dt.getUTCFullYear();
+      const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(dt.getUTCDate()).padStart(2, '0');
+      return `${yy}-${mm}-${dd}`;
+    }
+
+    /// 주의 시작(월요일)을 KST 일자 문자열로 반환.
+    function weekStartKst(kstDay: string): string {
+      const [y, m, d] = kstDay.split('-').map((s) => parseInt(s, 10));
+      const dt = new Date(Date.UTC(y, (m || 1) - 1, d || 1));
+      // getUTCDay: 0=일, 1=월, ..., 6=토. 월요일을 주의 시작으로.
+      const dow = dt.getUTCDay();
+      const offsetToMonday = dow === 0 ? -6 : 1 - dow;
+      dt.setUTCDate(dt.getUTCDate() + offsetToMonday);
+      const yy = dt.getUTCFullYear();
+      const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(dt.getUTCDate()).padStart(2, '0');
+      return `${yy}-${mm}-${dd}`;
+    }
+
+    /// 월의 1일을 KST 일자 문자열로.
+    function monthStartKst(kstDay: string): string {
+      const [y, m] = kstDay.split('-').map((s) => parseInt(s, 10));
+      return `${y}-${String(m).padStart(2, '0')}-01`;
+    }
+
+    /// period + anchor 일자 → KST 자정 epoch 시작/끝 윈도우.
+    /// 'all'의 경우 호출 측에서 활동 디렉토리 listing을 받아 처리해야 함 (이 함수는 day/week/month만).
+    function periodRange(period: Period, anchorKstDay: string): { startEpoch: number; endEpoch: number; label: string } {
+      if (period === 'day') {
+        const start = kstDayStartEpoch(anchorKstDay);
+        return { startEpoch: start, endEpoch: start + 86400, label: anchorKstDay };
+      }
+      if (period === 'week') {
+        const monday = weekStartKst(anchorKstDay);
+        const start = kstDayStartEpoch(monday);
+        const sunday = shiftKstDay(monday, 6);
+        return { startEpoch: start, endEpoch: start + 7 * 86400, label: `${monday} ~ ${sunday} (주)` };
+      }
+      if (period === 'month') {
+        const first = monthStartKst(anchorKstDay);
+        const nextFirst = shiftKstMonth(first, 1);
+        return {
+          startEpoch: kstDayStartEpoch(first),
+          endEpoch: kstDayStartEpoch(nextFirst),
+          label: `${first.slice(0, 7)} (월)`
+        };
+      }
+      // 'all' — placeholder; 실제 범위는 listDays 결과 기반으로 호출 측에서 결정
+      return { startEpoch: 0, endEpoch: Number.MAX_SAFE_INTEGER, label: '전체' };
+    }
+
+    /// startEpoch~endEpoch 범위에 걸치는 UTC 일자 목록.
+    function utcDaysInRange(startEpoch: number, endEpoch: number): string[] {
+      const days: string[] = [];
+      const oneDay = 86400;
+      // 시작/끝을 포함하도록 끝-1초까지 순회
+      let cur = Math.floor(startEpoch / oneDay) * oneDay;
+      const last = Math.floor((endEpoch - 1) / oneDay) * oneDay;
+      while (cur <= last) {
+        days.push(epochToUtcDay(cur));
+        cur += oneDay;
+      }
+      return days;
     }
 
     function formatNow(): string {
@@ -342,7 +433,7 @@
       const totalSamples = data.samples.length;
       const total = activeSecs + idleSecs;
       const idlePct = total > 0 ? Math.round((idleSecs / total) * 100) : 0;
-      meta.textContent = `샘플 ${totalSamples}건 · idle ${idlePct}% · 마지막 갱신 ${formatNow()}`;
+      meta.textContent = `${data.day} · 샘플 ${totalSamples}건 · idle ${idlePct}% · 마지막 갱신 ${formatNow()}`;
 
       const filterTerm = currentFilter.trim().toLowerCase();
       const filtered = filterTerm
@@ -410,37 +501,59 @@
       }
     };
 
+    /// 현재 period에 맞는 epoch 윈도우 + 해당 윈도우에 걸치는 UTC 일자 목록.
+    /// 'all' 모드는 activity_list_days 호출이 필요해 비동기.
+    async function resolveRangeAndDays(): Promise<{ startEpoch: number; endEpoch: number; utcDays: string[]; label: string }> {
+      const period = (periodSel.value || 'day') as Period;
+      const anchor = dateIn.value || todayKstDay();
+      if (period === 'all') {
+        const days = (await desktopInvoke('activity_list_days', {}) as string[]) || [];
+        if (days.length === 0) {
+          return { startEpoch: 0, endEpoch: 0, utcDays: [], label: '전체 (데이터 없음)' };
+        }
+        const sorted = [...days].sort();
+        const first = sorted[0];
+        const last = sorted[sorted.length - 1];
+        // UTC 일자 파일이라 첫 파일 자정~마지막 파일 자정+1일 epoch.
+        const [fy, fm, fd] = first.split('-').map((s) => parseInt(s, 10));
+        const [ly, lm, ld] = last.split('-').map((s) => parseInt(s, 10));
+        const startEpoch = Date.UTC(fy, fm - 1, fd) / 1000;
+        const endEpoch = Date.UTC(ly, lm - 1, ld) / 1000 + 86400;
+        return { startEpoch, endEpoch, utcDays: sorted, label: `전체 (${first} ~ ${last}, ${sorted.length}일)` };
+      }
+      const { startEpoch, endEpoch, label } = periodRange(period, anchor);
+      const utcDays = utcDaysInRange(startEpoch, endEpoch);
+      return { startEpoch, endEpoch, utcDays, label };
+    }
+
     const load = (silent = false): void => {
-      const kstDay = dateIn.value || todayKstDay();
       if (!silent) {
         activeEl.textContent = '…';
         idleEl.textContent = '…';
         listWrap.innerHTML = '';
       }
 
-      // KST 자정 ~ 다음 KST 자정의 epoch 윈도우.
-      const startEpoch = kstDayStartEpoch(kstDay);
-      const endEpoch = startEpoch + 86400;
-      // 데이터는 UTC 일자로 분리 저장. KST 하루는 두 UTC 파일에 걸친다.
-      const utcDays = Array.from(new Set([
-        epochToUtcDay(startEpoch),
-        epochToUtcDay(endEpoch - 1)
-      ]));
-
-      Promise.all(
-        utcDays.map((day) => desktopInvoke('activity_query_day', { day }) as Promise<DayActivity>)
-      )
-        .then((results) => {
-          const merged: ActivitySample[] = [];
-          for (const r of results) {
-            for (const s of r.samples || []) {
-              if (s.ts >= startEpoch && s.ts < endEpoch) merged.push(s);
-            }
+      void resolveRangeAndDays()
+        .then(({ startEpoch, endEpoch, utcDays, label }) => {
+          if (utcDays.length === 0) {
+            lastSamples = [];
+            render({ day: label, samples: [] });
+            return;
           }
-          lastSamples = merged;
-          render({ day: kstDay, samples: merged });
+          return Promise.all(
+            utcDays.map((day) => desktopInvoke('activity_query_day', { day }) as Promise<DayActivity>)
+          ).then((results) => {
+            const merged: ActivitySample[] = [];
+            for (const r of results) {
+              for (const s of r.samples || []) {
+                if (s.ts >= startEpoch && s.ts < endEpoch) merged.push(s);
+              }
+            }
+            lastSamples = merged;
+            render({ day: label, samples: merged });
+          });
         })
-        .catch(function (err: unknown) {
+        .catch((err: unknown) => {
           listWrap.innerHTML = '';
           const errMsg = err instanceof Error ? err.message : String(err);
           const empty = document.createElement('div');
@@ -457,32 +570,72 @@
       render({ day: kstDay, samples: lastSamples });
     }
 
+    /// 현재 period 모드에서 prev/next가 의미 있고, anchor가 오늘 구간에 포함되면 자동 새로고침을 켠다.
+    function isViewingCurrentPeriod(): boolean {
+      const period = periodSel.value as Period;
+      const anchor = dateIn.value || todayKstDay();
+      const today = todayKstDay();
+      if (period === 'all') return true; // 전체 보면 항상 최신 포함
+      if (period === 'day') return anchor === today;
+      if (period === 'week') return weekStartKst(anchor) === weekStartKst(today);
+      if (period === 'month') return monthStartKst(anchor) === monthStartKst(today);
+      return false;
+    }
+
     function setupAutoRefresh(): void {
       if (refreshTimer) {
         clearInterval(refreshTimer);
         refreshTimer = null;
       }
-      // 오늘 보고 있을 때만 주기적 새로고침. 위젯이 DOM에서 떨어지면 정리.
-      if (dateIn.value !== todayKstDay()) return;
+      if (!isViewingCurrentPeriod()) return;
       refreshTimer = setInterval(() => {
         if (!document.body.contains(root)) {
           if (refreshTimer) clearInterval(refreshTimer);
           refreshTimer = null;
           return;
         }
-        if (dateIn.value === todayKstDay()) load(true);
+        if (isViewingCurrentPeriod()) load(true);
       }, REFRESH_INTERVAL_MS);
+    }
+
+    function applyPeriodControlsState(): void {
+      const period = periodSel.value as Period;
+      const isAll = period === 'all';
+      dateIn.disabled = isAll;
+      prevBtn.disabled = isAll;
+      nextBtn.disabled = isAll;
+      todayBtn.disabled = isAll;
+      // prev/next title도 모드에 따라 갱신.
+      if (period === 'day') {
+        prevBtn.title = '하루 전';
+        nextBtn.title = '하루 후';
+      } else if (period === 'week') {
+        prevBtn.title = '한 주 전';
+        nextBtn.title = '한 주 후';
+      } else if (period === 'month') {
+        prevBtn.title = '한 달 전';
+        nextBtn.title = '한 달 후';
+      }
+    }
+
+    function shiftAnchorByPeriod(delta: number): void {
+      const period = periodSel.value as Period;
+      const anchor = dateIn.value || todayKstDay();
+      if (period === 'day') dateIn.value = shiftKstDay(anchor, delta);
+      else if (period === 'week') dateIn.value = shiftKstDay(anchor, delta * 7);
+      else if (period === 'month') dateIn.value = shiftKstMonth(anchor, delta);
     }
 
     refreshBtn.addEventListener('click', () => load());
     dateIn.addEventListener('change', () => { load(); setupAutoRefresh(); });
+    periodSel.addEventListener('change', () => { applyPeriodControlsState(); load(); setupAutoRefresh(); });
     prevBtn.addEventListener('click', () => {
-      dateIn.value = shiftKstDay(dateIn.value || todayKstDay(), -1);
+      shiftAnchorByPeriod(-1);
       load();
       setupAutoRefresh();
     });
     nextBtn.addEventListener('click', () => {
-      dateIn.value = shiftKstDay(dateIn.value || todayKstDay(), 1);
+      shiftAnchorByPeriod(1);
       load();
       setupAutoRefresh();
     });
@@ -496,6 +649,7 @@
       rerenderFromCache();
     });
 
+    applyPeriodControlsState();
     load();
     setupAutoRefresh();
   }
