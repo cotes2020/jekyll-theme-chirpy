@@ -454,6 +454,43 @@ const Toolbox = (() => {
         return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
     }
 
+    /** decorations:false 윈도우의 헤더 컨트롤(min/max/close)을 활성화. 데스크톱 외에는 noop. */
+    function installWindowControls() {
+        if (!isDesktopApp()) return;
+        const controls = document.getElementById('windowControls');
+        if (!controls) return;
+
+        const tauriWin = window.__TAURI__?.window;
+        const getCurrentWindow = tauriWin?.getCurrentWindow;
+        if (typeof getCurrentWindow !== 'function') {
+            console.warn('[Toolbox] Tauri window API 미주입 — 윈도우 컨트롤 비활성');
+            return;
+        }
+        const win = getCurrentWindow();
+
+        controls.style.display = 'flex';
+        controls.removeAttribute('aria-hidden');
+
+        document.getElementById('wcMinimize')?.addEventListener('click', () => {
+            win.minimize().catch((e) => console.warn('minimize 실패', e));
+        });
+        document.getElementById('wcMaximize')?.addEventListener('click', () => {
+            win.toggleMaximize().catch((e) => console.warn('toggleMaximize 실패', e));
+        });
+        document.getElementById('wcClose')?.addEventListener('click', () => {
+            win.close().catch((e) => console.warn('close 실패', e));
+        });
+
+        async function syncMaximized() {
+            try {
+                const m = await win.isMaximized();
+                controls!.setAttribute('data-maximized', m ? 'true' : 'false');
+            } catch { /* ignore */ }
+        }
+        void syncMaximized();
+        win.onResized?.(() => { void syncMaximized(); }).catch(() => {});
+    }
+
     /** 데스크톱 전용(category desktop) 도구는 일반 브라우저에서 메뉴·페이지에 넣지 않음 */
     function isDesktopOnlyTool(tool) {
         return tool && tool.category === 'desktop';
@@ -687,6 +724,7 @@ const Toolbox = (() => {
 
         injectDesktopBadge();
         setupUpdateBannerListener();
+        installWindowControls();
     }
 
     /* ===== Landing Page Builder ===== */

@@ -604,6 +604,35 @@ html[data-bg="minimal"] body {
 [data-theme="dark"] .theme-toggle .sun, [data-theme="light"] .theme-toggle .moon { display: none; }
 [data-theme="light"] .theme-toggle .sun, [data-theme="dark"] .theme-toggle .moon { display: block; }
 
+/* ── 윈도우 컨트롤 (카모랩 데스크톱 전용) ─────────────────────────────────
+   Tauri decorations:false로 OS 헤더를 끄고 헤더 우측에 minimize/maximize/close 직접 표시.
+   브라우저에서는 display:none. 데스크톱일 때만 toolbox.ts가 unhide. */
+.window-controls {
+    display: none;
+    align-items: stretch;
+    margin-left: 4px;
+    align-self: stretch;
+}
+.wc-btn {
+    width: 46px;
+    min-height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background var(--transition), color var(--transition);
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+.wc-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.wc-close:hover { background: #e81123; color: #fff; }
+.wc-btn:active { filter: brightness(0.9); }
+.wc-btn svg { width: 12px; height: 12px; display: block; }
+.wc-icon-restore { display: none; }
+.window-controls[data-maximized="true"] .wc-icon-max { display: none; }
+.window-controls[data-maximized="true"] .wc-icon-restore { display: block; }
+
 .prism-theme-select {
     min-width: 0; width: 130px; padding: 5px 24px 5px 8px;
     font-size: var(--font-size-xs);

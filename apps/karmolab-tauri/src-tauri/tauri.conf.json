@@ -16,7 +16,8 @@
         "title": "KarmoLab",
         "width": 1100,
         "height": 800,
-        "resizable": true
+        "resizable": true,
+        "decorations": false
       }
     ],
     "security": {

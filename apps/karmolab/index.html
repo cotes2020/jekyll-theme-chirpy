@@ -63,7 +63,7 @@ permalink: /karmolab/
 <body>
     <div class="status-toast" id="statusToast"></div>
     <div class="app-layout">
-        <header class="header-bar" id="headerBar">
+        <header class="header-bar" id="headerBar" data-tauri-drag-region>
             <div class="header-bar-left">
                 <button type="button" class="header-logo" id="headerHomeBtn" data-page="home" onclick="Toolbox.switchPage('home')" title="홈으로"><span class="header-logo-text">KarmoLab</span></button>
             </div>
@@ -77,6 +77,18 @@ permalink: /karmolab/
                     <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
                     <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
+                <div class="window-controls" id="windowControls" data-desktop-only aria-hidden="true">
+                    <button type="button" class="wc-btn wc-min" id="wcMinimize" title="최소화" aria-label="최소화">
+                        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6 H10" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+                    </button>
+                    <button type="button" class="wc-btn wc-max" id="wcMaximize" title="최대화" aria-label="최대화">
+                        <svg viewBox="0 0 12 12" aria-hidden="true" class="wc-icon-max"><rect x="2.5" y="2.5" width="7" height="7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+                        <svg viewBox="0 0 12 12" aria-hidden="true" class="wc-icon-restore"><rect x="3.5" y="2.5" width="6" height="6" stroke="currentColor" stroke-width="1.2" fill="none"/><rect x="2.5" y="3.5" width="6" height="6" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+                    </button>
+                    <button type="button" class="wc-btn wc-close" id="wcClose" title="닫기" aria-label="닫기">
+                        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5 L9.5 9.5 M9.5 2.5 L2.5 9.5" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+                    </button>
+                </div>
             </div>
         </header>
         <div class="app-body">

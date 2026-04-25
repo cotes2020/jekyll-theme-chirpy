@@ -49,6 +49,16 @@ declare global {
           cb: (e: { payload: unknown }) => void
         ) => Promise<() => void>;
       };
+      /** Tauri 2 window plugin — `decorations: false`인 윈도우의 컨트롤(min/max/close)에 사용 */
+      window?: {
+        getCurrentWindow?: () => {
+          minimize: () => Promise<void>;
+          toggleMaximize: () => Promise<void>;
+          close: () => Promise<void>;
+          isMaximized: () => Promise<boolean>;
+          onResized?: (cb: () => void) => Promise<() => void>;
+        };
+      };
     };
     __karmolabSetNotifyInvokeDebug?: (payload: unknown) => void;
   }
