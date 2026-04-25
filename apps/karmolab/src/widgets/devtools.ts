@@ -1,6 +1,5 @@
 /**
  * 개발·디버그용 패널 (Tauri 전용 기능 등). 항목은 섹션 단위로 추가.
- * 데스크톱 앱은 src-tauri에서 동일 파일을 include하여 캐시된 웹과 무관하게 등록 보장.
  */
 (function (): void {
   'use strict';
