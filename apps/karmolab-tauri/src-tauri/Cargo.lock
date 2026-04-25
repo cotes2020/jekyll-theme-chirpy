@@ -1967,7 +1967,7 @@ dependencies = [
 
 [[package]]
 name = "karmolab-desktop"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "notify-rust",
  "open",
