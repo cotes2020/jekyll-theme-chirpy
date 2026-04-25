@@ -131,6 +131,107 @@ fn apply_no_window(cmd: &mut Command) {
     cmd.creation_flags(CREATE_NO_WINDOW);
 }
 
+// ─── PID 영속화 (카모랩 재시작 시 reattach) ─────────────────────────────────
+//
+// `<app_local_data_dir>/localdev-state.json`에 `{ pids: { profileId: pid } }`를
+// 매 시작/종료마다 기록. 카모랩 부팅 시 `reattach_persisted_pids`가
+// 각 PID의 OS 생존 여부를 체크하고 살아있으면 in-memory map에 복원한다.
+// 봇은 detached로 떠 있으므로 카모랩 lifecycle과 독립.
+
+const STATE_FILE_NAME: &str = "localdev-state.json";
+
+#[derive(Serialize, Deserialize, Default)]
+struct PersistedState {
+    #[serde(default)]
+    pids: HashMap<String, u32>,
+}
+
+fn state_file_path(app: &tauri::AppHandle) -> Result<PathBuf, String> {
+    let base = app
+        .path()
+        .app_local_data_dir()
+        .map_err(|e| format!("app_local_data_dir 조회 실패: {}", e))?;
+    fs::create_dir_all(&base).map_err(|e| format!("state 디렉토리 생성 실패: {}", e))?;
+    Ok(base.join(STATE_FILE_NAME))
+}
+
+fn persist_pids(app: &tauri::AppHandle, pids: &HashMap<String, u32>) -> Result<(), String> {
+    let path = state_file_path(app)?;
+    let data = PersistedState { pids: pids.clone() };
+    let raw = serde_json::to_string_pretty(&data).map_err(|e| e.to_string())?;
+    fs::write(&path, raw).map_err(|e| format!("state 쓰기 실패: {}", e))?;
+    Ok(())
+}
+
+fn load_persisted_state(app: &tauri::AppHandle) -> PersistedState {
+    let Ok(path) = state_file_path(app) else {
+        return PersistedState::default();
+    };
+    let Ok(raw) = fs::read_to_string(&path) else {
+        return PersistedState::default();
+    };
+    serde_json::from_str::<PersistedState>(&raw).unwrap_or_default()
+}
+
+#[cfg(windows)]
+fn is_pid_alive(pid: u32) -> bool {
+    // tasklist는 /FI 결과가 없을 때 stdout에 "INFO: ..." 한 줄을 적고도 exit 0으로 끝나므로
+    // success만으로는 판단할 수 없다. CSV 출력에 PID가 포함됐는지를 본다.
+    let pid_str = pid.to_string();
+    let out = Command::new("tasklist.exe")
+        .args(["/FI", &format!("PID eq {}", pid_str), "/NH", "/FO", "CSV"])
+        .creation_flags(CREATE_NO_WINDOW)
+        .output();
+    let Ok(out) = out else {
+        return false;
+    };
+    if !out.status.success() {
+        return false;
+    }
+    let stdout = String::from_utf8_lossy(&out.stdout);
+    if stdout.contains("INFO:") {
+        return false;
+    }
+    stdout.contains(&format!(",\"{}\"", pid_str)) || stdout.contains(&format!(",{}", pid_str))
+}
+
+#[cfg(not(windows))]
+fn is_pid_alive(pid: u32) -> bool {
+    Command::new("kill")
+        .args(["-0", &pid.to_string()])
+        .status()
+        .map(|s| s.success())
+        .unwrap_or(false)
+}
+
+/// 카모랩 부팅 시 호출. 영속된 PID 중 살아있는 것만 in-memory map에 복원하고
+/// 죽은 항목은 영속 파일에서도 제거.
+pub fn reattach_persisted_pids(app: &tauri::AppHandle) {
+    let persisted = load_persisted_state(app);
+    if persisted.pids.is_empty() {
+        return;
+    }
+
+    let alive: HashMap<String, u32> = persisted
+        .pids
+        .into_iter()
+        .filter(|(_, pid)| is_pid_alive(*pid))
+        .collect();
+
+    let Some(state) = app.try_state::<LocalDevState>() else {
+        return;
+    };
+    if let Ok(mut pids) = state.pids.lock() {
+        *pids = alive.clone();
+    }
+    let _ = persist_pids(app, &alive);
+    if !alive.is_empty() {
+        println!("[localdev] reattached {} pid(s) from persisted state", alive.len());
+    }
+}
+
+// ─── 로그 redirect ─────────────────────────────────────────────────────────
+
 /// 카모랩 로그 디렉토리. `<app_local_data_dir>/localdev-logs/`. 매 호출 시 dir 보장.
 fn log_dir(app: &tauri::AppHandle) -> Result<PathBuf, String> {
     let base = app
@@ -617,14 +718,21 @@ pub fn localdev_start(
 
     let mut pids = state.pids.lock().map_err(|e| e.to_string())?;
     pids.insert(profile_id, pid);
+    let _ = persist_pids(&app, &pids);
     Ok(())
 }
 
 #[tauri::command]
-pub fn localdev_stop(profile_id: String, state: State<'_, LocalDevState>) -> Result<(), String> {
+pub fn localdev_stop(
+    profile_id: String,
+    app: tauri::AppHandle,
+    state: State<'_, LocalDevState>,
+) -> Result<(), String> {
     let pid = {
         let mut pids = state.pids.lock().map_err(|e| e.to_string())?;
-        pids.remove(&profile_id)
+        let removed = pids.remove(&profile_id);
+        let _ = persist_pids(&app, &pids);
+        removed
     };
     let Some(pid) = pid else {
         return Err("실행 중으로 기록된 프로세스가 없습니다.".into());

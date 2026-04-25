@@ -5,7 +5,7 @@ use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
     localdev_list_tracked, localdev_npm_install, localdev_npm_install_stream,
     localdev_set_repo_root, localdev_start, localdev_stop, localdev_stop_log_follow,
-    LocalDevState,
+    reattach_persisted_pids, LocalDevState,
 };
 use repo_file::{repofile_open_default, repofile_read, repofile_reveal, repofile_write};
 use tauri::menu::{Menu, MenuItem};
@@ -389,6 +389,16 @@ pub fn run() {
         }))
         .setup(|app| {
             let handle = app.handle().clone();
+
+            // 카모랩 재시작 시 detached 봇 PID 복원 (영속 파일 → 살아있는 것만 in-memory map).
+            // OS 호출이 들어가니까 background thread로 — 메인 윈도우 표시를 막지 않음.
+            {
+                let h = handle.clone();
+                std::thread::spawn(move || {
+                    reattach_persisted_pids(&h);
+                });
+            }
+
             let window_conf = app
                 .config()
                 .app
