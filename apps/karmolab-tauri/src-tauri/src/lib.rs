@@ -209,6 +209,7 @@ pub fn run() {
                 .iter()
                 .find(|w| w.label == "main")
                 .expect(r#"tauri.conf.json must include a window with label "main""#);
+            let window_handle = handle.clone();
 
             let main_window = WebviewWindowBuilder::from_config(app, window_conf)?
                 .initialization_script(karmolab_desktop_init_script())
@@ -231,11 +232,17 @@ pub fn run() {
             main_window.on_window_event(move |event| {
                 if let WindowEvent::CloseRequested { api, .. } = event {
                     api.prevent_close();
-                    if let Some(w) = handle.get_webview_window("main") {
+                    if let Some(w) = window_handle.get_webview_window("main") {
                         let _ = w.hide();
                     }
                 }
             });
+
+            #[cfg(not(debug_assertions))]
+            {
+                // Discord처럼 앱 시작 시 자동으로 새 버전을 확인하고, 있으면 백그라운드로 받아 둔다.
+                spawn_tray_update_check(handle.clone());
+            }
 
             #[cfg(not(any(target_os = "android", target_os = "ios")))]
             {

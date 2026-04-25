@@ -37,7 +37,7 @@
   },
   "plugins": {
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU4Njc4REEwQUQzQ0ZGRkYKUldULy96eXRvSTFuNktOVnIxZ0ZsV1hxTGF4MGlieWJGc3EydXhCR1c4aUYrUWxzYnRpVmNnMEsK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDdCNERFQUE2MzRGNTVEQ0IKUldUTFhmVTBwdXBOZXdJMk1RODMyVEw0YjdvYjJZK3ovTzZRWUNlaUM2N2EvNlJxRzZmbkhuSmMK",
       "endpoints": [
         "https://github.com/mascari4615/mascari4615.github.io/releases/latest/download/latest.json"
       ],
