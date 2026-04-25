@@ -62,6 +62,8 @@
     'foobar2000.exe': 'foobar2000',
     'Steam.exe': 'Steam',
     'EpicGamesLauncher.exe': 'Epic Games',
+    'GitHubDesktop.exe': 'GitHub Desktop',
+    'msedgewebview2.exe': 'WebView2',
     'karmolab-desktop.exe': 'KarmoLab'
   };
 
@@ -86,12 +88,12 @@
   }
 
   function todayKstDay(): string {
-    // KST 현재 일자.
-    const now = new Date();
-    const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60_000) + KST_OFFSET_SECS * 1000);
-    const y = kst.getUTCFullYear();
-    const m = String(kst.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(kst.getUTCDate()).padStart(2, '0');
+    // KST 현재 일자. 사용자의 로컬 timezone과 무관하게 KST(UTC+9) 일자를 반환.
+    // UTC epoch에 +9h를 더해 그 시각을 'UTC인 척' 읽으면 그게 KST 시계.
+    const dt = new Date(Date.now() + KST_OFFSET_SECS * 1000);
+    const y = dt.getUTCFullYear();
+    const m = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(dt.getUTCDate()).padStart(2, '0');
     return `${y}-${m}-${day}`;
   }
 
