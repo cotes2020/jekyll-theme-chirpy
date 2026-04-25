@@ -47,5 +47,5 @@ jobs:
           releaseBody: KarmoLab Windows release.
           releaseDraft: false
           prerelease: false
-          uploadUpdaterJson: true
+          includeUpdaterJson: true
           updaterJsonPreferNsis: true
