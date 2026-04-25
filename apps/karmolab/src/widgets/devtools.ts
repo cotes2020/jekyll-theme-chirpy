@@ -201,14 +201,19 @@
     const bumpSel = document.createElement('select');
     bumpSel.className = 'devtools-select';
     bumpSel.disabled = !isApp;
-    (
-      [
-        ['patch', 'patch (0.1.1 → 0.1.2)'],
-        ['minor', 'minor (0.1.1 → 0.2.0)'],
-        ['major', 'major (0.1.1 → 1.0.0)'],
-        ['none', 'none (버전 그대로 — 같은 태그 덮어쓰기)']
-      ] as const
-    ).forEach(function (opt) {
+
+    const verParts = (isApp ? currentVersion.split('.').map((n) => parseInt(n, 10)) : []);
+    const [maj, min, pat] = [verParts[0], verParts[1], verParts[2]];
+    const valid = Number.isFinite(maj) && Number.isFinite(min) && Number.isFinite(pat);
+    const preview = (label: string, next: string): string =>
+      valid ? `${label} (${currentVersion} → ${next})` : label;
+    const opts: ReadonlyArray<readonly [string, string]> = [
+      ['patch', preview('patch', `${maj}.${min}.${pat + 1}`)],
+      ['minor', preview('minor', `${maj}.${min + 1}.0`)],
+      ['major', preview('major', `${maj + 1}.0.0`)],
+      ['none', 'none (버전 그대로 — 같은 태그 덮어쓰기)']
+    ];
+    opts.forEach(function (opt) {
       const o = document.createElement('option');
       o.value = opt[0];
       o.textContent = opt[1];
