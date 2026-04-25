@@ -13,9 +13,17 @@
   "permissions": [
     "core:default",
     "core:event:allow-listen",
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-start-dragging",
+    "core:window:allow-is-maximized",
     "allow-desktop-notify",
     "allow-localdev",
     "allow-repofile",
+    "allow-karmolab-update",
+    "allow-karmolab-release",
+    "allow-activity",
     "updater:default"
   ]
 }

@@ -1,0 +1,7 @@
+[[permission]]
+identifier = "allow-activity"
+description = "Allow the activity widget to query the local PC activity tracker (read-only, local file)."
+commands.allow = [
+  "activity_query_day",
+  "activity_status",
+]

@@ -1,0 +1,6 @@
+[[permission]]
+identifier = "allow-karmolab-release"
+description = "Allow the debug widget to trigger the GitHub Actions release workflow via gh CLI."
+commands.allow = [
+  "desktop_trigger_release_workflow",
+]

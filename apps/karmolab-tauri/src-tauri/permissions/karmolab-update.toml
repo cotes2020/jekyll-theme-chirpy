@@ -1,0 +1,7 @@
+[[permission]]
+identifier = "allow-karmolab-update"
+description = "Allow in-app update banner to install pending updates and restart the app."
+commands.allow = [
+  "desktop_install_pending_update",
+  "desktop_restart_app",
+]
