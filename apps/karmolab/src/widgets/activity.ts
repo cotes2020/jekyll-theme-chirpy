@@ -62,7 +62,7 @@
     'foobar2000.exe': 'foobar2000',
     'Steam.exe': 'Steam',
     'EpicGamesLauncher.exe': 'Epic Games',
-    'KarmoLab.exe': 'KarmoLab'
+    'karmolab-desktop.exe': 'KarmoLab'
   };
 
   function readableProcessName(raw: string): string {
