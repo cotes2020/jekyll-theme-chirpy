@@ -233,6 +233,7 @@ export class MemoryService {
     await this._updateUserAndSelfMemoryIfNeeded();
     await this._appendGrowthJournalIfNeeded();
     await this._compressUserMdIfNeeded();
+    await this._compressSelfMdIfNeeded();
     this._cleanupOldMemories();
   }
 
@@ -252,7 +253,7 @@ export class MemoryService {
       const { text } = await generateAssistantText(
         process.env,
         `다음은 ${yesterday}의 대화 기록이야. 핵심 내용을 간결하게 요약해줘. ` +
-          `어떤 주제로 대화했는지, 중요한 정보나 감정, 결정된 것들 위주로:\n\n${log.slice(0, 8000)}`,
+          `어떤 주제로 대화했는지, 중요한 정보나 감정, 결정된 것들 위주로:\n\n${log.slice(0, 16000)}`,
       );
 
       fs.writeFileSync(summaryPath, `# ${yesterday} 일간 요약\n\n${text.trim()}\n`, 'utf-8');
@@ -303,39 +304,43 @@ export class MemoryService {
     }
   }
 
+  /**
+   * 최근 2개월 중 monthly 요약이 없는 달이 있으면 생성.
+   * 1일 가드 없음 — 봇이 1일에 안 켜져 있어도 누락 안 되게 백필.
+   * (weekly cleanup이 84일이라 3개월 이전은 소스가 사라져 백필 불가)
+   */
   private async _generateMonthlySummaryIfNeeded(): Promise<void> {
     const kst = toKST();
-    // 매달 1일 첫 대화 때 지난달 요약 생성
-    if (kst.getDate() !== 1) return;
-
-    const lastMonth = new Date(kst.getFullYear(), kst.getMonth() - 1, 1);
-    const monthKey = `${lastMonth.getFullYear()}-${pad(lastMonth.getMonth() + 1)}`;
-    const summaryPath = path.join(this.memoryDir, 'monthly', `${monthKey}.md`);
-    if (fs.existsSync(summaryPath)) return;
-
-    // 지난달 주간 요약 수집
     const weeklyDir = path.join(this.memoryDir, 'weekly');
     if (!fs.existsSync(weeklyDir)) return;
-    const weeklies = fs.readdirSync(weeklyDir)
-      .filter((f) => f.startsWith(String(lastMonth.getFullYear())) && f.endsWith('.md'))
-      .map((f) => fs.readFileSync(path.join(weeklyDir, f), 'utf-8').trim())
-      .filter(Boolean);
-    if (!weeklies.length) return;
 
-    try {
-      console.log(`[Memory:${this.slug}] ${monthKey} 월간 요약 생성 중...`);
-      const { text } = await generateAssistantText(
-        process.env,
-        `다음은 ${monthKey} 한 달간의 주간 요약들이야.\n` +
-          `이 달 전체를 아우르는 월간 회고를 작성해줘.\n` +
-          `주요 주제, 감정 변화, 중요한 결정이나 사건, 성장한 점 위주로 풍부하게:\n\n` +
-          weeklies.join('\n\n---\n\n').slice(0, 12000),
-      );
-      fs.writeFileSync(summaryPath, `# ${monthKey} 월간 요약\n\n${text.trim()}\n`, 'utf-8');
-      this.dirty = true;
-      console.log(`[Memory:${this.slug}] ${monthKey} 월간 요약 저장 완료`);
-    } catch (e: unknown) {
-      console.error(`[Memory:${this.slug}] 월간 요약 실패:`, e instanceof Error ? e.message : e);
+    for (let monthsBack = 1; monthsBack <= 2; monthsBack++) {
+      const target = new Date(kst.getFullYear(), kst.getMonth() - monthsBack, 1);
+      const monthKey = `${target.getFullYear()}-${pad(target.getMonth() + 1)}`;
+      const summaryPath = path.join(this.memoryDir, 'monthly', `${monthKey}.md`);
+      if (fs.existsSync(summaryPath)) continue;
+
+      const weeklies = fs.readdirSync(weeklyDir)
+        .filter((f) => f.startsWith(String(target.getFullYear())) && f.endsWith('.md'))
+        .map((f) => fs.readFileSync(path.join(weeklyDir, f), 'utf-8').trim())
+        .filter(Boolean);
+      if (!weeklies.length) continue;
+
+      try {
+        console.log(`[Memory:${this.slug}] ${monthKey} 월간 요약 생성 중...`);
+        const { text } = await generateAssistantText(
+          process.env,
+          `다음은 ${monthKey} 한 달간의 주간 요약들이야.\n` +
+            `이 달 전체를 아우르는 월간 회고를 작성해줘.\n` +
+            `주요 주제, 감정 변화, 중요한 결정이나 사건, 성장한 점 위주로 풍부하게:\n\n` +
+            weeklies.join('\n\n---\n\n').slice(0, 12000),
+        );
+        fs.writeFileSync(summaryPath, `# ${monthKey} 월간 요약\n\n${text.trim()}\n`, 'utf-8');
+        this.dirty = true;
+        console.log(`[Memory:${this.slug}] ${monthKey} 월간 요약 저장 완료`);
+      } catch (e: unknown) {
+        console.error(`[Memory:${this.slug}] 월간 요약 실패:`, e instanceof Error ? e.message : e);
+      }
     }
   }
 
@@ -470,6 +475,41 @@ export class MemoryService {
     } catch (e: unknown) {
       console.error(
         `[Memory:${this.slug}] user.md 압축 실패:`,
+        e instanceof Error ? e.message : e,
+      );
+    }
+  }
+
+  /**
+   * self.md가 임계값(기본 4000자)을 초과하면 LLM으로 압축해서 덮어씀.
+   * 매일 누적되는 성장 일지와 _updateUserAndSelfMemoryIfNeeded 갱신분이
+   * 무한히 쌓이는 것을 방지. 정체성·역할·최근 성장은 유지.
+   */
+  private async _compressSelfMdIfNeeded(): Promise<void> {
+    const selfMdPath = path.join(this.memoryDir, 'self.md');
+    const content = this._read(selfMdPath);
+    const threshold = parseInt(process.env.ASSISTANT_MEMORY_COMPRESS_THRESHOLD || '4000', 10);
+    if (content.length <= threshold) return;
+
+    console.log(`[Memory:${this.slug}] self.md 압축 시작 (${content.length}자)`);
+    try {
+      const { text } = await generateAssistantText(
+        process.env,
+        `다음은 캐릭터 자신에 대해 누적된 메모야 (정체성·역할·성장 일지 포함).\n` +
+          `중복되거나 오래돼 의미가 줄어든 내용을 합치고,\n` +
+          `핵심(자기 인식, 역할, 사용자와의 관계, 최근 깨달음)을 유지하면서 절반 이하 분량으로 압축해줘.\n` +
+          `마크다운 형식 유지. "## 성장 일지" 섹션은 최근 항목 위주로 남기고 오래된 건 통합 요약으로 대체:\n\n${content}`,
+      );
+      fs.writeFileSync(
+        selfMdPath,
+        `# 봇 자신에 대한 정보\n\n${text.trim()}\n`,
+        'utf-8',
+      );
+      this.dirty = true;
+      console.log(`[Memory:${this.slug}] self.md 압축 완료 (${content.length}자 → ${text.length}자)`);
+    } catch (e: unknown) {
+      console.error(
+        `[Memory:${this.slug}] self.md 압축 실패:`,
         e instanceof Error ? e.message : e,
       );
     }
