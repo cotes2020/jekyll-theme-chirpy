@@ -3,7 +3,7 @@ use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Seek, SeekFrom};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 use std::sync::atomic::{AtomicBool, Ordering};
@@ -637,21 +637,60 @@ pub fn localdev_stop_log_follow(
     Ok(())
 }
 
-/// 파일이 없으면 잠깐 기다렸다 재시도. EOF면 폴링.
-/// stop flag가 true가 되면 즉시 종료.
+/// 시작 시점에 마지막 N줄을 즉시 emit해서 위젯에 곧바로 보이게 하고,
+/// 그 이후엔 파일 끝부터 새 라인만 follow. 봇이 재시작돼 파일이 truncate되면
+/// 길이 비교로 감지하고 reader를 리셋한다.
+/// 파일이 없으면 잠깐 기다렸다 재시도. EOF면 폴링. stop flag면 즉시 종료.
 fn tail_log_loop(
     app: tauri::AppHandle,
     profile_id: String,
     log_path: PathBuf,
     stop: Arc<AtomicBool>,
 ) {
+    /// 카모랩 마운트 시 즉시 보여줄 과거 라인 수.
+    const INITIAL_TAIL_LINES: usize = 200;
+
+    let emit = |line: String| {
+        let payload = LocaldevLogLineEvt {
+            run_id: "follow".to_string(),
+            profile_id: profile_id.clone(),
+            stream: "out".to_string(),
+            line,
+        };
+        let _ = app.emit("localdev-log", &payload);
+    };
+
+    // 1) 시작 시 마지막 N줄 즉시 emit + follow 시작 offset 결정
+    let mut current_offset: u64 = if let Ok(content) = fs::read_to_string(&log_path) {
+        let lines: Vec<&str> = content.lines().collect();
+        let start = lines.len().saturating_sub(INITIAL_TAIL_LINES);
+        for line in &lines[start..] {
+            emit((*line).to_string());
+        }
+        content.len() as u64
+    } else {
+        0
+    };
+
+    // 2) 파일 끝 이후의 새 라인만 follow
     let mut reader: Option<BufReader<File>> = None;
     let mut buf = String::new();
 
     while !stop.load(Ordering::Relaxed) {
+        // truncate 감지 (봇 재시작) — 파일 길이가 우리 offset보다 작아졌으면 리셋
+        if let Ok(meta) = fs::metadata(&log_path) {
+            if meta.len() < current_offset {
+                reader = None;
+                current_offset = 0;
+            }
+        }
+
         if reader.is_none() {
             match File::open(&log_path) {
-                Ok(f) => reader = Some(BufReader::new(f)),
+                Ok(mut f) => {
+                    let _ = f.seek(SeekFrom::Start(current_offset));
+                    reader = Some(BufReader::new(f));
+                }
                 Err(_) => {
                     thread::sleep(Duration::from_millis(500));
                     continue;
@@ -664,18 +703,11 @@ fn tail_log_loop(
             Ok(0) => {
                 thread::sleep(Duration::from_millis(300));
             }
-            Ok(_) => {
-                let line = buf.trim_end_matches(['\r', '\n']).to_string();
-                let payload = LocaldevLogLineEvt {
-                    run_id: "follow".to_string(),
-                    profile_id: profile_id.clone(),
-                    stream: "out".to_string(),
-                    line,
-                };
-                let _ = app.emit("localdev-log", &payload);
+            Ok(n) => {
+                current_offset = current_offset.saturating_add(n as u64);
+                emit(buf.trim_end_matches(['\r', '\n']).to_string());
             }
             Err(_) => {
-                // 파일이 truncate(재시작)됐거나 IO 에러 — reader 버리고 재오픈
                 reader = None;
                 thread::sleep(Duration::from_millis(500));
             }
