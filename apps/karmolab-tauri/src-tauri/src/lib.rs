@@ -16,6 +16,7 @@ use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
 use tauri_plugin_updater::UpdaterExt;
+use std::process::Command;
 
 #[cfg(windows)]
 #[link(name = "user32")]
@@ -172,12 +173,87 @@ fn desktop_notify(
     Ok(())
 }
 
+#[tauri::command]
+fn desktop_trigger_release_workflow(ref_name: Option<String>) -> Result<String, String> {
+    let repo = "mascari4615/mascari4615.github.io";
+    let workflow = "KarmoLab Tauri Release";
+    let selected_ref = ref_name
+        .map(|value| value.trim().to_string())
+        .filter(|value| !value.is_empty())
+        .unwrap_or_else(|| "master".to_string());
+
+    let probe = Command::new("gh")
+        .args(["--version"])
+        .output()
+        .map_err(|_| "gh CLI를 찾을 수 없습니다. GitHub CLI 설치 후 다시 시도하세요.".to_string())?;
+    if !probe.status.success() {
+        return Err("gh CLI 실행에 실패했습니다. gh auth status로 로그인 상태를 확인하세요.".to_string());
+    }
+
+    let run_output = Command::new("gh")
+        .args([
+            "workflow",
+            "run",
+            workflow,
+            "--repo",
+            repo,
+            "--ref",
+            selected_ref.as_str(),
+        ])
+        .output()
+        .map_err(|e| format!("workflow 실행 명령 호출 실패: {}", e))?;
+
+    if !run_output.status.success() {
+        let stderr = String::from_utf8_lossy(&run_output.stderr).trim().to_string();
+        let stdout = String::from_utf8_lossy(&run_output.stdout).trim().to_string();
+        let detail = if !stderr.is_empty() { stderr } else { stdout };
+        return Err(format!("워크플로 실행 실패: {}", detail));
+    }
+
+    let url_output = Command::new("gh")
+        .args([
+            "run",
+            "list",
+            "--repo",
+            repo,
+            "--workflow",
+            workflow,
+            "--limit",
+            "1",
+            "--json",
+            "url",
+            "--jq",
+            ".[0].url",
+        ])
+        .output()
+        .map_err(|e| format!("실행 URL 조회 실패: {}", e))?;
+
+    let maybe_url = if url_output.status.success() {
+        String::from_utf8_lossy(&url_output.stdout).trim().to_string()
+    } else {
+        String::new()
+    };
+
+    if maybe_url.is_empty() {
+        Ok(format!(
+            "워크플로 실행 요청 완료 (repo: {}, ref: {}). GitHub Actions에서 상태를 확인하세요.",
+            repo, selected_ref
+        ))
+    } else {
+        Ok(format!(
+            "워크플로 실행 요청 완료 (repo: {}, ref: {}).\n{}",
+            repo, selected_ref, maybe_url
+        ))
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .manage(LocalDevState::default())
         .invoke_handler(tauri::generate_handler![
             desktop_notify,
+            desktop_trigger_release_workflow,
             localdev_set_repo_root,
             localdev_get_repo_root,
             localdev_list_tracked,

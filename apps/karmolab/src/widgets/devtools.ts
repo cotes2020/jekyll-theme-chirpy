@@ -164,6 +164,74 @@
     syncPreview();
   }
 
+  function buildReleaseSection(wrap: HTMLElement): void {
+    const sec = document.createElement('section');
+    sec.className = 'devtools-section';
+
+    const h = document.createElement('h3');
+    h.className = 'devtools-section-title';
+    h.textContent = '릴리스 워크플로';
+
+    const p = document.createElement('p');
+    const isApp = typeof Toolbox.isDesktopApp === 'function' && Toolbox.isDesktopApp();
+    p.className = 'devtools-section-desc';
+    p.innerHTML = isApp
+      ? 'GitHub CLI(<code>gh</code>)로 <code>KarmoLab Tauri Release</code> 워크플로를 원격 실행합니다. 이 PC에 <code>gh auth login</code>이 되어 있어야 합니다.'
+      : '웹 브라우저에서는 사용할 수 없습니다. KarmoLab Tauri 앱으로 열어 주세요.';
+
+    const row = document.createElement('div');
+    row.className = 'devtools-field';
+
+    const lab = document.createElement('label');
+    lab.className = 'devtools-field-label';
+    lab.textContent = 'ref (branch/tag)';
+
+    const refIn = document.createElement('input');
+    refIn.type = 'text';
+    refIn.className = 'devtools-input';
+    refIn.value = 'master';
+    refIn.placeholder = 'master';
+    refIn.disabled = !isApp;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn btn-primary';
+    btn.textContent = '워크플로 실행';
+    btn.disabled = !isApp;
+
+    const status = document.createElement('div');
+    status.className = 'devtools-log';
+    status.textContent = isApp
+      ? '실행 시 GitHub Actions workflow_dispatch를 호출합니다.'
+      : '데스크톱 앱이 아니면 비활성입니다.';
+
+    btn.addEventListener('click', function () {
+      const selectedRef = (refIn.value || '').trim() || 'master';
+      status.className = 'devtools-log';
+      status.textContent = `요청 중…\nworkflow: KarmoLab Tauri Release\nref: ${selectedRef}`;
+      void desktopInvoke('desktop_trigger_release_workflow', { refName: selectedRef })
+        .then(function (res: unknown) {
+          status.className = 'devtools-log devtools-log-ok';
+          status.textContent = typeof res === 'string' ? res : JSON.stringify(res, null, 2);
+        })
+        .catch(function (e: unknown) {
+          status.className = 'devtools-log devtools-log-err';
+          const errMsg = e instanceof Error ? e.message : String(e);
+          status.textContent = errMsg;
+          Toolbox.showToast?.('릴리스 실행 실패', 'error', e);
+        });
+    });
+
+    row.appendChild(lab);
+    row.appendChild(refIn);
+    sec.appendChild(h);
+    sec.appendChild(p);
+    sec.appendChild(row);
+    sec.appendChild(btn);
+    sec.appendChild(status);
+    wrap.appendChild(sec);
+  }
+
   function build(container: HTMLElement): void {
     Mdd.injectCSS(
       'devtools',
@@ -206,6 +274,7 @@
     intro.textContent = '배포·사용자용 기능이 아니라, 데스크톱 셸·연동을 점검할 때 쓰는 모음입니다.';
 
     root.appendChild(intro);
+    buildReleaseSection(root);
     buildNotifySection(root);
     container.appendChild(root);
   }
