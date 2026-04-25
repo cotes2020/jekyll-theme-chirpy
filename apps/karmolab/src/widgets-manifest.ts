@@ -15,6 +15,7 @@ window.KARMOLAB_WIDGETS_BOOT = [
   'dashboard',
   'docs/docs',
   'servermonitor',
+  'activity',
   'devtools',
   'randomgen/randomgen'
 ];

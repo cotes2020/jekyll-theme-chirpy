@@ -65,6 +65,7 @@ const entryPoints = [
   'src/widgets/countdown.ts',
   'src/widgets/darkroom.ts',
   'src/widgets/dashboard.ts',
+  'src/widgets/activity.ts',
   'src/widgets/devtools.ts',
   'src/widgets/eyes.ts',
   'src/widgets/favorites.ts',
