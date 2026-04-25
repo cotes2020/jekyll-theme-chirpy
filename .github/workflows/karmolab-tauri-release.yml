@@ -57,8 +57,9 @@ jobs:
             cargo = cargo.replace(/^version = \".*\"/m, 'version = \"$NEW\"');
             fs.writeFileSync('src-tauri/Cargo.toml', cargo);
             let lock = fs.readFileSync('src-tauri/Cargo.lock', 'utf8');
-            lock = lock.replace(/(name = \"karmolab-desktop\"\nversion = )\".*\"/, '\$1\"$NEW\"');
-            fs.writeFileSync('src-tauri/Cargo.lock', lock);
+            const replaced = lock.replace(/(name = \"karmolab-desktop\"\s+version = )\"[^\"]*\"/, '\$1\"$NEW\"');
+            if (replaced === lock) throw new Error('Cargo.lock의 karmolab-desktop 버전 패턴을 찾지 못했습니다.');
+            fs.writeFileSync('src-tauri/Cargo.lock', replaced);
           "
           cd ../..
           git config user.name "github-actions[bot]"
