@@ -25,6 +25,50 @@
   };
 
   const SAMPLE_INTERVAL_SECS = 5;
+  const KST_OFFSET_SECS = 9 * 3600;
+
+  /// 자주 쓰는 Windows 프로세스명을 사람 친화적인 라벨로 매핑.
+  /// 매치 안 되는 건 원본 그대로 표시.
+  const PROCESS_LABELS: Record<string, string> = {
+    'Code.exe': 'VS Code',
+    'Cursor.exe': 'Cursor',
+    'devenv.exe': 'Visual Studio',
+    'Unity.exe': 'Unity Editor',
+    'Unity Hub.exe': 'Unity Hub',
+    'idea64.exe': 'IntelliJ IDEA',
+    'pycharm64.exe': 'PyCharm',
+    'rider64.exe': 'Rider',
+    'WindowsTerminal.exe': '터미널',
+    'pwsh.exe': 'PowerShell',
+    'powershell.exe': 'PowerShell',
+    'cmd.exe': '명령 프롬프트',
+    'mintty.exe': 'mintty',
+    'chrome.exe': 'Chrome',
+    'msedge.exe': 'Edge',
+    'firefox.exe': 'Firefox',
+    'whale.exe': 'Whale',
+    'explorer.exe': '탐색기',
+    'notepad.exe': '메모장',
+    'Discord.exe': 'Discord',
+    'Slack.exe': 'Slack',
+    'KakaoTalk.exe': '카카오톡',
+    'Telegram.exe': 'Telegram',
+    'Notion.exe': 'Notion',
+    'obsidian.exe': 'Obsidian',
+    'Photoshop.exe': 'Photoshop',
+    'Illustrator.exe': 'Illustrator',
+    'Figma.exe': 'Figma',
+    'Spotify.exe': 'Spotify',
+    'foobar2000.exe': 'foobar2000',
+    'Steam.exe': 'Steam',
+    'EpicGamesLauncher.exe': 'Epic Games',
+    'KarmoLab.exe': 'KarmoLab'
+  };
+
+  function readableProcessName(raw: string): string {
+    if (!raw) return '(unknown)';
+    return PROCESS_LABELS[raw] || raw;
+  }
 
   function desktopInvoke(cmd: string, args: unknown): Promise<unknown> {
     const core = window.__TAURI__?.core;
@@ -33,9 +77,27 @@
     return fn(cmd, args);
   }
 
-  function todayUtcDay(): string {
-    // 데이터는 UTC 기준 일별 파일이라 위젯도 UTC 일자를 키로 사용.
-    const d = new Date();
+  function todayKstDay(): string {
+    // KST 현재 일자.
+    const now = new Date();
+    const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60_000) + KST_OFFSET_SECS * 1000);
+    const y = kst.getUTCFullYear();
+    const m = String(kst.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(kst.getUTCDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+
+  /// KST 일자(YYYY-MM-DD) → 그 KST 일자가 시작하는 Unix epoch (UTC).
+  /// KST 자정 = UTC 자정 - 9h 이므로 epoch = Date.UTC(Y,M-1,D) - 9h.
+  function kstDayStartEpoch(kstDay: string): number {
+    const [y, m, d] = kstDay.split('-').map((s) => parseInt(s, 10));
+    const utcMidnight = Date.UTC(y, (m || 1) - 1, d || 1) / 1000;
+    return utcMidnight - KST_OFFSET_SECS;
+  }
+
+  /// 같은 일자의 epoch 시각이 속하는 UTC 일자 문자열 (YYYY-MM-DD).
+  function epochToUtcDay(epoch: number): string {
+    const d = new Date(epoch * 1000);
     const y = d.getUTCFullYear();
     const m = String(d.getUTCMonth() + 1).padStart(2, '0');
     const day = String(d.getUTCDate()).padStart(2, '0');
@@ -122,6 +184,7 @@
             }
             .activity-row-content { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
             .activity-row-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .activity-row-subtitle { font-weight: 400; color: var(--text-tertiary); font-size: var(--font-size-xs); margin-left: 6px; }
             .activity-row-time { color: var(--text-secondary); font-size: var(--font-size-sm); font-variant-numeric: tabular-nums; flex-shrink: 0; }
             .activity-titles {
                 position: relative; margin-top: 8px; padding-top: 8px;
@@ -145,7 +208,7 @@
     intro.className = 'activity-intro';
     const isApp = typeof Toolbox.isDesktopApp === 'function' && Toolbox.isDesktopApp();
     intro.innerHTML = isApp
-      ? `5초마다 포그라운드 윈도우를 샘플링합니다. 데이터는 전부 로컬에만 저장됩니다 (외부 전송 0). 60초 이상 입력 없으면 idle로 분류.`
+      ? `5초마다 포그라운드 윈도우를 샘플링합니다. 데이터는 전부 로컬에만 저장됩니다 (외부 전송 0). 60초 이상 입력 없으면 idle로 분류. 일자는 KST 기준으로 보여주지만 저장은 UTC 일자별 파일이라 KST 하루가 두 UTC 파일에 걸쳐 있을 수 있습니다.`
       : `데스크톱 앱 전용입니다. KarmoLab Tauri 앱으로 열어주세요.`;
     root.appendChild(intro);
 
@@ -161,10 +224,10 @@
     const controls = document.createElement('div');
     controls.className = 'activity-controls';
     const lab = document.createElement('label');
-    lab.textContent = '날짜 (UTC)';
+    lab.textContent = '날짜 (KST)';
     const dateIn = document.createElement('input');
     dateIn.type = 'date';
-    dateIn.value = todayUtcDay();
+    dateIn.value = todayKstDay();
     const refreshBtn = document.createElement('button');
     refreshBtn.type = 'button';
     refreshBtn.className = 'btn btn-secondary';
@@ -224,8 +287,10 @@
 
         const content = document.createElement('div');
         content.className = 'activity-row-content';
+        const labeled = readableProcessName(app.process);
+        const subtitle = labeled !== app.process ? ` <span class="activity-row-subtitle">${escapeHtml(app.process)}</span>` : '';
         content.innerHTML = `
-                    <span class="activity-row-name">${escapeHtml(app.process)}</span>
+                    <span class="activity-row-name">${escapeHtml(labeled)}${subtitle}</span>
                     <span class="activity-row-time">${escapeHtml(formatDuration(app.seconds))}</span>
                 `;
         row.appendChild(content);
@@ -251,13 +316,31 @@
     };
 
     const load = (): void => {
-      const day = dateIn.value || todayUtcDay();
+      const kstDay = dateIn.value || todayKstDay();
       activeEl.textContent = '…';
       idleEl.textContent = '…';
       listWrap.innerHTML = '';
-      void desktopInvoke('activity_query_day', { day })
-        .then(function (res: unknown) {
-          render(res as DayActivity);
+
+      // KST 자정 ~ 다음 KST 자정의 epoch 윈도우.
+      const startEpoch = kstDayStartEpoch(kstDay);
+      const endEpoch = startEpoch + 86400;
+      // 데이터는 UTC 일자로 분리 저장. KST 하루는 두 UTC 파일에 걸친다.
+      const utcDays = Array.from(new Set([
+        epochToUtcDay(startEpoch),
+        epochToUtcDay(endEpoch - 1)
+      ]));
+
+      Promise.all(
+        utcDays.map((day) => desktopInvoke('activity_query_day', { day }) as Promise<DayActivity>)
+      )
+        .then((results) => {
+          const merged: ActivitySample[] = [];
+          for (const r of results) {
+            for (const s of r.samples || []) {
+              if (s.ts >= startEpoch && s.ts < endEpoch) merged.push(s);
+            }
+          }
+          render({ day: kstDay, samples: merged });
         })
         .catch(function (err: unknown) {
           listWrap.innerHTML = '';
