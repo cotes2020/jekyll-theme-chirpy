@@ -54,6 +54,63 @@
     code?: number;
   };
 
+  /**
+   * dev profile별 현재 활성 로그 패널.
+   * `renderMergedServices`가 카드를 다시 그릴 때마다 새 panel ref로 갱신된다.
+   * `localdev-log` 이벤트(runId="follow")는 이 map을 lookup해서 해당 panel에 라인 append.
+   */
+  const followPanels = new Map<string, HTMLElement>();
+  let followListenerUnlisten: (() => void) | null = null;
+  let followListenerInstalling: Promise<void> | null = null;
+
+  function appendLineToPanel(panel: HTMLElement, stream: string, line: string): void {
+    const SM_LOG_MAX_LINES = 500;
+    const SM_LOG_MAX_BYTES = 256 * 1024;
+    const row = document.createElement('div');
+    row.className =
+      stream === 'err' ? 'sm-log-line sm-log-line-err' : 'sm-log-line sm-log-line-out';
+    row.textContent = line;
+    panel.appendChild(row);
+    while (panel.childElementCount > SM_LOG_MAX_LINES) {
+      panel.removeChild(panel.firstElementChild!);
+    }
+    let bytes = 0;
+    for (let i = 0; i < panel.children.length; i++) {
+      bytes += (panel.children[i].textContent || '').length + 1;
+    }
+    while (bytes > SM_LOG_MAX_BYTES && panel.firstElementChild) {
+      panel.removeChild(panel.firstElementChild);
+      bytes = 0;
+      for (let j = 0; j < panel.children.length; j++) {
+        bytes += (panel.children[j].textContent || '').length + 1;
+      }
+    }
+    panel.scrollTop = panel.scrollHeight;
+  }
+
+  /** 한 번만 등록되는 글로벌 follow listener. install/deploy stream과는 runId="follow"로 구분. */
+  async function ensureFollowListener(): Promise<void> {
+    if (followListenerUnlisten) return;
+    if (followListenerInstalling) return followListenerInstalling;
+    const listen = window.__TAURI__?.event?.listen as
+      | ((event: string, cb: (e: { payload: unknown }) => void) => Promise<() => void>)
+      | undefined;
+    if (typeof listen !== 'function') return;
+    followListenerInstalling = (async () => {
+      try {
+        followListenerUnlisten = await listen('localdev-log', (e: { payload: unknown }) => {
+          const pl = e.payload as LocaldevLogPayload;
+          if (pl.runId !== 'follow') return;
+          const panel = followPanels.get(pl.profileId);
+          if (panel) appendLineToPanel(panel, pl.stream, pl.line);
+        });
+      } finally {
+        followListenerInstalling = null;
+      }
+    })();
+    return followListenerInstalling;
+  }
+
   function isKarmolabDesktop(): boolean {
     return typeof window !== 'undefined' && !!window.__KARMOLAB_DESKTOP__;
   }
@@ -440,6 +497,8 @@
         unLog = await listen('localdev-log', (e: { payload: unknown }) => {
           const pl = e.payload as LocaldevLogPayload;
           if (pl.profileId !== profileId) return;
+          // follow 라인은 글로벌 follow listener가 같은 panel에 이미 append하므로 여기선 skip
+          if (pl.runId === 'follow') return;
           appendSmLogLine(logPanel, pl.stream, pl.line);
         });
         unDone = await listen('localdev-log-done', (e: { payload: unknown }) => {
@@ -660,7 +719,11 @@
 
           card.appendChild(actions);
 
-          if (streamActionBtns.length > 0) {
+          // dev profile 카드는 항상 로그 패널을 가진다.
+          // - 시작 버튼으로 띄운 봇의 stdout/stderr는 Rust가 로그 파일로 redirect하고
+          //   `localdev_follow_log`가 그 파일을 tail해서 `localdev-log`로 emit한다.
+          // - npm i / deploy 스트림도 같은 패널을 공유 (시간순으로 섞여 흐름).
+          {
             const logWrap = document.createElement('div');
             logWrap.className = 'sm-log-wrap';
             const hint = document.createElement('p');
@@ -674,6 +737,15 @@
             logWrap.appendChild(hint);
             logWrap.appendChild(logPanelEl);
             card.appendChild(logWrap);
+          }
+
+          // 카드 그릴 때마다 follow 패널 등록 + Rust follow 시작 (이미 follow 중이면 noop).
+          followPanels.set(p.id, logPanelEl!);
+          void ensureFollowListener();
+          if (typeof invoke === 'function') {
+            void invoke('localdev_follow_log', { profileId: p.id }).catch((e) => {
+              console.warn('[ServerMonitor] localdev_follow_log 실패', e);
+            });
           }
         }
 

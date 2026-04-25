@@ -2,9 +2,10 @@ mod local_dev;
 mod repo_file;
 
 use local_dev::{
-    localdev_deploy, localdev_deploy_stream, localdev_get_repo_root, localdev_list_tracked,
-    localdev_npm_install, localdev_npm_install_stream, localdev_set_repo_root, localdev_start,
-    localdev_stop, LocalDevState,
+    localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
+    localdev_list_tracked, localdev_npm_install, localdev_npm_install_stream,
+    localdev_set_repo_root, localdev_start, localdev_stop, localdev_stop_log_follow,
+    LocalDevState,
 };
 use repo_file::{repofile_open_default, repofile_read, repofile_reveal, repofile_write};
 use tauri::menu::{Menu, MenuItem};
@@ -19,7 +20,6 @@ use tauri::Emitter;
 use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
-use tauri_plugin_dialog::{DialogExt, MessageDialogButtons};
 use tauri_plugin_updater::UpdaterExt;
 
 #[cfg(windows)]
@@ -31,57 +31,55 @@ extern "system" {
 
 const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
 
-fn spawn_tray_update_check(handle: tauri::AppHandle) {
-    tauri::async_runtime::spawn(async move {
-        let current_ver = env!("CARGO_PKG_VERSION");
-        let msg = match handle.updater() {
-            Ok(updater) => match updater.check().await {
-                Ok(Some(update)) => {
-                    let new_ver = update.version.clone();
-                    let confirmed = ask_update_dialog(&handle, current_ver, &new_ver).await;
-                    if !confirmed {
-                        format!(
-                            "업데이트 취소됨 (현재: {}, 새 버전: {}).",
-                            current_ver, new_ver
-                        )
-                    } else {
-                        match update
-                            .download_and_install(|_chunk, _total| {}, || {})
-                            .await
-                        {
-                            Ok(()) => format!(
-                                "{} 설치됨. 앱을 완전히 종료한 뒤 다시 실행해 주세요.",
-                                new_ver
-                            ),
-                            Err(e) => format!("업데이트 설치 실패: {}", e),
-                        }
-                    }
-                }
-                Ok(None) => format!("현재 버전이 최신({})입니다.", current_ver),
-                Err(e) => format!("업데이트 확인 실패: {}", e),
-            },
-            Err(e) => format!("업데이터 초기화 실패: {}", e),
-        };
-        let _ = notify_rust::Notification::new()
-            .summary("KarmoLab 업데이트")
-            .body(&msg)
-            .appname("KarmoLab")
-            .show();
-    });
+#[derive(Clone, Copy)]
+enum UpdateCheckMode {
+    /// 시작 시 / 주기적 — 결과는 새 버전이 있을 때만 webview 배너로 알림.
+    Background,
+    /// 트레이 "업데이트 확인…" — 결과 없을 때도 OS 알림으로 응답하고, 있으면 창을 띄워 배너 노출.
+    Manual,
 }
 
-/// 백그라운드 자동 체크: 다이얼로그 띄우지 않고, 새 버전이 있으면 webview에 이벤트만 보냄.
-/// JS 쪽이 받아서 in-app 배너로 표시한다.
-fn spawn_startup_update_check(handle: tauri::AppHandle) {
+/// 업데이트 체크 통합 진입점. 새 버전이 있으면 항상 webview에 이벤트를 emit하고, manual 모드에선
+/// 창을 띄워 배너가 보이게 한다. 결과 없음·에러는 manual 모드에서만 OS 알림으로 통지한다.
+fn spawn_update_check(handle: tauri::AppHandle, mode: UpdateCheckMode) {
     tauri::async_runtime::spawn(async move {
         let current = env!("CARGO_PKG_VERSION");
-        if let Ok(updater) = handle.updater() {
-            if let Ok(Some(update)) = updater.check().await {
+        let result = match handle.updater() {
+            Ok(updater) => updater.check().await.map_err(|e| e.to_string()),
+            Err(e) => Err(format!("업데이터 초기화 실패: {}", e)),
+        };
+        match result {
+            Ok(Some(update)) => {
                 let payload = serde_json::json!({
                     "current": current,
                     "new": update.version,
                 });
                 let _ = handle.emit("karmolab://update-available", payload);
+                if matches!(mode, UpdateCheckMode::Manual) {
+                    if let Some(w) = handle.get_webview_window("main") {
+                        let _ = w.unminimize();
+                        let _ = w.show();
+                        let _ = w.set_focus();
+                    }
+                }
+            }
+            Ok(None) => {
+                if matches!(mode, UpdateCheckMode::Manual) {
+                    let _ = notify_rust::Notification::new()
+                        .summary("KarmoLab 업데이트")
+                        .body(&format!("이미 최신 버전({})입니다.", current))
+                        .appname("KarmoLab")
+                        .show();
+                }
+            }
+            Err(e) => {
+                if matches!(mode, UpdateCheckMode::Manual) {
+                    let _ = notify_rust::Notification::new()
+                        .summary("KarmoLab 업데이트")
+                        .body(&format!("업데이트 확인 실패: {}", e))
+                        .appname("KarmoLab")
+                        .show();
+                }
             }
         }
     });
@@ -102,8 +100,13 @@ async fn desktop_install_pending_update(handle: tauri::AppHandle) -> Result<Stri
         .ok_or_else(|| format!("이미 최신 버전({})입니다.", current))?;
     let new_ver = update.version.clone();
 
+    /// 청크 콜백이 너무 자주 (수백~수천 회) 호출될 수 있어, 256KB마다 또는 다운로드 완료 시점에만 emit.
+    const PROGRESS_EMIT_THRESHOLD: u64 = 256 * 1024;
+
     let downloaded = Arc::new(AtomicU64::new(0));
+    let last_emitted = Arc::new(AtomicU64::new(0));
     let downloaded_cb = downloaded.clone();
+    let last_emitted_cb = last_emitted.clone();
     let handle_chunk = handle.clone();
     let handle_finish = handle.clone();
 
@@ -112,13 +115,19 @@ async fn desktop_install_pending_update(handle: tauri::AppHandle) -> Result<Stri
             move |chunk_size, total| {
                 let cur = downloaded_cb.fetch_add(chunk_size as u64, Ordering::Relaxed)
                     + chunk_size as u64;
-                let _ = handle_chunk.emit(
-                    "karmolab://update-progress",
-                    serde_json::json!({
-                        "downloaded": cur,
-                        "total": total.unwrap_or(0),
-                    }),
-                );
+                let total_bytes = total.unwrap_or(0);
+                let last = last_emitted_cb.load(Ordering::Relaxed);
+                let is_complete = total_bytes > 0 && cur >= total_bytes;
+                if cur.saturating_sub(last) >= PROGRESS_EMIT_THRESHOLD || is_complete {
+                    last_emitted_cb.store(cur, Ordering::Relaxed);
+                    let _ = handle_chunk.emit(
+                        "karmolab://update-progress",
+                        serde_json::json!({
+                            "downloaded": cur,
+                            "total": total_bytes,
+                        }),
+                    );
+                }
             },
             move || {
                 let _ = handle_finish.emit("karmolab://update-download-finished", ());
@@ -133,23 +142,6 @@ async fn desktop_install_pending_update(handle: tauri::AppHandle) -> Result<Stri
 #[tauri::command]
 fn desktop_restart_app(handle: tauri::AppHandle) {
     handle.restart();
-}
-
-async fn ask_update_dialog(handle: &tauri::AppHandle, current: &str, new: &str) -> bool {
-    let prompt = format!(
-        "현재 버전: {}\n새 버전: {}\n\n업데이트하시겠습니까?",
-        current, new
-    );
-    let h = handle.clone();
-    tauri::async_runtime::spawn_blocking(move || {
-        h.dialog()
-            .message(&prompt)
-            .title("KarmoLab 업데이트")
-            .buttons(MessageDialogButtons::OkCancel)
-            .blocking_show()
-    })
-    .await
-    .unwrap_or(false)
 }
 
 /// 데스크톱 앱 플래그·버전을 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
@@ -376,6 +368,8 @@ pub fn run() {
             localdev_list_tracked,
             localdev_start,
             localdev_stop,
+            localdev_follow_log,
+            localdev_stop_log_follow,
             localdev_npm_install,
             localdev_npm_install_stream,
             localdev_deploy,
@@ -386,7 +380,6 @@ pub fn run() {
             repofile_write
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())
-        .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
             if let Some(w) = app.get_webview_window("main") {
                 let _ = w.unminimize();
@@ -441,7 +434,7 @@ pub fn run() {
                 std::thread::spawn(move || {
                     std::thread::sleep(std::time::Duration::from_secs(10));
                     loop {
-                        spawn_startup_update_check(h.clone());
+                        spawn_update_check(h.clone(), UpdateCheckMode::Background);
                         std::thread::sleep(std::time::Duration::from_secs(6 * 3600));
                     }
                 });
@@ -474,7 +467,7 @@ pub fn run() {
                             } else if event.id == "tray_browser" {
                                 let _ = open::that(KARMOLAB_WEB_URL);
                             } else if event.id == "tray_update" {
-                                spawn_tray_update_check(app.clone());
+                                spawn_update_check(app.clone(), UpdateCheckMode::Manual);
                             } else if event.id == "tray_quit" {
                                 app.exit(0);
                             }

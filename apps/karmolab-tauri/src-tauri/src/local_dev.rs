@@ -1,13 +1,16 @@
 use serde::Deserialize;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
+use std::fs;
+use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
-use std::sync::Mutex;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::{Arc, Mutex};
 use std::thread;
-use tauri::Emitter;
-use tauri::State;
+use std::time::Duration;
+use tauri::{Emitter, Manager, State};
 
 #[cfg(windows)]
 use std::os::windows::process::CommandExt;
@@ -23,6 +26,10 @@ pub struct LocalDevState {
     pub pids: Mutex<HashMap<String, u32>>,
     /// 프로필당 동시에 하나의 스트리밍 npm/deploy 작업만 허용
     stream_busy: Mutex<HashSet<String>>,
+    /// profile_id → 살아있는 로그 follow thread의 stop flag.
+    /// `localdev_follow_log`로 등록되고 `localdev_stop_log_follow` 또는
+    /// thread 자체 종료 시점에 제거된다.
+    log_followers: Mutex<HashMap<String, Arc<AtomicBool>>>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -124,14 +131,43 @@ fn apply_no_window(cmd: &mut Command) {
     cmd.creation_flags(CREATE_NO_WINDOW);
 }
 
+/// 카모랩 로그 디렉토리. `<app_local_data_dir>/localdev-logs/`. 매 호출 시 dir 보장.
+fn log_dir(app: &tauri::AppHandle) -> Result<PathBuf, String> {
+    let base = app
+        .path()
+        .app_local_data_dir()
+        .map_err(|e| format!("app_local_data_dir 조회 실패: {}", e))?;
+    let dir = base.join("localdev-logs");
+    fs::create_dir_all(&dir).map_err(|e| format!("로그 디렉토리 생성 실패: {}", e))?;
+    Ok(dir)
+}
+
+/// 프로필 로그 파일 경로 (디렉토리는 보장됨).
+fn log_file_path(app: &tauri::AppHandle, profile_id: &str) -> Result<PathBuf, String> {
+    Ok(log_dir(app)?.join(format!("{}.log", profile_id)))
+}
+
 /// Windows에서 `npm`/`npx`는 `cmd /C`로 실행해 PATH의 `.cmd` 런처와 맞춘다.
-fn spawn_detached_process(program: &str, args: &[String], cwd: &Path) -> Result<u32, String> {
+/// stdout/stderr는 `log_path`에 truncate redirect — 카모랩이 죽어도 자식이
+/// 직접 파일 핸들을 들고 있으므로 계속 기록된다.
+fn spawn_detached_process(
+    program: &str,
+    args: &[String],
+    cwd: &Path,
+    log_path: &Path,
+) -> Result<u32, String> {
     if !program_allowed(program) {
         return Err(format!("허용되지 않은 program: {}", program));
     }
     if !args_are_safe(args) {
         return Err("인자에 허용되지 않은 문자가 있습니다.".into());
     }
+
+    let log_file = File::create(log_path)
+        .map_err(|e| format!("로그 파일 생성 실패 ({}): {}", log_path.display(), e))?;
+    let log_file_err = log_file
+        .try_clone()
+        .map_err(|e| format!("로그 파일 핸들 복제 실패: {}", e))?;
 
     let mut cmd;
     #[cfg(windows)]
@@ -159,8 +195,8 @@ fn spawn_detached_process(program: &str, args: &[String], cwd: &Path) -> Result<
 
     cmd.current_dir(cwd);
     cmd.stdin(Stdio::null());
-    cmd.stdout(Stdio::null());
-    cmd.stderr(Stdio::null());
+    cmd.stdout(Stdio::from(log_file));
+    cmd.stderr(Stdio::from(log_file_err));
     apply_no_window(&mut cmd);
 
     let mut child = cmd.spawn().map_err(|e| format!("실행 실패: {}", e))?;
@@ -451,8 +487,107 @@ pub fn localdev_list_tracked(state: State<'_, LocalDevState>) -> Result<Vec<Stri
     Ok(pids.keys().cloned().collect())
 }
 
+/// 프로필 로그 파일을 background에서 tail. 새 라인이 들어올 때마다
+/// `localdev-log` 이벤트로 emit (run_id="follow"). 파일이 아직 없거나
+/// EOF에 도달하면 짧게 sleep 후 재시도. `localdev_stop_log_follow`로 중단.
+/// 같은 profile_id로 이미 follower가 있으면 noop.
 #[tauri::command]
-pub fn localdev_start(profile_id: String, state: State<'_, LocalDevState>) -> Result<(), String> {
+pub fn localdev_follow_log(
+    profile_id: String,
+    app: tauri::AppHandle,
+    state: State<'_, LocalDevState>,
+) -> Result<(), String> {
+    let log_path = log_file_path(&app, &profile_id)?;
+
+    {
+        let mut followers = state.log_followers.lock().map_err(|e| e.to_string())?;
+        if followers.contains_key(&profile_id) {
+            return Ok(());
+        }
+        let stop = Arc::new(AtomicBool::new(false));
+        followers.insert(profile_id.clone(), stop.clone());
+
+        let app_thread = app.clone();
+        let pid_thread = profile_id.clone();
+        let stop_thread = stop;
+        thread::spawn(move || {
+            tail_log_loop(app_thread.clone(), pid_thread.clone(), log_path, stop_thread);
+            // 자연 종료 시 스스로 followers map에서 제거 (정상 stop이면
+            // localdev_stop_log_follow가 이미 제거했으니 noop)
+            if let Some(state) = app_thread.try_state::<LocalDevState>() {
+                if let Ok(mut f) = state.log_followers.lock() {
+                    f.remove(&pid_thread);
+                }
+            }
+        });
+    }
+    Ok(())
+}
+
+#[tauri::command]
+pub fn localdev_stop_log_follow(
+    profile_id: String,
+    state: State<'_, LocalDevState>,
+) -> Result<(), String> {
+    let mut followers = state.log_followers.lock().map_err(|e| e.to_string())?;
+    if let Some(stop) = followers.remove(&profile_id) {
+        stop.store(true, Ordering::Relaxed);
+    }
+    Ok(())
+}
+
+/// 파일이 없으면 잠깐 기다렸다 재시도. EOF면 폴링.
+/// stop flag가 true가 되면 즉시 종료.
+fn tail_log_loop(
+    app: tauri::AppHandle,
+    profile_id: String,
+    log_path: PathBuf,
+    stop: Arc<AtomicBool>,
+) {
+    let mut reader: Option<BufReader<File>> = None;
+    let mut buf = String::new();
+
+    while !stop.load(Ordering::Relaxed) {
+        if reader.is_none() {
+            match File::open(&log_path) {
+                Ok(f) => reader = Some(BufReader::new(f)),
+                Err(_) => {
+                    thread::sleep(Duration::from_millis(500));
+                    continue;
+                }
+            }
+        }
+        let r = reader.as_mut().expect("reader present");
+        buf.clear();
+        match r.read_line(&mut buf) {
+            Ok(0) => {
+                thread::sleep(Duration::from_millis(300));
+            }
+            Ok(_) => {
+                let line = buf.trim_end_matches(['\r', '\n']).to_string();
+                let payload = LocaldevLogLineEvt {
+                    run_id: "follow".to_string(),
+                    profile_id: profile_id.clone(),
+                    stream: "out".to_string(),
+                    line,
+                };
+                let _ = app.emit("localdev-log", &payload);
+            }
+            Err(_) => {
+                // 파일이 truncate(재시작)됐거나 IO 에러 — reader 버리고 재오픈
+                reader = None;
+                thread::sleep(Duration::from_millis(500));
+            }
+        }
+    }
+}
+
+#[tauri::command]
+pub fn localdev_start(
+    profile_id: String,
+    app: tauri::AppHandle,
+    state: State<'_, LocalDevState>,
+) -> Result<(), String> {
     let repo_str = {
         let g = state.repo_root.lock().map_err(|e| e.to_string())?;
         g.clone()
@@ -477,7 +612,8 @@ pub fn localdev_start(profile_id: String, state: State<'_, LocalDevState>) -> Re
     }
 
     let cwd = resolve_cwd(&repo, profile)?;
-    let pid = spawn_detached_process(&profile.program, &profile.args, &cwd)?;
+    let log_path = log_file_path(&app, &profile_id)?;
+    let pid = spawn_detached_process(&profile.program, &profile.args, &cwd, &log_path)?;
 
     let mut pids = state.pids.lock().map_err(|e| e.to_string())?;
     pids.insert(profile_id, pid);
