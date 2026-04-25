@@ -406,12 +406,16 @@ pub fn run() {
 
             #[cfg(not(debug_assertions))]
             {
-                // 앱 시작 ~10s 뒤에 백그라운드로 새 버전을 확인. 있으면 webview에 이벤트만 보내고
-                // 실제 설치는 in-app 배너의 "지금 설치"를 사용자가 누를 때 진행한다.
+                // 백그라운드 업데이트 체크: 시작 ~10s 뒤 첫 체크, 이후 6시간마다 재확인.
+                // 새 버전이 발견되면 webview로 이벤트만 보내고, 설치는 in-app 배너의 "지금 설치"
+                // 또는 트레이의 "업데이트 확인…"을 사용자가 누를 때 진행한다.
                 let h = handle.clone();
                 std::thread::spawn(move || {
                     std::thread::sleep(std::time::Duration::from_secs(10));
-                    spawn_startup_update_check(h);
+                    loop {
+                        spawn_startup_update_check(h.clone());
+                        std::thread::sleep(std::time::Duration::from_secs(6 * 3600));
+                    }
                 });
             }
 

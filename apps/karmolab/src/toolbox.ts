@@ -280,6 +280,8 @@ const Toolbox = (() => {
         } catch (_) {}
     }
 
+    const UPDATE_DISMISS_KEY = 'karmolab-update-dismissed-version';
+
     function setupUpdateBannerListener() {
         if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
         const listenFn = window.__TAURI__?.event?.listen;
@@ -287,6 +289,10 @@ const Toolbox = (() => {
         listenFn('karmolab://update-available', (e) => {
             const payload = (e?.payload || {}) as { current?: string; new?: string };
             if (!payload.new) return;
+            // 사용자가 이미 닫은 버전이면 다시 띄우지 않는다 (수동으로 트레이 메뉴 사용 가능).
+            try {
+                if (localStorage.getItem(UPDATE_DISMISS_KEY) === payload.new) return;
+            } catch (_) { /* localStorage 차단 환경 무시 */ }
             showUpdateBanner(payload.current || '?', payload.new);
         }).catch(() => {});
     }
@@ -316,7 +322,10 @@ const Toolbox = (() => {
         banner.appendChild(closeBtn);
         document.body.appendChild(banner);
 
-        closeBtn.addEventListener('click', () => banner.remove());
+        closeBtn.addEventListener('click', () => {
+            try { localStorage.setItem(UPDATE_DISMISS_KEY, newVer); } catch (_) { /* ignore */ }
+            banner.remove();
+        });
 
         installBtn.addEventListener('click', () => {
             installBtn.disabled = true;
