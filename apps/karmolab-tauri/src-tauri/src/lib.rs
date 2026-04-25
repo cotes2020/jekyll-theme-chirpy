@@ -174,13 +174,26 @@ fn desktop_notify(
 }
 
 #[tauri::command]
-fn desktop_trigger_release_workflow(ref_name: Option<String>) -> Result<String, String> {
+fn desktop_trigger_release_workflow(
+    ref_name: Option<String>,
+    bump_type: Option<String>,
+) -> Result<String, String> {
     let repo = "mascari4615/mascari4615.github.io";
     let workflow = "KarmoLab Tauri Release";
     let selected_ref = ref_name
         .map(|value| value.trim().to_string())
         .filter(|value| !value.is_empty())
         .unwrap_or_else(|| "master".to_string());
+    let selected_bump = bump_type
+        .map(|value| value.trim().to_string())
+        .filter(|value| !value.is_empty())
+        .unwrap_or_else(|| "none".to_string());
+    if !matches!(selected_bump.as_str(), "none" | "patch" | "minor" | "major") {
+        return Err(format!(
+            "bumpType 값은 none|patch|minor|major 중 하나여야 합니다. 받은 값: {}",
+            selected_bump
+        ));
+    }
 
     let probe = Command::new("gh")
         .args(["--version"])
@@ -190,6 +203,7 @@ fn desktop_trigger_release_workflow(ref_name: Option<String>) -> Result<String, 
         return Err("gh CLI 실행에 실패했습니다. gh auth status로 로그인 상태를 확인하세요.".to_string());
     }
 
+    let bump_field = format!("bumpType={}", selected_bump);
     let run_output = Command::new("gh")
         .args([
             "workflow",
@@ -199,6 +213,8 @@ fn desktop_trigger_release_workflow(ref_name: Option<String>) -> Result<String, 
             repo,
             "--ref",
             selected_ref.as_str(),
+            "--field",
+            bump_field.as_str(),
         ])
         .output()
         .map_err(|e| format!("workflow 실행 명령 호출 실패: {}", e))?;
@@ -236,13 +252,13 @@ fn desktop_trigger_release_workflow(ref_name: Option<String>) -> Result<String, 
 
     if maybe_url.is_empty() {
         Ok(format!(
-            "워크플로 실행 요청 완료 (repo: {}, ref: {}). GitHub Actions에서 상태를 확인하세요.",
-            repo, selected_ref
+            "워크플로 실행 요청 완료 (repo: {}, ref: {}, bump: {}). GitHub Actions에서 상태를 확인하세요.",
+            repo, selected_ref, selected_bump
         ))
     } else {
         Ok(format!(
-            "워크플로 실행 요청 완료 (repo: {}, ref: {}).\n{}",
-            repo, selected_ref, maybe_url
+            "워크플로 실행 요청 완료 (repo: {}, ref: {}, bump: {}).\n{}",
+            repo, selected_ref, selected_bump, maybe_url
         ))
     }
 }

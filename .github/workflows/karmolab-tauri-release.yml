@@ -2,6 +2,17 @@ name: KarmoLab Tauri Release
 
 on:
   workflow_dispatch:
+    inputs:
+      bumpType:
+        description: 'Version bump (실행 전에 tauri.conf.json·Cargo.toml·package.json·Cargo.lock 동시 패치 후 master에 푸시)'
+        required: false
+        default: 'none'
+        type: choice
+        options:
+          - none
+          - patch
+          - minor
+          - major
   push:
     tags:
       - "karmolab-v*"
@@ -18,6 +29,43 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump version
+        if: github.event_name == 'workflow_dispatch' && inputs.bumpType != 'none'
+        shell: bash
+        run: |
+          set -e
+          CURRENT=$(node -p "require('./src-tauri/tauri.conf.json').version")
+          IFS='.' read -r MA MI PA <<< "$CURRENT"
+          case "${{ inputs.bumpType }}" in
+            patch) PA=$((PA + 1)) ;;
+            minor) MI=$((MI + 1)); PA=0 ;;
+            major) MA=$((MA + 1)); MI=0; PA=0 ;;
+          esac
+          NEW="$MA.$MI.$PA"
+          echo "Bump $CURRENT → $NEW"
+          node -e "
+            const fs = require('fs');
+            for (const p of ['package.json', 'src-tauri/tauri.conf.json']) {
+              const j = JSON.parse(fs.readFileSync(p, 'utf8'));
+              j.version = '$NEW';
+              fs.writeFileSync(p, JSON.stringify(j, null, 2) + '\n');
+            }
+            let cargo = fs.readFileSync('src-tauri/Cargo.toml', 'utf8');
+            cargo = cargo.replace(/^version = \".*\"/m, 'version = \"$NEW\"');
+            fs.writeFileSync('src-tauri/Cargo.toml', cargo);
+            let lock = fs.readFileSync('src-tauri/Cargo.lock', 'utf8');
+            lock = lock.replace(/(name = \"karmolab-desktop\"\nversion = )\".*\"/, '\$1\"$NEW\"');
+            fs.writeFileSync('src-tauri/Cargo.lock', lock);
+          "
+          cd ../..
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/karmolab-tauri/package.json apps/karmolab-tauri/src-tauri/Cargo.toml apps/karmolab-tauri/src-tauri/Cargo.lock apps/karmolab-tauri/src-tauri/tauri.conf.json
+          git commit -m "chore(karmolab-tauri): bump version $CURRENT → $NEW [skip ci]"
+          git push origin HEAD:master
 
       - name: Setup Node
         uses: actions/setup-node@v4

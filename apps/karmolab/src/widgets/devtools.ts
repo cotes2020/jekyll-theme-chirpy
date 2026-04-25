@@ -192,6 +192,29 @@
     refIn.placeholder = 'master';
     refIn.disabled = !isApp;
 
+    const bumpRow = document.createElement('div');
+    bumpRow.className = 'devtools-field';
+    const bumpLab = document.createElement('label');
+    bumpLab.className = 'devtools-field-label';
+    bumpLab.textContent = 'version bump';
+    const bumpSel = document.createElement('select');
+    bumpSel.className = 'devtools-select';
+    bumpSel.disabled = !isApp;
+    (
+      [
+        ['patch', 'patch (0.1.1 → 0.1.2)'],
+        ['minor', 'minor (0.1.1 → 0.2.0)'],
+        ['major', 'major (0.1.1 → 1.0.0)'],
+        ['none', 'none (버전 그대로 — 같은 태그 덮어쓰기)']
+      ] as const
+    ).forEach(function (opt) {
+      const o = document.createElement('option');
+      o.value = opt[0];
+      o.textContent = opt[1];
+      bumpSel.appendChild(o);
+    });
+    bumpSel.value = 'patch';
+
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'btn btn-primary';
@@ -201,14 +224,18 @@
     const status = document.createElement('div');
     status.className = 'devtools-log';
     status.textContent = isApp
-      ? '실행 시 GitHub Actions workflow_dispatch를 호출합니다.'
+      ? '실행 시 GitHub Actions workflow_dispatch를 호출합니다. bump≠none이면 워크플로가 master에 버전 bump 커밋을 직접 푸시합니다.'
       : '데스크톱 앱이 아니면 비활성입니다.';
 
     btn.addEventListener('click', function () {
       const selectedRef = (refIn.value || '').trim() || 'master';
+      const selectedBump = bumpSel.value || 'patch';
       status.className = 'devtools-log';
-      status.textContent = `요청 중…\nworkflow: KarmoLab Tauri Release\nref: ${selectedRef}`;
-      void desktopInvoke('desktop_trigger_release_workflow', { refName: selectedRef })
+      status.textContent = `요청 중…\nworkflow: KarmoLab Tauri Release\nref: ${selectedRef}\nbump: ${selectedBump}`;
+      void desktopInvoke('desktop_trigger_release_workflow', {
+        refName: selectedRef,
+        bumpType: selectedBump
+      })
         .then(function (res: unknown) {
           status.className = 'devtools-log devtools-log-ok';
           status.textContent = typeof res === 'string' ? res : JSON.stringify(res, null, 2);
@@ -223,9 +250,12 @@
 
     row.appendChild(lab);
     row.appendChild(refIn);
+    bumpRow.appendChild(bumpLab);
+    bumpRow.appendChild(bumpSel);
     sec.appendChild(h);
     sec.appendChild(p);
     sec.appendChild(row);
+    sec.appendChild(bumpRow);
     sec.appendChild(btn);
     sec.appendChild(status);
     wrap.appendChild(sec);
