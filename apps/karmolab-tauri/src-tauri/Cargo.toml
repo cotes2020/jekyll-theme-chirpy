@@ -21,4 +21,5 @@ tauri = { version = "2", features = ["tray-icon", "image-png"] }
 uuid = { version = "1", features = ["v4"] }
 tauri-plugin-single-instance = "2"
 tauri-plugin-updater = "2"
+tauri-plugin-dialog = "2"
 

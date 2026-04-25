@@ -15,6 +15,7 @@ use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
 use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
+use tauri_plugin_dialog::{DialogExt, MessageDialogButtons};
 use tauri_plugin_updater::UpdaterExt;
 use std::process::Command;
 
@@ -29,22 +30,31 @@ const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
 
 fn spawn_tray_update_check(handle: tauri::AppHandle) {
     tauri::async_runtime::spawn(async move {
+        let current_ver = env!("CARGO_PKG_VERSION");
         let msg = match handle.updater() {
             Ok(updater) => match updater.check().await {
                 Ok(Some(update)) => {
-                    let ver = update.version.clone();
-                    match update
-                        .download_and_install(|_chunk, _total| {}, || {})
-                        .await
-                    {
-                        Ok(()) => format!(
-                            "{} 설치됨. 앱을 완전히 종료한 뒤 다시 실행해 주세요.",
-                            ver
-                        ),
-                        Err(e) => format!("업데이트 설치 실패: {}", e),
+                    let new_ver = update.version.clone();
+                    let confirmed = ask_update_dialog(&handle, current_ver, &new_ver).await;
+                    if !confirmed {
+                        format!(
+                            "업데이트 취소됨 (현재: {}, 새 버전: {}).",
+                            current_ver, new_ver
+                        )
+                    } else {
+                        match update
+                            .download_and_install(|_chunk, _total| {}, || {})
+                            .await
+                        {
+                            Ok(()) => format!(
+                                "{} 설치됨. 앱을 완전히 종료한 뒤 다시 실행해 주세요.",
+                                new_ver
+                            ),
+                            Err(e) => format!("업데이트 설치 실패: {}", e),
+                        }
                     }
                 }
-                Ok(None) => "현재 버전이 최신입니다.".to_string(),
+                Ok(None) => format!("현재 버전이 최신({})입니다.", current_ver),
                 Err(e) => format!("업데이트 확인 실패: {}", e),
             },
             Err(e) => format!("업데이터 초기화 실패: {}", e),
@@ -55,6 +65,23 @@ fn spawn_tray_update_check(handle: tauri::AppHandle) {
             .appname("KarmoLab")
             .show();
     });
+}
+
+async fn ask_update_dialog(handle: &tauri::AppHandle, current: &str, new: &str) -> bool {
+    let prompt = format!(
+        "현재 버전: {}\n새 버전: {}\n\n업데이트하시겠습니까?",
+        current, new
+    );
+    let h = handle.clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        h.dialog()
+            .message(&prompt)
+            .title("KarmoLab 업데이트")
+            .buttons(MessageDialogButtons::OkCancel)
+            .blocking_show()
+    })
+    .await
+    .unwrap_or(false)
 }
 
 /// 데스크톱 앱 플래그·버전을 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
@@ -289,6 +316,7 @@ pub fn run() {
             repofile_write
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
             if let Some(w) = app.get_webview_window("main") {
                 let _ = w.unminimize();
