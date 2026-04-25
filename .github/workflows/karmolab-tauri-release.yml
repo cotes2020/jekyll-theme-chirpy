@@ -93,7 +93,7 @@ jobs:
           args: --config src-tauri/tauri.release.conf.json
           tagName: karmolab-v__VERSION__
           releaseName: KarmoLab v__VERSION__
-          releaseBody: KarmoLab Windows release.
+          generateReleaseNotes: true
           releaseDraft: false
           prerelease: false
           includeUpdaterJson: true
