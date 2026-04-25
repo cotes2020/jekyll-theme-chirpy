@@ -23,13 +23,14 @@ const DEFAULT_COSINE_THRESHOLD = 0.75;
 
 export interface CacheEntry {
   id: string;
-  tags: string[];
+  /** 영어 씬 묘사 (Imagen 프롬프트의 Scene 부분, 임베딩·표시 공통 소스) */
+  sceneDesc: string;
   prompt: string;
   filePath: string;
   mimeType: string;
   createdAt: string;
   hitCount: number;
-  /** Gemini text-embedding-004 벡터 (정규화됨). 없으면 Jaccard 폴백. */
+  /** Gemini text-embedding 벡터 (정규화됨). sceneDesc로 생성. */
   embedding?: number[];
 }
 
@@ -41,7 +42,7 @@ interface ImageLogEntry {
   timestamp: string;
   type: 'generated' | 'cache_hit';
   id: string;
-  tags: string[];
+  sceneDesc: string;
   model?: string;
   costUsd?: number;
 }
@@ -152,7 +153,7 @@ export class ImageCacheService {
 
     if (best) {
       console.log(
-        `[ImageCache] 히트: id=${best.id}, 유사도=${bestScore.toFixed(3)}, 태그=${best.tags.join(',')}`,
+        `[ImageCache] 히트: id=${best.id}, 유사도=${bestScore.toFixed(3)}, scene="${best.sceneDesc.slice(0, 60)}"`,
       );
     }
     return best;
@@ -166,22 +167,20 @@ export class ImageCacheService {
       timestamp: new Date().toISOString(),
       type: 'cache_hit',
       id: entry.id,
-      tags: entry.tags,
+      sceneDesc: entry.sceneDesc,
     });
   }
 
   /**
    * 이미지 버퍼를 파일로 저장하고 인덱스에 추가 + 로그 기록 + git commit.
-   *
-   * `sceneDesc`가 있으면 Gemini 임베딩을 계산해서 `CacheEntry.embedding`에 저장한다.
+   * `sceneDesc`로 임베딩을 계산해 저장 (실패 시 embedding 없이 저장).
    */
   async add(
-    tags: string[],
+    sceneDesc: string,
     prompt: string,
     buffer: Buffer,
     mimeType: string,
     modelId?: string,
-    sceneDesc?: string,
   ): Promise<CacheEntry> {
     this.ensureDir();
     const id = crypto.randomBytes(8).toString('hex');
@@ -190,17 +189,15 @@ export class ImageCacheService {
     fs.writeFileSync(filePath, buffer);
 
     let embedding: number[] | undefined;
-    if (sceneDesc) {
-      try {
-        embedding = await generateEmbedding(process.env, sceneDesc);
-      } catch (e) {
-        console.warn('[ImageCache] 저장 시 embedding 실패 (건너뜀):', e instanceof Error ? e.message : String(e));
-      }
+    try {
+      embedding = await generateEmbedding(process.env, sceneDesc);
+    } catch (e) {
+      console.warn('[ImageCache] 저장 시 embedding 실패 (건너뜀):', e instanceof Error ? e.message : String(e));
     }
 
     const entry: CacheEntry = {
       id,
-      tags,
+      sceneDesc,
       prompt,
       filePath,
       mimeType,
@@ -218,7 +215,7 @@ export class ImageCacheService {
       timestamp: entry.createdAt,
       type: 'generated',
       id,
-      tags,
+      sceneDesc,
     };
     if (modelId) {
       logEntry.model = modelId;
@@ -236,7 +233,7 @@ export class ImageCacheService {
     this.writeLog(logEntry);
 
     const embeddingLabel = embedding ? `, embedding=${embedding.length}d` : '';
-    console.log(`[ImageCache] 저장: id=${id}, 태그=${tags.join(',')}${embeddingLabel}`);
+    console.log(`[ImageCache] 저장: id=${id}, scene="${sceneDesc.slice(0, 60)}"${embeddingLabel}`);
     this.commitToGit(entry);
     return entry;
   }
@@ -283,7 +280,7 @@ export class ImageCacheService {
         { stdio: 'pipe' },
       );
       execSync(
-        `git -C "${this.memoRepoPath}" commit -m "feat(${this.slug}): 씬 이미지 캐시 추가 [${entry.tags.join(', ')}]"`,
+        `git -C "${this.memoRepoPath}" commit -m "feat(${this.slug}): 씬 이미지 캐시 추가 [${entry.sceneDesc.slice(0, 80)}]"`,
         { stdio: 'pipe' },
       );
       console.log(`[ImageCache:${this.slug}] git commit 완료 (${entry.id})`);

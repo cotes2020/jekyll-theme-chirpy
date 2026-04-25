@@ -36,7 +36,7 @@ function buildGalleryEmbed(entry: CacheEntry, index: number, total: number, slug
   const createdAt = new Date(entry.createdAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
   return new EmbedBuilder()
     .setTitle(`🖼️ ${slug} 갤러리 (${index + 1} / ${total})`)
-    .setDescription(`**태그**: ${entry.tags.join(', ') || '없음'}`)
+    .setDescription(`**Scene**: ${entry.sceneDesc?.slice(0, 300) || '(없음)'}`)
     .addFields(
       { name: '생성일', value: createdAt, inline: true },
       { name: '재사용', value: `${entry.hitCount}회`, inline: true },

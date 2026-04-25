@@ -295,8 +295,9 @@ export async function handleCharacterImageHistory(ctx: BotContext, interaction: 
 
   for (const entry of sorted) {
     const date = new Date(entry.createdAt).toLocaleDateString('ko-KR');
+    const sceneLabel = entry.sceneDesc?.slice(0, 100) || '(no scene)';
     embed.addFields({
-      name: entry.tags.join(', '),
+      name: sceneLabel,
       value: `히트: ${entry.hitCount}회 · ${date} · \`${entry.id.slice(0, 8)}\``,
       inline: false,
     });

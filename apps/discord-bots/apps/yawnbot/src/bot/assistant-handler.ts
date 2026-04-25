@@ -138,20 +138,15 @@ async function updateMoodAfterConversation(
   }
 }
 
-interface SceneDetection {
-  tags: string[];       // 캐시 키용 짧은 태그
-  sceneDesc: string;    // 이미지 프롬프트용 상세 묘사
-}
-
 /**
- * 대화 맥락에서 이미지 씬을 감지. 태그(캐시용) + 상세 묘사(프롬프트용) 반환.
+ * 대화 맥락에서 이미지 씬을 감지. Imagen 프롬프트용 영어 상세 묘사 반환.
  * LLM이 "SKIP" 반환하거나 에러나면 null.
  */
-async function detectSceneTags(
+async function detectScene(
   slug: string,
   userMsg: string,
   aiResponse: string,
-): Promise<SceneDetection | null> {
+): Promise<string | null> {
   try {
     console.log(`[Assistant:${slug}] 씬 감지 중...`);
     const { text } = await generateAssistantText(
@@ -159,10 +154,8 @@ async function detectSceneTags(
       `다음 대화에서 캐릭터 일러스트를 자동 생성해야 하는지 판단해줘.\n` +
         `생성하지 않아도 된다면: 정확히 "SKIP" 반환.\n` +
         `생성해야 한다면: 아래 형식 그대로 반환 (다른 텍스트 없이):\n` +
-        `TAGS: <캐시용 영어 키워드 3~5개, 쉼표 구분>\n` +
         `SCENE: <Imagen 프롬프트용 상세 영어 묘사 1~2문장. 표정·포즈·행동·배경을 구체적으로. dynamic and expressive 강조>\n\n` +
         `예시:\n` +
-        `TAGS: laughing, mischievous, indoor\n` +
         `SCENE: playfully sticking out tongue with a wide mischievous grin, hands on hips, dynamic leaning pose, cozy indoor room background, expressive and energetic\n\n` +
         `[생성 기준] 다음 중 하나를 충족할 때만 생성:\n` +
         `1. 유저가 외모·모습·표정·포즈·옷차림 등을 직접 묻거나 이미지를 요청함\n` +
@@ -180,16 +173,15 @@ async function detectSceneTags(
       console.log(`[Assistant:${slug}] 씬 감지: SKIP`);
       return null;
     }
-    const tagsMatch = trimmed.match(/TAGS:\s*(.+)/i);
     const sceneMatch = trimmed.match(/SCENE:\s*(.+)/i);
-    if (!tagsMatch || !sceneMatch) {
+    if (!sceneMatch) {
       console.log(`[Assistant:${slug}] 씬 감지: 형식 불일치 → SKIP`);
       return null;
     }
-    const tags = tagsMatch[1].split(',').map((t) => t.trim().toLowerCase()).filter(Boolean).slice(0, 5);
     const sceneDesc = sceneMatch[1].trim();
-    console.log(`[Assistant:${slug}] 씬 감지: 태그=[${tags.join(', ')}] / 묘사="${sceneDesc}"`);
-    return tags.length > 0 ? { tags, sceneDesc } : null;
+    if (!sceneDesc) return null;
+    console.log(`[Assistant:${slug}] 씬 감지: "${sceneDesc}"`);
+    return sceneDesc;
   } catch (e) {
     console.error(
       `[Assistant:${slug}] 씬 감지 실패:`,
@@ -223,14 +215,12 @@ function hasVisualScenePotential(userMsg: string, aiResponse: string): boolean {
 
 interface SceneImage {
   id: string;
-  tags: string[];
   buffer: Buffer;
   mimeType: string;
 }
 
 /**
  * 씬 감지 → 캐시 조회 → 필요 시 이미지 생성까지 모두 수행.
- * 이미지가 있으면 { tags, buffer, mimeType } 반환, 없으면 null.
  */
 async function resolveSceneImage(
   card: CharacterCard,
@@ -251,9 +241,8 @@ async function resolveSceneImage(
     return null;
   }
 
-  const scene = await detectSceneTags(slug, userMsg, aiResponse);
-  if (!scene) return null;
-  const { tags, sceneDesc } = scene;
+  const sceneDesc = await detectScene(slug, userMsg, aiResponse);
+  if (!sceneDesc) return null;
 
   const cacheService = getImageCacheService(card);
   const cached = await cacheService.findSimilar(sceneDesc);
@@ -267,13 +256,13 @@ async function resolveSceneImage(
     cacheService.incrementHit(cached);
     const buffer = fs.readFileSync(cached.filePath);
     console.log(`[Assistant:${slug}] 자동 이미지: 캐시 히트 (id=${cached.id})`);
-    return { tags, buffer, mimeType: cached.mimeType, id: cached.id };
+    return { buffer, mimeType: cached.mimeType, id: cached.id };
   }
 
   // 캐시 미스 → 새 이미지 생성 (이 시점에만 쿨다운 소모)
   lastImageAt.set(slug, Date.now());
   const finalPrompt = buildCharacterImagePrompt(card, sceneDesc);
-  console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 (태그=[${tags.join(', ')}], 묘사="${sceneDesc}")`);
+  console.log(`[Assistant:${slug}] 자동 이미지: 생성 시작 ("${sceneDesc}")`);
 
   const { images, modelId } = await generateImageFromEnvWithOptions(process.env, finalPrompt, {
     sampleCount: 1,
@@ -281,9 +270,9 @@ async function resolveSceneImage(
 
   if (images.length === 0) return null;
   const img = images[0];
-  const entry = await cacheService.add(tags, finalPrompt, img.buffer, img.mimeType, modelId, sceneDesc);
+  const entry = await cacheService.add(sceneDesc, finalPrompt, img.buffer, img.mimeType, modelId);
   console.log(`[Assistant:${slug}] 자동 이미지: 완료 (id=${entry.id}, 모델=${modelId})`);
-  return { id: entry.id, tags, buffer: img.buffer, mimeType: img.mimeType };
+  return { id: entry.id, buffer: img.buffer, mimeType: img.mimeType };
 }
 
 /**
