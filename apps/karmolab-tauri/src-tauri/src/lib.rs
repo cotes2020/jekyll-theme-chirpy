@@ -12,6 +12,7 @@ use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
 use tauri::tray::{MouseButton, TrayIconEvent};
 use tauri::webview::{NewWindowResponse, WebviewWindowBuilder};
+use tauri::Emitter;
 use tauri::Manager;
 use tauri::Url;
 use tauri::WindowEvent;
@@ -65,6 +66,46 @@ fn spawn_tray_update_check(handle: tauri::AppHandle) {
             .appname("KarmoLab")
             .show();
     });
+}
+
+/// 백그라운드 자동 체크: 다이얼로그 띄우지 않고, 새 버전이 있으면 webview에 이벤트만 보냄.
+/// JS 쪽이 받아서 in-app 배너로 표시한다.
+fn spawn_startup_update_check(handle: tauri::AppHandle) {
+    tauri::async_runtime::spawn(async move {
+        let current = env!("CARGO_PKG_VERSION");
+        if let Ok(updater) = handle.updater() {
+            if let Ok(Some(update)) = updater.check().await {
+                let payload = serde_json::json!({
+                    "current": current,
+                    "new": update.version,
+                });
+                let _ = handle.emit("karmolab://update-available", payload);
+            }
+        }
+    });
+}
+
+/// 배너 클릭 등 사용자가 명시적으로 동의한 후의 설치 흐름. 다이얼로그 없이 곧장 다운로드·설치.
+#[tauri::command]
+async fn desktop_install_pending_update(handle: tauri::AppHandle) -> Result<String, String> {
+    let current = env!("CARGO_PKG_VERSION");
+    let updater = handle
+        .updater()
+        .map_err(|e| format!("업데이터 초기화 실패: {}", e))?;
+    let update = updater
+        .check()
+        .await
+        .map_err(|e| format!("업데이트 확인 실패: {}", e))?
+        .ok_or_else(|| format!("이미 최신 버전({})입니다.", current))?;
+    let new_ver = update.version.clone();
+    update
+        .download_and_install(|_, _| {}, || {})
+        .await
+        .map_err(|e| format!("업데이트 설치 실패: {}", e))?;
+    Ok(format!(
+        "{} 설치됨. 앱을 종료한 뒤 다시 실행해 주세요.",
+        new_ver
+    ))
 }
 
 async fn ask_update_dialog(handle: &tauri::AppHandle, current: &str, new: &str) -> bool {
@@ -301,6 +342,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             desktop_notify,
             desktop_trigger_release_workflow,
+            desktop_install_pending_update,
             localdev_set_repo_root,
             localdev_get_repo_root,
             localdev_list_tracked,
@@ -364,8 +406,13 @@ pub fn run() {
 
             #[cfg(not(debug_assertions))]
             {
-                // Discord처럼 앱 시작 시 자동으로 새 버전을 확인하고, 있으면 백그라운드로 받아 둔다.
-                spawn_tray_update_check(handle.clone());
+                // 앱 시작 ~10s 뒤에 백그라운드로 새 버전을 확인. 있으면 webview에 이벤트만 보내고
+                // 실제 설치는 in-app 배너의 "지금 설치"를 사용자가 누를 때 진행한다.
+                let h = handle.clone();
+                std::thread::spawn(move || {
+                    std::thread::sleep(std::time::Duration::from_secs(10));
+                    spawn_startup_update_check(h);
+                });
             }
 
             #[cfg(not(any(target_os = "android", target_os = "ios")))]

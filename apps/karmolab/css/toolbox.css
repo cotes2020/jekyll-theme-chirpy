@@ -2181,3 +2181,42 @@ html[data-nav="sidebar"] .sidebar:hover .sidebar-dev-links-text { display: inlin
     cursor: zoom-out;
 }
 .tb-lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+
+.karmolab-update-banner {
+    position: fixed; top: 16px; right: 16px;
+    z-index: 9998;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-elevated, var(--bg-secondary));
+    color: var(--text-primary);
+    border: 1px solid var(--accent, var(--border));
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    font-size: var(--font-size-sm);
+    max-width: 380px;
+}
+.karmolab-update-banner-msg { line-height: 1.4; }
+.karmolab-update-banner-msg code {
+    font-family: ui-monospace, monospace;
+    background: var(--bg-tertiary); padding: 1px 5px; border-radius: 4px;
+    font-size: 0.95em;
+}
+.karmolab-update-banner-install {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    background: var(--accent); color: var(--accent-contrast, white);
+    border: none; border-radius: var(--radius-sm);
+    font-weight: 600; font-size: var(--font-size-xs);
+    cursor: pointer;
+}
+.karmolab-update-banner-install:hover { filter: brightness(1.1); }
+.karmolab-update-banner-install:disabled { opacity: 0.6; cursor: progress; }
+.karmolab-update-banner-close {
+    flex-shrink: 0;
+    width: 24px; height: 24px;
+    background: transparent; color: var(--text-tertiary);
+    border: none; border-radius: var(--radius-sm);
+    font-size: 16px; line-height: 1; cursor: pointer;
+    padding: 0;
+}
+.karmolab-update-banner-close:hover { background: var(--bg-tertiary); color: var(--text-primary); }

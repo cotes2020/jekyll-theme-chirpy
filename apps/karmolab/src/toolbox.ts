@@ -280,6 +280,66 @@ const Toolbox = (() => {
         } catch (_) {}
     }
 
+    function setupUpdateBannerListener() {
+        if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
+        const listenFn = window.__TAURI__?.event?.listen;
+        if (typeof listenFn !== 'function') return;
+        listenFn('karmolab://update-available', (e) => {
+            const payload = (e?.payload || {}) as { current?: string; new?: string };
+            if (!payload.new) return;
+            showUpdateBanner(payload.current || '?', payload.new);
+        }).catch(() => {});
+    }
+
+    function showUpdateBanner(current, newVer) {
+        if (document.querySelector('.karmolab-update-banner')) return;
+        const banner = document.createElement('div');
+        banner.className = 'karmolab-update-banner';
+
+        const msg = document.createElement('span');
+        msg.className = 'karmolab-update-banner-msg';
+        msg.innerHTML = `새 버전: <code>${escapeHtml(current)}</code> → <code>${escapeHtml(newVer)}</code>`;
+
+        const installBtn = document.createElement('button');
+        installBtn.type = 'button';
+        installBtn.className = 'karmolab-update-banner-install';
+        installBtn.textContent = '지금 설치';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'karmolab-update-banner-close';
+        closeBtn.setAttribute('aria-label', '닫기');
+        closeBtn.textContent = '×';
+
+        banner.appendChild(msg);
+        banner.appendChild(installBtn);
+        banner.appendChild(closeBtn);
+        document.body.appendChild(banner);
+
+        closeBtn.addEventListener('click', () => banner.remove());
+
+        installBtn.addEventListener('click', () => {
+            installBtn.disabled = true;
+            installBtn.textContent = '설치 중…';
+            const invoke = window.__TAURI__?.core?.invoke;
+            if (typeof invoke !== 'function') {
+                msg.textContent = '설치 불가: Tauri invoke를 찾지 못했습니다.';
+                return;
+            }
+            invoke('desktop_install_pending_update', {})
+                .then((res) => {
+                    msg.textContent = typeof res === 'string' ? res : '설치 완료. 앱을 재시작하세요.';
+                    installBtn.remove();
+                })
+                .catch((err) => {
+                    const errMsg = err instanceof Error ? err.message : String(err);
+                    msg.textContent = `실패: ${errMsg}`;
+                    installBtn.disabled = false;
+                    installBtn.textContent = '다시 시도';
+                });
+        });
+    }
+
     function injectDesktopBadge() {
         if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
         const left = document.querySelector('.header-bar-left');
@@ -540,6 +600,7 @@ const Toolbox = (() => {
         });
 
         injectDesktopBadge();
+        setupUpdateBannerListener();
     }
 
     /* ===== Landing Page Builder ===== */
