@@ -65,9 +65,17 @@
     'karmolab-desktop.exe': 'KarmoLab'
   };
 
+  /// 매핑 테이블을 lowercase 키로 미리 정규화 — Windows가 GetModuleBaseName으로 반환하는
+  /// 실행파일명 케이스가 OS·드라이버에 따라 들쑥날쑥(예: explorer.exe vs Explorer.EXE).
+  const PROCESS_LABELS_LOWER: Record<string, string> = (() => {
+    const out: Record<string, string> = {};
+    for (const k of Object.keys(PROCESS_LABELS)) out[k.toLowerCase()] = PROCESS_LABELS[k];
+    return out;
+  })();
+
   function readableProcessName(raw: string): string {
     if (!raw) return '(unknown)';
-    return PROCESS_LABELS[raw] || raw;
+    return PROCESS_LABELS_LOWER[raw.toLowerCase()] || raw;
   }
 
   function desktopInvoke(cmd: string, args: unknown): Promise<unknown> {
@@ -127,10 +135,12 @@
         continue;
       }
       activeSecs += SAMPLE_INTERVAL_SECS;
-      const key = s.process || '(unknown)';
+      // 같은 exe가 케이스 다르게 들어와도 한 줄로 합치기 위해 소문자 키 사용.
+      const rawName = s.process || '(unknown)';
+      const key = rawName.toLowerCase();
       let agg = map.get(key);
       if (!agg) {
-        agg = { process: key, seconds: 0, titles: new Map() };
+        agg = { process: rawName, seconds: 0, titles: new Map() };
         map.set(key, agg);
       }
       agg.seconds += SAMPLE_INTERVAL_SECS;
