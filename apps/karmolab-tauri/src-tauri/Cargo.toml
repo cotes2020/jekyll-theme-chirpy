@@ -22,3 +22,6 @@ uuid = { version = "1", features = ["v4"] }
 tauri-plugin-single-instance = "2"
 tauri-plugin-updater = "2"
 
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["winuser", "processthreadsapi", "psapi", "handleapi", "minwindef", "sysinfoapi"] }
+

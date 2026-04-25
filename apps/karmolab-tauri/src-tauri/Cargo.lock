@@ -1978,6 +1978,7 @@ dependencies = [
  "tauri-plugin-single-instance",
  "tauri-plugin-updater",
  "uuid",
+ "winapi",
 ]
 
 [[package]]

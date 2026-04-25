@@ -1,6 +1,8 @@
+mod activity;
 mod local_dev;
 mod repo_file;
 
+use activity::{activity_query_day, activity_status, ActivityState};
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
     localdev_list_tracked, localdev_npm_install, localdev_npm_install_stream,
@@ -377,7 +379,9 @@ pub fn run() {
             repofile_open_default,
             repofile_reveal,
             repofile_read,
-            repofile_write
+            repofile_write,
+            activity_query_day,
+            activity_status
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
@@ -397,6 +401,18 @@ pub fn run() {
                 std::thread::spawn(move || {
                     reattach_persisted_pids(&h);
                 });
+            }
+
+            // PC 활동 트래커 — app data dir 안에 일별 JSONL로 저장. 시작 시 자동 폴링 시작.
+            {
+                let activity_dir = handle
+                    .path()
+                    .app_data_dir()
+                    .map(|p| p.join("activity"))
+                    .unwrap_or_else(|_| std::path::PathBuf::from("./activity"));
+                let activity_state = ActivityState::new(activity_dir);
+                activity_state.start();
+                app.manage(activity_state);
             }
 
             let window_conf = app
