@@ -349,8 +349,11 @@ const Toolbox = (() => {
             row.setAttribute('aria-label', '데스크톱 앱 모드');
             const span = document.createElement('span');
             span.className = 'karmolab-desktop-badge';
-            span.textContent = '앱';
-            span.title = 'Tauri 데스크톱 앱에서 실행 중입니다. 웹에서는 이 배지가 보이지 않습니다.';
+            const ver = window.__KARMOLAB_VERSION__;
+            span.textContent = ver ? `앱 v${ver}` : '앱';
+            span.title = ver
+              ? `KarmoLab 데스크톱 앱 v${ver}`
+              : 'Tauri 데스크톱 앱에서 실행 중입니다. 웹에서는 이 배지가 보이지 않습니다.';
             const browserA = document.createElement('a');
             browserA.className = 'karmolab-open-browser';
             browserA.href = 'https://mascari4615.github.io/karmolab/';
