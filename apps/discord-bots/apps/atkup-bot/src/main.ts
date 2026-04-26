@@ -120,7 +120,7 @@ function startHealthServer(): void {
   const raw = (process.env.ATKUP_HEALTH_PORT ?? '').trim().toLowerCase();
   if (raw === '0' || raw === 'off' || raw === 'false') return;
 
-  const port = parseInt(process.env.ATKUP_HEALTH_PORT || '8081', 10);
+  const port = parseInt(process.env.ATKUP_HEALTH_PORT || '4616', 10);
   if (!Number.isFinite(port) || port < 1 || port > 65535) {
     console.warn('[ATKUp] ATKUP_HEALTH_PORT가 올바르지 않아 헬스 HTTP를 켜지 않습니다.');
     return;

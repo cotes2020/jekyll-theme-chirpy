@@ -79,7 +79,7 @@ KAKAO_EXPORT_SKIP_WINDOW_TITLES=카카오톡|KakaoTalk
 
 # ── GitHub 웹훅 HTTP 서버(욘봇 프로세스 안) ──
 # 리스닝 포트. 호스트·방화벽은 배포 환경에서 따로 설정.
-WEBHOOK_PORT=8080
+WEBHOOK_PORT=4615
 
 # ── Vertex AI 안전 필터 ──
 # 전체 카테고리에 적용할 임계값. 비워두면 Vertex 기본 필터 사용.

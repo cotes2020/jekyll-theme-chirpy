@@ -296,7 +296,7 @@ async function main() {
   }
 
   /** GitHub POST 시 client.channels.fetch 를 쓰므로, Discord 준비 후에 HTTP 서버를 연다 */
-  const WEBHOOK_PORT = process.env.WEBHOOK_PORT || 8080;
+  const WEBHOOK_PORT = process.env.WEBHOOK_PORT || 4615;
   app.listen(WEBHOOK_PORT, () => {
     console.log(`[Webhook] GitHub Webhook 서버 시작: http://0.0.0.0:${WEBHOOK_PORT}/webhook/github`);
     if (!parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID).length) {

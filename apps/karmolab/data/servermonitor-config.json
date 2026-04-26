@@ -4,7 +4,7 @@
             "id": "yawnbot",
             "title": "YawnBot",
             "subtitle": "디스코드 봇",
-            "url": "http://localhost:8080/webhook/github"
+            "url": "http://127.0.0.1:4615/webhook/github"
         },
         {
             "id": "jekyll",
@@ -16,7 +16,7 @@
             "id": "atkup",
             "title": "ATKUp",
             "subtitle": "디스코드 봇",
-            "url": "http://127.0.0.1:8081/health"
+            "url": "http://127.0.0.1:4616/health"
         },
         {
             "id": "karmolab-py",
@@ -77,7 +77,7 @@
             "cwd": "apps/discord-bots",
             "program": "npm",
             "args": ["run", "start:yawnbot"],
-            "healthUrl": "http://localhost:8080/webhook/github",
+            "healthUrl": "http://127.0.0.1:4615/webhook/github",
             "npmInstall": true,
             "deployArgs": ["run", "deploy:yawnbot"]
         },
@@ -87,7 +87,7 @@
             "cwd": "apps/discord-bots",
             "program": "npm",
             "args": ["run", "start:atkup"],
-            "healthUrl": "http://127.0.0.1:8081/health",
+            "healthUrl": "http://127.0.0.1:4616/health",
             "npmInstall": true,
             "deployArgs": ["run", "deploy:atkup"]
         },
