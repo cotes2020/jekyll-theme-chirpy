@@ -30,6 +30,7 @@ import { handleMeme } from './bot/meme';
 import { handleButtonInteraction } from './bot/buttons';
 import { dispatchSlashCommand, dispatchAutocomplete } from './bot/slash/router';
 import { createGithubWebhookApp } from './bot/webhook';
+import { getDefaultChannels, hasAnyRoute } from './services/webhook-routes';
 import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rotation';
 import { handleAssistantMessage } from './bot/assistant-handler';
 import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder, startSpontaneous } from './bot/proactive';
@@ -227,8 +228,8 @@ client.once('clientReady', async () => {
 
   stock.startMarket();
 
-  const webhookChannelIds = parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID);
-  for (const channelId of webhookChannelIds) {
+  const greetingChannelIds = getDefaultChannels();
+  for (const channelId of greetingChannelIds) {
     const channel = await client.channels.fetch(channelId).catch(() => null);
     if (channel && channel.isTextBased()) {
       const version = process.env.npm_package_version || '1.0.0';
@@ -299,9 +300,9 @@ async function main() {
   const WEBHOOK_PORT = process.env.WEBHOOK_PORT || 4615;
   app.listen(WEBHOOK_PORT, () => {
     console.log(`[Webhook] GitHub Webhook 서버 시작: http://0.0.0.0:${WEBHOOK_PORT}/webhook/github`);
-    if (!parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID).length) {
+    if (!hasAnyRoute()) {
       console.warn(
-        '[Webhook] GITHUB_WEBHOOK_CHANNEL_ID 가 비어 있으면 수신해도 디스코드로 보내지 않습니다. .env 를 확인하세요.',
+        '[Webhook] data/webhook-routes.json 의 default·routes 가 모두 비어 있습니다 — 수신해도 디스코드로 보내지 않습니다.',
       );
     }
   });

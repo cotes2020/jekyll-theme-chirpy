@@ -1,8 +1,8 @@
 import express from 'express';
 import { EmbedBuilder } from 'discord.js';
 import type { Client } from 'discord.js';
-import { parseCommaSeparatedEnv } from '@discord-bots/common';
 import type { GameDataService } from '../services/gamedata';
+import { getChannelsForRepo } from '../services/webhook-routes';
 
 export function createGithubWebhookApp(client: Client, gameData: GameDataService) {
   const app = express();
@@ -14,9 +14,12 @@ export function createGithubWebhookApp(client: Client, gameData: GameDataService
       const payload = req.body;
       console.log(`[Webhook] Received: ${event}`);
 
-      const channelIds = parseCommaSeparatedEnv(process.env.GITHUB_WEBHOOK_CHANNEL_ID);
+      const repoFullName: string | undefined = payload.repository?.full_name;
+      const channelIds = getChannelsForRepo(repoFullName);
       if (channelIds.length === 0) {
-        console.warn('[Webhook] GITHUB_WEBHOOK_CHANNEL_ID 없음 — 디스코드 전송 생략 (200 응답)');
+        console.warn(
+          `[Webhook] ${repoFullName ?? '?'} 매칭 채널 없음 — 디스코드 전송 생략 (data/webhook-routes.json 확인)`,
+        );
         res.sendStatus(200);
         return;
       }
