@@ -1,6 +1,6 @@
 [package]
 name = "karmolab-desktop"
-version = "0.1.12"
+version = "0.1.13"
 description = "KarmoLab desktop shell (Tauri WebView)"
 authors = ["mascari4615"]
 edition = "2021"
