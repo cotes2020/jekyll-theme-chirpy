@@ -17,6 +17,18 @@
             "title": "ATKUp",
             "subtitle": "디스코드 봇",
             "url": "http://127.0.0.1:8081/health"
+        },
+        {
+            "id": "karmolab-py",
+            "title": "KarmoLab 정적 (Python)",
+            "subtitle": "/apps/karmolab/ · 8002",
+            "url": "http://127.0.0.1:8002/apps/karmolab/index.html"
+        },
+        {
+            "id": "karmolab-node",
+            "title": "KarmoLab 정적 (http-server)",
+            "subtitle": "/apps/karmolab/ · 8003",
+            "url": "http://127.0.0.1:8003/apps/karmolab/index.html"
         }
     ],
     "envFiles": [
@@ -78,6 +90,24 @@
             "healthUrl": "http://127.0.0.1:8081/health",
             "npmInstall": true,
             "deployArgs": ["run", "deploy:atkup"]
+        },
+        {
+            "id": "karmolab-py",
+            "label": "KarmoLab 정적 (Python 8002)",
+            "cwd": ".",
+            "program": "python",
+            "args": ["-m", "http.server", "8002", "--bind", "127.0.0.1"],
+            "healthUrl": "http://127.0.0.1:8002/apps/karmolab/index.html",
+            "npmInstall": false
+        },
+        {
+            "id": "karmolab-node",
+            "label": "KarmoLab 정적 (http-server 8003)",
+            "cwd": ".",
+            "program": "npx",
+            "args": ["--yes", "http-server", ".", "-p", "8003", "-a", "127.0.0.1", "-c-1"],
+            "healthUrl": "http://127.0.0.1:8003/apps/karmolab/index.html",
+            "npmInstall": false
         }
     ]
 }
