@@ -615,6 +615,10 @@
         card.className = cardClass;
         card.dataset.smServiceId = row.id;
 
+        // 한 줄 리스트 레이아웃: head/ping/track/actions/로그 토글을 한 row에 정렬, 로그 패널은 아래로 collapsible
+        const cardRow = document.createElement('div');
+        cardRow.className = 'sm-card-row';
+
         const head = document.createElement('div');
         head.className = 'sm-card-head';
         const t = document.createElement('div');
@@ -639,8 +643,9 @@
         pingLabel.textContent = mergedPingRowText(mon, rawPing);
         pingRow.appendChild(dot);
         pingRow.appendChild(pingLabel);
-        card.appendChild(head);
-        card.appendChild(pingRow);
+        cardRow.appendChild(head);
+        cardRow.appendChild(pingRow);
+        card.appendChild(cardRow);
 
         if (p) {
           const deployArgsFiltered =
@@ -651,7 +656,7 @@
           const track = document.createElement('div');
           track.className = 'sm-card-track';
           track.textContent = tracked.includes(p.id) ? '앱 추적 중' : '미실행';
-          card.appendChild(track);
+          cardRow.appendChild(track);
 
           const actions = document.createElement('div');
           actions.className = 'sm-card-actions';
@@ -720,15 +725,16 @@
             actions.appendChild(btnDeploy);
           }
 
-          card.appendChild(actions);
+          cardRow.appendChild(actions);
 
-          // dev profile 카드는 항상 로그 패널을 가진다.
+          // dev profile 카드는 항상 로그 패널을 가진다 (기본 접힘, 토글로 펼침).
           // - 시작 버튼으로 띄운 봇의 stdout/stderr는 Rust가 로그 파일로 redirect하고
           //   `localdev_follow_log`가 그 파일을 tail해서 `localdev-log`로 emit한다.
           // - npm i / deploy 스트림도 같은 패널을 공유 (시간순으로 섞여 흐름).
           {
             const logWrap = document.createElement('div');
             logWrap.className = 'sm-log-wrap';
+            logWrap.hidden = true;
             const hint = document.createElement('p');
             hint.className = 'sm-log-hint';
             hint.textContent =
@@ -739,6 +745,20 @@
             logPanelEl.setAttribute('aria-live', 'polite');
             logWrap.appendChild(hint);
             logWrap.appendChild(logPanelEl);
+
+            const logToggle = document.createElement('button');
+            logToggle.type = 'button';
+            logToggle.className = 'sm-log-toggle';
+            logToggle.textContent = '▸ 로그';
+            logToggle.setAttribute('aria-expanded', 'false');
+            logToggle.onclick = () => {
+              const collapsed = logWrap.hidden;
+              logWrap.hidden = !collapsed;
+              logToggle.textContent = collapsed ? '▾ 로그' : '▸ 로그';
+              logToggle.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
+              if (collapsed && logPanelEl) logPanelEl.scrollTop = logPanelEl.scrollHeight;
+            };
+            cardRow.appendChild(logToggle);
             card.appendChild(logWrap);
           }
 
@@ -875,9 +895,18 @@
             .sm-spinner { width: 14px; height: 14px; flex-shrink: 0; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: sm-spin 0.7s linear infinite; }
             @keyframes sm-spin { to { transform: rotate(360deg); } }
             .sm-desktop-section-title { font-weight: 700; margin-bottom: 10px; color: var(--accent); }
-            .sm-local-services { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 4px; }
-            .sm-card--merged { min-height: auto; position: relative; }
-            .sm-card--merged .sm-card-status { margin-top: 10px; padding-top: 0; }
+            .sm-local-services { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+            .sm-card--merged { min-height: auto; position: relative; display: flex; flex-direction: column; padding: 0; }
+            .sm-card-row { display: flex; flex-direction: row; align-items: center; gap: 12px; padding: 8px 14px; flex-wrap: wrap; }
+            .sm-card--merged .sm-card-head { flex: 1 1 200px; min-width: 0; margin-bottom: 0; display: flex; flex-direction: column; gap: 2px; }
+            .sm-card--merged .sm-card-title { font-size: var(--font-size-sm); }
+            .sm-card--merged .sm-card-sub { margin-top: 0; font-size: var(--font-size-2xs); }
+            .sm-card--merged .sm-card-status { margin-top: 0; padding-top: 0; flex-shrink: 0; min-width: 80px; }
+            .sm-card--merged .sm-card-track { margin-top: 0; flex-shrink: 0; min-width: 70px; font-size: var(--font-size-2xs); color: var(--text-secondary); }
+            .sm-card--merged .sm-card-actions { margin-top: 0; flex-shrink: 0; flex-wrap: nowrap; }
+            .sm-log-toggle { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); border-radius: var(--radius-sm); padding: 3px 9px; cursor: pointer; font-size: var(--font-size-2xs); flex-shrink: 0; }
+            .sm-log-toggle:hover { border-color: var(--accent); color: var(--accent); }
+            .sm-card--merged .sm-log-wrap { padding: 0 14px 10px; margin-top: 0; }
             .sm-card--ping-flash { animation: sm-ping-flash-bg 0.95s ease forwards; }
             @keyframes sm-ping-flash-bg {
               0%, 100% { box-shadow: none; }
