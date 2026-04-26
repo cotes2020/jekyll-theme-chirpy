@@ -1023,7 +1023,11 @@
       container.appendChild(statusBox);
     }
 
-    async function fetchStatus(): Promise<void> {
+    /**
+     * @param rerenderCards true 면 ping 후 카드 전체 다시 그리기(refreshDevTable). 수동 새로고침/시작·종료 직후 트리거에서만 true.
+     *   자동 polling 은 false — 카드 그대로 두고 ping/track 만 patch 해서 사용자가 펼쳐둔 로그가 살아남음.
+     */
+    async function fetchStatus(rerenderCards: boolean = false): Promise<void> {
       setRefreshBusy(true, '불러오는 중');
       /* 데스크톱: 카드 영역은 비우지 않음(첫 접속도 골격 카드 먼저 그린 뒤 이 함수로 ping만 갱신) */
       if (!mergedServicesEl) {
@@ -1042,22 +1046,25 @@
         const totalPings = normalized.filter((m) => m.canPing && m.url).length;
         let pingDone = 0;
 
+        // 모든 ping 동시 발사 — 직렬은 5개 × 2s = 10s, 병렬은 max 2s.
         const localResults: Array<{ meta: (typeof normalized)[0]; state: LocalCardState }> = [];
-        for (const meta of normalized) {
-          if (!meta.canPing || !meta.url) {
-            const state: LocalCardState = 'na';
-            localResults.push({ meta, state });
-            pingState.byId[meta.id] = state;
-            if (mergedServicesEl) {
-              const card = mergedServicesEl.querySelector(
-                `[data-sm-service-id="${smEscapeAttr(meta.id)}"]`
-              ) as HTMLElement | null;
-              if (card) patchMergedCardPingUi(card, meta, state);
+        await Promise.all(
+          normalized.map(async (meta) => {
+            if (!meta.canPing || !meta.url) {
+              const state: LocalCardState = 'na';
+              localResults.push({ meta, state });
+              pingState.byId[meta.id] = state;
+              if (mergedServicesEl) {
+                const card = mergedServicesEl.querySelector(
+                  `[data-sm-service-id="${smEscapeAttr(meta.id)}"]`
+                ) as HTMLElement | null;
+                if (card) patchMergedCardPingUi(card, meta, state);
+              }
+              return;
             }
-          } else {
-            setRefreshBusy(true, totalPings ? `URL ${pingDone + 1}/${totalPings}` : '확인 중');
             const s = await pingLocal(meta.url!);
             pingDone++;
+            setRefreshBusy(true, totalPings ? `URL ${pingDone}/${totalPings}` : '확인 중');
             localResults.push({ meta, state: s });
             pingState.byId[meta.id] = s;
             if (mergedServicesEl) {
@@ -1069,8 +1076,8 @@
                 flashMergedCardPingDone(card);
               }
             }
-          }
-        }
+          })
+        );
 
         setRefreshBusy(true, '동기화 중');
 
@@ -1105,7 +1112,8 @@
           statusBox.className = 'sm-status-wrap error';
         }
       } finally {
-        if (!skipFinalMergeRefresh) {
+        // rerenderCards 가 true 일 때만 카드 전체 다시 그리기 (config 변경/시작·종료 직후 사용자 액션). polling 은 false 라 카드 유지 → 사용자가 펼쳐둔 로그 그대로.
+        if (rerenderCards && !skipFinalMergeRefresh) {
           try {
             const doRefresh = refreshDevTable as (() => Promise<void>) | null;
             if (doRefresh) await doRefresh();
@@ -1117,16 +1125,16 @@
       }
     }
 
-    refreshBtn.onclick = () => void fetchStatus();
+    refreshBtn.onclick = () => void fetchStatus(true);
 
-    /** 시작/종료 직후 짧게 기다린 뒤 ping 한 번. 새 프로세스가 listen 시작할 시간 줌. */
+    /** 시작/종료 직후 짧게 기다린 뒤 ping 한 번. 새 프로세스가 listen 시작할 시간 줌. 카드는 시작/종료 콜백이 이미 다시 그리니 ping 만 patch. */
     let pendingFetchTimer: number | null = null;
     function triggerStatusFetchSoon(delayMs: number): void {
       if (pendingFetchTimer != null) window.clearTimeout(pendingFetchTimer);
       pendingFetchTimer = window.setTimeout(() => {
         pendingFetchTimer = null;
         if (refreshBtn.disabled) return;
-        void fetchStatus();
+        void fetchStatus(false);
       }, delayMs);
     }
     /** 데스크톱 카드의 시작/종료 콜백에서 ping을 직접 트리거할 수 있게 노출 */
@@ -1142,12 +1150,12 @@
           /* ignore */
         }
       }
-      await fetchStatus();
-      // 자동 폴링: 5초마다. 페이지 hidden 또는 이미 fetch 진행 중이면 skip.
+      await fetchStatus(false);
+      // 자동 폴링: 5초마다 ping 만 patch (rerenderCards=false). 카드 DOM 그대로 → 사용자가 펼쳐둔 로그 보존.
       window.setInterval(() => {
         if (refreshBtn.disabled) return;
         if (typeof document !== 'undefined' && document.hidden) return;
-        void fetchStatus();
+        void fetchStatus(false);
       }, 5000);
     })();
   }
