@@ -147,11 +147,15 @@ fn desktop_restart_app(handle: tauri::AppHandle) {
 }
 
 /// 데스크톱 앱 플래그·버전을 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
+///
+/// 끝의 IIFE: 데스크톱 앱 업데이트 후 첫 실행에서 SW + Cache Storage를 비우고 한 번만 reload.
+/// 빌드 사이에 캐시된 구버전 자산이 그대로 보이는 문제 예방. `karmolab_app_version_seen`을
+/// reload 전에 기록하므로 같은 버전에서는 다시 들어가지 않음.
 fn karmolab_desktop_init_script() -> &'static str {
     concat!(
         r#"window.__KARMOLAB_DESKTOP__=!0;window.__karmolabSetNotifyInvokeDebug=function(){};window.__KARMOLAB_VERSION__=""#,
         env!("CARGO_PKG_VERSION"),
-        r#"";"#
+        r#"";(function(){try{var v=window.__KARMOLAB_VERSION__,seen=null;try{seen=localStorage.getItem('karmolab_app_version_seen');}catch(_){}if(seen===v)return;try{localStorage.setItem('karmolab_app_version_seen',v);}catch(_){}if(document.documentElement){document.documentElement.style.visibility='hidden';}var ps=[];if(typeof caches!=='undefined'&&caches.keys){ps.push(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}));}if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations){ps.push(navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.unregister();}));}));}Promise.all(ps).catch(function(){}).then(function(){location.reload();});}catch(_){}})();"#
     )
 }
 
