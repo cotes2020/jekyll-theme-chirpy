@@ -32,6 +32,93 @@ extern "system" {
 }
 
 const KARMOLAB_WEB_URL: &str = "https://mascari4615.github.io/karmolab/";
+const KARMOLAB_DEV_URL: &str = "http://127.0.0.1:8899/apps/karmolab/index.html";
+const KARMOLAB_DEV_PORT: u16 = 8899;
+
+/// 트레이 토글로 켜는 로컬 정적 서버. None = OFF (production URL 로딩 중), Some = ON.
+#[derive(Default)]
+struct DevModeState {
+    server: std::sync::Mutex<Option<std::process::Child>>,
+}
+
+impl DevModeState {
+    fn is_on(&self) -> bool {
+        self.server.lock().map(|g| g.is_some()).unwrap_or(false)
+    }
+}
+
+/// 토글 본체. ON↔OFF 결과를 bool로 반환 (true = 이제 ON).
+fn toggle_dev_mode(handle: &tauri::AppHandle) -> Result<bool, String> {
+    let dev_state = handle.state::<DevModeState>();
+    let mut server_g = dev_state.server.lock().map_err(|e| e.to_string())?;
+
+    if let Some(mut child) = server_g.take() {
+        let _ = child.kill();
+        let _ = child.wait();
+        if let Some(w) = handle.get_webview_window("main") {
+            if let Ok(url) = Url::parse(KARMOLAB_WEB_URL) {
+                let _ = w.navigate(url);
+            }
+        }
+        return Ok(false);
+    }
+
+    let local_state = handle.state::<LocalDevState>();
+    let repo_root = local_state
+        .repo_root
+        .lock()
+        .map_err(|e| e.to_string())?
+        .clone()
+        .ok_or_else(|| {
+            "저장소 루트가 비어 있음. 카모랩 → 서버 모니터 하단에서 먼저 저장하세요.".to_string()
+        })?;
+
+    let port = KARMOLAB_DEV_PORT.to_string();
+    let candidates: &[(&str, &[&str])] = &[
+        ("python", &["-m", "http.server"]),
+        ("python3", &["-m", "http.server"]),
+        ("py", &["-3", "-m", "http.server"]),
+    ];
+    let mut spawned: Option<std::process::Child> = None;
+    let mut last_err = String::new();
+    for (cmd, args) in candidates {
+        let mut full: Vec<&str> = args.to_vec();
+        full.push(port.as_str());
+        full.push("--bind");
+        full.push("127.0.0.1");
+        match std::process::Command::new(cmd)
+            .args(&full)
+            .current_dir(&repo_root)
+            .spawn()
+        {
+            Ok(c) => {
+                spawned = Some(c);
+                break;
+            }
+            Err(e) => last_err = format!("{}: {}", cmd, e),
+        }
+    }
+    let child = spawned.ok_or_else(|| {
+        format!(
+            "Python 정적 서버 spawn 실패 — PATH에 python/python3/py 중 하나가 있어야 합니다. 마지막 에러: {}",
+            last_err
+        )
+    })?;
+    *server_g = Some(child);
+    drop(server_g);
+
+    // 정적 서버가 listen 시작할 시간을 잠깐 주고 navigate.
+    let h = handle.clone();
+    std::thread::spawn(move || {
+        std::thread::sleep(std::time::Duration::from_millis(700));
+        if let Some(w) = h.get_webview_window("main") {
+            if let Ok(url) = Url::parse(KARMOLAB_DEV_URL) {
+                let _ = w.navigate(url);
+            }
+        }
+    });
+    Ok(true)
+}
 
 #[derive(Clone, Copy)]
 enum UpdateCheckMode {
@@ -159,7 +246,7 @@ fn karmolab_desktop_init_script() -> &'static str {
     )
 }
 
-fn allow_in_webview(url: &Url) -> bool {
+fn allow_in_webview(url: &Url, dev_mode_on: bool) -> bool {
     match url.scheme() {
         "http" | "https" => {
             let Some(host) = url.host_str() else {
@@ -168,7 +255,9 @@ fn allow_in_webview(url: &Url) -> bool {
             if host == "mascari4615.github.io" {
                 return true;
             }
-            if cfg!(debug_assertions) && (host == "localhost" || host == "127.0.0.1") {
+            if (cfg!(debug_assertions) || dev_mode_on)
+                && (host == "localhost" || host == "127.0.0.1")
+            {
                 return true;
             }
             false
@@ -364,6 +453,7 @@ fn desktop_trigger_release_workflow(
 pub fn run() {
     tauri::Builder::default()
         .manage(LocalDevState::default())
+        .manage(DevModeState::default())
         .invoke_handler(tauri::generate_handler![
             desktop_notify,
             desktop_trigger_release_workflow,
@@ -429,10 +519,15 @@ pub fn run() {
                 .expect(r#"tauri.conf.json must include a window with label "main""#);
             let window_handle = handle.clone();
 
+            let nav_handle = handle.clone();
             let main_window = WebviewWindowBuilder::from_config(app, window_conf)?
                 .initialization_script(karmolab_desktop_init_script())
-                .on_navigation(|url| {
-                    if allow_in_webview(url) {
+                .on_navigation(move |url| {
+                    let dev_on = nav_handle
+                        .try_state::<DevModeState>()
+                        .map(|s| s.is_on())
+                        .unwrap_or(false);
+                    if allow_in_webview(url, dev_on) {
                         true
                     } else {
                         if matches!(url.scheme(), "mailto" | "tel" | "sms" | "http" | "https") {
@@ -479,8 +574,17 @@ pub fn run() {
                     MenuItem::with_id(app, "tray_browser", "브라우저에서 열기", true, None::<&str>)?;
                 let update_i =
                     MenuItem::with_id(app, "tray_update", "업데이트 확인…", true, None::<&str>)?;
+                let dev_i = MenuItem::with_id(
+                    app,
+                    "tray_dev_mode",
+                    "개발 모드 (로컬 8899)",
+                    true,
+                    None::<&str>,
+                )?;
                 let quit_i = MenuItem::with_id(app, "tray_quit", "종료", true, None::<&str>)?;
-                let menu = Menu::with_items(app, &[&show_i, &browser_i, &update_i, &quit_i])?;
+                let menu =
+                    Menu::with_items(app, &[&show_i, &browser_i, &update_i, &dev_i, &quit_i])?;
+                let dev_i_for_event = dev_i.clone();
 
                 if let Some(icon) = app.default_window_icon().cloned() {
                     let _ = TrayIconBuilder::new()
@@ -488,7 +592,7 @@ pub fn run() {
                         .menu(&menu)
                         .tooltip("KarmoLab — 트레이 메뉴에서 업데이트 확인 · 닫기(X)는 숨김")
                         .show_menu_on_left_click(true)
-                        .on_menu_event(|app, event| {
+                        .on_menu_event(move |app, event| {
                             if event.id == "tray_show" {
                                 if let Some(w) = app.get_webview_window("main") {
                                     let _ = w.unminimize();
@@ -499,6 +603,32 @@ pub fn run() {
                                 let _ = open::that(KARMOLAB_WEB_URL);
                             } else if event.id == "tray_update" {
                                 spawn_update_check(app.clone(), UpdateCheckMode::Manual);
+                            } else if event.id == "tray_dev_mode" {
+                                match toggle_dev_mode(app) {
+                                    Ok(on) => {
+                                        let _ = dev_i_for_event.set_text(if on {
+                                            "개발 모드 ✓ (로컬 8899)"
+                                        } else {
+                                            "개발 모드 (로컬 8899)"
+                                        });
+                                        let _ = notify_rust::Notification::new()
+                                            .summary("KarmoLab 개발 모드")
+                                            .body(if on {
+                                                "로컬 8899 정적 서버 + webview 전환됨."
+                                            } else {
+                                                "원격(GitHub Pages)으로 복귀."
+                                            })
+                                            .appname("KarmoLab")
+                                            .show();
+                                    }
+                                    Err(e) => {
+                                        let _ = notify_rust::Notification::new()
+                                            .summary("KarmoLab 개발 모드")
+                                            .body(&format!("토글 실패: {}", e))
+                                            .appname("KarmoLab")
+                                            .show();
+                                    }
+                                }
                             } else if event.id == "tray_quit" {
                                 app.exit(0);
                             }
