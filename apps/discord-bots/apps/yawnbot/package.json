@@ -7,6 +7,7 @@
     "start": "node dist/src/main.js",
     "deploy": "node dist/src/deploy-commands.js",
     "deploy:clear-global": "node scripts/clear-global-commands.mjs",
+    "test:webhook": "node scripts/webhook-test.mjs",
     "dev": "tsc-watch -p tsconfig.json --preserveWatchOutput --onSuccess \"node dist/src/main.js\"",
     "kakao-export": "node scripts/kakao-export.mjs",
     "kakao-export-save": "node scripts/kakao-export.mjs --trigger-only",
