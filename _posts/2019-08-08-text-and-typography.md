@@ -83,6 +83,9 @@ Moon
 
 > An example showing the `danger` type prompt.
 {: .prompt-danger }
+
+> An example showing the `important` type prompt.
+{: .prompt-important }
 <!-- markdownlint-restore -->
 
 ## Tables
