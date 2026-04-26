@@ -45,8 +45,59 @@ export function createGithubWebhookApp(client: Client, gameData: GameDataService
           .setTitle(gameData.getMessage('Webhook_Issue_Title', payload.issue?.number, payload.action))
           .setDescription(gameData.getMessage('Webhook_Issue_Desc', payload.issue?.title, payload.issue?.html_url))
           .setColor(payload.action === 'opened' ? 0xff9800 : 0x4285f4);
+      } else if (event === 'pull_request') {
+        const pr = payload.pull_request;
+        if (!pr) {
+          res.sendStatus(200);
+          return;
+        }
+        let action: string = payload.action;
+        if (action === 'closed' && pr.merged) action = 'merged';
+
+        const colorByAction: Record<string, number> = {
+          opened: 0x2cbe4e,
+          reopened: 0xff9800,
+          merged: 0x6f42c1,
+          closed: 0xcb2431,
+          ready_for_review: 0x4285f4,
+        };
+        if (!(action in colorByAction)) {
+          console.log(`[Webhook] PR action 무시: ${action}`);
+          res.sendStatus(200);
+          return;
+        }
+
+        embed
+          .setTitle(gameData.getMessage('Webhook_PR_Title', pr.number, action))
+          .setDescription(
+            gameData.getMessage(
+              'Webhook_PR_Desc',
+              pr.title,
+              pr.html_url,
+              pr.head?.ref ?? '?',
+              pr.base?.ref ?? '?',
+            ),
+          )
+          .setColor(colorByAction[action]);
+      } else if (event === 'release') {
+        const release = payload.release;
+        if (!release || payload.action !== 'published') {
+          console.log(`[Webhook] Release action 무시: ${payload.action}`);
+          res.sendStatus(200);
+          return;
+        }
+        embed
+          .setTitle(gameData.getMessage('Webhook_Release_Title', release.tag_name))
+          .setDescription(
+            gameData.getMessage(
+              'Webhook_Release_Desc',
+              release.name || release.tag_name,
+              release.html_url,
+            ),
+          )
+          .setColor(release.prerelease ? 0xff9800 : 0x6f42c1);
       } else {
-        console.log(`[Webhook] 처리 안 함(디스코드 미전송): ${String(event)} — push|issues|ping 만 임베드`);
+        console.log(`[Webhook] 처리 안 함(디스코드 미전송): ${String(event)} — push|issues|pull_request|release|ping 만 임베드`);
         res.sendStatus(200);
         return;
       }
