@@ -443,7 +443,8 @@
     section: HTMLElement,
     rootFooter: HTMLElement,
     pingState: { byId: Record<string, LocalCardState> },
-    registerRefresh: (fn: () => Promise<void>) => void
+    registerRefresh: (fn: () => Promise<void>) => void,
+    triggerStatusFetchSoon: (delayMs: number) => void
   ): HTMLElement {
     const invoke = window.__TAURI__?.core?.invoke;
 
@@ -664,6 +665,7 @@
                   Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
                   await renderMergedServices();
                   await refreshTrackLabelsFromRust();
+                  triggerStatusFetchSoon(800);
                 } catch (e: unknown) {
                   Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
                 }
@@ -679,6 +681,7 @@
                   Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
                   await renderMergedServices();
                   await refreshTrackLabelsFromRust();
+                  triggerStatusFetchSoon(400);
                 } catch (e: unknown) {
                   Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
                 }
@@ -962,9 +965,15 @@
       localSection.appendChild(localHeaderRow);
       localSection.appendChild(localHint);
       const rootFooter = document.createElement('div');
-      mergedServicesEl = mountDesktopLocalDev(localSection, rootFooter, pingState, (fn) => {
-        refreshDevTable = fn;
-      });
+      mergedServicesEl = mountDesktopLocalDev(
+        localSection,
+        rootFooter,
+        pingState,
+        (fn) => {
+          refreshDevTable = fn;
+        },
+        triggerStatusFetchSoon
+      );
 
       container.appendChild(localSection);
 
@@ -1081,6 +1090,20 @@
 
     refreshBtn.onclick = () => void fetchStatus();
 
+    /** 시작/종료 직후 짧게 기다린 뒤 ping 한 번. 새 프로세스가 listen 시작할 시간 줌. */
+    let pendingFetchTimer: number | null = null;
+    function triggerStatusFetchSoon(delayMs: number): void {
+      if (pendingFetchTimer != null) window.clearTimeout(pendingFetchTimer);
+      pendingFetchTimer = window.setTimeout(() => {
+        pendingFetchTimer = null;
+        if (refreshBtn.disabled) return;
+        void fetchStatus();
+      }, delayMs);
+    }
+    /** 데스크톱 카드의 시작/종료 콜백에서 ping을 직접 트리거할 수 있게 노출 */
+    (window as unknown as { __sm_triggerStatusFetchSoon?: typeof triggerStatusFetchSoon })
+      .__sm_triggerStatusFetchSoon = triggerStatusFetchSoon;
+
     void (async () => {
       if (mergedServicesEl) {
         try {
@@ -1091,6 +1114,12 @@
         }
       }
       await fetchStatus();
+      // 자동 폴링: 5초마다. 페이지 hidden 또는 이미 fetch 진행 중이면 skip.
+      window.setInterval(() => {
+        if (refreshBtn.disabled) return;
+        if (typeof document !== 'undefined' && document.hidden) return;
+        void fetchStatus();
+      }, 5000);
     })();
   }
 
