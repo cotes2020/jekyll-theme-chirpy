@@ -578,15 +578,32 @@
     }
 
     async function renderMergedServices(): Promise<void> {
+      // 재마운트 직전 펼쳐진 카드 id 수집 → 새 카드에 다시 펼친 상태로 복원.
+      // (follow_log 가 200줄을 즉시 다시 emit 하므로 로그 내용도 자연 복구된다)
+      const expandedIds = new Set<string>();
+      for (const oldCard of servicesWrap.querySelectorAll<HTMLElement>('[data-sm-service-id]')) {
+        const id = oldCard.dataset.smServiceId;
+        if (!id) continue;
+        const wrap = oldCard.querySelector<HTMLElement>('.sm-log-wrap');
+        if (wrap && !wrap.hidden) expandedIds.add(id);
+      }
+
       const config = await loadConfig();
       const rows = mergeServiceRows(config);
       let tracked: string[] = [];
+      let externalPids: Record<string, number[]> = {};
       if (typeof invoke === 'function') {
         try {
           tracked = normalizeLocaldevTrackedIds(await invoke('localdev_list_tracked'));
         } catch (e) {
           console.warn('[ServerMonitor] localdev_list_tracked 실패 — 추적 상태를 표시할 수 없음', e);
           tracked = [];
+        }
+        try {
+          const raw = (await invoke('localdev_list_external_pids')) as Record<string, number[]>;
+          if (raw && typeof raw === 'object') externalPids = raw;
+        } catch (e) {
+          console.warn('[ServerMonitor] localdev_list_external_pids 실패 — 외부 실행 표시 안 함', e);
         }
       }
 
@@ -653,46 +670,68 @@
           const streamActionBtns: HTMLButtonElement[] = [];
           let logPanelEl: HTMLElement | null = null;
 
+          const isTracked = tracked.includes(p.id);
+          const externalForProfile = externalPids[p.id] ?? [];
+          const isExternal = !isTracked && externalForProfile.length > 0;
+
           const track = document.createElement('div');
           track.className = 'sm-card-track';
-          track.textContent = tracked.includes(p.id) ? '앱 추적 중' : '미실행';
+          if (isTracked) {
+            track.textContent = '앱 추적 중';
+          } else if (isExternal) {
+            track.textContent = `외부 실행 (PID ${externalForProfile.join(', ')})`;
+          } else {
+            track.textContent = '미실행';
+          }
           cardRow.appendChild(track);
 
           const actions = document.createElement('div');
           actions.className = 'sm-card-actions';
 
-          actions.appendChild(
-            mkBtn('시작', () => {
-              void (async () => {
-                if (typeof invoke !== 'function') return;
-                try {
-                  await invoke('localdev_start', { profileId: p.id });
-                  Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
-                  await renderMergedServices();
-                  await refreshTrackLabelsFromRust();
-                  triggerStatusFetchSoon(800);
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-                }
-              })();
-            })
-          );
-          actions.appendChild(
-            mkBtn('종료', () => {
-              void (async () => {
-                if (typeof invoke !== 'function') return;
-                try {
+          const startBtn = mkBtn('시작', () => {
+            void (async () => {
+              if (typeof invoke !== 'function') return;
+              try {
+                await invoke('localdev_start', { profileId: p.id });
+                Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
+                await renderMergedServices();
+                await refreshTrackLabelsFromRust();
+                triggerStatusFetchSoon(800);
+              } catch (e: unknown) {
+                Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+              }
+            })();
+          });
+          // 추적 중이거나 이미 외부에서 띄운 게 있으면 시작 비활성 (이중 spawn 방지).
+          if (isTracked || isExternal) startBtn.disabled = true;
+          actions.appendChild(startBtn);
+
+          // 종료: 추적 중이면 localdev_stop, 외부만 있으면 localdev_stop_external. 둘 다 없으면 disable.
+          const stopBtn = mkBtn(isExternal ? '외부 종료' : '종료', () => {
+            void (async () => {
+              if (typeof invoke !== 'function') return;
+              try {
+                if (isTracked) {
                   await invoke('localdev_stop', { profileId: p.id });
                   Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
-                  await renderMergedServices();
-                  await refreshTrackLabelsFromRust();
-                  triggerStatusFetchSoon(400);
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                } else if (isExternal) {
+                  const killed = (await invoke('localdev_stop_external', { profileId: p.id })) as number;
+                  Toolbox.showToast?.(
+                    `${p.label} 외부 ${killed}개 종료`,
+                    undefined,
+                    undefined
+                  );
                 }
-              })();
-            })
-          );
+                await renderMergedServices();
+                await refreshTrackLabelsFromRust();
+                triggerStatusFetchSoon(400);
+              } catch (e: unknown) {
+                Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+              }
+            })();
+          });
+          if (!isTracked && !isExternal) stopBtn.disabled = true;
+          actions.appendChild(stopBtn);
 
           if (p.npmInstall) {
             const btnInstall = mkBtn('npm i', () => {
@@ -732,9 +771,10 @@
           //   `localdev_follow_log`가 그 파일을 tail해서 `localdev-log`로 emit한다.
           // - npm i / deploy 스트림도 같은 패널을 공유 (시간순으로 섞여 흐름).
           {
+            const startExpanded = expandedIds.has(row.id);
             const logWrap = document.createElement('div');
             logWrap.className = 'sm-log-wrap';
-            logWrap.hidden = true;
+            logWrap.hidden = !startExpanded;
             const hint = document.createElement('p');
             hint.className = 'sm-log-hint';
             hint.textContent =
@@ -746,11 +786,52 @@
             logWrap.appendChild(hint);
             logWrap.appendChild(logPanelEl);
 
+            // stdin 입력 — 카모랩이 띄운(추적 중인) 프로세스에만 enable.
+            // 외부 실행/미실행은 핸들 없음 → disable + placeholder 안내.
+            const stdinForm = document.createElement('form');
+            stdinForm.className = 'sm-stdin-form';
+            const stdinInput = document.createElement('input');
+            stdinInput.type = 'text';
+            stdinInput.className = 'sm-stdin-input mono';
+            stdinInput.spellcheck = false;
+            stdinInput.autocomplete = 'off';
+            const stdinSendable = isTracked;
+            if (stdinSendable) {
+              stdinInput.placeholder = '명령 입력 후 Enter — 자식 프로세스 stdin 으로 전송';
+            } else {
+              stdinInput.placeholder = isExternal
+                ? '외부 실행이라 stdin 핸들 없음'
+                : '시작 후 사용 가능';
+              stdinInput.disabled = true;
+            }
+            const stdinBtn = document.createElement('button');
+            stdinBtn.type = 'submit';
+            stdinBtn.className = 'btn btn-ghost sm-stdin-btn';
+            stdinBtn.textContent = '전송';
+            if (!stdinSendable) stdinBtn.disabled = true;
+            stdinForm.appendChild(stdinInput);
+            stdinForm.appendChild(stdinBtn);
+            stdinForm.onsubmit = (ev) => {
+              ev.preventDefault();
+              if (!stdinSendable || typeof invoke !== 'function') return;
+              const text = stdinInput.value;
+              stdinInput.value = '';
+              void (async () => {
+                try {
+                  await invoke('localdev_send_stdin', { profileId: p.id, text });
+                  if (logPanelEl) appendLineToPanel(logPanelEl, 'out', `> ${text}`);
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                }
+              })();
+            };
+            logWrap.appendChild(stdinForm);
+
             const logToggle = document.createElement('button');
             logToggle.type = 'button';
             logToggle.className = 'sm-log-toggle';
-            logToggle.textContent = '▸ 로그';
-            logToggle.setAttribute('aria-expanded', 'false');
+            logToggle.textContent = startExpanded ? '▾ 로그' : '▸ 로그';
+            logToggle.setAttribute('aria-expanded', startExpanded ? 'true' : 'false');
             logToggle.onclick = () => {
               const collapsed = logWrap.hidden;
               logWrap.hidden = !collapsed;
@@ -967,6 +1048,10 @@
             .sm-log-line { margin: 0; padding: 0; }
             .sm-log-line-err { color: var(--error, #e74c3c); }
             .sm-log-line-out { color: var(--text-secondary, #94a3b8); }
+            .sm-stdin-form { display: flex; gap: 6px; margin-top: 8px; align-items: stretch; }
+            .sm-stdin-input { flex: 1; min-width: 0; padding: 4px 8px; font-size: var(--font-size-2xs); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-secondary); color: var(--text-primary); }
+            .sm-stdin-input:disabled { opacity: 0.55; cursor: not-allowed; }
+            .sm-stdin-btn { padding: 4px 10px; font-size: var(--font-size-2xs); }
         `
     );
 

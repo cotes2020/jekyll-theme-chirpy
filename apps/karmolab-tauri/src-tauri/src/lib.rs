@@ -5,9 +5,10 @@ mod repo_file;
 use activity::{activity_list_days, activity_query_day, activity_status, ActivityState};
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
-    localdev_list_tracked, localdev_npm_install, localdev_npm_install_stream,
-    localdev_set_repo_root, localdev_start, localdev_stop, localdev_stop_log_follow,
-    reattach_persisted_pids, LocalDevState,
+    localdev_list_external_pids, localdev_list_tracked, localdev_npm_install,
+    localdev_npm_install_stream, localdev_send_stdin, localdev_set_repo_root, localdev_start,
+    localdev_stop, localdev_stop_external, localdev_stop_log_follow, reattach_persisted_pids,
+    LocalDevState,
 };
 use repo_file::{repofile_open_default, repofile_read, repofile_reveal, repofile_write};
 use tauri::menu::{Menu, MenuItem};
@@ -592,8 +593,11 @@ pub fn run() {
             localdev_set_repo_root,
             localdev_get_repo_root,
             localdev_list_tracked,
+            localdev_list_external_pids,
+            localdev_stop_external,
             localdev_start,
             localdev_stop,
+            localdev_send_stdin,
             localdev_follow_log,
             localdev_stop_log_follow,
             localdev_npm_install,

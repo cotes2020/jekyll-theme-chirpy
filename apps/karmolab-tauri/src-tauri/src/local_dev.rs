@@ -20,6 +20,9 @@ const CREATE_NO_WINDOW: u32 = 0x0800_0000;
 
 const CONFIG_REL_PATH: &str = "apps/karmolab/data/servermonitor-config.json";
 
+/// 카드 마운트/재마운트 시 즉시 emit 할 마지막 라인 수. tail_log_loop 와 follow_log 가 공유.
+const INITIAL_TAIL_LINES: usize = 200;
+
 #[derive(Default)]
 pub struct LocalDevState {
     pub repo_root: Mutex<Option<String>>,
@@ -30,6 +33,9 @@ pub struct LocalDevState {
     /// `localdev_follow_log`로 등록되고 `localdev_stop_log_follow` 또는
     /// thread 자체 종료 시점에 제거된다.
     log_followers: Mutex<HashMap<String, Arc<AtomicBool>>>,
+    /// 카모랩이 spawn 한 자식의 stdin 핸들. `localdev_send_stdin` 으로 텍스트 전송.
+    /// reattach 된 PID 는 핸들이 없음 (그땐 send_stdin 명령이 not-found 로 실패).
+    stdins: Mutex<HashMap<String, std::process::ChildStdin>>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -250,13 +256,14 @@ fn log_file_path(app: &tauri::AppHandle, profile_id: &str) -> Result<PathBuf, St
 
 /// Windows에서 `npm`/`npx`는 `cmd /C`로 실행해 PATH의 `.cmd` 런처와 맞춘다.
 /// stdout/stderr는 `log_path`에 truncate redirect — 카모랩이 죽어도 자식이
-/// 직접 파일 핸들을 들고 있으므로 계속 기록된다.
+/// 직접 파일 핸들을 들고 있으므로 계속 기록된다. stdin 은 piped 로 두고 핸들을
+/// 호출자에게 반환 — `localdev_send_stdin` 으로 외부에서 입력 가능.
 fn spawn_detached_process(
     program: &str,
     args: &[String],
     cwd: &Path,
     log_path: &Path,
-) -> Result<u32, String> {
+) -> Result<(u32, std::process::ChildStdin), String> {
     if !program_allowed(program) {
         return Err(format!("허용되지 않은 program: {}", program));
     }
@@ -295,19 +302,23 @@ fn spawn_detached_process(
     }
 
     cmd.current_dir(cwd);
-    cmd.stdin(Stdio::null());
+    cmd.stdin(Stdio::piped());
     cmd.stdout(Stdio::from(log_file));
     cmd.stderr(Stdio::from(log_file_err));
     apply_no_window(&mut cmd);
 
     let mut child = cmd.spawn().map_err(|e| format!("실행 실패: {}", e))?;
     let pid = child.id();
+    let stdin = child
+        .stdin
+        .take()
+        .ok_or_else(|| "stdin pipe 없음".to_string())?;
 
     std::thread::spawn(move || {
         let _ = child.wait();
     });
 
-    Ok(pid)
+    Ok((pid, stdin))
 }
 
 fn run_npm_install_blocking(cwd: &Path) -> Result<String, String> {
@@ -538,6 +549,104 @@ fn run_npm_command_streamed(
     }
 }
 
+// ─── 외부 실행 dev 프로세스 발견 (TASK-003) ───────────────────────────────
+//
+// 카모랩이 직접 띄운 프로세스는 `state.pids` 로 추적된다. CLI 로 사용자가 직접 띄운
+// 같은 프로필 명령(예: `npm run start:yawnbot`)을 카드에서도 인지·종료할 수 있게,
+// `Win32_Process.CommandLine` 에서 `profile.args.join(' ')` 부분 문자열을 찾는다.
+
+#[cfg(windows)]
+fn list_all_processes() -> Vec<(u32, String)> {
+    // Get-CimInstance 는 1개 결과면 object, 여러 개면 array — `@()` 로 강제 array 화.
+    let script = r#"@(Get-CimInstance Win32_Process | Select-Object ProcessId,CommandLine) | ConvertTo-Json -Compress"#;
+    let out = Command::new("powershell.exe")
+        .args(["-NoProfile", "-NonInteractive", "-Command", script])
+        .creation_flags(CREATE_NO_WINDOW)
+        .output();
+    let Ok(out) = out else {
+        return vec![];
+    };
+    if !out.status.success() {
+        return vec![];
+    }
+    parse_processes_json(&String::from_utf8_lossy(&out.stdout))
+}
+
+fn parse_processes_json(raw: &str) -> Vec<(u32, String)> {
+    let trimmed = raw.trim();
+    if trimmed.is_empty() {
+        return vec![];
+    }
+    let v: serde_json::Value = match serde_json::from_str(trimmed) {
+        Ok(v) => v,
+        Err(_) => return vec![],
+    };
+    let arr = match v {
+        serde_json::Value::Array(a) => a,
+        serde_json::Value::Object(_) => vec![v],
+        _ => return vec![],
+    };
+    arr.into_iter()
+        .filter_map(|item| {
+            let pid = item.get("ProcessId")?.as_u64()? as u32;
+            let cmd = item
+                .get("CommandLine")
+                .and_then(|c| c.as_str())
+                .unwrap_or("")
+                .to_string();
+            Some((pid, cmd))
+        })
+        .collect()
+}
+
+#[cfg(not(windows))]
+fn list_all_processes() -> Vec<(u32, String)> {
+    let out = Command::new("ps").args(["-eo", "pid=,args="]).output();
+    let Ok(out) = out else {
+        return vec![];
+    };
+    String::from_utf8_lossy(&out.stdout)
+        .lines()
+        .filter_map(|l| {
+            let trimmed = l.trim_start();
+            let mut it = trimmed.splitn(2, char::is_whitespace);
+            let pid = it.next()?.parse::<u32>().ok()?;
+            let args = it.next().unwrap_or("").to_string();
+            Some((pid, args))
+        })
+        .collect()
+}
+
+fn matches_profile_cmdline(cmdline: &str, profile: &DevProfile) -> bool {
+    let needle = profile.args.join(" ");
+    if needle.trim().is_empty() {
+        return false;
+    }
+    cmdline.contains(&needle)
+}
+
+fn discover_external_pids_per_profile(repo: &Path) -> HashMap<String, Vec<u32>> {
+    let profiles = match read_profiles(repo) {
+        Ok(p) => p,
+        Err(_) => return HashMap::new(),
+    };
+    let processes = list_all_processes();
+    let mut by_profile: HashMap<String, Vec<u32>> = HashMap::new();
+    for profile in &profiles {
+        let mut pids: Vec<u32> = processes
+            .iter()
+            .filter(|(_, cmd)| matches_profile_cmdline(cmd, profile))
+            .map(|(pid, _)| *pid)
+            .collect();
+        pids.sort();
+        pids.dedup();
+        if !pids.is_empty() {
+            by_profile.insert(profile.id.clone(), pids);
+        }
+    }
+    by_profile
+}
+
 #[cfg(windows)]
 fn kill_process_tree(pid: u32) -> Result<(), String> {
     let status = Command::new("taskkill.exe")
@@ -588,6 +697,73 @@ pub fn localdev_list_tracked(state: State<'_, LocalDevState>) -> Result<Vec<Stri
     Ok(pids.keys().cloned().collect())
 }
 
+/// 카모랩 외부에서 띄운 dev profile 매칭 PID들. profile_id → [pid] 맵.
+/// 카모랩 자체가 추적 중인 PID 는 제외. 결과가 빈 profile 은 맵에서 빠짐.
+#[tauri::command]
+pub fn localdev_list_external_pids(
+    state: State<'_, LocalDevState>,
+) -> Result<HashMap<String, Vec<u32>>, String> {
+    let repo_str = {
+        let g = state.repo_root.lock().map_err(|e| e.to_string())?;
+        g.clone()
+            .ok_or_else(|| "저장소 루트를 먼저 설정하세요.".to_string())?
+    };
+    let repo = PathBuf::from(&repo_str);
+
+    let tracked: HashSet<u32> = state
+        .pids
+        .lock()
+        .ok()
+        .map(|m| m.values().copied().collect())
+        .unwrap_or_default();
+
+    let mut all = discover_external_pids_per_profile(&repo);
+    for pids in all.values_mut() {
+        pids.retain(|p| !tracked.contains(p));
+    }
+    all.retain(|_, v| !v.is_empty());
+    Ok(all)
+}
+
+/// 외부 실행 매칭 PID 모두 트리 종료. 카모랩 추적 PID 는 보호.
+/// 반환값은 실제로 kill 명령이 success 한 개수.
+#[tauri::command]
+pub fn localdev_stop_external(
+    profile_id: String,
+    state: State<'_, LocalDevState>,
+) -> Result<usize, String> {
+    let repo_str = {
+        let g = state.repo_root.lock().map_err(|e| e.to_string())?;
+        g.clone()
+            .ok_or_else(|| "저장소 루트를 먼저 설정하세요.".to_string())?
+    };
+    let repo = PathBuf::from(&repo_str);
+
+    let tracked: HashSet<u32> = state
+        .pids
+        .lock()
+        .ok()
+        .map(|m| m.values().copied().collect())
+        .unwrap_or_default();
+
+    let by_profile = discover_external_pids_per_profile(&repo);
+    let pids = by_profile.get(&profile_id).cloned().unwrap_or_default();
+    if pids.is_empty() {
+        return Err("매칭되는 외부 실행 프로세스가 없습니다.".into());
+    }
+
+    let mut killed = 0usize;
+    for pid in pids {
+        if tracked.contains(&pid) {
+            continue;
+        }
+        if kill_process_tree(pid).is_ok() {
+            killed += 1;
+        }
+    }
+    Ok(killed)
+}
+
 /// 프로필 로그 파일을 background에서 tail. 새 라인이 들어올 때마다
 /// `localdev-log` 이벤트로 emit (run_id="follow"). 파일이 아직 없거나
 /// EOF에 도달하면 짧게 sleep 후 재시도. `localdev_stop_log_follow`로 중단.
@@ -599,6 +775,22 @@ pub fn localdev_follow_log(
     state: State<'_, LocalDevState>,
 ) -> Result<(), String> {
     let log_path = log_file_path(&app, &profile_id)?;
+
+    // 카드가 재마운트(시작/종료/dev mode navigate 등)될 때마다 호출되므로,
+    // 매번 마지막 N 줄을 즉시 emit 해서 새 panel 도 옛 로그를 즉시 복구한다.
+    if let Ok(content) = fs::read_to_string(&log_path) {
+        let lines: Vec<&str> = content.lines().collect();
+        let start = lines.len().saturating_sub(INITIAL_TAIL_LINES);
+        for line in &lines[start..] {
+            let payload = LocaldevLogLineEvt {
+                run_id: "follow".to_string(),
+                profile_id: profile_id.clone(),
+                stream: "out".to_string(),
+                line: (*line).to_string(),
+            };
+            let _ = app.emit("localdev-log", &payload);
+        }
+    }
 
     {
         let mut followers = state.log_followers.lock().map_err(|e| e.to_string())?;
@@ -647,9 +839,6 @@ fn tail_log_loop(
     log_path: PathBuf,
     stop: Arc<AtomicBool>,
 ) {
-    /// 카모랩 마운트 시 즉시 보여줄 과거 라인 수.
-    const INITIAL_TAIL_LINES: usize = 200;
-
     let emit = |line: String| {
         let payload = LocaldevLogLineEvt {
             run_id: "follow".to_string(),
@@ -746,11 +935,17 @@ pub fn localdev_start(
 
     let cwd = resolve_cwd(&repo, profile)?;
     let log_path = log_file_path(&app, &profile_id)?;
-    let pid = spawn_detached_process(&profile.program, &profile.args, &cwd, &log_path)?;
+    let (pid, stdin) = spawn_detached_process(&profile.program, &profile.args, &cwd, &log_path)?;
 
-    let mut pids = state.pids.lock().map_err(|e| e.to_string())?;
-    pids.insert(profile_id, pid);
-    let _ = persist_pids(&app, &pids);
+    {
+        let mut pids = state.pids.lock().map_err(|e| e.to_string())?;
+        pids.insert(profile_id.clone(), pid);
+        let _ = persist_pids(&app, &pids);
+    }
+    {
+        let mut stdins = state.stdins.lock().map_err(|e| e.to_string())?;
+        stdins.insert(profile_id, stdin);
+    }
     Ok(())
 }
 
@@ -766,10 +961,39 @@ pub fn localdev_stop(
         let _ = persist_pids(&app, &pids);
         removed
     };
+    {
+        // stdin 핸들 Drop → close. send_stdin 시도하면 해당 프로필 not-found 로 떨어짐.
+        let mut stdins = state.stdins.lock().map_err(|e| e.to_string())?;
+        stdins.remove(&profile_id);
+    }
     let Some(pid) = pid else {
         return Err("실행 중으로 기록된 프로세스가 없습니다.".into());
     };
     kill_process_tree(pid)?;
+    Ok(())
+}
+
+/// 카모랩이 spawn 한 자식 프로세스의 stdin 으로 텍스트 + 개행 전송.
+/// 외부 실행/이미 종료/reattach 된 프로세스는 핸들이 없어 실패.
+#[tauri::command]
+pub fn localdev_send_stdin(
+    profile_id: String,
+    text: String,
+    state: State<'_, LocalDevState>,
+) -> Result<(), String> {
+    use std::io::Write;
+    let mut stdins = state.stdins.lock().map_err(|e| e.to_string())?;
+    let stdin = stdins.get_mut(&profile_id).ok_or_else(|| {
+        "이 프로필의 stdin 핸들이 없습니다 (외부 실행이거나 이미 종료됨).".to_string()
+    })?;
+    let mut payload = text;
+    payload.push('\n');
+    stdin
+        .write_all(payload.as_bytes())
+        .map_err(|e| format!("stdin 쓰기 실패: {}", e))?;
+    stdin
+        .flush()
+        .map_err(|e| format!("stdin flush 실패: {}", e))?;
     Ok(())
 }
 
