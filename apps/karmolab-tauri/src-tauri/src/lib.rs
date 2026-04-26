@@ -41,12 +41,6 @@ struct DevModeState {
     server: std::sync::Mutex<Option<std::process::Child>>,
 }
 
-impl DevModeState {
-    fn is_on(&self) -> bool {
-        self.server.lock().map(|g| g.is_some()).unwrap_or(false)
-    }
-}
-
 /// 토글 본체. ON↔OFF 결과를 bool로 반환 (true = 이제 ON).
 fn toggle_dev_mode(handle: &tauri::AppHandle) -> Result<bool, String> {
     let dev_state = handle.state::<DevModeState>();
@@ -74,33 +68,168 @@ fn toggle_dev_mode(handle: &tauri::AppHandle) -> Result<bool, String> {
         })?;
 
     let port = KARMOLAB_DEV_PORT.to_string();
-    let candidates: &[(&str, &[&str])] = &[
-        ("python", &["-m", "http.server"]),
-        ("python3", &["-m", "http.server"]),
-        ("py", &["-3", "-m", "http.server"]),
+    // Windows 의 `python.exe` 가 종종 Microsoft Store stub 이라 spawn 직후 그냥 종료해버림.
+    // 그래서 py 런처(`py -3`) 와 Node `http-server` 를 fallback 으로 둠. spawn 직후 800ms 살아있는지 검증.
+    let candidates: Vec<(&str, Vec<String>)> = vec![
+        (
+            "py",
+            vec![
+                "-3".into(),
+                "-m".into(),
+                "http.server".into(),
+                port.clone(),
+                "--bind".into(),
+                "127.0.0.1".into(),
+            ],
+        ),
+        (
+            "python3",
+            vec![
+                "-m".into(),
+                "http.server".into(),
+                port.clone(),
+                "--bind".into(),
+                "127.0.0.1".into(),
+            ],
+        ),
+        (
+            "python",
+            vec![
+                "-m".into(),
+                "http.server".into(),
+                port.clone(),
+                "--bind".into(),
+                "127.0.0.1".into(),
+            ],
+        ),
+        // Windows: npx 자체는 .ps1 wrapper 라 Rust spawn 이 못 찾음. .cmd 를 명시.
+        (
+            if cfg!(target_os = "windows") { "npx.cmd" } else { "npx" },
+            vec![
+                "--yes".into(),
+                "http-server".into(),
+                ".".into(),
+                "-p".into(),
+                port.clone(),
+                "-a".into(),
+                "127.0.0.1".into(),
+                "-c-1".into(),
+                "--silent".into(),
+            ],
+        ),
     ];
+    // 디버그용: spawn된 후보들의 stdout/stderr를 OS 임시 폴더 로그 파일로 흘려둠. 실패하면 사용자/개발자가 열어보고 에러 확인 가능.
+    let log_path = std::env::temp_dir().join("karmolab-devmode-server.log");
+
+    fn open_log(path: &std::path::Path) -> std::process::Stdio {
+        match std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(path)
+        {
+            Ok(f) => std::process::Stdio::from(f),
+            Err(_) => std::process::Stdio::null(),
+        }
+    }
+
+    fn wait_for_listen(port: u16, timeout: std::time::Duration) -> bool {
+        let start = std::time::Instant::now();
+        let addr = format!("127.0.0.1:{}", port);
+        while start.elapsed() < timeout {
+            if std::net::TcpStream::connect_timeout(
+                &addr.parse().unwrap(),
+                std::time::Duration::from_millis(200),
+            )
+            .is_ok()
+            {
+                return true;
+            }
+            std::thread::sleep(std::time::Duration::from_millis(200));
+        }
+        false
+    }
+
+    // canonicalize 결과의 `\\?\` UNC prefix 는 일부 child(특히 cmd-style launcher)가 거부하므로 제거.
+    let cwd: &str = repo_root.strip_prefix(r"\\?\").unwrap_or(&repo_root);
+
+    fn append_log(path: &std::path::Path, line: &str) {
+        if let Ok(mut f) = std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(path)
+        {
+            use std::io::Write;
+            let _ = writeln!(f, "{}", line);
+        }
+    }
+
+    let epoch = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_secs())
+        .unwrap_or(0);
+    append_log(
+        &log_path,
+        &format!(
+            "\n=== epoch:{} dev-mode toggle ON (cwd: {}) ===",
+            epoch, cwd
+        ),
+    );
+
     let mut spawned: Option<std::process::Child> = None;
     let mut last_err = String::new();
-    for (cmd, args) in candidates {
-        let mut full: Vec<&str> = args.to_vec();
-        full.push(port.as_str());
-        full.push("--bind");
-        full.push("127.0.0.1");
-        match std::process::Command::new(cmd)
-            .args(&full)
-            .current_dir(&repo_root)
-            .spawn()
+    for (cmd, args) in &candidates {
+        // npx는 첫 install이 길어 30s, 나머지는 빠르니 5s.
+        let listen_timeout = if *cmd == "npx" {
+            std::time::Duration::from_secs(30)
+        } else {
+            std::time::Duration::from_secs(5)
+        };
+        let mut command = std::process::Command::new(cmd);
+        command
+            .args(args)
+            .current_dir(cwd)
+            .stdout(open_log(&log_path))
+            .stderr(open_log(&log_path));
+        // Windows: cmd-style launcher(npx.cmd 등) 가 띄우는 검은 콘솔 창 숨김.
+        #[cfg(target_os = "windows")]
         {
-            Ok(c) => {
-                spawned = Some(c);
-                break;
+            use std::os::windows::process::CommandExt;
+            const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+            command.creation_flags(CREATE_NO_WINDOW);
+        }
+        append_log(&log_path, &format!("[{}] try", cmd));
+        match command.spawn() {
+            Ok(mut child) => {
+                if wait_for_listen(KARMOLAB_DEV_PORT, listen_timeout) {
+                    append_log(
+                        &log_path,
+                        &format!("[{}] OK (listen on {})", cmd, KARMOLAB_DEV_PORT),
+                    );
+                    spawned = Some(child);
+                    break;
+                } else {
+                    let msg = format!(
+                        "{} 가 {}초 안에 {} 을 listen 못함",
+                        cmd,
+                        listen_timeout.as_secs(),
+                        KARMOLAB_DEV_PORT
+                    );
+                    append_log(&log_path, &format!("[{}] listen timeout", cmd));
+                    last_err = msg;
+                    let _ = child.kill();
+                    let _ = child.wait();
+                }
             }
-            Err(e) => last_err = format!("{}: {}", cmd, e),
+            Err(e) => {
+                let msg = format!("{} spawn 실패: {}", cmd, e);
+                append_log(&log_path, &format!("[{}] spawn err: {}", cmd, e));
+                last_err = msg;
+            }
         }
     }
     let child = spawned.ok_or_else(|| {
         format!(
-            "Python 정적 서버 spawn 실패 — PATH에 python/python3/py 중 하나가 있어야 합니다. 마지막 에러: {}",
+            "정적 서버 후보 모두 실패 (py/python3/python/npx). 마지막: {}",
             last_err
         )
     })?;
@@ -246,7 +375,7 @@ fn karmolab_desktop_init_script() -> &'static str {
     )
 }
 
-fn allow_in_webview(url: &Url, dev_mode_on: bool) -> bool {
+fn allow_in_webview(url: &Url) -> bool {
     match url.scheme() {
         "http" | "https" => {
             let Some(host) = url.host_str() else {
@@ -255,9 +384,10 @@ fn allow_in_webview(url: &Url, dev_mode_on: bool) -> bool {
             if host == "mascari4615.github.io" {
                 return true;
             }
-            if (cfg!(debug_assertions) || dev_mode_on)
-                && (host == "localhost" || host == "127.0.0.1")
-            {
+            // localhost/127.0.0.1 항상 허용. 트레이의 "개발 모드" 토글이 spawn 한 정적 서버를
+            // production 빌드에서도 webview 가 로드해야 하므로. 외부 페이지가 localhost 로 유도해도
+            // 8899 포트가 닫혀 있으면 응답 자체가 없어서 의미 없음.
+            if host == "localhost" || host == "127.0.0.1" {
                 return true;
             }
             false
@@ -519,15 +649,10 @@ pub fn run() {
                 .expect(r#"tauri.conf.json must include a window with label "main""#);
             let window_handle = handle.clone();
 
-            let nav_handle = handle.clone();
             let main_window = WebviewWindowBuilder::from_config(app, window_conf)?
                 .initialization_script(karmolab_desktop_init_script())
-                .on_navigation(move |url| {
-                    let dev_on = nav_handle
-                        .try_state::<DevModeState>()
-                        .map(|s| s.is_on())
-                        .unwrap_or(false);
-                    if allow_in_webview(url, dev_on) {
+                .on_navigation(|url| {
+                    if allow_in_webview(url) {
                         true
                     } else {
                         if matches!(url.scheme(), "mailto" | "tel" | "sms" | "http" | "https") {
