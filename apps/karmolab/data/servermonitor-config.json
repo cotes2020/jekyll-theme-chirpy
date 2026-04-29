@@ -1,12 +1,6 @@
 {
     "localMonitors": [
         {
-            "id": "yawnbot",
-            "title": "YawnBot",
-            "subtitle": "디스코드 봇",
-            "url": "http://127.0.0.1:4615/webhook/github"
-        },
-        {
             "id": "yawnbot-tunnel",
             "title": "YawnBot + 터널",
             "subtitle": "cloudflared + webhook 자동등록",
@@ -84,23 +78,14 @@
             "npmInstall": false
         },
         {
-            "id": "yawnbot",
-            "label": "Discord YawnBot",
+            "id": "yawnbot-tunnel",
+            "label": "YawnBot + cloudflared 터널 (webhook 자동등록)",
             "cwd": "apps/discord-bots",
             "program": "npm",
-            "args": ["run", "start:yawnbot"],
+            "args": ["run", "dev:yawnbot"],
             "healthUrl": "http://127.0.0.1:4615/webhook/github",
             "npmInstall": true,
             "deployArgs": ["run", "deploy:yawnbot"]
-        },
-        {
-            "id": "yawnbot-tunnel",
-            "label": "YawnBot + cloudflared 터널 (webhook 자동등록)",
-            "cwd": "apps/discord-bots/apps/yawnbot",
-            "program": "npm",
-            "args": ["run", "dev"],
-            "healthUrl": "http://127.0.0.1:4615/webhook/github",
-            "npmInstall": false
         },
         {
             "id": "atkup",
