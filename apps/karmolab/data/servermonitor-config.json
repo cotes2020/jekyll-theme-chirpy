@@ -88,6 +88,15 @@
             "deployArgs": ["run", "deploy:yawnbot"]
         },
         {
+            "id": "yawnbot-tunnel",
+            "label": "YawnBot + cloudflared 터널 (webhook 자동등록)",
+            "cwd": "apps/discord-bots/apps/yawnbot",
+            "program": "npm",
+            "args": ["run", "dev"],
+            "healthUrl": "http://127.0.0.1:4615/webhook/github",
+            "npmInstall": false
+        },
+        {
             "id": "atkup",
             "label": "ATKUp 봇",
             "cwd": "apps/discord-bots",
