@@ -27,19 +27,19 @@
         {
             "id": "karmolab-py",
             "title": "KarmoLab 정적 (Python)",
-            "subtitle": "/apps/karmolab/ · 8002",
+            "subtitle": "/apps/karmolab/",
             "url": "http://127.0.0.1:8002/apps/karmolab/index.html"
         },
         {
             "id": "karmolab-node",
             "title": "KarmoLab 정적 (http-server)",
-            "subtitle": "/apps/karmolab/ · 8003",
+            "subtitle": "/apps/karmolab/",
             "url": "http://127.0.0.1:8003/apps/karmolab/index.html"
         },
         {
             "id": "karmolab-devmode",
             "title": "KarmoLab Dev (트레이 토글)",
-            "subtitle": "8899 · 트레이 메뉴에서 켜기",
+            "subtitle": "트레이 메뉴에서 켜기",
             "url": "http://127.0.0.1:8899/apps/karmolab/index.html"
         }
     ],
@@ -66,7 +66,7 @@
     "devProfiles": [
         {
             "id": "jekyll",
-            "label": "Jekyll 블로그 (4000)",
+            "label": "Jekyll 블로그",
             "cwd": ".",
             "program": "bundle",
             "args": [
@@ -114,7 +114,7 @@
         },
         {
             "id": "karmolab-py",
-            "label": "KarmoLab 정적 (Python 8002)",
+            "label": "KarmoLab 정적 (Python)",
             "cwd": ".",
             "program": "python",
             "args": ["-m", "http.server", "8002", "--bind", "127.0.0.1"],
@@ -123,7 +123,7 @@
         },
         {
             "id": "karmolab-node",
-            "label": "KarmoLab 정적 (http-server 8003)",
+            "label": "KarmoLab 정적 (http-server)",
             "cwd": ".",
             "program": "npx",
             "args": ["--yes", "http-server", ".", "-p", "8003", "-a", "127.0.0.1", "-c-1"],

@@ -144,6 +144,21 @@
     return { id: m.id, title, subtitle, url, canPing };
   }
 
+  /** 카드에 자동 표시할 포트 — 실제 서비스가 듣는 곳을 한눈에 보여 주기 위함.
+   *  healthUrl(devProfile) 이 있으면 우선, 없으면 monitor.url 에서 추출. */
+  function extractPort(...candidates: (string | undefined)[]): string | null {
+    for (const raw of candidates) {
+      if (!raw) continue;
+      try {
+        const u = new URL(raw);
+        if (u.port) return u.port;
+      } catch {
+        // 잘못된 URL은 다음 후보로
+      }
+    }
+    return null;
+  }
+
   async function pingLocal(url: string): Promise<'online' | 'offline'> {
     try {
       const controller = new AbortController();
@@ -645,6 +660,8 @@
         sub.className = 'sm-card-sub mono';
         sub.style.opacity = '0.85';
         const subParts: string[] = [];
+        const port = extractPort(p?.healthUrl, mon?.url);
+        if (port) subParts.push(`:${port}`);
         if (p) subParts.push(p.id);
         if (mon?.subtitle) subParts.push(mon.subtitle);
         sub.textContent = subParts.join(' · ') || row.id;
@@ -1169,8 +1186,10 @@
         const localCardsHtml = localResults
           .map(({ meta, state }) => {
             const cls = localCardClass(state);
-            const sub = meta.subtitle
-              ? `<div class="sm-card-sub">${esc(meta.subtitle)}</div>`
+            const port = extractPort(meta.url);
+            const subText = [port ? `:${port}` : '', meta.subtitle].filter(Boolean).join(' · ');
+            const sub = subText
+              ? `<div class="sm-card-sub">${esc(subText)}</div>`
               : '';
             return `<div class="${cls}">
               <div class="sm-card-title">${esc(meta.title)}</div>
