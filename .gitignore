@@ -81,3 +81,4 @@ assets/js/graph-view/
 *~
 .DS_Store
 Thumbs.db
+*.stackdump
