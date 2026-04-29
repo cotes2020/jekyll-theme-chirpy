@@ -7,6 +7,12 @@
             "url": "http://127.0.0.1:4615/webhook/github"
         },
         {
+            "id": "yawnbot-tunnel",
+            "title": "YawnBot + 터널",
+            "subtitle": "cloudflared + webhook 자동등록",
+            "url": "http://127.0.0.1:4615/webhook/github"
+        },
+        {
             "id": "jekyll",
             "title": "Jekyll Blog",
             "subtitle": "블로그 로컬",
