@@ -130,5 +130,14 @@ window.KARMOLAB_LAZY_META = [
     layout: 'full',
     icon: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>',
     lazyScriptPaths: ['planner/planner']
+  },
+  {
+    id: 'quest-log',
+    title: 'Quest Log',
+    category: 'tool',
+    desc: '관측실 — 프로젝트·인생 항목 트리, 진행도, 봉인',
+    layout: 'wide',
+    icon: '<path d="M12 2l2.9 6.95 7.6.6-5.75 4.95L18.4 22 12 17.9 5.6 22l1.65-7.5L1.5 9.55l7.6-.6z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+    lazyScriptPaths: ['quest-log/quest-log']
   }
 ] as KarmoLabLazyWidgetStub[];
