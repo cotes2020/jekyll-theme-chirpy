@@ -17,6 +17,8 @@ import { PKG_ROOT } from '../paths';
 export interface WebhookRoutes {
   default: string[];
   routes: Record<string, string[]>;
+  /** scripts/tunnel-launcher.mjs 가 webhook 자동 등록 대상 repo 목록으로 사용. 봇 런타임은 무시. */
+  githubRepos?: string[];
 }
 
 const ROUTES_PATH = path.join(PKG_ROOT, 'data', 'webhook-routes.json');

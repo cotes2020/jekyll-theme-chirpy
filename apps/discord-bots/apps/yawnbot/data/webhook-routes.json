@@ -1,4 +1,8 @@
 {
 	"default": ["1490334302003663058"],
-	"routes": {}
+	"routes": {},
+	"githubRepos": [
+		"mascari4615/mascari4615.github.io",
+		"mascari4615/Witch-Mendokusai"
+	]
 }
