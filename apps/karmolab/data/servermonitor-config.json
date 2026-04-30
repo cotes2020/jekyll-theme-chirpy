@@ -2,7 +2,7 @@
     "localMonitors": [
         {
             "id": "yawnbot-tunnel",
-            "title": "YawnBot + 터널",
+            "title": "YawnBot",
             "subtitle": "cloudflared + webhook 자동등록",
             "url": "http://127.0.0.1:4615/webhook/github"
         },
@@ -32,7 +32,7 @@
         },
         {
             "id": "karmolab-devmode",
-            "title": "KarmoLab Dev (트레이 토글)",
+            "title": "KarmoLab Dev",
             "subtitle": "트레이 메뉴에서 켜기",
             "url": "http://127.0.0.1:8899/apps/karmolab/index.html"
         }
@@ -79,7 +79,7 @@
         },
         {
             "id": "yawnbot-tunnel",
-            "label": "YawnBot + cloudflared 터널 (webhook 자동등록)",
+            "label": "YawnBot",
             "cwd": "apps/discord-bots",
             "program": "npm",
             "args": ["run", "dev:yawnbot"],

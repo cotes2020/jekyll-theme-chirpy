@@ -266,10 +266,11 @@
     raw: LocalCardState
   ): void {
     card.className = mergedCardShellClass(monitor, raw);
-    const statusRow = card.querySelector('.sm-card-status');
-    const spans = statusRow?.querySelectorAll('span');
-    if (spans && spans.length >= 2) {
-      spans[spans.length - 1].textContent = mergedPingRowText(monitor, raw);
+    // monitor-only 카드는 primary row 안 .sm-card-status-text 에 상태 텍스트가 있음.
+    // profile 카드는 dot 색만 갱신 (상태 텍스트 자체가 없음).
+    const statusEl = card.querySelector('.sm-card-status-text');
+    if (statusEl) {
+      statusEl.textContent = mergedPingRowText(monitor, raw);
     }
   }
 
@@ -575,23 +576,6 @@
     const servicesWrap = document.createElement('div');
     servicesWrap.className = 'sm-local-services';
 
-    /** DOM에 이미 그려진 카드의 추적 라벨만 Rust 상태와 다시 맞춤(시작/종료 직후 이중 확인용) */
-    async function refreshTrackLabelsFromRust(): Promise<void> {
-      if (typeof invoke !== 'function') return;
-      try {
-        const tracked = normalizeLocaldevTrackedIds(await invoke('localdev_list_tracked'));
-        for (const card of servicesWrap.querySelectorAll<HTMLElement>('[data-sm-service-id]')) {
-          const id = card.dataset.smServiceId;
-          if (!id) continue;
-          const trackEl = card.querySelector('.sm-card-track');
-          if (!trackEl) continue;
-          trackEl.textContent = tracked.includes(id) ? '앱 추적 중' : '미실행';
-        }
-      } catch (e) {
-        console.warn('[ServerMonitor] 추적 목록 재조회 실패 — 카드의 「앱 추적 중」이 어긋날 수 있음', e);
-      }
-    }
-
     async function renderMergedServices(): Promise<void> {
       // 재마운트 직전 펼쳐진 카드 id 수집 → 새 카드에 다시 펼친 상태로 복원.
       // (follow_log 가 200줄을 즉시 다시 emit 하므로 로그 내용도 자연 복구된다)
@@ -628,15 +612,6 @@
         return;
       }
 
-      const mkBtn = (label: string, onClick: () => void): HTMLButtonElement => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'btn btn-ghost';
-        b.textContent = label;
-        b.onclick = () => onClick();
-        return b;
-      };
-
       for (const row of rows) {
         const p = row.profile;
         const mon = row.monitor;
@@ -647,112 +622,208 @@
         card.className = cardClass;
         card.dataset.smServiceId = row.id;
 
-        // 한 줄 리스트 레이아웃: head/ping/track/actions/로그 토글을 한 row에 정렬, 로그 패널은 아래로 collapsible
-        const cardRow = document.createElement('div');
-        cardRow.className = 'sm-card-row';
+        // ━━ Row 1 (primary) — 한눈에 보이는 핵심: dot · title · port · primary action · ⋯ ━━
+        const primary = document.createElement('div');
+        primary.className = 'sm-card-primary';
 
-        const head = document.createElement('div');
-        head.className = 'sm-card-head';
-        const t = document.createElement('div');
-        t.className = 'sm-card-title';
-        t.textContent = p?.label || mon?.title || row.id;
-        const sub = document.createElement('div');
-        sub.className = 'sm-card-sub mono';
-        sub.style.opacity = '0.85';
-        const subParts: string[] = [];
-        const port = extractPort(p?.healthUrl, mon?.url);
-        if (port) subParts.push(`:${port}`);
-        if (p) subParts.push(p.id);
-        if (mon?.subtitle) subParts.push(mon.subtitle);
-        sub.textContent = subParts.join(' · ') || row.id;
-        head.appendChild(t);
-        head.appendChild(sub);
-
-        const pingRow = document.createElement('div');
-        pingRow.className = 'sm-card-status';
         const dot = document.createElement('span');
         dot.className = 'sm-card-status-dot';
         dot.setAttribute('aria-hidden', 'true');
-        const pingLabel = document.createElement('span');
-        pingLabel.textContent = mergedPingRowText(mon, rawPing);
-        pingRow.appendChild(dot);
-        pingRow.appendChild(pingLabel);
-        cardRow.appendChild(head);
-        cardRow.appendChild(pingRow);
-        card.appendChild(cardRow);
+        primary.appendChild(dot);
+
+        const titleEl = document.createElement('div');
+        titleEl.className = 'sm-card-title';
+        titleEl.textContent = p?.label || mon?.title || row.id;
+        primary.appendChild(titleEl);
+
+        const port = extractPort(p?.healthUrl, mon?.url);
+        const appendPortChip = (): void => {
+          if (!port) return;
+          const portChip = document.createElement('span');
+          portChip.className = 'sm-card-port mono';
+          portChip.textContent = `:${port}`;
+          primary.appendChild(portChip);
+        };
+
+        let logPanelEl: HTMLElement | null = null;
+        const streamActionBtns: HTMLButtonElement[] = [];
 
         if (p) {
           const deployArgsFiltered =
             p.deployArgs?.filter((a) => (a || '').trim().length > 0) ?? [];
-          const streamActionBtns: HTMLButtonElement[] = [];
-          let logPanelEl: HTMLElement | null = null;
 
           const isTracked = tracked.includes(p.id);
           const externalForProfile = externalPids[p.id] ?? [];
           const isExternal = !isTracked && externalForProfile.length > 0;
 
-          const track = document.createElement('div');
-          track.className = 'sm-card-track';
-          if (isTracked) {
-            track.textContent = '앱 추적 중';
-          } else if (isExternal) {
-            track.textContent = `외부 실행 (PID ${externalForProfile.join(', ')})`;
-          } else {
-            track.textContent = '미실행';
+          // 순서: subtitle (flex:1) → port chip (4글자 고정 column) → ⋯
+          if (mon?.subtitle) {
+            const subInline = document.createElement('span');
+            subInline.className = 'sm-card-sub-inline';
+            subInline.textContent = mon.subtitle;
+            primary.appendChild(subInline);
           }
-          cardRow.appendChild(track);
+          appendPortChip();
 
-          const actions = document.createElement('div');
-          actions.className = 'sm-card-actions';
+          // ⋯ 메뉴 토글 — 시작/종료/로그/npm i/deploy 모두 메뉴 안에.
+          const menuBtn = document.createElement('button');
+          menuBtn.type = 'button';
+          menuBtn.className = 'sm-menu-btn';
+          menuBtn.setAttribute('aria-label', '더보기');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuBtn.textContent = '⋯';
+          primary.appendChild(menuBtn);
 
-          const startBtn = mkBtn('시작', () => {
+          card.appendChild(primary);
+
+          // ━━ Log wrap (기본 접힘) — 로그 패널 + stdin form ━━
+          // 시작 버튼으로 띄운 봇의 stdout/stderr 는 Rust 가 로그 파일로 redirect 하고
+          // `localdev_follow_log` 가 그 파일을 tail 해서 `localdev-log` 로 emit. npm i / deploy
+          // 스트림도 같은 패널을 공유한다.
+          const startExpanded = expandedIds.has(row.id);
+          const logWrap = document.createElement('div');
+          logWrap.className = 'sm-log-wrap';
+          logWrap.hidden = !startExpanded;
+          const hint = document.createElement('p');
+          hint.className = 'sm-log-hint';
+          hint.textContent = '로그에 토큰·경로 등이 섞일 수 있습니다. 화면 공유·녹화 시 주의하세요.';
+          logPanelEl = document.createElement('div');
+          logPanelEl.className = 'sm-log-panel mono';
+          logPanelEl.setAttribute('role', 'log');
+          logPanelEl.setAttribute('aria-live', 'polite');
+          logWrap.appendChild(hint);
+          logWrap.appendChild(logPanelEl);
+
+          // stdin 입력 — 카모랩이 띄운(추적 중인) 프로세스에만 enable.
+          const stdinForm = document.createElement('form');
+          stdinForm.className = 'sm-stdin-form';
+          const stdinInput = document.createElement('input');
+          stdinInput.type = 'text';
+          stdinInput.className = 'sm-stdin-input mono';
+          stdinInput.spellcheck = false;
+          stdinInput.autocomplete = 'off';
+          const stdinSendable = isTracked;
+          if (stdinSendable) {
+            stdinInput.placeholder = '명령 입력 후 Enter — 자식 프로세스 stdin 으로 전송';
+          } else {
+            stdinInput.placeholder = isExternal
+              ? '외부 실행이라 stdin 핸들 없음'
+              : '시작 후 사용 가능';
+            stdinInput.disabled = true;
+          }
+          const stdinBtn = document.createElement('button');
+          stdinBtn.type = 'submit';
+          stdinBtn.className = 'btn btn-ghost sm-stdin-btn';
+          stdinBtn.textContent = '전송';
+          if (!stdinSendable) stdinBtn.disabled = true;
+          stdinForm.appendChild(stdinInput);
+          stdinForm.appendChild(stdinBtn);
+          stdinForm.onsubmit = (ev) => {
+            ev.preventDefault();
+            if (!stdinSendable || typeof invoke !== 'function') return;
+            const text = stdinInput.value;
+            stdinInput.value = '';
             void (async () => {
-              if (typeof invoke !== 'function') return;
               try {
-                await invoke('localdev_start', { profileId: p.id });
-                Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
-                await renderMergedServices();
-                await refreshTrackLabelsFromRust();
-                triggerStatusFetchSoon(800);
+                await invoke('localdev_send_stdin', { profileId: p.id, text });
+                if (logPanelEl) appendLineToPanel(logPanelEl, 'out', `> ${text}`);
               } catch (e: unknown) {
                 Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
               }
             })();
-          });
-          // 추적 중이거나 이미 외부에서 띄운 게 있으면 시작 비활성 (이중 spawn 방지).
-          if (isTracked || isExternal) startBtn.disabled = true;
-          actions.appendChild(startBtn);
+          };
+          logWrap.appendChild(stdinForm);
 
-          // 종료: 추적 중이면 localdev_stop, 외부만 있으면 localdev_stop_external. 둘 다 없으면 disable.
-          const stopBtn = mkBtn(isExternal ? '외부 종료' : '종료', () => {
-            void (async () => {
-              if (typeof invoke !== 'function') return;
-              try {
-                if (isTracked) {
+          // ━━ Menu 드롭다운 (⋯ 클릭 시 토글) — 보조 액션 ━━
+          const menu = document.createElement('div');
+          menu.className = 'sm-card-menu';
+          menu.hidden = true;
+
+          const mkMenuItem = (label: string, fn: () => void): HTMLButtonElement => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'sm-menu-item';
+            b.textContent = label;
+            b.onclick = () => {
+              fn();
+            };
+            return b;
+          };
+
+          const closeMenu = (): void => {
+            menu.hidden = true;
+            menuBtn.setAttribute('aria-expanded', 'false');
+          };
+
+          // ── 첫 항목: 현재 상태에 맞는 단일 시작/종료 액션 ──
+          let lifecycleItem: HTMLButtonElement;
+          if (isTracked) {
+            lifecycleItem = mkMenuItem('■ 종료', () => {
+              closeMenu();
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                try {
                   await invoke('localdev_stop', { profileId: p.id });
                   Toolbox.showToast?.(`${p.label} 종료 요청`, undefined, undefined);
-                } else if (isExternal) {
-                  const killed = (await invoke('localdev_stop_external', { profileId: p.id })) as number;
-                  Toolbox.showToast?.(
-                    `${p.label} 외부 ${killed}개 종료`,
-                    undefined,
-                    undefined
-                  );
+                  await renderMergedServices();
+                  triggerStatusFetchSoon(400);
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
                 }
-                await renderMergedServices();
-                await refreshTrackLabelsFromRust();
-                triggerStatusFetchSoon(400);
-              } catch (e: unknown) {
-                Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
-              }
-            })();
+              })();
+            });
+            lifecycleItem.classList.add('sm-menu-item--stop');
+          } else if (isExternal) {
+            lifecycleItem = mkMenuItem('✕ 외부 종료', () => {
+              closeMenu();
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                try {
+                  const killed = (await invoke('localdev_stop_external', { profileId: p.id })) as number;
+                  Toolbox.showToast?.(`${p.label} 외부 ${killed}개 종료`, undefined, undefined);
+                  await renderMergedServices();
+                  triggerStatusFetchSoon(400);
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                }
+              })();
+            });
+            lifecycleItem.classList.add('sm-menu-item--stop');
+          } else {
+            lifecycleItem = mkMenuItem('▶ 시작', () => {
+              closeMenu();
+              void (async () => {
+                if (typeof invoke !== 'function') return;
+                try {
+                  await invoke('localdev_start', { profileId: p.id });
+                  Toolbox.showToast?.(`${p.label} 시작됨`, undefined, undefined);
+                  await renderMergedServices();
+                  triggerStatusFetchSoon(800);
+                } catch (e: unknown) {
+                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+                }
+              })();
+            });
+            lifecycleItem.classList.add('sm-menu-item--start');
+          }
+          menu.appendChild(lifecycleItem);
+
+          // 로그: 메뉴 항목으로 이동 (별도 ▸ 토글 버튼 폐기)
+          const logToggleItem = mkMenuItem('로그', () => {
+            const wasHidden = logWrap.hidden;
+            logWrap.hidden = !wasHidden;
+            menu.hidden = true;
+            menuBtn.setAttribute('aria-expanded', 'false');
+            if (wasHidden && logPanelEl) logPanelEl.scrollTop = logPanelEl.scrollHeight;
           });
-          if (!isTracked && !isExternal) stopBtn.disabled = true;
-          actions.appendChild(stopBtn);
+          menu.appendChild(logToggleItem);
 
           if (p.npmInstall) {
-            const btnInstall = mkBtn('npm i', () => {
+            const btnInstall = mkMenuItem('npm i', () => {
               if (!logPanelEl) return;
+              if (logWrap.hidden) logWrap.hidden = false;
+              menu.hidden = true;
+              menuBtn.setAttribute('aria-expanded', 'false');
               void runStreamedNpmOp(
                 'localdev_npm_install_stream',
                 p.id,
@@ -762,12 +833,15 @@
               );
             });
             streamActionBtns.push(btnInstall);
-            actions.appendChild(btnInstall);
+            menu.appendChild(btnInstall);
           }
 
           if (deployArgsFiltered.length > 0) {
-            const btnDeploy = mkBtn('deploy', () => {
+            const btnDeploy = mkMenuItem('deploy', () => {
               if (!logPanelEl) return;
+              if (logWrap.hidden) logWrap.hidden = false;
+              menu.hidden = true;
+              menuBtn.setAttribute('aria-expanded', 'false');
               void runStreamedNpmOp(
                 'localdev_deploy_stream',
                 p.id,
@@ -778,96 +852,55 @@
             });
             btnDeploy.title = `npm ${deployArgsFiltered.join(' ')} (${p.cwd})`;
             streamActionBtns.push(btnDeploy);
-            actions.appendChild(btnDeploy);
+            menu.appendChild(btnDeploy);
           }
 
-          cardRow.appendChild(actions);
+          card.appendChild(menu);
+          card.appendChild(logWrap);
 
-          // dev profile 카드는 항상 로그 패널을 가진다 (기본 접힘, 토글로 펼침).
-          // - 시작 버튼으로 띄운 봇의 stdout/stderr는 Rust가 로그 파일로 redirect하고
-          //   `localdev_follow_log`가 그 파일을 tail해서 `localdev-log`로 emit한다.
-          // - npm i / deploy 스트림도 같은 패널을 공유 (시간순으로 섞여 흐름).
-          {
-            const startExpanded = expandedIds.has(row.id);
-            const logWrap = document.createElement('div');
-            logWrap.className = 'sm-log-wrap';
-            logWrap.hidden = !startExpanded;
-            const hint = document.createElement('p');
-            hint.className = 'sm-log-hint';
-            hint.textContent =
-              '로그에 토큰·경로 등이 섞일 수 있습니다. 화면 공유·녹화 시 주의하세요.';
-            logPanelEl = document.createElement('div');
-            logPanelEl.className = 'sm-log-panel mono';
-            logPanelEl.setAttribute('role', 'log');
-            logPanelEl.setAttribute('aria-live', 'polite');
-            logWrap.appendChild(hint);
-            logWrap.appendChild(logPanelEl);
-
-            // stdin 입력 — 카모랩이 띄운(추적 중인) 프로세스에만 enable.
-            // 외부 실행/미실행은 핸들 없음 → disable + placeholder 안내.
-            const stdinForm = document.createElement('form');
-            stdinForm.className = 'sm-stdin-form';
-            const stdinInput = document.createElement('input');
-            stdinInput.type = 'text';
-            stdinInput.className = 'sm-stdin-input mono';
-            stdinInput.spellcheck = false;
-            stdinInput.autocomplete = 'off';
-            const stdinSendable = isTracked;
-            if (stdinSendable) {
-              stdinInput.placeholder = '명령 입력 후 Enter — 자식 프로세스 stdin 으로 전송';
-            } else {
-              stdinInput.placeholder = isExternal
-                ? '외부 실행이라 stdin 핸들 없음'
-                : '시작 후 사용 가능';
-              stdinInput.disabled = true;
-            }
-            const stdinBtn = document.createElement('button');
-            stdinBtn.type = 'submit';
-            stdinBtn.className = 'btn btn-ghost sm-stdin-btn';
-            stdinBtn.textContent = '전송';
-            if (!stdinSendable) stdinBtn.disabled = true;
-            stdinForm.appendChild(stdinInput);
-            stdinForm.appendChild(stdinBtn);
-            stdinForm.onsubmit = (ev) => {
-              ev.preventDefault();
-              if (!stdinSendable || typeof invoke !== 'function') return;
-              const text = stdinInput.value;
-              stdinInput.value = '';
-              void (async () => {
-                try {
-                  await invoke('localdev_send_stdin', { profileId: p.id, text });
-                  if (logPanelEl) appendLineToPanel(logPanelEl, 'out', `> ${text}`);
-                } catch (e: unknown) {
-                  Toolbox.showToast?.(e instanceof Error ? e.message : String(e), 'error', undefined);
+          // 메뉴 토글: ⋯ 클릭 → 열기/닫기. 열린 동안 외부 클릭 1회 listener 로 자동 닫힘.
+          menuBtn.onclick = (ev) => {
+            ev.stopPropagation();
+            const wasOpen = !menu.hidden;
+            menu.hidden = wasOpen;
+            menuBtn.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
+            if (!wasOpen) {
+              const close = (e: Event): void => {
+                if (!card.contains(e.target as Node)) {
+                  menu.hidden = true;
+                  menuBtn.setAttribute('aria-expanded', 'false');
+                  document.removeEventListener('click', close);
                 }
-              })();
-            };
-            logWrap.appendChild(stdinForm);
-
-            const logToggle = document.createElement('button');
-            logToggle.type = 'button';
-            logToggle.className = 'sm-log-toggle';
-            logToggle.textContent = startExpanded ? '▾ 로그' : '▸ 로그';
-            logToggle.setAttribute('aria-expanded', startExpanded ? 'true' : 'false');
-            logToggle.onclick = () => {
-              const collapsed = logWrap.hidden;
-              logWrap.hidden = !collapsed;
-              logToggle.textContent = collapsed ? '▾ 로그' : '▸ 로그';
-              logToggle.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
-              if (collapsed && logPanelEl) logPanelEl.scrollTop = logPanelEl.scrollHeight;
-            };
-            cardRow.appendChild(logToggle);
-            card.appendChild(logWrap);
-          }
+              };
+              window.setTimeout(() => document.addEventListener('click', close), 0);
+            }
+          };
 
           // 카드 그릴 때마다 follow 패널 등록 + Rust follow 시작 (이미 follow 중이면 noop).
-          followPanels.set(p.id, logPanelEl!);
+          followPanels.set(p.id, logPanelEl);
           void ensureFollowListener();
           if (typeof invoke === 'function') {
             void invoke('localdev_follow_log', { profileId: p.id }).catch((e) => {
               console.warn('[ServerMonitor] localdev_follow_log 실패', e);
             });
           }
+        } else {
+          // profile 없음 — 모니터 전용 카드. 순서: subtitle → port → 상태 텍스트.
+          if (mon?.subtitle) {
+            const subInline = document.createElement('span');
+            subInline.className = 'sm-card-sub-inline';
+            subInline.textContent = mon.subtitle;
+            primary.appendChild(subInline);
+          }
+          appendPortChip();
+          const statusText = mergedPingRowText(mon, rawPing);
+          if (statusText) {
+            const stat = document.createElement('span');
+            stat.className = 'sm-card-status-text';
+            stat.textContent = statusText;
+            primary.appendChild(stat);
+          }
+          card.appendChild(primary);
         }
 
         servicesWrap.appendChild(card);
@@ -973,7 +1006,11 @@
             .sm-card--up { border-left: 4px solid var(--success, #22c55e); }
             .sm-card--down { border-left: 4px solid var(--error, #e74c3c); }
             .sm-card--na { border-left: 4px solid var(--text-tertiary); }
-            .sm-card-title { font-weight: 700; font-size: var(--font-size-md); color: var(--text-primary); line-height: 1.25; }
+            .sm-card--up:hover { border-left-color: var(--success, #22c55e); }
+            .sm-card--down:hover { border-left-color: var(--error, #e74c3c); }
+            .sm-card--na:hover { border-left-color: var(--text-tertiary); }
+            .sm-card-title { font-weight: 700; font-size: var(--font-size-md); color: var(--text-primary); line-height: 1.25; flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .sm-card-port { flex-shrink: 0; margin-left: auto; font-size: var(--font-size-2xs); color: var(--text-secondary); background: var(--bg-primary, rgba(0,0,0,0.25)); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 2px 7px; line-height: 1.4; letter-spacing: 0.02em; }
             .sm-card-sub { font-size: var(--font-size-xs); color: var(--text-tertiary); margin-top: 6px; line-height: 1.35; }
             .sm-card-status { margin-top: auto; padding-top: 12px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: var(--font-size-xs); }
             .sm-card-status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
@@ -994,17 +1031,25 @@
             @keyframes sm-spin { to { transform: rotate(360deg); } }
             .sm-desktop-section-title { font-weight: 700; margin-bottom: 10px; color: var(--accent); }
             .sm-local-services { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
-            .sm-card--merged { min-height: auto; position: relative; display: flex; flex-direction: column; padding: 0; }
-            .sm-card-row { display: flex; flex-direction: row; align-items: center; gap: 12px; padding: 8px 14px; flex-wrap: wrap; }
-            .sm-card--merged .sm-card-head { flex: 1 1 200px; min-width: 0; margin-bottom: 0; display: flex; flex-direction: column; gap: 2px; }
-            .sm-card--merged .sm-card-title { font-size: var(--font-size-sm); }
-            .sm-card--merged .sm-card-sub { margin-top: 0; font-size: var(--font-size-2xs); }
-            .sm-card--merged .sm-card-status { margin-top: 0; padding-top: 0; flex-shrink: 0; min-width: 80px; }
-            .sm-card--merged .sm-card-track { margin-top: 0; flex-shrink: 0; min-width: 70px; font-size: var(--font-size-2xs); color: var(--text-secondary); }
-            .sm-card--merged .sm-card-actions { margin-top: 0; flex-shrink: 0; flex-wrap: nowrap; }
-            .sm-log-toggle { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); border-radius: var(--radius-sm); padding: 3px 9px; cursor: pointer; font-size: var(--font-size-2xs); flex-shrink: 0; }
-            .sm-log-toggle:hover { border-color: var(--accent); color: var(--accent); }
-            .sm-card--merged .sm-log-wrap { padding: 0 14px 10px; margin-top: 0; }
+            .sm-card--merged { min-height: auto; position: relative; display: flex; flex-direction: column; padding: 0; gap: 0; }
+            .sm-card-primary { display: flex; align-items: center; gap: 10px; padding: 10px 14px; min-width: 0; }
+            .sm-card--merged .sm-card-status-dot { flex-shrink: 0; box-shadow: none; }
+            .sm-card--merged .sm-card-title { font-size: var(--font-size-sm); flex-shrink: 0; }
+            .sm-card-sub-inline { flex: 0 1 auto; min-width: 0; font-size: var(--font-size-xs); color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .sm-menu-btn { flex-shrink: 0; width: 30px; height: 28px; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-md); background: transparent; color: var(--text-secondary); cursor: pointer; font-size: var(--font-size-md); line-height: 1; }
+            .sm-menu-btn:hover { border-color: var(--accent); color: var(--accent); }
+            .sm-card-status-text { flex-shrink: 0; font-size: var(--font-size-xs); color: var(--text-tertiary); font-weight: 600; }
+            .sm-card--up .sm-card-status-text { color: var(--success, #22c55e); }
+            .sm-card--down .sm-card-status-text { color: var(--error, #e74c3c); }
+            .sm-card-menu { position: absolute; top: 46px; right: 12px; min-width: 140px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: 0 4px 14px rgba(0,0,0,0.18); padding: 4px; z-index: 5; display: flex; flex-direction: column; gap: 2px; }
+            .sm-card-menu[hidden] { display: none; }
+            .sm-card--merged .sm-log-wrap[hidden] { display: none; }
+            .sm-menu-item { text-align: left; border: 0; background: transparent; color: var(--text-primary); font-size: var(--font-size-xs); padding: 6px 10px; border-radius: var(--radius-sm); cursor: pointer; transition: background 0.12s; }
+            .sm-menu-item:hover { background: var(--bg-primary, rgba(0,0,0,0.2)); }
+            .sm-menu-item:disabled { opacity: 0.5; cursor: not-allowed; }
+            .sm-menu-item--start { color: var(--success, #22c55e); font-weight: 600; }
+            .sm-menu-item--stop { color: var(--error, #e74c3c); font-weight: 600; }
+            .sm-card--merged .sm-log-wrap { padding: 10px 14px 12px; margin-top: 0; border-top: 1px dashed var(--border); }
             .sm-card--ping-flash { animation: sm-ping-flash-bg 0.95s ease forwards; }
             @keyframes sm-ping-flash-bg {
               0%, 100% { box-shadow: none; }
@@ -1187,14 +1232,17 @@
           .map(({ meta, state }) => {
             const cls = localCardClass(state);
             const port = extractPort(meta.url);
-            const subText = [port ? `:${port}` : '', meta.subtitle].filter(Boolean).join(' · ');
-            const sub = subText
-              ? `<div class="sm-card-sub">${esc(subText)}</div>`
+            const portChip = port
+              ? `<span class="sm-card-port mono">${esc(`:${port}`)}</span>`
               : '';
+            const sub = meta.subtitle
+              ? `<div class="sm-card-sub">${esc(meta.subtitle)}</div>`
+              : '';
+            // 브라우저(non-Tauri) 폴백 카드는 단순 모니터 — 이미지 사이즈 맞추기 위해 기존 카드 모양 유지
             return `<div class="${cls}">
               <div class="sm-card-title">${esc(meta.title)}</div>
               ${sub}
-              <div class="sm-card-status"><span class="sm-card-status-dot" aria-hidden="true"></span><span>${esc(localStatusLabel(state))}</span></div>
+              ${portChip ? `<div class="sm-card-status" style="margin-top:auto;">${portChip}<span class="sm-card-status-dot" aria-hidden="true"></span><span>${esc(localStatusLabel(state))}</span></div>` : `<div class="sm-card-status"><span class="sm-card-status-dot" aria-hidden="true"></span><span>${esc(localStatusLabel(state))}</span></div>`}
             </div>`;
           })
           .join('');
