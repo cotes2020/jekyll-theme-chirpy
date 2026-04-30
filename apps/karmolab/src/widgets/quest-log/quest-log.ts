@@ -353,24 +353,21 @@
   position: relative;
   color: var(--ink);
   font-family: 'Noto Sans KR', system-ui, sans-serif;
-  background: var(--bg);
-  min-height: 600px;
-  overflow: hidden;
+  /* 외부 body backdrop(observatory) 통과 — 자체 background/그리드는 KarmoLab 안에서 중복이므로 제거 */
+  background: transparent;
+  /* layout-full 안에서 화면 전체를 채우고 자체 스크롤 */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* contain: paint 금지 — drawer/sleep-prompt overlay가 fixed인데 contain이 fixed positioning containment block을 만들어 viewport 추적이 깨짐 */
 }
 .kl-quest-log *, .kl-quest-log *::before, .kl-quest-log *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .kl-quest-log .serif { font-family: 'Noto Serif KR', serif; }
 .kl-quest-log .mono { font-family: 'JetBrains Mono', monospace; }
 .kl-quest-log ::selection { background: var(--accent); color: var(--bg); }
 
-.kl-quest-log::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.kl-quest-log .wrap { max-width: 1320px; margin: 0 auto; padding: 28px 24px 60px; position: relative; z-index: 1; }
+.kl-quest-log .wrap { max-width: none; margin: 0; padding: 24px 28px 48px; position: relative; z-index: 1; }
 
 /* ── HEADER ── */
 .kl-quest-log header.hd {
@@ -390,10 +387,10 @@
   position: relative; width: 18px; height: 18px; border-radius: 50%;
   background: var(--bg); border: 1px solid var(--ink);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--ink);
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink);
 }
 .kl-quest-log header.hd .t .eye {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px;
 }
 .kl-quest-log header.hd .t .eye b { color: var(--ink); font-weight: 500; }
@@ -403,66 +400,49 @@
 }
 .kl-quest-log header.hd .t h1 em { font-style: italic; font-weight: 500; color: var(--ink-2); }
 .kl-quest-log header.hd .r {
-  text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 13px;
   color: var(--ink-3); letter-spacing: 0.22em; text-transform: uppercase; line-height: 1.9;
 }
 .kl-quest-log header.hd .r .k { color: var(--ink-3); }
 .kl-quest-log header.hd .r .v { color: var(--ink); }
 .kl-quest-log header.hd .r .live { color: var(--accent); }
-.kl-quest-log header.hd .r .live::before { content: '●'; margin-right: 4px; animation: kl-ql-blink 2s infinite; }
-@keyframes kl-ql-blink { 50% { opacity: 0.3; } }
+.kl-quest-log header.hd .r .live::before { content: '●'; margin-right: 4px; }
 
 /* ── STATS ── */
 .kl-quest-log .stats {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
   background: var(--line-2); border: 1px solid var(--line-2);
   margin-bottom: 22px;
 }
 .kl-quest-log .stat { background: var(--paper); padding: 12px 16px; display: flex; flex-direction: column; gap: 3px; }
+.kl-quest-log .stat-toggle {
+  border: none; text-align: left; color: inherit; cursor: pointer; font: inherit;
+  transition: background 140ms;
+}
+.kl-quest-log .stat-toggle:hover { background: var(--paper-2); }
+.kl-quest-log .stat-toggle.on { background: var(--accent); color: var(--bg); }
+.kl-quest-log .stat-toggle.on .k,
+.kl-quest-log .stat-toggle.on .v small { color: var(--bg); opacity: 0.85; }
 .kl-quest-log .stat .k {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
 }
 .kl-quest-log .stat .v {
   font-family: 'Noto Serif KR', serif; font-weight: 700;
   font-size: 22px; line-height: 1; letter-spacing: -0.01em;
 }
-.kl-quest-log .stat .v small { font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 11px; color: var(--ink-2); margin-left: 3px; }
+.kl-quest-log .stat .v small { font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 13.5px; color: var(--ink-2); margin-left: 3px; }
 .kl-quest-log .stat.accent .v { color: var(--accent); }
 
-/* ── CONTROLS ── */
-.kl-quest-log .controls {
-  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
-  padding: 12px 14px; background: var(--paper); border: 1px solid var(--line-2);
-  margin-bottom: 22px;
-}
-.kl-quest-log .controls .label {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-3);
-  margin-right: 4px;
-}
-.kl-quest-log .filter-group { display: flex; gap: 4px; flex-wrap: wrap; }
+/* ── chip (drawer status switcher) ── */
 .kl-quest-log .chip {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2);
   padding: 5px 10px; border: 1px solid var(--line-2); background: transparent;
   cursor: pointer; transition: all 140ms; display: inline-flex; align-items: center; gap: 6px;
 }
 .kl-quest-log .chip:hover { border-color: var(--ink-2); color: var(--ink); }
 .kl-quest-log .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.kl-quest-log .chip .sw { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.7; }
-.kl-quest-log .chip[data-lane="wm"] .sw { background: var(--mag-wm); }
-.kl-quest-log .chip[data-lane="project"] .sw { background: var(--mag-project); }
-.kl-quest-log .chip[data-lane="learn"] .sw { background: var(--mag-learn); }
-.kl-quest-log .chip[data-lane="life"] .sw { background: var(--mag-life); }
-.kl-quest-log .chip[data-lane="career"] .sw { background: var(--mag-career); }
-.kl-quest-log .divider { width: 1px; height: 20px; background: var(--line-2); }
-.kl-quest-log .spacer { flex: 1; }
-.kl-quest-log .result-count {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2);
-}
-.kl-quest-log .result-count b { color: var(--ink); }
 
 /* ── COLUMNS ── */
 .kl-quest-log .columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -487,11 +467,11 @@
   font-size: 20px; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 8px;
 }
 .kl-quest-log .col-head h3 .idx {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   font-weight: 400; color: var(--ink-3); letter-spacing: 0.18em;
 }
 .kl-quest-log .col-head .sub {
-  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2);
   text-align: right;
 }
@@ -505,7 +485,7 @@
 }
 .kl-quest-log .col-head .bar-meta {
   grid-column: 1 / -1;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
   display: flex; justify-content: space-between; margin-top: 4px;
 }
@@ -520,7 +500,6 @@
 .kl-quest-log .sky.photo { background: #0a0d14; }
 .kl-quest-log .sky.photo img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: grayscale(1) contrast(1.15) brightness(0.7) saturate(0);
 }
 .kl-quest-log .sky.photo::after {
   content: ''; position: absolute; inset: 0;
@@ -529,13 +508,13 @@
 .kl-quest-log .sky svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .kl-quest-log .sky .coord {
   position: absolute; left: 12px; top: 12px; z-index: 3;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   color: var(--ink-2); letter-spacing: 0.15em; line-height: 1.7;
 }
 .kl-quest-log .sky .coord .k { color: var(--ink-3); }
 .kl-quest-log .sky .tag {
   position: absolute; right: 12px; bottom: 12px; z-index: 3;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   color: var(--ink-2); letter-spacing: 0.18em; text-transform: uppercase;
   padding: 3px 7px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08);
 }
@@ -555,33 +534,28 @@
   content: ''; position: absolute; left: -16px; top: 50%; transform: translateY(-50%);
   width: 3px; height: 0; background: var(--accent); transition: height 160ms;
 }
-.kl-quest-log .obs:hover { background: var(--bg-2); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
-.kl-quest-log .obs:hover::before { height: 60%; left: 0; }
+.kl-quest-log .obs:hover { background: var(--bg-2); }
+.kl-quest-log .obs:hover::before { height: 60%; }
 .kl-quest-log .obs.selected { background: var(--bg-2); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
 .kl-quest-log .obs.selected::before { height: 70%; left: 0; }
 
 .kl-quest-log .obs .time {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   color: var(--ink-3); letter-spacing: 0.08em; line-height: 1.4;
 }
 .kl-quest-log .obs .time b { color: var(--ink-2); font-weight: 500; display: block; }
 .kl-quest-log .obs .body .lane {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
   margin-bottom: 3px; display: flex; align-items: center; gap: 6px;
 }
 .kl-quest-log .obs .body .lane .sw { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.kl-quest-log .obs[data-lane="wm"] .body .lane .sw { background: var(--mag-wm); }
-.kl-quest-log .obs[data-lane="project"] .body .lane .sw { background: var(--mag-project); }
-.kl-quest-log .obs[data-lane="learn"] .body .lane .sw { background: var(--mag-learn); }
-.kl-quest-log .obs[data-lane="life"] .body .lane .sw { background: var(--mag-life); }
-.kl-quest-log .obs[data-lane="career"] .body .lane .sw { background: var(--mag-career); }
 .kl-quest-log .obs .body .t {
   font-family: 'Noto Serif KR', serif; font-weight: 500;
-  font-size: 15.5px; letter-spacing: -0.01em; line-height: 1.3;
+  font-size: 17.5px; letter-spacing: -0.01em; line-height: 1.3;
 }
 .kl-quest-log .obs .body .n {
-  margin-top: 4px; font-size: 11.5px; color: var(--ink-2); line-height: 1.55;
+  margin-top: 4px; font-size: 14px; color: var(--ink-2); line-height: 1.55;
 }
 .kl-quest-log .obs .body .mini-bar {
   margin-top: 6px; height: 2px; background: var(--line); width: 70%;
@@ -593,17 +567,16 @@
 .kl-quest-log .obs[data-status="done"] .body .mini-bar .f { background: var(--ink); width: 100% !important; }
 .kl-quest-log .obs[data-status="in-progress"] .body .mini-bar .f { background: var(--accent); }
 .kl-quest-log .obs .mag {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
   padding: 3px 7px; border: 1px solid var(--line-2);
   white-space: nowrap; align-self: start;
 }
 .kl-quest-log .obs[data-status="in-progress"] .time b { color: var(--ink); }
 .kl-quest-log .obs[data-status="in-progress"] .body .t::before {
-  content: '✦'; color: var(--accent); margin-right: 6px; font-size: 13px;
-  display: inline-block; animation: kl-ql-twinkle 3s ease-in-out infinite;
+  content: '✦'; color: var(--accent); margin-right: 6px; font-size: 15px;
+  display: inline-block;
 }
-@keyframes kl-ql-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 .kl-quest-log .obs[data-status="done"] .body .t { color: var(--ink-2); text-decoration: line-through; text-decoration-color: var(--ink-3); text-decoration-thickness: 1px; }
 .kl-quest-log .obs[data-status="done"] .body .n { color: var(--ink-3); }
 .kl-quest-log .obs[data-status="in-progress"] .mag { color: var(--bg); background: var(--accent); border-color: var(--accent); }
@@ -611,7 +584,7 @@
 
 .kl-quest-log .empty {
   padding: 32px 0; text-align: center; color: var(--ink-3);
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.22em; text-transform: uppercase;
 }
 .kl-quest-log .empty::before, .kl-quest-log .empty::after { content: '— '; opacity: 0.6; }
@@ -627,7 +600,7 @@
 }
 .kl-quest-log .drawer.open { transform: translateX(0); }
 .kl-quest-log .drawer-backdrop {
-  position: fixed; inset: 0; background: rgba(5,7,11,0.6); backdrop-filter: blur(4px);
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
   z-index: 99; opacity: 0; pointer-events: none; transition: opacity 220ms;
 }
 .kl-quest-log .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
@@ -638,13 +611,13 @@
   position: sticky; top: 0; background: var(--paper); z-index: 2;
 }
 .kl-quest-log .drawer-head .crumb {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
 }
 .kl-quest-log .drawer-head .crumb b { color: var(--ink); }
 .kl-quest-log .drawer-close {
   background: transparent; border: 1px solid var(--line-2); color: var(--ink-2);
-  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 14px;
   width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center;
 }
 .kl-quest-log .drawer-close:hover { border-color: var(--ink); color: var(--ink); }
@@ -652,7 +625,7 @@
 .kl-quest-log .drawer-body { padding: 28px 28px 40px; }
 .kl-quest-log .drawer-body .lane-pill {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2);
   padding: 5px 10px; border: 1px solid var(--line-2);
 }
@@ -663,14 +636,14 @@
 }
 .kl-quest-log .drawer-body h2 em { font-style: italic; font-weight: 400; color: var(--ink-2); }
 .kl-quest-log .drawer-body .lede {
-  font-size: 14.5px; color: var(--ink-2); line-height: 1.65; max-width: 52ch;
+  font-size: 16.5px; color: var(--ink-2); line-height: 1.65; max-width: 52ch;
 }
 .kl-quest-log .drawer-body .progress-wrap {
   margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-2);
 }
 .kl-quest-log .drawer-body .progress-wrap .lbl {
   display: flex; justify-content: space-between; align-items: baseline;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
   margin-bottom: 8px;
 }
@@ -686,7 +659,7 @@
 }
 .kl-quest-log .drawer-body .progress-wrap .ticks {
   display: flex; justify-content: space-between; margin-top: 4px;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   color: var(--ink-3); letter-spacing: 0.18em;
 }
 
@@ -694,7 +667,7 @@
 .kl-quest-log .footer {
   margin-top: 48px; padding: 18px 0; border-top: 1px solid var(--line-2);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-3);
 }
 
@@ -716,7 +689,6 @@
 .kl-quest-log .featured .f-sky { aspect-ratio: auto; flex: 1; min-height: 280px; border-bottom: 1px solid var(--line-2); position: relative; overflow: hidden; }
 .kl-quest-log .featured .f-sky img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: grayscale(1) contrast(1.15) brightness(0.65) saturate(0);
 }
 .kl-quest-log .featured .f-sky::after {
   content: ''; position: absolute; inset: 0;
@@ -724,13 +696,13 @@
 }
 .kl-quest-log .featured .f-sky .coord {
   position: absolute; left: 14px; top: 14px; z-index: 3;
-  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
   color: var(--ink-2); letter-spacing: 0.15em; line-height: 1.8;
 }
 .kl-quest-log .featured .f-sky .coord .k { color: var(--ink-3); }
 .kl-quest-log .featured .f-sky .tag {
   position: absolute; right: 14px; bottom: 14px; z-index: 3;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   color: var(--ink); letter-spacing: 0.2em; text-transform: uppercase;
   padding: 4px 9px; background: rgba(0,0,0,0.55); border: 1px solid var(--line-3);
 }
@@ -739,7 +711,7 @@
   pointer-events: none;
 }
 .kl-quest-log .featured .f-sky .overlay-title .cst {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase;
 }
 .kl-quest-log .featured .f-sky .overlay-title .name {
@@ -749,7 +721,7 @@
 }
 .kl-quest-log .featured .f-meta { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
 .kl-quest-log .featured .f-meta .eye {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.28em; color: var(--accent); text-transform: uppercase;
 }
 .kl-quest-log .featured .f-meta h2 {
@@ -758,7 +730,7 @@
 }
 .kl-quest-log .featured .f-meta h2 em { font-style: italic; font-weight: 500; color: var(--ink-2); display: block; font-size: 0.5em; margin-top: 6px; letter-spacing: 0.05em; }
 .kl-quest-log .featured .f-meta .dek {
-  font-size: 13px; color: var(--ink-2); line-height: 1.6; max-width: 46ch;
+  font-size: 15px; color: var(--ink-2); line-height: 1.6; max-width: 46ch;
   border-top: 1px dashed var(--line-2); padding-top: 10px;
 }
 .kl-quest-log .featured .f-meta .mini-stats {
@@ -767,7 +739,7 @@
 }
 .kl-quest-log .featured .f-meta .mini-stats .s { background: var(--paper); padding: 10px 12px; }
 .kl-quest-log .featured .f-meta .mini-stats .s .k {
-  font-family: 'JetBrains Mono', monospace; font-size: 8.5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
 }
 .kl-quest-log .featured .f-meta .mini-stats .s .v {
@@ -791,7 +763,7 @@
   grid-column: 1 / -1;
   display: flex; justify-content: space-between; align-items: baseline;
   padding-bottom: 8px; border-bottom: 1px solid var(--line-2); margin-bottom: 4px;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
 }
 .kl-quest-log .featured .f-right .log-head b { color: var(--ink); font-weight: 500; }
@@ -807,8 +779,8 @@
 
 /* ── status-coloured obs rows ── */
 .kl-quest-log .obs[data-status="fire"] .body .t::before {
-  content: '◉'; color: var(--accent); margin-right: 6px; font-size: 13px;
-  display: inline-block; animation: kl-ql-twinkle 2.4s ease-in-out infinite;
+  content: '◉'; color: var(--accent); margin-right: 6px; font-size: 15px;
+  display: inline-block;
 }
 .kl-quest-log .obs[data-status="fire"] .mag { color: var(--bg); background: var(--accent); border-color: var(--accent); }
 .kl-quest-log .obs[data-status="sleep"] .body .t { color: var(--ink-2); }
@@ -817,7 +789,7 @@
 .kl-quest-log .obs[data-status="sealed"] .mag { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .kl-quest-log .obs[data-status="sealed"] .body .t { color: var(--ink-2); }
 .kl-quest-log .obs[data-status="sealed"] .body .t::before {
-  content: '◆'; color: var(--accent); margin-right: 6px; font-size: 12px;
+  content: '◆'; color: var(--accent); margin-right: 6px; font-size: 14px;
 }
 
 /* ── 5-star rating ── */
@@ -847,29 +819,29 @@
 .kl-quest-log .check-row.done .check-box { background: var(--accent); border-color: var(--accent); }
 .kl-quest-log .check-row.done .check-box::after {
   content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  color: var(--bg); font-size: 10px; font-weight: 700;
+  color: var(--bg); font-size: 13px; font-weight: 700;
 }
 .kl-quest-log .check-label {
-  font-family: 'Noto Serif KR', serif; font-size: 14px; line-height: 1.45;
+  font-family: 'Noto Serif KR', serif; font-size: 16px; line-height: 1.45;
   color: var(--ink); letter-spacing: -0.005em;
 }
 .kl-quest-log .check-row.done .check-label { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--line-3); }
 
 .kl-quest-log .add-check input {
   flex: 1; background: var(--paper); border: none; outline: none;
-  padding: 9px 12px; font-family: 'Noto Sans KR', sans-serif; font-size: 13px; color: var(--ink);
+  padding: 9px 12px; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; color: var(--ink);
 }
 .kl-quest-log .add-check input::placeholder { color: var(--ink-3); }
 .kl-quest-log .add-check button {
   background: var(--bg); border: none; color: var(--ink);
-  padding: 9px 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  padding: 9px 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px;
   letter-spacing: 0.22em; cursor: pointer;
 }
 .kl-quest-log .add-check button:hover { background: var(--accent); color: var(--bg); }
 
 /* ── status switcher ── */
 .kl-quest-log .status-toggle {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.2em;
   background: var(--paper); color: var(--ink-2); cursor: pointer;
   transition: all 140ms;
 }
@@ -883,71 +855,24 @@
   padding: 11px 4px; border-bottom: 1px dashed var(--line-2); cursor: pointer;
   transition: background 120ms, padding 120ms;
 }
-.kl-quest-log .child-row:hover { background: var(--bg-2); padding-left: 10px; }
+.kl-quest-log .child-row:hover { background: var(--bg-2); }
 .kl-quest-log .cr-status {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.22em;
   color: var(--ink-3); text-align: center; padding: 2px 5px; border: 1px solid var(--line-2);
 }
 .kl-quest-log .cr-status.fire { color: var(--accent); border-color: var(--accent); }
 .kl-quest-log .cr-status.sealed { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.kl-quest-log .cr-title { font-family: 'Noto Serif KR', serif; font-size: 14.5px; color: var(--ink); }
+.kl-quest-log .cr-title { font-family: 'Noto Serif KR', serif; font-size: 16.5px; color: var(--ink); }
 .kl-quest-log .cr-right { display: flex; align-items: center; }
 
 /* ── seal button ── */
 .kl-quest-log .seal-btn {
   margin-top: 22px; width: 100%; background: var(--ink); color: var(--bg);
   border: none; padding: 14px; cursor: pointer;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
   letter-spacing: 0.3em; text-transform: uppercase; transition: background 140ms;
 }
 .kl-quest-log .seal-btn:hover { background: var(--accent); }
-
-/* ── sleep prompt modal ── */
-.kl-quest-log .sleep-prompt-backdrop {
-  position: fixed; inset: 0; background: rgba(5,7,11,0.75); backdrop-filter: blur(6px);
-  z-index: 200; display: flex; align-items: center; justify-content: center;
-  animation: kl-ql-fadein 280ms ease;
-}
-@keyframes kl-ql-fadein { from { opacity: 0; } to { opacity: 1; } }
-.kl-quest-log .sleep-prompt {
-  background: var(--paper); border: 1px solid var(--line-3);
-  max-width: 460px; width: 92vw; padding: 32px 32px 28px;
-  position: relative; text-align: center;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-}
-.kl-quest-log .sleep-prompt::before {
-  content: '☾'; position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
-  font-size: 36px; color: var(--accent); background: var(--bg); padding: 4px 12px;
-}
-.kl-quest-log .sp-moon {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em;
-  color: var(--ink-3); text-transform: uppercase; margin-bottom: 18px;
-}
-.kl-quest-log .sp-title {
-  font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 28px;
-  letter-spacing: -0.02em; margin-bottom: 8px;
-}
-.kl-quest-log .sp-task {
-  font-family: 'Noto Serif KR', serif; font-size: 16px; color: var(--ink-2);
-  padding: 12px; background: var(--bg-2); border-left: 2px solid var(--accent);
-  text-align: left; margin: 14px 0 18px;
-}
-.kl-quest-log .sp-task strong { color: var(--ink); font-weight: 500; }
-.kl-quest-log .sp-subtitle {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em;
-  color: var(--ink-3); margin-bottom: 18px; text-transform: uppercase;
-}
-.kl-quest-log .sp-actions { display: flex; flex-direction: column; gap: 8px; }
-.kl-quest-log .sp-btn {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.24em;
-  padding: 12px; background: var(--paper); border: 1px solid var(--line-2); color: var(--ink);
-  cursor: pointer; text-transform: uppercase; transition: all 140ms;
-}
-.kl-quest-log .sp-btn:hover { border-color: var(--ink); }
-.kl-quest-log .sp-btn.fire { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-.kl-quest-log .sp-btn.fire:hover { background: transparent; color: var(--accent); }
-.kl-quest-log .sp-btn.kill { color: var(--ink-3); }
-.kl-quest-log .sp-btn.kill:hover { color: var(--accent); border-color: var(--accent); }
 
 @media (max-width: 1000px) { .kl-quest-log .stats { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) {
@@ -997,38 +922,16 @@
       <div class="kl-quest-log">
         <div class="wrap">
           <header class="hd">
-            <div class="mark"><div class="inner">✦</div></div>
-            <div class="t">
-              <div class="eye">▸ KARMOLAB QUEST SYSTEM · <b>SELF OBSERVATION</b> · v2</div>
-              <h1 class="serif">QUEST LOG — <em>in progress</em></h1>
-            </div>
-            <div class="r">
-              <span class="k">CAT №</span> <span class="v">KMLB-QST-2026</span><br>
-              <span class="k">MODE</span> <span class="v">NO TIMESTAMPS</span><br>
-              <span class="live">LIVE</span>
-            </div>
+            <h1 class="serif">QUEST LOG <em>— in progress</em></h1>
+            <span class="live">LIVE</span>
           </header>
 
           <div class="stats" data-kl-ql="stats"></div>
 
-          <div class="controls">
-            <span class="label">LANES</span>
-            <div class="filter-group" data-kl-ql="lane-filters"></div>
-            <span class="divider"></span>
-            <span class="label">STATUS</span>
-            <div class="filter-group" data-kl-ql="status-filters"></div>
-            <span class="spacer"></span>
-            <span class="result-count" data-kl-ql="count"><b>0</b> OF <b>0</b> VISIBLE</span>
-          </div>
-
           <div data-kl-ql="featured-wrap"></div>
           <div class="sub-grid" data-kl-ql="sub-columns"></div>
 
-          <footer class="footer">
-            <span>© KARMOLAB QUEST SYSTEM · 2026</span>
-            <span>FORMAT · OBSERVATORY v2 · NO TIMESTAMPS</span>
-            <span>— KEEP THE FIRE BURNING —</span>
-          </footer>
+          <footer class="footer">— KEEP THE FIRE BURNING —</footer>
         </div>
 
         <div class="drawer-backdrop" data-kl-ql="backdrop"></div>
@@ -1067,7 +970,16 @@
       sealed: stored?.sealed ?? SRC.sealed,
     };
 
-    const HEROES = ['/apps/karmolab/quest-log/assets/hero-bunny.png', '/apps/karmolab/quest-log/assets/hero-squat.png'];
+    const HEROES = [
+      '/apps/karmolab/quest-log/assets/hero-bunny.png',
+      '/apps/karmolab/quest-log/assets/hero-squat.png',
+      '/apps/karmolab/quest-log/assets/hero-3.png',
+      '/apps/karmolab/quest-log/assets/hero-4.png',
+      '/apps/karmolab/quest-log/assets/hero-5.png',
+      '/apps/karmolab/quest-log/assets/hero-6.png',
+      '/apps/karmolab/quest-log/assets/hero-7.png',
+      '/apps/karmolab/quest-log/assets/hero-8.png',
+    ];
     const CONST_BY_PROJECT: Record<string, { name: string; sub: string; mag: string }> = {
       wm:     { name: 'Venefica',  sub: 'the witch',    mag: '1.2' },
       blog:   { name: 'Scriba',    sub: 'the scribe',   mag: '2.8' },
@@ -1116,11 +1028,8 @@
     }
 
     const state = {
-      projects: new Set(DATA.projects.map((p: any) => p.id)),
-      statuses: new Set(['fire', 'seed', 'sleep']),
       view: 'log' as 'log' | 'trophy',
       selectedId: null as string | null,
-      dismissedSleepPrompts: new Set<string>(),
     };
 
     function esc(s: any): string { return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]!)); }
@@ -1144,84 +1053,26 @@
     function renderStats() {
       const all: any[] = [];
       DATA.projects.forEach((p: any) => allLeaves(p).forEach(l => all.push(l)));
-      const fire  = all.filter(l => l.status === 'fire').length;
-      const seed  = all.filter(l => l.status === 'seed').length;
-      const sleep = all.filter(l => l.status === 'sleep').length;
       const sealed = DATA.sealed.length;
       const coverage = all.length ? Math.round(all.reduce((s, l) => s + progressOf(l), 0) / all.length * 100) : 0;
       const el = byKey('stats');
       if (!el) return;
+      const trophyOn = state.view === 'trophy';
       el.innerHTML = `
-        <div class="stat"><div class="k">TOTAL</div><div class="v">${all.length}</div></div>
-        <div class="stat accent"><div class="k">FIRE</div><div class="v">${fire}<small>now burning</small></div></div>
-        <div class="stat"><div class="k">SEED</div><div class="v">${seed}</div></div>
-        <div class="stat"><div class="k">SLEEP</div><div class="v">${sleep}</div></div>
         <div class="stat"><div class="k">COVERAGE</div><div class="v">${coverage}<small>%</small></div></div>
-        <div class="stat"><div class="k">SEALED</div><div class="v">${sealed}<small>in trophy</small></div></div>
+        <button class="stat stat-toggle ${trophyOn ? 'on' : ''}" data-kl-ql="trophy-toggle" type="button">
+          <div class="k">SEALED${trophyOn ? ' · OPEN' : ''}</div>
+          <div class="v">${sealed}<small>${trophyOn ? '← back to log' : 'open trophy'}</small></div>
+        </button>
       `;
-    }
-
-    function renderFilters() {
-      const lf = byKey('lane-filters');
-      const sf = byKey('status-filters');
-      if (!lf || !sf) return;
-      lf.innerHTML = DATA.projects.map((p: any) => `
-        <button class="chip" data-proj="${p.id}"><span class="sw"></span>${esc(p.title.length > 16 ? p.title.slice(0, 14) + '…' : p.title)}</button>
-      `).join('') + '<button class="chip" data-action="all-projects" style="font-style:italic;">ALL</button>';
-
-      sf.innerHTML = `
-        <button class="chip" data-status="fire">◉ FIRE</button>
-        <button class="chip" data-status="seed">○ SEED</button>
-        <button class="chip" data-status="sleep">─ SLEEP</button>
-        <button class="chip" data-action="trophy" style="margin-left:8px;">◆ TROPHY <span data-kl-ql="trophy-count"></span></button>
-      `;
-
-      updateChipStates();
-
-      lf.addEventListener('click', e => {
-        const btn = (e.target as HTMLElement).closest('.chip') as HTMLElement | null;
-        if (!btn) return;
-        if (btn.dataset.action === 'all-projects') {
-          if (state.projects.size === DATA.projects.length) state.projects = new Set([DATA.projects[0].id]);
-          else state.projects = new Set(DATA.projects.map((p: any) => p.id));
-        } else {
-          const id = btn.dataset.proj!;
-          if (state.projects.has(id)) state.projects.delete(id); else state.projects.add(id);
-          if (state.projects.size === 0) state.projects = new Set(DATA.projects.map((p: any) => p.id));
-        }
-        updateChipStates(); renderColumns();
-      });
-      sf.addEventListener('click', e => {
-        const btn = (e.target as HTMLElement).closest('.chip') as HTMLElement | null;
-        if (!btn) return;
-        if (btn.dataset.action === 'trophy') {
+      const toggle = byKey('trophy-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
           state.view = state.view === 'trophy' ? 'log' : 'trophy';
-          updateChipStates(); renderColumns();
-          return;
-        }
-        const id = btn.dataset.status!;
-        if (state.statuses.has(id)) state.statuses.delete(id); else state.statuses.add(id);
-        if (state.statuses.size === 0) state.statuses = new Set(['fire', 'seed', 'sleep']);
-        updateChipStates(); renderColumns();
-      });
-    }
-    function updateChipStates() {
-      $$('[data-kl-ql="lane-filters"] .chip').forEach(c => {
-        if (c.dataset.action === 'all-projects') {
-          c.classList.toggle('on', state.projects.size === DATA.projects.length);
-        } else {
-          c.classList.toggle('on', state.projects.has(c.dataset.proj!));
-        }
-      });
-      $$('[data-kl-ql="status-filters"] .chip').forEach(c => {
-        if (c.dataset.action === 'trophy') {
-          c.classList.toggle('on', state.view === 'trophy');
-          const tc = byKey('trophy-count');
-          if (tc) tc.textContent = DATA.sealed.length ? '(' + DATA.sealed.length + ')' : '';
-        } else {
-          c.classList.toggle('on', state.statuses.has(c.dataset.status!));
-        }
-      });
+          renderStats();
+          renderColumns();
+        });
+      }
     }
 
     function skyHTML(idx: number, photo: boolean) {
@@ -1302,8 +1153,7 @@
 
       const fw = byKey('featured-wrap');
       if (!fw) return;
-      if (state.projects.has('wm') && wm) {
-        const wmLeaves = allLeaves(wm).filter(l => state.statuses.has(l.status || 'seed'));
+      if (wm) {
         const wmAll = allLeaves(wm);
         const wmFire = wmAll.filter(l => l.status === 'fire').length;
         const wmSealedCount = DATA.sealed.filter((s: any) => s.project === wm.title).length;
@@ -1331,13 +1181,13 @@
                 <div class="mini-stats">
                   <div class="s accent"><div class="k">FIRE</div><div class="v">${wmFire}</div></div>
                   <div class="s"><div class="k">SEALED</div><div class="v">${wmSealedCount}</div></div>
-                  <div class="s"><div class="k">COVERAGE</div><div class="v">${wmProg}<span style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:var(--ink-2);margin-left:2px;">%</span></div></div>
+                  <div class="s"><div class="k">COVERAGE</div><div class="v">${wmProg}<span style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:13.5px;color:var(--ink-2);margin-left:2px;">%</span></div></div>
                 </div>
               </div>
             </div>
             <div class="f-right">
-              <div class="log-head"><span>TASK LOG</span><span><b>${wmLeaves.length}</b> / ${wmAll.length} TASKS</span></div>
-              ${wmLeaves.length ? wmLeaves.map(l => obsRow(l, 'wm')).join('') : '<div class="empty" style="grid-column: 1 / -1;">no tasks match filters</div>'}
+              <div class="log-head"><span>TASK LOG</span><span><b>${wmAll.length}</b> TASKS</span></div>
+              ${wmAll.length ? wmAll.map(l => obsRow(l, 'wm')).join('') : '<div class="empty" style="grid-column: 1 / -1;">no tasks</div>'}
             </div>
           </div>
         `;
@@ -1348,12 +1198,10 @@
       const subEl = byKey('sub-columns');
       if (!subEl) return;
       subEl.innerHTML = others.map((p: any, subIdx: number) => {
-        if (!state.projects.has(p.id)) return '';
         const idx = subIdx + 1;
         const all = allLeaves(p);
-        const items = all.filter(l => state.statuses.has(l.status || 'seed'));
         const totalP = all.length ? Math.round(all.reduce((s, l) => s + progressOf(l), 0) / all.length * 100) : 0;
-        const fireCount = items.filter(l => l.status === 'fire').length;
+        const fireCount = all.filter(l => l.status === 'fire').length;
         const cst = CONST_BY_PROJECT[p.id] || { name: p.title, sub: p.subtitle || '', mag: '—' };
 
         return `
@@ -1363,25 +1211,17 @@
               <div class="sub">${esc(cst.name)} · <span style="font-style:italic;text-transform:none;letter-spacing:0.05em;">${esc(cst.sub)}</span></div>
               <div class="bar-line"><div class="fill" style="width:${totalP}%"></div></div>
               <div class="bar-meta">
-                <b>${items.length} / ${all.length} TASKS</b>
+                <b>${all.length} TASKS</b>
                 <span>${fireCount} FIRE · ${totalP}% COVERAGE · MAG ${cst.mag}</span>
               </div>
             </div>
-            ${skyHTML(idx, false)}
+            ${skyHTML(idx, true)}
             <div class="log">
-              ${items.length ? items.map(l => obsRow(l, p.id)).join('') : '<div class="empty">no tasks</div>'}
+              ${all.length ? all.map(l => obsRow(l, p.id)).join('') : '<div class="empty">no tasks</div>'}
             </div>
           </div>
         `;
       }).join('');
-
-      const countEl = byKey('count');
-      if (countEl) {
-        const all: any[] = [];
-        DATA.projects.forEach((p: any) => allLeaves(p).forEach(l => all.push({ p, l })));
-        const vis = all.filter(({ p, l }) => state.projects.has(p.id) && state.statuses.has(l.status || 'seed'));
-        countEl.innerHTML = `<b>${vis.length}</b> OF <b>${all.length}</b> VISIBLE`;
-      }
 
       $$('.obs').forEach(el => {
         el.addEventListener('click', () => openDrawer(el.dataset.id!));
@@ -1391,10 +1231,8 @@
     function renderTrophyView() {
       const fw = byKey('featured-wrap');
       const subEl = byKey('sub-columns');
-      const countEl = byKey('count');
-      if (!fw || !subEl || !countEl) return;
+      if (!fw || !subEl) return;
       fw.innerHTML = '';
-      countEl.innerHTML = `<b>${DATA.sealed.length}</b> SEALED ENTRIES`;
       if (DATA.sealed.length === 0) {
         subEl.innerHTML = '<div class="col" style="grid-column:1 / -1;"><div class="log" style="padding:40px;"><div class="empty">no sealed entries yet</div></div></div>';
         return;
@@ -1469,7 +1307,7 @@
 
         ${isLeaf(node) ? `
           <div style="margin-top:24px; padding-top:18px; border-top:1px solid var(--line-2);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;">
               CHECKLIST · ${node.checks.filter((c: any) => c.done).length} / ${node.checks.length}
             </div>
             <div class="checklist">
@@ -1488,7 +1326,7 @@
           </div>
         ` : `
           <div style="margin-top:24px; padding-top:18px; border-top:1px solid var(--line-2);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;">
               SUB-AREAS · ${node.children.length}
             </div>
             <div class="children-list">
@@ -1499,7 +1337,7 @@
                   <div class="child-row" data-child="${c.id}">
                     <span class="cr-status ${cs}">${cs.toUpperCase()}</span>
                     <span class="cr-title">${esc(c.title)}</span>
-                    <span class="cr-right">${starsHTML(cp / 100)} <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-3);margin-left:6px;">${cp}%</span></span>
+                    <span class="cr-right">${starsHTML(cp / 100)} <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-3);margin-left:6px;">${cp}%</span></span>
                   </div>
                 `;
               }).join('')}
@@ -1573,7 +1411,6 @@
           save();
           closeDrawer();
           state.view = 'trophy';
-          updateChipStates();
           renderStats();
           renderColumns();
         });
@@ -1603,61 +1440,7 @@
     }
     window.addEventListener('keydown', onEsc);
 
-    function maybeSleepPrompt() {
-      const cands: { project: any; node: any }[] = [];
-      DATA.projects.forEach((p: any) => {
-        allLeaves(p).forEach(l => {
-          if (l.status === 'sleep' && !state.dismissedSleepPrompts.has(l.id)) {
-            cands.push({ project: p, node: l });
-          }
-        });
-      });
-      if (!cands.length) return;
-      const { project, node } = cands[0];
-
-      root.querySelectorAll('.sleep-prompt-backdrop').forEach(el => el.remove());
-
-      const bd = document.createElement('div');
-      bd.className = 'sleep-prompt-backdrop';
-      bd.innerHTML = `
-        <div class="sleep-prompt">
-          <div class="sp-moon">SLEEP CHECK · 오래 잠들어 있는 항목</div>
-          <div class="sp-title">아직 할 거예요?</div>
-          <div class="sp-task">${esc(project.title)} / <strong>${esc(node.title)}</strong></div>
-          <div class="sp-subtitle">솔직하게 정해주세요</div>
-          <div class="sp-actions">
-            <button class="sp-btn fire" data-sp="fire">◉ RELIGHT</button>
-            <button class="sp-btn" data-sp="keep">→ KEEP SLEEPING</button>
-            <button class="sp-btn kill" data-sp="kill">× DISCARD</button>
-          </div>
-        </div>
-      `;
-      root.appendChild(bd);
-      bd.querySelectorAll('[data-sp]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const a = (btn as HTMLElement).dataset.sp;
-          if (a === 'fire') node.status = 'fire';
-          else if (a === 'kill') {
-            (function remove(id: string, nodes: any[] = DATA.projects): boolean {
-              for (let i = 0; i < nodes.length; i++) {
-                if (nodes[i].id === id) { nodes.splice(i, 1); return true; }
-                if (nodes[i].children && remove(id, nodes[i].children)) return true;
-              }
-              return false;
-            })(node.id);
-          }
-          state.dismissedSleepPrompts.add(node.id);
-          bd.remove();
-          save();
-          renderStats();
-          renderColumns();
-        });
-      });
-    }
-
     renderStats();
-    renderFilters();
     renderColumns();
-    setTimeout(maybeSleepPrompt, 800);
   }
 })();
