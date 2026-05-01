@@ -931,19 +931,19 @@
     };
 
     const HEROES = [
-      '/assets/img/post/works/_witch-mendokusai/concept-art/240126-072633.png',
-      '/assets/img/post/works/_witch-mendokusai/concept-art/240714-071225.jpg',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240330-000000.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240330-111546.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240330-140142.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240513-131941.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240514-103335.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240514-104350.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240514-192005.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240605-133617.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/240618-000000.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/250315-170647.png',
-      '/assets/img/post/works/_witch-mendokusai/screenshot/250315-173653.png',
+      '/apps/karmolab/quest-log/assets/240126-072633.png',
+      '/apps/karmolab/quest-log/assets/240714-071225.jpg',
+      '/apps/karmolab/quest-log/assets/240330-000000.png',
+      '/apps/karmolab/quest-log/assets/240330-111546.png',
+      '/apps/karmolab/quest-log/assets/240330-140142.png',
+      '/apps/karmolab/quest-log/assets/240513-131941.png',
+      '/apps/karmolab/quest-log/assets/240514-103335.png',
+      '/apps/karmolab/quest-log/assets/240514-104350.png',
+      '/apps/karmolab/quest-log/assets/240514-192005.png',
+      '/apps/karmolab/quest-log/assets/240605-133617.png',
+      '/apps/karmolab/quest-log/assets/240618-000000.png',
+      '/apps/karmolab/quest-log/assets/250315-170647.png',
+      '/apps/karmolab/quest-log/assets/250315-173653.png',
     ];
     const CONST_BY_PROJECT: Record<string, { name: string; sub: string; mag: string }> = {
       wm:     { name: 'Venefica',  sub: 'the witch',    mag: '1.2' },
@@ -1130,7 +1130,7 @@
           <div class="featured">
             <div class="f-left">
               <div class="f-sky">
-                <img src="/apps/karmolab/quest-log/assets/hero-bunny.png" alt="">
+                <img src="/apps/karmolab/quest-log/assets/240714-071225.jpg" alt="">
                 <div class="coord"><span class="k">RA</span> ${rah}<sup>h</sup> ${ram}<sup>m</sup><br><span class="k">DEC</span> +${decd}° ${decm}'<br><span class="k">MAG</span> ${cst.mag}</div>
                 <div class="tag">★ MAIN PROJECT</div>
                 <div class="overlay-title">
