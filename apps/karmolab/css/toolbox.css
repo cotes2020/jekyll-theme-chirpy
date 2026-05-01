@@ -31,11 +31,11 @@
     --font-size-lg: 22px;
 
     /* Observatory accents (별빛) */
-    --accent: #e8d9a8;         /* warm starlight */
-    --accent-hover: #f0e2b8;
-    --accent-dim: rgba(232, 217, 168, 0.15);
-    --accent-subtle: rgba(232, 217, 168, 0.08);
-    --accent-glow: rgba(232, 217, 168, 0.28);
+    --accent: #d4a849;         /* antique brass — gold leaf in dim observatory */
+    --accent-hover: #e6c068;
+    --accent-dim: rgba(212, 168, 73, 0.15);
+    --accent-subtle: rgba(212, 168, 73, 0.08);
+    --accent-glow: rgba(212, 168, 73, 0.30);
 
     --secondary: #7fa6d4;      /* cool starlight */
     --secondary-hover: #95b7df;
