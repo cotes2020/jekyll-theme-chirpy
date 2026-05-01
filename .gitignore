@@ -54,6 +54,8 @@ node_modules
 
 # Build artifacts
 apps/karmolab/react-dist/
+# Quest Log temp hero images (Phase 2-A 임시; webp 변환·정리 후 커밋 예정)
+apps/karmolab/quest-log/assets/
 # KarmoWorld scripts (built from src/world/*.ts; wiki *.md stay tracked)
 apps/karmolab/world/*.js
 # KarmoLab TS build output (apps/karmolab: npm run build)

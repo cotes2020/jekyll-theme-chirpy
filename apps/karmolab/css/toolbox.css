@@ -1,27 +1,27 @@
 /* ═══════════════════════════════════════════════════════════
-   KarmoLab — Blue Magenta
-   Minimal UI · Chamfered Corners · Blue + Magenta
+   KarmoLab — Observatory
+   관측실 톤 · 별빛 액센트 · 종이/잉크 다크 베이스
    ═══════════════════════════════════════════════════════════ */
 
 /* ── Design Tokens ── */
 
 :root {
-    /* Neutral dark base (배경 테마가 더 잘 보이도록) */
-    --bg-void: #16161a;
-    --bg-primary: #1e1e24;
-    --bg-secondary: #27272c;
-    --bg-tertiary: #32323a;
-    --bg-hover: #3a3a42;
-    --bg-active: #45454e;
+    /* Observatory (관측실) 다크 베이스 — body는 무채색 어두움, 카드/패널은 paper/ink 톤 유지 */
+    --bg-void: #08080a;        /* night sky — body 배경, 무채색 */
+    --bg-primary: #12151c;     /* paper */
+    --bg-secondary: #171a22;   /* paper-2 */
+    --bg-tertiary: #1f242d;    /* line */
+    --bg-hover: #2a3040;       /* line-2 */
+    --bg-active: #3d4557;      /* line-3 */
 
-    --glass: rgba(30, 30, 36, 0.96);
-    --glass-hover: rgba(39, 39, 44, 0.98);
-    --glass-strong: rgba(22, 22, 26, 0.98);
+    --glass: rgba(18, 21, 28, 0.96);
+    --glass-hover: rgba(23, 26, 34, 0.98);
+    --glass-strong: rgba(11, 13, 18, 0.98);
     --glass-blur: blur(14px);
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #dbdee1;
-    --text-tertiary: #b9bbbe;
+    --text-primary: #f2f2ee;   /* ink */
+    --text-secondary: #9a9a94; /* ink-2 */
+    --text-tertiary: #55555a;  /* ink-3 */
 
     /* Typography tokens */
     --font-size-2xs: 12px;
@@ -30,17 +30,17 @@
     --font-size-md: 18px;
     --font-size-lg: 22px;
 
-    /* Blue-magenta accent */
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --accent-dim: rgba(99, 102, 241, 0.15);
-    --accent-subtle: rgba(99, 102, 241, 0.08);
-    --accent-glow: rgba(59, 130, 246, 0.3);
+    /* Observatory accents (별빛) */
+    --accent: #e8d9a8;         /* warm starlight */
+    --accent-hover: #f0e2b8;
+    --accent-dim: rgba(232, 217, 168, 0.15);
+    --accent-subtle: rgba(232, 217, 168, 0.08);
+    --accent-glow: rgba(232, 217, 168, 0.28);
 
-    --secondary: #c026d3;
-    --secondary-hover: #d946ef;
-    --secondary-subtle: rgba(192, 38, 211, 0.08);
-    --secondary-glow: rgba(217, 70, 239, 0.25);
+    --secondary: #7fa6d4;      /* cool starlight */
+    --secondary-hover: #95b7df;
+    --secondary-subtle: rgba(127, 166, 212, 0.08);
+    --secondary-glow: rgba(127, 166, 212, 0.25);
 
     --success: #22C55E;
     --success-subtle: rgba(34, 197, 94, 0.08);
@@ -49,15 +49,15 @@
     --warning: #F59E0B;
     --warning-subtle: rgba(245, 158, 11, 0.08);
 
-    --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.12);
-    --border-strong: rgba(99, 102, 241, 0.4);
+    --border: rgba(242, 242, 238, 0.06);
+    --border-hover: rgba(242, 242, 238, 0.12);
+    --border-strong: rgba(232, 217, 168, 0.4);
 
-    /* Discord-style rounded corners */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
+    /* Observatory: 직각에 가까운 라디우스 (종이/도감 톤) */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 6px;
+    --radius-xl: 8px;
 
     --space-xs: 4px;
     --space-sm: 8px;
@@ -73,13 +73,14 @@
     --transition-fast: 100ms ease;
     --transition-slow: 350ms ease;
 
-    --font-sans: 'Inter', 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Liberation Mono', monospace;
+    --font-sans: 'Noto Sans KR', 'Inter', 'Malgun Gothic', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Noto Serif KR', Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', 'Consolas', 'Liberation Mono', monospace;
 
-    --grid-color: rgba(255, 255, 255, 0.012);
+    --grid-color: rgba(242, 242, 238, 0.015);
     --glow-text: none;
     --glow-box: none;
-    --shadow-float: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.25);
+    --shadow-float: 0 1px 0 rgba(0, 0, 0, 0.25);
 
     /* 헤더 줄 + 메가메뉴 패널 동일 표면 (토스형: 위아래 한 장의 글래스) */
     --header-shell-glass: color-mix(in srgb, var(--glass) 35%, transparent);
@@ -90,46 +91,48 @@
 /* ── Light Theme ── */
 
 [data-theme="light"] {
-    --bg-void: #f0f0f4;
-    --bg-primary: #f8f8fa;
-    --bg-secondary: #FFFFFF;
-    --bg-tertiary: #e8e8ec;
-    --bg-hover: #e0e0e6;
-    --bg-active: #d8d8de;
+    /* Observatory paper — warm cream paper, dark ink, burnt sienna accent */
+    --bg-void: #ebe1c6;        /* parchment shadow */
+    --bg-primary: #f4eee0;     /* paper */
+    --bg-secondary: #faf5e8;   /* paper light (cards) */
+    --bg-tertiary: #ebe1c6;    /* divider */
+    --bg-hover: #e0d5b8;
+    --bg-active: #d6c89e;
 
-    --glass: rgba(250, 250, 252, 0.78);
-    --glass-hover: rgba(248, 248, 250, 0.85);
-    --glass-strong: rgba(252, 252, 254, 0.92);
+    --glass: rgba(244, 238, 224, 0.85);
+    --glass-hover: rgba(250, 245, 232, 0.92);
+    --glass-strong: rgba(244, 238, 224, 0.96);
 
-    --text-primary: #111113;
-    --text-secondary: rgba(50, 50, 60, 0.72);
-    --text-tertiary: rgba(100, 100, 115, 0.5);
+    --text-primary: #2d2520;   /* ink */
+    --text-secondary: #5c4f44; /* mid brown */
+    --text-tertiary: #8a7d6f;  /* sand */
 
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --accent-dim: rgba(99, 102, 241, 0.12);
-    --accent-subtle: rgba(99, 102, 241, 0.06);
-    --accent-glow: rgba(59, 130, 246, 0.2);
+    --accent: #a85b3e;         /* burnt sienna */
+    --accent-hover: #c66e4d;
+    --accent-dim: rgba(168, 91, 62, 0.14);
+    --accent-subtle: rgba(168, 91, 62, 0.07);
+    --accent-glow: rgba(168, 91, 62, 0.22);
 
-    --secondary: #c026d3;
-    --secondary-hover: #d946ef;
-    --secondary-subtle: rgba(192, 38, 211, 0.08);
+    --secondary: #4a6b8a;      /* faded blue ink */
+    --secondary-hover: #5c80a5;
+    --secondary-subtle: rgba(74, 107, 138, 0.08);
+    --secondary-glow: rgba(74, 107, 138, 0.22);
 
-    --success: #16A34A;
-    --success-subtle: rgba(22, 163, 74, 0.08);
-    --error: #DC2626;
-    --error-subtle: rgba(220, 38, 38, 0.08);
-    --warning: #D97706;
-    --warning-subtle: rgba(217, 119, 6, 0.08);
+    --success: #4a6b3a;        /* moss */
+    --success-subtle: rgba(74, 107, 58, 0.08);
+    --error: #a83a2e;          /* deep red ink */
+    --error-subtle: rgba(168, 58, 46, 0.08);
+    --warning: #b8763d;        /* warm amber */
+    --warning-subtle: rgba(184, 118, 61, 0.08);
 
-    --border: rgba(0, 0, 0, 0.08);
-    --border-hover: rgba(0, 0, 0, 0.14);
-    --border-strong: rgba(99, 102, 241, 0.4);
+    --border: rgba(45, 37, 32, 0.10);
+    --border-hover: rgba(45, 37, 32, 0.18);
+    --border-strong: rgba(168, 91, 62, 0.4);
 
-    --grid-color: rgba(0, 0, 0, 0.015);
+    --grid-color: rgba(45, 37, 32, 0.025);
     --glow-text: none;
     --glow-box: none;
-    --shadow-float: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-float: 0 1px 0 rgba(45, 37, 32, 0.10);
 
     --header-shell-glass: color-mix(in srgb, var(--glass) 35%, transparent);
 }
@@ -162,8 +165,17 @@ body {
     min-height: 100vh;
 }
 
-/* 배경 테마: 블루 매젠타 (기본) */
+/* 배경 테마: 관측실 (기본) — 그리드 + 어두운 vignette만 (채도 0, 최소 톤) */
 html:not([data-bg]) body,
+html[data-bg="observatory"] body {
+    background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px),
+        radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.5) 100%);
+    background-size: 48px 48px, 48px 48px, auto;
+}
+
+/* 배경 테마: 블루 매젠타 */
 html[data-bg="blue-magenta"] body { background-image:
     radial-gradient(at 20% 30%, rgba(59, 130, 246, 0.18) 0px, transparent 50%),
     radial-gradient(at 80% 20%, rgba(217, 70, 239, 0.14) 0px, transparent 45%),
@@ -733,10 +745,11 @@ html[data-bg="minimal"] body {
 }
 
 .landing-title {
-    font-size: 42px;
-    font-weight: 800;
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 900;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1;
     color: var(--text-primary);
     margin-bottom: var(--space-sm);
 }
@@ -908,7 +921,8 @@ body:has(#page-home.active) .mdd-container .mdd-char {
     border-bottom: 1px solid var(--border);
 }
 .tool-page-hero-title {
-    font-size: 40px; font-weight: 800; letter-spacing: -0.02em;
+    font-family: var(--font-serif);
+    font-size: 40px; font-weight: 900; letter-spacing: -0.02em;
     line-height: 1; color: var(--text-primary); margin-bottom: 10px;
 }
 .tool-page-hero-desc {

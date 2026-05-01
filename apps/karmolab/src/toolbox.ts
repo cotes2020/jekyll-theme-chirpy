@@ -1096,6 +1096,7 @@ const Toolbox = (() => {
     /* ===== 배경 테마 (mesh/gradient) ===== */
     const BG_THEME_KEY = 'toolbox_bg_theme';
     const BG_THEMES = [
+        { id: 'observatory', label: '관측실' },
         { id: 'blue-magenta', label: '블루 매젠타' },
         { id: 'mesh-dots', label: '메쉬 도트' },
         { id: 'aurora', label: '오로라' },
@@ -1106,7 +1107,7 @@ const Toolbox = (() => {
     function getBgTheme() {
         const saved = localStorage.getItem(BG_THEME_KEY);
         if (saved && BG_THEMES.some(t => t.id === saved)) return saved;
-        return 'blue-magenta';
+        return 'observatory';
     }
 
     function setBgTheme(bgId) {

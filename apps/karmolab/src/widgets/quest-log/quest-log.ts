@@ -371,42 +371,13 @@
 
 /* ── HEADER ── */
 .kl-quest-log header.hd {
-  display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: end;
-  padding-bottom: 16px; border-bottom: 1px solid var(--line-2); margin-bottom: 18px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line-2); margin-bottom: 22px;
 }
-.kl-quest-log header.hd .mark {
-  width: 68px; height: 68px; border: 1px solid var(--ink); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; position: relative;
-}
-.kl-quest-log header.hd .mark::before, .kl-quest-log header.hd .mark::after {
-  content: ''; position: absolute; background: var(--ink);
-}
-.kl-quest-log header.hd .mark::before { width: 1px; height: 100%; left: 50%; }
-.kl-quest-log header.hd .mark::after { width: 100%; height: 1px; top: 50%; }
-.kl-quest-log header.hd .mark .inner {
-  position: relative; width: 18px; height: 18px; border-radius: 50%;
-  background: var(--bg); border: 1px solid var(--ink);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink);
-}
-.kl-quest-log header.hd .t .eye {
-  font-family: 'JetBrains Mono', monospace; font-size: 13px;
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px;
-}
-.kl-quest-log header.hd .t .eye b { color: var(--ink); font-weight: 500; }
-.kl-quest-log header.hd .t h1 {
+.kl-quest-log header.hd h1 {
   margin: 0; font-family: 'Noto Serif KR', serif; font-weight: 900;
   font-size: clamp(28px, 3.6vw, 44px); line-height: 1; letter-spacing: -0.02em;
 }
-.kl-quest-log header.hd .t h1 em { font-style: italic; font-weight: 500; color: var(--ink-2); }
-.kl-quest-log header.hd .r {
-  text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 13px;
-  color: var(--ink-3); letter-spacing: 0.22em; text-transform: uppercase; line-height: 1.9;
-}
-.kl-quest-log header.hd .r .k { color: var(--ink-3); }
-.kl-quest-log header.hd .r .v { color: var(--ink); }
-.kl-quest-log header.hd .r .live { color: var(--accent); }
-.kl-quest-log header.hd .r .live::before { content: '●'; margin-right: 4px; }
+.kl-quest-log header.hd h1 em { font-style: italic; font-weight: 500; color: var(--ink-2); }
 
 /* ── STATS ── */
 .kl-quest-log .stats {
@@ -663,14 +634,6 @@
   color: var(--ink-3); letter-spacing: 0.18em;
 }
 
-/* ── FOOTER ── */
-.kl-quest-log .footer {
-  margin-top: 48px; padding: 18px 0; border-top: 1px solid var(--line-2);
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  font-family: 'JetBrains Mono', monospace; font-size: 13px;
-  letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-3);
-}
-
 /* ── FEATURED + SUB-GRID ── */
 .kl-quest-log .featured {
   border: 1px solid var(--line-2); background: var(--paper);
@@ -878,8 +841,7 @@
 @media (max-width: 640px) {
   .kl-quest-log .columns { grid-template-columns: 1fr; }
   .kl-quest-log .stats { grid-template-columns: repeat(2, 1fr); }
-  .kl-quest-log header.hd { grid-template-columns: 1fr; }
-  .kl-quest-log header.hd .r { display: none; }
+  .kl-quest-log header.hd { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 `;
 
@@ -923,7 +885,6 @@
         <div class="wrap">
           <header class="hd">
             <h1 class="serif">QUEST LOG <em>— in progress</em></h1>
-            <span class="live">LIVE</span>
           </header>
 
           <div class="stats" data-kl-ql="stats"></div>
@@ -931,7 +892,6 @@
           <div data-kl-ql="featured-wrap"></div>
           <div class="sub-grid" data-kl-ql="sub-columns"></div>
 
-          <footer class="footer">— KEEP THE FIRE BURNING —</footer>
         </div>
 
         <div class="drawer-backdrop" data-kl-ql="backdrop"></div>
