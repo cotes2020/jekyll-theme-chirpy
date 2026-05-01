@@ -933,7 +933,7 @@ body:has(#page-home.active) .mdd-container .mdd-char {
     width: 100%;
     padding: var(--space-md);
     border: 1px solid var(--border);
-    background: var(--glass);
+    background: var(--bg-secondary);
     position: relative;
 }
 .tool-page.layout-wide { max-width: 1200px; margin: 0 auto var(--space-2xl); width: 100%; }
@@ -1067,11 +1067,11 @@ body:has(#page-home.active) .mdd-container .mdd-char {
 .field-group {
     margin-bottom: var(--space-lg);
     padding: var(--space-md);
-    background: var(--glass);
+    background: var(--bg-tertiary);
     border: 1px solid var(--border);
     border-left: 2px solid var(--accent);
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
 }
 .field-label {
     display: flex; align-items: center; gap: 6px;
@@ -1157,29 +1157,20 @@ input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer;
 
 .btn-primary {
     width: 100%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    background: var(--accent);
     color: var(--bg-void);
     padding: 12px 18px; margin-top: var(--space-md);
     border-color: var(--accent); font-weight: 800;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     text-shadow: none;
     font-family: var(--font-mono);
     letter-spacing: 0.1em; text-transform: uppercase;
-    position: relative;
-}
-.btn-primary::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    opacity: 0;
-    transition: opacity var(--transition);
 }
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--accent-hover), var(--accent));
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
 }
-.btn-primary:hover::after { opacity: 1; }
-.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
 
 .btn-ghost {
     background: none; color: var(--text-secondary);
@@ -1191,20 +1182,20 @@ input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer;
 .btn-accent {
     background: var(--accent); color: var(--bg-void);
     border-color: var(--accent); font-weight: 700;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
 }
 .btn-accent:hover { background: var(--accent-hover); }
 
 .btn-danger {
     background: none; color: var(--error); border-color: var(--border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
 }
 .btn-danger:hover { background: var(--error-subtle); border-color: var(--error); }
 
 .btn-secondary {
     background: var(--secondary); color: var(--bg-void);
     border-color: var(--secondary); font-weight: 700;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
 }
 .btn-secondary:hover { background: var(--secondary-hover); }
 
