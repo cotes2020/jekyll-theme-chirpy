@@ -342,7 +342,7 @@
   --line: #1f242d;
   --line-2: #2a3040;
   --line-3: #3d4557;
-  --accent: #e8d9a8;
+  --accent: #d4a849;
   --accent-2: #7fa6d4;
   --mag-wm: #e8d9a8;
   --mag-project: #9ec4a8;
