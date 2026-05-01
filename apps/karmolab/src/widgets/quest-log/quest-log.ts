@@ -931,14 +931,19 @@
     };
 
     const HEROES = [
-      '/apps/karmolab/quest-log/assets/hero-bunny.png',
-      '/apps/karmolab/quest-log/assets/hero-squat.png',
-      '/apps/karmolab/quest-log/assets/hero-3.png',
-      '/apps/karmolab/quest-log/assets/hero-4.png',
-      '/apps/karmolab/quest-log/assets/hero-5.png',
-      '/apps/karmolab/quest-log/assets/hero-6.png',
-      '/apps/karmolab/quest-log/assets/hero-7.png',
-      '/apps/karmolab/quest-log/assets/hero-8.png',
+      '/assets/img/post/works/_witch-mendokusai/concept-art/240126-072633.png',
+      '/assets/img/post/works/_witch-mendokusai/concept-art/240714-071225.jpg',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240330-000000.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240330-111546.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240330-140142.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240513-131941.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240514-103335.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240514-104350.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240514-192005.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240605-133617.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/240618-000000.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/250315-170647.png',
+      '/assets/img/post/works/_witch-mendokusai/screenshot/250315-173653.png',
     ];
     const CONST_BY_PROJECT: Record<string, { name: string; sub: string; mag: string }> = {
       wm:     { name: 'Venefica',  sub: 'the witch',    mag: '1.2' },
