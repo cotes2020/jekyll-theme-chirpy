@@ -768,12 +768,6 @@ html[data-bg="minimal"] body {
     display: flex; flex-direction: column; align-items: center; gap: var(--space-lg);
     padding: var(--space-xl) 0; text-align: center;
 }
-.landing-cta::before {
-    content: '◆';
-    font-size: 10px;
-    color: var(--accent);
-    opacity: 0.35;
-}
 .landing-cta-grid {
     display: flex;
     flex-wrap: wrap;
@@ -781,45 +775,31 @@ html[data-bg="minimal"] body {
     gap: var(--space-md);
 }
 .landing-cta-card {
-    background: var(--glass);
+    background: var(--bg-secondary);
     border: 1px solid var(--border);
-    padding: 16px 14px 14px;
-    min-width: 180px;
-    max-width: 200px;
+    padding: 18px 16px 16px;
+    min-width: 200px;
+    max-width: 220px;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
-    transition: all var(--transition-slow);
+    transition: border-color var(--transition), background var(--transition);
     display: flex;
     flex-direction: column;
     gap: 6px;
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     text-align: left;
     font-family: inherit;
-    color: inherit;
     appearance: none;
     -webkit-appearance: none;
 }
-.landing-cta-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent 70%);
-    opacity: 0.4;
-    transition: opacity var(--transition);
-}
 .landing-cta-card:hover {
-    background: var(--glass-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-float);
+    background: var(--bg-tertiary);
+    border-color: var(--text-tertiary);
 }
-.landing-cta-card:hover::before { opacity: 0.7; }
 .landing-cta-card:hover .landing-cta-card-icon { color: var(--accent); }
+.landing-cta-card:hover .landing-cta-card-title { color: var(--accent); }
 a.landing-cta-card:hover { color: inherit; }
 .landing-cta-card-icon {
     width: 20px;
