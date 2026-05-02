@@ -1,0 +1,6 @@
+[[permission]]
+identifier = "allow-karmoddrine-state"
+description = "Allow the karmoddrine-dashboard widget to fetch the umbrella state snapshot (read-only: memo files + git log + ~/.claude inventory)."
+commands.allow = [
+  "get_karmoddrine_state",
+]

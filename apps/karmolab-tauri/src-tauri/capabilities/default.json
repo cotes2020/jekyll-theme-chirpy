@@ -24,6 +24,7 @@
     "allow-karmolab-update",
     "allow-karmolab-release",
     "allow-activity",
+    "allow-karmoddrine-state",
     "updater:default"
   ]
 }

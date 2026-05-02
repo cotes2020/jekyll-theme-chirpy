@@ -102,6 +102,10 @@
     return Math.abs(h).toString(36).slice(0, 6);
   }
 
+  // ── 폴링 상태 (Toolbox.register 의 build() 가 동기로 startPolling 을 호출하므로
+  //    register 전에 선언해 TDZ 회피) ────────────────────────────
+  let pollTimer: number | null = null;
+
   // ── Toolbox 등록 ─────────────────────────────────────────────────
   Toolbox.register({
     ...Toolbox.getLazyWidgetPublicMeta('karmoddrine-dashboard'),
@@ -188,8 +192,6 @@
   }
 
   // ── 폴링 ────────────────────────────────────────────────────────
-  let pollTimer: number | null = null;
-
   function startPolling(container: HTMLElement): void {
     if (!isKarmolabDesktop()) return;
     void refresh(container);
