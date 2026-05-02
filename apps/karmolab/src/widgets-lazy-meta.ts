@@ -140,5 +140,15 @@ window.KARMOLAB_LAZY_META = [
     noHero: true,
     icon: '<path d="M12 2l2.9 6.95 7.6.6-5.75 4.95L18.4 22 12 17.9 5.6 22l1.65-7.5L1.5 9.55l7.6-.6z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
     lazyScriptPaths: ['quest-log/quest-log']
+  },
+  {
+    id: 'karmoddrine-dashboard',
+    title: 'karmoddrine 대시보드',
+    category: 'desktop',
+    desc: 'umbrella 활성 세션 / commit / 도구 / 룰 단일 출처를 카드 + 그래프로 (10s 폴링)',
+    layout: 'full',
+    noHero: true,
+    icon: '<rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>',
+    lazyScriptPaths: ['karmoddrine-dashboard/karmoddrine-dashboard']
   }
 ] as KarmoLabLazyWidgetStub[];

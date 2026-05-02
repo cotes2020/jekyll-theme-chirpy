@@ -101,6 +101,7 @@ const entryPoints = [
   'src/widgets/linktree/linktree.ts',
   'src/widgets/planner/planner.ts',
   'src/widgets/quest-log/quest-log.ts',
+  'src/widgets/karmoddrine-dashboard/karmoddrine-dashboard.ts',
   'src/widgets/tierlist/dialogs.ts',
   'src/widgets/tierlist/dnd.ts',
   'src/widgets/tierlist/index.ts',
