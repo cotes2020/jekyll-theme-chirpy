@@ -18,8 +18,7 @@ imagegen_presetId: ling
 imagegen_icon: 🧟‍♀️
 imagegen_label: 강시 링
 imagegen_shortLabel: Ling, a Jiangshi vampire maid girl
-imagegen_prompt: |
-  A beautiful Jiangshi (Chinese vampire) maid girl named Ling. Face: Innocent baby face, mischievous smile. Body: Glamorous and curvy. Dark brown hair in cute twin-buns. Costume: Black Qipao-Maid fusion dress, form-fitting with frills. Paper talisman on forehead. Floating pose. White background, detailed.
+imagegen_prompt: A beautiful Jiangshi (Chinese vampire) maid girl named Ling. Face: Innocent baby face, mischievous smile. Body: Glamorous and curvy. Dark brown hair in cute twin-buns. Costume: Black Qipao-Maid fusion dress, form-fitting with frills. Paper talisman on forehead. Floating pose. White background, detailed.
 chatbot_id: c_mascot_ling
 chatbot_name: 링 (Ling)
 chatbot_userName: 조수님

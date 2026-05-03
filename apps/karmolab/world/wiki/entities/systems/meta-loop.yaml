@@ -1,0 +1,12 @@
+title: AI-native 메타 루프
+slug: meta-loop
+kind: entity
+type: system
+entityId: entity_sys_meta_loop
+oneLine: 사용자 → memo → TASK → Claude → code → commit → 보드 정리. karmoddrine 의 모든 작업이 도는 흐름.
+tags:
+  - system
+  - umbrella
+  - workflow
+  - ai-native
+owner: umbrella

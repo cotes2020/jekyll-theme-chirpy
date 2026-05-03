@@ -8,7 +8,8 @@
     "karmolab-ai": "file:../../packages/karmolab-ai"
   },
   "scripts": {
-    "build": "node build.mjs",
+    "build:wiki": "node scripts/sync-wiki.mjs",
+    "build": "npm run build:wiki && node build.mjs",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

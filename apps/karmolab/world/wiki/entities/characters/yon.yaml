@@ -17,8 +17,7 @@ imagegen_presetId: witch
 imagegen_icon: 💤
 imagegen_label: 마녀 욘
 imagegen_shortLabel: Yawn, a young witch with messy orange hair and round glasses
-imagegen_prompt: |
-  A young adult witch (Yawn). **Very slender body, flat chest (petite).** **Messy Orange hair.** Face: Half-open sleepy eyes (half-lidded), distinctive short thick eyebrows (maro-mayu), **wearing round glasses**, **slightly blushing cheeks (shy)**, expression of finding things troublesome but trying to hide it. **Headwear: Drooping Nightcap (sleeping hat). Accessories: Large fluffy sleeping earmuffs with an ORANGE spiral pattern.** Outfit: Oversized loose fitting witch robe falling off shoulder. Introverted and cute atmosphere, soft colors.
+imagegen_prompt: A young adult witch (Yawn). **Very slender body, flat chest (petite).** **Messy Orange hair.** Face: Half-open sleepy eyes (half-lidded), distinctive short thick eyebrows (maro-mayu), **wearing round glasses**, **slightly blushing cheeks (shy)**, expression of finding things troublesome but trying to hide it. **Headwear: Drooping Nightcap (sleeping hat). Accessories: Large fluffy sleeping earmuffs with an ORANGE spiral pattern.** Outfit: Oversized loose fitting witch robe falling off shoulder. Introverted and cute atmosphere, soft colors.
 chatbot_id: c_mascot_yon
 chatbot_name: 욘 (Yawn)
 chatbot_userName: 조수님

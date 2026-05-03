@@ -17,8 +17,7 @@ imagegen_presetId: alisa
 imagegen_icon: 🧹
 imagegen_label: 메이드 알리사
 imagegen_shortLabel: Alisa, a maid with glasses and black ponytail
-imagegen_prompt: |
-  A cute maid (Alisa). Face: Sharp intellectual eyes, stylish glasses (megane), stoic cool beauty expression. Black ponytail. Wearing a classic black and white maid outfit. Holding a large magical broomstick. Dynamic posing. Clean background, detailed.
+imagegen_prompt: A cute maid (Alisa). Face: Sharp intellectual eyes, stylish glasses (megane), stoic cool beauty expression. Black ponytail. Wearing a classic black and white maid outfit. Holding a large magical broomstick. Dynamic posing. Clean background, detailed.
 chatbot_id: c_mascot_alisa
 chatbot_name: 알리사
 chatbot_userName: 조수님
