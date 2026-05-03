@@ -4,6 +4,7 @@ mod karmoddrine_state;
 mod local_dev;
 mod quest_index;
 mod repo_file;
+mod terminal;
 
 use activity::{activity_list_days, activity_query_day, activity_status, ActivityState};
 use flow_doc::{list_flow_docs, read_flow_doc};
@@ -17,6 +18,9 @@ use local_dev::{
     LocalDevState,
 };
 use repo_file::{repofile_open_default, repofile_read, repofile_reveal, repofile_write};
+use terminal::{
+    terminal_send_stdin, terminal_start, terminal_status, terminal_stop, TerminalState,
+};
 use tauri::menu::{Menu, MenuItem};
 use tauri::tray::TrayIconBuilder;
 #[cfg(windows)]
@@ -658,6 +662,7 @@ pub fn run() {
     tauri::Builder::default()
         .manage(LocalDevState::default())
         .manage(DevModeState::default())
+        .manage(TerminalState::default())
         .invoke_handler(tauri::generate_handler![
             desktop_notify,
             desktop_trigger_release_workflow,
@@ -687,7 +692,11 @@ pub fn run() {
             get_karmoddrine_state,
             get_quest_tree,
             list_flow_docs,
-            read_flow_doc
+            read_flow_doc,
+            terminal_start,
+            terminal_send_stdin,
+            terminal_stop,
+            terminal_status
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
@@ -860,6 +869,7 @@ pub fn run() {
                                     }
                                 }
                             } else if event.id == "tray_quit" {
+                                terminal::shutdown(&app.state::<TerminalState>());
                                 app.exit(0);
                             }
                         })

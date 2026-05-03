@@ -1,0 +1,9 @@
+[[permission]]
+identifier = "allow-terminal"
+description = "Allow the terminal widget to start/stop a single PowerShell child shell, send stdin lines, and query status. KarmoLab webview only."
+commands.allow = [
+  "terminal_start",
+  "terminal_send_stdin",
+  "terminal_stop",
+  "terminal_status",
+]
