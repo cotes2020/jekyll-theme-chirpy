@@ -35,6 +35,12 @@
             "title": "KarmoLab Dev",
             "subtitle": "트레이 메뉴에서 켜기",
             "url": "http://127.0.0.1:8899/apps/karmolab/index.html"
+        },
+        {
+            "id": "karmolab-tauri-dev",
+            "title": "KarmoLab Tauri Dev",
+            "subtitle": "dev:dual — debug 빌드 + 빨간 banner (prod 옆에서 동시)",
+            "url": "http://127.0.0.1:8898/apps/karmolab/"
         }
     ],
     "envFiles": [
@@ -114,6 +120,15 @@
             "args": ["--yes", "http-server", ".", "-p", "8003", "-a", "127.0.0.1", "-c-1"],
             "healthUrl": "http://127.0.0.1:8003/apps/karmolab/index.html",
             "npmInstall": false
+        },
+        {
+            "id": "karmolab-tauri-dev",
+            "label": "KarmoLab Tauri Dev (dual)",
+            "cwd": "apps/karmolab-tauri",
+            "program": "npm",
+            "args": ["run", "dev:dual"],
+            "healthUrl": "http://127.0.0.1:8898/apps/karmolab/",
+            "npmInstall": true
         }
     ]
 }
