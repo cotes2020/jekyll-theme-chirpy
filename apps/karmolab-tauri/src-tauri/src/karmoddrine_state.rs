@@ -17,6 +17,20 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
+#[cfg(windows)]
+use std::os::windows::process::CommandExt;
+
+#[cfg(windows)]
+const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+
+/// Tauri GUI 앱에서 console subsystem 자식(git, tasklist 등)을 spawn 하면 매번
+/// console 창이 잠깐 깜빡인다. `CREATE_NO_WINDOW` 로 그걸 막는다 — 폴링 invoke
+/// 가 매 N초 트리거이므로 hidden flag 빠지면 즉시 사용자 시야에 노이즈.
+fn apply_no_window(cmd: &mut Command) {
+    #[cfg(windows)]
+    cmd.creation_flags(CREATE_NO_WINDOW);
+}
+
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct KarmoddrineState {
@@ -163,14 +177,15 @@ fn git_log(repo: &Path, n: usize) -> Vec<CommitInfo> {
     if !repo.join(".git").exists() {
         return Vec::new();
     }
-    let out = Command::new("git")
-        .arg("-C")
+    let mut cmd = Command::new("git");
+    cmd.arg("-C")
         .arg(repo)
         .arg("log")
         .arg(format!("-{}", n))
         .arg("--pretty=format:%h%x09%ad%x09%s")
-        .arg("--date=short")
-        .output();
+        .arg("--date=short");
+    apply_no_window(&mut cmd);
+    let out = cmd.output();
     match out {
         Ok(o) if o.status.success() => String::from_utf8_lossy(&o.stdout)
             .lines()
