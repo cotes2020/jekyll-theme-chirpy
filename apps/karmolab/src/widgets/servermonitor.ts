@@ -467,6 +467,16 @@
     const SM_LOG_MAX_LINES = 500;
     const SM_LOG_MAX_BYTES = 256 * 1024;
 
+    // 외부 PID 자동 폴링이 직전 결과와 동일하면 재마운트 skip — 사용자 stdin/스크롤 보존.
+    // 수동 새로고침·시작·종료가 호출하는 renderMergedServices 도 같은 snapshot 갱신 → 모든 경로 일관.
+    const EXTERNAL_PID_POLL_MS = 30_000;
+    let lastExternalPidsSnapshot: string | null = null;
+    function snapshotExternalPids(map: Record<string, number[]>): string {
+      const keys = Object.keys(map).sort();
+      const norm = keys.map((k) => [k, [...(map[k] ?? [])].sort((a, b) => a - b)] as const);
+      return JSON.stringify(norm);
+    }
+
     function appendSmLogLine(panel: HTMLElement, stream: string, line: string): void {
       const row = document.createElement('div');
       row.className =
@@ -601,6 +611,7 @@
         try {
           const raw = (await invoke('localdev_list_external_pids')) as Record<string, number[]>;
           if (raw && typeof raw === 'object') externalPids = raw;
+          lastExternalPidsSnapshot = snapshotExternalPids(externalPids);
         } catch (e) {
           console.warn('[ServerMonitor] localdev_list_external_pids 실패 — 외부 실행 표시 안 함', e);
         }
@@ -909,6 +920,26 @@
 
     registerRefresh(renderMergedServices);
     refreshListBtn.onclick = () => void renderMergedServices();
+
+    // 외부 PID 자동 폴링 — 별도 PowerShell 에서 띄운 dev 프로세스가 30s 안에 카드에 자동 표시되게.
+    // ping 5s 폴링과 분리한 이유: PowerShell 풀스캔이 1~2초 부담. Rust 측 30s TTL 캐시와 짝.
+    // 결과가 직전과 같으면 재마운트 skip → 사용자 stdin/스크롤 보존.
+    window.setInterval(() => {
+      if (typeof document !== 'undefined' && document.hidden) return;
+      if (typeof invoke !== 'function') return;
+      void (async () => {
+        try {
+          const raw = (await invoke('localdev_list_external_pids')) as Record<string, number[]>;
+          const safe = raw && typeof raw === 'object' ? raw : {};
+          const snapshot = snapshotExternalPids(safe);
+          if (snapshot === lastExternalPidsSnapshot) return;
+          lastExternalPidsSnapshot = snapshot;
+          await renderMergedServices();
+        } catch (e) {
+          console.warn('[ServerMonitor] 외부 PID 자동 폴링 실패', e);
+        }
+      })();
+    }, EXTERNAL_PID_POLL_MS);
 
     listRow.appendChild(refreshListBtn);
     section.appendChild(listRow);

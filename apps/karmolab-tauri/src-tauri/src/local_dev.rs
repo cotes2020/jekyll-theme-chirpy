@@ -9,7 +9,7 @@ use std::process::{Command, Stdio};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use tauri::{Emitter, Manager, State};
 
 #[cfg(windows)]
@@ -36,6 +36,10 @@ pub struct LocalDevState {
     /// 카모랩이 spawn 한 자식의 stdin 핸들. `localdev_send_stdin` 으로 텍스트 전송.
     /// reattach 된 PID 는 핸들이 없음 (그땐 send_stdin 명령이 not-found 로 실패).
     stdins: Mutex<HashMap<String, std::process::ChildStdin>>,
+    /// 외부 PID 자동 폴링이 PowerShell `Get-CimInstance` 풀스캔(1~2초)을
+    /// 30s 간격으로 반복하지 않도록 결과를 짧게 캐시한다.
+    /// `localdev_list_external_pids`, `localdev_stop_external` 공용.
+    process_list_cache: Mutex<Option<(Instant, Vec<(u32, String)>)>>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -625,12 +629,14 @@ fn matches_profile_cmdline(cmdline: &str, profile: &DevProfile) -> bool {
     cmdline.contains(&needle)
 }
 
-fn discover_external_pids_per_profile(repo: &Path) -> HashMap<String, Vec<u32>> {
+fn discover_external_pids_per_profile(
+    repo: &Path,
+    processes: &[(u32, String)],
+) -> HashMap<String, Vec<u32>> {
     let profiles = match read_profiles(repo) {
         Ok(p) => p,
         Err(_) => return HashMap::new(),
     };
-    let processes = list_all_processes();
     let mut by_profile: HashMap<String, Vec<u32>> = HashMap::new();
     for profile in &profiles {
         let mut pids: Vec<u32> = processes
@@ -645,6 +651,33 @@ fn discover_external_pids_per_profile(repo: &Path) -> HashMap<String, Vec<u32>> 
         }
     }
     by_profile
+}
+
+/// 30s TTL 캐시 — `list_all_processes` 의 PowerShell 풀스캔 부담을 줄인다.
+/// `now` 를 인자로 받아 테스트에서 시간 흐름을 결정적으로 검증.
+const PROCESS_CACHE_TTL: Duration = Duration::from_secs(30);
+
+fn process_cache_get_or_fetch<F>(
+    cache: &Mutex<Option<(Instant, Vec<(u32, String)>)>>,
+    ttl: Duration,
+    now: Instant,
+    fetch: F,
+) -> Vec<(u32, String)>
+where
+    F: FnOnce() -> Vec<(u32, String)>,
+{
+    if let Ok(g) = cache.lock() {
+        if let Some((at, list)) = g.as_ref() {
+            if now.duration_since(*at) < ttl {
+                return list.clone();
+            }
+        }
+    }
+    let fresh = fetch();
+    if let Ok(mut g) = cache.lock() {
+        *g = Some((now, fresh.clone()));
+    }
+    fresh
 }
 
 #[cfg(windows)]
@@ -717,7 +750,13 @@ pub fn localdev_list_external_pids(
         .map(|m| m.values().copied().collect())
         .unwrap_or_default();
 
-    let mut all = discover_external_pids_per_profile(&repo);
+    let processes = process_cache_get_or_fetch(
+        &state.process_list_cache,
+        PROCESS_CACHE_TTL,
+        Instant::now(),
+        list_all_processes,
+    );
+    let mut all = discover_external_pids_per_profile(&repo, &processes);
     for pids in all.values_mut() {
         pids.retain(|p| !tracked.contains(p));
     }
@@ -746,7 +785,13 @@ pub fn localdev_stop_external(
         .map(|m| m.values().copied().collect())
         .unwrap_or_default();
 
-    let by_profile = discover_external_pids_per_profile(&repo);
+    let processes = process_cache_get_or_fetch(
+        &state.process_list_cache,
+        PROCESS_CACHE_TTL,
+        Instant::now(),
+        list_all_processes,
+    );
+    let by_profile = discover_external_pids_per_profile(&repo, &processes);
     let pids = by_profile.get(&profile_id).cloned().unwrap_or_default();
     if pids.is_empty() {
         return Err("매칭되는 외부 실행 프로세스가 없습니다.".into());
@@ -1146,4 +1191,66 @@ pub async fn localdev_npm_install_stream(
     }
 
     out
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::sync::atomic::AtomicUsize;
+
+    #[test]
+    fn process_cache_returns_value_within_ttl_and_refetches_after() {
+        let cache: Mutex<Option<(Instant, Vec<(u32, String)>)>> = Mutex::new(None);
+        let ttl = Duration::from_secs(30);
+        let t0 = Instant::now();
+        let calls = AtomicUsize::new(0);
+
+        let r1 = process_cache_get_or_fetch(&cache, ttl, t0, || {
+            calls.fetch_add(1, Ordering::SeqCst);
+            vec![(1, "a".to_string())]
+        });
+        assert_eq!(r1, vec![(1, "a".to_string())]);
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+
+        // TTL 안 — fetch 호출 안 되고 캐시 값 그대로.
+        let r2 = process_cache_get_or_fetch(&cache, ttl, t0 + Duration::from_secs(10), || {
+            calls.fetch_add(1, Ordering::SeqCst);
+            vec![(99, "stale".to_string())]
+        });
+        assert_eq!(r2, vec![(1, "a".to_string())]);
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+
+        // TTL 직전 — 여전히 hit.
+        let r3 = process_cache_get_or_fetch(&cache, ttl, t0 + Duration::from_secs(29), || {
+            calls.fetch_add(1, Ordering::SeqCst);
+            vec![(99, "stale".to_string())]
+        });
+        assert_eq!(r3, vec![(1, "a".to_string())]);
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+
+        // TTL 초과 — fetch 다시 실행되고 새 값으로 갱신.
+        let r4 = process_cache_get_or_fetch(&cache, ttl, t0 + Duration::from_secs(31), || {
+            calls.fetch_add(1, Ordering::SeqCst);
+            vec![(2, "b".to_string())]
+        });
+        assert_eq!(r4, vec![(2, "b".to_string())]);
+        assert_eq!(calls.load(Ordering::SeqCst), 2);
+
+        // 갱신 후 다시 TTL 안 — 새 값 반환.
+        let r5 = process_cache_get_or_fetch(&cache, ttl, t0 + Duration::from_secs(40), || {
+            calls.fetch_add(1, Ordering::SeqCst);
+            vec![(99, "stale".to_string())]
+        });
+        assert_eq!(r5, vec![(2, "b".to_string())]);
+        assert_eq!(calls.load(Ordering::SeqCst), 2);
+    }
+
+    #[test]
+    fn discover_external_pids_with_empty_repo_returns_empty_map() {
+        // 빈 repo 라 read_profiles 가 실패 → 빈 맵 반환. 진짜 매칭 로직은 별도 단위.
+        let tmp = std::env::temp_dir();
+        let processes = vec![(1u32, "node script.js".to_string())];
+        let result = discover_external_pids_per_profile(&tmp, &processes);
+        assert!(result.is_empty());
+    }
 }
