@@ -11,7 +11,7 @@
  *   seed/ready → seed · active → fire · hold → sleep · done/sealed → sealed.
  *   status='sealed' 인 TASK 만 sealed[] 로 분리.
  *
- * 시각/인터랙션 (옛 standalone `apps/karmolab/quest-log/` 그대로):
+ * 시각/인터랙션 (옛 standalone `apps/karmolab/quest-log/` — 폐기됨, 시각만 위젯에 흡수):
  * - 진행도: leaf = checked/total, 부모 = 자식 평균
  * - 영속화: localStorage `quest-log-state-v1` (위젯 내부 working state — 폴링/재진입 시 memo 정본으로 갱신)
  * - CSS·DOM `.kl-quest-log` 스코프. drawer/sleep prompt fixed 모달은 위젯 컨테이너 자식.
@@ -804,19 +804,19 @@
     };
 
     const HEROES = [
-      '/apps/karmolab/quest-log/assets/240126-072633.png',
-      '/apps/karmolab/quest-log/assets/240714-071225.jpg',
-      '/apps/karmolab/quest-log/assets/240330-000000.png',
-      '/apps/karmolab/quest-log/assets/240330-111546.png',
-      '/apps/karmolab/quest-log/assets/240330-140142.png',
-      '/apps/karmolab/quest-log/assets/240513-131941.png',
-      '/apps/karmolab/quest-log/assets/240514-103335.png',
-      '/apps/karmolab/quest-log/assets/240514-104350.png',
-      '/apps/karmolab/quest-log/assets/240514-192005.png',
-      '/apps/karmolab/quest-log/assets/240605-133617.png',
-      '/apps/karmolab/quest-log/assets/240618-000000.png',
-      '/apps/karmolab/quest-log/assets/250315-170647.png',
-      '/apps/karmolab/quest-log/assets/250315-173653.png',
+      '/apps/karmolab/img/widgets/quest-log/240126-072633.png',
+      '/apps/karmolab/img/widgets/quest-log/240714-071225.jpg',
+      '/apps/karmolab/img/widgets/quest-log/240330-000000.png',
+      '/apps/karmolab/img/widgets/quest-log/240330-111546.png',
+      '/apps/karmolab/img/widgets/quest-log/240330-140142.png',
+      '/apps/karmolab/img/widgets/quest-log/240513-131941.png',
+      '/apps/karmolab/img/widgets/quest-log/240514-103335.png',
+      '/apps/karmolab/img/widgets/quest-log/240514-104350.png',
+      '/apps/karmolab/img/widgets/quest-log/240514-192005.png',
+      '/apps/karmolab/img/widgets/quest-log/240605-133617.png',
+      '/apps/karmolab/img/widgets/quest-log/240618-000000.png',
+      '/apps/karmolab/img/widgets/quest-log/250315-170647.png',
+      '/apps/karmolab/img/widgets/quest-log/250315-173653.png',
     ];
     const CONST_BY_PROJECT: Record<string, { name: string; sub: string; mag: string }> = {
       wm:     { name: 'Venefica',  sub: 'the witch',    mag: '1.2' },
@@ -1003,7 +1003,7 @@
           <div class="featured">
             <div class="f-left">
               <div class="f-sky">
-                <img src="/apps/karmolab/quest-log/assets/240714-071225.jpg" alt="">
+                <img src="/apps/karmolab/img/widgets/quest-log/240714-071225.jpg" alt="">
                 <div class="coord"><span class="k">RA</span> ${rah}<sup>h</sup> ${ram}<sup>m</sup><br><span class="k">DEC</span> +${decd}° ${decm}'<br><span class="k">MAG</span> ${cst.mag}</div>
                 <div class="tag">★ MAIN PROJECT</div>
                 <div class="overlay-title">
