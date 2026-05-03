@@ -43,7 +43,7 @@
         "https://github.com/mascari4615/mascari4615.github.io/releases/latest/download/latest.json"
       ],
       "windows": {
-        "installMode": "passive"
+        "installMode": "quiet"
       }
     }
   }
