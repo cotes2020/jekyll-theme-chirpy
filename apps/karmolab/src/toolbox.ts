@@ -423,6 +423,53 @@ const Toolbox = (() => {
         });
     }
 
+    const UPDATE_COMPLETED_SEEN_KEY = 'karmolab_toolbox_seen_version';
+    const UPDATE_COMPLETED_TOAST_TIMEOUT_MS = 6000;
+
+    /** 데스크톱 자동 업데이트 직후 (NSIS quiet → 재시작) "v0.1.X 업데이트 완료" 토스트.
+     *  init script 의 `karmolab_app_version_seen` 은 reload 전에 갱신되므로 별도 키로 추적. */
+    function setupUpdateCompletedToast() {
+        if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
+        const current = window.__KARMOLAB_VERSION__;
+        if (!current) return;
+        let seen: string | null = null;
+        try { seen = localStorage.getItem(UPDATE_COMPLETED_SEEN_KEY); } catch (_) { /* ignore */ }
+        if (seen === current) return;
+        try { localStorage.setItem(UPDATE_COMPLETED_SEEN_KEY, current); } catch (_) { /* ignore */ }
+        if (!seen) return; // 최초 실행 — 업데이트가 아니므로 토스트 스킵
+        showUpdateCompletedToast(seen, current);
+    }
+
+    function showUpdateCompletedToast(prevVer: string, newVer: string) {
+        if (document.querySelector('.karmolab-update-completed-toast')) return;
+        const toast = document.createElement('div');
+        toast.className = 'karmolab-update-completed-toast';
+
+        const msg = document.createElement('div');
+        msg.className = 'karmolab-update-completed-toast-msg';
+        msg.innerHTML = `✓ KarmoLab 업데이트 완료 <code>${escapeHtml(prevVer)}</code> → <code>${escapeHtml(newVer)}</code>`;
+
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'karmolab-update-completed-toast-close';
+        closeBtn.setAttribute('aria-label', '닫기');
+        closeBtn.textContent = '×';
+
+        toast.appendChild(msg);
+        toast.appendChild(closeBtn);
+        document.body.appendChild(toast);
+
+        let dismissed = false;
+        const dismiss = () => {
+            if (dismissed) return;
+            dismissed = true;
+            toast.classList.add('karmolab-update-completed-toast-leaving');
+            setTimeout(() => { toast.remove(); }, 200);
+        };
+        closeBtn.addEventListener('click', dismiss);
+        setTimeout(dismiss, UPDATE_COMPLETED_TOAST_TIMEOUT_MS);
+    }
+
     function injectDesktopBadge() {
         if (typeof window === 'undefined' || !window.__KARMOLAB_DESKTOP__) return;
         const left = document.querySelector('.header-bar-left');
@@ -724,6 +771,7 @@ const Toolbox = (() => {
 
         injectDesktopBadge();
         setupUpdateBannerListener();
+        setupUpdateCompletedToast();
         installWindowControls();
     }
 

@@ -2256,3 +2256,40 @@ html[data-nav="sidebar"] .sidebar:hover .sidebar-dev-links-text { display: inlin
     padding: 0;
 }
 .karmolab-update-banner-close:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+
+.karmolab-update-completed-toast {
+    position: fixed; top: 16px; right: 16px;
+    z-index: 9998;
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px 8px 12px;
+    background: var(--bg-elevated, var(--bg-secondary));
+    color: var(--text-primary);
+    border: 1px solid var(--success, #22c55e);
+    border-left: 3px solid var(--success, #22c55e);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    font-size: var(--font-size-sm);
+    max-width: 380px;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+.karmolab-update-completed-toast-leaving {
+    opacity: 0;
+    transform: translateX(20px);
+}
+.karmolab-update-completed-toast-msg { line-height: 1.4; flex: 1; min-width: 0; }
+.karmolab-update-completed-toast-msg code {
+    font-family: ui-monospace, monospace;
+    background: var(--bg-tertiary); padding: 1px 5px; border-radius: 4px;
+    font-size: 0.95em;
+}
+.karmolab-update-completed-toast-close {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: transparent; color: var(--text-tertiary);
+    border: none; border-radius: var(--radius-sm);
+    font-size: 15px; line-height: 1; cursor: pointer;
+    padding: 0;
+}
+.karmolab-update-completed-toast-close:hover { background: var(--bg-tertiary); color: var(--text-primary); }
