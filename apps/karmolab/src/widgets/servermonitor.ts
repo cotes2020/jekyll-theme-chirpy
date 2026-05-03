@@ -15,6 +15,39 @@
     deployArgs?: string[];
   };
 
+  /** 카드 stdin form 단축키 프리셋 — Vite/jest/jekyll 같은 dev 러너가 stdin 으로 받는 단일 시그널. */
+  type StdinShortcut = { signal: string; hint: string };
+
+  const VITE_SHORTCUTS: StdinShortcut[] = [
+    { signal: 'r', hint: 'restart server' },
+    { signal: 'u', hint: 'show URL' },
+    { signal: 'o', hint: 'open in browser' },
+    { signal: 'q', hint: 'quit' },
+  ];
+  const TEST_WATCH_SHORTCUTS: StdinShortcut[] = [
+    { signal: 'a', hint: 'run all tests' },
+    { signal: 'f', hint: 'run only failed' },
+    { signal: 'p', hint: 'filter by pattern' },
+    { signal: 'q', hint: 'quit' },
+  ];
+  const JEKYLL_SHORTCUTS: StdinShortcut[] = [
+    { signal: 'r', hint: 'regenerate' },
+    { signal: 'q', hint: 'quit' },
+  ];
+  const NODE_REPL_SHORTCUTS: StdinShortcut[] = [
+    { signal: '.exit', hint: 'exit REPL' },
+  ];
+
+  /** profile.program/args 의 substring 으로 1차 매칭. vitest 가 vite 를 포함하므로 더 좁은 패턴 먼저. */
+  function pickStdinShortcuts(profile: DevProfile): StdinShortcut[] | null {
+    const cmd = `${profile.program} ${profile.args.join(' ')}`.toLowerCase();
+    if (cmd.includes('vitest') || cmd.includes('jest')) return TEST_WATCH_SHORTCUTS;
+    if (cmd.includes('vite')) return VITE_SHORTCUTS;
+    if (cmd.includes('jekyll')) return JEKYLL_SHORTCUTS;
+    if (profile.program === 'node' && profile.args.length === 0) return NODE_REPL_SHORTCUTS;
+    return null;
+  }
+
   type RawLocalMonitor = {
     id: string;
     title?: string;
@@ -727,6 +760,45 @@
           stdinBtn.className = 'btn btn-ghost sm-stdin-btn';
           stdinBtn.textContent = '전송';
           if (!stdinSendable) stdinBtn.disabled = true;
+
+          // dev 러너 단축키 프리셋 (Vite r/u/o/q · jest/vitest a/f/p/q · jekyll r/q · node REPL .exit).
+          // 사용자가 한 글자 직접 치는 빈도 높은 시그널을 클릭으로 대체. 매칭 안 되면 그룹 자체 숨김.
+          const shortcuts = pickStdinShortcuts(p);
+          if (shortcuts && shortcuts.length > 0) {
+            const shortcutGroup = document.createElement('div');
+            shortcutGroup.className = 'sm-stdin-shortcuts';
+            // sm-stdin-form 에 별도 CSS 가 없어 inline 정렬을 직접 잡는다 — input 옆 한 줄.
+            shortcutGroup.style.display = 'inline-flex';
+            shortcutGroup.style.gap = '4px';
+            shortcutGroup.style.marginRight = '6px';
+            for (const sc of shortcuts) {
+              const scBtn = document.createElement('button');
+              scBtn.type = 'button';
+              scBtn.className = 'btn btn-ghost sm-stdin-shortcut-btn mono';
+              scBtn.textContent = sc.signal;
+              scBtn.title = sc.hint;
+              if (!stdinSendable) scBtn.disabled = true;
+              scBtn.onclick = () => {
+                if (!stdinSendable || typeof invoke !== 'function') return;
+                const text = sc.signal;
+                void (async () => {
+                  try {
+                    await invoke('localdev_send_stdin', { profileId: p.id, text });
+                    if (logPanelEl) appendLineToPanel(logPanelEl, 'out', `> ${text}`);
+                  } catch (e: unknown) {
+                    Toolbox.showToast?.(
+                      e instanceof Error ? e.message : String(e),
+                      'error',
+                      undefined,
+                    );
+                  }
+                })();
+              };
+              shortcutGroup.appendChild(scBtn);
+            }
+            stdinForm.appendChild(shortcutGroup);
+          }
+
           stdinForm.appendChild(stdinInput);
           stdinForm.appendChild(stdinBtn);
           stdinForm.onsubmit = (ev) => {
