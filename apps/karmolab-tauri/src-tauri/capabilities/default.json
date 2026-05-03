@@ -26,6 +26,7 @@
     "allow-activity",
     "allow-karmoddrine-state",
     "allow-quest-index",
+    "allow-flow-doc",
     "updater:default"
   ]
 }

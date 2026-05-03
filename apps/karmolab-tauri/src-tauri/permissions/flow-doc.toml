@@ -1,0 +1,7 @@
+[[permission]]
+identifier = "allow-flow-doc"
+description = "Allow the karmoddrine-flows widget to list and read flow doc markdown (read-only: memo/flows/*.md)."
+commands.allow = [
+  "list_flow_docs",
+  "read_flow_doc",
+]

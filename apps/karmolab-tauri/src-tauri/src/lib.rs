@@ -1,10 +1,12 @@
 mod activity;
+mod flow_doc;
 mod karmoddrine_state;
 mod local_dev;
 mod quest_index;
 mod repo_file;
 
 use activity::{activity_list_days, activity_query_day, activity_status, ActivityState};
+use flow_doc::{list_flow_docs, read_flow_doc};
 use karmoddrine_state::get_karmoddrine_state;
 use quest_index::get_quest_tree;
 use local_dev::{
@@ -367,17 +369,61 @@ fn desktop_restart_app(handle: tauri::AppHandle) {
     handle.restart();
 }
 
+/// dev 빌드 (cfg(debug_assertions)) 시 아이콘 우상단에 빨간 원형 dot 오버레이 적용.
+/// 트레이 / 작업 표시줄 / 윈도우 아이콘에서 prod 와 시각 구분 가능. image crate 의존성 추가 X
+/// — Tauri 의 `Image::new_owned` 만 사용.
+#[cfg(debug_assertions)]
+fn apply_dev_overlay_rgba(rgba: &[u8], width: u32, height: u32) -> Vec<u8> {
+    let mut out = rgba.to_vec();
+    let cx = (width as i32) * 3 / 4;
+    let cy = (height as i32) / 4;
+    let r = (width.min(height) as i32) / 5;
+    let r2 = r * r;
+    for y in 0..(height as i32) {
+        for x in 0..(width as i32) {
+            let dx = x - cx;
+            let dy = y - cy;
+            if dx * dx + dy * dy <= r2 {
+                let idx = (((y as u32) * width + (x as u32)) * 4) as usize;
+                if idx + 3 < out.len() {
+                    out[idx] = 220;
+                    out[idx + 1] = 60;
+                    out[idx + 2] = 60;
+                    out[idx + 3] = 255;
+                }
+            }
+        }
+    }
+    out
+}
+
+#[cfg(debug_assertions)]
+fn with_dev_overlay<'a>(icon: &tauri::image::Image<'a>) -> tauri::image::Image<'static> {
+    let modified = apply_dev_overlay_rgba(icon.rgba(), icon.width(), icon.height());
+    tauri::image::Image::new_owned(modified, icon.width(), icon.height())
+}
+
 /// 데스크톱 앱 플래그·버전을 주입. `__karmolabSetNotifyInvokeDebug`는 예전 디버그 UI용 훅으로, 호출은 무해하게 무시.
 ///
 /// 끝의 IIFE: 데스크톱 앱 업데이트 후 첫 실행에서 SW + Cache Storage를 비우고 한 번만 reload.
 /// 빌드 사이에 캐시된 구버전 자산이 그대로 보이는 문제 예방. `karmolab_app_version_seen`을
 /// reload 전에 기록하므로 같은 버전에서는 다시 들어가지 않음.
-fn karmolab_desktop_init_script() -> &'static str {
-    concat!(
+///
+/// debug 빌드 (cfg(debug_assertions)) 시: 상단 빨간 띠 banner 추가 + `__KARMOLAB_DEV_INSTANCE__`
+/// 플래그 노출. `decorations: false` 라 시스템 타이틀바 없어서 prod/dev 시각 구분 필요.
+fn karmolab_desktop_init_script() -> String {
+    let base = concat!(
         r#"window.__KARMOLAB_DESKTOP__=!0;window.__karmolabSetNotifyInvokeDebug=function(){};window.__KARMOLAB_VERSION__=""#,
         env!("CARGO_PKG_VERSION"),
         r#"";(function(){try{var v=window.__KARMOLAB_VERSION__,seen=null;try{seen=localStorage.getItem('karmolab_app_version_seen');}catch(_){}if(seen===v)return;try{localStorage.setItem('karmolab_app_version_seen',v);}catch(_){}if(document.documentElement){document.documentElement.style.visibility='hidden';}var ps=[];if(typeof caches!=='undefined'&&caches.keys){ps.push(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}));}if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations){ps.push(navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.unregister();}));}));}Promise.all(ps).catch(function(){}).then(function(){location.reload();});}catch(_){}})();"#
-    )
+    );
+    let mut script = String::from(base);
+    if cfg!(debug_assertions) {
+        script.push_str(
+            r#"window.__KARMOLAB_DEV_INSTANCE__=!0;(function(){function inject(){if(document.getElementById('__karmolab_dev_banner__'))return;var b=document.createElement('div');b.id='__karmolab_dev_banner__';b.textContent='⚠ KarmoLab DEV INSTANCE — debug build';b.style.cssText='position:fixed;top:0;left:0;right:0;background:#c04040;color:#fff;text-align:center;font-size:11px;padding:3px 0;z-index:2147483647;font-family:sans-serif;letter-spacing:0.15em;pointer-events:none;box-shadow:0 1px 4px rgba(0,0,0,0.5);';if(document.body){document.body.appendChild(b);}else{document.addEventListener('DOMContentLoaded',inject,{once:true});}}inject();})();"#
+        );
+    }
+    script
 }
 
 fn allow_in_webview(url: &Url) -> bool {
@@ -616,7 +662,9 @@ pub fn run() {
             activity_list_days,
             activity_status,
             get_karmoddrine_state,
-            get_quest_tree
+            get_quest_tree,
+            list_flow_docs,
+            read_flow_doc
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {
@@ -660,7 +708,7 @@ pub fn run() {
             let window_handle = handle.clone();
 
             let main_window = WebviewWindowBuilder::from_config(app, window_conf)?
-                .initialization_script(karmolab_desktop_init_script())
+                .initialization_script(&karmolab_desktop_init_script())
                 .on_navigation(|url| {
                     if allow_in_webview(url) {
                         true
@@ -703,8 +751,13 @@ pub fn run() {
 
             #[cfg(not(any(target_os = "android", target_os = "ios")))]
             {
+                let show_label = if cfg!(debug_assertions) {
+                    "KarmoLab [DEV] 창 보이기"
+                } else {
+                    "KarmoLab 창 보이기"
+                };
                 let show_i =
-                    MenuItem::with_id(app, "tray_show", "KarmoLab 창 보이기", true, None::<&str>)?;
+                    MenuItem::with_id(app, "tray_show", show_label, true, None::<&str>)?;
                 let browser_i =
                     MenuItem::with_id(app, "tray_browser", "브라우저에서 열기", true, None::<&str>)?;
                 let update_i =
@@ -722,10 +775,25 @@ pub fn run() {
                 let dev_i_for_event = dev_i.clone();
 
                 if let Some(icon) = app.default_window_icon().cloned() {
+                    let tray_tooltip = if cfg!(debug_assertions) {
+                        "KarmoLab [DEV] — debug 빌드 (dev:dual)"
+                    } else {
+                        "KarmoLab — 트레이 메뉴에서 업데이트 확인 · 닫기(X)는 숨김"
+                    };
+                    #[cfg(debug_assertions)]
+                    let tray_icon = with_dev_overlay(&icon);
+                    #[cfg(not(debug_assertions))]
+                    let tray_icon = icon.clone();
+                    // main 윈도우 (작업 표시줄) 아이콘도 dev 시 오버레이.
+                    #[cfg(debug_assertions)]
+                    {
+                        let dev_window_icon = with_dev_overlay(&icon);
+                        let _ = main_window.set_icon(dev_window_icon);
+                    }
                     let _ = TrayIconBuilder::new()
-                        .icon(icon)
+                        .icon(tray_icon)
                         .menu(&menu)
-                        .tooltip("KarmoLab — 트레이 메뉴에서 업데이트 확인 · 닫기(X)는 숨김")
+                        .tooltip(tray_tooltip)
                         .show_menu_on_left_click(true)
                         .on_menu_event(move |app, event| {
                             if event.id == "tray_show" {
