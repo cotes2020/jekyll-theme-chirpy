@@ -1,6 +1,9 @@
 /**
- * `npm run dev:static`: 레포 루트를 127.0.0.1:8899 에 서빙.
+ * `npm run dev:static`: 레포 루트를 127.0.0.1:<PORT> 에 서빙.
  * Python이 PATH에 있으면 `http.server`를 쓰고, 없으면 Node 내장 http로 폴백.
+ *
+ * 포트 결정: `argv[2]` > `KARMOLAB_DEV_STATIC_PORT` env > 8899 (default).
+ * `dev:dual` 은 prod KarmoLab 의 트레이 「개발 모드」 (8899) 와 충돌하지 않게 8898 사용.
  */
 import { spawn, spawnSync } from 'node:child_process';
 import http from 'node:http';
@@ -13,7 +16,10 @@ import { pipeline } from 'node:stream/promises';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const HOST = '127.0.0.1';
-const PORT = 8899;
+const PORT = Number(process.argv[2]) || Number(process.env.KARMOLAB_DEV_STATIC_PORT) || 8899;
+// `--node-only` 플래그 또는 env: Python 스킵. dev:dual 처럼 *webview cache 회피 (no-store header)*
+// 가 필수일 때 사용. Python http.server 는 cache header 통제 불가라서.
+const NODE_ONLY = process.argv.includes('--node-only') || process.env.KARMOLAB_DEV_NODE_ONLY === '1';
 
 const PYTHON_LAUNCHERS = [
   { cmd: 'python', args: ['-m', 'http.server', String(PORT), '--bind', HOST] },
@@ -98,6 +104,7 @@ async function sendFile(req, res, filePath, st) {
   res.writeHead(200, {
     'Content-Type': guessMime(filePath),
     'Content-Length': st.size,
+    'Cache-Control': 'no-store, no-cache, must-revalidate',
   });
   if (req.method === 'HEAD') {
     res.end();
@@ -192,9 +199,10 @@ function startNodeServer() {
   });
 }
 
-if (tryStartPython()) {
+if (!NODE_ONLY && tryStartPython()) {
   // 자식 프로세스가 유지됨
 } else {
-  console.error('[dev-static] Python not found; using Node static server.');
+  if (NODE_ONLY) console.error('[dev-static] --node-only mode (cache-control 강제 위해 Python skip).');
+  else console.error('[dev-static] Python not found; using Node static server.');
   startNodeServer();
 }

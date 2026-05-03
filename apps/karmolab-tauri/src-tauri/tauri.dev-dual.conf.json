@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "KarmoLab Dev",
+  "identifier": "com.mascari4615.karmolab.dev",
+  "build": {
+    "devUrl": "http://127.0.0.1:8898/apps/karmolab/"
+  },
+  "app": {
+    "windows": [
+      {
+        "create": false,
+        "label": "main",
+        "title": "KarmoLab [DEV]",
+        "width": 1100,
+        "height": 800,
+        "resizable": true,
+        "decorations": false
+      }
+    ]
+  }
+}

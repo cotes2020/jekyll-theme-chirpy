@@ -13,6 +13,8 @@
     "dev:with-jekyll": "concurrently -n jekyll,tauri \"npm run dev:jekyll\" \"npm run dev:tauri:jekyll\"",
     "dev:app": "tauri dev",
     "dev:remote": "tauri dev --config src-tauri/tauri.dev-remote.conf.json",
+    "dev:static:dual": "node ./scripts/dev-static.mjs 8898 --node-only",
+    "dev:dual": "concurrently -n static,tauri \"npm run dev:static:dual\" \"wait-on http-get://127.0.0.1:8898/apps/karmolab/ -t 120000 -i 250 && tauri dev --config src-tauri/tauri.dev-dual.conf.json\"",
     "build": "tauri build"
   },
   "devDependencies": {
