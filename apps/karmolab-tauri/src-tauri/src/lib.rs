@@ -1,10 +1,12 @@
 mod activity;
 mod karmoddrine_state;
 mod local_dev;
+mod quest_index;
 mod repo_file;
 
 use activity::{activity_list_days, activity_query_day, activity_status, ActivityState};
 use karmoddrine_state::get_karmoddrine_state;
+use quest_index::get_quest_tree;
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
     localdev_list_external_pids, localdev_list_tracked, localdev_npm_install,
@@ -613,7 +615,8 @@ pub fn run() {
             activity_query_day,
             activity_list_days,
             activity_status,
-            get_karmoddrine_state
+            get_karmoddrine_state,
+            get_quest_tree
         ])
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, _argv, _cwd| {

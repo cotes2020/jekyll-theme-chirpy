@@ -1,0 +1,6 @@
+[[permission]]
+identifier = "allow-quest-index"
+description = "Allow the QuestLog widget to fetch the TASK tree snapshot (read-only: memo TASK files frontmatter + body checkboxes)."
+commands.allow = [
+  "get_quest_tree",
+]

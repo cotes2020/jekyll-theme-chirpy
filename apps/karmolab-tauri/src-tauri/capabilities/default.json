@@ -25,6 +25,7 @@
     "allow-karmolab-release",
     "allow-activity",
     "allow-karmoddrine-state",
+    "allow-quest-index",
     "updater:default"
   ]
 }
