@@ -233,6 +233,31 @@ async function walkSingleType(type, memoSubpath) {
   return out;
 }
 
+// ── manifest 생성 — entity 타입별 항목 리스트 (사이드바 walk 용) ─────────────────────────────
+async function buildManifest() {
+  const manifest = { characters: [], systems: [], concepts: [], lore: [] };
+  for (const [type, dir] of Object.entries(TYPE_OUT_DIR)) {
+    const root = path.join(OUT_ROOT, dir);
+    if (!fs.existsSync(root)) continue;
+    const files = await fsp.readdir(root);
+    for (const file of files) {
+      if (!file.endsWith('.yaml')) continue;
+      const slug = file.slice(0, -5);
+      const yamlText = await fsp.readFile(path.join(root, file), 'utf8');
+      const meta = parseYamlSimple(yamlText);
+      const item = {
+        slug: meta.slug || slug,
+        title: meta.title || meta.slug || slug,
+        oneLine: meta.oneLine || '',
+        tags: Array.isArray(meta.tags) ? meta.tags : [],
+      };
+      manifest[dir].push(item);
+    }
+    manifest[dir].sort((a, b) => a.slug.localeCompare(b.slug));
+  }
+  return manifest;
+}
+
 // ── main ────────────────────────────────────────────────────────────────────────────────────
 async function main() {
   console.log(`[sync-wiki] memo: ${MEMO_PATH}`);
@@ -249,10 +274,16 @@ async function main() {
   results.push(...await walkSingleType('concept', 'wm/design/concepts'));
   results.push(...await walkSingleType('lore', 'wm/design/lore'));
 
+  // manifest.json — docs 위젯이 사이드바 entity 그룹 walk 용으로 사용 (TASK-KL-015-B).
+  const manifest = await buildManifest();
+  const manifestPath = path.join(KARMOLAB_ROOT, 'world/wiki/manifest.json');
+  await fsp.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+
   console.log(`[sync-wiki] 처리: ${results.length} entity`);
   for (const r of results) {
     console.log(`  - ${r.type}/${r.slug}`);
   }
+  console.log(`[sync-wiki] manifest: ${Object.entries(manifest).map(([k, v]) => `${k}=${v.length}`).join(', ')}`);
 }
 
 main().catch(err => {

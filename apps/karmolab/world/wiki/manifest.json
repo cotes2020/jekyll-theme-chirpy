@@ -1,0 +1,50 @@
+{
+  "characters": [
+    {
+      "slug": "alisa",
+      "title": "알리사 (Alisa)",
+      "oneLine": "저택을 돌보는 메이드. 냉정해 보이지만 성실하다.",
+      "tags": [
+        "character",
+        "mansion",
+        "maid"
+      ]
+    },
+    {
+      "slug": "ling",
+      "title": "링 (Ling)",
+      "oneLine": "강시(殭屍) 혈통의 메이드. 장난기 많고 애교가 있다.",
+      "tags": [
+        "character",
+        "mansion",
+        "maid",
+        "jiangshi"
+      ]
+    },
+    {
+      "slug": "yon",
+      "title": "욘 (Yawn)",
+      "oneLine": "나무 마법 저택에 사는 잠 많은 마녀.",
+      "tags": [
+        "character",
+        "mansion",
+        "witch"
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "slug": "meta-loop",
+      "title": "AI-native 메타 루프",
+      "oneLine": "사용자 → memo → TASK → Claude → code → commit → 보드 정리. karmoddrine 의 모든 작업이 도는 흐름.",
+      "tags": [
+        "system",
+        "umbrella",
+        "workflow",
+        "ai-native"
+      ]
+    }
+  ],
+  "concepts": [],
+  "lore": []
+}
