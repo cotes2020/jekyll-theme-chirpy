@@ -103,6 +103,7 @@ const entryPoints = [
   'src/widgets/quest-log/quest-log.ts',
   'src/widgets/karmoddrine-dashboard/karmoddrine-dashboard.ts',
   'src/widgets/karmoddrine-flows/karmoddrine-flows.ts',
+  'src/widgets/terminal/terminal.ts',
   'src/widgets/tierlist/dialogs.ts',
   'src/widgets/tierlist/dnd.ts',
   'src/widgets/tierlist/index.ts',

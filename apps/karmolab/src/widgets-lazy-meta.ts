@@ -160,5 +160,15 @@ window.KARMOLAB_LAZY_META = [
     noHero: true,
     icon: '<path d="M3 6h18M3 12h12M3 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M16 14l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
     lazyScriptPaths: ['karmoddrine-flows/karmoddrine-flows']
+  },
+  {
+    id: 'terminal',
+    title: 'PowerShell 터미널',
+    category: 'desktop',
+    desc: '카드 stdin 무관 단일 셸 (line-IO). pwsh→powershell.exe fallback, cd/Set-Location 자동 추적, 5000줄 cap',
+    layout: 'full',
+    noHero: true,
+    icon: '<rect x="3" y="4" width="18" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 9l3 3-3 3M12 15h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+    lazyScriptPaths: ['terminal/terminal']
   }
 ] as KarmoLabLazyWidgetStub[];
