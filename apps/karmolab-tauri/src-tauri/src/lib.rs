@@ -310,6 +310,29 @@ fn spawn_update_check(handle: tauri::AppHandle, mode: UpdateCheckMode) {
     });
 }
 
+/// 윈도우 focus 시 자동 update check 의 last-trigger 시각 (epoch ms). 0 = 미실행.
+#[cfg(not(debug_assertions))]
+static LAST_FOCUS_UPDATE_CHECK_EPOCH_MS: AtomicU64 = AtomicU64::new(0);
+
+/// 포커스가 자주 잡혀도 GitHub API 를 도배하지 않도록 debounce. 시작 시 + 6시간 주기 폴링과
+/// 별개로 동작 — 사용자가 다른 창 → KarmoLab 으로 돌아왔을 때 새 release 즉시 인지가 목적.
+#[cfg(not(debug_assertions))]
+const FOCUS_UPDATE_DEBOUNCE_MS: u64 = 5 * 60 * 1000;
+
+#[cfg(not(debug_assertions))]
+fn try_focus_update_check(handle: &tauri::AppHandle) {
+    let now_ms = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_millis() as u64)
+        .unwrap_or(0);
+    let last = LAST_FOCUS_UPDATE_CHECK_EPOCH_MS.load(Ordering::Relaxed);
+    if now_ms.saturating_sub(last) < FOCUS_UPDATE_DEBOUNCE_MS {
+        return;
+    }
+    LAST_FOCUS_UPDATE_CHECK_EPOCH_MS.store(now_ms, Ordering::Relaxed);
+    spawn_update_check(handle.clone(), UpdateCheckMode::Background);
+}
+
 /// 배너 클릭 등 사용자가 명시적으로 동의한 후의 설치 흐름. 다이얼로그 없이 곧장 다운로드·설치.
 /// 진행률은 `karmolab://update-progress`, 다운로드 완료는 `karmolab://update-download-finished` 이벤트로 통지.
 #[tauri::command]
@@ -731,6 +754,10 @@ pub fn run() {
                     if let Some(w) = window_handle.get_webview_window("main") {
                         let _ = w.hide();
                     }
+                }
+                #[cfg(not(debug_assertions))]
+                if let WindowEvent::Focused(true) = event {
+                    try_focus_update_check(&window_handle);
                 }
             });
 
