@@ -41,6 +41,12 @@
             "title": "KarmoLab Tauri Dev",
             "subtitle": "dev:dual — debug 빌드 + 빨간 banner (prod 옆에서 동시)",
             "url": "http://127.0.0.1:8898/apps/karmolab/"
+        },
+        {
+            "id": "karmolab-react",
+            "title": "KarmoLab React",
+            "subtitle": "Vite dev — TASK-KL-012 stdin 단축키 풀 검증용",
+            "url": "http://127.0.0.1:5173/"
         }
     ],
     "envFiles": [
@@ -128,6 +134,15 @@
             "program": "npm",
             "args": ["run", "dev:dual"],
             "healthUrl": "http://127.0.0.1:8898/apps/karmolab/",
+            "npmInstall": true
+        },
+        {
+            "id": "karmolab-react",
+            "label": "KarmoLab React (Vite)",
+            "cwd": "apps/karmolab-react-src",
+            "program": "npm",
+            "args": ["run", "dev"],
+            "healthUrl": "http://127.0.0.1:5173/",
             "npmInstall": true
         }
     ]
