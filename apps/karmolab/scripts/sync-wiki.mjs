@@ -233,7 +233,7 @@ async function walkSingleType(type, memoSubpath) {
   return out;
 }
 
-// ── manifest 생성 — entity 타입별 항목 리스트 (사이드바 walk 용) ─────────────────────────────
+// ── manifest 생성 — entity 타입별 항목 리스트 + view 데이터 (사이드바 walk + sub-C 카드/그래프 용) ─
 async function buildManifest() {
   const manifest = { characters: [], systems: [], concepts: [], lore: [] };
   for (const [type, dir] of Object.entries(TYPE_OUT_DIR)) {
@@ -251,6 +251,18 @@ async function buildManifest() {
         oneLine: meta.oneLine || '',
         tags: Array.isArray(meta.tags) ? meta.tags : [],
       };
+      // 타입별 view 데이터 (sub-C 카드/그래프 용) — 있으면 포함, 없으면 생략.
+      if (type === 'character') {
+        if (meta.imagegen_icon) item.icon = meta.imagegen_icon;
+        if (meta.imagegen_label) item.subLabel = meta.imagegen_label;
+        if (Array.isArray(meta.aliases) && meta.aliases.length > 0) item.aliases = meta.aliases;
+        // relationships: ["alisa", "ling"] 또는 [{target:"alisa",label:"동거"}, ...]
+        if (meta.relationships !== undefined) item.relationships = meta.relationships;
+      }
+      if (type === 'system') {
+        if (meta.owner) item.owner = meta.owner;
+        if (meta.depends !== undefined) item.depends = meta.depends;
+      }
       manifest[dir].push(item);
     }
     manifest[dir].sort((a, b) => a.slug.localeCompare(b.slug));
@@ -263,9 +275,11 @@ async function main() {
   console.log(`[sync-wiki] memo: ${MEMO_PATH}`);
   console.log(`[sync-wiki] out:  ${OUT_ROOT}`);
   if (!fs.existsSync(MEMO_PATH)) {
-    console.error(`[sync-wiki] memo path 없음: ${MEMO_PATH}`);
-    console.error('[sync-wiki] 환경변수 KARMODDRINE_MEMO_PATH 로 명시 가능.');
-    process.exit(1);
+    // memo 정본은 사용자 로컬에만 있음 (private). CI 등 memo 가 없는 환경에선
+    // sync 를 skip 하고 git 에 커밋된 entities/manifest.json 을 그대로 사용한다.
+    console.warn(`[sync-wiki] memo path 없음 — sync skip: ${MEMO_PATH}`);
+    console.warn('[sync-wiki] 로컬에서 sync 하려면 KARMODDRINE_MEMO_PATH 로 명시 가능.');
+    return;
   }
 
   const results = [];
