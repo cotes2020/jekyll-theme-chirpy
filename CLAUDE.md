@@ -214,7 +214,29 @@ cd apps/karmolab && npm ci && npm run build
 
 ---
 
-## Git Conventions
+## Git Workflow
+
+본 § 가 본 레포 git workflow 의 정본. CodeRabbit 이 자동 픽업해 같은 룰로 PR 리뷰.
+
+### Branches
+
+- `master` / `main`: Active development source. **직접 push 금지** (예외 단락 참조).
+- `production`: Release branch (triggers semantic-release). 직접 push 절대 금지.
+- Feature/fix branches: `feature/<주제>`, `fix/<주제>`, `chore/<주제>`, `refactor/<주제>`
+
+### 브랜치 + PR 강제 (AI Native 게이트)
+
+작업마다 브랜치 분기 후 PR. **첫 커밋 시 바로 Draft PR 생성** +
+`.github/pull_request_template.md` 의도 채움 → push → CodeRabbit 코멘트 대응 →
+완료 시 PR 리뷰 후 `master` 머지.
+
+### 예외 — `master` 직접 push 허용
+
+- 1~3줄 chore (오타 fix / 주석 갱신 / 단일 const 값 변경)
+- README · CLAUDE.md 자체 minor 보강
+- 빌드·CI 응급 fix (production deploy 깨진 상황)
+
+판단 기준: *코드 동작 변경 0* + *CodeRabbit 리뷰 가치 0*. 애매하면 PR 분기.
 
 ### Commit Messages
 
@@ -234,11 +256,14 @@ test: add or update tests
 - **Merge commits** are exempt from linting.
 - Semantic versioning and changelog generation run automatically on the `production` branch via `semantic-release`.
 
-### Branches
+### Branch Protection (사용자 GitHub 측 설정)
 
-- `master` / `main`: Active development / deployment source
-- `production`: Release branch (triggers semantic-release)
-- Feature/fix branches: Work in progress
+룰을 *기계적으로 강제* 하려면 GitHub repo → Settings → Branches 에서 `master` (와 `production`) 에 protection rule:
+- Require a pull request before merging
+- Require status checks to pass (Code Quality CI 통과 필수)
+- Restrict who can push to matching branches (직접 push 차단)
+
+이 설정 안 되어있으면 본 § 룰은 *수동 약속* 만 됨.
 
 ---
 
@@ -284,7 +309,7 @@ test: add or update tests
 6. **Do not edit `_config.yml` lightly** — changes affect the entire site behavior and build pipeline.
 7. **Apps in `apps/` are independent projects** with their own `package.json` and build processes. They are excluded from the main Jekyll build.
 8. **Commit messages must follow Conventional Commits** — the pre-commit hook (`husky`) will reject non-conforming messages.
-9. **The `production` branch** is for releases only; normal development goes to `master`/`main`.
+9. **The `production` branch** is for releases only; normal development goes to `master`/`main` — but `master`/`main` 도 PR 거쳐 머지 (`§ Git Workflow` 참조). 직접 push 는 1~3줄 chore 등 예외만.
 10. **공통 작업 원칙 (레거시 금지 / 마이그레이션 자기소멸 / 커밋 전 확인 / 커밋 전 테스트 / 한 commit 한 주제 / 푸시는 지시 시에만)** — 단일 출처: `karmoddrine/memo/CLAUDE-karmoddrine.md` § 공통 작업 원칙 — 모든 레포. 본 레포에도 동일 적용. 충돌 시 K 가 우선.
 11. **Vertex AI is preferred over AI Studio** — the user has Vertex AI credits. When both surfaces support the same capability (text generation, embeddings), default to Vertex. Use `KARMOLAB_AI_SURFACE=vertex` as the standard. AI Studio is a fallback only. Do not propose AI Studio as the primary option. When adding new AI features, implement both surfaces via `karmolab-ai` and respect the surface env var.
 12. **새 로컬 서버·dev 프로세스는 KarmoLab Server Monitor (`devProfiles`) 등록 우선** — 사용자는 `apps/karmolab-tauri` 데스크톱 앱을 상시 띄워두고 그 안의 **서버 모니터** 위젯에서 시작/종료/로그 스트림/deploy 를 한다. 새 봇·로컬 서버·dev runner 를 추가할 때는 **반드시 `apps/karmolab/data/servermonitor-config.json` 의 `devProfiles` (그리고 같은 `id` 로 `localMonitors`) 에 등록을 함께 제안**한다. 사용자가 외울 터미널 명령이 늘어나면 안 됨.
