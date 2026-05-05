@@ -8,6 +8,12 @@
         "character",
         "mansion",
         "maid"
+      ],
+      "icon": "🧹",
+      "subLabel": "메이드 알리사",
+      "aliases": [
+        "메이드 알리사",
+        "Alisa"
       ]
     },
     {
@@ -19,6 +25,12 @@
         "mansion",
         "maid",
         "jiangshi"
+      ],
+      "icon": "🧟‍♀️",
+      "subLabel": "강시 링",
+      "aliases": [
+        "강시 링",
+        "Ling"
       ]
     },
     {
@@ -29,6 +41,12 @@
         "character",
         "mansion",
         "witch"
+      ],
+      "icon": "💤",
+      "subLabel": "마녀 욘",
+      "aliases": [
+        "마녀 욘",
+        "Yawn"
       ]
     }
   ],
@@ -42,7 +60,8 @@
         "umbrella",
         "workflow",
         "ai-native"
-      ]
+      ],
+      "owner": "umbrella"
     }
   ],
   "concepts": [],

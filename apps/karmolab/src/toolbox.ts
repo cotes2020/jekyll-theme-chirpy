@@ -545,10 +545,18 @@ const Toolbox = (() => {
 
     function mirrorToastToDesktop(msg, type, detailText) {
         if (!isDesktopApp()) return;
-        if (type !== 'error' && type !== 'success') return;
-        if (type === 'success') {
-            const m = String(msg);
-            if (m.includes('클립보드') || m.includes('코드 테마')) return;
+        const notifyLevel = localStorage.getItem('karmolab_os_notify_level') || 'important';
+        if (notifyLevel === 'off') return;
+        
+        if (notifyLevel === 'important') {
+            if (type !== 'error') return;
+        } else {
+            // 'all'
+            if (type !== 'error' && type !== 'success') return;
+            if (type === 'success') {
+                const m = String(msg);
+                if (m.includes('클립보드') || m.includes('코드 테마')) return;
+            }
         }
         const invokeFn = window.__TAURI__?.core?.invoke;
         if (typeof invokeFn !== 'function') return;

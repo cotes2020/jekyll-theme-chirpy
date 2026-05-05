@@ -42,12 +42,42 @@
     h.className = 'devtools-section-title';
     h.textContent = 'OS 알림';
 
+    const notifyLevelKey = 'karmolab_os_notify_level';
+    const initLevel = localStorage.getItem(notifyLevelKey) || 'important';
+
+    const pLevel = document.createElement('p');
+    pLevel.className = 'devtools-section-desc';
+    pLevel.innerHTML = '<strong>OS 알림 연동 수준</strong>: ';
+    const levelSel = document.createElement('select');
+    levelSel.className = 'devtools-select';
+    levelSel.style.width = 'auto';
+    [
+      ['all', '모든 작업결과 (All)'],
+      ['important', '에러 및 중요 알림만 (Error Only)'],
+      ['off', '완전 끄기 (Off)'],
+    ].forEach(([v, text]) => {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = text;
+      if (v === initLevel) opt.selected = true;
+      levelSel.appendChild(opt);
+    });
+    levelSel.addEventListener('change', () => {
+      localStorage.setItem(notifyLevelKey, levelSel.value);
+      if (typeof Toolbox !== 'undefined') Toolbox.showToast('알림 설정이 저장되었습니다.', 'success');
+    });
+    pLevel.appendChild(levelSel);
+
     const p = document.createElement('p');
     const isApp = typeof Toolbox.isDesktopApp === 'function' && Toolbox.isDesktopApp();
     p.className = 'devtools-section-desc';
     p.innerHTML = isApp
       ? '<code>desktop_notify</code> 인자는 아래 미리보기와 동일하게 전송됩니다. Windows에서 <code>Default</code>는 WebView 쪽에서 <code>IM</code> 알림음으로 바꿔 보냅니다(그렇지 않으면 무음).'
       : '웹 브라우저에서는 사용할 수 없습니다. KarmoLab Tauri 앱으로 열어 주세요.';
+
+    sec.appendChild(h);
+    sec.appendChild(pLevel);
+    sec.appendChild(p);
 
     const mkField = function (labelText: string, inner: HTMLElement): HTMLElement {
       const row = document.createElement('div');
@@ -148,8 +178,6 @@
         });
     });
 
-    sec.appendChild(h);
-    sec.appendChild(p);
     sec.appendChild(mkField('title', titleIn));
     sec.appendChild(mkField('body', bodyIn));
     sec.appendChild(mkField('sound', soundSel));
