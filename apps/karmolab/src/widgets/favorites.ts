@@ -13,6 +13,7 @@ import { DEFAULT_ITEMS, FAVICON_FALLBACK, type FavoriteGroup, type FavoriteItem 
     const VIEW_KEY = 'toolbox_fav_view';
     const FAVICON_IMG_ONERROR = 'this.onerror=null;this.src=' + JSON.stringify(FAVICON_FALLBACK);
     const FAVICON_API = 'https://www.google.com/s2/favicons?domain=';
+    const KARMOLAB_FAVICON = '/apps/karmolab/img/favicon.ico';
     const FAVICON_SZ = '64';
 
     function isPrivateOrLocalHostname(host: string | null | undefined): boolean {
@@ -53,6 +54,9 @@ import { DEFAULT_ITEMS, FAVICON_FALLBACK, type FavoriteGroup, type FavoriteItem 
         }
         if (u.protocol !== 'http:' && u.protocol !== 'https:') return FAVICON_FALLBACK;
         const host = u.hostname;
+        const currentHost = typeof location !== 'undefined' ? location.hostname : '';
+        if (currentHost && host === currentHost) return KARMOLAB_FAVICON;
+        if (host === 'mascari4615.github.io') return KARMOLAB_FAVICON;
         if (isPrivateOrLocalHostname(host)) return FAVICON_FALLBACK;
         return FAVICON_API + encodeURIComponent(host) + '&sz=' + FAVICON_SZ;
     }
