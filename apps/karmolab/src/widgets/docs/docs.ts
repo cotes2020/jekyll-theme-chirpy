@@ -4,12 +4,15 @@
  * marked.js로 마크다운 렌더링, Prism.js로 코드 하이라이팅, ```mermaid 는 Mermaid 렌더.
  */
 (function (): void {
-  /** 동일 출처(Tracking Prevention 회피). CDN 금지 — Jekyll 블로그 `assets/lib/mermaid/mermaid.min.js` 와 공유 */
+  /** 동일 출처(Tracking Prevention 회피). CDN 금지.
+   *  KarmoLab 자체 vendor (`apps/karmolab/js/vendor/mermaid.min.js`) 사용 — production /
+   *  dev:static (Mascari4615.github.io root 서빙) 양쪽에서 404 X. */
   function getMermaidScriptUrl(): string {
     const w = window as unknown as { KARMOLAB_WIDGET_SCRIPT_BASE?: string };
     if (w.KARMOLAB_WIDGET_SCRIPT_BASE) {
       try {
-        return new URL('../../../../assets/lib/mermaid/mermaid.min.js', w.KARMOLAB_WIDGET_SCRIPT_BASE).href;
+        // base = apps/karmolab/js/widgets/docs/ → ../../vendor/ = apps/karmolab/js/vendor/
+        return new URL('../../vendor/mermaid.min.js', w.KARMOLAB_WIDGET_SCRIPT_BASE).href;
       } catch {
         /* noop */
       }
@@ -17,12 +20,12 @@
     const cur = document.currentScript as HTMLScriptElement | null;
     if (cur?.src) {
       try {
-        return new URL('../../../../../assets/lib/mermaid/mermaid.min.js', cur.src).href;
+        return new URL('../../vendor/mermaid.min.js', cur.src).href;
       } catch {
         /* noop */
       }
     }
-    return (typeof location !== 'undefined' ? location.origin : '') + '/assets/lib/mermaid/mermaid.min.js';
+    return (typeof location !== 'undefined' ? location.origin : '') + '/apps/karmolab/js/vendor/mermaid.min.js';
   }
 
   type MermaidApi = {
@@ -576,7 +579,22 @@
     { id: 'docs-servermonitor-deploy-log-design', label: '로컬 · deploy 로그', source: { kind: 'local', path: 'servermonitor-deploy-log-stream.md' }, mddPreset: 'tool_run', mddMsg: '서버 모니터 deploy·npm i 로그 스트림 — 이벤트·커맨드는 본문 참고.' },
   ];
 
-  interface EntityManifestItem { slug: string; title: string; oneLine: string; tags: string[]; }
+  type RelTarget = string | { target: string; label?: string };
+
+  interface EntityManifestItem {
+    slug: string;
+    title: string;
+    oneLine: string;
+    tags: string[];
+    // character 전용 (sub-C 카드/그래프 view)
+    icon?: string;
+    subLabel?: string;
+    aliases?: string[];
+    relationships?: RelTarget[];
+    // system 전용
+    owner?: string;
+    depends?: string[];
+  }
   interface DocsManifest {
     characters: EntityManifestItem[];
     systems: EntityManifestItem[];
@@ -609,6 +627,66 @@
       if (!r.ok) throw new Error('entity md 실패: ' + slug);
       return r.text();
     });
+  }
+
+  /** sub-C: 타입별 default view header (카드 + 관계 그래프 mermaid). 본문 위에 prepend.
+   *  blockquote 사용 X — fence(mermaid) 와 충돌하면 평문 렌더되는 케이스 있음. 일반 단락 + 수평선. */
+  function buildEntityHeader(dirName: string, item: EntityManifestItem, manifest: DocsManifest): string {
+    const parts: string[] = [];
+    // 공통 카드 — title + oneLine (h3 + emphasis)
+    const iconPrefix = item.icon ? item.icon + ' ' : '';
+    parts.push('### ' + iconPrefix + docsEsc(item.title));
+    parts.push('');
+    if (item.oneLine) {
+      parts.push('*' + docsEsc(item.oneLine) + '*');
+      parts.push('');
+    }
+    // 메타 라인 (subLabel / aliases / tags / owner / depends 등 있으면)
+    const meta: string[] = [];
+    if (item.subLabel) meta.push('_' + docsEsc(item.subLabel) + '_');
+    if (item.aliases && item.aliases.length > 0) meta.push('aliases: ' + item.aliases.map(docsEsc).join(', '));
+    if (item.owner) meta.push('owner: `' + docsEsc(item.owner) + '`');
+    if (item.depends && item.depends.length > 0) meta.push('depends: ' + item.depends.map(function (d) { return '`' + docsEsc(d) + '`'; }).join(', '));
+    if (item.tags && item.tags.length > 0) meta.push(item.tags.map(function (t) { return '`#' + docsEsc(t) + '`'; }).join(' '));
+    if (meta.length > 0) {
+      parts.push(meta.join(' · '));
+      parts.push('');
+    }
+    // character 의 관계 그래프 — relationships 가 있으면 mermaid 자동 생성.
+    // marked fence 인식 우회: 직접 <div class="mermaid"> 인라인 HTML — mermaid lib 가 .mermaid 셀렉터 자동 잡음.
+    if (dirName === 'characters' && item.relationships && item.relationships.length > 0) {
+      const mmdLines: string[] = ['graph LR'];
+      const selfId = sanitizeMermaidId(item.slug);
+      const selfLabel = mermaidLabel(item.title);
+      mmdLines.push('  ' + selfId + '["' + selfLabel + '"]:::self');
+      const seen = new Set<string>([item.slug]);
+      for (const rel of item.relationships) {
+        const target = typeof rel === 'string' ? rel : rel.target;
+        const label = typeof rel === 'string' ? '' : (rel.label || '');
+        if (!target || seen.has(target)) continue;
+        seen.add(target);
+        const targetId = sanitizeMermaidId(target);
+        const targetItem = manifest.characters.find(function (e) { return e.slug === target; });
+        const targetLabel = mermaidLabel(targetItem ? targetItem.title : target);
+        mmdLines.push('  ' + targetId + '["' + targetLabel + '"]');
+        const edge = label ? ' -.->|' + label.replace(/[|]/g, '/') + '| ' : ' -.-> ';
+        mmdLines.push('  ' + selfId + edge + targetId);
+      }
+      mmdLines.push('  classDef self fill:#d4a849,stroke:#a08020,color:#000;');
+      const safe = mmdLines.join('\n').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      parts.push('<div class="mermaid">' + safe + '</div>');
+      parts.push('');
+    }
+    parts.push('---');
+    parts.push('');
+    return parts.join('\n');
+  }
+
+  function sanitizeMermaidId(s: string): string {
+    return String(s || '').replace(/[^a-zA-Z0-9_]/g, '_');
+  }
+  function mermaidLabel(s: string): string {
+    return String(s || '').replace(/["`]/g, '').replace(/\n/g, ' ');
   }
 
   function injectShellStyles(): void {
@@ -726,12 +804,8 @@
         const item = group ? manifest[group.key].find(function (e) { return e.slug === slug; }) : undefined;
         try {
           const md = await loadEntityMd(dirName, slug);
-          const title = item?.title || slug;
-          const oneLine = item?.oneLine || '';
-          const banner = oneLine
-            ? '> **' + docsEsc(title) + '** — ' + docsEsc(oneLine) + '\n\n---\n\n'
-            : '> **' + docsEsc(title) + '**\n\n---\n\n';
-          renderMarkdown(target, banner + md);
+          const header = item ? buildEntityHeader(dirName, item, manifest) : '> **' + docsEsc(slug) + '**\n\n---\n\n';
+          renderMarkdown(target, header + md);
         } catch (err) {
           renderMarkdown(target, '*entity 로드 실패: ' + docsEsc(String((err as Error)?.message || err)) + '*');
         }

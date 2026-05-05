@@ -13,6 +13,9 @@ tags:
   - character
   - mansion
   - witch
+relationships:
+  - alisa
+  - ling
 imagegen_presetId: witch
 imagegen_icon: 💤
 imagegen_label: 마녀 욘
