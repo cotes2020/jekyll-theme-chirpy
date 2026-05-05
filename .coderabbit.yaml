@@ -1,5 +1,7 @@
 # CodeRabbit 설정 - mascari4615.github.io
-# https://docs.coderabbit.ai/getting-started/configure-coderabbit
+# 코드 리뷰 룰의 정본은 CLAUDE.md (레포 루트 + 디렉토리별 sub-CLAUDE.md) — CodeRabbit 이 자동 픽업.
+# 본 yaml 은 CodeRabbit 자체에 대한 메타 설정만 (path_filters, profile 등).
+# https://docs.coderabbit.ai/knowledge-base/code-guidelines
 
 language: "ko-KR"
 
@@ -20,18 +22,6 @@ reviews:
     - "!package-lock.json"
     - "!.jekyll-cache/**"
     - "!.jekyll-metadata"
-
-  # 리뷰 지침 - CLAUDE.md 핵심 내용 반영
-  instructions: |
-    이 레포는 Jekyll 기반 블로그(Chirpy 테마) + KarmoLab 앱 모노레포입니다.
-
-    리뷰 시 다음 사항을 확인해 주세요:
-    - _posts/ 포스트는 front matter에 title, description, categories, tags, date가 있는지 확인
-    - date 형식이 "YYYY-MM-DD. HH:MM" (점+공백 포함) 인지 확인
-    - assets/js/dist/ 파일은 직접 수정하지 않았는지 확인 (소스는 _javascript/ 에 있음)
-    - Conventional Commits 형식을 따르는지 확인 (feat/fix/docs/chore 등)
-    - SCSS 변경 시 npm run build:css 필요 여부 언급
-    - _config.yml 수정 시 사이트 전체 영향 여부 언급
 
 chat:
   # PR 내에서 @coderabbitai 멘션으로 대화 가능
