@@ -162,6 +162,73 @@
       .replace(/'/g, '&#39;');
   }
 
+  /// CSV escape: comma/quote/newline 있으면 따옴표 감싸고 내부 따옴표는 두 번.
+  function csvEscape(s: string): string {
+    const v = String(s ?? '');
+    if (/[",\r\n]/.test(v)) return '"' + v.replace(/"/g, '""') + '"';
+    return v;
+  }
+
+  /// raw 샘플 → CSV. UTF-8 BOM 포함 (Excel 한국어 깨짐 방지).
+  function buildSamplesCsv(samples: ActivitySample[]): string {
+    const lines = ['ts_iso,ts_epoch,process,label,title,idle'];
+    for (const s of samples) {
+      const iso = new Date(s.ts * 1000).toISOString();
+      lines.push([
+        csvEscape(iso),
+        String(s.ts),
+        csvEscape(s.process || ''),
+        csvEscape(readableProcessName(s.process || '')),
+        csvEscape(s.title || ''),
+        s.idle ? '1' : '0',
+      ].join(','));
+    }
+    return '﻿' + lines.join('\n');
+  }
+
+  /// 집계 결과 → CSV. 앱별 누적 시간 + top 윈도우 타이틀 1개.
+  function buildAggregateCsv(apps: AppAggregate[], activeSecs: number, idleSecs: number): string {
+    const lines = ['process,label,seconds,share_pct,top_title,top_seconds'];
+    for (const a of apps) {
+      let topTitle = '';
+      let topSecs = 0;
+      for (const [t, secs] of a.titles.entries()) {
+        if (secs > topSecs) {
+          topTitle = t;
+          topSecs = secs;
+        }
+      }
+      const sharePct = activeSecs > 0 ? ((a.seconds / activeSecs) * 100).toFixed(2) : '0.00';
+      lines.push([
+        csvEscape(a.process),
+        csvEscape(readableProcessName(a.process)),
+        String(a.seconds),
+        sharePct,
+        csvEscape(topTitle),
+        String(topSecs),
+      ].join(','));
+    }
+    lines.push('');
+    lines.push('# summary');
+    lines.push(`# active_seconds,${activeSecs}`);
+    lines.push(`# idle_seconds,${idleSecs}`);
+    return '﻿' + lines.join('\n');
+  }
+
+  /// CSV 텍스트를 파일로 저장 (Blob + a[download]). Tauri 권한 추가 X.
+  function downloadCsv(filename: string, csv: string): void {
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
   function build(container: HTMLElement): void {
     Mdd.injectCSS(
       'activity',
@@ -285,6 +352,16 @@
     refreshBtn.type = 'button';
     refreshBtn.className = 'btn btn-secondary';
     refreshBtn.textContent = '새로고침';
+    const exportSamplesBtn = document.createElement('button');
+    exportSamplesBtn.type = 'button';
+    exportSamplesBtn.className = 'btn btn-secondary';
+    exportSamplesBtn.textContent = 'CSV 샘플';
+    exportSamplesBtn.title = '현재 범위의 raw 샘플을 CSV 로 내보냅니다 (UTF-8 BOM 포함, Excel 호환)';
+    const exportAggBtn = document.createElement('button');
+    exportAggBtn.type = 'button';
+    exportAggBtn.className = 'btn btn-secondary';
+    exportAggBtn.textContent = 'CSV 집계';
+    exportAggBtn.title = '앱별 누적 시간 집계 결과를 CSV 로 내보냅니다';
     controls.appendChild(lab);
     controls.appendChild(periodSel);
     controls.appendChild(prevBtn);
@@ -292,6 +369,8 @@
     controls.appendChild(nextBtn);
     controls.appendChild(todayBtn);
     controls.appendChild(refreshBtn);
+    controls.appendChild(exportSamplesBtn);
+    controls.appendChild(exportAggBtn);
     root.appendChild(controls);
 
     const filterRow = document.createElement('div');
@@ -626,6 +705,38 @@
       else if (period === 'month') dateIn.value = shiftKstMonth(anchor, delta);
     }
 
+    function exportFilenameSlug(): string {
+      const period = periodSel.value as Period;
+      const anchor = dateIn.value || todayKstDay();
+      if (period === 'day') return anchor;
+      if (period === 'week') return `week-${weekStartKst(anchor)}`;
+      if (period === 'month') return anchor.slice(0, 7);
+      return 'all';
+    }
+
+    function exportSamples(): void {
+      if (lastSamples.length === 0) {
+        Toolbox.showToast?.('내보낼 샘플이 없습니다.', 'error', undefined);
+        return;
+      }
+      const csv = buildSamplesCsv(lastSamples);
+      downloadCsv(`activity-${exportFilenameSlug()}-samples.csv`, csv);
+      Toolbox.showToast?.(`샘플 ${lastSamples.length}건 CSV 다운로드`, 'success', undefined);
+    }
+
+    function exportAggregate(): void {
+      if (lastSamples.length === 0) {
+        Toolbox.showToast?.('내보낼 데이터가 없습니다.', 'error', undefined);
+        return;
+      }
+      const { apps, activeSecs, idleSecs } = aggregate(lastSamples);
+      const csv = buildAggregateCsv(apps, activeSecs, idleSecs);
+      downloadCsv(`activity-${exportFilenameSlug()}-aggregate.csv`, csv);
+      Toolbox.showToast?.(`앱 ${apps.length}개 집계 CSV 다운로드`, 'success', undefined);
+    }
+
+    exportSamplesBtn.addEventListener('click', exportSamples);
+    exportAggBtn.addEventListener('click', exportAggregate);
     refreshBtn.addEventListener('click', () => load());
     dateIn.addEventListener('change', () => { load(); setupAutoRefresh(); });
     periodSel.addEventListener('change', () => { applyPeriodControlsState(); load(); setupAutoRefresh(); });
