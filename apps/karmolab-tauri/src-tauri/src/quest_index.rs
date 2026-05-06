@@ -40,6 +40,8 @@ pub struct CheckItem {
     pub text: String,
     pub done: bool,
     pub group: Option<String>,
+    /// 1-base 파일 라인 번호. v2 write-back (toggle_quest_check) 가 식별자로 사용.
+    pub line_number: u32,
 }
 
 #[derive(Serialize, Debug, Clone)]
@@ -82,14 +84,24 @@ const DOMAIN_DIRS: &[&str] = &[
 ];
 
 /// frontmatter 파싱 — `---\n key: value\n ... \n---\n body`.
-/// 반환: (key→value map, body). frontmatter 가 없거나 닫는 `---` 가 없으면 None.
-fn parse_frontmatter(content: &str) -> Option<(HashMap<String, String>, String)> {
+/// 반환: (key→value map, body, body_start_line).
+/// `body_start_line` 은 1-base 파일 라인 번호 — v2 write-back 이 사용.
+/// frontmatter 가 없거나 닫는 `---` 가 없으면 None.
+fn parse_frontmatter(content: &str) -> Option<(HashMap<String, String>, String, u32)> {
     let normalized = content.replace("\r\n", "\n");
     let after_open = normalized.strip_prefix("---\n")?;
     let close_idx = after_open.find("\n---")?;
     let fm_text = &after_open[..close_idx];
     let body_with_close = &after_open[close_idx + "\n---".len()..];
     let body = body_with_close.strip_prefix('\n').unwrap_or(body_with_close);
+
+    // body 시작 파일 라인 = 1 (open ---) + fm_lines + 1 (close ---) + 1 (다음 라인)
+    let fm_lines = if fm_text.is_empty() {
+        0
+    } else {
+        fm_text.matches('\n').count() + 1
+    };
+    let body_start_line = (fm_lines + 3) as u32;
 
     let mut map: HashMap<String, String> = HashMap::new();
     for raw_line in fm_text.split('\n') {
@@ -101,7 +113,7 @@ fn parse_frontmatter(content: &str) -> Option<(HashMap<String, String>, String)>
             map.insert(key.trim().to_string(), value.trim().to_string());
         }
     }
-    Some((map, body.to_string()))
+    Some((map, body.to_string(), body_start_line))
 }
 
 /// `[a, b, c]` 형식 → `vec![a, b, c]`. 따옴표 제거. 그 외 형식이면 단일 요소.
@@ -121,10 +133,12 @@ fn parse_list(value: &str) -> Vec<String> {
 }
 
 /// 본문 체크박스 추출 — `- [ ]` / `- [x]` / `- [X]` 라인. 가장 가까운 위 h2/h3 헤더가 group.
-fn extract_checks(body: &str) -> Vec<CheckItem> {
+/// `body_start_line` 은 body 의 첫 라인이 파일에서 몇 번째 라인인지 (1-base).
+/// 각 CheckItem 의 `line_number` = 절대 파일 라인 번호.
+fn extract_checks(body: &str, body_start_line: u32) -> Vec<CheckItem> {
     let mut checks: Vec<CheckItem> = Vec::new();
     let mut current_group: Option<String> = None;
-    for raw_line in body.split('\n') {
+    for (idx, raw_line) in body.split('\n').enumerate() {
         let line = raw_line.trim_end_matches('\r');
         let trimmed = line.trim_start();
 
@@ -156,6 +170,7 @@ fn extract_checks(body: &str) -> Vec<CheckItem> {
             text,
             done,
             group: current_group.clone(),
+            line_number: body_start_line + idx as u32,
         });
     }
     checks
@@ -193,7 +208,8 @@ fn extract_title(file_name: &str) -> String {
 
 /// 단일 TASK 파일 → TaskNode. parse 실패는 Err — 호출자가 errors[] 에 모음.
 fn parse_one_task(file_name: &str, rel_path: &str, content: &str) -> Result<TaskNode, String> {
-    let (fm, body) = parse_frontmatter(content).ok_or_else(|| "frontmatter 없음".to_string())?;
+    let (fm, body, body_start_line) =
+        parse_frontmatter(content).ok_or_else(|| "frontmatter 없음".to_string())?;
 
     let id = fm
         .get("id")
@@ -229,7 +245,7 @@ fn parse_one_task(file_name: &str, rel_path: &str, content: &str) -> Result<Task
         .unwrap_or_default();
 
     let title = extract_title(file_name);
-    let checks = extract_checks(&body);
+    let checks = extract_checks(&body, body_start_line);
 
     Ok(TaskNode {
         id,
@@ -337,10 +353,12 @@ mod tests {
 
     #[test]
     fn parse_frontmatter_basic() {
-        let (fm, body) = parse_frontmatter(SAMPLE).unwrap();
+        let (fm, body, body_start_line) = parse_frontmatter(SAMPLE).unwrap();
         assert_eq!(fm.get("id").map(String::as_str), Some("TASK-WM-007"));
         assert_eq!(fm.get("status").map(String::as_str), Some("ready"));
         assert!(body.starts_with("\n## 목표"));
+        // SAMPLE: --- (1) + 5 fm lines (2~6) + --- (7) → body 첫 라인 = 8
+        assert_eq!(body_start_line, 8);
     }
 
     #[test]
@@ -362,8 +380,8 @@ mod tests {
 
     #[test]
     fn extract_checks_grouped_and_mixed() {
-        let (_, body) = parse_frontmatter(SAMPLE).unwrap();
-        let checks = extract_checks(&body);
+        let (_, body, body_start_line) = parse_frontmatter(SAMPLE).unwrap();
+        let checks = extract_checks(&body, body_start_line);
         assert_eq!(checks.len(), 4);
         assert_eq!(checks[0].text, "완료된 거");
         assert!(checks[0].done);
@@ -376,9 +394,20 @@ mod tests {
     }
 
     #[test]
+    fn extract_checks_line_numbers_match_file_lines() {
+        // SAMPLE 파일의 체크박스는 라인 15, 16, 20, 21.
+        let (_, body, body_start_line) = parse_frontmatter(SAMPLE).unwrap();
+        let checks = extract_checks(&body, body_start_line);
+        assert_eq!(checks[0].line_number, 15);
+        assert_eq!(checks[1].line_number, 16);
+        assert_eq!(checks[2].line_number, 20);
+        assert_eq!(checks[3].line_number, 21);
+    }
+
+    #[test]
     fn extract_checks_empty_body() {
-        assert!(extract_checks("").is_empty());
-        assert!(extract_checks("## 목표\n\n그냥 본문\n").is_empty());
+        assert!(extract_checks("", 1).is_empty());
+        assert!(extract_checks("## 목표\n\n그냥 본문\n", 1).is_empty());
     }
 
     #[test]

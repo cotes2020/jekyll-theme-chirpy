@@ -3,6 +3,7 @@ mod flow_doc;
 mod karmoddrine_state;
 mod local_dev;
 mod quest_index;
+mod quest_writeback;
 mod repo_file;
 mod terminal;
 
@@ -10,6 +11,7 @@ use activity::{activity_list_days, activity_query_day, activity_status, Activity
 use flow_doc::{list_flow_docs, read_flow_doc};
 use karmoddrine_state::get_karmoddrine_state;
 use quest_index::get_quest_tree;
+use quest_writeback::toggle_quest_check;
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
     localdev_list_external_pids, localdev_list_tracked, localdev_npm_install,
@@ -691,6 +693,7 @@ pub fn run() {
             activity_status,
             get_karmoddrine_state,
             get_quest_tree,
+            toggle_quest_check,
             list_flow_docs,
             read_flow_doc,
             terminal_start,

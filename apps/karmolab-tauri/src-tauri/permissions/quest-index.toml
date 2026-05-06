@@ -4,3 +4,10 @@ description = "Allow the QuestLog widget to fetch the TASK tree snapshot (read-o
 commands.allow = [
   "get_quest_tree",
 ]
+
+[[permission]]
+identifier = "allow-quest-writeback"
+description = "Allow the QuestLog widget to toggle a single checkbox in a memo TASK file (write-back). Path whitelisted to {memo}/(wm|projects/karmolab|projects/yawnbot|life|hobby|learning)/tasks/TASK-*.md."
+commands.allow = [
+  "toggle_quest_check",
+]

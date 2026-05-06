@@ -26,6 +26,7 @@
     "allow-activity",
     "allow-karmoddrine-state",
     "allow-quest-index",
+    "allow-quest-writeback",
     "allow-flow-doc",
     "allow-terminal",
     "updater:default"

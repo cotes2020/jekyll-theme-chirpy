@@ -28,6 +28,7 @@
     text: string;
     done: boolean;
     group: string | null;
+    lineNumber: number;
   }
   interface MemoTaskNode {
     id: string;
@@ -107,7 +108,8 @@
       id: t.id,
       title: t.title,
       status: mapMemoStatus(t.status),
-      checks: t.checks.map((c) => ({ t: c.text, done: c.done })),
+      filePath: t.filePath,
+      checks: t.checks.map((c) => ({ t: c.text, done: c.done, lineNumber: c.lineNumber })),
     };
   }
 
@@ -1189,11 +1191,32 @@
       `;
 
       $$('[data-check-idx]').forEach(el => {
-        el.addEventListener('click', (e) => {
+        el.addEventListener('click', async (e) => {
           e.preventDefault();
           const i = Number(el.dataset.checkIdx);
-          node.checks[i].done = !node.checks[i].done;
-          if (node.checks[i].done) Mdd.linePreset('success', { msg: '하나 끝!' });
+          const check = node.checks[i];
+
+          // 메모 정본 write-back (TASK-KL-017). filePath/lineNumber 가 있는 경우만.
+          // 없으면 (옛 localStorage 데이터) 시각만 토글.
+          const invoke = (window as any).__TAURI__?.core?.invoke;
+          if (node.filePath && check.lineNumber && typeof invoke === 'function') {
+            try {
+              const newDone = await invoke('toggle_quest_check', {
+                filePath: node.filePath,
+                lineNumber: check.lineNumber,
+                expectedText: check.t,
+              }) as boolean;
+              check.done = newDone;
+            } catch (err) {
+              console.error('toggle_quest_check 실패', err);
+              alert(`체크박스 쓰기 실패: ${err}\n\n파일이 외부에서 변경됐을 수 있습니다. 위젯을 재실행해 주세요.`);
+              return;
+            }
+          } else {
+            check.done = !check.done;
+          }
+
+          if (check.done) Mdd.linePreset('success', { msg: '하나 끝!' });
           save();
           openDrawer(id);
           renderColumns();
