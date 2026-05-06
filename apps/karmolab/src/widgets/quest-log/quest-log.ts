@@ -118,6 +118,7 @@
       title: t.title,
       status: mapMemoStatus(t.status),
       memoStatus: t.status, // KL-018 — write-back 시 expected_status 로 사용
+      memoPriority: t.priority, // KL-021 — priority write-back expected
       filePath: t.filePath,
       checks: t.checks.map((c) => ({ t: c.text, done: c.done, lineNumber: c.lineNumber })),
     };
@@ -1158,6 +1159,14 @@
           `).join('')}
         </div>
 
+        <div class="priority-switcher" style="display:flex; gap:1px; margin-top:8px; background:var(--line-2); border:1px solid var(--line-2); width:fit-content;">
+          ${['low', 'normal', 'high'].map(p => `
+            <button class="chip priority-toggle ${node.memoPriority === p ? 'on' : ''}" data-set-priority="${p}" style="border:none; padding:7px 14px; font-size:12px;">
+              ${p === 'high' ? '! HIGH' : p === 'low' ? '· LOW' : '○ NORMAL'}
+            </button>
+          `).join('')}
+        </div>
+
         <div class="progress-wrap">
           <div class="lbl"><span>PROGRESS · ${starsHTML(progress / 100, false)}</span><b>${progress}%</b></div>
           <div class="bar"><div class="f" style="width:${progress}%; background:${statusColor};"></div></div>
@@ -1312,6 +1321,37 @@
           }
 
           if (node.status === 'fire') Mdd.linePreset('tool_run', { msg: '불 붙었어요 🔥' });
+          save();
+          openDrawer(id);
+          renderColumns();
+          renderStats();
+        });
+      });
+
+      $$('[data-set-priority]').forEach(el => {
+        el.addEventListener('click', async () => {
+          const newPriority = el.dataset.setPriority!;
+          // 같은 priority 클릭은 무동작 (status 와 달리 토글 의미 없음)
+          if (node.memoPriority === newPriority) return;
+
+          const invoke = (window as any).__TAURI__?.core?.invoke;
+          if (node.filePath && node.memoPriority && typeof invoke === 'function') {
+            try {
+              const written = await invoke('set_quest_priority', {
+                filePath: node.filePath,
+                newPriority,
+                expectedPriority: node.memoPriority,
+              }) as string;
+              node.memoPriority = written;
+            } catch (err) {
+              console.error('set_quest_priority 실패', err);
+              alert(`우선순위 쓰기 실패: ${err}\n\n파일이 외부에서 변경됐을 수 있습니다. 위젯을 재실행해 주세요.`);
+              return;
+            }
+          } else {
+            node.memoPriority = newPriority;
+          }
+
           save();
           openDrawer(id);
           renderColumns();

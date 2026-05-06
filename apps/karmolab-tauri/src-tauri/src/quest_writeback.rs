@@ -136,17 +136,17 @@ pub fn toggle_quest_check(
 /// memo TASK frontmatter status 값 6종 — KL-018 status write-back 화이트리스트.
 const ALLOWED_STATUSES: &[&str] = &["seed", "ready", "active", "hold", "done", "sealed"];
 
-/// frontmatter 안의 `status:` 라인을 새 값으로 교체. expected_status 와 현재 값이 다르면 fail-safe.
-/// CRLF/LF 보존. 반환: (new_content, new_status).
-fn replace_status(
-    content: &str,
-    new_status: &str,
-    expected_status: &str,
-) -> Result<(String, String), String> {
-    if !ALLOWED_STATUSES.contains(&new_status) {
-        return Err(format!("invalid status: {}", new_status));
-    }
+/// memo TASK frontmatter priority 값 3종 — KL-021 priority write-back 화이트리스트.
+const ALLOWED_PRIORITIES: &[&str] = &["low", "normal", "high"];
 
+/// frontmatter 안의 단일 필드 라인을 새 값으로 교체. expected_value 검증 race-safe.
+/// CRLF/LF 보존. KL-018/021 공용 헬퍼.
+fn replace_frontmatter_field(
+    content: &str,
+    field_key: &str,
+    new_value: &str,
+    expected_value: &str,
+) -> Result<String, String> {
     let normalized = content.replace("\r\n", "\n");
     let after_open = normalized
         .strip_prefix("---\n")
@@ -156,44 +156,69 @@ fn replace_status(
         .ok_or_else(|| "no frontmatter close".to_string())?;
     let fm_text = &after_open[..close_idx];
 
-    // status 라인 검색 — fm_text 안에서 1회만 등장한다고 가정.
-    let mut status_line_idx_in_fm: Option<usize> = None;
-    let mut current_status: Option<String> = None;
+    // 필드 라인 검색 — fm_text 안에서 1회만 등장한다고 가정.
+    let mut field_line_idx_in_fm: Option<usize> = None;
+    let mut current_value: Option<String> = None;
     for (idx, raw_line) in fm_text.split('\n').enumerate() {
         let trimmed = raw_line.trim();
         if let Some((key, value)) = trimmed.split_once(':') {
-            if key.trim() == "status" {
-                status_line_idx_in_fm = Some(idx);
-                current_status = Some(value.trim().to_string());
+            if key.trim() == field_key {
+                field_line_idx_in_fm = Some(idx);
+                current_value = Some(value.trim().to_string());
                 break;
             }
         }
     }
 
-    let status_idx = status_line_idx_in_fm.ok_or_else(|| "no status field".to_string())?;
-    let actual = current_status.unwrap_or_default();
-    if actual != expected_status {
+    let field_idx = field_line_idx_in_fm.ok_or_else(|| format!("no {} field", field_key))?;
+    let actual = current_value.unwrap_or_default();
+    if actual != expected_value {
         return Err(format!(
-            "status mismatch — expected '{}', got '{}'",
-            expected_status, actual
+            "{} mismatch — expected '{}', got '{}'",
+            field_key, expected_value, actual
         ));
     }
 
     // 원본 content 의 라인 단위로 교체. CRLF/LF 보존을 위해 `split('\n')` 후 join.
     let mut lines: Vec<String> = content.split('\n').map(|line| line.to_string()).collect();
-    // 파일 라인 = 1 (open ---) + status_idx (fm 안의 0-base) + 1 (1-base 변환) - 1 (인덱싱) = status_idx + 1
-    // 실제 인덱싱: lines[status_idx + 1] (open --- 뒤 첫 fm 라인 = lines[1])
-    let file_line_idx = status_idx + 1;
+    // 파일 라인 = 1 (open ---) + field_idx (fm 안의 0-base). 실제 인덱싱: lines[field_idx + 1].
+    let file_line_idx = field_idx + 1;
     if file_line_idx >= lines.len() {
-        return Err("internal: status line out of range".to_string());
+        return Err(format!("internal: {} line out of range", field_key));
     }
 
     let raw_line = lines[file_line_idx].clone();
     let has_cr = raw_line.ends_with('\r');
     let cr_suffix = if has_cr { "\r" } else { "" };
-    lines[file_line_idx] = format!("status: {}{}", new_status, cr_suffix);
+    lines[file_line_idx] = format!("{}: {}{}", field_key, new_value, cr_suffix);
 
-    Ok((lines.join("\n"), new_status.to_string()))
+    Ok(lines.join("\n"))
+}
+
+/// status 화이트리스트 + 공용 헬퍼 호출.
+fn replace_status(
+    content: &str,
+    new_status: &str,
+    expected_status: &str,
+) -> Result<(String, String), String> {
+    if !ALLOWED_STATUSES.contains(&new_status) {
+        return Err(format!("invalid status: {}", new_status));
+    }
+    let new_content = replace_frontmatter_field(content, "status", new_status, expected_status)?;
+    Ok((new_content, new_status.to_string()))
+}
+
+/// priority 화이트리스트 + 공용 헬퍼 호출.
+fn replace_priority(
+    content: &str,
+    new_priority: &str,
+    expected_priority: &str,
+) -> Result<(String, String), String> {
+    if !ALLOWED_PRIORITIES.contains(&new_priority) {
+        return Err(format!("invalid priority: {}", new_priority));
+    }
+    let new_content = replace_frontmatter_field(content, "priority", new_priority, expected_priority)?;
+    Ok((new_content, new_priority.to_string()))
 }
 
 /// QuestLog 위젯에서 호출. status 변경 후 파일 write.
@@ -213,6 +238,27 @@ pub fn set_quest_status(
     let canonical_file = validate_task_path(&file_path, &memo)?;
     let content = fs::read_to_string(&canonical_file).map_err(|e| format!("read failed: {}", e))?;
     let (new_content, written) = replace_status(&content, &new_status, &expected_status)?;
+    fs::write(&canonical_file, new_content).map_err(|e| format!("write failed: {}", e))?;
+    Ok(written)
+}
+
+/// QuestLog 위젯에서 호출. priority 변경 후 파일 write.
+/// 반환: 새로 쓰여진 priority 문자열.
+#[tauri::command]
+pub fn set_quest_priority(
+    file_path: String,
+    new_priority: String,
+    expected_priority: String,
+    memo_path: Option<String>,
+) -> Result<String, String> {
+    let memo = memo_path
+        .map(PathBuf::from)
+        .or_else(default_memo_path)
+        .ok_or_else(|| "memo path could not be resolved".to_string())?;
+
+    let canonical_file = validate_task_path(&file_path, &memo)?;
+    let content = fs::read_to_string(&canonical_file).map_err(|e| format!("read failed: {}", e))?;
+    let (new_content, written) = replace_priority(&content, &new_priority, &expected_priority)?;
     fs::write(&canonical_file, new_content).map_err(|e| format!("write failed: {}", e))?;
     Ok(written)
 }
@@ -580,5 +626,57 @@ mod tests {
     fn remove_check_line_zero_errors() {
         let res = remove_check_line(SAMPLE_LF, 0, "anything");
         assert!(res.is_err());
+    }
+
+    // ── KL-021 priority write-back ─────────────────────────────────────────
+    const SAMPLE_WITH_PRIORITY_LF: &str =
+        "---\nid: TASK-KL-021\nstatus: seed\npriority: normal\n---\n\n## 본문\n";
+
+    #[test]
+    fn replace_priority_lf_normal_to_high() {
+        let (new_content, written) =
+            replace_priority(SAMPLE_WITH_PRIORITY_LF, "high", "normal").unwrap();
+        assert_eq!(written, "high");
+        assert!(new_content.contains("priority: high"));
+        assert!(!new_content.contains("priority: normal"));
+        // 다른 frontmatter 보존
+        assert!(new_content.contains("status: seed"));
+    }
+
+    #[test]
+    fn replace_priority_mismatch_errors() {
+        let res = replace_priority(SAMPLE_WITH_PRIORITY_LF, "high", "low");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("priority mismatch"));
+    }
+
+    #[test]
+    fn replace_priority_invalid_errors() {
+        let res = replace_priority(SAMPLE_WITH_PRIORITY_LF, "urgent", "normal");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("invalid priority"));
+    }
+
+    #[test]
+    fn replace_priority_no_field_errors() {
+        let no_priority = "---\nid: TASK-WM-007\nstatus: seed\n---\n\n## 본문\n";
+        let res = replace_priority(no_priority, "high", "normal");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("no priority field"));
+    }
+
+    #[test]
+    fn replace_priority_all_three_allowed() {
+        for priority in &["low", "normal", "high"] {
+            let res = replace_priority(SAMPLE_WITH_PRIORITY_LF, priority, "normal");
+            assert!(res.is_ok(), "priority '{}' should be allowed", priority);
+        }
+    }
+
+    #[test]
+    fn replace_priority_crlf_preserved() {
+        let crlf = "---\r\nid: TASK-KL-021\r\npriority: normal\r\n---\r\n\r\n## 본문\r\n";
+        let (new_content, _) = replace_priority(crlf, "high", "normal").unwrap();
+        assert!(new_content.contains("priority: high\r\n"));
     }
 }
