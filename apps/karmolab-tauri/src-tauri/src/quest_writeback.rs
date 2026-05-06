@@ -388,6 +388,95 @@ pub fn delete_quest_check(
     Ok(())
 }
 
+/// 단일 체크박스 라인의 텍스트만 교체. 마커 (`- [ ]` / `- [x]` / `- [X]`) 와 들여쓰기 보존.
+fn rename_check_line(
+    content: &str,
+    line_number: u32,
+    expected_text: &str,
+    new_text: &str,
+) -> Result<String, String> {
+    if line_number == 0 {
+        return Err("line_number must be 1-base".to_string());
+    }
+
+    let trimmed_new = new_text.trim();
+    if trimmed_new.is_empty() {
+        return Err("new text empty".to_string());
+    }
+    if trimmed_new.contains('\n') || trimmed_new.contains('\r') {
+        return Err("new text contains newline".to_string());
+    }
+
+    let mut lines: Vec<String> = content.split('\n').map(|line| line.to_string()).collect();
+    let line_idx = (line_number - 1) as usize;
+    if line_idx >= lines.len() {
+        return Err(format!(
+            "line out of range: {} (file has {} lines)",
+            line_number,
+            lines.len()
+        ));
+    }
+
+    let raw_line = lines[line_idx].clone();
+    let has_cr = raw_line.ends_with('\r');
+    let line_no_cr = if has_cr {
+        &raw_line[..raw_line.len() - 1]
+    } else {
+        &raw_line[..]
+    };
+    let trimmed = line_no_cr.trim_start();
+    let leading_ws_len = line_no_cr.len() - trimmed.len();
+    let leading_ws = &line_no_cr[..leading_ws_len];
+
+    // 마커 보존 — `- [ ]` / `- [x]` / `- [X]` 그대로.
+    let (marker, rest_after_box) = if let Some(rest) = trimmed.strip_prefix("- [ ]") {
+        ("- [ ]", rest)
+    } else if let Some(rest) = trimmed.strip_prefix("- [x]") {
+        ("- [x]", rest)
+    } else if let Some(rest) = trimmed.strip_prefix("- [X]") {
+        ("- [X]", rest)
+    } else {
+        return Err("not a checkbox line".to_string());
+    };
+
+    let actual_text = rest_after_box.trim();
+    if actual_text != expected_text.trim() {
+        return Err(format!(
+            "text mismatch — expected '{}', got '{}'",
+            expected_text.trim(),
+            actual_text
+        ));
+    }
+
+    let cr_suffix = if has_cr { "\r" } else { "" };
+    // 마커 + space + new text — 일관된 단일 space (rest_after_box 의 다중 공백은 정규화).
+    lines[line_idx] = format!("{}{} {}{}", leading_ws, marker, trimmed_new, cr_suffix);
+
+    Ok(lines.join("\n"))
+}
+
+/// QuestLog 위젯에서 호출. 라인 번호 + expected_text 검증 후 텍스트만 new_text 로 교체.
+/// 체크 상태 (마커) 보존.
+#[tauri::command]
+pub fn rename_quest_check(
+    file_path: String,
+    line_number: u32,
+    expected_text: String,
+    new_text: String,
+    memo_path: Option<String>,
+) -> Result<(), String> {
+    let memo = memo_path
+        .map(PathBuf::from)
+        .or_else(default_memo_path)
+        .ok_or_else(|| "memo path could not be resolved".to_string())?;
+
+    let canonical_file = validate_task_path(&file_path, &memo)?;
+    let content = fs::read_to_string(&canonical_file).map_err(|e| format!("read failed: {}", e))?;
+    let new_content = rename_check_line(&content, line_number, &expected_text, &new_text)?;
+    fs::write(&canonical_file, new_content).map_err(|e| format!("write failed: {}", e))?;
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -678,5 +767,85 @@ mod tests {
         let crlf = "---\r\nid: TASK-KL-021\r\npriority: normal\r\n---\r\n\r\n## 본문\r\n";
         let (new_content, _) = replace_priority(crlf, "high", "normal").unwrap();
         assert!(new_content.contains("priority: high\r\n"));
+    }
+
+    // ── KL-023 rename_check_line ─────────────────────────────────────────
+    #[test]
+    fn rename_check_line_lf_unchecked_preserves_marker() {
+        // SAMPLE_LF 라인 8 = "- [ ] 진행중"
+        let new_content = rename_check_line(SAMPLE_LF, 8, "진행중", "수정된 텍스트").unwrap();
+        assert!(new_content.contains("- [ ] 수정된 텍스트"));
+        assert!(!new_content.contains("진행중"));
+        assert!(new_content.contains("- [x] 완료")); // 다른 라인 보존
+    }
+
+    #[test]
+    fn rename_check_line_lf_checked_preserves_marker() {
+        // SAMPLE_LF 라인 7 = "- [x] 완료"
+        let new_content = rename_check_line(SAMPLE_LF, 7, "완료", "완료된 작업").unwrap();
+        assert!(new_content.contains("- [x] 완료된 작업"));
+    }
+
+    #[test]
+    fn rename_check_line_uppercase_x_preserved() {
+        let upper = "- [X] foo\n";
+        let new_content = rename_check_line(upper, 1, "foo", "bar").unwrap();
+        // 대문자 X 보존 (toggle 과 달리 정규화 안 함 — 사용자 의도 존중)
+        assert_eq!(new_content, "- [X] bar\n");
+    }
+
+    #[test]
+    fn rename_check_line_crlf_preserved() {
+        // SAMPLE_CRLF 라인 8 = "- [ ] 진행중" (unchecked) — 마커 보존
+        let new_content = rename_check_line(SAMPLE_CRLF, 8, "진행중", "신규").unwrap();
+        assert!(new_content.contains("- [ ] 신규\r\n"));
+        assert!(new_content.contains("\r\n"));
+    }
+
+    #[test]
+    fn rename_check_line_text_mismatch_errors() {
+        let res = rename_check_line(SAMPLE_LF, 8, "다른", "신규");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("text mismatch"));
+    }
+
+    #[test]
+    fn rename_check_line_empty_new_text_errors() {
+        let res = rename_check_line(SAMPLE_LF, 8, "진행중", "");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("new text empty"));
+    }
+
+    #[test]
+    fn rename_check_line_whitespace_only_new_text_errors() {
+        let res = rename_check_line(SAMPLE_LF, 8, "진행중", "   ");
+        assert!(res.is_err());
+    }
+
+    #[test]
+    fn rename_check_line_newline_in_new_text_errors() {
+        let res = rename_check_line(SAMPLE_LF, 8, "진행중", "한줄\n다른줄");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("newline"));
+    }
+
+    #[test]
+    fn rename_check_line_not_a_checkbox_errors() {
+        let res = rename_check_line(SAMPLE_LF, 5, "anything", "신규");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("not a checkbox"));
+    }
+
+    #[test]
+    fn rename_check_line_preserves_leading_whitespace() {
+        let indented = "  - [ ] 들여쓰기\n";
+        let new_content = rename_check_line(indented, 1, "들여쓰기", "변경됨").unwrap();
+        assert_eq!(new_content, "  - [ ] 변경됨\n");
+    }
+
+    #[test]
+    fn rename_check_line_new_text_trimmed() {
+        let new_content = rename_check_line(SAMPLE_LF, 8, "진행중", "  공백 양쪽  ").unwrap();
+        assert!(new_content.contains("- [ ] 공백 양쪽\n"));
     }
 }

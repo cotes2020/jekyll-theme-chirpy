@@ -661,15 +661,24 @@
   color: var(--ink); letter-spacing: -0.005em;
 }
 .kl-quest-log .check-row.done .check-label { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--line-3); }
-.kl-quest-log .check-row { position: relative; padding-right: 28px; }
-.kl-quest-log .check-delete {
-  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+.kl-quest-log .check-row { position: relative; padding-right: 56px; }
+.kl-quest-log .check-edit, .kl-quest-log .check-delete {
+  position: absolute; top: 50%; transform: translateY(-50%);
   background: none; border: none; cursor: pointer;
-  color: var(--ink-3); font-size: 18px; line-height: 1; padding: 4px 8px;
+  color: var(--ink-3); font-size: 14px; line-height: 1; padding: 4px 6px;
   opacity: 0; transition: opacity 0.12s, color 0.12s;
 }
+.kl-quest-log .check-edit { right: 28px; }
+.kl-quest-log .check-delete { right: 4px; font-size: 18px; }
+.kl-quest-log .check-row:hover .check-edit,
 .kl-quest-log .check-row:hover .check-delete { opacity: 1; }
+.kl-quest-log .check-edit:hover { color: var(--accent); }
 .kl-quest-log .check-delete:hover { color: #d4504e; }
+.kl-quest-log .check-edit-input {
+  font-family: 'Noto Serif KR', serif; font-size: 16px; line-height: 1.45;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--accent);
+  outline: none; padding: 2px 6px; flex: 1; min-width: 0;
+}
 
 .kl-quest-log .add-check input {
   flex: 1; background: var(--paper); border: none; outline: none;
@@ -1184,6 +1193,7 @@
                   <input type="checkbox" ${c.done ? 'checked' : ''} style="display:none;">
                   <span class="check-box"></span>
                   <span class="check-label">${esc(c.t)}</span>
+                  <button class="check-edit" data-check-edit="${i}" title="편집">✎</button>
                   <button class="check-delete" data-check-del="${i}" title="삭제">×</button>
                 </label>
               `).join('')}
@@ -1222,8 +1232,9 @@
       $$('[data-check-idx]').forEach(el => {
         el.addEventListener('click', async (e) => {
           e.preventDefault();
-          // 삭제 버튼 클릭은 별도 핸들러에서 처리 — 토글 안 함
+          // 삭제·편집 버튼 클릭은 별도 핸들러에서 처리 — 토글 안 함
           if ((e.target as HTMLElement).matches('[data-check-del]')) return;
+          if ((e.target as HTMLElement).matches('[data-check-edit]')) return;
 
           const i = Number(el.dataset.checkIdx);
           const check = node.checks[i];
@@ -1291,6 +1302,86 @@
           openDrawer(id);
           renderColumns();
           renderStats();
+        });
+      });
+
+      $$('[data-check-edit]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const i = Number(el.dataset.checkEdit);
+          const check = node.checks[i];
+          const labelEl = el.previousElementSibling as HTMLElement | null;
+          if (!labelEl || !labelEl.classList.contains('check-label')) return;
+
+          // input 으로 swap. 기존 텍스트 selected.
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'check-edit-input';
+          input.value = check.t;
+          labelEl.replaceWith(input);
+          input.focus();
+          input.select();
+
+          const restoreLabel = (newText: string) => {
+            const span = document.createElement('span');
+            span.className = 'check-label';
+            span.textContent = newText;
+            input.replaceWith(span);
+          };
+
+          let committed = false;
+          const commit = async () => {
+            if (committed) return;
+            committed = true;
+            const newText = input.value.trim();
+            if (!newText || newText === check.t) {
+              // 변경 없음 — 원복만
+              restoreLabel(check.t);
+              return;
+            }
+
+            const invoke = (window as any).__TAURI__?.core?.invoke;
+            if (node.filePath && check.lineNumber && typeof invoke === 'function') {
+              try {
+                await invoke('rename_quest_check', {
+                  filePath: node.filePath,
+                  lineNumber: check.lineNumber,
+                  expectedText: check.t,
+                  newText,
+                });
+              } catch (err) {
+                console.error('rename_quest_check 실패', err);
+                alert(`체크박스 텍스트 수정 실패: ${err}\n\n파일이 외부에서 변경됐을 수 있습니다. 위젯을 재실행해 주세요.`);
+                restoreLabel(check.t);
+                return;
+              }
+            }
+
+            check.t = newText;
+            restoreLabel(newText);
+            save();
+            openDrawer(id);
+            renderColumns();
+            renderStats();
+          };
+
+          const cancel = () => {
+            if (committed) return;
+            committed = true;
+            restoreLabel(check.t);
+          };
+
+          input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              void commit();
+            } else if (event.key === 'Escape') {
+              event.preventDefault();
+              cancel();
+            }
+          });
+          input.addEventListener('blur', () => { void commit(); });
         });
       });
 

@@ -12,7 +12,8 @@ use flow_doc::{list_flow_docs, read_flow_doc};
 use karmoddrine_state::get_karmoddrine_state;
 use quest_index::get_quest_tree;
 use quest_writeback::{
-    add_quest_check, delete_quest_check, set_quest_priority, set_quest_status, toggle_quest_check,
+    add_quest_check, delete_quest_check, rename_quest_check, set_quest_priority, set_quest_status,
+    toggle_quest_check,
 };
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
@@ -700,6 +701,7 @@ pub fn run() {
             set_quest_priority,
             add_quest_check,
             delete_quest_check,
+            rename_quest_check,
             list_flow_docs,
             read_flow_doc,
             terminal_start,
