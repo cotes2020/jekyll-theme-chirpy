@@ -1271,10 +1271,28 @@
       const input = root.querySelector('.add-check input') as HTMLInputElement | null;
       const btn = root.querySelector('.add-check button') as HTMLButtonElement | null;
       if (input && btn) {
-        const add = () => {
+        const add = async () => {
           const t = input.value.trim();
           if (!t) return;
-          node.checks.push({ t, done: false });
+
+          // memo 정본 write-back (TASK-KL-019). filePath 가 있는 경우만.
+          const invoke = (window as any).__TAURI__?.core?.invoke;
+          if (node.filePath && typeof invoke === 'function') {
+            try {
+              const newLineNumber = await invoke('add_quest_check', {
+                filePath: node.filePath,
+                text: t,
+              }) as number;
+              node.checks.push({ t, done: false, lineNumber: newLineNumber });
+            } catch (err) {
+              console.error('add_quest_check 실패', err);
+              alert(`체크박스 추가 실패: ${err}`);
+              return;
+            }
+          } else {
+            node.checks.push({ t, done: false });
+          }
+
           input.value = '';
           save();
           openDrawer(id);

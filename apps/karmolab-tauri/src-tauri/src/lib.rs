@@ -11,7 +11,7 @@ use activity::{activity_list_days, activity_query_day, activity_status, Activity
 use flow_doc::{list_flow_docs, read_flow_doc};
 use karmoddrine_state::get_karmoddrine_state;
 use quest_index::get_quest_tree;
-use quest_writeback::{set_quest_status, toggle_quest_check};
+use quest_writeback::{add_quest_check, set_quest_status, toggle_quest_check};
 use local_dev::{
     localdev_deploy, localdev_deploy_stream, localdev_follow_log, localdev_get_repo_root,
     localdev_list_external_pids, localdev_list_tracked, localdev_npm_install,
@@ -695,6 +695,7 @@ pub fn run() {
             get_quest_tree,
             toggle_quest_check,
             set_quest_status,
+            add_quest_check,
             list_flow_docs,
             read_flow_doc,
             terminal_start,

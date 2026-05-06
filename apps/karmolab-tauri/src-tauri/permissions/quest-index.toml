@@ -11,4 +11,5 @@ description = "Allow the QuestLog widget to toggle a single checkbox or change t
 commands.allow = [
   "toggle_quest_check",
   "set_quest_status",
+  "add_quest_check",
 ]

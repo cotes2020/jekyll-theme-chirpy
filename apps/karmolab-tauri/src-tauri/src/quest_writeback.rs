@@ -217,6 +217,63 @@ pub fn set_quest_status(
     Ok(written)
 }
 
+/// 새 체크박스 라인을 파일 끝에 append. CRLF/LF 보존.
+/// 반환: (new_content, new_line_number — 1-base)
+fn append_check(content: &str, text: &str) -> Result<(String, u32), String> {
+    let trimmed_text = text.trim();
+    if trimmed_text.is_empty() {
+        return Err("text empty".to_string());
+    }
+    if trimmed_text.contains('\n') || trimmed_text.contains('\r') {
+        return Err("text contains newline".to_string());
+    }
+
+    // CRLF 감지 — 파일에 \r\n 이 있으면 새 라인도 CRLF 로.
+    let use_crlf = content.contains("\r\n");
+    let line_ending = if use_crlf { "\r\n" } else { "\n" };
+
+    // 파일이 line_ending 으로 끝나지 않으면 먼저 보강. (split 후 join 패턴 — line ending 일관성 유지)
+    let mut new_content = String::from(content);
+    let needs_trailing = !new_content.ends_with(line_ending);
+    if needs_trailing {
+        new_content.push_str(line_ending);
+    }
+    new_content.push_str("- [ ] ");
+    new_content.push_str(trimmed_text);
+    new_content.push_str(line_ending);
+
+    // 새 라인 번호 = 추가 후 전체 라인 수에서 trailing 빈줄 1개 빼기
+    // (split('\n') 결과의 마지막 빈 문자열은 trailing newline 의 결과)
+    let total_lines = new_content.split('\n').count() as u32;
+    let new_line_number = if new_content.ends_with('\n') {
+        total_lines - 1
+    } else {
+        total_lines
+    };
+
+    Ok((new_content, new_line_number))
+}
+
+/// QuestLog 위젯에서 호출. 새 체크박스를 파일 끝에 append.
+/// 반환: 새 라인 번호 (위젯이 leaf check 에 lineNumber 채울 때 사용).
+#[tauri::command]
+pub fn add_quest_check(
+    file_path: String,
+    text: String,
+    memo_path: Option<String>,
+) -> Result<u32, String> {
+    let memo = memo_path
+        .map(PathBuf::from)
+        .or_else(default_memo_path)
+        .ok_or_else(|| "memo path could not be resolved".to_string())?;
+
+    let canonical_file = validate_task_path(&file_path, &memo)?;
+    let content = fs::read_to_string(&canonical_file).map_err(|e| format!("read failed: {}", e))?;
+    let (new_content, new_line_number) = append_check(&content, &text)?;
+    fs::write(&canonical_file, new_content).map_err(|e| format!("write failed: {}", e))?;
+    Ok(new_line_number)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -354,5 +411,56 @@ mod tests {
             let res = replace_status(SAMPLE_WITH_STATUS_LF, status, "seed");
             assert!(res.is_ok(), "status '{}' should be allowed", status);
         }
+    }
+
+    #[test]
+    fn append_check_lf_basic() {
+        // SAMPLE_LF: 8 lines (마지막 라인 = "- [ ] 진행중\n", trailing \n)
+        let (new_content, new_line) = append_check(SAMPLE_LF, "새 항목").unwrap();
+        assert!(new_content.ends_with("- [ ] 새 항목\n"));
+        assert!(new_content.contains("- [ ] 진행중")); // 기존 보존
+        // 새 라인 = 9 (8 lines + 1 추가)
+        assert_eq!(new_line, 9);
+    }
+
+    #[test]
+    fn append_check_crlf_preserved() {
+        let (new_content, _) = append_check(SAMPLE_CRLF, "신규 CRLF").unwrap();
+        assert!(new_content.ends_with("- [ ] 신규 CRLF\r\n"));
+        assert!(new_content.contains("\r\n"));
+    }
+
+    #[test]
+    fn append_check_no_trailing_newline_in_original() {
+        // 파일이 \n 으로 안 끝나는 경우 → 먼저 \n 보강 후 추가
+        let no_trailing = "## 단계\n- [x] 완료";
+        let (new_content, _) = append_check(no_trailing, "추가").unwrap();
+        assert_eq!(new_content, "## 단계\n- [x] 완료\n- [ ] 추가\n");
+    }
+
+    #[test]
+    fn append_check_empty_text_errors() {
+        let res = append_check(SAMPLE_LF, "");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("text empty"));
+    }
+
+    #[test]
+    fn append_check_whitespace_only_errors() {
+        let res = append_check(SAMPLE_LF, "   ");
+        assert!(res.is_err());
+    }
+
+    #[test]
+    fn append_check_text_with_newline_errors() {
+        let res = append_check(SAMPLE_LF, "한줄\n다른줄");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("newline"));
+    }
+
+    #[test]
+    fn append_check_text_trimmed() {
+        let (new_content, _) = append_check(SAMPLE_LF, "  공백 양쪽  ").unwrap();
+        assert!(new_content.contains("- [ ] 공백 양쪽\n"));
     }
 }
