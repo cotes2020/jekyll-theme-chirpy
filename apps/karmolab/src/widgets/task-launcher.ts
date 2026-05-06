@@ -85,7 +85,18 @@
   cursor: pointer; transition: background 0.12s; align-items: center;
 }
 .kl-task-launcher .row:hover { background: var(--bg-2); }
+.kl-task-launcher .row.selected { background: var(--bg-2); border-left: 3px solid var(--accent); padding-left: 11px; }
 .kl-task-launcher .row:last-child { border-bottom: none; }
+.kl-task-launcher .filter-chips {
+  display: flex; gap: 4px; flex-wrap: wrap; align-items: center;
+}
+.kl-task-launcher .chip {
+  background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line-2);
+  border-radius: 3px; padding: 4px 10px; font-size: 11px; font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase; cursor: pointer; transition: background 0.12s, color 0.12s;
+}
+.kl-task-launcher .chip:hover { background: var(--line-2); }
+.kl-task-launcher .chip.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .kl-task-launcher .row .id { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-2); }
 .kl-task-launcher .row .status {
   font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
@@ -142,7 +153,8 @@
     }
   }
 
-  function matches(task: MemoTaskNode, query: string): boolean {
+  function matches(task: MemoTaskNode, query: string, statusFilter: string): boolean {
+    if (statusFilter !== 'all' && task.status !== statusFilter) return false;
     if (!query) return true;
     const q = query.toLowerCase();
     if (task.id.toLowerCase().includes(q)) return true;
@@ -152,25 +164,28 @@
     return false;
   }
 
-  function renderList(listEl: HTMLElement, tasks: MemoTaskNode[], query: string): void {
-    const filtered = tasks.filter((t) => matches(t, query));
-    if (filtered.length === 0) {
-      listEl.innerHTML = `<div class="empty">조건에 맞는 TASK 없음 — 검색어 변경 또는 + 새 TASK</div>`;
-      return;
-    }
-    // 도메인 → status → id 순 정렬
-    const sorted = [...filtered].sort((a, b) => {
+  /// 필터링된 + 정렬된 task 배열 반환 (DOM 변경 없이 데이터만).
+  function applyFilter(tasks: MemoTaskNode[], query: string, statusFilter: string): MemoTaskNode[] {
+    return [...tasks.filter((t) => matches(t, query, statusFilter))].sort((a, b) => {
       const domainA = a.path[0] ?? '';
       const domainB = b.path[0] ?? '';
       if (domainA !== domainB) return domainA.localeCompare(domainB);
       return a.id.localeCompare(b.id);
     });
+  }
+
+  function renderList(listEl: HTMLElement, sorted: MemoTaskNode[], selectedIdx: number): void {
+    if (sorted.length === 0) {
+      listEl.innerHTML = `<div class="empty">조건에 맞는 TASK 없음 — 검색어 변경 또는 + 새 TASK</div>`;
+      return;
+    }
     listEl.innerHTML = sorted
-      .map((t) => {
+      .map((t, i) => {
         const statusColor = STATUS_COLORS[t.status] ?? 'var(--ink-3)';
         const tagsLabel = t.tags.length > 0 ? `[${t.tags.slice(0, 3).join(', ')}${t.tags.length > 3 ? '…' : ''}]` : '';
+        const selectedClass = i === selectedIdx ? ' selected' : '';
         return `
-          <div class="row" data-file="${esc(t.filePath)}">
+          <div class="row${selectedClass}" data-file="${esc(t.filePath)}" data-idx="${i}">
             <span class="id">${esc(t.id)}</span>
             <span class="status" style="color:${statusColor};">${esc(t.status)}</span>
             <span class="title">${esc(t.title)}</span>
@@ -179,6 +194,9 @@
         `;
       })
       .join('');
+    // 선택 행이 보이게 스크롤
+    const selectedEl = listEl.querySelector('.row.selected') as HTMLElement | null;
+    if (selectedEl) selectedEl.scrollIntoView({ block: 'nearest', behavior: 'auto' });
   }
 
   function showCreateModal(root: HTMLElement, onCreated: (newPath: string) => void): void {
@@ -272,11 +290,16 @@
       (container as any).__kl_launcher_unlisten = null;
     }
 
+    const STATUS_FILTERS = ['all', 'seed', 'ready', 'active', 'hold', 'done', 'sealed'];
+
     container.innerHTML = `
       <div class="kl-task-launcher">
         <div class="header">
-          <input type="text" class="search" placeholder="검색 — id / title / tag / status">
+          <input type="text" class="search" placeholder="검색 — id / title / tag / status (↑↓ Enter Esc)">
           <button class="new-btn">+ 새 TASK</button>
+        </div>
+        <div class="filter-chips" data-chips>
+          ${STATUS_FILTERS.map((s) => `<button class="chip${s === 'all' ? ' on' : ''}" data-filter="${s}">${s.toUpperCase()}</button>`).join('')}
         </div>
         <div class="meta" data-meta>로딩 중…</div>
         <div class="list" data-list></div>
@@ -288,8 +311,19 @@
     const listEl = root.querySelector('[data-list]') as HTMLElement;
     const metaEl = root.querySelector('[data-meta]') as HTMLElement;
     const newBtn = root.querySelector('.new-btn') as HTMLButtonElement;
+    const chipsEl = root.querySelector('[data-chips]') as HTMLElement;
 
     let currentTasks: MemoTaskNode[] = [];
+    let filteredTasks: MemoTaskNode[] = [];
+    let selectedIdx = 0;
+    let statusFilter = 'all';
+
+    const refilter = (): void => {
+      filteredTasks = applyFilter(currentTasks, searchEl.value, statusFilter);
+      // 검색·필터 변경 시 첫 행 자동 선택 (범위 밖이면 0)
+      if (selectedIdx >= filteredTasks.length) selectedIdx = 0;
+      renderList(listEl, filteredTasks, selectedIdx);
+    };
 
     const reload = async (): Promise<void> => {
       const tree = await fetchTree();
@@ -300,13 +334,54 @@
       }
       currentTasks = tree.tasks;
       metaEl.textContent = `${currentTasks.length} TASK · memo: ${tree.memoPath}`;
-      renderList(listEl, currentTasks, searchEl.value);
+      refilter();
     };
 
     void reload();
 
     searchEl.addEventListener('input', () => {
-      renderList(listEl, currentTasks, searchEl.value);
+      selectedIdx = 0;
+      refilter();
+    });
+
+    // 키보드 nav — ↑↓ Enter Esc
+    searchEl.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (filteredTasks.length === 0) return;
+        selectedIdx = Math.min(selectedIdx + 1, filteredTasks.length - 1);
+        renderList(listEl, filteredTasks, selectedIdx);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (filteredTasks.length === 0) return;
+        selectedIdx = Math.max(selectedIdx - 1, 0);
+        renderList(listEl, filteredTasks, selectedIdx);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const target = filteredTasks[selectedIdx];
+        if (target) void openInEditor(target.filePath);
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        if (searchEl.value) {
+          searchEl.value = '';
+          selectedIdx = 0;
+          refilter();
+        } else {
+          searchEl.blur();
+        }
+      }
+    });
+
+    chipsEl.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest('[data-filter]') as HTMLButtonElement | null;
+      if (!btn) return;
+      const next = btn.dataset.filter ?? 'all';
+      if (statusFilter === next) return;
+      statusFilter = next;
+      chipsEl.querySelectorAll('.chip').forEach((c) => c.classList.toggle('on', (c as HTMLElement).dataset.filter === next));
+      selectedIdx = 0;
+      refilter();
+      searchEl.focus();
     });
 
     listEl.addEventListener('click', (e) => {
