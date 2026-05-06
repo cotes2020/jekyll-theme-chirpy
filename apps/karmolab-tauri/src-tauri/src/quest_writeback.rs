@@ -133,6 +133,90 @@ pub fn toggle_quest_check(
     Ok(new_done)
 }
 
+/// memo TASK frontmatter status 값 6종 — KL-018 status write-back 화이트리스트.
+const ALLOWED_STATUSES: &[&str] = &["seed", "ready", "active", "hold", "done", "sealed"];
+
+/// frontmatter 안의 `status:` 라인을 새 값으로 교체. expected_status 와 현재 값이 다르면 fail-safe.
+/// CRLF/LF 보존. 반환: (new_content, new_status).
+fn replace_status(
+    content: &str,
+    new_status: &str,
+    expected_status: &str,
+) -> Result<(String, String), String> {
+    if !ALLOWED_STATUSES.contains(&new_status) {
+        return Err(format!("invalid status: {}", new_status));
+    }
+
+    let normalized = content.replace("\r\n", "\n");
+    let after_open = normalized
+        .strip_prefix("---\n")
+        .ok_or_else(|| "no frontmatter".to_string())?;
+    let close_idx = after_open
+        .find("\n---")
+        .ok_or_else(|| "no frontmatter close".to_string())?;
+    let fm_text = &after_open[..close_idx];
+
+    // status 라인 검색 — fm_text 안에서 1회만 등장한다고 가정.
+    let mut status_line_idx_in_fm: Option<usize> = None;
+    let mut current_status: Option<String> = None;
+    for (idx, raw_line) in fm_text.split('\n').enumerate() {
+        let trimmed = raw_line.trim();
+        if let Some((key, value)) = trimmed.split_once(':') {
+            if key.trim() == "status" {
+                status_line_idx_in_fm = Some(idx);
+                current_status = Some(value.trim().to_string());
+                break;
+            }
+        }
+    }
+
+    let status_idx = status_line_idx_in_fm.ok_or_else(|| "no status field".to_string())?;
+    let actual = current_status.unwrap_or_default();
+    if actual != expected_status {
+        return Err(format!(
+            "status mismatch — expected '{}', got '{}'",
+            expected_status, actual
+        ));
+    }
+
+    // 원본 content 의 라인 단위로 교체. CRLF/LF 보존을 위해 `split('\n')` 후 join.
+    let mut lines: Vec<String> = content.split('\n').map(|line| line.to_string()).collect();
+    // 파일 라인 = 1 (open ---) + status_idx (fm 안의 0-base) + 1 (1-base 변환) - 1 (인덱싱) = status_idx + 1
+    // 실제 인덱싱: lines[status_idx + 1] (open --- 뒤 첫 fm 라인 = lines[1])
+    let file_line_idx = status_idx + 1;
+    if file_line_idx >= lines.len() {
+        return Err("internal: status line out of range".to_string());
+    }
+
+    let raw_line = lines[file_line_idx].clone();
+    let has_cr = raw_line.ends_with('\r');
+    let cr_suffix = if has_cr { "\r" } else { "" };
+    lines[file_line_idx] = format!("status: {}{}", new_status, cr_suffix);
+
+    Ok((lines.join("\n"), new_status.to_string()))
+}
+
+/// QuestLog 위젯에서 호출. status 변경 후 파일 write.
+/// 반환: 새로 쓰여진 status 문자열.
+#[tauri::command]
+pub fn set_quest_status(
+    file_path: String,
+    new_status: String,
+    expected_status: String,
+    memo_path: Option<String>,
+) -> Result<String, String> {
+    let memo = memo_path
+        .map(PathBuf::from)
+        .or_else(default_memo_path)
+        .ok_or_else(|| "memo path could not be resolved".to_string())?;
+
+    let canonical_file = validate_task_path(&file_path, &memo)?;
+    let content = fs::read_to_string(&canonical_file).map_err(|e| format!("read failed: {}", e))?;
+    let (new_content, written) = replace_status(&content, &new_status, &expected_status)?;
+    fs::write(&canonical_file, new_content).map_err(|e| format!("write failed: {}", e))?;
+    Ok(written)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -141,6 +225,10 @@ mod tests {
         "---\nid: TASK-WM-007\n---\n\n## 단계\n\n- [x] 완료\n- [ ] 진행중\n";
     const SAMPLE_CRLF: &str =
         "---\r\nid: TASK-WM-007\r\n---\r\n\r\n## 단계\r\n\r\n- [x] 완료\r\n- [ ] 진행중\r\n";
+    const SAMPLE_WITH_STATUS_LF: &str =
+        "---\nid: TASK-KL-018\nstatus: seed\npriority: normal\n---\n\n## 본문\n";
+    const SAMPLE_WITH_STATUS_CRLF: &str =
+        "---\r\nid: TASK-KL-018\r\nstatus: seed\r\npriority: normal\r\n---\r\n\r\n## 본문\r\n";
 
     #[test]
     fn toggle_line_lf_unchecked_to_checked() {
@@ -208,5 +296,63 @@ mod tests {
         let indented = "  - [ ] indent\n";
         let (new_content, _) = toggle_line(indented, 1, "indent").unwrap();
         assert_eq!(new_content, "  - [x] indent\n");
+    }
+
+    #[test]
+    fn replace_status_lf_seed_to_active() {
+        let (new_content, written) =
+            replace_status(SAMPLE_WITH_STATUS_LF, "active", "seed").unwrap();
+        assert_eq!(written, "active");
+        assert!(new_content.contains("status: active"));
+        assert!(!new_content.contains("status: seed"));
+        // 다른 frontmatter 보존
+        assert!(new_content.contains("id: TASK-KL-018"));
+        assert!(new_content.contains("priority: normal"));
+    }
+
+    #[test]
+    fn replace_status_crlf_preserved() {
+        let (new_content, _) =
+            replace_status(SAMPLE_WITH_STATUS_CRLF, "hold", "seed").unwrap();
+        assert!(new_content.contains("status: hold\r\n"));
+        assert!(new_content.contains("\r\n"));
+    }
+
+    #[test]
+    fn replace_status_mismatch_errors() {
+        let res = replace_status(SAMPLE_WITH_STATUS_LF, "active", "active");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("status mismatch"));
+    }
+
+    #[test]
+    fn replace_status_invalid_status_errors() {
+        let res = replace_status(SAMPLE_WITH_STATUS_LF, "exploding", "seed");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("invalid status"));
+    }
+
+    #[test]
+    fn replace_status_no_status_field_errors() {
+        let no_status = "---\nid: TASK-WM-007\n---\n\n## 본문\n";
+        let res = replace_status(no_status, "active", "seed");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("no status field"));
+    }
+
+    #[test]
+    fn replace_status_no_frontmatter_errors() {
+        let no_fm = "## 본문\n그냥 본문\n";
+        let res = replace_status(no_fm, "active", "seed");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("no frontmatter"));
+    }
+
+    #[test]
+    fn replace_status_all_six_allowed() {
+        for status in &["seed", "ready", "active", "hold", "done", "sealed"] {
+            let res = replace_status(SAMPLE_WITH_STATUS_LF, status, "seed");
+            assert!(res.is_ok(), "status '{}' should be allowed", status);
+        }
     }
 }

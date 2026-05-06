@@ -103,11 +103,21 @@
     return 'seed';
   }
 
+  /// 위젯 → memo status 역방향 매핑 (KL-018 status write-back).
+  /// `ready` 는 위젯 표현 불가 → 위젯 'seed' 클릭은 memo 'seed' 로 통일 (lossy).
+  function mapWidgetStatusToMemo(widgetStatus: string): string {
+    if (widgetStatus === 'fire') return 'active';
+    if (widgetStatus === 'sleep') return 'hold';
+    if (widgetStatus === 'sealed') return 'done';
+    return 'seed';
+  }
+
   function taskNodeToLeaf(t: MemoTaskNode): any {
     return {
       id: t.id,
       title: t.title,
       status: mapMemoStatus(t.status),
+      memoStatus: t.status, // KL-018 — write-back 시 expected_status 로 사용
       filePath: t.filePath,
       checks: t.checks.map((c) => ({ t: c.text, done: c.done, lineNumber: c.lineNumber })),
     };
@@ -1225,9 +1235,31 @@
       });
 
       $$('[data-set-status]').forEach(el => {
-        el.addEventListener('click', () => {
+        el.addEventListener('click', async () => {
           const s = el.dataset.setStatus!;
-          node.status = node.status === s ? 'seed' : s;
+          const newWidgetStatus = node.status === s ? 'seed' : s;
+
+          // memo 정본 status write-back (TASK-KL-018). filePath/memoStatus 가 있는 경우만.
+          const invoke = (window as any).__TAURI__?.core?.invoke;
+          if (node.filePath && node.memoStatus && typeof invoke === 'function') {
+            const newMemoStatus = mapWidgetStatusToMemo(newWidgetStatus);
+            try {
+              const written = await invoke('set_quest_status', {
+                filePath: node.filePath,
+                newStatus: newMemoStatus,
+                expectedStatus: node.memoStatus,
+              }) as string;
+              node.memoStatus = written;
+              node.status = mapMemoStatus(written);
+            } catch (err) {
+              console.error('set_quest_status 실패', err);
+              alert(`상태 쓰기 실패: ${err}\n\n파일이 외부에서 변경됐을 수 있습니다. 위젯을 재실행해 주세요.`);
+              return;
+            }
+          } else {
+            node.status = newWidgetStatus;
+          }
+
           if (node.status === 'fire') Mdd.linePreset('tool_run', { msg: '불 붙었어요 🔥' });
           save();
           openDrawer(id);

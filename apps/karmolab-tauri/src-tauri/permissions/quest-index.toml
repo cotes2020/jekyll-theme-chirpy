@@ -7,7 +7,8 @@ commands.allow = [
 
 [[permission]]
 identifier = "allow-quest-writeback"
-description = "Allow the QuestLog widget to toggle a single checkbox in a memo TASK file (write-back). Path whitelisted to {memo}/(wm|projects/karmolab|projects/yawnbot|life|hobby|learning)/tasks/TASK-*.md."
+description = "Allow the QuestLog widget to toggle a single checkbox or change the frontmatter status in a memo TASK file (write-back). Path whitelisted to {memo}/(wm|projects/karmolab|projects/yawnbot|life|hobby|learning)/tasks/TASK-*.md."
 commands.allow = [
   "toggle_quest_check",
+  "set_quest_status",
 ]
