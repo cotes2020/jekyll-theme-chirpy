@@ -3,6 +3,7 @@ mod flow_doc;
 mod karmoddrine_state;
 mod local_dev;
 mod quest_index;
+mod quest_watcher;
 mod quest_writeback;
 mod repo_file;
 mod terminal;
@@ -719,6 +720,10 @@ pub fn run() {
         }))
         .setup(|app| {
             let handle = app.handle().clone();
+
+            // QuestLog 파일 watcher (KL-024) — memo TASK 디렉토리 6개 변경 시
+            // 'quest-tree-changed' 이벤트 emit. 위젯이 listen 해서 자동 새로고침.
+            quest_watcher::start(handle.clone());
 
             // 카모랩 재시작 시 detached 봇 PID 복원 (영속 파일 → 살아있는 것만 in-memory map).
             // OS 호출이 들어가니까 background thread로 — 메인 윈도우 표시를 막지 않음.

@@ -74,7 +74,7 @@ pub struct QuestTree {
     pub errors: Vec<TaskError>,
 }
 
-const DOMAIN_DIRS: &[&str] = &[
+pub const DOMAIN_DIRS: &[&str] = &[
     "wm/tasks",
     "projects/karmolab/tasks",
     "projects/yawnbot/tasks",

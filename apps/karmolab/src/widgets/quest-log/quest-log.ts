@@ -774,43 +774,71 @@
       container.innerHTML = `<div class="kl-quest-log"><div style="padding:48px 24px; text-align:center; color:#888;">Quest Log 는 KarmoLab 데스크톱 앱 (Tauri) 에서만 동작합니다.<br/>memo TASK 파일을 런타임에 읽어 트리로 표시합니다.</div></div>`;
       return;
     }
-    container.innerHTML = `
-      <div class="kl-quest-log">
-        <div class="wrap">
-          <header class="hd">
-            <h1 class="serif">QUEST LOG <em>— in progress</em></h1>
-          </header>
 
-          <div class="stats" data-kl-ql="stats"></div>
+    // KL-024 — 이전 마운트의 file-watcher unlisten 이 있으면 정리.
+    const prevUnlisten = (container as any).__kl_quest_unlisten as (() => void) | undefined;
+    if (typeof prevUnlisten === 'function') {
+      try { prevUnlisten(); } catch (e) { console.error('previous unlisten 실패', e); }
+      (container as any).__kl_quest_unlisten = null;
+    }
 
-          <div data-kl-ql="featured-wrap"></div>
-          <div class="sub-grid" data-kl-ql="sub-columns"></div>
+    const renderOnce = (): void => {
+      container.innerHTML = `
+        <div class="kl-quest-log">
+          <div class="wrap">
+            <header class="hd">
+              <h1 class="serif">QUEST LOG <em>— in progress</em></h1>
+            </header>
 
-        </div>
+            <div class="stats" data-kl-ql="stats"></div>
 
-        <div class="drawer-backdrop" data-kl-ql="backdrop"></div>
-        <aside class="drawer" data-kl-ql="drawer">
-          <div class="drawer-head">
-            <div class="crumb" data-kl-ql="crumb">KMLB-QST / <b>—</b></div>
-            <button class="drawer-close" data-kl-ql="drawer-close" aria-label="Close">✕</button>
+            <div data-kl-ql="featured-wrap"></div>
+            <div class="sub-grid" data-kl-ql="sub-columns"></div>
+
           </div>
-          <div class="drawer-body" data-kl-ql="drawer-body"></div>
-        </aside>
-      </div>
-    `;
 
-    const root = container.querySelector('.kl-quest-log') as HTMLElement;
+          <div class="drawer-backdrop" data-kl-ql="backdrop"></div>
+          <aside class="drawer" data-kl-ql="drawer">
+            <div class="drawer-head">
+              <div class="crumb" data-kl-ql="crumb">KMLB-QST / <b>—</b></div>
+              <button class="drawer-close" data-kl-ql="drawer-close" aria-label="Close">✕</button>
+            </div>
+            <div class="drawer-body" data-kl-ql="drawer-body"></div>
+          </aside>
+        </div>
+      `;
 
-    // 비동기 invoke + 변환 + run
-    void (async () => {
-      const tree = await fetchMemoTree();
-      if (!tree) {
-        root.innerHTML = `<div style="padding:48px 24px; text-align:center; color:#c08080;">데이터 로딩 실패. F12 콘솔에 get_quest_tree 에러 확인.</div>`;
-        return;
-      }
-      const src = transformMemoToOld(tree);
-      runQuestLog(root, src);
-    })();
+      const root = container.querySelector('.kl-quest-log') as HTMLElement;
+
+      // 비동기 invoke + 변환 + run
+      void (async () => {
+        const tree = await fetchMemoTree();
+        if (!tree) {
+          root.innerHTML = `<div style="padding:48px 24px; text-align:center; color:#c08080;">데이터 로딩 실패. F12 콘솔에 get_quest_tree 에러 확인.</div>`;
+          return;
+        }
+        const src = transformMemoToOld(tree);
+        runQuestLog(root, src);
+      })();
+    };
+
+    renderOnce();
+
+    // KL-024 — Tauri file watcher 가 emit 하는 'quest-tree-changed' 이벤트 listen.
+    // 외부 에디터에서 memo TASK 파일이 변경되면 자동 새로고침.
+    const tauriEvent = (window as any).__TAURI__?.event;
+    if (tauriEvent && typeof tauriEvent.listen === 'function') {
+      void (async () => {
+        try {
+          const unlisten = await tauriEvent.listen('quest-tree-changed', () => {
+            renderOnce();
+          });
+          (container as any).__kl_quest_unlisten = unlisten;
+        } catch (err) {
+          console.error('quest-tree-changed listen 실패', err);
+        }
+      })();
+    }
   }
 
   // ── runQuestLog: 원본 IIFE 로직 (document → root, ID → data-kl-ql) ──────
