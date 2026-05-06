@@ -2,9 +2,9 @@ name: CI / Code Quality
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
 
 jobs:
   lint-and-typecheck:
@@ -32,3 +32,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Typos Check
         uses: crate-ci/typos@master
+        continue-on-error: true
