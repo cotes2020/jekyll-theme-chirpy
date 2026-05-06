@@ -56,6 +56,9 @@ pub struct TaskNode {
     pub title: String,
     pub file_path: String,
     pub checks: Vec<CheckItem>,
+    /// 파일 mtime (UNIX seconds). KL-027 launcher 정렬 사용.
+    /// metadata read 실패 시 0 (가장 오래된 것으로 정렬됨).
+    pub modified_unix: u64,
 }
 
 #[derive(Serialize, Debug, Clone)]
@@ -207,7 +210,13 @@ fn extract_title(file_name: &str) -> String {
 }
 
 /// 단일 TASK 파일 → TaskNode. parse 실패는 Err — 호출자가 errors[] 에 모음.
-fn parse_one_task(file_name: &str, rel_path: &str, content: &str) -> Result<TaskNode, String> {
+/// `modified_unix` 는 호출자가 metadata 에서 미리 read 해 넘긴다 (read 실패 시 0).
+fn parse_one_task(
+    file_name: &str,
+    rel_path: &str,
+    content: &str,
+    modified_unix: u64,
+) -> Result<TaskNode, String> {
     let (fm, body, body_start_line) =
         parse_frontmatter(content).ok_or_else(|| "frontmatter 없음".to_string())?;
 
@@ -257,6 +266,7 @@ fn parse_one_task(file_name: &str, rel_path: &str, content: &str) -> Result<Task
         title,
         file_path: rel_path.to_string(),
         checks,
+        modified_unix,
     })
 }
 
@@ -319,7 +329,15 @@ pub fn get_quest_tree(memo_path: Option<String>) -> Result<QuestTree, String> {
                 }
             };
 
-            match parse_one_task(&file_name, &rel_path, &content) {
+            // 파일 mtime — KL-027 launcher 정렬 사용. 실패 시 0.
+            let modified_unix = fs::metadata(&path)
+                .ok()
+                .and_then(|m| m.modified().ok())
+                .and_then(|st| st.duration_since(std::time::UNIX_EPOCH).ok())
+                .map(|d| d.as_secs())
+                .unwrap_or(0);
+
+            match parse_one_task(&file_name, &rel_path, &content, modified_unix) {
                 Ok(task) => tasks.push(task),
                 Err(reason) => errors.push(TaskError {
                     file_path: rel_path,
@@ -433,25 +451,26 @@ mod tests {
 
     #[test]
     fn parse_one_task_full_path() {
-        let task = parse_one_task("TASK-WM-007-나무벌목-컨텐츠.md", "wm/tasks/TASK-WM-007-나무벌목-컨텐츠.md", SAMPLE).unwrap();
+        let task = parse_one_task("TASK-WM-007-나무벌목-컨텐츠.md", "wm/tasks/TASK-WM-007-나무벌목-컨텐츠.md", SAMPLE, 1234567890).unwrap();
         assert_eq!(task.id, "TASK-WM-007");
         assert_eq!(task.status, "ready");
         assert_eq!(task.path, vec!["wm".to_string()]);
         assert_eq!(task.tags, vec!["content".to_string(), "lumber".to_string()]);
         assert!(task.parent.is_none());
         assert_eq!(task.checks.len(), 4);
+        assert_eq!(task.modified_unix, 1234567890);
     }
 
     #[test]
     fn parse_one_task_missing_id_errors() {
-        let res = parse_one_task("TASK-WM-001-x.md", "wm/tasks/TASK-WM-001-x.md", SAMPLE_NO_ID);
+        let res = parse_one_task("TASK-WM-001-x.md", "wm/tasks/TASK-WM-001-x.md", SAMPLE_NO_ID, 0);
         assert!(res.is_err());
         assert!(res.unwrap_err().contains("id"));
     }
 
     #[test]
     fn parse_one_task_no_frontmatter_errors() {
-        let res = parse_one_task("TASK-WM-001-x.md", "wm/tasks/TASK-WM-001-x.md", SAMPLE_NO_FM);
+        let res = parse_one_task("TASK-WM-001-x.md", "wm/tasks/TASK-WM-001-x.md", SAMPLE_NO_FM, 0);
         assert!(res.is_err());
         assert!(res.unwrap_err().contains("frontmatter"));
     }
@@ -459,7 +478,7 @@ mod tests {
     #[test]
     fn parse_one_task_with_parent_chain() {
         let content = "---\nid: TASK-WM-027-A\nstatus: done\npriority: normal\npath: [wm, voxel]\nparent: TASK-WM-027\n---\n\n본문\n";
-        let task = parse_one_task("TASK-WM-027-A-블록.md", "wm/tasks/TASK-WM-027-A-블록.md", content).unwrap();
+        let task = parse_one_task("TASK-WM-027-A-블록.md", "wm/tasks/TASK-WM-027-A-블록.md", content, 0).unwrap();
         assert_eq!(task.parent.as_deref(), Some("TASK-WM-027"));
         assert_eq!(task.path, vec!["wm".to_string(), "voxel".to_string()]);
     }

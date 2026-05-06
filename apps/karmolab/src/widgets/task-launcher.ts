@@ -23,6 +23,7 @@
     tags: string[];
     title: string;
     filePath: string;
+    modifiedUnix: number;
   }
   interface MemoQuestTree {
     tasks: MemoTaskNode[];
@@ -77,6 +78,11 @@
   padding: 10px 16px; font-weight: 600; cursor: pointer; font-size: 13px;
 }
 .kl-task-launcher .new-btn:hover { background: #e6b85a; }
+.kl-task-launcher .sort-mode {
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line-2);
+  padding: 9px 10px; border-radius: 4px; font-size: 13px; cursor: pointer; outline: none;
+}
+.kl-task-launcher .sort-mode:focus { border-color: var(--accent); }
 .kl-task-launcher .meta { font-size: 12px; color: var(--ink-3); }
 .kl-task-launcher .list { flex: 1; overflow-y: auto; border: 1px solid var(--line); border-radius: 4px; }
 .kl-task-launcher .row {
@@ -165,13 +171,25 @@
   }
 
   /// 필터링된 + 정렬된 task 배열 반환 (DOM 변경 없이 데이터만).
-  function applyFilter(tasks: MemoTaskNode[], query: string, statusFilter: string): MemoTaskNode[] {
-    return [...tasks.filter((t) => matches(t, query, statusFilter))].sort((a, b) => {
-      const domainA = a.path[0] ?? '';
-      const domainB = b.path[0] ?? '';
-      if (domainA !== domainB) return domainA.localeCompare(domainB);
-      return a.id.localeCompare(b.id);
-    });
+  /// sortMode: 'mtime' (최근 수정 desc) 또는 'id' (도메인 → id asc).
+  function applyFilter(
+    tasks: MemoTaskNode[],
+    query: string,
+    statusFilter: string,
+    sortMode: string,
+  ): MemoTaskNode[] {
+    const filtered = [...tasks.filter((t) => matches(t, query, statusFilter))];
+    if (sortMode === 'mtime') {
+      filtered.sort((a, b) => (b.modifiedUnix ?? 0) - (a.modifiedUnix ?? 0));
+    } else {
+      filtered.sort((a, b) => {
+        const domainA = a.path[0] ?? '';
+        const domainB = b.path[0] ?? '';
+        if (domainA !== domainB) return domainA.localeCompare(domainB);
+        return a.id.localeCompare(b.id);
+      });
+    }
+    return filtered;
   }
 
   function renderList(listEl: HTMLElement, sorted: MemoTaskNode[], selectedIdx: number): void {
@@ -296,6 +314,10 @@
       <div class="kl-task-launcher">
         <div class="header">
           <input type="text" class="search" placeholder="검색 — id / title / tag / status (↑↓ Enter Esc)">
+          <select class="sort-mode" data-sort title="정렬 모드">
+            <option value="mtime">최근 수정 ▾</option>
+            <option value="id">ID</option>
+          </select>
           <button class="new-btn">+ 새 TASK</button>
         </div>
         <div class="filter-chips" data-chips>
@@ -312,14 +334,16 @@
     const metaEl = root.querySelector('[data-meta]') as HTMLElement;
     const newBtn = root.querySelector('.new-btn') as HTMLButtonElement;
     const chipsEl = root.querySelector('[data-chips]') as HTMLElement;
+    const sortEl = root.querySelector('[data-sort]') as HTMLSelectElement;
 
     let currentTasks: MemoTaskNode[] = [];
     let filteredTasks: MemoTaskNode[] = [];
     let selectedIdx = 0;
     let statusFilter = 'all';
+    let sortMode = 'mtime';
 
     const refilter = (): void => {
-      filteredTasks = applyFilter(currentTasks, searchEl.value, statusFilter);
+      filteredTasks = applyFilter(currentTasks, searchEl.value, statusFilter, sortMode);
       // 검색·필터 변경 시 첫 행 자동 선택 (범위 밖이면 0)
       if (selectedIdx >= filteredTasks.length) selectedIdx = 0;
       renderList(listEl, filteredTasks, selectedIdx);
@@ -379,6 +403,13 @@
       if (statusFilter === next) return;
       statusFilter = next;
       chipsEl.querySelectorAll('.chip').forEach((c) => c.classList.toggle('on', (c as HTMLElement).dataset.filter === next));
+      selectedIdx = 0;
+      refilter();
+      searchEl.focus();
+    });
+
+    sortEl.addEventListener('change', () => {
+      sortMode = sortEl.value;
       selectedIdx = 0;
       refilter();
       searchEl.focus();
