@@ -1,5 +1,4 @@
 mod activity;
-mod flow_doc;
 mod karmoddrine_state;
 mod local_dev;
 mod quest_index;
@@ -7,7 +6,6 @@ mod repo_file;
 mod terminal;
 
 use activity::{activity_list_days, activity_query_day, activity_status, ActivityState};
-use flow_doc::{list_flow_docs, read_flow_doc};
 use karmoddrine_state::get_karmoddrine_state;
 use quest_index::get_quest_tree;
 use local_dev::{
@@ -691,8 +689,6 @@ pub fn run() {
             activity_status,
             get_karmoddrine_state,
             get_quest_tree,
-            list_flow_docs,
-            read_flow_doc,
             terminal_start,
             terminal_send_stdin,
             terminal_stop,
