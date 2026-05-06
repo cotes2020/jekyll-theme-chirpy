@@ -1,0 +1,7 @@
+[[permission]]
+identifier = "allow-task-launcher"
+description = "Allow the TASK launcher widget to open existing TASK files in the OS default editor and create new TASK files (next ID auto + frontmatter skeleton). File paths whitelisted to {memo}/(wm|projects/karmolab|projects/yawnbot|life|hobby|learning)/tasks/TASK-*.md."
+commands.allow = [
+  "open_task_in_editor",
+  "create_task",
+]

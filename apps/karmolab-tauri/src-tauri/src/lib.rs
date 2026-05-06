@@ -3,6 +3,7 @@ mod flow_doc;
 mod karmoddrine_state;
 mod local_dev;
 mod quest_index;
+mod quest_launcher;
 mod quest_watcher;
 mod quest_writeback;
 mod repo_file;
@@ -12,6 +13,7 @@ use activity::{activity_list_days, activity_query_day, activity_status, Activity
 use flow_doc::{list_flow_docs, read_flow_doc};
 use karmoddrine_state::get_karmoddrine_state;
 use quest_index::get_quest_tree;
+use quest_launcher::{create_task, open_task_in_editor};
 use quest_writeback::{
     add_quest_check, delete_quest_check, rename_quest_check, set_quest_priority, set_quest_status,
     toggle_quest_check,
@@ -703,6 +705,8 @@ pub fn run() {
             add_quest_check,
             delete_quest_check,
             rename_quest_check,
+            open_task_in_editor,
+            create_task,
             list_flow_docs,
             read_flow_doc,
             terminal_start,

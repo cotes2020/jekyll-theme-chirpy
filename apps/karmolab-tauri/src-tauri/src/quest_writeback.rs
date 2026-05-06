@@ -27,7 +27,8 @@ fn default_memo_path() -> Option<PathBuf> {
 }
 
 /// file_path 가 허용된 memo 도메인 안의 TASK-*.md 인지 검증. canonicalize 후 PathBuf 반환.
-fn validate_task_path(file_path: &str, memo_path: &Path) -> Result<PathBuf, String> {
+/// `pub(crate)` — quest_launcher 도 같은 화이트리스트 사용.
+pub(crate) fn validate_task_path(file_path: &str, memo_path: &Path) -> Result<PathBuf, String> {
     let canonical_file = PathBuf::from(file_path)
         .canonicalize()
         .map_err(|e| format!("file not found: {}", e))?;

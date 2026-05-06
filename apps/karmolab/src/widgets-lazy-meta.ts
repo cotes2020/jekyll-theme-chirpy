@@ -142,6 +142,16 @@ window.KARMOLAB_LAZY_META = [
     lazyScriptPaths: ['quest-log/quest-log']
   },
   {
+    id: 'task-launcher',
+    title: 'TASK Launcher',
+    category: 'desktop',
+    desc: 'memo TASK 파일 flat 검색 + 외부 에디터 즉시 오픈 + 새 TASK 즉석 생성 (id 자동 발급, frontmatter skeleton)',
+    layout: 'full',
+    noHero: true,
+    icon: '<circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    lazyScriptPaths: ['task-launcher']
+  },
+  {
     id: 'karmoddrine-dashboard',
     title: 'karmoddrine 대시보드',
     category: 'desktop',

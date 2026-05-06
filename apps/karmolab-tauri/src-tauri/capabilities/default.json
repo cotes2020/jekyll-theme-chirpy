@@ -27,6 +27,7 @@
     "allow-karmoddrine-state",
     "allow-quest-index",
     "allow-quest-writeback",
+    "allow-task-launcher",
     "allow-flow-doc",
     "allow-terminal",
     "updater:default"
