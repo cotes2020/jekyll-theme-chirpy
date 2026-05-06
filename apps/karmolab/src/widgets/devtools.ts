@@ -64,7 +64,7 @@
     });
     levelSel.addEventListener('change', () => {
       localStorage.setItem(notifyLevelKey, levelSel.value);
-      if (typeof Toolbox !== 'undefined') Toolbox.showToast('알림 설정이 저장되었습니다.', 'success');
+      if (typeof Toolbox !== 'undefined') Toolbox.showToast('알림 설정이 저장되었습니다.', 'success', undefined);
     });
     pLevel.appendChild(levelSel);
 
