@@ -117,9 +117,9 @@ export class MemoryService {
     const linkPath = path.join(agentPath, 'CLAUDE.md');
     if (fs.existsSync(linkPath)) return;
 
-    const sourcePath = path.join(this.memoRepoPath, 'CLAUDE-karmoddrine.md');
+    const sourcePath = path.join(this.memoRepoPath, 'UMBRELLA.md');
     if (!fs.existsSync(sourcePath)) {
-      console.warn('[Memory] CLAUDE-karmoddrine.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀');
+      console.warn('[Memory] UMBRELLA.md 없음 — 에이전트 컨텍스트 파일 생성 건너뜀');
       return;
     }
 

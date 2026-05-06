@@ -310,7 +310,7 @@ test: add or update tests
 7. **Apps in `apps/` are independent projects** with their own `package.json` and build processes. They are excluded from the main Jekyll build.
 8. **Commit messages must follow Conventional Commits** — the pre-commit hook (`husky`) will reject non-conforming messages.
 9. **The `production` branch** is for releases only; normal development goes to `master`/`main` — but `master`/`main` 도 PR 거쳐 머지 (`§ Git Workflow` 참조). 직접 push 는 1~3줄 chore 등 예외만.
-10. **공통 작업 원칙 (레거시 금지 / 마이그레이션 자기소멸 / 커밋 전 확인 / 커밋 전 테스트 / 한 commit 한 주제 / 푸시는 지시 시에만)** — 단일 출처: `karmoddrine/memo/CLAUDE-karmoddrine.md` § 공통 작업 원칙 — 모든 레포. 본 레포에도 동일 적용. 충돌 시 K 가 우선.
+10. **공통 작업 원칙 (레거시 금지 / 마이그레이션 자기소멸 / 커밋 전 확인 / 커밋 전 테스트 / 한 commit 한 주제 / 푸시는 지시 시에만)** — 단일 출처: `karmoddrine/memo/UMBRELLA.md` § 공통 작업 원칙 — 모든 레포. 본 레포에도 동일 적용. 충돌 시 K 가 우선.
 11. **Vertex AI is preferred over AI Studio** — the user has Vertex AI credits. When both surfaces support the same capability (text generation, embeddings), default to Vertex. Use `KARMOLAB_AI_SURFACE=vertex` as the standard. AI Studio is a fallback only. Do not propose AI Studio as the primary option. When adding new AI features, implement both surfaces via `karmolab-ai` and respect the surface env var.
 12. **새 로컬 서버·dev 프로세스는 KarmoLab Server Monitor (`devProfiles`) 등록 우선** — 사용자는 `apps/karmolab-tauri` 데스크톱 앱을 상시 띄워두고 그 안의 **서버 모니터** 위젯에서 시작/종료/로그 스트림/deploy 를 한다. 새 봇·로컬 서버·dev runner 를 추가할 때는 **반드시 `apps/karmolab/data/servermonitor-config.json` 의 `devProfiles` (그리고 같은 `id` 로 `localMonitors`) 에 등록을 함께 제안**한다. 사용자가 외울 터미널 명령이 늘어나면 안 됨.
     - 허용 `program`: `npm`, `npx`, `bundle`, `ruby`, `node`. 그 외 바이너리 (`cloudflared`, `python`, `cargo` 등) 는 `package.json` script 로 한 번 감싼 뒤 등록.
