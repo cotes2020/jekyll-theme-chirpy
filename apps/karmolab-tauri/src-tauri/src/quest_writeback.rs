@@ -274,6 +274,74 @@ pub fn add_quest_check(
     Ok(new_line_number)
 }
 
+/// 단일 체크박스 라인을 제거. expected_text 검증으로 race-safe.
+/// CRLF/LF 라인 엔딩 보존 — 라인 자체를 통째로 제거하므로 join 시 자동 보존.
+fn remove_check_line(
+    content: &str,
+    line_number: u32,
+    expected_text: &str,
+) -> Result<String, String> {
+    if line_number == 0 {
+        return Err("line_number must be 1-base".to_string());
+    }
+
+    let mut lines: Vec<String> = content.split('\n').map(|line| line.to_string()).collect();
+    let line_idx = (line_number - 1) as usize;
+    if line_idx >= lines.len() {
+        return Err(format!(
+            "line out of range: {} (file has {} lines)",
+            line_number,
+            lines.len()
+        ));
+    }
+
+    let raw_line = &lines[line_idx];
+    let line_no_cr = raw_line.trim_end_matches('\r');
+    let trimmed = line_no_cr.trim_start();
+
+    let rest_after_box = if let Some(rest) = trimmed.strip_prefix("- [ ]") {
+        rest
+    } else if let Some(rest) = trimmed.strip_prefix("- [x]") {
+        rest
+    } else if let Some(rest) = trimmed.strip_prefix("- [X]") {
+        rest
+    } else {
+        return Err("not a checkbox line".to_string());
+    };
+
+    let actual_text = rest_after_box.trim();
+    if actual_text != expected_text.trim() {
+        return Err(format!(
+            "text mismatch — expected '{}', got '{}'",
+            expected_text.trim(),
+            actual_text
+        ));
+    }
+
+    lines.remove(line_idx);
+    Ok(lines.join("\n"))
+}
+
+/// QuestLog 위젯에서 호출. 라인 번호 + 텍스트 검증 후 해당 체크박스 라인 제거.
+#[tauri::command]
+pub fn delete_quest_check(
+    file_path: String,
+    line_number: u32,
+    expected_text: String,
+    memo_path: Option<String>,
+) -> Result<(), String> {
+    let memo = memo_path
+        .map(PathBuf::from)
+        .or_else(default_memo_path)
+        .ok_or_else(|| "memo path could not be resolved".to_string())?;
+
+    let canonical_file = validate_task_path(&file_path, &memo)?;
+    let content = fs::read_to_string(&canonical_file).map_err(|e| format!("read failed: {}", e))?;
+    let new_content = remove_check_line(&content, line_number, &expected_text)?;
+    fs::write(&canonical_file, new_content).map_err(|e| format!("write failed: {}", e))?;
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -462,5 +530,55 @@ mod tests {
     fn append_check_text_trimmed() {
         let (new_content, _) = append_check(SAMPLE_LF, "  공백 양쪽  ").unwrap();
         assert!(new_content.contains("- [ ] 공백 양쪽\n"));
+    }
+
+    #[test]
+    fn remove_check_line_lf_basic() {
+        // SAMPLE_LF 라인 8 = "- [ ] 진행중", 라인 7 = "- [x] 완료"
+        let new_content = remove_check_line(SAMPLE_LF, 8, "진행중").unwrap();
+        assert!(!new_content.contains("진행중"));
+        assert!(new_content.contains("- [x] 완료")); // 다른 라인 보존
+    }
+
+    #[test]
+    fn remove_check_line_crlf_preserved() {
+        let new_content = remove_check_line(SAMPLE_CRLF, 8, "진행중").unwrap();
+        assert!(!new_content.contains("진행중"));
+        assert!(new_content.contains("\r\n")); // CRLF 보존
+    }
+
+    #[test]
+    fn remove_check_line_uppercase_x_works() {
+        let upper = "- [X] foo\n";
+        let new_content = remove_check_line(upper, 1, "foo").unwrap();
+        assert_eq!(new_content, "");
+    }
+
+    #[test]
+    fn remove_check_line_text_mismatch_errors() {
+        let res = remove_check_line(SAMPLE_LF, 8, "다른 텍스트");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("text mismatch"));
+    }
+
+    #[test]
+    fn remove_check_line_not_a_checkbox_errors() {
+        // 라인 5 = "## 단계"
+        let res = remove_check_line(SAMPLE_LF, 5, "anything");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("not a checkbox line"));
+    }
+
+    #[test]
+    fn remove_check_line_out_of_range_errors() {
+        let res = remove_check_line(SAMPLE_LF, 999, "anything");
+        assert!(res.is_err());
+        assert!(res.unwrap_err().contains("out of range"));
+    }
+
+    #[test]
+    fn remove_check_line_zero_errors() {
+        let res = remove_check_line(SAMPLE_LF, 0, "anything");
+        assert!(res.is_err());
     }
 }

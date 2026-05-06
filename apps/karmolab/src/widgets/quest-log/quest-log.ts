@@ -660,6 +660,15 @@
   color: var(--ink); letter-spacing: -0.005em;
 }
 .kl-quest-log .check-row.done .check-label { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--line-3); }
+.kl-quest-log .check-row { position: relative; padding-right: 28px; }
+.kl-quest-log .check-delete {
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-3); font-size: 18px; line-height: 1; padding: 4px 8px;
+  opacity: 0; transition: opacity 0.12s, color 0.12s;
+}
+.kl-quest-log .check-row:hover .check-delete { opacity: 1; }
+.kl-quest-log .check-delete:hover { color: #d4504e; }
 
 .kl-quest-log .add-check input {
   flex: 1; background: var(--paper); border: none; outline: none;
@@ -1166,6 +1175,7 @@
                   <input type="checkbox" ${c.done ? 'checked' : ''} style="display:none;">
                   <span class="check-box"></span>
                   <span class="check-label">${esc(c.t)}</span>
+                  <button class="check-delete" data-check-del="${i}" title="삭제">×</button>
                 </label>
               `).join('')}
             </div>
@@ -1203,6 +1213,9 @@
       $$('[data-check-idx]').forEach(el => {
         el.addEventListener('click', async (e) => {
           e.preventDefault();
+          // 삭제 버튼 클릭은 별도 핸들러에서 처리 — 토글 안 함
+          if ((e.target as HTMLElement).matches('[data-check-del]')) return;
+
           const i = Number(el.dataset.checkIdx);
           const check = node.checks[i];
 
@@ -1227,6 +1240,44 @@
           }
 
           if (check.done) Mdd.linePreset('success', { msg: '하나 끝!' });
+          save();
+          openDrawer(id);
+          renderColumns();
+          renderStats();
+        });
+      });
+
+      $$('[data-check-del]').forEach(el => {
+        el.addEventListener('click', async (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const i = Number(el.dataset.checkDel);
+          const check = node.checks[i];
+          if (!confirm(`정말 삭제할까요?\n\n"${check.t}"`)) return;
+
+          const invoke = (window as any).__TAURI__?.core?.invoke;
+          if (node.filePath && check.lineNumber && typeof invoke === 'function') {
+            try {
+              await invoke('delete_quest_check', {
+                filePath: node.filePath,
+                lineNumber: check.lineNumber,
+                expectedText: check.t,
+              });
+            } catch (err) {
+              console.error('delete_quest_check 실패', err);
+              alert(`체크박스 삭제 실패: ${err}\n\n파일이 외부에서 변경됐을 수 있습니다. 위젯을 재실행해 주세요.`);
+              return;
+            }
+          }
+
+          // 파일에서 라인 1개 사라지면 그 뒤 체크박스들의 절대 라인 번호가 1씩 당겨짐.
+          // in-memory 도 동기화 안 하면 다음 토글에서 text mismatch 로 실패.
+          for (let j = i + 1; j < node.checks.length; j++) {
+            if (typeof node.checks[j].lineNumber === 'number') {
+              node.checks[j].lineNumber -= 1;
+            }
+          }
+          node.checks.splice(i, 1);
           save();
           openDrawer(id);
           renderColumns();

@@ -12,4 +12,5 @@ commands.allow = [
   "toggle_quest_check",
   "set_quest_status",
   "add_quest_check",
+  "delete_quest_check",
 ]
