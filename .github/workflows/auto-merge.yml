@@ -13,7 +13,10 @@ jobs:
       contents: write
     steps:
       - name: Enable auto-merge
+        # PAT 사용 (GITHUB_TOKEN 아님) — GitHub 재귀 방지로 GITHUB_TOKEN 머지는
+        # master push event trigger 차단 → pages-deploy.yml / verify.yml 자동 미작동.
+        # 정본: memo/projects/karmolab/tasks/TASK-KL-029-pat-auto-merge.md.
         run: gh pr merge --auto --squash "${{ github.event.pull_request.number }}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_FOR_AUTO_MERGE }}
           GH_REPO: ${{ github.repository }}
