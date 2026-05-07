@@ -1,0 +1,8 @@
+{
+  "name": "karmoddrine-monorepo",
+  "private": true,
+  "description": "monorepo orchestrator — sub apps 의 verify 합성 잡 단일 진실. 실제 chirpy theme npm root 는 apps/blog/.",
+  "scripts": {
+    "verify": "node scripts/verify.mjs"
+  }
+}

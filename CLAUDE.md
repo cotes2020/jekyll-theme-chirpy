@@ -193,12 +193,11 @@ cd apps/karmolab && npm ci && npm run build
 
 | Workflow | Trigger | Description |
 |---|---|---|
+| `verify.yml` | Push to `main`/`master`, PR | **Master invariant 단일 게이트** — `npm run verify` (apps/karmolab build + packages/karmolab-ai build + apps/karmolab-tauri cargo check) + typos. apps/blog lint 은 자동화 빚 (config 누락) — follow-up. branch protection 의 required status check 로 `verify (master invariant)` 등록 (사용자 액션). 폐기 흡수: `ai-quality.yml`, `code-quality.yml`, `karmolab-ts.yml`, `karmolab-tauri.yml`. |
 | `pages-deploy.yml` | Push to `main`/`master`, manual | Full site build and deploy to GitHub Pages |
-| `lint-js.yml` | Changes to `_javascript/`, `*.config.js`, `tsconfig.json` | ESLint |
-| `lint-scss.yml` | Changes to `_sass/` | Stylelint |
-| `karmolab-ts.yml` | Changes to `apps/karmolab/` | TypeScript typecheck |
-| `karmolab-tauri.yml` | Changes to `apps/karmolab-tauri/` | Tauri build/test |
-| `ai-quality.yml` | Changes to KarmoLab AI surfaces (`gemini.ts`, chatbot, `packages/karmolab-ai/`) | AI-related typecheck/build quality gate |
+| `karmolab-tauri-release.yml` | Tag/manual | Tauri auto-update release pipeline |
+| `auto-merge.yml` | PR | Auto-merge after checks pass |
+| `claude.yml` | issue_comment | Claude Code Action |
 
 ### Deployment Pipeline Steps
 
@@ -230,13 +229,9 @@ cd apps/karmolab && npm ci && npm run build
 `.github/pull_request_template.md` 의도 채움 → push → CodeRabbit 코멘트 대응 →
 완료 시 PR 리뷰 후 `master` 머지.
 
-### 예외 — `master` 직접 push 허용
+### Master 직접 push — 차단됨
 
-- 1~3줄 chore (오타 fix / 주석 갱신 / 단일 const 값 변경)
-- README · CLAUDE.md 자체 minor 보강
-- 빌드·CI 응급 fix (production deploy 깨진 상황)
-
-판단 기준: *코드 동작 변경 0* + *CodeRabbit 리뷰 가치 0*. 애매하면 PR 분기.
+Branch Protection (아래 § 참조) 으로 PR 강제 + Include administrators + `verify (master invariant)` required. **모든 master 변경은 PR 통해야 함** — 1~3줄 chore / 응급 fix 도 예외 X. 응급 시 PR 만들고 review 0 + verify 통과 즉시 머지 (review 강제 0). 본 단락의 옛 「예외」 룰은 자동화 강제로 폐기됨.
 
 ### Commit Messages
 
@@ -262,8 +257,36 @@ test: add or update tests
 - Require a pull request before merging
 - Require status checks to pass (Code Quality CI 통과 필수)
 - Restrict who can push to matching branches (직접 push 차단)
+- Include administrators (예외 없음)
 
 이 설정 안 되어있으면 본 § 룰은 *수동 약속* 만 됨.
+
+---
+
+## master invariant — Machine-checkable Contract
+
+master 브랜치는 항상 다음을 만족:
+
+- `apps/karmolab` 의 build (typecheck 포함) 통과 (필수)
+- `packages/karmolab-ai` 의 build 통과 (필수)
+- `apps/karmolab-tauri/src-tauri` 의 `cargo check --all-targets` 통과 (필수)
+- `apps/blog` 의 lint:js + lint:scss — *자동화 빚*: chirpy monorepo 분리 시 `apps/blog/eslint.config.js` + `.stylelintrc.json` 누락. follow-up TASK 로 chirpy upstream config 흡수 후 verify 에 재추가.
+- typos check (`crate-ci/typos`) — `continue-on-error: true` (기존 code-quality.yml 행동 보존). *자동화 빚*: master 데이터 약어 false-positive 다수 (anime/tierlist json). follow-up TASK: `_typos.toml` 등록 + 진짜 typo fix → strict 게이트.
+
+검증의 단일 진실: **`npm run verify`** (`scripts/verify.mjs`). 모든 게이트가 이 한 명령만 호출.
+
+3중 게이트:
+
+1. **로컬 pre-push** (`.husky/pre-push`) — 자동 호출. 우회: `git push --no-verify` (응급용).
+2. **CI** (`.github/workflows/verify.yml`) — `npm run verify` 호출. 아래 § Branch Protection 의 required status check 로 `verify (master invariant)` 등록 필요 (사용자 액션).
+3. **Branch Protection** (사용자 GitHub UI) — § Branch Protection 참조.
+
+추가 hook:
+- **`.husky/commit-msg`** — Conventional Commits (commitlint via `apps/blog`) 강제. `apps/blog/node_modules/@commitlint` 미설치 시 silent skip — 사용자가 `cd apps/blog && npm ci` 해야 활성.
+
+위반 발견 시 SLO: 1시간 내 revert. 책임자 = 마지막 머지자.
+
+신규 자동화 룰 추가 시 분류 정합: `memo/CLAUDE-karmoddrine.md` § "자동화 가능 룰은 코드로" 참고. 텍스트 룰만 두면 클로드는 잊는다.
 
 ---
 
@@ -271,12 +294,12 @@ test: add or update tests
 
 | Tool | Config File | Scope |
 |---|---|---|
-| ESLint | `eslint.config.js` | `_javascript/`, `*.config.js` files |
-| Stylelint | `.stylelintrc.json` | `_sass/**/*.scss` |
+| ESLint | `apps/blog/eslint.config.js` | `apps/blog/_javascript/`, `*.config.js` files |
+| Stylelint | `apps/blog/.stylelintrc.json` | `apps/blog/_sass/**/*.scss` |
 | Markdownlint | `.markdownlint.json` | Markdown posts |
 | EditorConfig | `.editorconfig` | All files |
-| TypeScript | `tsconfig.json` | `_javascript/`, apps |
-| Commitlint | `package.json` (`commitlint` key) | Git commit messages |
+| TypeScript | `apps/karmolab/tsconfig.json`, `apps/blog/tsconfig.json` | sub-apps 각자 |
+| Commitlint | `apps/blog/package.json` (`commitlint` key) — `.husky/commit-msg` 가 호출 | Git commit messages |
 
 ### Editor Defaults (`.editorconfig`)
 

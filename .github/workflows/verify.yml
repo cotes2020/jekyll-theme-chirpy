@@ -1,0 +1,73 @@
+name: verify
+
+# master invariant 단일 게이트.
+# 모든 검증 = `npm run verify` (scripts/verify.mjs) + typos step.
+# branch protection 의 required status check 로 `verify (master invariant)` 등록 필요 (사용자 GitHub UI 액션).
+#
+# 폐기 흡수:
+#   - ai-quality.yml (karmolab-ai-surface, shared-ai-package-build → verify build)
+#   - code-quality.yml (typos → 본 워크플로 step, 빈 lint 잡 → verify lint)
+#   - karmolab-ts.yml (typecheck → verify build 가 포함)
+#   - karmolab-tauri.yml (cargo check → verify cargo check)
+#
+# 정본 룰: memo/UMBRELLA.md § 자동화 가능 룰은 코드로.
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  verify:
+    name: verify (master invariant)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            apps/karmolab/package-lock.json
+            packages/karmolab-ai/package-lock.json
+            apps/blog/package-lock.json
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Linux deps (Tauri / WebKit)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+
+      - name: Cache Cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            apps/karmolab-tauri/src-tauri/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('apps/karmolab-tauri/src-tauri/Cargo.lock') }}
+          restore-keys: cargo-${{ runner.os }}-
+
+      - name: Install karmolab deps
+        run: cd apps/karmolab && npm ci
+
+      - name: Install karmolab-ai deps
+        run: cd packages/karmolab-ai && npm ci
+
+      - name: Install blog deps
+        run: cd apps/blog && npm ci
+
+      - name: Run verify (master invariant)
+        run: npm run verify
+
+      - name: Typos check
+        uses: crate-ci/typos@master
+        # 자동화 빚: master 에 데이터 약어 false-positive 다수 (anime/tierlist json: nd/iit/SOOP/anc 등).
+        # 기존 code-quality.yml 도 continue-on-error: true 였음 — 본 verify 에서 같은 행동 보존.
+        # follow-up TASK: _typos.toml false-positive 등록 + 진짜 typo (Seconde/Ue/pn 등) fix → 본 옵션 제거.
+        continue-on-error: true

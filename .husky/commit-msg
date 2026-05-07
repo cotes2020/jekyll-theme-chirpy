@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# commit-msg: Conventional Commits 강제 (commitlint via apps/blog).
+# CLAUDE.md § Commit Messages 의 룰을 *실제로* 강제하는 hook.
+# 응급 우회: git commit --no-verify
+
+if [ ! -d "apps/blog/node_modules/@commitlint" ]; then
+  # commitlint 미설치 — silent skip (사용자가 cd apps/blog && npm ci 안 한 환경)
+  exit 0
+fi
+
+# git 이 hook 에 넘기는 $1 은 보통 ".git/COMMIT_EDITMSG" (root-relative).
+# cd apps/blog 후에도 같은 파일 읽도록 절대경로화.
+case "$1" in
+  /*) MSG_FILE="$1" ;;
+  *) MSG_FILE="$(pwd)/$1" ;;
+esac
+
+cd apps/blog && npx --no-install commitlint --edit "$MSG_FILE"

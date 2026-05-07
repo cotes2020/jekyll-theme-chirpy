@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+# pre-push: master invariant 게이트 — root verify 합성 잡 호출 (단일 진실).
+# 사고 예방: 2026-05-06 master 에 devtools.ts TS2554 직접 push 사고 재발 방지.
+# 응급 우회: git push --no-verify
+
+if [ ! -f "package.json" ]; then
+  exit 0  # root package.json 없음 — 게이트 비활성 (또는 워크트리/clone 직후)
+fi
+
+if ! npm run verify; then
+  echo ""
+  echo "[pre-push] X verify 실패 - push 중단"
+  echo "[pre-push]   고친 뒤 재푸시. 응급 우회: git push --no-verify"
+  exit 1
+fi
+
+exit 0
