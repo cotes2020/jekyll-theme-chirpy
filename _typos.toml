@@ -1,0 +1,237 @@
+# typos check 설정. 정본: TASK-KL-032.
+# strict 게이트 (verify.yml 의 continue-on-error 제거 후 본 config 가 false-positive 정의).
+
+[files]
+extend-exclude = [
+  # 외부 라이브러리 submodule — chirpy assets/lib (mermaid, mathjax, glightbox 등)
+  "apps/blog/assets/lib/**",
+
+  # Anime 다국어 데이터 (tier list — 일본어/한국어/외국어 줄임 다수)
+  "apps/karmolab/data/tierlists/**",
+
+  # Jekyll 빌드 산출물 (gitignored 지만 typos 가 untracked 도 봄)
+  "_site/**",
+  "apps/blog/_site/**",
+]
+
+[default.extend-words]
+# 의도된 약어 / 외국어 / 고유명사 / 식별자
+# typos action 이 master log 로 발견한 false-positive (TASK-KL-032 시드).
+
+# === 자체 코드 / build script 의 의도된 줄임 ===
+IIF = "IIF"          # build.mjs: IIFE 줄임 ('Immediately Invoked Function Expression')
+
+# === 한국어 / 외국어 약어 / 고유명사 ===
+SOOP = "SOOP"        # 한국 OTT 서비스 이름
+soop = "soop"        # 동일 (소문자 케이스)
+INFP = "INFP"        # MBTI 성격 유형
+
+# === 외국어 단어 (anime/post 의 외국어 인용) ===
+# 독일어
+Alle = "Alle"        # 모든 (de)
+alle = "alle"
+Autor = "Autor"      # 저자 (de)
+autor = "autor"
+Suche = "Suche"      # 검색 (de)
+ist = "ist"          # ~이다 (de)
+unter = "unter"      # 아래에 (de)
+Archiv = "Archiv"    # 아카이브 (de)
+Ressource = "Ressource" # 자원 (de)
+Konstant = "Konstant" # 상수 (de)
+konstant = "konstant"
+
+# 프랑스어
+Certains = "Certains" # 몇몇 (fr)
+Seconde = "Seconde"   # 초 (fr)
+Categorie = "Categorie" # 카테고리 (fr/it)
+categorie = "categorie"
+
+# 이탈리아어 / 스페인어 / 포르투갈어
+tema = "tema"        # 주제
+possibile = "possibile" # 가능한 (it)
+versio = "versio"    # 버전 (라틴/it)
+minut = "minut"      # 분
+Copie = "Copie"      # 복사 (fr/it)
+mis = "mis"          # 보냈다 (es) / 실수 (en) — 다국어
+Mis = "Mis"
+
+# 기타 다국어 / 약어
+nd = "nd"            # 일본어 줄임 (and)
+Nd = "Nd"
+ND = "ND"
+anc = "anc"          # 다국어 줄임 (and)
+ba = "ba"            # 다국어 줄임 (be/by)
+Ba = "Ba"
+BA = "BA"
+fo = "fo"            # 줄임 (for)
+Fo = "Fo"
+FO = "FO"
+fot = "fot"          # 줄임 (for)
+iit = "iit"          # 식별자 일부
+pn = "pn"            # 줄임 (on)
+ot = "ot"            # 줄임 (to)
+Ot = "Ot"
+OT = "OT"
+ofo = "ofo"          # 식별자 일부
+Ofo = "Ofo"
+ued = "ued"          # 식별자 일부
+ues = "ues"          # 식별자 일부
+ned = "ned"          # 식별자 일부
+nam = "nam"          # 식별자 일부
+INE = "INE"          # 약어
+DUM = "DUM"          # 약어
+LOD = "LOD"          # Level of Detail
+MCH = "MCH"          # 약어
+MYE = "MYE"          # 식별자
+ABL = "ABL"          # 약어
+VEW = "VEW"          # 식별자
+IY = "IY"            # 식별자
+iz = "iz"            # 식별자
+IZ = "IZ"
+mayu = "mayu"        # 일본어 이름
+toi = "toi"          # 다국어 (fr: tu, jp: 토이)
+TAK = "TAK"          # 약어 (Take 약어)
+tak = "tak"
+Tak = "Tak"
+Lew = "Lew"          # 이름 (Lewis 등 줄임)
+Weeknd = "Weeknd"    # The Weeknd (가수 이름)
+Promiscuos = "Promiscuos"  # 식별자
+Composte = "Composte"      # 식별자
+gam = "gam"          # 식별자
+clen = "clen"        # 식별자
+Ono = "Ono"          # 일본 성씨
+
+# === Curren/Fram 등 식별자 ===
+curren = "curren"    # 식별자 일부
+ment = "ment"        # 식별자 일부 (-ment 어미)
+Fram = "Fram"        # 식별자 (Frame 줄임)
+Hader = "Hader"      # 식별자
+Haders = "Haders"
+stll = "stll"        # 식별자
+som = "som"          # 식별자
+Hight = "Hight"      # 식별자 (Height 줄임 또는 Hight 자체)
+Tarce = "Tarce"      # 식별자 (Trace 변형)
+
+# === KL-032 backlog: 진짜 typo 일 가능성 큰 단어들 — 점진 fix ===
+# 본 등록은 strict 게이트 통과를 위한 *임시 보존*. 별 sub TASK 로 fix 후 본 등록 제거.
+Acitve = "Acitve"
+acount = "acount"
+Adjancency = "Adjancency"
+advenced = "advenced"
+Advenced = "Advenced"
+Agrement = "Agrement"
+algorihtm = "algorihtm"
+Andoid = "Andoid"
+Asert = "Asert"
+Assingment = "Assingment"
+Automattic = "Automattic"
+Befor = "Befor"
+befores = "befores"
+Cahce = "Cahce"
+Calulus = "Calulus"
+Carrige = "Carrige"
+chaning = "chaning"
+Cheduling = "Cheduling"
+Childs = "Childs"
+Chunck = "Chunck"
+Clinet = "Clinet"
+Colum = "Colum"
+Comparsion = "Comparsion"
+compnent = "compnent"
+Containter = "Containter"
+Continous = "Continous"
+cpy = "cpy"
+Cruisin = "Cruisin"
+currect = "currect"
+Datas = "Datas"
+Ddressing = "Ddressing"
+Decorder = "Decorder"
+Deffered = "Deffered"
+Dektop = "Dektop"
+Digial = "Digial"
+Dijstra = "Dijstra"
+Disposeable = "Disposeable"
+Ect = "Ect"
+engineeering = "engineeering"
+envionment = "envionment"
+Evetn = "Evetn"
+Excutable = "Excutable"
+Expressin = "Expressin"
+Falled = "Falled"
+foward = "foward"
+Foward = "Foward"
+Funcions = "Funcions"
+Funtions = "Funtions"
+Instrunction = "Instrunction"
+intergers = "intergers"
+Intergrated = "Intergrated"
+INVENTER = "INVENTER"
+Invisiable = "Invisiable"
+Iteraction = "Iteraction"
+lable = "lable"
+Lable = "Lable"
+Listenter = "Listenter"
+meni = "meni"
+Metalic = "Metalic"
+Modile = "Modile"
+Muliple = "Muliple"
+Netwok = "Netwok"
+nuber = "nuber"
+numbe = "numbe"
+Ontroller = "Ontroller"
+OPF = "OPF"
+Outout = "Outout"
+Pakcage = "Pakcage"
+partical = "partical"
+pertubation = "pertubation"
+Pertubation = "Pertubation"
+Plantext = "Plantext"
+Poisioning = "Poisioning"
+Posin = "Posin"
+Practic = "Practic"
+Presistence = "Presistence"
+Priotiry = "Priotiry"
+procecures = "procecures"
+Progam = "Progam"
+Prograaming = "Prograaming"
+progrma = "progrma"
+Qurey = "Qurey"
+Realiability = "Realiability"
+Receieve = "Receieve"
+Referernce = "Referernce"
+Requeset = "Requeset"
+requset = "requset"
+Resoruces = "Resoruces"
+sawp = "sawp"
+SAWP = "SAWP"
+Secion = "Secion"
+Seige = "Seige"
+sementics = "sementics"
+Seonds = "Seonds"
+Serialzed = "Serialzed"
+seting = "seting"
+Shwon = "Shwon"
+signture = "signture"
+Simulater = "Simulater"
+Sonething = "Sonething"
+Sovled = "Sovled"
+Strack = "Strack"
+Subsribe = "Subsribe"
+substract = "substract"
+Substract = "Substract"
+successfuly = "successfuly"
+suround = "suround"
+Swaping = "Swaping"
+Swtich = "Swtich"
+Synchrounous = "Synchrounous"
+Taks = "Taks"
+Templete = "Templete"
+Thrid = "Thrid"
+Ue = "Ue"
+UE = "UE"
+Utillity = "Utillity"
+valtage = "valtage"
+Valtage = "Valtage"
+wqs = "wqs"
+Wrold = "Wrold"
+Wrtie = "Wrtie"

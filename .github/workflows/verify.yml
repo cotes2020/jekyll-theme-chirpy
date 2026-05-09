@@ -66,8 +66,6 @@ jobs:
         run: npm run verify
 
       - name: Typos check
+        # strict 게이트 (TASK-KL-032). _typos.toml 이 false-positive 정의 + 데이터/외부 라이브러리 exclude.
+        # 진짜 typo 일 가능성 큰 단어들도 임시 false-positive 등록 — 점진 fix 는 KL-032 backlog.
         uses: crate-ci/typos@master
-        # 자동화 빚: master 에 데이터 약어 false-positive 다수 (anime/tierlist json: nd/iit/SOOP/anc 등).
-        # 기존 code-quality.yml 도 continue-on-error: true 였음 — 본 verify 에서 같은 행동 보존.
-        # follow-up TASK: _typos.toml false-positive 등록 + 진짜 typo (Seconde/Ue/pn 등) fix → 본 옵션 제거.
-        continue-on-error: true

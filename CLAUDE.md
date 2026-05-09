@@ -271,7 +271,7 @@ master 브랜치는 항상 다음을 만족:
 - `packages/karmolab-ai` 의 build 통과 (필수)
 - `apps/karmolab-tauri/src-tauri` 의 `cargo check --all-targets` 통과 (필수)
 - `apps/blog` 의 lint:js + lint:scss — *자동화 빚*: chirpy monorepo 분리 시 `apps/blog/eslint.config.js` + `.stylelintrc.json` 누락. follow-up TASK 로 chirpy upstream config 흡수 후 verify 에 재추가.
-- typos check (`crate-ci/typos`) — `continue-on-error: true` (기존 code-quality.yml 행동 보존). *자동화 빚*: master 데이터 약어 false-positive 다수 (anime/tierlist json). follow-up TASK: `_typos.toml` 등록 + 진짜 typo fix → strict 게이트.
+- typos check (`crate-ci/typos`) — strict 게이트 (KL-032). `_typos.toml` 이 false-positive 정의 + 데이터/외부 라이브러리 exclude. 진짜 typo 일 가능성 큰 단어들은 임시 false-positive 등록 — 점진 fix 는 KL-032 backlog.
 
 검증의 단일 진실: **`npm run verify`** (`scripts/verify.mjs`). 모든 게이트가 이 한 명령만 호출.
 
