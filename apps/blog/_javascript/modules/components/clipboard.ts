@@ -126,7 +126,7 @@ function setLinkClipboard(): void {
     }
 
     // Copy URL to clipboard
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    void navigator.clipboard.writeText(window.location.href).then(() => {
       const defaultTitle = target.getAttribute(ATTR_TITLE_ORIGIN);
       const succeedTitle = target.getAttribute(ATTR_TITLE_SUCCEED);
 

@@ -63,21 +63,6 @@ window.KARMOLAB_LAZY_META = [
     ]
   },
   {
-    id: 'worldwiki',
-    title: '세계관 위키',
-    category: 'lab',
-    desc: '세계관(캐릭터·아티팩트) 문서를 앱 안에서 봅니다 (개발 중)',
-    layout: 'full',
-    icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
-    lazyScriptPaths: [
-      'world/world',
-      'world/parse-md',
-      'world/load-characters-from-wiki',
-      'chatbot/markdown',
-      'worldwiki/worldwiki'
-    ]
-  },
-  {
     id: 'imageedit',
     title: '이미지 편집',
     category: 'tool',
@@ -160,16 +145,6 @@ window.KARMOLAB_LAZY_META = [
     noHero: true,
     icon: '<rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>',
     lazyScriptPaths: ['karmoddrine-dashboard/karmoddrine-dashboard']
-  },
-  {
-    id: 'karmoddrine-flows',
-    title: 'karmoddrine 흐름',
-    category: 'desktop',
-    desc: 'memo/flows/<slug>.md 흐름 문서 viewer — 마크다운 + Mermaid (Tauri 전용, 빌드 0)',
-    layout: 'full',
-    noHero: true,
-    icon: '<path d="M3 6h18M3 12h12M3 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M16 14l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-    lazyScriptPaths: ['karmoddrine-flows/karmoddrine-flows']
   },
   {
     id: 'terminal',

@@ -17,4 +17,4 @@ export const ClipboardJS = new Proxy(
       return Reflect.construct(Ctor, args, Ctor);
     }
   }
-) as ClipboardJSGlobal;
+);

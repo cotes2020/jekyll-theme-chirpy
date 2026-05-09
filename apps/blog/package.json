@@ -19,7 +19,7 @@
     "build:css": "node purgecss.js",
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
-    "lint:js": "eslint _javascript rollup.config.js purgecss.js eslint.config.js",
+    "lint:js": "eslint \"_javascript/**/*.{js,ts}\" rollup.config.js purgecss.js eslint.config.js",
     "lint:scss": "stylelint _sass/**/*.scss",
     "lint:fix:scss": "npm run lint:scss -- --fix",
     "test": "npm run lint:js && npm run lint:scss",
@@ -63,6 +63,7 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "tslib": "^2.8.1",
     "typescript": "^5.8.2",
+    "typescript-eslint": "^8.59.2",
     "yaml": "^2.8.3"
   },
   "prettier": {

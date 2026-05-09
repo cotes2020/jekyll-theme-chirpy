@@ -41,10 +41,15 @@ if (existsSync('apps/karmolab-tauri/src-tauri/Cargo.toml')) {
   run('apps/karmolab-tauri cargo check', 'apps/karmolab-tauri/src-tauri', 'cargo check --all-targets');
 }
 
-// 4. apps/blog lint — 자동화 빚, 본 verify 에서 제외.
-//    chirpy monorepo 분리 시 `apps/blog/eslint.config.js` + `.stylelintrc.json` 둘 다 누락.
-//    lint script 자체가 config 못 찾아 fail. follow-up TASK: chirpy upstream lint config 흡수 →
-//    apps/blog 에 추가 → verify 에 재흡수.
+// 4. apps/blog lint — chirpy v7.5.0 의 root config (eslint.config.js + .stylelintrc.json)
+//    흡수 후 복원 (TASK-KL-031). node_modules 없으면 skip — pre-push 가 매번 npm ci 강요하면
+//    개발 흐름 깨짐. CI 는 verify.yml 의 'Install blog deps' step 이 보장.
+if (existsSync('apps/blog/node_modules')) {
+  run('apps/blog lint:js', 'apps/blog', 'npm run lint:js');
+  run('apps/blog lint:scss', 'apps/blog', 'npm run lint:scss');
+} else {
+  console.log('[verify] ! apps/blog/node_modules 없음 — lint skip (정합: cd apps/blog && npm ci)');
+}
 
 // 5. typos — CI 의 verify.yml 별 step (crate-ci/typos action) 이 책임. local 은 binary 미설치 가정 → skip.
 

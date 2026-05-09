@@ -102,7 +102,6 @@ const entryPoints = [
   'src/widgets/planner/planner.ts',
   'src/widgets/quest-log/quest-log.ts',
   'src/widgets/karmoddrine-dashboard/karmoddrine-dashboard.ts',
-  'src/widgets/karmoddrine-flows/karmoddrine-flows.ts',
   'src/widgets/terminal/terminal.ts',
   'src/widgets/tierlist/dialogs.ts',
   'src/widgets/tierlist/dnd.ts',
@@ -114,7 +113,6 @@ const entryPoints = [
   'src/widgets/tierlist/styles.ts',
   'src/widgets/tierlist/tierlist.ts',
   'src/widgets/tierlist/ui.ts',
-  'src/widgets/worldwiki/worldwiki.ts',
   'src/widgets-manifest.ts',
   'src/widgets-lazy-meta.ts',
   'src/widgets-loader.ts'

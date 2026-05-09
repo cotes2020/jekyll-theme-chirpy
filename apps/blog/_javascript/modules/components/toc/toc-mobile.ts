@@ -96,7 +96,7 @@ export class TocMobile {
       return;
     }
 
-    const rect = ($popup as HTMLElement).getBoundingClientRect();
+    const rect = ($popup).getBoundingClientRect();
     if (
       event.clientX < rect.left ||
       event.clientX > rect.right ||
@@ -116,8 +116,8 @@ export class TocMobile {
 
     if (!$popup || !$btnClose) return;
 
-    $popup.onclick = (e) => this.clickBackdrop(e as MouseEvent);
-    ($btnClose as HTMLElement).onclick = () => this.hidePopup();
+    $popup.onclick = (e) => this.clickBackdrop(e);
+    ($btnClose).onclick = () => this.hidePopup();
     ($popup as HTMLDialogElement).oncancel = (e) => {
       e.preventDefault();
       this.hidePopup();
