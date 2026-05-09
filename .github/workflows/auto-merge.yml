@@ -12,8 +12,22 @@ jobs:
       pull-requests: write
       contents: write
     steps:
+      - name: Check PAT availability
+        # PAT_FOR_AUTO_MERGE 누락 시 silent 실패 방지 — visible ::error:: 로 전환.
+        # 누락 원인: 신규 등록 누락 / fine-grained PAT 1년 만료. 정본 TASK-KL-029.
+        env:
+          PAT: ${{ secrets.PAT_FOR_AUTO_MERGE }}
+        run: |
+          if [ -z "$PAT" ]; then
+            echo "::error::secret PAT_FOR_AUTO_MERGE 누락 — auto-merge 차단됨. memo/projects/karmolab/tasks/TASK-KL-029-pat-auto-merge.md § 사용자 액션 참고."
+            exit 1
+          fi
+
       - name: Enable auto-merge
+        # PAT 사용 (GITHUB_TOKEN 아님) — GitHub 재귀 방지로 GITHUB_TOKEN 머지는
+        # master push event trigger 차단 → pages-deploy.yml / verify.yml 자동 미작동.
+        # 정본: memo/projects/karmolab/tasks/TASK-KL-029-pat-auto-merge.md.
         run: gh pr merge --auto --squash "${{ github.event.pull_request.number }}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_FOR_AUTO_MERGE }}
           GH_REPO: ${{ github.repository }}
