@@ -1,0 +1,55 @@
+# 매일 KST 09:00 (UTC 00:00) 에 daily stat 자동 수집.
+# - 24h commits / open & closed PRs
+#
+# 결과: GITHUB_STEP_SUMMARY (Actions web 한 눈).
+#
+# 정본: TASK-KAR-001 Phase 0 sub-A5 (memo).
+# 룰: 외부 action 사용 X — 공식 actions/checkout 만.
+# 비용: GitHub Actions 무료 분량 (public repo). claude API 토큰 0.
+
+name: daily-stat
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # UTC 00:00 = KST 09:00
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: Asia/Seoul
+        run: |
+          set -euo pipefail
+          DATE=$(date +%Y-%m-%d)
+          SINCE_ISO=$(date -u -d '24 hours ago' --iso-8601=seconds)
+
+          {
+            echo "# Mascari4615.github.io daily stat — $DATE (KST)"
+            echo
+            echo "## Commits (last 24h)"
+            COMMIT_COUNT=$(git log --since="$SINCE_ISO" --oneline | wc -l | tr -d ' ')
+            echo "- count: **$COMMIT_COUNT**"
+            if [ "$COMMIT_COUNT" -gt 0 ]; then
+              echo
+              git log --since="$SINCE_ISO" --pretty='- \`%h\` %s _(%an)_'
+            fi
+            echo
+
+            echo "## Pull Requests"
+            OPEN_PR=$(gh pr list --state open --json number -q 'length' || echo 0)
+            CLOSED_PR=$(gh pr list --state closed --json closedAt,number -q "[.[] | select(.closedAt > \"$SINCE_ISO\")] | length" || echo 0)
+            echo "- open: **$OPEN_PR**"
+            echo "- closed last 24h: **$CLOSED_PR**"
+          } >> "$GITHUB_STEP_SUMMARY"
