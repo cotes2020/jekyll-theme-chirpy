@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Pull latest master
-        shell: powershell
+        shell: 'powershell -ExecutionPolicy Bypass -File {0}'
         working-directory: ${{ env.REPO_DIR }}
         run: |
           $ErrorActionPreference = 'Continue'
@@ -44,7 +44,7 @@ jobs:
           & git rev-parse --short HEAD
 
       - name: Write prod .env (UTF-8 no BOM)
-        shell: powershell
+        shell: 'powershell -ExecutionPolicy Bypass -File {0}'
         working-directory: ${{ env.YAWNBOT_DIR }}
         env:
           YAWNBOT_PROD_ENV: ${{ secrets.YAWNBOT_PROD_ENV }}
@@ -61,7 +61,7 @@ jobs:
           }
 
       - name: npm install + build:yawnbot
-        shell: powershell
+        shell: 'powershell -ExecutionPolicy Bypass -File {0}'
         working-directory: ${{ env.BOTS_DIR }}
         run: |
           & npm install --prefer-offline --no-audit --no-fund
@@ -70,7 +70,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "build:yawnbot failed" }
 
       - name: Deploy slash commands
-        shell: powershell
+        shell: 'powershell -ExecutionPolicy Bypass -File {0}'
         working-directory: ${{ env.BOTS_DIR }}
         run: |
           & npm run deploy:yawnbot
@@ -78,7 +78,7 @@ jobs:
         # ops-self-report 의 reportDeploy 가 운영 채널에 임베드 발송
 
       - name: NSSM restart yawnbot-prod
-        shell: powershell
+        shell: 'powershell -ExecutionPolicy Bypass -File {0}'
         run: |
           $ErrorActionPreference = 'Continue'
           & nssm restart yawnbot-prod 2>&1
