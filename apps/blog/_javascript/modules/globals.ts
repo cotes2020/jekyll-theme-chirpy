@@ -17,7 +17,9 @@ export type MermaidGlobal = {
   init(config: unknown, selector: string): void;
 };
 
-export type GLightboxInstance = unknown;
+// `object` (more specific than unknown) — GLightbox 라이브러리는 instance object 반환.
+// null 과의 union 사용처 (img-popup.ts) 가 의미 있도록 unknown → object (KL-031 B1.3).
+export type GLightboxInstance = object;
 export type GLightboxGlobal = (options: { selector: string }) => GLightboxInstance;
 
 export type DayjsGlobal = {

@@ -71,7 +71,7 @@ ctx.addEventListener('activate', (event: ExtendableEvent) => {
 
 ctx.addEventListener('message', (event: ExtendableMessageEvent) => {
   if (event.data === 'SKIP_WAITING') {
-    ctx.skipWaiting();
+    void ctx.skipWaiting();
   }
 });
 

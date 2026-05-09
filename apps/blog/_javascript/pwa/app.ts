@@ -24,7 +24,7 @@ if ('serviceWorker' in navigator) {
     }
     const popupWindow = Toast.getOrCreateInstance(notification);
 
-    navigator.serviceWorker.register(swUrl).then((registration) => {
+    void navigator.serviceWorker.register(swUrl).then((registration) => {
       if (registration.waiting) {
         popupWindow.show();
       }
@@ -54,7 +54,7 @@ if ('serviceWorker' in navigator) {
       }
     });
   } else {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
+    void navigator.serviceWorker.getRegistrations().then((registrations) => {
       for (const registration of registrations) {
         void registration.unregister();
       }
