@@ -147,16 +147,6 @@ window.KARMOLAB_LAZY_META = [
     lazyScriptPaths: ['karmoddrine-dashboard/karmoddrine-dashboard']
   },
   {
-    id: 'karmoddrine-flows',
-    title: 'karmoddrine 흐름',
-    category: 'desktop',
-    desc: 'memo/flows/<slug>.md 흐름 문서 viewer — 마크다운 + Mermaid (Tauri 전용, 빌드 0)',
-    layout: 'full',
-    noHero: true,
-    icon: '<path d="M3 6h18M3 12h12M3 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M16 14l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-    lazyScriptPaths: ['karmoddrine-flows/karmoddrine-flows']
-  },
-  {
     id: 'terminal',
     title: 'PowerShell 터미널',
     category: 'desktop',
