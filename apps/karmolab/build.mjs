@@ -114,7 +114,6 @@ const entryPoints = [
   'src/widgets/tierlist/styles.ts',
   'src/widgets/tierlist/tierlist.ts',
   'src/widgets/tierlist/ui.ts',
-  'src/widgets/worldwiki/worldwiki.ts',
   'src/widgets-manifest.ts',
   'src/widgets-lazy-meta.ts',
   'src/widgets-loader.ts'
