@@ -1,0 +1,92 @@
+# Fine-grained PAT (PAT_FOR_AUTO_MERGE) 만료 30일 임박 시 issue 자동 생성.
+#
+# 발견 시점: TASK-KL-029. auto-merge.yml 가 PAT_FOR_AUTO_MERGE 사용 (GITHUB_TOKEN
+# 재귀 방지로 master push event trigger 차단 회피). PAT 만료 → silent 차단 가능
+# (auto-merge.yml 의 Check PAT step 이 만료 *이후* 첫 PR 시점에 visible 실패로
+# 잡지만, 그 PR 자동 머지 깨지는 불편). 본 워크플로는 *사전* 알림.
+#
+# GitHub API 응답 헤더 GitHub-Authentication-Token-Expiration 활용 (fine-grained
+# PAT 만 — classic token / 무기한 token 은 헤더 없음 → notice 후 exit 0).
+#
+# 정본: memo/projects/karmolab/tasks/TASK-KL-029-pat-auto-merge.md § Backlog C1.
+
+name: PAT Expiry Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 00:00 UTC (= 09:00 KST)
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PAT expiry header
+        env:
+          PAT: ${{ secrets.PAT_FOR_AUTO_MERGE }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$PAT" ]; then
+            echo "::warning::PAT_FOR_AUTO_MERGE 누락 — TASK-KL-029 § 사용자 액션 (PAT 생성 + secret 등록) 참고. cron 검사 skip."
+            exit 0
+          fi
+
+          HEADERS=$(curl -fsSI \
+            -H "Authorization: token $PAT" \
+            -H "User-Agent: pat-expiry-check" \
+            https://api.github.com/user)
+
+          EXPIRY=$(echo "$HEADERS" \
+            | grep -i '^github-authentication-token-expiration:' \
+            | sed 's/^[^:]*: *//; s/\r$//' \
+            || true)
+
+          if [ -z "$EXPIRY" ]; then
+            echo "::notice::PAT 만료일 헤더 없음 — classic token 또는 무기한 PAT 가능성. fine-grained PAT 권장 (TASK-KL-029 단계 1)."
+            exit 0
+          fi
+
+          echo "PAT expiry: $EXPIRY"
+
+          NOW=$(date +%s)
+          EXPIRY_TS=$(date -d "$EXPIRY" +%s)
+          DAYS_LEFT=$(( (EXPIRY_TS - NOW) / 86400 ))
+
+          echo "Days left: $DAYS_LEFT"
+
+          if [ "$DAYS_LEFT" -ge 30 ]; then
+            echo "::notice::PAT 만료까지 ${DAYS_LEFT}일 — 충분 (>= 30일)."
+            exit 0
+          fi
+
+          TITLE_PREFIX="[KL-029] PAT_FOR_AUTO_MERGE 만료 임박"
+          EXISTING=$(gh issue list \
+            --search "$TITLE_PREFIX in:title" \
+            --state open \
+            --json number \
+            --jq '.[0].number // empty')
+
+          if [ -n "$EXISTING" ]; then
+            echo "::notice::기존 open issue #$EXISTING 존재 — 중복 생성 skip."
+            exit 0
+          fi
+
+          BODY="\`PAT_FOR_AUTO_MERGE\` 만료까지 **${DAYS_LEFT}일** 남았습니다 (만료일: \`${EXPIRY}\`).
+
+          ## 갱신 액션
+
+          1. 새 PAT 생성 — Settings → Developer settings → Fine-grained tokens. Repo: \`Mascari4615/Mascari4615.github.io\`. Permissions: \`contents: write\`, \`pull-requests: write\`. Expiration: 1 year.
+          2. Repo secret 갱신: \`gh secret set PAT_FOR_AUTO_MERGE -R Mascari4615/Mascari4615.github.io --body <token>\`
+          3. 검증: 본 issue close 후 \`gh workflow run pat-expiry-check.yml\` — \"~365일 — 충분\" notice 확인.
+
+          정본: \`memo/projects/karmolab/tasks/TASK-KL-029-pat-auto-merge.md\`. 워크플로: \`.github/workflows/pat-expiry-check.yml\`."
+
+          gh issue create \
+            --title "$TITLE_PREFIX (${DAYS_LEFT}일 남음)" \
+            --body "$BODY"
