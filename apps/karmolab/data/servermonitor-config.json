@@ -13,12 +13,6 @@
             "url": "http://127.0.0.1:4000/"
         },
         {
-            "id": "atkup",
-            "title": "ATKUp",
-            "subtitle": "디스코드 봇",
-            "url": "http://127.0.0.1:4616/health"
-        },
-        {
             "id": "karmolab-py",
             "title": "KarmoLab 정적 (Python)",
             "subtitle": "/apps/karmolab/",
@@ -57,12 +51,6 @@
             "hint": "dev 봇 토큰 + dev 길드. prod 는 GitHub Secrets → 노트북 자동 주입 (TASK-YB-002)"
         },
         {
-            "id": "atkup-env",
-            "label": "ATKUp .env",
-            "relPath": "apps/discord-bots/apps/atkup-bot/.env",
-            "hint": "템플릿: .env.template"
-        },
-        {
             "id": "discord-bots-env",
             "label": "discord-bots 공통",
             "relPath": "apps/discord-bots/.env",
@@ -98,16 +86,6 @@
             "healthUrl": "http://127.0.0.1:4615/webhook/github",
             "npmInstall": true,
             "deployArgs": ["run", "deploy:yawnbot"]
-        },
-        {
-            "id": "atkup",
-            "label": "ATKUp 봇",
-            "cwd": "apps/discord-bots",
-            "program": "npm",
-            "args": ["run", "start:atkup"],
-            "healthUrl": "http://127.0.0.1:4616/health",
-            "npmInstall": true,
-            "deployArgs": ["run", "deploy:atkup"]
         },
         {
             "id": "karmolab-py",
