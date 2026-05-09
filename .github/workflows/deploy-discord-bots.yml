@@ -1,0 +1,92 @@
+name: Deploy Discord Bots (yawnbot)
+
+# TASK-YB-002-C — yawnbot prod 자동 deploy.
+# master push 시 self-hosted runner (노트북) 가 build + .env 주입 + nssm restart.
+# pull_request_target 절대 사용 X (포크 PR RCE 경로).
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'apps/discord-bots/apps/yawnbot/**'
+      - 'apps/discord-bots/packages/**'
+      - 'apps/discord-bots/package.json'
+      - 'apps/discord-bots/package-lock.json'
+      - 'packages/karmolab-ai/**'
+      - '.github/workflows/deploy-discord-bots.yml'
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-discord-bots
+  cancel-in-progress: false
+
+jobs:
+  deploy-yawnbot:
+    runs-on: [self-hosted, windows, laptop, yawnbot]
+    timeout-minutes: 15
+
+    # 노트북의 prod 폴더 직접 사용 — actions/checkout 의 _work 폴더 X.
+    # NSSM 이 보는 폴더 = build 폴더 = runner working dir. 통일.
+    env:
+      REPO_DIR: 'C:\Users\masca\repos\karmoddrine\Mascari4615.github.io'
+      BOTS_DIR: 'C:\Users\masca\repos\karmoddrine\Mascari4615.github.io\apps\discord-bots'
+      YAWNBOT_DIR: 'C:\Users\masca\repos\karmoddrine\Mascari4615.github.io\apps\discord-bots\apps\yawnbot'
+
+    steps:
+      - name: Pull latest master
+        shell: pwsh
+        working-directory: ${{ env.REPO_DIR }}
+        run: |
+          $ErrorActionPreference = 'Continue'
+          & git switch master 2>&1 | Out-Null
+          & git pull --ff-only 2>&1
+          if ($LASTEXITCODE -ne 0) { throw "git pull failed (exit $LASTEXITCODE)" }
+          & git rev-parse --short HEAD
+
+      - name: Write prod .env (UTF-8 no BOM)
+        shell: pwsh
+        working-directory: ${{ env.YAWNBOT_DIR }}
+        env:
+          YAWNBOT_PROD_ENV: ${{ secrets.YAWNBOT_PROD_ENV }}
+        run: |
+          if ([string]::IsNullOrEmpty($env:YAWNBOT_PROD_ENV)) {
+            throw "secrets.YAWNBOT_PROD_ENV 가 비어있음 — GitHub Settings → Secrets 등록 필요"
+          }
+          $envPath = Join-Path $PWD '.env'
+          [System.IO.File]::WriteAllText($envPath, $env:YAWNBOT_PROD_ENV, [System.Text.UTF8Encoding]::new($false))
+          # 주입 검증 — 토큰은 마스킹
+          Get-Content $envPath | Select-String -Pattern '^(DISCORD_TOKEN|CLIENT_ID|YAWNBOT_ENV|YAWNBOT_OPS_REPORT_CHANNEL_ID)=' | ForEach-Object {
+            $line = $_ -replace '(DISCORD_TOKEN=.{15}).*','$1***MASKED***'
+            Write-Host $line
+          }
+
+      - name: npm install + build:yawnbot
+        shell: pwsh
+        working-directory: ${{ env.BOTS_DIR }}
+        run: |
+          & npm install --prefer-offline --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { throw "npm install failed" }
+          & npm run build:yawnbot
+          if ($LASTEXITCODE -ne 0) { throw "build:yawnbot failed" }
+
+      - name: Deploy slash commands
+        shell: pwsh
+        working-directory: ${{ env.BOTS_DIR }}
+        run: |
+          & npm run deploy:yawnbot
+          if ($LASTEXITCODE -ne 0) { throw "deploy:yawnbot failed" }
+        # ops-self-report 의 reportDeploy 가 운영 채널에 임베드 발송
+
+      - name: NSSM restart yawnbot-prod
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          & nssm restart yawnbot-prod 2>&1
+          $exit = $LASTEXITCODE
+          if ($exit -ne 0) {
+            # 서비스 미존재 / 정지 상태일 때 start 시도
+            & nssm start yawnbot-prod 2>&1
+            if ($LASTEXITCODE -ne 0) { throw "nssm restart/start yawnbot-prod failed" }
+          }
+          # ops-self-report 의 reportShutdown → reportStartup 두 임베드가 운영 채널에 도착
+          Write-Host "yawnbot-prod restarted at $(Get-Date -Format 'yyyy-MM-ddTHH:mm:sszzz')"
