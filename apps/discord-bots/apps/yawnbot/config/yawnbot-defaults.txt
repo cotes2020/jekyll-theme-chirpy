@@ -81,6 +81,10 @@ KAKAO_EXPORT_SKIP_WINDOW_TITLES=카카오톡|KakaoTalk
 # 리스닝 포트. 호스트·방화벽은 배포 환경에서 따로 설정.
 WEBHOOK_PORT=4615
 
+# ── Unity 무료 에셋 cron (atkup-bot 흡수, TASK-YB-003) ──
+# Unity Publisher Sale 페이지 폴링 간격(분). 코드에서 최소 5분으로 잘림.
+YAWNBOT_UNITY_FREE_INTERVAL_MIN=60
+
 # ── Vertex AI 안전 필터 ──
 # 전체 카테고리에 적용할 임계값. 비워두면 Vertex 기본 필터 사용.
 # 옵션: BLOCK_NONE | BLOCK_ONLY_HIGH | BLOCK_MEDIUM_AND_ABOVE | BLOCK_LOW_AND_ABOVE

@@ -48,6 +48,7 @@ import { handleAnniversaryList, handleAnniversaryAdd, handleAnniversaryDelete } 
 import { handleNewsKeywordList, handleNewsKeywordAdd, handleNewsKeywordDelete } from './news-keywords';
 import { handleGallery } from './gallery';
 import { handleProfile } from './profile';
+import { handleAtkupUnity, handleAtkupNews } from './atkup';
 import { CharacterService } from '../../services/character-service';
 import { guardSlashInteraction } from './slash-guard';
 import { logSlashUsage } from './usage-log';
@@ -401,6 +402,16 @@ export async function dispatchSlashCommand(ctx: BotContext, interaction: ChatInp
       case '사용량':
         await handleCost(ctx, interaction);
         break;
+      case 'atkup': {
+        const sub = interaction.options.getSubcommand();
+        switch (sub) {
+          case 'unity': await handleAtkupUnity(ctx, interaction); break;
+          case 'news':  await handleAtkupNews(ctx, interaction); break;
+          default:
+            await interaction.reply({ content: '알 수 없는 atkup 하위 명령입니다.', flags: MessageFlags.Ephemeral });
+        }
+        break;
+      }
       default:
         await interaction.reply({ content: '알 수 없는 명령어입니다.', flags: MessageFlags.Ephemeral });
     }

@@ -14,6 +14,7 @@ import { gameCommandGroup } from './deploy-builders/game-stock';
 import { characterCommand } from './deploy-builders/character';
 import { scheduleCommand } from './deploy-builders/schedule';
 import { adminCommand } from './deploy-builders/admin';
+import { atkupCommandGroup } from './deploy-builders/atkup';
 import { loadOpsReportContext, reportDeploy } from './services/ops-self-report';
 
 const EN = Locale.EnglishUS;
@@ -148,6 +149,7 @@ const commands = [
   adminCommand(),
   characterCommand(),
   scheduleCommand(),
+  atkupCommandGroup(),
 
   new SlashCommandBuilder()
     .setName('프로필')

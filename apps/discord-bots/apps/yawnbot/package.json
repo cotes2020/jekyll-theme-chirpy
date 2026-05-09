@@ -24,6 +24,7 @@
     "@discordjs/opus": "^0.10.0",
     "@discordjs/voice": "^0.19.2",
     "@google/generative-ai": "^0.21.0",
+    "cheerio": "1.0.0-rc.12",
     "discord.js": "^14.26.0",
     "dotenv": "^16.6.1",
     "express": "^4.22.1",

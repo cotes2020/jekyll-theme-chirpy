@@ -36,6 +36,7 @@ import { handleAssistantMessage } from './bot/assistant-handler';
 import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder, startSpontaneous } from './bot/proactive';
 import { handleReaction } from './bot/reactions';
 import { loadOpsReportContext, reportStartup, reportShutdown, reportError } from './services/ops-self-report';
+import { startUnityFreeNotifier, stopUnityFreeNotifier } from './services/notifiers/unity-free';
 
 const client = new Client({
   intents: [
@@ -246,6 +247,7 @@ client.once('clientReady', async () => {
   }
 
   startPresenceRotation(client);
+  startUnityFreeNotifier(client);
 
   if (characterService) {
     characterService.initialize();
@@ -340,6 +342,7 @@ async function gracefulShutdown(reason: string): Promise<void> {
   }
   setMusicDiscordClient(null);
   stopPresenceRotation();
+  stopUnityFreeNotifier();
   stopProactive();
   stock.stopMarket();
   gameData.destroy();
