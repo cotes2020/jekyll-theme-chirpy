@@ -7,18 +7,14 @@
   ],
   "scripts": {
     "install:deps": "node -e \"require('child_process').execSync('npm install', { stdio: 'inherit', env: { ...process.env, YOUTUBE_DL_SKIP_PYTHON_CHECK: '1' } })\"",
-    "build": "npm --prefix ../../packages/karmolab-ai run build && npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build && npm -w apps/atkup-bot run build",
+    "build": "npm --prefix ../../packages/karmolab-ai run build && npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build",
     "build:yawnbot": "npm --prefix ../../packages/karmolab-ai run build && npm -w packages/discord-bot-common run build && npm -w apps/yawnbot run build",
-    "build:atkup": "npm -w packages/discord-bot-common run build && npm -w apps/atkup-bot run build",
-    "dev": "concurrently -k \"npm -w apps/yawnbot run dev\" \"npm -w apps/atkup-bot run dev\"",
+    "dev": "npm -w apps/yawnbot run dev",
     "dev:yawnbot": "npm -w apps/yawnbot run dev",
-    "dev:atkup": "npm -w apps/atkup-bot run dev",
-    "start": "concurrently -k \"npm -w apps/yawnbot run start\" \"npm -w apps/atkup-bot run start\"",
+    "start": "npm -w apps/yawnbot run start",
     "start:yawnbot": "npm -w apps/yawnbot run start",
-    "start:atkup": "npm -w apps/atkup-bot run start",
-    "deploy": "concurrently -k \"npm -w apps/yawnbot run deploy\" \"npm -w apps/atkup-bot run deploy\"",
-    "deploy:yawnbot": "npm -w apps/yawnbot run deploy",
-    "deploy:atkup": "npm -w apps/atkup-bot run deploy"
+    "deploy": "npm -w apps/yawnbot run deploy",
+    "deploy:yawnbot": "npm -w apps/yawnbot run deploy"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
