@@ -38,6 +38,9 @@ jobs:
         working-directory: ${{ env.REPO_DIR }}
         run: |
           $ErrorActionPreference = 'Continue'
+          # LocalSystem (NSSM runner) 가 사용자 masca 의 폴더 git 소유권 인식 못 함 — safe.directory 등록 (idempotent)
+          $repoUnix = '${{ env.REPO_DIR }}' -replace '\\', '/'
+          & git config --global --add safe.directory $repoUnix 2>&1 | Out-Null
           & git switch master 2>&1 | Out-Null
           & git pull --ff-only 2>&1
           if ($LASTEXITCODE -ne 0) { throw "git pull failed (exit $LASTEXITCODE)" }
