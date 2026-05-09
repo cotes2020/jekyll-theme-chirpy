@@ -2,8 +2,8 @@
     "localMonitors": [
         {
             "id": "yawnbot-tunnel",
-            "title": "YawnBot",
-            "subtitle": "cloudflared + webhook 자동등록",
+            "title": "YawnBot (dev)",
+            "subtitle": "cloudflared + webhook 자동등록 — prod 는 노트북 (TASK-YB-002)",
             "url": "http://127.0.0.1:4615/webhook/github"
         },
         {
@@ -52,9 +52,9 @@
     "envFiles": [
         {
             "id": "yawnbot-env",
-            "label": "YawnBot .env",
+            "label": "YawnBot .env (dev)",
             "relPath": "apps/discord-bots/apps/yawnbot/.env",
-            "hint": "템플릿: .env.yawnbot.template"
+            "hint": "dev 봇 토큰 + dev 길드. prod 는 GitHub Secrets → 노트북 자동 주입 (TASK-YB-002)"
         },
         {
             "id": "atkup-env",
@@ -91,7 +91,7 @@
         },
         {
             "id": "yawnbot-tunnel",
-            "label": "YawnBot",
+            "label": "YawnBot (dev)",
             "cwd": "apps/discord-bots",
             "program": "npm",
             "args": ["run", "dev:yawnbot"],
