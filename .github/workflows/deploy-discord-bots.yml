@@ -84,11 +84,28 @@ jobs:
         shell: 'powershell -ExecutionPolicy Bypass -File {0}'
         run: |
           $ErrorActionPreference = 'Continue'
-          & nssm restart yawnbot-prod 2>&1
+          # nssm 이 LocalSystem PATH 에 없을 수 있음 (winget 가 사용자 LOCALAPPDATA 에 설치).
+          # Get-Command 우선 + 일반 fallback path 들 (사용자 masca 고정 — 노트북 한정 self-hosted runner).
+          $nssmCmd = Get-Command nssm.exe -ErrorAction SilentlyContinue
+          $nssm = if ($nssmCmd) { $nssmCmd.Source } else { $null }
+          if (-not $nssm) {
+            $candidates = @(
+              "C:\Users\masca\AppData\Local\Microsoft\WinGet\Packages\NSSM.NSSM_*\nssm*\win64\nssm.exe",
+              "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\NSSM.NSSM_*\nssm*\win64\nssm.exe",
+              "$env:ProgramData\Microsoft\WinGet\Packages\NSSM.NSSM_*\nssm*\win64\nssm.exe",
+              "C:\ProgramData\chocolatey\bin\nssm.exe"
+            )
+            foreach ($pat in $candidates) {
+              $found = Get-Item $pat -ErrorAction SilentlyContinue | Select-Object -First 1
+              if ($found) { $nssm = $found.FullName; break }
+            }
+          }
+          if (-not $nssm) { throw "nssm.exe 못 찾음 — sub-A Phase A 의 winget install NSSM.NSSM 확인 또는 system PATH 에 추가" }
+          Write-Host "Using nssm: $nssm"
+          & $nssm restart yawnbot-prod 2>&1
           $exit = $LASTEXITCODE
           if ($exit -ne 0) {
-            # 서비스 미존재 / 정지 상태일 때 start 시도
-            & nssm start yawnbot-prod 2>&1
+            & $nssm start yawnbot-prod 2>&1
             if ($LASTEXITCODE -ne 0) { throw "nssm restart/start yawnbot-prod failed" }
           }
           # ops-self-report 의 reportShutdown → reportStartup 두 임베드가 운영 채널에 도착
