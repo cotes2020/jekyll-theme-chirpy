@@ -22,14 +22,12 @@ help() {
   echo "Options:"
   echo "     -h, --help    Print this help information"
   echo
-  echo "Output (2 lines):"
-  echo "   Sonnet 4.6 | master ↑1 +2~3 | 세션 2m36s | Cost \$0.2699 (\$6.20/hr) | Cache 96% | 09:41"
-  echo "   [███░░░░░░░] 65,847in/216out (33%) | 5h 16% (리셋 09:00) | 7d 30% (리셋 04/26 20:00)"
+  echo "Output (single line):"
+  echo "   09:41 | 5h 16% (09:00) | 7d 30% (04/26 20:00) | ctx 33% | Sonnet 4.6 | master ↑1 +2~3"
   echo
-  echo "  - Progress bar is color-coded: green < 80%, yellow < 90%, red >= 90%"
+  echo "  - Percent text is color-coded: green < 80%, yellow < 90%, red >= 90%"
+  echo "  - Rate limits (5h/7d) come first with local reset time"
   echo "  - Git: branch, ahead/behind commits, staged/unstaged file counts"
-  echo "  - Cache hit rate: how much of context is served from cache (lower cost)"
-  echo "  - Rate limits: 5h/7d usage % with local reset time"
 }
 
 while (($#)); do
@@ -62,25 +60,7 @@ grep_str() {
 }
 
 # Context
-PCT=$(grep_num "used_percentage");              PCT=${PCT:-0}; PCT=${PCT%.*}
-MAX=$(grep_num "context_window_size");           MAX=${MAX:-200000}
-T_INPUT=$(grep_num "input_tokens");              T_INPUT=${T_INPUT:-0}
-T_CC=$(grep_num "cache_creation_input_tokens");  T_CC=${T_CC:-0}
-T_CR=$(grep_num "cache_read_input_tokens");      T_CR=${T_CR:-0}
-T_OUT=$(grep_num "output_tokens");               T_OUT=${T_OUT:-0}
-USED=$((T_INPUT + T_CC + T_CR))
-
-# Cache hit rate
-CACHE_TOTAL=$((T_INPUT + T_CC + T_CR))
-if [ "$CACHE_TOTAL" -gt 0 ]; then
-  CACHE_HIT=$(awk "BEGIN{printf \"%d\", $T_CR/$CACHE_TOTAL*100}")
-else
-  CACHE_HIT=0
-fi
-
-# Cost & duration
-COST=$(grep_num "total_cost_usd");               COST=${COST:-0}
-DURATION_MS=$(grep_num "total_duration_ms");     DURATION_MS=${DURATION_MS:-0}
+PCT=$(grep_num "used_percentage"); PCT=${PCT:-0}; PCT=${PCT%.*}
 
 # Rate limits + reset times
 RATE_5H=$(echo "$input" | grep -oE '"five_hour":\{"used_percentage":[0-9]+' | grep -oE '[0-9]+$')
@@ -130,49 +110,29 @@ fi
 BRANCH_PART=""
 [ -n "$BRANCH" ] && BRANCH_PART=" | ${BRANCH}${GIT_STAT:+ ${GIT_STAT}}"
 
-# Burn rate & elapsed
-BURN=$(awk "BEGIN{if($DURATION_MS>0) printf \"%.4f\", $COST/($DURATION_MS/3600000); else print \"0.0000\"}")
-ELAPSED_S=$((DURATION_MS / 1000))
-ELAPSED_H=$((ELAPSED_S / 3600))
-ELAPSED_M=$(( (ELAPSED_S % 3600) / 60 ))
-ELAPSED_SEC=$((ELAPSED_S % 60))
-if [ "$ELAPSED_H" -gt 0 ]; then
-  ELAPSED=$(printf "%dh%02dm" "$ELAPSED_H" "$ELAPSED_M")
-else
-  ELAPSED=$(printf "%dm%02ds" "$ELAPSED_M" "$ELAPSED_SEC")
-fi
-
-# Color by context % (bar only)
-if   [ "$PCT" -ge 90 ]; then C='\033[31m'
-elif [ "$PCT" -ge 80 ]; then C='\033[33m'
-else                          C='\033[32m'
-fi
 R='\033[0m'
 
-# Progress bar
-FILLED=$((PCT / 10)); EMPTY=$((10 - FILLED))
-printf -v F "%${FILLED}s"; printf -v P "%${EMPTY}s"
-BAR="${F// /█}${P// /░}"
-
-fmt() {
-  local n=$1
-  if   [ "$n" -ge 1000000 ]; then awk "BEGIN{printf \"%.1fM\", $n/1000000}"
-  elif [ "$n" -ge 1000 ];    then awk "BEGIN{printf \"%.1fK\", $n/1000}"
-  else echo "$n"
+# 색상: >=90 빨강, >=80 노랑, 그 외 초록
+color_for() {
+  local p=$1
+  if   [ "$p" -ge 90 ]; then echo '\033[31m'
+  elif [ "$p" -ge 80 ]; then echo '\033[33m'
+  else                       echo '\033[32m'
   fi
 }
 
-COST_FMT=$(awk "BEGIN{printf \"%.4f\", $COST}")
+C_5H=$(color_for "$RATE_5H")
+C_7D=$(color_for "$RATE_7D")
+C_CTX=$(color_for "$PCT")
+
 NOW=$(date +"%H:%M")
 
-# Line 1: 모델 / git / 세션 시간 / 비용 / 캐시 / 현재 시각
-printf "${MODEL}${BRANCH_PART} | 세션 %s | Cost \$%s (\$%s/hr) | Cache %s%% | %s\n" \
-  "$ELAPSED" "$COST_FMT" "$BURN" "$CACHE_HIT" "$NOW"
-
-# Line 2: 컨텍스트 바 / 토큰(in+out) / 할당량 + 리셋 시각
-printf "[${C}%s${R}] %s/%s in | %s out (%s%%) | 5h %s%% (리셋 %s) | 7d %s%% (리셋 %s)\n" \
-  "$BAR" "$(fmt $USED)" "$(fmt $MAX)" "$(fmt $T_OUT)" "$PCT" \
-  "$RATE_5H" "$RESET_5H_FMT" "$RATE_7D" "$RESET_7D_FMT"
+# 한 줄: 시각 / 5h / 7d / ctx / 모델 / git
+printf "%s | 5h ${C_5H}%s%%${R} (%s) | 7d ${C_7D}%s%%${R} (%s) | ctx ${C_CTX}%s%%${R} | ${MODEL}${BRANCH_PART}\n" \
+  "$NOW" \
+  "$RATE_5H" "$RESET_5H_FMT" \
+  "$RATE_7D" "$RESET_7D_FMT" \
+  "$PCT"
 EOF
 
 chmod +x "$STATUSLINE_SCRIPT"
