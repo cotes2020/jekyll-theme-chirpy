@@ -17,6 +17,10 @@ on:
     branches: [master, main]
   pull_request:
     branches: [master, main]
+  # 응급 manual trigger — KL-029 (PAT) 미해결 / Auto Merge 우회 등으로 master push
+  # event 미발동 시점에 사용자/자동화가 master 검증 강제 호출 (`gh workflow run verify.yml --ref master`).
+  # KL-029 해결 후엔 push trigger 정상 작동 → 본 trigger 는 응급 가치만 남음.
+  workflow_dispatch:
 
 jobs:
   verify:
