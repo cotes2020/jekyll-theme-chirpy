@@ -35,6 +35,7 @@ import { startPresenceRotation, stopPresenceRotation } from './bot/presence-rota
 import { handleAssistantMessage } from './bot/assistant-handler';
 import { startProactive, stopProactive, sendStartupGreeting, startScheduleReminder, startSpontaneous } from './bot/proactive';
 import { handleReaction } from './bot/reactions';
+import { loadOpsReportContext, reportStartup, reportShutdown, reportError } from './services/ops-self-report';
 
 const client = new Client({
   intents: [
@@ -142,6 +143,12 @@ function getRelationship(slug: string): RelationshipService {
 
 const ADMIN_IDS = parseCommaSeparatedEnv(process.env.ADMIN_IDS);
 const OWNER_ID = process.env.ASSISTANT_USER_ID?.trim() || '';
+
+/** 운영 자기보고 (TASK-YB-002-D) — channelId 미설정 시 null = 모든 report no-op */
+const opsCtx = loadOpsReportContext();
+if (!opsCtx) {
+  console.warn('[OpsReport] YAWNBOT_OPS_REPORT_CHANNEL_ID 미설정 — 운영 자기보고 비활성');
+}
 
 function isAdmin(userId: unknown) {
   return ADMIN_IDS.includes(String(userId));
@@ -258,6 +265,14 @@ client.once('clientReady', async () => {
   } else {
     console.warn('[Assistant] MEMO_REPO_PATH 미설정 — AI 비서 비활성화');
   }
+
+  if (opsCtx) {
+    await reportStartup(opsCtx, {
+      botTag: client.user?.tag ?? 'unknown',
+      guilds: client.guilds.cache.size,
+      users: Object.keys(gameData.users).length,
+    });
+  }
 });
 
 async function main() {
@@ -319,8 +334,10 @@ function shutdownMemory(): void {
   memoryMap.clear();
 }
 
-process.on('SIGINT', () => {
-  console.log('\n[Shutdown] 종료 중...');
+async function gracefulShutdown(reason: string): Promise<void> {
+  if (opsCtx) {
+    await reportShutdown(opsCtx, reason);
+  }
   setMusicDiscordClient(null);
   stopPresenceRotation();
   stopProactive();
@@ -332,20 +349,25 @@ process.on('SIGINT', () => {
   destroyAllVoiceConnections();
   client.destroy();
   process.exit(0);
+}
+
+process.on('SIGINT', () => {
+  console.log('\n[Shutdown] 종료 중...');
+  void gracefulShutdown('SIGINT');
 });
 
 process.on('SIGTERM', () => {
-  setMusicDiscordClient(null);
-  stopPresenceRotation();
-  stopProactive();
-  stock.stopMarket();
-  gameData.destroy();
-  characterService?.commitIfDirty();
-  shutdownMemory();
-  destroyAllMusicPlayers();
-  destroyAllVoiceConnections();
-  client.destroy();
-  process.exit(0);
+  void gracefulShutdown('SIGTERM');
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('[uncaughtException]', err);
+  if (opsCtx) void reportError(opsCtx, err, 'uncaughtException');
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error('[unhandledRejection]', reason);
+  if (opsCtx) void reportError(opsCtx, reason, 'unhandledRejection');
 });
 
 main().catch((err) => {

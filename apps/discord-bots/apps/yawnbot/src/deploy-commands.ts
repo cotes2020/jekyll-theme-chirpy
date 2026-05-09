@@ -14,6 +14,7 @@ import { gameCommandGroup } from './deploy-builders/game-stock';
 import { characterCommand } from './deploy-builders/character';
 import { scheduleCommand } from './deploy-builders/schedule';
 import { adminCommand } from './deploy-builders/admin';
+import { loadOpsReportContext, reportDeploy } from './services/ops-self-report';
 
 const EN = Locale.EnglishUS;
 const enUS = (s: string): Record<string, string> => ({ [EN]: s });
@@ -193,6 +194,11 @@ async function main(): Promise<void> {
     return;
   }
   await deployApplicationCommands({ token, clientId, commands, logPrefix: '[Deploy]', guildId, guildOnly: true });
+
+  const opsCtx = loadOpsReportContext();
+  if (opsCtx) {
+    await reportDeploy(opsCtx, { count: commands.length, target: `guild:${guildId}` });
+  }
 }
 
 void main();
