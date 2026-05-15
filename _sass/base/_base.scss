@@ -391,8 +391,9 @@ main {
 
 /* MathJax */
 mjx-container {
-  overflow-y: hidden;
-  min-width: auto !important;
+  a {
+    display: inline-block;
+  }
 }
 
 @media (hover: hover) {
