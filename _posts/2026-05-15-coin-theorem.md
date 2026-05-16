@@ -6,13 +6,22 @@ tags: [theorem]
 math: true
 ---
 
+Most of the work poured into the culmination of my Master Thesis involved different approaches and iterations. Among many pages of scratches, this theorem sat close to my heart. This is one of the first (original) high probability bounds I ever worked on which was crucial in the development of the algebra of my thesis. Unfortunately, it will not make it into the final draft, I etch it on your screen because I cherished it. The original proof I wrote was not entirely correct, and is attached further below. Claude Code gave a slick proof and hopefully a great read.
+
+
 $$\newcommand{\p}{\mathcal{P}}$$
 $$\newcommand{\coloneqq}{:=}$$
 $$\newcommand{\I}{\mathbb{1}}$$
 $$\newcommand{\E}{\mathbb{E}}$$
 
+### Game
+Suppose you have full power to change the bias of coin before you toss it. Every time you toss a tail, you get some reward every step. However, if you toss a head, the game is over. The reward you get is equal to the bias of the coin you just tossed. What is the high probabibility upper bound on the total reward earned by you?
+
+
+### Math
+
 <blockquote>
-<strong>Lemma (Coin).</strong> Suppose we have a coin that changes its bias every time it is tossed. Let $X_t=1$ if the toss at time $t$ results in heads and $X_t=0$ if tails, and let $\mathcal{F}_t = \sigma(X_1, \ldots, X_t)$ be the natural filtration. Define $b_t$ as the conditional probability of heads given the past:
+<strong>Theorem (Coin).</strong> Suppose we have a coin that changes its bias every time it is tossed. Let $X_t=1$ if the toss at time $t$ results in heads and $X_t=0$ if tails, and let $\mathcal{F}_t = \sigma(X_1, \ldots, X_t)$ be the natural filtration. Define $b_t$ as the conditional probability of heads given the past:
 $$b_t \coloneqq \p(X_t=1 \mid \mathcal{F}_{t-1})$$ and assume $b_t \in (0,1)$ almost surely. Let $\tau$ be the first time we toss heads. That is, we toss this coin $\tau$ times.
 $$\tau = \min\{t \mid X_t=1\}$$
 Define the cost variable $Y$ as the sum of biases until we toss heads for the first time. That is:
