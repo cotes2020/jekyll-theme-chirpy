@@ -19,6 +19,9 @@ webfonts: https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Sour
 
 # Libraries
 
+bootstrap:
+  css: https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css
+
 toc:
   css: https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.css
   js: https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js

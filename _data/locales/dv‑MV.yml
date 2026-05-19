@@ -49,6 +49,11 @@ notification:
   update_found: ޔޫ ވާރޝަން ހުރިހާ.
   update: އޮޕްޑޭޓް
 
+theme:
+  light: އަލި
+  dark: އަނދިރި
+  system: ސިސްޓަމް
+
 # ----- Posts related labels -----
 
 post:

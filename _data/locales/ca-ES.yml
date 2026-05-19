@@ -49,6 +49,11 @@ notification:
   update_found: Hi ha una nova versió de contingut disponible.
   update: Actualitzar
 
+theme:
+  light: Clar
+  dark: Fosc
+  system: Sistema
+
 # ----- Posts related labels -----
 
 post:

@@ -1,8 +1,8 @@
 <!-- https://giscus.app/ -->
 <script>
   (function () {
-    const themeMapper = Theme.getThemeMapper('light', 'dark_dimmed');
-    const initTheme = themeMapper[Theme.visualState];
+    const themeMap = Theme.newThemeMap('light', 'dark_dimmed');
+    const initTheme = themeMap[Theme.resolvedTheme];
 
     let lang = '{{ site.comments.giscus.lang | default: lang }}';
     {%- comment -%} https://github.com/giscus/giscus/tree/main/locales {%- endcomment -%}
@@ -37,8 +37,9 @@
     $footer.insertAdjacentElement("beforebegin", giscusNode);
 
     addEventListener('message', (event) => {
-      if (event.source === window && event.data && event.data.id === Theme.ID) {
-        const newTheme = themeMapper[Theme.visualState];
+      if (event.source === window && event.data && event.data.id === Theme.eventId) {
+        const newTheme = themeMap[Theme.resolvedTheme];
+
         const message = {
           setConfig: {
             theme: newTheme

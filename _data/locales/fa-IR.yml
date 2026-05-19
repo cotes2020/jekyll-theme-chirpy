@@ -49,6 +49,11 @@ notification:
   update_found: نسخه جدیدی از محتوا موجود است.
   update: به‌روزرسانی
 
+theme:
+  light: روشن
+  dark: تیره
+  system: سیستم
+
 # ----- Posts related labels -----
 
 post:

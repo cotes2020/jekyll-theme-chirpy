@@ -49,6 +49,11 @@ notification:
   update_found: Uma nova versão do conteúdo está disponível.
   update: atualização
 
+theme:
+  light: Claro
+  dark: Escuro
+  system: Sistema
+
 # ----- Posts related labels -----
 
 post:

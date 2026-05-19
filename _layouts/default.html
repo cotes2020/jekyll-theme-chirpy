@@ -8,12 +8,13 @@ layout: compress
 
 {% include lang.html %}
 
-{% if site.theme_mode %}
-  {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
-{% endif %}
-
 <!-- `site.alt_lang` can specify a language different from the UI -->
-<html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
+<html
+  lang="{{ page.lang | default: site.alt_lang | default: site.lang }}"
+  {%- if site.theme_mode == 'light' or site.theme_mode == 'dark' -%}
+    data-bs-theme="{{ site.theme_mode }}"
+  {%- endif -%}
+>
   {% include head.html lang=lang %}
 
   <body>

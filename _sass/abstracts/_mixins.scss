@@ -1,3 +1,9 @@
+@mixin color-scheme($mode) {
+  @media (prefers-color-scheme: #{$mode}) {
+    @content;
+  }
+}
+
 @mixin text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;

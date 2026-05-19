@@ -49,6 +49,11 @@ notification:
   update_found: Доступна нова версія вмісту.
   update: Оновлення
 
+theme:
+  light: Світла
+  dark: Темна
+  system: Системна
+
 # ----- Posts related labels -----
 
 post:

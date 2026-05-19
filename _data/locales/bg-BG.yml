@@ -49,6 +49,11 @@ notification:
   update_found: Налична е нова версия на съдържанието.
   update: Обнови
 
+theme:
+  light: Светла
+  dark: Тъмна
+  system: Системна
+
 # ----- Posts related labels -----
 
 post:

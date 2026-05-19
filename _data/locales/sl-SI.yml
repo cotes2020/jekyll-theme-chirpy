@@ -49,6 +49,11 @@ notification:
   update_found: Novejša različica vsebine je na voljo. #A new version of content is available.
   update: Posodobi #Update
 
+theme:
+  light: Svetla
+  dark: Temna
+  system: Sistemska
+
 # ----- Posts related labels -----
 
 post:

@@ -48,6 +48,11 @@ notification:
   update_found: Доступна новая версия контента.
   update: Обновить
 
+theme:
+  light: Светлая
+  dark: Темная
+  system: Системная
+
 # ----- Posts related labels -----
 
 post:

@@ -49,6 +49,11 @@ notification:
   update_found: En ny version af indholdet er fundet!
   update: Opdater
 
+theme:
+  light: Lys
+  dark: Mørk
+  system: System
+
 # ----- Posts related labels -----
 
 post:
