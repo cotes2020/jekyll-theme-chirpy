@@ -46,7 +46,7 @@ not_found:
   statement: معذرت، یہ URL غلط ہے یا جس چیز کی طرف اشارہ کر رہا ہے وہ موجود نہیں۔
 
 notification:
-  update_found: نیا مواد دستیاب ہے۔
+  update_found: نیا مواد مل گیا
   update: اپ ڈیٹ
 
 theme:

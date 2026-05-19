@@ -46,7 +46,7 @@ not_found:
   statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
 notification:
-  update_found: A new version of content is available.
+  update_found: New content available
   update: Update
 
 theme:

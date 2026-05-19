@@ -46,7 +46,7 @@ not_found:
   statement: Beklager, vi har malpaceret denne URL, eller den peger på et sted, som ikke findes.
 
 notification:
-  update_found: En ny version af indholdet er fundet!
+  update_found: Der er nyt indhold
   update: Opdater
 
 theme:

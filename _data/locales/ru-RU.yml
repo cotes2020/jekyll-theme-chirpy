@@ -45,7 +45,7 @@ not_found:
   statement: Извините, мы перепутали URL-адрес или он указывает на что-то несуществующее.
 
 notification:
-  update_found: Доступна новая версия контента.
+  update_found: Найден новый контент
   update: Обновить
 
 theme:

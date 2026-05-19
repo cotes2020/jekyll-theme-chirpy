@@ -46,7 +46,7 @@ not_found:
   statement: بښنه غواړو، دغه URL ناسم دی یا هغه څه ته اشاره کوي چې شتون نه لري.
 
 notification:
-  update_found: نوې نسخه شتون لري.
+  update_found: نوې منځپانګه شتون لري
   update: تازه
 
 theme:

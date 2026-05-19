@@ -45,7 +45,7 @@ not_found:
   statement: Valitettavasti tällä URL-osoitteella ei ole saatavilla sisältöä.
 
 notification:
-  update_found: Uusi versio sisällöstä on saatavilla.
+  update_found: Uutta sisältöä löytyi
   update: Päivitä
 
 theme:

@@ -46,7 +46,7 @@ not_found:
   statement: Съжалявам, но на този URL адрес няма налично съдържание.
 
 notification:
-  update_found: Налична е нова версия на съдържанието.
+  update_found: Има ново съдържание
   update: Обнови
 
 theme:
