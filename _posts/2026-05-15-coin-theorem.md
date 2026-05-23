@@ -49,6 +49,7 @@ $$(1-p)^k < e^{-pk},$$
 
 so it suffices to require $e^{-pk} \leq \delta$, i.e.
 $$k \;\geq\; \frac{\log(1/\delta)}{p}.$$
+
 ---
 
 However, what if the bias (although predictable) was changing with time? Most of the work poured into the main proof involved different approaches and iterations. Among many pages of scratches, this theorem sat close to my heart. This is one of the first (original) high probability bounds I ever worked on. This result turned out to provide a valid, illustrative, intermediate goal that gave me the confidence for the development of the algebra of my thesis.  Unfortunately, it will not make it into the final draft, I etch it on your screen because I cherished it. The original proof I wrote was not entirely checked, and is attached further below. Claude Code gave a slick proof and hopefully a great read.
