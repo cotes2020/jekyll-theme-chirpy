@@ -23,7 +23,7 @@
       'data-theme': initTheme,
       'data-input-position': '{{ site.comments.giscus.input_position | default: 'bottom' }}',
       'data-lang': lang,
-      'data-loading': 'lazy',
+      'data-loading': '{{ site.comments.giscus.data_loading | default: 'lazy' }}',
       crossorigin: 'anonymous',
       async: ''
     };
