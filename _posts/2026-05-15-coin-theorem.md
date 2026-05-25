@@ -11,16 +11,20 @@ Every once in a while, in a period of time that feels long and filled with exhau
 </blockquote>
 
 
-My masters thesis was about proving the [Differential Privacy]({% post_url 2026-05-16-differential-privacy %}) of Thompson Sampling [add reference] for two armed bandits.
+My masters thesis was about proving the [Differential Privacy]({% post_url 2026-05-16-differential-privacy %}) of Thompson Sampling[^agrawal2017] for two armed bandits.
 The progression of my master thesis demanded from me the skill of proving high probability bounds. Calculating expectations of random variable was well known to me, but any progress demanded the skill of proving high probability bounds which inturn demanded a deeper knowledge of the underlying distribution.
 
 
-## Preface
+## Background
 In a two-armed bandit setting with finite horizon $T$, we consider that the reward sequences are inputs to the algorithm and the action sequences are random outputs. Our goal was to show that for any, arbitrary, reward seqeuence $R \in [0, 1]^T$ and its [neighbor]({% post_url 2026-05-16-differential-privacy %}) $R^\prime$, Thompson Sampling plays actions sequences $a_{1:t}$ such that
 
 $$\sum_{t \leq T}\log\frac{P_t(A_t=a_t)}{P'_t(A_t=a_t)} \leq \log^2 T\quad\text{w.p.}\quad1-\delta$$
 
-Sometime in July 2025, I believed in the ways of Taylor series. After plugging in probabilities for the closed form, I get something along the lines of
+where
+
+$$P_t(\;\cdot\;) = P(\;\cdot\;|a_{1:t-1}, R_{1:t-1}) \qquad P^\prime_t(\;\cdot\;) = P(\;\cdot\;|a_{1:t-1}, R^\prime_{1:t-1})$$
+
+Sometime in July 2025, I believed in the ways of Taylor series. After plugging in probabilities for the closed form, I get an upper bound that looks like:
 
 $$\sum_{t \leq T}\frac{f(t)}{\sqrt{n_2(t)+1}}$$
 
@@ -60,7 +64,7 @@ $$\newcommand{\coloneqq}{:=}$$
 $$\newcommand{\I}{\mathbb{1}}$$
 $$\newcommand{\E}{\mathbb{E}}$$
 
-### Game
+## Game
 Suppose you are given the liberty to set the bias of coin to whatever value $b_t \in (0,1)$ before you toss it. Every time you toss a tail, you get some reward every step. However, if you toss a head, the game is over. The reward you get is equal to the bias $b_t$ of the coin you just tossed.
 
 Let $\tau$ be the first time we toss heads. That is, we toss this coin $\tau$ times.
@@ -74,7 +78,7 @@ $$Y \coloneqq \sum_{t=1}^{\tau-1} b_t$$
 So if you choose to be greedy and set the bias of the coin to be $>0.5$, you will most likely toss heads and the game ends right away. On the other hand if you set the bias to be $<0.1$, you will likely toss many tails in a row, and even then the total reward might be low. What is a high probabibility upper bound on the total reward earned?
 
 
-### Math
+## Math
 
 <blockquote>
 <strong>Theorem (Coin).</strong> Suppose we have a coin that changes its bias every time it is tossed. Let $X_t=1$ if the toss at time $t$ results in heads and $X_t=0$ if tails, and let $\mathcal{F}_t = \sigma(X_1, \ldots, X_t)$ be the natural filtration. Define $b_t$ as the conditional probability of heads given the past:
@@ -179,3 +183,7 @@ Setting $a=1/\delta$, we get the required result.
 <div style="text-align:right">
 $\blacksquare$
 </div>
+
+---
+
+[^agrawal2017]: Agrawal, S., & Goyal, N. (2017). Near-Optimal Regret Bounds for Thompson Sampling. *Journal of the ACM*, 64(5), Article 30. [https://doi.org/10.1145/3088510](https://doi.org/10.1145/3088510)
