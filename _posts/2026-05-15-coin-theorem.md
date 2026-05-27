@@ -106,7 +106,7 @@ $$
 $$
 
 
-### Lore
+### Setup
 For the two-arm bandit case, my method involved exploiting the closed form probabilities of TS to analytically bound the privacy loss random variable. Since the algorithm operates sequentially, we can write the privacy loss as a sum via the chain rule:
 
 $$\mathcal{L}_{R,R^\prime} = \sum_{t \leq T}\log\frac{\p_R(A_t|A_{1:t-1})}{\p_{R^\prime}(A_t|A_{1:t-1})}$$
@@ -134,7 +134,7 @@ $$
 \end{align*}
 $$
 
-Note that $n_1,n_2$ and $k$ depend only on the action sequence $a_{1:t}$ and not on the rewards. Suppose at time $t^\prime$, we played arm 2 and its reward was changed, $\p_R$ and $\p_{R^\prime}$ would differ only becuase of their corresponding $\hat\Delta$. Bounding involved working with many cases. The worst one is presented here.  $\hat\Delta$s would differ by atmost $1/(n_2(t-1) + 1)$ at every time t. Also, suppose from now onwards, $\sqrt{k}\hat\Delta > 1$. That is, arm 1 is has a greater chance of getting played under $\p_R$. The privacy loss can be upper bounded: 
+Note that $n_1,n_2$ and $k$ depend only on the action sequence $a_{1:t}$ and not on the rewards. Suppose at time $t^\prime$, we played arm 2 and its reward was changed, $\p_R$ and $\p_{R^\prime}$ would differ only because of their corresponding $\hat\Delta$. Bounding involved working with many cases. The worst one is presented here.  $\hat\Delta$s would differ by atmost $1/(n_2(t-1) + 1)$ at every time t. Also, suppose from now onwards, $\sqrt{k}\hat\Delta > 1$. That is, arm 1 has a greater chance of getting played under $\p_R$. The privacy loss can be upper bounded: 
 
 
 $$
@@ -164,10 +164,14 @@ $$
 With $n_2(T) \leq T$, we have
 
 $$
+\begin{equation}\label{eq:loss}
 \mathcal{L}_{R,R^\prime} \leq c\sqrt{T} + \sum_{j=1}^{T} \frac{1}{\sqrt{j + 1}}\left(\sum_{t=\tau_j}^{\tau_{j+1} - 1}f(t)\right)
+\end{equation}
 $$
 
-Essentially, we are incurring a privacy loss of $\frac{1}{\sqrt{j + 1}}\left(\sum_{t=\tau_j}^{\tau_{j+1} - 1}f(t)\right)$ between the two plays of arm 2. The denominator does not increase regardless of how many times we play the first arm. Even if I showed $f(t)$ was bounded by a number, however small, we would only end up with a trivial upper bound of $\mathcal{O}(T)$. I figured the only way to bound this sum was to factor $\p_R(A_t=2\mid a_{1:t-1})$ from $f$. Then, for example, in expectation, if I toss a fair coin, I should get heads in two tries or about $\frac{1}{b}$ tries if the coin had bias $b$. That is, a certain action is not being played because its chance is low, so would be the privacy loss and we would be done.
+<div>
+Essentially, we are incurring a privacy loss of $\frac{1}{\sqrt{j + 1}}\left(\sum_{t=\tau_j}^{\tau_{j+1} - 1}f(t)\right)$ between the two plays of arm 2. The denominator does not advance until the second arm (whose probability is low) is played. In the worst case the second arm is almost never played and we might end up with a trivial upper bound of $\mathcal{O}(T)$. I figured the only way to bound this sum was to factor $\p_R(A_t=2\mid a_{1:t-1})$ from $f$. Then, for example, in expectation, if I toss a fair coin, I should get heads in two tries or about $\frac{1}{b}$ tries if the coin had bias $b$. I hoped to show that the sum $\sum_{t=\tau_j}^{\tau_{j+1} - 1}\p(A_t=2|A_{1:t-1})$ would be bounded by some function of $\delta$. First, we try for the case when the $\p(A_t=2|A_{1:t-1}) = p$ is fixed throughout. Then $\sum_{t=\tau_j}^{\tau_{j+1} - 1}\p(A_t=2|A_{1:t-1}) \sim \mathrm{Geom}(p)$.
+</div>
 
 
 ---
@@ -190,7 +194,7 @@ $$k \;\geq\; \frac{\log(1/\delta)}{p}.$$
 
 ---
 
-However, what if the bias (although predictable) was changing with time? Most of the work poured into the main proof involved different approaches and iterations. Among many pages of scratches, this theorem sat close to my heart. This is one of the first (original) high probability bounds I ever worked on. This result turned out to provide a valid, illustrative, intermediate goal that gave me the confidence for the development of the algebra of my thesis.  Unfortunately, it will not make it into the final draft, but it finds its place on the web. My original proof exploits a key pattern in the game. On the other hand, Claude Code gave a totally different, slick proof and hopefully a great read.
+However, what if the bias (although predictable) was changing with time? Most of the work poured into the main proof involved different approaches and iterations. Among many pages of scratches, this theorem sat close to my heart. This is one of the first (original) high probability bounds I ever worked on. This result turned out to provide a valid, illustrative, intermediate goal that gave me the confidence for the development of the algebra of my thesis.  Unfortunately, it will not make it into the final draft, but it finds its place on the web. My original proof exploits a key pattern in the game. On the other hand, Claude Code gave a totally different, slick proof and hopefully a great read. Each result is not directly used for the next, but it inspires it.
 
 ---
 
@@ -322,4 +326,44 @@ $\blacksquare$
 
 ---
 
-[^agrawal2017]: Agrawal, S., & Goyal, N. (2017). Near-Optimal Regret Bounds for Thompson Sampling. *Journal of the ACM*, 64(5), Article 30. [https://doi.org/10.1145/3088510](https://doi.org/10.1145/3088510)
+## Connecting back
+After factoring probability of the lesser arm, we end up with:
+
+$$
+\sum_{t=\tau_j}^{\tau_{j+1} - 1}f(t) = c\;\sum_{t=\tau_j}^{\tau_{j+1} - 1} \p(A_t=2|a_{1:t-1})\leq c\cdot \log(1/\delta)\quad\text{w.p.}\quad 1-\delta.
+$$
+
+This is the same structure as the coin game, where we are adding up the bias of the coin until we toss heads. And union bound over bad events, we get:
+
+$$
+\forall j \in [T] \quad \sum_{t=\tau_j}^{\tau_{j+1} - 1}f(t) \leq c\cdot \log(T/\delta)\quad\text{w.p.}\quad 1-\delta.
+$$
+
+Continuing from $\eqref{eq:loss}$, we get
+
+$$
+\begin{align*}
+\mathcal{L}_{R,R^\prime} &\leq c\sqrt{T} + \sum_{j=1}^{T} \frac{1}{\sqrt{j + 1}}\left(\sum_{t=\tau_j}^{\tau_{j+1} - 1}f(t)\right)\\
+&\leq  c\sqrt{T} + \sum_{j=1}^{T} \frac{\log(T/\delta)}{\sqrt{j + 1}} \quad \text{w.p.} \quad 1-\delta\\
+&= \mathcal{O}\left(\sqrt{T}\log(T/\delta)\right) \quad \text{w.p.} \quad 1-\delta
+\end{align*}
+$$
+
+And this would mean that TS is $(\epsilon,\delta)$-DP, with $\epsilon = \mathcal{O}\left(\sqrt{T}\log(T/\delta)\right)$. A month later, when my advisor and I were working on the lower bounds, I happened to come up with
+
+$$
+\begin{align*}
+\mathcal{L}_{R,R^\prime} &\leq C\cdot\sum_{t\leq T}\frac{\p(A_t=2|a_{1:t-1})}{n_2(t-1) + 1}\\
+&= \mathcal{O}\left(\log T\log(T/\delta)\right) \quad \text{w.p} \quad 1-\delta,
+\end{align*}
+$$
+
+using the same logic. However, this second iteration had negative terms and we had to use time-uniform bounds. As a result, the above coin theorem was not included in my thesis. Based on the form on inequalities I have in the main paper, my advisor suggested I use Freedman-style bounds prevalent in bandit papers [^beygelzimer2011]. All in all, I am very grateful for the continual guidance and support of my advisor [Prof. Shipra Agrawal](https://www.columbia.edu/~sa3305/) throughout my Masters thesis. I have submitted the full work to [Neurips 2026](https://neurips.cc/) and awaiting acceptance. I plan to link it here soon.
+
+## Conclusion
+This post gave a brief overview about Thompson sampling and Differential Privacy. It then gave a brief overview of the problem I got stuck at when bounding the privacy loss. This lead to the development of the game and my proof. This post serves as a souvenir as I finish up my Masters thesis.
+
+
+[^agrawal2017]: Agrawal, S., & Goyal, N. (2017). Near-Optimal Regret Bounds for Thompson Sampling. *Journal of the ACM*, 64(5), Article 30.
+
+[^beygelzimer2011]: Alina Beygelzimer, John Langford, Lihong Li, Lev Reyzin, and Robert E. Schapire. “Contextual bandit algorithms with supervised learning guarantees.” Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics. JMLR Workshop and Conference Proceedings, 2011.
