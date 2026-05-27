@@ -8,13 +8,13 @@ math: true
 
 ## Motivation
 
-A plethora of algorithms extract invaluable insights from vast amounts of data. But releasing data — even in anonymized form — has repeatedly proven dangerous.
+A plethora of algorithms extract invaluable insights from vast amounts of data. But releasing even anonymized data has repeatedly proven dangerous.
 
-**The Netflix Prize (2006–2009).** Netflix publicly released a dataset of 100 million movie ratings from 500,000 subscribers, replacing usernames with random IDs. Narayanan and Shmatikoff [^narayanan2008] showed that knowing as few as 8 movies a person rated (and their approximate dates) was enough to uniquely identify that person in the dataset with high confidence, simply by cross-referencing with public IMDb reviews. Anonymization alone was not enough.
+**The Netflix Prize (2006–2009).** Netflix publicly released a dataset of 100 million movie ratings from 500,000 subscribers, replacing usernames with random IDs. Narayanan and Shmatikoff [^narayanan2008] showed that knowing just 8 movies a person rated (and their approximate dates) was enough to uniquely identify that person in the dataset with high confidence, simply by cross-referencing with public IMDb reviews. Anonymization alone was not enough.
 
-**The AOL Search Leak (2006).** AOL released 20 million search queries from 650,000 users, again replacing usernames with numeric IDs. Within days, *New York Times* reporters identified user #4417749 as Thelma Arnold, a 62-year-old widow from Georgia — purely from the content of her searches [^aol2006]. Her queries included her town, her friends' names, and her medical conditions. No technical attack was needed; a human reading the queries was sufficient.
+**The AOL Search Leak (2006).** AOL released 20 million search queries from 650,000 users, again replacing usernames with numeric IDs. Within days, *New York Times* reporters identified user #4417749 as Thelma Arnold, a 62-year-old widow from Georgia, purely from the content of her searches [^aol2006]. Her queries included her town, her friends' names, and her medical conditions. A human reading the queries was sufficient to blow her privacy.
 
-These incidents illustrate a fundamental issue: data that appears anonymous in isolation can become identifying when combined with other information. Differential privacy is the mathematical response to this challenge. It is a property of an *algorithm* (not a dataset) that guarantees the output is useful in aggregate while placing a hard limit on how much any single individual's data can influence what an adversary learns. We follow definitions from Near and Abuah [^near_abuah_2021] and Dwork and Roth [^dwork2014].
+These incidents illustrate a fundamental issue: data that appears anonymous in isolation can become identifying when combined with other information. Differential privacy is one way to tackle this challenge. It is a property of an *algorithm* (not a dataset) that guarantees the output is useful in aggregate while placing a hard limit on how much any single individual's data can influence what an adversary learns. We follow definitions from Near and Abuah [^near_abuah_2021] and Dwork and Roth [^dwork2014].
 
 ---
 
