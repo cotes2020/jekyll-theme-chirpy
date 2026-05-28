@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.title }} · {{ site.tagline }}</title>
+    <meta name="description" content="{{ site.description }}">
+
+    {% assign profile = site.data.profile %}
+
+    <meta property="og:title" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:type" content="profile">
+    {% if site.url %}<meta property="og:url" content="{{ site.url }}">{% endif %}
+    {% if profile.photo %}<meta property="og:image" content="{{ profile.photo | relative_url }}">{% endif %}
+
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicons/favicon.svg' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicons/favicon.svg' | relative_url }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+
+    <script>
+      // Pre-paint theme to avoid flash
+      (function () {
+        var saved = localStorage.getItem('theme');
+        var initial = saved || 'light';
+        document.documentElement.setAttribute('data-theme', initial);
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header class="topbar" id="topbar">
+      <div class="topbar-inner">
+        <a class="topbar-brand" href="#hero">{{ profile.name_en }}</a>
+        <nav class="topbar-nav" aria-label="Main navigation">
+          <a href="#about" data-nav>About</a>
+          <a href="#timeline" data-nav>Timeline</a>
+          <a href="#experience" data-nav>Experience</a>
+          {% if profile.contact.cv %}<a href="{{ profile.contact.cv | relative_url }}" target="_blank" rel="noopener">CV</a>{% endif %}
+          <a href="mailto:{{ profile.contact.email }}" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+            <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      {%- comment -%} HERO {%- endcomment -%}
+      <section id="hero" class="section section-hero">
+        <div class="hero-grid">
+          <div class="hero-photo">
+            <img src="{{ profile.photo | relative_url }}" alt="{{ profile.name_en }}">
+          </div>
+          <div class="hero-text">
+            <h1 class="hero-name">
+              {{ profile.name_en }}
+              <span class="hero-name-ko">{{ profile.name_ko }}</span>
+            </h1>
+            <p class="hero-line">{{ profile.position }} · {{ profile.department }}</p>
+            <p class="hero-line">
+              {{ profile.affiliation }} · {{ profile.lab }}
+            </p>
+            <p class="hero-line hero-advisor">
+              Advisor:
+              {% if profile.advisor_url %}<a href="{{ profile.advisor_url }}" target="_blank" rel="noopener">{{ profile.advisor }}</a>{% else %}{{ profile.advisor }}{% endif %}
+            </p>
+
+            <ul class="hero-links" aria-label="Contact links">
+              {% if profile.contact.email %}
+              <li><a href="mailto:{{ profile.contact.email }}" aria-label="Email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>Email</span>
+              </a></li>
+              {% endif %}
+              {% if profile.contact.github %}
+              <li><a href="{{ profile.contact.github }}" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+                <span>GitHub</span>
+              </a></li>
+              {% endif %}
+              {% if profile.contact.linkedin %}
+              <li><a href="{{ profile.contact.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+                <span>LinkedIn</span>
+              </a></li>
+              {% endif %}
+              {% if profile.contact.scholar %}
+              <li><a href="{{ profile.contact.scholar }}" target="_blank" rel="noopener" aria-label="Google Scholar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0.5 9.5 12 1l11.5 8.5-4.742 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.749-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+                <span>Scholar</span>
+              </a></li>
+              {% endif %}
+              {% if profile.contact.cv %}
+              <li><a href="{{ profile.contact.cv | relative_url }}" target="_blank" rel="noopener" aria-label="CV">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                <span>CV</span>
+              </a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {%- comment -%} ABOUT {%- endcomment -%}
+      <section id="about" class="section">
+        <h2 class="section-title">About</h2>
+        <div class="section-body">
+          <div class="bio">
+            {% if profile.bio_paragraphs %}
+              {% for p in profile.bio_paragraphs %}
+                <p>{{ p }}</p>
+              {% endfor %}
+            {% elsif profile.bio %}
+              <p>{{ profile.bio }}</p>
+            {% endif %}
+          </div>
+
+        </div>
+      </section>
+
+      {%- comment -%} TIMELINE {%- endcomment -%}
+      <section id="timeline" class="section">
+        <h2 class="section-title">Timeline</h2>
+        <div class="section-body">
+          <ol class="timeline">
+            {% for year_block in site.data.timeline %}
+              <li class="timeline-year-block">
+                <div class="timeline-year">{{ year_block.year }}</div>
+                <ul class="timeline-events">
+                  {% for ev in year_block.events %}
+                    <li class="timeline-event{% if ev.ongoing %} is-ongoing{% endif %}">
+                      <span class="timeline-date">{{ ev.date }}</span>
+                      <div class="timeline-content">
+                        <div class="timeline-title">
+                          {{ ev.title }}{% if ev.ongoing %} <span class="badge">current</span>{% endif %}
+                        </div>
+                        {% if ev.where %}<div class="timeline-where">{{ ev.where }}</div>{% endif %}
+                        {% if ev.detail %}<div class="timeline-detail">{{ ev.detail }}</div>{% endif %}
+                      </div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </section>
+
+      {%- comment -%} EXPERIENCE {%- endcomment -%}
+      <section id="experience" class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-body">
+
+          {%- comment -%} Work {%- endcomment -%}
+          <h3 class="subhead">Work</h3>
+          <ol class="exp-list">
+            {% for job in site.data.experience %}
+              <li class="exp-item">
+                <div class="exp-head">
+                  <div class="exp-head-left">
+                    <div class="exp-title">
+                      {{ job.role }}{% if job.team %} <span class="exp-team">· {{ job.team }}</span>{% endif %}
+                    </div>
+                    <div class="exp-org">
+                      {% if job.org_url %}<a href="{{ job.org_url }}" target="_blank" rel="noopener">{{ job.org }}</a>{% else %}{{ job.org }}{% endif %}{% if job.location %}<span class="exp-location"> · {{ job.location }}</span>{% endif %}
+                    </div>
+                  </div>
+                  <div class="exp-period">{{ job.period }}</div>
+                </div>
+                {% if job.description %}<p class="exp-desc">{{ job.description }}</p>{% endif %}
+                {% if job.points and job.points != empty %}
+                <ul class="exp-points">
+                  {% for p in job.points %}
+                    <li>{{ p }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+
+          {%- comment -%} Skills {%- endcomment -%}
+          {% if site.data.credentials.skills %}
+          <h3 class="subhead">Skills</h3>
+          <ul class="tag-list">
+            {% for s in site.data.credentials.skills %}
+              <li class="tag">{{ s }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {%- comment -%} Certificates {%- endcomment -%}
+          {% if site.data.credentials.certificates %}
+          <h3 class="subhead">Certificates</h3>
+          <ul class="cred-list">
+            {% for c in site.data.credentials.certificates %}
+              <li class="cred-item">
+                <span class="cred-name">{{ c.name }}</span>
+                <span class="cred-date">{{ c.date }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {%- comment -%} Languages {%- endcomment -%}
+          {% if site.data.credentials.languages %}
+          <h3 class="subhead">Languages</h3>
+          <ul class="cred-list">
+            {% for l in site.data.credentials.languages %}
+              <li class="cred-item">
+                <span class="cred-name">{{ l.name }}{% if l.level %} · {{ l.level }}{% endif %}</span>
+                <span class="cred-date">{{ l.date }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="footer-inner">
+        <span>© {{ 'now' | date: '%Y' }} {{ profile.name_en }}</span>
+        <span class="footer-dot">·</span>
+        <span>Last updated {{ site.time | date: '%Y-%m-%d' }}</span>
+      </div>
+    </footer>
+
+    <script src="{{ '/assets/js/portfolio.js' | relative_url }}" defer></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+name_en: Suhyeon Jun
+name_ko: 전수현
+position: M.S. Student
+department: Computer Science and Engineering
+affiliation: POSTECH
+lab: Machine Learning Lab (MLLab)
+advisor: Prof. Dongwoo Kim
+advisor_url: https://dongwookim-ml.github.io/
+
+photo: /assets/img/profile/suhyeon_image.jpg
+
+bio_paragraphs:
+  - >-
+    I am an M.S. student in the
+    <a href="https://cse.postech.ac.kr/csepostech" target="_blank" rel="noopener">Department
+    of Computer Science and Engineering</a> at
+    <a href="https://www.postech.ac.kr" target="_blank" rel="noopener">Pohang
+    University of Science and Technology (POSTECH)</a>. I am a member of the
+    <a href="https://ml.postech.ac.kr/" target="_blank" rel="noopener">Machine
+    Learning Lab</a>, where I am advised by
+    <a href="https://dongwookim-ml.github.io/" target="_blank" rel="noopener">Prof.
+    Dongwoo Kim</a>.
+  - >-
+    My research focuses on <strong>Trustworthy AI</strong>, with particular
+    interest in methods for machine unlearning, privacy-preserving ML, and
+    robust evaluation of AI systems. I am also broadly interested in
+    <strong>Generative AI</strong>.
+
+contact:
+  email: suhyeonjun@postech.ac.kr
+  github: https://github.com/sooh-J
+  linkedin: https://www.linkedin.com/in/sooh-j
+  scholar: # add Google Scholar URL here when available
+  cv: /assets/cv/Suhyeon_Jun_CV.pdf

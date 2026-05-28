@@ -1,225 +1,46 @@
-# The Site Configuration
+# Site configuration
 
-# Import the theme
-theme: jekyll-theme-chirpy
+title: Suhyeon Jun
+tagline: M.S. Student, CSE @ POSTECH
+description: >-
+  Personal page of Suhyeon Jun, M.S. student in Computer Science and Engineering at POSTECH, MLLab.
 
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
-# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
-# otherwise, the layout language will use the default value of 'en'.
-lang: en, ko-KR
-
-# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Seoul
-
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# ↓ --------------------------
-
-title: sooh-J # the main title
-
-tagline: Interest in [AI, Vision-Language Model, LLM, MedialAI] # it will display as the sub-title
-
-description: >- # used by seo meta and the atom feed
-  sooh-J blog for technical writing.
-
-# Fill in the protocol & hostname for your site.
-# e.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://sooh-J.github.io"
-
-github:
-  username: sooh-J # change to your github username
-
-# twitter:
-#   username: twitter_username # change to your twitter username
-
-social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: sooh-J
-  email: jsh040516@gmail.com # change to your email address
-  links:
-    # The first element serves as the copyright owner's link
-    - https://github.com/sooh-J # change to your github homepage
-    # Uncomment below to add more social links
-    - https://www.linkedin.com/in/sooh-j
-
-# Site Verification Settings
-webmaster_verifications:
-  google: # fill in your Google verification code
-  bing: # fill in your Bing verification code
-  alexa: # fill in your Alexa verification code
-  yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
-  facebook: # fill in your Facebook verification code
-
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
-
-# Web Analytics Settings
-analytics:
-  google:
-    id: # fill in your Google Analytics ID
-  goatcounter:
-    id: # fill in your GoatCounter ID
-  umami:
-    id: # fill in your Umami ID
-    domain: # fill in your Umami domain
-  matomo:
-    id: # fill in your Matomo ID
-    domain: # fill in your Matomo domain
-  cloudflare:
-    id: # fill in your Cloudflare Web Analytics token
-
-# Pageviews settings
-pageviews:
-  provider: # now only supports 'goatcounter'
-
-# Prefer color scheme setting.
-#
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
-#
-# Available options:
-#
-#     light  - Use the light color scheme
-#     dark   - Use the dark color scheme
-#
-theme_mode: light # [light | dark]
-
-# The CDN endpoint for media resources.
-# Notice that once it is assigned, the CDN url
-# will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
-#
-# e.g. 'https://cdn.com'
-cdn: #"https://chirpy-img.netlify.app"
-
-# the avatar on sidebar, support local or CORS resources
-avatar: https://velog.velcdn.com/images/sooh/profile/11ecd993-0864-4189-867e-3825d0dfd33c/image.jpeg #"/commons/avatar.jpg"
-
-# The URL of the site-wide social preview image used in SEO `og:image` meta tag.
-# It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
-
-# boolean type, the global switch for TOC in posts.
-toc: true
-
-comments:
-  # Global switch for the post comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
-  # The provider options are as follows:
-  disqus:
-    shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
-  utterances:
-    repo: # <gh-username>/<repo>
-    issue_term: # < url | pathname | title | ...>
-  # Giscus options › https://giscus.app
-  giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping: # optional, default to 'pathname'
-    strict: # optional, default to '0'
-    input_position: # optional, default to 'bottom'
-    lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
-
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
-assets:
-  self_host:
-    enabled: # boolean, keep empty means false
-    # specify the Jekyll environment, empty means both
-    # only works if `assets.self_host.enabled` is 'true'
-    env: # [development | production]
-
-pwa:
-  enabled: true # the option for PWA feature (installable)
-  cache:
-    enabled: true # the option for PWA offline cache
-    # Paths defined here will be excluded from the PWA cache.
-    # Usually its value is the `baseurl` of another website that
-    # shares the same domain name as the current website.
-    deny_paths:
-      # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
-
-paginate: 10
-
-# The base URL of your site
 baseurl: ""
 
-# ------------ The following options are not recommended to be modified ------------------
+lang: en
+timezone: Asia/Seoul
 
+github:
+  username: sooh-J
+
+social:
+  name: Suhyeon Jun
+  email: suhyeonjun@postech.ac.kr
+  links:
+    - https://github.com/sooh-J
+    - https://www.linkedin.com/in/sooh-j
+
+avatar: /assets/img/profile/suhyeon_image.jpg
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Kramdown / Rouge
 kramdown:
-  footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+  syntax_highlighter_opts:
     css_class: highlight
-    # default_lang: console
-    span:
-      line_numbers: false
-    block:
-      line_numbers: true
-      start_line: 1
 
-collections:
-  tabs:
-    output: true
-    sort_by: order
-
-defaults:
-  - scope:
-      path: "" # An empty string here means all files in the project
-      type: posts
-    values:
-      layout: post
-      comments: true # Enable comments in posts.
-      toc: true # Display TOC column in posts.
-      # DO NOT modify the following parameter unless you are confident enough
-      # to update the code of all other post links in this project.
-      permalink: /posts/:title/
-  - scope:
-      path: _drafts
-    values:
-      comments: false
-  - scope:
-      path: ""
-      type: tabs # see `site.collections`
-    values:
-      layout: page
-      permalink: /:title/
-  - scope:
-      path: assets/js/dist
-    values:
-      swcache: true
-
-sass:
-  style: compressed
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  profile: false
-  blanklines: false
-  ignore:
-    envs: [development]
-
+# Files to exclude from build
 exclude:
-  - "*.gem"
-  - "*.gemspec"
-  - docs
-  - tools
   - README.md
   - LICENSE
-  - rollup.config.js
-  - package*.json
-
-jekyll-archives:
-  enabled: [categories, tags]
-  layouts:
-    category: category
-    tag: tag
-  permalinks:
-    tag: /tags/:name/
-    category: /categories/:name/
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - test
+  - test.c

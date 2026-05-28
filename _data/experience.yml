@@ -1,0 +1,43 @@
+- role: AI Engineer
+  team: Sprint Team
+  org: Dalpha
+  org_url:
+  location: Seoul, South Korea
+  period: Jul 2024 – Jul 2025
+  description: >-
+    Worked on AI projects across various domains, developing real-world AI
+    services including generative AI (text/image, diffusion), TTS, image
+    matching, chatbot, text search, information extraction, and survey
+    automation.
+  points:
+    - Built a Korean audiobook TTS system using 2,000+ hours of collected audio, with a 5-step preprocessing and 2-stage training pipeline for improved pronunciation and speaker style.
+    - Implemented a visual and textual similarity-based product matching pipeline for large-scale retrieval across 7.4M+ items.
+    - Developed a resume parsing solution that extracts structured entity information from unstructured documents.
+    - Built a survey automation system by generating a dynamic decision tree from PDF forms using OCR, question structuring, and semantic analysis of answer choices.
+    - Built a KakaoTalk-integrated chatbot with retrieval and LLM-based response generation.
+
+- role: Research Intern
+  team: AIoT Lab
+  org: POSTECH Institute of Artificial Intelligence
+  org_url:
+  location: Pohang, South Korea
+  period: Oct – Dec 2023
+  description: >-
+    Researched voice generation and conversion using prompt-conditioned timbre
+    representation with Normalizing Flow.
+  points:
+    - Converted an image-text cross-modal alignment structure (LNFMM) into a text-to-timbre mapping framework.
+    - Designed guidelines and constructed a prompt-driven dataset for timbre description and model training.
+    - Built a preprocessing and training pipeline to learn non-linear mappings between text and timbre embeddings using Normalizing Flow.
+
+- role: Contract Research Assistant / Research Intern
+  team: Digital Healthcare R&D Department
+  org: Korea Institute of Industrial Technology (KITECH)
+  org_url:
+  location: Cheonan, South Korea
+  period: Jan – Dec 2022
+  description: >-
+    Developed a deep learning model for spot color prediction in printing,
+    achieving 154% higher accuracy over prior work and leading to a first-author
+    publication.
+  points: []

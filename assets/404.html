@@ -1,14 +1,20 @@
 ---
-layout: page
-title: "404: Page not found"
 permalink: /404.html
-
-redirect_from:
-  - /norobots/
-  - /assets/
-  - /posts/
+layout: none
 ---
-
-{% include lang.html %}
-
-<p class="lead">{{ site.data.locales[lang].not_found.statment }}</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>404 · Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+</head>
+<body>
+  <main class="page" style="padding: 120px 24px; text-align: center;">
+    <h1 style="font-family: var(--font-serif); font-size: 4rem; margin: 0; color: var(--accent-strong);">404</h1>
+    <p style="color: var(--ink-muted); margin: 12px 0 24px;">Page not found.</p>
+    <a href="{{ '/' | relative_url }}">Back to home</a>
+  </main>
+</body>
+</html>
