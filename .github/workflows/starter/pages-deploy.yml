@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - master
+      - prod
     paths-ignore:
       - .gitignore
       - README.md
