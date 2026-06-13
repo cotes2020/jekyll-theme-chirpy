@@ -46,13 +46,24 @@ export function loadMermaid() {
   const initTheme = themeMapper[Theme.visualState];
 
   let mermaidConf = {
-    theme: initTheme
+    theme: initTheme,
+    startOnLoad: false
   };
 
   const basicList = document.getElementsByClassName('language-mermaid');
   [...basicList].forEach(setNode);
 
   mermaid.initialize(mermaidConf);
+
+  // Defer rendering until web fonts are ready so Mermaid measures label
+  // widths with the correct font metrics, preventing text clipping inside
+  // SVG foreignObject when a web font is wider than the fallback font.
+  // Cap the wait at 2.5 s so a slow/blocked font source never stalls diagrams.
+  const fontsReady = document.fonts?.ready ?? Promise.resolve();
+  const timeout = new Promise((resolve) => setTimeout(resolve, 2500));
+  Promise.race([fontsReady, timeout]).then(() =>
+    mermaid.run().catch(console.error)
+  );
 
   if (Theme.switchable) {
     window.addEventListener('message', refreshTheme);
