@@ -85,7 +85,7 @@
 
 .pagination {
   color: var(--text-color);
-  font-family: Lato, sans-serif;
+  font-family: $font-family-base;
   justify-content: space-evenly;
 
   a:hover {
