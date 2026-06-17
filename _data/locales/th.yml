@@ -49,6 +49,11 @@ notification:
   update_found: มีเวอร์ชันใหม่ของเนื้อหา
   update: อัปเดต
 
+theme:
+  light: สว่าง
+  dark: มืด
+  system: ระบบ
+
 # ----- Posts related labels -----
 
 post:

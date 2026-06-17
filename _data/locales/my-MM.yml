@@ -49,6 +49,11 @@ notification:
   update_found: အကြောင်းအရာဗားရှင်းအသစ်ကို ရနိုင်ပါပြီ။
   update: အပ်ဒိတ်
 
+theme:
+  light: အလင်း
+  dark: အမှောင်
+  system: စနစ်
+
 # ----- Posts related labels -----
 
 post:

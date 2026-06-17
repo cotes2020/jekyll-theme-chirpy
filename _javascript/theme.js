@@ -1,135 +1,153 @@
 /**
- * Theme management class
+ *  A utility class that manages the site's theme mode.
  *
- * To reduce flickering during page load, this script should be loaded synchronously.
+ * Concepts:
+ *  - Mode: dark, light, or system. The latter follows the operating system's preference.
+ *  - Theme: The actual theme applied to the DOM, either dark or light. Determined by the mode or system preference.
  */
 class Theme {
-  static #modeKey = 'mode';
-  static #modeAttr = 'data-mode';
-  static #darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
-  static switchable = !document.documentElement.hasAttribute(this.#modeAttr);
+  /** @type {string} LocalStorage key for the selected theme mode. */
+  static #storageKey = 'theme';
 
-  static get DARK() {
-    return 'dark';
+  static Mode = Object.freeze({
+    DARK: 'dark',
+    LIGHT: 'light',
+    SYSTEM: 'system'
+  });
+
+  static #root = document.documentElement;
+
+  /** @type {MediaQueryList} System dark-mode preference query. */
+  static #mediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  /** @returns {string|null} The theme currently set on the DOM. */
+  static get #domTheme() {
+    return this.#root.dataset.bsTheme || null;
   }
 
-  static get LIGHT() {
-    return 'light';
+  /** @returns {string|null} The theme stored on the client. */
+  static get #storedTheme() {
+    return localStorage.getItem(this.#storageKey);
+  }
+
+  /** @returns {string} The theme preferred by the operating system. */
+  static get #systemTheme() {
+    return this.#prefersDark ? this.Mode.DARK : this.Mode.LIGHT;
+  }
+
+  /** @returns {boolean} Whether the operating system prefers dark mode. */
+  static get #prefersDark() {
+    return this.#mediaDark.matches;
   }
 
   /**
-   * @returns {string} Theme mode identifier
-   */
-  static get ID() {
-    return 'theme-mode';
-  }
-
-  /**
-   * Gets the current visual state of the theme.
+   * Applies a theme and optionally persists it as a user preference.
    *
-   * @returns {string} The current visual state, either the mode if it exists,
-   *                   or the system dark mode state ('dark' or 'light').
+   * @param {'light'|'dark'} theme
+   * @param {{ persist?: boolean, domPersist?: boolean }} [options]
+   *        - `persist`: Whether the theme is persisted in localStorage.
+   *        - `domPersist`: Whether the theme is persisted in data attributes on the DOM.
    */
-  static get visualState() {
-    if (this.#hasMode) {
-      return this.#mode;
-    } else {
-      return this.#sysDark ? this.DARK : this.LIGHT;
+  static #apply(theme, { persist = false, domPersist = false } = {}) {
+    this.#root.dataset.bsTheme = theme;
+
+    if (persist) {
+      localStorage.setItem(this.#storageKey, theme);
+    }
+
+    if (domPersist || persist) {
+      this.#root.toggleAttribute('data-theme-persisted', true);
     }
   }
 
-  static get #mode() {
-    return (
-      sessionStorage.getItem(this.#modeKey) ||
-      document.documentElement.getAttribute(this.#modeAttr)
-    );
+  /** Removes the stored user preference. */
+  static #clearStorage() {
+    localStorage.removeItem(this.#storageKey);
+    this.#root.toggleAttribute('data-theme-persisted', false);
   }
 
-  static get #isDarkMode() {
-    return this.#mode === this.DARK;
+  /** Broadcasts a theme change event to dependent modules. */
+  static #notify() {
+    window.postMessage({ id: this.eventId }, '*');
   }
 
-  static get #hasMode() {
-    return this.#mode !== null;
+  /** @type {boolean} Whether the current page allows theme toggling. */
+  static isToggleable = this.#domTheme === null;
+
+  static eventId = 'theme-updated';
+
+  /** @returns {string} Resolved theme, falling back to the system preference. */
+  static get resolvedTheme() {
+    return this.#storedTheme || this.#systemTheme;
   }
 
-  static get #sysDark() {
-    return this.#darkMedia.matches;
+  /** @returns {boolean} Whether the theme is determined by the system preference. */
+  static get isSystemTheme() {
+    return this.#storedTheme === null;
+  }
+
+  /** @returns {boolean} Whether the resolved theme is dark. */
+  static get isDark() {
+    return this.resolvedTheme === this.Mode.DARK;
   }
 
   /**
-   * Maps theme modes to provided values
-   * @param {string} light Value for light mode
-   * @param {string} dark Value for dark mode
-   * @returns {Object} Mapped values
+   * Creates a mode-indexed value map.
+   *
+   * @template T
+   * @param {T} light Value for light mode.
+   * @param {T} dark Value for dark mode.
+   * @returns {{ light: T, dark: T }}
    */
-  static getThemeMapper(light, dark) {
+  static newThemeMap(light, dark) {
     return {
-      [this.LIGHT]: light,
-      [this.DARK]: dark
+      [this.Mode.LIGHT]: light,
+      [this.Mode.DARK]: dark
     };
   }
 
-  /**
-   * Initializes the theme based on system preferences or stored mode
-   */
+  /** Initializes the theme from the stored value or system preference. */
   static init() {
-    if (!this.switchable) {
+    if (!this.isToggleable) {
+      this.#clearStorage();
       return;
     }
 
-    this.#darkMedia.addEventListener('change', () => {
-      const lastMode = this.#mode;
-      this.#clearMode();
+    const storedTheme = this.#storedTheme;
 
-      if (lastMode !== this.visualState) {
-        this.#notify();
+    if (storedTheme) {
+      this.#apply(storedTheme, { domPersist: true });
+    } else {
+      this.#apply(this.#systemTheme);
+    }
+
+    this.#mediaDark.addEventListener('change', () => {
+      if (this.#storedTheme) {
+        return;
       }
+
+      this.#apply(this.#systemTheme);
+      this.#notify();
     });
-
-    if (!this.#hasMode) {
-      return;
-    }
-
-    if (this.#isDarkMode) {
-      this.#setDark();
-    } else {
-      this.#setLight();
-    }
   }
 
   /**
-   * Flips the current theme mode
+   * Updates the theme by the specified mode.
+   *
+   * @param {'light'|'dark'|'system'} mode
    */
-  static flip() {
-    if (this.#hasMode) {
-      this.#clearMode();
-    } else {
-      this.#sysDark ? this.#setLight() : this.#setDark();
+  static update(mode) {
+    const newTheme = mode === this.Mode.SYSTEM ? this.#systemTheme : mode;
+
+    if (newTheme !== this.resolvedTheme) {
+      this.#notify();
     }
-    this.#notify();
-  }
 
-  static #setDark() {
-    document.documentElement.setAttribute(this.#modeAttr, this.DARK);
-    sessionStorage.setItem(this.#modeKey, this.DARK);
-  }
+    this.#apply(newTheme, { persist: mode !== this.Mode.SYSTEM });
 
-  static #setLight() {
-    document.documentElement.setAttribute(this.#modeAttr, this.LIGHT);
-    sessionStorage.setItem(this.#modeKey, this.LIGHT);
-  }
-
-  static #clearMode() {
-    document.documentElement.removeAttribute(this.#modeAttr);
-    sessionStorage.removeItem(this.#modeKey);
-  }
-
-  /**
-   * Notifies other plugins that the theme mode has changed
-   */
-  static #notify() {
-    window.postMessage({ id: this.ID }, '*');
+    if (mode === this.Mode.SYSTEM) {
+      this.#clearStorage();
+    }
   }
 }
 

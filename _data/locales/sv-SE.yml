@@ -49,6 +49,11 @@ notification:
   update_found: Det finns en ny version av innehållet.
   update: Uppdatera sidan
 
+theme:
+  light: Ljust
+  dark: Mörkt
+  system: System
+
 # ----- Posts related labels -----
 
 post:

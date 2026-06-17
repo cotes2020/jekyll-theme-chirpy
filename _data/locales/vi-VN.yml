@@ -48,6 +48,11 @@ notification:
   update_found: Đã có phiên bản mới của nội dung.
   update: Cập nhật
 
+theme:
+  light: Sáng
+  dark: Tối
+  system: Hệ thống
+
 # ----- Posts related labels -----
 
 post:

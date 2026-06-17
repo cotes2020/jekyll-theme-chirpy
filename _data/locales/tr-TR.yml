@@ -49,6 +49,11 @@ notification:
   update_found: İçeriğin yeni bir sürümü mevcut.
   update: Güncelle
 
+theme:
+  light: Açık
+  dark: Koyu
+  system: Sistem
+
 # ----- Posts related labels -----
 
 post:

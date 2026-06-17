@@ -48,6 +48,11 @@ notification:
   update_found: Eine neue Version ist verfügbar.
   update: Neue Version
 
+theme:
+  light: Hell
+  dark: Dunkel
+  system: System
+
 # ----- Posts related labels -----
 
 post:

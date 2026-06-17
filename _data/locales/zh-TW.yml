@@ -48,6 +48,11 @@ notification:
   update_found: 發現新版本更新。
   update: 更新
 
+theme:
+  light: 淺色
+  dark: 深色
+  system: 跟隨系統
+
 # ----- Posts related labels -----
 
 post:

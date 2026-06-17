@@ -49,6 +49,11 @@ notification:
   update_found: وەشانێکی نوێی ناوەڕۆک بەردەستە.
   update: نوێکردنەوە
 
+theme:
+  light: ڕووناک
+  dark: تاریک
+  system: سیستەم
+
 # ----- Posts related labels -----
 
 post:

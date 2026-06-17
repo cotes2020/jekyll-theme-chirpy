@@ -49,6 +49,11 @@ notification:
   update_found: نوې نسخه شتون لري.
   update: تازه
 
+theme:
+  light: روښانه
+  dark: تیاره
+  system: سیستم
+
 # ----- Posts related labels -----
 
 post:

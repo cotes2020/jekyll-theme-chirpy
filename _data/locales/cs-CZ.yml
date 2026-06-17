@@ -49,6 +49,11 @@ notification:
   update_found: Je k dispozici nová verze obsahu.
   update: Aktualizace
 
+theme:
+  light: Světlý
+  dark: Tmavý
+  system: Systém
+
 # ----- Posts related labels -----
 
 post:

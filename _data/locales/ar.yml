@@ -49,6 +49,11 @@ notification:
   update_found: يتوفر اصدار جديد للمحتوى.
   update: تحديث
 
+theme:
+  light: فاتح
+  dark: داكن
+  system: النظام
+
 # ----- Posts related labels -----
 
 post:

@@ -50,6 +50,11 @@ notification:
   update_found: Elérhető a tartalom új verziója.
   update: Frissítés
 
+theme:
+  light: Világos
+  dark: Sötét
+  system: Rendszer
+
 # ----- Posts related labels -----
 
 post:

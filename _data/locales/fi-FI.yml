@@ -48,6 +48,11 @@ notification:
   update_found: Uusi versio sisällöstä on saatavilla.
   update: Päivitä
 
+theme:
+  light: Vaalea
+  dark: Tumma
+  system: Järjestelmä
+
 # ----- Posts related labels -----
 
 post:

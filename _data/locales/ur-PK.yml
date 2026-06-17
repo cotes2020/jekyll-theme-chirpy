@@ -49,6 +49,11 @@ notification:
   update_found: نیا مواد دستیاب ہے۔
   update: اپ ڈیٹ
 
+theme:
+  light: روشن
+  dark: تاریک
+  system: سسٹم
+
 # ----- Posts related labels -----
 
 post:

@@ -49,6 +49,11 @@ notification:
   update_found: Nieuwe versie van inhoud beschikbaar.
   update: Update
 
+theme:
+  light: Licht
+  dark: Donker
+  system: Systeem
+
 # ----- Posts related labels -----
 post:
   written_by: Door
