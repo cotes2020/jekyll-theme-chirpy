@@ -46,7 +46,7 @@ not_found:
   statement: Sorry, we hebben de URL verkeerd geplaatst of hij verwijst naar iets dat niet bestaat.
 
 notification:
-  update_found: Nieuwe versie van inhoud beschikbaar.
+  update_found: Nieuwe inhoud gevonden
   update: Update
 
 theme:

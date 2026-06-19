@@ -46,7 +46,7 @@ not_found:
   statement: ببوورە، ئەم بەستەرە نادۆزرێتەوە یان ئاماژە بە شتێک دەکات کە بوونی نییە.
 
 notification:
-  update_found: وەشانێکی نوێی ناوەڕۆک بەردەستە.
+  update_found: ناوەڕۆکی نوێ بەردەستە
   update: نوێکردنەوە
 
 theme:

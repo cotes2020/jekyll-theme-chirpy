@@ -46,7 +46,7 @@ not_found:
   statement: Omlouváme se, adresu URL jsme špatně umístili nebo odkazuje na něco, co neexistuje.
 
 notification:
-  update_found: Je k dispozici nová verze obsahu.
+  update_found: Je tu nový obsah
   update: Aktualizace
 
 theme:

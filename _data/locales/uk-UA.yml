@@ -46,7 +46,7 @@ not_found:
   statement: Вибачте, це посилання вказує на ресурс, що не існує.
 
 notification:
-  update_found: Доступна нова версія вмісту.
+  update_found: Знайдено новий вміст
   update: Оновлення
 
 theme:

@@ -46,7 +46,7 @@ not_found:
   statement: Desculpe, a página não foi encontrada.
 
 notification:
-  update_found: Uma nova versão do conteúdo está disponível.
+  update_found: Novo conteúdo encontrado
   update: atualização
 
 theme:
