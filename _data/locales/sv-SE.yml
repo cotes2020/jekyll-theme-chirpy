@@ -46,8 +46,13 @@ not_found:
   statement: Ursäkta, vi har tappat bort den här webbadressen eller så pekar den på något som inte längre finns.
 
 notification:
-  update_found: Det finns en ny version av innehållet.
+  update_found: Nytt innehåll hittades
   update: Uppdatera sidan
+
+theme:
+  light: Ljust
+  dark: Mörkt
+  system: System
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: min
     prompt: läsning
+  edit: Redigera detta inlägg
   relate_posts: Mer läsning
   share: Dela
   button:

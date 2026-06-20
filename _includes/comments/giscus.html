@@ -1,8 +1,8 @@
 <!-- https://giscus.app/ -->
 <script>
   (function () {
-    const themeMapper = Theme.getThemeMapper('light', 'dark_dimmed');
-    const initTheme = themeMapper[Theme.visualState];
+    const themeMap = Theme.newThemeMap('light', 'dark_dimmed');
+    const initTheme = themeMap[Theme.resolvedTheme];
 
     let lang = '{{ site.comments.giscus.lang | default: lang }}';
     {%- comment -%} https://github.com/giscus/giscus/tree/main/locales {%- endcomment -%}
@@ -37,8 +37,8 @@
     $footer.insertAdjacentElement("beforebegin", giscusNode);
 
     addEventListener('message', (event) => {
-      if (event.source === window && event.data && event.data.id === Theme.ID) {
-        const newTheme = themeMapper[Theme.visualState];
+      if (event.source === window && event.data && event.data.id === Theme.eventId) {
+        const newTheme = themeMap[Theme.resolvedTheme];
 
         const message = {
           setConfig: {
@@ -46,9 +46,19 @@
           }
         };
 
-        const giscus =
-          document.getElementsByClassName('giscus-frame')[0].contentWindow;
-        giscus.postMessage({ giscus: message }, 'https://giscus.app');
+        const iframe = document.querySelector('.giscus-frame');
+
+        if (!iframe) {
+          return;
+        }
+
+        if (iframe.classList.contains('giscus-frame--loading')) {
+          let url = new URL(iframe.src);
+          url.searchParams.set('theme', newTheme);
+          iframe.src = url.toString();
+        }
+
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
       }
     });
   })();

@@ -45,8 +45,13 @@ not_found:
   statement: Ci scusiamo, non è stato possibile trovare l'URL in questione. Potrebbe puntare ad una pagina non esistente.
 
 notification:
-  update_found: Nuova versione del contenuto disponibile.
+  update_found: Nuovi contenuti trovati
   update: Aggiornamento
+
+theme:
+  light: Chiaro
+  dark: Scuro
+  system: Sistema
 
 # ----- Posts related labels -----
 
@@ -59,6 +64,7 @@ post:
   read_time:
     unit: min
     prompt: lettura
+  edit: Modifica questo post
   relate_posts: Continua a leggere
   share: Condividi
   button:

@@ -46,8 +46,13 @@ not_found:
   statement: عذرا, الرابط التالي غير صالح أو انه يشير إلى صفحة غير موجودة.
 
 notification:
-  update_found: يتوفر اصدار جديد للمحتوى.
+  update_found: يتوفر محتوى جديد
   update: تحديث
+
+theme:
+  light: فاتح
+  dark: داكن
+  system: النظام
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: دقيقة
     prompt: قراءة
+  edit: حرر هذا المنشور
   relate_posts: إقرأ المزيد
   share: شارك
   button:

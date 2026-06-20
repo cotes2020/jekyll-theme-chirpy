@@ -17,7 +17,6 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   overflow-y: auto;
   width: v.$sidebar-width;
   background: var(--sidebar-bg);
-  border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -76,11 +75,12 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   }
 
   .profile-wrapper {
-    @include mx.mt-mb(2.5rem);
     @extend %clickable-transition;
 
     padding-left: 2.5rem;
     padding-right: 1.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     width: 100%;
 
     @include bp.lg {
@@ -105,6 +105,8 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     letter-spacing: 0.25px;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     color: var(--site-title-color);
   }
@@ -114,6 +116,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     color: var(--site-subtitle-color);
     margin-top: 0.25rem;
     word-spacing: 1px;
+    height: 3rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -207,7 +210,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
       }
     }
 
-    a {
+    > a {
       @extend %button;
       @extend %sidebar-link-hover;
       @extend %clickable-transition;
@@ -227,13 +230,102 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
 
     #mode-toggle {
       @extend %button;
-      @extend %sidebar-links;
       @extend %sidebar-link-hover;
+      @extend %clickable-transition;
+
+      > i {
+        display: none;
+
+        @at-root :root[data-bs-theme='light'][data-theme-persisted]
+            &[data-theme-mode='light'] {
+          display: block;
+        }
+
+        @at-root :root[data-bs-theme='dark'][data-theme-persisted]
+            &[data-theme-mode='dark'] {
+          display: block;
+        }
+
+        @at-root :root:not([data-theme-persisted]) &[data-theme-mode='system'] {
+          display: block;
+        }
+      }
+
+      @-webkit-keyframes menu-pop {
+        from {
+          opacity: 0;
+          translate: 0 0.5rem;
+        }
+
+        to {
+          opacity: 1;
+          translate: 0 0;
+        }
+      }
+
+      @keyframes menu-pop {
+        from {
+          opacity: 0;
+          translate: 0 0.5rem;
+        }
+
+        to {
+          opacity: 1;
+          translate: 0 0;
+        }
+      }
+
+      + .dropdown-menu {
+        background-color: var(--menu-bg);
+        border-color: var(--menu-border-color);
+        box-shadow: var(--menu-shadow-color) 0 1px 4px;
+        border-radius: 0.75rem !important;
+
+        &.show {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          left: -0.25rem !important;
+          -webkit-animation: menu-pop 0.2s ease-out;
+          animation: menu-pop 0.2s ease-out;
+        }
+
+        .dropdown-item {
+          border-radius: 0.5rem;
+          color: var(--sidebar-muted-color);
+          font-size: 90%;
+
+          &.active {
+            font-weight: 600;
+            color: var(--menu-active-color);
+
+            &::after {
+              content: '\f00c';
+              font: var(--fa-font-solid);
+              font-size: 0.75rem;
+              color: var(--sidebar-btn-color);
+              margin-left: auto;
+              padding-left: 1rem;
+            }
+          }
+
+          &:active,
+          &:hover,
+          &.active {
+            background-color: var(--menu-highlight-bg);
+          }
+
+          > i {
+            color: var(--sidebar-btn-color);
+            margin-right: 0.5rem;
+          }
+        }
+      }
     }
 
     .icon-border {
       @extend %no-cursor;
-      @include mx.ml-mr(calc((v.$sb-btn-gap - $btn-border-width) / 2));
+      @include mx.ml-mr(0.6rem);
 
       background-color: var(--sidebar-btn-color);
       content: '';
@@ -241,10 +333,6 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
       height: $btn-border-width;
       border-radius: 50%;
       margin-bottom: $btn-mb;
-
-      @include bp.xxxl {
-        @include mx.ml-mr(calc((v.$sb-btn-gap-lg - $btn-border-width) / 2));
-      }
     }
   } /* .sidebar-bottom */
 } /* #sidebar */

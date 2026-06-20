@@ -219,8 +219,9 @@ div {
     @extend %rounded;
 
     border: 1px solid transparent;
-    height: v.$code-header-height;
-    width: v.$code-header-height;
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.125rem;
     padding: 0;
     background-color: inherit;
 
@@ -234,6 +235,7 @@ div {
       }
 
       i {
+        font-size: 90%;
         color: var(--clipboard-checked-color);
       }
     }

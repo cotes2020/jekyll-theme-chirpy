@@ -46,8 +46,13 @@ not_found:
   statement: ဝမ်းနည်းပါသည်၊ ကျွန်ုပ်တို့သည် အဆိုပါ URL ကို မှားယွင်းစွာ နေရာချထားခြင်း သို့မဟုတ် ၎င်းသည် မရှိသောအရာကို ညွှန်ပြနေပါသည်။
 
 notification:
-  update_found: အကြောင်းအရာဗားရှင်းအသစ်ကို ရနိုင်ပါပြီ။
+  update_found: အကြောင်းအရာအသစ် တွေ့ရှိပါသည်
   update: အပ်ဒိတ်
+
+theme:
+  light: အလင်း
+  dark: အမှောင်
+  system: စနစ်
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: မိနစ်
     prompt: ဖတ်ပါမည်
+  edit: ဤပို့စ်ကို တည်းဖြတ်ပါ
   relate_posts: နောက်ထပ်ဖတ်ရန်
   share: မျှဝေရန်
   button:

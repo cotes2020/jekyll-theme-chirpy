@@ -46,8 +46,13 @@ not_found:
   statement: Ho sentim, hem perdut aquesta URL o apunta a alguna cosa que no existeix.
 
 notification:
-  update_found: Hi ha una nova versió de contingut disponible.
+  update_found: Hi ha contingut nou disponible
   update: Actualitzar
+
+theme:
+  light: Clar
+  dark: Fosc
+  system: Sistema
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: min
     prompt: " de lectura"
+  edit: Edita aquesta entrada
   relate_posts: Entrades relacionades
   share: Compartir
   button:

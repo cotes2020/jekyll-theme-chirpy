@@ -108,6 +108,16 @@ social_preview_image: # string, local or CORS resources
 # boolean type, the global switch for TOC in posts.
 toc: true
 
+actions:
+  # Display "Edit this post" action on each post page to encourage contributions.
+  edit_post:
+    enabled: false # set to true to display the "Edit this post" action.
+    url: "" # repository base URL, e.g. https://github.com/cotes2020/jekyll-theme-chirpy/edit/master
+    # Use dynamic or static URL for the edit link.
+    # If `static_url` is false, the post's path will be appended to the `url` above as the final edit link.
+    # Set to true if the URL should remain unchanged, which means each post will share the same edit link.
+    static_url: false # [ true | false ]
+
 comments:
   # Global switch for the post-comment system. Keeping it empty means disabled.
   provider: # [disqus | utterances | giscus]

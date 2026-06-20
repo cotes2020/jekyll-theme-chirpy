@@ -46,8 +46,13 @@ not_found:
   statement: Lo sentimos, hemos perdido esa URL o apunta a algo que no existe.
 
 notification:
-  update_found: Hay una nueva versión de contenido disponible.
+  update_found: Hay contenido nuevo
   update: Actualizar
+
+theme:
+  light: Claro
+  dark: Oscuro
+  system: Sistema
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: min
     prompt: " de lectura"
+  edit: Edita esta entrada
   relate_posts: Lecturas adicionales
   share: Compartir
   button:
