@@ -75,11 +75,12 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   }
 
   .profile-wrapper {
-    @include mx.mt-mb(2.5rem);
     @extend %clickable-transition;
 
     padding-left: 2.5rem;
     padding-right: 1.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     width: 100%;
 
     @include bp.lg {
@@ -115,6 +116,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     color: var(--site-subtitle-color);
     margin-top: 0.25rem;
     word-spacing: 1px;
+    height: 3rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
