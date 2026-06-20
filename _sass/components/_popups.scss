@@ -93,10 +93,7 @@
   }
 
   button {
-    > i {
-      font-size: 1.25rem;
-      vertical-align: middle;
-    }
+    font-size: 0.75rem;
 
     &:focus-visible {
       box-shadow: none;
