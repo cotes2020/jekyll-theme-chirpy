@@ -1,5 +1,23 @@
 # Changelog
 
+## [7.6.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.5.0...v7.6.0) (2026-06-20)
+
+### Features
+
+* add edit this post link ([#2517](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2517)) ([6bd446c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/6bd446ccdedbe37752cf24b1866e1e2dd9cb82c8))
+* **theme:** persist user theme preferences ([#2756](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2756)) ([7496dd4](https://github.com/cotes2020/jekyll-theme-chirpy/commit/7496dd41fa053c4636a82027fe3fb3e38357e385))
+* **ui:** optimize design of PWA update notification ([#2757](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2757)) ([5cc9dc6](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5cc9dc66acb1eb9213988d3ac6de5cf5adf1a6f6))
+
+### Bug Fixes
+
+* **giscus:** synchronize theme state during lazy loading ([#2742](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2742)) ([ceb2a41](https://github.com/cotes2020/jekyll-theme-chirpy/commit/ceb2a41463cbb6251fa257b640990a8d9717b0bb))
+* prevent Firefox from opening blank page on `mailto` links ([#2642](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2642)) ([2685b91](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2685b91957d0207c2d31dab828430c78a2fcc3d0))
+* **pwa:** avoid iOS status bar overlapping PWA content ([#2173](https://github.com/cotes2020/jekyll-theme-chirpy/issues/2173)) ([3823212](https://github.com/cotes2020/jekyll-theme-chirpy/commit/38232120b729de653bfb42909a8dad047559438d))
+
+### Improvements
+
+* **ui:** prevent vertical flickering caused by subtitle loading ([2db0535](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2db053553bcf9606fc80c4a86959d0dd25d0446a))
+
 ## [7.5.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v7.4.1...v7.5.0) (2026-03-15)
 
 ### Features
