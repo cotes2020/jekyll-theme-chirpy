@@ -22,20 +22,10 @@ package-lock.json
 !.vscode/extensions.json
 
 # Misc
-/_posts/.obsidian
-/.obsidian/workspace.json
-/.obsidian/app.json
-/.obsidian/core-plugins-migration.json
-/.obsidian/core-plugins.json
-_posts/manual/Welcome.md
 .DS_Store
-_posts/manual/.obsidian/app.json
-_posts/manual/.obsidian/appearance.json
-_posts/manual/.obsidian/core-plugins-migration.json
-_posts/manual/.obsidian/core-plugins.json
-_posts/manual/.obsidian/graph.json
-_posts/manual/.obsidian/workspace.json
-.obsidian/plugins/table-editor-obsidian/data.json
-.obsidian/core-plugins.json
-.obsidian/community-plugins.json
-.obsidian/app.json
+_posts/manual/Welcome.md
+
+# Obsidian editor config (do not track)
+.obsidian/
+_posts/.obsidian/
+_posts/manual/.obsidian/
