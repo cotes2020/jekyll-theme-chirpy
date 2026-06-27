@@ -1,0 +1,91 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: پست
+  category: دسته‌بندی
+  tag: برچسب
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: خانه
+  categories: دسته‌بندی‌ها
+  tags: برچسب‌ها
+  archives: آرشیو
+  about: درباره
+
+# the text displayed in the search bar & search results
+search:
+  hint: جستجو
+  cancel: لغو
+  no_results: متأسفیم! هیچ نتیجه‌ای یافت نشد.
+
+panel:
+  lastmod: آخرین به‌روزرسانی
+  trending_tags: برچسب‌های پرطرفدار
+  toc: فهرست مطالب
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: این پست تحت مجوز :LICENSE_NAME توسط نویسنده منتشر شده است.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: برخی حقوق محفوظ است.
+  verbose: >-
+    به‌جز مواردی که خلاف آن ذکر شده باشد، محتوای پست‌های این وبلاگ
+    تحت مجوز Creative Commons Attribution 4.0 International (CC BY 4.0) توسط نویسنده منتشر شده‌اند.
+
+meta: با استفاده از قالب :THEME برای :PLATFORM
+
+not_found:
+  statement: متأسفیم، لینک زیر معتبر نیست یا به صفحه‌ای که وجود ندارد اشاره می‌کند.
+
+notification:
+  update_found: نسخه جدیدی از محتوا موجود است.
+  update: به‌روزرسانی
+
+# ----- Posts related labels -----
+
+post:
+  written_by: نوشته شده توسط
+  posted: منتشر شده
+  updated: به‌روزرسانی شده
+  words: کلمه
+  pageview_measure: بازدید
+  read_time:
+    unit: "دقیقه "
+    prompt: " زمان مطالعه"
+  relate_posts: بیشتر بخوانید
+  share: اشتراک‌گذاری
+  button:
+    next: جدیدتر
+    previous: قدیمی‌تر
+    copy_code:
+      succeed: کپی شد!
+    share_link:
+      title: کپی لینک
+      succeed: لینک با موفقیت کپی شد!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# categories page
+categories:
+  category_measure:
+    singular: دسته‌بندی
+    plural: دسته‌بندی‌
+  post_measure:
+    singular: پست
+    plural: پست‌

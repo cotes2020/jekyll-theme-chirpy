@@ -1,0 +1,70 @@
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/placeholders';
+
+.access {
+  top: 2rem;
+  transition: top 0.2s ease-in-out;
+  margin-top: 3rem;
+
+  &:only-child {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+
+  > section {
+    @extend %panel-border;
+
+    padding-left: 1rem;
+
+    &:not(:first-child) {
+      margin-top: 4rem;
+    }
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+}
+
+#panel-wrapper {
+  /* the headings */
+  .panel-heading {
+    font-family: inherit;
+    line-height: inherit;
+
+    @include mx.label(inherit);
+  }
+
+  .post-tag {
+    line-height: 1.05rem;
+    font-size: 0.85rem;
+    border-radius: 0.8rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0 0.35rem 0.5rem 0;
+
+    &:hover {
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  > :last-child {
+    margin-bottom: 4rem;
+  }
+
+  @include bp.lt(bp.get(xl)) {
+    display: none;
+  }
+}
+
+#access-lastmod {
+  a {
+    color: inherit;
+
+    &:hover {
+      @extend %link-hover;
+    }
+
+    @extend %no-bottom-border;
+  }
+}

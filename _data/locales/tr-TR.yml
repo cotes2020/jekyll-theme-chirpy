@@ -43,7 +43,7 @@ copyright:
 meta: :PLATFORM ve :THEME teması
 
 not_found:
-  statment: Üzgünüz, bu linki yanlış yerleştirdik veya var olmayan bir şeye işaret ediyor.
+  statement: Üzgünüz, bu linki yanlış yerleştirdik veya var olmayan bir şeye işaret ediyor.
 
 notification:
   update_found: İçeriğin yeni bir sürümü mevcut.

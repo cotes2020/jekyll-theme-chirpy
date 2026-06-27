@@ -2,7 +2,6 @@
   // Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "prettier.trailingComma": "none",
   // Shopify Liquid
   "files.associations": {
     "*.html": "liquid"
@@ -15,13 +14,17 @@
     "editor.defaultFormatter": "Shopify.theme-check-vscode"
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "mkhl.shfmt"
   },
   // Disable vscode built-in stylelint
   "css.validate": false,
   "scss.validate": false,
   "less.validate": false,
   // Stylint extension settings
-  "stylelint.snippet": ["css", "less", "postcss", "scss"],
-  "stylelint.validate": ["css", "less", "postcss", "scss"]
+  "stylelint.snippet": ["css", "scss"],
+  "stylelint.validate": ["css", "scss"],
+  // Run tasks in macOS
+  "terminal.integrated.profiles.osx": {
+    "zsh": { "path": "/bin/zsh", "args": ["-l", "-i"] }
+  }
 }

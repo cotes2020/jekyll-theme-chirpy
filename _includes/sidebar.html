@@ -11,9 +11,7 @@
       {%- endif -%}
     </a>
 
-    <h1 class="site-title">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </h1>
+    <a class="site-title d-block" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
   </header>
   <!-- .profile-wrapper -->
@@ -54,13 +52,21 @@
     {% endunless %}
 
     {% for entry in site.data.contact %}
+      {%- assign url = null -%}
+
       {% case entry.type %}
-        {% when 'github', 'instagram' %}
+        {% when 'github', 'twitter', 'instagram' %}
+          {%- unless site[entry.type].username -%}
+            {%- continue -%}
+          {%- endunless -%}
           {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
         {% when 'email' %}
-          {% assign email = site.social.email | split: '@' %}
+          {%- unless site.social.email -%}
+            {%- continue -%}
+          {%- endunless -%}
+          {%- assign email = site.social.email | split: '@' -%}
           {%- capture url -%}
             javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
           {%- endcapture -%}

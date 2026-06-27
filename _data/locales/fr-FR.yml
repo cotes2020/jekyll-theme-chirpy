@@ -14,7 +14,7 @@ tabs:
   categories: Catégories
   tags: Tags
   archives: Archives
-  about: A propos de
+  about: À propos
 
 # the text displayed in the search bar & search results
 search:
@@ -32,18 +32,18 @@ copyright:
   license:
     template: Cet article est sous licence :LICENSE_NAME par l'auteur.
     name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+    link: https://creativecommons.org/licenses/by/4.0/deed.fr
 
   # Displayed in the footer
   brief: Certains droits réservés.
   verbose: >-
-    Sauf mention contraire, les articles de ce site sont publiés sous licence
+    Sauf mention contraire, les articles de ce site sont publiés
     sous la licence Creative Commons Attribution 4.0 International (CC BY 4.0) par l'auteur.
 
 meta: Propulsé par :PLATFORM avec le thème :THEME
 
 not_found:
-  statment: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
+  statement: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
 
 notification:
   update_found: Une nouvelle version du contenu est disponible.

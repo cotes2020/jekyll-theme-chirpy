@@ -43,7 +43,7 @@ copyright:
 meta: باستخدام :PLATFORM السمة :THEME
 
 not_found:
-  statment: عذرا, الرابط التالي غير صالح أو انه يشير إلى صفحة غير موجودة.
+  statement: عذرا, الرابط التالي غير صالح أو انه يشير إلى صفحة غير موجودة.
 
 notification:
   update_found: يتوفر اصدار جديد للمحتوى.

@@ -1,20 +1,13 @@
 <!-- https://giscus.app/ -->
-<script type="text/javascript">
+<script>
   (function () {
-    const origin = 'https://giscus.app';
-    const lightTheme = 'light';
-    const darkTheme = 'dark_dimmed';
+    const themeMapper = Theme.getThemeMapper('light', 'dark_dimmed');
+    const initTheme = themeMapper[Theme.visualState];
 
-    let initTheme = lightTheme;
-    const html = document.documentElement;
-
-    if (
-      (html.hasAttribute('data-mode') &&
-        html.getAttribute('data-mode') === 'dark') ||
-      (!html.hasAttribute('data-mode') &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      initTheme = darkTheme;
+    let lang = '{{ site.comments.giscus.lang | default: lang }}';
+    {%- comment -%} https://github.com/giscus/giscus/tree/main/locales {%- endcomment -%}
+    if (lang.length > 2 && !lang.startsWith('zh')) {
+      lang = lang.slice(0, 2);
     }
 
     let giscusAttributes = {
@@ -29,36 +22,33 @@
       'data-emit-metadata': '0',
       'data-theme': initTheme,
       'data-input-position': '{{ site.comments.giscus.input_position | default: 'bottom' }}',
-      'data-lang': '{{ site.comments.giscus.lang | default: lang }}',
+      'data-lang': lang,
       'data-loading': 'lazy',
       crossorigin: 'anonymous',
       async: ''
     };
 
-    let giscusScript = document.createElement('script');
+    let giscusNode = document.createElement('script');
     Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value)
+      giscusNode.setAttribute(key, value)
     );
-    document.getElementById('tail-wrapper').appendChild(giscusScript);
+
+    const $footer = document.querySelector('footer');
+    $footer.insertAdjacentElement("beforebegin", giscusNode);
 
     addEventListener('message', (event) => {
-      if (
-        event.source === window &&
-        event.data &&
-        event.data.direction === ModeToggle.ID
-      ) {
-        {%- comment -%} global theme mode changed {%- endcomment -%}
-        const mode = event.data.message;
-        const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
+      if (event.source === window && event.data && event.data.id === Theme.ID) {
+        const newTheme = themeMapper[Theme.visualState];
 
         const message = {
           setConfig: {
-            theme: theme
+            theme: newTheme
           }
         };
 
-        const giscus = document.getElementsByClassName('giscus-frame')[0].contentWindow;
-        giscus.postMessage({ giscus: message }, origin);
+        const giscus =
+          document.getElementsByClassName('giscus-frame')[0].contentWindow;
+        giscus.postMessage({ giscus: message }, 'https://giscus.app');
       }
     });
   })();

@@ -43,7 +43,7 @@ copyright:
 meta: Powered by :PLATFORM with :THEME theme
 
 not_found:
-  statment: 해당 URL은 존재하지 않습니다.
+  statement: 해당 URL은 존재하지 않습니다.
 
 notification:
   update_found: 새 버전의 콘텐츠를 사용할 수 있습니다.

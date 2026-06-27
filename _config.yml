@@ -6,9 +6,9 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: ko
+lang: ko-KR
 
-# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
+# Change to your timezone › https://zones.arilyn.cc
 timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
@@ -16,20 +16,17 @@ timezone: Asia/Seoul
 
 title: 한승주의 메모장 # the main title
 
-tagline: 공부 내용 개인저장소 # it will display as the sub-title
+tagline: 공부 내용 개인저장소 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   한승주가 개인적으로 공부한 내용들 정리해두는 메모장.
 
 # Fill in the protocol & hostname for your site.
-# e.g. 'https://username.github.io', note that it does not end with a '/'.
+# E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://gkstmdwn.github.io"
 
 github:
   username: gkstmdwn # change to your github username
-
-# twitter:
-#   username: twitter_username # change to your twitter username
 
 instagram:
   username: syuke0118
@@ -39,10 +36,10 @@ social:
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: SeungJoo Han
   email: sugarcanes0118@gmail.com # change to your email address
+  fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
   links:
     # The first element serves as the copyright owner's link
     - https://www.instagram.com/syuke0118/
-    # - https://twitter.com/username # change to your twitter homepage
     - https://github.com/gkstmdwn
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -74,8 +71,10 @@ analytics:
     domain: # fill in your Matomo domain
   cloudflare:
     id: # fill in your Cloudflare Web Analytics token
+  fathom:
+    id: # fill in your Fathom Site ID
 
-# Pageviews settings
+# Page views settings
 pageviews:
   provider: # now only supports 'goatcounter'
 
@@ -87,8 +86,8 @@ pageviews:
 #
 # Available options:
 #
-#     light  - Use the light color scheme
-#     dark   - Use the dark color scheme
+#     light — Use the light color scheme
+#     dark — Use the dark color scheme
 #
 theme_mode: # [light | dark]
 
@@ -110,7 +109,7 @@ social_preview_image: # string, local or CORS resources
 toc: true
 
 comments:
-  # Global switch for the post comment system. Keeping it empty means disabled.
+  # Global switch for the post-comment system. Keeping it empty means disabled.
   provider: giscus
   # The provider options are as follows:
   disqus:
@@ -140,9 +139,9 @@ assets:
     env: # [development | production]
 
 pwa:
-  enabled: true # the option for PWA feature (installable)
+  enabled: true # The option for PWA feature (installable)
   cache:
-    enabled: true # the option for PWA offline cache
+    enabled: true # The option for PWA offline cache
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.
@@ -194,10 +193,6 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-  - scope:
-      path: assets/js/dist
-    values:
-      swcache: true
 
 sass:
   style: compressed
@@ -218,8 +213,9 @@ exclude:
   - tools
   - README.md
   - LICENSE
+  - purgecss.js
   - "*.config.js"
-  - package*.json
+  - "package*.json"
 
 jekyll-archives:
   enabled: [categories, tags]
