@@ -6,24 +6,14 @@
 
 /* A tool for locale datetime */
 class LocaleHelper {
-  static get attrTimestamp() {
-    return 'data-ts';
-  }
-
-  static get attrDateFormat() {
-    return 'data-df';
-  }
+  static datetimeAttr = 'datetime';
 
   static get locale() {
     return document.documentElement.getAttribute('lang').substring(0, 2);
   }
 
-  static getTimestamp(elem) {
-    return Number(elem.getAttribute(this.attrTimestamp)); // unix timestamp
-  }
-
-  static getDateFormat(elem) {
-    return elem.getAttribute(this.attrDateFormat);
+  static getDatetime(elem) {
+    return elem.getAttribute(this.datetimeAttr);
   }
 }
 
@@ -32,22 +22,17 @@ export function initLocaleDatetime() {
   dayjs.extend(window.dayjs_plugin_localizedFormat);
 
   document
-    .querySelectorAll(`[${LocaleHelper.attrTimestamp}]`)
+    .querySelectorAll(`[${LocaleHelper.datetimeAttr}]`)
     .forEach((elem) => {
-      const date = dayjs.unix(LocaleHelper.getTimestamp(elem));
-      const text = date.format(LocaleHelper.getDateFormat(elem));
-      elem.textContent = text;
-      elem.removeAttribute(LocaleHelper.attrTimestamp);
-      elem.removeAttribute(LocaleHelper.attrDateFormat);
+      const date = dayjs(LocaleHelper.getDatetime(elem));
+      elem.textContent = date.format(elem.dataset.df);
+      delete elem.dataset.df;
 
       // setup tooltips
-      if (
-        elem.hasAttribute('data-bs-toggle') &&
-        elem.getAttribute('data-bs-toggle') === 'tooltip'
-      ) {
+      if ('bsToggle' in elem.dataset && elem.dataset.bsToggle === 'tooltip') {
         // see: https://day.js.org/docs/en/display/format#list-of-localized-formats
         const tooltipText = date.format('llll');
-        elem.setAttribute('data-bs-title', tooltipText);
+        elem.dataset.bsTitle = tooltipText;
       }
     });
 }
