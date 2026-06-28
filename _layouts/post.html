@@ -24,14 +24,14 @@ script_includes:
       <!-- published date -->
       <span>
         {{ site.data.locales[lang].post.posted }}
-        {% include datetime.html date=page.date tooltip=true lang=lang %}
+        {% include datetime.html date=page.date tooltip=true datetime_attr=true lang=lang %}
       </span>
 
       <!-- lastmod date -->
       {% if page.last_modified_at and page.last_modified_at != page.date %}
         <span>
           {{ site.data.locales[lang].post.updated }}
-          {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
+          {% include datetime.html date=page.last_modified_at tooltip=true datetime_attr=true lang=lang %}
         </span>
       {% endif %}
 

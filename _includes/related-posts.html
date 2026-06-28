@@ -79,7 +79,7 @@
         <article class="col">
           <a href="{{ post.url | relative_url }}" class="post-preview card h-100">
             <div class="card-body">
-              {% include datetime.html date=post.date lang=include.lang %}
+              {% include datetime.html date=post.date datetime_attr=true lang=include.lang %}
               <h4 class="pt-0 my-2">{{ post.title }}</h4>
               <div class="text-muted">
                 <p>{% include post-summary.html %}</p>

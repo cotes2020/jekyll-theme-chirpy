@@ -2,7 +2,6 @@
 layout: page
 # The layout for Tag page
 ---
-
 {% include lang.html %}
 
 <div id="page-tag">
@@ -16,7 +15,7 @@ layout: page
       <li class="d-flex justify-content-between px-md-3">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         <span class="dash flex-grow-1"></span>
-        {% include datetime.html date=post.date class='text-muted small text-nowrap' lang=lang %}
+        {% include datetime.html date=post.date class='text-muted small text-nowrap' datetime_attr=true lang=lang %}
       </li>
     {% endfor %}
   </ul>

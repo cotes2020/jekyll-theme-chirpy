@@ -10,7 +10,9 @@
   {% if include.class %}
     class="{{ include.class }}"
   {% endif %}
-  datetime="{{ include.date | date_to_xmlschema }}"
+  {% if include.datetime_attr %}
+    datetime="{{ include.date | date_to_xmlschema }}"
+  {% endif %}
   data-ts="{{ include.date | date: '%s' }}"
   data-df="{{ df_dayjs }}"
   {% if include.tooltip %}

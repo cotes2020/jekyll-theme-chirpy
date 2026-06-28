@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 {% include lang.html %}
 
 {% assign all_pinned = site.posts | where: 'pin', 'true' %}
@@ -104,7 +103,7 @@ layout: default
               <div class="me-auto">
                 <!-- posted date -->
                 <i class="far fa-calendar fa-fw me-1"></i>
-                {% include datetime.html date=post.date lang=lang %}
+                {% include datetime.html date=post.date datetime_attr=true lang=lang %}
 
                 <!-- categories -->
                 {% if post.categories.size > 0 %}
