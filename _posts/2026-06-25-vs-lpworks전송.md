@@ -92,7 +92,7 @@ mermaid: false
 
 #### LPworks 데이터 전송 화면에서 전송하기
 LPworks 데이터 전송 화면에서도 LPworks로 투자심사 건을 전송할 수 있습니다.
-자세한 설명은 [LPworks 데이터 전송]()를 참고해주세요.
+자세한 설명은 [LPworks 데이터 전송](https://guide.vcworks.kr/posts/lc0102/)를 참고해주세요.
 
 
 ## 자주 묻는 질문
