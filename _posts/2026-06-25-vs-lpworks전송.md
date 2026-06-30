@@ -1,7 +1,7 @@
 ---
 title: 투자심사 보고 - LPworks 전송
 author: dkdk.kr
-date: 2026-06-25 09:00:00 +0800
+date: 2026-06-25 10:00:00 +0800
 categories:
   - 투자 심의
 tags:
