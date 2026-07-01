@@ -73,6 +73,8 @@ analytics:
     id: # fill in your Cloudflare Web Analytics token
   fathom:
     id: # fill in your Fathom Site ID
+  knocket:
+    id: # fill in your Knocket identifier — https://trtc.io/solutions/knocket
 
 # Page views settings
 pageviews:
