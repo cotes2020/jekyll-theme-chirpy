@@ -21,5 +21,9 @@ MathJax = {
     ],
     {%- comment -%} equation numbering {%- endcomment -%}
     tags: 'ams'
+  },
+  output: {
+    {%- comment -%} scroll long display equations instead of overflowing the page {%- endcomment -%}
+    displayOverflow: 'scroll'
   }
 };
