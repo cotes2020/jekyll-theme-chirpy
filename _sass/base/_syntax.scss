@@ -132,7 +132,12 @@ div[class^='language-'] {
       &::before {
         content: '';
         display: inline-block;
+        flex-shrink: 0;
         margin-left: $dot-margin;
+
+        /* the 2nd/3rd dots are painted with box-shadow and take no layout
+          space — reserve it so a truncated label cannot overlap them */
+        margin-right: (v.$code-dot-size + v.$code-dot-gap) * 2;
         width: v.$code-dot-size;
         height: v.$code-dot-size;
         border-radius: 50%;
@@ -145,8 +150,9 @@ div[class^='language-'] {
       }
 
       span {
-        // center the text of label
-        margin-left: calc(($dot-margin + v.$code-dot-size) / 2 * -1);
+        /* fill the space between the dots and the copy button */
+        flex: 1;
+        text-align: center;
       }
     }
   }
@@ -189,6 +195,9 @@ div {
     /* truncate long labels instead of overflowing the viewport */
     overflow: hidden;
     line-height: v.$code-header-height;
+
+    /* color here (not ::after) so the span-rendered ellipsis matches the label */
+    color: var(--code-header-text-color);
     text-overflow: ellipsis;
     white-space: nowrap;
 
@@ -213,7 +222,6 @@ div {
       content: attr(data-label-text);
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--code-header-text-color);
     }
   }
 
