@@ -188,7 +188,6 @@ div {
   span {
     /* truncate long labels instead of overflowing the viewport */
     overflow: hidden;
-    min-width: 0;
     line-height: v.$code-header-height;
     text-overflow: ellipsis;
     white-space: nowrap;
