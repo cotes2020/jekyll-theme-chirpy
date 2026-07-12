@@ -21,7 +21,7 @@
         {% include media-url.html src=src subpath=page.media_subpath absolute=true %}
       {%- endcapture -%}
 
-      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
+      {%- capture old_url -%}{{ src | prepend: page.url | absolute_url }}{%- endcapture -%}
       {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
       {% assign seo_tags = seo_tags | replace: old_url, new_url %}
