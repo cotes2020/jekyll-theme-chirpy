@@ -46,8 +46,13 @@ not_found:
   statement: ببوورە، ئەم بەستەرە نادۆزرێتەوە یان ئاماژە بە شتێک دەکات کە بوونی نییە.
 
 notification:
-  update_found: وەشانێکی نوێی ناوەڕۆک بەردەستە.
+  update_found: ناوەڕۆکی نوێ بەردەستە
   update: نوێکردنەوە
+
+theme:
+  light: ڕووناک
+  dark: تاریک
+  system: سیستەم
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: خولەک
     prompt: خوێندنەوە
+  edit: ئەم بابەتە دەستکاری بکە
   relate_posts: بابەتی پەیوەندیدار
   share: بڵاوکردنەوە
   button:

@@ -46,8 +46,13 @@ not_found:
   statement: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
 
 notification:
-  update_found: Une nouvelle version du contenu est disponible.
+  update_found: Nouveau contenu trouvé
   update: Mise à jour
+
+theme:
+  light: Clair
+  dark: Sombre
+  system: Système
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: min
     prompt: lire
+  edit: Modifier cet article
   relate_posts: Autres lectures
   share: Partager
   button:

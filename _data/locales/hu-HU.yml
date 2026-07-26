@@ -47,8 +47,13 @@ not_found:
   statement: Sajnáljuk, az URL-t rosszul helyeztük el, vagy valami nem létezőre mutat.
 
 notification:
-  update_found: Elérhető a tartalom új verziója.
+  update_found: Új tartalom található
   update: Frissítés
+
+theme:
+  light: Világos
+  dark: Sötét
+  system: Rendszer
 
 # ----- Posts related labels -----
 
@@ -61,6 +66,7 @@ post:
   read_time:
     unit: perc
     prompt: elolvasni
+  edit: Szerkesztés
   relate_posts: További olvasnivaló
   share: Megosztás
   button:

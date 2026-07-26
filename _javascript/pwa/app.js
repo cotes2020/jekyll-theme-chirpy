@@ -8,9 +8,9 @@ if ('serviceWorker' in navigator) {
 
   if (register) {
     const swUrl = `${baseUrl}/sw.min.js`;
-    const notification = document.getElementById('notification');
-    const btnRefresh = notification.querySelector('.toast-body>button');
-    const popupWindow = Toast.getOrCreateInstance(notification);
+    const $notification = document.getElementById('notification');
+    const $btnUpdate = $notification.querySelector('[aria-label="Update"]');
+    const popupWindow = Toast.getOrCreateInstance($notification);
 
     navigator.serviceWorker.register(swUrl).then((registration) => {
       // Restore the update window that was last manually closed by the user
@@ -28,7 +28,7 @@ if ('serviceWorker' in navigator) {
         });
       });
 
-      btnRefresh.addEventListener('click', () => {
+      $btnUpdate.addEventListener('click', () => {
         if (registration.waiting) {
           registration.waiting.postMessage('SKIP_WAITING');
         }

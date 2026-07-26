@@ -46,8 +46,13 @@ not_found:
   statement: Sorry, we hebben de URL verkeerd geplaatst of hij verwijst naar iets dat niet bestaat.
 
 notification:
-  update_found: Nieuwe versie van inhoud beschikbaar.
+  update_found: Nieuwe inhoud gevonden
   update: Update
+
+theme:
+  light: Licht
+  dark: Donker
+  system: Systeem
 
 # ----- Posts related labels -----
 post:
@@ -59,6 +64,7 @@ post:
   read_time:
     unit: min
     prompt: lees
+  edit: Bewerk dit bericht
   relate_posts: Verder Lezen
   share: Deel
   button:

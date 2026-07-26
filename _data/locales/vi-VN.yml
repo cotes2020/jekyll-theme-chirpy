@@ -45,8 +45,13 @@ not_found:
   statement: Xin lỗi, chúng tôi đã đặt nhầm URL hoặc đường dẫn trỏ đến một trang nào đó không tồn tại.
 
 notification:
-  update_found: Đã có phiên bản mới của nội dung.
+  update_found: Đã tìm thấy nội dung mới
   update: Cập nhật
+
+theme:
+  light: Sáng
+  dark: Tối
+  system: Hệ thống
 
 # ----- Posts related labels -----
 
@@ -59,6 +64,7 @@ post:
   read_time:
     unit: phút
     prompt: đọc
+  edit: Chỉnh sửa bài viết này
   relate_posts: Bài viết liên quan
   share: Chia sẻ
   button:

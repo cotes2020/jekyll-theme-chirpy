@@ -46,8 +46,13 @@ not_found:
   statement: ขออภัย เราวาง URL นั้นไว้ผิดที่ หรือมันชี้ไปยังสิ่งที่ไม่มีอยู่
 
 notification:
-  update_found: มีเวอร์ชันใหม่ของเนื้อหา
+  update_found: พบเนื้อหาใหม่
   update: อัปเดต
+
+theme:
+  light: สว่าง
+  dark: มืด
+  system: ระบบ
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: นาที
     prompt: อ่าน
+  edit: แก้ไขโพสต์นี้
   relate_posts: อ่านต่อ
   share: แชร์
   button:

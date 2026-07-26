@@ -46,8 +46,13 @@ not_found:
   statement: このURLは存在しないものを指し示しています。
 
 notification:
-  update_found: 新しいバージョンが利用可能です。
+  update_found: 新しいコンテンツがあります
   update: 更新
+
+theme:
+  light: ライト
+  dark: ダーク
+  system: システム
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: 分
     prompt: で読めます
+  edit: この投稿を編集
   relate_posts: さらに読む
   share: シェア
   button:

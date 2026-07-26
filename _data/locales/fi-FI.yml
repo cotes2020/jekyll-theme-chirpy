@@ -45,8 +45,13 @@ not_found:
   statement: Valitettavasti tällä URL-osoitteella ei ole saatavilla sisältöä.
 
 notification:
-  update_found: Uusi versio sisällöstä on saatavilla.
+  update_found: Uutta sisältöä löytyi
   update: Päivitä
+
+theme:
+  light: Vaalea
+  dark: Tumma
+  system: Järjestelmä
 
 # ----- Posts related labels -----
 
@@ -59,6 +64,7 @@ post:
   read_time:
     unit: minuuttia
     prompt: lukea
+  edit: Muokkaa tätä julkaisua
   relate_posts: Jatka lukemista
   share: Jaa
   button:

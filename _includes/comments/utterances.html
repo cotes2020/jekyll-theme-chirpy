@@ -2,8 +2,8 @@
 <script>
   (function () {
     const origin = 'https://utteranc.es';
-    const themeMapper = Theme.getThemeMapper('github-light', 'github-dark');
-    const initTheme = themeMapper[Theme.visualState];
+    const themeMap = Theme.newThemeMap('github-light', 'github-dark');
+    const initTheme = themeMap[Theme.resolvedTheme];
 
     let script = document.createElement('script');
     script.src = 'https://utteranc.es/client.js';
@@ -22,8 +22,8 @@
       {%- comment -%}
         Credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347>
       {%- endcomment -%}
-      if (event.source === window && event.data && event.data.id === Theme.ID) {
-        newTheme = themeMapper[Theme.visualState];
+      if (event.source === window && event.data && event.data.id === Theme.eventId) {
+        newTheme = themeMap[Theme.resolvedTheme];
 
         const message = {
           type: 'set-theme',

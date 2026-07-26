@@ -27,6 +27,11 @@
     rgb(232 230 230 / 100%) 50%,
     rgb(250 250 250 / 0%) 100%
   );
+  --menu-bg: white;
+  --menu-border-color: white;
+  --menu-shadow-color: rgb(0 0 0 / 16%);
+  --menu-active-color: rgb(91 91 91);
+  --menu-highlight-bg: rgb(243 244 245 / 50%);
 
   /* Sidebar */
   --site-title-color: rgb(113 113 113);
@@ -59,8 +64,8 @@
   --btn-share-hover-color: #0d6efd;
   --card-bg: white;
   --card-hover-bg: #e2e2e2;
-  --card-shadow: rgb(104 104 104 / 5%) 0 2px 6px 0,
-    rgb(211 209 209 / 15%) 0 0 0 1px;
+  --card-shadow:
+    rgb(104 104 104 / 5%) 0 2px 6px 0, rgb(211 209 209 / 15%) 0 0 0 1px;
   --footnote-target-bg: lightcyan;
   --tb-odd-bg: #fbfcfd;
   --tb-border-color: #eaeaea;

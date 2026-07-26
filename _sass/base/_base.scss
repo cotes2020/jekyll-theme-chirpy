@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../abstracts/variables' as v;
 @use '../abstracts/breakpoints' as bp;
 @use '../abstracts/mixins' as mx;
@@ -5,32 +6,36 @@
 @use '../themes/light';
 @use '../themes/dark';
 
-:root {
-  font-size: 16px;
+$enable-dual: not list.index(v.$theme-options, v.$theme);
+$enable-light: v.$theme == light or $enable-dual;
+$enable-dark: v.$theme == dark or $enable-dual;
+
+@if $enable-light {
+  :root[#{v.$theme-attr}='light'] {
+    @include light.styles;
+  }
 }
 
-html {
-  @media (prefers-color-scheme: light) {
-    &:not([data-mode]),
-    &[data-mode='light'] {
+@if $enable-dark {
+  :root[#{v.$theme-attr}='dark'] {
+    @include dark.styles;
+  }
+}
+
+@if $enable-dual {
+  :root:not([#{v.$theme-attr}]) {
+    @include mx.color-scheme(light) {
       @include light.styles;
     }
 
-    &[data-mode='dark'] {
+    @include mx.color-scheme(dark) {
       @include dark.styles;
     }
   }
+}
 
-  @media (prefers-color-scheme: dark) {
-    &:not([data-mode]),
-    &[data-mode='dark'] {
-      @include dark.styles;
-    }
-
-    &[data-mode='light'] {
-      @include light.styles;
-    }
-  }
+:root {
+  font-size: 16px;
 
   @include bp.lg {
     overflow-y: scroll;
@@ -369,7 +374,9 @@ main {
   box-shadow: none;
   border-color: var(--input-focus-border-color) !important;
   background: center !important;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 }
 
 .left {
@@ -391,8 +398,9 @@ main {
 
 /* MathJax */
 mjx-container {
-  overflow-y: hidden;
-  min-width: auto !important;
+  a {
+    display: inline-block;
+  }
 }
 
 @media (hover: hover) {

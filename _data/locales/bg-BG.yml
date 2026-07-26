@@ -46,8 +46,13 @@ not_found:
   statement: Съжалявам, но на този URL адрес няма налично съдържание.
 
 notification:
-  update_found: Налична е нова версия на съдържанието.
+  update_found: Има ново съдържание
   update: Обнови
+
+theme:
+  light: Светла
+  dark: Тъмна
+  system: Системна
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: мин
     prompt: четиво
+  edit: Редактирай тази публикация
   relate_posts: Още за четене
   share: Споделете
   button:

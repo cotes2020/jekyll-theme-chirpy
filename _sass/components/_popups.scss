@@ -7,48 +7,40 @@
   @-webkit-keyframes popup {
     from {
       opacity: 0;
-      bottom: 0;
+      bottom: 10%;
     }
   }
 
   @keyframes popup {
     from {
       opacity: 0;
-      bottom: 0;
-    }
-  }
-
-  .toast-header {
-    background: none;
-    border-bottom: none;
-    color: inherit;
-  }
-
-  .toast-body {
-    font-family: Lato, sans-serif;
-    line-height: 1.25rem;
-
-    button {
-      font-size: 90%;
-      min-width: 4rem;
+      bottom: 10%;
     }
   }
 
   &.toast {
     &.show {
-      display: block;
-      min-width: 20rem;
-      border-radius: 0.5rem;
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
-      background-color: rgb(255 255 255 / 50%);
-      color: #1b1b1eba;
       position: fixed;
       left: 50%;
-      bottom: 20%;
+      bottom: 30%;
       transform: translateX(-50%);
       -webkit-animation: popup 0.8s;
       animation: popup 0.8s;
+    }
+
+    .toast-body {
+      line-height: 1.25rem;
+      font-family: v.$font-family-heading;
+    }
+
+    button[aria-label='Update'] {
+      font-size: 0.8rem;
+    }
+
+    .btn-close {
+      font-size: 0.625rem;
     }
   }
 }
@@ -101,10 +93,7 @@
   }
 
   button {
-    > i {
-      font-size: 1.25rem;
-      vertical-align: middle;
-    }
+    font-size: 0.75rem;
 
     &:focus-visible {
       box-shadow: none;

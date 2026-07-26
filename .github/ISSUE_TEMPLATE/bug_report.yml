@@ -53,7 +53,7 @@ body:
       value: |
         - Ruby: <!-- run `ruby -v` -->
         - Jekyll: <!-- run `bundle exec jekyll -v` -->
-        - Chirpy: <!-- run `bundle info jekyll-theme-chirpy` -->
+        - Chirpy: <!-- run `bundle info --version jekyll-theme-chirpy` -->
     validations:
       required: true
 

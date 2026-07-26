@@ -46,8 +46,13 @@ not_found:
   statement: Omlouváme se, adresu URL jsme špatně umístili nebo odkazuje na něco, co neexistuje.
 
 notification:
-  update_found: Je k dispozici nová verze obsahu.
+  update_found: Je tu nový obsah
   update: Aktualizace
+
+theme:
+  light: Světlý
+  dark: Tmavý
+  system: Systém
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: minut
     prompt: čtení
+  edit: Uprav tento příspěvek
   relate_posts: Další čtení
   share: Sdílet
   button:

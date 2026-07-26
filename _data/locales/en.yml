@@ -46,8 +46,13 @@ not_found:
   statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
 notification:
-  update_found: A new version of content is available.
+  update_found: New content available
   update: Update
+
+theme:
+  light: Light
+  dark: Dark
+  system: System
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: min
     prompt: read
+  edit: Edit this post
   relate_posts: Further Reading
   share: Share
   button:

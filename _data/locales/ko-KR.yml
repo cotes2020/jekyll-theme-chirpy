@@ -46,8 +46,13 @@ not_found:
   statement: 해당 URL은 존재하지 않습니다.
 
 notification:
-  update_found: 새 버전의 콘텐츠를 사용할 수 있습니다.
+  update_found: 새 콘텐츠가 있습니다
   update: 업데이트
+
+theme:
+  light: 라이트
+  dark: 다크
+  system: 시스템
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: 분
     prompt: 읽는 시간
+  edit: 이 글 편집
   relate_posts: 관련된 글
   share: 공유하기
   button:

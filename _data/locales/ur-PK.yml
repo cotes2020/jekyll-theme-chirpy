@@ -46,8 +46,13 @@ not_found:
   statement: معذرت، یہ URL غلط ہے یا جس چیز کی طرف اشارہ کر رہا ہے وہ موجود نہیں۔
 
 notification:
-  update_found: نیا مواد دستیاب ہے۔
+  update_found: نیا مواد مل گیا
   update: اپ ڈیٹ
+
+theme:
+  light: روشن
+  dark: تاریک
+  system: سسٹم
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: منٹ
     prompt: پڑھیں
+  edit: اس تحریر میں ترمیم کریں
   relate_posts: مزید مطالعہ
   share: شیئر
   button:

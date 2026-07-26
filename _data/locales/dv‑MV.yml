@@ -46,8 +46,13 @@ not_found:
   statement: ސޯރީ، މި ޔޫ.އާރއެލް މަށެވެއްނެ ނުވަތަ އެކަމެއް ނުވެއެވެ.
 
 notification:
-  update_found: ޔޫ ވާރޝަން ހުރިހާ.
+  update_found: އައު ކޮންޓެންޓެއް ފެނިއްޖެ
   update: އޮޕްޑޭޓް
+
+theme:
+  light: އަލި
+  dark: އަނދިރި
+  system: ސިސްޓަމް
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: މިނެޓް
     prompt: އިސްކާރު
+  edit: މި ޕޯސްޓް އެޑިޓް ކުރު
   relate_posts: އެއްޗެހި ފަހުރަށްދަން
   share: ސެއާރް
   button:

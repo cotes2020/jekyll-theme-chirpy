@@ -46,8 +46,13 @@ not_found:
   statement: Oprostite, hiperpovezava je neustrezna ali vsebina ne obstajata. #Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
 notification:
-  update_found: Novejša različica vsebine je na voljo. #A new version of content is available.
+  update_found: Nova vsebina je na voljo
   update: Posodobi #Update
+
+theme:
+  light: Svetla
+  dark: Temna
+  system: Sistemska
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: min
     prompt: beri #read
+  edit: Uredi to objavo #Edit this post
   relate_posts: Nadaljnje branje #Further Reading
   share: Deli #Share
   button:

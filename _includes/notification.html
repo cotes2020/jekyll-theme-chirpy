@@ -1,24 +1,28 @@
 <aside
   id="notification"
-  class="toast"
+  class="toast w-auto rounded-5 text-nowrap"
   role="alert"
   aria-live="assertive"
   aria-atomic="true"
   data-bs-animation="true"
   data-bs-autohide="false"
 >
-  <div class="toast-header">
+  <div class="d-flex align-items-center">
+    <div class="toast-body ps-3">
+      {{- site.data.locales[include.lang].notification.update_found -}}
+    </div>
     <button
       type="button"
-      class="btn-close ms-auto"
+      class="btn btn-primary btn-sm rounded-2 py-0"
+      aria-label="Update"
+    >
+      {{- site.data.locales[include.lang].notification.update -}}
+    </button>
+    <button
+      type="button"
+      class="btn-close mx-3 ms-2"
       data-bs-dismiss="toast"
       aria-label="Close"
     ></button>
-  </div>
-  <div class="toast-body text-center pt-0">
-    <p class="px-2 mb-3">{{ site.data.locales[include.lang].notification.update_found }}</p>
-    <button type="button" class="btn btn-primary" aria-label="Update">
-      {{ site.data.locales[include.lang].notification.update }}
-    </button>
   </div>
 </aside>

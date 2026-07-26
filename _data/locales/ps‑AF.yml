@@ -46,8 +46,13 @@ not_found:
   statement: بښنه غواړو، دغه URL ناسم دی یا هغه څه ته اشاره کوي چې شتون نه لري.
 
 notification:
-  update_found: نوې نسخه شتون لري.
+  update_found: نوې منځپانګه شتون لري
   update: تازه
+
+theme:
+  light: روښانه
+  dark: تیاره
+  system: سیستم
 
 # ----- Posts related labels -----
 
@@ -60,6 +65,7 @@ post:
   read_time:
     unit: دقیقې
     prompt: لوستل
+  edit: دغه لیکنه سمول
   relate_posts: نوره لوستنه
   share: شریکول
   button:
