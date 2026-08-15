@@ -1,0 +1,8 @@
+PKCS1 DEFINITIONS ::= BEGIN
+
+  RSAPublicKey ::= SEQUENCE {
+    modulus           INTEGER,  
+    publicExponent    INTEGER   
+  }
+
+END

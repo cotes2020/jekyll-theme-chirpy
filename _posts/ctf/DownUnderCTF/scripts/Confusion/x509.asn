@@ -1,0 +1,22 @@
+PKCS8 DEFINITIONS ::= BEGIN
+
+PublicKeyInfo ::= SEQUENCE {
+   publicKeyAlgorithm PrivateKeyAlgorithmIdentifier, -- for some reason I can't comprehend this only works with "Private"
+   publicKey BIT STRING
+}
+
+
+
+
+Version ::= INTEGER
+
+PrivateKeyAlgorithmIdentifier ::= AlgorithmIdentifier
+
+
+AlgorithmIdentifier ::= SEQUENCE {
+    algorithm       OBJECT IDENTIFIER,
+    parameters      NULL
+}
+
+
+END
