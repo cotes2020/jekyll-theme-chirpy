@@ -1,28 +1,16 @@
 importScripts('./assets/js/data/swconf.js');
 
 const purge = swconf.purge;
-const interceptor = swconf.interceptor;
+const denyRegexes = swconf.denyUrls.map((regex) => new RegExp(regex));
 
 function verifyUrl(url) {
   const requestUrl = new URL(url);
-  const requestPath = requestUrl.pathname;
 
-  if (!requestUrl.protocol.startsWith('http')) {
+  if (requestUrl.protocol !== 'http:' && requestUrl.protocol !== 'https:') {
     return false;
   }
 
-  for (const prefix of interceptor.urlPrefixes) {
-    if (requestUrl.href.startsWith(prefix)) {
-      return false;
-    }
-  }
-
-  for (const path of interceptor.paths) {
-    if (requestPath.startsWith(path)) {
-      return false;
-    }
-  }
-  return true;
+  return !denyRegexes.some((regex) => regex.test(url));
 }
 
 self.addEventListener('install', (event) => {
@@ -32,7 +20,7 @@ self.addEventListener('install', (event) => {
 
   event.waitUntil(
     caches.open(swconf.cacheName).then((cache) => {
-      return cache.addAll(swconf.resources);
+      return cache.addAll(swconf.precacheUrls);
     })
   );
 });
