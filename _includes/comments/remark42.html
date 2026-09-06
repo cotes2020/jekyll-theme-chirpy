@@ -1,0 +1,27 @@
+<!-- Remark42 comments embed -->
+<!-- Temporay centering workaround -->
+<script>
+  const themeMapper = Theme.getThemeMapper("light", "dark");
+  const initTheme = themeMapper[Theme.visualState];
+  var remark_config = {
+    host: '{{ site.comments.remark42.host }}',
+    site_id: '{{ site.comments.remark42.site_id | default: "remark" }}',
+    theme: initTheme,
+    components: ['embed', 'counter'],
+    no_footer: true,
+  };
+
+  addEventListener("message", (event) => {
+    if (event.source === window && event.data && event.data.id === Theme.ID) {
+      const newTheme = themeMapper[Theme.visualState];
+      window.REMARK42.changeTheme(newTheme);
+    }
+  });
+
+  let remarkContainer = document.createElement('div');
+  remarkContainer.id = 'remark42';
+  let footer = document.querySelector('footer');
+  footer.insertAdjacentElement("beforebegin", remarkContainer);
+
+  !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);
+</script>
