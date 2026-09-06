@@ -1,0 +1,24 @@
+<script>
+  const issoThread = document.createElement('section');
+
+  issoThread.id = 'isso-thread';
+  issoThread.className = 'mt-4'; // Add some margin top
+  issoThread.setAttribute('data-isso-id', '{{ page.url }}');
+  issoThread.setAttribute('data-title', '{{ page.title | escape }}');
+
+  const footer = document.querySelector('footer');
+  if (footer) {
+    footer.insertAdjacentElement("beforebegin", issoThread);
+  }
+</script>
+
+<script data-isso="{{ site.comments.isso.server_url }}" src="{{ site.comments.isso.server_url }}{{ site.comments.isso.script_name | default: 'js/embed.min.js' }}"></script>
+
+<style>
+  #isso-thread * {
+    background-color: var(--main-bg);
+    background: var(--main-bg);
+    color: var(--main-color);
+    border-color: var(--main-border-color);
+  }
+</style>
