@@ -25,6 +25,7 @@
       searchInput: document.getElementById('search-input'),
       resultsContainer: document.getElementById('search-results'),
       json: '{{ '/assets/js/data/search.json' | relative_url }}',
+      limit: {{ site.search_result_limit | default: 10 | jsonify }},
       searchResultTemplate: '{{ result_elem | strip_newlines }}',
       noResultsText: '{{ not_found }}',
       templateMiddleware: function(prop, value, template) {

@@ -160,6 +160,9 @@ pwa:
 
 paginate: 10
 
+# Maximum number of posts shown in search results.
+search_result_limit: 10
+
 # The base URL of your site
 baseurl: ""
 
