@@ -4,6 +4,11 @@
 -->
 
 {% capture favicon_path %}{{ '/assets/img/favicons' | relative_url }}{% endcapture %}
+{%- if empty != site.favicons and site.favicons -%}
+  {% capture favicon_path -%}
+    {% include media-url.html src=site.favicons -%}
+  {% endcapture -%}
+{%- endif -%}
 
 <link rel="icon" type="image/png" href="{{ favicon_path }}/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="{{ favicon_path }}/favicon.svg">
