@@ -30,24 +30,24 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: Tento příspěvek je licencován pod :LICENSE_NAME autorem.
+    template: Autor tento příspěvek zveřejnil pod licencí :LICENSE_NAME.
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
   brief: Některá práva vyhrazena.
   verbose: >-
-    Pokud není uvedeno jinak, jsou příspěvky na tomto webu licencovány
-    pod licencí Creative Commons Attribution 4.0 International (CC BY 4.0) Licence autora.
+    Pokud není uvedeno jinak, autor zveřejňuje příspěvky na tomto webu
+    pod licencí Creative Commons Uveďte původ 4.0 Mezinárodní (CC BY 4.0).
 
-meta: Použití :PLATFORM s motivem :THEME
+meta: Web používá :PLATFORM s motivem :THEME.
 
 not_found:
-  statement: Omlouváme se, adresu URL jsme špatně umístili nebo odkazuje na něco, co neexistuje.
+  statement: Omlouváme se, tato adresa URL se nám ztratila nebo odkazuje na něco, co neexistuje.
 
 notification:
   update_found: Je tu nový obsah
-  update: Aktualizace
+  update: Aktualizovat
 
 theme:
   light: Světlý
@@ -60,12 +60,12 @@ post:
   written_by: Od
   posted: Zveřejněno
   updated: Aktualizováno
-  words: slova
-  pageview_measure: zhlednutí
+  words: slov
+  pageview_measure: zhlédnutí
   read_time:
-    unit: minut
+    unit: min
     prompt: čtení
-  edit: Uprav tento příspěvek
+  edit: Upravit tento příspěvek
   relate_posts: Další čtení
   share: Sdílet
   button:
@@ -75,7 +75,7 @@ post:
       succeed: Zkopírováno!
     share_link:
       title: Kopírovat odkaz
-      succeed: Zkopírováno!
+      succeed: Odkaz zkopírován!
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
@@ -91,5 +91,5 @@ df:
 categories:
   category_measure: kategorie
   post_measure:
-    singular: příspěvěk
+    singular: příspěvek
     plural: příspěvky
