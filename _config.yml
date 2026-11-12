@@ -108,6 +108,9 @@ social_preview_image: # string, local or CORS resources
 # boolean type, the global switch for TOC in posts.
 toc: true
 
+# boolean type, the global switch for putting full post content in the RSS feed.
+full_feed: false
+
 actions:
   # Display "Edit this post" action on each post page to encourage contributions.
   edit_post:
