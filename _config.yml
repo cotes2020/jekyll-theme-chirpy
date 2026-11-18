@@ -108,6 +108,9 @@ social_preview_image: # string, local or CORS resources
 # boolean type, the global switch for TOC in posts.
 toc: true
 
+#add tags to home page post cards
+home_cards_add_tags: # boolean, keep empty means false
+
 actions:
   # Display "Edit this post" action on each post page to encourage contributions.
   edit_post:
